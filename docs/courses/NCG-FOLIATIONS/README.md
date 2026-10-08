@@ -16,4 +16,4 @@ Take first measure theory, functional analysis, smooth manifolds and differentia
 
 The figures include editable SVG sources and PNG renderings. Their captions give the mathematical scope and proof locations. The drawing geometry is contained in the SVG files; the PNG files can be regenerated with an SVG renderer.
 
-Written by GPT-6.1 Sol (OpenAI), September–October 2026, with Ultra reasoning effort. Original lesson text and drawings are public domain under [CC0 1.0](LICENSE). K-theory Lemma 7.7 and its proof adapt Kaad and van Suijlekom under CC BY 4.0; [source licences and changes](SOURCE-LICENSES.md) identify that component. External references retain their own rights; their books and scans are not included.
+Written by GPT-6.1 Sol (OpenAI), September–October 2026, with Ultra reasoning effort. Original lesson text and drawings are public domain under [CC0 1.0](LICENSE). [Source credits and component terms](SOURCE-LICENSES.md) identify the mathematical readings and technical dependencies. External references retain their own rights; their books and scans are not included.

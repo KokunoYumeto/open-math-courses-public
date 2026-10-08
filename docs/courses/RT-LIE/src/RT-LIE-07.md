@@ -517,5 +517,5 @@ The root decomposition, opposite pairings, rank-one triples, one-dimensional roo
 
 ## References
 
-- **[Milne]** J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, corrected 2021 text, published 2022, §21a, pp. 424–426; §21j, pp. 457–462. These compare Lie weights with algebraic-group characters; the group-theoretic structure theorems are not imports here. [Author's corrected 2021 edition](https://www.jmilne.org/math/Books/AG.pdf).
+- **[Milne]** J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, corrected 2021 text, published 2022, §21a, pp. 424–426; §21j, pp. 457–462. These compare Lie weights with algebraic-group characters; the group-theoretic structure theorems are not imports here. [Author's corrected 2021 edition](https://www.jmilne.org/math/Books/iAG2022.pdf).
 - **[Kirillov]** A. Kirillov, Jr., *Introduction to Lie Groups and Lie Algebras*, §§6.4–6.6, pp. 95–102, especially Theorems 6.35, 6.44 and 6.45. [Author-hosted notes](https://math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf).

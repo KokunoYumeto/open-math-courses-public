@@ -1,9 +1,6 @@
 # Completing the algebra and differentiation inputs
 
-Prerequisite companion to the stationary-phase lesson. This is an
-attributed adaptation and extension of Jiří Lebl, *Basic Analysis*, version
-6.3, [freely accessible author edition](https://www.jirka.org/ra/), under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Prerequisite companion to the stationary-phase lesson. It follows Jiří Lebl, *Basic Analysis*, version 6.3, [freely accessible author edition](https://www.jirka.org/ra/). Original text: public domain (CC0).
 The precise source sections are §§3.1.3, 4.1.1, 4.2.1–4.2.3 and 8.1–8.5.
 Their complete programme proofs are retained through exact bindings in
 `differential-proof-chain.json`. The arguments below supply particular

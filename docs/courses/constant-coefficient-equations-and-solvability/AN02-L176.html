@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logarithmic zero retreat and reflected singularities</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L175.html">Previous lesson</a> · <a href="#6-seven-equivalent-regularity-statements">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#4-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="logarithmic-zero-retreat-and-reflected-singularities">Logarithmic zero retreat and reflected singularities</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).</em></p>
+<p>For a differential operator, local regularity concerns the same spatial point on both sides of the equation. A convolution kernel can also translate that point. Its inverse must reverse the translation. More general compact kernels can have several singular points, and an inverse modulo smooth functions reflects their whole singular set.</p>
+<p>Basic references are Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, Richard Melrose's <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Differential Analysis</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. Read <a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, and <a href="AN02-L172.html">Convolution modulo smooth functions and compact singularity bounds</a>. The complete proof accompanying this chapter supplies the additional harmonic-profile and contour arguments.</p>
+<h2 id="1-how-zeros-can-obstruct-regularity">1. How zeros can obstruct regularity</h2>
+<p>Use <span class="math" data-index="0" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and <span class="math" data-index="1" data-tex="\(F(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle\)">\(F(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle\)</span>. Every transform zero gives an exponential homogeneous solution:</p>
+<span class="math math-display" id="eq-E1.1" data-index="2" data-tex="\[
+ \mu*e^{ix\cdot\zeta}=F(\zeta)e^{ix\cdot\zeta}=0.
+ \tag{E1.1}
+\]">\[
+ \mu*e^{ix\cdot\zeta}=F(\zeta)e^{ix\cdot\zeta}=0.
+ \tag{E1.1}
+\]</span>
+<p>The exponential itself is smooth. The obstruction comes from forming a distributional sum of such exponentials at escaping frequencies. When their imaginary parts are bounded by a fixed multiple of the logarithm of frequency, repeated integration by parts makes every compact test pairing bounded. Absolutely summable coefficients therefore give a distribution.</p>
+<p>If every such solution were smooth, the closed graph theorem would bound its first derivative at a fixed point by the sum of its coefficient moduli. The one-term sums would then bound every complex frequency. This contradicts escape. That is why regularity requires</p>
+<span class="math math-display" id="eq-E1.2" data-index="3" data-tex="\[
+ \frac{|\operatorname{Im}\zeta|}{\log|\zeta|}\longrightarrow+\infty
+ \quad\text{along escaping zeros}.
+ \tag{E1.2}
+\]">\[
+ \frac{|\operatorname{Im}\zeta|}{\log|\zeta|}\longrightarrow+\infty
+ \quad\text{along escaping zeros}.
+ \tag{E1.2}
+\]</span>
+<p>The conclusion is about every fixed logarithmic width. A bound for only one width is insufficient.</p>
+<p>There is a second requirement: the transform must be slowly decreasing. Otherwise the frequency-selective construction gives a compact nonsmooth input with smooth convolution. Combining slow decrease with (E1.2) defines hypoellipticity.</p>
+<h2 id="2-one-exponent-controls-all-widths">2. One exponent controls all widths</h2>
+<p>Let <span class="math" data-index="4" data-tex="\(S=\operatorname{sing\,supp}\mu\)">\(S=\operatorname{sing\,supp}\mu\)</span>. The complete proof shows that hypoellipticity is equivalent to</p>
+<span class="math math-display" id="eq-E2.1" data-index="5" data-tex="\[
+ |F(\zeta)^{-1}|\le|\zeta|^B
+       e^{H_S(-\operatorname{Im}\zeta)},\qquad
+ |\operatorname{Im}\zeta|&lt;m\log|\zeta|,\quad|\zeta|&gt;C_m.
+ \tag{E2.1}
+\]">\[
+ |F(\zeta)^{-1}|\le|\zeta|^B
+       e^{H_S(-\operatorname{Im}\zeta)},\qquad
+ |\operatorname{Im}\zeta|&lt;m\log|\zeta|,\quad|\zeta|&gt;C_m.
+ \tag{E2.1}
+\]</span>
+<p>There is <strong>one <span class="math" data-index="6" data-tex="\(B\)">\(B\)</span></strong> for every integer <span class="math" data-index="7" data-tex="\(m\ge1\)">\(m\ge1\)</span>; the threshold <span class="math" data-index="8" data-tex="\(C_m\)">\(C_m\)</span> can change. The minus sign in the support function locates the inverse at the reflected spatial set.</p>
+<p>To understand the common exponent, look at</p>
+<span class="math math-display" id="eq-E2.2" data-index="9" data-tex="\[
+ L_c(z)=\frac{\log|F(c+z\log|c|)|}{\log|c|}.
+ \tag{E2.2}
+\]">\[
+ L_c(z)=\frac{\log|F(c+z\log|c|)|}{\log|c|}.
+ \tag{E2.2}
+\]</span>
+<p>Zero retreat makes this function harmonic on each fixed parameter ball once the center is sufficiently large. Slow decrease supplies a lower value at one nearby point. A positive harmonic comparison transfers that value to the center, with a constant independent of the later observation width.</p>
+<p>Every limit becomes affine:</p>
+<span class="math math-display" id="eq-E2.3" data-index="10" data-tex="\[
+ v(x+iy)=a\cdot y+b,\qquad a\in S,\qquad -A_0\le b\le N.
+ \tag{E2.3}
+\]">\[
+ v(x+iy)=a\cdot y+b,\qquad a\in S,\qquad -A_0\le b\le N.
+ \tag{E2.3}
+\]</span>
+<p>The spatial points <span class="math" data-index="11" data-tex="\(a\)">\(a\)</span> recovered from all profiles have closed union exactly <span class="math" data-index="12" data-tex="\(S\)">\(S\)</span>. The contour construction uses <span class="math" data-index="13" data-tex="\(B=A_0+1\)">\(B=A_0+1\)</span>.</p>
+<p>On a neighborhood separated from <span class="math" data-index="14" data-tex="\(-\operatorname{conv}S\)">\(-\operatorname{conv}S\)</span>, move the inverse integral to</p>
+<span class="math math-display" id="eq-E2.4" data-index="15" data-tex="\[
+ \zeta(\xi)=\xi+it\theta\log(2+|\xi|^2).
+ \tag{E2.4}
+\]">\[
+ \zeta(\xi)=\xi+it\theta\log(2+|\xi|^2).
+ \tag{E2.4}
+\]</span>
+<p>If the separation gap is <span class="math" data-index="16" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, the integrand after <span class="math" data-index="17" data-tex="\(k\)">\(k\)</span> spatial derivatives is bounded by a constant times</p>
+<span class="math math-display" id="eq-E2.5" data-index="18" data-tex="\[
+ (1+|\xi|)^{B+k}(2+|\xi|^2)^{-td}.
+ \tag{E2.5}
+\]">\[
+ (1+|\xi|)^{B+k}(2+|\xi|^2)^{-td}.
+ \tag{E2.5}
+\]</span>
+<p>The condition <span class="math" data-index="19" data-tex="\(2td&gt;B+k+n\)">\(2td&gt;B+k+n\)</span> makes it integrable. Increasing <span class="math" data-index="20" data-tex="\(t\)">\(t\)</span> proves all derivative orders. Only the far-frequency part is moved; compact contour boundaries contribute smooth functions.</p>
+<p>This gives a compact parametrix <span class="math" data-index="21" data-tex="\(\nu\)">\(\nu\)</span>, meaning</p>
+<span class="math math-display" id="eq-E2.6" data-index="22" data-tex="\[
+ \mu*\nu=\delta_0+r,\qquad r\in C_c^\infty.
+ \tag{E2.6}
+\]">\[
+ \mu*\nu=\delta_0+r,\qquad r\in C_c^\infty.
+ \tag{E2.6}
+\]</span>
+<p>Every global input satisfies</p>
+<span class="math math-display" id="eq-E2.7" data-index="23" data-tex="\[
+ u=\nu*(\mu*u)-r*u.
+ \tag{E2.7}
+\]">\[
+ u=\nu*(\mu*u)-r*u.
+ \tag{E2.7}
+\]</span>
+<p>The smooth compact factor <span class="math" data-index="24" data-tex="\(r\)">\(r\)</span> makes its convolution with any distribution smooth. Thus smooth forcing makes the input smooth.</p>
+<p>The exact inverse singular set is stronger than its convex-hull bound. At high logarithmic frequencies,</p>
+<span class="math math-display" id="eq-E2.8" data-index="25" data-tex="\[
+ L_\nu=-L_\mu+o(1).
+ \tag{E2.8}
+\]">\[
+ L_\nu=-L_\mu+o(1).
+ \tag{E2.8}
+\]</span>
+<p>Every singleton profile point <span class="math" data-index="26" data-tex="\(a\)">\(a\)</span> is replaced by <span class="math" data-index="27" data-tex="\(-a\)">\(-a\)</span>. The realization and nonconvex carrier theorems recover those closed unions, yielding</p>
+<span class="math math-display" id="eq-E2.9" data-index="28" data-tex="\[
+ \operatorname{sing\,supp}\nu=-\operatorname{sing\,supp}\mu.
+ \tag{E2.9}
+\]">\[
+ \operatorname{sing\,supp}\nu=-\operatorname{sing\,supp}\mu.
+ \tag{E2.9}
+\]</span>
+<p>Subtracting a smooth solution for <span class="math" data-index="29" data-tex="\(r\)">\(r\)</span> produces a fundamental solution with the same exact singular set.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-a-translated-elliptic-inverse">Example 1. A translated elliptic inverse</h3>
+<p>On the line let <span class="math" data-index="30" data-tex="\(a=3/5\)">\(a=3/5\)</span> and</p>
+<span class="math math-display" id="eq-E3.1" data-index="31" data-tex="\[
+ \mu=(1-\partial_x^2)\delta_a,\qquad
+ F(z)=(1+z^2)e^{-iaz},\qquad
+ G_0(x)=\tfrac12e^{-|x|}.
+ \tag{E3.1}
+\]">\[
+ \mu=(1-\partial_x^2)\delta_a,\qquad
+ F(z)=(1+z^2)e^{-iaz},\qquad
+ G_0(x)=\tfrac12e^{-|x|}.
+ \tag{E3.1}
+\]</span>
+<p>The only transform zeros are <span class="math" data-index="32" data-tex="\(i\)">\(i\)</span> and <span class="math" data-index="33" data-tex="\(-i\)">\(-i\)</span>, so there is no escaping zero sequence. For real <span class="math" data-index="34" data-tex="\(c\)">\(c\)</span>, <span class="math" data-index="35" data-tex="\(|F(c)|=1+c^2\)">\(|F(c)|=1+c^2\)</span>, which gives slow decrease.</p>
+<p>The derivative of <span class="math" data-index="36" data-tex="\(G_0\)">\(G_0\)</span> jumps from <span class="math" data-index="37" data-tex="\(1/2\)">\(1/2\)</span> to <span class="math" data-index="38" data-tex="\(-1/2\)">\(-1/2\)</span> at zero. Its ordinary second derivative off zero equals <span class="math" data-index="39" data-tex="\(G_0\)">\(G_0\)</span>, while its distributional second derivative includes the jump:</p>
+<span class="math math-display" id="eq-E3.2" data-index="40" data-tex="\[
+ G_0&#x27;&#x27;=G_0-\delta_0,\qquad
+ (1-\partial_x^2)G_0=\delta_0.
+ \tag{E3.2}
+\]">\[
+ G_0&#x27;&#x27;=G_0-\delta_0,\qquad
+ (1-\partial_x^2)G_0=\delta_0.
+ \tag{E3.2}
+\]</span>
+<p>Consequently <span class="math" data-index="41" data-tex="\(E(x)=G_0(x+a)\)">\(E(x)=G_0(x+a)\)</span> satisfies <span class="math" data-index="42" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. Its singularity is exactly at <span class="math" data-index="43" data-tex="\(-a\)">\(-a\)</span>; the derivative jump prevents smoothness there.</p>
+<p>Choose a smooth compact cutoff <span class="math" data-index="44" data-tex="\(\chi\)">\(\chi\)</span> equal to one for <span class="math" data-index="45" data-tex="\(|x|\le1\)">\(|x|\le1\)</span> and zero for <span class="math" data-index="46" data-tex="\(|x|\ge2\)">\(|x|\ge2\)</span>. Then</p>
+<span class="math math-display" id="eq-E3.3" data-index="47" data-tex="\[
+ \nu(x)=\chi(x+a)G_0(x+a)
+ \tag{E3.3}
+\]">\[
+ \nu(x)=\chi(x+a)G_0(x+a)
+ \tag{E3.3}
+\]</span>
+<p>is a compact parametrix with the same singular point. Direct differentiation gives</p>
+<span class="math math-display" id="eq-E3.4" data-index="48" data-tex="\[
+ \mu*\nu=\delta_0+r,\qquad
+ r(x)=-\chi&#x27;&#x27;(x)G_0(x)-2\chi&#x27;(x)G_0&#x27;(x).
+ \tag{E3.4}
+\]">\[
+ \mu*\nu=\delta_0+r,\qquad
+ r(x)=-\chi&#x27;&#x27;(x)G_0(x)-2\chi&#x27;(x)G_0&#x27;(x).
+ \tag{E3.4}
+\]</span>
+<p>The error is smooth and supported in the two cutoff transition bands. The shifted argument in <span class="math" data-index="49" data-tex="\(\nu\)">\(\nu\)</span> becomes <span class="math" data-index="50" data-tex="\(x\)">\(x\)</span> after convolution with <span class="math" data-index="51" data-tex="\(\delta_a\)">\(\delta_a\)</span>, explaining why <span class="math" data-index="52" data-tex="\(r\)">\(r\)</span> has no remaining <span class="math" data-index="53" data-tex="\(a\)">\(a\)</span>.</p>
+<h3 id="example-2-slow-decrease-with-no-logarithmic-retreat">Example 2. Slow decrease with no logarithmic retreat</h3>
+<p>Take</p>
+<span class="math math-display" id="eq-E3.5" data-index="54" data-tex="\[
+ \mu=\delta_{-1/2}+2\delta_{1/2},\qquad
+ F(z)=e^{-iz/2}(e^{iz}+2).
+ \tag{E3.5}
+\]">\[
+ \mu=\delta_{-1/2}+2\delta_{1/2},\qquad
+ F(z)=e^{-iz/2}(e^{iz}+2).
+ \tag{E3.5}
+\]</span>
+<p>On the real line the reverse triangle inequality gives <span class="math" data-index="55" data-tex="\(|F(c)|\ge1\)">\(|F(c)|\ge1\)</span>. Thus the kernel is slowly decreasing. Its complex zeros are exactly</p>
+<span class="math math-display" id="eq-E3.6" data-index="56" data-tex="\[
+ z_j=(2j+1)\pi-i\log2,\qquad j\in\mathbb Z.
+ \tag{E3.6}
+\]">\[
+ z_j=(2j+1)\pi-i\log2,\qquad j\in\mathbb Z.
+ \tag{E3.6}
+\]</span>
+<p>Their imaginary height is fixed, so (E1.2) fails.</p>
+<p>There is an explicit nonsmooth homogeneous input:</p>
+<span class="math math-display" id="eq-E3.7" data-index="57" data-tex="\[
+ u=\sum_{j\in\mathbb Z}(-2)^j\delta_j.
+ \tag{E3.7}
+\]">\[
+ u=\sum_{j\in\mathbb Z}(-2)^j\delta_j.
+ \tag{E3.7}
+\]</span>
+<p>It is a distribution because the sum is locally finite. At the output point <span class="math" data-index="58" data-tex="\(k+1/2\)">\(k+1/2\)</span>, the two convolution coefficients are
+<span class="math" data-index="59" data-tex="\((-2)^{k+1}+2(-2)^k=0\)">\((-2)^{k+1}+2(-2)^k=0\)</span>. Hence <span class="math" data-index="60" data-tex="\(\mu*u=0\)">\(\mu*u=0\)</span>. The input is singular at every integer. Its coefficients grow in the positive direction, which is allowed in <span class="math" data-index="61" data-tex="\(\mathcal D&#x27;(\mathbb R)\)">\(\mathcal D&#x27;(\mathbb R)\)</span>.</p>
+<p>Its logarithmic profiles converge locally in integral to</p>
+<span class="math math-display" id="eq-E3.8" data-index="62" data-tex="\[
+ v(x+iy)=\tfrac12|y|.
+ \tag{E3.8}
+\]">\[
+ v(x+iy)=\tfrac12|y|.
+ \tag{E3.8}
+\]</span>
+<p>Above and below the real axis, one of the two exponential terms dominates, giving the two affine halves. Real lower and upper bounds exclude collapse; profile compactness identifies the local integral limit across the real axis. The corner at <span class="math" data-index="63" data-tex="\(y=0\)">\(y=0\)</span> is not harmonic. Its carrier is the whole interval <span class="math" data-index="64" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>, whereas the kernel's singular support is only the two endpoints. This is a nonhypoelliptic example where an individual carrier contains smooth points.</p>
+<figure><img class="course-figure" width="1462" height="1377" src="reproduce/L176/figures/zeros-and-logarithmic-retreat.png" alt="The difference kernel's exact zeros have constant imaginary height; the sampled elliptic branch has a growing logarithmic retreat ratio." /><figcaption class="native"><a href="reproduce/L176/figures/zeros-and-logarithmic-retreat.png">Open full-size PNG</a> · <a href="reproduce/L176/figures/zeros-and-logarithmic-retreat.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 1.</strong> The upper panel displays the zeros (E3.6) for <span class="math" data-index="65" data-tex="\(j=-3,\ldots,3\)">\(j=-3,\ldots,3\)</span>. The shaded comparison window is exactly <span class="math" data-index="66" data-tex="\(|\eta|\le\log(2+|\xi|)/3\)">\(|\eta|\le\log(2+|\xi|)/3\)</span>, expressed using the real center rather than the total complex norm. The two zeros closest to the origin are outside this narrow window; the large zeros enter it. The lower panel plots the exact ratios for <span class="math" data-index="67" data-tex="\(j=q\)">\(j=q\)</span> and for the elliptic branch <span class="math" data-index="68" data-tex="\((t,i\sqrt{1+t^2})\)">\((t,i\sqrt{1+t^2})\)</span>, with <span class="math" data-index="69" data-tex="\(t=q+1\)">\(t=q+1\)</span>, <span class="math" data-index="70" data-tex="\(q=0,\ldots,50\)">\(q=0,\ldots,50\)</span>. The two curves describe different kernels in dimensions one and two. The elliptic curve is one branch, not a proof for all its zeros. Example 2, Exercise 3 and Theorem 2.1 of the complete proof explain the obstruction and the scope of the comparison.</p>
+<h3 id="example-3-local-regularity-despite-a-remote-smooth-tail">Example 3. Local regularity despite a remote smooth tail</h3>
+<p>Let <span class="math" data-index="71" data-tex="\(\mu\)">\(\mu\)</span> be the kernel of Example 1 and let <span class="math" data-index="72" data-tex="\(b\)">\(b\)</span> be smooth, supported in <span class="math" data-index="73" data-tex="\([11/4,13/4]\)">\([11/4,13/4]\)</span>. Set <span class="math" data-index="74" data-tex="\(\widetilde\mu=\mu+b\)">\(\widetilde\mu=\mu+b\)</span>. The same compact <span class="math" data-index="75" data-tex="\(\nu\)">\(\nu\)</span> satisfies</p>
+<span class="math math-display" id="eq-E3.9" data-index="76" data-tex="\[
+ \widetilde\mu*\nu=\delta_0+r+b*\nu.
+ \tag{E3.9}
+\]">\[
+ \widetilde\mu*\nu=\delta_0+r+b*\nu.
+ \tag{E3.9}
+\]</span>
+<p>The new error is smooth and compact. Thus <span class="math" data-index="77" data-tex="\(\widetilde\mu\)">\(\widetilde\mu\)</span> remains hypoelliptic, and its singular set is still <span class="math" data-index="78" data-tex="\(\{3/5\}\)">\(\{3/5\}\)</span>.</p>
+<p>Use</p>
+<span class="math math-display" id="eq-E3.10" data-index="79" data-tex="\[
+ X_1=X=(-1,1),\qquad X_2=(-2/5,8/5).
+ \tag{E3.10}
+\]">\[
+ X_1=X=(-1,1),\qquad X_2=(-2/5,8/5).
+ \tag{E3.10}
+\]</span>
+<p>Both required singular inclusions hold with equality:</p>
+<span class="math math-display" id="eq-E3.11" data-index="80" data-tex="\[
+ X+\{3/5\}=X_2,\qquad X_2-\{3/5\}=X_1.
+ \tag{E3.11}
+\]">\[
+ X+\{3/5\}=X_2,\qquad X_2-\{3/5\}=X_1.
+ \tag{E3.11}
+\]</span>
+<p>Therefore a zero convolution class on <span class="math" data-index="81" data-tex="\(X_2\)">\(X_2\)</span> forces the input to be smooth on <span class="math" data-index="82" data-tex="\(X\)">\(X\)</span>. At output zero, ordinary convolution with the remote tail would sample near input <span class="math" data-index="83" data-tex="\(-3\)">\(-3\)</span>, outside <span class="math" data-index="84" data-tex="\(X_1\)">\(X_1\)</span>. The quotient operation remains defined because its sampling uses the singular point.</p>
+<h3 id="example-4-a-hypoelliptic-kernel-with-two-separated-singularities">Example 4. A hypoelliptic kernel with two separated singularities</h3>
+<p>This example makes the exact, nonconvex conclusion visible. Define the distributions</p>
+<span class="math math-display" id="eq-E3.12" data-index="85" data-tex="\[
+ \lambda_\mp(x)=\operatorname{pv}\frac1{1-x^2}
+                   \ \pm\ \frac{i\pi}{2}(\delta_{-1}+\delta_1).
+ \tag{E3.12}
+\]">\[
+ \lambda_\mp(x)=\operatorname{pv}\frac1{1-x^2}
+                   \ \pm\ \frac{i\pi}{2}(\delta_{-1}+\delta_1).
+ \tag{E3.12}
+\]</span>
+<p>Here <span class="math" data-index="86" data-tex="\(\lambda_-\)">\(\lambda_-\)</span> uses the plus sign; it is the boundary value
+<span class="math" data-index="87" data-tex="\((1-x^2-i0)^{-1}\)">\((1-x^2-i0)^{-1}\)</span>. The identity
+<span class="math" data-index="88" data-tex="\((s-i0)^{-1}=\operatorname{pv}(1/s)+i\pi\delta_0\)">\((s-i0)^{-1}=\operatorname{pv}(1/s)+i\pi\delta_0\)</span>
+follows by pairing <span class="math" data-index="89" data-tex="\(s/(s^2+\varepsilon^2)+i\varepsilon/(s^2+\varepsilon^2)\)">\(s/(s^2+\varepsilon^2)+i\varepsilon/(s^2+\varepsilon^2)\)</span> with a test: subtract its value at zero in the first integral, and rescale <span class="math" data-index="90" data-tex="\(s=\varepsilon t\)">\(s=\varepsilon t\)</span> in the second. Applying this at the two simple roots of <span class="math" data-index="91" data-tex="\(1-x^2\)">\(1-x^2\)</span>, whose derivative moduli are two, gives (E3.12).</p>
+<p>The elementary principal-value transform is</p>
+<span class="math math-display" id="eq-E3.13" data-index="92" data-tex="\[
+ \mathcal F(\operatorname{pv}(1/x))(\xi)
+                         =-i\pi\operatorname{sign}\xi.
+ \tag{E3.13}
+\]">\[
+ \mathcal F(\operatorname{pv}(1/x))(\xi)
+                         =-i\pi\operatorname{sign}\xi.
+ \tag{E3.13}
+\]</span>
+<p>For completeness, its odd integral is <span class="math" data-index="93" data-tex="\(-2i\int_0^\infty\sin(\xi x)/x\,dx\)">\(-2i\int_0^\infty\sin(\xi x)/x\,dx\)</span>. With a damping factor <span class="math" data-index="94" data-tex="\(e^{-\varepsilon x}\)">\(e^{-\varepsilon x}\)</span>, differentiation in <span class="math" data-index="95" data-tex="\(\xi\)">\(\xi\)</span> gives <span class="math" data-index="96" data-tex="\(\varepsilon/(\varepsilon^2+\xi^2)\)">\(\varepsilon/(\varepsilon^2+\xi^2)\)</span>; integration from zero gives <span class="math" data-index="97" data-tex="\(\arctan(\xi/\varepsilon)\)">\(\arctan(\xi/\varepsilon)\)</span>. Letting <span class="math" data-index="98" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, with the principal value interpreted distributionally, proves (E3.13).</p>
+<p>Use</p>
+<span class="math math-display" id="eq-E3.14" data-index="99" data-tex="\[
+ \operatorname{pv}\frac1{1-x^2}
+       =\tfrac12\left(-\operatorname{pv}\frac1{x-1}
+                            +\operatorname{pv}\frac1{x+1}\right).
+ \tag{E3.14}
+\]">\[
+ \operatorname{pv}\frac1{1-x^2}
+       =\tfrac12\left(-\operatorname{pv}\frac1{x-1}
+                            +\operatorname{pv}\frac1{x+1}\right).
+ \tag{E3.14}
+\]</span>
+<p>Translation and (E3.13) give</p>
+<span class="math math-display" id="eq-E3.15" data-index="100" data-tex="\[
+ \widehat{\lambda_-}(\xi)=i\pi e^{-i|\xi|},\qquad
+ \widehat{\lambda_+}(\xi)=-i\pi e^{i|\xi|}.
+ \tag{E3.15}
+\]">\[
+ \widehat{\lambda_-}(\xi)=i\pi e^{-i|\xi|},\qquad
+ \widehat{\lambda_+}(\xi)=-i\pi e^{i|\xi|}.
+ \tag{E3.15}
+\]</span>
+<p>The imaginary delta terms contribute <span class="math" data-index="101" data-tex="\(\pm i\pi\cos\xi\)">\(\pm i\pi\cos\xi\)</span>; the principal-value part contributes <span class="math" data-index="102" data-tex="\(\pi\operatorname{sign}\xi\sin\xi\)">\(\pi\operatorname{sign}\xi\sin\xi\)</span>, which verifies both signs.</p>
+<p>Choose <span class="math" data-index="103" data-tex="\(\chi\in C_c^\infty((-2,2))\)">\(\chi\in C_c^\infty((-2,2))\)</span> equal to one near <span class="math" data-index="104" data-tex="\([-3/2,3/2]\)">\([-3/2,3/2]\)</span>, and put</p>
+<span class="math math-display" id="eq-E3.16" data-index="105" data-tex="\[
+ \mu_0=\chi\lambda_-,\qquad
+ \nu_0=\pi^{-2}\chi\lambda_+.
+ \tag{E3.16}
+\]">\[
+ \mu_0=\chi\lambda_-,\qquad
+ \nu_0=\pi^{-2}\chi\lambda_+.
+ \tag{E3.16}
+\]</span>
+<p>The removed part <span class="math" data-index="106" data-tex="\((1-\chi)/(1-x^2)\)">\((1-\chi)/(1-x^2)\)</span> is smooth and has every derivative integrable. Repeated integration by parts therefore makes its real Fourier transform <span class="math" data-index="107" data-tex="\(q(\xi)\)">\(q(\xi)\)</span> decrease faster than every polynomial. Thus</p>
+<span class="math math-display" id="eq-E3.17" data-index="108" data-tex="\[
+ \widehat{\mu_0}=i\pi e^{-i|\xi|}-q,\qquad
+ \widehat{\nu_0}=\pi^{-2}(-i\pi e^{i|\xi|}-q).
+ \tag{E3.17}
+\]">\[
+ \widehat{\mu_0}=i\pi e^{-i|\xi|}-q,\qquad
+ \widehat{\nu_0}=\pi^{-2}(-i\pi e^{i|\xi|}-q).
+ \tag{E3.17}
+\]</span>
+<p>Their product is one plus a rapidly decreasing function. Every derivative of its inverse Fourier error is absolutely integrable, so
+<span class="math" data-index="109" data-tex="\(\mu_0*\nu_0=\delta_0+r\)">\(\mu_0*\nu_0=\delta_0+r\)</span>, with <span class="math" data-index="110" data-tex="\(r\)">\(r\)</span> smooth. The error is compact because both kernels are compact. This proves hypoellipticity through the compact-parametrix equivalence.</p>
+<p>Both singular sets are exactly <span class="math" data-index="111" data-tex="\(\{-1,1\}\)">\(\{-1,1\}\)</span>. The imaginary point masses ensure singularity at each endpoint, and the kernels are smooth elsewhere. Hence the parametrix is smooth at zero, although zero lies in the convex hull of its singular set.</p>
+<p>The profiles also show the separation exactly. Fourier multiplication by <span class="math" data-index="112" data-tex="\(\chi\)">\(\chi\)</span> gives the entire formula</p>
+<span class="math math-display" id="eq-E3.18" data-index="113" data-tex="\[
+ \widehat{\mu_0}(z)=\frac i2
+           \int_{\mathbb R}\widehat\chi(z-s)e^{-i|s|}\,ds.
+ \tag{E3.18}
+\]">\[
+ \widehat{\mu_0}(z)=\frac i2
+           \int_{\mathbb R}\widehat\chi(z-s)e^{-i|s|}\,ds.
+ \tag{E3.18}
+\]</span>
+<p>The integral converges locally uniformly in complex <span class="math" data-index="114" data-tex="\(z\)">\(z\)</span>, by whole-complex smooth decay. If <span class="math" data-index="115" data-tex="\(c=\operatorname{Re}z&gt;1\)">\(c=\operatorname{Re}z&gt;1\)</span>, extend its positive-<span class="math" data-index="116" data-tex="\(s\)">\(s\)</span> contribution to all real <span class="math" data-index="117" data-tex="\(s\)">\(s\)</span>. Fourier inversion, first on real <span class="math" data-index="118" data-tex="\(z\)">\(z\)</span> and then by the entire identity principle, identifies that contribution as <span class="math" data-index="119" data-tex="\(i\pi e^{-iz}\chi(1)=i\pi e^{-iz}\)">\(i\pi e^{-iz}\chi(1)=i\pi e^{-iz}\)</span>. The changed negative-<span class="math" data-index="120" data-tex="\(s\)">\(s\)</span> tails obey</p>
+<span class="math math-display" id="eq-E3.19" data-index="121" data-tex="\[
+ |\widehat{\mu_0}(z)-i\pi e^{-iz}|
+             \le C_N(1+c)^{-N}e^{2|\operatorname{Im}z|}
+ \quad(c&gt;1)
+ \tag{E3.19}
+\]">\[
+ |\widehat{\mu_0}(z)-i\pi e^{-iz}|
+             \le C_N(1+c)^{-N}e^{2|\operatorname{Im}z|}
+ \quad(c&gt;1)
+ \tag{E3.19}
+\]</span>
+<p>for every <span class="math" data-index="122" data-tex="\(N\)">\(N\)</span>: integrate the decay bound for <span class="math" data-index="123" data-tex="\(\widehat\chi(z-s)\)">\(\widehat\chi(z-s)\)</span> over <span class="math" data-index="124" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, where <span class="math" data-index="125" data-tex="\(|c-s|\ge c+|s|\)">\(|c-s|\ge c+|s|\)</span>. On a fixed logarithmic strip that error is smaller than the leading term by every required power, after choosing <span class="math" data-index="126" data-tex="\(N\)">\(N\)</span> sufficiently large. Therefore the positive-center profile is <span class="math" data-index="127" data-tex="\(y\)">\(y\)</span>. The negative-center calculation gives <span class="math" data-index="128" data-tex="\(-y\)">\(-y\)</span>. These are the only two profiles, with carriers <span class="math" data-index="129" data-tex="\(\{1\}\)">\(\{1\}\)</span> and <span class="math" data-index="130" data-tex="\(\{-1\}\)">\(\{-1\}\)</span>. Their closed union is the actual two-point singular set.</p>
+<p>No ordinary convolution of the two noncompact boundary values was used. All products in this construction involve their compact representatives.</p>
+<figure><img class="course-figure" width="1462" height="1717" src="reproduce/L176/figures/affine-profiles-and-exact-reflected-singularities.png" alt="Two affine profiles select the separated singular points minus one and one; the compact inverse has the reflected set, and a translated elliptic example shows the reflection from three fifths to minus three fifths." /><figcaption class="native"><a href="reproduce/L176/figures/affine-profiles-and-exact-reflected-singularities.png">Open full-size PNG</a> · <a href="reproduce/L176/figures/affine-profiles-and-exact-reflected-singularities.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 2.</strong> The first panel shows the exact profiles <span class="math" data-index="131" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-index="132" data-tex="\(-\eta\)">\(-\eta\)</span> of the compact boundary-value kernel on the positive and negative real-center sequences. Its parametrix takes their negatives on those same sequences. The next panel marks the two actual singular sets <span class="math" data-index="133" data-tex="\(\{-1,1\}\)">\(\{-1,1\}\)</span>; the gray segments indicate their convex hulls, whose interiors are smooth. Vertical placement separates the two distributions schematically. The final panel marks the exact points <span class="math" data-index="134" data-tex="\(3/5\)">\(3/5\)</span> and <span class="math" data-index="135" data-tex="\(-3/5\)">\(-3/5\)</span> from Example 1. Only horizontal coordinates carry spatial meaning. Examples 1 and 4 and Theorem 5.1 of the complete proof establish these sets and signs. These are original diagrams of the proved models.</p>
+<h2 id="4-exercises-and-full-solutions">4. Exercises and full solutions</h2>
+<p>Each exercise is worth 10 points, for a total of 100.</p>
+<p><strong>Exercise 1.</strong> Let <span class="math" data-index="136" data-tex="\(W\ne\varnothing\)">\(W\ne\varnothing\)</span>. Explain why the exponential-series obstruction can use a first derivative at a point of <span class="math" data-index="137" data-tex="\(W\)">\(W\)</span>, even when the zeros have nonzero imaginary parts and the observation point is not zero.</p>
+<p><em>Solution.</em> Choose <span class="math" data-index="138" data-tex="\(x_0\in W\)">\(x_0\in W\)</span> and normalize each exponential as <span class="math" data-index="139" data-tex="\(e_j(x)=e^{i(x-x_0)\cdot\zeta_j}\)">\(e_j(x)=e^{i(x-x_0)\cdot\zeta_j}\)</span>. Its compact test pairings have the additional factor <span class="math" data-index="140" data-tex="\(e^{|x_0||\operatorname{Im}\zeta_j|}\)">\(e^{|x_0||\operatorname{Im}\zeta_j|}\)</span>, which is bounded by a fixed power of <span class="math" data-index="141" data-tex="\(|\zeta_j|\)">\(|\zeta_j|\)</span>. Increase the integration-by-parts order in (2.2) by that amount. This still makes the map <span class="math" data-index="142" data-tex="\(\ell^1\to\mathcal D&#x27;\)">\(\ell^1\to\mathcal D&#x27;\)</span> continuous. Closed graph into <span class="math" data-index="143" data-tex="\(C^\infty(W)\)">\(C^\infty(W)\)</span> bounds each first derivative at <span class="math" data-index="144" data-tex="\(x_0\)">\(x_0\)</span> by a constant times the coefficient norm. At a unit vector that derivative is <span class="math" data-index="145" data-tex="\(i\zeta_{j,k}\)">\(i\zeta_{j,k}\)</span>, with no exponential modulus factor because the exponent vanishes at <span class="math" data-index="146" data-tex="\(x_0\)">\(x_0\)</span>. Bounding all coordinates bounds <span class="math" data-index="147" data-tex="\(|\zeta_j|\)">\(|\zeta_j|\)</span>, giving the contradiction.</p>
+<p><strong>Exercise 2.</strong> Verify every zero in (E3.6), and verify the homogeneous equation for the full distribution (E3.7), including negative indices.</p>
+<p><em>Solution.</em> The nonzero factor <span class="math" data-index="148" data-tex="\(e^{-iz/2}\)">\(e^{-iz/2}\)</span> leaves the equation <span class="math" data-index="149" data-tex="\(e^{iz}=-2\)">\(e^{iz}=-2\)</span>. Writing <span class="math" data-index="150" data-tex="\(z=x+iy\)">\(z=x+iy\)</span> gives <span class="math" data-index="151" data-tex="\(e^{-y}=2\)">\(e^{-y}=2\)</span> and <span class="math" data-index="152" data-tex="\(e^{ix}=-1\)">\(e^{ix}=-1\)</span>, so <span class="math" data-index="153" data-tex="\(y=-\log2\)">\(y=-\log2\)</span> and <span class="math" data-index="154" data-tex="\(x=(2j+1)\pi\)">\(x=(2j+1)\pi\)</span>, with all <span class="math" data-index="155" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>. For the distribution, translating by <span class="math" data-index="156" data-tex="\(-1/2\)">\(-1/2\)</span> gives coefficient <span class="math" data-index="157" data-tex="\((-2)^{k+1}\)">\((-2)^{k+1}\)</span> at <span class="math" data-index="158" data-tex="\(k+1/2\)">\(k+1/2\)</span>, while twice translating by <span class="math" data-index="159" data-tex="\(1/2\)">\(1/2\)</span> gives <span class="math" data-index="160" data-tex="\(2(-2)^k\)">\(2(-2)^k\)</span>. Their sum vanishes for every integer <span class="math" data-index="161" data-tex="\(k\)">\(k\)</span>, including negative <span class="math" data-index="162" data-tex="\(k\)">\(k\)</span>, since the same integer-power identity holds there. Each compact test sees only finitely many output points, so coefficient cancellation proves the full distributional identity.</p>
+<p><strong>Exercise 3.</strong> In two dimensions consider <span class="math" data-index="163" data-tex="\(P(\zeta)=1+\zeta_1^2+\zeta_2^2\)">\(P(\zeta)=1+\zeta_1^2+\zeta_2^2\)</span>. For <span class="math" data-index="164" data-tex="\(t\ge1\)">\(t\ge1\)</span>, compute the zero-retreat ratio on the exact branch <span class="math" data-index="165" data-tex="\(\zeta(t)=(t,i\sqrt{1+t^2})\)">\(\zeta(t)=(t,i\sqrt{1+t^2})\)</span>. Compare it with the zeros of Exercise 2.</p>
+<p><em>Solution.</em> Substitution gives <span class="math" data-index="166" data-tex="\(1+t^2-(1+t^2)=0\)">\(1+t^2-(1+t^2)=0\)</span>. Its imaginary modulus is <span class="math" data-index="167" data-tex="\(\sqrt{1+t^2}\)">\(\sqrt{1+t^2}\)</span>, and its complex Euclidean modulus is <span class="math" data-index="168" data-tex="\(\sqrt{1+2t^2}\)">\(\sqrt{1+2t^2}\)</span>. Thus the ratio is <span class="math" data-index="169" data-tex="\(\sqrt{1+t^2}/\log\sqrt{1+2t^2}\)">\(\sqrt{1+t^2}/\log\sqrt{1+2t^2}\)</span>, which tends to infinity because its numerator grows linearly and its denominator logarithmically. For Exercise 2 the ratio is <span class="math" data-index="170" data-tex="\((\log2)/\log\sqrt{((2j+1)\pi)^2+(\log2)^2}\)">\((\log2)/\log\sqrt{((2j+1)\pi)^2+(\log2)^2}\)</span>, tending to zero. The first calculation checks one branch; the general elliptic criterion in the preceding polynomial lesson, rather than a single branch, proves retreat for every escaping polynomial zero.</p>
+<p><strong>Exercise 4.</strong> Derive the cutoff error in (E3.4) and locate its support and all singularities of the compact parametrix.</p>
+<p><em>Solution.</em> Product differentiation gives <span class="math" data-index="171" data-tex="\((\chi G_0)&#x27;&#x27;=\chi&#x27;&#x27;G_0+2\chi&#x27;G_0&#x27;+\chi(G_0-\delta_0)\)">\((\chi G_0)&#x27;&#x27;=\chi&#x27;&#x27;G_0+2\chi&#x27;G_0&#x27;+\chi(G_0-\delta_0)\)</span>. Since <span class="math" data-index="172" data-tex="\(\chi=1\)">\(\chi=1\)</span> at zero, <span class="math" data-index="173" data-tex="\((1-\partial^2)(\chi G_0)=\delta_0-\chi&#x27;&#x27;G_0-2\chi&#x27;G_0&#x27;\)">\((1-\partial^2)(\chi G_0)=\delta_0-\chi&#x27;&#x27;G_0-2\chi&#x27;G_0&#x27;\)</span>. Convolution by the shifted differential kernel evaluates the parametrix at <span class="math" data-index="174" data-tex="\(x-a\)">\(x-a\)</span>, turning <span class="math" data-index="175" data-tex="\(\chi(x-a+a)G_0(x-a+a)\)">\(\chi(x-a+a)G_0(x-a+a)\)</span> into <span class="math" data-index="176" data-tex="\(\chi(x)G_0(x)\)">\(\chi(x)G_0(x)\)</span>; this proves (E3.4). Both cutoff derivatives vanish on <span class="math" data-index="177" data-tex="\([-1,1]\)">\([-1,1]\)</span> and outside <span class="math" data-index="178" data-tex="\([-2,2]\)">\([-2,2]\)</span>. In their transition bands <span class="math" data-index="179" data-tex="\(G_0\)">\(G_0\)</span> is smooth, so the error is smooth there and everywhere. The parametrix has precisely the derivative jump at <span class="math" data-index="180" data-tex="\(x=-a\)">\(x=-a\)</span>, with no additional singularities from its smooth cutoff.</p>
+<p><strong>Exercise 5.</strong> Compute the real Fourier product of the two compact boundary-value representatives in (E3.17), using the same removed-tail transform <span class="math" data-index="181" data-tex="\(q\)">\(q\)</span>. Explain why this produces a smooth compact error without assuming that the noncompact boundary values can be convolved.</p>
+<p><em>Solution.</em> Put <span class="math" data-index="182" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>. Then</p>
+<span class="math math-display" id="eq-E4.1" data-index="183" data-tex="\[
+ \widehat{\mu_0}\widehat{\nu_0}
+ =1+\pi^{-2}\bigl(q^2-2\pi q\sin r\bigr).
+ \tag{E4.1}
+\]">\[
+ \widehat{\mu_0}\widehat{\nu_0}
+ =1+\pi^{-2}\bigl(q^2-2\pi q\sin r\bigr).
+ \tag{E4.1}
+\]</span>
+<p>Indeed <span class="math" data-index="184" data-tex="\((i\pi e^{-ir})(-i\pi e^{ir})=\pi^2\)">\((i\pi e^{-ir})(-i\pi e^{ir})=\pi^2\)</span>, and the sum of the two leading factors is <span class="math" data-index="185" data-tex="\(i\pi(e^{-ir}-e^{ir})=2\pi\sin r\)">\(i\pi(e^{-ir}-e^{ir})=2\pi\sin r\)</span>. The error has arbitrary polynomial decay because <span class="math" data-index="186" data-tex="\(q\)">\(q\)</span> does and the trigonometric factor is bounded. Multiplying it by any <span class="math" data-index="187" data-tex="\(\xi^k\)">\(\xi^k\)</span> remains integrable; Fourier inversion gives a smooth error. The compact convolution <span class="math" data-index="188" data-tex="\(\mu_0*\nu_0\)">\(\mu_0*\nu_0\)</span> exists and has compact support, so its difference from <span class="math" data-index="189" data-tex="\(\delta_0\)">\(\delta_0\)</span> is compact. The argument never forms <span class="math" data-index="190" data-tex="\(\lambda_-*\lambda_+\)">\(\lambda_-*\lambda_+\)</span>.</p>
+<p><strong>Exercise 6.</strong> Suppose a proper profile has the form <span class="math" data-index="191" data-tex="\(v=a\cdot\operatorname{Im}z+b\)">\(v=a\cdot\operatorname{Im}z+b\)</span>. Prove that <span class="math" data-index="192" data-tex="\(a\)">\(a\)</span> is a singular point, using the realization theorem. State why a general convex carrier cannot be treated the same way.</p>
+<p><em>Solution.</em> The indicator is <span class="math" data-index="193" data-tex="\(a\cdot\eta\)">\(a\cdot\eta\)</span>, whose carrier is <span class="math" data-index="194" data-tex="\(\{a\}\)">\(\{a\}\)</span>. Realization gives a compact factor <span class="math" data-index="195" data-tex="\(w\)">\(w\)</span> singular only at zero for which the output singular hull is <span class="math" data-index="196" data-tex="\(\{a\}\)">\(\{a\}\)</span>. That hull is nonempty, so the output singular set is itself exactly <span class="math" data-index="197" data-tex="\(\{a\}\)">\(\{a\}\)</span>. Compact singular-support inclusion puts it inside <span class="math" data-index="198" data-tex="\(\operatorname{sing\,supp}\mu+\{0\}\)">\(\operatorname{sing\,supp}\mu+\{0\}\)</span>, proving <span class="math" data-index="199" data-tex="\(a\in\operatorname{sing\,supp}\mu\)">\(a\in\operatorname{sing\,supp}\mu\)</span>. If the output hull is an interval or another larger convex set, its interior can consist of smooth points. Example 2 has an interval carrier with only its endpoints singular; the singleton step is essential.</p>
+<p><strong>Exercise 7.</strong> Let <span class="math" data-index="200" data-tex="\(n=3\)">\(n=3\)</span>, <span class="math" data-index="201" data-tex="\(B=4\)">\(B=4\)</span>, and suppose a separating neighborhood has gap <span class="math" data-index="202" data-tex="\(d=2/5\)">\(d=2/5\)</span>. Find a <span class="math" data-index="203" data-tex="\(t\)">\(t\)</span> that makes the inverse contour integral and all its spatial derivatives through order five absolutely integrable. Explain the strict inequality.</p>
+<p><em>Solution.</em> The needed condition is <span class="math" data-index="204" data-tex="\(2td&gt;B+5+n=12\)">\(2td&gt;B+5+n=12\)</span>. Since <span class="math" data-index="205" data-tex="\(2d=4/5\)">\(2d=4/5\)</span>, take <span class="math" data-index="206" data-tex="\(t=16\)">\(t=16\)</span>, giving <span class="math" data-index="207" data-tex="\(2td=64/5&gt;12\)">\(2td=64/5&gt;12\)</span>. The order-five tail is then bounded by a constant times <span class="math" data-index="208" data-tex="\(|\xi|^{4+5-64/5}=|\xi|^{-19/5}\)">\(|\xi|^{4+5-64/5}=|\xi|^{-19/5}\)</span>. In three dimensions its radial integral has exponent <span class="math" data-index="209" data-tex="\(2-19/5=-9/5&lt;-1\)">\(2-19/5=-9/5&lt;-1\)</span>, so it converges. At equality <span class="math" data-index="210" data-tex="\(2td=12\)">\(2td=12\)</span>, the radial exponent is <span class="math" data-index="211" data-tex="\(-1\)">\(-1\)</span>, whose logarithmic integral diverges; a strict margin is needed.</p>
+<p><strong>Exercise 8.</strong> For <span class="math" data-index="212" data-tex="\(\mu=\delta_2\)">\(\mu=\delta_2\)</span>, show why letting the reciprocal exponent depend on strip width would falsely permit the support function zero in place of the correct reflected support function.</p>
+<p><em>Solution.</em> The transform is <span class="math" data-index="213" data-tex="\(e^{-2iz}\)">\(e^{-2iz}\)</span>, and the reciprocal modulus is <span class="math" data-index="214" data-tex="\(e^{-2\operatorname{Im}z}\)">\(e^{-2\operatorname{Im}z}\)</span>. On <span class="math" data-index="215" data-tex="\(|\operatorname{Im}z|&lt;m\log|z|\)">\(|\operatorname{Im}z|&lt;m\log|z|\)</span>, it is at most <span class="math" data-index="216" data-tex="\(|z|^{2m}\)">\(|z|^{2m}\)</span>. Thus using <span class="math" data-index="217" data-tex="\(B_m=2m\)">\(B_m=2m\)</span> would permit the incorrect ceiling with <span class="math" data-index="218" data-tex="\(H=0\)">\(H=0\)</span>. No single <span class="math" data-index="219" data-tex="\(B\)">\(B\)</span> works: choose an integer <span class="math" data-index="220" data-tex="\(m&gt;B+1\)">\(m&gt;B+1\)</span>, put <span class="math" data-index="221" data-tex="\(z=c-i(m/2)\log c\)">\(z=c-i(m/2)\log c\)</span>, and let <span class="math" data-index="222" data-tex="\(c\to\infty\)">\(c\to\infty\)</span>. This lies in that strip eventually, its reciprocal modulus is <span class="math" data-index="223" data-tex="\(c^m\)">\(c^m\)</span>, and <span class="math" data-index="224" data-tex="\(|z|\sim c\)">\(|z|\sim c\)</span>, exceeding <span class="math" data-index="225" data-tex="\(|z|^B\)">\(|z|^B\)</span>. The correct singular set is <span class="math" data-index="226" data-tex="\(\{2\}\)">\(\{2\}\)</span>; its contribution <span class="math" data-index="227" data-tex="\(H_{\{2\}}(-\operatorname{Im}z)=-2\operatorname{Im}z\)">\(H_{\{2\}}(-\operatorname{Im}z)=-2\operatorname{Im}z\)</span> gives exact equality with <span class="math" data-index="228" data-tex="\(B=0\)">\(B=0\)</span> in every strip.</p>
+<p><strong>Exercise 9.</strong> Replace the kernel of Example 1 by <span class="math" data-index="229" data-tex="\(i\mu\)">\(i\mu\)</span>. Find a fundamental solution, its singular point and the reflected kernel for the bilinear pairing.</p>
+<p><em>Solution.</em> Multiply the old inverse by <span class="math" data-index="230" data-tex="\(1/i=-i\)">\(1/i=-i\)</span>: <span class="math" data-index="231" data-tex="\(\widetilde E(x)=-iG_0(x+a)\)">\(\widetilde E(x)=-iG_0(x+a)\)</span>. Then <span class="math" data-index="232" data-tex="\((i\mu)*\widetilde E=\mu*E=\delta_0\)">\((i\mu)*\widetilde E=\mu*E=\delta_0\)</span>, and its singular point remains <span class="math" data-index="233" data-tex="\(-a\)">\(-a\)</span>. Reflection gives <span class="math" data-index="234" data-tex="\(i(1-\partial_x^2)\delta_{-a}\)">\(i(1-\partial_x^2)\delta_{-a}\)</span>, because the second derivative has even reflection parity and reflection does not conjugate the scalar coefficient. Replacing <span class="math" data-index="235" data-tex="\(i\)">\(i\)</span> by <span class="math" data-index="236" data-tex="\(-i\)">\(-i\)</span> in that reflected kernel would be a sesquilinear convention and would reverse the sign of this inverse calculation.</p>
+<p><strong>Exercise 10.</strong> Give compatible domains showing that the sufficient local theorem needs <span class="math" data-index="237" data-tex="\(X+S\subset X_2\)">\(X+S\subset X_2\)</span>, even though the necessary theorem does not assume it.</p>
+<p><em>Solution.</em> Take <span class="math" data-index="238" data-tex="\(\mu=\delta_{3/5}\)">\(\mu=\delta_{3/5}\)</span>, <span class="math" data-index="239" data-tex="\(X_1=(-2,2)\)">\(X_1=(-2,2)\)</span>, <span class="math" data-index="240" data-tex="\(X_2=(0,1)\)">\(X_2=(0,1)\)</span>, and <span class="math" data-index="241" data-tex="\(X=(-3/2,-1)\)">\(X=(-3/2,-1)\)</span>. Its singular set is <span class="math" data-index="242" data-tex="\(S=\{3/5\}\)">\(S=\{3/5\}\)</span>, and <span class="math" data-index="243" data-tex="\(X_2-S=(-3/5,2/5)\subset X_1\)">\(X_2-S=(-3/5,2/5)\subset X_1\)</span>. But <span class="math" data-index="244" data-tex="\(X+S=(-9/10,-2/5)\)">\(X+S=(-9/10,-2/5)\)</span> is disjoint from <span class="math" data-index="245" data-tex="\(X_2\)">\(X_2\)</span>. The input <span class="math" data-index="246" data-tex="\(u=\delta_{-5/4}\)">\(u=\delta_{-5/4}\)</span> is singular in <span class="math" data-index="247" data-tex="\(X\)">\(X\)</span>; its output is <span class="math" data-index="248" data-tex="\(\delta_{-13/20}\)">\(\delta_{-13/20}\)</span>, whose restriction to <span class="math" data-index="249" data-tex="\(X_2\)">\(X_2\)</span> is zero. Thus a zero output class does not make this input smooth on <span class="math" data-index="250" data-tex="\(X\)">\(X\)</span>. The missing inclusion is exactly the one that would permit the inverse to sample that point from the equation domain.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>, University of Copenhagen, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">freely accessible lecture notes</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">course and lecture notes</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>, Springer. The full convolution regularity and boundary-value theories are credited to these works. This chapter supplies the required proofs and links its exact preceding arguments.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A compact convolution kernel can move singularities as well as differentiate them. Its regularity criterion therefore needs both the complex zeros of its Fourier transform and the positions of its singularities. We prove that logarithmic retreat of those zeros, together with slow decrease, gives a compact inverse modulo smooth functions. The inverse has precisely the reflected singular set of the kernel.</p>
+<p>Basic references are Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, Richard Melrose's <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Differential Analysis</a>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. Every required proof is given here or in the following preceding lessons:</p>
+<ul>
+<li><a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, Theorem 1.1: slow decrease is equivalent to the absence of collapsed logarithmic profiles.</li>
+<li><a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a>, Theorem 1.1: a collapsed profile produces an arbitrarily small compact factor singular at any prescribed point, with smooth convolution.</li>
+<li><a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Theorem 2.1: profile compactness and canonical representatives.</li>
+<li><a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, Theorem 1.1: one polynomial order works in every logarithmic strip.</li>
+<li><a href="AN02-L159.html">Singularities and nonconvex logarithmic carriers</a>, Theorem 1.1: singular support lies in the closed union of the individual profile carriers.</li>
+<li><a href="AN02-L164.html">Recovering singularities from convolution profiles</a>, Theorem 2.1: an individual carrier is realized as the singular hull of a convolution with a factor singular only at zero.</li>
+<li><a href="AN02-L172.html">Convolution modulo smooth functions and compact singularity bounds</a>, Lemma 1.1, Theorem 1.2 and Lemma 1.3: singular-support inclusion, the local quotient operation and its composition.</li>
+<li><a href="AN02-L171.html">Fréchet duality and smooth convolution solvability</a>, Theorem 8.1: slow decrease and support convexity give a smooth solution for every smooth datum.</li>
+<li><a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 14.5: the Fréchet closed graph theorem.</li>
+</ul>
+<h2 id="1-the-spectral-condition-and-its-quantifiers">1. The spectral condition and its quantifiers</h2>
+<p>Let <span class="math" data-index="251" data-tex="\(n\ge1\)">\(n\ge1\)</span>, let <span class="math" data-index="252" data-tex="\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span>, and put</p>
+<span class="math math-display" id="eq-1.1" data-index="253" data-tex="\[
+ F(\zeta)=\langle\mu(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ S=\operatorname{sing\,supp}\mu,\qquad
+ H_S(\eta)=\max_{a\in S}a\cdot\eta
+ \quad(S\ne\varnothing).
+ \tag{1.1}
+\]">\[
+ F(\zeta)=\langle\mu(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ S=\operatorname{sing\,supp}\mu,\qquad
+ H_S(\eta)=\max_{a\in S}a\cdot\eta
+ \quad(S\ne\varnothing).
+ \tag{1.1}
+\]</span>
+<p>The pairing is complex bilinear. Compact convolution with any global distribution is defined. Slow decrease, also called invertibility of <span class="math" data-index="254" data-tex="\(\mu\)">\(\mu\)</span>, has the meaning of the first preceding theorem; it does not mean that <span class="math" data-index="255" data-tex="\(F\)">\(F\)</span> has no zeros.</p>
+<p>We say that the zeros have <strong>logarithmic retreat</strong> when, for every <span class="math" data-index="256" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, there is <span class="math" data-index="257" data-tex="\(R_m&gt;e\)">\(R_m&gt;e\)</span> such that</p>
+<span class="math math-display" id="eq-1.2" data-index="258" data-tex="\[
+ F(\zeta)\ne0
+ \quad\hbox{if}\quad
+ |\zeta|&gt;R_m,\qquad
+ |\operatorname{Im}\zeta|\le m\log|\zeta|.
+ \tag{1.2}
+\]">\[
+ F(\zeta)\ne0
+ \quad\hbox{if}\quad
+ |\zeta|&gt;R_m,\qquad
+ |\operatorname{Im}\zeta|\le m\log|\zeta|.
+ \tag{1.2}
+\]</span>
+<p>Equivalently, along every escaping sequence of zeros,</p>
+<span class="math math-display" id="eq-1.3" data-index="259" data-tex="\[
+ \frac{|\operatorname{Im}\zeta|}{\log|\zeta|}\longrightarrow+\infty.
+ \tag{1.3}
+\]">\[
+ \frac{|\operatorname{Im}\zeta|}{\log|\zeta|}\longrightarrow+\infty.
+ \tag{1.3}
+\]</span>
+<p>Indeed, failure of either formulation supplies an escaping zero sequence with a bounded quotient; that sequence fails the other formulation. If there is no escaping zero sequence, the assertion is vacuous.</p>
+<p>A compact kernel is called <strong>hypoelliptic</strong> when it is slowly decreasing and has logarithmic retreat. Section 6 proves that this is exactly the expected regularity property on all distributional inputs.</p>
+<p>For real <span class="math" data-index="260" data-tex="\(|c|&gt;2\)">\(|c|&gt;2\)</span>, write</p>
+<span class="math math-display" id="eq-1.4" data-index="261" data-tex="\[
+ \ell_c=\log|c|,\qquad
+ L_c(z)=\frac{\log|F(c+\ell_c z)|}{\ell_c}.
+ \tag{1.4}
+\]">\[
+ \ell_c=\log|c|,\qquad
+ L_c(z)=\frac{\log|F(c+\ell_c z)|}{\ell_c}.
+ \tag{1.4}
+\]</span>
+<p>At a zero the logarithm is minus infinity. A proper profile is a canonical local <span class="math" data-index="262" data-tex="\(L^1(\mathbb C^n)\)">\(L^1(\mathbb C^n)\)</span> limit of these functions along an escaping sequence. A collapsed profile tends uniformly to minus infinity on every compact parameter set.</p>
+<h2 id="2-a-nonsmooth-exponential-family-detects-zeros">2. A nonsmooth exponential family detects zeros</h2>
+<p><strong>Theorem 2.1 (necessity of logarithmic retreat).</strong> If every global distribution <span class="math" data-index="263" data-tex="\(u\)">\(u\)</span> with <span class="math" data-index="264" data-tex="\(\mu*u=0\)">\(\mu*u=0\)</span> is smooth on some fixed nonempty open set <span class="math" data-index="265" data-tex="\(W\)">\(W\)</span>, then (1.2) holds.</p>
+<p><em>Proof.</em> Otherwise choose zeros <span class="math" data-index="266" data-tex="\(\zeta_j\)">\(\zeta_j\)</span>, with <span class="math" data-index="267" data-tex="\(|\zeta_j|\to\infty\)">\(|\zeta_j|\to\infty\)</span>, and a finite <span class="math" data-index="268" data-tex="\(M\)">\(M\)</span> such that</p>
+<span class="math math-display" id="eq-2.1" data-index="269" data-tex="\[
+ |\operatorname{Im}\zeta_j|\le M\log|\zeta_j|.
+ \tag{2.1}
+\]">\[
+ |\operatorname{Im}\zeta_j|\le M\log|\zeta_j|.
+ \tag{2.1}
+\]</span>
+<p>Choose <span class="math" data-index="270" data-tex="\(x_0\in W\)">\(x_0\in W\)</span> and set <span class="math" data-index="271" data-tex="\(e_j(x)=e^{i(x-x_0)\cdot\zeta_j}\)">\(e_j(x)=e^{i(x-x_0)\cdot\zeta_j}\)</span>. For every compactly supported smooth test <span class="math" data-index="272" data-tex="\(\phi\)">\(\phi\)</span>, repeated integration by parts in a complex coordinate of largest modulus gives</p>
+<span class="math math-display" id="eq-2.2" data-index="273" data-tex="\[
+ |\langle e_j,\phi\rangle|
+ \le C_{K,N}(1+|\zeta_j|)^{-N}
+       e^{(\sup_{x\in K}|x|+|x_0|)|\operatorname{Im}\zeta_j|}
+       p_N(\phi),
+ \quad \operatorname{supp}\phi\subset K.
+ \tag{2.2}
+\]">\[
+ |\langle e_j,\phi\rangle|
+ \le C_{K,N}(1+|\zeta_j|)^{-N}
+       e^{(\sup_{x\in K}|x|+|x_0|)|\operatorname{Im}\zeta_j|}
+       p_N(\phi),
+ \quad \operatorname{supp}\phi\subset K.
+ \tag{2.2}
+\]</span>
+<p>For the finitely many small <span class="math" data-index="274" data-tex="\(\zeta_j\)">\(\zeta_j\)</span> enlarge the constant. The integration by parts divides by <span class="math" data-index="275" data-tex="\(\zeta_{j,k}^N\)">\(\zeta_{j,k}^N\)</span>, with
+<span class="math" data-index="276" data-tex="\(|\zeta_{j,k}|\ge|\zeta_j|/\sqrt n\)">\(|\zeta_{j,k}|\ge|\zeta_j|/\sqrt n\)</span>; it differentiates the test, so it is valid for complex <span class="math" data-index="277" data-tex="\(\zeta_j\)">\(\zeta_j\)</span>. Choose <span class="math" data-index="278" data-tex="\(N&gt;M(\sup_K|x|+|x_0|)+1\)">\(N&gt;M(\sup_K|x|+|x_0|)+1\)</span>. Thus the distributions <span class="math" data-index="279" data-tex="\(e_j\)">\(e_j\)</span> form a bounded family on each test space.</p>
+<p>Consequently</p>
+<span class="math math-display" id="eq-2.3" data-index="280" data-tex="\[
+ u_a=\sum_{j\ge1}a_j e_j,\qquad a\in\ell^1,
+ \tag{2.3}
+\]">\[
+ u_a=\sum_{j\ge1}a_j e_j,\qquad a\in\ell^1,
+ \tag{2.3}
+\]</span>
+<p>is a distribution: every test pairing converges absolutely, with the compact finite-order estimate (2.2). The map <span class="math" data-index="281" data-tex="\(a\mapsto u_a\)">\(a\mapsto u_a\)</span> is continuous into distributions with their weak topology. Compact convolution is weakly continuous, and
+<span class="math" data-index="282" data-tex="\(\mu*e_j=F(\zeta_j)e_j=0\)">\(\mu*e_j=F(\zeta_j)e_j=0\)</span>, so <span class="math" data-index="283" data-tex="\(\mu*u_a=0\)">\(\mu*u_a=0\)</span>.</p>
+<p>By hypothesis <span class="math" data-index="284" data-tex="\(u_a|_W\)">\(u_a|_W\)</span> is smooth. The map from <span class="math" data-index="285" data-tex="\(\ell^1\)">\(\ell^1\)</span> to <span class="math" data-index="286" data-tex="\(C^\infty(W)\)">\(C^\infty(W)\)</span> has closed graph. If <span class="math" data-index="287" data-tex="\(a^{(r)}\to a\)">\(a^{(r)}\to a\)</span> and <span class="math" data-index="288" data-tex="\(u_{a^{(r)}}|_W\to v\)">\(u_{a^{(r)}}|_W\to v\)</span> smoothly, the weak distributional limit also is <span class="math" data-index="289" data-tex="\(u_a|_W\)">\(u_a|_W\)</span>, so <span class="math" data-index="290" data-tex="\(v=u_a|_W\)">\(v=u_a|_W\)</span>. The closed graph theorem makes this map continuous.</p>
+<p>Apply continuity to the first derivatives at <span class="math" data-index="291" data-tex="\(x_0\)">\(x_0\)</span>, and then to the <span class="math" data-index="292" data-tex="\(j\)">\(j\)</span>-th unit vector of <span class="math" data-index="293" data-tex="\(\ell^1\)">\(\ell^1\)</span>. For every coordinate <span class="math" data-index="294" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" id="eq-2.4" data-index="295" data-tex="\[
+ |\zeta_{j,k}|=|\partial_k e_j(x_0)|\le C_k.
+ \tag{2.4}
+\]">\[
+ |\zeta_{j,k}|=|\partial_k e_j(x_0)|\le C_k.
+ \tag{2.4}
+\]</span>
+<p>This bounds <span class="math" data-index="296" data-tex="\(|\zeta_j|\)">\(|\zeta_j|\)</span>, a contradiction. <span class="math" data-index="297" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument permits exponentially growing distributions. Restricting the input to tempered or compact distributions would change the hypothesis.</p>
+<p><strong>Theorem 2.2 (necessity on one local configuration).</strong> Let <span class="math" data-index="298" data-tex="\(X_1,X_2,X\)">\(X_1,X_2,X\)</span> be nonempty open sets, with <span class="math" data-index="299" data-tex="\(X\subset X_1\)">\(X\subset X_1\)</span> and</p>
+<span class="math math-display" id="eq-2.5" data-index="300" data-tex="\[
+ X_2-S\subset X_1.
+ \tag{2.5}
+\]">\[
+ X_2-S\subset X_1.
+ \tag{2.5}
+\]</span>
+<p>Suppose that the canonical quotient equation
+<span class="math" data-index="301" data-tex="\(\mu_*[u]=0\)">\(\mu_*[u]=0\)</span> on <span class="math" data-index="302" data-tex="\(X_2\)">\(X_2\)</span>, for <span class="math" data-index="303" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span>, always implies <span class="math" data-index="304" data-tex="\(u|_X\in C^\infty(X)\)">\(u|_X\in C^\infty(X)\)</span>. Then <span class="math" data-index="305" data-tex="\(\mu\)">\(\mu\)</span> is slowly decreasing and satisfies (1.2).</p>
+<p><em>Proof.</em> If <span class="math" data-index="306" data-tex="\(\mu\)">\(\mu\)</span> is not slowly decreasing, the profile characterization and the isolated-singularity theorem supply a compact continuous <span class="math" data-index="307" data-tex="\(w\)">\(w\)</span>, singular precisely at any chosen <span class="math" data-index="308" data-tex="\(x_0\in X\)">\(x_0\in X\)</span>, whose support is inside <span class="math" data-index="309" data-tex="\(X_1\)">\(X_1\)</span>, and for which <span class="math" data-index="310" data-tex="\(\mu*w\)">\(\mu*w\)</span> is smooth globally. Its class on <span class="math" data-index="311" data-tex="\(X_1\)">\(X_1\)</span> violates the assumed implication. This also handles the zero kernel and compact smooth kernels.</p>
+<p>Every global homogeneous solution restricts to a quotient solution on <span class="math" data-index="312" data-tex="\(X_2\)">\(X_2\)</span>: the quotient operation agrees locally with its global convolution. The hypothesis makes that global solution smooth on <span class="math" data-index="313" data-tex="\(X\)">\(X\)</span>. Theorem 2.1 now gives logarithmic retreat. No condition <span class="math" data-index="314" data-tex="\(X+S\subset X_2\)">\(X+S\subset X_2\)</span> is needed for this necessary direction. <span class="math" data-index="315" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-harmonic-profiles-give-one-reciprocal-exponent">3. Harmonic profiles give one reciprocal exponent</h2>
+<p>We supply the harmonic estimates used in this step. They are also what prevents the exponent from changing when the strip widens.</p>
+<p><strong>Lemma 3.1 (a point lower bound survives at the center).</strong> Let <span class="math" data-index="316" data-tex="\(h\)">\(h\)</span> be a nonnegative harmonic function on a real ball <span class="math" data-index="317" data-tex="\(B(0,2r)\subset\mathbb R^d\)">\(B(0,2r)\subset\mathbb R^d\)</span>. For <span class="math" data-index="318" data-tex="\(|z|\le r\)">\(|z|\le r\)</span>,</p>
+<span class="math math-display" id="eq-3.1" data-index="319" data-tex="\[
+ h(0)\le C_d h(z),\qquad C_d=4^d.
+ \tag{3.1}
+\]">\[
+ h(0)\le C_d h(z),\qquad C_d=4^d.
+ \tag{3.1}
+\]</span>
+<p><em>Proof.</em> A smooth harmonic function has the ball mean property. To verify it, differentiate its spherical average with respect to the radius. The divergence theorem expresses that derivative as the integral of its Laplacian over the ball, divided by the sphere's area, so it is zero. The average tends to the center value as the radius tends to zero. Integrating the sphere means radially gives the ball mean. Positive radial smooth averaging kernels have the same property.</p>
+<p>Put <span class="math" data-index="320" data-tex="\(w=z/2\)">\(w=z/2\)</span>. All the following balls lie in the domain:</p>
+<span class="math math-display" id="eq-3.2" data-index="321" data-tex="\[
+ B(0,r/2)\subset B(w,r),\qquad
+ B(w,r/2)\subset B(z,r).
+ \tag{3.2}
+\]">\[
+ B(0,r/2)\subset B(w,r),\qquad
+ B(w,r/2)\subset B(z,r).
+ \tag{3.2}
+\]</span>
+<p>Nonnegativity, the ball means and the ratio <span class="math" data-index="322" data-tex="\(2^d\)">\(2^d\)</span> of the two volumes give <span class="math" data-index="323" data-tex="\(h(0)\le2^dh(w)\le4^dh(z)\)">\(h(0)\le2^dh(w)\le4^dh(z)\)</span>. The corresponding containments with zero and <span class="math" data-index="324" data-tex="\(z\)">\(z\)</span> interchanged also give <span class="math" data-index="325" data-tex="\(h(z)\le4^dh(0)\)">\(h(z)\le4^dh(0)\)</span>. If a largest ball approaches the domain boundary, obtain its mean by increasing smaller radii; nonnegativity permits monotone convergence of the integrals. <span class="math" data-index="326" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (linear upper growth makes a harmonic function affine).</strong> A harmonic <span class="math" data-index="327" data-tex="\(v\)">\(v\)</span> on <span class="math" data-index="328" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span> with <span class="math" data-index="329" data-tex="\(v(z)\le C(1+|z|)\)">\(v(z)\le C(1+|z|)\)</span> is real affine.</p>
+<p><em>Proof.</em> Fix a center <span class="math" data-index="330" data-tex="\(z_0\)">\(z_0\)</span>. On <span class="math" data-index="331" data-tex="\(B(z_0,2R)\)">\(B(z_0,2R)\)</span> subtract <span class="math" data-index="332" data-tex="\(v\)">\(v\)</span> from the positive constant <span class="math" data-index="333" data-tex="\(M_R=C(1+|z_0|+2R)+1\)">\(M_R=C(1+|z_0|+2R)+1\)</span>. The reverse comparison in Lemma 3.1 bounds this positive harmonic difference on the half-radius ball by a dimensional multiple of its value at <span class="math" data-index="334" data-tex="\(z_0\)">\(z_0\)</span>. Hence
+<span class="math" data-index="335" data-tex="\(\sup_{B(z_0,R)}|v|\le C_{z_0}(1+R)\)">\(\sup_{B(z_0,R)}|v|\le C_{z_0}(1+R)\)</span>.
+Choose a fixed smooth radial nonnegative kernel <span class="math" data-index="336" data-tex="\(\rho\)">\(\rho\)</span>, supported in the unit ball and of integral one. The proved mean property gives <span class="math" data-index="337" data-tex="\(v=v*\rho_R\)">\(v=v*\rho_R\)</span>, where <span class="math" data-index="338" data-tex="\(\rho_R(x)=R^{-d}\rho(x/R)\)">\(\rho_R(x)=R^{-d}\rho(x/R)\)</span>. Twice differentiate this convolution, putting the derivatives on the compact smooth factor. Its derivative <span class="math" data-index="339" data-tex="\(L^1\)">\(L^1\)</span> norm is <span class="math" data-index="340" data-tex="\(R^{-2}\|\partial_j\partial_k\rho\|_1\)">\(R^{-2}\|\partial_j\partial_k\rho\|_1\)</span>, so</p>
+<span class="math math-display" id="eq-3.3" data-index="341" data-tex="\[
+ |\partial_j\partial_k v(z_0)|
+       \le C_\rho R^{-2}\sup_{B(z_0,R)}|v|
+       \longrightarrow0.
+ \tag{3.3}
+\]">\[
+ |\partial_j\partial_k v(z_0)|
+       \le C_\rho R^{-2}\sup_{B(z_0,R)}|v|
+       \longrightarrow0.
+ \tag{3.3}
+\]</span>
+<p>Every second derivative vanishes at every center; the gradient is constant. <span class="math" data-index="342" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.3 (all profiles become affine).</strong> If <span class="math" data-index="343" data-tex="\(\mu\)">\(\mu\)</span> is slowly decreasing and has logarithmic retreat, then there is one <span class="math" data-index="344" data-tex="\(A_0\ge0\)">\(A_0\ge0\)</span> such that every profile is proper and has the form</p>
+<span class="math math-display" id="eq-3.4" data-index="345" data-tex="\[
+ v(x+iy)=a\cdot y+b,\qquad a\in S,\qquad -A_0\le b\le N.
+ \tag{3.4}
+\]">\[
+ v(x+iy)=a\cdot y+b,\qquad a\in S,\qquad -A_0\le b\le N.
+ \tag{3.4}
+\]</span>
+<p>Here <span class="math" data-index="346" data-tex="\(N\)">\(N\)</span> is one finite order in the singular-strip estimate. Moreover,</p>
+<span class="math math-display" id="eq-3.5" data-index="347" data-tex="\[
+ S=\overline{\{a:\text{the profile }a\cdot\operatorname{Im}z+b
+                         \text{ occurs}\}}.
+ \tag{3.5}
+\]">\[
+ S=\overline{\{a:\text{the profile }a\cdot\operatorname{Im}z+b
+                         \text{ occurs}\}}.
+ \tag{3.5}
+\]</span>
+<p><em>Proof.</em> Fix a parameter ball <span class="math" data-index="348" data-tex="\(|z|\le R\)">\(|z|\le R\)</span>. As <span class="math" data-index="349" data-tex="\(|c|\to\infty\)">\(|c|\to\infty\)</span>,</p>
+<span class="math math-display" id="eq-3.6" data-index="350" data-tex="\[
+ |c+\ell_c z|\sim|c|,\qquad
+ |\operatorname{Im}(c+\ell_c z)|\le R\log|c|.
+ \tag{3.6}
+\]">\[
+ |c+\ell_c z|\sim|c|,\qquad
+ |\operatorname{Im}(c+\ell_c z)|\le R\log|c|.
+ \tag{3.6}
+\]</span>
+<p>Logarithmic retreat therefore makes <span class="math" data-index="351" data-tex="\(F(c+\ell_c z)\)">\(F(c+\ell_c z)\)</span> zero-free on that ball for all sufficiently large <span class="math" data-index="352" data-tex="\(c\)">\(c\)</span>. Its logarithm of modulus is pluriharmonic there, and in particular harmonic in real dimension <span class="math" data-index="353" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p>Slow decrease gives a fixed radius <span class="math" data-index="354" data-tex="\(r\)">\(r\)</span>, a fixed <span class="math" data-index="355" data-tex="\(a_0\)">\(a_0\)</span>, and a point <span class="math" data-index="356" data-tex="\(z_c\)">\(z_c\)</span> in <span class="math" data-index="357" data-tex="\(|z|&lt;r\)">\(|z|&lt;r\)</span> such that <span class="math" data-index="358" data-tex="\(L_c(z_c)\ge-a_0\)">\(L_c(z_c)\ge-a_0\)</span>, for every sufficiently large real center. This is the complex logarithmic-window inequality of the preceding slow-decrease theorem, after absorbing <span class="math" data-index="359" data-tex="\(\log(2+|c|)/\log|c|\)">\(\log(2+|c|)/\log|c|\)</span> and its fixed constants.</p>
+<p>The ordinary compact Fourier estimate bounds <span class="math" data-index="360" data-tex="\(L_c\)">\(L_c\)</span> above by one fixed positive number <span class="math" data-index="361" data-tex="\(U\)">\(U\)</span> on <span class="math" data-index="362" data-tex="\(|z|\le2(r+1)\)">\(|z|\le2(r+1)\)</span>, once <span class="math" data-index="363" data-tex="\(|c|\)">\(|c|\)</span> is large. Apply Lemma 3.1 to the nonnegative harmonic function <span class="math" data-index="364" data-tex="\(U-L_c\)">\(U-L_c\)</span>. It gives</p>
+<span class="math math-display" id="eq-3.7" data-index="365" data-tex="\[
+ L_c(0)\ge U-C_{2n}(U+a_0)\ge-A_0
+ \tag{3.7}
+\]">\[
+ L_c(0)\ge U-C_{2n}(U+a_0)\ge-A_0
+ \tag{3.7}
+\]</span>
+<p>with one <span class="math" data-index="366" data-tex="\(A_0\)">\(A_0\)</span>. No strip width entered this choice. Slow decrease also excludes every collapsed profile.</p>
+<p>Along a proper <span class="math" data-index="367" data-tex="\(L^1_{\rm loc}\)">\(L^1_{\rm loc}\)</span> extraction, the eventually harmonic <span class="math" data-index="368" data-tex="\(L_c\)">\(L_c\)</span> converge locally smoothly. To justify that upgrade, on a smaller ball a harmonic function equals convolution with any smooth radial averaging kernel supported in a surrounding ball. Local <span class="math" data-index="369" data-tex="\(L^1\)">\(L^1\)</span> convergence then gives uniform convergence of that convolution and every derivative. Its limit equals the canonical profile: the distributional limit is the same, and radial recovery fixes its representative. The limit is harmonic and pluriharmonic. In particular (3.7) passes to <span class="math" data-index="370" data-tex="\(v(0)\)">\(v(0)\)</span>.</p>
+<p>The singular-strip theorem supplies</p>
+<span class="math math-display" id="eq-3.8" data-index="371" data-tex="\[
+ v(z)\le N+H_S(\operatorname{Im}z).
+ \tag{3.8}
+\]">\[
+ v(z)\le N+H_S(\operatorname{Im}z).
+ \tag{3.8}
+\]</span>
+<p>If <span class="math" data-index="372" data-tex="\(S\)">\(S\)</span> were empty, <span class="math" data-index="373" data-tex="\(\mu\)">\(\mu\)</span> would be smooth and its whole-complex rapid decay would contradict slow decrease on a fixed logarithmic window. Thus <span class="math" data-index="374" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>. Since it is compact, (3.8) has linear upper growth. Lemma 3.2 makes <span class="math" data-index="375" data-tex="\(v\)">\(v\)</span> affine. Independence of the upper bound from <span class="math" data-index="376" data-tex="\(\operatorname{Re}z\)">\(\operatorname{Re}z\)</span> forces all its real-direction coefficients to vanish. Thus <span class="math" data-index="377" data-tex="\(v=a\cdot\operatorname{Im}z+b\)">\(v=a\cdot\operatorname{Im}z+b\)</span>, with <span class="math" data-index="378" data-tex="\(-A_0\le b\le N\)">\(-A_0\le b\le N\)</span>.</p>
+<p>The indicator of this profile is <span class="math" data-index="379" data-tex="\(a\cdot\eta\)">\(a\cdot\eta\)</span>, and its carrier is the singleton <span class="math" data-index="380" data-tex="\(\{a\}\)">\(\{a\}\)</span>. The realization theorem supplies a compact <span class="math" data-index="381" data-tex="\(w\)">\(w\)</span>, singular only at zero, with
+<span class="math" data-index="382" data-tex="\(\operatorname{conv}\operatorname{sing\,supp}(\mu*w)=\{a\}\)">\(\operatorname{conv}\operatorname{sing\,supp}(\mu*w)=\{a\}\)</span>.
+This output has a nonempty singular set, necessarily <span class="math" data-index="383" data-tex="\(\{a\}\)">\(\{a\}\)</span>. The singular-support inclusion for compact convolution puts it inside
+<span class="math" data-index="384" data-tex="\(S+\{0\}=S\)">\(S+\{0\}=S\)</span>. Therefore <span class="math" data-index="385" data-tex="\(a\in S\)">\(a\in S\)</span>. This argument is needed: a general individual profile carrier need not be contained in singular support.</p>
+<p>The nonconvex carrier theorem gives the converse inclusion in the closed union of these singleton carriers. Since <span class="math" data-index="386" data-tex="\(S\)">\(S\)</span> is closed and contains every such <span class="math" data-index="387" data-tex="\(a\)">\(a\)</span>, this proves (3.5). <span class="math" data-index="388" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.4 (one exponent in every reciprocal strip).</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-index="389" data-tex="\(\mu\)">\(\mu\)</span> is slowly decreasing and has logarithmic retreat.</li>
+<li><span class="math" data-index="390" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>, and there are one <span class="math" data-index="391" data-tex="\(B\ge0\)">\(B\ge0\)</span> and constants <span class="math" data-index="392" data-tex="\(C_m&gt;e\)">\(C_m&gt;e\)</span>, for each integer <span class="math" data-index="393" data-tex="\(m\ge1\)">\(m\ge1\)</span>, such that</li>
+</ol>
+<span class="math math-display" id="eq-3.9" data-index="394" data-tex="\[
+   F(\zeta)\ne0,\qquad
+   |F(\zeta)^{-1}|\le|\zeta|^B e^{H_S(-\operatorname{Im}\zeta)}
+   \quad\hbox{if}\quad
+   |\zeta|&gt;C_m,\quad|\operatorname{Im}\zeta|&lt;m\log|\zeta|.
+   \tag{3.9}
+   \]">\[
+   F(\zeta)\ne0,\qquad
+   |F(\zeta)^{-1}|\le|\zeta|^B e^{H_S(-\operatorname{Im}\zeta)}
+   \quad\hbox{if}\quad
+   |\zeta|&gt;C_m,\quad|\operatorname{Im}\zeta|&lt;m\log|\zeta|.
+   \tag{3.9}
+   \]</span>
+<p><em>Proof of <span class="math" data-index="395" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>.</em> Set <span class="math" data-index="396" data-tex="\(B=A_0+1\)">\(B=A_0+1\)</span>. For each fixed parameter compact set, all sufficiently large centers have</p>
+<span class="math math-display" id="eq-3.10" data-index="397" data-tex="\[
+ -L_c(z)\le H_S(-\operatorname{Im}z)+B.
+ \tag{3.10}
+\]">\[
+ -L_c(z)\le H_S(-\operatorname{Im}z)+B.
+ \tag{3.10}
+\]</span>
+<p>If this failed, extract a failing sequence and then a proper profile. Eventual harmonicity upgrades the convergence to local uniform convergence, including the moving failing points. Proposition 3.3 gives
+<span class="math" data-index="398" data-tex="\(-v(z)=-a\cdot\operatorname{Im}z-b\le H_S(-\operatorname{Im}z)+A_0\)">\(-v(z)=-a\cdot\operatorname{Im}z-b\le H_S(-\operatorname{Im}z)+A_0\)</span>,
+contradicting the extra margin of one.</p>
+<p>Write <span class="math" data-index="399" data-tex="\(\zeta=c+i\eta\)">\(\zeta=c+i\eta\)</span>, with <span class="math" data-index="400" data-tex="\(c\)">\(c\)</span> real. Under the strip condition in (3.9), <span class="math" data-index="401" data-tex="\(|c|\to\infty\)">\(|c|\to\infty\)</span>, <span class="math" data-index="402" data-tex="\(|\zeta|/|c|\to1\)">\(|\zeta|/|c|\to1\)</span>, and
+<span class="math" data-index="403" data-tex="\(|\eta|/\log|c|&lt;2m\)">\(|\eta|/\log|c|&lt;2m\)</span>, once <span class="math" data-index="404" data-tex="\(|\zeta|\)">\(|\zeta|\)</span> is sufficiently large. Apply (3.10) on <span class="math" data-index="405" data-tex="\(|z|\le2m\)">\(|z|\le2m\)</span> at <span class="math" data-index="406" data-tex="\(z=i\eta/\log|c|\)">\(z=i\eta/\log|c|\)</span>. Homogeneity gives</p>
+<span class="math math-display" id="eq-3.11" data-index="407" data-tex="\[
+ \log|F(\zeta)^{-1}|
+       \le B\log|c|+H_S(-\eta)
+       \le B\log|\zeta|+H_S(-\eta).
+ \tag{3.11}
+\]">\[
+ \log|F(\zeta)^{-1}|
+       \le B\log|c|+H_S(-\eta)
+       \le B\log|\zeta|+H_S(-\eta).
+ \tag{3.11}
+\]</span>
+<p>The threshold depends on <span class="math" data-index="408" data-tex="\(m\)">\(m\)</span>, while <span class="math" data-index="409" data-tex="\(B\)">\(B\)</span> does not.</p>
+<p><em>Proof of <span class="math" data-index="410" data-tex="\(2\Rightarrow1\)">\(2\Rightarrow1\)</span>.</em> The zero-free assertion on every strip gives (1.2), using an integer width slightly larger than any prescribed real width. On the real space, (3.9) gives <span class="math" data-index="411" data-tex="\(|F(c)|\ge|c|^{-B}\)">\(|F(c)|\ge|c|^{-B}\)</span> for large <span class="math" data-index="412" data-tex="\(|c|\)">\(|c|\)</span>. This is a slow-decrease bound on the tail. On a bounded set of centers, a nonzero entire function has a positive maximum on each fixed complex ball; compactness of the center set gives a positive minimum of these maxima. Enlarging the logarithmic-window constant absorbs that finite region, as in the preceding slow-decrease theorem. <span class="math" data-index="413" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-moving-the-inverse-integral-only-where-it-is-holomorphic">4. Moving the inverse integral only where it is holomorphic</h2>
+<p><strong>Theorem 4.1 (a parametrix with a reflected singular hull).</strong> Under the equivalent conditions of Theorem 3.4 there is a tempered distribution <span class="math" data-index="414" data-tex="\(G\)">\(G\)</span> with</p>
+<span class="math math-display" id="eq-4.1" data-index="415" data-tex="\[
+ \mu*G-\delta_0\in C^\infty,\qquad
+ \operatorname{sing\,supp}G\subset-\operatorname{conv}S.
+ \tag{4.1}
+\]">\[
+ \mu*G-\delta_0\in C^\infty,\qquad
+ \operatorname{sing\,supp}G\subset-\operatorname{conv}S.
+ \tag{4.1}
+\]</span>
+<p><em>Proof.</em> Choose <span class="math" data-index="416" data-tex="\(R&gt;C_1\)">\(R&gt;C_1\)</span> large enough that the real reciprocal bound holds outside <span class="math" data-index="417" data-tex="\(|\xi|\le R\)">\(|\xi|\le R\)</span>. Define</p>
+<span class="math math-display" id="eq-4.2" data-index="418" data-tex="\[
+ G(\phi)=(2\pi)^{-n}
+       \int_{|\xi|&gt;R}\frac{\widehat\phi(-\xi)}{F(\xi)}\,d\xi .
+ \tag{4.2}
+\]">\[
+ G(\phi)=(2\pi)^{-n}
+       \int_{|\xi|&gt;R}\frac{\widehat\phi(-\xi)}{F(\xi)}\,d\xi .
+ \tag{4.2}
+\]</span>
+<p>Real smooth test transforms have arbitrary polynomial decay. The reciprocal has polynomial growth. Thus (4.2) is absolutely convergent and continuous on the Schwartz space, in particular on every compact test space. Multiplication by <span class="math" data-index="419" data-tex="\(F\)">\(F\)</span> in the real Fourier representation yields</p>
+<span class="math math-display" id="eq-4.3" data-index="420" data-tex="\[
+ \mu*G=\delta_0-b_R,\qquad
+ b_R(x)=(2\pi)^{-n}\int_{|\xi|\le R}e^{ix\cdot\xi}\,d\xi .
+ \tag{4.3}
+\]">\[
+ \mu*G=\delta_0-b_R,\qquad
+ b_R(x)=(2\pi)^{-n}\int_{|\xi|\le R}e^{ix\cdot\xi}\,d\xi .
+ \tag{4.3}
+\]</span>
+<p>Every derivative of <span class="math" data-index="421" data-tex="\(b_R\)">\(b_R\)</span> is an integral over a fixed bounded ball, so <span class="math" data-index="422" data-tex="\(b_R\)">\(b_R\)</span> is smooth. The compact convolution identity also follows directly by substituting its adjoint test in (4.2), which verifies the reflection sign.</p>
+<p>Put <span class="math" data-index="423" data-tex="\(K=-\operatorname{conv}S\)">\(K=-\operatorname{conv}S\)</span>. Fix a point outside <span class="math" data-index="424" data-tex="\(K\)">\(K\)</span>. The closest-point separating direction gives a unit <span class="math" data-index="425" data-tex="\(\theta\)">\(\theta\)</span>, a neighborhood <span class="math" data-index="426" data-tex="\(U\)">\(U\)</span> of that point, and <span class="math" data-index="427" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> with</p>
+<span class="math math-display" id="eq-4.4" data-index="428" data-tex="\[
+ x\cdot\theta-H_K(\theta)\ge d\quad(x\in U).
+ \tag{4.4}
+\]">\[
+ x\cdot\theta-H_K(\theta)\ge d\quad(x\in U).
+ \tag{4.4}
+\]</span>
+<p>We can and do shrink <span class="math" data-index="429" data-tex="\(U\)">\(U\)</span> to have compact closure. For a fixed <span class="math" data-index="430" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, consider the graphs</p>
+<span class="math math-display" id="eq-4.5" data-index="431" data-tex="\[
+ \zeta_s(\xi)=\xi+is\theta\log(2+|\xi|^2),
+ \qquad0\le s\le t.
+ \tag{4.5}
+\]">\[
+ \zeta_s(\xi)=\xi+is\theta\log(2+|\xi|^2),
+ \qquad0\le s\le t.
+ \tag{4.5}
+\]</span>
+<p>Choose an integer <span class="math" data-index="432" data-tex="\(m&gt;3t+1\)">\(m&gt;3t+1\)</span>. Outside a sufficiently large real ball of radius <span class="math" data-index="433" data-tex="\(R_t\ge R\)">\(R_t\ge R\)</span>, all these graphs and the intervening deformation lie in the zero-free region of (3.9). Indeed their imaginary height is at most <span class="math" data-index="434" data-tex="\(t\log(2+|\xi|^2)\)">\(t\log(2+|\xi|^2)\)</span>, their real part is <span class="math" data-index="435" data-tex="\(\xi\)">\(\xi\)</span>, and
+<span class="math" data-index="436" data-tex="\(\log(2+|\xi|^2)&lt;3\log|\xi|\)">\(\log(2+|\xi|^2)&lt;3\log|\xi|\)</span> on the tail. The reciprocal is holomorphic throughout that exterior deformation.</p>
+<p>For a compact smooth test <span class="math" data-index="437" data-tex="\(\phi\)">\(\phi\)</span>, apply Stokes' theorem to the closed holomorphic <span class="math" data-index="438" data-tex="\(n\)">\(n\)</span>-form</p>
+<span class="math math-display" id="eq-4.6" data-index="439" data-tex="\[
+ \omega_\phi(\zeta)=F(\zeta)^{-1}\widehat\phi(-\zeta)
+                       \,d\zeta_1\wedge\cdots\wedge d\zeta_n
+ \tag{4.6}
+\]">\[
+ \omega_\phi(\zeta)=F(\zeta)^{-1}\widehat\phi(-\zeta)
+                       \,d\zeta_1\wedge\cdots\wedge d\zeta_n
+ \tag{4.6}
+\]</span>
+<p>on the deformation over <span class="math" data-index="440" data-tex="\(R_t&lt;|\xi|&lt;T\)">\(R_t&lt;|\xi|&lt;T\)</span>. The pullback to the graph has determinant</p>
+<span class="math math-display" id="eq-4.7" data-index="441" data-tex="\[
+ J_s(\xi)=1+is\,\theta\cdot
+               \frac{2\xi}{2+|\xi|^2},\qquad |J_s(\xi)|\le1+s.
+ \tag{4.7}
+\]">\[
+ J_s(\xi)=1+is\,\theta\cdot
+               \frac{2\xi}{2+|\xi|^2},\qquad |J_s(\xi)|\le1+s.
+ \tag{4.7}
+\]</span>
+<p>This is the complex rank-one determinant; no surface-area factor replaces it.</p>
+<p>Here are the needed boundary estimates. On a compact physical test support <span class="math" data-index="442" data-tex="\(L\)">\(L\)</span>, whole-complex integration by parts gives, for any integer <span class="math" data-index="443" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" id="eq-4.8" data-index="444" data-tex="\[
+ |\widehat\phi(-\zeta)|
+       \le C_{L,q}p_q(\phi)(1+|\zeta|)^{-q}
+                          e^{H_L(-\operatorname{Im}\zeta)}.
+ \tag{4.8}
+\]">\[
+ |\widehat\phi(-\zeta)|
+       \le C_{L,q}p_q(\phi)(1+|\zeta|)^{-q}
+                          e^{H_L(-\operatorname{Im}\zeta)}.
+ \tag{4.8}
+\]</span>
+<p>On (4.5), <span class="math" data-index="445" data-tex="\(|\zeta_s|\)">\(|\zeta_s|\)</span> is comparable to <span class="math" data-index="446" data-tex="\(1+|\xi|\)">\(1+|\xi|\)</span>, with constants depending on <span class="math" data-index="447" data-tex="\(t\)">\(t\)</span>. The support functions in (3.9) and (4.8) contribute at most
+<span class="math" data-index="448" data-tex="\((2+|\xi|^2)^{t(r_S+r_L)}\)">\((2+|\xi|^2)^{t(r_S+r_L)}\)</span>, where <span class="math" data-index="449" data-tex="\(r_S=\max_{a\in S}|a|\)">\(r_S=\max_{a\in S}|a|\)</span> and <span class="math" data-index="450" data-tex="\(r_L=\max_{x\in L}|x|\)">\(r_L=\max_{x\in L}|x|\)</span>.
+The outer side pullback has coefficients bounded by a constant times <span class="math" data-index="451" data-tex="\(\log(2+T^2)\)">\(\log(2+T^2)\)</span>: its parameter derivative is <span class="math" data-index="452" data-tex="\(i\theta\log(2+T^2)\)">\(i\theta\log(2+T^2)\)</span>, while every tangential derivative differs from its real tangential derivative by a uniformly bounded term. Its real sphere has area of order <span class="math" data-index="453" data-tex="\(T^{n-1}\)">\(T^{n-1}\)</span>. Thus its integral is bounded by</p>
+<span class="math math-display" id="eq-4.9" data-index="454" data-tex="\[
+ C_{L,t,q}p_q(\phi)\,
+ T^{n-1+B-q+2t(r_S+r_L)}\log(2+T^2),
+ \tag{4.9}
+\]">\[
+ C_{L,t,q}p_q(\phi)\,
+ T^{n-1+B-q+2t(r_S+r_L)}\log(2+T^2),
+ \tag{4.9}
+\]</span>
+<p>which tends to zero by choosing <span class="math" data-index="455" data-tex="\(q&gt;n+B+2t(r_S+r_L)+2\)">\(q&gt;n+B+2t(r_S+r_L)+2\)</span>.
+The same bounds make both exterior graph integrals absolutely convergent. The inner side lies in a fixed compact set of complex frequencies, where the reciprocal is smooth and zero-free. Its inverse Fourier expression is a smooth function of <span class="math" data-index="456" data-tex="\(x\)">\(x\)</span>: differentiation under that compact parameter integral is allowed to every order. The original real annulus <span class="math" data-index="457" data-tex="\(R&lt;|\xi|\le R_t\)">\(R&lt;|\xi|\le R_t\)</span> likewise contributes a smooth function.</p>
+<p>It follows that, with a smooth function <span class="math" data-index="458" data-tex="\(g_t\)">\(g_t\)</span> accounting for those compact boundaries,</p>
+<span class="math math-display" id="eq-4.10" data-index="459" data-tex="\[
+ G(\phi)=(2\pi)^{-n}\int_{|\xi|&gt;R_t}
+       \frac{\widehat\phi(-\zeta_t(\xi))}{F(\zeta_t(\xi))}
+                  J_t(\xi)\,d\xi+g_t(\phi).
+ \tag{4.10}
+\]">\[
+ G(\phi)=(2\pi)^{-n}\int_{|\xi|&gt;R_t}
+       \frac{\widehat\phi(-\zeta_t(\xi))}{F(\zeta_t(\xi))}
+                  J_t(\xi)\,d\xi+g_t(\phi).
+ \tag{4.10}
+\]</span>
+<p>The sign of each inner-boundary contribution is its Stokes orientation; only its smoothness is needed. This argument moves no contour through a transform zero.</p>
+<p>For <span class="math" data-index="460" data-tex="\(x\in U\)">\(x\in U\)</span>, the reciprocal bound and (4.4) give</p>
+<span class="math math-display" id="eq-4.11" data-index="461" data-tex="\[
+ \left|\frac{e^{ix\cdot\zeta_t(\xi)}}{F(\zeta_t(\xi))}\right|
+ \le C_t(1+|\xi|)^B(2+|\xi|^2)^{-td}.
+ \tag{4.11}
+\]">\[
+ \left|\frac{e^{ix\cdot\zeta_t(\xi)}}{F(\zeta_t(\xi))}\right|
+ \le C_t(1+|\xi|)^B(2+|\xi|^2)^{-td}.
+ \tag{4.11}
+\]</span>
+<p>An <span class="math" data-index="462" data-tex="\(x\)">\(x\)</span>-derivative of order <span class="math" data-index="463" data-tex="\(k\)">\(k\)</span> costs at most <span class="math" data-index="464" data-tex="\(C_{t,k}(1+|\xi|)^k\)">\(C_{t,k}(1+|\xi|)^k\)</span>. Choose <span class="math" data-index="465" data-tex="\(t\)">\(t\)</span> so that</p>
+<span class="math math-display" id="eq-4.12" data-index="466" data-tex="\[
+ 2td&gt;B+k+n.
+ \tag{4.12}
+\]">\[
+ 2td&gt;B+k+n.
+ \tag{4.12}
+\]</span>
+<p>The integral in (4.10) then represents a <span class="math" data-index="467" data-tex="\(C^k\)">\(C^k\)</span> function on <span class="math" data-index="468" data-tex="\(U\)">\(U\)</span>, by the integrable bound (4.11), the determinant bound and differentiation under the integral. Substituting
+<span class="math" data-index="469" data-tex="\(\widehat\phi(-\zeta)=\int e^{ix\cdot\zeta}\phi(x)\,dx\)">\(\widehat\phi(-\zeta)=\int e^{ix\cdot\zeta}\phi(x)\,dx\)</span> for tests in <span class="math" data-index="470" data-tex="\(U\)">\(U\)</span> is justified by the same bound and Fubini's theorem. The compact term <span class="math" data-index="471" data-tex="\(g_t\)">\(g_t\)</span> is smooth. Since <span class="math" data-index="472" data-tex="\(k\)">\(k\)</span> is arbitrary and every representation equals the same distribution <span class="math" data-index="473" data-tex="\(G\)">\(G\)</span>, it is smooth on <span class="math" data-index="474" data-tex="\(U\)">\(U\)</span>. This proves (4.1). <span class="math" data-index="475" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (a compact parametrix).</strong> There is <span class="math" data-index="476" data-tex="\(\nu\in\mathcal E&#x27;\)">\(\nu\in\mathcal E&#x27;\)</span> with</p>
+<span class="math math-display" id="eq-4.13" data-index="477" data-tex="\[
+ \mu*\nu=\delta_0+r,\qquad r\in C_c^\infty.
+ \tag{4.13}
+\]">\[
+ \mu*\nu=\delta_0+r,\qquad r\in C_c^\infty.
+ \tag{4.13}
+\]</span>
+<p><em>Proof.</em> Choose <span class="math" data-index="478" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> equal to one near the compact set <span class="math" data-index="479" data-tex="\(K\)">\(K\)</span>, and set <span class="math" data-index="480" data-tex="\(\nu=\chi G\)">\(\nu=\chi G\)</span>. Since <span class="math" data-index="481" data-tex="\(G\)">\(G\)</span> is smooth outside <span class="math" data-index="482" data-tex="\(K\)">\(K\)</span>, <span class="math" data-index="483" data-tex="\(G-\nu\)">\(G-\nu\)</span> is globally smooth. Convolution of a compact distribution with a smooth function is smooth, by differentiating its finite-order pairing. Thus
+<span class="math" data-index="484" data-tex="\(\mu*\nu-\delta_0=(\mu*G-\delta_0)-\mu*(G-\nu)\)">\(\mu*\nu-\delta_0=(\mu*G-\delta_0)-\mu*(G-\nu)\)</span> is smooth. It is also compactly supported, because <span class="math" data-index="485" data-tex="\(\mu,\nu,\delta_0\)">\(\mu,\nu,\delta_0\)</span> are compact. <span class="math" data-index="486" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-recovering-the-exact-reflected-set">5. Recovering the exact reflected set</h2>
+<p><strong>Theorem 5.1 (exact singularities of a compact parametrix).</strong> If <span class="math" data-index="487" data-tex="\(\mu\)">\(\mu\)</span> is hypoelliptic and <span class="math" data-index="488" data-tex="\(\nu\in\mathcal E&#x27;\)">\(\nu\in\mathcal E&#x27;\)</span> satisfies (4.13), then</p>
+<span class="math math-display" id="eq-5.1" data-index="489" data-tex="\[
+ \operatorname{sing\,supp}\nu=-S.
+ \tag{5.1}
+\]">\[
+ \operatorname{sing\,supp}\nu=-S.
+ \tag{5.1}
+\]</span>
+<p><em>Proof.</em> Compact smooth Fourier decay gives, uniformly on every fixed complex parameter ball,</p>
+<span class="math math-display" id="eq-5.2" data-index="490" data-tex="\[
+ F_r(c+\ell_c z)\longrightarrow0.
+ \tag{5.2}
+\]">\[
+ F_r(c+\ell_c z)\longrightarrow0.
+ \tag{5.2}
+\]</span>
+<p>Indeed its arbitrary negative polynomial order absorbs the fixed exponential cost of that logarithmic ball. Fourier multiplication in (4.13) gives</p>
+<span class="math math-display" id="eq-5.3" data-index="491" data-tex="\[
+ F_\nu(c+\ell_c z)
+      =\frac{1+F_r(c+\ell_c z)}{F(c+\ell_c z)}
+ \tag{5.3}
+\]">\[
+ F_\nu(c+\ell_c z)
+      =\frac{1+F_r(c+\ell_c z)}{F(c+\ell_c z)}
+ \tag{5.3}
+\]</span>
+<p>once <span class="math" data-index="492" data-tex="\(|c|\)">\(|c|\)</span> is large. Both numerator and denominator are zero-free on the fixed parameter ball. Consequently</p>
+<span class="math math-display" id="eq-5.4" data-index="493" data-tex="\[
+ L_\nu(z,c)=-L_c(z)
+       +\frac{\log|1+F_r(c+\ell_c z)|}{\ell_c},
+ \tag{5.4}
+\]">\[
+ L_\nu(z,c)=-L_c(z)
+       +\frac{\log|1+F_r(c+\ell_c z)|}{\ell_c},
+ \tag{5.4}
+\]</span>
+<p>and the last term tends uniformly to zero.</p>
+<p>Every escaping sequence has a further proper, locally smooth profile
+<span class="math" data-index="494" data-tex="\(a\cdot\operatorname{Im}z+b\)">\(a\cdot\operatorname{Im}z+b\)</span> for <span class="math" data-index="495" data-tex="\(\mu\)">\(\mu\)</span>, by Proposition 3.3. Formula (5.4) gives the opposite proper profile for <span class="math" data-index="496" data-tex="\(\nu\)">\(\nu\)</span> on that same sequence. Conversely any profile extraction for <span class="math" data-index="497" data-tex="\(\nu\)">\(\nu\)</span> can be refined by extracting the <span class="math" data-index="498" data-tex="\(\mu\)">\(\mu\)</span> profile; (5.4) then identifies its limit. In particular no <span class="math" data-index="499" data-tex="\(\nu\)">\(\nu\)</span> profile collapses, and every proper carrier of <span class="math" data-index="500" data-tex="\(\nu\)">\(\nu\)</span> is one of the singletons <span class="math" data-index="501" data-tex="\(\{-a\}\)">\(\{-a\}\)</span> obtained in this way. Every occurring <span class="math" data-index="502" data-tex="\(\mu\)">\(\mu\)</span> singleton supplies that opposite <span class="math" data-index="503" data-tex="\(\nu\)">\(\nu\)</span> singleton.</p>
+<p>For any compact distribution whose proper carriers are singletons, the argument at the end of Proposition 3.3 applies: realization plus singular-support inclusion puts every singleton point in its singular support; the nonconvex carrier theorem supplies the reverse inclusion in their closed union. Apply this statement to both kernels. Their closed singleton unions are exact reflections by (5.4), proving (5.1). Convexification alone would not prove this conclusion. <span class="math" data-index="504" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-seven-equivalent-regularity-statements">6. Seven equivalent regularity statements</h2>
+<p><strong>Theorem 6.1.</strong> For a compact kernel <span class="math" data-index="505" data-tex="\(\mu\)">\(\mu\)</span>, the following are equivalent:</p>
+<ol>
+<li>For every <span class="math" data-index="506" data-tex="\(u\in\mathcal D&#x27;(\mathbb R^n)\)">\(u\in\mathcal D&#x27;(\mathbb R^n)\)</span>, smoothness of <span class="math" data-index="507" data-tex="\(\mu*u\)">\(\mu*u\)</span> implies smoothness of <span class="math" data-index="508" data-tex="\(u\)">\(u\)</span>.</li>
+<li><span class="math" data-index="509" data-tex="\(\mu\)">\(\mu\)</span> is hypoelliptic in the spectral sense of Section 1.</li>
+<li>There is a global distributional parametrix <span class="math" data-index="510" data-tex="\(G\)">\(G\)</span>, with <span class="math" data-index="511" data-tex="\(\mu*G-\delta_0\)">\(\mu*G-\delta_0\)</span> smooth and
+<span class="math" data-index="512" data-tex="\(\operatorname{conv}\operatorname{sing\,supp}G\subset-\operatorname{conv}S\)">\(\operatorname{conv}\operatorname{sing\,supp}G\subset-\operatorname{conv}S\)</span>.</li>
+<li>There is a compact parametrix.</li>
+<li>There is a compact parametrix with singular support exactly <span class="math" data-index="513" data-tex="\(-S\)">\(-S\)</span>.</li>
+<li>There is a global fundamental solution <span class="math" data-index="514" data-tex="\(E\)">\(E\)</span>, with <span class="math" data-index="515" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span> and singular support exactly <span class="math" data-index="516" data-tex="\(-S\)">\(-S\)</span>.</li>
+<li>On all open domains <span class="math" data-index="517" data-tex="\(X\subset X_1\)">\(X\subset X_1\)</span>, <span class="math" data-index="518" data-tex="\(X_2\)">\(X_2\)</span>, with</li>
+</ol>
+<span class="math math-display" id="eq-6.1" data-index="519" data-tex="\[
+   X+S\subset X_2,\qquad X_2-S\subset X_1,
+   \tag{6.1}
+   \]">\[
+   X+S\subset X_2,\qquad X_2-S\subset X_1,
+   \tag{6.1}
+   \]</span>
+<p>the equation <span class="math" data-index="520" data-tex="\(\mu_*[u]=0\)">\(\mu_*[u]=0\)</span> on <span class="math" data-index="521" data-tex="\(X_2\)">\(X_2\)</span>, for <span class="math" data-index="522" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span>, implies <span class="math" data-index="523" data-tex="\(u|_X\in C^\infty(X)\)">\(u|_X\in C^\infty(X)\)</span>.</p>
+<p>When <span class="math" data-index="524" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>, the two inclusions in (6.1) already imply <span class="math" data-index="525" data-tex="\(X\subset X_1\)">\(X\subset X_1\)</span>: use any one <span class="math" data-index="526" data-tex="\(a\in S\)">\(a\in S\)</span> in both inclusions. We state that restriction explicitly so the conclusion has a domain.</p>
+<p><em>Proof.</em> Condition 1 implies slow decrease by the isolated-singularity obstruction used in Theorem 2.2. It implies logarithmic retreat by Theorem 2.1 with <span class="math" data-index="527" data-tex="\(W=\mathbb R^n\)">\(W=\mathbb R^n\)</span>. Thus <span class="math" data-index="528" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>.</p>
+<p>Theorem 4.1 gives <span class="math" data-index="529" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span>. Given 3, cut its parametrix off near its compact singular hull. The removed part is smooth, and convolution with compact <span class="math" data-index="530" data-tex="\(\mu\)">\(\mu\)</span> preserves smoothness; the result is a compact parametrix. Thus <span class="math" data-index="531" data-tex="\(3\Rightarrow4\)">\(3\Rightarrow4\)</span>.</p>
+<p>For <span class="math" data-index="532" data-tex="\(4\Rightarrow1\)">\(4\Rightarrow1\)</span>, write <span class="math" data-index="533" data-tex="\(\mu*\nu=\delta_0+r\)">\(\mu*\nu=\delta_0+r\)</span>, where <span class="math" data-index="534" data-tex="\(r\)">\(r\)</span> is smooth and compact. For an arbitrary global distribution <span class="math" data-index="535" data-tex="\(u\)">\(u\)</span>, compact-factor associativity gives</p>
+<span class="math math-display" id="eq-6.2" data-index="536" data-tex="\[
+ u=\nu*(\mu*u)-r*u.
+ \tag{6.2}
+\]">\[
+ u=\nu*(\mu*u)-r*u.
+ \tag{6.2}
+\]</span>
+<p>The first term is smooth when <span class="math" data-index="537" data-tex="\(\mu*u\)">\(\mu*u\)</span> is smooth. The second is always smooth: pairing <span class="math" data-index="538" data-tex="\(u\)">\(u\)</span> against <span class="math" data-index="539" data-tex="\(r(x-\cdot)\)">\(r(x-\cdot)\)</span> samples one compact set on each compact range of <span class="math" data-index="540" data-tex="\(x\)">\(x\)</span>, and every derivative passes through that finite-order pairing. Therefore <span class="math" data-index="541" data-tex="\(u\)">\(u\)</span> is smooth. All convolutions in (6.2) exist.</p>
+<p>Conditions 1–4 are now equivalent. Theorem 5.1 then applies to every compact parametrix, giving <span class="math" data-index="542" data-tex="\(4\Rightarrow5\)">\(4\Rightarrow5\)</span>.</p>
+<p>For <span class="math" data-index="543" data-tex="\(5\Rightarrow6\)">\(5\Rightarrow6\)</span>, the whole-space smooth solvability theorem gives <span class="math" data-index="544" data-tex="\(w\in C^\infty(\mathbb R^n)\)">\(w\in C^\infty(\mathbb R^n)\)</span> with <span class="math" data-index="545" data-tex="\(\mu*w=r\)">\(\mu*w=r\)</span>. Its hypotheses hold: <span class="math" data-index="546" data-tex="\(\mu\)">\(\mu\)</span> is slowly decreasing, ordinary sampling on the whole space is automatic, and the compact convolution support-hull theorem gives the required compact support confinement. Explicitly, from <span class="math" data-index="547" data-tex="\(\operatorname{supp}(\check\mu*v)\subset K_0\)">\(\operatorname{supp}(\check\mu*v)\subset K_0\)</span>, for compact <span class="math" data-index="548" data-tex="\(v\)">\(v\)</span>, hull addition places <span class="math" data-index="549" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span> in one fixed compact ball determined by <span class="math" data-index="550" data-tex="\(K_0\)">\(K_0\)</span> and <span class="math" data-index="551" data-tex="\(\mu\)">\(\mu\)</span>; the zero image forces <span class="math" data-index="552" data-tex="\(v=0\)">\(v=0\)</span>. Hence the whole-space pair is support convex. Set <span class="math" data-index="553" data-tex="\(E=\nu-w\)">\(E=\nu-w\)</span>. It satisfies <span class="math" data-index="554" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>, and subtracting a smooth function changes no singular points.</p>
+<p>Condition 6 immediately implies 3. For <span class="math" data-index="555" data-tex="\(5\Rightarrow7\)">\(5\Rightarrow7\)</span>, the quotient operation for <span class="math" data-index="556" data-tex="\(\nu\)">\(\nu\)</span> maps classes on <span class="math" data-index="557" data-tex="\(X_2\)">\(X_2\)</span> to classes on <span class="math" data-index="558" data-tex="\(X\)">\(X\)</span>, since
+<span class="math" data-index="559" data-tex="\(X-\operatorname{sing\,supp}\nu=X+S\subset X_2\)">\(X-\operatorname{sing\,supp}\nu=X+S\subset X_2\)</span>.
+The operation for <span class="math" data-index="560" data-tex="\(\mu\)">\(\mu\)</span> maps from <span class="math" data-index="561" data-tex="\(X_1\)">\(X_1\)</span> to <span class="math" data-index="562" data-tex="\(X_2\)">\(X_2\)</span>. Their proved composition law and (4.13) give</p>
+<span class="math math-display" id="eq-6.3" data-index="563" data-tex="\[
+ [u]|_X=\nu_*\mu_*[u],
+ \tag{6.3}
+\]">\[
+ [u]|_X=\nu_*\mu_*[u],
+ \tag{6.3}
+\]</span>
+<p>because <span class="math" data-index="564" data-tex="\(\delta_0+r\)">\(\delta_0+r\)</span> acts as the identity modulo smooth functions. Thus a zero right side makes <span class="math" data-index="565" data-tex="\(u\)">\(u\)</span> smooth on <span class="math" data-index="566" data-tex="\(X\)">\(X\)</span>. This argument requires only singular sampling, even when a smooth tail of <span class="math" data-index="567" data-tex="\(\mu\)">\(\mu\)</span> samples outside <span class="math" data-index="568" data-tex="\(X_1\)">\(X_1\)</span>.</p>
+<p>Finally take all three domains to be <span class="math" data-index="569" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> in condition 7 to obtain condition 1. This completes every implication. <span class="math" data-index="570" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The input in condition 1 is an arbitrary distribution, with no compactness or growth restriction. For example, <span class="math" data-index="571" data-tex="\(\partial_1\)">\(\partial_1\)</span> on <span class="math" data-index="572" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> has nonsmooth homogeneous input <span class="math" data-index="573" data-tex="\(1(x_1)\otimes\delta_0(x_2)\)">\(1(x_1)\otimes\delta_0(x_2)\)</span>. Yet a compact input with smooth polynomial image is smooth by the compact singular-hull theorem in the preceding strip lesson. Those two regularity tests cannot be interchanged.</p>
+<h2 id="7-smooth-perturbations-and-kernels-compact-modulo-smooth-terms">7. Smooth perturbations and kernels compact modulo smooth terms</h2>
+<p><strong>Corollary 7.1.</strong> Any two global parametrices of a hypoelliptic compact kernel differ by a smooth function. Adding a compact smooth function to that kernel preserves hypoellipticity and the exact singular support of every compact parametrix.</p>
+<p><em>Proof.</em> If <span class="math" data-index="574" data-tex="\(G_1,G_2\)">\(G_1,G_2\)</span> are parametrices, then <span class="math" data-index="575" data-tex="\(\mu*(G_1-G_2)\)">\(\mu*(G_1-G_2)\)</span> is smooth. Theorem 6.1 makes their difference smooth.</p>
+<p>If <span class="math" data-index="576" data-tex="\(\widetilde\mu=\mu+b\)">\(\widetilde\mu=\mu+b\)</span>, with <span class="math" data-index="577" data-tex="\(b\in C_c^\infty\)">\(b\in C_c^\infty\)</span>, a compact parametrix <span class="math" data-index="578" data-tex="\(\nu\)">\(\nu\)</span> of <span class="math" data-index="579" data-tex="\(\mu\)">\(\mu\)</span> satisfies</p>
+<span class="math math-display" id="eq-7.1" data-index="580" data-tex="\[
+ \widetilde\mu*\nu=\delta_0+r+b*\nu.
+ \tag{7.1}
+\]">\[
+ \widetilde\mu*\nu=\delta_0+r+b*\nu.
+ \tag{7.1}
+\]</span>
+<p>The error is smooth and compact. Thus <span class="math" data-index="581" data-tex="\(\widetilde\mu\)">\(\widetilde\mu\)</span> has a compact parametrix and is hypoelliptic. Interchanging the two kernels gives the converse. Their singular sets agree because their difference is smooth. Theorem 5.1 gives the same exact reflected set. <span class="math" data-index="582" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This also defines hypoellipticity for a distribution <span class="math" data-index="583" data-tex="\(\lambda\)">\(\lambda\)</span> that is compact modulo a smooth function: there is some <span class="math" data-index="584" data-tex="\(\mu_0\in\mathcal E&#x27;\)">\(\mu_0\in\mathcal E&#x27;\)</span> with <span class="math" data-index="585" data-tex="\(\lambda-\mu_0\in C^\infty\)">\(\lambda-\mu_0\in C^\infty\)</span>, and <span class="math" data-index="586" data-tex="\(\lambda\)">\(\lambda\)</span> is called hypoelliptic when <span class="math" data-index="587" data-tex="\(\mu_0\)">\(\mu_0\)</span> is. Any two such compact representatives differ by a compact smooth function, so the definition is independent of the representative. The quotient operation and its local regularity statement are independent for the same reason.</p>
+<p>For such a noncompact <span class="math" data-index="588" data-tex="\(\lambda\)">\(\lambda\)</span>, an ordinary convolution with an arbitrary global distribution need not exist. This definition concerns the quotient operation represented by <span class="math" data-index="589" data-tex="\(\mu_0\)">\(\mu_0\)</span>; it makes no additional existence claim about that ordinary convolution.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>, University of Copenhagen lecture notes, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">freely accessible chapter</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">course and lecture notes</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, and <em>II: Differential Operators with Constant Coefficients</em>, Springer. These works are credited for the convolution regularity theory. All required arguments are supplied here or in the exact preceding lessons linked in the introduction.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/logarithmic-zero-retreat-and-reflected-singularities.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L176/hypoelliptic-convolution-formal.md" download>hypoelliptic-convolution-formal.md</a></li><li><a href="reproduce/L176/hypoelliptic-convolution-learner.md" download>hypoelliptic-convolution-learner.md</a></li><li><a href="reproduce/L176/make_figures243.py" download>make_figures243.py</a></li><li><a href="reproduce/L176/check_numerics243.py" download>check_numerics243.py</a></li><li><a href="reproduce/L176/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L176/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L176/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L176/figures/geometry243.json" download>figures/geometry243.json</a></li><li><a href="reproduce/L176/figures/zeros-and-logarithmic-retreat.png" download>figures/zeros-and-logarithmic-retreat.png</a></li><li><a href="reproduce/L176/figures/zeros-and-logarithmic-retreat.svg" download>figures/zeros-and-logarithmic-retreat.svg</a></li><li><a href="reproduce/L176/figures/affine-profiles-and-exact-reflected-singularities.png" download>figures/affine-profiles-and-exact-reflected-singularities.png</a></li><li><a href="reproduce/L176/figures/affine-profiles-and-exact-reflected-singularities.svg" download>figures/affine-profiles-and-exact-reflected-singularities.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

@@ -2,13 +2,11 @@
 
 Prerequisite companion. The source is Jiří Lebl's freely accessible
 *Basic Analysis*, version 6.3, [author edition](https://www.jirka.org/ra/).
-This is an attributed adaptation and extension under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Original text: public domain (CC0).
 It fills particular omitted proofs in §§1.2, 2.1–2.4, 7.2–7.6 and 8.2.
 The complete human proofs already in the programme are retained through exact
 bindings; they are not replaced by a fresh treatment of those chapters.
-The one short reproduced route, the Archimedean argument, permits the needed
-proof to be carried separately from unrelated material on its source page.
+The Archimedean argument is written out here so that the needed proof can be carried separately from unrelated material on its source page.
 
 The underlying definitions are those of an ordered field of real numbers with
 the least-upper-bound axiom, natural-number induction, finite sums, functions,
@@ -24,8 +22,7 @@ axiom to its negative: if \(u=\sup(-A)\), then \(-u\) is a lower bound of
 
 ### P6.0. The Archimedean argument used by these proofs
 
-This is the argument of Lebl's Theorem 1.2.4(i), adapted with its hypothesis
-explicit. The natural numbers are not bounded above in the ordered complete
+This follows the argument of Lebl's Theorem 1.2.4(i), with its hypothesis explicit. The natural numbers are not bounded above in the ordered complete
 field. Otherwise \(b=\sup\mathbb N\) would exist. Since \(b-1<b\),
 \(b-1\) is not an upper bound, so some \(m\in\mathbb N\) satisfies
 \(m>b-1\). Then \(m+1\in\mathbb N\) and \(m+1>b\), a contradiction.

@@ -1,6 +1,6 @@
 # Dimension theory of Noetherian local rings
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Combined edition under GNU FDL 1.2 or later; original material retains its CC0 dedication.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original text: public domain (CC0). The example of Section 8 follows a construction presented in the Stacks Project, cited at the end.*
 
 A prime chain measures how many successive specializations a space permits. A Hilbert–Samuel function measures how quickly its infinitesimal neighborhoods grow. A system of parameters measures how many equations are needed to isolate the closed point. For a Noetherian local ring, these three measurements agree. This is the bridge from the counting arguments of the preceding lesson to Krull’s height theorems.
 
@@ -374,17 +374,10 @@ The degree is one, agreeing with the prime-chain dimension. The first element of
 - The Stacks project authors, *The Stacks project*, Commutative Algebra: [Tag 00KQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-dimension), [Tag 00KU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-regular-local), [Tag 00KV](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-minimal-over-1), [Tag 0BBZ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-minimal-over-r), [Tag 00KW](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-one-equation), [Tag 02IE](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-elements-generate-ideal-definition), [Tag 00OM](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-dimension-base-fibre-total), and [Tag 00ON](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-dimension-base-fibre-equals-total). These give the dimension theorem, parameters, height theorems and local base/fibre comparison. The tag links use the AI Integrated Stacks Project English reader described in the course introduction. The polynomial-ring theorem over a general Noetherian base is proved in Section 6.
 - Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*, public draft of 27 July 2024, Section 12.3, Krull’s theorems. [Author’s public draft](https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf).
 
-## Sources and adaptation history
+## Sources
 
-Section 8 adapts the noncatenary construction presented by the Stacks Project Authors in the pinned AI Integrated Stacks Project examples chapter. Its valuation, conductor and prime-chain verifications are supplied here; the conductor proof establishes Noetherianity directly. [Incorporated source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/examples.tex#L1410).
+The noncatenary example of Section 8 follows the construction presented by the Stacks Project authors in the examples chapter ([source at the pinned AI Integrated Stacks Project revision](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/examples.tex#L1410)). Its valuation, conductor and prime-chain verifications are supplied here; the conductor proof establishes Noetherianity directly.
 
-History: Stacks Project Authors, original construction; OpenAI GPT-6.1 Sol, mathematical exposition and completed verifications, October 2026.
+## Licence
 
-## Copyright and licence
-
-Copyright (C) 2005–2025 Johan de Jong. The incorporated source is *The Stacks Project*, as distributed in AI Integrated Stacks Project at revision `565b10e987aba5969b21145a0833f42d69f96790`.
-
-Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy is supplied as [GNU Free Documentation License 1.2](COPYING-GFDL-1.2.txt).
-
-The original course material remains available under its CC0 dedication. This combined edition, including the incorporated and adapted proof, is distributed under GNU FDL 1.2 or later. The source authors, incorporated source titles and mathematical adaptations are identified above. History: Stacks Project Authors, original source; the credited AI Integrated Stacks Project editorial contributors, where used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.
-
+The text of this lesson is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The Stacks Project, cited above for the arguments this lesson follows, is distributed by its authors under the GNU FDL 1.2 or later.

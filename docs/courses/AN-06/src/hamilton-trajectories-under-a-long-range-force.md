@@ -142,6 +142,8 @@ Consequently a smooth outer function with derivative order \(q\) bounded by \(t^
 
 ## 4. A future flow with constants uniform in its starting time
 
+The uniform flow estimates below are Hörmander [H4, Lemma 30.3.1].
+
 **Theorem 4.1 (uniform future flow).** Let \(\omega\subset\mathbb R^{2n}\) be open and closed under contractions of its first coordinate:
 \((z,\xi)\in\omega\Rightarrow(sz,\xi)\in\omega\) for \(0\le s\le1\).
 Let \(\omega'\Subset\omega\). Assume real smooth \(U\) obeys (8) uniformly on \(\omega\) for all sufficiently large \(t\). For all sufficiently large \(T\), the equations with
@@ -245,6 +247,8 @@ Their initial values vanish at these orders; integration proves the final two li
 <a id="hamilton-mixed-time-estimates"></a>
 
 ## 5. Time derivatives of trajectories starting on the free graph
+
+The time-derivative estimate is Hörmander [H4, Lemma 30.3.2].
 
 **Theorem 5.1 (mixed time and frequency derivatives).** For the Hamilton construction in Section 2, (9) holds. When \(w=0\), for every \(\alpha\) and integer \(\tau>0\),
 \[
@@ -494,3 +498,5 @@ Along \(t^2=2\pi j\) its leading term is nonzero, while the last two terms are \
 
 
 [HW] Lars Hörmander, [*The existence of wave operators in scattering theory*, freely readable journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf), 1976, §3, pp. 79–82, Lemmas 3.6–3.7.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Lemmas 30.3.1–30.3.2 and their proofs, pp. 297–300. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

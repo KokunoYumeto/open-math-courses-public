@@ -88,6 +88,8 @@ def main():
     mf_path = adapter_dir / 'companion-inputs/manifest.json'
     manifest = json.loads(mf_path.read_text(encoding='utf-8'))
     entries = manifest['proof_files']
+    if any(row['licence'] != 'CC0-1.0' for row in entries):
+        raise ValueError('Companion mathematical text must have an explicit CC0 dedication')
     aliases = {}
     rewrites = dict(manifest.get('projection_rewrites', {}))
     for row in entries:

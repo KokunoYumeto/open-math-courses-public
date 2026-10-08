@@ -47,6 +47,8 @@ Thus convolution on the energy axis uses only wave times \(|t|<1/a\).
 
 <a id="counting-tauberian"></a>
 
+The quantitative comparison is Hörmander’s Tauberian lemma [H3, Lemma 17.5.6].
+
 **Lemma 1.1 (quantitative removal of smoothing).** Let \(\mu\) be an increasing tempered function with \(\mu(0)=0\). Let \(\nu\) be the locally absolutely continuous representative of a function of locally bounded variation, with \(\nu(0)=0\). Suppose
 \[
 |d\nu(\tau)|\leq M_0(|\tau|+a_0)^{n-1}\,d\tau,
@@ -230,6 +232,8 @@ V(x,\lambda)=(2\pi)^{-n}
 \]
 Both \(e\) and \(V\) are densities, so their difference divided by the positive density \(I_1(x,1)\) is a scalar.
 
+The base-return estimate is Hörmander’s local spectral bound [H4, Theorem 29.1.4].
+
 **Theorem 3.1 (base returns bound the local remainder).** There is a constant \(C_n\), depending only on dimension, such that
 \[
 \limsup_{\lambda\to+\infty}
@@ -367,6 +371,8 @@ Write \(dz=dx\,d\eta\) for symplectic volume and set
 \right].
 \tag{32}
 \]
+
+The full-period estimate and its measure-zero consequence are Hörmander’s global spectral bound [H4, Theorem 29.1.5 and Corollary 29.1.6].
 
 **Theorem 5.1 (full periods bound the global remainder).** There is a dimensional constant \(C_n\) such that
 \[
@@ -573,3 +579,5 @@ The base return bound is positive at every point, whereas the full-period integr
 - [I] Victor Ivrii, *100 years of Weyl's law*, arXiv:1608.03963v2 (27 February 2017). Sections 2.1.3–2.1.4; the wave/Tauberian comparison in Section 1.2. [Free author preprint, version 2](https://arxiv.org/pdf/1608.03963v2).
 - [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical analysis*, author text dated April 25, 2012. Introduction Section 0.5, printed pages xi–xii, for functional-calculus/trace context. [Author PDF](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf).
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. Introduction for the classical spectral setting. [Freely readable complete GDZ scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf).
+- [H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Lemma 17.5.6 and its Fourier-window setup, pp. 49–50. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, (29.1.13)–(29.1.14), Theorems 29.1.4–29.1.5, Corollary 29.1.6 and the spectral-shift remark, pp. 256–259. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

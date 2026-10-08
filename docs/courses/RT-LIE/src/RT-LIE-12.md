@@ -283,7 +283,7 @@ K_A=D_{A,0,0},\qquad P_p=D_{0,p,0},\qquad Q_q=D_{0,0,q}.
 \]
 Evaluation on (4.4) gives
 \[
-\begin{aligned}
+\begin{aligned}[c]
 [K_A,K_C]&=K_{[A,C]},&[K_A,P_p]&=P_{Ap},&[K_A,Q_q]&=Q_{-A^tq},\\
 [P_p,Q_q]&=K_{q(p)I-3p\otimes q},\\
 [P_p,P_r]&=2Q_{p\times r},&[Q_q,Q_t]&=2P_{q\times t}.
@@ -380,7 +380,7 @@ The remaining identity is
 \[
 [E_i,F_j]=0\quad(i\ne j). \tag{5.7}
 \]
-Section 8 supplies its complete finite calculation and the proof that the calculation covers arbitrary rank. Rank-two checks alone would not suffice.
+[Section 5.8](#5-8-the-exhaustive-mixed-generator-calculation) supplies its complete finite calculation and the proof that the calculation covers arbitrary rank. Rank-two checks alone would not suffice.
 
 Both \(E_i,F_i\) are nilpotent: the finite weight set bounds root-shifting chains, with the only passage through zero being \(v_{-\alpha_i},z_i,v_{\alpha_i}\). Their adjoint operators on \(\operatorname{End}(V)\) are nilpotent, as follows by expanding
 \[
@@ -396,7 +396,7 @@ All Serre relations are verified, with the course's column-coroot convention. Th
 
 ### 5.3. Reflections and simplicity of the module
 
-Set \(R_i=\exp(E_i)\exp(-F_i)\exp(E_i)\). On the string in §2 identify
+Set \(R_i=\exp(E_i)\exp(-F_i)\exp(E_i)\). On the string in [§5.2](#5-2-construct-and-verify-a-finite-module) identify
 \[
 v_{\eta+k\alpha_i}\longleftrightarrow\binom dk X^kY^{d-k}.
 \]
@@ -561,7 +561,7 @@ Add the negatives to every positive list. Products use block-diagonal Gram matri
 
 The script also verifies the Cartan relations, same-index commutators, Serre relations, reflection signs and integral coroot coordinates. Those additional checks are consistency checks; the proof above already establishes their general versions.
 
-This is a finite computational proof of (5.7), together with a proof of its exhaustive reduction, followed by the general algebraic argument in §§3–7. It is not a sample of selected large diagrams. The listed coordinate systems, action formulas and the following certificate cover every required case.
+This is a finite computational proof of (5.7), together with a proof of its exhaustive reduction, followed by the general algebraic argument in [§§5.3–5.7](#5-3-reflections-and-simplicity-of-the-module). It is not a sample of selected large diagrams. The listed coordinate systems, action formulas and the following certificate cover every required case.
 
 ### 5.9. Complete calculation certificate
 
@@ -809,6 +809,6 @@ The [official Stacks project](https://stacks.math.columbia.edu/) is the referenc
 
 **References.**
 
-- J. S. Milne, [*Algebraic Groups*](https://www.jmilne.org/math/Books/AG.pdf), 2021 revision, §§21j and 24l for classical and exceptional group analogues; §23h, Theorem 23.71 for the integral structure constants. Group classification over general fields is additional structure beyond the complex Lie-algebra models proved here.
+- J. S. Milne, [*Algebraic Groups*](https://www.jmilne.org/math/Books/iAG2022.pdf), 2021 revision, §§21j and 24l for classical and exceptional group analogues; §23h, Theorem 23.71 for the integral structure constants. Group classification over general fields is additional structure beyond the complex Lie-algebra models proved here.
 - P. Deligne, *La série exceptionnelle de groupes de Lie*, *C. R. Acad. Sci. Paris*, Série I 322 (1996), 321–326: p. 321 for \(k\) and the two branches of \(a\), and p. 323, (E), for the adjoint dimension formula. [Freely accessible IAS PDF](https://publications.ias.edu/sites/default/files/75_LaSerie.pdf).
 - A. Premet and H. Strade, [*Classification of finite dimensional simple Lie algebras in prime characteristics*](https://arxiv.org/abs/math/0601380), §3, for the distinct characteristic-\(p\) families and their structural context.

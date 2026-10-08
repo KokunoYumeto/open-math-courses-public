@@ -17,7 +17,7 @@ Retain the arbitrary locally compact abelian group \(G\), dual \(H\), and unifor
 $$\mathcal B_\alpha
 :=\overline{\{\alpha_f:f\in A(H)\}}^{\|\cdot\|_{\mathcal B(X)}}.\tag{C1}$$
 
-The map \(f\mapsto\alpha_f\) is a bounded algebra homomorphism by (AF2), proved at BS1. Its image is already a linear subalgebra, so (C1) is a commutative Banach algebra. It may have no identity, even though it sits inside the unital algebra \(\mathcal B(X)\). Write \(\Delta(\mathcal B_\alpha)\) for its nonzero continuous multiplicative linear functionals. No character of an adjoined unit is included.
+The map \(f\mapsto\alpha_f\) is a bounded algebra homomorphism by (AF2), proved at [BS1](OA-FLOW-BS.md#bs-1). Its image is already a linear subalgebra, so (C1) is a commutative Banach algebra. It may have no identity, even though it sits inside the unital algebra \(\mathcal B(X)\). Write \(\Delta(\mathcal B_\alpha)\) for its nonzero continuous multiplicative linear functionals. No character of an adjoined unit is included.
 
 <a id="OA-FLOW.CHAR.FROM-FREQUENCY"></a><a id="oa-flow.char.from-frequency"></a>
 
@@ -54,7 +54,7 @@ For \(f\in I(\alpha)\), (C4) gives \(f(p)=0\), so \(p\in h(I(\alpha))=\operatorn
 $$\operatorname{Sp}(\alpha)\longleftrightarrow\Delta(\mathcal B_\alpha),
 \qquad p\longmapsto\chi_p.\tag{C5}$$
 
-AF2 proves automatic continuity even for initially algebraic characters, constructs the unit-modulus character of \(G\) by translations, and identifies it on every \(L^1\) kernel by the full vector convolution integral, with \(C_c(G)\)-density proved in L24. The exact earlier norm-controlled cutoffs are LF1/4. Thus the harmonic classification is a complete local input, while the present proof supplies its operator-algebra image and topology.
+AF2 proves automatic continuity even for initially algebraic characters, constructs the unit-modulus character of \(G\) by translations, and identifies it on every \(L^1\) kernel by the full vector convolution integral, with \(C_c(G)\)-density proved in L24. The exact earlier norm-controlled cutoffs are [LF1/4](OA-FLOW-LF.md#lf-1). Thus the harmonic classification is a complete local input, while the present proof supplies its operator-algebra image and topology.
 
 <a id="OA-FLOW.CHAR.TOPOLOGY"></a><a id="oa-flow.char.topology"></a>
 

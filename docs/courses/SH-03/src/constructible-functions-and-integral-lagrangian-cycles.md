@@ -1,12 +1,12 @@
 # Constructible functions and integral Lagrangian cycles
 
-*Original draft written by AI in Codex. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. Original programme text is public domain (CC0).*
+*Original programme exposition, examples and solutions are dedicated to the public domain under CC0.*
 
 A characteristic cycle remembers exactly the Grothendieck class of a constructible complex. Equivalently, it remembers the complex's local Euler function. The correspondence does not identify sheaf objects: monodromy, individual cohomology groups and cancellation between shifts can disappear. This lesson proves the complete correspondence and constructs its inverse through local intersections with positive-Hessian graphs.
 
-The correspondence between constructible functions, integral Lagrangian cycles and Grothendieck groups is due to Kashiwara and Schapira; see M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), and P. Schapira, [*Operations on constructible functions*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/ConstFct.pdf) (1991). Read Constructible functions and Euler integration for the full Grothendieck bijection, including noncompact manifolds and locally infinite strata. Integer coefficients and additive characteristic cycles proves the integral lift, local conormal coefficient and triangle additivity. Finite conormal closures and generic base directions proves generic conormal containment, including singular covectors. Differential sections and proper-below Euler indices proves the positive-Hessian local stalk formula with actual shrinking maps. The chain, orientation and supported trace constructions are in Lagrangian cycles and proper cotangent images and Subanalytic chains and closed cycle supports.
+The characteristic-cycle and local-index theory is due to Kashiwara; see his [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque **130** (1985), 193–209. P. Schapira's [*Operations on constructible functions*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/ConstFct.pdf) (1991), Theorem 3.4 and Remark 3.6, pp. 88–90, states Kashiwara's correspondence between Grothendieck classes, constructible functions and Lagrangian cycles. The argument below supplies its dimension induction and local-intersection inverse in the programme's fixed orientation convention. The Grothendieck correspondence supplies the constructible-function realization and its injectivity, including noncompact manifolds and locally infinite strata. The integer-coefficient lesson proves the integral chain lift, the actual local constant model, and the coefficient functor for a whole triangle. The conormal orientation comparison fixes the tangential sign of the normalized generator. The geometric input is generic conormality along any subanalytic base. The local index input is the strict-minimum stalk formula, with its specified shrinking restrictions. The cycle-support and dilation theorem and closed-support chain construction fix the support and orientation conventions used below.
 
-These are exact written programme providers. Compatible subanalytic stratifications, local finite-component and dimension theorems retain their existing owned foundational obligations in this course. The arguments below prove the correspondence relative to those precise prerequisites.
+We use compatible locally finite subanalytic stratifications, the local finite-component theorem and the subanalytic dimension theorem. These geometric prerequisites allow arbitrary locally finite decompositions; a global finite stratification is not assumed.
 
 ## The three groups and their coefficients
 
@@ -30,14 +30,14 @@ The chain model identifies this as the allowed-support subsheaf of \(\mathcal Z_
 LC(X)=\Gamma(T^*X;\mathcal L_{X,\mathbb Z}).
 \qquad\text{(3)}
 \]
-The support of a section of this sheaf is closed, conic and subanalytic and remains isotropic. Here are the local-to-global details needed below. On a relatively compact chart, a finite compatible subdivision describes a cycle by constant coefficients on regular top pieces; its actual support is the union of closures of the pieces with nonzero coefficient. It is subanalytic and lies in the given isotropic carrier. Positive radial transport preserves the coefficient on a smooth regular piece and its normalized orientation; the dense top-chain comparison extends that equality to the frontier. Thus the support and cycle are positive-conic. Subanalyticity and isotropy are local properties, so these statements hold for the global support. They do not require taking an arbitrary infinite union in one chart.
+The actual support of a section is itself a closed conic subanalytic isotropic set. To justify this from the sheaf definition, first work near one cotangent point on one allowed carrier. A finite compatible subdivision and the rank-one coefficient line describe the cycle by its coefficients on regular \(n\)-pieces. The closures of its nonzero pieces give its closed subanalytic support; if nonempty, this support is pure of dimension \(n\). It inherits canonical-form vanishing from the carrier. On a smaller neighborhood, every sufficiently short positive scaling path stays in the original representative neighborhood. Scaling preserves the carrier and its regular pieces, transports their orientation continuously from the identity, and acts positively on the fibre sign line. The locally constant cycle coefficient therefore agrees with its transported coefficient on those regular pieces. Their difference is a cycle carried on a set of dimension less than \(n\), and hence is zero by the top-chain support theorem. This proves the equality at frontier and singular points as well. Chaining these short paths along the connected positive scaling orbit propagates vanishing and nonvanishing. The full ambient cotangent bundle contains the entire orbit, so the actual support is positive-conic. Subanalyticity and isotropy are local, so they hold globally. This argument uses local carrier representatives and does not commute global sections with a sheaf colimit.
 
 The integral characteristic-cycle construction and additivity give
 \[
 CC_{\mathbb Z}:K_0(X)\longrightarrow LC(X).
 \qquad\text{(4)}
 \]
-More explicitly, generic finite coefficient complexes give integer multiplicities. The injection \(\mathbb Z\hookrightarrow k\), together with the integral boundary incidence numbers, extends their integral top chain to a cycle at every frontier. One actual coefficient functor represents a whole localized distinguished triangle, so its Euler coefficients add. Dense top-chain determination then proves
+Here the integer lift is a chain statement, not an assumption that a homology group has no torsion. On a dense regular conormal model, a perfect coefficient complex \(V\) on a smooth base \(Z\) contributes the integer \((-1)^{\dim Z}\chi(V)\) to the graph-normalized integral conormal generator. After a locally finite compatible refinement, these integers specify an integral top chain. Coefficient extension from \(\mathbb Z\) to \(k\) is injective on the chain group in every degree: it is the coefficientwise injection on each oriented cell, with the same integral boundary incidence numbers. The boundary of this integral top chain maps to the zero boundary of the field characteristic cycle, so injectivity in the boundary degree makes the integral boundary zero. This proves existence and uniqueness through every frontier, independently of the refinement. For a localized distinguished triangle, use the same microlocal coefficient functor on all three terms and its actual connecting map. The resulting triangle of perfect coefficient complexes has additive Euler characteristic. Its shared factor \((-1)^{\dim Z}\) is the same on the three conormal models. Equality on the dense regular pieces determines the full cycles, giving
 \[
 CC_{\mathbb Z}(F)=CC_{\mathbb Z}(F')+CC_{\mathbb Z}(F''),
 \qquad CC_{\mathbb Z}(F[r])=(-1)^rCC_{\mathbb Z}(F).
@@ -62,12 +62,11 @@ Let \(Y\subset U\) be a closed analytic embedded submanifold of an analytic open
 \]
 Indeed the lowest-dualizing/top-cycle comparison on the closed smooth support identifies cycles with that sheaf. One can also see it from a local oriented subdivision: the zero boundary condition across each codimension-one face equates the coefficients of the adjacent top cells. They consequently give a locally constant orientation coefficient, including where the cycle itself vanishes.
 
-The sign line in (7) is canonically trivialized by the normalized conormal cycle
-\([T_Y^*U]=CC_{\mathbb Z}(k_Y)\). To check why this works without orienting \(Y\), split locally
+The graph-normalized conormal cycle \([T_Y^*U]\) canonically trivializes the sign line in (7). In this normalization the sheaf \(k_Y\) has characteristic cycle \((-1)^{\dim Y}[T_Y^*U]\). The two generators agree only in even base dimension. To see why the sign line is trivial without orienting \(Y\), split locally
 \[
 TU|_Y\simeq TY\oplus N_{Y/U}.
 \]
-The tangent orientation of the conormal total space is the product of the orientation of \(TY\) and that of \(N_{Y/U}^*\). The fibre orientation coefficient in (2) restricts to the orientation of \(T^*U|_Y\), which is the product of the dual tangential and dual normal orientation lines. Their tensor product has trivial sign monodromy: each tangential and normal sign appears twice. The trace-normalized conormal construction fixes the integral generator and its order, including the codimension convention. We use that generator, rather than choosing a new untwisted orientation.
+The tangent orientation of the conormal total space has tangential factor \(\operatorname{or}_{TY}\) and normal-dual factor \(\operatorname{or}_{N_{Y/U}^*}\). The cotangent fibre coefficient restricts to the product of their dual tangential and normal orientation lines. A tangential or normal frame reversal occurs twice in their tensor product, so the sign monodromy cancels. This establishes triviality; the graph trace fixes which of the two primitive integral generators is \([T_Y^*U]\). In a tangential model its zero-section factor is \((-1)^{\dim Y}\) times the positive tangent-fibre point unit, while the closed normal factor is the primitive point-conormal unit. Consequently the finite coefficient sheaf has the extra \((-1)^{\dim Y}\) in (9). The frame cancellation makes this convention global on a nonorientable base.
 
 Every conormal fibre is a connected vector space, including its zero vector. Since a coefficient section in (7) is locally constant, it is constant on the entire fibre. Along a base component it is also constant. Thus every such cycle has the form
 \[
@@ -79,10 +78,10 @@ where \(m_Y:Y\to\mathbb Z\) is locally constant. If a component's integer is non
 The local conormal coefficient theorem gives, for any bounded locally constant finite coefficient complex \(A\) on \(Y\),
 \[
 CC_{\mathbb Z}(i_*A)
-=\left(\sum_q(-1)^q\operatorname{rank}H^q(A)\right)[T_Y^*U].
+=(-1)^{\dim Y}\left(\sum_q(-1)^q\operatorname{rank}H^q(A)\right)[T_Y^*U].
 \qquad\text{(9)}
 \]
-Its proof uses the actual constant-section counit on contractible base balls, then the normalized finite conormal formula, and glues by restriction. It permits monodromy and requires no global constant trivialization.
+For completeness, take a sufficiently small contractible analytic ball \(B\subset Y\) on which all \(H^q(A)\) are constant. These finitely many local systems have no higher cohomology on \(B\). The hypercohomology spectral sequence therefore gives \(H^q(R\Gamma(B;A))\simeq\Gamma(B;H^q(A))\). Put \(V=R\Gamma(B;A)\), a bounded finite-dimensional complex. The constant-section counit \(a_B^{-1}V\to A|_B\) induces the usual constant-section identification on each cohomology stalk and is consequently a quasi-isomorphism. The normalized closed-conormal trace for this actual model is \((-1)^{\dim Y}\chi(V)[T_B^*U]\), with the orientation just fixed. Restriction of that trace agrees on overlapping balls; gluing proves (9) with the locally constant Euler rank of \(A\). Nothing here trivializes monodromy around the whole of \(Y\).
 
 ## Closed conicity makes the base projection controlled
 
@@ -103,18 +102,18 @@ R=S\setminus Y\text{ closed subanalytic},\qquad
 \]
 The union \(Y\) is an embedded analytic submanifold, possibly with infinitely many connected components, all of dimension \(d\).
 
-For clarity, the geometric provider does more than inspect generic covectors one at a time. On the regular cotangent pieces over the regular base it removes the values where the projection has rank below \(d\). Those values and their relative closures have dimension below \(d\), by conic subanalytic projection, Sard's theorem and the subanalytic dimension bound. At the remaining regular cotangent points, every tangent vector of \(Y\) lifts. Vanishing of the canonical one-form implies that the covector annihilates \(TY\). Regular cotangent points are dense, and the ordinary conormal is closed over this smooth base; taking limits proves the same containment for singular covectors and zero covectors. This is precisely the complete generic containment theorem proved in the linked conormal lesson.
+Here is the dimension argument that makes (11) a strict descent. In the dimension-\(d\) regular part \(S^{(d)}_{\mathrm{reg}}\), apply the projection to the regular pieces of \(A=\Lambda\cap\pi^{-1}S\). Its rank-\(<d\) locus is conic subanalytic, and its image is subanalytic by conic projection. The analytic critical-value theorem makes that image measure zero in the smooth base. A subanalytic measure-zero set has dimension less than \(d\); its closure inside \(S^{(d)}_{\mathrm{reg}}\) still has dimension less than \(d\). Remove that relative closure and call the remaining dimension-\(d\) smooth part \(Y\). It is open in \(S\). The complement of \(S^{(d)}_{\mathrm{reg}}\) in \(S\) already has dimension less than \(d\), including any lower-dimensional components. The closure in \(S\) of the removed set can add points only in this complement, so \(R=S\setminus Y\) is closed and subanalytic of dimension less than \(d\). Over \(Y\), every regular cotangent point has projection onto \(TY\); the vanishing canonical one-form says that its covector annihilates \(TY\). To treat an arbitrary point of \(A\) over \(Y\), approximate it by regular points of \(A\). Their bases eventually remain in the same smooth local part of \(Y\), since \(Y\) is open in \(S\). The conormal bundle is closed over that part, so their limit also annihilates \(TY\). This proves the last inclusion in (11) for singular covectors and zero covectors as well. For \(d=0\), the critical locus is empty and the same argument leaves no lower-dimensional remainder.
 
-Set \(U=X\setminus R\). Then \(Y=S\cap U\) is closed in \(U\), and the restricted cycle has support in \(T_Y^*U\). Equation (8) gives one integer \(m_Y\) on each connected base component. The local finite-component theorem ensures that a sufficiently small relatively compact subanalytic chart, including one at a frontier point, meets only finitely many components of \(Y\). Distinct global components meeting such a chart must contain distinct local components there. Thus componentwise integer ranks are locally finite even near \(R\).
+Set \(U=X\setminus R\). Then \(Y=S\cap U\) is closed in \(U\), and the restricted cycle has support in \(T_Y^*U\). Equation (8) gives one integer \(m_Y\) on each connected component of \(Y\). Choose a sufficiently small relatively compact subanalytic ball around any base point, including a point of \(R\). Its intersection with \(Y\) has finitely many connected components. Every global component of \(Y\) meeting that ball contains one of these local components, and different global components contain different ones. Thus only finitely many global components meet the ball. Componentwise integer ranks are consequently locally finite even at the frontier, although their values need not be bounded over all of \(X\).
 
 ## Realize the generic coefficient by an actual bounded complex
 
-Define \(m_+=\max(m_Y,0)\), \(m_-=\max(-m_Y,0)\). On \(Y\), construct the locally constant sheaves whose ranks on each component are these finite integers, and put
+Define \(a_Y=(-1)^d m_Y\), \(m_+=\max(a_Y,0)\) and \(m_-=\max(-a_Y,0)\). On \(Y\), construct the locally constant sheaves whose ranks on each component are these finite integers, and put
 \[
 A_Y=k_Y^{m_+}\oplus k_Y^{m_-}[1].
 \qquad\text{(12)}
 \]
-The notation means that actual sheaf on the disjoint components, with its indicated rank at every point. It is not an infinite sum of Grothendieck classes. The two degrees are \(-1,0\), uniformly over all components. Its Euler function on \(Y\) is \(m_Y\).
+The notation means the actual sheaf on the disjoint components, with its indicated finite rank at every point. It is not an infinite sum of Grothendieck classes. The two degrees are \(-1,0\), uniformly over all components. Its Euler function on \(Y\) is \(a_Y=(-1)^d m_Y\), so the signed coefficient in (9) is \((-1)^d a_Y=m_Y\).
 
 Let \(i_Y:Y\hookrightarrow U\) be closed and \(j_U:U\hookrightarrow X\) open, and take
 \[
@@ -125,7 +124,7 @@ These two extension functors are exact. At points of \(Y\) the stalks are the fi
 
 This is the needed real-subanalytic extension argument. It uses the exact stalk formula and compatible stratification, rather than a proper-image theorem or a complex-analytic-boundary assertion with narrower hypotheses. Its closed support lies in \(S\).
 
-Restriction of characteristic cycles to \(U\) commutes with their identity and trace construction. Equations (9) and (12) therefore give
+The actual open restriction of (13) is \(j_U^{-1}F_Y=i_{Y*}A_Y\). Restriction of characteristic cycles commutes with their identity and trace maps. By (9), its coefficient on \(T_Y^*U\) is \((-1)^d\chi(A_Y)=(-1)^d a_Y=m_Y\), and there is no support over \(U\setminus Y\). Thus the equality holds on the whole cotangent bundle of this open set:
 \[
 CC_{\mathbb Z}(F_Y)|_{T^*U}=\lambda|_{T^*U}.
 \qquad\text{(14)}
@@ -135,8 +134,7 @@ Now set
 \lambda_1=\lambda-CC_{\mathbb Z}(F_Y).
 \qquad\text{(15)}
 \]
-It is again an integral cycle with an allowed carrier: use the finite union
-\(\Lambda\cup SS(F_Y)\), which is closed conic subanalytic isotropic. The closed support of \(F_Y\) lies in \(S\), hence its microsupport projects into \(S\). Equation (14) removes every remaining base point in \(Y\). Consequently
+It is again an integral cycle with an allowed carrier: take the finite union \(\Lambda\cup SS(F_Y)\), which is closed conic subanalytic isotropic. The closed support of \(F_Y\) lies in \(S\). At every point of \(X\setminus S\) the sheaf vanishes on a neighborhood, so its microsupport has no covector there; consequently both terms of (15) have support over \(S\). Equation (14) says that their difference vanishes as a cycle section on the entire open set \(T^*U\), not merely on the generic regular covectors. Its actual support must therefore project into \(S\setminus U=R\). Hence
 \[
 \pi(\operatorname{supp}\lambda_1)\subset R,\qquad
 \dim\pi(\operatorname{supp}\lambda_1)<d.
@@ -150,7 +148,7 @@ Repeat on the actual residual cycle. Its closed conic support again has a closed
        =CC_{\mathbb Z}\!\left(\bigoplus_{\ell=0}^rF_\ell\right).
 \qquad\text{(17)}
 \]
-The sum and direct sum in (17) are finite. This proves surjectivity of (4), including noncompact \(X\), infinitely many strata, unbounded global coefficient ranks and a nonorientable base. The uniform dimension bound also makes the number of stages uniform across components of differing dimension.
+The sum and direct sum in (17) are finite, and all summands have the same degree range \([-1,0]\). This proves surjectivity of (4), including noncompact \(X\), infinitely many strata, unbounded global coefficient ranks and nonorientable bases. If connected components of \(X\) have differing dimensions bounded by \(N\), perform the construction on each component, pad completed constructions with zero objects up to \(N+1\) stages, and glue the object at each stage over the disjoint open components. Each point has a neighborhood in its own component, so the glued objects remain constructible with finite stalks. Their common two-degree range and the same finite stage bound give one object of \(\mathcal D(X)\) realizing the global cycle. No infinite Grothendieck relation is used.
 
 ## A positive minimum measures the ordinary stalk
 
@@ -160,17 +158,21 @@ We need the exact local index result. Given \(F\in\mathcal D(X)\), \(x\in X\), a
 \operatorname{Hess}_x\rho>0,
 \qquad\text{(18)}
 \]
-its differential graph has an isolated local intersection with \(SS(F)\) at the zero covector, or an empty intersection if \(F\) is invisible there. The normalized supported intersection number satisfies
+after shrinking its domain, the differential graph meets \(SS(F)\) in a subset of the singleton \(\{(x;0)\}\). In particular the intersection is empty if \(F\) vanishes on a neighborhood of \(x\). A zero stalk Euler value by itself does not imply an empty microsupport intersection. The normalized supported intersection number satisfies
 \[
 \#\bigl([\Gamma_{d\rho}]\cap CC_{\mathbb Z}(F)\bigr)_{(x;0)}
 =\chi F(x).
 \qquad\text{(19)}
 \]
-The integral number maps to the corresponding \(k\)-valued trace by the injective coefficient map. Thus the existing field trace identity is also the integral identity in (19).
+The integer in (19) is defined with the same ordered graph orientation, supported cup product and point trace as the field-valued intersection. Extending the orientation coefficient from \(\mathbb Z\) to \(k\) commutes with these maps and takes the primitive point generator to \(1\). It therefore sends the integral intersection to the field trace without a further sign. Since \(k\) has characteristic zero, \(\mathbb Z\to k\) is injective, and the field identity implies the integer equality in (19).
 
-Here is the proof mechanism, including isolation. Work in coordinates \(x=0\). Positive Hessian gives \(c|u|^2\leq\rho(u)\leq C|u|^2\) on a small closed ball, for positive constants. Apply the discrete critical-value theorem to the closed conic isotropic microsupport cut over that ball. Its base is compact. The values selected by \(d\rho\) are locally finite, so shrink to exclude all positive selected values near zero. A sufficiently small \(\rho\)-sublevel lies strictly inside the ball and has compact closed support sublevels. Since \(\rho\) vanishes there only at zero, the graph meets the microsupport only over zero.
+We spell out the local support and limit argument. Write \(x=0\) in an analytic chart, and choose a closed coordinate ball \(\overline B_R\) lying in the domain of \(\rho\). After decreasing \(R\), positive Hessian gives \(c|u|^2\leq\rho(u)\leq C|u|^2\) on this ball, with \(c,C>0\), and zero is its unique zero. Cut the closed conic isotropic carrier \(SS(F)\) by \(\pi^{-1}\overline B_R\). Canonical-form vanishing is inherited by this subanalytic subset. Its base projection is closed by (10) and is contained in the compact ball, so the restriction of \(\rho\) to that projection is proper. The isotropic critical-value theorem therefore makes the values selected by \(d\rho\) locally finite in the ambient real line. Choose \(0<\epsilon<cR^2\) so that none of those selected values lies in \((0,\epsilon)\), and set \(U=B_R\cap\{\rho<\epsilon\}\). Any point of \(\Gamma_{d\rho}\cap SS(F|_U)\) must have value zero and hence base point zero. This proves the asserted isolation, including a singular intersection at the zero covector.
 
-For two sufficiently small positive levels, the finite-band Morse theorem makes the **actual restriction** of section complexes an isomorphism. Compact closed bands and microsupport avoidance supply its hypotheses. The quadratic bounds make these sublevels a neighborhood basis; exact stalk colimits identify their stable section complex with \(F_x\). The proper-below differential index theorem identifies its Euler value with the supported local graph-cycle number. This proves (19). All comparisons, critical-value conditions, compactness checks and shrinking maps are proved in the linked differential-index lesson. This argument covers a singular intersection at \((x;0)\); no transverse nonzero-covector assumption is inserted.
+Let \(D\) be the closed support of \(F\) in the chart. For \(0\leq t<\epsilon\), the closed support sublevel on \(U\) is \(D\cap\overline B_R\cap\{\rho\leq t\}\). The lower quadratic bound keeps it strictly inside the ball, and it is compact. Negative sublevels are empty. These are precisely the proper-below support conditions; no compactness of the original support on \(X\) is imposed.
+
+Write \(U_t=\{u\in U:\rho(u)<t\}\). For \(0<t'<t<\epsilon\), choose \(0<r<t'\) and an increasing analytic diffeomorphism \(h:(-1,t)\to\mathbb R\). On \(U_t\), the function \(h\circ\rho\) has compact closed support sublevels and its positive differential avoids the microsupport above \(h(r)\). The positive open-cutoff theorem therefore identifies the actual restriction \(R\Gamma(U_t;F)\to R\Gamma(U_{t'};F)\) as a quasi-isomorphism. Its hypothesis concerns a positive multiple of \(d\rho\), so conicity gives exactly the avoidance already checked. These maps compose as ordinary restrictions.
+
+The quadratic bounds make the \(U_t\) a neighborhood basis of zero. Take a bounded-below injective resolution on \(U\); its restrictions to the open \(U_t\) compute their derived sections. The filtered colimit of their section complexes is the stalk complex, degree by degree. Filtered colimits of vector spaces are exact, so every canonical map from this stable family of derived section complexes to \(F_0\) is a quasi-isomorphism. In particular their cohomology is finite-dimensional. Apply the ordinary proper-below differential index theorem on \(U_t\), with target interval \((-1,t)\). The checked closed sublevels are compact and its graph intersection is contained in \(\{(0;0)\}\). Open excision identifies its supported intersection with the local intersection in (19); the section complex just identified has Euler value \(\chi F(0)\). Together with the coefficient comparison above this proves (19), with its positive-minimum sign and without a transversality assumption.
 
 ## Vanishing cycle means vanishing Grothendieck class
 
@@ -196,7 +198,7 @@ where \(\rho\) satisfies (18). Surjectivity supplies \(F\) with \(CC_{\mathbb Z}
 Eu(\lambda)=\chi F.
 \qquad\text{(22)}
 \]
-Thus the value is independent of the analytic phase, its chart, the sufficiently small neighborhood and the realizing object. The right side is constructible. Local intersection is additive in the cycle, so \(Eu\) is a homomorphism.
+Indeed \(\operatorname{supp}\lambda\subset SS(F)\), so the same shrinking gives an isolated supported intersection for \(\lambda\). Its ordered local intersection is intrinsic to the integral cycle and the chosen graph. Equation (19) identifies it with \(\chi F(x)\) for every admissible phase and every realizing object. Thus (21) is independent of the phase, its chart and the sufficiently small neighborhood, and any other realization gives exactly the same value. The right side of (22) is constructible. Additivity of the supported intersection in the cycle makes \(Eu\) a homomorphism. In particular the normalization is \(Eu([T_Y^*U])=(-1)^{\dim Y}1_Y\), since (9) sends \(k_Y\) to \((-1)^{\dim Y}[T_Y^*U]\).
 
 If \(F,G\) realize the same cycle, (20) gives \([F]=[G]\), and (6) gives \(\chi F=\chi G\). Conversely (19) already shows equality of their values directly. We have the commuting isomorphisms
 \[
@@ -242,7 +244,7 @@ Let \(\lambda=3C-2O\). Use the highest-dimensional realization followed by a zer
 \[
 \lambda=O+3P.
 \]
-On the generic base \(Y=\mathbb R\setminus\{0\}\), the coefficient is one on the positive component and zero on the negative component. Extending that coefficient by zero gives \(k_{(0,\infty)}\), with cycle \(O\); this includes its boundary conormal term. The residual cycle is \(3P\), realized by \(k_{\{0\}}^3\). Hence \(F=k_{(0,\infty)}\oplus k_{\{0\}}^3\) realizes \(\lambda\). Its Euler function is one on \(x>0\), three at zero, and zero on \(x<0\).
+Here the open ambient set is \(U=\mathbb R\setminus\{0\}\), and the dimension-one smooth base of the cycle is \(Y=(0,\infty)\). Over \(Y\), \(O\) has coefficient \(m_Y=-1\) in the graph-normalized zero-section generator; there is no cycle over the negative component of \(U\). The coefficient required in (12) is consequently \(a_Y=(-1)^1m_Y=1\). Its degree-zero constant sheaf extends by zero to \(k_{(0,\infty)}\), with full cycle \(O\), including its boundary conormal term. The residual cycle is \(3P\), realized by \(k_{\{0\}}^3\). Hence \(F=k_{(0,\infty)}\oplus k_{\{0\}}^3\) realizes \(\lambda\). Its Euler function is one on \(x>0\), three at zero, and zero on \(x<0\).
 
 Equivalently, since \(\chi k_{[0,\infty)}=1_{[0,\infty)}\), the function is \(3\,1_{[0,\infty)}-2\,1_{(0,\infty)}\). Replacing the first-stage cycle by only its restriction over \(Y\) and forgetting its frontier term would give an incorrect residual.
 
@@ -251,7 +253,7 @@ Equivalently, since \(\chi k_{[0,\infty)}=1_{[0,\infty)}\), the function is \(3\
 
 Embed a circle \(Y\) as a closed analytic curve in \(\mathbb R^2\). Compare the cycles of its constant rank-one local system and its rank-one local system with monodromy \(-1\), both extended by the closed embedding. Compare their cohomology.
 
-**Solution.** Each system is locally rank one, so (9) gives the same normalized full conormal cycle \([T_Y^*\mathbb R^2]\). Their Euler functions both equal \(1_Y\), and (20) identifies their Grothendieck classes. They differ as sheaves because their monodromy automorphisms differ.
+**Solution.** Each system is locally rank one on a base of dimension one, so (9) gives the same cycle \(-[T_Y^*\mathbb R^2]\). Their Euler functions both equal \(1_Y\), and (20) identifies their Grothendieck classes. They differ as sheaves because their monodromy automorphisms differ.
 
 Cutting the circle gives the complex \([k\xrightarrow{T-1}k]\) in degrees zero and one. For \(T=1\) both cohomology groups are \(k\); for \(T=-1\), multiplication by \(-2\) is invertible in characteristic zero and both vanish. Their global Euler values are both zero. Neither equality of cycles nor equality of classes identifies the objects or their individual cohomology groups.
 
@@ -294,7 +296,7 @@ For a function \(m(x)\), choose at each point a vector space of dimension \(\max
 
 Let \(F=k_Y\) for the analytic circle \(Y\subset\mathbb R^2\) used above. Compare \(Eu(CC_{\mathbb Z}(F))\), its Euler integral and its local cycle.
 
-**Solution.** The local function is \(1_Y\), with compact closed support. Its Euler integral is \(\chi(Y;k)=1-1=0\). Its characteristic cycle remains the nonzero normalized full conormal \([T_Y^*\mathbb R^2]\), whose coefficient is one in every local conormal chart. Thus the proper image to a point forgets the spatial information by a global trace, whereas \(Eu\) recovers the entire function before integration. The zero global number cannot replace the pointwise criterion used in the injectivity proof.
+**Solution.** The local function is \(1_Y\), with compact closed support. Its Euler integral is \(\chi(Y;k)=1-1=0\). Its characteristic cycle remains the nonzero cycle \(-[T_Y^*\mathbb R^2]\), whose coefficient in the graph-normalized generator is minus one in every local conormal chart. Thus the proper image to a point forgets the spatial information by a global trace, whereas \(Eu\) recovers the entire function before integration. The zero global number cannot replace the pointwise criterion used in the injectivity proof.
 
 ## References and continuation
 

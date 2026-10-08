@@ -1,6 +1,6 @@
 # SH02-RR — From directional tests to further microlocal theories
 
-Original English lesson for SH-02, released under GFDL-1.2-or-later with no invariant sections or cover texts. The calculations below use the cited course results with their individual prerequisite status; the research projects do not import the later theorems they ask the reader to study.
+Original English lesson for SH-02, released under CC0 1.0. The calculations below use the cited course results with their individual prerequisite status; the research projects do not import the later theorems they ask the reader to study.
 
 A useful research question identifies which part of a construction survives a change of setting. Here the changes are concrete: deleting a zero section, replacing a positive real parameter by a complex one, imposing constructibility, transporting a cotangent relation, or recognizing a sheaf as the solutions of an operator system. Each route begins with a calculation available in this course and specifies what further theorem would be needed.
 

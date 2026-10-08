@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Changing centers in Fourier windows</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L160.html">Previous lesson</a> · <a href="#1-two-scales-and-one-exact-identity">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="changing-centers-in-fourier-windows">Changing centers in Fourier windows</h1>
+<p>Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>A Fourier window centered at a large real frequency uses its logarithm as a second scale. Changing the center changes both scales. An exact affine identity keeps track of the change. It explains why bounded logarithmic shifts translate a limiting profile, and why one profile controls a suitably expanding union of frequency neighborhoods.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The needed preceding proofs are <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Theorem 2.1, for proper and collapsed profiles; <a href="AN02-L143.html">Local compactness and Hartogs bounds</a>, for the compactness and ceiling comparisons; and <a href="AN02-L139.html">Plurisubharmonic envelopes and support functions</a>, for indicators. The <a href="#complete-proof">complete proof</a> includes all the center-change and neighborhood arguments.</p>
+<h2 id="1-two-scales-and-one-exact-identity">1. Two scales and one exact identity</h2>
+<p>For a compact distribution on <span class="math" data-index="0" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, write</p>
+<span class="math math-display" id="eq-W1" data-index="1" data-tex="\[
+ F(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \qquad |c|&gt;2.
+ \tag{W1}
+\]">\[
+ F(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \qquad |c|&gt;2.
+ \tag{W1}
+\]</span>
+<p>At a zero of the transform the logarithm is <span class="math" data-index="2" data-tex="\(-\infty\)">\(-\infty\)</span>. A proper profile is a canonical PSH local <span class="math" data-index="3" data-tex="\(L^1\)">\(L^1\)</span> limit. Collapse means convergence to <span class="math" data-index="4" data-tex="\(-\infty\)">\(-\infty\)</span> uniformly on every compact parameter set. A proper profile has an indicator <span class="math" data-index="5" data-tex="\(h\)">\(h\)</span>, the support function of a compact convex set. Collapse has indicator <span class="math" data-index="6" data-tex="\(-\infty\)">\(-\infty\)</span> and empty carrier.</p>
+<p>Given real centers <span class="math" data-index="7" data-tex="\(c,d\)">\(c,d\)</span>, put</p>
+<span class="math math-display" id="eq-W2" data-index="8" data-tex="\[
+ a=\frac{d-c}{\log|c|},\qquad
+ \kappa=\frac{\log|d|}{\log|c|}.
+ \tag{W2}
+\]">\[
+ a=\frac{d-c}{\log|c|},\qquad
+ \kappa=\frac{\log|d|}{\log|c|}.
+ \tag{W2}
+\]</span>
+<p>The exact identity is</p>
+<span class="math math-display" id="eq-W3" data-index="9" data-tex="\[
+ L_u(z,d)=\kappa^{-1}L_u(a+\kappa z,c).
+ \tag{W3}
+\]">\[
+ L_u(z,d)=\kappa^{-1}L_u(a+\kappa z,c).
+ \tag{W3}
+\]</span>
+<p>Indeed <span class="math" data-index="10" data-tex="\(c+(a+\kappa z)\log|c|=d+z\log|d|\)">\(c+(a+\kappa z)\log|c|=d+z\log|d|\)</span>. The real shift <span class="math" data-index="11" data-tex="\(a\)">\(a\)</span> leaves the imaginary part unchanged, whereas the positive dilation multiplies it by <span class="math" data-index="12" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p>If <span class="math" data-index="13" data-tex="\(|c|=Q&gt;e\)">\(|c|=Q&gt;e\)</span> and <span class="math" data-index="14" data-tex="\(|d-c|\leq\delta Q\)">\(|d-c|\leq\delta Q\)</span>, with <span class="math" data-index="15" data-tex="\(0\leq\delta\leq1/4\)">\(0\leq\delta\leq1/4\)</span>, the full proof gives</p>
+<span class="math math-display" id="eq-W4" data-index="16" data-tex="\[
+ \frac12\leq\kappa\leq\frac32,\qquad
+ |\kappa-1|\leq\frac{2\delta}{\log Q},\qquad
+ |\kappa^{-1}-1|\leq\frac{4\delta}{\log Q}.
+ \tag{W4}
+\]">\[
+ \frac12\leq\kappa\leq\frac32,\qquad
+ |\kappa-1|\leq\frac{2\delta}{\log Q},\qquad
+ |\kappa^{-1}-1|\leq\frac{4\delta}{\log Q}.
+ \tag{W4}
+\]</span>
+<p>These estimates are uniform throughout the frequency neighborhood.</p>
+<h2 id="2-what-bounded-logarithmic-shifts-preserve">2. What bounded logarithmic shifts preserve</h2>
+<p>Suppose <span class="math" data-index="17" data-tex="\(|c_j|\to\infty\)">\(|c_j|\to\infty\)</span> and <span class="math" data-index="18" data-tex="\(L_u(\cdot,c_j)\to v\)">\(L_u(\cdot,c_j)\to v\)</span>. If
+<span class="math" data-index="19" data-tex="\(|d_j-c_j|\leq A\log|c_j|\)">\(|d_j-c_j|\leq A\log|c_j|\)</span>, the shifts <span class="math" data-index="20" data-tex="\(a_j\)">\(a_j\)</span> in (W2) are bounded and <span class="math" data-index="21" data-tex="\(\kappa_j\to1\)">\(\kappa_j\to1\)</span>.</p>
+<p>When <span class="math" data-index="22" data-tex="\(v\)">\(v\)</span> is proper and <span class="math" data-index="23" data-tex="\(a_j\to a\)">\(a_j\to a\)</span>, the new profiles converge in local <span class="math" data-index="24" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-index="25" data-tex="\(v(z+a)\)">\(v(z+a)\)</span>. For a bounded sequence <span class="math" data-index="26" data-tex="\(a_j\)">\(a_j\)</span>, the possible limits are precisely the translates corresponding to its cluster points. They need not all be different, and the new sequence need not converge. Collapse stays collapsed, even if <span class="math" data-index="27" data-tex="\(a_j\)">\(a_j\)</span> does not converge. These are Theorem 2.2 of the complete proof.</p>
+<p>All these real translates have the same indicator. Their imaginary-height envelopes agree:</p>
+<span class="math math-display" id="eq-W5" data-index="28" data-tex="\[
+ \sup_{x\in\mathbb R^n}v(x+a+i\eta)
+ =\sup_{x\in\mathbb R^n}v(x+i\eta).
+ \tag{W5}
+\]">\[
+ \sup_{x\in\mathbb R^n}v(x+a+i\eta)
+ =\sup_{x\in\mathbb R^n}v(x+i\eta).
+ \tag{W5}
+\]</span>
+<p>The real translation simply permutes the set of real observation points.</p>
+<p>The convergence proof uses smooth tests and PSH compactness. Under <span class="math" data-index="29" data-tex="\(w=a_j+\kappa_jz\)">\(w=a_j+\kappa_jz\)</span>, real volume in dimension <span class="math" data-index="30" data-tex="\(2n\)">\(2n\)</span> contributes the factor <span class="math" data-index="31" data-tex="\(\kappa_j^{-2n}\)">\(\kappa_j^{-2n}\)</span>. The normalized logarithm contributes another <span class="math" data-index="32" data-tex="\(\kappa_j^{-1}\)">\(\kappa_j^{-1}\)</span>. Thus the pairing has factor <span class="math" data-index="33" data-tex="\(\kappa_j^{-1-2n}\)">\(\kappa_j^{-1-2n}\)</span>. Moving tests converge uniformly on a common compact support; the old functions have bounded local <span class="math" data-index="34" data-tex="\(L^1\)">\(L^1\)</span> norms. This gives distributional convergence. PSH compactness and uniqueness of canonical representatives then give convergence in local <span class="math" data-index="35" data-tex="\(L^1\)">\(L^1\)</span>, as proved in Lemma 2.1.</p>
+<h2 id="3-neighborhoods-that-grow-on-the-logarithmic-scale">3. Neighborhoods that grow on the logarithmic scale</h2>
+<p>Let <span class="math" data-index="36" data-tex="\(N\geq0\)">\(N\geq0\)</span> be a compact Fourier growth order. Every proper profile satisfies
+<span class="math" data-index="37" data-tex="\(v(z)\leq N+h(\operatorname{Im}z)\)">\(v(z)\leq N+h(\operatorname{Im}z)\)</span>.
+Theorem 3.1 of the complete proof constructs <span class="math" data-index="38" data-tex="\(r_j\to\infty\)">\(r_j\to\infty\)</span> such that</p>
+<span class="math math-display" id="eq-W6" data-index="39" data-tex="\[
+ E=\bigcup_j\{d:|d-c_j|&lt;r_j\log|c_j|\},\qquad
+ \frac{r_j\log|c_j|}{|c_j|}\longrightarrow0.
+ \tag{W6}
+\]">\[
+ E=\bigcup_j\{d:|d-c_j|&lt;r_j\log|c_j|\},\qquad
+ \frac{r_j\log|c_j|}{|c_j|}\longrightarrow0.
+ \tag{W6}
+\]</span>
+<p>In the proper case, for every compact <span class="math" data-index="40" data-tex="\(B\subset\mathbb C^n\)">\(B\subset\mathbb C^n\)</span> and <span class="math" data-index="41" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is <span class="math" data-index="42" data-tex="\(T\)">\(T\)</span> such that</p>
+<span class="math math-display" id="eq-W7" data-index="43" data-tex="\[
+ L_u(z,d)\leq N+h(\operatorname{Im}z)+\varepsilon
+ \quad(z\in B,\ d\in E,\ |d|&gt;T).
+ \tag{W7}
+\]">\[
+ L_u(z,d)\leq N+h(\operatorname{Im}z)+\varepsilon
+ \quad(z\in B,\ d\in E,\ |d|&gt;T).
+ \tag{W7}
+\]</span>
+<p>This also bounds the joint upper limit when <span class="math" data-index="44" data-tex="\(d\)">\(d\)</span> escapes and the parameter <span class="math" data-index="45" data-tex="\(z\)">\(z\)</span> moves toward a fixed point. In the collapsed case the convergence to <span class="math" data-index="46" data-tex="\(-\infty\)">\(-\infty\)</span> is uniform on <span class="math" data-index="47" data-tex="\(B\)">\(B\)</span> throughout the escaping part of <span class="math" data-index="48" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Here is how the two requirements on the radii fit together. Hartogs comparison gives a diagonal <span class="math" data-index="49" data-tex="\(s_j\to\infty\)">\(s_j\to\infty\)</span> with error <span class="math" data-index="50" data-tex="\(1/s_j\)">\(1/s_j\)</span> on the parameter ball of radius <span class="math" data-index="51" data-tex="\(2s_j\)">\(2s_j\)</span>. Choose</p>
+<span class="math math-display" id="eq-W8" data-index="52" data-tex="\[
+ Q_j=|c_j|,\qquad
+ r_j=\min\left\{s_j,\sqrt{\frac{Q_j}{\log Q_j}},
+                   \frac{Q_j}{4\log Q_j}\right\}.
+ \tag{W8}
+\]">\[
+ Q_j=|c_j|,\qquad
+ r_j=\min\left\{s_j,\sqrt{\frac{Q_j}{\log Q_j}},
+                   \frac{Q_j}{4\log Q_j}\right\}.
+ \tag{W8}
+\]</span>
+<p>The first bound keeps the new affine parameter inside the old Hartogs ball. The other two bounds make the relative frequency displacement small and keep <span class="math" data-index="53" data-tex="\(\kappa\)">\(\kappa\)</span> uniformly positive. For fixed <span class="math" data-index="54" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span> and large <span class="math" data-index="55" data-tex="\(j\)">\(j\)</span>,
+<span class="math" data-index="56" data-tex="\(|a+\kappa z|\leq3r_j/2\leq2s_j\)">\(|a+\kappa z|\leq3r_j/2\leq2s_j\)</span>.
+The support term cancels exactly:</p>
+<span class="math math-display" id="eq-W9" data-index="57" data-tex="\[
+ \kappa^{-1}h(\kappa\operatorname{Im}z)
+ =h(\operatorname{Im}z).
+ \tag{W9}
+\]">\[
+ \kappa^{-1}h(\kappa\operatorname{Im}z)
+ =h(\operatorname{Im}z).
+ \tag{W9}
+\]</span>
+<p>The remaining upper error is at most <span class="math" data-index="58" data-tex="\(4Nr_j/Q_j+2/s_j\)">\(4Nr_j/Q_j+2/s_j\)</span>, which tends to zero. Positive homogeneity makes (W9) valid even where <span class="math" data-index="59" data-tex="\(h\)">\(h\)</span> is negative.</p>
+<p>Finitely many early frequency neighborhoods form a bounded set. Consequently every neighborhood index witnessing an escaping frequency must itself tend to infinity. This is the step that makes the estimate uniform over the entire union <span class="math" data-index="60" data-tex="\(E\)">\(E\)</span>, including overlaps.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-a-negative-support-value-and-growing-neighborhoods">Example 1: a negative support value and growing neighborhoods</h3>
+<p>Take <span class="math" data-index="61" data-tex="\(u=\delta_{-1}\)">\(u=\delta_{-1}\)</span> on <span class="math" data-index="62" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Then <span class="math" data-index="63" data-tex="\(F(\zeta)=e^{i\zeta}\)">\(F(\zeta)=e^{i\zeta}\)</span>, and for <span class="math" data-index="64" data-tex="\(z=x+i\eta\)">\(z=x+i\eta\)</span>,</p>
+<span class="math math-display" id="eq-W10" data-index="65" data-tex="\[
+ L_u(z,c)=-\eta,\qquad h(\eta)=-\eta,\qquad C=\{-1\}.
+ \tag{W10}
+\]">\[
+ L_u(z,c)=-\eta,\qquad h(\eta)=-\eta,\qquad C=\{-1\}.
+ \tag{W10}
+\]</span>
+<p>The profile is exact for every real <span class="math" data-index="66" data-tex="\(|c|&gt;2\)">\(|c|&gt;2\)</span>. Its carrier is a singleton even though the support function is negative for <span class="math" data-index="67" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Identity (W3) gives
+<span class="math" data-index="68" data-tex="\(\kappa^{-1}[-\kappa\eta]=-\eta\)">\(\kappa^{-1}[-\kappa\eta]=-\eta\)</span> exactly.</p>
+<p>Choose <span class="math" data-index="69" data-tex="\(c_j=2^j\)">\(c_j=2^j\)</span>, <span class="math" data-index="70" data-tex="\(j\geq8\)">\(j\geq8\)</span>, and
+<span class="math" data-index="71" data-tex="\(r_j=\sqrt{2^j/(j\log2)}\)">\(r_j=\sqrt{2^j/(j\log2)}\)</span>.
+The absolute frequency radius is
+<span class="math" data-index="72" data-tex="\(\rho_j=r_j\log c_j=\sqrt{2^jj\log2}\)">\(\rho_j=r_j\log c_j=\sqrt{2^jj\log2}\)</span>.
+Both <span class="math" data-index="73" data-tex="\(r_j\)">\(r_j\)</span> and <span class="math" data-index="74" data-tex="\(\rho_j\)">\(\rho_j\)</span> tend to infinity, while
+<span class="math" data-index="75" data-tex="\(\rho_j/c_j=\sqrt{j\log2/2^j}\to0\)">\(\rho_j/c_j=\sqrt{j\log2/2^j}\to0\)</span>.
+At <span class="math" data-index="76" data-tex="\(j=8\)">\(j=8\)</span> this ratio is less than <span class="math" data-index="77" data-tex="\(1/4\)">\(1/4\)</span>, and it decreases thereafter because <span class="math" data-index="78" data-tex="\((j+1)/(2j)&lt;1\)">\((j+1)/(2j)&lt;1\)</span>.
+Every neighborhood therefore lies in positive frequencies. The bound is exact throughout the entire union, with <span class="math" data-index="79" data-tex="\(N=0\)">\(N=0\)</span> and no error.</p>
+<figure><img class="course-figure" width="2186" height="685" src="reproduce/L161/figures/expanding-logarithmic-neighborhoods.png" alt="The frequency radius grows, its fraction of the center shrinks, and the point-mass profile remains exactly minus the imaginary parameter." /><figcaption class="native"><a href="reproduce/L161/figures/expanding-logarithmic-neighborhoods.png">Open full-size PNG</a> · <a href="reproduce/L161/figures/expanding-logarithmic-neighborhoods.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> Left: the exact radii <span class="math" data-index="80" data-tex="\(r_j\)">\(r_j\)</span> and <span class="math" data-index="81" data-tex="\(\rho_j\)">\(\rho_j\)</span> for <span class="math" data-index="82" data-tex="\(c_j=2^j\)">\(c_j=2^j\)</span>, <span class="math" data-index="83" data-tex="\(8\leq j\leq30\)">\(8\leq j\leq30\)</span>. Middle: the exact relative displacement <span class="math" data-index="84" data-tex="\(\rho_j/c_j\)">\(\rho_j/c_j\)</span>, together with the cap <span class="math" data-index="85" data-tex="\(1/4\)">\(1/4\)</span>. Right: the exact profile of <span class="math" data-index="86" data-tex="\(\delta_{-1}\)">\(\delta_{-1}\)</span> at every center in these neighborhoods. This profile has carrier <span class="math" data-index="87" data-tex="\(\{-1\}\)">\(\{-1\}\)</span>; a negative support value is part of the theorem, not an exceptional case. Proof locators: Example 1 and the complete proof, Lemma 1.1 and Theorem 3.1. Background: Tao and Hörmander.</p>
+<h3 id="example-2-derivatives-add-a-real-axis-order">Example 2: derivatives add a real-axis order</h3>
+<p>Let <span class="math" data-index="88" data-tex="\(u=D^2\delta_2\)">\(u=D^2\delta_2\)</span>. The distribution derivative convention gives</p>
+<span class="math math-display" id="eq-W11" data-index="89" data-tex="\[
+ F(\zeta)=(i\zeta)^2e^{-2i\zeta},\qquad
+ L_u(z,c)=\frac{2\log|c+z\log|c||}{\log|c|}
+                   +2\operatorname{Im}z.
+ \tag{W11}
+\]">\[
+ F(\zeta)=(i\zeta)^2e^{-2i\zeta},\qquad
+ L_u(z,c)=\frac{2\log|c+z\log|c||}{\log|c|}
+                   +2\operatorname{Im}z.
+ \tag{W11}
+\]</span>
+<p>For a compact parameter set <span class="math" data-index="90" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, write
+<span class="math" data-index="91" data-tex="\(c+z\log|c|=c(1+z\log|c|/c)\)">\(c+z\log|c|=c(1+z\log|c|/c)\)</span>.
+Eventually the second term in the parentheses has modulus at most <span class="math" data-index="92" data-tex="\(1/2\)">\(1/2\)</span>. For <span class="math" data-index="93" data-tex="\(|w|\leq1/2\)">\(|w|\leq1/2\)</span>, the inequalities
+<span class="math" data-index="94" data-tex="\(1-|w|\leq|1+w|\leq1+|w|\)">\(1-|w|\leq|1+w|\leq1+|w|\)</span> give
+<span class="math" data-index="95" data-tex="\(|\log|1+w||\leq2|w|\)">\(|\log|1+w||\leq2|w|\)</span>.
+It follows that</p>
+<span class="math math-display" id="eq-W12" data-index="96" data-tex="\[
+ |L_u(z,c)-(2+2\operatorname{Im}z)|\leq\frac{4M}{|c|}.
+ \tag{W12}
+\]">\[
+ |L_u(z,c)-(2+2\operatorname{Im}z)|\leq\frac{4M}{|c|}.
+ \tag{W12}
+\]</span>
+<p>There are no transform zeros on this compact set for large <span class="math" data-index="97" data-tex="\(|c|\)">\(|c|\)</span>. The convergence is therefore uniform, stronger than the required local <span class="math" data-index="98" data-tex="\(L^1\)">\(L^1\)</span> convergence. The proper profile is <span class="math" data-index="99" data-tex="\(v=2+2\eta\)">\(v=2+2\eta\)</span>, its indicator is <span class="math" data-index="100" data-tex="\(2\eta\)">\(2\eta\)</span>, and its carrier is <span class="math" data-index="101" data-tex="\(\{2\}\)">\(\{2\}\)</span>. The order <span class="math" data-index="102" data-tex="\(N=2\)">\(N=2\)</span> supplies the constant term.</p>
+<p>For <span class="math" data-index="103" data-tex="\(d_j=c_j+a_j\log c_j\)">\(d_j=c_j+a_j\log c_j\)</span>, with <span class="math" data-index="104" data-tex="\(c_j&gt;0\)">\(c_j&gt;0\)</span> and any bounded real <span class="math" data-index="105" data-tex="\(a_j\)">\(a_j\)</span>, the same bound (W12) holds with <span class="math" data-index="106" data-tex="\(d_j\)">\(d_j\)</span>. All real translates of this particular profile coincide. Thus this example converges even when <span class="math" data-index="107" data-tex="\(a_j\)">\(a_j\)</span> alternates between two values. Theorem 2.2 permits this; convergence of the shifts is a sufficient condition, not a necessary condition for every individual profile.</p>
+<h3 id="example-3-a-smooth-compact-function-stays-collapsed">Example 3: a smooth compact function stays collapsed</h3>
+<p>Let <span class="math" data-index="108" data-tex="\(f\in C^\infty_c(\mathbb R)\)">\(f\in C^\infty_c(\mathbb R)\)</span> be supported in <span class="math" data-index="109" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Its transform obeys, for every positive integer <span class="math" data-index="110" data-tex="\(q\)">\(q\)</span> and nonzero real <span class="math" data-index="111" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" id="eq-W13" data-index="112" data-tex="\[
+ |F(X+iY)|\leq C_q|X|^{-q}(1+|Y|)^q e^{|Y|}.
+ \tag{W13}
+\]">\[
+ |F(X+iY)|\leq C_q|X|^{-q}(1+|Y|)^q e^{|Y|}.
+ \tag{W13}
+\]</span>
+<p>To prove this, integrate <span class="math" data-index="113" data-tex="\(e^{-iXx}\)">\(e^{-iXx}\)</span> by parts <span class="math" data-index="114" data-tex="\(q\)">\(q\)</span> times against <span class="math" data-index="115" data-tex="\(f(x)e^{Yx}\)">\(f(x)e^{Yx}\)</span>. Boundary terms vanish. Its <span class="math" data-index="116" data-tex="\(q\)">\(q\)</span>-th derivative is the finite sum
+<span class="math" data-index="117" data-tex="\(\sum_{k=0}^q\binom qk f^{(k)}(x)Y^{q-k}e^{Yx}\)">\(\sum_{k=0}^q\binom qk f^{(k)}(x)Y^{q-k}e^{Yx}\)</span>.
+Its <span class="math" data-index="118" data-tex="\(L^1\)">\(L^1\)</span> norm is bounded by <span class="math" data-index="119" data-tex="\(C_q(1+|Y|)^qe^{|Y|}\)">\(C_q(1+|Y|)^qe^{|Y|}\)</span>, giving (W13).</p>
+<p>For <span class="math" data-index="120" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, set <span class="math" data-index="121" data-tex="\(X=d+\operatorname{Re}z\log|d|\)">\(X=d+\operatorname{Re}z\log|d|\)</span> and <span class="math" data-index="122" data-tex="\(Y=\operatorname{Im}z\log|d|\)">\(Y=\operatorname{Im}z\log|d|\)</span>. At every sufficiently large <span class="math" data-index="123" data-tex="\(|d|\)">\(|d|\)</span>, <span class="math" data-index="124" data-tex="\(|X|\geq|d|/2\)">\(|X|\geq|d|/2\)</span> and <span class="math" data-index="125" data-tex="\(|Y|\leq M\log|d|\)">\(|Y|\leq M\log|d|\)</span>. At nonzeros, (W13) yields</p>
+<span class="math math-display" id="eq-W14" data-index="126" data-tex="\[
+ L_f(z,d)\leq -q+M+
+ \frac{\log C_q+q\log2+q\log(1+M\log|d|)}{\log|d|}.
+ \tag{W14}
+\]">\[
+ L_f(z,d)\leq -q+M+
+ \frac{\log C_q+q\log2+q\log(1+M\log|d|)}{\log|d|}.
+ \tag{W14}
+\]</span>
+<p>The last fraction tends to zero uniformly on the compact parameter set. Given <span class="math" data-index="127" data-tex="\(K&gt;0\)">\(K&gt;0\)</span>, choose <span class="math" data-index="128" data-tex="\(q&gt;M+K+1\)">\(q&gt;M+K+1\)</span> and then a sufficiently large frequency threshold. The result is <span class="math" data-index="129" data-tex="\(L_f(z,d)\leq-K\)">\(L_f(z,d)\leq-K\)</span>, also at zeros. Thus <span class="math" data-index="130" data-tex="\(L_f\)">\(L_f\)</span> collapses along all escaping real frequencies. Every union <span class="math" data-index="131" data-tex="\(E\)">\(E\)</span> from the theorem inherits this collapse. For <span class="math" data-index="132" data-tex="\(f=0\)">\(f=0\)</span> the normalized logarithm is identically <span class="math" data-index="133" data-tex="\(-\infty\)">\(-\infty\)</span>, so the same conclusion holds directly.</p>
+<h3 id="example-4-translating-zeros-without-changing-the-indicator">Example 4: translating zeros without changing the indicator</h3>
+<p>The proper PSH function
+<span class="math" data-index="134" data-tex="\(v(z)=\log|\sin z|\)">\(v(z)=\log|\sin z|\)</span> is an illustrative input for the affine-pullback lemma. We do not assert that it is a normalized limiting profile of a particular compact distribution.
+Its modulus satisfies</p>
+<span class="math math-display" id="eq-W15" data-index="135" data-tex="\[
+ |\sin(x+i\eta)|^2=\sin^2x+\sinh^2\eta,\qquad
+ M_v(\eta)=\log\cosh\eta,\qquad h(\eta)=|\eta|.
+ \tag{W15}
+\]">\[
+ |\sin(x+i\eta)|^2=\sin^2x+\sinh^2\eta,\qquad
+ M_v(\eta)=\log\cosh\eta,\qquad h(\eta)=|\eta|.
+ \tag{W15}
+\]</span>
+<p>The first identity follows by expanding
+<span class="math" data-index="136" data-tex="\(\sin(x+i\eta)=\sin x\cosh\eta+i\cos x\sinh\eta\)">\(\sin(x+i\eta)=\sin x\cosh\eta+i\cos x\sinh\eta\)</span>.
+Taking the supremum in <span class="math" data-index="137" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-index="138" data-tex="\(M_v\)">\(M_v\)</span>. Since
+<span class="math" data-index="139" data-tex="\(\log\cosh(t\eta)/t\to|\eta|\)">\(\log\cosh(t\eta)/t\to|\eta|\)</span>, the indicator is as stated, with carrier <span class="math" data-index="140" data-tex="\([-1,1]\)">\([-1,1]\)</span>.
+The translate <span class="math" data-index="141" data-tex="\(v(z+a)\)">\(v(z+a)\)</span> has zeros <span class="math" data-index="142" data-tex="\(z=m\pi-a\)">\(z=m\pi-a\)</span>, <span class="math" data-index="143" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>, while its envelope and carrier stay the same.</p>
+<figure><img class="course-figure" width="2185" height="766" src="reproduce/L161/figures/real-translations-and-indicators.png" alt="Two real translates of log absolute sine have shifted real zeros and the same imaginary-height envelope and indicator." /><figcaption class="native"><a href="reproduce/L161/figures/real-translations-and-indicators.png">Open full-size PNG</a> · <a href="reproduce/L161/figures/real-translations-and-indicators.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> Exact samples of <span class="math" data-index="144" data-tex="\(\frac12\log(\sin^2(x+a)+\sinh^2\eta)\)">\(\frac12\log(\sin^2(x+a)+\sinh^2\eta)\)</span> for <span class="math" data-index="145" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-index="146" data-tex="\(a=\pi/2\)">\(a=\pi/2\)</span>, with their exact real zero sets marked. The common envelope is <span class="math" data-index="147" data-tex="\(\log\cosh\eta\)">\(\log\cosh\eta\)</span> and the common indicator is <span class="math" data-index="148" data-tex="\(|\eta|\)">\(|\eta|\)</span>. Display colors are clipped below <span class="math" data-index="149" data-tex="\(-3\)">\(-3\)</span>; the marked zeros have value <span class="math" data-index="150" data-tex="\(-\infty\)">\(-\infty\)</span>. These are PSH model functions for Lemma 2.1, without a claim that the model is realized by compact Fourier normalization. Proof locators: Example 4 and the complete proof, Corollary 2.3. Background: Hörmander.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The exercises total 100 points.</p>
+<h3 id="exercise-1-a-vector-point-mass-8-points">Exercise 1: a vector point mass (8 points)</h3>
+<p>For <span class="math" data-index="151" data-tex="\(b=(-2,3)\)">\(b=(-2,3)\)</span> and <span class="math" data-index="152" data-tex="\(u=\delta_b\)">\(u=\delta_b\)</span> on <span class="math" data-index="153" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, compute the normalized profile, indicator and carrier. Verify (W3) in both coordinates.</p>
+<p><em>Solution.</em> The transform is <span class="math" data-index="154" data-tex="\(e^{-ib\cdot\zeta}\)">\(e^{-ib\cdot\zeta}\)</span>. Its logarithmic modulus is <span class="math" data-index="155" data-tex="\(b\cdot\operatorname{Im}\zeta\)">\(b\cdot\operatorname{Im}\zeta\)</span>. Hence
+<span class="math" data-index="156" data-tex="\(L_u(z,c)=b\cdot\operatorname{Im}z=-2\eta_1+3\eta_2\)">\(L_u(z,c)=b\cdot\operatorname{Im}z=-2\eta_1+3\eta_2\)</span>.
+The imaginary-height envelope is this same linear function, so <span class="math" data-index="157" data-tex="\(h(\eta)=b\cdot\eta\)">\(h(\eta)=b\cdot\eta\)</span> and the carrier is <span class="math" data-index="158" data-tex="\(\{(-2,3)\}\)">\(\{(-2,3)\}\)</span>. Since <span class="math" data-index="159" data-tex="\(a\)">\(a\)</span> is real,
+<span class="math" data-index="160" data-tex="\(\kappa^{-1}b\cdot\operatorname{Im}(a+\kappa z)=b\cdot\eta\)">\(\kappa^{-1}b\cdot\operatorname{Im}(a+\kappa z)=b\cdot\eta\)</span>.
+This proves the exact identity without approximating either logarithm.</p>
+<h3 id="exercise-2-the-size-of-the-dilation-error-8-points">Exercise 2: the size of the dilation error (8 points)</h3>
+<p>Take <span class="math" data-index="161" data-tex="\(c=100\)">\(c=100\)</span>, and <span class="math" data-index="162" data-tex="\(d=75\)">\(d=75\)</span> or <span class="math" data-index="163" data-tex="\(125\)">\(125\)</span>. Give <span class="math" data-index="164" data-tex="\(\kappa\)">\(\kappa\)</span> exactly and verify each bound in (W4) with <span class="math" data-index="165" data-tex="\(\delta=1/4\)">\(\delta=1/4\)</span>.</p>
+<p><em>Solution.</em> The two ratios are
+<span class="math" data-index="166" data-tex="\(\kappa_-=\log75/\log100=1+\log(3/4)/\log100\)">\(\kappa_-=\log75/\log100=1+\log(3/4)/\log100\)</span> and
+<span class="math" data-index="167" data-tex="\(\kappa_+=\log125/\log100=1+\log(5/4)/\log100\)">\(\kappa_+=\log125/\log100=1+\log(5/4)/\log100\)</span>.
+The integral bounds
+<span class="math" data-index="168" data-tex="\(-\log(3/4)\leq(1/4)/(3/4)=1/3\leq1/2\)">\(-\log(3/4)\leq(1/4)/(3/4)=1/3\leq1/2\)</span> and
+<span class="math" data-index="169" data-tex="\(\log(5/4)\leq1/4\leq1/2\)">\(\log(5/4)\leq1/4\leq1/2\)</span>
+give <span class="math" data-index="170" data-tex="\(|\kappa_\pm-1|\leq1/(2\log100)&lt;1/2\)">\(|\kappa_\pm-1|\leq1/(2\log100)&lt;1/2\)</span>.
+Thus <span class="math" data-index="171" data-tex="\(1/2\leq\kappa_\pm\leq3/2\)">\(1/2\leq\kappa_\pm\leq3/2\)</span>. Dividing by their lower bound gives
+<span class="math" data-index="172" data-tex="\(|\kappa_\pm^{-1}-1|\leq1/\log100\)">\(|\kappa_\pm^{-1}-1|\leq1/\log100\)</span>, which is (W4).
+Both new centers have norm greater than two, so all normalized logarithms are defined.</p>
+<h3 id="exercise-3-the-real-volume-factor-10-points">Exercise 3: the real-volume factor (10 points)</h3>
+<p>In complex dimension two, compute the change of variables in the test pairing for a positive dilation <span class="math" data-index="173" data-tex="\(\kappa\)">\(\kappa\)</span> and real shift <span class="math" data-index="174" data-tex="\(a=(1,-1)\)">\(a=(1,-1)\)</span>. Explain why the moving-test error tends to zero when <span class="math" data-index="175" data-tex="\(a_j\to a\)">\(a_j\to a\)</span>, <span class="math" data-index="176" data-tex="\(\kappa_j\to1\)">\(\kappa_j\to1\)</span> and <span class="math" data-index="177" data-tex="\(f_j\to v\)">\(f_j\to v\)</span> locally in <span class="math" data-index="178" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p><em>Solution.</em> Complex dimension two has real dimension four. The map <span class="math" data-index="179" data-tex="\(z\mapsto a+\kappa z\)">\(z\mapsto a+\kappa z\)</span> has real determinant <span class="math" data-index="180" data-tex="\(\kappa^4\)">\(\kappa^4\)</span>. Therefore</p>
+<span class="math math-display" id="eq-W16" data-index="181" data-tex="\[
+ \int \kappa^{-1}f(a+\kappa z)\phi(z)\,dV(z)
+ =\kappa^{-5}\int f(w)\phi((w-a)/\kappa)\,dV(w).
+ \tag{W16}
+\]">\[
+ \int \kappa^{-1}f(a+\kappa z)\phi(z)\,dV(z)
+ =\kappa^{-5}\int f(w)\phi((w-a)/\kappa)\,dV(w).
+ \tag{W16}
+\]</span>
+<p>For example <span class="math" data-index="182" data-tex="\(\kappa=2\)">\(\kappa=2\)</span> gives factor <span class="math" data-index="183" data-tex="\(1/32\)">\(1/32\)</span>. For the converging maps, the supports of the transformed tests lie in one compact set <span class="math" data-index="184" data-tex="\(K\)">\(K\)</span>, and their differences from <span class="math" data-index="185" data-tex="\(\phi(w-a)\)">\(\phi(w-a)\)</span> tend uniformly to zero there. The corresponding integral error is at most
+<span class="math" data-index="186" data-tex="\(\|f_j\|_{L^1(K)}\|\phi((\,\cdot-a_j)/\kappa_j)-\phi(\,\cdot-a)\|_\infty\)">\(\|f_j\|_{L^1(K)}\|\phi((\,\cdot-a_j)/\kappa_j)-\phi(\,\cdot-a)\|_\infty\)</span>.
+The first factor is bounded by local <span class="math" data-index="187" data-tex="\(L^1\)">\(L^1\)</span> convergence; the second tends to zero. The fixed-test difference is at most
+<span class="math" data-index="188" data-tex="\(\|f_j-v\|_{L^1(K)}\|\phi(\,\cdot-a)\|_\infty\)">\(\|f_j-v\|_{L^1(K)}\|\phi(\,\cdot-a)\|_\infty\)</span>, also tending to zero. Finally <span class="math" data-index="189" data-tex="\(\kappa_j^{-5}\to1\)">\(\kappa_j^{-5}\to1\)</span>. These three estimates justify the distributional limit in full.</p>
+<h3 id="exercise-4-an-explicit-threshold-diagonal-12-points">Exercise 4: an explicit threshold diagonal (12 points)</h3>
+<p>Suppose the Hartogs thresholds can be taken as <span class="math" data-index="190" data-tex="\(J_k=2^k\)">\(J_k=2^k\)</span>, and <span class="math" data-index="191" data-tex="\(Q_j=e^j\)">\(Q_j=e^j\)</span>. Determine <span class="math" data-index="192" data-tex="\(s_j\)">\(s_j\)</span> and the eventual <span class="math" data-index="193" data-tex="\(r_j\)">\(r_j\)</span> in (W8). For order <span class="math" data-index="194" data-tex="\(N=3\)">\(N=3\)</span> and <span class="math" data-index="195" data-tex="\(|z|\leq2\)">\(|z|\leq2\)</span>, give the resulting error and the required parameter inclusion condition.</p>
+<p><em>Solution.</em> For <span class="math" data-index="196" data-tex="\(j\geq2\)">\(j\geq2\)</span>, the largest <span class="math" data-index="197" data-tex="\(k\leq j\)">\(k\leq j\)</span> with <span class="math" data-index="198" data-tex="\(2^k\leq j\)">\(2^k\leq j\)</span> is <span class="math" data-index="199" data-tex="\(s_j=\lfloor\log_2j\rfloor\)">\(s_j=\lfloor\log_2j\rfloor\)</span>. The restriction <span class="math" data-index="200" data-tex="\(k\leq j\)">\(k\leq j\)</span> is automatic for this maximum. Both
+<span class="math" data-index="201" data-tex="\(\sqrt{e^j/j}\)">\(\sqrt{e^j/j}\)</span> and <span class="math" data-index="202" data-tex="\(e^j/(4j)\)">\(e^j/(4j)\)</span> eventually exceed <span class="math" data-index="203" data-tex="\(s_j\)">\(s_j\)</span>, because exponential growth dominates any fixed power of <span class="math" data-index="204" data-tex="\(j\)">\(j\)</span>, while <span class="math" data-index="205" data-tex="\(s_j\leq j\)">\(s_j\leq j\)</span>. Hence <span class="math" data-index="206" data-tex="\(r_j=s_j\)">\(r_j=s_j\)</span> eventually.
+Its relative frequency displacement is <span class="math" data-index="207" data-tex="\(s_jje^{-j}\to0\)">\(s_jje^{-j}\to0\)</span>.
+The affine image lies in the old ball when <span class="math" data-index="208" data-tex="\(r_j\geq3M=6\)">\(r_j\geq3M=6\)</span>. Indeed
+<span class="math" data-index="209" data-tex="\(|a+\kappa z|\leq r_j+3\leq3r_j/2\leq2s_j\)">\(|a+\kappa z|\leq r_j+3\leq3r_j/2\leq2s_j\)</span>.
+The upper error in (3.13) of the complete proof is
+<span class="math" data-index="210" data-tex="\(12s_je^{-j}+2/s_j\to0\)">\(12s_je^{-j}+2/s_j\to0\)</span>.
+Once <span class="math" data-index="211" data-tex="\(s_j\geq6\)">\(s_j\geq6\)</span>, the radius caps hold, and this error is below a prescribed <span class="math" data-index="212" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the same estimate applies to every new center in that neighborhood.</p>
+<h3 id="exercise-5-exact-cancellation-at-a-negative-value-8-points">Exercise 5: exact cancellation at a negative value (8 points)</h3>
+<p>Let <span class="math" data-index="213" data-tex="\(h(\eta)=-2\eta\)">\(h(\eta)=-2\eta\)</span>, and take <span class="math" data-index="214" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. If the old ceiling is
+<span class="math" data-index="215" data-tex="\(N+h(\kappa\eta)+1/s\)">\(N+h(\kappa\eta)+1/s\)</span>, calculate its pulled-back ceiling. Bound the excess over <span class="math" data-index="216" data-tex="\(N+h(\eta)\)">\(N+h(\eta)\)</span>.</p>
+<p><em>Solution.</em> Positive homogeneity gives
+<span class="math" data-index="217" data-tex="\(\kappa^{-1}h(\kappa\eta)=-2\eta=h(\eta)\)">\(\kappa^{-1}h(\kappa\eta)=-2\eta=h(\eta)\)</span>, even though both support values are negative. The exact pulled-back ceiling is
+<span class="math" data-index="218" data-tex="\(\kappa^{-1}(N+1/s)-2\eta\)">\(\kappa^{-1}(N+1/s)-2\eta\)</span>.
+Its excess over <span class="math" data-index="219" data-tex="\(N-2\eta\)">\(N-2\eta\)</span> is
+<span class="math" data-index="220" data-tex="\(N(\kappa^{-1}-1)+\kappa^{-1}/s\)">\(N(\kappa^{-1}-1)+\kappa^{-1}/s\)</span>.
+For the neighborhoods in the proof this is at most
+<span class="math" data-index="221" data-tex="\(4Nr_j/Q_j+2/s\)">\(4Nr_j/Q_j+2/s\)</span>, since <span class="math" data-index="222" data-tex="\(N\geq0\)">\(N\geq0\)</span>, <span class="math" data-index="223" data-tex="\(|\kappa^{-1}-1|\leq4r_j/Q_j\)">\(|\kappa^{-1}-1|\leq4r_j/Q_j\)</span>, and <span class="math" data-index="224" data-tex="\(\kappa^{-1}\leq2\)">\(\kappa^{-1}\leq2\)</span>. No inequality involving the sign of the support value is needed.</p>
+<h3 id="exercise-6-passing-to-an-overlapping-union-10-points">Exercise 6: passing to an overlapping union (10 points)</h3>
+<p>Use the neighborhoods of Example 1, indexed by <span class="math" data-index="225" data-tex="\(j\geq8\)">\(j\geq8\)</span>. For a fixed <span class="math" data-index="226" data-tex="\(J\geq8\)">\(J\geq8\)</span>, give a frequency threshold excluding every membership witness with <span class="math" data-index="227" data-tex="\(j\leq J\)">\(j\leq J\)</span>. Explain why the argument does not require disjoint neighborhoods.</p>
+<p><em>Solution.</em> Each such interval has right endpoint
+<span class="math" data-index="228" data-tex="\(2^j+\sqrt{2^jj\log2}\)">\(2^j+\sqrt{2^jj\log2}\)</span>. Both positive terms increase with <span class="math" data-index="229" data-tex="\(j\)">\(j\)</span>, so every interval with <span class="math" data-index="230" data-tex="\(8\leq j\leq J\)">\(8\leq j\leq J\)</span> is contained in
+<span class="math" data-index="231" data-tex="\((0,T_J)\)">\((0,T_J)\)</span>, where <span class="math" data-index="232" data-tex="\(T_J=2^J+\sqrt{2^JJ\log2}\)">\(T_J=2^J+\sqrt{2^JJ\log2}\)</span>.
+If <span class="math" data-index="233" data-tex="\(d\in E\)">\(d\in E\)</span> and <span class="math" data-index="234" data-tex="\(d&gt;T_J\)">\(d&gt;T_J\)</span>, none of those intervals contains <span class="math" data-index="235" data-tex="\(d\)">\(d\)</span>; every index witnessing membership exceeds <span class="math" data-index="236" data-tex="\(J\)">\(J\)</span>. Thus any estimate valid throughout every interval after index <span class="math" data-index="237" data-tex="\(J\)">\(J\)</span> applies to <span class="math" data-index="238" data-tex="\(d\)">\(d\)</span>, regardless of which witness is chosen. Overlaps create additional possible witnesses, but all are beyond the same threshold. This proves the union quantifier without a disjointness assumption.</p>
+<h3 id="exercise-7-transporting-collapse-8-points">Exercise 7: transporting collapse (8 points)</h3>
+<p>Suppose the old functions are at most <span class="math" data-index="239" data-tex="\(-s_j\)">\(-s_j\)</span> on the required parameter ball, and <span class="math" data-index="240" data-tex="\(1/2\leq\kappa_{j,d}\leq3/2\)">\(1/2\leq\kappa_{j,d}\leq3/2\)</span>. Give a uniform new upper bound and a sufficient condition for it to be at most <span class="math" data-index="241" data-tex="\(-K\)">\(-K\)</span>.</p>
+<p><em>Solution.</em> Identity (W3) gives
+<span class="math" data-index="242" data-tex="\(L_u(z,d)\leq-s_j/\kappa_{j,d}\)">\(L_u(z,d)\leq-s_j/\kappa_{j,d}\)</span>.
+The least reciprocal on the allowed interval is <span class="math" data-index="243" data-tex="\(2/3\)">\(2/3\)</span>, so this is at most <span class="math" data-index="244" data-tex="\(-2s_j/3\)">\(-2s_j/3\)</span>. Taking <span class="math" data-index="245" data-tex="\(s_j\geq3K/2\)">\(s_j\geq3K/2\)</span> suffices for the upper bound <span class="math" data-index="246" data-tex="\(-K\)">\(-K\)</span>. The slightly weaker bound <span class="math" data-index="247" data-tex="\(-s_j/2\)">\(-s_j/2\)</span> in the full proof also tends to <span class="math" data-index="248" data-tex="\(-\infty\)">\(-\infty\)</span>, and therefore gives the same uniform local collapse conclusion.</p>
+<h3 id="exercise-8-two-distinct-translated-limits-10-points">Exercise 8: two distinct translated limits (10 points)</h3>
+<p>For the PSH model <span class="math" data-index="249" data-tex="\(v(z)=\log|\sin z|\)">\(v(z)=\log|\sin z|\)</span>, let <span class="math" data-index="250" data-tex="\(f_j=v\)">\(f_j=v\)</span>, <span class="math" data-index="251" data-tex="\(\kappa_j=1+1/j\)">\(\kappa_j=1+1/j\)</span>, and let <span class="math" data-index="252" data-tex="\(a_j\)">\(a_j\)</span> alternate between <span class="math" data-index="253" data-tex="\(0\)">\(0\)</span> and <span class="math" data-index="254" data-tex="\(\pi/2\)">\(\pi/2\)</span>. Determine the two subsequential local <span class="math" data-index="255" data-tex="\(L^1\)">\(L^1\)</span> limits, and show that the entire sequence of pullbacks does not converge locally in <span class="math" data-index="256" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p><em>Solution.</em> Lemma 2.1 applies on the two subsequences, giving <span class="math" data-index="257" data-tex="\(v(z)\)">\(v(z)\)</span> and <span class="math" data-index="258" data-tex="\(v(z+\pi/2)\)">\(v(z+\pi/2)\)</span>. Both are proper PSH functions and have indicator <span class="math" data-index="259" data-tex="\(|\eta|\)">\(|\eta|\)</span>.
+They are distinct: at <span class="math" data-index="260" data-tex="\(z=i\)">\(z=i\)</span>, their values are <span class="math" data-index="261" data-tex="\(\log\sinh1\)">\(\log\sinh1\)</span> and <span class="math" data-index="262" data-tex="\(\log\cosh1\)">\(\log\cosh1\)</span>. Since <span class="math" data-index="263" data-tex="\(\cosh1&gt;\sinh1&gt;0\)">\(\cosh1&gt;\sinh1&gt;0\)</span>, these finite values differ. If the two functions were equal almost everywhere, canonical PSH uniqueness would make them equal everywhere, contrary to this evaluation. They are therefore distinct as local <span class="math" data-index="264" data-tex="\(L^1\)">\(L^1\)</span> functions on some compact region. A convergent full sequence would have the same local <span class="math" data-index="265" data-tex="\(L^1\)">\(L^1\)</span> limit along every subsequence, which is impossible. This is an abstract PSH pullback example, without a compact Fourier realization claim.</p>
+<h3 id="exercise-9-a-mixed-proper-and-collapsed-tuple-12-points">Exercise 9: a mixed proper and collapsed tuple (12 points)</h3>
+<p>On one escaping real frequency sequence consider
+<span class="math" data-index="266" data-tex="\((\delta_{-1},D^2\delta_2,f)\)">\((\delta_{-1},D^2\delta_2,f)\)</span>, where <span class="math" data-index="267" data-tex="\(f\)">\(f\)</span> is a smooth compact function as in Example 3. Give the limiting profiles, indicators and carriers. Prove that one expanding neighborhood union can serve all three coordinates.</p>
+<p><em>Solution.</em> Examples 1–3 give the profiles
+<span class="math" data-index="268" data-tex="\((-\eta,2+2\eta,-\infty)\)">\((-\eta,2+2\eta,-\infty)\)</span>, indicators
+<span class="math" data-index="269" data-tex="\((-\eta,2\eta,-\infty)\)">\((-\eta,2\eta,-\infty)\)</span>, and carriers
+<span class="math" data-index="270" data-tex="\((\{-1\},\{2\},\varnothing)\)">\((\{-1\},\{2\},\varnothing)\)</span>.
+For each integer <span class="math" data-index="271" data-tex="\(k\)">\(k\)</span>, take a common threshold after which the first two coordinates satisfy their ceilings with error <span class="math" data-index="272" data-tex="\(1/k\)">\(1/k\)</span> on <span class="math" data-index="273" data-tex="\(|z|\leq2k\)">\(|z|\leq2k\)</span>, and the third is at most <span class="math" data-index="274" data-tex="\(-k\)">\(-k\)</span> there. The first coordinate is exact; the second follows from (W12); the third follows from (W14) with a sufficiently large derivative order. Increase the thresholds to be strictly increasing and at least <span class="math" data-index="275" data-tex="\(k\)">\(k\)</span>. The diagonal in Lemma 3.2 and radius (W8) now work for all three coordinates.
+Their bounds on a fixed compact set are, respectively,
+<span class="math" data-index="276" data-tex="\(-\eta+2/s_j\)">\(-\eta+2/s_j\)</span>, <span class="math" data-index="277" data-tex="\(2+2\eta+8r_j/Q_j+2/s_j\)">\(2+2\eta+8r_j/Q_j+2/s_j\)</span>, and <span class="math" data-index="278" data-tex="\(-s_j/2\)">\(-s_j/2\)</span>.
+The first bound may be sharpened to the exact value <span class="math" data-index="279" data-tex="\(-\eta\)">\(-\eta\)</span>. The finite-prefix argument from Exercise 6 passes all three conclusions to the same union.</p>
+<h3 id="exercise-10-countably-many-coordinates-and-their-quantifiers-14-points">Exercise 10: countably many coordinates and their quantifiers (14 points)</h3>
+<p>Suppose countably many compact distributions have proper or collapsed profiles on the same <span class="math" data-index="280" data-tex="\(c_j\)">\(c_j\)</span>. Construct common radii for which the conclusion of Theorem 3.1 holds for each fixed coordinate. Explain why this gives no estimate uniform over all coordinates at once.</p>
+<p><em>Solution.</em> For each <span class="math" data-index="281" data-tex="\(k\)">\(k\)</span>, require the needed bound on the ball of radius <span class="math" data-index="282" data-tex="\(2k\)">\(2k\)</span> for the first <span class="math" data-index="283" data-tex="\(k\)">\(k\)</span> coordinates: proper ceilings with error <span class="math" data-index="284" data-tex="\(1/k\)">\(1/k\)</span>, or collapsed bounds <span class="math" data-index="285" data-tex="\(-k\)">\(-k\)</span>. There are finitely many requirements at this stage, so they have a common finite threshold <span class="math" data-index="286" data-tex="\(J_k\)">\(J_k\)</span>. Increase these thresholds to be strictly increasing and satisfy <span class="math" data-index="287" data-tex="\(J_k\geq k\)">\(J_k\geq k\)</span>. Construct <span class="math" data-index="288" data-tex="\(s_j\)">\(s_j\)</span> by (3.8) and <span class="math" data-index="289" data-tex="\(r_j\)">\(r_j\)</span> by (3.9) of the complete proof.</p>
+<p>Fix a coordinate <span class="math" data-index="290" data-tex="\(m\)">\(m\)</span>. Eventually <span class="math" data-index="291" data-tex="\(s_j\geq m\)">\(s_j\geq m\)</span>, so the requirement for that coordinate is included at stage <span class="math" data-index="292" data-tex="\(s_j\)">\(s_j\)</span>. For a fixed parameter compact set, the same affine inclusion then holds. In a proper coordinate the error is
+<span class="math" data-index="293" data-tex="\(4N_mr_j/Q_j+2/s_j\to0\)">\(4N_mr_j/Q_j+2/s_j\to0\)</span>; in a collapsed coordinate the upper bound is <span class="math" data-index="294" data-tex="\(-s_j/2\to-\infty\)">\(-s_j/2\to-\infty\)</span>.
+The finite-prefix union argument completes that coordinate's theorem. Its final frequency threshold may depend on <span class="math" data-index="295" data-tex="\(m\)">\(m\)</span>. Thus the assertion is: for every fixed coordinate, compact set and tolerance, there exists a threshold.</p>
+<p>Coordinatewise convergence cannot by itself supply a threshold uniform in all coordinates. An elementary PSH array demonstrates the quantifier issue:
+<span class="math" data-index="296" data-tex="\(g_{m,j}(z)=1\)">\(g_{m,j}(z)=1\)</span> for <span class="math" data-index="297" data-tex="\(j&lt;m\)">\(j&lt;m\)</span>, and <span class="math" data-index="298" data-tex="\(g_{m,j}(z)=0\)">\(g_{m,j}(z)=0\)</span> for <span class="math" data-index="299" data-tex="\(j\geq m\)">\(j\geq m\)</span>.
+Every function is constant and proper PSH; every fixed coordinate converges to zero. Yet <span class="math" data-index="300" data-tex="\(\sup_m g_{m,j}(z)=1\)">\(\sup_m g_{m,j}(z)=1\)</span> for every <span class="math" data-index="301" data-tex="\(j\)">\(j\)</span>. A uniform ceiling with error less than one never holds. This array illustrates the limitation of a coordinatewise argument; it is not asserted to be a family of compact Fourier profiles. The common-radius construction above retains the valid coordinate-dependent conclusion.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Background on entire transforms and support; its Fourier normalization differs from (W1).</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983. Compact Fourier transforms, smooth decay, and PSH compactness.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. Background on logarithmic-frequency profiles and neighborhood bounds. The precise center change, proper and collapsed cases, and uniform neighborhood proof are provided in the complete proof above.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Moving a real Fourier center by a bounded multiple of its logarithm translates the limiting profile in a real direction. Its indicator does not change. More widely, a profile controls a suitable union of growing logarithmic neighborhoods around the original centers. We prove both facts, including collapsed profiles and a uniform comparison that permits the complex parameter to move.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em>, Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>, and its second volume. The precise earlier inputs are <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Theorem 2.1; <a href="AN02-L143.html">Local compactness and Hartogs bounds</a>; and <a href="AN02-L139.html">Plurisubharmonic envelopes and support functions</a>. These provide profile compactness, canonical uniqueness, continuous Hartogs ceilings, and the indicator increment bound.</p>
+<h2 id="1-the-exact-change-of-parameters">1. The exact change of parameters</h2>
+<p>For a compact distribution on <span class="math" data-index="302" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, use</p>
+<span class="math math-display" id="eq-1.1" data-index="303" data-tex="\[
+ F(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{1.1}
+\]">\[
+ F(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{1.1}
+\]</span>
+<p>Logarithms at transform zeros have value <span class="math" data-index="304" data-tex="\(-\infty\)">\(-\infty\)</span>. A proper profile means a canonical PSH local <span class="math" data-index="305" data-tex="\(L^1\)">\(L^1\)</span> limit. A collapsed profile means convergence to <span class="math" data-index="306" data-tex="\(-\infty\)">\(-\infty\)</span> uniformly on every compact parameter set. A proper profile has a finite continuous support function <span class="math" data-index="307" data-tex="\(h\)">\(h\)</span>; a collapsed profile has <span class="math" data-index="308" data-tex="\(h\equiv-\infty\)">\(h\equiv-\infty\)</span>.</p>
+<p>Fix two real centers <span class="math" data-index="309" data-tex="\(c,d\)">\(c,d\)</span>, both of norm greater than two. Put</p>
+<span class="math math-display" id="eq-1.2" data-index="310" data-tex="\[
+ Q=|c|,\quad \ell=\log Q,\quad
+ a=\frac{d-c}{\ell},\quad
+ \kappa=\frac{\log|d|}{\ell}&gt;0,\quad
+ T(z)=a+\kappa z. \tag{1.2}
+\]">\[
+ Q=|c|,\quad \ell=\log Q,\quad
+ a=\frac{d-c}{\ell},\quad
+ \kappa=\frac{\log|d|}{\ell}&gt;0,\quad
+ T(z)=a+\kappa z. \tag{1.2}
+\]</span>
+<p>Thus <span class="math" data-index="311" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>, and <span class="math" data-index="312" data-tex="\(T:\mathbb C^n\to\mathbb C^n\)">\(T:\mathbb C^n\to\mathbb C^n\)</span> is an invertible complex affine map.</p>
+<p><strong>Lemma 1.1 (no asymptotic replacement in the identity).</strong></p>
+<span class="math math-display" id="eq-1.3" data-index="313" data-tex="\[
+ L_u(z,d)=\kappa^{-1}L_u(T(z),c),\qquad
+ \operatorname{Im}T(z)=\kappa\operatorname{Im}z. \tag{1.3}
+\]">\[
+ L_u(z,d)=\kappa^{-1}L_u(T(z),c),\qquad
+ \operatorname{Im}T(z)=\kappa\operatorname{Im}z. \tag{1.3}
+\]</span>
+<p><em>Proof.</em> The entire Fourier argument on the right is
+<span class="math" data-index="314" data-tex="\(c+(a+\kappa z)\ell=d+z\log|d|\)">\(c+(a+\kappa z)\ell=d+z\log|d|\)</span>, exactly. Dividing its logarithmic modulus by the two different logarithms gives the first equality. Both <span class="math" data-index="315" data-tex="\(c,d\)">\(c,d\)</span> are real, so <span class="math" data-index="316" data-tex="\(a\)">\(a\)</span> is real and contributes no imaginary part. The identities hold at zeros with the extended convention as well. <span class="math" data-index="317" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (uniform logarithmic-ratio control).</strong> If <span class="math" data-index="318" data-tex="\(Q&gt;e\)">\(Q&gt;e\)</span> and
+<span class="math" data-index="319" data-tex="\(|d-c|\leq\delta Q\)">\(|d-c|\leq\delta Q\)</span>, with <span class="math" data-index="320" data-tex="\(0\leq\delta\leq1/4\)">\(0\leq\delta\leq1/4\)</span>, then</p>
+<span class="math math-display" id="eq-1.4" data-index="321" data-tex="\[
+ \frac12\leq\kappa\leq\frac32,\qquad
+ |\kappa-1|\leq\frac{2\delta}{\log Q},\qquad
+ |\kappa^{-1}-1|\leq\frac{4\delta}{\log Q}. \tag{1.4}
+\]">\[
+ \frac12\leq\kappa\leq\frac32,\qquad
+ |\kappa-1|\leq\frac{2\delta}{\log Q},\qquad
+ |\kappa^{-1}-1|\leq\frac{4\delta}{\log Q}. \tag{1.4}
+\]</span>
+<p><em>Proof.</em> The triangle inequality gives
+<span class="math" data-index="322" data-tex="\(1-\delta\leq |d|/Q\leq1+\delta\)">\(1-\delta\leq |d|/Q\leq1+\delta\)</span>.
+For <span class="math" data-index="323" data-tex="\(0\leq\delta\leq1/4\)">\(0\leq\delta\leq1/4\)</span>, integration of <span class="math" data-index="324" data-tex="\(1/(1-t)\)">\(1/(1-t)\)</span> gives
+<span class="math" data-index="325" data-tex="\(-\log(1-\delta)\leq\delta/(1-\delta)\leq2\delta\)">\(-\log(1-\delta)\leq\delta/(1-\delta)\leq2\delta\)</span>;
+also <span class="math" data-index="326" data-tex="\(\log(1+\delta)\leq\delta\)">\(\log(1+\delta)\leq\delta\)</span>.
+Consequently
+<span class="math" data-index="327" data-tex="\(|\log|d|-\log Q|\leq2\delta\)">\(|\log|d|-\log Q|\leq2\delta\)</span>.
+Divide by <span class="math" data-index="328" data-tex="\(\log Q&gt;1\)">\(\log Q&gt;1\)</span>. The resulting error is at most <span class="math" data-index="329" data-tex="\(1/2\)">\(1/2\)</span>, proving the bounds for <span class="math" data-index="330" data-tex="\(\kappa\)">\(\kappa\)</span>. Finally
+<span class="math" data-index="331" data-tex="\(|\kappa^{-1}-1|=|\kappa-1|/\kappa\leq2|\kappa-1|\)">\(|\kappa^{-1}-1|=|\kappa-1|/\kappa\leq2|\kappa-1|\)</span>.
+All these bounds are uniform over the indicated real neighborhood. <span class="math" data-index="332" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-bounded-logarithmic-shifts-translate-proper-profiles">2. Bounded logarithmic shifts translate proper profiles</h2>
+<p><strong>Lemma 2.1 (affine pullbacks of PSH limits).</strong> Suppose proper PSH functions <span class="math" data-index="333" data-tex="\(f_j\)">\(f_j\)</span> are locally uniformly bounded above on <span class="math" data-index="334" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> and converge to a proper PSH function <span class="math" data-index="335" data-tex="\(v\)">\(v\)</span> in local <span class="math" data-index="336" data-tex="\(L^1\)">\(L^1\)</span>. Let <span class="math" data-index="337" data-tex="\(a_j\to a\)">\(a_j\to a\)</span> in <span class="math" data-index="338" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and <span class="math" data-index="339" data-tex="\(\kappa_j\to1\)">\(\kappa_j\to1\)</span> be positive. Then</p>
+<span class="math math-display" id="eq-2.1" data-index="340" data-tex="\[
+ \kappa_j^{-1}f_j(a_j+\kappa_j z)
+ \longrightarrow v(z+a)\quad\text{in local }L^1. \tag{2.1}
+\]">\[
+ \kappa_j^{-1}f_j(a_j+\kappa_j z)
+ \longrightarrow v(z+a)\quad\text{in local }L^1. \tag{2.1}
+\]</span>
+<p><em>Proof.</em> The affine pullbacks are proper PSH functions. Every compact observation region has its affine images inside one fixed compact region for large <span class="math" data-index="341" data-tex="\(j\)">\(j\)</span>. Positivity and boundedness of <span class="math" data-index="342" data-tex="\(\kappa_j^{-1}\)">\(\kappa_j^{-1}\)</span>, together with the upper bound for <span class="math" data-index="343" data-tex="\(f_j\)">\(f_j\)</span>, give local uniform upper bounds for the pullbacks.</p>
+<p>For a smooth compactly supported test function <span class="math" data-index="344" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-index="345" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, use real volume in dimension <span class="math" data-index="346" data-tex="\(2n\)">\(2n\)</span>. The exact change of variables <span class="math" data-index="347" data-tex="\(w=a_j+\kappa_j z\)">\(w=a_j+\kappa_j z\)</span> gives</p>
+<span class="math math-display" id="eq-2.2" data-index="348" data-tex="\[
+ \begin{split}
+ &amp;\int_{\mathbb C^n}\kappa_j^{-1}f_j(a_j+\kappa_j z)\phi(z)\,dV(z)\\
+ &amp;\quad=\kappa_j^{-1-2n}
+       \int_{\mathbb C^n}f_j(w)\phi((w-a_j)/\kappa_j)\,dV(w)
+ \longrightarrow
+       \int_{\mathbb C^n}v(w)\phi(w-a)\,dV(w).
+ \end{split} \tag{2.2}
+\]">\[
+ \begin{split}
+ &amp;\int_{\mathbb C^n}\kappa_j^{-1}f_j(a_j+\kappa_j z)\phi(z)\,dV(z)\\
+ &amp;\quad=\kappa_j^{-1-2n}
+       \int_{\mathbb C^n}f_j(w)\phi((w-a_j)/\kappa_j)\,dV(w)
+ \longrightarrow
+       \int_{\mathbb C^n}v(w)\phi(w-a)\,dV(w).
+ \end{split} \tag{2.2}
+\]</span>
+<p>Here is the full justification with moving tests. The transformed tests have a common compact support and converge uniformly there to <span class="math" data-index="349" data-tex="\(\phi(w-a)\)">\(\phi(w-a)\)</span>; the same holds for every derivative. The local <span class="math" data-index="350" data-tex="\(L^1\)">\(L^1\)</span> norms of <span class="math" data-index="351" data-tex="\(f_j\)">\(f_j\)</span> on that support are bounded because <span class="math" data-index="352" data-tex="\(f_j\to v\)">\(f_j\to v\)</span> in <span class="math" data-index="353" data-tex="\(L^1\)">\(L^1\)</span>. The integral against the difference of the tests is therefore bounded by that <span class="math" data-index="354" data-tex="\(L^1\)">\(L^1\)</span> bound times a supremum tending to zero. The remaining difference against the fixed limiting test tends to zero by <span class="math" data-index="355" data-tex="\(L^1\)">\(L^1\)</span> convergence. The scalar factor tends to one. This proves (2.2) without assuming strong continuity of affine pullbacks on arbitrary locally integrable functions.</p>
+<p>Apply PSH compactness to any subsequence of the pullbacks. Uniform local collapse would make the pairing with a nonnegative test of positive integral tend to <span class="math" data-index="356" data-tex="\(-\infty\)">\(-\infty\)</span>, contrary to the finite limit in (2.2). A proper further local <span class="math" data-index="357" data-tex="\(L^1\)">\(L^1\)</span> limit must equal <span class="math" data-index="358" data-tex="\(v(z+a)\)">\(v(z+a)\)</span> as a distribution, hence almost everywhere, and then everywhere as the canonical PSH representative. If convergence to that limit failed in an <span class="math" data-index="359" data-tex="\(L^1\)">\(L^1\)</span> norm on a compact set, select a subsequence whose norm-distance is bounded below by a positive number; compactness gives a further subsequence with precisely that limit, a contradiction. Thus the entire sequence converges in local <span class="math" data-index="360" data-tex="\(L^1\)">\(L^1\)</span>. <span class="math" data-index="361" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (logarithmic-center translation).</strong> Let <span class="math" data-index="362" data-tex="\(|c_j|\to\infty\)">\(|c_j|\to\infty\)</span>, and suppose <span class="math" data-index="363" data-tex="\(L_u(\cdot,c_j)\)">\(L_u(\cdot,c_j)\)</span> has a proper or collapsed profile <span class="math" data-index="364" data-tex="\(v\)">\(v\)</span>. If real <span class="math" data-index="365" data-tex="\(d_j\)">\(d_j\)</span> satisfy</p>
+<span class="math math-display" id="eq-2.3" data-index="366" data-tex="\[
+ |d_j-c_j|\leq A\log|c_j|\quad\text{for a fixed }A,\qquad
+ a_j=\frac{d_j-c_j}{\log|c_j|}, \tag{2.3}
+\]">\[
+ |d_j-c_j|\leq A\log|c_j|\quad\text{for a fixed }A,\qquad
+ a_j=\frac{d_j-c_j}{\log|c_j|}, \tag{2.3}
+\]</span>
+<p>then:</p>
+<ul>
+<li>If <span class="math" data-index="367" data-tex="\(v\)">\(v\)</span> is proper and <span class="math" data-index="368" data-tex="\(a_j\to a\)">\(a_j\to a\)</span>, the new profiles converge in local <span class="math" data-index="369" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-index="370" data-tex="\(v(z+a)\)">\(v(z+a)\)</span>.</li>
+<li>If <span class="math" data-index="371" data-tex="\(v\)">\(v\)</span> is proper and <span class="math" data-index="372" data-tex="\(a_j\)">\(a_j\)</span> is only bounded, every limiting profile of the new sequence is a real translate of <span class="math" data-index="373" data-tex="\(v\)">\(v\)</span>, corresponding to a cluster point of <span class="math" data-index="374" data-tex="\(a_j\)">\(a_j\)</span>. Every such cluster point gives that translate on its subsequence. No new collapsed limit occurs.</li>
+<li>If <span class="math" data-index="375" data-tex="\(v\)">\(v\)</span> is collapsed, the new sequence collapses uniformly locally, whether or not <span class="math" data-index="376" data-tex="\(a_j\)">\(a_j\)</span> converges.</li>
+</ul>
+<p><em>Proof.</em> Set <span class="math" data-index="377" data-tex="\(Q_j=|c_j|\)">\(Q_j=|c_j|\)</span>. The relative displacement is bounded by
+<span class="math" data-index="378" data-tex="\(\delta_j=A\log Q_j/Q_j\to0\)">\(\delta_j=A\log Q_j/Q_j\to0\)</span>.
+Lemma 1.2 gives <span class="math" data-index="379" data-tex="\(\kappa_j=\log|d_j|/\log Q_j\to1\)">\(\kappa_j=\log|d_j|/\log Q_j\to1\)</span>, and <span class="math" data-index="380" data-tex="\(d_j\)">\(d_j\)</span> still escapes. Lemma 1.1 and Lemma 2.1 give the first assertion.</p>
+<p>For bounded <span class="math" data-index="381" data-tex="\(a_j\)">\(a_j\)</span>, every subsequence has a further subsequence on which <span class="math" data-index="382" data-tex="\(a_j\to a\)">\(a_j\to a\)</span>. Apply the first assertion. A proposed proper or collapsed limiting profile of the full subsequence is unchanged by this further extraction, so it must be the asserted proper translate. Conversely, extract a subsequence for each cluster point <span class="math" data-index="383" data-tex="\(a\)">\(a\)</span>; the first assertion gives its translate. This proves the second assertion without claiming convergence when the translates differ.</p>
+<p>In the collapsed case, the images <span class="math" data-index="384" data-tex="\(a_j+\kappa_j B\)">\(a_j+\kappa_j B\)</span> of a fixed compact set <span class="math" data-index="385" data-tex="\(B\)">\(B\)</span> lie inside a fixed compact set <span class="math" data-index="386" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>. For every <span class="math" data-index="387" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, the old normalized logarithms are eventually at most <span class="math" data-index="388" data-tex="\(-M\)">\(-M\)</span> on <span class="math" data-index="389" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>. Since <span class="math" data-index="390" data-tex="\(\kappa_j^{-1}\geq1/2\)">\(\kappa_j^{-1}\geq1/2\)</span> for large <span class="math" data-index="391" data-tex="\(j\)">\(j\)</span>, their pullbacks are at most <span class="math" data-index="392" data-tex="\(-M/2\)">\(-M/2\)</span>. The arbitrary choice of <span class="math" data-index="393" data-tex="\(M\)">\(M\)</span> proves uniform collapse. <span class="math" data-index="394" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3 (indicators do not see the real translation).</strong> All proper profiles in Theorem 2.2 have the same indicator and compact convex carrier as <span class="math" data-index="395" data-tex="\(v\)">\(v\)</span>.</p>
+<p><em>Proof.</em> For a real vector <span class="math" data-index="396" data-tex="\(a\)">\(a\)</span>, the imaginary-height envelope satisfies</p>
+<span class="math math-display" id="eq-2.4" data-index="397" data-tex="\[
+ \sup_{x\in\mathbb R^n}v(x+a+i\eta)
+ =\sup_{x\in\mathbb R^n}v(x+i\eta). \tag{2.4}
+\]">\[
+ \sup_{x\in\mathbb R^n}v(x+a+i\eta)
+ =\sup_{x\in\mathbb R^n}v(x+i\eta). \tag{2.4}
+\]</span>
+<p>The real translation permutes the whole real space. Thus the envelopes and their recession support functions coincide. Compact convex carrier uniqueness gives the same carrier. In the collapsed case both indicators are <span class="math" data-index="398" data-tex="\(-\infty\)">\(-\infty\)</span> and both carriers are empty. <span class="math" data-index="399" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-one-profile-controls-expanding-logarithmic-neighborhoods">3. One profile controls expanding logarithmic neighborhoods</h2>
+<p>Choose an integer <span class="math" data-index="400" data-tex="\(N\geq0\)">\(N\geq0\)</span> which is an ordinary compact Fourier growth order for <span class="math" data-index="401" data-tex="\(u\)">\(u\)</span>. For a proper normalized profile, the earlier increment theorem gives</p>
+<span class="math math-display" id="eq-3.1" data-index="402" data-tex="\[
+ v(z)\leq N+h(\operatorname{Im}z). \tag{3.1}
+\]">\[
+ v(z)\leq N+h(\operatorname{Im}z). \tag{3.1}
+\]</span>
+<p>This exact inequality follows from the real-axis ceiling <span class="math" data-index="403" data-tex="\(v\leq N\)">\(v\leq N\)</span> and the indicator increment bound in <a href="AN02-L139.html">Plurisubharmonic envelopes and support functions</a>. It also occurs in <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Theorem 2.1. The support function <span class="math" data-index="404" data-tex="\(h\)">\(h\)</span> is finite, continuous and positively homogeneous; it is allowed to have negative values.</p>
+<p><strong>Theorem 3.1 (uniform expanding-neighborhood bound).</strong> Suppose
+<span class="math" data-index="405" data-tex="\(L_u(\cdot,c_j)\to v\)">\(L_u(\cdot,c_j)\to v\)</span> properly in local <span class="math" data-index="406" data-tex="\(L^1\)">\(L^1\)</span>, or by uniform local collapse. There are positive numbers <span class="math" data-index="407" data-tex="\(r_j\to\infty\)">\(r_j\to\infty\)</span> with</p>
+<span class="math math-display" id="eq-3.2" data-index="408" data-tex="\[
+ \frac{r_j\log|c_j|}{|c_j|}\longrightarrow0 \tag{3.2}
+\]">\[
+ \frac{r_j\log|c_j|}{|c_j|}\longrightarrow0 \tag{3.2}
+\]</span>
+<p>such that, for</p>
+<span class="math math-display" id="eq-3.3" data-index="409" data-tex="\[
+ E=\bigcup_j
+ \{d\in\mathbb R^n:|d-c_j|&lt;r_j\log|c_j|\}, \tag{3.3}
+\]">\[
+ E=\bigcup_j
+ \{d\in\mathbb R^n:|d-c_j|&lt;r_j\log|c_j|\}, \tag{3.3}
+\]</span>
+<p>the following holds. In the proper case, every compact <span class="math" data-index="410" data-tex="\(B\subset\mathbb C^n\)">\(B\subset\mathbb C^n\)</span> and every <span class="math" data-index="411" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> have a threshold <span class="math" data-index="412" data-tex="\(T\)">\(T\)</span> for which</p>
+<span class="math math-display" id="eq-3.4" data-index="413" data-tex="\[
+ L_u(z,d)\leq N+h(\operatorname{Im}z)+\varepsilon
+ \quad(z\in B,\ d\in E,\ |d|&gt;T). \tag{3.4}
+\]">\[
+ L_u(z,d)\leq N+h(\operatorname{Im}z)+\varepsilon
+ \quad(z\in B,\ d\in E,\ |d|&gt;T). \tag{3.4}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" id="eq-3.5" data-index="414" data-tex="\[
+ \limsup_{\substack{d\in E,\ |d|\to\infty\\w\to z}}
+ L_u(w,d)\leq N+h(\operatorname{Im}z). \tag{3.5}
+\]">\[
+ \limsup_{\substack{d\in E,\ |d|\to\infty\\w\to z}}
+ L_u(w,d)\leq N+h(\operatorname{Im}z). \tag{3.5}
+\]</span>
+<p>In the collapsed case, <span class="math" data-index="415" data-tex="\(L_u(\cdot,d)\to-\infty\)">\(L_u(\cdot,d)\to-\infty\)</span> uniformly on every compact set as <span class="math" data-index="416" data-tex="\(d\in E\)">\(d\in E\)</span> escapes. Formula (3.5) then has right side <span class="math" data-index="417" data-tex="\(-\infty\)">\(-\infty\)</span>. The conclusion therefore includes the regularized upper limit, not only the value at a fixed parameter point.</p>
+<p>The constant <span class="math" data-index="418" data-tex="\(N\)">\(N\)</span> in (3.4) is an available real Fourier growth order. The existence of a finite constant is enough for the neighborhood statement; the shrinking-error diagonal below retains <span class="math" data-index="419" data-tex="\(N\)">\(N\)</span> itself.</p>
+<p><strong>Lemma 3.2 (a quantified diagonal).</strong> In the proper case one can choose integers <span class="math" data-index="420" data-tex="\(s_j\to\infty\)">\(s_j\to\infty\)</span> such that, for all large <span class="math" data-index="421" data-tex="\(j\)">\(j\)</span>,</p>
+<span class="math math-display" id="eq-3.6" data-index="422" data-tex="\[
+ L_u(w,c_j)\leq N+h(\operatorname{Im}w)+1/s_j
+ \quad(|w|\leq2s_j). \tag{3.6}
+\]">\[
+ L_u(w,c_j)\leq N+h(\operatorname{Im}w)+1/s_j
+ \quad(|w|\leq2s_j). \tag{3.6}
+\]</span>
+<p>In the collapsed case one can instead choose such integers with</p>
+<span class="math math-display" id="eq-3.7" data-index="423" data-tex="\[
+ L_u(w,c_j)\leq-s_j\quad(|w|\leq2s_j). \tag{3.7}
+\]">\[
+ L_u(w,c_j)\leq-s_j\quad(|w|\leq2s_j). \tag{3.7}
+\]</span>
+<p><em>Proof.</em> For each fixed positive integer <span class="math" data-index="424" data-tex="\(k\)">\(k\)</span>, Hartogs comparison against the continuous ceiling in (3.1), on the closed ball of radius <span class="math" data-index="425" data-tex="\(2k\)">\(2k\)</span> inside a slightly larger ball, gives a threshold <span class="math" data-index="426" data-tex="\(J_k\)">\(J_k\)</span> such that
+<span class="math" data-index="427" data-tex="\(L_u\leq N+h+1/k\)">\(L_u\leq N+h+1/k\)</span> there for all <span class="math" data-index="428" data-tex="\(j\geq J_k\)">\(j\geq J_k\)</span>.
+For collapse, uniform convergence on that ball gives the analogous bound <span class="math" data-index="429" data-tex="\(-k\)">\(-k\)</span>.
+Increase the thresholds so that <span class="math" data-index="430" data-tex="\(J_k\geq k\)">\(J_k\geq k\)</span> and they are strictly increasing. For <span class="math" data-index="431" data-tex="\(j\geq J_1\)">\(j\geq J_1\)</span>, define</p>
+<span class="math math-display" id="eq-3.8" data-index="432" data-tex="\[
+ s_j=\max\{k\leq j:J_k\leq j\}. \tag{3.8}
+\]">\[
+ s_j=\max\{k\leq j:J_k\leq j\}. \tag{3.8}
+\]</span>
+<p>This finite set is nonempty. For every fixed <span class="math" data-index="433" data-tex="\(k\)">\(k\)</span>, all <span class="math" data-index="434" data-tex="\(j\geq J_k\)">\(j\geq J_k\)</span> have <span class="math" data-index="435" data-tex="\(s_j\geq k\)">\(s_j\geq k\)</span>, so <span class="math" data-index="436" data-tex="\(s_j\to\infty\)">\(s_j\to\infty\)</span>. The chosen maximum itself satisfies <span class="math" data-index="437" data-tex="\(J_{s_j}\leq j\)">\(J_{s_j}\leq j\)</span>, giving (3.6) or (3.7) with <span class="math" data-index="438" data-tex="\(k=s_j\)">\(k=s_j\)</span>. Assign any positive integer to the finitely many earlier indices. <span class="math" data-index="439" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 3.1.</em> Write <span class="math" data-index="440" data-tex="\(Q_j=|c_j|\)">\(Q_j=|c_j|\)</span>, and ignore a finite prefix until <span class="math" data-index="441" data-tex="\(Q_j&gt;e\)">\(Q_j&gt;e\)</span>. It can be added back with arbitrary finite positive radii, because finitely many bounded frequency neighborhoods do not affect the limit at infinity. For the remaining indices use Lemma 3.2 and put</p>
+<span class="math math-display" id="eq-3.9" data-index="442" data-tex="\[
+ r_j=\min\left\{
+ s_j,\sqrt{\frac{Q_j}{\log Q_j}},
+ \frac{Q_j}{4\log Q_j}
+ \right\}. \tag{3.9}
+\]">\[
+ r_j=\min\left\{
+ s_j,\sqrt{\frac{Q_j}{\log Q_j}},
+ \frac{Q_j}{4\log Q_j}
+ \right\}. \tag{3.9}
+\]</span>
+<p>Each of these three positive quantities tends to infinity, so <span class="math" data-index="443" data-tex="\(r_j\to\infty\)">\(r_j\to\infty\)</span>.
+If <span class="math" data-index="444" data-tex="\(d\)">\(d\)</span> is in its <span class="math" data-index="445" data-tex="\(j\)">\(j\)</span>-th neighborhood, set</p>
+<span class="math math-display" id="eq-3.10" data-index="446" data-tex="\[
+ a_{j,d}=\frac{d-c_j}{\log Q_j},\qquad
+ \kappa_{j,d}=\frac{\log|d|}{\log Q_j},\qquad
+ \delta_j=\frac{r_j\log Q_j}{Q_j}.
+ \tag{3.10}
+\]">\[
+ a_{j,d}=\frac{d-c_j}{\log Q_j},\qquad
+ \kappa_{j,d}=\frac{\log|d|}{\log Q_j},\qquad
+ \delta_j=\frac{r_j\log Q_j}{Q_j}.
+ \tag{3.10}
+\]</span>
+<p>The cap in (3.9) gives <span class="math" data-index="447" data-tex="\(\delta_j\leq1/4\)">\(\delta_j\leq1/4\)</span>, and the square-root bound gives
+<span class="math" data-index="448" data-tex="\(\delta_j\leq\sqrt{\log Q_j/Q_j}\to0\)">\(\delta_j\leq\sqrt{\log Q_j/Q_j}\to0\)</span>.
+This proves (3.2), and ensures <span class="math" data-index="449" data-tex="\(|d|\geq3Q_j/4\)">\(|d|\geq3Q_j/4\)</span> in the tail. Lemma 1.2 gives uniformly throughout the neighborhood</p>
+<span class="math math-display" id="eq-3.11" data-index="450" data-tex="\[
+ \frac12\leq\kappa_{j,d}\leq\frac32,\qquad
+ |\kappa_{j,d}^{-1}-1|\leq4r_j/Q_j\longrightarrow0. \tag{3.11}
+\]">\[
+ \frac12\leq\kappa_{j,d}\leq\frac32,\qquad
+ |\kappa_{j,d}^{-1}-1|\leq4r_j/Q_j\longrightarrow0. \tag{3.11}
+\]</span>
+<p>Let <span class="math" data-index="451" data-tex="\(B\)">\(B\)</span> lie in a ball <span class="math" data-index="452" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>. For large <span class="math" data-index="453" data-tex="\(j\)">\(j\)</span>, <span class="math" data-index="454" data-tex="\(r_j\geq3M\)">\(r_j\geq3M\)</span>, so the parameter in Lemma 1.1 satisfies</p>
+<span class="math math-display" id="eq-3.12" data-index="455" data-tex="\[
+ |a_{j,d}+\kappa_{j,d}z|
+ \leq r_j+\tfrac32M
+ \leq\tfrac32r_j\leq2s_j
+ \quad(z\in B). \tag{3.12}
+\]">\[
+ |a_{j,d}+\kappa_{j,d}z|
+ \leq r_j+\tfrac32M
+ \leq\tfrac32r_j\leq2s_j
+ \quad(z\in B). \tag{3.12}
+\]</span>
+<p>In the proper case, apply (3.6) at this entire parameter and then (1.3). Positive homogeneity cancels the logarithmic ratio in the support term exactly:</p>
+<span class="math math-display" id="eq-3.13" data-index="456" data-tex="\[
+ \begin{split}
+ L_u(z,d)
+ &amp;\leq\kappa_{j,d}^{-1}(N+1/s_j)
+       +\kappa_{j,d}^{-1}h(\kappa_{j,d}\operatorname{Im}z)\\
+ &amp;=\kappa_{j,d}^{-1}(N+1/s_j)+h(\operatorname{Im}z)\\
+ &amp;\leq N+h(\operatorname{Im}z)+4Nr_j/Q_j+2/s_j.
+ \end{split} \tag{3.13}
+\]">\[
+ \begin{split}
+ L_u(z,d)
+ &amp;\leq\kappa_{j,d}^{-1}(N+1/s_j)
+       +\kappa_{j,d}^{-1}h(\kappa_{j,d}\operatorname{Im}z)\\
+ &amp;=\kappa_{j,d}^{-1}(N+1/s_j)+h(\operatorname{Im}z)\\
+ &amp;\leq N+h(\operatorname{Im}z)+4Nr_j/Q_j+2/s_j.
+ \end{split} \tag{3.13}
+\]</span>
+<p>The last error tends to zero. This exact cancellation remains valid for negative support values; no sign-dependent approximation of <span class="math" data-index="457" data-tex="\(h\)">\(h\)</span> has been used.</p>
+<p>In the collapsed case, (3.7), (3.12) and (1.3) give</p>
+<span class="math math-display" id="eq-3.14" data-index="458" data-tex="\[
+ L_u(z,d)\leq-\kappa_{j,d}^{-1}s_j\leq-s_j/2
+ \quad(z\in B), \tag{3.14}
+\]">\[
+ L_u(z,d)\leq-\kappa_{j,d}^{-1}s_j\leq-s_j/2
+ \quad(z\in B), \tag{3.14}
+\]</span>
+<p>which tends uniformly to <span class="math" data-index="459" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p>It remains to pass from individual neighborhoods to their union with the correct quantifiers. For any fixed <span class="math" data-index="460" data-tex="\(J\)">\(J\)</span>, the union of the first <span class="math" data-index="461" data-tex="\(J\)">\(J\)</span> frequency neighborhoods is bounded: each has a finite center and finite radius. Therefore, as <span class="math" data-index="462" data-tex="\(d\in E\)">\(d\in E\)</span> tends to infinity, every index witnessing its membership eventually exceeds <span class="math" data-index="463" data-tex="\(J\)">\(J\)</span>. Choose <span class="math" data-index="464" data-tex="\(J\)">\(J\)</span> so that (3.12) holds and the error in (3.13) is below the prescribed <span class="math" data-index="465" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> for all <span class="math" data-index="466" data-tex="\(j&gt;J\)">\(j&gt;J\)</span>. Then choose <span class="math" data-index="467" data-tex="\(T\)">\(T\)</span> exceeding the norms of the first <span class="math" data-index="468" data-tex="\(J\)">\(J\)</span> neighborhoods. This proves (3.4). The same argument with the bound <span class="math" data-index="469" data-tex="\(-s_j/2\)">\(-s_j/2\)</span> proves uniform collapse throughout the union.</p>
+<p>Finally, for <span class="math" data-index="470" data-tex="\(w\to z\)">\(w\to z\)</span>, place these parameter points in one compact neighborhood and use the continuous support function in (3.4). First let the escaping frequency and parameter approach their limits, and then let <span class="math" data-index="471" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This proves (3.5), including moving parameter points. <span class="math" data-index="472" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3 (one neighborhood union for a finite joint profile tuple).</strong> For finitely many compact distributions whose profiles converge properly or collapse on the same <span class="math" data-index="473" data-tex="\(c_j\)">\(c_j\)</span>, the radii in Theorem 3.1 can be chosen in common. Each proper coordinate has its own order <span class="math" data-index="474" data-tex="\(N_i\)">\(N_i\)</span> and indicator <span class="math" data-index="475" data-tex="\(h_i\)">\(h_i\)</span>; collapsed coordinates collapse uniformly throughout the common union.</p>
+<p><em>Proof.</em> For each fixed <span class="math" data-index="476" data-tex="\(k\)">\(k\)</span>, take the maximum of the finitely many thresholds <span class="math" data-index="477" data-tex="\(J_{i,k}\)">\(J_{i,k}\)</span> needed for its proper ceilings or collapsed bounds. Make these common thresholds strictly increasing, and construct <span class="math" data-index="478" data-tex="\(s_j\)">\(s_j\)</span> by (3.8). The same radius (3.9) gives (3.12) for every coordinate. Apply (3.13) or (3.14) coordinatewise. Each prescribed compact set and tolerance then has a common threshold by another finite maximum. <span class="math" data-index="479" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, for background on entire Fourier transforms and support. Its normalization differs from (1.1).</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983, for compact Fourier theory and PSH compactness.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI, for logarithmic-frequency center changes and neighborhood bounds. The exact affine identity, moving-test proof, quantified diagonal and proper/collapsed conclusions are proved above.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/changing-centers-in-fourier-windows.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L161/logarithmic-neighborhood-convergence-formal.md" download>logarithmic-neighborhood-convergence-formal.md</a></li><li><a href="reproduce/L161/changing-centers-in-fourier-windows-learner.md" download>changing-centers-in-fourier-windows-learner.md</a></li><li><a href="reproduce/L161/make_figures198.py" download>make_figures198.py</a></li><li><span class="unlinked">check_numerics198.py</span></li><li><span class="unlinked">README-reproduce.md</span></li><li><a href="reproduce/L161/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L161/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L161/figures/geometry198.json" download>figures/geometry198.json</a></li><li><a href="reproduce/L161/figures/expanding-logarithmic-neighborhoods.png" download>figures/expanding-logarithmic-neighborhoods.png</a></li><li><a href="reproduce/L161/figures/expanding-logarithmic-neighborhoods.svg" download>figures/expanding-logarithmic-neighborhoods.svg</a></li><li><a href="reproduce/L161/figures/real-translations-and-indicators.png" download>figures/real-translations-and-indicators.png</a></li><li><a href="reproduce/L161/figures/real-translations-and-indicators.svg" download>figures/real-translations-and-indicators.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

@@ -14,7 +14,9 @@ Write $Q^+=\sum_i\mathbb Z_{\geq0}\alpha_i$, $Q=\sum_i\mathbb Z\alpha_i$, and $\
 w\mathbin{\cdot}\lambda=w(\lambda+\rho)-\rho.
 \]
 
-The prerequisites are the PBW theorem and Noetherianity from *The universal enveloping algebra and the Poincaré–Birkhoff–Witt theorem*, Verma modules $M(\lambda)$ and their simple quotients $L(\lambda)$ from *Weights, Verma modules and the theorem of the highest weight*, and the all-complex-weight Harish-Chandra theorem from *The centre of the enveloping algebra and Harish-Chandra's theorem*. We also use Lie's theorem and the finite-dimensional highest-weight classification already proved in this course.
+The prerequisites are [PBW](../RT-LIE-13.html#theorem-2-1), [Noetherianity](../RT-LIE-13.html#proposition-3-3) and [triangular decomposition](../RT-LIE-13.html#proposition-4-2); [Verma modules](../RT-LIE-14.html#theorem-2-1) $M(\lambda)$ and their [unique simple quotients](../RT-LIE-14.html#theorem-3-1) $L(\lambda)$; and the [Harish-Chandra isomorphism](../RT-LIE-15.html#theorem-4-1) with its [all-complex-weight central-character criterion](../RT-LIE-15.html#corollary-5-2). We also use [Lie’s theorem](../RT-LIE-02.html#theorem-3-1), [finite-dimensional complete reducibility](../RT-LIE-04.html#theorem-4-1), [represented Jordan decomposition](../RT-LIE-04.html#theorem-5-1) and the [finite-dimensional highest-weight classification](../RT-LIE-14.html#theorem-4-1).
+
+For the Weyl and Hecke constructions, the earlier proofs supply [exchange and length](../RT-LIE-08.html#lemma-4-2), the [longest element](../RT-LIE-08.html#theorem-5-1), [rank-two ambient lengths](../RT-LIE-08.html#lemma-7-1), [reduced-word braid moves](../RT-LIE-08.html#lemma-7-2) and the [Coxeter presentation](../RT-LIE-08.html#theorem-7-3). The coinvariant construction uses the [polynomial Weyl-invariant theorem, with its full proof in Sections 9.1–9.7](../RT-LIE-15.html#theorem-9-1). The [Serre presentation](../RT-LIE-11.html#theorem-6-1) provides the relations for the anti-involution constructed below in Section 5.
 
 ## 1. A category with bounded weight support
 
@@ -403,6 +405,8 @@ P^r\to P^s\to M\to0:
 choose a surjection first, then one onto its kernel. Exact Hom from $P$ gives a presentation by free right modules. The functor is faithful: if it annihilates a morphism, exactness annihilates its image, which must be zero by (3.3). For fullness, let a module map between the Hom spaces of $M$ and $N$ be given. Compose it with the free presentation of $M$ above. A map from $\operatorname{Hom}(P,P^s)$ to $\operatorname{Hom}(P,N)$ corresponds, by its values on the free generators, to a unique map $P^s\to N$. Its composite with the relation map $P^r\to P^s$ is zero after applying the functor, and hence is zero by faithfulness. It therefore descends to $M\to N$, inducing the given module map. This proves full faithfulness. Conversely every finite-dimensional right module over this finite-dimensional algebra has a finite free presentation. Realize its matrix between free modules as a map between sums of $P$ and take the cokernel in $\mathcal O$. Exactness gives the desired module. This proves essential surjectivity and the equivalence. In particular all regular integral $\mathfrak{sl}_2$ blocks have this same algebraic description.
 
 ## 8. The Kazhdan–Lusztig theorem: one exact convention
+
+For the Hecke algebra calculations in Sections 8.1–8.6, let \(v\) be an indeterminate and put \(A=\mathbb Z[v,v^{-1}]\), \(q=v^2\) and \(a=v-v^{-1}\). Here \(A\) is the coefficient ring, not the enveloping algebra \(U(\mathfrak n^-)\) used earlier.
 
 Let $s_i$ be the simple reflections and $\ell$ the Coxeter length. Bruhat order is the subword order: $x\leq y$ if a reduced word for $x$ is obtained by selecting a subword of a reduced word for $y$. It is different from the weight order used earlier.
 
@@ -1576,7 +1580,7 @@ An exact equivalence suffices. An exact functor with these nonzero simple images
 For dominant Verma label \(w\) and simple label \(z\), take \(x=ww_0\) and \(y=zw_0\). Exactness carries a composition series to the specified simple series. Equation (8.85) now gives
 
 \[
-\begin{aligned}
+\begin{aligned}[c]
 [M(w\mathbin\cdot\lambda):L(z\mathbin\cdot\lambda)]
  &=Q_{zw_0,ww_0}(1)\\
  &=P_{(ww_0)w_0,(zw_0)w_0}(1)
@@ -2156,7 +2160,7 @@ These proofs establish actual support transport, both support characters, the wh
 
 ### 8.8. Finite Lefschetz linear algebra
 
-The finite-dimensional arguments below establish the six linear-algebra tools used in the Hodge induction. The comparison source is [Elias–Williamson, arXiv:1212.0791v2, §2](https://arxiv.org/html/1212.0791v2#Section 8.7.7).
+The finite-dimensional arguments below establish the six linear-algebra tools used in the Hodge induction. The comparison source is [Elias–Williamson, arXiv:1212.0791v2, §2](https://arxiv.org/abs/1212.0791v2).
 
 Let \(H=\bigoplus_{m\in\mathbb Z}H^m\) be a finite-dimensional graded real vector space. Let \(L:H^m\to H^{m+2}\), and suppose
 \[
@@ -2998,7 +3002,7 @@ The constant term of the Hom pairing \((C_y,C_xC_s)\) is just the constant term 
 \in H_w+\sum_{y<w}u\mathbb Z[u]H_y.
 \tag{8.205}
 \]
-Its character is bar invariant by Section 8.7.17, so canonical-basis uniqueness gives \(\operatorname{ch}B_w=C_w\). All coefficients are nonnegative because this is its actual support-layer character. This proves the character step and its coefficient positivity without citing the unexpanded native [Section 8.7.9] Lemma 7.1(2).
+Its character is bar invariant by Section 8.7.17, so canonical-basis uniqueness gives \(\operatorname{ch}B_w=C_w\). All coefficients are nonnegative because this is its actual support-layer character. This proves the character step and its coefficient positivity. The left-multiplication version of the nondegenerate-composition criterion is stated in [Soergel, arXiv:math/0403496v2, Lemma 7.1(2)](https://arxiv.org/abs/math/0403496v2).
 
 Finally \(B_w\) is a left-\(\rho\)-stable graded summand with symmetric dimensions by self-duality. Lemma 8.12 restricts the Hodge signs and hard Lefschetz from \(\overline{V_0}\) to it. Its bottom degree agrees with the ambient degree \(-\ell(w)\), so the inherited sign is the standard positive one. Section 8.11.2.1 makes the same assertion valid for every reduced-word embedding.
 
@@ -3645,7 +3649,7 @@ The rightmost functor is applied first. Since \(\lambda\) is maximal in its dot 
 
 Apply the actual Verma filtrations of Section 8.12.4 successively. Its ungraded Verma multiplicities count subexpressions: at a step labelled \(s_i\), each preceding factor with label \(y\) contributes factors labelled \(y\) and \(ys_i\), with coefficient one. This remains valid for a right descent: the two labels are merely reordered in (8.239). Every subexpression product has a reduced expression selected from the literal word, by the existing deletion/subword lemma. Hence
 \[
-(Q_{\mathbf w}:M(y\cdot\lambda))=0\quad(y\nle w),
+(Q_{\mathbf w}:M(y\cdot\lambda))=0\quad(y\nleq w),
 \qquad
 (Q_{\mathbf w}:M(w\cdot\lambda))=1.
 \tag{8.254}
@@ -4556,9 +4560,9 @@ The normalized top coefficient is \(h_{x,x}=1\), and every strict-lower coeffici
 \]
 The bar and the shift convention matter here. Equation (8.108) defines \(r_u(\bigoplus_j R(a_j))=\sum_j u^{a_j}\), while (8.296) makes the generator of \(R(a_j)\) have internal degree \(-a_j\). Equivalently, a same-label pair \(\Delta_y(n),\nabla_y(m)\) contributes the shift exponent \(m-n\) in (8.123) and a free Hom generator of internal degree \(n-m\). Thus (8.338) gives exactly one free generator of internal degree zero and all remaining generators of strictly positive internal degree. Since R has no negative degrees, the bimodule endomorphism algebra has no negative homogeneous pieces and its degree-zero piece is \(\mathbb C\).
 
-The graded isomorphism (8.336) now gives the same conclusions for \(A_x=\operatorname{End}_C(D(B_x))\): \(A_x^d=0\) for \(d<0\), and \(A_x^0=\mathbb C\). The module D(B_x) is finite-dimensional and supported in a finite interval of internal degrees. Hence the positive-degree ideal \(I_x=\bigoplus_{d>0}A_x^d\) is nilpotent: a product of more positive-degree maps than the width of that interval has degree larger than every possible endomorphism degree. Every endomorphism has a unique form \(c\,1+n\), with \(n\in I_x\). If \(c\ne0\), its inverse is the finite geometric series \(c^{-1}\sum_{j\ge0}(-c^{-1}n)^j\); if \(c=0\), it is nilpotent and cannot be a unit. Therefore the entire ungraded algebra is local, with unique maximal ideal \(I_x\) and residue \(\mathbb C\). This proves ungraded indecomposability of D(B_x) without a semisimple matrix-block classification.
+The graded isomorphism (8.336) now gives the same conclusions for \(A_x=\operatorname{End}_C(D(B_x))\): \(A_x^d=0\) for \(d<0\), and \(A_x^0=\mathbb C\). The module \(D(B_x)\) is finite-dimensional and supported in a finite interval of internal degrees. Hence the positive-degree ideal \(I_x=\bigoplus_{d>0}A_x^d\) is nilpotent: a product of more positive-degree maps than the width of that interval has degree larger than every possible endomorphism degree. Every endomorphism has a unique form \(c\,1+n\), with \(n\in I_x\). If \(c\ne0\), its inverse is the finite geometric series \(c^{-1}\sum_{j\ge0}(-c^{-1}n)^j\); if \(c=0\), it is nilpotent and cannot be a unit. Therefore the entire ungraded algebra is local, with unique maximal ideal \(I_x\) and residue \(\mathbb C\). This proves ungraded indecomposability of \(D(B_x)\) without a semisimple matrix-block classification.
 
-If two such modules were isomorphic after forgetting grading, take homogeneous components of an isomorphism and its inverse. Their degree-zero composite is the identity and is a sum of homogeneous composites. In a local degree-zero ring at least one of these composites is a unit. It splits a graded isomorphism up to a shift. (8.336) lifts the two homogeneous maps to bimodule maps; their composite reduces to a unit and hence is not nilpotent. The local degree-zero bimodule endomorphism lemma makes it invertible. Thus the original bimodules are isomorphic up to that shift, and Section 8.7.16 distinguishes their labels. Consequently D(B_x) are pairwise distinct ungraded indecomposables.
+If two such modules were isomorphic after forgetting grading, take homogeneous components of an isomorphism and its inverse. Their degree-zero composite is the identity and is a sum of homogeneous composites. In a local degree-zero ring at least one of these composites is a unit. It splits a graded isomorphism up to a shift. (8.336) lifts the two homogeneous maps to bimodule maps; their composite reduces to a unit and hence is not nilpotent. The local degree-zero bimodule endomorphism lemma makes it invertible. Thus the original bimodules are isomorphic up to that shift, and Section 8.7.16 distinguishes their labels. Consequently \(D(B_x)\) are pairwise distinct ungraded indecomposables.
 
 #### 8.15.9. Exact projective indexing and Verma coefficient statement
 
@@ -4569,13 +4573,13 @@ For \(x=s_1\cdots s_n\) reduced, use the word \(B_{s_1}\cdots B_{s_n}\). After a
 \]
 Composition applies \(\theta_{s_n}\) first. Since a wall crossing changes the **right** Verma label \(w\) to \(ws\), the unique maximal-length projective in this word is \(P_{x^{-1}}\), with multiplicity one. All other labels have smaller length.
 
-Induct on length. The regular bimodule word has the single top \(B_x\), with all other indecomposable labels below x. (8.336) matches its idempotent decomposition to the actual projective word, and Section 8.15.8 proves that D(B_x) is indecomposable. Lower labels have already been identified. Hence
+Induct on length. The regular bimodule word has the single top \(B_x\), with all other indecomposable labels below x. (8.336) matches its idempotent decomposition to the actual projective word, and Section 8.15.8 proves that \(D(B_x)\) is indecomposable. Lower labels have already been identified. Hence
 \[
  V P_z\cong D(B_{z^{-1}})
  \quad\text{as ungraded C-modules}.
  \tag{8.340}
 \]
-There is no claim of an intrinsic ordinary category-O grading before constructing a graded lift. The displayed lift D(B_{z^{-1}}) uses the normalization (8.296) and top graph shift zero.
+There is no claim of an intrinsic ordinary category-O grading before constructing a graded lift. The displayed lift \(D(B_{z^{-1}})\) uses the normalization (8.296) and top graph shift zero.
 
 Let \(a_{y,x}(v)\) be the coefficient of \(H_y\) in the independently constructed regular character \(h(B_x)\), using its fixed Hecke normalization. Evaluation at \(v=1\) forgets every grading shift. The word coefficients, the two actual decompositions just matched, and induction on the maximal label give
 \[
@@ -4627,7 +4631,7 @@ The left side is bar invariant. All these expansions have the required leading c
 
 Abbreviate $M_w=M(w\mathbin{\cdot}0)$ and $L_w=L(w\mathbin{\cdot}0)$. Equation (8.3) now gives the following six identities of characters, or equivalently classes in the Grothendieck group:
 \[
-\begin{aligned}
+\begin{aligned}[c]
 [M_{w_0}]&=[L_{w_0}],\\
 [M_{st}]&=[L_{st}]+[L_{w_0}],\\
 [M_{ts}]&=[L_{ts}]+[L_{w_0}],\\
@@ -4749,7 +4753,7 @@ The standard Hecke basis, reduced-subword order, bar triangularity, canonical ba
 
 - P. Etingof, *Representations of Lie Groups*, MIT 18.757, Fall 2023: §§15–16 for category $\mathcal O$ and projectives; Lemma 12.3 for graded freeness; §20, especially Corollary 20.5 and Theorem 20.6, for Verma filtrations and reciprocity; §21, Proposition 21.1 and Theorems 21.5–21.6, for the Hecke normalization and Kazhdan–Lusztig statement. [Official course notes](https://ocw.mit.edu/courses/18-757-representations-of-lie-groups-fall-2023/pages/lecture-notes/).
 - J. Bernstein, I. Gelfand and S. Gelfand, *Category of $\mathfrak g$-modules*, Functional Analysis and Its Applications 10 (1976), 87–92; original Russian version 10(2), 1–8: §3, Definition 1. [Freely accessible original Russian text](https://www.mathnet.ru/php/getFT.phtml?jrnid=faa&option_lang=eng&paperid=2144&what=fullt).
-- M. Kashiwara, *Representation theory and D-modules on flag varieties*, Astérisque 173–174 (1989), 55–109, especially §6.3 for localization. [Freely accessible original text](https://numdam.org/book-part/AST_1989__173-174__55_0/).
+- M. Kashiwara, *Representation theory and D-modules on flag varieties*, Astérisque 173–174 (1989), 55–109, §6.3 for vanishing and generation, and §6.4, Theorem 6.4.1 (p. 96), for the localization equivalence with a regular antidominant parameter. [Freely accessible original text](https://numdam.org/book-part/AST_1989__173-174__55_0/).
 - J.-L. Brylinski and M. Kashiwara, *Kazhdan–Lusztig conjecture and holonomic systems*, Inventiones Mathematicae 64 (1981), 387–410: introduction and §8, Theorem 8.1. [Author-hosted paper](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/KL.pdf).
 - M. Kashiwara and T. Tanisaki, *Parabolic Kazhdan–Lusztig polynomials and Schubert varieties*, arXiv math/9908153v2: §§3 and 5, especially Propositions 5.1–5.2, Lemma 5.3 and Theorem 5.4, for the precise mixed-operation, Bruhat and IC correspondence. The conditional deductions in Section 8.6 expand the character and matrix mechanisms; they do not import the missing geometric foundations as proved course theorems. [Exact primary version](https://arxiv.org/abs/math/9908153v2).
 

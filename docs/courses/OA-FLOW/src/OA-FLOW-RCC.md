@@ -172,7 +172,7 @@ For \(\chi\in C_c^\infty(\mathbb R\setminus\{0\})\) and \(b\in\mathbb R\), put \
 All integrals here are absolutely convergent after the inner Fourier integral, by the rapid decay of \(k_\chi\).
 
 Regard \(h_\eta\) as an element of \(L^\infty(\mathbb R)\), with translation action
-\(\alpha_t h(b)=h(b-t)\). Its predual action is translation on \(L^1\), which is norm continuous; this follows first for continuous compact functions and then by \(L^1\) density and translation isometry. Thus the [normal smooth-filter theorem AL7](OA-FLOW-AL.md#equation-al7) applies. Equation (RCC1.l) puts the spectrum of \(h_\eta\) inside \(\{0\}\), and the proved singleton conclusion makes it fixed under every translation. AL uses the positive Fourier convention and SS the negative one; the spectral singleton \(\{0\}\) is unchanged by this reflection.
+\(\alpha_t h(b)=h(b-t)\). Its predual action is translation on \(L^1\), which is norm continuous; this follows first for continuous compact functions and then by \(L^1\) density and translation isometry. Thus the [normal smooth-filter theorem AL7](OA-FLOW-AL.md#equation-al7) applies. Equation (RCC1.l) puts the spectrum of \(h_\eta\) inside \(\{0\}\), and the [proved singleton conclusion](OA-FLOW-SS.md#ss-3) makes it fixed under every translation. AL uses the positive Fourier convention and SS the negative one; the spectral singleton \(\{0\}\) is unchanged by this reflection.
 
 For each fixed translation parameter, the two continuous functions representing the resulting \(L^\infty\) equality agree everywhere: a nonzero continuous difference would be nonzero on an interval of positive measure. It follows that \(h_\eta\) is constant. No intersection of uncountably many full-measure sets is taken.
 

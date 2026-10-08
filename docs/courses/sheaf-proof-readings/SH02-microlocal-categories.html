@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>SH02-MC — Categories and operations in one cotangent direction</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><span id="SH02-MC"></span><h1 id="sh02-mc-categories-and-operations-in-one-cotangent-direction">SH02-MC
 — Categories and operations in one cotangent direction</h1>
-<p>Local identifier: <code>SH02-MC</code>. Original programme text: CC0
-1.0 Universal. Formalization: absent.</p>
-<p>This unit supplies an original proof draft of the localization and
-microlocal-operation results.</p>
-<p>This unit constructs a category that forgets invisible directions,
-builds representatives with controlled microsupport, and proves when
-formal microlocal operations are represented by bounded sheaves. The
-geometric operation is encoded by two cotangent maps; their different
-fibres explain the different hypotheses on inverse and direct
-images.</p>
+<p>Local identifier: <code>SH02-MC</code>. Independently authored
+programme expression: CC0 1.0 Universal. Formalization: absent. The
+human sources identified below retain their own terms.</p>
+<p>Directional localization permits many representatives of a single
+object. Applying a sheaf operation to those representatives first gives
+a formal system. Replacing that system by one bounded sheaf requires
+control of its support and of the relevant cotangent incidence. We
+develop the formal operations first, construct that geometric control,
+and then prove the representation criteria. The final morphism
+calculation identifies the information carried by the resulting
+category.</p>
 <p>All manifolds are finite-dimensional real smooth manifolds, Hausdorff
 and second countable. The coefficient ring
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
@@ -49,26 +50,34 @@ is fixed by this definition. We never replace
 by a shifted
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">f^{-1}</annotation></semantics></math>
 without a noncharacteristic hypothesis.</p>
-<p><strong>Prerequisites imported with their full scope.</strong> We use
-the six sheaf operations, their adjunctions, proper base change, and the
-finite cohomological bounds on manifolds. We use the microsupport
-triangle inequality, the estimate for a proper-on-support direct image,
-submersion pullback, noncharacteristic pullback, and the
-noncharacteristic tensor/internal-Hom estimates. We also use the
-strict-normal estimate for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>U</mi></msub><annotation encoding="application/x-tex">F_U</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>U</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">R\Gamma_UF</annotation></semantics></math>
-when the relevant normal cone is noncharacteristic; the elementary cone
-cutoff theorem; the cone-test and noncharacteristic deformation
-criteria; and the microlocal-Hom construction and its stalk formula.
-These are antecedent units, corresponding respectively to SM III, V
-§§1–4, and IV §4. Their statements needed below are repeated at their
-use. They are imports, not claims that this unit proves the earlier
-chapters. The open categorical imports are the <a href="https://stacks.math.columbia.edu/tag/04VB">Stacks Project
-localization calculus</a> and <a href="https://stacks.math.columbia.edu/tag/05RA">quotients of
-triangulated categories</a>, under GFDL 1.2 or later. Those imports
-supply categorical foundations; they supply no microlocal estimate.</p>
+<p><strong>Proof inputs and source roles.</strong> The prerequisites are
+the named programme constructions in the supplier table at the end:
+bounded sheaf operations with their actual adjunction maps; the local
+support tests and directional projector; proper-image, noncharacteristic
+and boundary estimates; and the definition, recovery and cone-stalk
+calculation for microlocal Hom. Every sheaf-theoretic input retains the
+coefficient and manifold scope stated above. The construction uses no
+constructible biduality theorem. The lower proofs and the precise
+contracts they still import remain identified in those supplier
+units.</p>
+<p>The directional quotient and its pointwise Hom comparison are
+classical constructions of Masaki Kashiwara and Pierre Schapira. Their
+<a href="https://www.numdam.org/item/AST_1985__128__1_0/"><em>Microlocal
+Study of Sheaves</em>, Astérisque 128 (1985), §6.1, Lemma 6.1.1 and
+Proposition 6.1.2, printed pp. 103–105</a> give an openly accessible
+comparison for that part of the argument. Those pages do not supply the
+full four-operation representability theorem proved here. Its proof
+below uses the two explicitly constructed cutoff caps, the tilted
+boundary neighborhoods and the actual denominator comparison maps.</p>
+<p>The categorical imports are the <a href="https://stacks.math.columbia.edu/tag/04VB">Stacks Project authors’
+localization calculus, Tag 04VB</a>, and <a href="https://stacks.math.columbia.edu/tag/05RA">triangulated quotient
+construction, Tag 05RA</a>. The reading edition is the official source
+revision <code style="overflow-wrap:anywhere">a04446e57ec1fbc252a871afcec7752fb2807b14</code>,
+<code>categories.tex</code> and <code>derived.tex</code>. These supply
+the fraction and quotient arguments, under GFDL 1.2 or later. They do
+not supply the microlocal estimates. The Astérisque citation gives
+mathematical credit; its source expression and copyright terms are
+distinct from the programme’s CC0 dedication.</p>
 <span id="SH02-MC-LOCAL"></span><h2 id="sh02-mc-local-a-category-that-records-specified-directions">SH02-MC-LOCAL
 — A category that records specified directions</h2>
 <p>Fix <strong>any</strong> subset
@@ -163,121 +172,193 @@ Common refinements prove independence of the fraction. Equation (MC.3)
 is a comparison, with no assertion that it is an isomorphism for an
 arbitrary
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>.</p>
-<span id="SH02-MC-POINT"></span><h2 id="sh02-mc-point-the-complete-morphism-group-at-one-point">SH02-MC-POINT
-— The complete morphism group at one point</h2>
-<p><strong>Theorem.</strong> For
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∈</mo><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">p\in T^*X</annotation></semantics></math>
-and arbitrary
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>,</mo><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G,F\in D^b(k_X)</annotation></semantics></math>,
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.4)</mtext></mrow><annotation encoding="application/x-tex">
- \operatorname{Hom}_{\mathcal D_X(\{p\})}(G,F)
- \xrightarrow{\sim} H^0(\mu\mathcal Hom(G,F))_p.
- \qquad\text{(MC.4)}
-</annotation></semantics></math> The statement also applies after
-shifting either argument, so it determines every graded morphism
-group.</p>
-<p>Here is the precise antecedent cutoff input used in the proof. In a
-vector-space chart at a nonzero covector
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p=(x_0;\xi_0)</annotation></semantics></math>,
-let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
-shrink to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
-and let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
-run through closed proper convex cones with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>0</mn></msub><mo>∈</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>γ</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup></mrow><annotation encoding="application/x-tex">\xi_0\in\operatorname{Int}(\gamma^\circ)^a</annotation></semantics></math>.
-The cone topology map is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>γ</mi></msub><annotation encoding="application/x-tex">\phi_\gamma</annotation></semantics></math>.
-Put
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>ϕ</mi><mi>γ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>R</mi><msub><mi>ϕ</mi><mrow><mi>γ</mi><mo>*</mo></mrow></msub><msub><mi>G</mi><mi>U</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>U</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
- Q_{U,\gamma}G=(\phi_\gamma^{-1}R\phi_{\gamma*}G_U)_U.
-</annotation></semantics></math> The cutoff theorem supplies an arrow
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G\to G</annotation></semantics></math>
-that is a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-denominator
-for sufficiently small choices. The microlocal-Hom stalk formula is
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.5)</mtext></mrow><annotation encoding="application/x-tex">
- H^0(\mu\mathcal Hom(G,F))_p
- =\operatorname{colim}_{U,\gamma}
-       \operatorname{Hom}(Q_{U,\gamma}G,F).
- \qquad\text{(MC.5)}
-</annotation></semantics></math> The filtered category permits
-simultaneous shrinking and cone refinement. Formula (MC.5) is the actual
-local formula imported from the microlocal-Hom unit; an assertion that
-ordinary sheaf stalks alone compute this group would be false.</p>
-<p><strong>Proof.</strong> Any representative of the right side of
-(MC.4), using (MC.5), is an arrow
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G\to F</annotation></semantics></math>.
-Inverting
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G\to G</annotation></semantics></math>
-produces a localized morphism with the requested image. This proves
-surjectivity. For injectivity, first represent a localized arrow by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">G'\to G</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">G'\to F</annotation></semantics></math>,
-where the first arrow is a denominator. If its image vanishes, use the
-isomorphism induced by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">G'\to G</annotation></semantics></math>
-on microlocal Hom to reduce to the ordinary arrow
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">G'\to F</annotation></semantics></math>.
-The zero criterion for the filtered colimit (MC.5) gives a further
-cutoff
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><msup><mi>G</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G'\to G'</annotation></semantics></math>
-on which that ordinary arrow is zero. This cutoff is another
-denominator. The fraction is therefore zero by (MC.1). This explicitly
-clears the initial denominator; injectivity is not being checked merely
-on ordinary arrows out of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.</p>
-<p>At
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p=(x,0)</annotation></semantics></math>,
-a conic closed microsupport misses
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-precisely when the complex vanishes in some neighborhood of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:
-its intersection with the zero section is the closed support. The
-denominator localization consequently has morphisms
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>U</mi><mo>∋</mo><mi>x</mi></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>U</mi></msub><mo>,</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>U</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{colim}_{U\ni x}\operatorname{Hom}(G|_U,F|_U)</annotation></semantics></math>.
-This equals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">H^0(R\mathcal Hom(G,F))_x</annotation></semantics></math>.
-The zero-section identity for microlocal Hom identifies the latter with
-the right side of (MC.4).
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
-<span id="SH02-MC-IDENTITY"></span><h2 id="sh02-mc-identity-a-sheaf-detects-its-own-microsupport">SH02-MC-IDENTITY
-— A sheaf detects its own microsupport</h2>
-<p>Let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>F</mi></msub><annotation encoding="application/x-tex">e_F</annotation></semantics></math>
-be the section of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^0\mu\mathcal Hom(F,F)</annotation></semantics></math>
-obtained from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">id</mi><mo>⁡</mo></mrow><mi>F</mi></msub><annotation encoding="application/x-tex">\operatorname{id}_F</annotation></semantics></math>.</p>
-<p><strong>Corollary.</strong> As closed supports,
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>e</mi><mi>F</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.6)</mtext></mrow><annotation encoding="application/x-tex">
- \operatorname{supp}(e_F)
- =\operatorname{supp}\mu\mathcal Hom(F,F)
- =\operatorname{SS}(F).
- \qquad\text{(MC.6)}
-</annotation></semantics></math> In particular
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p\notin\operatorname{SS}(F)</annotation></semantics></math>
-if and only if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu\mathcal Hom(F,F)_p=0</annotation></semantics></math>.</p>
-<p><strong>Proof.</strong> The first support is contained in the second,
-and the second in microsupport by the support estimate. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>e</mi><mi>F</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(e_F)_p=0</annotation></semantics></math>,
-(MC.4) says that the identity of
+<span id="SH02-MC-FOUR"></span><h2 id="sh02-mc-four-four-microlocal-operations-and-their-variance">SH02-MC-FOUR
+— Four microlocal operations and their variance</h2>
+<p>The quotient tells us which changes of representative are invisible.
+We now apply each sheaf operation to every such representative,
+retaining the direction of its comparison arrows.</p>
+<p>Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∈</mo><msub><mi>E</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">p\in E_f</annotation></semantics></math>,
+and write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>X</mi></msub><mo>=</mo><msub><mi>f</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_X=f_\pi(p)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>Y</mi></msub><mo>=</mo><msub><mi>f</mi><mi>d</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_Y=f_d(p)</annotation></semantics></math>.
+For a category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>
+we regard a pro-object
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P=(P_i)</annotation></semantics></math>
+as the functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>↦</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mi>i</mi></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\mapsto\operatorname{colim}_i\operatorname{Hom}(P_i,A)</annotation></semantics></math>,
+and an ind-object
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>I</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I=(I_j)</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>↦</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mi>j</mi></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><msub><mi>I</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\mapsto\operatorname{colim}_j\operatorname{Hom}(A,I_j)</annotation></semantics></math>.
+Quotation marks on a limit denote a formal pro/ind object, not a limit
+claimed to exist in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>.</p>
+<p>Define
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><munder><mi mathvariant="normal">lim</mi><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow></munder><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>F</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mi>!</mi></msubsup><mi>F</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>F</mi><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></msub><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><msup><mi>f</mi><mi>!</mi></msup><msup><mi>F</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>!</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><munder><mi mathvariant="normal">lim</mi><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow></munder><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>G</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>*</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>G</mi><mo>→</mo><msup><mi>G</mi><mo>′</mo></msup></mrow></msub><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><msup><mi>G</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.11)</mtext></mrow><annotation encoding="application/x-tex">
+ \begin{aligned}
+ f_{\mu,p}^{-1}F&amp;=\text{“}\!\lim_{F'\to F}\!\text{”}\ f^{-1}F'
+       &amp;&amp;\text{in }\operatorname{Pro}(\mathcal D_Y(p_Y)),\\
+ f_{\mu,p}^{!}F&amp;=\text{“}\!\operatorname{colim}_{F\to F'}\!\text{”}\ f^!F'
+       &amp;&amp;\text{in }\operatorname{Ind}(\mathcal D_Y(p_Y)),\\
+ f_{!,p}^{\mu}G&amp;=\text{“}\!\lim_{G'\to G}\!\text{”}\ Rf_!G'
+       &amp;&amp;\text{in }\operatorname{Pro}(\mathcal D_X(p_X)),\\
+ f_{*,p}^{\mu}G&amp;=\text{“}\!\operatorname{colim}_{G\to G'}\!\text{”}\ Rf_*G'
+       &amp;&amp;\text{in }\operatorname{Ind}(\mathcal D_X(p_X)).
+ \end{aligned}
+ \qquad\text{(MC.11)}
+</annotation></semantics></math> Every indexing arrow is a denominator
+at its indicated point. The fraction calculus proves independence of the
+chosen representative of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
-is zero in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal D_X(\{p\})</annotation></semantics></math>.
-An object in an additive category whose identity is zero is a zero
-object: every arrow to or from it factors through its zero identity and
-is zero. Equation (MC.2) now excludes
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-from microsupport. This proves the reverse inclusion.
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>:
+composing with a denominator gives a cofinal denominator category, and
+common refinements provide the inverse identification. These
+constructions are not, in general, endofunctors of ordinary bounded
+localized categories.</p>
+<span id="SH02-MC-ADJUNCTION"></span><h2 id="sh02-mc-adjunction-the-comparison-maps-before-representability">SH02-MC-ADJUNCTION
+— The comparison maps before representability</h2>
+<p>With the pro/ind Hom conventions just specified, there are natural
+identifications
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>f</mi><mrow><mi>!</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mi>!</mi></msubsup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><msubsup><mi>f</mi><mrow><mi>*</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo>,</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.12)</mtext></mrow><annotation encoding="application/x-tex">
+ \operatorname{Hom}(f_{!,p}^{\mu}G,F)
+ =\operatorname{Hom}(G,f_{\mu,p}^!F),\qquad
+ \operatorname{Hom}(F,f_{*,p}^{\mu}G)
+ =\operatorname{Hom}(f_{\mu,p}^{-1}F,G).
+ \qquad\text{(MC.12)}
+</annotation></semantics></math> For the first, expand the left side by
+(MC.11), then expand the localized Hom by the first formula (MC.1). It
+becomes
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow></msub><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>F</mi><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>G</mi><mo>′</mo></msup><mo>,</mo><msup><mi>F</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow></msub><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>F</mi><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>G</mi><mo>′</mo></msup><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><msup><mi>F</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
+ \operatorname{Hom}(Rf_!G',F')
+ =\operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
+ \operatorname{Hom}(G',f^!F').
+</annotation></semantics></math> Colimits commute with colimits.
+Applying the second formula (MC.1) to the inner denominator colimit
+yields the right side of (MC.12). The other adjunction follows from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>F</mi><mo>′</mo></msup><mo>,</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><msup><mi>G</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>F</mi><mo>′</mo></msup><mo>,</mo><msup><mi>G</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(F',Rf_*G')=\operatorname{Hom}(f^{-1}F',G')</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">F'\to F</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>→</mo><msup><mi>G</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">G\to G'</annotation></semantics></math>
+denominators. This derivation specifies the variance of every indexing
+arrow.</p>
+<p>There are canonical comparisons
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mrow><mi>!</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msubsup><mi>f</mi><mrow><mi>*</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><mo>⊗</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mi>!</mi></msubsup><mi>F</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.13)</mtext></mrow><annotation encoding="application/x-tex">
+ f_{!,p}^{\mu}G\longrightarrow f_{*,p}^{\mu}G,
+ \qquad
+ \omega_{Y/X}\otimes f_{\mu,p}^{-1}F
+       \longrightarrow f_{\mu,p}^!F.
+ \qquad\text{(MC.13)}
+</annotation></semantics></math> Their precise meaning is the compatible
+pro-to-ind morphism represented by
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mo>→</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi><mo>→</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><msup><mi>G</mi><mrow><mi>′</mi><mi>′</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><mo>⊗</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><mo>⊗</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo>→</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo>→</mo><msup><mi>f</mi><mi>!</mi></msup><msup><mi>F</mi><mrow><mi>′</mi><mi>′</mi></mrow></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ Rf_!G'\to Rf_!G\to Rf_*G\to Rf_*G^{\prime\prime},
+ \qquad
+ \omega_{Y/X}\otimes f^{-1}F'
+   \to\omega_{Y/X}\otimes f^{-1}F
+   \to f^!F\to f^!F^{\prime\prime},
+</annotation></semantics></math> for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi><mo>→</mo><msup><mi>G</mi><mrow><mi>′</mi><mi>′</mi></mrow></msup></mrow><annotation encoding="application/x-tex">G'\to G\to G^{\prime\prime}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi><mo>→</mo><msup><mi>F</mi><mrow><mi>′</mi><mi>′</mi></mrow></msup></mrow><annotation encoding="application/x-tex">F'\to F\to F^{\prime\prime}</annotation></semantics></math>.
+The middle arrows are the usual sheaf comparisons. Common denominator
+refinements prove compatibility. Once the formal objects are represented
+by ordinary objects these become ordinary arrows; until then (MC.13) is
+not a claim of an arrow between two ordinary sheaves.</p>
+<p><a id="SH02-MC-AMBIENT"></a></p>
+<h3 id="a-common-category-for-the-comparison-arrows">A common category
+for the comparison arrows</h3>
+<p>All filtered and cofiltered diagrams here are small in a fixed
+universe. For any locally small
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>,
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>:</mo><mi mathvariant="script">𝒞</mi><mo>→</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c:\mathcal C\to\operatorname{Pro}(\mathcal C)</annotation></semantics></math>
+for the constant pro embedding and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ι</mi><mo>:</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\iota:\operatorname{Pro}(\mathcal C)\to\operatorname{Ind}(\operatorname{Pro}(\mathcal C))</annotation></semantics></math>
+for the constant ind embedding. There are fully faithful embeddings</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mspace width="0.222em"></mspace><mi>ι</mi><mspace width="0.222em"></mspace></mrow></mover><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.222em"></mspace></mrow></mover><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.13a)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Pro}(\mathcal C)\xrightarrow{\ \iota\ }
+\operatorname{Ind}(\operatorname{Pro}(\mathcal C)),
+\qquad
+\operatorname{Ind}(\mathcal C)\xrightarrow{\ \operatorname{Ind}(c)\ }
+\operatorname{Ind}(\operatorname{Pro}(\mathcal C)).
+\qquad\text{(MC.13a)}
+</annotation></semantics></math></p>
+<p>The first is fully faithful by the constant-object Hom formula. The
+second is fully faithful because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+is, and the ind Hom formula applies its bijections to each stage before
+taking the prescribed colimits and limits. Both send an ordinary object
+to the same twice-constant object.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow></msub></mrow><annotation encoding="application/x-tex">P=(P_i)_{i\in I}</annotation></semantics></math>
+is a pro-object with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+cofiltered and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>J</mi><mi>j</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>j</mi><mo>∈</mo><mi>K</mi></mrow></msub></mrow><annotation encoding="application/x-tex">J=(J_j)_{j\in K}</annotation></semantics></math>
+is an ind-object with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+filtered, then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>ι</mi><mi>P</mi><mo>,</mo><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo><mi>J</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>j</mi><mo>∈</mo><mi>K</mi></mrow></msub><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>i</mi><mo>∈</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup></mrow></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo>,</mo><msub><mi>J</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.13b)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{\operatorname{Ind}(\operatorname{Pro}(\mathcal C))}
+\bigl(\iota P,\operatorname{Ind}(c)J\bigr)
+=\operatorname{colim}_{j\in K}\operatorname{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{\mathcal C}(P_i,J_j).
+\qquad\text{(MC.13b)}
+</annotation></semantics></math></p>
+<p>Indeed the outer source is constant, so the ind Hom formula gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mi>j</mi></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>c</mi><msub><mi>J</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{colim}_j\operatorname{Hom}_{\operatorname{Pro}(\mathcal C)}(P,cJ_j)</annotation></semantics></math>.
+The target of each inner Hom is constant, so the pro formula gives the
+second colimit. A single stage map represents a morphism, and equality
+is equality after common refinements in these filtered categories. This
+is a double <strong>colimit</strong> calculation; there is no exchange
+of an infinite limit with a colimit. It also specifies the ambient
+category when neither formal object is represented by an ordinary
+object.</p>
+<p>For the first arrow of (MC.13), take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒞</mi><mo>=</mo><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal C=\mathcal D_X(p_X)</annotation></semantics></math>.
+The incoming pro-object has its canonical projection to the identity
+stage
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">Rf_!G</annotation></semantics></math>,
+the outgoing ind-object has its structural map from the identity stage
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">Rf_*G</annotation></semantics></math>,
+and the ordinary comparison lies between these stages. Their composite
+in (MC.13a) is exactly the first displayed stage composite. Refining an
+incoming denominator precomposes it, and refining an outgoing one
+postcomposes it, leaving its class in (MC.13b) unchanged.</p>
+<p>For the second arrow take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒞</mi><mo>=</mo><msub><mi mathvariant="script">𝒟</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal C=\mathcal D_Y(p_Y)</annotation></semantics></math>.
+Tensoring by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><annotation encoding="application/x-tex">\omega_{Y/X}</annotation></semantics></math>
+is an ordinary functor on this localization: locally this object is an
+invertible orientation line with the stated shift, so tensoring
+preserves microsupport and hence denominators. Extend that functor
+termwise to the pro-category, and use the identity-stage projection, the
+ordinary noncharacteristic comparison map, and the outgoing structural
+map. This gives exactly the second stage composite. The middle map
+exists before imposing a noncharacteristic hypothesis; that hypothesis
+concerns its invertibility.</p>
+<p>Both composites are natural on ordinary arrows, by the naturality of
+the usual comparisons and the structural maps. The formal incoming and
+outgoing functors invert denominators, so this naturality identity also
+holds for their inverses and consequently for every roof. Thus (MC.13)
+is canonical and natural on localized objects. If both formal values are
+represented by ordinary objects, full faithfulness of the twice-constant
+embedding identifies it with a unique ordinary morphism.
+Representability alone does not make that morphism invertible. The
+forthcoming geometric hypotheses prove invertibility where it is
+asserted.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
-<p>The proof uses the identity in a localized category and does not
-assume finite-dimensional endomorphism spaces. It therefore detects
-infinite-rank sheaves just as well as finite-rank ones.</p>
 <span id="SH02-MC-CUTOFF"></span><h2 id="sh02-mc-cutoff-representatives-with-a-prescribed-directional-bound">SH02-MC-CUTOFF
 — Representatives with a prescribed directional bound</h2>
+<p>To represent the formal operations, we need two kinds of control. The
+next two constructions constrain cotangent directions at a fixed
+basepoint; the boundary-control lemma then constrains support over the
+target.</p>
 <p>Fix
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x_0\in X</annotation></semantics></math>,
 a proper closed convex cone
@@ -725,102 +806,168 @@ at the basepoint. This proves (MC.7) for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mo>+</mo></msub><annotation encoding="application/x-tex">F_+</annotation></semantics></math>
 without assuming that biduality is an isomorphism for arbitrary sheaves.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
-<span id="SH02-MC-FOUR"></span><h2 id="sh02-mc-four-four-microlocal-operations-and-their-variance">SH02-MC-FOUR
-— Four microlocal operations and their variance</h2>
-<p>Choose
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∈</mo><msub><mi>E</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">p\in E_f</annotation></semantics></math>,
+<span id="SH02-MC-TILTED"></span><h2 id="sh02-mc-tilted-removing-boundary-contributions-from-a-direct-image">SH02-MC-TILTED
+— Removing boundary contributions from a direct image</h2>
+<p>The following elementary construction is the geometric step behind
+the direct-image results. It is useful to state both boundary signs
+explicitly.</p>
+<p><strong>Boundary-control lemma.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H\in D^b(k_Y)</annotation></semantics></math>
+and suppose
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">near </mtext><mspace width="0.333em"></mspace></mrow><mi>p</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.20)</mtext></mrow><annotation encoding="application/x-tex">
+ f_\pi^{-1}(p_X)\cap f_d^{-1}\operatorname{SS}(H)
+                   \subset\{p\}\quad\text{near }p.
+ \qquad\text{(MC.20)}
+</annotation></semantics></math> There are arbitrarily small open
+neighborhoods
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>−</mo></msub><annotation encoding="application/x-tex">V_-</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>+</mo></msub><annotation encoding="application/x-tex">V_+</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mn>0</mn></msub><annotation encoding="application/x-tex">y_0</annotation></semantics></math>,
+with closures proper over a sufficiently small neighborhood of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>,
+such that
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><msub><mi>V</mi><mo>−</mo></msub></msub><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msub><mi>V</mi><mo>+</mo></msub></msub><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.21)</mtext></mrow><annotation encoding="application/x-tex">
+ \begin{split}
+ f_\pi^{-1}(p_X)\cap f_d^{-1}\operatorname{SS}(H_{V_-})&amp;\subset\{p\},\\
+ f_\pi^{-1}(p_X)\cap f_d^{-1}\operatorname{SS}(R\Gamma_{V_+}H)&amp;\subset\{p\}.
+ \end{split}
+ \qquad\text{(MC.21)}
+</annotation></semantics></math> If the left side of (MC.20) is empty
+near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
+both right sides in (MC.21) can be replaced by the empty set. Moreover
+the same boundary exclusion holds for the cones of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><msub><mi>V</mi><mo>−</mo></msub></msub><mo>→</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">H_{V_-}\to H</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msub><mi>V</mi><mo>+</mo></msub></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">H\to R\Gamma_{V_+}H</annotation></semantics></math>,
+wherever the original incidence is absent outside these
+neighborhoods.</p>
+<p><strong>Proof.</strong> Use coordinates with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y_0=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_0=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>X</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_X=(0;\xi_0)</annotation></semantics></math>,
 and write
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>X</mi></msub><mo>=</mo><msub><mi>f</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_X=f_\pi(p)</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>Y</mi></msub><mo>=</mo><msub><mi>f</mi><mi>d</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_Y=f_d(p)</annotation></semantics></math>.
-For a category
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>
-we regard a pro-object
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P=(P_i)</annotation></semantics></math>
-as the functor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>↦</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mi>i</mi></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\mapsto\operatorname{colim}_i\operatorname{Hom}(P_i,A)</annotation></semantics></math>,
-and an ind-object
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>I</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I=(I_j)</annotation></semantics></math>
-as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>↦</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mi>j</mi></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><msub><mi>I</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\mapsto\operatorname{colim}_j\operatorname{Hom}(A,I_j)</annotation></semantics></math>.
-Quotation marks on a limit denote a formal pro/ind object, not a limit
-claimed to exist in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>.</p>
-<p>Define
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><munder><mi mathvariant="normal">lim</mi><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow></munder><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>F</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mi>!</mi></msubsup><mi>F</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>F</mi><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></msub><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><msup><mi>f</mi><mi>!</mi></msup><msup><mi>F</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>!</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><munder><mi mathvariant="normal">lim</mi><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow></munder><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>G</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mrow><mi>*</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mtext mathvariant="normal">“</mtext><mspace width="-0.167em"></mspace><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>G</mi><mo>→</mo><msup><mi>G</mi><mo>′</mo></msup></mrow></msub><mspace width="-0.167em"></mspace><mtext mathvariant="normal">”</mtext><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><msup><mi>G</mi><mo>′</mo></msup></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.11)</mtext></mrow><annotation encoding="application/x-tex">
- \begin{aligned}
- f_{\mu,p}^{-1}F&amp;=\text{“}\!\lim_{F'\to F}\!\text{”}\ f^{-1}F'
-       &amp;&amp;\text{in }\operatorname{Pro}(\mathcal D_Y(p_Y)),\\
- f_{\mu,p}^{!}F&amp;=\text{“}\!\operatorname{colim}_{F\to F'}\!\text{”}\ f^!F'
-       &amp;&amp;\text{in }\operatorname{Ind}(\mathcal D_Y(p_Y)),\\
- f_{!,p}^{\mu}G&amp;=\text{“}\!\lim_{G'\to G}\!\text{”}\ Rf_!G'
-       &amp;&amp;\text{in }\operatorname{Pro}(\mathcal D_X(p_X)),\\
- f_{*,p}^{\mu}G&amp;=\text{“}\!\operatorname{colim}_{G\to G'}\!\text{”}\ Rf_*G'
-       &amp;&amp;\text{in }\operatorname{Ind}(\mathcal D_X(p_X)).
- \end{aligned}
- \qquad\text{(MC.11)}
-</annotation></semantics></math> Every indexing arrow is a denominator
-at its indicated point. The fraction calculus proves independence of the
-chosen representative of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
-or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>:
-composing with a denominator gives a cofinal denominator category, and
-common refinements provide the inverse identification. These
-constructions are not, in general, endofunctors of ordinary bounded
-localized categories.</p>
-<span id="SH02-MC-ADJUNCTION"></span><h2 id="sh02-mc-adjunction-the-comparison-maps-before-representability">SH02-MC-ADJUNCTION
-— The comparison maps before representability</h2>
-<p>With the pro/ind Hom conventions just specified, there are natural
-identifications
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>f</mi><mrow><mi>!</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mi>!</mi></msubsup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><msubsup><mi>f</mi><mrow><mi>*</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo>,</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.12)</mtext></mrow><annotation encoding="application/x-tex">
- \operatorname{Hom}(f_{!,p}^{\mu}G,F)
- =\operatorname{Hom}(G,f_{\mu,p}^!F),\qquad
- \operatorname{Hom}(F,f_{*,p}^{\mu}G)
- =\operatorname{Hom}(f_{\mu,p}^{-1}F,G).
- \qquad\text{(MC.12)}
-</annotation></semantics></math> For the first, expand the left side by
-(MC.11), then expand the localized Hom by the first formula (MC.1). It
-becomes
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow></msub><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>F</mi><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>G</mi><mo>′</mo></msup><mo>,</mo><msup><mi>F</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow></msub><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>F</mi><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>G</mi><mo>′</mo></msup><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><msup><mi>F</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
- \operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
- \operatorname{Hom}(Rf_!G',F')
- =\operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
- \operatorname{Hom}(G',f^!F').
-</annotation></semantics></math> Colimits commute with colimits.
-Applying the second formula (MC.1) to the inner denominator colimit
-yields the right side of (MC.12). The other adjunction follows from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>F</mi><mo>′</mo></msup><mo>,</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><msup><mi>G</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>F</mi><mo>′</mo></msup><mo>,</mo><msup><mi>G</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(F',Rf_*G')=\operatorname{Hom}(f^{-1}F',G')</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>y</mi></msub><mo>=</mo><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><msub><mi>ξ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A_y=d f_y^t\xi_0</annotation></semantics></math>.
+Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math>
+so small that
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>&lt;</mo><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>r</mi><mspace width="1.0em"></mspace><mo>⟹</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><msub><mi>A</mi><mi>y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.22)</mtext></mrow><annotation encoding="application/x-tex">
+ f(y)=0,\quad 0&lt;|y|\le2r
+       \quad\Longrightarrow\quad (y;A_y)\notin\operatorname{SS}(H).
+ \qquad\text{(MC.22)}
+</annotation></semantics></math> This follows from (MC.20), because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y\mapsto(y;\xi_0)</annotation></semantics></math>
+approaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>.
+On the compact intersection of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(0)</annotation></semantics></math>
 with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">F'\to F</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">|y|=r</annotation></semantics></math>,
+closedness gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta&gt;0</annotation></semantics></math>
+such that
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>δ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.23)</mtext></mrow><annotation encoding="application/x-tex">
+ (y;A_y+\eta)\notin\operatorname{SS}(H)
+       \quad\text{for }|\eta|\le2\delta.
+ \qquad\text{(MC.23)}
+</annotation></semantics></math> If this sphere misses the fibre, the
+condition is vacuous. Set, within the coordinate chart,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>ρ</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">⟩</mo><mo>+</mo><mi>δ</mi><mi>r</mi><mo>−</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mo>−</mo></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>ρ</mi><mo>−</mo></msub><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>ρ</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">⟩</mo><mo>+</mo><mi>δ</mi><mi>r</mi><mo>−</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mo>+</mo></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>ρ</mi><mo>+</mo></msub><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.24)</mtext></mrow><annotation encoding="application/x-tex">
+ \begin{aligned}
+ \rho_-(y)&amp;=\langle f(y),\xi_0\rangle+\delta r-\delta|y|,
+ &amp;V_-&amp;=\{\rho_-&gt;0\},\\
+ \rho_+(y)&amp;=-\langle f(y),\xi_0\rangle+\delta r-\delta|y|,
+ &amp;V_+&amp;=\{\rho_+&gt;0\}.
+ \end{aligned}
+ \qquad\text{(MC.24)}
+</annotation></semantics></math> After restricting the target so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">⟩</mo><mo form="prefix" stretchy="false">|</mo><mo>&lt;</mo><mi>δ</mi><mi>r</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|\langle f(y),\xi_0\rangle|&lt;\delta r/2</annotation></semantics></math>,
+both closures lie inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>3</mn><mi>r</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|y|\le3r/2</annotation></semantics></math>.
+They are closed there and hence proper over this smaller target. On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(0)</annotation></semantics></math>
+their boundary is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">|y|=r</annotation></semantics></math>,
+and both contain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.
+Taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+arbitrarily small gives neighborhood systems. The norm need not be
+smooth at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>,
+which is an interior point. At a boundary point in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{supp}(H)</annotation></semantics></math>,
+(MC.23) implies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>ρ</mi><mo>±</mo></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d\rho_\pm\ne0</annotation></semantics></math>:
+otherwise
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>y</mi></msub><annotation encoding="application/x-tex">A_y</annotation></semantics></math>
+differs from zero by a vector of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
+contradicting that the zero covector belongs to microsupport over the
+closed support. Thus the boundary is smooth wherever it matters. Outside
+this support the complex vanishes in a neighborhood.</p>
+<p>At a fibre-boundary point write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>y</mi><mi>/</mi><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">n=y/|y|</annotation></semantics></math>.
+The inward normal of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>−</mo></msub><annotation encoding="application/x-tex">V_-</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">A_y-\delta n</annotation></semantics></math>.
+Equation (MC.23) excludes that entire positive ray from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{SS}(H)</annotation></semantics></math>,
+by conicity. The noncharacteristic extension estimate applies and gives
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><msub><mi>V</mi><mo>−</mo></msub></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>⊂</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>+</mo><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>≥</mo><mn>0</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>δ</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \operatorname{SS}(H_{V_-})_y
+       \subset\operatorname{SS}(H)_y
+                    +\mathbb R_{\ge0}(-A_y+\delta n).
+</annotation></semantics></math> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>y</mi></msub><annotation encoding="application/x-tex">A_y</annotation></semantics></math>
+belonged to the left side, there would be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">\eta\in\operatorname{SS}(H)_y</annotation></semantics></math>
 and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>→</mo><msup><mi>G</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">G\to G'</annotation></semantics></math>
-denominators. This derivation specifies the variance of every indexing
-arrow.</p>
-<p>There are canonical comparisons
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mrow><mi>!</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msubsup><mi>f</mi><mrow><mi>*</mi><mo>,</mo><mi>p</mi></mrow><mi>μ</mi></msubsup><mi>G</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><mo>⊗</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msubsup><mi>f</mi><mrow><mi>μ</mi><mo>,</mo><mi>p</mi></mrow><mi>!</mi></msubsup><mi>F</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.13)</mtext></mrow><annotation encoding="application/x-tex">
- f_{!,p}^{\mu}G\longrightarrow f_{*,p}^{\mu}G,
- \qquad
- \omega_{Y/X}\otimes f_{\mu,p}^{-1}F
-       \longrightarrow f_{\mu,p}^!F.
- \qquad\text{(MC.13)}
-</annotation></semantics></math> Their precise meaning is the compatible
-pro-to-ind morphism represented by
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mo>→</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi><mo>→</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi><mtext mathvariant="normal">”</mtext><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><mo>⊗</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><msub><mi>ω</mi><mrow><mi>Y</mi><mi>/</mi><mi>X</mi></mrow></msub><mo>⊗</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo>→</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo>→</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mtext mathvariant="normal">”</mtext><mo>,</mo></mrow><annotation encoding="application/x-tex">
- Rf_!G'\to Rf_!G\to Rf_*G\to Rf_*G\text{”},
- \qquad
- \omega_{Y/X}\otimes f^{-1}F'
-   \to\omega_{Y/X}\otimes f^{-1}F
-   \to f^!F\to f^!F\text{”},
-</annotation></semantics></math> for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi><mo>→</mo><mi>G</mi><mtext mathvariant="normal">”</mtext></mrow><annotation encoding="application/x-tex">G'\to G\to G\text{”}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi><mo>→</mo><mi>F</mi><mtext mathvariant="normal">”</mtext></mrow><annotation encoding="application/x-tex">F'\to F\to F\text{”}</annotation></semantics></math>.
-The middle arrows are the usual sheaf comparisons. Common denominator
-refinements prove compatibility. Once the formal objects are represented
-by ordinary objects these become ordinary arrows; until then (MC.13) is
-not a claim of an arrow between two ordinary sheaves.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c\ge0</annotation></semantics></math>
+with
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>c</mi><mi>δ</mi><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \eta=(1+c)A_y-c\delta n.
+</annotation></semantics></math> Dividing by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">1+c</annotation></semantics></math>
+contradicts (MC.23). For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msub><mi>V</mi><mo>+</mo></msub></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">R\Gamma_{V_+}H</annotation></semantics></math>,
+local support in an open set adds its inward normal ray, which here is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-A_y-\delta n</annotation></semantics></math>.
+The noncharacteristic condition is the absence of its opposite ray,
+again supplied by (MC.23). The same calculation now gives
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>c</mi><mi>δ</mi><mi>n</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ \eta=(1+c)A_y+c\delta n,
+</annotation></semantics></math> and the same contradiction. On the
+interior of either neighborhood the complex is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+and outside its closure it is zero. This proves (MC.21), including the
+empty-incidence case.</p>
+<p>For the incoming comparison its cone is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mrow><mi>Y</mi><mo>\</mo><msub><mi>V</mi><mo>−</mo></msub></mrow></msub><annotation encoding="application/x-tex">H_{Y\setminus V_-}</annotation></semantics></math>,
+where the complement is closed. Its boundary extension adds the inward
+normal of that closed complement, namely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-A_y+\delta n</annotation></semantics></math>,
+the ray already excluded. For the outgoing comparison the cone is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>Y</mi><mo>\</mo><msub><mi>V</mi><mo>+</mo></msub></mrow></msub><mi>H</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">R\Gamma_{Y\setminus V_+}H[1]</annotation></semantics></math>.
+Local support in this closed complement adds the opposite of its inward
+normal, namely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-A_y-\delta n</annotation></semantics></math>.
+Thus both comparison cones have no new incidence at the boundary. Away
+from the boundary they either vanish or agree with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.
+This proves the last assertion. All these arguments remain valid when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi_0=0</annotation></semantics></math>;
+(MC.23) then says that the complex vanishes near the relevant boundary.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
 <span id="SH02-MC-PULL-REP"></span><h2 id="sh02-mc-pull-rep-when-microlocal-inverse-images-are-ordinary-objects">SH02-MC-PULL-REP
 — When microlocal inverse images are ordinary objects</h2>
+<p>We can now apply the geometric constructions to the two cotangent
+maps. Inverse images require isolation in a fibre of the transpose
+differential; direct images require isolation over the target covector.
+The proofs keep these fibres separate.</p>
 <p>Let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>y</mi><mn>0</mn></msub><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msub><mi>E</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">p=(y_0;\xi_0)\in E_f</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>X</mi></msub><mo>=</mo><msub><mi>f</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_X=f_\pi(p)</annotation></semantics></math>
@@ -984,7 +1131,7 @@ denominator; microsupports coincide near
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>X</mi></msub><annotation encoding="application/x-tex">p_X</annotation></semantics></math>.
 Common refinements can in turn be made good by one more cutoff. The
 analogous statement holds for outgoing denominators. If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mtext mathvariant="normal">”</mtext><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">F\text{”}\to F'</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mrow><mi>′</mi><mi>′</mi></mrow></msup><mo>→</mo><msup><mi>F</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">F^{\prime\prime}\to F'</annotation></semantics></math>
 is a denominator between two good representatives, its cone
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
 is noncharacteristic and has
@@ -1032,162 +1179,6 @@ part of the incidence fibre. There the original and replacement
 microsupports agree, and the noncharacteristic inverse-image estimate
 gives (MC.16). In the zero-covector case the same normalization argument
 follows from noncharacteristicity, with the sole lift equal to zero.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
-<span id="SH02-MC-TILTED"></span><h2 id="sh02-mc-tilted-removing-boundary-contributions-from-a-direct-image">SH02-MC-TILTED
-— Removing boundary contributions from a direct image</h2>
-<p>The following elementary construction is the geometric step behind
-the direct-image results. It is useful to state both boundary signs
-explicitly.</p>
-<p><strong>Boundary-control lemma.</strong> Let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H\in D^b(k_Y)</annotation></semantics></math>
-and suppose
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">near </mtext><mspace width="0.333em"></mspace></mrow><mi>p</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.20)</mtext></mrow><annotation encoding="application/x-tex">
- f_\pi^{-1}(p_X)\cap f_d^{-1}\operatorname{SS}(H)
-                   \subset\{p\}\quad\text{near }p.
- \qquad\text{(MC.20)}
-</annotation></semantics></math> There are arbitrarily small open
-neighborhoods
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>−</mo></msub><annotation encoding="application/x-tex">V_-</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>+</mo></msub><annotation encoding="application/x-tex">V_+</annotation></semantics></math>
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mn>0</mn></msub><annotation encoding="application/x-tex">y_0</annotation></semantics></math>,
-with closures proper over a sufficiently small neighborhood of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>,
-such that
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><msub><mi>V</mi><mo>−</mo></msub></msub><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msub><mi>V</mi><mo>+</mo></msub></msub><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.21)</mtext></mrow><annotation encoding="application/x-tex">
- \begin{split}
- f_\pi^{-1}(p_X)\cap f_d^{-1}\operatorname{SS}(H_{V_-})&amp;\subset\{p\},\\
- f_\pi^{-1}(p_X)\cap f_d^{-1}\operatorname{SS}(R\Gamma_{V_+}H)&amp;\subset\{p\}.
- \end{split}
- \qquad\text{(MC.21)}
-</annotation></semantics></math> If the left side of (MC.20) is empty
-near
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
-both right sides in (MC.21) can be replaced by the empty set. Moreover
-the same boundary exclusion holds for the cones of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><msub><mi>V</mi><mo>−</mo></msub></msub><mo>→</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">H_{V_-}\to H</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msub><mi>V</mi><mo>+</mo></msub></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">H\to R\Gamma_{V_+}H</annotation></semantics></math>,
-wherever the original incidence is absent outside these
-neighborhoods.</p>
-<p><strong>Proof.</strong> Use coordinates with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y_0=0</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_0=0</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>X</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_X=(0;\xi_0)</annotation></semantics></math>,
-and write
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>y</mi></msub><mo>=</mo><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><msub><mi>ξ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A_y=d f_y^t\xi_0</annotation></semantics></math>.
-Choose
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math>
-so small that
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>&lt;</mo><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>r</mi><mspace width="1.0em"></mspace><mo>⟹</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><msub><mi>A</mi><mi>y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.22)</mtext></mrow><annotation encoding="application/x-tex">
- f(y)=0,\quad 0&lt;|y|\le2r
-       \quad\Longrightarrow\quad (y;A_y)\notin\operatorname{SS}(H).
- \qquad\text{(MC.22)}
-</annotation></semantics></math> This follows from (MC.20), because
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y\mapsto(y;\xi_0)</annotation></semantics></math>
-approaches
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>.
-On the compact intersection of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(0)</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">|y|=r</annotation></semantics></math>,
-closedness gives
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta&gt;0</annotation></semantics></math>
-such that
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>δ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.23)</mtext></mrow><annotation encoding="application/x-tex">
- (y;A_y+\eta)\notin\operatorname{SS}(H)
-       \quad\text{for }|\eta|\le2\delta.
- \qquad\text{(MC.23)}
-</annotation></semantics></math> If this sphere misses the fibre, the
-condition is vacuous. Set, within the coordinate chart,
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>ρ</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">⟩</mo><mo>+</mo><mi>δ</mi><mi>r</mi><mo>−</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mo>−</mo></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>ρ</mi><mo>−</mo></msub><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>ρ</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">⟩</mo><mo>+</mo><mi>δ</mi><mi>r</mi><mo>−</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>V</mi><mo>+</mo></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>ρ</mi><mo>+</mo></msub><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.24)</mtext></mrow><annotation encoding="application/x-tex">
- \begin{aligned}
- \rho_-(y)&amp;=\langle f(y),\xi_0\rangle+\delta r-\delta|y|,
- &amp;V_-&amp;=\{\rho_-&gt;0\},\\
- \rho_+(y)&amp;=-\langle f(y),\xi_0\rangle+\delta r-\delta|y|,
- &amp;V_+&amp;=\{\rho_+&gt;0\}.
- \end{aligned}
- \qquad\text{(MC.24)}
-</annotation></semantics></math> After restricting the target so that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">⟩</mo><mo form="prefix" stretchy="false">|</mo><mo>&lt;</mo><mi>δ</mi><mi>r</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|\langle f(y),\xi_0\rangle|&lt;\delta r/2</annotation></semantics></math>,
-both closures lie inside
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>3</mn><mi>r</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|y|\le3r/2</annotation></semantics></math>.
-They are closed there and hence proper over this smaller target. On
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(0)</annotation></semantics></math>
-their boundary is exactly
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">|y|=r</annotation></semantics></math>,
-and both contain
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.
-Taking
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
-arbitrarily small gives neighborhood systems. The norm need not be
-smooth at
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>,
-which is an interior point. At a boundary point in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{supp}(H)</annotation></semantics></math>,
-(MC.23) implies
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>ρ</mi><mo>±</mo></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d\rho_\pm\ne0</annotation></semantics></math>:
-otherwise
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>y</mi></msub><annotation encoding="application/x-tex">A_y</annotation></semantics></math>
-differs from zero by a vector of length
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>,
-contradicting that the zero covector belongs to microsupport over the
-closed support. Thus the boundary is smooth wherever it matters. Outside
-this support the complex vanishes in a neighborhood.</p>
-<p>At a fibre-boundary point write
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>y</mi><mi>/</mi><mo form="prefix" stretchy="false">|</mo><mi>y</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">n=y/|y|</annotation></semantics></math>.
-The inward normal of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mo>−</mo></msub><annotation encoding="application/x-tex">V_-</annotation></semantics></math>
-is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">A_y-\delta n</annotation></semantics></math>.
-Equation (MC.23) excludes that entire positive ray from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{SS}(H)</annotation></semantics></math>,
-by conicity. The noncharacteristic extension estimate applies and gives
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><msub><mi>V</mi><mo>−</mo></msub></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>⊂</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>+</mo><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>≥</mo><mn>0</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>δ</mi><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
- \operatorname{SS}(H_{V_-})_y
-       \subset\operatorname{SS}(H)_y
-                    +\mathbb R_{\ge0}(-A_y+\delta n).
-</annotation></semantics></math> If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>y</mi></msub><annotation encoding="application/x-tex">A_y</annotation></semantics></math>
-belonged to the left side, there would be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">\eta\in\operatorname{SS}(H)_y</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c\ge0</annotation></semantics></math>
-with
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>c</mi><mi>δ</mi><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
- \eta=(1+c)A_y-c\delta n.
-</annotation></semantics></math> Dividing by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">1+c</annotation></semantics></math>
-contradicts (MC.23). For
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msub><mi>V</mi><mo>+</mo></msub></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">R\Gamma_{V_+}H</annotation></semantics></math>,
-local support in an open set adds its inward normal ray, which here is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-A_y-\delta n</annotation></semantics></math>.
-The noncharacteristic condition is the absence of its opposite ray,
-again supplied by (MC.23). The same calculation now gives
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>c</mi><mi>δ</mi><mi>n</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
- \eta=(1+c)A_y+c\delta n,
-</annotation></semantics></math> and the same contradiction. On the
-interior of either neighborhood the complex is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
-and outside its closure it is zero. This proves (MC.21), including the
-empty-incidence case.</p>
-<p>For the incoming comparison its cone is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mrow><mi>Y</mi><mo>\</mo><msub><mi>V</mi><mo>−</mo></msub></mrow></msub><annotation encoding="application/x-tex">H_{Y\setminus V_-}</annotation></semantics></math>,
-where the complement is closed. Its boundary extension adds the inward
-normal of that closed complement, namely
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>+</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-A_y+\delta n</annotation></semantics></math>,
-the ray already excluded. For the outgoing comparison the cone is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>Y</mi><mo>\</mo><msub><mi>V</mi><mo>+</mo></msub></mrow></msub><mi>H</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">R\Gamma_{Y\setminus V_+}H[1]</annotation></semantics></math>.
-Local support in this closed complement adds the opposite of its inward
-normal, namely
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mi>y</mi></msub><mo>−</mo><mi>δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">-A_y-\delta n</annotation></semantics></math>.
-Thus both comparison cones have no new incidence at the boundary. Away
-from the boundary they either vanish or agree with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>.
-This proves the last assertion. All these arguments remain valid when
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi_0=0</annotation></semantics></math>;
-(MC.23) then says that the complex vanishes near the relevant boundary.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
 <span id="SH02-MC-DIRECT-GERMS"></span><h2 id="sh02-mc-direct-germs-direct-images-use-the-germ-at-the-chosen-basepoint">SH02-MC-DIRECT-GERMS
 — Direct images use the germ at the chosen basepoint</h2>
@@ -1402,6 +1393,122 @@ where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{SS}(H)=\operatorname{SS}(G)</annotation></semantics></math>.
 This is (MC.27).
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-MC-POINT"></span><h2 id="sh02-mc-point-the-complete-morphism-group-at-one-point">SH02-MC-POINT
+— The complete morphism group at one point</h2>
+<p>We finish by computing morphisms in the directional category. This
+calculation uses the cone-projector stalk formula and the fraction zero
+criterion; it is independent of the representability criteria above.</p>
+<p><strong>Theorem.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∈</mo><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">p\in T^*X</annotation></semantics></math>
+and arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>,</mo><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G,F\in D^b(k_X)</annotation></semantics></math>,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.4)</mtext></mrow><annotation encoding="application/x-tex">
+ \operatorname{Hom}_{\mathcal D_X(\{p\})}(G,F)
+ \xrightarrow{\sim} H^0(\mu\mathcal Hom(G,F))_p.
+ \qquad\text{(MC.4)}
+</annotation></semantics></math> The statement also applies after
+shifting either argument, so it determines every graded morphism
+group.</p>
+<p>Here is the precise antecedent cutoff input used in the proof. In a
+vector-space chart at a nonzero covector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>;</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p=(x_0;\xi_0)</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+shrink to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+run through closed proper convex cones with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>0</mn></msub><mo>∈</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>γ</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup></mrow><annotation encoding="application/x-tex">\xi_0\in\operatorname{Int}(\gamma^\circ)^a</annotation></semantics></math>.
+The cone topology map is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϕ</mi><mi>γ</mi></msub><annotation encoding="application/x-tex">\phi_\gamma</annotation></semantics></math>.
+Put
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>ϕ</mi><mi>γ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>R</mi><msub><mi>ϕ</mi><mrow><mi>γ</mi><mo>*</mo></mrow></msub><msub><mi>G</mi><mi>U</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>U</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ Q_{U,\gamma}G=(\phi_\gamma^{-1}R\phi_{\gamma*}G_U)_U.
+</annotation></semantics></math> The cutoff theorem supplies an arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G\to G</annotation></semantics></math>
+that is a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-denominator
+for sufficiently small choices. The microlocal-Hom stalk formula is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.5)</mtext></mrow><annotation encoding="application/x-tex">
+ H^0(\mu\mathcal Hom(G,F))_p
+ =\operatorname{colim}_{U,\gamma}
+       \operatorname{Hom}(Q_{U,\gamma}G,F).
+ \qquad\text{(MC.5)}
+</annotation></semantics></math> The filtered category permits
+simultaneous shrinking and cone refinement. Formula (MC.5) is the actual
+local formula imported from the microlocal-Hom unit; an assertion that
+ordinary sheaf stalks alone compute this group would be false.</p>
+<p><strong>Proof.</strong> Any representative of the right side of
+(MC.4), using (MC.5), is an arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G\to F</annotation></semantics></math>.
+Inverting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><mi>G</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G\to G</annotation></semantics></math>
+produces a localized morphism with the requested image. This proves
+surjectivity. For injectivity, first represent a localized arrow by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">G'\to G</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">G'\to F</annotation></semantics></math>,
+where the first arrow is a denominator. If its image vanishes, use the
+isomorphism induced by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">G'\to G</annotation></semantics></math>
+on microlocal Hom to reduce to the ordinary arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">G'\to F</annotation></semantics></math>.
+The zero criterion for the filtered colimit (MC.5) gives a further
+cutoff
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>U</mi><mo>,</mo><mi>γ</mi></mrow></msub><msup><mi>G</mi><mo>′</mo></msup><mo>→</mo><msup><mi>G</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">Q_{U,\gamma}G'\to G'</annotation></semantics></math>
+on which that ordinary arrow is zero. This cutoff is another
+denominator. The fraction is therefore zero by (MC.1). This explicitly
+clears the initial denominator; injectivity is not being checked merely
+on ordinary arrows out of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.</p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p=(x,0)</annotation></semantics></math>,
+a conic closed microsupport misses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+precisely when the complex vanishes in some neighborhood of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:
+its intersection with the zero section is the closed support. The
+denominator localization consequently has morphisms
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>U</mi><mo>∋</mo><mi>x</mi></mrow></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>U</mi></msub><mo>,</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>U</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{colim}_{U\ni x}\operatorname{Hom}(G|_U,F|_U)</annotation></semantics></math>.
+This equals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">H^0(R\mathcal Hom(G,F))_x</annotation></semantics></math>.
+The zero-section identity for microlocal Hom identifies the latter with
+the right side of (MC.4).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-MC-IDENTITY"></span><h2 id="sh02-mc-identity-a-sheaf-detects-its-own-microsupport">SH02-MC-IDENTITY
+— A sheaf detects its own microsupport</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>F</mi></msub><annotation encoding="application/x-tex">e_F</annotation></semantics></math>
+be the section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^0\mu\mathcal Hom(F,F)</annotation></semantics></math>
+obtained from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">id</mi><mo>⁡</mo></mrow><mi>F</mi></msub><annotation encoding="application/x-tex">\operatorname{id}_F</annotation></semantics></math>.</p>
+<p><strong>Corollary.</strong> As closed supports,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>e</mi><mi>F</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MC.6)</mtext></mrow><annotation encoding="application/x-tex">
+ \operatorname{supp}(e_F)
+ =\operatorname{supp}\mu\mathcal Hom(F,F)
+ =\operatorname{SS}(F).
+ \qquad\text{(MC.6)}
+</annotation></semantics></math> In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p\notin\operatorname{SS}(F)</annotation></semantics></math>
+if and only if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu\mathcal Hom(F,F)_p=0</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> The first support is contained in the second,
+and the second in microsupport by the support estimate. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>e</mi><mi>F</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(e_F)_p=0</annotation></semantics></math>,
+(MC.4) says that the identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is zero in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">𝒟</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>p</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal D_X(\{p\})</annotation></semantics></math>.
+An object in an additive category whose identity is zero is a zero
+object: every arrow to or from it factors through its zero identity and
+is zero. Equation (MC.2) now excludes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+from microsupport. This proves the reverse inclusion.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The proof uses the identity in a localized category and does not
+assume finite-dimensional endomorphism spaces. It therefore detects
+infinite-rank sheaves just as well as finite-rank ones.</p>
 <span id="SH02-MC-EXTERNAL"></span><h2 id="sh02-mc-external-multiplying-localized-morphisms">SH02-MC-EXTERNAL —
 Multiplying localized morphisms</h2>
 <p>Let
@@ -1579,72 +1686,163 @@ empty space has zero derived sections, and (MC.3) is the unique map
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0\to0</annotation></semantics></math>.
 This agrees with the arbitrary-subset definition and requires no
 nonempty or conic assumption.</p>
-<span id="SH02-MC-DEPENDENCIES"></span><h2 id="sh02-mc-dependencies-what-the-proofs-depend-on">SH02-MC-DEPENDENCIES
-— What the proofs depend on</h2>
-<p>The following contracts are used at the stated full generality.</p>
+<span id="SH02-MC-DEPENDENCIES"></span><h2 id="sh02-mc-dependencies-proof-suppliers-and-their-exact-use">SH02-MC-DEPENDENCIES
+— Proof suppliers and their exact use</h2>
+<p>The following table identifies the actual proof inputs. It also
+distinguishes the estimates used here from stronger assertions whose
+additional hypotheses are unnecessary for this lesson.</p>
 <table>
 <colgroup>
-<col style="width: 50%"/>
-<col style="width: 50%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr>
-<th>Contract</th>
-<th>Use here</th>
+<th>Input and scope</th>
+<th>Programme proof or identified categorical source</th>
+<th>Use in this lesson</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Thick Verdier quotient, saturated denominators, both fraction
-calculi and their filtered Hom formulas</td>
-<td>MC.1–MC.4 and the formal pro/ind constructions</td>
-</tr>
-<tr>
-<td>Six operations on bounded sheaves on finite-dimensional manifolds,
-relative orientation comparison, localization triangles, adjunctions and
-finite cohomological bounds</td>
-<td>MC.8–MC.13, MC.18 and MC.25</td>
-</tr>
-<tr>
-<td><a href="src/SH02/microlocal-hom.md">Microlocal Hom</a>,
-<code>SH02-MH-HOM-RECOVERY</code> and <code>SH02-MH-GAMMA-STALK</code>:
-ordinary-Hom recovery, zero-section identity and the cone-projector
-stalk formula on
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>U</mi></msub><annotation encoding="application/x-tex">G_U</annotation></semantics></math></td>
-<td>MC.3–MC.6</td>
-</tr>
-<tr>
-<td>Microsupport triangle inequality, closed conicity, support on the
-zero section and the self-Hom support estimate</td>
-<td>Localization, support detection, compactness arguments</td>
-</tr>
-<tr>
-<td><a href="src/SH02/microsupport-tests.md">Microsupport tests</a>:
-cone cutoff isomorphism on the interior polar and its global polar
-bound; <a href="src/SH02/cone-topology.md">cone topology</a>: the
-ordinary kernel formula</td>
-<td>MC.5 and both refined cutoffs</td>
-</tr>
-<tr>
-<td><a href="src/SH02/microsupport-operations.md">Microsupport
-operations</a>, <code>SH02-MO-PROPER-PUSH</code> and
-<code>SH02-MO-EXTERNAL-TENSOR</code>, together with the full
-noncharacteristic inverse, tensor and internal-Hom estimates</td>
-<td>Boundary and incidence estimates, representability and external
-product</td>
-</tr>
-<tr>
-<td>Strict-normal boundary estimates with the indicated open/closed and
-extension/local-support signs</td>
-<td>The two caps and MC.24; all four signs are computed explicitly
+<td>Thick quotient, saturated denominators, left and right fractions,
+filtered Hom formulas and their zero criterion</td>
+<td>Official Stacks <code>categories.tex</code>, the two
+localization-morphism colimit remarks and
+<code>lemma-what-gets-inverted</code>; <code>derived.tex</code>,
+<code>lemma-construct-multiplicative-system</code> and
+<code>lemma-kernel-quotient</code>, at the revision identified
 above</td>
+<td><code>SH02-MC-LOCAL</code>; denominator refinements in all four
+formal operations</td>
+</tr>
+<tr>
+<td>Proper supports, fibre calculation, composition and base change for
+arbitrary module sheaves on locally compact Hausdorff spaces, with
+bounded-below inputs</td>
+<td><a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#compact-support-proof">The
+compact-support and proper-image proofs</a>, (C1)–(C7), (F2)–(F6) and
+(D1)–(D4); <a href="SH02-exceptional-operations.html#SH02-EX-FOUNDATIONS">Exceptional
+operations</a>, <code>SH02-EX-FOUNDATIONS</code> and
+<code>SH02-EX-BASECHANGE-BRIDGE</code></td>
+<td>Properness on the actual kernel support and the boundary-control
+constructions</td>
+</tr>
+<tr>
+<td>Exceptional adjunction, its unit and counit, internal adjunction and
+normalized tensor comparison</td>
+<td><a href="SH02-exceptional-operations.html#SH02-EX-FOUNDATIONS">Exceptional
+operations</a>, <code>SH02-EX-ADJOINT</code>,
+<code>SH02-EX-INTERNAL</code>, <code>SH02-EX-TENSOR</code> and
+<code>SH02-EX-HOM</code></td>
+<td>The diagonal internal-Hom kernel, the two adjunctions and the
+canonical comparison arrows</td>
+</tr>
+<tr>
+<td>Finite cohomological bounds, relative orientation and bounded
+internal Hom for arbitrary bounded inputs</td>
+<td><a href="SH02-manifold-duality.html#SH02-MD-DIMENSION">Manifold
+duality</a>, <code>SH02-MD-DIMENSION</code>,
+<code>SH02-MD-SUBMERSION</code>, <code>SH02-MD-RELATIVE</code> and
+<code>SH02-MD-BOUNDED-HOM</code>; the <a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#globally-bounded-operations">globally
+bounded operation proof</a></td>
+<td>All displayed bounded categories; the relative dimension shift in
+the inverse-image comparison</td>
+</tr>
+<tr>
+<td>Closed conicity, closed support on the zero section, shifts and the
+triangle inequality</td>
+<td><a href="SH02-microsupport-tests.html#SH02-MST-TEST">Microsupport
+tests</a>, <code>SH02-MST-TEST</code> and
+<code>SH02-MST-FORMAL</code></td>
+<td>Thickness, zero objects and compactness arguments; no finite-stalk
+hypothesis</td>
+</tr>
+<tr>
+<td>Ordinary directional projector, its polar bound and the counit
+isomorphism on the interior polar</td>
+<td><a href="SH02-cone-topology.html#SH02-GAM-UNIT">Cone topology</a>,
+<code>SH02-GAM-UNIT</code> and <code>SH02-GAM-KERNEL</code>; <a href="SH02-microsupport-tests.html#SH02-MST-TEST">Microsupport
+tests</a>, <code>SH02-MST-CUTOFF-FORWARD</code></td>
+<td>The incoming and outgoing cutoff constructions and the pointwise
+morphism calculation. The proper-support and ordinary projector models
+are compared only after checking the indicated support condition</td>
+</tr>
+<tr>
+<td>Proper-on-support direct image and submersion pullback</td>
+<td><a href="SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH">Microsupport
+operations</a>, <code>SH02-MO-PROPER-PUSH</code> and
+<code>SH02-MO-SUBMERSION</code></td>
+<td>The kernel estimates and the inverse/direct incidence bounds.
+Properness is imposed on support, not inferred from the smoothness of
+the map</td>
+</tr>
+<tr>
+<td>Noncharacteristic inverse image, including its specified orientation
+comparison; noncharacteristic tensor and internal-Hom bounds</td>
+<td><a href="SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH">Microsupport
+operations</a>, <code>SH02-MO-EMBEDDING</code>,
+<code>SH02-MO-PULLBACK</code> and <code>SH02-MO-DIAGONAL</code></td>
+<td>The good inverse-image representatives and the two cutoff kernels.
+The estimates MO21–MO22 require no constructibility; the additional
+evaluation isomorphism MO23 is not used</td>
+</tr>
+<tr>
+<td>All four open/closed extension and local-support boundary signs,
+including those of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>U</mi></msub><annotation encoding="application/x-tex">F_U</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>U</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">R\Gamma_UF</annotation></semantics></math></td>
+<td><a href="SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH">Microsupport
+operations</a>, <code>SH02-MO-BOUNDARY</code>; <a href="SH02-subset-microsupport.html#SH02-SUB-SMOOTH-MODELS">Subset
+microsupport</a>, <code>SH02-SUB-SMOOTH-MODELS</code></td>
+<td>Tangential cap contact, tilted neighborhoods and their comparison
+cones; the proof retains each normal ray explicitly</td>
+</tr>
+<tr>
+<td>Bounded microlocal Hom, ordinary and zero-section recovery, and the
+cone-projector stalk formula on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>U</mi></msub><annotation encoding="application/x-tex">G_U</annotation></semantics></math>
+with neighborhood refinements</td>
+<td><a href="SH02-microlocal-hom.html#SH02-MH-HOM">Microlocal Hom</a>,
+<code>SH02-MH-HOM</code>, <code>SH02-MH-BOUNDED</code>,
+<code>SH02-MH-RECOVERY</code>, <code>SH02-MH-HOM-RECOVERY</code> and
+<code>SH02-MH-GAMMA-STALK</code>; <a href="SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH">Microsupport
+operations</a>, <code>SH02-MO-MICROLOCAL-SUPPORT</code></td>
+<td>The arbitrary-subset comparison, the complete pointwise morphism
+group and identity detection. Only the ordinary Hom recovery is used;
+its compact counterpart has separate constructibility hypotheses</td>
+</tr>
+<tr>
+<td>External tensor estimate for arbitrary bounded inputs</td>
+<td><a href="SH02-microsupport-operations.html#SH02-MO-PROPER-PUSH">Microsupport
+operations</a>, <code>SH02-MO-EXTERNAL-TENSOR</code></td>
+<td>Descent of external products and bilinear multiplication of
+localized morphisms</td>
 </tr>
 </tbody>
 </table>
-<p>The categorical antecedents are compared with the <a href="https://stacks.math.columbia.edu/tag/04VB">Stacks localization
-calculus</a> and <a href="https://stacks.math.columbia.edu/tag/05RA">triangulated quotient
-construction</a>. These links
-alone do not close the imports.</p>
+<p>The directional-test suppliers in turn use <a href="SH02-noncharacteristic-deformation.html#SH02-NCD-COMPACT-CONTINUITY">noncharacteristic
+deformation</a>, <code>SH02-NCD-COMPACT-CONTINUITY</code>,
+<code>SH02-NCD-OPEN-UNION</code> and <code>SH02-NCD-THEOREM</code>. The
+deformation theorem uses closures before intersecting the moving
+increments. The microlocal-Hom suppliers retain their
+normal-specialization, Fourier and exact recovery-map inputs; the
+noncharacteristic inverse-image theorem uses those specified recovery
+maps to identify the orientation comparison. These are named lower
+dependencies, not extra finiteness assumptions on the sheaves in this
+lesson.</p>
+<p>The <a href="SH02-six-operations-import-bridge.html#SH02-SIX-BRIDGE">six-operations
+comparison bridge</a> retains a second route through Marco Volpe’s
+published <em>The six operations in topology</em>, under CC BY 4.0, and
+its separately stated bounded-recognition and coefficient imports from
+Jacob Lurie. Its published and arXiv editions have different source
+roles and terms, as stated there. That route is a comparison with the
+classical construction; the support, finite-resolution and adjunction
+proofs used above are available in the named programme units. The
+independently authored programme dedication does not change the terms of
+any referenced human work or identified adaptation.</p>
 <p>Two routes for further work are now visible. One can study how the
 represented operations glue as the covector varies; pointwise
 representability by itself does not supply that gluing data. One can

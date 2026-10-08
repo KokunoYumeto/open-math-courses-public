@@ -149,6 +149,8 @@ Choose a basis \(w_1,\ldots,w_r\) of \(N_\lambda\). The functionals \(v\mapsto(v
 
 <a id="scattering-regular-matrix"></a>
 
+This is the scattering-matrix theorem of Hörmander [H2, Theorem 14.6.8].
+
 **Theorem 3.1.** For every \(\lambda\notin Z(p)\), assigning the outgoing amplitude to an incoming amplitude by (4) defines a bounded bijection
 
 \[
@@ -408,3 +410,4 @@ The common factor \(2k\sqrt{2\pi}\) converts physical plane-wave coefficients in
 - [K1] Shige Toshi Kuroda, [*Scattering theory for differential operators, I, operator theory*](https://www.jstage.jst.go.jp/article/jmath1948/25/1/25_1_75/_pdf/-char/en), *Journal of the Mathematical Society of Japan* **25** (1973), 75–104. Section 6.2, Theorem 6.3, printed pages 101–103.
 - [K2] Shige Toshi Kuroda, [*Scattering theory for differential operators, II, self-adjoint elliptic operators*](https://www.jstage.jst.go.jp/article/jmath1948/25/2/25_2_222/_pdf/-char/en), *Journal of the Mathematical Society of Japan* **25** (1973), 222–234. Section 3, printed page 232, with the trace estimates in Section 2.3.
 - [Y] Dmitri Yafaev, [*Lectures on scattering theory*, v1](https://arxiv.org/abs/math/0403213v1), 2004. Section 2, especially the spectral normalization (2.7) and the scattering formulas (2.15)–(2.16).
+- [H2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Springer, 2005, Section 14.6, Lemmas 14.6.6–14.6.7, Theorem 14.6.8 and Lemma 14.6.9, pp. 259–263. ISBN 978-3-540-26964-9. [Edition information](https://doi.org/10.1007/b138375).

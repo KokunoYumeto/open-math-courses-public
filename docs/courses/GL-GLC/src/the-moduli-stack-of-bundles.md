@@ -634,7 +634,7 @@ Degree is locally constant in a family of vector bundles on a proper curve. Inde
 
 **Proof.** Choose \(m\ge\max(0,2g-1)\). Riemann–Roch gives \(h^0(L)=m+1-g>0\) for every line bundle of degree \(m\). Every such \(L\) therefore has the form \(\mathcal O(D)\) for an effective divisor of degree \(m\). The Abel map \(\operatorname{Sym}^mX\to\operatorname{Pic}^mX\) is surjective: its proper image contains every closed point. The source is connected, since it is the image of the connected scheme \(X^m\). Hence the target is connected. Tensoring by \(\mathcal O((m-d)x)\), for any \(x\in X(k)\), identifies \(\operatorname{Pic}^d\) with \(\operatorname{Pic}^m\). \(\square\)
 
-The algebraicity and representability of the Picard scheme used here are background inputs [Stacks, Tag 0B9Z]. The Picard stack in a fixed degree has the same connectedness: its map to the Picard scheme is a gerbe with connected fibre \(B\mathbb G_m\). A choice of a point of \(X\) gives a normalized Poincaré bundle and a neutralization, though connectedness does not require a chosen neutralization.
+The scheme and its normalized universal line are constructed in [*The Picard functor and the Picard scheme of a curve*](../../AG-HP/src/the-picard-functor-and-the-picard-scheme-of-a-curve.md), §§2 and 4–7. Section 3.1 below also gives a direct connected parameter for every degree of the Picard stack. The Picard stack in a fixed degree has the same connectedness: its map to the Picard scheme is a gerbe with connected fibre \(B\mathbb G_m\). A choice of a point of \(X\) gives a normalized Poincaré bundle and a neutralization, though connectedness does not require a chosen neutralization.
 
 **Lemma 3.2.** Every vector bundle is connected, through algebraic families of the same rank and degree, to a direct sum of line bundles.
 
@@ -648,7 +648,7 @@ can be multiplied by the coordinate \(t\) on \(\mathbb A^1\). The class \(t\eta\
 
 **Lemma 3.3.** For line bundles \(L,M\) and \(x\in X(k)\), the bundles \(L\oplus M\) and \(L(-x)\oplus M(x)\) lie in the same connected component.
 
-**Proof.** Start with \(V=L\oplus M(x)\). Its elementary modifications of length one at \(x\) are parameterized by the projective line of one-dimensional quotients of \(V_x\), as proved in the previous lesson. The universal kernel is a vector bundle on \(X\times\mathbb P(V_x^*)\). At the quotient supported on the second summand its kernel is \(L\oplus M\). At the quotient supported on the first summand it is \(L(-x)\oplus M(x)\). Both are fibres of this connected family. \(\square\)
+**Proof.** Start with \(V=L\oplus M(x)\). Its elementary modifications of length one at \(x\) are parameterized by the projective line of one-dimensional quotients of \(V_x\), with the universal-kernel and determinant calculation given explicitly in §3.1 below. The universal kernel is a vector bundle on \(X\times\mathbb P(V_x^*)\). At the quotient supported on the second summand its kernel is \(L\oplus M\). At the quotient supported on the first summand it is \(L(-x)\oplus M(x)\). Both are fibres of this connected family. \(\square\)
 
 **Theorem 3.4.** The degree map induces a bijection
 
@@ -665,7 +665,326 @@ For a general connected reductive group the component theorem is
 \pi_{1,\mathrm{alg}}(G):=X_*(T)/\langle\text{coroots}\rangle.
 \]
 
-Here \(T\) is a maximal torus. This is the algebraic fundamental group from the root datum, not the étale fundamental group of the variety \(G\). We use the general component theorem as an input [Drinfeld–Gaitsgory, §7.2.4]. The semisimple case also appears in [Beilinson–Drinfeld, §2.1.1] and [Heinloth, Theorem 2]. The vector-bundle proof above is independent of this input. For a torus the result follows directly from its cocharacter lattice and the Picard calculation.
+Here \(T\) is a maximal torus. This is the algebraic fundamental group from the root datum, not the étale fundamental group of the variety \(G\). Sections 3.1–3.8 prove the full theorem in our characteristic-zero setting, including arbitrary connected reductive groups and every genus. The cited free works of Drinfeld–Gaitsgory (§7.2.4), Beilinson–Drinfeld (§2.1.1) and Heinloth (Theorem 2, for semisimple groups) give further reading.
+
+### 3.1. Torus degrees and fixed determinants
+
+Fix a point \(x\in X(k)\). All connectedness assertions below concern the topology of the algebraic stack, including points over extension fields. The parameter schemes we use define bundles over every coefficient algebra; a connectedness argument may then inspect their geometric points.
+
+For a line bundle of degree \(g\) over an algebraically closed extension \(K/k\), (DS.13) gives \(h^0-h^1=1\), hence a nonzero section. Its zero divisor is effective of degree \(g\). Order its points, with repetitions for multiplicities. The sum of the \(g\) point graphs on \(X\times X^g\) is a relative effective Cartier divisor: each graph is Cartier because \(X\) is a smooth curve. Tensoring its divisor line by \(\mathcal O_X((d-g)x)\) gives a family
+\[
+ X^g\longrightarrow\operatorname{Bun}_{\mathbb G_m}^{\,d},
+ \qquad
+ (p_1,\ldots,p_g)\longmapsto
+ \mathcal O_X\bigl(p_1+\cdots+p_g+(d-g)x\bigr).
+ \tag{CT.1}
+\]
+For \(g=0\), the source is a point and the sum is empty. Every geometric line bundle of degree \(d\) occurs in this family. The scheme \(X^g\) is geometrically connected, since \(X\) is geometrically integral as proved in §2.4. Its image therefore proves connectedness of the degree-\(d\) Picard stack without using representability of the Picard scheme. For a split torus \(T\simeq\mathbb G_m^r\), take products of these families. Its bundles have a degree in \(X_*(T)\); every degree occurs and every degree substack is connected.
+
+Degree is locally constant on arbitrary coefficient schemes. Indeed, the universal finite projective cohomology complex in (BA.1)–(BA.2) has locally constant Euler rank; (DS.13) identifies that rank with line-bundle degree plus \(1-g\) over every residue field. Apply this to every character of the torus. Thus these connected substacks are open and closed, including on nonreduced bases.
+
+The high-degree equality in Lemma 3.1 follows from duality, in addition to the Euler formula. The local Koszul calculation in the curve foundations below identifies the dualizing line with \(\omega_X=\Omega_X^1\). Theorems 4.1–4.2 of [*Dualizing sheaves and Serre duality for projective schemes*](../../AG-QC/src/dualizing-sheaves-and-serre-duality-for-projective-schemes.md) give \(h^0(\omega_X)=g\) and \(h^1(\omega_X)=1\); (DS.13) gives \(\deg\omega_X=2g-2\). If \(\deg L>2g-2\), a section of \(\omega_X\otimes L^{-1}\) would have a divisor of negative degree and is therefore zero. Duality then gives \(H^1(L)=0\), which proves the stated equality. The weaker inequality used in (CT.1) needs no such vanishing.
+
+We also make the determinant control in the vector-bundle argument explicit. Saturation and the locally free quotient in Lemma 3.2 are proved over every extension field in §2.4. Scaling the off-diagonal extension cocycle keeps the diagonal transitions fixed, so it supplies a canonical constant determinant, not just a constant degree.
+
+For Lemma 3.3, choose local frames of \(V=L\oplus M(x)\) at \(x\), and a parameter \(t\) for its ideal. On a chart of the projective line of quotients, the quotient row is \((1,z)\). Its kernel is freely generated by
+\[
+ t e_1,\quad e_2-z e_1,\qquad
+ \det(\ker(V\to i_*Q))\simeq\det V\otimes\mathcal O_X(-x)
+ \simeq L\otimes M.
+ \tag{CT.2}
+\]
+Here \(i:x\times\mathbf P(V_x^*)\hookrightarrow X\times\mathbf P(V_x^*)\), and \(Q\) is the universal quotient line on the parameter space. To check freeness over any chart algebra, solve \(a+zb\in(t)\) as \(a=tc-zb\). The two generators are independent because \(t\) is a nonzerodivisor after every coefficient extension. The other quotient chart has the analogous basis. The determinant isomorphism is canonical across the charts: the resolution of \(i_*Q\) by the pullback of \(Q\), twisted by \(-x\) in degree \(-1\), has determinant \(\mathcal O_X(x)\); the two copies of \(Q\) cancel. This proves the universal-kernel and determinant assertions, including nilpotent parameters.
+
+Consequently the fibre of \(\det:\operatorname{Bun}_{GL_n}\to\operatorname{Bun}_{\mathbb G_m}\) over any fixed line \(D\), with a specified determinant isomorphism, is connected. First split into lines while retaining that isomorphism, then transfer degrees to obtain degree list \((\deg D,0,\ldots,0)\). Vary the last \(n-1\) degree-zero lines in the connected product above and set the first equal to \(D\otimes(L_2\otimes\cdots\otimes L_n)^{-1}\). Their direct sum has its canonical determinant \(D\). Every geometric split bundle with determinant \(D\) occurs up to an isomorphism preserving the chosen determinant: any discrepancy is a scalar, and a scalar automorphism of the bundle corrects it using an \(n\)-th root over the algebraically closed field. For \(n=1\) the fibre is a point. In particular \(\operatorname{Bun}_{SL_n}\) is connected.
+
+### 3.2. A central torus extension
+
+We now treat arbitrary connected reductive \(G\). The precise group constructions used here are proved in [*Roots and reductive groups of rank one*](../../AG-RG/AG-RG-03.html), Theorems 1.1 and 7.1; [*Root data, Weyl chambers and the Bruhat decomposition*](../../AG-RG/AG-RG-04.html), §§4–5 and Theorem 7.1; and [*Pinnings and the classification of split reductive groups*](../../AG-RG/AG-RG-05.html), §6, Theorem 10.1 and the derived-group calculation following it. They provide the simply connected semisimple group, its compatible rank-one homomorphisms, the central isogeny, and affine central quotients as schemes over all base algebras.
+
+In particular there is a finite central isogeny \(A=G_{\mathrm{sc}}\times Z_0\to G\), where \(Z_0\) is a split torus and \(G_{\mathrm{sc}}\) is simply connected semisimple. Write its finite diagonalizable kernel as \(C\). Choose a closed embedding \(i:C\hookrightarrow S=\mathbb G_m^r\): generators of \(X^*(C)\) give a surjection \(\mathbb Z^r\to X^*(C)\), and hence this embedding by the group-algebra description of diagonalizable groups. Form
+\[
+ H=(A\times S)/\{(c,i(c)^{-1}):c\in C\},
+ \qquad
+ 1\longrightarrow S\longrightarrow H
+ \xrightarrow{p}G\longrightarrow1.
+ \tag{CT.3}
+\]
+If \(C=1\), \(S\) may be trivial. The central-quotient theorem just cited makes \(H\) an affine connected reductive group, with a quotient \(A\times S\to H\) which is a \(C\)-torsor and commutes with base change. Projection to \(G\) descends. Its kernel is \(S\), embedded by \(s\mapsto[1,s]\): over the faithfully flat cover on which a representative exists, a kernel element is \([c,s]=[1,s\,i(c)]\). This equality proves the assertion on every test ring, and descends. The map \(p\) is an \(S\)-torsor, thus smooth and surjective.
+
+The subgroup \(G_{\mathrm{sc}}\to H\), \(a\mapsto[a,1]\), is a closed embedding. Its kernel is trivial because \(i\) is faithful. One can also check closedness directly on coordinate rings. A function on \(G_{\mathrm{sc}}\), extended constantly over \(Z_0\), decomposes into \(C\)-character summands. For each summand choose a character of \(S\) that cancels its \(C\)-weight, possible by the surjection \(X^*(S)\to X^*(C)\). Multiplying by that character produces a \(C\)-invariant function on \(A\times S\) restricting to the original summand on \(G_{\mathrm{sc}}\times\{1\}\). Restriction from \(k[H]\) is therefore surjective.
+
+The simply connected semisimple group is perfect as an fppf group sheaf: the cited derived-group proof writes root elements as commutators after a faithfully flat torus-parameter cover and uses the big cell to generate the group. Its closed image in \(H\) is therefore perfect. The quotient by that image is the split torus obtained by taking the finite central quotient of \(Z_0\times S\) by the projected image of \(C\). Thus
+\[
+ H_{\mathrm{der}}=G_{\mathrm{sc}},\qquad
+ H_{\mathrm{ab}}:=H/H_{\mathrm{der}}\text{ is a split torus}.
+ \tag{CT.4}
+\]
+This also proves that \(H_{\mathrm{der}}\) is simply connected.
+
+Choose maximal tori \(T_H\to T_G\), with kernel \(S\). The central quotient preserves the root groups and carries each coroot of \(H\) to the corresponding coroot of \(G\), by the cited root-coordinate theorem. A simply connected semisimple group's torus has cocharacter lattice equal to its coroot lattice. The quotient \(T_H\to H_{\mathrm{ab}}\) has kernel the maximal torus in \(H_{\mathrm{der}}\). Exactness of character lattices of split tori, and freeness of their quotient lattices, therefore give
+\[
+\begin{gathered}
+ 0\longrightarrow X_*(S)\longrightarrow X_*(T_H)
+ \longrightarrow X_*(T_G)\longrightarrow0,\\
+ X_*(T_H)/Q_H^\vee\simeq X_*(H_{\mathrm{ab}}),\qquad
+ \operatorname{coker}\bigl(X_*(S)\to X_*(H_{\mathrm{ab}})\bigr)
+ \simeq X_*(T_G)/Q_G^\vee.
+\end{gathered}
+\tag{CT.5}
+\]
+Here \(Q^\vee\) means the subgroup generated by all coroots. To verify the last isomorphism, quotient the first exact sequence by the coroot lattice: \(Q_H^\vee\) maps onto \(Q_G^\vee\), so the resulting cokernel is exactly the indicated quotient. The map from \(X_*(S)\) to \(X_*(H_{\mathrm{ab}})\) need not have saturated image; its nonsaturation is precisely where finite component groups enter.
+
+### 3.3. Borel reductions and contraction
+
+Work temporarily over an algebraically closed extension \(K/k\), and set \(F=K(X)\). The Tsen and simply connected torsor proofs in [*Beauville–Laszlo gluing and the moduli interpretation*](../../GL-SAT/src/GL-SAT-03.md), §§6.2–6.7, give \(\operatorname{Br}(F)=0\), Hilbert 90 for split tori and \(H^1(F,G_{\mathrm{sc}})=1\). Their central-defect argument applies to (CT.3), including the central torus already present in \(A\):
+\[
+ H^1(F,H)=1,\qquad H^1(F,G)=1.
+ \tag{CT.6}
+\]
+Indeed, an \(H\)-cocycle has an \(H_{\mathrm{ab}}\)-cocycle as image. Hilbert 90 kills that image; lift the correcting element over a separable closure through the smooth surjection \(H\to H_{\mathrm{ab}}\). The corrected cocycle lies in \(G_{\mathrm{sc}}\), where it is a coboundary. For a \(G\)-cocycle, lift its finitely many values to \(H\) over a finite separable extension. The lift's central associativity defect is an \(S\)-valued 2-cocycle. Its class vanishes because \(H^2(F,S)=\operatorname{Br}(F)^r=0\). Correcting by an \(S\)-cochain gives an \(H\)-cocycle and proves (CT.6). This uses the Brauer statement for the field \(F\); it makes no claim about Brauer groups of arbitrary coefficient curves.
+
+Let \(B=T_GU\) be a Borel subgroup. The flag quotient \(G/B\) is projective by [*Automorphisms, forms and parabolic subgroups*](../../AG-RG/AG-RG-06.html), Theorem 1.1. The ample-character construction in its proof gives an equivariant projective embedding. Twist that embedding by \(P\): vector-bundle descent and the homogeneous ideal descend it to a closed embedding of \(P/B\) in an associated projective bundle. Thus the twisted quotient is a proper scheme. Generic triviality from (CT.6) supplies a generic section. At each missing closed point, trivialize the ambient vector bundle over the local DVR and scale the homogeneous coordinates of the generic section so that their minimum valuation is zero. All coordinates then belong to the DVR and at least one is a unit. The homogeneous equations vanish there because they vanish in its fraction field. This extends the section; its finitely many coordinates and equations also extend to a neighbourhood of the point. The local sections agree with the generic section and glue: equality of maps to a separated target follows on the integral curve from equality at the generic point. Hence every geometric \(G\)-bundle has a Borel reduction. The same reasoning applies to \(H\).
+
+Choose an integral cocharacter \(\tau\) strictly positive on every positive root; a rational point of the positive chamber can be multiplied by an integer to obtain one. The ordered root coordinates from the cited root-data lesson identify \(U\) with a product of its positive root groups. Conjugation by \(\tau(s)\), for invertible \(s\), extends polynomially to
+\[
+ \phi_s:B\longrightarrow B,\qquad
+ t_0\prod_{\alpha>0}x_\alpha(u_\alpha)
+ \longmapsto
+ t_0\prod_{\alpha>0}
+ x_\alpha\bigl(s^{\langle\alpha,\tau\rangle}u_\alpha\bigr).
+ \tag{CT.7}
+\]
+It fixes \(T_G\), is the identity at \(s=1\), and is projection to \(T_G\) followed by inclusion at \(s=0\). These maps are homomorphisms over the whole parameter line. The multiplication and inversion identities hold after inverting \(s\), where they are conjugation identities; their polynomial coordinate equalities then hold before inverting \(s\), since \(s\) is a nonzerodivisor in the coordinate algebras of \(B\times B\times\mathbb A^1\). This also proves the identities after any coefficient extension, including nilpotents.
+
+Apply \(\phi_s\) to the transition maps of a Borel reduction. The effective torsor descent in §7.6 makes this an actual \(B\)-bundle on \(X_K\times\mathbb A^1\). Extension of structure group gives
+\[
+ P\ \text{at }s=1,\qquad
+ Q_T\times^{T_G}G\ \text{at }s=0,
+ \tag{CT.8}
+\]
+where \(Q_T\) is the torus quotient of the reduction. By §3.1, its degree-\(\lambda\) torus bundle lies in the same connected component as the bundle induced from \(\mathcal O_X(x)^\times\) by \(\lambda:\mathbb G_m\to T_G\). Denote the latter induced \(G\)-bundle by \(P_\lambda\). Every geometric \(G\)-bundle is therefore connected to some \(P_\lambda\).
+
+There is also a geometric \(H\)-lift of every \(G\)-bundle. The inverse-image Borel \(B_H\to B\) has central kernel \(S\), and its unipotent radical maps isomorphically to \(U\). The split-torus sequence \(T_H\to T_G\) has a section, since (CT.5) splits as a sequence of free lattices. Combine this section with the inverse on unipotent radicals. The torus action on the root groups agrees under this map, so it gives a homomorphism \(B\to B_H\) splitting \(B_H\to B\). A Borel reduction then extends along this homomorphism to an \(H\)-lift. This assertion is for geometric bundles; §3.6 proves the coefficient-local lifting statement.
+
+### 3.4. Connected parameters for positive loops
+
+Choose a formal parameter \(t\) at \(x\). By (BL.35), the clutching loop of \(P_\lambda\) is \(t^{-\lambda}\). We will connect such bundles using actual finite-type parameter schemes, rather than assuming a representability theorem about Grassmannian orbit closures.
+
+For \(m\geq1\), let \(J_m(G)\) represent \(A\mapsto G(A[t]/t^m)\). This is an affine scheme of finite type: substitute \(m\) coefficients for each coordinate in a finite presentation of \(k[G]\), and impose the coefficients of its finitely many equations. \(J_1(G)=G\). The reduction \(J_{m+1}(G)\to J_m(G)\) has square-zero kernel, and (DS.3) identifies it as
+\[
+ \ker(J_{m+1}(G)\to J_m(G))
+ =\operatorname{Lie}(G)\otimes_k t^m k,
+ \tag{CT.9}
+\]
+with the additive group law. The smooth affine algebra \(k[G]\) is formally smooth by §7.6. Apply this to the universal jet over \(k[J_m(G)]\); it lifts to an \((m+1)\)-jet over that same algebra. This is a global scheme section of the reduction. Multiplication by the additive kernel therefore gives a scheme isomorphism
+\[
+ J_{m+1}(G)\simeq J_m(G)\times
+ \mathbb A^{\dim G},\qquad
+ J_m(G)\text{ is geometrically connected}.
+ \tag{CT.10}
+\]
+Induct from the geometrically connected smooth group \(G\). This is an isomorphism of schemes using the chosen section; no splitting as a group is asserted.
+
+Use the faithful closed representation proved in §1.4 and choose a \(T_G\)-weight basis, with weights \(w_1,\ldots,w_N\). For a fixed \(\lambda\), set
+\[
+ M_\lambda=\max\left(1,
+ \max_{i,j}|\langle w_i-w_j,\lambda\rangle|\right).
+ \tag{CT.11}
+\]
+If \(\kappa\in G(A[[t]])\) is the identity modulo \(t^{M_\lambda}\), then
+\[
+ t^\lambda\kappa t^{-\lambda}\in G(A[[t]])
+ \quad\text{for every }k\text{-algebra }A.
+ \tag{CT.12}
+\]
+In the chosen matrix basis, its off-diagonal entry \(i,j\) has \(t\)-valuation at least \(M_\lambda+\langle w_i-w_j,\lambda\rangle\geq0\); its diagonal entry is the unchanged unit-diagonal perturbation. The determinant is the unit \(\det\kappa\), so the conjugate is invertible over \(A[[t]]\). The equations of the closed subgroup \(G\subset GL_N\) hold after inverting \(t\), where this is conjugation by an element of \(G\). They hold already in \(A[[t]]\), because multiplication by \(t\) is injective there. Thus the argument retains all nilpotent coefficients.
+
+Lift the universal \(M_\lambda\)-jet successively to higher jets over \(A=k[J_{M_\lambda}(G)]\), using formal smoothness at each square-zero step. The compatible coordinate maps define \(q_{\mathrm{univ}}\in G(A[[t]])\); affine coordinates commute with this inverse limit. Clutching by \(q_{\mathrm{univ}}t^{-\lambda}\), using the proven all-coefficient gluing in §§7.4–7.7, defines a family
+\[
+ J_{M_\lambda}(G)\longrightarrow\operatorname{Bun}_G.
+ \tag{CT.13}
+\]
+Its image contains the bundles obtained by clutching with \(q\,t^{-\lambda}\) for every positive loop \(q\), over every field extension. Indeed, \(q\) and the specialized universal lift \(q_0\) have the same \(M_\lambda\)-jet. Write \(q=q_0\kappa\). Then \(q\,t^{-\lambda}=q_0t^{-\lambda}(t^\lambda\kappa t^{-\lambda})\), and the last factor in (CT.12) changes only the formal frame. The image also contains \(P_\lambda\), by taking the identity jet and making this same frame change. Since the parameter scheme is connected, all these bundles lie in one connected subset.
+
+### 3.5. Root curves and coroot shifts
+
+For a root \(\alpha\), the compatible \(SL_2\to G\) of the rank-one theorem gives parameters \(x_\alpha,x_{-\alpha}\), the coroot \(\alpha^\vee\), and \(w_\alpha\), the image of \(\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\). Direct matrix multiplication gives, for every invertible \(z\),
+\[
+ x_\alpha(z)=x_{-\alpha}(z^{-1})\,
+ \alpha^\vee(z)\,w_\alpha\,x_{-\alpha}(z^{-1}).
+ \tag{CT.14}
+\]
+For example, in \(SL_2\), multiply the lower triangular matrix with lower-left entry \(z^{-1}\), then \(\operatorname{diag}(z,z^{-1})\), then the displayed \(w\), then the same lower triangular matrix. The product is \(\left(\begin{smallmatrix}1&z\\0&1\end{smallmatrix}\right)\). The group homomorphism carries this polynomial identity into \(G\).
+
+Put \(\ell=\langle\alpha,\lambda\rangle\), choose \(N\geq\max(1,\ell+1)\), and set \(q=N-\ell\geq1\). All coefficients of
+\
+ g(s)=x_\alpha(s\,t^{-N})\,t^{-\lambda}
+ \quad\text{belong to }G(k[s)).
+ \tag{CT.15}
+\]
+The gluing theorem gives an actual family over \(\mathbb A^1_s\), whose zero fibre is \(P_\lambda\). Over \(s\ne0\), (CT.14) and the torus conjugation law give
+\[
+\begin{gathered}
+ \nu=\lambda+q\alpha^\vee,\qquad
+ g(s)=q_L(s)t^{-\nu}q_R(s),\\
+ q_L(s)=x_{-\alpha}(s^{-1}t^N)\alpha^\vee(s),\qquad
+ q_R(s)=w_\alpha x_{-\alpha}(s^{-1}t^{N-\ell}).
+\end{gathered}
+\tag{CT.16}
+\]
+Both \(q_L,q_R\) are positive loops. To check the exponent, move \(t^{-\lambda}\) past the final negative-root element, multiplying its parameter by \(t^{-\ell}\). Then use \(w_\alpha t^{-\lambda}=t^{-s_\alpha\lambda}w_\alpha\) and \(s_\alpha\lambda=\lambda-\ell\alpha^\vee\). The middle exponent becomes \(-N\alpha^\vee-s_\alpha\lambda=-\nu\), with the asserted sign.
+
+The right positive factor changes only the formal frame. At \(s=1\), (CT.13) connects the resulting bundle \(q_L(1)t^{-\nu}\) to \(P_\nu\). Thus (CT.15) and (CT.13) connect \(P_\lambda\) to \(P_\nu\).
+
+Repeat this construction starting from \(\lambda+\alpha^\vee\), and replace \(N\) by \(N+1\). Since \(\langle\alpha,\alpha^\vee\rangle=2\), its positive-loop exponent is now \(q-1\geq0\), and its middle degree is still
+\[
+ (\lambda+\alpha^\vee)+(q-1)\alpha^\vee
+ =\lambda+q\alpha^\vee=\nu.
+ \tag{CT.17}
+\]
+The calculation remains valid when \(q-1=0\): the negative-root factor is then a constant positive loop. It follows that \(P_\lambda\) and \(P_{\lambda+\alpha^\vee}\) lie in the same connected component. Reversing the relation and iterating proves the same assertion whenever two degrees differ by an element of \(Q_G^\vee\).
+
+Together with §3.3, this already proves the following assertion for \(H\): two geometric \(H\)-bundles whose \(H_{\mathrm{ab}}\)-degrees agree lie in the same connected component. Their Borel torus degrees differ by \(Q_H^\vee\), by (CT.5); the contractions, torus families and root curves supply the connection. Every \(H_{\mathrm{ab}}\)-degree occurs, since \(X_*(T_H)\to X_*(H_{\mathrm{ab}})\) is surjective.
+
+### 3.6. Lifting families and the full difference groupoid
+
+We need the lifting statement over coefficient schemes to prove that distinct degree classes cannot become connected in \(\operatorname{Bun}_G\). The map
+\[
+ p_*:\operatorname{Bun}_H\longrightarrow\operatorname{Bun}_G
+\]
+is smooth and surjective, and every \(G\)-bundle lifts after an étale cover of its coefficient scheme. Here is the proof.
+
+Let \(R'\to R\) have square-zero kernel \(I\). Suppose an \(H\)-bundle on \(X_R\), its specified image isomorphism, and a \(G\)-bundle on \(X_{R'}\) lifting that image are given. Lift a finite affine étale trivializing cover of the \(H\)-bundle as in §2.1. On each lifted affine, choose a frame of the \(G\)-bundle lifting the given quotient frame; smooth affine torsors admit these infinitesimal section lifts by §7.6. Lift the \(H\)-transitions through the smooth map \(H\to G\), keeping their prescribed \(G\)-images. Their triple-overlap defect lies in the square-zero kernel of \(S\). Its coefficient sheaf is untwisted because \(S\) is central:
+\[
+ \operatorname{Lie}(S)\otimes_k(\mathcal O_{X_R}\otimes_R I),
+ \qquad
+ H^2\bigl(X_R,\operatorname{Lie}(S)\otimes_k
+ (\mathcal O_{X_R}\otimes_R I)\bigr)=0.
+ \tag{CT.18}
+\]
+The all-module Čech comparison in §2.1 and the two-term curve complex prove this vanishing without flatness of \(I\). Associativity makes the defect a 2-cocycle, exactly as in (DS.4). Correct its lifts by an \(S\)-valued 1-cochain whose coboundary is the opposite defect. This keeps every prescribed \(G\)-transition fixed and gives an \(H\)-cocycle. Effective descent produces an \(H\)-lift together with the required image isomorphism.
+
+The bundle stacks of both groups are algebraic and locally of finite type by §1.5. Their diagonals are affine of finite presentation by §§1.2–1.3. Taking scheme atlases \(V_H,V_G\), the space \(V_H\times_{\operatorname{Bun}_G}V_G\) is a scheme affine of finite presentation over \(V_H\times V_G\), so locally of finite type over \(k\). Its map to \(V_G\) is locally of finite presentation. The square-zero lifting just proved, followed by lifting into a smooth atlas, makes this map formally smooth locally. These atlas lifts exist on affines by the same derivation and affine-vanishing argument used in §2.2. The smoothness criterion proved in §7.6 then applies. Smoothness descends along the atlas, proving
+\[
+ p_*\text{ is smooth and geometrically surjective}.
+ \tag{CT.19}
+\]
+Geometric surjectivity was established by the Borel lift in §3.3. Compose with a scheme atlas of \(\operatorname{Bun}_H\). After pulling back along any coefficient scheme mapping to \(\operatorname{Bun}_G\), it is a smooth surjective scheme cover; representability follows from the affine diagonal of \(\operatorname{Bun}_G\). The coefficient étale-section construction in §7.9 supplies étale-local sections of this cover. They give the asserted local \(H\)-lifts. In particular no vanishing of a global Brauer group on \(X_R\) is being used.
+
+The differences between lifts retain their automorphisms. If \(Q\) is an \(S\)-bundle, define central twisting by
+\[
+ P\otimes Q=(P\times Q)/S,\qquad
+ (p_0,q_0)\cdot s=(p_0i_S(s),q_0s^{-1}).
+ \tag{CT.20}
+\]
+Here \(i_S:S\hookrightarrow H\) is the kernel embedding in (CT.3). Locally trivialize \(Q\); the transition maps multiply those of \(P\) by central \(S\)-elements. They descend to an \(H\)-bundle, whose \(G\)-image is canonically the original image of \(P\).
+
+Conversely, suppose \(P,P'\) are \(H\)-lifts and \(\beta:p_*P\simeq p_*P'\) is a specified \(G\)-isomorphism. On \(X\), the sheaf of \(H\)-isomorphisms from \(P\) to \(P'\) mapping to \(\beta\) is an \(S\)-torsor \(Q_\beta\). This can be checked after trivializing both bundles and lifting the matrix for \(\beta\) through the \(S\)-torsor \(H\to G\); any two lifts differ by exactly one \(S\)-element. Give \(Q_\beta\) its right action \(f\cdot s:p_0\mapsto f(p_0)i_S(s)\). Evaluation descends to an isomorphism \(P\otimes Q_\beta\simeq P'\). These constructions are inverse and recover all arrows: a commuting pair of \(H\)-bundle isomorphisms carries \(f\) to its composite with that pair, and a compatible torsor map recovers the commuting pair by evaluation. Thus, over every coefficient scheme, there is an equivalence of groupoids
+\[
+ \operatorname{Bun}_H\times\operatorname{Bun}_S
+ \xrightarrow{\ \sim\ }
+ \operatorname{Bun}_H\times_{\operatorname{Bun}_G}
+ \operatorname{Bun}_H.
+ \tag{CT.21}
+\]
+The right side includes the specified image isomorphism. Forgetting it would lose precisely the information needed for this equivalence.
+
+### 3.7. Descent of the component invariant
+
+The torus bundle induced from \(P\) by \(H\to H_{\mathrm{ab}}\) has a degree
+\[
+ \nu(P)\in L:=X_*(H_{\mathrm{ab}}).
+ \tag{CT.22}
+\]
+Section 3.1 proves that this is locally constant over every coefficient scheme and compatible with arbitrary base change. The fibres \(\operatorname{Bun}_H^\nu\) are open and closed. They are nonempty and connected by the end of §3.5: if such a fibre had a separation into nonempty open and closed substacks, geometric points in the two pieces would contradict the connections constructed there.
+
+Write \(i_*:X_*(S)\to L\) for the map induced by the central inclusion. For every twist in (CT.20), character-by-character tensoring gives
+\[
+ \nu(P\otimes Q)=\nu(P)+i_*\deg(Q).
+ \tag{CT.23}
+\]
+Every degree of \(S\)-bundle occurs, by applying its cocharacter to \(\mathcal O_X(x)^\times\). The quotient group is
+\[
+ \Gamma:=L/i_*X_*(S)
+ \simeq X_*(T_G)/Q_G^\vee.
+ \tag{CT.24}
+\]
+An arbitrary \(G\)-bundle has coefficient-étale-local \(H\)-lifts by §3.6. On overlaps, (CT.21) and (CT.23) show that the degrees of any two lifts have the same image in \(\Gamma\). Locally constant maps to the discrete constant scheme \(\underline\Gamma\) descend uniquely: their open and closed labelled pieces agree on the faithfully flat overlap, so their characteristic idempotents, and hence those pieces, descend by the affine descent proof in §7.6. This defines a natural morphism
+\[
+ \delta:\operatorname{Bun}_G\longrightarrow\underline\Gamma,
+ \qquad
+ \delta(p_*P)=\nu(P)\bmod i_*X_*(S).
+ \tag{CT.25}
+\]
+It is defined on families and isomorphisms, including all nonreduced coefficient schemes. Each fibre is open and closed.
+
+Fix \(\gamma\in\Gamma\). Its underlying topology is the union
+\[
+ |\delta^{-1}(\gamma)|=
+ \bigcup_{\nu\bmod i_*X_*(S)=\gamma}
+ \operatorname{image}\bigl(
+ |\operatorname{Bun}_H^\nu|\to|\operatorname{Bun}_G|
+ \bigr).
+ \tag{CT.26}
+\]
+The surjectivity in (CT.19) proves the equality. Each image is connected. Any two of the images intersect: if \(\nu'-\nu=i_*\eta\), choose \(P\) of degree \(\nu\) and an \(S\)-bundle \(Q\) of degree \(\eta\). The lift \(P\otimes Q\) has degree \(\nu'\), and its \(G\)-image is isomorphic to that of \(P\). A union of connected subsets with pairwise intersections is connected; a separation would have to put each subset in one piece, and intersection prevents different choices. Every \(\gamma\) occurs. Hence the fibres of \(\delta\) are exactly the connected components.
+
+**Theorem 3.5 (the full component theorem).** For a smooth projective connected curve over an algebraically closed field of characteristic zero, in every genus, and a constant connected reductive group \(G\),
+\[
+ \pi_0(\operatorname{Bun}_G)
+ \simeq X_*(T_G)/Q_G^\vee.
+ \tag{CT.27}
+\]
+The invariant on families is the locally constant map (CT.25); every component is nonempty and connected.
+
+The identification is canonical. For the standard bundle \(P_\lambda\), a torus lift to \(T_H\) in (CT.5) gives \(\delta(P_\lambda)=\lambda\bmod Q_G^\vee\). For any geometric bundle, a Borel reduction and (CT.8) give the same formula from its torus degree. Consequently this formula is independent of the chosen central extension and Borel reduction. Agreement on every geometric point determines the same locally constant map on every coefficient scheme, since its labelled pieces are open and closed. Maximal tori are conjugate by the earlier group theory. Changing the conjugating element acts through the Weyl group; its root reflections act by \(s_\alpha\lambda=\lambda-\langle\alpha,\lambda\rangle\alpha^\vee\), hence trivially on the quotient. Thus the canonical quotient does not depend on that choice either.
+
+### 3.8. Examples, the lattice picture and exercises
+
+For \(GL_n\), the coroots are the differences of coordinate cocharacters, so summing the coordinates induces \(X_*(T)/Q^\vee\simeq\mathbb Z\). The invariant is determinant degree. Section 3.1 proves the stronger connectedness statement for a fixed determinant line with a specified isomorphism.
+
+For \(PGL_n\), take \(H=GL_n\), \(S=\mathbb G_m\) embedded as scalar matrices, and \(H_{\mathrm{ab}}=\mathbb G_m\) by determinant. The central cocharacter has determinant exponent \(n\). For the standard classical groups and tori this gives
+\[
+\begin{array}{c|c|c}
+ G&\pi_0(\operatorname{Bun}_G)&\text{invariant}\\ \hline
+ GL_n&\mathbb Z&\deg\det E\\
+ PGL_n&\mathbb Z/n\mathbb Z&\deg\det E\bmod n\\
+ SL_n&0&\text{one component}\\
+ \mathbb G_m^r&\mathbb Z^r&\text{the }r\text{ line degrees}
+\end{array}
+\tag{CT.28}
+\]
+Here a \(GL_n\)-lift \(E\) of a family of projective bundles exists coefficient-étale locally by §3.6, and its degree modulo \(n\) is independent of the lift. Every geometric projective bundle has a vector-bundle lift by §3.3. Two lifts differ by tensoring with a line bundle, by the full groupoid equivalence (CT.21). Their determinant degrees differ by \(n\) times the line's degree. Representatives for all classes are
+\[
+ \mathbf P\bigl(\mathcal O_X(dx)\oplus
+ \mathcal O_X^{\,n-1}\bigr),
+ \qquad d\in\mathbb Z/n\mathbb Z.
+ \tag{CT.29}
+\]
+The convention for \(\mathbf P\) can be either lines or quotients, chosen consistently; the underlying \(PGL_n\)-torsor here is the image of the indicated frame torsor.
+
+![A finite part of the GL2 cocharacter lattice with coroot and central steps, and the resulting even and odd PGL2 degrees](figures/components-gl2-pgl2.svg)
+
+*Figure 3.1.* The left panel shows the integer pairs \((a,b)\) with \(-2\leq a,b\leq2\). Their \(GL_2\) degree is \(d=a+b\); colour marks its parity. The coroot step \((1,-1)\) preserves \(d\). The scalar central step \((1,1)\) changes \(d\) by \(2\). The right panel shows the degrees \(-4,\ldots,4\) and the central shift by \(2\). Thus \(PGL_2\) has an even and an odd component, as computed in (CT.5) and (CT.28). Only a finite portion of each lattice is drawn. The arrows denote component relations and central twists; (CT.14)–(CT.17) realize a coroot relation by a chain of two root families and connected jet families.
+
+**Exercise 3.A.** A rank-\(n\) vector bundle \(E\) has determinant degree \(d\). Determine when some line-bundle twist \(E\otimes L\) has determinant degree zero. Determine separately when its projective bundle lies in the neutral component. Does the second condition imply that the projective bundle is trivial?
+
+**Solution 3.A.** The determinant identity is \(\det(E\otimes L)=\det E\otimes L^{\otimes n}\), so its degree is \(d+n\deg L\). Such a twist exists exactly when \(n\mid d\), since \(\mathcal O_X(mx)\) supplies every integer line degree. The neutral-component condition for the projective bundle is also \(d=0\bmod n\), by (CT.28). It does not imply triviality. On \(\mathbf P^1\), the bundle \(\mathcal O(1)\oplus\mathcal O(-1)\) has degree zero but its \(PGL_2\)-bundle is nontrivial. Otherwise (CT.21) would make it isomorphic to \(L\oplus L\). Degree then forces \(\deg L=0\), and (CT.1) in genus zero gives \(L\simeq\mathcal O\). The original bundle has a nonzero map from \(\mathcal O(1)\), whereas \(\operatorname{Hom}(\mathcal O(1),\mathcal O^2)=H^0(\mathcal O(-1))^2=0\), by the divisor-degree argument. This is a contradiction.
+
+**Exercise 3.B.** For \(GL_2\) and \(\lambda=(a,b)\), calculate a sufficient jet bound in (CT.11). Verify the nilpotent coefficient case of (CT.12) directly. Explain why discarding that case would be inadequate for (CT.25).
+
+**Solution 3.B.** The two weights are the coordinate characters, so \(M=\max(1,|a-b|)\) suffices. Over \(A=k[\epsilon]/(\epsilon^2)\), write \(\kappa=I+t^M B(t)\), \(B(t)\in M_2(A[[t]])\), assuming its determinant is a unit. Conjugation multiplies its upper-right perturbation by \(t^{a-b}\) and lower-left perturbation by \(t^{b-a}\); the smallest possible exponent is \(M-|a-b|\geq0\). Diagonal entries are unchanged and determinant is unchanged, so the conjugate is in \(GL_2(A[[t]])\). This calculation did not use reducedness and applies to arbitrary \(A\). For example \(B(t)=\left(\begin{smallmatrix}0&\epsilon\\0&0\end{smallmatrix}\right)\) has a nonzero perturbation although its reduction is the identity. The all-coefficient frame change is needed for the jet family and for compatibility of the descended invariant with nonreduced families; checking reduced points alone would not supply either construction.
+
+**Exercise 3.C.** Let \(G=SL_2\), \(\lambda=a\alpha^\vee\), and \(N\geq\max(1,2a+1)\). Write the two root curves used to connect \(\lambda\) with \(\lambda+\alpha^\vee\), and check that they have the same intermediate degree. On \(\mathbf P^1\), interpret the case \(a=0,N=1\).
+
+**Solution 3.C.** Since \(\langle\alpha,\lambda\rangle=2a\), the first curve is \(x_\alpha(s t^{-N})t^{-a\alpha^\vee}\), with intermediate degree \((N-a)\alpha^\vee\). The second is \(x_\alpha(s t^{-(N+1)})t^{-(a+1)\alpha^\vee}\); its pairing is \(2a+2\) and its positive-loop exponent is \(N-2a-1\geq0\). Its intermediate degree is again
+\[
+ (a+1+N+1-2a-2)\alpha^\vee
+ =(N-a)\alpha^\vee.
+ \tag{CT.30}
+\]
+For \(a=0,N=1\), the first matrix is \(\left(\begin{smallmatrix}1&s t^{-1}\\0&1\end{smallmatrix}\right)\). On \(\mathbf P^1\) it is a change of frame on \(U=\operatorname{Spec}k[t^{-1}]\), so its underlying bundle is trivial for every \(s\). At \(s=1\), its rank-one factorization nevertheless lies in the positive-loop image attached to \(\alpha^\vee\). The connected jet family then joins that trivial bundle to \(\mathcal O(1)\oplus\mathcal O(-1)\), with the determinant orientation retained. Thus a coroot relation is a connection through the families constructed above; it need not be a nonconstant root curve on the underlying bundle stack by itself.
 
 ## 4. Stability, bounded pieces, and growing stabilizers
 
@@ -685,7 +1004,7 @@ n\deg F-r\deg E.
 
 Thus the convention recovers slope stability. In root notation this degree is \(\langle2\rho_{P_0},\deg P_{P_0}\rangle\). This is the convention in [Gaitsgory–Raskin, §9.1]. For a torus there are no proper parabolics, so the stability test is vacuous.
 
-The Harder–Narasimhan theorem gives a unique filtration of a vector bundle with semistable quotients of strictly decreasing slopes, and a corresponding canonical parabolic reduction for principal bundles [Drinfeld–Gaitsgory, Theorem 7.4.3]. We state this theorem, together with openness and boundedness: in a fixed topological component, the semistable locus is an open quasicompact substack [Drinfeld–Gaitsgory, §7.3.2, Proposition 7.3.5]. These are background stability results, not consequences merely of smoothness. The fixed-component qualification matters: the semistable locus of the entire Picard stack is an infinite disjoint union of degree components and is not quasicompact.
+Sections 4.1–4.12 prove the vector and principal Harder–Narasimhan statements, their relative schematic strata, openness of semistability and stability, and quasicompactness of both loci in a fixed component. The vector filtration is constructed in §N3.1; the new arguments give tensor semistability, canonical parabolic reductions, coefficient-family flags and the finite-type bounds. Drinfeld–Gaitsgory, Theorem 7.4.3, §7.3.2 and Proposition 7.3.5, gives further reading. The fixed-component qualification matters: the semistable locus of the entire Picard stack is an infinite disjoint union of degree components and is not quasicompact.
 
 Consider now \(X=\mathbb P^1\) and \(E_d=\mathcal O\oplus\mathcal O(d)\), with \(d>0\). Relative to this order of summands,
 
@@ -706,6 +1025,563 @@ E_m=\mathcal O(m)\oplus\mathcal O(-m),\qquad m>0.
 These all have degree zero, and their automorphism groups have dimension \(2m+3\). A quasicompact algebraic stack locally of finite type with finite type diagonal has a uniform bound on stabilizer dimensions: cover it by finitely many finite type charts, pull back the inertia, and use the bound on fibre dimensions of a finite type morphism. The dimensions \(2m+3\) contradict such a bound. Hence \(\operatorname{Bun}_2^0(\mathbb P^1)\) is not quasicompact.
 
 The same mechanism works on any \(X\) in rank at least two: take \(L_m\oplus L_m^{-1}\oplus\mathcal O^{n-2}\), with \(\deg L_m=m\to\infty\). Riemann–Roch gives \(h^0(L_m^2)=2m+1-g\) once \(2m>2g-2\), yielding unbounded stabilizers in degree zero. This argument is sufficient for the vector-bundle example. It does not say that each fixed-degree Picard stack is nonquasicompact.
+
+### 4.1. Slopes, Quot parameters and bounded vector bundles
+
+We use the vector filtration proved in §N3.1. Its argument applies to a smooth projective connected curve over an algebraically closed field in any characteristic: saturation is a calculation over its local DVRs, the maximum degree is bounded by a determinant injection into a fixed twist, and the quotient construction is an induction on rank. Write \(\mu_{\max}(E)\) and \(\mu_{\min}(E)\) for the largest and smallest slopes of that filtration. Its uniqueness gives
+\[
+ \mu_{\max}(E^\vee)=-\mu_{\min}(E),\qquad
+ \operatorname{Hom}(E,F)=0
+ \quad\text{if }\mu_{\min}(E)>\mu_{\max}(F).
+ \tag{HN.1}
+\]
+For the second assertion, filter both bundles and use the semistable Hom vanishing of §N3.1 on the graded terms, then induct through the two filtrations. Tensoring by a line of degree \(d\) adds \(d\) to every slope. The maximum slope of a direct sum is the maximum of the two maximum slopes: its filtrations combine after arranging all graded slopes in descending order, and combining equal-slope terms preserves semistability.
+
+The same elementary argument proves semistability of extensions of bundles of one slope, and of the dual of a semistable bundle. A nonzero direct summand of a semistable bundle has that same slope and is semistable. Indeed, its subbundle description bounds its slope above, and its quotient description bounds it below.
+
+Here are the family details used below. In a finite-type family of smooth projective curves and vector bundles, work over a finite affine cover of the parameter space and choose a uniform embedding \(E\hookrightarrow A^m{}^{\oplus b}\), where \(A\) is relatively ample and has fixed fibre degree \(a>0\). Relative generation of \(E^\vee\otimes A^m\) supplies this embedding with locally free quotient. The generation and projective finiteness proofs are Theorem 2.1 and Corollary 2.3 of [*Coherent sheaves on projective schemes: Serre's theorems*](../../AG-QC/src/serres-theorems-on-projective-schemes.md); the universal cohomology coordinates are (BA.1)–(BA.2). For rank \(i\), the degree \(e\) of a destabilizing subsheaf has to satisfy
+\[
+ i\mu(E)<e\leq im a.
+ \tag{HN.2}
+\]
+These are finitely many integers. The projective relative Quot scheme, constructed in [*Hilbert and Quot schemes*](../../AG-HP/src/hilbert-and-quot-schemes.md), Theorem 4.1 and Corollary 4.2, parameterizes the quotients of rank \(\operatorname{rk}E-i\) and degree \(\deg E-e\). Its proper image is closed. A quotient in this scheme may have torsion, but its kernel is torsion-free on the smooth curve and hence a vector bundle; saturation increases its degree. Its image therefore consists exactly of parameters with a destabilizing subbundle of the tested rank and degree range. The finite union of the images is the nonsemistable locus. This proves openness. Replacing the strict lower inequality in (HN.2) by the weak one proves openness of vector-bundle stability. This argument also works for a varying curve; no constant-curve hypothesis entered the Quot construction.
+
+We will need an explicit uniform generation bound. Put \(\alpha=\mu_{\max}(E)\), and choose
+\[
+ m=\lfloor\alpha\rfloor+2g.
+ \tag{HN.3}
+\]
+For every point \(y\), the minimum slope of \(E^\vee(mx-y)\) is \(m-1-\alpha>2g-2=\deg\omega_X\). Equation (HN.1) and the projective duality proved in [*Dualizing sheaves and Serre duality for projective schemes*](../../AG-QC/src/dualizing-sheaves-and-serre-duality-for-projective-schemes.md), Theorems 4.1–4.2, give \(H^1(E^\vee(mx-y))=0\). Evaluation of global sections therefore generates \(E^\vee(mx)\) at every point. Its dual gives \(E\hookrightarrow\mathcal O(mx)^{\oplus b}\), with locally free quotient. The duality and divisor computation of §3.1 giving \(\deg\omega_X=2g-2\) also apply in positive characteristic; the cited duality theorem is over an arbitrary field.
+
+In particular, for any two vector bundles \(E,F\), tensor this injection with \(F\) and apply the direct-sum and line-twist slope facts:
+\[
+ \mu_{\max}(E\otimes F)
+ \leq \mu_{\max}(E)+\mu_{\max}(F)+2g.
+ \tag{HN.4}
+\]
+This estimate is deliberately uniform in their ranks. It has not used semistability of tensor products.
+
+If \(V\) is semistable of rank \(n\) and degree \(d\), choose an integer \(m\) with \(\mu(V)+m>2g-1\). The same duality calculation gives \(H^1(V(mx))=0\) and generation at every point. Then
+\[
+ h^0(V(mx))=d+nm+n(1-g).
+ \tag{HN.5}
+\]
+Thus all semistable bundles of fixed rank and degree occur in one of the finite-type framed Quot atlases of §1.2. The condition on \(m\) is uniform for that rank and degree. Semistability is open on this atlas, so the semistable stack in a fixed vector-bundle degree is quasicompact.
+
+### 4.2. Horizontal subbundles under Frobenius
+
+For the next two subsections, let the field have characteristic \(p>0\), be algebraically closed, and let \(F_X\) be absolute Frobenius. It need not be a morphism over that field's chosen scalar structure; its pullback of a vector bundle is nevertheless defined. It has transition matrices obtained by raising all entries to their \(p\)-th powers. The derivative of those matrices is zero. Consequently \(F_X^*E\) has a canonical connection which, in these frames, differentiates the coefficient functions. We prove the descent property needed for its subbundles.
+
+At a closed point, let \(B\) be the curve's local DVR, with fraction field \(K\), and choose a uniformizer \(t\) whose differential is nonzero. Smoothness makes \(dt\) a local basis of differentials, and the derivation \(D\) specified by \(D(t)=1\) preserves \(B\). The extension \(K/k(t)\) is finite separable: \(t\) gives a nonconstant map of curves, and its nonzero differential excludes inseparability. Frobenius identifies \(K^p/k(t^p)\) with \(K/k(t)\), so the degree tower gives \([K:K^p]=p\). Since \(D(t)=1\), \(t\notin K^p\). Therefore
+\[
+ K=\bigoplus_{i=0}^{p-1}K^p t^i,\qquad
+ B=\bigoplus_{i=0}^{p-1}B^p t^i.
+ \tag{HN.6}
+\]
+For the local-ring equality, the summands of \(\sum_i a_i^p t^i\) have valuations \(p\,v(a_i)+i\), all distinct modulo \(p\). The least valuation cannot cancel. If the sum is in \(B\), every \(v(a_i)\) is nonnegative, hence every \(a_i\) lies in \(B\). This proves the equality and makes Frobenius finite free of rank \(p\) locally on the curve. Also \(\ker D=B^p\) and \(D^p=0\), as is seen on (HN.6).
+
+In a Frobenius frame, \(D\) acts on each coefficient of \(B^r\). Define the finite coefficient operators
+\[
+ \Pi_0=\sum_{j=0}^{p-1}\frac{(-t)^jD^j}{j!},
+ \qquad
+ \Pi_i=\frac{\Pi_0D^i}{i!}\quad(0\leq i<p).
+ \tag{HN.7}
+\]
+All denominators are units. The binomial identity gives \(\Pi_0(t^l)=0\) for \(1\leq l<p\) and \(\Pi_0(1)=1\). Thus if \(u=\sum_i t^i u_i\), \(u_i\in(B^p)^r\), then \(\Pi_i(u)=u_i\). In particular these are actual coefficient projections, not an infinite Taylor series.
+
+Suppose a subbundle \(N\subset F_X^*E\) is preserved by the canonical connection. Over \(B\), its module is preserved by \(D\), so (HN.7) sends each section of \(N\) into \(N\cap(B^p)^r\). Equation (HN.6) then gives
+\[
+ N=B\otimes_{B^p}N^{D},\qquad
+ N^{D}=N\cap(B^p)^r.
+ \tag{HN.8}
+\]
+The tensor map is injective by uniqueness of the coefficient expansion and surjective by those projections. The quotient \(B^r/N\) inherits \(D\), with \(D^p=0\) and \(D(tu)=u+tD(u)\). The same operators apply to it: expansion of the products in \(\sum_i t^i\Pi_i\) makes the coefficient of \(D^q\), \(0<q<p\), equal to \(\sum_{i+j=q}(-1)^j/(i!j!)=0\), and terms of degree at least \(p\) vanish. Thus the sum is the identity on the quotient as well. Its horizontal sections are exactly the quotient of \((B^p)^r\) by \(N^D\): a horizontal class represented by \(u\) is also represented by \(\Pi_0(u)\), since \(D(u)\in N\). Hence
+\[
+ B^r/N=B\otimes_{B^p}\bigl((B^p)^r/N^D\bigr).
+ \tag{HN.9}
+\]
+The finite-projectivity descent proved in §§7.2 and 7.5 makes \(N^D\) and this quotient finite projective over \(B^p\). Identify the source local ring of Frobenius with \(B^p\). On overlaps the Frobenius transition matrices already have their entries in this ring, so the horizontal submodules glue to a subbundle \(N_0\subset E\), with locally free quotient. Equivalently, one can take the descended generic subspace and saturate it in \(E\); (HN.8)–(HN.9) identify that saturation at every DVR. We have proved
+\[
+ N=F_X^*N_0,\qquad
+ \deg N=p\,\deg N_0.
+ \tag{HN.10}
+\]
+The degree identity follows on determinants, since Frobenius pulls a line to its \(p\)-th tensor power.
+
+### 4.3. Frobenius controls the slope error
+
+Put \(c=\max(0,2g-2)\). For every vector bundle \(E\) of rank \(r\),
+\[
+ \mu_{\max}(F_X^*E)
+ \leq p\,\mu_{\max}(E)+(r-1)c.
+ \tag{HN.11}
+\]
+To prove this, write the descending slopes of \(F_X^*E\) as \(\lambda_1>\cdots>\lambda_l\), with their positive ranks; \(l\leq r\). Suppose the first slope exceeds the right side of (HN.11). If every adjacent gap were at most \(c\), the last slope would exceed \(p\mu_{\max}(E)\). The average would then exceed \(p\mu(E)\), contradicting the determinant degree of the pullback.
+
+Take the first gap \(\lambda_j-\lambda_{j+1}>c\), and let \(N\) be the HN prefix above that gap. Its smallest slope exceeds \(p\mu_{\max}(E)\), since all earlier gaps were at most \(c\). Projecting the connection gives an \(\mathcal O_X\)-linear second fundamental map
+\[
+ N\longrightarrow(F_X^*E/N)\otimes\omega_X.
+ \tag{HN.12}
+\]
+It is linear because the Leibniz term remains in \(N\). Its target has maximum slope \(\lambda_{j+1}+2g-2<\lambda_j\), so (HN.1) makes it zero. Thus \(N\) is horizontal and descends by (HN.10). Its slope is \(p\mu(N_0)\leq p\mu_{\max}(E)\), contradicting the lower bound on its smallest slope. This proves (HN.11), also when \(g=0\) or \(1\).
+
+Iterating it gives, for \(q\geq1\),
+\[
+ \mu_{\max}(F_X^{q*}E)
+ \leq p^q\mu_{\max}(E)
+ +(r-1)c\,\frac{p^q-1}{p-1}.
+ \tag{HN.13}
+\]
+Induction uses the geometric sum; it does not assume that a Frobenius pullback is semistable.
+
+Now let \(E,F\) be semistable, of ranks \(r,s\), and put \(R=rs\). Pull back a maximum-slope subbundle of \(E\otimes F\); its slope is multiplied by \(p^q\), so it supplies a lower bound for the maximum slope of \(F_X^{q*}(E\otimes F)\). Apply (HN.4) to the two pulled-back factors and (HN.13) to each factor. The result is
+\[
+\begin{gathered}
+ \mu_{\max}(E\otimes F)-\mu(E)-\mu(F)
+ \leq C\frac{1-p^{-q}}{p-1}+2g\,p^{-q},\\
+ C=(r+s-2)\max(0,2g-2).
+\end{gathered}
+\tag{HN.14}
+\]
+Letting \(q\) increase gives the upper bound \(C/(p-1)\).
+
+The tensor determinant identity gives \(\deg(E\otimes F)=s\deg E+r\deg F\), hence \(\mu(E\otimes F)=\mu(E)+\mu(F)\). One can verify that identity on triangular matrices over characteristic zero, where the diagonal products give the indicated exponents; it is an identity of integral determinant polynomials, so holds in every characteristic and in every coefficient algebra. If \(R>1\) and a subbundle of rank \(h<R\) has larger slope than \(E\otimes F\), the positive slope difference is an integer divided by \(hR\). It is therefore at least \(1/(R(R-1))\). Consequently
+\[
+ p-1>C\,R(R-1)
+ \quad\Longrightarrow\quad E\otimes F\text{ is semistable}.
+ \tag{HN.15}
+\]
+When \(R=1\), the tensor is a line bundle and is semistable. If \(g\leq1\), \(C=0\), and (HN.14) proves tensor semistability in every positive characteristic.
+
+### 4.4. Tensor semistability in characteristic zero
+
+**Theorem 4.1.** Over our characteristic-zero field, the tensor product of semistable vector bundles is semistable, in every genus.
+
+Suppose it were false for \(E,F\), and choose a saturated destabilizing subbundle \(D\subset E\otimes F\). All the data use finitely many equations and transition-matrix coefficients. They therefore have models over a finitely generated characteristic-zero domain \(A\) over \(\mathbb Z\). After restricting to a nonempty open in \(\operatorname{Spec}A\), the curve is smooth projective with geometrically connected fibres, \(E,F,D\) and the quotient are vector bundles, the genus and their ranks and degrees are constant, and the fibres of \(E,F\) are semistable.
+
+Here are the points in that restriction argument. Smoothness is detected by the finitely many Jacobian charts on the projective model; exclude the proper image of their complement. The image of the resulting smooth proper curve is open, by smoothness, and closed, by properness. It contains the original model point, so it is the whole connected affine base; every fibre is nonempty. The finite locally free cohomology coordinates for a flat projective family make Euler ranks constant and \(h^0(\mathcal O)\leq1\) an open condition. Together with the constant section \(1\) on a nonempty smooth fibre, this forces \(h^0(\mathcal O)=1\), hence geometric connectedness: distinct components of a smooth proper curve give independent constant idempotents. Those same Euler ranks and the divisor formula fix the degrees. Local freeness of the finite presentations of the bundles and quotient is detected by minors, and their closed bad loci again have proper image from the projective curve. Finally (HN.2), valid for this varying-curve family, supplies the open semistability conditions. All these opens contain the characteristic-zero model point, since its scalar extension is the original curve and bundles.
+
+Such an open model has geometric fibres in arbitrarily large positive characteristic. To see this without assuming a density theorem about primes, apply [*Krull dimension and Noether normalization*](../../AG-CA/src/krull-dimension-and-noether-normalization.md), §§2–3, to \(A_{\mathbb Q}\): after choosing algebraically independent elements, it is finite over a polynomial algebra over \(\mathbb Q\). The elementary construction repeatedly makes a polynomial relation monic by high-power changes of variables and then inducts on the number of generators. Clearing the finitely many coefficients and denominators makes \(A[1/n]\) finite over \(\mathbb Z[1/n][z_1,\ldots,z_d]\) for one nonzero integer \(n\). This argument applies to the already restricted affine open model, including its inverted functions.
+
+For every prime \(p\nmid n\), choose a maximal ideal in the polynomial ring with residue field \(\mathbb F_p\). The finite algebra above it has a nonzero residue algebra: otherwise Nakayama would annihilate its localized module, contradicting the inclusion of the localized polynomial ring. A maximal ideal of that nonzero finite algebra has finite residue field of characteristic \(p\). Extend it to an algebraic closure. This supplies the required geometric fibre.
+
+Choose \(p\) satisfying (HN.15). The reductions of \(E,F\) are semistable and have the same ranks and genus, so their tensor is semistable by that inequality. But \(D\) and its locally free quotient have also specialized, and their fixed ranks and degrees preserve its strict slope inequality. It is still a destabilizing subbundle. This contradiction proves the theorem. The positive-characteristic estimates were auxiliary calculations, not an assumption that semistability survives every Frobenius pullback.
+
+Combining the tensor theorem with duality, direct sums and the uniqueness of the HN filtration yields the exact tensor filtration rule:
+\[
+ \operatorname{gr}_{a+b}(E\otimes F)
+ =\bigoplus_{\lambda+\eta=a+b}
+ \operatorname{gr}_{\lambda}(E)\otimes
+ \operatorname{gr}_{\eta}(F).
+ \tag{HN.16}
+\]
+On the right, take the sum over the actual HN weights. Form the convolution filtration from the two filtrations. Locally choose bases adapted to both bundle flags; their tensor bases show that this convolution consists of subbundles and has the displayed associated graded. Its successive pieces are semistable with the indicated slopes. Combine equal slopes; extensions at one slope remain semistable. The resulting descending filtration therefore has semistable quotients and is the unique HN filtration. In particular, morphisms respect the slope filtration by (HN.1). The slopes of an endomorphism bundle include the difference of its extreme slopes, so
+\[
+ \mu_{\max}(\mathcal E nd E)
+ =\mu_{\max}(E)-\mu_{\min}(E).
+ \tag{HN.17}
+\]
+Thus \(\mathcal E nd E\) is semistable of degree zero exactly when \(E\) is semistable.
+
+### 4.5. Reductive representations and their central slopes
+
+We return to characteristic zero. Finite-dimensional rational representations of a connected reductive group are completely reducible. Here is how the Lie result supplies the group statement we use. The central diagonalizable subgroup decomposes a representation into character pieces. On each piece, apply Weyl's invariant-complement construction for the derived semisimple Lie algebra, proved in [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), §§2–4. The central Lie algebra acts by scalars, so the complement is invariant under the entire reductive Lie algebra. Its closed stabilizer in the connected group has that whole Lie algebra. The characteristic-zero stabilizer smoothness proved in §6.11 makes its dimension equal to the group's dimension. It is therefore the entire connected group. Thus the complement is a rational-group complement as well.
+
+Every vector of a rational module lies in a finite-dimensional subcomodule, by the coefficient argument of §1.4. The trivial and nontrivial simple summands therefore define a canonical projection onto invariants in every rational module \(M\). Denote it by \(\mathcal R_M\). It is natural for equivariant maps; a map from a nontrivial simple module to a trivial one is zero. If \(M\) is an algebra and \(a\) invariant, multiplication by \(a\) is equivariant, so
+\[
+ \mathcal R_M(a m)=a\,\mathcal R_M(m),\qquad
+ \mathcal R_M|_{M^G}=1.
+ \tag{HN.18}
+\]
+Invariants are exact: for an invariant element in a quotient, lift it arbitrarily and apply this projection. These facts will also construct the affine quotient in §4.9.
+
+We need the representation-theoretic tensor generator in a precise form. For an adjoint semisimple group \(D\), its adjoint representation is a faithful closed embedding. First, the kernel of the adjoint representation of any connected reductive group is its centre as a scheme. For a geometric kernel element, its centralizer has the whole Lie algebra; characteristic-zero smoothness and connectedness make that centralizer the whole group. Kernel and centre have the same points. Both are reduced: the kernel by the group smoothness theorem and the centre by its diagonalizable description in [*Pinnings and the classification of split reductive groups*](../../AG-RG/AG-RG-05.html), the derived-group and centre calculations after Theorem 10.1. Thus they are equal as closed schemes, including all coefficient tests.
+
+For completeness, an injective homomorphism of these characteristic-zero groups is a closed embedding onto its image. Its constructible image has a reduced closed group closure \(J\), by [*Group schemes over a field*](../../AG-GS/src/group-schemes-over-a-field.md), Theorem 7.1. It contains a nonempty open of the integral group \(J\). Intersect that open with any translate of it; the intersection is nonempty, so expressing a point as a quotient of two image points shows that every closed point of \(J\) is in the image. Separability gives full differential rank generically, as calculated in §1.3; translation gives it everywhere. A trivial scheme kernel gives an injective differential, so source and target have equal dimension and the map is étale. Its open image contains every closed point, hence is all of \(J\). Its overlap with itself is the diagonal, because its kernel is the trivial group functor. Faithfully flat algebra descent then makes it an isomorphism onto \(J\). Applied to \(D\), whose centre is trivial, this proves the closed embedding assertion.
+
+Its determinant is one by §2.3. Hence \(k[D]\) is generated by the matrix coefficients of \(\operatorname{Ad}\): the determinant inverse in the coordinates of \(GL(\mathfrak d)\) restricts to \(1\). Every finite-dimensional \(D\)-representation embeds, by its coaction, in finitely many copies of the regular comodule \(k[D]\). Its finitely many coefficient functions have bounded polynomial degree in those adjoint matrix coefficients. The space of polynomials of bounded degree is a finite-dimensional stable quotient of a finite sum of tensor powers of \(\mathfrak d\), with harmless trivial multiplicities. Complete reducibility makes all the subquotients into direct summands. Thus every finite \(D\)-representation is a direct summand of such a finite tensor sum. One may also use dual tensor factors; the invariant nondegenerate form identifies the adjoint module with its dual.
+
+The tensor theorem, duals and direct summands therefore prove
+\[
+\begin{gathered}
+ \operatorname{ad}(P)\text{ semistable of degree }0
+ \ \Longrightarrow\ W(P)\text{ semistable of degree }0\\
+ \text{for every representation }W\text{ of }G/Z(G).
+\end{gathered}
+ \tag{HN.19}
+\]
+Here use the derived adjoint summand of \(\operatorname{ad}(P)\). The central summand is a trivial bundle, and the quotient \(G/Z(G)\) is adjoint semisimple by the same central-isogeny calculation. The tensor construction above is over the ground field, so its equivariant projections remain actual bundle projections after every field extension.
+
+Let \(V\) be a representation on which the centre acts by one character. Its endomorphism representation is trivial on that centre and descends to \(G/Z(G)\). If \(\operatorname{ad}(P)\) is semistable, (HN.19) makes \(\mathcal E nd(V(P))\) semistable of degree zero. Equation (HN.17) gives
+\[
+ V(P)\text{ semistable},\qquad
+ \mu(V(P))=\frac{\deg(\det V)(P)}{\dim V}.
+ \tag{HN.20}
+\]
+In particular this applies to each irreducible representation. It also applies to a representation with one connected-central character: decompose it further under the finite part of the centre; the summands satisfy (HN.20) and have the same rational slope, so their direct sum is semistable.
+
+We spell out that last degree assertion. For a connected reductive \(L\), characters of \(L\) restrict to a finite-index sublattice of the character lattice of \(Z(L)^0\). Indeed, the finite central isogeny \(L_{\mathrm{sc}}\times Z(L)^0\to L\) identifies characters of \(L\) with the finite-index characters of the torus that are trivial on its finite kernel; \(L_{\mathrm{sc}}\) has no nontrivial characters by its perfectness. Thus an \(L\)-bundle \(F_L\) defines a unique rational cocharacter
+\[
+ \nu(F_L)\in X_*(Z(L)^0)\otimes\mathbb Q,\qquad
+ \langle\chi,\nu(F_L)\rangle=\deg\chi(F_L)
+ \quad(\chi\in X^*(L)).
+ \tag{HN.21}
+\]
+If \(V\) has connected-central character \(\zeta\), the determinant restricts to \(\zeta^{\dim V}\). Equation (HN.21) identifies its slope in (HN.20) with \(\langle\zeta,\nu(F_L)\rangle\). Finite-central characters do not change this rational degree.
+
+A faithful representation can have several connected-central characters. Its associated bundle then splits into semistable character pieces with their respective slopes, provided the adjoint is semistable. Those slopes may differ. This is the form that gives a uniform bound in each topological component in §4.11.
+
+### 4.6. The canonical parabolic in every genus
+
+If \(G=1\), its bundle stack is a point and all stability tests and reductions here are vacuous. Assume henceforth that the adjoint bundle has positive rank. The adjoint bundle \(E=\operatorname{ad}(P)\) is self-dual and has degree zero. The finite central isogeny of §3.2 decomposes its Lie algebra into the semisimple derived part and the centre. Use the nondegenerate Killing form on the first part and any nondegenerate form on the second. Both are invariant; the central bundle is constant. The tensor filtration theorem gives
+\[
+ [F^{\geq a}E,F^{\geq b}E]\subset F^{\geq a+b}E,
+ \qquad
+ (F^{>0}E)^\perp=F^{\geq0}E.
+ \tag{HN.22}
+\]
+For the bracket, its source has all slopes at least \(a+b\), while the quotient by the proposed target has all slopes strictly less; (HN.1) makes the violating map zero. The form identity follows from the reversed dual filtration and uniqueness.
+
+Set
+\[
+ \mathcal U=F^{>0}E,\qquad
+ \mathcal Q=F^{\geq0}E=\mathcal U^\perp.
+ \tag{HN.23}
+\]
+The polynomial integration, Grassmannian stabilizer and root-weight arguments of §6.8 now apply with the tensor theorem of §4.4. We give their essential steps with the genus-independent hypotheses.
+
+At each fibre, elements of \(\mathcal U\) strictly raise the finite filtration under the adjoint action and hence are nilpotent. Projection to the constant centre is zero by (HN.1). Representation preservation of Jordan decomposition, proved in [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), Theorem 5.1, makes these elements nilpotent in a faithful representation of the derived group. Engel triangularization and the finite exponential/logarithm calculation of §6.8 integrate them to a connected unipotent subgroup inside \(G\). The inclusion in \(G\) follows there by exponentiating the locally nilpotent left-invariant derivations preserving its defining ideal. Put that subgroup in a Borel \(B\). It lies in its unipotent radical, so \(\mathcal U_x\subset\mathfrak n_B\) and \(\mathcal Q_x\supset\mathfrak n_B^\perp=\mathfrak b\).
+
+The Lie normalizer of \(\mathfrak q=\mathcal Q_x\) is \(\mathfrak q\): an invariant class in \(\mathfrak g/\mathfrak q\) would have to have weight zero under the Cartan contained in \(\mathfrak b\), whereas that quotient has no such weight. Its closed Grassmannian stabilizer is smooth in characteristic zero, with Lie algebra \(\mathfrak q\). Its intersection with \(B\) has the whole Lie algebra of \(B\), hence contains \(B\). Its identity component is consequently a parabolic \(Q\), by [*Automorphisms, forms and parabolic subgroups*](../../AG-RG/AG-RG-06.html), Theorem 1.1. The full stabilizer equals \(Q\): every component normalizes that identity component, and the same theorem proves \(N_G(Q)=Q\) schematically. Thus the orbit \(G/Q\) in the Grassmannian is a closed projective orbit, with its full scheme stabilizer.
+
+Every term of the HN flag is \(\mathfrak q\)-stable by (HN.22), hence \(Q\)-stable by the same smooth-stabilizer argument. Choose a maximal torus in \(Q\). Its Cartan algebra has filtration weight zero: it is contained in \(\mathfrak q\) and meets the nilpotent positive part trivially. Each root line has a single rational filtration weight \(s_\alpha\). Pairing opposite root lines and applying their brackets gives
+\[
+ s_{-\alpha}=-s_\alpha,\qquad
+ s_{\alpha+\beta}=s_\alpha+s_\beta
+ \quad\text{when }\alpha+\beta\text{ is a root}.
+ \tag{HN.24}
+\]
+For the second equality, the bracket gives one inequality, and bracketing \(\alpha+\beta\) with \(-\beta\) gives the reverse one.
+
+The nonzero root brackets and height induction here have a direct rank-one check. In the compatible root \(SL_2\), a highest vector of weight \(m\) satisfies \(e f^jv=j(m-j+1)f^{j-1}v\), by the three commutator identities. Termination of the string forces \(m\) to be its nonnegative integer length. Weyl's theorem decomposes the root-string module \(\bigoplus_n\mathfrak g_{\beta+n\alpha}\) into these strings. Its weight spaces have dimension at most one, and all weights have the same parity; two strings would overlap at weight \(0\) or \(1\). It is therefore one string, and consecutive root spaces have nonzero brackets. For a nonsimple positive root, choose a simple root with positive inner product: such a choice exists by expressing its positive norm as the sum of its simple-root coefficients times those inner products. In the corresponding string the lowering operation is nonzero, so subtracting that simple root leaves a positive root of smaller height. This proves the induction that extends (HN.24) to an additive function on the root lattice. The positive basis and invariant positive form are those constructed in [*Root data, Weyl chambers and the Bruhat decomposition*](../../AG-RG/AG-RG-04.html), §§1–4; averaging over its finite Weyl group gives the invariant form.
+
+The weights thus give a dominant rational cocharacter with zero central part, zero on the Levi roots and positive on the nilradical roots. For the fixed list of HN ranks and weights there are only finitely many assignments to the finitely many roots. The entire weighted flags have the same stabilizer \(Q\), so their conjugacy orbits are the projective schemes \(G/Q\). They are disjoint closed orbits. The map from the reduced curve to the associated flag variety factors through their finite union because its defining equations vanish at every geometric point. Connectedness of the curve makes the orbit type constant. Its section in the corresponding twisted \(G/Q\) gives a \(Q\)-reduction on the whole curve. This is the field construction; §4.8 below proves the coefficient-scheme statement.
+
+Let \(F_L\) be its Levi bundle. Its adjoint bundle is the zero graded piece of \(E\), hence semistable of degree zero. Each root graded piece \(V_s(F_L)\) is semistable of slope \(s\). Decompose the \(L\)-representation \(V_s\) into irreducible representations. Complete reducibility makes their associated bundles direct summands, all of slope \(s\). Equations (HN.20)–(HN.21) therefore show that the actual degree cocharacter \(\nu=\nu(F_L)\), embedded in \(X_*(T)\otimes\mathbb Q\), satisfies
+\[
+ \langle\alpha,\nu\rangle=s_\alpha
+ \quad\text{for every root }\alpha,\qquad
+ Q=P_G(N\nu)
+ \quad\text{for an integer }N>0.
+ \tag{HN.25}
+\]
+Indeed each root restricts to the connected-central character of its Levi summand. Its rational degree is that summand's slope. Clearing denominators supplies \(N\). The central part of \(\nu\) is fixed by the degrees of the characters of \(P\); the adjoint filtration measures its derived part.
+
+We also identify our parabolic semistability convention. If a maximal-parabolic reduction has nilradical of positive degree, that nilradical is a subbundle of the degree-zero adjoint bundle and violates its semistability. Conversely, if the adjoint is unstable, the \(Q\) just constructed is proper. Choose a simple root outside its Levi and extend to the maximal parabolic \(P_i\) omitting that root. Every root of \(\mathfrak n_{P_i}\) has positive weight under \(\nu\), since its simple-root coefficient at the omitted root is positive. This \(Q\)-stable subrepresentation is filtered by positive adjoint HN pieces. Its graded Levi subrepresentations are direct summands of those pieces by complete reducibility, so all their slopes are positive. Consequently
+\[
+ \deg(\mathfrak n_{P_i})_{F_{P_i}}>0,\qquad
+ P\text{ semistable}\ \Longleftrightarrow\
+ \operatorname{ad}(P)\text{ semistable}.
+ \tag{HN.26}
+\]
+This proves the equivalence without importing a semistability-preservation theorem for representations. It also shows that \(F_L\) is semistable.
+
+**Theorem 4.3 (canonical reduction).** Every principal \(G\)-bundle has a unique reduction to a parabolic \(Q\) with semistable Levi bundle and rational degree \(\nu\) dominant and strictly positive on the roots of its unipotent radical:
+\[
+ Q=P_G(N\nu),\qquad
+ \operatorname{gr}_s\operatorname{ad}(P)=V_s(F_L),
+ \qquad
+ \mu(V_s(F_L))=s=\langle\alpha,\nu\rangle
+ \text{ on its root summands}.
+ \tag{HN.27}
+\]
+When the bundle is semistable, \(Q=G\). To prove uniqueness, start with any reduction having these properties. Equation (HN.26), applied to its Levi, makes \(\operatorname{ad}(F_L)\) semistable. Equations (HN.20)–(HN.21) then make every central-character summand of its root graded representations semistable at the degree prescribed by \(\nu\). Combine equal slopes. Its adjoint flag is the unique vector HN flag. The faithful closed parabolic orbit above then recovers exactly the same reduction. The character degrees recover its central part as well. This proves uniqueness, and every bundle isomorphism preserves the reduction.
+
+All these statements hold after every extension of the ground field. If a bundle is defined over a field that is not algebraically closed, construct the reduction over an algebraic closure. It and its finitely presented flag are defined over a finite extension. Uniqueness makes the descent isomorphisms agree over a finite normal extension, and the effective vector/section descent of §7.5 descends the reduction. Thus the canonical reduction is defined over the original field too.
+The rational cocharacter records slopes, but it can forget finite component data. The integral type of the reduction is therefore the pair \(\tau=(Q,\lambda_L)\), where \(\lambda_L\in X_*(T)/Q_L^\vee\) is the component of its Levi bundle from (CT.27). Its rational image is \(\nu(F_L)\). We retain this integral type when constructing strata.
+
+### 4.7. Relative vector HN flags as locally closed schemes
+
+Let \(E\) be a vector bundle on \(X\times S\), with \(S\) noetherian, and fix its rank \(n\) and degree \(d\). A polygon \(\mathsf P\) has endpoints \((0,0),(n,d)\), integral strict breakpoints \((r_i,D_i)\), and strictly decreasing slopes between them. Write \(\mathsf P_E\) for the vector HN polygon. First,
+\[
+ S_{\leq\mathsf P}=\{s:\mathsf P_{E_s}\leq\mathsf P\}
+ \quad\text{is open in }S.
+ \tag{HN.28}
+\]
+Work locally with the uniform embedding used in (HN.2). For every integer rank \(r\), only finitely many integer subbundle degrees can exceed \(\mathsf P(r)\). The corresponding proper Quot images give a closed union. Their complement is the desired open: a subbundle of rank \(r\) has degree at most \(\mathsf P_E(r)\), by intersecting it with the HN filtration and adding the semistable degree bounds. Conversely, if \(\mathsf P_E\) exceeds \(\mathsf P\), it does so at some breakpoint of \(\mathsf P_E\). Otherwise concavity of \(\mathsf P\) would bound every segment between those breakpoints. That breakpoint is realized by an actual HN prefix, so one of the tested Quot images contains the parameter.
+
+Over this open, form the projective flag Quot scheme \(\mathcal F\) with compatible quotients \(E\to Q_i\) of ranks \(n-r_i\) and degrees \(d-D_i\). Concretely, take the first relative Quot scheme and then the Quot scheme of its universal quotient with the next prescribed polynomial, and continue. Every universal quotient is flat over its parameter scheme, so Theorem 4.1 of *Hilbert and Quot schemes*, linked in §4.1, applies at each step. The composite is projective.
+
+On a geometric fibre its kernels \(F_i\) are torsion-free and have degree \(D_i\). If a quotient had torsion, saturation would increase that kernel's degree beyond \(\mathsf P(r_i)=D_i\), contrary to (HN.28). The quotients are therefore bundles. Their subbundle degree inequalities give \(\mathsf P_E(r_i)\geq D_i\). Together with \(\mathsf P_E\leq\mathsf P\), concavity then forces equality on every segment:
+\[
+ \mathsf P_E=\mathsf P,\qquad F_i=F^{\geq a_i}E
+ \quad\text{at the corresponding strict breaks}.
+ \tag{HN.29}
+\]
+Here is the asserted equality of prefixes. Intersect \(F_i\) with the HN filtration, and let \(h_j\) be its ranks in the graded pieces of slopes \(\lambda_j\). Its degree is at most \(\sum_jh_j\lambda_j\). Among ranks summing to \(r_i\), this sum is at most the degree of the first \(r_i\) HN ranks. At a strict breakpoint equality forces every higher-slope rank and no lower-slope rank. The resulting generic inclusion in the HN prefix is an actual inclusion, since its map to the quotient is generically zero. Equal rank and degree, with both subbundles saturated, make this inclusion an equality.
+
+The universal \(Q_i\) and \(F_i\) are bundles on \(X\times\mathcal F\), including its nonreduced part. We give the fibre criterion used here and later. A finitely presented module \(M\), flat over the parameter ring \(R\), with locally free geometric fibres on a flat finitely presented \(R\)-scheme is locally free on that scheme. At a local point lift a basis of its fibre to a map \(B^a\to M\), where \(B\) is the local ring of the scheme. Nakayama makes the map surjective. Parameter flatness makes its finite kernel inject after passage to the residue fibre. There it is zero, since the lifted basis is a basis; Nakayama makes the kernel zero. The kernel in our flag sequence is parameter-flat because the source and quotient are parameter-flat. This proves the criterion for every term. The resulting bundles persist under arbitrary base change.
+
+There is at most one geometric flag in each fibre. We next prove that \(\mathcal F\to S_{\leq\mathsf P}\) is unramified. A first-order difference between two lifts of the same subbundle \(F_i\) is a section of
+\[
+ \mathcal H om(F_i,E/F_i)\otimes I,
+ \qquad
+ \mu_{\min}(F_i)>\mu_{\max}(E/F_i),
+ \tag{HN.30}
+\]
+where \(I\) is the square-zero coefficient module. This description follows by writing both lifts as graphs in local splittings; differences agree on overlaps and lie in the indicated Hom module. Compatibility of a flag can only restrict these differences.
+
+Each Hom bundle has zero \(H^0\) on every geometric fibre by (HN.1). Its universal finite cohomology complex (BA.1)–(BA.2) has amplitude \([0,1]\), say \(K^0\to K^1\). The differential is injective on every residue fibre. Inverting a maximal-rank minor makes it a split injection locally; these opens cover the base. It remains injective after tensoring any \(I\), so its \(H^0\) with those coefficients is zero. All lifts are unique, which is the infinitesimal unramified criterion for our finitely presented flag scheme.
+
+We finish the scheme argument explicitly. A projective unramified morphism with at most one geometric point in each fibre is a closed immersion locally on its base. A nonempty fibre is one reduced point with residue field equal to the base residue field: unramifiedness gives separable residue extensions and reduced zero-dimensional fibres; an extension of degree greater than one would give several geometric points. Choose a projective coordinate hyperplane avoiding that point and remove from the base the proper image of its intersection with the total scheme. The remaining projective scheme lies entirely in the complementary affine chart. It is closed in that chart, hence affine over this base open. Its coordinate algebra is finite over the base ring, by the projective coherent-finiteness theorem linked in §4.1. Each fibre algebra is the residue field or zero, generated by \(1\). Nakayama applied to the finite cokernel of the base-ring map makes that map surjective. Thus it is a closed immersion. At an empty fibre, remove the proper image itself.
+
+Consequently \(\mathcal F\) is a closed subscheme of \(S_{\leq\mathsf P}\) and a locally closed subscheme of \(S\). Denote it by \(S_{\mathsf P}\). It has the following coefficient-level property:
+\[
+ R\longrightarrow S\text{ factors through }S_{\mathsf P}
+ \ \Longleftrightarrow\
+ E_R\text{ has the relative HN flag of polygon }\mathsf P.
+ \tag{HN.31}
+\]
+On the right the flag consists of subbundles with the prescribed ranks and degrees and fibrewise semistable graded pieces of the prescribed decreasing slopes. It is unique, by (HN.30) and the closed immersion just proved. Both implications follow from the universal flag Quot property and (HN.29). Arbitrary coefficient rings are included by base change of the noetherian universal construction; the finite presentations of any other test family descend to a noetherian model. When the polygon is one segment there is no flag parameter, and the stratum is precisely the semistable open.
+
+### 4.8. Parabolic flags over nilpotent coefficient rings
+
+We now apply §4.7 to \(E=\operatorname{ad}(P)\). On a relative vector HN stratum, the bracket, form and central-summand conditions of (HN.22) hold over the whole coefficient scheme. For example the forbidden bracket component is a section of a Hom bundle from a convolution prefix to a lower-slope quotient. The source has fibre slopes at least \(a+b\), while that quotient has slopes less than \(a+b\). Its fibre \(H^0\) vanishes. The split-injection argument following (HN.30) makes the section zero over every coefficient ring. Pairing constraints are obtained in the same way; equal-rank orthogonal complements agree by Nakayama. The constant centre has weight zero because maps from a positive prefix to it and from it to a negative quotient vanish by (HN.1) and the same cohomology argument.
+
+Fix the list of adjoint HN weights and ranks. Inside the projective weighted flag variety of \(\mathfrak g\), let \(Y\) be the closed scheme defined by
+\[
+ [F^{\geq a},F^{\geq b}]\subset F^{\geq a+b},
+ \qquad
+ (F^{>a})^\perp=F^{\geq -a},
+ \qquad
+ \mathfrak z(\mathfrak g)\text{ has weight }0.
+ \tag{HN.32}
+\]
+There are finitely many relevant pairs of weights; inclusions are zero maps between universal bundles and are polynomial closed equations. Orthogonality can equivalently be imposed by vanishing pairings and the fixed complementary ranks. At every geometric point, the argument of §4.6 makes the positive part nilpotent, the zero-and-positive part a parabolic algebra, and the root weights additive. There are finitely many root-weight assignments. Thus the geometric points of \(Y\) are the disjoint union of finitely many closed projective orbits \(G/Q\). We must prove this statement for schemes.
+
+At a flag with \(\mathfrak q=F^{\geq0}\), a first-order change of this subspace is a linear map \(u:\mathfrak q\to\mathfrak g/\mathfrak q\). The Lie-subalgebra equation in (HN.32) says
+\[
+ u([x,y])=x\cdot u(y)-y\cdot u(x).
+ \tag{HN.33}
+\]
+It is the degree-one cocycle equation. Choose a Cartan \(\mathfrak t\subset\mathfrak q\). In the cochain complex for \(\mathfrak q\) acting on \(\mathfrak g/\mathfrak q\), its weight-zero degree-one space is zero: the roots in the quotient are precisely the roots absent from \(\mathfrak q\), and the quotient has no Cartan part. On a nonzero weight \(\chi\), choose \(h\in\mathfrak t\) with \(\chi(h)\ne0\). Expansion of the cocycle differential gives the contraction identity
+\[
+ \mathcal L_h=d\,\iota_h+\iota_h\,d,
+ \qquad
+ u=d\bigl(u(h)/\chi(h)\bigr)
+ \quad(du=0,\ \mathcal L_hu=\chi(h)u).
+ \tag{HN.34}
+\]
+For degree one the expansion is
+\(h\cdot u(x)-u([h,x])
+ =x\cdot u(h)+(du)(h,x)\), which verifies the signs. Summing its weight pieces makes every cocycle inner. The invariant space \(H^0(\mathfrak q,\mathfrak g/\mathfrak q)\) is also zero, because even its \(\mathfrak t\)-invariants are zero. The conjugating vector in \(\mathfrak g/\mathfrak q\) is therefore unique.
+
+The dual-number element \(1+\epsilon v\) of \(G\), interpreted through the tangent-kernel calculation (DS.3), removes that change by conjugation with the appropriate sign. Keep \(\mathfrak q\) fixed after doing so. Since every flag term is \(\mathfrak q\)-stable, a remaining change lies in \(\operatorname{Hom}(F_i,\mathfrak g/F_i)^{\mathfrak q}\). This space is zero: every root line appears on exactly one side, and the whole Cartan space appears on exactly one side at weight zero. There is no torus-weight-zero map. Thus
+\[
+ T_yY=T_y(G/Q),\qquad \dim T_yY=\dim G/Q.
+ \tag{HN.35}
+\]
+The full scheme stabilizer is \(Q\), as proved in §4.6, so the orbit differential has precisely this dimension and is injective.
+
+The local dimension of \(Y\) at \(y\) is at least the dimension of its closed orbit. It is at most its tangent dimension. Equation (HN.35) makes both equal; the local ring is regular. Over our perfect characteristic-zero field the regularity/Jacobian calculation in §1.3 makes \(Y\) smooth near every geometric point. The same holds for \(G/Q\). The closed orbit immersion has identical tangent spaces. Its conormal sequence therefore has zero \(I/I^2\), and the finite ideal \(I\) vanishes locally by Nakayama: \(I=I^2\subset\mathfrak m I\). Each orbit is open as well as closed. Since these orbits contain every geometric point, their complement is empty. We have proved the actual scheme identity
+\[
+ Y=\coprod_{\text{compatible root-weight types}}G/Q.
+ \tag{HN.36}
+\]
+This identity includes all nilpotent coefficient tests. It is stronger than an identification of reduced points.
+
+Twist (HN.36) by the \(G\)-bundle \(P\). The relative adjoint HN flag gives a section into this twisted scheme, hence a parabolic reduction over its coefficient base. Its finite orbit label descends from the curve to a clopen decomposition of that base: an orbit label is an idempotent, and \(H^0(X_R,\mathcal O)=R\), by (BA.1) and connectedness. On each piece take the Levi component \(\lambda_L\) supplied by the clopen component map (CT.25)–(CT.27), applied to \(L\). Splitting those clopen pieces retains its possible finite torsion.
+
+**Theorem 4.4 (schematic HN strata).** For an integral type \(\tau=(Q,\lambda_L)\) whose rational degree \(\nu\) is dominant and \(Q\)-regular, the map
+\[
+ \operatorname{Bun}_Q^{\lambda_L,\ \mathrm{Levi\ semistable}}
+ \longrightarrow\operatorname{Bun}_G
+ \tag{HN.37}
+\]
+is a locally closed schematic immersion onto the stratum of canonical reductions of that type.
+
+Indeed a reduction on the left gives the root-weight flag with fibrewise semistable graded pieces by (HN.20)–(HN.27). Conversely (HN.31)–(HN.36) construct its reduction over every coefficient ring. The integral Levi component picks a clopen subspace. On a noetherian atlas the construction is a clopen part of the locally closed vector HN stratum, so is a locally closed scheme. Every bundle isomorphism preserves its unique relative flag and its reduction; the fibre has no extra automorphisms. The universal descriptions glue on atlas overlaps, proving the schematic assertion and all arrows, not just bijectivity of geometric points.
+
+Only finitely many such types occur on a quasicompact finite-type chart. A uniform embedding bounds the maximum slope of its adjoint bundles; self-duality bounds the minimum slope by the negative of that bound. Ranks are at most \(\dim G\), and the degrees are integers, so there are finitely many polygons and root-weight assignments. The \(G\)-component is locally constant and takes finitely many values on that chart. Given it and the rational Levi degree, the integral Levi class is determined: the kernel of
+\[
+ X_*(T)/Q_L^\vee\longrightarrow X_*(T)/Q_G^\vee
+ \quad\text{is }Q_G^\vee/Q_L^\vee,
+ \tag{HN.38}
+\]
+which is free on the simple coroots outside the Levi. Its rational map to the Levi centre is injective, since the Levi simple coroots are exactly the kernel of projection to that centre. Thus no hidden infinite torsion choice remains. This proves local finiteness of the HN stratification. A description of closures of strata would require an additional argument; it has not been used here.
+
+### 4.9. An affine quotient for a reductive subgroup
+
+Let \(G\hookrightarrow H=GL_N\) be a faithful closed representation, provided by §1.4. We prove that \(H/G\) is affine and that its quotient map is a torsor over arbitrary coefficient rings. Put \(B=k[H]\), with the right \(G\)-action. It is an equivariant quotient of the polynomial algebra
+\[
+ S=k[x_{ij},z],\qquad B=S/(z\det(x)-1),
+ \tag{HN.39}
+\]
+where right multiplication acts linearly on matrix entries and \(z\) has character \((\det\rho)^{-1}\).
+
+First \(S^G\) is finitely generated. In the graded noetherian algebra \(S\), take the ideal generated by all positive-degree homogeneous invariants. Finitely many of those invariants \(f_1,\ldots,f_b\) generate the ideal. For a homogeneous invariant \(f\) of positive degree, write \(f=\sum_i h_i f_i\) with homogeneous \(h_i\) of the complementary degrees. Apply (HN.18):
+\[
+ f=\sum_i\mathcal R_S(h_i)f_i.
+ \tag{HN.40}
+\]
+Each nonzero coefficient has smaller degree than \(f\). Induction proves \(S^G=k[f_1,\ldots,f_b]\). Exactness of invariants makes \(S^G\to B^G\) surjective, so \(C=B^G\) is a finitely generated integral reduced algebra. Write \(Z=\operatorname{Spec}C\), and \(q:H\to Z\).
+
+Right cosets are closed, since \(G\) is closed. Distinct cosets are separated by invariant functions: their stable ideals are comaximal, so choose a function restricting to \(0\) and \(1\). Applying the natural Reynolds projection preserves those two restrictions. Also every closed point of \(Z\) has a point above it. For a maximal ideal \(\mathfrak m\subset C\), the ideal \(\mathfrak m B\) is proper: an expression \(1=\sum_i c_i b_i\), \(c_i\in\mathfrak m\), would become \(1=\sum_i c_i\mathcal R_B(b_i)\in\mathfrak m\). A maximal ideal of the nonzero finite-type algebra \(B/\mathfrak m B\) gives a point above it. Thus each closed fibre has exactly the point set of one coset.
+
+These assertions hold after any extension to an algebraically closed field, including the algebraic closure of \(k(Z)\). Indeed each rational module is the union of finite-dimensional modules, and invariants on each such module are the kernel of the coaction minus the trivial coaction. Flat field extension preserves that kernel. It follows that invariant rings commute with field extension, and the same Reynolds and coset arguments apply. Every geometric fibre therefore has the underlying closed set of a coset of \(G\).
+
+Left multiplication by \(H\) acts on \(C\) and on \(Z\), and is transitive on its closed points. An integral reduced finite-type characteristic-zero scheme has a nonempty smooth open: the Noether-normalization and separable-field differential calculation in §1.3 gives such an open after inverting the finitely many Jacobian denominators. Translate it to each closed point. The complement of the smooth locus is closed and has no closed point, hence is empty. Thus \(Z\) is smooth.
+
+The same separable-field differential calculation makes the dominant map \(q\) submersive on a nonempty open. Translation in \(H\) and \(Z\) makes it submersive at every closed point, hence everywhere. Since source and target are smooth, the Jacobian criterion proved in §1.3 makes \(q\) smooth. Its image is open and contains every closed point, so it is surjective. The geometric generic coset and the dimension calculation from Noether normalization give \(\dim Z=\dim H-\dim G\).
+
+Finally consider
+\[
+ H\times G\longrightarrow H\times_ZH,\qquad
+ (h,g)\longmapsto(h,hg).
+ \tag{HN.41}
+\]
+It is a closed immersion: inside \(H\times H\), its equation is \(h^{-1}h'\in G\). Both sides are smooth over the first \(H\) and have relative dimension \(\dim G\). The relative differential of (HN.41) is injective and hence an isomorphism, since the infinitesimal right \(G\)-action is the Lie algebra of the coset. The same Jacobian criterion makes this closed immersion étale, thus open as well. It contains all geometric points by the coset calculation, so its open complement is empty and it is an isomorphism. Consequently
+\[
+ q:H\longrightarrow Z\text{ is a smooth surjective }G\text{-torsor},
+ \qquad H/G=Z\text{ is affine of finite presentation}.
+ \tag{HN.42}
+\]
+The torsor identity is a scheme identity and therefore holds on all coefficient algebras.
+
+We also need finite coordinates for sections of this quotient. Choose a finite-dimensional left-\(H\)-stable subspace of \(C\) containing algebra generators, by the finite-comodule argument of §1.4. It gives an equivariant closed embedding \(Z\hookrightarrow W\) into a finite-dimensional \(H\)-representation. The ideal has finitely many generators; put them in a finite-dimensional \(H\)-stable subspace \(M\) of the polynomial coordinate ring. Evaluation gives an equivariant polynomial map \(W\to M^\vee\) whose zero scheme is \(Z\). These are equations of schemes, so twisting by any \(H\)-bundle preserves their universal property.
+
+### 4.10. Semistable and stable principal bundles form open substacks
+
+Equation (HN.26) and the vector-family proof in §4.1 immediately give
+\[
+ \operatorname{Bun}_G^{ss}\subset\operatorname{Bun}_G
+ \quad\text{open}.
+ \tag{HN.43}
+\]
+We prove the stable assertion too. Work on a finite-type chart of this semistable open. Its adjoint bundles \(E\) are semistable of degree zero. For each standard maximal parabolic \(P_i\), put \(a_i=\dim\mathfrak n_{P_i}\), and take the proper Quot scheme with kernel rank \(a_i\) and degree zero.
+
+Every geometric kernel is saturated: its saturation cannot have positive degree in a semistable degree-zero bundle. Its subbundle and quotient are semistable of degree zero. For the quotient this follows by pulling a positive-degree subbundle back to \(E\); for the subbundle it follows by testing its subbundles directly. The universal kernels and quotients are actual bundles by the flat-fibre criterion of §4.7.
+
+The nilradicals of \(P_i\) form a closed projective orbit
+\[
+ G/P_i\hookrightarrow\operatorname{Gr}_{a_i}(\mathfrak g).
+ \tag{HN.44}
+\]
+Its scheme stabilizer is \(P_i\): the invariant form identifies \(\mathfrak n_{P_i}^{\perp}=\operatorname{Lie}P_i\), whose full scheme normalizer is \(P_i\) by *Automorphisms, forms and parabolic subgroups*, Theorem 2.1, linked in §4.6. Its proper monomorphic orbit map is a closed immersion, also by the projective unramified argument of §4.7.
+
+Impose that the universal kernel is a section of the twisted orbit (HN.44) along the entire curve. This is a closed condition on the Quot parameter scheme, not merely a condition on its points. To see the equations, take finitely many homogeneous generators of the orbit's ideal in its Plücker embedding and the finite representation containing them. Evaluating on the determinant line of the universal kernel gives polynomial sections of vector bundles on the curve. The equation that each section is zero is represented by a closed subscheme of the parameter base. Locally embed each bundle in \(\mathcal O(bx)^{\oplus c}\), using relative generation of its dual as in §4.1, with \(b>2g-2\). The line's \(H^0\) is finite locally free and commutes with every base change by (BA.1)–(BA.2). Vanishing of all these finitely many coefficient functions is exactly vanishing of the original section, since the embedding stays injective after base change. This is also the section-equation construction of §1.4.
+
+The resulting closed subscheme of the proper Quot scheme has closed image. Its points are exactly the parameters with a \(P_i\)-reduction whose nilradical has degree zero. In the semistable locus all maximal-parabolic nilradical degrees are nonpositive; failing strict stability means that one of them is zero. There are finitely many standard maximal types. Their images form a closed union, and its complement proves
+\[
+ \operatorname{Bun}_G^{st}\subset\operatorname{Bun}_G^{ss}
+ \quad\text{open}.
+ \tag{HN.45}
+\]
+For a torus there are no proper parabolic tests, so both loci are the whole stack. This statement concerns openness; it does not assert that a stable bundle has finite automorphisms when its centre has positive dimension.
+
+### 4.11. Bounded semistable components and unbounded full components
+
+Choose a faithful completely reducible representation \(\rho=\bigoplus_j V_j\) into \(GL_N\), with each \(V_j\) irreducible. Fix a component \(\gamma\in X_*(T)/Q_G^\vee\). If \(P\) is semistable in that component, (HN.20) makes each \(V_j(P)\) semistable. Its degree \(d_j=\deg(\det V_j)(P)\) is determined by \(\gamma\): a character kills every coroot, and (CT.25)–(CT.27) identify its degree with the corresponding pairing. Hence
+\[
+ \mu_{\min}(\rho(P))=\min_j\frac{d_j}{\dim V_j}
+ \quad\text{is fixed in this component}.
+ \tag{HN.46}
+\]
+Choose one integer \(m\) with this number plus \(m\) greater than \(2g-1\). Duality as in (HN.5) makes every \(\rho(P)(mx)\) globally generated with \(H^1=0\) and fixed \(h^0\). Let \(V_m\) be the ordinary framed Quot atlas for this open of \(\operatorname{Bun}_{GL_N}\) from §1.2. It is a finite-type scheme and smooth over that open.
+
+The pullback \(T_m=V_m\times_{\operatorname{Bun}_{GL_N}}\operatorname{Bun}_G\) parameterizes reductions of its universal frame bundle, hence sections of the twisted affine quotient of §4.9. It is affine of finite presentation over \(V_m\). Here are its coordinates. Sections of the representation bundle \(W\) in §4.9 are represented by the affine scheme of vectors in \(K^0\) satisfying the linear equations \(d:K^0\to K^1\), using the universal two-term cohomology complex. The polynomial equations \(W\to M^\vee\) evaluated on that universal section must vanish. Embed the resulting coefficient bundle into a sufficiently positive sum of lines as in §4.10, and set its finitely many section coefficients to zero. These closed polynomial equations give exactly the section scheme of the twisted quotient on every coefficient ring. Thus \(T_m\) is a finite-type scheme over \(k\).
+
+Its component-\(\gamma\), semistable subspace is open: the component condition is clopen by (CT.27), and semistability is open by (HN.43). An open in a noetherian finite-type scheme is quasicompact and finite type. The map from this subspace to \(\operatorname{Bun}_G^{\gamma,ss}\) is smooth, as the base change of \(V_m\)'s atlas, and surjective. Indeed the uniform generation and \(H^1\)-vanishing supply a frame of global sections after an fppf-local base change; the cohomology rank condition also makes the atlas pullback work over nonreduced bases. The same reasoning with (HN.45) applies to the stable locus. We have proved
+\[
+ \operatorname{Bun}_G^{\gamma,ss}
+ \text{ and }\operatorname{Bun}_G^{\gamma,st}
+ \quad\text{are quasicompact}.
+ \tag{HN.47}
+\]
+They are allowed to be empty. The theorem makes no nonemptiness assertion in every component and genus.
+
+There is a precise opposite result for the full component. Suppose \(G\) has a root \(\alpha\). Choose a cocharacter \(\lambda_0\) representing any given \(\gamma\), and form the \(T\)-bundles of degrees \(\lambda_0+m\alpha^\vee\), then extend to \(G\). Their \(G\)-components stay equal to \(\gamma\). The actual root parametrization is equivariant for \(T\), so it gives a closed additive subgroup of their automorphism scheme:
+\[
+ \mathbb G_a^{\,h^0(\mathcal O((\langle\alpha,\lambda_0\rangle+2m)x))}
+ \ \subset\ \operatorname{Aut}(P_{\lambda_0+m\alpha^\vee}).
+ \tag{HN.48}
+\]
+This is an all-ring assertion: twist the polynomial closed root embedding by the \(T\)-transition functions; its section functor is the vector space of that line's sections after every base change. The closed section equations are the ones just proved. By the divisor Euler formula,
+\[
+ h^0(\mathcal O((\langle\alpha,\lambda_0\rangle+2m)x))
+ \geq\langle\alpha,\lambda_0\rangle+2m+1-g.
+ \tag{HN.49}
+\]
+These automorphism dimensions are unbounded.
+
+A quasicompact algebraic stack with affine finitely presented diagonal has bounded stabilizer dimension. To verify this directly, choose a smooth atlas and finitely many finite-type affine opens whose images cover the quasicompact stack. Its inertia over each such open is affine of finite presentation, by base change of the diagonal. Present its coordinate algebra with finitely many polynomial variables. Every fibre dimension is at most the number of those variables; the finite maximum bounds all stabilizers. Our bundle diagonal has precisely these properties by §1.3. Equations (HN.48)–(HN.49) therefore prove that every full component is nonquasicompact if \(G\) has a root.
+
+If \(G\) is a torus, the degree parameter \(X^{gr}\) constructed in §3.1 is quasicompact and maps onto all geometric points of the fixed-degree stack. A smooth atlas gives an open covering; its pullback to this parameter has a finite subcover, whose images cover the stack. Thus that component is quasicompact. For \(G=1\) it is a point. Consequently, in every genus,
+\[
+ \text{every component of }\operatorname{Bun}_G
+ \text{ is quasicompact}
+ \quad\Longleftrightarrow\quad
+ G\text{ is a torus}.
+ \tag{HN.50}
+\]
+The centre-character bound in (HN.46), the semistable restriction in (HN.47), and the unrestricted root growth in (HN.49) explain why this does not conflict with boundedness of semistable components.
+
+### 4.12. Exact examples, the slope-bound figure and exercises
+
+On \(\mathbb P^1\), semistability already forces a strong classification without assuming a splitting theorem for arbitrary vector bundles. Let \(E\) be semistable of rank \(n\), write \(\mu(E)=m+\delta\), \(m\in\mathbb Z\), \(0\leq\delta<1\), and suppose \(\delta>0\). The minimum slope of \(E(-m-1)\) is \(\delta-1>-2=\deg\omega_{\mathbb P^1}\). Duality gives \(H^1=0\), while Euler gives \(h^0=n\delta>0\). A nonzero section supplies \(\mathcal O(m+1)\to E\), whose saturated line has degree at least \(m+1>\mu(E)\), a contradiction. Hence \(\delta=0\). The bundle \(E(-m)\) is semistable of slope zero, has \(h^0=n\), and is globally generated by the same duality test after subtracting one point. Its surjection \(\mathcal O^{\oplus n}\to E(-m)\) has equal ranks and is an isomorphism. Thus
+\[
+ E\text{ semistable on }\mathbb P^1
+ \ \Longleftrightarrow\ E\simeq\mathcal O(m)^{\oplus n},
+ \qquad
+ \operatorname{Bun}_{GL_n}^{d,ss}\ne\varnothing
+ \ \Longleftrightarrow\ n\mid d.
+ \tag{HN.51}
+\]
+For \(n>1\) these bundles are not stable, since a line summand has equal slope.
+
+Every \(PGL_n\)-bundle on our curve has a \(GL_n\)-lift over a geometric field. One can see the lift explicitly after its Borel reduction from §3.3: upper triangular matrices modulo scalars have a unique representative whose last diagonal entry is \(1\); these representatives form a subgroup. This is a section of the \(GL_n\)-Borel map to the \(PGL_n\)-Borel. Extending the lifted Borel bundle gives the lift. The full difference groupoid (CT.21), applied to this central \(\mathbb G_m\)-extension, says that two lifts differ by tensoring a line, with the specified projective-bundle isomorphism retained.
+
+For a lift \(E\), its endomorphism bundle is the direct sum of the trace-free adjoint bundle and \(\mathcal O\), since the field has characteristic zero. Equations (HN.17) and (HN.26) identify projective semistability with semistability of \(E\). Therefore on \(\mathbb P^1\) only the neutral component of \(\operatorname{Bun}_{PGL_n}\), indexed by \(d\bmod n\), has semistable bundles. Connectedness of every component from §3.7 did not assert semistable nonemptiness.
+
+For an exact numerical slope comparison, take \(r=s=2\), \(g=2\), \(p=101\). Then \(R=4\), \(C=4\), and the guaranteed positive destabilizing gap is \(1/12\). The upper bounds from (HN.14) are
+\[
+\begin{gathered}
+ B_q=\frac1{25}(1-101^{-q})+4\,101^{-q},\\
+ B_1=\frac8{101},\quad
+ B_2=\frac{412}{10201},\quad
+ B_3=\frac{41216}{1030301},\\
+ \lim_qB_q=\frac1{25}<\frac1{12}.
+\end{gathered}
+ \tag{HN.52}
+\]
+Already \(B_1<1/12\). The plotted quantities are rational upper bounds, not measured or presumed slopes of Frobenius pullbacks.
+
+![Exact Frobenius tensor-slope error bounds for ranks two and genus two, and the root-automorphism dimension bound in genus two](figures/harder-narasimhan-frobenius-bound.svg)
+
+**Figure 4. Two explicit bounds.** The left panel plots the exact values of \(B_q\) in (HN.52), together with its limit \(1/25\) and the positive-gap threshold \(1/12\). The proof is (HN.6)–(HN.15), using local coefficient descent and repeated Frobenius. The right panel takes \(g=2\) and \(\langle\alpha,\lambda_0\rangle=0\) in (HN.48)–(HN.49), and plots the lower bound \(2m-1\) for the dimension of the indicated root subgroup of automorphisms. At \(m=1\) it is a lower bound; for \(m\geq2\), the line has degree \(2m>2g-2\), so duality makes that root-subgroup dimension exactly \(2m-1\). The whole automorphism group may be larger. The line degree uses \(\langle\alpha,\alpha^\vee\rangle=2\), proved in *Root data, Weyl chambers and the Bruhat decomposition*, §2, linked in §4.6; Euler and duality are proved in §§2.4 and 3.1 with the titled projective-duality lesson. The figure explains these proved estimates.
+
+**Exercise 4.A.** In the local decomposition (HN.6), verify the coefficient projections when \(p=3\). If a subbundle is preserved by \(D\), explain why its quotient also descends.
+
+**Solution 4.A.** Write \(u=u_0+t u_1+t^2u_2\), with \(D(u_i)=0\). Then \(D u=u_1+2tu_2\), \(D^2u=2u_2\), and
+\[
+ \Pi_0u=u-tDu+\tfrac12t^2D^2u=u_0,\qquad
+ \Pi_1u=u_1,\qquad \Pi_2u=u_2
+ \quad\text{in characteristic }3.
+ \tag{HN.53}
+\]
+The denominators \(1,2\) are units. A \(D\)-stable module contains each of these projections of each of its sections, so is generated over \(B\) by its horizontal sections. For the quotient, \(D^3=0\) and the Leibniz identity remain true; the polynomial identity \(\sum_{i=0}^2t^i\Pi_i=1\) supplies the same expansion. A horizontal quotient class represented by \(v\) is represented by \(\Pi_0v\), because \(Dv\) lies in the submodule. Thus its horizontal module is \((B^p)^r/N^D\); faithful-flat finite-projectivity descent makes both the submodule and quotient bundles before pullback. This is the coefficient reason that the descended subbundle is saturated.
+
+**Exercise 4.B.** Check the numbers in (HN.52) and the large-prime cutoff. Explain exactly what is specialized in the proof of Theorem 4.1.
+
+**Solution 4.B.** The ranks give \(R(R-1)=12\) and \(C=4\), so (HN.15) asks for \(p-1>48\), satisfied by \(101\). Multiplying \(B_q\) by \(25\cdot101^q\) gives \(101^q+99\); at \(q=1,2,3\) cancellation of \(25\) gives the three displayed fractions. The comparison \(8/101<1/12\) is \(96<101\). In the specialization argument one preserves the curve's genus, the ranks and degrees of both semistable factors, and the rank and degree of the chosen destabilizing subbundle, together with its locally free quotient. Semistability of the factors persists on the chosen open by proper Quot images. Arbitrarily large characteristic fibres of that open exist by the finite polynomial model. Their tensor is semistable by the cutoff, whereas the subbundle still has the same strict rational slope inequality. No assertion that every Frobenius pullback is semistable is needed.
+
+**Exercise 4.C.** For \(n=2\) on \(\mathbb P^1\), compare degree \(1\) and degree \(2\) in \(\operatorname{Bun}_{GL_2}\), and their projective components. Do connected components and semistable components coincide?
+
+**Solution 4.C.** Degree \(1\) cannot contain a semistable rank-two bundle by (HN.51). Degree \(2\) contains \(\mathcal O(1)^{\oplus2}\), semistable but not stable. Their projective components are respectively \(1\) and \(0\) in \(\mathbb Z/2\). All projective components are connected by (CT.27), but only component \(0\) has semistable bundles on this curve. The bundle \(\mathcal O(m)\oplus\mathcal O(1-m)\) stays in degree \(1\) for all integers \(m\); its slope gap and root automorphisms grow. Thus an empty semistable locus is consistent with a nonempty connected full component.
+
+**Exercise 4.D.** Let \(G=\mathbb G_m^2\), and take the faithful sum of its two coordinate characters. A principal bundle gives lines \(L_1,L_2\) of degrees \(0,2\). Compare principal stability, vector semistability, and boundedness.
+
+**Solution 4.D.** There is no proper parabolic in a torus, so this principal bundle is stable and semistable under our convention. Its associated rank-two bundle \(L_1\oplus L_2\) has slope \(1\) and a degree-\(2\) line summand, so is unstable. The central-character pieces separately satisfy (HN.20) and have fixed slopes \(0,2\); their minimum slope supplies the uniform bound (HN.46). Thus a faithful sum need not itself be semistable, even though its separate character slopes give boundedness. Each torus degree component is quasicompact by (HN.50).
 
 ## 5. Cotangent vectors are Higgs fields
 
@@ -769,7 +1645,7 @@ The global nilpotent cone is the zero fibre
 
 For \(GL_n\), its points are Higgs fields with characteristic polynomial \(t^n\). Cayley–Hamilton then gives \(\phi^n=0\), interpreted as a map \(E\to E\otimes\omega_X^n\). Conversely a nilpotent Higgs field has all characteristic coefficients zero. If it is nilpotent over the function field, those coefficients vanish there and hence everywhere on the integral curve. Thus generic nilpotence and everywhere nilpotence agree for individual fields. A family is defined scheme-theoretically by the invariant-polynomial equations, retaining the zero fibre's possibly nonreduced structure.
 
-The target theorem is that the reduced global nilpotent cone is Lagrangian in the cotangent stack for every connected reductive \(G\) and every genus. [Beilinson–Drinfeld, Theorem 2.10.4] gives the semisimple comparison in every genus; [Ginzburg, Main Theorem] gives the \(g>1\) argument and its reductive qualification. Sections 6.1–6.3 give the nilpotent Lie triple, canonical parabolic reduction and isotropy. Sections 6.4–6.12 prove the dimension equality in every genus, including the reductive central correction and an algebraic elliptic tensor/reduction argument. Bundle-stack algebraicity is proved in §1.5; the remaining recursive Lie/flag/cohomology foundations retain the explicit boundary in §6.4.
+The target theorem is that the reduced global nilpotent cone is Lagrangian in the cotangent stack for every connected reductive \(G\) and every genus. [Beilinson–Drinfeld, Theorem 2.10.4] gives the semisimple comparison in every genus; [Ginzburg, Main Theorem] gives the \(g>1\) argument and its reductive qualification. Sections 6.1–6.3 give the nilpotent Lie triple, canonical parabolic reduction and isotropy; §§6.1.1–6.1.4 prove the Lie field transfer and centralizer steps over the full stated characteristic-zero scope. Sections 6.4–6.12 prove the dimension equality in every genus, including the reductive central correction and an algebraic elliptic tensor/reduction argument. Bundle-stack algebraicity is proved in §1.5; the remaining recursive Lie/flag/cohomology foundations retain the explicit boundary in §6.4.
 
 The word Lagrangian has a precise stack interpretation. If \(U\to\operatorname{Bun}_G\) is a smooth presentation, then
 
@@ -802,7 +1678,7 @@ The form on \(T^*A\) is \(d\lambda_A\), where \(\lambda_A\) is the tautological 
 
 ### 6.1. The nilpotent Lie triple
 
-The Lie argument uses Jordan decomposition, the Killing form, Cartan root spaces and the representation strings of \(\mathfrak{sl}_2\). Relevant arguments include [*The Killing form and Cartan's criteria*](../../RT-LIE/src/RT-LIE-03.md) Theorem 3.3 and Lemma 6.1/Theorem 6.2, the Jordan and complete-reducibility arguments in [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), and the algebraic rank-one module construction in [*Representations of sl(2)*](../../RT-LIE/src/RT-LIE-05.md) Proposition 2.2. [*The root space decomposition of a semisimple Lie algebra*](../../RT-LIE/src/RT-LIE-07.md)'s Cartan/root-space proof is written over \(\mathbb C\); a complete algebraic proof or field-transfer argument with the exact matching generality is still required for its use over every algebraically closed characteristic-zero field here. The following mechanism is conditional on that Lie foundation and the flag/parabolic, torsor-stack and curve-duality foundations; those obligations do not change the statement to be proved.
+The Lie argument uses Jordan decomposition, the Killing form, Cartan root spaces and the representation strings of \(\mathfrak{sl}_2\). Relevant arguments include [*The Killing form and Cartan's criteria*](../../RT-LIE/src/RT-LIE-03.md) Theorem 3.3 and Lemma 6.1/Theorem 6.2, the Jordan and complete-reducibility arguments in [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), and the algebraic rank-one module construction in [*Representations of sl(2)*](../../RT-LIE/src/RT-LIE-05.md) Proposition 2.2. [*The root space decomposition of a semisimple Lie algebra*](../../RT-LIE/src/RT-LIE-07.md)'s Cartan/root-space proof is written over \(\mathbb C\). Sections 6.1.1–6.1.4 give the full finite-equation transfer to every algebraically closed characteristic-zero field, verify the semisimple-centralizer induction input, and prove the required finite strings and intrinsic filtration descent. The flag/parabolic, torsor-stack and curve-duality foundations retain their stated hypotheses and recursive obligations.
 
 **Lemma 6.1.** Let \(\mathfrak s\) be a semisimple Lie algebra over an algebraically closed field of characteristic zero. For every nonzero nilpotent \(e\in\mathfrak s\), there are \(h,f\in\mathfrak s\) with
 
@@ -832,6 +1708,131 @@ Decompose \(z\in\mathfrak s^e\) into the eigenspaces of \(\operatorname{ad}h\). 
 
 For a reductive algebra, nilpotent elements have zero central component, and the lemma applies to the derived algebra.
 
+#### 6.1.1. Solving finite polynomial systems over another algebraically closed field
+
+The Lie calculation must hold over the stated algebraically closed characteristic-zero field, rather than only over \(\mathbb C\). We supply that step and the centralizer calculation it uses. Group and flag constructions are still used at their separate recorded hypotheses in §6.2.
+
+**Lemma 6.1a (finite-equation transfer).** Let \(K_0\) be a finitely generated extension of \(\mathbb Q\), and let \(K_0\hookrightarrow k\) and \(K_0\hookrightarrow\mathbb C\) be field embeddings, where \(k\) is algebraically closed. For a finite polynomial system with coefficients in \(K_0\), solvability after the second embedding implies solvability after the first. Finitely many nonvanishing conditions may be included.
+
+**Proof.** Replace the nonvanishing conditions \(g_i(x)\ne0\) by one additional variable \(u\) and the equation \(u\prod_i g_i(x)-1=0\). For the equations alone let
+\[
+ I=(f_1,\ldots,f_b)\subset K_0[x_1,\ldots,x_a].
+                                                        \tag{LT.1}
+\]
+A complex solution implies \(I\ne(1)\). Extension to \(k\) still gives a proper ideal. Indeed, if \(1=\sum_j h_j f_j\) over \(k\), that particular identity uses finitely many monomials in the \(h_j\). Comparing polynomial coefficients gives a finite linear system over \(K_0\) for their coefficients, with the fixed right side the coefficient vector of one. Gaussian elimination over \(K_0\) shows that a system soluble over a field extension is already soluble over \(K_0\): an inconsistent zero row stays inconsistent after extension. The identity would therefore exist over \(K_0\), a contradiction. Choose a maximal ideal containing \(I\,k[x]\). The weak Nullstellensatz makes its residue field a finite extension of the algebraically closed \(k\), hence \(k\) itself, and its coordinate images give a solution. The weak Nullstellensatz and its finite-field lemma are proved in [*The Nullstellensatz and Jacobson rings*](../../AG-CA/src/the-nullstellensatz-and-jacobson-rings.md), Theorems 1.3 and 2.1. \(\square\)
+
+Every finitely generated characteristic-zero field \(K_0\) admits the second embedding. Choose a finite transcendence basis. Its existence and the finite algebraic extension over the generated rational-function field follow from [*Krull dimension and Noether normalization*](../../AG-CA/src/krull-dimension-and-noether-normalization.md), Lemma 1.3: a maximal independent subcollection of finite field generators is such a basis, and the other finitely many generators are algebraic. Choose equally many algebraically independent complex numbers. They exist by induction, because the field generated over \(\mathbb Q\) by finitely many fixed complex numbers is countable, as is its algebraic closure inside \(\mathbb C\), whereas \(\mathbb C\) is uncountable. The latter follows from Cantor's diagonal argument on infinite binary sequences, embedded injectively into the real line by ternary expansions with digits zero and two. Sending the basis to these numbers embeds the rational-function field. Adjoin the remaining generators successively; their minimal polynomials remain irreducible over the embedded field and have roots in the algebraically closed \(\mathbb C\), extending the embedding. This proves the required embedding without an assumption on the cardinality of \(k\).
+
+An important boundary is that this argument concerns existence of solutions over an algebraically closed field. It neither supplies a rational solution over \(K_0\) nor chooses one compatible with arbitrary coefficient-ring changes.
+
+The algebraic closedness of the complex numbers needed in the embedding can be seen directly. A nonconstant complex polynomial has modulus tending to infinity at infinity, so its continuous modulus has a global minimum at some \(z_0\). If its value \(a_0\) there were nonzero, write the first nonconstant term of its expansion as \(a_m w^m\). Choose a complex number \(c\) with \(a_mc^m=-a_0\), using polar coordinates for an \(m\)-th root. For positive real \(t\) tending to zero, its value at \(z_0+tc\) is \(a_0(1-t^m)+O(t^{m+1})\), whose modulus is less than \(|a_0|\). This contradicts the minimum. Thus every such polynomial has a root; dividing by its linear factor and inducting proves algebraic closedness. Only the usual compactness of a closed real disk and continuity are used in this auxiliary complex calculation, not in the field \(k\).
+
+#### 6.1.2. The semisimple centralizer used by the induction
+
+We give the complex centralizer argument explicitly before transferring the nilpotent-triple equations. It is independent of that triple theorem. Let \(\mathfrak s\) be a complex semisimple Lie algebra, let \(s\in\mathfrak s\) be semisimple, and extend its span to a maximal toral subalgebra \(\mathfrak h\). The actual root-space and rank-one arguments of [*The root space decomposition of a semisimple Lie algebra*](../../RT-LIE/src/RT-LIE-07.md), §§1–5, give one-dimensional root spaces, coroots and the rational coroot space. They use Weyl's complete reducibility and the finite \(\mathfrak{sl}_2\)-module strings, rather than the general nilpotent-triple theorem. Put
+\[
+ \begin{gathered}
+ \Phi_0=\{\alpha:\alpha(s)=0\},\qquad
+ H_0=\operatorname{span}_{\mathbb C}\{h_\alpha:\alpha\in\Phi_0\},\\
+ Z_0=\{H\in\mathfrak h:\alpha(H)=0\text{ for all }\alpha\in\Phi_0\},\qquad
+ \mathfrak l=\mathfrak s^s.
+ \end{gathered}
+                                                        \tag{LT.2}
+\]
+The Killing form on the real coroot span is positive definite by the trace computation in Theorem 5.1 of that earlier lesson. Thus its restriction to the complexification \(H_0\) of the real span of the indicated coroots is nondegenerate. To see that no dimension assumption is hidden here, the earlier theorem gives an integer, invertible evaluation matrix between chosen root and coroot bases. All remaining coroot coordinates are rational by its inverse-matrix calculation. Linear independence of any selected coroots is therefore the same over \(\mathbb Q\), \(\mathbb R\) and \(\mathbb C\), since ranks of a rational matrix agree over these fields. A basis of the real span complexifies to a basis of \(H_0\). A real positive definite Gram matrix has nonzero determinant, hence remains nondegenerate over \(\mathbb C\).
+
+Killing-duality of roots and nonzero multiples of coroots identifies \(Z_0\) with the orthogonal complement of \(H_0\). Consequently
+\[
+ \mathfrak l=Z_0\oplus\mathfrak l_0,
+ \qquad
+ \mathfrak l_0=H_0\oplus\bigoplus_{\alpha\in\Phi_0}\mathfrak s_\alpha,
+ \qquad Z_0\text{ is central in }\mathfrak l.
+                                                        \tag{LT.3}
+\]
+The bracket rules make \(\mathfrak l_0\) an ideal: the sum of two roots vanishing on \(s\) still vanishes on \(s\); opposite root lines bracket into their coroot; and \(H_0\) preserves each root line. Every root line belongs to \([\mathfrak l_0,\mathfrak l_0]\), since its own coroot acts on it with eigenvalue two. Their opposite brackets generate \(H_0\). Hence \(\mathfrak l_0\) is perfect.
+
+Its own Killing form is nondegenerate. On \(H_0\) it is
+\[
+ \kappa_{\mathfrak l_0}(H,K)
+     =\sum_{\alpha\in\Phi_0}\alpha(H)\alpha(K).
+                                                        \tag{LT.4}
+\]
+If every \(\alpha\in\Phi_0\) vanishes on a real \(H\in H_0\), then \(H\in H_0\cap Z_0=0\). Thus (LT.4) is positive definite on that real span and nondegenerate on its complexification. Weight invariance makes \(H_0\) perpendicular to the nonzero root lines and makes distinct root lines perpendicular unless their roots are opposite. Normalize root vectors by \([e_\alpha,f_\alpha]=h_\alpha\). Invariance gives
+\[
+ \kappa_{\mathfrak l_0}(h_\alpha,h_\alpha)
+   =\kappa_{\mathfrak l_0}(e_\alpha,[f_\alpha,h_\alpha])
+   =2\kappa_{\mathfrak l_0}(e_\alpha,f_\alpha)\ne0.
+                                                        \tag{LT.5}
+\]
+The first expression is the positive trace sum of the integer root eigenvalues squared and includes the two nonzero eigenvalues \(2,-2\). Thus opposite one-dimensional root lines pair nondegenerately. Together with (LT.4), this proves nondegeneracy on all of \(\mathfrak l_0\). Cartan's semisimplicity criterion, proved in [*The Killing form and Cartan's criteria*](../../RT-LIE/src/RT-LIE-03.md), Theorem 3.3, makes \(\mathfrak l_0\) semisimple. We have proved that \(\mathfrak s^s\) is reductive with toral centre \(Z_0\) and semisimple derived algebra \(\mathfrak l_0\). If \(s\ne0\), this centralizer is proper: otherwise \(s\) would be central in the semisimple \(\mathfrak s\), whose centre is zero.
+
+This verifies the induction input in Lemma 6.1 over \(\mathbb C\). In its first case the nilpotent \(e\) has zero \(Z_0\)-component. Indeed the components in (LT.3) commute, the central component is semisimple in \(\mathfrak s\), and the intrinsic Jordan parts of the derived component remain its operator Jordan parts in the representation on \(\mathfrak s\), by [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), Theorem 5.1. Their commuting semisimple parts lie in the direct summands of (LT.3); nilpotence forces both to vanish. The induction therefore applies in the smaller semisimple \(\mathfrak l_0\), exactly as claimed there.
+
+#### 6.1.3. Nilpotent triples over the actual ground field
+
+Now let \(\mathfrak s\) be semisimple over any algebraically closed characteristic-zero \(k\), and let \(0\ne e\in\mathfrak s\) be nilpotent. Choose a basis of size \(D\). The finitely many bracket constants and coordinates of \(e\) generate a field \(K_0\subset k\) finitely generated over \(\mathbb Q\). They define a Lie algebra \(\mathfrak s_0\) and \(e_0\) over \(K_0\), because skew symmetry and Jacobi are polynomial identities in those constants and hold already in the subfield. The Killing matrix is defined by finite traces of their adjoint matrices. Its determinant is nonzero, since it becomes the nondegenerate Killing matrix over \(k\). Therefore \(\mathfrak s_0\) and its complex scalar extension are semisimple, by the all-field Cartan criterion just linked. Nilpotence is the identity
+\[
+ (\operatorname{ad}e_0)^D=0.
+                                                        \tag{LT.6}
+\]
+It survives every field embedding. The same is true of \(e_0\ne0\), witnessed by a nonzero coordinate.
+
+The complete complex proof of Lemma 6.1, with its verified centralizer input in §6.1.2, supplies a complex pair \(h,f\). Their coordinate equations are the finite polynomial system
+\[
+ [h,e_0]=2e_0,\qquad [h,f]=-2f,\qquad [e_0,f]=h.
+                                                        \tag{LT.7}
+\]
+Apply Lemma 6.1a with the original inclusion \(K_0\subset k\). It gives \(h,f\in\mathfrak s\) satisfying (LT.7). Thus Lemma 6.1 holds over the full stated algebraically closed characteristic-zero field, including countable fields and fields admitting no embedding into \(\mathbb C\). For a reductive algebra, its nilpotent elements have zero central component and the same proof applies to the semisimple derived algebra. No ordering, analytic topology or compact real form on \(k\) has been introduced.
+
+For completeness, the representation strings used subsequently have the same generality. A finite \(\mathfrak{sl}_2\)-module over algebraically closed characteristic-zero \(k\) is completely reducible by the all-field Weyl theorem in [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md). Preservation of Jordan decomposition makes \(h\) diagonalizable and \(e,f\) nilpotent. A highest-weight eigenvector \(v\) exists by taking the last nonzero \(e\)-iterate of an eigenvector. The commutator induction gives
+\[
+ h f^jv=(a-2j)f^jv,
+ \qquad e f^jv=j(a-j+1)f^{j-1}v.
+                                                        \tag{LT.8}
+\]
+If \(n\) is the last nonzero \(f\)-iterate, applying the second identity to \(f^{n+1}v=0\) gives \((n+1)(a-n)f^nv=0\), so \(a=n\in\mathbb Z_{\ge0}\). The preceding iterates have distinct eigenvalues and are independent. Their span is a submodule, hence the whole simple module. Conversely the polynomial model \(e=u\partial_t,f=t\partial_u,h=u\partial_u-t\partial_t\) on homogeneous degree-\(n\) polynomials constructs it; the nonzero coefficients in (LT.8) prove irreducibility by weight projection. Thus the decomposition into strings of weights \(-n,-n+2,\ldots,n\) used in §6.2 is valid over this \(k\), with all factorials invertible.
+
+The finite-equation argument also transfers the root-space data actually used here. For a given complex scalar extension choose a coroot basis of its maximal toral subalgebra, one root vector for each root, and record its finite root table. Existence of a basis with that table consists of finitely many bracket equations; its basis determinant, the nondegenerate Cartan Killing matrix, and the nonzero opposite-root brackets are finitely many inequalities. The root eigenvalues in the coroot basis and its nonsingular root-evaluation matrix are integers or rational numbers, as proved in the inverse-matrix step of [*The root space decomposition of a semisimple Lie algebra*](../../RT-LIE/src/RT-LIE-07.md), §5. With these fixed rational eigenvalues the system prescribes the Cartan brackets and allows the other bracket coefficients as variables. The opposite-root bracket is prescribed to be a nonzero multiple of its rational coroot coordinate column. Jacobi follows from the given bracket on \(\mathfrak s_0\), not from an assumed classification. This is a finite system over \(K_0\), so Lemma 6.1a supplies it over \(k\). Distinct nonzero root columns and an invertible basis determinant make this an actual root decomposition with one-dimensional root spaces and zero space the chosen Cartan, rather than merely candidate eigenvectors.
+
+A chosen semisimple element can be included in its Cartan span by adjoining its span coordinates to the equations and including its coordinates in \(K_0\). Its minimal polynomial is square-free, and that fact remains true after the embedding into \(\mathbb C\): the Bézout identity with its derivative is preserved. Thus it lies in a maximal toral subalgebra of the complex extension as required. The transferred root table supplies its centralizer by selecting precisely the roots vanishing on it. The rational Gram determinant argument of (LT.4)–(LT.5), for any selected root subsystem, remains nonzero in characteristic zero. Hence the semisimple-centralizer and root-data steps also hold over \(k\). This is an algebraic existence argument; it makes no rational splitting claim over a non-algebraically-closed field.
+
+#### 6.1.4. What descends intrinsically, and a checked triple
+
+The filtration of §6.2 does not require a chosen triple to descend. For a nilpotent operator \(N\) on a finite vector space \(V\), every term of
+\[
+ F^jV=\sum_{i\ge\max(0,-j)}
+     \bigl(\ker N^{i+1}\cap\operatorname{im}N^{i+j}\bigr)
+                                                        \tag{LT.9}
+\]
+is intrinsic. On a Jordan chain \(v_0,\ldots,v_n\) with \(Nv_r=v_{r+1}\), the intersection in its \(i\)-th term is spanned by indices \(r\ge\max(n-i,i+j)\), with lower indices truncated at zero and exponents past the block giving the empty span. Taking the sum over the permitted \(i\) gives exactly the indices \(r\) with \(-n+2r\ge j\). If \(j>n\) it gives zero; if \(j\le-n\) it gives the whole block. Thus (LT.9) is the decreasing weight filtration of the \(\mathfrak{sl}_2\) strings, and it is independent of the chosen triple.
+
+Kernels and images of linear maps commute with any field extension, as do their finite sums and intersections; intersections are kernels of a map to the corresponding quotient. Replacing \(N\) by a nonzero scalar multiple changes none of them. It follows that this filtration is defined over the original characteristic-zero field, for inner forms as well, even if the triple was constructed only over an algebraic closure. On the adjoint representation the bracket adds weights, so \([F^a,F^b]\subset F^{a+b}\). Invariance of a nondegenerate pairing matches opposite weights and gives \((F^0)^\perp=F^1\). The passage from this Lie filtration to its parabolic subgroup uses the algebraic group/cocharacter and flag arguments explicitly retained in §6.2; descent of the linear filtration alone does not prove that separate group statement.
+
+For a concrete example in \(\mathfrak{sl}_3\), put
+\[
+ e=E_{12}+E_{23},\qquad
+ h=\operatorname{diag}(2,0,-2),\qquad
+ f=2E_{21}+2E_{32}.
+                                                        \tag{LT.10}
+\]
+Direct matrix multiplication gives all three relations in (LT.7). The adjoint \(h\)-weights are \(4\) on \(E_{13}\), \(2\) on \(E_{12},E_{23}\), zero on the trace-zero diagonal plane, \(-2\) on \(E_{21},E_{32}\), and \(-4\) on \(E_{31}\). Their multiplicities \(1,2,2,2,1\) give \(V(4)\oplus V(2)\). Hence \(F^0\) is the upper-triangular trace-zero algebra of dimension five and \(F^1=F^2\) is its strictly upper-triangular nilradical of dimension three. Its orthogonal complement under the trace pairing is exactly that nilradical. These data are all defined over \(\mathbb Q\).
+
+![Finite field transfer for the triple equations and the exact five adjoint weights of the displayed sl3 triple.](figures/nilpotent-triple-field-transfer.svg)
+
+*Figure 6.1.* The upper arrows are field embeddings and scalar extensions of the same finite bracket table; the conclusion is existence of solutions of (LT.7), proved by (LT.1) and the Nullstellensatz, not a map from all of \(k\) into \(\mathbb C\). The lower diagram shows the exact adjoint weights and multiplicities for (LT.10). The brackets with \(e\) raise by two and those with \(f\) lower by two; the arrows indicate weight movement, not injectivity on every weight space. The filtration cuts are (LT.9). Proofs: §§6.1.1–6.1.4; the complex root-table input has its complete earlier programme proof cited in §6.1.2.
+
+**Exercise 6.A.** Transfer the complex solution of (LT.7) when \(k\) is algebraically closed of characteristic zero but has larger cardinality than \(\mathbb C\). Explain why this does not require an embedding \(k\hookrightarrow\mathbb C\), and why the same argument cannot promise a real solution of arbitrary equations.
+
+**Solution 6.A.** Only the finite field \(K_0\) generated by the bracket constants and the coordinates of \(e\) is embedded into \(\mathbb C\). The complex solution makes the ideal of the triple equations proper over \(K_0\). The finite coefficient comparison keeps that ideal proper after the original inclusion into \(k\), and a maximal ideal has residue field \(k\) because it is algebraically closed. The cardinality of the rest of \(k\) is irrelevant. For \(k=\mathbb R\), the proper ideal \((x^2+1)\) has no real zero; its residue field is \(\mathbb C\). The final Nullstellensatz step requires algebraic closedness.
+
+**Exercise 6.B.** Check (LT.10), the five adjoint weights, the decomposition \(V(4)\oplus V(2)\), and \((F^0)^\perp=F^1\). Why is the coefficient two in \(f\) necessary?
+
+**Solution 6.B.** The two diagonal differences in \(h\) are two, so \([h,e]=2e\) and \([h,f]=-2f\). The cross commutators \([E_{12},E_{32}]\) and \([E_{23},E_{21}]\) vanish. The other two give \([e,f]=2(E_{11}-E_{22})+2(E_{22}-E_{33})=h\). Omitting the factors two would give \(h/2\). Each \(E_{ij}\) has weight \(h_{ii}-h_{jj}\); the trace-zero diagonal plane has weight zero. Subtracting one copy of the five weights of \(V(4)\) leaves weights \(-2,0,2\), so complete reducibility gives \(V(2)\) as the remaining summand. The trace pairing pairs \(E_{ij}\) with \(E_{ji}\), and is nondegenerate on the diagonal plane. A matrix perpendicular to every trace-zero upper-triangular matrix must therefore have zero diagonal and zero lower-triangular entries, hence be strictly upper triangular. This is \(F^1\).
+
+**Exercise 6.C.** For a single Jordan block of size \(n+1\), compute (LT.9) at every integer \(j\), including the two tails. Verify that scalar multiplication of \(N\) and field extension preserve the result.
+
+**Solution 6.C.** If \(-n<j\le n\), the lowest index that occurs in the sum is \(\lceil(n+j)/2\rceil\): for every term the maximum of \(n-i\) and \(i+j\) is at least this bound, and one of the minimizing adjacent integers \(i\ge\max(0,-j)\) attains it. Thus the span is \(v_r\) with \(r\ge\lceil(n+j)/2\rceil\), equivalently weight \(-n+2r\ge j\). For \(j>n\), each intersection vanishes; for \(j\le-n\), the allowed index \(i=-j\) gives the whole block. Multiplying \(N\) by a nonzero scalar leaves its kernels and images unchanged. The basis calculation, or exactness of field extension on the kernels and images defining (LT.9), gives the same filtration after extending the field.
+
 ### 6.2. The canonical parabolic and its extension over the curve
 
 **Lemma 6.2.** A nilpotent element in a reductive Lie algebra has a canonical decreasing filtration \(F^j\), and \(F^0\) is a parabolic algebra whose nilradical contains the element. The filtration is preserved by scalar multiplication of the element and descends over any characteristic-zero field and any inner form.
@@ -845,7 +1846,7 @@ F^j V=\sum_{i\ge\max(0,-j)}\bigl(\ker N^{i+1}\cap\operatorname{im}N^{i+j}\bigr).
 
 Terms with exponent larger than the nilpotence index vanish, so this is a finite sum. On a Jordan block of length \(n+1\), choose the weights \(-n,-n+2,\ldots,n\), with \(N\) raising the weight by two. Direct inspection of that block shows that (6.1) is the span of the vectors of weight at least \(j\). The calculation is independent of a chosen Jordan basis, because the right side of (6.1) is intrinsic.
 
-Use Lemma 6.1 on \(\mathfrak g\). The decomposition into \(\mathfrak{sl}_2\)-modules shows that \(F^j\mathfrak g\) is precisely the sum of the \(h\)-weight spaces with weight at least \(j\). In particular, \(e\in F^2\mathfrak g\). After putting \(h\) in a Cartan subalgebra, its root values are integers. A positive integer multiple of \(h\) is the differential of a cocharacter: this follows by clearing denominators in the cocharacter lattice of the torus. The root-space description of the parabolic of that cocharacter gives its Lie algebra \(F^0\mathfrak g\) and its nilradical \(F^1\mathfrak g\). Moreover
+Use Lemma 6.1 on \(\mathfrak g\). The decomposition into \(\mathfrak{sl}_2\)-modules shows that \(F^j\mathfrak g\) is precisely the sum of the \(h\)-weight spaces with weight at least \(j\). In particular, \(e\in F^2\mathfrak g\). Lemma 6.2a below constructs an algebraic cocharacter \(\lambda\) with exact differential \(h\), by integrating the triple through its polynomial \(\operatorname{SL}_2\)-representation. Its adjoint weights are exactly the integer \(h\)-weights, with no Cartan-lattice assumption or rescaling. The root-space description of the parabolic of that cocharacter gives its Lie algebra \(F^0\mathfrak g\) and its nilradical \(F^1\mathfrak g\). Moreover
 
 \[
 (F^0\mathfrak g)^\perp=F^1\mathfrak g,
@@ -854,7 +1855,7 @@ Use Lemma 6.1 on \(\mathfrak g\). The decomposition into \(\mathfrak{sl}_2\)-mod
 
 because an invariant pairing matches only opposite \(h\)-weights.
 
-The stabilizer in \(G\) of the complete filtration is this parabolic: its positive-root subgroup preserves the filtration, and a filtration-preserving element normalizes \(F^0\mathfrak g\), whose normalizer is the parabolic itself by the root-space description. Formula (6.1) is defined over the field of definition of \(e\), and is unchanged when \(e\) is multiplied by a nonzero scalar. Thus its parabolic stabilizer descends. The same argument works for an inner form after passing to an algebraic closure and descending the intrinsic filtration. No generic trivialization of the original torsor is required. \(\square\)
+The scheme stabilizer in \(G\) of the complete filtration is this parabolic. Lemma 6.2b below proves this by checking the subgroup functor, computing its Lie algebra as \(F^0\mathfrak g\), identifying its smooth identity component and using the scheme normalizer of that parabolic. Formula (6.1) is defined over the field of definition of \(e\), and is unchanged when \(e\) is multiplied by a nonzero scalar. Lemma 6.2b descends the fixed-flag equations, the projective closed orbit and its torsor, including for an inner form. No generic trivialization of the original torsor is required. \(\square\)
 
 **Lemma 6.3.** Every nilpotent Higgs field \((P,\phi)\) has a reduction to some parabolic \(Q\subset G\) such that \(\phi\) lies in the nilradical bundle of that reduction.
 
@@ -862,9 +1863,369 @@ The stabilizer in \(G\) of the complete filtration is this parabolic: its positi
 
 The same construction has the following spreading property. If a reduced irreducible finite-type scheme \(S\) carries a nilpotent Higgs family, perform the construction on the curve over \(k(S)\). The reduction, defined on the entire generic fibre of the curve, spreads to \(X\times S_0\) for some nonempty open \(S_0\subset S\), since the flag bundle and the section have finite presentation. After shrinking \(S_0\), the vanishing in the quotient by the nilradical also spreads. Noetherian induction gives a finite stratification of a finite-type parameter scheme with a reduction on every stratum. This argument replaces the countable-cover argument in Ginzburg and works over countable algebraically closed fields as well.
 
+#### 6.2.1. Integrating the triple, with its exact weights
+
+There is an algebraic way to obtain the cocharacter needed in Lemma 6.2 without identifying a Lie Cartan with a group torus or clearing a root-lattice denominator. It also keeps the normalization of the entire integer filtration, rather than only its nonnegative part.
+
+**Lemma 6.2a.** Let \(k\) be any field of characteristic zero and let \(G\) be a smooth affine algebraic group of finite type over \(k\). Every Lie algebra homomorphism
+\[
+ \varphi:\mathfrak{sl}_2(k)\longrightarrow\operatorname{Lie}(G)
+                                                        \tag{GI.1}
+\]
+extends uniquely to a homomorphism of algebraic \(k\)-groups \(r:\operatorname{SL}_{2,k}\to G\). In particular, for a triple \(e,h,f\) satisfying the three relations of Lemma 6.1,
+\[
+ \lambda(t)=r\begin{pmatrix}t&0\\0&t^{-1}\end{pmatrix},
+ \qquad d\lambda(1)=h.
+                                                        \tag{GI.2}
+\]
+Here the differential uses the tangent vector \(1\) at the identity of \(\mathbf G_m\). This is existence given a triple over \(k\); it does not assert that every nilpotent element over a smaller non-algebraically-closed field already has such a triple.
+
+**Proof, first step: a faithful finite-dimensional representation.**
+Write \(A=k[G]\), with comultiplication \(\Delta\), counit \(\epsilon\) and antipode. For any \(a\in A\), write
+\[
+ \Delta(a)=\sum_i a_i\otimes b_i
+                                                        \tag{GI.3}
+\]
+with the \(b_i\) linearly independent. Coassociativity implies
+\(\Delta(a_i)\in\operatorname{span}\{a_j\}\otimes A\): apply a linear functional on the third tensor factor selecting \(b_i\) to
+\((\Delta\otimes1)\Delta(a)=(1\otimes\Delta)\Delta(a)\).
+The counit identity puts \(a\) in that same span. Thus every \(a\) belongs to a finite-dimensional right subcomodule. Apply this to a finite algebra-generating set of \(A\), and take the sum of their subcomodules and \(k1\). We obtain a finite-dimensional subcomodule \(V\subset A\) containing those generators.
+
+Choose a basis \(v_1,\ldots,v_m\) of \(V\) and write
+\[
+ \Delta(v_i)=\sum_j v_j\otimes c_{ji}.
+                                                        \tag{GI.4}
+\]
+These matrices give right translations on functions:
+\((\rho(g)v)(x)=v(xg)\). Composition gives \(\rho(g)\rho(g')=\rho(gg')\); the antipode supplies inverse matrices. Thus \(\rho:G\to\operatorname{GL}(V)\) is an algebraic group homomorphism. Moreover
+\(v_i=\sum_j\epsilon(v_j)c_{ji}\), by applying the counit on the first factor. Every chosen algebra generator of \(A\) is therefore a linear combination of its matrix coefficients. The coordinate-ring map from \(\operatorname{GL}(V)\) to \(G\) is surjective, so \(\rho\) is a closed immersion. This proves the required faithful embedding, rather than assuming it.
+
+**Second step: the polynomial \(\operatorname{SL}_2\)-representation.**
+Restrict the differentiated representation on \(V\) through (GI.1). Over an algebraic closure, the finite-string proof of §6.1.3 makes the \(h\)-operator diagonalizable with integral eigenvalues and the \(e,f\)-operators nilpotent. These facts descend to \(k\): their annihilating polynomial identities descend, and the minimal polynomial of the \(h\)-operator divides a product of distinct linear factors with integer roots. Consequently its eigenspaces are defined over \(k\).
+
+The all-field Weyl complete-reducibility theorem proved in [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), §§3–4, decomposes \(V\) into simple \(\mathfrak{sl}_2(k)\)-modules. In each summand choose an eigenvector in the largest integral eigenspace. It is killed by \(e\). The calculation (LT.8), with the last nonzero \(f\)-iterate, proves that its weight is a nonnegative integer \(n\), and its string spans that simple summand. The string is isomorphic over \(k\) to the degree-\(n\) homogeneous polynomial representation
+\[
+ \operatorname{Sym}^n(k^2),\qquad
+ e=u\partial_v,\quad f=v\partial_u,\quad
+ h=u\partial_u-v\partial_v.
+                                                        \tag{GI.5}
+\]
+On this polynomial space a matrix acts on the two variables by its ordinary two-dimensional representation. Its coefficients are polynomials in the four matrix entries. Transporting the direct sum of these actions to \(V\) gives an algebraic homomorphism
+\[
+ R:\operatorname{SL}_{2,k}\longrightarrow\operatorname{GL}(V)
+                                                        \tag{GI.6}
+\]
+with the prescribed differential. This construction has so far been made in \(\operatorname{GL}(V)\); the next step proves that it lands in \(G\).
+
+**Third step: nilpotent exponentials stay in the original group.**
+We prove the exact elementary assertion being used. If \(N\in\operatorname{Lie}(G)\subset\operatorname{End}(V)\) is nilpotent, then
+\[
+ E_N(s)=\exp(sN)=
+       \sum_{j=0}^{m-1}\frac{s^jN^j}{j!}
+ \quad\text{defines }\mathbf G_a\longrightarrow G.
+                                                        \tag{GI.7}
+\]
+The displayed sum is polynomial, its determinant is one, and its exponential multiplication law follows by multiplying the two finite sums.
+
+It remains to check the defining equations of \(G\). This may be checked after the faithfully flat extension \(k\subset\bar k\). Let \(I\) be the ideal of \(G\) in \(\bar k[\operatorname{GL}(V)]\). Smoothness makes this ideal radical. The invariant vector field
+\[
+ (D_Nq)(x)=\left.\frac{d}{ds}q\bigl(x(1+sN)\bigr)\right|_{s=0}
+                                                        \tag{GI.8}
+\]
+preserves \(I\). Indeed, at every \(g\in G(\bar k)\) the vector \(gN\) is tangent to \(G\), being the left translate of \(N\in T_1G\). Hence \(D_Nq\) vanishes on all these points whenever \(q\in I\). Here is the precise consequence of the weak Nullstellensatz being used: in a finitely generated algebra \(B\) over an algebraically closed field, if \(J\) is radical and \(b\notin J\), then \((B/J)[b^{-1}]\) is nonzero and is finitely generated, since it can be written with one new variable and the equation \(ub-1=0\). A maximal ideal of this algebra gives a field-valued point on which \(b\) is nonzero, by the weak Nullstellensatz. Thus a function vanishing on every such point belongs to \(J\). Apply this to the radical ideal \(I\). We obtain \(D_Nq\in I\), and inductively \(D_N^j q\in I\) for every \(j\).
+
+Now \(q(E_N(s))\) is a polynomial, even when \(q\) has a denominator which is a power of the determinant, since \(\det E_N(s)=1\). Its \(j\)-th derivative at zero is \((D_N^j q)(1)=0\), because \(E_N'(s)=E_N(s)N\). In characteristic zero every coefficient of this polynomial is therefore zero. This proves all the defining equations of \(G\) on the whole exponential morphism. Faithful flatness descends the conclusion to \(k\). No analytic exponential or integration of a Lie group has been invoked.
+
+**Fourth step: factorization into the two root subgroups.**
+Put
+\[
+ u_+(s)=\begin{pmatrix}1&s\\0&1\end{pmatrix},
+ \qquad
+ u_-(s)=\begin{pmatrix}1&0\\s&1\end{pmatrix}.
+                                                        \tag{GI.9}
+\]
+The polynomial representations (GI.5) give
+\(R(u_+(s))=E_{\rho_*(e)}(s)\) and
+\(R(u_-(s))=E_{\rho_*(f)}(s)\). This follows either by direct substitution of the variables or by the coefficient identity in (GI.7). Both morphisms therefore land in \(G\).
+
+For \(a\ne0\), define
+\[
+ w(a)=u_+(a)u_-(-a^{-1})u_+(a)
+       =\begin{pmatrix}0&a\\-a^{-1}&0\end{pmatrix},
+ \qquad
+ w(a)w(-1)=\begin{pmatrix}a&0\\0&a^{-1}\end{pmatrix}.
+                                                        \tag{GI.10}
+\]
+For a determinant-one matrix with upper-left entry \(a\ne0\), direct multiplication gives
+\[
+ \begin{pmatrix}a&b\\c&d\end{pmatrix}
+   =u_-(c/a)
+      \begin{pmatrix}a&0\\0&a^{-1}\end{pmatrix}
+      u_+(b/a).
+                                                        \tag{GI.11}
+\]
+If \(a=0\), then \(c\ne0\), and left multiplication by \(u_+(1)\) makes the upper-left entry nonzero. Thus the two root subgroups generate every geometric point of \(\operatorname{SL}_2\). Equations (GI.10)–(GI.11) show that \(R\) sends all those points into \(G\).
+
+This is also a scheme-theoretic factorization. The charts where \(a\ne0\) or \(c\ne0\) cover \(\operatorname{SL}_2\), because \(ad-bc=1\). They are Laurent-polynomial charts: solve for \(d\) in the first, and for \(b\) in the second. In particular \(\operatorname{SL}_2\) is reduced. Pulling back any equation of \(G\) gives a regular function on \(\operatorname{SL}_{2,\bar k}\) vanishing at every geometric point. The Nullstellensatz on the two affine charts makes that function zero. Faithful flatness descends this factorization to \(k\), giving \(r\) as asserted.
+
+**Uniqueness and the cocharacter.**
+For any algebraic homomorphism \(M:\mathbf G_a\to\operatorname{GL}(V)\), the identity \(M(s+t)=M(s)M(t)\) implies
+\(M'(s)=M(s)M'(0)\). Its polynomial coefficient recursion is
+\[
+ (j+1)M_{j+1}=M_jN,\qquad M_0=1,\qquad N=M'(0).
+                                                        \tag{GI.12}
+\]
+Hence it is the unique finite exponential of its differential. Any two proposed extensions of (GI.1) agree on \(u_+\) and \(u_-\), by (GI.12), and agree on the whole reduced \(\operatorname{SL}_2\) by (GI.10)–(GI.11) and the same chart argument. Faithfulness of \(\rho\) gives uniqueness in \(G\). In particular the extension does not depend on the chosen faithful representation or decomposition into strings.
+
+The diagonal torus of \(\operatorname{SL}_2\) now gives (GI.2) by differentiating at \(t=1\). On every finite string it has the exact characters \(t^{-n},t^{-n+2},\ldots,t^n\). The adjoint representation consequently has the same integer weights as \(\operatorname{ad}h\). It follows that
+\[
+ F^j\mathfrak g
+   =\bigoplus_{\ell\ge j}\mathfrak g_{\lambda,\ell},
+ \qquad
+ \mathfrak g_{\lambda,\ell}
+   =\{z:\operatorname{Ad}(\lambda(t))z=t^\ell z\}.
+                                                        \tag{GI.13}
+\]
+This is the intrinsic filtration of (LT.9), with no rescaling of its integer indices. The properness and self-normalizer statements for the resulting cocharacter parabolic, and descent of its subgroup scheme from an inner form, are separate group statements in Lemma 6.2; integration alone is not a proof of those statements. \(\square\)
+
+#### 6.2.2. Two exact integrations and three exercises
+
+For the \(\mathfrak{sl}_3\) triple in (LT.10), use the ordered polynomial basis \(u^2,uv,v^2/2\). The integrated representation is
+\[
+ r\begin{pmatrix}a&b\\c&d\end{pmatrix}
+  =
+  \begin{pmatrix}
+   a^2&ab&b^2/2\\
+   2ac&ad+bc&bd\\
+   2c^2&2cd&d^2
+  \end{pmatrix},
+ \qquad
+ \lambda(t)=\operatorname{diag}(t^2,1,t^{-2}).
+                                                        \tag{GI.14}
+\]
+Its determinant is \((ad-bc)^3=1\); multiplication of these matrices agrees with multiplication in \(\operatorname{SL}_2\), by substitution in homogeneous degree-two polynomials. The differentials on \(u_+,u_-\) are exactly \(E_{12}+E_{23}\) and \(2E_{21}+2E_{32}\). The resulting adjoint weights are precisely \(-4,-2,0,2,4\), as in Figure 6.1.
+
+For \(G=\operatorname{PGL}_2\), the integrated standard triple is the quotient homomorphism \(\operatorname{SL}_2\to\operatorname{PGL}_2\). Its cocharacter is
+\[
+ t\longmapsto[\operatorname{diag}(t,t^{-1})]
+            =[\operatorname{diag}(t^2,1)].
+                                                        \tag{GI.15}
+\]
+It is twice the primitive cocharacter \(t\mapsto[\operatorname{diag}(t,1)]\). Thus the exact triple cocharacter need not be primitive. Replacing it by the primitive one preserves its nonnegative parabolic cut, but changes the full integer-weight normalization.
+
+![The exact factorization of the polynomial SL2 representation through the original group, its two nilpotent exponentials, and the different cocharacter normalizations in SL3 and PGL2.](figures/sl2-triple-integration.svg)
+
+*Figure 6.2.* All three arrows in the upper triangle are algebraic group homomorphisms, with \(R=\rho\circ r\) and \(\rho\) a closed immersion. The middle formulas show the images of the two additive root subgroups. The bottom records the standard representation weights for (GI.14) and the two different adjoint weight normalizations in (GI.15). The exact triple weights give (GI.13); the primitive replacement in \(\operatorname{PGL}_2\) only preserves the sign cuts. Proofs: Lemma 6.2a and (GI.1)–(GI.15); checked computations: Exercises 6.D–6.F.
+
+**Exercise 6.D.** Verify the multiplication and determinant of (GI.14), the two nilpotent exponentials, and the differential of its diagonal torus.
+
+**Solution 6.D.** The images of \(u^2,uv,v^2/2\) under \(u\mapsto au+cv,\ v\mapsto bu+dv\) are the three columns of (GI.14). Two substitutions compose according to the product of their \(2\times2\) matrices, so the displayed matrix map is multiplicative. Expanding its determinant gives \((ad-bc)^3\). For \(a=d=1,c=0,b=s\), it is \(1+se+s^2e^2/2\). For \(a=d=1,b=0,c=s\), it is \(1+sf+s^2f^2/2\); here \(f^2=4E_{31}\). Substituting \(a=t,d=t^{-1},b=c=0\) gives \(\operatorname{diag}(t^2,1,t^{-2})\). Its derivative at one is \(\operatorname{diag}(2,0,-2)=h\).
+
+**Exercise 6.E.** In \(\operatorname{PGL}_2\), compare (GI.15) with the primitive cocharacter on the positive and negative root lines. Explain which part of the filtration is preserved by making that replacement.
+
+**Solution 6.E.** Conjugation by \([\operatorname{diag}(t^2,1)]\) multiplies \(E_{12}\) by \(t^2\) and \(E_{21}\) by \(t^{-2}\), while the primitive cocharacter multiplies them by \(t\) and \(t^{-1}\). Both leave the diagonal line at weight zero. Their nonnegative spaces are the same upper-triangular Lie algebra, and their positive spaces are the same strictly upper-triangular line. But the primitive cocharacter has no weight at least two, whereas the exact triple cocharacter has \(E_{12}\) in weight two. Only the latter therefore gives the full filtration with the indices of (LT.9).
+
+**Exercise 6.F.** Show that every algebraic character of \(G\) is trivial on the image of \(r\). Does this imply that the image of \(r\) is all of \(G\)?
+
+**Solution 6.F.** An algebraic homomorphism \(\mathbf G_a\to\mathbf G_m\) is an invertible polynomial in \(k[s]\). The only such polynomials are nonzero constants, and the identity condition makes the constant one. Thus a character composed with \(r\) is one on both root subgroups. The generation and reduced-chart argument of (GI.10)–(GI.11) makes it one on all of \(\operatorname{SL}_2\). This does not imply surjectivity. For example, \(\operatorname{SL}_2\to\operatorname{SL}_2\times\mathbf G_m,\ g\mapsto(g,1)\), has that property and misses every point whose second coordinate is not one.
+
+#### 6.2.3. The scheme stabilizer and its descent
+
+We give the group and flag argument needed in Lemmas 6.2–6.3. The ground field in this paragraph may be any characteristic-zero field \(K\). Let \(G/K\) be connected reductive, let \(\mathfrak g=\operatorname{Lie}G\), and let \(e\in\mathfrak g(K)\) be geometrically nilpotent. This includes inner forms. Define the intrinsic filtration \(F^\bullet\mathfrak g\) by (LT.9), using \(N=\operatorname{ad}e\). It has finitely many distinct terms, and those terms commute with field extension.
+
+The group input has its complete earlier programme proofs in [*Tori, maximal tori and their conjugacy*](../../AG-RG/AG-RG-01.md), Lemma 3.3, and [*Automorphisms, forms and parabolic subgroups*](../../AG-RG/AG-RG-06.md), Theorem 1.1. Over an algebraically closed field, the cocharacter subgroup \(P_G(\lambda)\) is smooth and connected, its Lie algebra consists of the nonnegative weights, its unipotent radical has the positive weights, its scheme normalizer is itself, and \(G/P_G(\lambda)\) is smooth and projective. The graded coordinate and root-product proofs are in [*Root data, Weyl chambers and the Bruhat decomposition*](../../AG-RG/AG-RG-04.md), §§5 and 8; the construction of the projective homogeneous quotient is in [*Roots and reductive groups of rank one*](../../AG-RG/AG-RG-03.md), Lemma 5.1. These are the actual group statements being used, rather than an assertion that a Lie subalgebra has an unspecified group normalizer. For comparison with a freely readable human source, the same parabolic and normalizer statements appear in [Brian Conrad's author-posted *Reductive group schemes*](https://math.stanford.edu/~conrad/papers/luminysga3smf.pdf), Corollaries 5.2.8–5.2.9; the proofs consumed here are the preceding programme proofs.
+
+**Lemma 6.2b.** The scheme stabilizer of \(F^\bullet\mathfrak g\) in \(G\) is a canonical parabolic subgroup \(Q_e/K\). Its Lie algebra is \(F^0\mathfrak g\), and its unipotent radical has Lie algebra \(F^1\mathfrak g\). Moreover \(e\in F^2\mathfrak g\subset F^1\mathfrak g\). The subgroup and filtration are invariant under multiplying \(e\) by a nonzero scalar, and commute with field extension. The quotient \(G/Q_e\) has a closed embedding in the partial flag scheme of this intrinsic filtration, and is projective.
+
+**Proof.** The stabilizer is an actual closed subgroup scheme:
+\[
+ D(A)=\{g\in G(A):
+       \operatorname{Ad}(g)(F^j\mathfrak g\otimes_K A)
+            =F^j\mathfrak g\otimes_K A\text{ for every }j\}.
+                                                        \tag{CF.1}
+\]
+For each distinct filtration term choose a basis adapted to it. Its preservation is the vanishing of the matrix entries from that subspace to its quotient. Impose the same equations on the inverse matrix to express equality. There are finitely many terms and entries. These equations define \(D\) on every \(K\)-algebra \(A\), including algebras with nilpotents, and commute with every base change of this fixed flag.
+
+Extend to an algebraic closure. If \(e=0\), all adjoint strings have weight zero, \(F^0=\mathfrak g\), \(F^1=0\), and \(D=G\). Otherwise §§6.1.1–6.1.4 give a triple, and Lemma 6.2a integrates it to the exact cocharacter \(\lambda\). Write
+\[
+ \mathfrak g=\bigoplus_m\mathfrak g_m,\qquad
+ F^j=\bigoplus_{m\ge j}\mathfrak g_m,\qquad
+ P=P_G(\lambda).
+                                                        \tag{CF.2}
+\]
+The group input above gives \(\operatorname{Lie}P=F^0\) and \(\operatorname{Lie}R_u(P)=F^1\).
+
+We check \(P\subset D\) as schemes. In the adjoint representation, the matrix entry of a group element from weight \(b\) to weight \(a\) is multiplied by \(t^{a-b}\) under conjugation by \(\lambda(t)\). A matrix with a regular limit at zero therefore has no entries with \(a<b\). This holds over any test algebra, since Laurent monomials are a free basis over that algebra. Consequently it preserves all the decreasing weight subspaces. Its inverse belongs to \(P\) as well, so equality of the subspaces follows. Thus
+\[
+ P\subset D,\qquad
+ \operatorname{Lie}D
+   =\{x\in\mathfrak g:[x,F^j]\subset F^j\text{ for all }j\}.
+                                                        \tag{CF.3}
+\]
+The tangent formula follows by putting \(g=1+\epsilon x\), with \(\epsilon^2=0\), in (CF.1).
+
+If \(x=\sum_m x_m\in\operatorname{Lie}D\), then \(h\in F^0\) forces
+\[
+ [x,h]=-\sum_m m x_m\in F^0.
+                                                        \tag{CF.4}
+\]
+Every negative \(m\) is a nonzero, invertible scalar in characteristic zero. Hence all negative components of \(x\) vanish. Conversely, the bracket adds weights, so every \(x\in F^0\) preserves each \(F^j\). We have proved
+\[
+ \operatorname{Lie}D=F^0=\operatorname{Lie}P.
+                                                        \tag{CF.5}
+\]
+
+This tangent equality also controls possible infinitesimal thickening and extra components. At the identity of \(D\), the closed smooth subgroup \(P\) gives
+\[
+ \dim P\le\dim_1D\le\dim T_1D=\dim P.
+                                                        \tag{CF.6}
+\]
+Equality of local dimension and embedding dimension makes the local ring regular. Over the algebraically closed characteristic-zero field it is smooth. Translations give smoothness at every geometric point of \(D\). Its connected identity component is an irreducible smooth group of dimension \(\dim P\). The connected closed subgroup \(P\) has that same dimension, so
+\[
+ D^0=P,\qquad
+ D\subset N_G(D^0)=N_G(P)=P.
+                                                        \tag{CF.7}
+\]
+The middle inclusion is scheme-theoretic: conjugation preserves the identity component of a smooth group, and the normalizer is the subgroup functor. Together with (CF.3) it gives \(D=P\) as group schemes. We did not use a separate normalizer theorem for \(F^0\) as a Lie algebra.
+
+The equations (CF.1) were defined over \(K\). Therefore their base change is the parabolic just identified. Smoothness and the Lie-algebra identities descend faithfully under field extension. They give \(Q_e=D\) over the original \(K\). The same intrinsic equations give scalar invariance. The nilpotent element is in weight two by its triple relation, so \(e\in F^2\); this also descends.
+
+We spell out quotient and projectivity descent rather than assuming that a rational triple exists over \(K\). Over an algebraic closure the orbit map
+\[
+ G/P\longrightarrow
+   \operatorname{Fl}_{\dim F^\bullet}(\mathfrak g),
+ \qquad gP\longmapsto\operatorname{Ad}(g)F^\bullet
+                                                        \tag{CF.8}
+\]
+is a monomorphism on all test schemes, because the stabilizer is exactly \(P\). It is proper, since \(G/P\) is projective and the flag scheme is separated. Here is the closed-immersion step. A finite-type monomorphism is quasi-finite, since its geometric fibres have at most one point, and separated, since its diagonal is an isomorphism. The normalization factorization proved in [*Affine descent, Zariski Main and recognition of spaces*](../../AG-RG/AG-RG-S04.md), Theorem E9.1, factors it as an open immersion followed by an integral morphism. Its open immersion is also proper: the integral target is separated over the base, so the graph argument gives properness. It is therefore open and closed, making the original morphism integral. Finite type makes it finite: finitely many algebra generators each satisfy a monic relation, so products with exponents below those relation degrees span a finite module. On an affine target let its finite algebra be \(B\) over \(A\). Monomorphism gives \(B\otimes_A B=B\). A nonzero fibre over a field has finite dimension \(d\) with \(d^2=d\), so \(d=1\) and it is generated by its unit. Nakayama applied locally to the finite module \(B/\operatorname{im}A\) makes that module zero. Thus \(A\to B\) is surjective. This proves that (CF.8) is a closed embedding.
+
+This closed orbit descends. Its equations and their relations involve finitely many coefficients in the algebraic closure, so are defined over a finite Galois extension \(L/K\). Every Galois conjugate is the same closed orbit: both the group and the original flag are defined over \(K\). Equality of their ideal sheaves can be checked after the faithful extension to the algebraic closure. Thus these ideals have descent data under \(L/K\). On affine charts of the flag scheme, the affine faithfully flat module descent proved in §7.4 descends the ideals and their products; their quotient algebras glue to a closed \(K\)-subscheme \(Z\) of the flag scheme. Its pullback is (CF.8). The orbit map \(G\to Z\) is a \(D\)-torsor after field extension and hence before extension: its smooth surjectivity and its identity
+\[
+ G\times_ZG\simeq G\times D
+                                                        \tag{CF.9}
+\]
+are checked faithfully after that extension. Consequently \(Z\) represents the fppf quotient \(G/D\), and it is projective as a closed subscheme of a projective flag scheme. This proves that \(D\) is parabolic over \(K\), including for inner forms, without trivializing the original torsor over its function field. \(\square\)
+
+#### 6.2.4. Proper curve reduction, spreading, and a type-changing example
+
+Return to the constant connected reductive group \(G/k\) of the lesson, with \(k\) algebraically closed of characteristic zero. A parabolic type is a conjugacy class of parabolic subgroups; the finite set of types is given by subsets of the simple roots. Inner automorphisms preserve each type, by the field classification just used.
+
+Let \(P\) be a \(G\)-bundle and let \(\phi\) be a nilpotent Higgs field on a smooth projective connected curve \(X\). At \(K=k(X)\), a frame of \(\omega_X\) gives a nilpotent element of the inner Lie algebra of \(P_K\). Lemma 6.2b produces its parabolic, independently of that frame. Its geometric type is some fixed parabolic \(Q\subset G\). The conjugate-subgroup functor is \(G/Q\), because \(N_G(Q)=Q\). Under a local trivialization of the torsor, the intrinsic subgroup therefore gives a point of \(G/Q\). Inner transition maps preserve the type and carry the intrinsic subgroup to itself. These points descend to a \(K\)-point of
+\[
+ P/Q=P\times^G(G/Q)\longrightarrow X.
+                                                        \tag{CF.10}
+\]
+This is a projective flag bundle. Indeed (CF.8), for a representative filtration of type \(Q\), embeds \(G/Q\) equivariantly and closedly in a partial flag scheme of \(\mathfrak g\). The associated vector bundle is \(\operatorname{ad}(P)\). The corresponding closed ideals descend on its flag charts by the same affine module descent, giving a closed embedding of (CF.10) into the partial flag bundle of \(\operatorname{ad}(P)\).
+
+Here is the curve extension argument explicitly. At any missing point of \(X\), its smooth one-dimensional local ring is a DVR \(R\). Trivialize the vector bundle over \(R\), and use Plücker coordinates for the projective flag bundle. For any one projective coordinate vector over \(\operatorname{Frac}R\), multiply it by a common power of a uniformizer so that every coordinate is integral and at least one is a unit. It then defines a point over \(R\). All the homogeneous closed equations of the flag bundle and \(P/Q\) still vanish: their values lie in the domain \(R\) and vanish in its fraction field. Separatedness gives uniqueness.
+
+The generic section is defined on a nonempty open by finite presentation; its complement is finite because \(X\) is a Noetherian integral curve. Each DVR extension spreads to a neighbourhood, by clearing the finitely many denominators in its coordinates and equations. Uniqueness glues these neighbourhoods to a section on all of \(X\). Thus it gives a reduction to \(Q\) on the entire curve. Its nilradical is a vector subbundle, and the projected Higgs section in
+\[
+ \bigl(\operatorname{ad}(P)/\mathfrak n_Q\bigr)\otimes\omega_X
+                                                        \tag{CF.11}
+\]
+vanishes at the generic point. A section of a vector bundle on an integral curve which vanishes generically is zero: in a local frame every coefficient lies in a domain and maps to zero in its fraction field. Hence the Higgs field belongs everywhere to the nilradical bundle. This is the reduction assertion of Lemma 6.3 in every genus.
+
+For a family of nilpotent Higgs bundles over a reduced irreducible finite-type parameter scheme \(S\), apply the same argument on the curve over \(k(S)\). Its flag reduction is defined on the entire generic curve. It spreads to \(X\times S_0\) for some nonempty open \(S_0\): first restrict to an affine neighbourhood of the generic point of \(S\), choose a finite affine cover of the generic curve, spread its finitely many maps and relations by finite presentation, and clear their finitely many coefficient denominators in \(S\). The complement of that spread cover has empty generic fibre. Since \(X\times S\to S\) is proper, its closed image misses the generic point; remove that image as well. Equality on overlaps spreads by the same finite relation witnesses. Finally the zero projection (CF.11) spreads after shrinking, on this finite cover. Thus the reduction and nilradical membership hold on the whole \(X\times S_0\).
+
+For a general reduced finite-type \(S\), take the finitely many irreducible components, first remove their intersections, and perform this construction on each remaining dense component open. Their complement is a closed set of smaller dimension. Repeat on its reduced components. Finite dimension and finitely many components at each stage make the resulting stratification finite. We have obtained
+\[
+ S=\coprod_{\alpha=1}^r S_\alpha,\qquad
+ P|_{X\times S_\alpha}\text{ has a }Q_\alpha\text{-reduction},
+ \quad
+ \phi|_{X\times S_\alpha}\in
+       \Gamma(X\times S_\alpha,\mathfrak n_{Q_\alpha}\otimes\omega_X).
+                                                        \tag{CF.12}
+\]
+No countable union of reductions or uncountability of \(k\) is used. The construction does not claim that the fibrewise canonical parabolic has one fixed type across a degeneration. The following exact example explains why that stronger claim would be wrong.
+
+In \(\mathfrak{sl}_4\), put
+\[
+ e=E_{13}+E_{24},\qquad f=E_{31}+E_{42},\qquad
+ h=\operatorname{diag}(1,1,-1,-1).
+                                                        \tag{CF.13}
+\]
+The triple integrates as two standard two-dimensional strings. The adjoint weights are \(2\) with multiplicity four, zero with multiplicity seven, and \(-2\) with multiplicity four. Its parabolic preserves \(W=\langle e_1,e_2\rangle\):
+\[
+ Q=\left\{
+ \begin{pmatrix}A&B\\0&D\end{pmatrix}:
+        \det(A)\det(D)=1\right\},\qquad
+ \dim F^0=11,\quad\dim F^1=4,\quad
+ G/Q=\operatorname{Gr}(2,4).
+                                                        \tag{CF.14}
+\]
+Every such block matrix preserves the intrinsic Lie filtration. It need not preserve the line spanned by \(e\): the diagonal matrix \(\operatorname{diag}(2,1,1/2,1)\) sends \(e\) to \(4E_{13}+E_{24}\).
+
+There is also a nonsplit real example of the same geometric type. Let \(\mathbb H\) be the Hamilton quaternion algebra, let \(A=M_2(\mathbb H)\), and let \(G=\operatorname{SL}_1(A)\). The norm of \(a+bi+cj+dk\) is \(a^2+b^2+c^2+d^2\), so every nonzero quaternion is invertible by conjugation divided by that norm. The algebra \(A\) is not \(M_4(\mathbb R)\): the matrix-unit decomposition makes every simple left \(A\)-module a copy of \(\mathbb H^2\), of real dimension eight, whereas every simple left \(M_4(\mathbb R)\)-module has dimension four. To see the first assertion directly, a simple module has a nonzero \(E_{11}\)-part; a one-dimensional quaternionic subspace of that part and its \(E_{21}\)-translate generate a nonzero submodule, hence the whole module. The group \(G\) becomes \(\operatorname{SL}_4\) over \(\mathbb C\). The matrices
+\[
+ e=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+ f=\begin{pmatrix}0&0\\1&0\end{pmatrix},\quad
+ h=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+ \lambda(t)=\begin{pmatrix}t&0\\0&t^{-1}\end{pmatrix}
+                                                        \tag{CF.15}
+\]
+are quaternionic matrices with real coefficients. To verify the complex splitting explicitly, send the quaternion generators \(i,j,k\) to the matrices \(\operatorname{diag}(\mathrm i,-\mathrm i)\), \(\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\), and \(\left(\begin{smallmatrix}0&\mathrm i\\\mathrm i&0\end{smallmatrix}\right)\). They satisfy the quaternion relations, and together with the identity span \(M_2(\mathbb C)\). Thus \(\mathbb H\otimes_{\mathbb R}\mathbb C=M_2(\mathbb C)\); the block embedding identifies \(A\otimes\mathbb C\) with \(M_4(\mathbb C)\), and its reduced norm with the determinant, proving the claimed group splitting. In these coordinates its real descent acts by complex conjugation followed by conjugation with the block diagonal matrix formed from the image of \(j\), so the group form is inner.
+
+The group is not split over \(\mathbb R\). A split real torus in \(G\) has weight spaces in \(\mathbb H^2\); each is a right quaternionic submodule, since the action commutes with right multiplication. There can be at most two nonzero weight spaces. Their quaternionic dimensions add to two. In a quaternionic basis of these spaces, reduced norm gives the character relation \(\prod_\chi\chi^{2\dim_{\mathbb H}V_\chi}=1\). Faithfulness of the action and this relation bound the torus rank by one. The displayed cocharacter realizes rank one, whereas a split \(\operatorname{SL}_4\) has a rank-three diagonal torus.
+
+The displayed triple has reduced trace zero, satisfies the three bracket relations, and \(\lambda(t)\) has reduced norm one. The adjoint Lie algebra is the kernel of \(2\operatorname{Re}(a+d)\) on the two diagonal quaternion entries. Its zero-weight part has real dimension seven; each off-diagonal quaternion block has dimension four and weight \(2\) or \(-2\). The canonical parabolic preserves the right quaternionic line \(\mathbb H\oplus0\). After scalar extension it is exactly the type \((2,2)\) in (CF.14). This is an explicit inner-form reduction, with no real splitting of \(A\).
+
+For the degeneration, take \(R=k[[s]]\), \(K=k((s))\), and set
+\[
+ N(s)=
+ \begin{pmatrix}
+  -s^3&0&s^4&0\\
+  0&-s^2&0&s^4\\
+  -s^2&0&s^3&0\\
+  0&-1&0&s^2
+ \end{pmatrix}.
+                                                        \tag{CF.16}
+\]
+It is trace zero and \(N(s)^2=0\). Over \(K\), conjugating \(e\) of (CF.13) by the lower block unitriangular matrix with lower-left block \(\operatorname{diag}(s^{-1},s^{-2})\), and multiplying by \(s^4\), gives \(N(s)\). Thus its generic parabolic has the same type \((2,2)\). It has rank two, and its image and kernel are
+\[
+ W_K=\langle e_1+s^{-1}e_3,\ e_2+s^{-2}e_4\rangle_K.
+                                                        \tag{CF.17}
+\]
+Their Plücker coordinates, in order \(12,13,14,23,24,34\), extend as
+\[
+ [s^3:0:s:-s^2:0:1],
+ \qquad p_{12}p_{34}-p_{13}p_{24}+p_{14}p_{23}=0.
+                                                        \tag{CF.18}
+\]
+Thus the unique extended plane is the direct summand
+\[
+ W_R=\langle se_1+e_3,\ s^2e_2+e_4\rangle_R,
+ \qquad W_0=\langle e_3,e_4\rangle.
+                                                        \tag{CF.19}
+\]
+Writing its two basis vectors as \(w_1,w_2\), direct multiplication gives
+\[
+ Nw_1=Nw_2=0,\qquad
+ Ne_1=-s^2w_1,\quad Ne_2=-w_2,\quad
+ Ne_3=s^3w_1,\quad Ne_4=s^2w_2.
+                                                        \tag{CF.20}
+\]
+The extended reduction therefore contains the Higgs field in its nilradical on the whole DVR, even after specialization. But \(N(0)=-E_{42}\) has rank one. Take its triple with \(f_0=-E_{24}\) and \(h_0=\operatorname{diag}(0,-1,0,1)\). The positive and nonnegative weight subspaces in the standard representation are the line \(\langle e_4\rangle\) and the three-plane \(\langle e_1,e_3,e_4\rangle\). Its canonical flag therefore has type \((1,2,1)\). The extended generic reduction retains type \((2,2)\). This is exactly the distinction allowed in the proper curve reduction and finite stratification proof.
+
+![The intrinsic filtration determines a scheme stabilizer and projective flag bundle; the exact SL4 degeneration preserves nilradical membership while its canonical type changes.](figures/canonical-nilpotent-parabolic.svg)
+
+**Figure 6.3.** The scheme argument is (CF.1)–(CF.9), and the proper curve extension is (CF.10)–(CF.12). The block weights and the DVR plane use the exact example (CF.13)–(CF.20); the six displayed Plücker entries are homogeneous coordinates in the stated order. The specialized two-plane is the extension of the generic reduction, while the canonical special flag has dimensions one and three. For the group input, compare Conrad's freely readable [*Reductive group schemes*](https://math.stanford.edu/~conrad/papers/luminysga3smf.pdf), Corollaries 5.2.8–5.2.9, and the full earlier programme proofs specified above.
+
+**Exercise 6.G.** Check (CF.13)–(CF.14), including the multiplicities, the two dimensions and the failure of \(Q\) to preserve \(ke\).
+
+**Solution 6.G.** The positive and negative off-diagonal \(2\times2\) blocks give weights \(2,-2\), each of dimension four. The two diagonal blocks have total dimension eight, with one trace equation, giving the seven-dimensional zero space. Thus \(F^0\) is the upper block algebra of dimension \(7+4=11\), and \(F^1=F^2\) is the upper block of dimension four. Matrix multiplication gives \([e,f]=h\) and the other two relations. The block stabilizer of the first two-plane is precisely (CF.14), and its homogeneous flags are the two-planes in \(k^4\). The indicated determinant-one diagonal matrix multiplies \(E_{13}\) by four and \(E_{24}\) by one, so preserves the filtration and fails to preserve \(ke\).
+
+**Exercise 6.H.** Check the quaternionic example and its two filtration dimensions. Explain how its flag can exist over \(\mathbb R\) although \(A\) has not been trivialized there.
+
+**Solution 6.H.** The three matrices in (CF.15) use central real entries, so their multiplication gives the ordinary \(\mathfrak{sl}_2\) relations. Reduced trace is \(2\operatorname{Re}(a+d)\), and reduced norm of \(\lambda(t)\) is \(t^2t^{-2}=1\). On diagonal blocks the weight is zero and that trace equation leaves dimension seven. The upper and lower quaternion blocks each have dimension four and weights \(2,-2\). Hence the two dimensions are again eleven and four. The nilpotent acts on the right \(\mathbb H\)-module \(\mathbb H^2\) with image and kernel \(\mathbb H\oplus0\); its stabilizer is the stated block parabolic. It is defined by that right-module line over \(\mathbb R\). The complex splitting identifies the resulting projective flag variety with \(\operatorname{Gr}(2,4)\), but that splitting was not required to define the real flag.
+
+**Exercise 6.I.** Verify (CF.16)–(CF.20) and the type jump. Does properness require the extended reduction to be canonical on the special fibre?
+
+**Solution 6.I.** The four column formulas (CF.20) give image in \(W_R\), and the first two formulas show that \(N\) kills it, so \(N^2=0\). Over \(K\), the coefficients \(-s^2\) and \(-1\) of the first two columns are invertible, giving rank two and image \(W_K\); its kernel is the same plane by dimension. The wedge of \(w_1,w_2\) gives (CF.18), including the negative sign in \(p_{23}\). Its \(p_{34}\)-coordinate is a unit, so it is a rank-two direct summand with special plane \(W_0\). At zero only the second column survives, giving \(-E_{42}\). This rank-one nilpotent has image \(\langle e_4\rangle\) and kernel \(\langle e_1,e_3,e_4\rangle\), hence canonical type \((1,2,1)\); the extended two-plane reduction has type \((2,2)\). Properness extends the generic section in its fixed flag bundle. It does not change that bundle's type to make the special section canonical. Its required nilradical membership holds by (CF.20).
+
 ### 6.3. Vanishing of the tautological one-form
 
-For a fixed parabolic \(Q\), let \(f:\operatorname{Bun}_Q\to\operatorname{Bun}_G\) forget the reduction. The deformation calculation of the lesson applies to \(Q\) as a smooth affine group as well: its obstruction group is \(H^2(X,\mathfrak q_P)=0\), so \(\operatorname{Bun}_Q\) is smooth once its algebraicity is established by the same torsor-stack argument. Duality identifies the pullback of a Higgs covector along \(df\) with its image in
+For a fixed parabolic \(Q\), let \(f:\operatorname{Bun}_Q\to\operatorname{Bun}_G\) forget the reduction. The deformation calculation of the lesson applies to \(Q\) as a smooth affine group as well: its obstruction group is \(H^2(X,\mathfrak q_P)=0\), so \(\operatorname{Bun}_Q\) is smooth by the projective section atlas and square-zero groupoid proved in §§6.3.1–6.3.2 below. Duality identifies the pullback of a Higgs covector along \(df\) with its image in
 
 \[
 H^0(X,\mathfrak q_P^*\otimes\omega_X).
@@ -892,6 +2253,160 @@ The ground field in the main statement is **algebraically closed of characterist
 **Dimension theorem, conditional on the exact stack and programme foundations in N0.** Every irreducible component of \(N_A\) has dimension \(n\). Together with the already written chartwise isotropy proof, this says that the reduced global nilpotent cone is Lagrangian for every genus and every connected reductive \(G\).
 
 We prove the three genus cases below. In genus one, we construct the necessary adjoint Harder–Narasimhan reduction from vector bundles. We do not assume the principal Harder–Narasimhan theorem, the equivalence between Ramanathan semistability and adjoint semistability, or a theorem about tensor products of semistable bundles. No countability argument is used.
+
+#### 6.3.1. A section atlas for the parabolic bundle stack
+
+The parabolic in §6.3 is usually not reductive. We therefore construct its bundle stack rather than applying the reductive atlas of §1.5 to it without a new argument. Fix any parabolic subgroup \(Q\subset G\), including \(Q=G\). The field, group and curve retain the full hypotheses of the lesson, and coefficient schemes below are arbitrary.
+
+**Proposition 6.3a.** The stack \(\operatorname{Bun}_Q\) is algebraic and locally of finite type over \(k\), with affine finitely presented diagonal. The extension map to \(\operatorname{Bun}_G\) is representable by separated schemes locally of finite presentation. The stack \(\operatorname{Bun}_Q\) is smooth over \(k\); the extension map need not be smooth.
+
+**Proof of the atlas.** Write \(f\) for extension of structure group. For a \(G\)-bundle \(P\) on \(X_T\), its fibre is a functor of sections:
+\[
+ T\times_{\operatorname{Bun}_G}\operatorname{Bun}_Q
+   \simeq \operatorname{Sec}_{X_T/T}(P/Q),\qquad
+ P/Q=P\times^G(G/Q).
+                                                        \tag{SG.1}
+\]
+Here the left side includes a specified identification of the extended bundle with \(P\). A section pulls back the \(Q\)-torsor \(P\to P/Q\). Conversely, a \(Q\)-torsor with that identification gives a section after a torsor cover, and §7.5 descends it. These operations are inverse on objects and arrows. An arrow inducing the identity on \(P\) is the identity, since \(Q\to G\) is a monomorphism. Thus (SG.1) is a set-valued functor, not a quotient by extra reduction automorphisms.
+
+The target \(P/Q\) is a projective scheme over \(X_T\). To see the scheme structure on every test base, choose a cocharacter with \(Q=P_G(\lambda)\), using the field classification in §6.2.3. The fixed adjoint weight flag has scheme stabilizer \(Q\): the test-algebra and tangent argument (CF.1)–(CF.7) uses only the cocharacter and its differential, and applies to this weight flag as well. Its closed projective orbit embeds in the partial flag scheme of \(\mathfrak g\). Twisting the closed equivariant embedding gives a closed subscheme of the flag bundle of \(\operatorname{ad}P\), by the ideal descent of §7.4. The orbit torsor gives exactly the quotient in (SG.1).
+
+First work over a Noetherian affine \(T\). The relative Plücker and Segre embeddings make \(P/Q\) projective over \(T\). Explicitly, twist the finitely many associated exterior-power vector bundles by a high power of the fixed very ample line on \(X\), use relative Serre generation from §1.1, and combine their projective embeddings with the fixed embedding of \(X\). The complete Hilbert construction in [*Hilbert and Quot schemes*](../../AG-HP/src/hilbert-and-quot-schemes.md), Theorem 4.1 and Corollary 4.2, supplies the universal flat subscheme on
+\[
+ H=\coprod_p\operatorname{Hilb}^{p}(P/Q,/T),
+ \qquad D\subset (P/Q)\times_T H.
+                                                        \tag{SG.2}
+\]
+The polynomial refers to this projective embedding. No single polynomial or degree is imposed on all reductions.
+
+We need the open locus where the projective projection \(a:D\to X_H\) is an isomorphism. The complete graph-locus and finite-fibre proofs are in [*Beauville–Laszlo gluing and the moduli interpretation*](../../GL-SAT/src/GL-SAT-03.md), §7.2; the local quasi-finite neighbourhood is [*Zariski's Main Theorem*](../../AG-MO/src/zariskis-main-theorem.md), Theorem 3.1. Here is how they apply. At a parameter point whose fibre is a graph, that projection is quasi-finite on the whole fibre. Its quasi-finite locus is open. The complementary closed subset of the proper family \(D/H\) has closed parameter image missing the point. Delete that image. The projection now has finite fibres. Locally at a target point, choose a projective hyperplane avoiding its finitely many fibre points; the residue field is infinite because it contains \(k\). Removing the proper image of the hyperplane intersection puts the whole projection in an affine projective chart. Projective coherent finiteness, already proved for §1.1, makes its coordinate algebra a finite module. Hence \(a\) is finite.
+
+Consider its unit map
+\[
+ u:\mathcal O_{X_H}\longrightarrow a_*\mathcal O_D.
+                                                        \tag{SG.3}
+\]
+Its cokernel is coherent and zero on the selected fibre. Nakayama kills it near that fibre; remove the proper image in \(H\) of its remaining support. The map is then surjective. Both its source and target are flat over \(H\): the first by the curve, the second by the universal Hilbert family and finiteness of \(a\). Its coherent kernel therefore injects into the source after taking a parameter fibre. On the selected fibre this injection has zero image. Nakayama kills the kernel there, and removing its proper support image kills it on a parameter neighbourhood. Now \(u\) is an isomorphism, so \(a\) is an isomorphism and its inverse gives the section. This is the required open graph locus in each part of (SG.2).
+
+These open loci represent sections on every test scheme over the Noetherian base. Indeed a section has a closed graph, flat over its parameter because it is a copy of the curve. Conversely the inverse of the graph projection recovers exactly that section. If a test family has graph fibres, its map to the Hilbert scheme factors through the open just constructed; a map factors through an open precisely when its point images lie there. The unit is already an isomorphism on that open before any pullback. The union over polynomials is separated and locally of finite presentation, as an open subscheme of the separated Hilbert union.
+
+For an arbitrary affine coefficient algebra, finite-presentation descent supplies the same representation. The associated vector bundles descend by the finite idempotent and gluing equations of §1.1. The \(G\)-reduction descends with them by (BA.14)–(BA.16): its locally closed orbit section uses a finite affine cover, finitely many coordinate maps, finite unit-ideal witnesses for the cover and finite overlap identities. Thus \(P\), its specified group action and the twisted projective flag quotient have a model over a finitely generated \(k\)-subalgebra. Construct the section scheme there and pull it back. Its section functor and its scheme-point functor commute with filtered unions by the same finite coordinate witnesses in (BA.16). They therefore agree on every algebra, including nonreduced and non-Noetherian algebras. Uniqueness of the represented functor glues the resulting schemes over affine coefficient opens. This proves the asserted representability of \(f\).
+
+Let \(V\to\operatorname{Bun}_G\) be the smooth scheme atlas of §1.5. Its pullback gives
+\[
+ \begin{array}{ccc}
+ V_Q=V\times_{\operatorname{Bun}_G}\operatorname{Bun}_Q
+        &\longrightarrow&V\\
+ \downarrow&&\downarrow\\
+ \operatorname{Bun}_Q&\xrightarrow{f}&\operatorname{Bun}_G.
+ \end{array}
+                                                        \tag{SG.4}
+\]
+The top left is the section scheme just constructed. Its map to \(\operatorname{Bun}_Q\) is smooth and surjective by base change of the atlas; it is not necessary that its top horizontal map be smooth. Effective descent for affine torsors, proved in §7.5, gives the stack property for \(Q\) as well.
+
+Its diagonal is affine and finitely presented. Given two reductions, first take the affine finitely presented scheme of isomorphisms of their extended \(G\)-bundles from §1.5. On it require the induced adjoint isomorphism to preserve every term of the associated flag, and impose the inverse conditions too. Each condition is the vanishing of a map from one flag subbundle to the corresponding quotient. The Hom schemes and their linear zero equations are (BA.3), so these conditions define a closed finitely presented subscheme. The exact scheme flag stabilizer makes this precisely the scheme of \(Q\)-bundle isomorphisms. We have both an atlas and a diagonal, establishing algebraicity. Its atlas is locally of finite type over \(k\), giving that property for the stack. \(\square\)
+
+For a freely readable human comparison, the graph injection and its open-locus property are [*The Stacks Project*, Tags 0D1A–0D1B](https://stacks.math.columbia.edu/tag/0D1B). Here their role is comparison; the full programme Hilbert and graph-locus proofs, and the preceding application, supply the argument being used.
+
+#### 6.3.2. Smoothness, the nilradical cone and a nonsmooth forgetting map
+
+**Proof of smoothness and the tangent calculation.** The group \(Q\) is smooth affine and of finite presentation. No reductivity enters the affine étale-nerve and square-zero transition calculation (DS.3)–(DS.7). Replace its augmentation algebra by \(k[Q]\) and its adjoint bundle by \(\mathfrak q_{P_Q}\). The defect of three lifted transitions is a Čech 2-cocycle. The two-affine curve calculation of §1.1 makes its \(H^2\) zero for every coefficient module; a 1-cochain corrects it. Effective affine torsor descent produces the lift. Differences of lifts and all arrows are still the 1-cocycles modulo the action of 0-cochains, including arbitrary square-zero coefficients. Applying the affine atlas argument of §2.2 to (SG.4) makes the atlas smooth over \(k\), and hence makes \(\operatorname{Bun}_Q\) smooth.
+\[
+ \begin{gathered}
+ T_{P_Q}\operatorname{Bun}_Q=R\Gamma(X,\mathfrak q_{P_Q})[1],\\
+ df:R\Gamma(X,\mathfrak q_{P_Q})[1]
+          \longrightarrow R\Gamma(X,\mathfrak g_{P_G})[1],\\
+ T_f=R\Gamma\bigl(X,(\mathfrak g/\mathfrak q)_{P_Q}\bigr).
+ \end{gathered}
+                                                        \tag{SG.5}
+\]
+The last line is the fibre of the preceding map. It follows by applying the tensor-compatible affine complex to the short exact sequence of associated vector bundles. Its degree-zero cohomology parametrizes deformations of a reduction with fixed extended bundle; its degree-one cohomology is the obstruction space. Absolute smoothness used \(H^2\) of the adjoint bundle. It does not force this different degree-one obstruction to vanish.
+
+The nilradical parameters are also actual finite-presentation schemes on atlas charts. Set \(F=\mathfrak n_{P_Q}\otimes\omega_X\), and take its universally tensor-compatible two-term complex \(K^0\xrightarrow{d}K^1\) from (BA.1). Over an affine coefficient chart \(\operatorname{Spec}R\), the scheme
+\[
+ \mathscr C_F=
+  \operatorname{Spec}
+  \left(\operatorname{Sym}_R((K^0)^\vee)/
+        d^\vee((K^1)^\vee)\right),
+ \qquad \mathscr C_F(B)=H^0(X_B,F_B)
+                                                        \tag{SG.6}
+\]
+represents the sections. This is the same linear-kernel construction as (BA.3), with source the trivial line bundle. It does not assume that the section dimensions are constant. The schemes glue under coefficient change because their represented functors agree. With the bundle and its arrows they define an algebraic stack \(\mathscr Z_Q\), affine and finitely presented over \(\operatorname{Bun}_Q\), parametrizing a \(Q\)-bundle and a nilradical Higgs section. The universal section gives
+\[
+ \mathscr Z_Q\longrightarrow T^*\operatorname{Bun}_G,
+ \qquad (P_Q,\eta)\longmapsto(P_Q\times^QG,\eta).
+                                                        \tag{SG.7}
+\]
+The restriction of its covector to the \(Q\)-deformation is zero by (6.2), or directly by the invariant-pairing calculation: \(\mathfrak q\) has nonnegative cocharacter weights and \(\mathfrak n\) strictly positive weights, while a nonzero invariant pairing requires opposite weights.
+
+Here is the precise smooth-chart consequence, with no countability argument. Let \(A\to M\) be a smooth finite-type presentation piece, and let \(W\) be a reduced irreducible component of the nilpotent cone pulled back as a closed subvariety of \(T^*A\). Its nonempty smooth locus exists in characteristic zero by the generic smooth-chart proof of §1.3. The universal bundle and Higgs field on a dense open of \(W\) are a nilpotent family. Section 6.2.4 gives a further nonempty open \(W_0\), a fixed \(Q\)-reduction there and its nilradical Higgs section. Put \(N=A\times_M\operatorname{Bun}_Q\), which is a smooth scheme by (SG.1), (SG.4) and the absolute smoothness just proved. The reduction gives \(r:W_0\to N\), and write \(F:N\to A\). The tautological one-form satisfies
+\[
+ (\lambda_A|_{W_0})(v)=
+   \xi\bigl(dF(dr(v))\bigr)=0.
+                                                        \tag{SG.8}
+\]
+The first equality is its definition at the covector \(\xi\); the second is its vanishing on the lifted \(Q\)-deformation from (SG.7). Taking the exterior differential makes the symplectic form vanish on \(W_0\). In smooth coordinates the cotangent form is \(\sum_i dp_i\wedge dx_i\), hence nondegenerate. If \(L\) is an isotropic subspace of its \(2\dim A\)-dimensional tangent space, then \(L\subset L^\perp\), and nondegeneracy gives \(\dim L^\perp=2\dim A-\dim L\). Thus
+\[
+ \dim W=\dim W_0\le\dim A.
+                                                        \tag{SG.9}
+\]
+A regular two-form zero on a dense open of a smooth integral subvariety is zero everywhere on it, since its coefficients are sections of a vector bundle over domains. Applying the same dense-open reduction to any smooth irreducible locally closed subvariety proves the isotropy assertion of §6.3. This establishes the chartwise upper bound in (N0) through genuine parabolic-stack and finite-family parameters. It does not by itself give the lower bound, the later spectral action, or nilpotent regularity of D-modules.
+
+We calculate why the forgetful morphism in (SG.4) can fail to be smooth. Take \(X=\mathbf P^1\), \(G=SL_2\), and the upper triangular Borel \(B\). Put \(L=\mathcal O(1)\) and \(E=L\oplus L^{-1}\), with the reduction preserving \(L\). At this split reduction,
+\[
+ \mathfrak g_E=\mathcal O\oplus L^2\oplus L^{-2},
+ \qquad \mathfrak b_{P_B}=\mathcal O\oplus L^2,
+ \qquad(\mathfrak g/\mathfrak b)_{P_B}=L^{-2}.
+                                                        \tag{SG.10}
+\]
+The summands are the diagonal, upper and lower matrix entries. Cover the curve by coordinates \(z\) and \(z^{-1}\), choosing line frames with transition \(z^n\) for \(\mathcal O(n)\). Its affine Čech calculation is
+\[
+ H^1(\mathbf P^1,\mathcal O(n))=
+ k[z,z^{-1}]\big/\bigl(k[z]+z^nk[z^{-1}]\bigr).
+                                                        \tag{SG.11}
+\]
+For \(n=-2\) only the class of \(z^{-1}\) remains, while for \(n=0,2\) the quotient is zero. The section equation \(p(z)=z^nq(z^{-1})\) gives section dimensions zero, one and three respectively for those three values.
+
+Over \(R=k[\epsilon]/(\epsilon^2)\), define a determinant-one bundle by the overlap matrix
+\[
+ g_{0\infty}=\begin{pmatrix}z&0\\\epsilon&z^{-1}\end{pmatrix}.
+                                                        \tag{SG.12}
+\]
+It reduces to \(E\). A line reduction lifting its first summand would have local generators \((1,\epsilon a_0(z))\) and \((1,\epsilon a_\infty(z^{-1}))\). Any deformation of \(\mathcal O(1)\) is isomorphic to the constant one: its transition perturbations are a Čech 1-cocycle in \(\mathcal O\), whose \(H^1\) vanishes by (SG.11). Normalizing the first coordinate of each local generator is therefore legitimate. The first row of (SG.12) forces their overlap multiplier to be \(z\); its second row then forces
+\[
+ z^{-1}=a_0(z)-z^{-2}a_\infty(z^{-1}).
+                                                        \tag{SG.13}
+\]
+The right side has exponents at least zero or at most \(-2\). It cannot have a \(z^{-1}\)-coefficient. Thus this square-zero deformation of the extended bundle has no lifted reduction. The morphism \(\operatorname{Bun}_B\to\operatorname{Bun}_{SL_2}\) fails the smooth lifting property, even though both stacks are smooth.
+
+The dimensions and the nilradical fibre keep the automorphisms visible:
+\[
+ \begin{array}{c|cc|c}
+  &h^0(\text{adjoint})&h^1(\text{adjoint})&h^1-h^0\\\hline
+  P_B&4&0&-4\\
+  E&4&1&-3
+ \end{array}
+ \qquad
+ H^0(\mathbf P^1,L^2\otimes\omega_{\mathbf P^1})=k.
+                                                        \tag{SG.14}
+\]
+Indeed \(\omega_{\mathbf P^1}=\mathcal O(-2)\), as the coordinate change \(d(z^{-1})=-z^{-2}dz\) shows. Thus the nilradical Higgs fibre is one-dimensional. These are stack dimensions, not the dimensions of coarse orbit spaces. The fixed-bundle reduction has zero tangent space and a one-dimensional obstruction space in (SG.5).
+
+![The projective flag-section graph locus supplies the parabolic atlas; a square-zero SL2 deformation blocks a lifted line reduction while both bundle stacks remain smooth.](figures/parabolic-section-atlas.svg)
+
+**Figure 6.4.** The cartesian atlas is (SG.1)–(SG.4), the relative deformation complex is (SG.5), and the nilradical cone and chart isotropy are (SG.6)–(SG.9). The lower panel uses the actual overlap matrix (SG.12); the missing exponent in (SG.13) detects its obstruction. For the graph comparison see the freely readable [Stacks Project graph lemmas, Tags 0D1A–0D1B](https://stacks.math.columbia.edu/tag/0D1B); the programme proof and its application are written above.
+
+**Exercise 6.J.** Explain why the section functor in (SG.1) has no automorphisms while its source bundle stack usually does. Which morphism in (SG.4) is the smooth atlas?
+
+**Solution 6.J.** The fibre includes an identification with a fixed extended bundle. An automorphism in that fibre becomes the identity in its \(G\)-extension and hence in the \(Q\)-torsor, since the inclusion is a monomorphism. A \(Q\)-bundle considered without that identification can have its ordinary bundle automorphisms. The left vertical map in (SG.4) is the smooth atlas, because it is the base change of the right vertical atlas. No smoothness of the top horizontal section-scheme map is needed.
+
+**Exercise 6.K.** Check the determinant, obstruction and all four adjoint cohomology numbers in (SG.12)–(SG.14). Why does absolute smoothness not solve this lifting problem?
+
+**Solution 6.K.** The matrix determinant is \(zz^{-1}=1\). Its lower-entry equation is (SG.13), and comparison of the \(z^{-1}\)-coefficient proves impossibility. The two affine charts give (SG.11): \(\mathcal O\) contributes one section, \(\mathcal O(2)\) three sections, and both have zero first cohomology; \(\mathcal O(-2)\) has no section and first cohomology spanned by \(z^{-1}\). The Borel has the first two adjoint summands, yielding \((4,0)\), and \(SL_2\) has all three, yielding \((4,1)\). Absolute smoothness lifts an unspecified Borel bundle; the relative problem requires its extension to equal the prescribed deformation (SG.12). Its obstruction is the nonzero class in the last line of (SG.5).
+
+**Exercise 6.L.** Show that (SG.6) can represent jumping section dimensions. Explain why (SG.9) needs neither a smooth forgetful morphism nor a countable union of reduction images.
+
+**Solution 6.L.** Over \(k[s]\), the two-term complex \(k[s]\xrightarrow{s}k[s]\) gives the section scheme \(\operatorname{Spec}k[s,x]/(sx)\). Its nonzero-\(s\) fibre has only the zero section, while its zero fibre is an affine line. The kernel equations remain the correct tensor equations, so constant rank was never assumed. For (SG.9), one starts with the universal family on a fixed reduced irreducible component. The generic curve reduction spreads to one dense open of that component by §6.2.4. This supplies the map \(r\) in (SG.8) directly. The atlas is smooth over the Borel or parabolic stack by base change; the vanishing of the one-form uses its lifted tangent vector, rather than any relative smoothness of the forgetful map. Nondegenerate symplectic linear algebra then gives the bound on that dense open and hence on the component.
 
 ### 6.4. Precise foundations and the chart (N0)
 
@@ -1231,7 +2746,7 @@ This proves the geometric dimension statement for all smooth charts and includes
 
 The main theorem retains exactly the lesson's algebraically closed characteristic-zero boundary. If one defines the theorem over a general characteristic-zero field as a geometric Lagrangian assertion, the same proof after algebraic closure gives that geometric assertion, provided the bundle/cotangent/invariant constructions commute with that base change. No arithmetic statement about rational torsor triviality, splitness or rational nilpotent-orbit representatives is claimed.
 
-Sections 1.1–1.6 prove the bundle-stack representability and formal-effectivity results through explicit Quot and reduction atlases, finite cohomology coordinates and affine Isom schemes. The complete recursive closure of the other specified programme foundations remains open. The cohomology/base-change, duality, Quot and group arguments listed above supply the particular claims used here; N0 supplies the vector-family extension and smooth-curve adjunction identification, and N7 supplies the algebraic semisimple torus step. The local algebra, quotient/descent and representability foundations cited by those earlier courses are not proved here. Within those recorded foundations, **no genus-one principal Harder–Narasimhan/tensor-semistability gap and no genus-zero quotient-chart gap remains in this dimension argument**. The dimension argument uses the nilpotent Lie triple and isotropy of §§6.1–6.3. The dimension argument does not use uniformization. Sections 7.1–7.7 prove formal-disc gluing, affine torsor descent and formal local triviality, with the stated curve and earlier scheme-topological foundations; one-point family uniformization is proved in §7.8 using the exact earlier programme theorem, and §7.9 derives its full stack quotient.
+Sections 1.1–1.6 prove the bundle-stack representability and formal-effectivity results through explicit Quot and reduction atlases, finite cohomology coordinates and affine Isom schemes. The complete recursive closure of the other specified programme foundations remains open. The cohomology/base-change, duality, Quot and group arguments listed above supply the particular claims used here; N0 supplies the vector-family extension and smooth-curve adjunction identification, and N7 supplies the algebraic semisimple torus step. The local algebra, quotient/descent and representability foundations cited by those earlier courses are not proved here. Within those recorded foundations, **no genus-one principal Harder–Narasimhan/tensor-semistability gap and no genus-zero quotient-chart gap remains in this dimension argument**. The dimension argument uses the nilpotent Lie triple and isotropy of §§6.1–6.3. Sections 6.1.1–6.1.4 supply the previously missing algebraically closed field transfer, with the semisimple-centralizer and finite-string proofs. The other recorded recursive foundations remain required. The dimension argument does not use uniformization. Sections 7.1–7.7 prove formal-disc gluing, affine torsor descent and formal local triviality, with the stated curve and earlier scheme-topological foundations; one-point family uniformization is proved in §7.8 using the exact earlier programme theorem, and §7.9 derives its full stack quotient.
 
 Further reading: [Ginzburg, *The global nilpotent variety is Lagrangian*, alg-geom/9704005v6](https://arxiv.org/pdf/alg-geom/9704005v6), chiefly the chartwise definition and the higher-genus equation count; [Beilinson–Drinfeld, author draft, §2.10.4](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf), for the division by genus and the elliptic centralizer idea; [Heinloth, *Uniformization of G-bundles*, 0711.4450v2, Proposition 1](https://arxiv.org/pdf/0711.4450v2), for the exact smooth-affine finite-type group hypotheses of the existing algebraicity foundation. The elliptic tensor argument, construction from the adjoint vector filtration and finite-family image argument above are proved above; the BD source's unproved principal stability package is not imported. Its final inference that trivial determinant makes the entire centralizer adjoint bundle trivial is not used: trivial determinant alone gives the needed degree zero.
 
@@ -2058,7 +3573,7 @@ For comparison, a Borel reduction in genus \(g\) has dimension \(2(g-1)-2e\), so
 
 ## What this lesson does not prove
 
-Sections 1.1–1.6 prove algebraicity, the affine diagonal and formal effectivity of the torsor stack. We still use the general component theorem [Drinfeld–Gaitsgory, §7.2.4]; and the background Harder–Narasimhan, openness and fixed-component boundedness theorems [Drinfeld–Gaitsgory, Theorem 7.4.3, §7.3.2 and Proposition 7.3.5]. [Gaitsgory–Raskin, §9.1] supplies the stability convention. We use Riemann–Roch, Serre duality, the Picard scheme, and proper flat constancy of Euler characteristic from algebraic geometry. The smoothness, dimension, vector-bundle connectedness, cotangent identification, examples and exercise calculations are proved here.
+Sections 1.1–1.6 prove algebraicity, the affine diagonal and formal effectivity of the torsor stack. Sections 3.1–3.8 prove the full component theorem in every genus. Sections 4.1–4.12 prove canonical principal Harder–Narasimhan reductions, schematic relative strata, semistable and stable openness, fixed-component boundedness and the all-genus torus/root distinction for full components. [Gaitsgory–Raskin, §9.1] supplies the stability convention. The Euler-characteristic formula and its local constancy are proved in §§1.1 and 2.4; projective duality and the Picard scheme are supplied by the titled earlier programme lessons linked above. The smoothness, dimension, vector-bundle connectedness, cotangent identification, examples and exercise calculations are proved here.
 
 The nilpotent-cone Lagrangian proof is written in §6, relative to its exact stack and recursive programme foundations. Beilinson–Drinfeld, Theorem 2.10.4, and Ginzburg, Main Theorem, are references for the geometric statement. Sections 7.1–7.7 prove module, vector-bundle and affine Hopf-torsor gluing, effective faithfully flat descent, affineness and the vector-bundle dictionary, and smooth-group formal local triviality, including arbitrary coefficient changes. The smooth-curve neighbourhood retains its stated curve foundations. The arbitrary-cover reduction uses the precise earlier scheme-topological proofs linked in §7.5. Sections 7.8–7.10 apply the full earlier semisimple family-uniformization proof and prove the coefficient-étale formal frames and whole-stack quotient, with their determinant and torus boundaries. The smooth spectral-curve correspondence is mentioned only to explain the dimensions; its construction is not proved here. Neither the categorical Langlands theorem nor a theorem about spectral singular support follows from these bundle calculations alone.
 

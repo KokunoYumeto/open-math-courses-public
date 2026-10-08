@@ -1,6 +1,6 @@
 # Roth's theorem and its consequences
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original material is public domain (CC0), except the adapted sections 6–8, which retain CC BY 4.0 with the source credit and change notice in section 7.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; sections 6–8 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original material is public domain (CC0).*
 
 The two previous lessons supply opposite index bounds. An integer polynomial can have large index at an algebraic point, with height exponential in its degree. At rational points with separated denominators and degrees, that height forces its index to be small. Good approximation would make all the low-weight derivatives too small to be nonzero rationals. This is the contradiction which proves Roth's theorem.
 
@@ -331,350 +331,388 @@ For (12.13), a negative sum \(\sum c_{v,i}\le-\rho<0\) consequently implies \(\l
 
 ## 6. The algebraic-point index bound
 
-The Subspace theorem needs index at algebraic points, whereas Lesson 11 used rational points. The following argument preserves the degree weights and supplies that extension.
+Lesson 11 bounded the index of an integer polynomial at a rational point. Approximation at several places of a number field leads to algebraic points instead, still with rapidly decreasing weights. The induction of Lesson 11 carries over; only the one-variable step changes, because an algebraic root costs its whole minimal polynomial. We write \(\operatorname{ind}_{\boldsymbol\beta,\boldsymbol r}\) for the index (10.6) of The index method for rational approximation and use its rules from Lemma 10.4: a derivative of weighted order \(w\) lowers the index by at most \(w\), the index of a product is the sum of the indices, and the index of a sum is at least the smaller of the two.
 
 ### Lemma 12.6. Roth's index lemma at algebraic points
 
-Let \(P\in\mathbb Z[T_1,\ldots,T_m]\setminus\{0\}\), with \(\deg_{T_i}P\le r_i\), and put \(h(P)=\log\max|\text{coefficient of }P|\). Let \(\beta_i\) be algebraic and \(0<\eta\le1/2\). If
+Fix positive integers \(r_1,\ldots,r_m\) and a nonzero \(P\in\mathbb Z[T_1,\ldots,T_m]\) with \(\deg_{T_i}P\le r_i\). Let \(h(P)\) be the logarithm of the largest absolute value of a coefficient of \(P\). Let \(\beta_1,\ldots,\beta_m\) be algebraic numbers, let \(0<\eta\le1/2\), and put \(t=\eta^{2^{m-1}}\). If
 
 \[
- t=\eta^{\,2^{m-1}},\qquad
- r_{i+1}/r_i\le t,\qquad
- t\min_i r_i h(\beta_i)\ge h(P)+6mr_1,
+ \frac{r_{i+1}}{r_i}\le t\quad(1\le i<m)
+ \qquad\text{and}\qquad
+ t\,r_i\,h(\beta_i)\ge h(P)+6mr_1\quad(1\le i\le m),
  \tag{12.18}
 \]
 
-then \(\operatorname{Ind}_{\boldsymbol\beta,\boldsymbol r}P\le2m\eta\).
+then \(\operatorname{ind}_{\boldsymbol\beta,\boldsymbol r}P\le2m\eta\).
 
-**Proof.** In one variable, a zero \(\beta\) of multiplicity \(l\) forces the primitive minimal polynomial of \(\beta\) to divide \(P\) to that multiplicity. By multiplicativity of Mahler measure and Lesson 2's identity \(\log M(\beta)=\deg(\beta)h(\beta)\),
+**Proof.** The second condition in (12.18) forces every \(h(\beta_i)\) to be positive. We first record what one algebraic root costs. Let \(U\in\mathbb Z[T]\) be nonzero of degree at most \(e\), and let \(\beta\) be a root of \(U\) of multiplicity \(\ell\). The primitive irreducible polynomial \(f\in\mathbb Z[T]\) of \(\beta\) divides \(U\) to the power \(\ell\), as shown after Lemma 10.4, and by Gauss's lemma the cofactor has integer coefficients. Mahler measure is multiplicative and at least one on nonzero integer polynomials, so \(M(f)^\ell\le M(U)\). In Heights of algebraic numbers, Theorem 2.4 gives \(\log M(f)=\deg(\beta)\,h(\beta)\ge h(\beta)\) and Proposition 2.2 gives \(M(U)\le\sqrt{e+1}\,H(U)\). Since \(\tfrac12\log(e+1)\le e\),
 
 \[
- l h(\beta)\le\log M(P)\le h(P)+r_1.
+ \ell\,h(\beta)\le h(U)+e .
 \]
 
-The last inequality follows from \(M(P)\le\sqrt{r_1+1}\max|\text{coefficient}|\) and \(\tfrac12\log(r_1+1)\le r_1\). It implies the assertion for \(m=1\).
+For \(m=1\) this is the whole proof: take \(U=P\), \(e=r_1\) and \(\ell=r_1\operatorname{ind}P\); then (12.18) gives \(\operatorname{ind}P\le(h(P)+r_1)/(r_1h(\beta_1))\le t=\eta\).
 
-For \(m\ge2\), use the minimal separation and Wronskian construction of Lesson 11, Lemmas 11.1–11.2. There is a nonzero integer determinant \(V\), with \(k\le r_m+1\) rows, that factors as \(cU_1(T_m)U_2(T_1,\ldots,T_{m-1})\). Choose the disjoint-variable factors primitive over \(\mathbb Z\); Gauss's lemma gives \(c\in\mathbb Z\setminus\{0\}\). The entries are divided derivatives of \(P\), with derivative order at most \(r_m\) in the first \(m-1\) variables and orders \(0,\ldots,k-1\) in the last. In particular
+Now let \(m\ge2\), and assume the lemma in \(m-1\) variables for every admissible \(\eta\). As \(\eta\le1/2\), we have \(t\le1/4\); hence \(r_i\le t^{\,i-1}r_1\), \(\sum_ir_i\le\tfrac43r_1\) and \(r_m\le\tfrac14r_1\).
+
+*The separating determinant.* Section 2 of Wronskians and Roth's rational-point lemma writes \(P=\sum_{j=1}^kA_j(\boldsymbol T')B_j(T_m)\), with \(\boldsymbol T'=(T_1,\ldots,T_{m-1})\) and least length \(k\le r_m+1\). It chooses derivative rows \(D_{\boldsymbol i_\ell}\) in \(\boldsymbol T'\) with \(|\boldsymbol i_\ell|\le\ell-1\), and shows in (11.3)–(11.4) that
 
 \[
- h(U_1)+h(U_2)\le h(V)
- \le k h(P)+2k\Bigl(\sum_i r_i\Bigr)\log2+\log(k!)
- \le k(h(P)+3r_1).
+ W=\det\bigl(D_{\boldsymbol i_\ell}D_{j-1,T_m}P\bigr)_{\ell,j=1}^k=c\,U_0(\boldsymbol T')\,V_0(T_m),
+\]
+
+where \(c\) is a nonzero integer, \(U_0\) and \(V_0\) are primitive integer polynomials, \(\deg_{T_i}U_0\le kr_i\) for \(i<m\), \(\deg V_0\le kr_m\), and \(H(U_0),H(V_0)\le H(W)\).
+
+*Its height.* Every entry of \(W\) is a divided derivative of \(P\). By Lemma 10.3 its coefficients are at most \(2^{\sum r_i}H(P)\), and it has at most \(\prod_i(r_i+1)\le2^{\sum r_i}\) monomials. A coefficient of a product \(FG\) is a sum of at most as many products of coefficients as \(F\) has monomials. Hence each of the \(k!\) terms of the determinant has coefficients at most \(2^{(2k-1)\sum r_i}H(P)^k\), and
+
+\[
+ h(U_0),\,h(V_0)\le h(W)\le k\,h(P)+(2k-1)\Bigl(\sum_ir_i\Bigr)\log2+\log k!\le k\bigl(h(P)+3r_1\bigr).
  \tag{12.19}
 \]
 
-For the middle bound, each divided derivative costs at most \((\sum r_i)\log2\); multiplying \(k\) coefficient arrays costs at most \((k-1)(\sum r_i)\log2\). These follow respectively from the binomial coefficient bound and from the number of entries in each array. The determinant contributes \(\log(k!)\). Since \(t\le1/4\), \(\sum r_i\le4r_1/3\) and \(\log(k!)\le k r_m\le k r_1/4\), giving the final bound.
+The last step uses \((2k-1)\cdot\tfrac43r_1\log2<2kr_1\) and \(\log k!\le k(k-1)\le kr_m\le\tfrac14kr_1\).
 
-The one-variable multiplicity estimate applied to \(U_1\), of degree at most \(kr_m\), now gives index with the original weight \(r_m\) at most \(kt\). The induction hypothesis applied to \(U_2\), with weights \(kr_i\) and parameter \(\eta^2\), gives index with the original weights at most \(2k(m-1)\eta^2\). Indeed \((\eta^2)^{2^{m-2}}=t\), and
+*The index of \(W\) from above.* The factor \(V_0\) is a polynomial in \(T_m\) of degree at most \(kr_m\). By the one-root estimate and (12.19), its multiplicity \(\ell_0\) at \(\beta_m\) satisfies \(\ell_0\,h(\beta_m)\le k(h(P)+3r_1)+kr_m\le k(h(P)+6mr_1)\). With the weight \(r_m\) its index is \(\ell_0/r_m\), so (12.18) gives
 
 \[
- h(U_2)+6(m-1)kr_1
-       \le k(h(P)+6mr_1)
-       \le t\min_{i<m}kr_i h(\beta_i).
+ \operatorname{ind}_{\beta_m,r_m}V_0\le\frac{k\,(h(P)+6mr_1)}{r_m\,h(\beta_m)}\le kt .
 \]
 
-Put \(u=\operatorname{Ind}_{\boldsymbol\beta,\boldsymbol r}P\). Additivity of index and the derivative loss bound, proved in Lesson 10, give
+The factor \(U_0\) has degree at most \(kr_i\) in \(T_i\). We apply the lemma in \(m-1\) variables to it, with the weights \(kr_1,\ldots,kr_{m-1}\) and with \(\eta^2\) in place of \(\eta\). Then \((\eta^2)^{2^{m-2}}=t\), the ratio condition is unchanged, and (12.19) gives
 
 \[
- \operatorname{Ind}V
-    \ge\sum_{j=0}^{k-1}\max(u-j/r_m,0)-k r_m/r_{m-1}.
+ h(U_0)+6(m-1)\,kr_1\le k\bigl(h(P)+6mr_1\bigr)\le t\,(kr_i)\,h(\beta_i)\qquad(i<m).
+\]
+
+So \(U_0\) has index at most \(2(m-1)\eta^2\) for the weights \(kr_i\), and hence at most \(2k(m-1)\eta^2\) for the weights \(r_i\). A polynomial in \(\boldsymbol T'\) alone has the same index at \(\boldsymbol\beta\) as at \((\beta_1,\ldots,\beta_{m-1})\), and likewise for \(T_m\). By the product rule,
+
+\[
+ \operatorname{ind}_{\boldsymbol\beta,\boldsymbol r}W\le2k(m-1)\eta^2+kt .
+\]
+
+*The index of \(W\) from below.* Put \(u=\operatorname{ind}_{\boldsymbol\beta,\boldsymbol r}P\). Then \(u\le m\), because every Taylor coefficient of \(P\) at \(\boldsymbol\beta\) has weighted order at most \(\sum_ir_i/r_i\). By (11.5) and \(|\boldsymbol i_\ell|\le k-1\le r_m\), the entry of \(W\) in column \(j+1\) has index at least \(\max\{0,u-j/r_m\}-r_m/r_{m-1}\ge\max\{0,u-j/r_m\}-t\). Each term of the determinant takes one entry from every column, so the product and sum rules give
+
+\[
+ \operatorname{ind}_{\boldsymbol\beta,\boldsymbol r}W\ge\sum_{j=0}^{k-1}\max\{0,\,u-j/r_m\}-kt .
  \tag{12.20}
 \]
 
-The sum is at least \(ku^2/(2m)\). If \(u>(k-1)/r_m\), its exact arithmetic-progression sum is at least \(ku/2\), and \(u\le m\). Otherwise integrate the decreasing function \(\max(u-s/r_m,0)\) over \(0\le s\le r_mu\); its integral is \(r_mu^2/2\). Here \(k\ge2\) unless \(u=0\), and \(r_m\ge k-1\ge k/2\), so this is at least \(ku^2/4\). Both cases give the stated bound.
+Let \(\nu\ge1\) be the number of \(j\in\{0,\ldots,k-1\}\) with \(j\le r_mu\). These terms sum to \(\nu u-\nu(\nu-1)/(2r_m)\ge\nu u/2\), since \(\nu-1\le r_mu\). If \(\nu=k\), the sum is at least \(ku/2\ge ku^2/(2m)\). If \(\nu<k\), then \(\nu>r_mu\), so the sum is at least \(r_mu^2/2\); moreover \(k\ge2\) gives \(k\le r_m+1\le2r_m\), and the sum is again at least \(ku^2/4\ge ku^2/(2m)\).
 
-Combine (12.19)–(12.20) and the two factor indices:
+Comparing the two bounds for the index of \(W\),
 
 \[
- \frac{k u^2}{2m}\le kt+2k(m-1)\eta^2+kt
-                      \le2km\eta^2.
+ \frac{ku^2}{2m}\le2kt+2k(m-1)\eta^2\le2km\eta^2,
 \]
 
-Hence \(u\le2m\eta\). \(\square\)
+because \(t\le\eta^2\). Hence \(u\le2m\eta\). \(\square\)
+
+The squaring of \(\eta\) at each step is the source of the exponent \(2^{m-1}\): the factor in \(m-1\) variables is treated with the parameter \(\eta^2\), and its own ratio condition must again read \(t\).
 
 ### Corollary 12.7. Index along hyperplanes
 
-Let \(P\) be a nonzero integer multihomogeneous polynomial in \(m\) blocks of \(N=n+1\ge2\) variables, of block degrees at most \(d_j\). For nonzero algebraic linear forms \(M_j\), define its index by membership in the ideals generated by
+Let \(N=n+1\ge2\). Let \(P\ne0\) be a polynomial with integer coefficients in \(m\) blocks \(\boldsymbol X_1,\ldots,\boldsymbol X_m\) of \(N\) variables, homogeneous in each block, of degree at most \(d_j\) in block \(j\). For each \(j\) let \(M_j(\boldsymbol X_j)=\sum_{i=0}^nb_{j,i}X_{j,i}\) be a nonzero linear form with algebraic coefficients. The *index of \(P\) along \(M_1,\ldots,M_m\)*, with the weights \(d_j\), is the largest \(\tau\) such that \(P\) lies in the ideal generated by the products \(\prod_jM_j^{a_j}\) with \(\sum_ja_j/d_j\ge\tau\). If \(0<\sigma\le1/2\), \(d_{j+1}/d_j\le\sigma\), and
 
 \[
- \prod_j M_j^{a_j},\qquad \sum_j a_j/d_j\ge t.
-\]
-
-If \(0<\sigma\le1/2\), \(d_{j+1}/d_j\le\sigma\), and
-
-\[
- \min_j d_jh([M_j])\ge
-                 n\sigma^{-1}\bigl(h(P)+6md_1\bigr),
+ d_j\,h([M_j])\ge n\sigma^{-1}\bigl(h(P)+6md_1\bigr)\qquad(1\le j\le m),
  \tag{12.21}
 \]
 
-then the index is at most \(2m\sigma^{1/2^{m-1}}\).
+then this index is at most \(2m\sigma^{1/2^{m-1}}\).
 
-**Proof.** In each block choose a nonzero coefficient \(b_0\) of \(M_j\). Since
+**Proof.** Choose, in every block, coordinates in which \(M_j\) is the first coordinate \(Z_{j,0}\). The ideals in the definition are then generated by monomials in the \(Z_{j,0}\), and the index is the least value of \(\sum_ja_j/d_j\) over the monomials of \(P\), where \(a_j\) is the exponent of \(Z_{j,0}\). Three consequences are used below. The index is additive on products, since lowest-order parts multiply without cancellation in a polynomial ring. A coordinate \(X_{j,i}\) that is not proportional to \(M_j\) has index zero. A ring homomorphism sending each \(M_j\) to a nonzero form \(M_j'\) maps each of the ideals for \(M_1,\ldots,M_m\) into the corresponding ideal for \(M_1',\ldots,M_m'\), so it cannot lower the index.
+
+*Two coordinates per block.* Fix \(j\) and a nonzero coefficient \(b_{j,i_0}\). After scaling so that \(b_{j,i_0}=1\),
 
 \[
- h([b_0:\cdots:b_n])
- \le\sum_{i=1}^n h([b_0:b_i]),
+ h([M_j])=\sum_v\log\max_i|b_{j,i}|_v\le\sum_{i\ne i_0}\sum_v\log\max(1,|b_{j,i}|_v)=\sum_{i\ne i_0}h([b_{j,i_0}:b_{j,i}]).
 \]
 
-one pair has height at least \(h([M_j])/n\). Relabel it as \((b_0,b_1)\). Its positive height in (12.21) ensures \(b_1\ne0\).
+So some \(i_1\ne i_0\) has \(h([b_{j,i_0}:b_{j,i_1}])\ge h([M_j])/n\). This height is positive by (12.21), so \(b_{j,i_1}\ne0\).
 
-Remove the highest power of each discarded coordinate dividing \(P\), then set that coordinate to zero. Repeat until only coordinates 0 and 1 remain in every block. The polynomial stays nonzero and its coefficient height does not increase. Division by a discarded coordinate does not change hyperplane index: that coordinate has index zero, and weighted initial forms multiply in a polynomial domain. Specialization sends the weighted hyperplane ideal into the corresponding specialized ideal. Consequently index can increase under specialization, which is the direction needed here.
+*Removing the other coordinates.* Let \(X\) be a coordinate of block \(j\) other than \(X_{j,i_0}\) and \(X_{j,i_1}\). Write \(P=X^eP_1\) with \(X\nmid P_1\), and let \(P_2\) be \(P_1\) with \(X\) set to zero. Then \(P_2\ne0\); it is homogeneous in each block of degree at most \(d_j\), and \(h(P_2)\le h(P_1)=h(P)\), because its coefficients are among those of \(P\). The index of \(P\) along the \(M_j\) equals that of \(P_1\), since \(X\) is not proportional to \(M_j\) (the coefficients \(b_{j,i_0}\) and \(b_{j,i_1}\) are nonzero). Setting \(X=0\) replaces \(M_j\) by the form with that coefficient deleted, so the index of \(P_2\) along the new forms is at least that of \(P_1\). Repeating this in every block, we reach a nonzero polynomial \(P^*\) in the pairs \((X_{j,i_0},X_{j,i_1})\) with \(h(P^*)\le h(P)\), whose index along the forms \(M_j^*=b_{j,i_0}X_{j,i_0}+b_{j,i_1}X_{j,i_1}\), with the same weights \(d_j\), is at least the index of \(P\).
 
-Dehomogenize by setting each retained coordinate 0 equal to one. The resulting nonzero integer polynomial has degrees at most \(d_j\); its point coordinates are \(-b_0/b_1\), of heights \(h([b_0:b_1])\). Its point index equals the binary homogeneous hyperplane index, with the same weights \(d_j\). Apply Lemma 12.6 with \(\eta=\sigma^{1/2^{m-1}}\). If \(\eta>1/2\), the requested upper bound exceeds \(m\), the trivial degree bound; otherwise (12.21) is exactly its height hypothesis. The original index is no larger than the specialized index, proving the result. \(\square\)
+*Dehomogenizing.* Set \(X_{j,i_0}=1\) and write \(T_j=X_{j,i_1}\). The result \(Q(T_1,\ldots,T_m)\in\mathbb Z[T_1,\ldots,T_m]\) is nonzero, with \(\deg_{T_j}Q\le d_j\) and \(h(Q)=h(P^*)\). Put \(\beta_j=-b_{j,i_0}/b_{j,i_1}\), so that \(M_j^*(1,T_j)=b_{j,i_1}(T_j-\beta_j)\). Expand \(P^*\) in the coordinates \(M_j^*,X_{j,i_0}\) of each block and then set \(X_{j,i_0}=1\). This gives the Taylor expansion of \(Q\) at \(\boldsymbol\beta=(\beta_j)\), with nonzero coefficients at exactly the same exponents. So the index of \(Q\) at \(\boldsymbol\beta\) with weights \(d_j\) equals the index of \(P^*\) along the \(M_j^*\). Also \(h(\beta_j)=h([b_{j,i_0}:b_{j,i_1}])\ge h([M_j])/n\).
 
-The exponential \(2^{m-1}\) in these lemmas is essential: the induction replaces \(\eta\) by \(\eta^2\). A linear exponent \(2m-1\) would not satisfy that induction.
+*Applying Lemma 12.6.* Let \(\eta=\sigma^{1/2^{m-1}}\). If \(\eta>1/2\), the asserted bound \(2m\eta\) exceeds \(m\), which bounds the index of \(P\) because every monomial has \(\sum_ja_j/d_j\le m\). Otherwise \(\eta^{2^{m-1}}=\sigma\), the ratio condition of (12.18) holds, and by (12.21)
+
+\[
+ \sigma\,d_j\,h(\beta_j)\ge\sigma\,d_j\,h([M_j])/n\ge h(P)+6md_1\ge h(Q)+6md_1 .
+\]
+
+Lemma 12.6 bounds the index of \(Q\) at \(\boldsymbol\beta\) by \(2m\eta\), and the index of \(P\) is no larger. \(\square\)
 
 ## 7. Auxiliary polynomials on products of boxes
 
-We now construct the polynomial whose small value will contradict the product formula. The construction and the exterior-power argument below follow the mathematical method of Shivani Goel, Rashi Lunia and Anwesh Ray, [*Diophantine approximation and the subspace theorem*, version 2](https://arxiv.org/pdf/2502.00731v2), §§4.4–5.3, PDF pp. 34–52. That exact version is available under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Sections 6–8 of this lesson adapt that treatment, with new proofs of the supporting estimates, different counting constants, and corrected specialization and finite-exception arguments; those adapted sections retain CC BY 4.0. The other original sections are CC0. The linked paper supplies an openly licensed full treatment for further study, rather than a paid-book proof dependency.
+From here until the end of the proof of Theorem 12.13 for coefficients in \(K\), the forms \(L_{v,i}\) of (12.13) have coefficients in \(K\), the set \(S\) contains all infinite places, and \(N=n+1\ge2\). For \(Q\ge1\) we write \(\Pi(Q)\cap K^N\) for the set of \(x\in K^N\) that satisfy the local condition (12.13) at every place, and \(U(Q)\) for the \(K\)-span of this set. The goal of this section is Proposition 12.11: the spaces \(U(Q)\) of dimension \(N-1\) form a finite set. The method is Schmidt's. A polynomial in \(m\) blocks of variables whose monomials are balanced with respect to every \(L_v\) is small at points taken from \(m\) such hyperplanes of very different heights; but a nonzero \(S\)-integer cannot be small at every place of \(S\), and Corollary 12.7 prevents the polynomial from vanishing to high order on those hyperplanes. Goel, Lunia and Ray give a detailed modern account of this approach.
+
+For \(v\in S\) and a block \(\boldsymbol X_j\) of \(N\) variables, the forms \(Y_{j,i}=L_{v,i}(\boldsymbol X_j)\), \(1\le i\le N\), are again coordinates. Every polynomial in \(\boldsymbol X_1,\ldots,\boldsymbol X_m\) can therefore be written as a polynomial in the \(Y_{j,i}\); we call its coefficients and its exponent vectors \(J=(J_{j,i})\) the \(L_v\)-coefficients and \(L_v\)-exponents. The affine height of finitely many elements \(a_1,\ldots,a_s\) of \(K\) is
+
+\[
+ h_{\mathrm{aff}}(a_1,\ldots,a_s)=\sum_v\log\max(1,|a_1|_v,\ldots,|a_s|_v),
+\]
+
+the sum running over all places of \(K\) with the normalization (12.11).
 
 ### Lemma 12.8. A polynomial with balanced exponents
 
-Keep the fixed forms in (12.13), put \(N=n+1\ge2\), and fix \(0<\eta<1/(4N)\). Choose an integer \(m\) so large that
+Let \(0<\eta<1/(4N)\), and let \(m\) be a positive integer with
 
 \[
-                  e^{-2\eta^2m}<(4dN|S|)^{-1}.
-                  \tag{12.22}
+ e^{-2\eta^2m}<\frac1{4dN|S|},\qquad d=[K:\mathbb Q].
+ \tag{12.22}
 \]
 
-For all sufficiently large positive block degrees \(d_1,\ldots,d_m\), there is a nonzero integer multihomogeneous polynomial \(P(X_1,\ldots,X_m)\), of these degrees, with \(h(P)\le C\sum d_j\). If a divided derivative \(T=\partial^I P\) has weight \(\sum_j|I_j|/d_j\le m\eta\), every nonzero coefficient of its expression in the coordinates \(L_v(X_j)\) has exponents satisfying
+There is a constant \(C\), depending on \(K\), \(S\), the forms, \(m\) and \(\eta\), with the following property. For all positive integers \(d_1,\ldots,d_m\) there is a nonzero polynomial \(P\in\mathbb Z[\boldsymbol X_1,\ldots,\boldsymbol X_m]\), homogeneous of degree \(d_j\) in block \(j\), with \(h(P)\le C\sum_jd_j\), such that every divided derivative \(T=D_{\boldsymbol I}P\) of weighted order \(\sum_j|\boldsymbol I_j|/d_j\le m\eta\) has two properties at each \(v\in S\). First, every \(L_v\)-exponent \(J\) of \(T\) with nonzero \(L_v\)-coefficient satisfies
 
 \[
- \frac mN-2m\eta
-  <\sum_j\frac{J_{j,i}}{d_j}
-  <\frac mN+2m(N-1)\eta
-                   \quad(1\le i\le N).
+ \frac mN-2m\eta<\sum_{j=1}^m\frac{J_{j,i}}{d_j}<\frac mN+2m(N-1)\eta\qquad(1\le i\le N).
  \tag{12.23}
 \]
 
-The affine height of the entire transformed coefficient vector of \(T\), for each fixed \(v\), is at most \(C\sum d_j\). The constant depends on the fixed field, forms, \(m\) and \(\eta\), but not on the degrees.
+Second, the family of all \(L_v\)-coefficients of \(T\) has affine height at most \(C\sum_jd_j\). Here \(|\boldsymbol I_j|\) is the total order of \(\boldsymbol I\) in block \(j\).
 
-**Proof.** A block of degree \(d_j\) has \(\binom{d_j+N-1}{N-1}\) coefficients. Impose the homogeneous \(K\)-linear conditions that a coefficient, in each \(L_v\)-coordinate system, vanish whenever
+**Proof.** *Conditions.* The unknowns are the \(V=\prod_j\binom{d_j+n}{n}\) rational coefficients \(p_{\boldsymbol a}\) of a polynomial homogeneous of degree \(d_j\) in block \(j\). Its \(L_v\)-exponents run through the same number of tuples \(J=(J_1,\ldots,J_m)\) with \(J_j\in\mathbb Z_{\ge0}^N\) and \(|J_j|=d_j\). Call such a \(J\) *low in \(i\)* if \(\sum_jJ_{j,i}/d_j\le m/N-m\eta\). We impose that the \(L_v\)-coefficient of \(P\) vanishes at every \(J\) that is low in some \(i\), for every \(v\in S\).
 
-\[
-                   \sum_j J_{j,i}/d_j\le m/N-m\eta
-\]
-
-for at least one coordinate \(i\). Their proportion among all coefficients tends, as every degree grows, to the corresponding volume proportion on a product of \(m\) standard simplices. This is the ordinary Riemann-sum limit; the defining hyperplane has volume zero.
-
-For a uniformly distributed point of the simplex, a specified coordinate \(Z\) lies in \([0,1]\) and has mean \(1/N\), by symmetry. For independent copies \(Z_j\),
+To count these conditions, pick \(J\) uniformly at random. Its blocks are independent, each uniformly distributed on \(\{J_j:|J_j|=d_j\}\). For fixed \(i\) the variable \(Z_j=J_{j,i}/d_j\) lies in \([0,1]\), and its mean is \(1/N\): permuting the \(N\) coordinates preserves the set \(\{|J_j|=d_j\}\), so the coordinates have equal means, and these add up to one. We show below that
 
 \[
- \Pr\left\{\sum Z_j\le m/N-m\eta\right\}\le e^{-2m\eta^2}.
+ \Pr\Bigl(\sum_{j=1}^mZ_j\le\frac mN-m\eta\Bigr)\le e^{-2m\eta^2}.
 \]
 
-Here is an elementary proof of this bound. The second derivative of \(\log\mathbb E e^{tZ}\) is the variance of \(Z\) under the tilted probability measure. Every probability measure on \([0,1]\) has variance at most \(1/4\), since \(\mathbb E(Z-\tfrac12)^2\le1/4\). Integrating twice gives \(\mathbb E e^{t(Z-\mathbb EZ)}\le e^{t^2/8}\). Apply Markov's inequality to \(e^{-4\eta\sum(Z_j-1/N)}\). This proves the displayed estimate.
+Hence at most \(e^{-2m\eta^2}V\) exponents are low in a given \(i\), and the number of imposed \(K\)-linear conditions satisfies \(M\le N|S|e^{-2m\eta^2}V<V/(4d)\), by (12.22).
 
-There are \(N|S|\) possible pairs \((i,v)\). By (12.22), the number \(M\) of imposed equations is, for large degrees, less than half the number of unknowns divided by \(d\).
+The probability bound is Hoeffding's inequality. Let \(Z_1,\ldots,Z_m\) be independent with values in \([0,1]\) and means \(p_j\), and let \(s>0\). Convexity gives \(e^{-sz}\le1-z+ze^{-s}\) on \([0,1]\), so \(\mathbb E\,e^{-s(Z_j-p_j)}\le e^{\varphi_j(s)}\), where \(\varphi_j(s)=sp_j+\log(1-p_j+p_je^{-s})\). Here \(\varphi_j(0)=\varphi_j'(0)=0\), and \(\varphi_j''=q(1-q)\le1/4\) with \(q=p_je^{-s}/(1-p_j+p_je^{-s})\in[0,1]\); thus \(\varphi_j(s)\le s^2/8\). By independence and Markov's inequality,
 
-We justify the needed number-field form of Siegel's lemma directly. If a \(K\)-matrix \(B\) has affine height \(h(B)\), its denominator ideal has norm at most \(e^{dh(B)}\). This norm, as a rational integer, clears every denominator: the order of the finite group \(\mathcal O_K/\mathfrak a\) kills that group. At each embedding the entries have size at most \(e^{dh(B)}\). After clearing denominators and expressing in a fixed integral basis, the integer entries are bounded by \(C_K e^{2dh(B)}\); the inverse embedding matrix supplies \(C_K\). Thus \(M\) equations become at most \(dM\) integer equations.
+\[
+ \Pr\Bigl(\sum_j(Z_j-p_j)\le-m\eta\Bigr)\le e^{-sm\eta}\,\mathbb E\,e^{-s\sum_j(Z_j-p_j)}\le e^{-sm\eta+ms^2/8},
+\]
 
-For \(V>2dM\) unknowns and integer coefficient bound \(A\), the pigeonhole argument of Lesson 10 yields a nonzero integer kernel vector of maximum size at most \(3VA+1\). Indeed put \(R=dM\), choose \(U=\lceil(3VA)^{R/(V-R)}\rceil\), and compare the \((U+1)^V\) integer inputs in a cube with at most \((3VAU)^R\) outputs; two have the same image. Their difference is a nonzero kernel vector, and \(U\le3VA+1\). The case \(R=0\) is immediate.
+and \(s=4\eta\) gives \(e^{-2m\eta^2}\).
 
-The coefficient matrix for our changes of variables has affine height \(O(\sum d_j)\). To verify this, at every place bound the entries of the fixed inverse matrices, use the multinomial formula, and at infinite places bound the number of resulting terms by \(N^{\sum d_j}\). The resulting local constants are one almost everywhere. Also \(\log V=O(\sum d_j)\). The preceding kernel bound therefore gives the claimed height of \(P\).
+*Integer equations.* For \(v\in S\) let \(B_v\) be the inverse of the matrix with rows \(L_{v,1},\ldots,L_{v,N}\), so that \(\boldsymbol X_j=B_vY_j\), and choose a positive integer \(D_v\) such that \(D_vB_v\) has entries in \(\mathcal O_K\). The \(L_v\)-coefficient of \(P\) at \(J\) is \(\sum_{\boldsymbol a}p_{\boldsymbol a}\gamma_{v,\boldsymbol a,J}\), where \(\gamma_{v,\boldsymbol a,J}\) is the coefficient of \(Y^J\) in \(\prod_j(B_vY_j)^{\boldsymbol a_j}\). This is a sum of products of \(\sum_jd_j\) entries of \(B_v\) with nonnegative integer coefficients. Hence \(D_v^{\sum d_j}\gamma_{v,\boldsymbol a,J}\) is an algebraic integer. At every complex embedding \(\sigma\) of \(K\), its image has absolute value at most \((N\max|\sigma(D_vB_v)|)^{\sum d_j}\), the maximum over the entries. Algebraic integers of \(K\) have coordinates in a fixed integral basis bounded by \(C_K\) times their largest conjugate; \(C_K\) comes from inverting the matrix of conjugates of the basis. So each condition, multiplied by \(D_v^{\sum d_j}\), splits into \(d\) linear equations with integer coefficients of absolute value at most \(A=C_Kc^{\sum d_j}\), where \(c\ge1\) depends only on the forms. Altogether there are \(R\le dM<V/4\) integer equations in \(V\) unknowns.
 
-Differentiation in the original coordinates decreases the weighted exponent of any one \(L_v\)-coordinate by at most \(\sum|I_j|/d_j\). The imposed lower cutoff consequently gives the strict lower bound in (12.23). The total remaining weighted degree is at most \(m\), so the lower bounds for the other \(N-1\) coordinates give the upper bound. Finally divided derivatives multiply coefficients by binomial coefficients at most \(2^{\sum d_j}\). The same fixed-matrix estimate bounds the height of each full transformed coefficient vector by \(C\sum d_j\). \(\square\)
+*Siegel's lemma.* Lemma 10.5 supplies a nonzero integer solution with \(\max|p_{\boldsymbol a}|\le(VA)^{R/(V-R)}\le(VA)^{1/3}\). A coordinate vector serves if \(R=0\). Since \(\binom{d_j+n}n\le2^{d_j+n}\), we have \(\log V\le N\sum_jd_j\). Therefore \(h(P)\le\tfrac13\bigl(N\sum_jd_j+\log C_K+\log c\sum_jd_j\bigr)\le C\sum_jd_j\).
+
+*The window (12.23).* Let \(T=D_{\boldsymbol I}P\) with \(\sum_j|\boldsymbol I_j|/d_j\le m\eta\), and fix \(v\). In block \(j\), a derivative in the \(\boldsymbol X\)-coordinates is a combination with constant coefficients of derivatives in the \(Y\)-coordinates of the same order. So \(T\) is a combination of \(Y\)-derivatives of \(P\) whose order in block \(j\) is \(|\boldsymbol I_j|\). Such a derivative sends \(Y^{J'}\) to a multiple of \(Y^{J'-I'}\), with \(|I'_j|=|\boldsymbol I_j|\). Every \(L_v\)-exponent \(J\) of \(T\) with nonzero coefficient is therefore of this form, with \(J'\) an \(L_v\)-exponent of \(P\) with nonzero coefficient. As \(J'\) is not low in \(i\),
+
+\[
+ \sum_j\frac{J_{j,i}}{d_j}\ge\sum_j\frac{J'_{j,i}}{d_j}-\sum_j\frac{|\boldsymbol I_j|}{d_j}>\Bigl(\frac mN-m\eta\Bigr)-m\eta .
+\]
+
+For the upper bound, \(\sum_{i=1}^N\sum_jJ_{j,i}/d_j=\sum_j(d_j-|\boldsymbol I_j|)/d_j\le m\). Subtracting the lower bounds for the \(N-1\) indices other than \(i\) leaves less than \(m-(N-1)(m/N-2m\eta)=m/N+2m(N-1)\eta\).
+
+*Heights of the \(L_v\)-coefficients.* By Lemma 10.3, \(T\) has integer coefficients \(\tau_{\boldsymbol b}\) of absolute value at most \(2^{\sum d_j}e^{h(P)}\), at most \(V\) of them. Its \(L_v\)-coefficient at \(J\) is \(\sum_{\boldsymbol b}\tau_{\boldsymbol b}\gamma_{v,\boldsymbol b,J}\). At a finite place \(w\), the ultrametric inequality bounds it by \(\max(1,\max|B_v|_w)^{\sum d_j}\), which equals one for all but finitely many \(w\). At an infinite place it is at most \(V2^{\sum d_j}e^{h(P)}(N\max|\sigma(B_v)|)^{\sum d_j}\) in absolute value. Summing logarithms with the normalization (12.11) gives an affine height of at most \(C\sum_jd_j\), after enlarging \(C\). \(\square\)
 
 ### Lemma 12.9. Height of a varying hyperplane
 
-Suppose \(\sum c_{v,i}\le-\rho<0\), and let \(U(Q)\) be the span of the \(K\)-vectors in \(\Pi(Q)\). When \(\dim U(Q)=N-1\), either \(U(Q)\) belongs to one fixed finite family of hyperplanes, or
+Suppose \(\sum_{v\in S}\sum_ic_{v,i}\le-\rho<0\). There are a finite set \(\mathcal E\) of hyperplanes of \(K^N\) and a constant \(C\), both independent of \(Q\), such that whenever \(\dim U(Q)=N-1\), either \(U(Q)\in\mathcal E\) or
 
 \[
-                 h(U(Q))\ge\frac{\rho}{2|S|}\log Q-C.
-                 \tag{12.24}
+ h(U(Q))\ge\frac{\rho}{2|S|}\log Q-C .
+ \tag{12.24}
 \]
 
-The family and \(C\) are independent of \(Q\).
+The height of a hyperplane is the projective height of a nonzero linear form vanishing on it.
 
-**Proof.** Choose a basis \(y_1,\ldots,y_{N-1}\) of \(U(Q)\) in the box. Its wedge, identified with a covector by the standard determinant pairing, is \(w\ne0\). It is integral outside \(S\). Let \(A_{v,i}(w)\) be the cofactor obtained by applying all the forms except \(L_{v,i}\) to this wedge. Determinant expansion gives
+**Proof.** Suppose \(\dim U(Q)=N-1\), and choose a basis \(y_1,\ldots,y_{N-1}\) of \(U(Q)\) in \(\Pi(Q)\cap K^N\). The linear form \(w(x)=\det(y_1,\ldots,y_{N-1},x)\) vanishes exactly on \(U(Q)\). Its coefficients are minors of a matrix with entries in \(\mathcal O_{K,S}\), so they lie in \(\mathcal O_{K,S}\). For \(v\in S\) let \(G_v\) be the matrix with rows \(L_{v,1},\ldots,L_{v,N}\). Then \(\det(G_v)\,w(x)=\det(G_vy_1,\ldots,G_vy_{N-1},G_vx)\), and expansion along the last column gives
 
 \[
-             |A_{v,i}(w)|_v\le C_vQ^{\sum_jc_{v,j}-c_{v,i}}.
+ \det(G_v)\,w=\sum_{i=1}^N(-1)^{N+i}\,\lambda_{v,i}(w)\,L_{v,i},
 \]
 
-If there are nonzero cofactors with indices \(i_v\) and \(\sum_vc_{v,i_v}\ge-\rho/2\), their product is at most \(CQ^{-\rho/2}\). Choose a nonzero coordinate \(w_k\). Because it is integral outside \(S\), the product formula gives \(\prod_{v\in S}|w_k|_v\ge1\). The same upper bound therefore holds for \(\prod_{v\in S}|A_{v,i_v}(w)/w_k|_v\). Each quotient has height at most \(h([w])+C_v'\): divide all coordinates of \(w\) by \(w_k\), whose coordinate is then one, and apply the fixed linear-functional height bound from Lesson 2. The lower product bound is \(e^{-|S|h([w])-C'}\). Comparing them proves (12.24).
-
-Otherwise record the nonempty sets \(I_v=\{i:A_{v,i}(w)\ne0\}\). For each possible pattern choose, once and for all, a nonzero \(K\)-covector \(w_I\) satisfying \(A_{v,i}(w_I)=0\) for \(i\notin I_v\). Such a covector exists because the actual \(w\) is one solution. There are finitely many patterns, hence finitely many choices \(w_I\) of bounded height. Put \(W_I=\ker w_I\).
-
-For \(x\in\Pi(Q)\cap K^N\), the determinant expansion of \(w_I(x)\) in the \(L_v\)-coordinates gives
+where \(\lambda_{v,i}(w)\) is the minor of \((L_{v,k}(y_l))_{k,l}\) with row \(i\) removed. Read as coordinates of \(w\) in the basis \(L_{v,1},\ldots,L_{v,N}\) of the dual space, each \(\lambda_{v,i}\) is a fixed \(K\)-linear function of \(w\), independent of \(Q\). Expanding the minor into \((N-1)!\) products of values \(|L_{v,k}(y_l)|_v\le Q^{c_{v,k}}\) gives
 
 \[
- |w_I(x)|_v\le C_{v,I}Q^{\max_{i\in I_v}c_{v,i}}\quad(v\in S).
+ |\lambda_{v,i}(w)|_v\le\kappa_v\,Q^{s_v-c_{v,i}},\qquad s_v=\sum_kc_{v,k},
 \]
 
-Outside \(S\) it is bounded by the coefficient norm of \(w_I\). If it were nonzero, the product formula would imply
+where \(\kappa_v\) is \(((N-1)!)^{d_v/d}\) for infinite \(v\) and \(1\) for finite \(v\). For each \(v\) the \(\lambda_{v,i}(w)\) determine \(w\), so they are not all zero. Let \(I_v(w)=\{i:\lambda_{v,i}(w)\ne0\}\), and call \((I_v(w))_{v\in S}\) the pattern of \(w\).
+
+*Case 1: some choice of \(i_v\in I_v(w)\) has \(\sum_vc_{v,i_v}\ge-\rho/2\).* Multiplying the bounds gives
 
 \[
- 1\le C_IQ^{\sum_v\max_{i\in I_v}c_{v,i}}<C_IQ^{-\rho/2},
+ \prod_{v\in S}|\lambda_{v,i_v}(w)|_v\le\kappa\,Q^{\sum_vs_v-\sum_vc_{v,i_v}}\le\kappa\,Q^{-\rho/2},\qquad\kappa=\prod_v\kappa_v .
 \]
 
-a contradiction for large \(Q\). Thus \(U(Q)\subset W_I\), hence equality by dimension. Bounded \(Q\) contributes only finitely many additional spans: all the relevant vectors lie in one bounded archimedean body with bounded finite denominators, hence in a finite subset of a fixed lattice. \(\square\)
+For a lower bound, choose a nonzero coordinate \(w_k\) and put \(w'=w/w_k\). One coordinate of \(w'\) equals one, so its affine height equals \(h([w])=h(U(Q))\). The numbers \(\alpha_v=\lambda_{v,i_v}(w')\) are nonzero, and \(h(\alpha_v)\le h([w])+C_1\), with \(C_1\) depending only on the forms. Indeed, if \(\ell_1,\ldots,\ell_N\) are the coefficients of \(\lambda_{v,i_v}\), then \(|\alpha_v|_u\le N^{\epsilon_u}\max_k|\ell_k|_u\max_k|w'_k|_u\) at every place \(u\), where \(\epsilon_u=d_u/d\) at infinite places and \(\epsilon_u=0\) at finite places; take \(\log\max(1,\cdot)\) and sum over \(u\). A nonzero \(\alpha\in K\) satisfies \(|\alpha|_v\ge\prod_u\min(1,|\alpha|_u)=H(\alpha)^{-1}\) at every place \(v\), by the product formula. Moreover \(\prod_{v\in S}|w_k|_v\ge1\), because \(w_k\) is a nonzero \(S\)-integer. Hence
 
-Choosing \(w_I\) once for each pattern is essential. Choosing the varying covector \(w\) itself would not provide a fixed exceptional family.
+\[
+ \prod_{v\in S}|\lambda_{v,i_v}(w)|_v=\prod_{v\in S}|w_k|_v\prod_{v\in S}|\alpha_v|_v\ge e^{-|S|(h([w])+C_1)} .
+\]
+
+Comparing the two bounds proves (12.24) with \(C=C_1+|S|^{-1}\log\kappa\).
+
+*Case 2: every choice has \(\sum_vc_{v,i_v}<-\rho/2\).* Equivalently, \(\sum_v\max_{i\in I_v(w)}c_{v,i}<-\rho/2\), which depends only on the pattern. There are finitely many patterns. For each pattern \(I=(I_v)\) of this kind that occurs for some \(Q\), fix once and for all a nonzero linear form \(w_I\) with \(\lambda_{v,i}(w_I)=0\) for all \(v\) and all \(i\notin I_v\); the form \(w\) of one occurrence is such a form. For any \(Q\) and any \(x\in\Pi(Q)\cap K^N\), the expansion of \(\det(G_v)w_I(x)\) involves only \(i\in I_v\), so
+
+\[
+ |w_I(x)|_v\le\kappa_{v,I}\,Q^{\max_{i\in I_v}c_{v,i}}\quad(v\in S),\qquad |w_I(x)|_u\le\|w_I\|_u\quad(u\notin S),
+\]
+
+and \(\|w_I\|_u=1\) for all but finitely many \(u\). If \(w_I(x)\ne0\), the product formula gives \(1\le\kappa_IQ^{\sum_v\max_{i\in I_v}c_{v,i}}<\kappa_IQ^{-\rho/2}\), which fails for \(Q>Q_I=\kappa_I^{2/\rho}\). So for \(Q>Q_I\) every vector of \(\Pi(Q)\cap K^N\) lies in \(\ker w_I\). If such a \(U(Q)\) has dimension \(N-1\) and pattern \(I\), it equals \(\ker w_I\).
+
+Finally let \(Q_0\ge1\) be at least every \(Q_I\). For \(1\le Q\le Q_0\), all vectors of \(\Pi(Q)\cap K^N\) have coordinates in \(\mathcal O_{K,S}\), with absolute values bounded at the places of \(S\) independently of \(Q\). Their heights are therefore bounded, and Northcott's Theorem 2.6 leaves only finitely many such vectors, hence finitely many spaces \(U(Q)\). Let \(\mathcal E\) consist of these spaces and the hyperplanes \(\ker w_I\). \(\square\)
 
 ### Lemma 12.10. A grid detects a nonzero polynomial
 
-Let a nonzero polynomial in variables \(Z_1,\ldots,Z_s\) have degree at most \(e_i\) in \(Z_i\). For \(B>0\), there are integers \(|z_i|\le B\) and derivative orders \(0\le a_i\le e_i/B\) such that \(\partial^{\boldsymbol a}P(\boldsymbol z)\ne0\).
+Suppose \(F\ne0\) is a polynomial in \(Z_1,\ldots,Z_s\) over a field of characteristic zero, with \(\deg_{Z_i}F\le e_i\), and \(B>0\) is real. There are integers \(z_i\) with \(|z_i|\le B\) and integers \(0\le a_i\le e_i/B\) such that \(\bigl(\partial_{Z_1}^{a_1}\cdots\partial_{Z_s}^{a_s}F\bigr)(z_1,\ldots,z_s)\ne0\).
 
-**Proof.** In one variable, otherwise every one of the \(2\lfloor B\rfloor+1\) grid points is a zero of multiplicity at least \(\lfloor e/B\rfloor+1\). Their product exceeds \(e\), because \(2\lfloor B\rfloor+1>B\). This contradicts the degree. For several variables choose any nonzero coefficient polynomial in the last variable, apply induction to it, and then apply the one-variable assertion to the resulting nonzero polynomial in that last variable. The chosen coefficient need not be the constant coefficient. \(\square\)
+**Proof.** For \(s=1\), the interval \([-B,B]\) contains \(2\lfloor B\rfloor+1>B\) integers. If each of them were a root of multiplicity at least \(\lfloor e_1/B\rfloor+1>e_1/B\), \(F\) would have more than \(e_1\) roots counted with multiplicity, which is impossible. So some integer \(z\) in the interval is a root of multiplicity \(a\le e_1/B\), with \(a=0\) if it is not a root, and \(F^{(a)}(z)\ne0\).
+
+For \(s\ge2\), write \(F=\sum_kF_k(Z_1,\ldots,Z_{s-1})Z_s^k\) and choose \(k\) with \(F_k\ne0\). By induction there are \(z_1,\ldots,z_{s-1}\) and \(a_1,\ldots,a_{s-1}\) as required for \(F_k\). The one-variable polynomial \(g(Z_s)=(\partial^{a_1}_{Z_1}\cdots\partial^{a_{s-1}}_{Z_{s-1}}F)(z_1,\ldots,z_{s-1},Z_s)\) has nonzero coefficient at \(Z_s^k\) and degree at most \(e_s\). The case \(s=1\) supplies \(z_s\) and \(a_s\). \(\square\)
 
 ### Proposition 12.11. Boxes of codimension one have finitely many spans
 
-For fixed \(K,S,L,c\) with \(\sum c_{v,i}\le-\rho<0\), the hyperplanes \(U(Q)\) of dimension \(N-1\) form a finite family.
+Fix \(K\), \(S\), the forms \(L_{v,i}\) and exponents \(c_{v,i}\) with \(\sum_{v,i}c_{v,i}\le-\rho<0\). Then only finitely many hyperplanes occur among the spaces \(U(Q)\), \(Q\ge1\).
 
-**Proof.** Suppose they form an infinite family. Remove the finite exceptions in Lemma 12.9. Choose \(\eta\) satisfying Lemma 12.8 and so small that \(2N\eta\sum_{v,i}|c_{v,i}|<\rho/(4N)\). Choose \(m\) by (12.22), and put
+**Proof.** Suppose they form an infinite set. By the proof of Lemma 12.9, bounded \(Q\) produce only finitely many spaces, so hyperplanes \(U(Q)\) outside the finite set \(\mathcal E\) of that lemma occur for arbitrarily large \(Q\); they satisfy (12.24). Choose, in this order:
+
+1. \(\eta\) with \(0<\eta<1/(4N)\) and \(2N\eta\sum_{v,i}|c_{v,i}|<\rho/(4N)\);
+2. \(m\) satisfying (12.22), and then \(\sigma=(\eta/4)^{2^{m-1}}\) and \(B=2(N-1)/\eta\);
+3. \(Q_1\), large in terms of everything chosen so far, with \(U_1=U(Q_1)\) a hyperplane outside \(\mathcal E\); then \(Q_2,\ldots,Q_m\) with \(\log Q_{j+1}\ge2\sigma^{-1}\log Q_j\) and hyperplanes \(U_j=U(Q_j)\) outside \(\mathcal E\);
+4. \(D\), large in terms of everything chosen so far, and \(d_j=\lfloor D/\log Q_j\rfloor\).
+
+Then each \(d_j\ge1\), \(d_{j+1}/d_j\le\sigma\), \(D-\log Q_j<d_j\log Q_j\le D\), and \(\sum_jd_j\le mD/\log Q_1\). Let \(P\) be the polynomial of Lemma 12.8 for these degrees, with its constant \(C\), and let \(w_j\) be a nonzero linear form vanishing on \(U_j\).
+
+*A derivative that survives on the product of hyperplanes.* By (12.24), \(d_j\,h([w_j])\ge\frac{\rho}{2|S|}(D-\log Q_m)-C_2D/\log Q_1\), with \(C_2\) the constant of (12.24). On the other hand \(n\sigma^{-1}(h(P)+6md_1)\le n\sigma^{-1}m(C+6)D/\log Q_1\). With \(Q_1\) and then \(D\) large, the first quantity exceeds \(\rho D/(4|S|)\) and the second is below it, so (12.21) holds. By Corollary 12.7, the index of \(P\) along \(w_1,\ldots,w_m\) is at most \(2m\sigma^{1/2^{m-1}}=m\eta/2\). In each block take coordinates consisting of \(w_j\) and \(n\) further linear forms, and pick a monomial of \(P\) whose exponents \(a_j\) of the \(w_j\) satisfy \(\sum_ja_j/d_j\le m\eta/2\). Differentiate \(a_j\) times with respect to the coordinate \(w_j\) in every block, and restrict to \(U_1\times\cdots\times U_m\). Monomials with a smaller exponent in some block are annihilated, and those with a larger exponent in some block vanish on the product. The monomials with exactly these exponents survive with the factor \(\prod_ja_j!\), so the restriction is nonzero. Each derivative with respect to \(w_j\) is a combination with constant coefficients of the derivatives \(\partial/\partial X_{j,k}\). Hence some divided derivative \(D_{\boldsymbol I_0}P\) with \(|\boldsymbol I_{0,j}|=a_j\) has nonzero restriction to \(U_1\times\cdots\times U_m\).
+
+*An integral point of nonvanishing.* Let \(y_{j,1},\ldots,y_{j,n}\) be a basis of \(U_j\) in \(\Pi(Q_j)\cap K^N\). The polynomial \(G(\boldsymbol z)=(D_{\boldsymbol I_0}P)\bigl(\sum_lz_{1,l}y_{1,l},\ldots,\sum_lz_{m,l}y_{m,l}\bigr)\) in the \(mn\) variables \(z_{j,l}\) is nonzero and has degree at most \(d_j\) in each \(z_{j,l}\). Lemma 12.10 supplies integers \(|z_{j,l}|\le B\) and orders \(a_{j,l}\le d_j/B\) at which a derivative of \(G\) does not vanish. By the chain rule, \(\partial/\partial z_{j,l}\) acts as the derivative of \(D_{\boldsymbol I_0}P\) in the direction \(y_{j,l}\), a combination of first-order derivatives in block \(j\). Divided derivatives compose to nonzero multiples of divided derivatives. Hence some \(T=D_{\boldsymbol I}P\) with \(|\boldsymbol I_j|=a_j+\sum_la_{j,l}\) does not vanish at \(x'=(x'_1,\ldots,x'_m)\), where \(x'_j=\sum_lz_{j,l}y_{j,l}\). Its weighted order is at most \(m\eta/2+mn/B=m\eta\). The points \(x'_j\) have coordinates in \(\mathcal O_{K,S}\). At finite \(v\in S\) they satisfy \(|L_{v,i}(x'_j)|_v\le Q_j^{c_{v,i}}\), with the rounded radius, and at infinite \(v\) they satisfy \(|L_{v,i}(x'_j)|_v\le(nB)^{d_v/d}Q_j^{c_{v,i}}\).
+
+*The value is small.* For \(v\in S\) write \(T=\sum_Jt_{v,J}\prod_{j,i}L_{v,i}(\boldsymbol X_j)^{J_{j,i}}\), and put \(\theta_i(J)=\sum_jJ_{j,i}/d_j\). Since \(d_j\log Q_j=D-\delta_j\) with \(0\le\delta_j<\log Q_j\), we get \(\sum_jJ_{j,i}\log Q_j\ge D\,\theta_i(J)-m\log Q_m\), and also \(\sum_jJ_{j,i}\log Q_j\le D\,\theta_i(J)\). For \(J\) with \(t_{v,J}\ne0\), (12.23) gives
 
 \[
-                       \sigma=(\eta/4)^{\,2^{m-1}}.
+ \sum_ic_{v,i}\,\theta_i(J)\le\frac mN\sum_ic_{v,i}+2m(N-1)\eta\sum_i|c_{v,i}| .
 \]
 
-Choose distinct remaining hyperplanes at \(Q_1,\ldots,Q_m\), with \(Q_1\) arbitrarily large and \(\log Q_{j+1}\ge2\sigma^{-1}\log Q_j\). Then choose \(D\) arbitrarily large and \(d_j=\lfloor D/\log Q_j\rfloor\). All degrees tend to infinity, \(d_{j+1}/d_j\le\sigma\), and \(d_j\log Q_j=D+o(D)\).
-
-Lemma 12.8 gives \(P\) of height \(O(\sum d_j)=O(mD/\log Q_1)\). Lemma 12.9 gives \(d_jh(U(Q_j))\ge\rho D/(4|S|)\) once \(Q_1,D\) are large. Therefore (12.21) holds, and the hyperplane index is at most \(m\eta/2\). In coordinates consisting of a defining form of each hyperplane and a complementary basis, this means that a derivative of total weighted order at most \(m\eta/2\) restricts nontrivially to their product. These directional derivatives are linear combinations of original-coordinate derivatives of the same block orders, so one original-coordinate derivative has nonzero restriction.
-
-Parametrize each hyperplane by a basis \(y_{j,1},\ldots,y_{j,N-1}\) in \(\Pi(Q_j)\). Apply Lemma 12.10 to the restricted derivative with \(B=2(N-1)/\eta\). Each of its \((N-1)m\) parameter degrees is at most \(d_j\). The additional weighted derivative order is at most \(m\eta/2\). The chain rule consequently supplies an original-coordinate derivative \(T\) of \(P\), of weight at most \(m\eta\), nonzero at
+Let \(\mu_v\) be the largest value of \(\log\prod_{j,i}|L_{v,i}(x'_j)|_v^{J_{j,i}}\) over the \(J\) with \(t_{v,J}\ne0\), and let \(A=\sum_{v\in S}\mu_v\). Summing over \(v\), and using \(\sum c_{v,i}\le-\rho\) and the choice of \(\eta\),
 
 \[
-               x_j'=\sum_{\ell=1}^{N-1}z_{j,\ell}y_{j,\ell},
-                       \qquad z_{j,\ell}\in\mathbb Z,\quad |z_{j,\ell}|\le B.
-\]
-
-At finite places these points satisfy the original box bounds. At infinite places their bounds gain at most the fixed factor \(((N-1)B)^{d_v/d}\).
-
-Let \(A\) be the sum, over \(v\in S\), of the logarithm of the largest nonzero monomial value in the \(L_v\)-expansion of \(T(x_1',\ldots,x_m')\). Equation (12.23) and \(d_j\log Q_j=D+o(D)\) give
-
-\[
- A\le\frac{mD}{N}\sum_{v,i}c_{v,i}
-       +2Nm\eta D\sum_{v,i}|c_{v,i}|
-       +o(D)+O\!\left(\sum d_j\right)
-       \le-\frac{\rho mD}{2N}.
+ A\le-\frac{3m\rho}{4N}D+\log(nB)\sum_jd_j+m\log Q_m\sum_{v,i}|c_{v,i}|\le-\frac{m\rho}{2N}D .
  \tag{12.25}
 \]
 
-First take \(Q_1\) large to control the fixed-factor term, then \(D\) large to control the floor error; the strict choice of \(\eta\) leaves room for both.
+The last inequality holds once \(\log Q_1\ge8N\log(nB)/\rho\), so that \(\log(nB)\sum_jd_j\le m\rho D/(8N)\), and then \(D\) is large enough to absorb the constant term.
 
-But \(T\) has integer coefficients, and every \(x_j'\) is integral outside \(S\). Since its value is nonzero, the product formula gives \(\sum_{v\in S}\log|T(x_1',\ldots,x_m')|_v\ge0\). The height of each full transformed coefficient vector is \(O(\sum d_j)\), by Lemma 12.8. Summing the local triangle inequalities, including the archimedean number of monomials, therefore gives
+*The value is not too small.* The coefficients of \(T\) are integers and the \(x'_j\) are \(S\)-integral, so \(T(x')\) is a nonzero element of \(\mathcal O_{K,S}\), and \(\prod_{v\in S}|T(x')|_v\ge1\). For \(v\in S\), \(|T(x')|_v\le V^{\epsilon_v}\max_J|t_{v,J}|_v\,e^{\mu_v}\), where \(\epsilon_v=d_v/d\) at infinite places and \(\epsilon_v=0\) at finite places, and \(V\le2^{N\sum d_j}\). By Lemma 12.8, \(\log\max_J|t_{v,J}|_v\le C\sum_jd_j\). Taking logarithms and summing over \(v\in S\),
 
 \[
-                        A\ge-C\sum d_j
-                             \ge-\frac{CmD}{\log Q_1}.
+ A\ge-C_3\sum_jd_j\ge-C_3\frac{mD}{\log Q_1},
  \tag{12.26}
 \]
 
-The constant is independent of the \(Q_j\) and \(D\). Choose \(\log Q_1>4NC/\rho\). Equations (12.25)–(12.26) contradict each other. The assumed infinite family cannot exist. \(\square\)
+where \(C_3=N\log2+|S|C\) depends only on choices 1–2. If \(\log Q_1>2NC_3/\rho\), then (12.25) and (12.26) are incompatible. So the set of hyperplanes cannot be infinite. \(\square\)
 
 ## 8. The Subspace theorem
 
 ### Lemma 12.12. A simultaneous change of basis
 
-At each \(v\in S\), let \(A_{v,1},\ldots,A_{v,N}\) be independent \(K_v\)-linear forms. Suppose a \(K\)-basis \(x_1,\ldots,x_N\) satisfies
+For every \(v\in S\) fix \(N\) linearly independent \(K_v\)-linear forms \(A_{v,1},\ldots,A_{v,N}\) on \(K_v^N\), and let \(x_1,\ldots,x_N\) be a basis of \(K^N\) with
 
 \[
- |A_{v,i}(x_j)|_v\le\mu_{v,j},\qquad
-           0<\mu_{v,1}\le\cdots\le\mu_{v,N}.
+ |A_{v,i}(x_j)|_v\le\mu_{v,j},\qquad0<\mu_{v,1}\le\cdots\le\mu_{v,N},
 \]
 
-There are an upper triangular \(\mathcal O_{K,S}\)-change of basis with diagonal entries one, giving \(u_j=x_j+\sum_{i<j}\xi_{ji}x_i\), and a permutation \(\pi_v\) at each place, such that
+for all \(v\in S\) and all \(i,j\). There are elements \(\xi_{ji}\in\mathcal O_{K,S}\) and, for each \(v\in S\), a permutation \(\pi_v\) of \(\{1,\ldots,N\}\), such that \(u_j=x_j+\sum_{i<j}\xi_{ji}x_i\) satisfy
 
 \[
  |A_{v,\pi_v(i)}(u_j)|_v\le
  \begin{cases}
  C\min(\mu_{v,i},\mu_{v,j}),&v\mid\infty,\\
- \min(\mu_{v,i},\mu_{v,j}),&v\nmid\infty.
+ \min(\mu_{v,i},\mu_{v,j}),&v\nmid\infty,
  \end{cases}
  \tag{12.27}
 \]
 
-The constant depends only on \(K,S,N\), so it remains uniform when the forms are rescaled.
+where \(C\) depends only on \(K\), \(S\) and \(N\). In particular \(C\) does not depend on the forms or on the \(\mu_{v,j}\).
 
-**Proof.** We first justify the approximation used in the basis change. Given arbitrary \(\gamma_v\in K_v\) for \(v\in S\), there is \(\xi\in\mathcal O_{K,S}\) with \(|\xi-\gamma_v|_v\le1\) at finite places and with uniformly bounded error at infinite places. At the finite places clear denominators by an element supported on the primes in \(S\), then use the Chinese remainder theorem in \(\mathcal O_K\). Such a clearing element exists because a power of each relevant prime ideal is principal. After obtaining the finite-place approximation, subtract an element of \(\mathcal O_K\) to bring the archimedean error into a fixed fundamental parallelepiped of \(j(\mathcal O_K)\). This leaves the finite-place error integral. The number-field foundations are Discrete valuation rings and Dedekind domains, Theorem 3.2 and Proposition 3.3 on fractional-ideal factorization and the Chinese remainder theorem, and Finiteness of the class number, Corollary 8.2, together with the covolume provider already specified in Lemma 12.5. 
+**Proof.** *Approximation by \(S\)-integers.* Let \(\gamma_v\in K_v\) be given for \(v\in S\). We find \(\xi\in\mathcal O_{K,S}\) with \(|\xi-\gamma_v|_v\le1\) at the finite places of \(S\) and \(|\xi-\gamma_v|_v\le C_0\) at the infinite places, where \(C_0\) depends only on \(K\). Choose a positive integer \(D\) with \(D\gamma_v\in\mathcal O_v\) at the finite \(v\in S\), and let \(e_u\) be the exponent of the prime of a finite place \(u\) in \(D\). By the Chinese remainder theorem, Proposition 3.3 of Discrete valuation rings and Dedekind domains, applied to these prime powers, there is \(a\in\mathcal O_K\) with \(a\equiv D\gamma_v\) modulo the \(e_v\)-th power of the prime at each finite \(v\in S\) dividing \(D\), and \(a\equiv0\) modulo the \(e_u\)-th power at each \(u\notin S\) dividing \(D\). For the first kind of congruence, replace \(D\gamma_v\) by an element of \(\mathcal O_K\) congruent to it modulo that power; one exists because \(\mathcal O_K/\mathfrak p^e\to\mathcal O_v/\mathfrak p^e\mathcal O_v\) is onto. Then \(\alpha=a/D\) is integral at every finite place outside \(S\), and \(|\alpha-\gamma_v|_v\le1\) at every finite \(v\in S\). Now \(\mathcal O_K\) is a lattice in \(\prod_{v\mid\infty}K_v\), by Proposition 7.2 of Lattices, Minkowski's theorem and the Minkowski embedding. Choose \(\beta\in\mathcal O_K\) such that \((\alpha-\beta-\gamma_v)_{v\mid\infty}\) lies in a fixed fundamental parallelepiped. Then \(\xi=\alpha-\beta\) has the required properties, since \(\beta\) is integral at every finite place.
 
-Now induct on \(N\). On the span of the first \(N-1\) vectors the \(N\) forms have one linear dependence. Normalize its largest coefficient to one and remove that form. The remaining restrictions are independent; the other dependence coefficients have absolute value at most one at that place. Apply induction to those restrictions.
+*Induction on \(N\).* For \(N=1\) take \(u_1=x_1\). Let \(N\ge2\), and let \(V'\) be the span of \(x_1,\ldots,x_{N-1}\). At each \(v\in S\), the restrictions of \(A_{v,1},\ldots,A_{v,N}\) to \(V'\otimes K_v\) satisfy a nontrivial relation \(\sum_i\gamma_{v,i}A_{v,i}|_{V'}=0\), unique up to a scalar, because exactly one line of forms vanishes on a hyperplane. Normalize it so that its largest coefficient is \(\gamma_{v,i_v}=1\); then \(|\gamma_{v,i}|_v\le1\) for all \(i\). The restrictions of the forms \(A_{v,i}\), \(i\ne i_v\), are independent on \(V'\otimes K_v\). The induction hypothesis for \(V'\), the basis \(x_1,\ldots,x_{N-1}\) and these forms supplies \(u_1,\ldots,u_{N-1}\) and bijections \(\pi'_v\colon\{1,\ldots,N-1\}\to\{1,\ldots,N\}\setminus\{i_v\}\). Put \(\pi_v(i)=\pi'_v(i)\) for \(i<N\) and \(\pi_v(N)=i_v\).
 
-At each place solve for a linear combination of the first \(N-1\) new vectors that cancels the remaining restricted forms on \(x_N\). Approximate the \(N-1\) local coefficients simultaneously by \(S\)-integers as above. Each residual restricted form is a sum of bounded coefficient errors times values bounded by \(\min(\mu_{v,i},\mu_{v,j})\), hence by a fixed multiple of \(\mu_{v,i}\) at infinite places and by \(\mu_{v,i}\) at finite places. For the removed form, its value on the first \(N-1\) vectors follows from the normalized dependence. On the new last vector subtract that same dependence: its residual equals its residual on \(x_N\), plus the already controlled restricted values. These are bounded by a fixed multiple of \(\mu_{v,N}\), or by \(\mu_{v,N}\) in the ultrametric case. This proves all entries of (12.27). Every constant used is a dimension factor or a fixed approximation constant, independent of the forms. \(\square\)
+At each \(v\), the matrix \((A_{v,\pi_v(i)}(u_l))_{i,l<N}\) is invertible, so there are \(\zeta_{v,l}\in K_v\) with \(A_{v,\pi_v(i)}\bigl(x_N+\sum_{l<N}\zeta_{v,l}u_l\bigr)=0\) for all \(i<N\). Approximate each \(\zeta_{v,l}\) by an \(S\)-integer \(\xi_l\), simultaneously for all \(v\in S\), and put \(u_N=x_N+\sum_{l<N}\xi_lu_l\). This is again a unipotent upper triangular change of the \(x_j\) over \(\mathcal O_{K,S}\). For \(i<N\),
+
+\[
+ A_{v,\pi_v(i)}(u_N)=\sum_{l<N}(\xi_l-\zeta_{v,l})\,A_{v,\pi_v(i)}(u_l),
+\]
+
+and the induction bounds \(|A_{v,\pi_v(i)}(u_l)|_v\le C'\mu_{v,i}\) give \(|A_{v,\pi_v(i)}(u_N)|_v\le(N-1)^{d_v/d}C_0C'\mu_{v,i}\) at infinite places and \(\le\mu_{v,i}\) at finite places. As \(\mu_{v,i}=\min(\mu_{v,i},\mu_{v,N})\), this is (12.27) for these entries.
+
+For the form \(A_{v,i_v}\), use \(\Gamma_v=\sum_i\gamma_{v,i}A_{v,i}\), which vanishes on \(V'\). On \(u_j\) with \(j<N\), \(A_{v,i_v}(u_j)=-\sum_{i\ne i_v}\gamma_{v,i}A_{v,i}(u_j)\) is bounded by a fixed multiple of \(\mu_{v,j}=\min(\mu_{v,N},\mu_{v,j})\). On \(u_N\), \(A_{v,i_v}(u_N)=\Gamma_v(x_N)-\sum_{i\ne i_v}\gamma_{v,i}A_{v,i}(u_N)\). Here \(|\Gamma_v(x_N)|_v\) is at most a fixed multiple of \(\mu_{v,N}\), by the hypothesis on \(x_N\), and the other terms were just bounded by multiples of \(\mu_{v,N}\). At finite places all these multiples equal one, by the ultrametric inequality. Every constant is a product of dimension factors and \(C_0\). \(\square\)
 
 ### Theorem 12.13. The projective Subspace theorem
 
-Let \(K\) be a number field, \(N\ge2\), \(S\) a finite set of its places, and \(\varepsilon>0\). For each \(v\in S\) let \(L_{v,1},\ldots,L_{v,N}\) be independent linear forms with algebraic coefficients, evaluated using a fixed extension of \(|\cdot|_v\) to those coefficients. The points \([x]\in\mathbb P^{N-1}(K)\) satisfying
+Fix a number field \(K\), an integer \(N\ge2\), a real number \(\varepsilon>0\) and a finite set \(S\) of places of \(K\). At each \(v\in S\) take \(N\) linearly independent linear forms \(L_{v,1},\ldots,L_{v,N}\) whose coefficients are algebraic numbers, and compute their values at \(v\) with a fixed extension of \(|\cdot|_v\) to the field generated by the coefficients. Then the points \([x]\in\mathbb P^{N-1}(K)\) with
 
 \[
-       \prod_{v\in S}\prod_{i=1}^N
-           \frac{|L_{v,i}(x)|_v}{\|x\|_v}
-                    <H([x])^{-N-\varepsilon}
-       \tag{12.28}
+ \prod_{v\in S}\prod_{i=1}^N\frac{|L_{v,i}(x)|_v}{\|x\|_v}<H([x])^{-N-\varepsilon}
+ \tag{12.28}
 \]
 
-lie in finitely many proper \(K\)-linear subspaces.
+lie in finitely many proper \(K\)-linear subspaces of \(K^N\).
 
-**Proof for coefficients in \(K\).** Enlarge \(S\) to include all infinite places and to make \(\mathcal O_{K,S}\) principal. Finiteness of the class group permits this last enlargement by inverting representatives of its generators. At added places use the coordinate forms; their product divided by the coordinate maximum to the power \(N\) is at most one. Thus enlargement retains every solution of the original inequality.
+**Proof for coefficients in \(K\).** *Enlarging \(S\).* Add the infinite places to \(S\). Add also finitely many finite places whose primes have classes generating the class group, which is finite by Corollary 8.2 of Finiteness of the class number. Then every ideal of \(\mathcal O_{K,S}\) is principal: an ideal of \(\mathcal O_K\) is a principal fractional ideal times a product of powers of these primes, and the primes become units in \(\mathcal O_{K,S}\). At an added place use the coordinate forms \(X_1,\ldots,X_N\). Their factor \(\prod_i|x_i|_v/\|x\|_v\) is at most one, so every solution of (12.28) for the original set remains a solution for the enlarged one.
 
-Choose primitive \(S\)-integral coordinates for each point by dividing by the generator of its coordinate ideal. Then \(\|x\|_v=1\) outside \(S\), and (12.28) becomes
+*Normalized representatives.* Each point has a representative \(x\in\mathcal O_{K,S}^N\) whose coordinates generate \(\mathcal O_{K,S}\). Then \(\|x\|_v=1\) for \(v\notin S\), so \(H([x])=\prod_{v\in S}\|x\|_v\), and (12.28) becomes
 
 \[
-                         \prod_{v\in S,i}|L_{v,i}(x)|_v
-                                  <H([x])^{-\varepsilon}.
-                         \tag{12.29}
+ \prod_{v\in S}\prod_{i=1}^N|L_{v,i}(x)|_v<H([x])^{-\varepsilon}.
+ \tag{12.29}
 \]
 
-Use the \(S\)-unit logarithmic lattice to balance these coordinates. If \(a_v=\log\|x\|_v\) and \(h=h([x])\), approximate the vector \((h/|S|-a_v)_{v\in S}\), whose coordinates sum to zero, by the logarithms of an \(S\)-unit. The resulting representative has affine height at most \(h+C\), since each of its local log norms is at least \(-C\). This multiplication preserves (12.29).
+The \(S\)-logarithms of \(S\)-units form a full lattice in the hyperplane \(\sum_{v\in S}t_v=0\), by Theorem 9.4 of Dirichlet's unit theorem, after rescaling the logarithms by \(1/d\). The vector \((h/|S|-\log\|x\|_v)_{v\in S}\), with \(h=h([x])\), lies in that hyperplane. So there is an \(S\)-unit \(\epsilon_0\) whose \(S\)-logarithm is within a fixed distance of it. Replacing \(x\) by \(\epsilon_0x\) keeps the coordinates generating \(\mathcal O_{K,S}\), leaves (12.29) unchanged because \(\prod_{v\in S}|\epsilon_0|_v=1\), and achieves \(|\log\|x\|_v-h/|S||\le C_5\) for \(v\in S\).
 
-Solutions with some \(L_{v,i}(x)=0\) already lie in the corresponding finite family of hyperplanes. For the rest, the scalar height estimate gives \(|\log|L_{v,i}(x)|_v|\le h+C'\). Bounded \(h\) gives only finitely many projective points, by Northcott. For large \(h\), the vectors \((\log|L_{v,i}(x)|_v/h)_{v,i}\) belong to a fixed bounded cube. Subdivide it into finitely many boxes of side less than \(\varepsilon/(2N|S|)\), and take each upper corner as \((c_{v,i})\). Equation (12.29) gives \(\sum c_{v,i}\le-\varepsilon/2\). Every solution lies in \(\Pi(H([x]))\) for one of these finitely many fixed families. We prove the assertion for one such family, writing \(\rho=\varepsilon/2\).
+*Finitely many box families.* Solutions with some \(L_{v,i}(x)=0\) lie in the finitely many proper subspaces \(\ker L_{v,i}\). Solutions of bounded height are finitely many, by Northcott's Theorem 2.6. For the others, \(|L_{v,i}(x)|_v\le C_6\|x\|_v\) gives \(\log|L_{v,i}(x)|_v\le h+C_7\). In the other direction, \(L_{v,i}(x)\) is a nonzero element of height at most \(h+C_8\), by the estimate for values of linear forms in the proof of Lemma 12.9 and \(h_{\mathrm{aff}}(x)\le h+|S|C_5\); hence \(\log|L_{v,i}(x)|_v\ge-h-C_8\). For large \(h\), the vector \(\bigl(\log|L_{v,i}(x)|_v/h\bigr)_{v,i}\) therefore lies in \([-2,2]^{N|S|}\). Cover this cube by finitely many closed cubes of side \(\varepsilon/(2N|S|)\). If \(c=(c_{v,i})\) is the upper corner of a cube containing the vector, then \(|L_{v,i}(x)|_v\le H([x])^{c_{v,i}}\). Also \(\sum_{v,i}c_{v,i}<-\varepsilon+\varepsilon/2\), by (12.29). Thus every remaining solution satisfies \(x\in\Pi(Q)\cap K^N\) with \(Q=H([x])\), for one of finitely many exponent families \(c\) with \(\sum c_{v,i}\le-\rho\), where \(\rho=\varepsilon/2\). It remains to show, for one such family, that the vectors of all \(\Pi(Q)\cap K^N\) with large \(Q\) lie in finitely many proper subspaces.
 
-Let \(R\) be the rank of \(\Pi(Q)\). Lemma 12.5 gives \(\lambda_N\gg Q^{\rho/N}\), so \(R\le N-1\) for large \(Q\). If \(R=0\) there is no solution vector. For \(R\ge1\), choose \(k\in[R,N-1]\) minimizing \(\lambda_k/\lambda_{k+1}\). Since \(\lambda_R\le1\),
+*The gap between consecutive minima.* Let \(\lambda_1\le\cdots\le\lambda_N\) be the minima of \(\Pi(Q)\) in the sense of Lemma 12.5. By (12.14) and (12.16), \(\prod_j\lambda_j\asymp\operatorname{vol}(\Pi(Q))^{-1/d}\gg Q^{\rho}\), so \(\lambda_N\gg Q^{\rho/N}\). For large \(Q\) this exceeds one, and the dimension \(R\) of \(U(Q)\), which is the number of minima at most one, satisfies \(R\le N-1\). If \(R=0\) there is nothing to prove. Otherwise \(\lambda_R\le1\), and the \(N-R\le N-1\) ratios \(\lambda_j/\lambda_{j+1}\le1\), \(R\le j<N\), have product \(\lambda_R/\lambda_N\ll Q^{-\rho/N}\). Hence some \(k\) with \(R\le k\le N-1\) satisfies
 
 \[
-             \lambda_k/\lambda_{k+1}\ll Q^{-\rho/(N(N-1))}.
-             \tag{12.30}
+ \frac{\lambda_k}{\lambda_{k+1}}\ll Q^{-\rho/(N(N-1))}.
+ \tag{12.30}
 \]
 
-Choose vectors realizing the minima and apply Lemma 12.12 after multiplying each \(L_{v,i}\) by a local scalar of absolute value \(Q^{-c_{v,i}}\), with \(\mu_{v,j}=\lambda_j^{d_v/d}\) at infinite places and \(\mu_{v,j}=1\) at finite places. At an infinite place the scalar's ordinary modulus is \(Q^{-dc_{v,i}/d_v}\). At a finite place use the reciprocal of the rounded radius. This changes only bounded factors in subsequent volume comparisons.
+The minima are polynomially bounded: \(Q^{-C_9}\ll\lambda_1\le\lambda_N\ll Q^{C_9}\). For the lower bound, a nonzero coordinate of a nonzero vector of \(\lambda_1\Pi(Q)\cap K^N\) is an \(S\)-integer whose product of absolute values over \(S\) is at least one. For the upper bound, multiply the standard basis vectors by a positive integer composed of the primes below the finite places of \(S\), large enough for the finite radii; the archimedean dilation needed is then a power of \(Q\).
 
-Put \(r=N-k\) and \(M=\binom Nr\). In \(\bigwedge^rK^N\), use the exterior forms
-\(L_{v,\pi_v(i_1)}\wedge\cdots\wedge L_{v,\pi_v(i_r)}\).
-The determinant expansion of (12.27) bounds each of their values on a basis wedge by its natural radius
+*The change of basis.* Choose independent \(x_1,\ldots,x_N\in\mathcal O_{K,S}^N\) with \(x_j\in\lambda_j\Pi(Q)\). Then \(x_1,\ldots,x_R\) span \(U(Q)\). At each \(v\in S\) rescale the forms: \(A_{v,i}=s_{v,i}L_{v,i}\), where \(s_{v,i}\in K_v\) has \(|s_{v,i}|_v=Q^{-c_{v,i}}\) at infinite places and equals the reciprocal of the rounded radius at finite places. Lemma 12.12 applies with \(\mu_{v,j}=\lambda_j^{d_v/d}\) for infinite \(v\) and \(\mu_{v,j}=1\) for finite \(v\). It supplies \(u_1,\ldots,u_N\in\mathcal O_{K,S}^N\) and permutations \(\pi_v\) satisfying (12.27). The span \(W_k\) of \(u_1,\ldots,u_k\) equals that of \(x_1,\ldots,x_k\), so it contains \(U(Q)\).
+
+*Exterior powers.* Put \(r=N-k\) and \(M=\binom Nr\ge2\). For an \(r\)-subset \(I=\{i_1<\cdots<i_r\}\) put \(u_I=u_{i_1}\wedge\cdots\wedge u_{i_r}\in\bigwedge^rK^N\cong K^M\); its coordinates are \(r\)-minors, hence \(S\)-integers. For \(v\in S\) and an \(r\)-subset \(J\), the \(K\)-linear form \(L^{\pi}_{v,J}=L_{v,\pi_v(j_1)}\wedge\cdots\wedge L_{v,\pi_v(j_r)}\) takes \(y_1\wedge\cdots\wedge y_r\) to \(\det\bigl(L_{v,\pi_v(j_a)}(y_b)\bigr)_{a,b}\). For each \(v\) these \(M\) forms are independent. Expanding the determinant of rescaled forms, a sum over bijections \(\tau\colon J\to I\), and using (12.27) factor by factor,
 
 \[
-                  C\,Q^{\sum_{i\in I}c_{v,\pi_v(i)}}
-                         \prod_{i\in I}\mu_{v,i}
+ \bigl|\det\bigl(A_{v,\pi_v(j_a)}(u_{i_b})\bigr)\bigr|_v\le C'_v\prod_{j\in J}\mu_{v,j}.
 \]
 
-at an infinite place, and the same radius without \(C\) or the \(\mu\)-factor at a finite place. For \(I_0=\{k+1,\ldots,N\}\), every basis wedge except \(u_{k+1}\wedge\cdots\wedge u_N\) gains the additional factor \(\mu_{v,k}/\mu_{v,k+1}\): its index set contains an index at most \(k\), so in each determinant term the corresponding minimum replaces at least one factor \(\mu_{v,k+1}\).
-
-Define a new box using these radii, with that extra factor on coordinate \(I_0\). It contains the \(M-1\) independent basis wedges other than the excluded one. Each original index occurs in \(b=\binom{N-1}{r-1}\) exterior coordinates. Therefore its volume satisfies
+Let \(I_0=\{k+1,\ldots,N\}\). If \(J=I_0\) and \(I\ne I_0\), then \(I\) contains an index at most \(k\). Every bijection \(\tau\) then sends some \(j_0\in I_0\) to \(\tau(j_0)\le k\), and \(\min(\mu_{v,j_0},\mu_{v,\tau(j_0)})\le\mu_{v,k}\le(\mu_{v,k}/\mu_{v,k+1})\,\mu_{v,j_0}\). So in this case the bound improves by the factor \(\mu_{v,k}/\mu_{v,k+1}\). Undoing the rescaling, the \(M-1\) independent vectors \(u_I\), \(I\ne I_0\), lie in the box \(\Pi'(Q)\subset\bigwedge^rK^N\) defined at \(v\in S\) by the forms \(L^{\pi}_{v,J}\) with radii
 
 \[
- \operatorname{vol}(\Pi'(Q))^{1/d}
-   \asymp \frac{\lambda_k}{\lambda_{k+1}}
-       \left(\prod_j\lambda_j\,\operatorname{vol}(\Pi(Q))^{1/d}\right)^b
-   \ll Q^{-\rho/(N(N-1))},
+ \theta_{v,J}=C'_v\,Q^{\sum_{j\in J}c_{v,\pi_v(j)}}\prod_{j\in J}\mu_{v,j}\times
+ \begin{cases}\mu_{v,k}/\mu_{v,k+1},&J=I_0,\\1,&J\ne I_0,\end{cases}
+\]
+
+and outside \(S\) by \(S\)-integrality. At finite places \(C'_v\) also absorbs the bounded ratio between the rounded radii and the powers of \(Q\). Each \(j\in\{1,\ldots,N\}\) lies in \(b=\binom{N-1}{r-1}\) of the subsets \(J\). Moreover \(\prod_{v\mid\infty}\mu_{v,j}=\lambda_j\), and \(\prod_{v\mid\infty}\mu_{v,k}/\mu_{v,k+1}=\lambda_k/\lambda_{k+1}\). Hence, by the volume computation (12.14) for these forms, by (12.16) and by (12.30),
+
+\[
+ \operatorname{vol}(\Pi'(Q))^{1/d}\asymp\frac{\lambda_k}{\lambda_{k+1}}\Bigl(Q^{\sum_{v,i}c_{v,i}}\prod_j\lambda_j\Bigr)^b\asymp\frac{\lambda_k}{\lambda_{k+1}}\ll Q^{-\rho/(N(N-1))}.
  \tag{12.31}
 \]
 
-by (12.16). Applying that comparison in dimension \(M\), the last minimum is greater than one for large \(Q\), while the first \(M-1\) are at most one. Thus this box has rank exactly \(M-1\).
+By Lemma 12.5 in dimension \(M\), the minima \(\lambda'_1,\ldots,\lambda'_M\) of \(\Pi'(Q)\) satisfy \(\lambda'_{M-1}\le1\) and \((\lambda'_M)^d\gg\operatorname{vol}(\Pi'(Q))^{-1}\), which exceeds one for large \(Q\). So the \(K\)-vectors of \(\Pi'(Q)\) span exactly the hyperplane \(H(Q)\) spanned by the \(u_I\), \(I\ne I_0\).
 
-To use Proposition 12.11 its exponents must be fixed. The minima satisfy \(Q^{-C}\ll\lambda_j\ll Q^C\). For the lower bound use one nonzero coordinate of a lattice vector, its finite-place bounds, and the product formula. For the upper bound multiply the standard coordinate vectors by a rational integer, with prime powers at the finite places in \(S\), large enough to meet all finite radii; its size and the required archimedean dilation are powers of \(Q\). These arguments give uniform \(C\) for the fixed original box.
+*Fixing the exponents.* The polynomial bounds on the minima put the numbers \(\log\theta_{v,J}/\log Q\) in a fixed bounded set. Fix \(k\) and the permutations; there are finitely many choices. Cover that set by finitely many cubes of side \(\rho/(4N(N-1)M|S|)\). For the \(Q\) whose exponent vector lies in a given cube, enlarge every radius to \(Q^{c''_{v,J}}\), with \(c''\) the upper corner. If a cube contains only bounded \(Q\), its solutions are finitely many. Otherwise (12.31) gives \(\sum_{v,J}c''_{v,J}<-\rho/(2N(N-1))\). The enlarged box contains \(\Pi'(Q)\), and by the same minimum argument it still has rank exactly \(M-1\) for large \(Q\), with the same span \(H(Q)\). Proposition 12.11, applied to the \(K\)-linear forms \(L^{\pi}_{v,J}\) and the fixed exponents \(c''\), shows that \(H(Q)\) runs through a finite set of hyperplanes for each of the finitely many choices.
 
-Consequently the logarithms of the new radii divided by \(\log Q\) belong to a fixed bounded cube. Freeze \(k\) and the finitely many permutations, and subdivide the remaining cube into a sufficiently fine finite grid. Round each exponent upwards. The enlarged box still contains the \(M-1\) wedges, and the increase in its total exponent can be chosen less than \(\rho/(2N(N-1))\). Equation (12.31) leaves its total exponent strictly negative. Its rank remains exactly \(M-1\), by the same minimum argument. Proposition 12.11 now gives finitely many hyperplane spans for these enlarged boxes.
+*Recovering the subspace.* Wedge product gives a perfect pairing \(\bigwedge^kK^N\times\bigwedge^rK^N\to\bigwedge^NK^N\cong K\). The vector \(\omega=u_1\wedge\cdots\wedge u_k\) pairs to zero with every \(u_I\), \(I\ne I_0\), and not with \(u_{I_0}\). Hence \(H(Q)\) is the kernel of \(\omega\wedge\cdot\), which determines the line \(K\omega\), and \(W_k=\{z\in K^N:z\wedge\omega=0\}\). Finitely many hyperplanes \(H(Q)\) therefore give finitely many proper subspaces \(W_k\), and these contain \(U(Q)\), hence every remaining solution. This proves the theorem for coefficients in \(K\).
 
-Their spans are precisely the spans of the \(M-1\) included wedges. Under the perfect pairing
-\(\bigwedge^kK^N\times\bigwedge^{N-k}K^N\to\bigwedge^NK^N\),
-such a hyperplane annihilates the line generated by \(u_1\wedge\cdots\wedge u_k\). It therefore determines the proper space \(W_k=\operatorname{span}_K(u_1,\ldots,u_k)\): this is the set of \(z\) with \(z\wedge(u_1\wedge\cdots\wedge u_k)=0\). Finitely many exterior hyperplanes give finitely many \(W_k\). Since \(k\ge R\), every vector of the original box lies in \(W_k\). Bounded \(Q\) contributes finitely many vectors, which can also be covered by proper subspaces. This proves (12.28) for \(K\)-coefficients.
-
-**Algebraic coefficients.** Choose a finite Galois extension \(E/K\) containing every coefficient. For each \(v\in S\), fix the place of \(E\) inducing the chosen extension of \(|\cdot|_v\). At every other place \(w\mid v\), conjugate the coefficients so that their \(w\)-values agree with that chosen extension, with exponent
-\(\tau_w=[E_w:K_v]/[E:K]\).
-For \(x\in K^N\), the product over \(w\mid v\) of the normalized local factors is exactly the original \(v\)-factor, since \(\sum_{w\mid v}\tau_w=1\). The absolute projective height is unchanged by field extension. Apply the proved theorem over \(E\). The intersection of a proper \(E\)-hyperplane with \(K^N\) is a proper \(K\)-subspace: expand its nonzero coefficient vector in a \(K\)-basis of \(E\) to obtain at least one nonzero \(K\)-linear equation. Finitely many such intersections prove the assertion. \(\square\)
+**Algebraic coefficients.** Let \(E/K\) be a finite Galois extension containing all coefficients, and \(S_E\) the set of places of \(E\) above \(S\). For \(v\in S\), the fixed extension of \(|\cdot|_v\) is given by a place \(w_v\) of \(E\) above \(v\). Every place \(w\) of \(E\) above \(v\) has the form \(|a|_w=|g(a)|_{w_v}\) for some \(g\in\operatorname{Gal}(E/K)\). At \(w\), use the forms \(L_{w,i}\) obtained from \(L_{v,i}\) by applying \(g^{-1}\) to the coefficients. For \(x\in K^N\), \(L_{w,i}(x)=g^{-1}(L_{v,i}(x))\), so \(|L_{w,i}(x)|_w=|L_{v,i}(x)|_{w_v}\). In the normalization (12.11) over \(E\), both sides are raised to the power \(\tau_w=[E_w:K_v]/[E:K]\), and the same holds for \(\|x\|_w\). As \(\sum_{w\mid v}\tau_w=1\), the product over \(w\mid v\) of the factors of (12.28) over \(E\) equals the factor at \(v\) over \(K\). The absolute height does not change under extension of the field. So every solution of (12.28) is a solution of the corresponding inequality over \(E\), with \(S_E\) and the forms \(L_{w,i}\), which have coefficients in \(E\). The case already proved puts these solutions in finitely many proper \(E\)-subspaces of \(E^N\). If an \(E\)-subspace lies in the kernel of a nonzero form \(\sum_ie_iX_i\), write \(e_i=\sum_la_{il}\omega_l\) in a \(K\)-basis \((\omega_l)\) of \(E\). Its \(K\)-points then satisfy \(\sum_ia_{il}x_i=0\) for every \(l\), and for some \(l\) this equation is nonzero. So each intersection with \(K^N\) lies in a proper \(K\)-subspace. \(\square\)
 
 ### Corollary 12.14. The \(S\)-integral form
 
-If \(S\) contains the infinite places, all \(x\in\mathcal O_{K,S}^N\setminus\{0\}\) with
+Assume that \(S\) contains every infinite place. Then the nonzero vectors \(x\in\mathcal O_{K,S}^N\) satisfying
 
 \[
-                     \prod_{v\in S,i}|L_{v,i}(x)|_v<H([x])^{-\varepsilon}
-                     \tag{12.32}
+ \prod_{v\in S}\prod_{i=1}^N|L_{v,i}(x)|_v<H([x])^{-\varepsilon}
+ \tag{12.32}
 \]
 
-lie in finitely many proper \(K\)-subspaces. Indeed \(\prod_{v\in S}\|x\|_v\ge H([x])\), because outside \(S\) the coordinate norm is at most one. Divide (12.32) by the \(N\)-th power of this product and apply (12.28). For primitive integer coordinates over \(\mathbb Q\), \(H([x])=\max|x_i|\). Common integer multiples are treated by the same subspaces, as required by the homogeneous theorem.
+are contained in finitely many proper \(K\)-subspaces. To see this, note that \(\|x\|_v\le1\) at the places outside \(S\), so \(H([x])\le\prod_{v\in S}\|x\|_v\). Dividing (12.32) by \(\prod_{v\in S}\|x\|_v^N\ge H([x])^N\) gives (12.28). Over \(\mathbb Q\), a vector of coprime integers has \(H([x])=\max_i|x_i|\). Integer multiples of a solution lie in the same subspaces, as the projective statement requires.
 
 ## 9. Approximation at several places
 
@@ -824,11 +862,9 @@ has only finitely many integer solutions with \(q>0\).
 
 - K. Soundararajan, [*Transcendental Number Theory*](https://math.stanford.edu/~ksound/TransNotes.pdf), Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §§15–18: Roth's theorem from the auxiliary polynomial, the index estimates and Roth's lemma, with the \(p\)-adic version and Lang's number-field form (Theorem 26).
 - J.-H. Evertse, [*Diophantine Approximation*, Chapter 8: The p-adic Subspace Theorem](https://pub.math.leidenuniv.nl/~evertsejh/dio19-8.pdf), Leiden course notes, Theorems 8.6–8.7, 8.10 and 8.12–8.13: Roth's theorem with finitely many places, the \(p\)-adic Subspace theorem, Mahler's theorem on Thue–Mahler equations, and Lang's and the general finiteness theorems for nondegenerate unit equations. Theorem 3.2 of Goel, Lunia and Ray below is the number-field form.
-- Shivani Goel, Rashi Lunia and Anwesh Ray, [*Diophantine approximation and the subspace theorem*](https://arxiv.org/pdf/2502.00731v2), arXiv:2502.00731v2, 21 July 2026: Lemma 3.9, PDF pp. 21–24; Theorems 4.3–4.4 and Proposition 4.5, pp. 27–28; §§4.3–5.3, pp. 29–52. The [version-specific arXiv record](https://arxiv.org/abs/2502.00731v2) supplies its CC BY 4.0 licence. Sections 6–8 adapt the index, auxiliary-polynomial and exterior-power method under that licence. The successive-minima proof is supplied in section 5; the specialization index inequality, finite exceptional-family selection, integer-grid argument and local-radius rounding are explicit in the text.
+- Shivani Goel, Rashi Lunia and Anwesh Ray, [*Diophantine approximation and the subspace theorem*](https://arxiv.org/abs/2502.00731v2), arXiv:2502.00731v2 (2026): a detailed account of Roth's lemma at algebraic points, auxiliary polynomials on products of boxes and the exterior-power proof of the Subspace theorem, the method of sections 6–8.
 - M. Waldschmidt, [*Diophantine approximation, irrationality and transcendence*](https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours4.pdf), IMPA course notes, Course 4 (2010), §4.1.3, Theorems 46–49: Roth's theorem, Ridout's theorem for denominators composed of finitely many primes, and Schmidt's Subspace theorem with finitely many places.
 - J.-H. Evertse, [*Diophantine Approximation*, Chapter 7: The Subspace Theorem](https://pub.math.leidenuniv.nl/~evertsejh/dio19-7.pdf), Leiden course notes, Theorem 7.1 and Corollary 7.2, for the classical Subspace theorem and its consequence for Roth's theorem.
 - J.-H. Evertse, [*Diophantine Approximation*, Chapter 6: Approximation of algebraic numbers by rationals](https://pub.math.leidenuniv.nl/~evertsejh/dio19-6.pdf), Leiden course notes: Theorems 6.2–6.3 and Corollary 6.4 for Roth's theorem, squarefree binary forms and Thue equations; Theorem 6.5 for Fel'dman's effective improvement of Liouville's inequality; §6.2, Theorem 6.14 and Exercise 6.8, for the gap principle and the counting of exceptional approximations.
 
-Original material outside sections 6–8 is dedicated under CC0. The adapted sections 6–8 are CC BY 4.0, with Goel, Lunia and Ray credited above and the changes identified; that notice applies in the Markdown, LaTeX and reading editions.
-
-J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), version 3.08, July 19, 2020, Proposition 4.26, proves the lattice and discriminant covolume formula for ideals under the real-coordinate Minkowski embedding. This gives a parallel treatment of the normalization used in the number-field prerequisites of Section 7.
+J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), version 3.08, July 19, 2020, Proposition 4.26, proves the lattice and discriminant covolume formula for ideals under the real-coordinate Minkowski embedding. This gives a parallel treatment of the normalization used in the number-field prerequisites of Section 5.

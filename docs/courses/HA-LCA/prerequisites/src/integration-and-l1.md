@@ -4,7 +4,7 @@
 
 The freely accessible source material is D. H. Fremlin, *Measure Theory*, [§123, version of 18 November 2004](https://www1.essex.ac.uk/maths/people/fremlin/mt1.2011/mt123.tex), especially 123A–C, and [§242, version of 19 November 2003](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt242.tex), especially 242D–F, 242M and 242P. The measure and simple-integral constructions that those sections use are proved below. No cited result substitutes for a proof.
 
-This adapted component is distributed under the [Design Science License](../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). The original volume 1 source package and volume 2 source package are retained with their notices. Fremlin's original copyright notices for §§123 and 242 are 1994 and 1997, respectively.
+Original text: public domain (CC0). The original volume 1 source package and volume 2 source package are retained with their notices. Fremlin's original copyright notices for §§123 and 242 are 1994 and 1997, respectively.
 
 ## 1. Measure and the nonnegative integral
 

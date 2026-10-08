@@ -25,7 +25,7 @@ Thus the index on the acting generator is the **second** index of a Cartan entry
 
 **Proposition 1.1 (Chevalley generators).** The \(e_i,f_i,h_i\) generate \(\mathfrak g\). They satisfy
 \[
-\begin{aligned}
+\begin{aligned}[c]
 [h_i,h_j]&=0,&
 [h_i,e_j]&=a_{ji}e_j,&
 [h_i,f_j]&=-a_{ji}f_j,\\
@@ -565,7 +565,7 @@ For completeness, the first equality follows by multiplying the absolutely conve
 
 The representation identity gives \((\operatorname{ad}A)^n\rho(x)=\rho((\operatorname{ad}z)^n x)\), so the right side of (9.5) is actually finite. The invertible matrix \(\exp(A)\) intertwines the original and pulled-back actions. Applying this for each factor proves the assertion for every \(b\in G\). No integration of the representation to a Lie group is used.
 
-Let \(\omega_i\) be the fundamental weights, characterized by \(\omega_i(h_j)=\delta_{ij}\), and put \(F_i=L(\omega_i)\). RT-LIE-14 proves that these modules exist, are finite-dimensional and irreducible, and have pairwise distinct isomorphism classes. Under pullback by \(\delta_\sigma\), the original highest vector remains highest, because the simple raising generators are permuted. Its weight is
+Let \(\omega_i\) be the fundamental weights, characterized by \(\omega_i(h_j)=\delta_{ij}\), and put \(F_i=L(\omega_i)\). [Theorem 2.1](RT-LIE-14.md#theorem-2-1), [Theorem 3.1](RT-LIE-14.md#theorem-3-1) and [Theorem 4.1](RT-LIE-14.md#theorem-4-1) of RT-LIE-14 prove that these modules exist, are finite-dimensional and irreducible, and have pairwise distinct isomorphism classes. That highest-weight construction uses only §§1–6 of this lesson; the present automorphism argument is its later application. Under pullback by \(\delta_\sigma\), the original highest vector remains highest, because the simple raising generators are permuted. Its weight is
 
 \[
 (\omega_i\circ\delta_\sigma)(h_j)
@@ -673,4 +673,4 @@ For comparison with the wider algebraic-geometry programme, the [official Stacks
 - P. Etingof, [*Lie groups and Lie algebras*, arXiv:2201.09397v5](https://arxiv.org/abs/2201.09397v5), for diagram automorphisms and their action on fundamental representations. The finite-matrix intertwining argument and the Cartan normalizer calculation are supplied here.
 
 - P. Etingof, [*Lie Groups and Lie Algebras I*, MIT OpenCourseWare, Fall 2020](https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/): §24, Theorems 24.1–24.2 and Lemma 24.3, for the isomorphism and Serre theorems; §§13–14 for ordered enveloping-algebra words and free Lie algebras. These notes use the row-coroot Cartan convention, the transpose of (1.2).
-- J. S. Milne, [*Algebraic Groups*](https://www.jmilne.org/math/Books/AG.pdf), Chapter 23: §23d on pinnings, §23e on automorphisms and §23h on existence. The 2021 revision of the book is used here. Theorem 23.63 states the Cartan–Killing classification, and its first proof points to Serre presentations in other works.
+- J. S. Milne, [*Algebraic Groups*](https://www.jmilne.org/math/Books/iAG2022.pdf), Chapter 23: §23d on pinnings, §23e on automorphisms and §23h on existence. The 2021 revision of the book is used here. Theorem 23.63 states the Cartan–Killing classification, and its first proof points to Serre presentations in other works.

@@ -4,7 +4,7 @@ Both strata of the projective line's partition into an affine line and infinity 
 
 Work over any field. Standard sheaf adjunctions and truncation triangles are prerequisites. Equations 14–19 retain their locators in the parent lesson. The example concerns this fixed partition; the separate all-refinement K3 argument in the parent course is a stronger result and is not needed here.
 
-*Original AI teaching expression and solutions: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Human mathematical source and adapted proof structure: Lunts–Schnürer, CC BY 4.0; see [Sources and reuse](#sources-and-reuse).*
+*Original AI teaching expression and solutions: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Mathematical source and proof route: Lunts–Schnürer; see [Sources and reuse](#sources-and-reuse).*
 
 ## A fixed projective-line stratification already loses a class
 
@@ -110,7 +110,7 @@ Let $A=k[t,t^{-1}]$, the monodromy ring of $\mathbb C^*$. For any injective $A$-
 
 Valery A. Lunts and Olaf M. Schnürer, [*Categories of constructible sheaves*, arXiv:2601.05477v1](https://arxiv.org/abs/2601.05477v1), 9 January 2026, Remark 6.12 (p. 31), identifies the failure for the two-stratum projective line. Theorem 5.25 and Theorem 6.10 give the realization and boundary criteria. Remark 6.12 does not supply the one-arrow resolution, the explicit missing cone object or the two solved calculations; those arguments are written out in this reading.
 
-The original AI expression, expanded checks, exercises, solutions and reader code are dedicated under CC0. This dedication does not relicense the human source or any protected material adapted from it: Lunts–Schnürer is attributed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The presentation is rewritten and condensed, with calculations expanded; its proof structure is source-derived. No verbatim source prose is included. The [source and dependency notes](SOURCE-NOTES.md) identify the exact passages, changes and remaining prerequisites.
+The text, checks, exercises, solutions and reader code are dedicated under CC0. The results and the route of the proofs are those of Lunts–Schnürer, credited above; the wording, the expanded calculations and the exercises are written independently. The [source and dependency notes](SOURCE-NOTES.md) identify the exact passages, changes and remaining prerequisites.
 
 Sheaf adjunctions, derived truncations and the usual local-coefficient cohomology of disks and circles and constant-coefficient cohomology of the two-sphere remain prerequisites. Lunts–Schnürer supplies the realization and boundary criteria and the projective-line failure example; the explicit resolution, missing cone object and solved calculations are given above. These readings do not supply a complete development of the underlying sheaf-theoretic and topological foundations.
 

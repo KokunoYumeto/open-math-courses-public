@@ -1,0 +1,480 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Twisted regular products and prescribed inner kernels · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CPP.html">Previous lesson</a><a href="OA-FLOW-NB.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-TRP.md">Lesson source</a></nav><h1 id="OA-FLOW.TRP.SETTING">Twisted regular products and prescribed inner kernels</h1>
+<p><em>Original exposition, proofs, models, solved problems and figure sources: CC0-1.0. Existing mathematical sources, fonts and software retain their own terms.</em></p>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A Fourier coefficient can detect whether a symmetry of a crossed product is inner. The detection works because a nonzero coefficient is an intertwiner in the original factor. We construct the Hilbert space, both multiplication actions, its trace and its coefficient maps before using that mechanism. We then build an action with a prescribed characteristic pair and prove its entire inner kernel. Finite normal subgroups give an explicit AFD branch. For the same regular construction an invariant-mean argument explains the obstruction from a nonamenable subgroup.</p>
+<p>The group is countable, but the initial finite factor need not have separable predual. All approximation statements concerning its operators use nets. The concrete Bernoulli model is separable and covers finite as well as infinite countable groups. Original figure and code terms are retained in <span class="unlinked">TERMS</span>.</p>
+<p><a id="trp-setting"></a></p>
+<h2 id="1-the-input-and-the-bounded-completion-tools">1. The input and the bounded completion tools</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a countable discrete group, <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span>, and <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> a finite factor with a <strong>supplied faithful normal tracial state</strong> <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, normalized by <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span>. Let <span class="math" data-tex="\(\beta:G\to\operatorname{Aut}(P)\)">\(\beta:G\to\operatorname{Aut}(P)\)</span> be a normal trace-preserving action. We will state explicitly where outerness is needed; it is not an input to the initial completion.</p>
+<p>A normalized compatible pair has functions <span class="math" data-tex="\(\mu:N^2\to\mathbb T\)">\(\mu:N^2\to\mathbb T\)</span>, <span class="math" data-tex="\(\lambda:N\times G\to\mathbb T\)">\(\lambda:N\times G\to\mathbb T\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu(a,b)\mu(ab,c)&amp;=\mu(a,bc)\mu(b,c),\\
+\lambda(a,gh)&amp;=\lambda(a,g)\lambda(g^{-1}ag,h),\\
+\frac{\lambda(a,g)\lambda(b,g)}{\lambda(ab,g)}
+ &amp;=\frac{\mu(g^{-1}ag,g^{-1}bg)}{\mu(a,b)},\\
+\lambda(m,n)&amp;=\frac{\mu(n,n^{-1}mn)}{\mu(m,n)},\\
+\mu(e,a)=\mu(a,e)&amp;=\lambda(e,g)=\lambda(a,e)=1.
+\end{aligned}\tag{TR1}
+\]">\[
+\begin{aligned}
+\mu(a,b)\mu(ab,c)&amp;=\mu(a,bc)\mu(b,c),\\
+\lambda(a,gh)&amp;=\lambda(a,g)\lambda(g^{-1}ag,h),\\
+\frac{\lambda(a,g)\lambda(b,g)}{\lambda(ab,g)}
+ &amp;=\frac{\mu(g^{-1}ag,g^{-1}bg)}{\mu(a,b)},\\
+\lambda(m,n)&amp;=\frac{\mu(n,n^{-1}mn)}{\mu(m,n)},\\
+\mu(e,a)=\mu(a,e)&amp;=\lambda(e,g)=\lambda(a,e)=1.
+\end{aligned}\tag{TR1}
+\]</span>
+These are precisely the current CPP convention. In particular, the fourth line is required. Countability makes every scalar function here Borel. The first line alone suffices through Section 4. It gives <span class="math" data-tex="\(\mu(n,n^{-1})=\mu(n^{-1},n)\)">\(\mu(n,n^{-1})=\mu(n^{-1},n)\)</span>, by substituting <span class="math" data-tex="\((n,n^{-1},n)\)">\((n,n^{-1},n)\)</span>.</p>
+<p>We use complex inner products linear in their first argument. An ultraweak test on a concrete operator algebra is a sum <span class="math" data-tex="\(\sum_j\langle X\xi_j,\eta_j\rangle\)">\(\sum_j\langle X\xi_j,\eta_j\rangle\)</span>, with both vector families square summable. Cauchy–Schwarz controls the tail uniformly on an operator-norm bounded set. Thus bounded weak-operator convergence implies ultraweak convergence. Fixed left and right multiplication are ultraweak continuous: move the fixed operator to the appropriate vector family. Positive square roots, continuous calculus, Hilbert projections, the bicommutant theorem, supports and polar decomposition are the bounded operator proofs listed in Section 12; the exact real separation proof is NP1–2. Here are the two completion consequences we need, with their arguments.</p>
+<p><strong>Bounded approximation lemma.</strong> If <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a unital star subalgebra of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>, each <span class="math" data-tex="\(X\in\mathcal A''\)">\(X\in\mathcal A''\)</span> is a strong-star limit of <span class="math" data-tex="\(A_i\in\mathcal A\)">\(A_i\in\mathcal A\)</span> with <span class="math" data-tex="\(\|A_i\|\le\|X\|\)">\(\|A_i\|\le\|X\|\)</span>.</p>
+<p><strong>Proof.</strong> The finite-vector bicommutant argument first gives unbounded strong and weak approximation: on <span class="math" data-tex="\(H^k\)">\(H^k\)</span>, the projection onto the closure of <span class="math" data-tex="\(\{(A\xi_1,\ldots,A\xi_k):A\in\mathcal A\}\)">\(\{(A\xi_1,\ldots,A\xi_k):A\in\mathcal A\}\)</span> has entries in <span class="math" data-tex="\(\mathcal A'\)">\(\mathcal A'\)</span>, so it commutes with the diagonal action of <span class="math" data-tex="\(X\)">\(X\)</span>. Its range contains <span class="math" data-tex="\((\xi_1,\ldots,\xi_k)\)">\((\xi_1,\ldots,\xi_k)\)</span>, and hence <span class="math" data-tex="\((X\xi_1,\ldots,X\xi_k)\)">\((X\xi_1,\ldots,X\xi_k)\)</span>. This supplies the simultaneous finite-vector approximant.</p>
+<p>The selfadjoint part is strongly dense in the selfadjoint part of <span class="math" data-tex="\(\mathcal A''\)">\(\mathcal A''\)</span>. Indeed symmetrizing gives weak density. A strongly continuous real linear functional on this selfadjoint space has a bound by finitely many quantities <span class="math" data-tex="\(\|A\xi_j\|\)">\(\|A\xi_j\|\)</span>. It factors through <span class="math" data-tex="\(A\mapsto(A\xi_j)_j\)">\(A\mapsto(A\xi_j)_j\)</span>; real Hahn–Banach and Hilbert Riesz write it as <span class="math" data-tex="\(\operatorname{Re}\sum_j\langle A\xi_j,\eta_j\rangle\)">\(\operatorname{Re}\sum_j\langle A\xi_j,\eta_j\rangle\)</span>, a weakly continuous functional. Real separation therefore gives equality of weak and strong closures of a convex set.</p>
+<p>For a selfadjoint contraction <span class="math" data-tex="\(X\)">\(X\)</span>, put <span class="math" data-tex="\(Y=X(1+\sqrt{1-X^2})^{-1}\)">\(Y=X(1+\sqrt{1-X^2})^{-1}\)</span>. The denominator is at least one. The real scalar function <span class="math" data-tex="\(f(t)=2t/(1+t^2)\)">\(f(t)=2t/(1+t^2)\)</span> has <span class="math" data-tex="\(|f|\le1\)">\(|f|\le1\)</span> and <span class="math" data-tex="\(f(Y)=X\)">\(f(Y)=X\)</span>. Choose selfadjoint <span class="math" data-tex="\(C_i\in\mathcal A\)">\(C_i\in\mathcal A\)</span> converging strongly to <span class="math" data-tex="\(Y\)">\(Y\)</span>. The identity
+<span class="math math-display" data-tex="\[
+(C_i-z)^{-1}-(Y-z)^{-1}
+ =(C_i-z)^{-1}(Y-C_i)(Y-z)^{-1},\qquad z=\pm i,
+\]">\[
+(C_i-z)^{-1}-(Y-z)^{-1}
+ =(C_i-z)^{-1}(Y-C_i)(Y-z)^{-1},\qquad z=\pm i,
+\]</span>
+and the resolvent bound <span class="math" data-tex="\(\|(C_i-z)^{-1}\|\le1\)">\(\|(C_i-z)^{-1}\|\le1\)</span> give strong convergence of both resolvents without any norm bound on <span class="math" data-tex="\(C_i\)">\(C_i\)</span>. Their sum is <span class="math" data-tex="\(f(C_i)\)">\(f(C_i)\)</span>, so <span class="math" data-tex="\(f(C_i)\to X\)">\(f(C_i)\to X\)</span> strongly. Each <span class="math" data-tex="\(f(C_i)\)">\(f(C_i)\)</span> is a selfadjoint contraction in the norm closure of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>: polynomial approximation on the individual bounded spectral interval proves this. Approximate it in norm within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> by a selfadjoint algebra element and divide by <span class="math" data-tex="\(1+\varepsilon\)">\(1+\varepsilon\)</span>. The result is a contraction within <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span>. The product net, with increasing <span class="math" data-tex="\(i\)">\(i\)</span> and decreasing <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, gives selfadjoint strong-star approximation. For an arbitrary contraction apply this result in <span class="math" data-tex="\(M_2(\mathcal A)\)">\(M_2(\mathcal A)\)</span> to <span class="math" data-tex="\(\begin{pmatrix}0&amp;X\\X^*&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;X\\X^*&amp;0\end{pmatrix}\)</span>. The upper-right entries of the selfadjoint approximants are contractions in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and the lower-left entries are their adjoints. Coordinate-vector tests give both required limits. Scaling handles arbitrary <span class="math" data-tex="\(X\)">\(X\)</span>; for zero use the constant zero net. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The matrix amplification used in that proof has no extra density premise: commuting with the scalar matrix units makes an operator in <span class="math" data-tex="\(M_2(\mathcal A)'\)">\(M_2(\mathcal A)'\)</span> equal to <span class="math" data-tex="\(\operatorname{diag}(T,T)\)">\(\operatorname{diag}(T,T)\)</span>, and commuting with the diagonal copies of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> says <span class="math" data-tex="\(T\in\mathcal A'\)">\(T\in\mathcal A'\)</span>. Its commutant is therefore exactly <span class="math" data-tex="\(M_2(\mathcal A'')\)">\(M_2(\mathcal A'')\)</span>.</p>
+<p><strong>Bounded weak compactness lemma.</strong> A norm-bounded net in a weak-operator closed algebra has a weak-operator cluster subnet. We also need an ultrafilter limit of norm-one states, which need not be normal.</p>
+<p><strong>Proof.</strong> The tail sets of the directed index set generate a proper filter. Zorn's lemma extends it to an ultrafilter: the union of a chain of proper filters is proper, and a maximal proper filter decides each subset, because otherwise adjoining that subset would still give a proper filter. Every bounded real function on this index set has an ultrafilter limit. Bisect a closed containing interval, keep a half whose inverse image belongs to the ultrafilter, and repeat; the nested intervals have lengths tending to zero and one common real point. For complex functions take real and imaginary parts. Limits preserve finite sums, products and inequalities, by intersecting finitely many sets in the ultrafilter.</p>
+<p>For operators of norm at most <span class="math" data-tex="\(C\)">\(C\)</span>, take the limit of every vector coefficient. The resulting sesquilinear form has bound <span class="math" data-tex="\(C\|\xi\|\|\eta\|\)">\(C\|\xi\|\|\eta\|\)</span>, so Hilbert Riesz gives an operator of norm at most <span class="math" data-tex="\(C\)">\(C\)</span>. It lies in the original weakly closed algebra. The ultrafilter convergence is weak-operator convergence; the usual subnet is constructed by indexing pairs consisting of an original tail and a finite family of neighborhoods of the limit, then choosing an index in their intersection. For states take the limit at every algebra element. The result is linear, positive, unital and has norm one: state Cauchy–Schwarz follows by expanding <span class="math" data-tex="\(\phi((x+ty)^*(x+ty))\ge0\)">\(\phi((x+ty)^*(x+ty))\ge0\)</span>, and gives <span class="math" data-tex="\(|\phi(x)|\le\|x\|\)">\(|\phi(x)|\le\|x\|\)</span>. These properties pass to the limits. There is no assertion that the limiting state is normal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For clarity, the trace GNS realization used below can also be obtained without a general weight normality theorem. Complete <span class="math" data-tex="\(P\)">\(P\)</span> for <span class="math" data-tex="\(\|a\|_2^2=\tau(a^*a)\)">\(\|a\|_2^2=\tau(a^*a)\)</span>; faithfulness makes this a norm. Left and right multiplication have bounds <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, using positivity and the trace. Their adjoints are multiplication by <span class="math" data-tex="\(a^*\)">\(a^*\)</span>. The left representation is isometric: for <span class="math" data-tex="\(B=a^*a\)">\(B=a^*a\)</span>, choose a nonzero continuous spectral function <span class="math" data-tex="\(c=h(B)\)">\(c=h(B)\)</span> supported where <span class="math" data-tex="\(t&gt;\|a\|^2-\varepsilon\)">\(t&gt;\|a\|^2-\varepsilon\)</span>. The continuous calculus and its spectral norm show <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>; faithfulness gives <span class="math" data-tex="\(\|c\|_2&gt;0\)">\(\|c\|_2&gt;0\)</span>, and <span class="math" data-tex="\(\|ac\|_2^2\ge(\|a\|^2-\varepsilon)\|c\|_2^2\)">\(\|ac\|_2^2\ge(\|a\|^2-\varepsilon)\|c\|_2^2\)</span>. Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.</p>
+<p>The image is weakly closed. On a bounded weakly converging net in the original concrete <span class="math" data-tex="\(P\)">\(P\)</span>, the trace coefficients <span class="math" data-tex="\(\tau(b^*xa)\)">\(\tau(b^*xa)\)</span> converge, because the net is ultraweakly converging and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is supplied normal. Approximate arbitrary GNS vectors by <span class="math" data-tex="\(a,b\in P\)">\(a,b\in P\)</span>; the uniform bound gives convergence of every GNS vector coefficient. Consequently the image of the original unit ball is weakly compact by the preceding lemma. Apply bounded approximation to its generated algebra: any contraction in the bicommutant is a weak limit of image contractions, and compactness returns it to that image. Thus the image is a von Neumann algebra. The same bounded-ball argument gives the weak homeomorphism of the two unit balls. Increasing positive nets converge to their suprema in both representations by their quadratic forms, so this identification preserves those suprema. In what follows <span class="math" data-tex="\(P\)">\(P\)</span> means this <strong>concrete trace representation</strong> on <span class="math" data-tex="\(H_0=L^2(P,\tau)\)">\(H_0=L^2(P,\tau)\)</span>, <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> its vectors, and <span class="math" data-tex="\(\widehat1\)">\(\widehat1\)</span> its cyclic separating vector. Its vector trace is normal for the concrete ultraweak tests. None of these steps assumes separability.</p>
+<p><span id="OA-FLOW.TRP.TWO-ACTIONS"></span><a id="trp-two-actions"></a></p>
+<h2 id="2-an-algebra-and-two-bounded-multiplication-actions">2. An algebra and two bounded multiplication actions</h2>
+<p>Use formal symbols <span class="math" data-tex="\([n]\)">\([n]\)</span>, <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>. Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the finite sums <span class="math" data-tex="\(\sum_n a_n[n]\)">\(\sum_n a_n[n]\)</span>, with
+<span class="math math-display" data-tex="\[
+ (a[n])(b[k])=a\beta_n(b)\mu(n,k)[nk],\qquad
+ (a[n])^*=\overline{\mu(n^{-1},n)}\,
+       \beta_{n^{-1}}(a^*)[n^{-1}].\tag{TR2}
+\]">\[
+ (a[n])(b[k])=a\beta_n(b)\mu(n,k)[nk],\qquad
+ (a[n])^*=\overline{\mu(n^{-1},n)}\,
+       \beta_{n^{-1}}(a^*)[n^{-1}].\tag{TR2}
+\]</span>
+The identity is <span class="math" data-tex="\(1[e]\)">\(1[e]\)</span>. The two associations of three monomials have coefficient <span class="math" data-tex="\(a\beta_n(b)\beta_{nk}(c)\)">\(a\beta_n(b)\beta_{nk}(c)\)</span>, and phases <span class="math" data-tex="\(\mu(n,k)\mu(nk,l)\)">\(\mu(n,k)\mu(nk,l)\)</span> and <span class="math" data-tex="\(\mu(n,kl)\mu(k,l)\)">\(\mu(n,kl)\mu(k,l)\)</span>. Thus multiplication is associative. To verify that the adjoint reverses products, cocycle substitution at <span class="math" data-tex="\((k^{-1},n^{-1},nk)\)">\((k^{-1},n^{-1},nk)\)</span> and <span class="math" data-tex="\((n^{-1},n,k)\)">\((n^{-1},n,k)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \mu(k^{-1},n^{-1})\mu((nk)^{-1},nk)
+ =\frac{\mu(k^{-1},k)\mu(n^{-1},n)}{\mu(n,k)}.
+\]">\[
+ \mu(k^{-1},n^{-1})\mu((nk)^{-1},nk)
+ =\frac{\mu(k^{-1},k)\mu(n^{-1},n)}{\mu(n,k)}.
+\]</span>
+Together with <span class="math" data-tex="\(\beta_{(nk)^{-1}}\beta_n=\beta_{k^{-1}}\)">\(\beta_{(nk)^{-1}}\beta_n=\beta_{k^{-1}}\)</span>, this identity equates the scalar and algebra coefficients of <span class="math" data-tex="\(((a[n])(b[k]))^*\)">\(((a[n])(b[k]))^*\)</span> and <span class="math" data-tex="\((b[k])^*(a[n])^*\)">\((b[k])^*(a[n])^*\)</span>. Applying the adjoint twice returns the monomial, since <span class="math" data-tex="\(\mu(n,n^{-1})=\mu(n^{-1},n)\)">\(\mu(n,n^{-1})=\mu(n^{-1},n)\)</span>. In particular <span class="math" data-tex="\([n]^*=[n]^{-1}=\overline{\mu(n^{-1},n)}[n^{-1}]\)">\([n]^*=[n]^{-1}=\overline{\mu(n^{-1},n)}[n^{-1}]\)</span>.</p>
+<p>Define <span class="math" data-tex="\(t_0(\sum_n a_n[n])=\tau(a_e)\)">\(t_0(\sum_n a_n[n])=\tau(a_e)\)</span>. For <span class="math" data-tex="\(X=\sum_n a_n[n]\)">\(X=\sum_n a_n[n]\)</span>,
+<span class="math math-display" data-tex="\[
+ t_0(X^*X)=\sum_n\tau(a_n^*a_n).\tag{TR3}
+\]">\[
+ t_0(X^*X)=\sum_n\tau(a_n^*a_n).\tag{TR3}
+\]</span>
+Indeed the identity coefficient is <span class="math" data-tex="\(\sum_n\beta_{n^{-1}}(a_n^*a_n)\)">\(\sum_n\beta_{n^{-1}}(a_n^*a_n)\)</span>; the phases cancel and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is invariant. This proves positivity and faithfulness on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. It is tracial: the identity coefficient of <span class="math" data-tex="\(XY\)">\(XY\)</span> has trace
+<span class="math" data-tex="\(\sum_n\mu(n,n^{-1})\tau(a_n\beta_n(b_{n^{-1}}))\)">\(\sum_n\mu(n,n^{-1})\tau(a_n\beta_n(b_{n^{-1}}))\)</span>.
+Trace invariance and traciality change that term to
+<span class="math" data-tex="\(\mu(n^{-1},n)\tau(b_{n^{-1}}\beta_{n^{-1}}(a_n))\)">\(\mu(n^{-1},n)\tau(b_{n^{-1}}\beta_{n^{-1}}(a_n))\)</span>, precisely the corresponding term for <span class="math" data-tex="\(YX\)">\(YX\)</span>.</p>
+<p>The Hilbert completion for <span class="math" data-tex="\(\langle X,Y\rangle=t_0(Y^*X)\)">\(\langle X,Y\rangle=t_0(Y^*X)\)</span> is
+<span class="math" data-tex="\(\mathcal H=\ell^2(N,H_0)\)">\(\mathcal H=\ell^2(N,H_0)\)</span>, in <strong>coefficient coordinates</strong> <span class="math" data-tex="\(a_n[n]\mapsto(\widehat a_n)_n\)">\(a_n[n]\mapsto(\widehat a_n)_n\)</span>. Its finite coefficient vectors are dense by square-sum truncation and the density of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(H_0\)">\(H_0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(V_g\widehat a=\widehat{\beta_g(a)}\)">\(V_g\widehat a=\widehat{\beta_g(a)}\)</span>. Invariance of the trace makes it isometric, and <span class="math" data-tex="\(V_{g^{-1}}\)">\(V_{g^{-1}}\)</span> is its inverse. Thus <span class="math" data-tex="\(V_gV_h=V_{gh}\)">\(V_gV_h=V_{gh}\)</span> on the completion. In coefficient coordinates the left generators are
+<span class="math math-display" data-tex="\[
+ (\ell_a y)(m)=a y(m),\qquad
+ (\ell_n y)(m)=\mu(n,n^{-1}m)V_n y(n^{-1}m).\tag{TR4}
+\]">\[
+ (\ell_a y)(m)=a y(m),\qquad
+ (\ell_n y)(m)=\mu(n,n^{-1}m)V_n y(n^{-1}m).\tag{TR4}
+\]</span>
+They have norms <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span> and 1, respectively. The first norm follows from the trace GNS isometry and a vector supported at one coordinate. The second follows from a bijective shift, a modulus-one phase and a unitary <span class="math" data-tex="\(V_n\)">\(V_n\)</span>.</p>
+<p>The <strong>right</strong> generators, multiplying a monomial vector on its right, are
+<span class="math math-display" data-tex="\[
+ (r_b y)(m)=y(m)\beta_m(b),\qquad
+ (r_n y)(m)=\mu(mn^{-1},n)y(mn^{-1}).\tag{TR5}
+\]">\[
+ (r_b y)(m)=y(m)\beta_m(b),\qquad
+ (r_n y)(m)=\mu(mn^{-1},n)y(mn^{-1}).\tag{TR5}
+\]</span>
+For each coordinate,
+<span class="math" data-tex="\(\|y(m)\beta_m(b)\|_2^2\le\|b\|^2\|y(m)\|_2^2\)">\(\|y(m)\beta_m(b)\|_2^2\le\|b\|^2\|y(m)\|_2^2\)</span>: on algebra vectors move the factors through the trace and use <span class="math" data-tex="\(\beta_m(bb^*)\le\|b\|^2\)">\(\beta_m(bb^*)\le\|b\|^2\)</span>, then extend by Hilbert density. Right multiplication on <span class="math" data-tex="\(H_0\)">\(H_0\)</span> is isometric in its operator norm, since <span class="math" data-tex="\(J_0\widehat a=\widehat{a^*}\)">\(J_0\widehat a=\widehat{a^*}\)</span> is an antiunitary and conjugates right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> to left multiplication by <span class="math" data-tex="\(b^*\)">\(b^*\)</span>. Testing coordinate <span class="math" data-tex="\(e\)">\(e\)</span> therefore gives <span class="math" data-tex="\(\|r_b\|=\|b\|\)">\(\|r_b\|=\|b\|\)</span>. The shift <span class="math" data-tex="\(r_n\)">\(r_n\)</span> is unitary and has norm 1. A right monomial <span class="math" data-tex="\(b[n]\)">\(b[n]\)</span> acts as <span class="math" data-tex="\(r_n r_b\)">\(r_n r_b\)</span>, so its norm is exactly <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>; a finite sum has the bound <span class="math" data-tex="\(\sum_n\|b_n\|\)">\(\sum_n\|b_n\|\)</span>.</p>
+<p>On the finite algebra vectors every left multiplication commutes with every right multiplication by associativity of (TR2). The operators just constructed are bounded, so the identities hold on all of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Also <span class="math" data-tex="\(r_X^*=r_{X^*}\)">\(r_X^*=r_{X^*}\)</span>: on finite vectors this follows from <span class="math" data-tex="\(t_0\)">\(t_0\)</span>'s trace identity, and the bounded extensions preserve it. Right multiplication reverses the operator composition order; for instance <span class="math" data-tex="\(r_n r_k=\mu(k,n)r_{kn}\)">\(r_n r_k=\mu(k,n)r_{kn}\)</span>. This is consistent with its commutation with the left algebra.</p>
+<p>The algebraic adjoint also gives a concrete antiunitary. Define <span class="math" data-tex="\(JX=X^*\)">\(JX=X^*\)</span> on the finite algebra vectors. The trace identity and (TR3) give <span class="math" data-tex="\(\|JX\|_2=\|X\|_2\)">\(\|JX\|_2=\|X\|_2\)</span>; conjugate linearity and <span class="math" data-tex="\(J^2=1\)">\(J^2=1\)</span> extend it to an antiunitary of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Its coefficient formula is
+<span class="math math-display" data-tex="\[
+ (Jy)(m)=\overline{\mu(m,m^{-1})}\,V_mJ_0y(m^{-1}).
+\]">\[
+ (Jy)(m)=\overline{\mu(m,m^{-1})}\,V_mJ_0y(m^{-1}).
+\]</span>
+Indeed this is exactly the coefficient at <span class="math" data-tex="\(m\)">\(m\)</span> in (TR2)'s adjoint. On the finite vectors <span class="math" data-tex="\(J\ell_XJ=r_{X^*}\)">\(J\ell_XJ=r_{X^*}\)</span>, because <span class="math" data-tex="\((XY^*)^*=YX^*\)">\((XY^*)^*=YX^*\)</span>; boundedness extends that identity to the completion. Thus the adjoint exchanges the two actual bounded actions.</p>
+<p>For the regular form, identify <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> with <span class="math" data-tex="\(K=\ell^2(N,H_0)\)">\(K=\ell^2(N,H_0)\)</span> by the unitary <span class="math" data-tex="\((Sy)(m)=V_{m^{-1}}y(m)\)">\((Sy)(m)=V_{m^{-1}}y(m)\)</span>. In these <strong>regular coordinates</strong> the left generators are
+<span class="math math-display" data-tex="\[
+ (\pi(a)\xi)(m)=\beta_{m^{-1}}(a)\xi(m),\qquad
+ (L_n\xi)(m)=\mu(n,n^{-1}m)\xi(n^{-1}m).\tag{TR6}
+\]">\[
+ (\pi(a)\xi)(m)=\beta_{m^{-1}}(a)\xi(m),\qquad
+ (L_n\xi)(m)=\mu(n,n^{-1}m)\xi(n^{-1}m).\tag{TR6}
+\]</span>
+The transported right generators are, explicitly,
+<span class="math math-display" data-tex="\[
+ (R_b\xi)(m)=\xi(m)b,\qquad
+ (R_n\xi)(m)=\mu(mn^{-1},n)V_{n^{-1}}\xi(mn^{-1}).\tag{TR7}
+\]">\[
+ (R_b\xi)(m)=\xi(m)b,\qquad
+ (R_n\xi)(m)=\mu(mn^{-1},n)V_{n^{-1}}\xi(mn^{-1}).\tag{TR7}
+\]</span>
+For the latter formula, <span class="math" data-tex="\(V_{m^{-1}}V_{mn^{-1}}=V_{n^{-1}}\)">\(V_{m^{-1}}V_{mn^{-1}}=V_{n^{-1}}\)</span>. This verifies the transport rather than leaving an unproved right Hilbert-algebra action. In particular
+<span class="math math-display" data-tex="\[
+ L_nL_k=\mu(n,k)L_{nk},\qquad
+ L_n\pi(a)L_n^*=\pi(\beta_n(a)).\tag{TR8}
+\]">\[
+ L_nL_k=\mu(n,k)L_{nk},\qquad
+ L_n\pi(a)L_n^*=\pi(\beta_n(a)).\tag{TR8}
+\]</span>
+Put <span class="math" data-tex="\(M_\mu=(\pi(P)\cup L(N))''\)">\(M_\mu=(\pi(P)\cup L(N))''\)</span> and <span class="math" data-tex="\(\Omega=\delta_e\otimes\widehat1\)">\(\Omega=\delta_e\otimes\widehat1\)</span>. Both the left and right finite monomial orbits of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> are dense: in coefficient coordinates each is exactly <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, embedded densely. All transported right operators commute with <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span>, since their commutation sets are weakly closed.</p>
+<p>Transporting the antiunitary gives <span class="math" data-tex="\(\mathcal J=SJS^*\)">\(\mathcal J=SJS^*\)</span>, with the explicit regular formula
+<span class="math math-display" data-tex="\[
+ (\mathcal J\xi)(m)=\overline{\mu(m,m^{-1})}\,V_{m^{-1}}J_0\xi(m^{-1}).
+\]">\[
+ (\mathcal J\xi)(m)=\overline{\mu(m,m^{-1})}\,V_{m^{-1}}J_0\xi(m^{-1}).
+\]</span>
+Here <span class="math" data-tex="\(J_0V_g=V_gJ_0\)">\(J_0V_g=V_gJ_0\)</span>, as both sides send <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> to <span class="math" data-tex="\(\widehat{\beta_g(a^*)}\)">\(\widehat{\beta_g(a^*)}\)</span>. The phase equality following (TR1) and the inverse coordinate shift also verify <span class="math" data-tex="\(\mathcal J^2=1\)">\(\mathcal J^2=1\)</span> directly. On the left finite-polynomial algebra, <span class="math" data-tex="\(\mathcal JX\Omega=X^*\Omega\)">\(\mathcal JX\Omega=X^*\Omega\)</span>.</p>
+<p><span id="OA-FLOW.TRP.TRACE"></span><a id="trp-trace"></a></p>
+<h2 id="3-a-faithful-normal-trace-on-the-whole-generated-algebra">3. A faithful normal trace on the whole generated algebra</h2>
+<p><strong>Trace theorem.</strong> The vector state
+<span class="math math-display" data-tex="\[
+ \tau_\mu(X)=\langle X\Omega,\Omega\rangle\quad(X\in M_\mu)\tag{TR9}
+\]">\[
+ \tau_\mu(X)=\langle X\Omega,\Omega\rangle\quad(X\in M_\mu)\tag{TR9}
+\]</span>
+is faithful, normal and tracial, and extends <span class="math" data-tex="\(t_0\)">\(t_0\)</span>.</p>
+<p><strong>Proof.</strong> Its restriction to the finite monomial algebra is <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, by (TR6) and normalization. It is a normal vector state, one of the single-term concrete ultraweak tests. If <span class="math" data-tex="\(X\Omega=0\)">\(X\Omega=0\)</span>, then <span class="math" data-tex="\(XR_Y\Omega=R_YX\Omega=0\)">\(XR_Y\Omega=R_YX\Omega=0\)</span> for every right finite monomial <span class="math" data-tex="\(Y\)">\(Y\)</span>. Their vectors are dense, hence <span class="math" data-tex="\(X=0\)">\(X=0\)</span>. Thus <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating. For <span class="math" data-tex="\(X\ge0\)">\(X\ge0\)</span>, <span class="math" data-tex="\(\tau_\mu(X)=0\)">\(\tau_\mu(X)=0\)</span> makes <span class="math" data-tex="\(\sqrt X\Omega=0\)">\(\sqrt X\Omega=0\)</span>, so separatingness gives <span class="math" data-tex="\(X=0\)">\(X=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(X,Y\in M_\mu\)">\(X,Y\in M_\mu\)</span>. The bounded approximation lemma supplies finite-polynomial operators <span class="math" data-tex="\(X_i,Y_j\)">\(X_i,Y_j\)</span> converging strong-star to them, with bounds <span class="math" data-tex="\(\|X_i\|\le\|X\|\)">\(\|X_i\|\le\|X\|\)</span>, <span class="math" data-tex="\(\|Y_j\|\le\|Y\|\)">\(\|Y_j\|\le\|Y\|\)</span>. On the product directed set,
+<span class="math math-display" data-tex="\[
+ \|(X_iY_j-XY)\xi\|
+ \le\|X\|\|(Y_j-Y)\xi\|+\|(X_i-X)Y\xi\|\to0.
+\]">\[
+ \|(X_iY_j-XY)\xi\|
+ \le\|X\|\|(Y_j-Y)\xi\|+\|(X_i-X)Y\xi\|\to0.
+\]</span>
+The reverse products have the analogous bound. Taking the vector state and the finite trace equality gives <span class="math" data-tex="\(\tau_\mu(XY)=\tau_\mu(YX)\)">\(\tau_\mu(XY)=\tau_\mu(YX)\)</span>. This proves the trace at the whole-algebra boundary; density without the bounded approximation step would not justify this product limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The trace makes <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> finite: an isometry <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(\tau_\mu(1-vv^*)=1-\tau_\mu(v^*v)=0\)">\(\tau_\mu(1-vv^*)=1-\tau_\mu(v^*v)=0\)</span>, so faithfulness gives <span class="math" data-tex="\(vv^*=1\)">\(vv^*=1\)</span>. The identification <span class="math" data-tex="\(X\mapsto X\Omega\)">\(X\mapsto X\Omega\)</span> is the whole trace GNS completion of <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span>, because <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is cyclic, and <span class="math" data-tex="\(\|X\Omega\|^2=\tau_\mu(X^*X)\)">\(\|X\Omega\|^2=\tau_\mu(X^*X)\)</span>.</p>
+<p>The same bounded strong-star approximants extend <span class="math" data-tex="\(\mathcal JX\Omega=X^*\Omega\)">\(\mathcal JX\Omega=X^*\Omega\)</span> to every <span class="math" data-tex="\(X\in M_\mu\)">\(X\in M_\mu\)</span>. Hence the concrete antiunitary independently checks <span class="math" data-tex="\(\tau_\mu(X^*X)=\|X\Omega\|^2=\|X^*\Omega\|^2=\tau_\mu(XX^*)\)">\(\tau_\mu(X^*X)=\|X\Omega\|^2=\|X^*\Omega\|^2=\tau_\mu(XX^*)\)</span>. Polarizing this equality gives <span class="math" data-tex="\(\tau_\mu(A^*B)=\tau_\mu(BA^*)\)">\(\tau_\mu(A^*B)=\tau_\mu(BA^*)\)</span>, and replacing <span class="math" data-tex="\(A\)">\(A\)</span> by an adjoint gives the whole trace identity. This check uses the completed adjoint, rather than assuming a right action exists from a Hilbert-algebra label.</p>
+<p><span id="OA-FLOW.TRP.FOURIER"></span><a id="trp-fourier"></a></p>
+<h2 id="4-normal-expectation-and-fourier-uniqueness">4. Normal expectation and Fourier uniqueness</h2>
+<p>For <span class="math" data-tex="\(s\in N\)">\(s\in N\)</span>, let <span class="math" data-tex="\(J_s:H_0\to K\)">\(J_s:H_0\to K\)</span> insert a vector at coordinate <span class="math" data-tex="\(s\)">\(s\)</span>. Set <span class="math" data-tex="\(X_{t,s}=J_t^*XJ_s\)">\(X_{t,s}=J_t^*XJ_s\)</span>. These matrix slices have norm at most <span class="math" data-tex="\(\|X\|\)">\(\|X\|\)</span>. They are normal: an output ultraweak coefficient sum is the input sum obtained by applying <span class="math" data-tex="\(J_s,J_t\)">\(J_s,J_t\)</span> to its two square-summable vector families.</p>
+<p>For a finite sum <span class="math" data-tex="\(X=\sum_n\pi(x_n)L_n\)">\(X=\sum_n\pi(x_n)L_n\)</span>, direct evaluation gives
+<span class="math math-display" data-tex="\[
+ X_{t,s}=\beta_{t^{-1}}(x_{ts^{-1}})\mu(ts^{-1},s).\tag{TR10}
+\]">\[
+ X_{t,s}=\beta_{t^{-1}}(x_{ts^{-1}})\mu(ts^{-1},s).\tag{TR10}
+\]</span>
+For general <span class="math" data-tex="\(X\in M_\mu\)">\(X\in M_\mu\)</span>, take bounded strong-star finite-polynomial approximants. Their slices converge strongly on <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, so they remain in the weakly closed represented <span class="math" data-tex="\(P\)">\(P\)</span>. The <span class="math" data-tex="\((e,e)\)">\((e,e)\)</span> slice therefore defines
+<span class="math math-display" data-tex="\[
+ E_\mu(X)=X_{e,e}\in P.\tag{TR11}
+\]">\[
+ E_\mu(X)=X_{e,e}\in P.\tag{TR11}
+\]</span>
+It is unital, normal and completely positive: at every finite matrix level it is the compression by the direct sum of copies of <span class="math" data-tex="\(J_e\)">\(J_e\)</span>, which preserves positivity. Since <span class="math" data-tex="\(\pi(a)J_e=J_e a\)">\(\pi(a)J_e=J_e a\)</span>, it is <span class="math" data-tex="\(P\)">\(P\)</span>-bimodular:
+<span class="math" data-tex="\(E_\mu(\pi(a)X\pi(b))=aE_\mu(X)b\)">\(E_\mu(\pi(a)X\pi(b))=aE_\mu(X)b\)</span>.
+It fixes <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span>, so it is a conditional expectation onto <span class="math" data-tex="\(P\)">\(P\)</span>. Its norm is one: compression is contractive and it fixes the unit. Furthermore
+<span class="math math-display" data-tex="\[
+ \tau\circ E_\mu=\tau_\mu.\tag{TR12}
+\]">\[
+ \tau\circ E_\mu=\tau_\mu.\tag{TR12}
+\]</span>
+This is the same vector coefficient at <span class="math" data-tex="\(\widehat1\)">\(\widehat1\)</span>. Faithfulness follows: a positive <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(E_\mu(X)=0\)">\(E_\mu(X)=0\)</span> has trace zero, hence is zero.</p>
+<p><strong>Fourier theorem.</strong> The coefficient maps
+<span class="math math-display" data-tex="\[
+ x_n(X)=E_\mu(XL_n^*)
+ =\frac{X_{e,n^{-1}}}{\mu(n,n^{-1})}\in P\tag{TR13}
+\]">\[
+ x_n(X)=E_\mu(XL_n^*)
+ =\frac{X_{e,n^{-1}}}{\mu(n,n^{-1})}\in P\tag{TR13}
+\]</span>
+are normal and have norm at most one. Formula (TR10) holds for every <span class="math" data-tex="\(X\in M_\mu\)">\(X\in M_\mu\)</span>. The coefficients uniquely determine <span class="math" data-tex="\(X\)">\(X\)</span>, and
+<span class="math math-display" data-tex="\[
+ \tau_\mu(X^*X)=\sum_{n\in N}\|x_n(X)\|_2^2.\tag{TR14}
+\]">\[
+ \tau_\mu(X^*X)=\sum_{n\in N}\|x_n(X)\|_2^2.\tag{TR14}
+\]</span></p>
+<p><strong>Proof.</strong> For finite sums (TR13) follows either by multiplying <span class="math" data-tex="\(L_n^*\)">\(L_n^*\)</span> or by the <span class="math" data-tex="\((e,n^{-1})\)">\((e,n^{-1})\)</span> entry. Normality follows from normal compression and fixed multiplication; contractivity uses that <span class="math" data-tex="\(L_n\)">\(L_n\)</span> is unitary. For the general matrix formula pass to bounded weak limits of finite approximants. Both its coefficient slices and <span class="math" data-tex="\(\beta_{t^{-1}}\)">\(\beta_{t^{-1}}\)</span> are weakly continuous on these bounded balls in the trace representation. For the latter fact its GNS unitary is <span class="math" data-tex="\(V_{t^{-1}}\)">\(V_{t^{-1}}\)</span>, since <span class="math" data-tex="\(V_g aV_g^*=\beta_g(a)\)">\(V_g aV_g^*=\beta_g(a)\)</span>; hence it is actual unitary conjugation. Thus (TR10) survives the limit. If every coefficient is zero, every matrix entry is zero. Testing finite coordinate vectors, which are dense in <span class="math" data-tex="\(K\)">\(K\)</span>, makes <span class="math" data-tex="\(X=0\)">\(X=0\)</span>.</p>
+<p>Its vector <span class="math" data-tex="\(X\Omega\)">\(X\Omega\)</span> has coordinate <span class="math" data-tex="\(\widehat{\beta_{n^{-1}}(x_n(X))}\)">\(\widehat{\beta_{n^{-1}}(x_n(X))}\)</span>, by the <span class="math" data-tex="\((n,e)\)">\((n,e)\)</span> entry. Square summability and trace invariance give (TR14). For finite <span class="math" data-tex="\(F\subset N\)">\(F\subset N\)</span>,
+<span class="math math-display" data-tex="\[
+ \left\|X-\sum_{n\in F}\pi(x_n(X))L_n\right\|_{2,\tau_\mu}^2
+ =\sum_{n\notin F}\|x_n(X)\|_2^2\longrightarrow0.\tag{TR15}
+\]">\[
+ \left\|X-\sum_{n\in F}\pi(x_n(X))L_n\right\|_{2,\tau_\mu}^2
+ =\sum_{n\notin F}\|x_n(X)\|_2^2\longrightarrow0.\tag{TR15}
+\]</span>
+This is a trace-norm Hilbert conclusion. It does not place a uniform operator bound on these Fourier partial sums. The earlier bounded approximants have a different purpose and must not be replaced by (TR15) when passing operator products to limits. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Two regular coordinates and their actual coefficient slices" src="assets/twisted-regular-products/two-sheet-fourier.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1. Sections 2–4, (TR6), (TR10)–(TR15). The pictured subgroup is exactly N=C₂={e,t}, with μ=1. The displayed block matrix is the actual regular operator π(a)+π(b)L_t. The projection reads a for the expectation, while the two trace-GNS coordinates give ||a||₂²+||b||₂². The diagram shows algebra-valued entries, not scalar sample entries. Source question: Takesaki III, XVII.3 Exercise 5(a), printed p.293; the construction, diagram and checks here are original. <a href="assets/twisted-regular-products/render_and_check.py">Figure source</a>, <a href="assets/twisted-regular-products/models.json">model data</a>.</em></p>
+<p><span id="OA-FLOW.TRP.SYMMETRY"></span><a id="trp-symmetry"></a></p>
+<h2 id="5-bringing-the-whole-group-back-to-the-product">5. Bringing the whole group back to the product</h2>
+<p>Now use the remaining lines of (TR1). Define on the <strong>regular</strong> Hilbert space
+<span class="math math-display" data-tex="\[
+ (W_g\xi)(m)=\lambda(m,g)V_g\xi(g^{-1}mg).\tag{TR16}
+\]">\[
+ (W_g\xi)(m)=\lambda(m,g)V_g\xi(g^{-1}mg).\tag{TR16}
+\]</span>
+Normality of N makes the coordinate shift a permutation of N. Hence W_g is unitary. The action identity in (TR1) gives W_gW_h=W_gh, with W_e=1. On <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span>,
+<span class="math math-display" data-tex="\[
+ W_g\pi(a)W_g^*=\pi(\beta_g(a)).\tag{TR17}
+\]">\[
+ W_g\pi(a)W_g^*=\pi(\beta_g(a)).\tag{TR17}
+\]</span>
+Indeed the operator at coordinate m is transformed to
+<span class="math" data-tex="\(\beta_g\beta_{(g^{-1}mg)^{-1}}(a)=\beta_{m^{-1}}\beta_g(a)\)">\(\beta_g\beta_{(g^{-1}mg)^{-1}}(a)=\beta_{m^{-1}}\beta_g(a)\)</span>.</p>
+<p>For <span class="math" data-tex="\(n'=gng^{-1}\)">\(n'=gng^{-1}\)</span>, put <span class="math" data-tex="\(b=n'^{-1}m\)">\(b=n'^{-1}m\)</span>. The coefficient of W_gL_nW_g* at m is
+<span class="math math-display" data-tex="\[
+ \frac{\lambda(m,g)}{\lambda(b,g)}\mu(n,g^{-1}bg)
+ =\lambda(n',g)\mu(n',b),\tag{TR18}
+\]">\[
+ \frac{\lambda(m,g)}{\lambda(b,g)}\mu(n,g^{-1}bg)
+ =\lambda(n',g)\mu(n',b),\tag{TR18}
+\]</span>
+because the compatibility equation is
+<span class="math" data-tex="\(\lambda(n',g)\lambda(b,g)/\lambda(m,g)
+=\mu(n,g^{-1}bg)/\mu(n',b)\)">\(\lambda(n',g)\lambda(b,g)/\lambda(m,g)
+=\mu(n,g^{-1}bg)/\mu(n',b)\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+ W_gL_nW_g^*=\lambda(gng^{-1},g)L_{gng^{-1}}.\tag{TR19}
+\]">\[
+ W_gL_nW_g^*=\lambda(gng^{-1},g)L_{gng^{-1}}.\tag{TR19}
+\]</span>
+These formulas show that <span class="math" data-tex="\(\alpha_g=\operatorname{Ad}(W_g)|_{M_\mu}\)">\(\alpha_g=\operatorname{Ad}(W_g)|_{M_\mu}\)</span> is a normal action of G. It preserves the trace: W_g fixes <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, since <span class="math" data-tex="\(\lambda(e,g)=1\)">\(\lambda(e,g)=1\)</span> and <span class="math" data-tex="\(V_g\widehat1=\widehat1\)">\(V_g\widehat1=\widehat1\)</span>. Normality here is literal conjugation by a fixed Hilbert unitary, so it preserves all concrete ultraweak tests. The action is continuous for the discrete topology on G.</p>
+<p>For <span class="math" data-tex="\(h,n\in N\)">\(h,n\in N\)</span>, the inner-action equation gives
+<span class="math" data-tex="\(\lambda(hnh^{-1},h)=\mu(h,n)/\mu(hnh^{-1},h)\)">\(\lambda(hnh^{-1},h)=\mu(h,n)/\mu(hnh^{-1},h)\)</span>.
+This is exactly the phase of L_hL_nL_h*, found by comparing L_hL_n with L_(hnh⁻¹)L_h. Its action on <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span> is <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span>, by (TR8). Thus
+<span class="math math-display" data-tex="\[
+ \alpha_h=\operatorname{Ad}(L_h)\quad(h\in N).\tag{TR20}
+\]">\[
+ \alpha_h=\operatorname{Ad}(L_h)\quad(h\in N).\tag{TR20}
+\]</span>
+Both generator families were checked; covariance on <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span> alone would not prove (TR20).</p>
+<p><span id="OA-FLOW.TRP.KERNEL"></span><a id="trp-kernel"></a></p>
+<h2 id="6-a-nonzero-coefficient-detects-the-entire-inner-kernel">6. A nonzero coefficient detects the entire inner kernel</h2>
+<p><strong>Factor and kernel theorem.</strong> If <span class="math" data-tex="\(\beta_n\)">\(\beta_n\)</span> is outer for all <span class="math" data-tex="\(n\in N\setminus\{e\}\)">\(n\in N\setminus\{e\}\)</span>, then <span class="math" data-tex="\(\pi(P)'\cap M_\mu=\mathbb C1\)">\(\pi(P)'\cap M_\mu=\mathbb C1\)</span>, and <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> is a finite factor. If <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span> is outer for every <span class="math" data-tex="\(g\ne e\)">\(g\ne e\)</span> in G, then
+<span class="math math-display" data-tex="\[
+ N(\alpha)=\{g:\alpha_g\text{ is inner on }M_\mu\}=N.\tag{TR21}
+\]">\[
+ N(\alpha)=\{g:\alpha_g\text{ is inner on }M_\mu\}=N.\tag{TR21}
+\]</span></p>
+<p><strong>Proof.</strong> Commutation of X with <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span>, followed by its normal Fourier coefficient map, says
+<span class="math" data-tex="\(x_n(X)\beta_n(a)=a x_n(X)\)">\(x_n(X)\beta_n(a)=a x_n(X)\)</span> for every a. We use the following factor calculation. If <span class="math" data-tex="\(0\ne c\in P\)">\(0\ne c\in P\)</span> satisfies <span class="math" data-tex="\(cb=\theta(b)c\)">\(cb=\theta(b)c\)</span> for all b and an automorphism θ, the adjoint identity shows that c<em>c commutes with P and cc</em> commutes with θ(P)=P. Both are nonzero scalar operators. Their supports are 1, so the polar part v is a unitary; then c=rv with r&gt;0, and θ(b)=vbv*. This proves innerness, including both full supports, without treating a partial implementer as a unitary by assertion.</p>
+<p>The calculation excludes every nonidentity coefficient of X in the relative commutant. Its identity coefficient is central in P, hence scalar. Fourier uniqueness proves X is that scalar. The center of <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> is contained in this relative commutant, proving factoriality.</p>
+<p>Suppose now that a unitary X in <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> implements <span class="math" data-tex="\(\alpha_g\)">\(\alpha_g\)</span>. Its equation on the original algebra is Xπ(a)=π(β_g(a))X. Taking coefficients gives
+<span class="math math-display" data-tex="\[
+ x_n(X)\beta_n(a)=\beta_g(a)x_n(X).\tag{TR22}
+\]">\[
+ x_n(X)\beta_n(a)=\beta_g(a)x_n(X).\tag{TR22}
+\]</span>
+Some coefficient is nonzero, since X≠0 and coefficients are injective. Replacing a by <span class="math" data-tex="\(\beta_{n^{-1}}(b)\)">\(\beta_{n^{-1}}(b)\)</span> gives <span class="math" data-tex="\(x_n(X)b=\beta_{gn^{-1}}(b)x_n(X)\)">\(x_n(X)b=\beta_{gn^{-1}}(b)x_n(X)\)</span>. The factor calculation makes <span class="math" data-tex="\(\beta_{gn^{-1}}\)">\(\beta_{gn^{-1}}\)</span> inner. The verified free action forces gn⁻¹=e; hence g=n belongs to N. Equation (TR20) proves the reverse inclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When P is infinite-dimensional, this finite factor is type II₁. Here is the exact elementary type inference. A factor M with a faithful normalized tracial state τ_M and a minimal projection p has scalar corner pMp: otherwise split a nonscalar selfadjoint corner element at a real number strictly between two of its spectral values and take the nonzero orthogonal supports of its positive and negative parts, obtaining a proper subprojection. The join of any family of projections in M is the projection onto the closed span of their ranges. Every operator in M′ and its adjoint preserves these ranges, so that projection is in M″=M. This also proves the arbitrary join used here.</p>
+<p>In a factor, qMp≠0 for every pair of nonzero projections p,q. Indeed, the join of the unitary conjugates of p is central, because conjugation permutes this family. Commutation with all unitaries implies centrality: a selfadjoint contraction a is <span class="math" data-tex="\((u+u^*)/2\)">\((u+u^*)/2\)</span> for the unitary <span class="math" data-tex="\(u=a+i\sqrt{1-a^2}\)">\(u=a+i\sqrt{1-a^2}\)</span>, and every element is a linear combination of selfadjoint contractions. The join is therefore 1. If qMp were zero, q would annihilate every conjugate range and would be orthogonal to that join. A nonzero corner element and its polar decomposition thus produce a copy of p under q. Zorn's lemma supplies a maximal orthogonal family of copies of p. Its complement must vanish by the preceding corner calculation, so the family fills 1. All copies have the same positive trace τ_M(p); finite additivity and τ_M(1)=1 bound their number by 1/τ_M(p), so the family is finite. Their connecting partial isometries give matrix units, and each matrix entry is scalar in pMp; the finite sum of these entries identifies M with a finite matrix algebra. Therefore an infinite-dimensional factor with a faithful normal normalized trace has no minimal projection, which is the II₁ definition. In our product, an infinite-dimensional P embeds faithfully via π, so <span class="math" data-tex="\(M_\mu\)">\(M_\mu\)</span> cannot be a finite matrix algebra. This inference uses no general type decomposition or factor classification.</p>
+<p>With implementers L_n for precisely the inner kernel N, (TR8) and (TR19) give
+<span class="math math-display" data-tex="\[
+ L_nL_k=\mu(n,k)L_{nk},\qquad
+ \alpha_g(L_{g^{-1}ng})=\lambda(n,g)L_n.\tag{TR23}
+\]">\[
+ L_nL_k=\mu(n,k)L_{nk},\qquad
+ \alpha_g(L_{g^{-1}ng})=\lambda(n,g)L_n.\tag{TR23}
+\]</span>
+Thus the actual characteristic class is <span class="math" data-tex="\([\lambda,\mu]\)">\([\lambda,\mu]\)</span> in CPP's <span class="math" data-tex="\(\Lambda(G,N,\mathbb T)\)">\(\Lambda(G,N,\mathbb T)\)</span>. The full-kernel proof precedes this conclusion. It is not just an invariant on a smaller subgroup known to act innerly.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="A Fourier coefficient turns innerness into an intertwiner" src="assets/twisted-regular-products/kernel-intertwiner.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 2. Theorem (TR21), proof equation (TR22). A nonzero coefficient belongs to the factor P and intertwines β_n and β_g. Its polar part therefore implements β_(gn⁻¹); the free action forces g=n. The reverse inclusion comes from α_n=Ad(L_n). Every implication and assumption shown is used in Section 6. This is a diagram of the proved mechanism, not a classification diagram. Human source question: Takesaki III, XVII.3 Exercise 5(b). <a href="assets/twisted-regular-products/render_and_check.py">Reproduction and checks</a>.</em></p>
+<p><span id="OA-FLOW.TRP.GAUGE"></span><a id="trp-gauge"></a></p>
+<h2 id="7-a-change-of-phase-is-an-actual-unitary-comparison">7. A change of phase is an actual unitary comparison</h2>
+<p>Let f:N→𝕋 satisfy f(e)=1 and put
+<span class="math math-display" data-tex="\[
+ \mu^f(n,k)=\mu(n,k)\frac{f(n)f(k)}{f(nk)},\qquad
+ \lambda^f(n,g)=\lambda(n,g)\frac{f(g^{-1}ng)}{f(n)}.\tag{TR24}
+\]">\[
+ \mu^f(n,k)=\mu(n,k)\frac{f(n)f(k)}{f(nk)},\qquad
+ \lambda^f(n,g)=\lambda(n,g)\frac{f(g^{-1}ng)}{f(n)}.\tag{TR24}
+\]</span>
+These are CPP's gauges; their preservation of (TR1) is also immediate from cancellation. In the multiplier equation every gauge term reduces to f(a)f(b)f(c)/f(abc). In the action equation the intermediate f(g⁻¹ng) cancels. The compatibility equation is the ratio of the multiplication gauges at the conjugated and original arguments. For inner action, the ratio of the two multiplication gauges is f(n⁻¹mn)/f(m), its λ gauge. Normalization follows from f(e)=1.</p>
+<p><strong>Gauge theorem.</strong> The diagonal unitary <span class="math" data-tex="\(D_f\xi(m)=f(m)^{-1}\xi(m)\)">\(D_f\xi(m)=f(m)^{-1}\xi(m)\)</span> fixes <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span> and gives a normal trace-preserving isomorphism <span class="math" data-tex="\(M_\mu\to M_{\mu^f}\)">\(M_\mu\to M_{\mu^f}\)</span> intertwining the two G-actions.</p>
+<p><strong>Proof.</strong> Its inverse multiplies by f(m). Directly,
+<span class="math math-display" data-tex="\[
+ D_fL_n^\mu D_f^*=f(n)^{-1}L_n^{\mu^f},\qquad
+ D_fW_g^\lambda D_f^*=W_g^{\lambda^f}.\tag{TR25}
+\]">\[
+ D_fL_n^\mu D_f^*=f(n)^{-1}L_n^{\mu^f},\qquad
+ D_fW_g^\lambda D_f^*=W_g^{\lambda^f}.\tag{TR25}
+\]</span>
+For the first identity the coordinate phase is μ(n,n⁻¹m)f(n⁻¹m)/f(m), which is f(n)⁻¹μ^f(n,n⁻¹m). For the second it is λ(m,g)f(g⁻¹mg)/f(m). The scalar f(n)⁻¹ does not affect the generated algebra. Conjugation by D_f maps all generators onto the target generators and has the inverse conjugation, hence is a normal isomorphism. It fixes Ω, so it preserves the traces. The second identity proves exact action intertwining. The target's chosen implementer L_n^(μ^f) is f(n) times the image of the old implementer; this explains why the characteristic pair changes by (TR24) even though the actions are conjugate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.TRP.BERNOULLI"></span><a id="trp-bernoulli"></a></p>
+<h2 id="8-a-verified-free-action-for-every-countable-group">8. A verified free action for every countable group</h2>
+<p>Use the index set I=G×ℕ, including when G is finite or trivial. At each site take M₂ with its normalized matrix trace. Its Hilbert space is M₂ with inner product tr(y*x), pointed at 1. Form the finite tensor spaces by appending that unit vector and complete their increasing union. This supplies the product Hilbert space H, the vector Ω_P and its finite tensor density. The left local matrix algebras A_F, F finite in I, act boundedly; the analogous right algebras commute with them. Each local left or right orbit of Ω_P fills the finite tensor space. Thus both local orbits are dense. Let P be the bicommutant of the left local union.</p>
+<p>The right orbit makes Ω_P separating by the same commuting-orbit argument as Section 3. Its vector state τ is faithful and normal. It is tracial on every finite local algebra; bounded strong-star approximation from their union proves it tracial on all of P exactly as in Section 3. This is also the fully concrete trace-specialization of the earlier ITP Sections 11.2–11.3.</p>
+<p>Here is the factor and approximation calculation in this actual model. Write H=H_F⊗H_(I\F), define J_Fη=η⊗Ω_(I\F), and set
+<span class="math" data-tex="\(\widehat E_F(X)=(J_F^*XJ_F)\otimes1\)">\(\widehat E_F(X)=(J_F^*XJ_F)\otimes1\)</span>.
+The finite dimension of H_F makes this map a finite linear combination of vector coefficients times fixed matrix units; it is normal and weakly continuous. On a local left product, its compression is left multiplication by the finite tensor trace of the other sites. Hence <span class="math" data-tex="\(\widehat E_F(P)\subset A_F\)">\(\widehat E_F(P)\subset A_F\)</span>, by weak density and weak closedness of A_F. The latter can be checked on the finite leg: operators commuting with every right multiplication are left multiplications, since T(x)=T(1)x; their commutation equations are weakly closed. The finite coefficient expression for amplification then retains this closedness on the whole product space.</p>
+<p>For a finite tensor vector η supported in E⊆F,
+<span class="math" data-tex="\(\widehat E_F(X)\eta=Q_FX\eta\)">\(\widehat E_F(X)\eta=Q_FX\eta\)</span>, where Q_F projects onto H_F⊗Ω_(I\F). As F increases, Q_F→1 strongly by finite tensor density. The bound <span class="math" data-tex="\(\|\widehat E_F(X)\|\le\|X\|\)">\(\|\widehat E_F(X)\|\le\|X\|\)</span> extends convergence to every vector. Applying it to X* gives strong-star convergence. If X is central in P, its finite expectation commutes with A_F by the bimodule identity. It therefore is scalar in the full matrix algebra A_F; its scalar is τ(X), since the expectation fixes the reference vector state. Their strong limit makes X=τ(X)1. Thus P is a factor. It contains full matrix algebras of arbitrarily large dimensions, so the finite-factor argument in Section 6 proves type II₁. A countable exhaustion of I makes it sequentially AFD. These are the exact local expectation and type arguments of ITP Sections 11.6 and 12, now at the tracial sites we use.</p>
+<p>Let g move site (h,k) to (gh,k). The coordinate permutation fixes Ω_P and is a unitary of the finite-tensor completion, with inverse from g⁻¹. It conjugates the local left algebras to their permuted local algebras and gives a trace-preserving normal automorphism β_g of P. On local tensors β_gβ_h=β_gh; density gives that identity throughout P.</p>
+<p>Fix g≠e and let z_k be diag(1,−1) at (e,k). It has trace zero and 2-norm one. For every x∈P and a local tensor approximation a,
+<span class="math math-display" data-tex="\[
+ \|[z_k,x]\|_2\le2\|x-a\|_2+\|[z_k,a]\|_2.\tag{TR26}
+\]">\[
+ \|[z_k,x]\|_2\le2\|x-a\|_2+\|[z_k,a]\|_2.\tag{TR26}
+\]</span>
+The last term is eventually zero. Local approximations exist by the strong convergence of E_F(x); hence (z_k) is central. Its image is at the distinct site (g,k), so the product trace gives
+<span class="math math-display" data-tex="\[
+ \|\beta_g(z_k)-z_k\|_2^2=1+1-2\operatorname{Re}\tau(\beta_g(z_k)z_k)=2.\tag{TR27}
+\]">\[
+ \|\beta_g(z_k)-z_k\|_2^2=1+1-2\operatorname{Re}\tau(\beta_g(z_k)z_k)=2.\tag{TR27}
+\]</span>
+If β_g=Ad(u), this distance would equal <span class="math" data-tex="\(\|[u,z_k]\|_2\to0\)">\(\|[u,z_k]\|_2\to0\)</span>, a contradiction. Thus β is outer at every nonidentity g. In particular it supplies every freeness premise in Sections 6 and 9, for the actual group being used.</p>
+<p>Bounded 2-norm convergence in this trace representation implies strong-star convergence: on a dense vector aΩ_P its squared norm is bounded by ||a||² times the squared 2-norm, and the adjoint has the same 2-norm. Conversely test Ω_P. Thus (TR27) also supplies a noncentrally-trivial automorphism at the tracial central-sequence scope. No nontracial claim follows from this trace estimate.</p>
+<p><span id="OA-FLOW.TRP.FINITE-AFD"></span><a id="trp-finite-afd"></a></p>
+<h2 id="9-the-constructive-finite-subgroup-afd-branch">9. The constructive finite-subgroup AFD branch</h2>
+<p><strong>Finite-N theorem.</strong> If N is finite and P,β are the Bernoulli model of Section 8, the action constructed in Sections 5–6 realizes [λ,μ] with exact inner kernel N on an AFD II₁ factor.</p>
+<p><strong>Proof.</strong> Enumerate I=G×ℕ. If E_i is its first i sites, put F_i=⋃<em>(n∈N)nE_i. These finite N-invariant sets increase and exhaust I. Let A_i be their local full matrix algebra, invariant under β_n for every n∈N. Then
+<span class="math math-display" data-tex="\[
+ B_i=\operatorname{span}\{\pi(a)L_n:a\in A_i,\ n\in N\}\tag{TR28}
+\]">\[
+ B_i=\operatorname{span}\{\pi(a)L_n:a\in A_i,\ n\in N\}\tag{TR28}
+\]</span>
+is a finite-dimensional unital star algebra. Formula (TR2) and N-invariance prove closure under multiplication and adjoints, not just finite-dimensionality of a vector span. Its dimension is |N|dim(A_i), since its Fourier coefficients are independent. A finite-dimensional operator subspace is norm and weakly closed: choose finitely many vector coefficient functionals separating a basis, solve for its coordinates, and use the resulting finite coefficient reconstruction. Thus B_i is a finite-dimensional von Neumann algebra. They increase. The generated algebra contains all L_n and π(A_i), and the latter generate π(P); one may use E</em>(F_i)(a)→a strongly with uniform bound coordinate by coordinate in (TR6), extending from finite coordinate vectors. Hence (⋃B_i)''=M_μ. Factoriality, the trace and the exact kernel follow from Sections 3 and 6; it contains the infinite-dimensional P. This proves the stated AFD II₁ branch with every hypothesis verified. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For N={e}, formulas give M_μ=P and α=β, with trivial characteristic pair and trivial inner kernel. For N=G, (TR20) makes the whole action inner, while the characteristic pair still records the projective implementers. When G=N is finite, the preceding branch applies. The construction also applies to infinite N=G, but the AFD conclusion of this section does not extend by replacing a finite span with an infinite one.</p>
+<p><span id="OA-FLOW.TRP.OBSTRUCTION"></span><a id="trp-obstruction"></a></p>
+<h2 id="10-afd-averaging-creates-an-invariant-mean">10. AFD averaging creates an invariant mean</h2>
+<p><strong>Regular-product obstruction.</strong> If M_μ has an increasing unital finite-dimensional exhaustion, N admits a positive normalized left-invariant mean on ℓ∞(N). In particular the regular product for N=F₂ cannot be AFD, for any scalar twist and any trace-preserving base action in this construction.</p>
+<p><strong>Proof.</strong> Write M_μ=(⋃F_i)'' and use its trace vector Ω on K. We first derive the matrix-block structure needed for finite averaging. Let F⊆M_μ be a finite-dimensional unital star algebra. It is weakly closed: vector coefficient functionals separate its elements; choose finitely many whose restrictions form coordinates on a basis of F, and reconstruct an element from those coordinates. A weak limit therefore stays in F. In particular supports and continuous calculus remain in F, by the bounded tools of Section 1.</p>
+<p>Start with the central projection 1. Whenever a central block zF has nonscalar center, choose a nonscalar selfadjoint element in that center. Split it at a number between two spectral values. The support of its positive part is a nonzero proper central projection below z: the nonzero negative part has orthogonal support, proving it is proper. Replace z by that projection and its complement within z. Each split increases the number of nonzero orthogonal central projections, which are linearly independent in F. Finite dimension therefore forces termination. We obtain 1=∑_jz_j with each z_jF having scalar center; its center is z_jZ(F), since a central element of the block, extended by zero on the other blocks, commutes with all of F.</p>
+<p>In each such factor block choose a minimal nonzero projection. This requires no infinite descent premise: if p is not minimal, replace it by a proper nonzero subprojection q; then qFq is a proper subspace of pFp, because p−q is a nonzero element of the latter which is not in the former. Dimensions strictly decrease, so this procedure terminates. Normalize the restricted faithful trace by τ_j(x)=τ_μ(x)/τ_μ(z_j), x∈z_jF. The corner-contact and matrix-unit argument of Section 6 now applies inside this block, with unit z_j and trace τ_j. To spell out its finite conclusion, a minimal p has pFp=ℂp; the central join of its unitary conjugates is z_j. Every nonzero residual corner qFp therefore contains a nonzero element whose polar part has initial projection p and a copy of p under q. Adjoin orthogonal copies until the complement vanishes. Their common positive τ_j trace bounds their number, so they form a finite family p_1,…,p_d filling z_j. Choose v_k with v_k<em>v_k=p and v_kv_k</em>=p_k. The elements e_kl=v_kv_l* are matrix units. For x∈z_jF, every v_k*xv_l is scalar in pFp, and
+<span class="math math-display" data-tex="\[
+ x=\sum_{k,l=1}^{d}v_k(v_k^*xv_l)v_l^*.
+\]">\[
+ x=\sum_{k,l=1}^{d}v_k(v_k^*xv_l)v_l^*.
+\]</span>
+Thus they span the block and identify it with M_d. This proves locally that F≅⊕<em>jM</em>(d_j), with its concrete matrix units; no finite-dimensional structure theorem is imported.</p>
+<p>There is now a finite group Q of unitaries spanning F. In a block use the clock diag(1,ζ,…,ζ^(d−1)) and cyclic shift, ζ=e^(2πi/d). Their finite group consists of the matrices ζ^rC^sS^t, with r,s,t taken modulo d, because the clock and shift commute up to a d-th root of unity. The d² clock-shift matrices are a basis: distinct shifts have disjoint matrix diagonals; for a fixed shift the d clock phases are independent by the finite geometric-sum identity ∑_(k=0)^(d−1)ζ^(kq)=0 for q not divisible by d. Embed each block's group by the identity on other blocks. Add the central sign which is +1 on that block and −1 on all other blocks; (1+s)/2 isolates it. The generated group is finite, since the block groups and these signs commute across different blocks and each has finitely many elements. Its linear span therefore contains every matrix unit of F. The case of one scalar block uses Q={1}.</p>
+<p>Let φ₀(T)=⟨TΩ,Ω⟩ on B(K) and let Q_i span F_i. Define
+<span class="math math-display" data-tex="\[
+ \phi_i(T)=|Q_i|^{-1}\sum_{v\in Q_i}\phi_0(v^*Tv).\tag{TR29}
+\]">\[
+ \phi_i(T)=|Q_i|^{-1}\sum_{v\in Q_i}\phi_0(v^*Tv).\tag{TR29}
+\]</span>
+It is a state, and φ_i|M_μ=τ_μ by trace invariance. Reindexing makes it invariant under conjugation by every v∈Q_i. Substituting Tv for T in φ_i(vTv*)=φ_i(T) gives φ_i(vT)=φ_i(Tv). Linearity and the spanning property therefore make it F_i-central. This is finite averaging, with no Haar measure or integration theorem hidden in the argument.</p>
+<p>The closure of (⋃F_i)Ω is all of K. Its projection commutes with every F_i, since that closed subspace reduces their left action. It therefore commutes with M_μ and fixes Ω, so it fixes the dense M_μΩ. For a∈M_μ let a_iΩ be the orthogonal projection of aΩ to F_iΩ. The map F_i→F_iΩ is injective by separatingness, so a_i is an actual element of F_i, and ||a−a_i||₂→0. State Cauchy–Schwarz, φ_i|M_μ=τ_μ, and F_i-centrality give
+<span class="math math-display" data-tex="\[
+ |\phi_i(aT-Ta)|\le2\|T\|\,\|a-a_i\|_2\to0
+ \quad(a\in M_\mu,\ T\in B(K)).\tag{TR30}
+\]">\[
+ |\phi_i(aT-Ta)|\le2\|T\|\,\|a-a_i\|_2\to0
+ \quad(a\in M_\mu,\ T\in B(K)).\tag{TR30}
+\]</span>
+For the left error use |φ_i((a−a_i)T)|²≤φ_i((a−a_i)(a−a_i)<em>)φ_i(T</em>T); the other error uses φ_i((a−a_i)*(a−a_i)). The trace makes both first factors the same squared 2-norm. The ultrafilter state lemma of Section 1 supplies a limit ψ on B(K). It still restricts to τ_μ, and (TR30) makes it M_μ-central.</p>
+<p>For f∈ℓ∞(N), let (D_fξ)(m)=f(m)ξ(m). This is a unital positive embedding into B(K), and
+<span class="math math-display" data-tex="\[
+ L_nD_fL_n^*=D_{f\circ\ell_{n^{-1}}},\qquad
+ \ell_{n^{-1}}(m)=n^{-1}m.\tag{TR31}
+\]">\[
+ L_nD_fL_n^*=D_{f\circ\ell_{n^{-1}}},\qquad
+ \ell_{n^{-1}}(m)=n^{-1}m.\tag{TR31}
+\]</span>
+The phases cancel in this conjugation. Centrality gives ψ(L_nTL_n*)=ψ(T). Hence f↦ψ(D_f) is a positive normalized left-invariant mean, as claimed.</p>
+<p>For the concrete contradiction take N=F₂=⟨a,b⟩. Let A₊,A₋,B₊,B₋ be its reduced-word sets with first letters a,a⁻¹,b,b⁻¹. Every singleton has zero mass for an invariant mean: all have the same nonnegative mass and arbitrarily many distinct singletons have total at most 1. The four sets partition F₂{e}, so their masses sum to 1. Cancellation gives exact disjoint partitions
+<span class="math math-display" data-tex="\[
+ F_2=A_+\sqcup aA_-,\qquad F_2=B_+\sqcup bB_-.\tag{TR32}
+\]">\[
+ F_2=A_+\sqcup aA_-,\qquad F_2=B_+\sqcup bB_-.\tag{TR32}
+\]</span>
+For example, a(a⁻¹w)=w where w is empty or has first letter different from a; conversely every word outside A₊ arises this way. Invariance then gives m(A₊)+m(A₋)=1 and m(B₊)+m(B₋)=1. The four masses sum to 2, a contradiction. This proves the obstruction directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Finite averaging and the reduced-word contradiction" src="assets/twisted-regular-products/afd-mean-obstruction.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 3. Equations (TR29)–(TR32). The left side identifies the actual finite-dimensional spanning-unitary average and its trace-based extension to an M-central state on B(K). The right side is a diagram of the two exact reduced-word partitions of F₂, not a numerical sample: invariance makes each row's two masses sum to one, while the four disjoint first-letter sets have total one. Source question: Takesaki III, XVII.3 Exercise 5(a), printed p.293; the proof and figure here are independently expressed. <a href="assets/twisted-regular-products/render_and_check.py">Reproduction source</a>.</em></p>
+<p>This obstruction concerns the regular product just constructed. It does not prove that no different action on an AFD factor can realize a specified characteristic class. An arbitrary infinite amenable subgroup needs a separate complete AFD theorem or another explicit construction. No such theorem or classification is claimed here.</p>
+<p><span id="OA-FLOW.TRP.MODELS"></span><a id="trp-models"></a></p>
+<h2 id="11-original-models-and-solved-diagnostics">11. Original models and solved diagnostics</h2>
+<p><strong>Model A: an infinite acting group with a finite inner kernel.</strong> Let G=C₂×ℤ, write t for the C₂ generator and z for the integer generator, and take N={e,t}. Choose μ=1 and λ(t,t^εz^k)=(-1)^k, λ(e,g)=1. Multiplication and normalization are immediate. The action equation is the integer character identity, conjugation is trivial, compatibility is multiplicativity on C₂, and λ(t,t)=1 proves inner compatibility. Thus (TR1) holds. The Bernoulli model and Section 9 give an AFD II₁ factor with inner kernel exactly C₂. Its generators satisfy L_t²=1, α_t=Ad(L_t), α_z(L_t)=−L_t, α_z(π(a))=π(β_z(a)). This sign cannot be gauged away, since conjugation is trivial and every λ gauge equals one. It is an actual nontrivial characteristic coordinate with an infinite outer quotient.</p>
+<p>For X=π(a)+π(b)L_t its regular matrix is
+<span class="math math-display" data-tex="\[
+ X=\begin{pmatrix}a&amp;b\\\beta_t(b)&amp;\beta_t(a)\end{pmatrix},\qquad
+ E_\mu(X)=a,\quad\|X\|_2^2=\|a\|_2^2+\|b\|_2^2.\tag{TR33}
+\]">\[
+ X=\begin{pmatrix}a&amp;b\\\beta_t(b)&amp;\beta_t(a)\end{pmatrix},\qquad
+ E_\mu(X)=a,\quad\|X\|_2^2=\|a\|_2^2+\|b\|_2^2.\tag{TR33}
+\]</span>
+The symmetry z sends (a,b) to (β_z(a),−β_z(b)). It cannot be inner: an implementer would have a nonzero e or t coefficient, making β_z or β_(zt) inner by (TR22), contrary to Section 8.</p>
+<p><strong>Model B: the phase of a positive outer period.</strong> Let G=ℤ, N=pℤ with p≥1, μ=1, and λ(kp,r)=ζ^(kr) for ζ^p=1. All compatibility equations are character equations; inner compatibility is ζ^(klp)=1. The Bernoulli construction gives a II₁ factor and an automorphism θ=α₁ with θ^p=Ad(L_p) and θ(L_p)=ζL_p. Exact kernel pℤ makes p its first positive inner power. This realizes the CPP cyclic coordinate without asserting an infinite-N AFD theorem. At p=1 the root is 1. At p=0 take N={0}: normalization gives the unique pair and θ has no nonzero inner power.</p>
+<p><strong>Model C: a genuine non-AFD regular product.</strong> Take G=N=F₂, λ=μ=1 and the Bernoulli P. Then M=P⋊_βF₂ is a II₁ factor, α_n=Ad(L_n) for the whole group, and its characteristic pair is trivial. Section 10 nevertheless proves that M is not AFD. A trivial characteristic class and a fully inner action therefore do not certify AFD of the underlying regular product.</p>
+<p><strong>1. The right shift is not the left shift.</strong> Prove r_nr_k=μ(k,n)r_(kn) in coefficient coordinates, and check it commutes with ℓ_l.</p>
+<p><em>Solution.</em> Right multiplication applies [k] first and [n] second to X, giving X([k][n])=μ(k,n)X[kn]. For the direct phase check, (r_nr_ky)(m) has phase μ(mn⁻¹,n)μ(mn⁻¹k⁻¹,k). The multiplier identity with (mn⁻¹k⁻¹,k,n) makes it μ(k,n)μ(m(kn)⁻¹,kn). Associativity of (TR2) then gives ℓ_l r_n=r_nℓ_l on the dense finite algebra; the bounds in Section 2 extend it to the whole Hilbert space.</p>
+<p><strong>2. The projection defining the expectation.</strong> For Y=π(a)L_n and n≠e, compute E(Y), E(Y<em>Y) and E(YY</em>).</p>
+<p><em>Solution.</em> E(Y)=0 because its diagonal identity coefficient is zero. Covariance gives Y<em>Y=π(β_(n⁻¹)(a</em>a)), while YY*=π(aa*). Thus the two expectations are β_(n⁻¹)(a<em>a) and aa</em>. Their τ traces both equal ||a||₂². A zero expectation of Y does not make Y zero; positivity and faithfulness apply to Y<em>Y or YY</em>.</p>
+<p><strong>3. Fourier truncation and norm control.</strong> Explain why (TR15) cannot replace bounded approximation in the proof of the trace theorem. Give the actual bound on a finite Fourier truncation.</p>
+<p><em>Solution.</em> The triangle inequality gives ||∑<em>(n∈F)π(x_n)L_n||≤∑</em>(n∈F)||x_n||≤|F|||X||. This grows with F, whereas (TR15) controls only the Hilbert trace norm of the tail. Products on arbitrary vectors require bounded strong approximation, whose nets Section 1 constructs separately. No assertion that the displayed upper bound is attained is needed to see that it supplies no uniform bound.</p>
+<p><strong>4. Dropping the free action enlarges the inner kernel.</strong> Take N={e}, P=ℂ and β trivial on a nontrivial countable G. Compute M and N(α).</p>
+<p><em>Solution.</em> K=ℂ, μ and λ are forced trivial, π(P)=ℂ, W_g=1, M=ℂ and α_g=id for every g. Hence N(α)=G, although the prescribed subgroup is {e}. The construction and trace remain valid; the exact-kernel theorem requires the free-action premise it states. For a factor, the only scalar-algebra automorphism is indeed the identity.</p>
+<p><strong>5. Direction of the diagonal gauge.</strong> Put N=G=C₃, μ=λ=1 and f(e)=1, f(t)=i, f(t²)=1. Compute μ^f(t,t), D_fL_tD_f* and λ^f.</p>
+<p><em>Solution.</em> μ^f(t,t)=i²/1=−1. Since G is abelian, λ^f=1. Formula (TR25) gives D_fL_tD_f*=−iL_t^(μ^f). On coordinate m its phase is f(t⁻¹m)/f(m), so at m=t it is 1/i=−i; at m=t² it is i, agreeing with −iμ^f(t,t). Using the diagonal f instead of f⁻¹ would reverse this comparison. The two generated algebras are still compared by the stated direction, with its chosen implementers.</p>
+<p><strong>6. Finite invariant coordinate sets.</strong> For Model A, choose E_i={ (t^εz^k,j): ε=0,1, |k|≤i, 1≤j≤i }. Determine the dimensions of A_i and B_i.</p>
+<p><em>Solution.</em> E_i is already N-invariant and has q_i=2(2i+1)i sites. Hence A_i≅M_(2^q_i), with complex dimension 4^q_i. Fourier independence gives dim(B_i)=2·4^q_i. It need not be a full matrix algebra; being a finite-dimensional star algebra is the exact AFD input. The sets increase and exhaust G×ℕ.</p>
+<p><strong>7. A twist cannot repair the invariant mean.</strong> Explain where μ disappears from the obstruction proof.</p>
+<p><em>Solution.</em> It disappears in L_nD_fL_n*, since its two modulus-one factors cancel. Finite-dimensional averaging uses only the faithful normal trace already established and finite spanning groups. Thus (TR31) produces a left-invariant mean independently of μ. The F₂ contradiction also never uses a multiplier. No scalar twist makes this regular tracial F₂ product AFD.</p>
+<p><strong>8. Positive outer period and the zero case.</strong> In Model B with p=5 and ζ=e^(4πi/5), compute α_r(L_(5k)), α₅ and the characteristic coordinate. Contrast p=0.</p>
+<p><em>Solution.</em> α_r(L_(5k))=ζ^(kr)L_(5k), α₅=Ad(L₅), and λ(5,1)=ζ. The root has ζ⁵=1 and the first positive inner power is 5 by the whole-kernel theorem. At p=0 the subgroup is {0}, there is only the identity implementer, and normalization forces the unique characteristic pair. There is no free phase λ(0,1) and no positive inner power to supply an obstruction unitary.</p>
+<p><strong>9. Two exact reduced-word partitions.</strong> Verify F₂=A₊⊔aA₋, including the identity, and locate the contradiction with the four-piece partition.</p>
+<p><em>Solution.</em> A word in A₋ is a⁻¹w with w empty or not beginning with a. Multiplication by a gives exactly every word not in A₊, including e from a⁻¹. The pieces are disjoint. The b version is identical. Each two-piece partition has mass one under an invariant mean. The four first-letter sets are pairwise disjoint and omit only e, whose mass is zero. They have total one, while the two equations give total two. There is no countable-additivity assumption in this contradiction: only finite additivity and arbitrarily large finite sets of distinct singletons were used.</p>
+<p><span id="OA-FLOW.TRP.INPUT-BOUNDARY"></span><a id="trp-input-boundary"></a></p>
+<h2 id="12-prerequisites-and-sources">12. Prerequisites and sources</h2>
+<p>The general construction starts with a supplied faithful normal trace on a finite factor and a normal trace-preserving action. Section 8 constructs both hypotheses and proves the required outerness for every countable group. Sections 1–4 supply the bounded completion, trace and Fourier arguments, so no theorem about general unbounded Hilbert algebras or weights is needed.</p>
+<p>The elementary Hilbert and operator tools, and the earlier versions of the algebraic conventions, are available at these proof locators:</p>
+<table>
+<thead>
+<tr>
+<th>Prerequisite</th>
+<th>Proof locator and use here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hilbert projections and Riesz representation</td>
+<td><a href="../OA-MOD/notes/real-coercivity/real-coercive-equations.html#the-real-hilbert-tools-used-below">The real Hilbert tools</a>: minimizing-sequence projection and Hilbert Riesz proofs used in Section 1.</td>
+</tr>
+<tr>
+<td>Bounded continuous calculus</td>
+<td><a href="../OA-MOD/notes/real-coercivity/bounded-right-multiplier.html#gp0-the-bounded-calculus-used-in-the-proof">GP0</a>: positive-operator norm, Bernstein approximation and polynomial norm estimates; <a href="../OA-MOD/OA-MOD-BK.html">Bounded operator foundations</a>, BK01–02: adjoints, square roots and finite-vector bicommutant argument.</td>
+</tr>
+<tr>
+<td>Concrete normality, supports and polar decomposition</td>
+<td><a href="../OA-MOD/OA-MOD-BK.html">Bounded operator foundations</a>, BK03–06 and “Supports from bounded resolvent cutoffs,” “Polar decomposition and its regularized limit,” and “Testing commutation on unitaries.” These give the normal slice tests and corner calculations.</td>
+</tr>
+<tr>
+<td>Real separation and bounded approximation</td>
+<td><a href="../OA-MOD/notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">NP1–2</a> proves real Hahn–Banach and convex point separation; <a href="../OA-MOD/OA-MOD-HAP.html#oa-mod-hap-04">HAP04–05</a> proves the selfadjoint weak-to-strong and contractive approximation arguments. Section 1 gives the bounded proof used here in full.</td>
+</tr>
+<tr>
+<td>Countable pointed matrix products</td>
+<td><span class="unlinked">Infinite tensor products</span>, Sections 11.2–11.3, 11.6 and 12: product-vector density, finite-leg expectation and tracial factor type. Section 8 constructs their particular tracial instance and proves its factor property.</td>
+</tr>
+<tr>
+<td>Bernoulli outerness</td>
+<td><a href="../OA-APPROX/finite-outer-actions.html">Finite and countable outer actions</a>, Sections 3–4. Section 8 verifies the G×ℕ action, including finite and trivial G, by a displaced central sequence.</td>
+</tr>
+<tr>
+<td>Projection joins and minimal corners</td>
+<td><span class="unlinked">The periodic product core</span>, Sections 8.4–8.5 and 8.7–8.10: arbitrary joins, corner contact and matrix units. Sections 6 and 10 give the finite tracial and finite-dimensional deductions used here.</td>
+</tr>
+<tr>
+<td>Compatible pair and characteristic class</td>
+<td><a href="../OA-FLOW/OA-FLOW-CPP.html#cp-compatible">Compatible lifts and the phase of an outer period</a>, (CP1), (CP8), (CP23)–(CP25). Equations (TR1), (TR23)–(TR25) use exactly those compatibility, implementer and gauge conventions.</td>
+</tr>
+</tbody>
+</table>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, XVII.3 Exercises 4–5, printed pp.293–294, motivates the regular-product and inner-kernel questions. The construction here is organized around bounded multiplication, the trace, normal coefficient maps and the intertwiner witness, with the models and solved diagnostics in Section 11.</p>
+<p>There are several corrections to the displayed recipe. Its Hilbert index and missing implementing unitary are resolved by the coherent left model (TR6), (TR16). Adding λ⁻¹V_g to a right model can establish covariance without establishing the CPP characteristic sign or the inner action; equations (TR17)–(TR20) check both generator families in one convention. The printed Bernoulli x_(hg) convention gives an opposite-group action, whereas Section 8 moves each site h to gh. The cited XIV.1.9, printed p.88, is an infinite tensor-product commutant theorem. Exercise 5 itself specifies a countable discrete G and normal N without an amenability restriction; the preceding abelian-group proposition does not impose its hypothesis on that separately stated exercise. Section 10's F₂ example therefore disproves an unrestricted AFD conclusion for the displayed regular recipe at its stated group scope.</p>
+<p>The positive AFD theorem here is the finite-N branch. The obstruction is specific to the regular product; it does not exclude other AFD realizations of a characteristic pair. An infinite amenable N requires an additional AFD theorem or another construction. The lesson proves neither an arbitrary AFD realization theorem nor factor uniqueness or action classification. Its Bernoulli and trace estimates are tracial; they assert no type-III subtype or nontracial central-triviality conclusion.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CPP.html">Previous lesson</a><a href="OA-FLOW-NB.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-TRP.md">Lesson source</a></nav></main></body></html>

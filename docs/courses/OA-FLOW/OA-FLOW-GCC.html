@@ -1,0 +1,322 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connes spectrum through fixed corners · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-HCR.html">Previous lesson</a><a href="OA-FLOW-L112.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-GCC.md">Lesson source</a></nav><p class="notice">Preserved original fixed-corner proof, completed restored exposition and original illustration by GPT-6.1 Sol (OpenAI), Ultra. Spot-checked by GPT-6 Astra in a separate session.</p><p><a id="oa-flow.gcc.0"></a><a id="gcc-opening-context"></a></p>
+<h1 id="OA-FLOW.GCC.0">Connes spectrum through fixed corners</h1>
+<p>The ordinary spectrum of an action sees every frequency occurring anywhere in the algebra. The Connes spectrum keeps only frequencies that survive every nonzero corner cut out by a fixed projection. This lesson defines that intersection, proves that central supports suffice, and shows that equivalent fixed projections give reduced actions with the same Connes spectrum.</p>
+<p>The proof is organized around spectral subspaces rather than an unproved corner slogan. Its key construction localizes a partial isometry in frequency, takes the join of the right supports of its orbit, and sandwiches a spectral element between two orbit translates.</p>
+<p><em>Restored local proof, 5 October 2026. Original historical arguments and alternatives are retained. Spot-checked in a separate AI session. Original expression and new illustration are CC0-1.0 to the extent of rights held; prerequisite component terms remain their own.</em></p>
+<p><span id="OA-FLOW.GCC.INPUTS"></span><a id="oa-flow.gcc.inputs"></a></p>
+<p><a id="gcc-inputs"></a></p>
+<h2 id="earlier-tools-and-the-frequency-convention">Earlier tools and the frequency convention</h2>
+<p>The group and Hilbert space are arbitrary; no countability, separability or factor assumption is imposed. The actual normal integrated action is <a href="OA-FLOW-AT.html#oa-flow.at.5">AT5</a>. Its restriction to any fixed corner uses exactly the same scalar integrals. The complete spectral tools are <a href="OA-FLOW-GL.html#gl-0">GL0–3</a>, <a href="OA-FLOW-GL.html#gl-6">GL6–7</a>, the compact local Fourier plateaus of <a href="OA-FLOW-LF.html#lf-1">LF1</a>, and the fixed/eigenoperator identification of <a href="OA-FLOW-SS.html#ss-3">SS3</a>. Bounded supports and arbitrary joins are constructed in <a href="OA-FLOW-PC.html#oa-flow.projection.pc1">PC1</a>; <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF0</a> proves the commutant-unitary test. The local compact-neighbourhood arguments use <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>.</p>
+<p>Use the negative transform <span class="math" data-tex="\(\widehat k(\gamma)=\int_G k(t)\overline{\gamma(t)}\,dm(t)\)">\(\widehat k(\gamma)=\int_G k(t)\overline{\gamma(t)}\,dm(t)\)</span> and <span class="math" data-tex="\(A(H)=\{\widehat k:k\in L^1(G)\}\)">\(A(H)=\{\widehat k:k\in L^1(G)\}\)</span>, with <span class="math" data-tex="\(\|\widehat k\|_A=\|k\|_1\)">\(\|\widehat k\|_A=\|k\|_1\)</span>. In the retained formulas <span class="math" data-tex="\(\alpha_g=T_k\)">\(\alpha_g=T_k\)</span> when <span class="math" data-tex="\(g=\widehat k\)">\(g=\widehat k\)</span>. Fourier injectivity is the earlier scalar theorem bound through LF/GL. Thus <span class="math" data-tex="\(\alpha_t(x)=\overline{\gamma(t)}x\)">\(\alpha_t(x)=\overline{\gamma(t)}x\)</span> has label <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. This fixes all signs while leaving the historical equations (C1)–(C28) unchanged. The existing real-line positive-transform proof and alternative support sandwich in <a href="OA-FLOW-CS.html#oa-flow.cs.0">CS0–3</a> remain earlier results; reflection of real labels compares the two conventions. The general-group proof below does not replace that specialization.</p>
+<p>For <span class="math" data-tex="\(J\subset A(H)\)">\(J\subset A(H)\)</span>, write <span class="math" data-tex="\(h(J)=\{\gamma\in H:g(\gamma)=0\text{ for every }g\in J\}\)">\(h(J)=\{\gamma\in H:g(\gamma)=0\text{ for every }g\in J\}\)</span>. Here <span class="math" data-tex="\(\operatorname{Sp}_\alpha(x)=h(\{g:\alpha_g(x)=0\})\)">\(\operatorname{Sp}_\alpha(x)=h(\{g:\alpha_g(x)=0\})\)</span>, <span class="math" data-tex="\(\operatorname{Sp}(\alpha)=h(\{g:\alpha_g=0\})\)">\(\operatorname{Sp}(\alpha)=h(\{g:\alpha_g=0\})\)</span>, and <span class="math" data-tex="\(M_\alpha(E)=\{x:\operatorname{Sp}_\alpha(x)\subset E\}\)">\(M_\alpha(E)=\{x:\operatorname{Sp}_\alpha(x)\subset E\}\)</span>. These are exactly the GL hull spectra, with capitalized notation; no second spectrum or support convention is introduced.</p>
+<p>Every use of a product spectrum below is <a href="OA-FLOW-GL.html#gl-6">GL6</a>, whose general bound has a closure. A fixed multiplier contributes only the compact set <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>; a compact set plus a closed set is closed. In (C28) all three sets are compact, so their sum is compact and closed. These are the precise reasons the displayed formulas need no extra closure.</p>
+<p><span id="OA-FLOW.GCC.SETTING"></span><a id="oa-flow.gcc.setting"></a></p>
+<p><a id="gcc-setting"></a></p>
+<h2 id="fixed-projections-produce-reduced-actions">Fixed projections produce reduced actions</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact abelian group, let <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>, and let</p>
+<p><a id="equation-c1"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha:G\longrightarrow\operatorname{Aut}(M) \tag{C1}$$">$$\alpha:G\longrightarrow\operatorname{Aut}(M) \tag{C1}$$</span></p>
+<p>be a point-ultraweakly continuous action on a nonzero von Neumann algebra. Write</p>
+<p><a id="equation-c2"></a></p>
+<p><span class="math math-display" data-tex="$$N=M^\alpha=\{x\in M:\alpha_t(x)=x\text{ for every }t\in G\}. \tag{C2}$$">$$N=M^\alpha=\{x\in M:\alpha_t(x)=x\text{ for every }t\in G\}. \tag{C2}$$</span></p>
+<p>If <span class="math" data-tex="\(e\in\operatorname{Proj}(N)\)">\(e\in\operatorname{Proj}(N)\)</span>, then <span class="math" data-tex="\(eMe\)">\(eMe\)</span> is globally invariant and</p>
+<p><a id="equation-c3"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_t^e(x)=\alpha_t(x),\qquad x\in eMe, \tag{C3}$$">$$\alpha_t^e(x)=\alpha_t(x),\qquad x\in eMe, \tag{C3}$$</span></p>
+<p>defines the <strong>reduced action</strong>. Its fixed algebra is</p>
+<p><span class="math math-display" data-tex="$$(eMe)^{\alpha^e}=eNe.$$">$$(eMe)^{\alpha^e}=eNe.$$</span></p>
+<p>The Fourier filters of the reduced action are the restrictions of the original filters:</p>
+<p><span class="math math-display" data-tex="$$(\alpha^e)_f(x)=\alpha_f(x),\qquad x\in eMe,\quad f\in A(H).$$">$$(\alpha^e)_f(x)=\alpha_f(x),\qquad x\in eMe,\quad f\in A(H).$$</span></p>
+<p>Indeed <span class="math" data-tex="\(e\)">\(e\)</span> is fixed, so weak-star integration gives
+<span class="math" data-tex="\(\alpha_f(exe)=e\alpha_f(x)e\)">\(\alpha_f(exe)=e\alpha_f(x)e\)</span>. Consequently the ambient and reduced vector spectra agree for elements of the corner, and for every closed <span class="math" data-tex="\(E\subset H\)">\(E\subset H\)</span>,</p>
+<p><a id="equation-c4"></a></p>
+<p><span class="math math-display" data-tex="$$(eMe)_{\alpha^e}(E)=M_\alpha(E)\cap eMe. \tag{C4}$$">$$(eMe)_{\alpha^e}(E)=M_\alpha(E)\cap eMe. \tag{C4}$$</span></p>
+<p>Here the corner is a concrete von Neumann algebra on <span class="math" data-tex="\(e\mathcal H\)">\(e\mathcal H\)</span>, as proved in PC1. Normal vector-series tests on that space extend to normal tests on <span class="math" data-tex="\(M\)">\(M\)</span> by viewing their vectors in <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>; <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a> supplies precisely these concrete predual tests. Fixed multiplication is normal: testing <span class="math" data-tex="\(azb\)">\(azb\)</span> replaces the square-summable vectors <span class="math" data-tex="\((\xi_n,\eta_n)\)">\((\xi_n,\eta_n)\)</span> by <span class="math" data-tex="\((b\xi_n,a^*\eta_n)\)">\((b\xi_n,a^*\eta_n)\)</span>, which remain square summable. Compression uses the same calculation with <span class="math" data-tex="\(a=b=e\)">\(a=b=e\)</span>. Thus the restricted action has the same normality and point-ultraweak continuity, and AT5 applies to it. Its scalar integral agrees with the ambient integral on every such test. The annihilator ideals are consequently identical for an element of the corner, which proves the exact spectral equality (C4), not just one inclusion.</p>
+<p>We will repeatedly use the following local detection criterion. If <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is an action on a nonzero von Neumann algebra <span class="math" data-tex="\(P\)">\(P\)</span>, then</p>
+<p><a id="equation-c5"></a></p>
+<p><span class="math math-display" data-tex="$$p\in\operatorname{Sp}(\beta)
+\quad\Longleftrightarrow\quad
+\text{for every open }O\ni p\text{ there is }0\ne x\in P
+\text{ with }\operatorname{Sp}_\beta(x)\subset O. \tag{C5}$$">$$p\in\operatorname{Sp}(\beta)
+\quad\Longleftrightarrow\quad
+\text{for every open }O\ni p\text{ there is }0\ne x\in P
+\text{ with }\operatorname{Sp}_\beta(x)\subset O. \tag{C5}$$</span></p>
+<p>For the forward implication, choose <span class="math" data-tex="\(g\in A_c(H)\)">\(g\in A_c(H)\)</span> with <span class="math" data-tex="\(g(p)\ne0\)">\(g(p)\ne0\)</span> and <span class="math" data-tex="\(\operatorname{supp}g\subset O\)">\(\operatorname{supp}g\subset O\)</span>. Since <span class="math" data-tex="\(p\)">\(p\)</span> lies in the hull of the action annihilator, <span class="math" data-tex="\(\beta_g\ne0\)">\(\beta_g\ne0\)</span>; a nonzero <span class="math" data-tex="\(\beta_g(y)\)">\(\beta_g(y)\)</span> has spectrum in <span class="math" data-tex="\(\operatorname{supp}g\)">\(\operatorname{supp}g\)</span>. Conversely, if <span class="math" data-tex="\(p\notin\operatorname{Sp}(\beta)\)">\(p\notin\operatorname{Sp}(\beta)\)</span>, choose <span class="math" data-tex="\(O\)">\(O\)</span> disjoint from that closed spectrum. Every vector spectrum lies in <span class="math" data-tex="\(\operatorname{Sp}(\beta)\)">\(\operatorname{Sp}(\beta)\)</span>, so a vector whose spectrum also lies in <span class="math" data-tex="\(O\)">\(O\)</span> has empty spectrum and is zero.</p>
+<p><span id="OA-FLOW.GCC.DEFINITION"></span><a id="oa-flow.gcc.definition"></a></p>
+<p><a id="gcc-definition"></a></p>
+<h2 id="the-intersection-that-defines-the-connes-spectrum">The intersection that defines the Connes spectrum</h2>
+<p>The <strong>Connes spectrum</strong>, also called the essential spectrum, is</p>
+<p><a id="equation-c6"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{
+\Gamma(\alpha)
+=
+\bigcap_{\substack{e\in\operatorname{Proj}(N)\\e\ne0}}
+\operatorname{Sp}(\alpha^e).} \tag{C6}$$">$$\boxed{
+\Gamma(\alpha)
+=
+\bigcap_{\substack{e\in\operatorname{Proj}(N)\\e\ne0}}
+\operatorname{Sp}(\alpha^e).} \tag{C6}$$</span></p>
+<p>Thus <span class="math" data-tex="\(p\in\Gamma(\alpha)\)">\(p\in\Gamma(\alpha)\)</span> precisely when every nonzero fixed corner detects <span class="math" data-tex="\(p\)">\(p\)</span>. The definition immediately gives</p>
+<p><a id="equation-c7"></a></p>
+<p><span class="math math-display" data-tex="$$\Gamma(\alpha)\subset\operatorname{Sp}(\alpha), \tag{C7}$$">$$\Gamma(\alpha)\subset\operatorname{Sp}(\alpha), \tag{C7}$$</span></p>
+<p>because <span class="math" data-tex="\(1\in\operatorname{Proj}(N)\)">\(1\in\operatorname{Proj}(N)\)</span> and <span class="math" data-tex="\(\alpha^1=\alpha\)">\(\alpha^1=\alpha\)</span>. Each action spectrum is closed, so <span class="math" data-tex="\(\Gamma(\alpha)\)">\(\Gamma(\alpha)\)</span> is closed. The deeper facts that it is a subgroup and that it identifies a kernel on the center of a crossed product require later arguments.</p>
+<p>The distinction from the ordinary spectrum is already visible in <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>. Let</p>
+<p><a id="equation-c8"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_t=\operatorname{Ad}
+\begin{pmatrix}1&amp;0\\0&amp;e^{it}\end{pmatrix},
+\qquad t\in\mathbb R. \tag{C8}$$">$$\alpha_t=\operatorname{Ad}
+\begin{pmatrix}1&amp;0\\0&amp;e^{it}\end{pmatrix},
+\qquad t\in\mathbb R. \tag{C8}$$</span></p>
+<p>Then <span class="math" data-tex="\(\operatorname{Sp}(\alpha)=\{-1,0,1\}\)">\(\operatorname{Sp}(\alpha)=\{-1,0,1\}\)</span>, while each diagonal rank-one fixed corner is scalar with trivial action. Hence</p>
+<p><a id="equation-c9"></a></p>
+<p><span class="math math-display" data-tex="$$\Gamma(\alpha)=\{0\}. \tag{C9}$$">$$\Gamma(\alpha)=\{0\}. \tag{C9}$$</span></p>
+<p>For completeness in (C8)–(C9), the matrix units <span class="math" data-tex="\(e_{11},e_{22},e_{12},e_{21}\)">\(e_{11},e_{22},e_{12},e_{21}\)</span> have negative spectral labels <span class="math" data-tex="\(0,0,1,-1\)">\(0,0,1,-1\)</span>, respectively, by their explicit eigenphases and SS3. They span <span class="math" data-tex="\(M_2\)">\(M_2\)</span>, so GL2's finite-sum rule and GL7's union formula give the stated ordinary action spectrum. Every nonzero fixed corner has its fixed unit, which makes zero belong to its action spectrum. The scalar <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span>-corner has trivial action and spectrum exactly <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Thus the Connes intersection both contains and is contained in <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, proving (C9).</p>
+<p>For a zero corner the action spectrum is empty: every Fourier filter is zero and LF1 separates each character from the hull of the entire Fourier algebra. The literal intersection defining its Connes spectrum is an empty intersection, hence <span class="math" data-tex="\(H\)">\(H\)</span>. This convention is used only for the zero–zero case of (C18). Statements (C5), (C7), (C9) and the factor conclusion concern nonzero algebras as stipulated. If equivalent projections have one zero member then both are zero, and (C18) is immediately an equality of the two empty intersections.</p>
+<p>For a nonzero fixed corner its unit has spectrum <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> by SS3 (or the direct scalar filter computation). Hence every corner action spectrum contains zero. Adjoint reflection and GL7's union formula also make each corner spectrum symmetric. Consequently the intersection (C6) is closed, symmetric, contains zero and satisfies (C7). No subgroup or crossed-product-center theorem is being inferred here.</p>
+<p><span id="OA-FLOW.GCC.TOOLS"></span><a id="oa-flow.gcc.tools"></a></p>
+<p><a id="gcc-tools"></a></p>
+<h2 id="supports-and-joins-used-by-the-transport">Supports and joins used by the transport</h2>
+<p>Write <span class="math" data-tex="\(s_r(a)\)">\(s_r(a)\)</span> for the projection onto <span class="math" data-tex="\(\overline{a^*\mathcal H}=(\ker a)^\perp\)">\(\overline{a^*\mathcal H}=(\ker a)^\perp\)</span>. PC1 constructs this projection in <span class="math" data-tex="\(M\)">\(M\)</span>, including <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. It is the least projection <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(aq=a\)">\(aq=a\)</span>: that identity makes <span class="math" data-tex="\(a\)">\(a\)</span> vanish on <span class="math" data-tex="\((1-q)\mathcal H\)">\((1-q)\mathcal H\)</span>, so <span class="math" data-tex="\(\overline{a^*\mathcal H}\subset q\mathcal H\)">\(\overline{a^*\mathcal H}\subset q\mathcal H\)</span>. Conversely <span class="math" data-tex="\(a\,s_r(a)=a\)">\(a\,s_r(a)=a\)</span> by the kernel decomposition. For bounded <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, consequently</p>
+<p><a id="equation-gcc1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ ab=0\ \Longleftrightarrow\ s_r(a)b=0,\qquad
+ ba^*=0\ \Longleftrightarrow\ b\,s_r(a)=0.
+\tag{GCC1}
+\]">\[
+ ab=0\ \Longleftrightarrow\ s_r(a)b=0,\qquad
+ ba^*=0\ \Longleftrightarrow\ b\,s_r(a)=0.
+\tag{GCC1}
+\]</span></p>
+<p>For the first equivalence, <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span> puts <span class="math" data-tex="\(b\mathcal H\)">\(b\mathcal H\)</span> in <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>; the converse uses <span class="math" data-tex="\(a=a\,s_r(a)\)">\(a=a\,s_r(a)\)</span>. For the second, <span class="math" data-tex="\(ba^*=0\)">\(ba^*=0\)</span> means that <span class="math" data-tex="\(b\)">\(b\)</span> vanishes on <span class="math" data-tex="\(a^*\mathcal H\)">\(a^*\mathcal H\)</span>, hence on its closure; the converse uses <span class="math" data-tex="\(s_r(a)a^*=a^*\)">\(s_r(a)a^*=a^*\)</span>.</p>
+<p>For any family of projections <span class="math" data-tex="\((q_i)\)">\((q_i)\)</span>, PC1's join <span class="math" data-tex="\(q=\bigvee_iq_i\)">\(q=\bigvee_iq_i\)</span> projects onto the closed span of their ranges. Thus</p>
+<p><a id="equation-gcc2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ q_i b=0\ (\text{all }i)\Rightarrow qb=0,\qquad
+ bq_i=0\ (\text{all }i)\Rightarrow bq=0.
+\tag{GCC2}
+\]">\[
+ q_i b=0\ (\text{all }i)\Rightarrow qb=0,\qquad
+ bq_i=0\ (\text{all }i)\Rightarrow bq=0.
+\tag{GCC2}
+\]</span>
+In the first implication the range of <span class="math" data-tex="\(b\)">\(b\)</span> is perpendicular to every range of <span class="math" data-tex="\(q_i\)">\(q_i\)</span>; in the second <span class="math" data-tex="\(b\)">\(b\)</span> vanishes on their span and its closure. Neither argument requires a countable family.</p>
+<p>An automorphism preserves projections, their order and least upper bounds by applying its inverse. The least-projection characterization above therefore gives <span class="math" data-tex="\(s_r(\alpha_t(a))=\alpha_t(s_r(a))\)">\(s_r(\alpha_t(a))=\alpha_t(s_r(a))\)</span>. In particular translating an orbit permutes the joined projections in (C24). This supplies its invariance and the two genuine nonvanishing steps in (C27), without asserting that <span class="math" data-tex="\(s_r(x)\)">\(s_r(x)\)</span> itself is fixed.</p>
+<p>We will also use the central-support orbit formula. For <span class="math" data-tex="\(e\in N=M^\alpha\)">\(e\in N=M^\alpha\)</span>, form <span class="math" data-tex="\(c=\bigvee_{u\in\mathcal U(N)}ueu^*\)">\(c=\bigvee_{u\in\mathcal U(N)}ueu^*\)</span> using the projection lattice of <span class="math" data-tex="\(M\)">\(M\)</span>. Every summand is fixed, so preservation of joins gives <span class="math" data-tex="\(c\in N\)">\(c\in N\)</span>. Conjugation by any unitary of <span class="math" data-tex="\(N\)">\(N\)</span> permutes the family, hence <span class="math" data-tex="\(c\)">\(c\)</span> commutes with every such unitary. For bounded self-adjoint <span class="math" data-tex="\(b\in N\)">\(b\in N\)</span>, its norm exponential <span class="math" data-tex="\(e^{itb}\)">\(e^{itb}\)</span> is in <span class="math" data-tex="\(\mathcal U(N)\)">\(\mathcal U(N)\)</span>; the exponential and norm differentiation are the SF0 proof. Differentiating commutation at zero gives <span class="math" data-tex="\(cb=bc\)">\(cb=bc\)</span>. Self-adjoint decomposition gives commutation with every element of <span class="math" data-tex="\(N\)">\(N\)</span>. Thus <span class="math" data-tex="\(c\in Z(N)\)">\(c\in Z(N)\)</span> and <span class="math" data-tex="\(c\ge e\)">\(c\ge e\)</span>. Any central projection of <span class="math" data-tex="\(N\)">\(N\)</span> dominating <span class="math" data-tex="\(e\)">\(e\)</span> dominates every <span class="math" data-tex="\(ueu^*\)">\(ueu^*\)</span>, hence dominates their join. This proves (C10) as the least central support, with no imported comparison theorem.</p>
+<p><span id="OA-FLOW.GCC.EQUIVALENCE"></span><a id="oa-flow.gcc.equivalence"></a></p>
+<p><a id="gcc-equivalence"></a></p>
+<h2 id="equivalent-fixed-corners-have-the-same-connes-spectrum">Equivalent fixed corners have the same Connes spectrum</h2>
+<p>Let <span class="math" data-tex="\(e,f\in\operatorname{Proj}(N)\)">\(e,f\in\operatorname{Proj}(N)\)</span> be Murray--von Neumann equivalent in <span class="math" data-tex="\(M\)">\(M\)</span>. Choose <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span> with</p>
+<p><a id="equation-c17"></a></p>
+<p><span class="math math-display" data-tex="$$u^*u=e,\qquad uu^*=f. \tag{C17}$$">$$u^*u=e,\qquad uu^*=f. \tag{C17}$$</span></p>
+<p>We prove</p>
+<p><a id="equation-c18"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{\Gamma(\alpha^e)=\Gamma(\alpha^f).} \tag{C18}$$">$$\boxed{\Gamma(\alpha^e)=\Gamma(\alpha^f).} \tag{C18}$$</span></p>
+<p>It is enough to prove the forward inclusion. Fix <span class="math" data-tex="\(p\in\Gamma(\alpha^e)\)">\(p\in\Gamma(\alpha^e)\)</span>, a nonzero projection</p>
+<p><a id="equation-c19"></a></p>
+<p><span class="math math-display" data-tex="$$f_1\in\operatorname{Proj}\bigl((fMf)^{\alpha^f}\bigr)
+=\operatorname{Proj}(fNf), \tag{C19}$$">$$f_1\in\operatorname{Proj}\bigl((fMf)^{\alpha^f}\bigr)
+=\operatorname{Proj}(fNf), \tag{C19}$$</span></p>
+<p>and an open neighborhood <span class="math" data-tex="\(O\)">\(O\)</span> of <span class="math" data-tex="\(p\)">\(p\)</span>. Choose open neighborhoods <span class="math" data-tex="\(V\ni p\)">\(V\ni p\)</span> and <span class="math" data-tex="\(W\ni0\)">\(W\ni0\)</span>, with compact closures after shrinking, such that</p>
+<p><a id="equation-c20"></a></p>
+<p><span class="math math-display" data-tex="$$\overline V+W\subset O. \tag{C20}$$">$$\overline V+W\subset O. \tag{C20}$$</span></p>
+<p>The element <span class="math" data-tex="\(f_1u\)">\(f_1u\)</span> is nonzero because
+<span class="math" data-tex="\((f_1u)(f_1u)^*=f_1\)">\((f_1u)(f_1u)^*=f_1\)</span>. Its vector spectrum is therefore nonempty. Choose</p>
+<p><span class="math math-display" data-tex="$$q\in\operatorname{Sp}_\alpha(f_1u)$$">$$q\in\operatorname{Sp}_\alpha(f_1u)$$</span></p>
+<p>and an open neighborhood <span class="math" data-tex="\(U_1\ni q\)">\(U_1\ni q\)</span> satisfying</p>
+<p><a id="equation-c21"></a></p>
+<p><span class="math math-display" data-tex="$$\overline{U_1}-\overline{U_1}\subset W. \tag{C21}$$">$$\overline{U_1}-\overline{U_1}\subset W. \tag{C21}$$</span></p>
+<p>Take <span class="math" data-tex="\(g\in A_c(H)\)">\(g\in A_c(H)\)</span> with <span class="math" data-tex="\(\operatorname{supp}g\subset U_1\)">\(\operatorname{supp}g\subset U_1\)</span> and <span class="math" data-tex="\(g(q)\ne0\)">\(g(q)\ne0\)</span>. Since <span class="math" data-tex="\(q\)">\(q\)</span> lies in the hull of the annihilator of <span class="math" data-tex="\(f_1u\)">\(f_1u\)</span>,</p>
+<p><a id="equation-c22"></a></p>
+<p><span class="math math-display" data-tex="$$x=\alpha_g(f_1u)=f_1\alpha_g(u)\ne0. \tag{C22}$$">$$x=\alpha_g(f_1u)=f_1\alpha_g(u)\ne0. \tag{C22}$$</span></p>
+<p>Moreover</p>
+<p><a id="equation-c23"></a></p>
+<p><span class="math math-display" data-tex="$$f_1x=x=xe,\qquad
+\operatorname{Sp}_\alpha(x)\subset\overline{U_1}. \tag{C23}$$">$$f_1x=x=xe,\qquad
+\operatorname{Sp}_\alpha(x)\subset\overline{U_1}. \tag{C23}$$</span></p>
+<p>The shrinking used here is valid for arbitrary <span class="math" data-tex="\(H\)">\(H\)</span>. At <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span>, continuity of addition gives <span class="math" data-tex="\(V_0\ni p\)">\(V_0\ni p\)</span> and <span class="math" data-tex="\(W_0\ni0\)">\(W_0\ni0\)</span> with <span class="math" data-tex="\(V_0+W_0\subset O\)">\(V_0+W_0\subset O\)</span>. H0 shrinks <span class="math" data-tex="\(V\)">\(V\)</span> with compact closure inside <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, and shrinks <span class="math" data-tex="\(W\)">\(W\)</span> inside <span class="math" data-tex="\(W_0\)">\(W_0\)</span>. At <span class="math" data-tex="\((q,q)\)">\((q,q)\)</span>, continuity of subtraction and compact shrinking give <span class="math" data-tex="\(U_1\ni q\)">\(U_1\ni q\)</span> with compact closure and <span class="math" data-tex="\(\overline{U_1}-\overline{U_1}\subset W\)">\(\overline{U_1}-\overline{U_1}\subset W\)</span>. These are finite neighbourhood choices, not a sequence of approximations to the group. LF1 supplies <span class="math" data-tex="\(g\)">\(g\)</span> with compact support inside <span class="math" data-tex="\(U_1\)">\(U_1\)</span>, equal to one near <span class="math" data-tex="\(q\)">\(q\)</span>. GL3's lower filter inclusion makes (C22) nonzero.</p>
+<p>Let <span class="math" data-tex="\(s_r(a)\)">\(s_r(a)\)</span> denote the right support of <span class="math" data-tex="\(a\)">\(a\)</span>, and form the orbit-support join</p>
+<p><a id="equation-c24"></a></p>
+<p><span class="math math-display" data-tex="$$e_1=\bigvee_{t\in G}s_r(\alpha_t(x)). \tag{C24}$$">$$e_1=\bigvee_{t\in G}s_r(\alpha_t(x)). \tag{C24}$$</span></p>
+<p>Every term is at most <span class="math" data-tex="\(e\)">\(e\)</span>, the join is nonzero, and translating the index set leaves it unchanged. Thus</p>
+<p><a id="equation-c25"></a></p>
+<p><span class="math math-display" data-tex="$$0\ne e_1\le e,\qquad e_1\in N. \tag{C25}$$">$$0\ne e_1\le e,\qquad e_1\in N. \tag{C25}$$</span></p>
+<p>Because <span class="math" data-tex="\(p\in\Gamma(\alpha^e)\)">\(p\in\Gamma(\alpha^e)\)</span>, it belongs to
+<span class="math" data-tex="\(\operatorname{Sp}(\alpha^{e_1})\)">\(\operatorname{Sp}(\alpha^{e_1})\)</span>. Criterion (C5) supplies</p>
+<p><a id="equation-c26"></a></p>
+<p><span class="math math-display" data-tex="$$0\ne y\in e_1Me_1,\qquad
+\operatorname{Sp}_\alpha(y)\subset\overline V. \tag{C26}$$">$$0\ne y\in e_1Me_1,\qquad
+\operatorname{Sp}_\alpha(y)\subset\overline V. \tag{C26}$$</span></p>
+<p>The definition of <span class="math" data-tex="\(e_1\)">\(e_1\)</span> gives <span class="math" data-tex="\(t_1,t_2\in G\)">\(t_1,t_2\in G\)</span> such that</p>
+<p><a id="equation-c27"></a></p>
+<p><span class="math math-display" data-tex="$$z=\alpha_{t_1}(x)y\alpha_{t_2}(x)^*\ne0. \tag{C27}$$">$$z=\alpha_{t_1}(x)y\alpha_{t_2}(x)^*\ne0. \tag{C27}$$</span></p>
+<p>Here is the nonvanishing argument. If <span class="math" data-tex="\(\alpha_t(x)y=0\)">\(\alpha_t(x)y=0\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>, then
+<span class="math" data-tex="\(s_r(\alpha_t(x))y=0\)">\(s_r(\alpha_t(x))y=0\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(e_1y=0\)">\(e_1y=0\)</span>, a contradiction. After choosing <span class="math" data-tex="\(t_1\)">\(t_1\)</span> with <span class="math" data-tex="\(\alpha_{t_1}(x)y\ne0\)">\(\alpha_{t_1}(x)y\ne0\)</span>, if every product in (C27) vanished, the same support-join argument on the right would give
+<span class="math" data-tex="\(\alpha_{t_1}(x)y e_1=0\)">\(\alpha_{t_1}(x)y e_1=0\)</span>, again a contradiction.</p>
+<p>The support relations in (C23)--(C25) put <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(f_1Mf_1\)">\(f_1Mf_1\)</span>. Orbit invariance, adjoint reflection, and the product-spectrum theorem give</p>
+<p><a id="equation-c28"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\operatorname{Sp}_\alpha(z)
+&amp;\subset
+\overline{U_1}+\overline V-\overline{U_1}\\
+&amp;\subset \overline V+W
+\subset O.
+\end{aligned} \tag{C28}$$">$$\begin{aligned}
+\operatorname{Sp}_\alpha(z)
+&amp;\subset
+\overline{U_1}+\overline V-\overline{U_1}\\
+&amp;\subset \overline V+W
+\subset O.
+\end{aligned} \tag{C28}$$</span></p>
+<p>Thus every neighborhood <span class="math" data-tex="\(O\ni p\)">\(O\ni p\)</span> contains the spectrum of a nonzero element of the <span class="math" data-tex="\(f_1\)">\(f_1\)</span>-corner. By (C5),
+<span class="math" data-tex="\(p\in\operatorname{Sp}(\alpha^{f_1})\)">\(p\in\operatorname{Sp}(\alpha^{f_1})\)</span>. Since <span class="math" data-tex="\(f_1\)">\(f_1\)</span> was arbitrary,
+<span class="math" data-tex="\(p\in\Gamma(\alpha^f)\)">\(p\in\Gamma(\alpha^f)\)</span>. Replacing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(u^*\)">\(u^*\)</span> proves the reverse inclusion and hence (C18).</p>
+<p><strong>Problem.</strong> Why is the orbit-support join in (C24) needed instead of the right support of <span class="math" data-tex="\(x\)">\(x\)</span> alone?</p>
+<p><strong>Solution.</strong> The right support of <span class="math" data-tex="\(x\)">\(x\)</span> need not be fixed, so it need not be an admissible projection in the intersection defining <span class="math" data-tex="\(\Gamma(\alpha^e)\)">\(\Gamma(\alpha^e)\)</span>. Taking the join of all its translates makes the projection invariant. It is also the smallest invariant projection dominating <span class="math" data-tex="\(s_r(x)\)">\(s_r(x)\)</span>, and the two support-join contradictions used in (C27) depend on the entire family of translates. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.GCC.CENTRAL"></span><a id="oa-flow.gcc.central"></a></p>
+<p><a id="gcc-central"></a></p>
+<h2 id="central-support-preserves-every-closed-spectral-test">Central support preserves every closed spectral test</h2>
+<p>For <span class="math" data-tex="\(e\in\operatorname{Proj}(N)\)">\(e\in\operatorname{Proj}(N)\)</span>, let <span class="math" data-tex="\(c_N(e)\)">\(c_N(e)\)</span> be its central support in <span class="math" data-tex="\(N\)">\(N\)</span>. The unitary-orbit formula is</p>
+<p><a id="equation-c10"></a></p>
+<p><span class="math math-display" data-tex="$$c_N(e)=\bigvee_{u\in\mathcal U(N)}ueu^*. \tag{C10}$$">$$c_N(e)=\bigvee_{u\in\mathcal U(N)}ueu^*. \tag{C10}$$</span></p>
+<p>Put <span class="math" data-tex="\(c=c_N(e)\)">\(c=c_N(e)\)</span>. For every closed <span class="math" data-tex="\(E\subset H\)">\(E\subset H\)</span>,</p>
+<p><a id="equation-c11"></a></p>
+<p><span class="math math-display" data-tex="$$M_\alpha(E)\cap eMe\ne\{0\}
+\quad\Longleftrightarrow\quad
+M_\alpha(E)\cap cMc\ne\{0\}. \tag{C11}$$">$$M_\alpha(E)\cap eMe\ne\{0\}
+\quad\Longleftrightarrow\quad
+M_\alpha(E)\cap cMc\ne\{0\}. \tag{C11}$$</span></p>
+<p>Only the reverse implication needs proof. Take <span class="math" data-tex="\(0\ne x\in M_\alpha(E)\cap cMc\)">\(0\ne x\in M_\alpha(E)\cap cMc\)</span>. If</p>
+<p><a id="equation-c12"></a></p>
+<p><span class="math math-display" data-tex="$$ueu^*xvev^*=0
+\qquad(u,v\in\mathcal U(N)), \tag{C12}$$">$$ueu^*xvev^*=0
+\qquad(u,v\in\mathcal U(N)), \tag{C12}$$</span></p>
+<p>then, for fixed <span class="math" data-tex="\(v\)">\(v\)</span>, the join formula (C10) gives <span class="math" data-tex="\(cxvev^*=0\)">\(cxvev^*=0\)</span>. Taking the join over <span class="math" data-tex="\(v\)">\(v\)</span> then gives <span class="math" data-tex="\(cxc=0\)">\(cxc=0\)</span>, contrary to <span class="math" data-tex="\(x=cxc\ne0\)">\(x=cxc\ne0\)</span>. Thus some <span class="math" data-tex="\(u,v\in\mathcal U(N)\)">\(u,v\in\mathcal U(N)\)</span> make the expression in (C12) nonzero. Multiplying by <span class="math" data-tex="\(u^*\)">\(u^*\)</span> on the left and <span class="math" data-tex="\(v\)">\(v\)</span> on the right shows that</p>
+<p><a id="equation-c13"></a></p>
+<p><span class="math math-display" data-tex="$$0\ne y=eu^*xve\in eMe. \tag{C13}$$">$$0\ne y=eu^*xve\in eMe. \tag{C13}$$</span></p>
+<p>The factors <span class="math" data-tex="\(u^*,v\)">\(u^*,v\)</span> are fixed by the action and therefore have frequency zero. The spectral product theorem gives <span class="math" data-tex="\(y\in M_\alpha(E)\)">\(y\in M_\alpha(E)\)</span>, proving (C11).</p>
+<p>Applying (C11) to arbitrarily small closed neighborhoods and using (C5) yields</p>
+<p><a id="equation-c14"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{Sp}(\alpha^e)
+=\operatorname{Sp}\!\left(\alpha^{c_N(e)}\right). \tag{C14}$$">$$\operatorname{Sp}(\alpha^e)
+=\operatorname{Sp}\!\left(\alpha^{c_N(e)}\right). \tag{C14}$$</span></p>
+<p>This equality concerns the action spectra of the two corners. It does not assert that <span class="math" data-tex="\(eMe\)">\(eMe\)</span> and <span class="math" data-tex="\(c_N(e)Mc_N(e)\)">\(c_N(e)Mc_N(e)\)</span> are equal.</p>
+<p>For precision in (C14), if a point is detected in the <span class="math" data-tex="\(c\)">\(c\)</span>-corner, each open neighbourhood admits by (C5) a nonzero element with compact spectrum <span class="math" data-tex="\(K\)">\(K\)</span> inside that neighbourhood. Apply (C11) to the closed set <span class="math" data-tex="\(K\)">\(K\)</span>, then (C5) in the <span class="math" data-tex="\(e\)">\(e\)</span>-corner. This proves one inclusion. The reverse inclusion follows either the same detection test or the fact that the <span class="math" data-tex="\(e\)">\(e\)</span>-corner is contained in the <span class="math" data-tex="\(c\)">\(c\)</span>-corner and has identical restricted filters. If <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, then <span class="math" data-tex="\(c=0\)">\(c=0\)</span> and both action spectra are empty.</p>
+<p><span id="OA-FLOW.GCC.INTERSECTION"></span><a id="oa-flow.gcc.intersection"></a></p>
+<p><a id="gcc-intersection"></a></p>
+<h2 id="central-fixed-corners-suffice">Central fixed corners suffice</h2>
+<p>Every <span class="math" data-tex="\(c_N(e)\)">\(c_N(e)\)</span> is a nonzero projection in <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span> when <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>. Formula (C14) therefore reduces the defining intersection to central fixed corners:</p>
+<p><a id="equation-c15"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{
+\Gamma(\alpha)
+=
+\bigcap_{\substack{z\in\operatorname{Proj}(Z(N))\\z\ne0}}
+\operatorname{Sp}(\alpha^z).} \tag{C15}$$">$$\boxed{
+\Gamma(\alpha)
+=
+\bigcap_{\substack{z\in\operatorname{Proj}(Z(N))\\z\ne0}}
+\operatorname{Sp}(\alpha^z).} \tag{C15}$$</span></p>
+<p>One inclusion follows because central projections are among all fixed projections. For the other, take <span class="math" data-tex="\(p\)">\(p\)</span> in the right side and an arbitrary nonzero <span class="math" data-tex="\(e\in\operatorname{Proj}(N)\)">\(e\in\operatorname{Proj}(N)\)</span>. Then <span class="math" data-tex="\(p\in\operatorname{Sp}(\alpha^{c_N(e)})\)">\(p\in\operatorname{Sp}(\alpha^{c_N(e)})\)</span>, and (C14) puts <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(\operatorname{Sp}(\alpha^e)\)">\(\operatorname{Sp}(\alpha^e)\)</span>.</p>
+<p>In particular, if the fixed algebra <span class="math" data-tex="\(N=M^\alpha\)">\(N=M^\alpha\)</span> is a factor, its only nonzero central projection is <span class="math" data-tex="\(1\)">\(1\)</span>, and hence</p>
+<p><a id="equation-c16"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{\Gamma(\alpha)=\operatorname{Sp}(\alpha).} \tag{C16}$$">$$\boxed{\Gamma(\alpha)=\operatorname{Sp}(\alpha).} \tag{C16}$$</span></p>
+<p>The factor condition is on the fixed algebra. Example (C8) shows why it cannot simply be omitted.</p>
+<p><span id="OA-FLOW.GCC.MODEL"></span><a id="oa-flow.gcc.model"></a></p>
+<p><a id="gcc-model"></a></p>
+<h2 id="an-orbit-support-that-actually-grows">An orbit support that actually grows</h2>
+<p>The rank-one example (C8)–(C9) remains the distinction between ordinary and Connes spectra. Here is a separate exact model of why the orbit join in (C24) is necessary. Keep that action on <span class="math" data-tex="\(M_2\)">\(M_2\)</span>, let <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span>, <span class="math" data-tex="\(f_1=e_{11}\)">\(f_1=e_{11}\)</span>, and set</p>
+<p><a id="equation-gcc3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ u=2^{-1/2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\qquad
+ x=f_1u=2^{-1/2}(e_{11}+e_{12}),\qquad y=e_{22}.
+\tag{GCC3}
+\]">\[
+ u=2^{-1/2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},\qquad
+ x=f_1u=2^{-1/2}(e_{11}+e_{12}),\qquad y=e_{22}.
+\tag{GCC3}
+\]</span>
+The matrix <span class="math" data-tex="\(u\)">\(u\)</span> is a unitary, implementing (C17). The negative-label spectrum of <span class="math" data-tex="\(x\)">\(x\)</span> is exactly <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>: its two summands have those eigenlabels by SS3, and filtering at each label gives a nonzero summand. Choose a plateau equal to one near <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>, supported in <span class="math" data-tex="\(U_1=(-1/10,11/10)\)">\(U_1=(-1/10,11/10)\)</span>; LF4 supplies one compact plateau for this compact set. Then the filtered <span class="math" data-tex="\(f_1u\)">\(f_1u\)</span> is precisely <span class="math" data-tex="\(x\)">\(x\)</span>, by GL3. Direct multiplication gives</p>
+<p><a id="equation-gcc4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \alpha_t(x)=2^{-1/2}(e_{11}+e^{-it}e_{12}),\qquad
+ s_r(\alpha_t(x))=\frac12
+ \begin{pmatrix}1&amp;e^{-it}\\e^{it}&amp;1\end{pmatrix},\qquad
+ s_r(x)\ne\alpha_\pi(s_r(x)).
+\tag{GCC4}
+\]">\[
+ \alpha_t(x)=2^{-1/2}(e_{11}+e^{-it}e_{12}),\qquad
+ s_r(\alpha_t(x))=\frac12
+ \begin{pmatrix}1&amp;e^{-it}\\e^{it}&amp;1\end{pmatrix},\qquad
+ s_r(x)\ne\alpha_\pi(s_r(x)).
+\tag{GCC4}
+\]</span>
+Each displayed matrix is the projection onto the normalized vector <span class="math" data-tex="\(2^{-1/2}(1,e^{it})\)">\(2^{-1/2}(1,e^{it})\)</span>, as direct multiplication shows; in particular it is a rank-one projection and is the right support of <span class="math" data-tex="\(\alpha_t(x)\)">\(\alpha_t(x)\)</span>. At <span class="math" data-tex="\(t=0,\pi\)">\(t=0,\pi\)</span> their sum is <span class="math" data-tex="\(1\)">\(1\)</span>; hence the entire orbit join is <span class="math" data-tex="\(e_1=1\)">\(e_1=1\)</span>, although <span class="math" data-tex="\(s_r(x)\)">\(s_r(x)\)</span> is not fixed. In (C27), with <span class="math" data-tex="\(t_1=t_2=0\)">\(t_1=t_2=0\)</span>,</p>
+<p><a id="equation-gcc5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ z=xyx^*=\tfrac12e_{11}\ne0,\qquad
+ \operatorname{Sp}_\alpha(y)=\operatorname{Sp}_\alpha(z)=\{0\}.
+\tag{GCC5}
+\]">\[
+ z=xyx^*=\tfrac12e_{11}\ne0,\qquad
+ \operatorname{Sp}_\alpha(y)=\operatorname{Sp}_\alpha(z)=\{0\}.
+\tag{GCC5}
+\]</span>
+The exact neighbourhoods <span class="math" data-tex="\(V=(-1/10,1/10)\)">\(V=(-1/10,1/10)\)</span>, <span class="math" data-tex="\(W=(-13/10,13/10)\)">\(W=(-13/10,13/10)\)</span>, <span class="math" data-tex="\(O=(-3/2,3/2)\)">\(O=(-3/2,3/2)\)</span> satisfy (C20)–(C21): <span class="math" data-tex="\(\overline V+W=(-7/5,7/5)\subset O\)">\(\overline V+W=(-7/5,7/5)\subset O\)</span>, and <span class="math" data-tex="\(\overline{U_1}-\overline{U_1}=[-6/5,6/5]\subset W\)">\(\overline{U_1}-\overline{U_1}=[-6/5,6/5]\subset W\)</span>. The spectral set bound in (C28) is conservative: <span class="math" data-tex="\(\{0,1\}+\{0\}-\{0,1\}=\{-1,0,1\}\)">\(\{0,1\}+\{0\}-\{0,1\}=\{-1,0,1\}\)</span>, while the actual sandwich has only frequency zero. This numerical model illustrates the proved mechanism, not a countable reduction of the general group.</p>
+<p><strong>Additional problem.</strong> Could one replace <span class="math" data-tex="\(e_1\)">\(e_1\)</span> by <span class="math" data-tex="\(s_r(x)\)">\(s_r(x)\)</span> in this model merely because it is a projection?</p>
+<p><strong>Solution.</strong> No: its displayed matrix is changed by <span class="math" data-tex="\(\alpha_\pi\)">\(\alpha_\pi\)</span>, so it is not a fixed projection and cannot index (C6). The join of the two displayed translates is already <span class="math" data-tex="\(1\)">\(1\)</span>, which is fixed. This is exactly the domain distinction used in the retained problem and solution after (C28).</p>
+<p><span id="OA-FLOW.GCC.SOURCES"></span><a id="oa-flow.gcc.sources"></a></p>
+<p><a id="gcc-sources"></a></p>
+<h2 id="sources-and-the-bounded-conclusion">Sources and the bounded conclusion</h2>
+<p>The historical equations (C1)–(C28), their proofs, rank-one example, and original problem and solution are retained. The transport is presented before the central-support reduction: one mechanism transports a nonzero local spectral witness along orbit supports, while the other finds a witness by multiplying with fixed unitaries. Both use the actual earlier local Fourier and projection proofs.</p>
+<p>The general fixed-corner assertions correspond to Takesaki, <em>Theory of Operator Algebras II</em>, <a href="https://doi.org/10.1007/978-3-662-10451-4">XI.2 Definition 2.1 and Lemma 2.2, printed 332–333</a>. The independent integration and hull-spectrum framework is also developed in Arveson, <a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf"><em>On groups of automorphisms of operator algebras</em></a>, J. Funct. Anal. 15 (1974), §§1–2. LF, GL and SS supply complete local proofs for the harmonic-analysis results that those source pages cite externally. The existing free-source real-action CS argument remains available with its own stronger factor hypotheses and positive-transform convention. None of these citations replaces a programme proof.</p>
+<p>The bounded results here are fixed-corner restriction, local detection, central-support spectral detection, the central-corner formula, the fixed-algebra factor case and equivalent-fixed-corner invariance for arbitrary LCA <span class="math" data-tex="\(G\)">\(G\)</span>. No subgroup theorem, cocycle invariance, dual-action-center identification or whole C3 completion is claimed. Spot-checked in a separate AI session.</p>
+<p><a id="oa-flow.gcc.figure"></a></p>
+<h2 id="OA-FLOW.GCC.FIGURE">Orbit supports and a spectral witness in the target corner</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact matrix model of the orbit-support join" src="assets/general-connes-corners/assets/fixed-corners.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>This original figure illustrates the support join in <a href="OA-FLOW-GCC.html#gcc-equivalence">C24–C28</a> through the complete exact model <a href="OA-FLOW-GCC.html#gcc-model">GCC3–5</a>. The general theorem concerns an arbitrary LCH abelian group and arbitrary von Neumann algebra. The picture is a separate <span class="math" data-tex="\(M_2\)">\(M_2\)</span>, real-action example, not an approximation or a countable reduction of that theorem.</p>
+<p>In this example <span class="math" data-tex="\(\alpha_t=\operatorname{Ad}\operatorname{diag}(1,e^{it})\)">\(\alpha_t=\operatorname{Ad}\operatorname{diag}(1,e^{it})\)</span>, <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span>, <span class="math" data-tex="\(f_1=e_{11}\)">\(f_1=e_{11}\)</span>, and</p>
+<p><a id="equation-gccf1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ u=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},
+ \qquad x=f_1u,\qquad y=e_{22}.
+\tag{GCCF1}
+\]">\[
+ u=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix},
+ \qquad x=f_1u,\qquad y=e_{22}.
+\tag{GCCF1}
+\]</span>
+The negative Fourier convention gives <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span> label zero and <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> label one, so <span class="math" data-tex="\(\operatorname{Sp}_\alpha(x)=\{0,1\}\)">\(\operatorname{Sp}_\alpha(x)=\{0,1\}\)</span>. LF4 gives a compact Fourier plateau equal to one near both labels, supported in <span class="math" data-tex="\(U_1=(-1/10,11/10)\)">\(U_1=(-1/10,11/10)\)</span>; filtering <span class="math" data-tex="\(f_1u\)">\(f_1u\)</span> with it leaves <span class="math" data-tex="\(x\)">\(x\)</span> unchanged. The figure does not depict that plateau's shape.</p>
+<p>The right support <span class="math" data-tex="\(r_t=s_r(\alpha_t(x))\)">\(r_t=s_r(\alpha_t(x))\)</span> is the displayed rank-one matrix</p>
+<p><a id="equation-gccf2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ r_t=\frac12\begin{pmatrix}1&amp;e^{-it}\\e^{it}&amp;1\end{pmatrix}.
+\tag{GCCF2}
+\]">\[
+ r_t=\frac12\begin{pmatrix}1&amp;e^{-it}\\e^{it}&amp;1\end{pmatrix}.
+\tag{GCCF2}
+\]</span>
+Panel 3 plots the auxiliary coordinates <span class="math" data-tex="\((\cos t,\sin t)\)">\((\cos t,\sin t)\)</span> labeling these matrices. The map from these two coordinates to the matrix is explicit: its off-diagonal entry is <span class="math" data-tex="\((\cos t-i\sin t)/2\)">\((\cos t-i\sin t)/2\)</span>. This circle is not a plot of real subspaces of the complex Hilbert space. Its outline uses 721 numerical samples; the matrices, marked points and identities are exact.</p>
+<p>The opposite points <span class="math" data-tex="\(t=0,\pi\)">\(t=0,\pi\)</span> label orthogonal supports with <span class="math" data-tex="\(r_0+r_\pi=1\)">\(r_0+r_\pi=1\)</span>. Thus <span class="math" data-tex="\(s_r(x)\)">\(s_r(x)\)</span> is not fixed but the join of its full orbit is <span class="math" data-tex="\(e_1=1\)">\(e_1=1\)</span>, an admissible fixed projection for the Connes-spectrum intersection. In the abstract proof the join is over all group elements and can have arbitrary cardinality. The illustrated two-point join is a feature of this exact finite model.</p>
+<p>For <span class="math" data-tex="\(t_1=t_2=0\)">\(t_1=t_2=0\)</span>, the final sandwich is</p>
+<p><a id="equation-gccf3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ z=xyx^*=\frac12e_{11}\ne0,\qquad
+ \operatorname{Sp}_\alpha(z)=\{0\}
+ \subset\{0,1\}+\{0\}-\{0,1\}=\{-1,0,1\}.
+\tag{GCCF3}
+\]">\[
+ z=xyx^*=\frac12e_{11}\ne0,\qquad
+ \operatorname{Sp}_\alpha(z)=\{0\}
+ \subset\{0,1\}+\{0\}-\{0,1\}=\{-1,0,1\}.
+\tag{GCCF3}
+\]</span>
+Thus the product bound can be conservative without losing nonvanishing or the target corner. With <span class="math" data-tex="\(V=(-1/10,1/10)\)">\(V=(-1/10,1/10)\)</span>, <span class="math" data-tex="\(W=(-13/10,13/10)\)">\(W=(-13/10,13/10)\)</span>, and <span class="math" data-tex="\(O=(-3/2,3/2)\)">\(O=(-3/2,3/2)\)</span>, the exact containments are <span class="math" data-tex="\(\overline{U_1}-\overline{U_1}=[-6/5,6/5]\subset W\)">\(\overline{U_1}-\overline{U_1}=[-6/5,6/5]\subset W\)</span> and <span class="math" data-tex="\(\overline V+W=(-7/5,7/5)\subset O\)">\(\overline V+W=(-7/5,7/5)\subset O\)</span>. These are the neighbourhood relations required by C20–C21. The abstract argument can choose arbitrarily small differences around any selected spectral point; this particular model uses the explicitly stated larger window.</p>
+<p>The proof mechanism's human antecedent is Takesaki, <em>Theory of Operator Algebras II</em>, <a href="https://doi.org/10.1007/978-3-662-10451-4">XI.2 Lemma 2.2(iv), printed 332–333</a>. The earlier local Fourier and hull-spectrum tools retain their freely accessible Arveson/LF/GL/SS developments. The reviewed source pages contain no corresponding matrix circle or finite model; this figure and its caption are original.</p>
+<p><a href="assets/general-connes-corners/assets/fixed-corners.svg">Editable SVG</a>, <a href="assets/general-connes-corners/assets/fixed-corners-data.json">exact semantic data</a>, and <a href="assets/general-connes-corners/render_corners.py">reproduction source</a> are included. Native PNG: 3000 by 2000 pixels. Original figure and caption: GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, CC0-1.0 to the extent of rights held.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-HCR.html">Previous lesson</a><a href="OA-FLOW-L112.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-GCC.md">Lesson source</a></nav></main></body></html>

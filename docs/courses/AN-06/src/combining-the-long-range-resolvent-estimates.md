@@ -39,7 +39,9 @@ and the norms
  \tag{3}
 \]
 
-Let \(P_0(D)\) be a real scalar constant-coefficient elliptic differential operator of order \(m\ge1\), and let \(V\) be a symmetric \(1\)-admissible differential perturbation of the same maximal order. The admissible-perturbation lesson gives its full definition: continuous highest coefficients, the precise local \(L^p\) lower coefficients, an elliptic total principal symbol, and a \(C^1\) long-range splitting with a positive decay gap. The domain lesson gives
+<a id="combined-domain"></a>
+
+Let \(P_0(D)\) be a real scalar constant-coefficient elliptic differential operator of order \(m\ge1\), and let \(V\) be a symmetric \(1\)-admissible differential perturbation of the same maximal order. The admissible-perturbation lesson gives its full definition: continuous highest coefficients, the precise local \(L^p\) lower coefficients, an elliptic total principal symbol, and a \(C^1\) long-range splitting with a positive decay gap. The [full Sobolev-domain theorem](the-sobolev-domain-of-an-elliptic-operator.md#domain-theorem) gives
 
 \[
  H=P_0(D)+V(x,D),\qquad \mathcal D(H)=H^m,
@@ -52,6 +54,10 @@ as a self-adjoint operator in \(L^2\). Define the free critical-value set
  Z(P_0)=\{P_0(\xi):\nabla P_0(\xi)=0\}.
  \tag{5}
 \]
+
+<a id="combined-theorem"></a>
+
+This combination of the two frequency estimates is Hörmander [H4, Theorem 30.2.5].
 
 **Theorem 1.1.** For every \(\lambda\in\mathbb R\setminus Z(P_0)\), there are \(r>0\) and \(C_\lambda<\infty\) such that, for \(f\in B\),
 
@@ -67,6 +73,8 @@ as a self-adjoint operator in \(L^2\). Define the free critical-value set
 
 The constant is uniform throughout this punctured disc in both half-planes. All derivatives through the full order occur on the left. No point-spectrum exclusion is assumed. The auxiliary norm on the right is part of the conclusion, and cannot generally be discarded; Exercise 5 gives an explicit eigenvalue example.
 
+<a id="combined-split"></a>
+
 ## 2. The symmetric split and its rough coefficient scope
 
 The smoothing and symmetrization theorems in the admissible-perturbation lesson let us choose
@@ -76,7 +84,7 @@ The smoothing and symmetrization theorems in the admissible-perturbation lesson 
  \tag{7}
 \]
 
-with both summands symmetric and \(P_0+V_L\) uniformly elliptic. Corollary 5.3 of [Admissible differential perturbations](admissible-differential-perturbations.md) proves the complete compact modification: cut off the real smooth part inside a large ball and symmetrize it. Its highest coefficients are uniformly small, every derivative bound is preserved, and the compact coefficient difference and adjoint defect enter the symmetric short-range remainder. This normalization depends only on the coefficient lemmas; it precedes both frequency estimates.
+with both summands symmetric and \(P_0+V_L\) uniformly elliptic. Corollary 5.3 of [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-exterior-ellipticity) proves the complete compact modification: cut off the real smooth part inside a large ball and symmetrize it. Its highest coefficients are uniformly small, every derivative bound is preserved, and the compact coefficient difference and adjoint defect enter the symmetric short-range remainder. This normalization depends only on the coefficient lemmas; it precedes both frequency estimates.
 
 Fix one \(0<\delta\le1\), no larger than the available smooth and short-range decay gaps. The smooth part has all the bounds required by the two frequency estimates:
 
@@ -122,9 +130,13 @@ For \(k=m-|\alpha|>0\), the exponents are
 
 These coefficients may be unbounded. Their original splitting and the symmetric differential expression can also have complex lower coefficients. We keep the actual coefficient products and never differentiate a rough coefficient.
 
-The coefficient multiplier proposition in the admissible-perturbation lesson states that uniformly bounded translated local norms in (11), together with bounded highest coefficients, give a continuous differential map \(H^m\to L^2\). Its proof uses local Sobolev embedding, Hölder, a fixed cutoff and integration over its translations. It remains valid when a derivative has a larger gap than the coefficient originally required.
+The [global coefficient multiplier proposition](admissible-differential-perturbations.md#admissible-global-mapping) states that uniformly bounded translated local norms in (11), together with bounded highest coefficients, give a continuous differential map \(H^m\to L^2\). Its proof uses local Sobolev embedding, Hölder, a fixed cutoff and integration over its translations. It remains valid when a derivative has a larger gap than the coefficient originally required.
 
 ## 3. The primary short-range weighted map
+
+<a id="combined-primary-map"></a>
+
+The two short-range weighted maps are Hörmander [H4, (30.2.19)–(30.2.20)]. Sections 3–4 give their proofs with the full rough-coefficient hypotheses and the factor order in (1).
 
 **Lemma 3.1.** For every real \(t\),
 
@@ -179,13 +191,15 @@ If \(n>2k'\), its required exponent \(n/k'\) is no larger than \(p_\alpha\). If 
  \tag{16}
 \]
 
-The last comparison is the factor-exchange theorem in the weighted-space lesson.
+The last comparison is the [factor-exchange theorem](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-factor-exchange).
 
 Schwartz density gives a unique bounded extension. Convergence in \(H^{m,t}\) implies \(H^m\) convergence after any fixed compact cutoff. The local coefficient multiplier proof then identifies each limiting coefficient product in local \(L^2\). Hence the extension agrees with the differential expression as a distribution. \(\square\)
 
 Symmetry on compact smooth functions extends to Schwartz pairings by the \(H^m\to L^2\) bound and approximation by compact tests. We use that fact for the second map.
 
 ## 4. The integral dual and the symmetric second map
+
+<a id="combined-dual"></a>
 
 **Lemma 4.1.** With the convention (1), the integral dual of \(H^{s,r}\) is exactly \(H^{-s,-r}\), with its displayed norm. In particular, for Schwartz \(g\),
 
@@ -212,7 +226,7 @@ Consequently
 
 Cauchy–Schwarz gives the upper bound. The operator \(T\) maps Schwartz space onto itself, densely in \(L^2\), so the \(L^2\) norm gives the exact supremum.
 
-Conversely, the [local representing-vector proof in the endpoint lesson](endpoint-spaces-and-flat-energy-shells.md#1-measuring-one-shell-at-a-time), applied after the isometry \(T\), writes a continuous conjugate-linear functional as \(F(v)=(h,Tv)\). Its representing distribution is
+Conversely, the [local representing-vector proof in the endpoint lesson](endpoint-spaces-and-flat-energy-shells.md#endpoint-shell-spaces), applied after the isometry \(T\), writes a continuous conjugate-linear functional as \(F(v)=(h,Tv)\). Its representing distribution is
 
 \[
  g=T^*h=J_sM_rh,\qquad
@@ -223,6 +237,8 @@ Conversely, the [local representing-vector proof in the endpoint lesson](endpoin
 It therefore belongs to \(H^{-s,-r}\) with norm \(\|h\|_2\). These identities extend by the distributional actions of the factors. No position factor was commuted through a Fourier factor. \(\square\)
 
 The inverse in (18) and its adjoint have different orders. The dual norm uses the latter.
+
+<a id="combined-symmetric-map"></a>
 
 **Lemma 4.2.** For every real \(t\), symmetry gives a second continuous map,
 
@@ -246,9 +262,11 @@ The inverse in (18) and its adjoint have different orders. The dual norm uses th
  \tag{22}
 \]
 
-Lemma 4.1 identifies its representing distribution as an element of \(H^{-m,t+d}\), with the stated bound. Schwartz density extends the map uniquely. Distributional limits show that it agrees with the primary map on the common domain. In particular, for the negative input weights used below, an \(H^m\) approximation also converges in \(H^{0,t}\), so consistency on the actual resolvent input follows directly. \(\square\)
+Lemma 4.1 identifies its representing distribution as an element of \(H^{-m,t+d}\), with the stated bound. Schwartz density extends the map uniquely. For each compact smooth test \(v\), the extension satisfies \((V_Sg,v)=(g,V_Sv)\): the right side is continuous in \(H^{0,t}\), since \(V_Sv\) is a compactly supported \(L^2\) function. If \(g\) also belongs to a primary-map domain \(H^{m,s}\), cut it off to a function in \(H^m\) equal to \(g\) on a neighborhood of \(\operatorname{supp}v\), and approximate that function by compact smooth functions in \(H^m\). The local coefficient multiplier bound passes the symmetry identity to the limit, giving the same pairing for the primary differential expression. Equality on every compact smooth test identifies the two distributions, for every such common domain. In particular, for the negative input weights used below, an \(H^m\) approximation also converges in \(H^{0,t}\), so consistency on the actual resolvent input follows directly. \(\square\)
 
 This dual extension does not require defining a rough coefficient product on every arbitrary \(L^2_{\mathrm{loc}}\) input separately. It is the unique extension of the symmetric differential expression with the asserted topology.
+
+<a id="combined-embeddings"></a>
 
 ## 5. Endpoint embeddings and the off-energy part
 
@@ -283,9 +301,11 @@ For the second, square the shell estimate and sum:
 
 The unit shell obeys the same uniform bracket comparison. Exercise 3 checks why equality at the threshold is insufficient.
 
+<a id="combined-off-energy"></a>
+
 Fix \(\lambda\notin Z(P_0)\), and write \(M_\lambda=\{\xi:P_0(\xi)=\lambda\}\). Ellipticity makes this shell compact. Choose a real compact smooth \(\chi\), supported where \(\nabla P_0\ne0\), equal one near \(M_\lambda\). If the shell is empty, choose \(\chi=0\). Let \(r\le1\) be no larger than the radius in the off-energy theorem.
 
-For \(|z-\lambda|<r\), \(Hu=f+zu\). The rough graph theorem at weight \(-d\) gives
+For \(|z-\lambda|<r\), \(Hu=f+zu\). The [rough graph estimate](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-rough-graph-proof) at weight \(-d\) gives
 
 \[
  \begin{aligned}
@@ -299,7 +319,7 @@ For \(|z-\lambda|<r\), \(Hu=f+zu\). The rough graph theorem at weight \(-d\) giv
 
 Here \(|z|\le|\lambda|+1\), \(B\subset L^2\), and \(d>1\). All constants are fixed before \(z\) varies. Lemma 3.1 at \(t=-d\) now bounds \(\|V_Su\|_2\) by the same right side.
 
-Apply the off-energy theorem to
+Apply [the off-energy estimate](the-resolvent-away-from-the-energy-surface.md#off-energy-resolvent-estimate) to
 
 \[
  (P_0+V_L-z)u=f-V_Su.
@@ -316,6 +336,8 @@ Use forcing exponents \(s=t=0\) and auxiliary exponents \(s'=0,t'=-1\). It gives
 
 Every derivative of this part through order \(m\) belongs to \(L^2\subset B^*\), so its full derivative sum has that same bound.
 
+<a id="combined-forcing-membership"></a>
+
 ## 6. The near-frequency part and uniform absorption
 
 Before applying the near-frequency theorem, its complete forcing in (27) must belong to \(B\). This follows from a known domain bound: \(u\in H^m\), and (12) at \(t=0\) puts \(V_Su\) in \(H^{0,d}\subset B\). Thus \(f-V_Su\in B\). We have not used an endpoint estimate to establish that membership.
@@ -330,6 +352,8 @@ Put
  \end{gathered}
  \tag{29}
 \]
+
+<a id="combined-localized-rough"></a>
 
 A compact smooth frequency multiplier has every negative frequency order. The weighted mapping theorem therefore gives
 \(\chi(D):H^{-m,a}\to H^{0,a}\).
@@ -346,13 +370,15 @@ Combine this with (23) and the symmetric map (21):
  \tag{30}
 \]
 
-The extended short-range action equals the primary action on this \(H^m\) input. The near-frequency theorem, its exact forcing cutoff, and boundedness of \(\chi(D)\) on \(B\) yield
+The extended short-range action equals the primary action on this \(H^m\) input. The [noncritical-frequency estimate](a-resolvent-estimate-at-noncritical-frequencies.md#noncritical-theorem), its exact forcing cutoff, and boundedness of \(\chi(D)\) on \(B\) yield
 
 \[
  \|\chi(D)u\|_{B^*}
  \le C_\lambda\bigl(\|f\|_B+\|u\|_{0,-a}\bigr).
  \tag{31}
 \]
+
+<a id="combined-derivatives"></a>
 
 Choose a second compact cutoff \(\chi'\), equal one near \(\operatorname{supp}\chi\). The exact multiplier identity
 
@@ -361,7 +387,7 @@ Choose a second compact cutoff \(\chi'\), equal one near \(\operatorname{supp}\c
  \tag{32}
 \]
 
-and the shell mapping interface in the near-frequency lesson bound its \(B^*\) norm by \(C_\alpha\|\chi(D)u\|_{B^*}\). The multiplier \(D^\alpha\chi'(D)\) has a compact smooth symbol, so that interface applies for every \(|\alpha|\le m\).
+and the [shell mapping estimate](a-resolvent-estimate-at-noncritical-frequencies.md#noncritical-shell-transfer) bound its \(B^*\) norm by \(C_\alpha\|\chi(D)u\|_{B^*}\). The multiplier \(D^\alpha\chi'(D)\) has a compact smooth symbol, so that interface applies for every \(|\alpha|\le m\).
 
 Combine (28) and (31), and put
 \(Y=\sum_{|\alpha|\le m}\|D^\alpha u\|_{B^*}\).
@@ -378,6 +404,8 @@ The second embedding in (23) gives
  \|u\|_{0,-b}\le C_b\|u\|_{B^*}\le C_bY.
  \tag{34}
 \]
+
+<a id="combined-absorption"></a>
 
 For any \(\eta>0\), split space at a sufficiently large fixed radius \(R\). On its exterior, \(X^{-a}=X^{b-a}X^{-b}\), and \(X^{b-a}\) can be made at most \(\eta\). Inside, \(X^{-a}=X^{1-a}X^{-1}\), and \(X^{1-a}\le\langle R\rangle^{1-a}\). The triangle inequality gives
 
@@ -400,6 +428,10 @@ All numbers before absorption are finite because \(u\in H^m\). The radius is ind
 ### Use the conclusion
 
 Identify both rough maps and the constants used in the absorption step. Compare the resulting estimate with the later limiting-absorption theorem: the latter must remove the compact error using a uniqueness argument.
+
+For the last exercise, \(\operatorname{sech}x=2/(e^x+e^{-x})\); the [exponential construction and derivative rule](../providers/analysis/elementary-functions-and-cutoffs.md#scalar-exponential) give the required differentiation and decay.
+
+<a id="combined-solutions"></a>
 
 ## 7. Graded exercises with complete solutions
 
@@ -496,3 +528,5 @@ The [accessible scalar comparisons in the limiting-absorption lesson](limiting-a
 
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*, author's online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf), develops self-adjoint resolvents, Schrödinger operators and bound states. The calculated example in Exercise 5 shows why an auxiliary norm can coexist with an eigenvalue pole.
 
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, the short-range weighted maps (30.2.19)–(30.2.20), Theorem 30.2.5 and its proof, pp. 288–289. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

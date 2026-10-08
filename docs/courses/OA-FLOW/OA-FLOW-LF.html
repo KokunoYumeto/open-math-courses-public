@@ -1,0 +1,535 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local Fourier division and closed ideals on an arbitrary LCA group · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-AC.html">Previous lesson</a><a href="OA-FLOW-AT.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-LF.md">Lesson source</a></nav><p class="notice">Original complete proofs and illustration by GPT-6.1 Sol (OpenAI), Ultra. Spot-checked by GPT-6 Astra in a separate session.</p><h1 id="OA-FLOW.LF.0">Local Fourier division and closed ideals on an arbitrary LCA group</h1>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group, written additively, and let <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>. Neither group is assumed second countable or sigma compact. Fix Haar measure <span class="math" data-tex="\(m\)">\(m\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span> and the paired dual Haar measure <span class="math" data-tex="\(\widehat m\)">\(\widehat m\)</span>. All neighbourhood limits below are nets.</p>
+<p>The earlier inputs are the complete <a href="OA-FLOW-HR.html#hr-03">Haar regularity and finite-exponent conventions</a>, <a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">group function-space and convolution proofs</a>, <a href="OA-FLOW-HARMONIC.html#l138-h1">character topology and Fourier injectivity</a>, <a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p3">onto scalar Plancherel</a>, and <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">biduality and returned Haar normalization</a>. In particular, <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(L^2\)">\(L^2\)</span> mean the common finite-exponent Radon/locally determined spaces of L24. Representatives can be chosen Borel with sigma compact carriers. Qualified product integration is used on such carriers; no unrestricted equality of product Borel sigma algebras is required.</p>
+<p><a id="lf-0"></a></p>
+<h2 id="lf0-conventions-and-the-product-identity">LF0. Conventions and the product identity</h2>
+<p>Use the negative forward transform and positive inverse:</p>
+<p><a id="equation-lf1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \widehat a(\gamma)=\int_G a(s)\overline{\gamma(s)}\,dm(s),
+ \qquad
+ \mathcal F^{-1}v(s)=\int_\Gamma v(\gamma)\gamma(s)\,d\widehat m(\gamma)
+ \quad(v\in L^1\cap L^2).
+ \tag{LF1}
+\]">\[
+ \widehat a(\gamma)=\int_G a(s)\overline{\gamma(s)}\,dm(s),
+ \qquad
+ \mathcal F^{-1}v(s)=\int_\Gamma v(\gamma)\gamma(s)\,d\widehat m(\gamma)
+ \quad(v\in L^1\cap L^2).
+ \tag{LF1}
+\]</span>
+The inverse integral represents the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> inverse by <a href="OA-FLOW-HARMONIC-LATE.html#l138-h2">H2</a>. For arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors the inverse is the Plancherel unitary inverse; an absolutely convergent inverse integral is not asserted there.</p>
+<p>Define</p>
+<p><a id="equation-lf2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A(\Gamma)=\{\widehat a:a\in L^1(G)\},
+ \qquad \|\widehat a\|_A=\|a\|_1.
+ \tag{LF2}
+\]">\[
+ A(\Gamma)=\{\widehat a:a\in L^1(G)\},
+ \qquad \|\widehat a\|_A=\|a\|_1.
+ \tag{LF2}
+\]</span>
+Fourier injectivity makes this norm well defined. The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> convolution theorem makes <span class="math" data-tex="\(A(\Gamma)\)">\(A(\Gamma)\)</span> a commutative Banach algebra of continuous functions vanishing at infinity, with</p>
+<p><a id="equation-lf3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|uv\|_A\leq\|u\|_A\|v\|_A,\qquad
+ \|u\|_\infty\leq\|u\|_A.
+ \tag{LF3}
+\]">\[
+ \|uv\|_A\leq\|u\|_A\|v\|_A,\qquad
+ \|u\|_\infty\leq\|u\|_A.
+ \tag{LF3}
+\]</span>
+Both assertions follow by transporting L24's complete <span class="math" data-tex="\(L^1\)">\(L^1\)</span> algebra and its integral bound through the injective Fourier map.</p>
+<p>Write <span class="math" data-tex="\(L_s a(t)=a(t-s)\)">\(L_s a(t)=a(t-s)\)</span> and <span class="math" data-tex="\(M_\theta a(t)=\theta(t)a(t)\)">\(M_\theta a(t)=\theta(t)a(t)\)</span>. Haar substitution gives</p>
+<p><a id="equation-lf4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal F(L_s a)(\gamma)=\overline{\gamma(s)}\widehat a(\gamma),
+ \qquad
+ \mathcal F(M_\theta a)(\gamma)=\widehat a(\gamma-\theta).
+ \tag{LF4}
+\]">\[
+ \mathcal F(L_s a)(\gamma)=\overline{\gamma(s)}\widehat a(\gamma),
+ \qquad
+ \mathcal F(M_\theta a)(\gamma)=\widehat a(\gamma-\theta).
+ \tag{LF4}
+\]</span>
+Both maps are isometries in each finite-exponent space. The identities on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> follow by approximation by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, using unitarity; conjugation likewise gives
+<span class="math" data-tex="\(\mathcal F(\overline a)(\gamma)=\overline{\mathcal Fa(-\gamma)}\)">\(\mathcal F(\overline a)(\gamma)=\overline{\mathcal Fa(-\gamma)}\)</span>.</p>
+<p>We shall use, at its whole domain, the identity</p>
+<p><a id="equation-lf5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ uv\in L^1(G),\qquad
+ \widehat{uv}=(\mathcal Fu)*_\Gamma(\mathcal Fv)
+ \quad(u,v\in L^2(G)).
+ \tag{LF5}
+\]">\[
+ uv\in L^1(G),\qquad
+ \widehat{uv}=(\mathcal Fu)*_\Gamma(\mathcal Fv)
+ \quad(u,v\in L^2(G)).
+ \tag{LF5}
+\]</span>
+Here the convolution integral on the right exists at every <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. For completeness, with inner products linear in the first variable, write
+<span class="math" data-tex="\(\widehat{uv}(\gamma)=\langle u,\gamma\overline v\rangle\)">\(\widehat{uv}(\gamma)=\langle u,\gamma\overline v\rangle\)</span>.
+The preceding <span class="math" data-tex="\(L^2\)">\(L^2\)</span> identities give
+<span class="math" data-tex="\(\mathcal F(\gamma\overline v)(\eta)=\overline{\mathcal Fv(\gamma-\eta)}\)">\(\mathcal F(\gamma\overline v)(\eta)=\overline{\mathcal Fv(\gamma-\eta)}\)</span>.
+Parseval gives (LF5). Cauchy–Schwarz bounds the absolute convolution integral by <span class="math" data-tex="\(\|u\|_2\|v\|_2\)">\(\|u\|_2\|v\|_2\)</span>. It is continuous: translate one <span class="math" data-tex="\(L^2(\Gamma)\)">\(L^2(\Gamma)\)</span> factor, use L24's norm continuity of translations on that group, and apply the same bound. This is the full-vector argument of <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3.5</a>, now applied to <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><a id="lf-1"></a></p>
+<h2 id="OA-FLOW.LF.1">LF1. Compact plateaus with a uniform Fourier-algebra norm</h2>
+<p><strong>Lemma.</strong> For each identity neighbourhood <span class="math" data-tex="\(N\subset\Gamma\)">\(N\subset\Gamma\)</span> there is <span class="math" data-tex="\(q\in A(\Gamma)\)">\(q\in A(\Gamma)\)</span> such that</p>
+<p><a id="equation-lf6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ 0\leq q\leq1,\qquad q=1\text{ on an identity neighbourhood},\qquad
+ \operatorname{supp}q\text{ is compact and contained in }N,\qquad
+ \|q\|_A&lt;\sqrt2.
+ \tag{LF6}
+\]">\[
+ 0\leq q\leq1,\qquad q=1\text{ on an identity neighbourhood},\qquad
+ \operatorname{supp}q\text{ is compact and contained in }N,\qquad
+ \|q\|_A&lt;\sqrt2.
+ \tag{LF6}
+\]</span>
+Here and below support is the closed support.</p>
+<p><strong>Proof.</strong> Choose a relatively compact open identity neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> with
+<span class="math" data-tex="\(\overline W-\overline W\subset N\)">\(\overline W-\overline W\subset N\)</span>. Continuity of subtraction supplies a small neighbourhood whose difference is inside <span class="math" data-tex="\(N\)">\(N\)</span>; local compactness and shrinking supply this <span class="math" data-tex="\(W\)">\(W\)</span>. Choose a compact neighbourhood <span class="math" data-tex="\(V\subset W\)">\(V\subset W\)</span> of the identity. Haar full support and finiteness on compact sets give
+<span class="math" data-tex="\(0&lt;\widehat m(V)&lt;\infty\)">\(0&lt;\widehat m(V)&lt;\infty\)</span>.
+Outer regularity supplies a relatively compact open <span class="math" data-tex="\(O\)">\(O\)</span> with</p>
+<p><a id="equation-lf7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ V\subset O\subset W,\qquad
+ \widehat m(O)&lt;2\widehat m(V).
+ \tag{LF7}
+\]">\[
+ V\subset O\subset W,\qquad
+ \widehat m(O)&lt;2\widehat m(V).
+ \tag{LF7}
+\]</span>
+Indeed intersect a sufficiently small-measure open superset of <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(W\)">\(W\)</span>. Compactness gives an identity neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(U+V\subset O\)">\(U+V\subset O\)</span>: use finitely many product neighbourhoods of the points of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Put</p>
+<p><a id="equation-lf8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ q(\gamma)=\frac{(1_O *_\Gamma 1_{-V})(\gamma)}{\widehat m(V)}
+ =\frac{\widehat m\{v\in V:\gamma+v\in O\}}{\widehat m(V)}.
+ \tag{LF8}
+\]">\[
+ q(\gamma)=\frac{(1_O *_\Gamma 1_{-V})(\gamma)}{\widehat m(V)}
+ =\frac{\widehat m\{v\in V:\gamma+v\in O\}}{\widehat m(V)}.
+ \tag{LF8}
+\]</span>
+Thus <span class="math" data-tex="\(0\leq q\leq1\)">\(0\leq q\leq1\)</span>, and <span class="math" data-tex="\(q=1\)">\(q=1\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. Outside <span class="math" data-tex="\(\overline O-V\)">\(\overline O-V\)</span> it is zero; this is a compact subset of <span class="math" data-tex="\(N\)">\(N\)</span>. Take the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors</p>
+<p><a id="equation-lf9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ u=\mathcal F^{-1}1_O,\qquad
+ v=\mathcal F^{-1}\!\left(1_{-V}/\widehat m(V)\right),\qquad k=uv.
+ \tag{LF9}
+\]">\[
+ u=\mathcal F^{-1}1_O,\qquad
+ v=\mathcal F^{-1}\!\left(1_{-V}/\widehat m(V)\right),\qquad k=uv.
+ \tag{LF9}
+\]</span>
+Equation (LF5) says <span class="math" data-tex="\(\widehat k=q\)">\(\widehat k=q\)</span>, pointwise, and proves its continuity. Plancherel and Cauchy–Schwarz give</p>
+<p><a id="equation-lf10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|k\|_1\leq\|u\|_2\|v\|_2
+ =\sqrt{\widehat m(O)/\widehat m(V)}&lt;\sqrt2.
+ \tag{LF10}
+\]">\[
+ \|k\|_1\leq\|u\|_2\|v\|_2
+ =\sqrt{\widehat m(O)/\widehat m(V)}&lt;\sqrt2.
+ \tag{LF10}
+\]</span>
+This proves every assertion. Translating <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> is Fourier transformation of <span class="math" data-tex="\(M_{\gamma_0}k\)">\(M_{\gamma_0}k\)</span>, so the same conclusion holds at any point, with its prescribed open neighbourhood. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="lf-2"></a></p>
+<h2 id="OA-FLOW.LF.2">LF2. Small local convolution errors</h2>
+<p><strong>Lemma.</strong> Given <span class="math" data-tex="\(a\in L^1(G)\)">\(a\in L^1(G)\)</span>, <span class="math" data-tex="\(c=\widehat a(0)=\int a\)">\(c=\widehat a(0)=\int a\)</span>, and any prescribed identity neighbourhood <span class="math" data-tex="\(N\subset\Gamma\)">\(N\subset\Gamma\)</span>, the plateau kernel <span class="math" data-tex="\(k\)">\(k\)</span> of LF1 can be chosen with support of <span class="math" data-tex="\(\widehat k\)">\(\widehat k\)</span> inside <span class="math" data-tex="\(N\)">\(N\)</span> and</p>
+<p><a id="equation-lf11"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|a*k-ck\|_1&lt;\varepsilon
+ \tag{LF11}
+\]">\[
+ \|a*k-ck\|_1&lt;\varepsilon
+ \tag{LF11}
+\]</span>
+for any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. All its plateau and norm conclusions persist.</p>
+<p><strong>Proof.</strong> Keep the construction (LF7)–(LF9), while choosing <span class="math" data-tex="\(W\)">\(W\)</span> smaller. Formula (LF4) and Plancherel give</p>
+<p><a id="equation-lf12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|L_s k-k\|_1
+ \leq\sqrt{\widehat m(O)/\widehat m(V)}
+ \left(\sup_{\gamma\in O}|\gamma(s)-1|
+       +\sup_{\gamma\in V}|\gamma(s)-1|\right).
+ \tag{LF12}
+\]">\[
+ \|L_s k-k\|_1
+ \leq\sqrt{\widehat m(O)/\widehat m(V)}
+ \left(\sup_{\gamma\in O}|\gamma(s)-1|
+       +\sup_{\gamma\in V}|\gamma(s)-1|\right).
+ \tag{LF12}
+\]</span>
+To check this estimate, expand
+<span class="math" data-tex="\((L_su)(L_sv)-uv=(L_su-u)L_sv+u(L_sv-v)\)">\((L_su)(L_sv)-uv=(L_su-u)L_sv+u(L_sv-v)\)</span>
+and use the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier multiplier formula. The supremum on <span class="math" data-tex="\(-V\)">\(-V\)</span> equals that on <span class="math" data-tex="\(V\)">\(V\)</span>, since characters have modulus one.</p>
+<p>For a compact <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span>, the compact-open topology supplies an identity neighbourhood in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> on which
+<span class="math" data-tex="\(\sup_{s\in C}|\gamma(s)-1|\)">\(\sup_{s\in C}|\gamma(s)-1|\)</span> is arbitrarily small. Require <span class="math" data-tex="\(W\)">\(W\)</span> inside this neighbourhood as well as the neighbourhood controlling <span class="math" data-tex="\(N\)">\(N\)</span>. Therefore (LF12) tends uniformly to zero for <span class="math" data-tex="\(s\in C\)">\(s\in C\)</span>, independently of the particular <span class="math" data-tex="\(V,O\)">\(V,O\)</span> chosen inside <span class="math" data-tex="\(W\)">\(W\)</span>. For every <span class="math" data-tex="\(s\)">\(s\)</span> we also have
+<span class="math" data-tex="\(\|L_s k-k\|_1\leq2\|k\|_1&lt;2\sqrt2\)">\(\|L_s k-k\|_1\leq2\|k\|_1&lt;2\sqrt2\)</span>.</p>
+<p>The Bochner identity, in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, is</p>
+<p><a id="equation-lf13"></a></p>
+<p><span class="math math-display" data-tex="\[
+ a*k-ck=\int_G a(s)(L_s k-k)\,dm(s).
+ \tag{LF13}
+\]">\[
+ a*k-ck=\int_G a(s)(L_s k-k)\,dm(s).
+ \tag{LF13}
+\]</span>
+L24's vector integral and convolution theorem justify it. More explicitly, the norm-continuous translation orbit has separable range on the sigma compact carrier of <span class="math" data-tex="\(a\)">\(a\)</span>: each compact image in the metric <span class="math" data-tex="\(L^1\)">\(L^1\)</span> space is separable, and a countable union retains that property. The integrand is strongly measurable and has integrable norm bounded by <span class="math" data-tex="\(2\sqrt2|a(s)|\)">\(2\sqrt2|a(s)|\)</span>. The scalar convolution and vector integral agree by L24's qualified Fubini argument.</p>
+<p>The finite Radon measure <span class="math" data-tex="\(|a|\,dm\)">\(|a|\,dm\)</span>, proved regular in <a href="OA-FLOW-HR.html#hr-03">HR-03</a>, admits compact tail approximation. Choose <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(2\sqrt2\int_{G\setminus C}|a|&lt;\varepsilon/2\)">\(2\sqrt2\int_{G\setminus C}|a|&lt;\varepsilon/2\)</span>. Then make the uniform error on <span class="math" data-tex="\(C\)">\(C\)</span> less than <span class="math" data-tex="\(\varepsilon/(2(1+\|a\|_1))\)">\(\varepsilon/(2(1+\|a\|_1))\)</span>. Equation (LF13) gives (LF11). This uses a compact-tail estimate, rather than a dominated-convergence assertion for arbitrary nets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="lf-3"></a></p>
+<h2 id="OA-FLOW.LF.3">LF3. Local division by a nonzero Fourier transform</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(a\in L^1(G)\)">\(a\in L^1(G)\)</span> and <span class="math" data-tex="\(\widehat a(\gamma_0)\ne0\)">\(\widehat a(\gamma_0)\ne0\)</span>, there is an open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> such that every <span class="math" data-tex="\(\psi\in A(\Gamma)\)">\(\psi\in A(\Gamma)\)</span> supported in <span class="math" data-tex="\(U\)">\(U\)</span> has the form</p>
+<p><a id="equation-lf14"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \psi=\widehat a\,\widehat h\qquad(h\in L^1(G)).
+ \tag{LF14}
+\]">\[
+ \psi=\widehat a\,\widehat h\qquad(h\in L^1(G)).
+ \tag{LF14}
+\]</span>
+No compactness of <span class="math" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span> is required.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span>, and put <span class="math" data-tex="\(c=\widehat a(0)\)">\(c=\widehat a(0)\)</span>. Choose <span class="math" data-tex="\(k\)">\(k\)</span> by LF2 with <span class="math" data-tex="\(b=a*k-ck\)">\(b=a*k-ck\)</span> satisfying <span class="math" data-tex="\(\|b\|_1&lt;|c|\)">\(\|b\|_1&lt;|c|\)</span>. In the formal convolution unitization
+<span class="math" data-tex="\(L^1(G)^+=\mathbb C\delta\oplus L^1(G)\)">\(L^1(G)^+=\mathbb C\delta\oplus L^1(G)\)</span>, give <span class="math" data-tex="\(\lambda\delta+f\)">\(\lambda\delta+f\)</span> norm <span class="math" data-tex="\(|\lambda|+\|f\|_1\)">\(|\lambda|+\|f\|_1\)</span>, and let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> be its identity. Completeness follows from completeness of the two summands; the convolution bound gives submultiplicativity. This formal construction also applies when <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> already has an identity. The series</p>
+<p><a id="equation-lf15"></a></p>
+<p><span class="math math-display" data-tex="\[
+ D=c\delta+b,\qquad
+ D^{-1}=\frac1c\sum_{n=0}^{\infty}(-b/c)^{*n}
+ \tag{LF15}
+\]">\[
+ D=c\delta+b,\qquad
+ D^{-1}=\frac1c\sum_{n=0}^{\infty}(-b/c)^{*n}
+ \tag{LF15}
+\]</span>
+converges in that norm. Multiplying a partial geometric sum by <span class="math" data-tex="\(D\)">\(D\)</span> leaves a remainder of norm tending to zero, so the displayed limit is its two-sided inverse. Moreover</p>
+<p><a id="equation-lf16"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|D^{-1}\|\leq\frac1{|c|-\|b\|_1}.
+ \tag{LF16}
+\]">\[
+ \|D^{-1}\|\leq\frac1{|c|-\|b\|_1}.
+ \tag{LF16}
+\]</span>
+Extend Fourier evaluation to the unitization by <span class="math" data-tex="\(\widehat\delta=1\)">\(\widehat\delta=1\)</span>. It is a bounded multiplicative map. If <span class="math" data-tex="\(q=\widehat k\)">\(q=\widehat k\)</span>, then</p>
+<p><a id="equation-lf17"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \widehat D=c+(\widehat a-c)q=\widehat a
+ \quad\text{where }q=1.
+ \tag{LF17}
+\]">\[
+ \widehat D=c+(\widehat a-c)q=\widehat a
+ \quad\text{where }q=1.
+ \tag{LF17}
+\]</span>
+Let <span class="math" data-tex="\(U\)">\(U\)</span> be the open plateau neighbourhood, and write <span class="math" data-tex="\(\psi=\widehat r\)">\(\psi=\widehat r\)</span>, <span class="math" data-tex="\(r\in L^1(G)\)">\(r\in L^1(G)\)</span>. Put <span class="math" data-tex="\(h=D^{-1}*r\)">\(h=D^{-1}*r\)</span>. This lies in the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> ideal. On <span class="math" data-tex="\(U\)">\(U\)</span>, (LF17) and the inverse identity give <span class="math" data-tex="\(\widehat a\,\widehat h=\psi\)">\(\widehat a\,\widehat h=\psi\)</span>; outside <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span> and <span class="math" data-tex="\(\widehat h=\widehat D^{-1}\psi=0\)">\(\widehat h=\widehat D^{-1}\psi=0\)</span>. Thus equality holds everywhere. In particular</p>
+<p><a id="equation-lf18"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|h\|_1\leq\frac{\|\psi\|_A}{|c|-\|b\|_1}.
+ \tag{LF18}
+\]">\[
+ \|h\|_1\leq\frac{\|\psi\|_A}{|c|-\|b\|_1}.
+ \tag{LF18}
+\]</span></p>
+<p>For arbitrary <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>, set <span class="math" data-tex="\(a'=M_{-\gamma_0}a\)">\(a'=M_{-\gamma_0}a\)</span>. Its transform is <span class="math" data-tex="\(\widehat a(\gamma+\gamma_0)\)">\(\widehat a(\gamma+\gamma_0)\)</span>, with value <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> at zero. Apply the preceding construction to <span class="math" data-tex="\(a'\)">\(a'\)</span> and <span class="math" data-tex="\(\psi'(\gamma)=\psi(\gamma+\gamma_0)\)">\(\psi'(\gamma)=\psi(\gamma+\gamma_0)\)</span>, whose support is shifted by <span class="math" data-tex="\(-\gamma_0\)">\(-\gamma_0\)</span>. If <span class="math" data-tex="\(h'\)">\(h'\)</span> is the resulting solution, <span class="math" data-tex="\(h=M_{\gamma_0}h'\)">\(h=M_{\gamma_0}h'\)</span> gives (LF14) by (LF4) and the convolution identity. All modulation norms are unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="lf-4"></a></p>
+<h2 id="OA-FLOW.LF.4">LF4. Compact plateaus and subordinate finite partitions</h2>
+<p><strong>Lemma.</strong> If <span class="math" data-tex="\(K\subset\Gamma\)">\(K\subset\Gamma\)</span> is compact and <span class="math" data-tex="\(K\subset\bigcup_{i=1}^m U_i\)">\(K\subset\bigcup_{i=1}^m U_i\)</span>, with <span class="math" data-tex="\(U_i\)">\(U_i\)</span> open, there are nonnegative <span class="math" data-tex="\(p_i\in A(\Gamma)\)">\(p_i\in A(\Gamma)\)</span> with compact support contained in <span class="math" data-tex="\(U_i\)">\(U_i\)</span> such that <span class="math" data-tex="\(\sum_i p_i=1\)">\(\sum_i p_i=1\)</span> on an open neighbourhood of <span class="math" data-tex="\(K\)">\(K\)</span>. Their sum is at most one everywhere. In particular, if <span class="math" data-tex="\(K\subset U\)">\(K\subset U\)</span> is compact inside an open set, there is <span class="math" data-tex="\(Q\in A(\Gamma)\)">\(Q\in A(\Gamma)\)</span>, <span class="math" data-tex="\(0\leq Q\leq1\)">\(0\leq Q\leq1\)</span>, equal to one near <span class="math" data-tex="\(K\)">\(K\)</span>, with compact support inside <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> For each point of <span class="math" data-tex="\(K\)">\(K\)</span>, LF1 gives a translated compact plateau <span class="math" data-tex="\(q_j\)">\(q_j\)</span> whose support is inside one of the <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Its open plateau neighbourhood covers that point. Retain finitely many covering neighbourhoods. Define</p>
+<p><a id="equation-lf19"></a></p>
+<p><span class="math math-display" data-tex="\[
+ r_j=q_j\prod_{l&lt;j}(1-q_l),\qquad
+ Q=\sum_j r_j=1-\prod_j(1-q_j).
+ \tag{LF19}
+\]">\[
+ r_j=q_j\prod_{l&lt;j}(1-q_l),\qquad
+ Q=\sum_j r_j=1-\prod_j(1-q_j).
+ \tag{LF19}
+\]</span>
+Every expression belongs to <span class="math" data-tex="\(A(\Gamma)\)">\(A(\Gamma)\)</span>: expand the finite products, and note that the constant terms cancel in <span class="math" data-tex="\(Q\)">\(Q\)</span>, while each <span class="math" data-tex="\(r_j\)">\(r_j\)</span> has a factor <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. No constant function is presumed to belong to <span class="math" data-tex="\(A(\Gamma)\)">\(A(\Gamma)\)</span>. We have <span class="math" data-tex="\(0\leq r_j\)">\(0\leq r_j\)</span>, <span class="math" data-tex="\(0\leq Q\leq1\)">\(0\leq Q\leq1\)</span>, and <span class="math" data-tex="\(\operatorname{supp}r_j\subset\operatorname{supp}q_j\)">\(\operatorname{supp}r_j\subset\operatorname{supp}q_j\)</span>. On the union of the selected open plateau neighbourhoods at least one factor <span class="math" data-tex="\(1-q_j\)">\(1-q_j\)</span> is zero, hence <span class="math" data-tex="\(Q=1\)">\(Q=1\)</span>. Group the <span class="math" data-tex="\(r_j\)">\(r_j\)</span> according to their assigned <span class="math" data-tex="\(U_i\)">\(U_i\)</span> to obtain <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. A finite union of compact supports inside the same <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is compact and remains inside it. For empty <span class="math" data-tex="\(K\)">\(K\)</span>, all <span class="math" data-tex="\(p_i=0\)">\(p_i=0\)</span> suffice and the neighbourhood can be empty. Taking a one-set cover proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="lf-5"></a></p>
+<h2 id="OA-FLOW.LF.5">LF5. A contractive approximate identity with compact frequency support</h2>
+<p><strong>Theorem.</strong> There is a net <span class="math" data-tex="\(k_i\in L^1(G)_+\)">\(k_i\in L^1(G)_+\)</span> with</p>
+<p><a id="equation-lf20"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \int_G k_i\,dm=\|k_i\|_1=1,\qquad
+ \operatorname{supp}\widehat k_i\text{ compact},\qquad
+ k_i*a\longrightarrow a\text{ in }L^1(G)\quad(a\in L^1(G)).
+ \tag{LF20}
+\]">\[
+ \int_G k_i\,dm=\|k_i\|_1=1,\qquad
+ \operatorname{supp}\widehat k_i\text{ compact},\qquad
+ k_i*a\longrightarrow a\text{ in }L^1(G)\quad(a\in L^1(G)).
+ \tag{LF20}
+\]</span>
+Consequently <span class="math" data-tex="\(A(\Gamma)\cap C_c(\Gamma)\)">\(A(\Gamma)\cap C_c(\Gamma)\)</span> is dense in <span class="math" data-tex="\(A(\Gamma)\)">\(A(\Gamma)\)</span> in the <span class="math" data-tex="\(A\)">\(A\)</span>-norm. More precisely every <span class="math" data-tex="\(\psi\in A(\Gamma)\)">\(\psi\in A(\Gamma)\)</span> has approximants</p>
+<p><a id="equation-lf21"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \psi_i=\psi\,\widehat k_i,\qquad
+ \|\psi_i-\psi\|_A\longrightarrow0,\qquad
+ \operatorname{supp}\psi_i\subset\operatorname{supp}\psi,
+ \tag{LF21}
+\]">\[
+ \psi_i=\psi\,\widehat k_i,\qquad
+ \|\psi_i-\psi\|_A\longrightarrow0,\qquad
+ \operatorname{supp}\psi_i\subset\operatorname{supp}\psi,
+ \tag{LF21}
+\]</span>
+whose supports are compact.</p>
+<p><strong>Proof.</strong> For each identity neighbourhood <span class="math" data-tex="\(V\subset G\)">\(V\subset G\)</span>, choose the positive mass-one bump <span class="math" data-tex="\(a_V\in C_c(G)\)">\(a_V\in C_c(G)\)</span> supported in <span class="math" data-tex="\(V\)">\(V\)</span> from <a href="OA-FLOW-L24.html#oa-flow.grp.algebra">L24 Theorem 5.2</a>. Its shrinking-neighbourhood net is an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximate identity. Put <span class="math" data-tex="\(u_V=\sqrt{a_V}\)">\(u_V=\sqrt{a_V}\)</span>, so <span class="math" data-tex="\(\|u_V\|_2=1\)">\(\|u_V\|_2=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;\epsilon&lt;1/2\)">\(0&lt;\epsilon&lt;1/2\)</span>, <span class="math" data-tex="\(C_c(\Gamma)\)">\(C_c(\Gamma)\)</span> is <span class="math" data-tex="\(L^2(\Gamma)\)">\(L^2(\Gamma)\)</span>-dense by HR-03 and L24's finite-exponent convention. Plancherel surjectivity therefore supplies <span class="math" data-tex="\(w=\mathcal F^{-1}\phi\)">\(w=\mathcal F^{-1}\phi\)</span>, <span class="math" data-tex="\(\phi\in C_c(\Gamma)\)">\(\phi\in C_c(\Gamma)\)</span>, with <span class="math" data-tex="\(\|w-u_V\|_2&lt;\epsilon/2\)">\(\|w-u_V\|_2&lt;\epsilon/2\)</span>. Its norm <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is positive and <span class="math" data-tex="\(|\rho-1|&lt;\epsilon/2\)">\(|\rho-1|&lt;\epsilon/2\)</span>. Set <span class="math" data-tex="\(v=w/\rho\)">\(v=w/\rho\)</span> and <span class="math" data-tex="\(k_{V,\epsilon}=|v|^2\)">\(k_{V,\epsilon}=|v|^2\)</span>. Then</p>
+<p><a id="equation-lf22"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|v-u_V\|_2&lt;\epsilon,\qquad
+ \|k_{V,\epsilon}-a_V\|_1
+ \leq(\|v\|_2+\|u_V\|_2)\|v-u_V\|_2&lt;2\epsilon.
+ \tag{LF22}
+\]">\[
+ \|v-u_V\|_2&lt;\epsilon,\qquad
+ \|k_{V,\epsilon}-a_V\|_1
+ \leq(\|v\|_2+\|u_V\|_2)\|v-u_V\|_2&lt;2\epsilon.
+ \tag{LF22}
+\]</span>
+The inequality follows pointwise from
+<span class="math" data-tex="\(\big||v|^2-|u_V|^2\big|\leq|v-u_V|(|v|+|u_V|)\)">\(\big||v|^2-|u_V|^2\big|\leq|v-u_V|(|v|+|u_V|)\)</span>
+and Cauchy–Schwarz. Also <span class="math" data-tex="\(k_{V,\epsilon}\geq0\)">\(k_{V,\epsilon}\geq0\)</span> and its integral is one. With <span class="math" data-tex="\(\widetilde\phi(\gamma)=\overline{\phi(-\gamma)}\)">\(\widetilde\phi(\gamma)=\overline{\phi(-\gamma)}\)</span>, (LF5) gives</p>
+<p><a id="equation-lf23"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \widehat k_{V,\epsilon}
+ =\rho^{-2}\phi *_\Gamma\widetilde\phi,\qquad
+ \operatorname{supp}\widehat k_{V,\epsilon}
+ \subset\operatorname{supp}\phi-\operatorname{supp}\phi.
+ \tag{LF23}
+\]">\[
+ \widehat k_{V,\epsilon}
+ =\rho^{-2}\phi *_\Gamma\widetilde\phi,\qquad
+ \operatorname{supp}\widehat k_{V,\epsilon}
+ \subset\operatorname{supp}\phi-\operatorname{supp}\phi.
+ \tag{LF23}
+\]</span>
+The latter set is compact, and the transform is continuous, as already proved in LF0.</p>
+<p>Order pairs <span class="math" data-tex="\((V,\epsilon)\)">\((V,\epsilon)\)</span> by shrinking both entries: a later neighbourhood is contained in the earlier one and its positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is no larger. This set is directed, using intersections and the smaller of two positive numbers. Choose one of the preceding approximants for each pair. The convolution estimate gives</p>
+<p><a id="equation-lf24"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|k_{V,\epsilon}*a-a\|_1
+ \leq2\epsilon\|a\|_1+\|a_V*a-a\|_1\longrightarrow0.
+ \tag{LF24}
+\]">\[
+ \|k_{V,\epsilon}*a-a\|_1
+ \leq2\epsilon\|a\|_1+\|a_V*a-a\|_1\longrightarrow0.
+ \tag{LF24}
+\]</span>
+This proves (LF20) for a net on the original group. It makes no countable reduction of that group. Transporting (LF24) through the isometry (LF2) gives (LF21). The support of a product of continuous functions is contained in the intersection of their closed supports; this proves its support assertions and the stated density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="lf-6"></a></p>
+<h2 id="OA-FLOW.LF.6">LF6. Closed ideals, empty hulls and neighbourhood vanishing</h2>
+<p>For a closed ideal <span class="math" data-tex="\(I\subset A(\Gamma)\)">\(I\subset A(\Gamma)\)</span> and a closed subset <span class="math" data-tex="\(E\subset\Gamma\)">\(E\subset\Gamma\)</span>, write</p>
+<p><a id="equation-lf25"></a></p>
+<p><span class="math math-display" data-tex="\[
+ h(I)=\{\gamma:u(\gamma)=0\text{ for all }u\in I\},\qquad
+ I(E)=\{u\in A(\Gamma):u|_E=0\},
+ \quad
+ j(E)=\overline{\{u\in A(\Gamma):\operatorname{supp}u
+                 \text{ compact and disjoint from }E\}}^{\,\|\cdot\|_A}.
+ \tag{LF25}
+\]">\[
+ h(I)=\{\gamma:u(\gamma)=0\text{ for all }u\in I\},\qquad
+ I(E)=\{u\in A(\Gamma):u|_E=0\},
+ \quad
+ j(E)=\overline{\{u\in A(\Gamma):\operatorname{supp}u
+                 \text{ compact and disjoint from }E\}}^{\,\|\cdot\|_A}.
+ \tag{LF25}
+\]</span>
+The set inside the last closure is a linear ideal: sums have support inside the union of the two compact supports, and multiplication by an arbitrary element decreases support. Thus <span class="math" data-tex="\(j(E)\)">\(j(E)\)</span> is a closed ideal. <span class="math" data-tex="\(I(E)\)">\(I(E)\)</span> is closed by the evaluation bound (LF3).</p>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(E=h(I)\)">\(E=h(I)\)</span>, then</p>
+<p><a id="equation-lf26"></a></p>
+<p><span class="math math-display" data-tex="\[
+ j(E)\subset I\subset I(E).
+ \tag{LF26}
+\]">\[
+ j(E)\subset I\subset I(E).
+ \tag{LF26}
+\]</span>
+In particular:</p>
+<ol>
+<li>if <span class="math" data-tex="\(h(I)=\varnothing\)">\(h(I)=\varnothing\)</span>, then <span class="math" data-tex="\(I=A(\Gamma)\)">\(I=A(\Gamma)\)</span>;</li>
+<li>if <span class="math" data-tex="\(u\in A(\Gamma)\)">\(u\in A(\Gamma)\)</span> vanishes on some open neighbourhood of <span class="math" data-tex="\(h(I)\)">\(h(I)\)</span>, then <span class="math" data-tex="\(u\in I\)">\(u\in I\)</span>;</li>
+<li>for every closed <span class="math" data-tex="\(E\)">\(E\)</span>, the ideal <span class="math" data-tex="\(I_0(E)\)">\(I_0(E)\)</span> of functions vanishing on some open neighbourhood of <span class="math" data-tex="\(E\)">\(E\)</span> has hull exactly <span class="math" data-tex="\(E\)">\(E\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\gamma\notin h(I)\)">\(\gamma\notin h(I)\)</span>, choose <span class="math" data-tex="\(\widehat a\in I\)">\(\widehat a\in I\)</span> nonzero there. LF3 gives an open <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span> such that every <span class="math" data-tex="\(A\)">\(A\)</span>-function supported in <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span> equals <span class="math" data-tex="\(\widehat a\,\widehat h\)">\(\widehat a\,\widehat h\)</span>, hence belongs to <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Now suppose <span class="math" data-tex="\(u\in A(\Gamma)\)">\(u\in A(\Gamma)\)</span> has compact support <span class="math" data-tex="\(K\)">\(K\)</span> disjoint from <span class="math" data-tex="\(E\)">\(E\)</span>. Cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many such <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span>, and choose the subordinate <span class="math" data-tex="\(p_i\)">\(p_i\)</span> of LF4. Because their sum equals one on <span class="math" data-tex="\(K\)">\(K\)</span>,</p>
+<p><a id="equation-lf27"></a></p>
+<p><span class="math math-display" data-tex="\[
+ u=\sum_i up_i.
+ \tag{LF27}
+\]">\[
+ u=\sum_i up_i.
+ \tag{LF27}
+\]</span>
+Each summand is supported in its <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span> and therefore belongs to <span class="math" data-tex="\(I\)">\(I\)</span>. Closedness gives <span class="math" data-tex="\(j(E)\subset I\)">\(j(E)\subset I\)</span>; the other inclusion is the definition of <span class="math" data-tex="\(h(I)\)">\(h(I)\)</span>.</p>
+<p>Empty hull now gives every compactly supported <span class="math" data-tex="\(A\)">\(A\)</span>-function in <span class="math" data-tex="\(I\)">\(I\)</span>; LF5 gives all of <span class="math" data-tex="\(A(\Gamma)\)">\(A(\Gamma)\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> vanishes on an open set containing <span class="math" data-tex="\(E\)">\(E\)</span>, its closed support is disjoint from <span class="math" data-tex="\(E\)">\(E\)</span>. The support-preserving compact approximants in LF5 belong to <span class="math" data-tex="\(j(E)\)">\(j(E)\)</span>, so <span class="math" data-tex="\(u\in j(E)\subset I\)">\(u\in j(E)\subset I\)</span>.</p>
+<p>Finally every element of <span class="math" data-tex="\(I_0(E)\)">\(I_0(E)\)</span> vanishes on <span class="math" data-tex="\(E\)">\(E\)</span>, giving <span class="math" data-tex="\(E\subset h(I_0(E))\)">\(E\subset h(I_0(E))\)</span>. If <span class="math" data-tex="\(\gamma\notin E\)">\(\gamma\notin E\)</span>, LF1 gives a translated compact plateau <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(q(\gamma)=1\)">\(q(\gamma)=1\)</span> and compact support <span class="math" data-tex="\(K\subset\Gamma\setminus E\)">\(K\subset\Gamma\setminus E\)</span>. It vanishes on the open neighbourhood <span class="math" data-tex="\(\Gamma\setminus K\)">\(\Gamma\setminus K\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>, so belongs to <span class="math" data-tex="\(I_0(E)\)">\(I_0(E)\)</span>, and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is not in that hull. This proves assertion 3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every assertion transports isometrically to closed convolution ideals in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. Thus a closed convolution ideal with empty character hull is all of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, and an integrable function whose transform vanishes near that hull belongs to the ideal. The argument proves no equality <span class="math" data-tex="\(j(E)=I(E)\)">\(j(E)=I(E)\)</span> for an arbitrary closed <span class="math" data-tex="\(E\)">\(E\)</span>: vanishing at the points of <span class="math" data-tex="\(E\)">\(E\)</span> alone is a different hypothesis.</p>
+<p><a id="lf-7"></a></p>
+<h2 id="OA-FLOW.LF.7">LF7. The exact annihilation consequence</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a Banach space and let <span class="math" data-tex="\(\pi:L^1(G)\to\mathcal B(X)\)">\(\pi:L^1(G)\to\mathcal B(X)\)</span> be a bounded algebra homomorphism. No nondegeneracy is assumed. For <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, define</p>
+<p><a id="equation-lf28"></a></p>
+<p><span class="math math-display" data-tex="\[
+ I_x=\{a:\pi(a)x=0\},\qquad
+ \operatorname{sp}_\pi(x)=\{\gamma:\widehat a(\gamma)=0
+                                      \text{ for every }a\in I_x\}.
+ \tag{LF28}
+\]">\[
+ I_x=\{a:\pi(a)x=0\},\qquad
+ \operatorname{sp}_\pi(x)=\{\gamma:\widehat a(\gamma)=0
+                                      \text{ for every }a\in I_x\}.
+ \tag{LF28}
+\]</span>
+The map <span class="math" data-tex="\(a\mapsto\pi(a)x\)">\(a\mapsto\pi(a)x\)</span> is bounded, so <span class="math" data-tex="\(I_x\)">\(I_x\)</span> is closed. Commutativity and the homomorphism identity make it an ideal. LF6 therefore proves</p>
+<p><a id="equation-lf29"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \widehat a=0\text{ near }\operatorname{sp}_\pi(x)
+ \ \Longrightarrow\ \pi(a)x=0.
+ \tag{LF29}
+\]">\[
+ \widehat a=0\text{ near }\operatorname{sp}_\pi(x)
+ \ \Longrightarrow\ \pi(a)x=0.
+ \tag{LF29}
+\]</span>
+For any closed <span class="math" data-tex="\(E\subset\Gamma\)">\(E\subset\Gamma\)</span>, it also gives the exact equivalence</p>
+<p><a id="equation-lf30"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{sp}_\pi(x)\subset E
+ \ \Longleftrightarrow\
+ \pi(a)x=0\text{ whenever }\widehat a=0\text{ on a neighbourhood of }E.
+ \tag{LF30}
+\]">\[
+ \operatorname{sp}_\pi(x)\subset E
+ \ \Longleftrightarrow\
+ \pi(a)x=0\text{ whenever }\widehat a=0\text{ on a neighbourhood of }E.
+ \tag{LF30}
+\]</span>
+The forward implication uses (LF29). Conversely the hypothesis says that <span class="math" data-tex="\(I_x\)">\(I_x\)</span> contains the inverse Fourier image of <span class="math" data-tex="\(I_0(E)\)">\(I_0(E)\)</span>; taking hulls reverses inclusion, and LF6.3 gives the hull <span class="math" data-tex="\(E\)">\(E\)</span>. Consequently the set of these <span class="math" data-tex="\(x\)">\(x\)</span> is an intersection of closed kernels. If a topology on <span class="math" data-tex="\(X\)">\(X\)</span> is given for which all <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> are continuous and <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> is closed, that same intersection is closed for that topology.</p>
+<p>If <span class="math" data-tex="\(\operatorname{sp}_\pi(x)=\varnothing\)">\(\operatorname{sp}_\pi(x)=\varnothing\)</span>, LF6 says <span class="math" data-tex="\(\pi(a)x=0\)">\(\pi(a)x=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. An inference <span class="math" data-tex="\(x=0\)">\(x=0\)</span> needs an additional essential-space hypothesis such as <span class="math" data-tex="\(\pi(a_V)x\to x\)">\(\pi(a_V)x\to x\)</span>; it follows immediately when that hypothesis is supplied. This paragraph introduces no integration or weak compactness theorem for an arbitrary Banach-space action.</p>
+<p><a id="lf-8"></a></p>
+<h2 id="OA-FLOW.LF.8">LF8. An exact finite example</h2>
+<p>For <span class="math" data-tex="\(G=\mathbb Z/12\mathbb Z\)">\(G=\mathbb Z/12\mathbb Z\)</span>, use counting Haar on <span class="math" data-tex="\(G\)">\(G\)</span> and mass <span class="math" data-tex="\(1/12\)">\(1/12\)</span> on each dual character <span class="math" data-tex="\(\gamma_n(s)=e^{2\pi ins/12}\)">\(\gamma_n(s)=e^{2\pi ins/12}\)</span>. In the dual take <span class="math" data-tex="\(V=\{0,1,2\}\)">\(V=\{0,1,2\}\)</span>, <span class="math" data-tex="\(O=\{-1,0,1,2,3\}\)">\(O=\{-1,0,1,2,3\}\)</span>. Formula (LF8) becomes</p>
+<p><a id="equation-lf31"></a></p>
+<p><span class="math math-display" data-tex="\[
+ q(n)=\frac{\#\{v\in V:n+v\in O\}}3,\qquad
+ q(0)=q(\pm1)=1,\quad q(\pm2)=\tfrac23,\quad
+ q(\pm3)=\tfrac13,\quad q(n)=0\ (n=4,5,6,7,8).
+ \tag{LF31}
+\]">\[
+ q(n)=\frac{\#\{v\in V:n+v\in O\}}3,\qquad
+ q(0)=q(\pm1)=1,\quad q(\pm2)=\tfrac23,\quad
+ q(\pm3)=\tfrac13,\quad q(n)=0\ (n=4,5,6,7,8).
+ \tag{LF31}
+\]</span>
+All set arithmetic is modulo twelve. Its physical kernel is</p>
+<p><a id="equation-lf32"></a></p>
+<p><span class="math math-display" data-tex="\[
+ k(s)=\frac1{12}\sum_{n=0}^{11}q(n)e^{2\pi ins/12}
+ =\frac1{36}\left(\sum_{n\in O}e^{2\pi ins/12}\right)
+              \left(\sum_{n\in -V}e^{2\pi ins/12}\right),
+ \qquad \|k\|_1\leq\sqrt{5/3}.
+ \tag{LF32}
+\]">\[
+ k(s)=\frac1{12}\sum_{n=0}^{11}q(n)e^{2\pi ins/12}
+ =\frac1{36}\left(\sum_{n\in O}e^{2\pi ins/12}\right)
+              \left(\sum_{n\in -V}e^{2\pi ins/12}\right),
+ \qquad \|k\|_1\leq\sqrt{5/3}.
+ \tag{LF32}
+\]</span>
+The product equality follows by grouping terms with the same sum <span class="math" data-tex="\(n\)">\(n\)</span>; their multiplicity is exactly the numerator of (LF31). The negative-forward geometric-sum identity of P4 verifies <span class="math" data-tex="\(\widehat k=q\)">\(\widehat k=q\)</span>.</p>
+<p>For <span class="math" data-tex="\(a=\delta_0+\frac14\delta_1\)">\(a=\delta_0+\frac14\delta_1\)</span>, with the physical point masses in the counting-measure <span class="math" data-tex="\(L^1\)">\(L^1\)</span> algebra, <span class="math" data-tex="\(c=\widehat a(0)=5/4\)">\(c=\widehat a(0)=5/4\)</span> and</p>
+<p><a id="equation-lf33"></a></p>
+<p><span class="math math-display" data-tex="\[
+ b=a*k-ck=\tfrac14(L_1k-k),\qquad
+ \|b/c\|_1\leq\tfrac25\sqrt{5/3}&lt;1,\qquad
+ \widehat D(n)=\tfrac54+
+       \left(1+\tfrac14e^{-2\pi in/12}-\tfrac54\right)q(n).
+ \tag{LF33}
+\]">\[
+ b=a*k-ck=\tfrac14(L_1k-k),\qquad
+ \|b/c\|_1\leq\tfrac25\sqrt{5/3}&lt;1,\qquad
+ \widehat D(n)=\tfrac54+
+       \left(1+\tfrac14e^{-2\pi in/12}-\tfrac54\right)q(n).
+ \tag{LF33}
+\]</span>
+The strict inequality follows on squaring: <span class="math" data-tex="\((2/5)^2(5/3)=4/15&lt;1\)">\((2/5)^2(5/3)=4/15&lt;1\)</span>. On <span class="math" data-tex="\(n=-1,0,1\)">\(n=-1,0,1\)</span>, <span class="math" data-tex="\(\widehat D(n)=\widehat a(n)\)">\(\widehat D(n)=\widehat a(n)\)</span>; elsewhere (LF33) describes the denominator actually used. Thus the same local division and geometric-series mechanism is visible with exact rational plateau values and the specified signs.</p>
+<p><a href="OA-FLOW-LF.html#oa-flow.lf.figure">The complete figure caption</a> records the exact finite example and the general proof mechanism.</p>
+<p>Compare Pierre Eymard, <a href="https://www.numdam.org/article/BSMF_1964__92__181_0.pdf"><em>L'algèbre de Fourier d'un groupe localement compact</em></a>, Bull. Soc. Math. France 92 (1964), Lemma 3.2 and Proposition 3.4/Example 3.6(2) and the Tauberian statement 3.38; and William Arveson, <a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf"><em>On groups of automorphisms of operator algebras</em></a>, J. Funct. Anal. 15 (1974), Definition 2.1 and its remarks. LF0–LF7 give the local proofs needed here, using the earlier programme results stated at the beginning. Singleton synthesis, the full general-action spectral calculus and general Connes-spectrum/cohomology constructions remain separate.</p>
+<p>The original text, figure and reproduction code in this chapter are released under CC0.</p>
+<p><a id="oa-flow.lf.figure"></a></p>
+<h2 id="OA-FLOW.LF.FIGURE">Compact dual plateaus and local division</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact finite Fourier example and general proof mechanism" src="assets/general-lca-local-fourier/figures/local-fourier.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The top two panels are exact objects for <span class="math" data-tex="\(G=\mathbb Z/12\mathbb Z\)">\(G=\mathbb Z/12\mathbb Z\)</span>. Physical Haar measure is counting measure. The character <span class="math" data-tex="\(\gamma_n(s)=e^{2\pi ins/12}\)">\(\gamma_n(s)=e^{2\pi ins/12}\)</span> has dual Haar mass <span class="math" data-tex="\(1/12\)">\(1/12\)</span>. The forward transform has the negative sign and the inverse has the positive sign, as in LF0 and the earlier P4 finite normalization proof. Frequencies displayed from <span class="math" data-tex="\(-5\)">\(-5\)</span> through <span class="math" data-tex="\(6\)">\(6\)</span> represent all twelve dual elements.</p>
+<p><strong>A: the dual plateau.</strong> The sets are <span class="math" data-tex="\(V=\{0,1,2\}\)">\(V=\{0,1,2\}\)</span> and <span class="math" data-tex="\(O=\{-1,0,1,2,3\}\)">\(O=\{-1,0,1,2,3\}\)</span>, with arithmetic modulo twelve. The plotted function is
+<span class="math math-display" data-tex="\[
+ q(n)=\frac{\#\{v\in V:n+v\in O\}}3.
+\]">\[
+ q(n)=\frac{\#\{v\in V:n+v\in O\}}3.
+\]</span>
+The overlap count is three at <span class="math" data-tex="\(n=-1,0,1\)">\(n=-1,0,1\)</span>, two at <span class="math" data-tex="\(n=\pm2\)">\(n=\pm2\)</span>, one at <span class="math" data-tex="\(n=\pm3\)">\(n=\pm3\)</span>, and zero at the other five frequencies. Thus the bars are the exact rational values <span class="math" data-tex="\(1,2/3,1/3,0\)">\(1,2/3,1/3,0\)</span>. The upper dots identify the two sets; they are not additional values of <span class="math" data-tex="\(q\)">\(q\)</span>. This is the finite version of the Haar overlap construction LF1, (LF8).</p>
+<p><strong>B: the physical kernel.</strong> The inverse transform is
+<span class="math math-display" data-tex="\[
+ k(s)=\frac1{12}\sum_nq(n)e^{2\pi ins/12}
+ =\frac1{36}\left(\sum_{n\in O}e^{2\pi ins/12}\right)
+              \left(\sum_{n\in -V}e^{2\pi ins/12}\right).
+\]">\[
+ k(s)=\frac1{12}\sum_nq(n)e^{2\pi ins/12}
+ =\frac1{36}\left(\sum_{n\in O}e^{2\pi ins/12}\right)
+              \left(\sum_{n\in -V}e^{2\pi ins/12}\right).
+\]</span>
+Grouping the two finite sums by their sum frequency proves the equality. The geometric-sum identity gives <span class="math" data-tex="\(\widehat k=q\)">\(\widehat k=q\)</span>, including the signs and the factor <span class="math" data-tex="\(1/12\)">\(1/12\)</span>. In order <span class="math" data-tex="\(s=0,\ldots,11\)">\(s=0,\ldots,11\)</span>, the exact values are
+<span class="math math-display" data-tex="\[
+ \left(\frac5{12},\frac{5+3\sqrt3}{36},\frac1{18},-\frac1{36},0,
+ \frac{5-3\sqrt3}{36},-\frac1{36},\frac{5-3\sqrt3}{36},0,-\frac1{36},
+ \frac1{18},\frac{5+3\sqrt3}{36}\right).
+\]">\[
+ \left(\frac5{12},\frac{5+3\sqrt3}{36},\frac1{18},-\frac1{36},0,
+ \frac{5-3\sqrt3}{36},-\frac1{36},\frac{5-3\sqrt3}{36},0,-\frac1{36},
+ \frac1{18},\frac{5+3\sqrt3}{36}\right).
+\]</span>
+These follow by pairing the frequencies <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(-n\)">\(-n\)</span> in the inverse sum, using the elementary cosine values at multiples of <span class="math" data-tex="\(\pi/6\)">\(\pi/6\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ \sum_s k(s)=1,\qquad
+ \|k\|_1=\frac{11+6\sqrt3}{18}\leq\sqrt{5/3}.
+\]">\[
+ \sum_s k(s)=1,\qquad
+ \|k\|_1=\frac{11+6\sqrt3}{18}\leq\sqrt{5/3}.
+\]</span>
+The norm bound is the Plancherel/Cauchy–Schwarz bound (LF10), since <span class="math" data-tex="\(\widehat m(O)/\widehat m(V)=5/3\)">\(\widehat m(O)/\widehat m(V)=5/3\)</span>. The orange bars show genuinely negative values: this LF1 plateau kernel is signed. LF5 constructs a separate positive mass-one compact-frequency approximate identity; positivity of this particular <span class="math" data-tex="\(k\)">\(k\)</span> is not asserted. Bar heights are numerical renderings of the listed exact values.</p>
+<p><strong>C: the local denominator.</strong> Here <span class="math" data-tex="\(a=\delta_0+\frac14\delta_1\)">\(a=\delta_0+\frac14\delta_1\)</span>, <span class="math" data-tex="\(c=5/4\)">\(c=5/4\)</span>, and <span class="math" data-tex="\(\widehat a(n)=1+\frac14e^{-2\pi in/12}\)">\(\widehat a(n)=1+\frac14e^{-2\pi in/12}\)</span>. Purple points lie on the circle of radius <span class="math" data-tex="\(1/4\)">\(1/4\)</span> centered at the real number one. The blue points are
+<span class="math math-display" data-tex="\[
+ \widehat D(n)=c+(\widehat a(n)-c)q(n).
+\]">\[
+ \widehat D(n)=c+(\widehat a(n)-c)q(n).
+\]</span>
+They are convex interpolations between <span class="math" data-tex="\(c\)">\(c\)</span> and the corresponding purple points, with the exact coefficient <span class="math" data-tex="\(q(n)\)">\(q(n)\)</span>; dotted segments only connect the samples in frequency order. Green rings mark the plateau frequencies <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>, where the two points coincide. Other frequencies need not give equality. Their common physical convolution error satisfies
+<span class="math math-display" data-tex="\[
+ b=a*k-ck=\tfrac14(L_1k-k),\qquad
+ \|b/c\|_1\leq\tfrac25\sqrt{5/3}&lt;1.
+\]">\[
+ b=a*k-ck=\tfrac14(L_1k-k),\qquad
+ \|b/c\|_1\leq\tfrac25\sqrt{5/3}&lt;1.
+\]</span>
+The squared upper bound is <span class="math" data-tex="\(4/15&lt;1\)">\(4/15&lt;1\)</span>. Thus the series in (LF15) converges in the formal convolution unitization and really gives <span class="math" data-tex="\(D^{-1}\)">\(D^{-1}\)</span>. The complex-plane picture does not replace that Banach-algebra norm argument. The displayed denominator and its exact plateau are the LF3/LF8 construction.</p>
+<p><strong>D: the general mechanism.</strong> The boxes are a schematic of the proved arbitrary-LCH-abelian argument, not a reduction of that argument to the finite group. LF1 gives compact dual plateaus with uniformly bounded <span class="math" data-tex="\(A\)">\(A\)</span>-norm. LF2 uses the compact-open character topology and one finite Radon tail to make the convolution error small, without dominated convergence for arbitrary nets. LF3 then uses the explicit Neumann inverse on the plateau. LF4 supplies finite subordinate partitions in the Fourier algebra. LF5 supplies <span class="math" data-tex="\(A\)">\(A\)</span>-norm approximation by functions of compact frequency support while preserving the original support. These two ingredients give LF6: an <span class="math" data-tex="\(A\)">\(A\)</span>-function vanishing on an open neighbourhood of a closed ideal's hull belongs to that ideal, and empty hull forces the entire algebra. No synthesis theorem for arbitrary closed sets follows merely from pointwise vanishing.</p>
+<p>The complete argument is <a href="OA-FLOW-LF.html">LF0–LF8</a>. Compare Eymard, <a href="https://www.numdam.org/article/BSMF_1964__92__181_0.pdf"><em>L'algèbre de Fourier d'un groupe localement compact</em>, Lemma 3.2 and Proposition 3.4/Example 3.6(2)</a>, and Arveson, <a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf"><em>On groups of automorphisms of operator algebras</em>, Definition 2.1 and remarks</a>. Earlier programme proof links are stated in LF0 and in each place they are used.</p>
+<p>The <a href="assets/general-lca-local-fourier/render_local_fourier.py">reproduction source</a> writes the PNG, SVG and exact-value data. The original figure, caption and reproduction code are CC0.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-AC.html">Previous lesson</a><a href="OA-FLOW-AT.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-LF.md">Lesson source</a></nav></main></body></html>

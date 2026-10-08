@@ -10,11 +10,15 @@ Read [Escaping Lagrangians on regular energy surfaces](escaping-lagrangians-on-r
 
 Basic freely accessible references are Oh [O] and Teschl [T]. The projection inverse below is constructed by contraction, difference quotients and monotonicity; its full weighted derivative estimates follow from the preceding Hamilton-trajectory lesson.
 
+<a id="generator-setup"></a>
+
 ## 1. How an action shifts the normal rays
 
-Use the hypotheses and notation of *Escaping Lagrangians on regular energy surfaces*. Thus \(P_0\) is proper in absolute value, \(\lambda\) is regular, \(M_\lambda\) is compact, \(V_L\) obeys the full position class for an integer \(\kappa\ge2\), and \(M_T\) is its perturbed sheet in a fixed regular collar. The escaping Lagrangian \(\Lambda_T^+\) has a globally normalized action \(d\psi=\sum x_jd\xi_j\).
+Use the hypotheses and notation of [Escaping Lagrangians on regular energy surfaces, Theorem 1.1](escaping-lagrangians-on-regular-energy-surfaces.md#escaping-theorem). Thus \(P_0\) is proper in absolute value, \(\lambda\) is regular, \(M_\lambda\) is compact, \(V_L\) obeys the full position class for an integer \(\kappa\ge2\), and \(M_T\) is its perturbed sheet in a fixed regular collar. Here \(0<\delta<1/(\kappa+1)\), with \(m(j)=j+\delta\) for \(0\le j\le\kappa\) and \(m(j)=1+(\kappa-1+\delta)j/\kappa\) for \(j\ge\kappa\). The escaping Lagrangian \(\Lambda_T^+\) has the [globally normalized action](escaping-lagrangians-on-regular-energy-surfaces.md#escaping-global-action) \(d\psi=\sum x_jd\xi_j\).
 
 First suppose \(V_L(x,\xi)=0\) for \(|x|\ge R_0\), at every frequency. Once a ray leaves this region forever, its frequency and action stop changing. The resulting function on the free shell determines the entire shift.
+
+The compact-force description is Hörmander [H4, Theorem 30.3.7], applied here to the regular-collar family.
 
 **Theorem 1.1 (the end of a localized force).** There is a real smooth \(\psi_\infty\) on \(M_\lambda\) such that \(\psi(x,\xi)=\psi_\infty(\xi)\) on the sufficiently distant part of \(\Lambda_T^+\). Let
 
@@ -36,15 +40,17 @@ For example, on the unit sphere with \(P_0=|\xi|^2\), the shell function
 \(x=a+s\xi\). Its tangential differential shifts each ray by the tangential part of \(a\). This is a geometric example of the formula; it does not assert that every chosen shell function comes from a prescribed potential.
 
 **Proof.** If the shell is empty all assertions are vacuous. Assume it is nonempty. Assume \(V_L(x,\xi)=0\) for \(|x|\ge R_0\), at every frequency.
-The uniform escaping bound \(|x(t)|\ge c_0t\) shows that after one fixed time
+The [uniform escaping bound](escaping-lagrangians-on-regular-energy-surfaces.md#escaping-future-flow) \(|x(t)|\ge c_0t\) shows that after one fixed time
 \(t_*\ge\max(T,R_0/c_0)\), every orbit is outside that support forever.
 Thus \(\xi\) is constant for \(t\ge t_*\), and \(\psi\) is constant along those late orbit segments.
 Write \(\xi_\infty(\eta)=\xi(t_*,\eta)\).
 Conservation of energy gives \(P_0(\xi_\infty)=\lambda\).
 
+<a id="generator-final-frequency"></a>
+
 Identify the initial sheet with \(M_\lambda\) through the smooth small normal graph \(u\mapsto N(u,s_T(u))\).
-Its first derivatives differ from the identity embedding by \(O(T^{-\delta})\), from the full local sheet bounds.
-The low data estimates in *Hamilton trajectories under a long-range force*, composed with that graph, imply that the final map
+Its first derivatives differ from the identity embedding by \(O(T^{-\delta})\), from the [full local sheet bounds](escaping-lagrangians-on-regular-energy-surfaces.md#escaping-sheet-jets).
+The [low data estimates in Hamilton trajectories under a long-range force](hamilton-trajectories-under-a-long-range-force.md#hamilton-uniform-future-flow), composed with that graph, imply that the final map
 \[
 \begin{gathered}
 F:M_\lambda\longrightarrow M_\lambda,\\
@@ -68,6 +74,8 @@ The compact shell has finitely many connected components, because a finite cover
 Small displacement keeps points in the same component; the distinct compact components have positive separation.
 The image meets each component and is both open and closed within it, so it is all of \(M_\lambda\).
 The local smooth inverses therefore form one global smooth inverse.
+
+<a id="generator-free-end"></a>
 
 There is consequently a real smooth function
 \[
@@ -107,13 +115,15 @@ For each fixed \(\xi\), the full inverse image is an affine line parallel to
 \(\nabla P_0(\xi)\), since that is the one-dimensional annihilator of
 \(T_\xi M_\lambda\).
 The orbit with that final frequency fills its positive-normal half-line at infinity.
-The bounded smooth offsets and compact shell give one common large position threshold.
+The bounded smooth offsets and compact shell give one common large position threshold. To exclude the early orbit segments, also take this threshold above the maximum of \(|x(t,\eta)|\) on the compact set \([T,t_*]\times M_T\). On each affine line, positivity of \(x\cdot v/|v|^2=t+a\cdot v/|v|^2\) bounds \(t\) below uniformly; the subset with \(t\le t_*\) is therefore bounded uniformly as well. Increase the threshold above that bound. Every remaining positive-normal point then has \(t>t_*\), so it belongs to the actual late orbit, and every sufficiently distant point of the flowout is late.
 Thus, outside that threshold and in the positive-normal direction, the flowout is exactly the corresponding part of
 \[
 r^{-1}(\operatorname{graph}(d\psi_\infty)).
 \tag{7}
 \]
 This proves equality of sets at infinity, rather than only containment or a formal shift of a normal bundle.
+
+<a id="generator-mixed-coordinates"></a>
 
 ## 2. Mixed coordinates and the generator we seek
 
@@ -123,6 +133,8 @@ Fix \(\xi^0\in M_\lambda\) with \(\partial_1P_0(\xi^0)>0\), and choose compact i
 G=x_1\xi_1-\psi,\qquad G_0(x_1,\xi')=x_1E(\xi').
 \tag{8}
 \]
+
+The normalization in (8) is Hörmander [H4, Theorem 30.3.6, (30.3.29)].
 
 The exact action identity gives
 
@@ -154,6 +166,8 @@ The tangential shift has a plus sign in the position equation. If another coordi
 
 The next result also allows a general long-range force.
 
+The full derivative estimate below is Hörmander [H4, Theorem 30.3.5, (30.3.24)].
+
 **Theorem 2.1 (all derivatives of the generator).** For all sufficiently large \(T\), and for \(x_1\) sufficiently large, the projection \((x,\xi)\mapsto(x_1,\xi')\) gives actual smooth coordinates on the entire part of \(\Lambda_T^+\) in a fixed smaller frequency chart. The normalized generator above satisfies, for every \(\alpha=(\alpha_1,\alpha')\),
 
 \[
@@ -164,6 +178,8 @@ The next result also allows a general long-range force.
 \]
 
 Here \(|\alpha|=\alpha_1+|\alpha'|\), and \(m\) is the full decay sequence from the preceding lesson. The constants are uniform on the compact inner frequency chart for the fixed construction. The same geometric conclusions apply to the negative-normal end by reversing the Hamiltonian and the energy.
+
+<a id="generator-exponent-partitions"></a>
 
 ## 3. Weighted jets before changing coordinates
 
@@ -179,7 +195,7 @@ Write
 \end{gathered}
 \tag{12}
 \]
-The last strict inequality uses \(\delta<1/(\kappa+1)\). The derivative-product calculation in *Hamilton trajectories under a long-range force* proves
+The last strict inequality uses \(\delta<1/(\kappa+1)\). The [derivative-product calculation in Hamilton trajectories under a long-range force](hamilton-trajectories-under-a-long-range-force.md#hamilton-exponent-partitions) proves
 \(\mu(q)+\sum_i\max(\mu(k_i),0)\le\mu(\sum_i k_i)\) for all positive derivative partitions. We need its positive-part variant too.
 
 
@@ -205,9 +221,11 @@ Subtracting \(A(k)=\theta(k+1)-1\) gives at most
 This proves every case, including \(q=1\).
 It controls all finite compositions and inverse jets with the \(A\) exponents. If a bounded outer function has bounded derivatives, dropping the nonnegative \(A(q)\) gives the same composition bound.
 
+<a id="generator-forward-jets"></a>
+
 Parametrize the initial sheet by
 \(\xi_T(\eta')=(E_T(\eta'),\eta')\).
-Its order-\(j\) derivatives are bounded by \(CT^{B(j)}\).
+Its order-\(j\) derivatives are bounded by \(CT^{B(j)}\), by the [initial-sheet derivative proof](escaping-lagrangians-on-regular-energy-surfaces.md#escaping-sheet-jets).
 Use \(s=\log t\) and write the composed flow as
 \[
 \begin{gathered}
@@ -216,7 +234,7 @@ Use \(s=\log t\) and write the composed flow as
 \end{gathered}
 \tag{15}
 \]
-*Hamilton trajectories under a long-range force* gives all pure data jets of the full pair bounded by \(t^{A(j)}\), and all positive Euler-time jets of total order \(j\) bounded by
+The [uniform data estimates](hamilton-trajectories-under-a-long-range-force.md#hamilton-uniform-data-estimates) and [mixed time estimates](hamilton-trajectories-under-a-long-range-force.md#hamilton-mixed-time-estimates) give all pure data jets of the full pair bounded by \(t^{A(j)}\), and all positive Euler-time jets of total order \(j\) bounded by
 \(t^{\mu(j-1)}\le t^{A(j)}\).
 The finite chain rule, \(T^{B(j)}\le t^{A(j)}\), and the positive-part partition give every joint \((s,\eta')\) jet of
 \((\widehat z,\widehat\xi)\) the bound \(Ct^{A(j)}\).
@@ -235,6 +253,8 @@ t/x_1,\qquad x'/x_1
 \]
 also have joint order-\(j\) bounds \(Ct^{A(j)}\).
 This follows from bounded derivatives of the reciprocal and the same finite partition, not from an unproved symbolic reciprocal series.
+
+<a id="generator-projection-inverse"></a>
 
 ## 4. An actual inverse of the projection
 
@@ -274,8 +294,10 @@ The first position is comparable with \(t\) and tends to \(+\infty\).
 Its value at \(t=T\) is bounded above by \(CT\), uniformly in the inner frequency chart.
 For every \(x_1>2CT\), it has exactly one inverse \(t=t(x_1,\zeta')\).
 This proves a unique smooth inverse of the full projection
-\((t,\eta')\mapsto(x_1,\xi')\).
+\((t,\eta')\mapsto(x_1,\xi')\). For \(n=1\), the transverse space is \(\mathbb R^0\): its inverse is the unique map of that one-point space, and this same strictly increasing time coordinate supplies the full inverse.
 If a point of the full flowout has frequency in a smaller chart, its initial frequency lies in the outer chart by the uniformly small frequency change, so this parametrization describes the whole corresponding late part of the flowout.
+
+<a id="generator-inverse-jets"></a>
 
 For derivative estimates use \(X=\log x_1\).
 The projection is
@@ -316,9 +338,11 @@ Composing the normalized geometric functions with this inverse yields
 The ratio \(t/x_1\) has the same bounds.
 In particular all inverse/normalized jets of total order below \(\kappa\) are bounded, since \(A(j)=0\) at those orders.
 
+<a id="generator-frequency-limit"></a>
+
 ## 5. The cancellation at low derivative orders
 
-For every data order \(r<\kappa\), the mixed time estimate in *Hamilton trajectories under a long-range force*, composed with the initial sheet, gives
+For every data order \(r<\kappa\), the [mixed time estimate in Hamilton trajectories under a long-range force, Theorem 5.1](hamilton-trajectories-under-a-long-range-force.md#hamilton-mixed-time-estimates), composed with the initial sheet, gives
 \[
 |\partial_{\eta'}^r\partial_t\widehat\xi|
           \le Ct^{-1-\delta}.
@@ -337,6 +361,8 @@ For \(\tau=0\), use the convergent tail integral. For \(\tau>0\), the limit has 
 The same low total-order bounds hold for \(\widehat z\), from its zero-displacement data estimates and its mixed time estimates.
 Conserved actual energy and \(V_L(x(t),\xi(t))=O(t^{-\delta})\) show
 \(\xi_\infty(\eta')\in M_\lambda\).
+
+<a id="generator-shell-cancellation"></a>
 
 If a smooth \(F\) vanishes on the free shell in the current chart, write
 \[
@@ -369,7 +395,7 @@ Transport these estimates to the inverse \((X,\zeta')\) coordinates.
 Every inner inverse jet used at total order below \(\kappa\) is bounded.
 Finite composition therefore retains \(O(x_1^{-\delta})\) for all those weighted derivatives.
 Multiplication by \(t/x_1\), whose low jets are also bounded, gives the position normalization by \(x_1\).
-The exact Euler polynomial conversion finally yields
+The [exact Euler polynomial conversion](hamilton-trajectories-under-a-long-range-force.md#hamilton-mixed-time-estimates), \(x_1^\tau\partial_{x_1}^\tau=(x_1\partial_{x_1})(x_1\partial_{x_1}-1)\cdots(x_1\partial_{x_1}-\tau+1)\) for \(\tau>0\), finally yields
 \[
 \begin{gathered}
 |\partial_{\zeta'}^\gamma\partial_{x_1}^\tau
@@ -383,6 +409,8 @@ The exact Euler polynomial conversion finally yields
 \tag{29}
 \]
 This is the precise cancellation lost by bounding the two terms separately.
+
+<a id="generator-low-orders"></a>
 
 ## 6. Recovering every derivative of the generator
 
@@ -405,6 +433,8 @@ Both are exactly
 For \(\alpha=0\), integrate \(\partial_{x_1}h=O(x_1^{-\delta})\) at fixed transverse frequency, starting at one fixed large \(x_1\); the initial smooth values are bounded on the compact inner chart.
 Since \(\delta<1\), this gives \(h=O(x_1^{1-\delta})\).
 
+<a id="generator-high-orders"></a>
+
 For \(|\alpha|=k>\kappa\), use the full high-order normalized jets instead.
 If \(\alpha_1\ge1\), start from \(\partial_{x_1}G=\xi_1\).
 Convert the remaining \(\alpha_1-1\) radial derivatives from Euler powers, using monotonicity of \(A\).
@@ -424,11 +454,15 @@ Since \(m(k)<k\) for \(k>\kappa\), that is no larger than the required high-orde
 Subtracting \(G_0\) proves the target for all high orders too.
 
 
+<a id="generator-negative-end"></a>
+
 This proves Theorem 2.1. For the negative-normal end, apply the entire construction to \(-P_0,-V_L,-\lambda\). Its initial graph is \(x=-T\nabla P_0(\eta)\). The resulting future parameter is \(s\ge T\), corresponding to the original Hamilton time \(t=-s\). The cotangent form and action differential retain their signs; the initial normalized action is \(+TV_L\). If a negative normal has a negative distinguished position coordinate, reflecting that position and its paired frequency supplies a positive chart coordinate. Exercise 5 verifies these conventions.
 
 ### Use the conclusion
 
 Compare the exact compact-force end with the low-order cancellation for a general force. Verify the actual inverse before differentiating its generating function and using those jets in the commuting-coordinate construction.
+
+<a id="generator-solutions"></a>
 
 ## 7. Exercises with complete solutions
 
@@ -608,3 +642,5 @@ No arbitrary transition constant remains because the same \(\psi\) was used. Fin
 [O] Sung-Jin Oh, [*Lecture Notes for Math 222A*, free evolving lecture notes](https://math.berkeley.edu/~sjoh/pdfs/notes-math222a.pdf), University of California, Berkeley, Fall 2023, §2.4.1, pp. 23–24. The Hamilton characteristic equations (2.20) provide a comparison. The programme escaping-family lesson proves the frequency-base action used here; (8)–(10) derive its mixed-coordinate signs.
 
 
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Theorem 30.3.5, (30.3.23)–(30.3.24) and proof, pp. 304–307; Theorem 30.3.6, (30.3.29) and proof, p. 307; Theorem 30.3.7 and its preceding compact-force argument, pp. 307–308. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

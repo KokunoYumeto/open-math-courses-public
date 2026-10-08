@@ -2,11 +2,15 @@
 
 A characteristic cycle gives a global Euler number when a differential section meets the microsupport in a compact set. On a noncompact manifold, the sublevels must also control escape of the support. Ordinary cohomology uses an ordinary direct image from an open sublevel. Compactly supported cohomology follows by duality and uses the opposite differential section. A strict local minimum then reads a stalk or a costalk.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-This lesson treats index formulas for differential sections and proper-below Euler indices, the local form of the index theorem of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §4. Use Continuous sections and supported cycle intersections for the supported section class, proper trace and full section-intersection diagram; Characteristic cycles from supported microlocal identities for the actual kernel unit and evaluated trace; Proper characteristic classes and the compact index for compact finiteness and the characteristic-class integral; and Antipodal duality and half-line characteristic cycles for the normalized antipodal map and Verdier cycle duality.
+The supported section-intersection theorem compares proper trace from the actual intersection with ordinary descent from the entire conic carrier. The identity and evaluated microlocal trace, the ordinary microlocal recovery, and the closed-embedding adjunction comparison identify that descent with the base characteristic class. The compact characteristic-class index then gives the compact case.
 
-The exact written SH-02 prerequisites are Four ways to impose a boundary, Replacing a nonproper map by a bounded part and its one-parameter mechanism, including the full cutoff proof and finite-band Morse comparisons. SH-02 owns these proofs. The course's constructible duality supplies the actual stalk/costalk pairing. The minimum argument uses the isotropic discrete-critical-value theorem, relative to its recorded subanalytic foundations. Lower and transitive proof closure and independent review remain open.
+For noncompact support, the precise input is the ordinary open-cutoff map MO26+ in Replacing a nonproper map by a bounded part. Its proof of the actual four cutoff maps retains properness on each closed support sublevel. The ordinary open-boundary estimate excludes the new negative boundary covectors from the positive differential graph. The perfect internal-Hom calculation makes this ordinary cutoff a bounded constructible complex, although the open embedding need not be proper.
+
+The compact-cohomology formula uses the actual antipodal cycle comparison, together with dual section and point-measurement pairings. The local minimum argument uses the isotropic discrete-critical-value theorem and its explicit subanalytic prerequisites. It then proves stabilization through the same open-cutoff map, before passing to the stalk.
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), Theorems 4.2–4.3, printed pp. 199–200, gives the proper-below ordinary and compact index formulas. Proposition 5.1 and Lemma 5.2, pp. 200–201, calculate a generic local test and its negative-Hessian degree; Theorem 8.3, p. 205, gives the strict-minimum stalk and costalk formulas. The paper writes an explicit ambient factor in its cycle convention. Here the section-first supported cup, evaluated microlocal identity and graph-normalized conormal coefficient determine the signs. The proof below derives the noncompact formulas through an ordinary open cutoff and keeps the minimum's stalk and costalk maps distinct.
 
 ## Recovering the base class from the microlocal trace
 
@@ -53,9 +57,13 @@ Naturality of ordinary recovery in (3) takes the microlocal trace \(\mu\!hom(F,F
  \qquad\text{(4)}
 \]
 
-The middle identification is the exceptional counit for the closed embedding. Thus the first part of (4) is precisely the exceptional-to-ordinary diagonal comparison defining the base characteristic class. On the center-supported target, recovery is the inverse ordinary unit \(R\pi_*E\to\omega_X\): composition with its unit is the identity because the zero-normal Fourier projection is the identity. This fixes the actual bottom arrow.
+The middle identification is the inverse of the exceptional unit \(u_B:B\to\delta^!\delta_*B\), where \(B=\delta^{-1}A_F\); it is invertible because the closed direct image is fully faithful. To identify the resulting map, let \(\varepsilon_{A_F}:\delta_*\delta^!A_F\to A_F\) be the exceptional counit and put \(b=\delta^{-1}\varepsilon_{A_F}:\delta^!A_F\to\delta^{-1}A_F\), using the ordinary closed counit on its source. Naturality of the ordinary unit gives \(\delta_*b=\eta_\delta\varepsilon_{A_F}\). Taking the exceptional adjoint of this equality gives \(u_B b=\delta^!\eta_\delta\). Consequently the first part of (4) is exactly \(b\), the exceptional-to-ordinary comparison defining the base characteristic class. This proves equality of the specified maps.
 
-The endomorphism and diagonal objects are supported on \(D\), and the microlocal Hom is supported on \(\Lambda\). Restrict the recovery square to these closed supports and apply support adjunction. The supported identity and microlocal unit correspond because the unrestricted recovery already takes the particular identity to itself. Unique lifting from a supported source retains this square before forgetting support. In the microlocal route, the map \(k_D\to R\pi_*k_\Lambda\) is adjoint to closed-constant restriction \(\pi^{-1}k_D\to k_\Lambda\), the first arrow defining \(\beta_\pi\). In the base route, (4) on that supported identity defines \(C(F)\). These two morphisms \(k_D\to\omega_X\) agree. This proves (2) with its unit, ordinary restriction, exceptional comparison, graded evaluation and output support.
+On the center-supported target, ordinary recovery is the inverse of the bundle unit \(\omega_X\to R\pi_*E\). Indeed specialization is supported on the zero normal vector, where the Fourier projection is the identity, and the closed-embedding adjunction cancels its unit with its counit. Thus the recovered map composed with the ordinary bundle unit is the identity. The ordinary bundle-unit proof makes that unit invertible, fixing the bottom arrow as \(R\pi_*E\to\omega_X\). No compact Fourier recovery or added dimension sign is used here.
+
+Put \(H=\mu\!hom(F,F)\). It is supported on the closed \(\Lambda\), so closed ordinary adjunction identifies it with the direct image of its restriction there and factors its unit uniquely as \(k_M\to k_\Lambda\to H\). Likewise the ordinary identity factors through \(k_D\), since \(R\mathcal Hom(F,F)\) vanishes off \(D\). Ordinary image of \(H\) vanishes off \(D\) as well: over any open set disjoint from \(D\), its inverse-image open set has zero input. Recovery therefore compares these supported identities, not only their images after forgetting support.
+
+Explicitly, the microlocal route starts with \(k_D\to R\pi_*k_\Lambda\), adjoint to the closed-constant restriction \(\pi^{-1}k_D\to k_\Lambda\), then uses the factored unit, evaluated trace and inverse bundle unit. Naturality of recovery takes that composite to the factored ordinary identity followed by (4), which defines \(C(F)\). Equivalently, the trace square has sources supported on \(D\), and closed support adjunction lifts it uniquely to \(R\Gamma_D\omega_X\). Thus the two actual morphisms \(k_D\to\omega_X\) agree. This proves the first equality in (2); the section-intersection theorem supplies the second with its support enlargement \(J\subset D\).
 
 If \(D\) is compact, then \(J\subset D\) is compact and \(K=\sigma(J)\) is compact. Constructible compact finiteness makes \(R\Gamma(X;F)\) a bounded finite complex. The compact characteristic-class index and composition of the \(\pi\) and point traces yield
 
@@ -103,9 +111,9 @@ Both hypotheses are needed: the first concerns every closed support sublevel, an
  \qquad\text{(9)}
 \]
 
-At a supported point in this region, \(d\varphi_x\ne0\), since the zero covector belongs to the microsupport. Every closed compact band in \(I\) has compact inverse image on \(D\) by (7), so \(\varphi|_D:D\to I\) is proper.
+At a supported point in this region, \(d\varphi_x\ne0\), since the zero covector belongs to the microsupport. If \(Q\subset I\) is compact, choose \(b\in I\) above its maximum. Then \(D\cap\varphi^{-1}(Q)\) is a closed subset of the compact \(D\cap\{\varphi\le b\}\). Thus \(\varphi|_D:D\to I\) is proper. The proof below still uses the stronger compactness of whole closed sublevels in (7); compactness of bands alone would allow escape toward the lower endpoint.
 
-The written proper-below comparison has target \(\mathbb R\). Choose an increasing analytic diffeomorphism \(h:I\to\mathbb R\) and put \(\psi=h\varphi\). An affine map suffices for \(I=\mathbb R\), a logarithm for a half-line, and \(\log((s-\alpha)/(\beta-s))\) for \((\alpha,\beta)\). Since \(h'>0\), conicity gives
+The written proper-below comparison has target \(\mathbb R\). Choose an increasing analytic diffeomorphism \(h:I\to\mathbb R\) and put \(\psi=h\varphi\). Use \(h(s)=s\) for \(I=\mathbb R\), \(h(s)=\log(s-\alpha)\) for \((\alpha,\infty)\), \(h(s)=-\log(\beta-s)\) for \((-\infty,\beta)\), and \(h(s)=\log((s-\alpha)/(\beta-s))\) for \((\alpha,\beta)\). Each has positive derivative and ranges over all of \(\mathbb R\). Since \(h'>0\), conicity gives
 
 \[
  d\psi_x=h'(\varphi(x))d\varphi_x,\qquad
@@ -114,7 +122,7 @@ The written proper-below comparison has target \(\mathbb R\). Choose an increasi
  \qquad\text{(10)}
 \]
 
-This includes zero covectors. Its real closed sublevels on \(D\) are exactly the compact original sublevels. Apply the actual SH-02 proper-below ordinary restriction theorem with \(f:X\to\mathrm{pt}\), whose horizontal covector space is zero, and threshold \(h(a)\). It gives
+This includes zero covectors. For every real \(b\), the closed \(\psi\)-sublevel on \(D\) equals \(D\cap\{\varphi\le h^{-1}(b)\}\) and is compact. For the map \(f:X\to\mathrm{pt}\), the horizontal covector space in MO25+ is zero. Equation (9), multiplied by the positive derivative in (10), is exactly that exclusion above the threshold \(h(a)\). All hypotheses of the actual ordinary open restriction MO26+ therefore hold; its output at \(h(t)>h(a)\) is
 
 \[
  R\Gamma(X;F)\xrightarrow{\sim}R\Gamma(\Omega_t;F),\quad
@@ -135,9 +143,9 @@ The perfect internal-Hom theorem therefore proves bounded constructibility and p
  \qquad\text{(12)}
 \]
 
-The rightmost set is compact. Applying compact finiteness to \(F_t\) and then (11) proves the asserted ordinary finiteness.
+To check the first inclusion, an open neighborhood disjoint from \(\overline{D\cap\Omega_t}\) has zero restricted input on its intersection with \(\Omega_t\), so every derived ordinary-image stalk there vanishes. The second inclusion uses closedness of \(D\) and continuity of \(\varphi\). The rightmost set is compact by (7). Applying compact finiteness to the entire bounded constructible complex \(F_t\), then using (11), proves the asserted ordinary finiteness.
 
-**The positive graph avoids every new boundary covector.** On \(\Omega_t\), the canonical open restriction gives \(F_t=F\); outside the last set of (12), \(F_t\) vanishes locally. At a potential new intersection, \(x\in D\cap\{\varphi=t\}\), (9) gives \(d\varphi_x\ne0\). The local boundary is smooth, with strict-normal polar \(\mathbb R_{\leq0}d\varphi_x\). The ordinary open-boundary theorem requires avoidance of its opposite positive ray by \(\operatorname{SS}(F)_x\). Condition (9) and conicity provide exactly that requirement. Thus at this boundary
+**The positive graph avoids every new boundary covector.** On \(\Omega_t\), the canonical open restriction gives \(F_t=F\); outside the last set of (12), \(F_t\) vanishes locally. At a potential new intersection, \(x\in D\cap\{\varphi=t\}\), (9) gives \(d\varphi_x\ne0\). The local boundary is smooth, with strict-normal polar \(\mathbb R_{\leq0}d\varphi_x\). The ordinary open-boundary theorem requires that its opposite positive ray meet \(\operatorname{SS}(F)\) only at zero, on the whole local boundary under consideration. Shrink around \(x\) so the boundary remains smooth and \(\varphi>a\) there. Equation (9) and positive conicity exclude every nonzero positive multiple of \(d\varphi\) at all of those boundary points. At points outside \(D\), the input vanishes locally. The theorem therefore applies on this neighborhood and gives at its boundary
 
 \[
  \operatorname{SS}(F_t)_x\subset\operatorname{SS}(F)_x+
@@ -155,7 +163,7 @@ If \(d\varphi_x=p+c\,d\varphi_x\), with \(p\in\operatorname{SS}(F)_x\) and \(c\l
 
 Inside the open set this is canonical restriction; outside it, (12)–(13) exclude intersections. Replacing \(Rj_*\) with \(j_!\) would give the other added normal sign and would not supply this proof.
 
-Apply (5) to compactly supported \(F_t\) and the original section \(\sigma_\varphi\). Characteristic cycles agree on \(\Omega_t\), and the actual compact intersection in (14) lies there. Supported cup, open extension and trace composition consequently identify their numbers. With (11) this proves
+Apply (5) to compactly supported \(F_t\) and the original section \(\sigma_\varphi\). Their characteristic cycles agree on \(\pi^{-1}\Omega_t\), by the actual open restriction of the identity and trace. Both cups have the same compact support \(K_\varphi\) by (14), contained in that open set. Excision identifies the two classes in cohomology with this closed support, while open extension and trace composition identify their integrals. This is comparison at the actual compact intersection; no integral on all of the possibly noncompact \(D\) is introduced. With (11) this proves
 
 \[
  \chi(X;F)=\chi(X;F_t)
@@ -164,7 +172,7 @@ Apply (5) to compactly supported \(F_t\) and the original section \(\sigma_\varp
  \qquad\text{(15)}
 \]
 
-A bounded interval causes no difficulty: one chooses a level inside it above the compact critical-value set and takes a cofinal approach to its upper endpoint.
+All restriction maps to levels above \(a\) are isomorphisms by the same argument, and they commute with further open restriction. A single level inside \(I\) already proves (15), even when the upper endpoint is finite. Cofinal levels may approach that endpoint, but no passage of ordinary sections through an exhaustion is needed for the equality.
 
 ## Compact cohomology uses the opposite section
 
@@ -187,7 +195,7 @@ Then compact cohomology is bounded and finite dimensional, and
 
 The proper-below hypothesis remains on \(\varphi\). We do not impose that hypothesis on \(-\varphi\); instead we apply the ordinary theorem to the dual.
 
-Constructible duality gives the same closed support for \(D_XF\) and \(F\), and
+Constructible biduality gives the same closed support for \(D_XF\) and \(F\): local vanishing of one implies local vanishing of the other after applying duality twice. The actual swapped-kernel comparison, with its identity and evaluated coefficient, gives
 
 \[
  \operatorname{SS}(D_XF)=\operatorname{SS}(F)^a,\qquad
@@ -203,9 +211,11 @@ Thus (8) applies to \(D_XF\) and proves finiteness of its ordinary global comple
  \qquad\text{(19)}
 \]
 
-No finiteness of the left input was assumed. Over a field, algebraic dualization is exact and detects nonzero vectors. A vector space whose dual is finite dimensional embeds in its finite-dimensional double dual and is finite dimensional itself. Equation (19) thus proves finite compact cohomology in finitely many degrees. Dualization reverses degree and preserves the alternating sum, so \(\chi_c(X;F)=\chi(X;D_XF)\). This proves the first equality of (17).
+No finiteness of the left input was assumed. Over a field, algebraic dualization is exact, so the degree-\(q\) cohomology of the left side is \(\operatorname{Hom}_k(H^{-q}R\Gamma_c(X;F),k)\). It detects nonzero vectors. If this dual is finite dimensional, its source embeds by evaluation into its finite-dimensional double dual and is itself finite dimensional. The finite range and finite dimensions supplied by the ordinary theorem on the right of (19) therefore imply both boundedness and finiteness of compact cohomology on the left. Dualization changes \(q\) to \(-q\), and \((-1)^{-q}=(-1)^q\); hence \(\chi_c(X;F)=\chi(X;D_XF)\). This proves the first equality of (17).
 
-For the second, apply the diffeomorphism \(a\) to the supported cup. It takes the graph of \(\sigma_{-\varphi}\) to that of \(\sigma_\varphi\). Exceptional composition for \(\pi a=\pi\) takes the section's normalized unit \(1\) to \(1\), while \(E=\pi^{-1}\omega_X\) has its canonical ordinary antipodal identification. Exceptional tensor comparison takes the ordered cup to the corresponding antipodal cup, and composition of diffeomorphism and point traces preserves its number. In coordinates the relative fibre-orientation factor and dualizing transformation both contain \((-1)^{\dim X}\); those factors already belong to these actual maps. No additional dimension sign is appended to (17).
+For the second, apply the diffeomorphism \(a\) to the supported cup, keeping the coefficient order \(P,E\). It takes the graph of \(\sigma_{-\varphi}\) to that of \(\sigma_\varphi\). The ordinary identification \(a^{-1}E=E\) is precisely the cycle action in (18). For the other factor, use \(a^{-1}P\simeq a^!P\simeq P\) with exceptional composition for \(\pi a=\pi\). The adjoint of the transformed section class is again \(1\), because the defining composition \(\pi a\sigma_{-\varphi}=\operatorname{id}_X\) has the same identity counit. It is therefore the actual class \([\sigma_\varphi]\).
+
+Naturality of the exceptional tensor map sends this ordered product to the transformed dualizing class. Diffeomorphism trace followed by the point trace is the same point trace, by exceptional composition. The two compact supports correspond homeomorphically, so their numbers agree. In a fibre chart, the relative orientation map on \(P\) and the dualizing map include the fibre antipode sign \((-1)^{\dim X}\). These are already part of the compared maps and supply no additional scalar in (17).
 
 ## A strict minimum reads a stalk and a costalk
 
@@ -236,16 +246,20 @@ The second input is the ambient point costalk, which can differ from the ordinar
  \qquad\text{(22)}
 \]
 
-These are closed conic subanalytic isotropic carriers: the singular-form subset criterion preserves isotropy. Their base projections are compact, so the required properness holds for \(\rho\). The two sets of selected values are locally finite near zero. Choose \(\epsilon_0>0\) with neither having a value in \((0,\epsilon_0)\) and with \(\epsilon_0<cR^2\). Set \(U=B_R\cap\{\rho<\epsilon_0\}\), with \(\rho:U\to(-1,\epsilon_0)\). Its closed support sublevels are compact: for \(s<\epsilon_0\), the lower quadratic bound keeps them strictly inside \(B_R\). Both graph intersections in \(T^*U\) are contained in \(\{p_0\}\).
+Take the ball with closure contained in the neighborhood where \(\rho\) is defined, and regard both sets in (22) as carriers on that neighborhood. They are closed conic subanalytic isotropic sets: intersection with the closed base ball preserves subanalyticity and canonical-form vanishing. Their base projections are closed subsets of \(\overline B_R\), hence compact. The restriction of \(\rho\) to each such projection is therefore proper, which is exactly the support condition in the discrete-critical-value theorem. The two selected-value sets are locally finite in the ambient line. Choose \(\epsilon_0>0\) so neither has a value in \((0,\epsilon_0)\) and \(\epsilon_0<cR^2\).
 
-**Actual shrinking restrictions.** For \(0<s'<s<\epsilon_0\), the finite-band Morse theorem gives an isomorphism
+Put \(U=B_R\cap\{\rho<\epsilon_0\}\), with \(\rho:U\to(-1,\epsilon_0)\). The closed support of \(F|_U\) is \(D\cap U\). For \(0\le s<\epsilon_0\), its closed sublevel equals the closed subset \(D\cap\overline B_R\cap\{\rho\le s\}\), since the lower quadratic bound keeps this set strictly inside \(B_R\). It is compact; negative sublevels are empty. If either signed differential belongs to the local microsupport at a point of \(U\), its selected value cannot lie in \((0,\epsilon_0)\). The unique zero of \(\rho\) is \(x_0\), so both intersections are contained in \(\{p_0\}\).
+
+**Actual shrinking restrictions.** All sublevels in this paragraph are taken inside \(U\). For \(0<s'<s<\epsilon_0\), the actual open-cutoff map gives an isomorphism
 
 \[
  R\Gamma(\{\rho<s\};F)\longrightarrow R\Gamma(\{\rho<s'\};F).
  \qquad\text{(23)}
 \]
 
-There is no positive differential in the microsupport on the intervening band, and the closed bands on the support are compact. An increasing interval-to-line change realizes the exact stated properness requirement of the provider. The quadratic bounds make these sublevels a neighborhood basis of zero. Stalks are exact filtered colimits; on a bounded resolution their section complexes therefore have colimit \(F_0\). Since (23) is already an isomorphism, every such section complex maps isomorphically to \(F_0\). Apply (8) on one sublevel with the interval having that upper endpoint. Its only possible intersection is \(p_0\), proving the first equality of (21).
+Here is a verification using precisely MO26+. Work on \(U_s=\{\rho<s\}\), and choose \(0<r<s'<s\). An increasing analytic diffeomorphism \(h_s:(-1,s)\to\mathbb R\) turns \(\rho|_{U_s}\) into a real-valued function with compact closed support sublevels. Above the threshold \(h_s(r)\), its positive differential avoids the microsupport because \(\rho>r>0\) and there are no selected positive values. MO26+ at \(h_s(s')\) is exactly the restriction (23). Thus every transition in this shrinking family is the specified quasi-isomorphism, and their compositions agree by ordinary restriction.
+
+The quadratic bounds make \(U_s\) a neighborhood basis of zero: it contains a sufficiently small coordinate ball, and \(U_s\subset B_{\sqrt{s/c}}\). Choose a bounded-below injective resolution \(F\to I^\bullet\) on \(U\). Restriction to each open \(U_s\) is acyclic for sections, so \(\Gamma(U_s;I^\bullet)\) computes its derived sections. Their filtered colimit is the stalk complex \(I^\bullet_0\), degree by degree; exactness of filtered colimits of vector spaces makes its cohomology the corresponding colimit. This stalk complex represents \(F_0\). Because all transition maps (23) are quasi-isomorphisms, the canonical map from every \(R\Gamma(U_s;F)\) to \(F_0\) is a quasi-isomorphism. Apply (8) on any \(U_s\), with target interval \((-1,s)\); the checked closed sublevels remain compact and its only possible graph intersection is \(p_0\). This proves the first equality of (21).
 
 The same argument applies to \(D_XF\) using the second carrier of (22). The actual constructible point pairing gives
 
@@ -274,7 +288,9 @@ Constant closed-ray cohomology gives \(R\Gamma(X;A)=k\). In the actual triangle 
  \qquad\text{(25)}
 \]
 
-The cycles are the positive-base zero-section chamber plus the positive point-fibre ray for \(A\), and that chamber minus the negative point-fibre ray for \(B\). A constant nonzero section misses the zero section. At its smooth fibre-ray intersection, the normalized full-point-conormal number is \(+1\); the cycle's weight gives positive-section numbers \(1,0\) and negative-section numbers \(0,-1\). These agree with (25). The zero-stalk endpoint of \(B\) remains in its closed support.
+Use the normalized rays of the half-line calculation: \(\alpha_+\) is the positive-base part of \([T_X^*X]\), and \(\beta_\pm\) are the positive- and negative-covector parts of \([T_{\{0\}}^*X]\). The fixed normalization gives \(CC(A)=-\alpha_++\beta_+\) and \(CC(B)=-\alpha_+-\beta_-\). Both normalized horizontal and vertical chain generators are positive in their respective coordinates; the minus horizontal weight is the characteristic-cycle coefficient of the constant line. Each row has zero boundary at the crossing.
+
+A constant nonzero section misses the zero section. At its smooth point-fibre intersection, the section unit followed by the normalized closed point trace has number \(+1\), for either section sign. The fibre-ray weights therefore give positive-section numbers \(1,0\) and negative-section numbers \(0,-1\). These agree with (25). The zero-stalk endpoint of \(B\) remains in its closed support.
 
 ### Compact intersection alone does not control escape
 
@@ -345,4 +361,4 @@ The positive section meets the closed-ray fibre with number \(1\) and the subtra
 
 ## The next local index problem
 
-The supported base-class comparison, continuous compact index, both proper-below differential indices and minimum stalk/costalk formulas are now proved relative to their named prerequisites. A general analytic phase need not have a minimum. Its isolated microlocal intersection measures the supported test \(R\Gamma_{\{\varphi\geq\varphi(x_0)\}}F\). That assertion requires a radial cutoff with explicit positive-phase and boundary-exclusion estimates, and remains a subsequent teaching target.
+The supported base-class comparison gives the continuous compact index, the two proper-below differential indices, and the minimum stalk and costalk formulas. For a general analytic phase, an isolated microlocal intersection instead measures the supported test \(R\Gamma_{\{\varphi\geq\varphi(x_0)\}}F\). The next lesson establishes this local formula using a radial cutoff with explicit positive-phase and boundary-exclusion estimates.

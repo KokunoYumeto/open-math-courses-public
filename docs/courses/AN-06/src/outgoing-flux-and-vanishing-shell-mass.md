@@ -49,7 +49,7 @@ Their integral pairing is absolutely convergent. The closure of Schwartz space i
  \tag{3}
 \]
 
-These equivalences include the inner shell and every real radius.
+These [closure equivalences](radiation-for-limits-of-long-range-resolvents.md#radiation-shell-closure) include the inner shell and every real radius.
 
 Let \(P_0(D)\) be real, scalar, constant-coefficient and elliptic of integer order \(m\ge1\). Let \(V\) be a symmetric \(1\)-admissible perturbation, with its full sharp local coefficient hypotheses. Its self-adjoint realization \(H=P_0+V\) has domain \(H^m\). Fix a regular free energy \(\lambda\), and put
 
@@ -64,6 +64,9 @@ Let \(P_0(D)\) be real, scalar, constant-coefficient and elliptic of integer ord
 \]
 
 Regular means \(v\ne0\) on the energy shell. The shell is compact and may be empty.
+
+<a id="flux-theorem"></a>
+The outgoing-flux identity below is Hörmander [H4, Theorem 30.2.7].
 
 **Theorem 1.1 (outgoing flux).** Suppose
 
@@ -109,6 +112,8 @@ we have
 
 The hypothesis is directional radiation of the solution itself. The graph-limit theorem gives (6) for the limits it treats. The present theorem does not require a particular approximating graph.
 
+The zero-flux conclusion is Hörmander [H4, Corollary 30.2.8].
+
 **Corollary 1.2 (zero flux).** If the hypotheses hold and \(\operatorname{Im}(u,f)=0\), then
 
 \[
@@ -132,6 +137,7 @@ Each fraction is order zero. Right composition with \(D^\alpha\) is exact, so th
 
 We will use two elementary consequences of the compact-frequency calculus.
 
+<a id="flux-shell-errors"></a>
 **Lemma 2.1.** A compact-frequency symbol with bounded spatial output support sends \(B^*\) inputs into \(L^2\). Also, if \(r\) has position weight \(X^{-1}\) and arbitrary rapid frequency decay, its operator sends \(B^*\) inputs into \(L^2\).
 
 **Proof.** In the first case its kernel, on the bounded output support, satisfies
@@ -163,9 +169,10 @@ The inner shell is bounded separately. Sum the geometric sequence \(R_j^{-1}\). 
 
 An order-zero \(G_1\) shell map preserves \(\dot B^*\): it is bounded on \(B^*\) and sends Schwartz space into Schwartz space, hence into that closure. We use both statements on the same distributional actions.
 
+<a id="flux-rough-pairing"></a>
 ## 3. The rough term has a real weighted pairing
 
-Use the symmetric split \(V=V_L+V_S\), with the compact smooth adjustment making \(P=P_0+V_L\) elliptic. Choose \(0<\delta\le1\) within the coefficient decay gaps. The smooth coefficients of \(V_L\) are \(O(X^{-\delta})\), with their full differentiated bounds. The primary rough map is
+Use the [symmetric split](combining-the-long-range-resolvent-estimates.md#combined-split) \(V=V_L+V_S\), with the compact smooth adjustment making \(P=P_0+V_L\) elliptic. Choose \(0<\delta\le1\) within the coefficient decay gaps. The smooth coefficients of \(V_L\) are \(O(X^{-\delta})\), with their full differentiated bounds. The [primary rough map](combining-the-long-range-resolvent-estimates.md#combined-primary-map) is
 
 \[
  V_S:H^{m,t}\longrightarrow H^{0,t+1+\delta}
@@ -185,7 +192,7 @@ It is consistent with the actual coefficient products. Fix
  \tag{15}
 \]
 
-The strict endpoint embedding and integer derivative characterization give \(u\in H^{m,-b}\). By (14),
+The [strict endpoint embedding](combining-the-long-range-resolvent-estimates.md#combined-embeddings) and [integer derivative characterization](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-integer-derivatives) give \(u\in H^{m,-b}\). By (14),
 
 \[
  V_Su\in H^{0,\,1+\delta-b}
@@ -215,6 +222,7 @@ Set \(f_0=f-V_Su\). We have
 
 This argument uses weighted Sobolev density. It does not presume that \(u\) is already in the closure \(\dot B^*\) or in the unweighted operator domain.
 
+<a id="flux-radial-identity"></a>
 ## 4. The exact radial commutator
 
 Take real smooth \(\psi\), compactly supported on the nonnegative half-line and equal one near zero. Define \(\psi_R(x)=\psi(|x|/R)\), \(R\ge1\). It is smooth at zero. Every positive position derivative has support in an annulus \(c_0R<|x|<C_0R\).
@@ -248,6 +256,7 @@ The free error terms contain at least two cutoff derivatives. Their orders are a
 Write \(V_L=\sum_{|\alpha|\le m}A_\alpha(x)D^\alpha\). Its exact commutator contains terms
 \(A_\alpha(D^\beta\psi_R)D^{\alpha-\beta}\), \(0<\beta\le\alpha\), with their multinomial constants. Their order is at most \(m-1\), and their coefficients have size \(O(X^{-\delta}R^{-1})\) on the annulus.
 
+<a id="flux-differential-errors"></a>
 Let \(E_R=E_R^0+[V_L,\psi_R]/i\). On its coefficient support, \(R^c\le C X^c\). The free coefficients have weight \(X^{c-2}\), contained in \(X^{c-1-\delta}\) since \(\delta\le1\). The long-range terms have the latter weight directly. The weighted integer derivative norm therefore gives the complete finite bound
 
 \[
@@ -279,17 +288,19 @@ No rough coefficient is differentiated in this calculation. Equations (19)–(22
  \tag{23}
 \]
 
+<a id="flux-off-energy"></a>
 ## 5. Replacing the velocity by an exact positive operator
 
-First suppose \(M_\lambda\ne\varnothing\). Choose real compact smooth \(\chi\), with \(0\le\chi\le1\), equal one near the shell and supported where \(v\ne0\). Since \(f_0\in B\subset H^{0,1/2}\), the real-parameter off-energy theorem gives
+First suppose \(M_\lambda\ne\varnothing\). Choose real compact smooth \(\chi\), with \(0\le\chi\le1\), equal one near the shell and supported where \(v\ne0\). Since \(f_0\in B\subset H^{0,1/2}\), the [real-parameter off-energy theorem](the-resolvent-away-from-the-energy-surface.md#off-energy-resolvent-estimate) gives
 
 \[
  u_{\mathrm{off}}=(1-\chi(D)^2)u\in H^{m,1/2}.
  \tag{24}
 \]
 
-All its auxiliary norms are finite by the endpoint hypothesis. Its contribution to (23) vanishes: \(v(D)u_{\mathrm{off}}\in L^2\), the annular \(L^2\) norm of \(u\) is \(O(R^{1/2})\), and the pairing carries \(R^{-1}\).
+Apply that theorem with forcing indices \(s=0\), \(t=1/2\), and auxiliary indices \(s'=0\), \(t'=-b\). The required auxiliary norm \(\|u\|_{0,-b}\) is finite by the endpoint hypothesis. Its contribution to (23) vanishes: \(v(D)u_{\mathrm{off}}\in L^2\), the annular \(L^2\) norm of \(u\) is \(O(R^{1/2})\), and the pairing carries \(R^{-1}\).
 
+<a id="flux-positive-operator"></a>
 For the prescribed full-order symbol \(a\), put \(A=\operatorname{Op}(a\chi)\). Its symbol has compact frequency support and is order zero. Choose smooth radial \(\kappa\), zero on a sufficiently large fixed ball and one outside a larger ball. Choose its zero region so that (7) holds on the bundle wherever \(\kappa\ne0\). Define
 
 \[
@@ -322,6 +333,7 @@ The scalar principal product is exact at leading order; every subsequent term lo
 
 Multiplying this difference by \(\psi'(|x|/R)\), pairing with \(u\), and dividing by \(R\) gives a quantity tending to zero. Indeed the first factor has vanishing normalized annular norm, while the second has a uniformly bounded normalized norm. The closure condition in (3) controls annuli at all radii by adjacent dyadic shells. The fixed spatial modification \(\kappa\) is immaterial on the moving annulus. We may replace the velocity action in (23) by \(A^*A\).
 
+<a id="flux-cutoff-commutator"></a>
 ## 6. Moving the cutoff through the adjoint
 
 Put \(\theta_R=R^{-1}\psi'(|x|/R)\). The scalar principal symbols in the commutator cancel. For \(\rho=1/2\), the scaled multiplication symbol \(R^\rho\theta_R\) is uniformly in \(S(X^{\rho-1},G_1)\). Its derivative support is the moving annulus. The exact finite product theorem gives
@@ -350,6 +362,7 @@ Take \(b_0=3/4\). The weighted map sends \(H^{0,-b_0}\) to \(H^{0,\,2-\rho-b_0}=
  \tag{29}
 \]
 
+<a id="flux-weighted-adjoint"></a>
 We must also justify the adjoint pairing for each fixed \(R\). The operators \(A,A^*\) preserve every zeroth-order weighted space. Multiplication by \(\theta_R\), whose support is bounded for this fixed radius, maps \(H^{0,-b_0}\) into \(H^{0,b_0}\). Approximate \(u\) by Schwartz inputs in \(H^{0,-b_0}\). Their \(A\)-images converge in that space and locally in \(L^2\); their \(\theta_R A\)-images converge in \(H^{0,b_0}\). Passing the ordinary Schwartz adjoint identity to the weighted pairing gives
 
 \[
@@ -373,6 +386,7 @@ The left pairings are defined on the specified weights or compact support; they 
  \tag{31}
 \]
 
+<a id="flux-smooth-averages"></a>
 ## 7. Smooth averages determine sharp shell and ball averages
 
 Choose nonincreasing \(\psi\) and write \(w=-\psi'\). Then \(w\ge0\), it is supported away from zero, and \(\int_0^\infty w=1\). Equation (31) first proves \(C=2\operatorname{Im}(u,f)\ge0\).
@@ -408,6 +422,7 @@ positivity, (31) and (32) imply
 
 Let \(\varepsilon\downarrow0\) after the radius limit. Then \(F(R)\to C\), also when \(C=0\).
 
+<a id="flux-ball-averages"></a>
 For \(R\ge2\), set \(K_R=\lfloor\log_2R\rfloor\). Decompose the ball into the annuli with radii \(R/2^k\), \(1\le k\le K_R\), and one inner ball:
 
 \[
@@ -421,6 +436,7 @@ For \(R\ge2\), set \(K_R=\lfloor\log_2R\rfloor\). Decompose the ball into the an
 
 The inner radius is in \([1,2)\), so its contribution tends to zero. All displayed annular radii are at least one. The endpoint norm of \(Au\) bounds \(F\) uniformly there. Extend the summands by zero beyond \(K_R\); their geometric majorant is summable. Every fixed summand tends to \(2^{-k}C\). Dominated convergence for the series, and \(\sum_{k\ge1}2^{-k}=1\), give the ball limit \(C\).
 
+<a id="flux-full-order"></a>
 Finally,
 
 \[
@@ -432,6 +448,7 @@ The bounded smooth multiplier \((1+\chi)^{-1}\) preserves \(H^{m,1/2}\). By (24)
 
 If the free shell is empty, take \(\chi=0\) in the off-energy theorem. Then all derivatives through \(m\), and every prescribed full-order action, are in \(L^2\). Equation (23) has limit zero, so \(C=0\). The normalization is vacuous and (8) still holds. \(\square\)
 
+<a id="flux-zero"></a>
 ## 8. A normalized symbol and the zero-flux corollary
 
 For a nonempty regular shell let \(\nu=\min_{M_\lambda}|v|>0\). Choose \(\chi\) supported where \(|v|>\nu/2\), equal one near the shell, and smooth radial \(\kappa\), zero near the origin and one at large radius. The symbol
@@ -469,8 +486,9 @@ The off-energy derivatives in (24) are \(L^2\). Adding them proves (9) for all \
 
 ### Use the conclusion
 
-Keep the half-principal normalization in the positive operator and the actual rough symmetry pairing. Follow smooth radial averages to sharp shell averages before using the zero-flux conclusion.
+Keep the free-velocity normalization in the positive operator and the actual rough symmetry pairing. Follow smooth radial averages to sharp shell averages before using the zero-flux conclusion.
 
+<a id="flux-solutions"></a>
 ## 9. Graded exercises with complete solutions
 
 **Exercise 1 — Basic: compute the flux on the line.** Let \(H=-\partial_x^2\), \(\lambda=1\), and take a nonzero, even, nonnegative \(f\in C_c^\infty((-1/4,1/4))\). Put
@@ -599,3 +617,5 @@ The [accessible scalar comparisons in the limiting-absorption lesson](limiting-a
 The source's printed equation (4.8) has \(|P_0(\xi)|\) where its definition (4.6) requires \(|\nabla P_0(\xi)|\). Its signs in (4.7)–(4.9) also fail to follow that definition consistently. Equations (19)–(31) above derive the sign directly with our stated inner-product convention: the positive outgoing mass uses \(-\psi'\). The explicit line calculation in Solution 1 independently verifies both the velocity factor and the sign.
 
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*, author's online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf), treats self-adjoint resolvents and their spectral applications.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Theorem 30.2.7, formulas (30.2.26)–(30.2.27), and Corollary 30.2.8, with their proofs, pp. 291–293. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

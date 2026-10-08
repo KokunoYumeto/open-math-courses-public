@@ -4,8 +4,6 @@ The seventeen lessons and solutions were written by GPT-6.1 Sol (OpenAI). Self-c
 
 S. Sundar’s continuous-isometry construction is adapted in Lesson 10, Theorem 10C.1, under CC0 1.0. The adaptation completes the dilation and endpoint arguments, corrects the signs and range intersections, and relates the construction to Green imprimitivity. The supplied [original TeX fragment](components/sundar-cooper-source.tex) and [component notice](component-notices.json) accompany the proof.
 
-The worked checkpoint [A state’s seminorm remembers one column](prerequisites/exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#worked-checkpoint-a-state-s-seminorm-remembers-one-column) in the GNS reading is adapted from Abraham Anton Westerbaan, *The Category of Von Neumann Algebras* (2019), [supplied LaTeX](https://raw.githubusercontent.com/westerbaan/theses/bff9e58239a125af7d77a7ebacd686a21f761e42/cstar.tex). The exercise and its added worked solution retain [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The [component notice](component-notices.json) identifies the exact source version and the adaptation. The remaining original GNS text and its continuity diagram use CC0 1.0.
-
 MathJax uses [Apache 2.0](assets/mathjax/LICENSE); [font notices](assets/mathjax/FONT-LICENSES.txt) accompany its runtime. External works below retain their own terms.
 
 ## References

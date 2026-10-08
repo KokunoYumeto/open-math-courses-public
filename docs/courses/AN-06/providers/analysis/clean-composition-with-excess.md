@@ -4,9 +4,11 @@
 
 <a id="clean-composition"></a>
 
-This reading proves clean composition of classical scalar Fourier integral operators, including positive excess, the actual kernel product, every finite symbol remainder and the principal-symbol fiber integral. The freely accessible construction source is [Victor Guillemin and Shlomo Sternberg, *Semi-Classical Analysis*, author text dated 25 April 2012, Sections 5.1.1, 5.6–5.7 and 8.13](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf). Their inactive-variable reduction is reconstructed homogeneously below. We derive all constants in this programme's classical convention. The source's semiclassical order convention and its omitted symbol computation are not used as programme proofs.
+This reading proves clean composition of classical scalar Fourier integral operators, including positive excess, the actual kernel product, every finite symbol remainder and the principal-symbol fiber integral. For the geometric framework, see [Victor Guillemin and Shlomo Sternberg, *Semi-Classical Analysis*, author text dated 25 April 2012, Sections 5.1.1, 5.6–5.7 and 8.13](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf). The proof below includes the homogeneous removal of inactive variables and derives the order, density and Maslov factors in the classical normalization used here.
 
-First read [Phase geometry, stationary phase and the Maslov symbol](phase-geometry-and-stationary-phase.md#phase-foundations), Sections 1–9, and [Transverse composition and graph operators](transverse-composition-and-graph-operators.md#transverse-composition), Sections 1–6. Their proved inputs are homogeneous phase equivalence, stationary phase with differentiated remainders, critical densities and Maslov transitions, symbol recovery, smooth-input FIO actions, distributional cutoff limits and the incomparable-frequency estimate. Their coordinate, integration and finite-symbol prerequisites are the earlier proofs linked there. The short flow argument needed for reduction is proved here. No boundary propagation or spectral-projector remainder is inferred from this composition theorem.
+First read [Phase geometry, stationary phase and the Maslov symbol](phase-geometry-and-stationary-phase.md#phase-foundations), Sections 1–9, and [Transverse composition and graph operators](transverse-composition-and-graph-operators.md#transverse-composition), Sections 1–6. Their proved inputs are homogeneous phase equivalence, stationary phase with differentiated remainders, critical densities and Maslov transitions, symbol recovery, smooth-input FIO actions, distributional cutoff limits and the incomparable-frequency estimate. We use the same closed conic support convention: normalized critical supports over compact base patches stay away from either zero covector component, and phase cutoffs have closed support inside their coordinate patches. The [inverse-coordinate proof](coordinate-inverses-and-integration.md#coordinate-inverse), [change of variables](coordinate-inverses-and-integration.md#coordinate-integration) and [finite partitions](coordinate-inverses-and-integration.md#finite-partitions) supply the coordinate and integration facts used below. The short flow argument needed for reduction is proved here.
+
+<a id="clean-matching-geometry"></a>
 
 ## 1. Hypotheses and the geometry of matching
 
@@ -30,7 +32,9 @@ A vector in $V=\ker d\pi$ has the form $(0,w,w,0)$. Its pairing with a vector $v
  \end{aligned}
  \tag{E2}
 \]
-On $TM_0$ the intermediate symplectic forms cancel, so $\operatorname{im}d\pi$ is isotropic of dimension $d$, and is Lagrangian. Constant rank makes $\pi$ locally a submersion onto its image: choose $d$ independent output coordinates, complete them to coordinates on $M_0$ by the inverse theorem, and note that the derivatives of every other output coordinate in the remaining directions vanish. On a small connected coordinate box these outputs are independent of those directions. This proves the asserted local form without importing a separate constant-rank result. The embedded-image assumption identifies these local images with $C$. Simultaneous dilation makes $C$ conic.
+On $TM_0$ the intermediate symplectic forms cancel, so $\operatorname{im}d\pi$ is isotropic of dimension $d$, and is Lagrangian. Constant rank gives a local form directly: choose $d$ independent output coordinates, complete them to coordinates on $M_0$ by the inverse theorem, and note that the derivatives of every other output coordinate in the remaining directions vanish. On a small connected coordinate box these outputs are independent of those directions.
+
+We check that the dimension of the embedded image $C$ is exactly $d$. Its dimension is at least $d$, since it contains these local images. The countable coordinate cover of $M_0$ expresses $C$ as a countable union of such images. In a coordinate chart of $C$, each is covered by countably many smooth $d$-dimensional graphs, using the same inverse-coordinate argument on its injective differential. If that chart had dimension greater than $d$, every graph would have measure zero: subtract its smooth graphing function in product coordinates and apply [Fubini's theorem](finite-derivative-l2.md#general-tonelli-fubini) to its singleton normal sections. Change of variables preserves this conclusion. A countable union of these sets cannot cover the positive-volume chart. Thus $\dim C=d$. Each local image is now open in $C$ by the inverse theorem, and $\pi$ is a submersion onto $C$. The tangent calculation proves that $C$ is Lagrangian; simultaneous dilation makes it conic.
 
 We shall prove
 \[
@@ -38,6 +42,8 @@ We shall prove
  \tag{E3}
 \]
 Here $C'$ changes the sign of the input covector, as in the transverse reading. The order assertion is membership; cancellation in a fiber integral can lower the actual order.
+
+<a id="clean-homogeneous-reduction"></a>
 
 ## 2. Homogeneous removal of the inactive variables
 
@@ -95,6 +101,8 @@ The phase $\psi$ is nondegenerate and generates the same local Lagrangian. This 
 \]
 has degree $e$, since its $\eta$ columns have degree zero and its $v$ columns degree one. On closed smaller normalized patches $|\Theta|\asymp|\eta|$. These facts, including all their differentiated bounds, are the reason the homogeneous reduction preserves the full classical symbol class.
 
+<a id="clean-compact-integration"></a>
+
 ## 3. Exact integration and the order shift
 
 Localize by a degree-zero smooth partition to a reduction patch (E6), with its support closed inside the patch and compact in $v$. Terms supported away from $\mathcal C$ are smooth: on a closed normalized patch there, $|\Phi_\omega|$ has a positive lower bound; repeated integration by parts in frequency lowers the amplitude order indefinitely. For the retained term let $b\in S^q_{\mathrm{cl}}$. Write $(b\circ\Theta)(x,\eta,v)=b(x,\Theta(x,\eta,v))$, retaining the base variables. The exact coordinate change and ordinary compact $v$ integration give
@@ -121,6 +129,8 @@ If $q=m+(d-2N)/4$, then
 \]
 The factor $(2\pi)^{-e/2}$ in (E8) is the ratio of the two displayed normalization constants. There is no stationary Gaussian in the inactive variables: the phase is exactly independent of them.
 
+<a id="clean-kernel-product"></a>
+
 ## 4. Applying the reduction to the operator product
 
 Take input phases $\phi_1(x,y,\theta)$ and $\phi_2(y,z,\sigma)$ with $N_1,N_2$ frequencies in the normalization (G1) of the transverse reading. With separate $y_1,y_2$, the input critical equations are independent and parametrize $C_1\times C_2$ locally. Add the equations
@@ -146,7 +156,9 @@ The rank counts all variables, including $x,z$. Set
 \]
 At $F=0$, the differential of $\Phi_\omega$ is an invertible transpose-Jacobian multiple of $dF$. Thus $\Phi$ satisfies (E4) with this same excess $e$ and has nonzero outer covectors. Its critical set maps to $C'$ under the projection in (E1).
 
-The smooth-input and transpose actions in Section 1 of the transverse reading require only nonzero input and output covectors and proper support; they did not use transversality. Consequently the frequency-cutoff products converge on compact smooth inputs to the actual $A_1A_2$. Likewise, the incomparable-frequency proof in its Section 4 uses only
+First localize each input amplitude to a sufficiently small conic neighborhood of its own phase critical set. Its complementary kernel is smooth by the nonstationary frequency estimate; composing that smooth term on either side remains smooth by the smooth-family argument in Section 1 of the transverse reading. On the retained closed normalized supports the nonzero intermediate covectors give uniform positive lower bounds for the ratios $|\phi_{1,y}|/|\theta|$ and $|\phi_{2,y}|/|\sigma|$. These bounds persist in the chosen neighborhoods.
+
+The smooth-input and transpose actions in Section 1 of the transverse reading require only nonzero input and output covectors and proper support; they did not use transversality. Consequently the frequency-cutoff products converge on compact smooth inputs to the actual $A_1A_2$. On the neighborhoods just chosen, the incomparable-frequency proof in its Section 4 uses only
 $|\phi_{1,y}|\asymp|\theta|$ and $|\phi_{2,y}|\asymp|\sigma|$.
 Outside a fixed comparable-ratio region,
 $|\phi_{1,y}+\phi_{2,y}|\ge c(|\theta|+|\sigma|)$;
@@ -199,6 +211,8 @@ Divide an input product half density by the Liouville half density on $E$, namel
 \]
 In particular the result has a full density along the fiber, which can be integrated. Taking only a half density there would be incorrect. Absolute determinants make this construction independent of orientations. Liouville density is invariant because it is the absolute top power of the symplectic form.
 
+<a id="clean-density-coefficient"></a>
+
 We verify the exact coordinate coefficient of (E15). For any clean phase the derivative of its critical equations has the exact sequence
 $0\to T\mathcal C\to T(x,\omega)\to(\mathbb R^N)^*\to V^*\to0$.
 The last map pairs an equation covector with a frequency vector in $\ker d\kappa$; its kernel is precisely the image of $d(\Phi_\omega)$ by the transpose-nullspace calculation of Section 2. Taking the square root of the ambient density divided by the equation-space density therefore gives a half density on the image times a full fiber density. This is a determinant-line quotient, not division by a vanishing determinant of $N$ supposedly independent equations.
@@ -231,6 +245,8 @@ Finally (E11) multiplies the ambient Jacobian by $r^{n_Y}$ and the inverse equat
 \]
 Partition factors are inserted on the right when a matching fiber needs several charts; their sum is one there.
 
+<a id="clean-maslov-integration"></a>
+
 ## 6. Maslov factors, integration and independence of choices
 
 The programme uses the phase coefficient
@@ -257,6 +273,8 @@ A homogeneous input fiber change induces a change of the combined frequency vari
 For explicit integration over a possibly nontrivial fiber, trivialize the output line over a small target chart and pull that trivialization back. Cover its compact matching support by finitely many submersion charts with a smooth partition. In each chart the integrand is a scalar smooth function times $|dv|$, with compact support in a fixed $v$ box, so its integral is smooth in the target variables by differentiated compact integration. Coordinate changes give identical values by the already-proved density change of variables; summing the partition removes its choice. This also handles disconnected fibers. After converting the local reduced phases to a common output phase, the same stationary-phase estimates and finite sum prove every lower classical coefficient and remainder. Uniqueness of the recovered principal symbol confirms that the integrated section is the symbol of the actual product established in Section 4.
 
 If $e=0$, fiber integration sums over the discrete matching points. A proper such fiber is finite: an infinite subset of a compact discrete submanifold would accumulate and contradict its local discreteness. For connected fibers there is one point, $(2\pi)^{-e/2}=1$, and (E18) is exactly (G12)–(G13). No extra graph or no-caustic condition appears at positive excess.
+
+<a id="clean-excess-example"></a>
 
 ## 7. A positive-excess check and parameter limits
 

@@ -2,7 +2,7 @@
 
 This provider supplies the convex tools for extended-valued weights on arbitrary von Neumann algebras. Its only programme inputs are [CF Section 1](OA-FLOW-CF.md#oa-flow.cf.1), [CF Section 4](OA-FLOW-CF.md#oa-flow.cf.4), [CF Section 8](OA-FLOW-CF.md#oa-flow.cf.8), for real sublinear Hahn–Banach, norm series, scalar compactness, product compactness and Hilbert Riesz representation. Every additional separation or dual-ball assertion used below is proved here.
 
-Sections [CV-1](OA-FLOW-CV.md#cv-1)–3 are fresh local proofs, GPT-6 Astra (OpenAI), Ultra, 2026-10-04, CC0-1.0 to the extent of rights held. [CV-4](OA-FLOW-CV.md#cv-4) adopts the corrected trivial-group specialization, based on Javier Falcó and Daniel Isert, *G-strong subdifferentiability and applications to norm attaining subspaces*, §3.4, Lemmas 32–33 and Proposition 34/Theorem 35, printed pp.254–258, [version of record](https://link.springer.com/article/10.1007/s13163-025-00536-6), DOI 10.1007/s13163-025-00536-6. That article is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); retain this attribution and license for [CV-4](OA-FLOW-CV.md#cv-4). Changes include the trivial-group specialization, corrected finite-block enumeration, an explicit real/complex coefficient argument in the correct space, the fixed separating vector, checked translated slices, and replacement of all formerly imported separation/compactness premises by [CV-1](OA-FLOW-CV.md#cv-1)–3. No general theorem from a restricted source is used.
+Sections [CV-1](OA-FLOW-CV.md#cv-1)–3 are fresh local proofs by GPT-6 Astra (OpenAI), Ultra, 2026-10-04, and [CV-4](OA-FLOW-CV.md#cv-4) is by Claude Opus 5.5 (Anthropic), 2026-10-07; all four are CC0-1.0 to the extent of rights held. CV-4 follows the classical bounded-slice argument for the Krein–Šmulian theorem; Javier Falcó and Daniel Isert give a version of it in *G-strong subdifferentiability and applications to norm attaining subspaces*, §3.4 ([version of record](https://link.springer.com/article/10.1007/s13163-025-00536-6), DOI 10.1007/s13163-025-00536-6). No general theorem from a restricted source is used.
 
 Actual earlier proof ranges: [OA-FLOW.CF.1](OA-FLOW-CF.md#oa-flow.cf.1), [OA-FLOW.CF.4](OA-FLOW-CF.md#oa-flow.cf.4), [OA-FLOW.CF.8](OA-FLOW-CF.md#oa-flow.cf.8).
 
@@ -71,39 +71,37 @@ by evaluation. The product is compact by the actual [CF Section 4](OA-FLOW-CF.md
 
 ## CV-4. Full Krein–Smulian, with affine slices checked
 
-Let \(X\) be a real or complex Banach space, and \(C\subset X^*\) convex. We prove that \(C\) is weak* closed if all \(C\cap r\overline B_{X^*}\), \(r>0\), are weak* closed. The converse is immediate. Testing positive integer radii suffices, since every other closed ball is contained in one such ball and is itself weak* closed by [CV-3](OA-FLOW-CV.md#cv-3).
+Let \(X\) be a real or complex Banach space, and \(C\subset X^*\) convex. We prove that \(C\) is weak* closed if every bounded slice \(C\cap r\overline B_{X^*}\), \(r>0\), is weak* closed. The converse is immediate. Testing positive integer radii suffices, since every other closed ball is contained in one such ball and is itself weak* closed by [CV-3](OA-FLOW-CV.md#cv-3).
 
-First suppose \(D\subset X^*\) is nonempty convex, has closed bounded slices, and misses the closed unit ball. For \(F\subset X\), write \(P(F)=\{f:|f(v)|\leq1\ (v\in F)\}\). Starting with \(F_0=\{0\}\), construct finite \(F_n\subset n^{-1}\overline B_X\), containing zero, so that
+**Lemma (a null sequence that detects a convex set).** Let \(D\subset X^*\) be nonempty and convex, disjoint from the closed unit ball, with every bounded slice \(D\cap r\overline B_{X^*}\) weak* closed. There is a sequence \(x_k\to0\) in \(X\) such that every \(f\in D\) satisfies \(|f(x_k)|>1\) for some \(k\).
+
+*Proof.* We choose finite sets \(A_1,A_2,\ldots\), with \(A_m\subset m^{-1}\overline B_X\), such that for every \(m\geq0\)
 \[
-D\cap n\overline B_{X^*}\cap P(F_0\cup\cdots\cup F_{n-1})=\varnothing.
+f\in D,\ \|f\|\leq m+1\ \Longrightarrow\ |f(a)|>1\ \text{for some } a\in A_1\cup\cdots\cup A_m .
 \tag{CV5}
 \]
-The case \(n=1\) is given. At stage \(n\), the set
+For \(m=0\) the union is empty and (CV5) holds because no \(f\in D\) has \(\|f\|\leq1\). Suppose \(A_1,\ldots,A_{m-1}\) satisfy (CV5) for \(m-1\), and put
 \[
-Q_n=D\cap(n+1)\overline B_{X^*}\cap P(F_0\cup\cdots\cup F_{n-1})
+K_m=\{f\in D:\ \|f\|\leq m+1,\ |f(a)|\leq1\ \text{for all } a\in A_1\cup\cdots\cup A_{m-1}\}.
 \]
-is weak* compact by [CV-3](OA-FLOW-CV.md#cv-3) and the slice hypothesis. Every \(f\in Q_n\) has norm greater than \(n\), so some \(v\in n^{-1}\overline B_X\) satisfies \(|f(v)|>1\). These open conditions cover \(Q_n\); a finite subcover, together with zero, gives \(F_n\) and proves (CV5) at \(n+1\). If \(Q_n\) is empty, take \(F_n=\{0\}\).
+This set is weak* compact: it is the slice \(D\cap(m+1)\overline B_{X^*}\), weak* closed by hypothesis and contained in a weak* compact ball by [CV-3](OA-FLOW-CV.md#cv-3), cut down by finitely many weak* closed conditions. By (CV5) for \(m-1\), every \(f\in K_m\) has \(\|f\|>m\), so there is \(x\) with \(\|x\|\leq1/m\) and \(|f(x)|>1\). The weak* open sets \(\{f:|f(x)|>1\}\), \(\|x\|\leq1/m\), therefore cover \(K_m\). Let \(A_m\) consist of the vectors \(x\) of a finite subcover, with \(A_m=\{0\}\) if \(K_m\) is empty. Then (CV5) holds for \(m\): an \(f\in D\) with \(\|f\|\leq m+1\) either fails one of the conditions defining \(K_m\), or lies in \(K_m\) and is caught by \(A_m\).
 
-Enumerate the nonempty finite blocks \(F_0,F_1,\ldots\), preserving repetitions, as a sequence \(u_j\to0\) in norm. There is no claimed bound \(\|u_j\|\leq1/j\). Every \(f\in D\) satisfies \(|f(u_j)|>1\) for some \(j\), by choosing an integer \(n\geq\|f\|\) in (CV5). Therefore
-\[
-T:X^*\longrightarrow c_0,\qquad Tf=(f(u_j))_j
-\]
-is bounded linear and \(T(D)\) misses the open unit ball of \(c_0\). [CV-1](OA-FLOW-CV.md#cv-1) separates these convex sets. After normalization it gives a real continuous functional \(L\) on \(c_0\) with norm one and \(L(Tf)\geq1\) for \(f\in D\).
+List the vectors of \(A_1\), then those of \(A_2\), and so on, as one sequence \((x_k)\). It tends to zero because \(A_m\subset m^{-1}\overline B_X\); no rate such as \(\|x_k\|\leq1/k\) is asserted. For \(f\in D\), (CV5) with an integer \(m\geq\|f\|\) gives the required \(k\). ∎
 
-In the complex case set \(a_j=L(e_j)-iL(ie_j)\); in the real case set \(a_j=L(e_j)\). On finite sequences,
+**From the sequence to one vector.** Keep \(D\) and \((x_k)\) as in the lemma. The map
 \[
-L(z)=\operatorname{Re}\sum_j a_jz_j.
+T:X^*\longrightarrow c_0,\qquad Tf=(f(x_k))_{k\geq1},
 \]
-Finite coordinate phase choices with \(a_jz_j=|a_j|\) show \(\sum_{j\in F}|a_j|\leq1\) for every finite \(F\). Truncation of \(z\in c_0\) then gives the same expression for all \(z\) and \(\sum_j|a_j|=\|L\|=1\). In the real case omit real parts and use signs. Completeness of \(X\) gives \(u=\sum_j a_ju_j\in X\), and
+is linear and bounded, and \(T(D)\) is a convex set disjoint from the open unit ball of \(c_0\). By [CV-1](OA-FLOW-CV.md#cv-1) there is a real continuous linear functional \(L\) on \(c_0\) with \(\|L\|=1\) and \(L(Tf)\geq1\) for every \(f\in D\). Put \(a_k=L(e_k)-iL(ie_k)\) in the complex case and \(a_k=L(e_k)\) in the real case. On finitely supported sequences \(L(z)=\operatorname{Re}\sum_ka_kz_k\) (without real parts in the real case). Choosing coordinates \(z_k\) of modulus one with \(a_kz_k=|a_k|\) on a finite set of indices shows \(\sum_k|a_k|\leq\|L\|=1\); by continuity the formula holds on all of \(c_0\), and then \(\sum_k|a_k|=1\). Since \(\sum_k|a_k|\,\|x_k\|<\infty\) and \(X\) is complete, \(u=\sum_ka_kx_k\) exists, and
 \[
 \operatorname{Re}f(u)=L(Tf)\geq1\qquad(f\in D).
 \tag{CV6}
 \]
 
-Return to \(C\). It is norm closed: a norm-convergent sequence in \(C\) lies in a fixed bounded slice and converges weak*, so its limit lies in that slice. Norm topology is metrizable; no weak* sequential-closure claim is made. For \(f_0\notin C\ne\varnothing\), choose \(\delta>0\) with \((f_0+\delta\overline B)\cap C=\varnothing\), and put \(D=\delta^{-1}(C-f_0)\). Its slices are weak* closed, since for \(R\geq\|f_0\|+\delta r\),
+**The theorem.** The set \(C\) is norm closed: a norm-convergent sequence in \(C\) stays in one bounded slice, converges weak* there, and that slice is weak* closed. Let \(C\) be nonempty and \(f_0\notin C\). Choose \(\delta>0\) with \((f_0+\delta\overline B_{X^*})\cap C=\varnothing\) and set \(D=\delta^{-1}(C-f_0)\), which is convex and misses the closed unit ball. Its bounded slices are weak* closed: for \(r>0\) and \(R\geq\|f_0\|+\delta r\),
 \[
-D\cap r\overline B
-=\delta^{-1}\left(((C\cap R\overline B)\cap(f_0+\delta r\overline B))-f_0\right).
+D\cap r\overline B_{X^*}
+=\delta^{-1}\Bigl(\bigl((C\cap R\overline B_{X^*})\cap(f_0+\delta r\overline B_{X^*})\bigr)-f_0\Bigr),
 \tag{CV7}
 \]
-The set in parentheses is compact, and the affine map is a weak* homeomorphism. Apply (CV6): some fixed \(u\in X\) satisfies \(\operatorname{Re}(f-f_0)(u)\geq\delta\) for all \(f\in C\). The strict reverse inequality defines a weak* neighbourhood of \(f_0\) missing \(C\). This proves the theorem for arbitrary real or complex Banach \(X\), with no countability, balancedness or boundedness restriction on \(C\).
+where the set in parentheses is weak* compact and \(g\mapsto\delta^{-1}(g-f_0)\) is a weak* homeomorphism. By (CV6) there is \(u\in X\) with \(\operatorname{Re}(f-f_0)(u)\geq\delta\) for all \(f\in C\). The weak* open set \(\{f:\operatorname{Re}(f-f_0)(u)<\delta\}\) contains \(f_0\) and misses \(C\). Hence \(C\) is weak* closed. Neither countability, balancedness nor boundedness of \(C\) is assumed, and \(X\) is an arbitrary real or complex Banach space.

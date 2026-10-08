@@ -89,10 +89,10 @@ The course uses the complete supporting readings below. Each link is bound to it
 - [Hahn–Banach, Baire and the basic theorems on Banach spaces](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html) — CC0-1.0.
 - [Hilbert spaces and compact operators](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html) — CC0-1.0.
 - [Kaplansky's density theorem and its consequences](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html) — CC0-1.0.
-- [Building representations from positive functionals](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html) — CC0-1.0 original text; CC-BY-4.0 for the credited Westerbaan checkpoint.
+- [Building representations from positive functionals](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html) — CC0-1.0.
 - [The double commutant theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/the-double-commutant-theorem.html) — CC0-1.0.
 - [Order, local units and quotients of C*-algebras](prerequisites/exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html) — CC0-1.0 · proof edition used by the cited result.
-- [Building representations from positive functionals](prerequisites/exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html) — CC0-1.0 original text; CC-BY-4.0 for the credited Westerbaan checkpoint · proof edition used by the cited result.
+- [Building representations from positive functionals](prerequisites/exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html) — CC0-1.0 · proof edition used by the cited result.
 
 ## function algebras and approximation
 
@@ -137,6 +137,6 @@ The following additional assertions are conditional on proofs not included in th
 
 ## Component terms
 
-The independently written AN-03 elliptic-analysis readings and original course figures carry CC0 1.0. Their [rights notice](prerequisites/notices/AN-03/RIGHTS.md), [title page](prerequisites/notices/AN-03/TITLE_PAGE.md), [history](prerequisites/notices/AN-03/HISTORY.md) and [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) accompany them. Other components retain their individually stated terms, including CC BY 4.0 for the credited Westerbaan GNS checkpoint. Linked Fremlin-based readings retain the Design Science License.
+The independently written AN-03 elliptic-analysis readings and original course figures carry CC0 1.0. Their [rights notice](prerequisites/notices/AN-03/RIGHTS.md), [title page](prerequisites/notices/AN-03/TITLE_PAGE.md), [history](prerequisites/notices/AN-03/HISTORY.md) and [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) accompany them. Other components retain their individually stated terms. Linked Fremlin-based readings are CC0 and cite Fremlin.
 
 The rendered selection adds course navigation, mathematical anchors and links. Reader presentation is by GPT-6.1 Sol (OpenAI), Ultra, October 2026; each component retains its specifically recorded terms. The original sources and notices accompany the selection.

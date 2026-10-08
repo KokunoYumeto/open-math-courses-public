@@ -2,11 +2,13 @@
 
 A local Lefschetz contribution can be computed by compact cohomology on an expanding subspace. “Expanding” here is a condition on positive real eigenvalues. It does not mean that every vector in the subspace grows in a chosen Euclidean metric. The proof first separates directions by modulus, constructs a metric suited to that separation, and then removes the extra directions by their action on positive rays.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Learn first Homotopies and local cutoffs for Lefschetz contributions, Lefschetz traces of constructible correspondences, and Perfect operations and finite microlocal coefficients. We also use the written SH-02 proofs of normalized positive-scaling transport, ordinary and proper-support contraction to the zero section, and transport through sheaf operations, in Transport along a scaling action. These are programme prerequisites; their transitive foundations and independent review remain open.
+The ordinary local cutoff theorem constructs the closed entrance and open exit used in the mixed box. Its family class comparison applies to the one normalized scalar family of coefficient maps. The compact-coefficient correspondence trace allows every analytic self-map, and hence the fixed-point-free map on the positive-ray sphere.
 
-Let \(V\) be a finite-dimensional real vector space, \(k\) a characteristic-zero field, and \(F\) a bounded positively conic, real constructible complex with perfect stalks. Conicity means local constancy along parametrized positive scaling orbits. On a vector space the nonzero orbits are embedded rays. Fix
+The scaling input consists of the normalized transport, its cocycle and uniqueness, ordinary contraction, proper-support contraction, and the actual comparisons through sheaf operations. Perfect inverse images, tensors and internal Hom, together with proper image on coefficient support, give the required finite complexes. Below we check the compactification, stabilization and induced operators through these particular maps.
+
+Let \(V\) be a finite-dimensional real vector space, \(k\) a characteristic-zero field, and \(F\) a bounded positively conic, real constructible complex with perfect stalks. Conicity means local constancy along parametrized positive scaling orbits. On a vector space the nonzero orbits are embedded rays. Fix a real linear endomorphism and a degree-zero coefficient morphism
 \[
  u:V\longrightarrow V,\qquad
  \phi:u^{-1}F\longrightarrow F,\qquad
@@ -55,7 +57,7 @@ For such an \(E\), define \(C_E=R\Gamma_c(E;F|_E)\). Its operator \(U_E\) is com
  \xrightarrow{\phi|_E}C_E.
  \qquad\text{(5)}
 \]
-Properness of \(u_E\) justifies the first arrow. Conic proper-support contraction identifies \(C_E\) with the zero costalk of \(F|_E\), which is perfect by the perfect-operation theorem. This proves finiteness without assuming compact support of \(F\) on \(V\).
+The linear isomorphism \(u_E\) is a proper homeomorphism. Its ordinary inverse-image unit, with ordinary and proper direct image identified for this homeomorphism, defines the first arrow and takes a compact support to its compact inverse image. It includes the induced action on an orientation generator; no orientation scalar is removed from it. Ordinary restriction to the linear subspace makes \(F|_E\) bounded conic constructible with perfect stalks. The proper-support contraction map from its zero costalk to \(C_E\) is an isomorphism, and the point costalk is perfect by exceptional inverse-image closure. This proves finiteness without compact support of \(F\) on \(V\), and also covers \(E=0\).
 
 We will prove
 \[
@@ -74,13 +76,13 @@ We need constructibility for a projection \(q:A\oplus B\to B\), although this ma
  a\longmapsto\frac{(1,a)}{\sqrt{1+|a|^2}}.
  \qquad\text{(7)}
 \]
-The image is the open positive hemisphere. Let \(j:A\oplus B\hookrightarrow Y\times B\) be this embedding and put \(m(t,v,b)=(v,tb)\). On \(t>0\), \(m=t(a,b)\). Normalized conic transport therefore identifies \(j^{-1}m^{-1}K\) with \(K\). Consequently
+The image is the open positive hemisphere. Let \(j:A\oplus B\hookrightarrow Y\times B\) be this embedding and put \(m(t,v,b)=(v,tb)\). On the positive hemisphere, write \(a=v/t\); then \(m(t,v,b)=t(a,b)\). Pull the normalized transport back along the analytic map \((a,b)\mapsto((a,b),(1+|a|^2)^{-1/2})\). Its inverse identifies \(j^{-1}m^{-1}K\) with \(K\). This uses one specified transport morphism, natural in \(K\), even though the positive scalar varies with \(a\). Open extension and open internal-Hom adjunction consequently give
 \[
  j_!K\simeq k_{\{t>0\}}\otimes m^{-1}K,\qquad
  Rj_*K\simeq R\mathcal Hom(k_{\{t>0\}},m^{-1}K).
  \qquad\text{(8)}
 \]
-The second identity is open restriction and ordinary adjunction. The map \(m\) is analytic and the positive hemisphere is subanalytic. The constructible inverse-image, tensor and internal-Hom theorems show that both objects in (8) are bounded with perfect stalks. Projection \(\pi:Y\times B\to B\) is proper, so its direct image has the same properties. Since \(q=\pi j\), these images are \(Rq_!K\) and \(Rq_*K\).
+The second identity is ordinary open internal-Hom adjunction applied to \(m^{-1}K\); the first is extension by zero from that same open restriction. The map \(m\) is analytic on all of \(Y\times B\), and the positive hemisphere is subanalytic. The constructible inverse-image, tensor and internal-Hom theorems therefore make both objects in (8) bounded with perfect stalks. Projection \(\pi:Y\times B\to B\) is proper because \(Y\) is compact. Proper constructible direct image then applies. Ordinary composition gives \(R\pi_*Rj_*K=Rq_*K\); proper-support composition and \(R\pi_!=R\pi_*\) give \(R\pi_*j_!K=Rq_!K\). These are identifications of the natural direct-image functors and preserve coefficient morphisms.
 
 Conicity follows from the actual equivariant direct-image comparisons for \(q\). For \(q_!\) they are proper-support base change, even though \(q\) itself is not proper. For \(q_*\), product base change with the scaling parameter is checked on rectangles using interval descent; conjugation by the action homeomorphism gives the action square. The normalized transport in both cases restricts to the identity at parameter one. No general theorem that arbitrary nonproper images preserve constructibility is being used.
 
@@ -119,7 +121,7 @@ A Jordan block estimate bounds \(|A^j|\) by a polynomial in \(j\) times \(r^j\),
  |Av|_P^2=q^2(|v|_P^2-|v|_0^2)\le q^2|v|_P^2.
  \qquad\text{(13)}
 \]
-Apply this construction to \(u_-\) and to \(u_+^{-1}\), and take the orthogonal sum of the two forms. This proves (11), including singular \(u_-\).
+Choose \(\operatorname{spr}(u_-)<q_-<1\) and \(\operatorname{spr}(u_+^{-1})<q_+<1\) for the nonzero summands and apply (12) to each. In the convergent-series estimate one may choose \(r\) strictly between the relevant spectral radius and \(q_\pm\); the polynomial Jordan factor is then summable against \((r/q_\pm)^{2j}\), also when the original map has a zero eigenvalue. The orthogonal sum gives \(c_1=q_-\) and \(c_2=q_+^{-1}\): apply the inverse estimate to \(u_+a\) to obtain the lower bound in (11). A zero summand imposes no condition on its constant and can be omitted. Thus no invertibility of \(u_-\) is assumed.
 
 For \(a,b>0\) set
 \[
@@ -132,7 +134,7 @@ The plus ball is open and the minus ball closed. Since \(u_+^{-1}B_a^+\subset B_
  =u_+^{-1}B_a^+\times\overline B_b^-.
  \qquad\text{(15)}
 \]
-This is open in \(Z_{a,b}\) and closed in \(u^{-1}Z_{a,b}\). The latter assertion uses closedness of the minus ball inside its preimage; the former uses openness of the inverse plus ball inside the plus ball. The compact closure has only the fixed point zero. The ordinary cutoff theorem therefore gives
+Call this intersection \(M_{a,b}\). It is open in \(Z_{a,b}\), because its plus factor is open in \(B_a^+\), and closed in \(u^{-1}Z_{a,b}\), because its minus factor is closed in \(u_-^{-1}\overline B_b^-\). These are the two map-existence conditions of the ordinary cutoff theorem. The set \(Z_{a,b}\) is a locally closed subanalytic neighborhood of zero with compact closure, and \(u\) has no other fixed point anywhere. The coefficient \(F_{Z_{a,b}}=k_{Z_{a,b}}\otimes F\) is constructible with closed support contained in that compact closure. Its ordinary global complex is consequently its compact global complex, identified by locally closed extension with \(R\Gamma_c(Z_{a,b};F|_{Z_{a,b}})\). The cutoff morphism is the ordinary pullback coefficient on \(u^{-1}Z_{a,b}\), closed restriction to \(M_{a,b}\), and open extension into \(Z_{a,b}\). The theorem gives
 \[
  C_0(\phi)=\operatorname{str}(U_{a,b}),
  \quad U_{a,b}\text{ on }R\Gamma_c(Z_{a,b};F|_{Z_{a,b}}).
@@ -150,28 +152,30 @@ Fix \(b>0\) and write \(Z_{\infty,b}=V_+\times\overline B_b^-\). For sufficientl
 \]
 is an isomorphism.
 
-**Proof.** Use (7) with \(A=V_+\), \(B=V_-\), and let
+**Proof.** Use (7) with \(A=V_+\), \(B=V_-\), and the same adapted norms that define the balls in (14). On \(Y\times V_-\) retain \(x_-\) as the unchanged minus coordinate. Let
 \[
  F'=j_!(F_{\{|x_-|\le b\}}),
  \qquad\text{(18)}
 \]
-where \(x_-\) denotes the minus coordinate. Equivalently, \(F'=k_{\{t>0\}}\otimes m^{-1}F\otimes k_{\{|x_-|\le b\}}\). It is constructible and its closed support lies in the compact set \(Y\times\overline B_b^-\). Its restriction to \(t=0\) is zero, because \(j_!\) is open extension by zero.
+where \(x_-\) denotes the minus coordinate. Equivalently, \(F'=k_{\{t>0\}}\otimes m^{-1}F\otimes k_{\{|x_-|\le b\}}\). The last factor cuts off the unchanged minus coordinate of \(Y\times V_-\); it is not the pullback of a cutoff on the scaled coordinate \(t x_-\). The variable-scalar transport used in (8), tensored with this closed cutoff, proves the displayed equivalence. The tensor and inverse-image theorems make \(F'\) constructible, and its closed support is contained in compact \(Y\times\overline B_b^-\). The closed support can meet \(t=0\), but the ordinary restriction of \(F'\) to that fibre is zero, because it is an open extension by zero.
 
-Push \(F'\) by \(g(t,v,b)=t\). Properness on its closed support implies that \(H=Rg_*F'\) is a perfect constructible complex on \(\mathbb R\). Proper base change gives \(H_0=0\). Choose \(\epsilon_0>0\) with no singularity of \(H\) on either of the intervals \((-\epsilon_0,0)\), \((0,\epsilon_0)\).
+Push \(F'\) by \(g(t,v,x_-)=t\). Although \(g\) need not be proper on its entire domain, it is proper on this compact closed coefficient support. Thus \(H=Rg_*F'=Rg_!F'\) is bounded constructible with perfect stalks. Proper base change on the coefficient support identifies \(H_0\) with cohomology of the ordinary fibre restriction, which is zero. Constructibility on the line supplies \(0<\epsilon_0<1\) such that the cohomology sheaves of \(H\) are locally constant on both \((-\epsilon_0,0)\) and \((0,\epsilon_0)\). The point zero itself need not be a regular point.
 
 For \(0<\epsilon<\epsilon_0\),
 \[
  R\Gamma([-\epsilon,\epsilon];H)\simeq H_0=0.
  \qquad\text{(19)}
 \]
-Here is the endpoint argument. On the compact interval, localize at zero. The complementary arms are \([-\epsilon,0)\) and \((0,\epsilon]\). Each carries a constant complex. Its open extension across zero has zero ordinary sections: the triangle from the constant complex on the corresponding closed half interval to its value at zero has restriction map the identity, hence zero fibre. The same statement for bounded complexes follows by truncation, or the derived interval-gluing calculation in Constructible gluing on an interval. The two arm terms vanish, leaving \(H_0\). This proves (19).
+Here is the endpoint argument. On the compact interval, localize at zero. The complementary arms are \([-\epsilon,0)\) and \((0,\epsilon]\). Each carries a constant complex. Its open extension across zero has zero ordinary sections: the triangle from the constant complex on the corresponding closed half interval to its value at zero has restriction map the identity, hence zero fibre. For bounded complexes, apply the same localization to the finite truncation filtration, or use the derived interval-gluing calculation. The arm cohomology complexes vanish, so the restriction map to the zero stalk is an isomorphism. This proves (19) as the actual restriction map, with the outside endpoints included. It does not compute compact cohomology of the open arms as if both endpoints were deleted.
 
 The finite plus ball corresponds to
 \[
  t>\tau(a),\qquad \tau(a)=(1+a^2)^{-1/2}.
  \qquad\text{(20)}
 \]
-Localize \(F'\) into this open set and its closed complement. Since \(F'\) has no stalks for \(t\le0\), the complementary term for \(0<\tau(a)<\epsilon_0\) is \(R\Gamma([-\tau(a),\tau(a)];H)=0\). All closed supports here are compact. The first arrow of this localization triangle is exactly (17), so it is an isomorphism. This proves stabilization with its direction and its endpoint convention specified.
+Use the localization triangle with first term the open extension from \(\{t>\tau(a)\}\) and third term the ordinary closed restriction \(F'_{\{t\le\tau(a)\}}\). The latter is a tensor cutoff, not the supported functor \(R\Gamma_{\{t\le\tau(a)\}}F'\). Projection formula for the closed constant sheaf, or closed proper base change on the coefficient support, gives \(Rg_*F'_{\{t\le\tau(a)\}}\simeq H_{\{t\le\tau(a)\}}\). Since \(H\) vanishes on \(t\le0\), its remaining closed support lies in \([0,\tau(a)]\). Its global complex is therefore \(R\Gamma([-\tau(a),\tau(a)];H)\), which is zero when \(0<\tau(a)<\epsilon_0\), by (19).
+
+All coefficient supports in this triangle are compact. Under (18), proper-support composition identifies the full term with \(R\Gamma_c(Z_{\infty,b};F)\), and (20) identifies its open-cutoff term with \(R\Gamma_c(Z_{a,b};F)\). Its first arrow is the forward open-extension map (17), not a restriction in the opposite direction. The vanishing third term proves that this particular arrow is an isomorphism for every sufficiently large \(a\).
 
 If \(V_+=0\), the plus ball and plus cylinder are both a point, and (17) is the identity. The proof needs no fictitious sphere in that case.
 
@@ -200,7 +204,20 @@ At zero it is the compact pullback and coefficient map (5) for \(E=V_+\). Invert
 
 On the closed minus ball, (22) acts by ordinary \(u_-\)-pullback followed by restriction from \(u_-^{-1}\overline B_b^-\) to \(\overline B_b^-\). Restriction to its zero germ intertwines this operator with the operator on \(H_0\): both restrictions are the counit for the same point inclusion, and \(u_-(0)=0\).
 
-For completeness, finite plus cutoffs intertwine the same operators. Write \(j_a:B_a^+\hookrightarrow V_+\). The plus part of the cutoff map is open extension from \(u_+^{-1}B_a^+\) into \(B_a^+\), after proper pullback by \(u_+\). Compose it with the open-extension counit \(j_{a!}j_a^{-1}F\to F\). Transitivity of open extension identifies that composite with extension from \(u_+^{-1}B_a^+\) directly into \(V_+\), followed by \(\phi\). The minus part is restriction to \(\overline B_b^-\) in both paths. Proper-support base change commutes with these counits. Thus, if \(\beta_a\) is the first map of (21), the resulting square has
+We verify finite-cutoff compatibility before taking traces. On \(V_+\oplus V_-\) put
+\[
+ K_a=F_{B_a^+\times V_-},\qquad Q_a=Rq_!K_a,\qquad
+ \iota_a:Q_a\longrightarrow H=Rq_!F.
+\]
+The map \(\iota_a\) is induced by the open-extension counit. The closed support of \(K_a\) lies in \(\overline B_a^+\times V_-\), on which \(q\) is proper. Thus \(Q_a\) is perfect constructible by proper image on coefficient support; no conicity of this finite cutoff is claimed. Closed-base proper-support base change and composition identify \(R\Gamma(\overline B_b^-;Q_a)\) with \(R\Gamma_c(Z_{a,b};F)\), and identify \(R\Gamma(\overline B_b^-;\iota_a)\) with \(\beta_a\), the map (17).
+
+The Cartesian square already checked gives \(u_-^{-1}Q_a\simeq Rq_!u^{-1}K_a\). Its input cutoff is \(u_+^{-1}B_a^+\times V_-\). Apply \(\phi\) there and then open extension into \(B_a^+\times V_-\). After \(Rq_!\) this defines \(d_a:u_-^{-1}Q_a\to Q_a\). If \(d:u_-^{-1}H\to H\) denotes (22), transitivity of open extension and naturality of proper-support base change give the sheaf-morphism identity
+\[
+ \iota_a d_a=d\,(u_-^{-1}\iota_a).
+\]
+Indeed, both routes extend the same coefficient map from \(u_+^{-1}B_a^+\times V_-\) directly to all of \(V\). The first extends in two open steps and the second in one; their counits compose.
+
+Now apply ordinary sections on the closed minus ball. For both \(Q_a\) and \(H\), pullback by \(u_-\) first goes to its inverse-image ball and then restricts to \(\overline B_b^-\subset u_-^{-1}\overline B_b^-\), before applying \(d_a\) or \(d\). These natural restriction maps preserve the last displayed square. Under the closed-base comparison, the \(Q_a\) path is exactly the ordinary cutoff operator: the plus map is its open exit, and the minus restriction is its closed entrance. The \(H\) path defines \(U_{\infty,b}\). We obtain
 \[
  \beta_a U_{a,b}=U_{\infty,b}\beta_a,
  \qquad
@@ -211,7 +228,7 @@ This is an equality of natural morphisms before stabilization. Once \(a\) is lar
 
 ## Positive scalar transport removes eigenvalues of unit modulus
 
-Choose a small closed interval \(I\subset(0,\infty)\) about one such that \(tu\) never has eigenvalue one. Normalized conic transport gives one morphism on \(V\times I\),
+Choose \(\eta>0\) smaller than \(1/2\) and than half of each positive number \(|\lambda^{-1}-1|\) for a positive real eigenvalue \(\lambda\) of \(u\). The latter list is finite and none of its entries is zero; if it is empty, impose only the first bound. Put \(I=[1-\eta,1+\eta]\). An eigenvalue \(t\lambda=1\) would require \(\lambda>0\) and \(t=\lambda^{-1}\), which this choice excludes. It also keeps every positive real eigenvalue on its original side of one for every \(t\in I\). Pulling back the inverse of the normalized transport \(p^{-1}F\to\mathrm{scaling}^{-1}F\) along \((v,t)\mapsto(u(v),t)\) gives one morphism on \(V\times I\),
 \[
  (tu)^{-1}F\simeq u^{-1}F
  \xrightarrow{\phi}F,
@@ -219,7 +236,11 @@ Choose a small closed interval \(I\subset(0,\infty)\) about one such that \(tu\)
 \]
 where the notation on the right includes pullback from \(V\). At \(t=1\) the transport is the identity. The linear-family theorem proves that \(C_0(\phi_t)\) is constant.
 
-Every fixed expanding space \(E\) for \(u\) remains expanding for \(tu\) if \(I\) is small enough: finitely many positive real eigenvalues stay on their original side of one, zero stays zero, and nonreal or negative eigenvalues remain outside the positive intervals. Moreover \(\operatorname{str}(U_{E,t})\) is constant. To justify the latter with the actual maps, use projection \(r:E\times I\to I\). Proper-support base change identifies \(Rr_!\mathrm{pr}_E^{-1}(F|_E)\) with the constant complex \(C_E\) on \(I\). The joint map \((e,t)\mapsto(tu_Ee,t)\) is a proper homeomorphism over \(I\): its inverse is continuous, with uniformly bounded inverse on compact parameter sets. Compact pullback and the family morphism (24) therefore produce an endomorphism of that constant complex. Interval descent says that all its slice maps are the same endomorphism under the specified identifications. This proves trace constancy; independent choices of coefficient maps at each \(t\) would not suffice.
+The primary subspaces of \(tu\) are the same as those of \(u\). On this single interval every positive real eigenvalue retains its side of one, zero remains zero, and negative or nonreal eigenvalues stay outside the positive forbidden intervals. Thus every fixed expanding space \(E\) remains expanding throughout \(I\); no spectral splitting by modulus is required to stay fixed.
+
+To compare the compact operators, write \(r:E\times I\to I\) and \(N=\mathrm{pr}_E^{-1}(F|_E)\). Proper-support base change for the map \(E\to\mathrm{pt}\) identifies \(Rr_!N\) with the constant complex \((C_E)_I\), including its slice identifications. The map \(a_E(e,t)=(tu_Ee,t)\) is a homeomorphism over \(I\), with inverse \((e,t)\mapsto(t^{-1}u_E^{-1}e,t)\), hence is proper. Its ordinary inverse-image unit identifies \(N\) with \(Ra_{E!}a_E^{-1}N\). Proper-support composition, followed by the restricted family coefficient map (24), therefore gives an endomorphism of \(Rr_!N\). Its slice is exactly the compact pullback and coefficient map \(U_{E,t}\), by proper-support base change.
+
+Ordinary interval descent is fully faithful on constant bounded complexes: under its evaluation identifications an endomorphism of \((C_E)_I\) comes from one endomorphism of \(C_E\). Consequently all these slice operators, and hence their supertraces, agree. This comparison retains any orientation action in compact pullback. Independent coefficient morphisms on separate slices would not give this family endomorphism.
 
 The finitely many values \(t=|\lambda|^{-1}\) for nonzero eigenvalues are the only ones for which \(tu\) has an eigenvalue of modulus one. Choose a nearby value avoiding them. We may therefore apply the hyperbolic proof to \(tu\) and return to \(u\). What remains is to compare the expanding spaces.
 
@@ -241,16 +262,18 @@ The left operator includes proper compact pullback by \(A\).
 \]
 The sphere \(S(L)\) is compact, and \(\sigma\) is an analytic diffeomorphism. It has no fixed point: a fixed positive ray would give \(Av=cv\) for a real \(c>0\).
 
-Choose a norm to identify \(L^\times\) with \(S(L)\times(0,\infty)\). Conic transport and interval descent identify \(G|_{L^\times}=\gamma^{-1}M\), where \(M=R\gamma_*(G|_{L^\times})\) is perfect constructible. This identification is the ordinary radial counit, without a radial shift. The map \(\psi\) descends to \(\sigma^{-1}M\to M\). Indeed, after the same radial coordinates, \(A\) sends \((s,r)\) to \((\sigma s,r|As|)\). Its positive change in the radial coordinate is identified by normalized conic transport, and ordinary interval descent gives exactly the descended map.
+Choose a positive definite norm and represent \(S(L)\) by its unit sphere. The maps \(v\mapsto(v/|v|,|v|)\) and \((s,r)\mapsto rs\) are analytic inverse polar coordinates on \(L^\times\). Conicity gives local constancy along the radial parameter. The cylinder theorem identifies \(M=R\gamma_*(G|_{L^\times})\) with the ordinary restriction of \(G\) to the unit sphere and makes the counit \(\gamma^{-1}M\to G|_{L^\times}\) an isomorphism. This proves that \(M\) is bounded perfect constructible by analytic inverse-image closure, without an arbitrary nonproper direct-image finiteness claim. No radial shift occurs.
+
+The linear map sends \((s,r)\) to \((\sigma s,r|As|)\). Here \(\sigma(s)=As/|As|\), so \(\sigma\) and its inverse defined by \(A^{-1}\) are analytic. Pull back the radial counit by \(A\) and use \(\gamma A=\sigma\gamma\). Through the two counits, \(\psi\) becomes a morphism \(\gamma^{-1}\sigma^{-1}M\to\gamma^{-1}M\). Full faithfulness of ordinary radial descent gives one uniquely determined map \(\sigma^{-1}M\to M\). Its evaluation on the unit sphere is precisely the original coefficient map after the positive radius \(|As|\) is identified by normalized transport. Thus the descent retains the induced map, not just the coefficient objects.
 
 It follows that
 \[
  R\Gamma(L^\times;G)\simeq R\Gamma(S(L);M)
  \qquad\text{(27)}
 \]
-intertwines the ordinary pullback operators. The compact-coefficient Lefschetz formula on \(S(L)\) gives trace zero, since \(\sigma\) has no fixed point. This use of the formula is on a compact sphere, with compact closed coefficient support.
+intertwines the ordinary pullback operators. The compact-coefficient Lefschetz formula on \(S(L)\), applied to this descended map, gives trace zero: its supported coincidence class has empty support because \(\sigma\) has no fixed point. The closed coefficient support is compact as a closed subset of the sphere, including when \(S(L)=S^0\). Thus the theorem applies to the ordinary endomorphism in (27), not to an unproved trace formula on the noncompact punctured vector space.
 
-The localization triangle at zero is invariant under \(A\), because \(A^{-1}(0)=0\). Its terms are perfect: the middle is \(G_0\) by (9), the last is finite by (27), and the first is perfect by the triangle. Trace additivity and the zero trace of its last term give
+The localization triangle \(R\Gamma_{\{0\}}(L;G)\to R\Gamma(L;G)\to R\Gamma(L^\times;G)\xrightarrow{+1}\) has an endomorphism induced by ordinary \(A\)-pullback and \(\psi\). This is a morphism of the actual localization triangle because \(A^{-1}(0)=0\) and \(A\) preserves the complementary open set. Its middle term is \(G_0\) by the ordinary restriction in (9), which intertwines the operator with \(\psi_0\); its last is perfect by (27), so the first is perfect too. Alternating trace is additive on this triangle: in the finite long exact cohomology sequence, image and quotient traces cancel in adjacent degrees. The zero ray trace consequently gives
 \[
  \operatorname{str}R\Gamma_{\{0\}}(L;G)
  =\operatorname{str}R\Gamma(L;G)
@@ -263,7 +286,9 @@ Finally the support-inclusion isomorphism in (9) commutes with \(A\)-pullback, s
 
 Let \(E\) be any expanding space and let \(W\) be (4). Set \(L=E/W\), and let \(A\) be the induced map. It has no real eigenvalue in \([0,\infty)\): positive eigenvalues greater than one have been removed with their full primary blocks, eigenvalues in \([0,1)\) were excluded from \(E\), and one is absent throughout. Put \(p:E\to L\), \(K=F|_E\), and \(G=Rp_!K\).
 
-The projection lemma makes \(G\) conic perfect constructible. The square with \(p,u_E,A\) is Cartesian because \(u|_W\) is invertible. Its proper-support base change and the coefficient map give \(A^{-1}G\to G\). Composition of proper-support direct images and fibre base change give, with their actual operators,
+Choose a real linear splitting of \(p\) to identify \(E\) with \(W\oplus L\) for the projection lemma. This splitting commutes with positive scalar multiplication and need not be preserved by \(u_E\). The lemma proves that \(G\) is conic perfect constructible; the induced comparison is the canonical proper direct image and does not depend on the auxiliary splitting.
+
+The square with horizontal map \(p\) and vertical maps \(u_E,A\) is Cartesian. Explicitly, given \(z\in E\) and \(\ell\in L\) with \(p(z)=A\ell\), the unique point above them is \(u_E^{-1}z\): its quotient is \(A^{-1}p(z)=\ell\), since \(u_E\) and \(A\) are invertible. Proper-support base change followed by the restricted coefficient map therefore gives \(A^{-1}G\to G\). Composition of proper-support images identifies its compact pullback operator with \(U_E\). Fibre base change at zero identifies its stalk operator with compact pullback on \(W\) followed by \(\phi|_W\), because \(u_E^{-1}W=W\) and \(u|_W\) is a proper linear isomorphism. Thus the actual operator comparisons are
 \[
  R\Gamma_c(L;G)\simeq R\Gamma_c(E;K),
  \qquad
@@ -340,8 +365,6 @@ For \(u=-\mathrm{id}\) on \(\mathbb R^n\), \(n>0\), and constant \(F\), compare 
 
 ## Source context and the next localization theorem
 
-The point result is the expanding case of the local contributions in Kashiwara's microlocal Lefschetz fixed-point formula for constructible sheaves. The stabilization proof above supplies the small-interval calculation directly after a proper compactification. The cutoff invokes the ordinary boundary order proved in the preceding course lesson.
+Y. Ike, Y. Matsui and K. Takeuchi, [*Hyperbolic localization and Lefschetz fixed point formulas for higher-dimensional fixed point sets*](https://arxiv.org/abs/1504.04185v2), arXiv 1504.04185v2, 25 May 2015, §5, Definitions 5.2–5.4, define expanding subbundles and the compact-fibre operator. Proposition 5.5 states the associated component trace formula; its proof is omitted there. These constructions form part of Kashiwara's Lefschetz theory. The point proof above supplies the mixed-box stabilization, its operator comparison, the normalized scalar family and the positive-ray trace argument.
 
-For higher-dimensional fixed components, see Yuichi Ike, Yutaka Matsui and Kiyoshi Takeuchi, [Hyperbolic localization and Lefschetz fixed point formulas for higher-dimensional fixed point sets](https://arxiv.org/abs/1504.04185v2), §5. Their expanding-subbundle construction and trace functions give further context. This lesson proves the assigned point theorem with real constructible coefficients; the higher-component theorem has additional geometry and is not inferred here.
-
-The next lesson will prove the full shrinking-space trace with its actual support maps, then deduce the complex stalk/costalk formulas and the transverse constant-sheaf sign.
+The next lesson proves the shrinking-space formula using supported cohomology, then derives the complex stalk and local-isomorphism costalk formulas. Compact pullback on an expanding space and ordinary supported pullback on a shrinking space are different operations, even when their alternating traces agree.

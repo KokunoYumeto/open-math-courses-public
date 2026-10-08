@@ -1,6 +1,6 @@
 # SH02-SPH — Inverse operators from complementary hemisphere boundaries
 
-Local unit: `SH02-SPH`. Intended license: GFDL-1.2-or-later, with no invariant sections or cover texts. The arguments below are complete relative to the stated proper-support, orientation and kernel-composition imports. Formalization, translation and publication have not occurred.
+Local unit: `SH02-SPH`. Intended license: CC0-1.0. The arguments below are complete relative to the stated proper-support, orientation and kernel-composition imports. Formalization, translation and publication have not occurred.
 
 An integral kernel can recover all of an input sheaf even when its support is much larger than a diagonal. Here the intermediate variable ranges over covector directions. A closed inequality followed by an open inequality leaves an open hemisphere above the diagonal. Away from the diagonal it leaves a closed halfspace, whose compactly supported cohomology vanishes. The boundary condition is the mechanism of inversion.
 

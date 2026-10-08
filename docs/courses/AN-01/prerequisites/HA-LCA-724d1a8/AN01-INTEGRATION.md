@@ -8,4 +8,4 @@ The general formula retains its representative, continuity, integrability and me
 
 [Read Poisson summation](src/the-poisson-summation-formula.html#ha-lca-11-theorem-1-1) · [Provider contents](index.html) · [Component licences](LICENCES.html)
 
-The Design Science License, original Fremlin source packages, editable lesson sources and MathJax software/font notices are retained. The CC0 dedication of original AN-01 exposition does not relicense these components.
+Fremlin's original source packages with his licence, editable lesson sources and MathJax software/font notices are retained. The CC0 dedication of original AN-01 exposition does not relicense these components.

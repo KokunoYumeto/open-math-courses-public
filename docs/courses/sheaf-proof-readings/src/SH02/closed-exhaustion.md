@@ -75,6 +75,103 @@ Equivalences of complexes of sheaves can be checked on an open cover, by their
 cohomology sheaves. This proves (1). No compactness or Hausdorff assumption was
 used. \(\square\)
 
+## SH02-EXH-UNBOUNDED — The comparison on all unbounded complexes
+
+The comparison (1), and the Milnor sequence (2) below, also hold for every
+\(K\in D(k_T)\). The space and exhaustion have exactly the preceding
+hypotheses. The ring may be noncommutative, with sheaves of left modules.
+Neither finite cohomological dimension nor exact products of sheaves are
+assumed. Here is the model construction needed to justify the larger range.
+
+Let \(\mathcal A\) be the category of module sheaves on \(T\) and
+\(\mathcal A^{\mathbf N^{\mathrm{op}}}\) its category of inverse sequences.
+This is a Grothendieck category: kernels and filtered colimits are computed
+at each index, so AB5 is inherited. If \(G\) is a generator of \(\mathcal A\),
+the coproduct of the sheaves \(L_nG\) is a generator of the sequence category.
+The exact functor \(L_n\), left adjoint to evaluation at index \(n\), puts
+\(G\) at indices \(m\leq n\), zero at later indices, and uses identity
+transitions where both terms are nonzero. The adjunction detects every
+nonzero component of a morphism, which proves the generator assertion.
+
+Apply the [complete unbounded K-injective construction, Theorem 4.1](../../../derived-categories-and-sheaf-operations/src/k-injective-resolutions-in-grothendieck-categories.md#4-constructing-the-unbounded-resolution)
+to the strict tower \(S_n=i_{n*}i_n^{-1}C\), where \(C\) is any complex
+representing \(K\). Obtain a quasi-isomorphism of sequence complexes
+\(S\to I\) into a K-injective complex of injective sequences. Each
+\(I_n\) is K-injective in \(\mathcal A\). Indeed, for any acyclic complex
+\(B\) in \(\mathcal A\),
+
+\[
+\operatorname{Hom}^{\bullet}_{\mathcal A}(B,I_n)
+\simeq
+\operatorname{Hom}^{\bullet}_{\mathcal A^{\mathbf N^{\mathrm{op}}}}
+(L_nB,I).
+\tag{EXH1}
+\]
+
+The right side is acyclic because \(L_n\) is exact. The same adjunction shows
+that each term of \(I_n\) is injective. Products of K-injective complexes
+are K-injective: their Hom complexes are products of the corresponding Hom
+complexes of modules, whose products are exact. Consequently the degreewise
+product of the \(I_n\) computes the **derived** product in
+\(D(\mathcal A)\), even when ordinary products in \(\mathcal A\) are not
+exact. This is also the product argument in Propositions 5.3–5.4 of the
+linked programme lesson.
+
+The tower resolution also computes the full right derived limit. The constant-tower functor \(\mathrm{const}:\mathcal A\to\operatorname{Tow}(\mathcal A)\) is exact and left adjoint to limit. For an acyclic complex \(B\) of sheaves, its Hom-complex adjunction identifies
+
+\[
+\operatorname{Hom}^{\bullet}_{\mathcal A}(B,\lim I)
+\simeq\operatorname{Hom}^{\bullet}_{\operatorname{Tow}(\mathcal A)}(\mathrm{const}\,B,I).
+\tag{EXHU1}
+\]
+
+Thus \(\lim I\) is K-injective. The same adjunction on abelian objects shows that its terms are injective. Apply main E3–E4 degree by degree to the injective towers \(I^a\): their transitions split, and the kernel of \(1-s\) is \(\lim I\). These degreewise splittings need not commute with the differential. They give a short exact sequence of complexes and hence a quasi-isomorphism
+
+\[
+R\lim S=\lim I\longrightarrow\operatorname{Cone}(1-s)[-1].
+\tag{EXHU2}
+\]
+
+With the cone convention of E4, a kernel element \(x\) is sent to \((0,x)\), and the fibre differential sends it to \((0,dx)\). This proves the kernel-to-fibre comparison on unbounded complexes without assuming exact products of sheaves.
+
+Write \(s\) for the map whose \(n\)th component is the transition from
+\(I_{n+1}\) after projection onto that factor. The strict restrictions
+\(C\to S_n\to I_n\) commute with the transitions. They give the actual
+chain map into the fibre model
+
+\[
+C\longrightarrow
+\operatorname{Cone}\!\left(
+1-s:\prod_n I_n\longrightarrow\prod_n I_n
+\right)[-1].
+\tag{EXH2}
+\]
+
+Its component in the target product is zero; strict compatibility makes the
+chain-map identity hold. Thus the map is fixed before passing to the derived
+category. A compatible comparison of replacements induces the same derived
+restriction map. No uniqueness of a cone in a bare triangulated category is
+being asserted.
+
+Open restriction preserves these products and K-injective models. For the
+first assertion, restriction is right adjoint to exact extension by zero.
+For the second, apply the Hom-complex adjunction to that exact functor.
+It therefore preserves the fibre in (EXH2).
+Applied componentwise to tower complexes, open restriction likewise has the exact componentwise extension-by-zero left adjoint. It preserves their K-injective replacements, so the preceding derived-limit model commutes with open restriction. Removing finitely many indices is justified by the finite coordinate elimination in E5; its formulas use only finitely many terms in each output coordinate.
+ On each open set
+\(U_N=\operatorname{Int}_T(T_N)\), the source tower is the constant
+\(C|_{U_N}\) from index \(N\) onward. To compare this tail through the resolution, choose a K-injective representative \(P\) of \(C|_{U_N}\). The constant tower of \(C|_{U_N}\) is quasi-isomorphic to the constant tower of \(P\). Resolve the latter by a K-injective complex \(J\) of injective towers. Its evaluated maps \(P\to J_n\) are quasi-isomorphisms between K-injective complexes, hence chain homotopy equivalences: the acyclic K-injective cone is contractible by testing its own identity in its Hom complex. Products of these homotopy equivalences are homotopy equivalences, since their homotopies are coordinatewise. The resulting strictly commuting square of difference maps therefore gives an equivalence of fibres. E5 computes the fibre for the constant tower of \(P\) by finite coordinate sums, obtaining \(P\) with its diagonal comparison. This proves the constant-tail assertion at the actual unbounded tower model. The restricted map in (EXH2) is consequently an equivalence. Since
+these open sets cover \(T\), the stalk criterion proves (1) on all of
+\(D(k_T)\).
+
+Finally, derived sections preserve this fibre and its products. Sections
+commute with ordinary products, module products are exact, and the preceding
+K-injective calculation proves the derived assertion. Taking cohomology of
+the module-product fibre gives (2) in every degree. A cohomological lower
+bound was not used in this argument. The Mittag-Leffler condition in degree
+\(q-1\) still governs whether the lim-one obstruction vanishes; enlarging
+the derived input category does not remove that obstruction.
+
 ## SH02-EXH-MILNOR — The precise cohomological obstruction
 
 Closed pushforward \(i_{n*}\) is exact and is right adjoint to the exact inverse-image
@@ -115,11 +212,11 @@ Here are proofs of the inverse-limit facts used above. They apply to the same bo
 
 ### Resolving the whole tower
 
-Let \(\mathcal A\) be the category of sheaves of left \(k\)-modules on \(T\), and let \(\operatorname{Tow}(\mathcal A)\) consist of sequences \(F_{n+1}\xrightarrow{u_n}F_n\), indexed by the nonnegative integers. Its morphisms commute with all transitions. Kernels, cokernels and colimits are computed at each index, so it is abelian and has exact filtered colimits. These sheaf-category facts are proved in Sheaves of modules on a ringed space, Theorems 2.1 and 3.1.
+Let \(\mathcal A\) be the category of sheaves of left \(k\)-modules on \(T\), and let \(\operatorname{Tow}(\mathcal A)\) consist of sequences \(F_{n+1}\xrightarrow{u_n}F_n\), indexed by the nonnegative integers. Its morphisms commute with all transitions. Kernels, cokernels and colimits are computed at each index, so it is abelian and has exact filtered colimits. These sheaf-category facts are proved in [Sheaves of modules on a ringed space, Theorems 2.1 and 3.1](../../../derived-categories-and-sheaf-operations/src/sheaves-of-modules-on-a-ringed-space.md#3-limits-colimits-stalks-and-sections-of-sums).
 
-For an object \(M\) of \(\mathcal A\), define \(L_nM\) to have value \(M\) at indices \(0,\ldots,n\), zero at later indices, and identity transitions between its nonzero terms. A tower map \(L_nM\to F\) is determined by its component \(M\to F_n\): earlier components are its composites with the transitions. Thus \(L_n\) is an exact left adjoint of evaluation at \(n\). If \(U\) is a generator of \(\mathcal A\), then \(\bigoplus_{n\geq0}L_nU\) is a generator of the tower category: a nonzero tower morphism has a nonzero component, detected by a map from the corresponding \(L_nU\). The sheaf generator and its detection property are proved in Proposition 1.1 of K-injective resolutions in Grothendieck abelian categories. Hom collections in the tower category are subsets of products of Hom sets, hence sets. Therefore it is a locally small Grothendieck abelian category.
+For an object \(M\) of \(\mathcal A\), define \(L_nM\) to have value \(M\) at indices \(0,\ldots,n\), zero at later indices, and identity transitions between its nonzero terms. A tower map \(L_nM\to F\) is determined by its component \(M\to F_n\): earlier components are its composites with the transitions. Thus \(L_n\) is an exact left adjoint of evaluation at \(n\). If \(U\) is a generator of \(\mathcal A\), then \(\bigoplus_{n\geq0}L_nU\) is a generator of the tower category: a nonzero tower morphism has a nonzero component, detected by a map from the corresponding \(L_nU\). The sheaf generator and its detection property are proved in [Proposition 1.1 of K-injective resolutions in Grothendieck abelian categories](../../../derived-categories-and-sheaf-operations/src/k-injective-resolutions-in-grothendieck-categories.md#1-the-grothendieck-hypotheses). Hom collections in the tower category are subsets of products of Hom sets, hence sets. Therefore it is a locally small Grothendieck abelian category.
 
-The injective embedding construction, Theorem 2.4, applies to this category. The degree-by-degree resolution construction, Theorem 4.1, consequently resolves any bounded-below complex of towers by a bounded-below complex \(J^\bullet\) of injective towers. In particular it applies to the strict tower \(i_{n*}i_n^{-1}C\) above. Evaluation preserves injectives, because its left adjoint \(L_n\) is exact: extending a map into an evaluated injective is the same as extending the adjoint map from the corresponding monomorphism of towers. Hence each evaluated complex \(J_n^\bullet\) is a bounded-below injective resolution of \(K_n\). All these resolutions have the same lower bound.
+The [injective embedding construction, Theorem 2.4](../../../derived-categories-and-sheaf-operations/src/k-injective-resolutions-in-grothendieck-categories.md#2-sizes-and-functorial-injective-embeddings), applies to this category. The [degree-by-degree resolution construction, Theorem 4.1](../../../derived-categories-and-sheaf-operations/src/injective-modules-and-bounded-below-derived-functors.md#4-right-derived-functors-on-bounded-below-complexes), consequently resolves any bounded-below complex of towers by a bounded-below complex \(J^\bullet\) of injective towers. In particular it applies to the strict tower \(i_{n*}i_n^{-1}C\) above. Evaluation preserves injectives, because its left adjoint \(L_n\) is exact: extending a map into an evaluated injective is the same as extending the adjoint map from the corresponding monomorphism of towers. Hence each evaluated complex \(J_n^\bullet\) is a bounded-below injective resolution of \(K_n\). All these resolutions have the same lower bound.
 
 An injective tower \(J\) has split-surjective transitions. Indeed, \(L_n(J_n)\to L_{n+1}(J_n)\) is a monomorphism. The tower map from its source to \(J\) corresponding to \(1_{J_n}\) extends by injectivity. At index \(n+1\), the extension is a map \(\sigma_n:J_n\to J_{n+1}\) satisfying \(u_n\sigma_n=1_{J_n}\). For any family of morphisms \(y_n:M\to J_n\), set \(x_0=0\) and recursively set \(x_{n+1}=\sigma_n(x_n-y_n)\). This gives \(x_n-u_nx_{n+1}=y_n\). Applied to the projections from the product, the construction gives a right inverse of
 
@@ -142,11 +239,11 @@ Apply these facts separately in every degree of \(J^\bullet\). The splittings ne
 
 The kernel-to-fibre comparison is a quasi-isomorphism, by the cohomology sequence of this short exact sequence of complexes. In the cone convention \(d(y,x)=(dy+\delta x,-dx)\), the fibre is \(\operatorname{Cone}(\delta)[-1]\), its differential is \((y,x)\mapsto(-dy-\delta x,dx)\), and the comparison sends a kernel element \(x\) to \((0,x)\). This checks the actual comparison map and its signs.
 
-The termwise limit of \(J^\bullet\) computes the right derived limit by the cited bounded-below derived-functor construction. Each product in (E4) represents the derived product of the \(K_n\): products of K-injective complexes are K-injective and represent derived products, as proved in Proposition 5.4 of the K-injective lesson. Thus (E4) proves the homotopy-limit triangle used in the geometric comparison, not merely a formula for an ordinary inverse limit. Comparison maps between tower resolutions are unique up to homotopy by the same bounded-below comparison theorem. The construction is therefore independent of the chosen resolution and natural in maps of strict towers.
+The termwise limit of \(J^\bullet\) computes the right derived limit by the cited bounded-below derived-functor construction. Each product in (E4) represents the derived product of the \(K_n\): products of K-injective complexes are K-injective and represent derived products, as proved in [Proposition 5.4 of the K-injective lesson](../../../derived-categories-and-sheaf-operations/src/k-injective-resolutions-in-grothendieck-categories.md#5-derived-functors-adjoints-and-products). Thus (E4) proves the homotopy-limit triangle used in the geometric comparison, not merely a formula for an ordinary inverse limit. Comparison maps between tower resolutions are unique up to homotopy by the same bounded-below comparison theorem. The construction is therefore independent of the chosen resolution and natural in maps of strict towers.
 
 ### Restriction, finite initial segments and sections
 
-For an open inclusion \(j:V\hookrightarrow T\), restriction is exact and has the exact left adjoint \(j_!\), proved in Lemma 5.1 of the module-sheaf lesson. It therefore preserves injectives and K-injectives by the adjunction argument. Restriction also commutes with ordinary products: both products have sections on an open of \(V\) equal to the product of the same sections on that open in \(T\). Apply this to the resolved products in (E4). It proves commutation of restriction with the derived-product fibre, even though arbitrary products of sheaves need not be exact.
+For an open inclusion \(j:V\hookrightarrow T\), restriction is exact and has the exact left adjoint \(j_!\), proved in [Lemma 5.1 of the module-sheaf lesson](../../../derived-categories-and-sheaf-operations/src/sheaves-of-modules-on-a-ringed-space.md#5-extension-by-zero-and-skyscrapers). It therefore preserves injectives and K-injectives by the adjunction argument. Restriction also commutes with ordinary products: both products have sections on an open of \(V\) equal to the product of the same sections on that open in \(T\). Apply this to the resolved products in (E4). It proves commutation of restriction with the derived-product fibre, even though arbitrary products of sheaves need not be exact.
 
 To remove the first \(N\) terms of a tower, split its resolved product into the first \(N\) factors and the tail. In these coordinates \(\delta\) is block upper triangular. Its head block is upper triangular with identity diagonal; backward substitution gives its inverse using only finite sums of transition maps. Eliminating this block identifies its cone with the cone of the tail block plus the contractible cone of an identity. Thus deleting the head preserves the homotopy fibre and its comparison maps. For a constant tail use one K-injective model \(I\) of its value. The coordinate transformation
 
@@ -205,6 +302,127 @@ restriction transitions are identities. Global sections on the connected
 interval are \(\mathbb Z\), with diagonal restriction. The degree-zero limit
 comparison is therefore not an isomorphism. The interiors fail to cover zero,
 exactly where the local proof cannot apply.
+
+## SH02-EXH-LIMONE-EXAMPLE — A nonzero lim-one term on a half-line
+
+Here the exhaustion has the required interiors and all its pieces are
+compact. Nevertheless, the ordinary inverse limit misses global cohomology.
+Take \(T=[0,\infty)\), \(T_n=[0,n]\) for \(n\geq0\), and integer
+coefficients. Define a sheaf \(F\) with stalk \(\mathbb Z\) at every
+integer \(m\) and with constant stalk \(\mathbb Z\) on every edge
+\((m,m+1)\). The germ map from an integer to the edge on its right is the
+identity; its germ map to the edge on its left is multiplication by two.
+At zero only the right map exists.
+
+Explicitly, a section on an open subset consists of one integer value at
+each integer it contains and a locally constant integer-valued function on
+each open-edge component. Near an included vertex the function on its right
+has the vertex value, and the function on its left has twice that value.
+Restrictions retain these data. Local compatible data glue uniquely, so this
+description defines a sheaf. It also verifies its stated stalks and germ
+maps; no abstract correspondence with a diagram category is needed.
+
+Put \(F_n=F|_{T_n}\). A global section of \(F_n\) has vertex values
+\(a_0,\ldots,a_n\) satisfying
+
+\[
+a_m=2a_{m+1}\qquad(0\leq m<n).
+\tag{EXH3}
+\]
+
+Thus the last value identifies \(\Gamma(T_n;F_n)\) with \(\mathbb Z\).
+Restriction from \(T_{n+1}\) to \(T_n\) becomes multiplication by two.
+We also need the higher cohomology of the pieces, rather than just this
+degree-zero computation.
+
+For a closed interval or a point \(Z\subset T_n\), write
+\(\mathbb Z_Z\) for exact closed pushforward of its constant sheaf. There
+is a two-term acyclic resolution
+
+\[
+0\longrightarrow F_n\longrightarrow P_n^0
+\xrightarrow{\delta_n}P_n^1\longrightarrow0,
+\quad
+\begin{aligned}
+P_n^0&=\bigoplus_{m=0}^n\mathbb Z_{\{m\}}
+\oplus\bigoplus_{m=0}^{n-1}\mathbb Z_{[m,m+1]},\\
+P_n^1&=\bigoplus_{m=0}^{n-1}
+\bigl(\mathbb Z_{\{m\}}\oplus\mathbb Z_{\{m+1\}}\bigr).
+\end{aligned}
+\tag{EXH4}
+\]
+
+For the \(m\)th edge, the two endpoint components of \(\delta_n\) are
+\(e_m-a_m\) and \(e_m-2a_{m+1}\). At a nonvertex its target stalk is
+zero and its source stalk is the edge copy. At an interior vertex, its two
+endpoint components can be prescribed independently by the two edge germs;
+the kernel consists of the vertex value and its two prescribed edge germs.
+At a terminal vertex there is just one such equation. These stalk
+calculations prove exactness and identify the kernel with \(F_n\).
+They also define its inclusion by the vertex values and the edge functions
+extended to their endpoints. For \(n=0\) the assertion is just the identity
+of the point sheaf.
+
+All the summands of \(P_n^0\) and \(P_n^1\) are acyclic for sections on
+\(T_n\): points have exact sections, and closed constant intervals are
+acyclic by [the interval criterion and its constant-coefficient calculation](../../SH02-convex-acyclicity.html#SH02-CA-INTERVAL).
+Closed pushforward preserves that calculation. The sums are finite.
+On global sections, eliminating the edge variables reduces the cokernel
+of \(\delta_n\) to the cokernel of
+
+\[
+\mathbb Z^{n+1}\longrightarrow\mathbb Z^n,
+\qquad(a_m)\longmapsto(a_m-2a_{m+1})_{0\leq m<n}.
+\tag{EXH5}
+\]
+
+This map is onto: choose \(a_n=0\) and solve backward for any prescribed
+right-hand side. The acyclic resolution now proves
+\(H^q(T_n;F_n)=0\) for \(q>0\). Its degree-zero kernel is exactly (EXH3).
+
+For the resulting tower, the ordinary limit is zero: each compatible
+\(a_m\) is divisible by every power of two. Its derived first limit is the
+cokernel of
+
+\[
+\Delta:\prod_{m\geq0}\mathbb Z\longrightarrow\prod_{m\geq0}\mathbb Z,
+\qquad(x_m)\longmapsto(x_m-2x_{m+1}).
+\tag{EXH6}
+\]
+
+Define \(\mathbb Z_2=\lim_r\mathbb Z/2^r\mathbb Z\). The sum
+\(\sigma(y)=\sum_{m\geq0}2^my_m\) converges in \(\mathbb Z_2\) for
+every integer sequence. The telescoping identity gives
+\(\sigma(\Delta x)=x_0\). Hence it induces a map from the cokernel to
+\(\mathbb Z_2/\mathbb Z\), using the ordinary integer embedding.
+Every two-adic integer has a binary digit sequence, so that map is onto.
+If \(\sigma(y)=c\) is an ordinary integer, put
+
+\[
+x_m=\frac{c-\sum_{r<m}2^ry_r}{2^m}.
+\tag{EXH7}
+\]
+
+The numerator is an ordinary integer divisible by \(2^m\), because its
+image in \(\mathbb Z/2^m\mathbb Z\) is zero. Thus each \(x_m\) is an
+integer, and (EXH7) satisfies \(\Delta x=y\). This proves injectivity of
+the cokernel map. The Milnor sequence therefore gives
+
+\[
+H^0(T;F)=0,\qquad
+H^1(T;F)\simeq\mathbb Z_2/\mathbb Z,\qquad
+H^q(T;F)=0\quad(q\geq2).
+\tag{EXH8}
+\]
+
+The middle group is nonzero. For example, three is invertible in every
+\(\mathbb Z/2^r\mathbb Z\), and its compatible inverses give a two-adic
+integer satisfying \(3z=1\); no ordinary integer satisfies that equation.
+The images in any fixed term of the tower are the strictly decreasing
+subgroups \(2^r\mathbb Z\), so the tower is not Mittag-Leffler. In degree
+one it is exactly the degree-zero lim-one term that survives. Compactness of
+every closed piece and vanishing of all its positive cohomology have not
+supplied the missing condition.
 
 ## SH02-EXH-DEPENDENCIES — Dependencies and attribution
 

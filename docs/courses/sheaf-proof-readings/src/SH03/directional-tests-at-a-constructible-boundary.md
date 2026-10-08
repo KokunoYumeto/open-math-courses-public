@@ -2,7 +2,7 @@
 
 The restriction maps of a constructible sheaf tell us which direction can obstruct continuation across a boundary. On an interval, this can be calculated without a coordinate-free microlocal construction: one cone measures the positive direction and another measures the negative direction. The calculation gives a complete microsupport description for the one-point model, including open and closed supports and their different cohomological shifts.
 
-The prerequisite is Constructible gluing on an interval. We also use the definition of microsupport by local cohomology tests, taught in Detecting and removing directional obstructions. The source account below credits the classical definition and examples and explains the direct interval proof.
+The prerequisite is the bounded-complex diagram realization and the ordinary cohomology of constant coefficients on an interval. We use the local-cohomology definition of microsupport, including its quantifier over every test function in one cotangent neighborhood. The closed/open localization triangle supplies Proposition 1. The source account below credits the classical definition and examples and explains the direct interval proof.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
@@ -110,7 +110,7 @@ The perverse origin correction keeps the degree-zero costalk kernel and its exce
 
 ## A kernel application
 
-Let \(h:I\to J\) be a diffeomorphism of intervals with \(h(0)=0\). Its graph kernel implements the exact direct image. The cotangent transformation from Sheaf kernels and cotangent correspondences is
+Let \(h:I\to J\) be a diffeomorphism of intervals with \(h(0)=0\). Its graph kernel implements the exact direct image. The cotangent transformation from the graph-kernel calculation is
 
 \[
 (t,\xi)\longmapsto(h(t),\xi/h'(t)).
@@ -166,7 +166,7 @@ Compare the positive and negative open half intervals with their closed counterp
 
 Let \(f:\mathbb R\to\mathbb R\) be \(f(t)=t^2\), and let \(k\neq0\). Determine \(Rf_*k_{\mathbb R}\) near zero, its two boundary tests, and its nonzero microsupport directions. Compare with the cotangent direct-image estimate.
 
-**Solution.** The map is proper and its fibres are finite. Proper base change shows that higher cohomology sheaves vanish, and gives stalks zero on the negative side, \(k\) at zero, and \(k\oplus k\) on the positive side. A constant section near the source point zero restricts to the same value on the two positive preimages. Thus the local diagram is \(0\leftarrow k\xrightarrow{\Delta}k\oplus k\), where \(\Delta(v)=(v,v)\). Its positive test is \(k\) and its negative test is \(k[-1]\), since the diagonal is injective with cokernel \(k\). Both boundary directions occur. In the cotangent estimate, a target covector \(\xi\) pulls back to \(2t\xi\). It belongs to the zero-section microsupport of the source constant sheaf only if \(2t\xi=0\). At \(t=0\), every target covector is permitted; away from zero only the zero covector is permitted. Thus the estimate agrees exactly with the computed nonzero boundary fibre in this example. The calculation is for a real branched map; it does not assert a general equality for finite complex-analytic maps.
+**Solution.** The map is proper and its fibres are finite. The derived proper-fibre formula shows that higher cohomology sheaves vanish, and gives stalks zero on the negative side, \(k\) at zero, and \(k\oplus k\) on the positive side. A constant section near the source point zero restricts to the same value on the two positive preimages. Thus the local diagram is \(0\leftarrow k\xrightarrow{\Delta}k\oplus k\), where \(\Delta(v)=(v,v)\). Its positive test is \(k\) and its negative test is \(k[-1]\), since the diagonal is injective with cokernel \(k\). Both boundary directions occur. In the proper-image cotangent estimate, a target covector \(\xi\) pulls back to \(2t\xi\). It belongs to the zero-section microsupport of the source constant sheaf only if \(2t\xi=0\). At \(t=0\), every target covector is permitted; away from zero only the zero covector is permitted. Thus the estimate agrees exactly with the computed nonzero boundary fibre in this example. The calculation is for a real branched map; it does not assert a general equality for finite complex-analytic maps.
 
 ## References
 
@@ -176,4 +176,4 @@ Let \(f:\mathbb R\to\mathbb R\) be \(f(t)=t^2\), and let \(k\neq0\). Determine \
 
 **Images and examples.** Theorem 2.9 of the same notes, pp. 10–11, states and proves the proper-on-support direct-image bound using local cohomology and the proper fibre formula. It explains the estimate compared with the final branched-map exercise. The actual stalks, diagonal attachment, two nonzero tests and cotangent equation for that example are calculated in the solution; a general equality under proper direct image is not assumed. The diffeomorphism exercise follows by transporting the attachment diagram and using the inverse derivative on covectors.
 
-**Proof and expression scope.** The exposition is organized around the two attachment maps and their relation to the point costalk, then follows the same integral diagram into the perverse lesson. It retains complete solutions and gives the one-dimensional proof rather than treating the survey's examples as supplied proofs. The preceding diagram lesson, local cohomology, constant-interval acyclicity and proper base change are the exact foundational inputs. Their complete transitive proof clearance, and that of the later general kernel and perverse constructions, remain separate obligations. Independently written programme text is CC0; separately linked human-derived components retain their own stated terms.
+**Proof and expression scope.** The exposition is organized around the two attachment maps and their relation to the point costalk, then follows the same integral diagram into the perverse lesson. It retains complete solutions and gives the one-dimensional proof rather than treating the survey's examples as supplied proofs. The preceding diagram lesson supplies the bounded-complex model; the localization, constant-interval and proper-fibre proofs are linked at their uses. The proper-image comparison uses the programme proof by local support tests. The general kernel estimates and the later perverse construction are separate developments. Independently written programme text is CC0; separately linked human-derived components retain their own stated terms.

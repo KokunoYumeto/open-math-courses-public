@@ -8,6 +8,8 @@ A Dirichlet wall removes part of the free spectral density. The method of images
 
 We first compute the flat spectral projector, then control its oscillatory normal profile without a stationary-phase theorem. We carry the calculation through a curved collar and give a precise condition under which a spectral remainder permits the same boundary coefficient. The transfer theorem keeps that explicit hypothesis. [Corollary 4.3](#reflection-curved-projector) applies it to the general curved Dirichlet operator using the complete programme wave proof.
 
+Hörmander [H3, Theorem 17.5.10 and Corollary 17.5.11] develops the curved Dirichlet remainder and its integrated quarter-volume boundary term.
+
 Ivrii's survey [I] and monograph [M] discuss the boundary spectral remainder. Frank–Geisinger [FG] study the first Riesz mean, and Ivrii's lectures [A] explain transverse reflection. We prove the flat projector, profile estimates and transfer implication from Fourier and form arguments. The exact bounded smooth Euclidean domain and compact inverse are proved in [The smooth Dirichlet domain and its compact inverse](../providers/analysis/dirichlet-domain-and-compactness.md#dirichlet-domain-compact-resolvent). The generic Hilbert eigenbasis and moment domains are in [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains). The curved spectral remainder is proved for the actual Dirichlet density in the linked spectral reading; the transfer theorem below also applies to any family satisfying its explicit hypotheses. [Return times and spectral counting](return-times-and-spectral-counting.md) explains how positivity turns wave information into a count. Our Fourier convention is
 \[
 \widehat f(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}f(x)\,dx,
@@ -45,6 +47,23 @@ Multiplication by \(|\xi|^2\) commutes with reflection, so the odd subspace and 
 Here is the full energy-space identification on this unbounded half-space. If \(f\in H^1_0(H)\), approximate it by compact smooth functions inside \(H\). Their odd extensions converge in \(H^1(\mathbb R^n)\), since (2) preserves both the function norm and the gradient norm. Conversely, for an odd \(u\in H^1(\mathbb R^n)\), convolution with an even smooth approximate identity and multiplication by even cutoffs at infinity give compact smooth odd approximants in \(H^1\), by the [proved mollification and integer-Sobolev density statements](../providers/analysis/euclidean-approximation-and-convolution.md#integer-sobolev-density). For one such approximant, its restriction \(v\) vanishes at \(d=0\) and obeys \(|v(x',d)|\le Cd\) on its compact support. Multiply it by \(\eta(d/\varepsilon)\), where \(\eta=0\) near zero and \(\eta=1\) for arguments at least two. The function and ordinary derivative errors tend to zero on a strip of thickness \(2\varepsilon\); the extra cutoff derivative is bounded by \(C d/\varepsilon\) there, so its squared integral also tends to zero. These new functions lie in \(C_c^\infty(H)\). A diagonal choice of approximants proves \(J^{-1}u\in H^1_0(H)\).
 
 The flat trace inequality and local smooth approximation proved in the [Dirichlet boundary reading](../providers/analysis/dirichlet-domain-and-compactness.md#dirichlet-boundary-h2) show that these functions have trace zero. They also justify integration by parts up to the flat wall for an arbitrary \(H^1(H)\) function, first locally and then with cutoffs. If its trace is zero, its odd extension has no boundary delta in the normal weak derivative: the jump coefficient is twice that trace. Its tangential derivatives have the corresponding odd extensions, and its normal derivative has the even extension, all in \(L^2\). The preceding approximation therefore proves the converse zero-trace characterization as well. Thus the odd Fourier energy form is exactly \(\int_H|\nabla f|^2\) on \(H^1_0(H)\), including its complete domain.
+
+<a id="reflection-linewise-trace"></a>
+
+**A linewise explanation of the zero trace.** The same conclusion can be seen on almost every normal line, with the representative justified directly. For an odd \(u\in H^1(\mathbb R^n)\), choose the compact smooth odd approximants \(u_j\) above along a subsequence satisfying \(\sum_j\|u_j-u\|_{H^1}^2<\infty\). Tonelli gives, for almost every \(x'\), convergence of both \(u_j(x',\cdot)\) and \(\partial_d u_j(x',\cdot)\) in \(L^2(-a,a)\), for every positive integer \(a\). Indeed the sum of their squared errors has finite integral in \(x'\). Passing to the limit against a compact smooth test in \((-a,a)\) shows that the second limit is the weak derivative of the first.
+
+For a smooth complex-valued \(w\) on \([-a,a]\), the fundamental theorem of calculus for \(|w|^2\), followed by Cauchy–Schwarz and averaging the starting point over the interval, gives
+\[
+ \sup_{|t|\leq a}|w(t)|^2
+ \leq \frac{1}{2a}\|w\|_{L^2(-a,a)}^2
+       +2\|w\|_{L^2(-a,a)}\|w'\|_{L^2(-a,a)}.
+\]
+Apply this inequality to differences of the smooth slices. Their convergence in \(H^1(-a,a)\) makes them uniformly Cauchy, so their limit is a continuous representative \(v\) of the slice. In the identity
+\[
+ u_j(x',t)-u_j(x',s)
+       =\int_s^t\partial_d u_j(x',r)\,dr
+\]
+the integral converges uniformly in \(s,t\), since its error is at most \((2a)^{1/2}\) times the derivative's \(L^2\) error. Hence \(v(t)-v(s)\) is the integral of its weak derivative. This makes \(v\) absolutely continuous: for disjoint intervals of total length \(\delta\), the sum of increments is bounded by \(K\delta+\int_{\{|v'|>K\}}|v'|\); first choose \(K\) large and then \(\delta\) small. Each approximant is odd, so the uniform limit is odd and \(v(0)=0\). The representatives agree on overlapping intervals because continuous functions equal almost everywhere are equal everywhere. Taking the countable exhaustion in \(a\) therefore proves the assertion on almost every complete normal line. For \(n=1\), the same argument applies to the single line without a tangential exceptional set. Finally, the trace inequality used above makes boundary restriction continuous under these \(H^1\) approximations on each bounded patch. Thus their linewise value zero is the same zero Sobolev trace used in the form-domain argument.
 
 For \(k>0\), the full-space spectral projector onto energies at most \(k^2\) is multiplication in Fourier space by \(\mathbf1_{\{|\xi|\leq k\}}\). Its continuous kernel is
 \[
@@ -296,6 +315,55 @@ No special-function evaluation is needed. Integrating the derivative of \(z(1-z^
  \end{gathered}
 \]
 The derivative is integrable since \(\alpha>0\), so the identity follows by first integrating on compact subintervals and passing to the limit. The slicing identity for ball volume gives \(\omega_{n-1}\int_{-1}^1(1-z^2)^\alpha dz=\omega_n\). Since \(2\alpha+1=n\), this proves \(M_n=n(2\pi)^{-n}\omega_n/4\). In particular \(M_2=1/(8\pi)\) and \(M_3=1/(8\pi^2)\). Every factor retains the reflected argument \(2s\). ∎
+
+<a id="reflection-beta-gamma-moment"></a>
+
+**A second evaluation of the moment, using beta and gamma integrals.** The integration-by-parts calculation above already determines \(M_n\). The following evaluation gives the same constant and proves the special-function identities it uses. For \(a,b>0\), define
+\[
+ \Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt,\qquad
+ B(a,b)=\int_0^1 u^{a-1}(1-u)^{b-1}\,du.
+\]
+The powers are integrable at their finite endpoints. At infinity, the proved exponential series gives \(e^t\geq t^N/N!\); choose an integer \(N>a+1\) to bound the gamma integrand by an integrable power and to make \(t^ae^{-t}\) tend to zero. Integration by parts on compact intervals, then passage to their endpoints, gives
+\[
+ \Gamma(a+1)=a\Gamma(a).
+\]
+Tonelli and the coordinate change \((s,t)=(ru,r(1-u))\), with \(r>0\), \(0<u<1\) and absolute Jacobian \(r\), give
+\[
+ \begin{aligned}
+ \Gamma(a)\Gamma(b)
+ &=\int_0^\infty\!\int_0^\infty
+       s^{a-1}t^{b-1}e^{-s-t}\,ds\,dt\\
+ &=\Gamma(a+b)B(a,b).
+ \end{aligned}
+\]
+The change is a smooth bijection of the indicated open regions, with inverse \(r=s+t,\ u=s/(s+t)\), so the [proved substitution theorem](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-integration) applies. Nonnegative convergence permits exhaustion of the unbounded regions.
+
+To fix the normalization, let \(I=\int_{\mathbb R}e^{-x^2}\,dx\), which is finite and positive. Tonelli and the polar formula proved above give
+\[
+ I^2=2\pi\int_0^\infty e^{-r^2}r\,dr=\pi.
+\]
+Substitution \(t=x^2\) on the positive half-line gives \(\Gamma(1/2)=I=\sqrt{\pi}\). More generally, for every integer \(m\geq1\), product integration and polar integration in \(\mathbb R^m\) give
+\[
+ \pi^{m/2}
+   =m\omega_m\int_0^\infty e^{-r^2}r^{m-1}\,dr
+   =\frac{m\omega_m}{2}\Gamma(m/2),
+ \qquad
+ \omega_m=\frac{\pi^{m/2}}{\Gamma(m/2+1)}.
+\]
+All integrands here are nonnegative; the gamma recurrence supplies the final equality. Now put \(\alpha=(n-1)/2>0\). Substitution \(u=z^2\), using the evenness of the integrand, yields
+\[
+ \int_{-1}^1(1-z^2)^{\alpha-1}\,dz
+   =B(1/2,\alpha)
+   =\frac{\sqrt{\pi}\Gamma(\alpha)}{\Gamma(\alpha+1/2)}.
+\]
+Inserting this into the already proved expression
+\(M_n=c_n\alpha\int_{-1}^1(1-z^2)^{\alpha-1}\,dz/2\),
+where \(c_n=(2\pi)^{-n}\omega_{n-1}\), gives
+\[
+ M_n=(2\pi)^{-n}\frac{\pi^{n/2}}{2\Gamma(n/2)}
+     =\frac n4(2\pi)^{-n}\omega_n.
+\]
+This agrees with the first evaluation in every dimension \(n\geq2\).
 
 <a id="reflection-model-next-coefficient"></a>
 **Corollary 3.3 (fixed-weight model expansion).** Under precisely the hypotheses of Theorem 3.1,
@@ -569,6 +637,8 @@ No bound uniform in the \(C^1\) norm of these cutoffs was asserted or needed. �
 
 Thus one first takes the high-energy limit with a fixed cutoff, then shrinks the collar. An energy-dependent cutoff can give a different coefficient, as Exercise 6.5 shows.
 
+The fixed-collar limit followed by shrinking the collar is also used in the proof of Hörmander [H4, Theorem 29.3.3]; that theorem combines this boundary step with interior return-time estimates.
+
 <a id="reflection-curved-projector"></a>
 **Corollary 4.3 (the actual curved Dirichlet density).** Let \(P\) be a scalar formally self-adjoint second-order elliptic differential operator on half densities on a compact smooth manifold \(X\) of dimension \(n\geq2\), with smooth boundary and no corners. Assume its Dirichlet realization is strictly positive, and let \(g\) be the metric defined by its positive principal symbol. Retain all smooth lower-order terms. Then \(q_k(x)=e_P(x,x;k^2)\), as a scalar density relative to \(dV_g\), satisfies (21) in a fixed boundary collar, uniformly for \(k\geq2\). The conclusion holds for either the strict or the closed spectral endpoint convention. At the wall \(q_k\), \(m_k\) and \(R_k\) are zero. Consequently Theorem 4.1 and Corollary 4.2 hold for this actual spectral density.
 
@@ -743,3 +813,5 @@ rather than \(\kappa_1=1/(4\pi)\). In the rescaled normal variable the weight re
 - [M] Victor Ivrii, *Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, freely readable [author monograph](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), July 9, 2023 version. Sections 3.2.1 and 8.1.1–8.1.2 give the generalized-ray and pointwise boundary routes and their prerequisite estimates.
 - [FG] Rupert L. Frank and Leander Geisinger, *Two-term spectral asymptotics for the Dirichlet Laplacian on a bounded domain*, [arXiv:1105.5182v1](https://arxiv.org/abs/1105.5182v1), Theorem 1.1, Sections 2.2–2.3 and 3. Its spectral sum is the first Riesz mean.
 - [A] Victor Ivrii, *Asymptotic and Perturbation Methods*, [Geometric optics and reflection](https://www.math.utoronto.ca/ivrii/APM-textbook/Chapter5/L5.4.html), open lectures.
+- [H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Theorem 17.5.10 and Corollary 17.5.11, pp. 52–55. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, proof of Theorem 29.3.3, pp. 273–274. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

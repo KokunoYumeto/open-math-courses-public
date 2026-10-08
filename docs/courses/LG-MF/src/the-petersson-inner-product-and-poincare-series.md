@@ -4,7 +4,7 @@
 
 A Fourier coefficient is a linear functional on the finite-dimensional space of cusp forms. We will construct a cusp form that represents this functional by integration. The construction averages one exponential over the modular group; its convergence, its values at the cusps, and the integral obtained by unfolding will all be proved.
 
-We assume Dimension formulas for congruence subgroups, the slash and cusp conventions of Modular forms, lattice functions and Eisenstein series, and basic measure theory, including Tonelli's and Fubini's theorems. The Petersson pairing and the coefficient estimate apply to every finite-index subgroup \(\Gamma\subset\mathrm{SL}_2(\mathbb Z)\). The Poincaré series displayed below are for \(\Gamma_0(N)\), including level one, and even \(k\ge4\). We will also construct the Eisenstein complement for every finite-index group in those even weights.
+We assume Dimension formulas for congruence subgroups, the slash and cusp conventions of Modular forms, lattice functions and Eisenstein series, and real plane change of variables. The continuous series and improper integrals use The upper half-plane and the modular group, Lemma 0.3, together with the modular tiling argument below. Theorem 1.1 also retains the measure-theoretic prerequisite for arbitrary measurable fundamental domains. The Petersson pairing and the coefficient estimate apply to every finite-index subgroup \(\Gamma\subset\mathrm{SL}_2(\mathbb Z)\). The Poincaré series displayed below are for \(\Gamma_0(N)\), including level one, and even \(k\ge4\). We will also construct the Eisenstein complement for every finite-index group in those even weights.
 
 Write \(z=x+iy\), \(d\mu=dx\,dy/y^2\), and
 \[
@@ -168,6 +168,69 @@ A_{k,m}=\frac{\Gamma(k-1)}{(4\pi m)^{k-1}}
 \]
 The equality follows by repeated integration by parts in the gamma integral.
 
+### Continuous integrals and projected modular tiles
+
+The integral of a nonnegative continuous function on an unbounded region is the supremum of its compact truncation integrals. For a complex function we require finiteness of the corresponding absolute integral and then take the limit of the compact integrals. These are the conventions of The upper half-plane and the modular group, Lemma 0.3. Its plane version already supplies the interchange for a locally uniformly convergent nonnegative series, with infinity allowed, and the interchange for a continuous series whose absolute integrals have finite sum. We now justify the partitions of regions to which those statements will be applied.
+
+**Lemma 4.0 (integration over modular tiles).** Let \(\Gamma\) have finite index in \(\mathrm{SL}_2(\mathbb Z)\), and choose a fundamental region \(D\) as a finite union of translates of the closed level-one region
+\[
+ \mathcal F=\{z\in\mathfrak H:|\operatorname{Re}z|\le1/2,\ |z|\ge1\}.
+\]
+The projectively distinct translates of \(D\) cover \(\mathfrak H\), have disjoint cell interiors, and meet every compact subset in only finitely many tiles. Their boundaries have zero area on compact truncations. Integrals are therefore unchanged by assigning their boundary points to different tiles.
+
+Suppose in addition that \(h\) is a positive integer and
+\(\Gamma_{\infty,h}=\{\pm T^{hr}:r\in\mathbb Z\}\subset\Gamma\). Put
+\[
+\begin{gathered}
+ S_h=\{x+iy:0\le x<h,\ y>0\},\\
+ D_\gamma=\bigcup_{r\in\mathbb Z}
+                  (T^{hr}\gamma D\cap S_h),
+ \qquad \gamma\in\Gamma_{\infty,h}\backslash\Gamma.
+\end{gathered}
+\]
+These projected tiles cover \(S_h\) with disjoint cell interiors; their pieces and boundaries are locally finite on every compact positive-height strip truncation. For every continuous nonnegative function \(G\) on \(\mathfrak H\) of horizontal period \(h\),
+\[
+\begin{gathered}
+ \sum_{\Gamma_{\infty,h}\backslash\Gamma}\int_{\gamma D}G\,dx\,dy\\
+ =\sum_{\Gamma_{\infty,h}\backslash\Gamma}\int_{D_\gamma}G\,dx\,dy\\
+ =\int_{S_h}G\,dx\,dy.
+\end{gathered}
+ \tag{4.0a}
+\]
+with infinity allowed. If \(G\) is complex continuous and \(\int_{S_h}|G|\,dx\,dy<\infty\), the same identities hold and both series of integrals converge absolutely. A fixed nonnegative continuous density may be included in the integrand whenever the product has the stated continuity and periodicity.
+
+**Proof.** The reduction and side-pairing analysis in the first lesson, Theorems 2.2 and 3.2, prove coverage by the level-one tiles and disjointness of their interiors. Representatives for \(\bar\Gamma\backslash\mathrm{PSL}_2(\mathbb Z)\) give the stated finite union \(D\); its subgroup translates partition the level-one cells. We check local finiteness explicitly. On a compact \(K\subset\mathfrak H\), choose \(\epsilon,M>0\) with
+\(\epsilon\le\operatorname{Im}z\le M\) and \(|z|\le M\). If \(\eta\mathcal F\) meets \(K\), some \(z\in K\) has \(\eta^{-1}z\in\mathcal F\), of height at least \(\sqrt3/2\). Write \((c,d)\) for the bottom row of \(\eta^{-1}\). The imaginary-part identity gives
+\[
+\begin{gathered}
+ |cz+d|^2\le 2M/\sqrt3,\\
+ |c|\epsilon\le |cz+d|,\\
+ |d|\le |cz+d|+|c|M.
+\end{gathered}
+\]
+Thus only finitely many integer rows \((c,d)\) occur. For one row, fix a determinant-one completion \(\tau\). All other completions are \(T^n\tau\), \(n\in\mathbb Z\), by subtracting their upper rows. The real part of \(\tau z\) is bounded on \(K\); the condition \(\operatorname{Re}(T^n\tau z)\in[-1/2,1/2]\) bounds \(n\). Only finitely many projective matrices \(\eta\) occur. Every \(\Gamma\)-translate of \(D\) is a finite union of these level-one cells, so its family is locally finite as well.
+
+On a compact truncation the boundaries consist of finitely many line and circle arcs and the truncation edges. To check their form after a group transformation, substitute its inverse \((az+b)/(cz+d)\) into the equations \(\operatorname{Re}w=\pm1/2\) and \(|w|=1\), and multiply by \(|cz+d|^2\). The resulting real equation is of the form \(A(x^2+y^2)+Bx+Cy+E=0\), hence describes a circle or a line; its denominator never vanishes in \(\mathfrak H\). Here is the zero-area estimate behind their omission. If a compact \(C^1\) arc has a parametrization with derivative bounded by \(L\), split its parameter interval into pieces of length at most \(\delta\). Each image lies in a square of side \(2(L+1)\delta\); there are \(O(\delta^{-1})\) squares, with total area \(O(\delta)\). Their finite union has arbitrarily small total area. Splitting piecewise \(C^1\) arcs into their finitely many pieces proves the same assertion. This is also the boundary estimate used for the compact plane integrals in Lemma 0.3 of the first lesson.
+
+We need the finite-additivity consequence of that estimate. On a rectangle \(R\) meeting only finitely many cells, use one sufficiently fine rectangular grid for the continuous integrand and for all the intersected cells. Away from the boundary squares, each grid cell belongs to exactly one tile, and its Riemann-sum contribution occurs once. Uniform continuity makes the interior approximation errors tend to zero. The error on boundary squares is bounded by a fixed bound for the integrand times their total area, which also tends to zero. Consequently the integral on \(R\), or on its intersection with a finite union of cells, is the sum of the integrals on its tile pieces. All these intersections are Jordan regions: their boundaries are contained in finitely many line and circle arcs and rectangle edges.
+
+For a locally finite tiling \(\{A_j\}\), take nested rectangular truncations \(R_m=[-m,m]\times[1/m,m]\) in \(\mathfrak H\); in \(S_h\) use \([0,h]\times[1/m,m]\). Finite additivity gives, for \(G\ge0\),
+\[
+ \int_{\Omega\cap R_m}G=\sum_j\int_{R_m\cap A_j}G.
+\]
+Only finitely many terms occur at each \(m\). Taking the supremum over \(m\) and over finite initial sets of tiles can be done in either order: both orders give the supremum of the same finite-partition integrals. For a fixed finite set, increasing truncations make the limit of the sum equal the sum of the limits, also when a limit is infinite. Hence
+\[
+ \int_\Omega G=\sum_j\int_{A_j}G
+ \tag{4.0b}
+\]
+for the region \(\Omega\) being partitioned. Integrals of a tile use \(R_m\cap A_j\). They agree with exhaustion of its cell interiors: on each compact truncation the function is bounded, and deleting sufficiently small neighborhoods of its finitely many boundary arcs loses arbitrarily little integral. Cofinality of compact truncations proves exhaustion independence. For complex \(G\) with finite absolute integral, apply (4.0b) to \(|G|\). The sum of the absolute tile integrals is finite, and the error on any omitted collection of tiles is at most its absolute-integral tail. Passing through the finite partitions proves (4.0b) for \(G\).
+
+Every element of \(\Gamma\) lies in exactly one left coset \(\Gamma_{\infty,h}\gamma\). Thus intersecting the \(\Gamma\)-tiling with \(S_h\) gives exactly the pieces defining \(D_\gamma\). Two of these pieces cannot share a cell interior, since they came from distinct subgroup tiles. In particular projection of the cell interiors of \(\gamma D\) into the strip is injective: a coincidence would put an interior point in both \(\gamma D\) and \(T^{hr}\gamma D\) for \(r\ne0\). Local finiteness follows from the already proved subgroup local finiteness on the compact rectangle \([0,h]\times[\epsilon,M]\); strip cuts add only finitely many boundary arcs there.
+
+Finally cut \(\gamma D\) by the strips \(hr\le x<h(r+1)\), \(r\in\mathbb Z\). This is a locally finite partition. Translation by \(-hr\) sends its pieces to \(T^{-hr}\gamma D\cap S_h\) and preserves the integral of a period-\(h\) function, directly by translating its Riemann sums. Formula (4.0b) on both sides gives \(\int_{\gamma D}G=\int_{D_\gamma}G\). Apply (4.0b) to the projected strip tiling to obtain (4.0a), first for nonnegative functions and then for the absolutely integrable complex case. The original domains \(\gamma D\) need not lie inside a single strip. \(\square\)
+
+For \(\Gamma_0(N)\), the infinity width is one, so we use \(h=1\). At any cusp of a finite-index group, conjugation by its integral scaling matrix gives a subgroup containing \(\{\pm T^{h_Pr}\}\) after adjoining \(-I\). The same lemma then uses the actual strip width \(h_P\).
+
 **Theorem 4.1.** For \(f\in S_k(\Gamma_0(N))\) and \(m\ge1\),
 \[
 I_\Gamma(f,P_m)=A_{k,m}a_m(f),\qquad
@@ -177,7 +240,7 @@ I_\Gamma(f,P_m)=A_{k,m}a_m(f),\qquad
 \]
 Also \(I_\Gamma(f,P_0)=0\).
 
-**Proof.** First justify exchanging the sum and the integral. After the substitution \(w=\gamma z\), the absolute integral of one summand of
+**Proof.** Choose the finite-cell fundamental region \(D\) of Lemma 4.0. Theorem 3.2 shows that the sum of the absolute Poincaré summands converges uniformly on every compact subset of \(\mathfrak H\). Multiplication by the continuous factor \(|f(z)|y^{k-2}\) preserves this property. The nonnegative plane-series assertion of the first lesson, Lemma 0.3, therefore identifies the integral of that absolute sum with the sum of its integrals, before any finiteness assumption. After the substitution \(w=\gamma z\), the absolute integral of one summand of
 \(f(z)\overline{P_m(z)}y^k d\mu\) is
 \[
 \int_{\gamma D}|f(w)|\,e^{-2\pi m\operatorname{Im}w}
@@ -186,9 +249,9 @@ Also \(I_\Gamma(f,P_0)=0\).
 where \(D\) is a fundamental domain for \(\Gamma\). To verify cancellation, use
 \(f(z)=j(\gamma,z)^{-k}f(w)\) and
 \(y^k=\operatorname{Im}(w)^k|j(\gamma,z)|^{2k}\).
-The domains \(\gamma D\), for \(\Gamma_\infty\backslash\Gamma\), tile the translation strip \(0\le\operatorname{Re}w<1\) up to boundaries.
+The function \(|f(w)|e^{-2\pi m\operatorname{Im}w}\operatorname{Im}(w)^{k-2}\) has period one. Lemma 4.0 identifies the sum of its integrals over \(\gamma D\) with its integral over the projected tiles and hence over \(0\le\operatorname{Re}w<1\).
 
-On that strip near \(y=0\), Theorem 2.1 bounds the absolute integrand by \(A y^{k/2-2}\), which is integrable because \(k>2\). Near infinity, \(f\) decays exponentially. This works for both \(m\ge1\) and \(m=0\). Tonelli's theorem now proves that the sum of absolute integrals is finite, so unfolding is legitimate:
+On that strip near \(y=0\), Theorem 2.1 bounds the absolute integrand by \(A y^{k/2-2}\), which is integrable because \(k>2\). Near infinity, \(f\) decays exponentially. This works for both \(m\ge1\) and \(m=0\), and supplies a continuous integrable majorant depending only on \(y\), after joining the two bounds over a compact height interval. The sum of absolute integrals is consequently finite. The complex-series assertion of Lemma 0.3 now permits the interchange on \(D\), and the complex part of Lemma 4.0 unfolds the period-one function \(f(w)e^{-2\pi im\bar w}\operatorname{Im}(w)^{k-2}\). Lemma 0.3 also identifies the strip integral with its iterated rectangular integral:
 \[
 I_\Gamma(f,P_m)=
 \int_0^\infty\int_0^1 f(x+iy)e^{-2\pi im(x-iy)}y^{k-2}\,dx\,dy.
@@ -258,7 +321,7 @@ a_0(E_{P,k}|_k\alpha_Q)=\delta_{P,Q}.
 \tag{5.4}
 \]
 
-Unfolding \(I_\Gamma(f,E_{P,k})\) for a cusp form \(f\) gives
+Apply the width-\(h_P\) form of Lemma 4.0 to \(\alpha_P^{-1}\Gamma^+\alpha_P\). The locally uniform absolute convergence just proved and the nonnegative and complex-series assertions of the first lesson, Lemma 0.3, then unfold \(I_\Gamma(f,E_{P,k})\), for a cusp form \(f\), to
 \[
 \int_0^\infty\int_0^{h_P}
 (f|_k\alpha_P)(x+iy)y^{k-2}\,dx\,dy.
@@ -486,7 +549,9 @@ The local arguments establish pairing invariance and convergence (Theorem 1.1), 
 
 The earlier results used are the imaginary-part and slash identities and holomorphic cusp expansions from Modular forms, lattice functions and Eisenstein series, Proposition 1.1 and Sections 1–2; cusp widths and stabilizers from Congruence subgroups, cusps and elliptic points, Section 2 and Proposition 2.1, with regularity in Section 4; the coefficient bound from Dimension formulas for congruence subgroups, Theorem 6.1; and \(S_{12}=\mathbb C\Delta\), with \(a_1(\Delta)=1\), from The valence formula and the ring of modular forms of level one, Theorems 2.1–2.2. The coefficient bound also proves the finite dimensionality needed here: truncation to its finitely many coefficients is injective, so the space embeds in a finite-dimensional coordinate space. This avoids the unresolved general Riemann–Roch dimension input. The finite cusp neighborhoods and compact remainder come from Modular curves and their genus, Proposition 2.2 and Theorem 2.3. The quotient volume uses The upper half-plane and the modular group, Proposition 5.1, and the finite-domain union.
 
-The circle, contour-deformation and locally uniform limit facts are proved in the first lesson, Lemma 0.2; removable singularities and the Laurent-contour calculation are proved in Lemma 0.1 here. Basic integration, including Tonelli and Fubini, remains an unresolved proof dependency: the [Measure and Integration course](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10) is a proposed earlier prerequisite, but its exact proofs have not been verified. Fremlin's freely available author text, Corollaries 252C and 252H, states the precise sigma-finite versions; source availability alone does not satisfy the earlier-proof requirement. Complex integrals follow by taking real and imaginary parts. The gamma integral at the positive integer \(k-1\) is evaluated by integration by parts, and the Bessel function used here is defined by its series. No special-function contour identity or nontrivial Kloosterman estimate is imported.
+The circle, contour-deformation and locally uniform limit facts are proved in the first lesson, Lemma 0.2; removable singularities and the Laurent-contour calculation are proved in Lemma 0.1 here. Its Lemma 0.3 supplies the continuous improper-series and rectangular interchanges. Lemma 4.0 here proves local finiteness, compact boundary-nullity, finite-partition additivity and projected-strip unfolding, including the actual cusp width in Theorem 5.1. These arguments discharge the positive and absolute series interchanges in Theorem 4.1 without a general measurable Tonelli or Fubini theorem.
+
+Real completeness, elementary continuous integration and compactness retain their foundational status. The real plane change-of-variables theorem used for the Möbius substitutions, beyond the computed Jacobian, has not been proved here. Theorem 1.1's independence for every measurable fundamental domain also retains its general measurable-integration prerequisite; the present finite-cell argument does not prove that broader assertion. The [Measure and Integration course](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10) is a proposed provider for general integration, whose exact proofs have not been verified. Fremlin's freely available author text, Corollaries 252C and 252H, states the precise sigma-finite versions. Complex integrals follow by taking real and imaginary parts. The gamma integral at the positive integer \(k-1\) is evaluated by integration by parts, and the Bessel function used here is defined by its series. No special-function contour identity or nontrivial Kloosterman estimate is imported.
 
 The absolute Poincaré and Eisenstein constructions require \(k>2\). Their weight-two regularization is not proved here. The Weil bound for Kloosterman sums and the optimal cusp-coefficient bound are not used or proved.
 

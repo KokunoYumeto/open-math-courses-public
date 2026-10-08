@@ -15,7 +15,7 @@ N=\{(x,\xi):\langle x,\xi\rangle\leq0\}.
 
 All categories $D(k_Y)$ in this lesson are classical unbounded derived categories of module sheaves. Internal Hom is a derived sheaf Hom. In particular it is not replaced by tensoring with a coefficient dual. No constructibility, finite generation, field, Noetherian, compact-base or finite-dimensional-base assumption is imposed.
 
-The maps $p,q,\tau,\pi,\rho$ have uniform finite integral proper-support cohomological dimension. The proper-fibre formula reduces their bounds on abelian sheaves to compactly supported cohomology of finite-dimensional real vector spaces: the respective bounds are $n,n,n,n,2n$. This uses the integral dimension and proper-support prerequisites of SH02-EX-FINITE-RESOLUTION; it does not use a finite cohomological dimension for $B$ or for nonproper ordinary direct image. The unbounded proper-support construction and its right adjoint therefore apply to these maps.
+The maps $p,q,\tau,\pi,\rho$ have uniform finite integral proper-support cohomological dimension. The proper-fibre formula reduces their bounds on abelian sheaves to compactly supported cohomology of finite-dimensional real vector spaces: the respective bounds are $n,n,n,n,2n$. This uses the integral dimension and proper-support prerequisites of [SH02-EX-FINITE-RESOLUTION](../../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-FINITE-RESOLUTION); it does not use a finite cohomological dimension for $B$ or for nonproper ordinary direct image. The [unbounded proper-support construction](../../sheaf-proof-readings/SH02-unbounded-range-bridge.html#SH02-UR-PROPER-IMAGE) and its [right adjoint](../../sheaf-proof-readings/SH02-unbounded-range-bridge.html#SH02-UR-EXCEPTIONAL-ADJOINT) therefore apply to these maps.
 
 Define, on all objects of $D(k_E)$,
 
@@ -25,7 +25,7 @@ J_EK=Rq_*R\mathcal Hom(k_N,p^!K).
 \tag{UFD2}
 \]
 
-These expressions are defined without any condition on the bounds of $F$ or $K$. Ordinary direct image on the right is computed by a K-injective replacement; a finite amplitude for that ordinary direct image is not being asserted. On bounded-below conic objects, $T_E$ is the original Fourier transform and $J_E$ is the inverse-transform expression $I_E$ of SH02-FDN-SETUP. Thus $J_E$ extends that exact kernel expression to the ambient unbounded category. The notation here does not assert an equivalence on every unbounded nonconic object.
+These expressions are defined without any condition on the bounds of $F$ or $K$. Ordinary direct image on the right is computed by a K-injective replacement; a finite amplitude for that ordinary direct image is not being asserted. On bounded-below conic objects, $T_E$ is the original Fourier transform and $J_E$ is the inverse-transform expression $I_E$ of [SH02-FDN-SETUP](../../sheaf-proof-readings/SH02-fourier-duality-normalization.html#SH02-FDN-SETUP). Thus $J_E$ extends that exact kernel expression to the ambient unbounded category. The notation here does not assert an equivalence on every unbounded nonconic object.
 
 The closed-subset coefficient sheaf $k_N$ is flat, by its stalks. Exact inverse image and the bound for $q_!$ give
 
@@ -52,7 +52,7 @@ Rf_*R\mathcal Hom(L,f^!Q)
 \tag{UFD5}
 \]
 
-The first is the full comparison SH02-UR-HOM-PULLBACK. To recall its map, transpose evaluation after the trace $Rf_!f^!R\mathcal Hom(A,Q)\to R\mathcal Hom(A,Q)$, using the unbounded projection formula. Testing against any $C\in D(k_Y)$ gives, in order,
+The first is the full comparison [SH02-UR-HOM-PULLBACK](../../sheaf-proof-readings/SH02-unbounded-range-bridge.html#SH02-UR-HOM-PULLBACK). To recall its map, transpose evaluation after the trace $Rf_!f^!R\mathcal Hom(A,Q)\to R\mathcal Hom(A,Q)$, using the unbounded projection formula. Testing against any $C\in D(k_Y)$ gives, in order,
 
 \[
 \begin{aligned}
@@ -90,7 +90,7 @@ V\otimes_k^L Rf_!L
 
 These are the same comparisons as their bounded versions. All tensor permutations are the graded symmetry of complexes, and all internal-Hom totalizations retain their products. Neither proof interchanges Hom with a filtered colimit, or replaces a product with a direct sum.
 
-Composition is specified by the existing bounded comparison SH02-EX-IMP-COMPOSE and its extension to whole complexes. Suppose $f$ and $g$ have uniform integral proper-support dimension bounds $r$ and $s$. Bounded composition and these amplitude bounds give a bound $r+s$ for $(fg)_!$ on abelian sheaves. If $I$ is an injective coefficient sheaf on the domain of $g$, bounded composition gives $Rf_!(g_!I)\simeq R(fg)_!I$: the injective sheaf computes $Rg_!I=g_!I$, and the right side is concentrated in degree zero. Therefore $g_!I$ is $f_!$-acyclic.
+Composition is specified by the existing bounded comparison [SH02-EX-IMP-COMPOSE](../../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-IMP-COMPOSE) and its extension to whole complexes. Suppose $f$ and $g$ have uniform integral proper-support dimension bounds $r$ and $s$. Bounded composition and these amplitude bounds give a bound $r+s$ for $(fg)_!$ on abelian sheaves. If $I$ is an injective coefficient sheaf on the domain of $g$, bounded composition gives $Rf_!(g_!I)\simeq R(fg)_!I$: the injective sheaf computes $Rg_!I=g_!I$, and the right side is concentrated in degree zero. Therefore $g_!I$ is $f_!$-acyclic.
 
 For an arbitrary complex choose a K-injective representative $I^\bullet$ with injective terms. Tag 07K7 computes $Rg_!$ and $R(fg)_!$ by applying their underived functors to $I^\bullet$, because their dimensions are finite. It also computes $Rf_!$ on the complex $g_!I^\bullet$, whose terms were just proved $f_!$-acyclic. Underived canonical composition $f_!g_!=(fg)_!$ thus supplies the unbounded comparison $Rf_!Rg_!\simeq R(fg)_!$. This is the bounded comparison on bounded-below inputs, and associativity is the underived composition associativity through these same acyclic models. The right-adjoint comparison $g^!f^!\simeq(fg)^!$ is defined by transposing the composite proper-support trace. Uniqueness with that trace fixes its coherence; no unspecified softness assertion or arbitrary isomorphism between endpoints is used.
 
@@ -148,7 +148,7 @@ Only the bounded-input vector-bundle dualizing formula is needed at this step. A
 \tag{UFD13}
 \]
 
-These are exactly the orientation evaluation maps in SH02-FDN-DUALITIES. We do not extend a vector-bundle dualizing formula to an arbitrary unbounded argument by an unproved continuity assertion.
+These are exactly the orientation evaluation maps in [SH02-FDN-DUALITIES](../../sheaf-proof-readings/SH02-fourier-duality-normalization.html#SH02-FDN-DUALITIES). We do not extend a vector-bundle dualizing formula to an arbitrary unbounded argument by an unproved continuity assertion.
 
 Define $D'_EF=R\mathcal Hom(F,k_E)$, on all of $D(k_E)$, and similarly on $E^*$. Taking $H=W^{-1}$ in UFD10 gives
 
@@ -197,6 +197,6 @@ has a nonzero group in every nonpositive degree. Its terms and differential foll
 
 **Problem.** Identify the precise additional conclusions which cannot be extracted merely from UFD12.
 
-**Solution.** UFD12 compares the displayed kernel expressions. It does not show that all unbounded objects are conic, that either expression defines an inverse equivalence on a larger conic category, or that a chosen opposite-halfspace adjunction agrees with the original one. The prescribed paired inverse identities FDN18–FDN19 are proved separately in SH02-NDF-SOURCE-MAPS, and the Fourier trace identity FTC14 in SH02-FTE-TRACE. Neither result is used in UFD14 or UFD16.
+**Solution.** UFD12 compares the displayed kernel expressions. It does not show that all unbounded objects are conic, that either expression defines an inverse equivalence on a larger conic category, or that a chosen opposite-halfspace adjunction agrees with the original one. The prescribed paired inverse identities FDN18–FDN19 are proved separately in [SH02-NDF-SOURCE-MAPS](../../sheaf-proof-readings/SH02-fourier-literal-normalization.html#SH02-NDF-SOURCE-MAPS), and the Fourier trace identity FTC14 in [SH02-FTE-TRACE](../../sheaf-proof-readings/SH02-fourier-transpose-endpoint.html#SH02-FTE-TRACE). Neither result is used in UFD14 or UFD16.
 
 The stronger unbounded identities and this explicit interpretation of the printed input range supply the mathematical range witness.

@@ -391,5 +391,5 @@ with the transport definition already proved there. That cohomology-class defini
 
 [VB] Allen Hatcher, *Vector Bundles and K-Theory*, version 2.2, November 2017, [author's text](https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf), Section 3.2, especially Proposition 3.13 (Euler naturality, products, odd-rank torsion and the section obstruction) and Proposition 3.14 (the even-sphere calculation).
 
-[R] David Michael Roberts, *Algebraic Topology*, lecture notes, 2019, [source](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019). See the preceding chapter for its marked CC BY 4.0 interval-cover adaptation. No source text is reproduced in this chapter.
+[R] David Michael Roberts, *Algebraic Topology*, lecture notes, 2019, [source](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019).
 

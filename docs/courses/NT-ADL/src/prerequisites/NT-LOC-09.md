@@ -141,12 +141,12 @@ For any finite separable extension of local fields, define its trace-dual lattic
 \mathfrak D_{L/K}=(\mathcal O_L^*)^{-1}.
 \tag{3.1}
 \]
-The trace form is nondegenerate. Its dual lattice is a fractional \(\mathcal O_L\)-ideal, and inversion is fractional-ideal inversion. If \(\mathcal O_L=\mathcal O_K[\alpha]\), with monic minimal polynomial \(f\), the monogenic different theorem gives
+The trace form is nondegenerate: **Unramified and totally ramified extensions**, Lemma 4.0 proves that every finite separable field extension has an element \(t\) of trace one. For any nonzero \(x\in L\), set \(y=t/x\); then \(\operatorname{Tr}_{L/K}(xy)=1\). This proves nondegeneracy in every characteristic. Its dual lattice is a fractional \(\mathcal O_L\)-ideal, and inversion is fractional-ideal inversion. If \(\mathcal O_L=\mathcal O_K[\alpha]\), with monic minimal polynomial \(f\), the monogenic different theorem gives
 \[
 \mathfrak D_{L/K}=f'(\alpha)\mathcal O_L.
 \tag{3.2}
 \]
-This algebraic trace-dual theorem is proved in *Number fields*, lesson 14, [**The different and the discriminant**](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ANT/the-different-and-the-discriminant.html), “The trace dual,” Euler's dual-basis lemma and Proposition 14.2. Its hypotheses are a Dedekind base ring and a finite separable extension with finite integral closure; the monogenic formula additionally requires the full integral closure to be \(\mathcal O_K[\alpha]\). Complete local integer rings satisfy these conditions by **Extensions of complete valued fields**, Theorem 3.1. The field trace pairing is nondegenerate precisely for separable extensions, as proved in [Stacks, Tag 0BIL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing). The ramification formula that follows is proved here.
+This algebraic trace-dual theorem is proved in *Number fields*, lesson 14, **The different and the discriminant**, “The trace dual,” Euler's dual-basis lemma and Proposition 14.2. Its hypotheses are a Dedekind base ring and a finite separable extension with finite integral closure; the monogenic formula additionally requires the full integral closure to be \(\mathcal O_K[\alpha]\). Complete local integer rings satisfy these conditions by **Extensions of complete valued fields**, Theorem 3.1. The field trace pairing is nondegenerate precisely for separable extensions, as proved in [Stacks, Tag 0BIL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing). The ramification formula that follows is proved here.
 
 ### The algebraic trace calculation and its scope
 
@@ -193,7 +193,13 @@ d(L/K):=v_L(\mathfrak D_{L/K})
 =\sum_{r\geq0}(|G_r|-1).
 \tag{3.3}
 \]
-Consequently a tame extension has different exponent \(e-1\), and a wild extension has exponent at least \(e\).
+Consequently a tame extension has different exponent \(e-1\). In the wild case,
+\[
+d(L/K)\geq e+|G_1|-2\geq e+p-2.
+\tag{3.4}
+\]
+More precisely, \(d(L/K)=e+|G_1|-2\) if and only if \(G_2=1\), and
+\(d(L/K)=e+p-2\) if and only if \(G_2=1\) and \(|G_1|=p\).
 
 *Proof.* Normality and separability give
 \[
@@ -203,7 +209,50 @@ f'(\alpha)=\prod_{\sigma\ne1}(\alpha-\sigma\alpha).
 \]
 Taking valuation in (3.2) proves the first sum. For a nonidentity automorphism, \(i_G(\sigma)\) is a nonnegative integer. It belongs to exactly \(i_G(\sigma)\) of the groups indexed \(r\geq0\), since their condition is \(r+1\leq i_G(\sigma)\). Summing these finitely many indicator functions proves the second sum.
 
-The \(r=0\) summand is \(e-1\). In the tame case all subsequent groups are trivial. In the wild case \(G_1\ne1\), so its summand contributes at least one more. \(\square\)
+The \(r=0\) summand is \(e-1\). In the tame case all subsequent groups are trivial. In the wild case, Corollary 2.2 makes \(G_1\) a nontrivial \(p\)-group, so \(|G_1|\geq p\). Retaining its contribution gives
+\[
+d(L/K)=(e-1)+(|G_1|-1)+\sum_{r\geq2}(|G_r|-1).
+\]
+The last sum is finite and nonnegative. It vanishes exactly when \(G_2=1\), because the filtration decreases. This proves the first bound and its equality criterion. The further inequality \(|G_1|\geq p\) gives the coarser bound; equality there also requires \(|G_1|=p\). In particular, every wild extension has \(d(L/K)\geq e\), and it has \(d(L/K)=e\) exactly when \(p=2\), \(|G_1|=2\) and \(G_2=1\). \(\square\)
+
+Consequently a tame extension has different exponent \(e-1\), and a wild extension has exponent at least \(e\). In the wild case \(G_1\ne1\); the sharper bounds above quantify this extra contribution.
+
+**Example 3.2 (the wild bound is sharp for every prime).** Let
+\(K=\mathbf F_p((t))\), and choose a root \(x\) of
+\[
+F(X)=X^p+tX^{p-1}-t.
+\]
+Every nonleading coefficient is divisible by \(t\), and the constant coefficient is not divisible by \(t^2\). Thus \(F\) is Eisenstein. By **Unramified and totally ramified extensions**, Theorem 5.1, the field \(L=K(x)\) is totally ramified of degree \(p\), \(x\) is a uniformizer, and
+\(\mathcal O_L=\mathbf F_p[[t]][x]\). In particular,
+\(v_L(x)=1\) and \(v_L(t)=p\).
+
+Put \(y=x^{-1}\). Dividing \(F(x)=0\) by \(tx^p\) gives
+\[
+y^p-y=t^{-1}.
+\]
+The roots of this degree-\(p\) polynomial are exactly \(y+c\), with \(c\in\mathbf F_p\). They all lie in \(L=K(y)\), are distinct, and the derivative of the polynomial is \(-1\). Since \([K(y):K]=p\), it is the minimal polynomial of \(y\). Therefore \(L/K\) is cyclic Galois, with the translations
+\(\sigma_c(y)=y+c\).
+
+For \(c\ne0\), the unequal valuations of \(y\) and \(c\) give
+\(v_L(y+c)=v_L(y)=-1\). Hence
+\[
+\sigma_c(x)-x=\frac{-c}{y(y+c)},\qquad
+v_L(\sigma_c(x)-x)=2.
+\]
+The uniformizer formula (2.2) now gives
+\[
+G_0=G_1=G,\qquad G_2=1.
+\]
+Hilbert's formula yields
+\[
+d(L/K)=(p-1)+(p-1)=2p-2=e+p-2,
+\]
+so the coarser wild bound is attained for every prime \(p\). The monogenic derivative formula (3.2) checks the exponent independently:
+\[
+F'(x)=-tx^{p-2},\qquad
+v_L(F'(x))=p+(p-2)=2p-2.
+\]
+For \(p=2\), the factor \(x^{p-2}\) is \(1\), so the same computation gives \(d=2=e\).
 
 ## 4. Passing between number fields and completions
 
@@ -262,6 +311,32 @@ The global trace dual localizes to \(B^*\): in a finite basis its trace integral
 Finally the algebraic discriminant theorem identifies \(\mathfrak d_{E/F}\) with the ideal norm of \(\mathfrak D_{E/F}\). Since the norm of \(\mathfrak P\) is \(\mathfrak p^{f(\mathfrak P/\mathfrak p)}\), taking norms in (4.1) gives (4.2). \(\square\)
 
 The proposition applies to extensions that are not Galois. Hilbert's formula computes each local exponent directly when that local extension is Galois; the monogenic derivative formula also applies in the separable nongalois case.
+
+**Corollary 4.2 (a weighted wild discriminant bound).** Let \(E/F\) be an extension of number fields and \(\mathfrak p\) a finite prime of residue characteristic \(p\). Suppose that every completion \(E_{\mathfrak P}/F_{\mathfrak p}\), for \(\mathfrak P\mid\mathfrak p\), is Galois. Write
+\(e_{\mathfrak P}=e(\mathfrak P/\mathfrak p)\),
+\(f_{\mathfrak P}=f(\mathfrak P/\mathfrak p)\), and
+\(G_{r,\mathfrak P}\) for its lower ramification groups. Let \(W\) be the set of wild primes \(\mathfrak P\) above \(\mathfrak p\). Then
+\[
+\begin{aligned}
+v_{\mathfrak p}(\mathfrak d_{E/F})
+&\geq \sum_{\mathfrak P\mid\mathfrak p}
+ f_{\mathfrak P}(e_{\mathfrak P}-1)
+ +\sum_{\mathfrak P\in W}
+ f_{\mathfrak P}(|G_{1,\mathfrak P}|-1)\\
+&\geq \sum_{\mathfrak P\mid\mathfrak p}
+ f_{\mathfrak P}(e_{\mathfrak P}-1)
+ +(p-1)\sum_{\mathfrak P\in W}f_{\mathfrak P}.
+\end{aligned}
+\tag{4.5}
+\]
+Equality in the first bound holds if and only if
+\(G_{2,\mathfrak P}=1\) at every wild prime above \(\mathfrak p\). Equality between the left side and the final, coarser bound holds if and only if, in addition,
+\(|G_{1,\mathfrak P}|=p\) at every such prime.
+
+*Proof.* Proposition 4.1 gives
+\(v_{\mathfrak p}(\mathfrak d_{E/F})
+=\sum_{\mathfrak P\mid\mathfrak p}f_{\mathfrak P}d_{\mathfrak P}\).
+Theorem 3.1 gives \(d_{\mathfrak P}=e_{\mathfrak P}-1\) in the tame case, and the two bounds in (3.4) in the wild case. Multiply each by \(f_{\mathfrak P}\) and sum. Every weight is positive and every discarded summand is nonnegative, so equality is exactly the stated collection of local equality conditions. \(\square\)
 
 ## 5. The cyclotomic filtration
 
@@ -324,6 +399,9 @@ There is also an independent derivative check. Differentiating
 \]
 The numerator has value \(nN\), while the denominator has value \(p^{n-1}\). Formula (3.2) again gives \(d=nN-p^{n-1}\). \(\square\)
 
+The equality criterion in Theorem 3.1 also follows visibly from this filtration. When \(n=1\), the extension is tame, including the trivial case \(p=2\). When \(n\geq2\), it is wild. For odd \(p\), (5.1) gives \(|G_2|=p^{n-1}>1\), so
+\(d>e+|G_1|-2\). For \(p=2,n=2\), it gives \(|G_1|=2\) and \(G_2=1\), so \(d=e+p-2=2\). For \(p=2,n\geq3\), it gives \(|G_2|=2^{n-2}>1\), and again the first wild bound is strict.
+
 ## 6. Three quadratic examples
 
 **Example 6.1.** In \(L=\mathbf Q_2(i)\), the element \(\pi=i-1\) satisfies the Eisenstein polynomial \(Y^2+2Y+2\). Thus \(v_L(2)=2\), and conjugation gives
@@ -349,6 +427,8 @@ G_0=G,\quad G_1=1,\quad d=1=e-1.
 This is tame. The discriminant of \(1,\sqrt3\) is \(12\), whose \(3\)-adic exponent is \(1\).
 
 Each residue degree is \(1\), so the local different exponent equals the base discriminant exponent, as (4.2) predicts.
+
+The wild equality case distinguishes the first two examples. For \(\mathbf Q_2(i)/\mathbf Q_2\), one has \(|G_1|=2\) and \(G_2=1\), so \(d=e+p-2=2\). For \(\mathbf Q_2(\sqrt2)/\mathbf Q_2\), the group \(G_2\) is nontrivial, so \(d=3>e+p-2=2\). The third example is tame and retains \(d=e-1=1\).
 
 ## 7. Exercises
 
@@ -390,9 +470,9 @@ The ramification criteria in Sutherland, Lecture 12, Theorems 12.19 and 12.27, a
 ## 9. What this lesson does not prove
 
 - Integral monogenicity for a finite separable extension of local fields, \(\mathcal O_L=\mathcal O_K[\alpha]\), is Corollary 6.2 of **Unramified and totally ramified extensions**. Its Proposition 6.1 gives the maximal unramified subfield; Theorem 5.1 gives uniformizers and integral bases in a totally ramified extension. The finite-field Galois correspondence and Frobenius description are its Corollary 3.1.
-- Trace nondegeneracy is [Stacks, Tag 0BIL]. Section 3 supplies the trace-dual, monogenic derivative and ideal-norm calculations with their general algebraic hypotheses. The exact written companion provider is *Number fields*, lesson 14, **The different and the discriminant**, “The trace dual,” Euler's lemma, Proposition 14.2 and Theorem 14.3. The Dedekind-ring and finite-integral-closure prerequisites for those calculations remain the imports in the next bullet. Sutherland, Lecture 12, Definition 12.2, Proposition 12.24 and Theorem 12.17, is a classical comparison.
+- Trace nondegeneracy is proved in Section 3 from the trace-one lemma; Stacks, Tag 0BIL is a comparison. Section 3 supplies the trace-dual, monogenic derivative and ideal-norm calculations with their general algebraic hypotheses. The exact written companion provider is *Number fields*, lesson 14, **The different and the discriminant**, “The trace dual,” Euler's lemma, Proposition 14.2 and Theorem 14.3. The Dedekind-ring and finite-integral-closure prerequisites for those calculations remain the imports in the next bullet. Sutherland, Lecture 12, Definition 12.2, Proposition 12.24 and Theorem 12.17, is a classical comparison.
 - The written *Number fields* proofs are lesson 2, **Discriminants and integral bases**, Theorem 2.3 for the integer lattice; lesson 3, **Discrete valuation rings and Dedekind domains**, Proposition 3.1, Theorem 3.2 and Proposition 3.3 for Dedekindness, fractional-ideal factorization and Chinese remainders; and lesson 5, **Decomposition of primes in extensions**, Theorems 5.1–5.2 for finite integral closure and prime ideal norms. Milne, Proposition 2.29, Theorems 3.7 and 3.29 and Chapter 4 are classical references for the same facts. The field-completion decomposition and base change of trace are Theorem 2.1 and Corollary 2.2 of **Places of number fields in extensions and the product formula**.
-- The extension of embeddings to a finite normal extension, the fixed-field theorem, and Sylow theory are the field and finite-group background of **Graduate Algebra**. Cyclicity of finite subgroups of a field's multiplicative group follows from [Stacks, Tag 09HX](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-cyclic): its torsion bound is the polynomial root bound. Milne, *Fields and Galois Theory*, Proposition 4.19 with Exercise 1-3 is another classical reference.
+- The extension of embeddings to a finite normal extension, the fixed-field theorem, and Sylow theory are the field and finite-group background of **Graduate Algebra**. Cyclicity of finite subgroups of a field's multiplicative group is proved in **Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0. Stacks, Tag 09HX is a comparison. Milne, *Fields and Galois Theory*, Proposition 4.19 with Exercise 1-3 is another classical reference.
 
 ## References
 

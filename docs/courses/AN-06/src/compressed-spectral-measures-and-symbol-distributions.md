@@ -135,6 +135,8 @@ In particular (7) applies to \(D=B^j\) for every fixed integer \(j\geq1\): it is
 
 Let \(Q_\lambda=I-\Pi_\lambda\). The map \(Q_\lambda B\Pi_\lambda\) measures the part of an observable that moves a low-energy vector out of the low-energy subspace.
 
+The strip-and-gap estimate is Hörmander’s compression lemma [H4, Lemma 29.1.8].
+
 **Lemma 3.1 (trace norm of the leakage).**
 \[
 \|Q_\lambda B\Pi_\lambda\|_1
@@ -346,6 +348,8 @@ The homogeneous symbol \(b\) is defined off the zero section; the zero section h
 \rho(f)=(2\pi)^{-n}\int_{p<1}f(b(z))\,dz.
 \tag{27}
 \]
+
+The symbol-distribution limit is Hörmander’s Szegö-type theorem [H4, Theorem 29.1.7].
 
 **Theorem 5.1 (the distribution of a compressed observable).** For every \(f\in C(\mathbb R)\),
 \[
@@ -606,3 +610,4 @@ Its endpoint singularities are integrable and give no endpoint atoms. Finitely m
 - [GS] Victor Guillemin and Shlomo Sternberg, [*Semi-classical Analysis*, freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), Introduction §0.5, printed pages xi–xii, for the semiclassical spectral interpretation.
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf), Introduction for the relation between elliptic spectra and periodic flow.
 - [Z] Steve Zelditch, “Fine structure of Zoll spectra,” *Journal of Functional Analysis* 143 (1997), 415–460. [Elsevier open archive](https://doi.org/10.1006/jfan.1996.2981), §0 and §4. 
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Theorem 29.1.7 and Lemma 29.1.8, pp. 259–261. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

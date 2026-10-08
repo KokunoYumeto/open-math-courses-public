@@ -22,13 +22,12 @@ Serve the repository's `docs` directory with an HTTP server. Links to other
 programme lessons use their current paths in that same checkout. The CSS,
 MathJax and CommonMark dependencies are already included; no CDN is needed.
 
-Original lesson text and renderer code retain their CC0 terms. The existing
-spectral-calculus reading retains GFDL 1.2 with its complete title, history,
-rights and licence notices. The Local tools reading gives a complete CC0 partition-of-unity proof
+Original lesson text and renderer code retain their CC0 terms.
+The Local tools reading gives a complete CC0 partition-of-unity proof
 in Section 3, with Brenner and Wikiversity credited as further reading.
-The K-theory Lemma 7.7 adaptation retains CC BY 4.0. Consult the
-source files and component notices for their attribution. New original text
-does not change any inherited licence.
+The companion mathematical readings must have an explicit CC0 dedication.
+Source credits remain in the lessons; font and software terms remain in their
+complete component notices.
 
 Figure generators, editable SVGs, fonts and complete software/font notices
 accompany the figures in `reproduction` and `finite-kernel-prerequisite`.

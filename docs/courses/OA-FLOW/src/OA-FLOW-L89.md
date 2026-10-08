@@ -76,7 +76,7 @@ To prove it, take \(f=\mathcal Fa\in A_c(H)\). [AF1](OA-FLOW-AF.md#af-1) proves 
 
 $$\alpha_\rho\alpha_f=\alpha_{\widehat\rho f}.\tag{O7}$$
 
-The product \(h=(\widehat\rho-1)f\) belongs to \(A(H)\): equation (AF8) explicitly constructs its \(L^1\) kernel by the complete vector integral \(\int L_{-t}a\,d\rho(t)\), and subtracts \(a\). It has compact support inside \(\operatorname{supp}f\), and it vanishes on \(W\). Consequently \(\operatorname{supp}h\cap E=\varnothing\). The proved minimal local ideal inclusion LF6 puts \(h\in I(\alpha)\), so (O7) gives \(\alpha_\rho\alpha_f=\alpha_f\). LF5’s norm density extends this identity from \(A_c(H)\) to every \(f\in A(H)\). The span of the filtered vectors is weak-star dense by BS2, and both \(\alpha_\rho\) and \(I\) are normal. They therefore agree on all of \(X\):
+The product \(h=(\widehat\rho-1)f\) belongs to \(A(H)\): equation (AF8) explicitly constructs its \(L^1\) kernel by the complete vector integral \(\int L_{-t}a\,d\rho(t)\), and subtracts \(a\). It has compact support inside \(\operatorname{supp}f\), and it vanishes on \(W\). Consequently \(\operatorname{supp}h\cap E=\varnothing\). The proved minimal local ideal inclusion [LF6](OA-FLOW-LF.md#lf-6) puts \(h\in I(\alpha)\), so (O7) gives \(\alpha_\rho\alpha_f=\alpha_f\). [LF5’s norm density](OA-FLOW-LF.md#lf-5) extends this identity from \(A_c(H)\) to every \(f\in A(H)\). The span of the filtered vectors is weak-star dense by [BS2](OA-FLOW-BS.md#bs-2), and both \(\alpha_\rho\) and \(I\) are normal. They therefore agree on all of \(X\):
 
 <a id="equation-o8"></a>
 

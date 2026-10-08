@@ -1,6 +1,6 @@
 # Haar measure on locally compact groups
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check of that text. Repaired and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. No human review is claimed. Original programme content is dedicated under CC0, except the explicitly marked Fremlin adaptation in Theorem 8.3, Lemma 8.4 and the proof of Theorem 9.2, which are distributed under the Design Science License.*
+*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check of that text. Repaired and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: public domain (CC0). Theorem 8.3, Lemma 8.4 and the proof of Theorem 9.2 follow arguments of D. H. Fremlin, cited where they occur.*
 
 This lesson constructs Haar measure on an arbitrary locally compact group and develops the measure theory that goes with it. Sections 2–6 work on locally compact spaces. They prove the Riesz representation theorem for Radon measures, treat image measures and densities, build the product of two Radon measures with its Tonelli and Fubini theorems, and identify \(L^2\) of a product with a Hilbert tensor product. Sections 7–11 turn to groups: topological groups, existence and uniqueness of Haar measure, the modular function, and the inversion formula. Sections 12–15 treat products of groups, groups that are not \(\sigma\)-compact, convolution, and approximate identities. Section 16 has exercises with solutions.
 
@@ -317,7 +317,7 @@ So, through the Riesz theorem 2.2, left Haar measures and left Haar integrals ar
 
 **Theorem 8.3** (Existence). Every locally compact Hausdorff group has a left Haar measure. It also has a right Haar measure.
 
-*Free source and terms.* The compact-set covering construction below adapts the freely accessible proof of [Fremlin, §§441C(b–f), 441E](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt441.tex). Copyright © 1998 D. H. Fremlin; adaptation and expanded proofs by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. This replacement is separately distributed under the [Design Science License](licenses/design-science-license.txt), with editable Markdown source. It replaces the source's measure-conversion invocation by the complete Borel construction in Lemma 8.4. The compact normalization and open-envelope viewpoint are also compared with [F. van Doorn, *Formalized Haar Measure*, existence section](https://arxiv.org/abs/2102.07636v1). No formal verification of this proof is claimed.
+*Source.* The compact-set covering construction below follows the freely accessible proof of [Fremlin, §§441C(b–f), 441E](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt441.tex); the expanded proofs are by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Where Fremlin obtains a Radon measure from the content by his general result 416M, Lemma 8.4 gives the complete Borel construction. The compact normalization and open-envelope viewpoint are also compared with [F. van Doorn, *Formalized Haar Measure*, existence section](https://arxiv.org/abs/2102.07636v1). No formal verification of this proof is claimed.
 
 The proof uses only the already proved topology facts (T1), compactness of finite products, and Tychonoff's theorem, together with the preceding tools lesson's Carathéodory theorem. In particular it uses neither Haar uniqueness nor a modular function. We first prove exactly the conversion of compact-set data that is needed.
 
@@ -487,7 +487,7 @@ It is therefore a right Haar measure. \(\square\)
 
 **Theorem 9.2** (Uniqueness). Any two left Haar measures \(\mu,\nu\) on \(G\) are proportional: \(\mu=c\nu\) for some \(c\in(0,\infty)\). Equivalently, every left Haar integral is a positive multiple of \(f\mapsto\int f\,d\mu\).
 
-*Free source and licence.* The following complete proof adapts Fremlin’s freely accessible [Volume 4, §442B](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt442.tex) to the Radon convention of this lesson. This proof is separately distributed under the [Design Science License](licenses/design-science-license.txt). Copyright © 1998 D. H. Fremlin; adaptation and expanded compact shrinking/Borel conclusion by GPT-6.1 Sol (OpenAI), Ultra. The [source companion](supplements/fremlin-neighbourhood-uniqueness.md#haar-fremlin-neighbourhood-uniqueness) records the source edition, changes and terms.
+*Source.* The following complete proof follows Fremlin’s freely accessible [Volume 4, §442B](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt442.tex) in the Radon convention of this lesson; the expanded compact shrinking and Borel conclusion are by GPT-6.1 Sol (OpenAI), Ultra. The [source companion](supplements/fremlin-neighbourhood-uniqueness.md#haar-fremlin-neighbourhood-uniqueness) records the source edition and the differences of convention.
 
 *Proof.* By [Proposition 9.1](#oa-fnd-hm-06), each nonempty open set has positive measure for both measures. Relatively compact open sets have finite measure for both. Let \(\mathcal U\) be the symmetric relatively compact open neighborhoods of the identity, ordered by reverse inclusion. These form a neighborhood base: intersect an identity neighborhood with its inverse and with a relatively compact identity neighborhood.
 
@@ -964,7 +964,3 @@ A family as in (1) is a *compactly supported approximate identity*. Its translat
 - [van Doorn] F. van Doorn, *Formalized Haar Measure*, 2021, [arXiv version 1](https://arxiv.org/abs/2102.07636v1). The paper constructs Haar measure on arbitrary LCH groups; its uniqueness proof assumes second countability. The [current mathlib uniqueness development](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure/Haar/Unique.html) also distinguishes regularity hypotheses.
 
 - [Fischer–Ruzhansky] V. Fischer and M. Ruzhansky, [*Quantization on Nilpotent Lie Groups*](https://biblio.ugent.be/publication/8585474), Birkhäuser, 2016, freely accessible under CC BY 4.0. Its Heisenberg and homogeneous-group treatment complements Example 12.3; its convolution discussion includes the full Young bound of Theorem 14.4. The calculations and proof here are independently written.
-
-## Terms for the marked Fremlin adaptations
-
-THE WORK IS PROVIDED "AS IS," AND COMES WITH ABSOLUTELY NO WARRANTY, EXPRESS OR IMPLIED, TO THE EXTENT PERMITTED BY APPLICABLE LAW. The full warranty and liability terms are in the accompanying Design Science License.

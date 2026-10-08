@@ -6,11 +6,11 @@ An idempotent records a direct-sum decomposition. A projection records one with 
 
 We develop the distinction before using stabilization to remove it. We also give two practical constructions: an explicit projection associated to an idempotent, and an exact idempotent associated to an approximate one. The latter explains why small errors in multiplication can be repaired.
 
-We assume Functional Analysis, [Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory][BN], and [C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients][CF]. The precise background facts used without proof are listed near the end. The freely accessible equivalence comparison is [Blackadar 1998, §§4.1–4.6]; [AF-algebras] supplies the exact background stated below.
+We assume Functional Analysis, [Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-02), and [Order, local units and quotients of C*-algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07). The precise background facts used without proof are listed near the end. The freely accessible equivalence comparison is [Blackadar 1998, §§4.1–4.6]; [AF-algebras] supplies the exact background stated below.
 
 ## 1. Decompositions and the matrix setting
 
-Unless stated otherwise, \(A\) is a nonzero complex unital Banach algebra. We use a submultiplicative norm with \(\|1\|=1\). An equivalent such norm exists by [Banach algebras, Proposition 3.1][BN]. Estimates always refer to the chosen norm. The zero algebra has only the zero idempotent and can be treated separately.
+Unless stated otherwise, \(A\) is a nonzero complex unital Banach algebra. We use a submultiplicative norm with \(\|1\|=1\). An equivalent such norm exists by [Banach algebras, Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-03). Estimates always refer to the chosen norm. The zero algebra has only the zero idempotent and can be treated separately.
 
 An **idempotent** is an element \(e\) satisfying \(e^2=e\). On any module on which \(e\) acts, a vector \(\xi\) splits as
 
@@ -38,7 +38,7 @@ A^+=A\oplus\mathbb C,\qquad
 (a,\lambda)(b,\mu)=(ab+\lambda b+\mu a,\lambda\mu).
 \]
 
-Its new identity is \((0,1)\), its augmentation is \(\epsilon(a,\lambda)=\lambda\), and \(A\) embeds as the ideal \(A\oplus0\). For Banach algebras the sum norm gives a Banach algebra. For C*-algebras we use the C*-unitization norm. If \(A\) already has identity \(1_A\), the map \((a,\lambda)\mapsto(a+\lambda1_A,\lambda)\) identifies \(A^+\) with the product C*-algebra \(A\times\mathbb C\); the norm is then \(\max(\|a+\lambda1_A\|,|\lambda|)\). These background constructions are [Banach algebras, Construction 3.2 and Propositions 3.3–3.4][BN].
+Its new identity is \((0,1)\), its augmentation is \(\epsilon(a,\lambda)=\lambda\), and \(A\) embeds as the ideal \(A\oplus0\). For Banach algebras the sum norm gives a Banach algebra. For C*-algebras we use the C*-unitization norm. If \(A\) already has identity \(1_A\), the map \((a,\lambda)\mapsto(a+\lambda1_A,\lambda)\) identifies \(A^+\) with the product C*-algebra \(A\times\mathbb C\); the norm is then \(\max(\|a+\lambda1_A\|,|\lambda|)\). These background constructions are [Banach algebras, Construction 3.2 and Proposition 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-04) and [Proposition 3.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-05).
 
 When \(A\) is nonunital, complements, invertible conjugators and unitaries are taken in \(A^+\). The idempotents and their homotopies remain in \(A\). Matrix complements use the identity of the ambient \(M_n(A^+)\).
 
@@ -94,7 +94,7 @@ z=1-e-f+2ef,\qquad
 z-1=(2e-1)(f-e),\qquad ez=ef=zf.
 \]
 
-The hypothesis gives \(\|z-1\|<1\), so the Neumann-series criterion makes \(z\) invertible. The same criterion applies to \(z_t=1+t(z-1)\), since \(\|z_t-1\|<1\) for \(0\leq t\leq1\). Hence \(z_t^{-1}ez_t\) is an idempotent path from \(e\) to \(f\). \(\square\)
+The hypothesis gives \(\|z-1\|<1\), so the [Neumann-series criterion (Proposition 2.1)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-02) makes \(z\) invertible. The same criterion applies to \(z_t=1+t(z-1)\), since \(\|z_t-1\|<1\) for \(0\leq t\leq1\). Hence \(z_t^{-1}ez_t\) is an idempotent path from \(e\) to \(f\). \(\square\)
 
 The factor \(\|2e-1\|\) matters: idempotents need not have norm one. The formula also gives a continuous local choice of conjugator in the direction \(e\mapsto f\), namely \(w_e(f)=z^{-1}\).
 
@@ -221,7 +221,7 @@ For \(e,f\in M_n(A)\), algebraic equivalence implies that \(e\oplus0_n\) and \(f
 
 There is no assumption about a topology on an infinite matrix completion in this assertion. Conversely, algebraic equivalence in a larger finite stage can be compressed to the common original stage: corner-normalized witnesses \(x=exf,\ y=fye\) have no entries outside that stage. Algebraic equivalence is unchanged by adding zeros.
 
-The addition of classes by block sum gives the monoid used later for \(K_0\). In the C*-case we use the existing notation \(V(A)\) from [AF-algebras, Definition 7.4][AF]; we do not need its AF-specific dimension-group theory here.
+The addition of classes by block sum gives the monoid used later for \(K_0\). In the C*-case we use the existing notation \(V(A)\) from [AF-algebras, Definition 7.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06); we do not need its AF-specific dimension-group theory here.
 
 ## 4. Replacing idempotents by projections
 
@@ -243,7 +243,7 @@ D=1+(e-e^*)(e^*-e)=1-(e-e^*)^2,\qquad P(e)=ee^*D^{-1}.
 
 Then \(P(e)\) is a projection, \(eP(e)=P(e)\), and \(P(e)e=e\). The invertible element \(1+e-P(e)\) conjugates \(e\) to \(P(e)\), and \(e\) is homotopic to \(P(e)\). The map \(P\) is continuous and fixes every projection.
 
-**Proof.** The element \(D=1+(e-e^*)(e-e^*)^*\) is positive and at least \(1\), hence invertible. Expanding gives
+**Proof.** The element \(D=1+(e-e^*)(e-e^*)^*\) is positive and at least \(1\), hence invertible by [Proposition 8.5](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-15). Expanding gives
 
 \[
 D=1-e-e^*+ee^*+e^*e,\qquad
@@ -296,7 +296,7 @@ If \(q=zpz^{-1}\), then \(zp=qz\) and \(pz^*=z^*q\). These give
 pz^*z=z^*qz=z^*zp.
 \]
 
-Continuous functional calculus makes \((z^*z)^{-1/2}\) commute with \(p\). Therefore
+The [continuous functional calculus of Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) makes \((z^*z)^{-1/2}\) commute with \(p\). Therefore
 
 \[
 u=z(z^*z)^{-1/2}
@@ -304,7 +304,7 @@ u=z(z^*z)^{-1/2}
 
 is unitary and \(up=qu\). Here \(u^*u=1\), and \(u\) is invertible, so \(uu^*=1\). The converse is immediate.
 
-For a path of idempotents \(e_t\) with projection endpoints, Theorem 4.1 makes \(P(e_t)\) a projection path with the same endpoints. Apply Theorem 2.4 to this path to obtain an invertible path \(z_t\), starting at \(1\), with \(z_tpz_t^{-1}=P(e_t)\). Taking the polar unitaries \(u_t=z_t(z_t^*z_t)^{-1/2}\) gives a continuous unitary path with the same conjugations and \(u_0=1\). Continuity uses continuous functional calculus on positive invertibles. Conversely a unitary path produces a projection path by conjugation.
+For a path of idempotents \(e_t\) with projection endpoints, Theorem 4.1 makes \(P(e_t)\) a projection path with the same endpoints. Apply Theorem 2.4 to this path to obtain an invertible path \(z_t\), starting at \(1\), with \(z_tpz_t^{-1}=P(e_t)\). Taking the polar unitaries \(u_t=z_t(z_t^*z_t)^{-1/2}\) gives a continuous unitary path with the same conjugations and \(u_0=1\). Continuity uses [Theorem 6.1(4)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-11) for continuous functional calculus on positive invertibles. Conversely a unitary path produces a projection path by conjugation.
 
 Unitary path components are open: if \(u,w\) are sufficiently close unitaries, the segment \((1-t)u+tw\) is invertible, and its polar unitaries give a path from \(u\) to \(w\). Thus connected and path components of the unitary group agree, justifying the notation \(U(A)_0\). \(\square\)
 
@@ -324,7 +324,7 @@ implements the equivalence; all entries of \(UU^*\), \(U^*U\), and the conjugati
 
 is self-adjoint as well as idempotent. Its second rotation path is also self-adjoint. \(\square\)
 
-We will use the following existing result without another proof: if \(\|p-q\|<1\), then \(p\sim_u q\), by [AF-algebras, Lemma 7.1][AF]. Its hypotheses concern arbitrary C*-algebras, not just AF-algebras. The projection version of the bound has radius \(1\) because \(2p-1\) is a self-adjoint unitary. Theorems 2.3 and 4.2 also show that such projections are homotopic.
+We will use the following existing result without another proof: if \(\|p-q\|<1\), then \(p\sim_u q\), by [AF-algebras, Lemma 7.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06). Its hypotheses concern arbitrary C*-algebras, not just AF-algebras. The projection version of the bound has radius \(1\) because \(2p-1\) is a self-adjoint unitary. Theorems 2.3 and 4.2 also show that such projections are homotopic.
 
 ## 5. Examples that separate the relations
 
@@ -443,7 +443,7 @@ In particular, if \(\eta\leq1/8\), then
 
 It lies in any subalgebra containing \(x\) and closed under holomorphic functional calculus in \(A\).
 
-**Proof.** Spectral mapping gives \(|\lambda^2-\lambda|\leq\eta\) for \(\lambda\in\sigma(x)\). This excludes the displayed line. The two spectral pieces are compact and separated, so the function \(\chi\) is holomorphic on their disjoint neighbourhoods. Since \(\chi^2=\chi\), the calculus gives \(p^2=p\). Equivalently \(p\) is the Riesz integral
+**Proof.** [Holomorphic spectral mapping (Theorem 6.10)](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-12) gives \(|\lambda^2-\lambda|\leq\eta\) for \(\lambda\in\sigma(x)\). This excludes the displayed line. The two spectral pieces are compact and separated, so the function \(\chi\) is holomorphic on their disjoint neighbourhoods. Since \(\chi^2=\chi\), the calculus gives \(p^2=p\). Equivalently \(p\) is the Riesz integral
 
 \[
 p=\frac1{2\pi i}\int_{\Gamma_1}(\lambda-x)^{-1}\,d\lambda,
@@ -510,7 +510,7 @@ This proves transitivity, and adding zero corners puts any finite collection of 
 
 **Exercise 2 (Basic).** Show that Murray–von Neumann equivalence and unitary equivalence coincide in a finite-dimensional C*-algebra.
 
-**Solution.** By [AF-algebras, Theorem 2.4][AF], the algebra is a finite direct sum \(\bigoplus_jM_{d_j}(\mathbb C)\). A partial isometry from \(p_j\) to \(q_j\) is an isometric bijection of their ranges, so the ranks agree in each summand. Choose orthonormal bases of each range and its orthogonal complement. The complements also have equal dimension, namely \(d_j-\operatorname{rank}p_j\). Sending these two pairs of bases to their counterparts gives a unitary \(u_j\) with \(u_jp_ju_j^*=q_j\). The tuple \((u_j)_j\) is the required unitary. Conversely \(q=upu^*\) gives the partial isometry \(v=up\). The zero algebra is immediate.
+**Solution.** By [AF-algebras, Theorem 2.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-01), the algebra is a finite direct sum \(\bigoplus_jM_{d_j}(\mathbb C)\). A partial isometry from \(p_j\) to \(q_j\) is an isometric bijection of their ranges, so the ranks agree in each summand. Choose orthonormal bases of each range and its orthogonal complement. The complements also have equal dimension, namely \(d_j-\operatorname{rank}p_j\). Sending these two pairs of bases to their counterparts gives a unitary \(u_j\) with \(u_jp_ju_j^*=q_j\). The tuple \((u_j)_j\) is the required unitary. Conversely \(q=upu^*\) gives the partial isometry \(v=up\). The zero algebra is immediate.
 
 **Exercise 3 (Intermediate).** For \(v^*v=p,\ vv^*=q\), verify that
 
@@ -570,11 +570,11 @@ belongs to the algebra. Its products with \(U^*\) have diagonal entries \(SS^*+P
 
 The general analytic background is used in the following exact forms:
 
-- The Neumann-series criterion: \(\|h\|<1\) implies that \(1-h\) is invertible. The equivalent normalization of a unital Banach-algebra norm and the external-unitization construction are also assumed. See [Banach algebras, Sections 2–3][BN].
-- Holomorphic functional calculus is a unital homomorphism, obeys spectral mapping and composition, and evaluates functions defined near separated spectral pieces by surrounding-cycle integrals. See [Banach algebras, Definition 6.4, Theorem 6.7, Theorem 6.10 and Example 6.12][BN].
-- Continuous functional calculus for a normal element is an isometric unital *-homomorphism with spectral mapping, commutation, and composition properties. The inverse square root depends continuously on a positive invertible element. See [C*-algebras, Theorems 5.1 and 6.1][CF].
-- Positive elements form a closed cone; \(x^*x\geq0\), \(x^*x\leq\|x\|^2 1\), order is preserved by \(a\mapsto c^*ac\), and a positive element at least \(\varepsilon1\), with \(\varepsilon>0\), is invertible. Positive square roots exist. See [C*-algebras, Theorem 8.2 and Proposition 8.5][CF], also [Blackadar 2006, II.3.1.2–II.3.1.9].
-- Projections of distance less than \(1\) are unitarily equivalent in the unitization; finite-dimensional C*-algebras are finite direct sums of full matrix algebras. See [AF-algebras, Lemma 7.1 and Theorem 2.4][AF]. The definition of \(V(A)\) is [AF-algebras, Definition 7.4][AF].
+- The Neumann-series criterion: \(\|h\|<1\) implies that \(1-h\) is invertible. The equivalent normalization of a unital Banach-algebra norm and the external-unitization construction are also assumed. See [Banach algebras, Propositions 2.1–2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-02), [Proposition 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-03), [Construction 3.2 and Proposition 3.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-04), and [Proposition 3.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-05).
+- Holomorphic functional calculus is a unital homomorphism, obeys spectral mapping and composition, and evaluates functions defined near separated spectral pieces by surrounding-cycle integrals. See [Banach algebras, Definition 6.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-10), [Theorem 6.7](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-11), [Theorem 6.10](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-12) and [Example 6.12](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-22).
+- Continuous functional calculus for a normal element is an isometric unital *-homomorphism with spectral mapping, commutation, and composition properties. The inverse square root depends continuously on a positive invertible element. See [C*-algebras, Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07) and [Theorem 6.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-11).
+- Positive elements form a closed cone; \(x^*x\geq0\), \(x^*x\leq\|x\|^2 1\), order is preserved by \(a\mapsto c^*ac\), and a positive element at least \(\varepsilon1\), with \(\varepsilon>0\), is invertible. Positive square roots exist. See [C*-algebras, Theorem 8.2 and Proposition 8.5](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-15), also [Blackadar 2006, II.3.1.2–II.3.1.9].
+- Projections of distance less than \(1\) are unitarily equivalent in the unitization; finite-dimensional C*-algebras are finite direct sums of full matrix algebras. See [AF-algebras, Lemma 7.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06) and [Theorem 2.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-01). The definition of \(V(A)\) is [AF-algebras, Definition 7.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06).
 - The full construction for Example 5.3 is [Topological K-theory, Proposition 4.2](KT-OPK-12.md#an-explicit-unstable-projection-example), using the projection retraction and stable homotopy proved above together with the suspension and Bott results developed in that lesson. Blackadar [1998, §4.4] retains credit for the qualitative example. The range-replacement deduction of a projection counterexample is also proved here.
 
 The Grothendieck-group construction, projective-module classification and Bott periodicity are subjects of subsequent lessons. The Bott projection's non-equivalence in Example 5.5 uses only the elementary winding argument supplied there.
@@ -582,7 +582,7 @@ The Grothendieck-group construction, projective-module classification and Bott p
 ## References
 
 - [Banach algebras] *Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory*, in the open course *Foundations of von Neumann algebras*.
-- [C*-algebras] *C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients*, in the open course *Foundations of von Neumann algebras*.
+- [C*-algebras] *Order, local units and quotients of C*-algebras*, in the open course *Foundations of von Neumann algebras*.
 - [AF-algebras] *AF-algebras*, in the open course *Foundations of von Neumann algebras*.
 - [Blackadar 1998] B. Blackadar, *K-Theory for Operator Algebras*, second edition, MSRI Publications 5, Cambridge University Press, 1998. [Author's corrected second edition](https://www.bruceblackadar.com/Mathematics/book6.pdf). Sections 4.1–4.6, especially Propositions 4.2.2, 4.2.5, 4.3.1–4.3.3, 4.4.1 and 4.6.2–4.6.7, printed pp. 20–24 (PDF pp. 34–38), give the corner and stable-equivalence comparisons. The complete finite-matrix proofs and quantitative correction bound are written in this lesson; Example 5.3 uses the explicit obstruction proof in Lesson 12, Proposition 4.2.
 - [Blackadar 2006] B. Blackadar, *Operator Algebras: Theory of C*-Algebras and von Neumann Algebras*, Encyclopaedia of Mathematical Sciences 122, Springer, 2006.

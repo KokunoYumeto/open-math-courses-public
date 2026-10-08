@@ -1,1 +1,1238 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Submanifolds and hypersurfaces</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Tangent and normal data</a></li><li><a href="#part-b">B. Constructing the immersion</a></li><li><a href="#part-c">C. What the curvature remembers about shape</a></li><li><a href="#part-d">D. Parallel normal spaces, rigidity and leaves</a></li><li><a href="#part-e">E. Shape spectra and compact hypersurfaces</a></li><li><a href="#part-f">F. Two principal curvatures and complete surfaces</a></li><li><a href="#part-g">G. Totally geodesic submanifolds and affine fixed sets</a></li><li><a href="#part-h">H. Exercises with complete solutions</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="submanifolds-and-hypersurfaces">Submanifolds and hypersurfaces</h1>
+<p>An immersion supplies two kinds of information: a metric within the manifold and the way its tangent spaces turn in the ambient space. A single connection on the sum of the tangent and normal bundles keeps track of both. Its curvature gives the compatibility equations, and a flat version of that connection reconstructs the immersion.</p>
+<p>All manifolds, maps and tensors below are smooth. Manifolds are nonempty, have no boundary unless one is specified, and are Hausdorff and second countable. Connectedness is stated where it is used. Inner products are positive definite. An immersion has injective differential; an embedding is an immersion which is a homeomorphism onto its image. Compactness includes no boundary. We use
+<span class="math math-display" data-tex="\[
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]">\[
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]</span>
+Thus the round sphere has positive sectional curvature. The free notes of Florit and Petersen, in the exact versions listed at the end, provide further reading. Every result used here is proved below or in the linked earlier programme lessons.</p>
+<h2 id="part-a">A. Tangent and normal data</h2>
+<p>Let <span class="math" data-tex="\(f:(M^n,g)\to(\overline M^{n+p},\bar g)\)">\(f:(M^n,g)\to(\overline M^{n+p},\bar g)\)</span> be an isometric immersion. Work on the pullback bundle <span class="math" data-tex="\(f^*T\overline M\)">\(f^*T\overline M\)</span>, so that different points of <span class="math" data-tex="\(M\)">\(M\)</span> mapping to the same ambient point still have their own fibres. Identify <span class="math" data-tex="\(TM\)">\(TM\)</span> with <span class="math" data-tex="\(df(TM)\)">\(df(TM)\)</span>. Its orthogonal complement is the <strong>normal bundle</strong> <span class="math" data-tex="\(N_fM\)">\(N_fM\)</span>. Write <span class="math" data-tex="\(D\)">\(D\)</span> for the pulled-back ambient Levi–Civita connection.</p>
+<p id="proposition-a-1"><strong>Proposition A.1 (The orthogonal connection blocks).</strong> There are a metric connection <span class="math" data-tex="\(\nabla^\perp\)">\(\nabla^\perp\)</span> on <span class="math" data-tex="\(N_fM\)">\(N_fM\)</span>, a symmetric normal-valued bilinear tensor <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and self-adjoint endomorphisms <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span> of <span class="math" data-tex="\(TM\)">\(TM\)</span>, linear in the normal vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_Xdf(Y)&amp;=df(\nabla_XY)+\alpha(X,Y),\\
+D_X\xi&amp;=-df(A_\xi X)+\nabla^\perp_X\xi,\\
+g(A_\xi X,Y)&amp;=\bar g(\alpha(X,Y),\xi).
+\end{aligned}
+\tag{A.1}
+\]">\[
+\begin{aligned}
+D_Xdf(Y)&amp;=df(\nabla_XY)+\alpha(X,Y),\\
+D_X\xi&amp;=-df(A_\xi X)+\nabla^\perp_X\xi,\\
+g(A_\xi X,Y)&amp;=\bar g(\alpha(X,Y),\xi).
+\end{aligned}
+\tag{A.1}
+\]</span>
+Here <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> is exactly the Levi–Civita connection of <span class="math" data-tex="\(g\)">\(g\)</span>. The tensor <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is the second fundamental form and <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span> is the shape operator in direction <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p><strong>Proof.</strong> In local coordinates an immersion supplies <span class="math" data-tex="\(n\)">\(n\)</span> independent smooth columns <span class="math" data-tex="\(f_i=df(\partial_i)\)">\(f_i=df(\partial_i)\)</span>. If <span class="math" data-tex="\(G=(\bar g(f_i,f_j))\)">\(G=(\bar g(f_i,f_j))\)</span>, their orthogonal projection is
+<span class="math math-display" data-tex="\[
+P(v)=\sum_{i,j}f_i(G^{-1})^{ij}\bar g(f_j,v).
+\]">\[
+P(v)=\sum_{i,j}f_i(G^{-1})^{ij}\bar g(f_j,v).
+\]</span>
+The matrix <span class="math" data-tex="\(G\)">\(G\)</span> is positive definite and has smooth inverse by the cofactor formula. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is a smooth projection of constant rank, and <span class="math" data-tex="\(I-P\)">\(I-P\)</span> describes the smooth normal bundle. Local frames for its image can be chosen by selecting an independent minor and applying the Gram–Schmidt construction of <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-f-2">Riemannian connections F.2</a>.</p>
+<p>Define <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\nabla^\perp\)">\(\nabla^\perp\)</span> by the two projections in the first two lines of (A.1); define <span class="math" data-tex="\(-A_\xi X\)">\(-A_\xi X\)</span> to be the tangent part of <span class="math" data-tex="\(D_X\xi\)">\(D_X\xi\)</span>. The connection rules show that the projected tangent and normal derivatives are connections. In the normal part of <span class="math" data-tex="\(D_Xdf(hY)\)">\(D_Xdf(hY)\)</span>, the Leibniz term <span class="math" data-tex="\(X(h)df(Y)\)">\(X(h)df(Y)\)</span> projects to zero; hence <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is tensorial in <span class="math" data-tex="\(Y\)">\(Y\)</span>, and it is already tensorial in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The pullback connection satisfies
+<span class="math math-display" data-tex="\[
+D_Xdf(Y)-D_Ydf(X)=df([X,Y]).
+\]">\[
+D_Xdf(Y)-D_Ydf(X)=df([X,Y]).
+\]</span>
+In coordinate tangent fields this is the equality of the mixed derivatives of the coordinate functions of <span class="math" data-tex="\(f\)">\(f\)</span>, together with symmetry of the ambient Christoffel symbols; bilinearity then proves it for all fields. Its normal part makes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> symmetric and its tangent part makes <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> torsion-free. Differentiating <span class="math" data-tex="\(g(Y,Z)=\bar g(df(Y),df(Z))\)">\(g(Y,Z)=\bar g(df(Y),df(Z))\)</span> shows that <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> preserves <span class="math" data-tex="\(g\)">\(g\)</span>. Levi–Civita uniqueness, <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>, identifies it. The same differentiation for normal sections proves metric compatibility of <span class="math" data-tex="\(\nabla^\perp\)">\(\nabla^\perp\)</span>.</p>
+<p>Finally differentiate <span class="math" data-tex="\(\bar g(\xi,df(Y))=0\)">\(\bar g(\xi,df(Y))=0\)</span>. The result is
+<span class="math" data-tex="\(-g(A_\xi X,Y)+\bar g(\xi,\alpha(X,Y))=0\)">\(-g(A_\xi X,Y)+\bar g(\xi,\alpha(X,Y))=0\)</span>.
+It proves the last formula, self-adjointness, tensoriality and linearity in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The pullback and tensor-connection rules used throughout are <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a>. □</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+(\nabla_X\alpha)(Y,Z)=
+\nabla^\perp_X(\alpha(Y,Z))
+-\alpha(\nabla_XY,Z)-\alpha(Y,\nabla_XZ).
+\tag{A.2}
+\]">\[
+(\nabla_X\alpha)(Y,Z)=
+\nabla^\perp_X(\alpha(Y,Z))
+-\alpha(\nabla_XY,Z)-\alpha(Y,\nabla_XZ).
+\tag{A.2}
+\]</span>
+For the shape family put
+<span class="math math-display" data-tex="\[
+(\nabla_X A)_\xi Z
+=\nabla_X(A_\xi Z)-A_\xi\nabla_XZ-A_{\nabla^\perp_X\xi}Z.
+\]">\[
+(\nabla_X A)_\xi Z
+=\nabla_X(A_\xi Z)-A_\xi\nabla_XZ-A_{\nabla^\perp_X\xi}Z.
+\]</span>
+Differentiating the last line of (A.1) gives
+<span class="math math-display" data-tex="\[
+g((\nabla_XA)_\xi Z,W)
+=\bar g((\nabla_X\alpha)(Z,W),\xi).
+\tag{A.3}
+\]">\[
+g((\nabla_XA)_\xi Z,W)
+=\bar g((\nabla_X\alpha)(Z,W),\xi).
+\tag{A.3}
+\]</span></p>
+<p id="theorem-a-2"><strong>Theorem A.2 (Curvature of the two blocks).</strong> For tangent fields <span class="math" data-tex="\(X,Y,Z,W\)">\(X,Y,Z,W\)</span> and normal fields <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(R(X,Y)Z,W)
+&amp;=\bar g(\bar R(dfX,dfY)dfZ,dfW)\\
+&amp;\quad+\bar g(\alpha(Y,Z),\alpha(X,W))
+-\bar g(\alpha(X,Z),\alpha(Y,W)),\\
+(\bar R(dfX,dfY)dfZ)^\perp
+&amp;=(\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z),\\
+\bar g(R^\perp(X,Y)\xi,\eta)
+&amp;=\bar g(\bar R(dfX,dfY)\xi,\eta)
++g([A_\xi,A_\eta]X,Y).
+\end{aligned}
+\tag{A.4}
+\]">\[
+\begin{aligned}
+g(R(X,Y)Z,W)
+&amp;=\bar g(\bar R(dfX,dfY)dfZ,dfW)\\
+&amp;\quad+\bar g(\alpha(Y,Z),\alpha(X,W))
+-\bar g(\alpha(X,Z),\alpha(Y,W)),\\
+(\bar R(dfX,dfY)dfZ)^\perp
+&amp;=(\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z),\\
+\bar g(R^\perp(X,Y)\xi,\eta)
+&amp;=\bar g(\bar R(dfX,dfY)\xi,\eta)
++g([A_\xi,A_\eta]X,Y).
+\end{aligned}
+\tag{A.4}
+\]</span>
+These are the Gauss, Codazzi and Ricci equations. In Euclidean ambient space all terms involving <span class="math" data-tex="\(\bar R\)">\(\bar R\)</span> vanish. In a space of constant sectional curvature <span class="math" data-tex="\(c\)">\(c\)</span>, the Gauss equation adds the term <span class="math" data-tex="\(c(g(Y,Z)X-g(X,Z)Y)\)">\(c(g(Y,Z)X-g(X,Z)Y)\)</span>, and the Codazzi and Ricci equations have the same right-hand ambient terms, zero, as in Euclidean space.</p>
+<p><strong>Proof.</strong> Compute <span class="math" data-tex="\(R^D(X,Y)=D_XD_Y-D_YD_X-D_{[X,Y]}\)">\(R^D(X,Y)=D_XD_Y-D_YD_X-D_{[X,Y]}\)</span> using (A.1). On <span class="math" data-tex="\(df(Z)\)">\(df(Z)\)</span> its tangent part is
+<span class="math math-display" data-tex="\[
+df\bigl(R(X,Y)Z-A_{\alpha(Y,Z)}X+A_{\alpha(X,Z)}Y\bigr),
+\tag{A.5}
+\]">\[
+df\bigl(R(X,Y)Z-A_{\alpha(Y,Z)}X+A_{\alpha(X,Z)}Y\bigr),
+\tag{A.5}
+\]</span>
+and its normal part is
+<span class="math math-display" data-tex="\[
+(\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z).
+\tag{A.6}
+\]">\[
+(\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z).
+\tag{A.6}
+\]</span>
+For example, the normal part before collecting terms is
+<span class="math math-display" data-tex="\[
+\alpha(X,\nabla_YZ)+\nabla^\perp_X\alpha(Y,Z)
+-\alpha(Y,\nabla_XZ)-\nabla^\perp_Y\alpha(X,Z)
+-\alpha([X,Y],Z).
+\]">\[
+\alpha(X,\nabla_YZ)+\nabla^\perp_X\alpha(Y,Z)
+-\alpha(Y,\nabla_XZ)-\nabla^\perp_Y\alpha(X,Z)
+-\alpha([X,Y],Z).
+\]</span>
+Substitute <span class="math" data-tex="\([X,Y]=\nabla_XY-\nabla_YX\)">\([X,Y]=\nabla_XY-\nabla_YX\)</span> and use symmetry of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to obtain (A.6); the tangent terms collect directly into (A.5).</p>
+<p>On <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the normal part of the same expansion is
+<span class="math math-display" data-tex="\[
+R^\perp(X,Y)\xi-\alpha(X,A_\xi Y)+\alpha(Y,A_\xi X).
+\tag{A.7}
+\]">\[
+R^\perp(X,Y)\xi-\alpha(X,A_\xi Y)+\alpha(Y,A_\xi X).
+\tag{A.7}
+\]</span>
+Pairing the last two terms with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives
+<span class="math math-display" data-tex="\[
+-g(A_\eta X,A_\xi Y)+g(A_\eta Y,A_\xi X)
+=-g([A_\xi,A_\eta]X,Y).
+\]">\[
+-g(A_\eta X,A_\xi Y)+g(A_\eta Y,A_\xi X)
+=-g([A_\xi,A_\eta]X,Y).
+\]</span>
+The curvature of a pulled-back connection is the pullback of its curvature, as proved in <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a>. Thus (A.5)–(A.7) equal the corresponding components of <span class="math" data-tex="\(\bar R(dfX,dfY)\)">\(\bar R(dfX,dfY)\)</span>, giving (A.4). This calculation also proves the displayed signs without any convention about a chosen unit normal.</p>
+<p>For constant curvature, <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a> gives
+<span class="math" data-tex="\(\bar R(u,v)w=c(\bar g(v,w)u-\bar g(u,w)v)\)">\(\bar R(u,v)w=c(\bar g(v,w)u-\bar g(u,w)v)\)</span>.
+It is tangent when all three vectors are tangent, and vanishes when <span class="math" data-tex="\(w\)">\(w\)</span> is normal and the first two are tangent. These facts give the final assertions. □</p>
+<p id="proposition-a-3"><strong>Proposition A.3 (Coordinates, principal curvatures and intrinsic Gaussian curvature).</strong> For a Euclidean hypersurface of positive dimension parametrized by <span class="math" data-tex="\(f(x^1,\ldots,x^n)\)">\(f(x^1,\ldots,x^n)\)</span>, choose a unit normal <span class="math" data-tex="\(\nu\)">\(\nu\)</span> locally and write
+<span class="math math-display" data-tex="\[
+g_{ij}=\langle f_i,f_j\rangle,\qquad
+b_{ij}=\langle f_{ij},\nu\rangle,\qquad
+f_{ij}=\Gamma^k_{ij}f_k+b_{ij}\nu.
+\tag{A.8}
+\]">\[
+g_{ij}=\langle f_i,f_j\rangle,\qquad
+b_{ij}=\langle f_{ij},\nu\rangle,\qquad
+f_{ij}=\Gamma^k_{ij}f_k+b_{ij}\nu.
+\tag{A.8}
+\]</span>
+Then <span class="math" data-tex="\(A^i{}_j=g^{ik}b_{kj}\)">\(A^i{}_j=g^{ik}b_{kj}\)</span>, <span class="math" data-tex="\(d\nu(X)=-df(AX)\)">\(d\nu(X)=-df(AX)\)</span>, and
+<span class="math math-display" data-tex="\[
+\Gamma^\ell_{ij}
+=\tfrac12 g^{\ell k}
+(\partial_i g_{jk}+\partial_jg_{ik}-\partial_k g_{ij}).
+\tag{A.9}
+\]">\[
+\Gamma^\ell_{ij}
+=\tfrac12 g^{\ell k}
+(\partial_i g_{jk}+\partial_jg_{ik}-\partial_k g_{ij}).
+\tag{A.9}
+\]</span>
+The eigenvalues <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> are real. For a nonzero vector <span class="math" data-tex="\(v=\sum_i v_i e_i\)">\(v=\sum_i v_i e_i\)</span> in an orthonormal principal basis, its normal curvature is
+<span class="math math-display" data-tex="\[
+\frac{b(v,v)}{g(v,v)}
+=\frac{\sum_i\lambda_i v_i^2}{\sum_i v_i^2}.
+\tag{A.10}
+\]">\[
+\frac{b(v,v)}{g(v,v)}
+=\frac{\sum_i\lambda_i v_i^2}{\sum_i v_i^2}.
+\tag{A.10}
+\]</span>
+The mean curvature relative to <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is <span class="math" data-tex="\(\operatorname{tr}A/n\)">\(\operatorname{tr}A/n\)</span>; the Gauss–Kronecker curvature is <span class="math" data-tex="\(\det A\)">\(\det A\)</span>. Changing <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to <span class="math" data-tex="\(-\nu\)">\(-\nu\)</span> changes every <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> to its negative.</p>
+<p>For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, Gaussian curvature is
+<span class="math math-display" data-tex="\[
+K=\det A
+=\frac{b_{11}b_{22}-b_{12}^2}{g_{11}g_{22}-g_{12}^2}
+=\frac{g(R(\partial_1,\partial_2)\partial_2,\partial_1)}
+{g_{11}g_{22}-g_{12}^2}.
+\tag{A.11}
+\]">\[
+K=\det A
+=\frac{b_{11}b_{22}-b_{12}^2}{g_{11}g_{22}-g_{12}^2}
+=\frac{g(R(\partial_1,\partial_2)\partial_2,\partial_1)}
+{g_{11}g_{22}-g_{12}^2}.
+\tag{A.11}
+\]</span>
+In particular it depends only on the metric, is preserved by local isometries, and is unchanged by reversing the normal.</p>
+<p><strong>Proof.</strong> A unit normal has normal derivative zero in its own normal line, because <span class="math" data-tex="\(\langle D_X\nu,\nu\rangle=0\)">\(\langle D_X\nu,\nu\rangle=0\)</span>. Equations (A.8) and the formula for <span class="math" data-tex="\(d\nu\)">\(d\nu\)</span> follow from A.1; pairing <span class="math" data-tex="\(A\partial_j\)">\(A\partial_j\)</span> with <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> gives its matrix formula. Differentiate <span class="math" data-tex="\(g_{ij}=\langle f_i,f_j\rangle\)">\(g_{ij}=\langle f_i,f_j\rangle\)</span>, add the equations for <span class="math" data-tex="\(\partial_i g_{jk}\)">\(\partial_i g_{jk}\)</span> and <span class="math" data-tex="\(\partial_jg_{ik}\)">\(\partial_jg_{ik}\)</span>, and subtract that for <span class="math" data-tex="\(\partial_k g_{ij}\)">\(\partial_k g_{ij}\)</span>. Equality of mixed partials leaves <span class="math" data-tex="\(2\langle f_{ij},f_k\rangle\)">\(2\langle f_{ij},f_k\rangle\)</span>; multiplication by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> proves (A.9).</p>
+<p>The self-adjoint spectral theorem, with its proof in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-h-2">De Rham decomposition H.2</a>, supplies the orthonormal eigenbasis. Expanding <span class="math" data-tex="\(v\)">\(v\)</span> gives (A.10), including the minimum and maximum principal curvatures as the extreme normal curvatures. In dimension two the expression on a unit vector <span class="math" data-tex="\(\cos t\,e_1+\sin t\,e_2\)">\(\cos t\,e_1+\sin t\,e_2\)</span> is <span class="math" data-tex="\(\lambda_1\cos^2t+\lambda_2\sin^2t\)">\(\lambda_1\cos^2t+\lambda_2\sin^2t\)</span>. The trace, determinant and sign statements follow from the same basis and the defining relation for <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span>.</p>
+<p>For a surface, Gauss in A.2 makes the numerator in the last expression of (A.11) equal to <span class="math" data-tex="\(b_{11}b_{22}-b_{12}^2\)">\(b_{11}b_{22}-b_{12}^2\)</span>; the determinant identity <span class="math" data-tex="\(\det(g^{-1}b)=\det b/\det g\)">\(\det(g^{-1}b)=\det b/\det g\)</span> gives the first equality. To see the metric dependence in coordinates with no extrinsic quantities, that numerator is
+<span class="math math-display" data-tex="\[
+\sum_{\ell=1}^2 g_{1\ell}
+\left(
+\partial_1\Gamma^\ell_{22}-\partial_2\Gamma^\ell_{12}
++\sum_{m=1}^2
+(\Gamma^\ell_{1m}\Gamma^m_{22}
+-\Gamma^\ell_{2m}\Gamma^m_{12})
+\right).
+\tag{A.12}
+\]">\[
+\sum_{\ell=1}^2 g_{1\ell}
+\left(
+\partial_1\Gamma^\ell_{22}-\partial_2\Gamma^\ell_{12}
++\sum_{m=1}^2
+(\Gamma^\ell_{1m}\Gamma^m_{22}
+-\Gamma^\ell_{2m}\Gamma^m_{12})
+\right).
+\tag{A.12}
+\]</span>
+Indeed expand the definition of <span class="math" data-tex="\(R\)">\(R\)</span> in the commuting coordinate fields, as in <a href="linear-and-affine-connections.html#theorem-b-3">Linear connections B.3</a>. Formula (A.9) expresses all these coefficients through <span class="math" data-tex="\(g\)">\(g\)</span> and its derivatives. The denominator is positive because <span class="math" data-tex="\(g\)">\(g\)</span> is positive definite. Naturality of Levi–Civita curvature under a local isometry, <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>, proves invariance. Reversing the normal negates <span class="math" data-tex="\(b\)">\(b\)</span> but leaves its two-dimensional determinant unchanged. □</p>
+<p id="proposition-a-4"><strong>Proposition A.4 (The Gauss map and the projected connections).</strong> For a Euclidean immersion <span class="math" data-tex="\(f:M^n\to\mathbb R^{n+p}\)">\(f:M^n\to\mathbb R^{n+p}\)</span>, let
+<span class="math math-display" data-tex="\[
+\mathcal G(x)=df_x(T_xM)\in\operatorname{Gr}_n(\mathbb R^{n+p}).
+\]">\[
+\mathcal G(x)=df_x(T_xM)\in\operatorname{Gr}_n(\mathbb R^{n+p}).
+\]</span>
+The tangent space to the Grassmannian at a plane <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(\operatorname{Hom}(V,V^\perp)\)">\(\operatorname{Hom}(V,V^\perp)\)</span>, and
+<span class="math math-display" data-tex="\[
+d\mathcal G_x(X)(df_xY)=\alpha_x(X,Y).
+\tag{A.13}
+\]">\[
+d\mathcal G_x(X)(df_xY)=\alpha_x(X,Y).
+\tag{A.13}
+\]</span>
+The tangent and normal connections of the immersion are pullbacks of the projected connections on the tautological bundle and its orthogonal complement. For a cooriented hypersurface its spherical Gauss map is <span class="math" data-tex="\(\nu:M\to S^n\)">\(\nu:M\to S^n\)</span>, with
+<span class="math math-display" data-tex="\[
+d\nu=-df\circ A,\qquad
+\nu^*g_{S^n}(X,Y)=g(AX,AY).
+\tag{A.14}
+\]">\[
+d\nu=-df\circ A,\qquad
+\nu^*g_{S^n}(X,Y)=g(AX,AY).
+\tag{A.14}
+\]</span>
+It is a local diffeomorphism exactly where <span class="math" data-tex="\(A\)">\(A\)</span> is invertible.</p>
+<p><strong>Proof.</strong> Fix an orthogonal splitting <span class="math" data-tex="\(\mathbb R^{n+p}=V\oplus V^\perp\)">\(\mathbb R^{n+p}=V\oplus V^\perp\)</span>. Every nearby plane whose projection to <span class="math" data-tex="\(V\)">\(V\)</span> is invertible is the graph of a unique map <span class="math" data-tex="\(L:V\to V^\perp\)">\(L:V\to V^\perp\)</span>. Its entries give a chart; changes of splitting use multiplication and inversion of the appropriate invertible projection matrices, so are smooth. These charts cover all planes: choose independent coordinate projections of any basis of a plane. Topologize the planes by their orthogonal projection matrices, a subset of the Euclidean space of real matrices. It is Hausdorff and second countable in the subspace topology. For a graph the projection is <span class="math" data-tex="\(J(J^*J)^{-1}J^*\)">\(J(J^*J)^{-1}J^*\)</span>, where <span class="math" data-tex="\(Jv=(v,Lv)\)">\(Jv=(v,Lv)\)</span>; its dependence on <span class="math" data-tex="\(L\)">\(L\)</span> and the reverse coordinate formula by an invertible projection minor are continuous. Thus these are indeed manifold charts in that topology. This constructs the Grassmannian and identifies its tangent space at <span class="math" data-tex="\(L=0\)">\(L=0\)</span> with <span class="math" data-tex="\(\operatorname{Hom}(V,V^\perp)\)">\(\operatorname{Hom}(V,V^\perp)\)</span>.</p>
+<p>Along a curve in <span class="math" data-tex="\(M\)">\(M\)</span>, choose a smooth tangent frame <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span>. At the starting point, the derivative of its spanned ambient plane is the normal projection of <span class="math" data-tex="\(D_Xdf(Y_i)\)">\(D_Xdf(Y_i)\)</span>. Terms due to the change of the tangent frame itself are tangent, so the result is independent of its choice. Equation (A.1) now proves (A.13).</p>
+<p>The tautological bundle has fibre the plane itself, inside the trivial ambient bundle; its complementary bundle has fibre the perpendicular space. If <span class="math" data-tex="\(P\)">\(P\)</span> is orthogonal projection to the plane, their connections are <span class="math" data-tex="\(P\,d\)">\(P\,d\)</span> and <span class="math" data-tex="\((I-P)d\)">\((I-P)d\)</span>. Pulling them back by <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> gives exactly the projections used in A.1. One can check their curvatures directly:
+<span class="math math-display" data-tex="\[
+F^S=P(dP\wedge dP)|_S,\qquad
+F^{S^\perp}=(I-P)(dP\wedge dP)|_{S^\perp}.
+\tag{A.15}
+\]">\[
+F^S=P(dP\wedge dP)|_S,\qquad
+F^{S^\perp}=(I-P)(dP\wedge dP)|_{S^\perp}.
+\tag{A.15}
+\]</span>
+To prove the first formula differentiate <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, which gives <span class="math" data-tex="\(P(dP)P=0\)">\(P(dP)P=0\)</span>. If <span class="math" data-tex="\(s=Ps\)">\(s=Ps\)</span>, then <span class="math" data-tex="\(ds=(dP)s+Pds\)">\(ds=(dP)s+Pds\)</span>, and
+<span class="math" data-tex="\((P\,d)^2s=P(dP\wedge ds)=P(dP\wedge dP)s\)">\((P\,d)^2s=P(dP\wedge ds)=P(dP\wedge dP)s\)</span>.
+For the second replace <span class="math" data-tex="\(P\)">\(P\)</span> by <span class="math" data-tex="\(I-P\)">\(I-P\)</span>.</p>
+<p>In the graph chart a tangent map <span class="math" data-tex="\(L_X\)">\(L_X\)</span> gives
+<span class="math math-display" data-tex="\[
+(dP)_X=
+\begin{pmatrix}0&amp;L_X^*\\ L_X&amp;0\end{pmatrix}.
+\]">\[
+(dP)_X=
+\begin{pmatrix}0&amp;L_X^*\\ L_X&amp;0\end{pmatrix}.
+\]</span>
+This follows by differentiating the projection at the zero graph, or by differentiating its symmetry and its action on vectors <span class="math" data-tex="\(v+tL_Xv\)">\(v+tL_Xv\)</span>. Hence the two curvature blocks are <span class="math" data-tex="\(L_X^*L_Y-L_Y^*L_X\)">\(L_X^*L_Y-L_Y^*L_X\)</span> and <span class="math" data-tex="\(L_XL_Y^*-L_YL_X^*\)">\(L_XL_Y^*-L_YL_X^*\)</span>. With <span class="math" data-tex="\(L_XY=\alpha(X,Y)\)">\(L_XY=\alpha(X,Y)\)</span>, these are precisely the Euclidean Gauss and Ricci formulas of A.2. This also identifies both pulled-back connections and their signs. Finally (A.14) is A.3 followed by taking inner products. The inverse theorem, <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>, proves the local-diffeomorphism assertion. □</p>
+<h2 id="part-b">B. Constructing the immersion</h2>
+<p id="lemma-b-1"><strong>Lemma B.1 (Flat trivialization and a primitive).</strong> A flat metric connection on a Euclidean vector bundle over a connected simply connected manifold has a global parallel orthonormal trivialization, uniquely specified at one point. A closed <span class="math" data-tex="\(\mathbb R^q\)">\(\mathbb R^q\)</span>-valued one-form on that manifold has a smooth primitive, uniquely specified by its value at one point.</p>
+<p><strong>Proof.</strong> The frame-bundle connection corresponding to the vector-bundle connection is constructed in <a href="linear-and-affine-connections.html#theorem-d-1">Linear connections D.1</a>. Flatness is zero curvature for that connection. <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-e-1">Flat connections E.1</a> proves path-homotopy invariance of flat transport, with a full local flat-section construction and continuation over a homotopy square. Simple connectivity therefore makes transport from a fixed point independent of the path. Transport a chosen orthonormal frame: metric compatibility preserves its inner products, and the local flat sections prove smoothness and parallelism. Every parallel section is determined by its initial value by the parallel ODE, <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a>, giving uniqueness.</p>
+<p>Here is a direct application of the same flat-transport theorem to the one-form assertion. On the trivial principal additive group bundle <span class="math" data-tex="\(M\times\mathbb R^q\)">\(M\times\mathbb R^q\)</span>, give a lift <span class="math" data-tex="\((\gamma(t),z(t))\)">\((\gamma(t),z(t))\)</span> the horizontal equation
+<span class="math math-display" data-tex="\[
+z'(t)=\omega_{\gamma(t)}(\gamma'(t)).
+\tag{B.1}
+\]">\[
+z'(t)=\omega_{\gamma(t)}(\gamma'(t)).
+\tag{B.1}
+\]</span>
+The corresponding connection form is <span class="math" data-tex="\(dz-\omega\)">\(dz-\omega\)</span>; its curvature is <span class="math" data-tex="\(-d\omega=0\)">\(-d\omega=0\)</span>, since the additive group is abelian. These statements follow from the connection and curvature formulas in <a href="connections-and-parallel-transport.html#theorem-a-2">Connections A.2</a> and <a href="curvature-and-holonomy-groups.html#lemma-a-2">Curvature and holonomy A.2</a>. <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-e-1">Flat connections E.1</a> makes the endpoint <span class="math" data-tex="\(z\)">\(z\)</span> independent of the path on a simply connected base. Define <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> to be that endpoint, starting with the prescribed value at the base point. In a coordinate ball it is the integral along a fixed path to its centre and then a straight coordinate segment, so it is smooth by differentiation of parameter integrals (<a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>). Adjoining a short curve at its endpoint and differentiating (B.1) gives <span class="math" data-tex="\(dF=\omega\)">\(dF=\omega\)</span>. If two primitives agree at one point, their difference has zero derivative and is constant along the piecewise coordinate paths of <a href="curvature-and-holonomy-groups.html#lemma-c-4">Curvature and holonomy C.4</a>. They are equal everywhere. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (Euclidean realization of tangent and normal data).</strong> Let <span class="math" data-tex="\((M^n,g)\)">\((M^n,g)\)</span> be connected and simply connected. Let <span class="math" data-tex="\(N\to M\)">\(N\to M\)</span> be a rank-<span class="math" data-tex="\(p\)">\(p\)</span> Euclidean vector bundle with a metric connection <span class="math" data-tex="\(\nabla^\perp\)">\(\nabla^\perp\)</span>, and let <span class="math" data-tex="\(\alpha:TM\times TM\to N\)">\(\alpha:TM\times TM\to N\)</span> be a smooth symmetric bilinear form. Define <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span> by
+<span class="math math-display" data-tex="\[
+g(A_\xi X,Y)=\langle\alpha(X,Y),\xi\rangle.
+\]">\[
+g(A_\xi X,Y)=\langle\alpha(X,Y),\xi\rangle.
+\]</span>
+There exists an isometric immersion <span class="math" data-tex="\(f:M\to\mathbb R^{n+p}\)">\(f:M\to\mathbb R^{n+p}\)</span>, together with a fibre isometry <span class="math" data-tex="\(j:N\to N_fM\)">\(j:N\to N_fM\)</span> preserving the normal connection and second fundamental form, if and only if the Euclidean equations (A.4) hold for the prescribed data. The realization is unique up to a single Euclidean motion. Its position and any compatible isometry
+<span class="math math-display" data-tex="\[
+T_{x_0}M\oplus N_{x_0}\longrightarrow\mathbb R^{n+p}
+\]">\[
+T_{x_0}M\oplus N_{x_0}\longrightarrow\mathbb R^{n+p}
+\]</span>
+may be prescribed at one point. Every point has a neighbourhood on which <span class="math" data-tex="\(f\)">\(f\)</span> is an embedding.</p>
+<p>In particular, for a hypersurface with a global unit normal, the data are a metric and a self-adjoint field <span class="math" data-tex="\(A\)">\(A\)</span>; their necessary and sufficient equations are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(X,Y)Z&amp;=g(AY,Z)AX-g(AX,Z)AY,\\
+(\nabla_XA)Y&amp;=(\nabla_YA)X.
+\end{aligned}
+\tag{B.2}
+\]">\[
+\begin{aligned}
+R(X,Y)Z&amp;=g(AY,Z)AX-g(AX,Z)AY,\\
+(\nabla_XA)Y&amp;=(\nabla_YA)X.
+\end{aligned}
+\tag{B.2}
+\]</span></p>
+<p><strong>Proof.</strong> Necessity is A.2. For sufficiency put <span class="math" data-tex="\(E=TM\oplus N\)">\(E=TM\oplus N\)</span>, with its orthogonal sum metric, and define
+<span class="math math-display" data-tex="\[
+\mathcal D_X(Z,\xi)=
+\bigl(\nabla_XZ-A_\xi X,\ 
+\alpha(X,Z)+\nabla^\perp_X\xi\bigr).
+\tag{B.3}
+\]">\[
+\mathcal D_X(Z,\xi)=
+\bigl(\nabla_XZ-A_\xi X,\ 
+\alpha(X,Z)+\nabla^\perp_X\xi\bigr).
+\tag{B.3}
+\]</span>
+The connection rules are immediate from tensoriality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>. It is metric: the two off-diagonal inner-product terms cancel by the definition of <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span>, while the diagonal connections already preserve their metrics.</p>
+<p>We verify flatness in all blocks. On <span class="math" data-tex="\((Z,0)\)">\((Z,0)\)</span>, the tangent curvature component is
+<span class="math math-display" data-tex="\[
+R(X,Y)Z-A_{\alpha(Y,Z)}X+A_{\alpha(X,Z)}Y,
+\]">\[
+R(X,Y)Z-A_{\alpha(Y,Z)}X+A_{\alpha(X,Z)}Y,
+\]</span>
+and the normal component is
+<span class="math" data-tex="\((\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z)\)">\((\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z)\)</span>,
+by the expansion in A.2. On <span class="math" data-tex="\((0,\xi)\)">\((0,\xi)\)</span>, the tangent component is
+<span class="math math-display" data-tex="\[
+-(\nabla_XA)_\xi Y+(\nabla_YA)_\xi X,
+\]">\[
+-(\nabla_XA)_\xi Y+(\nabla_YA)_\xi X,
+\]</span>
+which vanishes by (A.3) and Codazzi after pairing with any tangent vector. The normal component is (A.7), which vanishes by Ricci after pairing with any normal vector. Thus all four blocks vanish.</p>
+<p>Lemma B.1 provides a parallel fibre isometry
+<span class="math" data-tex="\(\Phi:E\to M\times\mathbb R^{n+p}\)">\(\Phi:E\to M\times\mathbb R^{n+p}\)</span>
+with the prescribed initial value. Its parallelism means
+<span class="math math-display" data-tex="\[
+d_X(\Phi s)=\Phi(\mathcal D_Xs).
+\tag{B.4}
+\]">\[
+d_X(\Phi s)=\Phi(\mathcal D_Xs).
+\tag{B.4}
+\]</span>
+Define the vector-valued one-form <span class="math" data-tex="\(\omega(X)=\Phi(X,0)\)">\(\omega(X)=\Phi(X,0)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d\omega(X,Y)
+&amp;=\Phi\bigl(\nabla_XY-\nabla_YX-[X,Y],\
+\alpha(X,Y)-\alpha(Y,X)\bigr)=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+d\omega(X,Y)
+&amp;=\Phi\bigl(\nabla_XY-\nabla_YX-[X,Y],\
+\alpha(X,Y)-\alpha(Y,X)\bigr)=0.
+\end{aligned}
+\]</span>
+The first component is zero because <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> is torsion-free, and the second because <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is symmetric. B.1 gives <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(df=\omega\)">\(df=\omega\)</span> and the prescribed position. The isometry property of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> shows that <span class="math" data-tex="\(df\)">\(df\)</span> is injective and preserves <span class="math" data-tex="\(g\)">\(g\)</span>. Put <span class="math" data-tex="\(j(\xi)=\Phi(0,\xi)\)">\(j(\xi)=\Phi(0,\xi)\)</span>. It is perpendicular to <span class="math" data-tex="\(df(TM)\)">\(df(TM)\)</span> and has rank <span class="math" data-tex="\(p\)">\(p\)</span>, so is exactly its normal bundle. Applying (B.4) first to <span class="math" data-tex="\((Z,0)\)">\((Z,0)\)</span> and then to <span class="math" data-tex="\((0,\xi)\)">\((0,\xi)\)</span> gives (A.1) with second form <span class="math" data-tex="\(j\alpha\)">\(j\alpha\)</span> and normal connection <span class="math" data-tex="\(j\nabla^\perp\)">\(j\nabla^\perp\)</span>. This proves all realization assertions.</p>
+<p>Conversely any realization gives a parallel isometry <span class="math" data-tex="\(\Phi(Z,\xi)=df(Z)+j(\xi)\)">\(\Phi(Z,\xi)=df(Z)+j(\xi)\)</span> for (B.3). For two realizations, their trivializations differ by a constant orthogonal matrix: (B.4) makes the derivative of their comparison zero, and connectedness makes it constant. Their differentials therefore differ by that orthogonal matrix; integrating along paths shows that their positions differ by one additional constant translation. The initial data select both constants.</p>
+<p>To see local embedding, choose <span class="math" data-tex="\(n\)">\(n\)</span> ambient coordinate components of <span class="math" data-tex="\(f\)">\(f\)</span> whose derivative minor is nonzero at the point. The inverse theorem (<a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>) makes these components local coordinates on <span class="math" data-tex="\(M\)">\(M\)</span>. The remaining components are smooth functions of them, so the local image is a graph, and the graph parametrization is an embedding.</p>
+<p>For the hypersurface specialization take <span class="math" data-tex="\(N=M\times\mathbb R\)">\(N=M\times\mathbb R\)</span> with its standard metric connection and <span class="math" data-tex="\(\alpha(X,Y)=g(AX,Y)\)">\(\alpha(X,Y)=g(AX,Y)\)</span>. Its normal curvature vanishes and all scalar shape operators commute, so Ricci is automatic. Gauss and Codazzi are exactly (B.2), by (A.3). The section <span class="math" data-tex="\(1\)">\(1\)</span> of <span class="math" data-tex="\(N\)">\(N\)</span> becomes the desired global unit normal. □</p>
+<p id="proposition-b-3"><strong>Proposition B.3 (The global descent conditions).</strong> On a connected manifold which need not be simply connected, data as in B.2 admit a realization of both the immersion and its specified normal-bundle data if and only if:</p>
+<ol>
+<li>their connection <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> in (B.3) is flat and has trivial transport around every loop;</li>
+<li>in a global parallel orthonormal trivialization <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, the closed form <span class="math" data-tex="\(\omega(X)=\Phi(X,0)\)">\(\omega(X)=\Phi(X,0)\)</span> has zero integral around every loop.</li>
+</ol>
+<p>Changing the initial orthonormal frame does not change these conditions. On the universal cover, the realization exists whenever <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is flat. Its full tangent-and-normal realization descends exactly when its associated Euclidean monodromy is the identity.</p>
+<p><strong>Proof.</strong> Trivial loop transport makes parallel transport from a base point independent of path: two paths differ by their concatenation with a reversed path, and transport of this loop is the identity. The same local flat-section argument as B.1 gives a smooth parallel <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. The form <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is closed by the computation in B.2. If its loop integrals vanish, define <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> by its integral along any path from the base point; path independence and the local computation of B.1 give <span class="math" data-tex="\(df=\omega\)">\(df=\omega\)</span>. Thus B.2's verification constructs the full realization. Conversely a realization produces the parallel ambient trivialization <span class="math" data-tex="\(df\oplus j\)">\(df\oplus j\)</span>, so its loop transport is the identity and its form is <span class="math" data-tex="\(df\)">\(df\)</span>, with zero loop integrals. Any other parallel orthonormal trivialization differs by a constant orthogonal matrix, which preserves the zero-integral condition.</p>
+<p>The universal cover and path lifting are <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-2">Flat connections D.2</a> and <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a>. Pulling the flat data to that cover and using B.2 produces <span class="math" data-tex="\((\widetilde f,\widetilde j)\)">\((\widetilde f,\widetilde j)\)</span>. For each deck transformation <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, uniqueness in B.2 compares the transformed realization with the original one by a constant Euclidean motion
+<span class="math math-display" data-tex="\[
+\widetilde f(\gamma x)=Q_\gamma\widetilde f(x)+b_\gamma,
+\qquad
+\widetilde\Phi_{\gamma x}\circ\gamma_E
+=Q_\gamma\widetilde\Phi_x.
+\tag{B.5}
+\]">\[
+\widetilde f(\gamma x)=Q_\gamma\widetilde f(x)+b_\gamma,
+\qquad
+\widetilde\Phi_{\gamma x}\circ\gamma_E
+=Q_\gamma\widetilde\Phi_x.
+\tag{B.5}
+\]</span>
+Here <span class="math" data-tex="\(\gamma_E\)">\(\gamma_E\)</span> is the natural deck identification of the pulled-back <span class="math" data-tex="\(E\)">\(E\)</span> fibres. Composition gives
+<span class="math" data-tex="\(Q_{\gamma\delta}=Q_\gamma Q_\delta\)">\(Q_{\gamma\delta}=Q_\gamma Q_\delta\)</span> and
+<span class="math" data-tex="\(b_{\gamma\delta}=Q_\gamma b_\delta+b_\gamma\)">\(b_{\gamma\delta}=Q_\gamma b_\delta+b_\gamma\)</span>;
+these equalities follow first for the full fibre isometry, which spans the ambient vector space, and then for the position. Thus (B.5) is a homomorphism to the Euclidean group. The complete realization is deck-invariant exactly when <span class="math" data-tex="\(Q_\gamma=I\)">\(Q_\gamma=I\)</span> and <span class="math" data-tex="\(b_\gamma=0\)">\(b_\gamma=0\)</span> for every <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, since its tangent and normal images together span <span class="math" data-tex="\(\mathbb R^{n+p}\)">\(\mathbb R^{n+p}\)</span>. This is precisely descent in covering charts. The assertion concerns the specified normal identification as well as <span class="math" data-tex="\(f\)">\(f\)</span>; invariance of the position alone would be a weaker condition when the image is contained in a smaller affine space. □</p>
+<h2 id="part-c">C. What the curvature remembers about shape</h2>
+<p>For vectors <span class="math" data-tex="\(u,v\)">\(u,v\)</span> in a Euclidean space, write
+<span class="math" data-tex="\((u\wedge v)z=\langle v,z\rangle u-\langle u,z\rangle v\)">\((u\wedge v)z=\langle v,z\rangle u-\langle u,z\rangle v\)</span>.
+If <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are independent, this operator has image exactly their two-plane: its restriction there has an invertible matrix in an orthonormal basis. At a Euclidean hypersurface point, Gauss reads
+<span class="math math-display" data-tex="\[
+R(X,Y)=AX\wedge AY.
+\tag{C.1}
+\]">\[
+R(X,Y)=AX\wedge AY.
+\tag{C.1}
+\]</span></p>
+<p id="lemma-c-1"><strong>Lemma C.1 (Rank, curvature nullity and the sign ambiguity).</strong> At a Euclidean hypersurface point, <span class="math" data-tex="\(R=0\)">\(R=0\)</span> if and only if <span class="math" data-tex="\(\operatorname{rank}A\leq1\)">\(\operatorname{rank}A\leq1\)</span>. If <span class="math" data-tex="\(\operatorname{rank}A\geq2\)">\(\operatorname{rank}A\geq2\)</span>, the curvature nullity
+<span class="math math-display" data-tex="\[
+\mathcal N=\{X:R(X,Y)=0\text{ for every }Y\}
+\]">\[
+\mathcal N=\{X:R(X,Y)=0\text{ for every }Y\}
+\]</span>
+is <span class="math" data-tex="\(\ker A\)">\(\ker A\)</span>. If self-adjoint maps <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have the same Gauss tensor and <span class="math" data-tex="\(\operatorname{rank}A\geq3\)">\(\operatorname{rank}A\geq3\)</span>, then <span class="math" data-tex="\(B=A\)">\(B=A\)</span> or <span class="math" data-tex="\(B=-A\)">\(B=-A\)</span>.</p>
+<p><strong>Proof.</strong> If the image of <span class="math" data-tex="\(A\)">\(A\)</span> has dimension at most one, every wedge in (C.1) vanishes. If it has dimension at least two, choose <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> with independent images, giving a nonzero wedge. In that case <span class="math" data-tex="\(AX=0\)">\(AX=0\)</span> certainly puts <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>; if <span class="math" data-tex="\(AX\ne0\)">\(AX\ne0\)</span>, choose <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(AY\)">\(AY\)</span> independent of <span class="math" data-tex="\(AX\)">\(AX\)</span>, so <span class="math" data-tex="\(X\notin\mathcal N\)">\(X\notin\mathcal N\)</span>. This proves both first assertions and shows that the rank <span class="math" data-tex="\(n-\dim\mathcal N\)">\(n-\dim\mathcal N\)</span> is intrinsic at a nonflat hypersurface point.</p>
+<p>Now suppose <span class="math" data-tex="\(A\)">\(A\)</span> has rank at least three and shares its Gauss tensor with <span class="math" data-tex="\(B\)">\(B\)</span>. The common tensor is nonzero, so <span class="math" data-tex="\(B\)">\(B\)</span> has rank at least two. Both kernels equal the same <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>; self-adjointness makes both images <span class="math" data-tex="\(W=\mathcal N^\perp\)">\(W=\mathcal N^\perp\)</span>. Their restrictions to <span class="math" data-tex="\(W\)">\(W\)</span> are invertible. With <span class="math" data-tex="\(C=BA^{-1}:W\to W\)">\(C=BA^{-1}:W\to W\)</span>, (C.1) becomes
+<span class="math math-display" data-tex="\[
+Cu\wedge Cv=u\wedge v\qquad(u,v\in W).
+\]">\[
+Cu\wedge Cv=u\wedge v\qquad(u,v\in W).
+\]</span>
+Consequently <span class="math" data-tex="\(C\)">\(C\)</span> preserves every two-plane, by the image observation preceding the lemma. In dimension at least three any line is the intersection of two distinct two-planes containing it: extend a nonzero vector in the line by two independent vectors. Hence <span class="math" data-tex="\(C\)">\(C\)</span> preserves every line. Write <span class="math" data-tex="\(Cu=a u\)">\(Cu=a u\)</span>, <span class="math" data-tex="\(Cv=b v\)">\(Cv=b v\)</span> for independent <span class="math" data-tex="\(u,v\)">\(u,v\)</span>; applying line preservation to <span class="math" data-tex="\(u+v\)">\(u+v\)</span> forces <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Comparing any two lines, with an auxiliary independent line if necessary, shows <span class="math" data-tex="\(C=cI\)">\(C=cI\)</span>. The wedge equation gives <span class="math" data-tex="\(c^2=1\)">\(c^2=1\)</span>. The maps therefore equal up to this sign on <span class="math" data-tex="\(W\)">\(W\)</span>, and both vanish on <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, proving the result. □</p>
+<p id="lemma-c-2"><strong>Lemma C.2 (A regular argument of a flat bilinear form).</strong> Let <span class="math" data-tex="\(\beta:V\times U\to W\)">\(\beta:V\times U\to W\)</span> be bilinear on finite-dimensional real spaces, with a nondegenerate, possibly indefinite, symmetric form on <span class="math" data-tex="\(W\)">\(W\)</span>. Put <span class="math" data-tex="\(\beta_x(u)=\beta(x,u)\)">\(\beta_x(u)=\beta(x,u)\)</span>, and call <span class="math" data-tex="\(x\)">\(x\)</span> regular when <span class="math" data-tex="\(\operatorname{rank}\beta_x\)">\(\operatorname{rank}\beta_x\)</span> is maximal. Regular arguments form an open dense set. For regular <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+\beta(V,\ker\beta_x)\subseteq\operatorname{Im}\beta_x.
+\tag{C.2}
+\]">\[
+\beta(V,\ker\beta_x)\subseteq\operatorname{Im}\beta_x.
+\tag{C.2}
+\]</span>
+If <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is flat, meaning
+<span class="math math-display" data-tex="\[
+\langle\beta(x,u),\beta(y,v)\rangle
+=\langle\beta(x,v),\beta(y,u)\rangle,
+\tag{C.3}
+\]">\[
+\langle\beta(x,u),\beta(y,v)\rangle
+=\langle\beta(x,v),\beta(y,u)\rangle,
+\tag{C.3}
+\]</span>
+then the image in (C.2) lies in
+<span class="math math-display" data-tex="\[
+U_x=\operatorname{Im}\beta_x\cap(\operatorname{Im}\beta_x)^\perp.
+\tag{C.4}
+\]">\[
+U_x=\operatorname{Im}\beta_x\cap(\operatorname{Im}\beta_x)^\perp.
+\tag{C.4}
+\]</span>
+In particular, if the form on <span class="math" data-tex="\(W\)">\(W\)</span> is positive definite,
+<span class="math math-display" data-tex="\[
+\dim\{u:\beta(V,u)=0\}\geq\dim U-\dim W.
+\tag{C.5}
+\]">\[
+\dim\{u:\beta(V,u)=0\}\geq\dim U-\dim W.
+\tag{C.5}
+\]</span></p>
+<p><strong>Proof.</strong> Choose bases. Entries of <span class="math" data-tex="\(\beta_x\)">\(\beta_x\)</span> are linear in the coordinates of <span class="math" data-tex="\(x\)">\(x\)</span>; maximal rank <span class="math" data-tex="\(r\)">\(r\)</span> is detected by some nonzero <span class="math" data-tex="\(r\)">\(r\)</span>-minor polynomial. Its nonzero set is open and dense. To justify density, a nonzero real polynomial cannot vanish on an open box: regard it as a polynomial in the last variable; vanishing on an interval makes every coefficient zero on a box of one fewer variables, and induction makes the polynomial zero. The one-variable starting fact is that a nonzero degree-<span class="math" data-tex="\(d\)">\(d\)</span> polynomial has at most <span class="math" data-tex="\(d\)">\(d\)</span> distinct roots. If <span class="math" data-tex="\(a\)">\(a\)</span> is one root, the identities <span class="math" data-tex="\(t^j-a^j=(t-a)\sum_{i=0}^{j-1}t^{j-1-i}a^i\)">\(t^j-a^j=(t-a)\sum_{i=0}^{j-1}t^{j-1-i}a^i\)</span> factor the polynomial as <span class="math" data-tex="\((t-a)q(t)\)">\((t-a)q(t)\)</span>, and induction on the degree gives that bound. The union of all nonzero maximal-minor sets is exactly the regular set; rank zero uses the empty minor <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Fix regular <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\in V\)">\(y\in V\)</span>, and <span class="math" data-tex="\(u\in\ker\beta_x\)">\(u\in\ker\beta_x\)</span>. For small <span class="math" data-tex="\(t\)">\(t\)</span>, maximal rank persists and a fixed set of independent columns of <span class="math" data-tex="\(\beta_{x+ty}\)">\(\beta_{x+ty}\)</span> is a basis of its image. Their Gram matrix for any auxiliary positive definite inner product on <span class="math" data-tex="\(W\)">\(W\)</span> stays invertible, so the corresponding orthogonal image projection depends continuously on <span class="math" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>,
+<span class="math" data-tex="\(\beta_{x+ty}(u)=t\beta_y(u)\)">\(\beta_{x+ty}(u)=t\beta_y(u)\)</span>;
+thus <span class="math" data-tex="\(\beta_y(u)\)">\(\beta_y(u)\)</span> belongs to that image. Taking <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span> gives (C.2). Under (C.3),
+<span class="math math-display" data-tex="\[
+\langle\beta_y(u),\beta_x(v)\rangle
+=\langle\beta_y(v),\beta_x(u)\rangle=0.
+\]">\[
+\langle\beta_y(u),\beta_x(v)\rangle
+=\langle\beta_y(v),\beta_x(u)\rangle=0.
+\]</span>
+This proves (C.4). If the form is positive definite, <span class="math" data-tex="\(U_x=0\)">\(U_x=0\)</span>, so every vector in <span class="math" data-tex="\(\ker\beta_x\)">\(\ker\beta_x\)</span> is killed by all <span class="math" data-tex="\(\beta_y\)">\(\beta_y\)</span>. The converse is immediate. Rank-nullity gives its dimension <span class="math" data-tex="\(\dim U-r\geq\dim U-\dim W\)">\(\dim U-r\geq\dim U-\dim W\)</span>, proving (C.5). □</p>
+<p id="lemma-c-3"><strong>Lemma C.3 (Otsuki's dimension inequality).</strong> Suppose <span class="math" data-tex="\(V,W\)">\(V,W\)</span> are Euclidean spaces and <span class="math" data-tex="\(\beta:V\times V\to W\)">\(\beta:V\times V\to W\)</span> is symmetric bilinear, with
+<span class="math math-display" data-tex="\[
+\langle\beta(x,x),\beta(y,y)\rangle-|\beta(x,y)|^2\leq0
+\quad\text{for all }x,y,
+\tag{C.6}
+\]">\[
+\langle\beta(x,x),\beta(y,y)\rangle-|\beta(x,y)|^2\leq0
+\quad\text{for all }x,y,
+\tag{C.6}
+\]</span>
+and <span class="math" data-tex="\(\beta(x,x)\ne0\)">\(\beta(x,x)\ne0\)</span> for every nonzero <span class="math" data-tex="\(x\)">\(x\)</span>. Then <span class="math" data-tex="\(\dim W\geq\dim V\)">\(\dim W\geq\dim V\)</span>.</p>
+<p><strong>Proof.</strong> The assertion is immediate if <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. Otherwise minimize <span class="math" data-tex="\(|\beta(v,v)|^2\)">\(|\beta(v,v)|^2\)</span> on its compact unit sphere, using <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. At a minimizer set <span class="math" data-tex="\(a=\beta(v,v)\ne0\)">\(a=\beta(v,v)\ne0\)</span>. For unit <span class="math" data-tex="\(w\perp v\)">\(w\perp v\)</span>, differentiate along <span class="math" data-tex="\(v\cos t+w\sin t\)">\(v\cos t+w\sin t\)</span>. The first derivative is <span class="math" data-tex="\(4\langle a,\beta(v,w)\rangle\)">\(4\langle a,\beta(v,w)\rangle\)</span>, hence zero. Thus the linear map <span class="math" data-tex="\(w\mapsto\beta(v,w)\)">\(w\mapsto\beta(v,w)\)</span> from <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span> takes values in <span class="math" data-tex="\(a^\perp\)">\(a^\perp\)</span>.</p>
+<p>If <span class="math" data-tex="\(\dim V&gt;\dim W\)">\(\dim V&gt;\dim W\)</span>, rank-nullity supplies a unit <span class="math" data-tex="\(w\perp v\)">\(w\perp v\)</span> with <span class="math" data-tex="\(\beta(v,w)=0\)">\(\beta(v,w)=0\)</span>. In the same variation,
+<span class="math math-display" data-tex="\[
+\beta(v\cos t+w\sin t,v\cos t+w\sin t)
+=a+t^2(\beta(w,w)-a)+o(t^2).
+\]">\[
+\beta(v\cos t+w\sin t,v\cos t+w\sin t)
+=a+t^2(\beta(w,w)-a)+o(t^2).
+\]</span>
+The second derivative of its squared norm is
+<span class="math" data-tex="\(4\langle a,\beta(w,w)-a\rangle\)">\(4\langle a,\beta(w,w)-a\rangle\)</span>, which is nonnegative at a minimum. Hence
+<span class="math" data-tex="\(\langle\beta(v,v),\beta(w,w)\rangle\geq|a|^2&gt;0\)">\(\langle\beta(v,v),\beta(w,w)\rangle\geq|a|^2&gt;0\)</span>.
+But (C.6) and <span class="math" data-tex="\(\beta(v,w)=0\)">\(\beta(v,w)=0\)</span> make that inner product nonpositive, a contradiction. The elementary derivative tests and trigonometric differentiations used here are <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a> and <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. □</p>
+<p id="proposition-c-4"><strong>Proposition C.4 (The two nullities).</strong> For a Euclidean submanifold of codimension <span class="math" data-tex="\(p\)">\(p\)</span>, let
+<span class="math math-display" data-tex="\[
+\Delta=\{X:\alpha(X,Y)=0\text{ for every }Y\},\qquad
+\nu=\dim\Delta,\quad \mu=\dim\mathcal N.
+\]">\[
+\Delta=\{X:\alpha(X,Y)=0\text{ for every }Y\},\qquad
+\nu=\dim\Delta,\quad \mu=\dim\mathcal N.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\Delta\subseteq\mathcal N,\qquad \nu\leq\mu\leq\nu+p.
+\tag{C.7}
+\]">\[
+\Delta\subseteq\mathcal N,\qquad \nu\leq\mu\leq\nu+p.
+\tag{C.7}
+\]</span></p>
+<p><strong>Proof.</strong> The inclusion is immediate from Gauss. The algebraic symmetries of Riemannian curvature, proved in <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a>, show that a vector in <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> makes the four-tensor zero in any slot: move it to the first slot by skew-symmetry and pair interchange. At the point in question consider
+<span class="math math-display" data-tex="\[
+\beta:TM\times\mathcal N\longrightarrow N_fM,\qquad
+\beta(X,U)=\alpha(X,U).
+\]">\[
+\beta:TM\times\mathcal N\longrightarrow N_fM,\qquad
+\beta(X,U)=\alpha(X,U).
+\]</span>
+For <span class="math" data-tex="\(U,V\in\mathcal N\)">\(U,V\in\mathcal N\)</span>, Gauss and the vanishing of <span class="math" data-tex="\(g(R(X,Y)U,V)\)">\(g(R(X,Y)U,V)\)</span> give
+<span class="math math-display" data-tex="\[
+\langle\alpha(X,U),\alpha(Y,V)\rangle
+=\langle\alpha(X,V),\alpha(Y,U)\rangle.
+\]">\[
+\langle\alpha(X,U),\alpha(Y,V)\rangle
+=\langle\alpha(X,V),\alpha(Y,U)\rangle.
+\]</span>
+Thus <span class="math" data-tex="\(\beta\)">\(\beta\)</span> satisfies (C.3) with a positive definite target of dimension <span class="math" data-tex="\(p\)">\(p\)</span>. Its common kernel in its second argument is exactly <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, since <span class="math" data-tex="\(\Delta\subseteq\mathcal N\)">\(\Delta\subseteq\mathcal N\)</span>. Lemma C.2 gives <span class="math" data-tex="\(\nu\geq\mu-p\)">\(\nu\geq\mu-p\)</span>. □</p>
+<p>For a system <span class="math" data-tex="\(A_1,\ldots,A_k\)">\(A_1,\ldots,A_k\)</span> of self-adjoint maps on <span class="math" data-tex="\(V\)">\(V\)</span>, say it has <strong>type at least <span class="math" data-tex="\(r\)">\(r\)</span></strong> if there are <span class="math" data-tex="\(x_1,\ldots,x_r\in V\)">\(x_1,\ldots,x_r\in V\)</span> such that the <span class="math" data-tex="\(rk\)">\(rk\)</span> vectors <span class="math" data-tex="\(A_a x_i\)">\(A_a x_i\)</span>, <span class="math" data-tex="\(1\leq a\leq k\)">\(1\leq a\leq k\)</span>, <span class="math" data-tex="\(1\leq i\leq r\)">\(1\leq i\leq r\)</span>, are linearly independent. The condition is unchanged by orthogonal change of the <span class="math" data-tex="\(k\)">\(k\)</span> maps or by an isometry of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p id="theorem-c-5"><strong>Theorem C.5 (The shape-system lemma).</strong> Suppose <span class="math" data-tex="\(A_1,\ldots,A_k\)">\(A_1,\ldots,A_k\)</span> and <span class="math" data-tex="\(B_1,\ldots,B_k\)">\(B_1,\ldots,B_k\)</span> are self-adjoint maps on a Euclidean space, the first system has type at least three, and
+<span class="math math-display" data-tex="\[
+\sum_{a=1}^k A_aX\wedge A_aY
+=\sum_{a=1}^k B_aX\wedge B_aY
+\quad\text{for all }X,Y.
+\tag{C.8}
+\]">\[
+\sum_{a=1}^k A_aX\wedge A_aY
+=\sum_{a=1}^k B_aX\wedge B_aY
+\quad\text{for all }X,Y.
+\tag{C.8}
+\]</span>
+There is a unique orthogonal matrix <span class="math" data-tex="\(Q\in O(k)\)">\(Q\in O(k)\)</span> such that
+<span class="math math-display" data-tex="\[
+B_a=\sum_b Q_{ab}A_b.
+\tag{C.9}
+\]">\[
+B_a=\sum_b Q_{ab}A_b.
+\tag{C.9}
+\]</span></p>
+<p><strong>Proof.</strong> Define symmetric forms with values in <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span> by
+<span class="math math-display" data-tex="\[
+\alpha(X,Y)=(\langle A_aX,Y\rangle)_a,\qquad
+\alpha'(X,Y)=(\langle B_aX,Y\rangle)_a.
+\]">\[
+\alpha(X,Y)=(\langle A_aX,Y\rangle)_a,\qquad
+\alpha'(X,Y)=(\langle B_aX,Y\rangle)_a.
+\]</span>
+On <span class="math" data-tex="\(\mathbb R^k\oplus\mathbb R^k\)">\(\mathbb R^k\oplus\mathbb R^k\)</span> use the form
+<span class="math" data-tex="\(\langle(u,u'),(v,v')\rangle=\langle u,v\rangle-\langle u',v'\rangle\)">\(\langle(u,u'),(v,v')\rangle=\langle u,v\rangle-\langle u',v'\rangle\)</span>.
+It is nondegenerate of signature <span class="math" data-tex="\((k,k)\)">\((k,k)\)</span>. Equation (C.8), paired with arbitrary two further vectors, says that <span class="math" data-tex="\(\beta=(\alpha,\alpha')\)">\(\beta=(\alpha,\alpha')\)</span> is flat in the sense of (C.3).</p>
+<p>Let <span class="math" data-tex="\(r\)">\(r\)</span> be the maximal rank of <span class="math" data-tex="\(\beta_X\)">\(\beta_X\)</span>. Among regular <span class="math" data-tex="\(X\)">\(X\)</span>, let <span class="math" data-tex="\(d\)">\(d\)</span> be the minimum of <span class="math" data-tex="\(\dim U_X\)">\(\dim U_X\)</span>, with <span class="math" data-tex="\(U_X\)">\(U_X\)</span> as in (C.4). The set of regular <span class="math" data-tex="\(X\)">\(X\)</span> having this minimum is open and dense. Indeed, the Gram matrix of all the columns of <span class="math" data-tex="\(\beta_X\)">\(\beta_X\)</span> has polynomial entries; on the regular set its rank is <span class="math" data-tex="\(r-\dim U_X\)">\(r-\dim U_X\)</span>. The maximal-rank set of that Gram matrix is open and dense by the polynomial-minor argument in C.2, and intersects the regular set. Their intersection gives exactly the asserted minimum set.</p>
+<p>Choose <span class="math" data-tex="\(x_1,x_2,x_3\)">\(x_1,x_2,x_3\)</span> in this open dense set with the <span class="math" data-tex="\(3k\)">\(3k\)</span> vectors <span class="math" data-tex="\(A_a x_i\)">\(A_a x_i\)</span> still independent. Such a choice is possible because independence is a nonempty open condition on triples, and a product of three dense open subsets meets every open product box. A totally isotropic subspace of <span class="math" data-tex="\(\mathbb R^{k,k}\)">\(\mathbb R^{k,k}\)</span> has dimension at most <span class="math" data-tex="\(k\)">\(k\)</span>: projection to the first <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span> is injective on it, since a vector with first component zero and zero squared norm has second component zero. Hence <span class="math" data-tex="\(d\leq k\)">\(d\leq k\)</span>. Also <span class="math" data-tex="\(\operatorname{Im}\beta_{x_1}\subseteq U_{x_1}^\perp\)">\(\operatorname{Im}\beta_{x_1}\subseteq U_{x_1}^\perp\)</span>, so
+<span class="math math-display" data-tex="\[
+r\leq2k-d,\qquad
+\dim\ker\beta_{x_1}\geq n-2k+d.
+\]">\[
+r\leq2k-d,\qquad
+\dim\ker\beta_{x_1}\geq n-2k+d.
+\]</span>
+Lemma C.2 shows that <span class="math" data-tex="\(\beta_{x_2}\)">\(\beta_{x_2}\)</span> maps this kernel into <span class="math" data-tex="\(U_{x_1}\)">\(U_{x_1}\)</span>, losing at most <span class="math" data-tex="\(d\)">\(d\)</span> dimensions on taking the next kernel. Likewise <span class="math" data-tex="\(\beta_{x_3}\)">\(\beta_{x_3}\)</span> maps the intersection of the first two kernels into <span class="math" data-tex="\(U_{x_2}\)">\(U_{x_2}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\dim\bigcap_{i=1}^3\ker\beta_{x_i}\geq n-2k-d.
+\tag{C.10}
+\]">\[
+\dim\bigcap_{i=1}^3\ker\beta_{x_i}\geq n-2k-d.
+\tag{C.10}
+\]</span>
+That intersection is contained in <span class="math" data-tex="\(\bigcap_i\ker\alpha_{x_i}\)">\(\bigcap_i\ker\alpha_{x_i}\)</span>. The latter is the perpendicular complement of the independent <span class="math" data-tex="\(3k\)">\(3k\)</span> vectors <span class="math" data-tex="\(A_a x_i\)">\(A_a x_i\)</span>, so has dimension <span class="math" data-tex="\(n-3k\)">\(n-3k\)</span>. Comparing with (C.10) gives <span class="math" data-tex="\(d\geq k\)">\(d\geq k\)</span>, and consequently <span class="math" data-tex="\(d=k\)">\(d=k\)</span>.</p>
+<p>Since the <span class="math" data-tex="\(A_a x_1\)">\(A_a x_1\)</span> are independent, <span class="math" data-tex="\(\alpha_{x_1}:V\to\mathbb R^k\)">\(\alpha_{x_1}:V\to\mathbb R^k\)</span> is onto. Thus <span class="math" data-tex="\(r\geq k\)">\(r\geq k\)</span>. The preceding bound now gives <span class="math" data-tex="\(r=k=d\)">\(r=k=d\)</span>. For every regular minimum-radical argument, its image therefore equals its radical and is totally isotropic. In particular
+<span class="math math-display" data-tex="\[
+\langle\beta(X,Y),\beta(X,Z)\rangle=0
+\]">\[
+\langle\beta(X,Y),\beta(X,Z)\rangle=0
+\]</span>
+for all <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> and for <span class="math" data-tex="\(X\)">\(X\)</span> in a dense set, hence for every <span class="math" data-tex="\(X\)">\(X\)</span> by continuity. The four-linear form
+<span class="math" data-tex="\(S(X,Y,Z,W)=\langle\beta(X,Y),\beta(Z,W)\rangle\)">\(S(X,Y,Z,W)=\langle\beta(X,Y),\beta(Z,W)\rangle\)</span>
+is symmetric in all four arguments: it is symmetric within each pair and between pairs, and flatness interchanges the middle arguments after these pair symmetries. Polarizing the displayed zero identity in the two occurrences of <span class="math" data-tex="\(X\)">\(X\)</span> therefore gives <span class="math" data-tex="\(2S(X,Y,Z,W)=0\)">\(2S(X,Y,Z,W)=0\)</span>. Thus <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is null and
+<span class="math math-display" data-tex="\[
+\langle\alpha(X,Y),\alpha(Z,W)\rangle
+=\langle\alpha'(X,Y),\alpha'(Z,W)\rangle
+\tag{C.11}
+\]">\[
+\langle\alpha(X,Y),\alpha(Z,W)\rangle
+=\langle\alpha'(X,Y),\alpha'(Z,W)\rangle
+\tag{C.11}
+\]</span>
+for all arguments.</p>
+<p>The values of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> span <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span>, since a coefficient vector perpendicular to all its values would give a zero linear combination of the independent maps <span class="math" data-tex="\(A_a\)">\(A_a\)</span>. Equation (C.11) makes the assignment <span class="math" data-tex="\(\alpha(X,Y)\mapsto\alpha'(X,Y)\)">\(\alpha(X,Y)\mapsto\alpha'(X,Y)\)</span> well-defined on their span: any zero linear combination has image with squared norm zero. It preserves inner products, so is an isometry <span class="math" data-tex="\(Q:\mathbb R^k\to\mathbb R^k\)">\(Q:\mathbb R^k\to\mathbb R^k\)</span>, necessarily onto. The spanning condition makes it unique. Taking its components gives (C.9). □</p>
+<h2 id="part-d">D. Parallel normal spaces, rigidity and leaves</h2>
+<p>The <strong>first normal space</strong> at <span class="math" data-tex="\(x\)">\(x\)</span> is
+<span class="math math-display" data-tex="\[
+W_x=\operatorname{span}\{\alpha_x(X,Y):X,Y\in T_xM\}\subseteq N_xM.
+\]">\[
+W_x=\operatorname{span}\{\alpha_x(X,Y):X,Y\in T_xM\}\subseteq N_xM.
+\]</span>
+When its dimension is constant, the spaces form a smooth subbundle: select independent values of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> at one point; their Gram matrix stays invertible nearby, and they supply a local frame. Shape type refers to an orthonormal frame of this bundle and the definition preceding C.5.</p>
+<p id="proposition-d-1"><strong>Proposition D.1 (Type two and codimension reduction).</strong> On a connected Euclidean submanifold with constant first normal dimension <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, type at least two makes <span class="math" data-tex="\(W\)">\(W\)</span> parallel for <span class="math" data-tex="\(\nabla^\perp\)">\(\nabla^\perp\)</span>. Its image lies in one affine <span class="math" data-tex="\((n+k)\)">\((n+k)\)</span>-plane. More generally, the latter conclusion holds whenever a parallel rank-<span class="math" data-tex="\(k\)">\(k\)</span> normal subbundle contains the entire second fundamental form.</p>
+<p><strong>Proof.</strong> We first record the linear implication used here and below. If a type-two system <span class="math" data-tex="\(A_1,\ldots,A_k\)">\(A_1,\ldots,A_k\)</span> and covectors <span class="math" data-tex="\(\ell_a\)">\(\ell_a\)</span> obey
+<span class="math math-display" data-tex="\[
+\sum_a\ell_a(X)A_aY=\sum_a\ell_a(Y)A_aX,
+\tag{D.1}
+\]">\[
+\sum_a\ell_a(X)A_aY=\sum_a\ell_a(Y)A_aX,
+\tag{D.1}
+\]</span>
+then all <span class="math" data-tex="\(\ell_a\)">\(\ell_a\)</span> vanish. Choose <span class="math" data-tex="\(u,v\)">\(u,v\)</span> for which the <span class="math" data-tex="\(2k\)">\(2k\)</span> vectors <span class="math" data-tex="\(A_a u,A_a v\)">\(A_a u,A_a v\)</span> are independent. Setting <span class="math" data-tex="\((X,Y)=(u,v)\)">\((X,Y)=(u,v)\)</span> gives <span class="math" data-tex="\(\ell_a(u)=\ell_a(v)=0\)">\(\ell_a(u)=\ell_a(v)=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. Next set <span class="math" data-tex="\((X,Y)=(u,Z)\)">\((X,Y)=(u,Z)\)</span>; independence of <span class="math" data-tex="\(A_a u\)">\(A_a u\)</span> gives <span class="math" data-tex="\(\ell_a(Z)=0\)">\(\ell_a(Z)=0\)</span> for every <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>Choose local orthonormal sections <span class="math" data-tex="\(\eta_a\)">\(\eta_a\)</span> of <span class="math" data-tex="\(W\)">\(W\)</span> and a section <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(W^\perp\)">\(W^\perp\)</span>. Since <span class="math" data-tex="\(\langle\alpha(Y,Z),\xi\rangle=0\)">\(\langle\alpha(Y,Z),\xi\rangle=0\)</span>, differentiating and applying Euclidean Codazzi gives
+<span class="math math-display" data-tex="\[
+\langle\alpha(Y,Z),\nabla^\perp_X\xi\rangle
+=\langle\alpha(X,Z),\nabla^\perp_Y\xi\rangle.
+\]">\[
+\langle\alpha(Y,Z),\nabla^\perp_X\xi\rangle
+=\langle\alpha(X,Z),\nabla^\perp_Y\xi\rangle.
+\]</span>
+Pairing <span class="math" data-tex="\(\nabla^\perp_X\xi\)">\(\nabla^\perp_X\xi\)</span> with each <span class="math" data-tex="\(\eta_a\)">\(\eta_a\)</span> defines the covectors <span class="math" data-tex="\(\ell_a(X)\)">\(\ell_a(X)\)</span>. The last equation for every <span class="math" data-tex="\(Z\)">\(Z\)</span> is (D.1), with <span class="math" data-tex="\(A_a=A_{\eta_a}\)">\(A_a=A_{\eta_a}\)</span>. The linear implication makes all these covectors zero. Thus <span class="math" data-tex="\(W^\perp\)">\(W^\perp\)</span> is preserved by <span class="math" data-tex="\(\nabla^\perp\)">\(\nabla^\perp\)</span>; metric compatibility makes <span class="math" data-tex="\(W\)">\(W\)</span> parallel as well.</p>
+<p>For the more general assertion let <span class="math" data-tex="\(L= df(TM)\oplus W\)">\(L= df(TM)\oplus W\)</span> inside <span class="math" data-tex="\(M\times\mathbb R^{n+p}\)">\(M\times\mathbb R^{n+p}\)</span>. By (A.1), <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> taking values in <span class="math" data-tex="\(W\)">\(W\)</span> and its normal parallelism imply that the ordinary derivative of any section of <span class="math" data-tex="\(L\)">\(L\)</span> in any tangent direction lies in <span class="math" data-tex="\(L\)">\(L\)</span>. Its orthogonal complement is also preserved, by differentiating inner products. Along a path a parallel orthonormal frame of <span class="math" data-tex="\(L\)">\(L\)</span>, for the restricted ordinary connection, is therefore constant as an ambient frame. Existence and uniqueness along the path are <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a>. Hence <span class="math" data-tex="\(L_x\)">\(L_x\)</span> is one fixed vector subspace <span class="math" data-tex="\(L_0\)">\(L_0\)</span> on the connected manifold. Since <span class="math" data-tex="\(df(TM)\subseteq L_0\)">\(df(TM)\subseteq L_0\)</span>, integrating along paths shows <span class="math" data-tex="\(f(M)\subseteq f(x_0)+L_0\)">\(f(M)\subseteq f(x_0)+L_0\)</span>, an affine plane of dimension <span class="math" data-tex="\(n+k\)">\(n+k\)</span>. □</p>
+<p id="theorem-d-2"><strong>Theorem D.2 (Rigidity in type at least three).</strong> Let <span class="math" data-tex="\(f,\widetilde f:(M,g)\to\mathbb R^{n+p}\)">\(f,\widetilde f:(M,g)\to\mathbb R^{n+p}\)</span> be isometric immersions of the same connected manifold. Suppose both first normal bundles have constant dimension <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, and the first immersion has type at least three everywhere. Then <span class="math" data-tex="\(\widetilde f=T\circ f\)">\(\widetilde f=T\circ f\)</span> for one Euclidean motion <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For hypersurfaces this says: if <span class="math" data-tex="\(\operatorname{rank}A_f\geq3\)">\(\operatorname{rank}A_f\geq3\)</span> everywhere, two isometric immersions differ by one Euclidean motion. A global unit normal and simple connectivity are not required.</p>
+<p><strong>Proof.</strong> In local orthonormal frames of the two first normal bundles, equality of the intrinsic Gauss tensors gives (C.8). Theorem C.5 supplies a unique fibre isometry <span class="math" data-tex="\(J:W\to\widetilde W\)">\(J:W\to\widetilde W\)</span> taking <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\widetilde\alpha\)">\(\widetilde\alpha\)</span>. It is smooth: locally choose <span class="math" data-tex="\(k\)">\(k\)</span> second-form values which form a frame of <span class="math" data-tex="\(W\)">\(W\)</span>. Their images under <span class="math" data-tex="\(J\)">\(J\)</span> are the corresponding smooth second-form values of the other immersion, and inversion of the frame's Gram matrix expresses <span class="math" data-tex="\(J\)">\(J\)</span> smoothly. Uniqueness makes the local definitions agree on overlaps. Formula (C.9) also preserves the type, so both first normal bundles satisfy D.1 and are parallel.</p>
+<p>Pull back the second normal connection by <span class="math" data-tex="\(J\)">\(J\)</span>, and subtract the first. Their difference is an endomorphism-valued one-form <span class="math" data-tex="\(C_X\)">\(C_X\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>. Codazzi for the two immersions, together with <span class="math" data-tex="\(J\alpha=\widetilde\alpha\)">\(J\alpha=\widetilde\alpha\)</span>, gives
+<span class="math math-display" data-tex="\[
+C_X\alpha(Y,Z)=C_Y\alpha(X,Z).
+\tag{D.2}
+\]">\[
+C_X\alpha(Y,Z)=C_Y\alpha(X,Z).
+\tag{D.2}
+\]</span>
+For each fixed row in an orthonormal normal frame, the coefficients of <span class="math" data-tex="\(C_X\)">\(C_X\)</span> give covectors satisfying (D.1). Type at least two makes every row zero. Thus <span class="math" data-tex="\(C=0\)">\(C=0\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> preserves the normal connections.</p>
+<p>By D.1 each immersion has its tangent-plus-first-normal bundle equal to a fixed vector <span class="math" data-tex="\((n+k)\)">\((n+k)\)</span>-plane, say <span class="math" data-tex="\(L_0,\widetilde L_0\)">\(L_0,\widetilde L_0\)</span>. Define a fibre isometry by
+<span class="math math-display" data-tex="\[
+df(X)+\xi\longmapsto d\widetilde f(X)+J\xi.
+\]">\[
+df(X)+\xi\longmapsto d\widetilde f(X)+J\xi.
+\]</span>
+Equations (A.1), equality of the second forms under <span class="math" data-tex="\(J\)">\(J\)</span>, and parallelism of <span class="math" data-tex="\(J\)">\(J\)</span> show that it intertwines the ordinary ambient derivatives. Its derivative is therefore zero when expressed in constant bases of <span class="math" data-tex="\(L_0,\widetilde L_0\)">\(L_0,\widetilde L_0\)</span>; connectedness makes it one constant isometry <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span>. Hence <span class="math" data-tex="\(d\widetilde f=Q_0df\)">\(d\widetilde f=Q_0df\)</span> and <span class="math" data-tex="\(\widetilde f-Q_0f\)">\(\widetilde f-Q_0f\)</span> is a constant vector. Extend <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> to an orthogonal map of the whole ambient space by choosing orthonormal bases of the equal-dimensional complements. Adding that constant translation gives <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For a hypersurface of rank at least three, its first normal line has dimension one everywhere, and three tangent vectors with independent shape images give type at least three. The fibre isometry of its normal lines can equivalently be read from Lemma C.1: the shapes agree up to the locally chosen normal sign. The argument above handles their global line bundles directly, so does not assume either normal bundle has been trivialized. □</p>
+<p id="proposition-d-3"><strong>Proposition D.3 (Nullity distributions are totally geodesic).</strong> Where its dimension is constant, the intrinsic curvature nullity of a Riemannian manifold is a smooth involutive distribution, and its leaves are totally geodesic. The same holds for the relative nullity <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> of an immersion into a space of constant curvature. For relative-nullity leaves, their second fundamental form in the ambient space is zero as well.</p>
+<p><strong>Proof.</strong> Both distributions are kernels of smooth families of linear maps. At constant rank, choose a nonzero maximal minor and solve for the dependent coordinates; this constructs smooth local bases of the kernels.</p>
+<p>For intrinsic nullity use the four-tensor <span class="math" data-tex="\(\mathcal R(U,V,Z,W)=g(R(U,V)Z,W)\)">\(\mathcal R(U,V,Z,W)=g(R(U,V)Z,W)\)</span>. Its algebraic symmetries make a nullity vector kill every slot, as in C.4. If <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> are local nullity sections, apply the second Bianchi identity to the directions <span class="math" data-tex="\(X,U,V\)">\(X,U,V\)</span>, with the last slots <span class="math" data-tex="\(Y,W\)">\(Y,W\)</span>:
+<span class="math math-display" data-tex="\[
+(\nabla_X\mathcal R)(U,V,Y,W)
++(\nabla_U\mathcal R)(V,X,Y,W)
++(\nabla_V\mathcal R)(X,U,Y,W)=0.
+\]">\[
+(\nabla_X\mathcal R)(U,V,Y,W)
++(\nabla_U\mathcal R)(V,X,Y,W)
++(\nabla_V\mathcal R)(X,U,Y,W)=0.
+\]</span>
+The last two terms vanish. Indeed their underlying tensor evaluations have both <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> as nullity arguments; in differentiating them, every resulting term still has at least one of these two arguments. In the first term all contributions vanish except
+<span class="math" data-tex="\(-\mathcal R(U,V,\nabla_XY,W)\)">\(-\mathcal R(U,V,\nabla_XY,W)\)</span>.
+It follows that <span class="math" data-tex="\(\nabla_XY\)">\(\nabla_XY\)</span> is in the nullity. The second Bianchi identity is proved, with the present convention, in <a href="geodesics-normal-coordinates-and-curvature.html#theorem-c-2">Geodesics C.2</a>, and the algebraic symmetries in <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a>.</p>
+<p>For relative nullity in a constant-curvature ambient space, Codazzi from A.2 has zero ambient normal term. If <span class="math" data-tex="\(X,Y\in\Delta\)">\(X,Y\in\Delta\)</span>, it gives
+<span class="math math-display" data-tex="\[
+(\nabla_Z\alpha)(X,Y)=(\nabla_X\alpha)(Z,Y).
+\]">\[
+(\nabla_Z\alpha)(X,Y)=(\nabla_X\alpha)(Z,Y).
+\]</span>
+The left side is zero: after differentiating, each term has either <span class="math" data-tex="\(X\)">\(X\)</span> or <span class="math" data-tex="\(Y\)">\(Y\)</span> as a nullity input. On the right the only possibly nonzero term is
+<span class="math" data-tex="\(-\alpha(Z,\nabla_XY)\)">\(-\alpha(Z,\nabla_XY)\)</span>.
+Thus <span class="math" data-tex="\(\nabla_XY\in\Delta\)">\(\nabla_XY\in\Delta\)</span> again.</p>
+<p>In either case torsion-freeness gives <span class="math" data-tex="\([X,Y]=\nabla_XY-\nabla_YX\)">\([X,Y]=\nabla_XY-\nabla_YX\)</span> in the distribution. The full Frobenius and maximal-leaf proofs are <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-b-2">De Rham decomposition B.2</a> and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-b-3">De Rham decomposition B.3</a>. The restriction of <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> to a leaf is its metric, torsion-free connection, and the established derivative property makes its ambient second form in <span class="math" data-tex="\(M\)">\(M\)</span> vanish. Its geodesics are therefore geodesics of <span class="math" data-tex="\(M\)">\(M\)</span>, by <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a> and uniqueness. For a relative-nullity leaf, (A.1) has also <span class="math" data-tex="\(\alpha(X,Y)=0\)">\(\alpha(X,Y)=0\)</span>, so the same derivative property holds in the original ambient manifold. □</p>
+<h2 id="part-e">E. Shape spectra and compact hypersurfaces</h2>
+<p id="theorem-e-1"><strong>Theorem E.1 (Umbilical hypersurfaces).</strong> Let <span class="math" data-tex="\(f:M^n\to\mathbb R^{n+1}\)">\(f:M^n\to\mathbb R^{n+1}\)</span> be a connected isometric immersion, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, whose shape is a scalar at every point. Its image is an open subset of an affine hyperplane or of a round sphere, and <span class="math" data-tex="\(f\)">\(f\)</span> is a local isometry onto that subset. If <span class="math" data-tex="\(M\)">\(M\)</span> is complete, <span class="math" data-tex="\(f\)">\(f\)</span> is an embedding onto the whole hyperplane or sphere.</p>
+<p><strong>Proof.</strong> On a neighbourhood with a unit normal, write <span class="math" data-tex="\(A=cI\)">\(A=cI\)</span>. Codazzi gives
+<span class="math math-display" data-tex="\[
+(Xc)Y=(Yc)X.
+\]">\[
+(Xc)Y=(Yc)X.
+\]</span>
+Taking independent <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> at a point shows that both derivatives vanish; varying them gives <span class="math" data-tex="\(dc=0\)">\(dc=0\)</span>, since <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. Changing the unit normal changes only the sign of <span class="math" data-tex="\(c\)">\(c\)</span>, so <span class="math" data-tex="\(|c|\)">\(|c|\)</span> is globally locally constant, hence constant on connected <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, equation (A.1) makes each local normal a constant ambient vector. Also <span class="math" data-tex="\(d\langle f,\nu\rangle=0\)">\(d\langle f,\nu\rangle=0\)</span>. Thus each neighbourhood maps into an affine hyperplane. On overlapping neighbourhoods the hyperplanes coincide, because their direction is the common <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional tangent plane and they contain a common image point. Connectedness gives one hyperplane for all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>If <span class="math" data-tex="\(|c|&gt;0\)">\(|c|&gt;0\)</span>, the mean curvature vector <span class="math" data-tex="\(H=\frac1n\operatorname{tr}\alpha\)">\(H=\frac1n\operatorname{tr}\alpha\)</span> is a nowhere-zero global normal section. Take <span class="math" data-tex="\(\nu=H/|H|\)">\(\nu=H/|H|\)</span>, so <span class="math" data-tex="\(A=cI\)">\(A=cI\)</span> with the positive constant <span class="math" data-tex="\(c=|H|\)">\(c=|H|\)</span>. The Weingarten equation gives
+<span class="math math-display" data-tex="\[
+d(f+c^{-1}\nu)=df-c^{-1}df\circ A=0.
+\]">\[
+d(f+c^{-1}\nu)=df-c^{-1}df\circ A=0.
+\]</span>
+Consequently <span class="math" data-tex="\(f(M)\)">\(f(M)\)</span> lies in the sphere of radius <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> about the constant vector <span class="math" data-tex="\(f+c^{-1}\nu\)">\(f+c^{-1}\nu\)</span>. In either case, the differential into the indicated <span class="math" data-tex="\(n\)">\(n\)</span>-manifold is an isometry and an isomorphism. <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> makes <span class="math" data-tex="\(f\)">\(f\)</span> a local diffeomorphism, hence its image is open. If <span class="math" data-tex="\(M\)">\(M\)</span> is complete, <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-e-4">Hopf–Rinow E.4</a> makes this local isometry a covering onto the entire connected target. The hyperplane is simply connected by its straight-line contraction, and the sphere is simply connected for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> by <a href="sectional-curvature-and-space-forms.html#lemma-c-3">Sectional curvature C.3</a>. <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a> then makes the connected covering a diffeomorphism. □</p>
+<p id="theorem-e-2"><strong>Theorem E.2 (Ricci and Einstein hypersurfaces).</strong> For a Euclidean hypersurface,
+<span class="math math-display" data-tex="\[
+\operatorname{Ric}^{\sharp}=(\operatorname{tr}A)A-A^2.
+\tag{E.1}
+\]">\[
+\operatorname{Ric}^{\sharp}=(\operatorname{tr}A)A-A^2.
+\tag{E.1}
+\]</span>
+If <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span> and <span class="math" data-tex="\(\operatorname{Ric}=\rho g\)">\(\operatorname{Ric}=\rho g\)</span> for a constant <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, then <span class="math" data-tex="\(\rho\geq0\)">\(\rho\geq0\)</span>. For <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span> the induced metric is flat. For <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> the hypersurface is umbilical and has constant sectional curvature <span class="math" data-tex="\(\rho/(n-1)\)">\(\rho/(n-1)\)</span>; if it is connected and complete, it is an embedded round sphere.</p>
+<p><strong>Proof.</strong> For an orthonormal basis <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, the Euclidean Gauss equation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Ric}(Y,Z)
+&amp;=\sum_i\langle R(e_i,Y)Z,e_i\rangle\\
+&amp;=(\operatorname{tr}A)\langle AY,Z\rangle-\langle AY,AZ\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Ric}(Y,Z)
+&amp;=\sum_i\langle R(e_i,Y)Z,e_i\rangle\\
+&amp;=(\operatorname{tr}A)\langle AY,Z\rangle-\langle AY,AZ\rangle .
+\end{aligned}
+\]</span>
+This proves (E.1). The spectral theorem <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-h-2">De Rham decomposition H.2</a> applies to <span class="math" data-tex="\(A\)">\(A\)</span>. Every eigenvalue <span class="math" data-tex="\(t\)">\(t\)</span> therefore satisfies
+<span class="math math-display" data-tex="\[
+t^2-st+\rho=0,\qquad s=\operatorname{tr}A.
+\tag{E.2}
+\]">\[
+t^2-st+\rho=0,\qquad s=\operatorname{tr}A.
+\tag{E.2}
+\]</span>
+If <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, the eigenvalues are <span class="math" data-tex="\(0,s\)">\(0,s\)</span>. For <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, if its multiplicity is <span class="math" data-tex="\(m\)">\(m\)</span>, taking the trace yields <span class="math" data-tex="\(s=ms\)">\(s=ms\)</span>, hence <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, (E.2) gives <span class="math" data-tex="\(A^2=0\)">\(A^2=0\)</span>, so all eigenvalues vanish. In both cases <span class="math" data-tex="\(\operatorname{rank}A\leq1\)">\(\operatorname{rank}A\leq1\)</span>, and C.1 proves flatness.</p>
+<p>Suppose two distinct eigenvalues <span class="math" data-tex="\(\lambda,\mu\)">\(\lambda,\mu\)</span> occur, with positive multiplicities <span class="math" data-tex="\(m,l\)">\(m,l\)</span>, <span class="math" data-tex="\(m+l=n\)">\(m+l=n\)</span>. Equation (E.2) implies
+<span class="math math-display" data-tex="\[
+\lambda+\mu=s=m\lambda+l\mu,\qquad
+\lambda\mu=\rho,
+\quad\text{so}\quad
+(m-1)\lambda+(l-1)\mu=0.
+\tag{E.3}
+\]">\[
+\lambda+\mu=s=m\lambda+l\mu,\qquad
+\lambda\mu=\rho,
+\quad\text{so}\quad
+(m-1)\lambda+(l-1)\mu=0.
+\tag{E.3}
+\]</span>
+If <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, both roots have the same nonzero sign. Equation (E.3) would require <span class="math" data-tex="\(m=l=1\)">\(m=l=1\)</span>, contradicting <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>. Thus there is only one eigenvalue and <span class="math" data-tex="\(A=\lambda I\)">\(A=\lambda I\)</span>; (E.1) gives <span class="math" data-tex="\(\rho=(n-1)\lambda^2\)">\(\rho=(n-1)\lambda^2\)</span>. The curvature assertion follows from Gauss, and the complete conclusion from E.1.</p>
+<p>If <span class="math" data-tex="\(\rho&lt;0\)">\(\rho&lt;0\)</span>, the single-eigenvalue case is impossible, so the two roots have opposite signs everywhere. Locally their multiplicities are constant: the spectral projections
+<span class="math math-display" data-tex="\[
+\frac{A-\mu I}{\lambda-\mu},\qquad
+\frac{A-\lambda I}{\mu-\lambda}
+\]">\[
+\frac{A-\mu I}{\lambda-\mu},\qquad
+\frac{A-\lambda I}{\mu-\lambda}
+\]</span>
+vary smoothly, and their integer traces are continuous. Here the roots are the smooth functions <span class="math" data-tex="\((s\pm\sqrt{s^2-4\rho})/2\)">\((s\pm\sqrt{s^2-4\rho})/2\)</span>. Neither multiplicity can be one, since (E.3) would force the other to be one too. Their fixed ratio in (E.3), together with <span class="math" data-tex="\(\lambda\mu=\rho\)">\(\lambda\mu=\rho\)</span>, makes both eigenvalues constant on such a neighbourhood.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> belong to the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-eigenspace bundle and <span class="math" data-tex="\(Y\)">\(Y\)</span> to the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-eigenspace bundle. Codazzi, with these constant eigenvalues, says
+<span class="math math-display" data-tex="\[
+(\mu I-A)\nabla_XY=(\lambda I-A)\nabla_YX.
+\tag{E.4}
+\]">\[
+(\mu I-A)\nabla_XY=(\lambda I-A)\nabla_YX.
+\tag{E.4}
+\]</span>
+The left side is in the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-bundle, the right side in the orthogonal <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-bundle, so both vanish. Thus <span class="math" data-tex="\(\nabla_XY\)">\(\nabla_XY\)</span> belongs to the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-bundle and <span class="math" data-tex="\(\nabla_YX\)">\(\nabla_YX\)</span> to the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-bundle. Metric compatibility then gives the same preservation when both differentiated fields belong to one bundle; for example
+<span class="math" data-tex="\(\langle\nabla_X X',Y\rangle=-\langle X',\nabla_XY\rangle=0\)">\(\langle\nabla_X X',Y\rangle=-\langle X',\nabla_XY\rangle=0\)</span>.
+Both bundles are parallel. Curvature therefore preserves them, so a mixed orthonormal plane has
+<span class="math" data-tex="\(\langle R(X,Y)Y,X\rangle=0\)">\(\langle R(X,Y)Y,X\rangle=0\)</span>.
+Gauss instead gives <span class="math" data-tex="\(\lambda\mu=\rho&lt;0\)">\(\lambda\mu=\rho&lt;0\)</span>, a contradiction. This excludes negative <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. □</p>
+<p id="theorem-e-3"><strong>Theorem E.3 (Compact convex hypersurfaces).</strong> For a compact connected Euclidean hypersurface <span class="math" data-tex="\(f:M^n\to\mathbb R^{n+1}\)">\(f:M^n\to\mathbb R^{n+1}\)</span>, without boundary and with <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the following conditions are equivalent:</p>
+<ol>
+<li>The shape is definite at every point, for either choice of local unit normal.</li>
+<li>There is a global unit normal whose Gauss map is a diffeomorphism <span class="math" data-tex="\(M\to S^n\)">\(M\to S^n\)</span>.</li>
+<li>The Gauss–Kronecker curvature <span class="math" data-tex="\(\det A\)">\(\det A\)</span> is nowhere zero, with its nonvanishing understood independently of the normal sign.</li>
+</ol>
+<p>Under these conditions <span class="math" data-tex="\(f\)">\(f\)</span> is an embedding. Every tangent hyperplane supports the whole image and meets the image at exactly its point of tangency.</p>
+<p><strong>Proof.</strong> First any compact immersed hypersurface has an elliptic point. Fix <span class="math" data-tex="\(z\in\mathbb R^{n+1}\)">\(z\in\mathbb R^{n+1}\)</span> and maximize <span class="math" data-tex="\(h=\frac12|f-z|^2\)">\(h=\frac12|f-z|^2\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. At a maximum <span class="math" data-tex="\(x\)">\(x\)</span>, the vector <span class="math" data-tex="\(r=f(x)-z\)">\(r=f(x)-z\)</span> is normal and
+<span class="math math-display" data-tex="\[
+\operatorname{Hess}h(X,X)
+=|X|^2+\langle\alpha(X,X),r\rangle\leq0.
+\tag{E.5}
+\]">\[
+\operatorname{Hess}h(X,X)
+=|X|^2+\langle\alpha(X,X),r\rangle\leq0.
+\tag{E.5}
+\]</span>
+The maximum value is positive for a positive-dimensional immersion, so <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>. Thus <span class="math" data-tex="\(A_r\)">\(A_r\)</span> is negative definite.</p>
+<p>Assume condition 3. On each neighbourhood with a normal, a nonsingular symmetric matrix cannot change its numbers of positive and negative eigenvalues: continuity of its quadratic form on the unit sphere preserves any strictly positive or negative subspace under a sufficiently small perturbation, and the dimensions add to <span class="math" data-tex="\(n\)">\(n\)</span>. Thus the subset where the shape is definite is both open and closed. The elliptic point and connectedness make it all of <span class="math" data-tex="\(M\)">\(M\)</span>, proving condition 1.</p>
+<p>Under condition 1, choose at each point the unique unit normal <span class="math" data-tex="\(\nu\)">\(\nu\)</span> for which <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span> is negative definite. These local smooth choices agree on overlaps and define a global smooth normal. By A.4, its differential is <span class="math" data-tex="\(-df\circ A_\nu\)">\(-df\circ A_\nu\)</span>, hence nonsingular. The pullback by <span class="math" data-tex="\(\nu\)">\(\nu\)</span> of the round metric is a smooth Riemannian metric on compact <span class="math" data-tex="\(M\)">\(M\)</span>, and is complete by <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-b-3">Hopf–Rinow B.3</a>. <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-e-4">Hopf–Rinow E.4</a> makes <span class="math" data-tex="\(\nu\)">\(\nu\)</span> a covering of <span class="math" data-tex="\(S^n\)">\(S^n\)</span>. <a href="sectional-curvature-and-space-forms.html#lemma-c-3">Sectional curvature C.3</a> and <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a> make it a diffeomorphism. This proves condition 2. Conversely condition 2 and the same differential formula give condition 3.</p>
+<p>For any unit <span class="math" data-tex="\(u\)">\(u\)</span>, the critical points of the height <span class="math" data-tex="\(h_u=\langle f,u\rangle\)">\(h_u=\langle f,u\rangle\)</span> are precisely the points with <span class="math" data-tex="\(\nu=\pm u\)">\(\nu=\pm u\)</span>, since the normal space is a line. There are exactly two. At the point with <span class="math" data-tex="\(\nu=u\)">\(\nu=u\)</span> the Hessian is <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span>, negative definite; at the point with <span class="math" data-tex="\(\nu=-u\)">\(\nu=-u\)</span> it is <span class="math" data-tex="\(-A_\nu\)">\(-A_\nu\)</span>, positive definite. A global maximum exists by compactness and must be critical. It cannot be the latter point, which is a strict local minimum on a positive-dimensional manifold. Thus the former is the unique global maximum. All of the image lies on one side of its tangent hyperplane, with equality only at that point.</p>
+<p>If <span class="math" data-tex="\(f(x)=f(y)\)">\(f(x)=f(y)\)</span>, take <span class="math" data-tex="\(u=\nu(x)\)">\(u=\nu(x)\)</span>. Both points have the same maximal height, so uniqueness forces <span class="math" data-tex="\(x=y\)">\(x=y\)</span>. An injective immersion from a compact manifold is an embedding: it is a continuous bijection onto its image, and images of closed subsets are compact, hence closed in the Hausdorff ambient space; its inverse is therefore continuous, while the local immersion charts give the embedded smooth structure. This proves the remaining assertions. □</p>
+<p id="theorem-e-4"><strong>Theorem E.4 (Compact codimension bound).</strong> Let <span class="math" data-tex="\(f:M^n\to\mathbb R^{n+p}\)">\(f:M^n\to\mathbb R^{n+p}\)</span> be an isometric immersion of a compact manifold without boundary. Suppose at every point there is an <span class="math" data-tex="\(m\)">\(m\)</span>-dimensional tangent subspace on which all sectional curvatures are nonpositive. Then <span class="math" data-tex="\(p\geq m\)">\(p\geq m\)</span>. In particular a compact manifold with <span class="math" data-tex="\(K\leq0\)">\(K\leq0\)</span>, including a flat one, cannot be immersed isometrically in a Euclidean space of dimension less than <span class="math" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p><strong>Proof.</strong> For the zero-dimensional tangent subspace the claim is immediate. Otherwise the manifold has positive dimension, and the calculation (E.5) did not use codimension one. At a maximum of <span class="math" data-tex="\(\frac12|f-z|^2\)">\(\frac12|f-z|^2\)</span> it shows that <span class="math" data-tex="\(\alpha(v,v)\ne0\)">\(\alpha(v,v)\ne0\)</span> for every nonzero <span class="math" data-tex="\(v\)">\(v\)</span>. Restrict <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to the given <span class="math" data-tex="\(m\)">\(m\)</span>-plane there. By Gauss its extrinsic sectional expression is nonpositive on that plane. Otsuki's lemma C.3, with this plane as domain and the <span class="math" data-tex="\(p\)">\(p\)</span>-dimensional normal space as target, gives <span class="math" data-tex="\(p\geq m\)">\(p\geq m\)</span>. Take <span class="math" data-tex="\(m=n\)">\(m=n\)</span> for the last assertion. □</p>
+<p id="theorem-e-5"><strong>Theorem E.5 (Compact hypersurface holonomy).</strong> The restricted holonomy group of a compact connected Euclidean hypersurface <span class="math" data-tex="\(M^n\)">\(M^n\)</span> is <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>, acting on each tangent space. For <span class="math" data-tex="\(n\leq1\)">\(n\leq1\)</span> this means the trivial group.</p>
+<p><strong>Proof.</strong> Dimension zero is immediate, since the tangent space is zero. For positive dimension, equation (E.5) supplies a point with invertible shape <span class="math" data-tex="\(A\)">\(A\)</span>. For tangent vectors at that point, Gauss expresses its curvature endomorphisms as <span class="math" data-tex="\(AX\wedge AY\)">\(AX\wedge AY\)</span>, with the convention in C.1. Since <span class="math" data-tex="\(A\)">\(A\)</span> is invertible, their span is all skew-adjoint endomorphisms: in an orthonormal basis the wedges <span class="math" data-tex="\(e_i\wedge e_j\)">\(e_i\wedge e_j\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, are a basis of that space. <a href="curvature-and-holonomy-groups.html#theorem-g-3">Curvature and holonomy G.3</a> puts this entire space inside the restricted holonomy Lie algebra.</p>
+<p>Metric transport and the connected restricted holonomy construction in that theorem put the restricted group inside <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>. The equality of Lie algebras makes its inclusion a local diffeomorphism at the identity by <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>, so its image contains an identity neighbourhood and is an open subgroup. The elementary plane-rotation argument in <a href="affine-transformations-and-the-isometry-group.html#theorem-g-1">Affine transformations G.1</a> proves that <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span> is connected, so an open subgroup must be the whole group: its cosets are open, and a proper one would disconnect the group. Transport to another base point conjugates these groups by a linear isometry, preserving <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>. In dimension one the only connected subgroup of <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> is the identity, giving the stated case. □</p>
+<h2 id="part-f">F. Two principal curvatures and complete surfaces</h2>
+<p id="lemma-f-1"><strong>Lemma F.1 (Opposite principal-curvature extrema).</strong> Let <span class="math" data-tex="\(\lambda&gt;\mu\)">\(\lambda&gt;\mu\)</span> be the principal curvatures near a nonumbilical point of an immersed Euclidean surface, for a local unit normal. If <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has a local maximum and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> a local minimum at the same point, the Gaussian curvature there is nonpositive.</p>
+<p><strong>Proof.</strong> Away from an umbilic the two roots of the characteristic polynomial of <span class="math" data-tex="\(A\)">\(A\)</span> are smooth. The projections <span class="math" data-tex="\((A-\mu I)/(\lambda-\mu)\)">\((A-\mu I)/(\lambda-\mu)\)</span> and <span class="math" data-tex="\((A-\lambda I)/(\mu-\lambda)\)">\((A-\lambda I)/(\mu-\lambda)\)</span> give smooth eigenline bundles. Applying each to a fixed local field which has nonzero projection at the point, then normalizing, gives a local orthonormal principal frame <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>. Write
+<span class="math math-display" data-tex="\[
+\nabla_{e_1}e_1=a e_2,\quad \nabla_{e_1}e_2=-a e_1,
+\qquad
+\nabla_{e_2}e_1=b e_2,\quad \nabla_{e_2}e_2=-b e_1.
+\tag{F.1}
+\]">\[
+\nabla_{e_1}e_1=a e_2,\quad \nabla_{e_1}e_2=-a e_1,
+\qquad
+\nabla_{e_2}e_1=b e_2,\quad \nabla_{e_2}e_2=-b e_1.
+\tag{F.1}
+\]</span>
+Codazzi, evaluated on <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>, gives
+<span class="math math-display" data-tex="\[
+a=\frac{e_2\lambda}{\lambda-\mu},
+\qquad b=\frac{e_1\mu}{\lambda-\mu}.
+\tag{F.2}
+\]">\[
+a=\frac{e_2\lambda}{\lambda-\mu},
+\qquad b=\frac{e_1\mu}{\lambda-\mu}.
+\tag{F.2}
+\]</span>
+Indeed the <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> coefficients of <span class="math" data-tex="\((\nabla_{e_1}A)e_2\)">\((\nabla_{e_1}A)e_2\)</span> are
+<span class="math" data-tex="\(a(\lambda-\mu),e_1\mu\)">\(a(\lambda-\mu),e_1\mu\)</span>, and those of
+<span class="math" data-tex="\((\nabla_{e_2}A)e_1\)">\((\nabla_{e_2}A)e_1\)</span> are <span class="math" data-tex="\(e_2\lambda,b(\lambda-\mu)\)">\(e_2\lambda,b(\lambda-\mu)\)</span>.
+Torsion-freeness gives <span class="math" data-tex="\([e_1,e_2]=-a e_1-b e_2\)">\([e_1,e_2]=-a e_1-b e_2\)</span>. Substituting (F.1) into the definition of curvature yields
+<span class="math math-display" data-tex="\[
+K=\langle R(e_1,e_2)e_2,e_1\rangle
+=-e_1b+e_2a-a^2-b^2.
+\tag{F.3}
+\]">\[
+K=\langle R(e_1,e_2)e_2,e_1\rangle
+=-e_1b+e_2a-a^2-b^2.
+\tag{F.3}
+\]</span>
+At the stated extrema all first derivatives of both eigenvalue functions vanish, so <span class="math" data-tex="\(a=b=0\)">\(a=b=0\)</span>. Differentiating (F.2) there reduces (F.3) to
+<span class="math math-display" data-tex="\[
+K=\frac{e_2e_2\lambda-e_1e_1\mu}{\lambda-\mu}\leq0.
+\]">\[
+K=\frac{e_2e_2\lambda-e_1e_1\mu}{\lambda-\mu}\leq0.
+\]</span>
+The numerator has the asserted sign because along any smooth curve through a local maximum the second derivative is nonpositive, and at a minimum it is nonnegative. The first-derivative terms from the curve acceleration vanish at these critical points. □</p>
+<p id="theorem-f-2"><strong>Theorem F.2 (Positive-curvature rigidity for surfaces).</strong> Let a compact connected Euclidean immersed surface have <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span>. Choose its global normal so that both principal curvatures are positive, and order them <span class="math" data-tex="\(\lambda\geq\mu&gt;0\)">\(\lambda\geq\mu&gt;0\)</span>. If <span class="math" data-tex="\(\mu=\psi(\lambda)\)">\(\mu=\psi(\lambda)\)</span> for a nonincreasing function <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on their range, the immersion is an embedding onto a round sphere. In particular:</p>
+<ol>
+<li>A connected complete immersed Euclidean surface of constant positive Gaussian curvature is an embedded round sphere.</li>
+<li>A compact connected immersed Euclidean surface with <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span> and constant mean curvature is an embedded round sphere.</li>
+</ol>
+<p><strong>Proof.</strong> Gauss gives <span class="math" data-tex="\(\lambda\mu=K&gt;0\)">\(\lambda\mu=K&gt;0\)</span>; the shape is definite. The unique choice of unit normal making it positive is smooth on overlaps, just as in E.3. Its ordered eigenvalues are continuous, since they are the two explicit quadratic roots. Let <span class="math" data-tex="\(x\)">\(x\)</span> maximize <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The monotonicity assumption makes <span class="math" data-tex="\(x\)">\(x\)</span> minimize <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. If <span class="math" data-tex="\(\lambda(x)&gt;\mu(x)\)">\(\lambda(x)&gt;\mu(x)\)</span>, they are smooth near <span class="math" data-tex="\(x\)">\(x\)</span> and F.1 contradicts <span class="math" data-tex="\(K(x)&gt;0\)">\(K(x)&gt;0\)</span>. Thus <span class="math" data-tex="\(\lambda(x)=\mu(x)=c\)">\(\lambda(x)=\mu(x)=c\)</span>. For every <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\lambda(y)\leq c=\mu(x)\leq\mu(y)\leq\lambda(y).
+\]">\[
+\lambda(y)\leq c=\mu(x)\leq\mu(y)\leq\lambda(y).
+\]</span>
+All terms are equal; the surface is umbilical. Compactness implies completeness by <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-b-3">Hopf–Rinow B.3</a>, and E.1 gives the sphere and embedding.</p>
+<p>For a complete surface of constant <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span>, <a href="sectional-curvature-and-space-forms.html#theorem-d-2">Sectional curvature D.2</a> gives a surjective covering local isometry from the round <span class="math" data-tex="\(2\)">\(2\)</span>-sphere of curvature <span class="math" data-tex="\(K\)">\(K\)</span>. Its image is compact, hence the surface is compact. Now use <span class="math" data-tex="\(\psi(t)=K/t\)">\(\psi(t)=K/t\)</span> and the result just proved. Constant mean curvature gives <span class="math" data-tex="\(\mu=2H-\lambda\)">\(\mu=2H-\lambda\)</span>, also a nonincreasing relation, and proves the second case. □</p>
+<p id="theorem-f-3"><strong>Theorem F.3 (No complete negative constant curvature immersion).</strong> No complete connected surface of constant negative Gaussian curvature admits a smooth isometric immersion in <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>.</p>
+<p><strong>Proof.</strong> Rescale a proposed immersion and its induced metric by constant factors to make <span class="math" data-tex="\(K=-1\)">\(K=-1\)</span>. A constant positive metric scaling preserves completeness, as distances scale by its square root. Pass to the universal covering surface with the pulled-back metric and immersion. It is simply connected by <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-2">Flat connections D.2</a> and remains complete by the covering and geodesic argument in <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-e-4">Hopf–Rinow E.4</a>. Thus we may assume <span class="math" data-tex="\(M\)">\(M\)</span> simply connected and complete.</p>
+<p>The two unit choices in each normal line form a smooth double cover. <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a> trivializes it, so choose a global normal. Gauss gives <span class="math" data-tex="\(\det A=-1\)">\(\det A=-1\)</span>. The eigenvalues are distinct and have the smooth global labels
+<span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> and <span class="math" data-tex="\(\mu=-1/\lambda&lt;0\)">\(\mu=-1/\lambda&lt;0\)</span>.
+The spectral projections used in F.1 define smooth eigenline bundles; their unit-vector double covers likewise have global sections. Hence there is a global orthonormal principal frame <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>.</p>
+<p>Define a smooth function <span class="math" data-tex="\(0&lt;\theta&lt;\pi/2\)">\(0&lt;\theta&lt;\pi/2\)</span> by <span class="math" data-tex="\(\tan\theta=\lambda\)">\(\tan\theta=\lambda\)</span>. This is legitimate since the derivative of <span class="math" data-tex="\(\tan\)">\(\tan\)</span> is positive on this interval, with limits <span class="math" data-tex="\(0,+\infty\)">\(0,+\infty\)</span>; its inverse is smooth by <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>. The sine and cosine and their derivatives are given by the circle exponential calculation in <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. Substitution in (F.2) gives
+<span class="math math-display" data-tex="\[
+a=\tan\theta\,e_2\theta,\qquad
+b=\cot\theta\,e_1\theta .
+\]">\[
+a=\tan\theta\,e_2\theta,\qquad
+b=\cot\theta\,e_1\theta .
+\]</span>
+Set
+<span class="math math-display" data-tex="\[
+P=\cos\theta\,e_1,\qquad Q=\sin\theta\,e_2.
+\tag{F.4}
+\]">\[
+P=\cos\theta\,e_1,\qquad Q=\sin\theta\,e_2.
+\tag{F.4}
+\]</span>
+The product rule for brackets and (F.1) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[P,Q]
+={}&amp;(-\cos\theta\sin\theta\,a+\sin^2\theta\,e_2\theta)e_1\\
+&amp;+(-\cos\theta\sin\theta\,b+\cos^2\theta\,e_1\theta)e_2=0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+[P,Q]
+={}&amp;(-\cos\theta\sin\theta\,a+\sin^2\theta\,e_2\theta)e_1\\
+&amp;+(-\cos\theta\sin\theta\,b+\cos^2\theta\,e_1\theta)e_2=0 .
+\end{aligned}
+\]</span>
+Both fields have norm at most one. Such a smooth field on a complete Riemannian manifold is complete: on any integral curve approaching a finite endpoint in time, the distance between two points is at most the elapsed time. The curve is Cauchy and has a limit by metric completeness. A local solution neighbourhood at this limit, from <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>, extends the curve past the endpoint by uniqueness. The same argument applies backwards.</p>
+<p>The complete flows of <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> commute by <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-b-1">De Rham decomposition B.1</a>. They therefore define an <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>-action. For a fixed point <span class="math" data-tex="\(p\)">\(p\)</span>, its orbit map
+<span class="math math-display" data-tex="\[
+F(u,v)=\phi_P^u\phi_Q^v(p)
+\]">\[
+F(u,v)=\phi_P^u\phi_Q^v(p)
+\]</span>
+has differential with columns <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>, which are independent everywhere. Every orbit is open by <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>, so connectedness makes this one orbit all of <span class="math" data-tex="\(M\)">\(M\)</span>. The stabilizer <span class="math" data-tex="\(H=\{(u,v):F(u,v)=p\}\)">\(H=\{(u,v):F(u,v)=p\}\)</span> is discrete, since <span class="math" data-tex="\(F\)">\(F\)</span> is a local diffeomorphism at <span class="math" data-tex="\(0\)">\(0\)</span>, and
+<span class="math" data-tex="\(F(a)=F(b)\)">\(F(a)=F(b)\)</span> holds exactly when <span class="math" data-tex="\(a-b\in H\)">\(a-b\in H\)</span>.
+Choose a small inverse chart <span class="math" data-tex="\(U\)">\(U\)</span> about <span class="math" data-tex="\(0\)">\(0\)</span> whose differences meet <span class="math" data-tex="\(H\)">\(H\)</span> only at <span class="math" data-tex="\(0\)">\(0\)</span>. Then
+<span class="math math-display" data-tex="\[
+F^{-1}(F(U))=\coprod_{h\in H}(U+h),
+\]">\[
+F^{-1}(F(U))=\coprod_{h\in H}(U+h),
+\]</span>
+and each piece maps diffeomorphically onto <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span>. Translating this argument in the action gives an evenly covered neighbourhood at every point of <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(F:\mathbb R^2\to M\)">\(F:\mathbb R^2\to M\)</span> is a covering, and simple connectivity makes it a diffeomorphism by <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a>.</p>
+<p>In these global coordinates, <span class="math" data-tex="\(F_*\partial_u=P\)">\(F_*\partial_u=P\)</span>, <span class="math" data-tex="\(F_*\partial_v=Q\)">\(F_*\partial_v=Q\)</span>, and the metric and scalar second form are
+<span class="math math-display" data-tex="\[
+g=\cos^2\theta\,du^2+\sin^2\theta\,dv^2,\qquad
+b=\sin\theta\cos\theta\,(du^2-dv^2).
+\]">\[
+g=\cos^2\theta\,du^2+\sin^2\theta\,dv^2,\qquad
+b=\sin\theta\cos\theta\,(du^2-dv^2).
+\]</span>
+Put <span class="math" data-tex="\(s=(u+v)/2,\ t=(u-v)/2\)">\(s=(u+v)/2,\ t=(u-v)/2\)</span> and <span class="math" data-tex="\(\varphi=2\theta\)">\(\varphi=2\theta\)</span>. These are again global coordinates on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, with <span class="math" data-tex="\(0&lt;\varphi&lt;\pi\)">\(0&lt;\varphi&lt;\pi\)</span>, and
+<span class="math math-display" data-tex="\[
+g=ds^2+2\cos\varphi\,ds\,dt+dt^2,\qquad
+b=2\sin\varphi\,ds\,dt.
+\tag{F.5}
+\]">\[
+g=ds^2+2\cos\varphi\,ds\,dt+dt^2,\qquad
+b=2\sin\varphi\,ds\,dt.
+\tag{F.5}
+\]</span>
+Here a cross term <span class="math" data-tex="\(2b_{st}\,ds\,dt\)">\(2b_{st}\,ds\,dt\)</span> means <span class="math" data-tex="\(b_{st}=b_{ts}\)">\(b_{st}=b_{ts}\)</span>.
+For completeness, the metric formula in A.3 gives the following nonzero Christoffel symbols:
+<span class="math math-display" data-tex="\[
+\Gamma^s_{ss}=\cot\varphi\,\varphi_s,\quad
+\Gamma^t_{ss}=-\csc\varphi\,\varphi_s,\quad
+\Gamma^s_{tt}=-\csc\varphi\,\varphi_t,\quad
+\Gamma^t_{tt}=\cot\varphi\,\varphi_t,
+\qquad \Gamma^s_{st}=\Gamma^t_{st}=0.
+\]">\[
+\Gamma^s_{ss}=\cot\varphi\,\varphi_s,\quad
+\Gamma^t_{ss}=-\csc\varphi\,\varphi_s,\quad
+\Gamma^s_{tt}=-\csc\varphi\,\varphi_t,\quad
+\Gamma^t_{tt}=\cot\varphi\,\varphi_t,
+\qquad \Gamma^s_{st}=\Gamma^t_{st}=0.
+\]</span>
+To compute <span class="math" data-tex="\(\langle R(\partial_s,\partial_t)\partial_t,\partial_s\rangle\)">\(\langle R(\partial_s,\partial_t)\partial_t,\partial_s\rangle\)</span>, use the zero mixed symbols to differentiate
+<span class="math" data-tex="\(\nabla_t\partial_t=-\csc\varphi\,\varphi_t\partial_s+
+\cot\varphi\,\varphi_t\partial_t\)">\(\nabla_t\partial_t=-\csc\varphi\,\varphi_t\partial_s+
+\cot\varphi\,\varphi_t\partial_t\)</span>
+in direction <span class="math" data-tex="\(s\)">\(s\)</span>. The derivative-of-<span class="math" data-tex="\(\csc\)">\(\csc\)</span> term cancels the <span class="math" data-tex="\(\partial_s\)">\(\partial_s\)</span>-connection contribution. The two resulting coefficients are
+<span class="math" data-tex="\(-\csc\varphi\,\varphi_{st}\)">\(-\csc\varphi\,\varphi_{st}\)</span> and
+<span class="math" data-tex="\(\cot\varphi\,\varphi_{st}\)">\(\cot\varphi\,\varphi_{st}\)</span>. Taking the inner product with <span class="math" data-tex="\(\partial_s\)">\(\partial_s\)</span> gives
+<span class="math" data-tex="\(-\sin\varphi\,\varphi_{st}\)">\(-\sin\varphi\,\varphi_{st}\)</span>.
+Since <span class="math" data-tex="\(\det g=\sin^2\varphi\)">\(\det g=\sin^2\varphi\)</span>, curvature <span class="math" data-tex="\(K=-1\)">\(K=-1\)</span> is exactly
+<span class="math math-display" data-tex="\[
+\varphi_{st}=\sin\varphi&gt;0
+\quad\text{on the entire }(s,t)\text{-plane}.
+\tag{F.6}
+\]">\[
+\varphi_{st}=\sin\varphi&gt;0
+\quad\text{on the entire }(s,t)\text{-plane}.
+\tag{F.6}
+\]</span></p>
+<p>There is no such smooth function with values in <span class="math" data-tex="\((0,\pi)\)">\((0,\pi)\)</span>. Indeed <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> cannot vanish everywhere by (F.6). If its nonzero value somewhere is negative, replace <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span> by <span class="math" data-tex="\((-s,-t)\)">\((-s,-t)\)</span>; (F.6) is unchanged and that derivative becomes positive. Continuity supplies <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, a time <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that
+<span class="math" data-tex="\(\varphi_s(s,t_0)\geq\delta\)">\(\varphi_s(s,t_0)\geq\delta\)</span> on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>.
+Equation (F.6) makes <span class="math" data-tex="\(\varphi_s(s,t)\geq\delta\)">\(\varphi_s(s,t)\geq\delta\)</span> there for all <span class="math" data-tex="\(t\geq t_0\)">\(t\geq t_0\)</span>.
+Choose <span class="math" data-tex="\(a&lt;a_1&lt;b_1&lt;b\)">\(a&lt;a_1&lt;b_1&lt;b\)</span>. Integrating this inequality in <span class="math" data-tex="\(s\)">\(s\)</span>, and using <span class="math" data-tex="\(0&lt;\varphi&lt;\pi\)">\(0&lt;\varphi&lt;\pi\)</span>, gives, for a fixed sufficiently small <span class="math" data-tex="\(0&lt;\epsilon&lt;\pi/2\)">\(0&lt;\epsilon&lt;\pi/2\)</span>,
+<span class="math math-display" data-tex="\[
+\epsilon\leq\varphi(s,t)\leq\pi-\epsilon
+\quad(a_1\leq s\leq b_1,\ t\geq t_0).
+\]">\[
+\epsilon\leq\varphi(s,t)\leq\pi-\epsilon
+\quad(a_1\leq s\leq b_1,\ t\geq t_0).
+\]</span>
+For instance take <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> smaller than both
+<span class="math" data-tex="\(\delta(a_1-a)\)">\(\delta(a_1-a)\)</span> and <span class="math" data-tex="\(\delta(b-b_1)\)">\(\delta(b-b_1)\)</span>.
+Twice applying the fundamental theorem of calculus (<a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>) to (F.6) now gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\varphi(b_1,T)-\varphi(a_1,T)
+-\varphi(b_1,t_0)+\varphi(a_1,t_0)\\
+&amp;\qquad=\int_{t_0}^T\int_{a_1}^{b_1}\sin\varphi(s,t)\,ds\,dt
+\ \geq\ (T-t_0)(b_1-a_1)\sin\epsilon .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\varphi(b_1,T)-\varphi(a_1,T)
+-\varphi(b_1,t_0)+\varphi(a_1,t_0)\\
+&amp;\qquad=\int_{t_0}^T\int_{a_1}^{b_1}\sin\varphi(s,t)\,ds\,dt
+\ \geq\ (T-t_0)(b_1-a_1)\sin\epsilon .
+\end{aligned}
+\]</span>
+The left side has absolute value less than <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, whereas the right side tends to infinity. This contradiction proves the theorem. □</p>
+<h2 id="part-g">G. Totally geodesic submanifolds and affine fixed sets</h2>
+<p id="proposition-g-1"><strong>Proposition G.1 (The quotient second form and torsion).</strong> For an immersion into a manifold with an arbitrary affine connection <span class="math" data-tex="\(\overline\nabla\)">\(\overline\nabla\)</span>, let
+<span class="math math-display" data-tex="\[
+B(X,Y)=[\,\overline\nabla_Xdf(Y)\,]\in f^*T\overline M/df(TM).
+\tag{G.1}
+\]">\[
+B(X,Y)=[\,\overline\nabla_Xdf(Y)\,]\in f^*T\overline M/df(TM).
+\tag{G.1}
+\]</span>
+The immersion is autoparallel, meaning that ambient parallel transport along its curves preserves its tangent spaces, exactly when <span class="math" data-tex="\(B=0\)">\(B=0\)</span>. It is totally geodesic, meaning that each ambient geodesic initially tangent to a local immersed branch stays in that branch locally, exactly when <span class="math" data-tex="\(B(X,X)=0\)">\(B(X,X)=0\)</span> for all <span class="math" data-tex="\(X\)">\(X\)</span>. These conditions are equivalent if the ambient torsion of two tangent vectors is tangent; in particular they are equivalent for a torsion-free connection.</p>
+<p><strong>Proof.</strong> The derivative-of-a-function term in the Leibniz rule is a multiple of <span class="math" data-tex="\(df(Y)\)">\(df(Y)\)</span>, so vanishes in the quotient. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is bilinear over smooth functions and defines a smooth tensor. In a local branch, coordinate brackets give
+<span class="math math-display" data-tex="\[
+B(X,Y)-B(Y,X)=[\,\overline T(df(X),df(Y))\,].
+\tag{G.2}
+\]">\[
+B(X,Y)-B(Y,X)=[\,\overline T(df(X),df(Y))\,].
+\tag{G.2}
+\]</span>
+Choose a local smooth complement of <span class="math" data-tex="\(df(TM)\)">\(df(TM)\)</span>, for example by a local inner product and orthogonal projection. Projection of <span class="math" data-tex="\(\overline\nabla\)">\(\overline\nabla\)</span> onto <span class="math" data-tex="\(df(TM)\)">\(df(TM)\)</span> gives a connection <span class="math" data-tex="\(\nabla^T\)">\(\nabla^T\)</span>. If <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, its parallel-transport equation is also the ambient equation, so uniqueness in <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a> proves preservation of tangent spaces. Conversely, if ambient transport preserves tangent spaces, a tangent vector transported along a curve has ambient derivative zero and remains tangent. Such transported vectors form a local frame along the curve. Expressing any tangent field in this frame makes its ambient derivative tangent too. This gives <span class="math" data-tex="\(B=0\)">\(B=0\)</span> in every curve direction.</p>
+<p>The ambient acceleration of a curve in a local branch decomposes into its <span class="math" data-tex="\(\nabla^T\)">\(\nabla^T\)</span>-acceleration and <span class="math" data-tex="\(B(\dot\gamma,\dot\gamma)\)">\(B(\dot\gamma,\dot\gamma)\)</span>. If the latter always vanishes, a <span class="math" data-tex="\(\nabla^T\)">\(\nabla^T\)</span>-geodesic is an ambient geodesic; existence and uniqueness of the geodesic initial-value problem (<a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a>) proves total geodesy. Conversely a tangent ambient geodesic which stays locally in the branch has zero quotient acceleration, giving <span class="math" data-tex="\(B(v,v)=0\)">\(B(v,v)=0\)</span> for every initial tangent vector <span class="math" data-tex="\(v\)">\(v\)</span>. Polarization says this is equivalent to the vanishing of the symmetric part of <span class="math" data-tex="\(B\)">\(B\)</span>. Equation (G.2) makes <span class="math" data-tex="\(B\)">\(B\)</span> symmetric under the stated torsion condition, and proves the equivalence.</p>
+<p>The torsion qualification cannot be dropped. On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> with coordinates <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>, set
+<span class="math math-display" data-tex="\[
+\overline\nabla_{\partial_x}\partial_y=\partial_z,\qquad
+\overline\nabla_{\partial_y}\partial_x=-\partial_z
+\]">\[
+\overline\nabla_{\partial_x}\partial_y=\partial_z,\qquad
+\overline\nabla_{\partial_y}\partial_x=-\partial_z
+\]</span>
+and set all other coordinate Christoffel symbols to zero. The terms <span class="math" data-tex="\(\Gamma(v,v)\)">\(\Gamma(v,v)\)</span> cancel, so every geodesic is a straight line. The plane <span class="math" data-tex="\(z=0\)">\(z=0\)</span> is totally geodesic, but its quotient form has
+<span class="math" data-tex="\(B(\partial_x,\partial_y)=[\partial_z]\ne0\)">\(B(\partial_x,\partial_y)=[\partial_z]\ne0\)</span>; it is not autoparallel. Its ambient torsion on these two tangent vectors is <span class="math" data-tex="\(2\partial_z\)">\(2\partial_z\)</span>. □</p>
+<p id="proposition-g-2"><strong>Proposition G.2 (Induced connection and inherited tensors).</strong> On an autoparallel submanifold the ambient connection restricts to a tangent connection. Its torsion and curvature are the ambient torsion and curvature on tangent inputs. In adapted frames its connection matrix preserves the tangent block. All covariant derivatives of the restricted torsion and curvature likewise agree with their ambient counterparts on tangent inputs. For a Riemannian totally geodesic submanifold this connection is its Levi-Civita connection, and both the tangent and normal bundles are parallel along the submanifold.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, define <span class="math" data-tex="\(df(\nabla_XY)=\overline\nabla_Xdf(Y)\)">\(df(\nabla_XY)=\overline\nabla_Xdf(Y)\)</span>. It satisfies both connection axioms because the ambient connection does. Computing torsion by subtracting the two derivatives and the bracket gives the asserted restriction; (G.2) ensures it is tangent. Computing curvature as the commutator of two covariant derivatives minus the bracket derivative gives
+<span class="math math-display" data-tex="\[
+df(R(X,Y)Z)=\overline R(df(X),df(Y))df(Z).
+\tag{G.3}
+\]">\[
+df(R(X,Y)Z)=\overline R(df(X),df(Y))df(Z).
+\tag{G.3}
+\]</span>
+All terms are tangent by autoparallelism.</p>
+<p>In a frame whose first vectors span <span class="math" data-tex="\(df(TM)\)">\(df(TM)\)</span>, differentiation of those vectors has no component in the complementary quotient. Thus the connection matrix has block form
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}\omega^T&amp;\beta\\0&amp;\omega^Q\end{pmatrix}.
+\]">\[
+\begin{pmatrix}\omega^T&amp;\beta\\0&amp;\omega^Q\end{pmatrix}.
+\]</span>
+The top-left block is the tangent connection and the bottom-right block induces the quotient connection. The component formula for a tensor derivative is the derivative of its evaluation minus one term for each differentiated argument, with the output connection added; see <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a>. Since each tangent input remains tangent under differentiation, this formula and (G.3) prove the restriction assertion for the first covariant derivative, and induction proves it for every further derivative. The same argument applies to any ambient tensor whose restriction has the required tangent-valued outputs.</p>
+<p>In the Riemannian torsion-free case, G.1 gives autoparallelism from total geodesy. The tangent restriction is metric and torsion-free, hence is the Levi-Civita connection by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>. Orthogonality and metric compatibility show that the normal bundle is parallel as well: for a normal section <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and tangent <span class="math" data-tex="\(Y\)">\(Y\)</span>,
+<span class="math" data-tex="\(\langle\overline\nabla_X\xi,df(Y)\rangle
+=-\langle\xi,\overline\nabla_Xdf(Y)\rangle=0\)">\(\langle\overline\nabla_X\xi,df(Y)\rangle
+=-\langle\xi,\overline\nabla_Xdf(Y)\rangle=0\)</span>.
+Thus an orthonormal adapted frame has block diagonal connection. Tangent parallel transport is intrinsic parallel transport; along a loop it is the tangent restriction of ambient transport along the image loop. In particular parallel ambient curvature restricts to parallel intrinsic curvature. □</p>
+<p id="theorem-g-3"><strong>Theorem G.3 (Great-sphere classification).</strong> A connected <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional totally geodesic isometric immersion into the unit sphere has image an open subset of a great <span class="math" data-tex="\(k\)">\(k\)</span>-sphere and is a local isometry to that great sphere. If it is complete, it covers the whole great sphere. For <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span> it is an embedding onto it; for <span class="math" data-tex="\(k=1\)">\(k=1\)</span> the complete possibilities include its universal and finite multiple coverings.</p>
+<p><strong>Proof.</strong> Write the immersion as <span class="math" data-tex="\(f:M\to S^N\subset\mathbb R^{N+1}\)">\(f:M\to S^N\subset\mathbb R^{N+1}\)</span>. <a href="sectional-curvature-and-space-forms.html#theorem-c-1">Sectional curvature C.1</a> computes the Euclidean second form of the unit sphere as <span class="math" data-tex="\(-g(X,Y)f\)">\(-g(X,Y)f\)</span>. Total geodesy in the sphere, A.1, and G.2 therefore give
+<span class="math math-display" data-tex="\[
+D_X f=df(X),\qquad
+D_Xdf(Y)=df(\nabla_XY)-g(X,Y)f.
+\tag{G.4}
+\]">\[
+D_X f=df(X),\qquad
+D_Xdf(Y)=df(\nabla_XY)-g(X,Y)f.
+\tag{G.4}
+\]</span>
+Consequently the rank-<span class="math" data-tex="\((k+1)\)">\((k+1)\)</span> bundle spanned by <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(df(TM)\)">\(df(TM)\)</span> is preserved by the ordinary Euclidean connection. The parallel-frame argument of D.1 makes it one constant vector <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-plane <span class="math" data-tex="\(L\)">\(L\)</span>. Thus the image lies in <span class="math" data-tex="\(L\cap S^N\)">\(L\cap S^N\)</span>, a great <span class="math" data-tex="\(k\)">\(k\)</span>-sphere. The differential is an isometry between spaces of the same dimension, so <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> gives a local isometry with open image.</p>
+<p>For a complete source, <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-e-4">Hopf–Rinow E.4</a> makes this a covering onto the great sphere. When <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, <a href="sectional-curvature-and-space-forms.html#lemma-c-3">Sectional curvature C.3</a> and <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a> make it a diffeomorphism. For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, the unit-speed parametrization
+<span class="math" data-tex="\(t\mapsto(\cos t,\sin t)\)">\(t\mapsto(\cos t,\sin t)\)</span>
+is its universal cover, with deck translations <span class="math" data-tex="\(2\pi\mathbb Z\)">\(2\pi\mathbb Z\)</span>, by <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a> classifies its connected covers by the subgroups of this group. A nonzero subgroup of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is <span class="math" data-tex="\(m\mathbb Z\)">\(m\mathbb Z\)</span>: choose its least positive member <span class="math" data-tex="\(m\)">\(m\)</span> and apply division with remainder; the zero subgroup gives the universal cover. These are exactly the finite multiple and universal coverings stated. In dimension zero the connected source is a point and the assertion reduces to that point. □</p>
+<p id="theorem-g-4"><strong>Theorem G.4 (Homogeneity of complete totally geodesic submanifolds).</strong> A connected complete totally geodesic immersed Riemannian submanifold of a homogeneous Riemannian manifold is itself homogeneous.</p>
+<p><strong>Proof.</strong> The ambient isometry group is a Lie group with smooth action by <a href="affine-transformations-and-the-isometry-group.html#theorem-c-2">Affine transformations C.2</a>. Homogeneity and <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-2">Invariant connections A.2</a> say that the differential of each orbit map is surjective. Equivalently, the values of its fundamental Killing fields span every ambient tangent space. These fields are defined on the whole ambient manifold, as the infinitesimal fields of one-parameter isometry groups.</p>
+<p>For such an ambient Killing field <span class="math" data-tex="\(K\)">\(K\)</span>, decompose its pullback along <span class="math" data-tex="\(f\)">\(f\)</span> into tangent and normal parts, <span class="math" data-tex="\(K=df(V)+\xi\)">\(K=df(V)+\xi\)</span>. This defines a global smooth field <span class="math" data-tex="\(V\)">\(V\)</span> on the immersed manifold, even when distinct points have the same image. Because the second form vanishes, the tangent part of <span class="math" data-tex="\(\overline\nabla_XK\)">\(\overline\nabla_XK\)</span> is <span class="math" data-tex="\(df(\nabla_XV)\)">\(df(\nabla_XV)\)</span>, by A.1 and G.2. The ambient Killing equation therefore restricts to
+<span class="math math-display" data-tex="\[
+\langle\nabla_XV,Y\rangle+\langle X,\nabla_YV\rangle=0 .
+\]">\[
+\langle\nabla_XV,Y\rangle+\langle X,\nabla_YV\rangle=0 .
+\]</span>
+<a href="affine-transformations-and-the-isometry-group.html#corollary-a-3">Affine transformations A.3</a> makes <span class="math" data-tex="\(V\)">\(V\)</span> an intrinsic Killing field. Completeness of <span class="math" data-tex="\(M\)">\(M\)</span> makes its flow complete by <a href="affine-transformations-and-the-isometry-group.html#theorem-d-4">Affine transformations D.4</a>.</p>
+<p>At each point, these projected fields span <span class="math" data-tex="\(TM\)">\(TM\)</span>, since the ambient values span the ambient tangent space and orthogonal projection is onto. Choose <span class="math" data-tex="\(k=\dim M\)">\(k=\dim M\)</span> of them whose values are a basis there. The map obtained by successively flowing for parameters <span class="math" data-tex="\(t_1,\ldots,t_k\)">\(t_1,\ldots,t_k\)</span> has invertible differential at zero. <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> makes its image contain a neighbourhood of the point. Thus every orbit of the group generated by these complete intrinsic isometries is open. Connectedness makes there be just one orbit: otherwise one orbit and the union of all others would be disjoint nonempty open subsets. This is homogeneity of <span class="math" data-tex="\(M\)">\(M\)</span>. □</p>
+<p id="theorem-g-5"><strong>Theorem G.5 (Common affine fixed sets).</strong> On a manifold with any affine connection, the common fixed set of an arbitrary family of global affine transformations is closed, and each of its connected components is an embedded autoparallel submanifold. The same conclusion holds for the common zero set of any family of globally defined infinitesimally affine fields; the fields need not be complete. Components can have different dimensions.</p>
+<p><strong>Proof.</strong> Fixed sets of continuous self-maps are closed in a Hausdorff manifold, and zero sets of smooth fields are closed. Intersections remain closed. We prove the local submanifold and autoparallel assertions.</p>
+<p>Let <span class="math" data-tex="\(p\)">\(p\)</span> be fixed by every transformation <span class="math" data-tex="\(F\)">\(F\)</span> in the family, and put
+<span class="math math-display" data-tex="\[
+E_p=\bigcap_F\ker(dF_p-I)\subseteq T_pM.
+\]">\[
+E_p=\bigcap_F\ker(dF_p-I)\subseteq T_pM.
+\]</span>
+A finite subfamily has this same intersection: start with the full tangent space and, whenever its current intersection is larger than <span class="math" data-tex="\(E_p\)">\(E_p\)</span>, choose a transformation whose kernel cuts it down. Each such choice strictly lowers its dimension, so the process stops in at most <span class="math" data-tex="\(\dim M\)">\(\dim M\)</span> steps. Choose a normal exponential ball at <span class="math" data-tex="\(p\)">\(p\)</span>. Shrink it so that the selected finite set of differentials also sends it inside an injectivity neighbourhood of <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span>. Affine exponential naturality, proved in <a href="affine-transformations-and-the-isometry-group.html#lemma-a-1">Affine transformations A.1</a>, gives
+<span class="math math-display" data-tex="\[
+F(\exp_p v)=\exp_p(dF_p v).
+\tag{G.5}
+\]">\[
+F(\exp_p v)=\exp_p(dF_p v).
+\tag{G.5}
+\]</span>
+For a common fixed point <span class="math" data-tex="\(q=\exp_p v\)">\(q=\exp_p v\)</span> in this smaller ball, injectivity makes <span class="math" data-tex="\(dF_pv=v\)">\(dF_pv=v\)</span> for the finite subfamily, hence <span class="math" data-tex="\(v\in E_p\)">\(v\in E_p\)</span>. Conversely if <span class="math" data-tex="\(v\in E_p\)">\(v\in E_p\)</span>, (G.5) gives <span class="math" data-tex="\(F(q)=q\)">\(F(q)=q\)</span> for every member of the entire family. The right side is defined in this case because <span class="math" data-tex="\(dF_pv=v\)">\(dF_pv=v\)</span>. Thus the common fixed set near <span class="math" data-tex="\(p\)">\(p\)</span> is exactly <span class="math" data-tex="\(\exp_p(E_p)\)">\(\exp_p(E_p)\)</span> intersected with the chosen normal ball. It is an embedded submanifold there, with tangent space <span class="math" data-tex="\(E_p\)">\(E_p\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>On each such local submanifold, a transformation fixes tangent vector fields pointwise. Preservation of the connection implies that it also fixes <span class="math" data-tex="\(\overline\nabla_XY\)">\(\overline\nabla_XY\)</span>, for tangent <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>. This derivative is therefore in the common fixed subspace of the differentials at the point, which is exactly the tangent space just identified. Proposition G.1 proves autoparallelism.</p>
+<p>For the infinitesimal assertion let all fields <span class="math" data-tex="\(Z\)">\(Z\)</span> vanish at <span class="math" data-tex="\(p\)">\(p\)</span>, and take a normal ball there. Their local flows fix <span class="math" data-tex="\(p\)">\(p\)</span>, and their differentials there are <span class="math" data-tex="\(\exp(t\,dZ_p)\)">\(\exp(t\,dZ_p)\)</span>, by the linearized ODE in <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. For each fixed <span class="math" data-tex="\(v\)">\(v\)</span> in that ball and each fixed field, the flow is defined for a common small time along the compact radial geodesic from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(\exp_pv\)">\(\exp_pv\)</span>. This follows by a finite cover of its image by local flow neighbourhoods. Differentiating (G.5) for that flow at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> gives
+<span class="math math-display" data-tex="\[
+Z(\exp_pv)=(d\exp_p)_v(dZ_pv).
+\tag{G.6}
+\]">\[
+Z(\exp_pv)=(d\exp_p)_v(dZ_pv).
+\tag{G.6}
+\]</span>
+The exponential differential is invertible in the chosen normal ball. Thus the common zero set there is precisely
+<span class="math math-display" data-tex="\[
+\exp_p\left(\bigcap_Z\ker dZ_p\right)
+\]">\[
+\exp_p\left(\bigcap_Z\ker dZ_p\right)
+\]</span>
+inside the ball, with no uniform flow time for the entire family needed. This proves the embedded local description.</p>
+<p>To prove autoparallelism, use the tensor <span class="math" data-tex="\(A_Z=L_Z-\nabla_Z\)">\(A_Z=L_Z-\nabla_Z\)</span> of <a href="affine-transformations-and-the-isometry-group.html#theorem-a-2">Affine transformations A.2</a>. At a zero of <span class="math" data-tex="\(Z\)">\(Z\)</span>, it is <span class="math" data-tex="\(-dZ\)">\(-dZ\)</span>, as the coordinate bracket formula shows. The affine infinitesimal equation is <span class="math" data-tex="\(\nabla_XA_Z=R(Z,X)\)">\(\nabla_XA_Z=R(Z,X)\)</span>. Along the common zero submanifold this vanishes, and <span class="math" data-tex="\(A_ZY=0\)">\(A_ZY=0\)</span> for every tangent <span class="math" data-tex="\(Y\)">\(Y\)</span>. Differentiating along a tangent <span class="math" data-tex="\(X\)">\(X\)</span> gives
+<span class="math math-display" data-tex="\[
+0=\nabla_X(A_ZY)=(\nabla_XA_Z)Y+A_Z\nabla_XY
+=A_Z\nabla_XY.
+\]">\[
+0=\nabla_X(A_ZY)=(\nabla_XA_Z)Y+A_Z\nabla_XY
+=A_Z\nabla_XY.
+\]</span>
+Hence <span class="math" data-tex="\(\nabla_XY\)">\(\nabla_XY\)</span> belongs to the common kernel, which the local description identifies with the tangent space. Again G.1 applies. The dimensions in either local description are locally constant along the fixed or zero set, so each connected component has one dimension and carries the asserted embedded submanifold structure. □</p>
+<h2 id="part-h">H. Exercises with complete solutions</h2>
+<p id="exercise-h-1"><strong>Exercise H.1 (Curvature of a graph).</strong> For the graph <span class="math" data-tex="\(f(x,y)=(x,y,h(x,y))\)">\(f(x,y)=(x,y,h(x,y))\)</span> with upward normal, derive its Gaussian curvature. Evaluate it at the origin when <span class="math" data-tex="\(h=ax^2+bxy+cy^2\)">\(h=ax^2+bxy+cy^2\)</span>, and explain its independence of normal orientation and its intrinsic meaning.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(w=\sqrt{1+h_x^2+h_y^2}\)">\(w=\sqrt{1+h_x^2+h_y^2}\)</span>. The two tangent vectors, their Gram matrix, and the upward normal are
+<span class="math math-display" data-tex="\[
+f_x=(1,0,h_x),\quad f_y=(0,1,h_y),\qquad
+g=\begin{pmatrix}1+h_x^2&amp;h_xh_y\\h_xh_y&amp;1+h_y^2\end{pmatrix},
+\quad \nu=w^{-1}(-h_x,-h_y,1).
+\]">\[
+f_x=(1,0,h_x),\quad f_y=(0,1,h_y),\qquad
+g=\begin{pmatrix}1+h_x^2&amp;h_xh_y\\h_xh_y&amp;1+h_y^2\end{pmatrix},
+\quad \nu=w^{-1}(-h_x,-h_y,1).
+\]</span>
+Thus <span class="math" data-tex="\(\det g=w^2\)">\(\det g=w^2\)</span>, while
+<span class="math" data-tex="\(b_{ij}=\langle f_{ij},\nu\rangle=h_{ij}/w\)">\(b_{ij}=\langle f_{ij},\nu\rangle=h_{ij}/w\)</span>.
+Gauss and the determinant formula A.3 give
+<span class="math math-display" data-tex="\[
+K=\frac{\det b}{\det g}
+=\frac{h_{xx}h_{yy}-h_{xy}^2}{(1+h_x^2+h_y^2)^2}.
+\tag{H.1}
+\]">\[
+K=\frac{\det b}{\det g}
+=\frac{h_{xx}h_{yy}-h_{xy}^2}{(1+h_x^2+h_y^2)^2}.
+\tag{H.1}
+\]</span>
+For the quadratic graph the gradient vanishes at <span class="math" data-tex="\(0\)">\(0\)</span> and its Hessian there is
+<span class="math" data-tex="\(\begin{pmatrix}2a&amp;b\\b&amp;2c\end{pmatrix}\)">\(\begin{pmatrix}2a&amp;b\\b&amp;2c\end{pmatrix}\)</span>, so <span class="math" data-tex="\(K(0)=4ac-b^2\)">\(K(0)=4ac-b^2\)</span>.
+Replacing <span class="math" data-tex="\(\nu\)">\(\nu\)</span> by <span class="math" data-tex="\(-\nu\)">\(-\nu\)</span> changes <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> to their negatives; their <span class="math" data-tex="\(2\)">\(2\)</span>-by-<span class="math" data-tex="\(2\)">\(2\)</span> determinants are unchanged. Although (H.1) uses the graph's ambient derivatives, A.3 proves that its value also equals the curvature computed from <span class="math" data-tex="\(g\)">\(g\)</span>, its first derivatives and its second derivatives alone. That equality is the intrinsic content of the calculation; it does not assert that the individual principal curvatures are determined by the metric. □</p>
+<p id="exercise-h-2"><strong>Exercise H.2 (Gauss alone does not reconstruct a surface).</strong> Derive Codazzi by expanding Euclidean ambient derivatives. On a rectangle with metric <span class="math" data-tex="\(dx^2+dy^2\)">\(dx^2+dy^2\)</span>, prescribe
+<span class="math" data-tex="\(A\partial_x=a(x,y)\partial_x,\ A\partial_y=0\)">\(A\partial_x=a(x,y)\partial_x,\ A\partial_y=0\)</span>.
+Determine precisely when a cooriented realization exists and give all such data explicitly up to Euclidean motion.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(D_Xdf(Y)=df(\nabla_XY)+\alpha(X,Y)\)">\(D_Xdf(Y)=df(\nabla_XY)+\alpha(X,Y)\)</span> and
+<span class="math" data-tex="\(D_X\xi=-df(A_\xi X)+\nabla^\perp_X\xi\)">\(D_X\xi=-df(A_\xi X)+\nabla^\perp_X\xi\)</span>.
+The normal component of <span class="math" data-tex="\(D_XD_Ydf(Z)\)">\(D_XD_Ydf(Z)\)</span> is
+<span class="math math-display" data-tex="\[
+\alpha(X,\nabla_YZ)+\nabla^\perp_X\alpha(Y,Z).
+\]">\[
+\alpha(X,\nabla_YZ)+\nabla^\perp_X\alpha(Y,Z).
+\]</span>
+Subtract the expression with <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> interchanged and the normal component
+<span class="math" data-tex="\(\alpha([X,Y],Z)\)">\(\alpha([X,Y],Z)\)</span> of <span class="math" data-tex="\(D_{[X,Y]}df(Z)\)">\(D_{[X,Y]}df(Z)\)</span>. The ambient curvature is zero. Insert
+<span class="math" data-tex="\([X,Y]=\nabla_XY-\nabla_YX\)">\([X,Y]=\nabla_XY-\nabla_YX\)</span>; grouping the resulting terms gives
+<span class="math math-display" data-tex="\[
+0=(\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z),
+\]">\[
+0=(\nabla_X\alpha)(Y,Z)-(\nabla_Y\alpha)(X,Z),
+\]</span>
+with the covariant derivative defined in A.2. In codimension one this is
+<span class="math" data-tex="\((\nabla_XA)Y=(\nabla_YA)X\)">\((\nabla_XA)Y=(\nabla_YA)X\)</span>, since the unit normal has zero normal derivative.</p>
+<p>For the prescribed matrix, <span class="math" data-tex="\(\det A=0\)">\(\det A=0\)</span>, so Gauss holds for every <span class="math" data-tex="\(a\)">\(a\)</span>. The coordinate frame is parallel. Codazzi for <span class="math" data-tex="\(\partial_y,\partial_x\)">\(\partial_y,\partial_x\)</span> says
+<span class="math math-display" data-tex="\[
+a_y\partial_x=(\nabla_{\partial_y}A)\partial_x
+=(\nabla_{\partial_x}A)\partial_y=0 .
+\]">\[
+a_y\partial_x=(\nabla_{\partial_y}A)\partial_x
+=(\nabla_{\partial_x}A)\partial_y=0 .
+\]</span>
+Consequently it is necessary that <span class="math" data-tex="\(a_y=0\)">\(a_y=0\)</span>. On a rectangle this means <span class="math" data-tex="\(a=a(x)\)">\(a=a(x)\)</span>, by integration along its vertical intervals. It is also sufficient, explicitly. Choose <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, define
+<span class="math math-display" data-tex="\[
+\theta(x)=\theta_0+\int_{x_0}^x a(r)\,dr,\qquad
+\gamma(x)=\gamma_0+
+\int_{x_0}^x(\cos\theta(r),\sin\theta(r))\,dr,
+\]">\[
+\theta(x)=\theta_0+\int_{x_0}^x a(r)\,dr,\qquad
+\gamma(x)=\gamma_0+
+\int_{x_0}^x(\cos\theta(r),\sin\theta(r))\,dr,
+\]</span>
+and put
+<span class="math math-display" data-tex="\[
+f(x,y)=(\gamma_1(x),\gamma_2(x),y),\qquad
+\nu(x,y)=(-\sin\theta(x),\cos\theta(x),0).
+\tag{H.2}
+\]">\[
+f(x,y)=(\gamma_1(x),\gamma_2(x),y),\qquad
+\nu(x,y)=(-\sin\theta(x),\cos\theta(x),0).
+\tag{H.2}
+\]</span>
+Then <span class="math" data-tex="\(f_x,f_y\)">\(f_x,f_y\)</span> are orthonormal, <span class="math" data-tex="\(f_{xx}=a\nu\)">\(f_{xx}=a\nu\)</span>, and the other second derivatives vanish. Equivalently <span class="math" data-tex="\(\nu_x=-a f_x,\ \nu_y=0\)">\(\nu_x=-a f_x,\ \nu_y=0\)</span>. The metric and prescribed shape are exactly the required ones. The integrations are justified by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>. Changing <span class="math" data-tex="\(\gamma_0,\theta_0\)">\(\gamma_0,\theta_0\)</span> gives Euclidean motions of this realization. Every other cooriented realization of the same data differs by such a motion by B.2, since a rectangle is simply connected by straight-line contraction. For example <span class="math" data-tex="\(a(x,y)=y\)">\(a(x,y)=y\)</span> satisfies Gauss everywhere but violates Codazzi everywhere, so it has no realization. □</p>
+<p id="exercise-h-3"><strong>Exercise H.3 (Completeness and great spheres).</strong> Prove the great-sphere conclusion for a connected totally geodesic immersion, state what completeness adds, and give a proper incomplete example and a complete multiple covering.</p>
+<p><strong>Solution.</strong> The constant-plane argument (G.4) in G.3 proves containment in one great sphere and openness of the image. The same theorem proves that completeness makes the immersion a covering of the entire great sphere, with an embedding in dimension at least two. No stronger embedding assertion holds for curves. Indeed
+<span class="math math-display" data-tex="\[
+(-\pi/2,\pi/2)\longrightarrow S^2,\qquad
+t\longmapsto(\cos t,\sin t,0)
+\]">\[
+(-\pi/2,\pi/2)\longrightarrow S^2,\qquad
+t\longmapsto(\cos t,\sin t,0)
+\]</span>
+is a totally geodesic unit-speed immersion into a proper open arc of the equator. It is incomplete: a sequence tending to <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> is Cauchy for its interval metric and has no limit there. Total geodesy follows either from the great-circle geodesic formula in <a href="sectional-curvature-and-space-forms.html#theorem-c-2">Sectional curvature C.2</a> or directly from <span class="math" data-tex="\(f''=-f\)">\(f''=-f\)</span>, whose tangent projection to the sphere is zero.</p>
+<p>The same formula on <span class="math" data-tex="\(\mathbb R/(4\pi\mathbb Z)\)">\(\mathbb R/(4\pi\mathbb Z)\)</span>, with metric <span class="math" data-tex="\(dt^2\)">\(dt^2\)</span>, gives a double covering of the equator. It is well-defined because sine and cosine have period <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, is locally unit-speed and totally geodesic, and is complete because its source is compact (<a href="completeness-and-the-hopf-rinow-theorem.html#corollary-b-3">Hopf–Rinow B.3</a>). The two distinct classes of <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> have the same image, so it is not an embedding. □</p>
+<p id="exercise-h-4"><strong>Exercise H.4 (Reconstruction and a cylinder period).</strong> Prove existence and uniqueness for compatible <span class="math" data-tex="\((g,A)\)">\((g,A)\)</span> on a connected simply connected manifold. For
+<span class="math math-display" data-tex="\[
+M_L=(\mathbb R/L\mathbb Z)\times\mathbb R,\quad
+g=ds^2+dt^2,\quad
+A\partial_s=c\partial_s,\quad A\partial_t=0,\quad L&gt;0,
+\]">\[
+M_L=(\mathbb R/L\mathbb Z)\times\mathbb R,\quad
+g=ds^2+dt^2,\quad
+A\partial_s=c\partial_s,\quad A\partial_t=0,\quad L&gt;0,
+\]</span>
+determine when a cooriented isometric realization in <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> exists and when it is an embedding.</p>
+<p><strong>Solution.</strong> The full existence and uniqueness proof for the first assertion is B.2: take the trivial normal line, form the metric connection on <span class="math" data-tex="\(TM\oplus\mathbb R\)">\(TM\oplus\mathbb R\)</span> with off-diagonal entries <span class="math" data-tex="\(g(A\,\cdot,\cdot)\)">\(g(A\,\cdot,\cdot)\)</span> and <span class="math" data-tex="\(-A\)">\(-A\)</span>, and compute its curvature blocks. Gauss and Codazzi make them zero. B.1 then supplies a global parallel trivialization and a primitive of its closed tangent-valued one-form. Its derivative is isometric, its normal has shape <span class="math" data-tex="\(A\)">\(A\)</span>, and comparison of two parallel trivializations is one constant orthogonal map; the two primitives differ by a translation. This proves both assertions, including arbitrary compatible initial frame and position, without replacing the proof by an external reference.</p>
+<p>Lift the cylinder data to the simply connected <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span>-plane. Gauss and Codazzi hold because the matrix is constant and has rank at most one. For <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, (H.2) gives the realization
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_c(s,t)&amp;=\left(\frac{\sin(cs)}c,\frac{1-\cos(cs)}c,t\right),\\
+\nu_c(s,t)&amp;=(-\sin(cs),\cos(cs),0).
+\end{aligned}
+\tag{H.3}
+\]">\[
+\begin{aligned}
+f_c(s,t)&amp;=\left(\frac{\sin(cs)}c,\frac{1-\cos(cs)}c,t\right),\\
+\nu_c(s,t)&amp;=(-\sin(cs),\cos(cs),0).
+\end{aligned}
+\tag{H.3}
+\]</span>
+Direct differentiation gives the prescribed metric and <span class="math" data-tex="\(A\)">\(A\)</span>, including for negative <span class="math" data-tex="\(c\)">\(c\)</span>. By B.2 every cooriented realization on the plane is obtained from this one by one Euclidean motion. Therefore one descends to <span class="math" data-tex="\(M_L\)">\(M_L\)</span> exactly when this pair is periodic under <span class="math" data-tex="\(s\mapsto s+L\)">\(s\mapsto s+L\)</span>. The trigonometric identities and the circle kernel <span class="math" data-tex="\(2\pi\mathbb Z\)">\(2\pi\mathbb Z\)</span> of <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a> give precisely
+<span class="math math-display" data-tex="\[
+cL\in 2\pi\mathbb Z,\qquad c\ne0.
+\tag{H.4}
+\]">\[
+cL\in 2\pi\mathbb Z,\qquad c\ne0.
+\tag{H.4}
+\]</span>
+Necessity can also be read from the derivative at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, which must agree after a shift by <span class="math" data-tex="\(L\)">\(L\)</span>. Under (H.4) the position and normal are both periodic, so it is sufficient.</p>
+<p>Write <span class="math" data-tex="\(|c|L=2\pi m\)">\(|c|L=2\pi m\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span> a positive integer. The first two components of (H.3) traverse a circle of radius <span class="math" data-tex="\(1/|c|\)">\(1/|c|\)</span> exactly <span class="math" data-tex="\(m\)">\(m\)</span> times as <span class="math" data-tex="\(s\)">\(s\)</span> runs through one period. If <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, they give a diffeomorphism of <span class="math" data-tex="\(\mathbb R/L\mathbb Z\)">\(\mathbb R/L\mathbb Z\)</span> onto that circle, since equality of the sine and cosine parameters is exactly equality modulo its period; local smooth inverses follow from its nonzero derivative. Product with <span class="math" data-tex="\(t\)">\(t\)</span> makes <span class="math" data-tex="\(f_c\)">\(f_c\)</span> an embedding onto the round cylinder. If <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, the distinct classes of <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(2\pi/|c|\)">\(2\pi/|c|\)</span> have the same image, so no realization of the data is an embedding.</p>
+<p>For <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the plane development is <span class="math" data-tex="\(f_0(s,t)=(s,0,t)\)">\(f_0(s,t)=(s,0,t)\)</span> with constant normal. Its shift under <span class="math" data-tex="\(s\mapsto s+L\)">\(s\mapsto s+L\)</span> is the nonzero translation <span class="math" data-tex="\((L,0,0)\)">\((L,0,0)\)</span>. Uniqueness on the cover makes it impossible for any Euclidean motion of this development to descend. Thus (H.4) lists all realizable cases, and an embedding occurs exactly for <span class="math" data-tex="\(|c|L=2\pi\)">\(|c|L=2\pi\)</span>. This last case separates the two obstructions of B.3: at <span class="math" data-tex="\(c=0\)">\(c=0\)</span> the flat connection has trivial linear holonomy, but the tangent one-form still has a nonzero period. □</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>Luis A. Florit, <a href="https://luis.impa.br/aulas/imis/aulas.pdf"><em>Submanifold Theory: class guide</em>, version 20260916.1308</a>, §§6–11, 15–16 and 19. The notes discuss the immersion equations, normal spaces, flat bilinear forms, rigidity and codimension bounds.</li>
+<li>Peter Petersen, <a href="https://www.math.stonybrook.edu/~anderson/mat362-spr15/petersen.pdf"><em>Classical Differential Geometry</em>, university-hosted lecture notes</a>, §6.4, printed pp. 149–159. This section treats surface compatibility, curvature and the global obstruction for constant negative curvature.</li>
+</ul>
+</article><footer><p><a href="src/submanifolds-and-hypersurfaces.md">Chapter source</a> · <a href="index.html">Course contents</a></p><p>New exposition: CC0 1.0.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

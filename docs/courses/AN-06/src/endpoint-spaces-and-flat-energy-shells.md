@@ -1,6 +1,6 @@
 # Endpoint spaces and flat energy shells
 
-*Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0. The linked coordinate supplement retains CC BY-SA 4.0.*
+*Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
 
 **Working question: Which norm can retain a radiating tail?** A wave whose squared mass on a ball grows like its radius can have a nonzero far-field amplitude while failing to belong to \(L^2\). The explicit transport solution in the course guide lets you see the tail before introducing the dyadic norm. The issue is whether an observation discards that tail, not whether the wave becomes pointwise small.

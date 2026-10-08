@@ -6,7 +6,7 @@ Multiplication by a nonzero element of a field changes additive volume by a fixe
 
 Throughout, a topological field is commutative and Hausdorff, with continuous addition, multiplication and inversion on its nonzero elements. A **local field** means a nondiscrete locally compact topological field; this convention includes \(\mathbf R\) and \(\mathbf C\). No absolute value is part of the initial hypothesis.
 
-We use measure theory from **Measure Theory**, the Haar theorem from [**Haar measure on locally compact groups**](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html), and the preceding lessons **Completions, the p-adic numbers and complete discretely valued fields** and **Extensions of complete valued fields**. A Haar measure is a nonzero translation-invariant Radon measure: compact sets have finite measure, nonempty open sets have positive measure, and outer regularity holds on Borel sets. Its existence and uniqueness up to a positive scalar are imported, with precise locators at the end.
+We use measure theory from [**Measure and Hilbert space tools for Haar integration**, Theorems 2.1–2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html#2-integration-and-convergence-without-countability-assumptions), the Haar theorem from [**Haar measure on locally compact groups**](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html), and the preceding lessons **Completions, the p-adic numbers and complete discretely valued fields** and **Extensions of complete valued fields**. A Haar measure is a nonzero translation-invariant Radon measure: compact sets have finite measure, nonempty open sets have positive measure, and outer regularity holds on Borel sets. Its existence and uniqueness up to a positive scalar are imported, with precise locators at the end.
 
 ## 1. Volume supplies a continuous size
 
@@ -15,6 +15,8 @@ Let \(\mu\) be additive Haar measure on \(K\). For \(a\ne0\), multiplication by 
 \mu(aE)=m(a)\mu(E).
 \]
 Put \(m(0)=0\). We call \(m=\operatorname{mod}_K\) the **Haar modulus of the field**.
+
+The compactness step used below does not require a metric. If \(C\subset K\) is compact and \(aC\subset U\) with \(U\) open, continuity of multiplication gives, for each \(c\in C\), open neighborhoods \(W_c\) of \(a\) and \(V_c\) of \(c\) with \(W_cV_c\subset U\). Finitely many \(V_c\) cover \(C\). The intersection of the corresponding \(W_c\) is an open neighborhood \(W\) of \(a\), and \(WC\subset U\). This applies both at \(a=0\) and at a nonzero \(a\), including when \(U\) is chosen using outer regularity of Haar measure.
 
 **Proposition 1.1 (continuity and compact size bounds).** The definition is independent of the Haar normalization and of the Borel set of finite positive measure used to compute it. The modulus is multiplicative, continuous on \(K\), and positive away from zero. For every \(r\ge0\), the set
 \[
@@ -262,6 +264,8 @@ The density \(1/m(x)\) is continuous and positive on \(K^\times\), and bounded o
 \]
 This is multiplicative invariance. On \(\mathcal O^\times\), the denominator is \(1\), and its additive volume is \(1-\mu(\pi\mathcal O)=1-q^{-1}\).
 
+The scalar series calculation can be checked directly. If \(|r|<1\), finite cancellation gives \((1-r)\sum_{n=0}^N r^n=1-r^{N+1}\). For \(0<t<1\), induction gives \(t^{-N}\ge 1+N(t^{-1}-1)\), so \(t^N\to0\); the case \(t=0\) is immediate. Apply this to \(t=|r|\). The partial sums therefore converge to \((1-r)^{-1}\), and applying the same identity to \(|r|\) proves absolute convergence. If \(|r|\ge1\), the terms do not tend to zero, so the series cannot converge. In the shell calculation take \(r=q^{-(1+s)}\), whose absolute value is \(q^{-(1+\operatorname{Re}s)}\). Theorems 2.1–2.2 of the measure lesson identify the integral of the shell sum with the limit of its partial integrals: monotone convergence first makes the absolute shell sum integrable, and that sum dominates the complex partial sums.
+
 For the integral, zero has measure zero. The disjoint shells \(\pi^n\mathcal O^\times\), for \(n\ge0\), have measure \((1-q^{-1})q^{-n}\), and \(|x|_K^s=q^{-ns}\) on the \(n\)-th shell. Their absolute integrals are summable precisely when \(\operatorname{Re}s>-1\). Hence
 \[
 \int_{\mathcal O}|x|_K^s\,dx
@@ -350,7 +354,9 @@ Multiplying an arbitrary nonzero field element by a power of \(\pi\) reduces to 
 - Completion and its universal property, the complete archimedean classification, and digit expansions are Theorems 2.1 and 2.4 and Proposition 2.3 of **Completions, the p-adic numbers and complete discretely valued fields**.
 - Finite-dimensional norm equivalence and completeness are Proposition 2.1 of **Extensions of complete valued fields**. This lesson proves the locally compact infinite-dimensional obstruction separately.
 - The equivalence between bounded integer values and the ultrametric inequality is Proposition 1.1 of **Absolute values, valuations and Ostrowski's theorem**. Simple-root Hensel lifting is Corollary 1.2 of **Hensel's lemma, squares and roots of unity in p-adic fields**.
-- Compactness of a product of compact finite sets, completeness and total boundedness criteria for metric compactness, dominated convergence, and geometric-series summation are basic topology, analysis and measure-theory prerequisites. For the product argument, the cited Haar lesson lists Tychonoff's theorem under “Background used without proof.”
+- Compactness of arbitrary products of compact spaces is [Tychonoff’s theorem, Theorem 2.3 of Weak topologies](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-02). Its finite discrete factors give the compact coefficient product used in Theorem 5.1.
+- The complete-and-totally-bounded criterion and sequential compactness for metric spaces are [Lemma 5.0 of Hilbert spaces and compact operators](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#OA-FND-HS-10). They supply the compact metric subsequence argument in Corollary 2.2 and the finite-ball-cover argument in Lemma 4.1.
+- Monotone and dominated convergence are [Theorems 2.1–2.2 of Measure and Hilbert space tools for Haar integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html#2-integration-and-convergence-without-countability-assumptions), with no sigma-finiteness or completeness assumption on the measure. Limits are measurable functions or their specified measurable representatives. The finite geometric-series identity and the absolute-convergence calculation used for the shells are proved in Proposition 6.1 above.
 
 The additive measure fixed here gives the integral ring volume \(1\). The choice of a self-dual measure relative to an additive character is a further normalization, treated in the adèle lessons. No self-dual convention is inferred from the present Haar normalization.
 

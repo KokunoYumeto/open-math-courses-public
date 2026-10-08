@@ -40,6 +40,8 @@ For \(|\alpha|<m\), with derivative gap \(k=m-|\alpha|\), choose a finite expone
  \tag{3}
 \]
 
+The elliptic domain theorem and the approximation-dependent spectral threshold are Hörmander [H4, Theorem 30.2.1]. The local coefficient norms in the following statement make the multiplier hypotheses explicit.
+
 **Theorem 1.1.** Assume the following conditions.
 
 - The coefficients \(a_\alpha\) are continuous for \(|\alpha|=m\), and tend to zero as \(|x|\to\infty\).
@@ -340,6 +342,8 @@ For the differentiated estimates, each derivative of \((a_0+it)^{-1}\) is a fini
 Every factor in the product is bounded by \(C\langle\xi\rangle^{m-|\alpha_j|}\). Equation (27) bounds (29) by \(C\langle\xi\rangle^{-m-|\alpha|}\), uniformly in \(t\). The product rule with the numerator in (26) gives all the \(S^0\) bounds. The positive position derivatives are supported in the same fixed compact set as before, so the family also has uniform \(S(1,G_1)\) seminorms. The constants use coefficient derivatives and support bounds of this fixed \(V_0\). \(\square\)
 
 <a id="domain-uniform-operator-norm"></a>
+The high-frequency estimate used here is Hörmander [H3, Theorem 18.1.15].
+
 **Lemma 5.2.** There is a constant \(C_1\), independent of small \(\eta\), such that
 
 \[
@@ -374,6 +378,64 @@ Only the finite derivative constant depends on the fixed approximation; \(M\) is
        \leq M+\sqrt{C_{V_0}/R}.
  \tag{32}
 \]
+
+<a id="domain-quadratic-form-alternative"></a>
+**A quadratic-form proof of (32).** The same estimate follows by keeping the negative Sobolev error until the final frequency cutoff. Put \(B=B_{R,t}=\operatorname{Op}(a_{R,t})\), and write \(J=\langle D\rangle\). The real nonnegative symbol \(M^2-|a_{R,t}|^2\) is uniformly of classical order zero for the fixed approximation. The complete [order-zero positivity proof, Theorem 5](../providers/analysis/weighted-positivity.md#ordinary-order-zero-positivity), gives
+
+\[
+ \begin{gathered}
+ \operatorname{Re}(\operatorname{Op}(|a_{R,t}|^2)v,v)
+ \\
+ \le M^2\|v\|_2^2+C_{V_0}\|v\|_{H^{-1/2}}^2.
+ \end{gathered}
+ \tag{32a}
+\]
+
+The symbols \(a_{R,t}\) also have uniform \(S(1,G_1)\) seminorms: positive position derivatives remain in the fixed compact support, and the frequency cutoff has the required annular derivative bounds. The programme's [finite product and adjoint formulas, Theorem 4.1](../providers/analysis/finite-weighted-calculus.md#finite-composition), therefore give the exact identity
+
+\[
+ \begin{aligned}
+ B^*B&=\operatorname{Op}(|a_{R,t}|^2)+T_{R,t},\\
+ T_{R,t}&\in\operatorname{Op}S(X^{-1}\langle\xi\rangle^{-1},G_1).
+ \end{aligned}
+ \tag{32b}
+\]
+
+The same finite product puts \(J^{1/2}T_{R,t}J^{1/2}\) in \(\operatorname{Op}S(X^{-1},G_1)\). Its uniform \(L^2\) bound is proved in [Section 6 of that reading](../providers/analysis/finite-weighted-calculus.md#weighted-sobolev-mapping). Writing \(v=J^{1/2}(J^{-1/2}v)\) in the Schwartz pairing thus bounds \(|(T_{R,t}v,v)|\) by \(C_{V_0}\|v\|_{H^{-1/2}}^2\). Combining this with (32a)--(32b) yields
+
+\[
+ \|Bv\|_2^2\le M^2\|v\|_2^2+C_{V_0}\|v\|_{H^{-1/2}}^2.
+ \tag{32c}
+\]
+
+Choose a smooth \(0\le\kappa\le1\), zero on \(|\xi|\le1/2\) and one on \(|\xi|\ge1\). Since \(a_{R,t}\) vanishes on \(|\xi|<R\), multiplication of the input Fourier transform gives the exact identity \(B=B\kappa(D/R)\). For \(v=\kappa(D/R)h\), Plancherel gives \(\|v\|_2\le\|h\|_2\) and \(\|v\|_{H^{-1/2}}^2\le2R^{-1}\|h\|_2^2\). Hence
+\(\|B\|\le(M^2+C_{V_0}/R)^{1/2}\le M+\sqrt{C_{V_0}/R}\), after increasing the fixed error constant. The last inequality follows by squaring its nonnegative right side, and includes \(M=0\). All constants use finitely many uniform seminorms; only \(M\) is independent of the approximation. The calculation on Schwartz inputs extends by the proved order-zero bound and density. This proves (32) by the quadratic-form route as well.
+
+<a id="domain-half-order-conjugation"></a>
+**The half-order conjugation behind the quadratic-form estimate.** The nonnegative-symbol method is also described by Hörmander [H3, Theorems 18.1.14–18.1.15] and Lerner [L, Theorem 2.5.4]. Here is its order-one formulation, derived from the programme proofs used above. Let \(c\geq0\) be a real symbol in \(S(\langle\xi\rangle,G_1)\), and put \(q=\langle\xi\rangle^{-1}c\). The product rule gives \(q\in S(1,G_1)\), hence the ordinary classical order-zero bounds required by Theorem 5 of the positivity reading. The finite composition formula gives the exact identity
+\[
+ J^{1/2}\operatorname{Op}(q)J^{1/2}
+       =\operatorname{Op}(c)+E_c,
+ \qquad E_c\in\operatorname{Op}S(X^{-1},G_1).
+\]
+Indeed, right multiplication by \(J^{1/2}\) multiplies the left symbol exactly by \(\langle\xi\rangle^{1/2}\). In the remaining left composition the zeroth term is \(c\); its remainder gains one frequency derivative and one position derivative, lowering its weight from \(\langle\xi\rangle\) to \(X^{-1}\). Thus \(E_c\) is bounded on \(L^2\), uniformly when finitely many seminorms of \(c\) are bounded. For Schwartz \(w\), Theorem 5 applied to \(J^{1/2}w\) yields
+\[
+ \operatorname{Re}(\operatorname{Op}(c)w,w)
+ \geq-C\|J^{1/2}w\|_{H^{-1/2}}^2
+                  -\|E_c\|\|w\|_2^2
+ \geq-C'\|w\|_2^2.
+\]
+The equality \(\|J^{1/2}w\|_{H^{-1/2}}=\|w\|_2\) follows directly from the Fourier definition of the norms.
+
+Now take \(q_{R,t}=M^2-|a_{R,t}|^2\) and \(c_{R,t}=\langle\xi\rangle q_{R,t}\). They have the preceding nonnegativity and uniform symbol bounds for the fixed approximation. The same exact composition identity, paired with \(w=J^{-1/2}v\), gives
+\[
+ \begin{aligned}
+ \operatorname{Re}(\operatorname{Op}(q_{R,t})v,v)
+ &=\operatorname{Re}((\operatorname{Op}(c_{R,t})+E_{c_{R,t}})w,w)\\
+ &\geq-C_{V_0}\|v\|_{H^{-1/2}}^2.
+ \end{aligned}
+\]
+This is precisely (32a). All pairings are first on Schwartz functions, which the displayed Fourier powers preserve. The order-zero bound and density extend the final inequality to \(L^2\). Consequently the order-one formulation leads to the same finite-adjoint remainder and exact right-frequency cutoff in (32b)–(32c), with the same order of choices of the approximation, \(R\), and the spectral threshold.
 
 Choose \(R\), after fixing \(V_0\), to make the last term at most one. For this fixed \(R\), every derivative of the second symbol in (31) through any fixed order is \(O_{V_0,R}(|t|^{-1})\), uniformly in \(x,\xi\). This follows from (29) on its bounded frequency support. The complete programme [finite-derivative operator bound](../providers/analysis/finite-derivative-l2.md#finite-derivative-l2) implies
 
@@ -698,3 +760,7 @@ It is not in \(L^2\), while \(-\Delta u\in L^2\). Their sum cannot belong to \(L
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf), §§2.2 and 2.4, provides adjoint and resolvent background; §6.1 treats relative operator bounds and the Kato–Rellich theorem. That abstract theorem is useful once a relative bound smaller than one is known. Here the small bound is produced against a suitably chosen smooth reference, with ellipticity controlling the constant.
 
 For practice, compare the compactly supported leading perturbation from [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-global-mapping), Problem 3, with the domain theorem: failure of relative compactness does not prevent the \(H^m\) domain conclusion. A further question is whether less leading regularity or a different lower-coefficient endpoint can be handled. Such changes require additional estimates; neither the smooth parametrix nor the critical finite-\(p\) multiplier statement alone proves them. Weighted resolvent estimates and boundary values require further analysis after the domain has been identified.
+
+[H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Theorems 18.1.14–18.1.15 and their proofs, pp. 76–80. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.2, Theorem 30.2.1 and its proof, pp. 282–283. The theorem heading on p. 282 is misnumbered 30.1.1; the reference on p. 284 identifies it as 30.2.1. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

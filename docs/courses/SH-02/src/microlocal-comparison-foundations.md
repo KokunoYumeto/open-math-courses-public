@@ -1,6 +1,6 @@
 # SH02-MSD — Comparing sheaves through local support tests
 
-Local unit: `SH02-MSD`. This supplementary lesson gives the complete formal arguments behind microlocal comparison, finite truncation, forgetting scalars, and changes of $C^1$ coordinates. Original expression is offered under GFDL 1.2 or any later version, with no invariant sections or cover texts.
+Local unit: `SH02-MSD`. This supplementary lesson gives the complete formal arguments behind microlocal comparison, finite truncation, forgetting scalars, and changes of $C^1$ coordinates. Original expression is dedicated under CC0 1.0.
 
 ## SH02-MSD-CONTRACT — What a comparison has to preserve
 

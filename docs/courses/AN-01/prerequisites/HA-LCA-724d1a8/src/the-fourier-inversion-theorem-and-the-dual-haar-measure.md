@@ -13,7 +13,7 @@ By [HA-LCA-06, Proposition 4.1](bochners-theorem.md#ha-lca-06-proposition-4-1), 
 
 The freely accessible source for the construction is D. H. Fremlin, [*Measure Theory*, §445P–Q, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex). We give the measure-representation step on arbitrary groups and extend the argument from integrable positive-type functions to all of \(B^1(G)\). The sign in (1) determines every formula below.
 
-Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the [Design Science License](../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
+Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
 
 The exact earlier proof tools are these:
 

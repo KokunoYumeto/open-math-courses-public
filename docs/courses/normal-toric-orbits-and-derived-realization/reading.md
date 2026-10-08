@@ -8,7 +8,7 @@ This reading proves derived realization for the orbit stratification of every co
 
 The variety is complex; the coefficient ring for bounded-below unrestricted realization is any associative unital ring. The derived finite-stalk heart is treated over every field. The statement preserves normality, separatedness, finite type and the classical topology.
 
-The fixed-stratification reading proves the universal-cover theorem (25), full realization criterion (27)–(30), and normal-link test (31)–(34). The finite-coefficient reading proves the finite prime filtration, finite-heart theorem and abelian-monodromy comparison (48). The separately licensed Artin–Rees component linked below supplies the actual commutative-algebra proof. These earlier proofs are prerequisites, with their hypotheses retained.
+The fixed-stratification reading proves the universal-cover theorem (25), full realization criterion (27)–(30), and normal-link test (31)–(34). The finite-coefficient reading proves the finite prime filtration, finite-heart theorem and abelian-monodromy comparison (48). The analytic finiteness reading linked below supplies the actual commutative-algebra proof. These earlier proofs are prerequisites, with their hypotheses retained.
 
 Equations 50–77 retain their locators in the existing derived-constructibility lesson. The local toric proof below supplies its geometric and divisor arguments; it does not assume a global fan-classification theorem.
 
@@ -26,7 +26,7 @@ Let $X$ be an irreducible normal separated complex algebraic variety of finite t
 
 ### Normality and poles, with the needed algebra supplied
 
-We use the already written Hilbert basis and Artin–Rees proofs in the separately licensed analytic-finiteness component, and the finite prime cyclic filtration proved in the finite-heart argument above. Both preserve their exact Noetherian hypotheses.
+We use the already written Hilbert basis and Artin–Rees proofs in the analytic finiteness reading, and the finite prime cyclic filtration proved in the finite-heart argument above. Both preserve their exact Noetherian hypotheses.
 
 Here are the additional normal-domain facts. If $R$ is a Noetherian local domain and $a$ belongs to its maximal ideal, then
 
@@ -510,7 +510,7 @@ $(r a e^{i\theta},\sqrt{1-r^2|a|^2}\,b/|b|)$, $0\leq r\leq1$. At $r=0$ the angul
 
 ## Sources and reuse
 
-Lunts and Schnürer's Categories of constructible sheaves supplies the modern toric realization statements. Simon Telen's Introduction to Toric Geometry and Hideyasu Sumihiro's Equivariant completion supply the credited geometric source questions and arguments at the exact locators linked in the proof. Guillaume Valette's Artin–Rees component retains CC BY4.0 at its linked provider. The earlier derived-category foundations retain the Stacks project authors' credit and their component terms. No source expression is imported or relicensed here. Original teaching, three complete solutions and reader code are CC0.
+Lunts and Schnürer's Categories of constructible sheaves supplies the modern toric realization statements. Simon Telen's Introduction to Toric Geometry and Hideyasu Sumihiro's Equivariant completion supply the credited geometric source questions and arguments at the exact locators linked in the proof. Guillaume Valette is credited for the results of the linked analytic finiteness reading, including the Artin–Rees lemma. The earlier derived-category foundations retain the Stacks project authors' credit and their component terms. No source expression is imported or relicensed here. Original teaching, three complete solutions and reader code are CC0.
 
 Self-checked by the writing AI.
 

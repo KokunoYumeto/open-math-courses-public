@@ -2,7 +2,7 @@
 
 Two corners can have disjoint ranges and still have the same action spectrum. The useful object is a family of operators linking their ranges. We first prove a comparison theorem for any such family with bounded frequency support. Central ergodicity will then supply the family, and the comparison will give one refinement of two thickened corner spectra.
 
-*Restored writer proof, 5 October 2026. Original expression and the original diagram are CC0-1.0 to the extent of rights held; earlier components and the figure font retain their recorded terms. Spot-checked by GPT-6.1 Sol in a separate session.*
+*Original expression and the original diagram are CC0-1.0 to the extent of rights held; earlier components and the figure font retain their recorded terms.*
 
 <a id="oa-flow.l121.setting"></a><a id="l121-setting"></a>
 ## Setting and exact earlier proofs
@@ -18,14 +18,14 @@ D=Z(M^\alpha).
 \tag{D1}
 \]
 
-The reduced action \(\alpha^e\) acts on \(eMe\) for a fixed projection \(e\). A vector spectrum is the closed annihilator hull of that vector, and the action spectrum is the hull of the action annihilator. The ambient and reduced vector spectra agree on \(eMe\): fixed compression commutes with every filter, and normal tests on \(e\mathcal H\) extend to tests on \(\mathcal H\). This is the complete GCC SETTING proof, with the concrete normal topology of [CP6](OA-FLOW-CP.md#oa-flow.cp.6). It also proves that a point of the corner action spectrum can be detected by a nonzero element with spectrum in any prescribed open neighborhood.
+The reduced action \(\alpha^e\) acts on \(eMe\) for a fixed projection \(e\). A vector spectrum is the closed annihilator hull of that vector, and the action spectrum is the hull of the action annihilator. The ambient and reduced vector spectra agree on \(eMe\): fixed compression commutes with every filter, and normal tests on \(e\mathcal H\) extend to tests on \(\mathcal H\). This is the complete [GCC SETTING](OA-FLOW-GCC.md#oa-flow.gcc.setting) proof, with the concrete normal topology of [CP6](OA-FLOW-CP.md#oa-flow.cp.6). It also proves that a point of the corner action spectrum can be detected by a nonzero element with spectrum in any prescribed open neighborhood.
 
 <a id="oa-flow.l121.conventions"></a><a id="l121-conventions"></a>
 ### Frequency labels and filters
 
-Use the **positive eigenfrequency convention** of L115 CONVENTIONS: \(\alpha_t(x)=\chi(t)x\), for \(x\ne0\), has label \(\chi\). If \(b\in L^1(G)\), set \(h(\chi)=\int_G b(t)\chi(t)\,dt\) and \(\alpha_h=T_b\), where \(T_b\) is the actual normal integrated action. Thus \(h(\chi)=\widehat b(-\chi)\) for the negative transform in GL. The vector spectrum here is the reflection of the GL vector spectrum, and every GL/LF formula below is transported by that reflection. Adjoint reflection makes each whole action spectrum symmetric, so the positive and negative action spectra agree. This does not make the spectrum of an individual vector symmetric. Write \(A_c(H)\) for the compactly supported elements of the Fourier algebra \(A(H)\), with closed support.
+Use the **positive eigenfrequency convention** of [L115 CONVENTIONS](OA-FLOW-L115.md#oa-flow.l115.conventions): \(\alpha_t(x)=\chi(t)x\), for \(x\ne0\), has label \(\chi\). If \(b\in L^1(G)\), set \(h(\chi)=\int_G b(t)\chi(t)\,dt\) and \(\alpha_h=T_b\), where \(T_b\) is the actual normal integrated action. Thus \(h(\chi)=\widehat b(-\chi)\) for the negative transform in GL. The vector spectrum here is the reflection of the GL vector spectrum, and every GL/LF formula below is transported by that reflection. Adjoint reflection makes each whole action spectrum symmetric, so the positive and negative action spectra agree. This does not make the spectrum of an individual vector symmetric. Write \(A_c(H)\) for the compactly supported elements of the Fourier algebra \(A(H)\), with closed support.
 
-The remaining complete earlier proofs used below are GL0, GL1, GL2, GL3, GL6, GL7, LF1, [PC1](OA-FLOW-PC.md#oa-flow.pc.1), [PC2](OA-FLOW-PC.md#oa-flow.pc.2), GCC TOOLS, and [H0](OA-FLOW-TOPOLOGY.md#l138-h0). These provide filters, nonempty spectra, product bounds with their proper closure, local plateaus, supports, central-support comparison, unitary tests and local compact shrinking. External citations at the end credit the sources of the mathematics; the exact earlier proofs and the arguments below supply the proof premises.
+The remaining complete earlier proofs used below are [GL0](OA-FLOW-GL.md#gl-0), [GL1](OA-FLOW-GL.md#gl-1), [GL2](OA-FLOW-GL.md#gl-2), [GL3](OA-FLOW-GL.md#gl-3), [GL6](OA-FLOW-GL.md#gl-6), [GL7](OA-FLOW-GL.md#gl-7), [LF1](OA-FLOW-LF.md#lf-1), [PC1](OA-FLOW-PC.md#oa-flow.pc.1), [PC2](OA-FLOW-PC.md#oa-flow.pc.2), [GCC TOOLS](OA-FLOW-GCC.md#gcc-tools), and [H0](OA-FLOW-TOPOLOGY.md#l138-h0). These provide filters, nonempty spectra, product bounds with their proper closure, local plateaus, supports, central-support comparison, unitary tests and local compact shrinking. External citations at the end credit the sources of the mathematics; the exact earlier proofs and the arguments below supply the proof premises.
 
 <a id="oa-flow.l121.sc0"></a><a id="sc0"></a>
 ## SC0. Compact errors do not require closing the spectral sum

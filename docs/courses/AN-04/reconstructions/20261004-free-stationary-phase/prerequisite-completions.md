@@ -6,8 +6,7 @@ The freely accessible human source is Jiří Lebl, *Basic Analysis*, volumes I
 and II, version 6.3 (15 May 2026), [author edition](https://www.jirka.org/ra/).
 In particular, §§7.4, 8.2 and 8.5 have been read for the claims below. The
 programme contains their mathematical text and proofs in its Lebl reading
-collection. This companion is marked as an adaptation and extension of those
-open notes, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+collection. This companion follows those notes. Original text: public domain (CC0).
 It supplies the omitted finite-dimensional induction, smooth-regularity
 argument, and algebraic steps needed in the stationary-phase lesson. It does
 not reproduce the book's unrelated further-reading references.

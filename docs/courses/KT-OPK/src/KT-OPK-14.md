@@ -1370,7 +1370,7 @@ w_\tau([u])=\frac1{2\pi i}\tau_n(u^{-1}\delta u).
 \tag{5.1}
 \]
 
-We reuse [Connections and curvature from symmetries of an algebra, §5, Theorem 5.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/NCG-CYCLIC/connections-and-curvature-for-c-star-dynamical-systems.html#5-gauge-changes-and-the-one-dimensional-pairing): the expression is additive on products and block sums and invariant on norm-homotopy classes of smooth invertibles, and every ambient K-class has such a representative. Thus it defines a homomorphism on \(K_1(A)\). Trace invariance supplies \(\tau\delta=0\) on the smooth domain.
+We reuse [Connections and curvature from symmetries of an algebra, §5, Theorem 5.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-CYCLIC/public/reader/connections-and-curvature.html#5-gauge-changes-and-the-one-dimensional-pairing): the expression is additive on products and block sums and invariant on norm-homotopy classes of smooth invertibles, and every ambient K-class has such a representative. Thus it defines a homomorphism on \(K_1(A)\). Trace invariance supplies \(\tau\delta=0\) on the smooth domain.
 
 The bounded trace condition also gives a useful general formulation. Suppose \(D\subset A\) is a norm-dense algebra and \(\delta:D\to A\) a derivation with \(\tau(\delta a)=0\) for every \(a\in D\). Define a dual-valued derivation by
 
@@ -1391,7 +1391,7 @@ a,b\in D.
 \tag{5.3}
 \]
 
-Now apply the exact result [Cyclic forms that survive norm completion, §5, Theorem 5.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-485c5538dfda). An antisymmetric dense dual-valued derivation is closable; its norm-closed domain has matrix holomorphic calculus, and its degree-one pairing defines a unique homomorphism on ambient \(K_1\). Evaluating that pairing on a matrix with entries in the original domain gives
+Now apply the exact result [Cyclic forms that survive norm completion, §5, Theorem 5.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-CYCLIC/public/reader/n-traces.html#5-a-dual-valued-derivation-is-the-degree-one-case). An antisymmetric dense dual-valued derivation is closable; its norm-closed domain has matrix holomorphic calculus, and its degree-one pairing defines a unique homomorphism on ambient \(K_1\). Evaluating that pairing on a matrix with entries in the original domain gives
 
 \[
 \begin{gathered}

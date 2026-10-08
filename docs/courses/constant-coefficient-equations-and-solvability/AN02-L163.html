@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Slow decrease and entire Fourier division</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L162.html">Previous lesson</a> · <a href="#1-what-slow-decrease-means">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="slow-decrease-and-entire-fourier-division">Slow decrease and entire Fourier division</h1>
+<p>Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>The transform of a compact distribution may have zeros. To divide by it, we require the quotient to extend holomorphically across those zeros. The remaining question is whether that entire quotient still comes from a compact distribution. Slow decrease answers this question through lower bounds in logarithmic Fourier neighborhoods.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em> and <em>245B, Notes 9</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The prerequisites are <a href="AN02-L122.html#2-the-compact-support-growth-criterion">Compact Fourier division and multiplicity-sensitive annihilators</a>, Theorem CF2.1, for the entire compact-support growth criterion; <a href="AN02-L143.html">Local compactness and Hartogs bounds</a>, for proper versus collapsed PSH limits; and <a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a>, Theorem 1.1, for the smoothing obstruction. The <a href="#complete-proof">complete proof</a> supplies all five equivalences, the Phragmén–Lindelöf and Lindelöf arguments, and the weighted Banach-space proof.</p>
+<h2 id="1-what-slow-decrease-means">1. What slow decrease means</h2>
+<p>Use <span class="math" data-index="0" data-tex="\(F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle\)">\(F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle\)</span> and</p>
+<span class="math math-display" id="eq-T1" data-index="1" data-tex="\[
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \qquad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{T1}
+\]">\[
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \qquad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{T1}
+\]</span>
+<p>At transform zeros the logarithm is <span class="math" data-index="2" data-tex="\(-\infty\)">\(-\infty\)</span>. Collapse means uniform convergence to <span class="math" data-index="3" data-tex="\(-\infty\)">\(-\infty\)</span> on all compact complex parameter sets.</p>
+<p>Theorem 1.1 in the complete proof makes these five conditions equivalent:</p>
+<ol>
+<li>No escaping real sequence produces collapse.</li>
+<li>One complex logarithmic window has a polynomial lower bound, at every real center.</li>
+<li>Every prescribed positive real logarithmic radius has a polynomial lower bound, whose exponent may depend on that radius.</li>
+<li>Every complex parameter ball has an integrated logarithm lower bound.</li>
+<li>If <span class="math" data-index="4" data-tex="\(F_w=F_uG\)">\(F_w=F_uG\)</span>, with <span class="math" data-index="5" data-tex="\(w\)">\(w\)</span> compact and <span class="math" data-index="6" data-tex="\(G\)">\(G\)</span> entire, then <span class="math" data-index="7" data-tex="\(G\)">\(G\)</span> is the transform of a compact distribution.</li>
+</ol>
+<p>In exact terms, conditions 2 and 3 say respectively</p>
+<span class="math math-display" id="eq-T2" data-index="8" data-tex="\[
+ \sup_{|\zeta-c|&lt;A\log(2+|c|)}|F_u(\zeta)|&gt;(A+|c|)^{-A}
+ \quad\text{for one }A&gt;0,
+ \tag{T2}
+\]">\[
+ \sup_{|\zeta-c|&lt;A\log(2+|c|)}|F_u(\zeta)|&gt;(A+|c|)^{-A}
+ \quad\text{for one }A&gt;0,
+ \tag{T2}
+\]</span>
+<p>and, for every <span class="math" data-index="9" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the existence of <span class="math" data-index="10" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> with</p>
+<span class="math math-display" id="eq-T3" data-index="11" data-tex="\[
+ \sup_{\substack{h\in\mathbb R^n\\|h|&lt;a\log(2+|c|)}}
+       |F_u(c+h)|&gt;(A+|c|)^{-A}.
+ \tag{T3}
+\]">\[
+ \sup_{\substack{h\in\mathbb R^n\\|h|&lt;a\log(2+|c|)}}
+       |F_u(c+h)|&gt;(A+|c|)^{-A}.
+ \tag{T3}
+\]</span>
+<p>Condition 2 allows complex displacements; condition 3 requires real displacements and every fixed radius coefficient. Neither condition requires a lower bound at the center itself.</p>
+<p>For each <span class="math" data-index="12" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, condition 4 is</p>
+<span class="math math-display" id="eq-T4" data-index="13" data-tex="\[
+ \int_{|z|&lt;a}\log|F_u(c+z\log|c|)|\,dV(z)&gt;-A_a\log|c|,
+ \qquad |c|&gt;2.
+ \tag{T4}
+\]">\[
+ \int_{|z|&lt;a}\log|F_u(c+z\log|c|)|\,dV(z)&gt;-A_a\log|c|,
+ \qquad |c|&gt;2.
+ \tag{T4}
+\]</span>
+<p>The integral is over complex dimension <span class="math" data-index="14" data-tex="\(n\)">\(n\)</span>, hence real dimension <span class="math" data-index="15" data-tex="\(2n\)">\(2n\)</span>, without dividing by the ball volume.</p>
+<p>A compact distribution satisfying these conditions is called <em>invertible</em>, and its transform is <em>slowly decreasing</em>. Here invertibility describes division and convolution regularity. A pointwise reciprocal may have poles, and a compact convolution inverse need not exist.</p>
+<h2 id="2-how-the-implications-fit-together">2. How the implications fit together</h2>
+<p>The absence of collapse bounds the integrals of the normalized PSH family below. Otherwise an escaping sequence of integrals tending to <span class="math" data-index="16" data-tex="\(-\infty\)">\(-\infty\)</span> would have a proper local <span class="math" data-index="17" data-tex="\(L^1\)">\(L^1\)</span> extraction, whose integrals are finite, or a collapsed extraction, which is excluded. Bounded frequency regions are handled by the local integrability of <span class="math" data-index="18" data-tex="\(\log|F_u|\)">\(\log|F_u|\)</span>.</p>
+<p>If the real-window bound failed, some sequence would satisfy
+<span class="math" data-index="19" data-tex="\(L_u(x,c_j)\leq-j\)">\(L_u(x,c_j)\leq-j\)</span> on a fixed real parameter ball. Smallness on that real ball propagates to complex parameters. The proof uses a positive harmonic comparison function on a rectangle in each complex line:</p>
+<span class="math math-display" id="eq-T5" data-index="20" data-tex="\[
+ \omega(t,s)=\sin\!\left(\frac{\pi(t+r)}{2r}\right)
+       \frac{\sinh(\pi(r-s)/(2r))}{\sinh(\pi/2)}.
+ \tag{T5}
+\]">\[
+ \omega(t,s)=\sin\!\left(\frac{\pi(t+r)}{2r}\right)
+       \frac{\sinh(\pi(r-s)/(2r))}{\sinh(\pi/2)}.
+ \tag{T5}
+\]</span>
+<p>For a common upper bound <span class="math" data-index="21" data-tex="\(C\)">\(C\)</span>, comparison gives
+<span class="math" data-index="22" data-tex="\(g_j(t+is)\leq C-(j+C)\omega(t,s)\)">\(g_j(t+is)\leq C-(j+C)\omega(t,s)\)</span>.
+The positive <span class="math" data-index="23" data-tex="\(\omega\)">\(\omega\)</span> forces collapse on the rectangle interior. PSH compactness then extends it along the line and through the complex parameter space. This contradicts (T4).</p>
+<p>One real logarithmic lower bound lies inside a sufficiently large complex window. Conversely, uniform collapse on that fixed complex window would violate its polynomial lower bound. This completes the first four conditions.</p>
+<figure><img class="course-figure" width="1961" height="713" src="reproduce/L163/figures/real-smallness-and-half-plane-barriers.png" alt="A positive harmonic rectangle function propagates real-axis smallness, and a positive three-halves quadrant barrier removes linear growth in the upper half-plane." /><figcaption class="native"><a href="reproduce/L163/figures/real-smallness-and-half-plane-barriers.png">Open full-size PNG</a> · <a href="reproduce/L163/figures/real-smallness-and-half-plane-barriers.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> Left: the exact harmonic function (T5) for <span class="math" data-index="24" data-tex="\(r=1\)">\(r=1\)</span>, on <span class="math" data-index="25" data-tex="\(-1\leq t\leq1,\ 0\leq s\leq1\)">\(-1\leq t\leq1,\ 0\leq s\leq1\)</span>. It vanishes on the vertical and upper sides and is positive inside. Right: <span class="math" data-index="26" data-tex="\(\cos[\frac32(\theta-\pi/4)]\)">\(\cos[\frac32(\theta-\pi/4)]\)</span> for <span class="math" data-index="27" data-tex="\(0\leq\theta\leq\pi/2\)">\(0\leq\theta\leq\pi/2\)</span>, with its positive lower bound <span class="math" data-index="28" data-tex="\(\cos(3\pi/8)\)">\(\cos(3\pi/8)\)</span>. Multiplication by <span class="math" data-index="29" data-tex="\(r^{3/2}\)">\(r^{3/2}\)</span> gives the first-quadrant harmonic barrier, which dominates linear growth on outer arcs. Proof locators: complete proof, Lemmas 2.1 and 3.1. Background: Hörmander and the Phragmén–Lindelöf principle.</p>
+<p>For division, Lindelöf's argument first bounds an entire quotient by exponential type. It controls the negative part of the denominator's logarithm by its average, instead of dividing pointwise through zeros. The integrated logarithm lower bound then gives polynomial growth of the quotient on real frequencies.</p>
+<p>The remaining step preserves that polynomial order in complex directions. For real <span class="math" data-index="30" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, let <span class="math" data-index="31" data-tex="\(a=1+|\xi|\)">\(a=1+|\xi|\)</span>, <span class="math" data-index="32" data-tex="\(b=|\eta|\)">\(b=|\eta|\)</span>, and use the harmonic logarithm of <span class="math" data-index="33" data-tex="\(a-ibz\)">\(a-ibz\)</span>, whose zero is below the real axis. The half-plane lemma applied on the line <span class="math" data-index="34" data-tex="\(\xi+z\eta\)">\(\xi+z\eta\)</span> gives</p>
+<span class="math math-display" id="eq-T6" data-index="35" data-tex="\[
+ |G(\xi+i\eta)|\leq 2^NC_1
+       (1+|\xi+i\eta|)^Ne^{A|\eta|}
+ \tag{T6}
+\]">\[
+ |G(\xi+i\eta)|\leq 2^NC_1
+       (1+|\xi+i\eta|)^Ne^{A|\eta|}
+ \tag{T6}
+\]</span>
+<p>from an exponential-type bound <span class="math" data-index="36" data-tex="\(C_0e^{A|z|}\)">\(C_0e^{A|z|}\)</span> and a real bound <span class="math" data-index="37" data-tex="\(C_1(1+|\xi|)^N\)">\(C_1(1+|\xi|)^N\)</span>. The earlier compact-support growth theorem recovers a distribution supported in the radius-<span class="math" data-index="38" data-tex="\(A\)">\(A\)</span> ball.</p>
+<p>The converse division implication requires a uniform exponent. The proof forms a complete normed space of entire <span class="math" data-index="39" data-tex="\(G\)">\(G\)</span> whose products <span class="math" data-index="40" data-tex="\(F_uG\)">\(F_uG\)</span> have one fixed compact-support growth bound. Baire's theorem supplies</p>
+<span class="math math-display" id="eq-T7" data-index="41" data-tex="\[
+ |G(\xi)|\leq C\|G\|(1+|\xi|)^m
+ \tag{T7}
+\]">\[
+ |G(\xi)|\leq C\|G\|(1+|\xi|)^m
+ \tag{T7}
+\]</span>
+<p>with one <span class="math" data-index="42" data-tex="\(m\)">\(m\)</span> for that whole space. If <span class="math" data-index="43" data-tex="\(u\)">\(u\)</span> had a collapsed profile, the preceding smoothing construction would give a compact continuous <span class="math" data-index="44" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span> with <span class="math" data-index="45" data-tex="\(u*v\)">\(u*v\)</span> smooth. Every derivative transform <span class="math" data-index="46" data-tex="\((i\zeta)^\alpha F_v\)">\((i\zeta)^\alpha F_v\)</span> belongs to the same quotient space. Applying (T7) with the same <span class="math" data-index="47" data-tex="\(m\)">\(m\)</span> to arbitrarily high derivatives forces <span class="math" data-index="48" data-tex="\(F_v\)">\(F_v\)</span> to be rapidly decreasing, hence <span class="math" data-index="49" data-tex="\(v\)">\(v\)</span> smooth. The contradiction proves the fifth condition implies the first.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-a-double-zero-and-an-entire-compact-quotient">Example 1: a double zero and an entire compact quotient</h3>
+<p>Take <span class="math" data-index="50" data-tex="\(u=D^2\delta_2\)">\(u=D^2\delta_2\)</span> and <span class="math" data-index="51" data-tex="\(w=D^2\delta_5\)">\(w=D^2\delta_5\)</span> on <span class="math" data-index="52" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with <span class="math" data-index="53" data-tex="\(D\)">\(D\)</span> the ordinary distribution derivative. Their transforms are</p>
+<span class="math math-display" id="eq-T8" data-index="54" data-tex="\[
+ F_u(\zeta)=(i\zeta)^2e^{-2i\zeta},\qquad
+ F_w(\zeta)=(i\zeta)^2e^{-5i\zeta},\qquad
+ G(\zeta)=e^{-3i\zeta}.
+ \tag{T8}
+\]">\[
+ F_u(\zeta)=(i\zeta)^2e^{-2i\zeta},\qquad
+ F_w(\zeta)=(i\zeta)^2e^{-5i\zeta},\qquad
+ G(\zeta)=e^{-3i\zeta}.
+ \tag{T8}
+\]</span>
+<p>The double denominator zero at zero is removable because the numerator has the same multiplicity. The quotient is the transform of <span class="math" data-index="55" data-tex="\(\delta_3\)">\(\delta_3\)</span>, and <span class="math" data-index="56" data-tex="\(u*\delta_3=w\)">\(u*\delta_3=w\)</span>.</p>
+<p>The divisor is slowly decreasing: the existing polynomial division theorem preserves compact Fourier growth for division by the nonzero polynomial <span class="math" data-index="57" data-tex="\((i\zeta)^2\)">\((i\zeta)^2\)</span>, and division by the point-mass exponential merely translates the compact inverse. Thus condition 5 holds for every compact numerator whose quotient is entire, not just this example.
+There is no compact convolution inverse for <span class="math" data-index="58" data-tex="\(u\)">\(u\)</span>. If <span class="math" data-index="59" data-tex="\(u*v=\delta_0\)">\(u*v=\delta_0\)</span>, the transform equality at <span class="math" data-index="60" data-tex="\(\zeta=0\)">\(\zeta=0\)</span> would say <span class="math" data-index="61" data-tex="\(0=1\)">\(0=1\)</span>. This exhibits the precise difference between the course's invertibility term and a compact convolution inverse.</p>
+<h3 id="example-2-infinitely-many-real-zeros-do-not-prevent-slow-decrease">Example 2: infinitely many real zeros do not prevent slow decrease</h3>
+<p>For <span class="math" data-index="62" data-tex="\(u=\delta_0-\delta_1\)">\(u=\delta_0-\delta_1\)</span>,</p>
+<span class="math math-display" id="eq-T9" data-index="63" data-tex="\[
+ F_u(\zeta)=1-e^{-i\zeta},\qquad
+ |F_u(\xi)|=2|\sin(\xi/2)|\quad(\xi\in\mathbb R).
+ \tag{T9}
+\]">\[
+ F_u(\zeta)=1-e^{-i\zeta},\qquad
+ |F_u(\xi)|=2|\sin(\xi/2)|\quad(\xi\in\mathbb R).
+ \tag{T9}
+\]</span>
+<p>The real zeros are <span class="math" data-index="64" data-tex="\(2\pi k\)">\(2\pi k\)</span>. Nevertheless every real interval of radius greater than <span class="math" data-index="65" data-tex="\(\pi\)">\(\pi\)</span> contains an odd multiple of <span class="math" data-index="66" data-tex="\(\pi\)">\(\pi\)</span>, where the modulus is two. For every fixed <span class="math" data-index="67" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the radius <span class="math" data-index="68" data-tex="\(a\log(2+|c|)\)">\(a\log(2+|c|)\)</span> eventually exceeds <span class="math" data-index="69" data-tex="\(\pi\)">\(\pi\)</span>. The real-window supremum is then two, and the bounded set of remaining centers has a positive minimum window supremum. It therefore has a positive polynomial lower bound at all centers, giving condition 3.</p>
+<p>For <span class="math" data-index="70" data-tex="\(w=\delta_0-\delta_3\)">\(w=\delta_0-\delta_3\)</span>, the identity</p>
+<span class="math math-display" id="eq-T10" data-index="71" data-tex="\[
+ \frac{1-e^{-3i\zeta}}{1-e^{-i\zeta}}
+      =1+e^{-i\zeta}+e^{-2i\zeta}
+ \tag{T10}
+\]">\[
+ \frac{1-e^{-3i\zeta}}{1-e^{-i\zeta}}
+      =1+e^{-i\zeta}+e^{-2i\zeta}
+ \tag{T10}
+\]</span>
+<p>extends through every denominator zero. The compact quotient is
+<span class="math" data-index="72" data-tex="\(\delta_0+\delta_1+\delta_2\)">\(\delta_0+\delta_1+\delta_2\)</span>. Multiplying the finite sums cancels the two interior point masses and gives the stated numerator.</p>
+<figure><img class="course-figure" width="1961" height="732" src="reproduce/L163/figures/zeros-in-logarithmic-windows-and-division.png" alt="A real zero at a large center lies inside logarithmic windows with positive transform suprema; an atomic quotient gives the exact compact convolution identity." /><figcaption class="native"><a href="reproduce/L163/figures/zeros-in-logarithmic-windows-and-division.png">Open full-size PNG</a> · <a href="reproduce/L163/figures/zeros-in-logarithmic-windows-and-division.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> Left: the exact function <span class="math" data-index="73" data-tex="\(2|\sin(t/2)|\)">\(2|\sin(t/2)|\)</span>, with frequency <span class="math" data-index="74" data-tex="\(\xi=c+t\)">\(\xi=c+t\)</span> and <span class="math" data-index="75" data-tex="\(c=2\pi\cdot10^6\)">\(c=2\pi\cdot10^6\)</span>. Windows have radii <span class="math" data-index="76" data-tex="\(a\log(2+c)\)">\(a\log(2+c)\)</span>, for <span class="math" data-index="77" data-tex="\(a=0.1\)">\(a=0.1\)</span> and <span class="math" data-index="78" data-tex="\(0.25\)">\(0.25\)</span>. The larger contains the peaks at <span class="math" data-index="79" data-tex="\(t=\pm\pi\)">\(t=\pm\pi\)</span>, although the center is a zero. Right: the exact atomic identity <span class="math" data-index="80" data-tex="\((\delta_0-\delta_1)*(\delta_0+\delta_1+\delta_2)=\delta_0-\delta_3\)">\((\delta_0-\delta_1)*(\delta_0+\delta_1+\delta_2)=\delta_0-\delta_3\)</span>. Markers show point-mass locations and signs, not continuous densities. Proof locators: Examples 1–2 and complete proof, Theorem 1.1. Background: Tao and Hörmander.</p>
+<h3 id="example-3-smoothness-of-a-divisor-does-not-give-the-division-property">Example 3: smoothness of a divisor does not give the division property</h3>
+<p>A nonzero compact smooth function has <span class="math" data-index="81" data-tex="\(L_u\to-\infty\)">\(L_u\to-\infty\)</span> uniformly on complex parameter compact sets along all escaping real frequencies. Whole-complex integration by parts proves this: any fixed logarithmic imaginary displacement contributes a fixed polynomial growth factor, and arbitrary derivative orders dominate it.
+Thus it fails condition 1 and is not invertible. The theorem implies that there exists a compact numerator with an entire quotient which is not a compact-distribution transform. Entire removability alone is insufficient.</p>
+<p>The quotient-space proof gives the reason without asserting a closed formula for that numerator. If every product-controlled entire quotient had polynomial real growth, Baire would give one exponent for all of them. The frequency-selective nonsmooth factor and all its derivatives would then force smoothness, a contradiction. The failure is a growth obstruction, not necessarily a pole.</p>
+<h3 id="example-4-keeping-the-polynomial-order-in-complex-directions">Example 4: keeping the polynomial order in complex directions</h3>
+<p>Let
+<span class="math" data-index="82" data-tex="\(G(\zeta)=(1-i\zeta)^3e^{-2i\zeta}\)">\(G(\zeta)=(1-i\zeta)^3e^{-2i\zeta}\)</span>.
+On real frequencies,
+<span class="math" data-index="83" data-tex="\(|G(\xi)|=(1+\xi^2)^{3/2}\leq(1+|\xi|)^3\)">\(|G(\xi)|=(1+\xi^2)^{3/2}\leq(1+|\xi|)^3\)</span>.
+There is a constant <span class="math" data-index="84" data-tex="\(C_0\)">\(C_0\)</span> with <span class="math" data-index="85" data-tex="\(|G(\zeta)|\leq C_0e^{3|\zeta|}\)">\(|G(\zeta)|\leq C_0e^{3|\zeta|}\)</span>: the exponential contributes at most <span class="math" data-index="86" data-tex="\(e^{2|\zeta|}\)">\(e^{2|\zeta|}\)</span>, and the cubic factor is bounded by a constant times <span class="math" data-index="87" data-tex="\(e^{|\zeta|}\)">\(e^{|\zeta|}\)</span>.
+Lemma 3.2 gives</p>
+<span class="math math-display" id="eq-T11" data-index="88" data-tex="\[
+ |G(\xi+i\eta)|\leq8(1+|\xi+i\eta|)^3e^{3|\eta|}.
+ \tag{T11}
+\]">\[
+ |G(\xi+i\eta)|\leq8(1+|\xi+i\eta|)^3e^{3|\eta|}.
+ \tag{T11}
+\]</span>
+<p>The polynomial order remains three. The compact inverse is explicitly
+<span class="math" data-index="89" data-tex="\((1-D)^3\delta_2\)">\((1-D)^3\delta_2\)</span>, whose actual carrier is <span class="math" data-index="90" data-tex="\(\{2\}\)">\(\{2\}\)</span>. The lemma's radius-three ball is a valid general support bound, not the optimal carrier in this example. Its exact modulus is
+<span class="math" data-index="91" data-tex="\(|1-i(\xi+i\eta)|^3e^{2\eta}\)">\(|1-i(\xi+i\eta)|^3e^{2\eta}\)</span>, which records the signed point-mass location.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The exercises total 100 points.</p>
+<h3 id="exercise-1-translation-and-double-multiplicity-8-points">Exercise 1: translation and double multiplicity (8 points)</h3>
+<p>For <span class="math" data-index="92" data-tex="\(u=D^2\delta_{-1}\)">\(u=D^2\delta_{-1}\)</span> and <span class="math" data-index="93" data-tex="\(w=D^2\delta_4\)">\(w=D^2\delta_4\)</span>, compute the entire quotient and its compact inverse. Explain why dividing only one copy of the polynomial zero would give the wrong quotient.</p>
+<p><em>Solution.</em> The transforms are <span class="math" data-index="94" data-tex="\((i\zeta)^2e^{i\zeta}\)">\((i\zeta)^2e^{i\zeta}\)</span> and <span class="math" data-index="95" data-tex="\((i\zeta)^2e^{-4i\zeta}\)">\((i\zeta)^2e^{-4i\zeta}\)</span>. Their quotient is <span class="math" data-index="96" data-tex="\(e^{-5i\zeta}\)">\(e^{-5i\zeta}\)</span>, the transform of <span class="math" data-index="97" data-tex="\(\delta_5\)">\(\delta_5\)</span>. The convolution shifts the derivative point mass from <span class="math" data-index="98" data-tex="\(-1\)">\(-1\)</span> to four.
+Both transforms vanish to order two at zero, and both copies of the factor must cancel. Dividing the numerator by only <span class="math" data-index="99" data-tex="\(i\zeta e^{i\zeta}\)">\(i\zeta e^{i\zeta}\)</span> would leave <span class="math" data-index="100" data-tex="\(i\zeta e^{-5i\zeta}\)">\(i\zeta e^{-5i\zeta}\)</span>, the transform of <span class="math" data-index="101" data-tex="\(D\delta_5\)">\(D\delta_5\)</span>. Its convolution with the actual <span class="math" data-index="102" data-tex="\(u\)">\(u\)</span> is <span class="math" data-index="103" data-tex="\(D^3\delta_4\)">\(D^3\delta_4\)</span>, not <span class="math" data-index="104" data-tex="\(w\)">\(w\)</span>. Entire division retains the exact divisor and its full multiplicity.</p>
+<h3 id="exercise-2-absorbing-a-polynomial-constant-8-points">Exercise 2: absorbing a polynomial constant (8 points)</h3>
+<p>Suppose a real logarithmic window of radius <span class="math" data-index="105" data-tex="\(0.4\log(2+|c|)\)">\(0.4\log(2+|c|)\)</span> has supremum at least <span class="math" data-index="106" data-tex="\(10^{-2}(1+|c|)^{-3}\)">\(10^{-2}(1+|c|)^{-3}\)</span>. Show that <span class="math" data-index="107" data-tex="\(A=8\)">\(A=8\)</span> works for the complex-window condition.</p>
+<p><em>Solution.</em> The real window is inside the complex window with radius <span class="math" data-index="108" data-tex="\(8\log(2+|c|)\)">\(8\log(2+|c|)\)</span>. For <span class="math" data-index="109" data-tex="\(q=|c|\)">\(q=|c|\)</span>,</p>
+<span class="math math-display" id="eq-T12" data-index="110" data-tex="\[
+ (8+q)^8\geq8^5(1+q)^3,\qquad
+ (8+q)^{-8}\leq\frac1{32768}(1+q)^{-3}
+                         &lt;10^{-2}(1+q)^{-3}.
+ \tag{T12}
+\]">\[
+ (8+q)^8\geq8^5(1+q)^3,\qquad
+ (8+q)^{-8}\leq\frac1{32768}(1+q)^{-3}
+                         &lt;10^{-2}(1+q)^{-3}.
+ \tag{T12}
+\]</span>
+<p>The supremum over the larger window is at least the assumed real-window supremum, so the required strict inequality holds at every center, including zero. The constant and exponent were absorbed together; no asymptotic exception is needed.</p>
+<h3 id="exercise-3-why-failing-window-centers-escape-10-points">Exercise 3: why failing-window centers escape (10 points)</h3>
+<p>For a nonzero entire <span class="math" data-index="111" data-tex="\(F\)">\(F\)</span> and fixed <span class="math" data-index="112" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, prove that
+<span class="math" data-index="113" data-tex="\(S_a(c)=\sup_{|h|&lt;a\log(2+|c|)}|F(c+h)|\)">\(S_a(c)=\sup_{|h|&lt;a\log(2+|c|)}|F(c+h)|\)</span> is continuous and positive. Deduce that centers satisfying <span class="math" data-index="114" data-tex="\(S_a(c_j)\leq(j+|c_j|)^{-j}\)">\(S_a(c_j)\leq(j+|c_j|)^{-j}\)</span> escape.</p>
+<p><em>Solution.</em> The open-ball supremum equals the closed-ball maximum by continuity of <span class="math" data-index="115" data-tex="\(F\)">\(F\)</span>. Substitute <span class="math" data-index="116" data-tex="\(h=a\log(2+|c|)t\)">\(h=a\log(2+|c|)t\)</span>, with real <span class="math" data-index="117" data-tex="\(|t|\leq1\)">\(|t|\leq1\)</span>. On each compact set of centers this is a continuous function of <span class="math" data-index="118" data-tex="\((c,t)\)">\((c,t)\)</span> on a compact product, hence uniformly continuous. The absolute difference of its two maxima is at most the supremum of the corresponding pointwise differences, proving continuity in <span class="math" data-index="119" data-tex="\(c\)">\(c\)</span>.
+If a maximum were zero, <span class="math" data-index="120" data-tex="\(F\)">\(F\)</span> would vanish on an open real ball. A real box inside that ball lets the one-variable identity principle extend one coordinate at a time, showing <span class="math" data-index="121" data-tex="\(F\equiv0\)">\(F\equiv0\)</span>, a contradiction. Thus <span class="math" data-index="122" data-tex="\(S_a&gt;0\)">\(S_a&gt;0\)</span>.
+It has a positive minimum on each bounded closed set of centers. But the proposed right side is at most <span class="math" data-index="123" data-tex="\(j^{-j}\to0\)">\(j^{-j}\to0\)</span>. No subsequence of <span class="math" data-index="124" data-tex="\(c_j\)">\(c_j\)</span> can stay in such a set, so <span class="math" data-index="125" data-tex="\(|c_j|\to\infty\)">\(|c_j|\to\infty\)</span>.</p>
+<h3 id="exercise-4-a-quantitative-real-to-complex-comparison-10-points">Exercise 4: a quantitative real-to-complex comparison (10 points)</h3>
+<p>For <span class="math" data-index="126" data-tex="\(r=1\)">\(r=1\)</span>, evaluate the harmonic function (T5) at <span class="math" data-index="127" data-tex="\((t,s)=(0,1/2)\)">\((t,s)=(0,1/2)\)</span>. If the real bottom values are at most <span class="math" data-index="128" data-tex="\(-M\)">\(-M\)</span> and the other boundary values at most <span class="math" data-index="129" data-tex="\(C\geq0\)">\(C\geq0\)</span>, give a sufficient <span class="math" data-index="130" data-tex="\(M\)">\(M\)</span> for the center value to be at most <span class="math" data-index="131" data-tex="\(-K\)">\(-K\)</span>.</p>
+<p><em>Solution.</em> The exact value is
+<span class="math" data-index="132" data-tex="\(\omega_0=\sinh(\pi/4)/\sinh(\pi/2)&gt;0\)">\(\omega_0=\sinh(\pi/4)/\sinh(\pi/2)&gt;0\)</span>.
+Maximum comparison gives <span class="math" data-index="133" data-tex="\(g(i/2)\leq C-(M+C)\omega_0\)">\(g(i/2)\leq C-(M+C)\omega_0\)</span>. It is at most <span class="math" data-index="134" data-tex="\(-K\)">\(-K\)</span> whenever</p>
+<span class="math math-display" id="eq-T13" data-index="135" data-tex="\[
+ M\geq\frac{K+C}{\omega_0}-C.
+ \tag{T13}
+\]">\[
+ M\geq\frac{K+C}{\omega_0}-C.
+ \tag{T13}
+\]</span>
+<p>The comparison works because the harmonic function vanishes on the vertical and top sides and its bottom values lie in <span class="math" data-index="136" data-tex="\([0,1]\)">\([0,1]\)</span>. Hence <span class="math" data-index="137" data-tex="\(C-(M+C)\omega\)">\(C-(M+C)\omega\)</span> is at least <span class="math" data-index="138" data-tex="\(-M\)">\(-M\)</span> on the bottom and equals <span class="math" data-index="139" data-tex="\(C\)">\(C\)</span> on the remaining boundary. Positive interior harmonic weight transfers arbitrarily strong real smallness to the complex interior.</p>
+<h3 id="exercise-5-both-phragm-n-lindel-f-barriers-10-points">Exercise 5: both Phragmén–Lindelöf barriers (10 points)</h3>
+<p>Let <span class="math" data-index="140" data-tex="\(c_0=\cos(3\pi/8)\)">\(c_0=\cos(3\pi/8)\)</span>. Show that the power barrier dominates linear growth on every outer first-quadrant arc once <span class="math" data-index="141" data-tex="\(R\geq(2A/(\varepsilon c_0))^2\)">\(R\geq(2A/(\varepsilon c_0))^2\)</span>. After obtaining the bound <span class="math" data-index="142" data-tex="\(v\leq C^+\)">\(v\leq C^+\)</span>, give a radius making the logarithmic barrier's outer boundary nonpositive.</p>
+<p><em>Solution.</em> The power barrier is at least <span class="math" data-index="143" data-tex="\(c_0R^{3/2}\)">\(c_0R^{3/2}\)</span>. The stated inequality gives <span class="math" data-index="144" data-tex="\(\varepsilon c_0R^{3/2}\geq2AR\)">\(\varepsilon c_0R^{3/2}\geq2AR\)</span>. Therefore
+<span class="math" data-index="145" data-tex="\(C+AR-\varepsilon c_0R^{3/2}\leq C-AR\leq C^+\)">\(C+AR-\varepsilon c_0R^{3/2}\leq C-AR\leq C^+\)</span>.
+On the two straight sides the same upper bound already holds. Maximum comparison then bounds <span class="math" data-index="146" data-tex="\(v-\varepsilon H_1\)">\(v-\varepsilon H_1\)</span>, and letting <span class="math" data-index="147" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives <span class="math" data-index="148" data-tex="\(v\leq C^+\)">\(v\leq C^+\)</span> in the quadrant. Reflection gives it in the other quadrant.
+For the second step, on <span class="math" data-index="149" data-tex="\(|z|=R\)">\(|z|=R\)</span>, <span class="math" data-index="150" data-tex="\(\operatorname{Im}z\geq0\)">\(\operatorname{Im}z\geq0\)</span>, we have <span class="math" data-index="151" data-tex="\(|z+i|\geq R-1\)">\(|z+i|\geq R-1\)</span>. Choose
+<span class="math" data-index="152" data-tex="\(R&gt;1+\exp(C^+/\varepsilon)\)">\(R&gt;1+\exp(C^+/\varepsilon)\)</span>.
+Then <span class="math" data-index="153" data-tex="\(v-\varepsilon\log|z+i|\leq C^+-\varepsilon\log(R-1)&lt;0\)">\(v-\varepsilon\log|z+i|\leq C^+-\varepsilon\log(R-1)&lt;0\)</span> on the arc. On the real boundary <span class="math" data-index="154" data-tex="\(\log|x+i|\geq0\)">\(\log|x+i|\geq0\)</span> and <span class="math" data-index="155" data-tex="\(v\leq0\)">\(v\leq0\)</span>. Maximum comparison and then <span class="math" data-index="156" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> give the exact upper bound zero. The first barrier removes linear growth; the second removes the constant.</p>
+<h3 id="exercise-6-a-harmonic-denominator-in-two-dimensions-8-points">Exercise 6: a harmonic denominator in two dimensions (8 points)</h3>
+<p>Take <span class="math" data-index="157" data-tex="\(\xi=(3,4)\)">\(\xi=(3,4)\)</span>, <span class="math" data-index="158" data-tex="\(\eta=(-1,2)\)">\(\eta=(-1,2)\)</span>. Determine <span class="math" data-index="159" data-tex="\(a,b\)">\(a,b\)</span>, the zero of <span class="math" data-index="160" data-tex="\(p(z)=a-ibz\)">\(p(z)=a-ibz\)</span>, and the denominator at <span class="math" data-index="161" data-tex="\(z=i\)">\(z=i\)</span>. Explain why the logarithm is harmonic on the upper half-plane.</p>
+<p><em>Solution.</em> We have <span class="math" data-index="162" data-tex="\(a=1+|\xi|=6\)">\(a=1+|\xi|=6\)</span>, <span class="math" data-index="163" data-tex="\(b=|\eta|=\sqrt5\)">\(b=|\eta|=\sqrt5\)</span>. The zero is <span class="math" data-index="164" data-tex="\(-6i/\sqrt5\)">\(-6i/\sqrt5\)</span>, strictly below the real axis. Thus <span class="math" data-index="165" data-tex="\(p\)">\(p\)</span> never vanishes on a neighborhood of the closed upper half-plane, and <span class="math" data-index="166" data-tex="\(\log|p|\)">\(\log|p|\)</span> is harmonic there as the real part of a local holomorphic logarithm. At <span class="math" data-index="167" data-tex="\(i\)">\(i\)</span>, <span class="math" data-index="168" data-tex="\(p(i)=6+\sqrt5\)">\(p(i)=6+\sqrt5\)</span>.
+For real <span class="math" data-index="169" data-tex="\(t\)">\(t\)</span>, <span class="math" data-index="170" data-tex="\(1+|\xi+t\eta|\leq6+\sqrt5|t|\leq\sqrt2|6-i\sqrt5t|\)">\(1+|\xi+t\eta|\leq6+\sqrt5|t|\leq\sqrt2|6-i\sqrt5t|\)</span>, which justifies the polynomial normalization on the boundary. At the observation point, <span class="math" data-index="171" data-tex="\(|\xi+i\eta|=\sqrt{30}\)">\(|\xi+i\eta|=\sqrt{30}\)</span>, and
+<span class="math" data-index="172" data-tex="\(6+\sqrt5\leq\sqrt2(1+\sqrt{30})\)">\(6+\sqrt5\leq\sqrt2(1+\sqrt{30})\)</span>.
+The polynomial factor therefore retains the same exponent after returning from the line parameter to complex vector norm.</p>
+<h3 id="exercise-7-division-through-a-zero-by-averages-10-points">Exercise 7: division through a zero by averages (10 points)</h3>
+<p>For <span class="math" data-index="173" data-tex="\(F(z)=z\)">\(F(z)=z\)</span>, <span class="math" data-index="174" data-tex="\(W(z)=ze^z\)">\(W(z)=ze^z\)</span>, identify the entire quotient. Explain how translating the origin and integrating <span class="math" data-index="175" data-tex="\(\log|F|\)">\(\log|F|\)</span> avoids an invalid pointwise lower bound at zero.</p>
+<p><em>Solution.</em> The quotient extends to <span class="math" data-index="176" data-tex="\(G(z)=e^z\)">\(G(z)=e^z\)</span>. Translate by the complex point one: the denominator becomes <span class="math" data-index="177" data-tex="\(F_1(z)=z+1\)">\(F_1(z)=z+1\)</span>, with <span class="math" data-index="178" data-tex="\(\log|F_1(0)|=0\)">\(\log|F_1(0)|=0\)</span>.
+Its logarithm is locally integrable even at <span class="math" data-index="179" data-tex="\(z=-1\)">\(z=-1\)</span>. The submean inequality gives a lower bound for its mean on balls centered at zero, while its exponential-type upper bound controls its positive part. Thus the mean of its absolute logarithm is <span class="math" data-index="180" data-tex="\(O(R+1)\)">\(O(R+1)\)</span>. This controls the negative part on comparison balls used to estimate <span class="math" data-index="181" data-tex="\(\log|G|\)">\(\log|G|\)</span>, proving exponential type of the quotient.
+There is no positive pointwise lower bound for <span class="math" data-index="182" data-tex="\(|F|\)">\(|F|\)</span> near its zero, and none is used. The equality <span class="math" data-index="183" data-tex="\(\log|G|=\log|W|-\log|F|\)">\(\log|G|=\log|W|-\log|F|\)</span> is applied almost everywhere under locally integrable averages; the zero set has real area zero. This example illustrates Lindelöf's exponential-type step alone: <span class="math" data-index="184" data-tex="\(e^\xi\)">\(e^\xi\)</span> is not polynomially bounded on the real axis, so the example does not meet the compact Fourier numerator/divisor assumptions of the main theorem.</p>
+<h3 id="exercise-8-local-control-at-a-double-divisor-zero-12-points">Exercise 8: local control at a double divisor zero (12 points)</h3>
+<p>Let <span class="math" data-index="185" data-tex="\(F(z_1,z_2)=z_1^2-z_2\)">\(F(z_1,z_2)=z_1^2-z_2\)</span>. Use the complex direction <span class="math" data-index="186" data-tex="\(\theta=(1,0)\)">\(\theta=(1,0)\)</span>, radius <span class="math" data-index="187" data-tex="\(1/2\)">\(1/2\)</span>, and <span class="math" data-index="188" data-tex="\(|z_1|,|z_2|\leq1/32\)">\(|z_1|,|z_2|\leq1/32\)</span> to prove a local bound for every entire <span class="math" data-index="189" data-tex="\(G\)">\(G\)</span> in terms of <span class="math" data-index="190" data-tex="\(FG\)">\(FG\)</span>.</p>
+<p><em>Solution.</em> On <span class="math" data-index="191" data-tex="\(|t|=1/2\)">\(|t|=1/2\)</span>,</p>
+<span class="math math-display" id="eq-T14" data-index="192" data-tex="\[
+ F(z+t\theta)=t^2+2tz_1+z_1^2-z_2,\qquad
+ |2tz_1+z_1^2-z_2|
+ \leq\frac1{32}+\frac1{1024}+\frac1{32}
+ =\frac{65}{1024}&lt;\frac18.
+ \tag{T14}
+\]">\[
+ F(z+t\theta)=t^2+2tz_1+z_1^2-z_2,\qquad
+ |2tz_1+z_1^2-z_2|
+ \leq\frac1{32}+\frac1{1024}+\frac1{32}
+ =\frac{65}{1024}&lt;\frac18.
+ \tag{T14}
+\]</span>
+<p>Since <span class="math" data-index="193" data-tex="\(|t^2|=1/4\)">\(|t^2|=1/4\)</span>, this gives
+<span class="math" data-index="194" data-tex="\(|F(z+t\theta)|\geq1/4-65/1024&gt;1/8\)">\(|F(z+t\theta)|\geq1/4-65/1024&gt;1/8\)</span>.
+Apply the Cauchy formula to <span class="math" data-index="195" data-tex="\(t\mapsto G(z+t\theta)\)">\(t\mapsto G(z+t\theta)\)</span>. Then</p>
+<span class="math math-display" id="eq-T15" data-index="196" data-tex="\[
+ |G(z)|\leq8\sup_{|t|=1/2}|F(z+t\theta)G(z+t\theta)|.
+ \tag{T15}
+\]">\[
+ |G(z)|\leq8\sup_{|t|=1/2}|F(z+t\theta)G(z+t\theta)|.
+ \tag{T15}
+\]</span>
+<p>The circle points over the closed polydisk form a compact set, giving uniform local control. At the center <span class="math" data-index="197" data-tex="\(F(t,0)=t^2\)">\(F(t,0)=t^2\)</span> has a double zero; the argument avoids it by a nonzero circle and still controls <span class="math" data-index="198" data-tex="\(G\)">\(G\)</span> at the zero itself. No simple-zero assumption is present.</p>
+<h3 id="exercise-9-one-exponent-makes-every-decay-order-available-12-points">Exercise 9: one exponent makes every decay order available (12 points)</h3>
+<p>In dimension two suppose the quotient-space estimate has exponent <span class="math" data-index="199" data-tex="\(m=4\)">\(m=4\)</span>. Show how coordinate derivative orders <span class="math" data-index="200" data-tex="\(s=11\)">\(s=11\)</span> imply real decay of <span class="math" data-index="201" data-tex="\(V=F_v\)">\(V=F_v\)</span> at least of order seven. Explain why derivative-dependent exponents could fail to prove any decay.</p>
+<p><em>Solution.</em> Apply the estimate to <span class="math" data-index="202" data-tex="\((i\zeta_1)^{11}V\)">\((i\zeta_1)^{11}V\)</span> and <span class="math" data-index="203" data-tex="\((i\zeta_2)^{11}V\)">\((i\zeta_2)^{11}V\)</span>, and take the larger of their finite norm constants. For <span class="math" data-index="204" data-tex="\(|\xi|\geq1\)">\(|\xi|\geq1\)</span>, one coordinate has modulus at least <span class="math" data-index="205" data-tex="\(|\xi|/\sqrt2\)">\(|\xi|/\sqrt2\)</span>. Therefore</p>
+<span class="math math-display" id="eq-T16" data-index="206" data-tex="\[
+ |V(\xi)|\leq C\,2^{11/2}|\xi|^{-11}(1+|\xi|)^4
+ \leq C\,2^{11/2+4}|\xi|^{-7}
+ \leq C\,2^{11/2+11}(1+|\xi|)^{-7}.
+ \tag{T16}
+\]">\[
+ |V(\xi)|\leq C\,2^{11/2}|\xi|^{-11}(1+|\xi|)^4
+ \leq C\,2^{11/2+4}|\xi|^{-7}
+ \leq C\,2^{11/2+11}(1+|\xi|)^{-7}.
+ \tag{T16}
+\]</span>
+<p>Increase the constant to include the bounded frequency ball. Arbitrarily large <span class="math" data-index="207" data-tex="\(s\)">\(s\)</span> give every inverse polynomial order because the original exponent four does not change.
+If instead the estimate for derivative order <span class="math" data-index="208" data-tex="\(s\)">\(s\)</span> only had exponent <span class="math" data-index="209" data-tex="\(m_s=s+100\)">\(m_s=s+100\)</span>, dividing by <span class="math" data-index="210" data-tex="\(|\xi|^s\)">\(|\xi|^s\)</span> would leave growth of order one hundred, rather than decay. Separate polynomial bounds do not imply smoothness; Baire's theorem supplies the needed uniform exponent.</p>
+<h3 id="exercise-10-a-finite-regularity-perturbation-threshold-12-points">Exercise 10: a finite regularity perturbation threshold (12 points)</h3>
+<p>Assume the original real-window supremum is at least <span class="math" data-index="211" data-tex="\(10^{-2}(1+|c|)^{-3}\)">\(10^{-2}(1+|c|)^{-3}\)</span>, with radius <span class="math" data-index="212" data-tex="\(\log(2+|c|)\)">\(\log(2+|c|)\)</span>. Let a compact <span class="math" data-index="213" data-tex="\(C^4\)">\(C^4\)</span> perturbation obey <span class="math" data-index="214" data-tex="\(|F_v(\xi)|\leq C_v(1+|\xi|)^{-4}\)">\(|F_v(\xi)|\leq C_v(1+|\xi|)^{-4}\)</span>. Give a sufficient tail threshold and a new lower bound, then explain how to include bounded centers.</p>
+<p><em>Solution.</em> First take <span class="math" data-index="215" data-tex="\(|c|=q\)">\(|c|=q\)</span> large enough that <span class="math" data-index="216" data-tex="\(\log(2+q)\leq q/2\)">\(\log(2+q)\leq q/2\)</span>. In the window, <span class="math" data-index="217" data-tex="\(1+|c+h|\geq(1+q)/2\)">\(1+|c+h|\geq(1+q)/2\)</span>, so</p>
+<span class="math math-display" id="eq-T17" data-index="218" data-tex="\[
+ |F_v(c+h)|\leq16C_v(1+q)^{-4}.
+ \tag{T17}
+\]">\[
+ |F_v(c+h)|\leq16C_v(1+q)^{-4}.
+ \tag{T17}
+\]</span>
+<p>If <span class="math" data-index="219" data-tex="\(1+q&gt;6400C_v\)">\(1+q&gt;6400C_v\)</span>, this is less than <span class="math" data-index="220" data-tex="\((10^{-2}/4)(1+q)^{-3}\)">\((10^{-2}/4)(1+q)^{-3}\)</span>. Choose a real point where the original modulus exceeds <span class="math" data-index="221" data-tex="\((3\cdot10^{-2}/4)(1+q)^{-3}\)">\((3\cdot10^{-2}/4)(1+q)^{-3}\)</span>; such a point exists by the supremum lower bound. The perturbed modulus there exceeds
+<span class="math" data-index="222" data-tex="\((10^{-2}/2)(1+q)^{-3}\)">\((10^{-2}/2)(1+q)^{-3}\)</span>.
+Thus the new transform is nonzero and has the stated polynomial lower bound on the tail.
+Its window supremum is positive and continuous on bounded center sets, by Exercise 3. Decrease the positive coefficient to bound those sets too, then absorb it into the exponent by Lemma 2.2. The new distribution is invertible. The regularity order four is fixed by the original exponent three; only the frequency threshold depends on the perturbation's norm or support. A smooth perturbation is in every finite <span class="math" data-index="223" data-tex="\(C^r\)">\(C^r\)</span> class, giving the stated smooth invariance.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. The Fourier normalization differs from (T1).</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. The full slow-decrease and entire-division proof is supplied in the complete proof above.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Polynomial division preserves compact Fourier growth when the quotient is entire. For an arbitrary compact distribution's transform, that conclusion needs a lower-growth condition. We identify it through real logarithmic neighborhoods, complex averages and the absence of collapsed profiles. A complete Phragmén–Lindelöf argument and a Banach-space estimate connect these conditions to entire division.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em> and <em>245B, Notes 9</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The precise earlier proofs are <a href="AN02-L122.html#2-the-compact-support-growth-criterion">Compact Fourier division and multiplicity-sensitive annihilators</a>, Theorem CF2.1, for the compact-support growth criterion; <a href="AN02-L147.html#gd4-scalar-holomorphic-logarithms-are-proper-psh-and-locally-integrable">Entire logarithms and the approximation of plurisubharmonic functions</a>, for local integrability; <a href="AN02-L143.html#hc1-the-precise-alternative-and-compact-comparison">Local compactness and Hartogs bounds</a>, for PSH compactness; and <a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a>, Theorem 1.1 and Lemma 3.2, for the smoothing characterization and Baire's theorem. We prove the additional real-to-complex propagation, entire-quotient growth and complete weighted-space arguments below.</p>
+<h2 id="1-five-descriptions-of-slow-decrease">1. Five descriptions of slow decrease</h2>
+<p>Let <span class="math" data-index="224" data-tex="\(u\)">\(u\)</span> be a compact distribution on <span class="math" data-index="225" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="226" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and use</p>
+<span class="math math-display" id="eq-1.1" data-index="227" data-tex="\[
+ F(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]">\[
+ F(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]</span>
+<p>Logarithms at zeros equal <span class="math" data-index="228" data-tex="\(-\infty\)">\(-\infty\)</span>. A proper logarithmic profile is a canonical PSH local <span class="math" data-index="229" data-tex="\(L^1\)">\(L^1\)</span> limit. Collapse is convergence to <span class="math" data-index="230" data-tex="\(-\infty\)">\(-\infty\)</span> uniformly on every compact parameter set.</p>
+<p><strong>Theorem 1.1 (slow decrease and entire division).</strong> The following five conditions are equivalent:</p>
+<ol>
+<li>No escaping real frequency sequence has a collapsed profile.</li>
+<li>There is <span class="math" data-index="231" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> such that, for every <span class="math" data-index="232" data-tex="\(c\in\mathbb R^n\)">\(c\in\mathbb R^n\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-1.2" data-index="233" data-tex="\[
+   \sup_{\substack{\zeta\in\mathbb C^n\\
+          |\zeta-c|&lt;A\log(2+|c|)}}|F(\zeta)|
+                  &gt;(A+|c|)^{-A}.
+   \tag{1.2}
+   \]">\[
+   \sup_{\substack{\zeta\in\mathbb C^n\\
+          |\zeta-c|&lt;A\log(2+|c|)}}|F(\zeta)|
+                  &gt;(A+|c|)^{-A}.
+   \tag{1.2}
+   \]</span>
+<ol start="3">
+<li>For every <span class="math" data-index="234" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> there is <span class="math" data-index="235" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> such that, for every real <span class="math" data-index="236" data-tex="\(c\)">\(c\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-1.3" data-index="237" data-tex="\[
+   \sup_{\substack{h\in\mathbb R^n\\
+             |h|&lt;a\log(2+|c|)}}|F(c+h)|
+                  &gt;(A+|c|)^{-A}.
+   \tag{1.3}
+   \]">\[
+   \sup_{\substack{h\in\mathbb R^n\\
+             |h|&lt;a\log(2+|c|)}}|F(c+h)|
+                  &gt;(A+|c|)^{-A}.
+   \tag{1.3}
+   \]</span>
+<ol start="4">
+<li>For every <span class="math" data-index="238" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> there is <span class="math" data-index="239" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> such that, for every real <span class="math" data-index="240" data-tex="\(|c|&gt;2\)">\(|c|&gt;2\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-1.4" data-index="241" data-tex="\[
+   \int_{|z|&lt;a}\log|F(c+z\log|c|)|\,dV(z)
+                         &gt;-A\log|c|.
+   \tag{1.4}
+   \]">\[
+   \int_{|z|&lt;a}\log|F(c+z\log|c|)|\,dV(z)
+                         &gt;-A\log|c|.
+   \tag{1.4}
+   \]</span>
+<p>Volume is real <span class="math" data-index="242" data-tex="\(2n\)">\(2n\)</span>-dimensional volume, without normalization.
+5. Whenever <span class="math" data-index="243" data-tex="\(w\)">\(w\)</span> is a compact distribution and <span class="math" data-index="244" data-tex="\(G\)">\(G\)</span> is entire with
+<span class="math" data-index="245" data-tex="\(F_w=FG\)">\(F_w=FG\)</span>, the function <span class="math" data-index="246" data-tex="\(G\)">\(G\)</span> is the Fourier–Laplace transform of a compact distribution.</p>
+<p>For <span class="math" data-index="247" data-tex="\(F\not\equiv0\)">\(F\not\equiv0\)</span>, condition 5 says exactly that every entire extension of <span class="math" data-index="248" data-tex="\(F_w/F\)">\(F_w/F\)</span> is a compact-distribution transform. The factorization wording also handles the zero input: if <span class="math" data-index="249" data-tex="\(F=0\)">\(F=0\)</span>, choose <span class="math" data-index="250" data-tex="\(w=0\)">\(w=0\)</span> and <span class="math" data-index="251" data-tex="\(G(z)=e^{z_1^2}\)">\(G(z)=e^{z_1^2}\)</span>. This function has superpolynomial real growth and fails the compact-support growth criterion. Thus condition 5 is false, as are the other four conditions.</p>
+<p>The word <em>invertible</em> for <span class="math" data-index="252" data-tex="\(u\)">\(u\)</span>, and <em>slowly decreasing</em> for <span class="math" data-index="253" data-tex="\(F\)">\(F\)</span>, will mean these equivalent conditions. This terminology does not assert a compact convolution inverse or pointwise nonvanishing.</p>
+<p>The implications are organized by their mechanisms: Section 2 proves <span class="math" data-index="254" data-tex="\(1\Rightarrow4\Rightarrow3\Rightarrow2\Rightarrow1\)">\(1\Rightarrow4\Rightarrow3\Rightarrow2\Rightarrow1\)</span>; Sections 3–4 prove <span class="math" data-index="255" data-tex="\(4\Rightarrow5\)">\(4\Rightarrow5\)</span>; Section 5 proves <span class="math" data-index="256" data-tex="\(5\Rightarrow1\)">\(5\Rightarrow1\)</span>.</p>
+<h2 id="2-from-real-windows-to-complex-profiles">2. From real windows to complex profiles</h2>
+<p><strong>Lemma 2.1 (collapse propagates from a real ball).</strong> Let <span class="math" data-index="257" data-tex="\(f_j\)">\(f_j\)</span> be PSH functions on <span class="math" data-index="258" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, allowing the identically <span class="math" data-index="259" data-tex="\(-\infty\)">\(-\infty\)</span> function, locally uniformly bounded above. Suppose that for some <span class="math" data-index="260" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-index="261" data-tex="\(M_j\to\infty\)">\(M_j\to\infty\)</span>,</p>
+<span class="math math-display" id="eq-2.1" data-index="262" data-tex="\[
+ f_j(x)\leq-M_j\quad(x\in\mathbb R^n,\ |x|&lt;a).
+ \tag{2.1}
+\]">\[
+ f_j(x)\leq-M_j\quad(x\in\mathbb R^n,\ |x|&lt;a).
+ \tag{2.1}
+\]</span>
+<p>Then <span class="math" data-index="263" data-tex="\(f_j\to-\infty\)">\(f_j\to-\infty\)</span> uniformly on every compact subset of <span class="math" data-index="264" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>.</p>
+<p><em>Proof.</em> Fix <span class="math" data-index="265" data-tex="\(x\)">\(x\)</span> in the real ball and <span class="math" data-index="266" data-tex="\(y\in\mathbb R^n\)">\(y\in\mathbb R^n\)</span>. If <span class="math" data-index="267" data-tex="\(y=0\)">\(y=0\)</span> the value at <span class="math" data-index="268" data-tex="\(x\)">\(x\)</span> already tends to <span class="math" data-index="269" data-tex="\(-\infty\)">\(-\infty\)</span>. Otherwise the restrictions
+<span class="math" data-index="270" data-tex="\(g_j(w)=f_j(x+wy)\)">\(g_j(w)=f_j(x+wy)\)</span> are subharmonic on <span class="math" data-index="271" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, or identically <span class="math" data-index="272" data-tex="\(-\infty\)">\(-\infty\)</span>, and have uniform upper bounds on compact subsets. Choose <span class="math" data-index="273" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> so that <span class="math" data-index="274" data-tex="\(x+ty\)">\(x+ty\)</span> stays in the real ball for <span class="math" data-index="275" data-tex="\(-r\leq t\leq r\)">\(-r\leq t\leq r\)</span>. On the rectangle <span class="math" data-index="276" data-tex="\(-r&lt;t&lt;r,\ 0&lt;s&lt;r\)">\(-r&lt;t&lt;r,\ 0&lt;s&lt;r\)</span>, the harmonic function</p>
+<span class="math math-display" id="eq-2.2" data-index="277" data-tex="\[
+ \omega(t,s)=
+ \sin\!\left(\frac{\pi(t+r)}{2r}\right)
+ \frac{\sinh(\pi(r-s)/(2r))}{\sinh(\pi/2)}
+ \tag{2.2}
+\]">\[
+ \omega(t,s)=
+ \sin\!\left(\frac{\pi(t+r)}{2r}\right)
+ \frac{\sinh(\pi(r-s)/(2r))}{\sinh(\pi/2)}
+ \tag{2.2}
+\]</span>
+<p>is positive in the interior, vanishes on the top and vertical sides, and lies between zero and one on the bottom side. Let <span class="math" data-index="278" data-tex="\(C\geq0\)">\(C\geq0\)</span> be a uniform upper bound for the <span class="math" data-index="279" data-tex="\(g_j\)">\(g_j\)</span> on the closed rectangle. Subharmonic maximum comparison with
+<span class="math" data-index="280" data-tex="\(C-(M_j+C)\omega\)">\(C-(M_j+C)\omega\)</span> gives</p>
+<span class="math math-display" id="eq-2.3" data-index="281" data-tex="\[
+ g_j(t+is)\leq C-(M_j+C)\omega(t,s).
+ \tag{2.3}
+\]">\[
+ g_j(t+is)\leq C-(M_j+C)\omega(t,s).
+ \tag{2.3}
+\]</span>
+<p>On the bottom the comparison function is at least <span class="math" data-index="282" data-tex="\(-M_j\)">\(-M_j\)</span>, and on the other sides it is <span class="math" data-index="283" data-tex="\(C\)">\(C\)</span>. The boundary upper limits of <span class="math" data-index="284" data-tex="\(g_j\)">\(g_j\)</span> are bounded by these values because the functions are defined and upper semicontinuous in a neighborhood of the rectangle. Thus (2.3) follows from bounded-domain maximum comparison. It gives uniform collapse on each compact subset of the rectangle's interior.</p>
+<p>PSH compactness in one complex dimension now makes the entire line family collapse locally uniformly: a subsequence with a proper local <span class="math" data-index="285" data-tex="\(L^1\)">\(L^1\)</span> further limit would contradict the preceding uniform collapse on a nonempty open rectangle. Specifically, pairing there against a nonnegative smooth function of positive integral would tend to <span class="math" data-index="286" data-tex="\(-\infty\)">\(-\infty\)</span>, whereas proper <span class="math" data-index="287" data-tex="\(L^1\)">\(L^1\)</span> convergence gives a finite pairing. If uniform collapse failed on any compact set, the compactness alternative would provide just such a proper further subsequence. Hence <span class="math" data-index="288" data-tex="\(g_j(i)\to-\infty\)">\(g_j(i)\to-\infty\)</span>.</p>
+<p>We have proved <span class="math" data-index="289" data-tex="\(f_j(x+iy)\to-\infty\)">\(f_j(x+iy)\to-\infty\)</span> for all real <span class="math" data-index="290" data-tex="\(|x|&lt;a\)">\(|x|&lt;a\)</span> and all real <span class="math" data-index="291" data-tex="\(y\)">\(y\)</span>. This is an open subset of <span class="math" data-index="292" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. If the full family had a proper local <span class="math" data-index="293" data-tex="\(L^1\)">\(L^1\)</span> extracted limit <span class="math" data-index="294" data-tex="\(V\)">\(V\)</span>, take a small complex ball in this open set and a common upper bound <span class="math" data-index="295" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> there. Fatou applied to <span class="math" data-index="296" data-tex="\(C&#x27;-f_j\geq0\)">\(C&#x27;-f_j\geq0\)</span> would force its integrals to tend to infinity, contrary to the finite <span class="math" data-index="297" data-tex="\(L^1\)">\(L^1\)</span> limit. PSH compactness excludes every proper extraction and therefore gives uniform local collapse of the full family. <span class="math" data-index="298" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (absorbing lower-bound constants).</strong> Suppose a window supremum satisfies</p>
+<span class="math math-display" id="eq-2.4" data-index="299" data-tex="\[
+ S(c)\geq b(1+|c|)^{-M},\quad b&gt;0,\ M\geq0.
+ \tag{2.4}
+\]">\[
+ S(c)\geq b(1+|c|)^{-M},\quad b&gt;0,\ M\geq0.
+ \tag{2.4}
+\]</span>
+<p>It then satisfies <span class="math" data-index="300" data-tex="\(S(c)&gt;(A+|c|)^{-A}\)">\(S(c)&gt;(A+|c|)^{-A}\)</span> for a sufficiently large <span class="math" data-index="301" data-tex="\(A\)">\(A\)</span>.</p>
+<p><em>Proof.</em> Choose <span class="math" data-index="302" data-tex="\(A\geq\max\{1,M\}\)">\(A\geq\max\{1,M\}\)</span> with <span class="math" data-index="303" data-tex="\(A^{-(A-M)}&lt;b\)">\(A^{-(A-M)}&lt;b\)</span>. Then
+<span class="math" data-index="304" data-tex="\((A+q)^A=(A+q)^M(A+q)^{A-M}\geq(1+q)^M A^{A-M}\)">\((A+q)^A=(A+q)^M(A+q)^{A-M}\geq(1+q)^M A^{A-M}\)</span>.
+Its reciprocal proves the strict comparison for every <span class="math" data-index="305" data-tex="\(q\geq0\)">\(q\geq0\)</span>. A lower bound <span class="math" data-index="306" data-tex="\((B+q)^{-B}\)">\((B+q)^{-B}\)</span>, with arbitrary <span class="math" data-index="307" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, gives (2.4) with <span class="math" data-index="308" data-tex="\(M=\lceil B\rceil\)">\(M=\lceil B\rceil\)</span> and <span class="math" data-index="309" data-tex="\(b=\max\{1,B\}^{-B}\)">\(b=\max\{1,B\}^{-B}\)</span>. <span class="math" data-index="310" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof that condition 1 implies condition 4.</em> The case <span class="math" data-index="311" data-tex="\(F=0\)">\(F=0\)</span> cannot satisfy condition 1, so <span class="math" data-index="312" data-tex="\(F\)">\(F\)</span> is nonzero. Its logarithm is locally integrable by the precise preceding holomorphic-logarithm lemma.
+Fix <span class="math" data-index="313" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. If (1.4) had no constant <span class="math" data-index="314" data-tex="\(A\)">\(A\)</span>, the integrals
+<span class="math" data-index="315" data-tex="\(\int_{|z|&lt;a}L_u(z,c)\,dV(z)\)">\(\int_{|z|&lt;a}L_u(z,c)\,dV(z)\)</span> would be unbounded below.
+They have a finite lower bound on every bounded range <span class="math" data-index="316" data-tex="\(2&lt;|c|\leq R\)">\(2&lt;|c|\leq R\)</span>. Indeed the affine images <span class="math" data-index="317" data-tex="\(c+z\log|c|\)">\(c+z\log|c|\)</span> lie in one compact region, and the change-of-variables factor <span class="math" data-index="318" data-tex="\((\log|c|)^{-2n}\)">\((\log|c|)^{-2n}\)</span> is at most <span class="math" data-index="319" data-tex="\((\log2)^{-2n}\)">\((\log2)^{-2n}\)</span>. The integral of the negative part of <span class="math" data-index="320" data-tex="\(\log|F|\)">\(\log|F|\)</span> on that region is finite, giving a uniform lower bound for the unnormalized integral. Division by <span class="math" data-index="321" data-tex="\(\log|c|\geq\log2\)">\(\log|c|\geq\log2\)</span> retains such a bound.</p>
+<p>There would consequently be an escaping sequence <span class="math" data-index="322" data-tex="\(c_j\)">\(c_j\)</span> with these normalized integrals tending to <span class="math" data-index="323" data-tex="\(-\infty\)">\(-\infty\)</span>. The family <span class="math" data-index="324" data-tex="\(L_u(\cdot,c)\)">\(L_u(\cdot,c)\)</span> is locally uniformly bounded above by the ordinary compact Fourier growth estimate. PSH compactness gives a proper local <span class="math" data-index="325" data-tex="\(L^1\)">\(L^1\)</span> extraction or a collapsed extraction. Condition 1 excludes collapse, and proper <span class="math" data-index="326" data-tex="\(L^1\)">\(L^1\)</span> convergence makes the integrals over the fixed ball converge to a finite value. This is a contradiction. Choose <span class="math" data-index="327" data-tex="\(A\)">\(A\)</span> larger than the absolute lower bound to obtain the strict inequality (1.4).</p>
+<p><em>Proof that condition 4 implies condition 3.</em> If (1.3) failed for a particular <span class="math" data-index="328" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, for each integer <span class="math" data-index="329" data-tex="\(j\geq2\)">\(j\geq2\)</span> we could choose <span class="math" data-index="330" data-tex="\(c_j\)">\(c_j\)</span> with</p>
+<span class="math math-display" id="eq-2.5" data-index="331" data-tex="\[
+ \sup_{|h|&lt;a\log(2+|c_j|)}|F(c_j+h)|
+                         \leq(j+|c_j|)^{-j}.
+ \tag{2.5}
+\]">\[
+ \sup_{|h|&lt;a\log(2+|c_j|)}|F(c_j+h)|
+                         \leq(j+|c_j|)^{-j}.
+ \tag{2.5}
+\]</span>
+<p>These centers escape. To see this, the window supremum is positive and continuous in <span class="math" data-index="332" data-tex="\(c\)">\(c\)</span>: it is the maximum over the closed real unit ball after substituting <span class="math" data-index="333" data-tex="\(h=a\log(2+|c|)t\)">\(h=a\log(2+|c|)t\)</span>, and the supremum over its open interior has the same value by continuity. It is positive because a nonzero entire function cannot vanish on an open real ball; applying the one-variable identity principle successively in each coordinate proves this assertion. Its minimum on any compact set of centers is therefore positive. The right side of (2.5) is at most <span class="math" data-index="334" data-tex="\(j^{-j}\)">\(j^{-j}\)</span>, which tends to zero, excluding bounded center subsequences.</p>
+<p>Write <span class="math" data-index="335" data-tex="\(q_j=|c_j|&gt;2\)">\(q_j=|c_j|&gt;2\)</span> on a tail. For every real <span class="math" data-index="336" data-tex="\(|x|&lt;a\)">\(|x|&lt;a\)</span>, the displacement <span class="math" data-index="337" data-tex="\(h=x\log q_j\)">\(h=x\log q_j\)</span> is allowed in (2.5). Hence</p>
+<span class="math math-display" id="eq-2.6" data-index="338" data-tex="\[
+ L_u(x,c_j)\leq
+    -j\frac{\log(j+q_j)}{\log q_j}\leq-j.
+ \tag{2.6}
+\]">\[
+ L_u(x,c_j)\leq
+    -j\frac{\log(j+q_j)}{\log q_j}\leq-j.
+ \tag{2.6}
+\]</span>
+<p>Lemma 2.1 makes <span class="math" data-index="339" data-tex="\(L_u(\cdot,c_j)\)">\(L_u(\cdot,c_j)\)</span> collapse uniformly locally. Its integral over any fixed parameter ball then tends to <span class="math" data-index="340" data-tex="\(-\infty\)">\(-\infty\)</span>, contradicting the finite normalized lower bound (1.4). Thus condition 3 holds.</p>
+<p><em>Proof that condition 3 implies condition 2.</em> Use condition 3 with <span class="math" data-index="341" data-tex="\(a=1\)">\(a=1\)</span>. Its real window is contained in any complex window with coefficient at least one. Lemma 2.2 converts its lower bound to the form (1.2), choosing <span class="math" data-index="342" data-tex="\(A\)">\(A\)</span> also at least one.</p>
+<p><em>Proof that condition 2 implies condition 1.</em> If <span class="math" data-index="343" data-tex="\(L_u(\cdot,c_j)\)">\(L_u(\cdot,c_j)\)</span> collapsed along escaping centers, the windows in (1.2) would correspond to parameter balls of radii
+<span class="math" data-index="344" data-tex="\(A\log(2+|c_j|)/\log|c_j|\leq2A\)">\(A\log(2+|c_j|)/\log|c_j|\leq2A\)</span> on a tail. Uniform collapse on this fixed ball would contradict</p>
+<span class="math math-display" id="eq-2.7" data-index="345" data-tex="\[
+ \sup_{|z|&lt;2A}L_u(z,c_j)&gt;
+       -A\frac{\log(A+|c_j|)}{\log|c_j|},
+ \tag{2.7}
+\]">\[
+ \sup_{|z|&lt;2A}L_u(z,c_j)&gt;
+       -A\frac{\log(A+|c_j|)}{\log|c_j|},
+ \tag{2.7}
+\]</span>
+<p>whose right side tends to the finite number <span class="math" data-index="346" data-tex="\(-A\)">\(-A\)</span>. This completes the first four equivalences.</p>
+<h2 id="3-a-half-plane-bound-with-no-residual-polynomial-loss">3. A half-plane bound with no residual polynomial loss</h2>
+<p><strong>Lemma 3.1 (a Phragmén–Lindelöf comparison).</strong> Let <span class="math" data-index="347" data-tex="\(v\)">\(v\)</span> be subharmonic on an open set containing the closed upper half-plane, allowing the collapsed case, and suppose</p>
+<span class="math math-display" id="eq-3.1" data-index="348" data-tex="\[
+ v(x)\leq0\ (x\in\mathbb R),\qquad
+ v(is)\leq C\ (s\geq0),\qquad
+ v(z)\leq C+A|z|\ (\operatorname{Im}z\geq0).
+ \tag{3.1}
+\]">\[
+ v(x)\leq0\ (x\in\mathbb R),\qquad
+ v(is)\leq C\ (s\geq0),\qquad
+ v(z)\leq C+A|z|\ (\operatorname{Im}z\geq0).
+ \tag{3.1}
+\]</span>
+<p>Here <span class="math" data-index="349" data-tex="\(C\)">\(C\)</span> is finite and <span class="math" data-index="350" data-tex="\(A\geq0\)">\(A\geq0\)</span>. Then <span class="math" data-index="351" data-tex="\(v\leq0\)">\(v\leq0\)</span> on the whole upper half-plane.</p>
+<p><em>Proof.</em> The collapsed case is immediate. In the first quadrant write <span class="math" data-index="352" data-tex="\(z=re^{i\theta}\)">\(z=re^{i\theta}\)</span>, <span class="math" data-index="353" data-tex="\(0\leq\theta\leq\pi/2\)">\(0\leq\theta\leq\pi/2\)</span>, and choose the continuous branch</p>
+<span class="math math-display" id="eq-3.2" data-index="354" data-tex="\[
+ H_1(z)=\operatorname{Re}[(e^{-i\pi/4}z)^{3/2}]
+       =r^{3/2}\cos\!\left(\tfrac32(\theta-\pi/4)\right)
+       \geq\cos(3\pi/8)\,r^{3/2}.
+ \tag{3.2}
+\]">\[
+ H_1(z)=\operatorname{Re}[(e^{-i\pi/4}z)^{3/2}]
+       =r^{3/2}\cos\!\left(\tfrac32(\theta-\pi/4)\right)
+       \geq\cos(3\pi/8)\,r^{3/2}.
+ \tag{3.2}
+\]</span>
+<p>It is harmonic inside the quadrant and continuous at its vertex. On the two straight boundary sides, <span class="math" data-index="355" data-tex="\(v-\varepsilon H_1\leq C^+=\max\{C,0\}\)">\(v-\varepsilon H_1\leq C^+=\max\{C,0\}\)</span>. On a sufficiently large outer quarter-circle the same bound holds, because
+<span class="math" data-index="356" data-tex="\(C+Ar-\varepsilon\cos(3\pi/8)r^{3/2}\to-\infty\)">\(C+Ar-\varepsilon\cos(3\pi/8)r^{3/2}\to-\infty\)</span>.
+Bounded-domain maximum comparison gives <span class="math" data-index="357" data-tex="\(v-\varepsilon H_1\leq C^+\)">\(v-\varepsilon H_1\leq C^+\)</span> throughout that quarter-disk. For each fixed interior point let the disk radius become large, and then let <span class="math" data-index="358" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Thus <span class="math" data-index="359" data-tex="\(v\leq C^+\)">\(v\leq C^+\)</span> in the first quadrant. Reflection <span class="math" data-index="360" data-tex="\(z\mapsto-\overline z\)">\(z\mapsto-\overline z\)</span>, or the corresponding branch centered at angle <span class="math" data-index="361" data-tex="\(3\pi/4\)">\(3\pi/4\)</span>, gives the same bound in the second quadrant.</p>
+<p>Now <span class="math" data-index="362" data-tex="\(\log|z+i|\)">\(\log|z+i|\)</span> is harmonic in the upper half-plane and at least zero on its real boundary. The function
+<span class="math" data-index="363" data-tex="\(v(z)-\varepsilon\log|z+i|\)">\(v(z)-\varepsilon\log|z+i|\)</span> has boundary upper limit at most zero and tends to <span class="math" data-index="364" data-tex="\(-\infty\)">\(-\infty\)</span> on outer upper semicircles, since <span class="math" data-index="365" data-tex="\(v\leq C^+\)">\(v\leq C^+\)</span> there. Maximum comparison on large upper half-disks therefore makes it at most zero. Let <span class="math" data-index="366" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> to obtain <span class="math" data-index="367" data-tex="\(v\leq0\)">\(v\leq0\)</span>. The two different barriers first remove linear growth and then remove the remaining constant. <span class="math" data-index="368" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (exponential type and real polynomial growth imply compact Fourier growth).</strong> Suppose an entire <span class="math" data-index="369" data-tex="\(G\)">\(G\)</span> satisfies</p>
+<span class="math math-display" id="eq-3.3" data-index="370" data-tex="\[
+ |G(z)|\leq C_0e^{A|z|},\qquad
+ |G(\xi)|\leq C_1(1+|\xi|)^N\quad(\xi\in\mathbb R^n),
+ \tag{3.3}
+\]">\[
+ |G(z)|\leq C_0e^{A|z|},\qquad
+ |G(\xi)|\leq C_1(1+|\xi|)^N\quad(\xi\in\mathbb R^n),
+ \tag{3.3}
+\]</span>
+<p>where <span class="math" data-index="371" data-tex="\(A\geq0\)">\(A\geq0\)</span>, <span class="math" data-index="372" data-tex="\(N\)">\(N\)</span> is a nonnegative integer and <span class="math" data-index="373" data-tex="\(C_0,C_1&gt;0\)">\(C_0,C_1&gt;0\)</span>. Then</p>
+<span class="math math-display" id="eq-3.4" data-index="374" data-tex="\[
+ |G(\xi+i\eta)|\leq 2^N C_1
+       (1+|\xi+i\eta|)^N e^{A|\eta|}.
+ \tag{3.4}
+\]">\[
+ |G(\xi+i\eta)|\leq 2^N C_1
+       (1+|\xi+i\eta|)^N e^{A|\eta|}.
+ \tag{3.4}
+\]</span>
+<p>Consequently <span class="math" data-index="375" data-tex="\(G\)">\(G\)</span> is the transform of a distribution supported in the closed ball of radius <span class="math" data-index="376" data-tex="\(A\)">\(A\)</span>.</p>
+<p><em>Proof.</em> The conclusion is trivial if <span class="math" data-index="377" data-tex="\(G=0\)">\(G=0\)</span>. Fix real <span class="math" data-index="378" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, with <span class="math" data-index="379" data-tex="\(b=|\eta|&gt;0\)">\(b=|\eta|&gt;0\)</span>, and put <span class="math" data-index="380" data-tex="\(a=1+|\xi|\)">\(a=1+|\xi|\)</span>. The linear function <span class="math" data-index="381" data-tex="\(p(z)=a-ibz\)">\(p(z)=a-ibz\)</span> has its zero in the lower half-plane, so <span class="math" data-index="382" data-tex="\(\log|p|\)">\(\log|p|\)</span> is harmonic above the real axis. There <span class="math" data-index="383" data-tex="\(|p(z)|\geq a\geq1\)">\(|p(z)|\geq a\geq1\)</span>. Consider</p>
+<span class="math math-display" id="eq-3.5" data-index="384" data-tex="\[
+ v(z)=\log|G(\xi+z\eta)|-N\log|a-ibz|
+       -Ab\operatorname{Im}z-\log(2^{N/2}C_1).
+ \tag{3.5}
+\]">\[
+ v(z)=\log|G(\xi+z\eta)|-N\log|a-ibz|
+       -Ab\operatorname{Im}z-\log(2^{N/2}C_1).
+ \tag{3.5}
+\]</span>
+<p>This is subharmonic in a neighborhood of the closed upper half-plane, or identically <span class="math" data-index="385" data-tex="\(-\infty\)">\(-\infty\)</span>. For real <span class="math" data-index="386" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" id="eq-3.6" data-index="387" data-tex="\[
+ 1+|\xi+t\eta|\leq a+b|t|
+       \leq\sqrt2\,|a-ibt|,
+ \tag{3.6}
+\]">\[
+ 1+|\xi+t\eta|\leq a+b|t|
+       \leq\sqrt2\,|a-ibt|,
+ \tag{3.6}
+\]</span>
+<p>so the real-axis bound gives <span class="math" data-index="388" data-tex="\(v(t)\leq0\)">\(v(t)\leq0\)</span>. On <span class="math" data-index="389" data-tex="\(z=is\)">\(z=is\)</span>, the exponential bound gives
+<span class="math" data-index="390" data-tex="\(v(is)\leq \log C_0+A|\xi|-\log(2^{N/2}C_1)\)">\(v(is)\leq \log C_0+A|\xi|-\log(2^{N/2}C_1)\)</span>, since the term <span class="math" data-index="391" data-tex="\(Abs\)">\(Abs\)</span> cancels and <span class="math" data-index="392" data-tex="\(-N\log(a+bs)\leq0\)">\(-N\log(a+bs)\leq0\)</span>.
+For every upper-half-plane <span class="math" data-index="393" data-tex="\(z\)">\(z\)</span> it also gives
+<span class="math" data-index="394" data-tex="\(v(z)\leq C_\xi+Ab|z|\)">\(v(z)\leq C_\xi+Ab|z|\)</span>, with the same finite constant increased if necessary. The proof of Lemma 3.1 uses only a neighborhood of the closed upper half-plane, so applies here as well; equivalently, each bounded comparison domain used there lies in that neighborhood. Hence <span class="math" data-index="395" data-tex="\(v(i)\leq0\)">\(v(i)\leq0\)</span>.</p>
+<p>This yields
+<span class="math" data-index="396" data-tex="\(|G(\xi+i\eta)|\leq2^{N/2}C_1(a+b)^Ne^{Ab}\)">\(|G(\xi+i\eta)|\leq2^{N/2}C_1(a+b)^Ne^{Ab}\)</span>.
+Since <span class="math" data-index="397" data-tex="\(a+b=1+|\xi|+|\eta|\leq\sqrt2(1+|\xi+i\eta|)\)">\(a+b=1+|\xi|+|\eta|\leq\sqrt2(1+|\xi+i\eta|)\)</span>, we obtain (3.4). For <span class="math" data-index="398" data-tex="\(\eta=0\)">\(\eta=0\)</span> it follows directly from (3.3). The exact compact-support growth theorem CF2.1 in the preceding compact Fourier chapter, applied to the ball with support function <span class="math" data-index="399" data-tex="\(A|\eta|\)">\(A|\eta|\)</span>, supplies the distribution and its uniqueness. <span class="math" data-index="400" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-entire-quotients-first-exponential-then-polynomial">4. Entire quotients: first exponential, then polynomial</h2>
+<p><strong>Lemma 4.1 (Lindelöf's exponential-type division argument).</strong> Let <span class="math" data-index="401" data-tex="\(F\not\equiv0\)">\(F\not\equiv0\)</span> and <span class="math" data-index="402" data-tex="\(W\)">\(W\)</span> be entire functions satisfying exponential-type bounds <span class="math" data-index="403" data-tex="\(C e^{A|z|}\)">\(C e^{A|z|}\)</span>, possibly with different constants. If <span class="math" data-index="404" data-tex="\(W=FG\)">\(W=FG\)</span> with <span class="math" data-index="405" data-tex="\(G\)">\(G\)</span> entire, then <span class="math" data-index="406" data-tex="\(G\)">\(G\)</span> also has an exponential-type bound.</p>
+<p><em>Proof.</em> If <span class="math" data-index="407" data-tex="\(G=0\)">\(G=0\)</span>, there is nothing to show. Translate the complex origin to a point where <span class="math" data-index="408" data-tex="\(F\neq0\)">\(F\neq0\)</span>. The exponential-type bounds persist under this fixed translation. Write <span class="math" data-index="409" data-tex="\(f=\log|F|\)">\(f=\log|F|\)</span>, so <span class="math" data-index="410" data-tex="\(f\)">\(f\)</span> is proper PSH and locally integrable. Choose constants <span class="math" data-index="411" data-tex="\(A,B\)">\(A,B\)</span> with <span class="math" data-index="412" data-tex="\(f(z)\leq A|z|+B\)">\(f(z)\leq A|z|+B\)</span>. On the ball <span class="math" data-index="413" data-tex="\(B_R\)">\(B_R\)</span>, the submean inequality at its center gives
+<span class="math" data-index="414" data-tex="\(\operatorname{avg}_{B_R}f\geq f(0)\)">\(\operatorname{avg}_{B_R}f\geq f(0)\)</span>, whereas <span class="math" data-index="415" data-tex="\(f_+\leq AR+|B|\)">\(f_+\leq AR+|B|\)</span>. Since <span class="math" data-index="416" data-tex="\(|f|=2f_+-f\)">\(|f|=2f_+-f\)</span> almost everywhere,</p>
+<span class="math math-display" id="eq-4.1" data-index="417" data-tex="\[
+ \operatorname{avg}_{B_R}|f|\leq
+          2(AR+|B|)-f(0)=O(R+1).
+ \tag{4.1}
+\]">\[
+ \operatorname{avg}_{B_R}|f|\leq
+          2(AR+|B|)-f(0)=O(R+1).
+ \tag{4.1}
+\]</span>
+<p>For <span class="math" data-index="418" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>, the ball <span class="math" data-index="419" data-tex="\(B_R(z)\)">\(B_R(z)\)</span> lies in <span class="math" data-index="420" data-tex="\(B_{2R}(0)\)">\(B_{2R}(0)\)</span>. Its volume is <span class="math" data-index="421" data-tex="\(2^{-2n}\)">\(2^{-2n}\)</span> times that of the larger ball, so
+<span class="math" data-index="422" data-tex="\(\operatorname{avg}_{B_R(z)} f_-\leq2^{2n}\operatorname{avg}_{B_{2R}}|f|=O(R+1)\)">\(\operatorname{avg}_{B_R(z)} f_-\leq2^{2n}\operatorname{avg}_{B_{2R}}|f|=O(R+1)\)</span>.
+The logarithm of <span class="math" data-index="423" data-tex="\(W\)">\(W\)</span> is bounded above on this ball by <span class="math" data-index="424" data-tex="\(O(R+1)\)">\(O(R+1)\)</span>. Away from the zero sets, which have real volume zero by the preceding holomorphic-logarithm lemma,
+<span class="math" data-index="425" data-tex="\(\log|G|=\log|W|-\log|F|\)">\(\log|G|=\log|W|-\log|F|\)</span>.
+Apply the submean inequality to <span class="math" data-index="426" data-tex="\(\log|G|\)">\(\log|G|\)</span>, using its local integrability, to get</p>
+<span class="math math-display" id="eq-4.2" data-index="427" data-tex="\[
+ \log|G(z)|\leq
+   \operatorname{avg}_{B_R(z)}\log|W|
+   +\operatorname{avg}_{B_R(z)}f_-
+   =O(R+1).
+ \tag{4.2}
+\]">\[
+ \log|G(z)|\leq
+   \operatorname{avg}_{B_R(z)}\log|W|
+   +\operatorname{avg}_{B_R(z)}f_-
+   =O(R+1).
+ \tag{4.2}
+\]</span>
+<p>All constants are independent of <span class="math" data-index="428" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>, for <span class="math" data-index="429" data-tex="\(R\geq1\)">\(R\geq1\)</span>. Take <span class="math" data-index="430" data-tex="\(R=\max\{1,|z|\}\)">\(R=\max\{1,|z|\}\)</span>, exponentiate, and undo the fixed translation. This proves the exponential-type bound. <span class="math" data-index="431" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof that condition 4 implies condition 5.</em> Let <span class="math" data-index="432" data-tex="\(W=F_w=FG\)">\(W=F_w=FG\)</span>, with <span class="math" data-index="433" data-tex="\(w\)">\(w\)</span> compact. The case <span class="math" data-index="434" data-tex="\(G=0\)">\(G=0\)</span> has the zero inverse. Otherwise <span class="math" data-index="435" data-tex="\(F,W\)">\(F,W\)</span> are nonzero. Ordinary compact Fourier growth bounds both by exponential type, since any fixed polynomial factor is bounded by a constant times <span class="math" data-index="436" data-tex="\(e^{|z|}\)">\(e^{|z|}\)</span>. Lemma 4.1 gives (3.3)'s exponential bound for <span class="math" data-index="437" data-tex="\(G\)">\(G\)</span>.</p>
+<p>We next establish real polynomial growth. Fix any <span class="math" data-index="438" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, put <span class="math" data-index="439" data-tex="\(\ell=\log|c|\)">\(\ell=\log|c|\)</span>, <span class="math" data-index="440" data-tex="\(q=|c|&gt;2\)">\(q=|c|&gt;2\)</span>, and let <span class="math" data-index="441" data-tex="\(V_a=\operatorname{vol}(B_a)\)">\(V_a=\operatorname{vol}(B_a)\)</span>. Submean comparison and the product equality give</p>
+<span class="math math-display" id="eq-4.3" data-index="442" data-tex="\[
+ \log|G(c)|\leq\frac1{V_a}
+ \left[\int_{|z|&lt;a}\log|W(c+z\ell)|\,dV(z)
+       -\int_{|z|&lt;a}\log|F(c+z\ell)|\,dV(z)\right].
+ \tag{4.3}
+\]">\[
+ \log|G(c)|\leq\frac1{V_a}
+ \left[\int_{|z|&lt;a}\log|W(c+z\ell)|\,dV(z)
+       -\int_{|z|&lt;a}\log|F(c+z\ell)|\,dV(z)\right].
+ \tag{4.3}
+\]</span>
+<p>If <span class="math" data-index="443" data-tex="\(G(c)=0\)">\(G(c)=0\)</span>, this inequality holds with left side <span class="math" data-index="444" data-tex="\(-\infty\)">\(-\infty\)</span>. The identity under the integrals is valid almost everywhere and all the logarithms are locally integrable.
+Choose a compact support ball of radius <span class="math" data-index="445" data-tex="\(R\)">\(R\)</span> for <span class="math" data-index="446" data-tex="\(w\)">\(w\)</span>, and Fourier order <span class="math" data-index="447" data-tex="\(M\)">\(M\)</span>. On this parameter ball,</p>
+<span class="math math-display" id="eq-4.4" data-index="448" data-tex="\[
+ |W(c+z\ell)|\leq C(1+q+a\ell)^M e^{Ra\ell}
+                    \leq C_a q^{M+Ra}.
+ \tag{4.4}
+\]">\[
+ |W(c+z\ell)|\leq C(1+q+a\ell)^M e^{Ra\ell}
+                    \leq C_a q^{M+Ra}.
+ \tag{4.4}
+\]</span>
+<p>The last inequality uses <span class="math" data-index="449" data-tex="\(\ell\leq q\)">\(\ell\leq q\)</span> and <span class="math" data-index="450" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>. Condition 4 bounds the subtracted integral below by <span class="math" data-index="451" data-tex="\(-A_a\ell\)">\(-A_a\ell\)</span>. Thus
+<span class="math" data-index="452" data-tex="\(\log|G(c)|\leq\log C_a+(M+Ra+A_a/V_a)\log q\)">\(\log|G(c)|\leq\log C_a+(M+Ra+A_a/V_a)\log q\)</span>.
+Take an integer <span class="math" data-index="453" data-tex="\(N\)">\(N\)</span> at least the nonnegative part of that exponent, and include the bounded real region by increasing a constant. We obtain the real bound in (3.3). Lemma 3.2 upgrades it to (3.4), and Theorem CF2.1 supplies the compact inverse transform. This proves condition 5 for an arbitrary entire divisor <span class="math" data-index="454" data-tex="\(F\)">\(F\)</span>, including its zeros with their full analytic multiplicities.</p>
+<h2 id="5-why-the-division-property-excludes-a-collapsed-profile">5. Why the division property excludes a collapsed profile</h2>
+<p>We must obtain one polynomial exponent for a whole class of quotients. An exponent depending separately on every derivative would not suffice.</p>
+<p><strong>Lemma 5.1 (multiplication controls local entire quotients).</strong> Fix a nonzero entire <span class="math" data-index="455" data-tex="\(F\)">\(F\)</span>. For every compact <span class="math" data-index="456" data-tex="\(T\subset\mathbb C^n\)">\(T\subset\mathbb C^n\)</span>, there are another compact <span class="math" data-index="457" data-tex="\(S\)">\(S\)</span> and a finite constant <span class="math" data-index="458" data-tex="\(C_T\)">\(C_T\)</span> such that every entire <span class="math" data-index="459" data-tex="\(G\)">\(G\)</span> satisfies</p>
+<span class="math math-display" id="eq-5.1" data-index="460" data-tex="\[
+ \sup_T|G|\leq C_T\sup_S|FG|.
+ \tag{5.1}
+\]">\[
+ \sup_T|G|\leq C_T\sup_S|FG|.
+ \tag{5.1}
+\]</span>
+<p><em>Proof.</em> At any <span class="math" data-index="461" data-tex="\(z_0\)">\(z_0\)</span>, choose a complex direction <span class="math" data-index="462" data-tex="\(\theta\)">\(\theta\)</span> for which <span class="math" data-index="463" data-tex="\(t\mapsto F(z_0+t\theta)\)">\(t\mapsto F(z_0+t\theta)\)</span> is not identically zero. Such a direction exists: otherwise every point of <span class="math" data-index="464" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> would lie on a line from <span class="math" data-index="465" data-tex="\(z_0\)">\(z_0\)</span> on which <span class="math" data-index="466" data-tex="\(F\)">\(F\)</span> vanishes identically, making <span class="math" data-index="467" data-tex="\(F=0\)">\(F=0\)</span>. The one-variable zeros are isolated, so choose a positive radius <span class="math" data-index="468" data-tex="\(r\)">\(r\)</span> whose circle has no zeros. By compactness of that circle and continuity, for <span class="math" data-index="469" data-tex="\(z\)">\(z\)</span> in some neighborhood of <span class="math" data-index="470" data-tex="\(z_0\)">\(z_0\)</span>,</p>
+<span class="math math-display" id="eq-5.2" data-index="471" data-tex="\[
+ |F(z+t\theta)|\geq\delta&gt;0\quad(|t|=r).
+ \tag{5.2}
+\]">\[
+ |F(z+t\theta)|\geq\delta&gt;0\quad(|t|=r).
+ \tag{5.2}
+\]</span>
+<p>The Cauchy formula for <span class="math" data-index="472" data-tex="\(t\mapsto G(z+t\theta)\)">\(t\mapsto G(z+t\theta)\)</span> gives
+<span class="math" data-index="473" data-tex="\(|G(z)|\leq\delta^{-1}\sup_{|t|=r}|F(z+t\theta)G(z+t\theta)|\)">\(|G(z)|\leq\delta^{-1}\sup_{|t|=r}|F(z+t\theta)G(z+t\theta)|\)</span>.
+Shrink to a neighborhood with compact closure so the indicated points form a compact set. Finitely many such neighborhoods cover <span class="math" data-index="474" data-tex="\(T\)">\(T\)</span>. Their compact point sets form <span class="math" data-index="475" data-tex="\(S\)">\(S\)</span>, and the maximum of their reciprocal bounds gives <span class="math" data-index="476" data-tex="\(C_T\)">\(C_T\)</span>. This works at zeros of <span class="math" data-index="477" data-tex="\(F\)">\(F\)</span> as well as at nonzeros. <span class="math" data-index="478" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Assume condition 5, and <span class="math" data-index="479" data-tex="\(u\neq0\)">\(u\neq0\)</span>. Let <span class="math" data-index="480" data-tex="\(K\)">\(K\)</span> be the compact convex hull of <span class="math" data-index="481" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>, with support function <span class="math" data-index="482" data-tex="\(H_K\)">\(H_K\)</span>. Define</p>
+<span class="math math-display" id="eq-5.3" data-index="483" data-tex="\[
+ \mathcal B=\left\{G\text{ entire}:
+    \|G\|_{\mathcal B}
+    =\sup_{\zeta\in\mathbb C^n}
+       |F(\zeta)G(\zeta)|e^{-H_K(\operatorname{Im}\zeta)
+                                   -|\operatorname{Im}\zeta|}
+                   &lt;\infty\right\}.
+ \tag{5.3}
+\]">\[
+ \mathcal B=\left\{G\text{ entire}:
+    \|G\|_{\mathcal B}
+    =\sup_{\zeta\in\mathbb C^n}
+       |F(\zeta)G(\zeta)|e^{-H_K(\operatorname{Im}\zeta)
+                                   -|\operatorname{Im}\zeta|}
+                   &lt;\infty\right\}.
+ \tag{5.3}
+\]</span>
+<p><strong>Lemma 5.2 (the weighted quotient space is Banach).</strong> The expression (5.3) is a norm, <span class="math" data-index="484" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is complete, and point evaluation of <span class="math" data-index="485" data-tex="\(G\)">\(G\)</span> is continuous.</p>
+<p><em>Proof.</em> The norm properties follow from the supremum; if it is zero then <span class="math" data-index="486" data-tex="\(FG=0\)">\(FG=0\)</span> everywhere. Since <span class="math" data-index="487" data-tex="\(F\)">\(F\)</span> is nonzero on a nonempty open set, <span class="math" data-index="488" data-tex="\(G=0\)">\(G=0\)</span> there and hence everywhere by the identity principle. Lemma 5.1 and the finite upper bound of <span class="math" data-index="489" data-tex="\(e^{H_K(\operatorname{Im}\zeta)+|\operatorname{Im}\zeta|}\)">\(e^{H_K(\operatorname{Im}\zeta)+|\operatorname{Im}\zeta|}\)</span> on its compact <span class="math" data-index="490" data-tex="\(S\)">\(S\)</span> bound every compact supremum of <span class="math" data-index="491" data-tex="\(G\)">\(G\)</span> by a constant times <span class="math" data-index="492" data-tex="\(\|G\|_{\mathcal B}\)">\(\|G\|_{\mathcal B}\)</span>. This proves continuity of evaluations and local uniform control.</p>
+<p>A Cauchy sequence <span class="math" data-index="493" data-tex="\(G_j\)">\(G_j\)</span> in this norm is therefore Cauchy uniformly on every compact set. Its limit <span class="math" data-index="494" data-tex="\(G\)">\(G\)</span> is entire: the coordinate Cauchy integrals on small polydisks pass to the uniform limit and give the holomorphic derivatives there. For each fixed <span class="math" data-index="495" data-tex="\(\zeta\)">\(\zeta\)</span>, the weighted product difference converges to that of <span class="math" data-index="496" data-tex="\(G_j-G\)">\(G_j-G\)</span>. Taking the pointwise limit in a common norm-Cauchy inequality, then its supremum, proves <span class="math" data-index="497" data-tex="\(\|G_j-G\|_{\mathcal B}\to0\)">\(\|G_j-G\|_{\mathcal B}\to0\)</span>. Comparison with one <span class="math" data-index="498" data-tex="\(G_j\)">\(G_j\)</span> shows that <span class="math" data-index="499" data-tex="\(G\in\mathcal B\)">\(G\in\mathcal B\)</span>. Hence the space is complete. <span class="math" data-index="500" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every <span class="math" data-index="501" data-tex="\(G\in\mathcal B\)">\(G\in\mathcal B\)</span> has a product <span class="math" data-index="502" data-tex="\(FG\)">\(FG\)</span> satisfying the compact-support growth bound for <span class="math" data-index="503" data-tex="\(K+\overline B_1\)">\(K+\overline B_1\)</span>, with polynomial order zero. Theorem CF2.1 gives a compact distribution <span class="math" data-index="504" data-tex="\(w_G\)">\(w_G\)</span> with transform <span class="math" data-index="505" data-tex="\(FG\)">\(FG\)</span>. Condition 5 then makes <span class="math" data-index="506" data-tex="\(G\)">\(G\)</span> a compact-distribution transform, so its real growth is bounded by some polynomial.</p>
+<p>For positive integers <span class="math" data-index="507" data-tex="\(m\)">\(m\)</span>, set</p>
+<span class="math math-display" id="eq-5.4" data-index="508" data-tex="\[
+ D_m=\{G\in\mathcal B:
+        |G(\xi)|\leq m(1+|\xi|)^m
+                          \text{ for every real }\xi\}.
+ \tag{5.4}
+\]">\[
+ D_m=\{G\in\mathcal B:
+        |G(\xi)|\leq m(1+|\xi|)^m
+                          \text{ for every real }\xi\}.
+ \tag{5.4}
+\]</span>
+<p>These sets are closed by evaluation continuity and cover <span class="math" data-index="509" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, since each real polynomial bound can be dominated by the displayed one for sufficiently large <span class="math" data-index="510" data-tex="\(m\)">\(m\)</span>. Baire's theorem, proved in the preceding frequency-selective chapter, gives <span class="math" data-index="511" data-tex="\(G_0,\varepsilon&gt;0,m\)">\(G_0,\varepsilon&gt;0,m\)</span> with <span class="math" data-index="512" data-tex="\(G_0+\{G:\|G\|_{\mathcal B}&lt;\varepsilon\}\subset D_m\)">\(G_0+\{G:\|G\|_{\mathcal B}&lt;\varepsilon\}\subset D_m\)</span>. In particular <span class="math" data-index="513" data-tex="\(G_0\in D_m\)">\(G_0\in D_m\)</span>. Subtracting the values at <span class="math" data-index="514" data-tex="\(G_0+G\)">\(G_0+G\)</span> and <span class="math" data-index="515" data-tex="\(G_0\)">\(G_0\)</span> bounds <span class="math" data-index="516" data-tex="\(|G(\xi)|\)">\(|G(\xi)|\)</span> by <span class="math" data-index="517" data-tex="\(2m(1+|\xi|)^m\)">\(2m(1+|\xi|)^m\)</span> when <span class="math" data-index="518" data-tex="\(\|G\|_{\mathcal B}&lt;\varepsilon\)">\(\|G\|_{\mathcal B}&lt;\varepsilon\)</span>. For a nonzero arbitrary <span class="math" data-index="519" data-tex="\(G\)">\(G\)</span>, apply this to <span class="math" data-index="520" data-tex="\(\varepsilon G/(2\|G\|_{\mathcal B})\)">\(\varepsilon G/(2\|G\|_{\mathcal B})\)</span>. The zero function already satisfies the result. We obtain one fixed exponent, with <span class="math" data-index="521" data-tex="\(C=4m/\varepsilon\)">\(C=4m/\varepsilon\)</span>:</p>
+<span class="math math-display" id="eq-5.5" data-index="522" data-tex="\[
+ |G(\xi)|\leq C\|G\|_{\mathcal B}(1+|\xi|)^m
+ \quad(G\in\mathcal B,\ \xi\in\mathbb R^n).
+ \tag{5.5}
+\]">\[
+ |G(\xi)|\leq C\|G\|_{\mathcal B}(1+|\xi|)^m
+ \quad(G\in\mathcal B,\ \xi\in\mathbb R^n).
+ \tag{5.5}
+\]</span>
+<p><em>Proof that condition 5 implies condition 1.</em> If condition 1 failed, Theorem 1.1 of <a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a> would provide a compact continuous <span class="math" data-index="523" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>, supported in <span class="math" data-index="524" data-tex="\(\overline B_1(0)\)">\(\overline B_1(0)\)</span>, with <span class="math" data-index="525" data-tex="\(u*v\)">\(u*v\)</span> smooth. Put <span class="math" data-index="526" data-tex="\(V=F_v\)">\(V=F_v\)</span>.
+For every multi-index <span class="math" data-index="527" data-tex="\(\alpha\)">\(\alpha\)</span>, <span class="math" data-index="528" data-tex="\(G_\alpha(\zeta)=(i\zeta)^\alpha V(\zeta)\)">\(G_\alpha(\zeta)=(i\zeta)^\alpha V(\zeta)\)</span> belongs to <span class="math" data-index="529" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>: its product with <span class="math" data-index="530" data-tex="\(F\)">\(F\)</span> is the transform of the smooth compact function <span class="math" data-index="531" data-tex="\(D^\alpha(u*v)\)">\(D^\alpha(u*v)\)</span>, whose support lies in <span class="math" data-index="532" data-tex="\(K+\overline B_1\)">\(K+\overline B_1\)</span>. Its direct integral bound is</p>
+<span class="math math-display" id="eq-5.6" data-index="533" data-tex="\[
+ |F(\zeta)G_\alpha(\zeta)|
+ \leq\|D^\alpha(u*v)\|_1
+                   e^{H_K(\operatorname{Im}\zeta)+|\operatorname{Im}\zeta|}.
+ \tag{5.6}
+\]">\[
+ |F(\zeta)G_\alpha(\zeta)|
+ \leq\|D^\alpha(u*v)\|_1
+                   e^{H_K(\operatorname{Im}\zeta)+|\operatorname{Im}\zeta|}.
+ \tag{5.6}
+\]</span>
+<p>Thus (5.5) applies with the same <span class="math" data-index="534" data-tex="\(m\)">\(m\)</span> to every derivative, although its norm constant may depend on <span class="math" data-index="535" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>Given an integer <span class="math" data-index="536" data-tex="\(s&gt;m\)">\(s&gt;m\)</span>, apply it to <span class="math" data-index="537" data-tex="\(\alpha=se_t\)">\(\alpha=se_t\)</span>, for every coordinate <span class="math" data-index="538" data-tex="\(t\)">\(t\)</span>. At a real <span class="math" data-index="539" data-tex="\(\xi\)">\(\xi\)</span> with <span class="math" data-index="540" data-tex="\(|\xi|\geq1\)">\(|\xi|\geq1\)</span>, choose <span class="math" data-index="541" data-tex="\(t\)">\(t\)</span> with <span class="math" data-index="542" data-tex="\(|\xi_t|\geq|\xi|/\sqrt n\)">\(|\xi_t|\geq|\xi|/\sqrt n\)</span>. Taking the maximum of the finitely many norm constants gives</p>
+<span class="math math-display" id="eq-5.7" data-index="543" data-tex="\[
+ |V(\xi)|\leq C_s n^{s/2}|\xi|^{-s}(1+|\xi|)^m.
+ \tag{5.7}
+\]">\[
+ |V(\xi)|\leq C_s n^{s/2}|\xi|^{-s}(1+|\xi|)^m.
+ \tag{5.7}
+\]</span>
+<p>Choose <span class="math" data-index="544" data-tex="\(s\)">\(s\)</span> arbitrarily large. This is rapid decay of <span class="math" data-index="545" data-tex="\(V\)">\(V\)</span> on all real frequencies. Its inverse Fourier integral and all differentiated inverse integrals are absolutely convergent, yielding a smooth representative of <span class="math" data-index="546" data-tex="\(v\)">\(v\)</span>; Fourier injectivity identifies that representative with the given distribution, as proved in the preceding compact Fourier chapter. Since <span class="math" data-index="547" data-tex="\(v\)">\(v\)</span> is continuous, its representative agrees pointwise with it. This contradicts <span class="math" data-index="548" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>. Condition 1 follows, completing all five equivalences. <span class="math" data-index="549" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-terminology-and-finite-regularity-stability">6. The terminology and finite-regularity stability</h2>
+<p><strong>Definition 6.1.</strong> A compact distribution satisfying Theorem 1.1 is called invertible; its transform is called slowly decreasing.</p>
+<p>Zeros of the transform are allowed. For example, every nonzero polynomial symbol, multiplied by a point-mass exponential if desired, has the entire-division property by the preceding polynomial division theorem. Thus its distribution is invertible even when the polynomial has zeros. The term records the convolution regularity and division criteria, not a claim that its transform has a pointwise reciprocal which is entire.</p>
+<p><strong>Corollary 6.2 (a finite amount of smoothness suffices for perturbations).</strong> If <span class="math" data-index="550" data-tex="\(u\)">\(u\)</span> is invertible, there is a nonnegative integer <span class="math" data-index="551" data-tex="\(r\)">\(r\)</span> such that <span class="math" data-index="552" data-tex="\(u+v\)">\(u+v\)</span> is invertible for every compactly supported <span class="math" data-index="553" data-tex="\(v\in C^r(\mathbb R^n)\)">\(v\in C^r(\mathbb R^n)\)</span>. The size and support of <span class="math" data-index="554" data-tex="\(v\)">\(v\)</span> may vary. In particular invertibility is unchanged by compact smooth perturbations.</p>
+<p><em>Proof.</em> Use condition 3 with <span class="math" data-index="555" data-tex="\(a=1\)">\(a=1\)</span>, and Lemma 2.2's preliminary conversion to choose <span class="math" data-index="556" data-tex="\(b&gt;0,M\geq0\)">\(b&gt;0,M\geq0\)</span> with</p>
+<span class="math math-display" id="eq-6.1" data-index="557" data-tex="\[
+ \sup_{|h|&lt;\log(2+|c|)}|F_u(c+h)|
+                         \geq b(1+|c|)^{-M}.
+ \tag{6.1}
+\]">\[
+ \sup_{|h|&lt;\log(2+|c|)}|F_u(c+h)|
+                         \geq b(1+|c|)^{-M}.
+ \tag{6.1}
+\]</span>
+<p>Choose an integer <span class="math" data-index="558" data-tex="\(r&gt;M\)">\(r&gt;M\)</span>. For any compact <span class="math" data-index="559" data-tex="\(C^r\)">\(C^r\)</span> function, integration by parts <span class="math" data-index="560" data-tex="\(r\)">\(r\)</span> times in a coordinate with large frequency gives
+<span class="math" data-index="561" data-tex="\(|F_v(\xi)|\leq C_v(1+|\xi|)^{-r}\)">\(|F_v(\xi)|\leq C_v(1+|\xi|)^{-r}\)</span> on real frequencies; bounded frequencies are included by increasing <span class="math" data-index="562" data-tex="\(C_v\)">\(C_v\)</span>.
+When <span class="math" data-index="563" data-tex="\(|c|\)">\(|c|\)</span> is large and <span class="math" data-index="564" data-tex="\(|h|&lt;\log(2+|c|)\)">\(|h|&lt;\log(2+|c|)\)</span>, <span class="math" data-index="565" data-tex="\(|c+h|\geq|c|/2\)">\(|c+h|\geq|c|/2\)</span>. Hence the perturbing transform is at most
+<span class="math" data-index="566" data-tex="\(C&#x27;_v(1+|c|)^{-r}\)">\(C&#x27;_v(1+|c|)^{-r}\)</span>, which is less than <span class="math" data-index="567" data-tex="\((b/4)(1+|c|)^{-M}\)">\((b/4)(1+|c|)^{-M}\)</span> beyond a threshold depending on <span class="math" data-index="568" data-tex="\(v\)">\(v\)</span>.
+Choose a point in the window where the original modulus exceeds <span class="math" data-index="569" data-tex="\((3b/4)(1+|c|)^{-M}\)">\((3b/4)(1+|c|)^{-M}\)</span>. The reverse triangle inequality gives a new window supremum at least <span class="math" data-index="570" data-tex="\((b/2)(1+|c|)^{-M}\)">\((b/2)(1+|c|)^{-M}\)</span>.</p>
+<p>These tail lower bounds show that <span class="math" data-index="571" data-tex="\(F_{u+v}\)">\(F_{u+v}\)</span> is not identically zero. Its real-window suprema are continuous and positive on every bounded set of centers, as proved in Section 2. Decrease the constant <span class="math" data-index="572" data-tex="\(b/2\)">\(b/2\)</span> to extend a positive polynomial bound to all centers. That one real window sits in a complex window; Lemma 2.2 gives condition 2 for <span class="math" data-index="573" data-tex="\(u+v\)">\(u+v\)</span>. Thus <span class="math" data-index="574" data-tex="\(u+v\)">\(u+v\)</span> is invertible. If a compact smooth perturbation changed a noninvertible <span class="math" data-index="575" data-tex="\(u\)">\(u\)</span> to an invertible one, applying the same result to the invertible <span class="math" data-index="576" data-tex="\(u+v\)">\(u+v\)</span> and the smooth perturbation <span class="math" data-index="577" data-tex="\(-v\)">\(-v\)</span> would make <span class="math" data-index="578" data-tex="\(u\)">\(u\)</span> invertible too, a contradiction. <span class="math" data-index="579" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Background on entire transforms and support; its Fourier normalization differs from (1.1).</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009. Background on the boundedness argument.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983. Compact Fourier growth and subharmonic estimates.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. Slow decrease and entire division. The real-ball propagation, Phragmén–Lindelöf barriers, Lindelöf division argument and Banach-space proof are supplied above.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/slow-decrease-and-entire-fourier-division.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L163/slow-decrease-and-entire-division-formal.md" download>slow-decrease-and-entire-division-formal.md</a></li><li><a href="reproduce/L163/slow-decrease-and-entire-division-learner.md" download>slow-decrease-and-entire-division-learner.md</a></li><li><a href="reproduce/L163/make_figures204.py" download>make_figures204.py</a></li><li><span class="unlinked">check_numerics204.py</span></li><li><span class="unlinked">README-reproduce.md</span></li><li><a href="reproduce/L163/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L163/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L163/figures/geometry204.json" download>figures/geometry204.json</a></li><li><a href="reproduce/L163/figures/real-smallness-and-half-plane-barriers.png" download>figures/real-smallness-and-half-plane-barriers.png</a></li><li><a href="reproduce/L163/figures/real-smallness-and-half-plane-barriers.svg" download>figures/real-smallness-and-half-plane-barriers.svg</a></li><li><a href="reproduce/L163/figures/zeros-in-logarithmic-windows-and-division.png" download>figures/zeros-in-logarithmic-windows-and-division.png</a></li><li><a href="reproduce/L163/figures/zeros-in-logarithmic-windows-and-division.svg" download>figures/zeros-in-logarithmic-windows-and-division.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

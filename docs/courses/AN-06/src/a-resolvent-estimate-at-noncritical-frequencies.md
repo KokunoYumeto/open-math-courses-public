@@ -40,6 +40,8 @@ The endpoint lesson proves \(B\subset L^2\subset B^*\) and
  \tag{3}
 \]
 
+<a id="noncritical-coefficients"></a>
+
 Let \(P_0(D)\) be a real scalar constant-coefficient elliptic differential operator of order \(m\ge1\). Set
 
 \[
@@ -62,7 +64,11 @@ Assume \(V_L\) is symmetric on Schwartz functions, the total principal symbol is
  \tag{5}
 \]
 
-All coefficients are smooth; complex lower coefficients are allowed. The symmetric smooth part of a 1-admissible perturbation satisfies these conditions for a sufficiently small positive \(\delta\), as proved in the admissible-perturbation lesson.
+All coefficients are smooth; complex lower coefficients are allowed. For the symmetric smooth part of a 1-admissible perturbation, the [regularization theorem](admissible-differential-perturbations.md#admissible-regularization) gives the budget \(M_0=b\), \(M_q=1+bq\) for \(q\ge1\), where \(0<b<1\). Choosing \(\delta=b\) gives (5) at every derivative order. The [symmetric exterior splitting](admissible-differential-perturbations.md#admissible-exterior-ellipticity) preserves these bounds.
+
+<a id="noncritical-theorem"></a>
+
+The estimate and angular positive-commutator construction are Hörmander [H4, Proposition 30.2.4].
 
 **Theorem 1.1.** Let \(\chi\in C_c^\infty(\{\xi:\nabla P_0(\xi)\ne0\})\), possibly complex-valued. If \(u\in H^m\) solves
 
@@ -84,6 +90,8 @@ then
 
 The constant depends on the fixed operator and cutoff, and is uniform for all nonreal \(z\). In particular no bound on \(\operatorname{Re}z\) or small energy disc is assumed. The full differential order is permitted in \(V_L\). The forcing norm retains the same frequency cutoff as the solution.
 
+<a id="noncritical-calculus"></a>
+
 ## 2. The calculus and endpoint interfaces
 
 For \(0<\gamma\le1\), use
@@ -96,7 +104,7 @@ For \(0<\gamma\le1\), use
  \tag{8}
 \]
 
-The weighted-space lesson proves their metric hypotheses and the temperateness of every real product power of \(X,\Xi\). Write \(S(w,G_\gamma)\) for the coordinate bounds
+The [metric calculation in Weighted Sobolev spaces and rough elliptic estimates](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-metric) proves their metric hypotheses and the temperateness of every real product power of \(X,\Xi\). Write \(S(w,G_\gamma)\) for the coordinate bounds
 
 \[
  |\partial_x^\beta\partial_\xi^\alpha a|
@@ -118,7 +126,7 @@ All operators below are in left quantization. Theorem 4.1 and Section 5 of that 
 
 The adjoint symbol has leading term \(\overline a\) and a remainder of weight \(h_\gamma w\). This is formula (C19) of that proof, obtained from its exact finite change between right and left quantization. Each fixed target seminorm uses finitely many input seminorms. We will use only finite expansions, with their remainders.
 
-The weighted mapping theorem gives
+The [weighted symbol mapping theorem](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-symbol-mapping) gives
 
 \[
  \begin{gathered}
@@ -132,7 +140,9 @@ The weighted mapping theorem gives
 
 where \(\|u\|_{L^2_t}=\|X^tu\|_2\). It also gives uniform bounds on \(L^2_t\) and \(H^s\) for bounded families of weight-one symbols.
 
-We need one consequence for the endpoint norms. Suppose \(T\) has consistent bounds on \(L^2_{-1}\) and \(L^2_1\), with a common bound \(A\). The shell theorem in the mild-weight lesson gives
+<a id="noncritical-shell-transfer"></a>
+
+We need one consequence for the endpoint norms. Suppose \(T\) has consistent bounds on \(L^2_{-1}\) and \(L^2_1\), with a common bound \(A\). The [consistent weighted-to-shell bounds](mild-weights-and-frequency-localization.md#mild-weighted-transfer) give
 
 \[
  \|1_{A_k}T1_{A_j}\|_{2\to2}
@@ -159,6 +169,8 @@ Multiplication by \(R_k^{1/2}\), followed by summation, gives the \(B\) bound. D
 \]
 
 For the second extension, finite shell sums converge to a \(B^*\) input in \(L^2_{-1}\), since their squared tails are bounded by \(C\|u\|_{B^*}^2\sum_{j>J}2^{-j}\). Passage to each output shell preserves the bound and the consistent weighted operator. These maps therefore agree with the distributional action. Uniform weighted constants give uniform constants in (13).
+
+<a id="noncritical-angular"></a>
 
 ## 3. A monotone angular multiplier in every dimension
 
@@ -244,6 +256,8 @@ The half-line integral in (18) is positive wherever \(\psi(x)>0\); hence both st
 
 On the compact collar \(3/4\le|x|\le9/4\) and the unit sphere in \(y\), the continuous product \(\Psi\Psi'\) has a positive minimum \(\mu\). Homogeneity makes \(\Psi\Psi'/|y|\) have the same lower bound for every \(y\ne0\). Take a smooth radial cutoff \(\omega\), supported in the interior of that collar, with \(0\le\omega\le1\) and \(\omega=1\) on \(1\le|x|\le2\). Then \(\phi_0=c\omega\), with \(0<c^2\le\mu\), satisfies (20) everywhere, since its left side vanishes outside the collar. \(\square\)
 
+<a id="noncritical-algebraic"></a>
+
 ### An explicit alternative multiplier
 
 There is also a direct algebraic construction with all the properties needed in Sections 4–6. For \(e=y/|y|\), put
@@ -256,7 +270,7 @@ It lies between 1 and 3, is smooth for \(y\ne0\), and is homogeneous of degree z
  =|y|\frac{\langle x\rangle^2-(x\cdot e)^2}{\langle x\rangle^3}
  \ge |y|\langle x\rangle^{-3}>0.
 \]
-The all-real bracket derivative proof in the weighted-space lesson, applied to \(\langle x\rangle^{-1}\), and the product rule for \(x_j\langle x\rangle^{-1}\), give the position bounds in (19). Derivatives of \(e=y/|y|\) have the bound \(C_\beta|y|^{-|\beta|}\), by differentiation and homogeneity on the unit sphere. This proves all mixed bounds in (19) as well.
+The [all-real bracket derivative proof](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-automorphisms), applied to \(\langle x\rangle^{-1}\), and the product rule for \(x_j\langle x\rangle^{-1}\), give the position bounds in (19). Derivatives of \(e=y/|y|\) have the bound \(C_\beta|y|^{-|\beta|}\), by differentiation and homogeneity on the unit sphere. This proves all mixed bounds in (19) as well.
 
 Use the annular cutoff \(\omega\) from Lemma 3.1 and set
 \[
@@ -266,6 +280,8 @@ Use the annular cutoff \(\omega\) from Lemma 3.1 and set
 On its support \(\langle x\rangle\le\bigl(1+(9/4)^2\bigr)^{1/2}\), so the preceding inequalities prove
 \(\widetilde\phi_0^2\le\widetilde\Psi(y\cdot\partial_x\widetilde\Psi)/|y|\).
 Outside that support the left side vanishes. Thus (20) also holds, with an explicit nonzero constant on the required annulus, in every dimension. The proof in Sections 4–6 uses only nonnegativity, (19), and (20); replacing \(\Psi,\phi_0\) there by \(\widetilde\Psi,\widetilde\phi_0\) proves the same full estimate. The original convolution construction and its one-dimensional formula remain useful for Exercise 1, but no angular-convolution input is required for this alternative proof of the theorem.
+
+<a id="noncritical-scaled-multiplier"></a>
 
 ## 4. Positivity after exchanging position and frequency
 
@@ -319,6 +335,8 @@ By (20) and \(|v|\ge c_v\), the symbol
 
 is real and nonnegative. It is uniformly in \(S(X^{-1},G_1)\), with rapid frequency decay. For its first term this follows from one positive position derivative in (26); the second has annular position support \(|x|\) comparable to \(R\), and each derivative has the matching scaling power.
 
+<a id="noncritical-positivity"></a>
+
 **Lemma 4.1.** Uniformly in \(R\ge1\),
 
 \[
@@ -361,7 +379,44 @@ and [the programme proof's Fourier form](../providers/analysis/weighted-positivi
 \(\|\mathcal Fu\|_{H^{-1}}=\|X^{-1}u\|_2\).
 The symbol's frequency order is \(-1\), while the error is the squared \(H^{-1}\) norm. The finite-derivative bound and Schwartz density extend the quadratic form inequality to every \(L^2\) input. Thus (29)–(30) also recover (28), with its exact weight and uniform constant. \(\square\)
 
+<a id="noncritical-conjugation"></a>
+### An alternative proof by conjugation
+
+The sharp lower-bound method of Hörmander [H3, Theorem 18.1.14] and Lerner [L, Theorem 2.5.4] also yields (30) through an order-one symbol. Write
+\(Y=\langle y\rangle\), \(H=\langle\eta\rangle\),
+\(G'_1=Y^{-2}|dy|^2+H^{-2}|d\eta|^2\), and \(J=\langle D_y\rangle\).
+The displayed derivative bounds for \(b_R\) say exactly that
+\(b_R\in S(H^{-1},G'_1)\), uniformly in \(R\). Thus
+\(c_R=H^2b_R\geq0\) belongs uniformly to \(S(H,G'_1)\).
+The [order-one positivity proof in The Sobolev domain of an elliptic operator](the-sobolev-domain-of-an-elliptic-operator.md#domain-half-order-conjugation) applies, with variables renamed, and gives
+\[
+ \operatorname{Re}(\operatorname{Op}_{\mathrm{left}}(c_R)v,v)
+       \geq-C\|v\|_2^2,\qquad v\in\mathcal S.
+\]
+That proof derives this bound from ordinary order-zero positivity by half-order conjugation; its constant depends on finitely many uniform symbol seminorms.
+
+The [finite weighted composition formula](../providers/analysis/finite-weighted-calculus.md#finite-composition) gives the exact identity
+\[
+ J\operatorname{Op}_{\mathrm{left}}(b_R)J
+   =\operatorname{Op}_{\mathrm{left}}(c_R)+T_R,
+ \qquad T_R\in\operatorname{Op}S(Y^{-1},G'_1).
+\]
+Right multiplication by \(J\) multiplies the left symbol exactly by \(H\). In the remaining left composition, the zeroth term is \(H^2b_R\), of weight \(H\). The remainder gains one factor \(Y^{-1}H^{-1}\), so its weight is \(Y^{-1}\). The [finite-derivative operator bound](../providers/analysis/finite-derivative-l2.md#finite-derivative-l2) therefore bounds \(T_R\) on \(L^2\), uniformly in \(R\).
+
+For \(w\in\mathcal S\), set \(v=J^{-1}w\). Fourier powers preserve \(\mathcal S\), and \(J\) is symmetric there. Consequently
+\[
+ \begin{aligned}
+ \operatorname{Re}(\operatorname{Op}_{\mathrm{left}}(b_R)w,w)
+ &=\operatorname{Re}((\operatorname{Op}_{\mathrm{left}}(c_R)+T_R)v,v)\\
+ &\geq-(C+\|T_R\|)\|v\|_2^2
+ =-C'\|w\|_{H^{-1}}^2.
+ \end{aligned}
+\]
+This recovers (30). Boundedness of \(\operatorname{Op}_{\mathrm{left}}(b_R)\) and Schwartz density extend it to \(L^2\). Applying the exact Fourier and adjoint identities (29), with \(w=\mathcal Fu\), gives (28). The argument uses only the full displayed derivative bounds; compact frequency support is unnecessary.
+
 ## 5. The full long-range commutator error
+
+<a id="noncritical-commutator"></a>
 
 **Lemma 5.1.** Put \(a_0=(1+\delta)/2\). There are uniformly bounded operators
 \(E_R:L^2_{-a_0}\to L^2_{a_0}\) such that
@@ -392,6 +447,8 @@ In particular
 
 for every fixed \(L\), uniformly in \(R\).
 
+<a id="noncritical-free-error"></a>
+
 For \(P_0(D)\), direct Leibniz expansion gives the exact finite commutator symbol
 
 \[
@@ -403,6 +460,8 @@ For \(P_0(D)\), direct Leibniz expansion gives the exact finite commutator symbo
 After division by \(i\), its degree-one term is
 \(-\nabla P_0\cdot\partial_xq_R\).
 Every term of higher degree has at least two position derivatives and weight \(X^{-2}\), with arbitrary rapid frequency decay. The product with \(\overline{q_R}\) has leading term in (26); its one-order composition remainder has weight \(X^{-2}\) as well. The correction \(t_R\) in (33), multiplied by the degree-one term, has that same weight. Thus the entire free commutator differs from (26) by a uniformly bounded family in \(\operatorname{Op}S(X^{-2},G_1)\).
+
+<a id="noncritical-long-range-error"></a>
 
 For \(V_L\), write \(v_L(x,\xi)=\sum b_\alpha(x)\xi^\alpha\). It belongs to \(S(X^{-\delta}\Xi^m,G_\delta)\), and every positive position derivative has the stronger bound in (5). In the finite expansion of \([V_L,Q_R]\), degree zero cancels because the symbols are scalar. Each positive-degree coefficient is a difference of
 
@@ -437,6 +496,8 @@ This proves (31) with a symbol error in \(S(X^{-1-\delta},G_\delta)\). Formula (
 
 The stronger positive derivative bound in (5) is used explicitly in (35). A generic first-order metric remainder would only give \(X^{-2\delta}\), which does not reach the needed decay when \(\delta<1\).
 
+<a id="noncritical-domain"></a>
+
 ## 6. The equation, its domain and the full shell norm
 
 All coefficients of \(P\) are bounded, so \(P:H^m\to L^2\) is continuous. Symmetry on \(\mathcal S\) extends by \(H^m\)-density to
@@ -454,7 +515,9 @@ The weight-one mapping theorem gives uniform \(Q_R:H^m\to H^m\) and \(Q_R:L^2\to
 
 holds for every \(u\) in (6). To justify it, first expand on Schwartz inputs, using symmetry of \(P\), and then approximate \(u\) in \(H^m\). All displayed terms converge in \(L^2\). The approximating forcing terms need only converge in \(L^2\) for this identity.
 
-Suppose first \(\operatorname{Im}z>0\). Since \([P,Q_R]=-[Q_R,P]\), (37) gives
+<a id="noncritical-sign"></a>
+
+Suppose first \(\operatorname{Im}z>0\). Set \(W_R=([P,Q_R]u,Q_Ru)\). With the inner product linear in its first entry, \(\operatorname{Re}(W_R/i)=\operatorname{Im}W_R\). Equation (37) therefore gives \(\operatorname{Re}(Q_R^*[P,Q_R]u/i,u)=-\operatorname{Im}(Q_Rf,Q_Ru)-(\operatorname{Im}z)\|Q_Ru\|_2^2\), and hence
 
 \[
  \begin{aligned}
@@ -485,6 +548,8 @@ Uniform weighted bounds for \(Q'_R\), followed by (13), bound its \(B\) and \(B^
 
 Here \(\|X^{-1}u\|_2\le\|X^{-a_0}u\|_2\), since \(a_0\le1\).
 
+<a id="noncritical-shell-estimate"></a>
+
 For each outer shell \(A_j\), choose \(R=2^{j-1}\). The function \(\phi(x/R)\) has a fixed nonzero value there, so the supremum of the left side of (40) controls every outer term in the squared \(B^*\) norm. The unit ball requires one more bound:
 
 \[
@@ -511,6 +576,8 @@ If \(\operatorname{Im}z<0\), replace \(P,z,f\) by \(-P,-z,-f\) and use the angul
 ### Use the conclusion
 
 Check the monotone multiplier in dimension one as well as higher dimensions. Carry the full commutator order through to the endpoint norm, including all long-range errors and both spectral signs.
+
+<a id="noncritical-solutions"></a>
 
 ## 7. Graded exercises with complete solutions
 
@@ -577,6 +644,8 @@ No compact frequency support has been imposed on \(a\), so all the hypotheses of
 \(\|\mathcal Fu\|_{H^{-1}}=\|X^{-1}u\|_2\),
 proves the claim. Using \(s=-1/2\) would correspond to an order-zero input and would lose the required spatial error weight.
 
+There is also a conjugation proof. Apply the [alternative argument in Section 4](#noncritical-conjugation) to the symbol \(b\) in (45): \(\langle\theta\rangle^2b\) is nonnegative of order one in the metric \(\langle y\rangle^{-2}|dy|^2+\langle\theta\rangle^{-2}|d\theta|^2\), and the exact conjugation remainder has weight \(\langle y\rangle^{-1}\). Pairing with \(\langle D_y\rangle^{-1}\mathcal Fu\) gives the same squared \(H^{-1}\) error and hence the stated spatial weight, with no support restriction on \(a\).
+
 **Exercise 5 — Advanced: the unit ball and absorption.** Show that the annular supremum in (40) alone need not control a full \(B^*\) norm. Explain how (41) repairs this for the frequency-localized solution. Finally deduce a linear estimate from \(Y^2\le A F_0Y+B U_0^2\), with all quantities nonnegative.
 
 **Solution 5.** Choose a nonzero smooth function supported in \(|x|<1/2\). Since \(\phi\) is supported in \(3/4<|x|<9/4\), its product with \(\phi(x/R)\) vanishes for every \(R\ge1\), although its \(B^*\) norm is positive. Thus the missing unit ball has to be supplied.
@@ -600,6 +669,12 @@ This is the required linear estimate. In the theorem \(Y\) is already finite bec
 
 [L] Nicolas Lerner, [*Metrics on the Phase Space and Non-Selfadjoint Pseudo-Differential Operators*, Chapter 2](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), Theorems 2.3.18–2.3.19 and 2.5.1, gives general quantization change, finite left composition and order-zero boundedness. The complete programme calculus proof above supplies these steps for the actual metric used here. Definition 2.4.1 and Proposition 2.4.3(1)–(3) give the positive Gaussian construction used in the separate programme proof of weighted positivity. That programme proof supplies the localization, amplitude bound and error estimates used by Lemma 4.1. The linked prerequisites give the same operator conventions.
 
+Theorem 2.5.4 of [L], pp. 114–115, gives the order-one sharp lower bound used in the conjugation formulation. Section 4 links its complete programme proof and derives the negative-order specialization with its exact squared Sobolev error.
+
 [AT] Shmuel Agmon, notes by Karl Gustafson, reworked by Michael Taylor, [*Limiting Absorption Principle for Long Range Potentials*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2020/08/AGMON.pdf), §3, Proposition 3.B and Lemma 3.C, uses a localized first-order evolution route. Its auxiliary Proposition 3.F has no complete proof in that transcription. The angular multiplier, sharp conjugation and finite commutator argument above prove the present estimate directly, without invoking 3.F.
 
 The [off-energy estimate](the-resolvent-away-from-the-energy-surface.md) supplies the complementary gain of derivatives. Combining the two estimates requires accounting for the rough short-range remainder in the admissible splitting. The subsequent steps lead to boundary values of the resolvent and information about the point spectrum.
+
+[H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Theorem 18.1.14 and its proof, pp. 76–78. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.2, Proposition 30.2.4 and its proof, pp. 286–288. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

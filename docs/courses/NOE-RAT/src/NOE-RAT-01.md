@@ -1,9 +1,9 @@
 # Subfields and subrings of rational function fields
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Writer mathematical self-check completed, 2 October 2026; no independent review claimed. Original text and diagrams: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Writer mathematical self-check completed, 2 October 2026; the surface proof revised and checked, 7 October 2026. No independent review claimed. Original text and diagrams: public domain (CC0).*
 
 
-**Downloads:** PDF · LaTeX source · Complete editable sources
+**Editable source:** NOE-RAT-01.md
 
 A field can have finitely many generators without having independent generators. This distinction is the starting point of rationality questions. We first show that finite generation survives passage to a subfield. We then prove that one variable has a stronger property: every nonconstant subfield has a single rational coordinate. Polynomial rings behave differently from fields, even in simple invariant examples.
 
@@ -303,17 +303,374 @@ In contrast, \(B=k[s,st,st^2,\ldots]\) is not finitely generated. Every element 
 
 The geometric assertion is that a unirational surface is rational. Here *unirational* means that there is a dominant rational map from the plane to the surface. The map need not be birational: rationality is a conclusion about its target's function field.
 
-For the surface assertion over \(\mathbb C\), we reuse the complete public-domain primary proof in [Castelnuovo, *Sulla razionalità delle involuzioni piane*, pp.125–155, full PDF](https://zenodo.org/records/2461836/files/article.pdf?download=1). The original article is in Italian; its deposit is marked CC0. Its exact proof locators are Chapter I, nos.1–10, and Chapter II, nos.11–21; the concluding assertion is no.21 on p.155. The following reading guide identifies the argument being used. We then prove its function-field interpretation and the passage to every algebraically closed characteristic-zero field. [Liedtke, Section 9.1] gives a modern presentation of the surface theorem, deduced from the rationality criterion of Castelnuovo and Zariski in its Section 4.
+#### The complex surface case: models and prerequisites
 
-Some terminology makes the primary proof easier to follow. A **linear system** is a projective linear family of curves: its parameters are the nonzero sections in a vector space, up to a common scalar. A one-dimensional system is a **pencil**. The **genus** of a curve is the genus of its smooth projective model. A series of divisors on that curve is **complete** when it uses every section of its line bundle. In the paper, a **normal system** has maximal dimension for the fixed curve class. Its **characteristic series** is cut on a general member by the other members. The **adjoint system** in Chapter II cuts the complete canonical series on a general curve; that series has degree \(2g-2\) and dimension \(g-1\). The construction of this system is the content of nos.15–19.
+By Theorem 1.2, \(L/\mathbb C\) is finitely generated. In transcendence degree two, choose a transcendence basis \(u,v\) and a primitive element \(w\) for the finite separable extension over \(\mathbb C(u,v)\). The equation of \(w\) gives an integral affine surface with function field \(L=\mathbb C(u,v,w)\). The rational functions \(u(x,y),v(x,y),w(x,y)\) define a dominant generically finite rational map from the plane. A projective closure and resolution give a smooth projective integral surface \(S\) with the same function field, still dominated by \(\mathbb P^2\). We prove that \(S\) is rational.
 
-**The complex surface case and the primary proof.** By Theorem 1.2, \(L/\mathbb C\) is finitely generated. If its transcendence degree is two, choose a transcendence basis \(u,v\) and a primitive element \(w\) for the finite separable extension \(L/\mathbb C(u,v)\). Thus \(L=\mathbb C(u,v,w)\). The equation of \(w\) gives an integral surface model in affine three-space. The rational functions \(u(x,y),v(x,y),w(x,y)\) give a dominant generically finite map from the plane to that surface. Its general fibre is a group of finitely many points; that is the *plane involution* of the original paper. No Galois or finite-group-action hypothesis is required. If the degree is one, the fields already coincide.
+Here a divisor is an integer combination of curves on a smooth surface. Its line bundle is \(\mathcal O_S(D)\), and \(D\cdot C\) is the degree of its restriction to a curve \(C\), extended bilinearly. A complete linear system \(|D|\) consists of the nonzero sections of this line bundle up to scalar. It is empty precisely when there is no nonzero section. We write \(h^i=\dim H^i\), \(\chi=\sum_i(-1)^ih^i\), and \(K\) for a canonical divisor, so \(\mathcal O_S(K)=\omega_S\). A smooth rational curve of square \(-1\) is called an exceptional curve of the first kind.
 
-For higher degree, [Chapter I, pp.130–144](https://archive.org/details/sim_mathematische-annalen_1894_44/page/n133/mode/1up) proves two properties of the surface's linear systems: every normal system has complete characteristic series, and there is a normal system whose dimension \(r\) exceeds the genus \(g\) of its general curve. The construction in no.10 starts with a general line and its conjugate curve under the plane involution. Its numerical calculation gives a system of degree \(2\nu+a+1\), genus \(\nu\), and dimension \(\nu+a+2>\nu\), where \(a\geq0\) is the degree of the curve of self-conjugate points.
+The geometric and topological foundations have the following exact earlier programme proofs. The reductions from them to surface rationality are written below.
 
-[Chapter II, pp.145–155](https://archive.org/details/sim_mathematische-annalen_1894_44/page/n148/mode/1up) supplies the rationality argument itself. Nos.13–14 reduce genus zero, one and two to rational pencils, low-degree surfaces and particular double planes. They use earlier results of Max Noether, Clebsch and del Pezzo; those are supporting theorems, not newly proved in these two paragraphs of the original. The open primary treatments are [Max Noether, rational pencils, §§1–4](https://zenodo.org/records/2300748/files/article.pdf?download=1), [del Pezzo, surfaces of degree \(r\) in \(\mathbb P^r\), §§III–IV and VII](https://archive.org/details/rendicontidelci22palegoog/page/n257/mode/1up), [Clebsch, quartic double planes, §§4–5, pp.51–54](https://zenodo.org/records/2391859/files/article.pdf?download=1), and [Max Noether, sextic double planes with two infinitely near triple points, §§1–2](https://zenodo.org/records/1659261/files/article.pdf?download=1). For quartic surfaces with a double line, the primary reference is [Clebsch, *Ueber die Abbildung algebraischer Flächen*](https://zenodo.org/records/2253908/files/article.pdf?download=1).
+| Input | Earlier proof and scope used here |
+|---|---|
+| Projective resolution and elimination of indeterminacy | Principalization and resolution, Corollary 3.4 and Theorem 4.8. The ground field has characteristic zero; elimination gives a sequence of blow-ups of smooth centres. |
+| Coherent direct images and Leray | Proper morphisms, Theorem 4.1 and Corollary 5.1; sheaf cohomology, Theorem 4.1 and its five-term sequence. Every map to which we apply coherent finiteness is proper between Noetherian schemes. |
+| Extension across codimension two | Normal domains, Theorems 3.2–3.3. Smooth varieties are normal; the same intersection-of-local-rings argument extends sections of a locally free sheaf in a local basis. |
+| Numerical Euler polynomials, intersection, Serre duality, curve Riemann–Roch and contraction | AI Integrated Stacks Project: [Euler polynomials, Tag 0BEM](https://stacks.math.columbia.edu/tag/0BEM), [bilinearity, Tag 0BER](https://stacks.math.columbia.edu/tag/0BER), [restriction to a Cartier divisor, Tag 0BEU](https://stacks.math.columbia.edu/tag/0BEU), [degrees on curves, Tag 0BEY](https://stacks.math.columbia.edu/tag/0BEY), [proper Cohen–Macaulay duality, Tag 0FVZ](https://stacks.math.columbia.edu/tag/0FVZ), [curve Riemann–Roch, Tag 0BS6](https://stacks.math.columbia.edu/tag/0BS6), and [projective contraction, Tag 0C2N](https://stacks.math.columbia.edu/tag/0C2N). The surface is smooth and projective; a contracted curve is \(\mathbb P^1\) with normal bundle \(\mathcal O(-1)\), and its contraction is the inverse of a blow-up at a smooth point. |
+| Stein factorization, field base change and fibre Euler characteristic | [Stein factorization, Tag 03H0](https://stacks.math.columbia.edu/tag/03H0); Base change, Theorem 2.1 and Corollary 4.1. A proper flat family over a connected Noetherian base has constant structure-sheaf Euler characteristic. |
+| Tsen's theorem | Brauer groups and Tsen's theorem, Theorem 5.1, including its bounded-polynomial proof. We use the \(C_1\) assertion for \(\mathbb C(t)\) and a quadratic form in three variables. |
+| Poincaré duality and the Euler number | Manifold duality, Theorem 2.2 and Corollary 4.2. We use rational cohomology of closed oriented four-manifolds and the complex orientation of a smooth projective complex surface. |
+| Chern classes, rational bordism and signature | Chern classes, Theorem 2.2 and Corollary 2.3; Pontryagin classes, §2; rational bordism, Theorems J.4–J.5; signature, Theorem E.3. Only the four-dimensional signature identity is used; its application and a dimension-four proof reduction are supplied below. |
 
-For larger genus, nos.15–19 construct the adjoint system. If it splits, its moving components form a pencil of rational curves; if it is irreducible, its general genus is at most \(g-2\), while its dimension still exceeds its genus. Both the case where the original system separates general points and the case where it identifies pairs of points are treated. No.20 repeats this strictly decreasing process, replacing each system by the normal system it determines, until a rational pencil or one of the low-genus cases is reached. No.21 concludes that the surface is birational to the plane. This is the full open proof being reused, together with its specified classical supporting results. Consequently \(L=\mathbb C(s,t)\).
+The tagged geometric proofs are part of the programme's separately linked core/fork collection. The AI Integrated Stacks edition is pinned at [revision 565b10e987aba5969b21145a0833f42d69f96790](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790); the labels used above are in `varieties.tex`, `duality.tex`, `curves.tex`, `resolve.tex` and `more-morphisms.tex`. Their source expression retains [GFDL 1.2](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING). Links to these proofs do not place their expression under this lesson's CC0 dedication. Smoothness makes the surface Cohen–Macaulay and Gorenstein, so the proper duality theorem applies with its invertible canonical sheaf. Normalization of curves is finite by Normalization, Theorem 5.1; regular local rings are factorial by the programme's core proof [Tag 0AG0](https://stacks.math.columbia.edu/tag/0AG0), so every curve on the smooth surface is Cartier.
+
+The route is to prove that plane domination forces \(q=P_2=0\), contract the exceptional curves, and produce a smooth rational curve with nonnegative square by adjunction. Its linear system then gives either a birational map to the plane or a genus-zero pencil, which Tsen splits over \(\mathbb C(t)\).
+
+
+#### What plane domination forces on a smooth surface
+
+Let \(S\) be a smooth projective integral surface over \(\mathbb C\), and suppose that \(\mathbb P^2\dashrightarrow S\) is dominant. We prove
+\[
+H^1(S,\mathcal O_S)=0,
+\qquad H^0(S,\omega_S^{\otimes m})=0\quad(m\geq1).
+\tag{C1}
+\]
+These statements concern the target. They make no claim that the given dominant map has degree one.
+
+We use the written resolution course's elimination of indeterminacy to obtain a diagram
+\[
+\mathbb P^2\xleftarrow{\ b\ }T\xrightarrow{\ f\ }S,
+\]
+where \(T\) is smooth and projective, \(b\) is a sequence of blow-ups at points, and \(f\) is a dominant generically finite morphism. Indeed, elimination uses smooth centres. Each one-dimensional connected component of a proper smooth centre in a smooth surface is a Cartier divisor, whose blow-up is an isomorphism. The zero-dimensional components over \(\mathbb C\) are finitely many points. The components are disjoint, so they may be blown up separately, and the nontrivial steps are point blow-ups. The generic degree \(d=[\mathbb C(T):\mathbb C(S)]\) is positive and finite.
+
+First we compute the effect of a point blow-up \(\pi:\widetilde X\to X\) on \(H^1(\mathcal O)\), for any smooth integral surface. Away from its centre it is an isomorphism. On a sufficiently small affine neighbourhood \(U=\operatorname{Spec}A\) of the centre, its ideal has generators \(x,y\) forming a regular system of parameters at that point. The blow-up has the two affine charts
+\[
+B_1=A[t]/(y-xt),\qquad B_2=A[s]/(x-ys),
+\]
+After shrinking \(U\), the two generators generate the point's ideal throughout \(U\) and form a regular sequence, justifying these Rees-chart presentations. Their intersection has coordinate ring
+\[
+C=A[t,t^{-1}]/(y-xt),\qquad s=t^{-1}.
+\]
+Every Laurent polynomial in \(C\) is the sum of the image of a polynomial with nonnegative powers of \(t\), hence an element of \(B_1\), and one with negative powers of \(t\), hence an element of \(B_2\). Consequently the degree-one Cech quotient \(C/(B_1+B_2)\) is zero. Since the charts and their intersection are affine, this calculates \(H^1(\pi^{-1}U,\mathcal O)\). It also shows that all higher Cech groups vanish. Shrinking such neighbourhoods proves \(R^1\pi_*\mathcal O_{\widetilde X}=0\).
+
+Furthermore, \(\pi_*\mathcal O_{\widetilde X}=\mathcal O_X\). A section upstairs is a rational function downstairs regular off the centre; extension across codimension two on the normal surface \(X\) makes it regular at the centre. Conversely a downstairs section pulls back. The low-degree Leray sequence therefore gives
+\[
+H^1(\widetilde X,\mathcal O_{\widetilde X})
+\cong H^1(X,\mathcal O_X).
+\tag{C2}
+\]
+
+For completeness, \(H^1(\mathbb P^2,\mathcal O)=0\) follows directly from its three standard affine charts. Their Cech complex splits into Laurent monomials \(X_0^{a_0}X_1^{a_1}X_2^{a_2}\) with \(a_0+a_1+a_2=0\). Such a monomial appears on an intersection indexed by \(I\subseteq\{0,1,2\}\) exactly when \(I\) contains every index with negative exponent. If all exponents are nonnegative the monomial is the constant 1, and its complex is the simplex complex, with zero positive-degree cohomology. Otherwise the set of negative indices is nonempty and proper: all three exponents cannot be negative when their sum is zero. Choosing an index outside that set contracts its Cech complex by inserting or deleting that index, with the usual alternating sign. Thus its degree-one cohomology also vanishes. Applying (C2) along \(b\) yields \(H^1(T,\mathcal O_T)=0\).
+
+Now consider \(f_*\mathcal O_T\). Proper coherent direct images make this a finite \(\mathcal O_S\)-module and algebra. On an affine open \(U=\operatorname{Spec}A\subseteq S\), write \(B=\Gamma(f^{-1}U,\mathcal O_T)\). This is a finite \(A\)-algebra contained in \(\mathbb C(T)\). Every \(b\in B\) is integral over \(A\); its field trace is a sum of its conjugates and is therefore integral over \(A\). That trace lies in \(\mathbb C(S)=\operatorname{Frac}A\), and \(A\) is integrally closed because \(S\) is smooth. Thus the field trace defines an \(A\)-linear map \(B\to A\). These maps agree on overlapping opens, since they are restrictions of the same field trace. They give a sheaf map
+\[
+\operatorname{Tr}_f:f_*\mathcal O_T\longrightarrow\mathcal O_S,
+\qquad \operatorname{Tr}_f(f^*a)=d a.
+\]
+As \(d\) is invertible in \(\mathbb C\), \(d^{-1}\operatorname{Tr}_f\) splits the inclusion \(\mathcal O_S\to f_*\mathcal O_T\). Hence \(H^1(S,\mathcal O_S)\) injects into \(H^1(S,f_*\mathcal O_T)\). The low-degree Leray sequence injects the latter into \(H^1(T,\mathcal O_T)=0\). This proves the first equality in (C1).
+
+To prove the second, the differential of the generically finite separable map \(f\) gives a morphism of canonical bundles
+\[
+f^*\omega_S\longrightarrow\omega_T
+\]
+which is an isomorphism at the generic point. Its \(m\)-th tensor power therefore makes pullback injective on global sections:
+\[
+H^0(S,\omega_S^{\otimes m})
+\hookrightarrow H^0(T,\omega_T^{\otimes m}).
+\tag{C3}
+\]
+The morphism \(b\) is an isomorphism over \(\mathbb P^2\setminus Z\) for a finite set \(Z\). A pluricanonical section on \(T\) consequently restricts to a section of \(\omega_{\mathbb P^2}^{\otimes m}\) there. Extension of a section of an invertible sheaf across codimension two on a normal scheme extends it uniquely to \(\mathbb P^2\). The canonical bundle is \(\omega_{\mathbb P^2}=\mathcal O_{\mathbb P^2}(-3)\), as follows: on an overlap, \(u'=1/u,v'=v/u\) gives \(du'\wedge dv'=-u^{-3}du\wedge dv\); the other transitions follow by permuting the three homogeneous coordinates. A global section of \(\mathcal O(-3m)\) would be a homogeneous polynomial of negative degree, so is zero. This homogeneous-section calculation is also proved in Cohomology of projective space, §2. Thus the original section on \(T\) is zero on a dense open and hence zero. Combining this with (C3) proves (C1).
+
+In particular \(q(S)=0\), \(p_g(S)=0\), \(P_2(S)=0\), and \(\chi(\mathcal O_S)=1\). The last equality uses Serre duality on the smooth projective surface, which identifies \(H^2(S,\mathcal O_S)\) with the dual of \(H^0(S,\omega_S)\), and \(H^0(S,\mathcal O_S)=\mathbb C\).
+
+
+#### Two numerical formulas on a smooth surface
+
+Let \(S\) be a smooth projective integral complex surface, let \(K\) be a canonical divisor, and write \(D\cdot E\) for the intersection of Cartier divisors. The quadratic Euler-polynomial construction and proper Serre duality give the full surface Riemann--Roch formula
+\[
+\chi(\mathcal O_S(D))=\chi(\mathcal O_S)
++\frac{D\cdot(D-K)}2.
+\tag{1}
+\]
+Here is the bridge between those exact inputs and (1). The Euler polynomial in two divisor classes has total degree at most two, with quadratic part \(\tfrac12(mD+nE)^2\). Its constant term is \(\chi(\mathcal O_S)\). Define
+\[
+\ell(D)=\chi(\mathcal O_S(D))-\chi(\mathcal O_S)-\tfrac12D^2.
+\]
+Comparison of the linear coefficients of that two-variable polynomial shows \(\ell(D+E)=\ell(D)+\ell(E)\) and \(\ell(nD)=n\ell(D)\) for every integer \(n\). Serre duality on the two-dimensional smooth projective surface gives
+\[
+\chi(\mathcal O_S(D))=\chi(\mathcal O_S(K-D)).
+\]
+At \(D=0\) this says \(\ell(K)+K^2/2=0\). At general \(D\), expansion of the right-hand side therefore gives
+\[
+\ell(D)+D^2/2=-\ell(D)-K\cdot D+D^2/2.
+\]
+Thus \(2\ell(D)=-K\cdot D\), proving (1) for every divisor, with no ampleness or effectivity restriction.
+
+For an integral curve \(C\subset S\), the divisor sequence and (1) now give numerical adjunction:
+\[
+\chi(\mathcal O_C)
+=\chi(\mathcal O_S)-\chi(\mathcal O_S(-C))
+=-\frac{C^2+K\cdot C}{2},
+\qquad
+2p_a(C)-2=C^2+K\cdot C,
+\tag{2}
+\]
+where \(p_a(C)=1-\chi(\mathcal O_C)\). On every plane-dominated surface the vanishings just proved and Serre duality give
+\[
+\chi(\mathcal O_S)=1.
+\tag{3}
+\]
+ Normalization \(\nu:\widetilde C\to C\) is finite, and its quotient in
+\[
+0\longrightarrow\mathcal O_C\longrightarrow
+\nu_*\mathcal O_{\widetilde C}\longrightarrow Q\longrightarrow0
+\]
+has finite support. Consequently
+\[
+p_a(C)=g(\widetilde C)+\dim_{\mathbb C}H^0(Q)\geq0.
+\tag{4}
+\]
+ Equality forces \(Q=0\) and genus zero. Then \(\nu\) is an isomorphism, and \(C\) is smooth. To identify a smooth genus-zero curve over \(\mathbb C\), choose a point \(p\). Curve Riemann–Roch gives \(h^0(\mathcal O(p))=2\). This degree-one system has no base point: one would leave a degree-zero line bundle with two independent sections, whereas a nonzero section of a degree-zero line bundle is nowhere zero and makes it trivial. The resulting morphism to \(\mathbb P^1\) has degree one and is an isomorphism, since both curves are smooth and the target is normal.
+
+In particular, if \(K\cdot C<0\) and \(C^2<0\), (2) forces
+\[
+C^2=K\cdot C=-1,\qquad C\cong\mathbb P^1.
+\tag{C6}
+\]
+Indeed the two negative integers have sum at most \(-2\), while \(p_a(C)\geq0\) makes their sum at least \(-2\). Both integers are therefore \(-1\), and \(p_a(C)=0\). Its normal bundle has degree \(-1\), so this is precisely an exceptional curve of the first kind, to which the existing contraction theorem applies.
+
+
+#### Contracting the exceptional curves
+
+Apply the projective contraction theorem whenever \(S\) contains a smooth rational curve of square \(-1\). The new surface is smooth and projective, and the contraction is the inverse of a point blow-up. The plane still dominates it: compose the resolved plane map with the contraction. Therefore the preceding proof of \(q=0\) and vanishing of every pluricanonical system applies afresh to each target.
+
+This procedure terminates. A point blow-up leaves \(b_1\) unchanged and increases \(b_2\) by one: remove a small four-ball at its centre and replace it by the disk bundle of \(\mathcal O_{\mathbb P^1}(-1)\), whose boundary is \(S^3\) and which retracts to \(\mathbb P^1\). The Mayer–Vietoris sequence, with \(H^1(S^3;\mathbb Q)=H^2(S^3;\mathbb Q)=0\), gives the claimed change in degrees one and two. The Betti numbers of a compact manifold are finite. Each contraction thus decreases the nonnegative integer \(b_2\). We reach a surface \(X\) with no smooth rational curve of square \(-1\), still with \(q=0\), \(h^0(2K)=0\), and a generically finite morphism \(Y\to X\), where \(Y\) is a sequence of point blow-ups of the plane. All these contractions preserve the function field.
+
+We now prove that \(X\) contains a smooth rational curve of nonnegative square. This is the step that distinguishes the surface theorem from Lüroth's one-variable theorem.
+
+
+#### A terminal divisor produces the curve
+
+
+Call an effective divisor \(D\) **terminal** when \(|K+D|=\varnothing\). Suppose also that \(K\cdot D<0\). Some integral component \(C\) of \(D\) satisfies \(K\cdot C<0\). Since \(D-C\) is effective, a section of \(K+C\) would give a section of \(K+D\), so \(|K+C|=\varnothing\).
+
+There are no sections of \(-C\), and surface duality gives
+
+\[
+h^2(\mathcal O_X(-C))=h^0(\mathcal O_X(K+C))=0.
+\]
+
+Equations (1)–(3) therefore imply
+
+\[
+p_a(C)=\chi(\mathcal O_X(-C))=-h^1(\mathcal O_X(-C))\leq0.
+\]
+
+Equation (4) now proves \(C\simeq\mathbf P^1\). Adjunction gives
+\(C^2+K\cdot C=-2\). Since \(K\cdot C<0\), it follows that \(C^2\geq-1\). The square \(-1\) is excluded by minimality, so \(C^2\geq0\).
+
+We will produce such a terminal divisor in all three cases for the sign of \(K^2\).
+
+#### The cases of nonpositive canonical square
+
+**If \(K^2=0\).** Apply (1) to \(-K\). Duality gives \(h^2(-K)=h^0(2K)=0\), hence \(h^0(-K)\geq1\). Choose \(A\in|-K|\). It is nonzero: if \(-K\sim0\), then \(2K\sim0\), contradicting \(h^0(2K)=0\). Fix an effective ample divisor \(H\). Then \(K\cdot H=-A\cdot H<0\), so \((H+nK)\cdot H<0\) for large \(n\). Thus \(|H+nK|\) eventually becomes empty. Choose its last nonempty value, with an effective representative \(D\sim H+nK\). It is terminal and
+
+\[
+K\cdot D=K\cdot H+nK^2=K\cdot H<0.
+\]
+
+**If \(K^2<0\).** First find an effective divisor \(E\) with \(K\cdot E<0\). Take an effective very ample divisor \(H\), and put \(a=K\cdot H\), \(b=K^2<0\).
+
+If \(a<0\), take \(E=H\). If \(a=0\), take an effective representative of \(K+nH\) for sufficiently large \(n\); its existence follows from ample twisting, and its \(K\)-degree is \(b<0\).
+
+If \(a>0\), put \(r_0=-a/b>0\). The real class \(H+r_0K\) has zero \(K\)-degree, while
+
+\[
+(H+r_0K)^2=H^2-a^2/b>0,
+\qquad (H+r_0K)\cdot H=H^2-a^2/b>0.
+\]
+
+Choose a rational \(r>r_0\) close enough that both inequalities persist. A positive integral multiple \(L\) of \(H+rK\) is an integral Cartier class satisfying
+
+\[
+L^2>0,\qquad L\cdot H>0,\qquad L\cdot K<0.
+\]
+
+For large \(m\), the divisor \(K-mL\) has negative \(H\)-degree, so \(h^2(mL)=h^0(K-mL)=0\). Formula (1) gives
+
+\[
+\chi(mL)=1+\tfrac12(m^2L^2-mL\cdot K)>0.
+\]
+
+Therefore \(h^0(mL)>0\), and an effective \(E\sim mL\) has negative \(K\)-degree.
+
+Choose an integral component \(C\) of \(E\) with \(K\cdot C<0\). Adjunction and \(p_a(C)\geq0\) show \(C^2\geq-1\). If \(C^2=-1\), then necessarily \(K\cdot C=-1\) and \(p_a(C)=0\), which contradicts minimality. Thus \(C^2\geq0\). Such a curve is nef: every other integral curve meets it nonnegatively, and its own square is nonnegative.
+
+Now \((C+nK)\cdot C=C^2+nK\cdot C\) is eventually negative, so \(|C+nK|\) eventually becomes empty. Its last nonempty value gives a terminal effective \(D\sim C+nK\) with
+
+\[
+K\cdot D=K\cdot C+nK^2<0.
+\]
+
+This completes both nonpositive cases without Hodge index or a cone theorem.
+
+#### The positive case: integral anticanonical curves
+
+Suppose \(K^2>0\), and assume for contradiction that no terminal effective divisor has negative \(K\)-degree. Formula (1) and \(h^0(2K)=0\) give
+
+\[
+h^0(-K)\geq1+K^2\geq2.
+\tag{5}
+\]
+
+**Every anticanonical divisor is integral and reduced.** Otherwise an effective \(A\in|-K|\) can be written \(A=B+C\) with \(B,C\ne0\) effective. Since \(K\cdot A=-K^2<0\), one summand, say \(B\), has negative \(K\)-degree. But \(K+B\sim-C\), which has no sections. Thus \(B\) is a prohibited terminal divisor.
+
+**The only effective terminal divisor is zero.** Let a nonzero terminal \(D\) be given, and choose a point \(p\in\operatorname{Supp}D\). Because of (5), evaluation at \(p\) has a nonzero kernel, so there is \(A\in|-K|\) passing through \(p\). This \(A\) is integral. If it is a component of \(D\), then \(K+D\sim D-A\) is effective, contradicting terminality. Otherwise \(A\cdot D>0\), by positive local intersection at \(p\), so \(K\cdot D=-A\cdot D<0\), again a contradiction.
+
+Choose any effective divisor \(H\). A fixed ample divisor has negative intersection with \(K\), because \(-K\) is nonzero effective. Hence \(|H+nK|\) is empty for large \(n\). Its last effective representative is terminal and must be zero. Thus every effective divisor class is an integer multiple of \(-K\). Every line bundle is represented by a difference of effective divisors, after sufficiently positive ample twisting. We have proved
+
+\[
+\operatorname{Pic}(X)=\mathbb Z[K].
+\tag{6}
+\]
+
+The notation really denotes an infinite cyclic group: \(K^2>0\) prevents any nonzero multiple of \(K\) from being linearly trivial.
+
+**Two-point jets give \(K^2\leq5\).** By adjunction, every integral \(A\in|-K|\) has \(p_a(A)=1\). Formula (4) implies that such a curve has at most one singular point: at each singular point the normalization quotient has positive length. A dimension-one normal local ring is regular, so a singular point cannot contribute length zero.
+
+Choose distinct points \(x,y\in X\). First-order jet evaluation is a linear map
+
+\[
+H^0(X,-K)\longrightarrow
+(-K)\otimes\mathcal O_{X,x}/\mathfrak m_x^2
+\oplus
+(-K)\otimes\mathcal O_{X,y}/\mathfrak m_y^2.
+\]
+
+The target has dimension \(3+3=6\), since \(X\) is smooth of dimension two. If \(h^0(-K)>6\), a nonzero section would vanish to order at least two at both points. Its divisor is integral and singular at both, contrary to its arithmetic genus. Therefore \(h^0(-K)\leq6\). Combining this with (5) gives
+
+\[
+K^2\leq5.
+\tag{7}
+\]
+
+Only the domination assumption remains to rule out (6).
+
+#### Plane domination rules out the exceptional positive case
+
+The complex orientation makes \(f:Y\to X\) a map of closed oriented four-manifolds of positive degree \(d=[\mathbf C(Y):\mathbf C(X)]\). At a point outside the branch and exceptional loci, its \(d\) inverse images have nonsingular complex derivative and hence local degree \(+1\).
+
+**Degree identities.** Poincaré duality defines
+
+\[
+f_!:H^r(Y;\mathbb Q)\longrightarrow H^r(X;\mathbb Q)
+\]
+
+by transport of homology pushforward. The cap-product identity gives the projection formula. Since \(f_*[Y]=d[X]\), it follows that
+
+\[
+f_!f^*(a)=d a.
+\tag{8}
+\]
+
+One may also verify (8) by pairing both sides with arbitrary complementary classes and using the perfect Poincaré pairing. In particular \(f^*\) is injective, and \(f_!\) is surjective over \(\mathbb Q\).
+
+**Cohomology of a point blow-up.** A point blow-up replaces a small real four-ball with the disk bundle of \(\mathcal O_{\mathbf P^1}(-1)\), with boundary \(S^3\). The new disk bundle retracts onto its exceptional \(\mathbf P^1\). Mayer–Vietoris, using \(H^1(S^3)=H^2(S^3)=0\), shows that \(H^1\) is unchanged and \(H^2\) acquires the one generator represented by the exceptional curve. Starting from the usual cell decomposition of \(\mathbf P^2\), we obtain
+
+\[
+H^1(Y;\mathbb Q)=0,
+\qquad H^2(Y;\mathbb Q)
+=\langle [L],[E_1],\ldots,[E_N]\rangle_{\mathbb Q},
+\tag{9}
+\]
+
+where \(L\) is the pullback of a line and the \(E_i\) may be taken as total-transform exceptional classes. Strict-transform curve classes also span, since the change from total transforms is triangular with diagonal one.
+
+The algebraic intersection number used here equals the oriented pairing of divisor Chern classes. For very ample classes choose general smooth transverse divisors using [the proved Bertini statement](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-bertini). Each intersection point has local algebraic multiplicity one and positive complex-oriented topological multiplicity one. Thus both pairings agree for these classes. Every divisor class is a difference of two sufficiently positive very ample classes; bilinearity proves the equality for all divisors.
+
+All these degree-two classes are algebraic curve classes. The Gysin pushforward of a curve class under \(f\) is its degree times the class of its image curve, or zero when it is contracted. This follows directly by pushing the fundamental cycle of its normalization; over the smooth locus of an image curve the map has its ordinary covering degree, and finitely many omitted points carry no two-dimensional fundamental cycle.
+
+The divisor class of an integral complex curve equals the first Chern class of its divisor line bundle. On its smooth locus this is the defining Thom-class calculation for the zero section, with its complex orientation. The singular locus is finite; degree-two supported cohomology at these real codimension-four points vanishes, so the identification extends over it. Thus (6), (8), and (9) imply that \(H^2(X;\mathbb Q)\) is spanned by \(c_1(K)\). Since its square is \(K^2>0\), it is nonzero. Also (8) and (9) give \(H^1(X;\mathbb Q)=0\). Hence
+
+\[
+b_1(X)=0,\qquad b_2(X)=1,
+\qquad \chi_{\mathrm{top}}(X)=2-2b_1+b_2=3.
+\tag{10}
+\]
+
+The one-dimensional intersection form is positive, so \(\sigma(X)=1\).
+
+For a complex rank-two bundle \(V\), the underlying real bundle has
+
+\[
+p_1(V_{\mathbb R})=c_1(V)^2-2c_2(V).
+\tag{11}
+\]
+
+Indeed its complexification is \(V\oplus\overline V\); the Chern conjugation and Whitney rules give \(c_2(V\oplus\overline V)=2c_2(V)-c_1(V)^2\), and \(p_1=-c_2\) of the complexification. For \(V=T_X\), we have \(c_1(T_X)=-c_1(K)\), while the top Chern class is the Euler class and its evaluation is \(\chi_{\mathrm{top}}(X)\). The four-dimensional signature identity therefore gives
+
+\[
+3\sigma(X)
+=\langle p_1(T_X),[X]\rangle
+=K^2-2\chi_{\mathrm{top}}(X).
+\]
+
+Substitution of (10) and \(\sigma=1\) yields
+
+\[
+K^2=3+6=9,
+\tag{12}
+\]
+
+contradicting (7). The assumed failure of a negative-\(K\) terminal divisor is impossible. The terminal-divisor argument produces the required smooth \(\mathbf P^1\) with nonnegative square.
+
+
+
+#### The dimension-four signature identity
+
+The four-dimensional identity has the following precise proof route. Signature and the first Pontryagin number are additive oriented-bordism invariants. For signature, relative Poincaré duality makes the restriction image in the middle cohomology of an oriented boundary an isotropic subspace of half the dimension. Pair a basis of that subspace with complementary vectors and subtract half their mutual pairings: this gives a hyperbolic basis, of signature zero. For a Pontryagin number, \(TW|_{\partial W}=T\partial W\oplus\mathbb R\), while the boundary fundamental cycle maps to zero in \(H_4(W)\). Naturality and stability therefore make that number zero on boundaries. These are the full boundary arguments in Signature, §§B–C.
+
+The earlier rational bordism proof, Theorems J.4–J.5, supplies the exact rank theorem: \(\Omega^{SO}_4\otimes\mathbb Q\) has dimension one. Its finite-stage comparison uses a canonical oriented rank-\(k\) bundle over \(\widetilde G_k(\mathbb R^{k+p})\). In dimension four take \(k=6,p=5\). The first omitted Thom cell has dimension \(k+p+1=12\), so the finite and infinite Thom homotopy groups agree in degree \(4+k=10\). Pontryagin–Thom identifies that group with oriented bordism. The Thom space is \((k-1)\)-connected, and the proved rational Hurewicz comparison applies since \(10<2k-1=11\). Thom isomorphism and the stabilized degree-four universal oriented cohomology ring then give a one-dimensional rational group. These bounds state exactly the scope of the earlier proof; no general classification of surfaces enters.
+
+The class of \(\mathbb {CP}^2\) is a rational basis because its signature is one. Its tangent Euler sequence gives \(c(T\mathbb {CP}^2)=(1+h)^3\), and the square of the positive hyperplane class evaluates to one. Thus its first Pontryagin number is \(9-2\cdot3=3\). The two rational bordism functionals agree on a basis after multiplying signature by three, proving \(\langle p_1(TM),[M]\rangle=3\sigma(M)\) for every closed oriented four-manifold. This is also the dimension-four specialization of the earlier full signature proof.
+
+
+#### A smooth rational curve with nonnegative square
+
+Let \(S\) be a smooth projective integral complex surface with \(H^1(S,\mathcal O_S)=0\). If it contains a smooth curve \(C\cong\mathbb P^1\) with \(C^2=n\geq0\), then \(S\) is rational.
+
+The divisor sequence
+\[
+0\longrightarrow\mathcal O_S\longrightarrow\mathcal O_S(C)
+\longrightarrow\mathcal O_C(C)\longrightarrow0
+\]
+and the assumed vanishing show that restriction on sections is surjective. The last line bundle is \(\mathcal O_{\mathbb P^1}(n)\), whose sections are the binary monomials of degree \(n\). The only global functions on this projective integral complex surface are scalars: proper coherence makes its ring of functions a finite integral \(\mathbb C\)-algebra inside its function field. Therefore \(h^0(S,\mathcal O_S(C))=n+2\). Moreover \(|C|\) has no base points: its defining section is nonzero off \(C\), and the restricted sections generate \(\mathcal O_C(C)\) at every point of \(C\).
+
+If \(n\geq1\), blow up \(n-1\) distinct points on \(C\). Its strict transform \(C'\) is still a smooth rational curve, and its square is 1. At a smooth point of the curve the strict-transform normal bundle is the old normal bundle tensored by \(\mathcal O_C(-p)\), as the blow-up chart extracts the single vanishing factor at \(p\). Each point therefore lowers the square by one. The calculation (C2) preserves \(H^1(\mathcal O)=0\). Apply the preceding divisor sequence to \(C'\). Its complete linear system has three sections and no base points, so defines a morphism
+\[
+\varphi:S'\longrightarrow\mathbb P^2,
+\qquad \varphi^*\mathcal O_{\mathbb P^2}(1)=\mathcal O_{S'}(C').
+\]
+Its image has dimension two. Otherwise two general lines of \(\mathbb P^2\) can be chosen to meet outside its curve image; their inverse images are disjoint, which would give \((C')^2=0\). Since \(\varphi\) is proper, its two-dimensional image is all of \(\mathbb P^2\). It is generically finite. If its degree is \(e\), choose the intersection point of two lines in the open over which it is finite étale. Such an open exists by properness, generic finiteness and characteristic-zero separability, after shrinking the target. Their inverse-image divisors meet transversely in exactly \(e\) points. Consequently
+\[
+1=(C')^2=e.
+\]
+Thus the morphism induces an isomorphism of function fields, and both \(S'\) and \(S\) are rational. No classification of surfaces of minimal degree is used.
+
+Suppose instead that \(n=0\). The two sections of \(|C|\) give a morphism \(f:S\to\mathbb P^1\) with the reduced smooth curve \(C\) as one fibre. Its Stein factorization has a smooth projective integral curve \(B\), a morphism \(g:S\to B\) with connected fibres, and a finite map \(h:B\to\mathbb P^1\). Over the point whose fibre is \(C\), the fibre of \(h\) has just one point: different points would give disjoint nonempty curves in \(C\). Write the pulled-back local parameter as \(a u^e\), where \(u\) is a uniformizer at this point of \(B\), \(a\) is a unit, and \(e\) is the ramification index. The divisor of \(g^*u\) is \(mC\) for a positive integer \(m\). Since the original fibre is the reduced divisor \(C\), \(em=1\), so \(e=m=1\). The sum of the ramification indices over that point equals the degree of \(h\), since the residue fields are \(\mathbb C\). Hence \(\deg h=1\), and \(B\cong\mathbb P^1\). In particular the generic fibre of \(f\) has no enlarged constant field.
+
+Set \(K=\mathbb C(t)\) and let \(F/K\) be that generic fibre. It is a smooth projective geometrically integral curve. Indeed its local rings are localizations of those of the smooth surface, hence regular; a regular curve over the perfect field \(K\) is smooth. The Stein factorization says that \(K\) is algebraically closed in its function field, giving geometric irreducibility in characteristic zero. The morphism to the smooth base curve is flat: locally a uniformizer acts without torsion on the integral surface's local rings, and a torsion-free module over a discrete valuation ring is flat. The proved Grothendieck-complex theorem and Euler-constancy corollary apply to this proper morphism and its flat structure sheaf. Locally they compute fibre cohomology by a finite complex of finite projective modules, whose alternating rank is constant. Since the base is connected, its fibres have the same Euler characteristic. The fibre \(C\cong\mathbb P^1\) has Euler characteristic 1, so \(\chi(F,\mathcal O_F)=1\). As its only global functions are \(K\), it has genus zero.
+
+We explain why this genus-zero curve is rational over \(K\), rather than merely after algebraic closure. Its anticanonical line bundle has degree 2 and three sections. The curve Riemann--Roch formula and Serre duality give this directly: \(\deg\omega_F=-2\), and \(H^1(F,\omega_F^{-1})\) is dual to \(H^0(F,\omega_F^{\otimes2})=0\). Over an algebraic closure, a point \(p\) on the genus-zero curve satisfies \(h^0(\mathcal O(p))=2\); the base-point and degree-one argument already given after (4) makes it isomorphic to \(\mathbb P^1\). Hence the anticanonical system becomes the degree-two Veronese embedding. Flat base change of sections, Theorem 2.1, and the programme core proof of [faithful descent of a closed immersion, Tag 02L6](https://stacks.math.columbia.edu/tag/02L6), show that the anticanonical system already embeds \(F\) over \(K\) as a smooth plane conic. Its degree-two equation is defined over \(K\): after field extension, the vector space of quadratic equations vanishing on the image has dimension one; flat base change of the ideal sheaf gives a one-dimensional equation space already over \(K\). A nonzero generator becomes the defining equation of the conic, and faithful field extension detects equality of the two closed subschemes.
+
+Tsen's theorem, with its full programme proof, says that \(\mathbb C(t)\) is a \(C_1\) field. A homogeneous quadratic equation in three variables therefore has a nonzero \(K\)-solution. This gives a point on the conic. Projection from that point, or the degree-one system just described, identifies its function field with \(K(u)\). Thus
+\[
+\mathbb C(S)=\mathbb C(t,u),
+\]
+and \(S\) is rational also in the case \(C^2=0\).
+
+
+Every contracted surface has the same function field as the original model. The produced curve and the last argument therefore give \(\mathbb C(S)=\mathbb C(s,t)\). Since \(\mathbb C(S)=L\), this proves the complex surface case. The argument is independently expressed using the free comparisons [Kumar, Lecture 9], [Mustață, Lecture 5] and [Freed, Lectures 11–12], with the exact earlier programme proofs above. [Castelnuovo] is the original freely readable treatment of the theorem.
 
 **Passage to an arbitrary algebraically closed field of characteristic zero.** Write finitely many field generators of \(L/k\) as rational functions of \(x,y\). Let \(k_0\subseteq k\) be the field generated over \(\mathbb Q\) by their finitely many coefficients, and let
 
@@ -590,7 +947,7 @@ The construction proves the negative existence assertion assigned here. It does 
 
 ## Prerequisites and scope
 
-The general characterizations of separable field extensions, the primitive element theorem, and the dimension theorem for finite-type domains are prerequisites. Castelnuovo's surface theorem uses the full open primary proof with its classical supporting results, explained in §5, and the passage to arbitrary algebraically closed characteristic-zero fields is proved here. Zariski's finiteness theorem is proved in §5 for every ground field, using the explicitly linked geometric prerequisites; the numerical and boundary arguments are supplied here. The Nagata-type linear counterexample is proved in Theorem 1.11. The finite-generation, separating-basis, Lüroth, one-variable intersection and symmetric-invariant assertions taught above have proofs here.
+The general characterizations of separable field extensions, the primitive element theorem, and the dimension theorem for finite-type domains are prerequisites. Castelnuovo's surface theorem is proved in §5 by the plane-domination, adjunction, characteristic-number and rational-pencil arguments, using the exact earlier programme proofs listed there. The passage to every algebraically closed characteristic-zero field and the smaller-transcendence-degree cases are also proved here. Zariski's finiteness theorem is proved in §5 for every ground field, using the explicitly linked geometric prerequisites; the numerical and boundary arguments are supplied here. The Nagata-type linear counterexample is proved in Theorem 1.11. The finite-generation, separating-basis, Lüroth, one-variable intersection and symmetric-invariant assertions taught above have proofs here.
 
 ## References
 
@@ -598,10 +955,6 @@ The general characterizations of separable field extensions, the primitive eleme
 - **[Stacks]** The Stacks Project, [official project](https://stacks.math.columbia.edu/), consulted in **AI Integrated Stacks Project**, an edition with AI-proposed corrections and AI-written additions that have not been reviewed by the Stacks Project's maintainers. [Transcendence](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#section-transcendence), [relative algebraic closure](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#lemma-algebraic-closure-in-finitely-generated), [separability](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#proposition-characterize-separable-field-extensions), and [primitive elements](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#section-primitive-element). The source editions retain their GFDL licence.
 - **[Noether, Rational functions]** Emmy Noether, *Rationale Funktionenkörper*, Jahresbericht der Deutschen Mathematiker-Vereinigung 22 (1913), 316–319; *Körper und Systeme rationaler Funktionen*, Mathematische Annalen 76 (1915), 161–196, especially §§3–6 and §§8–12. [German and English editions](https://github.com/KokunoYumeto/emmy-noether-en).
 - **[Castelnuovo]** Guido Castelnuovo, [Sulla razionalità delle involuzioni piane, full original PDF](https://zenodo.org/records/2461836/files/article.pdf?download=1), Mathematische Annalen 44 (1894), 125–155, DOI 10.1007/BF01446977. Complete article, Chapter I, nos.1–10; Chapter II, nos.11–21. Original public-domain work; linked deposit marked CC0.
-- **[Max Noether, Rational pencils]** Max Noether, [Ueber Flächen, welche Schaaren rationaler Curven besitzen](https://zenodo.org/records/2300748/files/article.pdf?download=1), Mathematische Annalen 3 (1870/1871), 161–227, §§1–4; and [Ueber eine Classe von auf die einfache Ebene abbildbaren Doppelebenen](https://zenodo.org/records/1659261/files/article.pdf?download=1), Mathematische Annalen 33 (1889), §§1–2. Original public-domain works; linked deposits marked CC0.
-- **[Clebsch]** Alfred Clebsch, [Ueber den Zusammenhang einer Classe von Flächenabbildungen mit der Zweitheilung der Abel'schen Functionen](https://zenodo.org/records/2391859/files/article.pdf?download=1), Mathematische Annalen 3 (1870/1871), 45–75, §§4–5; [Ueber die Abbildung algebraischer Flächen, insbesondere der vierten und fünften Ordnung](https://zenodo.org/records/2253908/files/article.pdf?download=1), Mathematische Annalen 1 (1869), 253–316, §§2–4, pp.255–262. Original public-domain works; linked deposits marked CC0.
-- **[Del Pezzo]** Pasquale del Pezzo, [Sulle superficie dell'n-mo ordine immerse nello spazio di n dimensioni](https://archive.org/details/rendicontidelci22palegoog/page/n257/mode/1up), Rendiconti del Circolo Matematico di Palermo 1 (1887), 241–271, especially §§III–IV and VII. Original public-domain work, in the complete first volume's open reader.
-- **[Chanillo]** Sagun Chanillo, [Ramblings on Surfaces](https://sites.math.rutgers.edu/~chanillo/castel.pdf), pp.1–14 consulted as a secondary comparison. The proof provider used in §5 is Castelnuovo's full primary article.
 - **[Liedtke]** Christian Liedtke, [*Algebraic Surfaces in Positive Characteristic*](https://arxiv.org/abs/0912.4291), Section 4, Theorem 4.6 (the rationality criterion of Castelnuovo and Zariski), and Section 9.1, Theorem 9.2 (separably unirational surfaces are rational).
 - **[Zariski, Interprétations]** Oscar Zariski's finiteness theorem of 1954 is proved, for transcendence degree at most two, in Masayoshi Nagata, [*Lectures on the Fourteenth Problem of Hilbert*](https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr31.pdf), Tata Institute of Fundamental Research, 1965, Chapter 5, Theorem 4.
 - **[Schröer]** Stefan Schröer, [On contractible curves on normal surfaces](https://arxiv.org/abs/math/9911119), Journal für die reine und angewandte Mathematik 524 (2000), 1–15; author PDF dated 16 March 2005, §§3 and 6. Consulted as a protected guide for functions on normal surfaces; no source prose imported.
@@ -609,3 +962,7 @@ The general characterizations of separable field extensions, the primitive eleme
 - **[Nagata, Fourteenth problem]** Masayoshi Nagata, [*Lectures on the Fourteenth Problem of Hilbert*](https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr31.pdf), Tata Institute of Fundamental Research, 1965, Chapter 3, which presents the counterexample of 1959.
 
 - **[Totaro]** Burt Totaro, [Hilbert's fourteenth problem over finite fields, and a conjecture on the cone of curves](https://www.math.ucla.edu/~totaro/papers/public_html/hilbert14.pdf), Compositio Mathematica 144 (2008), 1176–1198, §2, Theorem 2.1 and Lemma 2.2. Consulted as a proof guide; the invariant-ring calculation and explicit class sequence in Theorem 1.11 are written out independently here.
+
+- **[Kumar, Lecture 9]** Abhinav Kumar, [MIT 18.727, Algebraic Surfaces, Lecture 9](https://ocw.mit.edu/courses/18-727-topics-in-algebraic-geometry-algebraic-surfaces-spring-2008/01d543f81d0b743f06deed68d9eec77d_lect9.pdf), Spring 2008, pp.1–4: adjunction and the anticanonical genus-one obstruction. Freely accessible lecture notes.
+- **[Mustață, Lecture 5]** Mircea Mustață, [Rationality and unirationality for surfaces](https://public.websites.umich.edu/~mmustata/lecture5_rationality.pdf), §2, Lemma 2.5 and Proposition 2.6. Freely accessible lecture notes. The terminal-adjunction argument is written above; the exceptional positive case uses plane domination and the proved signature identity.
+- **[Freed, Lectures 11–12]** Daniel S. Freed, [Bordism: Old and New, Lecture 11](https://people.math.harvard.edu/~dafr/M392C-2012/Notes/lecture11.pdf), Theorems 11.31, 11.48, 11.66 and equation (11.55), and [Lecture 12](https://people.math.harvard.edu/~dafr/M392C-2012/Notes/lecture12.pdf), rational bordism and projective generators, 2012. Freely accessible author notes; the earlier programme proofs and the dimension-four reduction above supply the results used.

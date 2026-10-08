@@ -112,7 +112,7 @@ An object already in a half is unchanged by that half's truncation, because it r
 
 Here a left or right orthogonal means vanishing of every Hom to or from objects in the other subcategory. To check the converse in the right-orthogonal identity, let \(U=\tau^{\le n-1}X\). The hypothesis kills \(\operatorname{Hom}(U,X)\); adjunction identifies this with \(\operatorname{Hom}(U,U)\), so its identity is zero and \(U=0\). The left-orthogonal converse uses \(V=\tau^{\ge n+1}X\) and \(\operatorname{Hom}(V,V)\simeq\operatorname{Hom}(X,V)\). The first two equivalences then finish both arguments.
 
-Each half is extension closed. For example, if \(X'\to X\to X''\to X'[1]\) is distinguished and both outside objects lie in \(\mathcal D^{\ge n}\), the Hom sequence kills \(\operatorname{Hom}(W,X)\) for every \(W\in\mathcal D^{\le n-1}\). Formula (5) puts \(X\) in the same half. The other half follows by the dual Hom sequence. In particular the heart is extension closed. It contains zero and finite biproducts, using the split triangle \(A\to A\oplus B\to B\); it is an additive category.
+Each half is extension closed. For example, if \(X'\to X\to X^{\prime\prime}\to X'[1]\) is distinguished and both outside objects lie in \(\mathcal D^{\ge n}\), the Hom sequence kills \(\operatorname{Hom}(W,X)\) for every \(W\in\mathcal D^{\le n-1}\). Formula (5) puts \(X\) in the same half. The other half follows by the dual Hom sequence. In particular the heart is extension closed. It contains zero and finite biproducts, using the split triangle \(A\to A\oplus B\to B\); it is an additive category.
 
 ## Cuts commute and finite intervals have a canonical object
 

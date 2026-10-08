@@ -2,7 +2,24 @@
 
 A constant sheaf on a submanifold can have a nonzero microlocal shift even when its ordinary stalk lies in degree zero. The normalization compares a local half-space test with three tangent Lagrangian planes. Once the test's Morse index is removed, the remaining coefficient complex is independent of the test function. Purity means that this normalized complex has one cohomological degree; simplicity also specifies its coefficient module.
 
-Use Composing hypersurface kernels with their shifts and When a kernel quantizes a contact transformation. Throughout, \(X\) is a finite-dimensional smooth real manifold, \(n=\dim X\), and \(k\) is a commutative ring of finite global dimension. Inputs are in \(D^b(k_X)\); coefficient modules need not be finitely generated. We use the exact conormal coefficient-object model, bounded support triangles, and the microlocal half-space test identification stated below. Normal forms and the shift of a submanifold transform binds the exact written parameter Morse proof, and Local existence of contact kernel equivalences proves simultaneous normalization of finitely many smooth conic Lagrangians and transverse auxiliary planes by one hypersurface contact chart. The zero-covector conormal geometry and the conormal index calculation are proved below. The ordered index proof proves alternation, the radical formula, parity, the four-plane cocycle and constant-intersection continuity. The common-pair reduction proof proves the isotropic reduction used below.
+Throughout, \(X\) is a finite-dimensional smooth real manifold, \(n=\dim X\), and \(k\) is a commutative ring with identity and finite global dimension. Inputs are in \(D^b(k_X)\); coefficient modules need not be finitely generated. All smooth Lagrangian and submanifold germs are embedded and without boundary. The calculations concern a selected covector, and local orientation lines are trivialized only on the coordinate neighborhoods used.
+
+The following proof routes specify the inputs to the argument.
+
+| Input | Where it is used |
+| --- | --- |
+| [conormal coefficient model](../../sheaf-proof-readings/src/SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold) | Replaces a complex with conormal microsupport by a bounded coefficient object, including at a zero covector. |
+| [submanifold microlocal Hom](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-submanifold--recovering-microlocalization-from-hom) and [strict-positive stalk formula](../../sheaf-proof-readings/src/SH02/microlocalization.md#sh02-mic-stalks--one-covector-and-strict-positivity) | Identify the closed half-space test with microlocal Hom in (3), with the positive covector and no shift. |
+| [Morse coordinates with parameters](../../SH-03/src/normal-forms-and-the-shift-of-a-submanifold-transform.md#a-nondegenerate-critical-family-has-fixed-quadratic-coordinates) | Fixes the quadratic coordinates for the relative cohomology calculation (5). |
+| [actual submanifold direct-image comparison](../../SH-03/src/normal-forms-and-the-shift-of-a-submanifold-transform.md#the-comparison-becomes-an-isomorphism-at-the-selected-covector) and [submanifold shift with its ordered index](../../SH-03/src/normal-forms-and-the-shift-of-a-submanifold-transform.md#the-submanifold-transforms-ordered-triple) | Compute the represented local image and exponent in (10), including the point endpoint. |
+| [ordered index, parity and cocycle](../../SH-03/src/normal-forms-and-the-shift-of-a-submanifold-transform.md#the-ordered-index-degeneracy-parity-and-the-cocycle) and [common-pair isotropic reduction](../../SH-03/src/normal-forms-and-the-shift-of-a-submanifold-transform.md#reduction-by-an-isotropic-plane-contained-in-two-arguments) | Supply the degeneracy, parity, cocycle and radial reductions used in (6), (9) and (12). |
+| [tangent composition and its regular restrictions](../../SH-03/src/composing-hypersurface-kernels-with-their-shifts.md#transverse-cotangent-projections-give-a-local-composition) and [ordered diagonal identity](../../SH-03/src/composing-hypersurface-kernels-with-their-shifts.md#keeping-the-index-order-through-reduction) | Check the transverse restrictions and the precise order in (E1)–(E3). |
+| [selection of both cotangent regions](../../SH-03/src/local-existence-of-contact-kernel-equivalences.md#a-hypersurface-kernel-realizes-one-factor) and [contact-kernel criterion and microlocal-Hom transport](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md#the-correspondence-and-the-identity-condition) | Confine the whole selected relation to one graph and transport both microlocal-Hom arguments. |
+| [one contact chart for finitely many conic Lagrangians](../../SH-03/src/local-existence-of-contact-kernel-equivalences.md#one-chart-can-normalize-finitely-many-conic-lagrangians) | Normalizes the sheaf's Lagrangian and two test conormals in the proof of test independence. |
+| [represented formal composition](microlocal-composition-at-prescribed-covectors.md#why-the-formal-composition-is-a-bounded-germ) and [graph-germ actions and regional comparison](microlocal-composition-at-prescribed-covectors.md#kernels-that-act-on-every-incoming-germ) | Compare neighborhood images after tensor and proper-support image with the localized operator. |
+| [inverse hypersurface kernel and its graph action](../../SH-03/src/composing-hypersurface-kernels-with-their-shifts.md#the-transpose-needs-the-dimension-shift) | Carries the simple coefficient model back in (19), with the inverse kernel's degree included. |
+
+These results retain their stated smooth-calculus, localization and sheaf-operation prerequisites. The zero-covector geometry, conormal index calculation and deductions of type, purity and simplicity are proved below.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
@@ -21,6 +38,8 @@ Let \(\Lambda\subset T^*X\) be a smooth conic Lagrangian near a point \(p=(x_0;\
 
 The graph \(\Lambda_\varphi\) is Lagrangian but usually is not conic. If \(\Lambda=T_M^*X\), the last condition says that \(x_0\) is a nondegenerate critical point of \(\varphi|_M\). Indeed, in coordinates \(x=(a,b)\) with \(M=\{b=0\}\), a tangent vector common to the graph and the conormal has \(\delta b=0\) and \(\delta\xi_a=0\). The graph condition then reads
 \(\operatorname{Hess}(\varphi|_M)\delta a=0\). The common tangent vanishes exactly when this Hessian is invertible.
+
+Transverse tests exist at every such point. In cotangent coordinates let \(P\) be the base projection of the Lagrangian plane \(A=T_p\Lambda\). Its vertical intersection is the annihilator \(P^\perp\). The momentum of a lift of \(u\in P\), restricted to \(P\), is consequently well defined; isotropy makes it a symmetric form \(S\) on \(P\). Choose a symmetric form \(H\) on the whole base tangent space whose restriction to \(P\) differs from \(S\) by a positive definite form. A vector common to \(A\) and the graph of \(H\) has \((H|_P-S)u=0\), hence \(u=0\), and is therefore zero. The function with linear term \(\xi_0\) and quadratic term \(H/2\), centered at \(x_0\), realizes this transverse graph and satisfies (1).
 
 Assume \(\operatorname{SS}(F)\subset\Lambda\) on a cotangent neighborhood of \(p\). Put
 
@@ -45,7 +64,7 @@ C_\varphi(F)\simeq
 
 with the positive covector \(d\varphi(x_0)\), no additional shift, and compatibility with representatives and morphisms. Here is the exact derivation from the hypersurface microlocalization and stalk theorems `SH02-MH-SUBMANIFOLD` and `SH02-MIC-STALKS`.
 
-Write \(H=\{\varphi=0\}\) and use \(h=\varphi\) as a normal coordinate near \(x_0\). The stalk theorem computes \((\mu_HF)_p\) by local closed supports \(Z\) whose normal cone at \(x_0\) lies in the positive normal half-line, together with zero. Every such support germ is contained in \(\{h\geq0\}\). Indeed, otherwise points \((a_j,h_j)\in Z\) would approach \(x_0\) with \(h_j<0\); in the normal deformation take positive parameters \(t_j=-h_j\). Their normal coordinates \(h_j/t_j=-1\) exhibit a negative vector in \(C_H(Z)_{x_0}\), contrary to the strict pairing condition. Conversely the normal cone of \(\{h\geq0\}\) is the nonnegative normal half-line. Thus this closed half-space is terminal among the allowed support germs. The natural support maps identify the stalk colimit with \((R\Gamma_{\{h\geq0\}}F)_{x_0}\) in every cohomological degree, hence as a bounded derived object. The submanifold-Hom theorem identifies \(\mu hom(k_H,F)_p\) with \((\mu_HF)_p\), without an antipodal map or residual codimension shift. This proves (3) naturally for arbitrary bounded \(F\). Smooth-Lagrangian containment and graph transversality are additionally needed for test independence, rather than for this comparison alone.
+Write \(H=\{\varphi=0\}\) and use \(h=\varphi\) as a normal coordinate near \(x_0\). The stalk theorem computes \((\mu_HF)_p\) by local closed supports \(Z\) whose normal cone at \(x_0\) lies in the positive normal half-line, together with zero. Every such support germ is contained in \(\{h\geq0\}\). Indeed, otherwise points \((a_j,h_j)\in Z\) would approach \(x_0\) with \(h_j<0\); in the normal deformation take positive parameters \(t_j=-h_j\). Their normal coordinates \(h_j/t_j=-1\) exhibit a negative vector in \(C_H(Z)_{x_0}\), contrary to the strict pairing condition. Conversely the normal cone of \(\{h\geq0\}\) is the nonnegative normal half-line. Thus this closed half-space is terminal among the allowed support germs. The support maps in the stalk construction give a morphism from this terminal support complex to \((\mu_HF)_p\). The stalk formula makes that morphism an isomorphism on every cohomology module, so it is a quasi-isomorphism of bounded complexes. This uses a specified comparison map, rather than inferring a derived isomorphism from abstractly isomorphic cohomology modules. The submanifold-Hom theorem identifies \(\mu hom(k_H,F)_p\) with \((\mu_HF)_p\), without an antipodal map or residual codimension shift. This proves (3) naturally for arbitrary bounded \(F\). Smooth-Lagrangian containment and graph transversality are additionally needed for test independence, rather than for this comparison alone.
 
 There is also a direct check that replacing \(F\) by an isomorphic point-localized representative does not change (2). The cone of such a replacement has microsupport avoiding \(p\). The defining microsupport vanishing test for the function \(\varphi\) makes its local support complex zero. Applying the support functor therefore makes the replacement invertible. Thus the conormal coefficient-object model can be used in the calculation below.
 
@@ -108,7 +127,7 @@ The right side contains no test function. This is the cancellation that the gene
 
 ## A hypersurface contact kernel transports the corrected test
 
-Let \(\chi:T^*X\to T^*X'\) be a local contact transformation at the nonzero covector \(p\), with \(\dim X'=n\). Suppose its graph, using the antipodal input convention, is the conormal of a smooth hypersurface \(S\subset X'\times X\). Set \(K=k_S\), let \(p'=\chi(p)\), and let \(T(F)=\Phi_K(F)\) denote the corresponding localized transform. In \(E=T_pT^*X\), set
+Let \(\chi:T^*X\to T^*X'\) be a local homogeneous contact transformation at the nonzero covector \(p\), with \(\dim X'=n\). Suppose its physical graph, using the antipodal input convention, is an open conormal piece of a smooth hypersurface \(S\subset X'\times X\). Restrict to a local closed hypersurface representative and paired open cotangent regions around \(p'=\chi(p)\) and \(p\), as in [selection of both cotangent regions](../../SH-03/src/local-existence-of-contact-kernel-equivalences.md#a-hypersurface-kernel-realizes-one-factor). The entire microsupport selected by either projection then lies in this one graph. Its two projections are homeomorphisms and are proper on these regions; the constant hypersurface coefficient is constructible and its identity-induced self microlocal Hom is the constant identity. Thus [contact-kernel criterion and microlocal-Hom transport](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md#the-correspondence-and-the-identity-condition) applies to \(K=k_S\). Write \(T(F)=\Phi_K(F)\) for this localized transform. In \(E=T_pT^*X\), set
 
 \[
 V'=\chi_*^{-1}\bigl(T_{p'}\pi_{X'}^{-1}(\pi_{X'}p')\bigr).
@@ -159,8 +178,12 @@ These are two comparisons of the same lifted triple (E1). Reducing its middle di
  (\,V^a\oplus V,\ (V')^a\oplus B_H,\ \Delta_X\,).
  \tag{E2}
 \]
-The same diagonal identity as in the ordered hypersurface-composition proof gives
-\(\tau_W=\tau(V,V,B_H,V')=\tau(V,B_H,V')\); the triangle index with repeated \(V\) is zero. The point endpoint contributes the zero symplectic space and no index term. Thus the order is exactly the one in (10).
+For clarity, the [ordered diagonal identity](../../SH-03/src/composing-hypersurface-kernels-with-their-shifts.md#keeping-the-index-order-through-reduction) reads
+\[
+ \tau_{E^a\oplus E}(V^a\oplus V,C^a\oplus D,\Delta_E)
+ =\tau_E(V,D,C).
+\]
+Apply it with \(C=V'\) and \(D=B_H\). It gives \(\tau_W=\tau(V,B_H,V')\). The point endpoint contributes the zero symplectic space and no index term. Thus the order is exactly the one in (10).
 
 Here \(\dim W=2n-1\) and the target hypersurface has dimension \(n-1\). The transverse submanifold-transform formula consequently gives
 \[
@@ -172,7 +195,7 @@ This is the exponent in (10). Local coordinate orientations give the same normal
 
 Finally identify the functor, not just this exponent. On a small ambient product neighborhood, stalkwise flatness of the constant closed-support sheaf gives
 \(k_S\otimes^L q_X^{-1}k_H=k_N\).
-The closed-embedding projection formula therefore identifies its proper-support image with \(Rf_!k_N\), with the neighborhood restriction retained. Product neighborhoods and their intersections with \(W\) give bases for these local images. The contact graph isolates the chosen middle covector. The refined cutoff and formal-comparison theorem for composition at prescribed covectors identifies the represented formal system of these images with the localized transform \(T(k_H)\), after tensor and direct image. This uses the selected local graph's admissibility; it neither assumes global properness of \(f\) nor substitutes ordinary base restrictions for all microlocal denominators. The submanifold-transform comparison now proves (10) as an isomorphism in the stated output germ category.
+The closed-embedding projection formula therefore identifies its proper-support image with \(Rf_!k_N\), with the neighborhood restriction retained. Product neighborhoods and their intersections with \(W\) give bases for these local images. The contact graph isolates the chosen middle covector. The refined cutoff and formal-comparison theorem for [represented formal composition](microlocal-composition-at-prescribed-covectors.md#why-the-formal-composition-is-a-bounded-germ) identifies the represented formal system of these images with the localized transform \(T(k_H)\), after tensor and direct image. The comparison for [graph-germ actions and regional comparison](microlocal-composition-at-prescribed-covectors.md#kernels-that-act-on-every-incoming-germ) applies because the entire selected relation lies in the graph fixed above. This uses that representative's admissibility; it neither assumes global properness of \(f\) nor substitutes ordinary base restrictions for all microlocal denominators. The submanifold-transform comparison now proves (10) as an isomorphism in the stated output germ category.
 
 
 Contact transport of microlocal Hom, with both its arguments transported, and (3) therefore give
@@ -281,7 +304,12 @@ For the conormal model \(F=Q_M[s]\), equations (5)–(6) give
 
 Thus \(k_M\) is simple with shift \(c/2\). More generally \(Q_M[s]\) has type \(Q\) with shift \(s+c/2\). This remains true for a zero conormal covector when the stated local conormal assumptions hold.
 
-For a smooth boundary \(h=0\) at its positive covector \(dh\), the closed upper-side sheaf \(k_{\{h\geq0\}}\) is isomorphic in the point-localized category to \(k_{\{h=0\}}\). The boundary triangle gives
+For a smooth boundary \(h=0\) at its positive covector \(dh\), use the triangle
+\[
+ k_{\{h>0\}}\longrightarrow k_{\{h\geq0\}}
+ \longrightarrow k_{\{h=0\}}\xrightarrow{+1}.
+\]
+The open upper-side sheaf has only negative nonzero boundary conormals, so the first term vanishes in the localization at \(dh\). Hence \(k_{\{h\geq0\}}\simeq k_{\{h=0\}}\) there. The other boundary triangle gives
 \(k_{\{h\geq0\}}\simeq k_{\{h<0\}}[1]\) there: the whole constant sheaf in that triangle is null at a nonzero covector. Therefore the closed upper side is simple with shift \(1/2\), while the open lower side is simple with shift \(-1/2\). They refer to the same positive boundary covector, despite lying on opposite sides in the base.
 
 ## Contact transport changes the shift by a specified index
@@ -315,7 +343,7 @@ is open and closed in \(\Lambda\cap U\).
 
 In the conormal chart, (16) says that the possible type complexes are exactly the integer shifts of the fixed \(Q\). Membership in the set (18) is therefore constant throughout the chart. Formula (17) preserves the coefficient type while adjusting the allowed shift; its inverse gives the converse implication. Every point consequently has a neighborhood wholly in (18) or wholly in its complement. Both sets are open, proving the assertion. This does not say that a numerical shift is constant across a varying projection rank. \(\square\)
 
-Locally there is also a useful object decomposition. If \(F\) has type \(L\), choose a simple object \(G\) at the point so that
+Assume \(1_k\ne0\) for the following simple-object construction. Locally there is also a useful object decomposition. If \(F\) has type \(L\), choose a simple object \(G\) at the point so that
 
 \[
 F\simeq L_X\otimes^L G
@@ -323,7 +351,7 @@ F\simeq L_X\otimes^L G
 \tag{19}
 \]
 
-To construct it, take the conormal chart just used. Its coefficient model for \(F\) is \(Q_M\); if its normalized type is \(L\), (16) identifies \(Q\) with an integral shift of \(L\). Take the correspondingly shifted \(k_M\) and carry it back by the inverse contact kernel. It is simple by (17). The constant-coefficient projection formula makes the inverse transform commute with tensoring by the arbitrary bounded \(L\), yielding (19). No choice of a global simple generator, preferred orientation line or full categorical equivalence of coefficient morphisms is asserted by this local object construction.
+To construct it, take the conormal chart just used. Its coefficient model for \(F\) is \(Q_M\); if its normalized type is \(L\), (16) identifies \(Q\) with an integral shift of \(L\). Take the correspondingly shifted \(k_M\) and carry it back by the [inverse hypersurface kernel and its graph action](../../SH-03/src/composing-hypersurface-kernels-with-their-shifts.md#the-transpose-needs-the-dimension-shift): on the selected local graph it is \(k_{S^{\mathrm t}}[n-1]\). Formula (17), followed by the kernel-shift rule (15), makes its image simple. Since this inverse is itself a proper-support kernel transform, the constant-coefficient projection formula makes it commute with tensoring by the arbitrary bounded \(L\), yielding (19). This argument retains the derived tensor and does not require \(L\) to be perfect. At a zero covector, the ordinary conormal model gives the same decomposition directly. No choice of a global simple generator, preferred orientation line or full categorical equivalence of coefficient morphisms is asserted by this local object construction.
 
 ## Exercises with complete solutions
 
@@ -401,6 +429,6 @@ Masaki Kashiwara and Pierre Schapira's [Microlocal study of sheaves](https://web
 
 Pierre Schapira's [A short review on microlocal sheaf theory](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), dated 19 January 2016, §5.2, pp. 26–27, provides a qualitative comparison of purity and simplicity. Its proof references and discussion of the Maslov shift refer elsewhere. It is not used here as a complete proof of numerical normalization, the conormal coefficient-object model or contact equivalence.
 
-This download contains the comparisons and solved examples written above, including the zero-covector conormal geometry, but not the complete preceding programme providers. Those dependencies include the conormal coefficient-object model, `SH02-MH-SUBMANIFOLD`, `SH02-MIC-STALKS`, the parameter Morse and submanifold-transform proofs, simultaneous contact normalization, and the ordered-index and common-pair reduction proofs. Their exact revision bindings remain to be supplied before claiming a closed proof chain. Arbitrary bounded coefficients, zero covectors and the stated nonzero-ring qualification on simplicity are retained.
+The programme proof routes at the start supply the coefficient-object, support-test, contact, index and formal-image statements used in this lesson. The source comparisons above distinguish their stronger bounded-object scope from the historical cohomology formulation. The linked providers state the further hypotheses of their own foundational inputs.
 
-The lesson and solutions are independently written teaching. No human source text or figures are reproduced; the original AI expression is CC0. The source comparison does not certify the transitive prerequisites or the whole parent course.
+The lesson and its eight solutions are independently written teaching. Human sources retain their own terms; CC0 applies to the original programme expression. No human source text or figures are reproduced.

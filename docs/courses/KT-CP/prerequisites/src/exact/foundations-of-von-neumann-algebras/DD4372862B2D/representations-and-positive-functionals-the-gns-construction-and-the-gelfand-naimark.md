@@ -2,13 +2,13 @@
 
 <a id="representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark-theorem"></a>
 
-*Original lesson by Claude Opus 5.5 (Anthropic). Learner routes, explanatory checkpoints and proof self-checks by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. The arbitrary-involution results 4.4a–4.4c, their diagram and checkpoint were written and self-checked by GPT-6 Astra (OpenAI), at Ultra. Original course contributions: CC0. The credited Westerbaan checkpoint and its added solution retain CC BY 4.0.*
+*Original lesson by Claude Opus 5.5 (Anthropic). Learner routes, explanatory checkpoints and proof self-checks by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. The arbitrary-involution results 4.4a–4.4c, their diagram and checkpoint were written and self-checked by GPT-6 Astra (OpenAI), at Ultra. Original course contributions: CC0.*
 
 Suppose a scalar observation \(\omega\) assigns a nonnegative number to every square \(x^*x\). Can we find a Hilbert space, an action of the algebra on it, and a vector whose observation is exactly \(\omega\)? Instead of guessing the Hilbert space, use \(\omega(y^*x)\) as the inner product of the algebra elements themselves. The obstacles are visible: some nonzero elements can have length zero, multiplication must descend to the quotient, and a cyclic vector must represent the original scalar functional.
 
 The route follows these obstacles. We define representations and positive functionals, establish their norm estimates, construct the quotient Hilbert space and its left action, and assemble enough of these actions to obtain a faithful representation of every C*-algebra. Only then do we ask whether an action is irreducible and how a state splits. The later branch treats involutive Banach algebras in full generality: factorization, enveloping C*-algebras, group examples and pure states. The final applications concern compact operators, symmetry and the dimension of the constructed space.
 
-The matrix checkpoint below is adapted from a human-authored exercise. It shows why the null space is a left ideal rather than an algebra ideal. The complete GNS theorem still applies to the stated general involutive Banach algebras; the matrix calculation is an illustration of its mechanism.
+The matrix checkpoint below shows why the null space is a left ideal rather than an algebra ideal. The complete GNS theorem still applies to the stated general involutive Banach algebras; the matrix calculation is an illustration of its mechanism.
 
 Further treatment of positive functionals and representations is in [Takesaki I, Chapter I] and the corrected author edition [Blackadar].
 
@@ -358,25 +358,19 @@ Section 6 shows that the continuity assumption is automatic. Without an approxim
 
 The argument of (1) also shows that every positive linear map between C\*-algebras is bounded; see Completely positive maps.
 
-### Worked checkpoint: a state's seminorm remembers one column
+### Worked checkpoint: the seminorm of a vector state
 
-*Adapted from A. A. Westerbaan, The Category of Von Neumann Algebras (2019), supplied LaTeX source, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This worked checkpoint, including its adaptation and added solution, retains that licence. The adaptation uses this course's inner product convention and supplies the calculations.*
-
-On \(M_2(\mathbb C)\), take the vector state \(\omega(a)=\langle ae_1,e_1\rangle\), where \(e_1=(1,0)\). Its seminorm is \(\|a\|_\omega=\omega(a^*a)^{1/2}=\|ae_1\|\). Thus it remembers the first column and forgets the second. The triangle inequality follows from the vector norm; the same formula gives \(|\omega(b^*a)|\le\|a\|_\omega\|b\|_\omega\) by Hilbert-space Cauchy–Schwarz.
-
-Put
+On \(M_2(\mathbb C)\) let \(\xi=\tfrac1{\sqrt2}(1,1)\) and \(\omega(a)=\langle a\xi,\xi\rangle\). This is a state, and its seminorm is
 \[
-p=\frac12\begin{pmatrix}1&1\\1&1\end{pmatrix},\qquad
-q=\begin{pmatrix}0&0\\0&1\end{pmatrix}.
+\|a\|_\omega=\omega(a^*a)^{1/2}=\langle a^*a\xi,\xi\rangle^{1/2}=\|a\xi\|.
 \]
-Both are orthogonal projections, hence have operator norm one. Direct multiplication gives \(p^2=p\), \(\|p\|_\omega=1/\sqrt2\), \(\|q\|_\omega=0\), and
-\[
-qp=\frac12\begin{pmatrix}0&0\\1&1\end{pmatrix},\qquad
-\|qp\|_\omega=\frac12.
-\]
-Consequently the estimate \(\|ab\|_\omega\le\|a\|_\omega\|b\|\) fails with \(a=q,b=p\); so does the estimate with \(\|b\|_\omega\) on the right. Also \(\|p^*p\|_\omega=1/\sqrt2\ne\|p\|_\omega^2=1/2\). The seminorm is not a C*-norm. Taking \(a=e_{12}\) gives \(\|a\|_\omega=0\) but \(\|a^*\|_\omega=1\), so the null space is not self-adjoint.
+So \(\|a\|_\omega\) sees only the vector \(a\xi\), and \(N_\omega=\{a:a\xi=0\}\) consists of the matrices whose two columns add up to zero.
 
-The correct estimate has the factors in the opposite roles: \(\|ab\|_\omega=\|abe_1\|\le\|a\|\|be_1\|=\|a\|\|b\|_\omega\). It implies that the null space is stable under multiplication on the left. In this example the map \(a+N_\omega\mapsto ae_1\) is well defined and isometric. It is onto \(\mathbb C^2\), because every vector is the first column of some matrix. Under this identification the GNS action is the usual matrix action and the cyclic vector is \(e_1\). This is the entire construction in a model we can compute. Lemma 4.5 supplies the corresponding multiplication estimate in the general involutive Banach algebra.
+1. *\(N_\omega\) is not self-adjoint.* The matrix \(a=\begin{pmatrix}1&-1\\0&0\end{pmatrix}\) satisfies \(a\xi=0\), but \(a^*=\begin{pmatrix}1&0\\-1&0\end{pmatrix}\) gives \(a^*\xi=\tfrac1{\sqrt2}(1,-1)\neq0\).
+2. *\(N_\omega\) is not a right ideal, and \(\|ab\|_\omega\le\|a\|_\omega\|b\|\) fails.* With the same \(a\) and \(b=\begin{pmatrix}1&0\\0&0\end{pmatrix}\), we get \(ab=b\), so \(\|ab\|_\omega=\|b\xi\|=1/\sqrt2\), although \(\|a\|_\omega\|b\|=0\).
+3. *\(\|\cdot\|_\omega\) is not a C\*-norm.* For the same \(b\), \(b^*b=b\), so \(\|b^*b\|_\omega=1/\sqrt2\), while \(\|b\|_\omega^2=1/2\).
+
+The estimate that does hold puts the operator norm on the left factor: \(\|ab\|_\omega=\|ab\xi\|\le\|a\|\,\|b\xi\|=\|a\|\,\|b\|_\omega\). It shows that \(N_\omega\) is a left ideal. Here \(a+N_\omega\mapsto a\xi\) is a well-defined isometry from \(A/N_\omega\) onto \(\mathbb C^2\): every vector \(v\) equals \(a\xi\) for the rank-one matrix \(a=v\xi^*\). Under this identification the GNS representation is the matrix action on \(\mathbb C^2\), with cyclic vector \(\Lambda_\omega(1)=\xi\). Lemma 4.5 supplies the corresponding multiplication estimate in a general involutive Banach algebra.
 
 ### 5. The Gelfand–Naimark–Segal construction
 
@@ -1193,6 +1187,6 @@ u_iz^*zu_i\\
 
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C*-Algebras and von Neumann Algebras*, [revised author edition, 8 February 2017](https://www.bruceblackadar.com/Mathematics/Cycr.pdf).
 
-- **Westerbaan.** A. A. Westerbaan, *The Category of Von Neumann Algebras*, doctoral thesis, Radboud University, 2019. [Human-authored LaTeX source](https://github.com/westerbaan/theses/blob/bff9e58239a125af7d77a7ebacd686a21f761e42/cstar.tex), [thesis record](https://arxiv.org/abs/1804.02203). CC BY 4.0; the credited worked checkpoint is adapted from this source.
+- **Westerbaan.** A. A. Westerbaan, *The Category of Von Neumann Algebras*, doctoral thesis, Radboud University, 2019. [Human-authored LaTeX source](https://github.com/westerbaan/theses/blob/bff9e58239a125af7d77a7ebacd686a21f761e42/cstar.tex), [thesis record](https://arxiv.org/abs/1804.02203). Further reading on the GNS construction.
 
 *Freely accessible reading:* [Kristin Courtney; Elizabeth Gillaspy; Lara Ismert, *Notes on C*-algebras: Notes and Exercises for GOALS*, §7.8–§7.12](https://www.ipam.ucla.edu/wp-content/uploads/2024/07/Notes_and_Exercises_for_GOALS.pdf) gives a route through unital GNS and norming-state constructions; omitted verifications and the nonunital and Banach-* cases are proved here. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.

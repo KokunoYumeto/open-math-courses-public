@@ -31,7 +31,7 @@
 </aside>
 <article class="lesson">
 <h1 id="the-riemann-hypothesis-and-its-standard-equivalents">The Riemann hypothesis and its standard equivalents</h1>
-<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and calculations are public domain (CC0). The identified adaptation in Sections 6.1–6.5 retains CC BY 4.0.</em></p>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Sections 6.1–6.5 written and self-checked by Claude Opus 5.5 (Anthropic). Self-check is by the writing AI. Original exposition and calculations are public domain (CC0).</em></p>
 <p>The Riemann hypothesis says that every nontrivial zero has real part one half. Through the explicit formula, this gives a square-root scale for the error in counting primes. Conversely, a sufficiently small prime-counting error continues the logarithmic derivative into a larger half-plane and excludes zeros there. We prove both directions and the corresponding equivalents involving the Möbius function. We then develop the divisor-sum and fractional-part approximation criteria, connecting the latter to a full Mellin-space proof. Exact lessons supply the positivity criteria and the finite-field theorem. These different formulations also explain what finite numerical evidence can establish.</p>
 <p>The functional equation and zero symmetries are proved in <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>. We use <a href="NT-ZETA-11.html">Perron's formula and the explicit formula for prime counting</a>, Theorem 2.2, and the zero-count estimates in <a href="NT-ZETA-10.html">Counting the zeros</a>, Theorem 4.1. Partial summation and prime-power comparisons come from <a href="NT-ZETA-02.html">Counting primes by elementary means</a>. The bounded-coefficient Perron formula is <a href="NT-ZETA-12.html">The prime number theorem with the classical error term</a>, Lemma 3.1. The analytic bridge below uses the fully proved Borel–Carathéodory and strip-interpolation arguments from lessons five and six.</p>
 <p>Write <span class="math" data-tex="$M(x)=\sum_{n\le x}\mu(n)$">$M(x)=\sum_{n\le x}\mu(n)$</span>, <span class="math" data-tex="$\psi(x)=\sum_{n\le x}\Lambda(n)$">$\psi(x)=\sum_{n\le x}\Lambda(n)$</span> and <span class="math" data-tex="$\theta(x)=\sum_{p\le x}\log p$">$\theta(x)=\sum_{p\le x}\log p$</span>. Here <span class="math" data-tex="$\psi$">$\psi$</span> never denotes the gamma logarithmic derivative. Set <span class="math" data-tex="$\tau=|t|+4$">$\tau=|t|+4$</span>. We use <span class="math" data-tex="$\operatorname{li}(x)=\operatorname{Ei}(\log x)$">$\operatorname{li}(x)=\operatorname{Ei}(\log x)$</span>, rather than the shifted integral <span class="math" data-tex="$\operatorname{Li}(x)=\int_2^xdu/\log u$">$\operatorname{Li}(x)=\int_2^xdu/\log u$</span>.</p>
@@ -299,256 +299,180 @@ $$">$$
 \tag{6.2}
 $$</span>
 When RH holds, equality in (6.2) occurs only at <span class="math" data-tex="$n=1$">$n=1$</span>.</p>
-<p><strong>Proof source and licence.</strong> The mathematical reconstruction in Sections 6.1–6.5 below adapts Jonas Whidden's freely readable <a href="https://github.com/kimihiro64/Robin1984/releases/tag/v1.1.1">release 1.1.1</a>, at its <a href="https://github.com/kimihiro64/Robin1984/tree/acab1a31f31e0499518a4416b63281e0b4838f9c">pinned revision</a>. That adaptation retains <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The criterion is Robin's, and the harmonic criterion is Lagarias's; <a href="https://arxiv.org/pdf/math/0008177v2">Lagarias's free author preprint</a>, version 2, supplies a second comparison source. Changes in this exposition are the direct floor-count proof of the prime-power estimate, the displayed endpoint and kernel calculations, and a separate exact integer verification of the entire finite range. The 36 interval, parameter and cutoff choices are retained from the freely released certificate; their bounds are recomputed here. The new verifier and its original explanation are CC0. The arguments are given here; the companion remains an optional reading source.</p>
-<h3 id="6-1-the-exponent-budget-and-two-weighted-prime-errors">6.1. The exponent budget and two weighted prime errors</h3>
-<p>Put <span class="math" data-tex="$A(n)=\sigma_1(n)/n$">$A(n)=\sigma_1(n)/n$</span>, <span class="math" data-tex="$h=\log n$">$h=\log n$</span>, and
+<p><strong>Sources.</strong> Robin proved that RH is equivalent to (6.1), and Lagarias deduced the harmonic form (6.2); Lagarias's <a href="https://arxiv.org/pdf/math/0008177v2">free author preprint</a>, version 2, treats both. Jonas Whidden's <a href="https://github.com/kimihiro64/Robin1984/releases/tag/v1.1.1">release 1.1.1</a>, at its <a href="https://github.com/kimihiro64/Robin1984/tree/acab1a31f31e0499518a4416b63281e0b4838f9c">pinned revision</a>, gives a formally verified proof of Robin's criterion. The proof below follows the same overall plan: an explicit budget for each integer under RH, an analytic gap for very large integers, an interval certificate for the remaining heights, and an oscillation argument for the converse. The 36 intervals, parameters and cutoffs of Section 6.3 are those of Whidden's certificate; all bounds for them are recomputed by the verifier given there.</p>
+<h3 id="6-1-weighted-prime-errors-and-a-budget-for-each-integer">6.1. Weighted prime errors and a budget for each integer</h3>
+<p>We write <span class="math" data-tex="\(A(n)=\sigma_1(n)/n\)">\(A(n)=\sigma_1(n)/n\)</span> and <span class="math" data-tex="\(h=\log n\)">\(h=\log n\)</span>, and put
 <span class="math math-display" data-tex="$$
-\mathcal R(n)=\log A(n)-\gamma-\log\log h.
+\mathcal R(n)=\log A(n)-\gamma-\log\log h ,
 $$">$$
-\mathcal R(n)=\log A(n)-\gamma-\log\log h.
+\mathcal R(n)=\log A(n)-\gamma-\log\log h ,
 $$</span>
-Thus (6.1) is <span class="math" data-tex="$\mathcal R(n)&lt;0$">$\mathcal R(n)&lt;0$</span>. The symbol <span class="math" data-tex="$\mathcal R$">$\mathcal R$</span> has no relation to the Möbius sum <span class="math" data-tex="$M(x)$">$M(x)$</span>.</p>
-<p>For an integer <span class="math" data-tex="$m\ge1$">$m\ge1$</span>, and <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>, define
+so that (6.1) is the statement <span class="math" data-tex="\(\mathcal R(n)&lt;0\)">\(\mathcal R(n)&lt;0\)</span>. This <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> is unrelated to the Möbius sum <span class="math" data-tex="\(M(x)\)">\(M(x)\)</span>. Prime-counting errors are weighted by the positive kernels
 <span class="math math-display" data-tex="$$
-w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}
-       =-\frac{d}{dt}\frac{t^{-m}}{\log t},\qquad
-I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,
+w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}=-\frac{d}{dt}\,\frac{t^{-m}}{\log t}\qquad(m\ge1,\ t&gt;1),
 $$">$$
-w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}
-       =-\frac{d}{dt}\frac{t^{-m}}{\log t},\qquad
-I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,
+w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}=-\frac{d}{dt}\,\frac{t^{-m}}{\log t}\qquad(m\ge1,\ t&gt;1),
+$$</span>
+for which <span class="math" data-tex="\(\int_x^\infty w_m(t)\,dt=x^{-m}/\log x\)">\(\int_x^\infty w_m(t)\,dt=x^{-m}/\log x\)</span>. For <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span> let
+<span class="math math-display" data-tex="$$
+I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,\qquad
+P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,
+$$">$$
+I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,\qquad
+P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,
 $$</span>
 <span class="math math-display" data-tex="$$
-P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,\qquad
-K_m(r,x)=\int_x^\infty t^r w_m(t)\,dt\quad(\Re r&lt;m).
+K_m(r,x)=\int_x^\infty t^rw_m(t)\,dt\qquad(\operatorname{Re}r&lt;m).
 \tag{6.3}
 $$">$$
-P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,\qquad
-K_m(r,x)=\int_x^\infty t^r w_m(t)\,dt\quad(\Re r&lt;m).
+K_m(r,x)=\int_x^\infty t^rw_m(t)\,dt\qquad(\operatorname{Re}r&lt;m).
 \tag{6.3}
 $$</span>
-The classical error estimate proved in lesson twelve makes the <span class="math" data-tex="$I_1$">$I_1$</span> integral absolutely convergent. Chebyshev and the prime-power comparison in lesson two give absolute convergence of the other integrals used below.</p>
-<p><strong>Lemma 6.3 (weighted explicit formula, with its endpoint).</strong> Under RH, for <span class="math" data-tex="$m\ge1$">$m\ge1$</span> and <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,
+For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span> these integrals converge absolutely by Chebyshev's bound from lesson two. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the classical error term of lesson twelve gives absolute convergence of <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, and the bound <span class="math" data-tex="\(\psi(t)-\theta(t)\ll\sqrt t\log t\)">\(\psi(t)-\theta(t)\ll\sqrt t\log t\)</span> from lesson two gives it for <span class="math" data-tex="\(P_1\)">\(P_1\)</span>.</p>
+<p><strong>Lemma 6.3 (weighted explicit formula, with its endpoint).</strong> Assume RH. For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>,
 <span class="math math-display" data-tex="$$
 I_m(x)=-\sum_\rho\frac{K_m(\rho,x)}{\rho}-T_m(x),\qquad
-0\le T_m(x)\le\frac{\log(2\pi)x^{-m}}{\log x},
+T_m(x)=\int_x^\infty w_m(t)\bigl(\log(2\pi)+\tfrac12\log(1-t^{-2})\bigr)\,dt,
 \tag{6.4}
 $$">$$
 I_m(x)=-\sum_\rho\frac{K_m(\rho,x)}{\rho}-T_m(x),\qquad
-0\le T_m(x)\le\frac{\log(2\pi)x^{-m}}{\log x},
+T_m(x)=\int_x^\infty w_m(t)\bigl(\log(2\pi)+\tfrac12\log(1-t^{-2})\bigr)\,dt,
 \tag{6.4}
 $$</span>
-where
+where the sum over nontrivial zeros, with multiplicity, converges absolutely and <span class="math" data-tex="\(0\le T_m(x)\le\log(2\pi)\,x^{-m}/\log x\)">\(0\le T_m(x)\le\log(2\pi)\,x^{-m}/\log x\)</span>. With <span class="math" data-tex="\(c_0=\gamma+2-\log(4\pi)\)">\(c_0=\gamma+2-\log(4\pi)\)</span> and
 <span class="math math-display" data-tex="$$
-T_m(x)=\int_x^\infty w_m(t)
- \left(\log(2\pi)+\tfrac12\log(1-t^{-2})\right)\,dt.
+B_m(x)=\frac{c_0x^{1/2-m}}{\log x}\Bigl(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\Bigr),
 $$">$$
-T_m(x)=\int_x^\infty w_m(t)
- \left(\log(2\pi)+\tfrac12\log(1-t^{-2})\right)\,dt.
+B_m(x)=\frac{c_0x^{1/2-m}}{\log x}\Bigl(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\Bigr),
 $$</span>
-Zeros are counted with multiplicity. Put <span class="math" data-tex="$c_0=\gamma+2-\log(4\pi)$">$c_0=\gamma+2-\log(4\pi)$</span>. Then
+one has
 <span class="math math-display" data-tex="$$
-\begin{gathered}
--B_m(x)-\frac{\log(2\pi)x^{-m}}{\log x}
-\le I_m(x)\le B_m(x),\\
-B_m(x)=\frac{c_0x^{1/2-m}}{\log x}
-  \left(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\right).
-\end{gathered}
+-B_m(x)-\frac{\log(2\pi)\,x^{-m}}{\log x}\le I_m(x)\le B_m(x).
 \tag{6.5}
 $$">$$
-\begin{gathered}
--B_m(x)-\frac{\log(2\pi)x^{-m}}{\log x}
-\le I_m(x)\le B_m(x),\\
-B_m(x)=\frac{c_0x^{1/2-m}}{\log x}
-  \left(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\right).
-\end{gathered}
+-B_m(x)-\frac{\log(2\pi)\,x^{-m}}{\log x}\le I_m(x)\le B_m(x).
 \tag{6.5}
 $$</span></p>
-<p><strong>Proof.</strong> For <span class="math" data-tex="$m\ge2$">$m\ge2$</span>, integrate the truncated explicit formula of lesson eleven, Theorem 2.2, against <span class="math" data-tex="$w_m$">$w_m$</span>, and let its height <span class="math" data-tex="$T$">$T$</span> tend to infinity. Its first remainder contributes at most
+<p><strong>Proof.</strong> <em>The zero kernels.</em> Fix a zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, put <span class="math" data-tex="\(a=\rho-m\)">\(a=\rho-m\)</span>, so that <span class="math" data-tex="\(\operatorname{Re}a=1/2-m&lt;0\)">\(\operatorname{Re}a=1/2-m&lt;0\)</span> under RH, and let <span class="math" data-tex="\(J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt\)">\(J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt\)</span>. Since <span class="math" data-tex="\(w_m\)">\(w_m\)</span> is minus the derivative of <span class="math" data-tex="\(t^{-m}/\log t\)">\(t^{-m}/\log t\)</span>, one integration by parts gives <span class="math" data-tex="\(K_m(\rho,x)=x^{\rho-m}/\log x+\rho J_1(a,x)\)">\(K_m(\rho,x)=x^{\rho-m}/\log x+\rho J_1(a,x)\)</span>. Two further integrations by parts, with <span class="math" data-tex="\(t^{a-1}=(t^a/a)&#x27;\)">\(t^{a-1}=(t^a/a)&#x27;\)</span>, give
 <span class="math math-display" data-tex="$$
-\frac C T\int_x^\infty t\log^2(tT)w_m(t)\,dt
-=O_x((\log T)^2/T),
+J_1(a,x)=-\frac{x^a}{a\log x}-\frac{x^a}{a^2(\log x)^2}+\frac{2J_3(a,x)}{a^2}.
 $$">$$
-\frac C T\int_x^\infty t\log^2(tT)w_m(t)\,dt
-=O_x((\log T)^2/T),
+J_1(a,x)=-\frac{x^a}{a\log x}-\frac{x^a}{a^2(\log x)^2}+\frac{2J_3(a,x)}{a^2}.
 $$</span>
-because <span class="math" data-tex="$\int_x^\infty t(1+\log^2t)w_m(t)\,dt&lt;\infty$">$\int_x^\infty t(1+\log^2t)w_m(t)\,dt&lt;\infty$</span> for <span class="math" data-tex="$m\ge2$">$m\ge2$</span>. The second remainder is bounded by the integrable function <span class="math" data-tex="$Cw_m(t)\log t$">$Cw_m(t)\log t$</span> and tends to zero off the countable set of prime powers. Dominated convergence removes it. The half-weight version <span class="math" data-tex="$\psi_0$">$\psi_0$</span> agrees with <span class="math" data-tex="$\psi$">$\psi$</span> almost everywhere in this integration. The pole term is <span class="math" data-tex="$K_m(1,x)$">$K_m(1,x)$</span>, and the constant and trivial-zero terms are exactly <span class="math" data-tex="$-T_m(x)$">$-T_m(x)$</span>. Formula (6.6) below bounds the integrated zero terms by a convergent sum under RH. Their height-ordered limit is therefore their absolutely convergent sum, proving (6.4).</p>
-<p>Write <span class="math" data-tex="$a=\rho-m$">$a=\rho-m$</span> and <span class="math" data-tex="$J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt$">$J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt$</span>. Integration by parts gives
+As <span class="math" data-tex="\(a=-(m-\rho)\)">\(a=-(m-\rho)\)</span>, the terms <span class="math" data-tex="\(x^a/(\rho\log x)\)">\(x^a/(\rho\log x)\)</span> and <span class="math" data-tex="\(x^a/((m-\rho)\log x)\)">\(x^a/((m-\rho)\log x)\)</span> combine, and
 <span class="math math-display" data-tex="$$
-\frac{K_m(\rho,x)}{\rho}
-=\frac{x^{\rho-m}}{\rho\log x}+J_1(a,x)
-=\frac{m x^{\rho-m}}{\rho(m-\rho)\log x}
--\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}
-+\frac{2J_3(a,x)}{(m-\rho)^2}.
+\frac{K_m(\rho,x)}\rho=\frac{m\,x^{\rho-m}}{\rho(m-\rho)\log x}-\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}+\frac{2J_3(a,x)}{(m-\rho)^2}.
 \tag{6.6}
 $$">$$
-\frac{K_m(\rho,x)}{\rho}
-=\frac{x^{\rho-m}}{\rho\log x}+J_1(a,x)
-=\frac{m x^{\rho-m}}{\rho(m-\rho)\log x}
--\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}
-+\frac{2J_3(a,x)}{(m-\rho)^2}.
+\frac{K_m(\rho,x)}\rho=\frac{m\,x^{\rho-m}}{\rho(m-\rho)\log x}-\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}+\frac{2J_3(a,x)}{(m-\rho)^2}.
 \tag{6.6}
 $$</span>
-In particular the first expression contains a <strong>plus</strong> sign. Under RH,
-<span class="math" data-tex="$|m-\rho|\ge|\rho|$">$|m-\rho|\ge|\rho|$</span> and
+The first coefficient is positive: it is <span class="math" data-tex="\(m/(\rho(m-\rho))\)">\(m/(\rho(m-\rho))\)</span>, not its negative. Under RH, <span class="math" data-tex="\(|m-\rho|\ge|\rho|\)">\(|m-\rho|\ge|\rho|\)</span> because <span class="math" data-tex="\(\operatorname{Re}\rho=1/2\le m-1/2\)">\(\operatorname{Re}\rho=1/2\le m-1/2\)</span>, and <span class="math" data-tex="\(|J_3(a,x)|\le x^{1/2-m}/\bigl((m-1/2)(\log x)^3\bigr)\)">\(|J_3(a,x)|\le x^{1/2-m}/\bigl((m-1/2)(\log x)^3\bigr)\)</span>. So the three terms of (6.6) are bounded by <span class="math" data-tex="\(|\rho|^{-2}\)">\(|\rho|^{-2}\)</span> times the three terms of <span class="math" data-tex="\(B_m(x)/c_0\)">\(B_m(x)/c_0\)</span>. Under RH also <span class="math" data-tex="\(\rho(1-\rho)=|\rho|^2\)">\(\rho(1-\rho)=|\rho|^2\)</span>, and the evaluated product formula of lesson five, Section 5, gives
 <span class="math math-display" data-tex="$$
-|J_3(a,x)|\le
-\frac{x^{1/2-m}}{(m-1/2)(\log x)^3}.
+\sum_\rho\frac1{|\rho|^2}=\sum_\rho\Bigl(\frac1\rho+\frac1{1-\rho}\Bigr)=2\sum_\rho\operatorname{Re}\frac1\rho=c_0 .
 $$">$$
-|J_3(a,x)|\le
-\frac{x^{1/2-m}}{(m-1/2)(\log x)^3}.
+\sum_\rho\frac1{|\rho|^2}=\sum_\rho\Bigl(\frac1\rho+\frac1{1-\rho}\Bigr)=2\sum_\rho\operatorname{Re}\frac1\rho=c_0 .
 $$</span>
-The product formula and its evaluated constant in lesson five, Section 5, imply
+Hence <span class="math" data-tex="\(\sum_\rho|K_m(\rho,x)/\rho|\le B_m(x)\)">\(\sum_\rho|K_m(\rho,x)/\rho|\le B_m(x)\)</span>.</p>
+<p><em>The explicit formula, for <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>.</em> Take Theorem 2.2 of lesson eleven, the explicit formula truncated at height <span class="math" data-tex="\(T\)">\(T\)</span>, multiply it by <span class="math" data-tex="\(w_m\)">\(w_m\)</span>, integrate over <span class="math" data-tex="\((x,\infty)\)">\((x,\infty)\)</span>, and send <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>. The first error term there contributes <span class="math" data-tex="\(O(T^{-1}\int_x^\infty t\log^2(tT)\,w_m(t)\,dt)=O_x((\log T)^2/T)\)">\(O(T^{-1}\int_x^\infty t\log^2(tT)\,w_m(t)\,dt)=O_x((\log T)^2/T)\)</span>, since that integral is finite for <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>. The second error term is bounded by <span class="math" data-tex="\(C\,w_m(t)\log t\)">\(C\,w_m(t)\log t\)</span>, which is integrable, and it vanishes in the limit except at prime powers; dominated convergence disposes of it. Using the half-weight version of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> does not change the integral. The main term <span class="math" data-tex="\(t\)">\(t\)</span> cancels against the subtracted <span class="math" data-tex="\(t\)">\(t\)</span>, and the constant and trivial-zero terms integrate exactly to <span class="math" data-tex="\(-T_m(x)\)">\(-T_m(x)\)</span>. The truncated zero sums converge, as <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>, to the absolutely convergent sum bounded above. This proves (6.4). For <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> the bracket in <span class="math" data-tex="\(T_m\)">\(T_m\)</span> lies in <span class="math" data-tex="\([0,\log(2\pi)]\)">\([0,\log(2\pi)]\)</span>, since <span class="math" data-tex="\(\log(2\pi)+\frac12\log\frac34&gt;0\)">\(\log(2\pi)+\frac12\log\frac34&gt;0\)</span>; integrating <span class="math" data-tex="\(w_m\)">\(w_m\)</span> gives the bound for <span class="math" data-tex="\(T_m\)">\(T_m\)</span>, and (6.5) follows.</p>
+<p><em>The case <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.</em> Here <span class="math" data-tex="\(\int t\log^2t\,w_1\)">\(\int t\log^2t\,w_1\)</span> diverges, so we pass through <span class="math" data-tex="\(m=2\)">\(m=2\)</span>. Put
 <span class="math math-display" data-tex="$$
-\sum_\rho|\rho|^{-2}
-=2\sum_\rho\Re(1/\rho)
-=\gamma+2-\log(4\pi)=c_0;
+q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad q&#x27;(t)=\frac{\log t\,(2\log t+3)}{(2\log t+1)^2},
 $$">$$
-\sum_\rho|\rho|^{-2}
-=2\sum_\rho\Re(1/\rho)
-=\gamma+2-\log(4\pi)=c_0;
+q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad q&#x27;(t)=\frac{\log t\,(2\log t+3)}{(2\log t+1)^2},
 $$</span>
-here <span class="math" data-tex="$\Re(1/\rho)=1/(2|\rho|^2)$">$\Re(1/\rho)=1/(2|\rho|^2)$</span> under RH. Thus (6.6) sums to the bound (6.5). The integrand defining <span class="math" data-tex="$T_m$">$T_m$</span> is between zero and <span class="math" data-tex="$\log(2\pi)w_m$">$\log(2\pi)w_m$</span> for <span class="math" data-tex="$t\ge2$">$t\ge2$</span>, and <span class="math" data-tex="$\int_x^\infty w_m=x^{-m}/\log x$">$\int_x^\infty w_m=x^{-m}/\log x$</span>.</p>
-<p>For <span class="math" data-tex="$m=1$">$m=1$</span>, set
+so that <span class="math" data-tex="\(w_1=qw_2\)">\(w_1=qw_2\)</span>. Since <span class="math" data-tex="\(-I_2&#x27;(t)=(\psi(t)-t)w_2(t)\)">\(-I_2&#x27;(t)=(\psi(t)-t)w_2(t)\)</span>, integration by parts gives
 <span class="math math-display" data-tex="$$
-q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad
-q&#x27;(t)=\frac{\log t(2\log t+3)}{(2\log t+1)^2}.
+I_1(x)=q(x)I_2(x)+\int_x^\infty q&#x27;(t)I_2(t)\,dt,
 $$">$$
-q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad
-q&#x27;(t)=\frac{\log t(2\log t+3)}{(2\log t+1)^2}.
+I_1(x)=q(x)I_2(x)+\int_x^\infty q&#x27;(t)I_2(t)\,dt,
 $$</span>
-Since <span class="math" data-tex="$w_1=q w_2$">$w_1=q w_2$</span>, integration by parts gives
+and the boundary term at infinity vanishes because <span class="math" data-tex="\(q(t)=O(t)\)">\(q(t)=O(t)\)</span> while <span class="math" data-tex="\(I_2(t)=O(t^{-3/2}/\log t)\)">\(I_2(t)=O(t^{-3/2}/\log t)\)</span> by (6.5). The same identity holds with each zero kernel and with <span class="math" data-tex="\(T_2\)">\(T_2\)</span> in place of <span class="math" data-tex="\(I_2\)">\(I_2\)</span>. All interchanges converge absolutely, as <span class="math" data-tex="\(q&#x27;=O(1)\)">\(q&#x27;=O(1)\)</span> and the summed kernel bound is <span class="math" data-tex="\(O(t^{-3/2}/\log t)\)">\(O(t^{-3/2}/\log t)\)</span>. Substituting (6.4) for <span class="math" data-tex="\(m=2\)">\(m=2\)</span> therefore gives (6.4) for <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, and (6.6) gives (6.5) as before. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.4 (the complete prime-power tail).</strong> Every <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> satisfies
 <span class="math math-display" data-tex="$$
-I_1(x)=q(x)I_2(x)+\int_x^\infty q&#x27;(t)I_2(t)\,dt.
-$$">$$
-I_1(x)=q(x)I_2(x)+\int_x^\infty q&#x27;(t)I_2(t)\,dt.
-$$</span>
-The endpoint at infinity vanishes by (6.5) for <span class="math" data-tex="$m=2$">$m=2$</span>. The same operation on each zero kernel and on <span class="math" data-tex="$T_2$">$T_2$</span> gives (6.4) for <span class="math" data-tex="$m=1$">$m=1$</span>. Indeed <span class="math" data-tex="$q=O(t)$">$q=O(t)$</span>, <span class="math" data-tex="$q&#x27;=O(1)$">$q&#x27;=O(1)$</span>, and the summed kernel majorant is <span class="math" data-tex="$O(t^{-3/2}/\log t)$">$O(t^{-3/2}/\log t)$</span>, so all these endpoint integrals and interchanges converge absolutely. Formula (6.6) then proves (6.5) also at <span class="math" data-tex="$m=1$">$m=1$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
-<p><strong>Lemma 6.4 (the complete prime-power tail).</strong> For <span class="math" data-tex="$t\ge1$">$t\ge1$</span>,
-<span class="math math-display" data-tex="$$
-0\le\psi(t)-\theta(t)
-\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
+0\le\psi(t)-\theta(t)\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
 \tag{6.7}
 $$">$$
-0\le\psi(t)-\theta(t)
-\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
+0\le\psi(t)-\theta(t)\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
 \tag{6.7}
 $$</span>
-Under RH,
+If RH holds, then
 <span class="math math-display" data-tex="$$
-P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)
-\quad(x\ge20000),
+P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)\qquad(x\ge20000),
 \tag{6.8}
 $$">$$
-P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)
-\quad(x\ge20000),
+P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)\qquad(x\ge20000),
 \tag{6.8}
 $$</span>
 <span class="math math-display" data-tex="$$
-P_2(x)\le\tfrac{213}{100}
-\frac{x^{-3/2}}{\log x}\quad(x\ge366).
+P_2(x)\le\frac{213}{100}\,\frac{x^{-3/2}}{\log x}\qquad(x\ge366).
 \tag{6.9}
 $$">$$
-P_2(x)\le\tfrac{213}{100}
-\frac{x^{-3/2}}{\log x}\quad(x\ge366).
+P_2(x)\le\frac{213}{100}\,\frac{x^{-3/2}}{\log x}\qquad(x\ge366).
 \tag{6.9}
 $$</span></p>
-<p><strong>Proof.</strong> Fix a prime <span class="math" data-tex="$p$">$p$</span>, and let <span class="math" data-tex="$k=\lfloor\log t/\log p\rfloor$">$k=\lfloor\log t/\log p\rfloor$</span>. Its contribution to the left side of (6.7) is <span class="math" data-tex="$(k-1)\log p$">$(k-1)\log p$</span> for <span class="math" data-tex="$k\ge1$">$k\ge1$</span>. Its contribution to the right side is
-<span class="math" data-tex="$(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p$">$(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p$</span>.
-For <span class="math" data-tex="$0\le r&lt;30$">$0\le r&lt;30$</span>, direct division gives
+<p><strong>Proof.</strong> <em>The elementary inequality.</em> Both sides of (6.7) are sums over primes. For a prime <span class="math" data-tex="\(p\)">\(p\)</span> let <span class="math" data-tex="\(k=\lfloor\log t/\log p\rfloor\)">\(k=\lfloor\log t/\log p\rfloor\)</span>. Then <span class="math" data-tex="\(p\)">\(p\)</span> contributes <span class="math" data-tex="\((k-1)\log p\)">\((k-1)\log p\)</span> to <span class="math" data-tex="\(\psi(t)-\theta(t)\)">\(\psi(t)-\theta(t)\)</span> when <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, from <span class="math" data-tex="\(p^2,\ldots,p^k\)">\(p^2,\ldots,p^k\)</span>. It contributes <span class="math" data-tex="\((\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p\)">\((\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p\)</span> to the right side, because <span class="math" data-tex="\(p^j\le t^{1/i}\)">\(p^j\le t^{1/i}\)</span> exactly when <span class="math" data-tex="\(j\le\lfloor k/i\rfloor\)">\(j\le\lfloor k/i\rfloor\)</span>. So (6.7) reduces to the integer inequality <span class="math" data-tex="\(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor\ge k-1\)">\(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor\ge k-1\)</span> for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. It holds for <span class="math" data-tex="\(0\le k&lt;30\)">\(0\le k&lt;30\)</span> by inspection. Replacing <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\(k+30\)">\(k+30\)</span> raises the left side by <span class="math" data-tex="\(31\)">\(31\)</span> and the right side by <span class="math" data-tex="\(30\)">\(30\)</span>. No estimate for primes enters.</p>
+<p><em>Roots.</em> For <span class="math" data-tex="\(k=2,3,5\)">\(k=2,3,5\)</span>, substitute <span class="math" data-tex="\(t=u^k\)">\(t=u^k\)</span> and use <span class="math" data-tex="\(ku^{k-1}w_m(u^k)=w_{km}(u)/k\)">\(ku^{k-1}w_m(u^k)=w_{km}(u)/k\)</span>:
 <span class="math math-display" data-tex="$$
-\lfloor r/2\rfloor+\lfloor r/3\rfloor+\lfloor r/5\rfloor\ge r-1.
-$$">$$
-\lfloor r/2\rfloor+\lfloor r/3\rfloor+\lfloor r/5\rfloor\ge r-1.
-$$</span>
-For <span class="math" data-tex="$k=30a+r$">$k=30a+r$</span>, the left expression increases by <span class="math" data-tex="$31a$">$31a$</span>, whereas <span class="math" data-tex="$k-1$">$k-1$</span> increases by <span class="math" data-tex="$30a$">$30a$</span>. This proves every integer case, and summing over primes proves (6.7). No numerical prime-distribution estimate is involved.</p>
-<p>For <span class="math" data-tex="$k=2,3,5$">$k=2,3,5$</span>, substitution <span class="math" data-tex="$t=u^k$">$t=u^k$</span> gives the exact identity
-<span class="math math-display" data-tex="$$
-\int_x^\infty\psi(t^{1/k})w_m(t)\,dt
-=K_m(1/k,x)+\frac1k I_{km}(x^{1/k}).
+\int_x^\infty\psi(t^{1/k})w_m(t)\,dt=K_m(1/k,x)+\frac1kI_{km}(x^{1/k}).
 \tag{6.10}
 $$">$$
-\int_x^\infty\psi(t^{1/k})w_m(t)\,dt
-=K_m(1/k,x)+\frac1k I_{km}(x^{1/k}).
+\int_x^\infty\psi(t^{1/k})w_m(t)\,dt=K_m(1/k,x)+\frac1kI_{km}(x^{1/k}).
 \tag{6.10}
 $$</span>
-This follows directly from
-<span class="math" data-tex="$k u^{k-1}w_m(u^k)=w_{km}(u)/k$">$k u^{k-1}w_m(u^k)=w_{km}(u)/k$</span>.
-The upper half of (6.5) therefore bounds the last term by <span class="math" data-tex="$B_{km}(x^{1/k})/k$">$B_{km}(x^{1/k})/k$</span>. In original <span class="math" data-tex="$x$">$x$</span> units that upper bound is
+By (6.5), the last term is at most <span class="math" data-tex="\(B_{km}(x^{1/k})/k\)">\(B_{km}(x^{1/k})/k\)</span>, which in terms of <span class="math" data-tex="\(x\)">\(x\)</span> equals
 <span class="math math-display" data-tex="$$
-\frac{c_0x^{1/(2k)-m}}{\log x}
-\left(km+\frac{k}{\log x}
-+\frac{4k^2}{(2km-1)(\log x)^2}\right).
+\frac{c_0x^{1/(2k)-m}}{\log x}\Bigl(km+\frac k{\log x}+\frac{4k^2}{(2km-1)(\log x)^2}\Bigr).
 \tag{6.11}
 $$">$$
-\frac{c_0x^{1/(2k)-m}}{\log x}
-\left(km+\frac{k}{\log x}
-+\frac{4k^2}{(2km-1)(\log x)^2}\right).
+\frac{c_0x^{1/(2k)-m}}{\log x}\Bigl(km+\frac k{\log x}+\frac{4k^2}{(2km-1)(\log x)^2}\Bigr).
 \tag{6.11}
 $$</span>
-For <span class="math" data-tex="$0&lt;r&lt;m$">$0&lt;r&lt;m$</span>, a single integration by parts also gives
+For <span class="math" data-tex="\(0&lt;r&lt;m\)">\(0&lt;r&lt;m\)</span>, the first integration by parts above and one more give
 <span class="math math-display" data-tex="$$
-K_m(r,x)=\frac{m}{m-r}\frac{x^{r-m}}{\log x}
--\frac{r}{m-r}J_2(r-m,x),\quad
+K_m(r,x)=\frac m{m-r}\,\frac{x^{r-m}}{\log x}-\frac r{m-r}J_2(r-m,x),\qquad
 0\le J_2(r-m,x)\le\frac{x^{r-m}}{(m-r)(\log x)^2}.
 \tag{6.12}
 $$">$$
-K_m(r,x)=\frac{m}{m-r}\frac{x^{r-m}}{\log x}
--\frac{r}{m-r}J_2(r-m,x),\quad
+K_m(r,x)=\frac m{m-r}\,\frac{x^{r-m}}{\log x}-\frac r{m-r}J_2(r-m,x),\qquad
 0\le J_2(r-m,x)\le\frac{x^{r-m}}{(m-r)(\log x)^2}.
 \tag{6.12}
 $$</span></p>
-<p>Here are all the scalar bounds required for (6.8). For <span class="math" data-tex="$x\ge20000$">$x\ge20000$</span>,
+<p><em>Constants for <span class="math" data-tex="\(P_1\)">\(P_1\)</span>.</em> Let <span class="math" data-tex="\(x\ge20000\)">\(x\ge20000\)</span>. We use <span class="math" data-tex="\(\log x\ge9\)">\(\log x\ge9\)</span>, <span class="math" data-tex="\(c_0&lt;1/20\)">\(c_0&lt;1/20\)</span> (proved in Section 6.2), and
 <span class="math math-display" data-tex="$$
-\log x\ge9,\quad c_0&lt;1/20,\quad
-x^{-2/15}\le27/100,\quad x^{-1/12}\le11/25,\quad
-x^{-1/6}\le1/5,\quad x^{-7/30}\le1/10.
+x^{-2/15}\le\tfrac{27}{100},\quad x^{-1/12}\le\tfrac{11}{25},\quad x^{-1/6}\le\tfrac15,\quad x^{-7/30}\le\tfrac1{10}.
 $$">$$
-\log x\ge9,\quad c_0&lt;1/20,\quad
-x^{-2/15}\le27/100,\quad x^{-1/12}\le11/25,\quad
-x^{-1/6}\le1/5,\quad x^{-7/30}\le1/10.
+x^{-2/15}\le\tfrac{27}{100},\quad x^{-1/12}\le\tfrac{11}{25},\quad x^{-1/6}\le\tfrac15,\quad x^{-7/30}\le\tfrac1{10}.
 $$</span>
-Each power bound follows by raising its asserted rational upper bound to the positive integer denominator and multiplying by the corresponding integer power of 20000. The logarithm and constant bounds are proved below. On the scale <span class="math" data-tex="$x^{-2/3}/\log x$">$x^{-2/3}/\log x$</span>, (6.11) for <span class="math" data-tex="$k=2,3,5$">$k=2,3,5$</span> is at most <span class="math" data-tex="$51/1000,35/1000,29/1000$">$51/1000,35/1000,29/1000$</span>, respectively. Formula (6.12) bounds the fifth-root main term by <span class="math" data-tex="$27/80$">$27/80$</span>, and bounds the third-root term below by <span class="math" data-tex="$17/12$">$17/12$</span>. Since
+Each power bound is checked by raising the rational number to the power of its exponent's denominator and comparing with the corresponding integer power of <span class="math" data-tex="\(20000\)">\(20000\)</span>. Measured in units of <span class="math" data-tex="\(x^{-2/3}/\log x\)">\(x^{-2/3}/\log x\)</span>, the term (6.11) is at most <span class="math" data-tex="\(51/1000\)">\(51/1000\)</span>, <span class="math" data-tex="\(35/1000\)">\(35/1000\)</span> and <span class="math" data-tex="\(29/1000\)">\(29/1000\)</span> for <span class="math" data-tex="\(k=2,3,5\)">\(k=2,3,5\)</span>. By (6.12), <span class="math" data-tex="\(K_1(1/5,x)\le\frac54x^{-4/5}/\log x\)">\(K_1(1/5,x)\le\frac54x^{-4/5}/\log x\)</span>, which is at most <span class="math" data-tex="\(27/80\)">\(27/80\)</span> in the same units, and <span class="math" data-tex="\(K_1(1/3,x)\ge\frac32\bigl(1-\frac1{2\log x}\bigr)x^{-2/3}/\log x\)">\(K_1(1/3,x)\ge\frac32\bigl(1-\frac1{2\log x}\bigr)x^{-2/3}/\log x\)</span>, which is at least <span class="math" data-tex="\(17/12\)">\(17/12\)</span>. Since
 <span class="math math-display" data-tex="$$
-\frac{51+35+29}{1000}+\frac{27}{80}
-&lt;\frac13\frac{17}{12},
+\frac{51+35+29}{1000}+\frac{27}{80}&lt;\frac13\cdot\frac{17}{12},
 $$">$$
-\frac{51+35+29}{1000}+\frac{27}{80}
-&lt;\frac13\frac{17}{12},
+\frac{51+35+29}{1000}+\frac{27}{80}&lt;\frac13\cdot\frac{17}{12},
 $$</span>
-the fifth-root term and all three errors fit inside one third of the third-root term. Summing (6.10) proves (6.8).</p>
-<p>For (6.9), <span class="math" data-tex="$\log x\ge5$">$\log x\ge5$</span> when <span class="math" data-tex="$x\ge366$">$x\ge366$</span>. On the scale <span class="math" data-tex="$x^{-3/2}/\log x$">$x^{-3/2}/\log x$</span>, use
+the fifth-root term and the three error terms together are at most <span class="math" data-tex="\(\frac13K_1(1/3,x)\)">\(\frac13K_1(1/3,x)\)</span>. Integrating (6.7) against <span class="math" data-tex="\(w_1\)">\(w_1\)</span> and using (6.10) for <span class="math" data-tex="\(k=2,3,5\)">\(k=2,3,5\)</span> proves (6.8).</p>
+<p><em>Constants for <span class="math" data-tex="\(P_2\)">\(P_2\)</span>.</em> Let <span class="math" data-tex="\(x\ge366\)">\(x\ge366\)</span>. We use <span class="math" data-tex="\(\log x\ge5\)">\(\log x\ge5\)</span> and
 <span class="math math-display" data-tex="$$
-x^{-1/6}\le3/8,\quad x^{-3/10}\le7/40,\quad
-x^{-1/4}\le229/1000,\quad x^{-1/3}\le7/50,\quad
-x^{-2/5}\le19/200.
+x^{-1/6}\le\tfrac38,\quad x^{-3/10}\le\tfrac7{40},\quad x^{-1/4}\le\tfrac{229}{1000},\quad x^{-1/3}\le\tfrac7{50},\quad x^{-2/5}\le\tfrac{19}{200},
 $$">$$
-x^{-1/6}\le3/8,\quad x^{-3/10}\le7/40,\quad
-x^{-1/4}\le229/1000,\quad x^{-1/3}\le7/50,\quad
-x^{-2/5}\le19/200.
+x^{-1/6}\le\tfrac38,\quad x^{-3/10}\le\tfrac7{40},\quad x^{-1/4}\le\tfrac{229}{1000},\quad x^{-1/3}\le\tfrac7{50},\quad x^{-2/5}\le\tfrac{19}{200},
 $$</span>
-The same integer-power check at 366 proves these five bounds. By (6.11)–(6.12), the total coefficient is at most
+checked in the same way at <span class="math" data-tex="\(366\)">\(366\)</span>. In units of <span class="math" data-tex="\(x^{-3/2}/\log x\)">\(x^{-3/2}/\log x\)</span>, (6.12) bounds <span class="math" data-tex="\(K_2(1/2,x)\)">\(K_2(1/2,x)\)</span>, <span class="math" data-tex="\(K_2(1/3,x)\)">\(K_2(1/3,x)\)</span>, <span class="math" data-tex="\(K_2(1/5,x)\)">\(K_2(1/5,x)\)</span> by <span class="math" data-tex="\(\frac43\)">\(\frac43\)</span>, <span class="math" data-tex="\(\frac65x^{-1/6}\)">\(\frac65x^{-1/6}\)</span> and <span class="math" data-tex="\(\frac{10}9x^{-3/10}\)">\(\frac{10}9x^{-3/10}\)</span>, and (6.11) with <span class="math" data-tex="\(m=2\)">\(m=2\)</span> bounds the three error terms. Adding up, the coefficient is bounded by
 <span class="math math-display" data-tex="$$
 \begin{split}
-&amp;\frac43+\frac65\frac38+\frac{10}{9}\frac7{40}\\
-&amp;+\frac1{20}\left[
- \left(4+\frac25+\frac{16}{175}\right)\frac{229}{1000}
-+\left(6+\frac35+\frac{36}{275}\right)\frac7{50}
-+\left(11+\frac{100}{475}\right)\frac{19}{200}\right]\\
-&amp;=\frac{737896351}{346500000}&lt;\frac{213}{100}.
+&amp;\frac43+\frac65\cdot\frac38+\frac{10}{9}\cdot\frac7{40}\\
+&amp;+\frac1{20}\left[\Bigl(4+\frac25+\frac{16}{175}\Bigr)\frac{229}{1000}+\Bigl(6+\frac35+\frac{36}{275}\Bigr)\frac7{50}+\Bigl(11+\frac{100}{475}\Bigr)\frac{19}{200}\right]\\
+&amp;=\frac{737896351}{346500000}&lt;\frac{213}{100},
 \end{split}
 $$">$$
 \begin{split}
-&amp;\frac43+\frac65\frac38+\frac{10}{9}\frac7{40}\\
-&amp;+\frac1{20}\left[
- \left(4+\frac25+\frac{16}{175}\right)\frac{229}{1000}
-+\left(6+\frac35+\frac{36}{275}\right)\frac7{50}
-+\left(11+\frac{100}{475}\right)\frac{19}{200}\right]\\
-&amp;=\frac{737896351}{346500000}&lt;\frac{213}{100}.
+&amp;\frac43+\frac65\cdot\frac38+\frac{10}{9}\cdot\frac7{40}\\
+&amp;+\frac1{20}\left[\Bigl(4+\frac25+\frac{16}{175}\Bigr)\frac{229}{1000}+\Bigl(6+\frac35+\frac{36}{275}\Bigr)\frac7{50}+\Bigl(11+\frac{100}{475}\Bigr)\frac{19}{200}\right]\\
+&amp;=\frac{737896351}{346500000}&lt;\frac{213}{100},
 \end{split}
 $$</span>
-Together with (6.7)–(6.10), this proves (6.9). <span class="math" data-tex="$\square$">$\square$</span></p>
-<p><strong>Lemma 6.5 (a budget for every integer).</strong> Under RH, if <span class="math" data-tex="$h=\log n\ge20000$">$h=\log n\ge20000$</span>, then
+which proves (6.9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.5 (a budget for every integer).</strong> Assume RH, and let <span class="math" data-tex="\(n\)">\(n\)</span> satisfy <span class="math" data-tex="\(h=\log n\ge20000\)">\(h=\log n\ge20000\)</span>. Then
 <span class="math math-display" data-tex="$$
 \mathcal R(n)\le E(h)-C(h),
 \tag{6.13}
@@ -559,90 +483,62 @@ $$</span>
 where
 <span class="math math-display" data-tex="$$
 \begin{split}
-E(h)={}&amp;\frac{(2+c_0)h^{-1/2}}{\log h}
-+\frac{(c_0-2)h^{-1/2}}{(\log h)^2}
-+\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
-&amp;+\frac{2h^{-2/3}}{\log h}
-+\frac{\log(2\pi)h^{-1}}{\log h},\\
-C(h)={}&amp;\sum_{p\le h/2}\min\left(\frac{\log p}{h\log h},\frac1{p^2}\right).
+E(h)={}&amp;\frac{(2+c_0)h^{-1/2}}{\log h}+\frac{(c_0-2)h^{-1/2}}{(\log h)^2}+\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
+&amp;+\frac{2h^{-2/3}}{\log h}+\frac{\log(2\pi)h^{-1}}{\log h},\\
+C(h)={}&amp;\sum_{p\le h/2}\min\Bigl(\frac{\log p}{h\log h},\frac1{p^2}\Bigr).
 \end{split}
 $$">$$
 \begin{split}
-E(h)={}&amp;\frac{(2+c_0)h^{-1/2}}{\log h}
-+\frac{(c_0-2)h^{-1/2}}{(\log h)^2}
-+\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
-&amp;+\frac{2h^{-2/3}}{\log h}
-+\frac{\log(2\pi)h^{-1}}{\log h},\\
-C(h)={}&amp;\sum_{p\le h/2}\min\left(\frac{\log p}{h\log h},\frac1{p^2}\right).
+E(h)={}&amp;\frac{(2+c_0)h^{-1/2}}{\log h}+\frac{(c_0-2)h^{-1/2}}{(\log h)^2}+\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
+&amp;+\frac{2h^{-2/3}}{\log h}+\frac{\log(2\pi)h^{-1}}{\log h},\\
+C(h)={}&amp;\sum_{p\le h/2}\min\Bigl(\frac{\log p}{h\log h},\frac1{p^2}\Bigr).
 \end{split}
 $$</span></p>
-<p><strong>Proof.</strong> Write <span class="math" data-tex="$n=\prod p^{a_p}$">$n=\prod p^{a_p}$</span>, <span class="math" data-tex="$v_p=\log p/(h\log h)$">$v_p=\log p/(h\log h)$</span>, and
-<span class="math" data-tex="$m_p=\log(1-p^{-1})+p^{-1}\le0$">$m_p=\log(1-p^{-1})+p^{-1}\le0$</span>. The local geometric-series formula and <span class="math" data-tex="$\log(1-y)\le-y$">$\log(1-y)\le-y$</span> give, for <span class="math" data-tex="$a_p\ge1$">$a_p\ge1$</span>,
+<p><strong>Proof.</strong> Factor <span class="math" data-tex="\(n=\prod_pp^{a_p}\)">\(n=\prod_pp^{a_p}\)</span> and let <span class="math" data-tex="\(v_p=\log p/(h\log h)\)">\(v_p=\log p/(h\log h)\)</span>, so that <span class="math" data-tex="\(\sum_pa_pv_p=1/\log h\)">\(\sum_pa_pv_p=1/\log h\)</span>, and put <span class="math" data-tex="\(m_p=\log(1-p^{-1})+p^{-1}\le0\)">\(m_p=\log(1-p^{-1})+p^{-1}\le0\)</span>. Let <span class="math" data-tex="\(c_p=\log\bigl(\sigma_1(p^{a_p})/p^{a_p}\bigr)-a_pv_p\)">\(c_p=\log\bigl(\sigma_1(p^{a_p})/p^{a_p}\bigr)-a_pv_p\)</span>, which is <span class="math" data-tex="\(0\)">\(0\)</span> when <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span>. For <span class="math" data-tex="\(a_p\ge1\)">\(a_p\ge1\)</span>, <span class="math" data-tex="\(\sigma_1(p^a)/p^a=(1-p^{-a-1})/(1-p^{-1})\)">\(\sigma_1(p^a)/p^a=(1-p^{-a-1})/(1-p^{-1})\)</span> and <span class="math" data-tex="\(\log(1-y)\le-y\)">\(\log(1-y)\le-y\)</span> give
 <span class="math math-display" data-tex="$$
-\log\frac{\sigma_1(p^{a_p})}{p^{a_p}}-a_pv_p
-\le \frac1p-a_pv_p-p^{-a_p-1}-m_p.
+c_p\le\frac1p-a_pv_p-p^{-a_p-1}-m_p .
 $$">$$
-\log\frac{\sigma_1(p^{a_p})}{p^{a_p}}-a_pv_p
-\le \frac1p-a_pv_p-p^{-a_p-1}-m_p.
+c_p\le\frac1p-a_pv_p-p^{-a_p-1}-m_p .
 $$</span>
-For <span class="math" data-tex="$p\le h/2$">$p\le h/2$</span>, an exponent <span class="math" data-tex="$a_p=1$">$a_p=1$</span> loses <span class="math" data-tex="$p^{-2}$">$p^{-2}$</span> relative to the benchmark <span class="math" data-tex="$1/p-v_p$">$1/p-v_p$</span>; an exponent <span class="math" data-tex="$a_p\ge2$">$a_p\ge2$</span> loses at least <span class="math" data-tex="$v_p$">$v_p$</span>. If <span class="math" data-tex="$a_p=0$">$a_p=0$</span>, its zero contribution also loses at least <span class="math" data-tex="$\min(v_p,p^{-2})$">$\min(v_p,p^{-2})$</span>, because
+We compare <span class="math" data-tex="\(c_p\)">\(c_p\)</span> with the benchmark <span class="math" data-tex="\(\frac1p-v_p-m_p\)">\(\frac1p-v_p-m_p\)</span>.</p>
+<ul>
+<li>For <span class="math" data-tex="\(p\le h/2\)">\(p\le h/2\)</span>, <span class="math" data-tex="\(c_p\)">\(c_p\)</span> is at most the benchmark minus <span class="math" data-tex="\(\min(v_p,p^{-2})\)">\(\min(v_p,p^{-2})\)</span>. If <span class="math" data-tex="\(a_p=1\)">\(a_p=1\)</span>, the loss is <span class="math" data-tex="\(p^{-2}\)">\(p^{-2}\)</span>; if <span class="math" data-tex="\(a_p\ge2\)">\(a_p\ge2\)</span>, it is at least <span class="math" data-tex="\(v_p\)">\(v_p\)</span>. If <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span>, it suffices that <span class="math" data-tex="\(\frac1p-v_p-\min(v_p,p^{-2})\ge0\)">\(\frac1p-v_p-\min(v_p,p^{-2})\ge0\)</span>, which holds because <span class="math" data-tex="\(v_p\le1/h\le1/(2p)\)">\(v_p\le1/h\le1/(2p)\)</span> and <span class="math" data-tex="\(p^{-2}\le1/(2p)\)">\(p^{-2}\le1/(2p)\)</span>.</li>
+<li>For <span class="math" data-tex="\(h/2&lt;p\le h\)">\(h/2&lt;p\le h\)</span>, <span class="math" data-tex="\(c_p\)">\(c_p\)</span> is at most the benchmark, which is at least <span class="math" data-tex="\(-m_p\ge0\)">\(-m_p\ge0\)</span> because <span class="math" data-tex="\(p\log p\le h\log h\)">\(p\log p\le h\log h\)</span>.</li>
+<li>For <span class="math" data-tex="\(p&gt;h\)">\(p&gt;h\)</span>, the benchmark minus <span class="math" data-tex="\(-m_p\)">\(-m_p\)</span> is negative, and <span class="math" data-tex="\(c_p\le-m_p\)">\(c_p\le-m_p\)</span>.</li>
+</ul>
+<p>Summing, and adding the nonpositive <span class="math" data-tex="\(m_p\)">\(m_p\)</span> of the remaining primes on the right,
 <span class="math math-display" data-tex="$$
-v_p\le1/h\le1/(2p),\qquad p^{-2}\le1/(2p).
-$$">$$
-v_p\le1/h\le1/(2p),\qquad p^{-2}\le1/(2p).
-$$</span>
-For <span class="math" data-tex="$h/2&lt;p\le h$">$h/2&lt;p\le h$</span> the benchmark is nonnegative: <span class="math" data-tex="$p\log p\le h\log h$">$p\log p\le h\log h$</span>. For <span class="math" data-tex="$p&gt;h$">$p&gt;h$</span> it is nonpositive, so no positive excess is gained by an actual exponent. Completing the finite sum to all primes through <span class="math" data-tex="$h$">$h$</span>, and using <span class="math" data-tex="$\sum a_pv_p=1/\log h$">$\sum a_pv_p=1/\log h$</span>, yields
-<span class="math math-display" data-tex="$$
-\log A(n)\le-\sum_p m_p+\sum_{p\le h}\frac1p
--\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
+\log A(n)\le-\sum_pm_p+\sum_{p\le h}\frac1p-\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
 \tag{6.14}
 $$">$$
-\log A(n)\le-\sum_p m_p+\sum_{p\le h}\frac1p
--\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
+\log A(n)\le-\sum_pm_p+\sum_{p\le h}\frac1p-\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
 \tag{6.14}
 $$</span>
-The use of all <span class="math" data-tex="$m_p$">$m_p$</span> is an upper bound because the omitted <span class="math" data-tex="$m_p$">$m_p$</span> are nonpositive.</p>
-<p>Let <span class="math" data-tex="$B_1^{\rm prime}$">$B_1^{\rm prime}$</span> denote the prime reciprocal constant from lesson two; its Mertens product proof gives
-<span class="math" data-tex="$B_1^{\rm prime}=\gamma+\sum_p m_p$">$B_1^{\rm prime}=\gamma+\sum_p m_p$</span>.
-Partial summation, with the same constant at infinity, gives
+The prime reciprocal constant <span class="math" data-tex="\(B_1^{\rm prime}\)">\(B_1^{\rm prime}\)</span> of lesson two satisfies <span class="math" data-tex="\(B_1^{\rm prime}=\gamma+\sum_pm_p\)">\(B_1^{\rm prime}=\gamma+\sum_pm_p\)</span>, by its Mertens-product proof. Since <span class="math" data-tex="\(\frac{d}{dt}\frac1{t\log t}=-w_1(t)\)">\(\frac{d}{dt}\frac1{t\log t}=-w_1(t)\)</span>, partial summation against <span class="math" data-tex="\(d\theta\)">\(d\theta\)</span> gives
 <span class="math math-display" data-tex="$$
-\sum_{p\le x}\frac1p
-=\log\log x+B_1^{\rm prime}
-+\frac{\theta(x)-x}{x\log x}
--\int_x^\infty(\theta(t)-t)w_1(t)\,dt.
+\sum_{p\le x}\frac1p=\log\log x+B_1^{\rm prime}+\frac{\theta(x)-x}{x\log x}-\int_x^\infty(\theta(t)-t)w_1(t)\,dt,
 \tag{6.15}
 $$">$$
-\sum_{p\le x}\frac1p
-=\log\log x+B_1^{\rm prime}
-+\frac{\theta(x)-x}{x\log x}
--\int_x^\infty(\theta(t)-t)w_1(t)\,dt.
+\sum_{p\le x}\frac1p=\log\log x+B_1^{\rm prime}+\frac{\theta(x)-x}{x\log x}-\int_x^\infty(\theta(t)-t)w_1(t)\,dt,
 \tag{6.15}
 $$</span>
-The classical PNT error justifies the convergent tail. Substitution in (6.14) cancels the endpoint and the prime reciprocal constant, leaving
+the tail converging by the classical error term. Inserting (6.15) at <span class="math" data-tex="\(x=h\)">\(x=h\)</span> into (6.14), the constants and the endpoint terms cancel, and
 <span class="math math-display" data-tex="$$
 \mathcal R(n)\le P_1(h)-I_1(h)-C(h).
 $$">$$
 \mathcal R(n)\le P_1(h)-I_1(h)-C(h).
 $$</span>
-From (6.12), with one further integration by parts,
+Now (6.5) bounds <span class="math" data-tex="\(-I_1(h)\)">\(-I_1(h)\)</span>, and (6.8) bounds <span class="math" data-tex="\(P_1(h)\)">\(P_1(h)\)</span>. By (6.12) and one more integration by parts,
 <span class="math math-display" data-tex="$$
-K_1(1/2,h)\le
-\frac{2h^{-1/2}}{\log h}
--\frac{2h^{-1/2}}{(\log h)^2}
-+\frac{8h^{-1/2}}{(\log h)^3},
-\quad
+K_1(1/2,h)\le\frac{2h^{-1/2}}{\log h}-\frac{2h^{-1/2}}{(\log h)^2}+\frac{8h^{-1/2}}{(\log h)^3},\qquad
 K_1(1/3,h)\le\frac{3h^{-2/3}}{2\log h}.
 $$">$$
-K_1(1/2,h)\le
-\frac{2h^{-1/2}}{\log h}
--\frac{2h^{-1/2}}{(\log h)^2}
-+\frac{8h^{-1/2}}{(\log h)^3},
-\quad
+K_1(1/2,h)\le\frac{2h^{-1/2}}{\log h}-\frac{2h^{-1/2}}{(\log h)^2}+\frac{8h^{-1/2}}{(\log h)^3},\qquad
 K_1(1/3,h)\le\frac{3h^{-2/3}}{2\log h}.
 $$</span>
-Now (6.5) and (6.8) give exactly <span class="math" data-tex="$E(h)-C(h)$">$E(h)-C(h)$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
-<h3 id="6-2-the-strict-analytic-gap">6.2. The strict analytic gap</h3>
-<p><strong>Lemma 6.6 (the prime-square block, including both endpoints).</strong> Under RH, if <span class="math" data-tex="$h\ge74500$">$h\ge74500$</span>, and <span class="math" data-tex="$S(h)=h^{-1/2}/\log h$">$S(h)=h^{-1/2}/\log h$</span>, then
+Adding these bounds gives exactly <span class="math" data-tex="\(E(h)-C(h)\)">\(E(h)-C(h)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="6-2-a-strict-gap-for-large-heights">6.2. A strict gap for large heights</h3>
+<p><strong>Lemma 6.6 (the prime-square block, including both endpoints).</strong> Assume RH, and let <span class="math" data-tex="\(S(h)=h^{-1/2}/\log h\)">\(S(h)=h^{-1/2}/\log h\)</span>. If <span class="math" data-tex="\(h\ge74500\)">\(h\ge74500\)</span>, then
 <span class="math math-display" data-tex="$$
 E(h)&lt;\frac{113}{50}S(h)&lt;C(h).
 \tag{6.16}
@@ -650,25 +546,15 @@ $$">$$
 E(h)&lt;\frac{113}{50}S(h)&lt;C(h).
 \tag{6.16}
 $$</span></p>
-<p><strong>Proof.</strong> First put
-<span class="math" data-tex="$\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt$">$\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt$</span>.
-It equals <span class="math" data-tex="$K_2(1,x)+I_2(x)-P_2(x)$">$K_2(1,x)+I_2(x)-P_2(x)$</span>. Formulas (6.5), (6.9) and (6.12) imply, for <span class="math" data-tex="$x\ge366$">$x\ge366$</span>,
+<p><strong>Proof.</strong> <em>Bounds for a weighted prime sum.</em> Let <span class="math" data-tex="\(\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt\)">\(\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt\)</span>. Writing <span class="math" data-tex="\(\theta=t+(\psi-t)-(\psi-\theta)\)">\(\theta=t+(\psi-t)-(\psi-\theta)\)</span> gives <span class="math" data-tex="\(\Theta_2=K_2(1,x)+I_2(x)-P_2(x)\)">\(\Theta_2=K_2(1,x)+I_2(x)-P_2(x)\)</span>. By (6.12), <span class="math" data-tex="\(K_2(1,x)\ge2x^{-1}/\log x-x^{-1}/(\log x)^2\)">\(K_2(1,x)\ge2x^{-1}/\log x-x^{-1}/(\log x)^2\)</span>. For <span class="math" data-tex="\(x\ge366\)">\(x\ge366\)</span>, <span class="math" data-tex="\(B_2(x)\le\frac7{60}x^{-3/2}/\log x\)">\(B_2(x)\le\frac7{60}x^{-3/2}/\log x\)</span>, because <span class="math" data-tex="\(c_0&lt;1/20\)">\(c_0&lt;1/20\)</span>, <span class="math" data-tex="\(\log x\ge5\)">\(\log x\ge5\)</span> and <span class="math" data-tex="\(2+\frac15+\frac4{75}&lt;\frac73\)">\(2+\frac15+\frac4{75}&lt;\frac73\)</span>; and <span class="math" data-tex="\(\frac7{60}+\frac{213}{100}&lt;\frac94\)">\(\frac7{60}+\frac{213}{100}&lt;\frac94\)</span>. With (6.5) and (6.9) this gives, for <span class="math" data-tex="\(x\ge366\)">\(x\ge366\)</span>,
 <span class="math math-display" data-tex="$$
-\Theta_2(x)\ge
-\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}
--\frac94\frac{x^{-3/2}}{\log x}
--\frac{\log(2\pi)x^{-2}}{\log x}.
+\Theta_2(x)\ge\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}-\frac94\,\frac{x^{-3/2}}{\log x}-\frac{\log(2\pi)\,x^{-2}}{\log x}.
 \tag{6.17}
 $$">$$
-\Theta_2(x)\ge
-\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}
--\frac94\frac{x^{-3/2}}{\log x}
--\frac{\log(2\pi)x^{-2}}{\log x}.
+\Theta_2(x)\ge\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}-\frac94\,\frac{x^{-3/2}}{\log x}-\frac{\log(2\pi)\,x^{-2}}{\log x}.
 \tag{6.17}
 $$</span>
-Indeed <span class="math" data-tex="$B_2(x)\le(7/60)x^{-3/2}/\log x$">$B_2(x)\le(7/60)x^{-3/2}/\log x$</span>, since
-<span class="math" data-tex="$c_0&lt;1/20$">$c_0&lt;1/20$</span>, <span class="math" data-tex="$\log x\ge5$">$\log x\ge5$</span>, and
-<span class="math" data-tex="$2+1/5+4/(3\cdot25)&lt;7/3$">$2+1/5+4/(3\cdot25)&lt;7/3$</span>; together with <span class="math" data-tex="$213/100$">$213/100$</span>, this is less than <span class="math" data-tex="$9/4$">$9/4$</span>. For <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, nonnegativity of <span class="math" data-tex="$P_2$">$P_2$</span> also gives
+In the other direction, <span class="math" data-tex="\(P_2\ge0\)">\(P_2\ge0\)</span> gives, for <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>,
 <span class="math math-display" data-tex="$$
 \Theta_2(x)\le\frac{2x^{-1}}{\log x}+B_2(x).
 \tag{6.18}
@@ -676,202 +562,126 @@ $$">$$
 \Theta_2(x)\le\frac{2x^{-1}}{\log x}+B_2(x).
 \tag{6.18}
 $$</span></p>
-<p>Set <span class="math" data-tex="$s=\sqrt{2h}$">$s=\sqrt{2h}$</span>, <span class="math" data-tex="$b=h/2$">$b=h/2$</span>. Since <span class="math" data-tex="$h\log h\le s^2\log s$">$h\log h\le s^2\log s$</span>, monotonicity of <span class="math" data-tex="$u^2\log u$">$u^2\log u$</span> gives
+<p><em>A lower bound for <span class="math" data-tex="\(C(h)\)">\(C(h)\)</span>.</em> Put <span class="math" data-tex="\(s=\sqrt{2h}\)">\(s=\sqrt{2h}\)</span> and <span class="math" data-tex="\(b=h/2\)">\(b=h/2\)</span>; then <span class="math" data-tex="\(s^2\log s=h\log(2h)\ge h\log h\)">\(s^2\log s=h\log(2h)\ge h\log h\)</span>. For <span class="math" data-tex="\(p\le s\)">\(p\le s\)</span>, both entries of the minimum in <span class="math" data-tex="\(C(h)\)">\(C(h)\)</span> are at least <span class="math" data-tex="\(\log p/(s^2\log s)\)">\(\log p/(s^2\log s)\)</span>, the second because <span class="math" data-tex="\(u^2\log u\)">\(u^2\log u\)</span> increases. For <span class="math" data-tex="\(s&lt;p\le b\)">\(s&lt;p\le b\)</span> the minimum is <span class="math" data-tex="\(p^{-2}\)">\(p^{-2}\)</span>, because <span class="math" data-tex="\(p^2\log p&gt;s^2\log s\ge h\log h\)">\(p^2\log p&gt;s^2\log s\ge h\log h\)</span>. So
 <span class="math math-display" data-tex="$$
-C(h)\ge\frac{\theta(s)}{s^2\log s}
-+\sum_{s&lt;p\le b}p^{-2}.
+C(h)\ge\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}\frac1{p^2}.
 $$">$$
-C(h)\ge\frac{\theta(s)}{s^2\log s}
-+\sum_{s&lt;p\le b}p^{-2}.
+C(h)\ge\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}\frac1{p^2}.
 $$</span>
-For <span class="math" data-tex="$p\le s$">$p\le s$</span>, each minimum is at least <span class="math" data-tex="$\log p/(s^2\log s)$">$\log p/(s^2\log s)$</span>; for <span class="math" data-tex="$p&gt;s$">$p&gt;s$</span>, it is <span class="math" data-tex="$p^{-2}$">$p^{-2}$</span>. Abel summation now cancels the lower endpoint exactly:
+Since the derivative of <span class="math" data-tex="\(1/(u^2\log u)\)">\(1/(u^2\log u)\)</span> is <span class="math" data-tex="\(-w_2(u)\)">\(-w_2(u)\)</span>, summation by parts against <span class="math" data-tex="\(d\theta\)">\(d\theta\)</span> evaluates the right side:
 <span class="math math-display" data-tex="$$
-\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}p^{-2}
-=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
+\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}\frac1{p^2}=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
 \tag{6.19}
 $$">$$
-\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}p^{-2}
-=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
+\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}\frac1{p^2}=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
 \tag{6.19}
 $$</span>
-Here the derivative of <span class="math" data-tex="$1/(u^2\log u)$">$1/(u^2\log u)$</span> is <span class="math" data-tex="$-w_2(u)$">$-w_2(u)$</span>. Drop the nonnegative first term, apply (6.17) at <span class="math" data-tex="$s$">$s$</span> and (6.18) at <span class="math" data-tex="$b$">$b$</span>, and divide by <span class="math" data-tex="$S(h)$">$S(h)$</span>. With <span class="math" data-tex="$L=\log h$">$L=\log h$</span>, <span class="math" data-tex="$c=\log2$">$c=\log2$</span>, the resulting lower bound is
+Drop the first term, bound <span class="math" data-tex="\(\Theta_2(s)\)">\(\Theta_2(s)\)</span> below by (6.17) and <span class="math" data-tex="\(\Theta_2(b)\)">\(\Theta_2(b)\)</span> above by (6.18), and divide by <span class="math" data-tex="\(S(h)\)">\(S(h)\)</span>. With <span class="math" data-tex="\(L=\log h\)">\(L=\log h\)</span> and <span class="math" data-tex="\(c=\log2\)">\(c=\log2\)</span>, so that <span class="math" data-tex="\(\log s=(L+c)/2\)">\(\log s=(L+c)/2\)</span> and <span class="math" data-tex="\(\log b=L-c\)">\(\log b=L-c\)</span>, the quotient <span class="math" data-tex="\(C(h)/S(h)\)">\(C(h)/S(h)\)</span> is at least
 <span class="math math-display" data-tex="$$
 \begin{split}
-&amp;2\sqrt2\,\frac{L}{L+c}\left(1-\frac1{L+c}\right)
--\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}
--\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
-&amp;-4h^{-1/2}\frac{L}{L-c}
--2\sqrt2\,c_0h^{-1}\frac{L}{L-c}
- \left(2+\frac1{L-c}+\frac4{3(L-c)^2}\right).
+&amp;2\sqrt2\,\frac{L}{L+c}\Bigl(1-\frac1{L+c}\Bigr)-\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}-\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
+&amp;-4h^{-1/2}\frac{L}{L-c}-2\sqrt2\,c_0h^{-1}\frac{L}{L-c}\Bigl(2+\frac1{L-c}+\frac4{3(L-c)^2}\Bigr).
 \end{split}
 \tag{6.20}
 $$">$$
 \begin{split}
-&amp;2\sqrt2\,\frac{L}{L+c}\left(1-\frac1{L+c}\right)
--\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}
--\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
-&amp;-4h^{-1/2}\frac{L}{L-c}
--2\sqrt2\,c_0h^{-1}\frac{L}{L-c}
- \left(2+\frac1{L-c}+\frac4{3(L-c)^2}\right).
+&amp;2\sqrt2\,\frac{L}{L+c}\Bigl(1-\frac1{L+c}\Bigr)-\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}-\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
+&amp;-4h^{-1/2}\frac{L}{L-c}-2\sqrt2\,c_0h^{-1}\frac{L}{L-c}\Bigl(2+\frac1{L-c}+\frac4{3(L-c)^2}\Bigr).
 \end{split}
 \tag{6.20}
 $$</span></p>
-<p>All constants in this comparison have elementary rational proofs. Subtracting successive values of <span class="math" data-tex="$H_N-\log N$">$H_N-\log N$</span> gives
+<p><em>Elementary constants.</em> The differences of consecutive values of <span class="math" data-tex="\(H_N-\log N\)">\(H_N-\log N\)</span> give
 <span class="math math-display" data-tex="$$
-H_N-\log N-\gamma
-=\sum_{k=N}^\infty\left(\log(1+1/k)-\frac1{k+1}\right).
+H_N-\log N-\gamma=\sum_{k\ge N}\Bigl(\log\Bigl(1+\frac1k\Bigr)-\frac1{k+1}\Bigr),
 $$">$$
-H_N-\log N-\gamma
-=\sum_{k=N}^\infty\left(\log(1+1/k)-\frac1{k+1}\right).
+H_N-\log N-\gamma=\sum_{k\ge N}\Bigl(\log\Bigl(1+\frac1k\Bigr)-\frac1{k+1}\Bigr),
 $$</span>
-Every summand is positive. The trapezoid bound for the strictly convex function <span class="math" data-tex="$1/t$">$1/t$</span> makes it smaller than
-<span class="math" data-tex="$\tfrac12(1/k-1/(k+1))$">$\tfrac12(1/k-1/(k+1))$</span>, so telescoping proves
-<span class="math" data-tex="$0&lt;H_N-\log N-\gamma&lt;1/(2N)$">$0&lt;H_N-\log N-\gamma&lt;1/(2N)$</span>.
-In particular <span class="math" data-tex="$\gamma&lt;H_{256}-\log256$">$\gamma&lt;H_{256}-\log256$</span>.
-The logarithm series used in Section 6.3 proves
+with positive summands; the trapezoid bound for the convex function <span class="math" data-tex="\(1/t\)">\(1/t\)</span> on <span class="math" data-tex="\([k,k+1]\)">\([k,k+1]\)</span> bounds each by <span class="math" data-tex="\(\frac12(\frac1k-\frac1{k+1})\)">\(\frac12(\frac1k-\frac1{k+1})\)</span>. Telescoping gives <span class="math" data-tex="\(0&lt;H_N-\log N-\gamma&lt;1/(2N)\)">\(0&lt;H_N-\log N-\gamma&lt;1/(2N)\)</span>, and in particular <span class="math" data-tex="\(\gamma&lt;H_{256}-\log256\)">\(\gamma&lt;H_{256}-\log256\)</span>. The logarithm series of Section 6.3 gives
 <span class="math math-display" data-tex="$$
-H_{256}\le15311/2500,\quad
-69314/100000\le\log2\le69315/100000,\quad
-\log(4\pi)\ge253/100.
+H_{256}\le\frac{15311}{2500},\qquad\frac{69314}{100000}\le\log2\le\frac{69315}{100000},\qquad\log(4\pi)\ge\frac{253}{100}.
 $$">$$
-H_{256}\le15311/2500,\quad
-69314/100000\le\log2\le69315/100000,\quad
-\log(4\pi)\ge253/100.
+H_{256}\le\frac{15311}{2500},\qquad\frac{69314}{100000}\le\log2\le\frac{69315}{100000},\qquad\log(4\pi)\ge\frac{253}{100}.
 $$</span>
-For the last inequality, the tangent identity
-<span class="math" data-tex="$\pi=16\arctan(1/5)-4\arctan(1/239)$">$\pi=16\arctan(1/5)-4\arctan(1/239)$</span>, with the alternating arctangent series, gives
+For the last bound, Machin's identity <span class="math" data-tex="\(\pi=16\arctan\frac15-4\arctan\frac1{239}\)">\(\pi=16\arctan\frac15-4\arctan\frac1{239}\)</span> and the alternating arctangent series give <span class="math" data-tex="\(\pi&gt;16(\frac15-\frac1{375})-\frac4{239}&gt;\frac{157}{50}\)">\(\pi&gt;16(\frac15-\frac1{375})-\frac4{239}&gt;\frac{157}{50}\)</span>, so <span class="math" data-tex="\(\log(4\pi)&gt;\log\frac{314}{25}&gt;\frac{253}{100}\)">\(\log(4\pi)&gt;\log\frac{314}{25}&gt;\frac{253}{100}\)</span>. The identity is fixed on the correct branch as follows. The double-angle formula gives <span class="math" data-tex="\(\tan(4\arctan\frac15)=\frac{120}{119}\)">\(\tan(4\arctan\frac15)=\frac{120}{119}\)</span>, and the subtraction formula gives <span class="math" data-tex="\(\tan\bigl(4\arctan\frac15-\arctan\frac1{239}\bigr)=1\)">\(\tan\bigl(4\arctan\frac15-\arctan\frac1{239}\bigr)=1\)</span>. The angle lies in <span class="math" data-tex="\((0,\pi/2)\)">\((0,\pi/2)\)</span>, since <span class="math" data-tex="\(4\arctan\frac15&lt;\frac45&lt;\frac\pi2\)">\(4\arctan\frac15&lt;\frac45&lt;\frac\pi2\)</span>, where <span class="math" data-tex="\(\pi&gt;2\)">\(\pi&gt;2\)</span> follows from <span class="math" data-tex="\(\frac\pi4=\int_0^1\frac{dt}{1+t^2}&gt;\frac12\)">\(\frac\pi4=\int_0^1\frac{dt}{1+t^2}&gt;\frac12\)</span>. Therefore
 <span class="math math-display" data-tex="$$
-\pi&gt;16(1/5-1/375)-4/239&gt;157/50;
+c_0&lt;\frac{15311}{2500}-8\cdot\frac{69314}{100000}+2-\frac{253}{100}=\frac{154}{3125}&lt;\frac1{20}.
 $$">$$
-\pi&gt;16(1/5-1/375)-4/239&gt;157/50;
+c_0&lt;\frac{15311}{2500}-8\cdot\frac{69314}{100000}+2-\frac{253}{100}=\frac{154}{3125}&lt;\frac1{20}.
 $$</span>
-the branch is fixed because <span class="math" data-tex="$4\arctan(1/5)-\arctan(1/239)$">$4\arctan(1/5)-\arctan(1/239)$</span> lies in <span class="math" data-tex="$(0,\pi/2)$">$(0,\pi/2)$</span>. Indeed <span class="math" data-tex="$\pi&gt;2$">$\pi&gt;2$</span> follows from <span class="math" data-tex="$\pi/4=\int_0^1(1+t^2)^{-1}dt&gt;1/2$">$\pi/4=\int_0^1(1+t^2)^{-1}dt&gt;1/2$</span>, and this angle is between zero and <span class="math" data-tex="$4/5$">$4/5$</span>. The double-angle formula gives <span class="math" data-tex="$\tan(4\arctan(1/5))=120/119$">$\tan(4\arctan(1/5))=120/119$</span>; the subtraction formula then gives tangent <span class="math" data-tex="$(120/119-1/239)/(1+120/(119\cdot239))=1$">$(120/119-1/239)/(1+120/(119\cdot239))=1$</span>. Thus <span class="math" data-tex="$\log(4\pi)&gt;\log(314/25)&gt;253/100$">$\log(4\pi)&gt;\log(314/25)&gt;253/100$</span>.
-Consequently
+Also <span class="math" data-tex="\(\pi&lt;\frac{22}7\)">\(\pi&lt;\frac{22}7\)</span>: integrating the identity
 <span class="math math-display" data-tex="$$
-c_0&lt;15311/2500-8(69314/100000)+2-253/100
-=154/3125&lt;1/20.
+\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}
 $$">$$
-c_0&lt;15311/2500-8(69314/100000)+2-253/100
-=154/3125&lt;1/20.
+\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}
 $$</span>
-Also <span class="math" data-tex="$\pi&lt;22/7$">$\pi&lt;22/7$</span>, because
+over <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> gives <span class="math" data-tex="\(\frac{22}7-\pi&gt;0\)">\(\frac{22}7-\pi&gt;0\)</span>. Hence <span class="math" data-tex="\(\log(2\pi)&lt;\log\frac{44}7&lt;\frac{46}{25}\)">\(\log(2\pi)&lt;\log\frac{44}7&lt;\frac{46}{25}\)</span>.</p>
+<p><em>Monotonicity and endpoint values.</em> At <span class="math" data-tex="\(h=74500\)">\(h=74500\)</span> the same tools give
 <span class="math math-display" data-tex="$$
-\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}.
+L\ge\frac{56}5,\qquad Lh^{-1/6}\le\frac{87}{50},\qquad h^{-1/2}\le\frac1{272}.
 $$">$$
-\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}.
+L\ge\frac{56}5,\qquad Lh^{-1/6}\le\frac{87}{50},\qquad h^{-1/2}\le\frac1{272}.
 $$</span>
-Integration from zero to one gives <span class="math" data-tex="$22/7-\pi&gt;0$">$22/7-\pi&gt;0$</span>.
-Hence <span class="math" data-tex="$\log(2\pi)&lt;\log(44/7)&lt;46/25$">$\log(2\pi)&lt;\log(44/7)&lt;46/25$</span>.</p>
-<p>The same logarithm series and integer powers at <span class="math" data-tex="$h=74500$">$h=74500$</span> give
+For larger <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(Lh^{-1/6}\)">\(Lh^{-1/6}\)</span> decreases, since <span class="math" data-tex="\(\frac{d}{dL}\log(Lh^{-1/6})=1/L-1/6&lt;0\)">\(\frac{d}{dL}\log(Lh^{-1/6})=1/L-1/6&lt;0\)</span>. Every product <span class="math" data-tex="\(h^{-a}L/(L\pm c)\)">\(h^{-a}L/(L\pm c)\)</span> occurring in (6.20) also decreases, its logarithmic derivative in <span class="math" data-tex="\(L\)">\(L\)</span> being <span class="math" data-tex="\(-a+c/(L(L+c))\)">\(-a+c/(L(L+c))\)</span> or <span class="math" data-tex="\(-a-c/(L(L-c))\)">\(-a-c/(L(L-c))\)</span>, which is negative here.</p>
+<p><em>The upper bound for <span class="math" data-tex="\(E\)">\(E\)</span>.</em> Write <span class="math" data-tex="\(E(h)/S(h)=2+c_0\bigl(1+\frac1L+\frac4{L^2}\bigr)+\frac2L\bigl(Lh^{-1/6}-1\bigr)+\frac8{L^2}+\log(2\pi)h^{-1/2}\)">\(E(h)/S(h)=2+c_0\bigl(1+\frac1L+\frac4{L^2}\bigr)+\frac2L\bigl(Lh^{-1/6}-1\bigr)+\frac8{L^2}+\log(2\pi)h^{-1/2}\)</span>. With <span class="math" data-tex="\(1/L\le5/56\)">\(1/L\le5/56\)</span> this gives
 <span class="math math-display" data-tex="$$
-L\ge56/5,\quad Lh^{-1/6}\le87/50,\quad h^{-1/2}\le1/272.
-$$">$$
-L\ge56/5,\quad Lh^{-1/6}\le87/50,\quad h^{-1/2}\le1/272.
-$$</span>
-The product <span class="math" data-tex="$Lh^{-1/6}$">$Lh^{-1/6}$</span> decreases thereafter because its logarithmic derivative with respect to <span class="math" data-tex="$L$">$L$</span> is <span class="math" data-tex="$-1/6+1/L&lt;0$">$-1/6+1/L&lt;0$</span>. The products involving <span class="math" data-tex="$L/(L\pm c)$">$L/(L\pm c)$</span> also decrease: their logarithmic derivatives are
-<span class="math" data-tex="$-a+c/[L(L+c)]$">$-a+c/[L(L+c)]$</span> or <span class="math" data-tex="$-a-c/[L(L-c)]$">$-a-c/[L(L-c)]$</span>, which are negative for the powers used here. Substitution in <span class="math" data-tex="$E/S$">$E/S$</span>, retaining its negative <span class="math" data-tex="$L^{-1}$">$L^{-1}$</span> coefficient, gives
-<span class="math math-display" data-tex="$$
-\frac{E(h)}{S(h)}
-\le
-2+\frac{37}{25}\frac5{56}+8\left(\frac5{56}\right)^2
-+\frac1{20}\left(1+\frac5{56}+4\left(\frac5{56}\right)^2\right)
-+\frac{46}{25}\frac1{272}
-=\frac{113}{50}-\frac{1677}{1332800}.
+\frac{E(h)}{S(h)}\le2+\frac{37}{25}\cdot\frac5{56}+8\Bigl(\frac5{56}\Bigr)^2+\frac1{20}\Bigl(1+\frac5{56}+4\Bigl(\frac5{56}\Bigr)^2\Bigr)+\frac{46}{25}\cdot\frac1{272}=\frac{113}{50}-\frac{1677}{1332800}.
 \tag{6.21}
 $$">$$
-\frac{E(h)}{S(h)}
-\le
-2+\frac{37}{25}\frac5{56}+8\left(\frac5{56}\right)^2
-+\frac1{20}\left(1+\frac5{56}+4\left(\frac5{56}\right)^2\right)
-+\frac{46}{25}\frac1{272}
-=\frac{113}{50}-\frac{1677}{1332800}.
+\frac{E(h)}{S(h)}\le2+\frac{37}{25}\cdot\frac5{56}+8\Bigl(\frac5{56}\Bigr)^2+\frac1{20}\Bigl(1+\frac5{56}+4\Bigl(\frac5{56}\Bigr)^2\Bigr)+\frac{46}{25}\cdot\frac1{272}=\frac{113}{50}-\frac{1677}{1332800}.
 \tag{6.21}
-$$</span>
-For (6.20), the needed bounds are
+$$</span></p>
+<p><em>The lower bound for <span class="math" data-tex="\(C\)">\(C\)</span>.</em> For (6.20) we need
 <span class="math math-display" data-tex="$$
 \begin{gathered}
-\sqrt2\ge7071/5000,\quad2^{1/4}\le119/100,\\
-L/(L+c)\ge16/17,\quad1/(L+c)\le17/202,\\
-h^{-1/4}L/(L+c)\le573/10000,\\
-h^{-1/2}L/(L+c)\le7/2000,\\
-h^{-1/2}L/(L-c)\le197/50000,\quad L/(L-c)\le107/100.
+\sqrt2\ge\tfrac{7071}{5000},\qquad2^{1/4}\le\tfrac{119}{100},\qquad\frac{L}{L+c}\ge\tfrac{16}{17},\qquad\frac1{L+c}\le\tfrac{17}{202},\\
+h^{-1/4}\frac{L}{L+c}\le\tfrac{573}{10000},\qquad h^{-1/2}\frac{L}{L+c}\le\tfrac7{2000},\qquad h^{-1/2}\frac{L}{L-c}\le\tfrac{197}{50000},\qquad\frac{L}{L-c}\le\tfrac{107}{100}.
 \end{gathered}
 $$">$$
 \begin{gathered}
-\sqrt2\ge7071/5000,\quad2^{1/4}\le119/100,\\
-L/(L+c)\ge16/17,\quad1/(L+c)\le17/202,\\
-h^{-1/4}L/(L+c)\le573/10000,\\
-h^{-1/2}L/(L+c)\le7/2000,\\
-h^{-1/2}L/(L-c)\le197/50000,\quad L/(L-c)\le107/100.
+\sqrt2\ge\tfrac{7071}{5000},\qquad2^{1/4}\le\tfrac{119}{100},\qquad\frac{L}{L+c}\ge\tfrac{16}{17},\qquad\frac1{L+c}\le\tfrac{17}{202},\\
+h^{-1/4}\frac{L}{L+c}\le\tfrac{573}{10000},\qquad h^{-1/2}\frac{L}{L+c}\le\tfrac7{2000},\qquad h^{-1/2}\frac{L}{L-c}\le\tfrac{197}{50000},\qquad\frac{L}{L-c}\le\tfrac{107}{100}.
 \end{gathered}
 $$</span>
-The square and fourth-root bounds follow by squaring or taking fourth powers. For the remaining endpoint checks use
-<span class="math" data-tex="$56/5\le\log74500\le11219/1000$">$56/5\le\log74500\le11219/1000$</span>,
-<span class="math" data-tex="$74500^{-1/6}\le1549/10000$">$74500^{-1/6}\le1549/10000$</span>,
-<span class="math" data-tex="$74500^{-1/4}\le606/10000$">$74500^{-1/4}\le606/10000$</span>, and <span class="math" data-tex="$74500^{-1/2}\le1/272$">$74500^{-1/2}\le1/272$</span>;
-the asserted power inequalities follow by clearing denominators and raising to the respective powers. Monotonicity just proved extends them to every larger <span class="math" data-tex="$h$">$h$</span>. Since <span class="math" data-tex="$L-c&gt;10$">$L-c&gt;10$</span>, the last line of (6.20) has absolute value at most <span class="math" data-tex="$1/10000$">$1/10000$</span>. Therefore (6.20) is at least
+The first two hold after squaring and taking fourth powers. The others are checked at <span class="math" data-tex="\(h=74500\)">\(h=74500\)</span> using <span class="math" data-tex="\(\frac{56}5\le\log74500\le\frac{11219}{1000}\)">\(\frac{56}5\le\log74500\le\frac{11219}{1000}\)</span>, <span class="math" data-tex="\(74500^{-1/6}\le\frac{1549}{10000}\)">\(74500^{-1/6}\le\frac{1549}{10000}\)</span>, <span class="math" data-tex="\(74500^{-1/4}\le\frac{606}{10000}\)">\(74500^{-1/4}\le\frac{606}{10000}\)</span> and <span class="math" data-tex="\(74500^{-1/2}\le\frac1{272}\)">\(74500^{-1/2}\le\frac1{272}\)</span>, and extend to larger <span class="math" data-tex="\(h\)">\(h\)</span> by the monotonicity just proved. As <span class="math" data-tex="\(L-c&gt;10\)">\(L-c&gt;10\)</span>, the last term of (6.20) is at most <span class="math" data-tex="\(1/10000\)">\(1/10000\)</span> in absolute value. Therefore (6.20) is at least
 <span class="math math-display" data-tex="$$
-2\frac{7071}{5000}\frac{16}{17}\left(1-\frac{17}{202}\right)
--\frac94\frac{119}{100}\frac{573}{10000}
--\frac{46}{25}\frac7{2000}-4\frac{197}{50000}-\frac1{10000}
-=\frac{113}{50}+\frac{15597889}{6868000000}.
+2\cdot\frac{7071}{5000}\cdot\frac{16}{17}\Bigl(1-\frac{17}{202}\Bigr)-\frac94\cdot\frac{119}{100}\cdot\frac{573}{10000}-\frac{46}{25}\cdot\frac7{2000}-4\cdot\frac{197}{50000}-\frac1{10000}=\frac{113}{50}+\frac{15597889}{6868000000}.
 \tag{6.22}
 $$">$$
-2\frac{7071}{5000}\frac{16}{17}\left(1-\frac{17}{202}\right)
--\frac94\frac{119}{100}\frac{573}{10000}
--\frac{46}{25}\frac7{2000}-4\frac{197}{50000}-\frac1{10000}
-=\frac{113}{50}+\frac{15597889}{6868000000}.
+2\cdot\frac{7071}{5000}\cdot\frac{16}{17}\Bigl(1-\frac{17}{202}\Bigr)-\frac94\cdot\frac{119}{100}\cdot\frac{573}{10000}-\frac{46}{25}\cdot\frac7{2000}-4\cdot\frac{197}{50000}-\frac1{10000}=\frac{113}{50}+\frac{15597889}{6868000000}.
 \tag{6.22}
 $$</span>
-This proves both strict inequalities in (6.16). The coefficient checks use exact integers and the convergent logarithm series, not decimal estimates of prime functions. <span class="math" data-tex="$\square$">$\square$</span></p>
-<p>Lemmas 6.5–6.6 prove (6.1) under RH whenever <span class="math" data-tex="$\log n\ge74500$">$\log n\ge74500$</span>.</p>
-<h3 id="6-3-a-complete-finite-verification">6.3. A complete finite verification</h3>
-<p>The remaining interval is finite in logarithmic height, but contains far too many integers for a direct divisor sieve. We use an envelope that bounds every integer in an interval at once.</p>
-<p>The gain from raising the exponent of <span class="math" data-tex="$p$">$p$</span> from <span class="math" data-tex="$j-1$">$j-1$</span> to <span class="math" data-tex="$j$">$j$</span> is
+Together, (6.21) and (6.22) prove (6.16). All the constants come from exact integer arithmetic and convergent series, not from decimal values of prime-counting functions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Lemmas 6.5 and 6.6, RH implies (6.1) for every <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\log n\ge74500\)">\(\log n\ge74500\)</span>.</p>
+<h3 id="6-3-the-finite-range-of-heights">6.3. The finite range of heights</h3>
+<p>Between <span class="math" data-tex="\(n=5041\)">\(n=5041\)</span> and <span class="math" data-tex="\(\log n=74500\)">\(\log n=74500\)</span> the integers are far too many for a divisor sieve. Instead we bound all integers of a height interval at once.</p>
+<p>Raising the exponent of <span class="math" data-tex="\(p\)">\(p\)</span> from <span class="math" data-tex="\(j-1\)">\(j-1\)</span> to <span class="math" data-tex="\(j\)">\(j\)</span> multiplies <span class="math" data-tex="\(\sigma_1(p^a)/p^a\)">\(\sigma_1(p^a)/p^a\)</span> by <span class="math" data-tex="\(e^{g_{p,j}}\)">\(e^{g_{p,j}}\)</span>, where
 <span class="math math-display" data-tex="$$
-g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}.
+g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}=\log\Bigl(1+\frac1{p(1+p+\cdots+p^{j-1})}\Bigr).
 $$">$$
-g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}.
+g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}=\log\Bigl(1+\frac1{p(1+p+\cdots+p^{j-1})}\Bigr).
 $$</span>
-For any rational <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+So <span class="math" data-tex="\(\log A(n)=\sum_p\sum_{j\le a_p}g_{p,j}\)">\(\log A(n)=\sum_p\sum_{j\le a_p}g_{p,j}\)</span>. Subtracting <span class="math" data-tex="\(\varepsilon\log p\)">\(\varepsilon\log p\)</span> for each prime-power step and keeping only the positive differences gives, for every rational <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,
 <span class="math math-display" data-tex="$$
-\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad
-B_\varepsilon=\sum_{p,j}\max(0,g_{p,j}-\varepsilon\log p).
+\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad B_\varepsilon=\sum_{p,j}\max\bigl(0,\,g_{p,j}-\varepsilon\log p\bigr).
 \tag{6.23}
 $$">$$
-\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad
-B_\varepsilon=\sum_{p,j}\max(0,g_{p,j}-\varepsilon\log p).
+\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad B_\varepsilon=\sum_{p,j}\max\bigl(0,\,g_{p,j}-\varepsilon\log p\bigr).
 \tag{6.23}
 $$</span>
-The product formula for <span class="math" data-tex="$\sigma_1(p^a)/p^a$">$\sigma_1(p^a)/p^a$</span> telescopes into these gains. Extending its actual events to all positive events proves (6.23). The sum is finite: <span class="math" data-tex="$g_{p,j}/\log p$">$g_{p,j}/\log p$</span> decreases both in <span class="math" data-tex="$p$">$p$</span> and in <span class="math" data-tex="$j$">$j$</span>. For the <span class="math" data-tex="$p$">$p$</span> assertion, write the gain as
-<span class="math" data-tex="$\log(1+1/[p(1+p+\cdots+p^{j-1})])$">$\log(1+1/[p(1+p+\cdots+p^{j-1})])$</span>; its numerator decreases, while <span class="math" data-tex="$\log p$">$\log p$</span> increases. For the <span class="math" data-tex="$j$">$j$</span> assertion the denominator increases.</p>
-<p>Suppose integer cutoffs <span class="math" data-tex="$c_1,\ldots,c_r$">$c_1,\ldots,c_r$</span> satisfy
-<span class="math" data-tex="$g_{c_j+1,j}\le\varepsilon\log(c_j+1)$">$g_{c_j+1,j}\le\varepsilon\log(c_j+1)$</span> and
-<span class="math" data-tex="$g_{2,r+1}\le\varepsilon\log2$">$g_{2,r+1}\le\varepsilon\log2$</span>.
-These inequalities prove that no positive event is omitted outside the finite box <span class="math" data-tex="$p\le c_j$">$p\le c_j$</span>. On an interval <span class="math" data-tex="$h\in[a,b]$">$h\in[a,b]$</span>,
+The ratio <span class="math" data-tex="\(g_{p,j}/\log p\)">\(g_{p,j}/\log p\)</span> decreases in <span class="math" data-tex="\(p\)">\(p\)</span> and in <span class="math" data-tex="\(j\)">\(j\)</span>: the second form of <span class="math" data-tex="\(g_{p,j}\)">\(g_{p,j}\)</span> decreases in both, while <span class="math" data-tex="\(\log p\)">\(\log p\)</span> increases. Hence the sum is finite. If integers <span class="math" data-tex="\(c_1,\ldots,c_r\)">\(c_1,\ldots,c_r\)</span> satisfy <span class="math" data-tex="\(g_{c_j+1,j}\le\varepsilon\log(c_j+1)\)">\(g_{c_j+1,j}\le\varepsilon\log(c_j+1)\)</span> and <span class="math" data-tex="\(g_{2,r+1}\le\varepsilon\log2\)">\(g_{2,r+1}\le\varepsilon\log2\)</span>, every positive term has <span class="math" data-tex="\(j\le r\)">\(j\le r\)</span> and <span class="math" data-tex="\(p\le c_j\)">\(p\le c_j\)</span>. For <span class="math" data-tex="\(h=\log n\)">\(h=\log n\)</span> in an interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> this gives
 <span class="math math-display" data-tex="$$
-\mathcal R(n)\le f_\varepsilon(h)
-=\varepsilon h+B_\varepsilon-\gamma-\log\log h.
+\mathcal R(n)\le f_\varepsilon(h)=\varepsilon h+B_\varepsilon-\gamma-\log\log h .
 $$">$$
-\mathcal R(n)\le f_\varepsilon(h)
-=\varepsilon h+B_\varepsilon-\gamma-\log\log h.
+\mathcal R(n)\le f_\varepsilon(h)=\varepsilon h+B_\varepsilon-\gamma-\log\log h .
 $$</span>
-Its second derivative is <span class="math" data-tex="$(\log h+1)/(h^2(\log h)^2)&gt;0$">$(\log h+1)/(h^2(\log h)^2)&gt;0$</span>.
-Thus <span class="math" data-tex="$f_\varepsilon(h)\le\max(f_\varepsilon(a),f_\varepsilon(b))$">$f_\varepsilon(h)\le\max(f_\varepsilon(a),f_\varepsilon(b))$</span>.
-A negative bound at both endpoints proves the inequality throughout the interval.</p>
-<p>The following complete verifier uses only integers. It checks every integer <span class="math" data-tex="$5041\le n\le720720$">$5041\le n\le720720$</span>, then the finite boxes for the 36 displayed rational intervals. Those intervals cover <span class="math" data-tex="$336/25\le h\le37283397387/500000&gt;74500$">$336/25\le h\le37283397387/500000&gt;74500$</span>; <span class="math" data-tex="$\log720720&gt;336/25$">$\log720720&gt;336/25$</span> provides the overlap. For logarithms, after extracting a power of two, use
+The function <span class="math" data-tex="\(f_\varepsilon\)">\(f_\varepsilon\)</span> is convex, as <span class="math" data-tex="\(f_\varepsilon&#x27;&#x27;(h)=(\log h+1)/(h^2(\log h)^2)&gt;0\)">\(f_\varepsilon&#x27;&#x27;(h)=(\log h+1)/(h^2(\log h)^2)&gt;0\)</span>. Its maximum on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> is therefore attained at an endpoint, and negative values at both endpoints prove <span class="math" data-tex="\(\mathcal R&lt;0\)">\(\mathcal R&lt;0\)</span> on the whole interval.</p>
+<p>The verifier below uses integer arithmetic only. It checks every integer <span class="math" data-tex="\(5041\le n\le720720\)">\(5041\le n\le720720\)</span> directly, and then the finite boxes for 36 rational intervals that cover <span class="math" data-tex="\(336/25\le h\le37283397387/500000\)">\(336/25\le h\le37283397387/500000\)</span>, beyond <span class="math" data-tex="\(74500\)">\(74500\)</span>; the two ranges overlap since <span class="math" data-tex="\(\log720720&gt;336/25\)">\(\log720720&gt;336/25\)</span>. Logarithms are evaluated, after removing a power of two, by
 <span class="math math-display" data-tex="$$
-\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\quad
-z=\frac{r-1}{r+1},\quad1\le r\le2,\quad
-0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)}.
+\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\qquad z=\frac{r-1}{r+1},\quad1\le r\le2,\quad0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)},
 $$">$$
-\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\quad
-z=\frac{r-1}{r+1},\quad1\le r\le2,\quad
-0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)}.
+\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\qquad z=\frac{r-1}{r+1},\quad1\le r\le2,\quad0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)},
 $$</span>
-Since <span class="math" data-tex="$z\le1/3$">$z\le1/3$</span> and <span class="math" data-tex="$Q=10^{24}$">$Q=10^{24}$</span>, the last bound is <span class="math" data-tex="$&lt;1/Q$">$&lt;1/Q$</span>.
-Every integer division below rounds in its indicated direction; this proves the returned logarithm intervals inductively. The harmonic lower bound
-<span class="math" data-tex="$\gamma&gt;H_N-\log N-1/(2N)$">$\gamma&gt;H_N-\log N-1/(2N)$</span> uses the trapezoid inequality for <span class="math" data-tex="$1/t$">$1/t$</span>, summed from <span class="math" data-tex="$N$">$N$</span> to infinity. The sieve is Eratosthenes, and the divisor loop adds each divisor to exactly its multiples. These observations prove the soundness of every test in the code; its output is a finite exact certificate.</p>
+and since <span class="math" data-tex="\(z\le1/3\)">\(z\le1/3\)</span> the remainder is below <span class="math" data-tex="\(1/Q\)">\(1/Q\)</span> with <span class="math" data-tex="\(Q=10^{24}\)">\(Q=10^{24}\)</span>. Every integer division rounds in the direction stated in the code, so the returned logarithm intervals are correct by induction. The lower bound <span class="math" data-tex="\(\gamma&gt;H_N-\log N-1/(2N)\)">\(\gamma&gt;H_N-\log N-1/(2N)\)</span> is the trapezoid estimate above. Primes come from the sieve of Eratosthenes, and <span class="math" data-tex="\(\sigma_1\)">\(\sigma_1\)</span> is tabulated by adding every <span class="math" data-tex="\(d\)">\(d\)</span> to the entries of its multiples. Each test in the program is therefore sound, and its output is an exact finite certificate.</p>
 <pre><code class="language-python">from functools import lru_cache
 from fractions import Fraction
 from math import isqrt, factorial
@@ -1102,20 +912,15 @@ print('Startup minimum exact scaled margin and n:',worst)
 print('All 36 height intervals, startup integers '
       'and coefficient checks passed.')
 </code></pre>
-<p>All 36 boxes and both endpoint tests pass. The smallest endpoint margin in that verification is greater than <span class="math" data-tex="$139/10^6$">$139/10^6$</span>. In the direct integer range the smallest logarithmic margin occurs at <span class="math" data-tex="$n=10080$">$n=10080$</span>, and is greater than <span class="math" data-tex="$14/1000$">$14/1000$</span>. These are downward bounds on exact integer margins, not rounded predicates. Together with (6.16), they prove the RH implication for every integer <span class="math" data-tex="$n&gt;5040$">$n&gt;5040$</span>.</p>
-<h3 id="6-4-an-off-line-zero-forces-violations">6.4. An off-line zero forces violations</h3>
-<p>We give the converse, including the positivity principle that produces its oscillation. Define
+<p>All 36 boxes pass at both endpoints, with smallest endpoint margin greater than <span class="math" data-tex="\(139/10^6\)">\(139/10^6\)</span>. In the direct range the smallest logarithmic margin, attained at <span class="math" data-tex="\(n=10080\)">\(n=10080\)</span>, exceeds <span class="math" data-tex="\(14/1000\)">\(14/1000\)</span>. These are lower bounds for exact integer margins, not rounded decimal tests. With (6.16) they prove that RH implies (6.1) for every <span class="math" data-tex="\(n&gt;5040\)">\(n&gt;5040\)</span>.</p>
+<h3 id="6-4-the-converse-an-off-line-zero-forces-violations">6.4. The converse: an off-line zero forces violations</h3>
+<p>Without assuming RH, put
 <span class="math math-display" data-tex="$$
-J(x)=I_1(x),\quad
-K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\quad
-F(x)=e^\gamma\log\theta(x)\prod_{p\le x}(1-1/p).
+J(x)=I_1(x),\qquad K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\qquad F(x)=e^\gamma\log\theta(x)\prod_{p\le x}\Bigl(1-\frac1p\Bigr),
 $$">$$
-J(x)=I_1(x),\quad
-K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\quad
-F(x)=e^\gamma\log\theta(x)\prod_{p\le x}(1-1/p).
+J(x)=I_1(x),\qquad K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\qquad F(x)=e^\gamma\log\theta(x)\prod_{p\le x}\Bigl(1-\frac1p\Bigr),
 $$</span>
-These definitions are used for sufficiently large <span class="math" data-tex="$x$">$x$</span>, so <span class="math" data-tex="$\theta(x)&gt;1$">$\theta(x)&gt;1$</span>.
-They do not assume RH. The classical PNT error in lesson twelve makes <span class="math" data-tex="$J,K$">$J,K$</span> absolutely convergent and bounded.</p>
+for <span class="math" data-tex="\(x\)">\(x\)</span> so large that <span class="math" data-tex="\(\theta(x)&gt;1\)">\(\theta(x)&gt;1\)</span>. By the classical error term of lesson twelve, both integrals converge absolutely and stay bounded.</p>
 <p><strong>Lemma 6.7 (finite-product comparison).</strong>
 <span class="math math-display" data-tex="$$
 \log F(x)\le J(x)+4/x.
@@ -1124,211 +929,100 @@ $$">$$
 \log F(x)\le J(x)+4/x.
 \tag{6.24}
 $$</span></p>
-<p><strong>Proof.</strong> Formula (6.15), and
-<span class="math" data-tex="$\log(1-p^{-1})=-p^{-1}+m_p$">$\log(1-p^{-1})=-p^{-1}+m_p$</span>, give the exact identity
+<p><strong>Proof.</strong> Insert (6.15) and <span class="math" data-tex="\(\log(1-p^{-1})=-p^{-1}+m_p\)">\(\log(1-p^{-1})=-p^{-1}+m_p\)</span> into the definition of <span class="math" data-tex="\(F\)">\(F\)</span>. With <span class="math" data-tex="\(B_1^{\rm prime}=\gamma+\sum_pm_p\)">\(B_1^{\rm prime}=\gamma+\sum_pm_p\)</span> one obtains
 <span class="math math-display" data-tex="$$
-\log F(x)=K(x)+R_\theta(x)+R_M(x),
+\log F(x)=K(x)+R_\theta(x)+R_M(x),\qquad
+R_\theta(x)=\log\log\theta(x)-\log\log x-\frac{\theta(x)-x}{x\log x},\qquad R_M(x)=-\sum_{p&gt;x}m_p .
 $$">$$
-\log F(x)=K(x)+R_\theta(x)+R_M(x),
+\log F(x)=K(x)+R_\theta(x)+R_M(x),\qquad
+R_\theta(x)=\log\log\theta(x)-\log\log x-\frac{\theta(x)-x}{x\log x},\qquad R_M(x)=-\sum_{p&gt;x}m_p .
 $$</span>
+Concavity of <span class="math" data-tex="\(y\mapsto\log\log y\)">\(y\mapsto\log\log y\)</span> on <span class="math" data-tex="\(y&gt;1\)">\(y&gt;1\)</span> puts its graph below its tangent line at <span class="math" data-tex="\(x\)">\(x\)</span>, which is the statement <span class="math" data-tex="\(R_\theta(x)\le0\)">\(R_\theta(x)\le0\)</span>. Since <span class="math" data-tex="\(0\le-m_p=\sum_{j\ge2}1/(jp^j)\le1/(p(p-1))\le2/p^2\)">\(0\le-m_p=\sum_{j\ge2}1/(jp^j)\le1/(p(p-1))\le2/p^2\)</span>, comparison with <span class="math" data-tex="\(\sum_{n&gt;x}2/n^2\)">\(\sum_{n&gt;x}2/n^2\)</span> gives <span class="math" data-tex="\(0\le R_M(x)\le4/x\)">\(0\le R_M(x)\le4/x\)</span>. Finally <span class="math" data-tex="\(J(x)-K(x)=P_1(x)\ge0\)">\(J(x)-K(x)=P_1(x)\ge0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.8 (negative weighted oscillation).</strong> Suppose RH fails. Then some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(0&lt;b&lt;1/2\)">\(0&lt;b&lt;1/2\)</span> satisfy
 <span class="math math-display" data-tex="$$
-R_\theta(x)=\log\log\theta(x)-\log\log x
--\frac{\theta(x)-x}{x\log x},\qquad
-R_M(x)=-\sum_{p&gt;x}m_p.
-$$">$$
-R_\theta(x)=\log\log\theta(x)-\log\log x
--\frac{\theta(x)-x}{x\log x},\qquad
-R_M(x)=-\sum_{p&gt;x}m_p.
-$$</span>
-The function <span class="math" data-tex="$y\mapsto\log\log y$">$y\mapsto\log\log y$</span> is concave for <span class="math" data-tex="$y&gt;1$">$y&gt;1$</span>, so its tangent at <span class="math" data-tex="$x$">$x$</span> proves <span class="math" data-tex="$R_\theta(x)\le0$">$R_\theta(x)\le0$</span>. The positive logarithm series gives
-<span class="math math-display" data-tex="$$
-0\le-m_p=\sum_{j\ge2}\frac1{jp^j}
-\le\frac1{p(p-1)}\le\frac2{p^2}.
-$$">$$
-0\le-m_p=\sum_{j\ge2}\frac1{jp^j}
-\le\frac1{p(p-1)}\le\frac2{p^2}.
-$$</span>
-Thus <span class="math" data-tex="$0\le R_M(x)\le4/x$">$0\le R_M(x)\le4/x$</span>, by comparison with the integer square tail. Finally
-<span class="math" data-tex="$J(x)-K(x)=P_1(x)\ge0$">$J(x)-K(x)=P_1(x)\ge0$</span>. These three facts prove (6.24). <span class="math" data-tex="$\square$">$\square$</span></p>
-<p><strong>Lemma 6.8 (negative weighted oscillation).</strong> If RH is false, there exist <span class="math" data-tex="$0&lt;b&lt;1/2$">$0&lt;b&lt;1/2$</span> and <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span> such that, for arbitrarily large <span class="math" data-tex="$x$">$x$</span>,
-<span class="math math-display" data-tex="$$
-J(x)\le-a x^{-b}.
+J(x)\le-a\,x^{-b}
 \tag{6.25}
 $$">$$
-J(x)\le-a x^{-b}.
+J(x)\le-a\,x^{-b}
 \tag{6.25}
-$$</span></p>
-<p><strong>Proof.</strong> By the symmetries already proved in lesson four, choose a zero
-<span class="math" data-tex="$\rho=\beta+i\gamma_\rho$">$\rho=\beta+i\gamma_\rho$</span> with <span class="math" data-tex="$1/2&lt;\beta&lt;1$">$1/2&lt;\beta&lt;1$</span>; lesson eight, Theorem 1.1, excludes the boundary line, and reflection excludes the other boundary.
-At its fixed ordinate choose a zero <span class="math" data-tex="$\rho_*$">$\rho_*$</span> having the largest real part; there are only finitely many zeros at this ordinate by isolation and the compactness of the closed critical strip. Write <span class="math" data-tex="$\beta_*=\Re\rho_*$">$\beta_*=\Re\rho_*$</span>, and choose
-<span class="math" data-tex="$1-\beta_*&lt;b&lt;1/2$">$1-\beta_*&lt;b&lt;1/2$</span>.</p>
-<p>We first compute the transform that detects this zero. For <span class="math" data-tex="$\Re z&gt;1$">$\Re z&gt;1$</span>, integration of the absolutely convergent von Mangoldt series gives
+$$</span>
+for arbitrarily large <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Proof.</strong> <em>Choice of the zero.</em> By the symmetries proved in lesson four, some zero <span class="math" data-tex="\(\rho=\beta+i\gamma_\rho\)">\(\rho=\beta+i\gamma_\rho\)</span> has <span class="math" data-tex="\(1/2&lt;\beta&lt;1\)">\(1/2&lt;\beta&lt;1\)</span>; lesson eight, Theorem 1.1, excludes <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>. The zeros with ordinate <span class="math" data-tex="\(\gamma_\rho\)">\(\gamma_\rho\)</span> are finitely many, since zeros are isolated and the closed critical strip is compact. Let <span class="math" data-tex="\(\rho_*\)">\(\rho_*\)</span> be one of them with the largest real part <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span>, and choose <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(1-\beta_*&lt;b&lt;1/2\)">\(1-\beta_*&lt;b&lt;1/2\)</span>.</p>
+<p><em>A transform that sees the zero.</em> For <span class="math" data-tex="\(\operatorname{Re}z&gt;1\)">\(\operatorname{Re}z&gt;1\)</span>, integrating the von Mangoldt series termwise gives
 <span class="math math-display" data-tex="$$
-\Phi_3(z):=\int_3^\infty(\psi(t)-t)t^{-z-1}\,dt
-=-\frac{\zeta&#x27;(z)}{z\zeta(z)}-\frac1{z-1}
--\int_1^3(\psi(t)-t)t^{-z-1}\,dt.
+\Phi_3(z):=\int_3^\infty(\psi(t)-t)\,t^{-z-1}\,dt=-\frac{\zeta&#x27;(z)}{z\zeta(z)}-\frac1{z-1}-\int_1^3(\psi(t)-t)\,t^{-z-1}\,dt .
 \tag{6.26}
 $$">$$
-\Phi_3(z):=\int_3^\infty(\psi(t)-t)t^{-z-1}\,dt
-=-\frac{\zeta&#x27;(z)}{z\zeta(z)}-\frac1{z-1}
--\int_1^3(\psi(t)-t)t^{-z-1}\,dt.
+\Phi_3(z):=\int_3^\infty(\psi(t)-t)\,t^{-z-1}\,dt=-\frac{\zeta&#x27;(z)}{z\zeta(z)}-\frac1{z-1}-\int_1^3(\psi(t)-t)\,t^{-z-1}\,dt .
 \tag{6.26}
 $$</span>
-The last integral is entire. The apparent pole at <span class="math" data-tex="$z=1$">$z=1$</span> cancels by the Laurent expansion of zeta there; a zero <span class="math" data-tex="$\rho$">$\rho$</span> of multiplicity <span class="math" data-tex="$d$">$d$</span> instead gives the genuine principal part <span class="math" data-tex="$-d/[\rho(z-\rho)]$">$-d/[\rho(z-\rho)]$</span>. The right side therefore continues <span class="math" data-tex="$\Phi_3$">$\Phi_3$</span> meromorphically.</p>
-<p>For <span class="math" data-tex="$t&gt;1$">$t&gt;1$</span>,
+The integral over <span class="math" data-tex="\([1,3]\)">\([1,3]\)</span> is an entire function of <span class="math" data-tex="\(z\)">\(z\)</span>, and the poles at <span class="math" data-tex="\(z=1\)">\(z=1\)</span> cancel by the Laurent expansion of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. So (6.26) continues <span class="math" data-tex="\(\Phi_3\)">\(\Phi_3\)</span> meromorphically, with principal part <span class="math" data-tex="\(-d/[\rho(z-\rho)]\)">\(-d/[\rho(z-\rho)]\)</span> at a zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of multiplicity <span class="math" data-tex="\(d\)">\(d\)</span>. Since <span class="math" data-tex="\(w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du\)">\(w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du\)</span> for <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>, Fubini's theorem and <span class="math" data-tex="\(\int_3^tx^{s-1}\,dx=(t^s-3^s)/s\)">\(\int_3^tx^{s-1}\,dx=(t^s-3^s)/s\)</span> give, for <span class="math" data-tex="\(\operatorname{Re}s&lt;0\)">\(\operatorname{Re}s&lt;0\)</span>,
 <span class="math math-display" data-tex="$$
-w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du.
-$$">$$
-w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du.
-$$</span>
-For <span class="math" data-tex="$\Re s&lt;0$">$\Re s&lt;0$</span>, Fubini and the integral over <span class="math" data-tex="$3&lt;x&lt;t$">$3&lt;x&lt;t$</span> now give
-<span class="math math-display" data-tex="$$
-\int_3^\infty x^{s-1}J(x)\,dx
-=\int_0^\infty(u+1)
-\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}s\,du.
+\int_3^\infty x^{s-1}J(x)\,dx=\int_0^\infty(u+1)\,\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}{s}\,du .
 \tag{6.27}
 $$">$$
-\int_3^\infty x^{s-1}J(x)\,dx
-=\int_0^\infty(u+1)
-\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}s\,du.
+\int_3^\infty x^{s-1}J(x)\,dx=\int_0^\infty(u+1)\,\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}{s}\,du .
 \tag{6.27}
 $$</span>
-Fubini is absolute: the classical PNT bound controls the <span class="math" data-tex="$u=0$">$u=0$</span> endpoint, and the lower limit <span class="math" data-tex="$t=3$">$t=3$</span> gives exponential decay as <span class="math" data-tex="$u\to\infty$">$u\to\infty$</span>. At <span class="math" data-tex="$s=0$">$s=0$</span> the numerator has a removable quotient whenever the zero-dependent continuation is regular. Formula (6.27) thus gives a holomorphic continuation at every real <span class="math" data-tex="$s&lt;b$">$s&lt;b$</span>: its zeta arguments are real and greater than <span class="math" data-tex="$1-b&gt;1/2$">$1-b&gt;1/2$</span>, where there are no real zeros by lesson one, Theorem 5.1 and its Euler product, and the pole at one has been removed. On compact neighbourhoods of each such real <span class="math" data-tex="$s$">$s$</span>, the bounded <span class="math" data-tex="$u$">$u$</span>-range avoids zeros, and the large-<span class="math" data-tex="$u$">$u$</span> integrand decays exponentially. These bounds justify differentiation and the continuation, not merely a formal substitution in an improper integral.</p>
-<p>Suppose (6.25) fails. In particular, eventually <span class="math" data-tex="$J(x)+x^{-b}&gt;0$">$J(x)+x^{-b}&gt;0$</span>; choose its starting point <span class="math" data-tex="$X\ge3$">$X\ge3$</span>, and form the nonnegative measure
+The interchange is absolute: for small <span class="math" data-tex="\(u\)">\(u\)</span> the classical error term bounds the integrand, and for large <span class="math" data-tex="\(u\)">\(u\)</span> the factor <span class="math" data-tex="\(t^{-u}\)">\(t^{-u}\)</span> with <span class="math" data-tex="\(t\ge3\)">\(t\ge3\)</span> decays exponentially. The numerator vanishes at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, so the quotient is regular there. For real <span class="math" data-tex="\(s&lt;b\)">\(s&lt;b\)</span>, the arguments <span class="math" data-tex="\(u+1-s\)">\(u+1-s\)</span> are real and exceed <span class="math" data-tex="\(1-b&gt;1/2\)">\(1-b&gt;1/2\)</span>, where <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> has no zeros by lesson one, Theorem 5.1, and the pole has been removed. On compact neighbourhoods of such <span class="math" data-tex="\(s\)">\(s\)</span>, the integrand is bounded for bounded <span class="math" data-tex="\(u\)">\(u\)</span> and decays exponentially for large <span class="math" data-tex="\(u\)">\(u\)</span>. Hence (6.27) continues holomorphically to a neighbourhood of every real <span class="math" data-tex="\(s&lt;b\)">\(s&lt;b\)</span>, together with its derivatives.</p>
+<p><em>Positivity.</em> Suppose (6.25) fails. Then <span class="math" data-tex="\(J(x)+x^{-b}&gt;0\)">\(J(x)+x^{-b}&gt;0\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span> beyond some <span class="math" data-tex="\(X\ge3\)">\(X\ge3\)</span>. The measure <span class="math" data-tex="\(d\mu=\mathbf1_{x&gt;X}(J(x)+x^{-b})\,dx/x\)">\(d\mu=\mathbf1_{x&gt;X}(J(x)+x^{-b})\,dx/x\)</span> is nonnegative, and for <span class="math" data-tex="\(\operatorname{Re}s&lt;0\)">\(\operatorname{Re}s&lt;0\)</span>
 <span class="math math-display" data-tex="$$
-d\mu(x)=\mathbf1_{x&gt;X}\bigl(J(x)+x^{-b}\bigr)\frac{dx}{x}.
+G(s)=\int x^s\,d\mu(x)=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}.
 $$">$$
-d\mu(x)=\mathbf1_{x&gt;X}\bigl(J(x)+x^{-b}\bigr)\frac{dx}{x}.
+G(s)=\int x^s\,d\mu(x)=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}.
 $$</span>
-Its transform is initially
+Removing <span class="math" data-tex="\([3,X]\)">\([3,X]\)</span> from (6.27) changes it by an entire function, so <span class="math" data-tex="\(G\)">\(G\)</span> continues holomorphically near every real <span class="math" data-tex="\(s&lt;b\)">\(s&lt;b\)</span>. We use the following positivity principle. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be the supremum of the real <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> with <span class="math" data-tex="\(\int x^\sigma d\mu&lt;\infty\)">\(\int x^\sigma d\mu&lt;\infty\)</span>. For real <span class="math" data-tex="\(a&#x27;&lt;\alpha\)">\(a&#x27;&lt;\alpha\)</span>, differentiation under the integral gives <span class="math" data-tex="\(G^{(k)}(a&#x27;)=\int x^{a&#x27;}(\log x)^kd\mu\ge0\)">\(G^{(k)}(a&#x27;)=\int x^{a&#x27;}(\log x)^kd\mu\ge0\)</span>. If the continuation were holomorphic near the real point <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, we could choose <span class="math" data-tex="\(a&#x27;&lt;\alpha\)">\(a&#x27;&lt;\alpha\)</span> so close to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> that the Taylor series of <span class="math" data-tex="\(G\)">\(G\)</span> at <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> converges at some <span class="math" data-tex="\(a&#x27;+d&gt;\alpha\)">\(a&#x27;+d&gt;\alpha\)</span>. By monotone convergence,
 <span class="math math-display" data-tex="$$
-G(s)=\int_X^\infty x^s\,d\mu(x)
-=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}
-\quad(\Re s&lt;0).
+\int x^{a&#x27;+d}\,d\mu=\sum_{k\ge0}\frac{d^k}{k!}\,G^{(k)}(a&#x27;)&lt;\infty,
 $$">$$
-G(s)=\int_X^\infty x^s\,d\mu(x)
-=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}
-\quad(\Re s&lt;0).
+\int x^{a&#x27;+d}\,d\mu=\sum_{k\ge0}\frac{d^k}{k!}\,G^{(k)}(a&#x27;)&lt;\infty,
 $$</span>
-Removing the finite interval <span class="math" data-tex="$[3,X]$">$[3,X]$</span> from (6.27) changes its continuation by an entire function. Consequently <span class="math" data-tex="$G$">$G$</span> has a holomorphic continuation near every real <span class="math" data-tex="$s&lt;b$">$s&lt;b$</span>.</p>
-<p>Here is the required positivity principle in full. Let <span class="math" data-tex="$\alpha$">$\alpha$</span> be the supremum of the real exponents for which a nonnegative measure on <span class="math" data-tex="$x&gt;X&gt;1$">$x&gt;X&gt;1$</span> has finite <span class="math" data-tex="$\int x^\sigma\,d\mu$">$\int x^\sigma\,d\mu$</span>. At an interior real exponent <span class="math" data-tex="$a&lt;\alpha$">$a&lt;\alpha$</span>, differentiating under a slightly larger exponential majorant gives
+contradicting the definition of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Here the continuation is holomorphic near every real point below <span class="math" data-tex="\(b\)">\(b\)</span>, so <span class="math" data-tex="\(\alpha\ge b\)">\(\alpha\ge b\)</span>, and the integral defining <span class="math" data-tex="\(G\)">\(G\)</span> is holomorphic throughout <span class="math" data-tex="\(\operatorname{Re}s&lt;b\)">\(\operatorname{Re}s&lt;b\)</span>.</p>
+<p><em>The contradiction.</em> Put <span class="math" data-tex="\(s_0=1-\rho_*\)">\(s_0=1-\rho_*\)</span>; then <span class="math" data-tex="\(\operatorname{Re}s_0=1-\beta_*&lt;b\)">\(\operatorname{Re}s_0=1-\beta_*&lt;b\)</span>. Let <span class="math" data-tex="\(s=s_0-\delta\)">\(s=s_0-\delta\)</span> with <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. In (6.27) the argument <span class="math" data-tex="\(u+1-s\)">\(u+1-s\)</span> equals <span class="math" data-tex="\(\rho_*+u+\delta\)">\(\rho_*+u+\delta\)</span>, and by the maximality of <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span> there is no zero on this ray for <span class="math" data-tex="\(u+\delta&gt;0\)">\(u+\delta&gt;0\)</span>. Near <span class="math" data-tex="\(u=0\)">\(u=0\)</span> the principal part from (6.26) is
 <span class="math math-display" data-tex="$$
-G^{(k)}(a)=\int x^a(\log x)^k\,d\mu\ge0.
+-\frac{d}{\rho_*}\,\frac1{u+\delta}+O(1),
 $$">$$
-G^{(k)}(a)=\int x^a(\log x)^k\,d\mu\ge0.
+-\frac{d}{\rho_*}\,\frac1{u+\delta}+O(1),
 $$</span>
-If the analytic continuation were regular at a finite real boundary <span class="math" data-tex="$\alpha$">$\alpha$</span>, choose <span class="math" data-tex="$a$">$a$</span> close enough to <span class="math" data-tex="$\alpha$">$\alpha$</span> that its Taylor disk reaches <span class="math" data-tex="$\alpha+\eta$">$\alpha+\eta$</span> for some <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>. Its Taylor coefficients are these nonnegative moments. Monotone convergence applied to the exponential power series gives
+whose integral in (6.27) contributes <span class="math" data-tex="\(-\frac{d}{\rho_*s_0}\log(1/\delta)\)">\(-\frac{d}{\rho_*s_0}\log(1/\delta)\)</span> plus a bounded amount. The rest of the <span class="math" data-tex="\(u\)">\(u\)</span>-integral, the subtracted term, the finite piece removed and <span class="math" data-tex="\(X^{s-b}/(b-s)\)">\(X^{s-b}/(b-s)\)</span> stay bounded as <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. So the continuation along this ray tends to infinity in modulus. It equals the actual <span class="math" data-tex="\(G\)">\(G\)</span> on the ray, by continuation from <span class="math" data-tex="\(\operatorname{Re}s&lt;0\)">\(\operatorname{Re}s&lt;0\)</span> along a horizontal path that meets no singularity, again by maximality. But <span class="math" data-tex="\(G\)">\(G\)</span> is holomorphic at <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, hence bounded near it. This contradiction proves (6.25). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)\)">\(L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)\)</span>, and for primes <span class="math" data-tex="\(p\le x\)">\(p\le x\)</span> let <span class="math" data-tex="\(a_p=\lfloor\log x/\log p\rfloor\)">\(a_p=\lfloor\log x/\log p\rfloor\)</span>. Then <span class="math" data-tex="\(\log L_x=\psi(x)\)">\(\log L_x=\psi(x)\)</span>, and the geometric-series formula for <span class="math" data-tex="\(\sigma_1(p^{a_p})/p^{a_p}\)">\(\sigma_1(p^{a_p})/p^{a_p}\)</span> gives the exact identity
 <span class="math math-display" data-tex="$$
-\int x^{a+d}\,d\mu
-=\sum_{k\ge0}\frac{d^k}{k!}G^{(k)}(a)&lt;\infty
-$$">$$
-\int x^{a+d}\,d\mu
-=\sum_{k\ge0}\frac{d^k}{k!}G^{(k)}(a)&lt;\infty
-$$</span>
-for a <span class="math" data-tex="$d&gt;0$">$d&gt;0$</span> with <span class="math" data-tex="$a+d&gt;\alpha$">$a+d&gt;\alpha$</span>, a contradiction. This proves that the real boundary cannot be regular. In our case the continuation is regular at every real exponent below <span class="math" data-tex="$b$">$b$</span>, so <span class="math" data-tex="$\alpha\ge b$">$\alpha\ge b$</span>. The actual integral <span class="math" data-tex="$G$">$G$</span> is therefore holomorphic throughout <span class="math" data-tex="$\Re s&lt;b$">$\Re s&lt;b$</span>; local exponential majorants also prove this assertion and its derivatives directly.</p>
-<p>Put <span class="math" data-tex="$s_0=1-\rho_*$">$s_0=1-\rho_*$</span>, whose real part is less than <span class="math" data-tex="$b$">$b$</span>, and approach it by <span class="math" data-tex="$s=s_0-\delta$">$s=s_0-\delta$</span>, <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span>. In (6.27), the zeta argument is <span class="math" data-tex="$\rho_*+\delta+u$">$\rho_*+\delta+u$</span>. Maximality at this ordinate guarantees no zero on that ray for <span class="math" data-tex="$u+\delta&gt;0$">$u+\delta&gt;0$</span>. The small-<span class="math" data-tex="$u$">$u$</span> principal part in (6.26) is
-<span class="math math-display" data-tex="$$
--\frac{d}{\rho_*}\frac1{\delta+u}+O(1).
-$$">$$
--\frac{d}{\rho_*}\frac1{\delta+u}+O(1).
-$$</span>
-Its integral in (6.27) consequently has the nonzero divergent term
-<span class="math math-display" data-tex="$$
--\frac{d}{\rho_*s_0}\log(1/\delta).
-$$">$$
--\frac{d}{\rho_*s_0}\log(1/\delta).
-$$</span>
-The rest of the <span class="math" data-tex="$u$">$u$</span>-integral is bounded as <span class="math" data-tex="$\delta\downarrow0$">$\delta\downarrow0$</span>: away from the chosen endpoint it has no zero pole, and its large-<span class="math" data-tex="$u$">$u$</span> part decays exponentially. The subtracted term, finite startup integral, and added power <span class="math" data-tex="$X^{s-b}/(b-s)$">$X^{s-b}/(b-s)$</span> are all regular at <span class="math" data-tex="$s_0$">$s_0$</span>. The expression therefore tends to infinity in modulus. It agrees with the actual <span class="math" data-tex="$G$">$G$</span> along this ray by analytic continuation from <span class="math" data-tex="$\Re s&lt;0$">$\Re s&lt;0$</span>; the intervening horizontal ray is free of zero singularities for the same maximality reason. But the actual <span class="math" data-tex="$G$">$G$</span> is holomorphic at <span class="math" data-tex="$s_0$">$s_0$</span>, so is locally bounded. The contradiction proves (6.25). <span class="math" data-tex="$\square$">$\square$</span></p>
-<p>Now let <span class="math" data-tex="$L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)$">$L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)$</span>. For every prime <span class="math" data-tex="$p\le x$">$p\le x$</span>, write <span class="math" data-tex="$a_p=\lfloor\log x/\log p\rfloor$">$a_p=\lfloor\log x/\log p\rfloor$</span>. Then
-<span class="math" data-tex="$\log L_x=\psi(x)$">$\log L_x=\psi(x)$</span>, and its geometric-series factors give the exact identity
-<span class="math math-display" data-tex="$$
-\mathcal R(L_x)=-\log F(x)-D(x)-T(x),
-$$">$$
-\mathcal R(L_x)=-\log F(x)-D(x)-T(x),
-$$</span>
-<span class="math math-display" data-tex="$$
+\mathcal R(L_x)=-\log F(x)-D(x)-T(x),\qquad
 D(x)=\log\log\psi(x)-\log\log\theta(x),\qquad
 T(x)=-\sum_{p\le x}\log(1-p^{-a_p-1}).
 \tag{6.28}
 $$">$$
+\mathcal R(L_x)=-\log F(x)-D(x)-T(x),\qquad
 D(x)=\log\log\psi(x)-\log\log\theta(x),\qquad
 T(x)=-\sum_{p\le x}\log(1-p^{-a_p-1}).
 \tag{6.28}
 $$</span>
-Both losses are nonnegative. Chebyshev and the prime-power comparison give
-<span class="math" data-tex="$\psi(x)-\theta(x)=O(\sqrt x\log x)$">$\psi(x)-\theta(x)=O(\sqrt x\log x)$</span> and <span class="math" data-tex="$\theta(x)\asymp x$">$\theta(x)\asymp x$</span>.
-The mean-value theorem for <span class="math" data-tex="$\log\log y$">$\log\log y$</span> gives <span class="math" data-tex="$D(x)=O(x^{-1/2})$">$D(x)=O(x^{-1/2})$</span>.
-For <span class="math" data-tex="$p\le\sqrt x$">$p\le\sqrt x$</span>, <span class="math" data-tex="$p^{a_p+1}&gt;x$">$p^{a_p+1}&gt;x$</span>, so the sum of their missing factors is at most <span class="math" data-tex="$\sqrt x/x$">$\sqrt x/x$</span>. For <span class="math" data-tex="$p&gt;\sqrt x$">$p&gt;\sqrt x$</span>, <span class="math" data-tex="$a_p=1$">$a_p=1$</span>, and their square tail is at most <span class="math" data-tex="$\sum_{m&gt;\sqrt x}m^{-2}=O(x^{-1/2})$">$\sum_{m&gt;\sqrt x}m^{-2}=O(x^{-1/2})$</span>. Since
-<span class="math" data-tex="$-\log(1-v)\le2v$">$-\log(1-v)\le2v$</span> for <span class="math" data-tex="$0\le v\le1/2$">$0\le v\le1/2$</span>, this proves <span class="math" data-tex="$T(x)=O(x^{-1/2})$">$T(x)=O(x^{-1/2})$</span>.
-Thus <span class="math" data-tex="$D(x)+T(x)=o(x^{-b})$">$D(x)+T(x)=o(x^{-b})$</span>.</p>
-<p>Combining (6.24)–(6.25) with (6.28), at arbitrarily large <span class="math" data-tex="$x$">$x$</span> one has
-<span class="math" data-tex="$\mathcal R(L_x)\ge(a/2)x^{-b}&gt;0$">$\mathcal R(L_x)\ge(a/2)x^{-b}&gt;0$</span>.
-These are literal integer violations of (6.1), and <span class="math" data-tex="$L_x&gt;5040$">$L_x&gt;5040$</span> eventually. This proves the converse, and hence Robin's complete equivalence. It also proves the quantitative surplus needed next, rather than only one isolated counterexample.</p>
-<h3 id="6-5-the-harmonic-criterion-in-both-directions">6.5. The harmonic criterion in both directions</h3>
-<p>The RH implication follows from the harmonic comparison (6.30) below and Robin's inequality, with the finite range proved separately. For the converse, elementary integration gives
+Both <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> are nonnegative. Chebyshev's bounds and the prime-power comparison give <span class="math" data-tex="\(\psi(x)-\theta(x)=O(\sqrt x\log x)\)">\(\psi(x)-\theta(x)=O(\sqrt x\log x)\)</span> and <span class="math" data-tex="\(\theta(x)\asymp x\)">\(\theta(x)\asymp x\)</span>, so the mean value theorem gives <span class="math" data-tex="\(D(x)=O(x^{-1/2})\)">\(D(x)=O(x^{-1/2})\)</span>. For <span class="math" data-tex="\(p\le\sqrt x\)">\(p\le\sqrt x\)</span> we have <span class="math" data-tex="\(p^{a_p+1}&gt;x\)">\(p^{a_p+1}&gt;x\)</span>, and these at most <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span> primes contribute missing factors totalling at most <span class="math" data-tex="\(\sqrt x/x\)">\(\sqrt x/x\)</span>. For <span class="math" data-tex="\(p&gt;\sqrt x\)">\(p&gt;\sqrt x\)</span> we have <span class="math" data-tex="\(a_p=1\)">\(a_p=1\)</span>, and <span class="math" data-tex="\(\sum_{m&gt;\sqrt x}m^{-2}=O(x^{-1/2})\)">\(\sum_{m&gt;\sqrt x}m^{-2}=O(x^{-1/2})\)</span>. With <span class="math" data-tex="\(-\log(1-v)\le2v\)">\(-\log(1-v)\le2v\)</span> for <span class="math" data-tex="\(0\le v\le1/2\)">\(0\le v\le1/2\)</span>, this gives <span class="math" data-tex="\(T(x)=O(x^{-1/2})\)">\(T(x)=O(x^{-1/2})\)</span>. Hence <span class="math" data-tex="\(D+T=o(x^{-b})\)">\(D+T=o(x^{-b})\)</span>.</p>
+<p>Combining (6.24), (6.25) and (6.28), at arbitrarily large <span class="math" data-tex="\(x\)">\(x\)</span> we get <span class="math" data-tex="\(\mathcal R(L_x)\ge(a/2)x^{-b}&gt;0\)">\(\mathcal R(L_x)\ge(a/2)x^{-b}&gt;0\)</span>. These are actual integers violating (6.1), and <span class="math" data-tex="\(L_x&gt;5040\)">\(L_x&gt;5040\)</span> eventually. This completes the proof of Robin's equivalence. It also gives the quantitative surplus used in Section 6.5, not merely a single counterexample.</p>
+<h3 id="6-5-the-harmonic-criterion">6.5. The harmonic criterion</h3>
+<p><em>RH implies (6.2).</em> Since <span class="math" data-tex="\(H_n-\log n\)">\(H_n-\log n\)</span> decreases to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, we have <span class="math" data-tex="\(H_n\ge\log n+\gamma\)">\(H_n\ge\log n+\gamma\)</span>. Once <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, the numbers <span class="math" data-tex="\(\log\log n\)">\(\log\log n\)</span> and <span class="math" data-tex="\(\log H_n\)">\(\log H_n\)</span> are positive, so
 <span class="math math-display" data-tex="$$
-H_n=\log n+\gamma+\eta_n,\qquad0&lt;\eta_n&lt;1/n.
-$$">$$
-H_n=\log n+\gamma+\eta_n,\qquad0&lt;\eta_n&lt;1/n.
-$$</span>
-Indeed, the preceding telescoping series for <span class="math" data-tex="$\eta_n$">$\eta_n$</span> has positive summands bounded by <span class="math" data-tex="$1/k-1/(k+1)$">$1/k-1/(k+1)$</span>, whose tail is <span class="math" data-tex="$1/n$">$1/n$</span>. The bounds already proved at <span class="math" data-tex="$N=1$">$N=1$</span> also give <span class="math" data-tex="$0&lt;\gamma&lt;1$">$0&lt;\gamma&lt;1$</span>.
-For sufficiently large <span class="math" data-tex="$n$">$n$</span>, <span class="math" data-tex="$e^{\eta_n}\le1+2/n$">$e^{\eta_n}\le1+2/n$</span>, and
-<span class="math math-display" data-tex="$$
-\log H_n\le\log\log n+\frac{\gamma+1}{\log n}.
-$$">$$
-\log H_n\le\log\log n+\frac{\gamma+1}{\log n}.
-$$</span>
-Since <span class="math" data-tex="$0&lt;\gamma&lt;1$">$0&lt;\gamma&lt;1$</span>, these imply, with an absolute constant <span class="math" data-tex="$C$">$C$</span>,
-<span class="math math-display" data-tex="$$
-\frac{H_n+e^{H_n}\log H_n}{n}
-\le e^\gamma\log\log n+\frac C{\log n}.
-\tag{6.29}
-$$">$$
-\frac{H_n+e^{H_n}\log H_n}{n}
-\le e^\gamma\log\log n+\frac C{\log n}.
-\tag{6.29}
-$$</span>
-The terms <span class="math" data-tex="$H_n/n$">$H_n/n$</span> and <span class="math" data-tex="$(\log\log n)/n$">$(\log\log n)/n$</span> are absorbed by the same upper bound.</p>
-<p>If RH were false, the integer sequence constructed after (6.28) would instead give
-<span class="math math-display" data-tex="$$
-\frac{\sigma_1(L_x)}{L_x}
-\ge e^\gamma\log\log L_x\,
- \bigl(1+(a/2)x^{-b}\bigr).
-$$">$$
-\frac{\sigma_1(L_x)}{L_x}
-\ge e^\gamma\log\log L_x\,
- \bigl(1+(a/2)x^{-b}\bigr).
-$$</span>
-Here <span class="math" data-tex="$\log L_x=\psi(x)\asymp x$">$\log L_x=\psi(x)\asymp x$</span>. The surplus
-<span class="math" data-tex="$\gg(\log x)x^{-b}$">$\gg(\log x)x^{-b}$</span> is larger than <span class="math" data-tex="$C/\log L_x=O(1/x)$">$C/\log L_x=O(1/x)$</span>, because <span class="math" data-tex="$b&lt;1/2$">$b&lt;1/2$</span>. It contradicts (6.2) by (6.29). Thus (6.2) implies RH.</p>
-<p>Here are useful elementary details of the passage to the harmonic criterion. Since <span class="math" data-tex="$H_n-\log n$">$H_n-\log n$</span> decreases to <span class="math" data-tex="$\gamma$">$\gamma$</span>, one has <span class="math" data-tex="$H_n\ge\log n+\gamma$">$H_n\ge\log n+\gamma$</span>. For <span class="math" data-tex="$n\ge3$">$n\ge3$</span>, both <span class="math" data-tex="$\log\log n$">$\log\log n$</span> and <span class="math" data-tex="$\log H_n$">$\log H_n$</span> are positive, and therefore
-<span class="math math-display" data-tex="$$
-e^{H_n}\log H_n\ge e^\gamma n\log\log n.
+e^{H_n}\log H_n\ge e^\gamma n\log\log n .
 \tag{6.30}
 $$">$$
-e^{H_n}\log H_n\ge e^\gamma n\log\log n.
+e^{H_n}\log H_n\ge e^\gamma n\log\log n .
 \tag{6.30}
 $$</span>
-Under RH, (6.1) and (6.30) make (6.2) strict for <span class="math" data-tex="$n&gt;5040$">$n&gt;5040$</span>. At <span class="math" data-tex="$n=1$">$n=1$</span>, both sides of (6.2) equal one.</p>
-<p>For completeness, strictness in the remaining finite range has the following reproducible rational certificate. Put <span class="math" data-tex="$Q=10^6$">$Q=10^6$</span> and
+Combined with (6.1), this gives strict inequality in (6.2) for every <span class="math" data-tex="\(n&gt;5040\)">\(n&gt;5040\)</span>, assuming RH. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the two sides of (6.2) coincide, both being one. For <span class="math" data-tex="\(2\le n\le5040\)">\(2\le n\le5040\)</span> we verify strictness by exact rational arithmetic. Let <span class="math" data-tex="\(Q=10^6\)">\(Q=10^6\)</span> and
 <span class="math math-display" data-tex="$$
-h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,
-\qquad z_n=\frac{h_n-1}{h_n+1}.
+h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,\qquad z_n=\frac{h_n-1}{h_n+1}.
 $$">$$
-h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,
-\qquad z_n=\frac{h_n-1}{h_n+1}.
+h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,\qquad z_n=\frac{h_n-1}{h_n+1}.
 $$</span>
-For <span class="math" data-tex="$n\ge2$">$n\ge2$</span>, <span class="math" data-tex="$h_n&gt;1$">$h_n&gt;1$</span> and <span class="math" data-tex="$0&lt;z_n&lt;1$">$0&lt;z_n&lt;1$</span>. Positive series give
+For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(h_n&gt;1\)">\(h_n&gt;1\)</span> and <span class="math" data-tex="\(0&lt;z_n&lt;1\)">\(0&lt;z_n&lt;1\)</span>, and the positive series give
 <span class="math math-display" data-tex="$$
-e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad
-\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1}.
+e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1};
 \tag{6.31}
 $$">$$
-e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad
-\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1}.
+e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1};
 \tag{6.31}
 $$</span>
-The logarithm series follows by integrating <span class="math" data-tex="$2/(1-z^2)$">$2/(1-z^2)$</span> from zero to <span class="math" data-tex="$z_n$">$z_n$</span>. Every term omitted in either series is positive. Since <span class="math" data-tex="$h+e^h\log h$">$h+e^h\log h$</span> is increasing for <span class="math" data-tex="$h&gt;1$">$h&gt;1$</span>, the exact inequalities
+the logarithm series comes from integrating <span class="math" data-tex="\(2/(1-z^2)\)">\(2/(1-z^2)\)</span> from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(z_n\)">\(z_n\)</span>, and every omitted term is positive. As <span class="math" data-tex="\(h+e^h\log h\)">\(h+e^h\log h\)</span> increases for <span class="math" data-tex="\(h&gt;1\)">\(h&gt;1\)</span>, the inequalities
 <span class="math math-display" data-tex="$$
 \sigma_1(n)&lt;h_n+E_nL_n\qquad(2\le n\le5040)
 \tag{6.32}
@@ -1336,7 +1030,7 @@ $$">$$
 \sigma_1(n)&lt;h_n+E_nL_n\qquad(2\le n\le5040)
 \tag{6.32}
 $$</span>
-imply the required strictness. The following complete calculation checks all 5039 inequalities (6.32) using only integers and rational fractions. It adds every divisor to exactly its multiples and evaluates the two positive truncated series. Every assertion passes, and the smallest rational margin occurs at <span class="math" data-tex="$n=2$">$n=2$</span>.</p>
+imply strictness in this range. The program below checks all 5039 of them with integers and rational fractions, adding each divisor to its multiples and summing the two truncated series. Every check passes, and the smallest margin occurs at <span class="math" data-tex="\(n=2\)">\(n=2\)</span>.</p>
 <pre><code class="language-python">from fractions import Fraction
 from math import factorial
 Q=10**6
@@ -1358,26 +1052,35 @@ for n in range(1,5041):
 print('All 5039 strict harmonic inequalities passed; '
       'smallest margin at',minimum[0])
 </code></pre>
-<p>Together with (6.30), these finite comparisons prove the equality assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
-<p><strong>Example 6.9 (the exceptional endpoint).</strong> Since <span class="math" data-tex="$5040=2^4\cdot3^2\cdot5\cdot7$">$5040=2^4\cdot3^2\cdot5\cdot7$</span>,
+<p><em>(6.2) implies RH.</em> Telescoping as in Section 6.2 gives <span class="math" data-tex="\(H_n=\log n+\gamma+\eta_n\)">\(H_n=\log n+\gamma+\eta_n\)</span> with <span class="math" data-tex="\(0&lt;\eta_n&lt;1/n\)">\(0&lt;\eta_n&lt;1/n\)</span>, and the case <span class="math" data-tex="\(N=1\)">\(N=1\)</span> gives <span class="math" data-tex="\(0&lt;\gamma&lt;1\)">\(0&lt;\gamma&lt;1\)</span>. For large <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(e^{\eta_n}\le1+2/n\)">\(e^{\eta_n}\le1+2/n\)</span> and <span class="math" data-tex="\(\log H_n\le\log\log n+(\gamma+1)/\log n\)">\(\log H_n\le\log\log n+(\gamma+1)/\log n\)</span>. Hence, with an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span>,
 <span class="math math-display" data-tex="$$
-\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344.
+\frac{H_n+e^{H_n}\log H_n}{n}\le e^\gamma\log\log n+\frac C{\log n},
+\tag{6.29}
 $$">$$
-\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344.
+\frac{H_n+e^{H_n}\log H_n}{n}\le e^\gamma\log\log n+\frac C{\log n},
+\tag{6.29}
 $$</span>
-Direct numerical evaluation gives
+the terms <span class="math" data-tex="\(H_n/n\)">\(H_n/n\)</span> and <span class="math" data-tex="\((\log\log n)/n\)">\((\log\log n)/n\)</span> being absorbed into <span class="math" data-tex="\(C/\log n\)">\(C/\log n\)</span>. If RH is false, the integers <span class="math" data-tex="\(L_x\)">\(L_x\)</span> of Section 6.4 satisfy
 <span class="math math-display" data-tex="$$
-e^\gamma\,5040\log\log5040=19237.0615316637\ldots.
+\frac{\sigma_1(L_x)}{L_x}\ge e^\gamma\log\log L_x\,\bigl(1+(a/2)x^{-b}\bigr).
 $$">$$
-e^\gamma\,5040\log\log5040=19237.0615316637\ldots.
+\frac{\sigma_1(L_x)}{L_x}\ge e^\gamma\log\log L_x\,\bigl(1+(a/2)x^{-b}\bigr).
 $$</span>
-The first verifier also proves the strict rational bounds <span class="math" data-tex="$\gamma&lt;579/1000$">$\gamma&lt;579/1000$</span>, <span class="math" data-tex="$e^{579/1000}&lt;357/200$">$e^{579/1000}&lt;357/200$</span>, and <span class="math" data-tex="$\log\log5040&lt;1073/500$">$\log\log5040&lt;1073/500$</span>. The exponential bound uses its first 20 Taylor terms, with the remaining terms bounded by the geometric tail of ratio <span class="math" data-tex="$(579/1000)/21$">$(579/1000)/21$</span>. Thus
+Here <span class="math" data-tex="\(\log L_x=\psi(x)\asymp x\)">\(\log L_x=\psi(x)\asymp x\)</span>, so the surplus is of order <span class="math" data-tex="\((\log x)\,x^{-b}\)">\((\log x)\,x^{-b}\)</span>, while <span class="math" data-tex="\(C/\log L_x=O(1/x)\)">\(C/\log L_x=O(1/x)\)</span>. As <span class="math" data-tex="\(b&lt;1/2\)">\(b&lt;1/2\)</span>, the surplus is larger for large <span class="math" data-tex="\(x\)">\(x\)</span>, and (6.29) shows that (6.2) fails at <span class="math" data-tex="\(n=L_x\)">\(n=L_x\)</span>. So (6.2) implies RH.</p>
+<p>The inequalities (6.30) and (6.32), and the case <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, also prove the equality statement of Theorem 6.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 6.9 (the exceptional endpoint).</strong> Since <span class="math" data-tex="\(5040=2^4\cdot3^2\cdot5\cdot7\)">\(5040=2^4\cdot3^2\cdot5\cdot7\)</span>,
 <span class="math math-display" data-tex="$$
-e^\gamma5040\log\log5040&lt;\frac{357}{200}\frac{1073}{500}5040&lt;19344,
+\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344,
 $$">$$
-e^\gamma5040\log\log5040&lt;\frac{357}{200}\frac{1073}{500}5040&lt;19344,
+\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344,
 $$</span>
-which proves that Robin's inequality fails at 5040. The strict range <span class="math" data-tex="$n&gt;5040$">$n&gt;5040$</span> cannot be replaced by <span class="math" data-tex="$n\ge5040$">$n\ge5040$</span>. In contrast, the endpoint <span class="math" data-tex="$n=1$">$n=1$</span> belongs in (6.2), with its non-strict sign: <span class="math" data-tex="$H_1=1$">$H_1=1$</span>, <span class="math" data-tex="$\log H_1=0$">$\log H_1=0$</span>, and <span class="math" data-tex="$\sigma_1(1)=1$">$\sigma_1(1)=1$</span>.</p>
+whereas <span class="math" data-tex="\(e^\gamma\cdot5040\log\log5040=19237.0615316637\ldots\)">\(e^\gamma\cdot5040\log\log5040=19237.0615316637\ldots\)</span>. The first verifier proves this with rational bounds: <span class="math" data-tex="\(\gamma&lt;579/1000\)">\(\gamma&lt;579/1000\)</span>; <span class="math" data-tex="\(e^{579/1000}&lt;357/200\)">\(e^{579/1000}&lt;357/200\)</span>, from 20 Taylor terms and a geometric tail of ratio <span class="math" data-tex="\((579/1000)/21\)">\((579/1000)/21\)</span>; and <span class="math" data-tex="\(\log\log5040&lt;1073/500\)">\(\log\log5040&lt;1073/500\)</span>. Thus
+<span class="math math-display" data-tex="$$
+e^\gamma\cdot5040\log\log5040&lt;\frac{357}{200}\cdot\frac{1073}{500}\cdot5040&lt;19344,
+$$">$$
+e^\gamma\cdot5040\log\log5040&lt;\frac{357}{200}\cdot\frac{1073}{500}\cdot5040&lt;19344,
+$$</span>
+and Robin's inequality fails at <span class="math" data-tex="\(n=5040\)">\(n=5040\)</span>. The range <span class="math" data-tex="\(n&gt;5040\)">\(n&gt;5040\)</span> in (6.1) cannot be enlarged to <span class="math" data-tex="\(n\ge5040\)">\(n\ge5040\)</span>. In (6.2), by contrast, <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is included with equality: <span class="math" data-tex="\(H_1=1\)">\(H_1=1\)</span>, <span class="math" data-tex="\(\log H_1=0\)">\(\log H_1=0\)</span> and <span class="math" data-tex="\(\sigma_1(1)=1\)">\(\sigma_1(1)=1\)</span>.</p>
 <h2 id="7-the-nyman-beurling-approximation-criterion">7. The Nyman–Beurling approximation criterion</h2>
 <p>Let <span class="math" data-tex="$\{u\}=u-\lfloor u\rfloor$">$\{u\}=u-\lfloor u\rfloor$</span>. For <span class="math" data-tex="$0&lt;\theta\le1$">$0&lt;\theta\le1$</span> define
 <span class="math math-display" data-tex="$$
@@ -2057,7 +1760,7 @@ Proposition 2.8 then gives <span class="math" data-tex="$|\alpha _j|=\sqrt q$">$
 <p>These calculations supply the surface and degree inputs of the earlier written curve proof, and therefore establish the geometric statement (9.1).</p>
 <h2 id="sources-and-attribution">Sources and attribution</h2>
 <p>The zero-boundary and prime-error comparison is Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em>, freely readable author preliminary version</a>, Chapter 6, Theorem 6.1. Bombieri, <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf"><em>Problems of the Millennium: the Riemann Hypothesis</em></a>, Sections II–IV, gives freely readable context. Sections 1–5 and 7 prove their results using the preceding lessons.</p>
-<p>Sections 6.1–6.5 adapt Whidden, <a href="https://github.com/kimihiro64/Robin1984/releases/download/v1.1.1/robin1984-formalization.pdf"><em>Robin's 1984 criterion for the Riemann hypothesis: a formally verified proof</em>, release 1.1.1</a>, revision <code>acab1a31f31e0499518a4416b63281e0b4838f9c</code>, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The adaptation and changes are identified before Section 6.1. All arguments, 36 finite-cover rows and complete verification programs needed for Theorem 6.1 appear in this lesson. The exact integer programs and their original explanation are CC0. A second comparison is Lagarias, <a href="https://arxiv.org/pdf/math/0008177v2"><em>An elementary problem equivalent to the Riemann hypothesis</em>, free author preprint, version 2</a>, Theorem 1.1 and its proof. The course has executed its own finite certificates; it does not claim to have rerun the source's formal project.</p>
+<p>Whidden, <a href="https://github.com/kimihiro64/Robin1984/releases/download/v1.1.1/robin1984-formalization.pdf"><em>Robin's 1984 criterion for the Riemann hypothesis: a formally verified proof</em>, release 1.1.1</a>, revision <code>acab1a31f31e0499518a4416b63281e0b4838f9c</code>, gives a formally verified proof of Robin's criterion; Sections 6.1–6.5 follow its overall plan and use the 36 finite-cover rows of its certificate. All arguments and complete verification programs needed for Theorem 6.1 appear in this lesson. A second comparison is Lagarias, <a href="https://arxiv.org/pdf/math/0008177v2"><em>An elementary problem equivalent to the Riemann hypothesis</em>, free author preprint, version 2</a>, Theorem 1.1 and its proof. The course has executed its own finite certificates; it does not claim to have rerun the source's formal project.</p>
 <p>Burnol, <a href="https://arxiv.org/pdf/math/0202166v1"><em>On an analytic estimate in the theory of the Riemann zeta function and a theorem of Báez-Duarte</em>, free author preprint</a>, Sections 2–3, and Bagchi, <a href="https://arxiv.org/pdf/math/0607733v1"><em>On Nyman, Beurling and Báez-Duarte's Hilbert space reformulation of the Riemann hypothesis</em>, free author preprint</a>, Lemma 3 and Theorems 2 and 5, explain analytic versions of the approximation criterion. The proof here supplies the complete smoothed estimate (7.4) and uses the earlier proved convexity bound.</p>
 <p>Deligne, <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf"><em>La conjecture de Weil I</em>, freely readable full text</a>, Theorem (1.6) and Lemma (1.7) is the free primary statement comparison for Section 9; its programme proof is located there. Connes, <a href="https://arxiv.org/pdf/2602.04022v1"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em>, free author preprint, version 1</a>, surveys these formulations.</p>
 <p><strong>Exact source formula qualifications.</strong> In Lagarias, arXiv:math/0008177v2, the first display in the proof of Lemma 3.1 prints an infinite upper limit for the integral of <span class="math" data-tex="$\lfloor t\rfloor/t^2$">$\lfloor t\rfloor/t^2$</span>. For every integer <span class="math" data-tex="$n\ge1$">$n\ge1$</span>, the finite identity is
@@ -2087,7 +1790,7 @@ Here <span class="math" data-tex="$\zeta(1+\epsilon)&gt;0$">$\zeta(1+\epsilon)&g
 <p class="small source-link"><a href="src/NT-ZETA-14.md" download>Editable Markdown source of this lesson</a></p>
 </main>
 <footer class="site-footer">
-<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0.</p>
 <nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
 </footer>
 </body>

@@ -6,9 +6,11 @@
 
 A perturbation of the highest derivatives need not be compact, even when its coefficients vanish outside a ball. A frequency cutoff changes this conclusion. It turns the localized perturbation into an integral operator, while decay of the coefficients controls the part at infinity. This is the mechanism that makes the forcing in a stationary first-order scattering equation continuous in energy.
 
-We begin with integral kernels and rough coefficients. We then obtain an exact energy-factor remainder, prove every derivative estimate for its symbol, and apply the compactness result to a boundary resolvent. Read [Endpoint spaces and flat energy shells](endpoint-spaces-and-flat-energy-shells.md) for integral duality, [Admissible differential perturbations](admissible-differential-perturbations.md), Sections 1–3, for the local Sobolev multiplication estimate, and [Energy-shell factors and outgoing equations](energy-shell-factors-and-outgoing-equations.md) for the real energy root and outgoing evolution. The final application uses Theorem 1.1 and Section 6 of [Limiting absorption for long-range differential perturbations](limiting-absorption-for-long-range-differential-perturbations.md). Freely accessible background references are Yafaev [Y] and Teschl [T]. The kernel and remainder constructions below use finite differentiation, integration by parts and the explicit annular estimates.
+We begin with integral kernels and rough coefficients. We then obtain an exact energy-factor remainder, prove every derivative estimate for its symbol, and apply the compactness result to a boundary resolvent. Read [Endpoint spaces and flat energy shells](endpoint-spaces-and-flat-energy-shells.md#endpoint-shell-spaces) for integral duality, [Admissible differential perturbations, Lemma 1.1](admissible-differential-perturbations.md#admissible-local-multiplier) for the local Sobolev multiplication estimate, and [Energy-shell factors and outgoing equations](energy-shell-factors-and-outgoing-equations.md#energy-shell-root) for the real energy root and its [outgoing evolution theorem](energy-shell-factors-and-outgoing-equations.md#3-constructing-the-outgoing-evolution). The final application uses [Theorem 1.1 of Limiting absorption for long-range differential perturbations](limiting-absorption-for-long-range-differential-perturbations.md#lap-theorem) and its [joint continuity proof](limiting-absorption-for-long-range-differential-perturbations.md#lap-continuity). Freely accessible background references are Yafaev [Y] and Teschl [T]. The kernel and remainder constructions below use finite differentiation, integration by parts and the explicit annular estimates.
 
-Our convention is \(D=-i\partial\), with left quantization and the unitary Fourier transform. Fourier inversion and Plancherel with the normalization used here are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The same reading supplies the [measure and product proofs](../providers/analysis/finite-derivative-l2.md#euclidean-products). [Approximation and convolution](../providers/analysis/euclidean-approximation-and-convolution.md) proves Hölder, local smooth Sobolev approximation and, in Proposition 5.1, the Riemann–Lebesgue statement used in Solution 3. The endpoint lesson, Theorem 1.1, proves the completeness and duality of \(B,B^*\).
+Our convention is \(D=-i\partial\), with left quantization and the unitary Fourier transform. Fourier inversion and Plancherel with the normalization used here are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The same reading supplies the [measure and product proofs](../providers/analysis/finite-derivative-l2.md#euclidean-products). [Approximation and convolution](../providers/analysis/euclidean-approximation-and-convolution.md) proves Hölder, local smooth Sobolev approximation and, in Proposition 5.1, the Riemann–Lebesgue statement used in Solution 3. The endpoint lesson, Theorem 1.1, proves the completeness and duality of \(B,B^*\). The [polar integration proof](../providers/analysis/coordinate-inverses-and-integration.md#polar-substitution) supplies the radial integrals in the exercises.
+
+<a id="cutoff-endpoint-spaces"></a>
 
 ## 1. Frequency localization in the endpoint spaces
 
@@ -50,6 +52,8 @@ Let \(b(x,\xi)\) be smooth, supported in one fixed compact frequency set, with e
 
 Integration by parts in frequency proves the second line for every integer \(N\). Only finitely many frequency derivatives are needed for each such bound.
 
+<a id="cutoff-endpoint-map"></a>
+
 **Lemma 1.1.** A measurable kernel satisfying the second line of (3) defines a bounded operator \(B\to B\). The bound is uniform when the required finite kernel constants are uniform.
 
 **Proof.** Let \(T_{jk}=1_{S_j}T1_{S_k}\), viewed between the corresponding \(L^2\) spaces. If \(|j-k|\le2\), both absolute kernel integrals are uniformly bounded. The Schur estimate gives \(\|T_{jk}\|\le C\). This estimate follows directly by applying Cauchy–Schwarz with measure \(|K(x,y)|\,dy\), then integrating in \(x\).
@@ -88,6 +92,8 @@ The triangle inequality on each output shell now gives
 The annular series is absolutely convergent in \(B\), and defines the operator on every input. \(\square\)
 
 In particular, a compactly supported smooth Fourier multiplier \(\chi(D)\) is bounded on \(B\). Its adjoint is \(\overline\chi(D)\), which has the same property. Integral duality therefore gives boundedness on \(B^*\) as well. On tempered distributions this dual action agrees with Fourier multiplication.
+
+<a id="cutoff-decaying-kernel"></a>
 
 ## 2. A decay gap makes an integral kernel compact
 
@@ -142,13 +148,19 @@ The factor \(1+k\) also covers a zero exponent in the inner geometric sum. Takin
 
 This proves absolute convergence of the annular operator series. Truncating both indices at \(J\) changes its norm by at most the omitted coefficient sum, which tends to zero.
 
+<a id="cutoff-finite-rank"></a>
+
 Each finite truncation has a square-integrable kernel on a bounded product of balls. Here is its finite-rank approximation. Extend the kernel by zero to a containing product box. The Euclidean rectangle-density proof approximates it in \(L^2\) by finite linear combinations of indicators of rectangles in \(\mathbb R^{2n}\). Each such rectangle is \(E\times F\) with \(E,F\subset\mathbb R^n\), so its operator has the one-dimensional range spanned by \(1_E\). Cauchy–Schwarz followed by product integration bounds the operator norm of the error by the \(L^2\) norm of the kernel error. Restrict these approximants back to the input and output balls. They still have finite rank and converge in operator norm. Restriction from \(B^*\) to that ball and inclusion from supported \(L^2\) into \(B\) are bounded, so the same approximation holds between the endpoint spaces.
 
 A bounded set in a finite-dimensional range has finite nets at every positive radius, by a grid in its coordinates. Uniform operator-norm approximation transfers such finite nets to the image of the unit ball under the limiting operator. Every sequence in this image has a Cauchy subsequence, by successively taking subsequences in balls of radii tending to zero. Completeness of \(B\) gives a convergent subsequence. This proves compactness of each truncation and of their operator-norm limit with the actual endpoint norms.
 
+<a id="cutoff-weak-star"></a>
+
 Now let \(v_l\rightharpoonup^*v\), with uniformly bounded endpoint norms. On a fixed ball this is weak \(L^2\) convergence, because every supported \(L^2\) test belongs to \(B\). A compact \(L^2\) operator sends such a sequence to a norm-convergent sequence: every convergent subsequence of its image has the weak limit \(Tv\), and compactness excludes any other behavior. Apply this to a finite truncation. Its uniformly small operator-norm error proves the assertion for \(T\). \(\square\)
 
 The positive decay gap is essential. Exercise 2 gives a kernel of weight \(X^{-1}\) whose action does not even map \(B^*\) into \(B\). None of this proof assumes norm density of compact tests in \(B^*\).
+
+<a id="cutoff-rough-coefficients"></a>
 
 ## 3. Rough differential coefficients after a frequency cutoff
 
@@ -222,6 +234,8 @@ The enlarged shell \(E_j\) lies in a fixed number of neighboring shells, apart f
 
 These products are locally in \(L^2\), so their action is unambiguous.
 
+<a id="cutoff-smoothed-coefficients"></a>
+
 **Proof: compactness on bounded inputs.** By Lemma 1.1 and (16), it suffices to consider \(T1_{\{|x|<R\}}V_S\). Truncate each lower-order coefficient in value. On this ball the bounded truncations converge in the finite \(L^{p_\gamma}\) norm. A smooth cutoff equal to one on the ball, (13), and a finite cover give
 
 \[
@@ -243,7 +257,11 @@ For derivative-wise weak-star convergence, each restricted component converges w
 
 In particular, no compactness of the unsmoothed highest-order differential term was used. Exercise 3 shows why it would be false.
 
+<a id="cutoff-exact-identity"></a>
+
 ## 4. The energy-factor cancellation is exact
+
+The first-order reduction is Hörmander [H4, (30.5.10)–(30.5.13)]. We derive its remainder from the coefficient commutators.
 
 Write \(x=(s,z)\) and \(\xi=(\xi_1,\eta)\). Let \(P_0\) be a real elliptic polynomial of degree \(m\). In a fixed regular graph collar suppose the smooth real long-range polynomial
 
@@ -252,7 +270,7 @@ Write \(x=(s,z)\) and \(\xi=(\xi_1,\eta)\). Let \(P_0\) be a real elliptic polyn
  \tag{18}
 \]
 
-has the root and quotient from the energy-shell lesson:
+has the [root](energy-shell-factors-and-outgoing-equations.md#energy-shell-root-jets) and [quotient](energy-shell-factors-and-outgoing-equations.md#energy-shell-division) from the energy-shell lesson:
 
 \[
  \begin{aligned}
@@ -311,7 +329,7 @@ Assume the smooth long-range derivative bounds
  \tag{23}
 \]
 
-The two formulas for \(\mu(2)\) coincide. The root and reciprocal estimates imply that every frequency derivative of \(b_\lambda\) is bounded, and, at every positive physical order,
+The two formulas for \(\mu(2)\) coincide. The [root and reciprocal estimates](energy-shell-factors-and-outgoing-equations.md#energy-shell-reciprocal) imply that every frequency derivative of \(b_\lambda\) is bounded, and, at every positive physical order,
 
 \[
  |\partial_x^\beta\partial_\xi^\alpha b_\lambda|
@@ -319,6 +337,8 @@ The two formulas for \(\mu(2)\) coincide. The root and reciprocal estimates impl
                   \quad(|\beta|\ge1).
  \tag{24}
 \]
+
+<a id="cutoff-compact-remainder"></a>
 
 If \(|x-y|\le X(x)/2\), the connecting segment has comparable \(X\). The first-derivative bound for \(\ell_\gamma\) gives
 
@@ -334,7 +354,11 @@ In the complementary region the coefficients are bounded and \(X(x)\le2|x-y|\). 
 
 **Proof.** Apply Theorem 2.1 to each kernel (22), then compose with \(u\mapsto D^\gamma u\). There are finitely many terms. \(\square\)
 
-The identity holds on all of \(\mathcal Y_m\). One way to verify this extension is distributional transposition. The compact-frequency symbols and all their physical derivatives are bounded; their kernels and their transposes preserve Schwartz space. Multiplication by the present smooth coefficients and polynomial differentiation do so as well. The Schwartz identity (21) therefore extends to tempered distributions. The annular actions in Corollary 4.1 agree with these distributional actions by testing the absolutely convergent kernel series.
+<a id="cutoff-distribution-identity"></a>
+
+The identity holds on all of \(\mathcal Y_m\). One way to verify this extension is distributional transposition. The compact-frequency symbols and all their physical derivatives are bounded; their kernels and their transposes preserve Schwartz space. Multiplication by the present smooth coefficients and polynomial differentiation do so as well. For the kernel assertion, derivatives in either kernel variable retain arbitrarily rapid decay in \(x-y\). The inequality \(\langle x\rangle^j\le C_j\langle y\rangle^j\langle x-y\rangle^j\), and its version with \(x,y\) exchanged, pass every Schwartz seminorm through the kernel integral; the remaining power of \(x-y\) is absorbed by that decay. This proves continuity on Schwartz space for the operator and its transpose, as in the [written Schwartz-action proof](../providers/analysis/finite-weighted-calculus.md#weighted-schwartz-action). The Schwartz identity (21) therefore extends to tempered distributions. The annular actions in Corollary 4.1 agree with these distributional actions by testing the absolutely convergent kernel series.
+
+<a id="cutoff-kernel-jets"></a>
 
 ## 5. Every derivative of the remainder symbol
 
@@ -401,6 +425,8 @@ For the first inequality in (29), check \(q=0\) directly and use \(1+r(q+1)\ge1+
 
 Outside \(|w|\le X/2\), all coefficient derivatives are bounded. Since \(X\le2|w|\), arbitrarily high kernel decay supplies every fixed power of \(X\) required in (30). This estimates the already differentiated expression in two regions; no derivative of a discontinuous region cutoff is taken.
 
+<a id="cutoff-symbol"></a>
+
 The exact left symbol of the kernel (22) is
 
 \[
@@ -418,6 +444,8 @@ A frequency derivative inserts \(w^\alpha\). Integrate by parts with \((1-\Delta
 \]
 
 Polynomial multiplication preserves arbitrary frequency decay, proving (26). Finally \(r\ge\delta\), and we may choose \(N\ge|\alpha|\). These observations give the precise coordinate inequalities for (27). \(\square\)
+
+<a id="cutoff-energy-parameter"></a>
 
 ## 6. Continuous forcing for the outgoing equation
 
@@ -437,6 +465,8 @@ It follows that all the kernel bounds above are uniform for \(\lambda\in I\), an
 
 Theorem 3.1 and the first line also make \(T_\lambda V_S\) norm continuous as a compact map \(\mathcal Y_m\to B\).
 
+<a id="cutoff-forcing"></a>
+
 Now suppose \(H=P_0(D)+L(x,D)+V_S(x,D)\) is the self-adjoint admissible operator of the limiting-absorption theorem. Let \(I\) avoid its eigenvalues and the critical free energies. For \(f\in B\), put
 
 \[
@@ -455,6 +485,8 @@ Choose the frequency collar so that \(\partial_{\xi_1}P_0>0\). The exact equatio
  (D_s-\widetilde a(x,D_z,\lambda))v_\lambda=g_\lambda.
  \tag{35}
 \]
+
+The compactness and energy-continuity argument below is due to Hörmander [H4, the paragraph following (30.5.13)].
 
 **Theorem 6.1.** The forcing in (34) belongs to \(B\), depends continuously on \(\lambda\) in its norm, and satisfies
 
@@ -476,6 +508,8 @@ The conclusions about continuity and the uniform estimate also hold with strongl
 
 **Proof.** Limiting absorption bounds \(u_\lambda\) in \(\mathcal Y_m\) uniformly on \(I\), and gives derivative-wise weak-star continuity, jointly with strong \(B\) forcing. Theorems 2.1 and 3.1 convert this convergence into strong convergence of \(R_\lambda u_\lambda\) and \(T_\lambda V_Su_\lambda\). For example, subtract the two values, first vary the operator with its norm estimate, then apply the fixed compact operator to the weak-star convergent graph. Lemma 1.1 treats \(T_\lambda f\). These statements prove the continuity and (36).
 
+<a id="cutoff-radiation"></a>
+
 For completeness, the full directional radiation condition implies the particular outgoing condition needed in (37). On the frequency support choose \(\kappa>0\) such that
 \(\partial_{\xi_1}P_0/|\nabla P_0|\ge2\kappa\). Take a smooth angular function \(\zeta\) equal to one when \(s/|x|\le\kappa/2\), and zero when \(s/|x|\ge\kappa\). Let \(\vartheta(x)\) be a radial smooth function equal to zero near zero and one outside a ball. Then
 
@@ -486,7 +520,7 @@ For completeness, the full directional radiation condition implies the particula
 
 is smooth, belongs to \(S(1,G_1)\), and vanishes on every positive free-velocity ray over the energy surface. The apparent angular expression near zero is removed by \(\vartheta\). Radiation therefore gives \(h(x,D)u_\lambda\in\dot B^*\).
 
-The norm closure \(\dot B^*\) of Schwartz space has vanishing ball mass divided by radius. Indeed the ball/shell bound gives a limsup at most \(C\|w-w_0\|_{B^*}^2\) for any Schwartz approximation \(w_0\); its own normalized ball mass tends to zero, and the error can be made arbitrarily small. For each fixed \(T\), (38) equals \(\chi(D)u_\lambda\) on \(s<T\) outside a sufficiently large ball. The omitted bounded region has finite mass. Consequently
+The norm closure \(\dot B^*\) of Schwartz space has vanishing ball mass divided by radius. Indeed the ball/shell bound gives a limsup at most \(C\|w-w_0\|_{B^*}^2\) for any Schwartz approximation \(w_0\); its own normalized ball mass tends to zero, and the error can be made arbitrarily small. For each fixed \(T\), the function \(h(x,D)u_\lambda=\vartheta(x)\zeta(x/|x|)\chi(D)u_\lambda\) equals \(\chi(D)u_\lambda\) on \(s<T\) outside a sufficiently large ball: choose its radius so that \(\vartheta=1\) and \(\max(T,0)/|x|\le\kappa/2\). The omitted bounded region has finite mass. Consequently
 
 \[
  \lim_{R\to\infty}R^{-1}
@@ -494,11 +528,13 @@ The norm closure \(\dot B^*\) of Schwartz space has vanishing ball mass divided 
  \tag{39}
 \]
 
-Also \(v_\lambda\in B^*\), by the Fourier-multiplier consequence of Lemma 1.1. The root-cutoff application of the outgoing evolution theorem now applies to (35), yielding uniqueness and (37). This includes \(n=1\), when the transverse space is \(\mathbb C\). \(\square\)
+Also \(v_\lambda\in B^*\), by the Fourier-multiplier consequence of Lemma 1.1. The [root-cutoff application of the outgoing evolution theorem](energy-shell-factors-and-outgoing-equations.md#energy-shell-application) now applies to (35), yielding uniqueness and (37). This includes \(n=1\), when the transverse space is \(\mathbb C\). \(\square\)
 
 ### Use the conclusion
 
 Check the exact energy-factor cancellation before estimating its remainder symbol. Then verify kernel compactness locally and uniformly small tails separately in the boundary-resolvent application.
+
+<a id="cutoff-solutions"></a>
 
 ## 7. Exercises with complete solutions
 
@@ -557,3 +593,5 @@ For the near terms this is (8). For \(l\ge k+3\), summing the far estimate gives
 
 - [Y] Dmitri Yafaev, [*Lectures on scattering theory*, free author preprint, arXiv:math/0403213v1](https://arxiv.org/pdf/math/0403213v1), 12 March 2004; lecture notes prepared by Andrew Hassell. Section 1 provides scattering context. The endpoint kernel, exact commutator and energy-continuity proofs are written in this lesson.
 - [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, free author's online second edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), 2014, §6.3, equations (6.11)–(6.15), pp. 163–164. These give the square-integrable-kernel comparison. Section 2 above proves the finite-rank approximation and its extension to the endpoint norms, including both spatial tails.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.5, (30.5.10)–(30.5.13) and the following compactness and energy-continuity argument, p. 317; Lemma 30.5.4 and proof, pp. 318–319. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

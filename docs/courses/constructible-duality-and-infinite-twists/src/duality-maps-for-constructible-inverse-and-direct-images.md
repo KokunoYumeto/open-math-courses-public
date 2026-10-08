@@ -89,25 +89,25 @@ Finally, injective sheaves are c-soft. For opens \(U\subset V\), the map \(k_U\t
 
 ### Lifting compactly supported sections {#compact-support-lifting}
 
-**Lifting lemma.** If \(0\to F'\to F\to F''\to0\) is exact and \(F'\) is c-soft, then
+**Lifting lemma.** If \(0\to F'\to F\to F^{\prime\prime}\to0\) is exact and \(F'\) is c-soft, then
 
 \[
 0\longrightarrow\Gamma_c(X;F')\longrightarrow\Gamma_c(X;F)
-\longrightarrow\Gamma_c(X;F'')\longrightarrow0
+\longrightarrow\Gamma_c(X;F^{\prime\prime})\longrightarrow0
 \tag{C3}
 \]
 
 is exact.
 
-**Proof.** Left exactness follows from kernels and the definition of support. We prove surjectivity first when \(X\) is compact. A section \(s''\) has lifts on an open cover because the sheaf map \(F\to F''\) is surjective on stalks. Choose a finite compact closed cover \(K_i\) subordinate to that cover, and use the corresponding local lifts on \(K_i\).
+**Proof.** Left exactness follows from kernels and the definition of support. We prove surjectivity first when \(X\) is compact. A section \(s^{\prime\prime}\) has lifts on an open cover because the sheaf map \(F\to F^{\prime\prime}\) is surjective on stalks. Choose a finite compact closed cover \(K_i\) subordinate to that cover, and use the corresponding local lifts on \(K_i\).
 
 Suppose lifts have already been glued on \(K_1\cup\cdots\cup K_{i-1}\). On its intersection with \(K_i\), the difference between the existing lift and the new lift is a section of \(F'\): restriction is exact and sections preserve kernels. The intersection is compact, so c-softness extends that difference to a global section of \(F'\). Add this extension to the new lift. The adjusted lifts agree on the intersection, and finite closed gluing combines them. Finite induction gives a lift on all of \(X\).
 
-For general \(X\), let \(s''\) have compact support \(A\), and choose a relatively compact open \(U\) containing \(A\). Write \(F_U=j_!(F|_U)\), and similarly for the other two sheaves. Open extension by zero is exact by its stalk formula, so these sheaves give a short exact sequence. Its first term is c-soft by the restriction and extension properties just proved. Each term has zero stalks outside the compact set \(\overline U\).
+For general \(X\), let \(s^{\prime\prime}\) have compact support \(A\), and choose a relatively compact open \(U\) containing \(A\). Write \(F_U=j_!(F|_U)\), and similarly for the other two sheaves. Open extension by zero is exact by its stalk formula, so these sheaves give a short exact sequence. Its first term is c-soft by the restriction and extension properties just proved. Each term has zero stalks outside the compact set \(\overline U\).
 
-A sheaf supported on a closed set is the direct image of its restriction to that set: the natural map to that direct image is an isomorphism on every stalk. Restrict our sequence to \(\overline U\), apply the compact case there, and push the resulting section back to \(X\). All its support is compact. The section \(s''\) belongs to \(\Gamma_c(X;F''_U)\), since it vanishes near every point outside its compact support \(A\subset U\). The compact-case lift is therefore a compactly supported lift of the original \(s''\). This proves (C3). \(\square\)
+A sheaf supported on a closed set is the direct image of its restriction to that set: the natural map to that direct image is an isomorphism on every stalk. Restrict our sequence to \(\overline U\), apply the compact case there, and push the resulting section back to \(X\). All its support is compact. The section \(s^{\prime\prime}\) belongs to \(\Gamma_c(X;F^{\prime\prime}_U)\), since it vanishes near every point outside its compact support \(A\subset U\). The compact-case lift is therefore a compactly supported lift of the original \(s^{\prime\prime}\). This proves (C3). \(\square\)
 
-**Quotient consequence.** In a short exact sequence, if \(F'\) and \(F\) are c-soft, then so is \(F''\). Given a section of \(F''\) on a compact \(K\), restrict the sequence to \(K\). Its first term is c-soft there, so the compact case of (C3) lifts that section to \(\Gamma(K;F)\). C-softness of \(F\) extends the lift globally. Its image is the desired extension of the original section.
+**Quotient consequence.** In a short exact sequence, if \(F'\) and \(F\) are c-soft, then so is \(F^{\prime\prime}\). Given a section of \(F^{\prime\prime}\) on a compact \(K\), restrict the sequence to \(K\). Its first term is c-soft there, so the compact case of (C3) lifts that section to \(\Gamma(K;F)\). C-softness of \(F\) extends the lift globally. Its image is the desired extension of the original section.
 
 ### The compact-cohomology criterion {#compact-cohomology-criterion}
 

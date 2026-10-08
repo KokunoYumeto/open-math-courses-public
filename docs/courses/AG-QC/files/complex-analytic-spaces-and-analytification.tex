@@ -22,9 +22,8 @@ analytification}\label{complex-analytic-spaces-and-analytification}
 setting, October 2026. Analytic prerequisite integration by GPT-6 Astra
 (OpenAI), Codex, Ultra. The linked analytic bridge was written and
 self-checked by Claude Opus 5.5; a full independent review is not
-claimed. Independently authored material is CC0; the
-preparation-and-division component below retains Demailly's OpenContent
-permission.}
+claimed. The preparation and division proof in Section 2 is by Claude
+Opus 5.5 (Anthropic). Original text: CC0.}
 
 An equation with complex coefficients defines both a scheme and a space
 of complex points. The second space has many more open sets and
@@ -219,147 +218,161 @@ assertion on the model. \(\square\)
 
 \subsection{2. Local analytic algebra}\label{local-analytic-algebra}
 
-\textbf{Preparation and division.} Write \(z=(z',w)\). Suppose the
-holomorphic germ \(f\) satisfies \(f(0,w)=w^r v(w)\), with \(v(0)\ne0\).
-Then, uniquely,
+\textbf{Preparation and division.} Write \(z=(z',w)\) with
+\(z'\in\mathbf C^{n-1}\). Let \(f\in H_n\) satisfy \(f(0,w)=w^rv(w)\)
+with \(v(0)\neq0\). Then \(f=uP\) for exactly one pair consisting of a
+unit \(u\in H_n\) and a polynomial
 
 \[
-f=uP,\qquad
-P=w^r+a_1(z')w^{r-1}+\cdots+a_r(z'),\qquad a_j(0)=0,
+P=w^r+a_1(z')w^{r-1}+\cdots+a_r(z'),\qquad a_j\in H_{n-1},\quad a_j(0)=0 .
 \]
 
-where \(u\) is an invertible holomorphic germ. Every holomorphic germ
-\(g\) has a unique expression \(g=fq+R\), where \(R\) is a polynomial in
-\(w\) of degree less than \(r\), with holomorphic coefficients in
-\(z'\).
+Moreover, every \(g\in H_n\) can be written in exactly one way as
+\(g=fq+R\), with \(q\in H_n\) and \(R\in H_{n-1}[w]\) of degree less
+than \(r\) in \(w\).
 
-\textbf{Source and reuse.} This complete germ-level proof adapts
-Demailly, II, Theorems 2.1 and 2.3, pp.~79--81, which credit C. L.
-Siegel's contour argument. It is distributed under Demailly's
-\href{https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html}{explicit
-OpenContent permission}, with that authorship retained. GPT-6.1 Sol at
-Ultra effort reorganized the argument, made root multiplicities and germ
-uniqueness explicit, and checked its use in Lemma 2.1. Demailly also
-proves uniform bounded-function estimates; those stronger estimates are
-not needed here. This component is not included in the CC0 dedication of
-the independent lesson material.
-
-\textbf{Proof.} The case \(r=0\) is division by a unit, with \(P=1\) and
-\(R=0\). For \(r>0\), choose a small circle \(|\zeta|=\rho\) on which
-\(f(0,\zeta)\ne0\), enclosing no zero other than zero. After shrinking
-the \(z'\)-polydisc, \(f(z',\zeta)\) remains nonzero in an annulus
-around that circle. Define
-
-\[
-s_k(z')=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
-\zeta^k\frac{\partial f/\partial w(z',\zeta)}{f(z',\zeta)}\,d\zeta.
-\]
-
-The scalar tools used here have complete earlier proofs in
+\textbf{Proof.} Holomorphy in several variables means continuity
+together with holomorphy in each variable separately, as in
+\href{../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html\#1-polydiscs-and-the-definition-of-holomorphy}{Holomorphic
+functions of several variables, Definition 1.1}. The one-variable facts
+used below are proved in
 \href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html}{Cauchy's
-theorem for cycles and its consequences}: Lemma 0.1 proves interchange
-of continuous integrals, Theorems 2.2--2.3 prove the disc integral
-theorem and formula, and Theorems 3.2, 3.4 and 3.7 prove Taylor
-expansion, Morera's theorem and isolatedness of zeros. These results
-concern scalar holomorphic functions and do not require an
-operator-algebra theorem.
+theorem for cycles and its consequences}: interchange of integrals over
+compact parameter intervals
+(\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-07}{Lemma
+0.1}), Goursat's theorem, Cauchy's theorem and Cauchy's formula on discs
+(\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-02}{Theorems
+2.1--2.3}), and Taylor expansion, Morera's theorem and the identity
+theorem
+(\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-03}{Theorems
+3.2, 3.4 and 3.7}).
 
-The integrand is jointly continuous on the parameter polydisc times the
-circle and holomorphic in each parameter coordinate. Its derivative
-numerator is holomorphic by the polydisc Taylor theorem. Interchange a
-triangle integral in one parameter coordinate with the circle integral,
-using
-\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-07}{Lemma
-0.1(3)}; the triangle integral is zero by Cauchy's theorem.
-\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-03}{Morera's
-theorem, Theorem 3.4}, proves that each \(s_k\) is holomorphic in every
-parameter coordinate. Joint continuity and the bridge's definition of
-holomorphy make it holomorphic on the parameter polydisc.
+If \(r=0\), then \(f\) is a unit; take \(P=1\), \(u=f\), \(q=g/f\) and
+\(R=0\). Let \(r\geq1\).
 
-For fixed \(z'\), the zeros in the closed disc are finite: they are
-isolated by
-\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-03}{Theorem
-3.7}, none lies near the boundary, and an infinite subset of the
-remaining compact disc would have an accumulation point. At a zero \(b\)
-of multiplicity \(m_b\), Taylor factorization gives \(f=(w-b)^{m_b}h\),
-with \(h(b)\ne0\), and therefore
+\emph{Integrals over a fixed circle.} Let \(\varphi(x,\zeta)\) be
+continuous for \(x\) in an open subset of some \(\mathbf C^m\) and
+\(|\zeta|=\rho\), and holomorphic in \(x\) for each \(\zeta\). Then
+\(x\mapsto\int_{|\zeta|=\rho}\varphi(x,\zeta)\,d\zeta\) is holomorphic.
+It is continuous by uniform continuity on compact sets. In each variable
+separately, Lemma 0.1 exchanges a triangle integral with the circle
+integral, Goursat's theorem makes the result zero, and Morera's theorem
+gives holomorphy.
 
-\[
-\frac{f_w}{f}=\frac{m_b}{w-b}+\frac{h'}h.
-\]
-
-Subtract \(\sum_b m_b/(w-b)\) from \(f_w/f\). The resulting function
-extends holomorphically over every zero and throughout a slightly larger
-disc. Its integral, also after multiplication by \(w^k\), is zero by
-\href{../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html\#OA-FND-CT-02}{Theorem
-2.2}. Cauchy's formula applied to the polynomial \(w^k\) gives
+\emph{The zeros in each fibre.} Choose \(\rho>0\) and an open polydisc
+\(D'\) around \(0\in\mathbf C^{n-1}\) such that \(f\) is holomorphic on
+a neighbourhood of \(\overline{D'}\times\{|w|\leq\rho\}\),
+\(f(0,w)\neq0\) for \(0<|w|\leq\rho\), and \(f(z',\zeta)\neq0\) for
+\(z'\in D'\) and \(|\zeta|=\rho\). Once \(\rho\) satisfies the second
+condition, the third is arranged by shrinking \(D'\), using continuity
+and the compactness of the circle. Fix \(z'\in D'\). The zeros of
+\(f(z',\cdot)\) inside the circle are isolated, hence finite in number.
+Factoring them out by Taylor expansion gives
+\(f(z',w)=\prod_i(w-c_i)^{m_i}k(w)\), where \(k\) has no zero on a disc
+slightly larger than \(\{|w|\leq\rho\}\). Hence
 
 \[
-s_k(z')=\sum_b m_b b^k\qquad(k\geq0).
+w^j\,\frac{\partial_wf(z',w)}{f(z',w)}=\sum_im_i\,\frac{w^j}{w-c_i}+w^j\,\frac{k'(w)}{k(w)} .
 \]
 
-Here the term for \(k=0\) is \(m_b\), including when \(b=0\). Thus
-\(s_0\) counts the zeros inside the circle, and \(s_k\) sums their
-\(k\)-th powers with multiplicity. The integer \(s_0\) is continuous on
-the connected parameter polydisc, hence constantly \(r\). Denote those
-roots with repetition by \(b_1,\ldots,b_r\); individual roots need not
-depend holomorphically on \(z'\).
-
-Their elementary symmetric functions do: Newton's identities express
-them recursively by \(c_0=1\) and
+Integrating over \(|w|=\rho\), Cauchy's theorem removes the last term
+and Cauchy's formula evaluates the others:
 
 \[
-k c_k=\sum_{j=1}^k(-1)^{j-1}c_{k-j}s_j.
+s_j(z')=\frac1{2\pi i}\int_{|\zeta|=\rho}\zeta^j\,\frac{\partial_wf(z',\zeta)}{f(z',\zeta)}\,d\zeta=\sum_im_ic_i^j\qquad(j\geq0).
 \]
 
-To verify these identities, use the formal polynomial
-\(E(t)=\prod_{\ell=1}^r(1+b_\ell t)=\sum_kc_kt^k\). Its constant term is
-one, so formal division gives
+Each \(s_j\) is holomorphic on \(D'\) by the previous paragraph. The
+integer \(s_0(z')\) is continuous, hence constant, and \(s_0(0)=r\). So
+every fibre has exactly \(r\) zeros inside the circle, counted with
+multiplicity. Call them \(b_1(z'),\ldots,b_r(z')\). Individual zeros
+need not depend holomorphically on \(z'\): think of \(w^2-z_1\).
+
+\emph{The polynomial.} For complex numbers \(b_1,\ldots,b_r\) put
+\(S_j=\sum_lb_l^j\) and \(\prod_l(w-b_l)=\sum_{k=0}^rA_kw^{r-k}\),
+\(A_0=1\). For \(|w|\) larger than every \(|b_l|\), geometric series
+give \(\sum_l(w-b_l)^{-1}=\sum_{j\geq0}S_jw^{-j-1}\) with \(S_0=r\).
+Multiplying by \(\prod_l(w-b_l)\) gives
 
 \[
-\frac{E'(t)}{E(t)}=\sum_\ell\frac{b_\ell}{1+b_\ell t}
-=\sum_{j\geq1}(-1)^{j-1}s_jt^{j-1}.
+\sum_{k=0}^{r-1}(r-k)A_kw^{r-1-k}=\sum_{i=0}^r\sum_{j\geq0}A_iS_j\,w^{r-1-i-j}.
 \]
 
-Multiply by \(E(t)\) and compare coefficients of \(t^{k-1}\). Thus the
-recursion requires no choice of holomorphic individual roots.
-
-The polynomial \(P=\sum_{k=0}^r(-1)^k c_k w^{r-k}\) consequently has
-holomorphic coefficients and exactly the same zeros, with
-multiplicities, as \(f\) in the disc. At \(z'=0\), it is \(w^r\). For
-each fixed \(z'\), both \(f/P\) and \(P/f\) have removable singularities
-inside the circle. Their Cauchy integral representations using their
-boundary values show that the extensions are jointly holomorphic in
-\((z',w)\). They are inverse to one another. This proves preparation.
-Any other monic polynomial of the stated form has the same small roots,
-so equals \(P\); the unit is then determined.
-
-For division by \(P\), choose a smaller circle inside a representative
-of the germ \(g\), and shrink the \(z'\)-polydisc so all roots remain
-inside it. Write its radius again as \(\rho\), and put
+After the substitution \(w=1/t\) and multiplication by \(t^{r-1}\), both
+sides are power series in \(t\) near \(0\), so their coefficients agree.
+The coefficient of \(t^k\) is \((r-k)A_k\) on the left, which is zero
+for \(k=r\), and \(rA_k+S_1A_{k-1}+\cdots+S_kA_0\) on the right. Hence
+\(kA_k=-(S_1A_{k-1}+\cdots+S_kA_0)\) for \(1\leq k\leq r\). Define
+holomorphic functions on \(D'\) by \(a_0=1\) and
+\(a_k=-(s_1a_{k-1}+\cdots+s_ka_0)/k\). The recursion just proved,
+applied to the zeros \(b_l(z')\), whose power sums are the \(s_j(z')\),
+shows that
 
 \[
-Q(z',w)=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
-\frac{g(z',\zeta)}{P(z',\zeta)(\zeta-w)}\,d\zeta.
+P(z',w)=w^r+a_1(z')w^{r-1}+\cdots+a_r(z')=\prod_{l=1}^r\bigl(w-b_l(z')\bigr),
 \]
 
-Cauchy's formula gives
+and \(P(0,w)=w^r\), so \(a_k(0)=0\).
+
+\emph{The unit.} For fixed \(z'\), the functions \(f(z',\cdot)\) and
+\(P(z',\cdot)\) vanish to the same order at each \(b_l(z')\). Hence
+\(f/P\) extends holomorphically across these points, and the extension
+is nowhere zero for \(|w|<\rho\). By Cauchy's formula the extension
+equals
 
 \[
-g-PQ=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
-\frac{g(z',\zeta)}{P(z',\zeta)}
-\frac{P(z',\zeta)-P(z',w)}{\zeta-w}\,d\zeta.
+u(z',w)=\frac1{2\pi i}\int_{|\zeta|=\rho}\frac{f(z',\zeta)}{P(z',\zeta)(\zeta-w)}\,d\zeta\qquad(|w|<\rho),
 \]
 
-The final divided difference is a polynomial in \(w\) of degree at most
-\(r-1\), so this integral is the required \(R\). All coefficients and
-\(Q\) are holomorphic. For \(f=uP\), take \(q=Q/u\). If two divisions
-exist, their remainder difference is divisible by \(P\); it therefore
-vanishes at its \(r\) roots with their multiplicities. A polynomial of
-degree less than \(r\) with that property is zero. The quotient
-difference is then zero. For germ uniqueness, shrink once more so all
-roots lie in a neighbourhood on which both representations exist.
-\(\square\)
+which is holomorphic in \((z',w)\) because \(P(z',\zeta)\neq0\) on the
+circle. It has no zeros, so \(1/u\) is holomorphic too. The continuous
+functions \(f\) and \(uP\) agree off the finitely many \(b_l(z')\) in
+each fibre, so \(f=uP\).
+
+\emph{Uniqueness of \(P\) and \(u\).} If \(\sum_k|c_k|\tau^{-k}<1\),
+then for \(|w|\geq\tau\) the lower terms of
+\(w^r+c_1w^{r-1}+\cdots+c_r\) have modulus less than \(|w|^r\), so all
+roots lie in \(\{|w|<\tau\}\). Let \(f=u_1P_1\) be another such
+factorization. Setting \(z'=0\) shows that \(P_1\) also has degree
+\(r\). Choose a product neighbourhood \(D''\times\{|w|<\tau_1\}\), with
+\(\tau_1\leq\rho\), on which \(f=u_1P_1\) holds with \(u_1\) zero-free.
+Then choose \(\tau<\tau_1\) and shrink \(D''\) so that, by the bound
+just proved, all roots of \(P(z',\cdot)\) and of \(P_1(z',\cdot)\) lie
+in \(\{|w|<\tau\}\) for \(z'\in D''\). For each such \(z'\), both
+polynomials are monic of degree \(r\) with exactly the zeros of
+\(f(z',\cdot)\) in \(\{|w|<\tau_1\}\) as roots, with the same
+multiplicities. Hence \(P_1=P\), and then \(u_1=u\).
+
+\emph{Division.} Shrink \(D'\) and \(\rho\) so that \(g\) is holomorphic
+on a neighbourhood of \(\overline{D'}\times\{|w|\leq\rho\}\) and all
+roots of \(P(z',\cdot)\) lie in \(\{|w|<\rho\}\). The divided difference
+\(K(z';\zeta,w)=(P(z',\zeta)-P(z',w))/(\zeta-w)\) is a polynomial in
+\(w\) of degree less than \(r\). Its coefficients are polynomials in
+\(\zeta\) and the \(a_k(z')\). For \(|w|<\rho\) put
+
+\[
+Q(z',w)=\frac1{2\pi i}\int_{|\zeta|=\rho}\frac{g(z',\zeta)}{P(z',\zeta)(\zeta-w)}\,d\zeta,\qquad
+R(z',w)=\frac1{2\pi i}\int_{|\zeta|=\rho}\frac{g(z',\zeta)\,K(z';\zeta,w)}{P(z',\zeta)}\,d\zeta .
+\]
+
+Both are holomorphic, and \(R\) is a polynomial in \(w\) of degree less
+than \(r\) with holomorphic coefficients. Insert
+\(1/(\zeta-w)=P(z',w)/(P(z',\zeta)(\zeta-w))+K(z';\zeta,w)/P(z',\zeta)\)
+into Cauchy's formula for \(g(z',\cdot)\). This gives \(g=PQ+R\), so
+\(g=fq+R\) with \(q=Q/u\).
+
+If also \(g=fq'+R'\), then \(R-R'=f(q'-q)=Pu(q'-q)\) on a product
+neighbourhood of the form above. For each \(z'\), the polynomial
+\((R-R')(z',\cdot)\) of degree less than \(r\) vanishes at the \(r\)
+roots of \(P(z',\cdot)\), counted with multiplicity, so it is zero. Then
+\(u(q'-q)\) vanishes off finitely many points in each fibre, hence
+everywhere, and \(q'=q\). \(\square\)
+
+Bounds for division that hold uniformly for bounded dividends, with
+explicit constants, are proved in
+\href{../analytic-finiteness-and-preparation/weierstrass-preparation-and-division.html\#division-finite-generation-and-elementary-algebra}{Weierstrass
+preparation and division}, Theorem 2. They are not needed in this
+course.
 
 \textbf{Lemma 2.1.} The ring \(H_n\) is Noetherian, and its maximal-adic
 completion is \(\mathbf C[[z_1,\ldots,z_n]]\).
@@ -1179,21 +1192,17 @@ this course and the specified openly reusable sources.
 
 The primary freely reusable human treatment is Demailly's
 \href{https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf}{\emph{Complex
-Analytic and Differential Geometry}}, version of 21 June 2012.
-Preparation and division here adapt II, Theorems 2.1 and 2.3,
-pp.~79--81, with Demailly's credit to Siegel's contour argument and the
-author's
-\href{https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html}{custom
-OpenContent permission}. That permission and authorship remain attached
-to this component. The bridge's Oka proof, Theorem 2.1 and Lemma 2.2,
-develops the polynomial-relation reduction from Demailly II, Theorem
-3.19 and Lemma 3.20. Its local-parametrization and Nullstellensatz proof
-develops adapted coordinates, the primitive element and the discriminant
-before proving Theorem 5.1 for every ideal of the convergent ring; its
-Cartan proof develops the parameter-dependent interpolation before
-treating the general quotient models. These are the actual programme
-arguments used in Section 1, with their exact theorem locations linked
-there.
+Analytic and Differential Geometry}}, version of 21 June 2012. Its
+second chapter, section 2.A, treats preparation and division by C. L.
+Siegel's contour method. The bridge's Oka proof, Theorem 2.1 and Lemma
+2.2, develops the polynomial-relation reduction from Demailly II,
+Theorem 3.19 and Lemma 3.20. Its local-parametrization and
+Nullstellensatz proof develops adapted coordinates, the primitive
+element and the discriminant before proving Theorem 5.1 for every ideal
+of the convergent ring; its Cartan proof develops the
+parameter-dependent interpolation before treating the general quotient
+models. These are the actual programme arguments used in Section 1, with
+their exact theorem locations linked there.
 
 The algebraic inputs have earlier programme proofs in \emph{Commutative
 algebra for geometry}: \textbf{Completion}, Theorems 3.1--3.3 and 4.1;
@@ -1221,7 +1230,6 @@ that convention; the nonreduced statements proved here use the explicit
 quotient and completion arguments above. Exact provider identities and
 consumer hypotheses are recorded in the
 \href{prerequisites.json}{prerequisite record}. Independently authored
-teaching material is CC0; Demailly's credited preparation-and-division
-component retains his OpenContent terms, and linked programme components
-retain their stated terms.
+teaching material is CC0, and linked programme components retain their
+stated terms.
 \end{document}

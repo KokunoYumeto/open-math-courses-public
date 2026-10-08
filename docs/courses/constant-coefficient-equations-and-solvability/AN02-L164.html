@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Recovering singularities from convolution profiles</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L163.html">Previous lesson</a> · <a href="#1-what-a-single-profile-can-recover">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="recovering-singularities-from-convolution-profiles">Recovering singularities from convolution profiles</h1>
+<p>Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>The Fourier transform turns convolution into multiplication. Logarithmic profiles record the singular geometry visible along particular escaping frequencies. We can select one such profile by convolving with a compact function singular at a single point. This gives exact criteria for recovering the possible input singularities from a bound on the output.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em> and <em>245B, Notes 9</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The prerequisites are <a href="AN02-L158.html#4-the-hull-recovered-from-all-logarithmic-profiles">Locating singularities through logarithmic Fourier strips</a>, for the convex singular hull; <a href="AN02-L159.html">Singularities and nonconvex logarithmic carriers</a>, for localization in a closed union; <a href="AN02-L160.html#2-convolution-limits-and-indicators">Convolution and joint frequency carriers</a>, for common-frequency addition; and <a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, for invertibility. The <a href="#complete-proof">complete proof</a> supplies the realization, inverse criterion, universal hull addition, difference-set bound and full polynomial-profile argument, including the finite-jet description of point-supported distributions.</p>
+<h2 id="1-what-a-single-profile-can-recover">1. What a single profile can recover</h2>
+<p>Use</p>
+<span class="math math-display" id="eq-T1" data-index="0" data-tex="\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{T1}
+\]">\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{T1}
+\]</span>
+<p>Proper profiles are canonical PSH local <span class="math" data-index="1" data-tex="\(L^1\)">\(L^1\)</span> limits. A collapsed profile tends uniformly locally to <span class="math" data-index="2" data-tex="\(-\infty\)">\(-\infty\)</span>. Write <span class="math" data-index="3" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span> for their indicators and <span class="math" data-index="4" data-tex="\(C_h\)">\(C_h\)</span> for an indicator's carrier. The proper carrier is nonempty and compact convex; the collapsed carrier is empty.</p>
+<p>Let <span class="math" data-index="5" data-tex="\(S_u=\operatorname{conv}(\operatorname{sing\,supp}u)\)">\(S_u=\operatorname{conv}(\operatorname{sing\,supp}u)\)</span>, including the empty hull. The earlier hull theorem says</p>
+<span class="math math-display" id="eq-T2" data-index="6" data-tex="\[
+ S_u=\overline{\operatorname{conv}
+                \bigcup_{h\in\mathcal J(u)} C_h}.
+ \tag{T2}
+\]">\[
+ S_u=\overline{\operatorname{conv}
+                \bigcup_{h\in\mathcal J(u)} C_h}.
+ \tag{T2}
+\]</span>
+<p>Individual carriers may differ. The hull combines all of them.</p>
+<p>Theorem 2.1 of the complete proof selects any prescribed <span class="math" data-index="7" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span>: for every <span class="math" data-index="8" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a compact continuous <span class="math" data-index="9" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, supported in the radius-<span class="math" data-index="10" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> ball, with</p>
+<span class="math math-display" id="eq-T3" data-index="11" data-tex="\[
+ \operatorname{sing\,supp}w=\{0\},\qquad S_{u*w}=C_h.
+ \tag{T3}
+\]">\[
+ \operatorname{sing\,supp}w=\{0\},\qquad S_{u*w}=C_h.
+ \tag{T3}
+\]</span>
+<p>A collapsed <span class="math" data-index="12" data-tex="\(h\)">\(h\)</span> gives a smooth output. Translating this <span class="math" data-index="13" data-tex="\(w\)">\(w\)</span> to a point <span class="math" data-index="14" data-tex="\(x\)">\(x\)</span> translates the output hull to <span class="math" data-index="15" data-tex="\(C_h+x\)">\(C_h+x\)</span>.</p>
+<p>The construction keeps <span class="math" data-index="16" data-tex="\(u\)">\(u\)</span> controlled on expanding logarithmic neighborhoods of the chosen frequencies and makes <span class="math" data-index="17" data-tex="\(w\)">\(w\)</span> collapse outside those neighborhoods. At a subsequence of their original centers, <span class="math" data-index="18" data-tex="\(w\)">\(w\)</span>'s profile is exactly zero. The product therefore attains the chosen <span class="math" data-index="19" data-tex="\(u\)">\(u\)</span> profile. Every other proper output profile has a carrier inside its carrier, which proves the exact hull equality rather than just an upper bound.</p>
+<h2 id="2-the-inverse-criterion-and-two-kinds-of-subtraction">2. The inverse criterion and two kinds of subtraction</h2>
+<p>Fix nonempty compact convex <span class="math" data-index="20" data-tex="\(K,K&#x27;\)">\(K,K&#x27;\)</span>, and let <span class="math" data-index="21" data-tex="\(H_K\)">\(H_K\)</span> be the support function of <span class="math" data-index="22" data-tex="\(K\)">\(K\)</span>. The inverse criterion is</p>
+<span class="math math-display" id="eq-T4" data-index="23" data-tex="\[
+ \begin{split}
+ &amp;\operatorname{sing\,supp}(u*w)\subset K
+      \Longrightarrow \operatorname{sing\,supp}w\subset K&#x27;
+      \quad\text{for every compact }w\\
+ &amp;\quad\Longleftrightarrow\\
+ &amp;\text{for every }h\in\mathcal J(u),\
+      h(\eta)+x\cdot\eta\leq H_K(\eta)
+      \text{ for all real }\eta
+      \Longrightarrow x\in K&#x27;.
+ \end{split}
+ \tag{T4}
+\]">\[
+ \begin{split}
+ &amp;\operatorname{sing\,supp}(u*w)\subset K
+      \Longrightarrow \operatorname{sing\,supp}w\subset K&#x27;
+      \quad\text{for every compact }w\\
+ &amp;\quad\Longleftrightarrow\\
+ &amp;\text{for every }h\in\mathcal J(u),\
+      h(\eta)+x\cdot\eta\leq H_K(\eta)
+      \text{ for all real }\eta
+      \Longrightarrow x\in K&#x27;.
+ \end{split}
+ \tag{T4}
+\]</span>
+<p>For a proper <span class="math" data-index="24" data-tex="\(h\)">\(h\)</span>, the displayed inequalities say exactly <span class="math" data-index="25" data-tex="\(C_h+x\subset K\)">\(C_h+x\subset K\)</span>. Necessity follows by using the selected one-point singularity at <span class="math" data-index="26" data-tex="\(x\)">\(x\)</span>. For sufficiency, place each proper <span class="math" data-index="27" data-tex="\(w\)">\(w\)</span> profile jointly with a <span class="math" data-index="28" data-tex="\(u\)">\(u\)</span> profile on the same frequencies. Their carrier sum is inside <span class="math" data-index="29" data-tex="\(K\)">\(K\)</span>, so each point of the <span class="math" data-index="30" data-tex="\(w\)">\(w\)</span> carrier satisfies the geometric premise.</p>
+<p>The sharper conclusion is</p>
+<span class="math math-display" id="eq-T5" data-index="31" data-tex="\[
+ \operatorname{sing\,supp}w\subset\overline{T_K(u)},\qquad
+ T_K(u)=\bigcup_{h\in\mathcal J(u)}
+                     \{x:C_h+x\subset K\}.
+ \tag{T5}
+\]">\[
+ \operatorname{sing\,supp}w\subset\overline{T_K(u)},\qquad
+ T_K(u)=\bigcup_{h\in\mathcal J(u)}
+                     \{x:C_h+x\subset K\}.
+ \tag{T5}
+\]</span>
+<p>For a collapsed indicator the corresponding set of <span class="math" data-index="32" data-tex="\(x\)">\(x\)</span>'s is all real space. The closure in (T5) is taken without a convex hull. Its proof uses the earlier localization in a closed union of carriers.</p>
+<p>For a particular nonempty carrier <span class="math" data-index="33" data-tex="\(C\)">\(C\)</span>, the allowable translations <span class="math" data-index="34" data-tex="\(\{x:C+x\subset K\}\)">\(\{x:C+x\subset K\}\)</span> require every point of the translated carrier to stay in <span class="math" data-index="35" data-tex="\(K\)">\(K\)</span>. The Minkowski difference set is instead</p>
+<span class="math math-display" id="eq-T6" data-index="36" data-tex="\[
+ K-C=\{k-c:k\in K,\ c\in C\}.
+ \tag{T6}
+\]">\[
+ K-C=\{k-c:k\in K,\ c\in C\}.
+ \tag{T6}
+\]</span>
+<p>It permits a difference of some two points. These two sets can be quite different. The notation <span class="math" data-index="37" data-tex="\(K-C\)">\(K-C\)</span> in this lesson always means (T6).</p>
+<figure><img class="course-figure" width="1852" height="877" src="reproduce/L164/figures/admissible-translations-and-difference-sets.png" alt="Exact rectangles compare all admissible translations of a carrier with the larger Minkowski difference set, and show one contained translation and one that leaves the output rectangle." /><figcaption class="native"><a href="reproduce/L164/figures/admissible-translations-and-difference-sets.png">Open full-size PNG</a> · <a href="reproduce/L164/figures/admissible-translations-and-difference-sets.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> Take <span class="math" data-index="38" data-tex="\(K=[-3,5]\times[-2,4]\)">\(K=[-3,5]\times[-2,4]\)</span> and <span class="math" data-index="39" data-tex="\(C=[1,2]\times[-1,1]\)">\(C=[1,2]\times[-1,1]\)</span>. The allowable translations form <span class="math" data-index="40" data-tex="\([-4,3]\times[-1,3]\)">\([-4,3]\times[-1,3]\)</span>, whereas <span class="math" data-index="41" data-tex="\(K-C=[-5,4]\times[-3,5]\)">\(K-C=[-5,4]\times[-3,5]\)</span>. The translation <span class="math" data-index="42" data-tex="\((2,1)\)">\((2,1)\)</span> is allowable. The translation <span class="math" data-index="43" data-tex="\((4,4)\)">\((4,4)\)</span> lies in the difference set, but its translated carrier is not inside <span class="math" data-index="44" data-tex="\(K\)">\(K\)</span>. These are geometric calculations for one carrier; they do not prescribe an actual distribution's whole profile family. Proof locators: complete proof, Theorem 3.1 and Corollary 6.1; Exercise 3. Background: Hörmander's convolution geometry.</p>
+<p>If any <span class="math" data-index="45" data-tex="\(u\)">\(u\)</span> profile collapses, every point <span class="math" data-index="46" data-tex="\(x\)">\(x\)</span> is geometrically allowable. No compact <span class="math" data-index="47" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> can contain them all. Thus the inverse criterion requires invertibility.</p>
+<p>For an invertible <span class="math" data-index="48" data-tex="\(u\)">\(u\)</span>, the complete proof gives the uniform bound</p>
+<span class="math math-display" id="eq-T7" data-index="49" data-tex="\[
+ S_w\subset S_{u*w}-S_u.
+ \tag{T7}
+\]">\[
+ S_w\subset S_{u*w}-S_u.
+ \tag{T7}
+\]</span>
+<p>When the output is smooth, invertibility forces <span class="math" data-index="50" data-tex="\(w\)">\(w\)</span> to be smooth, and both sides are empty. For nonempty hulls the proof uses
+<span class="math" data-index="51" data-tex="\(h(\eta)+h(-\eta)\geq0\)">\(h(\eta)+h(-\eta)\geq0\)</span> for every nonempty carrier. It does not assume either of the separate support values is nonnegative.</p>
+<h2 id="3-universal-hull-addition-is-a-stronger-condition">3. Universal hull addition is a stronger condition</h2>
+<p>For a fixed compact <span class="math" data-index="52" data-tex="\(u\)">\(u\)</span>, the exact identity</p>
+<span class="math math-display" id="eq-T8" data-index="53" data-tex="\[
+ S_{u*w}=S_u+S_w\quad\text{for every compact }w
+ \tag{T8}
+\]">\[
+ S_{u*w}=S_u+S_w\quad\text{for every compact }w
+ \tag{T8}
+\]</span>
+<p>holds precisely when <span class="math" data-index="54" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span> is the singleton <span class="math" data-index="55" data-tex="\(\{H_{S_u}\}\)">\(\{H_{S_u}\}\)</span>. If <span class="math" data-index="56" data-tex="\(u\)">\(u\)</span> is smooth, the singleton is the collapsed indicator <span class="math" data-index="57" data-tex="\(-\infty\)">\(-\infty\)</span>, and both sides of (T8) are empty.</p>
+<p>For nonsmooth <span class="math" data-index="58" data-tex="\(u\)">\(u\)</span>, all profile carriers must be the same <span class="math" data-index="59" data-tex="\(S_u\)">\(S_u\)</span>. Necessity uses the one-point singularity test (T3). Sufficiency uses the joint-profile theorem: every proper output carrier is <span class="math" data-index="60" data-tex="\(S_u+C_w\)">\(S_u+C_w\)</span>, and every proper <span class="math" data-index="61" data-tex="\(w\)">\(w\)</span> carrier occurs in such a joint pair. Taking support-function suprema gives the Minkowski sum of the singular hulls.</p>
+<p>Invertibility rules out collapsed profiles. It does not require all the remaining carriers to coincide.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-different-constant-profiles-with-the-same-carrier">Example 1: different constant profiles with the same carrier</h3>
+<p>Take <span class="math" data-index="62" data-tex="\(P(\zeta_1,\zeta_2)=\zeta_1^3\)">\(P(\zeta_1,\zeta_2)=\zeta_1^3\)</span>, the transform of <span class="math" data-index="63" data-tex="\((-i\partial_1)^3\delta_0\)">\((-i\partial_1)^3\delta_0\)</span>. For <span class="math" data-index="64" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>, choose
+<span class="math" data-index="65" data-tex="\(c(t)=(t^\alpha,t)\)">\(c(t)=(t^\alpha,t)\)</span>, <span class="math" data-index="66" data-tex="\(0\leq\alpha\leq1\)">\(0\leq\alpha\leq1\)</span>, and <span class="math" data-index="67" data-tex="\(q=|c(t)|\)">\(q=|c(t)|\)</span>. Then</p>
+<span class="math math-display" id="eq-T9" data-index="68" data-tex="\[
+ L_u(z,c(t))=\frac{3\log|t^\alpha+z_1\log q|}{\log q}.
+ \tag{T9}
+\]">\[
+ L_u(z,c(t))=\frac{3\log|t^\alpha+z_1\log q|}{\log q}.
+ \tag{T9}
+\]</span>
+<p>For <span class="math" data-index="69" data-tex="\(0&lt;\alpha\leq1\)">\(0&lt;\alpha\leq1\)</span>, factor out <span class="math" data-index="70" data-tex="\(t^\alpha\)">\(t^\alpha\)</span>. The ratio <span class="math" data-index="71" data-tex="\(\log q/t^\alpha\)">\(\log q/t^\alpha\)</span> tends to zero, and <span class="math" data-index="72" data-tex="\(\log t/\log q\to1\)">\(\log t/\log q\to1\)</span>. Hence (T9) converges locally uniformly to <span class="math" data-index="73" data-tex="\(3\alpha\)">\(3\alpha\)</span>.</p>
+<p>For <span class="math" data-index="74" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, write</p>
+<span class="math math-display" id="eq-T10" data-index="75" data-tex="\[
+ L_u(z,c(t))=\frac{3\log\log q}{\log q}
+       +\frac{3\log|z_1+1/\log q|}{\log q}.
+ \tag{T10}
+\]">\[
+ L_u(z,c(t))=\frac{3\log\log q}{\log q}
+       +\frac{3\log|z_1+1/\log q|}{\log q}.
+ \tag{T10}
+\]</span>
+<p>The second numerator converges in local <span class="math" data-index="76" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-index="77" data-tex="\(3\log|z_1|\)">\(3\log|z_1|\)</span>, by the polynomial-logarithm argument in Proposition 7.1 of the complete proof. Both terms of (T10) therefore tend to zero in local <span class="math" data-index="78" data-tex="\(L^1\)">\(L^1\)</span>. Convergence is not uniform near the moving zero <span class="math" data-index="79" data-tex="\(z_1=-1/\log q\)">\(z_1=-1/\log q\)</span>.</p>
+<p>This polynomial realizes all constants in <span class="math" data-index="80" data-tex="\([0,3]\)">\([0,3]\)</span>. Each constant's indicator is zero and its carrier is <span class="math" data-index="81" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Distinct profiles need not have distinct carriers.
+For comparison, the one-dimensional polynomial <span class="math" data-index="82" data-tex="\(P(\zeta)=\zeta^3\)">\(P(\zeta)=\zeta^3\)</span> has only the constant-three profile along escaping real frequencies: <span class="math" data-index="83" data-tex="\(q=|c|\)">\(q=|c|\)</span>, and <span class="math" data-index="84" data-tex="\(|c+z\log q|/q\to1\)">\(|c+z\log q|/q\to1\)</span> uniformly on compact parameter sets. The general interval bound does not assert that every constant occurs for every polynomial.</p>
+<h3 id="example-2-an-exact-inverse-bound-for-a-point-supported-operator">Example 2: an exact inverse bound for a point-supported operator</h3>
+<p>Let <span class="math" data-index="85" data-tex="\(x_0=(2,-1)\)">\(x_0=(2,-1)\)</span> and</p>
+<span class="math math-display" id="eq-T11" data-index="86" data-tex="\[
+ u=(1-\partial_1^2-\partial_2^2)\delta_{x_0},\qquad
+ F_u(\zeta)=(1+\zeta_1^2+\zeta_2^2)e^{-ix_0\cdot\zeta}.
+ \tag{T11}
+\]">\[
+ u=(1-\partial_1^2-\partial_2^2)\delta_{x_0},\qquad
+ F_u(\zeta)=(1+\zeta_1^2+\zeta_2^2)e^{-ix_0\cdot\zeta}.
+ \tag{T11}
+\]</span>
+<p>Every profile indicator of <span class="math" data-index="87" data-tex="\(u\)">\(u\)</span> is <span class="math" data-index="88" data-tex="\(h(\eta)=2\eta_1-\eta_2\)">\(h(\eta)=2\eta_1-\eta_2\)</span>, by the polynomial and translation results in the complete proof. Its carrier and singular hull are <span class="math" data-index="89" data-tex="\(\{x_0\}\)">\(\{x_0\}\)</span>.
+If the output singular support is inside
+<span class="math" data-index="90" data-tex="\(K=[-3,5]\times[-2,4]\)">\(K=[-3,5]\times[-2,4]\)</span>, the geometric criterion requires</p>
+<span class="math math-display" id="eq-T12" data-index="91" data-tex="\[
+ x+x_0\in K,\qquad
+ x\in K-x_0=[-5,3]\times[-1,5].
+ \tag{T12}
+\]">\[
+ x+x_0\in K,\qquad
+ x\in K-x_0=[-5,3]\times[-1,5].
+ \tag{T12}
+\]</span>
+<p>Thus every compact <span class="math" data-index="92" data-tex="\(w\)">\(w\)</span> with the specified output bound has its singular support in this exact rectangle.</p>
+<p>The rectangle is sharp. For each <span class="math" data-index="93" data-tex="\(x\)">\(x\)</span> in it, take <span class="math" data-index="94" data-tex="\(w=\delta_x\)">\(w=\delta_x\)</span>. Then <span class="math" data-index="95" data-tex="\(u*w\)">\(u*w\)</span> is the same nonzero polynomial operator at <span class="math" data-index="96" data-tex="\(x+x_0\)">\(x+x_0\)</span>, singular only there, so it lies in <span class="math" data-index="97" data-tex="\(K\)">\(K\)</span>; the input is singular at <span class="math" data-index="98" data-tex="\(x\)">\(x\)</span>. A universal input bound must include every such <span class="math" data-index="99" data-tex="\(x\)">\(x\)</span>.
+The singleton-indicator theorem also gives the stronger exact identity <span class="math" data-index="100" data-tex="\(S_{u*w}=x_0+S_w\)">\(S_{u*w}=x_0+S_w\)</span> for every compact <span class="math" data-index="101" data-tex="\(w\)">\(w\)</span>. It describes singular hulls, without asserting equality of arbitrary singular-support sets.</p>
+<h3 id="example-3-an-invertible-input-whose-singular-hull-can-shrink">Example 3: an invertible input whose singular hull can shrink</h3>
+<p>Choose a nonnegative smooth <span class="math" data-index="102" data-tex="\(f\)">\(f\)</span>, positive on <span class="math" data-index="103" data-tex="\((1,2)\)">\((1,2)\)</span>, supported in <span class="math" data-index="104" data-tex="\([1,2]\)">\([1,2]\)</span>, with <span class="math" data-index="105" data-tex="\(\int f=1\)">\(\int f=1\)</span>, and put</p>
+<span class="math math-display" id="eq-T13" data-index="106" data-tex="\[
+ u=\delta_{(0,0)}+\tfrac14\delta_0\otimes f,\qquad
+ F_u(\zeta_1,\zeta_2)=1+\tfrac14F_f(\zeta_2).
+ \tag{T13}
+\]">\[
+ u=\delta_{(0,0)}+\tfrac14\delta_0\otimes f,\qquad
+ F_u(\zeta_1,\zeta_2)=1+\tfrac14F_f(\zeta_2).
+ \tag{T13}
+\]</span>
+<p>For real frequencies <span class="math" data-index="107" data-tex="\(|F_f|\leq1\)">\(|F_f|\leq1\)</span>, so</p>
+<span class="math math-display" id="eq-T14" data-index="108" data-tex="\[
+ |F_u(\xi)|\geq\tfrac34.
+ \tag{T14}
+\]">\[
+ |F_u(\xi)|\geq\tfrac34.
+ \tag{T14}
+\]</span>
+<p>This implies the real logarithmic-window lower bound at every center, and hence invertibility.
+Its singular support is
+<span class="math" data-index="109" data-tex="\(\{(0,0)\}\cup(\{0\}\times[1,2])\)">\(\{(0,0)\}\cup(\{0\}\times[1,2])\)</span>.
+At a nonzero point of <span class="math" data-index="110" data-tex="\(f\)">\(f\)</span>, the factor <span class="math" data-index="111" data-tex="\(\delta_0\)">\(\delta_0\)</span> is singular in the first coordinate. Boundary points belong to the singular support because every neighborhood contains such points. Near the origin the isolated point mass cannot cancel the line-supported term, whose support is separated from it. Outside these sets the distribution vanishes locally. Thus</p>
+<span class="math math-display" id="eq-T15" data-index="112" data-tex="\[
+ S_u=\{0\}\times[0,2].
+ \tag{T15}
+\]">\[
+ S_u=\{0\}\times[0,2].
+ \tag{T15}
+\]</span>
+<p>Nevertheless <span class="math" data-index="113" data-tex="\(u\)">\(u\)</span> has the zero profile. Take <span class="math" data-index="114" data-tex="\(c_j=(e^j,e^{j/2})\)">\(c_j=(e^j,e^{j/2})\)</span>, <span class="math" data-index="115" data-tex="\(q_j=|c_j|\)">\(q_j=|c_j|\)</span>. On <span class="math" data-index="116" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, the real part of <span class="math" data-index="117" data-tex="\(e^{j/2}+z_2\log q_j\)">\(e^{j/2}+z_2\log q_j\)</span> has modulus at least <span class="math" data-index="118" data-tex="\(q_j^{1/2}/4\)">\(q_j^{1/2}/4\)</span> for all sufficiently large <span class="math" data-index="119" data-tex="\(j\)">\(j\)</span>. Repeated integration by parts in the compact smooth <span class="math" data-index="120" data-tex="\(f\)">\(f\)</span> gives, for every integer <span class="math" data-index="121" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" id="eq-T16" data-index="122" data-tex="\[
+ |F_f(e^{j/2}+z_2\log q_j)|
+       \leq 4^k\|f^{(k)}\|_1 q_j^{-k/2+2M}.
+ \tag{T16}
+\]">\[
+ |F_f(e^{j/2}+z_2\log q_j)|
+       \leq 4^k\|f^{(k)}\|_1 q_j^{-k/2+2M}.
+ \tag{T16}
+\]</span>
+<p>There are no boundary terms. The factor <span class="math" data-index="123" data-tex="\(q_j^{2M}\)">\(q_j^{2M}\)</span> bounds the imaginary exponential on <span class="math" data-index="124" data-tex="\(1\leq y\leq2\)">\(1\leq y\leq2\)</span>. Choose <span class="math" data-index="125" data-tex="\(k&gt;4M\)">\(k&gt;4M\)</span>; then this tends uniformly to zero. The transform in (T13) tends uniformly to one on the parameter compact set, so <span class="math" data-index="126" data-tex="\(L_u\to0\)">\(L_u\to0\)</span> uniformly there.</p>
+<p>Theorem 2.1 now supplies a compact continuous <span class="math" data-index="127" data-tex="\(w\)">\(w\)</span>, singular exactly at zero, with</p>
+<span class="math math-display" id="eq-T17" data-index="128" data-tex="\[
+ S_{u*w}=\{0\},\qquad S_u+S_w=\{0\}\times[0,2].
+ \tag{T17}
+\]">\[
+ S_{u*w}=\{0\},\qquad S_u+S_w=\{0\}\times[0,2].
+ \tag{T17}
+\]</span>
+<p>Thus universal hull addition fails for this invertible input. The selected output is also singular exactly at zero: its nonempty hull is that singleton. The hull recovery theorem forces some other proper carrier of <span class="math" data-index="129" data-tex="\(u\)">\(u\)</span> to differ from <span class="math" data-index="130" data-tex="\(\{0\}\)">\(\{0\}\)</span>. We do not assert an explicit formula for the selected <span class="math" data-index="131" data-tex="\(w\)">\(w\)</span>; the preceding complete construction proves its existence.</p>
+<figure><img class="course-figure" width="1963" height="951" src="reproduce/L164/figures/invertibility-without-universal-hull-addition.png" alt="The actual input has an isolated point and a vertical singular segment, the selected compact factor is singular only at the origin, and the output singular hull is the origin rather than their longer hull sum." /><figcaption class="native"><a href="reproduce/L164/figures/invertibility-without-universal-hull-addition.png">Open full-size PNG</a> · <a href="reproduce/L164/figures/invertibility-without-universal-hull-addition.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> This is the exact singular geometry of (T13)–(T17), not a graph of distribution density. Blue marks the input singular locus; its convex hull is the vertical segment from zero to two. The selected factor is supported in a ball of radius <span class="math" data-index="132" data-tex="\(1/5\)">\(1/5\)</span> and singular only at its center; the circle is an allowed support bound. The green output hull is the singleton origin. The dashed vertical segment on the right is <span class="math" data-index="133" data-tex="\(S_u+S_w\)">\(S_u+S_w\)</span>, which differs from the actual output hull. Proof locators: Example 3; complete proof, Theorems 2.1 and 5.1. Background: Hörmander's profile criteria and Tao's Fourier support discussion.</p>
+<h3 id="example-4-smooth-inputs-and-the-empty-hull">Example 4: smooth inputs and the empty hull</h3>
+<p>Let <span class="math" data-index="134" data-tex="\(u\)">\(u\)</span> be any nonzero compact smooth function. Every profile collapses, <span class="math" data-index="135" data-tex="\(S_u=\varnothing\)">\(S_u=\varnothing\)</span>, and <span class="math" data-index="136" data-tex="\(u*w\)">\(u*w\)</span> is smooth for every compact distribution <span class="math" data-index="137" data-tex="\(w\)">\(w\)</span>. Therefore</p>
+<span class="math math-display" id="eq-T18" data-index="138" data-tex="\[
+ S_{u*w}=\varnothing=\varnothing+S_w.
+ \tag{T18}
+\]">\[
+ S_{u*w}=\varnothing=\varnothing+S_w.
+ \tag{T18}
+\]</span>
+<p>Universal hull addition holds in this empty case.
+No compact <span class="math" data-index="139" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> can bound the input singularities from a fixed nonempty compact output bound <span class="math" data-index="140" data-tex="\(K\)">\(K\)</span>. Choose <span class="math" data-index="141" data-tex="\(x\notin K&#x27;\)">\(x\notin K&#x27;\)</span> and <span class="math" data-index="142" data-tex="\(w=\delta_x\)">\(w=\delta_x\)</span>. The convolution is a smooth translate of <span class="math" data-index="143" data-tex="\(u\)">\(u\)</span>, with empty singular support contained in <span class="math" data-index="144" data-tex="\(K\)">\(K\)</span>, whereas <span class="math" data-index="145" data-tex="\(w\)">\(w\)</span> is singular at <span class="math" data-index="146" data-tex="\(x\)">\(x\)</span>. This violates the proposed inverse bound. In the geometric criterion, the collapsed indicator makes every <span class="math" data-index="147" data-tex="\(x\)">\(x\)</span> allowable.</p>
+<p>The zero input behaves the same way for these two statements: every output is smooth, universal empty-hull addition holds, and an inverse compact singular-support bound fails. This does not make it invertible.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The exercises total 100 points.</p>
+<h3 id="exercise-1-constant-profiles-versus-zero-indicators-8-points">Exercise 1: constant profiles versus zero indicators (8 points)</h3>
+<p>For <span class="math" data-index="148" data-tex="\(P(\zeta_1,\zeta_2)=\zeta_1^3\)">\(P(\zeta_1,\zeta_2)=\zeta_1^3\)</span>, find a center sequence giving the constant <span class="math" data-index="149" data-tex="\(3/2\)">\(3/2\)</span>. Explain why its carrier remains zero and why the analogous one-dimensional polynomial cannot give that constant.</p>
+<p><em>Solution.</em> Choose <span class="math" data-index="150" data-tex="\(c(t)=(t^{1/2},t)\)">\(c(t)=(t^{1/2},t)\)</span>. Then <span class="math" data-index="151" data-tex="\(q/t\to1\)">\(q/t\to1\)</span>, and</p>
+<span class="math math-display" id="eq-T19" data-index="152" data-tex="\[
+ \frac{3\log|t^{1/2}+z_1\log q|}{\log q}
+ =\frac{(3/2)\log t}{\log q}
+       +\frac{3\log|1+z_1\log q/t^{1/2}|}{\log q}
+       \longrightarrow\tfrac32
+ \tag{T19}
+\]">\[
+ \frac{3\log|t^{1/2}+z_1\log q|}{\log q}
+ =\frac{(3/2)\log t}{\log q}
+       +\frac{3\log|1+z_1\log q/t^{1/2}|}{\log q}
+       \longrightarrow\tfrac32
+ \tag{T19}
+\]</span>
+<p>locally uniformly. A finite constant divided by a large positive dilation has directional indicator zero, whose carrier is the singleton <span class="math" data-index="153" data-tex="\(\{0\}\)">\(\{0\}\)</span>.
+In one dimension, <span class="math" data-index="154" data-tex="\(|c|=q\)">\(|c|=q\)</span>, so the cubic has normalized logarithm tending to three on compact parameter sets. There is no separate large coordinate that lets the polynomial's first coordinate grow as <span class="math" data-index="155" data-tex="\(q^{1/2}\)">\(q^{1/2}\)</span>. The degree interval bounds possible constants without guaranteeing all of them.</p>
+<h3 id="exercise-2-the-translation-sign-8-points">Exercise 2: the translation sign (8 points)</h3>
+<p>If <span class="math" data-index="156" data-tex="\(w_x(y)=w(y-x)\)">\(w_x(y)=w(y-x)\)</span>, derive the change in its normalized logarithm and carrier. Apply it to <span class="math" data-index="157" data-tex="\(x=(2,-1)\)">\(x=(2,-1)\)</span> and a zero-indicator profile.</p>
+<p><em>Solution.</em> Substituting the translation in the Fourier pairing gives <span class="math" data-index="158" data-tex="\(F_{w_x}(\zeta)=e^{-ix\cdot\zeta}F_w(\zeta)\)">\(F_{w_x}(\zeta)=e^{-ix\cdot\zeta}F_w(\zeta)\)</span>. At <span class="math" data-index="159" data-tex="\(\zeta=c+z\log|c|\)">\(\zeta=c+z\log|c|\)</span>, the real <span class="math" data-index="160" data-tex="\(c\)">\(c\)</span> contributes a unit-modulus phase and</p>
+<span class="math math-display" id="eq-T20" data-index="161" data-tex="\[
+ \log|e^{-ix\cdot(c+z\log|c|)}|
+       =(x\cdot\operatorname{Im}z)\log|c|.
+ \tag{T20}
+\]">\[
+ \log|e^{-ix\cdot(c+z\log|c|)}|
+       =(x\cdot\operatorname{Im}z)\log|c|.
+ \tag{T20}
+\]</span>
+<p>Thus <span class="math" data-index="162" data-tex="\(L_{w_x}=L_w+x\cdot\operatorname{Im}z\)">\(L_{w_x}=L_w+x\cdot\operatorname{Im}z\)</span>. A proper indicator becomes <span class="math" data-index="163" data-tex="\(h(\eta)+x\cdot\eta\)">\(h(\eta)+x\cdot\eta\)</span>, and its carrier becomes <span class="math" data-index="164" data-tex="\(C_h+x\)">\(C_h+x\)</span>. A collapsed profile stays collapsed and its empty carrier stays empty.
+For zero indicator and the stated <span class="math" data-index="165" data-tex="\(x\)">\(x\)</span>, the new indicator is <span class="math" data-index="166" data-tex="\(2\eta_1-\eta_2\)">\(2\eta_1-\eta_2\)</span>, with carrier <span class="math" data-index="167" data-tex="\(\{(2,-1)\}\)">\(\{(2,-1)\}\)</span>. The sign is positive because the modulus of the spatial-translation exponential grows in the corresponding positive imaginary direction.</p>
+<h3 id="exercise-3-admissible-rectangles-and-difference-sets-10-points">Exercise 3: admissible rectangles and difference sets (10 points)</h3>
+<p>Take <span class="math" data-index="168" data-tex="\(K=[-3,5]\times[-2,4]\)">\(K=[-3,5]\times[-2,4]\)</span>, <span class="math" data-index="169" data-tex="\(C=[1,2]\times[-1,1]\)">\(C=[1,2]\times[-1,1]\)</span>. Compute the allowable translation set and <span class="math" data-index="170" data-tex="\(K-C\)">\(K-C\)</span>. Check <span class="math" data-index="171" data-tex="\(x=(2,1)\)">\(x=(2,1)\)</span> and <span class="math" data-index="172" data-tex="\(x=(4,4)\)">\(x=(4,4)\)</span>.</p>
+<p><em>Solution.</em> Requiring every point of <span class="math" data-index="173" data-tex="\(C+x\)">\(C+x\)</span> to lie in <span class="math" data-index="174" data-tex="\(K\)">\(K\)</span> is exactly</p>
+<span class="math math-display" id="eq-T21" data-index="175" data-tex="\[
+ x_1+1\geq-3,\quad x_1+2\leq5,\quad
+ x_2-1\geq-2,\quad x_2+1\leq4.
+ \tag{T21}
+\]">\[
+ x_1+1\geq-3,\quad x_1+2\leq5,\quad
+ x_2-1\geq-2,\quad x_2+1\leq4.
+ \tag{T21}
+\]</span>
+<p>Thus the allowable set is <span class="math" data-index="176" data-tex="\([-4,3]\times[-1,3]\)">\([-4,3]\times[-1,3]\)</span>. Direct coordinate differences give <span class="math" data-index="177" data-tex="\(K-C=[-5,4]\times[-3,5]\)">\(K-C=[-5,4]\times[-3,5]\)</span>.
+For <span class="math" data-index="178" data-tex="\(x=(2,1)\)">\(x=(2,1)\)</span>, <span class="math" data-index="179" data-tex="\(C+x=[3,4]\times[0,2]\subset K\)">\(C+x=[3,4]\times[0,2]\subset K\)</span>.
+For <span class="math" data-index="180" data-tex="\(x=(4,4)\)">\(x=(4,4)\)</span>, <span class="math" data-index="181" data-tex="\(C+x=[5,6]\times[3,5]\)">\(C+x=[5,6]\times[3,5]\)</span> exceeds both the right and upper bounds. Yet this <span class="math" data-index="182" data-tex="\(x\)">\(x\)</span> belongs to <span class="math" data-index="183" data-tex="\(K-C\)">\(K-C\)</span>: for instance <span class="math" data-index="184" data-tex="\((5,4)-(1,0)=(4,4)\)">\((5,4)-(1,0)=(4,4)\)</span>, with the first point in <span class="math" data-index="185" data-tex="\(K\)">\(K\)</span> and the second in <span class="math" data-index="186" data-tex="\(C\)">\(C\)</span>.
+The existence of that one point difference does not place the whole translated carrier inside <span class="math" data-index="187" data-tex="\(K\)">\(K\)</span>.</p>
+<h3 id="exercise-4-a-nonconvex-union-of-allowable-translations-10-points">Exercise 4: a nonconvex union of allowable translations (10 points)</h3>
+<p>Consider the hypothetical carrier family <span class="math" data-index="188" data-tex="\(\{C_-,C_+\}\)">\(\{C_-,C_+\}\)</span>, with <span class="math" data-index="189" data-tex="\(C_\pm=\{(\pm2,0)\}\)">\(C_\pm=\{(\pm2,0)\}\)</span>, and let <span class="math" data-index="190" data-tex="\(K\)">\(K\)</span> be the closed unit disk. Compute its union of allowable translations. Show why adding a convex hull changes it. Does this calculation establish that a distribution has exactly this profile family?</p>
+<p><em>Solution.</em> For <span class="math" data-index="191" data-tex="\(C_+\)">\(C_+\)</span>, the condition is <span class="math" data-index="192" data-tex="\(x+(2,0)\in K\)">\(x+(2,0)\in K\)</span>, so its allowable set is the closed unit disk centered at <span class="math" data-index="193" data-tex="\((-2,0)\)">\((-2,0)\)</span>. For <span class="math" data-index="194" data-tex="\(C_-\)">\(C_-\)</span>, it is the disk centered at <span class="math" data-index="195" data-tex="\((2,0)\)">\((2,0)\)</span>. Their union is closed and nonconvex:</p>
+<span class="math math-display" id="eq-T22" data-index="196" data-tex="\[
+ T=\overline B_1((-2,0))\cup\overline B_1((2,0)).
+ \tag{T22}
+\]">\[
+ T=\overline B_1((-2,0))\cup\overline B_1((2,0)).
+ \tag{T22}
+\]</span>
+<p>The origin lies in their convex hull, as the midpoint of their centers, but in neither disk because its distance to each center is two. Taking only the closure preserves the exclusion of the origin.
+This is a geometric calculation for a stated family. It does not establish its realization as some <span class="math" data-index="197" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span>. Theorem 2.1 selects a profile already present in a known distribution; it does not prescribe arbitrary complete profile families.</p>
+<h3 id="exercise-5-why-the-selected-hull-is-exact-10-points">Exercise 5: why the selected hull is exact (10 points)</h3>
+<p>Suppose the construction has a proper selected <span class="math" data-index="198" data-tex="\(u\)">\(u\)</span> profile with carrier <span class="math" data-index="199" data-tex="\(C_h\)">\(C_h\)</span>, a zero selected <span class="math" data-index="200" data-tex="\(w\)">\(w\)</span> profile, exterior collapse of <span class="math" data-index="201" data-tex="\(w\)">\(w\)</span>, and singular support of <span class="math" data-index="202" data-tex="\(w\)">\(w\)</span> equal to <span class="math" data-index="203" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Explain both inclusions proving <span class="math" data-index="204" data-tex="\(S_{u*w}=C_h\)">\(S_{u*w}=C_h\)</span>.</p>
+<p><em>Solution.</em> On the selected original centers, the product logarithms are the exact sum of the two input logarithms. Their proper <span class="math" data-index="205" data-tex="\(L^1\)">\(L^1\)</span> limit is the selected <span class="math" data-index="206" data-tex="\(u\)">\(u\)</span> profile plus zero. Its indicator is <span class="math" data-index="207" data-tex="\(h\)">\(h\)</span>, so the output profile family contains the carrier <span class="math" data-index="208" data-tex="\(C_h\)">\(C_h\)</span>. The hull formula (T2) gives <span class="math" data-index="209" data-tex="\(C_h\subset S_{u*w}\)">\(C_h\subset S_{u*w}\)</span>.
+Conversely a proper output profile cannot have infinitely many exterior centers: <span class="math" data-index="210" data-tex="\(w\)">\(w\)</span> collapses there and the other normalized logarithms are locally bounded above, which would collapse an output subsequence. Inside the selected neighborhood, extract both input profiles on the same subsequence. Both are proper. The <span class="math" data-index="211" data-tex="\(u\)">\(u\)</span> profile satisfies the global continuous ceiling <span class="math" data-index="212" data-tex="\(N+h(\operatorname{Im}z)\)">\(N+h(\operatorname{Im}z)\)</span>, so its carrier is contained in <span class="math" data-index="213" data-tex="\(C_h\)">\(C_h\)</span>.
+The <span class="math" data-index="214" data-tex="\(w\)">\(w\)</span> carrier is a nonempty subset of its singular hull <span class="math" data-index="215" data-tex="\(\{0\}\)">\(\{0\}\)</span>, hence equals <span class="math" data-index="216" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Exact indicator addition makes the output carrier the <span class="math" data-index="217" data-tex="\(u\)">\(u\)</span> carrier plus <span class="math" data-index="218" data-tex="\(\{0\}\)">\(\{0\}\)</span>, still contained in <span class="math" data-index="219" data-tex="\(C_h\)">\(C_h\)</span>. Every proper output carrier lies there, and <span class="math" data-index="220" data-tex="\(C_h\)">\(C_h\)</span> is closed convex. Their closed convex hull gives the reverse inclusion.</p>
+<h3 id="exercise-6-negative-support-values-and-the-subtraction-bound-8-points">Exercise 6: negative support values and the subtraction bound (8 points)</h3>
+<p>Let <span class="math" data-index="221" data-tex="\(C=[2,4]\)">\(C=[2,4]\)</span> and <span class="math" data-index="222" data-tex="\(K=[-1,6]\)">\(K=[-1,6]\)</span> on the line. Find the support function <span class="math" data-index="223" data-tex="\(h\)">\(h\)</span>, its values in directions one and minus one, and the exact translation set. Compare that set with <span class="math" data-index="224" data-tex="\(K-C\)">\(K-C\)</span>, and verify the two-direction estimate used in Corollary 6.1.</p>
+<p><em>Solution.</em> The support function is <span class="math" data-index="225" data-tex="\(h(\eta)=4\eta\)">\(h(\eta)=4\eta\)</span> for <span class="math" data-index="226" data-tex="\(\eta\geq0\)">\(\eta\geq0\)</span>, and <span class="math" data-index="227" data-tex="\(h(\eta)=2\eta\)">\(h(\eta)=2\eta\)</span> for <span class="math" data-index="228" data-tex="\(\eta&lt;0\)">\(\eta&lt;0\)</span>. Thus <span class="math" data-index="229" data-tex="\(h(1)=4\)">\(h(1)=4\)</span>, <span class="math" data-index="230" data-tex="\(h(-1)=-2\)">\(h(-1)=-2\)</span>, while <span class="math" data-index="231" data-tex="\(h(1)+h(-1)=2\geq0\)">\(h(1)+h(-1)=2\geq0\)</span>.
+The containment <span class="math" data-index="232" data-tex="\(C+x\subset K\)">\(C+x\subset K\)</span> gives <span class="math" data-index="233" data-tex="\(x+2\geq-1\)">\(x+2\geq-1\)</span>, <span class="math" data-index="234" data-tex="\(x+4\leq6\)">\(x+4\leq6\)</span>, hence <span class="math" data-index="235" data-tex="\(x\in[-3,2]\)">\(x\in[-3,2]\)</span>. The difference set is the larger <span class="math" data-index="236" data-tex="\([-5,4]\)">\([-5,4]\)</span>.
+For a permissible <span class="math" data-index="237" data-tex="\(x\)">\(x\)</span>, the proof inequality is</p>
+<span class="math math-display" id="eq-T23" data-index="238" data-tex="\[
+ x\eta\leq H_K(\eta)-h(\eta)
+       \leq H_K(\eta)+h(-\eta).
+ \tag{T23}
+\]">\[
+ x\eta\leq H_K(\eta)-h(\eta)
+       \leq H_K(\eta)+h(-\eta).
+ \tag{T23}
+\]</span>
+<p>At <span class="math" data-index="239" data-tex="\(\eta=1\)">\(\eta=1\)</span> its exact upper bound is <span class="math" data-index="240" data-tex="\(x\leq6-4=2\)">\(x\leq6-4=2\)</span>, and the coarser difference bound is <span class="math" data-index="241" data-tex="\(x\leq6-2=4\)">\(x\leq6-2=4\)</span>.
+At <span class="math" data-index="242" data-tex="\(\eta=-1\)">\(\eta=-1\)</span> its exact bound is <span class="math" data-index="243" data-tex="\(-x\leq1-(-2)=3\)">\(-x\leq1-(-2)=3\)</span>, while the difference bound is <span class="math" data-index="244" data-tex="\(-x\leq1+4=5\)">\(-x\leq1+4=5\)</span>. A support function can be negative in one direction. The sum in opposite directions, not either separate sign, validates (T23).</p>
+<h3 id="exercise-7-a-finite-jet-and-its-exact-distribution-order-12-points">Exercise 7: a finite jet and its exact distribution order (12 points)</h3>
+<p>On the line define <span class="math" data-index="245" data-tex="\(T(\phi)=3\phi(0)-2\phi&#x27;&#x27;(0)+\phi&#x27;&#x27;&#x27;(0)\)">\(T(\phi)=3\phi(0)-2\phi&#x27;&#x27;(0)+\phi&#x27;&#x27;&#x27;(0)\)</span>. Write <span class="math" data-index="246" data-tex="\(T\)">\(T\)</span> as delta derivatives, compute its Fourier polynomial, prove its order is exactly three, and identify its possible logarithmic profiles.</p>
+<p><em>Solution.</em> Since <span class="math" data-index="247" data-tex="\(\partial^k\delta_0(\phi)=(-1)^k\phi^{(k)}(0)\)">\(\partial^k\delta_0(\phi)=(-1)^k\phi^{(k)}(0)\)</span>,</p>
+<span class="math math-display" id="eq-T24" data-index="248" data-tex="\[
+ T=3\delta_0-2\partial^2\delta_0-\partial^3\delta_0,\qquad
+ F_T(\zeta)=3-2(i\zeta)^2-(i\zeta)^3
+          =3+2\zeta^2+i\zeta^3.
+ \tag{T24}
+\]">\[
+ T=3\delta_0-2\partial^2\delta_0-\partial^3\delta_0,\qquad
+ F_T(\zeta)=3-2(i\zeta)^2-(i\zeta)^3
+          =3+2\zeta^2+i\zeta^3.
+ \tag{T24}
+\]</span>
+<p>The representation gives a seminorm bound through order three. To rule out order two, choose a smooth compact <span class="math" data-index="249" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero and set <span class="math" data-index="250" data-tex="\(\phi_\varepsilon(x)=x^3\chi(x/\varepsilon)/6\)">\(\phi_\varepsilon(x)=x^3\chi(x/\varepsilon)/6\)</span>. Its lower jets at zero vanish and its third derivative there equals one, so <span class="math" data-index="251" data-tex="\(T(\phi_\varepsilon)=1\)">\(T(\phi_\varepsilon)=1\)</span>. For <span class="math" data-index="252" data-tex="\(k=0,1,2\)">\(k=0,1,2\)</span>, Leibniz's rule on the shrinking support gives <span class="math" data-index="253" data-tex="\(\|\phi_\varepsilon^{(k)}\|_\infty=O(\varepsilon^{3-k})\to0\)">\(\|\phi_\varepsilon^{(k)}\|_\infty=O(\varepsilon^{3-k})\to0\)</span>. An order-two continuity bound would make its distribution values tend to zero, a contradiction.
+For real <span class="math" data-index="254" data-tex="\(|c|=q\to\infty\)">\(|c|=q\to\infty\)</span>, the leading cubic term dominates uniformly at <span class="math" data-index="255" data-tex="\(c+z\log q\)">\(c+z\log q\)</span> on compact <span class="math" data-index="256" data-tex="\(z\)">\(z\)</span> sets. Its modulus divided by <span class="math" data-index="257" data-tex="\(q^3\)">\(q^3\)</span> tends to one. Thus the normalized logarithm tends to three, the only possible profile. Its indicator is zero and carrier <span class="math" data-index="258" data-tex="\(\{0\}\)">\(\{0\}\)</span>, so <span class="math" data-index="259" data-tex="\(T\)">\(T\)</span> is invertible and has universal singular-hull addition.</p>
+<h3 id="exercise-8-a-collapsed-indicator-defeats-an-inverse-compact-bound-10-points">Exercise 8: a collapsed indicator defeats an inverse compact bound (10 points)</h3>
+<p>Let <span class="math" data-index="260" data-tex="\(-\infty\in\mathcal J(u)\)">\(-\infty\in\mathcal J(u)\)</span>, and let <span class="math" data-index="261" data-tex="\(K,K&#x27;\)">\(K,K&#x27;\)</span> be nonempty compact convex sets. Construct a counterexample to the implication in (T4), and explain why this does not contradict universal empty-hull addition for smooth <span class="math" data-index="262" data-tex="\(u\)">\(u\)</span>.</p>
+<p><em>Solution.</em> Choose <span class="math" data-index="263" data-tex="\(x\notin K&#x27;\)">\(x\notin K&#x27;\)</span>. The collapsed-profile realization supplies a compact continuous <span class="math" data-index="264" data-tex="\(w\)">\(w\)</span>, singular exactly at zero, with <span class="math" data-index="265" data-tex="\(u*w\)">\(u*w\)</span> smooth. Translate it to <span class="math" data-index="266" data-tex="\(x\)">\(x\)</span>. The new input is singular exactly at <span class="math" data-index="267" data-tex="\(x\)">\(x\)</span>, and the output is a smooth translate, whose empty singular support is contained in <span class="math" data-index="268" data-tex="\(K\)">\(K\)</span>. The proposed implication fails.
+Geometrically, <span class="math" data-index="269" data-tex="\(-\infty+x\cdot\eta\leq H_K(\eta)\)">\(-\infty+x\cdot\eta\leq H_K(\eta)\)</span> holds for every direction and every <span class="math" data-index="270" data-tex="\(x\)">\(x\)</span>, so the criterion would force <span class="math" data-index="271" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> to contain all real space.
+If <span class="math" data-index="272" data-tex="\(u\)">\(u\)</span> is smooth, universal addition compares the output hull with <span class="math" data-index="273" data-tex="\(S_u+S_w=\varnothing\)">\(S_u+S_w=\varnothing\)</span>. That identity is true for all <span class="math" data-index="274" data-tex="\(w\)">\(w\)</span>, but it cannot bound their arbitrary singularities. The inverse criterion and universal addition are different statements.</p>
+<h3 id="exercise-9-the-exact-singleton-indicator-condition-12-points">Exercise 9: the exact singleton-indicator condition (12 points)</h3>
+<p>Prove both directions of the universal hull-addition criterion. Explain why taking unrelated maximizing frequency sequences for the two inputs would not justify the sufficient direction.</p>
+<p><em>Solution.</em> Assume addition for every <span class="math" data-index="275" data-tex="\(w\)">\(w\)</span>. Given any <span class="math" data-index="276" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span>, Theorem 2.1 gives a factor with <span class="math" data-index="277" data-tex="\(S_w=\{0\}\)">\(S_w=\{0\}\)</span> and output hull <span class="math" data-index="278" data-tex="\(C_h\)">\(C_h\)</span>. Universal addition forces <span class="math" data-index="279" data-tex="\(C_h=S_u\)">\(C_h=S_u\)</span>. If it is empty, <span class="math" data-index="280" data-tex="\(u\)">\(u\)</span> is smooth and all its profiles collapse. Otherwise every indicator equals <span class="math" data-index="281" data-tex="\(H_{S_u}\)">\(H_{S_u}\)</span>, with no collapsed indicator.
+Conversely suppose this singleton condition. If <span class="math" data-index="282" data-tex="\(u\)">\(u\)</span> is smooth, every output is smooth and the empty identity follows. Otherwise every proper <span class="math" data-index="283" data-tex="\(w\)">\(w\)</span> carrier <span class="math" data-index="284" data-tex="\(C_w\)">\(C_w\)</span> can be extracted jointly with a <span class="math" data-index="285" data-tex="\(u\)">\(u\)</span> profile whose carrier is <span class="math" data-index="286" data-tex="\(S_u\)">\(S_u\)</span>; thus <span class="math" data-index="287" data-tex="\(S_u+C_w\)">\(S_u+C_w\)</span> is an output carrier. Every proper output also has such a joint extraction, and neither input can collapse. Therefore these are exactly the proper output carriers.
+Taking support functions of their closed convex hull gives</p>
+<span class="math math-display" id="eq-T25" data-index="288" data-tex="\[
+ H_{S_{u*w}}(\eta)
+    =\sup_{h_w}\bigl(H_{S_u}(\eta)+h_w(\eta)\bigr)
+    =H_{S_u}(\eta)+H_{S_w}(\eta).
+ \tag{T25}
+\]">\[
+ H_{S_{u*w}}(\eta)
+    =\sup_{h_w}\bigl(H_{S_u}(\eta)+h_w(\eta)\bigr)
+    =H_{S_u}(\eta)+H_{S_w}(\eta).
+ \tag{T25}
+\]</span>
+<p>If <span class="math" data-index="289" data-tex="\(w\)">\(w\)</span> is smooth, both sides have empty hulls instead. Equality of support functions gives the desired sum.
+The product's two profiles must use the same real frequencies. Independent maximizing sequences need not give a joint pair and cannot be substituted in a convolution limit. The finite joint-projection theorem is what permits every proper <span class="math" data-index="290" data-tex="\(w\)">\(w\)</span> profile to appear in an actual common-frequency pair.</p>
+<h3 id="exercise-10-an-invertible-input-with-a-smaller-selected-output-12-points">Exercise 10: an invertible input with a smaller selected output (12 points)</h3>
+<p>For <span class="math" data-index="291" data-tex="\(u\)">\(u\)</span> in Example 3, prove its real transform bound. On <span class="math" data-index="292" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, derive (T16), including the threshold for the real denominator, and explain the strict failure of universal hull addition.</p>
+<p><em>Solution.</em> The physical integral and <span class="math" data-index="293" data-tex="\(\int f=1\)">\(\int f=1\)</span> give <span class="math" data-index="294" data-tex="\(|F_f(\xi_2)|\leq1\)">\(|F_f(\xi_2)|\leq1\)</span> on real frequencies. The reverse triangle inequality gives <span class="math" data-index="295" data-tex="\(|1+\frac14F_f(\xi_2)|\geq3/4\)">\(|1+\frac14F_f(\xi_2)|\geq3/4\)</span>, a uniform real lower bound. It implies slow decrease and invertibility by the preceding theorem.
+For <span class="math" data-index="296" data-tex="\(q_j=(e^{2j}+e^j)^{1/2}\)">\(q_j=(e^{2j}+e^j)^{1/2}\)</span>, we have <span class="math" data-index="297" data-tex="\(e^{j/2}\geq q_j^{1/2}/2\)">\(e^{j/2}\geq q_j^{1/2}/2\)</span>. Once <span class="math" data-index="298" data-tex="\(M\log q_j\leq q_j^{1/2}/4\)">\(M\log q_j\leq q_j^{1/2}/4\)</span>,</p>
+<span class="math math-display" id="eq-T26" data-index="299" data-tex="\[
+ |\operatorname{Re}(e^{j/2}+z_2\log q_j)|
+       \geq q_j^{1/2}/4.
+ \tag{T26}
+\]">\[
+ |\operatorname{Re}(e^{j/2}+z_2\log q_j)|
+       \geq q_j^{1/2}/4.
+ \tag{T26}
+\]</span>
+<p>Integrating the smooth compact <span class="math" data-index="300" data-tex="\(f\)">\(f\)</span> by parts <span class="math" data-index="301" data-tex="\(k\)">\(k\)</span> times gives a denominator with modulus at least <span class="math" data-index="302" data-tex="\((q_j^{1/2}/4)^k\)">\((q_j^{1/2}/4)^k\)</span>. On its support the exponential modulus is at most <span class="math" data-index="303" data-tex="\(e^{2M\log q_j}=q_j^{2M}\)">\(e^{2M\log q_j}=q_j^{2M}\)</span>. This proves (T16) with <span class="math" data-index="304" data-tex="\(4^k\|f^{(k)}\|_1\)">\(4^k\|f^{(k)}\|_1\)</span>. The threshold exists because <span class="math" data-index="305" data-tex="\(\log q/q^{1/2}\to0\)">\(\log q/q^{1/2}\to0\)</span>. Choose an integer <span class="math" data-index="306" data-tex="\(k&gt;4M\)">\(k&gt;4M\)</span> to force uniform decay.
+Thus the selected <span class="math" data-index="307" data-tex="\(u\)">\(u\)</span> profile is zero. The realization theorem produces <span class="math" data-index="308" data-tex="\(w\)">\(w\)</span> with singular support <span class="math" data-index="309" data-tex="\(\{0\}\)">\(\{0\}\)</span> and output hull <span class="math" data-index="310" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Meanwhile <span class="math" data-index="311" data-tex="\(S_u\)">\(S_u\)</span> is the nontrivial vertical segment (T15), so <span class="math" data-index="312" data-tex="\(S_u+S_w=S_u\neq\{0\}\)">\(S_u+S_w=S_u\neq\{0\}\)</span>. Invertibility excludes collapsed profiles; it does not remove the different proper carriers responsible for this failure.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Background on compact support and Fourier transforms; its normalization differs from (T1).</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009. Background on the preceding frequency-selective construction.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. The complete realization and singular-hull arguments are supplied in the full proof above.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A convolution can remove singularities, even when both inputs are singular. Logarithmic Fourier profiles describe which part of an input's singular geometry survives at a prescribed sequence of frequencies. We first realize any one of these profiles as an exact convolution singular hull. We then turn that realization into a criterion for bounding the singularities of an unknown input, and characterize when singular hulls always add.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em> and <em>245B, Notes 9</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The exact preceding proofs are <a href="AN02-L158.html#4-the-hull-recovered-from-all-logarithmic-profiles">Locating singularities through logarithmic Fourier strips</a>, Theorem 4.1, for recovery of the convex singular hull; <a href="AN02-L159.html">Singularities and nonconvex logarithmic carriers</a>, Theorem 1.1, for localization in a closed union; <a href="AN02-L160.html#2-convolution-limits-and-indicators">Convolution and joint frequency carriers</a>, for joint profile sums; <a href="AN02-L161.html#3-one-profile-controls-expanding-logarithmic-neighborhoods">Changing centers in Fourier windows</a>, for a neighborhood controlled by one profile; <a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a>, Theorem 4.1 and Corollary 4.2, for a compact isolated-singularity construction; and <a href="AN02-L163.html">Slow decrease and entire Fourier division</a>, Theorem 1.1, for invertibility. These available proofs, rather than an external reference, supply the mathematical inputs.</p>
+<p>The polynomial-profile argument also uses <a href="AN02-L147.html#gd4-scalar-holomorphic-logarithms-are-proper-psh-and-locally-integrable">Entire logarithms and the approximation of plurisubharmonic functions</a>, for logarithm integrability and zero-set volume, and <a href="AN02-L143.html#hc1-the-precise-alternative-and-compact-comparison">Local compactness and Hartogs bounds</a>, for the full PSH compactness alternative. The finite-jet description of point-supported distributions is proved here.</p>
+<h2 id="1-carriers-and-singular-hulls">1. Carriers and singular hulls</h2>
+<p>For a compact distribution <span class="math" data-index="313" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="314" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="315" data-tex="\(n\geq1\)">\(n\geq1\)</span>, use</p>
+<span class="math math-display" id="eq-1.1" data-index="316" data-tex="\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]">\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]</span>
+<p>A profile is a proper canonical PSH local <span class="math" data-index="317" data-tex="\(L^1\)">\(L^1\)</span> limit along an escaping real sequence, or uniform local collapse to <span class="math" data-index="318" data-tex="\(-\infty\)">\(-\infty\)</span>. Write <span class="math" data-index="319" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span> for the family of their indicators. A proper indicator <span class="math" data-index="320" data-tex="\(h\)">\(h\)</span> is the support function of a nonempty compact convex carrier <span class="math" data-index="321" data-tex="\(C_h\)">\(C_h\)</span>. For the collapsed case set <span class="math" data-index="322" data-tex="\(h=-\infty\)">\(h=-\infty\)</span> and <span class="math" data-index="323" data-tex="\(C_h=\varnothing\)">\(C_h=\varnothing\)</span>.</p>
+<p>Let</p>
+<span class="math math-display" id="eq-1.2" data-index="324" data-tex="\[
+ S_u=\operatorname{conv}(\operatorname{sing\,supp}u).
+ \tag{1.2}
+\]">\[
+ S_u=\operatorname{conv}(\operatorname{sing\,supp}u).
+ \tag{1.2}
+\]</span>
+<p>The empty hull is empty and its support function is <span class="math" data-index="325" data-tex="\(-\infty\)">\(-\infty\)</span>. For compact nonempty convex sets, write <span class="math" data-index="326" data-tex="\(H_K(\eta)=\max_{x\in K}x\cdot\eta\)">\(H_K(\eta)=\max_{x\in K}x\cdot\eta\)</span>. The preceding singular-hull theorem states</p>
+<span class="math math-display" id="eq-1.3" data-index="327" data-tex="\[
+ S_u=\overline{\operatorname{conv}
+              \bigcup_{h\in\mathcal J(u)}C_h}.
+ \tag{1.3}
+\]">\[
+ S_u=\overline{\operatorname{conv}
+              \bigcup_{h\in\mathcal J(u)}C_h}.
+ \tag{1.3}
+\]</span>
+<p>The preceding nonconvex localization theorem supplies the stronger containment</p>
+<span class="math math-display" id="eq-1.4" data-index="328" data-tex="\[
+ \operatorname{sing\,supp}u
+       \subset\overline{\bigcup_{h\in\mathcal J(u)}C_h}.
+ \tag{1.4}
+\]">\[
+ \operatorname{sing\,supp}u
+       \subset\overline{\bigcup_{h\in\mathcal J(u)}C_h}.
+ \tag{1.4}
+\]</span>
+<p>Neither statement says that each carrier consists entirely of singular points. In particular every individual carrier lies in <span class="math" data-index="329" data-tex="\(S_u\)">\(S_u\)</span>, although it may contain smooth points inside that hull.</p>
+<p>The finite joint-profile theorem lets us extract a profile of a second compact distribution on the same subsequence as a prescribed first profile. With two proper profiles, Fourier multiplication and exact indicator additivity give</p>
+<span class="math math-display" id="eq-1.5" data-index="330" data-tex="\[
+ L_{u*w}=L_u+L_w,\qquad C_{u*w}=C_u+C_w.
+ \tag{1.5}
+\]">\[
+ L_{u*w}=L_u+L_w,\qquad C_{u*w}=C_u+C_w.
+ \tag{1.5}
+\]</span>
+<p>Here the carrier notation in the second equality refers to that particular joint profile. A collapsed input makes the convolution profile collapse because the other normalized logarithms have a common upper bound on each parameter compact set.</p>
+<p>We use ordinary Minkowski operations on sets. In particular</p>
+<span class="math math-display" id="eq-1.6" data-index="331" data-tex="\[
+ K-L=K+(-L)=\{x-y:x\in K,\ y\in L\}.
+ \tag{1.6}
+\]">\[
+ K-L=K+(-L)=\{x-y:x\in K,\ y\in L\}.
+ \tag{1.6}
+\]</span>
+<p>This is the difference set, not a set of translations which place all of <span class="math" data-index="332" data-tex="\(L\)">\(L\)</span> inside <span class="math" data-index="333" data-tex="\(K\)">\(K\)</span>. Addition or difference with an empty set is empty.</p>
+<h2 id="2-realizing-one-prescribed-convolution-hull">2. Realizing one prescribed convolution hull</h2>
+<p><strong>Theorem 2.1 (isolated singularity with a prescribed output hull).</strong> Let <span class="math" data-index="334" data-tex="\(u\)">\(u\)</span> be a compact distribution and <span class="math" data-index="335" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span>. For every <span class="math" data-index="336" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a compact continuous <span class="math" data-index="337" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, supported in <span class="math" data-index="338" data-tex="\(\overline B_\varepsilon(0)\)">\(\overline B_\varepsilon(0)\)</span>, such that</p>
+<span class="math math-display" id="eq-2.1" data-index="339" data-tex="\[
+ \operatorname{sing\,supp}w=\{0\},\qquad S_{u*w}=C_h.
+ \tag{2.1}
+\]">\[
+ \operatorname{sing\,supp}w=\{0\},\qquad S_{u*w}=C_h.
+ \tag{2.1}
+\]</span>
+<p>The conclusion includes <span class="math" data-index="340" data-tex="\(h=-\infty\)">\(h=-\infty\)</span>, in which case <span class="math" data-index="341" data-tex="\(u*w\)">\(u*w\)</span> is smooth and the output hull is empty.</p>
+<p><em>Proof for a proper profile.</em> Choose escaping real centers <span class="math" data-index="342" data-tex="\(c_j\)">\(c_j\)</span> with <span class="math" data-index="343" data-tex="\(L_u(\cdot,c_j)\to V\)">\(L_u(\cdot,c_j)\to V\)</span> properly in local <span class="math" data-index="344" data-tex="\(L^1\)">\(L^1\)</span>, and let <span class="math" data-index="345" data-tex="\(h\)">\(h\)</span> be the indicator of <span class="math" data-index="346" data-tex="\(V\)">\(V\)</span>. The expanding-neighborhood theorem gives <span class="math" data-index="347" data-tex="\(r_j\to\infty\)">\(r_j\to\infty\)</span> and</p>
+<span class="math math-display" id="eq-2.2" data-index="348" data-tex="\[
+ E=\bigcup_j B_{\mathbb R^n}(c_j,r_j\log|c_j|)
+ \tag{2.2}
+\]">\[
+ E=\bigcup_j B_{\mathbb R^n}(c_j,r_j\log|c_j|)
+ \tag{2.2}
+\]</span>
+<p>such that, for a finite Fourier order <span class="math" data-index="349" data-tex="\(N\)">\(N\)</span>, every compact parameter set and every positive tolerance eventually have</p>
+<span class="math math-display" id="eq-2.3" data-index="350" data-tex="\[
+ L_u(z,d)\leq N+h(\operatorname{Im}z)+\text{tolerance},
+ \qquad d\in E,\quad |d|\to\infty.
+ \tag{2.3}
+\]">\[
+ L_u(z,d)\leq N+h(\operatorname{Im}z)+\text{tolerance},
+ \qquad d\in E,\quad |d|\to\infty.
+ \tag{2.3}
+\]</span>
+<p>This is a uniform bound on the chosen parameter set, including moving parameter points.</p>
+<p>Apply the complete frequency-selective construction to these exact centers and radii, with physical support radius <span class="math" data-index="351" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. It supplies a continuous compact <span class="math" data-index="352" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, singular exactly at zero, for which</p>
+<span class="math math-display" id="eq-2.4" data-index="353" data-tex="\[
+ L_w(\cdot,d)\longrightarrow-\infty
+       \quad(d\notin E,\ |d|\to\infty),
+ \qquad
+ L_w(\cdot,c_{j_k})\longrightarrow0
+       \quad\text{in local }L^1
+ \tag{2.4}
+\]">\[
+ L_w(\cdot,d)\longrightarrow-\infty
+       \quad(d\notin E,\ |d|\to\infty),
+ \qquad
+ L_w(\cdot,c_{j_k})\longrightarrow0
+       \quad\text{in local }L^1
+ \tag{2.4}
+\]</span>
+<p>on a subsequence of the original centers. The first convergence is uniform on every compact complex parameter set. The construction's support-radius freedom and exact selected-center conclusion are both proved in that earlier chapter.</p>
+<p>On the selected subsequence, the product identity gives <span class="math" data-index="354" data-tex="\(L_{u*w}\to V+0=V\)">\(L_{u*w}\to V+0=V\)</span> properly. Thus <span class="math" data-index="355" data-tex="\(C_h\)">\(C_h\)</span> actually occurs as one output profile carrier.</p>
+<p>We next control every other proper output profile. Suppose <span class="math" data-index="356" data-tex="\(L_{u*w}(\cdot,d_k)\to Q\)">\(L_{u*w}(\cdot,d_k)\to Q\)</span> properly. Infinitely many centers outside <span class="math" data-index="357" data-tex="\(E\)">\(E\)</span> would, by (2.4) and a local common upper bound for <span class="math" data-index="358" data-tex="\(L_u\)">\(L_u\)</span>, give a collapsed further subsequence. That contradicts the proper <span class="math" data-index="359" data-tex="\(L^1\)">\(L^1\)</span> limit <span class="math" data-index="360" data-tex="\(Q\)">\(Q\)</span>. Hence a tail lies in <span class="math" data-index="361" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Extract joint input profiles along a further subsequence. Neither can collapse, since a collapsed input would collapse the product. Denote their proper limits by <span class="math" data-index="362" data-tex="\(U,W\)">\(U,W\)</span>. Passing the continuous upper bound (2.3) to the canonical <span class="math" data-index="363" data-tex="\(L^1\)">\(L^1\)</span> representative gives</p>
+<span class="math math-display" id="eq-2.5" data-index="364" data-tex="\[
+ U(z)\leq N+h(\operatorname{Im}z).
+ \tag{2.5}
+\]">\[
+ U(z)\leq N+h(\operatorname{Im}z).
+ \tag{2.5}
+\]</span>
+<p>For completeness, the almost-everywhere limit after an <span class="math" data-index="365" data-tex="\(L^1\)">\(L^1\)</span> extraction first gives this inequality almost everywhere. Submean inequalities on small balls, followed by shrinking their radii, give it at every point because the right side is continuous. Dividing (2.5) along the indicator's positive dilation and letting its radius tend to infinity yields <span class="math" data-index="366" data-tex="\(h_U\leq h\)">\(h_U\leq h\)</span>, hence <span class="math" data-index="367" data-tex="\(C_U\subset C_h\)">\(C_U\subset C_h\)</span>.</p>
+<p>Every proper profile carrier of <span class="math" data-index="368" data-tex="\(w\)">\(w\)</span> lies in <span class="math" data-index="369" data-tex="\(S_w=\{0\}\)">\(S_w=\{0\}\)</span> by (1.3). It is nonempty, so <span class="math" data-index="370" data-tex="\(C_W=\{0\}\)">\(C_W=\{0\}\)</span>. The exact joint addition theorem gives</p>
+<span class="math math-display" id="eq-2.6" data-index="371" data-tex="\[
+ C_Q=C_U+\{0\}=C_U\subset C_h.
+ \tag{2.6}
+\]">\[
+ C_Q=C_U+\{0\}=C_U\subset C_h.
+ \tag{2.6}
+\]</span>
+<p>All proper output carriers therefore lie in <span class="math" data-index="372" data-tex="\(C_h\)">\(C_h\)</span>, and one equals <span class="math" data-index="373" data-tex="\(C_h\)">\(C_h\)</span>. Taking their closed convex hull in (1.3) proves <span class="math" data-index="374" data-tex="\(S_{u*w}=C_h\)">\(S_{u*w}=C_h\)</span>.</p>
+<p><em>Proof for a collapsed profile.</em> Choose a collapsing sequence for <span class="math" data-index="375" data-tex="\(u\)">\(u\)</span>, its expanding neighborhood <span class="math" data-index="376" data-tex="\(E\)">\(E\)</span>, and the same isolated-singularity construction for <span class="math" data-index="377" data-tex="\(w\)">\(w\)</span>. On escaping centers inside <span class="math" data-index="378" data-tex="\(E\)">\(E\)</span>, <span class="math" data-index="379" data-tex="\(L_u\)">\(L_u\)</span> collapses uniformly locally. Outside <span class="math" data-index="380" data-tex="\(E\)">\(E\)</span>, <span class="math" data-index="381" data-tex="\(L_w\)">\(L_w\)</span> does so. On each fixed parameter compact set the other input has a common upper bound.
+Given any required negative product bound, take the larger of the two frequency thresholds for these regions. The product sum then satisfies that negative bound at every sufficiently large real center, inside or outside <span class="math" data-index="382" data-tex="\(E\)">\(E\)</span>. Consequently all output profiles collapse. The empty-profile Fourier-inversion lemma in the preceding nonconvex localization chapter makes <span class="math" data-index="383" data-tex="\(u*w\)">\(u*w\)</span> smooth. Thus <span class="math" data-index="384" data-tex="\(S_{u*w}=\varnothing=C_h\)">\(S_{u*w}=\varnothing=C_h\)</span>. This includes <span class="math" data-index="385" data-tex="\(u=0\)">\(u=0\)</span>. <span class="math" data-index="386" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2 (translation of the realization).</strong> The distribution <span class="math" data-index="387" data-tex="\(w_x(y)=w(y-x)\)">\(w_x(y)=w(y-x)\)</span> is singular exactly at <span class="math" data-index="388" data-tex="\(x\)">\(x\)</span>, has arbitrarily small support about <span class="math" data-index="389" data-tex="\(x\)">\(x\)</span>, and satisfies</p>
+<span class="math math-display" id="eq-2.7" data-index="390" data-tex="\[
+ S_{u*w_x}=C_h+x.
+ \tag{2.7}
+\]">\[
+ S_{u*w_x}=C_h+x.
+ \tag{2.7}
+\]</span>
+<p>For an empty carrier, its translate remains empty.</p>
+<p><em>Proof.</em> Translation multiplies the transform by <span class="math" data-index="391" data-tex="\(e^{-ix\cdot\zeta}\)">\(e^{-ix\cdot\zeta}\)</span>, so adds <span class="math" data-index="392" data-tex="\(x\cdot\operatorname{Im}z\)">\(x\cdot\operatorname{Im}z\)</span> to each normalized logarithm. It translates the singular support and every proper carrier by <span class="math" data-index="393" data-tex="\(x\)">\(x\)</span>. Convolution commutes with this translation. Apply Theorem 2.1. <span class="math" data-index="394" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-an-exact-criterion-for-bounding-the-unknown-singularities">3. An exact criterion for bounding the unknown singularities</h2>
+<p><strong>Theorem 3.1 (the inverse singular-support criterion).</strong> Fix a compact distribution <span class="math" data-index="395" data-tex="\(u\)">\(u\)</span>, and nonempty compact convex sets <span class="math" data-index="396" data-tex="\(K,K&#x27;\)">\(K,K&#x27;\)</span> with support functions <span class="math" data-index="397" data-tex="\(H,H&#x27;\)">\(H,H&#x27;\)</span>. The following assertions are equivalent:</p>
+<ol>
+<li>For every compact distribution <span class="math" data-index="398" data-tex="\(w\)">\(w\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-3.1" data-index="399" data-tex="\[
+   \operatorname{sing\,supp}(u*w)\subset K
+       \quad\Longrightarrow\quad
+   \operatorname{sing\,supp}w\subset K&#x27;.
+   \tag{3.1}
+   \]">\[
+   \operatorname{sing\,supp}(u*w)\subset K
+       \quad\Longrightarrow\quad
+   \operatorname{sing\,supp}w\subset K&#x27;.
+   \tag{3.1}
+   \]</span>
+<ol start="2">
+<li>For every <span class="math" data-index="400" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span> and every <span class="math" data-index="401" data-tex="\(x\in\mathbb R^n\)">\(x\in\mathbb R^n\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-3.2" data-index="402" data-tex="\[
+   h(\eta)+x\cdot\eta\leq H(\eta)\quad
+       \text{for all }\eta\in\mathbb R^n
+       \quad\Longrightarrow\quad x\in K&#x27;.
+   \tag{3.2}
+   \]">\[
+   h(\eta)+x\cdot\eta\leq H(\eta)\quad
+       \text{for all }\eta\in\mathbb R^n
+       \quad\Longrightarrow\quad x\in K&#x27;.
+   \tag{3.2}
+   \]</span>
+<p>The extended inequality for <span class="math" data-index="403" data-tex="\(h=-\infty\)">\(h=-\infty\)</span> holds for every <span class="math" data-index="404" data-tex="\(x\)">\(x\)</span>. Either equivalent assertion therefore requires <span class="math" data-index="405" data-tex="\(u\)">\(u\)</span> to be invertible.</p>
+<p><em>Proof of necessity.</em> Suppose (3.1). Given <span class="math" data-index="406" data-tex="\(h,x\)">\(h,x\)</span> satisfying the inequalities in (3.2), use the translated realization <span class="math" data-index="407" data-tex="\(w_x\)">\(w_x\)</span> of Corollary 2.2. For proper <span class="math" data-index="408" data-tex="\(h\)">\(h\)</span>, its output hull <span class="math" data-index="409" data-tex="\(C_h+x\)">\(C_h+x\)</span> has support function <span class="math" data-index="410" data-tex="\(h(\eta)+x\cdot\eta\)">\(h(\eta)+x\cdot\eta\)</span>, so is contained in <span class="math" data-index="411" data-tex="\(K\)">\(K\)</span>. Support functions determine compact convex containment by separation, as proved in the preceding support-function chapter. The singular support is contained in its hull, hence lies in <span class="math" data-index="412" data-tex="\(K\)">\(K\)</span>. For collapsed <span class="math" data-index="413" data-tex="\(h\)">\(h\)</span>, the output is smooth, so its empty singular support also lies in <span class="math" data-index="414" data-tex="\(K\)">\(K\)</span>.
+Apply (3.1). The input has singular support exactly <span class="math" data-index="415" data-tex="\(\{x\}\)">\(\{x\}\)</span>, giving <span class="math" data-index="416" data-tex="\(x\in K&#x27;\)">\(x\in K&#x27;\)</span>. Thus (3.2) holds.</p>
+<p><em>Proof of sufficiency.</em> Assume (3.2), and suppose the output singular support lies in <span class="math" data-index="417" data-tex="\(K\)">\(K\)</span>. Take any proper input profile of <span class="math" data-index="418" data-tex="\(w\)">\(w\)</span>, with indicator <span class="math" data-index="419" data-tex="\(h_w\)">\(h_w\)</span> and carrier <span class="math" data-index="420" data-tex="\(C_w\)">\(C_w\)</span>. The finite joint-profile projection theorem supplies an indicator <span class="math" data-index="421" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span> along a further extraction on the same frequency sequence.</p>
+<p>There is no collapsed indicator in <span class="math" data-index="422" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span>: such an indicator would make the premise of (3.2) true for every real <span class="math" data-index="423" data-tex="\(x\)">\(x\)</span>, forcing the compact set <span class="math" data-index="424" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> to contain <span class="math" data-index="425" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, impossible. Thus the joint <span class="math" data-index="426" data-tex="\(u\)">\(u\)</span> profile is proper. Their sum is a proper output profile, whose carrier is contained in the output hull, and that hull is contained in <span class="math" data-index="427" data-tex="\(K\)">\(K\)</span>. Therefore</p>
+<span class="math math-display" id="eq-3.3" data-index="428" data-tex="\[
+ h(\eta)+h_w(\eta)\leq H(\eta)\quad(\eta\in\mathbb R^n).
+ \tag{3.3}
+\]">\[
+ h(\eta)+h_w(\eta)\leq H(\eta)\quad(\eta\in\mathbb R^n).
+ \tag{3.3}
+\]</span>
+<p>For every <span class="math" data-index="429" data-tex="\(x\in C_w\)">\(x\in C_w\)</span>, <span class="math" data-index="430" data-tex="\(x\cdot\eta\leq h_w(\eta)\)">\(x\cdot\eta\leq h_w(\eta)\)</span>. Hence (3.3) gives the premise of (3.2), proving <span class="math" data-index="431" data-tex="\(C_w\subset K&#x27;\)">\(C_w\subset K&#x27;\)</span>.
+All proper profile carriers of <span class="math" data-index="432" data-tex="\(w\)">\(w\)</span> lie in <span class="math" data-index="433" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. Taking their closed convex hull in (1.3), including the empty case, gives <span class="math" data-index="434" data-tex="\(S_w\subset K&#x27;\)">\(S_w\subset K&#x27;\)</span>, so its singular support lies there as required.</p>
+<p>The absence of a collapsed <span class="math" data-index="435" data-tex="\(u\)">\(u\)</span> profile is exactly the first slow-decrease criterion in the preceding entire-division theorem. It proves the asserted invertibility requirement. <span class="math" data-index="436" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The criterion uses every profile of the fixed known input. Replacing their family by its largest singular hull can lose information.</p>
+<h2 id="4-a-sharper-localization-before-convexification">4. A sharper localization before convexification</h2>
+<p>For nonempty compact convex <span class="math" data-index="437" data-tex="\(K\)">\(K\)</span>, define the set of admissible singular-point translations</p>
+<span class="math math-display" id="eq-4.1" data-index="438" data-tex="\[
+ T_K(u)=\{x\in\mathbb R^n:
+       \text{some }h\in\mathcal J(u)
+       \text{ satisfies }h(\eta)+x\cdot\eta\leq H_K(\eta)
+       \text{ for all }\eta\}.
+ \tag{4.1}
+\]">\[
+ T_K(u)=\{x\in\mathbb R^n:
+       \text{some }h\in\mathcal J(u)
+       \text{ satisfies }h(\eta)+x\cdot\eta\leq H_K(\eta)
+       \text{ for all }\eta\}.
+ \tag{4.1}
+\]</span>
+<p>For proper <span class="math" data-index="439" data-tex="\(h\)">\(h\)</span>, the inequality says exactly <span class="math" data-index="440" data-tex="\(C_h+x\subset K\)">\(C_h+x\subset K\)</span>. A collapsed profile makes <span class="math" data-index="441" data-tex="\(T_K(u)=\mathbb R^n\)">\(T_K(u)=\mathbb R^n\)</span>.</p>
+<p><strong>Proposition 4.1 (nonconvex localization).</strong> If <span class="math" data-index="442" data-tex="\(\operatorname{sing\,supp}(u*w)\subset K\)">\(\operatorname{sing\,supp}(u*w)\subset K\)</span>, then</p>
+<span class="math math-display" id="eq-4.2" data-index="443" data-tex="\[
+ \operatorname{sing\,supp}w\subset\overline{T_K(u)}.
+ \tag{4.2}
+\]">\[
+ \operatorname{sing\,supp}w\subset\overline{T_K(u)}.
+ \tag{4.2}
+\]</span>
+<p>The closure is taken without first forming a convex hull.</p>
+<p><em>Proof.</em> If <span class="math" data-index="444" data-tex="\(u\)">\(u\)</span> has a collapsed profile, the right side is all real space and the assertion follows. Otherwise take any proper <span class="math" data-index="445" data-tex="\(w\)">\(w\)</span> carrier <span class="math" data-index="446" data-tex="\(C_w\)">\(C_w\)</span>, and extract its joint proper <span class="math" data-index="447" data-tex="\(u\)">\(u\)</span> profile as in the proof of Theorem 3.1. Their output carrier lies in <span class="math" data-index="448" data-tex="\(K\)">\(K\)</span>, giving (3.3). For every <span class="math" data-index="449" data-tex="\(x\in C_w\)">\(x\in C_w\)</span>, <span class="math" data-index="450" data-tex="\(h+x\cdot\eta\leq H_K\)">\(h+x\cdot\eta\leq H_K\)</span>, so <span class="math" data-index="451" data-tex="\(x\in T_K(u)\)">\(x\in T_K(u)\)</span>.
+Thus the union of all proper <span class="math" data-index="452" data-tex="\(w\)">\(w\)</span> carriers lies in <span class="math" data-index="453" data-tex="\(T_K(u)\)">\(T_K(u)\)</span>. Apply the actual preceding closed-union localization (1.4), not just its convex-hull version (1.3), and take closures. This proves (4.2). <span class="math" data-index="454" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This stronger conclusion also explains the convex criterion. If every admissible translation lies in the closed convex <span class="math" data-index="455" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>, then its closure lies there and (4.2) gives (3.1).</p>
+<h2 id="5-when-singular-hulls-always-add">5. When singular hulls always add</h2>
+<p><strong>Theorem 5.1 (universal singular-hull addition).</strong> For a compact distribution <span class="math" data-index="456" data-tex="\(u\)">\(u\)</span>, the identity</p>
+<span class="math math-display" id="eq-5.1" data-index="457" data-tex="\[
+ S_{u*w}=S_u+S_w\quad\text{for every compact distribution }w
+ \tag{5.1}
+\]">\[
+ S_{u*w}=S_u+S_w\quad\text{for every compact distribution }w
+ \tag{5.1}
+\]</span>
+<p>holds if and only if</p>
+<span class="math math-display" id="eq-5.2" data-index="458" data-tex="\[
+ \mathcal J(u)=\{H_{S_u}\}.
+ \tag{5.2}
+\]">\[
+ \mathcal J(u)=\{H_{S_u}\}.
+ \tag{5.2}
+\]</span>
+<p>For smooth <span class="math" data-index="459" data-tex="\(u\)">\(u\)</span>, the support function here is <span class="math" data-index="460" data-tex="\(-\infty\)">\(-\infty\)</span> and the sole indicator is collapsed. For nonsmooth <span class="math" data-index="461" data-tex="\(u\)">\(u\)</span>, the sole indicator is a proper support function.</p>
+<p><em>Proof of necessity.</em> For each <span class="math" data-index="462" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span>, realize it by Theorem 2.1 with <span class="math" data-index="463" data-tex="\(S_w=\{0\}\)">\(S_w=\{0\}\)</span>. Then (5.1) gives</p>
+<span class="math math-display" id="eq-5.3" data-index="464" data-tex="\[
+ C_h=S_{u*w}=S_u+\{0\}=S_u.
+ \tag{5.3}
+\]">\[
+ C_h=S_{u*w}=S_u+\{0\}=S_u.
+ \tag{5.3}
+\]</span>
+<p>For proper <span class="math" data-index="465" data-tex="\(h\)">\(h\)</span>, equality of carriers gives <span class="math" data-index="466" data-tex="\(h=H_{S_u}\)">\(h=H_{S_u}\)</span>. For collapsed <span class="math" data-index="467" data-tex="\(h\)">\(h\)</span>, (5.3) makes <span class="math" data-index="468" data-tex="\(S_u\)">\(S_u\)</span> empty, so <span class="math" data-index="469" data-tex="\(u\)">\(u\)</span> is smooth.
+If <span class="math" data-index="470" data-tex="\(u\)">\(u\)</span> is smooth, the preceding full logarithmic-strip theorem makes every escaping profile collapse, and <span class="math" data-index="471" data-tex="\(\mathcal J(u)=\{-\infty\}\)">\(\mathcal J(u)=\{-\infty\}\)</span>. Conversely the profile family is nonempty for any compact distribution, by the compactness alternative on any escaping real sequence. Thus (5.3) yields exactly the singleton family (5.2) in all cases.</p>
+<p><em>Proof of sufficiency in the empty case.</em> If <span class="math" data-index="472" data-tex="\(S_u=\varnothing\)">\(S_u=\varnothing\)</span>, <span class="math" data-index="473" data-tex="\(u\)">\(u\)</span> is smooth. The convolution with any compact distribution is smooth: differentiate the compact smooth factor in the distribution pairing, with fixed cutoffs on the other compact support. All derivatives pass through that pairing. Hence both sides of (5.1) are empty. This includes <span class="math" data-index="474" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p><em>Proof of sufficiency in the nonempty case.</em> Suppose <span class="math" data-index="475" data-tex="\(S_u\neq\varnothing\)">\(S_u\neq\varnothing\)</span> and (5.2). Every <span class="math" data-index="476" data-tex="\(u\)">\(u\)</span> profile is proper, with carrier exactly <span class="math" data-index="477" data-tex="\(S_u\)">\(S_u\)</span>. Take any proper <span class="math" data-index="478" data-tex="\(w\)">\(w\)</span> profile carrier <span class="math" data-index="479" data-tex="\(C_w\)">\(C_w\)</span>; the finite joint projection theorem realizes it jointly with a <span class="math" data-index="480" data-tex="\(u\)">\(u\)</span> profile, so <span class="math" data-index="481" data-tex="\(S_u+C_w\)">\(S_u+C_w\)</span> is an output profile carrier. Conversely every proper output profile has a joint extraction of its inputs. Neither input can collapse, and its carrier is therefore <span class="math" data-index="482" data-tex="\(S_u+C_w\)">\(S_u+C_w\)</span> for some proper <span class="math" data-index="483" data-tex="\(w\)">\(w\)</span> carrier. Collapsed <span class="math" data-index="484" data-tex="\(w\)">\(w\)</span> profiles only give empty output carriers.</p>
+<p>If <span class="math" data-index="485" data-tex="\(w\)">\(w\)</span> has no proper profile, (1.3) makes it smooth and both sides of (5.1) are empty. Otherwise their support functions satisfy</p>
+<span class="math math-display" id="eq-5.4" data-index="486" data-tex="\[
+ \begin{split}
+ H_{S_{u*w}}(\eta)
+ &amp;=\sup_{h_w\in\mathcal J(w),\ h_w\neq-\infty}
+                      \bigl(H_{S_u}(\eta)+h_w(\eta)\bigr)\\
+ &amp;=H_{S_u}(\eta)+H_{S_w}(\eta).
+ \end{split}
+ \tag{5.4}
+\]">\[
+ \begin{split}
+ H_{S_{u*w}}(\eta)
+ &amp;=\sup_{h_w\in\mathcal J(w),\ h_w\neq-\infty}
+                      \bigl(H_{S_u}(\eta)+h_w(\eta)\bigr)\\
+ &amp;=H_{S_u}(\eta)+H_{S_w}(\eta).
+ \end{split}
+ \tag{5.4}
+\]</span>
+<p>The first and last equalities use (1.3): closing and taking a convex hull do not alter the supremum of a continuous linear functional. The final expression is the support function of the compact convex Minkowski sum. Equality of support functions proves (5.1). <span class="math" data-index="487" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For nonsmooth <span class="math" data-index="488" data-tex="\(u\)">\(u\)</span>, singleton-indicator addition in particular implies invertibility. Invertibility alone excludes collapsed profiles but allows several different proper carriers.</p>
+<h2 id="6-a-uniform-difference-set-bound-for-invertible-inputs">6. A uniform difference-set bound for invertible inputs</h2>
+<p><strong>Corollary 6.1 (singular-hull subtraction bound).</strong> If <span class="math" data-index="489" data-tex="\(u\)">\(u\)</span> is invertible, then every compact distribution <span class="math" data-index="490" data-tex="\(w\)">\(w\)</span> satisfies</p>
+<span class="math math-display" id="eq-6.1" data-index="491" data-tex="\[
+ S_w\subset S_{u*w}-S_u.
+ \tag{6.1}
+\]">\[
+ S_w\subset S_{u*w}-S_u.
+ \tag{6.1}
+\]</span>
+<p>The subtraction is the Minkowski difference set (1.6).</p>
+<p><em>Proof.</em> An invertible compact distribution is not smooth: a compact smooth transform collapses on every escaping real sequence, violating slow decrease. Thus <span class="math" data-index="492" data-tex="\(S_u\)">\(S_u\)</span> is nonempty.
+If <span class="math" data-index="493" data-tex="\(u*w\)">\(u*w\)</span> is smooth, the smoothing characterization in the preceding frequency-selective chapter implies <span class="math" data-index="494" data-tex="\(w\)">\(w\)</span> is smooth, since otherwise <span class="math" data-index="495" data-tex="\(u\)">\(u\)</span> would have a collapsed profile. Both sides of (6.1) are then empty.</p>
+<p>Assume now that <span class="math" data-index="496" data-tex="\(K=S_{u*w}\)">\(K=S_{u*w}\)</span> is nonempty, and set <span class="math" data-index="497" data-tex="\(K&#x27;=K-S_u\)">\(K&#x27;=K-S_u\)</span>. These are nonempty compact convex sets. Every <span class="math" data-index="498" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span> is proper and <span class="math" data-index="499" data-tex="\(C_h\subset S_u\)">\(C_h\subset S_u\)</span>. If a real <span class="math" data-index="500" data-tex="\(x\)">\(x\)</span> satisfies <span class="math" data-index="501" data-tex="\(h(\eta)+x\cdot\eta\leq H_K(\eta)\)">\(h(\eta)+x\cdot\eta\leq H_K(\eta)\)</span> for all <span class="math" data-index="502" data-tex="\(\eta\)">\(\eta\)</span>, then</p>
+<span class="math math-display" id="eq-6.2" data-index="503" data-tex="\[
+ \begin{split}
+ x\cdot\eta
+ &amp;\leq H_K(\eta)-h(\eta)\\
+ &amp;\leq H_K(\eta)+h(-\eta)\\
+ &amp;\leq H_K(\eta)+H_{S_u}(-\eta)
+   =H_{K-S_u}(\eta).
+ \end{split}
+ \tag{6.2}
+\]">\[
+ \begin{split}
+ x\cdot\eta
+ &amp;\leq H_K(\eta)-h(\eta)\\
+ &amp;\leq H_K(\eta)+h(-\eta)\\
+ &amp;\leq H_K(\eta)+H_{S_u}(-\eta)
+   =H_{K-S_u}(\eta).
+ \end{split}
+ \tag{6.2}
+\]</span>
+<p>The middle inequality uses <span class="math" data-index="504" data-tex="\(h(\eta)+h(-\eta)\geq0\)">\(h(\eta)+h(-\eta)\geq0\)</span>: pick any point of the nonempty carrier, evaluate it in the two opposite directions, and add. The last inequality uses <span class="math" data-index="505" data-tex="\(C_h\subset S_u\)">\(C_h\subset S_u\)</span>. Support-function separation gives <span class="math" data-index="506" data-tex="\(x\in K&#x27;\)">\(x\in K&#x27;\)</span>.
+Thus the geometric criterion of Theorem 3.1 holds for <span class="math" data-index="507" data-tex="\(K,K&#x27;\)">\(K,K&#x27;\)</span>. It places <span class="math" data-index="508" data-tex="\(\operatorname{sing\,supp}w\)">\(\operatorname{sing\,supp}w\)</span> in <span class="math" data-index="509" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>, and convexity of <span class="math" data-index="510" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> places its hull there too. This proves (6.1). <span class="math" data-index="511" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No sign restriction on <span class="math" data-index="512" data-tex="\(h(\eta)\)">\(h(\eta)\)</span> is used. Individual support values may be negative; only the sum of the opposite values is nonnegative.</p>
+<h2 id="7-polynomial-symbols-concentrated-at-one-point">7. Polynomial symbols concentrated at one point</h2>
+<p><strong>Proposition 7.1 (all normalized polynomial profiles are constant).</strong> Let <span class="math" data-index="513" data-tex="\(P\)">\(P\)</span> be a nonzero polynomial on <span class="math" data-index="514" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> of degree <span class="math" data-index="515" data-tex="\(N\)">\(N\)</span>, and let <span class="math" data-index="516" data-tex="\(u=P(-i\partial)\delta_0\)">\(u=P(-i\partial)\delta_0\)</span>, so that <span class="math" data-index="517" data-tex="\(F_u=P\)">\(F_u=P\)</span>. Every proper logarithmic profile is a constant <span class="math" data-index="518" data-tex="\(\tau\in[0,N]\)">\(\tau\in[0,N]\)</span>. Every escaping real sequence has a proper extracted profile, so there is no collapsed profile. All its indicators equal zero and all its carriers equal <span class="math" data-index="519" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+<p>The assertion is that all occurring constants lie in <span class="math" data-index="520" data-tex="\([0,N]\)">\([0,N]\)</span>, not that every value in that interval occurs for each polynomial.</p>
+<p><em>Proof.</em> For <span class="math" data-index="521" data-tex="\(q=|c|&gt;2\)">\(q=|c|&gt;2\)</span>, Taylor expansion gives</p>
+<span class="math math-display" id="eq-7.1" data-index="522" data-tex="\[
+ P(c+z\log q)=\sum_{|\alpha|\leq N}b_\alpha(c)z^\alpha,\qquad
+ b_\alpha(c)=\frac{\partial^\alpha P(c)}{\alpha!}(\log q)^{|\alpha|}.
+ \tag{7.1}
+\]">\[
+ P(c+z\log q)=\sum_{|\alpha|\leq N}b_\alpha(c)z^\alpha,\qquad
+ b_\alpha(c)=\frac{\partial^\alpha P(c)}{\alpha!}(\log q)^{|\alpha|}.
+ \tag{7.1}
+\]</span>
+<p>Let <span class="math" data-index="523" data-tex="\(a(c)=\max_{|\alpha|\leq N}|b_\alpha(c)|\)">\(a(c)=\max_{|\alpha|\leq N}|b_\alpha(c)|\)</span>, and put <span class="math" data-index="524" data-tex="\(p_c(z)=P(c+z\log q)/a(c)\)">\(p_c(z)=P(c+z\log q)/a(c)\)</span>. At least one degree-<span class="math" data-index="525" data-tex="\(N\)">\(N\)</span> coefficient of <span class="math" data-index="526" data-tex="\(P\)">\(P\)</span> is nonzero, so its corresponding <span class="math" data-index="527" data-tex="\(\partial^\alpha P/\alpha!\)">\(\partial^\alpha P/\alpha!\)</span> is a fixed nonzero constant. Thus <span class="math" data-index="528" data-tex="\(a(c)&gt;0\)">\(a(c)&gt;0\)</span>, and for fixed positive constants,</p>
+<span class="math math-display" id="eq-7.2" data-index="529" data-tex="\[
+ C_1(\log q)^N\leq a(c)\leq C_2(1+q)^N.
+ \tag{7.2}
+\]">\[
+ C_1(\log q)^N\leq a(c)\leq C_2(1+q)^N.
+ \tag{7.2}
+\]</span>
+<p>The upper bound follows from <span class="math" data-index="530" data-tex="\(|\partial^\alpha P(c)|\leq C_\alpha(1+q)^{N-|\alpha|}\)">\(|\partial^\alpha P(c)|\leq C_\alpha(1+q)^{N-|\alpha|}\)</span> and <span class="math" data-index="531" data-tex="\(\log q\leq1+q\)">\(\log q\leq1+q\)</span>. The same formulas apply when <span class="math" data-index="532" data-tex="\(N=0\)">\(N=0\)</span>.
+Every coefficient of <span class="math" data-index="533" data-tex="\(p_c\)">\(p_c\)</span> has modulus at most one and their maximum modulus is one.</p>
+<p>Given any escaping sequence, finite-dimensional coefficient compactness supplies a subsequence <span class="math" data-index="534" data-tex="\(p_{c_j}\to p\)">\(p_{c_j}\to p\)</span> locally uniformly, where <span class="math" data-index="535" data-tex="\(p\)">\(p\)</span> is a nonzero polynomial: the maximum coefficient modulus remains one. By (7.2), after another extraction,</p>
+<span class="math math-display" id="eq-7.3" data-index="536" data-tex="\[
+ \frac{\log a(c_j)}{\log|c_j|}\longrightarrow\tau\in[0,N].
+ \tag{7.3}
+\]">\[
+ \frac{\log a(c_j)}{\log|c_j|}\longrightarrow\tau\in[0,N].
+ \tag{7.3}
+\]</span>
+<p>Indeed the lower bound tends to zero after taking this logarithmic ratio, and the upper bound tends to <span class="math" data-index="537" data-tex="\(N\)">\(N\)</span>.</p>
+<p>We justify the needed logarithm convergence. The <span class="math" data-index="538" data-tex="\(\log|p_{c_j}|\)">\(\log|p_{c_j}|\)</span> form a locally uniformly upper-bounded PSH family. At a point where <span class="math" data-index="539" data-tex="\(p\neq0\)">\(p\neq0\)</span>, their values converge to the finite <span class="math" data-index="540" data-tex="\(\log|p|\)">\(\log|p|\)</span>, so uniform local collapse is impossible. Every PSH compactness extraction has a proper local <span class="math" data-index="541" data-tex="\(L^1\)">\(L^1\)</span> further limit. On the open set where <span class="math" data-index="542" data-tex="\(p\neq0\)">\(p\neq0\)</span>, uniform polynomial convergence implies local uniform convergence of these logarithms. Any proper <span class="math" data-index="543" data-tex="\(L^1\)">\(L^1\)</span> limit therefore equals <span class="math" data-index="544" data-tex="\(\log|p|\)">\(\log|p|\)</span> there. The zero set of the nonzero polynomial has real volume zero, by the precise holomorphic-logarithm theorem. The two functions consequently agree almost everywhere.
+All possible proper <span class="math" data-index="545" data-tex="\(L^1\)">\(L^1\)</span> extractions have this same limit. If convergence failed on one compact observation region, a subsequence whose <span class="math" data-index="546" data-tex="\(L^1\)">\(L^1\)</span> distance stayed positive would have a further proper extraction with that limit, a contradiction. Hence</p>
+<span class="math math-display" id="eq-7.4" data-index="547" data-tex="\[
+ \log|p_{c_j}|\longrightarrow\log|p|
+                  \quad\text{in local }L^1.
+ \tag{7.4}
+\]">\[
+ \log|p_{c_j}|\longrightarrow\log|p|
+                  \quad\text{in local }L^1.
+ \tag{7.4}
+\]</span>
+<p>In particular these logarithms have bounded <span class="math" data-index="548" data-tex="\(L^1\)">\(L^1\)</span> norms on compact sets. Since <span class="math" data-index="549" data-tex="\(\log|c_j|\to\infty\)">\(\log|c_j|\to\infty\)</span>,</p>
+<span class="math math-display" id="eq-7.5" data-index="550" data-tex="\[
+ L_u(z,c_j)
+ =\frac{\log a(c_j)}{\log|c_j|}
+       +\frac{\log|p_{c_j}(z)|}{\log|c_j|}
+ \longrightarrow\tau
+       \quad\text{in local }L^1.
+ \tag{7.5}
+\]">\[
+ L_u(z,c_j)
+ =\frac{\log a(c_j)}{\log|c_j|}
+       +\frac{\log|p_{c_j}(z)|}{\log|c_j|}
+ \longrightarrow\tau
+       \quad\text{in local }L^1.
+ \tag{7.5}
+\]</span>
+<p>This produces a proper constant extraction from every escaping sequence and rules out collapse.
+If a sequence already has a specified proper profile, applying the same coefficient and scalar extractions to it identifies that profile with a constant in <span class="math" data-index="551" data-tex="\([0,N]\)">\([0,N]\)</span>. The constant's directional indicator is zero, whose unique nonempty compact convex carrier is <span class="math" data-index="552" data-tex="\(\{0\}\)">\(\{0\}\)</span>. <span class="math" data-index="553" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.2 (point support is a finite jet).</strong> A distribution supported at zero is a finite linear combination of derivatives of <span class="math" data-index="554" data-tex="\(\delta_0\)">\(\delta_0\)</span>. For a nonzero such distribution, its Fourier polynomial's degree equals its order.</p>
+<p><em>Proof.</em> Fix a smooth compact cutoff <span class="math" data-index="555" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero. On a fixed compact neighborhood of its support, continuity of the distribution <span class="math" data-index="556" data-tex="\(T\)">\(T\)</span> gives an integer <span class="math" data-index="557" data-tex="\(m\)">\(m\)</span> and constant <span class="math" data-index="558" data-tex="\(C\)">\(C\)</span> with</p>
+<span class="math math-display" id="eq-7.6" data-index="559" data-tex="\[
+ |T(\psi)|\leq C\max_{|\alpha|\leq m}\|\partial^\alpha\psi\|_\infty
+ \tag{7.6}
+\]">\[
+ |T(\psi)|\leq C\max_{|\alpha|\leq m}\|\partial^\alpha\psi\|_\infty
+ \tag{7.6}
+\]</span>
+<p>for test functions supported there. Indeed a continuous linear functional on the test-function space restricted to that compact set is bounded on a neighborhood defined by finitely many derivative seminorms; take their largest order and scale the function.</p>
+<p>If all derivatives of <span class="math" data-index="560" data-tex="\(\phi\)">\(\phi\)</span> through order <span class="math" data-index="561" data-tex="\(m\)">\(m\)</span> vanish at zero, Taylor's formula with a continuous highest derivative gives
+<span class="math" data-index="562" data-tex="\(\partial^\beta\phi(x)=o(|x|^{m-|\beta|})\)">\(\partial^\beta\phi(x)=o(|x|^{m-|\beta|})\)</span> for <span class="math" data-index="563" data-tex="\(|\beta|\leq m\)">\(|\beta|\leq m\)</span>. Put <span class="math" data-index="564" data-tex="\(\chi_\varepsilon(x)=\chi(x/\varepsilon)\)">\(\chi_\varepsilon(x)=\chi(x/\varepsilon)\)</span>. Since the difference vanishes near the distribution's support, <span class="math" data-index="565" data-tex="\(T(\phi)=T(\chi_\varepsilon\phi)\)">\(T(\phi)=T(\chi_\varepsilon\phi)\)</span>. Leibniz's rule gives, for <span class="math" data-index="566" data-tex="\(|\alpha|\leq m\)">\(|\alpha|\leq m\)</span>, each summand</p>
+<span class="math math-display" id="eq-7.7" data-index="567" data-tex="\[
+ \varepsilon^{-|\gamma|}
+ (\partial^\gamma\chi)(x/\varepsilon)
+ (\partial^{\alpha-\gamma}\phi)(x)
+       =o(\varepsilon^{m-|\alpha|})
+ \tag{7.7}
+\]">\[
+ \varepsilon^{-|\gamma|}
+ (\partial^\gamma\chi)(x/\varepsilon)
+ (\partial^{\alpha-\gamma}\phi)(x)
+       =o(\varepsilon^{m-|\alpha|})
+ \tag{7.7}
+\]</span>
+<p>uniformly on the shrinking cutoff support. The finite sum is <span class="math" data-index="568" data-tex="\(o(1)\)">\(o(1)\)</span>. The estimate (7.6) therefore gives <span class="math" data-index="569" data-tex="\(T(\phi)=0\)">\(T(\phi)=0\)</span>.</p>
+<p>Subtract from any test function its degree-<span class="math" data-index="570" data-tex="\(m\)">\(m\)</span> Taylor polynomial times the fixed cutoff. The remainder has all these jets zero. Thus</p>
+<span class="math math-display" id="eq-7.8" data-index="571" data-tex="\[
+ T(\phi)=\sum_{|\alpha|\leq m}
+       T\!\left(\chi\,\frac{x^\alpha}{\alpha!}\right)
+                  \partial^\alpha\phi(0).
+ \tag{7.8}
+\]">\[
+ T(\phi)=\sum_{|\alpha|\leq m}
+       T\!\left(\chi\,\frac{x^\alpha}{\alpha!}\right)
+                  \partial^\alpha\phi(0).
+ \tag{7.8}
+\]</span>
+<p>This is a finite combination of <span class="math" data-index="572" data-tex="\(\partial^\alpha\delta_0\)">\(\partial^\alpha\delta_0\)</span>, whose action is <span class="math" data-index="573" data-tex="\((-1)^{|\alpha|}\partial^\alpha\phi(0)\)">\((-1)^{|\alpha|}\partial^\alpha\phi(0)\)</span>. Its Fourier transform is a polynomial, and it is nonzero if <span class="math" data-index="574" data-tex="\(T\neq0\)">\(T\neq0\)</span>: the cutoff monomials independently prescribe the finite jets.</p>
+<p>Let <span class="math" data-index="575" data-tex="\(N\)">\(N\)</span> be the largest degree of a nonzero coefficient in that representation. Its action is bounded by derivative seminorms through order <span class="math" data-index="576" data-tex="\(N\)">\(N\)</span>, so its order is at most <span class="math" data-index="577" data-tex="\(N\)">\(N\)</span>. If <span class="math" data-index="578" data-tex="\(N\geq1\)">\(N\geq1\)</span>, choose a cutoff monomial <span class="math" data-index="579" data-tex="\(\phi\)">\(\phi\)</span> whose degree-<span class="math" data-index="580" data-tex="\(N\)">\(N\)</span> jet pairs nontrivially with the top-order coefficients and whose lower jets vanish. For
+<span class="math" data-index="581" data-tex="\(\phi_\varepsilon(x)=\varepsilon^N\phi(x/\varepsilon)\)">\(\phi_\varepsilon(x)=\varepsilon^N\phi(x/\varepsilon)\)</span>, its value under <span class="math" data-index="582" data-tex="\(T\)">\(T\)</span> is a fixed nonzero constant, while every derivative seminorm through order <span class="math" data-index="583" data-tex="\(N-1\)">\(N-1\)</span> tends to zero. No estimate of order <span class="math" data-index="584" data-tex="\(N-1\)">\(N-1\)</span> is possible. If <span class="math" data-index="585" data-tex="\(N=0\)">\(N=0\)</span>, the nonzero distribution is a multiple of <span class="math" data-index="586" data-tex="\(\delta_0\)">\(\delta_0\)</span>, of order zero. This proves the order assertion. <span class="math" data-index="587" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 7.3 (point-supported polynomial operators).</strong> A nonzero distribution supported at one point <span class="math" data-index="588" data-tex="\(x_0\)">\(x_0\)</span> is invertible, has exactly the indicator <span class="math" data-index="589" data-tex="\(x_0\cdot\eta\)">\(x_0\cdot\eta\)</span>, and satisfies</p>
+<span class="math math-display" id="eq-7.9" data-index="590" data-tex="\[
+ S_{u*w}=\{x_0\}+S_w
+       \quad\text{for every compact distribution }w.
+ \tag{7.9}
+\]">\[
+ S_{u*w}=\{x_0\}+S_w
+       \quad\text{for every compact distribution }w.
+ \tag{7.9}
+\]</span>
+<p><em>Proof.</em> Translate the point-supported distribution to zero and apply Lemma 7.2. It is a nonzero polynomial differential operator on <span class="math" data-index="591" data-tex="\(\delta_{x_0}\)">\(\delta_{x_0}\)</span>. Translation adds <span class="math" data-index="592" data-tex="\(x_0\cdot\operatorname{Im}z\)">\(x_0\cdot\operatorname{Im}z\)</span> to Proposition 7.1's constant profiles, so every indicator is <span class="math" data-index="593" data-tex="\(x_0\cdot\eta\)">\(x_0\cdot\eta\)</span>. There is no collapsed profile; the slow-decrease theorem gives invertibility. Its singular hull is <span class="math" data-index="594" data-tex="\(\{x_0\}\)">\(\{x_0\}\)</span>. Theorem 5.1 gives (7.9). <span class="math" data-index="595" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This concerns the singular hull. It does not assert pointwise equality of the two singular-support sets.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Background on support and entire Fourier transforms; its normalization differs from (1.1).</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009. Background on the isolated-singularity construction in the preceding lesson.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983. Compact distributions, polynomial symbols and singular support.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. Convolution profiles and singular-hull bounds. The realization, inverse criterion, nonconvex localization, universal addition and polynomial profile proofs are supplied above.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/recovering-singularities-from-convolution-profiles.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L164/singular-hull-realization-formal.md" download>singular-hull-realization-formal.md</a></li><li><a href="reproduce/L164/singular-hull-realization-learner.md" download>singular-hull-realization-learner.md</a></li><li><a href="reproduce/L164/make_figures207.py" download>make_figures207.py</a></li><li><span class="unlinked">check_numerics207.py</span></li><li><a href="reproduce/L164/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L164/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L164/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L164/figures/geometry207.json" download>figures/geometry207.json</a></li><li><a href="reproduce/L164/figures/admissible-translations-and-difference-sets.png" download>figures/admissible-translations-and-difference-sets.png</a></li><li><a href="reproduce/L164/figures/admissible-translations-and-difference-sets.svg" download>figures/admissible-translations-and-difference-sets.svg</a></li><li><a href="reproduce/L164/figures/invertibility-without-universal-hull-addition.png" download>figures/invertibility-without-universal-hull-addition.png</a></li><li><a href="reproduce/L164/figures/invertibility-without-universal-hull-addition.svg" download>figures/invertibility-without-universal-hull-addition.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

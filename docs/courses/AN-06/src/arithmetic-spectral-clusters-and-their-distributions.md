@@ -22,6 +22,8 @@ The integral uses symplectic volume. We assume \(\chi_\Pi=\mathrm{Id}\). Startin
 
 ## 1. An integer polynomial cannot approach the wrong lattice
 
+The integer-polynomial observation is Hörmander [H4, Lemma 29.2.3].
+
 **Lemma 1.1.** If a real polynomial \(g\) satisfies
 \[
 e^{2\pi i g(k)}\longrightarrow1\qquad(k\longrightarrow+\infty,\ k\in\mathbb Z),
@@ -84,6 +86,8 @@ The operator \(A\) is compact and normal on \(L^2\). It is diagonal in the smoot
 <a id="clusters-logarithmic-correction"></a>
 
 ## 3. A commuting correction gives an exact arithmetic spectrum
+
+The commuting logarithmic correction is Hörmander [H4, Lemma 29.2.1].
 
 **Theorem 3.1.** Under (5), there is a bounded self-adjoint
 \(Q\in\Psi^{-1}_{\mathrm{cl}}\), commuting with \(P\), such that
@@ -187,6 +191,8 @@ Choose \(k_0\) so that these windows are disjoint, since their widths tend to ze
 
 Assume now that \(\Pi\) is the common minimal full-covector period. The principal and subprincipal symbols of \(L\) are still \(p,c\). Write
 \(\mu(k)=\dim V_k\).
+
+The eventual polynomial multiplicity is Hörmander [H4, Theorem 29.2.2].
 
 **Theorem 4.1.** There is a real integer-valued polynomial \(v_0\), of degree \(n-1\), such that \(\mu(k)=v_0(k)\) for every sufficiently large positive integer. Its first two coefficients are
 \[
@@ -343,6 +349,8 @@ In those coordinates invariance makes the pulled-back density \(dt\,d\tau(y)\), 
 
 <a id="clusters-real-law"></a>
 
+The blockwise symbol law is Hörmander [H4, Theorem 29.2.4].
+
 **Theorem 5.1.** For every continuous real or complex function \(f\) on \(\mathbb R\),
 \[
 \frac1{\mu(k)}\sum_{j=1}^{\mu(k)}f(b_{k,j})
@@ -449,6 +457,8 @@ The coefficient diagram follows the exact two leading Newton coefficients in Cor
 <a id="clusters-internal-positions"></a>
 
 ## 6. The positions within a cluster
+
+The internal cluster law and its successive finer scales are described in Hörmander [H4, Theorem 29.2.5 and (29.2.8)–(29.2.9)].
 
 Return to \(P=L-Q\) and to its cluster in \(\mathcal W_k\). List its eigenvalues as \(\lambda_{k,j}\), with multiplicities. The operator
 \[
@@ -655,3 +665,4 @@ The first scaled deviation is \(d+e/(hk)\), so its limiting law is \(\delta_d\).
 - [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, author edition dated April 25, 2012. [Freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), §5.13 and §§11.3–11.4. These sections discuss the geometric line, traces and periods; equation (18) uses the classical spectral-density expansion.
 - [Z] Steve Zelditch, “Fine structure of Zoll spectra,” *Journal of Functional Analysis* 143 (1997), 415–460. [Elsevier open archive](https://doi.org/10.1006/jfan.1996.2981), §0 and §4, Proposition 4.9. 
 - [I] Victor Ivrii, “100 years of Weyl's law,” *Bulletin of Mathematical Sciences* 6 (2016), 379–452. [Published article](https://link.springer.com/article/10.1007/s13373-016-0089-y), §2.1.6; [arXiv version](https://arxiv.org/abs/1608.03963v2).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Lemmas 29.2.1 and 29.2.3, Theorems 29.2.2, 29.2.4–29.2.5, and (29.2.8)–(29.2.9), pp. 264–268. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

@@ -1,6 +1,6 @@
 # Hom complexes, internal derived Hom and Ext sheaves
 
-*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the course notice.*
+*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original text: public domain (CC0). Authorship and sources are listed in the course notice.*
 
 The tensor product combines two inputs, whereas internal Hom records maps from one input to another as an object on the space. Derived internal Hom must detect extensions as well as ordinary maps. Its degree-zero global cohomology recovers maps in the derived category; its other cohomology sheaves record local extensions. These statements involve derived sections, which cannot generally be replaced by ordinary sections of a cohomology sheaf.
 
@@ -8,7 +8,7 @@ The prerequisites are Derived pullback and pushforward, Proposition 3.2 and Theo
 
 Throughout, \(\mathcal O=\mathcal O_X\) is a sheaf of commutative unital rings on an arbitrary topological space. Complexes are cohomologically indexed and may be unbounded in both directions. Tensor totalization uses sums, Hom totalization uses products, and a cone triangle ends in the negative projection. Write \(\mathsf H(A,B)\) for the sheaf Hom complex, reserving \(\operatorname{Hom}\) for a group of maps.
 
-The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Hom complexes”, “Internal hom”, “Ext sheaves” and “Global derived hom”, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). Composition is natural in its outer variables and dinatural in the repeated middle variable; Section 4 proves the precise identities. Source attribution and the licence for adapted passages appear in the course notice.
+The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Hom complexes”, “Internal hom”, “Ext sheaves” and “Global derived hom”, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). Composition is natural in its outer variables and dinatural in the repeated middle variable; Section 4 proves the precise identities. Source attribution appears in the course notice.
 ## 1. The sheaf Hom complex
 
 For two module sheaves define the internal Hom by

@@ -4,9 +4,9 @@ A scalar derivative can define an unbounded generator even when the orbit is not
 
 *Programme proof written in Codex (OpenAI), September 2026; foundation integration and revision by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
 
-Let \(X=X_*^*\) be a complex dual Banach space with specified predual, and let \(\alpha:\mathbb R\to\operatorname{GL}(X)\) be a uniformly bounded group of weak-star continuous operators with norm-continuous predual orbits, with the specified-dual conventions of BS0–1. Write \(C_\alpha=\sup_t\|\alpha_t\|\). Put \(\beta_t\phi=\phi\circ\alpha_t\); the specified predual hypothesis makes this a strongly continuous group on \(X_*\).
+Let \(X=X_*^*\) be a complex dual Banach space with specified predual, and let \(\alpha:\mathbb R\to\operatorname{GL}(X)\) be a uniformly bounded group of weak-star continuous operators with norm-continuous predual orbits, with the specified-dual conventions of [BS0–1](OA-FLOW-BS.md#bs-0). Write \(C_\alpha=\sup_t\|\alpha_t\|\). Put \(\beta_t\phi=\phi\circ\alpha_t\); the specified predual hypothesis makes this a strongly continuous group on \(X_*\).
 
-The exact earlier proofs used here are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for scalar and Banach-valued fundamental calculus, [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Banach-valued integration, [L34 Lemma3.2](OA-FLOW-L34.md#oa-flow.l34.3) for the complete-metric Baire argument, [RF1](OA-FLOW-RF.md#oa-flow.rf.1) for smooth compact kernels, and BS0–1 for the dual action and its full integrated maps. The uniform-boundedness argument is included immediately below.
+The exact earlier proofs used here are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for scalar and Banach-valued fundamental calculus, [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Banach-valued integration, [L34 Lemma3.2](OA-FLOW-L34.md#oa-flow.l34.3) for the complete-metric Baire argument, [RF1](OA-FLOW-RF.md#oa-flow.rf.1) for smooth compact kernels, and [BS0–1](OA-FLOW-BS.md#bs-0) for the dual action and its full integrated maps. The uniform-boundedness argument is included immediately below.
 
 <a id="oa-flow.gen.bounds"></a>
 
@@ -48,7 +48,7 @@ Choose \(R\) with the support of \(f\) and \(f'\) inside \([-R,R]\). For \(|t|\l
  \tag{LR2}
 \]
 
-Thus no interchange theorem for arbitrary nets or unbounded domains is needed. The same proof works for both signs of \(t\). BS1's norm bound transfers (LR2) to integrated vectors, with the minus sign used in (G4) below.
+Thus no interchange theorem for arbitrary nets or unbounded domains is needed. The same proof works for both signs of \(t\). [BS1's norm bound](OA-FLOW-BS.md#bs-1) transfers (LR2) to integrated vectors, with the minus sign used in (G4) below.
 
 For density, [RF1](OA-FLOW-RF.md#oa-flow.rf.1) supplies \(b\ge0\), smooth, supported in \([-1,1]\), positive inside. Its integral \(c\) is finite and positive. The kernels \(f_\varepsilon(u)=b(u/\varepsilon)/(c\varepsilon)\) have integral one, nonnegative values and support in \([-\varepsilon,\varepsilon]\), by [SC8's scalar substitution theorem](OA-FLOW-SC.md#sc-08), with [SC2's normalization and affine scaling](OA-FLOW-SC.md#sc-02). For any strongly continuous predual orbit,
 

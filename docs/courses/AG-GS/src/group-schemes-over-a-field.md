@@ -2,6 +2,8 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
+*The proofs in Section 2, Lemma 2.A through Corollary 2.H, were added by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. CC0.*
+
 Translation makes the topology of a group scheme unusually rigid. Connected pieces cannot branch into intersecting irreducible components, and the component containing the identity is itself a group. For groups of finite type, the remaining components form a finite étale group scheme. This retains arithmetic information: a component group need not be a constant group over the ground field.
 
 We distinguish three levels of generality. A **group scheme over \(k\)** has no finiteness condition. A **locally algebraic** group scheme is locally of finite type over \(k\). An **algebraic group scheme** is of finite type over \(k\); smoothness is an additional condition. The first two sections treat arbitrary group schemes. The finite étale component group and quasi-projectivity carry their finite-type conditions explicitly. Section 7 also distinguishes finite-type orbit boundaries from topological transitivity without finiteness.
@@ -140,6 +142,107 @@ Suppose \(f_0\) a closed immersion. The inverse image of each affine target char
 
 ## 2. Connectedness, compactness and the identity component
 
+### Connectedness after extending the ground field
+
+A connected scheme can split after a field extension: \(\operatorname{Spec}\mathbb C\) is connected over \(\mathbb R\), whereas its base change to \(\mathbb C\) consists of two points. A rational point prevents this phenomenon. We prove that assertion without imposing finite type, quasi-compactness or separation on the scheme, and also prove the stronger version in which the residue field of a point has no new algebraic constants.
+
+We use [Zariski's lemma](../../AG-CA/AG-CA-06.html#section-1), Theorem 1.3, and the [weak Nullstellensatz](../../AG-CA/AG-CA-06.html#section-2), Theorem 2.1, from *The Nullstellensatz and Jacobson rings*, together with the [Hilbert basis theorem](../../AG-CA/AG-CA-03.html#section-2), Theorem 2.1 of *Noetherian and Artinian rings*. Finite generation will be imposed on auxiliary rings containing a finite list of coefficients, not on the original scheme. Connected and irreducible spaces are nonempty.
+
+<a id="gs03-idempotents-and-base-extension"></a>
+
+**Lemma 2.A. Open and closed pieces.** Idempotents in \(\Gamma(X,\mathcal O_X)\) correspond bijectively to open-and-closed subsets of any scheme \(X\). For a field extension \(F/k\), the projection \(X_F\to X\) is surjective; restriction of functions from an affine chart to its base change is injective.
+
+**Proof.** A function satisfying \(e^2=e\) has germ zero or one at every point: in a local ring either \(e\) or \(1-e\) is a unit, and \(e(1-e)=0\). Thus \(D(e)\) and \(D(1-e)\) form a complementary open partition. Conversely the functions one and zero on a complementary open partition glue to a unique global idempotent. These operations are inverse and commute with restriction.
+
+For a point \(x\in X\), the fibre of the projection is \(\operatorname{Spec}(\kappa(x)\otimes_k F)\). This tensor product is a nonzero ring, because it is the tensor product of two nonzero vector spaces over a field and its identity is nonzero. It has a maximal ideal and hence a point. The projection is therefore surjective. On an affine chart, \(A\to A\otimes_k F\) is injective: a \(k\)-basis of \(A\) stays linearly independent after scalar extension. This also proves that equality of functions can be checked after field extension. \(\square\)
+
+<a id="gs03-algebraically-closed-clopen-descent"></a>
+
+**Lemma 2.B. Algebraically closed ground fields.** Suppose \(k\) is algebraically closed and \(F/k\) is any field extension. For every \(k\)-algebra \(A\), scalar extension gives a bijection on idempotents. Consequently, for every \(k\)-scheme \(X\), inverse image gives a bijection on open-and-closed subsets of \(X\) and \(X_F\). Connectedness and irreducibility of \(X\) are both preserved by extension to \(F\).
+
+**Proof.** First recall explicitly the domain argument used in Section 1. If \(R,S\) are finite-type domains over \(k\) and \(u,v\ne0\) lie in \(R\otimes_k S\), expand both in finite linearly independent lists of elements of \(S\). Choose one nonzero coefficient from each expansion. Their product is nonzero in \(R\). The weak Nullstellensatz applied to the localization at that product gives a \(k\)-valued point of \(\operatorname{Spec}R\) where both expansions remain nonzero. Their specialized product is nonzero in \(S\), so \(uv\ne0\). Arbitrary domains are directed unions of finite-type subalgebras, and their tensor inclusions are injective over \(k\). Hence the tensor product of any two domains over an algebraically closed field is a domain.
+
+Now let \(R\) be a finite-type \(k\)-algebra. Its spectrum has finitely many irreducible components: the Hilbert basis theorem makes it Noetherian, and a minimal closed subset failing to be a finite union of irreducible closed sets would split into two smaller closed subsets, a contradiction. Write these components as \(V(\mathfrak p_1),\ldots,V(\mathfrak p_n)\). Form the finite graph whose vertices are these components and whose edges mean nonempty intersection. The unions belonging to graph components are precisely the connected components of \(\operatorname{Spec}R\). Each such union is connected by successively adjoining intersecting connected sets, and distinct unions are disjoint closed sets whose finite union is the whole space, so each is also open.
+
+After tensoring with \(F\), each \((R/\mathfrak p_i)\otimes_k F\) is a domain by the preceding paragraph. These irreducible closed subsets still cover the spectrum. Indeed, the product of the finitely many \(\mathfrak p_i\) is contained in the nilradical, and every element of the extended nilradical is nilpotent: any such element uses only finitely many nilpotent generators. Every prime upstairs therefore contains one of the extended \(\mathfrak p_i\). Intersections are preserved exactly, since
+
+\[
+(R/(\mathfrak p_i+\mathfrak p_j))\otimes_k F
+\]
+
+is nonzero exactly when \(R/(\mathfrak p_i+\mathfrak p_j)\) is nonzero. Thus the same graph computes the connected components upstairs. Its component unions, and therefore all clopen subsets and idempotents, come from \(R\).
+
+For an arbitrary \(A\), an idempotent of \(A\otimes_k F\) involves finitely many elements of \(A\). Let \(R\subset A\) be the \(k\)-subalgebra they generate. The inclusion \(R\otimes_k F\hookrightarrow A\otimes_k F\) is injective, so the same element is already idempotent in \(R\otimes_k F\). The finite-type case supplies an idempotent of \(R\), and hence of \(A\), producing it. Injectivity follows from Lemma 2.A.
+
+Apply this affine assertion on every chart of \(X\). The resulting idempotents agree on overlaps: cover an overlap by affine opens and use injectivity after extension. They therefore glue. This proves clopen descent and the connectedness assertion without assuming that \(X\) has a finite affine cover.
+
+For irreducibility, suppose \(X\) is irreducible. Every nonempty affine chart has a coordinate ring with exactly one minimal prime. Its reduced quotient is a domain, whose tensor product with \(F\) is a domain by the first paragraph. The kernel introduced by passing to the reduction is a nil ideal even after tensoring, so the base-changed chart is irreducible. Any two nonempty affine charts of \(X\) intersect, and their inverse images intersect by surjectivity. These irreducible open subsets cover \(X_F\), which is therefore irreducible. \(\square\)
+
+<a id="gs03-purely-inseparable-homeomorphism"></a>
+
+**Lemma 2.C. Purely inseparable extensions.** If \(L/k\) is an algebraic purely inseparable extension, then \(X_L\to X\) is a homeomorphism for every \(k\)-scheme \(X\).
+
+**Proof.** In characteristic zero the extension is trivial. In characteristic \(p>0\), put \(B=A\otimes_k L\) on an affine chart. For each \(b\in B\), there is a power \(q=p^r\) such that \(b^q\) belongs to the embedded copy of \(A\): expand \(b\) as a finite sum and take a common purely inseparable exponent for its coefficients. A prime of \(B\) over \(\mathfrak p\subset A\) must therefore contain \(b\) exactly when \(b^q\in\mathfrak p\). There is at most one such prime, and there is at least one by Lemma 2.A. Moreover, \(D_B(b)\) is the inverse image of \(D_A(b^q)\). The continuous bijection is thus open on basic opens and is a homeomorphism. The affine assertions agree on overlaps. \(\square\)
+
+<a id="gs03-separable-closure-test"></a>
+
+**Proposition 2.D. Testing geometric properties over a closure.** A \(k\)-scheme is geometrically connected if and only if it becomes connected over a separable closure \(k_s\). It is geometrically irreducible if and only if it becomes irreducible over an algebraic closure \(\bar k\).
+
+**Proof.** The forward implications are part of the definitions. The extension \(\bar k/k_s\) is algebraic purely inseparable, so connectedness over \(k_s\) gives connectedness over \(\bar k\) by Lemma 2.C. Given any field extension \(F/k\), choose a common field extension \(\Omega\) of \(F\) and \(\bar k\): take a maximal quotient of the nonzero ring \(F\otimes_k\bar k\), into which both fields inject. Lemma 2.B makes \(X_\Omega\) connected whenever \(X_{\bar k}\) is connected. Its surjective projection onto \(X_F\) then makes \(X_F\) connected. This proves the first assertion. The same argument, using preservation of irreducibility in Lemma 2.B and the fact that a continuous image of an irreducible space is irreducible, proves the second. \(\square\)
+
+<a id="gs03-galois-clopen-descent"></a>
+
+**Lemma 2.E. Galois descent of a clopen partition.** Let \(L/k\) be a possibly infinite Galois extension, with group \(\Gamma\). A \(\Gamma\)-invariant open-and-closed subset of \(X_L\) is the inverse image of a unique open-and-closed subset of \(X\). On the inverse image of any affine open of \(X\), every clopen subset has a finite orbit under \(\Gamma\).
+
+**Proof.** We first justify the field fact, also for an infinite extension. Fix an algebraic closure \(\Omega\) containing \(L\). A \(k\)-embedding \(\tau:E\to\Omega\), with \(k\subseteq E\subseteq L\), extends to \(L\): order its extensions to intermediate fields by inclusion. A chain has the union embedding as an upper bound, so a maximal extension exists by Zorn's lemma. If its domain \(M\) is not \(L\), take \(a\in L\setminus M\). Applying the embedding to the coefficients of the minimal polynomial of \(a\) gives an irreducible polynomial over the image of \(M\). Choose a root in \(\Omega\). Evaluation at that root extends the embedding to \(M(a)\), a contradiction. Thus the maximal domain is \(L\).
+
+When \(L/k\) is normal, this extension maps \(L\) onto \(L\). Indeed, every element of \(L\) is a root of a polynomial over \(k\) that splits in \(L\); the embedding sends the finite set of distinct roots of that polynomial injectively into itself and therefore permutes that set. It follows both that its image is contained in \(L\) and that every element of \(L\) is in its image. If \(a\in L\setminus k\), its minimal polynomial has degree greater than one and, by separability, has a distinct root \(b\in L\). The embedding \(k(a)\to L\) sending \(a\) to \(b\) therefore extends to an element of \(\Gamma\) moving \(a\). This proves that the fixed field of \(\Gamma\) is exactly \(k\).
+
+On \(\operatorname{Spec}A\), the clopen subset corresponds to an idempotent \(e\in A\otimes_k L\). Invariance of the subset gives invariance of \(e\), by uniqueness in Lemma 2.A. Expand \(e\) in a finite \(k\)-linearly independent list in \(A\). Invariance says that every coefficient in \(L\) is fixed by \(\Gamma\), and hence belongs to \(k\). Thus \(e\) lies in \(A\), where it is idempotent by injectivity.
+
+These descended idempotents agree on all overlaps, again by checking after field extension on affine subopens. They glue, and surjectivity gives uniqueness of the descended subset. Finally, any idempotent on an affine chart uses finitely many coefficients in \(L\). Adjoin all the roots of their minimal polynomials over \(k\). Normality puts these finitely many roots in \(L\), and separability makes their splitting field \(E/k\) finite Galois. The subgroup fixing \(E\) fixes the idempotent. Its index is finite, since restriction embeds its coset set into the finite set of automorphisms of \(E/k\). Hence the orbit of the corresponding subset is finite. \(\square\)
+
+<a id="gs03-geometrically-connected-morphism-criterion"></a>
+
+**Theorem 2.F. A connected scheme receiving a geometrically connected scheme.** Let \(f:T\to X\) be a morphism of \(k\)-schemes. If \(T\) is geometrically connected and \(X\) is connected, then \(X\) is geometrically connected.
+
+**Proof.** Set \(L=k_s\). Suppose that \(X_L=U\amalg V\) is a partition into two nonempty clopen subsets. The nonempty connected scheme \(T_L\) maps into one of them; rename them so that \(f_L(T_L)\subset U\). Set
+
+\[
+B=\bigcup_{\sigma\in\Gamma}\sigma(V),
+\qquad A=X_L\setminus B=\bigcap_{\sigma\in\Gamma}\sigma(U).
+\]
+
+The set \(B\) is open. On the inverse image of an affine chart \(W\subset X\), Lemma 2.E says that the translates of \(V\cap W_L\) form a finite family. Thus \(B\cap W_L\) is also closed in \(W_L\). These charts cover \(X_L\), so \(B\) is globally closed and \(A\) is clopen. This local finiteness argument does not assert that there are only finitely many translates on all of \(X_L\).
+
+Both sets are \(\Gamma\)-invariant. The set \(B\) contains \(V\), so is nonempty. Since \(f\) is defined over \(k\), its base-changed image is \(\Gamma\)-invariant. Its containment in \(U\) therefore puts it in every \(\sigma(U)\), hence in \(A\); this makes \(A\) nonempty. Lemma 2.E descends this partition to a nontrivial clopen partition of \(X\), contradicting connectedness. Thus \(X_{k_s}\) is connected, and Proposition 2.D proves the theorem. \(\square\)
+
+<a id="gs03-relative-constants-geometric-irreducibility"></a>
+
+**Proposition 2.G. No new algebraic constants.** Let \(K/k\) be any extension of fields such that every element of \(K\) algebraic over \(k\) belongs to \(k\). Then \(\operatorname{Spec}K\) is geometrically irreducible over \(k\). Neither finite generation nor separability of \(K/k\) is required.
+
+**Proof.** Every monic irreducible \(P\in k[t]\) stays irreducible over \(K\). Indeed, the coefficients of a proper monic factor in \(K[t]\) are elementary symmetric expressions in some roots of \(P\), counted with multiplicity, in an algebraic closure of \(K\). They are algebraic over \(k\), hence belong to \(k\), which would give a proper factor over \(k\).
+
+We recall the elementary primitive-element argument needed for finite separable extensions. Over an infinite field, if \(E=k(a,b)\) is finite separable, it has \([E:k]\) distinct embeddings in a normal closure: at each step of a tower an embedding extends in exactly as many ways as the number of distinct roots of the separable minimal polynomial. Choose \(c\in k\) outside the finitely many values for which two distinct embeddings take the same value on \(a+cb\). If the embeddings agree on \(b\), they disagree on \(a\), so they impose no forbidden value. Then \(a+cb\) has at least \([E:k]\) distinct conjugates, and therefore generates \(E\). Induction handles finitely many generators. Over a finite field, \(E\) is finite and \(E^\times\) is cyclic: its exponent \(m\) is attained by an element, by multiplying commuting elements with the largest prime-power orders; every element is a root of \(t^m-1\), so \(|E^\times|\le m\), forcing equality. A generator of \(E^\times\) also generates \(E\) as a field.
+
+Consequently, for every finite separable extension \(E/k\), write \(E=k[t]/(P)\) with \(P\) monic irreducible. The first paragraph gives
+
+\[
+K\otimes_k E\cong K[t]/(P)
+\]
+
+as a field. Tensor inclusions are injective, so \(K\otimes_k k_s\) is the directed union of these fields and is itself a field. The passage from \(k_s\) to \(\bar k\) is purely inseparable; Lemma 2.C shows that \(\operatorname{Spec}(K\otimes_k\bar k)\) still has one point. It is irreducible, although it need not be reduced. Proposition 2.D now proves geometric irreducibility over \(k\). \(\square\)
+
+<a id="gs03-connected-point-geometric-connectedness"></a>
+
+**Corollary 2.H. A point with no new algebraic constants.** Let \(X\) be a connected \(k\)-scheme. If it has a point \(x\) such that \(k\) is algebraically closed in \(\kappa(x)\), then \(X\) is geometrically connected. In particular a connected scheme with a \(k\)-rational point is geometrically connected.
+
+**Proof.** Proposition 2.G makes \(T=\operatorname{Spec}\kappa(x)\) geometrically irreducible, and hence geometrically connected. Apply Theorem 2.F to its canonical morphism \(T\to X\). For a rational point the residue field is \(k\), which satisfies the hypothesis. \(\square\)
+
+The rational-point condition cannot be replaced by merely having a closed point: \(\operatorname{Spec}\mathbb C\) over \(\mathbb R\) has a closed point, but its residue field introduces the new algebraic constant \(i\). Nor does Proposition 2.G assert geometric reducedness. Connectedness, irreducibility and reducedness are distinct properties.
+
+*References:* The Stacks project authors, in the AI Integrated Stacks Project edition, [geometrically connected schemes](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/varieties.tex), including the results indexed by Tags 0387, 056R and 04KV; [geometrically irreducible field extensions](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex), Tag 037P. The proofs above are independently written; the source authors retain credit for the cited results.
+
 **Lemma 2.1.** An irreducible group scheme over a field is quasi-compact.
 
 **Proof.** Theorem 1.3 makes it geometrically irreducible. Enlarge the field as in Lemma 1.2; quasi-compactness of this extension will imply quasi-compactness downstairs, since the projection is surjective. Choose a nonempty affine open \(U\).
@@ -148,7 +251,7 @@ For every rational point \(g\), irreducibility gives \(gU\cap U\ne\varnothing\).
 
 **Theorem 2.2.** A connected group scheme over a field is irreducible.
 
-**Proof.** A connected scheme with a rational point is geometrically connected [Stacks, Tag 04KV]. Thus a large algebraically closed extension preserves connectedness. It suffices to prove irreducibility there.
+**Proof.** By [Corollary 2.H](#gs03-connected-point-geometric-connectedness), a connected scheme with a rational point is geometrically connected. Thus a large algebraically closed extension preserves connectedness. It suffices to prove irreducibility there.
 
 Let \(Z\) be the unique irreducible component through \(e\), with reduced structure. Multiplication preserves it: the image of the irreducible product \(Z\times Z\) is in a component and contains \(Z\). Inversion also preserves it, since it fixes \(e\). The product is reduced, so these set-theoretic containments give factorization through the reduced closed scheme \(Z\). Thus \(Z\) is a subgroup. Lemma 2.1 makes it quasi-compact.
 
@@ -166,7 +269,7 @@ We use the canonical scheme structure on a connected component of a scheme: it i
 
 **Theorem 2.3. Identity component.** Every group scheme \(G/k\) has a canonical normal subgroup \(G^0\), whose underlying space is the connected component of \(e\). Its inclusion is a flat closed immersion; it is geometrically irreducible and quasi-compact. Formation of \(G^0\) commutes with extension of the field. If \(G\) is locally algebraic, \(G^0\) is also open.
 
-**Proof.** Give the component of \(e\) its canonical flat closed structure. The identity factors through it. Inversion preserves its underlying connected component. Since it is connected and has a rational point, it is geometrically connected. Its product with itself is connected, and the multiplication image contains \(e\), so lies in that component. The factorization criterion for flat closed immersions therefore restricts multiplication and inverse to it. The group identities restrict too, since the inclusion is a monomorphism. It is a connected group scheme, so Theorem 2.2 makes it irreducible; Theorem 1.3 makes it geometrically irreducible; Lemma 2.1 makes it quasi-compact.
+**Proof.** Give the component of \(e\) its canonical flat closed structure. The identity factors through it. Inversion preserves its underlying connected component. Since it is connected and has a rational point, [Corollary 2.H](#gs03-connected-point-geometric-connectedness) makes it geometrically connected. Its product with itself is connected, and the multiplication image contains \(e\), so lies in that component. The factorization criterion for flat closed immersions therefore restricts multiplication and inverse to it. The group identities restrict too, since the inclusion is a monomorphism. It is a connected group scheme, so Theorem 2.2 makes it irreducible; Theorem 1.3 makes it geometrically irreducible; Lemma 2.1 makes it quasi-compact.
 
 For a field extension \(K/k\), \(G^0_K\) is connected and contains \(e_K\). Conversely, the connected component of \(e_K\) in \(G_K\) projects into the connected component of \(e\) in \(G\). The flat closed factorization criterion puts it inside \(G^0_K\). These two containments, with uniqueness of the canonical flat closed structure, prove base-change compatibility.
 

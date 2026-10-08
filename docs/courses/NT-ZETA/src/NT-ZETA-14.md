@@ -1,6 +1,6 @@
 # The Riemann hypothesis and its standard equivalents
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and calculations are public domain (CC0). The identified adaptation in Sections 6.1–6.5 retains CC BY 4.0.*
+*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Sections 6.1–6.5 written and self-checked by Claude Opus 5.5 (Anthropic). Self-check is by the writing AI. Original exposition and calculations are public domain (CC0).*
 
 The Riemann hypothesis says that every nontrivial zero has real part one half. Through the explicit formula, this gives a square-root scale for the error in counting primes. Conversely, a sufficiently small prime-counting error continues the logarithmic derivative into a larger half-plane and excludes zeros there. We prove both directions and the corresponding equivalents involving the Möbius function. We then develop the divisor-sum and fractional-part approximation criteria, connecting the latter to a full Mellin-space proof. Exact lessons supply the positivity criteria and the finite-field theorem. These different formulations also explain what finite numerical evidence can establish.
 
@@ -220,174 +220,131 @@ $$
 $$
 When RH holds, equality in (6.2) occurs only at $n=1$.
 
-**Proof source and licence.** The mathematical reconstruction in Sections 6.1–6.5 below adapts Jonas Whidden's freely readable [release 1.1.1](https://github.com/kimihiro64/Robin1984/releases/tag/v1.1.1), at its [pinned revision](https://github.com/kimihiro64/Robin1984/tree/acab1a31f31e0499518a4416b63281e0b4838f9c). That adaptation retains [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The criterion is Robin's, and the harmonic criterion is Lagarias's; [Lagarias's free author preprint](https://arxiv.org/pdf/math/0008177v2), version 2, supplies a second comparison source. Changes in this exposition are the direct floor-count proof of the prime-power estimate, the displayed endpoint and kernel calculations, and a separate exact integer verification of the entire finite range. The 36 interval, parameter and cutoff choices are retained from the freely released certificate; their bounds are recomputed here. The new verifier and its original explanation are CC0. The arguments are given here; the companion remains an optional reading source.
+**Sources.** Robin proved that RH is equivalent to (6.1), and Lagarias deduced the harmonic form (6.2); Lagarias's [free author preprint](https://arxiv.org/pdf/math/0008177v2), version 2, treats both. Jonas Whidden's [release 1.1.1](https://github.com/kimihiro64/Robin1984/releases/tag/v1.1.1), at its [pinned revision](https://github.com/kimihiro64/Robin1984/tree/acab1a31f31e0499518a4416b63281e0b4838f9c), gives a formally verified proof of Robin's criterion. The proof below follows the same overall plan: an explicit budget for each integer under RH, an analytic gap for very large integers, an interval certificate for the remaining heights, and an oscillation argument for the converse. The 36 intervals, parameters and cutoffs of Section 6.3 are those of Whidden's certificate; all bounds for them are recomputed by the verifier given there.
 
-### 6.1. The exponent budget and two weighted prime errors
+### 6.1. Weighted prime errors and a budget for each integer
 
-Put $A(n)=\sigma_1(n)/n$, $h=\log n$, and
+We write \(A(n)=\sigma_1(n)/n\) and \(h=\log n\), and put
 $$
-\mathcal R(n)=\log A(n)-\gamma-\log\log h.
+\mathcal R(n)=\log A(n)-\gamma-\log\log h ,
 $$
-Thus (6.1) is $\mathcal R(n)<0$. The symbol $\mathcal R$ has no relation to the Möbius sum $M(x)$.
-
-For an integer $m\ge1$, and $x>1$, define
+so that (6.1) is the statement \(\mathcal R(n)<0\). This \(\mathcal R\) is unrelated to the Möbius sum \(M(x)\). Prime-counting errors are weighted by the positive kernels
 $$
-w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}
-       =-\frac{d}{dt}\frac{t^{-m}}{\log t},\qquad
-I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,
+w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}=-\frac{d}{dt}\,\frac{t^{-m}}{\log t}\qquad(m\ge1,\ t>1),
+$$
+for which \(\int_x^\infty w_m(t)\,dt=x^{-m}/\log x\). For \(x>1\) let
+$$
+I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,\qquad
+P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,
 $$
 $$
-P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,\qquad
-K_m(r,x)=\int_x^\infty t^r w_m(t)\,dt\quad(\Re r<m).
+K_m(r,x)=\int_x^\infty t^rw_m(t)\,dt\qquad(\operatorname{Re}r<m).
 \tag{6.3}
 $$
-The classical error estimate proved in lesson twelve makes the $I_1$ integral absolutely convergent. Chebyshev and the prime-power comparison in lesson two give absolute convergence of the other integrals used below.
+For \(m\ge2\) these integrals converge absolutely by Chebyshev's bound from lesson two. For \(m=1\), the classical error term of lesson twelve gives absolute convergence of \(I_1\), and the bound \(\psi(t)-\theta(t)\ll\sqrt t\log t\) from lesson two gives it for \(P_1\).
 
-**Lemma 6.3 (weighted explicit formula, with its endpoint).** Under RH, for $m\ge1$ and $x\ge2$,
+**Lemma 6.3 (weighted explicit formula, with its endpoint).** Assume RH. For \(m\ge1\) and \(x\ge2\),
 $$
 I_m(x)=-\sum_\rho\frac{K_m(\rho,x)}{\rho}-T_m(x),\qquad
-0\le T_m(x)\le\frac{\log(2\pi)x^{-m}}{\log x},
+T_m(x)=\int_x^\infty w_m(t)\bigl(\log(2\pi)+\tfrac12\log(1-t^{-2})\bigr)\,dt,
 \tag{6.4}
 $$
-where
+where the sum over nontrivial zeros, with multiplicity, converges absolutely and \(0\le T_m(x)\le\log(2\pi)\,x^{-m}/\log x\). With \(c_0=\gamma+2-\log(4\pi)\) and
 $$
-T_m(x)=\int_x^\infty w_m(t)
- \left(\log(2\pi)+\tfrac12\log(1-t^{-2})\right)\,dt.
+B_m(x)=\frac{c_0x^{1/2-m}}{\log x}\Bigl(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\Bigr),
 $$
-Zeros are counted with multiplicity. Put $c_0=\gamma+2-\log(4\pi)$. Then
+one has
 $$
-\begin{gathered}
--B_m(x)-\frac{\log(2\pi)x^{-m}}{\log x}
-\le I_m(x)\le B_m(x),\\
-B_m(x)=\frac{c_0x^{1/2-m}}{\log x}
-  \left(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\right).
-\end{gathered}
+-B_m(x)-\frac{\log(2\pi)\,x^{-m}}{\log x}\le I_m(x)\le B_m(x).
 \tag{6.5}
 $$
 
-**Proof.** For $m\ge2$, integrate the truncated explicit formula of lesson eleven, Theorem 2.2, against $w_m$, and let its height $T$ tend to infinity. Its first remainder contributes at most
+**Proof.** *The zero kernels.* Fix a zero \(\rho\), put \(a=\rho-m\), so that \(\operatorname{Re}a=1/2-m<0\) under RH, and let \(J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt\). Since \(w_m\) is minus the derivative of \(t^{-m}/\log t\), one integration by parts gives \(K_m(\rho,x)=x^{\rho-m}/\log x+\rho J_1(a,x)\). Two further integrations by parts, with \(t^{a-1}=(t^a/a)'\), give
 $$
-\frac C T\int_x^\infty t\log^2(tT)w_m(t)\,dt
-=O_x((\log T)^2/T),
+J_1(a,x)=-\frac{x^a}{a\log x}-\frac{x^a}{a^2(\log x)^2}+\frac{2J_3(a,x)}{a^2}.
 $$
-because $\int_x^\infty t(1+\log^2t)w_m(t)\,dt<\infty$ for $m\ge2$. The second remainder is bounded by the integrable function $Cw_m(t)\log t$ and tends to zero off the countable set of prime powers. Dominated convergence removes it. The half-weight version $\psi_0$ agrees with $\psi$ almost everywhere in this integration. The pole term is $K_m(1,x)$, and the constant and trivial-zero terms are exactly $-T_m(x)$. Formula (6.6) below bounds the integrated zero terms by a convergent sum under RH. Their height-ordered limit is therefore their absolutely convergent sum, proving (6.4).
-
-Write $a=\rho-m$ and $J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt$. Integration by parts gives
+As \(a=-(m-\rho)\), the terms \(x^a/(\rho\log x)\) and \(x^a/((m-\rho)\log x)\) combine, and
 $$
-\frac{K_m(\rho,x)}{\rho}
-=\frac{x^{\rho-m}}{\rho\log x}+J_1(a,x)
-=\frac{m x^{\rho-m}}{\rho(m-\rho)\log x}
--\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}
-+\frac{2J_3(a,x)}{(m-\rho)^2}.
+\frac{K_m(\rho,x)}\rho=\frac{m\,x^{\rho-m}}{\rho(m-\rho)\log x}-\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}+\frac{2J_3(a,x)}{(m-\rho)^2}.
 \tag{6.6}
 $$
-In particular the first expression contains a **plus** sign. Under RH,
-$|m-\rho|\ge|\rho|$ and
+The first coefficient is positive: it is \(m/(\rho(m-\rho))\), not its negative. Under RH, \(|m-\rho|\ge|\rho|\) because \(\operatorname{Re}\rho=1/2\le m-1/2\), and \(|J_3(a,x)|\le x^{1/2-m}/\bigl((m-1/2)(\log x)^3\bigr)\). So the three terms of (6.6) are bounded by \(|\rho|^{-2}\) times the three terms of \(B_m(x)/c_0\). Under RH also \(\rho(1-\rho)=|\rho|^2\), and the evaluated product formula of lesson five, Section 5, gives
 $$
-|J_3(a,x)|\le
-\frac{x^{1/2-m}}{(m-1/2)(\log x)^3}.
+\sum_\rho\frac1{|\rho|^2}=\sum_\rho\Bigl(\frac1\rho+\frac1{1-\rho}\Bigr)=2\sum_\rho\operatorname{Re}\frac1\rho=c_0 .
 $$
-The product formula and its evaluated constant in lesson five, Section 5, imply
-$$
-\sum_\rho|\rho|^{-2}
-=2\sum_\rho\Re(1/\rho)
-=\gamma+2-\log(4\pi)=c_0;
-$$
-here $\Re(1/\rho)=1/(2|\rho|^2)$ under RH. Thus (6.6) sums to the bound (6.5). The integrand defining $T_m$ is between zero and $\log(2\pi)w_m$ for $t\ge2$, and $\int_x^\infty w_m=x^{-m}/\log x$.
+Hence \(\sum_\rho|K_m(\rho,x)/\rho|\le B_m(x)\).
 
-For $m=1$, set
-$$
-q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad
-q'(t)=\frac{\log t(2\log t+3)}{(2\log t+1)^2}.
-$$
-Since $w_1=q w_2$, integration by parts gives
-$$
-I_1(x)=q(x)I_2(x)+\int_x^\infty q'(t)I_2(t)\,dt.
-$$
-The endpoint at infinity vanishes by (6.5) for $m=2$. The same operation on each zero kernel and on $T_2$ gives (6.4) for $m=1$. Indeed $q=O(t)$, $q'=O(1)$, and the summed kernel majorant is $O(t^{-3/2}/\log t)$, so all these endpoint integrals and interchanges converge absolutely. Formula (6.6) then proves (6.5) also at $m=1$. $\square$
+*The explicit formula, for \(m\ge2\).* Take Theorem 2.2 of lesson eleven, the explicit formula truncated at height \(T\), multiply it by \(w_m\), integrate over \((x,\infty)\), and send \(T\to\infty\). The first error term there contributes \(O(T^{-1}\int_x^\infty t\log^2(tT)\,w_m(t)\,dt)=O_x((\log T)^2/T)\), since that integral is finite for \(m\ge2\). The second error term is bounded by \(C\,w_m(t)\log t\), which is integrable, and it vanishes in the limit except at prime powers; dominated convergence disposes of it. Using the half-weight version of \(\psi\) does not change the integral. The main term \(t\) cancels against the subtracted \(t\), and the constant and trivial-zero terms integrate exactly to \(-T_m(x)\). The truncated zero sums converge, as \(T\to\infty\), to the absolutely convergent sum bounded above. This proves (6.4). For \(t\ge2\) the bracket in \(T_m\) lies in \([0,\log(2\pi)]\), since \(\log(2\pi)+\frac12\log\frac34>0\); integrating \(w_m\) gives the bound for \(T_m\), and (6.5) follows.
 
-**Lemma 6.4 (the complete prime-power tail).** For $t\ge1$,
+*The case \(m=1\).* Here \(\int t\log^2t\,w_1\) diverges, so we pass through \(m=2\). Put
 $$
-0\le\psi(t)-\theta(t)
-\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
+q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad q'(t)=\frac{\log t\,(2\log t+3)}{(2\log t+1)^2},
+$$
+so that \(w_1=qw_2\). Since \(-I_2'(t)=(\psi(t)-t)w_2(t)\), integration by parts gives
+$$
+I_1(x)=q(x)I_2(x)+\int_x^\infty q'(t)I_2(t)\,dt,
+$$
+and the boundary term at infinity vanishes because \(q(t)=O(t)\) while \(I_2(t)=O(t^{-3/2}/\log t)\) by (6.5). The same identity holds with each zero kernel and with \(T_2\) in place of \(I_2\). All interchanges converge absolutely, as \(q'=O(1)\) and the summed kernel bound is \(O(t^{-3/2}/\log t)\). Substituting (6.4) for \(m=2\) therefore gives (6.4) for \(m=1\), and (6.6) gives (6.5) as before. \(\square\)
+
+**Lemma 6.4 (the complete prime-power tail).** Every \(t\ge1\) satisfies
+$$
+0\le\psi(t)-\theta(t)\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
 \tag{6.7}
 $$
-Under RH,
+If RH holds, then
 $$
-P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)
-\quad(x\ge20000),
+P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)\qquad(x\ge20000),
 \tag{6.8}
 $$
 $$
-P_2(x)\le\tfrac{213}{100}
-\frac{x^{-3/2}}{\log x}\quad(x\ge366).
+P_2(x)\le\frac{213}{100}\,\frac{x^{-3/2}}{\log x}\qquad(x\ge366).
 \tag{6.9}
 $$
 
-**Proof.** Fix a prime $p$, and let $k=\lfloor\log t/\log p\rfloor$. Its contribution to the left side of (6.7) is $(k-1)\log p$ for $k\ge1$. Its contribution to the right side is
-$(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p$.
-For $0\le r<30$, direct division gives
-$$
-\lfloor r/2\rfloor+\lfloor r/3\rfloor+\lfloor r/5\rfloor\ge r-1.
-$$
-For $k=30a+r$, the left expression increases by $31a$, whereas $k-1$ increases by $30a$. This proves every integer case, and summing over primes proves (6.7). No numerical prime-distribution estimate is involved.
+**Proof.** *The elementary inequality.* Both sides of (6.7) are sums over primes. For a prime \(p\) let \(k=\lfloor\log t/\log p\rfloor\). Then \(p\) contributes \((k-1)\log p\) to \(\psi(t)-\theta(t)\) when \(k\ge1\), from \(p^2,\ldots,p^k\). It contributes \((\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p\) to the right side, because \(p^j\le t^{1/i}\) exactly when \(j\le\lfloor k/i\rfloor\). So (6.7) reduces to the integer inequality \(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor\ge k-1\) for \(k\ge1\). It holds for \(0\le k<30\) by inspection. Replacing \(k\) by \(k+30\) raises the left side by \(31\) and the right side by \(30\). No estimate for primes enters.
 
-For $k=2,3,5$, substitution $t=u^k$ gives the exact identity
+*Roots.* For \(k=2,3,5\), substitute \(t=u^k\) and use \(ku^{k-1}w_m(u^k)=w_{km}(u)/k\):
 $$
-\int_x^\infty\psi(t^{1/k})w_m(t)\,dt
-=K_m(1/k,x)+\frac1k I_{km}(x^{1/k}).
+\int_x^\infty\psi(t^{1/k})w_m(t)\,dt=K_m(1/k,x)+\frac1kI_{km}(x^{1/k}).
 \tag{6.10}
 $$
-This follows directly from
-$k u^{k-1}w_m(u^k)=w_{km}(u)/k$.
-The upper half of (6.5) therefore bounds the last term by $B_{km}(x^{1/k})/k$. In original $x$ units that upper bound is
+By (6.5), the last term is at most \(B_{km}(x^{1/k})/k\), which in terms of \(x\) equals
 $$
-\frac{c_0x^{1/(2k)-m}}{\log x}
-\left(km+\frac{k}{\log x}
-+\frac{4k^2}{(2km-1)(\log x)^2}\right).
+\frac{c_0x^{1/(2k)-m}}{\log x}\Bigl(km+\frac k{\log x}+\frac{4k^2}{(2km-1)(\log x)^2}\Bigr).
 \tag{6.11}
 $$
-For $0<r<m$, a single integration by parts also gives
+For \(0<r<m\), the first integration by parts above and one more give
 $$
-K_m(r,x)=\frac{m}{m-r}\frac{x^{r-m}}{\log x}
--\frac{r}{m-r}J_2(r-m,x),\quad
+K_m(r,x)=\frac m{m-r}\,\frac{x^{r-m}}{\log x}-\frac r{m-r}J_2(r-m,x),\qquad
 0\le J_2(r-m,x)\le\frac{x^{r-m}}{(m-r)(\log x)^2}.
 \tag{6.12}
 $$
 
-Here are all the scalar bounds required for (6.8). For $x\ge20000$,
+*Constants for \(P_1\).* Let \(x\ge20000\). We use \(\log x\ge9\), \(c_0<1/20\) (proved in Section 6.2), and
 $$
-\log x\ge9,\quad c_0<1/20,\quad
-x^{-2/15}\le27/100,\quad x^{-1/12}\le11/25,\quad
-x^{-1/6}\le1/5,\quad x^{-7/30}\le1/10.
+x^{-2/15}\le\tfrac{27}{100},\quad x^{-1/12}\le\tfrac{11}{25},\quad x^{-1/6}\le\tfrac15,\quad x^{-7/30}\le\tfrac1{10}.
 $$
-Each power bound follows by raising its asserted rational upper bound to the positive integer denominator and multiplying by the corresponding integer power of 20000. The logarithm and constant bounds are proved below. On the scale $x^{-2/3}/\log x$, (6.11) for $k=2,3,5$ is at most $51/1000,35/1000,29/1000$, respectively. Formula (6.12) bounds the fifth-root main term by $27/80$, and bounds the third-root term below by $17/12$. Since
+Each power bound is checked by raising the rational number to the power of its exponent's denominator and comparing with the corresponding integer power of \(20000\). Measured in units of \(x^{-2/3}/\log x\), the term (6.11) is at most \(51/1000\), \(35/1000\) and \(29/1000\) for \(k=2,3,5\). By (6.12), \(K_1(1/5,x)\le\frac54x^{-4/5}/\log x\), which is at most \(27/80\) in the same units, and \(K_1(1/3,x)\ge\frac32\bigl(1-\frac1{2\log x}\bigr)x^{-2/3}/\log x\), which is at least \(17/12\). Since
 $$
-\frac{51+35+29}{1000}+\frac{27}{80}
-<\frac13\frac{17}{12},
+\frac{51+35+29}{1000}+\frac{27}{80}<\frac13\cdot\frac{17}{12},
 $$
-the fifth-root term and all three errors fit inside one third of the third-root term. Summing (6.10) proves (6.8).
+the fifth-root term and the three error terms together are at most \(\frac13K_1(1/3,x)\). Integrating (6.7) against \(w_1\) and using (6.10) for \(k=2,3,5\) proves (6.8).
 
-For (6.9), $\log x\ge5$ when $x\ge366$. On the scale $x^{-3/2}/\log x$, use
+*Constants for \(P_2\).* Let \(x\ge366\). We use \(\log x\ge5\) and
 $$
-x^{-1/6}\le3/8,\quad x^{-3/10}\le7/40,\quad
-x^{-1/4}\le229/1000,\quad x^{-1/3}\le7/50,\quad
-x^{-2/5}\le19/200.
+x^{-1/6}\le\tfrac38,\quad x^{-3/10}\le\tfrac7{40},\quad x^{-1/4}\le\tfrac{229}{1000},\quad x^{-1/3}\le\tfrac7{50},\quad x^{-2/5}\le\tfrac{19}{200},
 $$
-The same integer-power check at 366 proves these five bounds. By (6.11)–(6.12), the total coefficient is at most
+checked in the same way at \(366\). In units of \(x^{-3/2}/\log x\), (6.12) bounds \(K_2(1/2,x)\), \(K_2(1/3,x)\), \(K_2(1/5,x)\) by \(\frac43\), \(\frac65x^{-1/6}\) and \(\frac{10}9x^{-3/10}\), and (6.11) with \(m=2\) bounds the three error terms. Adding up, the coefficient is bounded by
 $$
 \begin{split}
-&\frac43+\frac65\frac38+\frac{10}{9}\frac7{40}\\
-&+\frac1{20}\left[
- \left(4+\frac25+\frac{16}{175}\right)\frac{229}{1000}
-+\left(6+\frac35+\frac{36}{275}\right)\frac7{50}
-+\left(11+\frac{100}{475}\right)\frac{19}{200}\right]\\
-&=\frac{737896351}{346500000}<\frac{213}{100}.
+&\frac43+\frac65\cdot\frac38+\frac{10}{9}\cdot\frac7{40}\\
+&+\frac1{20}\left[\Bigl(4+\frac25+\frac{16}{175}\Bigr)\frac{229}{1000}+\Bigl(6+\frac35+\frac{36}{275}\Bigr)\frac7{50}+\Bigl(11+\frac{100}{475}\Bigr)\frac{19}{200}\right]\\
+&=\frac{737896351}{346500000}<\frac{213}{100},
 \end{split}
 $$
-Together with (6.7)–(6.10), this proves (6.9). $\square$
+which proves (6.9). \(\square\)
 
-**Lemma 6.5 (a budget for every integer).** Under RH, if $h=\log n\ge20000$, then
+**Lemma 6.5 (a budget for every integer).** Assume RH, and let \(n\) satisfy \(h=\log n\ge20000\). Then
 $$
 \mathcal R(n)\le E(h)-C(h),
 \tag{6.13}
@@ -395,220 +352,150 @@ $$
 where
 $$
 \begin{split}
-E(h)={}&\frac{(2+c_0)h^{-1/2}}{\log h}
-+\frac{(c_0-2)h^{-1/2}}{(\log h)^2}
-+\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
-&+\frac{2h^{-2/3}}{\log h}
-+\frac{\log(2\pi)h^{-1}}{\log h},\\
-C(h)={}&\sum_{p\le h/2}\min\left(\frac{\log p}{h\log h},\frac1{p^2}\right).
+E(h)={}&\frac{(2+c_0)h^{-1/2}}{\log h}+\frac{(c_0-2)h^{-1/2}}{(\log h)^2}+\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
+&+\frac{2h^{-2/3}}{\log h}+\frac{\log(2\pi)h^{-1}}{\log h},\\
+C(h)={}&\sum_{p\le h/2}\min\Bigl(\frac{\log p}{h\log h},\frac1{p^2}\Bigr).
 \end{split}
 $$
 
-**Proof.** Write $n=\prod p^{a_p}$, $v_p=\log p/(h\log h)$, and
-$m_p=\log(1-p^{-1})+p^{-1}\le0$. The local geometric-series formula and $\log(1-y)\le-y$ give, for $a_p\ge1$,
+**Proof.** Factor \(n=\prod_pp^{a_p}\) and let \(v_p=\log p/(h\log h)\), so that \(\sum_pa_pv_p=1/\log h\), and put \(m_p=\log(1-p^{-1})+p^{-1}\le0\). Let \(c_p=\log\bigl(\sigma_1(p^{a_p})/p^{a_p}\bigr)-a_pv_p\), which is \(0\) when \(a_p=0\). For \(a_p\ge1\), \(\sigma_1(p^a)/p^a=(1-p^{-a-1})/(1-p^{-1})\) and \(\log(1-y)\le-y\) give
 $$
-\log\frac{\sigma_1(p^{a_p})}{p^{a_p}}-a_pv_p
-\le \frac1p-a_pv_p-p^{-a_p-1}-m_p.
+c_p\le\frac1p-a_pv_p-p^{-a_p-1}-m_p .
 $$
-For $p\le h/2$, an exponent $a_p=1$ loses $p^{-2}$ relative to the benchmark $1/p-v_p$; an exponent $a_p\ge2$ loses at least $v_p$. If $a_p=0$, its zero contribution also loses at least $\min(v_p,p^{-2})$, because
+We compare \(c_p\) with the benchmark \(\frac1p-v_p-m_p\).
+
+- For \(p\le h/2\), \(c_p\) is at most the benchmark minus \(\min(v_p,p^{-2})\). If \(a_p=1\), the loss is \(p^{-2}\); if \(a_p\ge2\), it is at least \(v_p\). If \(a_p=0\), it suffices that \(\frac1p-v_p-\min(v_p,p^{-2})\ge0\), which holds because \(v_p\le1/h\le1/(2p)\) and \(p^{-2}\le1/(2p)\).
+- For \(h/2<p\le h\), \(c_p\) is at most the benchmark, which is at least \(-m_p\ge0\) because \(p\log p\le h\log h\).
+- For \(p>h\), the benchmark minus \(-m_p\) is negative, and \(c_p\le-m_p\).
+
+Summing, and adding the nonpositive \(m_p\) of the remaining primes on the right,
 $$
-v_p\le1/h\le1/(2p),\qquad p^{-2}\le1/(2p).
-$$
-For $h/2<p\le h$ the benchmark is nonnegative: $p\log p\le h\log h$. For $p>h$ it is nonpositive, so no positive excess is gained by an actual exponent. Completing the finite sum to all primes through $h$, and using $\sum a_pv_p=1/\log h$, yields
-$$
-\log A(n)\le-\sum_p m_p+\sum_{p\le h}\frac1p
--\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
+\log A(n)\le-\sum_pm_p+\sum_{p\le h}\frac1p-\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
 \tag{6.14}
 $$
-The use of all $m_p$ is an upper bound because the omitted $m_p$ are nonpositive.
-
-Let $B_1^{\rm prime}$ denote the prime reciprocal constant from lesson two; its Mertens product proof gives
-$B_1^{\rm prime}=\gamma+\sum_p m_p$.
-Partial summation, with the same constant at infinity, gives
+The prime reciprocal constant \(B_1^{\rm prime}\) of lesson two satisfies \(B_1^{\rm prime}=\gamma+\sum_pm_p\), by its Mertens-product proof. Since \(\frac{d}{dt}\frac1{t\log t}=-w_1(t)\), partial summation against \(d\theta\) gives
 $$
-\sum_{p\le x}\frac1p
-=\log\log x+B_1^{\rm prime}
-+\frac{\theta(x)-x}{x\log x}
--\int_x^\infty(\theta(t)-t)w_1(t)\,dt.
+\sum_{p\le x}\frac1p=\log\log x+B_1^{\rm prime}+\frac{\theta(x)-x}{x\log x}-\int_x^\infty(\theta(t)-t)w_1(t)\,dt,
 \tag{6.15}
 $$
-The classical PNT error justifies the convergent tail. Substitution in (6.14) cancels the endpoint and the prime reciprocal constant, leaving
+the tail converging by the classical error term. Inserting (6.15) at \(x=h\) into (6.14), the constants and the endpoint terms cancel, and
 $$
 \mathcal R(n)\le P_1(h)-I_1(h)-C(h).
 $$
-From (6.12), with one further integration by parts,
+Now (6.5) bounds \(-I_1(h)\), and (6.8) bounds \(P_1(h)\). By (6.12) and one more integration by parts,
 $$
-K_1(1/2,h)\le
-\frac{2h^{-1/2}}{\log h}
--\frac{2h^{-1/2}}{(\log h)^2}
-+\frac{8h^{-1/2}}{(\log h)^3},
-\quad
+K_1(1/2,h)\le\frac{2h^{-1/2}}{\log h}-\frac{2h^{-1/2}}{(\log h)^2}+\frac{8h^{-1/2}}{(\log h)^3},\qquad
 K_1(1/3,h)\le\frac{3h^{-2/3}}{2\log h}.
 $$
-Now (6.5) and (6.8) give exactly $E(h)-C(h)$. $\square$
+Adding these bounds gives exactly \(E(h)-C(h)\). \(\square\)
 
-### 6.2. The strict analytic gap
+### 6.2. A strict gap for large heights
 
-**Lemma 6.6 (the prime-square block, including both endpoints).** Under RH, if $h\ge74500$, and $S(h)=h^{-1/2}/\log h$, then
+**Lemma 6.6 (the prime-square block, including both endpoints).** Assume RH, and let \(S(h)=h^{-1/2}/\log h\). If \(h\ge74500\), then
 $$
 E(h)<\frac{113}{50}S(h)<C(h).
 \tag{6.16}
 $$
 
-**Proof.** First put
-$\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt$.
-It equals $K_2(1,x)+I_2(x)-P_2(x)$. Formulas (6.5), (6.9) and (6.12) imply, for $x\ge366$,
+**Proof.** *Bounds for a weighted prime sum.* Let \(\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt\). Writing \(\theta=t+(\psi-t)-(\psi-\theta)\) gives \(\Theta_2=K_2(1,x)+I_2(x)-P_2(x)\). By (6.12), \(K_2(1,x)\ge2x^{-1}/\log x-x^{-1}/(\log x)^2\). For \(x\ge366\), \(B_2(x)\le\frac7{60}x^{-3/2}/\log x\), because \(c_0<1/20\), \(\log x\ge5\) and \(2+\frac15+\frac4{75}<\frac73\); and \(\frac7{60}+\frac{213}{100}<\frac94\). With (6.5) and (6.9) this gives, for \(x\ge366\),
 $$
-\Theta_2(x)\ge
-\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}
--\frac94\frac{x^{-3/2}}{\log x}
--\frac{\log(2\pi)x^{-2}}{\log x}.
+\Theta_2(x)\ge\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}-\frac94\,\frac{x^{-3/2}}{\log x}-\frac{\log(2\pi)\,x^{-2}}{\log x}.
 \tag{6.17}
 $$
-Indeed $B_2(x)\le(7/60)x^{-3/2}/\log x$, since
-$c_0<1/20$, $\log x\ge5$, and
-$2+1/5+4/(3\cdot25)<7/3$; together with $213/100$, this is less than $9/4$. For $x\ge2$, nonnegativity of $P_2$ also gives
+In the other direction, \(P_2\ge0\) gives, for \(x\ge2\),
 $$
 \Theta_2(x)\le\frac{2x^{-1}}{\log x}+B_2(x).
 \tag{6.18}
 $$
 
-Set $s=\sqrt{2h}$, $b=h/2$. Since $h\log h\le s^2\log s$, monotonicity of $u^2\log u$ gives
+*A lower bound for \(C(h)\).* Put \(s=\sqrt{2h}\) and \(b=h/2\); then \(s^2\log s=h\log(2h)\ge h\log h\). For \(p\le s\), both entries of the minimum in \(C(h)\) are at least \(\log p/(s^2\log s)\), the second because \(u^2\log u\) increases. For \(s<p\le b\) the minimum is \(p^{-2}\), because \(p^2\log p>s^2\log s\ge h\log h\). So
 $$
-C(h)\ge\frac{\theta(s)}{s^2\log s}
-+\sum_{s<p\le b}p^{-2}.
+C(h)\ge\frac{\theta(s)}{s^2\log s}+\sum_{s<p\le b}\frac1{p^2}.
 $$
-For $p\le s$, each minimum is at least $\log p/(s^2\log s)$; for $p>s$, it is $p^{-2}$. Abel summation now cancels the lower endpoint exactly:
+Since the derivative of \(1/(u^2\log u)\) is \(-w_2(u)\), summation by parts against \(d\theta\) evaluates the right side:
 $$
-\frac{\theta(s)}{s^2\log s}+\sum_{s<p\le b}p^{-2}
-=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
+\frac{\theta(s)}{s^2\log s}+\sum_{s<p\le b}\frac1{p^2}=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
 \tag{6.19}
 $$
-Here the derivative of $1/(u^2\log u)$ is $-w_2(u)$. Drop the nonnegative first term, apply (6.17) at $s$ and (6.18) at $b$, and divide by $S(h)$. With $L=\log h$, $c=\log2$, the resulting lower bound is
+Drop the first term, bound \(\Theta_2(s)\) below by (6.17) and \(\Theta_2(b)\) above by (6.18), and divide by \(S(h)\). With \(L=\log h\) and \(c=\log2\), so that \(\log s=(L+c)/2\) and \(\log b=L-c\), the quotient \(C(h)/S(h)\) is at least
 $$
 \begin{split}
-&2\sqrt2\,\frac{L}{L+c}\left(1-\frac1{L+c}\right)
--\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}
--\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
-&-4h^{-1/2}\frac{L}{L-c}
--2\sqrt2\,c_0h^{-1}\frac{L}{L-c}
- \left(2+\frac1{L-c}+\frac4{3(L-c)^2}\right).
+&2\sqrt2\,\frac{L}{L+c}\Bigl(1-\frac1{L+c}\Bigr)-\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}-\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
+&-4h^{-1/2}\frac{L}{L-c}-2\sqrt2\,c_0h^{-1}\frac{L}{L-c}\Bigl(2+\frac1{L-c}+\frac4{3(L-c)^2}\Bigr).
 \end{split}
 \tag{6.20}
 $$
 
-All constants in this comparison have elementary rational proofs. Subtracting successive values of $H_N-\log N$ gives
+*Elementary constants.* The differences of consecutive values of \(H_N-\log N\) give
 $$
-H_N-\log N-\gamma
-=\sum_{k=N}^\infty\left(\log(1+1/k)-\frac1{k+1}\right).
+H_N-\log N-\gamma=\sum_{k\ge N}\Bigl(\log\Bigl(1+\frac1k\Bigr)-\frac1{k+1}\Bigr),
 $$
-Every summand is positive. The trapezoid bound for the strictly convex function $1/t$ makes it smaller than
-$\tfrac12(1/k-1/(k+1))$, so telescoping proves
-$0<H_N-\log N-\gamma<1/(2N)$.
-In particular $\gamma<H_{256}-\log256$.
-The logarithm series used in Section 6.3 proves
+with positive summands; the trapezoid bound for the convex function \(1/t\) on \([k,k+1]\) bounds each by \(\frac12(\frac1k-\frac1{k+1})\). Telescoping gives \(0<H_N-\log N-\gamma<1/(2N)\), and in particular \(\gamma<H_{256}-\log256\). The logarithm series of Section 6.3 gives
 $$
-H_{256}\le15311/2500,\quad
-69314/100000\le\log2\le69315/100000,\quad
-\log(4\pi)\ge253/100.
+H_{256}\le\frac{15311}{2500},\qquad\frac{69314}{100000}\le\log2\le\frac{69315}{100000},\qquad\log(4\pi)\ge\frac{253}{100}.
 $$
-For the last inequality, the tangent identity
-$\pi=16\arctan(1/5)-4\arctan(1/239)$, with the alternating arctangent series, gives
+For the last bound, Machin's identity \(\pi=16\arctan\frac15-4\arctan\frac1{239}\) and the alternating arctangent series give \(\pi>16(\frac15-\frac1{375})-\frac4{239}>\frac{157}{50}\), so \(\log(4\pi)>\log\frac{314}{25}>\frac{253}{100}\). The identity is fixed on the correct branch as follows. The double-angle formula gives \(\tan(4\arctan\frac15)=\frac{120}{119}\), and the subtraction formula gives \(\tan\bigl(4\arctan\frac15-\arctan\frac1{239}\bigr)=1\). The angle lies in \((0,\pi/2)\), since \(4\arctan\frac15<\frac45<\frac\pi2\), where \(\pi>2\) follows from \(\frac\pi4=\int_0^1\frac{dt}{1+t^2}>\frac12\). Therefore
 $$
-\pi>16(1/5-1/375)-4/239>157/50;
+c_0<\frac{15311}{2500}-8\cdot\frac{69314}{100000}+2-\frac{253}{100}=\frac{154}{3125}<\frac1{20}.
 $$
-the branch is fixed because $4\arctan(1/5)-\arctan(1/239)$ lies in $(0,\pi/2)$. Indeed $\pi>2$ follows from $\pi/4=\int_0^1(1+t^2)^{-1}dt>1/2$, and this angle is between zero and $4/5$. The double-angle formula gives $\tan(4\arctan(1/5))=120/119$; the subtraction formula then gives tangent $(120/119-1/239)/(1+120/(119\cdot239))=1$. Thus $\log(4\pi)>\log(314/25)>253/100$.
-Consequently
+Also \(\pi<\frac{22}7\): integrating the identity
 $$
-c_0<15311/2500-8(69314/100000)+2-253/100
-=154/3125<1/20.
+\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}
 $$
-Also $\pi<22/7$, because
-$$
-\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}.
-$$
-Integration from zero to one gives $22/7-\pi>0$.
-Hence $\log(2\pi)<\log(44/7)<46/25$.
+over \([0,1]\) gives \(\frac{22}7-\pi>0\). Hence \(\log(2\pi)<\log\frac{44}7<\frac{46}{25}\).
 
-The same logarithm series and integer powers at $h=74500$ give
+*Monotonicity and endpoint values.* At \(h=74500\) the same tools give
 $$
-L\ge56/5,\quad Lh^{-1/6}\le87/50,\quad h^{-1/2}\le1/272.
+L\ge\frac{56}5,\qquad Lh^{-1/6}\le\frac{87}{50},\qquad h^{-1/2}\le\frac1{272}.
 $$
-The product $Lh^{-1/6}$ decreases thereafter because its logarithmic derivative with respect to $L$ is $-1/6+1/L<0$. The products involving $L/(L\pm c)$ also decrease: their logarithmic derivatives are
-$-a+c/[L(L+c)]$ or $-a-c/[L(L-c)]$, which are negative for the powers used here. Substitution in $E/S$, retaining its negative $L^{-1}$ coefficient, gives
+For larger \(h\), \(Lh^{-1/6}\) decreases, since \(\frac{d}{dL}\log(Lh^{-1/6})=1/L-1/6<0\). Every product \(h^{-a}L/(L\pm c)\) occurring in (6.20) also decreases, its logarithmic derivative in \(L\) being \(-a+c/(L(L+c))\) or \(-a-c/(L(L-c))\), which is negative here.
+
+*The upper bound for \(E\).* Write \(E(h)/S(h)=2+c_0\bigl(1+\frac1L+\frac4{L^2}\bigr)+\frac2L\bigl(Lh^{-1/6}-1\bigr)+\frac8{L^2}+\log(2\pi)h^{-1/2}\). With \(1/L\le5/56\) this gives
 $$
-\frac{E(h)}{S(h)}
-\le
-2+\frac{37}{25}\frac5{56}+8\left(\frac5{56}\right)^2
-+\frac1{20}\left(1+\frac5{56}+4\left(\frac5{56}\right)^2\right)
-+\frac{46}{25}\frac1{272}
-=\frac{113}{50}-\frac{1677}{1332800}.
+\frac{E(h)}{S(h)}\le2+\frac{37}{25}\cdot\frac5{56}+8\Bigl(\frac5{56}\Bigr)^2+\frac1{20}\Bigl(1+\frac5{56}+4\Bigl(\frac5{56}\Bigr)^2\Bigr)+\frac{46}{25}\cdot\frac1{272}=\frac{113}{50}-\frac{1677}{1332800}.
 \tag{6.21}
 $$
-For (6.20), the needed bounds are
+
+*The lower bound for \(C\).* For (6.20) we need
 $$
 \begin{gathered}
-\sqrt2\ge7071/5000,\quad2^{1/4}\le119/100,\\
-L/(L+c)\ge16/17,\quad1/(L+c)\le17/202,\\
-h^{-1/4}L/(L+c)\le573/10000,\\
-h^{-1/2}L/(L+c)\le7/2000,\\
-h^{-1/2}L/(L-c)\le197/50000,\quad L/(L-c)\le107/100.
+\sqrt2\ge\tfrac{7071}{5000},\qquad2^{1/4}\le\tfrac{119}{100},\qquad\frac{L}{L+c}\ge\tfrac{16}{17},\qquad\frac1{L+c}\le\tfrac{17}{202},\\
+h^{-1/4}\frac{L}{L+c}\le\tfrac{573}{10000},\qquad h^{-1/2}\frac{L}{L+c}\le\tfrac7{2000},\qquad h^{-1/2}\frac{L}{L-c}\le\tfrac{197}{50000},\qquad\frac{L}{L-c}\le\tfrac{107}{100}.
 \end{gathered}
 $$
-The square and fourth-root bounds follow by squaring or taking fourth powers. For the remaining endpoint checks use
-$56/5\le\log74500\le11219/1000$,
-$74500^{-1/6}\le1549/10000$,
-$74500^{-1/4}\le606/10000$, and $74500^{-1/2}\le1/272$;
-the asserted power inequalities follow by clearing denominators and raising to the respective powers. Monotonicity just proved extends them to every larger $h$. Since $L-c>10$, the last line of (6.20) has absolute value at most $1/10000$. Therefore (6.20) is at least
+The first two hold after squaring and taking fourth powers. The others are checked at \(h=74500\) using \(\frac{56}5\le\log74500\le\frac{11219}{1000}\), \(74500^{-1/6}\le\frac{1549}{10000}\), \(74500^{-1/4}\le\frac{606}{10000}\) and \(74500^{-1/2}\le\frac1{272}\), and extend to larger \(h\) by the monotonicity just proved. As \(L-c>10\), the last term of (6.20) is at most \(1/10000\) in absolute value. Therefore (6.20) is at least
 $$
-2\frac{7071}{5000}\frac{16}{17}\left(1-\frac{17}{202}\right)
--\frac94\frac{119}{100}\frac{573}{10000}
--\frac{46}{25}\frac7{2000}-4\frac{197}{50000}-\frac1{10000}
-=\frac{113}{50}+\frac{15597889}{6868000000}.
+2\cdot\frac{7071}{5000}\cdot\frac{16}{17}\Bigl(1-\frac{17}{202}\Bigr)-\frac94\cdot\frac{119}{100}\cdot\frac{573}{10000}-\frac{46}{25}\cdot\frac7{2000}-4\cdot\frac{197}{50000}-\frac1{10000}=\frac{113}{50}+\frac{15597889}{6868000000}.
 \tag{6.22}
 $$
-This proves both strict inequalities in (6.16). The coefficient checks use exact integers and the convergent logarithm series, not decimal estimates of prime functions. $\square$
+Together, (6.21) and (6.22) prove (6.16). All the constants come from exact integer arithmetic and convergent series, not from decimal values of prime-counting functions. \(\square\)
 
-Lemmas 6.5–6.6 prove (6.1) under RH whenever $\log n\ge74500$.
+By Lemmas 6.5 and 6.6, RH implies (6.1) for every \(n\) with \(\log n\ge74500\).
 
-### 6.3. A complete finite verification
+### 6.3. The finite range of heights
 
-The remaining interval is finite in logarithmic height, but contains far too many integers for a direct divisor sieve. We use an envelope that bounds every integer in an interval at once.
+Between \(n=5041\) and \(\log n=74500\) the integers are far too many for a divisor sieve. Instead we bound all integers of a height interval at once.
 
-The gain from raising the exponent of $p$ from $j-1$ to $j$ is
+Raising the exponent of \(p\) from \(j-1\) to \(j\) multiplies \(\sigma_1(p^a)/p^a\) by \(e^{g_{p,j}}\), where
 $$
-g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}.
+g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}=\log\Bigl(1+\frac1{p(1+p+\cdots+p^{j-1})}\Bigr).
 $$
-For any rational $\varepsilon>0$,
+So \(\log A(n)=\sum_p\sum_{j\le a_p}g_{p,j}\). Subtracting \(\varepsilon\log p\) for each prime-power step and keeping only the positive differences gives, for every rational \(\varepsilon>0\),
 $$
-\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad
-B_\varepsilon=\sum_{p,j}\max(0,g_{p,j}-\varepsilon\log p).
+\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad B_\varepsilon=\sum_{p,j}\max\bigl(0,\,g_{p,j}-\varepsilon\log p\bigr).
 \tag{6.23}
 $$
-The product formula for $\sigma_1(p^a)/p^a$ telescopes into these gains. Extending its actual events to all positive events proves (6.23). The sum is finite: $g_{p,j}/\log p$ decreases both in $p$ and in $j$. For the $p$ assertion, write the gain as
-$\log(1+1/[p(1+p+\cdots+p^{j-1})])$; its numerator decreases, while $\log p$ increases. For the $j$ assertion the denominator increases.
+The ratio \(g_{p,j}/\log p\) decreases in \(p\) and in \(j\): the second form of \(g_{p,j}\) decreases in both, while \(\log p\) increases. Hence the sum is finite. If integers \(c_1,\ldots,c_r\) satisfy \(g_{c_j+1,j}\le\varepsilon\log(c_j+1)\) and \(g_{2,r+1}\le\varepsilon\log2\), every positive term has \(j\le r\) and \(p\le c_j\). For \(h=\log n\) in an interval \([a,b]\) this gives
+$$
+\mathcal R(n)\le f_\varepsilon(h)=\varepsilon h+B_\varepsilon-\gamma-\log\log h .
+$$
+The function \(f_\varepsilon\) is convex, as \(f_\varepsilon''(h)=(\log h+1)/(h^2(\log h)^2)>0\). Its maximum on \([a,b]\) is therefore attained at an endpoint, and negative values at both endpoints prove \(\mathcal R<0\) on the whole interval.
 
-Suppose integer cutoffs $c_1,\ldots,c_r$ satisfy
-$g_{c_j+1,j}\le\varepsilon\log(c_j+1)$ and
-$g_{2,r+1}\le\varepsilon\log2$.
-These inequalities prove that no positive event is omitted outside the finite box $p\le c_j$. On an interval $h\in[a,b]$,
+The verifier below uses integer arithmetic only. It checks every integer \(5041\le n\le720720\) directly, and then the finite boxes for 36 rational intervals that cover \(336/25\le h\le37283397387/500000\), beyond \(74500\); the two ranges overlap since \(\log720720>336/25\). Logarithms are evaluated, after removing a power of two, by
 $$
-\mathcal R(n)\le f_\varepsilon(h)
-=\varepsilon h+B_\varepsilon-\gamma-\log\log h.
+\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\qquad z=\frac{r-1}{r+1},\quad1\le r\le2,\quad0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)},
 $$
-Its second derivative is $(\log h+1)/(h^2(\log h)^2)>0$.
-Thus $f_\varepsilon(h)\le\max(f_\varepsilon(a),f_\varepsilon(b))$.
-A negative bound at both endpoints proves the inequality throughout the interval.
-
-The following complete verifier uses only integers. It checks every integer $5041\le n\le720720$, then the finite boxes for the 36 displayed rational intervals. Those intervals cover $336/25\le h\le37283397387/500000>74500$; $\log720720>336/25$ provides the overlap. For logarithms, after extracting a power of two, use
-$$
-\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\quad
-z=\frac{r-1}{r+1},\quad1\le r\le2,\quad
-0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)}.
-$$
-Since $z\le1/3$ and $Q=10^{24}$, the last bound is $<1/Q$.
-Every integer division below rounds in its indicated direction; this proves the returned logarithm intervals inductively. The harmonic lower bound
-$\gamma>H_N-\log N-1/(2N)$ uses the trapezoid inequality for $1/t$, summed from $N$ to infinity. The sieve is Eratosthenes, and the divisor loop adds each divisor to exactly its multiples. These observations prove the soundness of every test in the code; its output is a finite exact certificate.
+and since \(z\le1/3\) the remainder is below \(1/Q\) with \(Q=10^{24}\). Every integer division rounds in the direction stated in the code, so the returned logarithm intervals are correct by induction. The lower bound \(\gamma>H_N-\log N-1/(2N)\) is the trapezoid estimate above. Primes come from the sieve of Eratosthenes, and \(\sigma_1\) is tabulated by adding every \(d\) to the entries of its multiples. Each test in the program is therefore sound, and its output is an exact finite certificate.
 
 ```python
 from functools import lru_cache
@@ -842,18 +729,15 @@ print('All 36 height intervals, startup integers '
       'and coefficient checks passed.')
 ```
 
-All 36 boxes and both endpoint tests pass. The smallest endpoint margin in that verification is greater than $139/10^6$. In the direct integer range the smallest logarithmic margin occurs at $n=10080$, and is greater than $14/1000$. These are downward bounds on exact integer margins, not rounded predicates. Together with (6.16), they prove the RH implication for every integer $n>5040$.
+All 36 boxes pass at both endpoints, with smallest endpoint margin greater than \(139/10^6\). In the direct range the smallest logarithmic margin, attained at \(n=10080\), exceeds \(14/1000\). These are lower bounds for exact integer margins, not rounded decimal tests. With (6.16) they prove that RH implies (6.1) for every \(n>5040\).
 
-### 6.4. An off-line zero forces violations
+### 6.4. The converse: an off-line zero forces violations
 
-We give the converse, including the positivity principle that produces its oscillation. Define
+Without assuming RH, put
 $$
-J(x)=I_1(x),\quad
-K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\quad
-F(x)=e^\gamma\log\theta(x)\prod_{p\le x}(1-1/p).
+J(x)=I_1(x),\qquad K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\qquad F(x)=e^\gamma\log\theta(x)\prod_{p\le x}\Bigl(1-\frac1p\Bigr),
 $$
-These definitions are used for sufficiently large $x$, so $\theta(x)>1$.
-They do not assume RH. The classical PNT error in lesson twelve makes $J,K$ absolutely convergent and bounded.
+for \(x\) so large that \(\theta(x)>1\). By the classical error term of lesson twelve, both integrals converge absolutely and stay bounded.
 
 **Lemma 6.7 (finite-product comparison).**
 $$
@@ -861,163 +745,83 @@ $$
 \tag{6.24}
 $$
 
-**Proof.** Formula (6.15), and
-$\log(1-p^{-1})=-p^{-1}+m_p$, give the exact identity
+**Proof.** Insert (6.15) and \(\log(1-p^{-1})=-p^{-1}+m_p\) into the definition of \(F\). With \(B_1^{\rm prime}=\gamma+\sum_pm_p\) one obtains
 $$
-\log F(x)=K(x)+R_\theta(x)+R_M(x),
+\log F(x)=K(x)+R_\theta(x)+R_M(x),\qquad
+R_\theta(x)=\log\log\theta(x)-\log\log x-\frac{\theta(x)-x}{x\log x},\qquad R_M(x)=-\sum_{p>x}m_p .
 $$
-$$
-R_\theta(x)=\log\log\theta(x)-\log\log x
--\frac{\theta(x)-x}{x\log x},\qquad
-R_M(x)=-\sum_{p>x}m_p.
-$$
-The function $y\mapsto\log\log y$ is concave for $y>1$, so its tangent at $x$ proves $R_\theta(x)\le0$. The positive logarithm series gives
-$$
-0\le-m_p=\sum_{j\ge2}\frac1{jp^j}
-\le\frac1{p(p-1)}\le\frac2{p^2}.
-$$
-Thus $0\le R_M(x)\le4/x$, by comparison with the integer square tail. Finally
-$J(x)-K(x)=P_1(x)\ge0$. These three facts prove (6.24). $\square$
+Concavity of \(y\mapsto\log\log y\) on \(y>1\) puts its graph below its tangent line at \(x\), which is the statement \(R_\theta(x)\le0\). Since \(0\le-m_p=\sum_{j\ge2}1/(jp^j)\le1/(p(p-1))\le2/p^2\), comparison with \(\sum_{n>x}2/n^2\) gives \(0\le R_M(x)\le4/x\). Finally \(J(x)-K(x)=P_1(x)\ge0\). \(\square\)
 
-**Lemma 6.8 (negative weighted oscillation).** If RH is false, there exist $0<b<1/2$ and $a>0$ such that, for arbitrarily large $x$,
+**Lemma 6.8 (negative weighted oscillation).** Suppose RH fails. Then some \(a>0\) and \(0<b<1/2\) satisfy
 $$
-J(x)\le-a x^{-b}.
+J(x)\le-a\,x^{-b}
 \tag{6.25}
 $$
+for arbitrarily large \(x\).
 
-**Proof.** By the symmetries already proved in lesson four, choose a zero
-$\rho=\beta+i\gamma_\rho$ with $1/2<\beta<1$; lesson eight, Theorem 1.1, excludes the boundary line, and reflection excludes the other boundary.
-At its fixed ordinate choose a zero $\rho_*$ having the largest real part; there are only finitely many zeros at this ordinate by isolation and the compactness of the closed critical strip. Write $\beta_*=\Re\rho_*$, and choose
-$1-\beta_*<b<1/2$.
+**Proof.** *Choice of the zero.* By the symmetries proved in lesson four, some zero \(\rho=\beta+i\gamma_\rho\) has \(1/2<\beta<1\); lesson eight, Theorem 1.1, excludes \(\beta=1\). The zeros with ordinate \(\gamma_\rho\) are finitely many, since zeros are isolated and the closed critical strip is compact. Let \(\rho_*\) be one of them with the largest real part \(\beta_*\), and choose \(b\) with \(1-\beta_*<b<1/2\).
 
-We first compute the transform that detects this zero. For $\Re z>1$, integration of the absolutely convergent von Mangoldt series gives
+*A transform that sees the zero.* For \(\operatorname{Re}z>1\), integrating the von Mangoldt series termwise gives
 $$
-\Phi_3(z):=\int_3^\infty(\psi(t)-t)t^{-z-1}\,dt
-=-\frac{\zeta'(z)}{z\zeta(z)}-\frac1{z-1}
--\int_1^3(\psi(t)-t)t^{-z-1}\,dt.
+\Phi_3(z):=\int_3^\infty(\psi(t)-t)\,t^{-z-1}\,dt=-\frac{\zeta'(z)}{z\zeta(z)}-\frac1{z-1}-\int_1^3(\psi(t)-t)\,t^{-z-1}\,dt .
 \tag{6.26}
 $$
-The last integral is entire. The apparent pole at $z=1$ cancels by the Laurent expansion of zeta there; a zero $\rho$ of multiplicity $d$ instead gives the genuine principal part $-d/[\rho(z-\rho)]$. The right side therefore continues $\Phi_3$ meromorphically.
-
-For $t>1$,
+The integral over \([1,3]\) is an entire function of \(z\), and the poles at \(z=1\) cancel by the Laurent expansion of \(\zeta\). So (6.26) continues \(\Phi_3\) meromorphically, with principal part \(-d/[\rho(z-\rho)]\) at a zero \(\rho\) of multiplicity \(d\). Since \(w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du\) for \(t>1\), Fubini's theorem and \(\int_3^tx^{s-1}\,dx=(t^s-3^s)/s\) give, for \(\operatorname{Re}s<0\),
 $$
-w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du.
-$$
-For $\Re s<0$, Fubini and the integral over $3<x<t$ now give
-$$
-\int_3^\infty x^{s-1}J(x)\,dx
-=\int_0^\infty(u+1)
-\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}s\,du.
+\int_3^\infty x^{s-1}J(x)\,dx=\int_0^\infty(u+1)\,\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}{s}\,du .
 \tag{6.27}
 $$
-Fubini is absolute: the classical PNT bound controls the $u=0$ endpoint, and the lower limit $t=3$ gives exponential decay as $u\to\infty$. At $s=0$ the numerator has a removable quotient whenever the zero-dependent continuation is regular. Formula (6.27) thus gives a holomorphic continuation at every real $s<b$: its zeta arguments are real and greater than $1-b>1/2$, where there are no real zeros by lesson one, Theorem 5.1 and its Euler product, and the pole at one has been removed. On compact neighbourhoods of each such real $s$, the bounded $u$-range avoids zeros, and the large-$u$ integrand decays exponentially. These bounds justify differentiation and the continuation, not merely a formal substitution in an improper integral.
+The interchange is absolute: for small \(u\) the classical error term bounds the integrand, and for large \(u\) the factor \(t^{-u}\) with \(t\ge3\) decays exponentially. The numerator vanishes at \(s=0\), so the quotient is regular there. For real \(s<b\), the arguments \(u+1-s\) are real and exceed \(1-b>1/2\), where \(\zeta\) has no zeros by lesson one, Theorem 5.1, and the pole has been removed. On compact neighbourhoods of such \(s\), the integrand is bounded for bounded \(u\) and decays exponentially for large \(u\). Hence (6.27) continues holomorphically to a neighbourhood of every real \(s<b\), together with its derivatives.
 
-Suppose (6.25) fails. In particular, eventually $J(x)+x^{-b}>0$; choose its starting point $X\ge3$, and form the nonnegative measure
+*Positivity.* Suppose (6.25) fails. Then \(J(x)+x^{-b}>0\) for all \(x\) beyond some \(X\ge3\). The measure \(d\mu=\mathbf1_{x>X}(J(x)+x^{-b})\,dx/x\) is nonnegative, and for \(\operatorname{Re}s<0\)
 $$
-d\mu(x)=\mathbf1_{x>X}\bigl(J(x)+x^{-b}\bigr)\frac{dx}{x}.
+G(s)=\int x^s\,d\mu(x)=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}.
 $$
-Its transform is initially
+Removing \([3,X]\) from (6.27) changes it by an entire function, so \(G\) continues holomorphically near every real \(s<b\). We use the following positivity principle. Let \(\alpha\) be the supremum of the real \(\sigma\) with \(\int x^\sigma d\mu<\infty\). For real \(a'<\alpha\), differentiation under the integral gives \(G^{(k)}(a')=\int x^{a'}(\log x)^kd\mu\ge0\). If the continuation were holomorphic near the real point \(\alpha\), we could choose \(a'<\alpha\) so close to \(\alpha\) that the Taylor series of \(G\) at \(a'\) converges at some \(a'+d>\alpha\). By monotone convergence,
 $$
-G(s)=\int_X^\infty x^s\,d\mu(x)
-=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}
-\quad(\Re s<0).
+\int x^{a'+d}\,d\mu=\sum_{k\ge0}\frac{d^k}{k!}\,G^{(k)}(a')<\infty,
 $$
-Removing the finite interval $[3,X]$ from (6.27) changes its continuation by an entire function. Consequently $G$ has a holomorphic continuation near every real $s<b$.
+contradicting the definition of \(\alpha\). Here the continuation is holomorphic near every real point below \(b\), so \(\alpha\ge b\), and the integral defining \(G\) is holomorphic throughout \(\operatorname{Re}s<b\).
 
-Here is the required positivity principle in full. Let $\alpha$ be the supremum of the real exponents for which a nonnegative measure on $x>X>1$ has finite $\int x^\sigma\,d\mu$. At an interior real exponent $a<\alpha$, differentiating under a slightly larger exponential majorant gives
+*The contradiction.* Put \(s_0=1-\rho_*\); then \(\operatorname{Re}s_0=1-\beta_*<b\). Let \(s=s_0-\delta\) with \(\delta\downarrow0\). In (6.27) the argument \(u+1-s\) equals \(\rho_*+u+\delta\), and by the maximality of \(\beta_*\) there is no zero on this ray for \(u+\delta>0\). Near \(u=0\) the principal part from (6.26) is
 $$
-G^{(k)}(a)=\int x^a(\log x)^k\,d\mu\ge0.
+-\frac{d}{\rho_*}\,\frac1{u+\delta}+O(1),
 $$
-If the analytic continuation were regular at a finite real boundary $\alpha$, choose $a$ close enough to $\alpha$ that its Taylor disk reaches $\alpha+\eta$ for some $\eta>0$. Its Taylor coefficients are these nonnegative moments. Monotone convergence applied to the exponential power series gives
-$$
-\int x^{a+d}\,d\mu
-=\sum_{k\ge0}\frac{d^k}{k!}G^{(k)}(a)<\infty
-$$
-for a $d>0$ with $a+d>\alpha$, a contradiction. This proves that the real boundary cannot be regular. In our case the continuation is regular at every real exponent below $b$, so $\alpha\ge b$. The actual integral $G$ is therefore holomorphic throughout $\Re s<b$; local exponential majorants also prove this assertion and its derivatives directly.
+whose integral in (6.27) contributes \(-\frac{d}{\rho_*s_0}\log(1/\delta)\) plus a bounded amount. The rest of the \(u\)-integral, the subtracted term, the finite piece removed and \(X^{s-b}/(b-s)\) stay bounded as \(\delta\downarrow0\). So the continuation along this ray tends to infinity in modulus. It equals the actual \(G\) on the ray, by continuation from \(\operatorname{Re}s<0\) along a horizontal path that meets no singularity, again by maximality. But \(G\) is holomorphic at \(s_0\), hence bounded near it. This contradiction proves (6.25). \(\square\)
 
-Put $s_0=1-\rho_*$, whose real part is less than $b$, and approach it by $s=s_0-\delta$, $\delta>0$. In (6.27), the zeta argument is $\rho_*+\delta+u$. Maximality at this ordinate guarantees no zero on that ray for $u+\delta>0$. The small-$u$ principal part in (6.26) is
+Let \(L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)\), and for primes \(p\le x\) let \(a_p=\lfloor\log x/\log p\rfloor\). Then \(\log L_x=\psi(x)\), and the geometric-series formula for \(\sigma_1(p^{a_p})/p^{a_p}\) gives the exact identity
 $$
--\frac{d}{\rho_*}\frac1{\delta+u}+O(1).
-$$
-Its integral in (6.27) consequently has the nonzero divergent term
-$$
--\frac{d}{\rho_*s_0}\log(1/\delta).
-$$
-The rest of the $u$-integral is bounded as $\delta\downarrow0$: away from the chosen endpoint it has no zero pole, and its large-$u$ part decays exponentially. The subtracted term, finite startup integral, and added power $X^{s-b}/(b-s)$ are all regular at $s_0$. The expression therefore tends to infinity in modulus. It agrees with the actual $G$ along this ray by analytic continuation from $\Re s<0$; the intervening horizontal ray is free of zero singularities for the same maximality reason. But the actual $G$ is holomorphic at $s_0$, so is locally bounded. The contradiction proves (6.25). $\square$
-
-Now let $L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)$. For every prime $p\le x$, write $a_p=\lfloor\log x/\log p\rfloor$. Then
-$\log L_x=\psi(x)$, and its geometric-series factors give the exact identity
-$$
-\mathcal R(L_x)=-\log F(x)-D(x)-T(x),
-$$
-$$
+\mathcal R(L_x)=-\log F(x)-D(x)-T(x),\qquad
 D(x)=\log\log\psi(x)-\log\log\theta(x),\qquad
 T(x)=-\sum_{p\le x}\log(1-p^{-a_p-1}).
 \tag{6.28}
 $$
-Both losses are nonnegative. Chebyshev and the prime-power comparison give
-$\psi(x)-\theta(x)=O(\sqrt x\log x)$ and $\theta(x)\asymp x$.
-The mean-value theorem for $\log\log y$ gives $D(x)=O(x^{-1/2})$.
-For $p\le\sqrt x$, $p^{a_p+1}>x$, so the sum of their missing factors is at most $\sqrt x/x$. For $p>\sqrt x$, $a_p=1$, and their square tail is at most $\sum_{m>\sqrt x}m^{-2}=O(x^{-1/2})$. Since
-$-\log(1-v)\le2v$ for $0\le v\le1/2$, this proves $T(x)=O(x^{-1/2})$.
-Thus $D(x)+T(x)=o(x^{-b})$.
+Both \(D\) and \(T\) are nonnegative. Chebyshev's bounds and the prime-power comparison give \(\psi(x)-\theta(x)=O(\sqrt x\log x)\) and \(\theta(x)\asymp x\), so the mean value theorem gives \(D(x)=O(x^{-1/2})\). For \(p\le\sqrt x\) we have \(p^{a_p+1}>x\), and these at most \(\sqrt x\) primes contribute missing factors totalling at most \(\sqrt x/x\). For \(p>\sqrt x\) we have \(a_p=1\), and \(\sum_{m>\sqrt x}m^{-2}=O(x^{-1/2})\). With \(-\log(1-v)\le2v\) for \(0\le v\le1/2\), this gives \(T(x)=O(x^{-1/2})\). Hence \(D+T=o(x^{-b})\).
 
-Combining (6.24)–(6.25) with (6.28), at arbitrarily large $x$ one has
-$\mathcal R(L_x)\ge(a/2)x^{-b}>0$.
-These are literal integer violations of (6.1), and $L_x>5040$ eventually. This proves the converse, and hence Robin's complete equivalence. It also proves the quantitative surplus needed next, rather than only one isolated counterexample.
+Combining (6.24), (6.25) and (6.28), at arbitrarily large \(x\) we get \(\mathcal R(L_x)\ge(a/2)x^{-b}>0\). These are actual integers violating (6.1), and \(L_x>5040\) eventually. This completes the proof of Robin's equivalence. It also gives the quantitative surplus used in Section 6.5, not merely a single counterexample.
 
-### 6.5. The harmonic criterion in both directions
+### 6.5. The harmonic criterion
 
-The RH implication follows from the harmonic comparison (6.30) below and Robin's inequality, with the finite range proved separately. For the converse, elementary integration gives
+*RH implies (6.2).* Since \(H_n-\log n\) decreases to \(\gamma\), we have \(H_n\ge\log n+\gamma\). Once \(n\ge3\), the numbers \(\log\log n\) and \(\log H_n\) are positive, so
 $$
-H_n=\log n+\gamma+\eta_n,\qquad0<\eta_n<1/n.
-$$
-Indeed, the preceding telescoping series for $\eta_n$ has positive summands bounded by $1/k-1/(k+1)$, whose tail is $1/n$. The bounds already proved at $N=1$ also give $0<\gamma<1$.
-For sufficiently large $n$, $e^{\eta_n}\le1+2/n$, and
-$$
-\log H_n\le\log\log n+\frac{\gamma+1}{\log n}.
-$$
-Since $0<\gamma<1$, these imply, with an absolute constant $C$,
-$$
-\frac{H_n+e^{H_n}\log H_n}{n}
-\le e^\gamma\log\log n+\frac C{\log n}.
-\tag{6.29}
-$$
-The terms $H_n/n$ and $(\log\log n)/n$ are absorbed by the same upper bound.
-
-If RH were false, the integer sequence constructed after (6.28) would instead give
-$$
-\frac{\sigma_1(L_x)}{L_x}
-\ge e^\gamma\log\log L_x\,
- \bigl(1+(a/2)x^{-b}\bigr).
-$$
-Here $\log L_x=\psi(x)\asymp x$. The surplus
-$\gg(\log x)x^{-b}$ is larger than $C/\log L_x=O(1/x)$, because $b<1/2$. It contradicts (6.2) by (6.29). Thus (6.2) implies RH.
-
-Here are useful elementary details of the passage to the harmonic criterion. Since $H_n-\log n$ decreases to $\gamma$, one has $H_n\ge\log n+\gamma$. For $n\ge3$, both $\log\log n$ and $\log H_n$ are positive, and therefore
-$$
-e^{H_n}\log H_n\ge e^\gamma n\log\log n.
+e^{H_n}\log H_n\ge e^\gamma n\log\log n .
 \tag{6.30}
 $$
-Under RH, (6.1) and (6.30) make (6.2) strict for $n>5040$. At $n=1$, both sides of (6.2) equal one.
-
-For completeness, strictness in the remaining finite range has the following reproducible rational certificate. Put $Q=10^6$ and
+Combined with (6.1), this gives strict inequality in (6.2) for every \(n>5040\), assuming RH. For \(n=1\) the two sides of (6.2) coincide, both being one. For \(2\le n\le5040\) we verify strictness by exact rational arithmetic. Let \(Q=10^6\) and
 $$
-h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,
-\qquad z_n=\frac{h_n-1}{h_n+1}.
+h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,\qquad z_n=\frac{h_n-1}{h_n+1}.
 $$
-For $n\ge2$, $h_n>1$ and $0<z_n<1$. Positive series give
+For \(n\ge2\), \(h_n>1\) and \(0<z_n<1\), and the positive series give
 $$
-e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad
-\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1}.
+e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1};
 \tag{6.31}
 $$
-The logarithm series follows by integrating $2/(1-z^2)$ from zero to $z_n$. Every term omitted in either series is positive. Since $h+e^h\log h$ is increasing for $h>1$, the exact inequalities
+the logarithm series comes from integrating \(2/(1-z^2)\) from \(0\) to \(z_n\), and every omitted term is positive. As \(h+e^h\log h\) increases for \(h>1\), the inequalities
 $$
 \sigma_1(n)<h_n+E_nL_n\qquad(2\le n\le5040)
 \tag{6.32}
 $$
-imply the required strictness. The following complete calculation checks all 5039 inequalities (6.32) using only integers and rational fractions. It adds every divisor to exactly its multiples and evaluates the two positive truncated series. Every assertion passes, and the smallest rational margin occurs at $n=2$.
+imply strictness in this range. The program below checks all 5039 of them with integers and rational fractions, adding each divisor to its multiples and summing the two truncated series. Every check passes, and the smallest margin occurs at \(n=2\).
 
 ```python
 from fractions import Fraction
@@ -1042,21 +846,28 @@ print('All 5039 strict harmonic inequalities passed; '
       'smallest margin at',minimum[0])
 ```
 
-Together with (6.30), these finite comparisons prove the equality assertion. $\square$
+*(6.2) implies RH.* Telescoping as in Section 6.2 gives \(H_n=\log n+\gamma+\eta_n\) with \(0<\eta_n<1/n\), and the case \(N=1\) gives \(0<\gamma<1\). For large \(n\), \(e^{\eta_n}\le1+2/n\) and \(\log H_n\le\log\log n+(\gamma+1)/\log n\). Hence, with an absolute constant \(C\),
+$$
+\frac{H_n+e^{H_n}\log H_n}{n}\le e^\gamma\log\log n+\frac C{\log n},
+\tag{6.29}
+$$
+the terms \(H_n/n\) and \((\log\log n)/n\) being absorbed into \(C/\log n\). If RH is false, the integers \(L_x\) of Section 6.4 satisfy
+$$
+\frac{\sigma_1(L_x)}{L_x}\ge e^\gamma\log\log L_x\,\bigl(1+(a/2)x^{-b}\bigr).
+$$
+Here \(\log L_x=\psi(x)\asymp x\), so the surplus is of order \((\log x)\,x^{-b}\), while \(C/\log L_x=O(1/x)\). As \(b<1/2\), the surplus is larger for large \(x\), and (6.29) shows that (6.2) fails at \(n=L_x\). So (6.2) implies RH.
 
-**Example 6.9 (the exceptional endpoint).** Since $5040=2^4\cdot3^2\cdot5\cdot7$,
+The inequalities (6.30) and (6.32), and the case \(n=1\), also prove the equality statement of Theorem 6.1. \(\square\)
+
+**Example 6.9 (the exceptional endpoint).** Since \(5040=2^4\cdot3^2\cdot5\cdot7\),
 $$
-\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344.
+\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344,
 $$
-Direct numerical evaluation gives
+whereas \(e^\gamma\cdot5040\log\log5040=19237.0615316637\ldots\). The first verifier proves this with rational bounds: \(\gamma<579/1000\); \(e^{579/1000}<357/200\), from 20 Taylor terms and a geometric tail of ratio \((579/1000)/21\); and \(\log\log5040<1073/500\). Thus
 $$
-e^\gamma\,5040\log\log5040=19237.0615316637\ldots.
+e^\gamma\cdot5040\log\log5040<\frac{357}{200}\cdot\frac{1073}{500}\cdot5040<19344,
 $$
-The first verifier also proves the strict rational bounds $\gamma<579/1000$, $e^{579/1000}<357/200$, and $\log\log5040<1073/500$. The exponential bound uses its first 20 Taylor terms, with the remaining terms bounded by the geometric tail of ratio $(579/1000)/21$. Thus
-$$
-e^\gamma5040\log\log5040<\frac{357}{200}\frac{1073}{500}5040<19344,
-$$
-which proves that Robin's inequality fails at 5040. The strict range $n>5040$ cannot be replaced by $n\ge5040$. In contrast, the endpoint $n=1$ belongs in (6.2), with its non-strict sign: $H_1=1$, $\log H_1=0$, and $\sigma_1(1)=1$.
+and Robin's inequality fails at \(n=5040\). The range \(n>5040\) in (6.1) cannot be enlarged to \(n\ge5040\). In (6.2), by contrast, \(n=1\) is included with equality: \(H_1=1\), \(\log H_1=0\) and \(\sigma_1(1)=1\).
 
 ## 7. The Nyman–Beurling approximation criterion
 
@@ -1547,7 +1358,7 @@ These calculations supply the surface and degree inputs of the earlier written c
 
 The zero-boundary and prime-error comparison is Koukoulopoulos, [*The Distribution of Prime Numbers*, freely readable author preliminary version](https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf), Chapter 6, Theorem 6.1. Bombieri, [*Problems of the Millennium: the Riemann Hypothesis*](https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf), Sections II–IV, gives freely readable context. Sections 1–5 and 7 prove their results using the preceding lessons.
 
-Sections 6.1–6.5 adapt Whidden, [*Robin's 1984 criterion for the Riemann hypothesis: a formally verified proof*, release 1.1.1](https://github.com/kimihiro64/Robin1984/releases/download/v1.1.1/robin1984-formalization.pdf), revision `acab1a31f31e0499518a4416b63281e0b4838f9c`, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The adaptation and changes are identified before Section 6.1. All arguments, 36 finite-cover rows and complete verification programs needed for Theorem 6.1 appear in this lesson. The exact integer programs and their original explanation are CC0. A second comparison is Lagarias, [*An elementary problem equivalent to the Riemann hypothesis*, free author preprint, version 2](https://arxiv.org/pdf/math/0008177v2), Theorem 1.1 and its proof. The course has executed its own finite certificates; it does not claim to have rerun the source's formal project.
+Whidden, [*Robin's 1984 criterion for the Riemann hypothesis: a formally verified proof*, release 1.1.1](https://github.com/kimihiro64/Robin1984/releases/download/v1.1.1/robin1984-formalization.pdf), revision `acab1a31f31e0499518a4416b63281e0b4838f9c`, gives a formally verified proof of Robin's criterion; Sections 6.1–6.5 follow its overall plan and use the 36 finite-cover rows of its certificate. All arguments and complete verification programs needed for Theorem 6.1 appear in this lesson. A second comparison is Lagarias, [*An elementary problem equivalent to the Riemann hypothesis*, free author preprint, version 2](https://arxiv.org/pdf/math/0008177v2), Theorem 1.1 and its proof. The course has executed its own finite certificates; it does not claim to have rerun the source's formal project.
 
 Burnol, [*On an analytic estimate in the theory of the Riemann zeta function and a theorem of Báez-Duarte*, free author preprint](https://arxiv.org/pdf/math/0202166v1), Sections 2–3, and Bagchi, [*On Nyman, Beurling and Báez-Duarte's Hilbert space reformulation of the Riemann hypothesis*, free author preprint](https://arxiv.org/pdf/math/0607733v1), Lemma 3 and Theorems 2 and 5, explain analytic versions of the approximation criterion. The proof here supplies the complete smoothed estimate (7.4) and uses the earlier proved convexity bound.
 

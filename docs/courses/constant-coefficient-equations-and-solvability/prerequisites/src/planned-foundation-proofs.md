@@ -96,7 +96,7 @@ Statement retained from [Choosing polynomial and exponential approximants](../..
 
 ## Compact singular-support convex-hull equality
 
-Contract identifier: `convex-singular-support-hull-differential`. Proof status: planned.
+Proof reference: [Locating singularities through logarithmic Fourier strips](../../AN02-L158.html#5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull), Theorem 5.1.
 
 Throughout, \(P\) is a nonzero constant-coefficient complex polynomial, \(D=-i\partial\), and \(P^t=P(-D)\) is the complex-linear transpose. Singular support is denoted by \(\operatorname{singsupp}\): its complement is the largest open set on which a distribution is smooth. Differential operators do not increase singular support.
 
@@ -108,7 +108,7 @@ We use the following compact Fourier prerequisite, for \(v\in\mathcal E'(\mathbb
 =\operatorname{ch}\operatorname{singsupp}v,
 \tag{2}
 \]
-The convex hull of the empty set is empty. This is the singular-support version of the compact support theorem. The full compact singular-support hull statement is a planned prerequisite of Distributions, kernels and analytic singularities. It is separate from the already proved ordinary support-hull theorem. In particular, a compact distribution whose image is smooth is itself smooth. Formula (2) places every singularity of \(v\) in the convex hull of the singularities of \(P^tv\). For an open convex \(X\), that hull lies in \(X\) and proves (1).
+The convex hull of the empty set is empty. This is the singular-support version of the compact support theorem. The full compact polynomial singular-support hull identity is proved in [Locating singularities through logarithmic Fourier strips](../../AN02-L158.html#5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull), Theorem 5.1, including the empty singular-support case. It applies to the transpose because its symbol is the original polynomial evaluated at the negative Fourier variable, which is also nonzero. It is separate from the already proved ordinary support-hull theorem. In particular, a compact distribution whose image is smooth is itself smooth. Formula (2) places every singularity of \(v\) in the convex hull of the singularities of \(P^tv\). For an open convex \(X\), that hull lies in \(X\) and proves (1).
 
 Statement retained from [Singular supports and arbitrary distribution data](../../src/singular-supports-and-distribution-data.md), source lines 26–32.
 
@@ -275,7 +275,7 @@ Statement retained from [Uniqueness from the principal boundary symbol](../../sr
 
 ## Written support theorem kept separate
 
-The planned compact Fourier division, exponential-polynomial annihilator equivalence and singular-support hull contracts above are distinct from the written differential support-hull equality. The latter is proved in [Convex supports and convolution cancellation](../convex-supports-and-convolution-cancellation.html), Corollary 4.3, with the derivative convention adapted explicitly in AN-02.
+The compact Fourier division and exponential-polynomial annihilator entries retain their individual proof statements. The compact polynomial singular-support hull identity is proved in [Locating singularities through logarithmic Fourier strips](../../AN02-L158.html#5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull), Theorem 5.1. The ordinary differential support-hull equality is a separate assertion. The latter is proved in [Convex supports and convolution cancellation](../convex-supports-and-convolution-cancellation.html), Corollary 4.3, with the derivative convention adapted explicitly in AN-02.
 
 ## Smooth wavefront convolution
 

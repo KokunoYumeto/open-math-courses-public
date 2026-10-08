@@ -1,12 +1,12 @@
 # Complexes, cones and localization
 
-*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the course notice.*
+*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original text: public domain (CC0). Authorship and sources are listed in the course notice.*
 
 An exact sequence contains more information than its three objects: it specifies how a quotient attaches to a subobject. A complex contains still more attachment information, in each degree. Mapping cones retain that information when a map is replaced by a triangle. Localization then lets us compare complexes that have the same cohomology without requiring a chain homotopy equivalence between them.
 
 This common reading precedes the resolution lessons. Its algebra prerequisite is Wen-Wei Li’s *Methods of Algebra, Volume 2*: [“Definition of an Abelian Category”](https://kokunoyumeto.github.io/methods-of-algebra-volume-2-en/#unit-chapter2-unit-021), and [“Some Diagram Lemmas”](https://kokunoyumeto.github.io/methods-of-algebra-volume-2-en/#unit-chapter2-unit-023), especially the exactness criterion by epimorphic lifting, the Snake Lemma and the Five Lemma. [“Complexes on an Abelian Category”](https://kokunoyumeto.github.io/methods-of-algebra-volume-2-en/#unit-chapter3-unit-037) proves the long exact cohomology sequence using that Snake Lemma. We recall its construction here and supply the cone and localization arguments in full.
 
-The cone and triangulation arguments follow the Stacks project authors’ *Derived Categories*, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/derived.tex). We develop localization by roofs and common refinements, then prove that cone triangles descend to the derived category. Source attribution and the licence for adapted passages appear in the course notice.
+The cone and triangulation arguments follow the Stacks project authors’ *Derived Categories*, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/derived.tex). We develop localization by roofs and common refinements, then prove that cone triangles descend to the derived category. Source attribution appears in the course notice.
 ## 1. Maps of complexes and homotopies
 
 Let \(\mathcal A\) be an abelian category. A **cochain complex** \(K\) consists of objects \(K^n\) and differentials \(d_K^n:K^n\to K^{n+1}\) satisfying \(d_K^{n+1}d_K^n=0\). A chain map \(f:K\to L\) satisfies \(d_Lf=fd_K\). Its cohomology is

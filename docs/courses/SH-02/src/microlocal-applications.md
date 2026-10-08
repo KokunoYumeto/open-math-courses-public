@@ -1,6 +1,6 @@
 # SH02-MA — Continuing coefficients and transporting local morphisms
 
-Local unit: `SH02-MA`. License: GFDL-1.2-or-later, with no invariant sections or cover texts. Formalization and translation are absent.
+Local unit: `SH02-MA`. License: CC0-1.0. Formalization and translation are absent.
 
 This lesson connects three uses of a directional estimate: continuing an ordinary section, transporting an internal Hom, and choosing a representative in a localized category. The last use requires a fraction calculation. A sheaf of microlocal morphisms on an open set does not by itself compute the morphisms of the quotient category attached to that set.
 

@@ -16,7 +16,7 @@ from matplotlib.patches import Rectangle, FancyArrowPatch
 
 HERE=Path(__file__).resolve().parent
 plt.rcParams.update({"font.family":"DejaVu Sans","font.size":13,
-                     "mathtext.fontset":"dejavusans","svg.fonttype":"none"})
+                     "mathtext.fontset":"dejavusans","svg.fonttype":"none","svg.hashsalt":"OA-FLOW-countable-orbit-algebras-v1"})
 BLUE="#176495"
 ORANGE="#ac5424"
 GREEN="#28784e"
@@ -131,7 +131,7 @@ txt(ax,.5,.045,r"graph-norm tail squared: $\frac{4^{-N}}{3}+2^{-N}\longrightarro
 fig.text(.5,.028,"Finite panels show every entry. The last panel shows eight exact terms; the complete series and graph-core proof are in REL Diagnostic E.",
          ha="center",fontsize=13,color=MUTED)
 for ext in ("png","svg"):
-    fig.savefig(HERE/f"countable-orbit-algebras.{ext}",dpi=160,facecolor=fig.get_facecolor())
+    fig.savefig(HERE/f"countable-orbit-algebras.{ext}",dpi=160,facecolor=fig.get_facecolor(),**({"metadata":{"Date":None}} if ext == "svg" else {}))
 plt.close(fig)
 
 data={

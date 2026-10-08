@@ -13,6 +13,8 @@ Throughout, \(D_j=-i\partial_j\), Fourier transformation is unitary, and \(\lang
 <a id="localization-family"></a>
 ## 1. The normalized polynomials seen at infinity
 
+The normalized localizations used here are those of Hörmander [H2, Definition 10.2.6]; their simple-characteristic condition is [H2, Definition 14.3.1].
+
 For a nonzero real polynomial \(p\) of degree \(d\), put
 
 \[
@@ -112,6 +114,8 @@ An elliptic polynomial of degree \(d\geq1\) has principal homogeneous part \(p_d
 
 For the upper bound, each derivative of a polynomial of degree \(d\) is at most \(C\langle\eta\rangle^d\). The lower bound at bounded frequencies follows from the positive constant derivative in \(T_p\). This proves (7) globally and also proves (4). Such a polynomial has no invariant direction: a nonzero invariant vector would make \(p_d\) vanish on that vector.
 
+The following terminology follows Hörmander [H1, Definition 8.3.5].
+
 A constant-coefficient operator is of real principal type when its degree-\(d\) principal symbol is real and
 
 \[
@@ -136,6 +140,8 @@ It has no invariant direction and, when real, is simply characteristic. A polyno
 **Proof.** Homogeneity and the positive minimum in (8) give \(|\nabla p_d(\eta)|\geq c|\eta|^{d-1}\). The gradient of the lower-degree remainder is \(O(|\eta|^{d-2})\), so \(|\nabla p(\eta)|\geq(c/2)|\eta|^{d-1}\) at large frequencies. This and the constant derivative give the first bound in (9). A derivative of order at least two is \(O(\langle\eta\rangle^{d-2})\), proving the second.
 
 If \(v\ne0\) were invariant, write coordinates with \(v\) as their last axis. The principal polynomial would be independent of the last coordinate. Since \(d\geq2\), all its first derivatives vanish at the vector \(v\), contrary to (8). Thus there is no invariant direction. Equation (9) and Corollary 1.3 give the remaining assertion. Alternatively, higher derivatives are bounded by a constant times \(1+|\nabla p|\), which gives (4) directly. For degree one there are no higher derivatives and (4) follows at once. \(\square\)
+
+The derivative-ratio characterization below is also [H2, Theorem 11.1.1 and Definition 11.1.2]; its complex-zero and quantitative forms are given in [H2, Theorem 11.1.3].
 
 For completeness, the polynomial characterization of a hypoelliptic constant-coefficient operator is
 
@@ -366,6 +372,8 @@ Use the shells and radii from [Endpoint spaces and flat energy shells](endpoint-
  \|u\|_{X_p}=\sum_\beta\|(\partial^\beta p)(D)u\|_{B^*}.
 \]
 
+The three coefficient exponents and the summable shell condition below are those of Hörmander [H2, (14.4.6), pp. 246–247].
+
 **Theorem 4.1.** Let \(p\) be elliptic of order \(m\geq1\), or of real principal type of order \(m+1\). Let
 
 \[
@@ -568,3 +576,5 @@ Finally \(|x_\ell|a(x_\ell)=\ell^{-2}e^{2\ell^2}\varphi(0)\to\infty\). Thus no b
 - [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics*, second edition, 2014, Theorem 0.42, printed p. 38, and Theorem 2.9 with its proof, pp. 75–76. [Free author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf). The complete closed graph input used here is proved in Section 2 above.
 
 
+- [H1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), 2003 reprint, Springer, Definition 8.3.5, p. 275. ISBN 978-3-642-61497-2. [Edition information](https://doi.org/10.1007/978-3-642-61497-2).
+- [H2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Springer, 2005, Definition 10.2.6, p. 21; Theorem 11.1.1, Definition 11.1.2 and Theorem 11.1.3, pp. 61–62; Definition 14.3.1, pp. 237–238; and (14.4.6) with its proof, pp. 246–247. ISBN 978-3-540-26964-9. [Edition information](https://doi.org/10.1007/b138375).

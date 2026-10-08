@@ -1,6 +1,6 @@
 # Boundary conditions, incidence operators, and trace identities
 
-Course SH-02. Unit SH02-CTA. Original English draft, intended for GFDL-1.2-or-later with no invariant sections or cover texts. Proofs use the explicitly named sheaf-theoretic imports.
+Course SH-02. Unit SH02-CTA. Proofs use the explicitly named sheaf-theoretic imports.
 
 The same boundary distinction has several consequences. It controls which sheaves descend to a directional topology, makes certain incidence operators invertible, and determines the local classes whose traces are residues. We keep the connecting morphisms in the calculations, since listing cohomology groups would lose extension and sign information.
 

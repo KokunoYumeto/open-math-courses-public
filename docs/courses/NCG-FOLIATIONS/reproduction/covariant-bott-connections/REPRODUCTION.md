@@ -1,0 +1,5 @@
+# Reproduction
+
+*K-theory of the leaf space*, Section 11AW. CTN.1–CTN.16. The actual closed normal connection is transported with its graph domain and metric rule. Linear covariance and full resolvent compact derivative norms transfer. Finite columns compare it with the fixed connection, whose parallel diagonal weight need not be parallel for the transported connection. Four exact rational rotations verify unitarity, covariance and the weight commutator. Six exact rational samples verify the genuine infinite scalar resolvent norm and its positive polynomial upper bound; 201 plotted values evaluate these infinite formulas on logarithmic axes. The red bound belongs to a different, constant-column connection. The inverse Kasparov cycle is not identified.
+
+Use Python 3.13.9 and Pillow 12.2.0. Run `python -B draw_covariant_connections.py --output-dir out`; `--resources` selects the adjacent labelled-geometric-kernel resources if relocated. Compare PNG/SVG with ../../figures/ and COVARIANT-BOTT-CONNECTIONS-CHECKS.json with this folder. The SVG embeds the unchanged font and complete notice. No private files are read.

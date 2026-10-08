@@ -53,13 +53,4 @@ data={"rights":"CC0-1.0 original figure and code only",
       "sampling":"1201 evenly spaced x-values only for rendering; no numerical estimate used in proofs",
       "blender":"Not useful for these planar scalar function graphs"}
 (ASSETS/"figure-data.json").write_text(json.dumps(data,indent=2)+"\n",encoding="utf-8")
-sourceimages=ROOT/"sources"/"rendered"; sourceimages.mkdir(parents=True,exist_ok=True)
-for name,pages in [("axler-mira",[93,211,219]),("lebl-basic-analysis-I",[159,204])]:
- source=ROOT/"sources"/(name+".pdf")
- if not source.is_file():
-  continue
- import fitz
- pdf=fitz.open(source)
- for n in pages:
-  pdf[n-1].get_pixmap(matrix=fitz.Matrix(1.3,1.3)).save(sourceimages/(name+f"-pdf-{n}.png"))
-print("Rendered original 2520x990 figure. Comparison-source page rendering is optional when private PDFs are present.")
+print("Rendered original 2520x990 figure and exact model data.")

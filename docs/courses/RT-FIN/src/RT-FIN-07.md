@@ -432,7 +432,7 @@ Conversely, for an irreducible \(G\)-representation \(V\) lying over \(W\), set 
 
 Mackey's formula and criterion, the normal-subgroup criterion, Clifford's theorem and correspondence, and the abelian-normal degree theorem were proved here. The opening paragraph identifies the exact earlier induction, semisimplicity, Schur and isotypic results used.
 
-The character–Hom formula and determination by characters are Theorem 3.1 of [Characters and the orthogonality relations](RT-FIN-02.md); the regular degree-square identity used for \(A_4\) is Theorem 3.2 there, and the class-function basis is Theorem 4.1. Theorem 2.2 of [Integrality of characters and Burnside's theorem](RT-FIN-05.md) states both ordinary and central-index degree divisibility. The \(S_4\), \(Q_8\) and dihedral representations referenced in the examples were explicitly constructed in the preceding lessons.
+The character–Hom formula is [Proposition 2.3](RT-FIN-02.md#proposition-2-3), and determination by characters is [Theorem 3.1](RT-FIN-02.md#theorem-3-1), in Characters and the orthogonality relations; the regular degree-square identity used for \(A_4\) is Theorem 3.2 there, and the class-function basis is Theorem 4.1. Theorem 2.2 of [Integrality of characters and Burnside's theorem](RT-FIN-05.md) states both ordinary and central-index degree divisibility. The \(S_4\), \(Q_8\) and dihedral representations referenced in the examples were explicitly constructed in the preceding lessons.
 
 Coset partition and subgroup-orbit counting are proved in [the Fourier lesson, Lemma 6.1](RT-FIN-03.md#lemma-6-1). No assertion that a subgroup type always extends to its inertia group is imported or needed.
 

@@ -1,6 +1,6 @@
 # Chern classes and the integral universal ring
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored material dedicated under CC0, except explicitly marked CC BY 4.0 adaptations.*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026; the circle-bundle calibration by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Independently authored material dedicated under CC0.*
 
 A useful integral invariant must distinguish more than a determinant line and must survive the operations we perform on a bundle. We will test that requirement on two rank-two bundles with the same first class, then use the test to motivate splitting, twisting and the universal ring. The construction itself starts from the Euler class and deletion of a zero vector, so it also covers Hausdorff bases where a metric or a classifying map is unavailable.
 
@@ -10,22 +10,18 @@ The [Thom/Euler chapter](DG-CHAR-06.html) and [Gysin/projective chapter](DG-CHAR
 
 ### Calibration by a circle bundle
 
-*This marked subsection adapts the Hopf-bundle example in David Michael Roberts, Algebraic Topology (2019), Lecture 18, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Copyright © David Michael Roberts 2019. [LaTeX source, pinned revision](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019/blob/b947ad2e9f9e301bfe24590a9db653bc54fa1a53/Notes.tex#L3575). The AI adaptation adds unit-frame charts, the previously proved integral class normalization and the pullback test. This whole marked subsection retains CC BY 4.0 and its disclaimer of warranties. The [complete licence](https://creativecommons.org/licenses/by/4.0/legalcode.en) is also retained with the course.*
-
-Send a unit vector \((z_0,z_1)\in S^3\subset\mathbb C^2\) to its line \([z_0:z_1]\in\mathbb {CP}^1\). The fibre consists of all unit vectors on that line, a circle. Thus the total space is the unit-circle bundle of the tautological complex line \(\gamma\). On the charts \([1:z]\) and \([w:1]\), choose unit frames
+Let \(q:S^3\to\mathbb {CP}^1\) send a unit vector \((z_0,z_1)\in\mathbb C^2\) to the line \([z_0:z_1]\) that it spans. The fibre over a line \(\ell\) is the circle of unit vectors in \(\ell\), so \(S^3\) is the unit-circle bundle of the tautological line \(\gamma\); Section 3 of the [Gysin/projective chapter](DG-CHAR-08.html) proves this identification over every \(\mathbb {CP}^n\). Local unit sections show the circle-bundle structure explicitly. On the affine charts \(U_0=\{[1:z]\}\) and \(U_1=\{[w:1]\}\) put
 \[
-u_0(z)=\frac{(1,z)}{\sqrt{1+|z|^2}},\qquad
-u_1(w)=\frac{(w,1)}{\sqrt{1+|w|^2}}.
+s_0([1:z])=\frac{(1,z)}{\sqrt{1+|z|^2}},\qquad
+s_1([w:1])=\frac{(w,1)}{\sqrt{1+|w|^2}}.
 \]
-Every unit vector over the first chart is uniquely \(\lambda u_0(z)\), \(|\lambda|=1\), and similarly on the second. These are explicit local circle-bundle trivializations. On the overlap \(w=1/z\), their relation is
+A unit vector \(v\) over \(U_j\) equals \(\lambda\,s_j(q(v))\) for exactly one \(\lambda\in S^1\), namely the Hermitian product of \(v\) with \(s_j(q(v))\), taken linear in its first argument. This coefficient depends continuously on \(v\), so \(q^{-1}(U_j)\) is homeomorphic to \(U_j\times S^1\). On the overlap \(w=1/z\), and the two sections differ by a circle-valued function:
 \[
-u_1(1/z)=\frac{|z|}{z}u_0(z).
+s_1([1/z:1])=\frac{|z|}{z}\,s_0([1:z]).
 \]
-The earlier integral projective calculation fixes \(c_1(\gamma)=-x\), where \(\langle x,[\mathbb {CP}^1]\rangle=1\) for its complex orientation. This class is nonzero, so the line cannot have a nowhere-zero section: such a section would trivialize it and make its Euler class zero.
+By Theorem 3.2 of the Gysin/projective chapter, the class \(x=-e(\gamma_{\mathbb R})=-c_1(\gamma)\) generates \(H^2(\mathbb {CP}^1;\mathbb Z)\), and \(\langle x,[\mathbb {CP}^1]\rangle=1\) for the complex orientation. In particular \(c_1(\gamma)=-x\neq0\). Proposition 8.1 of the [Thom/Euler chapter](DG-CHAR-06.html) shows that an oriented bundle with a nowhere-zero section has Euler class zero, so \(\gamma\) has no nowhere-zero section.
 
-Pulling back along \(q:S^3\to\mathbb {CP}^1\) changes the situation. The point of the total space is itself a unit vector on the represented line, so it defines a nowhere-zero section of \(q^*\gamma\). Consequently \(q^*c_1(\gamma)=0\). Splitting or trivializing a bundle after an arbitrary pullback can therefore lose an integral class. In the Whitney and universal-ring proofs we need the specifically proved injectivity of flag pullback, not just the fact that the bundle has become simpler upstairs.
-
-*End of the CC BY 4.0 adaptation. The remaining independently authored material retains CC0.*
+Pulling back along \(q\) removes this obstruction. A point \(v\in S^3\) is a nonzero vector in its own line \(q(v)\), so \(v\mapsto v\) is a nowhere-zero section of \(q^*\gamma\). By naturality and the same proposition, \(q^*c_1(\gamma)=c_1(q^*\gamma)=0\). A pullback that simplifies a bundle can therefore destroy an integral class. The Whitney formula and the universal ring below use the proved injectivity of the pullback to the flag bundle, not merely the fact that the bundle splits after pullback.
 
 ## 1. A metric-free construction by deleting the zero vector
 
@@ -324,6 +320,6 @@ Indeed \(\gamma^*\otimes\gamma\) is canonically trivial by evaluation, so the te
 
 Freely accessible comparisons are Allen Hatcher, *Vector Bundles and K-Theory*, version 2.2 (2017), [author PDF](https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf), Sections 3.1–3.2, and Haynes Miller, *Algebraic Topology II* (2020), [Chapter 5](https://ocw.mit.edu/courses/18-906-algebraic-topology-ii-spring-2020/d567d6a5a35a1553ad4984de13700cf8_MIT18_906S20_ch5.pdf), Lectures 33–36. Miller normalizes a line's first Chern class as the negative Euler class; relative to our specified complex orientation his sequence is \((-1)^ic_i\). The line, projective and tangent signs here consistently use \(c_1(L)=e(L_{\mathbb R})\). Hatcher's *Algebraic Topology*, [author PDF](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf), Lemma 3.27 and the discussion of relative fundamental classes, gives the compact-set comparison for Lemma 5.1.
 
-The universal ring is proved here through a complete flag equivalence and integral symmetric polynomials. The integer signs and local boundary computation in the fundamental-class argument are included. David Michael Roberts's freely available [*Algebraic Topology* notes](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019) (2019), Lecture 18, are the source of the marked CC BY 4.0 Hopf-circle adaptation; its attribution and component licence are retained.
+The universal ring is proved here through a complete flag equivalence and integral symmetric polynomials. The integer signs and local boundary computation in the fundamental-class argument are included. David Michael Roberts's freely available [*Algebraic Topology* notes](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019) (2019), Lecture 18, use the Hopf bundle \(S^3\to\mathbb {CP}^1\) as a test case for fibre bundles.
 
 The metric-free definition, naturality, stability and conjugation work on every Hausdorff base. Whitney, flag calculations, integral universal classification, duals and the tensor formula are proved under the stated paracompact Hausdorff hypotheses. The local-degree argument fixes integral evaluation and boundary orientation. Characteristic forms later represent the real images of these classes; they do not recover torsion. This edition was checked by the writing AI; independent review remains separate.

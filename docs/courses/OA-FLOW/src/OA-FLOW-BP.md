@@ -1,6 +1,6 @@
 # Bounded perturbations and differentiability domains of real actions
 
-*Self-checked by the writing AI. New exposition: CC0 1.0. The retained illustrations and their data have separate GFDL-1.2-or-later terms; reproduction code and fonts retain their accompanying terms.*
+*Self-checked by the writing AI. New exposition, retained illustrations, their data and reproduction code: CC0 1.0. Fonts retain their accompanying terms.*
 
 A bounded change of velocity preserves exactly the first derivative domain of a real action. Higher derivatives need an additional hypothesis. We construct the evolution directly in the strong topology, prove the domain comparison, and identify the obstruction through an explicit rank-two perturbation.
 
@@ -752,7 +752,7 @@ Uniqueness in Section 2 identifies this product with the evolution already const
 
 ![The evolution has its coefficient on the right; its cocycle changes the first derivative by a commutator.](../assets/bounded-flow-domains/34-cocycle-and-common-domain.png)
 
-*Figure 1. The triangle consists of the maps \(\alpha_t\), \(\beta_t\), and \(y\mapsto u_tyu_t^*\), all between copies of \(M\). For positive time, the iterated integral multiplies the earliest coefficient on the left; negative time uses oriented integrals. [Sections 2–3](OA-FLOW-BP.md#oa-flow.bp.evolution) prove the cocycle and the equality of first domains. Section 4 proves equality of all smooth domains under the additional sufficient hypothesis that \(a\) is smooth. The construction and the triangle apply to arbitrary von Neumann algebras. [Figure and reproduction terms](../assets/bounded-flow-domains/ASSET_TERMS.md) apply to all three figures below.*
+*Figure 1. The triangle consists of the maps \(\alpha_t\), \(\beta_t\), and \(y\mapsto u_tyu_t^*\), all between copies of \(M\). For positive time, the iterated integral multiplies the earliest coefficient on the left; negative time uses oriented integrals. [Sections 2–3](OA-FLOW-BP.md#oa-flow.bp.evolution) prove the cocycle and the equality of first domains. Section 4 proves equality of all smooth domains under the additional sufficient hypothesis that \(a\) is smooth. The construction and the triangle apply to arbitrary von Neumann algebras. Figure and reproduction terms apply to all three figures below.*
 
 <a id="oa-flow.bp.counterexample"></a>
 ## 7. A smooth projection can lose its second derivative
@@ -846,7 +846,7 @@ Apply (X9) to the operator \(T\) in (X6). The vector \(e_0\) belongs to \(D(L)=D
 
 ![The first derivative sends a generator-domain vector to a vector outside that domain.](../assets/bounded-flow-domains/34-lost-second-derivative.png)
 
-*Figure 2. The two-dimensional corner fixes the normalization and signs: \(be_0=mw\), \(Te_0=iv\), and \(Tw=-im e_0\). It is a subspace of the infinite-dimensional Hilbert space. Equations (X8)–(X10) prove the obstruction to a second derivative. The existence and exact domain of \(H+b\) are established in [Section 6](OA-FLOW-BP.md#oa-flow.bp.selfadjoint). [Component terms](../assets/bounded-flow-domains/ASSET_TERMS.md).* 
+*Figure 2. The two-dimensional corner fixes the normalization and signs: \(be_0=mw\), \(Te_0=iv\), and \(Tw=-im e_0\). It is a subspace of the infinite-dimensional Hilbert space. Equations (X8)–(X10) prove the obstruction to a second derivative. The existence and exact domain of \(H+b\) are established in [Section 6](OA-FLOW-BP.md#oa-flow.bp.selfadjoint). Component terms.* 
 
 **The complete exponent window.** Replace \(v_n=n^{-5/4}\) by \(v_n^{(r)}=n^{-r}\), for real \(r\) and \(n\ge1\), keeping the zeroth coordinate zero. For \(q>0\), the same decreasing-function comparison proves
 \[
@@ -871,7 +871,7 @@ At \(r=1/2\), the vector does not belong to the Hilbert space. At \(r=3/2\), the
 
 ![Separate vertical scales show the two partial-sum sequences and the exact exponent window.](../assets/bounded-flow-domains/34-summability-and-domain-window.png)
 
-*Figure 3. Both horizontal axes are logarithmic; the two vertical scales differ. The dots are finite floating-point partial sums for \(1\le N\le10{,}000\); connecting segments guide the eye. The dashed curve is the evaluated exact lower bound \(2(\sqrt{N+1}-1)\). The bounds (X3), and the full proof (X11)–(X13), establish the infinite-series conclusions. [Component terms](../assets/bounded-flow-domains/ASSET_TERMS.md).* 
+*Figure 3. Both horizontal axes are logarithmic; the two vertical scales differ. The dots are finite floating-point partial sums for \(1\le N\le10{,}000\); connecting segments guide the eye. The dashed curve is the evaluated exact lower bound \(2(\sqrt{N+1}-1)\). The bounds (X3), and the full proof (X11)–(X13), establish the infinite-series conclusions. Component terms.* 
 
 <a id="oa-flow.bp.exercises"></a>
 ## 8. Solved diagnostics

@@ -350,6 +350,8 @@ This is an invariant half-density identity.
 
 ## 5. Every real power, with its actual domain
 
+The real-power symbol formulas are those of Hörmander [H4, Proposition 29.1.9].
+
 **Theorem 5.1.** For \(m>0\) and every \(a\in\mathbb R\), the spectral power \(P^a\) is defined by a classical operator of order \(ma\), with symbols (33). If \(a>0\), its exact self-adjoint domain is \(H^{ma}\); if \(a\leq0\), its domain is all \(L^2\). On smooth inputs the powers also act as their corresponding continuous pseudodifferential maps.
 
 **Proof.** The scalar composition rule, in the half-density subprincipal convention (1), says
@@ -399,6 +401,8 @@ The spectral root is positive and has domain \(H^1\), so it satisfies the hypoth
 <a id="powers-spectral-rescaling"></a>
 
 ## 6. Spectral formulas at arbitrary positive order
+
+The spectral rescaling and differential-operator parity argument appear after Hörmander [H4, Proposition 29.1.9, p. 263].
 
 Assume \(n\geq2\). Write \(e_P(x,y,E)\), \(\Pi_E^P\), and \(N_P(E)\) for the spectral kernel, projection and count of \(P\) below or at energy \(E\). The exact eigenbasis identity is
 \[
@@ -663,3 +667,4 @@ A positive \(c\) raises the eigenvalues and reduces the count, agreeing with the
 - [ALNV] Bernd Ammann, Robert Lauter, Victor Nistor and András Vasy, “Complex powers and non-compact manifolds,” *Communications in Partial Differential Equations* 29 (2004), 671–705. [Freely accessible arXiv version](https://arxiv.org/abs/math/0211305v1), §7, especially §7.3, Theorem 7.9.
 - [H] Lars Hörmander, “The spectral function of an elliptic operator,” *Acta Mathematica* 121 (1968), 193–218. [Full article](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02391913), §§1 and 5.
 - [GS] Victor Guillemin and Shlomo Sternberg, [*Semi-classical Analysis*, freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), Introduction §0.5, printed pages xi–xii. Its semiclassical notation is interpreted through the preceding classical wave-construction lesson.
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Proposition 29.1.9 and the following spectral-rescaling formulas, pp. 261–263. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

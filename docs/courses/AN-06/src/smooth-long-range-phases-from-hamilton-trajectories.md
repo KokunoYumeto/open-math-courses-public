@@ -35,6 +35,8 @@ Here \(\kappa=2\), \(0<\delta<1/3\), and
 
 Write \(\mu(k)=k+1-m(k+1)\) and \(a(k)=\max(\mu(k),0)\).
 
+The phase construction and estimates below are Hörmander [H4, Theorem 30.3.3]; see also [HW, Theorem 3.8].
+
 **Theorem 1.1 (a global long-range phase).** There is a real
 \(W\in C^\infty(\mathbb R^n\times\mathbb R)\) such that, for every compact
 \(K\subset\Omega\), on both sufficiently late time half-lines,
@@ -691,3 +693,5 @@ Negating the phase itself would instead change that gradient and would require a
 [O] Sung-Jin Oh, [*Lecture Notes for Math 222A*, free evolving lecture notes](https://math.berkeley.edu/~sjoh/pdfs/notes-math222a.pdf), University of California, Berkeley, Fall 2023, §2.4.1, pp. 23–24.
 
 [HW] Lars Hörmander, [*The existence of wave operators in scattering theory*, freely readable journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf), 1976, §3, Theorem 3.8, pp. 82–83.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Theorem 30.3.3 and its proof, pp. 300–302. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

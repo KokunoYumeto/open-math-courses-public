@@ -49,7 +49,7 @@ data = {
     json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 14,
-                     "mathtext.fontset": "dejavusans", "svg.fonttype": "path"})
+                     "mathtext.fontset": "dejavusans", "svg.fonttype": "path", "svg.hashsalt": "OA-FLOW-conditional-kernels-v1"})
 fig = plt.figure(figsize=(15, 10), facecolor="#f7fafc")
 ink, blue, orange, muted = "#182b3a", "#176b9d", "#b65b20", "#526677"
 fig.text(.055, .965, "One fibre, two measures", fontsize=27, color=ink,
@@ -142,7 +142,7 @@ rax.text(.045,.11,r"$\frac{1}{2}\cdot2=1$      and      $\frac{3}{2}\cdot\frac{2
 fig.text(.055, .025, "Exact values, with infinite tails retained.  OA-FLOW L75 · equations (E1)–(E10)",
          fontsize=11, color=muted)
 fig.savefig(OUT / "fractional-part-disintegration.png", dpi=180, facecolor=fig.get_facecolor())
-fig.savefig(OUT / "fractional-part-disintegration.svg", facecolor=fig.get_facecolor())
+fig.savefig(OUT / "fractional-part-disintegration.svg", facecolor=fig.get_facecolor(), metadata={"Date": None})
 plt.close(fig)
 print(json.dumps({"outputs": ["fractional-part-disintegration.png",
                             "fractional-part-disintegration.svg",

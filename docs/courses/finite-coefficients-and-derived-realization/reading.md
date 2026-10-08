@@ -90,7 +90,7 @@ This proof does not require arbitrary subobject closure of $\mathcal B$. The int
 
 Let $A$ now be commutative Noetherian, let $J\subset A$ be an ideal, and let $\mathcal T_J$ consist of finitely generated modules killed by some power of $J$. This is a Serre subcategory of $\operatorname{mod}_{fg}(A)$. In an extension, if powers $J^r$ and $J^s$ kill the outer terms, then $J^{r+s}$ kills the middle term.
 
-We reuse the full Artin–Rees proof. That separately licensed Valette component proves the statement for every ideal of every commutative Noetherian ring; it is not restricted to analytic local rings.
+We reuse the full Artin–Rees proof. That reading proves the statement for every ideal of every commutative Noetherian ring; it is not restricted to analytic local rings.
 
 For a finite module $M$, put $T=\{m:J^rm=0\text{ for some }r\}$. It is a submodule and is finite. A single power $J^r$ kills it, by taking the maximum of the exponents for finitely many generators. Artin–Rees supplies $c$ such that
 
@@ -266,6 +266,6 @@ Let $\operatorname{char}k=p>0$ and $G=C_p$. Compute the positive self-extensions
 
 ## Sources and reuse
 
-Lunts and Schnürer's [Categories of constructible sheaves](https://arxiv.org/html/2601.05477v1), January 2026, supplies the modern finite-type comparison questions and theorems. The Stacks project authors are credited for the algebra and derived foundations in the linked AI Integrated Stacks edition. Guillaume Valette's separately licensed analytic finiteness component supplies the full Artin–Rees proof; its CC BY 4.0 terms remain at that linked source. The published derived-sheaf course retains its GFDL terms. Their expression is not imported or relicensed here. This original exposition, four complete solutions and reader code are CC0. Self-checked by the writing AI.
+Lunts and Schnürer's [Categories of constructible sheaves](https://arxiv.org/html/2601.05477v1), January 2026, supplies the modern finite-type comparison questions and theorems. The Stacks project authors are credited for the algebra and derived foundations in the linked AI Integrated Stacks edition. Guillaume Valette is credited for the results of the linked analytic finiteness reading, which supplies the full Artin–Rees proof. The published derived-sheaf course retains its GFDL terms. Their expression is not imported or relicensed here. This original exposition, four complete solutions and reader code are CC0. Self-checked by the writing AI.
 
 [Reading index](README.md) · [Reuse terms](LICENSE.txt) · Provenance

@@ -219,7 +219,7 @@ The two positive halfplanes have wedge angle \(\pi/m\), with \(m=3,4,6\), respec
 
 Here are exact models. Coordinates use the usual dot product; every listed positive root is accompanied by its negative.
 
-| Type | Simple roots \(\alpha,\beta\) | Positive roots | \(m\) | \(|W|\) |
+| Type | Simple roots \(\alpha,\beta\) | Positive roots | \(m\) | \(\lvert W\rvert\) |
 | --- | --- | --- | --- | --- |
 | \(A_1\times A_1\) | \((1,0),(0,1)\) | \(\alpha,\beta\) | 2 | 4 |
 | \(A_2\) | \((1,0),(-1/2,\sqrt3/2)\) | \(\alpha,\beta,\alpha+\beta\) | 3 | 6 |
@@ -403,6 +403,6 @@ Every root-system and finite Weyl-group result used above is proved here. The cl
 
 ## References
 
-- **[Davis]** M. W. Davis, *The Geometry and Topology of Coxeter Groups*, Princeton University Press, 2008, Chapters 3, 4 and 6; especially Theorem 3.4.2 for the word property, Lemmas 4.3.1–4.3.3 for cosets, Lemma 4.6.1 for the longest element, and Lemma 6.3.5 for the necessary positive-halfspace condition. [Author's first-edition PDF](https://people.math.osu.edu/davis.12/davisbook.pdf).
-- **[Milne]** J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, corrected 2021 text, published 2022, Appendix C, §§a–c, pp. 611–617, and §f, p. 624. The root-datum comparison is distinguished from the Euclidean axioms used here. [Author's corrected 2021 edition](https://www.jmilne.org/math/Books/AG.pdf).
+- **[Davis]** M. W. Davis, *The Geometry and Topology of Coxeter Groups*, Princeton University Press, 2008, Chapters 3, 4 and 6; especially Theorem 3.4.2 for the word property, Lemmas 4.3.1 and 4.3.3, with Definition 4.3.2, for cosets, Lemma 4.6.1 for the longest element, and Lemma 6.3.5 for the necessary positive-halfspace condition. [Author's first-edition PDF](https://people.math.osu.edu/davis.12/davisbook.pdf).
+- **[Milne]** J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, corrected 2021 text, published 2022, Appendix C, §§a–c, pp. 611–617, and §f, p. 624. The root-datum comparison is distinguished from the Euclidean axioms used here. [Author's corrected 2021 edition](https://www.jmilne.org/math/Books/iAG2022.pdf).
 - **[Kirillov]** A. Kirillov, Jr., *Introduction to Lie Groups and Lie Algebras*, §§7.1–7.7, pp. 107–119, for root combinatorics and chambers. [Author-hosted notes](https://math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf).

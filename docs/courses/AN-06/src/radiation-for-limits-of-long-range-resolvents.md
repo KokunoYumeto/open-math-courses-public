@@ -55,6 +55,9 @@ Let \(P_0(D)\) be real, scalar, constant-coefficient and elliptic of order \(m\g
 
 Regular means \(\lambda\notin\{P_0(\xi):v(\xi)=0\}\). Ellipticity makes \(M_\lambda\) compact. The bundle in (3) records the positive spatial ray at each velocity. Denote the closure of Schwartz space in \(B^*\) by \(\dot B^*\).
 
+<a id="radiation-theorem"></a>
+The graph-limit radiation statement is Hörmander [H4, Theorem 30.2.6].
+
 **Theorem 1.1.** Suppose
 
 \[
@@ -81,6 +84,7 @@ The theorem includes dimension one, an empty free shell, and perturbed eigenvalu
 
 ## 2. What vanishing shell mass means
 
+<a id="radiation-shell-closure"></a>
 **Lemma 2.1.** For \(w\in B^*\), the following conditions are equivalent:
 
 \[
@@ -133,6 +137,7 @@ Every fraction is in \(S(1,G_1)\). Right composition with \(D^\alpha\) is exact 
 
 Choose the symmetric split \(V=V_L+V_S\) from the combined-estimate lesson, including its compact adjustment making \(P_0+V_L\) elliptic. Fix \(0<\delta\le1\) within the available decay gaps, and put \(d=1+\delta\). If \(b<1/2+\delta\), then also \(V_Su_j\to V_Su\) in \(B\).
 
+<a id="radiation-uniform-bounds"></a>
 **Proof.** We first prove the boundedness consequence of weak-star convergence. The endpoint lesson proves that \(B\) is Banach and that its integral dual norm is exactly the \(B^*\) norm. For a fixed derivative let \(F_j(g)=(g,D^\alpha u_j)\). These bounded linear functionals are pointwise bounded by (4). Put
 
 \[
@@ -141,8 +146,9 @@ Choose the symmetric split \(V=V_L+V_S\) from the combined-estimate lesson, incl
 
 The sets are closed and cover \(B\). Some \(E_k\) contains an open ball: otherwise, starting in any open ball, successively choose a closed ball of positive radius at most \(2^{-k}\), inside the preceding ball's interior and disjoint from \(E_k\). Such a choice is possible because a closed set with empty interior leaves a nonempty open part of every open ball. The centers are Cauchy, and completeness supplies a point in all the nested closed balls. That point belongs to none of the \(E_k\), a contradiction. If \(B(g_0,r)\subset E_k\), then for every \(\|g\|_B\le1\), both \(g_0\) and \(g_0+(r/2)g\) lie in \(E_k\). Subtraction gives \(|F_j(g)|\le4k/r\). Exact endpoint duality now gives a bound for \(\|D^\alpha u_j\|_{B^*}\) independent of \(j\). There are only finitely many derivatives through \(m\), so their bounds can be combined. This is the full completeness argument, compared with the free proofs in Teschl [T], Theorems 0.38–0.39.
 
-The strict embedding \(B^*\subset H^{0,-b}\) and the integer derivative characterization give \(u_j,u\in H^{m,-b}\), uniformly.
+The [strict endpoint embedding](combining-the-long-range-resolvent-estimates.md#combined-embeddings) \(B^*\subset H^{0,-b}\) and the [integer derivative characterization](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-integer-derivatives) give \(u_j,u\in H^{m,-b}\), uniformly.
 
+<a id="radiation-local-compactness"></a>
 On each compact set the sequence is bounded in \(H^m\). Here is its local compactness. After input and output compact cutoffs, a smooth Fourier cutoff at frequency \(L\) leaves an \(L^2\) remainder bounded by \(CL^{-m}\) times the input \(H^m\) norm. For fixed \(L\) the low-frequency map between the bounded supports has a square-integrable kernel. Approximate that kernel by finite sums of products of \(L^2\) functions, using the rectangular simple-function density proved in the [Euclidean measure reading](../providers/analysis/finite-derivative-l2.md#euclidean-products). Cauchy–Schwarz bounds the operator error by the kernel's \(L^2\) error. The low-frequency map is therefore a norm limit of finite-rank maps. To see compactness explicitly, choose such approximations with errors tending to zero, successively extract convergent subsequences of their finite-dimensional images of this bounded sequence, and take the diagonal subsequence. The operator errors make its exact images Cauchy. Combining this with the \(CL^{-m}\) high-frequency error proves local \(L^2\) precompactness. Every subsequential limit has distributional limit \(u\), by (4). If local convergence of the whole sequence failed, a subsequence separated from \(u\) by a fixed positive norm would have a further convergent subsequence, contradicting that unique limit. Thus the entire sequence converges locally.
 
 The endpoint bound makes its weighted tail uniformly small:
@@ -158,9 +164,10 @@ The endpoint bound makes its weighted tail uniformly small:
 
 First choose \(R\), then use local convergence on its interior. This proves strong convergence in \(H^{0,-b}\).
 
-All derivatives converge weakly in local \(L^2\): compactly supported \(L^2\) tests belong to \(B\). The precise local coefficient multiplier maps \(H^m\to L^2\) continuously after compact cutoffs, even for unbounded lower coefficients. Its weak continuity identifies the limit of \((H-\lambda)u_j\) with \((H-\lambda)u\). The equations and \(f_j\to f\) identify this limit as \(f\).
+<a id="radiation-rough-graph"></a>
+All derivatives converge weakly in local \(L^2\): compactly supported \(L^2\) tests belong to \(B\). After multiplication by a compact smooth cutoff, these finitely many weak derivative limits give weak convergence in \(H^m\), by its integer derivative norm. The [local coefficient multiplier](admissible-differential-perturbations.md#admissible-global-mapping) maps \(H^m\to L^2\) continuously after compact cutoffs, even for unbounded lower coefficients. Its weak continuity identifies the limit of \((H-\lambda)u_j\) with \((H-\lambda)u\). The equations and \(f_j\to f\) identify this limit as \(f\).
 
-We must now extend the graph inequality to an input already known in weighted \(H^m\). The rough graph theorem is initially stated on the unweighted domain. For each real \(t\), \(P_0\) maps \(H^{m,t}\to H^{0,t}\); \(V_L\) maps to \(H^{0,t+\delta}\); the primary rough map sends \(V_S\) to \(H^{0,t+d}\). These larger output weights embed into \(H^{0,t}\). Thus the full expression is bounded \(H^{m,t}\to H^{0,t}\), with its actual differential action.
+We must now extend the graph inequality to an input already known in weighted \(H^m\). The [rough graph theorem](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-rough-graph-proof) is initially stated on the unweighted domain. For each real \(t\), \(P_0\) maps \(H^{m,t}\to H^{0,t}\); \(V_L\) maps to \(H^{0,t+\delta}\); the [primary rough map](combining-the-long-range-resolvent-estimates.md#combined-primary-map) sends \(V_S\) to \(H^{0,t+d}\). These larger output weights embed into \(H^{0,t}\). Thus the full expression is bounded \(H^{m,t}\to H^{0,t}\), with its actual differential action.
 
 Approximate an already known \(w\in H^{m,t}\) by Schwartz functions in that space. Their images converge in \(H^{0,t}\). Apply the unweighted-domain graph inequality to each approximant and pass to the limit:
 
@@ -201,6 +208,7 @@ Consequently the entire smooth forcing \(f_{0,j}=f_j-V_Su_j\) converges to \(f_0
 
 All auxiliary norms used below are finite before passing to the graph limit.
 
+<a id="radiation-off-energy"></a>
 ## 4. Removing the off-energy frequencies
 
 The inclusion \(B\subset H^{0,1/2}\) follows by bounding its weighted shell \(\ell^2\) norm by the defining \(\ell^1\) norm. The rough map gives \(V_Su\in H^{0,d-b}\) with \(d-b>1/2\). Thus \(f_0\in H^{0,1/2}\).
@@ -238,6 +246,7 @@ Choose radial \(\psi\ge0\), supported in \(1/2<|w|<5/2\), positive on \(3/4\le|w
  \tag{17}
 \]
 
+<a id="radiation-angular-escape"></a>
 **Lemma 5.1.** For some fixed \(c>0\), \(\Psi=0\) on \(|x|<c\). It is smooth for \(y\ne0\), homogeneous of degree zero in \(y\), and
 
 \[
@@ -302,6 +311,7 @@ This choice retains every positive minimum velocity. For \(R\ge1\), define
  \tag{23}
 \]
 
+<a id="radiation-scaled-escape"></a>
 Both are uniformly in \(S(1,G_1)\), with compact frequency support. The first is zero for \(|x|<cR\); the second has annular output support. The transport calculation gives
 
 \[
@@ -311,9 +321,10 @@ Both are uniformly in \(S(1,G_1)\), with compact frequency support. The first is
 
 It is uniformly in \(S(X^{-1},G_1)\) and zero inside a fixed multiple of \(R\).
 
+<a id="radiation-weighted-positivity"></a>
 ## 6. The weighted commutator and its graph limit
 
-Exterior support permits exchange of a radius factor for a spatial weight, with all differentiated bounds:
+For the positive exponent \(\gamma\) fixed in (14), exterior support permits exchange of a radius factor for a spatial weight, with all differentiated bounds:
 
 \[
  \begin{aligned}
@@ -326,7 +337,7 @@ Exterior support permits exchange of a radius factor for a spatial weight, with 
 
 All families are bounded uniformly in \(R\). Exact Fourier conjugation sends the last symbol to a right symbol \(b_R(y,\eta)=R^{2\gamma}s_R(-\eta,y)\). Its adjoint has left quantization of the same real symbol. The symbol \(b_R\) is nonnegative and uniformly in the classical class \(S^{2\gamma-1}_{1,0}\): a new frequency derivative is an old position derivative and lowers that order by one, while every new position derivative is bounded by the old frequency estimates.
 
-Here is the weighted reduction to the programme's [proved packet positivity, Theorem 1](../providers/analysis/weighted-positivity.md#weighted-positivity), valid for any fixed real \(\gamma\). Put \(c_R=R^{2\gamma}s_R\) and \(a_R=X^{-2\gamma}c_R\). The latter is nonnegative and uniformly in \(S(X^{-1},G_1)\), with precisely the derivative bounds (P1) of that theorem. Write \(M_\gamma=X^\gamma\). The [finite first product and all-real weighted mapping proof](../providers/analysis/finite-weighted-calculus.md#finite-composition) give
+For any fixed real \(\gamma\), the following reduction to the programme's [proved packet positivity, Theorem 1](../providers/analysis/weighted-positivity.md#weighted-positivity) applies to a nonnegative family \(c_R\) uniformly in \(S(X^{2\gamma-1},G_1)\). In the present application set \(c_R=R^{2\gamma}s_R\); (25) verifies that hypothesis for the positive \(\gamma\) chosen in (14). Put \(a_R=X^{-2\gamma}c_R\). The latter is nonnegative and uniformly in \(S(X^{-1},G_1)\), with precisely the derivative bounds (P1) of that theorem. Write \(M_\gamma=X^\gamma\). The [finite first product and all-real weighted mapping proof](../providers/analysis/finite-weighted-calculus.md#finite-composition) give
 
 \[
  M_\gamma\operatorname{Op}(a_R)M_\gamma
@@ -354,6 +365,46 @@ Subtract the bounded remainder form. This proves
 
 Here \(a\le1\). The common distributional action, exact Fourier convention and finite products are proved in the linked programme calculus. In the application \(0<\gamma<\delta/2\le1/2\), so \(c_R\) and the remainder have nonpositive spatial weights and bounded frequency derivatives. Their operators are bounded on \(L^2\); Schwartz density extends (26) to the actual \(H^m\) inputs used below. In the Fourier variables the same lower norm is \(\|\mathcal Fw\|_{H^{\gamma-1}}\), by Plancherel and the even bracket. Thus the classical order and Sobolev exponent stated above also follow from this local proof.
 
+<a id="radiation-fourier-conjugation"></a>
+**An alternative by Fourier conjugation.** The classical sharp lower bound of Hörmander [H3, Theorem 18.1.14] and Lerner [L, Theorem 2.5.4] gives another route to the first inequality in (26). Here is the complete reduction to the [proved order-one bound in The Sobolev domain of an elliptic operator](the-sobolev-domain-of-an-elliptic-operator.md#domain-half-order-conjugation).
+
+Fix any real \(\gamma\) and any nonnegative family
+\(c_R\in S(X^{2\gamma-1},G_1)\) with uniform seminorms. Set
+\[
+ \begin{gathered}
+ b_R(y,\eta)=c_R(-\eta,y),\qquad
+ Y=\langle y\rangle,\quad H=\langle\eta\rangle,\\
+ G'_1=Y^{-2}|dy|^2+H^{-2}|d\eta|^2,\qquad
+ J=\langle D_y\rangle,\quad \tau=1-\gamma.
+ \end{gathered}
+\]
+The derivative bounds give \(b_R\in S(H^{2\gamma-1},G'_1)\). Hence
+\(d_R=H^{2\tau}b_R\) is nonnegative in \(S(H,G'_1)\), since
+\(2\tau+2\gamma-1=1\). The linked order-one proof yields
+\(\operatorname{Re}(\operatorname{Op}_L(d_R)v,v)\geq-C_\gamma\|v\|_2^2\)
+on Schwartz inputs, uniformly in \(R\).
+
+Right multiplication by the real Fourier power \(J^\tau\) is exact in left quantization. The finite product with the remaining left factor therefore gives
+\[
+ J^\tau\operatorname{Op}_L(b_R)J^\tau
+       =\operatorname{Op}_L(d_R)+T_R,
+ \qquad T_R\in\operatorname{Op}S(Y^{-1},G'_1).
+\]
+Indeed the product has leading weight \(H\), and its first remainder gains \(Y^{-1}H^{-1}\). This conclusion holds for every fixed real \(\tau\), by the proved all-real symbol calculus. The finite-derivative bound makes \(T_R\) uniformly bounded on \(L^2\).
+
+For \(w\in\mathcal S\), put \(v=J^{-\tau}\mathcal Fw\). Real Fourier powers preserve Schwartz space and are symmetric there. Exact Fourier conjugation sends \(\operatorname{Op}_L(c_R)\) to right quantization of \(b_R\); its adjoint is left quantization of the same real symbol. Their real forms agree, so
+\[
+ \begin{aligned}
+ \operatorname{Re}(\operatorname{Op}_L(c_R)w,w)
+ &=\operatorname{Re}((\operatorname{Op}_L(d_R)+T_R)v,v)\\
+ &\geq-C'_\gamma\|v\|_2^2
+ =-C'_\gamma\|\mathcal Fw\|_{H^{\gamma-1}}^2
+ =-C'_\gamma\|X^{\gamma-1}w\|_2^2.
+ \end{aligned}
+\]
+This proves the sharp weighted inequality for every fixed real \(\gamma\) on Schwartz inputs. For the actual \(c_R=R^{2\gamma}s_R\), the range \(0<\gamma<\delta/2\) makes the operators bounded on \(L^2\), so the same density argument as above gives (26) on the required inputs. The spatial-conjugation proof remains an independent route to the same bound.
+
+<a id="radiation-commutator"></a>
 We spell out the weighted finite calculation needed to combine this bound with the equation. Set \(Q_R=\operatorname{Op}(q_R)\). Apply the same finite calculus as in the near-frequency commutator to \(R^\gamma Q_R\). The free polynomial term is exact:
 
 \[
@@ -411,6 +462,7 @@ The first term is nonpositive. Equations (26)–(29) imply
  \tag{30}
 \]
 
+<a id="radiation-graph-limit"></a>
 For fixed \(R\), the compact output and frequency support of \(\Phi_R\) turn the strong weighted convergence into strong \(L^2\) convergence of its outputs. The forcing converges strongly in \(B\). Both \(Q_R\) and its adjoint have the shell bounds, so \(Q_Ru_j\) converges weak-star in \(B^*\). The pairings therefore converge. We obtain
 
 \[
@@ -438,9 +490,10 @@ The finite auxiliary norm and \(\gamma>0\) now yield
  \tag{33}
 \]
 
+<a id="radiation-fixed-collar"></a>
 ## 7. Operators away from a fixed outgoing collar
 
-First suppose \(h_0\) vanishes in a fixed conic neighborhood of \(N_+(M_\lambda)\) for all sufficiently large \(|x|\). Choose the energy support of \(\chi\) sufficiently close to \(M_\lambda\), and the support of \(\rho_2\) sufficiently narrow. Then \(h_0=0\) wherever \(c_2(x,v(\xi))\) can be nonzero on a large annulus \(R<|x|<2R\). Since \(\omega(x/R)=1\) there,
+First suppose \(h_0\) vanishes in a fixed conic neighborhood of \(N_+(M_\lambda)\) for all sufficiently large \(|x|\). Choose the energy support of \(\chi\) sufficiently close to \(M_\lambda\), and the support of \(\rho_2\) sufficiently narrow. Then \(h_0=0\) wherever \(c_2(x,v(\xi))\) can be nonzero on a large annulus \(R<|x|<2R\). Since \(\omega(x/R)=1\) there, the following symbol identity holds at every output point of that annulus:
 
 \[
  \begin{gathered}
@@ -483,6 +536,9 @@ Lemma 2.1 proves \(h_0(x,D)\chi(D)^2u\in\dot B^*\).
 
 A shrinking angular cutoff can have large derivatives. The following sharp shell estimate isolates the amplitude in the limiting constant.
 
+<a id="radiation-sharp-shell"></a>
+The amplitude-leading operator estimate used here is Hörmander [H3, Theorem 18.1.15]. The following proof also supplies the endpoint shell passage needed for the shrinking angular collar.
+
 **Lemma 8.1.** If \(g\in S(1,G_1)\) has compact frequency support and \(M=\sup|g|\), then
 
 \[
@@ -518,6 +574,20 @@ The programme's [complex packet norm theorem, Theorem 4](../providers/analysis/w
  \tag{38}
 \]
 
+<a id="radiation-quadratic-form-alternative"></a>
+**A quadratic-form proof of (38).** The finite-adjoint/product argument in [The Sobolev domain of an elliptic operator, the alternative proof of (32)](the-sobolev-domain-of-an-elliptic-operator.md#domain-quadratic-form-alternative), applies to this family as well. Here are its hypotheses and cutoff constants. The support in \(y\) is contained in the fixed compact frequency support of \(g\); on the support in \(\eta\), \(|\eta|\asymp R\). Thus the displayed derivative bounds for \(b_R\) give uniform \(S(1,G_1)\) seminorms in \((y,\eta)\). The symbol \(M^2-|b_R|^2\) is real, nonnegative and uniformly of classical order zero. The [complete order-zero positivity theorem](../providers/analysis/weighted-positivity.md#ordinary-order-zero-positivity) and the exact finite product and adjoint formulas give
+
+\[
+ \begin{aligned}
+ B_R^*B_R&=\operatorname{Op}_L(|b_R|^2)+T_R,\\
+ T_R&\in\operatorname{Op}S(\langle y\rangle^{-1}\langle\eta\rangle^{-1},G_1),\\
+ \|B_Rv\|_2^2&\le M^2\|v\|_2^2+C_g\|v\|_{H^{-1/2}}^2.
+ \end{aligned}
+ \tag{38a}
+\]
+
+For the remainder bound, conjugation by \(\langle D_y\rangle^{1/2}\) on both sides leaves weight \(\langle y\rangle^{-1}\), so the programme's order-zero bound applies exactly as in that earlier proof. Choose \(0\le\kappa\le1\), zero on \(|\eta|\le1/4\) and one on \(|\eta|\ge1/2\). The vanishing of \(b_R\) for \(|\eta|<R/2\) gives \(B_R=B_R\kappa(D_y/R)\) exactly. For \(v=\kappa(D_y/R)h\), Plancherel bounds the two terms in (38a) by \(M^2\|h\|_2^2\) and \(4C_gR^{-1}\|h\|_2^2\). Taking square roots and absorbing four into the fixed constant proves \(\|B_R\|\le M+\sqrt{C_g}R^{-1/2}\). Fourier unitarity and equality of adjoint norms recover (38), again with coefficient one on \(M\), including \(M=0\). No derivative bound of a later shrinking angular cutoff enters that coefficient.
+
 Choose a smooth input cutoff \(\theta_R\), equal one on \(R/4<|x|<4R\), supported in \(R/8<|x|<8R\), with values in \([0,1]\). Fixed shell geometry gives
 
 \[
@@ -526,6 +596,7 @@ Choose a smooth input cutoff \(\theta_R\), equal one on \(R/4<|x|<4R\), supporte
  \tag{39}
 \]
 
+<a id="radiation-distant-kernel"></a>
 For the remaining input, compact frequency support and integration by parts give the kernel bound
 
 \[
@@ -550,6 +621,7 @@ The inner input ball is separated from the output by a fixed multiple of \(R\). 
 
 The integrals are absolutely convergent and give the common distributional action. Combine (38)–(41), divide by \(R^{1/2}\), and let \(R\to\infty\). All derivative-dependent terms vanish for this fixed \(g\), proving (37). \(\square\)
 
+<a id="radiation-exact-bundle"></a>
 Now let the compact-frequency symbol \(h\chi^2\) vanish only exactly on \(N_+(M_\lambda)\). The [proved energy-coordinate inverse (CI1)–(CI3) and finite smooth partitions](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-inverse), already used in the earlier curved-trace lesson, give finitely many smooth projections \(\pi(\xi)\in M_\lambda\) near the compact regular shell. On smaller charts their first derivatives are bounded and \(|\xi-\pi(\xi)|\le C|P_0(\xi)-\lambda|\), by integrating the energy-coordinate derivative. The velocity has a positive minimum there, so \(v/|v|\) is Lipschitz. On each spatial sphere use a smooth angular collar about that direction. For \(|x|=r\ge1\), a directional displacement of angle \(\theta\) has path length at most \(Cr\theta\); the symbol's position derivative is \(O(\langle r\rangle^{-1})\), so this changes its value by at most \(C\theta\). Its frequency derivatives are uniformly bounded on the compact support. Moving frequency to \(\pi(\xi)\), then direction to \(v(\pi(\xi))/|v(\pi(\xi))|\) at the same radius, consequently changes the symbol by at most \(C(\kappa+\theta)\) when the energy-collar width is \(\kappa\). The final point belongs to the outgoing bundle, where the symbol is zero. In dimension one the direction set has two isolated points; for a sufficiently small collar the direction already agrees, and only the frequency estimate is needed. This proves uniform smallness on the chosen collar in every dimension.
 
 For every \(\varepsilon>0\), multiply by a smooth collar equal one on a smaller neighborhood to obtain a decomposition
@@ -561,7 +633,7 @@ For every \(\varepsilon>0\), multiply by a smooth collar equal one on a smaller 
 
 outside a fixed bounded spatial region. For this fixed \(\varepsilon\), first narrow the energy support of \(\chi\) to lie in the chosen energy collar. Replacing a previous cutoff by this one changes the near-energy output by an off-energy term covered by (15). Thus \(g_0\) vanishes throughout a fixed outgoing angular collar on the remaining frequency support, exactly as Section 7 requires. Both pieces are \(G_1\) symbols with compact frequency support. Their derivative constants may depend on \(\varepsilon\). A bounded spatial output cutoff contributes an \(L^2\) function, by its smoothing compact-frequency kernel and the polynomial endpoint growth, hence an element of \(\dot B^*\).
 
-Section 7 treats \(g_0\), and Lemma 8.1 treats \(g_1\). Take the radius limit for this fixed decomposition, then let \(\varepsilon\downarrow0\):
+To apply Section 7 to \(g_0\), choose a further compact smooth frequency cutoff \(\zeta\), equal one near its frequency support and supported in the same noncritical energy neighborhood. The angular collar for \(g_0\) can be taken on this slightly larger neighborhood: outside its own frequency support the symbol is zero. Exact right composition with a frequency multiplier gives \(\operatorname{Op}(g_0)\zeta(D)^2=\operatorname{Op}(g_0)\). Section 7, with \(h_0=g_0\) and \(\chi=\zeta\), therefore puts this output in \(\dot B^*\). Lemma 8.1 treats \(g_1\). Take the radius limit for this fixed decomposition, then let \(\varepsilon\downarrow0\):
 
 \[
  \begin{gathered}
@@ -580,6 +652,7 @@ Lemma 2.1 and the off-energy result (15) prove Theorem 1.1 in its full stated sc
 
 Check weighted strong convergence of the graph before applying a full-order symbol. Distinguish being supported away from the outgoing bundle from vanishing exactly on it; both steps are needed in the theorem.
 
+<a id="radiation-solutions"></a>
 ## 9. Graded exercises with complete solutions
 
 **Exercise 1 — Basic: shell decay and closure.** Choose \(L^2\)-normalized \(e_j\), supported in \(A_j\), \(j\ge1\), and define
@@ -720,3 +793,7 @@ The [accessible scalar comparisons in the limiting-absorption lesson](limiting-a
 
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*, author's online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf), Theorems 0.38–0.39, printed pp. 32–33, proves the completeness and uniform-boundedness argument reconstructed for the endpoint graph in Section 3. Its self-adjoint resolvent theory provides additional comparison; the earlier programme supplies the resolvent input used here.
 
+
+[H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Theorems 18.1.14–18.1.15 and their proofs, pp. 76–80. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.2, Theorem 30.2.6 and its proof, pp. 289–291. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

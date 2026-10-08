@@ -7,7 +7,7 @@ from matplotlib.patches import Rectangle,FancyArrowPatch
 import numpy as np
 HERE=Path(__file__).resolve().parent
 OUT=HERE/'figures';OUT.mkdir(exist_ok=True)
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':11,'svg.fonttype':'none'})
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':11,'svg.fonttype':'none','svg.hashsalt':'OA-FLOW-cf-foundations-v1'})
 fig,axes=plt.subplots(1,2,figsize=(13,6.2),gridspec_kw={'width_ratios':[1,1.3]})
 ax=axes[0];t=np.linspace(0,2*np.pi,601)
 ax.plot(np.cos(t),np.sin(t),color='#495d75',lw=1.5,label='unit circle')
@@ -34,7 +34,7 @@ ax.text(.5,.17,'e = Σ zⱼpⱼ     z(e) = Σ zⱼ = 1',ha='center',fontsize=12,
 ax.text(.5,.065,'‖Ad(u)|eMe − id‖ ≤ 4δ < ε',ha='center',fontsize=12,color='#16714c')
 fig.suptitle('Small full fixed corners: localization → central cuts → norm bound',fontsize=14,y=.98)
 fig.tight_layout(rect=[0,.05,1,.94])
-fig.savefig(OUT/'small-full-corner.svg',bbox_inches='tight');fig.savefig(OUT/'small-full-corner.png',dpi=160,bbox_inches='tight');plt.close(fig)
+fig.savefig(OUT/'small-full-corner.svg',bbox_inches='tight',metadata={'Date':None});fig.savefig(OUT/'small-full-corner.png',dpi=160,bbox_inches='tight');plt.close(fig)
 fig,ax=plt.subplots(figsize=(13,3.6));ax.set_axis_off();ax.set(xlim=(0,1),ylim=(0,1))
 nodes=[(.11,.55,'§1–2\nNorm separation\nResolvent / radius'),(.36,.55,'§3–5\nLaplace inverse\nCharacters / density'),(.62,.55,'§6–7\nCalculus / positivity\nF1 + abstract F2'),(.87,.55,'§8\nHilbert / adjoints\nF3 + concrete F2')]
 for x,y,label in nodes:
@@ -44,6 +44,6 @@ for a,b in zip(nodes,nodes[1:]):
  ax.add_patch(FancyArrowPatch((a[0]+.107,.55),(b[0]-.107,.55),arrowstyle='->',mutation_scale=16,color='#16714c',lw=1.7))
 ax.text(.5,.15,'All nodes contain local proofs; no citation stands in for an edge.',ha='center',color='#16714c')
 ax.set_title('A complete local provider for the L34 inputs',fontsize=14,pad=10)
-fig.tight_layout();fig.savefig(OUT/'foundation-proof-route.svg');fig.savefig(OUT/'foundation-proof-route.png',dpi=160);plt.close(fig)
+fig.tight_layout();fig.savefig(OUT/'foundation-proof-route.svg',metadata={'Date':None});fig.savefig(OUT/'foundation-proof-route.png',dpi=160);plt.close(fig)
 (OUT/'figure-data.json').write_text(json.dumps({'matrix_unitary_eigenvalues':[[1,0],[0,1],[-1,0]],'selected_centre':[1,0],'delta':.25,'epsilon':1.2,'cut_square':[[.75,-.25],[1.25,.25]],'localization_bound':.5,'commutator_bound':1,'central_assembly':'schematic finite arbitrary-M blocks, not a spectral measure','sources':['L34-scope-completion-supplement.md Section 1','minimal-CF-Hilbert-provider.md Sections 1–8'],'external_artwork':False,'blender':'Not useful for this planar exact construction.'},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print('Rendered two SVG/PNG diagrams with exact proof constants.')

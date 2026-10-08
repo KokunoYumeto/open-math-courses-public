@@ -45,9 +45,7 @@
 \pagenumbering{roman}
 \hypersetup{pageanchor=true}
 \noindent Written and self-checked by the writing AI. No human or independent review is claimed.
-Original contributions are dedicated under CC0 1.0. Attributed Stacks adaptations retain
-their GNU Free Documentation License obligations, as recorded for each component.
-The cumulative collection includes the complete version 1.2 licence below.
+Original contributions are dedicated under CC0 1.0. Cited works retain their own licences.
 \par\medskip
 \noindent Online course: \url{https://kokunoyumeto.github.io/open-math-courses/courses/AG-RG/}.
 \begingroup\small\tableofcontents\endgroup
@@ -61,7 +59,7 @@ The proof order is P: elementary integral algebra; A: faithfully flat and quasi-
 
 The earlier programme inputs are the full elementary field, integral-extension, affine/relative-Spec, quasi-finite-fibre and scheme-limit proofs, together with \href{https://kokunoyumeto.github.io/open-math-courses/courses/AG-RG/AG-RG-S01.html}{Algebra and sheaf cohomology before reductive groups}.
 
-\emph{Copyright (C) 2005--2025 Johan de Jong. Adapted Stacks Project arguments retain the GNU Free Documentation License, version 1.2 or later, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. The complete \href{assets/GFDL-1.2.txt}{GNU Free Documentation License} accompanies this edition. Original explanations retain their CC0 dedication. Source citations identify freely accessible writing and comparison material; none substitutes for a programme proof.}
+\emph{The text of this lesson is dedicated to the public domain under CC0 1.0. Its arguments follow the cited Stacks Project proofs; the Stacks Project itself is distributed under the GNU FDL 1.2 or later. Source citations identify freely accessible writing and comparison material; none substitutes for a programme proof.}
 
 \section{P. Elementary integral algebra before descent and completion}\label{AG-RG-S04-p.-elementary-integral-algebra-before-descent-and-completion}
 
@@ -472,7 +470,17 @@ No Noetherian reduction was used here. Finiteness of \(D/E\) is sufficient for t
 
 \textbf{Proof.} The algebra \(R[T]/F\) for monic \(F\) is finite free over \(R\). Localization at an element of this algebra is a filtered colimit of copies of that free \(R\)-module with multiplication transition maps. Tensoring an injection with every copy is injective, and exactness of filtered colimits proves flatness of the localization. Lemma D2.2 covers an étale algebra by such principal neighbourhoods. A kernel of a tensor map which vanishes on that principal cover is zero, so the entire algebra is flat.
 
-For openness, let \(C=R[T]/F\), of rank \(d\), and let \(a\in C\). A prime \(\mathfrak p\) belongs to the image of \(D_C(a)\) exactly when \(a\) is not nilpotent in the finite-dimensional algebra \(C\otimes_R\kappa(\mathfrak p)\). Multiplication by \(a\) has characteristic polynomial \(T^d+c_1T^{d-1}+\cdots+c_d\). Over a field it is nilpotent exactly when this polynomial is \(T^d\): one direction is elementary nilpotent linear algebra, and the other is Cayley--Hamilton, obtained by the polynomial adjugate identity. Thus the image is \(\bigcup_iD_R(c_i)\), an open.
+For openness, let \(C=R[T]/F\), of rank \(d>0\), and let \(a\in C\). A prime \(\mathfrak p\) belongs to the image of \(D_C(a)\) exactly when \(a\) is not nilpotent in \(C\otimes_R\kappa(\mathfrak p)\): Lemma P0.1 supplies a prime avoiding precisely each nonnilpotent element of this fibre. Write \(M\) for the matrix of multiplication by \(a\) in the power basis, and put \[
+\chi_M(Z)=\det(ZI-M)=Z^d+c_1Z^{d-1}+\cdots+c_d.
+\] These determinant coefficients commute with passage to the residue field, since the determinant is its finite signed permutation sum. On any fibre, \(M^n\) is multiplication by \(a^n\); applying this map to \(1\) shows that \(M\) is nilpotent exactly when \(a\) is nilpotent.
+
+Here is the full matrix test over that field. If \(M^N=0\), form the finite filtration \(0\subset\ker M\subset\ker M^2\subset\cdots\subset\ker M^N=V\). Extend a basis at each step by adjoining vectors outside its span until the next finite-dimensional subspace is spanned. Since \(M(\ker M^i)\subset\ker M^{i-1}\), the matrix in this ordered basis is strictly upper triangular. Changing the basis preserves \(\det(ZI-M)\): reduce its change-of-basis matrix by the elementary operations of Lemma P0.4a; the corresponding row and inverse column operations multiply determinants by reciprocal scalars. The triangular determinant calculation in that lemma therefore gives \(\chi_M(Z)=Z^d\).
+
+For the converse we prove Cayley--Hamilton over the original, arbitrary commutative ring \(R\). Cofactor expansion gives \[
+(ZI-M)\operatorname{adj}(ZI-M)=\chi_M(Z)I.
+\] Every entry of the adjugate has degree at most \(d-1\). Write it as \(\sum_{j=0}^{d-1}B_jZ^j\). Comparing coefficients in the displayed identity gives \[
+B_{d-1}=I,\qquad B_{j-1}=MB_j+c_{d-j}I\quad(1\le j\le d-1),\qquad -MB_0=c_dI.
+\] Descending substitution yields \(B_0=M^{d-1}+c_1M^{d-2}+\cdots+c_{d-1}I\), with \(B_0=I\) if \(d=1\). The constant relation now gives \(M^d+c_1M^{d-1}+\cdots+c_dI=0\). Thus \(\chi_M(Z)=Z^d\) implies \(M^d=0\). We have proved both directions of the fibre test, so the image of \(D_C(a)\) is exactly \(\bigcup_{i=1}^dD_R(c_i)\), an open. If \(d=0\), the monic polynomial is \(1\), \(C=0\), and both the image and the empty union are empty.
 
 A principal open of a localization \(C_g\) is \(D_C(ga)\) for a suitable numerator \(a\). Its image is open by the same calculation. Principal opens form a basis, and Lemma D2.2 covers arbitrary étale morphisms by these charts. Taking unions proves openness. \(\square\)
 
@@ -532,9 +540,21 @@ The intersections \(V_i\cap V_j\) are closed in the finite \(T\)-scheme \(V_i\) 
 
 \textbf{Proposition D3.4 (separable residue extension before the finite splitting).} Without separatedness, one can instead choose an étale neighbourhood \((T,t)\) with finite separable residue extension so that, above each \(x_i\), all points \(y_{ij}\) have finite purely inseparable residue extension over \(\kappa(t)\) and each has a finite open piece over \(T\).
 
-\textbf{Proof.} Put \(k=\kappa(s)\) and \(K_i=\kappa(x_i)\), finite over \(k\) by the isolated fibre criterion. In characteristic \(p>0\), for each generator of \(K_i/k\) its minimal polynomial is a separable polynomial in \(T^{p^a}\). Thus a sufficiently high \(p\)-power of each generator is separable over \(k\). These powers generate a finite separable subextension over which \(K_i\) is purely inseparable. In characteristic zero take \(K_i\) itself. Let \(L/k\) be a finite Galois extension containing the separable subextensions for all \(i\); construct it by successively adjoining all roots of their finitely many separable minimal polynomials.
+\textbf{Proof.} Put \(k=\kappa(s)\) and \(K_i=\kappa(x_i)\), finite over \(k\) by the isolated fibre criterion. We first make the finite field calculation explicit. In characteristic \(p>0\), the binomial coefficients \(\binom p j\) for \(0<j<p\) are divisible by \(p\): the identity \(j!(p-j)!\binom p j=p!\) and the integer prime-divisibility calculation in the earlier Lemma 4.A of \href{https://kokunoyumeto.github.io/open-math-courses/courses/AG-RG/AG-RG-S02.html}{the field lesson} prove this, since neither factorial on the left is divisible by \(p\). Hence \((u+v)^p=u^p+v^p\) in every commutative ring of characteristic \(p\), and iteration gives the same identity with \(p^N\). Products also commute with these powers.
 
-Lift the monic minimal polynomial of a primitive generator of \(L/k\) to coefficients over a principal neighbourhood of \(s\). Invert its derivative and select the point evaluating the generator to that element of \(L\). This gives an étale neighbourhood with residue field \(L\). The fibre above \(x_i\) is the spectrum of \(K_i\otimes_kL\). The separable intermediate algebra splits as a product of copies of \(L\): its distinct embeddings supply the factorization of the separable minimal polynomials and the Chinese remainder isomorphism. In each resulting factor the remaining equations are purely inseparable power equations. Each has a unique root in an algebraic closure, so every factor has exactly one prime and its residue is finite purely inseparable over \(L\). Nilpotents in these tensor products are allowed.
+Choose a finite generating list \(\alpha_j\) for \(K_i/k\). A nonconstant irreducible minimal polynomial with zero derivative has every positive exponent divisible by \(p\), so it is \(g(T^p)\). Repeat until the resulting polynomial has nonzero derivative; its degree strictly decreases. The final expression is \(g(T^{p^{a_j}})\), with \(g\) irreducible, since a factorization of \(g\) would factor the original polynomial. Thus \(g\) is the separable minimal polynomial of \(\alpha_j^{p^{a_j}}\), by Lemma P0.4a. These powers generate a finite separable field \(F_i/k\): the separable tower and embedding argument of that lemma proves this for their finite composite. With \(N\) at least every \(a_j\), taking \(p^N\)-powers of any rational expression in the \(\alpha_j\) puts it in \(F_i\), by the preceding power identities. Consequently \(K_i/F_i\) is finite purely inseparable. In characteristic zero every irreducible minimal polynomial has nonzero derivative, so take \(F_i=K_i\).
+
+By the primitive-element proof in Lemma D2.2, each \(F_i/k\) has a primitive generator. Construct a finite splitting field \(L/k\) for their finitely many separable minimal polynomials using Lemma P0.4a. Every root adjoined is separable over \(k\), and the same separable tower argument makes \(L/k\) finite separable. Lift the monic minimal polynomial of a primitive generator of \(L/k\) to coefficients over a principal neighbourhood of \(s\). Invert its derivative and select the point evaluating that generator to its value in \(L\). Lemma D2.2's standard monic calculation gives an étale neighbourhood with residue field \(L\).
+
+The fibre above \(x_i\) is \(\operatorname{Spec}(K_i\otimes_kL)\). The primitive polynomial of \(F_i/k\) splits into distinct linear factors in \(L\). Evaluation at its roots identifies its quotient algebra with the product of copies of \(L\). Indeed division leaves a remainder of degree below their number, and the root bound in Lemma P0.4a makes a remainder vanishing at all roots zero. For each root \(r\), the polynomial \(\prod_{r'\ne r}(T-r')/(r-r')\) evaluates to one at \(r\) and zero at all other roots, proving surjectivity. Thus \[
+F_i\otimes_kL\simeq\prod_{\sigma:F_i\hookrightarrow L}L,\qquad
+K_i\otimes_kL\simeq\prod_{\sigma:F_i\hookrightarrow L}C_{i,\sigma},\quad
+C_{i,\sigma}=K_i\otimes_{F_i,\sigma}L.
+\] Each \(C=C_{i,\sigma}\) is nonzero and finite-dimensional over \(L\): an \(F_i\)-basis of \(K_i\) becomes an \(L\)-basis after this tensor product. In characteristic zero it is simply \(L\). In characteristic \(p\), it is generated as an \(L\)-algebra by the images \(z_j\) of the \(\alpha_j\), and for a common \(N\) each satisfies \(z_j^{p^N}=a_j\in L\).
+
+In characteristic \(p\), the prime calculation also allows nilpotents. Lemma P0.1 supplies a prime of the nonzero ring \(C\). For any prime \(\mathfrak q\), the quotient \(E=C/\mathfrak q\) is a finite-dimensional \(L\)-domain and hence a field: multiplication by each nonzero element is injective, therefore surjective, and its inverse is the preimage of \(1\). Construct one finite splitting field \(H/L\) of the finitely many polynomials \(T^{p^N}-a_j\), using Lemma P0.4a. The field \(E\) embeds over \(L\) in \(H\). Indeed, adjoin its generator images successively. At each step the new minimal polynomial divides the corresponding \(L\)-polynomial \(T^{p^N}-a_j\); after applying the previously constructed embedding it still divides that split polynomial. Choose a root in \(H\) and extend by evaluation on the minimal-polynomial quotient. The quotient is a field, so this evaluation is injective. This is precisely the finite tower construction proved in Lemma P0.4a.
+
+Every polynomial \(T^{p^N}-a_j\) has exactly one root in \(H\): it has a root by construction, and two roots \(u,v\) would satisfy \((u-v)^{p^N}=u^{p^N}-v^{p^N}=0\), whence \(u=v\) in the field \(H\). Thus every composite \(C\to E\hookrightarrow H\) sends every \(z_j\) to the same forced root and fixes \(L\). Since the \(z_j\) generate \(C\), all these maps coincide. Their kernels are exactly their respective primes \(\mathfrak q\), so \(C\) has exactly one prime. Its residue field is finite purely inseparable over \(L\): taking \(p^N\)-powers of a polynomial expression in the generator images gives an element of \(L\). This argument makes no reducedness assumption on \(C\).
 
 The finitely many resulting points are isolated: base change of a finite-dimensional open fibre algebra is still finite-dimensional. Apply the multiple-piece part of Proposition D3.3 to all of them, using a further elementary neighbourhood with unchanged residue \(L\). Its finite pieces have the stated residues, and their points exhaust all points above the selected \(x_i\). \(\square\)
 
@@ -542,7 +562,7 @@ The finitely many resulting points are isolated: base change of a finite-dimensi
 
 \textbf{Lemma D4.1 (the derivative coefficient identity).} Let \(F\in R[T]\) be monic of degree \(d\), let \(R\to B\) be a ring map, and let \(h\in B[T]/F\) be integral over \(R\). The unique degree-below-\(d\) representative of \(F'h\) has all coefficients integral over \(R\).
 
-\textbf{Proof.} Construct a splitting extension of \(B\) by adjoining one root of \(F\), dividing by its monic linear factor, adjoining a root of the remaining monic polynomial, and continuing. At every step the quotient by a monic polynomial is finite free with a basis containing \(1\). Thus the composite \(B\subset B'\) is an injective finite free extension and
+\textbf{Proof.} If \(d=0\), then \(F=1\), the quotient is the zero ring, and its degree-below-zero representative has no coefficients; the assertion is empty. Assume \(d>0\). Division by a monic polynomial subtracts leading terms without inverting coefficients and gives a remainder below its degree. That remainder is unique, since a nonzero multiple of a monic polynomial has at least its degree. Thus its quotient has the free power basis \(1,T,\ldots,T^{n-1}\), where \(n\) is the polynomial degree, and the base ring injects via constant polynomials. Construct a splitting extension of \(B\) by adjoining one root of \(F\), dividing by its monic linear factor, adjoining a root of the remaining monic polynomial, and continuing. At each step the quotient is therefore finite free with a basis containing \(1\). The composite \(B\subset B'\) is an injective finite free extension and
 
 \[
 F(T)=\prod_{i=1}^d(T-\alpha_i)\quad\text{in }B'[T].
@@ -554,7 +574,7 @@ Every \(\alpha_i\) satisfies \(F\), so is integral over \(R\). Write \(h=\sum_{j
 F'h=\sum_{i=1}^dh(\alpha_i)\prod_{j\ne i}(T-\alpha_j).                 \tag{4.1}
 \]
 
-Here is a proof covering repeated roots and nilpotents. First put independent variables \(\alpha_i,h_j\) in the domain \(\mathbf Z[\alpha_1,\ldots,\alpha_d,h_0,\ldots,h_{d-1}]\). Reduce the left side by the monic \(F\); both sides then have degree below \(d\). Their difference evaluates to zero at every \(\alpha_i\), because \(F'(\alpha_i)=\prod_{j\ne i}(\alpha_i-\alpha_j)\). The Vandermonde determinant is a nonzero polynomial in this domain. In its fraction field it is invertible, forcing the difference to be zero. Injectivity into that field proves the polynomial identity over the universal domain. Specialization gives (4.1) over every ring, including when that determinant becomes zero.
+Here is a proof covering repeated roots and nilpotents. First put independent variables \(\alpha_i,h_j\) in \(\mathbf Z[\alpha_1,\ldots,\alpha_d,h_0,\ldots,h_{d-1}]\). This ring is a domain: a product of nonzero integers has nonzero absolute value, and the leading coefficient of a product of nonzero polynomials in one variable over a domain is a product of nonzero coefficients. Induct on the number of variables. Reduce the left side by the monic \(F\); both sides then have degree below \(d\). Their difference evaluates to zero at every \(\alpha_i\), because \(F'(\alpha_i)=\prod_{j\ne i}(\alpha_i-\alpha_j)\). In the fraction field of this domain, the independent variables \(\alpha_1,\ldots,\alpha_d\) are distinct. A polynomial of degree below \(d\) with these \(d\) distinct roots is zero by the root bound proved in Lemma P0.4a. Thus the difference polynomial is zero in that field. Injectivity of the domain into its fraction field makes every coefficient zero already in the universal domain. Specializing its independent variables proves (4.1) over every commutative ring, including repeated roots and nilpotents.
 
 A monic equation for \(h\) over \(R\) evaluates to the same monic equation for each \(h(\alpha_i)\) over \(R\). Hence each is integral over \(R\). Integral elements form a ring, so the coefficients on the right side of (4.1) are integral over \(R\). They are the coefficients of the monic remainder on the left, which already belong to \(B\). A monic equation for such a coefficient in \(B'\) holds in \(B\) by the displayed injection. \(\square\)
 
@@ -648,7 +668,7 @@ The opens \(O\) constructed for all \(x\in U\) consequently have full inverse im
 
 \subsection{D6. Finite integral subalgebras and finite-stage immersions}\label{AG-RG-S04-d6.-finite-integral-subalgebras-and-finite-stage-immersions}
 
-We first reproduce the exact finite-submodule argument already proved in \emph{Quasi-coherent sheaves on schemes}, Sections D3--D4, so its arbitrary qcqs scope is explicit.
+We first reproduce the exact finite-submodule argument already proved in \emph{Quasi-coherent sheaves on schemes}, Sections 3 and 4, so its arbitrary qcqs scope is explicit.
 
 \textbf{Lemma D6.1 (finite submodules on a qcqs scheme).} Let \(S\) be qcqs, let \(\mathcal F\) be quasi-coherent, let \(Q\subset S\) be a quasi-compact open, and let \(\mathcal G\subset\mathcal F|_Q\) be a finite-type quasi-coherent submodule. It extends to a finite-type quasi-coherent submodule of \(\mathcal F\). Every \(\mathcal F\) is the directed union of its finite-type quasi-coherent submodules.
 
@@ -669,9 +689,9 @@ Finally any germ of \(\mathcal F\) is represented on an affine neighbourhood. It
 
 \textbf{Lemma D6.2 (the finite subalgebras actually needed).} An integral quasi-coherent \(\mathcal O_S\)-algebra \(\mathcal A\) on a qcqs scheme is the directed union of its finite quasi-coherent subalgebras.
 
-\textbf{Proof.} For a finite-type quasi-coherent submodule \(\mathcal N\subset\mathcal A\), form the image \(\mathcal A_{\mathcal N}\) of \(\operatorname{Sym}(\mathcal N)\to\mathcal A\). Images, sums, tensor powers and their direct sums are quasi-coherent by their affine module descriptions. Hence this image is a quasi-coherent subalgebra of finite algebra type. On any affine chart, finitely many generators of \(\mathcal N\) are integral over the base. Their finitely many monic equations bound their powers, so their bounded monomials span \(\mathcal A_{\mathcal N}\) as a module. It is therefore finite on every affine chart.
+\textbf{Proof.} For a finite-type quasi-coherent submodule \(\mathcal N\subset\mathcal A\), form the tensor algebra \(\bigoplus_{n\ge0}\mathcal N^{\otimes n}\), with \(\mathcal N^{\otimes0}=\mathcal O_S\) and multiplication given by concatenating tensor factors. Its quotient by the ideal generated by \(u\otimes v-v\otimes u\) is \(\operatorname{Sym}(\mathcal N)\). Multiplication in the commutative algebra \(\mathcal A\) kills these relations, so the inclusion of \(\mathcal N\) induces a map \(\operatorname{Sym}(\mathcal N)\to\mathcal A\). Let \(\mathcal A_{\mathcal N}\) be its image. On affine charts, localization commutes with tensor powers, direct sums and their quotient and image maps, by the earlier module calculations. These constructions therefore give quasi-coherent sheaves, and the image is the subalgebra generated by \(\mathcal N\) and the unit. On any affine chart, finitely many module generators of \(\mathcal N\) generate this image as an algebra. Each is integral over the base. Their finitely many monic equations bound their powers, so the corresponding bounded monomials span \(\mathcal A_{\mathcal N}\) as a module. It is therefore finite on every affine chart.
 
-By Lemma D6.1 each local section lies in one such \(\mathcal N\), and hence in one finite subalgebra. Two finite subalgebras lie in the finite subalgebra generated by their sum: their sum is a finite-type submodule, and the same integral-generator argument applies. This proves the directed union. \(\square\)
+By Lemma D6.1 each germ of \(\mathcal A\) belongs to a finite-type quasi-coherent submodule \(\mathcal N\), and hence to the finite subalgebra \(\mathcal A_{\mathcal N}\). Two finite subalgebras are contained in the finite subalgebra generated by their sum: their sum is a finite-type quasi-coherent submodule, and the same integral-generator argument applies. This family is therefore directed and exhausts every stalk. Its directed union as quasi-coherent sheaves is \(\mathcal A\), proving the assertion. \(\square\)
 
 This proves the entire part of the finite integral approximation theorem consumed here. No approximation by finitely presented \textbf{algebras}, and no assumption of finite presentation of \(X/S\), is used.
 
@@ -692,7 +712,7 @@ Writing the coordinate rings of the chart system as \(C_i\) and its limit as \(C
 
 For the second assertion fix a stage \(i_0\). Quasi-compactness of \(Y\) lets us choose a quasi-compact open \(Z'_{i_0}\subset Z_{i_0}\) containing its image. Replace later stages by its inverse images. They are now qcqs, and the map still factors through their limit \(Z'\). An immersion is closed in some open of its target. Choose a quasi-compact open \(O\subset Z'\) containing \(Y\) inside that open, using finitely many affine neighbourhoods of its image. The immersion \(Y\to O\) is closed.
 
-The full finite-open-data proof in the earlier limits lesson, Lemma D2.1, gives a quasi-compact stage open \(O_i\subset Z_i'\) whose inverse image is \(O\). Its later inverse images have affine transition maps. The first part applied to \(Y\to O\) gives a closed immersion \(Y\to O_i\) eventually. Composing with the open immersion \(O_i\hookrightarrow Z_i\) proves the assertion. \(\square\)
+The full finite-open-data proof in the earlier \emph{Limits of schemes and Noetherian approximation} lesson, Lemma 2.1, gives a quasi-compact stage open \(O_i\subset Z_i'\) whose inverse image is \(O\). Its later inverse images have affine transition maps. The first part applied to \(Y\to O\) gives a closed immersion \(Y\to O_i\) eventually. Composing with the open immersion \(O_i\hookrightarrow Z_i\) proves the assertion. \(\square\)
 
 The finite-open-data proof just used needs no Noetherian hypothesis: on a finite affine cover of a qcqs stage, a quasi-compact limit open is a finite union of principal opens with finitely many defining elements. Represent these at a common stage. Equal inverse-image opens eventually agree, since their finitely generated ideals have the same radical in the colimit and the finitely many power-membership equations hold at a common stage. This also proves that a finite stage-open covering at the limit eventually covers the stage. These are exactly the local calculations in the earlier complete proof.
 
@@ -741,7 +761,7 @@ Finally this open immersion is quasi-compact. The scheme \(\overline X\) is quas
 
 \section{Free sources and the proof order}\label{AG-RG-S04-free-sources-and-the-proof-order}
 
-The freely accessible writing material is the Stacks Project's \href{https://stacks.math.columbia.edu/tag/00U7}{maps between étale algebras, Tag 00U7}, \href{https://stacks.math.columbia.edu/tag/00UE}{monic étale neighbourhoods, Tag 00UE}, \href{https://stacks.math.columbia.edu/tag/02LN}{finite elementary étale pieces, Tags 02LK--02LN}, \href{https://stacks.math.columbia.edu/tag/03GD}{integral-closure derivative identity, Tag 03GD}, \href{https://stacks.math.columbia.edu/tag/03GE}{étale integral-closure base change, Tag 03GE}, \href{https://stacks.math.columbia.edu/tag/03GG}{polynomial coefficient argument, Tag 03GG}, \href{https://stacks.math.columbia.edu/tag/03GV}{scheme base change, Tag 03GV}, \href{https://stacks.math.columbia.edu/tag/03GW}{relative Zariski Main, Tag 03GW}, \href{https://stacks.math.columbia.edu/tag/0817}{finite integral subalgebras, Tag 0817}, and \href{https://stacks.math.columbia.edu/tag/081B}{finite-stage immersions, Tag 081B}. Full local source texts and the GFDL accompany the draft. These references identify sources for writing and comparison; the proofs consumed above are in this lesson or the exact earlier programme texts.
+The freely accessible writing material is the Stacks Project's \href{https://stacks.math.columbia.edu/tag/00U7}{maps between étale algebras, Tag 00U7}, \href{https://stacks.math.columbia.edu/tag/00UE}{monic étale neighbourhoods, Tag 00UE}, \href{https://stacks.math.columbia.edu/tag/02LN}{finite elementary étale pieces, Tags 02LK--02LN}, \href{https://stacks.math.columbia.edu/tag/03GD}{integral-closure derivative identity, Tag 03GD}, \href{https://stacks.math.columbia.edu/tag/03GE}{étale integral-closure base change, Tag 03GE}, \href{https://stacks.math.columbia.edu/tag/03GG}{polynomial coefficient argument, Tag 03GG}, \href{https://stacks.math.columbia.edu/tag/03GV}{scheme base change, Tag 03GV}, \href{https://stacks.math.columbia.edu/tag/03GW}{relative Zariski Main, Tag 03GW}, \href{https://stacks.math.columbia.edu/tag/0817}{finite integral subalgebras, Tag 0817}, and \href{https://stacks.math.columbia.edu/tag/081B}{finite-stage immersions, Tag 081B}. Full local source texts and their GNU FDL licence accompany the draft. These references identify sources for writing and comparison; the proofs consumed above are in this lesson or the exact earlier programme texts.
 
 The logical order of the proofs is: the elementary ring, affine-sheaf, field-algebra and integral-extension proofs; Section B1 of this lesson; Theorem C4.3; Section D2 here; the earlier complete henselian splitting proof, if used; Sections D3--D4 here; the earlier affine faithfully flat descent block; Sections D5--D7 here; and only then separated locally quasi-finite scheme effectivity, algebraic-space recognition and normalized space factorization. In particular the latter three results never justify a step in this lesson.
 
@@ -801,7 +821,7 @@ Then \(A\) is faithfully flat finite locally free over \(C\), \(B=A\otimes_C A\)
 
 \textbf{Proof.} The empty object has the empty quotient, so suppose \(U\ne\varnothing\). The identity section makes each source fibre nonempty. The rank of \(B\) over \(A\) through \(s\) is therefore positive, locally constant, and invariant under the relation. Invariance follows because composition with an arrow identifies the two source fibres, after base change to the scheme of arrows. The rank strata are finitely many clopen subsets of the affine quasi-compact \(U\). Their idempotents have equal pullbacks under \(s,t\) (equality of the clopen subsets is equality of their idempotents), so lie in \(C\). Decompose by them and assume the rank is \(r>0\).
 
-For \(a\in A\), multiplication by \(t(a)\) on the finite locally free \(s(A)\)-module \(B\) has a characteristic polynomial. All its coefficients lie in \(C\). Indeed composition gives an isomorphism, over the entire arrow scheme, between the two pulled-back source-fibre bundles, preserving target evaluations. It conjugates their multiplication operators. Characteristic polynomials commute with base change and conjugation, so the two coefficient pullbacks agree as functions, including nilpotents. Cayley--Hamilton follows on local free charts from the adjugate identity and hence globally. Apply the identity section to its equation: \(a\) satisfies a monic polynomial over \(C\). Thus \(C\subset A\) is integral and has surjective spectrum by lying over. The same conjugation proves that
+For \(a\in A\), multiplication by \(t(a)\) on the finite locally free \(s(A)\)-module \(B\) has a characteristic polynomial. Here is the determinant calculation needed on its free charts, over any commutative ring. Expanding \(\det(M_1M_2)\) by the signed permutation formula groups its terms by indices \(j_1,\ldots,j_r\). Each group is \(\prod_i(M_1)_{i j_i}\) times the determinant of the matrix whose \(i\)th row is row \(j_i\) of \(M_2\). Repeated indices give repeated rows, so their determinants vanish by the signed-pair cancellation proved in S01, Lemma 1.2. Otherwise the indices form a permutation \(\tau\), and reindexing the determinant sum makes that factor \(\operatorname{sgn}(\tau)\det M_2\). Summing over \(\tau\) gives \(\det(M_1M_2)=\det M_1\det M_2\). Consequently, for an invertible matrix \(Q\), the identity \(\det Q\det Q^{-1}=1\) gives \(\det(TI-QMQ^{-1})=\det(TI-M)\) over the polynomial ring. The same finite permutation formula commutes with every base change. Thus the characteristic polynomials on different free charts agree on their overlaps and define the stated polynomial globally. All its coefficients lie in \(C\). Indeed composition gives an isomorphism, over the entire arrow scheme, between the two pulled-back source-fibre bundles, preserving target evaluations. It conjugates their multiplication operators. Characteristic polynomials commute with base change and conjugation, so the two coefficient pullbacks agree as functions, including nilpotents. Cayley--Hamilton follows on local free charts from the adjugate identity and hence globally. Apply the identity section to its equation: \(a\) satisfies a monic polynomial over \(C\). Thus \(C\subset A\) is integral and has surjective spectrum by lying over. The same conjugation proves that
 
 \[
 N(a)=\det_s(\text{multiplication by }t(a)\text{ on }B)\in C.
@@ -824,7 +844,7 @@ D=(C_{\mathfrak p}[z])_{\mathfrak p C_{\mathfrak p}[z]}.
 
 Polynomial extension and localization are flat; the map is local, hence faithful. Its residue field is the infinite field \(\kappa(\mathfrak p)(z)\). It is enough to prove the claimed algebra statements after these extensions at every prime. By the kernel observation the new base is still the invariant ring. We may therefore assume \(C\) is local with maximal ideal \(\mathfrak m\) and infinite residue field \(k\).
 
-The ring \(A\) is semilocal. Integrality makes every maximal ideal lie over \(\mathfrak m\). Each topological orbit of maximal ideals is finite: its targets occur in the finite source fibre over one of its objects. Inversion and composition give equivalence and transitivity; common residue-field extensions allow composition when only the underlying endpoints initially agree. Suppose there were two such orbits. By the Chinese remainder theorem choose \(f\in A\) having residue zero at every ideal of the first orbit and residue one at every ideal of the second. On the finite Artinian source fibre at an object of the first orbit, \(t(f)\) is nilpotent, and its determinant is zero. On the corresponding fibre of the second orbit, \(t(f)-1\) is nilpotent, and its determinant is one. But \(N(f)\in C\) has a single residue in \(k\), which cannot become zero in one field extension and one in another. Hence there is only one orbit, containing all maximal ideals, so there are finitely many.
+The ring \(A\) is semilocal. Integrality makes every maximal ideal lie over \(\mathfrak m\). Each topological orbit of maximal ideals is finite: its targets occur in the finite source fibre over one of its objects. Inversion and composition give equivalence and transitivity; common residue-field extensions allow composition when only the underlying endpoints initially agree. Suppose there were two such orbits. By the Chinese remainder theorem choose \(f\in A\) having residue zero at every ideal of the first orbit and residue one at every ideal of the second. On the finite Artinian source fibre at an object of the first orbit, \(t(f)\) has zero image in every prime quotient and is therefore nilpotent, by Lemma P0.1. On the corresponding fibre of the second orbit, \(t(f)-1\) is nilpotent for the same reason. For a nilpotent endomorphism \(H\) of a finite-dimensional vector space, choose a basis respecting the successive kernels \(0\subset\ker H\subset\ker H^2\subset\cdots\). Since \(H\) lowers this filtration, its matrix is strictly triangular. The determinant permutation formula gives \(\det H=0\) in positive dimension and \(\det(1+H)=1\). Apply this to multiplication by \(t(f)\) in the first fibre and by \(t(f)-1\) in the second. Their common rank \(r\) is positive, so \(N(f)\) has residue zero in the first case and one in the second. But \(N(f)\in C\) has a single residue in \(k\), which cannot become zero in one field extension and one in another. Hence there is only one orbit, containing all maximal ideals, so there are finitely many.
 
 The surjection \(\theta\) says that \(B\) is generated over \(s(A)\) by elements of \(t(A)\). Choose a finite list \(t(f_1),\ldots,t(f_m)\) generating the finite module \(B\). At each of the finitely many maximal ideals of \(A\), there is an \(r\)-tuple of linear combinations of this list giving a basis of the fibre. Its determinant is a nonzero polynomial in the combination coefficients over that residue field. It cannot vanish on all tuples from the infinite common subfield \(k\): expand its finitely many coefficients in a basis of their span over \(k\) and retain a nonzero coordinate polynomial over \(k\). The product of finitely many such nonzero polynomials is nonzero. A nonzero polynomial over an infinite field has a nonvanishing field-valued tuple, by induction on the number of variables, choosing nonzero coefficient values first and then avoiding the finitely many roots in the last variable. Avoid the chosen coordinate polynomials simultaneously, and lift the resulting coefficients to \(C\). We get \(x_1,\ldots,x_r\in A\) with \(t(x_i)\) a basis at all maximal ideals. Nakayama makes \(A^r\to B\) surjective; localizing shows it is an isomorphism between free modules of the same rank. Hence
 
@@ -842,7 +862,7 @@ Apply composition to the expansion, and also include the expansion in the left f
 
 Return to the original \(C\). At each prime, faithfully flat detection over the chosen local extension shows that the kernel of \(\theta\) vanishes and that \(A\) is flat over \(C\). To verify the latter explicitly, tensor any injection with \(A\), localize its kernel at the prime and extend to \(D\); the computed free \(D\)-algebra makes this kernel zero, so faithfulness kills it. Vanishing at every prime kills the original kernel. Lying over gives surjectivity, hence faithful flatness. Now \(A\otimes_C A=B\) is finite locally free over \(A\). Lemma A1.3 descends this property of the module \(A\) through the faithfully flat \(C\to A\). Thus \(A/C\) is finite locally free, and its relation is exactly \(P\).
 
-Finally, \(q:\operatorname{Spec}A\to\operatorname{Spec}C\) is an fppf covering. On every scheme test of its target, its base change is again a finite locally free surjective cover, and its double overlap is the pullback of \(P\). Sections therefore locally lift to \(U\), and two such sections have equal image exactly when they are related by \(P\). This local-lifting and equality description, followed by the sheaf condition, identifies the represented target with the fppf sheaf quotient. This is an identity on all test schemes, not just on geometric points. \(\square\)
+Finally, \(q:\operatorname{Spec}A\to\operatorname{Spec}C\) is an fppf covering. Here is its local finite-presentation proof. On a free module chart over \(C_h\), choose a basis \(x_1,\ldots,x_n\) of \(A_h\) and write \(1=\sum_i u_i x_i\) and \(x_i x_j=\sum_k m_{ijk}x_k\), with coefficients in \(C_h\). The algebra map \(C_h[X_1,\ldots,X_n]\to A_h\) has the finite relations \(1-\sum_i u_iX_i\) and \(X_iX_j-\sum_k m_{ijk}X_k\). These relations reduce every polynomial to a linear combination of the \(X_i\). If that combination maps to zero in \(A_h\), independence of the chosen module basis makes all its coefficients zero. Thus the quotient by these relations is exactly \(A_h\). The free charts prove local finite presentation, and the flatness and surjectivity already established make \(q\) an fppf covering. On every scheme test of its target, its base change is again a finite locally free surjective cover, and its double overlap is the pullback of \(P\). Sections therefore locally lift to \(U\), and two such sections have equal image exactly when they are related by \(P\). This local-lifting and equality description, followed by the sheaf condition, identifies the represented target with the fppf sheaf quotient. This is an identity on all test schemes, not just on geometric points. \(\square\)
 
 \subsection{E7. Descending an affine neighbourhood of a space}\label{AG-RG-S04-e7.-descending-an-affine-neighbourhood-of-a-space}
 
@@ -931,7 +951,9 @@ Its diagonal is scheme-representable. On a pair of scheme tests, first impose eq
 
 The canonical maps \(X_i\to U_i'\) agree on overlaps by the same scheme construction, and glue as sheaf maps to \(g:X\to Y'\). Each is an open immersion. To justify descent on all tests, first note that \(g\) is representable by schemes. For a scheme \(Z\to Y'\), its pullback of \(X\) over \(Y\) is a scheme by Corollary E8.2. The desired \(X\times_{Y'}Z\) is the inverse image of the diagonal of \(Y'/Y\) in that scheme; that diagonal is a closed immersion because \(Y'/Y\) is affine. Hence it too is a scheme. After the étale scheme cover of \(Z\) induced by the \(U_i'\), this morphism to \(Z\) is an open immersion. Its local open images agree on overlaps; Lemma A1.6 descends them to an open subscheme of \(Z\), and their comparison isomorphisms descend by Lemma A1.5. Thus the tested morphism is an open immersion. Since this holds for every \(Z\), \(g\) is an open immersion of spaces.
 
+\begingroup\widowpenalty=10000
 It is quasi-compact. Its graph \(X\to X\times_Y Y'\) is a closed immersion, since \(Y'/Y\) is separated. The projection \(X\times_Y Y'\to Y'\) is a base change of the quasi-compact \(f\). Their composite is \(g\), so it is quasi-compact. For every affine scheme \(T\to Y\), the integral \(T\times_Y Y'\) is affine, and \(X\times_Y T\) is a quasi-compact open subscheme of it. This is quasi-affineness on all affine scheme tests, equivalently the quasi-affine morphism property. The final scheme assertion also follows directly from Theorem E8.1. \(\square\)
+\par\endgroup
 
 For the monomorphism from the reductive quotient to its Grassmannian, Theorem E8.1 already supplies the essential assertion that the quotient is a scheme. Quasi-affineness needs scheme Zariski Main, and the claimed specific integral-normalization factorization needs its full normalization and étale-base-change version. These three conclusions must not be collapsed into a source citation.
 
@@ -941,412 +963,7 @@ The complete proofs appear above or in the specified earlier programme lessons. 
 
 \section{History}\label{AG-RG-S04-history}
 
-Source: \emph{The Stacks Project}, the Stacks Project authors, copyright (C) 2005--2025 Johan de Jong, published openly by the Stacks Project under the GNU Free Documentation License, version 1.2 or later. Exact freely readable source tags are identified in this lesson.
+Source: \emph{The Stacks Project}, by the Stacks Project authors, published openly under the GNU FDL 1.2 or later. Exact freely readable source tags are identified in this lesson.
 
-Modified edition: \emph{Affine descent, Zariski Main and recognition of spaces}, 5 October 2026. Author and publisher of the modified edition: GPT-6.1 Sol (OpenAI), Codex, Ultra setting, for Open mathematics courses. Faithfully flat descent, polynomial coefficients, conductor and affine completion, general scheme Zariski Main, finite quotients and space recognition; proofs reordered before consumption, finite-piece and open-immersion arguments expanded. Self-checked by the writing AI. Original contributions retain their separate CC0 dedication, and adapted Stacks expression retains its GNU FDL terms.
-\appendix
-\chapter*{GNU Free Documentation License, Version 1.2}
-\addcontentsline{toc}{chapter}{GNU Free Documentation License, Version 1.2}
-\begingroup\scriptsize
-\begin{verbatim}
-		GNU Free Documentation License
-		  Version 1.2, November 2002
-
-
- Copyright (C) 2000,2001,2002  Free Software Foundation, Inc.
-     51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-
-0. PREAMBLE
-
-The purpose of this License is to make a manual, textbook, or other
-functional and useful document "free" in the sense of freedom: to
-assure everyone the effective freedom to copy and redistribute it,
-with or without modifying it, either commercially or noncommercially.
-Secondarily, this License preserves for the author and publisher a way
-to get credit for their work, while not being considered responsible
-for modifications made by others.
-
-This License is a kind of "copyleft", which means that derivative
-works of the document must themselves be free in the same sense.  It
-complements the GNU General Public License, which is a copyleft
-license designed for free software.
-
-We have designed this License in order to use it for manuals for free
-software, because free software needs free documentation: a free
-program should come with manuals providing the same freedoms that the
-software does.  But this License is not limited to software manuals;
-it can be used for any textual work, regardless of subject matter or
-whether it is published as a printed book.  We recommend this License
-principally for works whose purpose is instruction or reference.
-
-
-1. APPLICABILITY AND DEFINITIONS
-
-This License applies to any manual or other work, in any medium, that
-contains a notice placed by the copyright holder saying it can be
-distributed under the terms of this License.  Such a notice grants a
-world-wide, royalty-free license, unlimited in duration, to use that
-work under the conditions stated herein.  The "Document", below,
-refers to any such manual or work.  Any member of the public is a
-licensee, and is addressed as "you".  You accept the license if you
-copy, modify or distribute the work in a way requiring permission
-under copyright law.
-
-A "Modified Version" of the Document means any work containing the
-Document or a portion of it, either copied verbatim, or with
-modifications and/or translated into another language.
-
-A "Secondary Section" is a named appendix or a front-matter section of
-the Document that deals exclusively with the relationship of the
-publishers or authors of the Document to the Document's overall subject
-(or to related matters) and contains nothing that could fall directly
-within that overall subject.  (Thus, if the Document is in part a
-textbook of mathematics, a Secondary Section may not explain any
-mathematics.)  The relationship could be a matter of historical
-connection with the subject or with related matters, or of legal,
-commercial, philosophical, ethical or political position regarding
-them.
-
-The "Invariant Sections" are certain Secondary Sections whose titles
-are designated, as being those of Invariant Sections, in the notice
-that says that the Document is released under this License.  If a
-section does not fit the above definition of Secondary then it is not
-allowed to be designated as Invariant.  The Document may contain zero
-Invariant Sections.  If the Document does not identify any Invariant
-Sections then there are none.
-
-The "Cover Texts" are certain short passages of text that are listed,
-as Front-Cover Texts or Back-Cover Texts, in the notice that says that
-the Document is released under this License.  A Front-Cover Text may
-be at most 5 words, and a Back-Cover Text may be at most 25 words.
-
-A "Transparent" copy of the Document means a machine-readable copy,
-represented in a format whose specification is available to the
-general public, that is suitable for revising the document
-straightforwardly with generic text editors or (for images composed of
-pixels) generic paint programs or (for drawings) some widely available
-drawing editor, and that is suitable for input to text formatters or
-for automatic translation to a variety of formats suitable for input
-to text formatters.  A copy made in an otherwise Transparent file
-format whose markup, or absence of markup, has been arranged to thwart
-or discourage subsequent modification by readers is not Transparent.
-An image format is not Transparent if used for any substantial amount
-of text.  A copy that is not "Transparent" is called "Opaque".
-
-Examples of suitable formats for Transparent copies include plain
-ASCII without markup, Texinfo input format, LaTeX input format, SGML
-or XML using a publicly available DTD, and standard-conforming simple
-HTML, PostScript or PDF designed for human modification.  Examples of
-transparent image formats include PNG, XCF and JPG.  Opaque formats
-include proprietary formats that can be read and edited only by
-proprietary word processors, SGML or XML for which the DTD and/or
-processing tools are not generally available, and the
-machine-generated HTML, PostScript or PDF produced by some word
-processors for output purposes only.
-
-The "Title Page" means, for a printed book, the title page itself,
-plus such following pages as are needed to hold, legibly, the material
-this License requires to appear in the title page.  For works in
-formats which do not have any title page as such, "Title Page" means
-the text near the most prominent appearance of the work's title,
-preceding the beginning of the body of the text.
-
-A section "Entitled XYZ" means a named subunit of the Document whose
-title either is precisely XYZ or contains XYZ in parentheses following
-text that translates XYZ in another language.  (Here XYZ stands for a
-specific section name mentioned below, such as "Acknowledgements",
-"Dedications", "Endorsements", or "History".)  To "Preserve the Title"
-of such a section when you modify the Document means that it remains a
-section "Entitled XYZ" according to this definition.
-
-The Document may include Warranty Disclaimers next to the notice which
-states that this License applies to the Document.  These Warranty
-Disclaimers are considered to be included by reference in this
-License, but only as regards disclaiming warranties: any other
-implication that these Warranty Disclaimers may have is void and has
-no effect on the meaning of this License.
-
-
-2. VERBATIM COPYING
-
-You may copy and distribute the Document in any medium, either
-commercially or noncommercially, provided that this License, the
-copyright notices, and the license notice saying this License applies
-to the Document are reproduced in all copies, and that you add no other
-conditions whatsoever to those of this License.  You may not use
-technical measures to obstruct or control the reading or further
-copying of the copies you make or distribute.  However, you may accept
-compensation in exchange for copies.  If you distribute a large enough
-number of copies you must also follow the conditions in section 3.
-
-You may also lend copies, under the same conditions stated above, and
-you may publicly display copies.
-
-
-3. COPYING IN QUANTITY
-
-If you publish printed copies (or copies in media that commonly have
-printed covers) of the Document, numbering more than 100, and the
-Document's license notice requires Cover Texts, you must enclose the
-copies in covers that carry, clearly and legibly, all these Cover
-Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
-the back cover.  Both covers must also clearly and legibly identify
-you as the publisher of these copies.  The front cover must present
-the full title with all words of the title equally prominent and
-visible.  You may add other material on the covers in addition.
-Copying with changes limited to the covers, as long as they preserve
-the title of the Document and satisfy these conditions, can be treated
-as verbatim copying in other respects.
-
-If the required texts for either cover are too voluminous to fit
-legibly, you should put the first ones listed (as many as fit
-reasonably) on the actual cover, and continue the rest onto adjacent
-pages.
-
-If you publish or distribute Opaque copies of the Document numbering
-more than 100, you must either include a machine-readable Transparent
-copy along with each Opaque copy, or state in or with each Opaque copy
-a computer-network location from which the general network-using
-public has access to download using public-standard network protocols
-a complete Transparent copy of the Document, free of added material.
-If you use the latter option, you must take reasonably prudent steps,
-when you begin distribution of Opaque copies in quantity, to ensure
-that this Transparent copy will remain thus accessible at the stated
-location until at least one year after the last time you distribute an
-Opaque copy (directly or through your agents or retailers) of that
-edition to the public.
-
-It is requested, but not required, that you contact the authors of the
-Document well before redistributing any large number of copies, to give
-them a chance to provide you with an updated version of the Document.
-
-
-4. MODIFICATIONS
-
-You may copy and distribute a Modified Version of the Document under
-the conditions of sections 2 and 3 above, provided that you release
-the Modified Version under precisely this License, with the Modified
-Version filling the role of the Document, thus licensing distribution
-and modification of the Modified Version to whoever possesses a copy
-of it.  In addition, you must do these things in the Modified Version:
-
-A. Use in the Title Page (and on the covers, if any) a title distinct
-   from that of the Document, and from those of previous versions
-   (which should, if there were any, be listed in the History section
-   of the Document).  You may use the same title as a previous version
-   if the original publisher of that version gives permission.
-B. List on the Title Page, as authors, one or more persons or entities
-   responsible for authorship of the modifications in the Modified
-   Version, together with at least five of the principal authors of the
-   Document (all of its principal authors, if it has fewer than five),
-   unless they release you from this requirement.
-C. State on the Title page the name of the publisher of the
-   Modified Version, as the publisher.
-D. Preserve all the copyright notices of the Document.
-E. Add an appropriate copyright notice for your modifications
-   adjacent to the other copyright notices.
-F. Include, immediately after the copyright notices, a license notice
-   giving the public permission to use the Modified Version under the
-   terms of this License, in the form shown in the Addendum below.
-G. Preserve in that license notice the full lists of Invariant Sections
-   and required Cover Texts given in the Document's license notice.
-H. Include an unaltered copy of this License.
-I. Preserve the section Entitled "History", Preserve its Title, and add
-   to it an item stating at least the title, year, new authors, and
-   publisher of the Modified Version as given on the Title Page.  If
-   there is no section Entitled "History" in the Document, create one
-   stating the title, year, authors, and publisher of the Document as
-   given on its Title Page, then add an item describing the Modified
-   Version as stated in the previous sentence.
-J. Preserve the network location, if any, given in the Document for
-   public access to a Transparent copy of the Document, and likewise
-   the network locations given in the Document for previous versions
-   it was based on.  These may be placed in the "History" section.
-   You may omit a network location for a work that was published at
-   least four years before the Document itself, or if the original
-   publisher of the version it refers to gives permission.
-K. For any section Entitled "Acknowledgements" or "Dedications",
-   Preserve the Title of the section, and preserve in the section all
-   the substance and tone of each of the contributor acknowledgements
-   and/or dedications given therein.
-L. Preserve all the Invariant Sections of the Document,
-   unaltered in their text and in their titles.  Section numbers
-   or the equivalent are not considered part of the section titles.
-M. Delete any section Entitled "Endorsements".  Such a section
-   may not be included in the Modified Version.
-N. Do not retitle any existing section to be Entitled "Endorsements"
-   or to conflict in title with any Invariant Section.
-O. Preserve any Warranty Disclaimers.
-
-If the Modified Version includes new front-matter sections or
-appendices that qualify as Secondary Sections and contain no material
-copied from the Document, you may at your option designate some or all
-of these sections as invariant.  To do this, add their titles to the
-list of Invariant Sections in the Modified Version's license notice.
-These titles must be distinct from any other section titles.
-
-You may add a section Entitled "Endorsements", provided it contains
-nothing but endorsements of your Modified Version by various
-parties--for example, statements of peer review or that the text has
-been approved by an organization as the authoritative definition of a
-standard.
-
-You may add a passage of up to five words as a Front-Cover Text, and a
-passage of up to 25 words as a Back-Cover Text, to the end of the list
-of Cover Texts in the Modified Version.  Only one passage of
-Front-Cover Text and one of Back-Cover Text may be added by (or
-through arrangements made by) any one entity.  If the Document already
-includes a cover text for the same cover, previously added by you or
-by arrangement made by the same entity you are acting on behalf of,
-you may not add another; but you may replace the old one, on explicit
-permission from the previous publisher that added the old one.
-
-The author(s) and publisher(s) of the Document do not by this License
-give permission to use their names for publicity for or to assert or
-imply endorsement of any Modified Version.
-
-
-5. COMBINING DOCUMENTS
-
-You may combine the Document with other documents released under this
-License, under the terms defined in section 4 above for modified
-versions, provided that you include in the combination all of the
-Invariant Sections of all of the original documents, unmodified, and
-list them all as Invariant Sections of your combined work in its
-license notice, and that you preserve all their Warranty Disclaimers.
-
-The combined work need only contain one copy of this License, and
-multiple identical Invariant Sections may be replaced with a single
-copy.  If there are multiple Invariant Sections with the same name but
-different contents, make the title of each such section unique by
-adding at the end of it, in parentheses, the name of the original
-author or publisher of that section if known, or else a unique number.
-Make the same adjustment to the section titles in the list of
-Invariant Sections in the license notice of the combined work.
-
-In the combination, you must combine any sections Entitled "History"
-in the various original documents, forming one section Entitled
-"History"; likewise combine any sections Entitled "Acknowledgements",
-and any sections Entitled "Dedications".  You must delete all sections
-Entitled "Endorsements".
-
-
-6. COLLECTIONS OF DOCUMENTS
-
-You may make a collection consisting of the Document and other documents
-released under this License, and replace the individual copies of this
-License in the various documents with a single copy that is included in
-the collection, provided that you follow the rules of this License for
-verbatim copying of each of the documents in all other respects.
-
-You may extract a single document from such a collection, and distribute
-it individually under this License, provided you insert a copy of this
-License into the extracted document, and follow this License in all
-other respects regarding verbatim copying of that document.
-
-
-7. AGGREGATION WITH INDEPENDENT WORKS
-
-A compilation of the Document or its derivatives with other separate
-and independent documents or works, in or on a volume of a storage or
-distribution medium, is called an "aggregate" if the copyright
-resulting from the compilation is not used to limit the legal rights
-of the compilation's users beyond what the individual works permit.
-When the Document is included in an aggregate, this License does not
-apply to the other works in the aggregate which are not themselves
-derivative works of the Document.
-
-If the Cover Text requirement of section 3 is applicable to these
-copies of the Document, then if the Document is less than one half of
-the entire aggregate, the Document's Cover Texts may be placed on
-covers that bracket the Document within the aggregate, or the
-electronic equivalent of covers if the Document is in electronic form.
-Otherwise they must appear on printed covers that bracket the whole
-aggregate.
-
-
-8. TRANSLATION
-
-Translation is considered a kind of modification, so you may
-distribute translations of the Document under the terms of section 4.
-Replacing Invariant Sections with translations requires special
-permission from their copyright holders, but you may include
-translations of some or all Invariant Sections in addition to the
-original versions of these Invariant Sections.  You may include a
-translation of this License, and all the license notices in the
-Document, and any Warranty Disclaimers, provided that you also include
-the original English version of this License and the original versions
-of those notices and disclaimers.  In case of a disagreement between
-the translation and the original version of this License or a notice
-or disclaimer, the original version will prevail.
-
-If a section in the Document is Entitled "Acknowledgements",
-"Dedications", or "History", the requirement (section 4) to Preserve
-its Title (section 1) will typically require changing the actual
-title.
-
-
-9. TERMINATION
-
-You may not copy, modify, sublicense, or distribute the Document except
-as expressly provided for under this License.  Any other attempt to
-copy, modify, sublicense or distribute the Document is void, and will
-automatically terminate your rights under this License.  However,
-parties who have received copies, or rights, from you under this
-License will not have their licenses terminated so long as such
-parties remain in full compliance.
-
-
-10. FUTURE REVISIONS OF THIS LICENSE
-
-The Free Software Foundation may publish new, revised versions
-of the GNU Free Documentation License from time to time.  Such new
-versions will be similar in spirit to the present version, but may
-differ in detail to address new problems or concerns.  See
-https://www.gnu.org/copyleft/.
-
-Each version of the License is given a distinguishing version number.
-If the Document specifies that a particular numbered version of this
-License "or any later version" applies to it, you have the option of
-following the terms and conditions either of that specified version or
-of any later version that has been published (not as a draft) by the
-Free Software Foundation.  If the Document does not specify a version
-number of this License, you may choose any version ever published (not
-as a draft) by the Free Software Foundation.
-
-
-ADDENDUM: How to use this License for your documents
-
-To use this License in a document you have written, include a copy of
-the License in the document and put the following copyright and
-license notices just after the title page:
-
-    Copyright (c)  YEAR  YOUR NAME.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.2
-    or any later version published by the Free Software Foundation;
-    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-    A copy of the license is included in the section entitled "GNU
-    Free Documentation License".
-
-If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
-replace the "with...Texts." line with this:
-
-    with the Invariant Sections being LIST THEIR TITLES, with the
-    Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.
-
-If you have Invariant Sections without Cover Texts, or some other
-combination of the three, merge those two alternatives to suit the
-situation.
-
-If your document contains nontrivial examples of program code, we
-recommend releasing these examples in parallel under your choice of
-free software license, such as the GNU General Public License,
-to permit their use in free software.
-
-\end{verbatim}
-\endgroup
+Edition: \emph{Affine descent, Zariski Main and recognition of spaces}, 5 October 2026, written by GPT-6.1 Sol (OpenAI), Codex, Ultra setting, for Open Mathematics Courses: faithfully flat descent, polynomial coefficients, conductor and affine completion, general scheme Zariski Main, finite quotients and space recognition, with the proofs ordered before their uses and the finite-piece and open-immersion arguments expanded. Self-checked by the writing AI. The text is dedicated to the public domain under CC0 1.0.
 \end{document}

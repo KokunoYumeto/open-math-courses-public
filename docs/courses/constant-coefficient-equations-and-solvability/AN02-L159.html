@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Singularities and nonconvex logarithmic carriers</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L158.html">Previous lesson</a> · <a href="#1-profiles-carriers-and-the-statement">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="singularities-and-nonconvex-logarithmic-carriers">Singularities and nonconvex logarithmic carriers</h1>
+<p>Original exposition, examples and complete solutions: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>Logarithmic Fourier limits tell us which convex carrier is visible at a selected sequence of frequencies. Taking all their support functions recovers the convex hull of the singular support. There is more information before that last convexification: the singular support lies in the <strong>closed union</strong> of the individual carriers.</p>
+<p>This lesson proves that sharper containment. It also explains why the contour direction may vary with the frequency, how a compact cutoff can have enough nearly analytic derivatives, and why the finite Taylor error still decays at an arbitrarily high rate.</p>
+<h2 id="7-keep-the-individual-carriers">7. Keep the individual carriers</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(u\)">\(u\)</span> be a compact distribution on <span class="math" data-index="1" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Use the same convention as the preceding lessons:</p>
+<span class="math math-display" id="eq-7.1" data-index="2" data-tex="\[
+ D=-i\partial,\qquad
+ F(\zeta)=\widehat u(\zeta),\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{7.1}
+\]">\[
+ D=-i\partial,\qquad
+ F(\zeta)=\widehat u(\zeta),\qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{7.1}
+\]</span>
+<p>A proper local <span class="math" data-index="3" data-tex="\(L^1\)">\(L^1\)</span> limit <span class="math" data-index="4" data-tex="\(v\)">\(v\)</span> has an indicator <span class="math" data-index="5" data-tex="\(h_v\)">\(h_v\)</span>, the support function of a nonempty compact convex set <span class="math" data-index="6" data-tex="\(C_v\)">\(C_v\)</span>. A collapsed limit has empty carrier. The full definitions and joint convergence are in <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>. The indicator construction is proved in <a href="AN02-L139.html">Plurisubharmonic envelopes and support functions</a>.</p>
+<p><strong>Theorem 7.1.</strong> Let the union range over every proper logarithmic profile. Then</p>
+<span class="math math-display" id="eq-7.2" data-index="7" data-tex="\[
+ \operatorname{sing\,supp}u
+ \subset
+ \overline{\bigcup_v C_v}. \tag{7.2}
+\]">\[
+ \operatorname{sing\,supp}u
+ \subset
+ \overline{\bigcup_v C_v}. \tag{7.2}
+\]</span>
+<p>The complete proof is Theorem 1.1 below. It uses an explicit logarithmic partition in Section 3 and a finite Taylor identity in Section 4.</p>
+<p>The closure matters. The theorem does not promise that a singular point belongs to one particular carrier. It also does not promise that every point of a profile carrier is singular. For example, two point masses can have a segment as a profile carrier.</p>
+<p>The preceding convex-hull identity, proved in <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, Theorem 4.1, is compatible with (7.2). Convexification can fill an open gap between individual carriers; (7.2) can still detect that gap.</p>
+<h2 id="8-a-frequency-chooses-its-own-direction">8. A frequency chooses its own direction</h2>
+<p>Suppose a point <span class="math" data-index="8" data-tex="\(x_0\)">\(x_0\)</span> stays at distance at least <span class="math" data-index="9" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> from every proper carrier. Translate <span class="math" data-index="10" data-tex="\(x_0\)">\(x_0\)</span> to zero. Each translated compact convex carrier has a unit separating normal <span class="math" data-index="11" data-tex="\(\theta\)">\(\theta\)</span> with</p>
+<span class="math math-display" id="eq-8.1" data-index="12" data-tex="\[
+ h(\theta)\leq-r. \tag{8.1}
+\]">\[
+ h(\theta)\leq-r. \tag{8.1}
+\]</span>
+<p>There need not be one normal that works for all carriers. The normal is chosen separately for every logarithmic frequency cell.</p>
+<p>At a real center <span class="math" data-index="13" data-tex="\(c\)">\(c\)</span>, with <span class="math" data-index="14" data-tex="\(R=|c|\)">\(R=|c|\)</span>, a sufficiently large frequency has a proper indicator <span class="math" data-index="15" data-tex="\(h_c\)">\(h_c\)</span> satisfying</p>
+<span class="math math-display" id="eq-8.2" data-index="16" data-tex="\[
+ |F(c+\zeta)|\leq R^{N+1}e^{h_c(\operatorname{Im}\zeta)}
+ \quad (|\zeta|\leq m\log R). \tag{8.2}
+\]">\[
+ |F(c+\zeta)|\leq R^{N+1}e^{h_c(\operatorname{Im}\zeta)}
+ \quad (|\zeta|\leq m\log R). \tag{8.2}
+\]</span>
+<p>Here <span class="math" data-index="17" data-tex="\(N\)">\(N\)</span> is a fixed Fourier growth order and <span class="math" data-index="18" data-tex="\(m\)">\(m\)</span> is fixed after the desired derivative order is chosen. Lemma 2.1 proves this uniform statement from profile compactness and Hartogs comparison. An unsuccessful center would give a limiting profile whose own indicator contradicts that failure.</p>
+<p>On the shifted cell <span class="math" data-index="19" data-tex="\(\xi+it\theta\)">\(\xi+it\theta\)</span>, for <span class="math" data-index="20" data-tex="\(|x|\leq r/2\)">\(|x|\leq r/2\)</span>, the product needed for inversion obeys</p>
+<span class="math math-display" id="eq-8.3" data-index="21" data-tex="\[
+ |e^{ix\cdot(\xi+it\theta)}F(\xi+it\theta)|
+ \leq R^{N+1}e^{t(h_c(\theta)-x\cdot\theta)}
+ \leq R^{N+1}e^{-rt/2}. \tag{8.3}
+\]">\[
+ |e^{ix\cdot(\xi+it\theta)}F(\xi+it\theta)|
+ \leq R^{N+1}e^{t(h_c(\theta)-x\cdot\theta)}
+ \leq R^{N+1}e^{-rt/2}. \tag{8.3}
+\]</span>
+<p>This is the source of decay. The compact cutoff requires a correction because it is smooth rather than holomorphic.</p>
+<figure><img class="course-figure" width="2166" height="976" src="reproduce/L159/figures/nonconvex-carriers-and-separating-normals.png" alt="Two separated singular carriers, a smooth point inside their common convex hull, and their different separating normals." /><figcaption class="native"><a href="reproduce/L159/figures/nonconvex-carriers-and-separating-normals.png">Open full-size PNG</a> · <a href="reproduce/L159/figures/nonconvex-carriers-and-separating-normals.svg">Open SVG</a></figcaption></figure>
+<p>The exact example behind this figure is Worked example 3. The two line segments are actual singular supports, not projections of a larger object. The point <span class="math" data-index="22" data-tex="\(x_0=(-3/2,1)\)">\(x_0=(-3/2,1)\)</span> is inside their convex hull but outside their union. The horizontal and downward normals separate their translated carriers by different amounts. The formal separation proof is Lemma 2.2.</p>
+<h2 id="9-why-the-finite-correction-is-small">9. Why the finite correction is small</h2>
+<p>At dyadic level <span class="math" data-index="23" data-tex="\(j\)">\(j\)</span>, the real frequency radius is comparable to <span class="math" data-index="24" data-tex="\(2^j\)">\(2^j\)</span>. Use cells of side length</p>
+<span class="math math-display" id="eq-9.1" data-index="25" data-tex="\[
+ \ell_j=j/\varepsilon,\qquad K=j, \qquad T_j=j/\varepsilon. \tag{9.1}
+\]">\[
+ \ell_j=j/\varepsilon,\qquad K=j, \qquad T_j=j/\varepsilon. \tag{9.1}
+\]</span>
+<p>A small fixed <span class="math" data-index="26" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> makes the cells and their vertical displacement wide enough to gain strong decay. It also makes their first <span class="math" data-index="27" data-tex="\(j+1\)">\(j+1\)</span> derivatives small:</p>
+<span class="math math-display" id="eq-9.2" data-index="28" data-tex="\[
+ \|\partial_\theta^s\phi\|_\infty
+ \leq a_\varepsilon^s,\qquad
+ a_\varepsilon=65\sqrt n\,\varepsilon,\quad0\leq s\leq j+1. \tag{9.2}
+\]">\[
+ \|\partial_\theta^s\phi\|_\infty
+ \leq a_\varepsilon^s,\qquad
+ a_\varepsilon=65\sqrt n\,\varepsilon,\quad0\leq s\leq j+1. \tag{9.2}
+\]</span>
+<p>Section 3 constructs this partition. It convolves interval probability densities a finite number of times and adds one smooth final density. Each controlled derivative falls on a different interval factor. Exact lattice tiling gives a sum of one. A telescoping dyadic cutoff gives the annuli.</p>
+<p>Extend each cell only along its chosen direction by a finite Taylor sum:</p>
+<span class="math math-display" id="eq-9.3" data-index="29" data-tex="\[
+ \Phi(\xi,t)=\sum_{s=0}^j\frac{(it)^s}{s!}\partial_\theta^s\phi(\xi).
+ \tag{9.3}
+\]">\[
+ \Phi(\xi,t)=\sum_{s=0}^j\frac{(it)^s}{s!}\partial_\theta^s\phi(\xi).
+ \tag{9.3}
+\]</span>
+<p>Its failure to solve the holomorphic transport equation is exactly one last derivative:</p>
+<span class="math math-display" id="eq-9.4" data-index="30" data-tex="\[
+ \partial_t\Phi-i\partial_\theta\Phi
+ =-i\frac{(it)^j}{j!}\partial_\theta^{j+1}\phi. \tag{9.4}
+\]">\[
+ \partial_t\Phi-i\partial_\theta\Phi
+ =-i\frac{(it)^j}{j!}\partial_\theta^{j+1}\phi. \tag{9.4}
+\]</span>
+<p>The contour identity has a top integral and a correction integral. Their decay factors are bounded by</p>
+<span class="math math-display" id="eq-9.5" data-index="31" data-tex="\[
+ e^{-rj/(4\varepsilon)}
+ \quad\text{and}\quad
+ \left(\frac{2a_\varepsilon}{r}\right)^{j+1}, \tag{9.5}
+\]">\[
+ e^{-rj/(4\varepsilon)}
+ \quad\text{and}\quad
+ \left(\frac{2a_\varepsilon}{r}\right)^{j+1}, \tag{9.5}
+\]</span>
+<p>respectively. The second factor follows from the exact cancellation</p>
+<span class="math math-display" id="eq-9.6" data-index="32" data-tex="\[
+ \int_0^\infty e^{-rt/2}\frac{t^j}{j!}\,dt=(2/r)^{j+1}. \tag{9.6}
+\]">\[
+ \int_0^\infty e^{-rt/2}\frac{t^j}{j!}\,dt=(2/r)^{j+1}. \tag{9.6}
+\]</span>
+<p>The real cell volumes and their number together contribute at most a fixed constant times <span class="math" data-index="33" data-tex="\(2^{jn}\)">\(2^{jn}\)</span>. Each spatial derivative of order at most <span class="math" data-index="34" data-tex="\(b\)">\(b\)</span> costs at most another factor comparable to <span class="math" data-index="35" data-tex="\(2^{jb}\)">\(2^{jb}\)</span>. Decreasing <span class="math" data-index="36" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> for this fixed budget makes the whole level sum bounded by a constant times <span class="math" data-index="37" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>.</p>
+<figure><img class="course-figure" width="2883" height="939" src="reproduce/L159/figures/logarithmic-cell-and-taylor-correction.png" alt="A logarithmic frequency cell, its directional finite Taylor shift, and the two decaying contributions to the local inverse Fourier integral." /><figcaption class="native"><a href="reproduce/L159/figures/logarithmic-cell-and-taylor-correction.png">Open full-size PNG</a> · <a href="reproduce/L159/figures/logarithmic-cell-and-taylor-correction.svg">Open SVG</a></figcaption></figure>
+<p>The real and complex cell drawing is a one-direction slice: its coordinates are displacement along a cell's chosen real normal and displacement along the corresponding imaginary normal. It does not depict all of <span class="math" data-index="38" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. The quantitative bounds and exact sign are proved in Lemma 4.1 and Proposition 5.1.</p>
+<p>Different derivative budgets may use different partitions. Every convergent series represents the same distribution on the ball, so their continuous representatives coincide. This proves smoothness of one representative to every order; it does not require one fixed cutoff with infinitely many controlled derivatives.</p>
+<h2 id="worked-example-1-a-point-mass-and-its-exact-carrier">Worked example 1. A point mass and its exact carrier</h2>
+<p>Let <span class="math" data-index="39" data-tex="\(u=\delta_a\)">\(u=\delta_a\)</span>, with <span class="math" data-index="40" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>. Then</p>
+<span class="math math-display" id="eq-10.1" data-index="41" data-tex="\[
+ F(\zeta)=e^{-ia\cdot\zeta},\qquad
+ L_u(z,c)=a\cdot\operatorname{Im}z. \tag{10.1}
+\]">\[
+ F(\zeta)=e^{-ia\cdot\zeta},\qquad
+ L_u(z,c)=a\cdot\operatorname{Im}z. \tag{10.1}
+\]</span>
+<p>Every escaping sequence has the same proper profile. Its support function is <span class="math" data-index="42" data-tex="\(h(\eta)=a\cdot\eta\)">\(h(\eta)=a\cdot\eta\)</span>, and its carrier is <span class="math" data-index="43" data-tex="\(\{a\}\)">\(\{a\}\)</span>. Thus the closed union in Theorem 7.1 is exactly <span class="math" data-index="44" data-tex="\(\{a\}\)">\(\{a\}\)</span>, agreeing with the singular support.</p>
+<p>At <span class="math" data-index="45" data-tex="\(x_0\ne a\)">\(x_0\ne a\)</span>, translate the origin. The carrier becomes <span class="math" data-index="46" data-tex="\(\{a-x_0\}\)">\(\{a-x_0\}\)</span>. Choose
+<span class="math" data-index="47" data-tex="\(\theta=-(a-x_0)/|a-x_0|\)">\(\theta=-(a-x_0)/|a-x_0|\)</span>, so that <span class="math" data-index="48" data-tex="\(h(\theta)=-|a-x_0|\)">\(h(\theta)=-|a-x_0|\)</span>. The entire window estimate is exact with order zero:
+<span class="math" data-index="49" data-tex="\(|F(c+\zeta)|=e^{h(\operatorname{Im}\zeta)}\leq R e^{h(\operatorname{Im}\zeta)}\)">\(|F(c+\zeta)|=e^{h(\operatorname{Im}\zeta)}\leq R e^{h(\operatorname{Im}\zeta)}\)</span> for <span class="math" data-index="50" data-tex="\(R&gt;2\)">\(R&gt;2\)</span>.
+The shifted inverse contribution therefore gains exponential decay near the new origin. In this example the distribution actually vanishes away from <span class="math" data-index="51" data-tex="\(a\)">\(a\)</span>; the general argument establishes smoothness there without assuming that vanishing in advance.</p>
+<h2 id="worked-example-2-four-interval-factors-give-four-controlled-derivatives">Worked example 2. Four interval factors give four controlled derivatives</h2>
+<p>Take one dimension, <span class="math" data-index="52" data-tex="\(\ell=4\)">\(\ell=4\)</span>, and <span class="math" data-index="53" data-tex="\(q=4\)">\(q=4\)</span>. Convolve four uniform probability densities on intervals of length
+<span class="math" data-index="54" data-tex="\(\ell/(4q)=1/4\)">\(\ell/(4q)=1/4\)</span>, then a symmetric smooth probability density supported in <span class="math" data-index="55" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>. The resulting <span class="math" data-index="56" data-tex="\(\kappa\)">\(\kappa\)</span> is supported in <span class="math" data-index="57" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Put</p>
+<span class="math math-display" id="eq-10.2" data-index="58" data-tex="\[
+ \tau(\xi)=(1_{[-2,2)}*\kappa)(\xi),\qquad
+ \tau_k(\xi)=\tau(\xi-4k). \tag{10.2}
+\]">\[
+ \tau(\xi)=(1_{[-2,2)}*\kappa)(\xi),\qquad
+ \tau_k(\xi)=\tau(\xi-4k). \tag{10.2}
+\]</span>
+<p>The functions are smooth, sum to one, and have supports in <span class="math" data-index="59" data-tex="\([4k-3,4k+3]\)">\([4k-3,4k+3]\)</span>. They overlap at most twice. The central cutoff is one on <span class="math" data-index="60" data-tex="\([-1,1]\)">\([-1,1]\)</span>.</p>
+<p>The distributional derivative of each interval probability density has total variation <span class="math" data-index="61" data-tex="\(2/(1/4)=8\)">\(2/(1/4)=8\)</span>. Assigning different derivatives to different factors proves</p>
+<span class="math math-display" id="eq-10.3" data-index="62" data-tex="\[
+ \|\tau^{(s)}\|_\infty\leq8^s,\qquad0\leq s\leq4. \tag{10.3}
+\]">\[
+ \|\tau^{(s)}\|_\infty\leq8^s,\qquad0\leq s\leq4. \tag{10.3}
+\]</span>
+<p>Symmetry gives <span class="math" data-index="63" data-tex="\(\tau(2)=\tau(-2)=1/2\)">\(\tau(2)=\tau(-2)=1/2\)</span>: at <span class="math" data-index="64" data-tex="\(\xi=2\)">\(\xi=2\)</span>, the indicator selects the nonnegative half of the continuous symmetric density. Only <span class="math" data-index="65" data-tex="\(\tau_0\)">\(\tau_0\)</span> and <span class="math" data-index="66" data-tex="\(\tau_1\)">\(\tau_1\)</span> are nonzero there, and they each equal <span class="math" data-index="67" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p>The final smooth factor makes <span class="math" data-index="68" data-tex="\(\tau\)">\(\tau\)</span> smooth to all orders. Estimate (10.3) controls only the first four. Increasing <span class="math" data-index="69" data-tex="\(q\)">\(q\)</span> as the frequency grows is how the proof obtains more controlled derivatives.</p>
+<h2 id="worked-example-3-a-disconnected-union-detects-a-hole-in-the-convex-hull">Worked example 3. A disconnected union detects a hole in the convex hull</h2>
+<p>Choose a nonnegative smooth bump <span class="math" data-index="70" data-tex="\(f\)">\(f\)</span>, positive on <span class="math" data-index="71" data-tex="\((-1,1)\)">\((-1,1)\)</span>, zero outside <span class="math" data-index="72" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Define on <span class="math" data-index="73" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span></p>
+<span class="math math-display" id="eq-10.4" data-index="74" data-tex="\[
+ u_1=\delta_{-2}(x_1)\otimes f(x_2),\qquad
+ u_2=f(x_1)\otimes\delta_2(x_2),\qquad u=u_1+u_2. \tag{10.4}
+\]">\[
+ u_1=\delta_{-2}(x_1)\otimes f(x_2),\qquad
+ u_2=f(x_1)\otimes\delta_2(x_2),\qquad u=u_1+u_2. \tag{10.4}
+\]</span>
+<p>Their supports are disjoint line segments</p>
+<span class="math math-display" id="eq-10.5" data-index="75" data-tex="\[
+ K_1=\{-2\}\times[-1,1],\qquad
+ K_2=[-1,1]\times\{2\}. \tag{10.5}
+\]">\[
+ K_1=\{-2\}\times[-1,1],\qquad
+ K_2=[-1,1]\times\{2\}. \tag{10.5}
+\]</span>
+<p>Each point in the relative interior of either segment is singular. To see this, integrate the distribution against a smooth test function in its tangential coordinate with nonzero pairing against <span class="math" data-index="76" data-tex="\(f\)">\(f\)</span>. A smooth local representative would then give a smooth transverse marginal, but that marginal is a nonzero point mass. The endpoints are singular by closedness of the singular support. Outside the two supports the sum is zero, and near either support the other summand is zero. Therefore</p>
+<span class="math math-display" id="eq-10.6" data-index="77" data-tex="\[
+ \operatorname{sing\,supp}u=K_1\cup K_2. \tag{10.6}
+\]">\[
+ \operatorname{sing\,supp}u=K_1\cup K_2. \tag{10.6}
+\]</span>
+<p>We can also locate every proper profile carrier. Their transforms are</p>
+<span class="math math-display" id="eq-10.7" data-index="78" data-tex="\[
+ F_1(\zeta)=e^{2i\zeta_1}\widehat f(\zeta_2),\qquad
+ F_2(\zeta)=\widehat f(\zeta_1)e^{-2i\zeta_2}. \tag{10.7}
+\]">\[
+ F_1(\zeta)=e^{2i\zeta_1}\widehat f(\zeta_2),\qquad
+ F_2(\zeta)=\widehat f(\zeta_1)e^{-2i\zeta_2}. \tag{10.7}
+\]</span>
+<p>Let <span class="math" data-index="79" data-tex="\(R_j=|c_j|\to\infty\)">\(R_j=|c_j|\to\infty\)</span>. On a subsequence either
+<span class="math" data-index="80" data-tex="\(|c_{j,1}|\geq R_j/\sqrt2\)">\(|c_{j,1}|\geq R_j/\sqrt2\)</span> always, or
+<span class="math" data-index="81" data-tex="\(|c_{j,2}|\geq R_j/\sqrt2\)">\(|c_{j,2}|\geq R_j/\sqrt2\)</span> always.
+In the first case <span class="math" data-index="82" data-tex="\(F_2(c_j+z\log R_j)\)">\(F_2(c_j+z\log R_j)\)</span> decreases faster than every power of <span class="math" data-index="83" data-tex="\(R_j\)">\(R_j\)</span>, uniformly on each compact <span class="math" data-index="84" data-tex="\(z\)">\(z\)</span>-set. Indeed, the first coordinate's real part remains comparable to <span class="math" data-index="85" data-tex="\(R_j\)">\(R_j\)</span>, while its imaginary part and the other exponential's exponent are bounded by constants times <span class="math" data-index="86" data-tex="\(\log R_j\)">\(\log R_j\)</span>. The whole-complex rapid Fourier estimate for the smooth bump absorbs those fixed powers. That estimate is proved in <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, the smooth remainder calculation in Section 1.</p>
+<p>If <span class="math" data-index="87" data-tex="\(u\)">\(u\)</span>'s profile is proper, pass to a further common subsequence on which <span class="math" data-index="88" data-tex="\(u_1\)">\(u_1\)</span>'s profile is proper or collapsed. It cannot collapse: the two transform summands would then both collapse uniformly, and their sum would collapse. For proper limits <span class="math" data-index="89" data-tex="\(v\)">\(v\)</span> of the sum and <span class="math" data-index="90" data-tex="\(w\)">\(w\)</span> of the first summand, extract an almost-everywhere convergent subsequence from both local <span class="math" data-index="91" data-tex="\(L^1\)">\(L^1\)</span> convergences. At almost every point the limits are finite. The two triangle inequalities</p>
+<span class="math math-display" id="eq-10.8" data-index="92" data-tex="\[
+ |F_1+F_2|\leq|F_1|+|F_2|,\qquad
+ |F_1|\leq|F_1+F_2|+|F_2| \tag{10.8}
+\]">\[
+ |F_1+F_2|\leq|F_1|+|F_2|,\qquad
+ |F_1|\leq|F_1+F_2|+|F_2| \tag{10.8}
+\]</span>
+<p>give <span class="math" data-index="93" data-tex="\(v\leq w\)">\(v\leq w\)</span> and <span class="math" data-index="94" data-tex="\(w\leq v\)">\(w\leq v\)</span> after taking logarithms and dividing by <span class="math" data-index="95" data-tex="\(\log R_j\)">\(\log R_j\)</span>; the extra <span class="math" data-index="96" data-tex="\(\log2/\log R_j\)">\(\log2/\log R_j\)</span> tends to zero and the second summand tends to <span class="math" data-index="97" data-tex="\(-\infty\)">\(-\infty\)</span>. Hence the canonical profiles coincide. The carrier of the sum is therefore contained in <span class="math" data-index="98" data-tex="\(K_1\)">\(K_1\)</span>, by the ordinary compact-carrier bound.</p>
+<p>In the second coordinate case the same argument interchanges the summands and puts the proper carrier in <span class="math" data-index="99" data-tex="\(K_2\)">\(K_2\)</span>. Thus every proper carrier is contained in one of these two sets. Theorem 7.1 now gives both inclusions needed for</p>
+<span class="math math-display" id="eq-10.9" data-index="100" data-tex="\[
+ A(u)=K_1\cup K_2. \tag{10.9}
+\]">\[
+ A(u)=K_1\cup K_2. \tag{10.9}
+\]</span>
+<p>This identifies the closed union without classifying every individual profile.</p>
+<p>The point <span class="math" data-index="101" data-tex="\(x_0=(-3/2,1)\)">\(x_0=(-3/2,1)\)</span> lies inside <span class="math" data-index="102" data-tex="\(\operatorname{conv}(K_1\cup K_2)\)">\(\operatorname{conv}(K_1\cup K_2)\)</span>, but its distance from <span class="math" data-index="103" data-tex="\(K_1\)">\(K_1\)</span> is <span class="math" data-index="104" data-tex="\(1/2\)">\(1/2\)</span> and from <span class="math" data-index="105" data-tex="\(K_2\)">\(K_2\)</span> is <span class="math" data-index="106" data-tex="\(\sqrt5/2\)">\(\sqrt5/2\)</span>. The nonconvex theorem detects its smooth neighborhood. After translation, <span class="math" data-index="107" data-tex="\(\theta_1=(1,0)\)">\(\theta_1=(1,0)\)</span> bounds the first carrier by <span class="math" data-index="108" data-tex="\(-1/2\)">\(-1/2\)</span>, while <span class="math" data-index="109" data-tex="\(\theta_2=(0,-1)\)">\(\theta_2=(0,-1)\)</span> bounds the second by <span class="math" data-index="110" data-tex="\(-1\)">\(-1\)</span>. Both work with <span class="math" data-index="111" data-tex="\(r=2/5\)">\(r=2/5\)</span>, but they are different directions.</p>
+<h2 id="worked-example-4-an-explicit-derivative-budget">Worked example 4. An explicit derivative budget</h2>
+<p>Take <span class="math" data-index="112" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="113" data-tex="\(u=D\delta_{-2}\)">\(u=D\delta_{-2}\)</span>, and examine a neighborhood of zero. Its transform is</p>
+<span class="math math-display" id="eq-10.10" data-index="114" data-tex="\[
+ F(\zeta)=\zeta e^{2i\zeta},\qquad N=1,\qquad
+ h(\eta)=-2\eta,\quad \theta=1,\quad r=2. \tag{10.10}
+\]">\[
+ F(\zeta)=\zeta e^{2i\zeta},\qquad N=1,\qquad
+ h(\eta)=-2\eta,\quad \theta=1,\quad r=2. \tag{10.10}
+\]</span>
+<p>For a budget of two derivatives, choose <span class="math" data-index="115" data-tex="\(\varepsilon=10^{-4}\)">\(\varepsilon=10^{-4}\)</span>. Then</p>
+<span class="math math-display" id="eq-10.11" data-index="116" data-tex="\[
+ a_\varepsilon=13/2000,\qquad
+ r/(4\varepsilon)=5000,\qquad
+ 2a_\varepsilon/r=13/2000&lt;1/64. \tag{10.11}
+\]">\[
+ a_\varepsilon=13/2000,\qquad
+ r/(4\varepsilon)=5000,\qquad
+ 2a_\varepsilon/r=13/2000&lt;1/64. \tag{10.11}
+\]</span>
+<p>Here <span class="math" data-index="117" data-tex="\(N+1+b+n+1=6\)">\(N+1+b+n+1=6\)</span>, so all three conditions in (5.1) hold. At <span class="math" data-index="118" data-tex="\(j=26\)">\(j=26\)</span>,</p>
+<span class="math math-display" id="eq-10.12" data-index="119" data-tex="\[
+ 128(j+3)/2^j=3712/67108864&lt;10^{-4},\qquad
+ (3/4)\ell_j=195000&lt;2^{j-3}. \tag{10.12}
+\]">\[
+ 128(j+3)/2^j=3712/67108864&lt;10^{-4},\qquad
+ (3/4)\ell_j=195000&lt;2^{j-3}. \tag{10.12}
+\]</span>
+<p>Both inequalities continue to improve for larger <span class="math" data-index="120" data-tex="\(j\)">\(j\)</span>. Choose the integer <span class="math" data-index="121" data-tex="\(m=50495\)">\(m=50495\)</span>, which is larger than
+<span class="math" data-index="122" data-tex="\(35000/\log2\)">\(35000/\log2\)</span>, the lower bound in (5.2). At every center in these levels,
+<span class="math" data-index="123" data-tex="\(R\geq2^{24}&gt;2m\)">\(R\geq2^{24}&gt;2m\)</span>. Since <span class="math" data-index="124" data-tex="\(\log R\leq R\)">\(\log R\leq R\)</span> and <span class="math" data-index="125" data-tex="\(R\geq2\)">\(R\geq2\)</span>,</p>
+<span class="math math-display" id="eq-10.13" data-index="126" data-tex="\[
+ R+m\log R\leq R+R^2/2\leq R^2. \tag{10.13}
+\]">\[
+ R+m\log R\leq R+R^2/2\leq R^2. \tag{10.13}
+\]</span>
+<p>Consequently the window estimate is explicit:
+<span class="math" data-index="127" data-tex="\(|F(c+\zeta)|\leq R^2e^{-2\operatorname{Im}\zeta}\)">\(|F(c+\zeta)|\leq R^2e^{-2\operatorname{Im}\zeta}\)</span> when <span class="math" data-index="128" data-tex="\(|\zeta|\leq m\log R\)">\(|\zeta|\leq m\log R\)</span>.
+There is no unknown frequency threshold in this example. The remaining bounds in (3.7) and the inequality <span class="math" data-index="129" data-tex="\(|\zeta|\leq2R\)">\(|\zeta|\leq2R\)</span> also hold for <span class="math" data-index="130" data-tex="\(j\geq26\)">\(j\geq26\)</span>, since their linear factors in <span class="math" data-index="131" data-tex="\(j\)">\(j\)</span> are already smaller than the stated exponential lower bounds at <span class="math" data-index="132" data-tex="\(26\)">\(26\)</span>.</p>
+<p>The level sum for derivatives through order two is bounded by a fixed constant times</p>
+<span class="math math-display" id="eq-10.14" data-index="133" data-tex="\[
+ 2^{5j}\left(e^{-5000j}+(13/2000)^{j+1}\right). \tag{10.14}
+\]">\[
+ 2^{5j}\left(e^{-5000j}+(13/2000)^{j+1}\right). \tag{10.14}
+\]</span>
+<p>The correction ratio between adjacent levels is
+<span class="math" data-index="134" data-tex="\(2^5(13/2000)=26/125&lt;1/2\)">\(2^5(13/2000)=26/125&lt;1/2\)</span>. The top term decreases much faster. The finitely many earlier levels go into the smooth low-frequency term.</p>
+<p>These generous constants make the proof transparent. For a higher derivative budget one can decrease <span class="math" data-index="135" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> again; all resulting local representatives agree as distributions.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The ten exercises total 100 points. A solution should state the relevant quantifiers and conventions as well as calculate the requested bound.</p>
+<h3 id="exercise-1-translate-the-profile-and-the-carrier-8-points">Exercise 1. Translate the profile and the carrier — 8 points</h3>
+<p>For <span class="math" data-index="136" data-tex="\(u_0(x)=u(x+x_0)\)">\(u_0(x)=u(x+x_0)\)</span>, compute its transform, logarithmic profiles, indicators and carriers. Include collapsed profiles.</p>
+<p><strong>Solution.</strong> A change of variables in the distribution pairing gives
+<span class="math" data-index="137" data-tex="\(F_0(\zeta)=e^{ix_0\cdot\zeta}F(\zeta)\)">\(F_0(\zeta)=e^{ix_0\cdot\zeta}F(\zeta)\)</span>.
+For <span class="math" data-index="138" data-tex="\(\zeta=c+z\log|c|\)">\(\zeta=c+z\log|c|\)</span>, its additional logarithmic modulus divided by <span class="math" data-index="139" data-tex="\(\log|c|\)">\(\log|c|\)</span> is
+<span class="math" data-index="140" data-tex="\(-x_0\cdot\operatorname{Im}z\)">\(-x_0\cdot\operatorname{Im}z\)</span>. Thus a proper profile <span class="math" data-index="141" data-tex="\(v\)">\(v\)</span> becomes
+<span class="math" data-index="142" data-tex="\(v_0=v-x_0\cdot\operatorname{Im}z\)">\(v_0=v-x_0\cdot\operatorname{Im}z\)</span>.
+The indicator changes by the same linear function:
+<span class="math" data-index="143" data-tex="\(h_0(\eta)=h(\eta)-x_0\cdot\eta\)">\(h_0(\eta)=h(\eta)-x_0\cdot\eta\)</span>.
+This is the support function of <span class="math" data-index="144" data-tex="\(C_h-x_0\)">\(C_h-x_0\)</span>. A collapsed limit remains collapsed because the added term is bounded on each compact <span class="math" data-index="145" data-tex="\(z\)">\(z\)</span>-set. Applying the inverse translation proves that no profiles are omitted.</p>
+<h3 id="exercise-2-handle-an-empty-family-correctly-8-points">Exercise 2. Handle an empty family correctly — 8 points</h3>
+<p>Explain why a nonzero smooth compact distribution cannot be bounded by <span class="math" data-index="146" data-tex="\(R^{N+1}e^{-\infty}\)">\(R^{N+1}e^{-\infty}\)</span>. State how the theorem and window argument handle collapsed limits.</p>
+<p><strong>Solution.</strong> The proposed right side is zero. A nonzero compact distribution has a nonzero entire transform, so it cannot vanish throughout a whole complex window. The theorem handles an all-collapsed profile family before choosing any windows: Lemma 1.2 proves that the transform is rapidly decreasing on the real space and the distribution is smooth, so its singular support is empty. When a proper profile exists but a particular unsuccessful-center sequence collapses, the proof of Lemma 2.1 chooses one fixed proper indicator <span class="math" data-index="147" data-tex="\(h_0\)">\(h_0\)</span>. Its minimum on the compact parameter ball is finite. Uniform collapse beats the finite ceiling <span class="math" data-index="148" data-tex="\(N+1+h_0\)">\(N+1+h_0\)</span>, contradicting the claimed failure. It never substitutes the collapsed indicator into a positive transform bound.</p>
+<h3 id="exercise-3-differentiate-probability-factors-10-points">Exercise 3. Differentiate probability factors — 10 points</h3>
+<p>For <span class="math" data-index="149" data-tex="\(\ell=6\)">\(\ell=6\)</span> and <span class="math" data-index="150" data-tex="\(q=3\)">\(q=3\)</span>, find the uniform interval length, the support half-width of the full density, and the derivative bound through order three for an indicator convolved with it.</p>
+<p><strong>Solution.</strong> Each interval has length <span class="math" data-index="151" data-tex="\(\ell/(4q)=1/2\)">\(\ell/(4q)=1/2\)</span>. The three uniform factors have total half-width <span class="math" data-index="152" data-tex="\(3(1/4)=3/4\)">\(3(1/4)=3/4\)</span>. The smooth final factor has half-width <span class="math" data-index="153" data-tex="\(\ell/8=3/4\)">\(\ell/8=3/4\)</span>, so the density's half-width is <span class="math" data-index="154" data-tex="\(3/2=\ell/4\)">\(3/2=\ell/4\)</span>. A differentiated interval factor is the difference of endpoint masses divided by <span class="math" data-index="155" data-tex="\(1/2\)">\(1/2\)</span>, with total variation <span class="math" data-index="156" data-tex="\(4\)">\(4\)</span>. Put each of at most three derivatives on a different uniform factor. All undifferentiated factors have mass one, so convolution with an indicator bounded by one gives supremum at most <span class="math" data-index="157" data-tex="\(4^s=(8q/\ell)^s\)">\(4^s=(8q/\ell)^s\)</span> for <span class="math" data-index="158" data-tex="\(0\leq s\leq3\)">\(0\leq s\leq3\)</span>. Smoothness at higher orders follows from the final smooth density, but this fixed numerical bound is not claimed there.</p>
+<h3 id="exercise-4-check-the-dyadic-annular-constants-10-points">Exercise 4. Check the dyadic annular constants — 10 points</h3>
+<p>Prove the support radii <span class="math" data-index="159" data-tex="\(7\cdot2^j/16\)">\(7\cdot2^j/16\)</span> and <span class="math" data-index="160" data-tex="\(9\cdot2^j/8\)">\(9\cdot2^j/8\)</span> for <span class="math" data-index="161" data-tex="\(\psi_j\)">\(\psi_j\)</span>, and explain its nonnegativity.</p>
+<p><strong>Solution.</strong> The density in <span class="math" data-index="162" data-tex="\(\chi_j\)">\(\chi_j\)</span> has half-width <span class="math" data-index="163" data-tex="\(2^{j-3}\)">\(2^{j-3}\)</span>. Hence <span class="math" data-index="164" data-tex="\(\chi_j=1\)">\(\chi_j=1\)</span> on the cube of radius <span class="math" data-index="165" data-tex="\(2^j-2^{j-3}=7\cdot2^j/8\)">\(2^j-2^{j-3}=7\cdot2^j/8\)</span>, and vanishes outside the cube of radius <span class="math" data-index="166" data-tex="\(2^j+2^{j-3}=9\cdot2^j/8\)">\(2^j+2^{j-3}=9\cdot2^j/8\)</span>. The support of <span class="math" data-index="167" data-tex="\(\chi_{j-1}\)">\(\chi_{j-1}\)</span> has radius <span class="math" data-index="168" data-tex="\(9\cdot2^j/16\)">\(9\cdot2^j/16\)</span>, inside the flat region of <span class="math" data-index="169" data-tex="\(\chi_j\)">\(\chi_j\)</span>. Therefore <span class="math" data-index="170" data-tex="\(\chi_j-\chi_{j-1}\geq0\)">\(\chi_j-\chi_{j-1}\geq0\)</span>. Both functions are one when <span class="math" data-index="171" data-tex="\(|\xi|_\infty\leq7\cdot2^j/16\)">\(|\xi|_\infty\leq7\cdot2^j/16\)</span>, so their difference is zero there. Outside the larger support it is also zero. This proves the two radii, and the telescoping sum proves the partition identity.</p>
+<h3 id="exercise-5-a-directional-derivative-costs-a-dimension-factor-8-points">Exercise 5. A directional derivative costs a dimension factor — 8 points</h3>
+<p>If <span class="math" data-index="172" data-tex="\(\|\partial^\alpha\phi\|_\infty\leq A^{|\alpha|}\)">\(\|\partial^\alpha\phi\|_\infty\leq A^{|\alpha|}\)</span> for <span class="math" data-index="173" data-tex="\(|\alpha|\leq K+1\)">\(|\alpha|\leq K+1\)</span>, show the corresponding bound for a unit directional derivative. Evaluate the bound for <span class="math" data-index="174" data-tex="\(\theta=(1,1)/\sqrt2\)">\(\theta=(1,1)/\sqrt2\)</span>.</p>
+<p><strong>Solution.</strong> The multinomial expansion gives</p>
+<span class="math math-display" id="eq-11.1" data-index="175" data-tex="\[
+ |\partial_\theta^s\phi|
+ \leq A^s\sum_{|\alpha|=s}\frac{s!}{\alpha!}|\theta|^\alpha
+ =A^s\left(\sum_i|\theta_i|\right)^s
+ \leq(A\sqrt n)^s.
+ \tag{11.1}
+\]">\[
+ |\partial_\theta^s\phi|
+ \leq A^s\sum_{|\alpha|=s}\frac{s!}{\alpha!}|\theta|^\alpha
+ =A^s\left(\sum_i|\theta_i|\right)^s
+ \leq(A\sqrt n)^s.
+ \tag{11.1}
+\]</span>
+<p>For the stated two-dimensional direction, the sum of absolute coordinates is exactly <span class="math" data-index="176" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so the resulting bound is <span class="math" data-index="177" data-tex="\((A\sqrt2)^s\)">\((A\sqrt2)^s\)</span>. This is the source of the factor <span class="math" data-index="178" data-tex="\(\sqrt n\)">\(\sqrt n\)</span> in (9.2); it is not a change in Fourier normalization.</p>
+<h3 id="exercise-6-recover-the-contour-correction-sign-10-points">Exercise 6. Recover the contour correction sign — 10 points</h3>
+<p>Set <span class="math" data-index="179" data-tex="\(K=0\)">\(K=0\)</span>, <span class="math" data-index="180" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="181" data-tex="\(\theta=1\)">\(\theta=1\)</span>, and <span class="math" data-index="182" data-tex="\(G(\zeta)=e^{i\omega\zeta}\)">\(G(\zeta)=e^{i\omega\zeta}\)</span> with real <span class="math" data-index="183" data-tex="\(\omega\)">\(\omega\)</span>. Check the plus sign in (4.2) directly for any smooth compact cutoff <span class="math" data-index="184" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-index="185" data-tex="\(I_0=\int e^{i\omega\xi}\phi(\xi)\,d\xi\)">\(I_0=\int e^{i\omega\xi}\phi(\xi)\,d\xi\)</span>. The top integral is <span class="math" data-index="186" data-tex="\(e^{-\omega T}I_0\)">\(e^{-\omega T}I_0\)</span>. Integration by parts gives
+<span class="math" data-index="187" data-tex="\(\int e^{i\omega\xi}\phi&#x27;(\xi)\,d\xi=-i\omega I_0\)">\(\int e^{i\omega\xi}\phi&#x27;(\xi)\,d\xi=-i\omega I_0\)</span>.
+Thus the correction with the displayed plus sign is</p>
+<span class="math math-display" id="eq-11.2" data-index="188" data-tex="\[
+ i\int_0^T e^{-\omega t}(-i\omega I_0)\,dt
+ =\omega I_0\int_0^T e^{-\omega t}\,dt
+ =(1-e^{-\omega T})I_0. \tag{11.2}
+\]">\[
+ i\int_0^T e^{-\omega t}(-i\omega I_0)\,dt
+ =\omega I_0\int_0^T e^{-\omega t}\,dt
+ =(1-e^{-\omega T})I_0. \tag{11.2}
+\]</span>
+<p>For <span class="math" data-index="189" data-tex="\(\omega=0\)">\(\omega=0\)</span>, this is zero and the top is <span class="math" data-index="190" data-tex="\(I_0\)">\(I_0\)</span>. For every other <span class="math" data-index="191" data-tex="\(\omega\)">\(\omega\)</span>, the top and correction sum to <span class="math" data-index="192" data-tex="\(I_0\)">\(I_0\)</span> as required. A minus sign would give <span class="math" data-index="193" data-tex="\((2e^{-\omega T}-1)I_0\)">\((2e^{-\omega T}-1)I_0\)</span> and fail in general.</p>
+<h3 id="exercise-7-why-uncontrolled-factorial-growth-is-too-large-10-points">Exercise 7. Why uncontrolled factorial growth is too large — 10 points</h3>
+<p>Compute the correction estimate if one only had
+<span class="math" data-index="194" data-tex="\(\|\partial_\theta^{K+1}\phi\|_\infty\leq a^{K+1}(K+1)!\)">\(\|\partial_\theta^{K+1}\phi\|_\infty\leq a^{K+1}(K+1)!\)</span>.
+Compare it with the controlled finite-derivative estimate.</p>
+<p><strong>Solution.</strong> The Taylor remainder still contains <span class="math" data-index="195" data-tex="\(t^K/K!\)">\(t^K/K!\)</span>. Its integral against <span class="math" data-index="196" data-tex="\(e^{-rt/2}\)">\(e^{-rt/2}\)</span> is <span class="math" data-index="197" data-tex="\((2/r)^{K+1}\)">\((2/r)^{K+1}\)</span>. The weaker derivative hypothesis would therefore leave</p>
+<span class="math math-display" id="eq-11.3" data-index="198" data-tex="\[
+ (K+1)!\,(2a/r)^{K+1}. \tag{11.3}
+\]">\[
+ (K+1)!\,(2a/r)^{K+1}. \tag{11.3}
+\]</span>
+<p>For any fixed positive <span class="math" data-index="199" data-tex="\(2a/r\)">\(2a/r\)</span>, this does not tend to zero: the ratio of successive terms is <span class="math" data-index="200" data-tex="\((K+2)(2a/r)\)">\((K+2)(2a/r)\)</span>, eventually larger than two. The actual cutoff construction gives <span class="math" data-index="201" data-tex="\(a^{K+1}\)">\(a^{K+1}\)</span> without the extra factorial, leaving only <span class="math" data-index="202" data-tex="\((2a/r)^{K+1}\)">\((2a/r)^{K+1}\)</span>. This explains why control of a growing finite derivative range is necessary.</p>
+<h3 id="exercise-8-sum-cell-volumes-rather-than-counting-an-infinite-grid-10-points">Exercise 8. Sum cell volumes rather than counting an infinite grid — 10 points</h3>
+<p>At a sufficiently large level <span class="math" data-index="203" data-tex="\(j\)">\(j\)</span>, prove that the sum of the support volumes of all nonzero cells is at most <span class="math" data-index="204" data-tex="\(12^n2^{jn}\)">\(12^n2^{jn}\)</span>.</p>
+<p><strong>Solution.</strong> A nonzero cell center has each coordinate at most <span class="math" data-index="205" data-tex="\(9\cdot2^j/8+3\ell_j/4\)">\(9\cdot2^j/8+3\ell_j/4\)</span> in absolute value. At spacing <span class="math" data-index="206" data-tex="\(\ell_j\)">\(\ell_j\)</span>, there are at most <span class="math" data-index="207" data-tex="\(8\,2^j/\ell_j\)">\(8\,2^j/\ell_j\)</span> possible centers per coordinate once <span class="math" data-index="208" data-tex="\(\ell_j\leq2^j\)">\(\ell_j\leq2^j\)</span>. There are thus at most <span class="math" data-index="209" data-tex="\((8\,2^j/\ell_j)^n\)">\((8\,2^j/\ell_j)^n\)</span> nonzero cells. Each support lies in a cube of side <span class="math" data-index="210" data-tex="\(3\ell_j/2\)">\(3\ell_j/2\)</span>, of volume at most that side to the <span class="math" data-index="211" data-tex="\(n\)">\(n\)</span>-th power. Multiplication yields
+<span class="math" data-index="212" data-tex="\((8\,2^j/\ell_j)^n(3\ell_j/2)^n=12^n2^{jn}\)">\((8\,2^j/\ell_j)^n(3\ell_j/2)^n=12^n2^{jn}\)</span>.
+The complete infinite lattice partition is used for its exact identity, but only finitely many of its cells meet this annulus.</p>
+<h3 id="exercise-9-choose-the-parameter-for-a-prescribed-derivative-budget-10-points">Exercise 9. Choose the parameter for a prescribed derivative budget — 10 points</h3>
+<p>Let <span class="math" data-index="213" data-tex="\(B=N+1+b+n+1\)">\(B=N+1+b+n+1\)</span>. Give an explicit positive <span class="math" data-index="214" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> satisfying all three conditions in (5.1).</p>
+<p><strong>Solution.</strong> One valid choice is</p>
+<span class="math math-display" id="eq-11.4" data-index="215" data-tex="\[
+ \varepsilon=\frac12\min\left\{
+ 1,\ \frac{r}{260\sqrt n},\
+ \frac{r}{4B\log2},\
+ \frac{r\,2^{-B}}{130\sqrt n}
+ \right\}. \tag{11.4}
+\]">\[
+ \varepsilon=\frac12\min\left\{
+ 1,\ \frac{r}{260\sqrt n},\
+ \frac{r}{4B\log2},\
+ \frac{r\,2^{-B}}{130\sqrt n}
+ \right\}. \tag{11.4}
+\]</span>
+<p>The second entry gives <span class="math" data-index="216" data-tex="\(65\sqrt n\,\varepsilon\leq r/8&lt;r/4\)">\(65\sqrt n\,\varepsilon\leq r/8&lt;r/4\)</span>. The third gives
+<span class="math" data-index="217" data-tex="\(r/(4\varepsilon)\geq2B\log2&gt;B\log2\)">\(r/(4\varepsilon)\geq2B\log2&gt;B\log2\)</span>.
+The fourth gives
+<span class="math" data-index="218" data-tex="\(130\sqrt n\,\varepsilon/r\leq2^{-B-1}&lt;2^{-B}\)">\(130\sqrt n\,\varepsilon/r\leq2^{-B-1}&lt;2^{-B}\)</span>.
+The first guarantees <span class="math" data-index="219" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. These are precisely the required top-term and correction-term inequalities. The initial frequency threshold is chosen afterward, with this fixed <span class="math" data-index="220" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and fixed window radius <span class="math" data-index="221" data-tex="\(m\)">\(m\)</span>.</p>
+<h3 id="exercise-10-different-partitions-still-give-one-smooth-function-16-points">Exercise 10. Different partitions still give one smooth function — 16 points</h3>
+<p>For each derivative order <span class="math" data-index="222" data-tex="\(b\)">\(b\)</span>, suppose the construction gives a <span class="math" data-index="223" data-tex="\(C^b\)">\(C^b\)</span> function <span class="math" data-index="224" data-tex="\(f_b\)">\(f_b\)</span> representing <span class="math" data-index="225" data-tex="\(u\)">\(u\)</span> on the same open ball, using a different partition. Prove that <span class="math" data-index="226" data-tex="\(f_0\)">\(f_0\)</span> is smooth. Explain why equality almost everywhere is enough to identify the representatives.</p>
+<p><strong>Solution.</strong> The difference <span class="math" data-index="227" data-tex="\(f_b-f_0\)">\(f_b-f_0\)</span> is continuous and represents the zero distribution. If its value were nonzero at a point, multiply by a fixed unit complex number so that its real part is positive there. By continuity, that real part is bounded below by a positive constant on a smaller ball. A nonnegative smooth test function supported in that smaller ball, with positive integral, would have nonzero pairing with the difference. This contradicts the zero distribution. Hence <span class="math" data-index="228" data-tex="\(f_b=f_0\)">\(f_b=f_0\)</span> everywhere on the ball.</p>
+<p>Equivalently, equality as locally integrable distributions gives equality almost everywhere, and two continuous functions equal almost everywhere are equal everywhere by the same open-ball argument. Since <span class="math" data-index="229" data-tex="\(f_b\in C^b\)">\(f_b\in C^b\)</span> for every integer <span class="math" data-index="230" data-tex="\(b\)">\(b\)</span>, the common function <span class="math" data-index="231" data-tex="\(f_0\)">\(f_0\)</span> belongs to every <span class="math" data-index="232" data-tex="\(C^b\)">\(C^b\)</span>, and is smooth. This justifies changing the finite partition with the derivative budget; it does not assert a single infinite-order derivative estimate on one partition.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Chapter XVI, Theorem 16.3.5, for the nonconvex singular-carrier statement.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Sections 1.4 and 7.3, for the surrounding partition and compact Fourier theory. The exact cutoffs and contour identity used here are proved in full below.</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, for additional background on entire Fourier transforms and support. That reference uses a different <span class="math" data-index="233" data-tex="\(2\pi\)">\(2\pi\)</span> convention; all formulas in this lesson use (7.1).</li>
+</ul>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p>Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>The Fourier transform can select a different compact convex carrier at each large frequency. Their closed union contains the singular support. Taking the convex hull of that union loses the frequency choice, and can fill regions where the distribution is smooth.</p>
+<p>We prove this local statement by constructing the frequency cutoffs explicitly. Each cutoff has only a finite, increasing number of controlled derivatives. That is enough for a finite Taylor contour correction. No analytic compactly supported cutoff is required.</p>
+<h2 id="1-profiles-carriers-and-the-statement">1. Profiles, carriers and the statement</h2>
+<p>Use <span class="math" data-index="234" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and</p>
+<span class="math math-display" id="eq-1.1" data-index="235" data-tex="\[
+ F(\zeta)=\widehat u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,
+ \qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{1.1}
+\]">\[
+ F(\zeta)=\widehat u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,
+ \qquad
+ L_u(z,c)=\frac{\log|F(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{1.1}
+\]</span>
+<p>Here <span class="math" data-index="236" data-tex="\(u\)">\(u\)</span> is a compactly supported distribution. The logarithm is <span class="math" data-index="237" data-tex="\(-\infty\)">\(-\infty\)</span> at a zero. A logarithmic profile is a proper plurisubharmonic local <span class="math" data-index="238" data-tex="\(L^1\)">\(L^1\)</span> limit along a sequence <span class="math" data-index="239" data-tex="\(c\to\infty\)">\(c\to\infty\)</span>, or the collapsed limit <span class="math" data-index="240" data-tex="\(-\infty\)">\(-\infty\)</span>. For a proper profile <span class="math" data-index="241" data-tex="\(v\)">\(v\)</span>, write <span class="math" data-index="242" data-tex="\(h_v\)">\(h_v\)</span> for its indicator and <span class="math" data-index="243" data-tex="\(C_v\)">\(C_v\)</span> for the nonempty compact convex set with support function <span class="math" data-index="244" data-tex="\(h_v\)">\(h_v\)</span>. The collapsed profile has empty carrier.</p>
+<p>The exact profile and compactness results used here are proved in <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Sections 2–4, <a href="AN02-L139.html">Plurisubharmonic envelopes and support functions</a>, and the complete compactness proof in <a href="AN02-L143.html">Local compactness and Hartogs bounds</a>. In particular, if <span class="math" data-index="245" data-tex="\(N\geq0\)">\(N\geq0\)</span> is an integer such that the ordinary compact Fourier estimate has order <span class="math" data-index="246" data-tex="\(N\)">\(N\)</span>, then every proper profile satisfies</p>
+<span class="math math-display" id="eq-1.2" data-index="247" data-tex="\[
+ v(z)\leq N+h_v(\operatorname{Im}z),\qquad
+ C_v\subset \operatorname{conv}\operatorname{supp}u. \tag{1.2}
+\]">\[
+ v(z)\leq N+h_v(\operatorname{Im}z),\qquad
+ C_v\subset \operatorname{conv}\operatorname{supp}u. \tag{1.2}
+\]</span>
+<p>The compactness alternative also gives local uniform collapse to <span class="math" data-index="248" data-tex="\(-\infty\)">\(-\infty\)</span>, and Hartogs upper comparison of a proper limiting profile against a continuous ceiling. Those conclusions concern the canonical upper-semicontinuous representative.</p>
+<p>Let <span class="math" data-index="249" data-tex="\(\mathcal J_{\mathrm{pr}}(u)\)">\(\mathcal J_{\mathrm{pr}}(u)\)</span> be the indicators of all proper profiles. Set</p>
+<span class="math math-display" id="eq-1.3" data-index="250" data-tex="\[
+ A(u)=\overline{\bigcup_{h\in\mathcal J_{\mathrm{pr}}(u)}C_h}.
+ \tag{1.3}
+\]">\[
+ A(u)=\overline{\bigcup_{h\in\mathcal J_{\mathrm{pr}}(u)}C_h}.
+ \tag{1.3}
+\]</span>
+<p>The union over an empty family is empty. Collapsed profiles add no points.</p>
+<p><strong>Theorem 1.1.</strong> For every compactly supported distribution,</p>
+<span class="math math-display" id="eq-1.4" data-index="251" data-tex="\[
+ \operatorname{sing\,supp}u\subset A(u). \tag{1.4}
+\]">\[
+ \operatorname{sing\,supp}u\subset A(u). \tag{1.4}
+\]</span>
+<p>This is a containment in a closed union, not merely in its convex hull. The theorem does not assert that each individual <span class="math" data-index="252" data-tex="\(C_h\)">\(C_h\)</span> is contained in the singular support.</p>
+<p>The proof occupies Sections 2–6. Its lower inputs are precisely the profile compactness and carrier statements above, compact distribution Fourier inversion, elementary finite convolution of measures, and the one-variable fundamental theorem of calculus. Fourier inversion, including the implication from rapid real Fourier decay to smoothness, is proved in <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, Section 2.</p>
+<p><strong>Lemma 1.2 (the empty-profile case).</strong> If there is no proper profile, then <span class="math" data-index="253" data-tex="\(u\)">\(u\)</span> is smooth.</p>
+<p><em>Proof.</em> If <span class="math" data-index="254" data-tex="\(F\)">\(F\)</span> were not rapidly decreasing on the real space, there would be a fixed <span class="math" data-index="255" data-tex="\(B\geq0\)">\(B\geq0\)</span> and an escaping sequence <span class="math" data-index="256" data-tex="\(c_j\)">\(c_j\)</span> with
+<span class="math" data-index="257" data-tex="\(|F(c_j)|\geq |c_j|^{-B}\)">\(|F(c_j)|\geq |c_j|^{-B}\)</span>, after increasing <span class="math" data-index="258" data-tex="\(B\)">\(B\)</span> to absorb a fixed constant. Thus <span class="math" data-index="259" data-tex="\(L_u(0,c_j)\geq-B\)">\(L_u(0,c_j)\geq-B\)</span>. The compactness alternative supplies a further proper or collapsed subsequence. Uniform collapse on a fixed compact neighborhood of zero contradicts this last inequality. A proper subsequence contradicts the hypothesis. Hence <span class="math" data-index="260" data-tex="\(F\)">\(F\)</span> is rapidly decreasing. Every derivative of its inverse Fourier integral is then absolutely convergent, and Fourier inversion identifies the resulting smooth function with <span class="math" data-index="261" data-tex="\(u\)">\(u\)</span>. <span class="math" data-index="262" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3 (translation).</strong> Translating the spatial origin by <span class="math" data-index="263" data-tex="\(x_0\)">\(x_0\)</span> translates every profile carrier by <span class="math" data-index="264" data-tex="\(-x_0\)">\(-x_0\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-index="265" data-tex="\(u_0(x)=u(x+x_0)\)">\(u_0(x)=u(x+x_0)\)</span>, the transform is <span class="math" data-index="266" data-tex="\(F_0(\zeta)=e^{ix_0\cdot\zeta}F(\zeta)\)">\(F_0(\zeta)=e^{ix_0\cdot\zeta}F(\zeta)\)</span>. Consequently,</p>
+<span class="math math-display" id="eq-1.5" data-index="267" data-tex="\[
+ L_{u_0}(z,c)=L_u(z,c)-x_0\cdot\operatorname{Im}z,\qquad
+ h_{v_0}(\eta)=h_v(\eta)-x_0\cdot\eta,\qquad C_{v_0}=C_v-x_0.
+ \tag{1.5}
+\]">\[
+ L_{u_0}(z,c)=L_u(z,c)-x_0\cdot\operatorname{Im}z,\qquad
+ h_{v_0}(\eta)=h_v(\eta)-x_0\cdot\eta,\qquad C_{v_0}=C_v-x_0.
+ \tag{1.5}
+\]</span>
+<p>The first equality also holds at zeros. Adding a fixed pluriharmonic function preserves proper local <span class="math" data-index="268" data-tex="\(L^1\)">\(L^1\)</span> convergence and uniform collapse. Substitution into the indicator definition proves the second equality; support functions determine the third. The transformation is invertible, so it accounts for all profiles in both directions. <span class="math" data-index="269" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-one-profile-controls-each-sufficiently-large-window">2. One profile controls each sufficiently large window</h2>
+<p><strong>Lemma 2.1 (uniform window choice).</strong> Suppose there is a proper profile. For every fixed <span class="math" data-index="270" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, all sufficiently large real <span class="math" data-index="271" data-tex="\(c\)">\(c\)</span>, with <span class="math" data-index="272" data-tex="\(R=|c|\)">\(R=|c|\)</span>, admit an <span class="math" data-index="273" data-tex="\(h_c\in\mathcal J_{\mathrm{pr}}(u)\)">\(h_c\in\mathcal J_{\mathrm{pr}}(u)\)</span> such that</p>
+<span class="math math-display" id="eq-2.1" data-index="274" data-tex="\[
+ |F(c+\zeta)|\leq R^{N+1}\exp h_c(\operatorname{Im}\zeta)
+ \quad\text{for every }|\zeta|\leq m\log R. \tag{2.1}
+\]">\[
+ |F(c+\zeta)|\leq R^{N+1}\exp h_c(\operatorname{Im}\zeta)
+ \quad\text{for every }|\zeta|\leq m\log R. \tag{2.1}
+\]</span>
+<p>The threshold may depend on <span class="math" data-index="275" data-tex="\(m\)">\(m\)</span>. The exponent <span class="math" data-index="276" data-tex="\(N+1\)">\(N+1\)</span> is fixed. The chosen carrier may depend on <span class="math" data-index="277" data-tex="\(c\)">\(c\)</span>.</p>
+<p><em>Proof.</em> If this failed, there would be escaping <span class="math" data-index="278" data-tex="\(c_j\)">\(c_j\)</span> such that for every proper indicator <span class="math" data-index="279" data-tex="\(h\)">\(h\)</span> some <span class="math" data-index="280" data-tex="\(|z|\leq m\)">\(|z|\leq m\)</span> satisfies</p>
+<span class="math math-display" id="eq-2.2" data-index="281" data-tex="\[
+ L_u(z,c_j)&gt;N+1+h(\operatorname{Im}z). \tag{2.2}
+\]">\[
+ L_u(z,c_j)&gt;N+1+h(\operatorname{Im}z). \tag{2.2}
+\]</span>
+<p>Choose a proper or collapsed subsequence by the profile compactness alternative. If its limit is proper, let <span class="math" data-index="282" data-tex="\(h\)">\(h\)</span> be that limit's indicator. By (1.2), the limit is at most the continuous function <span class="math" data-index="283" data-tex="\(N+h(\operatorname{Im}z)\)">\(N+h(\operatorname{Im}z)\)</span>. Hartogs upper comparison on the compact ball <span class="math" data-index="284" data-tex="\(|z|\leq m\)">\(|z|\leq m\)</span>, inside a slightly larger ball, gives
+<span class="math" data-index="285" data-tex="\(L_u(z,c_j)\leq N+\tfrac12+h(\operatorname{Im}z)\)">\(L_u(z,c_j)\leq N+\tfrac12+h(\operatorname{Im}z)\)</span> there for all large <span class="math" data-index="286" data-tex="\(j\)">\(j\)</span>. This contradicts (2.2).</p>
+<p>If the subsequence collapses, choose any fixed proper indicator <span class="math" data-index="287" data-tex="\(h_0\)">\(h_0\)</span>, which exists by hypothesis. It has a finite minimum on the compact imaginary ball. Uniform collapse makes (2.2) impossible with <span class="math" data-index="288" data-tex="\(h=h_0\)">\(h=h_0\)</span>. Finally substitute <span class="math" data-index="289" data-tex="\(\zeta=z\log R\)">\(\zeta=z\log R\)</span> and use the positive homogeneity of <span class="math" data-index="290" data-tex="\(h\)">\(h\)</span>. <span class="math" data-index="291" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (a different separating normal is allowed for every carrier).</strong> Suppose <span class="math" data-index="292" data-tex="\(0\)">\(0\)</span> has distance at least <span class="math" data-index="293" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> from every proper carrier. For each <span class="math" data-index="294" data-tex="\(h\in\mathcal J_{\mathrm{pr}}(u)\)">\(h\in\mathcal J_{\mathrm{pr}}(u)\)</span> there is a unit vector <span class="math" data-index="295" data-tex="\(\theta_h\in\mathbb R^n\)">\(\theta_h\in\mathbb R^n\)</span> with</p>
+<span class="math math-display" id="eq-2.3" data-index="296" data-tex="\[
+ h(\theta_h)\leq-r. \tag{2.3}
+\]">\[
+ h(\theta_h)\leq-r. \tag{2.3}
+\]</span>
+<p><em>Proof.</em> Choose a point <span class="math" data-index="297" data-tex="\(a\)">\(a\)</span> minimizing <span class="math" data-index="298" data-tex="\(|a|\)">\(|a|\)</span> on the nonempty compact convex carrier <span class="math" data-index="299" data-tex="\(C_h\)">\(C_h\)</span>. Then <span class="math" data-index="300" data-tex="\(|a|\geq r\)">\(|a|\geq r\)</span>. For every <span class="math" data-index="301" data-tex="\(y\in C_h\)">\(y\in C_h\)</span>, differentiating <span class="math" data-index="302" data-tex="\(|a+t(y-a)|^2\)">\(|a+t(y-a)|^2\)</span> at <span class="math" data-index="303" data-tex="\(t=0+\)">\(t=0+\)</span> gives <span class="math" data-index="304" data-tex="\(a\cdot(y-a)\geq0\)">\(a\cdot(y-a)\geq0\)</span>. With <span class="math" data-index="305" data-tex="\(\theta_h=-a/|a|\)">\(\theta_h=-a/|a|\)</span>, this says <span class="math" data-index="306" data-tex="\(\theta_h\cdot y\leq-|a|\leq-r\)">\(\theta_h\cdot y\leq-|a|\leq-r\)</span>. Take the supremum over <span class="math" data-index="307" data-tex="\(y\)">\(y\)</span>. <span class="math" data-index="308" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-finite-convolution-makes-the-required-cutoffs">3. Finite convolution makes the required cutoffs</h2>
+<p>We give the complete cutoff construction because its derivative order grows with the frequency. Bounds for each fixed derivative alone would not control the contour correction.</p>
+<p>Let <span class="math" data-index="309" data-tex="\(\beta\)">\(\beta\)</span> be a nonnegative smooth probability density supported in <span class="math" data-index="310" data-tex="\([-1,1]\)">\([-1,1]\)</span>. One explicit choice is a positive normalizing constant times
+<span class="math" data-index="311" data-tex="\(\exp(-1/(1-t^2))\)">\(\exp(-1/(1-t^2))\)</span> for <span class="math" data-index="312" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, extended by zero. It is smooth across the endpoints: each interior derivative is the exponential times a rational function with only a finite-order pole at an endpoint, and the exponential tends to zero faster than every power of that pole. Its integral is finite and strictly positive.</p>
+<p>For an integer <span class="math" data-index="313" data-tex="\(q\geq1\)">\(q\geq1\)</span> and a length <span class="math" data-index="314" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, convolve <span class="math" data-index="315" data-tex="\(q\)">\(q\)</span> uniform probability densities on intervals of length <span class="math" data-index="316" data-tex="\(\ell/(4q)\)">\(\ell/(4q)\)</span>, and then convolve with the rescaled smooth probability density supported in <span class="math" data-index="317" data-tex="\([-\ell/8,\ell/8]\)">\([-\ell/8,\ell/8]\)</span>. Call the resulting one-dimensional density <span class="math" data-index="318" data-tex="\(\kappa_{\ell,q}^{(1)}\)">\(\kappa_{\ell,q}^{(1)}\)</span>. Its support is in <span class="math" data-index="319" data-tex="\([-\ell/4,\ell/4]\)">\([-\ell/4,\ell/4]\)</span>: the uniform factors contribute total half-width <span class="math" data-index="320" data-tex="\(\ell/8\)">\(\ell/8\)</span>, and the final smooth factor contributes another <span class="math" data-index="321" data-tex="\(\ell/8\)">\(\ell/8\)</span>. Let <span class="math" data-index="322" data-tex="\(\kappa_{\ell,q}\)">\(\kappa_{\ell,q}\)</span> be the product of these densities in <span class="math" data-index="323" data-tex="\(n\)">\(n\)</span> coordinates.</p>
+<p><strong>Lemma 3.1 (controlled derivatives without analyticity).</strong> If <span class="math" data-index="324" data-tex="\(0\leq b\leq1\)">\(0\leq b\leq1\)</span> is any measurable function and
+<span class="math" data-index="325" data-tex="\(\tau=b*\kappa_{\ell,q}\)">\(\tau=b*\kappa_{\ell,q}\)</span>, then <span class="math" data-index="326" data-tex="\(\tau\)">\(\tau\)</span> is smooth, <span class="math" data-index="327" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>, and for every multi-index with <span class="math" data-index="328" data-tex="\(|\alpha|\leq q\)">\(|\alpha|\leq q\)</span>,</p>
+<span class="math math-display" id="eq-3.1" data-index="329" data-tex="\[
+ \|\partial^\alpha\tau\|_\infty\leq(8q/\ell)^{|\alpha|}. \tag{3.1}
+\]">\[
+ \|\partial^\alpha\tau\|_\infty\leq(8q/\ell)^{|\alpha|}. \tag{3.1}
+\]</span>
+<p><em>Proof.</em> All factors have total mass one. The derivative of a uniform density on an interval of length <span class="math" data-index="330" data-tex="\(a\)">\(a\)</span> is the difference of its endpoint point masses divided by <span class="math" data-index="331" data-tex="\(a\)">\(a\)</span>, a signed measure of total variation <span class="math" data-index="332" data-tex="\(2/a\)">\(2/a\)</span>. Here <span class="math" data-index="333" data-tex="\(a=\ell/(4q)\)">\(a=\ell/(4q)\)</span>, so that variation is <span class="math" data-index="334" data-tex="\(8q/\ell\)">\(8q/\ell\)</span>. In a given coordinate, put each of its <span class="math" data-index="335" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> derivatives on a different uniform factor. There are at least that many factors because <span class="math" data-index="336" data-tex="\(\alpha_j\leq|\alpha|\leq q\)">\(\alpha_j\leq|\alpha|\leq q\)</span>. Across coordinates, the convolution product has signed total variation at most <span class="math" data-index="337" data-tex="\((8q/\ell)^{|\alpha|}\)">\((8q/\ell)^{|\alpha|}\)</span>. Convolving it with the remaining probability factors and with <span class="math" data-index="338" data-tex="\(b\)">\(b\)</span>, whose supremum is at most one, proves (3.1). The final smooth compact factor makes all orders of derivatives continuous, regardless of whether (3.1) controls those higher orders. <span class="math" data-index="339" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (an exact grid partition).</strong> Let <span class="math" data-index="340" data-tex="\(B_\ell=[-\ell/2,\ell/2)^n\)">\(B_\ell=[-\ell/2,\ell/2)^n\)</span>, and set</p>
+<span class="math math-display" id="eq-3.2" data-index="341" data-tex="\[
+ \tau_{\ell,q,k}(\xi)=
+ (1_{B_\ell}*\kappa_{\ell,q})(\xi-\ell k),\qquad k\in\mathbb Z^n.
+ \tag{3.2}
+\]">\[
+ \tau_{\ell,q,k}(\xi)=
+ (1_{B_\ell}*\kappa_{\ell,q})(\xi-\ell k),\qquad k\in\mathbb Z^n.
+ \tag{3.2}
+\]</span>
+<p>These are nonnegative smooth functions bounded by one. They sum exactly to one, have supports in
+<span class="math" data-index="342" data-tex="\(\ell k+[-3\ell/4,3\ell/4]^n\)">\(\ell k+[-3\ell/4,3\ell/4]^n\)</span>, have overlap at most <span class="math" data-index="343" data-tex="\(2^n\)">\(2^n\)</span>, and satisfy (3.1).</p>
+<p><em>Proof.</em> The half-open translates of <span class="math" data-index="344" data-tex="\(B_\ell\)">\(B_\ell\)</span> partition the real space. Convolve their sum with the probability density, using nonnegativity to interchange the sum and integral. The sum is one almost everywhere and, being locally a finite sum of continuous functions, everywhere. The support statement follows by adding the two support cubes. In each coordinate an interval of length <span class="math" data-index="345" data-tex="\(3\ell/2\)">\(3\ell/2\)</span> can contain at most two lattice centers at spacing <span class="math" data-index="346" data-tex="\(\ell\)">\(\ell\)</span>; hence at most <span class="math" data-index="347" data-tex="\(2^n\)">\(2^n\)</span> cutoffs can be nonzero at a point. Lemma 3.1 gives the derivative bounds. <span class="math" data-index="348" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also need an exact dyadic partition whose transition derivatives are much smaller. Put <span class="math" data-index="349" data-tex="\(q_j=2(j+3)\)">\(q_j=2(j+3)\)</span>, and define</p>
+<span class="math math-display" id="eq-3.3" data-index="350" data-tex="\[
+ \chi_j=1_{[-2^j,2^j]^n}*\kappa_{2^{j-1},q_j},
+ \quad
+ \psi_0=\chi_0,\qquad \psi_j=\chi_j-\chi_{j-1}\quad(j\geq1).
+ \tag{3.3}
+\]">\[
+ \chi_j=1_{[-2^j,2^j]^n}*\kappa_{2^{j-1},q_j},
+ \quad
+ \psi_0=\chi_0,\qquad \psi_j=\chi_j-\chi_{j-1}\quad(j\geq1).
+ \tag{3.3}
+\]</span>
+<p><strong>Lemma 3.3 (telescoping annuli).</strong> The <span class="math" data-index="351" data-tex="\(\psi_j\)">\(\psi_j\)</span> are nonnegative, sum to one, and are bounded by one. For <span class="math" data-index="352" data-tex="\(j\geq1\)">\(j\geq1\)</span>,</p>
+<span class="math math-display" id="eq-3.4" data-index="353" data-tex="\[
+ \operatorname{supp}\psi_j
+ \subset\{\xi:(7/16)2^j\leq|\xi|_\infty\leq(9/8)2^j\}. \tag{3.4}
+\]">\[
+ \operatorname{supp}\psi_j
+ \subset\{\xi:(7/16)2^j\leq|\xi|_\infty\leq(9/8)2^j\}. \tag{3.4}
+\]</span>
+<p>For <span class="math" data-index="354" data-tex="\(1\leq|\alpha|\leq j+1\)">\(1\leq|\alpha|\leq j+1\)</span>,</p>
+<span class="math math-display" id="eq-3.5" data-index="355" data-tex="\[
+ \|\partial^\alpha\psi_j\|_\infty
+ \leq\bigl(128(j+3)/2^j\bigr)^{|\alpha|}. \tag{3.5}
+\]">\[
+ \|\partial^\alpha\psi_j\|_\infty
+ \leq\bigl(128(j+3)/2^j\bigr)^{|\alpha|}. \tag{3.5}
+\]</span>
+<p><em>Proof.</em> The density used in <span class="math" data-index="356" data-tex="\(\chi_j\)">\(\chi_j\)</span> has coordinate half-width <span class="math" data-index="357" data-tex="\(2^{j-3}\)">\(2^{j-3}\)</span>. Thus <span class="math" data-index="358" data-tex="\(\chi_j\)">\(\chi_j\)</span> is one on the cube of radius <span class="math" data-index="359" data-tex="\((7/8)2^j\)">\((7/8)2^j\)</span>, vanishes outside the cube of radius <span class="math" data-index="360" data-tex="\((9/8)2^j\)">\((9/8)2^j\)</span>, and takes values in <span class="math" data-index="361" data-tex="\([0,1]\)">\([0,1]\)</span>. The entire support of <span class="math" data-index="362" data-tex="\(\chi_{j-1}\)">\(\chi_{j-1}\)</span>, of radius <span class="math" data-index="363" data-tex="\((9/16)2^j\)">\((9/16)2^j\)</span>, lies in the region where <span class="math" data-index="364" data-tex="\(\chi_j=1\)">\(\chi_j=1\)</span>. This proves <span class="math" data-index="365" data-tex="\(\chi_j\geq\chi_{j-1}\)">\(\chi_j\geq\chi_{j-1}\)</span> and (3.4). The sum telescopes to <span class="math" data-index="366" data-tex="\(\chi_J\)">\(\chi_J\)</span>, which is eventually one at every fixed point.</p>
+<p>For the derivatives of <span class="math" data-index="367" data-tex="\(\chi_j\)">\(\chi_j\)</span>, (3.1) gives <span class="math" data-index="368" data-tex="\(16q_j/2^j\)">\(16q_j/2^j\)</span> as the derivative base. For <span class="math" data-index="369" data-tex="\(\chi_{j-1}\)">\(\chi_{j-1}\)</span>, the base is <span class="math" data-index="370" data-tex="\(32q_{j-1}/2^j\)">\(32q_{j-1}/2^j\)</span>. Both have enough uniform factors to control derivatives of total order at most <span class="math" data-index="371" data-tex="\(j+1\)">\(j+1\)</span>. Each base is at most <span class="math" data-index="372" data-tex="\(64(j+3)/2^j\)">\(64(j+3)/2^j\)</span>. Taking the difference adds at most a factor two; for positive integer order, absorb that factor into the base to obtain (3.5). <span class="math" data-index="373" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.4 (logarithmic cells).</strong> Fix <span class="math" data-index="374" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. For <span class="math" data-index="375" data-tex="\(j\geq1\)">\(j\geq1\)</span>, set</p>
+<span class="math math-display" id="eq-3.6" data-index="376" data-tex="\[
+ \ell_j=j/\varepsilon,\quad c_{j,k}=\ell_jk,\quad
+ \phi_{j,k}=\psi_j\,\tau_{\ell_j,q_j,k}. \tag{3.6}
+\]">\[
+ \ell_j=j/\varepsilon,\quad c_{j,k}=\ell_jk,\quad
+ \phi_{j,k}=\psi_j\,\tau_{\ell_j,q_j,k}. \tag{3.6}
+\]</span>
+<p>For all sufficiently large <span class="math" data-index="377" data-tex="\(j\)">\(j\)</span>, each nonzero cell has center radius <span class="math" data-index="378" data-tex="\(R_{j,k}=|c_{j,k}|\)">\(R_{j,k}=|c_{j,k}|\)</span> satisfying</p>
+<span class="math math-display" id="eq-3.7" data-index="379" data-tex="\[
+ 2^{j-2}\leq R_{j,k}\leq2\sqrt n\,2^j,\qquad
+ |\xi-c_{j,k}|\leq(3/4)\sqrt n\,\ell_j
+ \quad(\xi\in\operatorname{supp}\phi_{j,k}). \tag{3.7}
+\]">\[
+ 2^{j-2}\leq R_{j,k}\leq2\sqrt n\,2^j,\qquad
+ |\xi-c_{j,k}|\leq(3/4)\sqrt n\,\ell_j
+ \quad(\xi\in\operatorname{supp}\phi_{j,k}). \tag{3.7}
+\]</span>
+<p>The cells sum to <span class="math" data-index="380" data-tex="\(\psi_j\)">\(\psi_j\)</span>. Their support volumes have sum at most <span class="math" data-index="381" data-tex="\(12^n2^{jn}\)">\(12^n2^{jn}\)</span>. For every unit <span class="math" data-index="382" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-index="383" data-tex="\(0\leq s\leq j+1\)">\(0\leq s\leq j+1\)</span>,</p>
+<span class="math math-display" id="eq-3.8" data-index="384" data-tex="\[
+ \|\partial_\theta^s\phi_{j,k}\|_\infty
+ \leq a_\varepsilon^s,\qquad a_\varepsilon=65\sqrt n\,\varepsilon. \tag{3.8}
+\]">\[
+ \|\partial_\theta^s\phi_{j,k}\|_\infty
+ \leq a_\varepsilon^s,\qquad a_\varepsilon=65\sqrt n\,\varepsilon. \tag{3.8}
+\]</span>
+<p><em>Proof.</em> Increase the initial <span class="math" data-index="385" data-tex="\(j\)">\(j\)</span> until
+<span class="math" data-index="386" data-tex="\((3/4)\sqrt n\,\ell_j\leq2^{j-3}\)">\((3/4)\sqrt n\,\ell_j\leq2^{j-3}\)</span>,
+<span class="math" data-index="387" data-tex="\(\ell_j\leq2^j\)">\(\ell_j\leq2^j\)</span>, and
+<span class="math" data-index="388" data-tex="\(128(j+3)/2^j\leq\varepsilon\)">\(128(j+3)/2^j\leq\varepsilon\)</span>.
+Such a threshold exists because exponential growth dominates <span class="math" data-index="389" data-tex="\(j\)">\(j\)</span>. A point in a nonzero cell satisfies (3.4), and its distance from the center is at most the quantity in (3.7). Hence the center norm is at least <span class="math" data-index="390" data-tex="\((7/16)2^j-2^{j-3}\geq2^{j-2}\)">\((7/16)2^j-2^{j-3}\geq2^{j-2}\)</span>, and at most <span class="math" data-index="391" data-tex="\((9/8)\sqrt n\,2^j+2^{j-3}\leq2\sqrt n\,2^j\)">\((9/8)\sqrt n\,2^j+2^{j-3}\leq2\sqrt n\,2^j\)</span>.</p>
+<p>For a nonzero cell each center coordinate has absolute value at most <span class="math" data-index="392" data-tex="\((9/8)2^j+3\ell_j/4\)">\((9/8)2^j+3\ell_j/4\)</span>. There are at most
+<span class="math" data-index="393" data-tex="\((8\,2^j/\ell_j)^n\)">\((8\,2^j/\ell_j)^n\)</span> such centers, after enlarging the threshold as above. Each support has volume at most <span class="math" data-index="394" data-tex="\((3\ell_j/2)^n\)">\((3\ell_j/2)^n\)</span>. Their product gives the stated volume sum.</p>
+<p>Lemma 3.2 gives the sum identity. Its derivative base for the grid factor is
+<span class="math" data-index="395" data-tex="\(8q_j/\ell_j=16\varepsilon(j+3)/j\leq64\varepsilon\)">\(8q_j/\ell_j=16\varepsilon(j+3)/j\leq64\varepsilon\)</span>.
+The annular factor has derivative base at most <span class="math" data-index="396" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> up to order <span class="math" data-index="397" data-tex="\(j+1\)">\(j+1\)</span>. The multi-index Leibniz formula therefore bounds their product by <span class="math" data-index="398" data-tex="\((65\varepsilon)^{|\alpha|}\)">\((65\varepsilon)^{|\alpha|}\)</span>, including order zero. Expand <span class="math" data-index="399" data-tex="\(\partial_\theta^s\)">\(\partial_\theta^s\)</span> by the multinomial formula and use
+<span class="math" data-index="400" data-tex="\(\sum|\theta_i|\leq\sqrt n\)">\(\sum|\theta_i|\leq\sqrt n\)</span>. This proves (3.8). <span class="math" data-index="401" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-a-finite-taylor-contour-identity">4. A finite Taylor contour identity</h2>
+<p><strong>Lemma 4.1 (directional correction with its sign).</strong> Let <span class="math" data-index="402" data-tex="\(\phi\)">\(\phi\)</span> be a smooth compactly supported function, <span class="math" data-index="403" data-tex="\(\theta\)">\(\theta\)</span> a real unit vector, and <span class="math" data-index="404" data-tex="\(K\geq0\)">\(K\geq0\)</span> an integer. Define, for real <span class="math" data-index="405" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" id="eq-4.1" data-index="406" data-tex="\[
+ \Phi(\xi,t)=\sum_{s=0}^{K}\frac{(it)^s}{s!}\partial_\theta^s\phi(\xi).
+ \tag{4.1}
+\]">\[
+ \Phi(\xi,t)=\sum_{s=0}^{K}\frac{(it)^s}{s!}\partial_\theta^s\phi(\xi).
+ \tag{4.1}
+\]</span>
+<p>Let <span class="math" data-index="407" data-tex="\(G\)">\(G\)</span> be entire on a neighborhood of the compact cylinder in question. Then</p>
+<span class="math math-display" id="eq-4.2" data-index="408" data-tex="\[
+ \begin{split}
+ \int G(\xi)\phi(\xi)\,d\xi
+ &amp;=\int G(\xi+iT\theta)\Phi(\xi,T)\,d\xi\\
+ &amp;\quad+i\int_0^T\frac{(it)^K}{K!}
+       \int G(\xi+it\theta)\partial_\theta^{K+1}\phi(\xi)\,d\xi\,dt .
+ \end{split} \tag{4.2}
+\]">\[
+ \begin{split}
+ \int G(\xi)\phi(\xi)\,d\xi
+ &amp;=\int G(\xi+iT\theta)\Phi(\xi,T)\,d\xi\\
+ &amp;\quad+i\int_0^T\frac{(it)^K}{K!}
+       \int G(\xi+it\theta)\partial_\theta^{K+1}\phi(\xi)\,d\xi\,dt .
+ \end{split} \tag{4.2}
+\]</span>
+<p>Every integral in this identity has compact real <span class="math" data-index="409" data-tex="\(\xi\)">\(\xi\)</span>-support. If
+<span class="math" data-index="410" data-tex="\(\|\partial_\theta^s\phi\|_\infty\leq a^s\)">\(\|\partial_\theta^s\phi\|_\infty\leq a^s\)</span> through order <span class="math" data-index="411" data-tex="\(K+1\)">\(K+1\)</span>, then</p>
+<span class="math math-display" id="eq-4.3" data-index="412" data-tex="\[
+ |\Phi(\xi,T)|\leq e^{aT},\qquad
+ \left|\frac{(it)^K}{K!}\partial_\theta^{K+1}\phi(\xi)\right|
+ \leq a^{K+1}t^K/K!
+ \quad(t\geq0). \tag{4.3}
+\]">\[
+ |\Phi(\xi,T)|\leq e^{aT},\qquad
+ \left|\frac{(it)^K}{K!}\partial_\theta^{K+1}\phi(\xi)\right|
+ \leq a^{K+1}t^K/K!
+ \quad(t\geq0). \tag{4.3}
+\]</span>
+<p><em>Proof.</em> The finite sum gives
+<span class="math" data-index="413" data-tex="\(\partial_t\Phi-i\partial_\theta\Phi
+=-i(it)^K\partial_\theta^{K+1}\phi/K!\)">\(\partial_t\Phi-i\partial_\theta\Phi
+=-i(it)^K\partial_\theta^{K+1}\phi/K!\)</span>.
+Holomorphy gives
+<span class="math" data-index="414" data-tex="\(\partial_tG(\xi+it\theta)=i\partial_\theta G(\xi+it\theta)\)">\(\partial_tG(\xi+it\theta)=i\partial_\theta G(\xi+it\theta)\)</span>.
+Differentiate the compact integral of <span class="math" data-index="415" data-tex="\(G\Phi\)">\(G\Phi\)</span>, and integrate the total real directional derivative by parts. There is no boundary term because <span class="math" data-index="416" data-tex="\(\Phi\)">\(\Phi\)</span> is compactly supported. The remaining derivative is
+<span class="math" data-index="417" data-tex="\(-i(it)^K\int G\partial_\theta^{K+1}\phi/K!\)">\(-i(it)^K\int G\partial_\theta^{K+1}\phi/K!\)</span>.
+Integrating from zero to <span class="math" data-index="418" data-tex="\(T\)">\(T\)</span> and rearranging proves the plus sign in (4.2). Summing the exponential series and bounding the last derivative prove (4.3). <span class="math" data-index="419" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (the factorial cancels).</strong> For <span class="math" data-index="420" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and integer <span class="math" data-index="421" data-tex="\(K\geq0\)">\(K\geq0\)</span>,</p>
+<span class="math math-display" id="eq-4.4" data-index="422" data-tex="\[
+ \int_0^\infty e^{-rt/2}\frac{t^K}{K!}\,dt
+ =(2/r)^{K+1}. \tag{4.4}
+\]">\[
+ \int_0^\infty e^{-rt/2}\frac{t^K}{K!}\,dt
+ =(2/r)^{K+1}. \tag{4.4}
+\]</span>
+<p><em>Proof.</em> Substitute <span class="math" data-index="423" data-tex="\(s=rt/2\)">\(s=rt/2\)</span>. Integration by parts gives
+<span class="math" data-index="424" data-tex="\(\int_0^\infty e^{-s}s^K\,ds=K!\)">\(\int_0^\infty e^{-s}s^K\,ds=K!\)</span>, starting from <span class="math" data-index="425" data-tex="\(K=0\)">\(K=0\)</span>. The endpoint terms vanish by exponential decay. <span class="math" data-index="426" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-summing-the-shifted-cells">5. Summing the shifted cells</h2>
+<p>Assume now that proper profiles exist, and that <span class="math" data-index="427" data-tex="\(0\)">\(0\)</span> has distance at least <span class="math" data-index="428" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> from all their carriers. Fix a derivative budget <span class="math" data-index="429" data-tex="\(b\geq0\)">\(b\geq0\)</span>, an integer. We will produce a <span class="math" data-index="430" data-tex="\(C^b\)">\(C^b\)</span> representative on <span class="math" data-index="431" data-tex="\(|x|&lt;r/2\)">\(|x|&lt;r/2\)</span>.</p>
+<p>Choose <span class="math" data-index="432" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span> so small that, with <span class="math" data-index="433" data-tex="\(a_\varepsilon=65\sqrt n\,\varepsilon\)">\(a_\varepsilon=65\sqrt n\,\varepsilon\)</span>,</p>
+<span class="math math-display" id="eq-5.1" data-index="434" data-tex="\[
+ a_\varepsilon\leq r/4,\quad
+ \frac{r}{4\varepsilon}&gt;(N+1+b+n+1)\log2,\quad
+ \frac{2a_\varepsilon}{r}&lt;2^{-(N+1+b+n+1)}. \tag{5.1}
+\]">\[
+ a_\varepsilon\leq r/4,\quad
+ \frac{r}{4\varepsilon}&gt;(N+1+b+n+1)\log2,\quad
+ \frac{2a_\varepsilon}{r}&lt;2^{-(N+1+b+n+1)}. \tag{5.1}
+\]</span>
+<p>All three conditions are possible simultaneously by decreasing <span class="math" data-index="435" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.
+Use the cells from Proposition 3.4, and choose</p>
+<span class="math math-display" id="eq-5.2" data-index="436" data-tex="\[
+ T_j=j/\varepsilon,\qquad
+ m\geq \frac{2(1+3\sqrt n/4)}{\varepsilon\log2}. \tag{5.2}
+\]">\[
+ T_j=j/\varepsilon,\qquad
+ m\geq \frac{2(1+3\sqrt n/4)}{\varepsilon\log2}. \tag{5.2}
+\]</span>
+<p>Increase the initial <span class="math" data-index="437" data-tex="\(J\)">\(J\)</span> until <span class="math" data-index="438" data-tex="\(j\geq4\)">\(j\geq4\)</span>, the conclusions of Proposition 3.4 hold, and every center exceeds the threshold in Lemma 2.1 for this fixed <span class="math" data-index="439" data-tex="\(m\)">\(m\)</span>.</p>
+<p>For each nonzero cell choose <span class="math" data-index="440" data-tex="\(h_{j,k}\)">\(h_{j,k}\)</span> by Lemma 2.1, and its normal <span class="math" data-index="441" data-tex="\(\theta_{j,k}\)">\(\theta_{j,k}\)</span> by Lemma 2.2. On the real support of that cell, for <span class="math" data-index="442" data-tex="\(0\leq t\leq T_j\)">\(0\leq t\leq T_j\)</span>,</p>
+<span class="math math-display" id="eq-5.3" data-index="443" data-tex="\[
+ |\xi-c_{j,k}+it\theta_{j,k}|
+ \leq(1+3\sqrt n/4)j/\varepsilon
+ \leq m\log R_{j,k}. \tag{5.3}
+\]">\[
+ |\xi-c_{j,k}+it\theta_{j,k}|
+ \leq(1+3\sqrt n/4)j/\varepsilon
+ \leq m\log R_{j,k}. \tag{5.3}
+\]</span>
+<p>Indeed, <span class="math" data-index="444" data-tex="\(\log R_{j,k}\geq(j-2)\log2\geq j\log2/2\)">\(\log R_{j,k}\geq(j-2)\log2\geq j\log2/2\)</span>. The complex-window bound therefore applies everywhere needed, with a single fixed <span class="math" data-index="445" data-tex="\(m\)">\(m\)</span>.</p>
+<p>For <span class="math" data-index="446" data-tex="\(|x|\leq r/2\)">\(|x|\leq r/2\)</span>, positive homogeneity and separation give</p>
+<span class="math math-display" id="eq-5.4" data-index="447" data-tex="\[
+ |e^{ix\cdot(\xi+it\theta_{j,k})}F(\xi+it\theta_{j,k})|
+ \leq R_{j,k}^{N+1}
+       e^{t(h_{j,k}(\theta_{j,k})-x\cdot\theta_{j,k})}
+ \leq R_{j,k}^{N+1}e^{-rt/2}. \tag{5.4}
+\]">\[
+ |e^{ix\cdot(\xi+it\theta_{j,k})}F(\xi+it\theta_{j,k})|
+ \leq R_{j,k}^{N+1}
+       e^{t(h_{j,k}(\theta_{j,k})-x\cdot\theta_{j,k})}
+ \leq R_{j,k}^{N+1}e^{-rt/2}. \tag{5.4}
+\]</span>
+<p>Define each smooth cell contribution by</p>
+<span class="math math-display" id="eq-5.5" data-index="448" data-tex="\[
+ u_{j,k}(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}F(\xi)\phi_{j,k}(\xi)\,d\xi.
+ \tag{5.5}
+\]">\[
+ u_{j,k}(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}F(\xi)\phi_{j,k}(\xi)\,d\xi.
+ \tag{5.5}
+\]</span>
+<p><strong>Proposition 5.1 (uniform all-cell derivative estimate).</strong> For every multi-index <span class="math" data-index="449" data-tex="\(|\gamma|\leq b\)">\(|\gamma|\leq b\)</span> and all sufficiently large <span class="math" data-index="450" data-tex="\(j\)">\(j\)</span>,</p>
+<span class="math math-display" id="eq-5.6" data-index="451" data-tex="\[
+ \begin{split}
+ \sum_k|\partial_x^\gamma u_{j,k}(x)|
+ \leq C_{n,N,b,\varepsilon}\,2^{j(N+1+b+n)}
+ \left(e^{-rj/(4\varepsilon)}
+       (2a_\varepsilon/r)^{j+1}\right),
+ \quad |x|\leq r/2 .
+ \end{split} \tag{5.6}
+\]">\[
+ \begin{split}
+ \sum_k|\partial_x^\gamma u_{j,k}(x)|
+ \leq C_{n,N,b,\varepsilon}\,2^{j(N+1+b+n)}
+ \left(e^{-rj/(4\varepsilon)}
+       (2a_\varepsilon/r)^{j+1}\right),
+ \quad |x|\leq r/2 .
+ \end{split} \tag{5.6}
+\]</span>
+<p><em>Proof.</em> Apply Lemma 4.1 to each cell with
+<span class="math" data-index="452" data-tex="\(K=j\)">\(K=j\)</span>, <span class="math" data-index="453" data-tex="\(T=T_j\)">\(T=T_j\)</span>, <span class="math" data-index="454" data-tex="\(\theta=\theta_{j,k}\)">\(\theta=\theta_{j,k}\)</span>, and the entire function</p>
+<span class="math math-display" id="eq-5.7" data-index="455" data-tex="\[
+ G_\gamma(\zeta)=(i\zeta)^\gamma e^{ix\cdot\zeta}F(\zeta).
+ \tag{5.7}
+\]">\[
+ G_\gamma(\zeta)=(i\zeta)^\gamma e^{ix\cdot\zeta}F(\zeta).
+ \tag{5.7}
+\]</span>
+<p>This corresponds exactly to differentiating (5.5). For large <span class="math" data-index="456" data-tex="\(j\)">\(j\)</span>, the cell radius and <span class="math" data-index="457" data-tex="\(T_j\)">\(T_j\)</span> are at most <span class="math" data-index="458" data-tex="\(R_{j,k}\)">\(R_{j,k}\)</span> together, so <span class="math" data-index="459" data-tex="\(|\zeta|\leq2R_{j,k}\)">\(|\zeta|\leq2R_{j,k}\)</span>. Equation (5.4) bounds <span class="math" data-index="460" data-tex="\(G_\gamma\)">\(G_\gamma\)</span> by
+<span class="math" data-index="461" data-tex="\(2^{|\gamma|}R_{j,k}^{N+1+|\gamma|}e^{-rt/2}\)">\(2^{|\gamma|}R_{j,k}^{N+1+|\gamma|}e^{-rt/2}\)</span>.</p>
+<p>The top integral in (4.2) is bounded by that power of <span class="math" data-index="462" data-tex="\(R_{j,k}\)">\(R_{j,k}\)</span>, the cell volume, and</p>
+<span class="math math-display" id="eq-5.8" data-index="463" data-tex="\[
+ e^{-rT_j/2}e^{a_\varepsilon T_j}
+ \leq e^{-rT_j/4}=e^{-rj/(4\varepsilon)}. \tag{5.8}
+\]">\[
+ e^{-rT_j/2}e^{a_\varepsilon T_j}
+ \leq e^{-rT_j/4}=e^{-rj/(4\varepsilon)}. \tag{5.8}
+\]</span>
+<p>For the correction integral, (3.8), (4.3), and (4.4) give the same power and volume times</p>
+<span class="math math-display" id="eq-5.9" data-index="464" data-tex="\[
+ a_\varepsilon^{j+1}
+ \int_0^\infty e^{-rt/2}t^j/j!\,dt
+ =(2a_\varepsilon/r)^{j+1}. \tag{5.9}
+\]">\[
+ a_\varepsilon^{j+1}
+ \int_0^\infty e^{-rt/2}t^j/j!\,dt
+ =(2a_\varepsilon/r)^{j+1}. \tag{5.9}
+\]</span>
+<p>The Taylor factor has been integrated exactly; no uncontrolled factorial remains.</p>
+<p>Finally use <span class="math" data-index="465" data-tex="\(R_{j,k}\leq2\sqrt n\,2^j\)">\(R_{j,k}\leq2\sqrt n\,2^j\)</span> and the sum of support volumes at most <span class="math" data-index="466" data-tex="\(12^n2^{jn}\)">\(12^n2^{jn}\)</span>. Absorb the fixed constants and increase the radius power to <span class="math" data-index="467" data-tex="\(N+1+b\)">\(N+1+b\)</span>. This proves (5.6). <span class="math" data-index="468" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two inequalities in (5.1) make the right side of (5.6) at most a fixed constant times <span class="math" data-index="469" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. Hence the cell series, and every derivative through order <span class="math" data-index="470" data-tex="\(b\)">\(b\)</span>, converge absolutely and uniformly on the closed ball <span class="math" data-index="471" data-tex="\(|x|\leq r/2\)">\(|x|\leq r/2\)</span>.</p>
+<h2 id="6-recovering-the-distribution-and-proving-smoothness">6. Recovering the distribution and proving smoothness</h2>
+<p><strong>Lemma 6.1 (the series equals the original distribution).</strong> For the fixed <span class="math" data-index="472" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-index="473" data-tex="\(J\)">\(J\)</span> above,</p>
+<span class="math math-display" id="eq-6.1" data-index="474" data-tex="\[
+ u=u_{\mathrm{low}}+\sum_{j\geq J}\sum_k u_{j,k}
+ \quad\text{in distributions},\qquad
+ u_{\mathrm{low}}=\mathcal F^{-1}(F\chi_{J-1}). \tag{6.1}
+\]">\[
+ u=u_{\mathrm{low}}+\sum_{j\geq J}\sum_k u_{j,k}
+ \quad\text{in distributions},\qquad
+ u_{\mathrm{low}}=\mathcal F^{-1}(F\chi_{J-1}). \tag{6.1}
+\]</span>
+<p>The low term is smooth.</p>
+<p><em>Proof.</em> The grid identity and telescoping annular identity give
+<span class="math" data-index="475" data-tex="\(\chi_{J-1}+\sum_{j\geq J,k}\phi_{j,k}=1\)">\(\chi_{J-1}+\sum_{j\geq J,k}\phi_{j,k}=1\)</span>.
+All summands are nonnegative and at most one. The low multiplier <span class="math" data-index="476" data-tex="\(F\chi_{J-1}\)">\(F\chi_{J-1}\)</span> is smooth with compact frequency support, so every derivative of its inverse Fourier integral is absolutely convergent.</p>
+<p>For a compactly supported smooth test function <span class="math" data-index="477" data-tex="\(g\)">\(g\)</span>, its Fourier transform decreases faster than every real power. The ordinary compact-distribution estimate bounds <span class="math" data-index="478" data-tex="\(F\)">\(F\)</span> by <span class="math" data-index="479" data-tex="\(C(1+|\xi|)^N\)">\(C(1+|\xi|)^N\)</span>. Thus</p>
+<span class="math math-display" id="eq-6.2" data-index="480" data-tex="\[
+ \int |F(\xi)\widehat g(-\xi)|
+       \left(\chi_{J-1}(\xi)+\sum_{j\geq J,k}\phi_{j,k}(\xi)\right)d\xi
+ &lt;\infty. \tag{6.2}
+\]">\[
+ \int |F(\xi)\widehat g(-\xi)|
+       \left(\chi_{J-1}(\xi)+\sum_{j\geq J,k}\phi_{j,k}(\xi)\right)d\xi
+ &lt;\infty. \tag{6.2}
+\]</span>
+<p>Absolute integrability permits the sum and integral to be interchanged. Pairing the inverse Fourier integrals with <span class="math" data-index="481" data-tex="\(g\)">\(g\)</span> now gives exactly the Fourier inversion pairing for <span class="math" data-index="482" data-tex="\(u\)">\(u\)</span>. This proves (6.1), including its normalization and the sign in <span class="math" data-index="483" data-tex="\(\widehat g(-\xi)\)">\(\widehat g(-\xi)\)</span>. <span class="math" data-index="484" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.2.</strong> Under the separation assumption, <span class="math" data-index="485" data-tex="\(u\)">\(u\)</span> is smooth on <span class="math" data-index="486" data-tex="\(|x|&lt;r/2\)">\(|x|&lt;r/2\)</span>.</p>
+<p><em>Proof.</em> For each fixed budget <span class="math" data-index="487" data-tex="\(b\)">\(b\)</span>, the uniformly convergent derivative series in Section 5, together with the smooth low term, gives a <span class="math" data-index="488" data-tex="\(C^b\)">\(C^b\)</span> function on the ball. The elementary termwise differentiation theorem applies because the functions and all derivatives through order <span class="math" data-index="489" data-tex="\(b\)">\(b\)</span> converge uniformly; it can be proved successively by integrating each uniformly convergent first derivative along line segments inside the ball. Lemma 6.1 identifies this function with <span class="math" data-index="490" data-tex="\(u\)">\(u\)</span> as a distribution there.</p>
+<p>The construction is allowed to choose a different <span class="math" data-index="491" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, partition, and low term for a different <span class="math" data-index="492" data-tex="\(b\)">\(b\)</span>. The resulting continuous functions nevertheless coincide: a continuous function representing the zero distribution is zero, since a nonzero value persists with one real or imaginary sign on a small ball and is detected by a nonnegative smooth test function. The representative obtained for <span class="math" data-index="493" data-tex="\(b=0\)">\(b=0\)</span> therefore belongs to <span class="math" data-index="494" data-tex="\(C^b\)">\(C^b\)</span> for every <span class="math" data-index="495" data-tex="\(b\)">\(b\)</span>. It is smooth. <span class="math" data-index="496" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of Theorem 1.1.</em> If no proper profile exists, Lemma 1.2 proves the theorem with empty singular support. Otherwise, choose <span class="math" data-index="497" data-tex="\(x_0\notin A(u)\)">\(x_0\notin A(u)\)</span>. Since <span class="math" data-index="498" data-tex="\(A(u)\)">\(A(u)\)</span> is closed, there is <span class="math" data-index="499" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> such that <span class="math" data-index="500" data-tex="\(x_0\)">\(x_0\)</span> has distance at least <span class="math" data-index="501" data-tex="\(r\)">\(r\)</span> from every proper carrier. Translate <span class="math" data-index="502" data-tex="\(x_0\)">\(x_0\)</span> to zero using Lemma 1.3 and apply Proposition 6.2. The distribution is smooth on a neighborhood of <span class="math" data-index="503" data-tex="\(x_0\)">\(x_0\)</span>, so <span class="math" data-index="504" data-tex="\(x_0\notin\operatorname{sing\,supp}u\)">\(x_0\notin\operatorname{sing\,supp}u\)</span>. This proves (1.4). <span class="math" data-index="505" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof keeps three choices separate. The window radius <span class="math" data-index="506" data-tex="\(m\)">\(m\)</span> is fixed after the derivative budget and <span class="math" data-index="507" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> are chosen. Its profile and separating direction may vary from cell to cell. The large-frequency threshold then absorbs all finite exceptions into the smooth low term. None of these choices asks for one common normal for every carrier, or one cutoff controlling infinitely many derivatives.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Chapter XVI, Theorem 16.3.5. The present proof constructs its logarithmic partition directly by finite convolutions and uses a directional finite Taylor identity.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Sections 1.4 and 7.3. These give background on partitions and compact-distribution Fourier growth. The required partition is fully proved above; compact Fourier inversion is proved in the linked course lesson.</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>. Named background on entire Fourier transforms and support. No result from this background reading is substituted for the local proof.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/singularities-and-nonconvex-logarithmic-carriers.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L159/nonconvex-localization-and-logarithmic-frequency-cells.md" download>nonconvex-localization-and-logarithmic-frequency-cells.md</a></li><li><a href="reproduce/L159/nonconvex-logarithmic-carriers-learner.md" download>nonconvex-logarithmic-carriers-learner.md</a></li><li><a href="reproduce/L159/make_figures192.py" download>make_figures192.py</a></li><li><span class="unlinked">check_numerics192.py</span></li><li><a href="reproduce/L159/numerical-checks192.json" download>numerical-checks192.json</a></li><li><a href="reproduce/L159/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L159/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L159/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L159/figures/geometry192.json" download>figures/geometry192.json</a></li><li><a href="reproduce/L159/figures/nonconvex-carriers-and-separating-normals.png" download>figures/nonconvex-carriers-and-separating-normals.png</a></li><li><a href="reproduce/L159/figures/nonconvex-carriers-and-separating-normals.svg" download>figures/nonconvex-carriers-and-separating-normals.svg</a></li><li><a href="reproduce/L159/figures/logarithmic-cell-and-taylor-correction.png" download>figures/logarithmic-cell-and-taylor-correction.png</a></li><li><a href="reproduce/L159/figures/logarithmic-cell-and-taylor-correction.svg" download>figures/logarithmic-cell-and-taylor-correction.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

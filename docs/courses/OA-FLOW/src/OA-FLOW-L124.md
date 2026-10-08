@@ -8,9 +8,9 @@ Trivial Connes spectrum acquires force when the commuting automorphisms are ergo
 <a id="l124-inputs"></a>
 ## The setting and earlier proof bodies
 
-Throughout, \(M\ne0\) is an arbitrary concrete von Neumann algebra on an arbitrary Hilbert space, and \(\sigma\) is a star automorphism of \(M\). The cyclic action is \(j\mapsto\sigma^j\), with discrete group \(\mathbb Z\) and multiplicative dual \(\mathbb T\); its Connes spectrum is the intersection of the spectra of all nonzero fixed corners at the exact L115 conventions. We will prove algebraic automorphisms normal. Circle parameters are modulo \(2\pi\), and circle integrals use \(d\theta/(2\pi)\).
+Throughout, \(M\ne0\) is an arbitrary concrete von Neumann algebra on an arbitrary Hilbert space, and \(\sigma\) is a star automorphism of \(M\). The cyclic action is \(j\mapsto\sigma^j\), with discrete group \(\mathbb Z\) and multiplicative dual \(\mathbb T\); its Connes spectrum is the intersection of the spectra of all nonzero fixed corners at the exact [L115 conventions](OA-FLOW-L115.md#oa-flow.l115.conventions). We will prove algebraic automorphisms normal. Circle parameters are modulo \(2\pi\), and circle integrals use \(d\theta/(2\pi)\).
 
-Our complete earlier inputs are the scalar circle measure and Fejér estimates of [CC0](OA-FLOW-CC.md#oa-flow.cc.0), the summable vector-series and predual-duality proofs [CP4](OA-FLOW-CP.md#oa-flow.cp.4) and [CP6](OA-FLOW-CP.md#oa-flow.cp.6), the maximal principle [CF1](OA-FLOW-CF.md#oa-flow.cf.1), the arbitrary projection joins, bounded polar decomposition and orthogonal sums [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1), the bounded positive functional theorem [NF4](OA-FLOW-NF.md#oa-flow.nf.4), the entire normal amplification and matrix-entry proof [NCF1](OA-FLOW-NCF.md#ncf-1), and L115's complete stabilization and dual-center kernel bodies.
+Our complete earlier inputs are the scalar circle measure and Fejér estimates of [CC0](OA-FLOW-CC.md#oa-flow.cc.0), the summable vector-series and predual-duality proofs [CP4](OA-FLOW-CP.md#oa-flow.cp.4) and [CP6](OA-FLOW-CP.md#oa-flow.cp.6), the maximal principle [CF1](OA-FLOW-CF.md#oa-flow.cf.1), the arbitrary projection joins, bounded polar decomposition and orthogonal sums [PC1](OA-FLOW-PC.md#oa-flow.projection.pc1), the bounded positive functional theorem [NF4](OA-FLOW-NF.md#oa-flow.nf.4), the entire normal amplification and matrix-entry proof [NCF1](OA-FLOW-NCF.md#ncf-1), and L115's complete [stabilization](OA-FLOW-L115.md#oa-flow.connes.stabilization) and [dual-center kernel](OA-FLOW-L115.md#oa-flow.connes.centerkernel) bodies.
 
 Only CC0's scalar measure and finite polynomial estimates are used; its modular-weight setting is not a hypothesis here. PC1's bounded polar and arbitrary-sum proof is used without the countable-decomposability hypothesis of its later classification sections. NF4 proves a theorem about functionals; the next paragraph supplies the passage to automorphisms. The tensor-descent alternative uses the earlier L123 proof.
 
@@ -345,7 +345,7 @@ The group $\mathcal A$ acts ergodically on the abelian algebra $D$ and commutes 
 <a id="oa-flow.centralizer.grading"></a>
 ### Faithfulness forces every integer degree to occur
 
-The dual-center kernel theorem from lesson 115 gives
+The dual-center kernel theorem from [lesson 115](OA-FLOW-L115.md#oa-flow.connes.centerkernel) gives
 
 <a id="equation-e12"></a>
 

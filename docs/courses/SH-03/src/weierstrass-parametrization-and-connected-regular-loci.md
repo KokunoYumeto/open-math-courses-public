@@ -1,6 +1,6 @@
 # Weierstrass parametrization and connected regular loci
 
-*Written by GPT-6 Astra (OpenAI), Ultra, with exercises developed from GPT-6.1 Sol's programme material, October 2026. Self-checked by the writing AI. Independent programme exposition is public domain (CC0); the identified contour-division component retains Demailly's reuse terms.*
+*Written by GPT-6 Astra (OpenAI), Ultra, with exercises developed from GPT-6.1 Sol's programme material, October 2026; the division section by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Public domain (CC0).*
 
 A local branch and a global component answer different questions. A local branch records which holomorphic equations remain inseparable near one point. A global component can return to the same point through several such branches. The curve \(y^2=x^2(x+1)\), for example, has a connected regular locus but two branches at its node. We will prove that the connected components of the regular locus of an analytic set determine its global irreducible components, and then find a connected dense region on each component where a holomorphic map has constant maximal rank.
 
@@ -33,50 +33,55 @@ For \(d=0\), an irreducible reduced germ has a representative consisting of one 
 
 ## Division with one domain for all bounded inputs
 
-**Human source and terms for this component.** The contour formulas in this section are C. L. Siegel's method as presented by Jean-Pierre Demailly, *Complex Analytic and Differential Geometry*, 21 June 2012, II, Theorems 2.1 and 2.3, pp. 79–81, and adapted in the linked programme proof. Demailly's [custom OpenContent grant](https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html) permits copying, modification and redistribution with authorship retained. This contour-division component is distributed under that grant and excluded from the CC0 dedication. The estimates below spell out how to choose constants independently of the input function.
-
-Let \(P(z',w)\) be a monic Weierstrass polynomial of degree \(s>0\), holomorphic on a neighbourhood of \(\overline D\times\{|w|\leq R\}\), where \(D\) is a small base polydisc. Shrink \(D\) so that all roots of every \(P(z',\cdot)\), for \(z'\in\overline D\), have modulus less than a number \(a<R\). Fix
+Let \(D\subset\mathbb C^{n-1}\) be an open polydisc, \(s\geq1\), and
 
 \[
-a<r<\rho<R,\qquad
-\mu=\min_{z'\in\overline D,\ |\zeta|=\rho}|P(z',\zeta)|>0.
+P(z',w)=w^s+a_1(z')w^{s-1}+\cdots+a_s(z')
+\]
+
+a monic polynomial in \(w\) whose coefficients are holomorphic on \(D\). Suppose there are numbers \(0\leq a<R\) such that, for every \(z'\in D\), every root of \(P(z',\cdot)\) has modulus at most \(a\). For a bounded function \(f\) on \(D\times\{|w|<R\}\) write \(\|f\|\) for its supremum.
+
+**Proposition (division with one domain).** Every bounded holomorphic \(f\) on \(D\times\{|w|<R\}\) has exactly one expression \(f=PQ+T\), where \(Q\) is holomorphic on \(D\times\{|w|<R\}\) and \(T\) is a polynomial in \(w\) of degree less than \(s\) whose coefficients are holomorphic on \(D\). Moreover
+
+\[
+\|T\|\leq C_1\|f\|,\qquad\|Q\|\leq C_2\|f\|,\qquad
+C_1=\frac{sR(R+a)^{s-1}}{(R-a)^s},\qquad C_2=\frac{1+C_1}{(R-a)^s}.
 \tag{2}
 \]
 
-The choices depend only on \(P\) and the domains. For any bounded holomorphic \(f\) on \(D\times\{|w|<R\}\), define, for \(|w|<\rho\),
+The constants depend only on \(s\), \(a\) and \(R\). One domain therefore serves for every bounded input, and the outputs are controlled on that whole domain.
+
+**Proof.** For \(a<\sigma<R\), \(z'\in D\) and \(|w|<\sigma\), define
 
 \[
 \begin{aligned}
-Q(z',w)&=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
-\frac{f(z',\zeta)}{P(z',\zeta)(\zeta-w)}\,d\zeta,\\
-T(z',w)&=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
-\frac{f(z',\zeta)}{P(z',\zeta)}
-\frac{P(z',\zeta)-P(z',w)}{\zeta-w}\,d\zeta.
+Q(z',w)&=\frac1{2\pi i}\int_{|\zeta|=\sigma}\frac{f(z',\zeta)}{P(z',\zeta)(\zeta-w)}\,d\zeta,\\
+T(z',w)&=\frac1{2\pi i}\int_{|\zeta|=\sigma}\frac{f(z',\zeta)}{P(z',\zeta)}\,\frac{P(z',\zeta)-P(z',w)}{\zeta-w}\,d\zeta.
 \end{aligned}
 \tag{3}
 \]
 
-The contour lies strictly within the domain of every such \(f\); there is no requirement that \(f\) extend to the boundary \(|w|=R\). Parameterwise differentiation on smaller compact subsets proves holomorphy of the integrals. Cauchy's formula gives \(f=PQ+T\). The divided difference is a polynomial of degree at most \(s-1\) in \(w\), so the same is true of \(T\). If two such divisions existed, their remainder difference would be a polynomial of degree below \(s\) divisible holomorphically by \(P\). Counting all roots with multiplicity makes that difference zero, and then the quotient difference is zero.
-
-To record the uniform estimates, put
+Write \(P(z',\cdot)=\prod_{l=1}^s(\cdot-b_l)\) with \(|b_l|\leq a\). On the circle \(|\zeta|=\sigma\) every factor has modulus at least \(\sigma-a\), so \(|P(z',\zeta)|\geq(\sigma-a)^s\). The integrands are therefore continuous, and holomorphic in \((z',w)\) for fixed \(\zeta\); integrals of this kind over a fixed circle are holomorphic in the parameters by Lemma A of the reading cited below. The divided difference in (3) is a polynomial in \(w\) of degree less than \(s\), whose coefficients are polynomials in \(\zeta\) and the \(a_k(z')\). Hence \(T\) has the stated form. Since
 
 \[
-H=\max_{z'\in\overline D,\ |\zeta|=\rho,\ |w|\leq r}
-\left|\frac{P(z',\zeta)-P(z',w)}{\zeta-w}\right|.
+\frac1{\zeta-w}=\frac{P(z',w)}{P(z',\zeta)(\zeta-w)}+\frac{P(z',\zeta)-P(z',w)}{P(z',\zeta)(\zeta-w)},
 \]
 
-This is finite since \(\rho-r>0\). Bounding the contour length by \(2\pi\rho\) in (3) yields
+Cauchy's formula for \(f(z',\cdot)\) on the circle gives \(f=PQ+T\) on \(D\times\{|w|<\sigma\}\).
+
+For uniqueness, suppose \(PQ'+T'=0\) on \(D\times\{|w|<\sigma\}\), with \(Q'\) holomorphic and \(T'\) of degree less than \(s\) in \(w\). For fixed \(z'\), the polynomial \(T'(z',\cdot)=-P(z',\cdot)Q'(z',\cdot)\) vanishes at each root \(b\) of \(P(z',\cdot)\) to at least the multiplicity of \(b\). It therefore has at least \(s\) zeros counted with multiplicity, so \(T'(z',\cdot)=0\). Then \(Q'(z',\cdot)\) vanishes off the finitely many roots, hence everywhere. Uniqueness on the smaller disc shows that the functions defined with different radii \(\sigma\) agree. Together they give \(Q\) and \(T\) on \(D\times\{|w|<R\}\), and the expression is unique there.
+
+For the bounds, change the factors of \(\prod_l(\zeta-b_l)\) into those of \(\prod_l(w-b_l)\) one at a time. Each step contributes one term, and
 
 \[
-\|Q\|_{D\times\Delta_r}\leq
-\frac{\rho}{\mu(\rho-r)}\|f\|_{D\times\Delta_R},
-\qquad
-\|T\|_{D\times\Delta_r}\leq
-\frac{\rho H}{\mu}\|f\|_{D\times\Delta_R}.
-\tag{4}
+\frac{P(z',\zeta)-P(z',w)}{\zeta-w}=\sum_{\ell=1}^s\ \prod_{i<\ell}(w-b_i)\prod_{i>\ell}(\zeta-b_i).
 \]
 
-Both output functions are therefore controlled on the same fixed smaller polydisc for every bounded input. For division by a prepared function \(g=vP\), shrink once so the unit \(v\) is bounded away from zero on the output domain. Replace \(Q\) by \(Q/v\); the first constant in (4) is multiplied by \(\|v^{-1}\|\). Degree zero is division by a unit with zero remainder.
+For \(|\zeta|=\sigma\geq|w|\) its modulus is at most \(s(\sigma+a)^{s-1}\). The circle has length \(2\pi\sigma\), so (3) gives \(|T|\leq s\sigma(\sigma+a)^{s-1}(\sigma-a)^{-s}\|f\|\) on \(D\times\{|w|<\sigma\}\). Letting \(\sigma\to R\) gives the bound for \(T\) in (2). On the circle \(|w|=\sigma\), \(|Q|=|f-T|/|P|\leq(1+C_1)\|f\|(\sigma-a)^{-s}\). The maximum principle on the closed disc \(|w|\leq\sigma\) extends this bound to the disc, and \(\sigma\to R\) gives the bound for \(Q\). \(\square\)
+
+The preparation theorem that produces such polynomials, and this division with the same constants, are proved in Weierstrass preparation and division, Theorems 1 and 2.
+
+For division by a prepared function \(g=vP\), where \(v\) is holomorphic on \(D\times\{|w|<R\}\) and \(|v^{-1}|\leq L\) there, replace \(Q\) by \(Q/v\); the bound for the quotient is multiplied by \(L\). Degree zero is division by a unit with zero remainder.
 
 ## Continuing local branches across the whole analytic set
 
@@ -270,6 +275,6 @@ In contrast, every neighbourhood of zero meets infinitely many singleton subsets
 
 ## Human sources and the microlocal application
 
-Jean-Pierre Demailly's freely available *[Complex Analytic and Differential Geometry](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf)*, version of 21 June 2012, supplies the preparation and finite-parametrization mathematics developed in the earlier analytic prerequisites. Demailly credits the contour method to C. L. Siegel. The contour component above and the linked adapted proof retain Demailly's authorship and [custom reuse grant](https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html); that grant is not replaced by a Creative Commons licence. The global-component argument, rank argument and exercises are programme exposition, and the exact earlier proofs used by them are listed at the start.
+Jean-Pierre Demailly's freely available *[Complex Analytic and Differential Geometry](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf)*, version of 21 June 2012, treats the preparation and finite-parametrization mathematics developed in the earlier analytic prerequisites, presenting preparation and division by C. L. Siegel's contour method. The global-component argument, rank argument and exercises are programme exposition, and the exact earlier proofs used by them are listed at the start.
 
 For an analytic Lagrangian subset of \(T^*X\), take the holomorphic map to be \(\pi:T^*X\to X\). The maximal-rank region proved above is the geometric input for how simple sheaf shifts change along a Lagrangian. The sheaf comparison and continuity arguments in that lesson are separate from the analytic component theorem.

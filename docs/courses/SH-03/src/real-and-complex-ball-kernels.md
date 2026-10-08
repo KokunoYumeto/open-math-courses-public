@@ -4,9 +4,9 @@ A boundary kernel carries three kinds of data: the side on which its sheaf lives
 
 We first compare the three real supports and compute their operators. An open–closed triangle then relates the closed exterior to the normalized ball kernels in the literature, with its exact degree shift and localization domain. The complex calculation follows from its own support equations and cotangent selection. Four solved exercises test the radius, side, branch and degree separately.
 
-Use When a kernel quantizes a contact transformation and the signed boundary tests. These examples use arbitrary commutative unital finite-global-dimension coefficients. Fix \(n\geq1\). The contact criterion requires a cohomologically constructible kernel, its microsupport condition over either selected region, and the actual identity-induced microlocal endomorphism map. We check these separately; properness of the cotangent graph does not assert properness of the ordinary kernel support.
+Use [When a kernel quantizes a contact transformation](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md#the-correspondence-and-the-identity-condition) and the [signed boundary tests](../../sheaf-proof-readings/src/SH03/directional-tests-at-a-constructible-boundary.md#open-and-closed-boundary-conditions). These examples use arbitrary commutative unital finite-global-dimension coefficients. Fix \(n\geq1\). The contact criterion requires a cohomologically constructible kernel, its microsupport condition over either selected region, and the actual identity-induced microlocal endomorphism map. We check these separately; properness of the cotangent graph does not assert properness of the ordinary kernel support.
 
-The closed-submanifold microlocal Hom calculation, together with its identity section, supplies the local identity test. Formal cohomological constructibility follows from the proved submanifold models and convex half-space models: their local ordinary and compact-support systems stabilize with perfect representatives. The smooth coordinate and closed-embedding descriptions below reduce these supports to those models.
+The [closed-submanifold microlocal Hom calculation](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-submanifold--recovering-microlocalization-from-hom), together with its [identity section](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-examples--models-that-test-the-hypotheses), supplies the local identity test. Formal cohomological constructibility follows from the proved [submanifold models](../../sheaf-proof-readings/src/SH02/cohomological-biduality.md#sh02-cb-submanifolds--closed-submanifolds-and-arbitrary-convex-sets) and [convex half-space models](../../sheaf-proof-readings/src/SH02/cohomological-biduality.md#sh02-cb-convex--constructibility-and-duals-of-convex-set-sheaves): their local ordinary and compact-support systems stabilize with perfect representatives. The smooth coordinate and closed-embedding descriptions below reduce these supports to those models.
 
 The displayed geometric microsupport equalities assume \(k\ne0\). For the zero ring all sheaves and microsupports are zero, the same geometric graphs still satisfy the containment conditions of the contact criterion, and the operator identities and equivalences concern zero categories.
 
@@ -41,7 +41,7 @@ This is the constant sheaf on the **closed exterior** of the unit ball in the di
 \qquad\text{(2)}
 \]
 
-To justify this use of the one-dimensional test in \(2n\) dimensions, complete \(h\) to smooth coordinates near the boundary. The sheaf is the inverse image of \(k_{0,\infty)}\) under the coordinate submersion. The exact [submersion pullback formula pulls its microsupport back from the positive ray with zero tangential components. In the interior of \(S\), it is locally constant; outside \(S\), it is zero. Thus the only other microsupport points are zero covectors over \(S\).
+To justify this use of the one-dimensional test in \(2n\) dimensions, complete \(h\) to smooth coordinates near the boundary. The sheaf is the inverse image of \(k_{[0,\infty)}\) under the coordinate submersion. The exact [submersion pullback formula](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-submersion--exact-pullback-and-local-descent) pulls its microsupport back from the positive ray with zero tangential components. In the interior of \(S\), it is locally constant; outside \(S\), it is zero. Thus the only other microsupport points are zero covectors over \(S\).
 
 On the punctured cotangent regions, the twisted relation (2) is the graph of
 
@@ -78,7 +78,7 @@ Let \(A=\{x:|x|\geq1\}\). The following are ordinary sheaf-operator identities, 
 \qquad\text{(5)}
 \]
 
-For the first, the input is supported at \(y=0\); projection of the restricted support identifies it with \(A\), without a shift. For the second, the proper-support fibre formula for \(!\) gives the stalk at \(x\) as compact-support cohomology of the closed exterior \(\{y:|x-y|\geq1\}\). It is zero. To check this with its map, use the open-ball triangle in \(\mathbb R^n\). Compact-support cohomology of both the open ball and \(\mathbb R^n\) is \(k[-n]\); extension by zero gives their orientation isomorphism, so the remaining closed exterior has zero compact-support cohomology. The comparison is induced by the common point-support class in the two coordinate balls, as proved there; equality of the abstract cohomology groups alone would not identify this map. Every output stalk is zero.
+For the first, the input is supported at \(y=0\); projection of the restricted support identifies it with \(A\), without a shift. For the second, the [proper-support fibre formula](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-derived-fibre-formula-and-c-soft-acyclicity-derived-proper-image-fibre) for \(!\) gives the stalk at \(x\) as compact-support cohomology of the closed exterior \(\{y:|x-y|\geq1\}\). It is zero. To check this with its map, use the open-ball triangle in \(\mathbb R^n\). Compact-support cohomology of both the open ball and \(\mathbb R^n\) is \(k[-n]\); extension by zero gives their [orientation isomorphism](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-actual-point-to-compact-comparison-point-to-compact-comparison), so the remaining closed exterior has zero compact-support cohomology. The comparison is induced by the common point-support class in the two coordinate balls, as proved there; equality of the abstract cohomology groups alone would not identify this map. Every output stalk is zero.
 
 Finally the input triangle
 \(k_{Y\setminus\{0\}}\to k_Y\to k_{\{0\}}\xrightarrow{+1}\)
@@ -149,7 +149,7 @@ Z_+=\{\operatorname{Im}h=0,\ \operatorname{Re}h<-1\},
 
 The kernel is on a locally closed real subset, extended by zero. The open strict inequality in (9) is essential. Near its closed support, \(dh\ne0\), so \(a=\operatorname{Re}(h+1)\), \(b=\operatorname{Im}(h+1)\) are two independent real coordinates. The local kernel is \(k_{\{a<0,b=0\}}\) times the constant sheaf in the remaining coordinates.
 
-The open-negative-half-line has a positive boundary covector; the closed \(b=0\) condition permits either normal sign. First pull back the half-line calculation along the coordinate submersion inside \(b=0\), then use the closed-embedding microsupport equality. This proves the required product case without assuming equality for arbitrary external tensor products. To translate through (6), a real normal \(\alpha\,da+\beta\,db\) corresponds to \(\kappa=\alpha-i\beta\); in particular \(\operatorname{Re}\kappa=\alpha\). We obtain
+The open-negative-half-line has a positive boundary covector; the closed \(b=0\) condition permits either normal sign. First pull back the half-line calculation along the coordinate submersion inside \(b=0\), then use the [closed-embedding microsupport equality](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-proper-push--collecting-tests-along-a-fibre). This proves the required product case without assuming equality for arbitrary external tensor products. To translate through (6), a real normal \(\alpha\,da+\beta\,db\) corresponds to \(\kappa=\alpha-i\beta\); in particular \(\operatorname{Re}\kappa=\alpha\). We obtain
 
 \[
 \operatorname{SS}(K)=
@@ -185,7 +185,7 @@ Let \(N=\{w\in\mathbb C^n:\operatorname{Im}w=0\}\). Then
 \qquad\text{(12)}
 \]
 
-Here \(|y|^2=\sum_j y_j^2\) is a real Euclidean norm. To prove the formula, apply the proper-support fibre formula at \(z=x+iy\). Its compact-support fiber is
+Here \(|y|^2=\sum_j y_j^2\) is a real Euclidean norm. To prove the formula, apply the [proper-support fibre formula](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-derived-fibre-formula-and-c-soft-acyclicity-derived-proper-image-fibre) at \(z=x+iy\). Its compact-support fiber is
 
 \[
 \{w\in\mathbb R^n:
@@ -210,7 +210,7 @@ v\in E_z,\quad |v|<1,
 
 identifies its unit open-ball bundle with the support of the integration kernel over \(U\). Thus \(j^{-1}F\) is the proper-support image of the constant sheaf of this ball bundle.
 
-Orient \(E\) by the standard orientation of \(\mathbb R^n\) and the positive unit normal \(y/|y|\), with one fixed order for tangent and normal factors. On a small base chart choose an oriented orthonormal frame of \(E\). The ball bundle becomes the product with an open \(m\)-ball, and the proper-support product computation gives \(k[-m]\) on that chart. On an overlap the two orthonormal frames differ by an orientation-preserving linear transformation. Its action on top compactly supported cohomology is the determinant sign, hence \(+1\), by the proved orientation-coordinate comparison. These local generators consequently glue to the constant sheaf \(k_U\) in degree \(m\); every other cohomology sheaf is zero. The truncation isomorphism for a complex with just this one cohomology sheaf therefore gives
+Orient \(E\) by the standard orientation of \(\mathbb R^n\) and the positive unit normal \(y/|y|\), with one fixed order for tangent and normal factors. On a small base chart choose an oriented orthonormal frame of \(E\). The ball bundle becomes the product with an open \(m\)-ball, and the [proper-support product computation](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#compact-cohomology-of-constant-coefficients-on-boxes-constant-box-compact-cohomology) gives \(k[-m]\) on that chart. On an overlap the two orthonormal frames differ by an orientation-preserving linear transformation. Its action on top compactly supported cohomology is the determinant sign, hence \(+1\), by the proved [orientation-coordinate comparison](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#coordinate-changes-and-their-signs-orientation-coordinate-signs). These local generators consequently glue to the constant sheaf \(k_U\) in degree \(m\); every other cohomology sheaf is zero. The truncation isomorphism for a complex with just this one cohomology sheaf therefore gives
 
 \[
 j^{-1}F\simeq k_U[-m]=k_U[1-n].
@@ -267,7 +267,7 @@ For \(n=1\), take \(\eta=it\), \(t\in\mathbb R\setminus\{0\}\), in (8). Compute 
 
 Evaluate (12) for \(n=1\) and \(n=2\), and describe what happens at \(|y|=1\). Why would ordinary fiber cohomology give a wrong answer for \(n=2\)?
 
-**Solution.** For \(n=1\), the nonempty fiber in (13) is a point and the output is the degree-zero sheaf on \(|y|>1\), extended by zero. For \(n=2\), the nonempty fiber is an open interval, whose compact-support cohomology is \(k[-1]\); the output is the same open-support sheaf shifted by \([-1]\), with nonzero cohomology in degree one. At \(|y|=1\), the strict radius inequality has no solution, so the stalk is zero in both cases. Ordinary cohomology of an open interval is \(k\) in degree zero, and would erase the shift. The operator uses \(!\), so proper base change prescribes compact supports even though the input subspace \(N\) is noncompact.
+**Solution.** For \(n=1\), the nonempty fiber in (13) is a point and the output is the degree-zero sheaf on \(|y|>1\), extended by zero. For \(n=2\), the nonempty fiber is an open interval, whose compact-support cohomology is \(k[-1]\); the output is the same open-support sheaf shifted by \([-1]\), with its only possible nonzero cohomology in degree one. At \(|y|=1\), the strict radius inequality has no solution, so the stalk is zero in both cases. Ordinary cohomology of an open interval is \(k\) in degree zero, and would erase the shift. The operator uses \(!\), so proper base change prescribes compact supports even though the input subspace \(N\) is noncompact.
 
 ## References
 

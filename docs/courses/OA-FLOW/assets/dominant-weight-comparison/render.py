@@ -12,7 +12,7 @@ from matplotlib.patches import FancyBboxPatch
 HERE = Path(__file__).resolve().parent
 DATA = json.loads((HERE / "data.json").read_text(encoding="utf-8"))
 plt.rcParams.update({"font.family":"DejaVu Sans","font.size":13,
-                    "mathtext.fontset":"dejavusans","svg.fonttype":"none"})
+                    "mathtext.fontset":"dejavusans","svg.fonttype":"none","svg.hashsalt":"OA-FLOW-dominant-weight-comparison-v1"})
 INK, MUTED = "#153046", "#4b6475"
 BLUE, TEAL, ORANGE = "#216fa5", "#008578", "#c66629"
 BG = "#f3f7fa"
@@ -127,7 +127,7 @@ txt(d,.045,.064,r"$p$ is rank one; every unitary conjugate still has trace $1$."
 fig.text(.045,.047,"Proofs: DWC5.a–DWC5.w and the five solved diagnostics DWC6.",fontsize=12,color=MUTED)
 fig.text(.045,.024,"Original diagram and source: CC0. Exact matrix and row data accompany the reproducible drawing.",fontsize=11,color=MUTED)
 fig.savefig(HERE/"dwc-models.png",dpi=180,facecolor=BG)
-fig.savefig(HERE/"dwc-models.svg",facecolor=BG)
+fig.savefig(HERE/"dwc-models.svg",facecolor=BG,metadata={"Date":None})
 plt.close(fig)
 license_path=Path(font_manager.findfont("DejaVu Sans")).parent/"LICENSE_DEJAVU"
 if not license_path.is_file():raise FileNotFoundError("The DejaVu license must be retained.")

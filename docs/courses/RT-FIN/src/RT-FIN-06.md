@@ -463,5 +463,5 @@ Elementary tensor products are understood through their linearity and balancing 
 
 ## References
 
-- **C. Gruson and V. Serganova**, *A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras*, 2018, Chapter 2 §5, Theorem 5.3 and Lemma 5.4, for the tensor adjunction; §6, Lemmas 6.1–6.3, Corollaries 6.4–6.5 and Theorem 6.7, for induction and characters; §9, Proposition 9.5, for the multiplicity-free Hecke criterion.
+- **C. Gruson and V. Serganova**, *A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras*, 2018, Chapter 2 §5, Theorem 5.3 and Lemma 5.4, for the tensor adjunction; §6, Lemmas 6.1 and 6.3, Example 6.2, Corollaries 6.4–6.5 and Theorem 6.7, for induction and characters; §9, Proposition 9.5, for the multiplicity-free Hecke criterion.
 - **F. G. Frobenius**, *Über Relationen zwischen den Charakteren einer Gruppe und denen ihrer Untergruppen*, Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften zu Berlin (1898), pp. 501–515, reprinted as paper 57 in *Gesammelte Abhandlungen*. Its restriction multiplicities and corresponding subgroup character relations are the historical setting of reciprocity.

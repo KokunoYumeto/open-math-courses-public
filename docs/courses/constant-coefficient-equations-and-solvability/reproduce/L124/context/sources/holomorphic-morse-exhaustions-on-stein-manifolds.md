@@ -2,9 +2,9 @@
 
 A Stein manifold has enough holomorphic functions to control its geometry at infinity and near each point. We construct a proper strictly plurisubharmonic function from those two properties, then perturb it so that its differential meets a prescribed cotangent set only at regular transverse points. At such a point, positivity of the Levi form bounds the Morse index. This gives the two local degree estimates needed for ordinary and compactly supported sheaf cohomology.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Programme exposition by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026; mathematical revision by GPT-6 Astra (OpenAI), Ultra, 7 October 2026. Independently expressed programme text is dedicated under CC0. Human sources retain their own terms.*
 
-Learn first Generic squared distance and cotangent transversality for the finite-dimensional Sard and residual-set argument, Pure and simple sheaves from directional tests for the normalized coefficient complex, and Complex middle perversity and exterior products for the even-dimensional convention. We retain the exact earlier analytic regularity, dimension and Sard prerequisites. Their lower foundational proofs remain course obligations. The exhaustion, smooth perturbation and degree arguments below are supplied here.
+The finite-parameter argument uses the independent proof of smooth regular values. The analytic application uses [global components and their regular carriers](../../../../../SH-03/weierstrass-parametrization-and-connected-regular-loci.html#the-global-component-theorem), [Cartan's coherent reduced ideal](../../../../../complex-analytic-spaces-and-coherent-sheaves/cartans-coherence-theorem-and-complex-spaces.html#1-the-ideal-sheaf-of-an-analytic-set), and [local analytic dimension](../../../../../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#5-the-nullstellensatz-and-dimension); their precise roles in the bad locus are proved below. The [conormal coefficient calculation and type convention](../../../../../microlocal-composition-and-pure-sheaves/pure-and-simple-sheaves-from-directional-tests.html#conormal-sheaves-give-the-normalization-explicitly) supply the normalization in (17). [Complex middle perversity](../../../../../sheaf-proof-readings/SH03-complex-middle-perversity-and-exterior-products.html#the-even-values-determine-the-complex-cuts) explains the interpretation of that normalization, but is not an input to the exhaustion, transversality or local degree calculations. These are links to other programme courses; their proof bodies are not included in the AN-02 reproduction archive. See the [standalone-download prerequisite links](../scope.html#stein-exhaustion-prerequisites) for accessible source readings outside a complete repository checkout.
 
 ## Holomorphic convexity controls an exhaustion
 
@@ -91,6 +91,8 @@ This proof includes the local strict-positivity and global convergence arguments
 
 ## Small global perturbations can retain all three properties
 
+First dispose of dimension zero, where a smallest Levi eigenvalue would be undefined. A Hausdorff complex zero-manifold is discrete; countability at infinity makes it countable, since every compact subset of a discrete space is finite. If it is infinite, enumerate its points \(x_j\) and put \(\rho(x_j)=j\); for a finite space choose any nonnegative function. This is a smooth nonnegative proper exhaustion, with strictly positive Levi form in the vacuous sense on the zero tangent spaces. Set \(\varphi_a=\rho+1\) for every parameter \(a\) in the unit ball. Here \(T^*X=X\); a bad set decomposed into pieces of dimension less than zero is empty. Every intersection with a zero-dimensional \(\Lambda_0\) is transverse, and every proper sublevel contains only finitely many intersection points. Thus both exhaustion theorems hold in dimension zero, including for the empty manifold. The metric, eigenvalue and spanning-parameter construction that follows is for \(n>0\).
+
 Fix a smooth Hermitian metric. Denote by \(\lambda(x)>0\) the smallest eigenvalue of the Levi form of \(\rho\), relative to that metric. A countable collection of relatively compact real coordinate charts admits compactly supported smooth real functions \(w_i\) whose differentials span \(T_x^*X\) at every \(x\). To construct them, choose a bump function equal to one on a smaller chart, multiply it by each of the real coordinate functions, and take these functions for a countable covering.
 
 Choose positive numbers \(\epsilon_i\) so small that
@@ -117,7 +119,37 @@ At a fixed base point, varying finitely many \(a_i\) changes \(d\varphi_a\) in e
 
 ## A generic differential misses the bad cotangent locus
 
-Let \(\Lambda\subset T^*X\) be closed, and let \(\Lambda_0\) be a relatively open smooth submanifold of real dimension \(2n\). Assume the closed complement \(B=\Lambda\setminus\Lambda_0\) has a countable decomposition into smooth pieces of dimension less than \(2n\). A closed complex analytic Lagrangian, with its regular constant-projection-rank part chosen for \(\Lambda_0\), satisfies this contract by the preceding analytic regularity and rank decomposition. The exact lower dimension prerequisites are retained.
+Let \(\Lambda\subset T^*X\) be closed, and let \(\Lambda_0\) be a relatively open smooth submanifold of real dimension \(2n\). Assume the closed complement \(B=\Lambda\setminus\Lambda_0\) has a countable decomposition into smooth pieces of dimension less than \(2n\).
+
+**Analytic bad-locus lemma.** If \(\Lambda\) is a closed complex analytic Lagrangian, its regular locus on which the cotangent projection has locally constant rank can be chosen as \(\Lambda_0\) in this hypothesis. For \(n>0\), its complement is closed analytic and has complex dimension at most \(n-1\) at every point.
+
+Identify the holomorphic cotangent bundle with the real cotangent bundle by taking the real part of a covector. Its complex dimension is \(2n\), and \(\Lambda\) is pure of complex dimension \(n\). Write \(\pi:T^*X\to X\). The [global component theorem and finite-branch proof](../../../../../SH-03/weierstrass-parametrization-and-connected-regular-loci.html#a-finite-branch-calculation-controls-global-continuation) give an ambient locally finite family of closed irreducible components \(C\), each with connected dense intrinsic regular locus \(P=C_{\mathrm{reg}}\). Distinct components do not contain each other. On \(P\), let \(r_C\) be the maximum rank of \(d\pi|_{TP}\). This maximum is attained because rank takes values in the finite set \(\{0,\ldots,n\}\). Its rank-drop set \(Z_C\) is a proper analytic subset of the connected manifold \(P\), cut out there by rank minors; for \(r_C=0\) it is empty. The intersections of \(P\) with the other components form another proper analytic subset, by ambient local finiteness and the component theorem. Their union has empty interior in \(P\), so
+\[
+U_C=P\setminus\left(Z_C\cup\bigcup_{D\ne C}D\right)
+\]
+is dense in \(P\). Every point of \(U_C\) is regular for the entire \(\Lambda\), with projection rank \(r_C\). A regular point with locally constant projection rank must have this maximal rank: otherwise an open subset of the connected \(P\) would lie in its proper analytic rank-drop set. Thus \(\Lambda_0=\bigcup_C U_C\) is exactly the stated regular locally constant-rank locus.
+
+We must still prove that its complement stays analytic across the singular points. Work in an ambient cotangent coordinate neighborhood \(V\). [Cartan's coherence theorem, Theorem 1.1](../../../../../complex-analytic-spaces-and-coherent-sheaves/cartans-coherence-theorem-and-complex-spaces.html#1-the-ideal-sheaf-of-an-analytic-set), applied to the **reduced** ideal sheaf \(\mathcal I_C\), supplies holomorphic functions \(f_1,\ldots,f_N\) that generate that sheaf throughout a smaller \(V\). Generators at just one stalk would not give this neighborhood statement. Put \(J=(\partial f_i/\partial z_j)\), with \(2n\) ambient coordinate columns. At every regular \(y\in C\cap V\), the germs of local submanifold equations belong to \(\mathcal I_{C,y}\), hence are combinations of the \(f_i\); differentiating at their common zero gives
+\[
+\operatorname{rank}J_y=n,\qquad
+\ker J_y=T_yC,\qquad
+\operatorname{rank}\begin{pmatrix}J_y\\ D\pi_y\end{pmatrix}
+ =n+\operatorname{rank}(d\pi_y|_{T_yC}).
+\]
+The last equality is linear algebra: restriction of the row space of \(D\pi_y\) to \(\ker J_y\) has kernel its intersection with the row space of \(J_y\). Use of the reduced ideal is essential; replacing its generators by their squares would destroy the tangent-space calculation.
+
+Let \(V_C\subset C\cap V\) be the common zero set of all \((n+r_C)\)-minors of the stacked matrix. On the regular part, it is exactly \(Z_C\cap V\). For \(r_C=0\) these are the \(n\)-minors, so their common zero set has no regular points, as required. The singular locus of \(C\) is analytic by the [Jacobian proof of Theorem 2.1](../../../../../complex-analytic-spaces-and-coherent-sheaves/cartans-coherence-theorem-and-complex-spaces.html#2-singular-points). Therefore
+\[
+(C_{\mathrm{sing}}\cap V)\ \cup\ V_C\
+ \cup\left(C\cap V\cap\bigcup_{D\ne C}D\right)
+\]
+is analytic and equals \((C\setminus U_C)\cap V\). On overlapping coordinate neighborhoods these sets agree: at a singular point membership is automatic, and at a regular point it is the intrinsic rank or component-intersection condition. Hence \(C\setminus U_C\) is closed analytic in the ambient manifold. The locally finite union \(B=\bigcup_C(C\setminus U_C)\) is also closed analytic. This establishes analyticity by actual equations, rather than by an assertion about the closure of \(Z_C\).
+
+For the dimension bound, properness must hold on **every local branch**, even if a globally irreducible \(C\) has several branches at a point \(y\). The finite-branch construction cited above supplies, on each such branch, a dense open smooth part lying in \(P\). It meets every sufficiently small neighborhood of \(y\) in a nonempty open subset of \(P\). Since \(P\setminus U_C\) is a proper analytic subset of the connected \(P\), no such open subset is contained in it. Thus each local branch has good points arbitrarily near \(y\), and the germ of \(C\setminus U_C\) is proper on that branch. [Proper-subgerm dimension drop, Proposition 5.5](../../../../../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#5-the-nullstellensatz-and-dimension), gives dimension at most \(n-1\) there. Only finitely many components meet a neighborhood of \(y\), so the same bound holds for \(B\).
+
+Finally this analytic bound gives the required countable smooth decomposition without a Whitney stratification theorem. For a closed analytic set of maximum dimension \(e\), take the regular part of each irreducible component after removing its intersections with all other components. These are disjoint locally closed complex submanifolds. The remainder is the locally finite union of component singular loci and intersections; the same branchwise properness and dimension-drop argument gives maximum dimension at most \(e-1\). Repeat. After at most \(n\) rounds starting with \(B\), the remainder is empty. Ambient second countability makes the locally finite component families, and any needed manifold charts, countable. Every resulting piece has real dimension at most \(2n-2<2n\).
+
+If \(n=0\), a closed analytic subset of \(T^*X=X\) is discrete and regular, its projection has rank zero, and \(B=\varnothing\). This proves the lemma in all dimensions. Its analytic inputs are the neighborhood form of Cartan coherence, the finite local-branch and connected regular-carrier theorem, and proper-subgerm dimension drop, with the exact proof links above.
 
 **Generic exhaustion theorem.** There is a dense set of parameters in the open unit ball of \(\ell^2\) for which
 
@@ -143,7 +175,7 @@ H:U\times E\longrightarrow T^*U,\qquad
 
 is a submersion: the \(x\)-variables supply the base tangent space and the \(e\)-variables supply the entire vertical cotangent space. If \(M=\dim_{\mathbb R}E\), the inverse image of a smooth bad piece of dimension \(b<2n\) is a manifold of dimension \(M+b-2n<M\). Its projection to \(E\) has measure zero. One can see this directly on compact coordinate pieces: a bounded \(C^1\) map from a \(d\)-dimensional cube to \(\mathbb R^M\), \(d<M\), covers its image by \(O(\delta^{-d})\) cubes of diameter \(O(\delta)\), whose total \(M\)-volume tends to zero. Countably many charts and pieces suffice.
 
-The inverse image \(H^{-1}\Lambda_0\) is a smooth \(M\)-manifold. Sard's theorem for its projection to \(E\) says that its critical values have measure zero. A value \(e\) is regular exactly when the section \(x\mapsto H(x,e)\) is transverse to \(\Lambda_0\). For the linear-algebra verification, quotient the differential of (11) by \(T\Lambda_0\). Its total map is onto. Surjectivity of the projection from the kernel of that quotient to \(E\) is equivalent to surjectivity of the quotient map restricted to the \(x\)-tangent space. The latter is precisely section transversality.
+The inverse image \(H^{-1}\Lambda_0\) is a smooth \(M\)-manifold. The smooth critical-value theorem, applied to its projection to \(E\), says that its critical values have measure zero. That proof covers arbitrary smooth maps between finite-dimensional countable-at-infinity manifolds, without properness; its independent coordinate argument does not use the Stein cohomology theorem elsewhere in that lesson. All the inverse images here have countable atlases as submanifolds of \(U\times E\). A value \(e\) is regular exactly when the section \(x\mapsto H(x,e)\) is transverse to \(\Lambda_0\). For the linear-algebra verification, quotient the differential of (11) by \(T\Lambda_0\). Its total map is onto. Surjectivity of the projection from the kernel of that quotient to \(E\) is equivalent to surjectivity of the quotient map restricted to the \(x\)-tangent space. The latter is precisely section transversality.
 
 Thus arbitrarily small \(e\) avoid all bad-piece images and all critical values, proving density of \(O_m\). The argument is finite-dimensional; it invokes no infinite-dimensional Sard theorem.
 
@@ -184,7 +216,7 @@ t_1^2+\cdots+t_l^2-t_{l+1}^2-\cdots-t_{2d}^2.
 \tag{14}
 \]
 
-The parameter Morse proof used in the earlier pure-sheaf lesson supplies this local coordinate change; (13) is the additional complex positivity constraint.
+The [proof of the Morse lemma with parameters, Lemma 4.1](../../../../../AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.html#proof-U001-4.1), supplies this coordinate change, here with no auxiliary parameter. Its construction first chooses a nonzero Hessian pivot, solves the corresponding first-derivative equation by the implicit function theorem, and uses the integral Taylor remainder to write the remaining dependence as \(v^2 A/2\), with \(A\) smooth and nonzero. The change \(v\mapsto v\sqrt{|A|}\) splits off one signed square. The residual Hessian is the invertible Schur complement, so induction splits all variables. Rescaling by \(\sqrt2\) gives precisely the normalization (14). Formula (13) is the additional complex positivity constraint.
 
 ## Two closed support tests have opposite degree shifts
 
@@ -206,7 +238,7 @@ C_-(L_Y[d])&=
 
 The second formula applies the same argument to \(-\varphi\), whose negative eigenspace has dimension \(l\). Both supports in (15) are closed. Local choices trivialize their orientation lines for a displayed coefficient calculation, but no global trivialization is asserted. These lines are finite free of rank one and do not change a cohomological bound over \(k\).
 
-For a sheaf complex \(F\) known only through microlocal representatives, the upper calculation requires an isomorphism \(F\simeq L_Y[d]\) in \(D^b(X;p)\), whereas the lower calculation requires it in \(D^b(X;-p)\). Each closed test kills the complexes whose microsupport avoids its own displayed covector, by the defining microsupport test. It therefore sends every denominator with such a cone to an isomorphism, and descends to that localized category. When both representatives are given, (15) computes the two actual tests of \(F\). A representative at \(p\) alone has not established the calculation at \(-p\).
+For a sheaf complex \(F\) known only through microlocal representatives, the upper calculation requires an isomorphism \(F\simeq L_Y[d]\) in \(D^b(X;p)\), whereas the lower calculation requires it in \(D^b(X;-p)\). Each closed test kills the complexes whose microsupport avoids its own displayed covector, by the defining microsupport test. It therefore sends every denominator with such a cone to an isomorphism, and descends to that localized category. When both representatives are given, (15) computes the two actual tests of \(F\). A representative at \(p\) alone has not established the calculation at \(-p\). More generally, the two localized representatives may have different coefficient complexes \(L_+\) and \(L_-\); apply the upper line of (15) to \(L_+\) and the lower line to \(L_-\). No identification of these coefficients is needed. For a complex conic carrier, fibrewise antipodal transport preserves the regular constant-rank locus and its projected germ \(Y\), so the same \(d\) and Hessian can be used for the two calculations. At \(d=0\), both eigenspaces are zero, their orientation lines are \(k\), and both tests are \(L\); the formulas include this case.
 
 Consequently
 
@@ -220,14 +252,14 @@ H^j(C_-)&\simeq H^{j+d-l}(L)\otimes\operatorname{or}(E_+).
 
 If \(L\in D^{\leq0}(k)\), (13) makes \(C_+\in D^{\leq0}(k)\). If \(L\in D^{\geq0}(k)\), it makes \(C_-\in D^{\geq0}(k)\). Neither assertion requires a field or perfect coefficients.
 
-Finally, in complex ambient dimension \(n\), the real conormal codimension is \(2(n-d)\). The earlier normalized-type formula for \(Q_Y[s]\) at shift zero is \(Q[s+(n-d)]\). For the model here it is therefore
+Finally, in complex ambient dimension \(n\), the real conormal codimension is \(2(n-d)\). The [normalized-type formula for a conormal model](../../../../../microlocal-composition-and-pure-sheaves/pure-and-simple-sheaves-from-directional-tests.html#type-purity-and-simplicity), equation (16) there, gives \(Q[s+c/2]\) at shift zero for real codimension \(c\). Its preceding relative-sphere and inertia calculations prove the formula for arbitrary bounded coefficient modules, including a zero covector. Thus for \(Q_Y[s]\) it is \(Q[s+(n-d)]\). For the model here it is therefore
 
 \[
 \operatorname{type}_0(L_Y[d])=L[n].
 \tag{17}
 \]
 
-Thus a shift-zero type cut at degree \(-n\) is exactly the coefficient cut at degree zero in (16). This computation explains the dimension normalization used in microlocal perversity. The global ordinary and compact-support limit arguments, and the equivalence of the full microlocal and stratum cuts, remain the next teaching steps.
+Thus a shift-zero type cut at degree \(-n\) is exactly the coefficient cut at degree zero in (16). This computation explains the dimension normalization used in microlocal perversity. The global ordinary and compact-support arguments use this local estimate with their restriction, inverse-limit and extension-by-zero maps. The equivalence with all stratum cuts is a separate statement in the linked middle-perversity theory; it is not assumed in the construction above.
 
 ## Exercises with complete solutions
 
@@ -291,8 +323,8 @@ Let \(L=k\) in degree zero. Compute the nonzero degrees in (15) for \(l=d\) and 
 
 ## Sources and the next argument
 
-The required geometry is supplied by this lesson: the holomorphic-shell exhaustion, explicit smoothed maximum, convergence estimates, compactly supported perturbation family, finite-dimensional transversality reduction, Morse-index estimate and local support calculations. The complete generic squared-distance argument is taught in the preceding linked lesson. The stated lower analytic regularity and Sard inputs remain explicit prerequisites; no omitted proof is delegated to an external book citation.
+The proof combines the holomorphic-shell exhaustion, regularized maximum and convergence estimates with a compactly supported perturbation family. Its finite-dimensional transversality reduction uses the linked smooth critical-value proof; its analytic application uses the reduced-ideal bad-locus lemma proved here. Cartan coherence, finite analytic branches and local analytic dimension are the stated analytic inputs, with their programme proofs linked at the point of use. Those proofs in turn use Oka coherence, Weierstrass preparation, local holomorphic algebra and the identity theorem. The Morse coordinate proof and normalized-type calculation are also linked at their exact statements. These external-to-the-archive prerequisites are part of the mathematical scope of this lesson.
 
-For the classical analytic definitions and exhaustion method, see Jean-Pierre Demailly, [Complex Analytic and Differential Geometry, version of 21 June 2012, Chapter I, §6, Definition 6.16, Lemma 6.17 and Theorem 6.18](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf). That openly readable text was consulted as a mathematical source; its expression is not imported. The proof above includes the holomorphic-shell construction, explicit smoothed maximum, all convergence estimates, compactly supported parameter family and finite-dimensional transversality reduction.
+The classical analytic definitions and exhaustion methods come from Jean-Pierre Demailly, [Complex Analytic and Differential Geometry, version of 21 June 2012, Chapter I](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf): §5, Lemma 5.18, p. 43, for the regularized maximum; §6, Theorem 6.14, pp. 49–50, for the holomorphic-shell construction; and Definition 6.16, Lemma 6.17 and Theorem 6.18, p. 51, for the Stein definition and the local quadratic patch leading to a strict exhaustion. This includes the classical choice \(q=(1+|z|^2)/3\) in that patch. The present independently expressed proof supplies the finite separation margins, convergence estimates, two-variable convolution calculation, cotangent genericity argument, analytic bad-locus bridge and two signed local support calculations. No source prose or images are reproduced.
 
-These results now supply the geometric prerequisite for global Stein vanishing. The next argument must retain the actual ordinary restriction maps, their degree-zero surjectivity, the derived inverse-limit term, and the compact-support direct-limit maps.
+These results supply the geometric prerequisite for Stein cohomology. Passing to global cohomology requires the ordinary restriction maps with degree-zero surjectivity, the derived inverse-limit term, and the compact-support direct-limit maps treated there.

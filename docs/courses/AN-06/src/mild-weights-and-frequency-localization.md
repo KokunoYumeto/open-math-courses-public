@@ -1,6 +1,6 @@
 # Mild weights and frequency localization
 
-*Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0. The linked coordinate supplement retains CC BY-SA 4.0.*
+*Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
 
 **Working question: Can localization preserve a weight that is not a power?** The useful test is the ratio of weights on adjacent dyadic shells. A weight may include logarithmic factors and still have controlled adjacent ratios. Localization must respect that actual norm when the energy graph is straightened; replacing it by a convenient power would lose the stated range of forcing terms.

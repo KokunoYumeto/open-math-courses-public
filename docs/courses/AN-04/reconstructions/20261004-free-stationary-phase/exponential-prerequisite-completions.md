@@ -1,9 +1,6 @@
 # Exponentials, circle coordinates and the Gaussian branch
 
-Prerequisite companion. This is an attributed adaptation and extension
-of Jiří Lebl's freely accessible *Basic Analysis*, version 6.3,
-[author edition](https://www.jirka.org/ra/), under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Prerequisite companion. It follows Jiří Lebl's freely accessible *Basic Analysis*, version 6.3, [author edition](https://www.jirka.org/ra/). Original text: public domain (CC0).
 The exact sources are §§2.6.4, 3.3.2, 5.4, 11.1 and 11.4.
 Complete programme proofs are retained through exact statement and proof
 locators. The additions below supply the exercises and intermediate steps

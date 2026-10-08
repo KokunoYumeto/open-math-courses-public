@@ -46,7 +46,7 @@ facts used are listed in Section 1. The proofs use no scheme theory. Where a sch
 which set of points is being counted, and the reference is [Stacks].
 
 Basic references are [Soulé 1999], [Soulé 2004], [Connes–Consani 2011a], [López Peña–Lorscheid 2011a] and
-[Lorscheid 2018b]; the ideas about zeta functions and K-theory in Section 9 come from [Manin 1995]. The proposal itself is in no. 13 of a 1957 paper of Tits, whose beginning is reproduced in [Lorscheid–Thas 2023]. Section 7 reports the proposal and how these references describe it.
+[Lorscheid 2018b]; the ideas about zeta functions and K-theory in Section 9 come from [Manin 1995]. The proposal itself is in no. 13 of a 1957 paper of Tits, whose beginning is reproduced in [Lorscheid–Thas 2023]. Section 7 develops the incidence geometry described in these references.
 
 ## 1. Conventions and background
 
@@ -675,14 +675,14 @@ Euler characteristic. For example \(\mathbb P^{n-1}(\mathbb C)\) has Euler chara
 
 ## 7. Tits's proposal and the geometry of a finite set
 
-In Tits's paper a *geometry* consists of a set of elements divided into families, a reflexive and symmetric
+The homogeneous-space viewpoint is explained in [Lorscheid 2018b, §1.1, pp. 3–6]. For the incidence structures considered here, a *geometry* consists of a set of elements divided into families, a reflexive and symmetric
 relation of incidence between the elements, and a group of permutations of the elements that preserves the
-families and the incidence. The first example there is the projective geometry of dimension \(n\) over a field:
+families and the incidence. For example, consider projective geometry of dimension \(n\) over a field:
 the elements are the linear varieties of dimensions \(0\) to \(n-1\) of a projective space of dimension \(n\), the
-families collect those of a fixed dimension, and the group is the group of projectivities. The paper then considers the geometry attached to a Chevalley group \(G\) over \(\mathbb F_q\). Its families are homogeneous
+families collect those of a fixed dimension, and the group is the group of projectivities. The same viewpoint applies to the geometry attached to a Chevalley group \(G\) over \(\mathbb F_q\). Its families are homogeneous
 spaces of \(G\), and the number of elements of each family is a quotient of two orders.
 
-No. 13 of the paper, whose beginning is reproduced in [Lorscheid–Thas 2023], then introduces the "field of
+The beginning of no. 13, reproduced in [Lorscheid–Thas 2023], introduces the "field of
 characteristic 1", written \(K_1\). Its only element is
 \(1=0\). Knus reproduces Tits's footnote that \(K_1\) is generally not regarded as a field [Knus 2012, slide 29]. The projective space of
 dimension \(n\) over \(K_1\) is a set of \(n+1\) points. All its subsets are linear varieties, the dimension of a
@@ -1391,8 +1391,8 @@ smaller one. At \(q=1\) this is \(md=m\cdot d\).
 ## References
 
 Section, theorem and equation numbers of [Connes–Consani 2011a], [López Peña–Lorscheid 2011a], [Lorscheid 2018b]
-and [Soulé 2004] refer to the arXiv versions. Tits's 1957 paper is cited by its numbered paragraphs ("no."); the beginning
-of its no. 13, which [Soulé 2004, §1.1] and [Connes–Consani 2011a, §1] cite as §13, is reproduced in [Lorscheid–Thas 2023].
+and [Soulé 2004] refer to the arXiv versions. The historical discussion uses the secondary accounts listed here. The beginning
+of no. 13 of Tits's 1957 paper, which [Soulé 2004, §1.1] and [Connes–Consani 2011a, §1] cite as §13, is reproduced in [Lorscheid–Thas 2023].
 
 - [Soulé 2004] C. Soulé, *Les variétés sur le corps à un élément*, Mosc. Math. J. 4 (2004), no. 1, 217–244.
   [arXiv:math/0304444](https://arxiv.org/pdf/math/0304444).

@@ -1,6 +1,6 @@
 # Zeros on the critical line: Hardy and the mollifier method
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and calculations are public domain (CC0); separately licensed proof sources retain their stated licences.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Section 24 by Claude Opus 5.5 (Anthropic). Self-check is by the writing AI. Original exposition and calculations are public domain (CC0).*
 
 Symmetry of the zeros about the critical line does not force a zero to lie on that line. Hardy's argument adds an analytic ingredient: on a long interval, the integral of zeta is large, whereas a real normalization of zeta has a much smaller signed integral. If that real function kept one sign, these two facts would contradict one another. We will prove the estimates, obtain sign changes even on shorter intervals, and then develop the mollifier method from a simple critical-line proportion greater than one third to the longer-mollifier bounds of Conrey and Pratt, Robles, Zaharescu and Zeindler.
 
@@ -4534,229 +4534,150 @@ These explicit rational choices prove both Conrey proportions. We next improve t
 
 ## 24. Reciprocal cancellation for convolution coefficients
 
-To improve the approximation to the inverse auxiliary function, use Möbius convolved with generalized von Mangoldt functions. The coefficients can be nonzero on integers with repeated prime factors. We separate those factors at the gcd and keep the integer coupling in the reciprocal bound.
+The stronger mollifier of Section 26 uses, besides the Möbius function, the generalized von Mangoldt functions
+$$
+\Lambda_k=\mu*\log^k\qquad(k\ge1),
+$$
+where $\log^k(n)=(\log n)^k$ and $\log^0$ is the constant function one; thus $\Lambda_1=\Lambda$. Its coefficients are finite linear combinations of
+$$
+(\mu*\Lambda_1^{*k_1}*\cdots*\Lambda_D^{*k_D})(n)\,P\bigl(\log(N/n)/\log N\bigr)
+$$
+with fixed exponents and polynomials. Unlike $\mu$, such coefficients do not vanish on integers with square factors. Section 25 needs cancellation when they are summed against reciprocal phases $e(a\overline H/K)$, and (24.9) below supplies it. The proof splits off the part of the variable that shares primes with a fixed integer $d$, decomposes the rest into bilinear pieces, and bounds the pieces by the interval completion (12.5) and the coupled estimate (20.10). The part that is split off enters the inverse in the phase, and every bound records its size.
 
-*This section adapts Section 4 of Pratt, Robles, Zaharescu and Zeindler, “More than five-twelfths of the zeros of zeta are on the critical line”, [DOI 10.1007/s40687-019-0199-8](https://doi.org/10.1007/s40687-019-0199-8), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The coprime identities, truncated algebra, grouping, coupling calculation and exponent estimates have been expanded and reorganized. This adapted section retains CC BY 4.0.*
+### 24.1. Prime-power building blocks and the gcd split
 
-We use Dirichlet convolution and
+For $\operatorname{Re}s>1$, logarithmic differentiation of the Euler product gives $\sum_n\Lambda(n)n^{-s}=-\zeta'/\zeta$, and $F_k(s)=\sum_n\Lambda_k(n)n^{-s}$ equals $(-1)^k\zeta^{(k)}/\zeta$. Differentiating,
 $$
-\Lambda_k=\mu*(\log^k),\qquad \Lambda_1=\Lambda.
+F_k'=-F_{k+1}+F_kF_1 ,
 $$
-Here $\log^k(n)=(\log n)^k$, with $\log^0$ the constant-one arithmetic function. The later mollifier has coefficients given by a finite linear combination of
-$$
-(\mu*\Lambda_1^{*k_1}*\cdots*\Lambda_D^{*k_D})(n)
- P(\log(N/n)/\log N),
-$$
-with fixed convolution orders and polynomials. The squarefree indicator is absent. We prove the reciprocal cancellation needed for these coefficients. Section 25 inserts this bound into the Gaussian additive transformation already proved locally.
+which on coefficients says $\Lambda_{k+1}=\Lambda_k\cdot\log+\Lambda*\Lambda_k$. Since $\log$ is additive along factorizations, $(f_1*\cdots*f_r)\cdot\log=\sum_if_1*\cdots*(f_i\cdot\log)*\cdots*f_r$. Induction on $k$ therefore writes each $\Lambda_k$ as a combination, with integer coefficients, of convolutions of the functions $\lambda_j=\log^j\cdot\Lambda$, $j\ge0$, each supported on prime powers. Every mollifier coefficient is then a combination of functions $C=\mu*\lambda_{j_1}*\cdots*\lambda_{j_r}$, multiplied by a polynomial in $\log n$.
 
-### 24.1. Separating the gcd and its prime-supported part
-
-The recurrence
-$$
-\Lambda_{k+1}(n)=\log n\,\Lambda_k(n)+(\Lambda*\Lambda_k)(n)
-$$
-follows by differentiating
-$\sum\Lambda_k(n)n^{-s}=(-1)^k\zeta^{(k)}(s)/\zeta(s)$
-in the absolutely convergent half-plane. Logarithmic differentiation of the Euler product identifies $-\zeta'/\zeta$ with $\Lambda$.
-Also
-$$
-\log n\,(f_1*\cdots*f_r)(n)
- =\sum_{i=1}^r(f_1*\cdots*(f_i\log)*\cdots*f_r)(n),
-$$
-by splitting $\log(n_1\cdots n_r)$.
-Induction consequently expresses each $\Lambda_k$ as a finite linear combination of convolutions of functions $(\log^j)\Lambda$, each supported on prime powers.
-
-Write $u=hv$, where $h\mid d^\infty$ contains every prime power in $u$ whose prime divides $d$, and $(v,d)=1$. Then $(dh,v)=1$.
-For $\lambda_i=(\log^{j_i})\Lambda$ and $C=\mu*\lambda_1*\cdots*\lambda_r$, we have the exact coprime identity
+Fix a positive integer $d$. Each positive integer $u$ factors uniquely as $u=hv$, where $h$ consists of the prime powers of $u$ at primes dividing $d$, so that $h\mid d^\infty$, and $(v,d)=1$; in particular $(dh,v)=1$. For $C$ as above,
 $$
 C(dhv)=\sum_{S\subset\{1,\ldots,r\}}
- (\mu*{\textstyle\prod_{i\in S}^{*}}\lambda_i)(dh)
- (\mu*{\textstyle\prod_{i\notin S}^{*}}\lambda_i)(v). \tag{24.1}
+ \Bigl(\mu*\mathop{\ast}_{i\in S}\lambda_{j_i}\Bigr)(dh)\,
+ \Bigl(\mu*\mathop{\ast}_{i\notin S}\lambda_{j_i}\Bigr)(v).
+ \tag{24.1}
 $$
-In the defining convolution each prime-power $\lambda_i$-factor lies wholly on one side of the coprime product. The remaining $\mu$-factor splits multiplicatively. This gives exactly one term for its subset $S$, proving (24.1).
-The additive logarithm separates the polynomial and any further log powers in the same way.
-The first factor in (24.1), denoted $G(h)$, satisfies
+Indeed, in a factorization $dhv=m\,n_1\cdots n_r$ in which every $n_i$ is a prime power, each $n_i$ divides exactly one of the coprime numbers $dh$ and $v$; let $S$ be the set of $i$ with $n_i\mid dh$. The remaining factor $m$ splits into its parts dividing $dh$ and $v$, on which $\mu$ is multiplicative. So each term on the left occurs exactly once on the right. A polynomial in $\log(dhv)=\log(dh)+\log v$ splits by the binomial theorem in the same way. The first factor $G_S(h)$ in (24.1) is a sum over at most $\tau(dh)^r$ factorizations of terms bounded by a fixed power of $\log(2dh)$, so
 $$
-|G(h)|\ll \tau(dh)^C(\log(2N))^C
+|G_S(h)|\ll\tau(dh)^C\log^C(2dh)
 $$
-for a fixed $C$, by counting its fixed number of divisor factorizations. This bound also covers finite linear combinations.
+for a fixed $C$; the same holds for finite combinations.
 
-### 24.2. A full short-factor identity
+### 24.2. A truncated identity and the bilinear split
 
-For $x\ge2$, set $M(s)=\sum_{m\le x^{1/K}}\mu(m)m^{-s}$.
-The Dirichlet-algebra identity
+Let $x\ge2$ and $M(s)=\sum_{m\le\sqrt x}\mu(m)m^{-s}$. As formal Dirichlet series,
 $$
-\frac1\zeta=
- \sum_{j=1}^K(-1)^{j-1}\binom Kj M^j\zeta^{j-1}
- +\frac1\zeta(1-\zeta M)^K \tag{24.2}
+\frac1\zeta=2M-M^2\zeta+\frac1\zeta\,(1-\zeta M)^2 .
+\tag{24.2}
 $$
-is the binomial theorem. The coefficients of $1-\zeta M$ vanish on
-$n\le x^{1/K}$. Thus its $K$-fold product has no coefficient on
-$n\le x$, since every nonzero factor exceeds $x^{1/K}$.
-Equation (24.2) gives the complete truncated identity for $\mu(n)$ on that range. Multiplying it by $-\zeta'$ gives the identity for $\Lambda(n)$ there, with one unrestricted logarithmic factor and $j-1$ unrestricted constant-one factors in its $j$-th term.
-Multiplying $\Lambda(n)$ by $\log^q n$ and using the multinomial theorem distributes this log power over its factors. These operations prove the weighted identities used below, including all short-factor restrictions.
+At $n\le\sqrt x$ the coefficient of $\zeta M$ is $\sum_{m\mid n}\mu(m)$, so $1-\zeta M$ has no coefficients on $1\le n\le\sqrt x$. Its square therefore has none on $n\le x$, and neither has the last term of (24.2). Writing $\mu_{\le\sqrt x}$ for $\mu$ restricted to $[1,\sqrt x]$, we obtain for $n\le x$
+$$
+\mu(n)=2\mu_{\le\sqrt x}(n)-(\mu_{\le\sqrt x}*\mu_{\le\sqrt x}*1)(n).
+$$
+Multiplying (24.2) by $-\zeta'$, whose coefficients are $\log n$, gives for $n\le x$
+$$
+\Lambda(n)=2(\mu_{\le\sqrt x}*\log)(n)-(\mu_{\le\sqrt x}*\mu_{\le\sqrt x}*1*\log)(n).
+$$
+Multiplying by $\log^jn$ and distributing $\log^j$ of a product over its factors by the multinomial theorem gives a formula of the same kind for $\lambda_j$.
 
-Apply(24.2) with $K=2$ to the $\mu$-factor and the identities just derived to the fixed prime-power factors in a coefficient $C(u)$.
-Divide every factor into dyadic intervals, $u\asymp U$. The number of interval tuples is a fixed power of $\log(2U)$; the grouped coefficients are $O_\epsilon(u^\epsilon)$ by the elementary divisor bound.
-Every restricted Möbius factor is at most $(2U)^{1/2}$; every unrestricted factor is a fixed log power or the constant-one function.
+Consider $C(u)$ for $u$ in a dyadic range $u\asymp U$, possibly truncated. Take $x=2U$ and replace the Möbius factor and every $\lambda_{j_i}$ by these formulas. Then $C(u)$ becomes a fixed finite combination of convolutions of boundedly many factors of two kinds: restricted Möbius factors, supported on $[1,\sqrt{2U}]$, and unrestricted factors, each a fixed power of $\log$, the constant one included. Split every factor dyadically. The number of dyadic patterns is a fixed power of $\log(2U)$, and the grouped coefficients are $O_\epsilon(u^\epsilon)$ by the divisor bound.
 
-Put $W=U^{1/4}$. For bounded $U$, direct estimates suffice. Otherwise a dyadic factor exceeding a sufficiently large fixed multiple of $U/W$ must be unrestricted, because $(2U)^{1/2}=o(U^{3/4})$. Group it as $f$ and all other factors as $e$. This is Type I: $e\ll W$, and its unrestricted coefficient is a log power.
-If no such large factor exists, either one factor lies between fixed multiples of $W,U/W$, or multiply small factors greedily until their product first exceeds $W$. In the latter case this product is at most a fixed multiple of $W^2\le U/W$. Its complementary product is also between fixed multiples of $W,U/W$.
-This is Type II, with $ef\asymp U$ and
-$$
-W\ll E\le F\ll U/W,\qquad E\le C\sqrt U. \tag{24.3}
-$$
-Fixed constants in these inequalities only change implicit constants.
-Original product endpoints change the interval of the last free variable; they are allowed in the reciprocal bound and removed by partial summation when needed. Smooth dimensionless product cutoffs separate by Mellin inversion, with an integrable transform after repeated integration by parts. Thus no unproved combinatorial regrouping or arbitrary coefficient restriction is hidden in (24.3).
+Put $W=U^{1/4}$; bounded $U$ is estimated directly. For large $U$ every restricted factor is below $\sqrt{2U}$, which is smaller than any fixed multiple of $U/W=U^{3/4}$.
 
-### 24.3. Type I and Type II bounds with the coupling parameter
-
-Let $U_0,V,A\ge1$, let $h$ be a positive integer with $1\le h\le2U_0$, put $U=U_0/h$, and consider
+- If some factor exceeds a suitable fixed multiple of $U/W$, it is unrestricted. Call it $f$ and the product of the others $e$; then $e\ll W$. This is *Type I*.
+- Otherwise, if some factor lies between fixed multiples of $W$ and $U/W$, the product of the remaining factors also lies between fixed multiples of $W$ and $U/W$. If no factor lies in that range, all factors are below a fixed multiple of $W$; multiply them one at a time until the partial product first exceeds $W$. It is then at most a fixed multiple of $W^2\le U/W$, and the complementary product again lies between fixed multiples of $W$ and $U/W$. In either case call the smaller of the two products $e$ and the larger $f$. This is *Type II*: $u=ef$ with $ef\asymp U$ and
 $$
-B_h=\sum_{0<a\le A}\nu(a)
- \sum_{\substack{v\asymp V\\(v,h)=1}}r(v)
- \sum_{\substack{u\asymp U\\(u,dv)=1}}
- C(u)f(hu)(\log u)^j e(-a\overline{hu}/v).
-$$
-The coefficients $\nu,r$ have arbitrarily small divisor-power bounds. For the application, $f(x)$ is a finite sum of fixed logarithmic polynomials times the dimensionless power $(x/U_0)^{i\tau+\gamma}$, with $\gamma$ in a fixed compact set. Its supremum on the interval is bounded by a fixed logarithmic power, and its total variation costs at most $1+|\tau|$ times that power. All displayed estimates allow an arbitrary small factor in $d,h,A,U_0,V$, and the factor $1+|\tau|$. The frequency $A$ need not be bounded by a fixed power of $T$.
-
-We use dyadic blocks contained in $[U,2U]$, allowing truncated endpoints; the corresponding $H$-block lies in $[U_0,2U_0]$. Fixed larger supports are covered by finitely many such blocks. First assume $h\le U_0$, so $U\ge1$.
-
-In Type I write $u=ef$, $e\asymp E\ll W$, and retain the logarithmic unrestricted $f$-coefficient. Partial summation and the completed Weil estimate give its interval sum
-$$
-\ll (1+|\tau|)(dhAU_0V)^\epsilon
- v^{1/2}(a,v)\{1+U/(Ev)\}.
-$$
-Indeed $he$ is a unit modulo $v$, so the frequency gcd is exactly $(a,v)$. To impose $(f,d)=1$, use the finite Möbius divisor expansion. A divisor sharing a prime with $v$ gives an empty unit range; every remaining divisor is invertible modulo $v$, leaves that frequency gcd unchanged, and its multiplicity costs $d^\epsilon$.
-The elementary divisor expansion gives
-$\sum_{a\le A,v\asymp V}(a,v)\ll AV\log(2AV)$.
-Summing $e,a,v$ therefore gives
-$$
-|B_h^{\rm I}|\ll (1+|\tau|)(dhAU_0V)^\epsilon
- \{AWV^{3/2}+AUV^{1/2}\}. \tag{24.4}
+W\ll E\le F\ll U/W,\qquad E\ll\sqrt U .
+\tag{24.3}
 $$
 
-For Type II, the binomial logarithm identity and $(ef)^{i\tau+\gamma}=e^{i\tau+\gamma}f^{i\tau+\gamma}$ separate the actual weights without a power of $|\tau|$. A sharp product endpoint is separated by the truncated Perron formula proved in lesson eleven, with its cutoff placed halfway between consecutive integers. Take the truncation height to be a sufficiently large fixed power of $dhAU_0V$. Its error is bounded termwise using the divisor coefficient bounds, and its vertical integral costs a logarithm; all additional imaginary powers have modulus one. This is uniform in $\tau$. Apply the coupled reciprocal estimate (20.10), with frequency $N=A$, reciprocal factor $E$, outer factor $F$, outer modulus $V$, and integer coupling $h$.
-Since $EF\asymp U$, its bound is
-$$
-(AUV)^{1/2}
- \left\{(UV/E)^{1/2}
- +(A+E)^{1/4}
- [(UV/E)(A+hE)(V+hE^2)+hAU^2]^{1/4}\right\}. \tag{24.5}
-$$
-The inequalities are uniform in truncated endpoints. Divisor coefficients and smooth separation costs are absorbed into the stated small power.
+A condition that the product of the factors lies in a given dyadic interval only restricts the range of the last variable summed, and the estimates of Section 24.3 allow arbitrary subintervals. A smooth cutoff in the product separates into the factors by Mellin inversion, since its Mellin transform is integrable after repeated integration by parts. Sharp product cutoffs in Type II are treated in Section 24.3.
 
-Expanding the fourth power in (24.5), merging the smaller terms using $h\ge1$, and taking fourth roots bounds it by the following nine monomials:
-$$
-\begin{array}{c|rrrrr}
-&h&A&U&V&E\\ \hline
-0&0&1/2&1&1&-1/2\\
-1&0&1&3/4&1&-1/4\\
-2&1/4&3/4&3/4&1&0\\
-3&1/4&1/2&3/4&1&1/4\\
-4&1/4&1&3/4&3/4&1/4\\
-5&1/2&3/4&3/4&3/4&1/2\\
-6&1/2&1/2&3/4&3/4&3/4\\
-7&1/4&1&1&1/2&0\\
-8&1/4&3/4&1&1/2&1/4
-\end{array} \tag{24.6}
-$$
-Each row lists exponents. The first row comes from the first term of (24.5). The other rows are precisely the expansion of
-$(AUV)^2[(UV/E)(A+E)(A+hE)(V+hE^2)+hAU^2(A+E)]$;
-when $h+1$ occurs, use $h+1\le2h$.
-This displays all powers of the coupling parameter rather than absorbing them into an unjustified constant.
+### 24.3. Sums of the two types
 
-### 24.4. The critical parameter substitution and the $h$-sum
+Let $U_0,V,A\ge1$, let $h$ be an integer with $1\le h\le2U_0$, and put $U=U_0/h$. We estimate
+$$
+B_h=\sum_{0<a\le A}\nu(a)\sum_{\substack{v\asymp V\\(v,h)=1}}r(v)\sum_{\substack{u\asymp U\\(u,dv)=1}}C(u)\,f(hu)\,(\log u)^j\,e\bigl(-a\overline{hu}/v\bigr).
+$$
+Here $\nu$ and $r$ are bounded by arbitrarily small powers of their arguments, and $f(x)$ is a finite sum of fixed polynomials in $\log x$ times $(x/U_0)^{i\tau+\gamma}$, with $\gamma$ in a fixed compact set. On the summation range $|f|$ is at most a fixed power of a logarithm, and its total variation is at most $1+|\tau|$ times such a power. Every bound below may lose a factor $(dhAU_0V)^\epsilon$ and a factor $1+|\tau|$; the frequency bound $A$ need not be a power of $T$. The ranges are dyadic blocks in $[U,2U]$, possibly truncated, so that $hu$ lies in $[U_0,2U_0]$; larger fixed supports use finitely many blocks. Suppose first that $h\le U_0$, so that $U\ge1$.
 
-First evaluate the monomials at the positive real reference value
+*Type I.* Here $u=ef$ with $e\asymp E\ll W$, and the unrestricted factor $f$ carries a power of $\log$. Fix $a$, $v$ and $e$. The $f$-sum runs over an interval of length $\ll U/E$. The condition $(f,d)=1$ is removed by Möbius inversion over the divisors of $d$: divisors sharing a prime with $v$ contribute nothing, the others are units modulo $v$, and their number costs $d^\epsilon$. Since $he$ is a unit modulo $v$, the frequency $-a\overline{he}$ has gcd $(a,v)$ with $v$. Partial summation and the interval completion (12.5), in its form with $(a,v)$ in place of its square root, bound the $f$-sum by
 $$
-A_0=U_0V/T.
+(1+|\tau|)(dhAU_0V)^\epsilon\,v^{1/2}(a,v)\Bigl(1+\frac U{Ev}\Bigr).
 $$
-This is an algebraic comparison value and need not be an integer or at least one. Suppose $U_0,V\le y$. Divide each monomial in (24.6) by $A$.
-Use $E^{-b}\ll U^{-b/4}$ for $b>0$, and
-$E^b\ll U^{b/2}$, by (24.3). Substitute $U=U_0/h$ and
-$A=A_0$. The resulting expressions are
+Summing over the at most $E$ values of $e$ replaces the last factor by $E+U/v\le W+U/V$. Grouping by the gcd gives $\sum_{a\le A,\,v\asymp V}(a,v)\ll AV\log(2AV)$. Hence
 $$
-\begin{array}{c|l|r}
-&\text{remaining }T,U_0,V\text{ powers}&
- \text{decay power of }h\\ \hline
-0&T^{1/2}U_0^{3/8}V^{1/2}&7/8\\
-1&U_0^{11/16}V&11/16\\
-2&T^{1/4}U_0^{1/2}V^{3/4}&1/2\\
-3&T^{1/2}U_0^{3/8}V^{1/2}&5/8\\
-4&U_0^{7/8}V^{3/4}&5/8\\
-5&T^{1/4}U_0^{3/4}V^{1/2}&1/2\\
-6&T^{1/2}U_0^{5/8}V^{1/4}&5/8\\
-7&U_0V^{1/2}&3/4\\
-8&T^{1/4}U_0^{7/8}V^{1/4}&7/8
-\end{array}
+|B_h^{\rm I}|\ll(1+|\tau|)(dhAU_0V)^\epsilon\bigl(AWV^{3/2}+AUV^{1/2}\bigr).
+\tag{24.4}
 $$
-Since $U_0,V\le y$, each is bounded by
-$$
-T^{1/2}y^{7/8}+y^{7/4}
-$$
-times its listed $h$-decay. For the three $T^{1/4}$ rows, use
-$T^{1/4}y^{5/4}\le
-\sqrt{(T^{1/2}y^{7/8})(y^{7/4})}$, because $y\ge1$,
-and then the arithmetic-geometric-mean inequality; the row with $y^{9/8}$ is smaller. The non-$T$ rows have total degree at most $7/4$.
-Type I in (24.4), divided by $A$, also has this bound and at least $h^{-1/4}$ decay.
 
-This comparison controls every actual frequency range $A\ge1$, not just $A=A_0$. In every monomial $A$ has exponent $a$ with $0<a\le1$. The function
+*Type II.* Here $u=ef$ with (24.3). The binomial theorem expands $(\log ef)^j$, and $(hef/U_0)^{i\tau+\gamma}=(h/U_0)^{i\tau+\gamma}e^{i\tau+\gamma}f^{i\tau+\gamma}$ separates the weight into the two variables with no power of $|\tau|$. A sharp condition on $ef$ is separated by the truncated kernel of Lemma 1.1 of Perron's formula and the explicit formula for prime counting, with the cutoff halfway between consecutive integers and the truncation height a large fixed power of $dhAU_0V$. Its error terms are bounded trivially with the divisor bounds for the coefficients, its vertical integral costs a logarithm, and the extra imaginary powers have modulus one. Now apply (20.10) with frequency $A$ in place of $N$, the variable $e\asymp E$ in place of $a$, the variable $f\asymp F$ in place of $b$, the modulus $v\asymp V$, and the coupling $j=h$, which is coprime to $v$. Since $EF\asymp U$, this gives
 $$
-\frac{A^a}{\max(TA,U_0V)}
+|B_h^{\rm II}|\ll(dhAU_0V)^\epsilon(AUV)^{1/2}\Bigl\{\Bigl(\frac{UV}E\Bigr)^{1/2}+(A+E)^{1/4}\Bigl[\frac{UV}E\,(A+hE)(V+hE^2)+hAU^2\Bigr]^{1/4}\Bigr\}.
+\tag{24.5}
 $$
-increases up to $A_0$ and decreases thereafter. Its maximum is $A_0^a/(TA_0)$, including when $A_0<1$. The two Type I monomials have $a=1$ and obey the same assertion. Consequently
+
+Use $(A+E)(A+hE)\le A^2+2hAE+hE^2$, which holds because $h\ge1$. Multiply out the product of $(A+E)$ with the bracket and take fourth roots term by term. Together with the first term, this bounds the braces in (24.5), after multiplication by $(AUV)^{1/2}$, by a constant times the sum of the nine monomials
 $$
-|B_h|\ll_\epsilon
-(1+|\tau|)(dhAy)^\epsilon
-\max(TA,U_0V)
-\{T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\}h^{-1/4}.
+\begin{gathered}
+A^{1/2}UVE^{-1/2},\qquad AU^{3/4}VE^{-1/4},\qquad h^{1/4}AU^{3/4}V^{3/4}E^{1/4},\\
+h^{1/4}A^{3/4}U^{3/4}V,\qquad h^{1/2}A^{3/4}U^{3/4}V^{3/4}E^{1/2},\qquad h^{1/4}A^{1/2}U^{3/4}VE^{1/4},\\
+h^{1/2}A^{1/2}U^{3/4}V^{3/4}E^{3/4},\qquad h^{1/4}AUV^{1/2},\qquad h^{1/4}A^{3/4}UV^{1/2}E^{1/4}.
+\end{gathered}
+\tag{24.6}
+$$
+The first is the first term of (24.5). The other eight are the fourth roots of the eight terms of
+$$
+(AUV)^2\Bigl[\frac{UV}E\,(A^2+2hAE+hE^2)(V+hE^2)+hAU^2(A+E)\Bigr],
+$$
+in the order in which they arise, with the factors $2^{1/4}$ dropped. Every power of the coupling parameter $h$ is kept.
+
+### 24.4. A comparison frequency and the sum over the split-off part
+
+Divide each monomial in (24.6) by $A$. Bound powers of $E$ by (24.3): $E^{-b}\ll U^{-b/4}$ and $E^{b}\ll U^{b/2}$ for $b>0$. Then substitute $U=U_0/h$ and the reference value $A_0=U_0V/T$, a positive real number that need not be an integer. In the order of (24.6), the results are
+$$
+\begin{gathered}
+T^{1/2}U_0^{3/8}V^{1/2}h^{-7/8},\qquad U_0^{11/16}Vh^{-11/16},\qquad U_0^{7/8}V^{3/4}h^{-5/8},\\
+T^{1/4}U_0^{1/2}V^{3/4}h^{-1/2},\qquad T^{1/4}U_0^{3/4}V^{1/2}h^{-1/2},\qquad T^{1/2}U_0^{3/8}V^{1/2}h^{-5/8},\\
+T^{1/2}U_0^{5/8}V^{1/4}h^{-5/8},\qquad U_0V^{1/2}h^{-3/4},\qquad T^{1/4}U_0^{7/8}V^{1/4}h^{-7/8}.
+\end{gathered}
+$$
+Let $y\ge1$ with $U_0,V\le y$. The terms with $T^{1/2}$ then have $y$-exponent $7/8$, and the terms without $T$ have $y$-exponent at most $7/4$. The terms with $T^{1/4}$ have $y$-exponent at most $5/4$, and
+$$
+T^{1/4}y^{5/4}\le\bigl(T^{1/2}y^{7/8}\cdot y^{7/4}\bigr)^{1/2}\le\tfrac12\bigl(T^{1/2}y^{7/8}+y^{7/4}\bigr),
+$$
+because $5/4\le21/16$. So each expression is at most $(T^{1/2}y^{7/8}+y^{7/4})h^{-1/2}$. The Type I bound (24.4), divided by $A$, is $WV^{3/2}+UV^{1/2}=U_0^{1/4}V^{3/2}h^{-1/4}+U_0V^{1/2}h^{-1}\le2y^{7/4}h^{-1/4}$.
+
+These bounds at the reference value control every frequency $A\ge1$. In each monomial of (24.6) and of (24.4), $A$ occurs with an exponent $\alpha\in(0,1]$. The function $A\mapsto A^\alpha/\max(TA,U_0V)$ equals $A^\alpha/(U_0V)$ for $A\le A_0$, which is nondecreasing, and $A^{\alpha-1}/T$ for $A\ge A_0$, which is nonincreasing. Its largest value over all $A>0$ is therefore $A_0^{\alpha-1}/T$. Consequently a monomial at frequency $A$ is at most $\max(TA,U_0V)/T$ times the same monomial divided by $A$ at $A=A_0$. Writing $h^{-1/4}$ for the weakest decay that occurs, we obtain for $1\le h\le U_0$
+$$
+|B_h|\ll_\epsilon(1+|\tau|)(dhAy)^\epsilon\max(TA,U_0V)\bigl(T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\bigr)h^{-1/4}.
 \tag{24.7}
 $$
-The uniform $h^{-1/4}$ is weaker than, and hence covered by, every decay power in the table. This is the form required by the exact Gaussian dual kernel.
 
-For the remaining range $U_0<h\le2U_0$, we have $1/2\le U<1$. The residual dyadic interval contains at most the single positive integer $u=1$. Its fixed convolution coefficient is bounded; the constant-one convention gives $(\log1)^0=1$, whereas positive logarithmic powers vanish. The dimensionless factor $h/U_0\in(1,2]$ has bounded amplitude. Summing the divisor-bounded outer coefficients, absorbing the fixed logarithmic powers and renaming an arbitrarily small epsilon, gives
+For $U_0<h\le2U_0$ we have $1/2\le U<1$, so the only possible $u$ is $u=1$. Its coefficient is bounded: $C(1)$ is $1$ or $0$, $(\log1)^j$ is $1$ or $0$, and $|f(h)|$ is bounded since $h/U_0\in(1,2]$. Summing the outer coefficients gives $|B_h|\ll_\epsilon(dhAy)^\epsilon AV$. Since $h\le2U_0\le2y$ and $V\le y$,
 $$
-|B_h|\ll_\epsilon(1+|\tau|)(dhAy)^\epsilon AV.
-\tag{24.7a}
+\max(TA,U_0V)\,T^{-1}y^{7/4}h^{-1/4}\ge Ay^{7/4}(2y)^{-1/4}\ge2^{-1/4}AV .
 $$
-Since $U_0,V\le y$ and $y\ge1$, we have $h\le2y$ and
+So (24.7) holds for all $1\le h\le2U_0$, with a fixed change in the implied constant.
+
+The split-off part is summed with the following bound: for fixed $c>0$ and $C$, and every $\epsilon>0$,
+$$
+\sum_{h\mid d^\infty}\tau(dh)^Ch^{-c}\ll_{c,C,\epsilon}d^\epsilon .
+\tag{24.8}
+$$
+Indeed $\tau(dh)\le\tau(d)\tau(h)$, and the sum over $h\mid d^\infty$ is the product over $p\mid d$ of $\sum_{k\ge0}(k+1)^Cp^{-ck}=1+O_{c,C}(p^{-c})$. This factor is at most $p^{\epsilon/2}$ for every prime $p$ beyond a bound depending on $c,C,\epsilon$, and the finitely many remaining factors are bounded. Finally $\tau(d)^C\ll_\epsilon d^{\epsilon/2}$.
+
+Now let $d\le y$, let $p$ be a fixed polynomial, let $\nu$ and $r$ be as above, and let either sign be chosen. Write $H=hu$ as in Section 24.1, expand $C(dH)$ by (24.1), and expand $p(\log h+\log u)$ binomially. The condition $(H,K)=1$ becomes $(h,K)=1$ and $(u,K)=1$, and $(u,d)=1$ holds by construction. So the sum below is a combination of sums $G_S(h)B_h$ over $h\mid d^\infty$, $h\le2U_0$, in which $C(u)$ is replaced by its second factor in (24.1), a function of the same kind. Choose the $\epsilon$ in (24.7) below $1/8$. The bound for $G_S(h)$, (24.7) and (24.8) with $c=1/8$ give
 $$
 \begin{aligned}
-\max(TA,U_0V)T^{-1}y^{7/4}h^{-1/4}
- &\ge Ay^{7/4}h^{-1/4}\\
- &\ge2^{-1/4}Ay^{3/2}\\
- &\ge2^{-1/4}AV.
-\end{aligned}\tag{24.7b}
+&\Bigl|\sum_{a\asymp A}\nu(a)\sum_{K\asymp V}r(K)\sum_{\substack{H\asymp U_0\\(H,K)=1}}C(dH)\,(H/U_0)^{i\tau+\gamma}\,p(\log H)\,e(\pm a\overline H/K)\Bigr|\\
+&\qquad\ll_\epsilon(1+|\tau|)(dAy)^\epsilon\max(TA,U_0V)\bigl(T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\bigr).
+\end{aligned}
+\tag{24.9}
 $$
-Thus (24.7) holds throughout $1\le h\le2U_0$, with the same exponents and a fixed change in its implicit constant. This includes the full part of $H\in[U_0,2U_0]$ supported on primes dividing $d$, and the coupling $j$ in Section 25.2.
-
-For every fixed $c>0,C$, and every $\epsilon>0$,
-$$
-\sum_{h\mid d^\infty}\tau(dh)^C h^{-c}\ll_{c,C,\epsilon}d^\epsilon. \tag{24.8}
-$$
-Use $\tau(dh)\le\tau(d)\tau(h)$. The remaining sum factors into
-$\prod_{p\mid d}\sum_{j\ge0}(j+1)^Cp^{-cj}$.
-Each local factor is $1+O_C(p^{-c})$. For all sufficiently large primes it is at most $p^{\epsilon/2}$; the finitely many smaller-prime factors have a bounded product depending on $\epsilon,c,C$. Combine this with
-$\tau(d)^C\ll_\epsilon d^{\epsilon/2}$, after renaming epsilon.
-This proves (24.8). Choose the epsilon in (24.7) smaller than $1/8$, so its $h^\epsilon$ leaves a positive decay exponent for (24.8). The fixed logarithmic factor in $G(h)$ is absorbed in $y^\epsilon$.
-
-Combining (24.1),(24.7),(24.8), for $H\asymp U_0,K\asymp V$, gives the precise convolution sum estimate
-$$
-\begin{aligned}
-&\left|\sum_{a\asymp A}\nu(a)
- \sum_{K\asymp V}r(K)
- \sum_{\substack{H\asymp U_0\\(H,K)=1}}
- C(dH)(H/U_0)^{i\tau+\gamma}p(\log H)
- e(\pm a\overline H/K)\right|\\
-&\quad\ll_\epsilon
- (1+|\tau|)(dAy)^\epsilon
- \max(TA,U_0V)
- \{T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\}.
-\end{aligned} \tag{24.9}
-$$
-Here $p$ is fixed, $d\le y$, the second coefficient vector is arbitrary of small divisor-power size, and either sign is allowed. Coprimality with $d$ belongs to the residual $u$-factor in (24.1), exactly as in the definition of $B_h$. Extra powers of $\log d$ or normalized logarithms do not affect the conclusion.
-Estimate(24.9) gives the saving for $y=T^\theta,\theta<4/7$ when inserted into the independently proved Gaussian transformation. It establishes the arithmetic input for nonsquarefree convolution terms, without presuming the PRZZ numerical proportion.
+The coefficients $r$ are arbitrary of small divisor-power size, and further powers of $\log d$ or of normalized logarithms do not change the conclusion. For $y=T^\theta$ with $\theta<4/7$, both terms in the last factor are negative powers of $T$, so (24.9) saves a power of $T$ over the trivial bound $\max(TA,U_0V)$. Section 25 inserts this into the Gaussian transformation. No numerical critical-line proportion is assumed in this section.
 
 ## 25. The convolution shifted mean
 
@@ -5264,11 +5185,11 @@ The freely readable comparison sources are:
 - J.-M. Deshouillers and H. Iwaniec, *Kloosterman sums and Fourier coefficients of cusp forms* (1982), complete Göttingen digitization in [printed page 219](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0070/LOG_0018.pdf) and [printed pages 220–288](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0070/LOG_0019.pdf); Theorems 9–12.
 - J.-M. Deshouillers and H. Iwaniec, [*Power mean-values for Dirichlet's polynomials and the Riemann zeta-function, II*](https://matwbn.icm.edu.pl/ksiazki/aa/aa43/aa4339.pdf) (1984), freely supplied by the publisher's mathematical archive, complete five-page article; Lemma 1.
 - W. Gabcke, [*Neue Herleitung und explizite Restabschätzung der Riemann-Siegel-Formel*](https://d-nb.info/1072293277/34), complete author-reset dissertation (2015), 133 pages.
-- K. Pratt, N. Robles, A. Zaharescu and D. Zeindler, [*More than five-twelfths of the zeros of zeta are on the critical line*](https://link.springer.com/content/pdf/10.1007/s40687-019-0199-8.pdf) (2020), complete freely readable CC BY 4.0 article; Sections 4 and 8.
+- K. Pratt, N. Robles, A. Zaharescu and D. Zeindler, [*More than five-twelfths of the zeros of zeta are on the critical line*](https://link.springer.com/content/pdf/10.1007/s40687-019-0199-8.pdf) (2020), complete freely readable article; Sections 4 and 8.
 
 Each result used in the argument has its proof here or in the earlier programme lesson specified at its use.
 
-Section 24 is an attributed adaptation under CC BY 4.0, as stated there. The remaining exposition and the independently written calculations are dedicated to the public domain under CC0. The numerical polynomial choices in Section 26 are credited to Pratt, Robles, Zaharescu and Zeindler, Section 8 of their [open article](https://doi.org/10.1007/s40687-019-0199-8). Their printed full $Q$ is normalized to have $Q(0)=1$, and the length is fixed strictly below $4/7$. The finite rational certificates accompany the editable sources; floating-point decimals play no role in the strict inequalities. Authorship and self-check are by GPT-6.1 Sol at Ultra, with no claim of independent human review.
+The exposition and the calculations are dedicated to the public domain under CC0. The numerical polynomial choices in Section 26 are credited to Pratt, Robles, Zaharescu and Zeindler, Section 8 of their [open article](https://doi.org/10.1007/s40687-019-0199-8). Their printed full $Q$ is normalized to have $Q(0)=1$, and the length is fixed strictly below $4/7$. The finite rational certificates accompany the editable sources; floating-point decimals play no role in the strict inequalities. Authorship and self-check are by GPT-6.1 Sol at Ultra, and for Section 24 by Claude Opus 5.5 (Anthropic), with no claim of independent human review.
 
 ## Appendix A. Arbitrary-order Stirling and the exact phase
 

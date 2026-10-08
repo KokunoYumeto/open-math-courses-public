@@ -1,0 +1,5 @@
+# Reproduction
+
+*K-theory of the leaf space*, Section 11BH. ENC.1–ENC.23. Actual nondegenerate B-source inverse, normal-compatible full operator graph core, dense complete invariant joint domain, full source and arrow controls. Adaptive weighted cutoff tests additionally give normal-preserving full essential graph approximations, with the explicit simultaneous normal boundary term; a uniform relative bound for that term remains unproved. Five exact rational finite symmetrization/compression/arrow samples and sixteen essential source products illustrate the algebra. They do not prove the infinite class or the physical sum. A full joint graph core, normal-source and mixed estimates and original physical Bott pairing remain unproved.
+
+Use Python 3.13.9 and Pillow 12.2.0. Run `python -B draw_essential_normal_core.py --output-dir out`; `--resources` selects the adjacent labelled-geometric-kernel resources if relocated. Compare PNG/SVG with ../../figures/ and ESSENTIAL-NORMAL-CORE-CHECKS.json with this folder. The SVG embeds the unchanged font and complete notice. No private files are read.

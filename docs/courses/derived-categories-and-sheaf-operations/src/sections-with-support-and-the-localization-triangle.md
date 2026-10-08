@@ -1,6 +1,6 @@
 # Sections with support and the localization triangle
 
-*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the [course notice](../LICENCE.md).*
+*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original text: public domain (CC0). Authorship and sources are listed in the [course notice](../LICENCE.md).*
 
 A section can vanish away from a closed subset while carrying information on that subset. Derived sections with support also detect classes which cannot be represented by a degree-zero section. Localization compares this information with what remains on the open complement. The point of the triangle is to include the boundary map: it measures the obstruction to extending a class across the missing subset.
 
@@ -8,7 +8,7 @@ The prerequisites are [Sheaves of modules on a ringed space](sheaves-of-modules-
 
 Sections 1–3 work for any sheaf of unital rings, including noncommutative rings, and unbounded complexes of left modules. Section 5's tensor and cup products assume commutativity. For a closed inclusion \(i:Z\hookrightarrow X\), use the unchanged coefficient sheaf \(\mathcal O_Z=i^{-1}\mathcal O_X\); this is distinct from taking a quotient coefficient ring on a closed geometric subspace. Put \(j:U=X\setminus Z\hookrightarrow X\).
 
-The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Cohomology with support in a closed subset, II”, Tags 0G6Z–0G79, and *Sheaves of Modules*, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790). We develop the support adjunction, localization triangle and canonical product and pullback maps. The Euclidean example includes the singular-cochain comparison it uses. Source attribution and the licence for adapted passages appear in the [course notice](../LICENCE.md).
+The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Cohomology with support in a closed subset, II”, Tags 0G6Z–0G79, and *Sheaves of Modules*, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790). We develop the support adjunction, localization triangle and canonical product and pullback maps. The Euclidean example includes the singular-cochain comparison it uses. Source attribution appears in the [course notice](../LICENCE.md).
 ## 1. Closed supports and their adjunction
 
 The support of a section \(s\in F(V)\) is the set of points where its germ is nonzero. It is closed in \(V\): a zero germ means the section vanishes on a neighborhood. Define the ambient support subsheaf by

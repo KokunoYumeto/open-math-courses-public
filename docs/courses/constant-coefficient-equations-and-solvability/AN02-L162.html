@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Frequency-selective singularities and smooth convolutions</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L161.html">Previous lesson</a> · <a href="#1-a-criterion-for-smoothing-a-nonsmooth-factor">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="frequency-selective-singularities-and-smooth-convolutions">Frequency-selective singularities and smooth convolutions</h1>
+<p>Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>A function can be continuous, fail to have a continuous first derivative at one point, and still have extremely small Fourier transform outside chosen neighborhoods. Its remaining Fourier activity can be used to decide whether convolution smooths a nonsmooth factor. The main difficulty is to retain the singularity while enforcing all the exterior decay estimates at once.</p>
+<p>Basic references are Tao's <em>245B, Notes 9</em> and <em>246B, Notes 2</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The exact earlier inputs are <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, for proper and collapsed profiles and joint extraction; <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, Section 4, for the convex singular hull; <a href="AN02-L160.html">Convolution and joint frequency carriers</a>, for proper sums and collapsed products; and <a href="AN02-L161.html">Changing centers in Fourier windows</a>, Theorem 3.1, for neighborhood transport. The <a href="#complete-proof">complete proof</a> provides every kernel estimate, the complete-space and Baire arguments, and the smoothing equivalence.</p>
+<h2 id="1-a-criterion-for-smoothing-a-nonsmooth-factor">1. A criterion for smoothing a nonsmooth factor</h2>
+<p>Use
+<span class="math" data-index="0" data-tex="\(F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle\)">\(F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle\)</span> and
+<span class="math" data-index="1" data-tex="\(L_u(z,c)=\log|F_u(c+z\log|c|)|/\log|c|\)">\(L_u(z,c)=\log|F_u(c+z\log|c|)|/\log|c|\)</span>, for real <span class="math" data-index="2" data-tex="\(|c|&gt;2\)">\(|c|&gt;2\)</span>.
+Functions and distributions may be complex valued.</p>
+<p>Theorem 1.1 of the complete proof says that the following are equivalent for a compact distribution <span class="math" data-index="3" data-tex="\(u\)">\(u\)</span>:</p>
+<ul>
+<li><span class="math" data-index="4" data-tex="\(L_u\)">\(L_u\)</span> collapses to <span class="math" data-index="5" data-tex="\(-\infty\)">\(-\infty\)</span>, uniformly on complex parameter compact sets, along some escaping real frequency sequence.</li>
+<li>At every prescribed point <span class="math" data-index="6" data-tex="\(x_0\)">\(x_0\)</span>, and in every prescribed small support ball about it, there is a compact continuous <span class="math" data-index="7" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, singular exactly at <span class="math" data-index="8" data-tex="\(x_0\)">\(x_0\)</span>, whose convolution <span class="math" data-index="9" data-tex="\(u*w\)">\(u*w\)</span> is smooth.</li>
+<li>Some compact nonsmooth distribution <span class="math" data-index="10" data-tex="\(w\)">\(w\)</span> has smooth convolution <span class="math" data-index="11" data-tex="\(u*w\)">\(u*w\)</span>.</li>
+</ul>
+<p>The last condition allows a distributional factor; it does not assume continuity. The middle condition yields the stronger continuous factor with exactly one singular point.</p>
+<p>The forward argument divides escaping frequencies into two regions. Choose logarithmic neighborhoods where <span class="math" data-index="12" data-tex="\(L_u\)">\(L_u\)</span> collapses. Construct <span class="math" data-index="13" data-tex="\(w\)">\(w\)</span> whose normalized logarithms collapse on their exterior. The exact product identity gives</p>
+<span class="math math-display" id="eq-S1" data-index="14" data-tex="\[
+ L_{u*w}(z,c)=L_u(z,c)+L_w(z,c).
+ \tag{S1}
+\]">\[
+ L_{u*w}(z,c)=L_u(z,c)+L_w(z,c).
+ \tag{S1}
+\]</span>
+<p>On either region one summand collapses, while the other has a uniform upper bound on the fixed parameter compact set. Thus the sum collapses along all escaping frequencies. The earlier singular-hull theorem then makes the convolution smooth.</p>
+<p>Conversely, a nonsmooth compact <span class="math" data-index="15" data-tex="\(w\)">\(w\)</span> has a proper profile somewhere. Extract a profile of <span class="math" data-index="16" data-tex="\(u\)">\(u\)</span> along that same sequence. Two proper profiles have a proper sum. A smooth compact convolution has only collapsed profiles, so the <span class="math" data-index="17" data-tex="\(u\)">\(u\)</span> profile must be collapsed. The shared sequence is indispensable.</p>
+<h2 id="2-concentrating-the-transform-without-enlarging-the-support">2. Concentrating the transform without enlarging the support</h2>
+<p>Let real <span class="math" data-index="18" data-tex="\(c_j\)">\(c_j\)</span> escape, <span class="math" data-index="19" data-tex="\(Q_j=|c_j|\)">\(Q_j=|c_j|\)</span>, and <span class="math" data-index="20" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span>. On a tail with <span class="math" data-index="21" data-tex="\(Q_j&gt;e^2\)">\(Q_j&gt;e^2\)</span>, set</p>
+<span class="math math-display" id="eq-S2" data-index="22" data-tex="\[
+ k_j=\lfloor\log Q_j\rfloor,\qquad
+ E=\bigcup_j\{\xi:|\xi-c_j|&lt;R_j\log Q_j\}.
+ \tag{S2}
+\]">\[
+ k_j=\lfloor\log Q_j\rfloor,\qquad
+ E=\bigcup_j\{\xi:|\xi-c_j|&lt;R_j\log Q_j\}.
+ \tag{S2}
+\]</span>
+<p>The exterior may be bounded. The construction imposes no small-relative-radius assumption.</p>
+<p>Take a smooth nonnegative probability density <span class="math" data-index="23" data-tex="\(\psi\)">\(\psi\)</span> supported in a small ball about zero. Set
+<span class="math" data-index="24" data-tex="\(\psi_k(x)=k^n\psi(kx)\)">\(\psi_k(x)=k^n\psi(kx)\)</span>, let <span class="math" data-index="25" data-tex="\(v_k\)">\(v_k\)</span> be its <span class="math" data-index="26" data-tex="\(k\)">\(k\)</span>-fold convolution, and modulate by <span class="math" data-index="27" data-tex="\(e^{ic_j\cdot x}\)">\(e^{ic_j\cdot x}\)</span>. Then</p>
+<span class="math math-display" id="eq-S3" data-index="28" data-tex="\[
+ u_j(x)=e^{ic_j\cdot x}v_{k_j}(x),\qquad
+ F_{u_j}(\zeta)=
+       [F_\psi((\zeta-c_j)/k_j)]^{k_j}.
+ \tag{S3}
+\]">\[
+ u_j(x)=e^{ic_j\cdot x}v_{k_j}(x),\qquad
+ F_{u_j}(\zeta)=
+       [F_\psi((\zeta-c_j)/k_j)]^{k_j}.
+ \tag{S3}
+\]</span>
+<p>The <span class="math" data-index="29" data-tex="\(k\)">\(k\)</span> supports each have radius divided by <span class="math" data-index="30" data-tex="\(k\)">\(k\)</span>, so their sum stays inside the original support ball. Every factor has mass one. Consequently <span class="math" data-index="31" data-tex="\(F_{u_j}(c_j)=1\)">\(F_{u_j}(c_j)=1\)</span>, while
+<span class="math" data-index="32" data-tex="\(\|u_j\|_\infty\leq k_j^n\|\psi\|_\infty\)">\(\|u_j\|_\infty\leq k_j^n\|\psi\|_\infty\)</span>.
+These are smooth test functions, rather than the nonsmooth function eventually selected.</p>
+<figure><img class="course-figure" width="1961" height="734" src="reproduce/L162/figures/compact-kernels-and-transform-peaks.png" alt="A smooth compact probability bump and numerical samples of its exact transform powers show how convolution powers concentrate frequency mass while the physical support stays fixed." /><figcaption class="native"><a href="reproduce/L162/figures/compact-kernels-and-transform-peaks.png">Open full-size PNG</a> · <a href="reproduce/L162/figures/compact-kernels-and-transform-peaks.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The seed is the normalized function <span class="math" data-index="33" data-tex="\(\exp[-1/(1-4x^2)]\)">\(\exp[-1/(1-4x^2)]\)</span> on <span class="math" data-index="34" data-tex="\(|x|&lt;1/2\)">\(|x|&lt;1/2\)</span>, extended by zero. The right panel samples <span class="math" data-index="35" data-tex="\(|F_\psi(w)|^k\)">\(|F_\psi(w)|^k\)</span>, for <span class="math" data-index="36" data-tex="\(k=4,16,64\)">\(k=4,16,64\)</span>, by quadrature. In the modulated construction this equals <span class="math" data-index="37" data-tex="\(|F_{u_j}(c_j+k_jw)|\)">\(|F_{u_j}(c_j+k_jw)|\)</span> when <span class="math" data-index="38" data-tex="\(k=k_j\)">\(k=k_j\)</span>. Every peak has exact value one at <span class="math" data-index="39" data-tex="\(w=0\)">\(w=0\)</span>; physical support remains inside the original small ball. These curves depict smooth test kernels, without an assertion that they are the final nonsmooth function. Proof locators: complete proof, (2.4)–(2.5) and Lemma 2.2. Background: Tao and Hörmander.</p>
+<p>To express exterior decay, the proof uses</p>
+<span class="math math-display" id="eq-S4" data-index="40" data-tex="\[
+ P_{N,m}(v)=
+ \sup_{\substack{\xi\notin E,\ |\xi|\geq2\\
+                 |\zeta-\xi|\leq m\log|\xi|}}
+ (1+|\zeta|)^N|F_v(\zeta)|.
+ \tag{S4}
+\]">\[
+ P_{N,m}(v)=
+ \sup_{\substack{\xi\notin E,\ |\xi|\geq2\\
+                 |\zeta-\xi|\leq m\log|\xi|}}
+ (1+|\zeta|)^N|F_v(\zeta)|.
+ \tag{S4}
+\]</span>
+<p>For every fixed <span class="math" data-index="41" data-tex="\(N,m\)">\(N,m\)</span>, these seminorms of <span class="math" data-index="42" data-tex="\(u_j\)">\(u_j\)</span> tend to zero. The proof makes the complex estimate explicit. With <span class="math" data-index="43" data-tex="\(w=(\zeta-c_j)/k_j\)">\(w=(\zeta-c_j)/k_j\)</span>, exterior membership forces <span class="math" data-index="44" data-tex="\(|w|&gt;R_j/2\)">\(|w|&gt;R_j/2\)</span> eventually; the complex tube also gives
+<span class="math" data-index="45" data-tex="\(e^{|\operatorname{Im}w|}\leq[B_m(1+|w|)]^m\)">\(e^{|\operatorname{Im}w|}\leq[B_m(1+|w|)]^m\)</span>.
+Whole-complex smooth decay of <span class="math" data-index="46" data-tex="\(F_\psi\)">\(F_\psi\)</span> therefore dominates both this imaginary growth and the polynomial weight. The resulting bound is</p>
+<span class="math math-display" id="eq-S5" data-index="47" data-tex="\[
+ P_{N,m}(u_j)\leq
+ [H_{N,m,\psi}(1+R_j/2)^{-2}]^{k_j}\longrightarrow0.
+ \tag{S5}
+\]">\[
+ P_{N,m}(u_j)\leq
+ [H_{N,m,\psi}(1+R_j/2)^{-2}]^{k_j}\longrightarrow0.
+ \tag{S5}
+\]</span>
+<p>The constants may depend on <span class="math" data-index="48" data-tex="\(N,m,\psi\)">\(N,m,\psi\)</span>, but not on <span class="math" data-index="49" data-tex="\(j\)">\(j\)</span> or the exterior frequency point.</p>
+<h2 id="3-why-a-nonsmooth-function-must-exist">3. Why a nonsmooth function must exist</h2>
+<p>Let <span class="math" data-index="50" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the space of continuous functions in the fixed support ball, smooth away from zero, with every seminorm (S4) finite. Its topology includes the uniform norm, all derivatives on compact annuli away from zero, and all exterior seminorms. Lemma 3.1 of the complete proof shows that this space is complete: uniform limits give continuity, local derivative limits give smoothness away from zero, and weighted transform limits preserve the exterior estimates.</p>
+<p>Set</p>
+<span class="math math-display" id="eq-S6" data-index="51" data-tex="\[
+ t_j=e^{\sqrt{\log Q_j}}.
+ \tag{S6}
+\]">\[
+ t_j=e^{\sqrt{\log Q_j}}.
+ \tag{S6}
+\]</span>
+<p>This weight grows faster than every power of <span class="math" data-index="52" data-tex="\(\log Q_j\)">\(\log Q_j\)</span>, but slower than <span class="math" data-index="53" data-tex="\(Q_j\)">\(Q_j\)</span>. If the quantities <span class="math" data-index="54" data-tex="\(t_jF_v(c_j)\)">\(t_jF_v(c_j)\)</span> were bounded for every <span class="math" data-index="55" data-tex="\(v\in\mathcal F\)">\(v\in\mathcal F\)</span>, Baire's theorem would bound all these evaluations by one finite seminorm <span class="math" data-index="56" data-tex="\(p_l(v)\)">\(p_l(v)\)</span>.</p>
+<p>Choose the smooth kernels supported so close to zero that all their derivatives vanish on that seminorm's annulus. Their remaining seminorm is at most <span class="math" data-index="57" data-tex="\(k_j^n\|\psi\|_\infty+o(1)\)">\(k_j^n\|\psi\|_\infty+o(1)\)</span>. Yet their evaluation has size <span class="math" data-index="58" data-tex="\(t_j\)">\(t_j\)</span>, which grows faster than <span class="math" data-index="59" data-tex="\(k_j^n\)">\(k_j^n\)</span>. This is impossible. Thus some <span class="math" data-index="60" data-tex="\(v\in\mathcal F\)">\(v\in\mathcal F\)</span> has unbounded <span class="math" data-index="61" data-tex="\(t_j|F_v(c_j)|\)">\(t_j|F_v(c_j)|\)</span>.</p>
+<p>Such a <span class="math" data-index="62" data-tex="\(v\)">\(v\)</span> cannot be <span class="math" data-index="63" data-tex="\(C^1\)">\(C^1\)</span>: compact <span class="math" data-index="64" data-tex="\(C^1\)">\(C^1\)</span> functions have <span class="math" data-index="65" data-tex="\(|F_v(c)|\leq C/|c|\)">\(|F_v(c)|\leq C/|c|\)</span>, making the weighted evaluations tend to zero. Since <span class="math" data-index="66" data-tex="\(v\)">\(v\)</span> is smooth off zero, its singular support is exactly <span class="math" data-index="67" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+<p>Choose centers where <span class="math" data-index="68" data-tex="\(t_j|F_v(c_j)|\geq1\)">\(t_j|F_v(c_j)|\geq1\)</span>. There</p>
+<span class="math math-display" id="eq-S7" data-index="69" data-tex="\[
+ -\frac1{\sqrt{\log Q_j}}
+ \leq L_v(0,c_j)
+ \leq\frac{\log\|v\|_1}{\log Q_j}.
+ \tag{S7}
+\]">\[
+ -\frac1{\sqrt{\log Q_j}}
+ \leq L_v(0,c_j)
+ \leq\frac{\log\|v\|_1}{\log Q_j}.
+ \tag{S7}
+\]</span>
+<p>Both endpoints tend to zero. This prevents collapsed extractions, but does not alone identify a whole profile. To finish, cut <span class="math" data-index="70" data-tex="\(v\)">\(v\)</span> into a continuous part supported arbitrarily close to zero and a smooth remainder. The first contributes at most <span class="math" data-index="71" data-tex="\(\varepsilon|\operatorname{Im}z|+o(1)\)">\(\varepsilon|\operatorname{Im}z|+o(1)\)</span>; the second has arbitrary smooth decay. Every proper extracted profile is therefore at most zero. Ball averages recover its value zero at the origin from (S7), and the submean inequality forces it to be the constant-zero function. Compactness then gives local <span class="math" data-index="72" data-tex="\(L^1\)">\(L^1\)</span> convergence to zero along the selected centers.</p>
+<figure><img class="course-figure" width="2168" height="726" src="reproduce/L162/figures/evaluation-weights-and-zero-profiles.png" alt="Exact growth ratios for the Baire evaluation weight and the selected-center lower bound illustrate how the test-kernel contradiction and zero-profile recovery fit together." /><figcaption class="native"><a href="reproduce/L162/figures/evaluation-weights-and-zero-profiles.png">Open full-size PNG</a> · <a href="reproduce/L162/figures/evaluation-weights-and-zero-profiles.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> With <span class="math" data-index="73" data-tex="\(\ell=\log Q\)">\(\ell=\log Q\)</span> and <span class="math" data-index="74" data-tex="\(k=\lfloor\ell\rfloor\)">\(k=\lfloor\ell\rfloor\)</span>, left: <span class="math" data-index="75" data-tex="\(\log_{10}(e^{\sqrt\ell}/k^n)\)">\(\log_{10}(e^{\sqrt\ell}/k^n)\)</span>, for <span class="math" data-index="76" data-tex="\(n=1,2,3\)">\(n=1,2,3\)</span>. Middle: <span class="math" data-index="77" data-tex="\(\log_{10}(e^{\sqrt\ell}/Q)\)">\(\log_{10}(e^{\sqrt\ell}/Q)\)</span>. Right: the exact lower-bound function <span class="math" data-index="78" data-tex="\(-1/\sqrt\ell\)">\(-1/\sqrt\ell\)</span> from (S7), approaching the reference value zero. The upper error in (S7) also tends to zero. The plots show these explicit comparison functions; no transform of the Baire-selected function is plotted. Proof locators: complete proof, (4.1)–(4.6). Background: Tao's Baire notes and Hörmander.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-a-one-sided-neighborhood-union-requires-complex-values">Example 1: a one-sided neighborhood union requires complex values</h3>
+<p>In dimension one take <span class="math" data-index="79" data-tex="\(c_j=e^{j^2}\)">\(c_j=e^{j^2}\)</span>, <span class="math" data-index="80" data-tex="\(R_j=j\)">\(R_j=j\)</span>, for <span class="math" data-index="81" data-tex="\(j\geq2\)">\(j\geq2\)</span>. The neighborhoods have radii <span class="math" data-index="82" data-tex="\(j^3\)">\(j^3\)</span>. Each lies in positive frequencies because <span class="math" data-index="83" data-tex="\(e^{j^2}&gt;j^3\)">\(e^{j^2}&gt;j^3\)</span>: at <span class="math" data-index="84" data-tex="\(j=2\)">\(j=2\)</span>, <span class="math" data-index="85" data-tex="\(4&gt;3\log2\)">\(4&gt;3\log2\)</span>, and the derivative of <span class="math" data-index="86" data-tex="\(s^2-3\log s\)">\(s^2-3\log s\)</span> is positive for <span class="math" data-index="87" data-tex="\(s\geq2\)">\(s\geq2\)</span>.</p>
+<p>Theorem 4.1 constructs a continuous <span class="math" data-index="88" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>, singular only at zero, whose normalized transform collapses outside this union and has zero profile along selected positive centers. It cannot be real valued. A real compact function obeys
+<span class="math" data-index="89" data-tex="\(F_v(-c)=\overline{F_v(c)}\)">\(F_v(-c)=\overline{F_v(c)}\)</span>.
+But all negative selected centers <span class="math" data-index="90" data-tex="\(-c_j\)">\(-c_j\)</span> are outside <span class="math" data-index="91" data-tex="\(E\)">\(E\)</span>. Their central normalized logarithms would both tend to <span class="math" data-index="92" data-tex="\(-\infty\)">\(-\infty\)</span>, by exterior collapse, and tend to zero, by conjugate symmetry and (S7). This contradiction explains the complex-valued convention.</p>
+<h3 id="example-2-the-smooth-test-family-on-an-explicit-scale">Example 2: the smooth test family on an explicit scale</h3>
+<p>For the same centers, <span class="math" data-index="93" data-tex="\(k_j=j^2\)">\(k_j=j^2\)</span>, so</p>
+<span class="math math-display" id="eq-S8" data-index="94" data-tex="\[
+ F_{u_j}(c_j+j^2w)=F_\psi(w)^{j^2},\qquad
+ \|u_j\|_\infty\leq j^{2n}\|\psi\|_\infty,\qquad
+ t_j=e^j.
+ \tag{S8}
+\]">\[
+ F_{u_j}(c_j+j^2w)=F_\psi(w)^{j^2},\qquad
+ \|u_j\|_\infty\leq j^{2n}\|\psi\|_\infty,\qquad
+ t_j=e^j.
+ \tag{S8}
+\]</span>
+<p>For each exterior seminorm, (S5) becomes
+<span class="math" data-index="95" data-tex="\([H_{N,m,\psi}(1+j/2)^{-2}]^{j^2}\to0\)">\([H_{N,m,\psi}(1+j/2)^{-2}]^{j^2}\to0\)</span>.
+Eventually its base is at most <span class="math" data-index="96" data-tex="\(1/2\)">\(1/2\)</span>, so it is bounded by <span class="math" data-index="97" data-tex="\(2^{-j^2}\)">\(2^{-j^2}\)</span>. Meanwhile <span class="math" data-index="98" data-tex="\(e^j/j^{2n}\to\infty\)">\(e^j/j^{2n}\to\infty\)</span>, since <span class="math" data-index="99" data-tex="\(j-2n\log j\to\infty\)">\(j-2n\log j\to\infty\)</span>.</p>
+<p>The kernels are supported arbitrarily close to zero and individually smooth. Their Fourier value at the chosen center is one. These facts contradict an assumed common evaluation bound and force the existence of a different, nonsmooth function in the complete space. No claim that the displayed kernels themselves converge to that function is needed.</p>
+<h3 id="example-3-a-differentiated-point-mass-cannot-smooth-a-compact-singularity">Example 3: a differentiated point mass cannot smooth a compact singularity</h3>
+<p>Let <span class="math" data-index="100" data-tex="\(u=D^2\delta_b\)">\(u=D^2\delta_b\)</span> on <span class="math" data-index="101" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Then
+<span class="math" data-index="102" data-tex="\(F_u(\zeta)=(i\zeta)^2e^{-ib\zeta}\)">\(F_u(\zeta)=(i\zeta)^2e^{-ib\zeta}\)</span>.
+On each compact parameter set, factor
+<span class="math" data-index="103" data-tex="\(c+z\log|c|=c[1+z\log|c|/c]\)">\(c+z\log|c|=c[1+z\log|c|/c]\)</span>.
+The second term in the bracket tends uniformly to zero. Using
+<span class="math" data-index="104" data-tex="\(|\log|1+w||\leq2|w|\)">\(|\log|1+w||\leq2|w|\)</span> for <span class="math" data-index="105" data-tex="\(|w|\leq1/2\)">\(|w|\leq1/2\)</span>, one obtains</p>
+<span class="math math-display" id="eq-S9" data-index="106" data-tex="\[
+ L_u(z,c)\longrightarrow2+b\operatorname{Im}z
+ \quad\text{uniformly on parameter compact sets}.
+ \tag{S9}
+\]">\[
+ L_u(z,c)\longrightarrow2+b\operatorname{Im}z
+ \quad\text{uniformly on parameter compact sets}.
+ \tag{S9}
+\]</span>
+<p>Every escaping frequency sequence has this proper profile; none collapses. Theorem 1.1 consequently excludes a compact nonsmooth <span class="math" data-index="107" data-tex="\(w\)">\(w\)</span> with smooth <span class="math" data-index="108" data-tex="\(u*w\)">\(u*w\)</span>.</p>
+<p>This also follows from the nonzero-polynomial singular-hull theorem in <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, Theorem 5.1: <span class="math" data-index="109" data-tex="\(u*w=D^2(\tau_bw)\)">\(u*w=D^2(\tau_bw)\)</span>, so a smooth output forces the translated compact factor, hence <span class="math" data-index="110" data-tex="\(w\)">\(w\)</span>, to be smooth. Compact support and the nonzero derivative polynomial are both part of that theorem.</p>
+<h3 id="example-4-crossed-singular-factors-and-the-stronger-continuous-replacement">Example 4: crossed singular factors and the stronger continuous replacement</h3>
+<p>Let <span class="math" data-index="111" data-tex="\(f\)">\(f\)</span> be a smooth compact probability density on <span class="math" data-index="112" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and in dimension two put</p>
+<span class="math math-display" id="eq-S10" data-index="113" data-tex="\[
+ p=\delta_0\otimes f,\qquad q=f\otimes\delta_0,\qquad
+ p*q=f\otimes f.
+ \tag{S10}
+\]">\[
+ p=\delta_0\otimes f,\qquad q=f\otimes\delta_0,\qquad
+ p*q=f\otimes f.
+ \tag{S10}
+\]</span>
+<p>Both factors are singular distributions: <span class="math" data-index="114" data-tex="\(p\)">\(p\)</span> is concentrated on a vertical segment and <span class="math" data-index="115" data-tex="\(q\)">\(q\)</span> on a horizontal segment. Their convolution is a smooth function, as the product identity or direct distribution pairing shows.</p>
+<p>The transform of <span class="math" data-index="116" data-tex="\(p\)">\(p\)</span> is <span class="math" data-index="117" data-tex="\(F_f(\zeta_2)\)">\(F_f(\zeta_2)\)</span>. Along centers <span class="math" data-index="118" data-tex="\(c_j=(0,Q_j)\)">\(c_j=(0,Q_j)\)</span>, the smooth estimate (2.3) applied to the second coordinate makes <span class="math" data-index="119" data-tex="\(L_p\)">\(L_p\)</span> collapse on every complex parameter compact set. Theorem 1.1 therefore supplies more than the displayed distributional factor <span class="math" data-index="120" data-tex="\(q\)">\(q\)</span>: at any chosen point, inside any chosen small support ball, it gives a continuous <span class="math" data-index="121" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, singular only at that point, for which <span class="math" data-index="122" data-tex="\(p*w\)">\(p*w\)</span> is smooth.</p>
+<p>This conclusion does not assert that <span class="math" data-index="123" data-tex="\(q\)">\(q\)</span> is continuous or singular at only one point. It is a separate consequence of the full frequency-selective construction. The concrete pairing in (S10) and the existence of the stronger replacement illustrate the two different regularity requirements in Theorem 1.1.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The exercises total 100 points.</p>
+<h3 id="exercise-1-scaling-support-and-modulation-8-points">Exercise 1: scaling, support and modulation (8 points)</h3>
+<p>Starting from a nonnegative smooth probability density supported in <span class="math" data-index="124" data-tex="\(B_b(0)\)">\(B_b(0)\)</span>, derive (S3), its value at the center, and the support and uniform-norm bounds.</p>
+<p><em>Solution.</em> Substitution <span class="math" data-index="125" data-tex="\(y=kx\)">\(y=kx\)</span> gives
+<span class="math" data-index="126" data-tex="\(F_{\psi_k}(\zeta)=F_\psi(\zeta/k)\)">\(F_{\psi_k}(\zeta)=F_\psi(\zeta/k)\)</span> and <span class="math" data-index="127" data-tex="\(\|\psi_k\|_1=1\)">\(\|\psi_k\|_1=1\)</span>.
+Convolution multiplies transforms, so <span class="math" data-index="128" data-tex="\(F_{v_k}(\zeta)=F_\psi(\zeta/k)^k\)">\(F_{v_k}(\zeta)=F_\psi(\zeta/k)^k\)</span>.
+Multiplication by <span class="math" data-index="129" data-tex="\(e^{ic_j\cdot x}\)">\(e^{ic_j\cdot x}\)</span> replaces <span class="math" data-index="130" data-tex="\(\zeta\)">\(\zeta\)</span> by <span class="math" data-index="131" data-tex="\(\zeta-c_j\)">\(\zeta-c_j\)</span>, yielding (S3) and <span class="math" data-index="132" data-tex="\(F_{u_j}(c_j)=F_\psi(0)^{k_j}=1\)">\(F_{u_j}(c_j)=F_\psi(0)^{k_j}=1\)</span>.
+The sum of <span class="math" data-index="133" data-tex="\(k\)">\(k\)</span> vectors in <span class="math" data-index="134" data-tex="\(B_{b/k}(0)\)">\(B_{b/k}(0)\)</span> has norm less than <span class="math" data-index="135" data-tex="\(b\)">\(b\)</span>, proving the support assertion. Finally, each convolution with a probability density preserves the upper uniform norm; since <span class="math" data-index="136" data-tex="\(\|\psi_k\|_\infty=k^n\|\psi\|_\infty\)">\(\|\psi_k\|_\infty=k^n\|\psi\|_\infty\)</span>, the claimed bound follows. Modulation has modulus one on physical real space and changes neither support nor this norm.</p>
+<h3 id="exercise-2-an-explicit-complex-tube-constant-8-points">Exercise 2: an explicit complex-tube constant (8 points)</h3>
+<p>Take <span class="math" data-index="137" data-tex="\(m=2\)">\(m=2\)</span>. Derive the bound <span class="math" data-index="138" data-tex="\(2\log q\leq q/2+C_2\)">\(2\log q\leq q/2+C_2\)</span>, and give constants controlling <span class="math" data-index="139" data-tex="\(q\)">\(q\)</span> and <span class="math" data-index="140" data-tex="\(|\operatorname{Im}w|\)">\(|\operatorname{Im}w|\)</span> when <span class="math" data-index="141" data-tex="\(w=(\zeta-c_j)/k_j\)">\(w=(\zeta-c_j)/k_j\)</span>.</p>
+<p><em>Solution.</em> The function <span class="math" data-index="142" data-tex="\(2\log q-q/2\)">\(2\log q-q/2\)</span> has derivative <span class="math" data-index="143" data-tex="\(2/q-1/2\)">\(2/q-1/2\)</span> and maximum at <span class="math" data-index="144" data-tex="\(q=4\)">\(q=4\)</span>, with value <span class="math" data-index="145" data-tex="\(2\log4-2\)">\(2\log4-2\)</span>. Thus the larger constant <span class="math" data-index="146" data-tex="\(C_2=2\log4+2\)">\(C_2=2\log4+2\)</span> works for all <span class="math" data-index="147" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.
+Set <span class="math" data-index="148" data-tex="\(A_2=2(e+1+C_2)\)">\(A_2=2(e+1+C_2)\)</span> and <span class="math" data-index="149" data-tex="\(B_2=eA_2\)">\(B_2=eA_2\)</span>.
+The triangle inequality gives
+<span class="math" data-index="150" data-tex="\(q\leq Q_j+k_j|w|+2\log q\)">\(q\leq Q_j+k_j|w|+2\log q\)</span>.
+Absorb <span class="math" data-index="151" data-tex="\(q/2\)">\(q/2\)</span>, use <span class="math" data-index="152" data-tex="\(Q_j&lt;e^{k_j+1}\)">\(Q_j&lt;e^{k_j+1}\)</span> and <span class="math" data-index="153" data-tex="\(k_j\leq e^{k_j}\)">\(k_j\leq e^{k_j}\)</span>, and obtain
+<span class="math" data-index="154" data-tex="\(q\leq A_2e^{k_j}(1+|w|)\)">\(q\leq A_2e^{k_j}(1+|w|)\)</span>.
+Then</p>
+<span class="math math-display" id="eq-S11" data-index="155" data-tex="\[
+ |\operatorname{Im}w|\leq2\log q/k_j
+ \leq2\log[B_2(1+|w|)].
+ \tag{S11}
+\]">\[
+ |\operatorname{Im}w|\leq2\log q/k_j
+ \leq2\log[B_2(1+|w|)].
+ \tag{S11}
+\]</span>
+<p>The last step uses <span class="math" data-index="156" data-tex="\(k_j\geq1\)">\(k_j\geq1\)</span> and <span class="math" data-index="157" data-tex="\(\log[A_2(1+|w|)]\geq0\)">\(\log[A_2(1+|w|)]\geq0\)</span>. Exponentiation gives the polynomial bound needed to absorb imaginary growth.</p>
+<h3 id="exercise-3-a-finite-exclusion-radius-8-points">Exercise 3: a finite exclusion radius (8 points)</h3>
+<p>For <span class="math" data-index="158" data-tex="\(m=1\)">\(m=1\)</span>, use the constants in (2.7) of the complete proof. Show that <span class="math" data-index="159" data-tex="\(R_j=100\)">\(R_j=100\)</span> forces <span class="math" data-index="160" data-tex="\(|w|&gt;50\)">\(|w|&gt;50\)</span> at an admissible exterior point.</p>
+<p><em>Solution.</em> Here <span class="math" data-index="161" data-tex="\(C_1=\log2+1&lt;2\)">\(C_1=\log2+1&lt;2\)</span>, so
+<span class="math" data-index="162" data-tex="\(A_1=2(e+1+C_1)&lt;12\)">\(A_1=2(e+1+C_1)&lt;12\)</span>, using <span class="math" data-index="163" data-tex="\(e&lt;3\)">\(e&lt;3\)</span>, and <span class="math" data-index="164" data-tex="\(B_1=eA_1&lt;36\)">\(B_1=eA_1&lt;36\)</span>.
+If <span class="math" data-index="165" data-tex="\(|w|\leq50\)">\(|w|\leq50\)</span>, equation (2.10) would give</p>
+<span class="math math-display" id="eq-S12" data-index="166" data-tex="\[
+ 100\leq50+\log(B_1\cdot51)
+ &lt;50+\log1836
+ &lt;50+\log2048
+ =50+11\log2&lt;61.
+ \tag{S12}
+\]">\[
+ 100\leq50+\log(B_1\cdot51)
+ &lt;50+\log1836
+ &lt;50+\log2048
+ =50+11\log2&lt;61.
+ \tag{S12}
+\]</span>
+<p>This contradiction proves the claim. The calculation is a sufficient finite threshold; the general proof only needs such exclusions for all sufficiently large <span class="math" data-index="167" data-tex="\(R_j\)">\(R_j\)</span>.</p>
+<h3 id="exercise-4-the-smooth-decay-order-10-points">Exercise 4: the smooth-decay order (10 points)</h3>
+<p>For <span class="math" data-index="168" data-tex="\(N=3\)">\(N=3\)</span>, <span class="math" data-index="169" data-tex="\(m=2\)">\(m=2\)</span>, and seed support radius at most one, choose a derivative order proving (S5). Explain why no specified speed of <span class="math" data-index="170" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span> is required.</p>
+<p><em>Solution.</em> Choose <span class="math" data-index="171" data-tex="\(L=N+m+2=7\)">\(L=N+m+2=7\)</span> in (2.3). On the scaled tube,
+<span class="math" data-index="172" data-tex="\(e^{|\operatorname{Im}w|}\leq[B_2(1+|w|)]^2\)">\(e^{|\operatorname{Im}w|}\leq[B_2(1+|w|)]^2\)</span>.
+Hence
+<span class="math" data-index="173" data-tex="\(|F_\psi(w)|\leq C_7B_2^2(1+|w|)^{-5}\)">\(|F_\psi(w)|\leq C_7B_2^2(1+|w|)^{-5}\)</span>.
+Multiplication by the weight factor <span class="math" data-index="174" data-tex="\((eD)^3(1+|w|)^3\)">\((eD)^3(1+|w|)^3\)</span> gives
+<span class="math" data-index="175" data-tex="\(H(1+|w|)^{-2}\)">\(H(1+|w|)^{-2}\)</span>, with <span class="math" data-index="176" data-tex="\(H=(eD)^3C_7B_2^2\)">\(H=(eD)^3C_7B_2^2\)</span>.
+Exterior separation gives <span class="math" data-index="177" data-tex="\(|w|&gt;R_j/2\)">\(|w|&gt;R_j/2\)</span>, so the weighted power is at most
+<span class="math" data-index="178" data-tex="\([H(1+R_j/2)^{-2}]^{k_j}\)">\([H(1+R_j/2)^{-2}]^{k_j}\)</span>.
+Since <span class="math" data-index="179" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span>, the base is eventually less than <span class="math" data-index="180" data-tex="\(1/2\)">\(1/2\)</span>, regardless of the rate. The upper bound is then <span class="math" data-index="181" data-tex="\(2^{-k_j}\to0\)">\(2^{-k_j}\to0\)</span>. The frequency norm and its logarithmic power can grow independently of the slow radius sequence.</p>
+<h3 id="exercise-5-preserving-an-exterior-seminorm-in-a-limit-10-points">Exercise 5: preserving an exterior seminorm in a limit (10 points)</h3>
+<p>Suppose <span class="math" data-index="182" data-tex="\(v_r\)">\(v_r\)</span> converges uniformly on the fixed support ball and is Cauchy in <span class="math" data-index="183" data-tex="\(P_{N,m}\)">\(P_{N,m}\)</span>. Prove that the limit has finite <span class="math" data-index="184" data-tex="\(P_{N,m}\)">\(P_{N,m}\)</span>, and that <span class="math" data-index="185" data-tex="\(P_{N,m}(v_r-v)\to0\)">\(P_{N,m}(v_r-v)\to0\)</span>. Why does pointwise transform convergence suffice here?</p>
+<p><em>Solution.</em> Uniform convergence gives, for each fixed complex <span class="math" data-index="186" data-tex="\(\zeta\)">\(\zeta\)</span>,</p>
+<span class="math math-display" id="eq-S13" data-index="187" data-tex="\[
+ |F_{v_r-v}(\zeta)|
+ \leq\operatorname{vol}(B_a)e^{a|\operatorname{Im}\zeta|}
+                              \|v_r-v\|_\infty\to0.
+ \tag{S13}
+\]">\[
+ |F_{v_r-v}(\zeta)|
+ \leq\operatorname{vol}(B_a)e^{a|\operatorname{Im}\zeta|}
+                              \|v_r-v\|_\infty\to0.
+ \tag{S13}
+\]</span>
+<p>For a given <span class="math" data-index="188" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, Cauchyness gives <span class="math" data-index="189" data-tex="\(P_{N,m}(v_r-v_s)\leq\varepsilon\)">\(P_{N,m}(v_r-v_s)\leq\varepsilon\)</span> for all <span class="math" data-index="190" data-tex="\(r,s\geq r_0\)">\(r,s\geq r_0\)</span>.
+At every admissible pair <span class="math" data-index="191" data-tex="\((\xi,\zeta)\)">\((\xi,\zeta)\)</span>, let <span class="math" data-index="192" data-tex="\(s\to\infty\)">\(s\to\infty\)</span> in its weighted inequality. The result is
+<span class="math" data-index="193" data-tex="\((1+|\zeta|)^N|F_{v_r-v}(\zeta)|\leq\varepsilon\)">\((1+|\zeta|)^N|F_{v_r-v}(\zeta)|\leq\varepsilon\)</span> for all such pairs. Taking their supremum gives <span class="math" data-index="194" data-tex="\(P_{N,m}(v_r-v)\leq\varepsilon\)">\(P_{N,m}(v_r-v)\leq\varepsilon\)</span>. Finally
+<span class="math" data-index="195" data-tex="\(P_{N,m}(v)\leq P_{N,m}(v-v_{r_0})+P_{N,m}(v_{r_0})&lt;\infty\)">\(P_{N,m}(v)\leq P_{N,m}(v-v_{r_0})+P_{N,m}(v_{r_0})&lt;\infty\)</span>.
+The uniform Cauchy bound applies on the entire unbounded tube before passage to the limit; pointwise convergence is used only to identify its limiting values. There is no unproved interchange of an arbitrary limit and supremum.</p>
+<h3 id="exercise-6-extracting-one-boundedness-seminorm-8-points">Exercise 6: extracting one boundedness seminorm (8 points)</h3>
+<p>Suppose <span class="math" data-index="196" data-tex="\(\sup_j|\Lambda_j(v)|&lt;\infty\)">\(\sup_j|\Lambda_j(v)|&lt;\infty\)</span> for every <span class="math" data-index="197" data-tex="\(v\in\mathcal F\)">\(v\in\mathcal F\)</span>. If Baire's theorem gives
+<span class="math" data-index="198" data-tex="\(v_0+\{v:p_l(v)&lt;\varepsilon\}\subset\{v:\sup_j|\Lambda_j(v)|\leq s\}\)">\(v_0+\{v:p_l(v)&lt;\varepsilon\}\subset\{v:\sup_j|\Lambda_j(v)|\leq s\}\)</span>,
+derive a bound valid for every <span class="math" data-index="199" data-tex="\(v\)">\(v\)</span>.</p>
+<p><em>Solution.</em> The center <span class="math" data-index="200" data-tex="\(v_0\)">\(v_0\)</span> belongs to the displayed closed boundedness set. For <span class="math" data-index="201" data-tex="\(p_l(v)&lt;\varepsilon\)">\(p_l(v)&lt;\varepsilon\)</span>, subtracting its values from those at <span class="math" data-index="202" data-tex="\(v_0+v\)">\(v_0+v\)</span> gives
+<span class="math" data-index="203" data-tex="\(\sup_j|\Lambda_j(v)|\leq2s\)">\(\sup_j|\Lambda_j(v)|\leq2s\)</span>.
+For <span class="math" data-index="204" data-tex="\(p_l(v)&gt;0\)">\(p_l(v)&gt;0\)</span>, apply this to <span class="math" data-index="205" data-tex="\(\varepsilon v/(2p_l(v))\)">\(\varepsilon v/(2p_l(v))\)</span> and use linearity. The resulting bound is
+<span class="math" data-index="206" data-tex="\(\sup_j|\Lambda_j(v)|\leq(4s/\varepsilon)p_l(v)\)">\(\sup_j|\Lambda_j(v)|\leq(4s/\varepsilon)p_l(v)\)</span>.
+If <span class="math" data-index="207" data-tex="\(p_l(v)=0\)">\(p_l(v)=0\)</span>, its uniform-norm term forces <span class="math" data-index="208" data-tex="\(v=0\)">\(v=0\)</span>, so the same bound holds. This finite-seminorm estimate is precisely what the smooth peaked kernels contradict.</p>
+<h3 id="exercise-7-the-evaluation-weight-10-points">Exercise 7: the evaluation weight (10 points)</h3>
+<p>For <span class="math" data-index="209" data-tex="\(Q_j=e^{j^2}\)">\(Q_j=e^{j^2}\)</span>, compute the weight <span class="math" data-index="210" data-tex="\(t_j\)">\(t_j\)</span>, its ratio to the test-kernel height, and its ratio to <span class="math" data-index="211" data-tex="\(Q_j\)">\(Q_j\)</span>. Explain why a fixed power of <span class="math" data-index="212" data-tex="\(\log Q_j\)">\(\log Q_j\)</span> does not serve every dimension.</p>
+<p><em>Solution.</em> We have <span class="math" data-index="213" data-tex="\(k_j=j^2\)">\(k_j=j^2\)</span>, <span class="math" data-index="214" data-tex="\(t_j=e^j\)">\(t_j=e^j\)</span>,
+<span class="math" data-index="215" data-tex="\(t_j/k_j^n=e^j/j^{2n}\to\infty\)">\(t_j/k_j^n=e^j/j^{2n}\to\infty\)</span>, and
+<span class="math" data-index="216" data-tex="\(t_j/Q_j=e^{j-j^2}\to0\)">\(t_j/Q_j=e^{j-j^2}\to0\)</span>.
+The logarithmic weight also satisfies <span class="math" data-index="217" data-tex="\(\log t_j/\log Q_j=1/j\to0\)">\(\log t_j/\log Q_j=1/j\to0\)</span>. It therefore forces unbounded evaluations against the polynomial-height kernels, excludes <span class="math" data-index="218" data-tex="\(C^1\)">\(C^1\)</span> functions, and supplies the vanishing central lower error in (S7).
+For a proposed weight <span class="math" data-index="219" data-tex="\((\log Q_j)^r=j^{2r}\)">\((\log Q_j)^r=j^{2r}\)</span>, its ratio to <span class="math" data-index="220" data-tex="\(k_j^n\)">\(k_j^n\)</span> is <span class="math" data-index="221" data-tex="\(j^{2(r-n)}\)">\(j^{2(r-n)}\)</span>. It fails to tend to infinity when <span class="math" data-index="222" data-tex="\(n\geq r\)">\(n\geq r\)</span>. The exponential square-root weight dominates all fixed logarithmic powers, so the same choice works in every fixed dimension.</p>
+<h3 id="exercise-8-a-zero-local-l-1-limit-with-moving-zeros-12-points">Exercise 8: a zero local <span class="math" data-index="223" data-tex="\(L^1\)">\(L^1\)</span> limit with moving zeros (12 points)</h3>
+<p>On <span class="math" data-index="224" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> consider <span class="math" data-index="225" data-tex="\(f_j(z)=j^{-1}\log|z-1/j|\)">\(f_j(z)=j^{-1}\log|z-1/j|\)</span>. Prove local <span class="math" data-index="226" data-tex="\(L^1\)">\(L^1\)</span> convergence to zero and convergence <span class="math" data-index="227" data-tex="\(f_j(0)\to0\)">\(f_j(0)\to0\)</span>, while uniform convergence on a compact neighborhood of zero fails.</p>
+<p><em>Solution.</em> Each <span class="math" data-index="228" data-tex="\(f_j\)">\(f_j\)</span> is a proper PSH function. At zero it equals <span class="math" data-index="229" data-tex="\(-\log j/j\to0\)">\(-\log j/j\to0\)</span>.
+On <span class="math" data-index="230" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>, translation <span class="math" data-index="231" data-tex="\(w=z-1/j\)">\(w=z-1/j\)</span> gives</p>
+<span class="math math-display" id="eq-S14" data-index="232" data-tex="\[
+ \int_{|z|\leq R}|f_j(z)|\,dA(z)
+ \leq\frac{2\pi}{j}\int_0^{R+1}r|\log r|\,dr.
+ \tag{S14}
+\]">\[
+ \int_{|z|\leq R}|f_j(z)|\,dA(z)
+ \leq\frac{2\pi}{j}\int_0^{R+1}r|\log r|\,dr.
+ \tag{S14}
+\]</span>
+<p>The integral is finite: near zero, <span class="math" data-index="233" data-tex="\(r|\log r|\)">\(r|\log r|\)</span> is integrable, and on every positive compact interval the integrand is continuous. This proves convergence in <span class="math" data-index="234" data-tex="\(L^1\)">\(L^1\)</span> on every fixed disk.
+For any disk about zero, the point <span class="math" data-index="235" data-tex="\(z=1/j\)">\(z=1/j\)</span> is inside it for large <span class="math" data-index="236" data-tex="\(j\)">\(j\)</span>, and <span class="math" data-index="237" data-tex="\(f_j(1/j)=-\infty\)">\(f_j(1/j)=-\infty\)</span>. Uniform convergence to the finite function zero is impossible.
+This is a PSH model illustrating the convergence distinction. It is not asserted to be the Fourier profile sequence of one fixed compact distribution. In the constructed Fourier sequence the full proof likewise claims local <span class="math" data-index="238" data-tex="\(L^1\)">\(L^1\)</span> convergence, without claiming uniform convergence to zero.</p>
+<h3 id="exercise-9-two-isolated-nonsmooth-factors-in-one-dimension-12-points">Exercise 9: two isolated nonsmooth factors in one dimension (12 points)</h3>
+<p>Use the positive neighborhood union of Example 1. Show that there exist compact continuous functions <span class="math" data-index="239" data-tex="\(v,w\)">\(v,w\)</span>, each not <span class="math" data-index="240" data-tex="\(C^1\)">\(C^1\)</span>, singular respectively at zero and at any chosen <span class="math" data-index="241" data-tex="\(x_0\)">\(x_0\)</span>, whose convolution is smooth. Their support balls may be prescribed arbitrarily small.</p>
+<p><em>Solution.</em> Theorem 4.1 gives <span class="math" data-index="242" data-tex="\(v\)">\(v\)</span> in the prescribed small ball about zero, singular exactly there and not <span class="math" data-index="243" data-tex="\(C^1\)">\(C^1\)</span>. Negative frequencies <span class="math" data-index="244" data-tex="\(-c_j\)">\(-c_j\)</span> lie outside <span class="math" data-index="245" data-tex="\(E\)">\(E\)</span> and escape. Therefore <span class="math" data-index="246" data-tex="\(L_v(\cdot,-c_j)\)">\(L_v(\cdot,-c_j)\)</span> collapses uniformly locally, so condition 1 of Theorem 1.1 holds for <span class="math" data-index="247" data-tex="\(v\)">\(v\)</span>.
+Condition 2 then gives a continuous <span class="math" data-index="248" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, singular exactly at the chosen <span class="math" data-index="249" data-tex="\(x_0\)">\(x_0\)</span>, supported in its prescribed small ball, with <span class="math" data-index="250" data-tex="\(v*w\)">\(v*w\)</span> smooth. Both are compact functions, so their convolution is also compactly supported.
+At least <span class="math" data-index="251" data-tex="\(v\)">\(v\)</span> must have complex values by Example 1. The construction supplies existence with complete regularity and frequency guarantees; it does not supply a closed formula for the Baire-selected functions. There is no contradiction with Example 3: these functions are not differentiated point masses with a fixed nonzero polynomial transform.</p>
+<h3 id="exercise-10-the-converse-needs-the-same-sequence-14-points">Exercise 10: the converse needs the same sequence (14 points)</h3>
+<p>Suppose <span class="math" data-index="252" data-tex="\(w\)">\(w\)</span> is a compact nonsmooth distribution and <span class="math" data-index="253" data-tex="\(u*w\)">\(u*w\)</span> is smooth. Prove that <span class="math" data-index="254" data-tex="\(u\)">\(u\)</span> has a collapsed profile. Address the zero-factor case and explain why separately chosen profiles would not suffice.</p>
+<p><em>Solution.</em> If <span class="math" data-index="255" data-tex="\(u=0\)">\(u=0\)</span>, its normalized logarithms are identically <span class="math" data-index="256" data-tex="\(-\infty\)">\(-\infty\)</span>, so the conclusion is immediate. Otherwise, the earlier singular-hull theorem ensures a proper profile of <span class="math" data-index="257" data-tex="\(w\)">\(w\)</span> along some escaping real sequence; if all profiles were collapsed, the convex singular hull would be empty and <span class="math" data-index="258" data-tex="\(w\)">\(w\)</span> would be smooth.
+Keep that sequence and extract a proper or collapsed profile of <span class="math" data-index="259" data-tex="\(u\)">\(u\)</span> on a further subsequence. The already converging <span class="math" data-index="260" data-tex="\(w\)">\(w\)</span> profile is unchanged. If the <span class="math" data-index="261" data-tex="\(u\)">\(u\)</span> limit were proper, the two limits would be locally integrable and their sums would converge in local <span class="math" data-index="262" data-tex="\(L^1\)">\(L^1\)</span> to their proper PSH sum:</p>
+<span class="math math-display" id="eq-S15" data-index="263" data-tex="\[
+ \|(L_u+L_w)-(V_u+V_w)\|_{L^1(B)}
+ \leq\|L_u-V_u\|_{L^1(B)}+\|L_w-V_w\|_{L^1(B)}\to0.
+ \tag{S15}
+\]">\[
+ \|(L_u+L_w)-(V_u+V_w)\|_{L^1(B)}
+ \leq\|L_u-V_u\|_{L^1(B)}+\|L_w-V_w\|_{L^1(B)}\to0.
+ \tag{S15}
+\]</span>
+<p>The sum is finite almost everywhere and therefore proper. The exact Fourier product makes it a proper profile of <span class="math" data-index="264" data-tex="\(u*w\)">\(u*w\)</span>, contradicting the uniform complex-parameter collapse of a smooth compact function. The <span class="math" data-index="265" data-tex="\(u\)">\(u\)</span> limit must be collapsed.
+Profiles chosen separately need not coexist on any common frequency sequence. Their formal sum would then not describe the transform product along a sequence at all. The retained <span class="math" data-index="266" data-tex="\(w\)">\(w\)</span> sequence and the further extraction are what make the contradiction valid. The case <span class="math" data-index="267" data-tex="\(w=0\)">\(w=0\)</span> is excluded by its assumed nonsmoothness.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009.</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. The Fourier normalization differs from this chapter.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. The full frequency-selective construction and smoothing equivalence are proved in the complete proof above.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>An isolated singularity can be arranged to have very small Fourier transform outside prescribed logarithmic neighborhoods. Inside selected neighborhoods it can retain the zero logarithmic profile. This construction characterizes compact distributions that smooth at least one nonsmooth convolution factor.</p>
+<p>Basic references are Tao's <em>245B, Notes 9</em> for Baire's theorem and uniform boundedness, Tao's <em>246B, Notes 2</em> for entire Fourier transforms, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. Our complete-space argument, peaked-kernel estimates and selection proof are given here. The earlier mathematical inputs are <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Theorems 2.1 and 4.2; <a href="AN02-L143.html">Local compactness and Hartogs bounds</a>; <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, Section 4; <a href="AN02-L160.html">Convolution and joint frequency carriers</a>, Lemmas 2.1–2.3; and <a href="AN02-L161.html">Changing centers in Fourier windows</a>, Theorem 3.1. They supply compactness, joint subsequence extraction, the singular-hull criterion, and transport of collapsed profiles.</p>
+<h2 id="1-the-smoothing-question">1. The smoothing question</h2>
+<p>Distributions and functions in this chapter may be complex valued. Use</p>
+<span class="math math-display" id="eq-1.1" data-index="268" data-tex="\[
+ F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]">\[
+ F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]</span>
+<p>A collapsed profile is the limit <span class="math" data-index="269" data-tex="\(-\infty\)">\(-\infty\)</span>, uniformly on every compact subset of <span class="math" data-index="270" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. A proper profile is a canonical PSH local <span class="math" data-index="271" data-tex="\(L^1\)">\(L^1\)</span> limit. The value zero below always means the proper constant-zero PSH function.</p>
+<p><strong>Theorem 1.1 (a nonsmooth factor can be smoothed exactly when a profile collapses).</strong> For a compact distribution <span class="math" data-index="272" data-tex="\(u\)">\(u\)</span>, these conditions are equivalent:</p>
+<ol>
+<li>There is an escaping real frequency sequence on which <span class="math" data-index="273" data-tex="\(L_u\)">\(L_u\)</span> collapses uniformly locally.</li>
+<li>For every <span class="math" data-index="274" data-tex="\(x_0\in\mathbb R^n\)">\(x_0\in\mathbb R^n\)</span> and every <span class="math" data-index="275" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, there is a compact continuous function <span class="math" data-index="276" data-tex="\(w\)">\(w\)</span>, supported in the closed ball of radius <span class="math" data-index="277" data-tex="\(a\)">\(a\)</span> about <span class="math" data-index="278" data-tex="\(x_0\)">\(x_0\)</span>, with
+<span class="math" data-index="279" data-tex="\(\operatorname{sing\,supp}w=\{x_0\}\)">\(\operatorname{sing\,supp}w=\{x_0\}\)</span>, <span class="math" data-index="280" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>, and <span class="math" data-index="281" data-tex="\(u*w\in C^\infty\)">\(u*w\in C^\infty\)</span>.</li>
+<li>There is a compact distribution <span class="math" data-index="282" data-tex="\(w\notin C^\infty\)">\(w\notin C^\infty\)</span> for which <span class="math" data-index="283" data-tex="\(u*w\in C^\infty\)">\(u*w\in C^\infty\)</span>.</li>
+</ol>
+<p>The proof is in Section 5. The strengthened location and radius requirement in condition 2 comes from a construction whose test kernels can be supported arbitrarily close to the chosen singular point.</p>
+<p>The distinction between a smooth factor and a smooth convolution is essential. Both factors can be nonsmooth while their convolution is smooth. The frequency-selective construction below supplies exactly the missing factor.</p>
+<h2 id="2-smooth-kernels-with-sharply-concentrated-transforms">2. Smooth kernels with sharply concentrated transforms</h2>
+<p>Fix real centers <span class="math" data-index="284" data-tex="\(c_j\)">\(c_j\)</span> with <span class="math" data-index="285" data-tex="\(Q_j=|c_j|\to\infty\)">\(Q_j=|c_j|\to\infty\)</span>, and positive <span class="math" data-index="286" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span>. Discard finitely many terms until <span class="math" data-index="287" data-tex="\(Q_j&gt;e^2\)">\(Q_j&gt;e^2\)</span>; a finite prefix of bounded frequency neighborhoods has no effect on the conclusions at infinity. Set</p>
+<span class="math math-display" id="eq-2.1" data-index="288" data-tex="\[
+ \ell_j=\log Q_j,\quad k_j=\lfloor\ell_j\rfloor,\qquad
+ E=\bigcup_j\{\xi\in\mathbb R^n:
+                 |\xi-c_j|&lt;R_j\log Q_j\}.
+ \tag{2.1}
+\]">\[
+ \ell_j=\log Q_j,\quad k_j=\lfloor\ell_j\rfloor,\qquad
+ E=\bigcup_j\{\xi\in\mathbb R^n:
+                 |\xi-c_j|&lt;R_j\log Q_j\}.
+ \tag{2.1}
+\]</span>
+<p>No assumption that <span class="math" data-index="289" data-tex="\(R_j\log Q_j/Q_j\)">\(R_j\log Q_j/Q_j\)</span> tends to zero is needed here. The complement of <span class="math" data-index="290" data-tex="\(E\)">\(E\)</span> may even be bounded.</p>
+<p>For a compact continuous function <span class="math" data-index="291" data-tex="\(v\)">\(v\)</span>, define the possibly infinite seminorm</p>
+<span class="math math-display" id="eq-2.2" data-index="292" data-tex="\[
+ P_{N,m}(v)=
+ \sup_{\substack{\xi\notin E,\ |\xi|\geq2\\
+                 \zeta\in\mathbb C^n,\ |\zeta-\xi|\leq m\log|\xi|}}
+ (1+|\zeta|)^N|F_v(\zeta)|,\qquad N,m\in\mathbb N,\quad N,m\geq1.
+ \tag{2.2}
+\]">\[
+ P_{N,m}(v)=
+ \sup_{\substack{\xi\notin E,\ |\xi|\geq2\\
+                 \zeta\in\mathbb C^n,\ |\zeta-\xi|\leq m\log|\xi|}}
+ (1+|\zeta|)^N|F_v(\zeta)|,\qquad N,m\in\mathbb N,\quad N,m\geq1.
+ \tag{2.2}
+\]</span>
+<p>The supremum over an empty set is zero.</p>
+<p><strong>Lemma 2.1 (whole complex decay for a smooth compact function).</strong> If <span class="math" data-index="293" data-tex="\(\phi\in C^\infty_c(B_b(0))\)">\(\phi\in C^\infty_c(B_b(0))\)</span>, then for every integer <span class="math" data-index="294" data-tex="\(L\geq0\)">\(L\geq0\)</span>,</p>
+<span class="math math-display" id="eq-2.3" data-index="295" data-tex="\[
+ |F_\phi(\zeta)|\leq C_L(1+|\zeta|)^{-L}
+                            e^{b|\operatorname{Im}\zeta|}.
+ \tag{2.3}
+\]">\[
+ |F_\phi(\zeta)|\leq C_L(1+|\zeta|)^{-L}
+                            e^{b|\operatorname{Im}\zeta|}.
+ \tag{2.3}
+\]</span>
+<p>In particular, every such function has finite <span class="math" data-index="296" data-tex="\(P_{N,m}\)">\(P_{N,m}\)</span>.</p>
+<p><em>Proof.</em> On the support of <span class="math" data-index="297" data-tex="\(\phi\)">\(\phi\)</span>, the modulus of the exponential is at most <span class="math" data-index="298" data-tex="\(e^{b|\operatorname{Im}\zeta|}\)">\(e^{b|\operatorname{Im}\zeta|}\)</span>. If <span class="math" data-index="299" data-tex="\(|\zeta|\geq1\)">\(|\zeta|\geq1\)</span>, choose a complex coordinate with <span class="math" data-index="300" data-tex="\(|\zeta_s|\geq|\zeta|/\sqrt n\)">\(|\zeta_s|\geq|\zeta|/\sqrt n\)</span>. Integration by parts <span class="math" data-index="301" data-tex="\(L\)">\(L\)</span> times gives
+<span class="math" data-index="302" data-tex="\((i\zeta_s)^L F_\phi(\zeta)=F_{\partial_s^L\phi}(\zeta)\)">\((i\zeta_s)^L F_\phi(\zeta)=F_{\partial_s^L\phi}(\zeta)\)</span>.
+The <span class="math" data-index="303" data-tex="\(L^1\)">\(L^1\)</span> norm of this derivative and the preceding exponential bound prove (2.3) in this region. For <span class="math" data-index="304" data-tex="\(|\zeta|\leq1\)">\(|\zeta|\leq1\)</span>, the <span class="math" data-index="305" data-tex="\(L^1\)">\(L^1\)</span> estimate for <span class="math" data-index="306" data-tex="\(\phi\)">\(\phi\)</span> absorbs the factor <span class="math" data-index="307" data-tex="\((1+|\zeta|)^L\)">\((1+|\zeta|)^L\)</span> into the constant.</p>
+<p>In a tube in (2.2), put <span class="math" data-index="308" data-tex="\(q=|\xi|\)">\(q=|\xi|\)</span>. For large <span class="math" data-index="309" data-tex="\(q\)">\(q\)</span>,
+<span class="math" data-index="310" data-tex="\(|\zeta|\geq q-m\log q\geq q/2\)">\(|\zeta|\geq q-m\log q\geq q/2\)</span>,
+<span class="math" data-index="311" data-tex="\(|\zeta|\leq2q\)">\(|\zeta|\leq2q\)</span>, and
+<span class="math" data-index="312" data-tex="\(|\operatorname{Im}\zeta|\leq m\log q\)">\(|\operatorname{Im}\zeta|\leq m\log q\)</span>.
+Thus the weighted expression is at most a constant times <span class="math" data-index="313" data-tex="\(q^{N+bm-L}\)">\(q^{N+bm-L}\)</span>. Choose an integer <span class="math" data-index="314" data-tex="\(L&gt;N+bm\)">\(L&gt;N+bm\)</span>. The remaining bounded range of <span class="math" data-index="315" data-tex="\(q\)">\(q\)</span> gives a bounded complex region, where the entire transform is bounded. This proves finiteness, whether or not the tube centers are outside <span class="math" data-index="316" data-tex="\(E\)">\(E\)</span>. <span class="math" data-index="317" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose <span class="math" data-index="318" data-tex="\(0&lt;b\leq1\)">\(0&lt;b\leq1\)</span> and a nonnegative <span class="math" data-index="319" data-tex="\(\psi\in C^\infty_c(B_b(0))\)">\(\psi\in C^\infty_c(B_b(0))\)</span> with integral one. Such a function is obtained by normalizing
+<span class="math" data-index="320" data-tex="\(\exp[-1/(1-4|x|^2/b^2)]\)">\(\exp[-1/(1-4|x|^2/b^2)]\)</span> inside <span class="math" data-index="321" data-tex="\(|x|&lt;b/2\)">\(|x|&lt;b/2\)</span>, extended by zero outside. Its support is compactly contained in <span class="math" data-index="322" data-tex="\(B_b(0)\)">\(B_b(0)\)</span>. Each derivative near the boundary is a finite sum of powers of <span class="math" data-index="323" data-tex="\((1-4|x|^2/b^2)^{-1}\)">\((1-4|x|^2/b^2)^{-1}\)</span> times that exponential; the exponential dominates every such power. Hence the zero extension is smooth.</p>
+<p>Define a scaled probability density, its convolution power, and a modulation:</p>
+<span class="math math-display" id="eq-2.4" data-index="324" data-tex="\[
+ \psi_k(x)=k^n\psi(kx),\qquad
+ v_k=\underbrace{\psi_k*\cdots*\psi_k}_{k\text{ factors}},\qquad
+ u_j(x)=e^{ic_j\cdot x}v_{k_j}(x).
+ \tag{2.4}
+\]">\[
+ \psi_k(x)=k^n\psi(kx),\qquad
+ v_k=\underbrace{\psi_k*\cdots*\psi_k}_{k\text{ factors}},\qquad
+ u_j(x)=e^{ic_j\cdot x}v_{k_j}(x).
+ \tag{2.4}
+\]</span>
+<p>All these functions are smooth. Minkowski support addition places <span class="math" data-index="325" data-tex="\(v_k\)">\(v_k\)</span>, hence <span class="math" data-index="326" data-tex="\(u_j\)">\(u_j\)</span>, in <span class="math" data-index="327" data-tex="\(B_b(0)\)">\(B_b(0)\)</span>. Their exact transform and basic bounds are</p>
+<span class="math math-display" id="eq-2.5" data-index="328" data-tex="\[
+ F_{u_j}(\zeta)=
+       \left[F_\psi\!\left(\frac{\zeta-c_j}{k_j}\right)\right]^{k_j},
+ \qquad F_{u_j}(c_j)=1,\qquad
+ \|u_j\|_\infty\leq k_j^n\|\psi\|_\infty.
+ \tag{2.5}
+\]">\[
+ F_{u_j}(\zeta)=
+       \left[F_\psi\!\left(\frac{\zeta-c_j}{k_j}\right)\right]^{k_j},
+ \qquad F_{u_j}(c_j)=1,\qquad
+ \|u_j\|_\infty\leq k_j^n\|\psi\|_\infty.
+ \tag{2.5}
+\]</span>
+<p>The transform identity follows from scaling, modulation and the convolution product, with no Fourier normalization factor. The last bound follows by convolving one bounded density with <span class="math" data-index="329" data-tex="\(k_j-1\)">\(k_j-1\)</span> probability densities: integrating their nonnegative product preserves the <span class="math" data-index="330" data-tex="\(L^\infty\)">\(L^\infty\)</span> bound.</p>
+<p><strong>Lemma 2.2 (the peaked kernels vanish in every exterior seminorm).</strong> For each fixed <span class="math" data-index="331" data-tex="\(N,m\)">\(N,m\)</span>,</p>
+<span class="math math-display" id="eq-2.6" data-index="332" data-tex="\[
+ P_{N,m}(u_j)\longrightarrow0.
+ \tag{2.6}
+\]">\[
+ P_{N,m}(u_j)\longrightarrow0.
+ \tag{2.6}
+\]</span>
+<p><em>Proof.</em> Work at an admissible pair <span class="math" data-index="333" data-tex="\(\xi,\zeta\)">\(\xi,\zeta\)</span> from (2.2). Put <span class="math" data-index="334" data-tex="\(q=|\xi|\)">\(q=|\xi|\)</span>, <span class="math" data-index="335" data-tex="\(k=k_j\)">\(k=k_j\)</span>, <span class="math" data-index="336" data-tex="\(Q=Q_j\)">\(Q=Q_j\)</span> and
+<span class="math" data-index="337" data-tex="\(w=(\zeta-c_j)/k\)">\(w=(\zeta-c_j)/k\)</span>, <span class="math" data-index="338" data-tex="\(t=|w|\)">\(t=|w|\)</span>.
+Choose constants</p>
+<span class="math math-display" id="eq-2.7" data-index="339" data-tex="\[
+ C_m=m\log(2m)+m,\quad
+ A_m=2(e+1+C_m),\quad B_m=eA_m,\quad D=e+2.
+ \tag{2.7}
+\]">\[
+ C_m=m\log(2m)+m,\quad
+ A_m=2(e+1+C_m),\quad B_m=eA_m,\quad D=e+2.
+ \tag{2.7}
+\]</span>
+<p>The function <span class="math" data-index="340" data-tex="\(m\log q-q/2\)">\(m\log q-q/2\)</span>, for <span class="math" data-index="341" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, has maximum <span class="math" data-index="342" data-tex="\(m\log(2m)-m\)">\(m\log(2m)-m\)</span>, so
+<span class="math" data-index="343" data-tex="\(m\log q\leq q/2+C_m\)">\(m\log q\leq q/2+C_m\)</span>.
+The triangle inequality and <span class="math" data-index="344" data-tex="\(Q&lt;e^{k+1}\)">\(Q&lt;e^{k+1}\)</span> give</p>
+<span class="math math-display" id="eq-2.8" data-index="345" data-tex="\[
+ q\leq Q+kt+m\log q
+ \leq Q+kt+q/2+C_m,\qquad
+ q\leq A_m e^k(1+t).
+ \tag{2.8}
+\]">\[
+ q\leq Q+kt+m\log q
+ \leq Q+kt+q/2+C_m,\qquad
+ q\leq A_m e^k(1+t).
+ \tag{2.8}
+\]</span>
+<p>Here <span class="math" data-index="346" data-tex="\(k\leq e^k\)">\(k\leq e^k\)</span> and <span class="math" data-index="347" data-tex="\(k\geq1\)">\(k\geq1\)</span>. Consequently</p>
+<span class="math math-display" id="eq-2.9" data-index="348" data-tex="\[
+ |\operatorname{Im}w|\leq\frac{m\log q}{k}
+ \leq m\log[B_m(1+t)],\qquad
+ e^{|\operatorname{Im}w|}\leq[B_m(1+t)]^m.
+ \tag{2.9}
+\]">\[
+ |\operatorname{Im}w|\leq\frac{m\log q}{k}
+ \leq m\log[B_m(1+t)],\qquad
+ e^{|\operatorname{Im}w|}\leq[B_m(1+t)]^m.
+ \tag{2.9}
+\]</span>
+<p>Since <span class="math" data-index="349" data-tex="\(\xi\notin E\)">\(\xi\notin E\)</span>, it lies outside the particular <span class="math" data-index="350" data-tex="\(j\)">\(j\)</span>-th neighborhood. Therefore</p>
+<span class="math math-display" id="eq-2.10" data-index="351" data-tex="\[
+ R_j k\leq R_j\log Q\leq|\xi-c_j|
+ \leq kt+m\log q,\qquad
+ R_j\leq t+m\log[B_m(1+t)].
+ \tag{2.10}
+\]">\[
+ R_j k\leq R_j\log Q\leq|\xi-c_j|
+ \leq kt+m\log q,\qquad
+ R_j\leq t+m\log[B_m(1+t)].
+ \tag{2.10}
+\]</span>
+<p>For all sufficiently large <span class="math" data-index="352" data-tex="\(j\)">\(j\)</span>, this forces <span class="math" data-index="353" data-tex="\(t&gt;R_j/2\)">\(t&gt;R_j/2\)</span>. Indeed, if <span class="math" data-index="354" data-tex="\(t\leq R_j/2\)">\(t\leq R_j/2\)</span>, the increasing right side in (2.10) is at most
+<span class="math" data-index="355" data-tex="\(R_j/2+m\log[B_m(1+R_j/2)]&lt;R_j\)">\(R_j/2+m\log[B_m(1+R_j/2)]&lt;R_j\)</span>, because <span class="math" data-index="356" data-tex="\(\log R_j=o(R_j)\)">\(\log R_j=o(R_j)\)</span>. This is a uniform exclusion of a large ball in the scaled complex parameter.</p>
+<p>Also <span class="math" data-index="357" data-tex="\(1+|\zeta|\leq1+Q+kt\leq De^k(1+t)\)">\(1+|\zeta|\leq1+Q+kt\leq De^k(1+t)\)</span>. Since <span class="math" data-index="358" data-tex="\(k\geq1\)">\(k\geq1\)</span> and <span class="math" data-index="359" data-tex="\(D(1+t)\geq1\)">\(D(1+t)\geq1\)</span>, it follows that</p>
+<span class="math math-display" id="eq-2.11" data-index="360" data-tex="\[
+ (1+|\zeta|)^N|F_{u_j}(\zeta)|
+ \leq\left[(eD)^N(1+t)^N|F_\psi(w)|\right]^k.
+ \tag{2.11}
+\]">\[
+ (1+|\zeta|)^N|F_{u_j}(\zeta)|
+ \leq\left[(eD)^N(1+t)^N|F_\psi(w)|\right]^k.
+ \tag{2.11}
+\]</span>
+<p>Apply (2.3) to <span class="math" data-index="361" data-tex="\(\psi\)">\(\psi\)</span>, with <span class="math" data-index="362" data-tex="\(L=N+m+2\)">\(L=N+m+2\)</span>. Its support radius is at most one. Together with (2.9), this gives</p>
+<span class="math math-display" id="eq-2.12" data-index="363" data-tex="\[
+ (eD)^N(1+t)^N|F_\psi(w)|
+ \leq H_{N,m,\psi}(1+t)^{-2}.
+ \tag{2.12}
+\]">\[
+ (eD)^N(1+t)^N|F_\psi(w)|
+ \leq H_{N,m,\psi}(1+t)^{-2}.
+ \tag{2.12}
+\]</span>
+<p>The constant is independent of <span class="math" data-index="364" data-tex="\(j,\xi,\zeta\)">\(j,\xi,\zeta\)</span>. The supremum of this last bound on <span class="math" data-index="365" data-tex="\(t&gt;R_j/2\)">\(t&gt;R_j/2\)</span> tends to zero. Eventually it is below one, and (2.11) therefore proves
+<span class="math" data-index="366" data-tex="\(P_{N,m}(u_j)\leq[H_{N,m,\psi}(1+R_j/2)^{-2}]^{k_j}\to0\)">\(P_{N,m}(u_j)\leq[H_{N,m,\psi}(1+R_j/2)^{-2}]^{k_j}\to0\)</span>.
+If the admissible set is empty the assertion holds directly. <span class="math" data-index="367" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-complete-space-and-a-boundedness-argument">3. A complete space and a boundedness argument</h2>
+<p>Fix a support radius <span class="math" data-index="368" data-tex="\(0&lt;a\leq1\)">\(0&lt;a\leq1\)</span>. Let <span class="math" data-index="369" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> consist of continuous functions supported in <span class="math" data-index="370" data-tex="\(\overline B_a(0)\)">\(\overline B_a(0)\)</span>, smooth on <span class="math" data-index="371" data-tex="\(\mathbb R^n\setminus\{0\}\)">\(\mathbb R^n\setminus\{0\}\)</span>, and with every seminorm (2.2) finite. Use compact annuli and increasing seminorms</p>
+<span class="math math-display" id="eq-3.1" data-index="372" data-tex="\[
+ K_l=\{x:(l+1)^{-1}\leq|x|\leq l+1\},\qquad
+ p_l(v)=\|v\|_\infty+
+        \max_{|\alpha|\leq l}\sup_{K_l}|D^\alpha v|
+        +\max_{1\leq N,m\leq l}P_{N,m}(v).
+ \tag{3.1}
+\]">\[
+ K_l=\{x:(l+1)^{-1}\leq|x|\leq l+1\},\qquad
+ p_l(v)=\|v\|_\infty+
+        \max_{|\alpha|\leq l}\sup_{K_l}|D^\alpha v|
+        +\max_{1\leq N,m\leq l}P_{N,m}(v).
+ \tag{3.1}
+\]</span>
+<p>They define a translation-invariant metric</p>
+<span class="math math-display" id="eq-3.2" data-index="373" data-tex="\[
+ d(v,w)=\sum_{l=1}^\infty 2^{-l}\min\{1,p_l(v-w)\}.
+ \tag{3.2}
+\]">\[
+ d(v,w)=\sum_{l=1}^\infty 2^{-l}\min\{1,p_l(v-w)\}.
+ \tag{3.2}
+\]</span>
+<p><strong>Lemma 3.1 (completeness).</strong> This metric makes <span class="math" data-index="374" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> a complete locally convex space.</p>
+<p><em>Proof.</em> A sequence Cauchy in <span class="math" data-index="375" data-tex="\(d\)">\(d\)</span> is Cauchy in every <span class="math" data-index="376" data-tex="\(p_l\)">\(p_l\)</span>, and conversely. For the first direction, make the <span class="math" data-index="377" data-tex="\(l\)">\(l\)</span>-th summand small enough to force its minimum below any prescribed number less than one. For the converse, first make the tail of the series small, and then control its finitely many initial summands.</p>
+<p>Uniform convergence gives a continuous limit <span class="math" data-index="378" data-tex="\(v\)">\(v\)</span>, still supported in <span class="math" data-index="379" data-tex="\(\overline B_a(0)\)">\(\overline B_a(0)\)</span>. On each annulus the derivatives converge uniformly. On a small closed cube away from zero, the identity</p>
+<span class="math math-display" id="eq-3.3" data-index="380" data-tex="\[
+ v_r(x+he_s)-v_r(x)=\int_0^h\partial_s v_r(x+te_s)\,dt
+ \tag{3.3}
+\]">\[
+ v_r(x+he_s)-v_r(x)=\int_0^h\partial_s v_r(x+te_s)\,dt
+ \tag{3.3}
+\]</span>
+<p>passes to the uniform limits. It identifies the limiting first derivatives. Repeating this argument for each derivative identifies all limiting derivatives, so <span class="math" data-index="381" data-tex="\(v\)">\(v\)</span> is smooth away from zero and convergence holds in the derivative parts of every <span class="math" data-index="382" data-tex="\(p_l\)">\(p_l\)</span>.</p>
+<p>Uniform convergence on the fixed support gives <span class="math" data-index="383" data-tex="\(F_{v_r}(\zeta)\to F_v(\zeta)\)">\(F_{v_r}(\zeta)\to F_v(\zeta)\)</span> for each complex <span class="math" data-index="384" data-tex="\(\zeta\)">\(\zeta\)</span>, since the integral difference is at most
+<span class="math" data-index="385" data-tex="\(\operatorname{vol}(B_a)e^{a|\operatorname{Im}\zeta|}\|v_r-v\|_\infty\)">\(\operatorname{vol}(B_a)e^{a|\operatorname{Im}\zeta|}\|v_r-v\|_\infty\)</span>.
+For a fixed <span class="math" data-index="386" data-tex="\(N,m\)">\(N,m\)</span>, Cauchyness of <span class="math" data-index="387" data-tex="\(P_{N,m}(v_r-v_s)\)">\(P_{N,m}(v_r-v_s)\)</span> bounds the weighted transform difference by an arbitrary <span class="math" data-index="388" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> on its whole admissible set, once <span class="math" data-index="389" data-tex="\(r,s\)">\(r,s\)</span> are large. Let <span class="math" data-index="390" data-tex="\(s\to\infty\)">\(s\to\infty\)</span> at each point, and then take the supremum. This proves
+<span class="math" data-index="391" data-tex="\(P_{N,m}(v_r-v)\leq\varepsilon\)">\(P_{N,m}(v_r-v)\leq\varepsilon\)</span>.
+It also proves <span class="math" data-index="392" data-tex="\(P_{N,m}(v)&lt;\infty\)">\(P_{N,m}(v)&lt;\infty\)</span> by comparison with one <span class="math" data-index="393" data-tex="\(v_r\)">\(v_r\)</span>. Thus <span class="math" data-index="394" data-tex="\(v\in\mathcal F\)">\(v\in\mathcal F\)</span> and the sequence converges in every <span class="math" data-index="395" data-tex="\(p_l\)">\(p_l\)</span>, hence in <span class="math" data-index="396" data-tex="\(d\)">\(d\)</span>. The seminorm definition gives local convexity and continuity of the vector operations. <span class="math" data-index="397" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (Baire's boundedness principle in the needed form).</strong> Let <span class="math" data-index="398" data-tex="\(\Lambda_j\)">\(\Lambda_j\)</span> be continuous linear scalar functionals on <span class="math" data-index="399" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. If <span class="math" data-index="400" data-tex="\(\sup_j|\Lambda_j(v)|&lt;\infty\)">\(\sup_j|\Lambda_j(v)|&lt;\infty\)</span> for every <span class="math" data-index="401" data-tex="\(v\in\mathcal F\)">\(v\in\mathcal F\)</span>, then some <span class="math" data-index="402" data-tex="\(l\)">\(l\)</span> and <span class="math" data-index="403" data-tex="\(C\)">\(C\)</span> satisfy</p>
+<span class="math math-display" id="eq-3.4" data-index="404" data-tex="\[
+ \sup_j|\Lambda_j(v)|\leq C p_l(v)\quad(v\in\mathcal F).
+ \tag{3.4}
+\]">\[
+ \sup_j|\Lambda_j(v)|\leq C p_l(v)\quad(v\in\mathcal F).
+ \tag{3.4}
+\]</span>
+<p><em>Proof.</em> First recall why a complete metric space cannot be covered by countably many closed sets with empty interiors. If such sets <span class="math" data-index="405" data-tex="\(A_s\)">\(A_s\)</span> cover the space, choose a nonempty closed ball disjoint from <span class="math" data-index="406" data-tex="\(A_1\)">\(A_1\)</span>. Inductively choose a closed ball inside the preceding ball's interior, disjoint from <span class="math" data-index="407" data-tex="\(A_s\)">\(A_s\)</span>, and with radius less than <span class="math" data-index="408" data-tex="\(2^{-s}\)">\(2^{-s}\)</span>. Each choice is possible because the complement of a closed set with empty interior is open and dense. The centers are Cauchy. Completeness gives a limit in every chosen closed ball, hence outside every <span class="math" data-index="409" data-tex="\(A_s\)">\(A_s\)</span>, contradicting the cover. This is Baire's theorem in the form used here.</p>
+<p>Now let <span class="math" data-index="410" data-tex="\(A_s=\{v:\sup_j|\Lambda_j(v)|\leq s\}\)">\(A_s=\{v:\sup_j|\Lambda_j(v)|\leq s\}\)</span>, for positive integers <span class="math" data-index="411" data-tex="\(s\)">\(s\)</span>. These sets are closed and cover <span class="math" data-index="412" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. One has nonempty interior. Since the <span class="math" data-index="413" data-tex="\(p_l\)">\(p_l\)</span> increase, there are <span class="math" data-index="414" data-tex="\(v_0,l,\varepsilon&gt;0\)">\(v_0,l,\varepsilon&gt;0\)</span> with
+<span class="math" data-index="415" data-tex="\(v_0+\{v:p_l(v)&lt;\varepsilon\}\subset A_s\)">\(v_0+\{v:p_l(v)&lt;\varepsilon\}\subset A_s\)</span>.
+In particular <span class="math" data-index="416" data-tex="\(v_0\in A_s\)">\(v_0\in A_s\)</span>, so
+<span class="math" data-index="417" data-tex="\(\sup_j|\Lambda_j(v)|\leq2s\)">\(\sup_j|\Lambda_j(v)|\leq2s\)</span> for <span class="math" data-index="418" data-tex="\(p_l(v)&lt;\varepsilon\)">\(p_l(v)&lt;\varepsilon\)</span>, by subtracting the values at <span class="math" data-index="419" data-tex="\(v_0+v\)">\(v_0+v\)</span> and <span class="math" data-index="420" data-tex="\(v_0\)">\(v_0\)</span>.
+For <span class="math" data-index="421" data-tex="\(p_l(v)&gt;0\)">\(p_l(v)&gt;0\)</span>, apply this to <span class="math" data-index="422" data-tex="\(\varepsilon v/(2p_l(v))\)">\(\varepsilon v/(2p_l(v))\)</span>; it gives (3.4) with <span class="math" data-index="423" data-tex="\(C=4s/\varepsilon\)">\(C=4s/\varepsilon\)</span>. If <span class="math" data-index="424" data-tex="\(p_l(v)=0\)">\(p_l(v)=0\)</span>, then <span class="math" data-index="425" data-tex="\(v=0\)">\(v=0\)</span> because the seminorm contains the uniform norm. <span class="math" data-index="426" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof supplies the precise functional-analytic statement used next. No closed graph theorem is left as an additional hypothesis.</p>
+<h2 id="4-selecting-an-isolated-singularity">4. Selecting an isolated singularity</h2>
+<p><strong>Theorem 4.1 (frequency-selective isolated singularity).</strong> For the centers and neighborhoods (2.1), and every <span class="math" data-index="427" data-tex="\(0&lt;a\leq1\)">\(0&lt;a\leq1\)</span>, there is a compact continuous function <span class="math" data-index="428" data-tex="\(v\)">\(v\)</span> supported in <span class="math" data-index="429" data-tex="\(\overline B_a(0)\)">\(\overline B_a(0)\)</span> such that:</p>
+<ul>
+<li><span class="math" data-index="430" data-tex="\(v\)">\(v\)</span> is smooth away from zero, <span class="math" data-index="431" data-tex="\(\operatorname{sing\,supp}v=\{0\}\)">\(\operatorname{sing\,supp}v=\{0\}\)</span>, and <span class="math" data-index="432" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>;</li>
+<li><span class="math" data-index="433" data-tex="\(L_v(\cdot,c)\to-\infty\)">\(L_v(\cdot,c)\to-\infty\)</span> uniformly on every compact parameter set as <span class="math" data-index="434" data-tex="\(c\notin E\)">\(c\notin E\)</span> escapes;</li>
+<li>along a subsequence of the original centers, <span class="math" data-index="435" data-tex="\(L_v(\cdot,c_j)\to0\)">\(L_v(\cdot,c_j)\to0\)</span> in local <span class="math" data-index="436" data-tex="\(L^1\)">\(L^1\)</span>.</li>
+</ul>
+<p><em>Proof.</em> Set</p>
+<span class="math math-display" id="eq-4.1" data-index="437" data-tex="\[
+ t_j=\exp(\sqrt{\log Q_j}),\qquad
+ \frac{\log t_j}{\log Q_j}\to0,\quad
+ \frac{t_j}{k_j^n}\to\infty,\quad
+ \frac{t_j}{Q_j}\to0.
+ \tag{4.1}
+\]">\[
+ t_j=\exp(\sqrt{\log Q_j}),\qquad
+ \frac{\log t_j}{\log Q_j}\to0,\quad
+ \frac{t_j}{k_j^n}\to\infty,\quad
+ \frac{t_j}{Q_j}\to0.
+ \tag{4.1}
+\]</span>
+<p>These limits follow from <span class="math" data-index="438" data-tex="\(\sqrt s/s\to0\)">\(\sqrt s/s\to0\)</span>, <span class="math" data-index="439" data-tex="\(\sqrt s-n\log s\to\infty\)">\(\sqrt s-n\log s\to\infty\)</span>, and <span class="math" data-index="440" data-tex="\(\sqrt s-s\to-\infty\)">\(\sqrt s-s\to-\infty\)</span>, with <span class="math" data-index="441" data-tex="\(s=\log Q_j\)">\(s=\log Q_j\)</span> and <span class="math" data-index="442" data-tex="\(k_j\leq s&lt;k_j+1\)">\(k_j\leq s&lt;k_j+1\)</span>.</p>
+<p>The functionals <span class="math" data-index="443" data-tex="\(\Lambda_j(v)=t_j F_v(c_j)\)">\(\Lambda_j(v)=t_j F_v(c_j)\)</span> are continuous on <span class="math" data-index="444" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>: their absolute values are at most <span class="math" data-index="445" data-tex="\(t_j\operatorname{vol}(B_a)\|v\|_\infty\)">\(t_j\operatorname{vol}(B_a)\|v\|_\infty\)</span>. Suppose they were pointwise bounded. Lemma 3.2 would give (3.4) for some <span class="math" data-index="446" data-tex="\(l,C\)">\(l,C\)</span>.
+Choose a probability bump <span class="math" data-index="447" data-tex="\(\psi\)">\(\psi\)</span> supported in a ball of radius
+<span class="math" data-index="448" data-tex="\(b&lt;\min\{a,(l+1)^{-1}\}\)">\(b&lt;\min\{a,(l+1)^{-1}\}\)</span>. The modulated kernels (2.4) belong to <span class="math" data-index="449" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, by Lemma 2.1. They and all their derivatives vanish on <span class="math" data-index="450" data-tex="\(K_l\)">\(K_l\)</span>. Lemma 2.2 and (2.5) give</p>
+<span class="math math-display" id="eq-4.2" data-index="451" data-tex="\[
+ p_l(u_j)\leq k_j^n\|\psi\|_\infty+o(1),\qquad
+ |\Lambda_j(u_j)|=t_j.
+ \tag{4.2}
+\]">\[
+ p_l(u_j)\leq k_j^n\|\psi\|_\infty+o(1),\qquad
+ |\Lambda_j(u_j)|=t_j.
+ \tag{4.2}
+\]</span>
+<p>This contradicts <span class="math" data-index="452" data-tex="\(t_j/k_j^n\to\infty\)">\(t_j/k_j^n\to\infty\)</span> in (3.4). Hence some <span class="math" data-index="453" data-tex="\(v\in\mathcal F\)">\(v\in\mathcal F\)</span> has <span class="math" data-index="454" data-tex="\(\sup_j t_j|F_v(c_j)|=\infty\)">\(\sup_j t_j|F_v(c_j)|=\infty\)</span>.</p>
+<p>Choose increasing indices <span class="math" data-index="455" data-tex="\(j_r\)">\(j_r\)</span> with <span class="math" data-index="456" data-tex="\(t_{j_r}|F_v(c_{j_r})|\geq r\)">\(t_{j_r}|F_v(c_{j_r})|\geq r\)</span>. This is possible because each finite set of functionals has finite values at <span class="math" data-index="457" data-tex="\(v\)">\(v\)</span>. Since <span class="math" data-index="458" data-tex="\(v\)">\(v\)</span> is integrable, <span class="math" data-index="459" data-tex="\(|F_v(c)|\leq\|v\|_1\)">\(|F_v(c)|\leq\|v\|_1\)</span> on real frequencies. Therefore</p>
+<span class="math math-display" id="eq-4.3" data-index="460" data-tex="\[
+ -\frac1{\sqrt{\log Q_{j_r}}}
+ \leq L_v(0,c_{j_r})
+ \leq\frac{\log\|v\|_1}{\log Q_{j_r}},\qquad
+ L_v(0,c_{j_r})\to0.
+ \tag{4.3}
+\]">\[
+ -\frac1{\sqrt{\log Q_{j_r}}}
+ \leq L_v(0,c_{j_r})
+ \leq\frac{\log\|v\|_1}{\log Q_{j_r}},\qquad
+ L_v(0,c_{j_r})\to0.
+ \tag{4.3}
+\]</span>
+<p>The lower bound uses <span class="math" data-index="461" data-tex="\(r\geq1\)">\(r\geq1\)</span>. The selected nonzero transform values also show that <span class="math" data-index="462" data-tex="\(v\neq0\)">\(v\neq0\)</span>.</p>
+<p>If <span class="math" data-index="463" data-tex="\(v\)">\(v\)</span> were <span class="math" data-index="464" data-tex="\(C^1\)">\(C^1\)</span>, its compactly supported first derivatives would be integrable. Choose a coordinate with <span class="math" data-index="465" data-tex="\(|c_s|\geq|c|/\sqrt n\)">\(|c_s|\geq|c|/\sqrt n\)</span>, and integrate by parts once to get
+<span class="math" data-index="466" data-tex="\(|F_v(c)|\leq\sqrt n\max_s\|\partial_s v\|_1/|c|\)">\(|F_v(c)|\leq\sqrt n\max_s\|\partial_s v\|_1/|c|\)</span>.
+It follows from <span class="math" data-index="467" data-tex="\(t_j/Q_j\to0\)">\(t_j/Q_j\to0\)</span> that <span class="math" data-index="468" data-tex="\(t_j|F_v(c_j)|\to0\)">\(t_j|F_v(c_j)|\to0\)</span>, a contradiction. Thus <span class="math" data-index="469" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>. It is smooth off zero by membership in <span class="math" data-index="470" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>; its singular support is consequently exactly <span class="math" data-index="471" data-tex="\(\{0\}\)">\(\{0\}\)</span>. If the continuous representative were distributionally smooth at zero, it would agree everywhere there with its smooth representative, making it <span class="math" data-index="472" data-tex="\(C^1\)">\(C^1\)</span>, which has just been excluded.</p>
+<p>For exterior collapse, let <span class="math" data-index="473" data-tex="\(|z|\leq m\)">\(|z|\leq m\)</span>, and let <span class="math" data-index="474" data-tex="\(c\notin E\)">\(c\notin E\)</span>, <span class="math" data-index="475" data-tex="\(q=|c|\)">\(q=|c|\)</span> large. The point <span class="math" data-index="476" data-tex="\(\zeta=c+z\log q\)">\(\zeta=c+z\log q\)</span> lies in (2.2), and <span class="math" data-index="477" data-tex="\(1+|\zeta|\geq q/2\)">\(1+|\zeta|\geq q/2\)</span>. Hence, when <span class="math" data-index="478" data-tex="\(P_{N,m}(v)&gt;0\)">\(P_{N,m}(v)&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-4.4" data-index="479" data-tex="\[
+ L_v(z,c)\leq-N+
+     \frac{\log P_{N,m}(v)+N\log2}{\log q}.
+ \tag{4.4}
+\]">\[
+ L_v(z,c)\leq-N+
+     \frac{\log P_{N,m}(v)+N\log2}{\log q}.
+ \tag{4.4}
+\]</span>
+<p>If that seminorm is zero, the transform vanishes at every admissible point, and the upper bound is <span class="math" data-index="480" data-tex="\(-\infty\)">\(-\infty\)</span> directly. Taking <span class="math" data-index="481" data-tex="\(N\)">\(N\)</span> arbitrarily large proves uniform collapse on this parameter ball. Every compact parameter set is contained in such a ball. The statement remains valid when the exterior has no escaping frequencies.</p>
+<p>We finish by proving the zero-profile assertion, rather than inferring it from a value at one point. The family <span class="math" data-index="482" data-tex="\(L_v(\cdot,c)\)">\(L_v(\cdot,c)\)</span> has local uniform upper bounds because
+<span class="math" data-index="483" data-tex="\(|F_v(c+z\log|c|)|\leq\|v\|_1|c|^{a|\operatorname{Im}z|}\)">\(|F_v(c+z\log|c|)|\leq\|v\|_1|c|^{a|\operatorname{Im}z|}\)</span>.
+For each <span class="math" data-index="484" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, cut off <span class="math" data-index="485" data-tex="\(v\)">\(v\)</span> smoothly near zero:
+<span class="math" data-index="486" data-tex="\(v=v_\varepsilon+g_\varepsilon\)">\(v=v_\varepsilon+g_\varepsilon\)</span>, where <span class="math" data-index="487" data-tex="\(v_\varepsilon\)">\(v_\varepsilon\)</span> is continuous and supported in <span class="math" data-index="488" data-tex="\(B_\varepsilon(0)\)">\(B_\varepsilon(0)\)</span>, and <span class="math" data-index="489" data-tex="\(g_\varepsilon\)">\(g_\varepsilon\)</span> is smooth and compactly supported. The first transform is bounded by
+<span class="math" data-index="490" data-tex="\(\|v_\varepsilon\|_1|c|^{\varepsilon|\operatorname{Im}z|}\)">\(\|v_\varepsilon\|_1|c|^{\varepsilon|\operatorname{Im}z|}\)</span>.
+Lemma 2.1 makes the second transform smaller than any negative power of <span class="math" data-index="491" data-tex="\(|c|\)">\(|c|\)</span>, uniformly on a fixed compact parameter set: choose its derivative order larger than the support radius times the parameter bound plus the desired decay order. The sum estimate thus gives</p>
+<span class="math math-display" id="eq-4.5" data-index="492" data-tex="\[
+ L_v(z,c)\leq\varepsilon|\operatorname{Im}z|+o(1)
+ \quad\text{uniformly on each fixed parameter compact set}.
+ \tag{4.5}
+\]">\[
+ L_v(z,c)\leq\varepsilon|\operatorname{Im}z|+o(1)
+ \quad\text{uniformly on each fixed parameter compact set}.
+ \tag{4.5}
+\]</span>
+<p>The error may depend on that compact set and on <span class="math" data-index="493" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>Apply PSH compactness along any subsequence of the selected centers. Uniform local collapse is impossible by (4.3). A proper further local <span class="math" data-index="494" data-tex="\(L^1\)">\(L^1\)</span> limit <span class="math" data-index="495" data-tex="\(V\)">\(V\)</span> satisfies <span class="math" data-index="496" data-tex="\(V\leq0\)">\(V\leq0\)</span>: pass (4.5) to almost-everywhere limits, then to canonical representatives by ball-average recovery, and let <span class="math" data-index="497" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.
+For every ball about zero, the submean inequality and <span class="math" data-index="498" data-tex="\(L^1\)">\(L^1\)</span> convergence give</p>
+<span class="math math-display" id="eq-4.6" data-index="499" data-tex="\[
+ 0=\lim_{r\to\infty} L_v(0,c_{j_r})
+ \leq \frac1{\operatorname{vol}(B_\rho)}
+                   \int_{B_\rho}V\,dV.
+ \tag{4.6}
+\]">\[
+ 0=\lim_{r\to\infty} L_v(0,c_{j_r})
+ \leq \frac1{\operatorname{vol}(B_\rho)}
+                   \int_{B_\rho}V\,dV.
+ \tag{4.6}
+\]</span>
+<p>Shrinking <span class="math" data-index="500" data-tex="\(\rho\)">\(\rho\)</span> gives <span class="math" data-index="501" data-tex="\(V(0)\geq0\)">\(V(0)\geq0\)</span>. Thus <span class="math" data-index="502" data-tex="\(V(0)=0\)">\(V(0)=0\)</span>, while <span class="math" data-index="503" data-tex="\(V\leq0\)">\(V\leq0\)</span>. The submean inequality now forces every such ball average to be zero; since <span class="math" data-index="504" data-tex="\(V\leq0\)">\(V\leq0\)</span>, <span class="math" data-index="505" data-tex="\(V=0\)">\(V=0\)</span> almost everywhere on every ball. Canonical recovery gives <span class="math" data-index="506" data-tex="\(V\equiv0\)">\(V\equiv0\)</span>.
+Every selected subsequence therefore has a further local <span class="math" data-index="507" data-tex="\(L^1\)">\(L^1\)</span> subsequence with this one limit. A subsequence staying a positive distance from zero in some compact <span class="math" data-index="508" data-tex="\(L^1\)">\(L^1\)</span> norm would contradict that conclusion. Hence the whole selected sequence converges to zero in local <span class="math" data-index="509" data-tex="\(L^1\)">\(L^1\)</span>. This proves the last assertion. <span class="math" data-index="510" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (a prescribed singular point and small support).</strong> For any <span class="math" data-index="511" data-tex="\(x_0\)">\(x_0\)</span> and any <span class="math" data-index="512" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the construction can be supported in <span class="math" data-index="513" data-tex="\(\overline B_a(x_0)\)">\(\overline B_a(x_0)\)</span>, with singular support <span class="math" data-index="514" data-tex="\(\{x_0\}\)">\(\{x_0\}\)</span>. Exterior collapse persists, and the selected proper profile is <span class="math" data-index="515" data-tex="\(x_0\cdot\operatorname{Im}z\)">\(x_0\cdot\operatorname{Im}z\)</span>, with carrier <span class="math" data-index="516" data-tex="\(\{x_0\}\)">\(\{x_0\}\)</span>.</p>
+<p><em>Proof.</em> Use radius <span class="math" data-index="517" data-tex="\(\min\{a,1\}\)">\(\min\{a,1\}\)</span> in Theorem 4.1, and translate its function by <span class="math" data-index="518" data-tex="\(x_0\)">\(x_0\)</span>. The transform is multiplied by <span class="math" data-index="519" data-tex="\(e^{-ix_0\cdot\zeta}\)">\(e^{-ix_0\cdot\zeta}\)</span>. Its normalized logarithm therefore increases exactly by <span class="math" data-index="520" data-tex="\(x_0\cdot\operatorname{Im}z\)">\(x_0\cdot\operatorname{Im}z\)</span>, which is bounded on every compact parameter set. This preserves collapse and gives the asserted proper limit. Translation preserves continuity, failure of <span class="math" data-index="521" data-tex="\(C^1\)">\(C^1\)</span>, and the singular-support location. <span class="math" data-index="522" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-completing-the-smoothing-equivalence">5. Completing the smoothing equivalence</h2>
+<p><em>Proof of Theorem 1.1.</em> Suppose condition 1 holds, along <span class="math" data-index="523" data-tex="\(c_j\)">\(c_j\)</span>. Theorem 3.1 in <a href="AN02-L161.html">Changing centers in Fourier windows</a> supplies radii <span class="math" data-index="524" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span> such that <span class="math" data-index="525" data-tex="\(L_u\)">\(L_u\)</span> collapses throughout the union <span class="math" data-index="526" data-tex="\(E\)">\(E\)</span> in (2.1), uniformly on every parameter compact set as its real center escapes.
+Apply Corollary 4.2 to obtain the compact continuous <span class="math" data-index="527" data-tex="\(w\)">\(w\)</span> at the prescribed point and radius. Its normalized logarithms collapse outside <span class="math" data-index="528" data-tex="\(E\)">\(E\)</span>.</p>
+<p>The convolution product identity gives the exact extended equality</p>
+<span class="math math-display" id="eq-5.1" data-index="529" data-tex="\[
+ L_{u*w}(z,c)=L_u(z,c)+L_w(z,c).
+ \tag{5.1}
+\]">\[
+ L_{u*w}(z,c)=L_u(z,c)+L_w(z,c).
+ \tag{5.1}
+\]</span>
+<p>Both input families have a uniform local upper bound for all large real centers, from ordinary compact Fourier growth. On <span class="math" data-index="530" data-tex="\(E\)">\(E\)</span>, the first summand collapses and the second is bounded above. On the exterior, the second collapses and the first is bounded above. More explicitly, on a compact parameter set choose an upper bound <span class="math" data-index="531" data-tex="\(A\)">\(A\)</span> for both families. For any <span class="math" data-index="532" data-tex="\(K&gt;0\)">\(K&gt;0\)</span>, take common thresholds after which the designated collapsing summand in each region is at most <span class="math" data-index="533" data-tex="\(-K-A\)">\(-K-A\)</span>. Then (5.1) is at most <span class="math" data-index="534" data-tex="\(-K\)">\(-K\)</span> throughout all escaping frequencies. The extended convention handles zeros and the case <span class="math" data-index="535" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p>Thus every logarithmic profile of <span class="math" data-index="536" data-tex="\(u*w\)">\(u*w\)</span> is collapsed. Section 4 of <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a> proves that the convex singular hull is the closed convex hull of the union of the proper profile carriers; it is empty in this situation. A distribution has empty singular support exactly when it is smooth. Hence <span class="math" data-index="537" data-tex="\(u*w\in C^\infty\)">\(u*w\in C^\infty\)</span>, proving condition 2. Condition 2 implies condition 3 because <span class="math" data-index="538" data-tex="\(w\notin C^1\)">\(w\notin C^1\)</span>.</p>
+<p>Finally suppose condition 3 holds. The nonsmooth compact <span class="math" data-index="539" data-tex="\(w\)">\(w\)</span> has a proper profile on some escaping sequence: otherwise the closed convex hull of its proper profile carriers would be empty, and the same singular-hull theorem would make it smooth. Preserve that sequence and extract a profile of <span class="math" data-index="540" data-tex="\(u\)">\(u\)</span> by compactness, as in Theorem 4.2 of <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>. If this profile were proper, the sum of the two proper profiles would be proper in local <span class="math" data-index="541" data-tex="\(L^1\)">\(L^1\)</span>, by Lemma 2.2 of <a href="AN02-L160.html">Convolution and joint frequency carriers</a>. Equation (5.1) would make it a proper profile of <span class="math" data-index="542" data-tex="\(u*w\)">\(u*w\)</span>. This contradicts the uniform collapse of a smooth compact function, proved in Lemma 2.1 and also in the earlier joint-profile chapter.
+Therefore the profile of <span class="math" data-index="543" data-tex="\(u\)">\(u\)</span> on this subsequence is collapsed, which is condition 1. This proves all three implications, with the precise regularity, compact support and location requirements. <span class="math" data-index="544" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009. Background on complete metric spaces and uniform boundedness.</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Background on entire transforms and support; its normalization differs from (1.1).</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983. Compact Fourier transforms and analytic logarithms.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. Frequency-selective singularities and smooth convolutions. The full peaked-kernel bounds, complete-space selection and convolution implications are proved here.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/frequency-selective-singularities-and-smooth-convolutions.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L162/frequency-selective-singularities-formal.md" download>frequency-selective-singularities-formal.md</a></li><li><a href="reproduce/L162/frequency-selective-singularities-learner.md" download>frequency-selective-singularities-learner.md</a></li><li><a href="reproduce/L162/make_figures201.py" download>make_figures201.py</a></li><li><span class="unlinked">check_numerics201.py</span></li><li><span class="unlinked">README-reproduce.md</span></li><li><a href="reproduce/L162/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L162/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L162/figures/geometry201.json" download>figures/geometry201.json</a></li><li><a href="reproduce/L162/figures/compact-kernels-and-transform-peaks.png" download>figures/compact-kernels-and-transform-peaks.png</a></li><li><a href="reproduce/L162/figures/compact-kernels-and-transform-peaks.svg" download>figures/compact-kernels-and-transform-peaks.svg</a></li><li><a href="reproduce/L162/figures/evaluation-weights-and-zero-profiles.png" download>figures/evaluation-weights-and-zero-profiles.png</a></li><li><a href="reproduce/L162/figures/evaluation-weights-and-zero-profiles.svg" download>figures/evaluation-weights-and-zero-profiles.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

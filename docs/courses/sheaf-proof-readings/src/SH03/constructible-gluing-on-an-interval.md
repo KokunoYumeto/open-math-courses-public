@@ -2,11 +2,11 @@
 
 A constructible sheaf can change at a small set of points while remaining locally constant elsewhere. The change is not described by a list of stalks alone. We must also know how a section near a singular point restricts to each neighboring region. On an interval with one distinguished point, this produces a diagram of three modules. We will construct the sheaf from that diagram, calculate its cohomology and costalk, and extend the calculation to bounded complexes.
 
-We assume the definition of a sheaf, exactness detected at stalks, the localization triangle for an open subset and its closed complement, and derived adjunction for extension by zero. We also use the elementary sheaf-cohomology calculation for a constant sheaf on a contractible interval. A prerequisite is [Sheaves of modules and their derived categories](https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/sheaves-of-modules-and-their-derived-categories.html); extension-by-zero adjunction is also required. The source account below identifies the classical operations and the exact scope of their use.
+The sheaf-operation prerequisites are proved in Sheaves of modules and their derived categories: stalkwise exactness in Theorem 2.1; exact open extension and its adjunction in Lemma 5.2 and Corollary 5.5; injective resolutions in Theorem 6.1; and the closed/open localization triangle and its signs in Corollary 13.2 and Lemma 13.3. The proof of Theorem 3 below derives the adjunctions it needs from these exact functors. The arbitrary-module interval-cohomology calculation is linked after Proposition 2.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
-The licensed pointwise universal-object proof supplies the abelian diagram category. Below we construct its interval sheaves and compare ambient derived cohomology; these are additional sheaf-theoretic obligations, not consequences of evaluation alone.
+The pointwise universal-object proof supplies the abelian diagram category. Below we construct its interval sheaves and compare ambient derived cohomology; these are additional sheaf-theoretic obligations, not consequences of evaluation alone.
 
 ## Restriction data at one point
 
@@ -116,6 +116,18 @@ The last map is the identity at the middle module. On the left and right it send
 
 Each of \(V,L,R\) has a projective resolution of length at most \(g\). The functors \(P_0,P_-,P_+\) are exact and carry projective modules to projective diagrams. Resolving the terms of (7), and taking the mapping cone of a lifted resolution map, gives a projective diagram resolution of \(E\) of length at most \(g+1\).
 
+For the adjunctions used next, choose a bounded-below injective resolution \(G\to J^\bullet\) in the category of all sheaves. If \(j:U\hookrightarrow I\) is open, exactness of \(j_!\) and its ordinary adjunction imply that \(J^n|_U\) is injective: the functor \(\operatorname{Hom}(-,J^n|_U)=\operatorname{Hom}(j_!(-),J^n)\) is exact. Restriction is exact too, so \(J^\bullet|_U\) resolves \(G|_U\). The constant-sheaf functor \(M\mapsto M_U\) is exact on stalks and is left adjoint to sections, by inverse-image adjunction for the map to a point. Consequently \(\Gamma(U;J^n|_U)\) is an injective \(k\)-module, and the complex of these modules computes \(R\Gamma(U;G|_U)\).
+
+The ordinary adjunctions give an isomorphism of cochain complexes
+
+\[
+\operatorname{Hom}^{\bullet}(j_!M_U,J^\bullet)
+\cong \operatorname{Hom}^{\bullet}(M_U,J^\bullet|_U)
+\cong \operatorname{Hom}^{\bullet}_k(M,\Gamma(U;J^\bullet|_U)).
+\]
+
+Their naturality makes these isomorphisms commute with the differentials. Bounded-below complexes of injectives calculate derived Hom by Theorem 6.1 and Lemmas 6.2–6.3, so this proves the derived adjunction used here. Taking \(U=I\) and \(j=\mathrm{id}\) gives the constant-sheaf case. Taking either open half interval gives the extension-by-zero case. This argument requires no finiteness of the module; projectivity enters only in the next vanishing calculation.
+
 Next, these projective diagrams have no higher sheaf Ext into a weakly constructible sheaf \(G\). The sheaf associated to \(P_0(M)\) is the constant sheaf \(M_I\). Derived adjunction identifies its derived Hom into \(G\) with
 
 \[
@@ -134,7 +146,7 @@ This proof concerns the one-point interval decomposition. It does not assert the
 
 For a cochain map \(u:A^\bullet\to B^\bullet\), our cone has
 \(\operatorname{Cone}(u)^n=B^n\oplus A^{n+1}\) and differential
-\(d(b,a)=(d_Bb+u(a),-d_Aa)\). We use the connecting-arrow convention of **Sheaves of modules and their derived categories**. The fibre objects calculated below are cones shifted by \([-1]\); their cohomology degrees are independent of negating a triangle's connecting arrow.
+\(d(b,a)=(d_Bb+u(a),-d_Aa)\). We use the connecting-arrow convention of Sheaves of modules and their derived categories. The fibre objects calculated below are cones shifted by \([-1]\); their cohomology degrees are independent of negating a triangle's connecting arrow.
 
 ## Stalks and costalks
 
@@ -241,7 +253,7 @@ The quotient at zero is \(q\), and it is the identity on both open pieces. Its p
 
 ## Evaluation does not supply a natural splitting
 
-The separately licensed pointwise abelian and natural-splitting treatment explains the distinction between evaluating a diagram and splitting it naturally. Its human source is Tom Leinster, *Basic Category Theory*, arXiv version 2, 26 August 2025; that component and its AI additions retain CC BY-NC-SA 4.0. This lesson applies its universal objects to the interval; it does not reproduce that adapted exposition or change its licence.
+The pointwise abelian and natural-splitting treatment explains the distinction between evaluating a diagram and splitting it naturally. This lesson applies its universal objects to the interval.
 
 For a direct interval example, the usual sheaf sequence
 \[
@@ -296,7 +308,7 @@ Evaluate it for the constant sheaf and the skyscraper.
 
 ## References
 
-**Classical sheaf operations.** Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*, 1 August 2026](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §3.2, pp. 66–68, gives open extension, closed restriction and their exact sequences, then derives the supported-cohomology triangles by internal Hom. The exact sequences in (2), (4) and (8) are instances of these classical constructions; they are checked here on stalks and used with the displayed attachment maps. The nonsplitting of the constant-sheaf quotient in (B5) is the familiar phenomenon in Exercise 3.3 of those notes. Its pointwise splitting does not give a natural section. The separate Leinster-based diagram component retains the CC BY-NC-SA 4.0 terms stated above.
+**Classical sheaf operations.** Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*, 1 August 2026](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), §3.2, pp. 66–68, gives open extension, closed restriction and their exact sequences, then derives the supported-cohomology triangles by internal Hom. The exact sequences in (2), (4) and (8) are instances of these classical constructions; they are checked here on stalks and used with the displayed attachment maps. The nonsplitting of the constant-sheaf quotient in (B5) is the familiar phenomenon in Exercise 3.3 of those notes. Its pointwise splitting does not give a natural section.
 
 **Intervals and coefficient scope.** Schapira's Lemmas 3.5.1–2 and Proposition 3.5.3, pp. 72–73, prove interval cohomology bounds and constancy by continuation along overlapping intervals. Theorem 3.6.3 and Corollary 3.6.7, pp. 74–76, obtain constant-coefficient acyclicity by homotopy. Those notes have a standing finite-global-dimension convention. Our sheaf classification and ordinary interval calculation allow arbitrary coefficient modules over the stated ring: the classification is constructed directly, while the arbitrary-module cohomology calculation is bound above to the programme's compact-interval and homotopy proofs. Finite global dimension is imposed only when the lesson passes to finite projective diagram resolutions and bounded derived realization. Finite generation is a different condition and enters only in the perfect-stalk discussion.
 

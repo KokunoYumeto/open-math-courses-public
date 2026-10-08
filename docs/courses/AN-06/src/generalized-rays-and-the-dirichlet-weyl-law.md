@@ -7,6 +7,8 @@
 
 A reflecting ray may return to its starting point with a different direction. A wave trace sees a stronger event: the ray must return with the same covector. This distinction gives a useful bound for the spectral remainder. Near the boundary, the local reflected wave contributes a second term, with a negative quarter of the tangential phase volume.
 
+The period-controlled Dirichlet Weyl bound is Hörmander [H4, Theorem 29.3.3], with the two-term consequence in Corollary 29.3.4. His notes credit Ivrii for this spectral refinement. The boundary method has antecedents in the work of Seeley, Pham The Lai and Melrose; the generalized-ray geometry and propagation also owe to Melrose and Sjöstrand, as described in [H3, Notes to Chapters XVII and XXIV].
+
 Ivrii's survey and author monograph [I, M] discuss generalized rays and boundary spectral asymptotics. Duistermaat and Guillemin's work explains the earlier wave-trace setting on manifolds without boundary. Here the linked programme proofs provide the boundary propagation and curved spectral estimates; the arguments below derive the global remainder and the two-term law, and give a separate exact cylinder calculation.
 
 <a id="weyl-operator-and-inputs"></a>
@@ -45,6 +47,8 @@ Second, generalized curves for this fixed operator have the compactness property
 
 Third, a distributional homogeneous Dirichlet wave has the following propagation property: any interior singularity can be continued along a generalized characteristic back to its singular Cauchy data. This applies to the solutions obtained from compactly supported interior data of any fixed negative Sobolev order. For (2), \(\tau\ne0\) on a nonzero characteristic and \(H_qt=2\tau\); hence an arc cannot stop at a radial point instead of reaching the initial time. The compactness and continuation assertion includes all the boundary contact types just described.
 
+For the classical geometric and propagation results, see Hörmander [H3, Definition 24.3.7, Proposition 24.3.12, Corollary 24.3.14 and Theorem 24.5.3]. The programme constructions below retain the possibility of nonuniqueness at infinite-order contact.
+
 The first two inputs follow from [the normal-reaction relation](../providers/analysis/generalized-reflected-curves.md#generalized-reflected-curves), including [compactness](../providers/analysis/generalized-reflected-curves.md#reflected-compactness) and continuation. Its tangential equations (G22) give (4), and it retains both transverse lifts. The third input is the [Dirichlet Cauchy endpoint theorem](../providers/analysis/diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints), which applies to every compact interior distributional datum, with arbitrary glancing contact and accumulating reflections.
 
 In [M], Definition 3.2.2 and Theorem 3.2.4 give a broad cone-based construction; Chapter 3, printed p. 196, explains that this alone does not exclude creeping rays. The refined quadratic-block relation (3.4.57)–(3.4.58) is the relevant geometric comparison. The programme [singular-curve proof](../providers/analysis/diffractive-phase-neighborhoods.md#singular-generalized-curves) establishes the inward normal-reaction relation for the actual wave, including arbitrary contact order.
@@ -54,6 +58,8 @@ The analytic prerequisites retain the full scalar operator and actual localizati
 The [complete propagation proof](../providers/analysis/diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints) combines fixed-neighborhood Sobolev estimates, separated-root reflection, strict diffraction, general glancing and the Cauchy endpoint argument. [Dirichlet wave regularization](../providers/analysis/dirichlet-wave-regularization.md#dirichlet-wave-regularization) preserves the interior wavefront set at every negative order and supplies smooth compatible initial data near the wall.
 
 
+
+The local spectral estimate and its integrated boundary consequence correspond to Hörmander [H3, Theorem 17.5.10 and Corollary 17.5.11]. We use the complete programme proof in the metric-volume normalization stated below.
 
 The spectral prerequisite in the elliptic course is the curved Dirichlet diagonal estimate: relative to \(dV_g\), in a fixed boundary collar the actual spectral density \(e_P(x,x;k^2)\) has the form
 \[
@@ -100,6 +106,8 @@ C=\{(t,x,y,\tau,\xi,\eta):\;&\tau^2=p(x,\xi)=p(y,\eta)>0,\\
 The input covector \(\eta\) here is the positive, untwisted input covector. For a distribution kernel, its actual covector in the \(y\) variable will be \(-\eta\). Interior endpoints retain their ordinary full covectors. At a transverse boundary contact we include both one-sided endpoint lifts; at glancing the normal covector is zero. This gives the closed lifted relation in the full cotangent bundle over \(X\). In particular the zero-time boundary relation includes the pair of opposite transverse normal lifts at an instantaneous reflection. This convention is needed for closedness as interior endpoints approach a wall hit.
 
 <a id="weyl-closed-relation-and-short-returns"></a>
+The closed full-return relation and positive lower bound are the content of Hörmander [H4, Lemma 29.3.1]. The coordinate proof here keeps track of the reflected covector.
+
 **Lemma 2.1 (closed relations and short returns).** The lifted relation \(C\) is closed in the nonzero cotangent space. Its nonzero-time full diagonal return part
 \[
 C_\Delta=\{(t,x,x,\tau,\xi,\xi)\in C:t\ne0\}
@@ -190,6 +198,8 @@ For any compact output set and any number \(a\) of output derivatives, continuit
 The kernel Fourier series has terms \(S(\chi e_m)(z)e_{-m}(y)\). Applying \(b\) input derivatives costs at most \(C_b(1+|m|)^b\). Choose \(2N>n+b\). Formula (16) then gives absolute uniform convergence of every prescribed mixed derivative series on the compact output set. The series agrees with \(K\) as a distribution, since it has the same input Fourier coefficients. It is therefore a smooth representative of \(K\). A finite chart partition treats the general compact input support. ∎
 
 <a id="weyl-wavefront-relation"></a>
+This kernel inclusion is Hörmander [H4, Proposition 29.3.2]. We give the negative-order and joint-kernel steps explicitly.
+
 **Proposition 3.2 (the generalized wave relation).** The cosine kernel of the operator in Section 1 satisfies
 \[
 \operatorname{WF}'(F)\subset C.
@@ -434,6 +444,8 @@ The polynomial spectral bound makes this summable when \(m>n/2\), by dyadic shel
 ## 5. The global bound and the two-term law
 
 <a id="weyl-generalized-period-bound"></a>
+The following estimate and its periodic-null-set corollary are Hörmander [H4, Theorem 29.3.3 and Corollary 29.3.4]. The proof includes the positive-measure normalization and the measurable reciprocal-period approximation.
+
 **Theorem 5.1 (a remainder controlled by generalized periods).** For the operator and full lifted return time of Sections 1–2,
 \[
 \begin{split}
@@ -791,3 +803,6 @@ The leading phase-space area of this half-plane lattice is \(aLk^2/(4\pi)\). The
 - Johannes J. Duistermaat and Victor W. Guillemin, *The spectrum of positive elliptic operators and periodic bicharacteristics*, Inventiones Mathematicae **29** (1975), 39–79. [Verified freely readable full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf). The introduction, pp. 39–40, concerns boundaryless manifolds and identifies the wave-trace and clean-composition setting; it does not prove the all-contact boundary propagation required here.
 - [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics*, second edition, 2014. [Free author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), Theorem 0.42, printed p. 38. The nested-ball category proof is written in the earlier programme lesson linked in Section 3.
 - [O] Sung-Jin Oh, *Lecture Notes for Math 222A*, Berkeley, Fall 2023. [Free lecture notes](https://math.berkeley.edu/~sjoh/pdfs/notes-math222a.pdf), Propositions 10.6–10.9, pp. 149–151. The local variable-coefficient energy and moving-ball argument is proved in Section 4.
+
+- [H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007. Theorem 17.5.10 and Corollary 17.5.11, pp. 52–55; Definition 24.3.7, pp. 434–435, Proposition 24.3.12, p. 439, Corollary 24.3.14, p. 441, and Theorem 24.5.3, pp. 458–459; historical notes, pp. 62 and 470. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §29.3, pp. 271–274: Lemma 29.3.1, Proposition 29.3.2, Theorem 29.3.3 and Corollary 29.3.4; historical notes, p. 274. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

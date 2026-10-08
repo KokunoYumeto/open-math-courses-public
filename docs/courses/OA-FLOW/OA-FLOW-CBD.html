@@ -1,0 +1,661 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From the global carrier to the fixed-trace density · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-TID.html">Previous lesson</a><a href="OA-FLOW-BFC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CBD.md">Lesson source</a></nav><h1 id="OA-FLOW.CBD.SETTING">From the global carrier to the fixed-trace density</h1>
+<p>The global carrier remembers supported weight equivalence through projections. The density of a weight remembers its positive values relative to a specified trace. We identify the normal map between these two descriptions and prove that the carrier cocycle action is exactly conjugation by the corresponding bounded function of the density.</p>
+<p><em>Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications and font components retain their own terms.</em></p>
+<p><a id="cbd-setting"></a></p>
+<h2 id="hypotheses-and-conclusions">Hypotheses and conclusions</h2>
+<p>For the carrier constructions in Sections 1 and 4, <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> is any properly infinite von Neumann algebra with separable predual, with arbitrary center. For the fixed-trace identification and the action in Sections 2–3 and 5–7, assume additionally that <span class="math" data-tex="\(M\)">\(M\)</span> is a semifinite factor and fix a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. The main type-I application is a faithful normal semifinite <span class="math" data-tex="\(\phi=\tau_h\)">\(\phi=\tau_h\)</span> with properly infinite centralizer and integrable modular action, exactly the scope of <a href="OA-FLOW-TID.html#tid-setting">the density criterion, TI1</a>. A supported extension below covers every normal semifinite integrable weight; it does not remove the centralizer hypothesis from that criterion's forward implication.</p>
+<p>Write <span class="math" data-tex="\((\mathcal A,p_M,\Theta)\)">\((\mathcal A,p_M,\Theta)\)</span> for the actual <a href="OA-FLOW-CGF.html#cgf-3">CGF carrier</a>, and <span class="math" data-tex="\(d\)">\(d\)</span> for its continuous-sector unit. We will construct a canonical fixed-trace chart <span class="math" data-tex="\(J_\tau\)">\(J_\tau\)</span> and canonical carrier evaluation <span class="math" data-tex="\(\mathcal E_\psi\)">\(\mathcal E_\psi\)</span>, and prove
+<span class="math math-display" data-tex="\[
+ \boxed{\quad
+ J_\tau:L^\infty(\mathbb R,dq)\overset{\cong}{\longrightarrow}\mathcal A d,
+ \qquad
+ \mathcal E_\psi(J_\tau g)=g(\log h_\psi)
+ \quad}
+ \tag{CBD1}
+\]">\[
+ \boxed{\quad
+ J_\tau:L^\infty(\mathbb R,dq)\overset{\cong}{\longrightarrow}\mathcal A d,
+ \qquad
+ \mathcal E_\psi(J_\tau g)=g(\log h_\psi)
+ \quad}
+ \tag{CBD1}
+\]</span>
+for every integrable <span class="math" data-tex="\(\psi=\tau_{h_\psi}\)">\(\psi=\tau_{h_\psi}\)</span>, with the right side taken in its support corner. If
+<span class="math math-display" data-tex="\[
+ C_{s+t}=C_s\Theta_s(C_t),\qquad
+ C_s=B\Theta_s(B^*),\qquad
+ b=J_\tau^{-1}B,\qquad f(\lambda)=b(\log\lambda),
+\]">\[
+ C_{s+t}=C_s\Theta_s(C_t),\qquad
+ C_s=B\Theta_s(B^*),\qquad
+ b=J_\tau^{-1}B,\qquad f(\lambda)=b(\log\lambda),
+\]</span>
+then the actual carrier-indexed action is
+<span class="math math-display" data-tex="\[
+ \boxed{\quad \Sigma_C^\psi=\operatorname{Ad}\mathcal E_\psi(B)
+                  =\operatorname{Ad}f(h_\psi).\quad}
+ \tag{CBD2}
+\]">\[
+ \boxed{\quad \Sigma_C^\psi=\operatorname{Ad}\mathcal E_\psi(B)
+                  =\operatorname{Ad}f(h_\psi).\quad}
+ \tag{CBD2}
+\]</span>
+All cocycles and unitaries in these formulas belong to the corner <span class="math" data-tex="\(\mathcal A d\)">\(\mathcal A d\)</span>, whose identity is <span class="math" data-tex="\(d\)">\(d\)</span>. No translation chart or continuity is claimed for the entire global <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<p><span id="OA-FLOW.CBD.CENTER"></span><a id="cbd-center"></a></p>
+<h2 id="1-the-carrier-center-map-for-an-individual-weight">1. The carrier center map for an individual weight</h2>
+<p>Let <span class="math" data-tex="\(W_\infty(M)\)">\(W_\infty(M)\)</span> consist of zero and the normal semifinite weights with properly infinite support centralizer. CGF forms the balanced sum over these weights and its centralizer <span class="math" data-tex="\(Q\)">\(Q\)</span>; for its supported diagonal projection <span class="math" data-tex="\(d_\psi\)">\(d_\psi\)</span>,
+<span class="math math-display" data-tex="\[
+ d_\psi Qd_\psi=M_\psi,\qquad
+ \mathcal A=Z(Q),\qquad q_\psi:=p_M(\psi)=z_Q(d_\psi).
+ \tag{CBD3}
+\]">\[
+ d_\psi Qd_\psi=M_\psi,\qquad
+ \mathcal A=Z(Q),\qquad q_\psi:=p_M(\psi)=z_Q(d_\psi).
+ \tag{CBD3}
+\]</span>
+These are the actual CGF definitions (CI8)–(CI10), not a separate carrier inferred from the density. The isomorphism <span class="math" data-tex="\(d_\psi Qd_\psi=M_\psi\)">\(d_\psi Qd_\psi=M_\psi\)</span> uses the indicated diagonal matrix entry.</p>
+<p>Apply <a href="OA-FLOW-PC.html#pc-4">PC4's normal center-compression theorem</a> to <span class="math" data-tex="\(d_\psi\)">\(d_\psi\)</span> in <span class="math" data-tex="\(Qq_\psi\)">\(Qq_\psi\)</span>. Compression has a normal inverse and gives a canonical normal unital isomorphism
+<span class="math math-display" data-tex="\[
+ \kappa_\psi:Z(M_\psi)\overset{\cong}{\longrightarrow}\mathcal A q_\psi,
+ \qquad
+ (\kappa_\psi(z))d_\psi=z
+ \quad\text{in the diagonal identification}.
+ \tag{CBD4}
+\]">\[
+ \kappa_\psi:Z(M_\psi)\overset{\cong}{\longrightarrow}\mathcal A q_\psi,
+ \qquad
+ (\kappa_\psi(z))d_\psi=z
+ \quad\text{in the diagonal identification}.
+ \tag{CBD4}
+\]</span>
+Its projection formula is
+<span class="math math-display" data-tex="\[
+ \kappa_\psi(z)=p_M(\psi_z),\qquad
+ \psi_z(x)=\psi(zxz),\quad z\in\operatorname{Proj}(Z(M_\psi)).
+ \tag{CBD5}
+\]">\[
+ \kappa_\psi(z)=p_M(\psi_z),\qquad
+ \psi_z(x)=\psi(zxz),\quad z\in\operatorname{Proj}(Z(M_\psi)).
+ \tag{CBD5}
+\]</span>
+Indeed the supported diagonal of <span class="math" data-tex="\(\psi_z\)">\(\psi_z\)</span> is balanced-equivalent to the cut <span class="math" data-tex="\(zd_\psi\)">\(zd_\psi\)</span>, by the actual supported comparison in <a href="OA-FLOW-CGF.html#cgf-2">CGF Section 2</a>. Their central supports agree. Inside <span class="math" data-tex="\(Qq_\psi\)">\(Qq_\psi\)</span>, central support of <span class="math" data-tex="\(zd_\psi\)">\(zd_\psi\)</span> is the unique central projection compressing to <span class="math" data-tex="\(z\)">\(z\)</span>, precisely <span class="math" data-tex="\(\kappa_\psi(z)\)">\(\kappa_\psi(z)\)</span>. The nonzero centralizer of <span class="math" data-tex="\(\psi_z\)">\(\psi_z\)</span> is a central summand of the properly infinite <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>, so <span class="math" data-tex="\(\psi_z\in W_\infty(M)\)">\(\psi_z\in W_\infty(M)\)</span>. The zero cut also satisfies the formula. Normality extends projection identities to all bounded central elements.</p>
+<p>The formula is natural under supported equivalence. Suppose
+<span class="math math-display" data-tex="\[
+ w^*w=s(\psi),\quad ww^*=s(\eta),\quad
+ \psi(x)=\eta(wxw^*)\quad(x\ge0).
+\]">\[
+ w^*w=s(\psi),\quad ww^*=s(\eta),\quad
+ \psi(x)=\eta(wxw^*)\quad(x\ge0).
+\]</span>
+Then <span class="math" data-tex="\(q_\psi=q_\eta\)">\(q_\psi=q_\eta\)</span>, and
+<span class="math math-display" data-tex="\[
+ \kappa_\psi(z)=\kappa_\eta(wzw^*)
+          \qquad(z\in Z(M_\psi)).
+ \tag{CBD6}
+\]">\[
+ \kappa_\psi(z)=\kappa_\eta(wzw^*)
+          \qquad(z\in Z(M_\psi)).
+ \tag{CBD6}
+\]</span>
+For a projection <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(wz\)">\(wz\)</span> implements <span class="math" data-tex="\(\psi_z\sim\eta_{wzw^*}\)">\(\psi_z\sim\eta_{wzw^*}\)</span>: substituting <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> proves the weight identity on the whole cone, and its two supports are <span class="math" data-tex="\(z,wzw^*\)">\(z,wzw^*\)</span>. CGF's equivalence/carrier theorem gives (CBD6); spectral approximation extends it normally.</p>
+<p>Likewise CGF's exact scaling law
+<span class="math" data-tex="\(\Theta_s(p_M(\psi))=p_M(e^{-s}\psi)\)">\(\Theta_s(p_M(\psi))=p_M(e^{-s}\psi)\)</span>
+and the fact that scalar multiples have the same centralizer give
+<span class="math math-display" data-tex="\[
+ q_{e^{-s}\psi}=\Theta_s(q_\psi),\qquad
+ \kappa_{e^{-s}\psi}(z)=\Theta_s(\kappa_\psi(z)).
+ \tag{CBD7}
+\]">\[
+ q_{e^{-s}\psi}=\Theta_s(q_\psi),\qquad
+ \kappa_{e^{-s}\psi}(z)=\Theta_s(\kappa_\psi(z)).
+ \tag{CBD7}
+\]</span>
+The minus sign is fixed by the actual carrier definition (CI14).</p>
+<p>If <span class="math" data-tex="\(\psi\in W_\infty(M)\)">\(\psi\in W_\infty(M)\)</span> is integrable, <a href="OA-FLOW-CGF.html#cgf-5">CGF Sections 5 and 8</a> give <span class="math" data-tex="\(q_\psi\le d\)">\(q_\psi\le d\)</span>. Equivalently one may use the full supported criterion <span class="math" data-tex="\(\psi\precsim\Phi\)">\(\psi\precsim\Phi\)</span> and (CI10), with <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> the chosen dominant reference. Define
+<span class="math math-display" data-tex="\[
+ \mathcal E_\psi:\mathcal A d\longrightarrow Z(M_\psi),
+ \qquad
+ \mathcal E_\psi(a)=\kappa_\psi^{-1}(a q_\psi).
+ \tag{CBD8}
+\]">\[
+ \mathcal E_\psi:\mathcal A d\longrightarrow Z(M_\psi),
+ \qquad
+ \mathcal E_\psi(a)=\kappa_\psi^{-1}(a q_\psi).
+ \tag{CBD8}
+\]</span>
+Multiplication by the central projection <span class="math" data-tex="\(q_\psi\)">\(q_\psi\)</span> is a normal homomorphism with identity <span class="math" data-tex="\(d\mapsto q_\psi\)">\(d\mapsto q_\psi\)</span>; consequently <span class="math" data-tex="\(\mathcal E_\psi\)">\(\mathcal E_\psi\)</span> is normal and sends <span class="math" data-tex="\(d\)">\(d\)</span> to <span class="math" data-tex="\(s(\psi)\)">\(s(\psi)\)</span>. Its kernel is exactly <span class="math" data-tex="\(\mathcal A(d-q_\psi)\)">\(\mathcal A(d-q_\psi)\)</span>. Equations (CBD6)–(CBD7) imply, on their common support algebras,
+<span class="math math-display" data-tex="\[
+ \mathcal E_\psi(a)=w^*\mathcal E_\eta(a)w,\qquad
+ \mathcal E_{e^{-s}\psi}(\Theta_s a)=\mathcal E_\psi(a).
+ \tag{CBD9}
+\]">\[
+ \mathcal E_\psi(a)=w^*\mathcal E_\eta(a)w,\qquad
+ \mathcal E_{e^{-s}\psi}(\Theta_s a)=\mathcal E_\psi(a).
+ \tag{CBD9}
+\]</span>
+These assertions use no factor hypothesis.</p>
+<p>The original center remains in place. With CGF's embedding
+<span class="math" data-tex="\(\iota:Z(M)\to\mathcal A\)">\(\iota:Z(M)\to\mathcal A\)</span>, (CI15) and (CBD5) give
+<span class="math math-display" data-tex="\[
+ \mathcal E_\psi(\iota(z)d)=zs(\psi),\qquad z\in Z(M).
+ \tag{CBD10}
+\]">\[
+ \mathcal E_\psi(\iota(z)d)=zs(\psi),\qquad z\in Z(M).
+ \tag{CBD10}
+\]</span>
+Thus a proper original central support is preserved. There is no replacement of the nonfactor carrier by a single factor sector.</p>
+<p><span id="OA-FLOW.CBD.CHART"></span><a id="cbd-chart"></a></p>
+<h2 id="2-the-exact-fixed-trace-chart-of-the-continuous-sector">2. The exact fixed-trace chart of the continuous sector</h2>
+<p>Now suppose <span class="math" data-tex="\(M\)">\(M\)</span> is a semifinite factor in the stated properly infinite, separable-predual scope, and fix <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. The <a href="OA-FLOW-TID.html#tid-3">trace-preserving reference construction, TI13–TI17</a>, gives a normal identification
+<span class="math math-display" data-tex="\[
+ M=P\overline\otimes B(L^2(\mathbb R,dq))\overline\otimes B(\ell^2),
+ \quad \tau=\tau_P\otimes\operatorname{Tr}\otimes\operatorname{Tr},
+ \quad k=1\otimes e^Q\otimes1,\quad \nu=\tau_k .
+ \tag{CBD11}
+\]">\[
+ M=P\overline\otimes B(L^2(\mathbb R,dq))\overline\otimes B(\ell^2),
+ \quad \tau=\tau_P\otimes\operatorname{Tr}\otimes\operatorname{Tr},
+ \quad k=1\otimes e^Q\otimes1,\quad \nu=\tau_k .
+ \tag{CBD11}
+\]</span>
+The trace equality is exact on the whole positive cone: for filling isometries <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, the map <span class="math" data-tex="\(x\otimes e_{ij}\mapsto v_i x v_j^*\)">\(x\otimes e_{ij}\mapsto v_i x v_j^*\)</span> is normally implemented by the unitary <span class="math" data-tex="\((\xi_i)\mapsto\sum_i v_i\xi_i\)">\((\xi_i)\mapsto\sum_i v_i\xi_i\)</span>, and
+<span class="math" data-tex="\(\tau(Y)=\sum_i\tau(v_iv_i^*Yv_iv_i^*)\)">\(\tau(Y)=\sum_i\tau(v_iv_i^*Yv_iv_i^*)\)</span>
+follows from the increasing positive sandwiches
+<span class="math" data-tex="\(Y^{1/2}\sum_{i\in F}v_iv_i^*Y^{1/2}\)">\(Y^{1/2}\sum_{i\in F}v_iv_i^*Y^{1/2}\)</span>.
+The trace of every scalar rank-one projection is <span class="math" data-tex="\(1\)">\(1\)</span>. No scalar trace correction is hidden.</p>
+<p>The full centralizer, its center, and the continuous reference translations are
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ N=M_\nu=P\overline\otimes L^\infty(Q)\overline\otimes B(\ell^2),
+ \qquad Z(N)=1\otimes L^\infty(Q)\otimes1,\\
+ u_s=1\otimes R_{-s}\otimes1,\quad
+ (R_a\xi)(q)=\xi(q-a),\\
+ u_s g(Q)u_s^*=g(Q+s),\quad
+ \sigma_t^\nu(u_s)=e^{-ist}u_s,\quad
+ \nu\operatorname{Ad}u_s=e^{-s}\nu.
+ \end{gathered}
+ \tag{CBD12}
+\]">\[
+ \begin{gathered}
+ N=M_\nu=P\overline\otimes L^\infty(Q)\overline\otimes B(\ell^2),
+ \qquad Z(N)=1\otimes L^\infty(Q)\otimes1,\\
+ u_s=1\otimes R_{-s}\otimes1,\quad
+ (R_a\xi)(q)=\xi(q-a),\\
+ u_s g(Q)u_s^*=g(Q+s),\quad
+ \sigma_t^\nu(u_s)=e^{-ist}u_s,\quad
+ \nu\operatorname{Ad}u_s=e^{-s}\nu.
+ \end{gathered}
+ \tag{CBD12}
+\]</span>
+The last identity follows from the exact cutoff relation
+<span class="math" data-tex="\(u_s^*k_\varepsilon u_s=e^{-s}k_{\varepsilon e^{-s}}\)">\(u_s^*k_\varepsilon u_s=e^{-s}k_{\varepsilon e^{-s}}\)</span>
+and trace cyclicity, so infinite values are included. The unital <span class="math" data-tex="\(B(\ell^2)\)">\(B(\ell^2)\)</span> makes <span class="math" data-tex="\(N\)">\(N\)</span> properly infinite. Its filling rows preserve <span class="math" data-tex="\(\nu\otimes\operatorname{Tr}\)">\(\nu\otimes\operatorname{Tr}\)</span>, as in TI32–TI34. Thus <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is faithful dominant, with an actual continuous eigenfield.</p>
+<p>The actual <a href="OA-FLOW-DS.html#ds-5">DS faithful dominant comparison</a> identifies <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with the reference <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> used in CGF, by a unitary and whole-cone weight equality. Hence <span class="math" data-tex="\(p_M(\nu)=p_M(\Phi)=d\)">\(p_M(\nu)=p_M(\Phi)=d\)</span>. The continuous-field theorem <a href="OA-FLOW-DWC.html#dwc-2">DWC2–3</a> is an alternative here, because both reference weights have supplied continuous eigenfields. Define
+<span class="math math-display" data-tex="\[
+ J_\tau(g)=\kappa_\nu(g(Q)):
+       L^\infty(\mathbb R,dq)\overset{\cong}{\longrightarrow}\mathcal A d .
+ \tag{CBD13}
+\]">\[
+ J_\tau(g)=\kappa_\nu(g(Q)):
+       L^\infty(\mathbb R,dq)\overset{\cong}{\longrightarrow}\mathcal A d .
+ \tag{CBD13}
+\]</span>
+This is a normal isomorphism of the actual carrier sector. It is precisely CGF's <span class="math" data-tex="\(J\)">\(J\)</span> after identifying <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span> by its full multiplier algebra.</p>
+<p>For a Borel set <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(u_s1_D(Q)\)">\(u_s1_D(Q)\)</span> implements
+<span class="math" data-tex="\(e^{-s}\nu_{1_D(Q)}\sim\nu_{1_D(Q+s)}\)">\(e^{-s}\nu_{1_D(Q)}\sim\nu_{1_D(Q+s)}\)</span>,
+with initial projection <span class="math" data-tex="\(1_D(Q)\)">\(1_D(Q)\)</span> and final projection <span class="math" data-tex="\(1_D(Q+s)\)">\(1_D(Q+s)\)</span>; the equality of weights is (CBD12). Equations (CBD5)–(CBD7) therefore give
+<span class="math math-display" data-tex="\[
+ \Theta_s J_\tau=J_\tau\theta_s,\qquad
+ (\theta_sg)(q)=g(q+s).
+ \tag{CBD14}
+\]">\[
+ \Theta_s J_\tau=J_\tau\theta_s,\qquad
+ (\theta_sg)(q)=g(q+s).
+ \tag{CBD14}
+\]</span>
+In particular an interval <span class="math" data-tex="\(D\)">\(D\)</span> becomes <span class="math" data-tex="\(D-s\)">\(D-s\)</span>, not <span class="math" data-tex="\(D+s\)">\(D+s\)</span>.</p>
+<p>This chart is independent of the trace-preserving reference construction. If <span class="math" data-tex="\(\nu'=\tau_{k'}\)">\(\nu'=\tau_{k'}\)</span> is another such faithful dominant reference, DS supplies a unitary <span class="math" data-tex="\(w\)">\(w\)</span> with
+<span class="math" data-tex="\(\nu=\nu'\operatorname{Ad}w\)">\(\nu=\nu'\operatorname{Ad}w\)</span>.
+Trace cyclicity and <a href="OA-FLOW-TD.html#td-5">TD's whole-cone uniqueness</a> force
+<span class="math math-display" data-tex="\[
+ k=w^*k'w.
+ \tag{CBD15}
+\]">\[
+ k=w^*k'w.
+ \tag{CBD15}
+\]</span>
+Here trace cyclicity is applied to bounded spectral cutoffs before taking their increasing extended values. Normal spectral transport then gives
+<span class="math" data-tex="\(w g(\log k)w^*=g(\log k')\)">\(w g(\log k)w^*=g(\log k')\)</span>.
+Equation (CBD6) proves
+<span class="math" data-tex="\(\kappa_\nu(g(\log k))=\kappa_{\nu'}(g(\log k'))\)">\(\kappa_\nu(g(\log k))=\kappa_{\nu'}(g(\log k'))\)</span>.
+This is equality of the two carrier charts, not merely conjugacy by an undetermined translation.</p>
+<p>The arbitrary semifinite-factor tracial core chart from <a href="OA-FLOW-CORE.html#core-9">CORE9</a> remains a separate, compatible description. Its momentum <span class="math" data-tex="\(p\)">\(p\)</span> has flow <span class="math" data-tex="\(p\mapsto p-s\)">\(p\mapsto p-s\)</span>; reflection <span class="math" data-tex="\(q=-p\)">\(q=-p\)</span> gives (CBD14), paired measure <span class="math" data-tex="\(dq/(2\pi)\)">\(dq/(2\pi)\)</span>, core trace <span class="math" data-tex="\(\tau\otimes(e^q\,dq/(2\pi))\)">\(\tau\otimes(e^q\,dq/(2\pi))\)</span>, and canonical core density <span class="math" data-tex="\(e^{-Q}\)">\(e^{-Q}\)</span>. The positive coordinate evaluated by (CBD1) is <span class="math" data-tex="\(e^Q\)">\(e^Q\)</span>. They are different affiliated operators. The reflected core chart exists for finite semifinite factors as well; the CGF construction here assumes properly infinite <span class="math" data-tex="\(M\)">\(M\)</span>. A finite factor does not satisfy the main density theorem's properly infinite-centralizer hypothesis. No finite-factor carrier claim is inferred by dropping that hypothesis.</p>
+<p><span id="OA-FLOW.CBD.EVALUATION"></span><a id="cbd-evaluation"></a></p>
+<h2 id="3-the-commuting-square-carrier-evaluation-is-density-calculus">3. The commuting square: carrier evaluation is density calculus</h2>
+<p>Let <span class="math" data-tex="\(\psi\in W_\infty(M)\)">\(\psi\in W_\infty(M)\)</span> be integrable, with support <span class="math" data-tex="\(p\)">\(p\)</span> and fixed-trace density <span class="math" data-tex="\(h_\psi\)">\(h_\psi\)</span>. The complete <a href="OA-FLOW-TID.html#tid-5">supported comparison TI20–TI34</a>, or CGF's (CI39) applied to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, supplies <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> such that
+<span class="math math-display" data-tex="\[
+ v^*v=p,\quad vv^*=e\in N,\qquad
+ \psi(x)=\nu(vxv^*)\quad(x\in M_+).
+ \tag{CBD16}
+\]">\[
+ v^*v=p,\quad vv^*=e\in N,\qquad
+ \psi(x)=\nu(vxv^*)\quad(x\in M_+).
+ \tag{CBD16}
+\]</span>
+On the supported Hilbert spaces, cutoff trace cyclicity and TD uniqueness imply
+<span class="math math-display" data-tex="\[
+ h_\psi=v^*(ek)v,\qquad
+ g(\log h_\psi)=v^* e\,g(Q)v
+ \quad(g\text{ bounded Borel}).
+ \tag{CBD17}
+\]">\[
+ h_\psi=v^*(ek)v,\qquad
+ g(\log h_\psi)=v^* e\,g(Q)v
+ \quad(g\text{ bounded Borel}).
+ \tag{CBD17}
+\]</span>
+The corner <span class="math" data-tex="\(e\)">\(e\)</span> reduces <span class="math" data-tex="\(k\)">\(k\)</span>; transport includes all spectral projections and full closed-operator domains. In particular the logarithmic spectral measure is absolutely continuous. Values at the kernel outside <span class="math" data-tex="\(p\)">\(p\)</span> are not part of this supported logarithm.</p>
+<p>Put <span class="math" data-tex="\(z=z_N(e)\)">\(z=z_N(e)\)</span>. The centralizer <span class="math" data-tex="\(eNe\cong M_\psi\)">\(eNe\cong M_\psi\)</span> is properly infinite. <a href="OA-FLOW-PC.html#oa-flow.pc.7">PC7</a>, applied inside the countably decomposable <span class="math" data-tex="\(N\)">\(N\)</span>, gives <span class="math" data-tex="\(e\sim z\)">\(e\sim z\)</span> there. Thus
+<span class="math math-display" data-tex="\[
+ q_\psi=p_M(\nu_e)=p_M(\nu_z)=\kappa_\nu(z).
+ \tag{CBD18}
+\]">\[
+ q_\psi=p_M(\nu_e)=p_M(\nu_z)=\kappa_\nu(z).
+ \tag{CBD18}
+\]</span>
+For a projection <span class="math" data-tex="\(a\in Z(N)\)">\(a\in Z(N)\)</span>, the carrier of <span class="math" data-tex="\(\nu_{ea}\)">\(\nu_{ea}\)</span> is
+<span class="math math-display" data-tex="\[
+ p_M(\nu_{ea})=\kappa_\nu(za).
+ \tag{CBD19}
+\]">\[
+ p_M(\nu_{ea})=\kappa_\nu(za).
+ \tag{CBD19}
+\]</span>
+To verify this, central support of <span class="math" data-tex="\(ea\)">\(ea\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> is <span class="math" data-tex="\(za\)">\(za\)</span>. A nonzero such cut is a central cut of the properly infinite <span class="math" data-tex="\(eNe\)">\(eNe\)</span>, hence properly infinite; <a href="OA-FLOW-PC.html#oa-flow.pc.7">PC7</a> gives <span class="math" data-tex="\(ea\sim za\)">\(ea\sim za\)</span> inside <span class="math" data-tex="\(N\)">\(N\)</span>. Centralizer partial isometries preserve <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on these cuts, by cutoff cyclicity, yielding the supported weight equivalence. The zero cut is immediate.</p>
+<p>For a projection <span class="math" data-tex="\(a\in Z(N)\)">\(a\in Z(N)\)</span>, (CBD5), (CBD6) and (CBD19) give
+<span class="math math-display" data-tex="\[
+ \kappa_\psi(v^*av)=\kappa_\nu(a)q_\psi.
+\]">\[
+ \kappa_\psi(v^*av)=\kappa_\nu(a)q_\psi.
+\]</span>
+Normal spectral approximation extends the identity to every <span class="math" data-tex="\(a\in Z(N)\)">\(a\in Z(N)\)</span>. Inserting <span class="math" data-tex="\(a=g(Q)\)">\(a=g(Q)\)</span> and applying <span class="math" data-tex="\(\kappa_\psi^{-1}\)">\(\kappa_\psi^{-1}\)</span> proves the complete commuting-square identity
+<span class="math math-display" data-tex="\[
+ \boxed{\qquad
+ \mathcal E_\psi(J_\tau g)
+   =\kappa_\psi^{-1}\!\left(J_\tau(g)q_\psi\right)
+   =v^*g(Q)v=g(\log h_\psi).
+ \qquad}
+ \tag{CBD20}
+\]">\[
+ \boxed{\qquad
+ \mathcal E_\psi(J_\tau g)
+   =\kappa_\psi^{-1}\!\left(J_\tau(g)q_\psi\right)
+   =v^*g(Q)v=g(\log h_\psi).
+ \qquad}
+ \tag{CBD20}
+\]</span>
+Thus the density map previously written <span class="math" data-tex="\(\rho_\psi(g)=g(\log h_\psi)\)">\(\rho_\psi(g)=g(\log h_\psi)\)</span> is exactly compression of the actual global carrier followed by its canonical center isomorphism. It was not obtained by merely identifying two abstract copies of <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>.</p>
+<p>Normality and representative independence are now explicit in both descriptions. The carrier side is a composition of normal homomorphisms. On the density side, every finite scalar spectral measure is absolutely continuous; scalar Radon–Nikodym densities identify its normal functional evaluations with <span class="math" data-tex="\(L^1(dq)\)">\(L^1(dq)\)</span> pairings. A Lebesgue-null modification of <span class="math" data-tex="\(g\)">\(g\)</span>, or of <span class="math" data-tex="\(f(\lambda)=g(\log\lambda)\)">\(f(\lambda)=g(\log\lambda)\)</span>, therefore changes no operator. Exponential and logarithm preserve the null class by restricting to countably many compact intervals where they are Lipschitz.</p>
+<p>For a nonzero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, choose a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>. Its spectral measure
+<span class="math" data-tex="\(\mu_\psi(D)=\omega(E_{\log h_\psi}(D))\)">\(\mu_\psi(D)=\omega(E_{\log h_\psi}(D))\)</span>
+has exactly the same null sets as the spectral projections, by faithfulness. Write
+<span class="math" data-tex="\(d\mu_\psi=a(q)dq\)">\(d\mu_\psi=a(q)dq\)</span> and <span class="math" data-tex="\(S_\psi=\{a&gt;0\}\)">\(S_\psi=\{a&gt;0\}\)</span>, up to null sets. This is a measure-class support, not necessarily the closed topological support. Comparing the kernels in (CBD8) and (CBD20) gives the useful exact carrier formula
+<span class="math math-display" data-tex="\[
+ q_\psi=J_\tau(1_{S_\psi}).
+ \tag{CBD21}
+\]">\[
+ q_\psi=J_\tau(1_{S_\psi}).
+ \tag{CBD21}
+\]</span>
+Indeed <span class="math" data-tex="\(g(\log h_\psi)=0\)">\(g(\log h_\psi)=0\)</span> exactly when <span class="math" data-tex="\(g=0\)">\(g=0\)</span> almost everywhere on <span class="math" data-tex="\(S_\psi\)">\(S_\psi\)</span>, whereas the carrier map's kernel is <span class="math" data-tex="\(\mathcal A(d-q_\psi)\)">\(\mathcal A(d-q_\psi)\)</span>. Normality and the isomorphism <span class="math" data-tex="\(J_\tau\)">\(J_\tau\)</span> identify the complementary central projections. This argument also proves that <span class="math" data-tex="\(S_\psi\)">\(S_\psi\)</span> is independent of the chosen faithful state.</p>
+<p><span id="OA-FLOW.CBD.AMPLIFIED"></span><a id="cbd-amplified"></a></p>
+<h2 id="4-every-supported-weight-including-finite-centralizers">4. Every supported weight, including finite centralizers</h2>
+<p>For a normal semifinite <span class="math" data-tex="\(\psi\)">\(\psi\)</span> whose centralizer is not properly infinite, <span class="math" data-tex="\(p_M(\psi)\)">\(p_M(\psi)\)</span> is not a term in CGF's defining domain. Use the actual countable amplification from <a href="OA-FLOW-CGF.html#cgf-6">CGF Section 6</a>. For filling isometries <span class="math" data-tex="\(r_j\in M\)">\(r_j\in M\)</span>, write
+<span class="math math-display" data-tex="\[
+ A_r(x\otimes e_{ij})=r_i x r_j^*,\quad
+ \dot\psi=(\psi\otimes\operatorname{Tr})\circ A_r^{-1},\quad
+ q_\psi:=p_M(\dot\psi),\quad
+ \zeta_r(z)=A_r(z\otimes1).
+ \tag{CBD22}
+\]">\[
+ A_r(x\otimes e_{ij})=r_i x r_j^*,\quad
+ \dot\psi=(\psi\otimes\operatorname{Tr})\circ A_r^{-1},\quad
+ q_\psi:=p_M(\dot\psi),\quad
+ \zeta_r(z)=A_r(z\otimes1).
+ \tag{CBD22}
+\]</span>
+The support is <span class="math" data-tex="\(A_r(p\otimes1)\)">\(A_r(p\otimes1)\)</span>, and
+<span class="math" data-tex="\(M_{\dot\psi}=A_r(M_\psi\overline\otimes B(\ell^2))\)">\(M_{\dot\psi}=A_r(M_\psi\overline\otimes B(\ell^2))\)</span>.
+The center of a matrix amplification is <span class="math" data-tex="\(Z(M_\psi)\otimes1\)">\(Z(M_\psi)\otimes1\)</span>, by taking scalar matrix entries. Thus <span class="math" data-tex="\(\zeta_r\)">\(\zeta_r\)</span> is a normal isomorphism between the two centralizer centers. Set
+<span class="math math-display" data-tex="\[
+ \mathcal K_\psi=\kappa_{\dot\psi}\zeta_r:
+       Z(M_\psi)\overset{\cong}{\longrightarrow}\mathcal A q_\psi.
+ \tag{CBD23}
+\]">\[
+ \mathcal K_\psi=\kappa_{\dot\psi}\zeta_r:
+       Z(M_\psi)\overset{\cong}{\longrightarrow}\mathcal A q_\psi.
+ \tag{CBD23}
+\]</span>
+This definition and its independence work in the full nonfactor scope of CGF.</p>
+<p>For another filling family <span class="math" data-tex="\(r_j'\)">\(r_j'\)</span>, the strong-star sum
+<span class="math" data-tex="\(W=\sum_j r_j'r_j^*\)">\(W=\sum_j r_j'r_j^*\)</span> is unitary, with
+<span class="math" data-tex="\(A_{r'}=\operatorname{Ad}W\circ A_r\)">\(A_{r'}=\operatorname{Ad}W\circ A_r\)</span> and
+<span class="math" data-tex="\(\dot\psi'=\dot\psi\circ\operatorname{Ad}W^*\)">\(\dot\psi'=\dot\psi\circ\operatorname{Ad}W^*\)</span>.
+Equation (CBD6) shows both <span class="math" data-tex="\(q_\psi'=q_\psi\)">\(q_\psi'=q_\psi\)</span> and
+<span class="math" data-tex="\(\kappa_{\dot\psi'}(\zeta_{r'}z)=\kappa_{\dot\psi}(\zeta_r z)\)">\(\kappa_{\dot\psi'}(\zeta_{r'}z)=\kappa_{\dot\psi}(\zeta_r z)\)</span>.
+Thus (CBD23) is canonical. Scaling commutes with amplification, so (CBD7) holds with <span class="math" data-tex="\(\mathcal K_\psi\)">\(\mathcal K_\psi\)</span> in place of <span class="math" data-tex="\(\kappa_\psi\)">\(\kappa_\psi\)</span>. A central <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span> commutes with every <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, giving <span class="math" data-tex="\(\zeta_r(zp)=z\,s(\dot\psi)\)">\(\zeta_r(zp)=z\,s(\dot\psi)\)</span>; hence the original-center evaluation (CBD10) is also preserved.</p>
+<p>When <span class="math" data-tex="\(\psi\in W_\infty(M)\)">\(\psi\in W_\infty(M)\)</span>, (CBD23) equals (CBD4), rather than merely having the same range. Choose filling isometries <span class="math" data-tex="\(s_j\in M_\psi\)">\(s_j\in M_\psi\)</span> with initial projection <span class="math" data-tex="\(p\)">\(p\)</span>. The bounded strong-star sum
+<span class="math" data-tex="\(T=\sum_j s_j r_j^*\)">\(T=\sum_j s_j r_j^*\)</span>
+has
+<span class="math math-display" data-tex="\[
+ T^*T=A_r(p\otimes1),\quad TT^*=p,\quad
+ \dot\psi(x)=\psi(TxT^*),\quad
+ T\zeta_r(z)T^*=z.
+ \tag{CBD24}
+\]">\[
+ T^*T=A_r(p\otimes1),\quad TT^*=p,\quad
+ \dot\psi(x)=\psi(TxT^*),\quad
+ T\zeta_r(z)T^*=z.
+ \tag{CBD24}
+\]</span>
+The first two identities use orthogonal initial and final supports. The weight identity is the whole-cone centralizer-row identity (CI21), transported by <span class="math" data-tex="\(A_r\)">\(A_r\)</span>; it includes infinite values. For the last identity,
+<span class="math" data-tex="\(\sum_j s_j z s_j^*=z\sum_j s_js_j^*=z\)">\(\sum_j s_j z s_j^*=z\sum_j s_js_j^*=z\)</span>.
+Equation (CBD6) proves <span class="math" data-tex="\(\mathcal K_\psi=\kappa_\psi\)">\(\mathcal K_\psi=\kappa_\psi\)</span> and <span class="math" data-tex="\(q_\psi=p_M(\psi)\)">\(q_\psi=p_M(\psi)\)</span>.</p>
+<p>For every integrable <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, CGF's full supported theorem gives <span class="math" data-tex="\(q_\psi\le d\)">\(q_\psi\le d\)</span>. Replace <span class="math" data-tex="\(\kappa_\psi\)">\(\kappa_\psi\)</span> by <span class="math" data-tex="\(\mathcal K_\psi\)">\(\mathcal K_\psi\)</span> in (CBD8) to define <span class="math" data-tex="\(\mathcal E_\psi\)">\(\mathcal E_\psi\)</span>. In the fixed-trace setting, <a href="OA-FLOW-TW.html#tw-2">the exact matrix trace identity</a> gives
+<span class="math math-display" data-tex="\[
+ h_{\dot\psi}=A_r(h_\psi\otimes1),\qquad
+ \zeta_r(g(\log h_\psi))=g(\log h_{\dot\psi}).
+ \tag{CBD25}
+\]">\[
+ h_{\dot\psi}=A_r(h_\psi\otimes1),\qquad
+ \zeta_r(g(\log h_\psi))=g(\log h_{\dot\psi}).
+ \tag{CBD25}
+\]</span>
+Apply (CBD20) to <span class="math" data-tex="\(\dot\psi\)">\(\dot\psi\)</span>, whose centralizer is properly infinite, and then apply <span class="math" data-tex="\(\zeta_r^{-1}\)">\(\zeta_r^{-1}\)</span>. This proves (CBD1), absolute continuity of the supported logarithmic spectral measure, and (CBD21) for every integrable supported <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. At <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>, all support algebras and carrier cuts are zero and every displayed map has its unique zero interpretation.</p>
+<p>Equality <span class="math" data-tex="\(q_\psi=q_\eta\)">\(q_\psi=q_\eta\)</span> for arbitrary weights only compares their amplifications. For <span class="math" data-tex="\(\psi,\eta\in W_\infty(M)\)">\(\psi,\eta\in W_\infty(M)\)</span>, CGF's (CI10) gives the stronger equivalence
+<span class="math math-display" data-tex="\[
+ \psi\sim\eta
+ \quad\Longleftrightarrow\quad q_\psi=q_\eta
+ \quad\Longleftrightarrow\quad S_\psi=S_\eta\text{ modulo null sets}
+ \tag{CBD26}
+\]">\[
+ \psi\sim\eta
+ \quad\Longleftrightarrow\quad q_\psi=q_\eta
+ \quad\Longleftrightarrow\quad S_\psi=S_\eta\text{ modulo null sets}
+ \tag{CBD26}
+\]</span>
+when the two weights are integrable in the fixed-trace factor setting. The first equivalence must not be applied to unamplified finite-centralizer weights.</p>
+<p><span id="OA-FLOW.CBD.ACTION"></span><a id="cbd-action"></a></p>
+<h2 id="5-the-actual-carrier-indexed-extended-action">5. The actual carrier-indexed extended action</h2>
+<p>Let <span class="math" data-tex="\(C:\mathbb R\to\mathcal U(\mathcal A d)\)">\(C:\mathbb R\to\mathcal U(\mathcal A d)\)</span> be strongly continuous and satisfy the cocycle equation in (CBD2). By (CBD14),
+<span class="math" data-tex="\(c_s=J_\tau^{-1}(C_s)\)">\(c_s=J_\tau^{-1}(C_s)\)</span>
+is a strongly continuous translation cocycle on <span class="math" data-tex="\(L^\infty(\mathbb R)\)">\(L^\infty(\mathbb R)\)</span>. Normal isomorphisms preserve bounded strong-star convergence, by <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a>. The trace
+<span class="math" data-tex="\(\int e^q g(q)\,dq\)">\(\int e^q g(q)\,dq\)</span> is faithful normal semifinite and scales by <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span>. Applying the actual <a href="OA-FLOW-CST.html#cst-5">CST theorem</a> and taking its implementer's adjoint gives
+<span class="math math-display" data-tex="\[
+ c_s=b\,\theta_s(b^*),\qquad
+ C_s=B\,\Theta_s(B^*),\qquad B=J_\tau(b).
+ \tag{CBD27}
+\]">\[
+ c_s=b\,\theta_s(b^*),\qquad
+ C_s=B\,\Theta_s(B^*),\qquad B=J_\tau(b).
+ \tag{CBD27}
+\]</span>
+The <a href="OA-FLOW-TCC.html#tcc-4">joint-Borel/Fubini-slice construction, TC11–TC26</a>, is a second complete route to the same transfer function; its continuity step gives the identity for every <span class="math" data-tex="\(s\)">\(s\)</span>, not just almost every <span class="math" data-tex="\(s\)">\(s\)</span>. Both routes permit discontinuous Borel <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>The transfer function is unique up to one scalar: if <span class="math" data-tex="\(b,b'\)">\(b,b'\)</span> give the same cocycle, <span class="math" data-tex="\(b^*b'\)">\(b^*b'\)</span> is translation-invariant in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>. Convolution with a compact continuous approximate identity makes it a continuous invariant function, hence a constant; convergence in local <span class="math" data-tex="\(L^1\)">\(L^1\)</span> gives a single constant for the original class. Its modulus is one. Therefore <span class="math" data-tex="\(B\)">\(B\)</span> is unique up to multiplication by <span class="math" data-tex="\(\lambda d\)">\(\lambda d\)</span>, <span class="math" data-tex="\(|\lambda|=1\)">\(|\lambda|=1\)</span>.</p>
+<p>For any integrable supported <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, define on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, <span class="math" data-tex="\(p=s(\psi)\)">\(p=s(\psi)\)</span>,
+<span class="math math-display" data-tex="\[
+ \Sigma_C^\psi(x)=\mathcal E_\psi(B)\,x\,\mathcal E_\psi(B)^*.
+ \tag{CBD28}
+\]">\[
+ \Sigma_C^\psi(x)=\mathcal E_\psi(B)\,x\,\mathcal E_\psi(B)^*.
+ \tag{CBD28}
+\]</span>
+This is well-defined: <span class="math" data-tex="\(\mathcal E_\psi\)">\(\mathcal E_\psi\)</span> is unital into the corner, so its value is a unitary of <span class="math" data-tex="\(pMp\)">\(pMp\)</span>; the scalar ambiguity vanishes under conjugation. It is a normal automorphism with the displayed adjoint inverse. Centrality of its implementer in <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span> makes it fix <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span> pointwise, and centralizer unitary transport preserves <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on the entire positive cone. Equivalently, use bounded trace-density cutoffs and their increasing extended values. Pointwise cocycle multiplication and (CBD27) show that <span class="math" data-tex="\(C\mapsto\Sigma_C^\psi\)">\(C\mapsto\Sigma_C^\psi\)</span> is a group homomorphism.</p>
+<p>Choose a Borel representative <span class="math" data-tex="\(b:\mathbb R\to\mathbb T\)">\(b:\mathbb R\to\mathbb T\)</span>, changing its values on its null exceptional set to <span class="math" data-tex="\(1\)">\(1\)</span>, and put <span class="math" data-tex="\(f(\lambda)=b(\log\lambda)\)">\(f(\lambda)=b(\log\lambda)\)</span>. Equation (CBD1) gives
+<span class="math math-display" data-tex="\[
+ \mathcal E_\psi(B)=b(\log h_\psi)=f(h_\psi).
+ \tag{CBD29}
+\]">\[
+ \mathcal E_\psi(B)=b(\log h_\psi)=f(h_\psi).
+ \tag{CBD29}
+\]</span>
+This proves (CBD2) with the actual global carrier. All functions are interpreted on the support; for a faithful <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, the resulting automorphism is on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h3 id="agreement-with-the-reference-generator-action">Agreement with the reference generator action</h3>
+<p>This construction has the precise earlier generator convention. In the reference model (CBD11)–(CBD12),
+<span class="math math-display" data-tex="\[
+ \kappa_\nu^{-1}(B)=b(Q),\qquad
+ \kappa_\nu^{-1}(C_s)=c_s(Q).
+\]">\[
+ \kappa_\nu^{-1}(B)=b(Q),\qquad
+ \kappa_\nu^{-1}(C_s)=c_s(Q).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ \Sigma_C^\nu|_N=\mathrm{id},\qquad
+ \Sigma_C^\nu(u_s)=c_s(Q)u_s.
+ \tag{CBD30}
+\]">\[
+ \Sigma_C^\nu|_N=\mathrm{id},\qquad
+ \Sigma_C^\nu(u_s)=c_s(Q)u_s.
+ \tag{CBD30}
+\]</span>
+The equality follows directly from <span class="math" data-tex="\(u_sb(Q)^*u_s^*=\theta_s(b^*)(Q)\)">\(u_sb(Q)^*u_s^*=\theta_s(b^*)(Q)\)</span>.</p>
+<p>These are the actual <a href="OA-FLOW-RCC.html#rcc-6">RCC6 coefficient-fixing automorphism formulas</a>. To recall the normality mechanism independently, in the regular crossed-product representation the unitary
+<span class="math math-display" data-tex="\[
+ [D_c\xi](r)=c_{-r}^*\xi(r)
+\]">\[
+ [D_c\xi](r)=c_{-r}^*\xi(r)
+\]</span>
+is defined on the full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space by strongly continuous bounded fields. Its inverse uses <span class="math" data-tex="\(c_{-r}\)">\(c_{-r}\)</span>. Centrality makes it commute with the coefficient fields. The cocycle identity
+<span class="math" data-tex="\(c_{-r}^*c_{s-r}=\theta_{-r}(c_s)\)">\(c_{-r}^*c_{s-r}=\theta_{-r}(c_s)\)</span>
+gives <span class="math" data-tex="\(D_cu_sD_c^*=i(c_s)u_s\)">\(D_cu_sD_c^*=i(c_s)u_s\)</span>. Its image contains the coefficients and, after multiplying by <span class="math" data-tex="\(i(c_s^*)\)">\(i(c_s^*)\)</span>, every translation. Thus it induces an onto normal automorphism of the full crossed product. The reference identification with that crossed product, including the exact dual trace weight, is the normal coordinate and finite-square normalization proved after TI17; its paired measures are <span class="math" data-tex="\(ds\)">\(ds\)</span> and <span class="math" data-tex="\(dt/(2\pi)\)">\(dt/(2\pi)\)</span>. Since coefficients and translations generate, (CBD30) agrees with this actual RCC automorphism. No type-III-only construction is used.</p>
+<p>For the supported realization (CBD16), (CBD20) says
+<span class="math" data-tex="\(\mathcal E_\psi(B)=v^*b(Q)v\)">\(\mathcal E_\psi(B)=v^*b(Q)v\)</span>.
+Because <span class="math" data-tex="\(b(Q)\)">\(b(Q)\)</span> is central in <span class="math" data-tex="\(N\)">\(N\)</span>, it commutes with <span class="math" data-tex="\(e=vv^*\)">\(e=vv^*\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \Sigma_C^\psi(x)
+   =v^*\Sigma_C^\nu(vxv^*)v
+   =\operatorname{Ad}f(h_\psi)(x).
+ \tag{CBD31}
+\]">\[
+ \Sigma_C^\psi(x)
+   =v^*\Sigma_C^\nu(vxv^*)v
+   =\operatorname{Ad}f(h_\psi)(x).
+ \tag{CBD31}
+\]</span>
+This identity is valid for all supported integrable <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, including a finite centralizer: in that case the evaluation was defined by (CBD22)–(CBD25), while (CBD17) still holds for its supported realization. The density equality verifies the same corner formula. It agrees exactly with the action constructed in the <a href="OA-FLOW-TID.html#tid-7">density lesson, TI40–TI42</a>.</p>
+<p>Thus the required compatibility is proved rather than left as an assumption: actual carrier compression gives the density map, and its unitary values give the reference generator action and its supported transport. The center maps in (CBD8) and (CBD23) therefore give a canonical construction of the extended action and identify it with its reference-model realization.</p>
+<h3 id="frequency-and-sign-check">Frequency and sign check</h3>
+<p>If <span class="math" data-tex="\(x\in pMp\)">\(x\in pMp\)</span> has modular frequency <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math" data-tex="\(h_\psi^{it}x=e^{irt}xh_\psi^{it}\)">\(h_\psi^{it}x=e^{irt}xh_\psi^{it}\)</span>.
+The spectral intertwining theorem gives
+<span class="math" data-tex="\(xg(\log h_\psi)=g(\log h_\psi-r)x\)">\(xg(\log h_\psi)=g(\log h_\psi-r)x\)</span>
+for every bounded Borel <span class="math" data-tex="\(g\)">\(g\)</span>. It follows that
+<span class="math math-display" data-tex="\[
+ \Sigma_C^\psi(x)
+  =b(\log h_\psi)\overline{b(\log h_\psi-r)}x
+  =\mathcal E_\psi(C_{-r})x.
+ \tag{CBD32}
+\]">\[
+ \Sigma_C^\psi(x)
+  =b(\log h_\psi)\overline{b(\log h_\psi-r)}x
+  =\mathcal E_\psi(C_{-r})x.
+ \tag{CBD32}
+\]</span>
+For example, the spectral intertwining follows by equality of the finite scalar spectral measures' Fourier transforms; Gaussian convolution reduces uniqueness to the scalar <span class="math" data-tex="\(L^1\)">\(L^1\)</span> Fourier uniqueness in FF. This is also the complete argument of TI43.</p>
+<p>The actual bounded Fourier-eigenoperator proof in <a href="OA-FLOW-L29.html#l29-3">L29 Section 3</a>, together with the finite-positive density argument in TI7 and TI45, shows that all these eigenspaces span an ultraweakly dense subspace for an integrable action. In detail, for a positive element with bounded orbit average, compact Fourier integrals are uniformly bounded by that average and converge ultraweakly through their <span class="math" data-tex="\(L^1\)">\(L^1\)</span> normal functional pairings. Their limits have frequency <span class="math" data-tex="\(r\)">\(r\)</span>. A normal functional vanishing on all eigenspaces has zero Fourier transform on every such scalar orbit, hence vanishes at time zero by scalar uniqueness and continuity. The positive finite-average span is ultraweakly dense by the sandwich argument of TI7, so that functional is zero. Normality therefore makes (CBD32) another unique characterization of (CBD28).</p>
+<p>For the character and scaling conventions,
+<span class="math math-display" data-tex="\[
+ b(q)=e^{itq},\quad C_s=e^{-its}d
+ \quad\Longrightarrow\quad
+ \Sigma_C^\psi=\operatorname{Ad}h_\psi^{it}=\sigma_t^\psi.
+ \tag{CBD33}
+\]">\[
+ b(q)=e^{itq},\quad C_s=e^{-its}d
+ \quad\Longrightarrow\quad
+ \Sigma_C^\psi=\operatorname{Ad}h_\psi^{it}=\sigma_t^\psi.
+ \tag{CBD33}
+\]</span>
+The character <span class="math" data-tex="\(e^{its}d\)">\(e^{its}d\)</span> gives <span class="math" data-tex="\(\sigma_{-t}^\psi\)">\(\sigma_{-t}^\psi\)</span>. The reference <span class="math" data-tex="\(u_s\)">\(u_s\)</span> has frequency <span class="math" data-tex="\(-s\)">\(-s\)</span>, so (CBD32) uses <span class="math" data-tex="\(C_s\)">\(C_s\)</span> there, in agreement with (CBD30). Meanwhile multiplying the weight by <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span> changes its logarithmic density to <span class="math" data-tex="\(\log h_\psi-s\)">\(\log h_\psi-s\)</span>, and (CBD21) gives
+<span class="math math-display" data-tex="\[
+ q_{e^{-s}\psi}
+   =J_\tau(1_{S_\psi-s})
+   =\Theta_s(q_\psi).
+ \tag{CBD34}
+\]">\[
+ q_{e^{-s}\psi}
+   =J_\tau(1_{S_\psi-s})
+   =\Theta_s(q_\psi).
+ \tag{CBD34}
+\]</span>
+Both interval and character signs are forced by the original carrier law.</p>
+<p><span id="OA-FLOW.CBD.NATURALITY"></span><a id="cbd-naturality"></a></p>
+<h2 id="6-trace-normalization-equivalence-and-naturality">6. Trace normalization, equivalence and naturality</h2>
+<p>Changing the fixed trace to <span class="math" data-tex="\(\tau'=a\tau\)">\(\tau'=a\tau\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, changes the density to <span class="math" data-tex="\(h_\psi'=a^{-1}h_\psi\)">\(h_\psi'=a^{-1}h_\psi\)</span>. Keeping the same actual reference weight <span class="math" data-tex="\(\nu\)">\(\nu\)</span> in (CBD13) gives
+<span class="math math-display" data-tex="\[
+ J_{\tau'}g
+  =\kappa_\nu(g(\log k-\log a))
+  =J_\tau(\theta_{-\log a}g).
+ \tag{CBD35}
+\]">\[
+ J_{\tau'}g
+  =\kappa_\nu(g(\log k-\log a))
+  =J_\tau(\theta_{-\log a}g).
+ \tag{CBD35}
+\]</span>
+Thus for a fixed intrinsic carrier unitary <span class="math" data-tex="\(B=J_\tau b=J_{\tau'}b'\)">\(B=J_\tau b=J_{\tau'}b'\)</span>,
+<span class="math math-display" data-tex="\[
+ b'(q')=b(q'+\log a),\qquad
+ f'(\lambda)=f(a\lambda),\qquad
+ f'(h_\psi')=f(h_\psi).
+ \tag{CBD36}
+\]">\[
+ b'(q')=b(q'+\log a),\qquad
+ f'(\lambda)=f(a\lambda),\qquad
+ f'(h_\psi')=f(h_\psi).
+ \tag{CBD36}
+\]</span>
+The action is unchanged. This proves the coordinate transformation by equality inside the actual carrier; an unspecified conjugacy of translation actions would leave this normalization unresolved.</p>
+<p>More generally let <span class="math" data-tex="\(F:M\to M'\)">\(F:M\to M'\)</span> be a normal star isomorphism of properly infinite semifinite factors with separable predual, and fix traces <span class="math" data-tex="\(\tau,\tau'\)">\(\tau,\tau'\)</span>. There is a unique <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> with
+<span class="math" data-tex="\(\tau'\circ F=a\tau\)">\(\tau'\circ F=a\tau\)</span>.
+Indeed <a href="OA-FLOW-TD.html#oa-flow.td.5">TD</a> supplies its nonsingular affiliated density relative to <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Both weights are traces, so <a href="OA-FLOW-CZ.html#oa-flow.cz.5">the modular density formula</a> makes all its imaginary powers central. Spectral recovery makes the density scalar because <span class="math" data-tex="\(M\)">\(M\)</span> is a factor. Semifiniteness excludes an infinite scalar, and faithfulness excludes zero. This proves the stated exact scope of trace proportionality.</p>
+<p>For <span class="math" data-tex="\(\eta=F_*\psi=\psi\circ F^{-1}\)">\(\eta=F_*\psi=\psi\circ F^{-1}\)</span>, cutoff evaluation gives
+<span class="math math-display" data-tex="\[
+ h_\eta=a^{-1}F(h_\psi).
+ \tag{CBD37}
+\]">\[
+ h_\eta=a^{-1}F(h_\psi).
+ \tag{CBD37}
+\]</span>
+CGF's actual natural carrier map <span class="math" data-tex="\(\mathcal A(F)\)">\(\mathcal A(F)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \mathcal A(F)J_\tau(g)&amp;=J_{\tau'}(\theta_{\log a}g),\\
+ \mathcal E_\eta(\mathcal A(F)x)&amp;=F(\mathcal E_\psi(x)),\\
+ \Sigma_{\mathcal A(F)C}^{\,\eta}
+       &amp;=F\Sigma_C^\psi F^{-1}.
+ \end{aligned}
+ \tag{CBD38}
+\]">\[
+ \begin{aligned}
+ \mathcal A(F)J_\tau(g)&amp;=J_{\tau'}(\theta_{\log a}g),\\
+ \mathcal E_\eta(\mathcal A(F)x)&amp;=F(\mathcal E_\psi(x)),\\
+ \Sigma_{\mathcal A(F)C}^{\,\eta}
+       &amp;=F\Sigma_C^\psi F^{-1}.
+ \end{aligned}
+ \tag{CBD38}
+\]</span>
+For the first identity choose the dominant <span class="math" data-tex="\(\nu=\tau_k\)">\(\nu=\tau_k\)</span>. Its transported weight has density <span class="math" data-tex="\(a^{-1}F(k)\)">\(a^{-1}F(k)\)</span>. Formula (CBD6), or CGF's projection naturality applied to its central cuts, gives
+<span class="math" data-tex="\(\kappa_{F_*\nu}(Fz)=\mathcal A(F)\kappa_\nu(z)\)">\(\kappa_{F_*\nu}(Fz)=\mathcal A(F)\kappa_\nu(z)\)</span>.
+Substitute <span class="math" data-tex="\(z=g(\log k)\)">\(z=g(\log k)\)</span> and use (CBD37) to obtain the first line. The same central-cut argument gives the second line for <span class="math" data-tex="\(W_\infty\)">\(W_\infty\)</span> weights. Amplify <span class="math" data-tex="\(F\)">\(F\)</span> and use (CBD22)–(CBD25) to get it for every supported integrable weight. Applying this identity to <span class="math" data-tex="\(B\)">\(B\)</span> and its adjoint proves the third line.</p>
+<p>For an automorphism <span class="math" data-tex="\(F\)">\(F\)</span> and the same trace on source and target, the carrier modulus in the <span class="math" data-tex="\(J_\tau\)">\(J_\tau\)</span> chart is therefore <span class="math" data-tex="\(g(q)\mapsto g(q+\log a)\)">\(g(q)\mapsto g(q+\log a)\)</span>. This is an algebraic formula; it makes no claim about continuity of the automorphism-group modulus map. For inner <span class="math" data-tex="\(F=\operatorname{Ad}w\)">\(F=\operatorname{Ad}w\)</span>, trace cyclicity gives <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, so its carrier map is the identity as in CGF (CI42), while (CBD38) still records the correct transport of the individual action.</p>
+<p>A supported weight equivalence, without a full ambient automorphism, is also enough. Its partial isometry <span class="math" data-tex="\(w\)">\(w\)</span> transports the entire density and bounded spectral calculus by cutoff trace uniqueness. Equation (CBD9), extended through amplification if necessary, then gives
+<span class="math math-display" data-tex="\[
+ \Sigma_C^\psi
+   =\operatorname{Ad}(w^*)\circ\Sigma_C^\eta\circ\operatorname{Ad}w
+       \quad\text{on }s(\psi)Ms(\psi).
+ \tag{CBD39}
+\]">\[
+ \Sigma_C^\psi
+   =\operatorname{Ad}(w^*)\circ\Sigma_C^\eta\circ\operatorname{Ad}w
+       \quad\text{on }s(\psi)Ms(\psi).
+ \tag{CBD39}
+\]</span>
+These formulas prove independence of all equivalent dominant realizations and all supported comparison choices.</p>
+<p><span id="OA-FLOW.CBD.MODELS"></span><a id="cbd-models"></a></p>
+<h2 id="7-exact-models-that-distinguish-the-hypotheses">7. Exact models that distinguish the hypotheses</h2>
+<p><strong>A faithful weight with a proper carrier cut.</strong> Let <span class="math" data-tex="\(I=[0,1]\)">\(I=[0,1]\)</span>,
+<span class="math" data-tex="\(H=L^2(I,dq)\otimes\ell^2\)">\(H=L^2(I,dq)\otimes\ell^2\)</span>, <span class="math" data-tex="\(M=B(H)\)">\(M=B(H)\)</span>, <span class="math" data-tex="\(\tau=\operatorname{Tr}_H\)">\(\tau=\operatorname{Tr}_H\)</span>, and
+<span class="math" data-tex="\(h=M_{e^q}\otimes1\)">\(h=M_{e^q}\otimes1\)</span>. The weight <span class="math" data-tex="\(\phi=\tau_h\)">\(\phi=\tau_h\)</span> is faithful normal semifinite, since <span class="math" data-tex="\(1\le h\le e\)">\(1\le h\le e\)</span>, and its centralizer is
+<span class="math" data-tex="\(L^\infty(I)\overline\otimes B(\ell^2)\)">\(L^\infty(I)\overline\otimes B(\ell^2)\)</span>, by the multiplier commutant calculation. It is properly infinite. The type-I factor can be <span class="math" data-tex="\(B=M\)">\(B=M\)</span>; its logarithmic spectral measure is Lebesgue measure on <span class="math" data-tex="\(I\)">\(I\)</span> with infinite multiplicity. Compressing the regular positive averages of TI8–TI12 to <span class="math" data-tex="\(I\)">\(I\)</span> proves integrability. Consequently
+<span class="math math-display" data-tex="\[
+ s(\phi)=1_M,\qquad
+ q_\phi=J_\tau(1_{[0,1]})&lt;d,\qquad
+ \Theta_s(q_\phi)=J_\tau(1_{[-s,1-s]}).
+ \tag{CBD40}
+\]">\[
+ s(\phi)=1_M,\qquad
+ q_\phi=J_\tau(1_{[0,1]})&lt;d,\qquad
+ \Theta_s(q_\phi)=J_\tau(1_{[-s,1-s]}).
+ \tag{CBD40}
+\]</span>
+Thus faithful support in the original factor and full support in the continuous carrier sector are different conditions. The closed endpoints have no spectral effect.</p>
+<p>For any Borel <span class="math" data-tex="\(D\subset\mathbb R\)">\(D\subset\mathbb R\)</span>, this example gives the exact projection square
+<span class="math math-display" data-tex="\[
+ \mathcal E_\phi(J_\tau1_D)
+   =E_{\log h}(D)
+   =M_{1_{D\cap[0,1]}}\otimes1.
+ \tag{CBD41}
+\]">\[
+ \mathcal E_\phi(J_\tau1_D)
+   =E_{\log h}(D)
+   =M_{1_{D\cap[0,1]}}\otimes1.
+ \tag{CBD41}
+\]</span>
+The left side first cuts the global carrier projection by <span class="math" data-tex="\(q_\phi\)">\(q_\phi\)</span>; the right side cuts the actual spectral coordinate on <span class="math" data-tex="\(H\)">\(H\)</span>. The figure displays this equality.</p>
+<p><strong>A discontinuous transfer and a possible action kernel.</strong> Put
+<span class="math" data-tex="\(b(q)=\exp(i\pi 1_{[0,1/2]}(q)/3)\)">\(b(q)=\exp(i\pi 1_{[0,1/2]}(q)/3)\)</span>.
+Then <span class="math" data-tex="\(c_s(q)=b(q)\overline{b(q+s)}\)">\(c_s(q)=b(q)\overline{b(q+s)}\)</span> is strongly continuous in <span class="math" data-tex="\(s\)">\(s\)</span>, by local <span class="math" data-tex="\(L^2\)">\(L^2\)</span> continuity of interval translations and bounded approximation on arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> tests. On the preceding model,
+<span class="math math-display" data-tex="\[
+ \Sigma_C^\phi(X)(q,q')
+   =\exp\!\left(\frac{\pi i}{3}
+       [1_{[0,1/2]}(q)-1_{[0,1/2]}(q')]\right)X(q,q')
+ \tag{CBD42}
+\]">\[
+ \Sigma_C^\phi(X)(q,q')
+   =\exp\!\left(\frac{\pi i}{3}
+       [1_{[0,1/2]}(q)-1_{[0,1/2]}(q')]\right)X(q,q')
+ \tag{CBD42}
+\]</span>
+for every Hilbert–Schmidt operator kernel, including the multiplicity entries; bounded multiplier conjugation extends it normally to all <span class="math" data-tex="\(M\)">\(M\)</span>. A rank-one kernel with <span class="math" data-tex="\(q&lt;1/2&lt;q'\)">\(q&lt;1/2&lt;q'\)</span> acquires <span class="math" data-tex="\(e^{i\pi/3}\)">\(e^{i\pi/3}\)</span>, so the action is nontrivial.</p>
+<p>If instead <span class="math" data-tex="\(b(q)=\exp(i\pi 1_{[2,3]}(q)/3)\)">\(b(q)=\exp(i\pi 1_{[2,3]}(q)/3)\)</span>, its restriction to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. The cocycle on the full sector is nontrivial, but <span class="math" data-tex="\(\mathcal E_\phi(B)=1\)">\(\mathcal E_\phi(B)=1\)</span>, so <span class="math" data-tex="\(\Sigma_C^\phi=\mathrm{id}\)">\(\Sigma_C^\phi=\mathrm{id}\)</span>. One must not infer injectivity of the action at a weight whose carrier is a proper sector cut.</p>
+<p><strong>Finite multiplicity survives before amplification.</strong> On <span class="math" data-tex="\(B(L^2(\mathbb R))\)">\(B(L^2(\mathbb R))\)</span> compare <span class="math" data-tex="\(h_1=e^Q\)">\(h_1=e^Q\)</span> with a fixed Hilbert-space transport of <span class="math" data-tex="\(h_2=e^Q\otimes1_{\mathbb C^2}\)">\(h_2=e^Q\otimes1_{\mathbb C^2}\)</span>. Both weights relative to the usual fixed trace are faithful normal semifinite and integrable by the regular average and finite amplification arguments. Both have maximal logarithmic spectral type <span class="math" data-tex="\(dq\)">\(dq\)</span>, hence their amplified carriers are <span class="math" data-tex="\(d\)">\(d\)</span>. They are not equivalent as unamplified weights: the first centralizer is the abelian <span class="math" data-tex="\(L^\infty(\mathbb R)\)">\(L^\infty(\mathbb R)\)</span>, while the second is <span class="math" data-tex="\(L^\infty(\mathbb R)\overline\otimes M_2\)">\(L^\infty(\mathbb R)\overline\otimes M_2\)</span>, which is nonabelian. Supported equivalence between faithful weights is unitary and transports centralizers, making such equivalence impossible. This verifies the qualification after (CBD26).</p>
+<p><strong>The normalization test.</strong> For <span class="math" data-tex="\(b(q)=e^{iq^2}\)">\(b(q)=e^{iq^2}\)</span>, rescale <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to <span class="math" data-tex="\(2\tau\)">\(2\tau\)</span>. Equations (CBD35)–(CBD36) give <span class="math" data-tex="\(b'(q')=e^{i(q'+\log2)^2}\)">\(b'(q')=e^{i(q'+\log2)^2}\)</span> and the same implementer <span class="math" data-tex="\(b'(\log(h/2))=b(\log h)\)">\(b'(\log(h/2))=b(\log h)\)</span>. Holding <span class="math" data-tex="\(b\)">\(b\)</span> fixed instead produces
+<span class="math math-display" data-tex="\[
+ b(\log(h/2))\,b(\log h)^*
+   =e^{i(\log2)^2}\,h^{-2i\log2},
+ \tag{CBD43}
+\]">\[
+ b(\log(h/2))\,b(\log h)^*
+   =e^{i(\log2)^2}\,h^{-2i\log2},
+ \tag{CBD43}
+\]</span>
+which changes the action by <span class="math" data-tex="\(\sigma_{-2\log2}^\phi\)">\(\sigma_{-2\log2}^\phi\)</span>. The scalar phase alone disappears under conjugation.</p>
+<p><span id="OA-FLOW.CBD.FIGURE"></span><a id="cbd-figure"></a></p>
+<h2 id="8-the-exact-map-and-its-sign">8. The exact map and its sign</h2>
+<p>The following diagram is the actual commuting square (CBD20), with all four units shown. Its interval panel uses <span class="math" data-tex="\(s=1/4\)">\(s=1/4\)</span> in (CBD40), so the carrier interval moves from <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> to <span class="math" data-tex="\([-1/4,3/4]\)">\([-1/4,3/4]\)</span>. Intersecting the moved carrier with the original <span class="math" data-tex="\(q_\phi\)">\(q_\phi\)</span> and applying <span class="math" data-tex="\(\kappa_\phi^{-1}\)">\(\kappa_\phi^{-1}\)</span> gives <span class="math" data-tex="\(E_{\log h}([0,3/4])\)">\(E_{\log h}([0,3/4])\)</span>. This is the bounded evaluation map, not an assertion that <span class="math" data-tex="\(q_\phi\)">\(q_\phi\)</span> itself is scaling-fixed.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Carrier evaluation commutes with density calculus, with exact translated intervals." src="assets/carrier-density-action/cbd-maps.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>Actual normal maps, (CBD20) and (CBD25); exact carrier and spectral intervals, (CBD40)–(CBD41). All units, the support compression and the translation sign are shown. The mathematical antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, XII.4.1–4.4(i), pp. 403–405, and Exercise XII.4.1(d), p. 420. The displayed square and exact interval model are proved here. Original figure: CC0.</p>
+<p><span id="OA-FLOW.CBD.READING"></span><a id="cbd-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, XII.4.1–4.4(i), pp. 403–405, develops the carrier and its central cuts; XII.4.18–4.21, pp. 417–419, treats supported comparison and integrability. Exercise XII.4.1(d), p. 420, asks for the fixed-trace functional-calculus formula for the extended action. The normal center maps and their amplification are proved in Sections 1 and 4; Sections 2–3 identify their actual values with spectral calculus; Sections 5–6 prove the action formula and its exact covariance.</p>
+<p>The main earlier proofs are <a href="OA-FLOW-CGF.html#cgf-3">the global carrier and supported integrability</a>, <a href="OA-FLOW-DS.html#ds-5">dominant comparison</a>, <a href="OA-FLOW-TID.html#tid-5">type-I density and supported comparison</a>, <a href="OA-FLOW-TCC.html#tcc-4">translation cocycles</a>, and <a href="OA-FLOW-RCC.html#rcc-6">normal coefficient-fixing automorphisms</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-TID.html">Previous lesson</a><a href="OA-FLOW-BFC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CBD.md">Lesson source</a></nav></main></body></html>

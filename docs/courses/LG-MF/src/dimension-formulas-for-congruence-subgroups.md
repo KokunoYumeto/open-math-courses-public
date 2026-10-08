@@ -4,7 +4,7 @@
 
 A modular form changes when its argument is changed by a matrix, but a suitable differential built from it is invariant. The differential may have poles at the cusps and at elliptic points. Computing the allowed pole orders turns the problem of counting modular forms into a problem about line bundles on a compact curve.
 
-We assume Modular curves and their genus and The valence formula and the ring of modular forms of level one. The slash operator and cusp expansions are those of Modular forms, lattice functions and Eisenstein series. We retain the even-weight formulas for every finite-index subgroup, odd weights, characters and arithmetic coefficient bounds. The degree formula and complex bound are derived below by a finite norm from the earlier valence proof. Appendix A proves the compact-curve theorem of Section 1, including arbitrary line bundles and the analytic/topological genus comparison. The elementary real and Hilbert-space framework listed there still needs exact programme proof verification, and the arithmetic input in Section 6.1 remains unproved; full proof closure is not claimed.
+We assume Modular curves and their genus and The valence formula and the ring of modular forms of level one. The slash operator and cusp expansions are those of Modular forms, lattice functions and Eisenstein series. We retain the even-weight formulas for every finite-index subgroup, odd weights, characters and arithmetic coefficient bounds. The degree formula and complex bound are derived below by a finite norm from the earlier valence proof. Appendix A proves the compact-curve theorem of Section 1, including arbitrary line bundles and the analytic/topological genus comparison. The smooth-completion, Fourier and weak-derivative framework is constructed in A.1; the elementary real-calculus, coordinate-integral and Stokes prerequisites stated there still need exact programme proof verification, and the arithmetic input in Section 6.1 remains unproved; full proof closure is not claimed.
 
 Let \(\Gamma\) be such a subgroup, let \(\bar\Gamma\) be its image in \(\mathrm{PSL}_2(\mathbb Z)\), and write
 \[
@@ -1023,7 +1023,7 @@ For example, \(\dim S_2(25,\eta)=30/12-3+1/2=0\), whereas (5.18) gives one for \
 
 Let \(X\) be any compact connected Riemann surface without boundary, let \(L\) be any holomorphic line bundle, and write \(K=\Omega_X^1\). The proof below establishes duality, meromorphic-section existence and Riemann–Roch for every such \(X,L\). It first uses the analytic genus \(g_a=h^0(K)\); A.7 constructs finite polygon cells and invokes the earlier proof in lesson 03, Appendix A, Theorem S, to show that \(g_a\) equals the number of torus handles. The theorem is not restricted to divisor bundles, a special genus or a particular modular level.
 
-The remaining elementary foundations are completeness of \(\mathbb R,\mathbb C\), compactness, real integration and its change-of-variables and convergence properties, weak derivatives, and Hilbert-space completion. Exact earlier programme proofs of that framework still require verification. The specific singular-kernel interchange is proved in A.3 by grid sums and explicit errors; general measurable Fubini is not used for it. The Fourier compactness, elliptic estimates, closed range, local solvability, finite-dimensionality, point-addition sequence and duality are proved below. Cauchy, Taylor series, the identity theorem and local inverses are lesson 01, Lemma 0.2 and its consequences; Laurent expansions are lesson 04, Lemma 0.1. Neither Riemann–Roch, algebraization, a general Fredholm theorem nor a sheaf-duality theorem is assumed.
+The remaining elementary foundations are real completeness, compactness, smooth real calculus, existence and finite additivity of continuous Riemann integrals, coordinate-integral change of variables, and the smooth-boundary Stokes approximation in (R1). Exact earlier programme proofs of these inputs still require verification. A.1 constructs the Hilbert and nonnegative integer Sobolev completions, Fourier density, completed derivative maps and their injective weak-test realizations from those specified inputs. The specific singular-kernel interchange is proved in A.3 by grid sums and explicit errors; general measurable Fubini is not used for it. The Fourier compactness, elliptic estimates, closed range, local solvability, finite-dimensionality, point-addition sequence and duality are proved below. Cauchy, Taylor series, the identity theorem and local inverses are lesson 01, Lemma 0.2 and its consequences; Laurent expansions are lesson 04, Lemma 0.1. Neither Riemann–Roch, algebraization, a general Fredholm theorem nor a sheaf-duality theorem is assumed.
 
 ### A.1. Cutoffs, integration, and the Fourier estimates
 
@@ -1037,41 +1037,503 @@ We will use the following integration fact. For a smooth one-form \(\nu\) on a c
  \tag{R1}
 \]
 Here is the reduction to the real foundations, rather than an imported surface theorem. Multiply by the finite partition of unity. Since \(\sum d\rho_i=0\),
-\(\sum d(\rho_i\nu)=d\nu\). Each term has support in one coordinate chart. For a rectangle the formula is exactly the fundamental theorem of calculus applied to the coefficients of \(\nu=A\,dx+B\,dy\), followed by Fubini. Subdivision cancels interior sides. Smooth boundary arcs follow by approximation with inscribed coordinate polygons and change of variables; continuity of the coefficients and their first derivatives makes both integrals converge. Adding the chart formulas gives (R1). In particular the integral of an exact two-form on closed \(X\) is zero. This uses the stated real integration foundations, not a compact-curve or genus theorem.
+\(\sum d(\rho_i\nu)=d\nu\). Each term has support in one coordinate chart. For a rectangle the formula is exactly the fundamental theorem of calculus applied to the coefficients of \(\nu=A\,dx+B\,dy\), followed by the continuous rectangle interchange of lesson 01, Lemma 0.3. Subdivision cancels interior sides. Smooth boundary arcs follow by approximation with inscribed coordinate polygons and change of variables; continuity of the coefficients and their first derivatives makes both integrals converge. Adding the chart formulas gives (R1). In particular the integral of an exact two-form on closed \(X\) is zero. This uses the stated real integration foundations, not a compact-curve or genus theorem.
 
-For functions supported inside a coordinate rectangle, extend by zero and regard the result as periodic on a larger rectangle. The exponential functions form a complete orthogonal system in its \(L^2\) space. To see completeness directly, the period-one Fejér kernels
-\[
- F_N(t)=N^{-1}\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2
-\]
-are nonnegative, have integral one, and have mass tending to zero outside every fixed neighborhood of zero. Uniform continuity proves that their convolutions converge uniformly to continuous periodic functions. Step functions, with their finitely many discontinuities smoothed on intervals of arbitrarily small total length, show that continuous functions are dense in \(L^2\). Products of the kernels give the assertion on a rectangle. Orthogonal projection onto the finite Fourier spans then gives Parseval's equality. Integration by parts identifies the Fourier coefficients of weak derivatives.
+#### A.1.1. Remaining inputs and the meaning of the spaces
 
-Throughout these Fourier estimates, \(s\in\mathbb Z_{\ge0}\). If \(v\) has Fourier coefficients \(\widehat v(m,n)\), define its nonnegative integer Sobolev norm by
+We retain the ordered-field properties and completeness of \(\mathbb R\), and the elementary real and complex algebra used in finite sums, absolute values, square roots and limits. Completeness of \(\mathbb C\) then follows directly: the real and imaginary parts of a complex Cauchy sequence are real Cauchy sequences, and their real limits give the complex limit, since \(|z|^2=(\Re z)^2+(\Im z)^2\). Completeness of the real numbers itself is not proved here.
+
+We also retain the following real-calculus facts, with their hypotheses:
+
+1. A continuous function on a compact rectangle has its Riemann integral; this integral is linear, positive on nonnegative functions, additive under finite subdivision, and bounded in absolute value by rectangle area times the uniform bound. The same properties apply to finite sums of compactly supported chart integrals. Limits that converge uniformly may be integrated, by the estimate just stated. The existence theory of this integral is not supplied here.
+2. Smooth functions obey the finite product and chain rules and the fundamental theorem of one-variable calculus. The elementary exponential and sine identities and derivative/periodicity facts used explicitly in (H15)–(H17) are retained elementary calculus inputs as well. The resulting integration-by-parts identity for smooth functions on intervals is retained. Its compact-rectangle version follows by the continuous rectangle interchange proved in A.1.5; smooth compact support or periodicity removes the boundary terms.
+3. A compact continuous function is bounded and uniformly continuous, and a positive continuous function on a compact set has a positive lower bound. The finite coordinate covers, smaller disks, smooth cutoffs and partitions in the first two paragraphs of A.1 are retained, including their elementary real-calculus and compactness prerequisites.
+4. Integrating a density in two overlapping smooth coordinates gives the same value after multiplying by the coordinate Jacobian. The multivariable change-of-variables proof needed for that assertion is still required. In particular, the smooth conformal density and Hermitian norms in A.1 must be compatible across charts. Only translations and periodic interval splits needed in A.1.6 are proved here directly from Riemann sums.
+
+No general measurable density theorem, Lebesgue representation theorem, measurable Fubini/Tonelli theorem, dominated-convergence theorem, Hilbert completion theorem, Riesz representation theorem, general Sobolev theorem or general distributional regularization theorem is assumed in this supplement. The specific test-function maps and weak-limit assertions used below are defined and proved below. Claims about arbitrary measurable \(L^2\) functions, general distributions or arbitrary measurable integration are outside its scope.
+
+For a smooth Hermitian bundle \(E\) on the compact \(X\), define \(L^2(X,E)\) **as the completion of its smooth sections**, in the integral inner product
 \[
- \|v\|_{W^s}^2=\sum_{m,n}(1+m^2+n^2)^s|\widehat v(m,n)|^2.
+\begin{gathered}
+\langle u,v\rangle_2=\int_Xh(u,v)\,dV.
+\end{gathered}
+ \tag{H0}
 \]
-Rescaling the rectangle changes these norms by fixed positive comparison constants. The multiplier of
-\(\partial_{\bar z}=(\partial_x+i\partial_y)/2\) has squared modulus
-\(\pi^2(m^2/a^2+n^2/b^2)\) on a rectangle of side periods \(a,b\). Hence
+
+Our inner products are linear in the first slot and conjugate-linear in the second.
+The integral of a smooth scalar density is the finite chart integral just described. Positivity is strict on a nonzero smooth section: such a section has positive norm at one point, hence a fixed positive lower bound on a sufficiently small closed coordinate rectangle of positive area. Thus (H0) is an inner product on smooth sections, rather than a seminorm there. The bundle of \(L\)-valued \((0,1)\)-forms has its own smooth positive metric and the same definition.
+
+For a periodic rectangle \(T_{a,b}=(\mathbb R/a\mathbb Z)\times(\mathbb R/b\mathbb Z)\), use normalized area
 \[
- \begin{gathered}
- \|v\|_{W^{s+1}}\\
- \le C_s\bigl(\|\partial_{\bar z}v\|_{W^s}+\|v\|_{W^s}\bigr).
- \end{gathered}
+\begin{gathered}
+d\mu=(ab)^{-1}dx\,dy,\\
+\langle f,g\rangle_0=\int_{T_{a,b}}f\overline g\,d\mu.
+\end{gathered}
+ \tag{H1}
+\]
+Its \(L^2\) space likewise means the completion of smooth periodic functions. A.1.6 will prove Fourier density in this completion. One must put this definition before invoking its Fourier completeness. It makes the step-function density assertion in A.1 unnecessary.
+
+#### A.1.2. The elementary inner-product inequalities
+
+Let \(V\) be a complex inner-product space with the convention in (H0), and put \(\|x\|=\sqrt{\langle x,x\rangle}\). If \(y\ne0\), set \(\lambda=\langle x,y\rangle/\|y\|^2\). Expansion of the nonnegative square gives
+\[
+ 0\le\|x-\lambda y\|^2
+ =\|x\|^2-\frac{|\langle x,y\rangle|^2}{\|y\|^2}.
+\]
+If \(y=0\), the following inequality is immediate. Thus
+\[
+ |\langle x,y\rangle|\le\|x\|\,\|y\|.
+ \tag{H2}
+\]
+In particular,
+\[
+ \begin{aligned}
+ \|x+y\|^2
+ &=\|x\|^2+2\Re\langle x,y\rangle+\|y\|^2\\
+ &\le(\|x\|+\|y\|)^2.
+ \end{aligned}
+\]
+Taking nonnegative square roots proves the triangle inequality. Applying it twice gives
+\[
+ \bigl|\|x\|-\|y\|\bigr|\le\|x-y\|.
+ \tag{H3}
+\]
+The polarization expansions also give the parallelogram identity
+\[
+\begin{gathered}
+\|x+y\|^2+\|x-y\|^2\\
+=2\|x\|^2+2\|y\|^2.
+\end{gathered}
+ \tag{H4}
+\]
+These proofs apply to finite weighted scalar products, and to the smooth integral inner products in A.1.1, because their linearity, conjugate symmetry and positivity are among the retained elementary integral properties.
+
+Every norm-Cauchy sequence is bounded: its tail lies within distance one of one fixed term, and its finitely many earlier norms have a finite maximum.
+
+#### A.1.3. Completion by Cauchy classes
+
+Let \(\mathcal C(V)\) be the set of norm-Cauchy sequences in \(V\). Say \((x_n)\sim(y_n)\) if \(\|x_n-y_n\|\to0\). This is an equivalence relation by the triangle inequality. Pointwise addition and scalar multiplication preserve Cauchy sequences and equivalence classes, so the quotient \(\widehat V=\mathcal C(V)/{\sim}\) is a complex vector space.
+
+For Cauchy sequences \((x_n),(y_n)\), the scalars \(\langle x_n,y_n\rangle\) are Cauchy. Indeed,
+\[
+ \begin{aligned}
+ |\langle x_n,y_n\rangle-\langle x_m,y_m\rangle|
+ &\le \|x_n-x_m\|\,\|y_n\|\\
+ &\quad+\|x_m\|\,\|y_n-y_m\|,
+ \end{aligned}
+\]
+and both sequences of norms are bounded. Completeness of \(\mathbb C\), reduced to the retained completeness of \(\mathbb R\) in A.1.1, therefore defines
+\[
+ \langle[x_n],[y_n]\rangle_{\widehat V}
+ =\lim_n\langle x_n,y_n\rangle.
+ \tag{H5}
+\]
+Replacing either sequence by an equivalent one leaves this limit unchanged, by the same estimate. Linearity and conjugate symmetry pass through finite sums and scalar limits. Moreover,
+\[
+ \|[x_n]\|_{\widehat V}=\lim_n\|x_n\|.
+ \tag{H6}
+\]
+The limit on the right exists by (H3). Its square is (H5) on the diagonal. If it is zero, \((x_n)\sim(0)\); hence (H5) is positive definite. The proofs of A.1.2 apply to this extended inner product.
+
+The map \(i:V\to\widehat V\) sending \(x\) to the constant sequence is linear and isometric. Its range is dense. For \(u=[x_n]\), the Cauchy property gives
+\[
+\begin{gathered}
+\|u-i(x_N)\|=\lim_n\|x_n-x_N\|,\\
+\|u-i(x_N)\|\longrightarrow0\quad(N\to\infty).
+\end{gathered}
+ \tag{H7}
+\]
+
+Here is a full completeness proof. Suppose \((u_j)\) is Cauchy in \(\widehat V\). Choose increasing indices \(j_r\) so that
+\[
+ \|u_p-u_q\|\le2^{-r}\quad(p,q\ge j_r).
+\]
+By (H7), choose \(v_r\in V\) with \(\|i(v_r)-u_{j_r}\|\le2^{-r}\). For \(r\ge s\),
+\[
+ \|v_r-v_s\|
+ \le2^{-r}+2^{-s}+2^{-s}\le3\,2^{-s}.
+\]
+Thus \((v_r)\) is Cauchy in \(V\), and defines \(u=[v_r]\). Taking \(r\to\infty\) in this bound yields
+\[
+ \|u-i(v_s)\|\le3\,2^{-s},
+ \qquad \|u-u_{j_s}\|\le4\,2^{-s}.
+\]
+The subsequence converges to \(u\). Given a positive tolerance, first use the Cauchy property of the full sequence and then one sufficiently late subsequence term. The triangle inequality proves \(u_j\to u\). This proves completeness of \(\widehat V\) without assuming a Hilbert completion theorem.
+
+For later use, suppose \(A:V\to H\) is linear, \(H\) is complete, and \(\|Av\|_H\le C\|v\|\). Then
+\[
+ \widehat A([v_n])=\lim_n Av_n
+ \tag{H8}
+\]
+exists, is independent of the representative, is linear, and has the same bound. Independence and the bound follow from the displayed estimate; existence follows because \((Av_n)\) is Cauchy. A continuous extension is unique by (H7). If \(A\) is an isometry with dense range, its extension is onto: approximate a given element of \(H\) by \(Av_n\); the isometry makes \((v_n)\) Cauchy.
+
+Finite orthogonal projections need no additional theorem. For orthonormal \(e_1,\ldots,e_r\), expansion shows that
+\[
+\begin{gathered}
+P_Fx=\sum_{j=1}^r\langle x,e_j\rangle e_j,\\
+\|x\|^2=\|P_Fx\|^2+\|x-P_Fx\|^2.
+\end{gathered}
+ \tag{H9}
+\]
+The residual is orthogonal to the span. Subtracting any other vector of the span and expanding proves \(\|x-P_Fx\|\le\|x-v\|\) for \(v\) in that span. These identities hold in \(\widehat V\) as well. The minimizing-sequence argument already written at (R6) can now use the completeness proved above; it is not a new imported Hilbert-space result.
+
+A closed subspace of the completion is complete: its Cauchy sequences have ambient limits by the proof above, and closedness puts those limits in the subspace. If a subspace is infinite dimensional, choose a vector outside each already chosen finite orthonormal span, subtract (H9)'s projection and normalize the nonzero residual. This recursive finite calculation supplies the infinite orthonormal sequence used in A.2.
+
+#### A.1.4. Complete weighted square-sum spaces
+
+Fix the countable index set \(I=\mathbb Z^2\), with \(F_R=\{(m,n):|m|,|n|\le R\}\), and positive finite real weights \(w_i\). Define
+\[
+\begin{gathered}
+\|a\|_w^2=\sup_R\sum_{i\in F_R}w_i|a_i|^2,\\
+\ell^2(w)=\{a\in\mathbb C^I:\|a\|_w<\infty\}.
+\end{gathered}
+ \tag{H10}
+\]
+The sum means the increasing limit of these finite sums, whose existence is a consequence of the retained real completeness. The tail outside \(F_R\) has square-sum norm tending to zero: it is the difference between that limit and the finite sum. Consequently finitely supported sequences are dense.
+
+The finite triangle inequality, followed by the supremum over finite sums, shows that \(a+b\) belongs to this space when \(a,b\) do; scalar multiplication is immediate. Thus it is a vector space before the inner product below is introduced.
+
+The finite Cauchy–Schwarz inequality of A.1.2 gives
+\[
+ \begin{aligned}
+\sum_{i\in F}w_i|a_i\overline{b_i}|
+ &\le\left(\sum_{i\in F}w_i|a_i|^2\right)^{1/2}\\
+ &\qquad\cdot\left(\sum_{i\in F}w_i|b_i|^2\right)^{1/2}.
+\end{aligned}
+\]
+for every finite \(F\). Thus the scalar series
+\[
+ \langle a,b\rangle_w=\sum_iw_i a_i\overline{b_i}
+ \tag{H11}
+\]
+converges absolutely. For example, its tail is bounded by the product of the two square-sum tail norms. Finite regrouping followed by this tail estimate shows that its value is independent of an enumeration or a nested finite exhaustion. No interchange theorem for integrals or multiple infinite sums is used. Formula (H11) is an inner product with the norm of (H10).
+
+To prove completeness, let \(a^{(j)}\) be norm-Cauchy. For a fixed \(i\),
+\[
+ |a_i^{(j)}-a_i^{(k)}|
+ \le w_i^{-1/2}\|a^{(j)}-a^{(k)}\|_w,
+\]
+so \(a_i^{(j)}\) has a scalar limit \(a_i\). Given \(\varepsilon>0\), choose \(J\) such that the norm difference is at most \(\varepsilon\) for \(j,k\ge J\). For \(j\ge J\) and every finite \(F\), pass \(k\to\infty\) in its **finite** sum:
+\[
+ \sum_{i\in F}w_i|a_i^{(j)}-a_i|^2\le\varepsilon^2.
+ \tag{H12}
+\]
+For one such \(j\), the finite triangle inequality gives
+\[
+ \left(\sum_{i\in F}w_i|a_i|^2\right)^{1/2}
+ \le\varepsilon+\|a^{(j)}\|_w.
+\]
+Taking the supremum proves \(a\in\ell^2(w)\). Taking the supremum in (H12) now gives \(\|a^{(j)}-a\|_w\le\varepsilon\). This is a complete proof of weighted square-sum completeness using only finite inequalities and scalar completeness.
+
+For the Fourier weights needed in A.1,
+\[
+\begin{gathered}
+w_s(m,n)=(1+m^2+n^2)^s,\\
+s\in\mathbb Z_{\ge0}.
+\end{gathered}
+ \tag{H13}
+\]
+They satisfy \(w_s\ge1\). Hence the coordinate identity \(\ell^2(w_s)\to\ell^2(w_0)\) is bounded with norm at most one and is injective. If its image is zero, every coordinate is zero, so the original vector is zero. This last argument must not be replaced by naming two abstract completion elements the same function.
+
+#### A.1.5. Continuous rectangle integrals and translations
+
+The continuous compact-rectangle interchange is proved in lesson 01, Lemma 0.3: both iterated integrals approach the same finite product-grid sums, with error bounded by the product area times the modulus of continuity. Apply that argument to real and imaginary parts, and repeat it for the finitely many rectangle coordinates used below. We refer to this equality as (H14). It is a continuous assertion.
+
+For a continuous complex \(g\), tagged sums give \(|\int g|\le\int|g|\) on passage to the Riemann limits. Translation preserves a rectangle integral because translating its cells and tags preserves every sum. For a continuous period-one function, split an interval of length one at an integer boundary, translate its pieces by integers, and use periodicity and finite additivity: its integral does not depend on the starting point. Applying this in the two coordinates and using (H14) proves the periodic rectangle shift identity. Finite unions of the coordinate strips used below require only finite subdivision.
+
+#### A.1.6. Fourier density and Parseval in the smooth completion
+
+First rescale \(T_{a,b}\) to \(T_{1,1}\). The rescaling is affine and its normalized tagged sums agree term by term, so no general change-of-variables theorem is needed for this step. The exponentials
+\[
+\begin{gathered}
+e_{m,n}(x,y)\\
+=\exp\bigl(2\pi i(mx/a+ny/b)\bigr).
+\end{gathered}
+ \tag{H15}
+\]
+are orthonormal in (H1). One-variable integration of the exponential, by its elementary derivative and the retained fundamental theorem, gives zero for a nonzero integer frequency and one for zero frequency; (H14) gives the product assertion.
+
+For \(N\ge1\), on the period-one circle put
+\[
+ F_N(t)=N^{-1}\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2.
+\]
+Expanding this finite square gives
+\[
+\begin{gathered}
+F_N(t)\\
+=\sum_{|m|<N}(1-|m|/N)e^{2\pi imt}.
+\end{gathered}
+ \tag{H16}
+\]
+It is nonnegative and has integral one. If the circle distance of \(t\) from zero is at least \(\delta\), where \(0<\delta<1/2\), the finite geometric-sum identity gives
+\[
+ F_N(t)\le\frac1{N\sin^2(\pi\delta)}.
+ \tag{H17}
+\]
+Indeed the absolute numerator \(1-e^{2\pi iNt}\) is at most two and the absolute denominator is \(2|\sin\pi t|\).
+
+For a continuous periodic \(f\), write \(z=(x,y)\), \(w=(u,v)\) and \(K_N(w)=F_N(u)F_N(v)\). Using the normalized torus measure, define
+\[
+\begin{gathered}
+p_N(z)\\
+=\int_{T_{1,1}}f(w)K_N(z-w)\,d\mu(w).
+\end{gathered}
+\tag{H18}
+\]
+The finite expansion (H16) shows that \(p_N\) is a trigonometric polynomial. The product kernel has integral one, by (H14) and the periodic shift identity of A.1.5. Its mass outside the set where both circle distances \(|u-x|\) and \(|v-y|\) are less than \(\delta\) is at most \(2/(N\sin^2(\pi\delta))\): bound the two excluded coordinate strips separately, using (H17) and integral one in the other coordinate.
+
+Write \(M=\|f\|_\infty\), and let \(\omega_f(\delta)\) be its oscillation on the indicated coordinate neighborhood. Positivity of the kernel and the last bound give
+\[
+\begin{gathered}
+\|p_N-f\|_\infty\\
+\le\omega_f(\delta)+\frac{4M}{N\sin^2(\pi\delta)}.
+\end{gathered}
+ \tag{H19}
+\]
+For a given tolerance first choose \(\delta\), by uniform continuity, and then \(N\). Thus \(p_N\to f\) uniformly, and also in the normalized integral norm, because \(\|g\|_0\le\|g\|_\infty\). In particular every smooth periodic function has this polynomial approximation. Smooth periodic functions are dense in \(L^2(T_{a,b})\) **by its completion definition**. The triangle inequality therefore proves density of the trigonometric polynomials in that completion, without a measurable-density assertion.
+
+For \(u\) in the completion, put \(\widehat u(m,n)=\langle u,e_{m,n}\rangle\). These are bounded linear functionals, by (H2). Let \(P_Ru\) be its orthogonal projection onto the finite span indexed by \(F_R\), as in (H9). Given a polynomial approximating \(u\), every sufficiently large \(F_R\) contains that polynomial's frequencies. The best-approximation assertion in (H9) shows \(P_Ru\to u\). Consequently
+\[
+ \|u\|_0^2=\sum_{m,n}|\widehat u(m,n)|^2.
+ \tag{H20}
+\]
+This proof uses convergence in the constructed Hilbert space, not pointwise convergence of a measurable representative.
+
+Conversely, for \(a\in\ell^2(w_0)\), the polynomials \(\sum_{F_R}a_{m,n}e_{m,n}\) are norm-Cauchy by orthonormality and the square-sum tail estimate. They have a limit by A.1.3, with coefficients \(a_{m,n}\). Thus the coefficient map in (H20) is an isometric bijection
+\[
+ L^2(T_{a,b})\ \simeq\ \ell^2(w_0).
+ \tag{H21}
+\]
+No unproved assertion that arbitrary square-sum coefficients have a function representative is needed.
+
+There is also a sufficient continuous-to-completion assertion. A continuous periodic function is represented in the completion by the smooth polynomials \(p_N\) above; its pairing with a smooth test equals its ordinary Riemann integral, by uniform convergence and the uniform integral estimate of A.1.1. If a continuous \(f\) has compact support inside a chart rectangle, first extend it by zero to a larger periodic rectangle. Choose a smooth cutoff \(\eta\) equal to one on its support and supported inside that chart. Then \(\eta p_N\) is smooth with compact support and
+\[
+\begin{gathered}
+\|\eta p_N-f\|_\infty\\
+\le\|\eta\|_\infty\|p_N-f\|_\infty\to0.
+\end{gathered}
+ \tag{H22}
+\]
+Finite chart sums give the same approximation for continuous bundle sections. This proves the particular inclusion needed for the continuous, locally bounded Cauchy transform in A.3, (R9). It does not claim density of smooth functions in an independently defined space of all measurable functions.
+
+#### A.1.7. The Fourier Sobolev completions and derivative maps
+
+For a smooth periodic \(v\), integration by parts gives
+\[
+\begin{gathered}
+\widehat{\partial_xv}(m,n)=\frac{2\pi im}{a}\widehat v(m,n),\\
+\widehat{\partial_yv}(m,n)=\frac{2\pi in}{b}\widehat v(m,n).
+\end{gathered}
+ \tag{H23}
+\]
+All its nonnegative integer coefficient norms in (H13) are finite. To check this without a decay theorem, apply (H20) to its finitely many smooth derivatives of orders at most \(s\), and expand
+\[
+\begin{gathered}
+A_{\alpha,\beta}
+=\frac{s!}{\alpha!\beta!(s-\alpha-\beta)!},\\
+(1+m^2+n^2)^s\\
+=\sum_{\alpha+\beta\le s}
+A_{\alpha,\beta}m^{2\alpha}n^{2\beta}.
+\end{gathered}
+\tag{H24}
+\]
+Together with (H23), this gives an equality between the coefficient norm squared and a fixed positive weighted sum of the integral norms squared of these derivatives, with the factors \((a/(2\pi))^{2\alpha}(b/(2\pi))^{2\beta}\). Each norm on that finite list is finite. The identity is first a finite polynomial expansion of nonnegative summands and then a finite sum of their increasing limits; no infinite interchange theorem is needed.
+
+Define \(W^s(T_{a,b})\) to be the completion of smooth periodic functions in
+\[
+\|v\|_s^2=\sum_{m,n}w_s(m,n)|\widehat v(m,n)|^2.
+\tag{H25}
+\]
+The coefficient map is an isometry to the complete space \(\ell^2(w_s)\). Its range contains every finitely supported vector, since each gives a trigonometric polynomial. A.1.4 and (H8) therefore prove
+\[
+ W^s(T_{a,b})\ \simeq\ \ell^2(w_s).
+ \tag{H26}
+\]
+For \(s\ge0\) its map to \(L^2(T_{a,b})\) is the coordinate inclusion of A.1.4 and is injective. For \(s\ge1\), each derivative in (H23) is bounded \(W^s\to W^{s-1}\), since \(m^2,n^2\le1+m^2+n^2\). A.1.3 extends that map uniquely to the completion.
+
+Multiplication by a fixed smooth periodic coefficient is bounded on each \(W^s\), for nonnegative integer \(s\). Use (H24) to express its norm by the finite derivative norms, apply the finite Leibniz rule, and bound each coefficient derivative by its compact uniform bound. The finite triangle and Cauchy–Schwarz inequalities bound the finitely many terms. This proves the assertion from the displayed norms, rather than importing a general Sobolev multiplier theorem. The same argument applies to compactly supported chart coefficients extended by zero. Changes of frames or coordinates have bounded smooth derivatives on the compact supports; the finite chain rule and the retained coordinate integral change of variables give the usual fixed comparison constants for these integer norms.
+
+#### A.1.8. Injection of \(L^2\) completions into distributions
+
+Here a distribution means a complex-linear functional on smooth compactly supported test densities whose restriction to a fixed compact support is bounded by finitely many uniform derivative seminorms. We only construct the order-zero ones and their finite derivatives below; no classification or regularization theorem for all distributions is assumed.
+
+On a relatively compact chart with holomorphic frame \(e\) of \(L\), write \(s=fe\) and the section norm density as \(k|f|^2dA\), where \(k=\lambda h>0\) is smooth. A test section of \(L^*\) tensored with a density is \(\psi\,e^*dA\), with \(\psi\) smooth and compactly supported. For smooth \(s\), set
+\[
+ T_s(\psi\,e^*dA)=\int f\psi\,dA.
+ \tag{H27}
+\]
+Let \(K\) be the nonempty compact coordinate support of \(\psi\), let \(k_K=\min_Kk>0\), and enclose \(K\) in a finite rectangle \(R\) in the coordinate plane. This rectangle need not lie in the chart: all compactly supported integrands are extended by zero outside the chart before integration over \(R\). The smooth global section \(v_\psi\) with local coefficient \(\overline\psi/k\), extended by zero, satisfies
+\[
+ T_s(\psi\,e^*dA)=\langle s,v_\psi\rangle_2.
+\]
+Thus (H2) and the positive lower bound on \(K\) give
+\[
+\begin{gathered}
+|T_s(\psi\,e^*dA)|\\
+\le\|s\|_2\left(\int_R\frac{|\psi|^2}{k}\,dA\right)^{1/2}\\
+\le\|s\|_2\sqrt{\frac{\operatorname{area}(R)}{k_K}}\,
+\|\psi\|_\infty.
+\end{gathered}
+\tag{H28}
+\]
+This is linear in \(\psi\): although \(\psi\mapsto v_\psi\) is conjugate-linear, the inner product is conjugate-linear in its second slot.
+
+For tests supported on a fixed compact \(K_0\) in the chart, use \(k_{K_0}\) and one fixed enclosing rectangle, so the last constant is independent of the particular test. The zero test is immediate. No area or measurable integration of the arbitrary set \(K_0\) is required.
+
+For \(u=[s_j]\) in the \(L^2\) completion, define \(T_u\) by \(\lim_jT_{s_j}\). Estimate (H28) proves existence, independence of the representative and the same order-zero bound. Coordinate compatibility is true for each smooth \(s_j\), by the retained density change-of-variables rule, and passes to these scalar limits. Therefore \(T_u\) is a section distribution, independently of the chart in which it is tested.
+
+This map is injective. If \(T_u=0\) on all compact chart tests, then \(\langle u,v\rangle_2=0\) for every global smooth section \(v\): partition the smooth density \(h(\,\cdot\,,v)dV\) into the finitely many chart tests using A.1's partition. Choose smooth \(v_j\to u\), which is possible by the completion definition. The inner-product continuity estimate (H2) gives \(\langle u,u\rangle_2=\lim_j\langle u,v_j\rangle_2=0\), so \(u=0\). This proves injection without a measurable representative theorem or a Riesz representation theorem.
+
+Localization to a periodic rectangle is also a bounded completion map. For a smooth cutoff \(\eta\) of compact coordinate support \(K\), and a larger rectangle of periods \(a,b\), extend \(\eta f\) by zero. The positive lower bound \(k_K\) gives, for a smooth global section,
+\[
+ \|\eta f\|_0^2
+ \le \frac{\|\eta\|_\infty^2}{ab\,k_K}\|s\|_2^2.
+ \tag{H28a}
+\]
+The target periodic completion is complete by A.1.3, so (H8) extends this map to a global completed section. Its test pairings are the localized pairings of (H27), by taking scalar limits. Its support remains in \(K\), since every compact test vanishing near \(K\) gives zero at every smooth stage.
+
+The integral comparison in (H28a) does not require integrating over the arbitrary compact set \(K\). Choose a smooth \(\chi\), \(0\le\chi\le1\), equal to one near \(K\) and supported in the chart. Compare the zero-extended integrand \(|\eta f|^2\) with \(\|\eta\|_\infty^2\chi k|f|^2/k_K\), and integrate the latter compact smooth density. Its integral is at most the global metric norm squared by positivity and \(0\le\chi\le1\).
+
+For \(L\)-valued \((0,1)\)-forms, the same argument uses its own smooth positive metric. On the periodic rectangle with normalized measure, it reads simply
+\[
+\begin{gathered}
+T_u(\phi)=\lim_j\int v_j\phi\,d\mu,\\
+|T_u(\phi)|\le\|u\|_0\|\phi\|_0.
+\end{gathered}
+ \tag{H29}
+\]
+Testing with \(e_{-m,-n}\) recovers \(\widehat u(m,n)\). Formula (H20) supplies another direct proof of injectivity in this periodic case.
+
+#### A.1.9. Weak derivatives and coefficient recognition
+
+For these test functionals define
+\[
+\begin{gathered}
+(\partial_xT)(\phi)=-T(\partial_x\phi),\\
+(\partial_yT)(\phi)=-T(\partial_y\phi),\\
+\partial_{\bar z}T=(\partial_xT+i\partial_yT)/2.
+\end{gathered}
+ \tag{H30}
+\]
+These are distributions: the bound for \(T\) applied to a derivative test is a finite derivative seminorm bound on that same compact set. For a smooth coefficient \(a\), define \((aT)(\phi)=T(a\phi)\). Expanding \(\partial_x(a\phi)\) proves
+\[
+ \partial_x(aT)=a\,\partial_xT+(\partial_xa)T,
+ \tag{H31}
+\]
+and the same formulas hold for \(\partial_y,\partial_{\bar z}\). Evaluation on a test also shows that constant-coordinate derivatives commute. These are proofs from the definitions, not imported distributional product or commutation theorems.
+
+Let \(v_j\) be smooth periodic and Cauchy in \(W^1\). A.1.7 gives limits \(u\) in \(L^2\) and \(g_x,g_y\) in \(L^2\) for the two derivative sequences. Smooth periodic integration by parts and (H29) give, for every smooth periodic test \(\phi\),
+\[
+\begin{aligned}
+T_{g_x}(\phi)
+ &=\lim_j\int(\partial_xv_j)\phi\,d\mu\\
+ &=-\lim_j\int v_j(\partial_x\phi)\,d\mu\\
+ &=-(T_u)(\partial_x\phi).
+\end{aligned}
+ \tag{H32}
+\]
+The scalar limits follow from (H29), without dominated convergence. The identical assertion holds for \(g_y\), \(\partial_z\) and \(\partial_{\bar z}\). Thus the completed derivatives are weak derivatives of the same injected \(L^2\) element. The same proof works for higher integer orders using their bounded derivative maps.
+
+Conversely, suppose \(u,h\) belong to the periodic \(L^2\) completion and \(\partial_{\bar z}T_u=T_h\). Testing (H30) with \(e_{-m,-n}\) gives
+\[
+\begin{gathered}
+\widehat h(m,n)=\sigma(m,n)\widehat u(m,n),\\
+\sigma(m,n)=\pi(im/a-n/b).
+\end{gathered}
+ \tag{H33}
+\]
+The signs come from differentiating the *negative* test frequency and the minus in (H30). In particular
+\[
+ |\sigma(m,n)|^2=\pi^2(m^2/a^2+n^2/b^2).
+\]
+Put
+\[
+ C_{a,b}=\max\left(1,\frac1{\pi^2\min(a^{-2},b^{-2})}\right).
+\]
+Then \(1+m^2+n^2\le C_{a,b}(1+|\sigma(m,n)|^2)\) at every frequency, including zero. Parseval and (H33) show that the coefficient vector of \(u\) lies in \(\ell^2(w_1)\). By (H26) it defines a \(W^1\) element; its image in \(L^2\) has the same coefficients as \(u\), so is \(u\) by (H20). More generally, if \(u,h\in W^s\) with the same weak relation, the finite-sum inequality and its increasing limit give
+\[
+ \|u\|_{s+1}^2
+ \le C_{a,b}\bigl(\|u\|_s^2+\|h\|_s^2\bigr).
+ \tag{H34}
+\]
+Taking square roots gives the version (R2) needed in A.1. There is no assertion here about negative Sobolev orders.
+
+In this route \(L^2_{\mathrm{loc}}\) means a section distribution whose product with every compactly supported chart cutoff, after framing and zero extension to a periodic rectangle, is represented in the local \(L^2\) completion. A.1.8's bound (H28a) gives this property to a global completed \(L^2\) element. The definition makes no claim about arbitrary measurable functions.
+
+For the local version, multiplication by a compactly supported cutoff makes the distribution supported on a compact set \(K\) inside a rectangle. Its derivatives still have support in \(K\): a test vanishing near \(K\) has derivatives vanishing there as well. To regard it as periodic on a larger rectangle, choose a smooth \(\gamma\) equal to one near \(K\), and test a periodic \(\phi\) by \(\gamma\phi\). A different such \(\gamma\) gives the same answer because their difference vanishes near the support. Derivative terms containing \(\partial\gamma\) vanish there for the same reason. This justifies both the periodic derivative equation and its exponential tests. If \(u\) is locally an \(L^2\)-completion element and \(\partial_{\bar z}u=f\) is smooth, then
+\[
+ \partial_{\bar z}(\eta u)
+ =\eta f+(\partial_{\bar z}\eta)u
+\]
+has \(L^2\)-completion coefficients, by the bounded multiplier maps of A.1.7. Formula (H34) puts \(\eta u\) in \(W^1\). To repeat at integer order \(s\), choose a larger compact cutoff \(\nu\) equal to one near the support of \(\eta\). The already established \(W^s\) membership of \(\nu u\) puts \((\partial_{\bar z}\eta)u=(\partial_{\bar z}\eta)(\nu u)\) in \(W^s\) by A.1.7; \(\eta f\) is smooth and belongs to every such order by (H24). Formula (H34) puts \(\eta u\) in \(W^{s+1}\). A finite nested chain for each specified \(s\) gives precisely the bootstrap used in A.1. The finite derivative maps and (H31) supply its commutators. This is coefficient recognition for this specified elliptic multiplier, not an assumed general weak-regularity theorem.
+
+#### A.1.10. Global completion, localization and the required injection
+
+Fix the finite atlas, frames and partition \(\rho_i\) already constructed in A.1. For a smooth section \(s=f_i e_i\), extend \(\rho_i f_i\) by zero to a larger periodic rectangle and put
+\[
+ \|s\|_{W^s,\rho}^2=\sum_i\|\rho_i f_i\|_s^2.
+ \tag{H35}
+\]
+This is positive definite: if all terms vanish, (H20) gives \(\rho_if_i=0\); summing \(\rho_is=s\) gives \(s=0\). Define the global \(W^s(X,L)\) to be the completion in (H35). Its completeness follows directly from A.1.3.
+
+The order-zero norm (H35) is equivalent to the global metric integral norm (H0). On the finitely many compact supports the metric densities and their inverses are bounded. Also \(\sum_i\rho_i=1\), \(\rho_i\ge0\), and A.1.2's finite inequality gives
+\[
+ 1/\#\{i\}\le\sum_i\rho_i^2\le1.
+\]
+Integrate these bounds with the smooth norm density and use the finite chart comparison constants. In particular \(W^s\to L^2(X,L)\) is bounded for \(s\ge0\).
+
+It is injective. If a \(W^s\)-Cauchy sequence \(s_j\) has zero \(L^2\) limit, each local \(\rho_i f_{i,j}\) has zero order-zero limit by its bounded localization estimate. Its vectors of Fourier coefficients are Cauchy in \(\ell^2(w_s)\), by (H35), and every coordinate tends to zero by its order-zero estimate. A.1.4 makes the weighted limit the zero vector. Hence every localized \(W^s\) norm tends to zero; the finite sum (H35) proves that the global completion element is zero.
+
+The overlap identities and the completed derivatives can be checked by testing, rather than by assuming pointwise functions. The \(L^2\) injection of A.1.8 gives a unique section distribution. In an overlap, every smooth approximating section obeys the smooth coordinate and bundle-frame transition identity. Its pairing with a compact overlap test converges by (H28), so the identity holds for its limit. Localization, smooth multiplication and coordinate transport are bounded in the integer norms by A.1.7's finite product/chain rule and the expressly retained change-of-variables input. The completed derivative equations are therefore (H32) in each chart and agree on overlaps. For a holomorphic change of line-bundle frame its \(\bar\partial\) coefficient is zero, and (H31) gives the corresponding bundle Dolbeault transition law.
+
+This establishes the exact injection and weak-limit statements needed immediately after (R3), and the complete domain and target needed in A.2, (R4)–(R8). It does not assume completeness merely from the existence of compatible overlap limits.
+
+For the local periodic rectangle, the identifications can be displayed without referring to measurable representatives:
+\[
+\begin{gathered}
+\begin{array}{ccc}
+W^s(T_{a,b})&\longrightarrow&L^2(T_{a,b})\\
+\big\downarrow{\scriptstyle\widehat{\phantom{u}}}
+&&\big\downarrow{\scriptstyle\widehat{\phantom{u}}}\\
+\ell^2(w_s)&\longrightarrow&\ell^2(w_0)
+\end{array}\\
+L^2(T_{a,b})\xrightarrow{\ T\ }\mathcal D'(T_{a,b}).
+\end{gathered}
+ \tag{H36}
+\]
+The vertical maps are the isometric bijections (H26) and (H21); the lower arrow keeps each coefficient and has norm at most one since \(w_s\ge1\). The top square commutes because each smooth Fourier coefficient is a continuous functional and passes to Cauchy-class limits. Both upper arrows are injective, by A.1.4 and A.1.8, and the last arrow is the bilinear test pairing (H29). Formula (H33), with its stated periods and sign, identifies a weak derivative along exactly these maps. Diagram (H36) describes the proved completed spaces and their maps, relative to A.1.1; it does not assert a representation by all measurable functions.
+
+
+#### A.1.11. Elliptic estimates, compactness and smooth representatives
+
+For a coefficient supported inside a chart, extend by zero to a larger periodic rectangle as above. The completed spaces and their maps now have the precise meaning of (H21), (H26), (H28a), (H32) and (H35). Formula (H34) gives, for every integer \(s\ge0\),
+\[
+\begin{gathered}
+\|v\|_{W^{s+1}}\\
+\le C_s\bigl(\|\partial_{\bar z}v\|_{W^s}+\|v\|_{W^s}\bigr).
+\end{gathered}
  \tag{R2}
 \]
-The identical estimate holds with \(\partial_z\). The zero Fourier coefficient explains the second term. Formula (R2) also holds for weak derivatives: it is an inequality between the displayed coefficient sums, so follows first for finite sums and then by completion. Multiplication by a fixed smooth cutoff is bounded on every such \(W^s\), by the finite Leibniz rule and Parseval. No negative-order Sobolev assertion is needed here.
+The zero Fourier coefficient requires the second term. The multiplier for \(\partial_z\) is \(\pi(im/a+n/b)\), with the same absolute square, so the identical proof applies to it. Multiplication and coordinate/frame comparisons use A.1.7's finite derivative norm and the explicitly retained coordinate-integral change of variables. No negative-order Sobolev assertion is used.
 
 A bounded set in \(W^1\) has Fourier tail \(\sum_{m^2+n^2>A^2}|\widehat v(m,n)|^2\le C/A^2\). Extract a convergent subsequence in each finite set of coefficients and use this tail bound. It converges in \(L^2\). A finite coordinate partition therefore proves compactness of
 \[
  W^1(X,L)\longrightarrow L^2(X,L).
  \tag{R3}
 \]
-The same statement holds for bundle-valued one-forms. These global spaces are the completions in the coordinate norms just constructed; changing frames or partitions gives equivalent norms by the product rule and bounded smooth transition functions. Limits in overlapping coordinates agree because equality there is preserved in \(L^2\). This verifies completeness of the global space from the local Hilbert completions.
+The same statement holds for bundle-valued one-forms. The global spaces are exactly the complete spaces (H35); A.1.10 proves the order-zero comparison, compatible overlap test limits and the injection into the metric completion. Thus local subsequence convergence gives a global \(L^2\) limit, rather than presupposing completeness from overlap agreement.
 
 The completed \(W^1\) space injects into \(L^2\). Indeed, if a \(W^1\)-Cauchy sequence has zero \(L^2\) limit, each localized Fourier coefficient tends to zero. Its weighted coefficient vectors are Cauchy in the displayed square-sum norm, so their limit has every coordinate zero and is the zero vector. Thus each localized \(W^1\) norm tends to zero, and the finite partition gives zero global norm. This proves injectivity, rather than identifying completion elements merely by name. The Fourier multiplier identities also pass to the limit against smooth test functions; the resulting first derivatives are therefore weak derivatives of the same \(L^2\) limit.
 
 The Fourier proof also supplies regularity. If \(u\in L^2_{\mathrm{loc}}\) and \(\partial_{\bar z}u\) is smooth in distributions, multiply by a cutoff. Its derivative is in \(L^2\), so (R2) gives one weak derivative. Repeating with cutoffs supported successively farther inside the disk gives every nonnegative integer Sobolev order. For a derivative of order \(r\), Cauchy–Schwarz on its Fourier series gives absolute uniform convergence whenever the available Sobolev order exceeds \(r+1\):
-\(\sum_{m,n}(1+m^2+n^2)^{-q}<\infty\) for \(q>1\), by counting square shells. Thus \(u\) is smooth. The same proof works for \(\partial_z\), and for smooth nonvanishing multiples of these operators after multiplying the unknown by the corresponding smooth factor.
+\(\sum_{m,n}(1+m^2+n^2)^{-q}<\infty\) for \(q>1\), by counting square shells. To see that the uniformly convergent series actually supply the derivatives, let \(p_R\) be the finite Fourier partial sums of a cutoff coefficient. For every multi-index \(\alpha\), the series of \(\partial^\alpha p_R\) converges uniformly at the chosen higher Sobolev order. The identity
+\[
+ \begin{gathered}
+ \partial^\alpha p_R(x+h,y)-\partial^\alpha p_R(x,y)\\
+ =\int_x^{x+h}\partial_x\partial^\alpha p_R(t,y)\,dt.
+ \end{gathered}
+\]
+passes to the uniform limits. The retained one-variable fundamental theorem makes the limit differentiable with the next series as derivative; the same argument applies in \(y\). Induction gives every classical derivative. The zero-order series represents the original completion element by (H20), and hence its distribution by injectivity in A.1.8. Thus \(u\) is smooth. The same proof works for \(\partial_z\), and for smooth nonvanishing multiples of these operators after multiplying the unknown by the corresponding smooth factor.
 
 ### A.2. The closed-range statement for a line bundle
 
@@ -1155,7 +1617,7 @@ For the compactly supported smooth \(b\) in (R9), write
 \(u_\epsilon(z)=\int b(\zeta)K_\epsilon(z-\zeta)dA(\zeta)\).
 On every compact set of \(z\)'s the continuous integrand is uniformly continuous on its product with a support rectangle for \(b\), so \(u_\epsilon\) is continuous there by the compact uniform error bound for Riemann integrals. The preceding tail bound shows that the singular integral defining \(u\) exists absolutely and
 \(\sup_z|u(z)-u_\epsilon(z)|\le16\|b\|_\infty\epsilon/\pi\).
-To bound \(u\) on a fixed compact set, choose \(R\) so large that all differences \(z-\zeta\) in that set and the support of \(b\) lie in \(Q_R\); (R9a) gives \(|u(z)|\le16R\|b\|_\infty/\pi\). Thus \(u\) is continuous and locally bounded, hence belongs to the local \(L^2\) completion used in A.1.
+To bound \(u\) on a fixed compact set, choose \(R\) so large that all differences \(z-\zeta\) in that set and the support of \(b\) lie in \(Q_R\); (R9a) gives \(|u(z)|\le16R\|b\|_\infty/\pi\). Thus \(u\) is continuous and locally bounded, and belongs to the local \(L^2\) completion by (H22): multiply it by any compact chart cutoff, extend the resulting continuous coefficient by zero to a larger periodic rectangle, approximate uniformly by the Fejér polynomials, and multiply by a smooth chart cutoff. Their completed test pairings are the continuous integral pairings by the same uniform bound.
 
 We next justify the double integral. Let \(\psi\) be any continuous compactly supported function, including a test derivative \(\partial_{\bar z}\phi\), and choose rectangles \(Z,B\) containing the supports of \(\psi,b\). For each \(\epsilon>0\),
 \(F_\epsilon(z,\zeta)=\psi(z)b(\zeta)K_\epsilon(z-\zeta)\)
@@ -1190,7 +1652,7 @@ Apply (R9b) with \(\psi=\partial_{\bar z}\phi\), and use the translation identit
  \end{gathered}
  \tag{R9c}
 \]
-Thus (R9) solves the equation in distributions. A.1 makes this solution smooth on the smaller disk. A local holomorphic frame gives the same local solvability for \(D\). The real calculus, planar Stokes and weak/Hilbert foundations explicitly retained in the opening paragraphs of this appendix are still required; the particular singular-kernel interchange is now proved above.
+Thus (R9) solves the equation in distributions. A.1 makes this solution smooth on the smaller disk. A local holomorphic frame gives the same local solvability for \(D\). The real calculus, coordinate-integral change of variables and planar Stokes prerequisites explicitly retained in A.1.1 and (R1) are still required; the completion and weak-test framework used here is proved in A.1.2–A.1.10; the particular singular-kernel interchange is now proved above.
 
 We can now identify (R8) with holomorphic cohomology explicitly. Here \(H^1(X,L)\) means degree-one analytic holomorphic Čech cohomology in the direct limit over open-cover refinements. We do not assert that a fixed arbitrary cover computes it. Compactness permits finite covers; local solvability below is obtained on refined coordinate disks whose closures lie in larger trivializing disks. A holomorphic Čech one-cocycle consists of sections \(g_{ij}\) on overlaps, with \(g_{ij}+g_{jk}=g_{ik}\). For a smooth partition subordinate to the cover, put
 \[
@@ -1365,7 +1827,7 @@ For the modular curve of lesson 06, its already constructed modular-cover cells 
 
 The differential dictionary (Theorem 2.1) has a local chart proof. Theorem 3.1 now has a finite-norm proof using only the earlier level-one valence formula; it no longer relies on Riemann–Roch. The complex coefficient bound (Theorem 6.1), including its character-power extension, follows from that proof. Lemma 1.1 derives the canonical degree for this modular curve from the earlier modular covering and the explicit \(j\)-coordinate. The analytic foundations recorded in lessons 03–05 remain prerequisites for these local arguments.
 
-Theorem 4.1, Theorem 5.1, the small-level-three odd-weight formula, Solution 4 and the level-four irregular calculation use (1.1) and/or \(h^0(\mathcal K)=g\). Appendix A now supplies the full arbitrary-line-bundle Riemann–Roch and duality arguments, meromorphic-section existence and the analytic/topological genus bridge. The real integration, weak-derivative and Hilbert foundations listed in its opening remain to be proved or bound to exact earlier programme proofs. The dimension computations inherit that remaining foundation requirement. All examples, exercises and solutions are retained.
+Theorem 4.1, Theorem 5.1, the small-level-three odd-weight formula, Solution 4 and the level-four irregular calculation use (1.1) and/or \(h^0(\mathcal K)=g\). Appendix A now supplies the full arbitrary-line-bundle Riemann–Roch and duality arguments, meromorphic-section existence and the analytic/topological genus bridge. The real-calculus, continuous-integral existence, coordinate change-of-variables and smooth-boundary Stokes prerequisites listed in A.1.1 and (R1) remain to be proved or bound to exact earlier programme proofs. A.1.2–A.1.10 supplies the smooth Hilbert/Sobolev completions, Fourier density, weak-test injections and weak derivative recognition; no general measurable representation theorem is asserted. The dimension computations inherit that remaining foundation requirement. All examples, exercises and solutions are retained.
 
 Theorem 6.2 writes out the normalized norm argument for prime congruences, but it is conditional on Section 6.1's principal-level field structure, determinant-one action and bounded-denominator input. The free original Deligne–Rapoport scan supplies VII.3.8, VII.3.10–3.11 and VII.4.6; its geometric construction and GAGA foundations remain unproved here and lack verified earlier programme proof locators. Corollaries 6.3–6.4 inherit this gap. The number-field facts about extension primes, discrete valuation localizations, prime-ideal factorization, contraction of localized prime powers and comaximality also remain without verified earlier programme proofs. The norm argument does not assert integral slash stability at bad primes.
 

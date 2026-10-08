@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hermite interpolation and local division with a discriminant</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L150.html">Previous lesson</a> · <a href="#h2-the-exact-local-division-theorem">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="hermite-interpolation-and-local-division-with-a-discriminant">Hermite interpolation and local division with a discriminant</h1>
+<p><em>Original examples and complete solutions by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>An analytic remainder is controlled by jets at nearby roots. When roots collide, that control has a loss. The <a href="#h2-the-exact-local-division-theorem">complete proof</a> keeps both the ordered and unordered root-distance products and proves the full derivative-strength estimate for a local discriminant, including central collisions. The original function is defined on a complex Euclidean ball; the contour used in the proof stays inside that ball.</p>
+<h2 id="worked-example-1-a-cubic-hermite-polynomial-shows-the-collision-scale">Worked example 1. A cubic Hermite polynomial shows the collision scale</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. Take the nodes <span class="math" data-index="1" data-tex="\(0,\varepsilon\)">\(0,\varepsilon\)</span>, each of multiplicity two, and</p>
+<span class="math math-display" id="eq-L151.1" data-index="2" data-tex="\[
+q_\varepsilon(t)=-3(t/\varepsilon)^2+2(t/\varepsilon)^3.
+\tag{L151.1}
+\]">\[
+q_\varepsilon(t)=-3(t/\varepsilon)^2+2(t/\varepsilon)^3.
+\tag{L151.1}
+\]</span>
+<p>Its four prescribed jets are</p>
+<span class="math math-display" id="eq-L151.2" data-index="3" data-tex="\[
+q_\varepsilon(0)=q_\varepsilon&#x27;(0)=0,\qquad
+q_\varepsilon(\varepsilon)=-1,\qquad
+q_\varepsilon&#x27;(\varepsilon)=0.
+\tag{L151.2}
+\]">\[
+q_\varepsilon(0)=q_\varepsilon&#x27;(0)=0,\qquad
+q_\varepsilon(\varepsilon)=-1,\qquad
+q_\varepsilon&#x27;(\varepsilon)=0.
+\tag{L151.2}
+\]</span>
+<p>The derivative is <span class="math" data-index="4" data-tex="\(-6t/\varepsilon^2+6t^2/\varepsilon^3\)">\(-6t/\varepsilon^2+6t^2/\varepsilon^3\)</span>, so both first derivatives vanish at their nodes. The sum of the absolute data is one, independently of the collision parameter.</p>
+<p>On the closed unit disk the triangle inequality gives
+<span class="math" data-index="5" data-tex="\(|q_\varepsilon|\le3\varepsilon^{-2}+2\varepsilon^{-3}\)">\(|q_\varepsilon|\le3\varepsilon^{-2}+2\varepsilon^{-3}\)</span>.
+At <span class="math" data-index="6" data-tex="\(t=-1\)">\(t=-1\)</span> both nonconstant terms are negative real and attain this sum. The supremum on the open disk has the same value, by continuity and radial approach to <span class="math" data-index="7" data-tex="\(-1\)">\(-1\)</span>. Hence</p>
+<span class="math math-display" id="eq-L151.3" data-index="8" data-tex="\[
+\sup_{|t|&lt;1}|q_\varepsilon(t)|
+=3\varepsilon^{-2}+2\varepsilon^{-3}.
+\tag{L151.3}
+\]">\[
+\sup_{|t|&lt;1}|q_\varepsilon(t)|
+=3\varepsilon^{-2}+2\varepsilon^{-3}.
+\tag{L151.3}
+\]</span>
+<p>The unordered distance is <span class="math" data-index="9" data-tex="\(D=\varepsilon\)">\(D=\varepsilon\)</span>, the ordered product is
+<span class="math" data-index="10" data-tex="\(\Delta=\varepsilon^2\)">\(\Delta=\varepsilon^2\)</span>, and <span class="math" data-index="11" data-tex="\(2\bar\mu-1=3\)">\(2\bar\mu-1=3\)</span>. Therefore</p>
+<span class="math math-display" id="eq-L151.4" data-index="12" data-tex="\[
+D^3\sup|q_\varepsilon|=2+3\varepsilon,\qquad
+\Delta^3\sup|q_\varepsilon|=2\varepsilon^3+3\varepsilon^4.
+\tag{L151.4}
+\]">\[
+D^3\sup|q_\varepsilon|=2+3\varepsilon,\qquad
+\Delta^3\sup|q_\varepsilon|=2\varepsilon^3+3\varepsilon^4.
+\tag{L151.4}
+\]</span>
+<p>The first bound records the actual cubic blowup of the interpolant. The ordered-product bound is valid but weaker.</p>
+<p>For the polynomial factors <span class="math" data-index="13" data-tex="\(Q_1(t)=t\)">\(Q_1(t)=t\)</span>, <span class="math" data-index="14" data-tex="\(Q_2(t)=t-\varepsilon\)">\(Q_2(t)=t-\varepsilon\)</span>, with <span class="math" data-index="15" data-tex="\(m_1=m_2=2\)">\(m_1=m_2=2\)</span>, the square-free product is <span class="math" data-index="16" data-tex="\(t(t-\varepsilon)\)">\(t(t-\varepsilon)\)</span>. Its discriminant is <span class="math" data-index="17" data-tex="\(R=\varepsilon^2\)">\(R=\varepsilon^2\)</span>, and</p>
+<span class="math math-display" id="eq-L151.5" data-index="18" data-tex="\[
+|R|^{\bar m-1/2}=|\varepsilon^2|^{3/2}=\varepsilon^3.
+\tag{L151.5}
+\]">\[
+|R|^{\bar m-1/2}=|\varepsilon^2|^{3/2}=\varepsilon^3.
+\tag{L151.5}
+\]</span>
+<p>This is exactly the stronger scale in L151.4. The full Hermite proof supplies it; treating the ordered product as the unordered one would introduce an extra square.</p>
+<figure><img class="course-figure" width="1817" height="797" src="reproduce/L151/figures/hermite-collision-and-root-products.png" alt="Exact collision growth and the two root-distance normalizations" /><figcaption class="native"><a href="reproduce/L151/figures/hermite-collision-and-root-products.png">Open full-size PNG</a> · <a href="reproduce/L151/figures/hermite-collision-and-root-products.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure H-A.</strong> The normalized real curves
+<span class="math" data-index="19" data-tex="\(\varepsilon^3q_\varepsilon(t)=-3\varepsilon t^2+2t^3\)">\(\varepsilon^3q_\varepsilon(t)=-3\varepsilon t^2+2t^3\)</span>
+keep the exact double-node jets and the attained disk supremum visible. The comparison panel plots the exact norms and both normalizations in L151.3–L151.4. Their values come from the analytic calculation at <span class="math" data-index="20" data-tex="\(t=-1\)">\(t=-1\)</span>, not from maximizing a finite real grid. Proof locators: H1–H7 and H22–H24.</p>
+<h2 id="worked-example-2-colliding-branches-give-holomorphic-coefficients">Worked example 2. Colliding branches give holomorphic coefficients</h2>
+<p>On <span class="math" data-index="21" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, let</p>
+<span class="math math-display" id="eq-L151.6" data-index="22" data-tex="\[
+Q(t,y)=t^2-y,\qquad f(t,y)=e^t.
+\tag{L151.6}
+\]">\[
+Q(t,y)=t^2-y,\qquad f(t,y)=e^t.
+\tag{L151.6}
+\]</span>
+<p>For nonzero <span class="math" data-index="23" data-tex="\(y\)">\(y\)</span> its roots are <span class="math" data-index="24" data-tex="\(\sqrt y,-\sqrt y\)">\(\sqrt y,-\sqrt y\)</span>. The two branches may permute around zero, but the remainder coefficients are the entire power series</p>
+<span class="math math-display" id="eq-L151.7" data-index="25" data-tex="\[
+A(y)=\sum_{j\ge0}\frac{y^j}{(2j)!},\qquad
+B(y)=\sum_{j\ge0}\frac{y^j}{(2j+1)!},\qquad
+h(t,y)=A(y)+tB(y).
+\tag{L151.7}
+\]">\[
+A(y)=\sum_{j\ge0}\frac{y^j}{(2j)!},\qquad
+B(y)=\sum_{j\ge0}\frac{y^j}{(2j+1)!},\qquad
+h(t,y)=A(y)+tB(y).
+\tag{L151.7}
+\]</span>
+<p>In square-root notation these are <span class="math" data-index="26" data-tex="\(\cosh\sqrt y\)">\(\cosh\sqrt y\)</span> and
+<span class="math" data-index="27" data-tex="\(\sinh\sqrt y/\sqrt y\)">\(\sinh\sqrt y/\sqrt y\)</span>; their power series define them without choosing a global square-root branch. On either nonzero root, <span class="math" data-index="28" data-tex="\(h=e^t\)">\(h=e^t\)</span>. At the collision,</p>
+<span class="math math-display" id="eq-L151.8" data-index="29" data-tex="\[
+h(t,0)=1+t,\qquad
+h(0,0)=f(0,0),\qquad
+\partial_t h(0,0)=\partial_t f(0,0)=1.
+\tag{L151.8}
+\]">\[
+h(t,0)=1+t,\qquad
+h(0,0)=f(0,0),\qquad
+\partial_t h(0,0)=\partial_t f(0,0)=1.
+\tag{L151.8}
+\]</span>
+<p>The limiting double-root Taylor data are retained by the holomorphic coefficients.</p>
+<p>There is also an explicit entire quotient:</p>
+<span class="math math-display" id="eq-L151.9" data-index="30" data-tex="\[
+g(t,y)=\sum_{j\ge1}
+\left(\frac1{(2j)!}+\frac{t}{(2j+1)!}\right)
+\sum_{l=0}^{j-1}t^{2(j-1-l)}y^l.
+\tag{L151.9}
+\]">\[
+g(t,y)=\sum_{j\ge1}
+\left(\frac1{(2j)!}+\frac{t}{(2j+1)!}\right)
+\sum_{l=0}^{j-1}t^{2(j-1-l)}y^l.
+\tag{L151.9}
+\]</span>
+<p>The factorization
+<span class="math" data-index="31" data-tex="\(t^{2j}-y^j=(t^2-y)\sum_{l=0}^{j-1}t^{2(j-1-l)}y^l\)">\(t^{2j}-y^j=(t^2-y)\sum_{l=0}^{j-1}t^{2(j-1-l)}y^l\)</span>
+gives <span class="math" data-index="32" data-tex="\(e^t=(t^2-y)g+h\)">\(e^t=(t^2-y)g+h\)</span>. On a fixed compact set the inner sum is bounded by <span class="math" data-index="33" data-tex="\(jC^{j-1}\)">\(jC^{j-1}\)</span>, and the factorial denominators make this series uniformly convergent with every fixed derivative. Thus the quotient is jointly entire, including at the colliding roots.</p>
+<p>Here <span class="math" data-index="34" data-tex="\(\widetilde Q(0)=\sqrt5\)">\(\widetilde Q(0)=\sqrt5\)</span>, because
+<span class="math" data-index="35" data-tex="\(\partial_t^2Q(0)=2\)">\(\partial_t^2Q(0)=2\)</span>, <span class="math" data-index="36" data-tex="\(\partial_yQ(0)=-1\)">\(\partial_yQ(0)=-1\)</span>, and the other nonzero-order contributions at zero vanish. Since <span class="math" data-index="37" data-tex="\(\sup_{|t|&lt;1}|Q(t,0)|=1\)">\(\sup_{|t|&lt;1}|Q(t,0)|=1\)</span>, the normalization hypothesis holds with <span class="math" data-index="38" data-tex="\(M=\sqrt5\)">\(M=\sqrt5\)</span>.
+The discriminant is <span class="math" data-index="39" data-tex="\(R(y)=4y\)">\(R(y)=4y\)</span>, so</p>
+<span class="math math-display" id="eq-L151.10" data-index="40" data-tex="\[
+R(0)=0,\qquad \widetilde R(0)=4.
+\tag{L151.10}
+\]">\[
+R(0)=0,\qquad \widetilde R(0)=4.
+\tag{L151.10}
+\]</span>
+<p>The full local estimate has the positive factor
+<span class="math" data-index="41" data-tex="\(\widetilde R(0)^{1/2}=2\)">\(\widetilde R(0)^{1/2}=2\)</span>. Its replacement by <span class="math" data-index="42" data-tex="\(|R(0)|^{1/2}\)">\(|R(0)|^{1/2}\)</span> would give zero and discard precisely the central-collision information.</p>
+<h2 id="worked-example-3-projection-counts-both-roots-and-has-a-smaller-area">Worked example 3. Projection counts both roots and has a smaller area</h2>
+<p>The hypersurface <span class="math" data-index="43" data-tex="\(t^2-y=0\)">\(t^2-y=0\)</span> is the smooth complex curve
+<span class="math" data-index="44" data-tex="\(\Gamma(t)=(t,t^2)\)">\(\Gamma(t)=(t,t^2)\)</span>. It is a real two-dimensional surface in real four-dimensional space. Its projections onto the <span class="math" data-index="45" data-tex="\(t\)">\(t\)</span>- and <span class="math" data-index="46" data-tex="\(y\)">\(y\)</span>-planes are diagrams of that surface, not a representation of the entire induced metric.</p>
+<p>Writing <span class="math" data-index="47" data-tex="\(t=x+iv\)">\(t=x+iv\)</span>, the real map is
+<span class="math" data-index="48" data-tex="\((x,v)\mapsto(x,v,x^2-v^2,2xv)\)">\((x,v)\mapsto(x,v,x^2-v^2,2xv)\)</span>. Its two tangent vectors have squared length <span class="math" data-index="49" data-tex="\(1+4|t|^2\)">\(1+4|t|^2\)</span> and are orthogonal. Thus</p>
+<span class="math math-display" id="eq-L151.11" data-index="50" data-tex="\[
+dS=(1+4|t|^2)\,dA(t),\qquad
+dA(y)=4|t|^2\,dA(t)
+\quad\text{under }y=t^2.
+\tag{L151.11}
+\]">\[
+dS=(1+4|t|^2)\,dA(t),\qquad
+dA(y)=4|t|^2\,dA(t)
+\quad\text{under }y=t^2.
+\tag{L151.11}
+\]</span>
+<p>The second formula is the real Jacobian determinant of complex squaring. Except at zero, the projection has two inverse roots; integrating a sum over both roots equals the corresponding projected integral with this Jacobian. Since
+<span class="math" data-index="51" data-tex="\(4|t|^2\le1+4|t|^2\)">\(4|t|^2\le1+4|t|^2\)</span>, the full surface area dominates the projected root-fiber data.</p>
+<p>The part of <span class="math" data-index="52" data-tex="\(\Gamma\)">\(\Gamma\)</span> inside the unit Euclidean ball has</p>
+<span class="math math-display" id="eq-L151.12" data-index="53" data-tex="\[
+|t|^2+|t|^4&lt;1,\qquad
+|t|&lt;\sqrt b,\qquad
+b=\frac{\sqrt5-1}{2}.
+\tag{L151.12}
+\]">\[
+|t|^2+|t|^4&lt;1,\qquad
+|t|&lt;\sqrt b,\qquad
+b=\frac{\sqrt5-1}{2}.
+\tag{L151.12}
+\]</span>
+<p>For <span class="math" data-index="54" data-tex="\(f(t,y)=t\)">\(f(t,y)=t\)</span>, its surface data and root-fiber data have the exact integrals</p>
+<span class="math math-display" id="eq-L151.13" data-index="55" data-tex="\[
+\begin{aligned}
+I_S&amp;=\int_{\Gamma\cap B_2(0,1)}|t|\,dS
+=2\pi\left(\frac{b^{3/2}}3+\frac{4b^{5/2}}5\right),\\
+I_{\mathrm{fiber}}&amp;=
+\int_{|y|&lt;b}\bigl(|\sqrt y|+|-\sqrt y|\bigr)\,dA(y)
+=\frac{8\pi}{5}b^{5/2},\\
+I_S-I_{\mathrm{fiber}}&amp;=\frac{2\pi}{3}b^{3/2}&gt;0.
+\end{aligned}
+\tag{L151.13}
+\]">\[
+\begin{aligned}
+I_S&amp;=\int_{\Gamma\cap B_2(0,1)}|t|\,dS
+=2\pi\left(\frac{b^{3/2}}3+\frac{4b^{5/2}}5\right),\\
+I_{\mathrm{fiber}}&amp;=
+\int_{|y|&lt;b}\bigl(|\sqrt y|+|-\sqrt y|\bigr)\,dA(y)
+=\frac{8\pi}{5}b^{5/2},\\
+I_S-I_{\mathrm{fiber}}&amp;=\frac{2\pi}{3}b^{3/2}&gt;0.
+\end{aligned}
+\tag{L151.13}
+\]</span>
+<p>For the first integral use polar <span class="math" data-index="56" data-tex="\(t\)">\(t\)</span>-coordinates and L151.11. For the second, the fiber sum is <span class="math" data-index="57" data-tex="\(2\sqrt{|y|}\)">\(2\sqrt{|y|}\)</span>; polar <span class="math" data-index="58" data-tex="\(y\)">\(y\)</span>-coordinates give
+<span class="math" data-index="59" data-tex="\(4\pi\int_0^b \rho^{3/2}\,d\rho\)">\(4\pi\int_0^b \rho^{3/2}\,d\rho\)</span>.
+This keeps the branch count, the Jacobian and the Euclidean-ball cutoff exact.</p>
+<figure><img class="course-figure" width="2150" height="752" src="reproduce/L151/figures/branched-projection-and-surface-area.png" alt="Complex squaring projections and the full surface-area density" /><figcaption class="native"><a href="reproduce/L151/figures/branched-projection-and-surface-area.png">Open full-size PNG</a> · <a href="reproduce/L151/figures/branched-projection-and-surface-area.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure H-B.</strong> The two complex-plane panels show the projections of the graph <span class="math" data-index="60" data-tex="\(y=t^2\)">\(y=t^2\)</span>, its unit-ball parameter disk, and pairs of opposite roots with the same projected point. The density panel compares the exact factors <span class="math" data-index="61" data-tex="\(1+4|t|^2\)">\(1+4|t|^2\)</span> and <span class="math" data-index="62" data-tex="\(4|t|^2\)">\(4|t|^2\)</span>; their difference is one. The full graph is in <span class="math" data-index="63" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, not in either drawn plane. L151.11–L151.13 and H31–H32 give the complete area and fiber statements.</p>
+<h2 id="worked-example-4-a-unit-ball-is-smaller-than-a-unit-polydisk">Worked example 4. A unit ball is smaller than a unit polydisk</h2>
+<p>The function</p>
+<span class="math math-display" id="eq-L151.14" data-index="64" data-tex="\[
+f(t,y)=\frac1{1-(t+y)/\sqrt2}
+\tag{L151.14}
+\]">\[
+f(t,y)=\frac1{1-(t+y)/\sqrt2}
+\tag{L151.14}
+\]</span>
+<p>is holomorphic on the unit Euclidean ball: Cauchy–Schwarz gives
+<span class="math" data-index="65" data-tex="\(|t+y|/\sqrt2\le\sqrt{|t|^2+|y|^2}&lt;1\)">\(|t+y|/\sqrt2\le\sqrt{|t|^2+|y|^2}&lt;1\)</span>.
+It is not holomorphic on the entire unit polydisk, which contains the pole
+<span class="math" data-index="66" data-tex="\((t,y)=(4/5,\sqrt2-4/5)\)">\((t,y)=(4/5,\sqrt2-4/5)\)</span>. Both coordinates have modulus below one; their squared norm is
+<span class="math" data-index="67" data-tex="\(2-8\sqrt2/5+32/25&gt;1\)">\(2-8\sqrt2/5+32/25&gt;1\)</span>.</p>
+<p>For <span class="math" data-index="68" data-tex="\(Q=t-y\)">\(Q=t-y\)</span>, a local decomposition is</p>
+<span class="math math-display" id="eq-L151.15" data-index="69" data-tex="\[
+h(y)=\frac{\sqrt2}{\sqrt2-2y},\qquad
+g(t,y)=\frac{\sqrt2}{(\sqrt2-t-y)(\sqrt2-2y)},\qquad
+f=(t-y)g+h.
+\tag{L151.15}
+\]">\[
+h(y)=\frac{\sqrt2}{\sqrt2-2y},\qquad
+g(t,y)=\frac{\sqrt2}{(\sqrt2-t-y)(\sqrt2-2y)},\qquad
+f=(t-y)g+h.
+\tag{L151.15}
+\]</span>
+<p>It is valid, for example, on <span class="math" data-index="70" data-tex="\(|(t,y)|&lt;1/10\)">\(|(t,y)|&lt;1/10\)</span>. Direct subtraction gives the displayed quotient and verifies the identity. The remainder has degree zero in <span class="math" data-index="71" data-tex="\(t\)">\(t\)</span>. Here
+<span class="math" data-index="72" data-tex="\(\widetilde Q(0)=\sqrt2\)">\(\widetilde Q(0)=\sqrt2\)</span>, <span class="math" data-index="73" data-tex="\(R=1\)">\(R=1\)</span>, and <span class="math" data-index="74" data-tex="\(\widetilde R(0)=1\)">\(\widetilde R(0)=1\)</span>.</p>
+<p>A contour with <span class="math" data-index="75" data-tex="\(|t|=\rho&lt;2/3\)">\(|t|=\rho&lt;2/3\)</span> and <span class="math" data-index="76" data-tex="\(|y|&lt;\rho&#x27;&lt;1/3\)">\(|y|&lt;\rho&#x27;&lt;1/3\)</span> satisfies
+<span class="math" data-index="77" data-tex="\(|(t,y)|&lt;\sqrt5/3&lt;1\)">\(|(t,y)|&lt;\sqrt5/3&lt;1\)</span>. The proof uses precisely such a cylinder inside the known ball, and concludes on a smaller ball. It never needs values of <span class="math" data-index="78" data-tex="\(f\)">\(f\)</span> at the polydisk pole.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: one node).</strong> What does the Hermite estimate become for one node <span class="math" data-index="79" data-tex="\(a\)">\(a\)</span>, multiplicity <span class="math" data-index="80" data-tex="\(\mu\)">\(\mu\)</span>, and <span class="math" data-index="81" data-tex="\(\deg q&lt;\mu\)">\(\deg q&lt;\mu\)</span>?</p>
+<p><strong>Solution 1.</strong> Both distance products are empty and equal one. The Taylor formula is exact:
+<span class="math" data-index="82" data-tex="\(q(t)=\sum_{j&lt;\mu}q^{(j)}(a)(t-a)^j/j!\)">\(q(t)=\sum_{j&lt;\mu}q^{(j)}(a)(t-a)^j/j!\)</span>.
+For <span class="math" data-index="83" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, <span class="math" data-index="84" data-tex="\(|a|&lt;1\)">\(|a|&lt;1\)</span>, every <span class="math" data-index="85" data-tex="\(|t-a|^j\le2^j\)">\(|t-a|^j\le2^j\)</span>. Therefore
+<span class="math" data-index="86" data-tex="\(\sup|q|\le\sum_{j&lt;\mu}2^j|q^{(j)}(a)|/j!\)">\(\sup|q|\le\sum_{j&lt;\mu}2^j|q^{(j)}(a)|/j!\)</span>,
+which is bounded by a constant depending only on <span class="math" data-index="87" data-tex="\(\mu\)">\(\mu\)</span> times the jet sum. If every jet is zero, the polynomial is zero.</p>
+<p><strong>Exercise 2 (basic: both pair-product conventions).</strong> Compute the two distance products and the discriminant for roots <span class="math" data-index="88" data-tex="\(-\varepsilon,\varepsilon\)">\(-\varepsilon,\varepsilon\)</span>, and relate their Hermite exponents when both multiplicities are two.</p>
+<p><strong>Solution 2.</strong> The unordered distance is <span class="math" data-index="89" data-tex="\(D=2\varepsilon\)">\(D=2\varepsilon\)</span>, while the ordered product has both pair directions and is
+<span class="math" data-index="90" data-tex="\(\Delta=(2\varepsilon)^2=4\varepsilon^2\)">\(\Delta=(2\varepsilon)^2=4\varepsilon^2\)</span>. The monic square-free polynomial is <span class="math" data-index="91" data-tex="\(t^2-\varepsilon^2\)">\(t^2-\varepsilon^2\)</span>, whose discriminant is <span class="math" data-index="92" data-tex="\(R=4\varepsilon^2\)">\(R=4\varepsilon^2\)</span>. Thus
+<span class="math" data-index="93" data-tex="\(|R|^{3/2}=(2\varepsilon)^3=D^3\)">\(|R|^{3/2}=(2\varepsilon)^3=D^3\)</span>, whereas
+<span class="math" data-index="94" data-tex="\(\Delta^3=(2\varepsilon)^6\)">\(\Delta^3=(2\varepsilon)^6\)</span>. The latter is the valid weaker ordered-product bound. It cannot be inserted in place of <span class="math" data-index="95" data-tex="\(D^3\)">\(D^3\)</span> to justify the stronger discriminant scale.</p>
+<p><strong>Exercise 3 (intermediate: symmetric coefficients at a branch point).</strong> Compute the root power sums and monic polynomial for the two roots of <span class="math" data-index="96" data-tex="\(t^2-y\)">\(t^2-y\)</span>, without selecting a global square root.</p>
+<p><strong>Solution 3.</strong> At a nonzero parameter the odd power sums are zero and the even ones are <span class="math" data-index="97" data-tex="\(2y^j\)">\(2y^j\)</span>. These are polynomials in <span class="math" data-index="98" data-tex="\(y\)">\(y\)</span> and extend across zero. Newton's first identity gives the first elementary symmetric function as zero. The second gives
+<span class="math" data-index="99" data-tex="\(2e_2=e_1s_1-s_2=-2y\)">\(2e_2=e_1s_1-s_2=-2y\)</span>, so <span class="math" data-index="100" data-tex="\(e_2=-y\)">\(e_2=-y\)</span>. The monic root polynomial is consequently <span class="math" data-index="101" data-tex="\(t^2-e_1t+e_2=t^2-y\)">\(t^2-e_1t+e_2=t^2-y\)</span>. Its coefficients are holomorphic although its labeled roots may permute. At zero both roots have multiplicity and the same coefficients remain valid.</p>
+<p><strong>Exercise 4 (intermediate: keep the outside roots in a unit).</strong> Let <span class="math" data-index="102" data-tex="\(Q=(t-y)(t-3)\)">\(Q=(t-y)(t-3)\)</span>, <span class="math" data-index="103" data-tex="\(f=t^2\)">\(f=t^2\)</span>, and choose the root circle <span class="math" data-index="104" data-tex="\(|t|=1/2\)">\(|t|=1/2\)</span> for <span class="math" data-index="105" data-tex="\(|y|&lt;1/10\)">\(|y|&lt;1/10\)</span>. Find <span class="math" data-index="106" data-tex="\(q,B,h,g\)">\(q,B,h,g\)</span>.</p>
+<p><strong>Solution 4.</strong> Only the root <span class="math" data-index="107" data-tex="\(y\)">\(y\)</span> is inside the circle. Hence
+<span class="math" data-index="108" data-tex="\(q=t-y\)">\(q=t-y\)</span> and <span class="math" data-index="109" data-tex="\(B=t-3\)">\(B=t-3\)</span>. The latter is zero-free on the inner cylinder. The degree-zero remainder is <span class="math" data-index="110" data-tex="\(h(y)=f(y,y)=y^2\)">\(h(y)=f(y,y)=y^2\)</span>, and
+<span class="math" data-index="111" data-tex="\(f-h=(t-y)(t+y)\)">\(f-h=(t-y)(t+y)\)</span>. Therefore
+<span class="math" data-index="112" data-tex="\(g(t,y)=(t+y)/(t-3)\)">\(g(t,y)=(t+y)/(t-3)\)</span>, holomorphic on that cylinder, and
+<span class="math" data-index="113" data-tex="\(f=Qg+h\)">\(f=Qg+h\)</span>. The outside factor belongs in the analytic unit <span class="math" data-index="114" data-tex="\(B\)">\(B\)</span>; treating it as another inside interpolation node would unnecessarily change the remainder degree.</p>
+<p><strong>Exercise 5 (intermediate: strength at a vanishing value).</strong> For <span class="math" data-index="115" data-tex="\(R(y)=y^3+\varepsilon\)">\(R(y)=y^3+\varepsilon\)</span>, compute <span class="math" data-index="116" data-tex="\(\widetilde R(0)\)">\(\widetilde R(0)\)</span> and its limit as <span class="math" data-index="117" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>.</p>
+<p><strong>Solution 5.</strong> The only nonzero derivatives at zero are the value <span class="math" data-index="118" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and third derivative <span class="math" data-index="119" data-tex="\(6\)">\(6\)</span>. Thus
+<span class="math" data-index="120" data-tex="\(\widetilde R(0)=\sqrt{|\varepsilon|^2+36}\to6\)">\(\widetilde R(0)=\sqrt{|\varepsilon|^2+36}\to6\)</span>.
+At <span class="math" data-index="121" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>, the point value is zero but the strength remains six. This example concerns the polynomial-strength mean lemma H6; no assertion that every polynomial in this exercise is the discriminant of a particular specified factorization is needed.</p>
+<p><strong>Exercise 6 (intermediate: a loose uniform exponent).</strong> Explain why <span class="math" data-index="122" data-tex="\(K=m^3\)">\(K=m^3\)</span> bounds the contribution of the outside root distances in H24.</p>
+<p><strong>Solution 6.</strong> There are at most <span class="math" data-index="123" data-tex="\(m(m-1)/2\)">\(m(m-1)/2\)</span> unordered root pairs. Every outside-pair factor in the discriminant is a squared distance. Raising to <span class="math" data-index="124" data-tex="\(a_*=\bar m-1/2\le m-1/2\)">\(a_*=\bar m-1/2\le m-1/2\)</span> gives total distance exponent at most
+<span class="math" data-index="125" data-tex="\(m(m-1)(m-1/2)&lt;m^3\)">\(m(m-1)(m-1/2)&lt;m^3\)</span>. Each distance is bounded by <span class="math" data-index="126" data-tex="\(C_{n,m}A_0\)">\(C_{n,m}A_0\)</span>, and <span class="math" data-index="127" data-tex="\(A_0\ge m!\ge1\)">\(A_0\ge m!\ge1\)</span>. All fixed constants are absorbed into <span class="math" data-index="128" data-tex="\(C\)">\(C\)</span>, and increasing the power of <span class="math" data-index="129" data-tex="\(A_0\)">\(A_0\)</span> to <span class="math" data-index="130" data-tex="\(m^3\)">\(m^3\)</span> preserves the inequality. This is a sufficient loose power, not an assertion of an optimal loss.</p>
+<p><strong>Exercise 7 (advanced: why the weighted mean is uniform).</strong> Supply the contradiction argument proving the uniform lower log mean for a compact coefficient family of nonzero polynomials.</p>
+<p><strong>Solution 7.</strong> If the integrals on the observation ball had no lower bound, take a sequence with integrals tending to minus infinity. Coefficient compactness gives a subsequence converging to a nonzero polynomial. Choose one point where its value is nonzero, giving a positive lower bound for the sequence's moduli there. Bounded coefficients give a common upper bound for their logarithms on a larger ball centered at that point and containing the observation ball. Proper logarithms are locally integrable and subharmonic. Subtract them from the common upper bound; the resulting nonnegative superharmonic functions have integrals on the larger ball bounded by its volume times their uniformly bounded values at the chosen point. Their integrals on the observation ball are also bounded. This contradicts the proposed diverging negative log integrals. Translated normalized polynomials remain in a compact nonzero family, so the same argument is uniform over the inner centers used in H6.</p>
+<p><strong>Exercise 8 (advanced: graph and projection Jacobians).</strong> Verify L151.11 directly from the real map <span class="math" data-index="131" data-tex="\((x,v)\mapsto(x,v,x^2-v^2,2xv)\)">\((x,v)\mapsto(x,v,x^2-v^2,2xv)\)</span>, including the twofold projection.</p>
+<p><strong>Solution 8.</strong> Its derivative columns are
+<span class="math" data-index="132" data-tex="\((1,0,2x,2v)\)">\((1,0,2x,2v)\)</span> and <span class="math" data-index="133" data-tex="\((0,1,-2v,2x)\)">\((0,1,-2v,2x)\)</span>.
+Their inner product is zero and their squared lengths are
+<span class="math" data-index="134" data-tex="\(1+4(x^2+v^2)\)">\(1+4(x^2+v^2)\)</span>. The square root of their Gram determinant is therefore <span class="math" data-index="135" data-tex="\(1+4|t|^2\)">\(1+4|t|^2\)</span>. For the projection to <span class="math" data-index="136" data-tex="\(y\)">\(y\)</span>, its derivative matrix is
+<span class="math" data-index="137" data-tex="\(\begin{pmatrix}2x&amp;-2v\\2v&amp;2x\end{pmatrix}\)">\(\begin{pmatrix}2x&amp;-2v\\2v&amp;2x\end{pmatrix}\)</span>,
+with determinant <span class="math" data-index="138" data-tex="\(4|t|^2\)">\(4|t|^2\)</span>. Every nonzero <span class="math" data-index="139" data-tex="\(y\)">\(y\)</span> has the two roots <span class="math" data-index="140" data-tex="\(t,-t\)">\(t,-t\)</span>; each must be counted in the fiber sum. The critical point <span class="math" data-index="141" data-tex="\(t=0\)">\(t=0\)</span> has zero projected Jacobian but is a single null parameter point. The surface parametrization itself remains an immersion there, with area density one.</p>
+<p><strong>Exercise 9 (advanced: one-dimensional local division).</strong> Describe the estimate for <span class="math" data-index="142" data-tex="\(Q(t)=t^\mu\)">\(Q(t)=t^\mu\)</span>, and the empty cluster for <span class="math" data-index="143" data-tex="\(Q(t)=t-2\)">\(Q(t)=t-2\)</span>.</p>
+<p><strong>Solution 9.</strong> For <span class="math" data-index="144" data-tex="\(Q=t^\mu\)">\(Q=t^\mu\)</span> use the single square-free factor <span class="math" data-index="145" data-tex="\(Q_1=t\)">\(Q_1=t\)</span>, <span class="math" data-index="146" data-tex="\(m_1=\mu\)">\(m_1=\mu\)</span>. Its discriminant is the empty product one. The remainder is the Taylor polynomial of <span class="math" data-index="147" data-tex="\(f\)">\(f\)</span> at zero of degree below <span class="math" data-index="148" data-tex="\(\mu\)">\(\mu\)</span>; the quotient is the analytic remainder divided by <span class="math" data-index="149" data-tex="\(t^\mu\)">\(t^\mu\)</span>. The surface data are the counting-measure jets <span class="math" data-index="150" data-tex="\(\sum_{a&lt;\mu}|f^{(a)}(0)|\)">\(\sum_{a&lt;\mu}|f^{(a)}(0)|\)</span>, and the bound follows directly as in Exercise 1. For <span class="math" data-index="151" data-tex="\(Q=t-2\)">\(Q=t-2\)</span>, a circle of radius <span class="math" data-index="152" data-tex="\(1/2\)">\(1/2\)</span> contains no root. The contour remainder is zero, and <span class="math" data-index="153" data-tex="\(g=f/(t-2)\)">\(g=f/(t-2)\)</span> is holomorphic on the inner disk. Its remainder estimate has left side zero.</p>
+<p><strong>Exercise 10 (advanced: protect the Euclidean-ball domain).</strong> Prove that the pole in Example 4 lies outside the unit ball but inside the unit polydisk. Explain why the proof contour is still legal.</p>
+<p><strong>Solution 10.</strong> The two pole coordinates are <span class="math" data-index="154" data-tex="\(4/5\)">\(4/5\)</span> and <span class="math" data-index="155" data-tex="\(\sqrt2-4/5\)">\(\sqrt2-4/5\)</span>. The latter lies in <span class="math" data-index="156" data-tex="\((0,1)\)">\((0,1)\)</span> because <span class="math" data-index="157" data-tex="\(4/5&lt;\sqrt2&lt;9/5\)">\(4/5&lt;\sqrt2&lt;9/5\)</span>. Their squared norm exceeds one since</p>
+<span class="math math-display" id="eq-L151.16" data-index="158" data-tex="\[
+\frac{32}{25}+2-\frac{8\sqrt2}{5}&gt;1
+\quad\Longleftrightarrow\quad
+\frac{57}{25}&gt;\frac{8\sqrt2}{5}.
+\tag{L151.16}
+\]">\[
+\frac{32}{25}+2-\frac{8\sqrt2}{5}&gt;1
+\quad\Longleftrightarrow\quad
+\frac{57}{25}&gt;\frac{8\sqrt2}{5}.
+\tag{L151.16}
+\]</span>
+<p>Both sides are positive; squaring gives <span class="math" data-index="159" data-tex="\(3249/625&gt;3200/625\)">\(3249/625&gt;3200/625\)</span>. Thus the pole is outside the ball and inside the polydisk. The actual contour instead has <span class="math" data-index="160" data-tex="\(|t|&lt;2/3\)">\(|t|&lt;2/3\)</span>, <span class="math" data-index="161" data-tex="\(|y|&lt;1/3\)">\(|y|&lt;1/3\)</span>, giving squared norm below <span class="math" data-index="162" data-tex="\(5/9\)">\(5/9\)</span>. It lies wholly in the unit ball where the original function is known. The quotient and remainder are then defined on an even smaller cylinder, and the theorem restricts their conclusion to a smaller Euclidean ball.</p>
+<h2 id="reproducibility-and-source-map">Reproducibility and source map</h2>
+<p>The formal source gives the entire Hermite proof, both distance-product conventions, the uniform analytic factors, contour division, discriminant-weighted fiber estimate, full polynomial-strength mean lemma and the exact surface projection bound. Its statements match Hörmander II, §15.3, Lemmas 15.3.4–15.3.5, printed pp. 292–293. The strength convention is formula 10.4.2, printed p. 32.</p>
+<p>The figure source retains exact collision parameters, complex root maps, unit-ball cutoff and real Gram/Jacobian densities. Independent calculations reconstruct the interpolation from its actual jets, evaluate contour remainders, differentiate the surface map and integrate the actual surface and fiber data. They supplement the full proof. The global hypersurface area bound and surface solution representation require the subsequent arguments and remain separate.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>Root collisions increase the size of an interpolating polynomial. The full jets at each root determine its remainder, and a discriminant measures the resulting loss. We prove a uniform division theorem on a smaller complex Euclidean ball, including collisions at the central parameter. Its estimate uses the derivative strength of the discriminant, not just its value at the center.</p>
+<p>Our complex variables are <span class="math" data-index="163" data-tex="\(z=(t,y)\in\mathbb C\times\mathbb C^{n-1}\)">\(z=(t,y)\in\mathbb C\times\mathbb C^{n-1}\)</span>. All polynomial derivatives are ordinary complex derivatives. Use Euclidean complex balls and their real Lebesgue measure <span class="math" data-index="164" data-tex="\(dV\)">\(dV\)</span>. Surface measure <span class="math" data-index="165" data-tex="\(dS\)">\(dS\)</span> on a hypersurface is the Euclidean real <span class="math" data-index="166" data-tex="\(2n-2\)">\(2n-2\)</span> dimensional area; on its smooth graph charts this is the induced area measure. In dimension one it is counting measure on isolated points.</p>
+<p>The actual complex-analysis inputs are <a href="AN02-L045.html#cauchy-estimates-and-parameter-contours">L045, Cauchy estimates, parameter contours and root counts</a>. The scalar logarithm, its submean inequality and local integrability are proved in <a href="AN02-L147.html#gd4-scalar-holomorphic-logarithms-are-proper-psh-and-locally-integrable">L147 GD4</a>; its calculation applies on any connected local holomorphic domain as well as to entire functions. We give the finite Hermite formula, uniform root circle, holomorphic local factors, contour remainder, weighted mean estimate and surface projection inequality in full. Only finite polynomial factorization, finite-dimensional compactness and ordinary determinant algebra are additional entries.</p>
+<h2 id="h1-root-distance-conventions-and-the-full-hermite-estimate">H1. Root-distance conventions and the full Hermite estimate</h2>
+<p>Let <span class="math" data-index="167" data-tex="\(t_1,\ldots,t_\nu\)">\(t_1,\ldots,t_\nu\)</span> be distinct points of the unit disk. Let their positive multiplicities be <span class="math" data-index="168" data-tex="\(\mu_j\)">\(\mu_j\)</span>, with</p>
+<span class="math math-display" id="eq-H1" data-index="169" data-tex="\[
+\mu=\sum_{j=1}^{\nu}\mu_j,\qquad
+\bar\mu=\max_j\mu_j,\qquad
+D=\prod_{i&lt;j}|t_i-t_j|,\qquad
+\Delta=\prod_{i\ne j}|t_i-t_j|=D^2.
+\tag{H1}
+\]">\[
+\mu=\sum_{j=1}^{\nu}\mu_j,\qquad
+\bar\mu=\max_j\mu_j,\qquad
+D=\prod_{i&lt;j}|t_i-t_j|,\qquad
+\Delta=\prod_{i\ne j}|t_i-t_j|=D^2.
+\tag{H1}
+\]</span>
+<p>Empty products are one. For every polynomial <span class="math" data-index="170" data-tex="\(q\)">\(q\)</span> of degree at most <span class="math" data-index="171" data-tex="\(\mu-1\)">\(\mu-1\)</span>,</p>
+<span class="math math-display" id="eq-H2" data-index="172" data-tex="\[
+\begin{aligned}
+D^{\,2\bar\mu-1}\sup_{|t|&lt;1}|q(t)|
+&amp;\le C_\mu\sum_j\sum_{a&lt;\mu_j}|q^{(a)}(t_j)|,\\
+\Delta^{\,2\bar\mu-1}\sup_{|t|&lt;1}|q(t)|
+&amp;\le C&#x27;_\mu\sum_j\sum_{a&lt;\mu_j}|q^{(a)}(t_j)|.
+\end{aligned}
+\tag{H2}
+\]">\[
+\begin{aligned}
+D^{\,2\bar\mu-1}\sup_{|t|&lt;1}|q(t)|
+&amp;\le C_\mu\sum_j\sum_{a&lt;\mu_j}|q^{(a)}(t_j)|,\\
+\Delta^{\,2\bar\mu-1}\sup_{|t|&lt;1}|q(t)|
+&amp;\le C&#x27;_\mu\sum_j\sum_{a&lt;\mu_j}|q^{(a)}(t_j)|.
+\end{aligned}
+\tag{H2}
+\]</span>
+<p>The second is the ordered-product version. We prove the stronger first version because the usual monic discriminant has modulus <span class="math" data-index="173" data-tex="\(D^2\)">\(D^2\)</span>, so this version gives the correct half-integer discriminant exponent.</p>
+<p>Put</p>
+<span class="math math-display" id="eq-H3" data-index="174" data-tex="\[
+p_j(t)=\prod_{i\ne j}(t-t_i)^{\mu_i},\qquad
+q_j(t)=\sum_{b&lt;\mu_j}\frac{(q/p_j)^{(b)}(t_j)}{b!}(t-t_j)^b.
+\tag{H3}
+\]">\[
+p_j(t)=\prod_{i\ne j}(t-t_i)^{\mu_i},\qquad
+q_j(t)=\sum_{b&lt;\mu_j}\frac{(q/p_j)^{(b)}(t_j)}{b!}(t-t_j)^b.
+\tag{H3}
+\]</span>
+<p>The quotient is analytic near <span class="math" data-index="175" data-tex="\(t_j\)">\(t_j\)</span>, since <span class="math" data-index="176" data-tex="\(p_j(t_j)\ne0\)">\(p_j(t_j)\ne0\)</span>. The difference
+<span class="math" data-index="177" data-tex="\(q-\sum_jq_jp_j\)">\(q-\sum_jq_jp_j\)</span> has a zero of order at least <span class="math" data-index="178" data-tex="\(\mu_j\)">\(\mu_j\)</span> at each <span class="math" data-index="179" data-tex="\(t_j\)">\(t_j\)</span>: its <span class="math" data-index="180" data-tex="\(j\)">\(j\)</span>-term agrees with <span class="math" data-index="181" data-tex="\(q\)">\(q\)</span> to that order, while every other <span class="math" data-index="182" data-tex="\(p_i\)">\(p_i\)</span> contains <span class="math" data-index="183" data-tex="\((t-t_j)^{\mu_j}\)">\((t-t_j)^{\mu_j}\)</span>. Successive one-variable factor division makes the difference divisible by the degree-<span class="math" data-index="184" data-tex="\(\mu\)">\(\mu\)</span> product
+<span class="math" data-index="185" data-tex="\(\prod_j(t-t_j)^{\mu_j}\)">\(\prod_j(t-t_j)^{\mu_j}\)</span>. Its degree is at most <span class="math" data-index="186" data-tex="\(\mu-1\)">\(\mu-1\)</span>, so it vanishes identically. Thus</p>
+<span class="math math-display" id="eq-H4" data-index="187" data-tex="\[
+q(t)=\sum_jq_j(t)p_j(t).
+\tag{H4}
+\]">\[
+q(t)=\sum_jq_j(t)p_j(t).
+\tag{H4}
+\]</span>
+<p>This also proves uniqueness of the Hermite interpolant: a polynomial of degree below <span class="math" data-index="188" data-tex="\(\mu\)">\(\mu\)</span> with all the specified jets zero is zero.</p>
+<p>For <span class="math" data-index="189" data-tex="\(|w|&lt;\min_{i\ne j}|t_j-t_i|\)">\(|w|&lt;\min_{i\ne j}|t_j-t_i|\)</span>, the reciprocal factors have the convergent expansion</p>
+<span class="math math-display" id="eq-H5" data-index="190" data-tex="\[
+(t_j+w-t_i)^{-\mu_i}
+=\sum_{l\ge0}(-1)^l
+ \binom{\mu_i+l-1}{l}
+ (t_j-t_i)^{-\mu_i-l}w^l.
+\tag{H5}
+\]">\[
+(t_j+w-t_i)^{-\mu_i}
+=\sum_{l\ge0}(-1)^l
+ \binom{\mu_i+l-1}{l}
+ (t_j-t_i)^{-\mu_i-l}w^l.
+\tag{H5}
+\]</span>
+<p>This is the binomial series, obtained by differentiating the geometric series <span class="math" data-index="191" data-tex="\(\mu_i-1\)">\(\mu_i-1\)</span> times and dividing by its factorial. Multiplication gives the coefficient of <span class="math" data-index="192" data-tex="\(w^l\)">\(w^l\)</span> in <span class="math" data-index="193" data-tex="\(1/p_j(t_j+w)\)">\(1/p_j(t_j+w)\)</span> as a sum over <span class="math" data-index="194" data-tex="\(l_i\ge0\)">\(l_i\ge0\)</span>, <span class="math" data-index="195" data-tex="\(\sum_{i\ne j}l_i=l\)">\(\sum_{i\ne j}l_i=l\)</span>, of products of the factors in H5. Only <span class="math" data-index="196" data-tex="\(l&lt;\mu_j\)">\(l&lt;\mu_j\)</span> is needed. Each denominator exponent obeys</p>
+<span class="math math-display" id="eq-H6" data-index="197" data-tex="\[
+\mu_i+l_i\le\mu_i+\mu_j-1\le2\bar\mu-1=:S.
+\tag{H6}
+\]">\[
+\mu_i+l_i\le\mu_i+\mu_j-1\le2\bar\mu-1=:S.
+\tag{H6}
+\]</span>
+<p>There are finitely many such coefficients, and all their binomial and factorial constants are bounded in terms of <span class="math" data-index="198" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>For any one denominator product, multiplication by <span class="math" data-index="199" data-tex="\(D^S\)">\(D^S\)</span> cancels every required pair distance at least once with exponent <span class="math" data-index="200" data-tex="\(S\)">\(S\)</span>. The distances of pairs incident with <span class="math" data-index="201" data-tex="\(j\)">\(j\)</span> occur with residual exponent <span class="math" data-index="202" data-tex="\(S-\mu_i-l_i\ge0\)">\(S-\mu_i-l_i\ge0\)</span>; all other pair distances have exponent <span class="math" data-index="203" data-tex="\(S\)">\(S\)</span>. Each distance is at most two. Hence the product after multiplication is bounded by <span class="math" data-index="204" data-tex="\(2^{S\nu(\nu-1)/2}\)">\(2^{S\nu(\nu-1)/2}\)</span>, which depends only on <span class="math" data-index="205" data-tex="\(\mu\)">\(\mu\)</span>. The Taylor product with <span class="math" data-index="206" data-tex="\(q(t_j+w)\)">\(q(t_j+w)\)</span> therefore gives</p>
+<span class="math math-display" id="eq-H7" data-index="207" data-tex="\[
+D^S\sum_{b&lt;\mu_j}
+\left|\frac{(q/p_j)^{(b)}(t_j)}{b!}\right|
+\le C_\mu\sum_{a&lt;\mu_j}|q^{(a)}(t_j)|.
+\tag{H7}
+\]">\[
+D^S\sum_{b&lt;\mu_j}
+\left|\frac{(q/p_j)^{(b)}(t_j)}{b!}\right|
+\le C_\mu\sum_{a&lt;\mu_j}|q^{(a)}(t_j)|.
+\tag{H7}
+\]</span>
+<p>For <span class="math" data-index="208" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, <span class="math" data-index="209" data-tex="\(|t-t_j|\le2\)">\(|t-t_j|\le2\)</span> and
+<span class="math" data-index="210" data-tex="\(|p_j(t)|\le2^{\mu-\mu_j}\)">\(|p_j(t)|\le2^{\mu-\mu_j}\)</span>. Substitute these estimates and H7 in H4 to prove the first part of H2. Also
+<span class="math" data-index="211" data-tex="\(D\le2^{\nu(\nu-1)/2}\)">\(D\le2^{\nu(\nu-1)/2}\)</span>, so multiplication by the additional factor <span class="math" data-index="212" data-tex="\(D^S\)">\(D^S\)</span> proves its ordered-product version. Neither proof assumes that <span class="math" data-index="213" data-tex="\(D\)">\(D\)</span> is at most one.</p>
+<p>For a larger chosen exponent <span class="math" data-index="214" data-tex="\(S&#x27;\ge S\)">\(S&#x27;\ge S\)</span>, boundedness of <span class="math" data-index="215" data-tex="\(D\)">\(D\)</span> gives the same estimate with a changed constant whenever <span class="math" data-index="216" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> has a fixed bound in terms of the total multiplicity. We will use <span class="math" data-index="217" data-tex="\(S&#x27;=2\bar m-1\)">\(S&#x27;=2\bar m-1\)</span> below even if the roots in a particular local cluster have smaller maximal multiplicity.</p>
+<figure><img class="course-figure" width="1817" height="797" src="reproduce/L151/figures/hermite-collision-and-root-products.png" alt="Exact double-node collision and root-product scales" /><figcaption class="native"><a href="reproduce/L151/figures/hermite-collision-and-root-products.png">Open full-size PNG</a> · <a href="reproduce/L151/figures/hermite-collision-and-root-products.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure H-A.</strong> For the exact double nodes <span class="math" data-index="218" data-tex="\(0,\varepsilon\)">\(0,\varepsilon\)</span>, the cubic with data <span class="math" data-index="219" data-tex="\(0,0,-1,0\)">\(0,0,-1,0\)</span> has disk supremum <span class="math" data-index="220" data-tex="\(3\varepsilon^{-2}+2\varepsilon^{-3}\)">\(3\varepsilon^{-2}+2\varepsilon^{-3}\)</span>, attained at the boundary point <span class="math" data-index="221" data-tex="\(-1\)">\(-1\)</span>. Its unordered normalization is <span class="math" data-index="222" data-tex="\(2+3\varepsilon\)">\(2+3\varepsilon\)</span>; its ordered normalization is <span class="math" data-index="223" data-tex="\(2\varepsilon^3+3\varepsilon^4\)">\(2\varepsilon^3+3\varepsilon^4\)</span>. The left curves are explicitly real slices of the normalized polynomial. Learner Example 1 proves every value; H1–H7 prove the uniform estimate with all complex nodes and multiplicities.</p>
+<h2 id="h2-the-exact-local-division-theorem">H2. The exact local division theorem</h2>
+<p>For any polynomial <span class="math" data-index="224" data-tex="\(A\)">\(A\)</span> in <span class="math" data-index="225" data-tex="\(d\)">\(d\)</span> complex variables, define its derivative strength at zero by</p>
+<span class="math math-display" id="eq-H8" data-index="226" data-tex="\[
+\widetilde A(0)=
+\left(\sum_\alpha|\partial^\alpha A(0)|^2\right)^{1/2}.
+\tag{H8}
+\]">\[
+\widetilde A(0)=
+\left(\sum_\alpha|\partial^\alpha A(0)|^2\right)^{1/2}.
+\tag{H8}
+\]</span>
+<p>Only derivatives up to its degree contribute. For zero variables this is the absolute value of the constant. The strength is positive if and only if the polynomial is nonzero.</p>
+<p>Let <span class="math" data-index="227" data-tex="\(Q_1,\ldots,Q_s\)">\(Q_1,\ldots,Q_s\)</span> have positive degrees <span class="math" data-index="228" data-tex="\(d_j\)">\(d_j\)</span>, with highest homogeneous part equal to one at <span class="math" data-index="229" data-tex="\((1,0,\ldots,0)\)">\((1,0,\ldots,0)\)</span>. Equivalently each <span class="math" data-index="230" data-tex="\(Q_j(t,y)\)">\(Q_j(t,y)\)</span> is monic of degree <span class="math" data-index="231" data-tex="\(d_j\)">\(d_j\)</span> in <span class="math" data-index="232" data-tex="\(t\)">\(t\)</span>; its coefficient of <span class="math" data-index="233" data-tex="\(t^{d_j}\)">\(t^{d_j}\)</span> is the constant one. Let <span class="math" data-index="234" data-tex="\(m_j\ge1\)">\(m_j\ge1\)</span>, and write</p>
+<span class="math math-display" id="eq-H9" data-index="235" data-tex="\[
+Q=\prod_j Q_j^{m_j},\qquad
+m=\sum_jm_jd_j,\qquad
+\bar m=\max_jm_j,\qquad
+A_0=\widetilde Q(0).
+\tag{H9}
+\]">\[
+Q=\prod_j Q_j^{m_j},\qquad
+m=\sum_jm_jd_j,\qquad
+\bar m=\max_jm_j,\qquad
+A_0=\widetilde Q(0).
+\tag{H9}
+\]</span>
+<p>A constant monic factor is one and is omitted when listing the factors and their multiplicities. In particular <span class="math" data-index="236" data-tex="\(\bar m\le m\)">\(\bar m\le m\)</span>.
+Assume that for a fixed <span class="math" data-index="237" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-H10" data-index="238" data-tex="\[
+A_0\le M\sup_{|t|&lt;1}|Q(t,0)|.
+\tag{H10}
+\]">\[
+A_0\le M\sup_{|t|&lt;1}|Q(t,0)|.
+\tag{H10}
+\]</span>
+<p>Let <span class="math" data-index="239" data-tex="\(R(y)\)">\(R(y)\)</span> be the usual monic discriminant of
+<span class="math" data-index="240" data-tex="\(Q_*(t,y)=\prod_jQ_j(t,y)\)">\(Q_*(t,y)=\prod_jQ_j(t,y)\)</span>, and assume it is not identically zero. With the roots of <span class="math" data-index="241" data-tex="\(Q_*(\cdot,y)\)">\(Q_*(\cdot,y)\)</span>, counted with multiplicity, it has</p>
+<span class="math math-display" id="eq-H11" data-index="242" data-tex="\[
+|R(y)|=\prod_{\alpha&lt;\beta}
+                  |a_\alpha(y)-a_\beta(y)|^2.
+\tag{H11}
+\]">\[
+|R(y)|=\prod_{\alpha&lt;\beta}
+                  |a_\alpha(y)-a_\beta(y)|^2.
+\tag{H11}
+\]</span>
+<p>The harmless sign in the algebraic product does not affect any estimate. It is a polynomial in <span class="math" data-index="243" data-tex="\(y\)">\(y\)</span>: the monic resultant determinant of <span class="math" data-index="244" data-tex="\(Q_*\)">\(Q_*\)</span> and its <span class="math" data-index="245" data-tex="\(t\)">\(t\)</span>-derivative supplies it, up to that sign. If <span class="math" data-index="246" data-tex="\(d_*=\sum_jd_j\le m\)">\(d_*=\sum_jd_j\le m\)</span>, its degree in <span class="math" data-index="247" data-tex="\(y\)">\(y\)</span> is at most <span class="math" data-index="248" data-tex="\(d_*(2d_*-1)\)">\(d_*(2d_*-1)\)</span>, since the determinant has <span class="math" data-index="249" data-tex="\(2d_*-1\)">\(2d_*-1\)</span> rows and each polynomial coefficient has degree at most <span class="math" data-index="250" data-tex="\(d_*\)">\(d_*\)</span>. This loose bound is sufficient.</p>
+<p><strong>Theorem H2.</strong> There are <span class="math" data-index="251" data-tex="\(c,C&gt;0\)">\(c,C&gt;0\)</span>, depending only on <span class="math" data-index="252" data-tex="\(n,m,M\)">\(n,m,M\)</span>, such that every holomorphic <span class="math" data-index="253" data-tex="\(f\)">\(f\)</span> on the unit Euclidean ball has</p>
+<span class="math math-display" id="eq-H12" data-index="254" data-tex="\[
+f(z)=Q(z)g(z)+h(z)\quad(|z|&lt;c),
+\tag{H12}
+\]">\[
+f(z)=Q(z)g(z)+h(z)\quad(|z|&lt;c),
+\tag{H12}
+\]</span>
+<p>where <span class="math" data-index="255" data-tex="\(g,h\)">\(g,h\)</span> are holomorphic there and <span class="math" data-index="256" data-tex="\(h(t,y)\)">\(h(t,y)\)</span> is a polynomial in <span class="math" data-index="257" data-tex="\(t\)">\(t\)</span> of degree less than <span class="math" data-index="258" data-tex="\(m\)">\(m\)</span>. Moreover</p>
+<span class="math math-display" id="eq-H13" data-index="259" data-tex="\[
+\widetilde R(0)^{\,\bar m-1/2}
+\sup_{|z|&lt;c}|h(z)|
+\le C A_0^{\,K}
+\sum_{j=1}^{s}\sum_{a&lt;m_j}
+\int_{\{Q_j=0\}\cap\{|z|&lt;1\}}
+               |\partial_t^a f(z)|\,dS_j(z).
+\tag{H13}
+\]">\[
+\widetilde R(0)^{\,\bar m-1/2}
+\sup_{|z|&lt;c}|h(z)|
+\le C A_0^{\,K}
+\sum_{j=1}^{s}\sum_{a&lt;m_j}
+\int_{\{Q_j=0\}\cap\{|z|&lt;1\}}
+               |\partial_t^a f(z)|\,dS_j(z).
+\tag{H13}
+\]</span>
+<p>One admissible loose exponent is <span class="math" data-index="260" data-tex="\(K=m^3\)">\(K=m^3\)</span>. The integral is an <span class="math" data-index="261" data-tex="\(L^1\)">\(L^1\)</span> surface integral. If its right side is infinite, the inequality has its ordinary extended meaning; the analytic decomposition is still constructed. The discriminant may vanish at <span class="math" data-index="262" data-tex="\(y=0\)">\(y=0\)</span>. Replacing <span class="math" data-index="263" data-tex="\(\widetilde R(0)\)">\(\widetilde R(0)\)</span> by <span class="math" data-index="264" data-tex="\(|R(0)|\)">\(|R(0)|\)</span> would weaken the claim and make it vacuous at such a collision.</p>
+<h2 id="h3-a-root-circle-chosen-uniformly-from-the-normalized-coefficients">H3. A root circle chosen uniformly from the normalized coefficients</h2>
+<p>The coefficient of <span class="math" data-index="265" data-tex="\(t^m\)">\(t^m\)</span> in <span class="math" data-index="266" data-tex="\(Q\)">\(Q\)</span> is one, so
+<span class="math" data-index="267" data-tex="\(A_0\ge|\partial_t^mQ(0)|=m!\ge1\)">\(A_0\ge|\partial_t^mQ(0)|=m!\ge1\)</span>.
+The univariate polynomial <span class="math" data-index="268" data-tex="\(p(t)=Q(t,0)/A_0\)">\(p(t)=Q(t,0)/A_0\)</span> belongs to the compact family</p>
+<span class="math math-display" id="eq-H14" data-index="269" data-tex="\[
+\mathcal F=
+\left\{\sum_{l=0}^{m}b_lt^l:
+ |b_l|\le1/l!,\
+ \sup_{|t|\le1}|p(t)|\ge1/M\right\}.
+\tag{H14}
+\]">\[
+\mathcal F=
+\left\{\sum_{l=0}^{m}b_lt^l:
+ |b_l|\le1/l!,\
+ \sup_{|t|\le1}|p(t)|\ge1/M\right\}.
+\tag{H14}
+\]</span>
+<p>The coefficient bounds come directly from H8; H10 gives the lower supremum. The supremum on the closed disk equals that on the open disk by continuity. The family is closed and bounded in a finite-dimensional space, and contains no zero polynomial. It allows a leading coefficient to approach zero; a degree-drop limit is harmless.</p>
+<p>For each member choose a radius <span class="math" data-index="270" data-tex="\(\rho\in(1/3,2/3)\)">\(\rho\in(1/3,2/3)\)</span> whose circle contains no zero. Such a radius exists because a nonzero polynomial has finitely many roots. Its positive boundary minimum persists for all polynomials in a coefficient neighborhood of that member. A finite cover of <span class="math" data-index="271" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> gives a common <span class="math" data-index="272" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, depending only on <span class="math" data-index="273" data-tex="\(m,M\)">\(m,M\)</span>, such that for every <span class="math" data-index="274" data-tex="\(Q\)">\(Q\)</span> one of those circles satisfies</p>
+<span class="math math-display" id="eq-H15" data-index="275" data-tex="\[
+|Q(t,0)|\ge b A_0\quad(|t|=\rho).
+\tag{H15}
+\]">\[
+|Q(t,0)|\ge b A_0\quad(|t|=\rho).
+\tag{H15}
+\]</span>
+<p>This is a uniform bound although the selected circle may depend on <span class="math" data-index="276" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>The finite Taylor expansion of <span class="math" data-index="277" data-tex="\(Q/A_0\)">\(Q/A_0\)</span> at zero bounds all its first derivatives on <span class="math" data-index="278" data-tex="\(|z|\le1\)">\(|z|\le1\)</span> by a constant depending only on <span class="math" data-index="279" data-tex="\(n,m\)">\(n,m\)</span>. Choose <span class="math" data-index="280" data-tex="\(0&lt;\rho&#x27;&lt;1/12\)">\(0&lt;\rho&#x27;&lt;1/12\)</span>, depending only on <span class="math" data-index="281" data-tex="\(n,m,M\)">\(n,m,M\)</span>, small enough that the following band remains in <span class="math" data-index="282" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, and the Taylor difference from the nearest point of the central circle is at most <span class="math" data-index="283" data-tex="\(bA_0/2\)">\(bA_0/2\)</span>:</p>
+<span class="math math-display" id="eq-H16" data-index="284" data-tex="\[
+|Q(t,y)|\ge(b/2)A_0
+\quad\left(\bigl||t|-\rho\bigr|\le\rho&#x27;,\ |y|&lt;\rho&#x27;\right).
+\tag{H16}
+\]">\[
+|Q(t,y)|\ge(b/2)A_0
+\quad\left(\bigl||t|-\rho\bigr|\le\rho&#x27;,\ |y|&lt;\rho&#x27;\right).
+\tag{H16}
+\]</span>
+<p>For example the segment length is at most <span class="math" data-index="285" data-tex="\(\sqrt2\,\rho&#x27;\)">\(\sqrt2\,\rho&#x27;\)</span>, so the uniform derivative bound supplies this choice. Because <span class="math" data-index="286" data-tex="\(\rho&lt;2/3\)">\(\rho&lt;2/3\)</span>, all these segments lie in a fixed smaller ball once <span class="math" data-index="287" data-tex="\(\rho&#x27;&lt;1/12\)">\(\rho&#x27;&lt;1/12\)</span>. Thus every <span class="math" data-index="288" data-tex="\(Q_j\)">\(Q_j\)</span> is zero-free on that band. The roots inside the selected circle have modulus below <span class="math" data-index="289" data-tex="\(\rho-\rho&#x27;\)">\(\rho-\rho&#x27;\)</span>, and all roots outside have modulus above <span class="math" data-index="290" data-tex="\(\rho+\rho&#x27;\)">\(\rho+\rho&#x27;\)</span>.</p>
+<h2 id="h4-holomorphic-local-factors-and-the-contour-remainder">H4. Holomorphic local factors and the contour remainder</h2>
+<p>For <span class="math" data-index="291" data-tex="\(|y|&lt;\rho&#x27;\)">\(|y|&lt;\rho&#x27;\)</span>, each <span class="math" data-index="292" data-tex="\(Q_j(\cdot,y)\)">\(Q_j(\cdot,y)\)</span> has a fixed number <span class="math" data-index="293" data-tex="\(\nu_j\)">\(\nu_j\)</span> of roots inside <span class="math" data-index="294" data-tex="\(|t|&lt;\rho\)">\(|t|&lt;\rho\)</span>, counted with multiplicity. Indeed its nonvanishing contour values vary continuously; the root count of L045 is an integer-valued continuous function on the connected parameter ball. Its power sums are</p>
+<span class="math math-display" id="eq-H17" data-index="295" data-tex="\[
+s_{j,l}(y)=\frac1{2\pi i}
+\int_{|w|=\rho}w^l
+\frac{\partial_wQ_j(w,y)}{Q_j(w,y)}\,dw
+\quad(l\ge1).
+\tag{H17}
+\]">\[
+s_{j,l}(y)=\frac1{2\pi i}
+\int_{|w|=\rho}w^l
+\frac{\partial_wQ_j(w,y)}{Q_j(w,y)}\,dw
+\quad(l\ge1).
+\tag{H17}
+\]</span>
+<p>They are holomorphic in <span class="math" data-index="296" data-tex="\(y\)">\(y\)</span> by fixed-contour differentiation. The logarithmic derivative of the factored univariate polynomial is a sum of reciprocal root factors, including their multiplicities; the Cauchy formula evaluates H17 as the indicated sum of root powers.</p>
+<p>Newton's identities express the elementary symmetric functions of these <span class="math" data-index="297" data-tex="\(\nu_j\)">\(\nu_j\)</span> roots polynomially in the first <span class="math" data-index="298" data-tex="\(\nu_j\)">\(\nu_j\)</span> power sums, with fixed scalar denominators. One direct verification is to expand
+<span class="math" data-index="299" data-tex="\(\prod_\ell(1-a_\ell u)\)">\(\prod_\ell(1-a_\ell u)\)</span>, differentiate it logarithmically as a formal polynomial series, and compare coefficients in
+<span class="math" data-index="300" data-tex="\(-\sum_{l\ge1}s_{j,l}u^{l-1}\)">\(-\sum_{l\ge1}s_{j,l}u^{l-1}\)</span>.
+Thus the monic root polynomial <span class="math" data-index="301" data-tex="\(q_j(t,y)\)">\(q_j(t,y)\)</span> of the inside cluster has holomorphic coefficients even through root collisions and permutations. Since the roots have modulus below <span class="math" data-index="302" data-tex="\(2/3\)">\(2/3\)</span>, its coefficient of order <span class="math" data-index="303" data-tex="\(l\)">\(l\)</span> is bounded by
+<span class="math" data-index="304" data-tex="\(\binom{\nu_j}{l}(2/3)^l\)">\(\binom{\nu_j}{l}(2/3)^l\)</span>, uniformly.</p>
+<p>Monic polynomial long division of <span class="math" data-index="305" data-tex="\(Q_j\)">\(Q_j\)</span> by <span class="math" data-index="306" data-tex="\(q_j\)">\(q_j\)</span> has holomorphic quotient coefficients. For every fixed <span class="math" data-index="307" data-tex="\(y\)">\(y\)</span> the remainder is zero, by the root factorization, so the quotient <span class="math" data-index="308" data-tex="\(b_j\)">\(b_j\)</span> is an exact holomorphic polynomial. It is zero-free for <span class="math" data-index="309" data-tex="\(|t|&lt;\rho\)">\(|t|&lt;\rho\)</span>, since it contains only outside roots. Put</p>
+<span class="math math-display" id="eq-H18" data-index="310" data-tex="\[
+q=\prod_jq_j^{m_j},\qquad
+\mu=\deg_tq\le m,\qquad
+B=\prod_jb_j^{m_j},\qquad Q=qB.
+\tag{H18}
+\]">\[
+q=\prod_jq_j^{m_j},\qquad
+\mu=\deg_tq\le m,\qquad
+B=\prod_jb_j^{m_j},\qquad Q=qB.
+\tag{H18}
+\]</span>
+<p>The function <span class="math" data-index="311" data-tex="\(B\)">\(B\)</span> is holomorphic and zero-free on the cylinder
+<span class="math" data-index="312" data-tex="\(|t|&lt;\rho,\ |y|&lt;\rho&#x27;\)">\(|t|&lt;\rho,\ |y|&lt;\rho&#x27;\)</span>. The empty cluster has <span class="math" data-index="313" data-tex="\(q=1\)">\(q=1\)</span>.</p>
+<p>The entire contour <span class="math" data-index="314" data-tex="\((w,y)\)">\((w,y)\)</span>, <span class="math" data-index="315" data-tex="\(|w|=\rho,\ |y|&lt;\rho&#x27;\)">\(|w|=\rho,\ |y|&lt;\rho&#x27;\)</span>, lies inside the unit <strong>Euclidean ball</strong>, because
+<span class="math" data-index="316" data-tex="\(\rho^2+\rho&#x27;^2&lt; (2/3)^2+(1/3)^2&lt;1\)">\(\rho^2+\rho&#x27;^2&lt; (2/3)^2+(1/3)^2&lt;1\)</span>.
+Thus its values of <span class="math" data-index="317" data-tex="\(f\)">\(f\)</span> are available without extending <span class="math" data-index="318" data-tex="\(f\)">\(f\)</span> to a unit polydisk. Define</p>
+<span class="math math-display" id="eq-H19" data-index="319" data-tex="\[
+h(t,y)=\frac1{2\pi i}
+\int_{|w|=\rho}
+f(w,y)\,
+\frac{q(w,y)-q(t,y)}{(w-t)q(w,y)}\,dw .
+\tag{H19}
+\]">\[
+h(t,y)=\frac1{2\pi i}
+\int_{|w|=\rho}
+f(w,y)\,
+\frac{q(w,y)-q(t,y)}{(w-t)q(w,y)}\,dw .
+\tag{H19}
+\]</span>
+<p>The divided difference in its numerator is a polynomial in <span class="math" data-index="320" data-tex="\(t\)">\(t\)</span> of degree below <span class="math" data-index="321" data-tex="\(\mu\)">\(\mu\)</span>, with holomorphic parameter coefficients. No inside root is on the circle. Thus <span class="math" data-index="322" data-tex="\(h\)">\(h\)</span> is holomorphic on this cylinder and polynomial of degree below <span class="math" data-index="323" data-tex="\(\mu\)">\(\mu\)</span> in <span class="math" data-index="324" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-index="325" data-tex="\(\mu=0\)">\(\mu=0\)</span> its numerator is zero, so <span class="math" data-index="326" data-tex="\(h=0\)">\(h=0\)</span>.
+The disk Cauchy formula also gives</p>
+<span class="math math-display" id="eq-H20" data-index="327" data-tex="\[
+f(t,y)-h(t,y)
+=q(t,y)\frac1{2\pi i}
+\int_{|w|=\rho}
+\frac{f(w,y)}{(w-t)q(w,y)}\,dw
+=Q(t,y)g(t,y),
+\tag{H20}
+\]">\[
+f(t,y)-h(t,y)
+=q(t,y)\frac1{2\pi i}
+\int_{|w|=\rho}
+\frac{f(w,y)}{(w-t)q(w,y)}\,dw
+=Q(t,y)g(t,y),
+\tag{H20}
+\]</span>
+<p>where the last integral is divided by the zero-free <span class="math" data-index="328" data-tex="\(B(t,y)\)">\(B(t,y)\)</span>. Hence <span class="math" data-index="329" data-tex="\(g\)">\(g\)</span> is holomorphic there. Take eventually
+<span class="math" data-index="330" data-tex="\(c\le\min(\rho&#x27;/4,1/12)\)">\(c\le\min(\rho&#x27;/4,1/12)\)</span>; the required smaller Euclidean ball lies in this cylinder.</p>
+<h2 id="h5-a-discriminant-weighted-estimate-on-each-generic-fiber">H5. A discriminant-weighted estimate on each generic fiber</h2>
+<p>At a parameter with <span class="math" data-index="331" data-tex="\(R(y)\ne0\)">\(R(y)\ne0\)</span>, all roots of all <span class="math" data-index="332" data-tex="\(Q_j(\cdot,y)\)">\(Q_j(\cdot,y)\)</span> are simple and mutually distinct. If <span class="math" data-index="333" data-tex="\(t_i\)">\(t_i\)</span> is an inside root of <span class="math" data-index="334" data-tex="\(Q_j\)">\(Q_j\)</span>, then <span class="math" data-index="335" data-tex="\(f-h=Qg\)">\(f-h=Qg\)</span> has a zero of order at least <span class="math" data-index="336" data-tex="\(m_j\)">\(m_j\)</span> there. Thus</p>
+<span class="math math-display" id="eq-H21" data-index="337" data-tex="\[
+\partial_t^a h(t_i,y)=\partial_t^a f(t_i,y)
+\quad(0\le a&lt;m_j).
+\tag{H21}
+\]">\[
+\partial_t^a h(t_i,y)=\partial_t^a f(t_i,y)
+\quad(0\le a&lt;m_j).
+\tag{H21}
+\]</span>
+<p>Apply H2 to the inside roots with those multiplicities. Its stronger unordered-product bound, and the final observation of H1 if fewer multiplicities occur, show</p>
+<span class="math math-display" id="eq-H22" data-index="338" data-tex="\[
+D_{\mathrm{in}}^{\,2\bar m-1}
+\sup_{|t|&lt;\rho}|h(t,y)|
+\le C_m
+\sum_j\sum_{a&lt;m_j}
+\sum_{\substack{Q_j(t_i,y)=0\\|t_i|&lt;\rho}}
+|\partial_t^a f(t_i,y)|.
+\tag{H22}
+\]">\[
+D_{\mathrm{in}}^{\,2\bar m-1}
+\sup_{|t|&lt;\rho}|h(t,y)|
+\le C_m
+\sum_j\sum_{a&lt;m_j}
+\sum_{\substack{Q_j(t_i,y)=0\\|t_i|&lt;\rho}}
+|\partial_t^a f(t_i,y)|.
+\tag{H22}
+\]</span>
+<p>The degree of <span class="math" data-index="339" data-tex="\(h\)">\(h\)</span> is below the total inside multiplicity, which is exactly the hypothesis needed here.</p>
+<p>For <span class="math" data-index="340" data-tex="\(|y|&lt;\rho&#x27;&lt;1\)">\(|y|&lt;\rho&#x27;&lt;1\)</span>, every coefficient of <span class="math" data-index="341" data-tex="\(Q(\cdot,y)\)">\(Q(\cdot,y)\)</span> is bounded by <span class="math" data-index="342" data-tex="\(C_{n,m}A_0\)">\(C_{n,m}A_0\)</span>, by its Taylor expansion at zero. The elementary monic root bound gives</p>
+<span class="math math-display" id="eq-H23" data-index="343" data-tex="\[
+|a_\alpha(y)|\le1+\max_{l&lt;m}|[t^l]Q(t,y)|
+\le C_{n,m}&#x27;A_0.
+\tag{H23}
+\]">\[
+|a_\alpha(y)|\le1+\max_{l&lt;m}|[t^l]Q(t,y)|
+\le C_{n,m}&#x27;A_0.
+\tag{H23}
+\]</span>
+<p>To verify the first bound, if <span class="math" data-index="344" data-tex="\(|t|&gt;1+\max|c_l|\)">\(|t|&gt;1+\max|c_l|\)</span>, then
+<span class="math" data-index="345" data-tex="\(\sum_{l&lt;m}|c_l||t|^l&lt;|t|^m\)">\(\sum_{l&lt;m}|c_l||t|^l&lt;|t|^m\)</span>, so the monic term cannot be cancelled. Every root of <span class="math" data-index="346" data-tex="\(Q_*\)">\(Q_*\)</span> is also a root of <span class="math" data-index="347" data-tex="\(Q\)">\(Q\)</span>, making H23 applicable to all of them.</p>
+<p>Split H11 into inside-inside pairs and all other pairs. Each remaining distance is bounded by twice the root bound in H23. Hence, with <span class="math" data-index="348" data-tex="\(a_*=\bar m-1/2\)">\(a_*=\bar m-1/2\)</span>,</p>
+<span class="math math-display" id="eq-H24" data-index="349" data-tex="\[
+|R(y)|^{a_*}
+\le C_{n,m}A_0^{m^3}D_{\mathrm{in}}^{\,2\bar m-1}.
+\tag{H24}
+\]">\[
+|R(y)|^{a_*}
+\le C_{n,m}A_0^{m^3}D_{\mathrm{in}}^{\,2\bar m-1}.
+\tag{H24}
+\]</span>
+<p>There are at most <span class="math" data-index="350" data-tex="\(m(m-1)/2\)">\(m(m-1)/2\)</span> pairs. Their total exponent after raising the squared product to <span class="math" data-index="351" data-tex="\(a_*\)">\(a_*\)</span> is at most
+<span class="math" data-index="352" data-tex="\(m(m-1)(m-1/2)&lt;m^3\)">\(m(m-1)(m-1/2)&lt;m^3\)</span>, and <span class="math" data-index="353" data-tex="\(A_0\ge1\)">\(A_0\ge1\)</span> permits the written looser exponent. This is the usual discriminant relation with the <strong>unordered</strong> distance product. The ordered product in H1 is its square; replacing one by the other inside this step would change the exponent.</p>
+<p>Combining H22 and H24 gives the uniform fiber estimate</p>
+<span class="math math-display" id="eq-H25" data-index="354" data-tex="\[
+|R(y)|^{a_*}\sup_{|t|&lt;\rho}|h(t,y)|
+\le C A_0^{m^3}
+\sum_j\sum_{a&lt;m_j}
+\sum_{\substack{Q_j(t_i,y)=0\\|t_i|&lt;\rho}}
+|\partial_t^a f(t_i,y)|.
+\tag{H25}
+\]">\[
+|R(y)|^{a_*}\sup_{|t|&lt;\rho}|h(t,y)|
+\le C A_0^{m^3}
+\sum_j\sum_{a&lt;m_j}
+\sum_{\substack{Q_j(t_i,y)=0\\|t_i|&lt;\rho}}
+|\partial_t^a f(t_i,y)|.
+\tag{H25}
+\]</span>
+<p>It holds on the complement of the discriminant zeros, which has full parameter measure. The logarithm argument in the next section proves that a nonzero polynomial has a null zero set as well as proving the needed weighted estimate.</p>
+<h2 id="h6-replace-the-discriminant-value-by-its-derivative-strength">H6. Replace the discriminant value by its derivative strength</h2>
+<p>Here is the complete polynomial-weighted holomorphic mean estimate needed to pass H25 to H13.</p>
+<p><strong>Lemma H6.</strong> Fix a degree bound <span class="math" data-index="355" data-tex="\(L\)">\(L\)</span>, a radius <span class="math" data-index="356" data-tex="\(\rho&#x27;&gt;0\)">\(\rho&#x27;&gt;0\)</span>, a dimension <span class="math" data-index="357" data-tex="\(d\ge1\)">\(d\ge1\)</span>, and <span class="math" data-index="358" data-tex="\(a_*&gt;0\)">\(a_*&gt;0\)</span>. There is a constant <span class="math" data-index="359" data-tex="\(C\)">\(C\)</span>, depending only on these data, such that for every nonzero polynomial <span class="math" data-index="360" data-tex="\(R\)">\(R\)</span> of degree at most <span class="math" data-index="361" data-tex="\(L\)">\(L\)</span> and every holomorphic <span class="math" data-index="362" data-tex="\(H\)">\(H\)</span> on <span class="math" data-index="363" data-tex="\(B_d(0,\rho&#x27;)\)">\(B_d(0,\rho&#x27;)\)</span>,</p>
+<span class="math math-display" id="eq-H26" data-index="364" data-tex="\[
+\widetilde R(0)^{a_*}
+\sup_{|b|&lt;\rho&#x27;/4}|H(b)|
+\le C\int_{|y|&lt;\rho&#x27;}|R(y)|^{a_*}|H(y)|\,dV(y).
+\tag{H26}
+\]">\[
+\widetilde R(0)^{a_*}
+\sup_{|b|&lt;\rho&#x27;/4}|H(b)|
+\le C\int_{|y|&lt;\rho&#x27;}|R(y)|^{a_*}|H(y)|\,dV(y).
+\tag{H26}
+\]</span>
+<p>Normalize <span class="math" data-index="365" data-tex="\(S=R/\widetilde R(0)\)">\(S=R/\widetilde R(0)\)</span>. Its coefficient vector belongs to the compact unit sphere of the derivative norm in the finite-dimensional polynomial space of degree at most <span class="math" data-index="366" data-tex="\(L\)">\(L\)</span>. The translates <span class="math" data-index="367" data-tex="\(S(b+\cdot)\)">\(S(b+\cdot)\)</span>, <span class="math" data-index="368" data-tex="\(|b|\le\rho&#x27;/4\)">\(|b|\le\rho&#x27;/4\)</span>, form a compact family of nonzero polynomials: the translation depends continuously on coefficients and <span class="math" data-index="369" data-tex="\(b\)">\(b\)</span>, and cannot make a nonzero polynomial identically zero.</p>
+<p>For this family there is a uniform lower bound on the mean of its logarithm on the fixed ball <span class="math" data-index="370" data-tex="\(B_d(0,\rho&#x27;/2)\)">\(B_d(0,\rho&#x27;/2)\)</span>:</p>
+<span class="math math-display" id="eq-H27" data-index="371" data-tex="\[
+\frac1{|B_d(0,\rho&#x27;/2)|}
+\int_{|v|&lt;\rho&#x27;/2}\log|S(b+v)|\,dV(v)\ge-C_0.
+\tag{H27}
+\]">\[
+\frac1{|B_d(0,\rho&#x27;/2)|}
+\int_{|v|&lt;\rho&#x27;/2}\log|S(b+v)|\,dV(v)\ge-C_0.
+\tag{H27}
+\]</span>
+<p>We prove the bound rather than assuming continuity of logarithms through zeros. If it failed, a sequence from this compact coefficient family would converge to a nonzero polynomial <span class="math" data-index="372" data-tex="\(S_\infty\)">\(S_\infty\)</span> while its log integrals tended to minus infinity. Choose a point <span class="math" data-index="373" data-tex="\(v_0\)">\(v_0\)</span> where <span class="math" data-index="374" data-tex="\(S_\infty(v_0)\ne0\)">\(S_\infty(v_0)\ne0\)</span>. Such a point exists in any open ball, by the polynomial identity principle. Values of the sequence at <span class="math" data-index="375" data-tex="\(v_0\)">\(v_0\)</span> then have a positive lower bound.</p>
+<p>Choose one larger ball centered at <span class="math" data-index="376" data-tex="\(v_0\)">\(v_0\)</span> containing <span class="math" data-index="377" data-tex="\(B_d(0,\rho&#x27;/2)\)">\(B_d(0,\rho&#x27;/2)\)</span>. The bounded coefficient family gives a common upper bound <span class="math" data-index="378" data-tex="\(C_1\)">\(C_1\)</span> for all its logarithms on that larger ball. Each logarithm is proper PSH, is locally integrable, and satisfies the real ball submean inequality: apply the explicit regularization
+<span class="math" data-index="379" data-tex="\(\frac12\log(|S|^2+\varepsilon^2)\)">\(\frac12\log(|S|^2+\varepsilon^2)\)</span>, whose Levi matrix is positive, and the local-integrability argument of L147 GD4. Hence the nonnegative function
+<span class="math" data-index="380" data-tex="\(C_1-\log|S|\)">\(C_1-\log|S|\)</span> satisfies the supermean inequality at <span class="math" data-index="381" data-tex="\(v_0\)">\(v_0\)</span>, and</p>
+<span class="math math-display" id="eq-H28" data-index="382" data-tex="\[
+\int_{|v|&lt;\rho&#x27;/2}(C_1-\log|S(v)|)\,dV(v)
+\le |B(v_0,R_0)|\bigl(C_1-\log|S(v_0)|\bigr).
+\tag{H28}
+\]">\[
+\int_{|v|&lt;\rho&#x27;/2}(C_1-\log|S(v)|)\,dV(v)
+\le |B(v_0,R_0)|\bigl(C_1-\log|S(v_0)|\bigr).
+\tag{H28}
+\]</span>
+<p>The right side is uniformly bounded along the proposed sequence. This contradicts its diverging negative log integrals, proving H27. Proper logarithmic local integrability also shows that a nonzero polynomial's zero set has Lebesgue measure zero.</p>
+<p>If <span class="math" data-index="383" data-tex="\(H(b)=0\)">\(H(b)=0\)</span>, the pointwise assertion in H26 is immediate. Otherwise its logarithm is locally integrable and subharmonic on the parameter ball; the same regularization calculation just used works for a local holomorphic function. The radius-<span class="math" data-index="384" data-tex="\(\rho&#x27;/2\)">\(\rho&#x27;/2\)</span> ball centered at <span class="math" data-index="385" data-tex="\(b\)">\(b\)</span> lies in <span class="math" data-index="386" data-tex="\(B_d(0,\rho&#x27;)\)">\(B_d(0,\rho&#x27;)\)</span>. Submeans for <span class="math" data-index="387" data-tex="\(\log|H|\)">\(\log|H|\)</span> and H27 give</p>
+<span class="math math-display" id="eq-H29" data-index="388" data-tex="\[
+\begin{aligned}
+a_*\log\widetilde R(0)+\log|H(b)|
+&amp;\le
+\frac1{|B_d(0,\rho&#x27;/2)|}
+\int_{B_d(b,\rho&#x27;/2)}\log\bigl(|R|^{a_*}|H|\bigr)\,dV
++a_*C_0\\
+&amp;\le
+\log\left(\frac1{|B_d(0,\rho&#x27;/2)|}
+\int_{B_d(b,\rho&#x27;/2)}|R|^{a_*}|H|\,dV\right)+a_*C_0.
+\end{aligned}
+\tag{H29}
+\]">\[
+\begin{aligned}
+a_*\log\widetilde R(0)+\log|H(b)|
+&amp;\le
+\frac1{|B_d(0,\rho&#x27;/2)|}
+\int_{B_d(b,\rho&#x27;/2)}\log\bigl(|R|^{a_*}|H|\bigr)\,dV
++a_*C_0\\
+&amp;\le
+\log\left(\frac1{|B_d(0,\rho&#x27;/2)|}
+\int_{B_d(b,\rho&#x27;/2)}|R|^{a_*}|H|\,dV\right)+a_*C_0.
+\end{aligned}
+\tag{H29}
+\]</span>
+<p>The second inequality is the arithmetic-geometric mean inequality, or Jensen's inequality for the logarithm on a probability space. If <span class="math" data-index="389" data-tex="\(H\)">\(H\)</span> is identically zero, the conclusion is again immediate; otherwise its zeros are null by the same local-integrability proof. All logarithms in this computation are therefore legitimate local integrals. Exponentiation and enlargement of the integration ball prove H26, uniformly in <span class="math" data-index="390" data-tex="\(b\)">\(b\)</span>.</p>
+<p>Apply H26 to <span class="math" data-index="391" data-tex="\(H(y)=h(t,y)\)">\(H(y)=h(t,y)\)</span> for each fixed <span class="math" data-index="392" data-tex="\(|t|&lt;c\)">\(|t|&lt;c\)</span>, with <span class="math" data-index="393" data-tex="\(L\le m(2m-1)\)">\(L\le m(2m-1)\)</span>. Its constants are independent of <span class="math" data-index="394" data-tex="\(t\)">\(t\)</span>. Increasing the right side to
+<span class="math" data-index="395" data-tex="\(\int|R|^{a_*}\sup_{|t|&lt;\rho}|h(t,y)|\,dV(y)\)">\(\int|R|^{a_*}\sup_{|t|&lt;\rho}|h(t,y)|\,dV(y)\)</span>
+and taking the supremum over <span class="math" data-index="396" data-tex="\(|t|&lt;c\)">\(|t|&lt;c\)</span> yields</p>
+<span class="math math-display" id="eq-H30" data-index="397" data-tex="\[
+\widetilde R(0)^{a_*}
+\sup_{\substack{|t|&lt;c\\|y|&lt;c}}|h(t,y)|
+\le C\int_{|y|&lt;\rho&#x27;}
+          |R(y)|^{a_*}\sup_{|t|&lt;\rho}|h(t,y)|\,dV(y).
+\tag{H30}
+\]">\[
+\widetilde R(0)^{a_*}
+\sup_{\substack{|t|&lt;c\\|y|&lt;c}}|h(t,y)|
+\le C\int_{|y|&lt;\rho&#x27;}
+          |R(y)|^{a_*}\sup_{|t|&lt;\rho}|h(t,y)|\,dV(y).
+\tag{H30}
+\]</span>
+<p>If an integral is infinite the bound remains valid; the local estimates themselves use strictly interior balls, where the holomorphic functions are bounded. Since <span class="math" data-index="398" data-tex="\(\bar m\)">\(\bar m\)</span> is one of the finitely many integers <span class="math" data-index="399" data-tex="\(1,\ldots,m\)">\(1,\ldots,m\)</span>, constants in this use of H26 can be chosen uniformly over all its allowed half-integer exponents.</p>
+<h2 id="h7-integrate-fibers-using-the-actual-surface-measure">H7. Integrate fibers using the actual surface measure</h2>
+<p>Outside <span class="math" data-index="400" data-tex="\(\{R=0\}\)">\(\{R=0\}\)</span>, an individual root is locally a holomorphic function <span class="math" data-index="401" data-tex="\(t_i(y)\)">\(t_i(y)\)</span>. A direct construction avoids any choice of a global root branch: choose a small circle separating that simple root from the others at a given parameter. Its boundary stays zero-free on a parameter neighborhood and its root count stays one. The integral in H17 with <span class="math" data-index="402" data-tex="\(l=1\)">\(l=1\)</span>, over this smaller circle, gives its single root as a holomorphic function.</p>
+<p>For such a graph, the real derivative of
+<span class="math" data-index="403" data-tex="\(y\mapsto(t_i(y),y)\)">\(y\mapsto(t_i(y),y)\)</span> has Gram matrix</p>
+<span class="math math-display" id="eq-H31" data-index="404" data-tex="\[
+I+(Dt_i)^T Dt_i,\qquad
+\sqrt{\det\bigl(I+(Dt_i)^TDt_i\bigr)}\ge1.
+\tag{H31}
+\]">\[
+I+(Dt_i)^T Dt_i,\qquad
+\sqrt{\det\bigl(I+(Dt_i)^TDt_i\bigr)}\ge1.
+\tag{H31}
+\]</span>
+<p>The matrix <span class="math" data-index="405" data-tex="\((Dt_i)^TDt_i\)">\((Dt_i)^TDt_i\)</span> is positive semidefinite because its quadratic form is <span class="math" data-index="406" data-tex="\(|Dt_i\,v|^2\)">\(|Dt_i\,v|^2\)</span>. Every eigenvalue of its addition to <span class="math" data-index="407" data-tex="\(I\)">\(I\)</span> is at least one, so its determinant has the stated lower bound. The ordinary induced graph-area formula therefore implies that integrating a nonnegative function over this root graph dominates its integral over the parameter base.</p>
+<p>Take a countable cover by these root-separating parameter neighborhoods and a disjoint measurable partition subordinate to the cover. On each piece label the finitely many roots, integrate by H31, and sum. This does not count a graph twice: the parameter pieces are disjoint, and a simple root is counted once in its factor. Every inside root has
+<span class="math" data-index="408" data-tex="\(|t_i|&lt;\rho,\ |y|&lt;\rho&#x27;\)">\(|t_i|&lt;\rho,\ |y|&lt;\rho&#x27;\)</span>, hence
+<span class="math" data-index="409" data-tex="\(|(t_i,y)|&lt;1\)">\(|(t_i,y)|&lt;1\)</span>. Additional parts of the hypersurface have nonnegative measure and can only enlarge the right side. Consequently</p>
+<span class="math math-display" id="eq-H32" data-index="410" data-tex="\[
+\int_{|y|&lt;\rho&#x27;}
+\sum_{\substack{Q_j(t_i,y)=0\\|t_i|&lt;\rho}}
+|\partial_t^a f(t_i,y)|\,dV(y)
+\le
+\int_{\{Q_j=0\}\cap\{|z|&lt;1\}}
+|\partial_t^a f(z)|\,dS_j(z).
+\tag{H32}
+\]">\[
+\int_{|y|&lt;\rho&#x27;}
+\sum_{\substack{Q_j(t_i,y)=0\\|t_i|&lt;\rho}}
+|\partial_t^a f(t_i,y)|\,dV(y)
+\le
+\int_{\{Q_j=0\}\cap\{|z|&lt;1\}}
+|\partial_t^a f(z)|\,dS_j(z).
+\tag{H32}
+\]</span>
+<p>The excluded discriminant parameter set is null by H6; its absence in the parameter integral requires no assertion that every point above it is a regular graph. At generic roots the nonzero <span class="math" data-index="411" data-tex="\(t\)">\(t\)</span>-derivative makes the graph a regular hypersurface chart, so the surface measure used there is precisely the given one.</p>
+<figure><img class="course-figure" width="2150" height="752" src="reproduce/L151/figures/branched-projection-and-surface-area.png" alt="Exact branched projection and surface metric" /><figcaption class="native"><a href="reproduce/L151/figures/branched-projection-and-surface-area.png">Open full-size PNG</a> · <a href="reproduce/L151/figures/branched-projection-and-surface-area.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure H-B.</strong> The complex curve <span class="math" data-index="412" data-tex="\((t,t^2)\)">\((t,t^2)\)</span> lies in four real ambient dimensions. The first two panels are its plane projections; opposite nonzero roots give the same projected parameter. The metric panel gives its full area density <span class="math" data-index="413" data-tex="\(1+4|t|^2\)">\(1+4|t|^2\)</span> and projected Jacobian <span class="math" data-index="414" data-tex="\(4|t|^2\)">\(4|t|^2\)</span>. The unit Euclidean ball cuts its parameter disk at <span class="math" data-index="415" data-tex="\(|t|&lt;\sqrt{(\sqrt5-1)/2}\)">\(|t|&lt;\sqrt{(\sqrt5-1)/2}\)</span>. The complete real derivative and exact fiber/surface integrals are in learner Example 3. H31–H32 establish the general projection inequality.</p>
+<p>Integrate H25, use H32, and then H30. The Euclidean ball <span class="math" data-index="416" data-tex="\(|z|&lt;c\)">\(|z|&lt;c\)</span> is contained in the product <span class="math" data-index="417" data-tex="\(|t|&lt;c,\ |y|&lt;c\)">\(|t|&lt;c,\ |y|&lt;c\)</span>, so the resulting bound is exactly H13. Together with H19–H20 this proves the local division theorem for <span class="math" data-index="418" data-tex="\(n\ge2\)">\(n\ge2\)</span>.</p>
+<h2 id="h8-one-complex-variable-and-the-empty-cluster">H8. One complex variable and the empty cluster</h2>
+<p>For <span class="math" data-index="419" data-tex="\(n=1\)">\(n=1\)</span> there are no transverse parameters. The nonzero discriminant is a constant and
+<span class="math" data-index="420" data-tex="\(\widetilde R(0)=|R|\)">\(\widetilde R(0)=|R|\)</span>. Its roots are distinct; H19–H20 give the same local decomposition. H25 itself is H13, since the surface integrals are the finite sums of derivative values over the roots in the unit disk. The weighted parameter mean lemma is unnecessary in this dimension. If the chosen inside cluster has no roots, H19 gives <span class="math" data-index="421" data-tex="\(h=0\)">\(h=0\)</span> and <span class="math" data-index="422" data-tex="\(g=f/Q\)">\(g=f/Q\)</span> is holomorphic on the smaller disk; the estimate is then immediate.</p>
+<p>The same empty-cluster statement applies in any dimension. Contour root counts make that cluster empty throughout the selected parameter ball, so <span class="math" data-index="423" data-tex="\(Q\)">\(Q\)</span> is zero-free on the inner cylinder and the division is ordinary analytic division with remainder zero.</p>
+<h2 id="source-credit-and-the-two-conventions">Source credit and the two conventions</h2>
+<p>The classical targets are Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.3, Lemmas 15.3.4–15.3.5, printed pp. 292–293; 1983 edition, second revised printing 1990, reprint 2005. Its polynomial-strength notation is given in §10.4, formula 10.4.2, printed p. 32.</p>
+<p>The ordered root product is <span class="math" data-index="424" data-tex="\(\Delta=D^2\)">\(\Delta=D^2\)</span>. We prove both its Hermite estimate and the stronger unordered-product estimate, and use the latter with the usual discriminant in H24. The discriminant factor in the full local theorem is <span class="math" data-index="425" data-tex="\(\widetilde R(0)^{\bar m-1/2}\)">\(\widetilde R(0)^{\bar m-1/2}\)</span>, including all polynomial derivatives at zero. H6 proves why its derivative strength controls the weighted local mean even when its point value is zero.</p>
+<p>This proof supplies the quantitative local interpolation and division bounds. The subsequent global surface representation additionally requires the full hypersurface area bound, anisotropic cover, global Cauchy–Riemann repair, multiplicity action and weighted representation limit; those are separate arguments.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/hermite-interpolation-and-local-division-with-a-discriminant.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L151/hermite-discriminant-formal.md" download>hermite-discriminant-formal.md</a></li><li><a href="reproduce/L151/hermite-discriminant-learner.md" download>hermite-discriminant-learner.md</a></li><li><a href="reproduce/L151/make_figures166.py" download>make_figures166.py</a></li><li><a href="reproduce/L151/check_examples166.py" download>check_examples166.py</a></li><li><a href="reproduce/L151/independent-example-checks166.json" download>independent-example-checks166.json</a></li><li><a href="reproduce/L151/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L151/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L151/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L151/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L151/figures/hermite-collision-and-root-products.png" download>figures/hermite-collision-and-root-products.png</a></li><li><a href="reproduce/L151/figures/hermite-collision-and-root-products.svg" download>figures/hermite-collision-and-root-products.svg</a></li><li><a href="reproduce/L151/figures/branched-projection-and-surface-area.png" download>figures/branched-projection-and-surface-area.png</a></li><li><a href="reproduce/L151/figures/branched-projection-and-surface-area.svg" download>figures/branched-projection-and-surface-area.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

@@ -1,11 +1,9 @@
 # SH02-MC — Categories and operations in one cotangent direction
 
-Local identifier: `SH02-MC`. 
-Original programme text: CC0 1.0 Universal. Formalization: absent.
+Local identifier: `SH02-MC`.
+Independently authored programme expression: CC0 1.0 Universal. Formalization: absent. The human sources identified below retain their own terms.
 
-This unit supplies an original proof draft of the localization and microlocal-operation results.
-
-This unit constructs a category that forgets invisible directions, builds representatives with controlled microsupport, and proves when formal microlocal operations are represented by bounded sheaves. The geometric operation is encoded by two cotangent maps; their different fibres explain the different hypotheses on inverse and direct images.
+Directional localization permits many representatives of a single object. Applying a sheaf operation to those representatives first gives a formal system. Replacing that system by one bounded sheaf requires control of its support and of the relevant cotangent incidence. We develop the formal operations first, construct that geometric control, and then prove the representation criteria. The final morphism calculation identifies the information carried by the resulting category.
 
 All manifolds are finite-dimensional real smooth manifolds, Hausdorff and second countable. The coefficient ring $k$ is commutative and has finite global dimension. $D^b(k_X)$ means the bounded derived category of **all** sheaves of $k$-modules. No constructibility, finite-rank, field, orientability, or compactness condition is understood. A locally closed subspace has its subspace topology. A subscript $F_Z$ means extension by zero of the restriction, whereas $R\Gamma_ZF=R\mathcal Hom(k_Z,F)$ means local cohomology with support. These are different functors. Tensor products are derived. The antipodal map is $a(x;\xi)=(x;-\xi)$. Positive homogeneity always uses $\mathbb R_{>0}$.
 
@@ -17,7 +15,11 @@ For any $C^\infty$ map $f:Y\to X$, put
 \]
 The relative dualizing object is $\omega_{Y/X}=f^!k_X$. Locally it is the relative orientation line shifted by $[\dim Y-\dim X]$; thus the shift in $\omega_{Y/X}\otimes f^{-1}F\to f^!F$ is fixed by this definition. We never replace $f^!$ by a shifted $f^{-1}$ without a noncharacteristic hypothesis.
 
-**Prerequisites imported with their full scope.** We use the six sheaf operations, their adjunctions, proper base change, and the finite cohomological bounds on manifolds. We use the microsupport triangle inequality, the estimate for a proper-on-support direct image, submersion pullback, noncharacteristic pullback, and the noncharacteristic tensor/internal-Hom estimates. We also use the strict-normal estimate for $F_U$ and $R\Gamma_UF$ when the relevant normal cone is noncharacteristic; the elementary cone cutoff theorem; the cone-test and noncharacteristic deformation criteria; and the microlocal-Hom construction and its stalk formula. These are antecedent units, corresponding respectively to SM III, V §§1–4, and IV §4. Their statements needed below are repeated at their use. They are imports, not claims that this unit proves the earlier chapters. The open categorical imports are the [Stacks Project localization calculus](https://stacks.math.columbia.edu/tag/04VB) and [quotients of triangulated categories](https://stacks.math.columbia.edu/tag/05RA), under GFDL 1.2 or later. Those imports supply categorical foundations; they supply no microlocal estimate.
+**Proof inputs and source roles.** The prerequisites are the named programme constructions in the supplier table at the end: bounded sheaf operations with their actual adjunction maps; the local support tests and directional projector; proper-image, noncharacteristic and boundary estimates; and the definition, recovery and cone-stalk calculation for microlocal Hom. Every sheaf-theoretic input retains the coefficient and manifold scope stated above. The construction uses no constructible biduality theorem. The lower proofs and the precise contracts they still import remain identified in those supplier units.
+
+The directional quotient and its pointwise Hom comparison are classical constructions of Masaki Kashiwara and Pierre Schapira. Their [*Microlocal Study of Sheaves*, Astérisque 128 (1985), §6.1, Lemma 6.1.1 and Proposition 6.1.2, printed pp. 103–105](https://www.numdam.org/item/AST_1985__128__1_0/) give an openly accessible comparison for that part of the argument. Those pages do not supply the full four-operation representability theorem proved here. Its proof below uses the two explicitly constructed cutoff caps, the tilted boundary neighborhoods and the actual denominator comparison maps.
+
+The categorical imports are the [Stacks Project authors' localization calculus, Tag 04VB](https://stacks.math.columbia.edu/tag/04VB), and [triangulated quotient construction, Tag 05RA](https://stacks.math.columbia.edu/tag/05RA). The reading edition is the official source revision `a04446e57ec1fbc252a871afcec7752fb2807b14`{style="overflow-wrap:anywhere"}, `categories.tex` and `derived.tex`. These supply the fraction and quotient arguments, under GFDL 1.2 or later. They do not supply the microlocal estimates. The Astérisque citation gives mathematical credit; its source expression and copyright terms are distinct from the programme's CC0 dedication.
 
 ## SH02-MC-LOCAL — A category that records specified directions
 
@@ -68,51 +70,105 @@ then induces
 \]
 For example, the right fraction $(v:G\to F',s:F\to F')$ maps to the restriction of $v$ followed by the inverse of $\mu\mathcal Hom(G,s)|_\Omega$. Common refinements prove independence of the fraction. Equation (MC.3) is a comparison, with no assertion that it is an isomorphism for an arbitrary $\Omega$.
 
-## SH02-MC-POINT — The complete morphism group at one point
+## SH02-MC-FOUR — Four microlocal operations and their variance
 
-**Theorem.** For $p\in T^*X$ and arbitrary $G,F\in D^b(k_X)$,
+The quotient tells us which changes of representative are invisible. We now apply each sheaf operation to every such representative, retaining the direction of its comparison arrows.
+
+Choose $p\in E_f$, and write $p_X=f_\pi(p)$, $p_Y=f_d(p)$. For a category $\mathcal C$ we regard a pro-object $P=(P_i)$ as the functor $A\mapsto\operatorname{colim}_i\operatorname{Hom}(P_i,A)$, and an ind-object $I=(I_j)$ as $A\mapsto\operatorname{colim}_j\operatorname{Hom}(A,I_j)$. Quotation marks on a limit denote a formal pro/ind object, not a limit claimed to exist in $\mathcal C$.
+
+Define
 \[
- \operatorname{Hom}_{\mathcal D_X(\{p\})}(G,F)
- \xrightarrow{\sim} H^0(\mu\mathcal Hom(G,F))_p.
- \tag{MC.4}
+ \begin{aligned}
+ f_{\mu,p}^{-1}F&=``\!\lim_{F'\to F}\!''\ f^{-1}F'
+       &&\text{in }\operatorname{Pro}(\mathcal D_Y(p_Y)),\\
+ f_{\mu,p}^{!}F&=``\!\operatorname{colim}_{F\to F'}\!''\ f^!F'
+       &&\text{in }\operatorname{Ind}(\mathcal D_Y(p_Y)),\\
+ f_{!,p}^{\mu}G&=``\!\lim_{G'\to G}\!''\ Rf_!G'
+       &&\text{in }\operatorname{Pro}(\mathcal D_X(p_X)),\\
+ f_{*,p}^{\mu}G&=``\!\operatorname{colim}_{G\to G'}\!''\ Rf_*G'
+       &&\text{in }\operatorname{Ind}(\mathcal D_X(p_X)).
+ \end{aligned}
+ \tag{MC.11}
 \]
-The statement also applies after shifting either argument, so it determines every graded morphism group.
+Every indexing arrow is a denominator at its indicated point. The fraction calculus proves independence of the chosen representative of $F$ or $G$: composing with a denominator gives a cofinal denominator category, and common refinements provide the inverse identification. These constructions are not, in general, endofunctors of ordinary bounded localized categories.
 
-Here is the precise antecedent cutoff input used in the proof. In a vector-space chart at a nonzero covector $p=(x_0;\xi_0)$, let $U$ shrink to $x_0$ and let $\gamma$ run through closed proper convex cones with $\xi_0\in\operatorname{Int}(\gamma^\circ)^a$. The cone topology map is $\phi_\gamma$. Put
+## SH02-MC-ADJUNCTION — The comparison maps before representability
+
+With the pro/ind Hom conventions just specified, there are natural identifications
 \[
- Q_{U,\gamma}G=(\phi_\gamma^{-1}R\phi_{\gamma*}G_U)_U.
+ \operatorname{Hom}(f_{!,p}^{\mu}G,F)
+ =\operatorname{Hom}(G,f_{\mu,p}^!F),\qquad
+ \operatorname{Hom}(F,f_{*,p}^{\mu}G)
+ =\operatorname{Hom}(f_{\mu,p}^{-1}F,G).
+ \tag{MC.12}
 \]
-The cutoff theorem supplies an arrow $Q_{U,\gamma}G\to G$ that is a $p$-denominator for sufficiently small choices. The microlocal-Hom stalk formula is
+For the first, expand the left side by (MC.11), then expand the localized Hom by the first formula (MC.1). It becomes
 \[
- H^0(\mu\mathcal Hom(G,F))_p
- =\operatorname{colim}_{U,\gamma}
-       \operatorname{Hom}(Q_{U,\gamma}G,F).
- \tag{MC.5}
+ \operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
+ \operatorname{Hom}(Rf_!G',F')
+ =\operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
+ \operatorname{Hom}(G',f^!F').
 \]
-The filtered category permits simultaneous shrinking and cone refinement. Formula (MC.5) is the actual local formula imported from the microlocal-Hom unit; an assertion that ordinary sheaf stalks alone compute this group would be false.
+Colimits commute with colimits. Applying the second formula (MC.1) to the inner denominator colimit yields the right side of (MC.12). The other adjunction follows from
+$\operatorname{Hom}(F',Rf_*G')=\operatorname{Hom}(f^{-1}F',G')$
+with $F'\to F$ and $G\to G'$ denominators. This derivation specifies the variance of every indexing arrow.
 
-**Proof.** Any representative of the right side of (MC.4), using (MC.5), is an arrow $Q_{U,\gamma}G\to F$. Inverting $Q_{U,\gamma}G\to G$ produces a localized morphism with the requested image. This proves surjectivity. For injectivity, first represent a localized arrow by $G'\to G$, $G'\to F$, where the first arrow is a denominator. If its image vanishes, use the isomorphism induced by $G'\to G$ on microlocal Hom to reduce to the ordinary arrow $G'\to F$. The zero criterion for the filtered colimit (MC.5) gives a further cutoff $Q_{U,\gamma}G'\to G'$ on which that ordinary arrow is zero. This cutoff is another denominator. The fraction is therefore zero by (MC.1). This explicitly clears the initial denominator; injectivity is not being checked merely on ordinary arrows out of $G$.
-
-At $p=(x,0)$, a conic closed microsupport misses $p$ precisely when the complex vanishes in some neighborhood of $x$: its intersection with the zero section is the closed support. The denominator localization consequently has morphisms $\operatorname{colim}_{U\ni x}\operatorname{Hom}(G|_U,F|_U)$. This equals $H^0(R\mathcal Hom(G,F))_x$. The zero-section identity for microlocal Hom identifies the latter with the right side of (MC.4). $\square$
-
-## SH02-MC-IDENTITY — A sheaf detects its own microsupport
-
-Let $e_F$ be the section of $H^0\mu\mathcal Hom(F,F)$ obtained from $\operatorname{id}_F$.
-
-**Corollary.** As closed supports,
+There are canonical comparisons
 \[
- \operatorname{supp}(e_F)
- =\operatorname{supp}\mu\mathcal Hom(F,F)
- =\operatorname{SS}(F).
- \tag{MC.6}
+ f_{!,p}^{\mu}G\longrightarrow f_{*,p}^{\mu}G,
+ \qquad
+ \omega_{Y/X}\otimes f_{\mu,p}^{-1}F
+       \longrightarrow f_{\mu,p}^!F.
+ \tag{MC.13}
 \]
-In particular $p\notin\operatorname{SS}(F)$ if and only if $\mu\mathcal Hom(F,F)_p=0$.
+Their precise meaning is the compatible pro-to-ind morphism represented by
+\[
+ Rf_!G'\to Rf_!G\to Rf_*G\to Rf_*G^{\prime\prime},
+ \qquad
+ \omega_{Y/X}\otimes f^{-1}F'
+   \to\omega_{Y/X}\otimes f^{-1}F
+   \to f^!F\to f^!F^{\prime\prime},
+\]
+for $G'\to G\to G^{\prime\prime}$ and $F'\to F\to F^{\prime\prime}$. The middle arrows are the usual sheaf comparisons. Common denominator refinements prove compatibility. Once the formal objects are represented by ordinary objects these become ordinary arrows; until then (MC.13) is not a claim of an arrow between two ordinary sheaves.
 
-**Proof.** The first support is contained in the second, and the second in microsupport by the support estimate. If $(e_F)_p=0$, (MC.4) says that the identity of $F$ is zero in $\mathcal D_X(\{p\})$. An object in an additive category whose identity is zero is a zero object: every arrow to or from it factors through its zero identity and is zero. Equation (MC.2) now excludes $p$ from microsupport. This proves the reverse inclusion. $\square$
+<a id="SH02-MC-AMBIENT"></a>
 
-The proof uses the identity in a localized category and does not assume finite-dimensional endomorphism spaces. It therefore detects infinite-rank sheaves just as well as finite-rank ones.
+### A common category for the comparison arrows
+
+All filtered and cofiltered diagrams here are small in a fixed universe. For any locally small \(\mathcal C\), write \(c:\mathcal C\to\operatorname{Pro}(\mathcal C)\) for the constant pro embedding and \(\iota:\operatorname{Pro}(\mathcal C)\to\operatorname{Ind}(\operatorname{Pro}(\mathcal C))\) for the constant ind embedding. There are fully faithful embeddings
+
+\[
+\operatorname{Pro}(\mathcal C)\xrightarrow{\ \iota\ }
+\operatorname{Ind}(\operatorname{Pro}(\mathcal C)),
+\qquad
+\operatorname{Ind}(\mathcal C)\xrightarrow{\ \operatorname{Ind}(c)\ }
+\operatorname{Ind}(\operatorname{Pro}(\mathcal C)).
+\tag{MC.13a}
+\]
+
+The first is fully faithful by the constant-object Hom formula. The second is fully faithful because \(c\) is, and the ind Hom formula applies its bijections to each stage before taking the prescribed colimits and limits. Both send an ordinary object to the same twice-constant object.
+
+If \(P=(P_i)_{i\in I}\) is a pro-object with \(I\) cofiltered and \(J=(J_j)_{j\in K}\) is an ind-object with \(K\) filtered, then
+
+\[
+\operatorname{Hom}_{\operatorname{Ind}(\operatorname{Pro}(\mathcal C))}
+\bigl(\iota P,\operatorname{Ind}(c)J\bigr)
+=\operatorname{colim}_{j\in K}\operatorname{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{\mathcal C}(P_i,J_j).
+\tag{MC.13b}
+\]
+
+Indeed the outer source is constant, so the ind Hom formula gives \(\operatorname{colim}_j\operatorname{Hom}_{\operatorname{Pro}(\mathcal C)}(P,cJ_j)\). The target of each inner Hom is constant, so the pro formula gives the second colimit. A single stage map represents a morphism, and equality is equality after common refinements in these filtered categories. This is a double **colimit** calculation; there is no exchange of an infinite limit with a colimit. It also specifies the ambient category when neither formal object is represented by an ordinary object.
+
+For the first arrow of (MC.13), take \(\mathcal C=\mathcal D_X(p_X)\). The incoming pro-object has its canonical projection to the identity stage \(Rf_!G\), the outgoing ind-object has its structural map from the identity stage \(Rf_*G\), and the ordinary comparison lies between these stages. Their composite in (MC.13a) is exactly the first displayed stage composite. Refining an incoming denominator precomposes it, and refining an outgoing one postcomposes it, leaving its class in (MC.13b) unchanged.
+
+For the second arrow take \(\mathcal C=\mathcal D_Y(p_Y)\). Tensoring by \(\omega_{Y/X}\) is an ordinary functor on this localization: locally this object is an invertible orientation line with the stated shift, so tensoring preserves microsupport and hence denominators. Extend that functor termwise to the pro-category, and use the identity-stage projection, the ordinary noncharacteristic comparison map, and the outgoing structural map. This gives exactly the second stage composite. The middle map exists before imposing a noncharacteristic hypothesis; that hypothesis concerns its invertibility.
+
+Both composites are natural on ordinary arrows, by the naturality of the usual comparisons and the structural maps. The formal incoming and outgoing functors invert denominators, so this naturality identity also holds for their inverses and consequently for every roof. Thus (MC.13) is canonical and natural on localized objects. If both formal values are represented by ordinary objects, full faithfulness of the twice-constant embedding identifies it with a unique ordinary morphism. Representability alone does not make that morphism invertible. The forthcoming geometric hypotheses prove invertibility where it is asserted. \(\square\)
 
 ## SH02-MC-CUTOFF — Representatives with a prescribed directional bound
+
+To represent the formal operations, we need two kinds of control. The next two constructions constrain cotangent directions at a fixed basepoint; the boundary-control lemma then constrains support over the target.
 
 Fix $x_0\in X$, a proper closed convex cone $K\subset T^*_{x_0}X$, an open cone $U\subset K$, and $F\in D^b(k_X)$. Here “open cone” is open in the cotangent fiber away from its origin; a vacuous empty cone causes no difficulty. Let $W$ be a conic neighborhood, in that fiber, of $(K\cap\operatorname{SS}(F))\setminus\{0\}$.
 
@@ -218,125 +274,6 @@ For $\xi$ on the boundary of $C$, if $x\in\operatorname{Int}Z_+$ then $H_{Z_+}=F
 \]
 Equation (MC.10a) would then force $(1+c)\xi\in\operatorname{SS}(F)_x$ for some $c\ge0$, a contradiction. Hence $\xi$ belongs to $\operatorname{SS}(F)_x$, and the choice of $B$ puts it in $W$. In the interior of $C$, the dual cutoff already identifies the replacement with $F$ at the basepoint. This proves (MC.7) for $F_+$ without assuming that biduality is an isomorphism for arbitrary sheaves. $\square$
 
-## SH02-MC-FOUR — Four microlocal operations and their variance
-
-Choose $p\in E_f$, and write $p_X=f_\pi(p)$, $p_Y=f_d(p)$. For a category $\mathcal C$ we regard a pro-object $P=(P_i)$ as the functor $A\mapsto\operatorname{colim}_i\operatorname{Hom}(P_i,A)$, and an ind-object $I=(I_j)$ as $A\mapsto\operatorname{colim}_j\operatorname{Hom}(A,I_j)$. Quotation marks on a limit denote a formal pro/ind object, not a limit claimed to exist in $\mathcal C$.
-
-Define
-\[
- \begin{aligned}
- f_{\mu,p}^{-1}F&=``\!\lim_{F'\to F}\!''\ f^{-1}F'
-       &&\text{in }\operatorname{Pro}(\mathcal D_Y(p_Y)),\\
- f_{\mu,p}^{!}F&=``\!\operatorname{colim}_{F\to F'}\!''\ f^!F'
-       &&\text{in }\operatorname{Ind}(\mathcal D_Y(p_Y)),\\
- f_{!,p}^{\mu}G&=``\!\lim_{G'\to G}\!''\ Rf_!G'
-       &&\text{in }\operatorname{Pro}(\mathcal D_X(p_X)),\\
- f_{*,p}^{\mu}G&=``\!\operatorname{colim}_{G\to G'}\!''\ Rf_*G'
-       &&\text{in }\operatorname{Ind}(\mathcal D_X(p_X)).
- \end{aligned}
- \tag{MC.11}
-\]
-Every indexing arrow is a denominator at its indicated point. The fraction calculus proves independence of the chosen representative of $F$ or $G$: composing with a denominator gives a cofinal denominator category, and common refinements provide the inverse identification. These constructions are not, in general, endofunctors of ordinary bounded localized categories.
-
-## SH02-MC-ADJUNCTION — The comparison maps before representability
-
-With the pro/ind Hom conventions just specified, there are natural identifications
-\[
- \operatorname{Hom}(f_{!,p}^{\mu}G,F)
- =\operatorname{Hom}(G,f_{\mu,p}^!F),\qquad
- \operatorname{Hom}(F,f_{*,p}^{\mu}G)
- =\operatorname{Hom}(f_{\mu,p}^{-1}F,G).
- \tag{MC.12}
-\]
-For the first, expand the left side by (MC.11), then expand the localized Hom by the first formula (MC.1). It becomes
-\[
- \operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
- \operatorname{Hom}(Rf_!G',F')
- =\operatorname{colim}_{G'\to G}\operatorname{colim}_{F\to F'}
- \operatorname{Hom}(G',f^!F').
-\]
-Colimits commute with colimits. Applying the second formula (MC.1) to the inner denominator colimit yields the right side of (MC.12). The other adjunction follows from
-$\operatorname{Hom}(F',Rf_*G')=\operatorname{Hom}(f^{-1}F',G')$
-with $F'\to F$ and $G\to G'$ denominators. This derivation specifies the variance of every indexing arrow.
-
-There are canonical comparisons
-\[
- f_{!,p}^{\mu}G\longrightarrow f_{*,p}^{\mu}G,
- \qquad
- \omega_{Y/X}\otimes f_{\mu,p}^{-1}F
-       \longrightarrow f_{\mu,p}^!F.
- \tag{MC.13}
-\]
-Their precise meaning is the compatible pro-to-ind morphism represented by
-\[
- Rf_!G'\to Rf_!G\to Rf_*G\to Rf_*G'',
- \qquad
- \omega_{Y/X}\otimes f^{-1}F'
-   \to\omega_{Y/X}\otimes f^{-1}F
-   \to f^!F\to f^!F'',
-\]
-for $G'\to G\to G''$ and $F'\to F\to F''$. The middle arrows are the usual sheaf comparisons. Common denominator refinements prove compatibility. Once the formal objects are represented by ordinary objects these become ordinary arrows; until then (MC.13) is not a claim of an arrow between two ordinary sheaves.
-
-## SH02-MC-PULL-REP — When microlocal inverse images are ordinary objects
-
-Let $p=(y_0;\xi_0)\in E_f$, $p_X=f_\pi(p)$ and $p_Y=f_d(p)$. A condition stated “near $p$” concerns an actual neighborhood in $E_f$, not the entire fibre of either map.
-
-**Theorem.** Suppose $F\in\mathcal D_X(p_X)$ has a representative satisfying
-\[
- f_d^{-1}(p_Y)\cap f_\pi^{-1}\operatorname{SS}(F)
-       \subset\{p\}\quad\text{near }p.
- \tag{MC.14}
-\]
-Then the pro-object $f_{\mu,p}^{-1}F$ and the ind-object $f_{\mu,p}^{!}F$ are represented by objects of $\mathcal D_Y(p_Y)$. Their canonical comparison is an isomorphism
-\[
- \omega_{Y/X}\otimes f_{\mu,p}^{-1}F
-             \xrightarrow{\sim} f_{\mu,p}^{!}F.
- \tag{MC.15}
-\]
-For every neighborhood $W$ of $p$, a representative of the microlocal inverse image can be chosen so that, near $p_Y$,
-\[
- \operatorname{SS}(f_{\mu,p}^{-1}F)
- \subset f_d\bigl(W\cap f_\pi^{-1}\operatorname{SS}(F)\bigr).
- \tag{MC.16}
-\]
-This is an estimate of germs: an arbitrary global representative can acquire unrelated microsupport away from $p_Y$.
-
-There is a useful sufficient condition for using the original sheaf itself. If $F\in D^b(k_X)$, $f$ is noncharacteristic for $F$, and
-\[
- f_d^{-1}(p_Y)\cap f_\pi^{-1}\operatorname{SS}(F)\subset\{p\}
- \tag{MC.17}
-\]
-on the entire fibre, then
-\[
- f_{\mu,p}^{-1}F\simeq f^{-1}F,\qquad
- f_{\mu,p}^{!}F\simeq f^!F
- \quad\text{in }\mathcal D_Y(p_Y).
- \tag{MC.18}
-\]
-Noncharacteristic means that $f_\pi^{-1}\operatorname{SS}(F)$ meets $\ker f_d$ only in zero covectors. The proof uses the antecedent noncharacteristic theorem in its full form: the canonical arrow $\omega_{Y/X}\otimes f^{-1}F\to f^!F$ is an isomorphism, and both microsupports lie in $f_df_\pi^{-1}\operatorname{SS}(F)$.
-
-**Proof.** We may work in base charts about $y_0,x_0=f(y_0)$, since restriction to a smaller base neighborhood is a denominator at the specified covector. If $p_X\notin\operatorname{SS}(F)$, then $F=0$ in the source localization and all formal images are zero. If $p_X$ is zero and belongs to microsupport, (MC.14) excludes every nonzero characteristic covector at $y_0$: scaling it towards zero would contradict isolation. This exclusion persists near $y_0$. Otherwise a sequence of characteristic covectors at basepoints tending to $y_0$, normalized to length one in a chart, would have a characteristic limit at $y_0$ by closedness of microsupport and continuity of the transpose differential. Thus the original sheaf is noncharacteristic locally, and (MC.17) holds. This reduces the zero-covector case to the argument for good representatives below. If $p_X\ne0$ and lies in microsupport, (MC.14) implies $p_Y\ne0$, because otherwise positive multiples of $p$ would give distinct points of the same incidence fibre arbitrarily close to $p$.
-
-Assume now both covectors are nonzero, and put $A=d f_{y_0}^t$. Choose a narrow proper closed convex cone $K$ around $\xi_0$ with $K\cap\ker A=\{0\}$. It can be chosen so that
-\[
- K\cap A^{-1}(p_Y)\cap\operatorname{SS}(F)_{x_0}
-                   \subset\{\xi_0\}.
- \tag{MC.19}
-\]
-Here $p_Y$ denotes its fibre coordinate. To justify the passage from local isolation to (MC.19), a compact unit section of a sufficiently narrow $K$ has $|A\xi|\ge c|\xi|$. Covectors in $K\cap A^{-1}(p_Y)$ are therefore bounded, while their direction approaches that of $\xi_0$ as the cone narrows. Their only possible limit is $\xi_0$, since $A\xi_0=p_Y\ne0$. The neighborhood in (MC.14) then excludes every other incidence.
-
-Choose an open cone about $\xi_0$ inside $K$. The incoming refined replacement provides $F_-\to F$ with microsupport at $x_0$ contained in a sufficiently small conic neighborhood of $K\cap\operatorname{SS}(F)_{x_0}$. Choose this neighborhood to miss $\ker A\setminus0$ and to meet $A^{-1}(p_Y)$ only within the open cone on which the replacement agrees with $F$. Then $F_-$ is noncharacteristic near $y_0$ and satisfies (MC.17). These are open consequences of the fibre assertions: normalize a purported sequence of characteristic covectors, and use compactness of unit covectors to obtain a forbidden limit at $y_0$. The outgoing replacement produces $F\to F_+$ with the same two properties. Call such representatives good.
-
-Good incoming representatives are cofinal among all incoming denominators. Indeed, apply the same construction to the domain of any denominator; microsupports coincide near $p_X$. Common refinements can in turn be made good by one more cutoff. The analogous statement holds for outgoing denominators. If $F''\to F'$ is a denominator between two good representatives, its cone $C$ is noncharacteristic and has
-\[
- f_d^{-1}(p_Y)\cap f_\pi^{-1}\operatorname{SS}(C)=\varnothing.
-\]
-The triangle estimate gives noncharacteristicity, while the only possible incidence is $p$, which the denominator excludes. The noncharacteristic inverse-image estimate therefore makes $f^{-1}C$ and $f^!C$ zero at $p_Y$. Thus every transition between good representatives induces an isomorphism after either inverse operation. A filtered diagram whose transition arrows are all isomorphisms represents an ordinary object in the formal pro or ind category. This proves representability and (MC.18) whenever the original representative is good.
-
-The composite $F_-\to F\to F_+$ is itself a denominator between good representatives. Apply the natural noncharacteristic comparison to its two ends. The resulting commutative square identifies (MC.13) with an isomorphism, proving (MC.15) for that canonical map, not merely an abstract isomorphism of objects.
-
-Finally fix $W$. In the preceding construction choose the cone and its microsupport neighborhood sufficiently narrow that all covectors mapping near $p_Y$ lie in $W$ and in a region where the cutoff agrees with $F$. This is possible by the bound $|A\xi|\ge c|\xi|$ and (MC.19). After a base shrink the same bound holds for $d f_y^t$. Consequently its restriction to the relevant closed conic microsupport is proper over a small target cotangent neighborhood: a bounded output has bounded input, and the base is already in a compact chart. Any sequence violating the required confinement has a limit in the forbidden part of the incidence fibre. There the original and replacement microsupports agree, and the noncharacteristic inverse-image estimate gives (MC.16). In the zero-covector case the same normalization argument follows from noncharacteristicity, with the sole lift equal to zero. $\square$
-
 ## SH02-MC-TILTED — Removing boundary contributions from a direct image
 
 The following elementary construction is the geometric step behind the direct-image results. It is useful to state both boundary signs explicitly.
@@ -398,6 +335,68 @@ Dividing by $1+c$ contradicts (MC.23). For $R\Gamma_{V_+}H$, local support in an
 and the same contradiction. On the interior of either neighborhood the complex is $H$, and outside its closure it is zero. This proves (MC.21), including the empty-incidence case.
 
 For the incoming comparison its cone is $H_{Y\setminus V_-}$, where the complement is closed. Its boundary extension adds the inward normal of that closed complement, namely $-A_y+\delta n$, the ray already excluded. For the outgoing comparison the cone is $R\Gamma_{Y\setminus V_+}H[1]$. Local support in this closed complement adds the opposite of its inward normal, namely $-A_y-\delta n$. Thus both comparison cones have no new incidence at the boundary. Away from the boundary they either vanish or agree with $H$. This proves the last assertion. All these arguments remain valid when $\xi_0=0$; (MC.23) then says that the complex vanishes near the relevant boundary. $\square$
+
+## SH02-MC-PULL-REP — When microlocal inverse images are ordinary objects
+
+We can now apply the geometric constructions to the two cotangent maps. Inverse images require isolation in a fibre of the transpose differential; direct images require isolation over the target covector. The proofs keep these fibres separate.
+
+Let $p=(y_0;\xi_0)\in E_f$, $p_X=f_\pi(p)$ and $p_Y=f_d(p)$. A condition stated “near $p$” concerns an actual neighborhood in $E_f$, not the entire fibre of either map.
+
+**Theorem.** Suppose $F\in\mathcal D_X(p_X)$ has a representative satisfying
+\[
+ f_d^{-1}(p_Y)\cap f_\pi^{-1}\operatorname{SS}(F)
+       \subset\{p\}\quad\text{near }p.
+ \tag{MC.14}
+\]
+Then the pro-object $f_{\mu,p}^{-1}F$ and the ind-object $f_{\mu,p}^{!}F$ are represented by objects of $\mathcal D_Y(p_Y)$. Their canonical comparison is an isomorphism
+\[
+ \omega_{Y/X}\otimes f_{\mu,p}^{-1}F
+             \xrightarrow{\sim} f_{\mu,p}^{!}F.
+ \tag{MC.15}
+\]
+For every neighborhood $W$ of $p$, a representative of the microlocal inverse image can be chosen so that, near $p_Y$,
+\[
+ \operatorname{SS}(f_{\mu,p}^{-1}F)
+ \subset f_d\bigl(W\cap f_\pi^{-1}\operatorname{SS}(F)\bigr).
+ \tag{MC.16}
+\]
+This is an estimate of germs: an arbitrary global representative can acquire unrelated microsupport away from $p_Y$.
+
+There is a useful sufficient condition for using the original sheaf itself. If $F\in D^b(k_X)$, $f$ is noncharacteristic for $F$, and
+\[
+ f_d^{-1}(p_Y)\cap f_\pi^{-1}\operatorname{SS}(F)\subset\{p\}
+ \tag{MC.17}
+\]
+on the entire fibre, then
+\[
+ f_{\mu,p}^{-1}F\simeq f^{-1}F,\qquad
+ f_{\mu,p}^{!}F\simeq f^!F
+ \quad\text{in }\mathcal D_Y(p_Y).
+ \tag{MC.18}
+\]
+Noncharacteristic means that $f_\pi^{-1}\operatorname{SS}(F)$ meets $\ker f_d$ only in zero covectors. The proof uses the antecedent noncharacteristic theorem in its full form: the canonical arrow $\omega_{Y/X}\otimes f^{-1}F\to f^!F$ is an isomorphism, and both microsupports lie in $f_df_\pi^{-1}\operatorname{SS}(F)$.
+
+**Proof.** We may work in base charts about $y_0,x_0=f(y_0)$, since restriction to a smaller base neighborhood is a denominator at the specified covector. If $p_X\notin\operatorname{SS}(F)$, then $F=0$ in the source localization and all formal images are zero. If $p_X$ is zero and belongs to microsupport, (MC.14) excludes every nonzero characteristic covector at $y_0$: scaling it towards zero would contradict isolation. This exclusion persists near $y_0$. Otherwise a sequence of characteristic covectors at basepoints tending to $y_0$, normalized to length one in a chart, would have a characteristic limit at $y_0$ by closedness of microsupport and continuity of the transpose differential. Thus the original sheaf is noncharacteristic locally, and (MC.17) holds. This reduces the zero-covector case to the argument for good representatives below. If $p_X\ne0$ and lies in microsupport, (MC.14) implies $p_Y\ne0$, because otherwise positive multiples of $p$ would give distinct points of the same incidence fibre arbitrarily close to $p$.
+
+Assume now both covectors are nonzero, and put $A=d f_{y_0}^t$. Choose a narrow proper closed convex cone $K$ around $\xi_0$ with $K\cap\ker A=\{0\}$. It can be chosen so that
+\[
+ K\cap A^{-1}(p_Y)\cap\operatorname{SS}(F)_{x_0}
+                   \subset\{\xi_0\}.
+ \tag{MC.19}
+\]
+Here $p_Y$ denotes its fibre coordinate. To justify the passage from local isolation to (MC.19), a compact unit section of a sufficiently narrow $K$ has $|A\xi|\ge c|\xi|$. Covectors in $K\cap A^{-1}(p_Y)$ are therefore bounded, while their direction approaches that of $\xi_0$ as the cone narrows. Their only possible limit is $\xi_0$, since $A\xi_0=p_Y\ne0$. The neighborhood in (MC.14) then excludes every other incidence.
+
+Choose an open cone about $\xi_0$ inside $K$. The incoming refined replacement provides $F_-\to F$ with microsupport at $x_0$ contained in a sufficiently small conic neighborhood of $K\cap\operatorname{SS}(F)_{x_0}$. Choose this neighborhood to miss $\ker A\setminus0$ and to meet $A^{-1}(p_Y)$ only within the open cone on which the replacement agrees with $F$. Then $F_-$ is noncharacteristic near $y_0$ and satisfies (MC.17). These are open consequences of the fibre assertions: normalize a purported sequence of characteristic covectors, and use compactness of unit covectors to obtain a forbidden limit at $y_0$. The outgoing replacement produces $F\to F_+$ with the same two properties. Call such representatives good.
+
+Good incoming representatives are cofinal among all incoming denominators. Indeed, apply the same construction to the domain of any denominator; microsupports coincide near $p_X$. Common refinements can in turn be made good by one more cutoff. The analogous statement holds for outgoing denominators. If $F^{\prime\prime}\to F'$ is a denominator between two good representatives, its cone $C$ is noncharacteristic and has
+\[
+ f_d^{-1}(p_Y)\cap f_\pi^{-1}\operatorname{SS}(C)=\varnothing.
+\]
+The triangle estimate gives noncharacteristicity, while the only possible incidence is $p$, which the denominator excludes. The noncharacteristic inverse-image estimate therefore makes $f^{-1}C$ and $f^!C$ zero at $p_Y$. Thus every transition between good representatives induces an isomorphism after either inverse operation. A filtered diagram whose transition arrows are all isomorphisms represents an ordinary object in the formal pro or ind category. This proves representability and (MC.18) whenever the original representative is good.
+
+The composite $F_-\to F\to F_+$ is itself a denominator between good representatives. Apply the natural noncharacteristic comparison to its two ends. The resulting commutative square identifies (MC.13) with an isomorphism, proving (MC.15) for that canonical map, not merely an abstract isomorphism of objects.
+
+Finally fix $W$. In the preceding construction choose the cone and its microsupport neighborhood sufficiently narrow that all covectors mapping near $p_Y$ lie in $W$ and in a region where the cutoff agrees with $F$. This is possible by the bound $|A\xi|\ge c|\xi|$ and (MC.19). After a base shrink the same bound holds for $d f_y^t$. Consequently its restriction to the relevant closed conic microsupport is proper over a small target cotangent neighborhood: a bounded output has bounded input, and the base is already in a compact chart. Any sequence violating the required confinement has a limit in the forbidden part of the incidence fibre. There the original and replacement microsupports agree, and the noncharacteristic inverse-image estimate gives (MC.16). In the zero-covector case the same normalization argument follows from noncharacteristicity, with the sole lift equal to zero. $\square$
 
 ## SH02-MC-DIRECT-GERMS — Direct images use the germ at the chosen basepoint
 
@@ -468,6 +467,52 @@ Now assume only local isolation. Apply the lemma to choose $H=G_{V_-}$ with prop
 
 To obtain (MC.27), choose $V_-$ inside a prescribed base neighborhood so that the part of $E_f$ above it and near $p$ lies in $W$. The sheaf $H$ agrees with $G$ near $y_0$. On the complement of a smaller neighborhood of $y_0$, its microsupport has no incidence over $p_X$, by the boundary-control lemma. Properness excludes such incidences over a sufficiently small cotangent neighborhood of $p_X$ as well: a contrary sequence has convergent basepoints in the compact support and convergent target covectors, hence a forbidden limiting incidence. The proper direct-image estimate for $H$ then has all its witnesses inside $W$, where $\operatorname{SS}(H)=\operatorname{SS}(G)$. This is (MC.27). $\square$
 
+## SH02-MC-POINT — The complete morphism group at one point
+
+We finish by computing morphisms in the directional category. This calculation uses the cone-projector stalk formula and the fraction zero criterion; it is independent of the representability criteria above.
+
+**Theorem.** For $p\in T^*X$ and arbitrary $G,F\in D^b(k_X)$,
+\[
+ \operatorname{Hom}_{\mathcal D_X(\{p\})}(G,F)
+ \xrightarrow{\sim} H^0(\mu\mathcal Hom(G,F))_p.
+ \tag{MC.4}
+\]
+The statement also applies after shifting either argument, so it determines every graded morphism group.
+
+Here is the precise antecedent cutoff input used in the proof. In a vector-space chart at a nonzero covector $p=(x_0;\xi_0)$, let $U$ shrink to $x_0$ and let $\gamma$ run through closed proper convex cones with $\xi_0\in\operatorname{Int}(\gamma^\circ)^a$. The cone topology map is $\phi_\gamma$. Put
+\[
+ Q_{U,\gamma}G=(\phi_\gamma^{-1}R\phi_{\gamma*}G_U)_U.
+\]
+The cutoff theorem supplies an arrow $Q_{U,\gamma}G\to G$ that is a $p$-denominator for sufficiently small choices. The microlocal-Hom stalk formula is
+\[
+ H^0(\mu\mathcal Hom(G,F))_p
+ =\operatorname{colim}_{U,\gamma}
+       \operatorname{Hom}(Q_{U,\gamma}G,F).
+ \tag{MC.5}
+\]
+The filtered category permits simultaneous shrinking and cone refinement. Formula (MC.5) is the actual local formula imported from the microlocal-Hom unit; an assertion that ordinary sheaf stalks alone compute this group would be false.
+
+**Proof.** Any representative of the right side of (MC.4), using (MC.5), is an arrow $Q_{U,\gamma}G\to F$. Inverting $Q_{U,\gamma}G\to G$ produces a localized morphism with the requested image. This proves surjectivity. For injectivity, first represent a localized arrow by $G'\to G$, $G'\to F$, where the first arrow is a denominator. If its image vanishes, use the isomorphism induced by $G'\to G$ on microlocal Hom to reduce to the ordinary arrow $G'\to F$. The zero criterion for the filtered colimit (MC.5) gives a further cutoff $Q_{U,\gamma}G'\to G'$ on which that ordinary arrow is zero. This cutoff is another denominator. The fraction is therefore zero by (MC.1). This explicitly clears the initial denominator; injectivity is not being checked merely on ordinary arrows out of $G$.
+
+At $p=(x,0)$, a conic closed microsupport misses $p$ precisely when the complex vanishes in some neighborhood of $x$: its intersection with the zero section is the closed support. The denominator localization consequently has morphisms $\operatorname{colim}_{U\ni x}\operatorname{Hom}(G|_U,F|_U)$. This equals $H^0(R\mathcal Hom(G,F))_x$. The zero-section identity for microlocal Hom identifies the latter with the right side of (MC.4). $\square$
+
+## SH02-MC-IDENTITY — A sheaf detects its own microsupport
+
+Let $e_F$ be the section of $H^0\mu\mathcal Hom(F,F)$ obtained from $\operatorname{id}_F$.
+
+**Corollary.** As closed supports,
+\[
+ \operatorname{supp}(e_F)
+ =\operatorname{supp}\mu\mathcal Hom(F,F)
+ =\operatorname{SS}(F).
+ \tag{MC.6}
+\]
+In particular $p\notin\operatorname{SS}(F)$ if and only if $\mu\mathcal Hom(F,F)_p=0$.
+
+**Proof.** The first support is contained in the second, and the second in microsupport by the support estimate. If $(e_F)_p=0$, (MC.4) says that the identity of $F$ is zero in $\mathcal D_X(\{p\})$. An object in an additive category whose identity is zero is a zero object: every arrow to or from it factors through its zero identity and is zero. Equation (MC.2) now excludes $p$ from microsupport. This proves the reverse inclusion. $\square$
+
+The proof uses the identity in a localized category and does not assume finite-dimensional endomorphism spaces. It therefore detects infinite-rank sheaves just as well as finite-rank ones.
+
 ## SH02-MC-EXTERNAL — Multiplying localized morphisms
 
 Let $p_X\in T^*X$, $p_Y\in T^*Y$ and $p=(p_X,p_Y)\in T^*(X\times Y)$. External derived tensor product induces a bifunctor
@@ -512,20 +557,26 @@ $R\Gamma(\mathbb R;R\Gamma_VG)=R\Gamma(V;k)=k$, with identity transition maps, s
 
 **Solution.** Every bounded sheaf belongs to the null subcategory, so the quotient is the zero category. The sheaf on the empty space has zero derived sections, and (MC.3) is the unique map $0\to0$. This agrees with the arbitrary-subset definition and requires no nonempty or conic assumption.
 
-## SH02-MC-DEPENDENCIES — What the proofs depend on
+## SH02-MC-DEPENDENCIES — Proof suppliers and their exact use
 
-The following contracts are used at the stated full generality.
+The following table identifies the actual proof inputs. It also distinguishes the estimates used here from stronger assertions whose additional hypotheses are unnecessary for this lesson.
 
-| Contract | Use here |
-| --- | --- |
-| Thick Verdier quotient, saturated denominators, both fraction calculi and their filtered Hom formulas | MC.1–MC.4 and the formal pro/ind constructions |
-| Six operations on bounded sheaves on finite-dimensional manifolds, relative orientation comparison, localization triangles, adjunctions and finite cohomological bounds | MC.8–MC.13, MC.18 and MC.25 |
-| [Microlocal Hom](microlocal-hom.md), `SH02-MH-HOM-RECOVERY` and `SH02-MH-GAMMA-STALK`: ordinary-Hom recovery, zero-section identity and the cone-projector stalk formula on $G_U$ | MC.3–MC.6 |
-| Microsupport triangle inequality, closed conicity, support on the zero section and the self-Hom support estimate | Localization, support detection, compactness arguments |
-| [Microsupport tests](microsupport-tests.md): cone cutoff isomorphism on the interior polar and its global polar bound; [cone topology](cone-topology.md): the ordinary kernel formula | MC.5 and both refined cutoffs |
-| [Microsupport operations](microsupport-operations.md), `SH02-MO-PROPER-PUSH` and `SH02-MO-EXTERNAL-TENSOR`, together with the full noncharacteristic inverse, tensor and internal-Hom estimates | Boundary and incidence estimates, representability and external product |
-| Strict-normal boundary estimates with the indicated open/closed and extension/local-support signs | The two caps and MC.24; all four signs are computed explicitly above |
+| Input and scope | Programme proof or identified categorical source | Use in this lesson |
+| --- | --- | --- |
+| Thick quotient, saturated denominators, left and right fractions, filtered Hom formulas and their zero criterion | Official Stacks `categories.tex`, the two localization-morphism colimit remarks and `lemma-what-gets-inverted`; `derived.tex`, `lemma-construct-multiplicative-system` and `lemma-kernel-quotient`, at the revision identified above | `SH02-MC-LOCAL`; denominator refinements in all four formal operations |
+| Proper supports, fibre calculation, composition and base change for arbitrary module sheaves on locally compact Hausdorff spaces, with bounded-below inputs | The compact-support and proper-image proofs, (C1)–(C7), (F2)–(F6) and (D1)–(D4); [Exceptional operations](exceptional-operations.md), `SH02-EX-FOUNDATIONS` and `SH02-EX-BASECHANGE-BRIDGE` | Properness on the actual kernel support and the boundary-control constructions |
+| Exceptional adjunction, its unit and counit, internal adjunction and normalized tensor comparison | [Exceptional operations](exceptional-operations.md), `SH02-EX-ADJOINT`, `SH02-EX-INTERNAL`, `SH02-EX-TENSOR` and `SH02-EX-HOM` | The diagonal internal-Hom kernel, the two adjunctions and the canonical comparison arrows |
+| Finite cohomological bounds, relative orientation and bounded internal Hom for arbitrary bounded inputs | [Manifold duality](manifold-duality.md), `SH02-MD-DIMENSION`, `SH02-MD-SUBMERSION`, `SH02-MD-RELATIVE` and `SH02-MD-BOUNDED-HOM`; the globally bounded operation proof | All displayed bounded categories; the relative dimension shift in the inverse-image comparison |
+| Closed conicity, closed support on the zero section, shifts and the triangle inequality | [Microsupport tests](microsupport-tests.md), `SH02-MST-TEST` and `SH02-MST-FORMAL` | Thickness, zero objects and compactness arguments; no finite-stalk hypothesis |
+| Ordinary directional projector, its polar bound and the counit isomorphism on the interior polar | [Cone topology](cone-topology.md), `SH02-GAM-UNIT` and `SH02-GAM-KERNEL`; [Microsupport tests](microsupport-tests.md), `SH02-MST-CUTOFF-FORWARD` | The incoming and outgoing cutoff constructions and the pointwise morphism calculation. The proper-support and ordinary projector models are compared only after checking the indicated support condition |
+| Proper-on-support direct image and submersion pullback | [Microsupport operations](microsupport-operations.md), `SH02-MO-PROPER-PUSH` and `SH02-MO-SUBMERSION` | The kernel estimates and the inverse/direct incidence bounds. Properness is imposed on support, not inferred from the smoothness of the map |
+| Noncharacteristic inverse image, including its specified orientation comparison; noncharacteristic tensor and internal-Hom bounds | [Microsupport operations](microsupport-operations.md), `SH02-MO-EMBEDDING`, `SH02-MO-PULLBACK` and `SH02-MO-DIAGONAL` | The good inverse-image representatives and the two cutoff kernels. The estimates MO21–MO22 require no constructibility; the additional evaluation isomorphism MO23 is not used |
+| All four open/closed extension and local-support boundary signs, including those of $F_U$ and $R\Gamma_UF$ | [Microsupport operations](microsupport-operations.md), `SH02-MO-BOUNDARY`; [Subset microsupport](subset-microsupport.md), `SH02-SUB-SMOOTH-MODELS` | Tangential cap contact, tilted neighborhoods and their comparison cones; the proof retains each normal ray explicitly |
+| Bounded microlocal Hom, ordinary and zero-section recovery, and the cone-projector stalk formula on $G_U$ with neighborhood refinements | [Microlocal Hom](microlocal-hom.md), `SH02-MH-HOM`, `SH02-MH-BOUNDED`, `SH02-MH-RECOVERY`, `SH02-MH-HOM-RECOVERY` and `SH02-MH-GAMMA-STALK`; [Microsupport operations](microsupport-operations.md), `SH02-MO-MICROLOCAL-SUPPORT` | The arbitrary-subset comparison, the complete pointwise morphism group and identity detection. Only the ordinary Hom recovery is used; its compact counterpart has separate constructibility hypotheses |
+| External tensor estimate for arbitrary bounded inputs | [Microsupport operations](microsupport-operations.md), `SH02-MO-EXTERNAL-TENSOR` | Descent of external products and bilinear multiplication of localized morphisms |
 
-The categorical antecedents are compared with the [Stacks localization calculus](https://stacks.math.columbia.edu/tag/04VB) and [triangulated quotient construction](https://stacks.math.columbia.edu/tag/05RA). These links alone do not close the imports.
+The directional-test suppliers in turn use [noncharacteristic deformation](noncharacteristic-deformation.md), `SH02-NCD-COMPACT-CONTINUITY`, `SH02-NCD-OPEN-UNION` and `SH02-NCD-THEOREM`. The deformation theorem uses closures before intersecting the moving increments. The microlocal-Hom suppliers retain their normal-specialization, Fourier and exact recovery-map inputs; the noncharacteristic inverse-image theorem uses those specified recovery maps to identify the orientation comparison. These are named lower dependencies, not extra finiteness assumptions on the sheaves in this lesson.
+
+The [six-operations comparison bridge](six-operations-import-bridge.md) retains a second route through Marco Volpe's published *The six operations in topology*, under CC BY 4.0, and its separately stated bounded-recognition and coefficient imports from Jacob Lurie. Its published and arXiv editions have different source roles and terms, as stated there. That route is a comparison with the classical construction; the support, finite-resolution and adjunction proofs used above are available in the named programme units. The independently authored programme dedication does not change the terms of any referenced human work or identified adaptation.
 
 Two routes for further work are now visible. One can study how the represented operations glue as the covector varies; pointwise representability by itself does not supply that gluing data. One can also replace isolated incidence by a geometric correspondence with positive-dimensional fibres, where compactness, properness and possible nonrepresentability must be analyzed anew. Neither route licenses identifying localized Hom over an arbitrary set with the global sections of microlocal Hom there.

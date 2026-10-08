@@ -2,13 +2,13 @@
 
 A differential graph can meet a characteristic cycle at a singular or degenerate point. The local number still has a cohomological meaning: it is the Euler characteristic of the sheaf's closed half-space test. We will prove this without replacing the isolated intersection by a transverse one. The proof converts that local test into a compact global calculation while controlling every covector created at the edge of a coordinate ball.
 
-Use Differential sections and proper-below Euler indices for the normalized supported intersection and compact-cohomology formula. Limiting cotangent sums and characteristic inverse images proves the full limiting-sum isotropy, including unbounded cancellation. Isotropic cotangent transport and discrete critical values supplies the proper critical-value argument. Small balls, central fibres and supported cohomology proves the actual small-ball restriction to a stalk. Perfect operations and finite microlocal coefficients supplies constructible internal Hom and open cutoffs.
+Differential sections and proper-below Euler indices supplies the compact-cohomology formula with its opposite differential section. The supported section-intersection comparison fixes its ordered cup and trace. For the geometric cutoffs we use full limiting-sum isotropy, including unbounded cancellation, and the direct critical-set proof of locally finite selected values under properness on the base support.
 
-For the signed ordinary boundary estimate and supported finite-band Morse map, use the exact proofs in Microsupport operations: open boundaries and cohomology between two levels. The curve-selection and singular one-form rules are the explicitly stated inputs and proved consequences in Subanalytic sets and limiting tangent directions. The underlying subanalytic foundation proofs remain programme obligations; this lesson does not certify their transitive closure.
+The sheaf maps are the actual restriction in the small-ball theorem, its closed cutoff in a coordinate chart, the ordinary open-boundary estimate, and the supported finite-band comparison (MO32). Perfect internal Hom gives the bounded constructible cutoff objects. The geometric inputs include analytic curve selection and subanalytic closure, inverse-image and proper-image calculus; the singular one-form argument and the full normal-cone proof state their use of these inputs. Below we prove the two radial exclusions, establish the uniform boundary control, and follow the particular support maps from the local test to the compact index.
 
 Throughout, \(X\) is a finite-dimensional real analytic manifold, Hausdorff and countable at infinity, \(k\) is a field of characteristic zero, and \(F\in D^b_{\mathbb R\text{-}c}(k_X)\) has perfect stalks. Complexes are globally bounded. The closed support is \(\pi\operatorname{SS}(F)\), which can contain a point where the ordinary stalk vanishes. All cotangent conicity uses positive scalars.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
 ## The local number and the closed test
 
@@ -38,7 +38,7 @@ J_{\varphi,x_0}(F)=
 
 This is sheaf cohomology with a closed support condition, followed by the ordinary stalk. It is not the ordinary stalk of \(F\), and it is not in general the ambient point costalk.
 
-Recall how the right-hand side below is normalized. The graph section has its canonical supported unit with relative orientation coefficients. Cup it, in that order, with \(CC(F)\); its support is \(L_\varphi\cap\operatorname{SS}(F)\). Use the section comparison to the base dualizing complex, restrict to the isolated base support \(\{x_0\}\), and apply the point trace. Denote this number by
+Recall how the right-hand side below is normalized. With \(\pi:T^*X\to X\), the graph section has its canonical supported unit with coefficient \(P=\pi^!k_X\), and the cycle has coefficient \(E=\pi^{-1}\omega_X\). Cup the section first with the cycle second, using the specified exceptional tensor map \(P\otimes E\to\omega_{T^*X}\). Its support is contained in \(L_\varphi\cap\operatorname{SS}(F)\). Under (2), this is a class supported at \(p_0\). The section comparison transports it properly to the base support \(\{x_0\}\), and the composed closed-point and global traces give its scalar. Denote this number by
 \(\#([\sigma_\varphi]\cap CC(F))_{p_0}\). An empty support gives zero. The subscript records localization of the supported class, rather than a signed count assumed to exist only for transverse smooth manifolds.
 
 **Local index theorem.** Under (2), \(J_{\varphi,x_0}(F)\) is a bounded finite-dimensional complex and
@@ -61,7 +61,7 @@ A=\operatorname{SS}(F).
 \qquad\text{(5)}
 \]
 
-Choose a closed coordinate ball wholly contained in the chart. All geometric carriers used in a critical-value argument will first be restricted over that closed ball, so that the relevant base properness is proved.
+For the rest of the local proof, \(X\) denotes this open coordinate chart and \(F\) its restriction; choose it so that \(\varphi\) is analytic on all of it and (2) holds there. Take \(\overline B_R\subset X\). All geometric carriers used in a critical-value argument will first be restricted over this closed ball, while the sheaf and its differentials remain defined on an open neighborhood of it. This proves the needed base properness without extending the analytic phase outside its original domain.
 
 ## Two radial exclusions on a punctured ball
 
@@ -84,7 +84,7 @@ Here \(a(x;\xi)=(x;-\xi)\). The sheaf \(k_{Z_0}\) is constructible with perfect 
 
 The full limiting-sum theorem makes \(A\widehat+B\) a closed conic subanalytic isotropic set. This is available even if the same-base sum is not closed.
 
-Apply the discrete-critical-value theorem to \(\rho\), first on \(A\), then on \(A\widehat+B\), restricting both carriers over the fixed closed coordinate ball. Their base projections are compact: a closed conic carrier contains the zero covector above every point in its projection, making that projection closed; it now lies in the compact ball. Hence \(\rho\) is proper on each projection. The selected radial values form closed locally finite subsets of \(\mathbb R\). Since \(\rho\geq0\), some \(r_0>0\) satisfies
+Apply the discrete-critical-value theorem to \(\rho\), first on \(A\cap\pi^{-1}\overline B_R\), then on \((A\widehat+B)\cap\pi^{-1}\overline B_R\). Restriction to a subanalytic base subset preserves the canonical-form condition, and both sets remain closed and conic. Their base projections are compact: scaling any fibre covector to zero shows that the projection equals the inverse image of the carrier under the zero section, hence is closed in \(\overline B_R\). Thus \(\rho\) is proper on each projection. Each selected radial-value set is closed and locally finite in \(\mathbb R\). Choose \(0<r_0<R\) so that neither contains a value in \((0,r_0^2]\). This one radius gives both exclusions, at every base point and not just along a chosen sequence:
 
 \[
 \begin{aligned}
@@ -152,8 +152,8 @@ The normalization proved the required compactness before selecting an arc. It di
 
 ## Extend an actual small-ball test by ordinary direct image
 
-Set \(H=R\Gamma_{\{\varphi\geq0\}}F\). Constructible internal Hom makes \(H\) constructible. The small-ball theorem, with its actual restriction map, permits a radius
-\(0<r<\min(r_0,r_1)\) such that
+Set \(H=R\Gamma_{\{\varphi\geq0\}}F\), a bounded constructible complex by perfect internal Hom. Choose \(R'<R\) and form \(H'=H\otimes k_{\overline B_{R'}}\). Closed restriction followed by closed direct image identifies this with the closed cutoff; its stalks are those of \(H\) on the ball and zero elsewhere, so constructibility and the original cohomological bounds are retained. Its closed support is compact. Apply the small-ball theorem to the coordinate map \(x:X\to\mathbb R^n\) and \(H'\). It gives \(r_2>0\) such that for every \(0<r<\min(r_2,R')\), the actual restriction \(R\Gamma(B_r;H')\to H'_0\) is an isomorphism. Since \(H'=H\) on these smaller balls, choose once and for all
+\(0<r<\min(r_0,r_1,r_2,R')\). The resulting map is
 
 \[
 R\Gamma(B_r;H)\xrightarrow{\sim}H_0
@@ -161,7 +161,7 @@ R\Gamma(B_r;H)\xrightarrow{\sim}H_0
 \qquad\text{(13)}
 \]
 
-The local version of that theorem first cuts off the coefficient complex in a larger closed ball, so no global properness of the coordinate chart is needed.
+The closed cutoff was used only to justify (13); it agrees with \(H\) on a whole neighborhood of \(\overline B_r\). The next cutoff is instead an ordinary open direct image of \(F\). Keeping these two constructions distinct preserves both the actual restriction map in (13) and the boundary sign needed below.
 
 For \(j:B_r\hookrightarrow X\), use the ordinary extension
 
@@ -184,9 +184,19 @@ R\Gamma_{\{\varphi\geq0\}}(X;F_r)
 \qquad\text{(15)}
 \]
 
-These are the adjunction comparisons for this closed test. Together with (13), they identify the supported ambient complex with the local test complex.
+For a closed \(Z\) in the chart, open internal-Hom adjunction is the natural comparison
+\(R\mathcal Hom(k_Z,Rj_*G)\simeq Rj_*R\mathcal Hom(j^{-1}k_Z,G)\).
+Here \(j^{-1}k_Z=k_{Z\cap B_r}\), and restriction of the supported sheaf \(H\) to \(B_r\) is the same internal Hom. Composition of ordinary direct images therefore proves (15) for the specified maps. It is compatible with the map from sections to the stalk in (13). No nonproper closed-fibre base-change assertion is being used for \(j\).
 
-At a boundary point \(|x|=r\), \(d\rho_x\neq0\). The first exclusion in (8) and positive conicity exclude the positive ray through \(d\rho_x\) from \(A_x\). The ordinary open-boundary theorem thus gives
+At a boundary point \(|x|=r\), \(d\rho_x\neq0\). The first exclusion in (8) and positive conicity exclude every positive multiple of \(d\rho_x\) from \(A_x\). This exclusion has the neighbourhood control required by the ordinary boundary theorem. Choose a compact annulus \(Q\) about the sphere, contained in \(\{0<|x|<r_0\}\). There is \(\eta>0\) such that for all \(x\in Q\), \(p\in A_x\), and \(c\geq0\),
+
+\[
+|p-c\,d\rho_x|\geq\eta\bigl(|p|+c|d\rho_x|\bigr).
+\]
+
+Indeed, failure would give a sequence with the ratio tending to zero. Divide \(p\) and \(c\,d\rho\) by the positive denominator. Compactness of \(Q\), the continuous nonvanishing radial differential, and closed positive conicity of \(A\) give equal nonzero limiting vectors: the first lies in \(A\), and the second is a positive radial covector. This contradicts (8). The same normalized compactness separates the positive radial directions from the unit covectors of \(A\) in one neighbourhood of the sphere. Thus the boundary hypothesis holds on a collar, and unbounded cancellation in the ordinary sum cannot occur there.
+
+For \(B_r=\{\rho<r^2\}\), the strict-normal polar on its boundary is \(\mathbb R_{\leq0}d\rho\). The ordinary open-boundary theorem requires avoidance of its opposite positive ray, exactly the exclusion just verified, and gives
 
 \[
 \operatorname{SS}(F_r)_x
@@ -208,7 +218,7 @@ Let \(C=T^*_{\partial B_r}X\), the full conormal of the analytic sphere. It is c
 
 The finite union and subanalytic subset rules preserve isotropy; the limiting-sum theorem proves the needed closedness and subanalyticity. The ordinary sums in (16) lie in \(A\widehat+C\), so
 \(\operatorname{SS}(F_r)\subset\Gamma\).
-The base projection of \(\Gamma\) is compact, exactly as in the argument for (8). Apply the discrete-critical-value theorem to \(\varphi\) and \(\Gamma\). Choose \(\epsilon>0\) with
+The base projection of \(\Gamma\) is compact, by the zero-section argument used for (8), so \(\varphi\) is proper there. Apply the discrete-critical-value theorem to this fixed carrier after \(r\) has been chosen. Its selected values have no nonzero accumulation at zero. Fix \(\delta>0\). The nonzero selected values in \([-\delta,\delta]\) form a finite set; choose \(0<\epsilon<\delta\) smaller than the absolute value of every member of that set. If the set is empty, any \(0<\epsilon<\delta\) works. This single choice works for both signs of the phase and every later \(0<t<\epsilon\):
 
 \[
 \Gamma\cap L_\varphi\cap
@@ -224,8 +234,7 @@ Put \(U=\{\varphi>-\epsilon\}\), and apply the supported finite-band Morse theor
 \[
 0<\psi\leq t,\qquad\text{equivalently }-t\leq\varphi<0.
 \]
-The required negative covector is
-\(-d\psi=d\varphi\). It is excluded from \(\operatorname{SS}(F_r)\) by (18). The actual inclusion-of-supports map is therefore an isomorphism
+The required negative covector in the supported comparison (MO32) is \(-d\psi=d\varphi\). It is excluded from \(\operatorname{SS}(F_r)\) by (18) on the entire half-open band \(0<\psi\leq t\). The starting level \(\psi=0\), where the desired local test may be nonzero, is not among the levels that require exclusion. The terminal level is included and is covered by the closed endpoint in (18). The actual inclusion-of-supports map is therefore an isomorphism
 
 \[
 R\Gamma_{\{\varphi\geq0\}}(X;F_r)
@@ -238,7 +247,9 @@ To pass to compact support in \(U\), restrict the support family to \(D_r\). The
 \[
 K_t=D_r\cap\{\varphi\geq-t\},\qquad 0<t<\epsilon,
 \]
-are compact and lie in \(U\). They are cofinal for compact coefficient supports in \(U\): a compact subset of \(D_r\cap U\) has a minimum phase strictly greater than \(-\epsilon\), and is contained in some \(K_t\). Exact filtered support-family colimits for bounded complexes now give
+are compact and lie in \(U\). They are cofinal for compact coefficient supports in \(U\): if \(K\subset D_r\cap U\) is compact, its minimum phase \(m\) is greater than \(-\epsilon\); choose \(t\in(0,\epsilon)\) with \(-t\leq m\). Then \(K\subset K_t\).
+
+Here is the derived comparison with its maps. Write \(i:D_r\hookrightarrow X\). The restriction unit identifies \(F_r\) with \(i_*i^{-1}F_r\), since its cohomology vanishes off \(D_r\). Resolve \(i^{-1}F_r\) by injectives on \(D_r\) and apply the exact closed direct image, which preserves injectives. This gives a representative with every term supported on \(D_r\). Sections of it supported in \(\{\varphi\geq-t\}\) are precisely sections supported on \(K_t\). Closed-support excision computes these sections on \(U\) as well. Termwise compact sections on \(U\) are the filtered union over this cofinal family. Injectives restrict to injectives on \(U\) and are acyclic for compact sections on a locally compact space; exact filtered colimits then commute with cohomology. The compatible support inclusions (19) consequently give
 
 \[
 R\Gamma_{\{\varphi\geq0\}}(X;F_r)
@@ -248,7 +259,7 @@ R\Gamma_{\{\varphi\geq0\}}(X;F_r)
 
 The first object maps to the support-family colimit through (19); all those arrows are already isomorphisms. This explains the actual comparison in (20). No equality between ordinary cohomology and compact cohomology on an arbitrary noncompact open set was used.
 
-The compact Euler index theorem applies on \(U\) to the analytic function \(\psi=-\varphi:U\to(-\infty,\epsilon)\). Every closed support sublevel \(D_r\cap\{\psi\leq s\}\), \(s<\epsilon\), is compact. Moreover
+Apply the compact Euler index theorem on \(U\) to the analytic function \(\psi=-\varphi:U\to(-\infty,\epsilon)\). The coefficient support is \(D_r\cap U\), closed in \(U\). For \(s<\epsilon\), its closed support sublevel is exactly \(D_r\cap\{\psi\leq s\}\): that inequality already puts it in \(U\). It is a closed subset of compact \(D_r\), and therefore compact in \(U\). Moreover
 \[
 L_\psi\cap\operatorname{SS}(F_r|_U)^a
 \quad\text{corresponds under the antipode to}\quad
@@ -298,7 +309,7 @@ L_\varphi\cap\operatorname{SS}(F_r|_U)\subset\{p_0\},
 \qquad\text{(24)}
 \]
 
-with no new boundary contribution. Near zero, ordinary restriction identifies \(F_r|_U\) with \(F\); the characteristic cycles and the supported section units consequently agree there. The ordered cup, the section-to-base comparison, localization to \(\{0\}\), and the point trace identify (21) with the local number in (4). Taking Euler characteristics in (13), (15), (20) and (21) proves (4). \(\square\)
+with no new boundary contribution. Choose an open neighbourhood \(V\) of zero with \(V\subset B_r\cap U\). The canonical ordinary restriction identifies \((F_r|_U)|_V\) with \(F|_V\). Characteristic cycles restrict through their defining kernel unit and evaluated trace, and the section class restricts through its exceptional counit. Hence the two ordered cups agree on \(T^*V\). By (24), the global cup on \(T^*U\) is supported on the same single point as this local cup. Closed-support excision identifies their classes with that support retained. Open-extension trace composition, followed by the section's proper projection and the closed point trace, identifies their scalar numbers. Thus (21) is exactly the local number in (4), with no orientation change from shrinking the ambient chart. Taking Euler characteristics in the actual comparisons (13), (15), (20) and (21) proves (4). \(\square\)
 
 The compact computation is a device for reading the original local supported class. The radial boundary has been checked before forgetting its support, so none of its possible contributions is hidden in an Euler cancellation.
 
@@ -310,17 +321,21 @@ In coordinates tangent and normal to \(Y\), their common tangent vectors are exa
 \(\ker\operatorname{Hess}_{x_0}(\varphi|_Y)\).
 Transversality therefore means that this restricted Hessian is nondegenerate. Let \(q\) be its number of negative eigenvalues. The intersection is locally isolated.
 
+Put \(d=\dim Y\). The bracket \([T_Y^*X]\) has the fixed graph normalization, while the constant coefficient formula is \(CC(k_Y)=(-1)^d[T_Y^*X]\). For the stated smooth constructible support this is the same local calculation as in the analytic case: straighten \(Y\) in a smooth chart, retain the positive tangent-fibre Thom map in the constant directions, and compose with the normal closed-embedding trace. The graph-normalized tangent zero cycle is \((-1)^d\) times that Thom map. Their orientation lines pair on changes of frame, so the local coefficient identity glues. The closed-embedding microsupport formula gives \(SS(k_Y)=T_Y^*X\); constructibility makes this an allowed subanalytic carrier. This argument retains the smooth-submanifold scope and does not choose a new orientation for the bracket.
+
 The actual conormal support calculation in Pure and simple sheaves from directional tests uses Morse coordinates
 \(\varphi|_Y-\varphi(x_0)=|u|^2-|v|^2\), with \(\dim v=q\).
 The closed-test triangle compares constants on a small ball in \(Y\) with constants on its negative-phase part. For \(q=0\) that part is empty. For \(q>0\) it retracts to \(S^{q-1}\), and the restriction from constants is the augmentation. Its derived fibre is the negative-direction orientation line in degree \(q\), locally identified with \(k[-q]\). Thus (4) gives
 
 \[
-\#\bigl([\sigma_\varphi]\cap[T_Y^*X]\bigr)_{p_0}
-=(-1)^q.
+\begin{aligned}
+\#\bigl([\sigma_\varphi]\cap CC(k_Y)\bigr)_{p_0}&=(-1)^q,\\
+\#\bigl([\sigma_\varphi]\cap[T_Y^*X]\bigr)_{p_0}&=(-1)^{d+q}.
+\end{aligned}
 \qquad\text{(25)}
 \]
 
-The conormal fundamental cycle here has the characteristic-cycle normalization of the earlier lessons. There is no independent choice of an extra ambient dimension sign. Finite families of transverse pure intersections, their ordered inertia degrees, and the global Morse inequalities will use this local theorem in the next step.
+The second equality follows from the first by the fixed coefficient \((-1)^d\). It depends on the dimension of the supporting submanifold, not on an independently chosen ambient sign. For example, a minimum of the constant sheaf on a line has local test \(k\) and index \(+1\), while its graph-normalized zero section has intersection number \(-1\); the characteristic cycle is the negative of that generator. Finite families of transverse pure intersections use the first equality for their test coefficients and the second when they are expressed in these conormal generators.
 
 ## Examples and exercises with solutions
 
@@ -371,7 +386,9 @@ k_{L_x}\oplus k_{L_y}
 \]
 is exact on every stalk: away from the origin it is the identity on the relevant axis, and at the origin it is the diagonal kernel of the difference map. Additivity gives
 \(CC(k_C)=CC(k_{L_x})+CC(k_{L_y})-CC(k_{\{0\}})\).
-The restricted Hessian on \(L_x\) has \(q=0\), giving number \(1\); on \(L_y\) it has \(q=1\), giving \(-1\). The point sheaf has test \(k\) for every phase taking value zero there, so its number is \(1\). The sum \(1-1-1=-1\) agrees with the supported calculation. Omitting the vertex term would give the wrong answer.
+Each axis has dimension one, so in the graph-normalized generators the same equality is
+\(CC(k_C)=-[T_{L_x}^*\mathbb R^2]-[T_{L_y}^*\mathbb R^2]-[T_{\{0\}}^*\mathbb R^2]\).
+For the first axis the restricted Hessian has \(q=0\), so its normalized conormal intersection in (25) is \(-1\), multiplied by its cycle coefficient \(-1\) to give \(+1\). For the second axis \(q=1\), so the normalized conormal intersection is \(+1\), multiplied by \(-1\) to give \(-1\). These are exactly the two sheaf-test numbers. The point sheaf has test \(k\) for every phase taking value zero there, so its number is \(1\). The sum \(1-1-1=-1\) agrees with the supported calculation. Omitting the vertex term would give the wrong answer.
 
 ### A zero local Euler number need not be a zero local test
 
@@ -381,7 +398,7 @@ Let \(P=k^2\oplus k^2[1]\), \(F=P_{\mathbb R}\), and \(\varphi=-t^4\). Compute t
 
 **Solution.** The full microsupport is the zero section, and the graph of \(-4t^3dt\) has just the isolated intersection at zero. The negative-phase complement is the punctured interval. Its coefficient complex is \(P\oplus P\), and the map from the stalk \(P\) is the diagonal. The split difference sequence of whole complexes makes its derived fibre \(P[-1]\). It has \(k^2\) in cohomological degrees zero and one, and is nonzero.
 
-Its Euler characteristic is \(2-2=0\). Likewise \(CC(F)=\chi(P)[T^*_{\mathbb R}\mathbb R]=0\) by finite coefficient additivity, so its local intersection number is zero. The vanishing is finite graded cancellation. It gives no reason to remove the zero section from the full microsupport or to declare the supported test acyclic.
+Its Euler characteristic is \(2-2=0\). Likewise \(CC(F)=-\chi(P)[T^*_{\mathbb R}\mathbb R]=0\) by finite coefficient additivity, so its local intersection number is zero. The vanishing is finite graded cancellation. It gives no reason to remove the zero section from the full microsupport or to declare the supported test acyclic.
 
 ### Extension by zero creates two extra boundary tests
 
@@ -413,8 +430,10 @@ If \(\epsilon>r\), the entire closed interval lies in \(U_\epsilon\). Compact co
 
 ## References and the next step
 
-The index of an isolated analytic phase and the sign of a transverse conormal belong to the local index theory of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §4. The argument here keeps the programme's proofs, the actual cutoff and support maps, the compactified multiplier selection, the symmetric zero-phase carrier and all three boundary cases.
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), Proposition 5.1 and Lemma 5.2, printed pp. 200–201, identify the generic transverse local test and its negative-Hessian degree. Theorem 9.1, pp. 207–208, states the supported real-analytic test index on a relatively compact region with no graph intersection over its boundary; the paper indicates a deformation-to-generic-position proof. The proof here instead obtains the isolated, possibly degenerate formula by the radial cutoff and the actual support comparisons below. Its section-first cup and graph-normalized conormal convention give \((-1)^q\) for \(CC(k_Y)\) and \((-1)^{\dim Y+q}\) for its normalized conormal generator, as in (25).
 
-For related complex-analytic developments, David B. Massey's [A Little Microlocal Morse Theory](https://arxiv.org/abs/math/0006185v2), version 2, 18 January 2001, studies isolated vanishing-cycle support and cohomological decompositions with principal-ideal-domain coefficients. Section 5 includes a perturbation and radial-boundary argument. This is further scholarly context; the real-phase proof above uses the exact programme comparisons already named.
+The proof above obtains the isolated, possibly degenerate formula without a transverse perturbation. It proves both radial exclusions, keeps the compactified multiplier arc when the original multiplier is unbounded, and uses the symmetric zero-phase carrier to control the missing negative multiple. The signed ordinary-boundary estimate is applied with uniform collar separation. The small-ball restriction, support inclusions, support-family colimit and compact index are compared as actual maps. Each boundary phase region is excluded before the final point trace, so an artificial boundary contribution is not hidden in a numerical cancellation.
 
-The next step applies this local theorem to a finite set of transverse pure intersections. Their exact ordered three-plane inertia shifts determine the local multiplicities, and the finite sheaf-theoretic Morse filtration supplies the global Euler sum and stronger inequalities. Orientation-valued conormal and graph conventions will be checked together with that calculation.
+For related complex-analytic developments, David B. Massey's [*A Little Microlocal Morse Theory*](https://arxiv.org/abs/math/0006185v2), version 2, 18 January 2001, studies isolated vanishing-cycle support and cohomological decompositions with principal-ideal-domain coefficients; §5 includes perturbation and radial-boundary arguments. This scholarly reference concerns a different complex-analytic setting. It is not used here to prove the real analytic cutoff estimates or to change the field hypothesis.
+
+The next step applies the local theorem to finitely many transverse pure intersections and their ordered inertia degrees, then uses the finite sheaf-theoretic Morse filtration to obtain inequalities. Human sources retain their named authorship and their own terms. The lesson text and complete solutions have the stated CC0 license.

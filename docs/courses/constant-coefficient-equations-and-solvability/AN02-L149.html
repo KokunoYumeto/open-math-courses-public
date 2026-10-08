@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Four-condition complex weights and the topology of compact Fourier tests</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L148.html">Previous lesson</a> · <a href="#pw2-the-exact-four-condition-theorem">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="building-a-complex-weight-from-compact-fourier-tests">Building a complex weight from compact Fourier tests</h1>
+<p><em>Original learner material by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked; CC0.</em></p>
+<p>The <a href="#complete-proof">formal companion</a> proves the full variable-scale lemma and four-condition weight theorem. The scale smooths a possibly nonsmooth real frequency weight, a radial correction supplies curvature, and a stabilized maximum joins the supports in a compact exhaustion. A separate exterior-support estimate makes the resulting integral dominate any continuous seminorm of compact weighted tests.</p>
+<p>Use the Fourier convention and complex estimates of <a href="AN02-L148.html">L148</a>. Write <span class="math" data-index="0" data-tex="\(z=\xi+i\eta\)">\(z=\xi+i\eta\)</span>, <span class="math" data-index="1" data-tex="\(M=(t^2+|\eta|^2)^{1/2}\)">\(M=(t^2+|\eta|^2)^{1/2}\)</span>, and <span class="math" data-index="2" data-tex="\(\partial_z=(\partial_\xi-i\partial_\eta)/2\)">\(\partial_z=(\partial_\xi-i\partial_\eta)/2\)</span>. The coefficient one quarter in a one-dimensional Levi derivative matters in these examples.</p>
+<h2 id="worked-example-1-smooth-a-weight-with-a-corner">Worked example 1. Smooth a weight with a corner</h2>
+<p>In one dimension let</p>
+<span class="math math-display" id="eq-L149.1" data-index="3" data-tex="\[
+k(\xi)=(1+\max(\xi,0))^2,\qquad
+\ell(\xi)=2\log(1+\max(\xi,0)).
+\tag{L149.1}
+\]">\[
+k(\xi)=(1+\max(\xi,0))^2,\qquad
+\ell(\xi)=2\log(1+\max(\xi,0)).
+\tag{L149.1}
+\]</span>
+<p>The inequality
+<span class="math" data-index="4" data-tex="\(1+\max(\xi+h,0)\le(1+|h|)(1+\max(\xi,0))\)">\(1+\max(\xi+h,0)\le(1+|h|)(1+\max(\xi,0))\)</span>
+shows that <span class="math" data-index="5" data-tex="\(C=1,N=2\)">\(C=1,N=2\)</span> are valid. This weight is not even, and its logarithm has a derivative jump at zero.</p>
+<p>Choose the symmetric probability bump</p>
+<span class="math math-display" id="eq-L149.2" data-index="6" data-tex="\[
+\chi(y)=a\exp[-1/(1-y^2)]\quad(|y|&lt;1),\qquad
+\chi(y)=0\quad(|y|\ge1),
+\tag{L149.2}
+\]">\[
+\chi(y)=a\exp[-1/(1-y^2)]\quad(|y|&lt;1),\qquad
+\chi(y)=0\quad(|y|\ge1),
+\tag{L149.2}
+\]</span>
+<p>where <span class="math" data-index="7" data-tex="\(a\)">\(a\)</span> is the reciprocal of its positive finite integral. Repeated differentiation produces a rational function of <span class="math" data-index="8" data-tex="\(1-y^2\)">\(1-y^2\)</span> times the exponential; the exponential tends to zero faster than every reciprocal power at the endpoints. Thus the zero extension is smooth. The regularized logarithm is</p>
+<span class="math math-display" id="eq-L149.3" data-index="9" data-tex="\[
+\ell_t(\xi,\eta)=2\int_{-1}^1
+\chi(y)\log(1+\max(\xi+My,0))\,dy.
+\tag{L149.3}
+\]">\[
+\ell_t(\xi,\eta)=2\int_{-1}^1
+\chi(y)\log(1+\max(\xi+My,0))\,dy.
+\tag{L149.3}
+\]</span>
+<p>At <span class="math" data-index="10" data-tex="\(\xi=0\)">\(\xi=0\)</span> it is <span class="math" data-index="11" data-tex="\(2\int_0^1\chi(y)\log(1+My)\,dy&gt;0\)">\(2\int_0^1\chi(y)\log(1+My)\,dy&gt;0\)</span>, so <span class="math" data-index="12" data-tex="\(k_t(0,\eta)&gt;1=k(0)\)">\(k_t(0,\eta)&gt;1=k(0)\)</span>. Smoothing is not pointwise equality with the starting weight. VS5–VS6 give instead the exact useful comparison
+<span class="math" data-index="13" data-tex="\(M^{-4}\le k_t(\xi,\eta)/k(\xi)\le M^4\)">\(M^{-4}\le k_t(\xi,\eta)/k(\xi)\le M^4\)</span>.</p>
+<p>The distributional derivatives of the original logarithm are</p>
+<span class="math math-display" id="eq-L149.4" data-index="14" data-tex="\[
+\ell&#x27;(\xi)=\frac{2\,1_{\{\xi&gt;0\}}}{1+\xi},\qquad
+\ell&#x27;&#x27;=2\delta_0-\frac{2\,1_{\{\xi&gt;0\}}}{(1+\xi)^2}.
+\tag{L149.4}
+\]">\[
+\ell&#x27;(\xi)=\frac{2\,1_{\{\xi&gt;0\}}}{1+\xi},\qquad
+\ell&#x27;&#x27;=2\delta_0-\frac{2\,1_{\{\xi&gt;0\}}}{(1+\xi)^2}.
+\tag{L149.4}
+\]</span>
+<p>The jump of <span class="math" data-index="15" data-tex="\(\ell&#x27;\)">\(\ell&#x27;\)</span> is two, giving the positive delta term. Convolution at a fixed <span class="math" data-index="16" data-tex="\(M\)">\(M\)</span> therefore gives</p>
+<span class="math math-display" id="eq-L149.5" data-index="17" data-tex="\[
+\partial_\xi^2\ell_t
+=\frac2M\chi(-\xi/M)
+-2\int_{\xi+My&gt;0}\frac{\chi(y)}{(1+\xi+My)^2}\,dy.
+\tag{L149.5}
+\]">\[
+\partial_\xi^2\ell_t
+=\frac2M\chi(-\xi/M)
+-2\int_{\xi+My&gt;0}\frac{\chi(y)}{(1+\xi+My)^2}\,dy.
+\tag{L149.5}
+\]</span>
+<p>Both terms can be substantial; their cancellation is part of the derivative-scale estimate. The full proof VS7–VS10 does not need to differentiate <span class="math" data-index="18" data-tex="\(\ell\)">\(\ell\)</span> at its corner: it differentiates the smooth kernel instead. Formula L149.5 supplies an independent check of that argument.</p>
+<h2 id="worked-example-2-exact-radial-curvature">Worked example 2. Exact radial curvature</h2>
+<p>Take <span class="math" data-index="19" data-tex="\(k=1\)">\(k=1\)</span>. Then <span class="math" data-index="20" data-tex="\(\ell_t=0\)">\(\ell_t=0\)</span>, and the correction itself is</p>
+<span class="math math-display" id="eq-L149.6" data-index="21" data-tex="\[
+p_t(\eta)=t^{-1/2}M-M^{1/2}.
+\tag{L149.6}
+\]">\[
+p_t(\eta)=t^{-1/2}M-M^{1/2}.
+\tag{L149.6}
+\]</span>
+<p>Let <span class="math" data-index="22" data-tex="\(r=|\eta|\)">\(r=|\eta|\)</span>. In complex dimension at least two the radial complex line is spanned by the real vector <span class="math" data-index="23" data-tex="\(\eta\)">\(\eta\)</span>; a tangential complex direction has <span class="math" data-index="24" data-tex="\(\sum_j\eta_jw_j=0\)">\(\sum_j\eta_jw_j=0\)</span>. The corresponding eigenvalues of the Levi form are</p>
+<span class="math math-display" id="eq-L149.7" data-index="25" data-tex="\[
+\begin{aligned}
+\lambda_\parallel&amp;=
+\frac{t^2}{4M^3}\left(t^{-1/2}-\frac1{2\sqrt M}\right)
++\frac{r^2}{16M^{7/2}},\\
+\lambda_\perp&amp;=
+\frac1{4M}\left(t^{-1/2}-\frac1{2\sqrt M}\right).
+\end{aligned}
+\tag{L149.7}
+\]">\[
+\begin{aligned}
+\lambda_\parallel&amp;=
+\frac{t^2}{4M^3}\left(t^{-1/2}-\frac1{2\sqrt M}\right)
++\frac{r^2}{16M^{7/2}},\\
+\lambda_\perp&amp;=
+\frac1{4M}\left(t^{-1/2}-\frac1{2\sqrt M}\right).
+\end{aligned}
+\tag{L149.7}
+\]</span>
+<p>To derive them, differentiate <span class="math" data-index="26" data-tex="\(p_t(r)\)">\(p_t(r)\)</span>. Its first derivative is
+<span class="math" data-index="27" data-tex="\((r/M)(t^{-1/2}-1/(2\sqrt M))\)">\((r/M)(t^{-1/2}-1/(2\sqrt M))\)</span>, its second derivative is the first displayed eigenvalue multiplied by four, and its tangential real Hessian eigenvalue is <span class="math" data-index="28" data-tex="\(p_t&#x27;(r)/r\)">\(p_t&#x27;(r)/r\)</span>. Divide each real Hessian eigenvalue by four. At <span class="math" data-index="29" data-tex="\(r=0\)">\(r=0\)</span> both limiting values are <span class="math" data-index="30" data-tex="\(1/(8t^{3/2})\)">\(1/(8t^{3/2})\)</span>. In dimension one only the radial eigenvalue is present.
+Formula VS14 gives <span class="math" data-index="31" data-tex="\(f&#x27;&#x27;(s)&lt;0\)">\(f&#x27;&#x27;(s)&lt;0\)</span> for <span class="math" data-index="32" data-tex="\(s\ge t^2\)">\(s\ge t^2\)</span>, because <span class="math" data-index="33" data-tex="\(t^{-1/2}s^{1/4}\ge1\)">\(t^{-1/2}s^{1/4}\ge1\)</span>. Thus the radial eigenvalue is the minimum; the tangential one is larger when <span class="math" data-index="34" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>.</p>
+<p>The normalized radial eigenvalue has a particularly clear form. Put <span class="math" data-index="35" data-tex="\(q=r/t\)">\(q=r/t\)</span>:</p>
+<span class="math math-display" id="eq-L149.8" data-index="36" data-tex="\[
+\lambda_\parallel M^{3/2}
+=\frac1{4(1+q^2)^{3/4}}+\frac{q^2-2}{16(1+q^2)}
+\ge\frac1{16},\qquad
+\lim_{q\to\infty}\lambda_\parallel M^{3/2}=\frac1{16}.
+\tag{L149.8}
+\]">\[
+\lambda_\parallel M^{3/2}
+=\frac1{4(1+q^2)^{3/4}}+\frac{q^2-2}{16(1+q^2)}
+\ge\frac1{16},\qquad
+\lim_{q\to\infty}\lambda_\parallel M^{3/2}=\frac1{16}.
+\tag{L149.8}
+\]</span>
+<p>The inequality follows from the full two-sign argument VS15–VS17. Equivalently, subtract <span class="math" data-index="37" data-tex="\(1/16\)">\(1/16\)</span>; the result is
+<span class="math" data-index="38" data-tex="\((1+q^2)^{-1}[\, (1+q^2)^{1/4}/4-3/16\,]\ge(1+q^2)^{-1}/16&gt;0\)">\((1+q^2)^{-1}[\, (1+q^2)^{1/4}/4-3/16\,]\ge(1+q^2)^{-1}/16&gt;0\)</span>.
+The limit at infinity gives the value shown. The general logarithmic smoothing can consume at most <span class="math" data-index="39" data-tex="\(1/144\)">\(1/144\)</span> of this normalized lower bound, leaving <span class="math" data-index="40" data-tex="\(1/18\)">\(1/18\)</span>.</p>
+<h2 id="worked-example-3-a-stabilized-finite-maximum">Worked example 3. A stabilized finite maximum</h2>
+<p>Consider the first three centered compact intervals in <span class="math" data-index="41" data-tex="\(X=(-3,3)\)">\(X=(-3,3)\)</span>, with radii <span class="math" data-index="42" data-tex="\(r_1=1/2,r_2=1,r_3=3/2\)">\(r_1=1/2,r_2=1,r_3=3/2\)</span>; take <span class="math" data-index="43" data-tex="\(r_4=2\)">\(r_4=2\)</span> and later radii increasing to three. For <span class="math" data-index="44" data-tex="\(k=1\)">\(k=1\)</span>, choose</p>
+<span class="math math-display" id="eq-L149.9" data-index="45" data-tex="\[
+(t_1,t_2,t_3)=(64,144,256),\qquad
+(G_1,G_2,G_3)=(1,160,800),\qquad
+\phi_3(i\eta)=\max_{j\le3}\{r_j|\eta|+p_{t_j}(\eta)-G_j\}.
+\tag{L149.9}
+\]">\[
+(t_1,t_2,t_3)=(64,144,256),\qquad
+(G_1,G_2,G_3)=(1,160,800),\qquad
+\phi_3(i\eta)=\max_{j\le3}\{r_j|\eta|+p_{t_j}(\eta)-G_j\}.
+\tag{L149.9}
+\]</span>
+<p>The gap to the next interval is <span class="math" data-index="46" data-tex="\(1/2\)">\(1/2\)</span> for these three stages, and
+<span class="math" data-index="47" data-tex="\(2/\sqrt{t_j}&lt;1/2\)">\(2/\sqrt{t_j}&lt;1/2\)</span>, so the interior-support condition PW9 holds. Since <span class="math" data-index="48" data-tex="\(M\ge t\)">\(M\ge t\)</span>,</p>
+<span class="math math-display" id="eq-L149.10" data-index="49" data-tex="\[
+0\le p_t(\eta)\le t^{-1/2}(M-t)
+=\frac{|\eta|^2}{\sqrt t(M+t)}
+\le\frac{|\eta|^2}{2t^{3/2}}.
+\tag{L149.10}
+\]">\[
+0\le p_t(\eta)\le t^{-1/2}(M-t)
+=\frac{|\eta|^2}{\sqrt t(M+t)}
+\le\frac{|\eta|^2}{2t^{3/2}}.
+\tag{L149.10}
+\]</span>
+<p>The lower bound is <span class="math" data-index="50" data-tex="\(M/\sqrt t\ge\sqrt M\)">\(M/\sqrt t\ge\sqrt M\)</span>; the upper bound follows because the derivative in <span class="math" data-index="51" data-tex="\(M\)">\(M\)</span> is at most <span class="math" data-index="52" data-tex="\(t^{-1/2}\)">\(t^{-1/2}\)</span> and <span class="math" data-index="53" data-tex="\(p_t=0\)">\(p_t=0\)</span> at <span class="math" data-index="54" data-tex="\(M=t\)">\(M=t\)</span>.</p>
+<p>For <span class="math" data-index="55" data-tex="\(|\eta|\le5\)">\(|\eta|\le5\)</span>, the second seed minus the first, before vertical shifts, is at most <span class="math" data-index="56" data-tex="\(5/2+25/(2\cdot144^{3/2})&lt;3\)">\(5/2+25/(2\cdot144^{3/2})&lt;3\)</span>, whereas <span class="math" data-index="57" data-tex="\(G_2-G_1=159\)">\(G_2-G_1=159\)</span>. The corresponding third difference is at most <span class="math" data-index="58" data-tex="\(5+25/(2\cdot256^{3/2})&lt;6\)">\(5+25/(2\cdot256^{3/2})&lt;6\)</span>, whereas <span class="math" data-index="59" data-tex="\(G_3-G_1=799\)">\(G_3-G_1=799\)</span>. Hence <span class="math" data-index="60" data-tex="\(\phi_3=\phi_1\)">\(\phi_3=\phi_1\)</span> throughout this strip. This is an exact analytic stabilization statement, not a conclusion from sampled plots.</p>
+<p>These constants also illustrate the wider inactivity regions in PW18. The second comparison on <span class="math" data-index="61" data-tex="\(|\eta|\le161\)">\(|\eta|\le161\)</span> is bounded by <span class="math" data-index="62" data-tex="\(161/2+161^2/(2\cdot144^{3/2})&lt;89&lt;159\)">\(161/2+161^2/(2\cdot144^{3/2})&lt;89&lt;159\)</span>. The third comparison on <span class="math" data-index="63" data-tex="\(|\eta|\le301\)">\(|\eta|\le301\)</span> is bounded by <span class="math" data-index="64" data-tex="\(301+301^2/(2\cdot256^{3/2})&lt;313&lt;799\)">\(301+301^2/(2\cdot256^{3/2})&lt;313&lt;799\)</span>. Thus <span class="math" data-index="65" data-tex="\(B_2=160,B_3=300\)">\(B_2=160,B_3=300\)</span> are compatible inactivity radii. Each new seed has gradient bound at most <span class="math" data-index="66" data-tex="\(r_j+t_j^{-1/2}\)">\(r_j+t_j^{-1/2}\)</span>, so the logarithmic gradient bound is certainly valid beyond those radii.</p>
+<p>At larger imaginary frequencies the slopes of the later support functions let new branches become active. The resulting maximum has positive extra distributional curvature at a branch change, rather than a classical second derivative there. This is why PW4 is stated distributionally.</p>
+<figure><img class="course-figure" width="2484" height="1007" src="reproduce/L149/figures/curvature-and-stabilized-maxima.png" alt="The exact radial curvature margin and a finite maximum with a stabilized strip." /><figcaption class="native"><a href="reproduce/L149/figures/curvature-and-stabilized-maxima.png">Open full-size PNG</a> · <a href="reproduce/L149/figures/curvature-and-stabilized-maxima.svg">Open SVG</a></figcaption></figure>
+<p>The displayed maximum is the first three branches, with their exact parameters. The final theorem continues the exhaustion and chooses the remaining constants and strip radii using the seminorm induction. The normalized curvature plot is the exact <span class="math" data-index="67" data-tex="\(k=1\)">\(k=1\)</span> correction, not a numerically constructed general-weight solution.</p>
+<h2 id="worked-example-4-the-exterior-support-sign">Worked example 4. The exterior-support sign</h2>
+<p>At one finite construction stage let <span class="math" data-index="68" data-tex="\(K=[-1,1]\)">\(K=[-1,1]\)</span>, and let a smooth cutoff <span class="math" data-index="69" data-tex="\(\chi\)">\(\chi\)</span> be supported in <span class="math" data-index="70" data-tex="\(C=[2,3]\)">\(C=[2,3]\)</span>. These intervals are separated in the direction <span class="math" data-index="71" data-tex="\(\theta=1\)">\(\theta=1\)</span>, with gap one. Their supporting functions give</p>
+<span class="math math-display" id="eq-L149.11" data-index="72" data-tex="\[
+H_C(-\eta)+H_K(\eta)=
+\begin{cases}
+-\eta,&amp;\eta\ge0,\\
+-4\eta,&amp;\eta&lt;0.
+\end{cases}
+\tag{L149.11}
+\]">\[
+H_C(-\eta)+H_K(\eta)=
+\begin{cases}
+-\eta,&amp;\eta\ge0,\\
+-4\eta,&amp;\eta&lt;0.
+\end{cases}
+\tag{L149.11}
+\]</span>
+<p>The positive imaginary direction gives decay; reversing it gives growth. If the stage weight satisfies <span class="math" data-index="73" data-tex="\(\phi_{j+1}\le H_K-\log k+D\)">\(\phi_{j+1}\le H_K-\log k+D\)</span>, PW24 becomes</p>
+<span class="math math-display" id="eq-L149.12" data-index="74" data-tex="\[
+\|\chi u\|_{2,k}^2\le C_\chi e^{-2\eta}
+\int|F_u(\xi+i\eta)|^2e^{-2\phi_{j+1}(\xi+i\eta)}\,d\xi
+\quad(\eta\ge0).
+\tag{L149.12}
+\]">\[
+\|\chi u\|_{2,k}^2\le C_\chi e^{-2\eta}
+\int|F_u(\xi+i\eta)|^2e^{-2\phi_{j+1}(\xi+i\eta)}\,d\xi
+\quad(\eta\ge0).
+\tag{L149.12}
+\]</span>
+<p>Its plane integral still contains the Fourier transform of the whole test <span class="math" data-index="75" data-tex="\(u\)">\(u\)</span>. It is not the transform of <span class="math" data-index="76" data-tex="\(\chi u\)">\(\chi u\)</span> on the right.</p>
+<p>For a physical model choose <span class="math" data-index="77" data-tex="\(u=1_{[9/4,11/4]}\)">\(u=1_{[9/4,11/4]}\)</span>, <span class="math" data-index="78" data-tex="\(k=1\)">\(k=1\)</span>, and a cutoff equal to one near that inner interval, supported in <span class="math" data-index="79" data-tex="\(C\)">\(C\)</span>. Then <span class="math" data-index="80" data-tex="\(\|\chi u\|_2^2=1/2\)">\(\|\chi u\|_2^2=1/2\)</span>, and</p>
+<span class="math math-display" id="eq-L149.13" data-index="81" data-tex="\[
+\int|F_u(\xi+i\eta)|^2\,d\xi
+=\frac{\pi}{\eta}(e^{11\eta/2}-e^{9\eta/2})\quad(\eta\ne0),
+\qquad I(0)=\pi.
+\tag{L149.13}
+\]">\[
+\int|F_u(\xi+i\eta)|^2\,d\xi
+=\frac{\pi}{\eta}(e^{11\eta/2}-e^{9\eta/2})\quad(\eta\ne0),
+\qquad I(0)=\pi.
+\tag{L149.13}
+\]</span>
+<p>This is Plancherel applied to <span class="math" data-index="82" data-tex="\(e^{\eta x}u\)">\(e^{\eta x}u\)</span>. The comparison energy weighted by <span class="math" data-index="83" data-tex="\(H_K(\eta)=\eta\)">\(H_K(\eta)=\eta\)</span> is</p>
+<span class="math math-display" id="eq-L149.14" data-index="84" data-tex="\[
+E_\eta=e^{-2\eta}I(\eta)
+=\pi\frac{e^{7\eta/2}-e^{5\eta/2}}{\eta}\quad(\eta&gt;0),
+\qquad E_0=\pi.
+\tag{L149.14}
+\]">\[
+E_\eta=e^{-2\eta}I(\eta)
+=\pi\frac{e^{7\eta/2}-e^{5\eta/2}}{\eta}\quad(\eta&gt;0),
+\qquad E_0=\pi.
+\tag{L149.14}
+\]</span>
+<p>The small factor <span class="math" data-index="85" data-tex="\(e^{-2\eta}\)">\(e^{-2\eta}\)</span> in the exterior estimate multiplies a plane energy which can grow. Their product for this model is
+<span class="math" data-index="86" data-tex="\(\pi(e^{3\eta/2}-e^{\eta/2})/\eta\)">\(\pi(e^{3\eta/2}-e^{\eta/2})/\eta\)</span>, also growing. The proof does not say that the entire transform decays on these planes. It enlarges the integral's imaginary domain to make that integral control the exterior norm with an arbitrarily small coefficient.</p>
+<figure><img class="course-figure" width="2340" height="954" src="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.png" alt="Separated real supports and the small coefficient multiplying a potentially growing plane energy." /><figcaption class="native"><a href="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.png">Open full-size PNG</a> · <a href="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.svg">Open SVG</a></figcaption></figure>
+<p>The factor comes from the exact support-function gap in L149.11. The energy curves use the explicit exterior interval in L149.13–L149.14; the finite-stage weight comparison remains the assumption displayed in L149.12.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — entry: why only positive derivatives?</strong> For the weight in example 1 and fixed <span class="math" data-index="87" data-tex="\(\eta,t\)">\(\eta,t\)</span>, show that a bound <span class="math" data-index="88" data-tex="\(|\ell_t(\xi,\eta)|\le D\log M\)">\(|\ell_t(\xi,\eta)|\le D\log M\)</span> for all <span class="math" data-index="89" data-tex="\(\xi\)">\(\xi\)</span> cannot be correct.</p>
+<p><strong>Solution 1.</strong> If <span class="math" data-index="90" data-tex="\(\xi&gt;M\)">\(\xi&gt;M\)</span>, every <span class="math" data-index="91" data-tex="\(\xi+My\)">\(\xi+My\)</span> in the bump support is at least <span class="math" data-index="92" data-tex="\(\xi-M&gt;0\)">\(\xi-M&gt;0\)</span>. Thus the probability integral gives <span class="math" data-index="93" data-tex="\(\ell_t(\xi,\eta)\ge2\log(1+\xi-M)\)">\(\ell_t(\xi,\eta)\ge2\log(1+\xi-M)\)</span>, which tends to infinity as <span class="math" data-index="94" data-tex="\(\xi\to\infty\)">\(\xi\to\infty\)</span>. Its proposed right side is fixed. The correct zero-order statement controls <span class="math" data-index="95" data-tex="\(\ell_t-\ell\)">\(\ell_t-\ell\)</span>, as in VS5. The estimate VS10 uses a positive derivative, whose kernel integral is zero and permits that subtraction.</p>
+<p><strong>Exercise 2 — intermediate: a rigorous large parameter.</strong> Suppose the constant <span class="math" data-index="96" data-tex="\(D\)">\(D\)</span> in VS18 is one. Give an explicit <span class="math" data-index="97" data-tex="\(t\)">\(t\)</span> satisfying VS19 without relying on a decimal approximation to the logarithm.</p>
+<p><strong>Solution 2.</strong> Take <span class="math" data-index="98" data-tex="\(t=10^8\)">\(t=10^8\)</span>. Since <span class="math" data-index="99" data-tex="\(e^3&gt;1+3+9/2+27/6=13&gt;10\)">\(e^3&gt;1+3+9/2+27/6=13&gt;10\)</span>, <span class="math" data-index="100" data-tex="\(\log10&lt;3\)">\(\log10&lt;3\)</span>. Hence <span class="math" data-index="101" data-tex="\((\log t)/\sqrt t&lt;24/10^4&lt;1/144\)">\((\log t)/\sqrt t&lt;24/10^4&lt;1/144\)</span>, the last inequality being <span class="math" data-index="102" data-tex="\(24\cdot144&lt;10^4\)">\(24\cdot144&lt;10^4\)</span>. Also <span class="math" data-index="103" data-tex="\(t&gt;e^2\)">\(t&gt;e^2\)</span>, for example from the elementary series bound <span class="math" data-index="104" data-tex="\(e&lt;3\)">\(e&lt;3\)</span>. The monotonicity of <span class="math" data-index="105" data-tex="\((\log r)/\sqrt r\)">\((\log r)/\sqrt r\)</span> for <span class="math" data-index="106" data-tex="\(r\ge e^2\)">\(r\ge e^2\)</span> gives the required bound for every <span class="math" data-index="107" data-tex="\(M\ge t\)">\(M\ge t\)</span>, not just at the chosen parameter.</p>
+<p><strong>Exercise 3 — intermediate: complex directions.</strong> In <span class="math" data-index="108" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, let <span class="math" data-index="109" data-tex="\(\eta=(r,0)\)">\(\eta=(r,0)\)</span>, <span class="math" data-index="110" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Compare the correction's Levi form on <span class="math" data-index="111" data-tex="\(w=(1,0)\)">\(w=(1,0)\)</span>, <span class="math" data-index="112" data-tex="\(w=(i,0)\)">\(w=(i,0)\)</span>, and <span class="math" data-index="113" data-tex="\(w=(0,1)\)">\(w=(0,1)\)</span>. Does a purely imaginary first component make the direction tangential?</p>
+<p><strong>Solution 3.</strong> Each vector has norm one. In VS16 the modulus of <span class="math" data-index="114" data-tex="\(\sum\eta_jw_j\)">\(\sum\eta_jw_j\)</span> is <span class="math" data-index="115" data-tex="\(r,r,0\)">\(r,r,0\)</span>, respectively. The first two values are therefore both <span class="math" data-index="116" data-tex="\(\lambda_\parallel\)">\(\lambda_\parallel\)</span>, and the last is <span class="math" data-index="117" data-tex="\(\lambda_\perp\)">\(\lambda_\perp\)</span>. Multiplying a complex direction by <span class="math" data-index="118" data-tex="\(i\)">\(i\)</span> preserves its Hermitian quadratic value. Tangency here means the complex equation <span class="math" data-index="119" data-tex="\(\sum\eta_jw_j=0\)">\(\sum\eta_jw_j=0\)</span>, not a test of real orthogonality after discarding imaginary components.</p>
+<p><strong>Exercise 4 — intermediate: closed compact-support stages.</strong> Let <span class="math" data-index="120" data-tex="\(u_m\in E_j\)">\(u_m\in E_j\)</span> converge in the global <span class="math" data-index="121" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span> norm. Prove that its limit remains in <span class="math" data-index="122" data-tex="\(E_j\)">\(E_j\)</span>, and explain which support condition is used.</p>
+<p><strong>Solution 4.</strong> The weighted inclusion into <span class="math" data-index="123" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> is continuous by CF1, so <span class="math" data-index="124" data-tex="\(u_m\)">\(u_m\)</span> converges to the same limit distribution there. For every smooth compact test supported outside the fixed closed <span class="math" data-index="125" data-tex="\(K_j\)">\(K_j\)</span>, each <span class="math" data-index="126" data-tex="\(u_m\)">\(u_m\)</span> has zero pairing; continuity gives zero for the limit. The definition of distributional support therefore puts it inside <span class="math" data-index="127" data-tex="\(K_j\)">\(K_j\)</span>. Global membership is already supplied by the weighted norm limit. Hence <span class="math" data-index="128" data-tex="\(E_j\)">\(E_j\)</span> is closed in a complete Hilbert space, so it is Banach. The fixed support set is essential; supports escaping to infinity would not prove the same fixed-stage assertion.</p>
+<p><strong>Exercise 5 — intermediate: the partition seminorms.</strong> For the partition <span class="math" data-index="129" data-tex="\(\chi_j=\theta_j\prod_{l&lt;j}(1-\theta_l)\)">\(\chi_j=\theta_j\prod_{l&lt;j}(1-\theta_l)\)</span> in PW1, prove both local finiteness and continuity of <span class="math" data-index="130" data-tex="\(\sum a_j\|\chi_j u\|_{2,k}\)">\(\sum a_j\|\chi_j u\|_{2,k}\)</span>, for arbitrary positive <span class="math" data-index="131" data-tex="\(a_j\)">\(a_j\)</span>.</p>
+<p><strong>Solution 5.</strong> The finite sum telescopes to <span class="math" data-index="132" data-tex="\(1-\prod_{l\le J}(1-\theta_l)\)">\(1-\prod_{l\le J}(1-\theta_l)\)</span>. Around any given compact set, some <span class="math" data-index="133" data-tex="\(\theta_J=1\)">\(\theta_J=1\)</span>, so the product is zero there and every later <span class="math" data-index="134" data-tex="\(\chi_j\)">\(\chi_j\)</span> vanishes on a neighborhood. Thus the partition sums to one and only finitely many supports meet that compact set. On <span class="math" data-index="135" data-tex="\(E_i\)">\(E_i\)</span> the seminorm sum therefore has finitely many terms. Each term is at most <span class="math" data-index="136" data-tex="\(a_jA_k(\chi_j)\|u\|_{2,k}\)">\(a_jA_k(\chi_j)\|u\|_{2,k}\)</span> by CF6. Summing those finite constants proves its norm-continuity on each stage, and PW3 proves continuity in the inductive topology. No boundedness of the sequence <span class="math" data-index="137" data-tex="\(a_j\)">\(a_j\)</span> is needed.</p>
+<p><strong>Exercise 6 — advanced: curvature at a maximum.</strong> For <span class="math" data-index="138" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> in one complex variable, compute the distributional Levi derivative of <span class="math" data-index="139" data-tex="\(\max(a\eta,-a\eta)\)">\(\max(a\eta,-a\eta)\)</span>. Then add <span class="math" data-index="140" data-tex="\(p_t(\eta)\)">\(p_t(\eta)\)</span>.</p>
+<p><strong>Solution 6.</strong> The maximum is <span class="math" data-index="141" data-tex="\(a|\eta|\)">\(a|\eta|\)</span>. The real derivative of <span class="math" data-index="142" data-tex="\(|\eta|\)">\(|\eta|\)</span> is <span class="math" data-index="143" data-tex="\(\operatorname{sgn}\eta\)">\(\operatorname{sgn}\eta\)</span>, whose distributional derivative is <span class="math" data-index="144" data-tex="\(2\delta_{\eta=0}\)">\(2\delta_{\eta=0}\)</span>. Because the function is independent of <span class="math" data-index="145" data-tex="\(\xi\)">\(\xi\)</span>, its Levi derivative is one quarter of that second real derivative, hence <span class="math" data-index="146" data-tex="\((a/2)\delta_{\eta=0}\)">\((a/2)\delta_{\eta=0}\)</span>. This is line measure, integrated in <span class="math" data-index="147" data-tex="\(\xi\)">\(\xi\)</span>, in the complex plane. It is nonnegative and is not represented by the classical second derivative away from the line, which is zero. Adding <span class="math" data-index="148" data-tex="\(p_t\)">\(p_t\)</span> adds its smooth positive radial Levi value. The lower bound is retained, together with this extra positive singular curvature. This concrete case explains the distributional formulation in PW4.</p>
+<p><strong>Exercise 7 — advanced: why fixed-stage integrals are finite.</strong> Let <span class="math" data-index="149" data-tex="\(u\)">\(u\)</span> be supported in a compact convex <span class="math" data-index="150" data-tex="\(K\Subset X\)">\(K\Subset X\)</span>. Use PW5 for an enlarged set <span class="math" data-index="151" data-tex="\(K+\rho\overline B\Subset X\)">\(K+\rho\overline B\Subset X\)</span> to prove the full complex norm is bounded by a constant times the real weighted norm.</p>
+<p><strong>Solution 7.</strong> The enlarged supporting function is <span class="math" data-index="152" data-tex="\(H_K(\eta)+\rho|\eta|\)">\(H_K(\eta)+\rho|\eta|\)</span>. Squaring PW5 gives <span class="math" data-index="153" data-tex="\(e^{-2\phi}\le C^2 e^{-2H_K}e^{-2\rho|\eta|}k(\xi)^2\)">\(e^{-2\phi}\le C^2 e^{-2H_K}e^{-2\rho|\eta|}k(\xi)^2\)</span>. The supremum of <span class="math" data-index="154" data-tex="\(e^{-2\rho r}(1+r^2)^{N+2n}\)">\(e^{-2\rho r}(1+r^2)^{N+2n}\)</span> is finite: continuity handles bounded <span class="math" data-index="155" data-tex="\(r\)">\(r\)</span>, and exponential decay handles infinity. Bound the extra exponential by this supremum times <span class="math" data-index="156" data-tex="\((1+r^2)^{-N-2n}\)">\((1+r^2)^{-N-2n}\)</span>, then apply the full complex estimate CF17. Taking square roots gives PW32. The positive enlargement margin supplies the decay which the deduction needs. For a nonconvex compact support, first take its compact convex hull as in CF9.</p>
+<p><strong>Exercise 8 — advanced: outside does not imply separated.</strong> Let <span class="math" data-index="157" data-tex="\(K=[-1,1]\)">\(K=[-1,1]\)</span> and <span class="math" data-index="158" data-tex="\(S=\{-2,2\}\)">\(S=\{-2,2\}\)</span>. Calculate <span class="math" data-index="159" data-tex="\(H_S(-\theta)+H_K(\theta)\)">\(H_S(-\theta)+H_K(\theta)\)</span> for the two unit directions in <span class="math" data-index="160" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Explain why exterior cutoffs need smaller separated convex supports.</p>
+<p><strong>Solution 8.</strong> For either <span class="math" data-index="161" data-tex="\(\theta=1\)">\(\theta=1\)</span> or <span class="math" data-index="162" data-tex="\(\theta=-1\)">\(\theta=-1\)</span>, <span class="math" data-index="163" data-tex="\(H_S(-\theta)=2\)">\(H_S(-\theta)=2\)</span> and <span class="math" data-index="164" data-tex="\(H_K(\theta)=1\)">\(H_K(\theta)=1\)</span>, giving three, not a negative gap. Although each point of <span class="math" data-index="165" data-tex="\(S\)">\(S\)</span> is outside <span class="math" data-index="166" data-tex="\(K\)">\(K\)</span>, its convex hull contains <span class="math" data-index="167" data-tex="\(K\)">\(K\)</span>. A single strict separating direction therefore does not exist. Splitting the exterior region into sufficiently small balls gives compact convex supports individually separated from <span class="math" data-index="168" data-tex="\(K\)">\(K\)</span>; the ball near two uses direction <span class="math" data-index="169" data-tex="\(1\)">\(1\)</span>, and the ball near minus two uses direction <span class="math" data-index="170" data-tex="\(-1\)">\(-1\)</span>. The finite partition PW21 uses exactly this stronger property.</p>
+<p><strong>Exercise 9 — synthesis: turn a plane estimate into a strip estimate.</strong> In example 4 let <span class="math" data-index="171" data-tex="\(A&gt;2\)">\(A&gt;2\)</span>, and integrate L149.12 over <span class="math" data-index="172" data-tex="\(A-2&lt;\eta&lt;A\)">\(A-2&lt;\eta&lt;A\)</span>. Find an explicit coefficient multiplying the square-root strip integral.</p>
+<p><strong>Solution 9.</strong> This interval is the real unit ball centered at <span class="math" data-index="173" data-tex="\(A-1\)">\(A-1\)</span>, and has volume two. Throughout it <span class="math" data-index="174" data-tex="\(e^{-2\eta}\le e^{-2A+4}\)">\(e^{-2\eta}\le e^{-2A+4}\)</span>. Integrating the squared-norm inequality gives
+<span class="math" data-index="175" data-tex="\(2\|\chi u\|_{2,k}^2\le C_\chi e^{-2A+4}\int_{A-2&lt;\eta&lt;A}\int|F_u|^2e^{-2\phi_{j+1}}\,d\xi d\eta\)">\(2\|\chi u\|_{2,k}^2\le C_\chi e^{-2A+4}\int_{A-2&lt;\eta&lt;A}\int|F_u|^2e^{-2\phi_{j+1}}\,d\xi d\eta\)</span>.
+The interval lies inside <span class="math" data-index="176" data-tex="\(|\eta|&lt;A\)">\(|\eta|&lt;A\)</span>, so taking square roots gives a coefficient <span class="math" data-index="177" data-tex="\(\sqrt{C_\chi/2}\,e^2 e^{-A}\)">\(\sqrt{C_\chi/2}\,e^2 e^{-A}\)</span> multiplying that full strip norm. The coefficient tends to zero with <span class="math" data-index="178" data-tex="\(A\)">\(A\)</span>, independently of <span class="math" data-index="179" data-tex="\(u\)">\(u\)</span>. For finitely many cutoff pieces choose one <span class="math" data-index="180" data-tex="\(A\)">\(A\)</span> making their coefficient sum at most the prescribed inductive margin.</p>
+<p><strong>Exercise 10 — synthesis: pass to the weight and its weak density.</strong> Explain why PW30 is monotone despite the increasing weights <span class="math" data-index="181" data-tex="\(\phi_j\)">\(\phi_j\)</span>. Then, for a continuous linear form dominated by the resulting norm, recover the reflected weak density with its exact data norm.</p>
+<p><strong>Solution 10.</strong> Increasing <span class="math" data-index="182" data-tex="\(\phi_j\)">\(\phi_j\)</span> alone decreases <span class="math" data-index="183" data-tex="\(e^{-2\phi_j}\)">\(e^{-2\phi_j}\)</span>, so expanding domains would not by themselves imply monotonicity. The stronger fact is exact stabilization: all future branches leave <span class="math" data-index="184" data-tex="\(|\eta|&lt;A_j\)">\(|\eta|&lt;A_j\)</span> unchanged. There <span class="math" data-index="185" data-tex="\(\phi=\phi_j\)">\(\phi=\phi_j\)</span>, and <span class="math" data-index="186" data-tex="\(P_j^2\)">\(P_j^2\)</span> equals the integral of the single final nonnegative integrand over <span class="math" data-index="187" data-tex="\(|\eta|&lt;A_j\)">\(|\eta|&lt;A_j\)</span>. These domains increase, so monotone convergence applies. Since <span class="math" data-index="188" data-tex="\(\alpha_j=j/(j+1)\to1\)">\(\alpha_j=j/(j+1)\to1\)</span>, the stage inequality passes to the full seminorm bound.</p>
+<p>For the density, take the closed image of <span class="math" data-index="189" data-tex="\(u\mapsto F_u e^{-\phi}\)">\(u\mapsto F_u e^{-\phi}\)</span> in <span class="math" data-index="190" data-tex="\(L^2(\mathbb C^n)\)">\(L^2(\mathbb C^n)\)</span>. The dominated form has norm at most one there, so the actual Hilbert representation gives <span class="math" data-index="191" data-tex="\(g\)">\(g\)</span> of <span class="math" data-index="192" data-tex="\(L^2\)">\(L^2\)</span> norm at most one with <span class="math" data-index="193" data-tex="\(L(u)=\int F_u e^{-\phi}\overline g\)">\(L(u)=\int F_u e^{-\phi}\overline g\)</span>. Put</p>
+<span class="math math-display" id="eq-L149.15" data-index="194" data-tex="\[
+V(z)=e^{-\phi(-z)}\overline{g(-z)}.
+\tag{L149.15}
+\]">\[
+V(z)=e^{-\phi(-z)}\overline{g(-z)}.
+\tag{L149.15}
+\]</span>
+<p>Reflection preserves Lebesgue measure, so <span class="math" data-index="195" data-tex="\(\int|V(z)|^2e^{2\phi(-z)}\,dV(z)=\|g\|_2^2\le1\)">\(\int|V(z)|^2e^{2\phi(-z)}\,dV(z)=\|g\|_2^2\le1\)</span>, and changing <span class="math" data-index="196" data-tex="\(z\)">\(z\)</span> to <span class="math" data-index="197" data-tex="\(-z\)">\(-z\)</span> gives <span class="math" data-index="198" data-tex="\(L(u)=\int V(z)F_u(-z)\,dV(z)\)">\(L(u)=\int V(z)F_u(-z)\,dV(z)\)</span>. This is an absolute weak pairing by Cauchy–Schwarz. Its local distribution belongs to the reciprocal reflected space by L148 CF7–CF11. Neither the reflected transform nor the reflected data weight can be silently replaced.</p>
+<h2 id="reproducibility-and-source-map">Reproducibility and source map</h2>
+<p>The editable figures and calculations accompany the complete formal proof. Independent checks evaluate the actual nonsmooth-weight convolution in two coordinates, kernel and distributional derivative formulas, physical radial Hessians, finite-branch comparisons and the exterior interval's physical Fourier integrals. They supplement the analytic proofs.</p>
+<p>The exact source map is in the formal companion: VS1–VS20 reconstruct H-II Lemma 15.2.3, and PW1–PW35 with PW3a reconstruct Theorem 15.2.1 and the partition/duality and subsequent representation passages. The classical source is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.2, printed pp. 279–285. This packet contains original exposition, solutions and artwork with ordinary attribution.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked; CC0.</em></p>
+<p>We prove the complete regularization of Hörmander II, Lemma 15.2.3, and then assemble the full four-condition weight and seminorm domination of Theorem 15.2.1. The exact curvature power is <span class="math" data-index="199" data-tex="\((1+|\operatorname{Im}z|^2)^{-3/4}\)">\((1+|\operatorname{Im}z|^2)^{-3/4}\)</span>, matching the scale <span class="math" data-index="200" data-tex="\(M^{-3/2}\)">\(M^{-3/2}\)</span> in the regularization lemma.</p>
+<p>Let <span class="math" data-index="201" data-tex="\(k:\mathbb R^n\to(0,\infty)\)">\(k:\mathbb R^n\to(0,\infty)\)</span> satisfy</p>
+<span class="math math-display" id="eq-VS1" data-index="202" data-tex="\[
+k(\xi+h)\le(1+C|h|)^N k(\xi),\qquad C,N&gt;0.
+\tag{VS1}
+\]">\[
+k(\xi+h)\le(1+C|h|)^N k(\xi),\qquad C,N&gt;0.
+\tag{VS1}
+\]</span>
+<p>Reversing the shift gives the reciprocal bound. Thus <span class="math" data-index="203" data-tex="\(\ell=\log k\)">\(\ell=\log k\)</span> is continuous and globally Lipschitz, since</p>
+<span class="math math-display" id="eq-VS2" data-index="204" data-tex="\[
+|\ell(\xi+h)-\ell(\xi)|\le N\log(1+C|h|)\le NC|h|.
+\tag{VS2}
+\]">\[
+|\ell(\xi+h)-\ell(\xi)|\le N\log(1+C|h|)\le NC|h|.
+\tag{VS2}
+\]</span>
+<p>No differentiability of the original weight is assumed.</p>
+<p>Fix a nonnegative <span class="math" data-index="205" data-tex="\(\chi\in C_c^\infty(\mathbb R^n)\)">\(\chi\in C_c^\infty(\mathbb R^n)\)</span>, supported in the unit ball, with integral one. For <span class="math" data-index="206" data-tex="\(t\ge2\)">\(t\ge2\)</span>, define</p>
+<span class="math math-display" id="eq-VS3" data-index="207" data-tex="\[
+M=M(\eta,t)=(t^2+|\eta|^2)^{1/2},\qquad
+\ell_t(\xi,\eta)=\int\chi(y)\ell(\xi+My)\,dy,\qquad k_t=e^{\ell_t}.
+\tag{VS3}
+\]">\[
+M=M(\eta,t)=(t^2+|\eta|^2)^{1/2},\qquad
+\ell_t(\xi,\eta)=\int\chi(y)\ell(\xi+My)\,dy,\qquad k_t=e^{\ell_t}.
+\tag{VS3}
+\]</span>
+<h2 id="vs1-the-exact-comparisons-and-all-positive-order-derivatives">VS1. The exact comparisons and all positive-order derivatives</h2>
+<p>For every real shift <span class="math" data-index="208" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" id="eq-VS4" data-index="209" data-tex="\[
+(1+C|h|)^{-N}\le
+\frac{k_t(\xi+h,\eta)}{k_t(\xi,\eta)}
+\le(1+C|h|)^N.
+\tag{VS4}
+\]">\[
+(1+C|h|)^{-N}\le
+\frac{k_t(\xi+h,\eta)}{k_t(\xi,\eta)}
+\le(1+C|h|)^N.
+\tag{VS4}
+\]</span>
+<p>Indeed integrate the two bounds for the difference of logarithms in VS2 against the nonnegative probability kernel. Also</p>
+<span class="math math-display" id="eq-VS5" data-index="210" data-tex="\[
+|\ell_t(\xi,\eta)-\ell(\xi)|\le N\log(1+CM)\le N&#x27;\log M,
+\tag{VS5}
+\]">\[
+|\ell_t(\xi,\eta)-\ell(\xi)|\le N\log(1+CM)\le N&#x27;\log M,
+\tag{VS5}
+\]</span>
+<p>where one may take <span class="math" data-index="211" data-tex="\(N&#x27;=N[1+\log(1+C)/\log2]\)">\(N&#x27;=N[1+\log(1+C)/\log2]\)</span>. Here <span class="math" data-index="212" data-tex="\(M\ge2\)">\(M\ge2\)</span> and
+<span class="math" data-index="213" data-tex="\(1+CM\le(1+C)M\le M^{1+\log(1+C)/\log2}\)">\(1+CM\le(1+C)M\le M^{1+\log(1+C)/\log2}\)</span>. Exponentiating gives</p>
+<span class="math math-display" id="eq-VS6" data-index="214" data-tex="\[
+M^{-N&#x27;}\le k_t(\xi,\eta)/k(\xi)\le M^{N&#x27;}.
+\tag{VS6}
+\]">\[
+M^{-N&#x27;}\le k_t(\xi,\eta)/k(\xi)\le M^{N&#x27;}.
+\tag{VS6}
+\]</span>
+<p>The function <span class="math" data-index="215" data-tex="\(\ell_t\)">\(\ell_t\)</span> is smooth in all <span class="math" data-index="216" data-tex="\(2n\)">\(2n\)</span> real variables, even when <span class="math" data-index="217" data-tex="\(k\)">\(k\)</span> is only continuous. Write its kernel in the unscaled integration variable:</p>
+<span class="math math-display" id="eq-VS7" data-index="218" data-tex="\[
+\ell_t(\xi,\eta)=\int R(\xi,\eta;\theta)\ell(\theta)\,d\theta,\qquad
+R=M^{-n}\chi((\theta-\xi)/M).
+\tag{VS7}
+\]">\[
+\ell_t(\xi,\eta)=\int R(\xi,\eta;\theta)\ell(\theta)\,d\theta,\qquad
+R=M^{-n}\chi((\theta-\xi)/M).
+\tag{VS7}
+\]</span>
+<p>On every compact parameter set the support in <span class="math" data-index="219" data-tex="\(\theta\)">\(\theta\)</span> is bounded. The continuous <span class="math" data-index="220" data-tex="\(\ell\)">\(\ell\)</span> is bounded there, and every kernel derivative is bounded there; differentiation under the integral is therefore valid to every order.</p>
+<p>For a multi-index <span class="math" data-index="221" data-tex="\(\alpha\)">\(\alpha\)</span> in <span class="math" data-index="222" data-tex="\((\xi,\eta)\)">\((\xi,\eta)\)</span>, of total order <span class="math" data-index="223" data-tex="\(m\)">\(m\)</span>, the kernel obeys</p>
+<span class="math math-display" id="eq-VS8" data-index="224" data-tex="\[
+|\partial^\alpha R(\xi,\eta;\theta)|
+\le A_\alpha M^{-n-m}1_{\{|\theta-\xi|\le M\}}.
+\tag{VS8}
+\]">\[
+|\partial^\alpha R(\xi,\eta;\theta)|
+\le A_\alpha M^{-n-m}1_{\{|\theta-\xi|\le M\}}.
+\tag{VS8}
+\]</span>
+<p>Here is the derivative-scale justification. The function <span class="math" data-index="225" data-tex="\(M\)">\(M\)</span> is the Euclidean norm of <span class="math" data-index="226" data-tex="\((\eta,t)\)">\((\eta,t)\)</span>, so its <span class="math" data-index="227" data-tex="\(\eta\)">\(\eta\)</span>-derivatives of order <span class="math" data-index="228" data-tex="\(j\)">\(j\)</span> are homogeneous of degree <span class="math" data-index="229" data-tex="\(1-j\)">\(1-j\)</span> and are bounded on the unit sphere. Hence <span class="math" data-index="230" data-tex="\(|\partial_\eta^\beta M|\le A_\beta M^{1-|\beta|}\)">\(|\partial_\eta^\beta M|\le A_\beta M^{1-|\beta|}\)</span>. A <span class="math" data-index="231" data-tex="\(\xi\)">\(\xi\)</span>-derivative of the kernel contributes <span class="math" data-index="232" data-tex="\(M^{-1}\)">\(M^{-1}\)</span> and a derivative of <span class="math" data-index="233" data-tex="\(\chi\)">\(\chi\)</span>. An <span class="math" data-index="234" data-tex="\(\eta\)">\(\eta\)</span>-derivative of <span class="math" data-index="235" data-tex="\(M^{-n}\)">\(M^{-n}\)</span>, or of <span class="math" data-index="236" data-tex="\((\theta-\xi)/M\)">\((\theta-\xi)/M\)</span>, contributes another <span class="math" data-index="237" data-tex="\(M^{-1}\)">\(M^{-1}\)</span>, multiplied by a bounded function of <span class="math" data-index="238" data-tex="\(\eta/M,t/M\)">\(\eta/M,t/M\)</span> and <span class="math" data-index="239" data-tex="\((\theta-\xi)/M\)">\((\theta-\xi)/M\)</span> on the kernel support. Induction and the finite product rule give VS8 for every <span class="math" data-index="240" data-tex="\(m\)">\(m\)</span>. The constants depend on the derivative order, dimension and fixed kernel, not on <span class="math" data-index="241" data-tex="\(t,\xi,\eta\)">\(t,\xi,\eta\)</span>.</p>
+<p>For <span class="math" data-index="242" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-index="243" data-tex="\(\int\partial^\alpha R\,d\theta=0\)">\(\int\partial^\alpha R\,d\theta=0\)</span>, because <span class="math" data-index="244" data-tex="\(\int R=1\)">\(\int R=1\)</span> for every parameter. Thus, after differentiating VS7, one may subtract the constant <span class="math" data-index="245" data-tex="\(\ell(\xi)\)">\(\ell(\xi)\)</span> from its integrand:</p>
+<span class="math math-display" id="eq-VS9" data-index="246" data-tex="\[
+\partial^\alpha\ell_t
+=\int\partial^\alpha R(\xi,\eta;\theta)
+                      [\ell(\theta)-\ell(\xi)]\,d\theta.
+\tag{VS9}
+\]">\[
+\partial^\alpha\ell_t
+=\int\partial^\alpha R(\xi,\eta;\theta)
+                      [\ell(\theta)-\ell(\xi)]\,d\theta.
+\tag{VS9}
+\]</span>
+<p>This is an algebraic subtraction after differentiation; no derivative of the nonsmooth <span class="math" data-index="247" data-tex="\(\ell(\xi)\)">\(\ell(\xi)\)</span> is being taken. On the kernel support VS2 bounds the bracket by <span class="math" data-index="248" data-tex="\(N\log(1+CM)\le N&#x27;\log M\)">\(N\log(1+CM)\le N&#x27;\log M\)</span>. Integrating VS8 over that support therefore proves</p>
+<span class="math math-display" id="eq-VS10" data-index="249" data-tex="\[
+|\partial^\alpha\ell_t(\xi,\eta)|
+\le D_\alpha M^{-|\alpha|}\log M,\qquad |\alpha|\ge1.
+\tag{VS10}
+\]">\[
+|\partial^\alpha\ell_t(\xi,\eta)|
+\le D_\alpha M^{-|\alpha|}\log M,\qquad |\alpha|\ge1.
+\tag{VS10}
+\]</span>
+<p>The derivative estimate is for positive order. A zero-order bound independent of <span class="math" data-index="250" data-tex="\(\xi\)">\(\xi\)</span> would be false for a nonconstant polynomially growing weight; its correct zero-order comparison is VS5.</p>
+<h2 id="vs2-the-radial-correction-and-the-factor-1-18">VS2. The radial correction and the factor <span class="math" data-index="251" data-tex="\(1/18\)">\(1/18\)</span></h2>
+<p>Use <span class="math" data-index="252" data-tex="\(z=\xi+i\eta\)">\(z=\xi+i\eta\)</span>, <span class="math" data-index="253" data-tex="\(\partial_{z_j}=(\partial_{\xi_j}-i\partial_{\eta_j})/2\)">\(\partial_{z_j}=(\partial_{\xi_j}-i\partial_{\eta_j})/2\)</span>. Set</p>
+<span class="math math-display" id="eq-VS11" data-index="254" data-tex="\[
+p_t(\eta)=t^{-1/2}M(\eta,t)-M(\eta,t)^{1/2},\qquad
+\psi_t(z)=-\ell_t(\xi,\eta)+p_t(\eta).
+\tag{VS11}
+\]">\[
+p_t(\eta)=t^{-1/2}M(\eta,t)-M(\eta,t)^{1/2},\qquad
+\psi_t(z)=-\ell_t(\xi,\eta)+p_t(\eta).
+\tag{VS11}
+\]</span>
+<p>For all sufficiently large <span class="math" data-index="255" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" id="eq-VS12" data-index="256" data-tex="\[
+\sum_{j,l}w_j\overline w_l
+       \partial_{z_j}\partial_{\overline z_l}\psi_t(z)
+\ge\frac1{18}M(\eta,t)^{-3/2}|w|^2
+\quad(w\in\mathbb C^n).
+\tag{VS12}
+\]">\[
+\sum_{j,l}w_j\overline w_l
+       \partial_{z_j}\partial_{\overline z_l}\psi_t(z)
+\ge\frac1{18}M(\eta,t)^{-3/2}|w|^2
+\quad(w\in\mathbb C^n).
+\tag{VS12}
+\]</span>
+<p>To compute the correction exactly, let <span class="math" data-index="257" data-tex="\(s=t^2+|\eta|^2=M^2\)">\(s=t^2+|\eta|^2=M^2\)</span> and</p>
+<span class="math math-display" id="eq-VS13" data-index="258" data-tex="\[
+f(s)=t^{-1/2}s^{1/2}-s^{1/4}.
+\tag{VS13}
+\]">\[
+f(s)=t^{-1/2}s^{1/2}-s^{1/4}.
+\tag{VS13}
+\]</span>
+<p>Differentiation gives</p>
+<span class="math math-display" id="eq-VS14" data-index="259" data-tex="\[
+f&#x27;(s)=\tfrac12t^{-1/2}s^{-1/2}-\tfrac14s^{-3/4},
+\qquad
+f&#x27;&#x27;(s)=-\tfrac14t^{-1/2}s^{-3/2}+\tfrac3{16}s^{-7/4}.
+\tag{VS14}
+\]">\[
+f&#x27;(s)=\tfrac12t^{-1/2}s^{-1/2}-\tfrac14s^{-3/4},
+\qquad
+f&#x27;&#x27;(s)=-\tfrac14t^{-1/2}s^{-3/2}+\tfrac3{16}s^{-7/4}.
+\tag{VS14}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="eq-VS15" data-index="260" data-tex="\[
+f&#x27;(s)+2sf&#x27;&#x27;(s)=\tfrac18s^{-3/4},
+\qquad f&#x27;(s)\ge\tfrac14s^{-3/4}\quad(s\ge t^2).
+\tag{VS15}
+\]">\[
+f&#x27;(s)+2sf&#x27;&#x27;(s)=\tfrac18s^{-3/4},
+\qquad f&#x27;(s)\ge\tfrac14s^{-3/4}\quad(s\ge t^2).
+\tag{VS15}
+\]</span>
+<p>The last inequality uses <span class="math" data-index="261" data-tex="\(t^{-1/2}s^{1/4}\ge1\)">\(t^{-1/2}s^{1/4}\ge1\)</span>. Because <span class="math" data-index="262" data-tex="\(p_t=f(t^2+|\eta|^2)\)">\(p_t=f(t^2+|\eta|^2)\)</span> is independent of <span class="math" data-index="263" data-tex="\(\xi\)">\(\xi\)</span>, its complex Levi form is one quarter of its real <span class="math" data-index="264" data-tex="\(\eta\)">\(\eta\)</span>-Hessian:</p>
+<span class="math math-display" id="eq-VS16" data-index="265" data-tex="\[
+\mathcal L_{p_t}(w)=
+\tfrac12 f&#x27;(s)|w|^2+f&#x27;&#x27;(s)\left|\sum_j\eta_jw_j\right|^2.
+\tag{VS16}
+\]">\[
+\mathcal L_{p_t}(w)=
+\tfrac12 f&#x27;(s)|w|^2+f&#x27;&#x27;(s)\left|\sum_j\eta_jw_j\right|^2.
+\tag{VS16}
+\]</span>
+<p>If <span class="math" data-index="266" data-tex="\(f&#x27;&#x27;\ge0\)">\(f&#x27;&#x27;\ge0\)</span>, VS15 gives a lower bound <span class="math" data-index="267" data-tex="\(s^{-3/4}|w|^2/8\)">\(s^{-3/4}|w|^2/8\)</span>. If <span class="math" data-index="268" data-tex="\(f&#x27;&#x27;&lt;0\)">\(f&#x27;&#x27;&lt;0\)</span>, Cauchy–Schwarz gives</p>
+<span class="math math-display" id="eq-VS17" data-index="269" data-tex="\[
+\mathcal L_{p_t}(w)\ge
+[\tfrac12 f&#x27;(s)+sf&#x27;&#x27;(s)]|w|^2
+=\tfrac1{16}s^{-3/4}|w|^2.
+\tag{VS17}
+\]">\[
+\mathcal L_{p_t}(w)\ge
+[\tfrac12 f&#x27;(s)+sf&#x27;&#x27;(s)]|w|^2
+=\tfrac1{16}s^{-3/4}|w|^2.
+\tag{VS17}
+\]</span>
+<p>In the negative case replacing <span class="math" data-index="270" data-tex="\(|\eta|^2\)">\(|\eta|^2\)</span> by <span class="math" data-index="271" data-tex="\(s\)">\(s\)</span> decreases the lower bound, so the inequality direction is correct. Thus the <span class="math" data-index="272" data-tex="\(1/16\)">\(1/16\)</span> lower bound holds in both cases.</p>
+<p>Every real second derivative of <span class="math" data-index="273" data-tex="\(\ell_t\)">\(\ell_t\)</span> is bounded by VS10. Expanding each complex second derivative into four real ones and using
+<span class="math" data-index="274" data-tex="\((\sum|w_j|)^2\le n|w|^2\)">\((\sum|w_j|)^2\le n|w|^2\)</span> gives a constant <span class="math" data-index="275" data-tex="\(D\)">\(D\)</span>, independent of <span class="math" data-index="276" data-tex="\(t\)">\(t\)</span>, such that</p>
+<span class="math math-display" id="eq-VS18" data-index="277" data-tex="\[
+|\mathcal L_{\ell_t}(w)|
+\le D M^{-2}\log M\,|w|^2.
+\tag{VS18}
+\]">\[
+|\mathcal L_{\ell_t}(w)|
+\le D M^{-2}\log M\,|w|^2.
+\tag{VS18}
+\]</span>
+<p>Choose <span class="math" data-index="278" data-tex="\(t\ge e^2\)">\(t\ge e^2\)</span> large enough that</p>
+<span class="math math-display" id="eq-VS19" data-index="279" data-tex="\[
+D\frac{\log t}{\sqrt t}\le\frac1{144}.
+\tag{VS19}
+\]">\[
+D\frac{\log t}{\sqrt t}\le\frac1{144}.
+\tag{VS19}
+\]</span>
+<p>The function <span class="math" data-index="280" data-tex="\((\log r)/\sqrt r\)">\((\log r)/\sqrt r\)</span> decreases for <span class="math" data-index="281" data-tex="\(r\ge e^2\)">\(r\ge e^2\)</span>; since <span class="math" data-index="282" data-tex="\(M\ge t\)">\(M\ge t\)</span>, the same bound holds with <span class="math" data-index="283" data-tex="\(M\)">\(M\)</span> in place of <span class="math" data-index="284" data-tex="\(t\)">\(t\)</span>. Therefore VS17–VS18 yield</p>
+<span class="math math-display" id="eq-VS20" data-index="285" data-tex="\[
+\mathcal L_{\psi_t}(w)\ge
+\left(\frac1{16}-\frac1{144}\right)M^{-3/2}|w|^2
+=\frac1{18}M^{-3/2}|w|^2.
+\tag{VS20}
+\]">\[
+\mathcal L_{\psi_t}(w)\ge
+\left(\frac1{16}-\frac1{144}\right)M^{-3/2}|w|^2
+=\frac1{18}M^{-3/2}|w|^2.
+\tag{VS20}
+\]</span>
+<p>This proves VS12 and strict plurisubharmonicity in every complex direction. It proves the factor <span class="math" data-index="286" data-tex="\(1/18\)">\(1/18\)</span>, not merely an unspecified positive constant. VS4, VS6 and VS10 are the three regularization estimates used in the source lemma. No convolution of <span class="math" data-index="287" data-tex="\(k\)">\(k\)</span> itself, evenness assumption, or derivative of the unsmoothed logarithm has been substituted.</p>
+<figure><img class="course-figure" width="2484" height="1007" src="reproduce/L149/figures/curvature-and-stabilized-maxima.png" alt="Exact correction curvature and a stabilized finite maximum." /><figcaption class="native"><a href="reproduce/L149/figures/curvature-and-stabilized-maxima.png">Open full-size PNG</a> · <a href="reproduce/L149/figures/curvature-and-stabilized-maxima.svg">Open SVG</a></figcaption></figure>
+<p>The left panel shows the exact normalized radial correction and the margin used in VS20. The right panel shows three nested-support seeds with the learner example's parameters and an analytically stabilized strip. The final weight is constructed by continuing the exhaustion below.</p>
+<h2 id="pw1-compact-support-stages-and-their-topology">PW1. Compact-support stages and their topology</h2>
+<p>Use the negative-exponential Fourier transform and bilinear pairing in <a href="AN02-L148.html">the complex-estimate lesson</a>. Write <span class="math" data-index="288" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span> with the squared norm <span class="math" data-index="289" data-tex="\((2\pi)^{-n}\int k^2|\widehat u|^2\)">\((2\pi)^{-n}\int k^2|\widehat u|^2\)</span>. Let <span class="math" data-index="290" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be nonempty, open and convex.</p>
+<p>Choose nonempty compact convex sets <span class="math" data-index="291" data-tex="\(K_j\Subset X\)">\(K_j\Subset X\)</span>, with <span class="math" data-index="292" data-tex="\(K_j\subset\operatorname{int}K_{j+1}\)">\(K_j\subset\operatorname{int}K_{j+1}\)</span>, whose interiors cover <span class="math" data-index="293" data-tex="\(X\)">\(X\)</span>. Such a sequence exists explicitly. Fix <span class="math" data-index="294" data-tex="\(x_0\in X\)">\(x_0\in X\)</span>. For all sufficiently large integers <span class="math" data-index="295" data-tex="\(m\)">\(m\)</span>, the sets</p>
+<span class="math math-display" id="eq-PW1" data-index="296" data-tex="\[
+K(m)=\{x:|x-x_0|\le m,\ 
+               \operatorname{dist}(x,\mathbb R^n\setminus X)\ge1/m\}
+\tag{PW1}
+\]">\[
+K(m)=\{x:|x-x_0|\le m,\ 
+               \operatorname{dist}(x,\mathbb R^n\setminus X)\ge1/m\}
+\tag{PW1}
+\]</span>
+<p>are nonempty, closed, bounded and convex. The distance condition is convex because it says <span class="math" data-index="297" data-tex="\(x+B(0,1/m)\subset X\)">\(x+B(0,1/m)\subset X\)</span>; convex combinations preserve these ball inclusions. The distance function is continuous, proving closedness. If <span class="math" data-index="298" data-tex="\(X=\mathbb R^n\)">\(X=\mathbb R^n\)</span>, interpret the distance as infinite and use the closed balls. Increasing <span class="math" data-index="299" data-tex="\(m\)">\(m\)</span> strictly increases both margins, so <span class="math" data-index="300" data-tex="\(K(m)\subset\operatorname{int}K(m+1)\)">\(K(m)\subset\operatorname{int}K(m+1)\)</span>. These sets cover <span class="math" data-index="301" data-tex="\(X\)">\(X\)</span>; reindexing them supplies the sequence.</p>
+<p>Set</p>
+<span class="math math-display" id="eq-PW2" data-index="302" data-tex="\[
+E_j=\mathcal E&#x27;(K_j)\cap B_{2,k},\qquad
+E=\bigcup_jE_j=\mathcal B_{2,k}^{\,c}(X).
+\tag{PW2}
+\]">\[
+E_j=\mathcal E&#x27;(K_j)\cap B_{2,k},\qquad
+E=\bigcup_jE_j=\mathcal B_{2,k}^{\,c}(X).
+\tag{PW2}
+\]</span>
+<p>Each <span class="math" data-index="303" data-tex="\(E_j\)">\(E_j\)</span>, with the inherited weighted norm, is Banach. A norm limit converges in <span class="math" data-index="304" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> by the weighted inclusion proved in CF1. Testing outside <span class="math" data-index="305" data-tex="\(K_j\)">\(K_j\)</span> shows that the limiting support remains in <span class="math" data-index="306" data-tex="\(K_j\)">\(K_j\)</span>; hence <span class="math" data-index="307" data-tex="\(E_j\)">\(E_j\)</span> is a closed subspace of the weighted Hilbert space.</p>
+<p>Give <span class="math" data-index="308" data-tex="\(E\)">\(E\)</span> the finest locally convex topology making all inclusions <span class="math" data-index="309" data-tex="\(E_j\to E\)">\(E_j\to E\)</span> continuous. Concretely it is generated by all seminorms whose restrictions to every <span class="math" data-index="310" data-tex="\(E_j\)">\(E_j\)</span> are norm-continuous. This description makes the inclusions continuous, and any locally convex topology with that property has only such continuous seminorms, proving the stated maximal property. Consequently a seminorm <span class="math" data-index="311" data-tex="\(q\)">\(q\)</span> on <span class="math" data-index="312" data-tex="\(E\)">\(E\)</span> is continuous exactly when</p>
+<span class="math math-display" id="eq-PW3" data-index="313" data-tex="\[
+q(u)\le Q_j\|u\|_{2,k}\quad(u\in E_j)
+\tag{PW3}
+\]">\[
+q(u)\le Q_j\|u\|_{2,k}\quad(u\in E_j)
+\tag{PW3}
+\]</span>
+<p>for a finite constant on each stage. Necessity is continuity of the restriction and homogeneity; sufficiency is the displayed description of the topology. Cofinality of the compact exhaustion shows that using all compact support sets instead gives the same topology.</p>
+<p>The locally finite partition description of this topology can also be proved explicitly. Choose <span class="math" data-index="314" data-tex="\(0\le\theta_j\le1\)">\(0\le\theta_j\le1\)</span>, smooth, supported in <span class="math" data-index="315" data-tex="\(\operatorname{int}K_{j+1}\)">\(\operatorname{int}K_{j+1}\)</span>, and equal to one near <span class="math" data-index="316" data-tex="\(K_j\)">\(K_j\)</span>. Put <span class="math" data-index="317" data-tex="\(\chi_1=\theta_1\)">\(\chi_1=\theta_1\)</span> and
+<span class="math" data-index="318" data-tex="\(\chi_j=\theta_j\prod_{l&lt;j}(1-\theta_l)\)">\(\chi_j=\theta_j\prod_{l&lt;j}(1-\theta_l)\)</span> for <span class="math" data-index="319" data-tex="\(j\ge2\)">\(j\ge2\)</span>. The partial sum is <span class="math" data-index="320" data-tex="\(1-\prod_{l\le j}(1-\theta_l)\)">\(1-\prod_{l\le j}(1-\theta_l)\)</span>. Every compact subset lies in a region where some <span class="math" data-index="321" data-tex="\(\theta_J=1\)">\(\theta_J=1\)</span>, so all later <span class="math" data-index="322" data-tex="\(\chi_j\)">\(\chi_j\)</span> vanish on a neighborhood of it. Thus this is a locally finite smooth compact-support partition of unity on <span class="math" data-index="323" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For any such partition and positive constants <span class="math" data-index="324" data-tex="\(a_j\)">\(a_j\)</span>, the seminorm</p>
+<span class="math math-display" id="eq-PW3a" data-index="325" data-tex="\[
+Q_a(u)=\sum_j a_j\|\chi_j u\|_{2,k}
+\tag{PW3a}
+\]">\[
+Q_a(u)=\sum_j a_j\|\chi_j u\|_{2,k}
+\tag{PW3a}
+\]</span>
+<p>is finite on every compact test. On <span class="math" data-index="326" data-tex="\(E_i\)">\(E_i\)</span> only finitely many supports meet <span class="math" data-index="327" data-tex="\(K_i\)">\(K_i\)</span>, and the multiplier bound CF6 proves <span class="math" data-index="328" data-tex="\(Q_a(u)\le D_i\|u\|_{2,k}\)">\(Q_a(u)\le D_i\|u\|_{2,k}\)</span>, hence continuity by PW3. Conversely, for a continuous <span class="math" data-index="329" data-tex="\(q\)">\(q\)</span>, choose a compact stage containing each <span class="math" data-index="330" data-tex="\(\operatorname{supp}\chi_j\)">\(\operatorname{supp}\chi_j\)</span>, and choose <span class="math" data-index="331" data-tex="\(a_j&gt;0\)">\(a_j&gt;0\)</span> at least its PW3 constant. The finite partition identity on the support of <span class="math" data-index="332" data-tex="\(u\)">\(u\)</span> and the seminorm triangle inequality give <span class="math" data-index="333" data-tex="\(q(u)\le Q_a(u)\)">\(q(u)\le Q_a(u)\)</span>. These partition seminorms therefore generate the same inductive topology. This supplies the full partition argument in the source's introductory passage.</p>
+<h2 id="pw2-the-exact-four-condition-theorem">PW2. The exact four-condition theorem</h2>
+<p><strong>Theorem PW2.</strong> For every continuous seminorm <span class="math" data-index="334" data-tex="\(q\)">\(q\)</span> on <span class="math" data-index="335" data-tex="\(E\)">\(E\)</span>, there is a finite real, locally Lipschitz function <span class="math" data-index="336" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-index="337" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> such that</p>
+<span class="math math-display" id="eq-PW4" data-index="338" data-tex="\[
+q(u)\le P_\phi(u):=
+\left(\int_{\mathbb C^n}|F_u(z)|^2e^{-2\phi(z)}\,dV(z)\right)^{1/2}
+\quad(u\in E),
+\tag{PW4}
+\]">\[
+q(u)\le P_\phi(u):=
+\left(\int_{\mathbb C^n}|F_u(z)|^2e^{-2\phi(z)}\,dV(z)\right)^{1/2}
+\quad(u\in E),
+\tag{PW4}
+\]</span>
+<p>and all four following conditions hold:</p>
+<ol>
+<li>For every nonempty compact convex <span class="math" data-index="339" data-tex="\(K\Subset X\)">\(K\Subset X\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-PW5" data-index="340" data-tex="\[
+e^{-\phi(\xi+i\eta)}\le C_K e^{-H_K(\eta)}k(\xi).
+\tag{PW5}
+\]">\[
+e^{-\phi(\xi+i\eta)}\le C_K e^{-H_K(\eta)}k(\xi).
+\tag{PW5}
+\]</span>
+<ol start="2">
+<li>For every <span class="math" data-index="341" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-PW6" data-index="342" data-tex="\[
+k(\xi)\le C_A e^{-\phi(\xi+i\eta)}\quad(|\eta|&lt;A).
+\tag{PW6}
+\]">\[
+k(\xi)\le C_A e^{-\phi(\xi+i\eta)}\quad(|\eta|&lt;A).
+\tag{PW6}
+\]</span>
+<ol start="3">
+<li>For a single constant <span class="math" data-index="343" data-tex="\(C_0\)">\(C_0\)</span>,</li>
+</ol>
+<span class="math math-display" id="eq-PW7" data-index="344" data-tex="\[
+|\nabla\phi(\xi+i\eta)|\le C_0+\log(1+|\eta|)
+\quad\text{almost everywhere}.
+\tag{PW7}
+\]">\[
+|\nabla\phi(\xi+i\eta)|\le C_0+\log(1+|\eta|)
+\quad\text{almost everywhere}.
+\tag{PW7}
+\]</span>
+<ol start="4">
+<li>For a single <span class="math" data-index="345" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, its complex Hessian satisfies</li>
+</ol>
+<span class="math math-display" id="eq-PW8" data-index="346" data-tex="\[
+\mathcal L_\phi(w)\ge c(1+|\eta|^2)^{-3/4}|w|^2
+\quad(w\in\mathbb C^n)
+\tag{PW8}
+\]">\[
+\mathcal L_\phi(w)\ge c(1+|\eta|^2)^{-3/4}|w|^2
+\quad(w\in\mathbb C^n)
+\tag{PW8}
+\]</span>
+<p>in the distribution sense. In particular <span class="math" data-index="347" data-tex="\(\phi\)">\(\phi\)</span> is plurisubharmonic.</p>
+<p>Moreover <span class="math" data-index="348" data-tex="\(P_\phi\)">\(P_\phi\)</span> is finite and continuous on <span class="math" data-index="349" data-tex="\(E\)">\(E\)</span>. Its restriction to each fixed compact-support stage is equivalent to the weighted real norm. We prove the construction and all of these conclusions.</p>
+<h2 id="pw3-supporting-function-seeds">PW3. Supporting-function seeds</h2>
+<p>Choose <span class="math" data-index="350" data-tex="\(t_j\ge2\)">\(t_j\ge2\)</span> large enough for VS12 and so that</p>
+<span class="math math-display" id="eq-PW9" data-index="351" data-tex="\[
+2t_j^{-1/2}&lt;\operatorname{dist}
+       (K_j,\mathbb R^n\setminus\operatorname{int}K_{j+1}).
+\tag{PW9}
+\]">\[
+2t_j^{-1/2}&lt;\operatorname{dist}
+       (K_j,\mathbb R^n\setminus\operatorname{int}K_{j+1}).
+\tag{PW9}
+\]</span>
+<p>The distance is positive by compactness and strict interior inclusion. We may increase the <span class="math" data-index="352" data-tex="\(t_j\)">\(t_j\)</span> so they are nondecreasing. Put</p>
+<span class="math math-display" id="eq-PW10" data-index="353" data-tex="\[
+\psi_j(\xi+i\eta)=H_{K_j}(\eta)-\ell_{t_j}(\xi,\eta)
+                    +p_{t_j}(\eta).
+\tag{PW10}
+\]">\[
+\psi_j(\xi+i\eta)=H_{K_j}(\eta)-\ell_{t_j}(\xi,\eta)
+                    +p_{t_j}(\eta).
+\tag{PW10}
+\]</span>
+<p>The supporting function is convex and has Lipschitz constant
+<span class="math" data-index="354" data-tex="\(R_j=\sup_{x\in K_j}|x|\)">\(R_j=\sup_{x\in K_j}|x|\)</span>. As a function of <span class="math" data-index="355" data-tex="\(\eta\)">\(\eta\)</span> alone it has nonnegative distributional complex Hessian: smooth it by nonnegative real convolutions, which preserve convexity, and use the positive real Hessian of each smooth convex function divided by four. Local uniform convergence passes this positivity to its distributional derivatives. Thus VS12 gives</p>
+<span class="math math-display" id="eq-PW11" data-index="356" data-tex="\[
+\mathcal L_{\psi_j}(w)\ge
+\tfrac1{18}(t_j^2+|\eta|^2)^{-3/4}|w|^2.
+\tag{PW11}
+\]">\[
+\mathcal L_{\psi_j}(w)\ge
+\tfrac1{18}(t_j^2+|\eta|^2)^{-3/4}|w|^2.
+\tag{PW11}
+\]</span>
+<p>These seeds are locally Lipschitz. VS10 bounds the gradient of their smooth logarithmic part by <span class="math" data-index="357" data-tex="\(D\log M/M\)">\(D\log M/M\)</span>, uniformly in <span class="math" data-index="358" data-tex="\(\xi\)">\(\xi\)</span>; differentiating <span class="math" data-index="359" data-tex="\(p_t\)">\(p_t\)</span> bounds its gradient by <span class="math" data-index="360" data-tex="\(t^{-1/2}\)">\(t^{-1/2}\)</span>. Therefore each seed has a finite global Lipschitz constant <span class="math" data-index="361" data-tex="\(L_j\)">\(L_j\)</span>.</p>
+<p>For every fixed strip, <span class="math" data-index="362" data-tex="\(\psi_j+\log k\)">\(\psi_j+\log k\)</span> has uniform upper and lower bounds, independent of <span class="math" data-index="363" data-tex="\(\xi\)">\(\xi\)</span>, by VS5 and the boundedness of <span class="math" data-index="364" data-tex="\(H_{K_j}\)">\(H_{K_j}\)</span> and <span class="math" data-index="365" data-tex="\(p_{t_j}\)">\(p_{t_j}\)</span> on that strip. It also has a global lower bound: the scalar expression</p>
+<span class="math math-display" id="eq-PW12" data-index="366" data-tex="\[
+t_j^{-1/2}M-M^{1/2}-N&#x27;\log M,\qquad M\ge t_j,
+\tag{PW12}
+\]">\[
+t_j^{-1/2}M-M^{1/2}-N&#x27;\log M,\qquad M\ge t_j,
+\tag{PW12}
+\]</span>
+<p>is bounded below, because it is continuous and tends to infinity. Hence
+<span class="math" data-index="367" data-tex="\(\psi_j\ge H_{K_j}-\log k-D_j\)">\(\psi_j\ge H_{K_j}-\log k-D_j\)</span>.</p>
+<p>There is also a useful global upper bound. VS5 gives</p>
+<span class="math math-display" id="eq-PW13" data-index="368" data-tex="\[
+\psi_j\le H_{K_j}(\eta)-\log k(\xi)
+               +2t_j^{-1/2}|\eta|+D&#x27;_j
+\le H_{K_{j+1}}(\eta)-\log k(\xi)+D&#x27;_j.
+\tag{PW13}
+\]">\[
+\psi_j\le H_{K_j}(\eta)-\log k(\xi)
+               +2t_j^{-1/2}|\eta|+D&#x27;_j
+\le H_{K_{j+1}}(\eta)-\log k(\xi)+D&#x27;_j.
+\tag{PW13}
+\]</span>
+<p>For the first inequality use <span class="math" data-index="369" data-tex="\(M\le t_j+|\eta|\)">\(M\le t_j+|\eta|\)</span> and the fact that
+<span class="math" data-index="370" data-tex="\(N&#x27;\log M-\sqrt M\)">\(N&#x27;\log M-\sqrt M\)</span> is bounded above on <span class="math" data-index="371" data-tex="\([t_j,\infty)\)">\([t_j,\infty)\)</span>. This even gives the smaller coefficient <span class="math" data-index="372" data-tex="\(t_j^{-1/2}\)">\(t_j^{-1/2}\)</span>; the written coefficient two is convenient for PW9. The second inequality follows from
+<span class="math" data-index="373" data-tex="\(K_j+2t_j^{-1/2}\overline B\subset K_{j+1}\)">\(K_j+2t_j^{-1/2}\overline B\subset K_{j+1}\)</span>.</p>
+<h2 id="pw4-a-maximum-preserves-the-variable-hessian-lower-bound">PW4. A maximum preserves the variable Hessian lower bound</h2>
+<p>We will use the following local fact. If finite locally Lipschitz functions <span class="math" data-index="374" data-tex="\(f,g\)">\(f,g\)</span> both satisfy
+<span class="math" data-index="375" data-tex="\(\mathcal L_f,\mathcal L_g\ge a(z)I\)">\(\mathcal L_f,\mathcal L_g\ge a(z)I\)</span> on an open set, where <span class="math" data-index="376" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> is continuous, then their maximum does too.</p>
+<p>On a ball <span class="math" data-index="377" data-tex="\(B\)">\(B\)</span> take <span class="math" data-index="378" data-tex="\(b=\inf_B a\)">\(b=\inf_B a\)</span>. The functions
+<span class="math" data-index="379" data-tex="\(f-b|z|^2\)">\(f-b|z|^2\)</span> and <span class="math" data-index="380" data-tex="\(g-b|z|^2\)">\(g-b|z|^2\)</span> have nonnegative distributional complex Hessian. Smoothing shows that such a continuous function is plurisubharmonic: the smoothed Hessian is positive on interior balls, giving the line submean inequality, and local uniform convergence passes that inequality to the function. The maximum of two finite plurisubharmonic functions is plurisubharmonic: choose a function attaining the maximum at the center of each line circle, apply its submean, then bound it by the maximum on the circle. This maximum is continuous. Smoothing it now shows its complex Hessian is positive distributionally. Thus</p>
+<span class="math math-display" id="eq-PW14" data-index="381" data-tex="\[
+\mathcal L_{\max(f,g)}\ge bI\quad\text{on }B.
+\tag{PW14}
+\]">\[
+\mathcal L_{\max(f,g)}\ge bI\quad\text{on }B.
+\tag{PW14}
+\]</span>
+<p>To recover the variable <span class="math" data-index="382" data-tex="\(a\)">\(a\)</span>, let a nonnegative smooth test have compact support. Cover that support by finitely many sufficiently small balls on which the oscillation of <span class="math" data-index="383" data-tex="\(a\)">\(a\)</span> is below <span class="math" data-index="384" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and split the test with a smooth nonnegative partition of unity. Apply PW14 to each summand in any fixed complex direction <span class="math" data-index="385" data-tex="\(w\)">\(w\)</span>. Their sum gives the lower bound <span class="math" data-index="386" data-tex="\((a-\varepsilon)|w|^2\)">\((a-\varepsilon)|w|^2\)</span> against the original test. Let <span class="math" data-index="387" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This proves the claim. Finite maxima also preserve a common local Lipschitz bound, by the elementary inequality
+<span class="math" data-index="388" data-tex="\(|\max f_j(x)-\max f_j(y)|\le\max_j|f_j(x)-f_j(y)|\)">\(|\max f_j(x)-\max f_j(y)|\le\max_j|f_j(x)-f_j(y)|\)</span>.
+In particular, interpret gradients in the weak sense. If all their almost-everywhere gradient bounds are the same continuous function <span class="math" data-index="389" data-tex="\(G(z)\)">\(G(z)\)</span>, smooth them on an interior ball. Their smooth gradients are bounded by the supremum of <span class="math" data-index="390" data-tex="\(G\)">\(G\)</span> on a slightly larger ball; passing to the uniform limit gives that common Lipschitz constant there. The maximum has the same bound. A Lipschitz constant <span class="math" data-index="391" data-tex="\(L\)">\(L\)</span> gives weak directional derivatives bounded by <span class="math" data-index="392" data-tex="\(L\)">\(L\)</span>: bounded difference quotients, tested against a compact smooth function and passed to the distributional limit, give a functional bounded by <span class="math" data-index="393" data-tex="\(L\)">\(L\)</span> times its <span class="math" data-index="394" data-tex="\(L^1\)">\(L^1\)</span> norm. The complete <span class="math" data-index="395" data-tex="\(L^1\)">\(L^1\)</span> duality in L043 represents it by an <span class="math" data-index="396" data-tex="\(L^\infty\)">\(L^\infty\)</span> function. Testing a countable dense set of real unit directions shows that the norm of the weak gradient is at most <span class="math" data-index="397" data-tex="\(L\)">\(L\)</span> almost everywhere. Apply this on shrinking balls from a countable base; continuity of <span class="math" data-index="398" data-tex="\(G\)">\(G\)</span> gives <span class="math" data-index="399" data-tex="\(|\nabla\max f_j|\le G\)">\(|\nabla\max f_j|\le G\)</span> almost everywhere. Thus the variable gradient bound used below is preserved without assuming pointwise differentiability on a prescribed exceptional set.</p>
+<h2 id="pw5-vertical-constants-and-local-stabilization">PW5. Vertical constants and local stabilization</h2>
+<p>Set</p>
+<span class="math math-display" id="eq-PW15" data-index="400" data-tex="\[
+\phi_j=\max_{1\le l\le j}(\psi_l-G_l),\qquad
+\alpha_j=\frac j{j+1}.
+\tag{PW15}
+\]">\[
+\phi_j=\max_{1\le l\le j}(\psi_l-G_l),\qquad
+\alpha_j=\frac j{j+1}.
+\tag{PW15}
+\]</span>
+<p>We will choose increasing <span class="math" data-index="401" data-tex="\(G_j\to\infty\)">\(G_j\to\infty\)</span> and increasing <span class="math" data-index="402" data-tex="\(A_j\to\infty\)">\(A_j\to\infty\)</span> so that</p>
+<span class="math math-display" id="eq-PW16" data-index="403" data-tex="\[
+\phi_{j+1}=\phi_j\quad(|\eta|&lt;A_j),
+\qquad
+q(u)\le\alpha_j
+\left(\int_{|\eta|&lt;A_j}|F_u(\xi+i\eta)|^2e^{-2\phi_j}\,d\xi d\eta\right)^{1/2}
+\quad(u\in E_{j+3}).
+\tag{PW16}
+\]">\[
+\phi_{j+1}=\phi_j\quad(|\eta|&lt;A_j),
+\qquad
+q(u)\le\alpha_j
+\left(\int_{|\eta|&lt;A_j}|F_u(\xi+i\eta)|^2e^{-2\phi_j}\,d\xi d\eta\right)^{1/2}
+\quad(u\in E_{j+3}).
+\tag{PW16}
+\]</span>
+<p>Call the square-root integral <span class="math" data-index="404" data-tex="\(P_j(u)\)">\(P_j(u)\)</span>.</p>
+<p>The curvature and gradient choices can be made independently of <span class="math" data-index="405" data-tex="\(G_j\)">\(G_j\)</span>. The first seed obeys PW7 globally for a finite <span class="math" data-index="406" data-tex="\(C_0\)">\(C_0\)</span>, and
+<span class="math" data-index="407" data-tex="\(\mathcal L_{\psi_1}\ge c(1+|\eta|^2)^{-3/4}I\)">\(\mathcal L_{\psi_1}\ge c(1+|\eta|^2)^{-3/4}I\)</span> with</p>
+<span class="math math-display" id="eq-PW17" data-index="408" data-tex="\[
+c=\tfrac1{18}\min(t_1^{-3/2},2^{-3/4}).
+\tag{PW17}
+\]">\[
+c=\tfrac1{18}\min(t_1^{-3/2},2^{-3/4}).
+\tag{PW17}
+\]</span>
+<p>For <span class="math" data-index="409" data-tex="\(j\ge2\)">\(j\ge2\)</span>, choose increasing <span class="math" data-index="410" data-tex="\(B_j\ge\max(t_j,j)\)">\(B_j\ge\max(t_j,j)\)</span> so large that
+<span class="math" data-index="411" data-tex="\(|\nabla\psi_j|\le\log(1+|\eta|)\)">\(|\nabla\psi_j|\le\log(1+|\eta|)\)</span> for <span class="math" data-index="412" data-tex="\(|\eta|&gt;B_j\)">\(|\eta|&gt;B_j\)</span>. This follows already from its finite <span class="math" data-index="413" data-tex="\(L_j\)">\(L_j\)</span>. On that region PW11 and
+<span class="math" data-index="414" data-tex="\(t_j^2+|\eta|^2\le2|\eta|^2\le2(1+|\eta|^2)\)">\(t_j^2+|\eta|^2\le2|\eta|^2\le2(1+|\eta|^2)\)</span>
+give the curvature bound with the same <span class="math" data-index="415" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Choose <span class="math" data-index="416" data-tex="\(G_j\)">\(G_j\)</span> large enough that</p>
+<span class="math math-display" id="eq-PW18" data-index="417" data-tex="\[
+\psi_j-G_j&lt;\psi_1-G_1
+\quad\text{for }|\eta|\le B_j+1.
+\tag{PW18}
+\]">\[
+\psi_j-G_j&lt;\psi_1-G_1
+\quad\text{for }|\eta|\le B_j+1.
+\tag{PW18}
+\]</span>
+<p>This is possible uniformly in <span class="math" data-index="418" data-tex="\(\xi\)">\(\xi\)</span>, by the strip comparisons in PW3. When <span class="math" data-index="419" data-tex="\(G_1,\ldots,G_{j-1},A_{j-1}\)">\(G_1,\ldots,G_{j-1},A_{j-1}\)</span> have been chosen, require the same strict inequality also on <span class="math" data-index="420" data-tex="\(|\eta|\le A_{j-1}\)">\(|\eta|\le A_{j-1}\)</span>, and require <span class="math" data-index="421" data-tex="\(G_j\ge G_{j-1}+1\)">\(G_j\ge G_{j-1}+1\)</span>. Thus the new branch is inactive on that strip, proving the first condition of PW16. Where it may be active, <span class="math" data-index="422" data-tex="\(|\eta|&gt;B_j\)">\(|\eta|&gt;B_j\)</span>, both the preceding maximum and the new branch have the common curvature and gradient bounds. PW4, applied on this open region, preserves curvature; the common Lipschitz bound preserves the gradient inequality. On <span class="math" data-index="423" data-tex="\(|\eta|&lt;B_j+1\)">\(|\eta|&lt;B_j+1\)</span> the maximum is unchanged. The two open regions cover the whole space. Induction proves PW7–PW8 uniformly for every <span class="math" data-index="424" data-tex="\(\phi_j\)">\(\phi_j\)</span>.</p>
+<p>For any fixed strip, all sufficiently late branches are inactive there because <span class="math" data-index="425" data-tex="\(B_j\to\infty\)">\(B_j\to\infty\)</span>. Hence <span class="math" data-index="426" data-tex="\(\phi_j\)">\(\phi_j\)</span> stabilizes there to a finite maximum, uniformly in <span class="math" data-index="427" data-tex="\(\xi\)">\(\xi\)</span>. Its pointwise increasing limit <span class="math" data-index="428" data-tex="\(\phi\)">\(\phi\)</span> is therefore finite and locally Lipschitz, with the same gradient and distributional curvature bounds. After the <span class="math" data-index="429" data-tex="\(A_j\)">\(A_j\)</span> are chosen below, the first part of PW16 gives the stronger exact identity</p>
+<span class="math math-display" id="eq-PW19" data-index="430" data-tex="\[
+\phi=\phi_j\quad(|\eta|&lt;A_j).
+\tag{PW19}
+\]">\[
+\phi=\phi_j\quad(|\eta|&lt;A_j).
+\tag{PW19}
+\]</span>
+<h2 id="pw6-the-initial-seminorm-estimate">PW6. The initial seminorm estimate</h2>
+<p>Take <span class="math" data-index="431" data-tex="\(A_1=1\)">\(A_1=1\)</span>. On this strip PW3 gives <span class="math" data-index="432" data-tex="\(\psi_1+\log k\le D\)">\(\psi_1+\log k\le D\)</span>, so</p>
+<span class="math math-display" id="eq-PW20" data-index="433" data-tex="\[
+P_1(u)^2\ge e^{2G_1-2D}
+       \int_{|\eta|&lt;1}|F_u(\xi+i\eta)|^2k(\xi)^2\,d\xi d\eta
+\ge C_k^{-1}e^{2G_1-2D}\|u\|_{2,k}^2.
+\tag{PW20}
+\]">\[
+P_1(u)^2\ge e^{2G_1-2D}
+       \int_{|\eta|&lt;1}|F_u(\xi+i\eta)|^2k(\xi)^2\,d\xi d\eta
+\ge C_k^{-1}e^{2G_1-2D}\|u\|_{2,k}^2.
+\tag{PW20}
+\]</span>
+<p>The last inequality is exactly CF22, for any compact <span class="math" data-index="434" data-tex="\(u\)">\(u\)</span>. By PW3, <span class="math" data-index="435" data-tex="\(q(u)\le Q_4\|u\|_{2,k}\)">\(q(u)\le Q_4\|u\|_{2,k}\)</span> on <span class="math" data-index="436" data-tex="\(E_4\)">\(E_4\)</span>. Choose <span class="math" data-index="437" data-tex="\(G_1\)">\(G_1\)</span> so large that
+<span class="math" data-index="438" data-tex="\(\alpha_1C_k^{-1/2}e^{G_1-D}\ge Q_4\)">\(\alpha_1C_k^{-1/2}e^{G_1-D}\ge Q_4\)</span>.
+Then the second part of PW16 holds for <span class="math" data-index="439" data-tex="\(j=1\)">\(j=1\)</span>. Increasing <span class="math" data-index="440" data-tex="\(G_1\)">\(G_1\)</span> affects none of the derivative bounds.</p>
+<h2 id="pw7-a-finite-partition-with-separated-exterior-supports">PW7. A finite partition with separated exterior supports</h2>
+<p>Suppose PW16 holds at level <span class="math" data-index="441" data-tex="\(j\)">\(j\)</span>, and choose <span class="math" data-index="442" data-tex="\(G_{j+1}\)">\(G_{j+1}\)</span> as in PW5. We need a partition equal to one near <span class="math" data-index="443" data-tex="\(K_{j+4}\)">\(K_{j+4}\)</span> with</p>
+<span class="math math-display" id="eq-PW21" data-index="444" data-tex="\[
+\operatorname{supp}\chi_0\subset\operatorname{int}K_{j+3},
+\qquad
+\operatorname{supp}\chi_\nu\subset C_\nu,\ \nu\ge1,
+\tag{PW21}
+\]">\[
+\operatorname{supp}\chi_0\subset\operatorname{int}K_{j+3},
+\qquad
+\operatorname{supp}\chi_\nu\subset C_\nu,\ \nu\ge1,
+\tag{PW21}
+\]</span>
+<p>where each <span class="math" data-index="445" data-tex="\(C_\nu\)">\(C_\nu\)</span> is a compact convex ball strictly separated from <span class="math" data-index="446" data-tex="\(K_{j+2}\)">\(K_{j+2}\)</span>.</p>
+<p>Choose a nonnegative central cutoff supported in <span class="math" data-index="447" data-tex="\(\operatorname{int}K_{j+3}\)">\(\operatorname{int}K_{j+3}\)</span>, equal to one near <span class="math" data-index="448" data-tex="\(K_{j+2}\)">\(K_{j+2}\)</span>. The remaining compact portion of <span class="math" data-index="449" data-tex="\(K_{j+4}\)">\(K_{j+4}\)</span> is outside a neighborhood of <span class="math" data-index="450" data-tex="\(K_{j+2}\)">\(K_{j+2}\)</span>. Each of its points has a small ball in <span class="math" data-index="451" data-tex="\(X\)">\(X\)</span> whose closure is strictly separated from <span class="math" data-index="452" data-tex="\(K_{j+2}\)">\(K_{j+2}\)</span>. To see the separation, minimize its distance to the compact convex set. If <span class="math" data-index="453" data-tex="\(y\)">\(y\)</span> is a nearest point and <span class="math" data-index="454" data-tex="\(x\)">\(x\)</span> the exterior center, differentiating distance along every segment in <span class="math" data-index="455" data-tex="\(K_{j+2}\)">\(K_{j+2}\)</span> gives
+<span class="math" data-index="456" data-tex="\((x-y)\cdot(z-y)\le0\)">\((x-y)\cdot(z-y)\le0\)</span> for all <span class="math" data-index="457" data-tex="\(z\)">\(z\)</span> in that set. Thus the direction <span class="math" data-index="458" data-tex="\((x-y)/|x-y|\)">\((x-y)/|x-y|\)</span> separates the center with a positive gap; a sufficiently small ball retains the gap.</p>
+<p>Take a finite such ball cover and smooth nonnegative cutoffs in those balls. Their sum with the central cutoff is positive on a neighborhood of <span class="math" data-index="459" data-tex="\(K_{j+4}\)">\(K_{j+4}\)</span>. Divide each by that sum and multiply them all by one compact smooth cutoff equal to one near <span class="math" data-index="460" data-tex="\(K_{j+4}\)">\(K_{j+4}\)</span> and supported where the denominator is positive. This supplies a finite smooth partition with PW21. The central member still has central support, and the other members have their separated convex supports. In particular the convex hulls of the exterior supports remain separated; merely being outside the set would not have sufficed.</p>
+<p>For <span class="math" data-index="461" data-tex="\(u\in E_{j+4}\)">\(u\in E_{j+4}\)</span>, <span class="math" data-index="462" data-tex="\(u=\sum_{\nu=0}^r\chi_\nu u\)">\(u=\sum_{\nu=0}^r\chi_\nu u\)</span>, and <span class="math" data-index="463" data-tex="\(\chi_0u\in E_{j+3}\)">\(\chi_0u\in E_{j+3}\)</span>. Apply the preceding seminorm estimate to this central piece and PW3 to all exterior pieces. Since
+<span class="math" data-index="464" data-tex="\(F_{\chi_0u}=F_u-\sum_{\nu\ge1}F_{\chi_\nu u}\)">\(F_{\chi_0u}=F_u-\sum_{\nu\ge1}F_{\chi_\nu u}\)</span>,
+the triangle inequality for the strip integral gives</p>
+<span class="math math-display" id="eq-PW22" data-index="465" data-tex="\[
+q(u)\le\alpha_jP_j(u)+D_j\sum_{\nu=1}^r\|\chi_\nu u\|_{2,k}.
+\tag{PW22}
+\]">\[
+q(u)\le\alpha_jP_j(u)+D_j\sum_{\nu=1}^r\|\chi_\nu u\|_{2,k}.
+\tag{PW22}
+\]</span>
+<p>Here <span class="math" data-index="466" data-tex="\(D_j&lt;\infty\)">\(D_j&lt;\infty\)</span>. To justify the extra integral terms explicitly, on <span class="math" data-index="467" data-tex="\(|\eta|&lt;A_j\)">\(|\eta|&lt;A_j\)</span> PW3 gives <span class="math" data-index="468" data-tex="\(e^{-\phi_j}\le D_{j,A_j}k(\xi)\)">\(e^{-\phi_j}\le D_{j,A_j}k(\xi)\)</span>. The plane estimate CF18, applied to each fixed compact <span class="math" data-index="469" data-tex="\(C_\nu\)">\(C_\nu\)</span>, bounds the strip integral of <span class="math" data-index="470" data-tex="\(F_{\chi_\nu u}\)">\(F_{\chi_\nu u}\)</span> by a finite constant times <span class="math" data-index="471" data-tex="\(\|\chi_\nu u\|_{2,k}\)">\(\|\chi_\nu u\|_{2,k}\)</span>. These constants and the fixed <span class="math" data-index="472" data-tex="\(Q_{j+4}\)">\(Q_{j+4}\)</span> are absorbed into <span class="math" data-index="473" data-tex="\(D_j\)">\(D_j\)</span>. There is no bound uniform over all stages being assumed.</p>
+<h2 id="pw8-exponential-control-of-the-exterior-pieces">PW8. Exponential control of the exterior pieces</h2>
+<p>PW13, for the finitely many branches through <span class="math" data-index="474" data-tex="\(j+1\)">\(j+1\)</span>, gives</p>
+<span class="math math-display" id="eq-PW23" data-index="475" data-tex="\[
+\phi_{j+1}(\xi+i\eta)
+\le H_{K_{j+2}}(\eta)-\log k(\xi)+D&#x27;_{j+1}.
+\tag{PW23}
+\]">\[
+\phi_{j+1}(\xi+i\eta)
+\le H_{K_{j+2}}(\eta)-\log k(\xi)+D&#x27;_{j+1}.
+\tag{PW23}
+\]</span>
+<p>For an exterior cutoff write <span class="math" data-index="476" data-tex="\(h_\nu=H_{C_\nu}\)">\(h_\nu=H_{C_\nu}\)</span>. CF20, whose cutoff operation is multiplication, and PW23 imply</p>
+<span class="math math-display" id="eq-PW24" data-index="477" data-tex="\[
+\|\chi_\nu u\|_{2,k}^2
+\le D_\nu e^{2[h_\nu(-\eta)+H_{K_{j+2}}(\eta)]}
+\int|F_u(\xi+i\eta)|^2e^{-2\phi_{j+1}(\xi+i\eta)}\,d\xi.
+\tag{PW24}
+\]">\[
+\|\chi_\nu u\|_{2,k}^2
+\le D_\nu e^{2[h_\nu(-\eta)+H_{K_{j+2}}(\eta)]}
+\int|F_u(\xi+i\eta)|^2e^{-2\phi_{j+1}(\xi+i\eta)}\,d\xi.
+\tag{PW24}
+\]</span>
+<p>Strict separation provides a unit vector <span class="math" data-index="478" data-tex="\(\theta_\nu\)">\(\theta_\nu\)</span> and <span class="math" data-index="479" data-tex="\(d_\nu&gt;0\)">\(d_\nu&gt;0\)</span> with</p>
+<span class="math math-display" id="eq-PW25" data-index="480" data-tex="\[
+h_\nu(-\theta_\nu)+H_{K_{j+2}}(\theta_\nu)\le-d_\nu.
+\tag{PW25}
+\]">\[
+h_\nu(-\theta_\nu)+H_{K_{j+2}}(\theta_\nu)\le-d_\nu.
+\tag{PW25}
+\]</span>
+<p>Both supporting functions are Lipschitz. For <span class="math" data-index="481" data-tex="\(|\eta-R\theta_\nu|&lt;1\)">\(|\eta-R\theta_\nu|&lt;1\)</span>, homogeneity and those Lipschitz bounds give</p>
+<span class="math math-display" id="eq-PW26" data-index="482" data-tex="\[
+h_\nu(-\eta)+H_{K_{j+2}}(\eta)
+\le-d_\nu R+D&#x27;&#x27;_\nu.
+\tag{PW26}
+\]">\[
+h_\nu(-\eta)+H_{K_{j+2}}(\eta)
+\le-d_\nu R+D&#x27;&#x27;_\nu.
+\tag{PW26}
+\]</span>
+<p>Choose <span class="math" data-index="483" data-tex="\(A&gt;1\)">\(A&gt;1\)</span> and set <span class="math" data-index="484" data-tex="\(R=A-1\)">\(R=A-1\)</span>. The real <span class="math" data-index="485" data-tex="\(n\)">\(n\)</span>-dimensional unit ball about <span class="math" data-index="486" data-tex="\(R\theta_\nu\)">\(R\theta_\nu\)</span> lies inside <span class="math" data-index="487" data-tex="\(|\eta|&lt;A\)">\(|\eta|&lt;A\)</span>. Integrate PW24 over it, using its volume <span class="math" data-index="488" data-tex="\(b_n\)">\(b_n\)</span>, to obtain</p>
+<span class="math math-display" id="eq-PW27" data-index="489" data-tex="\[
+\|\chi_\nu u\|_{2,k}
+\le D&#x27;&#x27;&#x27;_\nu e^{-d_\nu A}
+\left(\int_{|\eta|&lt;A}|F_u(\xi+i\eta)|^2e^{-2\phi_{j+1}}\,d\xi d\eta\right)^{1/2}.
+\tag{PW27}
+\]">\[
+\|\chi_\nu u\|_{2,k}
+\le D&#x27;&#x27;&#x27;_\nu e^{-d_\nu A}
+\left(\int_{|\eta|&lt;A}|F_u(\xi+i\eta)|^2e^{-2\phi_{j+1}}\,d\xi d\eta\right)^{1/2}.
+\tag{PW27}
+\]</span>
+<figure><img class="course-figure" width="2340" height="954" src="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.png" alt="Separated supports and the coefficient in an imaginary-plane estimate." /><figcaption class="native"><a href="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.png">Open full-size PNG</a> · <a href="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.svg">Open SVG</a></figcaption></figure>
+<p>The real intervals give an exact negative support-function gap in the positive imaginary direction. The model energy can grow while the coefficient becomes small; the induction controls its square-root integral over an enlarging strip. The learner companion computes all of the displayed curves.</p>
+<p>The constants do not depend on <span class="math" data-index="490" data-tex="\(A\)">\(A\)</span> or <span class="math" data-index="491" data-tex="\(u\)">\(u\)</span>. Choose <span class="math" data-index="492" data-tex="\(A_{j+1}&gt;A_j+1\)">\(A_{j+1}&gt;A_j+1\)</span> so large that</p>
+<span class="math math-display" id="eq-PW28" data-index="493" data-tex="\[
+D_j\sum_{\nu=1}^rD&#x27;&#x27;&#x27;_\nu e^{-d_\nu A_{j+1}}
+\le\alpha_{j+1}-\alpha_j=\frac1{(j+1)(j+2)}.
+\tag{PW28}
+\]">\[
+D_j\sum_{\nu=1}^rD&#x27;&#x27;&#x27;_\nu e^{-d_\nu A_{j+1}}
+\le\alpha_{j+1}-\alpha_j=\frac1{(j+1)(j+2)}.
+\tag{PW28}
+\]</span>
+<p>On the old strip <span class="math" data-index="494" data-tex="\(\phi_{j+1}=\phi_j\)">\(\phi_{j+1}=\phi_j\)</span>, so <span class="math" data-index="495" data-tex="\(P_j(u)\le P_{j+1}(u)\)">\(P_j(u)\le P_{j+1}(u)\)</span>. PW22, PW27 and PW28 prove the second part of PW16 at level <span class="math" data-index="496" data-tex="\(j+1\)">\(j+1\)</span>. If there are no exterior pieces, their sum is zero and any sufficiently large increasing <span class="math" data-index="497" data-tex="\(A_{j+1}\)">\(A_{j+1}\)</span> works. This completes the induction without a circular choice: the new vertical constant and weight are fixed before choosing the new strip radius.</p>
+<h2 id="pw9-all-four-conditions-and-the-limit-inequality">PW9. All four conditions and the limit inequality</h2>
+<p>The construction in PW5 already proves PW7–PW8. PW19 and the finite-strip upper comparison of each seed give a bound for <span class="math" data-index="498" data-tex="\(\phi+\log k\)">\(\phi+\log k\)</span> on every strip, proving PW6. For a compact convex <span class="math" data-index="499" data-tex="\(K\Subset X\)">\(K\Subset X\)</span>, choose <span class="math" data-index="500" data-tex="\(j\)">\(j\)</span> with <span class="math" data-index="501" data-tex="\(K\subset K_j\)">\(K\subset K_j\)</span>. The lower comparison in PW3 gives</p>
+<span class="math math-display" id="eq-PW29" data-index="502" data-tex="\[
+\phi\ge\psi_j-G_j\ge H_{K_j}(\eta)-\log k(\xi)-D_j-G_j
+\ge H_K(\eta)-\log k(\xi)-D_j-G_j.
+\tag{PW29}
+\]">\[
+\phi\ge\psi_j-G_j\ge H_{K_j}(\eta)-\log k(\xi)-D_j-G_j
+\ge H_K(\eta)-\log k(\xi)-D_j-G_j.
+\tag{PW29}
+\]</span>
+<p>Exponentiation proves PW5.</p>
+<p>For fixed <span class="math" data-index="503" data-tex="\(u\in E\)">\(u\in E\)</span>, it belongs to <span class="math" data-index="504" data-tex="\(E_{j+3}\)">\(E_{j+3}\)</span> for every sufficiently large <span class="math" data-index="505" data-tex="\(j\)">\(j\)</span>. By PW19,</p>
+<span class="math math-display" id="eq-PW30" data-index="506" data-tex="\[
+P_j(u)^2=\int_{|\eta|&lt;A_j}|F_u(\xi+i\eta)|^2e^{-2\phi(\xi+i\eta)}\,d\xi d\eta.
+\tag{PW30}
+\]">\[
+P_j(u)^2=\int_{|\eta|&lt;A_j}|F_u(\xi+i\eta)|^2e^{-2\phi(\xi+i\eta)}\,d\xi d\eta.
+\tag{PW30}
+\]</span>
+<p>These integrals increase as their domains increase. Monotone convergence, <span class="math" data-index="507" data-tex="\(A_j\to\infty\)">\(A_j\to\infty\)</span> and <span class="math" data-index="508" data-tex="\(\alpha_j\to1\)">\(\alpha_j\to1\)</span> pass PW16 to PW4. Stabilization is what permits PW30; one must not incorrectly assert that arbitrary expanding domains with changing decreasing weights have monotone integrals.</p>
+<h2 id="pw10-finiteness-continuity-and-equivalence-on-stages">PW10. Finiteness, continuity and equivalence on stages</h2>
+<p>For any fixed compact support set <span class="math" data-index="509" data-tex="\(S\Subset X\)">\(S\Subset X\)</span>, its convex hull <span class="math" data-index="510" data-tex="\(K\)">\(K\)</span> is compact inside <span class="math" data-index="511" data-tex="\(X\)">\(X\)</span>, by the finite-combination proof CF9. Enlarge it to <span class="math" data-index="512" data-tex="\(L=K+\rho\overline B\Subset X\)">\(L=K+\rho\overline B\Subset X\)</span>. PW5 then gives</p>
+<span class="math math-display" id="eq-PW31" data-index="513" data-tex="\[
+e^{-2\phi(\xi+i\eta)}
+\le C_L^2e^{-2H_K(\eta)}e^{-2\rho|\eta|}k(\xi)^2.
+\tag{PW31}
+\]">\[
+e^{-2\phi(\xi+i\eta)}
+\le C_L^2e^{-2H_K(\eta)}e^{-2\rho|\eta|}k(\xi)^2.
+\tag{PW31}
+\]</span>
+<p>The exponential factor absorbs the polynomial damper in CF17:
+<span class="math" data-index="514" data-tex="\(\sup_{r\ge0}e^{-2\rho r}(1+r^2)^{N+2n}&lt;\infty\)">\(\sup_{r\ge0}e^{-2\rho r}(1+r^2)^{N+2n}&lt;\infty\)</span>.
+Consequently</p>
+<span class="math math-display" id="eq-PW32" data-index="515" data-tex="\[
+P_\phi(u)\le D_S\|u\|_{2,k}\quad
+(\operatorname{supp}u\subset S).
+\tag{PW32}
+\]">\[
+P_\phi(u)\le D_S\|u\|_{2,k}\quad
+(\operatorname{supp}u\subset S).
+\tag{PW32}
+\]</span>
+<p>This proves finiteness and continuity on every stage, hence on <span class="math" data-index="516" data-tex="\(E\)">\(E\)</span> by PW3. Conversely PW6 for <span class="math" data-index="517" data-tex="\(A=1\)">\(A=1\)</span> and CF22 give</p>
+<span class="math math-display" id="eq-PW33" data-index="518" data-tex="\[
+\|u\|_{2,k}^2
+\le C_k C_1^2\int_{|\eta|&lt;1}|F_u|^2e^{-2\phi}\,d\xi d\eta
+\le C_k C_1^2P_\phi(u)^2.
+\tag{PW33}
+\]">\[
+\|u\|_{2,k}^2
+\le C_k C_1^2\int_{|\eta|&lt;1}|F_u|^2e^{-2\phi}\,d\xi d\eta
+\le C_k C_1^2P_\phi(u)^2.
+\tag{PW33}
+\]</span>
+<p>Thus the norms are equivalent on each fixed support stage. PW4 and PW5–PW8 prove the entire source theorem. No assertion that a single real-weight norm describes the full inductive topology is made. If <span class="math" data-index="519" data-tex="\(X\)">\(X\)</span> is empty, its compact-test space is zero. Taking <span class="math" data-index="520" data-tex="\(\phi=\psi_t\)">\(\phi=\psi_t\)</span> from VS11 for large <span class="math" data-index="521" data-tex="\(t\)">\(t\)</span> gives finite-strip comparison, a globally bounded gradient and the curvature lower bound <span class="math" data-index="522" data-tex="\(c_t(1+|\eta|^2)^{-3/4}\)">\(c_t(1+|\eta|^2)^{-3/4}\)</span>, with <span class="math" data-index="523" data-tex="\(c_t=t^{-3/2}/18\)">\(c_t=t^{-3/2}/18\)</span>. The compact growth condition is vacuous, and the zero seminorm inequality is immediate. This includes that endpoint. <span class="math" data-index="524" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="pw11-the-consequent-weak-representation">PW11. The consequent weak representation</h2>
+<p>The construction also proves the ensuing representation statement for continuous complex-linear forms on the <span class="math" data-index="525" data-tex="\(p=2\)">\(p=2\)</span> compact-test space. Apply PW2 with <span class="math" data-index="526" data-tex="\(q(u)=|L(u)|\)">\(q(u)=|L(u)|\)</span>, and map <span class="math" data-index="527" data-tex="\(u\)">\(u\)</span> to <span class="math" data-index="528" data-tex="\(F_u e^{-\phi}\)">\(F_u e^{-\phi}\)</span> in <span class="math" data-index="529" data-tex="\(L^2(\mathbb C^n)\)">\(L^2(\mathbb C^n)\)</span>. PW4 makes <span class="math" data-index="530" data-tex="\(L\)">\(L\)</span> a well-defined bounded linear form of norm at most one on that image: if the image is zero then PW4 makes <span class="math" data-index="531" data-tex="\(L(u)=0\)">\(L(u)=0\)</span>. Extend it by continuity to the closed image subspace, which is Hilbert. The full Hilbert representation in <a href="AN02-L043.html">L043 Lemma 1.1</a> applies to that closed subspace and gives <span class="math" data-index="532" data-tex="\(g\in L^2(\mathbb C^n)\)">\(g\in L^2(\mathbb C^n)\)</span>, with <span class="math" data-index="533" data-tex="\(\|g\|_2\le1\)">\(\|g\|_2\le1\)</span>, such that</p>
+<span class="math math-display" id="eq-PW34" data-index="534" data-tex="\[
+L(u)=\int F_u(z)e^{-\phi(z)}\overline{g(z)}\,dV(z).
+\tag{PW34}
+\]">\[
+L(u)=\int F_u(z)e^{-\phi(z)}\overline{g(z)}\,dV(z).
+\tag{PW34}
+\]</span>
+<p>Define <span class="math" data-index="535" data-tex="\(V(z)=e^{-\phi(-z)}\overline{g(-z)}\)">\(V(z)=e^{-\phi(-z)}\overline{g(-z)}\)</span>. Reflection preserves complex volume, so</p>
+<span class="math math-display" id="eq-PW35" data-index="536" data-tex="\[
+\int|V(z)|^2e^{2\phi(-z)}\,dV(z)\le1,\qquad
+L(u)=\int V(z)F_u(-z)\,dV(z).
+\tag{PW35}
+\]">\[
+\int|V(z)|^2e^{2\phi(-z)}\,dV(z)\le1,\qquad
+L(u)=\int V(z)F_u(-z)\,dV(z).
+\tag{PW35}
+\]</span>
+<p>Cauchy–Schwarz proves absolute convergence. The converse and the unique local distribution represented by this integral are the complete theorem CF7–CF11 in L148, with Lebesgue unit-ball mass <span class="math" data-index="537" data-tex="\(b_{2n}\)">\(b_{2n}\)</span>.</p>
+<p>For precision the local bilinear dual identification also follows directly. A continuous form <span class="math" data-index="538" data-tex="\(L\)">\(L\)</span> on <span class="math" data-index="539" data-tex="\(E\)">\(E\)</span> restricts, for any compact smooth <span class="math" data-index="540" data-tex="\(\chi\)">\(\chi\)</span>, to the bounded form <span class="math" data-index="541" data-tex="\(h\mapsto L(\chi h)\)">\(h\mapsto L(\chi h)\)</span> on <span class="math" data-index="542" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span>, using PW3 on its fixed support and the multiplier CF6. Its representing global distribution lies in <span class="math" data-index="543" data-tex="\(B_{2,1/\check k}\)">\(B_{2,1/\check k}\)</span> by CF8. On ordinary compact smooth tests these distributions define a single distribution <span class="math" data-index="544" data-tex="\(v\)">\(v\)</span> by <span class="math" data-index="545" data-tex="\(L\)">\(L\)</span>; distribution continuity follows from the finite smooth seminorm bound CF41. Their actions are <span class="math" data-index="546" data-tex="\(\chi v\)">\(\chi v\)</span>, proving its local membership. Conversely any such <span class="math" data-index="547" data-tex="\(v\)">\(v\)</span> acts continuously on each <span class="math" data-index="548" data-tex="\(E_j\)">\(E_j\)</span> by its cutoff global dual norm and the canonical compact pairing CF42–CF43, hence on <span class="math" data-index="549" data-tex="\(E\)">\(E\)</span>. Therefore the continuous complex-linear forms are exactly the local reflected weighted distributions. This is the full continuous-dual identification in the source's introductory passage.</p>
+<h2 id="source-scope-and-remaining-course-obligations">Source scope and remaining course obligations</h2>
+<p>VS1–VS20 give the complete H-II Lemma 15.2.3 regularization, shift estimates, positive-order derivative bounds and exact <span class="math" data-index="550" data-tex="\(1/18\)">\(1/18\)</span> Levi constant. PW1–PW33 give the complete H-II Theorem 15.2.1, including its compact-support topology, all four conditions, uniform distributional curvature, exterior-piece induction and seminorm domination. PW34–PW35 supply the subsequent <span class="math" data-index="551" data-tex="\(p=2\)">\(p=2\)</span> weak representation with all reflections visible.</p>
+<p>The lemma's <span class="math" data-index="552" data-tex="\(M^{-3/2}\)">\(M^{-3/2}\)</span> has exactly the theorem's <span class="math" data-index="553" data-tex="\((1+|\eta|^2)^{-3/4}\)">\((1+|\eta|^2)^{-3/4}\)</span> scale at large imaginary frequency. This curvature decays more slowly than the second-derivative errors of order <span class="math" data-index="554" data-tex="\(M^{-2}\log M\)">\(M^{-2}\log M\)</span>, allowing those errors to be absorbed. The following representation and division arguments use this precise comparison.</p>
+<p>Source: Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.2, Theorem 15.2.1 and Lemma 15.2.3, printed pp. 279–285; 1983 edition, second revised printing 1990, reprint 2005. Original arguments with ordinary attribution are given here; no protected page or image belongs to the public packet.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/four-condition-complex-weights-and-the-topology-of-compact-fourier-tests.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L149/complex-psh-weight-formal.md" download>complex-psh-weight-formal.md</a></li><li><a href="reproduce/L149/complex-psh-weight-learner.md" download>complex-psh-weight-learner.md</a></li><li><a href="reproduce/L149/make_figures160.py" download>make_figures160.py</a></li><li><a href="reproduce/L149/check_examples160.py" download>check_examples160.py</a></li><li><a href="reproduce/L149/independent-example-checks160.json" download>independent-example-checks160.json</a></li><li><a href="reproduce/L149/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L149/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L149/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L149/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L149/figures/curvature-and-stabilized-maxima.png" download>figures/curvature-and-stabilized-maxima.png</a></li><li><a href="reproduce/L149/figures/curvature-and-stabilized-maxima.svg" download>figures/curvature-and-stabilized-maxima.svg</a></li><li><a href="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.png" download>figures/exterior-supports-and-imaginary-shifts.png</a></li><li><a href="reproduce/L149/figures/exterior-supports-and-imaginary-shifts.svg" download>figures/exterior-supports-and-imaginary-shifts.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

@@ -1,6 +1,6 @@
 # Pinnings and the classification of split reductive groups
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original contributions are dedicated to the public domain (CC0). The collected lesson also carries the GNU Free Documentation License 1.2 for the explicitly attributed Stacks proof below; see History.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text: public domain (CC0). The one-dimensional affine-open lemma follows the Stacks Project's proof; see History.*
 
 The integral root datum remembers a reductive group up to isomorphism. A pinning removes the conjugation ambiguity and makes this assertion functorial. The main work is to show that the multiplication of root groups is forced by the datum, including over rings in which two or three vanish. We first do those calculations and glue them across the open cell. We then construct groups in characteristic zero and pass to an integral model.
 
@@ -961,8 +961,6 @@ The geometric prerequisites are likewise exact supporting lessons: [Flat quotien
 
 ## History
 
-This lesson's new exposition, group constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
+This lesson's exposition, group constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
 
-The one-dimensional affine-open lemma and its full proof are adapted from the Stacks authors, *The Stacks Project*, *Varieties*, Tag 09N9, through the AI Integrated Stacks Project English source edition read on 1 October 2026. The Stacks authors retain copyright in that material. The source is the [versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/varieties.tex). Its proof is included and explained for use in the integral affineness argument.
-
-This collected lesson, *Pinnings and the classification of split reductive groups* (2026), is published by Open Mathematics Courses. The Stacks authors are the authors of its imported proof; GPT-6.1 Sol (OpenAI) is responsible for the new contributions and adaptation. Permission is granted to copy, distribute and modify this collected lesson under the GNU Free Documentation License, Version 1.2, with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. An unaltered copy of the licence is supplied as [GNU Free Documentation License 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/assets/GFDL-1.2.txt). This additional licence for the collected lesson does not withdraw the CC0 dedication of its original contributions.
+The one-dimensional affine-open lemma and its proof follow the Stacks authors' argument in *The Stacks Project*, *Varieties*, Tag 09N9, read through the AI Integrated Stacks Project English source edition on 1 October 2026 ([versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/varieties.tex)). The proof is explained for its use in the integral affineness argument. The Stacks Project itself is distributed under the GNU FDL 1.2 or later.

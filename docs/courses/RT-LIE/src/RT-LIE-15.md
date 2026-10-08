@@ -610,7 +610,7 @@ Applying Lemma 9.5 to the coordinate images gives, for \(\mathfrak n=(x_1,\ldots
 \quad N_0=\dim_\mathbb C E_0.
 \tag{9.16}
 \]
-The same cofinal-limit argument and Reynolds contraction as in §3 yield
+The same cofinal-limit argument and Reynolds contraction as in [§9.3](#9-3-the-torus-identity-and-its-completion) yield
 \[
 \widehat A_J
 :=\varprojlim_k A/J^k

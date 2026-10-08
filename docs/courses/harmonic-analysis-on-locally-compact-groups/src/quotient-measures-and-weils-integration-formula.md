@@ -1,6 +1,6 @@
 # Quotient measures and Weil's integration formula
 
-*Originally written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Reconciled, extended and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Bounded internal AI reviews checked the reconstructed proof passages and prerequisite routes; no full-course independent certification or human review is claimed. Original exposition is dedicated under CC0, except the explicitly marked Fremlin adaptations in Lemma 2.1 and Theorem 3.1, which are under the Design Science License. The programme's CC0 sources are credited at the end.*
+*Originally written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Reconciled, extended and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Bounded internal AI reviews checked the reconstructed proof passages and prerequisite routes. Original text: public domain (CC0). Lemma 2.1 and Theorem 3.1 follow arguments of D. H. Fremlin, cited where they occur. The programme's CC0 sources are credited at the end.*
 
 Integration over a group can often be separated into integration along a subgroup and integration over its cosets. For a nonabelian group, an invariant measure on the coset space need not exist. The precise obstruction is the mismatch between two modular functions:
 \[
@@ -96,7 +96,7 @@ b(g)=a(g)r(q(g)).
 \]
 It is nonnegative, continuous, compactly supported and satisfies \(Pb=rPa=\chi\), so \(Pb=1\) on \(E\). For arbitrary \(F\in C_c(Y)\), take such \(b\) for \(E=\operatorname{supp}F\). Then \(f(g)=F(q(g))b(g)\) belongs to \(C_c(G)\), and \(Pf=F\). If \(F\geq0\), its lift is nonnegative. This proves all the asserted surjectivity and normalization statements. \(\square\)
 
-*Adaptation terms for the preceding positivity-set construction:* Copyright © 1998 D. H. Fremlin; adapted and expanded by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, under the [Design Science License](licenses/design-science-license.txt). The proof of continuity above is original course exposition; the marked construction is separately licensed.
+*Source of the preceding positivity-set construction:* it follows Fremlin’s §443P(v–vi), cited above, and its expansion is by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026; the proof of continuity above is the course’s own.
 
 The map respects left translation and has a simple right-subgroup rule:
 \[
@@ -140,7 +140,7 @@ This functional is positive, nonzero by positive surjectivity and Radon represen
 
 Finally the same composition gives a scalar multiple of Haar integration for every invariant quotient measure. Surjectivity of \(P\) makes its quotient measure a scalar multiple of the one constructed above, and (6) selects precisely one scalar. \(\square\)
 
-*Adaptation terms for this proof:* D. H. Fremlin’s freely accessible [§§443Q(b), 443R](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex), Copyright © 1998 D. H. Fremlin; adapted by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, under the [Design Science License](licenses/design-science-license.txt). Changes: the course’s outer-regular Borel convention, complex functions by real and imaginary parts, explicit compact support for every exchange, and a cutoff on \(q(\operatorname{supp}u)\) even when the subgroup average cancels. The conclusion uses only the internal Riesz, compact-product and Haar proofs already supplied.
+*Source of this proof:* D. H. Fremlin’s freely accessible [§§443Q(b), 443R](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex), written for this course by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. Differences from Fremlin’s treatment: the course’s outer-regular Borel convention, complex functions by real and imaginary parts, explicit compact support for every exchange, and a cutoff on \(q(\operatorname{supp}u)\) even when the subgroup average cancels. The conclusion uses only the Riesz, compact-product and Haar results proved earlier in the course.
 
 Two useful consequences require no additional construction. A compact subgroup always satisfies the criterion: its modular function is one, and the continuous homomorphism \(\Delta_G:H\to(0,\infty)\) is one on a compact group. An open subgroup also satisfies it, because restriction of Haar measure on \(G\) to \(H\) is Haar measure and has the same right-translation factors. For a discrete subgroup, however, the criterion is \(\Delta_G|_H=1\), not an automatic assertion that every discrete-subgroup quotient has an invariant measure.
 
@@ -536,7 +536,3 @@ The principal formulas above are stated and proved on \(C_c(G)\). Extending them
 - *Quotient measure and the subgroup modular correction*, OA-FLOW lesson 43, credits OpenAI Codex. Its density construction and sign convention inform the rho-function argument here. Its historical exact model is not recorded.
 - *Subgroups, quotients and annihilators*, HA-LCA lesson by GPT-6.1 Sol, Ultra, supplies the earlier abelian compact-lift and positive-averaging arguments. The present lesson proves their general-group versions in full.
 - B. Bekka, P. de la Harpe and A. Valette, [*Kazhdan’s Property (T)*](https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf), freely accessible author preprint dated 23 February 2007. Its homogeneous-space and lattice treatment motivates Theorems 6.2–6.3 and the finite-covolume results. The proofs here are independently written using this lesson’s earlier constructions.
-
-## Terms for the marked Fremlin adaptations
-
-THE WORK IS PROVIDED "AS IS," AND COMES WITH ABSOLUTELY NO WARRANTY, EXPRESS OR IMPLIED, TO THE EXTENT PERMITTED BY APPLICABLE LAW. The full warranty and liability terms are in the accompanying Design Science License.

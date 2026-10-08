@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams["svg.hashsalt"] = "OA-FLOW-extended-positive-v1"
 
 d=Path(__file__).resolve().parent
 fig=plt.figure(figsize=(15,7))
@@ -51,7 +52,7 @@ fig.text(.5,.885,r"$e=\mathrm{diag}(1,1,0),\quad A=\mathrm{diag}(1,4)\ \mathrm{o
 fig.text(.5,.035,"Exact M₃ example. EP-2–3 prove the arbitrary-Hilbert representation; EP-5 preserves the infinite part in scalar-weight extension.",
          ha="center",fontsize=11)
 fig.savefig(d/"assets"/"extended-positive.png",dpi=180,bbox_inches="tight")
-fig.savefig(d/"assets"/"extended-positive.svg",bbox_inches="tight")
+fig.savefig(d/"assets"/"extended-positive.svg",bbox_inches="tight",metadata={"Date":None})
 plt.close(fig)
 (d/"extended-positive-numerics.json").write_text(json.dumps({
  "finite_projection":[1,1,0],"finite_operator_eigenvalues":[1,4],"infinite_projection":[0,0,1],

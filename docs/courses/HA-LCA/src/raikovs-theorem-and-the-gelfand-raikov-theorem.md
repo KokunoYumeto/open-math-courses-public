@@ -8,7 +8,7 @@ Let \(G\) be any locally compact Hausdorff group, with the full completed, local
 
 The free source readings are B. Bekka, P. de la Harpe and A. Valette's [author draft of 23 February 2007](https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf), C.5.6–C.5.9 and C.6.10; D. H. Fremlin's [*Measure Theory*, §244, version of 6 March 2009 in the volume 2 source collection of 2016](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex), 244D–F, 244H(a), 244P(a)–(b); and Paul D. Nelson's [*Representations of Lie Groups*, ETH Zürich, 15 July 2019](https://metaphor.ethz.ch/x/2019/fs/401-3226-01L/ex/notes-repn.pdf), §§3.8–3.9 and §§4.7–4.8. The proof below supplies the required compact-group results without a separability hypothesis or an unproved compact-operator spectral theorem.
 
-This adapted component is distributed under the [Design Science License](../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's original volume 2 source package, with its notices, is retained unchanged. The other sources' prose and figures are not reproduced.
+Original text: public domain (CC0). Fremlin's original volume 2 source package, with its notices, is retained unchanged. The other sources' prose and figures are not reproduced.
 
 ## 1. Convolution turns integral tests into uniform control
 

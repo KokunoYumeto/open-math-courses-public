@@ -155,7 +155,7 @@ This step uses the unitary invariance of the trace norm. It does not use equivar
 
 ## One spectral threshold for the whole finite set
 
-The three imported trace statements needed here are all proved for a faithful normal **semifinite** trace in Trace inequalities for finite von Neumann algebras:
+The three imported trace statements needed here are all proved for a faithful normal **semifinite** trace in [Trace inequalities for finite von Neumann algebras](../../injective-factors/trace-inequalities-for-finite-von-neumann-algebras.html):
 
 - Theorem 3.1, the Powers–Størmer inequality: for positive integrable \(h,k\),
   \(\|h^{1/2}-k^{1/2}\|_2^2\leq\|h-k\|_1\).

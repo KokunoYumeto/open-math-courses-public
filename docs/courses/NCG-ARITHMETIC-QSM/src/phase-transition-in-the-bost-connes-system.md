@@ -14,6 +14,8 @@ The Hilbert-space prerequisites used by the weight constructions have a proof in
 
 [Section 37](#37-normal-functionals-and-finite-orbit-averages) constructs the bounded normal observations and finite orbit averages. [Section 38](#38-normal-weights-and-finite-observations) gives the full normal-weight characterization, arbitrary sums, the positive-map normality criterion and the GNS graph for arbitrary nets through exact earlier programme proofs. [Section 39](#39-spectral-domains-and-limits-of-energy-forms) retains the domains in measurable spectral calculus and proves the closed-form and arbitrary-net resolvent routes through their full earlier programme proofs. [Section 40](#40-positive-energies-and-their-weights) constructs the full extended positive cone and the extension of every normal weight, with exact positive vector series and infinite values. [Section 41](#41-finite-vectors-of-a-semifinite-weight) proves finite GNS approximation, exact dominated implementing vectors and closability of the finite-star adjoint for faithful normal semifinite weights. [Section 42](#42-recovering-a-weight-from-multiplication) constructs the full multiplication algebra and recovers its faithful normal semifinite weight, with exact graph, polar and spectral domains. [Section 43](#43-the-modular-group-and-entire-vectors) proves the ordinary modular commutant and invariance theorem, constructs the entire analytic algebra, and proves its converse and completeness. [Section 44](#44-approximating-the-original-multiplication-algebra) returns to the original core with exact multiplier bounds and proves the central-domain identities. [Section 45](#45-the-kms-boundary-condition-determines-the-modular-group) constructs the finite-domain KMS strip functions and proves that they determine the modular group.
 
+[Section 46](#46-operator-valued-weights-and-finite-approximations) proves the finite calculus, normal extension, full extended range and composition of operator-valued weights. [Section 47](#47-centralizers-and-affiliated-changes-of-density) constructs affiliated density weights and computes their supported modular groups with full finite domains. [Section 48](#48-a-unitary-clock-determines-its-affiliated-density) recovers the unique positive affiliated density of a specified unitary clock. Each section has three exercises with complete solutions.
+
 ## 0. Measures on the diagonal
 
 The diagonal algebra is an algebra of continuous functions. Its states are measures, and multiplication by an integer moves those measures between clopen subsets. We first specify the measure theory used in this passage and prove the consequences needed for equilibrium states.
@@ -6095,10 +6097,10 @@ Since \(\omega(x^*x)=\|xv\|^2\), the null left ideal is exactly the matrices ann
 **Solution.** Conjugation leaves the diagonal entries unchanged, multiplies \(x_{12}\) by \(e^{-it}\), and multiplies \(x_{21}\) by \(e^{it}\). Direct integration gives
 
 \[
-P_R\!\ begin{pmatrix}a&b\\ c&d\ end{pmatrix}
-=\ begin{pmatrix}a&b\,\ sin R/R\\ c\,\ sin R/R&d\ end{pmatrix},
-\ qquad A_R=\ frac{R}{\ pi}P_R.
-\ tag{37.17}
+P_R\!\begin{pmatrix}a&b\\c&d\end{pmatrix}
+=\begin{pmatrix}a&b\,\sin R/R\\c\,\sin R/R&d\end{pmatrix},
+\qquad A_R=\frac{R}{\pi}P_R.
+\tag{37.17}
 \]
 
 At \(R=\pi/2\), the off-diagonal multiplier is \(2/\pi\), strictly between \(0\) and \(1\). Applying \(P_R\) twice squares that multiplier, so \(P_R^2\ne P_R\). At \(R=\pi\), the multiplier is zero and this particular average is the diagonal conditional expectation. Positivity, unitality and covariance of a finite average do not by themselves make it a projection onto fixed points.
@@ -8166,6 +8168,1155 @@ For the second assertion use
 Both are finite faithful normal weights. Their block densities are \((h,I_2)\) and \((2h,3I_2)\). Scalar factors cancel inside each block conjugation, so both modular groups are \(\beta^{(0)}\), which is nontrivial on the first summand. A common scalar relating the weights would have to be two on \((E_{11},0)\) and three on \((0,E_{11})\), an impossibility. The characterization determines the group from a specified faithful NSF weight; it does not recover that weight from its group.
 
 The complete KMS characterization now supplies a recognition principle for later constructions. Identifying centralizers, lifting C\*-weights, proving operator-valued-weight finite domains and affiliated-density converses, and comparing different weights through relative modular operators still require their own exact arguments.
+
+## 46. Operator-valued weights and finite approximations
+
+A scalar weight measures positive elements by numbers that may be infinite. An operator-valued weight retains a positive energy in a smaller algebra. Its finite part therefore means a bounded operator in that smaller algebra; it need not mean a finite value under a subsequent scalar weight. This distinction controls both composition and semifiniteness.
+
+Let \(P\subseteq N\subseteq M\) be concrete von Neumann algebras with the same identity, on Hilbert spaces of arbitrary dimension. A corner uses its own identity. Include the zero algebra. Extended-positive elements, their pointwise order and bounded compression are those of Section 40; \(0\cdot\infty=0\), and every nonnegative sum over an arbitrary set is the supremum of its finite subsums.
+
+The complete programme argument is [*Finite calculus and composition of operator-valued weights*](../../OA-MOD/OA-MOD-OVW.html), OVW01–05. We give the proofs below with their earlier inputs explicit. The direct prerequisite dictionary is as follows.
+
+| Earlier programme input | Exact proof interface here | Use |
+| --- | --- | --- |
+| CP-07: positive normal observations, closed cones and fixed multiplication | Interface 37.1 and its complete CP-07 proof; the bounded topology proofs of Section 33.1 | Testing positivity, evaluating increasing bounded nets and closing ideals. |
+| CW-02: the full extended positive cone | Interface 40.2, using Interfaces 39.1–39.4 and 40.1 | Bounded spectral cutoffs, arbitrary increasing extended suprema and a possible infinite exterior. |
+| CW-03: evaluation by any normal scalar weight | Interface 40.3, with Theorem 38.3 and Corollary 38.4 | Extending an operator-valued weight through all scalar observations; infinite values and arbitrary sums. |
+| DW-02: bounded factorization in the given algebra | The complete DW-02 proof in the finite-vector lesson linked in Section 41, with Sections 32 and 33.1 | Turning a finite positive output into a positive finite lift. The factorization is also proved at its use below. |
+| NW-11: full normal-weight characterization | Theorem 38.3 and its complete Sections 02–11 proof route | Normality of every scalar evaluation and the canonical extended evaluation. |
+
+The bounded order, square-root, inverse-order, support and bicommutant facts in these arguments are the full proofs identified in Section 33.1. The finite scalar algebra is Interface 38.2. Sections 42–45 supply further multiplication and modular results; none is needed for the arguments here. The scalar-measure inputs inherited through CW-02 remain the exact genuine planned *Measure theory* lessons of Sections 0 and 39: §§111–123, 133, 135–136 and 244, especially 123A–C, 133A/D–G, 135F–G, 136A–C and 244E–G/244P, with correction (0.1). These scalar results are used with their stated hypotheses; their separate proofs are prerequisites of the construction.
+
+### A. The finite part is an algebraic domain
+
+An **operator-valued weight** \(T:M_+\to\widehat N_+\) is additive and nonnegatively homogeneous, takes zero to zero, and satisfies
+\[
+ T(n^*xn)=n^*T(x)n\qquad(x\in M_+,\ n\in N).
+ \tag{46.1}
+\]
+Compression on the right is the extended-positive compression of Proposition 40.4. Normality means that for every bounded increasing positive net \(x_i\uparrow x\) in \(M\), \(T(x_i)\uparrow T(x)\) pointwise on \(N_*^+\). Equivalently, every map \(x\mapsto T(x)(\omega)\), \(\omega\in N_*^+\), is a normal scalar weight: this is exactly the equality obtained by evaluating that definition. Faithfulness means \(T(x)=0\), \(x\ge0\), implies \(x=0\).
+
+Write
+\[
+ \mathfrak n_T=\{x\in M:T(x^*x)\in N_+\},\qquad
+ \mathfrak m_T=\operatorname{span}_{\mathbb C}
+       \{y^*x:x,y\in\mathfrak n_T\},\qquad
+ F_T=\{a\in M_+:T(a)\in N_+\}.
+ \tag{46.2}
+\]
+Membership in \(N_+\) means that the extended value is represented by a bounded positive element. Semifiniteness of \(T\) means ultraweak density of \(\mathfrak m_T\) in \(M\).
+
+We will repeatedly use a consequence of Section 40: if \(0\le H\le b\) in \(\widehat N_+\), with \(b\in N_+\) bounded, then \(H\) is bounded too. Indeed its canonical cutoffs \(H_j\) satisfy \(H_j\le b\), since positive normal observations test operator order. Section 33.1 gives their bounded strong supremum \(h\in N_+\), and normality of every observation gives \(H(\omega)=\sup_j\omega(H_j)=\omega(h)\).
+
+**Theorem 46.1 (Finite linear and bimodule calculus).** The space \(\mathfrak n_T\) is a linear left ideal of \(M\) and a right \(N\)-module. The map \(T\) has a unique positive complex-linear extension to \(\mathfrak m_T=\operatorname{span}_{\mathbb C}F_T\), with
+\[
+ \mathfrak m_T\cap M_+=F_T,\qquad
+ T(azb)=aT(z)b\quad(a,b\in N,\ z\in\mathfrak m_T).
+ \tag{46.3}
+\]
+For \(x_1,\ldots,x_r\in\mathfrak n_T\), the matrix \([T(x_i^*x_j)]_{i,j}\) is positive in \(M_r(N)\). In particular,
+\[
+ \|T(y^*x)\|^2
+ \le\|T(x^*x)\|\,\|T(y^*y)\|
+ \qquad(x,y\in\mathfrak n_T).
+ \tag{46.4}
+\]
+If \(T(1)=1_N\), then \(\mathfrak n_T=\mathfrak m_T=M\), and the extension is a positive \(N\)-bimodule projection onto \(N\), of norm one when \(N\ne0\) and norm zero for the zero algebra. No normality or semifiniteness is needed for this theorem.
+
+**Proof of the domains and extension.** Additivity makes \(T\) order preserving. The bounded inequalities
+\[
+ (x+y)^*(x+y)\le2x^*x+2y^*y,\qquad
+ (mx)^*(mx)\le\|m\|^2x^*x
+ \tag{46.5}
+\]
+and the bounded-domination observation prove linearity and the left-ideal property. Equation (46.1) gives \(T((xn)^*(xn))=n^*T(x^*x)n\), proving the right-module property. The cone \(F_T\) is additive, positively homogeneous and hereditary: \(0\le c\le a\in F_T\) implies \(c\in F_T\).
+
+On its real span define \(T(a-b)=T(a)-T(b)\), \(a,b\in F_T\). If \(a-b=c-d\), then \(a+d=c+b\); all four values are bounded, so finite additivity proves that the definition is independent of the presentation. The domain is self-adjoint, and its intersection with \(i\) times itself is zero. Thus the complex-linear extension is well defined and preserves adjoints. If \(a-b\ge0\), hereditaryness applies to \(0\le a-b\le a\), showing both positivity and agreement with the original \(T\).
+
+Each \(a\in F_T\) is \((a^{1/2})^*a^{1/2}\), with \(a^{1/2}\in\mathfrak n_T\). Conversely polarization gives
+\[
+ y^*x=\frac14\sum_{k=0}^3 i^k
+             (x+i^k y)^*(x+i^k y)
+ \qquad(x,y\in\mathfrak n_T).
+ \tag{46.6}
+\]
+Every square on the right belongs to \(F_T\). This proves equality of the two complex spans. A self-adjoint element of that span has the form \(a-b\), with \(a,b\in F_T\), by taking real parts of a finite positive-cone presentation. If it is positive, hereditaryness gives its membership in \(F_T\). Hence \(\mathfrak m_T\cap M_+=F_T\). Any linear extension must agree on this spanning cone, proving uniqueness.
+
+**Proof of covariance and the matrix bound.** For \(z\in F_T\) and \(u,v\in N\), the mixed product \(u^*zv\) belongs to \(\mathfrak m_T\), since \(z^{1/2}u,z^{1/2}v\in\mathfrak n_T\). Polarize (46.1) in the multiplier \(u+i^k v\). The four finite expressions yield
+\[
+ T(u^*zv)=u^*T(z)v.
+ \tag{46.7}
+\]
+Linearity extends this to \(z\in\mathfrak m_T\); take \(u=a^*\), \(v=b\) to obtain (46.3).
+
+For a column \(c=(c_1,\ldots,c_r)\) with entries in \(N\), the right-module property gives
+\[
+ \sum_{i,j}c_i^*T(x_i^*x_j)c_j
+ =T\!\left(\Bigl(\sum_i x_i c_i\Bigr)^*
+                 \Bigl(\sum_j x_j c_j\Bigr)\right)\ge0.
+ \tag{46.8}
+\]
+These column tests prove positivity of the self-adjoint matrix \(D=[T(x_i^*x_j)]\). Here is a bounded proof of that criterion. If \(D_-\) is its negative part in the continuous calculus of \(M_r(N)\), test each column \(c=D_-^{1/2}e_j\), where \(e_j\) is a coordinate column with entry \(1_N\). One obtains
+\((D_-^{1/2}DD_-^{1/2})_{jj}=-(D_-^2)_{jj}\ge0\).
+But \((D_-^2)_{jj}\) is a sum of positive squares of entries of \(D_-\). Every entry vanishes, so \(D_-=0\).
+
+Apply this to
+\[
+ \begin{pmatrix}A&B\\B^*&C\end{pmatrix}\ge0,\qquad
+ A=T(y^*y),\quad B=T(y^*x),\quad C=T(x^*x).
+ \tag{46.9}
+\]
+Add \(\varepsilon1_N\) to the first diagonal block and test the column
+\((-(A+\varepsilon1_N)^{-1}B,\ 1_N)^{\mathsf T}\). It gives
+\[
+ B^*(A+\varepsilon1_N)^{-1}B\le C,\qquad
+ \frac{1}{\|A\|+\varepsilon}B^*B\le C.
+ \tag{46.10}
+\]
+The second inequality is scalar order in the continuous calculus of \(A\). Taking norms and then \(\varepsilon\downarrow0\) proves (46.4), including \(A=0\). If \(T(1)=1_N\), monotonicity gives \(T(x^*x)\le\|x\|^2 1_N\) for every \(x\in M\). Thus \(\mathfrak n_T=M\), and every positive is finite, so \(\mathfrak m_T=M\). Covariance at \(1\) gives \(T(a)=a\) for \(a\in N_+\), using the multiplier \(a^{1/2}\); linearity extends this to every \(a\in N\). The extension is therefore an idempotent positive bimodule map onto \(N\). Apply (46.4) with \(y=1\): \(\|T(x)\|^2\le\|T(x^*x)\|\le\|x\|^2\). Its norm is at most one, and evaluating at \(1\) gives norm one if \(N\ne0\). On the zero algebra the unique map has norm zero, and every assertion is immediate. \(\square\)
+
+These are algebraic finite domains; \(T(1)\) may be unbounded or infinite. The zero map is semifinite because its finite domain is all of \(M\), and it is faithful only when \(M=0\).
+
+### B. Extending through every normal observation
+
+**Proposition 46.2 (Canonical normal extension).** If \(S:N_+\to\widehat P_+\) is a normal operator-valued weight, there is a unique additive, nonnegatively homogeneous map
+\(\widehat S:\widehat N_+\to\widehat P_+\) agreeing with \(S\) on bounded positives and preserving every increasing supremum. If \(H_j\uparrow H\) is any increasing net of bounded positive elements, then
+\[
+ \widehat S(H)=\sup_j S(H_j).
+ \tag{46.11}
+\]
+The approximants need not have a common operator-norm bound. For \(p\in P\),
+\[
+ \widehat S(p^*Hp)=p^*\widehat S(H)p.
+ \tag{46.12}
+\]
+
+**Proof.** For \(\alpha\in P_*^+\), define the normal scalar weight
+\(q_\alpha(y)=S(y)(\alpha)\) on \(N_+\). Interface 40.3 extends it to every \(H\in\widehat N_+\). Set
+\[
+ \widehat S(H)(\alpha)=\widehat q_\alpha(H)
+ =\sup_k q_\alpha(H_k)
+ =\sup_k S(H_k)(\alpha),
+ \tag{46.13}
+\]
+where \(H_k\) are the spectral cutoffs of Interface 40.2. This avoids any assumption that \(q_\alpha\) is bounded.
+
+The increasing pointwise supremum of the maps \(S(H_k)\) is an extended-positive element of \(P\). Additivity and nonnegative homogeneity follow by taking the supremum on the same directed set; lower semicontinuity follows because the supremum of lower semicontinuous functions is lower semicontinuous. Its value at zero is zero. Thus (46.13) defines \(\widehat S(H)\in\widehat P_+\).
+
+For fixed \(\alpha\), preservation of addition, scaling and increasing suprema follows from Interface 40.3 for \(q_\alpha\). Equality at every positive normal observation gives the corresponding equalities in \(\widehat P_+\). In particular (46.11) holds for the stated arbitrary net, even when its norms grow without bound. Uniqueness follows by applying preservation of increasing suprema to the canonical cutoffs.
+
+Proposition 40.4 gives \(p^*H_kp\uparrow p^*Hp\) pointwise. Equation (46.11), covariance of \(S\) on bounded positives and pointwise continuity of extended compression give
+\(\widehat S(p^*Hp)=\sup_k p^*S(H_k)p=p^*\widehat S(H)p\).
+This proves (46.12). \(\square\)
+
+This extension preserves arbitrary positive sums too: their finite subsums form an increasing net, and finite additivity applies before taking the supremum. No upward-directedness assertion about the family of all normal functionals dominated by a weight is used.
+
+### C. Dense finite outputs give every extended output
+
+**Theorem 46.3 (Full extended range).** If \(T:M_+\to\widehat N_+\) is faithful, normal and semifinite, then
+\[
+ D=T(\mathfrak m_T)
+ \text{ is an ultraweakly dense two-sided }*\text{-ideal of }N,
+ \qquad
+ \widehat T(\widehat M_+)=\widehat N_+.
+ \tag{46.14}
+\]
+The surjectivity concerns the extended map. A bounded output need not have a bounded positive preimage.
+
+**Proof of density.** Finite bimodule covariance makes \(D\) a two-sided \(*\)-ideal. Its ultraweak closure \(J\) is again a two-sided \(*\)-ideal, by separate continuity of multiplication and continuity of adjoints.
+
+We spell out why \(J=zN\) for a central projection \(z\). It is norm closed. For \(a\in J_+\), the elements \(a(a+\varepsilon1)^{-1}\) belong to \(J\) and increase strongly, hence ultraweakly, to \(s(a)\); therefore \(s(a)\in J\). The supports of positives in \(J\) are directed under joins: \(s(a)\vee s(b)=s(a+b)\), since \(\ker(a+b)=\ker a\cap\ker b\). Let \(z\) be their supremum. Bounded monotone convergence puts \(z\) in \(J\). Unitary conjugation permutes these supports, so \(uzu^*=z\) for every unitary \(u\in N\); the four-unitary span of Section 33 makes \(z\) central. The supports of \(j^*j\) and \(jj^*\) show \(j=zj=jz\) for every \(j\in J\). Conversely \(z\in J\) and the ideal property give \(zN\subseteq J\). Thus \(J=zN\).
+
+For \(x\in\mathfrak n_T\), its square \(x^*x\) is in \(\mathfrak m_T\), so \(T(x^*x)\in D\subseteq zN\). Then
+\[
+ T((x(1-z))^*x(1-z))
+ =(1-z)T(x^*x)(1-z)=0.
+ \tag{46.15}
+\]
+Faithfulness gives \(x(1-z)=0\). Every \(a\in F_T\) also lies in \(\mathfrak n_T\), because \(a^2\le\|a\|a\). Consequently the ultraweak density of \(\mathfrak m_T=\operatorname{span}F_T\) implies ultraweak density of \(\mathfrak n_T\). Fixed right multiplication is ultraweakly continuous, so \(x(1-z)=0\) for all \(x\in M\), in particular \(x=1\). Hence \(z=1\) and \(D\) is dense.
+
+**Proof of positive finite lifts.** If \(b\in D\cap N_+\), choose a self-adjoint \(h\in\mathfrak m_T\) with \(T(h)=b\), by symmetrizing any lift. Write \(h=a-c\), with \(a,c\in F_T\). Thus \(b\le T(a)\). The bounded factorization DW-02 gives a contraction \(s\in N\) with
+\[
+ b^{1/2}=s\,T(a)^{1/2},\qquad b=sT(a)s^*.
+ \tag{46.16}
+\]
+For completeness, define \(T(a)^{1/2}\xi\mapsto b^{1/2}\xi\). The inequality makes this well defined and contractive; extend it to the range closure and set it zero on the orthogonal complement. Commutant unitaries preserve that closure and intertwine the defining map, so the extension commutes with them. The four-unitary span and bicommutant theorem place it in \(N\). This proves the needed factorization without an inverse of \(T(a)\). Finite covariance now gives the positive finite lift \(sas^*\in F_T\).
+
+**Proof of an arbitrary positive decomposition of the identity.** Put \(B=(D\cap N_+)\setminus\{0\}\). Consider multiplicity functions \(m:B\to\mathbb N_0\) such that
+\[
+ \sum_{b\in F}m(b)b\le1
+ \qquad(F\subseteq B\text{ finite}).
+ \tag{46.17}
+\]
+Order them pointwise. Each coordinate is bounded by \(m(b)\le1/\|b\|\). In a chain its pointwise supremum has integer coordinates; each finite set of those coordinates is attained in one chain member. It still satisfies (46.17). Zorn's lemma gives a maximal \(m\). The bounded finite-subsum net defines a sum \(v\le1\).
+
+If \(r=1-v\ne0\), ultraweak density of \(D\) supplies \(d\in D\) with \(r^{1/2}d\ne0\): otherwise separate continuity would make \(r^{1/2}N=0\). The positive element
+\[
+ c=\frac{r^{1/2}dd^*r^{1/2}}{\max(1,\|d\|^2)}
+ \in D,\qquad 0<c\le r
+ \tag{46.18}
+\]
+can be added once to the multiplicity at \(c\). Every finite new subsum is at most \(v+c\le1\), contradicting maximality. Hence \(v=1\). Repeating each \(b\) its \(m(b)\) times gives a possibly uncountable family \((b_i)_{i\in I}\subseteq D\cap N_+\) with strong sum \(1\). For the zero algebra take the empty family.
+
+**Proof of surjectivity.** For \(y\in N_+\), the elements \(y^{1/2}b_i y^{1/2}\) lie in \(D\cap N_+\) and have strong sum \(y\). Choose positive finite lifts \(a_i\in F_T\), using (46.16). The extended sum \(A=\sum_i a_i\) exists in \(\widehat M_+\): it is the pointwise supremum of its increasing finite subsums, and a supremum of lower semicontinuous maps remains lower semicontinuous. Proposition 46.2 gives
+\[
+ \widehat T(A)=\sum_i T(a_i)
+ =\sum_i y^{1/2}b_i y^{1/2}=y.
+ \tag{46.19}
+\]
+There is no common norm bound required on the finite sums \(A_F\).
+
+Finally take \(H\in\widehat N_+\), with canonical bounded cutoffs \(y_k\uparrow H\). Put \(d_1=y_1\) and \(d_k=y_k-y_{k-1}\) for \(k\ge2\). These are bounded positives. By (46.19) choose \(A_k\in\widehat M_+\) with \(\widehat T(A_k)=d_k\). Then
+\[
+ \widehat T\!\left(\sum_{k\ge1}A_k\right)
+ =\sum_{k\ge1}d_k=H.
+ \tag{46.20}
+\]
+The countable spectral cutoffs describe this one energy; they impose no countability on \(M\), \(N\) or the earlier family \(I\). \(\square\)
+
+Even a bounded output can require an extended preimage. On \(M=N=\ell^\infty(\mathbb N)\), let \(T(a)_n=2^{-n}a_n\). Coordinate multiplication proves covariance, positivity and faithfulness. It is normal by coordinatewise increasing suprema, and \(\mathfrak m_T=M\), so it is semifinite. An output equal to \(1\) forces the preimage coordinates to be \(2^n\), which cannot belong to \(M_+\). The extended energy with those coordinates is a preimage under \(\widehat T\). In this example \(D=2^{-n}\ell^\infty\) is ultraweakly dense and proper.
+
+### D. Finite contractions for the operator-valued domain
+
+**Lemma 46.4 (Semifiniteness and finite contractions).** For any operator-valued weight \(R:A_+\to\widehat B_+\), semifiniteness is equivalent to existence of an increasing net of positive contractions \(e_\lambda\in F_R\) with \(e_\lambda\uparrow1_A\) strongly. Normality is not required. Such contractions lie in \(\mathfrak n_R\). Semifiniteness is also equivalent to ultraweak density of \(\mathfrak n_R\) in \(A\).
+
+**Proof.** Assume semifiniteness. Index by pairs \((F,k)\), with \(F\) a finite subset of \(F_R\) and \(k\ge1\) an integer, ordered by inclusion and the integer order. Set
+\[
+ h_F=\sum_{a\in F}a,\qquad
+ e_{F,k}=k h_F(1+k h_F)^{-1}.
+ \tag{46.21}
+\]
+The empty \(F\) gives zero. By inverse order the function
+\(t\mapsto t(1+t)^{-1}=1-(1+t)^{-1}\) is operator monotone on bounded positives. Hence these contractions increase when \(F\) or \(k\) increases. They satisfy \(0\le e_{F,k}\le k h_F\), so \(R(e_{F,k})\) is bounded.
+
+For fixed \(F\), the support-cutoff theorem of Section 33 gives \(e_{F,k}\uparrow s(h_F)\) as \(k\to\infty\). Let \(E\le1\) be the strong supremum of the whole net. It dominates every such support. If \(p=\bigvee_F s(h_F)\), then \(E\ge p\). The projection \(1-p\) annihilates every \(a\in F_R\), and hence every element of \(\mathfrak m_R=\operatorname{span}F_R\). Its fixed multiplication is ultraweakly continuous. Density gives \(1-p=0\), so \(E=1\). Since each contraction is self-adjoint, its strong convergence is also strong* convergence. Moreover \(e_{F,k}^2\le e_{F,k}\) puts it in \(\mathfrak n_R\).
+
+Conversely, suppose such a net exists. For every \(a\in A\), the left-ideal property puts \(a e_\lambda\) in \(\mathfrak n_R\), and \(e_\lambda\in\mathfrak n_R\). Thus
+\(e_\lambda a e_\lambda=e_\lambda^*(a e_\lambda)\in\mathfrak m_R\).
+The contraction bound and strong convergence imply \(e_\lambda a e_\lambda\to a\) strongly, and the bounded strong-to-ultraweak bridge gives ultraweak convergence. Therefore \(\mathfrak m_R\) is dense.
+
+For the density equivalence, perform the same construction (46.21) without assuming semifiniteness. Let \(p=\bigvee_{a\in F_R}s(a)\). Each \(e_{F,k}\) is supported by \(p\), and its strong supremum dominates each support as above; hence \(e_{F,k}\uparrow p\) strongly. If \(x\in\mathfrak n_R\), then \(x^*x\in F_R\), so \(x=xp\). Conversely \(x e_{F,k}\in\mathfrak n_R\) for every \(x\in A\), and the bounded net converges strongly to \(xp\). Thus \(\overline{\mathfrak n_R}^{\mathrm{uw}}=Ap\), since \(Ap=\{x:x=xp\}\) is ultraweakly closed. Every positive in \(F_R\) equals \(pap\), so \(\mathfrak m_R\subseteq pAp\). For every \(z\in A\), the finite products \(e_{F,k}z e_{F,k}\in\mathfrak m_R\) converge strongly to \(pzp\). Hence \(\overline{\mathfrak m_R}^{\mathrm{uw}}=pAp\). Either closure is all of \(A\) exactly when \(p=1_A\), proving the equivalence, including the zero algebra. \(\square\)
+
+### E. Composition retains normality and semifiniteness
+
+**Theorem 46.5 (Composition).** Let \(T:M_+\to\widehat N_+\) and \(S:N_+\to\widehat P_+\) be normal operator-valued weights. Then
+\[
+ U=S\circ T:=\widehat S\,T
+ \tag{46.22}
+\]
+is a normal operator-valued weight. If \(S,T\) are semifinite, \(U\) is semifinite. If both are faithful, \(U\) is faithful. The intermediate finite-domain identity is
+\[
+ \mathfrak n_U\cap\mathfrak n_T
+ =\{x\in\mathfrak n_T:T(x^*x)\in\mathfrak m_S\cap N_+\}.
+ \tag{46.23}
+\]
+
+**Proof of the map and its finite domain.** Proposition 46.2 gives additivity and homogeneity of \(U\). Its \(P\)-covariance follows from (46.1) for \(T\) and (46.12) for \(\widehat S\). If \(x_i\uparrow x\) is bounded in \(M_+\), then
+\(\widehat S(T(x))=\widehat S(\sup_iT(x_i))=\sup_i\widehat S(T(x_i))\).
+Thus \(U\) is normal.
+
+If \(x\in\mathfrak n_T\), its intermediate value \(h=T(x^*x)\) is a bounded positive in \(N\). Then \(x\in\mathfrak n_U\) exactly when \(S(h)\) is bounded. By Theorem 46.1 for \(S\), this says \(h\in F_S=\mathfrak m_S\cap N_+\), proving (46.23). The condition is \(S(h)\) bounded; checking \(S(h^2)\) would test a different domain.
+
+**Proof of semifiniteness.** Choose finite contraction nets \(e_\delta\in F_T\) and \(u_\gamma\in F_S\) from Lemma 46.4, and use the product directed set. Set \(z_{\delta,\gamma}=e_\delta u_\gamma\). These are contractions and tend strong* to \(1\). For every vector \(\xi\),
+\[
+ \|(e_\delta u_\gamma-1)\xi\|
+ \le\|(u_\gamma-1)\xi\|+\|(e_\delta-1)\xi\|;
+ \tag{46.24}
+\]
+the same estimate with the factors reversed treats their adjoints. Both nets are self-adjoint.
+
+Finite covariance and positivity give
+\[
+ T(z_{\delta,\gamma}^*z_{\delta,\gamma})
+ =u_\gamma T(e_\delta^2)u_\gamma
+ \le\|T(e_\delta^2)\|\,u_\gamma^2.
+ \tag{46.25}
+\]
+The right side is a bounded positive whose value under \(S\) is bounded, since \(u_\gamma^2\le u_\gamma\in F_S\). Monotonicity therefore gives \(z_{\delta,\gamma}\in\mathfrak n_U\). For any \(m\in M\), the left-ideal property now yields
+\[
+ z_{\delta,\gamma}^*m z_{\delta,\gamma}\in\mathfrak m_U,
+ \qquad z_{\delta,\gamma}^*m z_{\delta,\gamma}\longrightarrow m
+ \quad\text{strong* and ultraweakly}.
+ \tag{46.26}
+\]
+For the last assertion use bounded multiplication and the uniform contraction bound; the net has norm at most \(\|m\|\). Hence \(\mathfrak m_U\) is ultraweakly dense. The finite constants \(\|T(e_\delta^2)\|\) may grow with \(\delta\); the proof requires no uniform bound on them.
+
+**Proof of faithfulness.** Faithfulness of \(S\) makes its extended map faithful: if \(\widehat S(H)=0\), each bounded cutoff satisfies \(0\le S(H_k)\le\widehat S(H)=0\). Thus \(H_k=0\), and \(H=0\). If \(x\in M_+\) and \(U(x)=0\), this gives \(T(x)=0\), then \(x=0\) by faithfulness of \(T\). The zero-algebra cases use the same convention. \(\square\)
+
+### F. A faithful scalar observation detects semifiniteness
+
+**Theorem 46.6 (Scalar semifiniteness detector).** Let \(T:M_+\to\widehat N_+\) be a normal operator-valued weight and let \(\nu\) be a faithful normal scalar weight on \(N\), possibly nonsemifinite. If
+\[
+ \psi=\nu\circ T:=\widehat\nu\,T
+ \quad\text{is semifinite, then }T\text{ is semifinite}.
+ \tag{46.27}
+\]
+If \(\nu\) is also semifinite, the converse holds. Thus any specified faithful normal semifinite reference weight detects semifiniteness in both directions.
+
+**Proof.** The scalar weight \(\psi\) is normal by Theorem 46.5. Take \(x\in M_+\) with \(\psi(x)<\infty\) and put \(H=T(x)\). In the representation of Interface 40.2, let \(q\in N\) be the projection onto the infinite exterior. Its bounded cutoffs satisfy \(H_k\ge kq\). If \(q\ne0\), faithfulness gives \(\nu(q)>0\), allowing \(\nu(q)=\infty\), and
+\[
+ \widehat\nu(H)=\sup_k\nu(H_k)
+ \ge\sup_k k\,\nu(q)=\infty.
+ \tag{46.28}
+\]
+This contradicts finiteness. Hence the finite-part projection is \(1\), and \(H\) is represented by a densely defined positive affiliated operator \(A\) on the whole representation space.
+
+Let \(p_r=1_{[0,r]}(A)\in N\), \(r\ge1\). These projections increase strongly to \(1\). Bounded extended compression and covariance give
+\[
+ T(p_r x p_r)=p_rHp_r\in N_+,\qquad
+ 0\le p_rHp_r\le r1_N,\qquad
+ p_r x p_r\longrightarrow x\quad\text{strongly and ultraweakly}.
+ \tag{46.29}
+\]
+Thus \(x\) is an ultraweak limit of elements of \(F_T\). Interface 38.2 says that the finite positive cone of \(\psi\) spans \(\mathfrak m_\psi\). Semifiniteness of \(\psi\) makes that span dense, so the ultraweak closure of \(\mathfrak m_T\) is all of \(M\). This proves (46.27) without a semifiniteness assumption on \(\nu\).
+
+For the converse, view the normal semifinite scalar weight \(\nu\) as an operator-valued weight to \(\mathbb C1_N\); its bounded finite domain is its usual scalar finite domain. The semifiniteness clause of Theorem 46.5 applies to \(T\) and \(\nu\). If the algebras are zero, the unique zero maps give the assertion directly. \(\square\)
+
+The faithful scalar test removes the infinite exterior before the spectral compression. It can still assign a finite value to an unbounded energy. Exercise 46C makes both features explicit.
+
+### G. Three solved tests of the finite domains
+
+**Exercise 46A (A finite weighted partial trace, 9 points).** Put \(M=M_2(\mathbb C)\otimes M_2(\mathbb C)\), \(N=M_2(\mathbb C)\otimes1\), and identify \(N\) with \(M_2(\mathbb C)\). With the second-factor matrix units \(E_{ij}\), define
+\[
+ T\!\left(\sum_{i,j=1}^2 X_{ij}\otimes E_{ij}\right)
+ =X_{11}+3X_{22},\qquad
+ S(a)=\operatorname{Tr}\!\left(\begin{pmatrix}2&0\\0&1\end{pmatrix}a\right).
+ \tag{46.30}
+\]
+Prove that \(T\) is faithful, normal and semifinite and has \(N\)-bimodule covariance (3 points). For \(x=E_{12}\otimes E_{11}\) and \(y=E_{11}\otimes E_{11}\), compute \(T(x^*x)\), \(T(y^*y)\), \(T(y^*x)\), and check the norm bound (46.4) (3 points). Compute \(U=S\circ T\) as a matrix-density weight and determine \(T(1)\). Explain how rescaling by \(1/4\) changes its normalization (3 points).
+
+*Solution.* A positive block matrix has positive diagonal blocks, so \(T(X)=X_{11}+3X_{22}\ge0\). Linearity gives additivity and homogeneity. Left and right multiplication by \(a\otimes1,b\otimes1\) multiplies every \(X_{ij}\) by \(a,b\); hence \(T((a\otimes1)X(b\otimes1))=aT(X)b\). If \(T(X)=0\) for \(X\ge0\), both diagonal blocks vanish. For a positive \(X\), a zero diagonal quadratic coefficient means \(X^{1/2}\) kills that coordinate subspace. Both coordinate subspaces together are the whole space, so \(X=0\). Bounded increasing matrix nets converge in norm in finite dimension, where this linear map is continuous; hence \(T\) is normal. Every value is bounded, so its finite domain is all of \(M\).
+
+The three finite outputs are
+\[
+ T(x^*x)=E_{22},\qquad T(y^*y)=E_{11},\qquad
+ T(y^*x)=E_{12}.
+ \tag{46.31}
+\]
+Their norms are one, giving equality in (46.4). The positive Gram block is
+\(\bigl(\begin{smallmatrix}E_{11}&E_{12}\\E_{21}&E_{22}\end{smallmatrix}\bigr)\), whose eigenvalues are \(2,0,0,0\).
+For the usual tensor ordering, the density of \(U\) is
+\(\operatorname{diag}(2,1)\otimes\operatorname{diag}(1,3)
+=\operatorname{diag}(2,6,1,3)\); it is strictly positive. Thus \(U\) is faithful, normal and finite, with \(U(1)=12\).
+Also \(T(1)=4I_2\), and \(T(a\otimes1)=4a\). The rescaled map \(T/4\) has value \(I_2\) at the identity and fixes \(N\), while its composite scalar weight is \(U/4\). Normalization is an additional choice.
+
+**Exercise 46B (Two different intermediate domains, 10 points).** On \(N=M=\ell^\infty(\mathbb N)\), let \(T\) be the identity and let \(S(a)=\sum_{n\ge1}a_n\) on positives. Put \(h_n=1/n\), \(x_n=1/\sqrt n\). Decide whether \(h\) belongs to \(\mathfrak n_S\) and to \(\mathfrak m_S\cap N_+\), and whether \(x\) belongs to \(\mathfrak n_{S\circ T}\) (4 points). Prove normality and semifiniteness of \(S\), and exhibit an increasing finite contraction net tending strongly to \(1\) whose convergence is never in operator norm (4 points). Explain the role of the same example in (46.23) (2 points).
+
+*Solution.* We have \(S(h^2)=\sum_n1/n^2<\infty\), so \(h\in\mathfrak n_S\), whereas \(S(h)=\sum_n1/n=\infty\). For convergence of the first series, compare its tail with \(\int_N^\infty t^{-2}\,dt\); for divergence of the second, each block \(2^j\le n<2^{j+1}\) contributes at least \(1/2\). By Theorem 46.1, \(h\notin\mathfrak m_S\cap N_+\). Since \(T(x^*x)=h\), \(x\in\mathfrak n_T\), but \(x\notin\mathfrak n_{S\circ T}\).
+
+For a bounded increasing positive net \(a_i\uparrow a\), each finite coordinate sum increases to its sum at \(a\). Taking the supremum over finite coordinate sets and interchanging the two suprema proves \(S(a)=\sup_iS(a_i)\), including infinity. Hence \(S\) is normal. Let \(p_F\) be the indicator of a finite subset \(F\subseteq\mathbb N\), ordered by inclusion. Then \(S(p_F)=|F|<\infty\) and \(p_F\uparrow1\) strongly on \(\ell^2(\mathbb N)\): the squared tail of any fixed vector outside \(F\) tends to zero. Lemma 46.4 gives semifiniteness. Every finite \(F\) has an omitted coordinate, so \(\|1-p_F\|=1\). The example shows exactly why the intermediate positive \(h=T(x^*x)\) must be tested by \(S(h)\), rather than by \(S(h^2)\).
+
+**Exercise 46C (An unbounded energy and an invisible summand, 12 points).** For the identity operator-valued weight on \(\ell^\infty(\mathbb N)\), define the extended energy and the faithful normal finite scalar weight
+\[
+ H(\omega)=\sum_{n\ge1}n\,\omega_n,\qquad
+ \nu(a)=\sum_{n\ge1}2^{-n}a_n
+ \quad(\omega\in\ell^1_+,\ a\in\ell^\infty_+).
+ \tag{46.32}
+\]
+Find the spectral cutoffs of \(H\), compute \(\widehat\nu(H)\), and prove that \(H\) has no bounded positive preimage under the extended identity map (5 points). On \(M=N=\mathbb C\oplus\mathbb C\), define
+\[
+ R(a,b)=(a,\infty b)\quad(a,b\ge0),\qquad
+ \nu_0(a,b)=a,\qquad 0\cdot\infty=0.
+ \tag{46.33}
+\]
+Determine normality, faithfulness and semifiniteness of \(R\), and compute \(\widehat\nu_0R\) on the entire positive cone (5 points). Explain which hypothesis of the detector prevents this second example (2 points).
+
+*Solution.* The energy \(H\) is represented by multiplication by \(n\) on \(\ell^2(\mathbb N)\). Its square-root domain is
+\(\{\xi:\sum_n n|\xi_n|^2<\infty\}\), which is dense; its infinite exterior is zero. Its bounded cutoffs are \(H_k(n)=\min(n,k)\), increasing pointwise to \(H\). They give
+\[
+ \widehat\nu(H)=\sum_{n\ge1}n2^{-n}=2,\qquad
+ \nu(H_k)=2-2^{1-k}\uparrow2.
+ \tag{46.34}
+\]
+Indeed \(n=\sum_{j=1}^n1\); interchanging these nonnegative sums gives
+\(\sum_n n2^{-n}=\sum_j\sum_{n\ge j}2^{-n}=\sum_j2^{1-j}=2\).
+Replacing \(n\) by \(\min(n,k)\) truncates the outer sum at \(k\), proving the cutoff formula. Evaluation at the normal coordinate observation \(\delta_n\) forces any bounded preimage \(a\) of \(H\) to satisfy \(a_n=n\) for every \(n\), which is impossible. The extended identity still has \(H\) itself as a preimage, as Theorem 46.3 requires. Its finite scalar value does not make \(H\) a bounded operator.
+
+For the second example, the second extended coordinate is zero when \(b=0\) and infinite when \(b>0\). It is additive and nonnegatively homogeneous with the stated zero convention. Covariance by \(n=(c,d)\) multiplies the coordinates by \(|c|^2,|d|^2\), proving the operator-valued-weight identity. Every bounded increasing positive net converges coordinatewise; an increasing net with positive limiting second coordinate has a positive second coordinate at some index. This proves normality, also at the infinite value. The equality \(R(a,b)=0\) forces \(a=b=0\), so \(R\) is faithful.
+
+Its finite cone and finite definition algebra are
+\(F_R=\{(a,0):a\ge0\}\) and \(\mathfrak m_R=\mathbb C\oplus0\).
+They are not dense in \(\mathbb C\oplus\mathbb C\), so \(R\) is not semifinite. The normal weight \(\nu_0\) is finite but not faithful: it vanishes on \((0,1)\). Its canonical extension reads the first coordinate alone, including when the second energy is infinite. Therefore
+\(\widehat\nu_0R(a,b)=a\) for every positive \((a,b)\). This scalar composite is finite everywhere and thus semifinite. Faithfulness of the observing scalar weight is precisely the missing hypothesis in (46.27).
+
+The matrix and sequence calculations in these solutions illustrate the domains and normalization. The arbitrary-dimensional and infinite-value theorems are proved above.
+
+The exposition and solutions in this section are independently written and dedicated under **CC0-1.0**. Classical mathematical antecedents are Takesaki, *Theory of Operator Algebras II*, IX.4, Proposition 4.17(i)–(ii) and Proposition 4.21(i). This section proves the finite calculus, normal extension, full extended range, composition and scalar detector relative to the exact earlier interfaces above. Modular restriction and the later existence, uniqueness and duality results have their separate proof routes.
+
+
+## 47. Centralizers and affiliated changes of density
+
+A weight can be changed by a density that is unbounded above, tends to zero, and has no finite trace tail. The construction evaluates bounded positive algebra elements; the density is a closed operator with its full spectral domain. Throughout, \(M\) is an arbitrary von Neumann algebra and \(\varphi\) is a faithful normal semifinite weight. No separability or countable decomposition of \(M\) is assumed.
+
+Use the faithful normal GNS representation of Sections 38 and 41–43 and identify \(M\) with its image. Inner products are linear in the first slot. Put
+
+\[
+\begin{gathered}
+F_\varphi=\{b\in M_+:\varphi(b)<\infty\},\qquad
+\mathfrak n_\varphi=\{x\in M:\varphi(x^*x)<\infty\},\\
+\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*,\qquad
+\mathfrak m_\varphi=\operatorname{span}_{\mathbb C}F_\varphi,\qquad
+S=J\Delta^{1/2},\quad \sigma_t=\sigma_t^\varphi.
+\end{gathered}
+\tag{47.1}
+\]
+
+Write \(\widetilde\varphi\) for the finite linear extension on \(\mathfrak m_\varphi\). Every complex weight value below belongs to that domain. The weight-domain algebra theorem gives \(\mathfrak m_\varphi\subseteq\mathfrak a_\varphi\). Moreover \(\mathfrak m_\varphi\) is spanned by \(xy^*\), \(x,y\in\mathfrak a_\varphi\): for \(b\in F_\varphi\), use \(x=y=b^{1/2}\). Membership in the finite-star domain alone does not provide a finite linear weight value.
+
+### A. Entire multipliers on the full finite left ideal
+
+The full right-multiplier identity (47.4) also has a written proof in [CX-03](../../OA-MOD/OA-MOD-CX.html#oa-mod-cx-03). The alternative argument below retains the half-power intertwining (47.5) and finite-domain bimodule consequences needed in this section.
+
+An element \(a\) is entire for a pointwise ultraweakly continuous automorphism group \(\alpha\) when its real orbit extends to an \(M\)-valued entire function \(z\mapsto\alpha_z(a)\). Weak-star entire and norm entire agree here. On each compact disc scalar boundedness and uniform boundedness on \(M_*\) give \(\sup_z\|\alpha_z(a)\|<\infty\). The weak-star Cauchy coefficients belong to \(M=(M_*)^*\); their bounds \(C_RR^{-k}\) give a norm-convergent Taylor series on smaller discs. Scalar tests identify it with the extension.
+
+Continue the real identities to obtain
+
+\[
+\alpha_z(ab)=\alpha_z(a)\alpha_z(b),\quad
+\alpha_z(\alpha_w(a))=\alpha_{z+w}(a),\quad
+\alpha_z(a)^*=\alpha_{\bar z}(a^*).
+\tag{47.2}
+\]
+
+For the group identity first continue one parameter with the other real, then continue the other. Every complex translate is entire; entire elements form a unital involutive algebra. There are bounded entire approximants to every \(a\):
+
+\[
+a_r(z)=\sqrt{r/\pi}\int_{\mathbb R}e^{-r(t-z)^2}\alpha_t(a)\,dt,
+\qquad \|a_r(z)\|\le e^{r(\operatorname{Im}z)^2}\|a\|.
+\tag{47.3}
+\]
+
+These are weak-star integrals. The kernels and their derivatives have integrable Gaussian bounds on compact sets; differentiation in \(L^1\) proves norm holomorphy. Real translation gives \(\alpha_s(a_r(0))=a_r(s)\). Also \(a_r(0)\to a\) sigma-strongly\*. Expand \(\omega((\alpha_t(a)-a)^*(\alpha_t(a)-a))\), for \(\omega\in M_*^+\): weak continuity, multiplication by fixed elements, and \(\alpha_t(a)^*\alpha_t(a)=\alpha_t(a^*a)\) make the four terms continuous at zero. Apply the same argument to adjoints. Jensen's inequality for these Hilbert seminorms and Gaussian concentration prove the assertion. Arbitrary real orbits need not be norm continuous.
+
+**Lemma 47.1 (entire right multiplication, including its domain).** For entire \(a\) under \(\sigma\),
+
+\[
+xa\in\mathfrak n_\varphi,\qquad
+\Lambda_\varphi(xa)=J\sigma_{-i/2}(a^*)J\Lambda_\varphi(x)
+\quad(x\in\mathfrak n_\varphi).
+\tag{47.4}
+\]
+
+Entire elements multiply \(\mathfrak a_\varphi,\mathfrak m_\varphi\) on both sides, and
+
+\[
+\Delta^{1/2}a\Lambda_\varphi(x)
+=\sigma_{-i/2}(a)\Delta^{1/2}\Lambda_\varphi(x)
+\quad(x\in\mathfrak a_\varphi).
+\tag{47.5}
+\]
+
+**Proof.** Fullness in Section 42 identifies the left bounded vectors with \(\Lambda_\varphi(\mathfrak n_\varphi)\), and their intersection with \(D(S)\) with \(\Lambda_\varphi(\mathfrak a_\varphi)\). For finite-star \(x\), the vector function \(\sigma_z(a)\Delta^{iz}\Lambda_\varphi(x)\) is continuous on the closed lower half strip, holomorphic inside, and bounded there. Spectral endpoint estimates bound the vector factor; \(\sigma_{t+is}(a)=\sigma_t(\sigma_{is}(a))\) bounds the operator factor uniformly in \(t\). Its real boundary is \(\Delta^{it}a\Lambda_\varphi(x)\). Section 43's spectral strip criterion MA-09 gives the full half-power domain and (47.5). The vector \(a\Lambda_\varphi(x)=\Lambda_\varphi(ax)\) is already left bounded by the left ideal. Fullness gives \(ax\in\mathfrak a_\varphi\). Apply this to \(a^*,x^*\) to obtain \(xa\in\mathfrak a_\varphi\).
+
+With \(D=\Delta^{1/2}\), on this domain the involution gives
+
+\[
+\begin{aligned}
+\Lambda_\varphi(xa)
+&=S a^* S\Lambda_\varphi(x)\\
+&=J\sigma_{-i/2}(a^*)D J D\Lambda_\varphi(x)
+=J\sigma_{-i/2}(a^*)J\Lambda_\varphi(x).
+\end{aligned}
+\tag{47.6}
+\]
+
+The full polar-domain identity \(D J D\xi=J\xi\) on \(D(D)\) follows from \(J\Delta J=\Delta^{-1}\). The preceding compositions have their domains because \(a^*x^*\) and \(x^*\) are finite-star.
+
+For arbitrary \(x\in\mathfrak n_\varphi\), use Section 41's increasing finite positive contractions \(u_\gamma\uparrow1\). Since \(u_\gamma,x\in\mathfrak n_\varphi\), the product \(u_\gamma x=u_\gamma^*x\) belongs to \(\mathfrak m_\varphi\subseteq\mathfrak a_\varphi\); independently \(x^*u_\gamma\in\mathfrak n_\varphi\) by the left ideal. We have bounded sigma-strong\* convergence \(u_\gamma x\to x\), and
+
+\[
+\Lambda_\varphi(u_\gamma x)=\pi_\varphi(u_\gamma)\Lambda_\varphi(x)
+\longrightarrow\Lambda_\varphi(x).
+\]
+
+Apply (47.6) to these approximants. Its bounded right side converges in Hilbert norm and its algebra argument \(u_\gamma xa\) converges sigma-strongly to \(xa\). The closed GNS graph of Proposition 38.8 proves both membership and (47.4) on the entire finite left ideal. The left ideal, (47.4), and adjoints give the finite-star bimodule; products \(xy^*\) give the finite-linear bimodule. \(\square\)
+
+Let \(\mathcal T\subseteq\mathfrak a_\varphi\) be the operator image of the maximal Tomita algebra of Section 43. The complete MF-07–09 proofs give
+
+\[
+\Lambda_\varphi(\sigma_z(x))=\Delta^{iz}\Lambda_\varphi(x)
+\quad(x\in\mathcal T),
+\tag{47.7}
+\]
+
+and \(\Lambda_\varphi(\mathcal T)\) is a common core for any finite collection of modular power graph norms. Complex translates preserve \(\mathcal T\). For entire \(a\), \(ax,xa\in\mathcal T\) if \(x\in\mathcal T\). The left GNS continuation is \(\sigma_z(a)\Delta^{iz}\Lambda_\varphi(x)\); the right one follows from (47.4) at complex translates. Both are entire vector functions with local bounds. MA-09 on every finite strip supplies every power domain. This uses the full GNS closure above, not an unproved extension from an analytic core.
+
+### B. The centralizer is cyclicity on the correct finite domain
+
+The centralizer is the von Neumann subalgebra
+
+\[
+M_\varphi=\{a\in M:\sigma_t(a)=a\text{ for every }t\in\mathbb R\}.
+\tag{47.8}
+\]
+
+The fixed-point conditions are ultraweakly closed and preserve products, adjoints and identity. A two-sided multiplier of \(\mathfrak m_\varphi\) means \(a\mathfrak m_\varphi,\mathfrak m_\varphi a\subseteq\mathfrak m_\varphi\). Its adjoint is also a multiplier. For \(x\in\mathfrak n_\varphi\), the positive element \(a^*x^*xa\) is in \(\mathfrak m_\varphi\); hence \(xa\in\mathfrak n_\varphi\). The left ideal and adjoints then make \(\mathfrak a_\varphi\) a bimodule for \(a,a^*\).
+
+**Theorem 47.2 (centralizer criterion).** For \(a\in M\),
+
+\[
+a\in M_\varphi\quad\Longleftrightarrow\quad
+\begin{cases}
+a\text{ is a two-sided multiplier of }\mathfrak m_\varphi,\\
+\widetilde\varphi(az)=\widetilde\varphi(za)\quad(z\in\mathfrak m_\varphi).
+\end{cases}
+\tag{47.9}
+\]
+
+**Proof.** For a two-sided multiplier \(a\) and \(x,y\in\mathcal T\), form
+
+\[
+F(z)=\left\langle a\Delta^{-iz}\Lambda_\varphi(x),
+                      \Delta^{-i\bar z+1}\Lambda_\varphi(y)\right\rangle.
+\tag{47.10}
+\]
+
+This is entire: the second vector is antiholomorphic and its inner-product slot conjugates it. At \(z=t+is\), \(0\le s\le1\), the two real powers are \(s\) and \(1-s\); endpoint spectral bounds bound the function on the whole closed upper unit strip. Moving real unitary factors gives
+
+\[
+\begin{aligned}
+F(t)
+&=\langle\sigma_t(a)\Lambda_\varphi(x),\Delta\Lambda_\varphi(y)\rangle\\
+&=\langle\Delta^{1/2}\sigma_t(a)\Lambda_\varphi(x),
+                  \Delta^{1/2}\Lambda_\varphi(y)\rangle\\
+&=\langle\Lambda_\varphi(y^*),\Lambda_\varphi(x^*\sigma_t(a^*))\rangle
+=\widetilde\varphi(\sigma_t(a)xy^*),\\
+F(t+i)&=\widetilde\varphi(xy^*\sigma_t(a)).
+\end{aligned}
+\tag{47.11}
+\]
+
+For the upper edge start with \(\langle\Delta\Lambda_\varphi(x),\sigma_t(a^*)\Lambda_\varphi(y)\rangle\), split half powers, and use \(S\) with reversed slots. The multiplier domain fact supplies each finite-star vector. No linear weight is evaluated on \(x\) or \(y\) individually.
+
+For entire \(a\) and \(z_0=xy^*\), \(x,y\in\mathfrak a_\varphi\), (47.5) gives a second calculation:
+
+\[
+G(z)=\widetilde\varphi(\sigma_z(a)z_0)
+=\langle\sigma_{z-i/2}(a)\Delta^{1/2}\Lambda_\varphi(x),
+                         \Delta^{1/2}\Lambda_\varphi(y)\rangle.
+\tag{47.12}
+\]
+
+It is entire and bounded on the closed upper unit strip. At \(z=t+i\), move the operator to the other slot, use \(\sigma_{t+i/2}(a)^*=\sigma_{t-i/2}(a^*)\), and apply (47.5). The resulting pairing \(\langle S\sigma_t(a^*)\Lambda_\varphi(y),S\Lambda_\varphi(x)\rangle\) is
+
+\[
+G(t+i)=\widetilde\varphi(z_0\sigma_t(a)).
+\tag{47.13}
+\]
+
+Linear combinations give these identities for every \(z_0\in\mathfrak m_\varphi\). If \(a\) is fixed, Lemma 47.1 gives its multiplier property, and the constant real orbit in (47.12) and the identity theorem give the cyclic equality.
+
+Conversely suppose the right side of (47.9). Weight invariance and cyclicity on \(\sigma_{-t}(xy^*)\) make the two boundary values in (47.11) equal. The entire functions \(F(z+i)\) and \(F(z)\) agree on the real line, hence everywhere. Period \(i\) and the strip bound bound \(F\) on the plane. Cauchy's estimate \(|F'(z)|\le\sup|F|/R\), with \(R\to\infty\), makes it constant. Therefore
+
+\[
+\langle(\sigma_t(a)-a)\Lambda_\varphi(x),\Delta\Lambda_\varphi(y)\rangle=0.
+\]
+
+Both test spaces are dense, since \(\Delta\Lambda_\varphi(\mathcal T)=\Lambda_\varphi(\mathcal T)\) by complex-time invariance. Thus \(\sigma_t(a)=a\) for every \(t\). \(\square\)
+
+For \(a\in M_\varphi\), (47.4) becomes \(\Lambda_\varphi(xa)=Ja^*J\Lambda_\varphi(x)\). Every unitary \(u\in M_\varphi\) consequently satisfies
+
+\[
+\varphi(u^*bu)=\varphi(b)\quad(b\in M_+).
+\tag{47.14}
+\]
+
+For finite \(\varphi(b)\), use the norm identity for \(b^{1/2}u\). If either side is finite, apply this argument with \(u\) or \(u^*\) to make the other finite and equal. The equality therefore includes infinity.
+
+### C. Regularizations retain the entire form domain
+
+A positive self-adjoint \(h\) is affiliated with \(M_\varphi\) when all its spectral projections belong to \(M_\varphi\). Set
+
+\[
+h_\varepsilon=h(1+\varepsilon h)^{-1}\in(M_\varphi)_+,\qquad
+\|h_\varepsilon\|\le\varepsilon^{-1}.
+\tag{47.15}
+\]
+
+These increase as \(\varepsilon\downarrow0\). Section 39's full spectral calculus and scalar monotone convergence give
+
+\[
+\sup_{\varepsilon>0}\langle h_\varepsilon\xi,\xi\rangle
+=\begin{cases}
+\|h^{1/2}\xi\|^2,&\xi\in D(h^{1/2}),\\
+\infty,&\xi\notin D(h^{1/2}).
+\end{cases}
+\tag{47.16}
+\]
+
+**Lemma 47.3 (order, including the reverse domain implication).** For positive self-adjoint \(h,k\), the form inequality
+
+\[
+D(k^{1/2})\subseteq D(h^{1/2}),\qquad
+\|h^{1/2}\xi\|^2\le\|k^{1/2}\xi\|^2\quad(\xi\in D(k^{1/2}))
+\tag{47.17}
+\]
+
+is equivalent to \(h_\varepsilon\le k_\varepsilon\) for every \(\varepsilon>0\), and also to that inequality for one \(\varepsilon>0\).
+
+**Proof.** QF-05's variational supremum in Section 39 gives \((k+\lambda)^{-1}\le(h+\lambda)^{-1}\) for every \(\lambda>0\): the \(k\) supremum has a smaller domain and a larger energy penalty. Conversely assume this resolvent inequality for one \(\lambda>0\). Put \(B_h=(h+\lambda)^{-1/2}\), \(B_k=(k+\lambda)^{-1/2}\). These bounded positive injective operators have dense range. The inequality \(B_k^2\le B_h^2\) makes \(C^*B_h\eta=B_k\eta\) a well-defined contraction on \(\operatorname{ran}B_h\). Extend by density and take adjoints to get \(B_k=B_hC\). The actual ranges are \(D(h^{1/2})\) and \(D(k^{1/2})\), respectively. For \(\xi=B_k\eta=B_hC\eta\),
+
+\[
+\|h^{1/2}\xi\|^2+\lambda\|\xi\|^2
+=\|C\eta\|^2\le\|\eta\|^2
+=\|k^{1/2}\xi\|^2+\lambda\|\xi\|^2.
+\]
+
+This proves both the domain inclusion and the form inequality. Finally
+
+\[
+h_\varepsilon=\varepsilon^{-1}I-
+\varepsilon^{-2}(h+\varepsilon^{-1}I)^{-1}
+\tag{47.18}
+\]
+
+converts the two bounded orders at \(\lambda=\varepsilon^{-1}\). No commutation assumption was used. \(\square\)
+
+### D. Bounded changes are additive for noncommuting densities
+
+Write \(N=M_\varphi\). For bounded \(h\in N_+\), define
+
+\[
+\varphi_h(b)=\varphi(h^{1/2}bh^{1/2})\quad(b\in M_+).
+\tag{47.19}
+\]
+
+It is normal. Lemma 47.1 applied to \(b^{1/2}h^{1/2}\) gives \(\varphi_h(b)\le\|h\|\varphi(b)\) for finite \(\varphi(b)\), and on all positives with \(0\cdot\infty=0\). Its finite positive domain contains the ultraweakly dense \(F_\varphi\), so it is semifinite.
+
+**Proposition 47.4 (the bounded positive cone).** For \(h,k\in N_+\), \(c\ge0\), and every \(b\in M_+\),
+
+\[
+\varphi_{h+k}(b)=\varphi_h(b)+\varphi_k(b),\qquad
+\varphi_{ch}(b)=c\varphi_h(b),\qquad
+h\le k\Longrightarrow\varphi_h(b)\le\varphi_k(b).
+\tag{47.20}
+\]
+
+For a bounded increasing net \(h_i\uparrow h\) in \(N_+\), \(\varphi_{h_i}(b)\uparrow\varphi_h(b)\), including infinity.
+
+**Proof.** Put \(r=h+k\). Define contractions \(u,v\) on \(\operatorname{ran}r^{1/2}\) by \(ur^{1/2}\xi=h^{1/2}\xi\), \(vr^{1/2}\xi=k^{1/2}\xi\); extend by zero on the support complement. They commute with \(N'\), hence belong to \(N\). Taking adjoints and testing on the dense range in \(s(r)H\) gives
+
+\[
+h^{1/2}=ur^{1/2}=r^{1/2}u^*,\quad
+k^{1/2}=vr^{1/2}=r^{1/2}v^*,\quad
+u^*u+v^*v=s(r).
+\tag{47.21}
+\]
+
+If \(y=r^{1/2}br^{1/2}\) has finite weight, centralizer multiplication and cyclicity give
+
+\[
+\varphi_h(b)+\varphi_k(b)
+=\widetilde\varphi(uyu^*+vyv^*)
+=\widetilde\varphi((u^*u+v^*v)y)=\varphi(y).
+\]
+
+Conversely, if both left terms are finite, \(r^{1/2}=h^{1/2}u+k^{1/2}v\) gives
+
+\[
+y\le2u^*h^{1/2}bh^{1/2}u+2v^*k^{1/2}bk^{1/2}v.
+\tag{47.22}
+\]
+
+The right side has finite weight by the multiplier property. Thus \(y\) is finite and the equality applies. If either left term is infinite, finite weight of \(y\) is impossible. Homogeneity is immediate, including the zero weight at \(c=0\); additivity with \(k=h+(k-h)\) gives monotonicity. For the increasing-net assertion, monotonicity gives one inequality. Strong convergence of square roots gives ultraweak convergence of \(h_i^{1/2}bh_i^{1/2}\). Lower semicontinuity of the normal weight, Theorem 38.3, gives the other inequality. \(\square\)
+
+### E. Arbitrary affiliated densities, support and finite domains
+
+For arbitrary positive self-adjoint \(h\) affiliated with \(N\), put
+
+\[
+\psi(b)=\varphi_h(b)=
+\sup_{\varepsilon>0}\varphi(h_\varepsilon^{1/2}bh_\varepsilon^{1/2})
+\quad(b\in M_+).
+\tag{47.23}
+\]
+
+**Theorem 47.5 (complete density construction).** This is a normal semifinite weight with support \(e=s(h)\). It is faithful exactly when \(h\) is injective. Form order of densities implies order of weights. Its exact finite domains are
+
+\[
+\begin{gathered}
+F_\psi=\{b\in M_+:\sup_\varepsilon
+\varphi(h_\varepsilon^{1/2}bh_\varepsilon^{1/2})<\infty\},\\
+\mathfrak n_\psi=\{x\in M:\sup_\varepsilon
+\varphi((xh_\varepsilon^{1/2})^*(xh_\varepsilon^{1/2}))<\infty\},\\
+\mathfrak a_\psi=\mathfrak n_\psi\cap\mathfrak n_\psi^*,\qquad
+\mathfrak m_\psi=\operatorname{span}_{\mathbb C}F_\psi
+=\operatorname{span}_{\mathbb C}\{y^*x:x,y\in\mathfrak n_\psi\}.
+\end{gathered}
+\tag{47.24}
+\]
+
+Its GNS null ideal is \(\{x\in M:xe=0\}\). In general its finite domains differ from those of \(\varphi\).
+
+**Proof.** Lemma 47.3 and Proposition 47.4 make the regularized weights increasing. For additivity choose one sufficiently small \(\varepsilon\) to approach finite lower bounds for both summands; this proves the supremum identity even at infinite values. Homogeneity follows similarly. For an arbitrary positive increasing net \(b_\alpha\uparrow b\), interchange \(\sup_\varepsilon\sup_\alpha\); every regularized weight is normal. This proves normality without countability. Regularization order proves form monotonicity.
+
+For semifiniteness let \(p_n=1_{[0,n]}(h)\uparrow1\). For \(b\in F_\varphi\), centralizer multiplication gives \(p_nbp_n\in F_\varphi\), and bounded monotone continuity gives
+
+\[
+\psi(p_nbp_n)=\varphi_{hp_n}(b)\le n\varphi(b)<\infty.
+\tag{47.25}
+\]
+
+Compress \(F_\varphi\) into each corner; these positives are ultraweakly dense in its positive cone. Then let \(p_n\to1\). The finite positives for \(\psi\) are ultraweakly dense in \(M_+\), proving semifiniteness. The corner identities can have infinite weight.
+
+Every regularization is supported on \(e\), so \(\psi(b)=\psi(ebe)\). If this is zero, faithfulness of \(\varphi\) gives \(b^{1/2}h_\varepsilon^{1/2}=0\). Its range is dense in \(eH\), hence \(b^{1/2}e=0\). The converse is immediate. Apply this to \(x^*x\) for the null ideal. The finite-domain statements now follow from the definitions and Section 38's algebraic weight theorem. If \(x\in\mathfrak n_\psi\), each \(xh_\varepsilon^{1/2}\in\mathfrak n_\varphi\); its squared GNS norm is the corresponding finite summand. No off-domain GNS vector is implicit. \(\square\)
+
+The construction includes \(h=0\), which gives the zero weight. On \(eMe\) it gives a faithful normal semifinite weight. The principal statements below concern injective \(h\); restricting first gives their supported versions.
+
+### F. Spectral corners and the modular group
+
+**Lemma 47.6 (centralizer projections and restrictions).** If a faithful normal semifinite weight \(\theta\) is invariant under conjugation by \(2p-1\), then \(p\in M_\theta\). If \(p\in M_\theta\), its restriction \(\theta^p\) to \(pMp\) is faithful normal semifinite, with \(\sigma_t^{\theta^p}=\sigma_t^\theta|_{pMp}\).
+
+**Proof.** Conjugation invariance and additivity give, including infinity,
+
+\[
+\theta(b)=\theta(pbp)+\theta((1-p)b(1-p)).
+\tag{47.26}
+\]
+
+Thus \(xp\in\mathfrak n_\theta\) for \(x\in\mathfrak n_\theta\). The left ideal, adjoints and products give the finite-star and finite-linear bimodules. The linear extension of (47.26) annihilates off-diagonal terms, so \(\widetilde\theta(pz)=\widetilde\theta(pzp)=\widetilde\theta(zp)\). Theorem 47.2 gives the first assertion. For the restriction, \(p\mathfrak m_\theta p\) is finite and ultraweakly dense in the corner. The restricted existing modular group preserves the restriction and has the same KMS functions for corner finite-star elements. All those elements lie in \(\mathfrak a_\theta\), with unchanged products and finite values. Section 45's complete KMS uniqueness identifies the restricted group. \(\square\)
+
+Every spectral projection \(p\) of an injective \(h\) belongs to \(M_\psi\): the unitary \(2p-1\in N\) commutes with \(h_\varepsilon\), so (47.14) makes every regularized weight, and then \(\psi\), conjugation invariant. Use Lemma 47.6. For singular \(h\), apply the same argument to the supported projections in \(eMe\).
+
+**Theorem 47.7 (bounded invertible polar computation).** If \(h\in N_+\) is bounded and boundedly invertible, the weights have equal finite left, finite-star and finite-linear domains. On \(H_\varphi\) realize the new GNS map by
+
+\[
+\Lambda_\psi(x)=\Lambda_\varphi(xh^{1/2})=R\Lambda_\varphi(x),
+\qquad R=Jh^{1/2}J\in M'.
+\tag{47.27}
+\]
+
+In this realization,
+
+\[
+\begin{gathered}
+S_\psi=RSR^{-1}=J(h^{1/2}R^{-1}\Delta^{1/2}),\qquad J_\psi=J,\\
+\Delta_\psi=h(JhJ)^{-1}\Delta,\qquad
+D(\Delta_\psi^{1/2})=D(\Delta^{1/2}),\quad D(\Delta_\psi)=D(\Delta),\\
+\Delta_\psi^{it}=h^{it}Jh^{it}J\Delta^{it},\qquad
+\sigma_t^\psi(x)=h^{it}\sigma_t^\varphi(x)h^{-it}.
+\end{gathered}
+\tag{47.28}
+\]
+
+The positive products denote full closed operators on the displayed domains.
+
+**Proof.** Proposition 47.4 gives \(\|h^{-1}\|^{-1}\varphi\le\psi\le\|h\|\varphi\). Formula (47.27) gives the new GNS norm; \(R\)'s invertibility gives dense range and its commutant membership gives the left action.
+
+The fixed operator \(h\) commutes with every \(\Delta^{it}\). To recover the unbounded domain, use the lower-strip function \(h\Delta^{iz}\xi\), for \(\xi\in D(\Delta)\), and MA-09: \(h\xi\in D(\Delta)\), \(\Delta h\xi=h\Delta\xi\). Apply this to \((1+\Delta)^{-1}\eta\). Commutation with that resolvent, continuous approximation and monotone spectral approximation give commutation with all spectral projections of \(\Delta\). It holds also for bounded spectral functions of \(h\); conjugation by \(J\) gives it for \(R\).
+
+On \(R\Lambda_\varphi(\mathfrak a_\varphi)\) the involution is \(RSR^{-1}\). Bounded invertible graph transport is closed and preserves graph cores, proving the closed-operator equality. Set \(C=h^{1/2}R^{-1}\), \(D=\Delta^{1/2}\). Commuting bounded positive factors make \(C\) positive and boundedly invertible. Both \(C,C^{-1}\) preserve \(D(D)\). Therefore \(P=CD\) on \(D(D)\) is closed, and its adjoint \(DC\) has domain \(\{\eta:C\eta\in D(D)\}=D(D)\). Positivity follows by inserting \(C^{1/2}\) on both sides of the inner product. Thus \(S_\psi=JP\) is its polar decomposition; \(P\) is injective with dense range. Closed antilinear polar uniqueness gives \(J_\psi=J\), \(\Delta_\psi=P^2=C^2\Delta\), and \(D(P^2)=D(\Delta)\).
+
+For the power formula work first on \(1_{[1/m,m]}(D)H\). There the factors are bounded positive invertible. Approximate their spectral functions by step functions on commuting projections; finite orthogonal products reduce \(P^{it}=C^{it}D^{it}\) to a scalar identity. Uniform functional calculus passes to the bounded factors, and strong convergence of the bands proves it everywhere. Squaring gives (47.28). Antiunitarity means \(Jh^{it}J=(JhJ)^{-it}\), so the two written powers \(h^{it}\) have the same sign. The commutant factor disappears when conjugating \(M\), giving the modular formula. \(\square\)
+
+For completeness the analytic finite test version has the explicit spectral pairing, for \(x\in\mathcal T\), \(y\in\mathfrak a_\varphi\), \(\beta_z(x)=h^{iz}\sigma_z(x)h^{-iz}\):
+
+\[
+\begin{aligned}
+F(z)&=\widetilde\psi(\beta_z(x)y)
+=\left\langle h^{iz+1}\Delta^{iz+1}\Lambda_\varphi(x),
+                     S h^{-iz}\Lambda_\varphi(y)\right\rangle,\\
+F(t)&=\widetilde\varphi(h\beta_t(x)y),\qquad
+F(t+i)=\widetilde\varphi(hy\beta_t(x)).
+\end{aligned}
+\tag{47.29}
+\]
+
+All values are finite. Split half powers to get \(\widetilde\varphi(wy)=\langle\Delta\Lambda_\varphi(w),\Lambda_\varphi(y^*)\rangle\) for \(w\in\mathcal T\). For \(w=h\beta_z(x)\), (47.4) gives \(\Lambda_\varphi(w)=h^{iz+1}(JhJ)^{-iz}\Delta^{iz}\Lambda_\varphi(x)\). Move its commutant factor to the second slot, using \((JhJ)^{i\bar z}S\Lambda_\varphi(y)=Sh^{-iz}\Lambda_\varphi(y)\), to prove the pairing. Bounded powers of \(h\) preserve \(D(S)\); only the first vector needs all modular powers. This proves entire holomorphy. It also proves the strip bound directly: on \(z=t+is\), \(0\le s\le1\), the first vector has modular real power \(1-s\), while the bounded positive powers of \(h\) in both vectors have exponents in compact real intervals. The remaining real-time factors are unitary and commute with those powers. On the real edge \(F\) agrees with the modular KMS function for \(\psi\). Bounded-strip uniqueness from Section 43 identifies them on the strip, and Section 45 gives the upper boundary, without assuming analyticity of \(y\).
+
+**Theorem 47.8 (general modular formula).** For injective positive self-adjoint \(h\) affiliated with \(N\),
+
+\[
+\sigma_t^{\varphi_h}(x)=h^{it}\sigma_t^\varphi(x)h^{-it}
+\quad(x\in M,\ t\in\mathbb R).
+\tag{47.30}
+\]
+
+For arbitrary \(h\ge0\), the formula holds on \(eMe\) with powers unitary on \(eH\). It asserts no modular group for the nonfaithful weight on all of \(M\).
+
+**Proof.** Restrict first to \(eMe\) using Lemma 47.6, and assume \(e=1\). Let \(q_n=1_{[1/n,n]}(h)\uparrow1\). These projections belong to both centralizers by the projection argument. On \(q_nMq_n\), \(hq_n\) is bounded invertible relative to identity \(q_n\), and (47.23) restricts exactly to the bounded-density weight. Theorem 47.7 computes its modular group; Lemma 47.6 identifies both corner groups with the restrictions of the global ones. Thus (47.30) holds for \(q_nxq_n\). These elements converge boundedly sigma-strongly\* to \(x\); normal automorphisms preserve this topology. This proves the formula. Spectral unitaries are strongly continuous and fixed by \(\sigma^\varphi\), giving pointwise continuity and the group law also directly. The spectral sequence for one operator imposes no countability on the algebra. \(\square\)
+
+### G. Full GNS transport, inverse densities and normalization
+
+For injective \(h\), its inverse is positive self-adjoint on
+
+\[
+D(h^{-1})=\left\{\xi:\int_{(0,\infty)}\lambda^{-2}\,d\mu_\xi^h(\lambda)<\infty\right\}.
+\tag{47.31}
+\]
+
+The spectral projection argument places \(h^{-1}\) in affiliation with \(M_\psi\), as well as \(M_\varphi\).
+
+**Proposition 47.9 (GNS transport for an arbitrary injective density).** There is a unique unitary \(W_h:H_\psi\to H_\varphi\) with
+
+\[
+W_h\Lambda_\psi(x)=\lim_{n\to\infty}\Lambda_\varphi(xq_nh^{1/2})
+\quad(x\in\mathfrak n_\psi).
+\tag{47.32}
+\]
+
+Here \(q_nh^{1/2}\) is bounded and every displayed product is in \(\mathfrak n_\varphi\). Also \(xq_n\in\mathfrak n_\varphi\cap\mathfrak n_\psi\), with \(\|\Lambda_\varphi(xq_n)\|^2\le n\psi(x^*x)\). The unitary intertwines the left representations and satisfies
+
+\[
+W_h\Delta_\psi^{it}W_h^*
+=h^{it}J_\varphi h^{it}J_\varphi\Delta_\varphi^{it}.
+\tag{47.33}
+\]
+
+This asserts a unitary-power formula without an unstated unbounded product domain.
+
+**Proof.** Right multiplication by the centralizer projections for \(\psi\) gives \(\Lambda_\psi(xq_n)=J_\psi q_nJ_\psi\Lambda_\psi(x)\to\Lambda_\psi(x)\). On a band the definition gives
+
+\[
+\|\Lambda_\psi(xq_n)\|^2
+=\varphi(h^{1/2}q_nx^*xq_nh^{1/2})
+=\|\Lambda_\varphi(xq_nh^{1/2})\|^2.
+\tag{47.34}
+\]
+
+Multiplying \(xq_nh^{1/2}\) on the right by the bounded centralizer element \(q_nh^{-1/2}\), whose norm is at most \(\sqrt n\), proves \(xq_n\in\mathfrak n_\varphi\) and its stated norm bound. Equality (47.34) on a common larger band applies to differences and finite linear combinations. It defines an isometry on the dense union of the band GNS ranges and makes (47.32) Cauchy. For \(y\in\mathfrak n_\varphi\), set \(x=yq_nh^{-1/2}\), a bounded algebra element. Evaluate its positive square directly from the definition: \(\psi(x^*x)=\varphi(q_ny^*yq_n)<\infty\), since \(yq_n\in\mathfrak n_\varphi\). Thus \(x\in\mathfrak n_\psi\) before taking its GNS vector, and its image is \(\Lambda_\varphi(yq_n)\). Centralizer right multiplication for \(\varphi\) makes these vectors converge to \(\Lambda_\varphi(y)\). The isometry has dense range, hence is unitary. Left multiplication commutes with the band operations and limits. To prove (47.33), apply modular covariance to (47.32), substitute (47.30), and use (47.4) for the fixed unitary \(h^{-it}\) on each approximating vector. Density gives the unitary equality. \(\square\)
+
+**Theorem 47.10 (inverse and scalar normalization, including infinity).** For injective \(h\),
+
+\[
+(\varphi_h)_{h^{-1}}=\varphi\text{ on }M_+,\qquad
+\varphi_{ch}=c\varphi_h\quad(c\ge0).
+\tag{47.35}
+\]
+
+For \(c>0\), \(\sigma^{c\varphi_h}=\sigma^{\varphi_h}\) and \((c\varphi_h)_{c^{-1}h^{-1}}=\varphi\). Scaling leaves all finite domains unchanged and the scalar GNS unitary \(H_{c\psi}\to H_\psi\) sends \(\Lambda_{c\psi}(x)\) to \(\sqrt c\,\Lambda_\psi(x)\).
+
+**Proof.** For bounded commuting invertible densities \(a,b\), with the stated reference and perturbed centralizer memberships, substitute in (47.19): \((\theta_a)_b=\theta_{ab}\), because \(a^{1/2}b^{1/2}=(ab)^{1/2}\). This is equality of the positive operators evaluated inside \(\theta\), including every infinite value.
+
+Set \(\rho=\psi_{h^{-1}}\). Every \(q_n\) centralizes \(\rho\) by the projection lemma for this second perturbation. On \(q_nMq_n\), regularizations restrict to the bounded construction; the bounded invertible density \(hq_n\) and its inverse cancel by the preceding equality. Therefore \(\rho\) and \(\varphi\) agree on every band corner.
+
+For a faithful normal semifinite weight \(\theta\) and increasing centralizer projections \(q_n\uparrow1\), (47.26), also on nested subprojections, makes \(\theta(q_nbq_n)\) increasing and bounded above by \(\theta(b)\). Bounded strong convergence \(q_nbq_n\to b\) and lower semicontinuity give the reverse inequality. Thus \(\theta(b)=\sup_n\theta(q_nbq_n)\), including infinity. Apply this to \(\rho,\varphi\) to extend the equality to all positives.
+
+For \(c>0\), \((ch)_\varepsilon=c h_{c\varepsilon}\), so bounded homogeneity and the supremum prove scaling. At \(c=0\) both sides are the zero weight by \(0\cdot\infty=0\). Scaling the GNS inner product proves the stated unitary, which transports the closed involution and polar factors; the modular automorphisms remain the same, as also proved in Section 45. Scaling a reference weight commutes with the perturbation supremum. Therefore \((c\psi)_{c^{-1}h^{-1}}=\psi_{h^{-1}}=\varphi\). \(\square\)
+
+**Proposition 47.11 (normal isomorphism transport).** Let \(\vartheta:L\to M\) be a normal unital involutive isomorphism, \(c>0\), and \(\chi=c\varphi\circ\vartheta\). The reference GNS unitary is \(U\Lambda_\chi(y)=\sqrt c\,\Lambda_\varphi(\vartheta(y))\). Let \(k=U^*hU\), on \(U^*D(h)\), with spectral projections \(\vartheta^{-1}(1_B(h))\). It is injective and affiliated with \(L_\chi\), and
+
+\[
+\begin{gathered}
+\chi_k=c\varphi_h\circ\vartheta,\qquad
+\mathfrak n_{\chi_k}=\vartheta^{-1}(\mathfrak n_{\varphi_h}),\\
+\mathfrak a_{\chi_k}=\vartheta^{-1}(\mathfrak a_{\varphi_h}),\qquad
+\mathfrak m_{\chi_k}=\vartheta^{-1}(\mathfrak m_{\varphi_h}),
+\end{gathered}
+\tag{47.36}
+\]
+
+with the same pullback rule for the finite positive cone and null ideal. Furthermore
+
+\[
+\sigma_t^{\chi_k}(y)
+=\vartheta^{-1}(\sigma_t^{\varphi_h}(\vartheta(y)))
+=k^{it}\sigma_t^\chi(y)k^{-it}.
+\tag{47.37}
+\]
+
+For the similarly scaled perturbed GNS unitary \(U_h:H_{\chi_k}\to H_{\varphi_h}\), the transport maps satisfy \(UW_k=W_hU_h\).
+
+**Proof.** Section 45 supplies \(\sigma^\chi=\vartheta^{-1}\sigma^\varphi\vartheta\), including the GNS and polar transport, so the transported spectral projections centralize \(\chi\). Spectral transport gives \(\vartheta(k_\varepsilon)=h_\varepsilon\). Substitution into the bounded regularizations and then their supremum proves the weight equality, including infinity. Apply it to \(y^*y,yy^*\), and finite positive spans to obtain the exact domains. Section 45 applied to the new weights, or Theorem 47.8, gives (47.37). On band generators both sides of the last diagram are \(\sqrt c\,\Lambda_\varphi(\vartheta(y)q_nh^{1/2})\). Full GNS limits and density finish the proof. \(\square\)
+
+### H. Three graded exercises with complete solutions
+
+**Exercise 47A (finite domains and the antiunitary sign; introductory).** On \(L^\infty(0,\infty)\) with integration, decide whether \(f(s)=(1+s)^{-3/4}\) has a finite linear weight value. Then, on Hilbert–Schmidt \(2\times2\) matrices, use reference density \(d=\operatorname{diag}(2,5)\) and perturb by \(h=\operatorname{diag}(3,7)\). Compute the weight, centralizer, modular eigenvalues on all matrix units and \(Jh^{it}J\), and verify the inverse.
+
+*Solution.* We have
+
+\[
+\int_0^\infty f(s)^2\,ds=2,\qquad
+\int_0^R f(s)\,ds=4((1+R)^{1/4}-1)\longrightarrow\infty.
+\]
+
+Thus \(f\in\mathfrak a_\varphi=L^2\cap L^\infty\), but \(f\notin\mathfrak m_\varphi=L^1\cap L^\infty\). Its trace orbit is constant and entire. Neither analyticity nor the multiplier \(1\) provides a linear value at \(f\). Products of two finite-star elements do have the required finite values by Cauchy–Schwarz.
+
+For matrices, \(\Lambda_\varphi(x)=xd^{1/2}\), \(J\xi=\xi^*\), and \(\Delta_\varphi\xi=d\xi d^{-1}\). The new density is \(hd=\operatorname{diag}(6,35)\); on positives \(\psi(x)=6x_{11}+35x_{22}\). Its centralizer is diagonal because the two spectral eigenvalues differ. The modular eigenvalues on \(E_{11},E_{12},E_{21},E_{22}\) are \(1,6/35,35/6,1\); unitary powers raise these to \(it\). Conjugating left \(h^{it}\) by \(J\) gives right \(h^{-it}\). Hence (47.28) gives \((h_i d_i/(h_j d_j))^{it}\), with the required same written sign. All domains are the full finite-dimensional algebra or Hilbert space. Perturbing again by \(\operatorname{diag}(1/3,1/7)\) restores \(d\).
+
+**Exercise 47B (arbitrary cardinality and both unbounded scales; intermediate).** For nonempty arbitrary \(K\), take \(I=K\times\mathbb Z\), \(M=\ell^\infty(I)\), counting weight \(\varphi(b)=\sum_{k,m}b_{k,m}\), and density \(h\) multiplying by \(e^m\) on \(\ell^2(I)\). Give its full domain, new weight, finite domains, GNS transport, inverse and bands. Exhibit both possible strict differences between finite left ideals, and discuss uncountable \(K\).
+
+*Solution.* Every sum is the supremum of finite subsums. The operator is positive self-adjoint, injective and affiliated, on
+
+\[
+D(h)=\{\xi\in\ell^2(I):\sum_{k,m}e^{2m}|\xi_{k,m}|^2<\infty\}.
+\]
+
+Finite coordinate vectors are dense. Interchange regularization with finite subsums to get \(\psi(b)=\sum_{k,m}e^m b_{k,m}\). Precisely,
+
+\[
+\mathfrak n_\psi=\mathfrak a_\psi
+=\{x\in\ell^\infty(I):\sum_{k,m}e^m|x_{k,m}|^2<\infty\},\qquad
+\mathfrak m_\psi=\{x\in\ell^\infty(I):\sum_{k,m}e^m|x_{k,m}|<\infty\}.
+\]
+
+For the last equality, finite positive spans are weighted absolutely summable; conversely split such a bounded function into positive and negative real and imaginary parts. The null ideal is zero. The natural weighted \(L^2\) realization gives \(W_hx=(e^{m/2}x_{k,m})\). Modular groups are trivial because the algebra is commutative. The inverse has coefficients \(e^{-m}\), on its analogous full domain, and restores counting weight. Scaling by \(c>0\) replaces coefficients by \(ce^m\) and inserts the square-root GNS factor.
+
+Fix \(k_0\in K\). The function supported at \((k_0,m)\), \(m\ge1\), with values \(e^{-m/2}\), has finite counting squared norm but \(\psi\)-squared norm \(\sum_{m\ge1}1=\infty\). The indicator of \(\{(k_0,m):m\le0\}\) has finite \(\psi\)-squared norm \((1-e^{-1})^{-1}\), but infinite counting squared norm. Neither finite left ideal includes the other in general.
+
+The bands select \(|m|\le\log n\) and increase strongly to one. If \(K\) is infinite, every nonempty band identity has infinite weight. Finite coordinate projections, directed by finite subsets of \(I\), also increase to one and prove semifiniteness. When \(K\) is uncountable no sequence of finite coordinate subsets exhausts \(I\); the arbitrary net is essential. A spectral sequence bounds one density without making a finite-mass or separable corner.
+
+**Exercise 47C (noncommuting addition and a nonmeasurable density; advanced).** For the trace on \(M_2\), take \(h=\operatorname{diag}(2,1)\), \(k=\begin{pmatrix}1&1/2\\1/2&1\end{pmatrix}\), and verify positive-cone additivity. Then for the trace on \(B(\ell^2(\mathbb N_{\ge1}))\) let \(he_n=ne_n\). Give its domain, weight and finite left ideal, exhibit a difference from the reference ideal, compute the modular flow, and test finite high trace tails.
+
+*Solution.* The products \(hk=\begin{pmatrix}2&1\\1/2&1\end{pmatrix}\), \(kh=\begin{pmatrix}2&1/2\\1&1\end{pmatrix}\) differ. For \(b=\begin{pmatrix}a&z\\\bar z&d\end{pmatrix}\ge0\),
+
+\[
+\varphi_h(b)=2a+d,\quad
+\varphi_k(b)=a+d+\operatorname{Re}z,\quad
+\varphi_{h+k}(b)=3a+2d+\operatorname{Re}z.
+\]
+
+Trace cyclicity proves these identities without adding square roots. The first new centralizer is diagonal; \(k\) does not belong to it. Thus this example gives no iterated noncommuting perturbation formula.
+
+In the infinite-dimensional example,
+
+\[
+D(h)=\{\xi:\sum_n n^2|\xi_n|^2<\infty\},\quad
+\psi(b)=\sum_n n\langle be_n,e_n\rangle,\quad
+\mathfrak n_\psi=\{x\in B(\ell^2):\sum_n n\|xe_n\|^2<\infty\}.
+\]
+
+The finite-star domain also requires \(\sum_n n\|x^*e_n\|^2<\infty\); the finite linear domain is the span of positives with finite displayed sum, or the span of \(y^*x\) from this left ideal. The bounded diagonal \(xe_n=n^{-1}e_n\) has finite trace-squared norm \(\sum n^{-2}\), but infinite \(\psi\)-squared norm \(\sum n^{-1}\). Since \(\psi\ge\varphi\), its finite left ideal is a proper subset. Formula (47.32) is the Hilbert–Schmidt limit of \(xq_nh^{1/2}\) for exactly \(x\in\mathfrak n_\psi\). The modular flow is \(h^{it}xh^{-it}\), with value \((i/j)^{it}E_{ij}\) on matrix units. The inverse \(h^{-1}e_n=n^{-1}e_n\) restores the trace, including infinity at \(1\). Every high tail \(1_{(R,\infty)}(h)\) has infinite trace. Thus the density fails the finite-tail trace-measurability condition but satisfies the complete affiliated-density theorems.
+
+### I. Proof route and the separate converse
+
+The programme antecedent is [*Fixed observations, density weights and modular time*](../../OA-MOD/OA-MOD-CZ.html). The exposition, alternative arguments and solutions here are independently written and dedicated under **CC0-1.0**. Classical mathematical antecedents are Takesaki, *Theory of Operator Algebras II*, VIII.2, Definitions 2.1–2.2, Lemmas 2.3–2.5 and 2.7–2.10, and Theorems 2.6 and 2.11.
+
+The inputs are Section 38's finite domains and arbitrary-net normal-weight results, Section 39's full spectral and closed-form calculus, Section 41's finite-star approximate identity, Section 42's fullness, Section 43's modular group, maximal Tomita algebra, common cores and spectral strip proofs, and Section 45's complete modular KMS uniqueness and transport. Lemma 47.1 retains a complete alternative to the written [CX-03 right-multiplier proof](../../OA-MOD/OA-MOD-CX.html#oa-mod-cx-03), with the additional half-power and bimodule conclusions used here. Lemma 47.3 proves the reverse one-resolvent form-order implication directly; the corresponding full-domain result is FC-06 in *Form domains and cores*.
+
+We have constructed every positive injective affiliated centralizer perturbation and its inverse. Recognizing an arbitrary modular-invariant weight as such a perturbation is a separate converse. [PT-03](../../OA-MOD/OA-MOD-PT.html#oa-mod-pt-03) gives the affiliated positive generator for a strongly continuous unitary group, using the written CX-02 analytic-averaging argument. The following section retains a full Laplace-resolvent proof of that same positive-generator theorem. The further cocycle converse requires fixed-reference uniqueness for all infinite weight values and the relative or spatial comparison construction. Those statements do not follow from (47.30) and are not used in this section.
+
+## 48. A unitary clock determines its affiliated density
+
+Section 28 uses a specified inner modular clock to remove its density. A strongly continuous group of unitaries in a von Neumann algebra determines a positive injective affiliated operator. We prove that statement with its entire operator domain. The canonical [PT-03 proof](../../OA-MOD/OA-MOD-PT.html#oa-mod-pt-03) uses the written CX-02 analytic-averaging argument; the full Laplace-resolvent construction below gives an alternative with the same hypotheses and conclusion. It does not supply the relative cocycle or the converse classification of invariant weights.
+
+The inputs are the Hilbert-space integral and bounded-operator adjoint results of Sections 32–35, the measurable spectral calculus and unitary transport of Section 39, and the strong closedness of a concrete von Neumann algebra. Scalar integrals and their Fubini and dominated-convergence steps use the exact genuinely planned measure and integration lessons recorded in Sections 0, 39 and 43. These scalar results are prerequisites with their stated hypotheses.
+
+Let \(R\subseteq B(K)\) be a concrete von Neumann algebra acting with identity on \(K\), and let \((V_t)_{t\in\mathbb R}\subseteq\mathcal U(R)\) satisfy
+
+\[
+V_{s+t}=V_sV_t,\qquad V_0=I,\qquad
+\lim_{t\to0}\|V_t\xi-\xi\|=0\quad(\xi\in K).
+\tag{48.1}
+\]
+
+Neither Hilbert dimension nor the algebra's cardinality is restricted. Operator-norm continuity is not assumed. All integrals below are defined on each Hilbert vector, with their displayed common operator bound.
+
+### A. Two bounded Laplace operators
+
+**Lemma 48.1 (Injective Laplace operators).** The operators
+
+\[
+Q_+\xi=\int_0^\infty e^{-s}V_s\xi\,ds,\qquad
+Q_-\xi=\int_0^\infty e^{-s}V_{-s}\xi\,ds
+\tag{48.2}
+\]
+
+belong to \(R\), have norm at most one, are injective with dense range, and satisfy
+
+\[
+Q_+^*=Q_-,\qquad Q_+Q_-=Q_-Q_+,\qquad
+Q_++Q_-=2Q_+Q_-.
+\tag{48.3}
+\]
+
+Consequently \(C=2Q_+-I\) is unitary and
+
+\[
+Q_+=Q_-C,\qquad Q_-=Q_+C^*,\qquad
+\operatorname{ran}Q_+=\operatorname{ran}Q_-.
+\tag{48.4}
+\]
+
+**Proof.** The integrands in (48.2) are norm-continuous Hilbert vectors and have integrable norm at most \(e^{-s}\|\xi\|\). The Hilbert integrals therefore exist and define bounded linear operators of norm at most one. Finite Riemann sums on a compact interval are elements of \(R\); they converge strongly on every vector to the truncated integral. The tail has operator norm at most \(e^{-T}\) after truncation at \(T\). Strong closedness gives \(Q_\pm\in R\).
+
+Testing inner products and using \(V_s^*=V_{-s}\) gives the adjoint identity. Fubini for the integrable Hilbert-valued kernel, or scalar Fubini for all vector coefficients, permits multiplication of the two integrals. The group law makes the operators commute and gives
+
+\[
+\begin{aligned}
+Q_+Q_-\xi
+&=\int_0^\infty\!\int_0^\infty e^{-s-t}V_{s-t}\xi\,dt\,ds\\
+&=\frac12\int_{-\infty}^{\infty}e^{-|r|}V_r\xi\,dr
+=\frac12(Q_++Q_-)\xi.
+\end{aligned}
+\tag{48.5}
+\]
+
+For the second equality, on the region \(s\ge t\) set \(r=s-t\ge0\): the remaining integral is \(\int_0^\infty e^{-2t}\,dt=1/2\). On \(t\ge s\) the same calculation gives the negative branch. The common diagonal has scalar measure zero.
+
+For \(a\ge0\), a real substitution yields
+
+\[
+V_aQ_+\xi=e^a\left(Q_+\xi-\int_0^a e^{-s}V_s\xi\,ds\right).
+\tag{48.6}
+\]
+
+If \(Q_+\xi=0\), the integral on the right is zero for every \(a\ge0\). The fundamental theorem for a continuous Hilbert-valued integrand, proved by difference quotients of its integral, gives \(V_a\xi=0\), and at \(a=0\) gives \(\xi=0\). Replacing \(V_s\) by \(V_{-s}\) proves injectivity of \(Q_-\). Since \((\operatorname{ran}Q_+)^\perp=\ker Q_-=0\), and conversely, both ranges are dense.
+
+Finally (48.3) gives
+
+\[
+C^*C=CC^*=4Q_+Q_--2Q_+-2Q_-+I=I.
+\tag{48.7}
+\]
+
+It also gives \(Q_-C=2Q_-Q_+-Q_-=Q_+\) and its adjoint counterpart. These prove (48.4). \(\square\)
+
+### B. The full self-adjoint logarithmic generator
+
+**Theorem 48.2 (A generator with its domain).** Define
+
+\[
+D(A)=\operatorname{ran}Q_+,\qquad
+A(Q_+\xi)=i(\xi-Q_+\xi).
+\tag{48.8}
+\]
+
+Then \(A\) is densely defined and self-adjoint, and
+
+\[
+(A+iI)^{-1}=-iQ_+,\qquad
+(A-iI)^{-1}=iQ_-,\qquad V_t=e^{itA}.
+\tag{48.9}
+\]
+
+Every spectral projection of \(A\) lies in \(R\).
+
+**Proof.** Injectivity of \(Q_+\) makes (48.8) well-defined, and its dense range gives dense definition. The inverse \(Q_+^{-1}\), on its actual range, is closed: if \(Q_+\xi_j\to\eta\) and \(\xi_j\to\xi\), boundedness gives \(\eta=Q_+\xi\). Thus \(A=i(Q_+^{-1}-I)\) is closed.
+
+We verify its adjoint and domain, rather than presuming self-adjointness from a formal formula. For any bounded injective \(Q\) with dense range, an element \(\eta\) belongs to \(D((Q^{-1})^*)\) exactly when there is \(\zeta\) with
+\(\langle \xi,\eta\rangle=\langle Q\xi,\zeta\rangle\) for every \(\xi\). This is exactly \(\eta=Q^*\zeta\), and then \((Q^{-1})^*\eta=\zeta\). Hence
+
+\[
+D(A^*)=\operatorname{ran}Q_-,\qquad
+A^*=-i(Q_-^{-1}-I).
+\tag{48.10}
+\]
+
+The two domains agree by (48.4). If \(\eta=Q_+\xi=Q_-C\xi\), then
+
+\[
+A^*\eta=-i(C\xi-\eta)
+=-i(2Q_+\xi-\xi-\eta)
+=i(\xi-\eta)=A\eta.
+\tag{48.11}
+\]
+
+Thus \(A=A^*\) with equality of the entire domains. On that domain, \(A+iI=iQ_+^{-1}\). This is bijective onto \(K\), and its bounded inverse is \(-iQ_+\). The other resolvent follows from (48.10), or by adjoints.
+
+Every \(V_t\) commutes with \(Q_+\), so it preserves \(D(A)\), and \(AV_t\eta=V_tA\eta\) there. Equation (48.6) gives the right derivative at zero
+
+\[
+\lim_{a\downarrow0}\frac{V_a\eta-\eta}{a}
+=\eta-\xi=iA\eta\qquad(\eta=Q_+\xi).
+\tag{48.12}
+\]
+
+For the left derivative, use \((V_{-a}\eta-\eta)/(-a)=V_{-a}(V_a\eta-\eta)/a\) and strong continuity. The group law now gives the two-sided norm derivative at every real \(t\):
+
+\[
+\frac{d}{dt}V_t\eta=iAV_t\eta=iV_tA\eta.
+\tag{48.13}
+\]
+
+The spectral calculus of Section 39 constructs \(e^{itA}\). For \(\eta\in D(A)\), dominated convergence with bound \(|(e^{isa}-1)/s|\le |a|\) proves its derivative \(iAe^{itA}\eta\). Taking a difference quotient of \(e^{-itA}V_t\eta\), splitting it into the two operator differences, and using the common norm-one bounds gives derivative zero by (48.13). The vector is therefore constant and equals \(\eta\) at zero. Thus \(V_t\eta=e^{itA}\eta\) on \(D(A)\), and density proves the identity on all of \(K\).
+
+For affiliation, a unitary \(w\in R'\) commutes with \(Q_+\). Hence \(wD(A)=D(A)\), and \(wAw^*=A\), including domain equality. Unitary spectral transport from Section 39 gives commutation of \(w\) with every spectral projection of \(A\). The unitaries linearly span \(R'\): for a self-adjoint contraction \(b\), the operator \(b+i(I-b^2)^{1/2}\) is unitary and has real part \(b\). Consequently those projections commute with all of \(R'\), and the bicommutant identity puts them in \(R\). \(\square\)
+
+### C. The positive density and exact uniqueness
+
+**Theorem 48.3 (The specified clock's positive affiliated density).** There is exactly one positive injective self-adjoint operator \(h\), affiliated with \(R\), for which
+
+\[
+V_t=h^{it}\qquad(t\in\mathbb R).
+\tag{48.14}
+\]
+
+It is \(h=e^A\), with domains
+
+\[
+D(h^z)=\left\{\xi\in K:
+\int_{\mathbb R}e^{2\operatorname{Re}(z)a}\,d\mu_\xi^A(a)<\infty\right\},
+\qquad z\in\mathbb C.
+\tag{48.15}
+\]
+
+Here imaginary powers have domain all of \(K\). The operator \(h\) need not be bounded, boundedly invertible or measurable relative to a trace.
+
+**Proof.** The Borel function \(e^a\) is positive and finite at every real \(a\). Section 39 therefore defines the positive self-adjoint operator \(h=e^A\), with dense domain given by (48.15) at \(z=1\). Its zero spectral projection is zero, so it is injective. Its spectral projections are preimages under \(a\mapsto e^a\) of the spectral sets for \(h\), and belong to \(R\) by Theorem 48.2. Functional composition gives \(h^{it}=e^{itA}=V_t\) and (48.15), with all domains retained.
+
+For uniqueness, let \(k\) be another positive injective self-adjoint operator with \(k^{it}=V_t\). Its logarithm \(B=\log k\) is a self-adjoint operator on its full spectral domain, and \(e^{itB}=V_t\). Passing the scalar identity through bounded spectral calculus gives
+
+\[
+(B+iI)^{-1}
+=-i\int_0^\infty e^{-s}e^{isB}\,ds
+=-iQ_+=(A+iI)^{-1}.
+\tag{48.16}
+\]
+
+The scalar identity is \(-i\int_0^\infty e^{-s}e^{isa}\,ds=-i/(1-ia)=(a+i)^{-1}\); Fubini on vector coefficients justifies the spectral passage, since the exponential kernel is integrable. The common resolvent has range \(D(A)=D(B)\) and determines the operator there by \(A\eta=\xi-i\eta\) when \(\eta=(A+iI)^{-1}\xi\). Thus \(A=B\) as operators with equal domains. Exponentiation gives \(k=h\). On \(K=0\), the unique operator has zero kernel as a vector space, so the same statement includes the zero algebra. \(\square\)
+
+The alternate sign convention used in PT03 follows from the other resolvent:
+
+\[
+(\log h-iI)^{-1}=i\int_0^\infty e^{-s}h^{-is}\,ds.
+\tag{48.17}
+\]
+
+**Corollary 48.4 (Spectral transport retains normalization).** If a unitary \(W:K\to L\) transports the entire clock to \(\widetilde V_t=WV_tW^*\), its density is \(\widetilde h=WhW^*\), with domain \(WD(h)\). More generally a unital normal \(*\)-isomorphism \(\theta:R\to\widetilde R\subseteq B(L)\) transports the density by the spectral measure \(E_{\theta(h)}(B)=\theta(E_h(B))\); the density of \(\theta(V_t)\) is \(\theta(h)\) on its resulting full spectral domain. For \(c>0\), the clock \(e^{it\log c}V_t\) has density \(ch\). If \(\widetilde V_t=V_{bt}\) for a nonzero real \(b\), its density is \(h^b\), with the domain in (48.15). A specified clock determines these scalar and time normalizations.
+
+**Proof.** Unitary spectral transport defines \(WhW^*\) and its powers on transported domains; (48.14) and uniqueness identify it. For a normal isomorphism, images of the spectral projections remain projections, preserve their orthogonal products, and preserve increasing projection sums by normality. They therefore form a projection-valued measure on \(L\). The images of \(1_{[1/n,n]}(h)\) increase strongly to \(I_L\), so its spectral integral defines a densely defined positive injective self-adjoint \(\theta(h)\), whose domain is the square-integrability domain for that measure. The zero spectral projection is zero. Its spectral projections belong to \(\widetilde R\), giving affiliation.
+
+For a bounded Borel function \(f\), finite simple-function spectral sums commute with \(\theta\). Bounded pointwise simple approximation and scalar dominated convergence for every normal positive functional prove \(\theta(f(h))=f(\theta(h))\): the relevant scalar measure is \(B\mapsto\omega(\theta(E_h(B)))\), of total mass \(\omega(I_L)\). Apply this identity to \(f(\lambda)=\lambda^{it}\) on \((0,\infty)\). The resulting group \(\theta(V_t)\) is strongly continuous, because \(\theta\) is sigma-strong\(*\) continuous by Proposition 38.6 and the original unitary orbit is bounded and strongly continuous. Thus Theorem 48.3 applies and identifies its unique density. This spectral definition of \(\theta(h)\) does not apply \(\theta\) to an unbounded algebra element.
+
+The scalar spectral identities \((c\lambda)^{it}=e^{it\log c}\lambda^{it}\) and \((\lambda^b)^{it}=\lambda^{ibt}\), followed by Theorem 48.3, prove the other assertions. Positivity and injectivity survive each operation, including negative \(b\). \(\square\)
+
+### D. Graded exercises and complete solutions
+
+**Exercise 48A (Resolvent signs and scalar normalization; intermediate, 10 points).** On \(\mathbb C^2\), let \(V_t=\operatorname{diag}(e^{2it},e^{-3it})\). Compute \(Q_\pm\), \(C\), \(A\) and \(h\). Check both resolvents in (48.9). Determine the density of \(e^{it\log 7}V_{-2t}\).
+
+*Solution.* Integration on each coordinate gives
+
+\[
+Q_+=\operatorname{diag}\bigl((1-2i)^{-1},(1+3i)^{-1}\bigr),\quad
+Q_-=\operatorname{diag}\bigl((1+2i)^{-1},(1-3i)^{-1}\bigr).
+\tag{48.18}
+\]
+
+Thus \(C\) has diagonal entries \((1+2i)/(1-2i)\) and \((1-3i)/(1+3i)\), each of modulus one. Formula (48.8) gives \(A=\operatorname{diag}(2,-3)\), and \(h=\operatorname{diag}(e^2,e^{-3})\). The scalar equalities \(-i/(1-ia)=(a+i)^{-1}\) and \(i/(1+ia)=(a-i)^{-1}\), at \(a=2,-3\), verify both signs. Corollary 48.4 gives density \(7h^{-2}=\operatorname{diag}(7e^{-4},7e^6)\). Award 3 points for the integrals, 3 for the generator and two signs, and 4 for the normalized inverse-time density.
+
+**Exercise 48B (Arbitrary multiplicity and two unbounded scales; advanced, 12 points).** Let \(J\) be an arbitrary nonempty set, \(K=\ell^2(J\times\mathbb Z)\), and \(R=\ell^\infty(J\times\mathbb Z)\) acting diagonally. Define \((V_t\xi)_{j,m}=e^{itm}\xi_{j,m}\). Prove strong continuity, show that operator-norm continuity fails, and compute the full domains of \(A\), \(h\) and \(h^{-1}\). Explain why the spectral sequence \(1_{[-n,n]}(A)\uparrow I\) does not make \(J\times\mathbb Z\) countable.
+
+*Solution.* For each fixed \(\xi\), choose a finite set of coordinates whose omitted squared norm is arbitrarily small. The finite part converges as \(t\to0\), while \(|e^{itm}-1|\le2\) bounds the tail uniformly. This proves strong continuity with no restriction on \(J\). At \(t_n=\pi/n\), a coordinate with \(m=n\) gives norm difference two, so \(\|V_{t_n}-I\|=2\).
+
+The Laplace operators multiply each coordinate by \((1\mp im)^{-1}\). Their ranges and (48.8) give multiplication by \(m\) on
+
+\[
+D(A)=\left\{\xi:\sum_{j,m}m^2|\xi_{j,m}|^2<\infty\right\}.
+\tag{48.19}
+\]
+
+All sums mean suprema of finite subsums. The density and its inverse multiply by \(e^m\) and \(e^{-m}\), respectively, with
+
+\[
+D(h)=\left\{\xi:\sum_{j,m}e^{2m}|\xi_{j,m}|^2<\infty\right\},\qquad
+D(h^{-1})=\left\{\xi:\sum_{j,m}e^{-2m}|\xi_{j,m}|^2<\infty\right\}.
+\tag{48.20}
+\]
+
+Finite-coordinate vectors show that each domain is dense. Both density scales are unbounded because \(m\) is unbounded in both directions. The indicated spectral projections retain every \(j\) for \(|m|\le n\); each range can still have arbitrary dimension. Their strong convergence follows from the same finite-tail argument and supplies no global countable coordinate exhaustion. Award 3 points for strong continuity, 2 for the norm counterexample, 5 for the three domains and 2 for the cardinality distinction.
+
+**Exercise 48C (A continuous spectral model and a forbidden zero part; advanced, 10 points).** On \(L^2(\mathbb R)\), let \(R=L^\infty(\mathbb R)\) act by multiplication and \((V_t f)(x)=e^{itx}f(x)\). Compute the generator, density, and the domain of its square root. Show \(\|V_t-I\|=2\) for each \(t\ne0\). Explain why setting the density to zero on a nonzero reducing subspace cannot preserve a group of unitary imaginary powers.
+
+*Solution.* The Laplace multipliers are \((1\mp ix)^{-1}\). Therefore \(A\) is multiplication by \(x\), with \(D(A)=\{f:xf\in L^2\}\), and \(h\) is multiplication by \(e^x\), with \(D(h)=\{f:e^xf\in L^2\}\). Its square-root domain is \(D(h^{1/2})=\{f:e^{x/2}f\in L^2\}\). These are spectral domains, not assertions that the displayed functions belong to \(L^\infty\). For \(t\ne0\), neighborhoods of any solution to \(tx=(2k+1)\pi\) have positive measure and make \(|e^{itx}-1|\) arbitrarily close to two. Essential supremum therefore gives the asserted operator norm.
+
+If a positive density has nonzero kernel projection \(p\), its imaginary spectral powers on \(1-p\) are unitaries only on that support. Extending them by zero gives \(w_t^*w_t=1-p\), rather than \(I\), including at \(t=0\). The all-space unitary clock in (48.1) therefore requires an injective density. A separate arbitrary phase prescribed on the kernel would be an additional clock and would have its own strictly positive density by Theorem 48.3. Award 4 points for the domains, 3 for the norm calculation and 3 for the support argument.
+
+### E. Source correspondence and remaining dependencies
+
+The positive-generator theorem is also proved in [PT-03 of *Recognizing a weight by its fixed density*](../../OA-MOD/OA-MOD-PT.html#oa-mod-pt-03), through [CX-02](../../OA-MOD/OA-MOD-CX.html#an-analytic-unitary-core-determines-all-powers). The alternative proof above uses bounded Laplace operators and the spectral calculus of Section 39, retaining the full generator domain. Its logarithmic resolvent identity agrees with the canonical proof. This independently written exposition and its solutions are dedicated under **CC0-1.0**.
+
+The positive generator theorem does not identify two different weights from equal modular groups. The normalized relative/spatial cocycle construction, its injectivity on all positive elements, the converse invariant-weight classification, trace-predual density theorems, and every undeveloped prerequisite still require their own proofs. These are separate mathematical results with their own hypotheses and proofs.
 
 ## References
 

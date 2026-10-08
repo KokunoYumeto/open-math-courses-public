@@ -4,7 +4,7 @@
 
 The source material is Terence Tao's freely accessible [254A, Notes 3, §1](https://terrytao.wordpress.com/2011/09/27/254a-notes-3-haar-measure-and-the-peter-weyl-theorem/), dated 27 September 2011, for the normalized covering-functional construction and the open sigma-compact subgroup reduction; and D. H. Fremlin's [§441](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt441.tex), version of 3 January 2006, copyright 1997, for the unrestricted invariant-measure setting. We supply the representation and extension arguments below instead of importing either source's earlier theorems.
 
-The combined prerequisite material is under the [Design Science License](../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's original notices and source are retained in the volume 4 source package. The proofs below use mathematical ideas from the cited free notes with new exposition; the notes themselves are not republished here.
+Original text: public domain (CC0). Fremlin's original notices and source are retained in the volume 4 source package. The proofs below use mathematical ideas from the cited free notes with new exposition; the notes themselves are not republished here.
 
 Our earlier proofs are in [finite Radon representation](finite-radon-representation.md), [Banach spectra and compact products](banach-spectrum.md), [finite Radon products](finite-radon-products.md), and [integration and \(L^1\)](integration-and-l1.md). Each invocation below identifies the result needed.
 

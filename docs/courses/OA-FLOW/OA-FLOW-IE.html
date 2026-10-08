@@ -1,0 +1,837 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Entropy at return times · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ZDC.html">Previous lesson</a><a href="OA-FLOW-IC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-IE.md">Lesson source</a></nav><h1 id="OA-FLOW.IE.SETTING">Entropy at return times</h1>
+<p>The entropy produced by one return to a set must be compared with the mean number of original steps in that return. Keeping the terminal symbol of each return word makes that comparison exact, even when return times are unbounded.</p>
+<p><a id="IE-setting"></a></p>
+<h2 id="the-return-theorem-and-its-scope">The return theorem and its scope</h2>
+<p>Let <span class="math" data-tex="\((X,\Sigma,\mu)\)">\((X,\Sigma,\mu)\)</span> be a probability space and let <span class="math" data-tex="\(T\)">\(T\)</span> be an invertible bimeasurable probability-preserving transformation. Assume it is ergodic: every measurable set invariant modulo null sets has measure zero or one. Let <span class="math" data-tex="\(E\in\Sigma\)">\(E\in\Sigma\)</span> have measure <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. On the recurrent conull part of <span class="math" data-tex="\(E\)">\(E\)</span>, write
+<span class="math math-display" data-tex="\[
+ r(x)=\min\{n\ge1:T^nx\in E\},\qquad
+ Sx=T^{r(x)}x,\qquad
+ \nu(B)=\frac{\mu(B)}a\quad(B\subseteq E).
+ \tag{IE1}
+\]">\[
+ r(x)=\min\{n\ge1:T^nx\in E\},\qquad
+ Sx=T^{r(x)}x,\qquad
+ \nu(B)=\frac{\mu(B)}a\quad(B\subseteq E).
+ \tag{IE1}
+\]</span>
+All sigma algebras below are completed for their indicated measures. All logarithms are natural, and <span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>.</p>
+<p>For a finite measurable partition <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ H_\mu(\mathcal P)&amp;=-\sum_{P\in\mathcal P}\mu(P)\log\mu(P),\\
+ h_\mu(T,\mathcal P)&amp;=\lim_{n\to\infty}\frac1n
+       H_\mu\!\left(\bigvee_{j=0}^{n-1}T^{-j}\mathcal P\right),\\
+ h_\mu(T)&amp;=\sup_{\mathcal P\ {\rm finite}}h_\mu(T,\mathcal P).
+ \end{aligned}
+ \tag{IE2}
+\]">\[
+ \begin{aligned}
+ H_\mu(\mathcal P)&amp;=-\sum_{P\in\mathcal P}\mu(P)\log\mu(P),\\
+ h_\mu(T,\mathcal P)&amp;=\lim_{n\to\infty}\frac1n
+       H_\mu\!\left(\bigvee_{j=0}^{n-1}T^{-j}\mathcal P\right),\\
+ h_\mu(T)&amp;=\sup_{\mathcal P\ {\rm finite}}h_\mu(T,\mathcal P).
+ \end{aligned}
+ \tag{IE2}
+\]</span>
+The limit is proved below. Here <span class="math" data-tex="\(T^{-j}\mathcal P\)">\(T^{-j}\mathcal P\)</span> records the label <span class="math" data-tex="\(\mathcal P(T^jx)\)">\(\mathcal P(T^jx)\)</span>.</p>
+<p><strong>Theorem.</strong> The induced map <span class="math" data-tex="\(S\)">\(S\)</span> is an invertible ergodic probability-preserving transformation of <span class="math" data-tex="\((E,\nu)\)">\((E,\nu)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \boxed{\quad h_\nu(S)=\frac{h_\mu(T)}{\mu(E)}
+             \quad\text{in }[0,\infty].\quad}
+ \tag{IE3}
+\]">\[
+ \boxed{\quad h_\nu(S)=\frac{h_\mu(T)}{\mu(E)}
+             \quad\text{in }[0,\infty].\quad}
+ \tag{IE3}
+\]</span>
+Neither nonatomicity nor aperiodicity is required. The return time is finite almost everywhere and has mean <span class="math" data-tex="\(1/a\)">\(1/a\)</span>, but need not be bounded. No finite generating partition is assumed. The scalar integration and Hilbert-space inputs are proved in <a href="OA-FLOW-SC.html#sc-02">SC2–7</a>, <a href="OA-FLOW-CF.html#oa-flow.cf.8">CF8</a> and <a href="OA-FLOW-HR.html#hr-02">HR2–5</a>. The proof works on the stated probability spaces; the standard probability spaces needed for the classification application are included.</p>
+<p>The induction identity is due to L. M. Abramov. We prove it here from scalar integration, Hilbert projection and finite probability tables. In particular no ergodic theorem for time averages, entropy generator theorem, martingale convergence theorem, or factor-classification theorem is used as an unproved input.</p>
+<p><span id="OA-FLOW.IE.TOWER"></span><a id="IE-tower"></a></p>
+<h2 id="1-the-entire-probability-tower">1. The entire probability tower</h2>
+<p>Let <span class="math" data-tex="\(F\subseteq E\)">\(F\subseteq E\)</span> be the set of points with no positive return to <span class="math" data-tex="\(E\)">\(E\)</span>. The sets <span class="math" data-tex="\(T^nF\)">\(T^nF\)</span>, <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, are disjoint: an equality between two such translates would give a positive return from one point of <span class="math" data-tex="\(F\)">\(F\)</span> to another point of <span class="math" data-tex="\(E\)">\(E\)</span>. They all have the same measure, so finite total measure forces <span class="math" data-tex="\(\mu(F)=0\)">\(\mu(F)=0\)</span>. A point of <span class="math" data-tex="\(E\)">\(E\)</span> with only finitely many future visits has its last visit in <span class="math" data-tex="\(F\)">\(F\)</span>; all such points lie in a countable union of null translates. Apply this argument to <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span> for past visits.</p>
+<p>The integer saturation of <span class="math" data-tex="\(E\)">\(E\)</span> is invariant and has positive measure, hence is conull. Remove from it all integer translates of the preceding exceptional sets. The resulting invariant conull set has infinitely many visits to <span class="math" data-tex="\(E\)">\(E\)</span> in both time directions. Return times, their level sets and all the maps used below are measurable because they are defined by countably many integer membership tests. Statements on this set determine the completed probability systems.</p>
+<p>Put <span class="math" data-tex="\(E_n=\{x\in E:r(x)=n\}\)">\(E_n=\{x\in E:r(x)=n\}\)</span>. The sets
+<span class="math math-display" data-tex="\[
+ \{T^jE_n:n\ge1,\ 0\le j&lt;n\}
+ \quad\text{and}\quad
+ \{T^jE_n:n\ge1,\ 1\le j\le n\}
+ \tag{IE4}
+\]">\[
+ \{T^jE_n:n\ge1,\ 0\le j&lt;n\}
+ \quad\text{and}\quad
+ \{T^jE_n:n\ge1,\ 1\le j\le n\}
+ \tag{IE4}
+\]</span>
+are each partitions of <span class="math" data-tex="\(X\)">\(X\)</span> modulo null sets. For the first partition, take the last visit at or before the current time; the elapsed integer time is smaller than that visit's next return time. This recovers exactly one pair <span class="math" data-tex="\((n,j)\)">\((n,j)\)</span> and its source point. Apply <span class="math" data-tex="\(T\)">\(T\)</span> to that whole partition to obtain the second. The same argument restricted to target points in <span class="math" data-tex="\(E\)">\(E\)</span> gives the range partition
+<span class="math math-display" data-tex="\[
+ E=\bigsqcup_{n\ge1}T^nE_n
+ \quad\text{modulo null sets}.
+ \tag{IE5}
+\]">\[
+ E=\bigsqcup_{n\ge1}T^nE_n
+ \quad\text{modulo null sets}.
+ \tag{IE5}
+\]</span>
+The last strictly earlier visit supplies the measurable inverse of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>For any nonnegative measurable <span class="math" data-tex="\(F\)">\(F\)</span>, invariance and nonnegative countable summation now give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_E\sum_{j=1}^{r(x)}F(T^jx)\,d\mu(x)
+ &amp;=\sum_{n\ge1}\sum_{j=1}^n\int_{E_n}F(T^jx)\,d\mu(x)\\
+ &amp;=\sum_{n\ge1}\sum_{j=1}^n\int_{T^jE_n}F\,d\mu
+ =\int_XF\,d\mu.
+ \end{aligned}
+ \tag{IE6}
+\]">\[
+ \begin{aligned}
+ \int_E\sum_{j=1}^{r(x)}F(T^jx)\,d\mu(x)
+ &amp;=\sum_{n\ge1}\sum_{j=1}^n\int_{E_n}F(T^jx)\,d\mu(x)\\
+ &amp;=\sum_{n\ge1}\sum_{j=1}^n\int_{T^jE_n}F\,d\mu
+ =\int_XF\,d\mu.
+ \end{aligned}
+ \tag{IE6}
+\]</span>
+This includes infinite values. In particular,
+<span class="math math-display" data-tex="\[
+ \int_Er\,d\mu=1,\qquad \int_Er\,d\nu=\frac1a.
+ \tag{IE7}
+\]">\[
+ \int_Er\,d\mu=1,\qquad \int_Er\,d\nu=\frac1a.
+ \tag{IE7}
+\]</span>
+There is also the same identity with the indices <span class="math" data-tex="\(0\le j&lt;r(x)\)">\(0\le j&lt;r(x)\)</span>, from the first partition in (IE4).</p>
+<p>For <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>, (IE5) yields
+<span class="math math-display" data-tex="\[
+ \int_E f(Sx)\,d\nu(x)
+   =\frac1a\sum_{n\ge1}\int_{T^nE_n}f\,d\mu
+   =\int_E f\,d\nu.
+ \tag{IE8}
+\]">\[
+ \int_E f(Sx)\,d\nu(x)
+   =\frac1a\sum_{n\ge1}\int_{T^nE_n}f\,d\mu
+   =\int_E f\,d\nu.
+ \tag{IE8}
+\]</span>
+Thus <span class="math" data-tex="\(S\)">\(S\)</span> preserves the normalized measure, and its inverse does too.</p>
+<p>If <span class="math" data-tex="\(A\subseteq E\)">\(A\subseteq E\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant modulo null sets, remove the integer <span class="math" data-tex="\(S\)">\(S\)</span>-translates of its invariance failures. Extend its indicator to <span class="math" data-tex="\(X\)">\(X\)</span> by assigning the same value to every level above a point of <span class="math" data-tex="\(E\)">\(E\)</span> in the first tower (IE4). Moving one <span class="math" data-tex="\(T\)">\(T\)</span>-step leaves this value unchanged, including at the top because <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant. The extension is therefore <span class="math" data-tex="\(T\)">\(T\)</span>-invariant modulo null sets. Ergodicity makes it zero or one almost everywhere; its intersection with <span class="math" data-tex="\(E\)">\(E\)</span> has <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-measure zero or one. This proves ergodicity of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><span id="OA-FLOW.IE.CONDITIONING"></span><a id="IE-conditioning"></a></p>
+<h2 id="2-conditional-probabilities-and-their-exact-information">2. Conditional probabilities and their exact information</h2>
+<p>We first construct the conditional expectations needed in this proof. For a completed sub-sigma-algebra <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>, <span class="math" data-tex="\(L^2(\mathscr F)\)">\(L^2(\mathscr F)\)</span> is a closed subspace of <span class="math" data-tex="\(L^2(\Sigma)\)">\(L^2(\Sigma)\)</span>: its inclusion is isometric and its source is complete. These completeness assertions are <a href="OA-FLOW-SC.html#sc-07">SC7</a>. The orthogonal projection theorem is proved in <a href="OA-FLOW-CF.html#oa-flow.cf.8">CF8</a>.</p>
+<p>For a bounded real <span class="math" data-tex="\(f\)">\(f\)</span>, let <span class="math" data-tex="\(\mathbb E_\mu(f\mid\mathscr F)\)">\(\mathbb E_\mu(f\mid\mathscr F)\)</span> be that projection. It is real by uniqueness under conjugation, and its orthogonality gives
+<span class="math math-display" data-tex="\[
+ \int_B\mathbb E_\mu(f\mid\mathscr F)\,d\mu=\int_B f\,d\mu
+ \qquad(B\in\mathscr F).
+ \tag{IE9}
+\]">\[
+ \int_B\mathbb E_\mu(f\mid\mathscr F)\,d\mu=\int_B f\,d\mu
+ \qquad(B\in\mathscr F).
+ \tag{IE9}
+\]</span>
+If <span class="math" data-tex="\(0\le f\le1\)">\(0\le f\le1\)</span>, testing the sets where the projection is negative or exceeds one proves <span class="math" data-tex="\(0\le\mathbb E_\mu(f\mid\mathscr F)\le1\)">\(0\le\mathbb E_\mu(f\mid\mathscr F)\le1\)</span>. More explicitly, the integral of a strictly negative function over its negative set cannot equal the integral of a nonnegative function there; apply this also to <span class="math" data-tex="\(1-f\)">\(1-f\)</span>. Scaling and translating gives boundedness for every bounded real <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The characterization (IE9) determines the conditional expectation uniquely: the difference of two real <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>-measurable candidates can be tested on its positive and negative sets. Testing first simple <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>-measurable functions and then bounded limits proves the module identity
+<span class="math" data-tex="\(\mathbb E_\mu(gf\mid\mathscr F)=g\mathbb E_\mu(f\mid\mathscr F)\)">\(\mathbb E_\mu(gf\mid\mathscr F)=g\mathbb E_\mu(f\mid\mathscr F)\)</span>
+for bounded <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>-measurable <span class="math" data-tex="\(g\)">\(g\)</span>. The same characterization proves the tower identity for nested sigma algebras. If <span class="math" data-tex="\(f_n\uparrow f\le1\)">\(f_n\uparrow f\le1\)</span>, their conditional expectations increase to the expectation of <span class="math" data-tex="\(f\)">\(f\)</span>, by (IE9) and monotone convergence.</p>
+<p>Two covariance statements will be used explicitly. For an invertible probability-preserving <span class="math" data-tex="\(U\)">\(U\)</span>, testing transformed sets proves
+<span class="math math-display" data-tex="\[
+ \mathbb E_\mu(f\circ U\mid U^{-1}\mathscr F)
+      =\mathbb E_\mu(f\mid\mathscr F)\circ U.
+ \tag{IE10}
+\]">\[
+ \mathbb E_\mu(f\circ U\mid U^{-1}\mathscr F)
+      =\mathbb E_\mu(f\mid\mathscr F)\circ U.
+ \tag{IE10}
+\]</span>
+If <span class="math" data-tex="\(E\in\mathscr F\)">\(E\in\mathscr F\)</span>, conditional probabilities for <span class="math" data-tex="\(\nu=\mu|_E/a\)">\(\nu=\mu|_E/a\)</span> obey
+<span class="math math-display" data-tex="\[
+ \mathbb E_\nu(1_{A\cap E}\mid\mathscr F|_E)
+      =\mathbb E_\mu(1_A\mid\mathscr F)|_E.
+ \tag{IE11}
+\]">\[
+ \mathbb E_\nu(1_{A\cap E}\mid\mathscr F|_E)
+      =\mathbb E_\mu(1_A\mid\mathscr F)|_E.
+ \tag{IE11}
+\]</span>
+Indeed, on each test set <span class="math" data-tex="\(B\in\mathscr F\)">\(B\in\mathscr F\)</span> contained in <span class="math" data-tex="\(E\)">\(E\)</span>, the two integrals in (IE9) are both divided by the same number <span class="math" data-tex="\(a\)">\(a\)</span>. There is no extra factor <span class="math" data-tex="\(a\)">\(a\)</span> in the conditional probability.</p>
+<p>For a countable measurable partition <span class="math" data-tex="\(\mathcal Q=(Q_i)\)">\(\mathcal Q=(Q_i)\)</span>, let
+<span class="math math-display" data-tex="\[
+ q_i=\mathbb E_\mu(1_{Q_i}\mid\mathscr F),\qquad
+ H_\mu(\mathcal Q\mid\mathscr F)
+     =\int\sum_i\eta(q_i)\,d\mu,\qquad
+ \eta(t)=-t\log t,\ \eta(0)=0.
+ \tag{IE12}
+\]">\[
+ q_i=\mathbb E_\mu(1_{Q_i}\mid\mathscr F),\qquad
+ H_\mu(\mathcal Q\mid\mathscr F)
+     =\int\sum_i\eta(q_i)\,d\mu,\qquad
+ \eta(t)=-t\log t,\ \eta(0)=0.
+ \tag{IE12}
+\]</span>
+The function <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is continuous also at zero: for <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span>,
+<span class="math" data-tex="\(\log u=\int_1^u x^{-1}\,dx\le\int_1^u x^{-1/2}\,dx=2(\sqrt u-1)\)">\(\log u=\int_1^u x^{-1}\,dx\le\int_1^u x^{-1/2}\,dx=2(\sqrt u-1)\)</span>.
+Consequently <span class="math" data-tex="\(0\le-t\log t\le2\sqrt t\)">\(0\le-t\log t\le2\sqrt t\)</span> for <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>, which tends to zero. The elementary compact-interval facts in <a href="OA-FLOW-CF.html#oa-flow.cf.1">CF1</a> make <span class="math" data-tex="\(\eta\)">\(\eta\)</span> bounded and uniformly continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p>The probabilities <span class="math" data-tex="\(q_i\)">\(q_i\)</span> are nonnegative and sum to one almost everywhere, by the monotone statement after (IE9). On <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>, define the conditional information
+<span class="math math-display" data-tex="\[
+ I_\mu(\mathcal Q\mid\mathscr F)(x)=-\log q_i(x).
+ \tag{IE13}
+\]">\[
+ I_\mu(\mathcal Q\mid\mathscr F)(x)=-\log q_i(x).
+ \tag{IE13}
+\]</span>
+The exceptional event <span class="math" data-tex="\(Q_i\cap\{q_i=0\}\)">\(Q_i\cap\{q_i=0\}\)</span> is null, because its measure is <span class="math" data-tex="\(\int_{\{q_i=0\}}q_i\,d\mu=0\)">\(\int_{\{q_i=0\}}q_i\,d\mu=0\)</span>. Set the information to zero on the countable union of these null events. Thus it is finite and nonnegative almost everywhere, although its integral may be infinite.</p>
+<p>For every nonnegative <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>-measurable <span class="math" data-tex="\(g\)">\(g\)</span>, (IE9), simple approximation and monotone convergence give <span class="math" data-tex="\(\int_{Q_i}g\,d\mu=\int q_ig\,d\mu\)">\(\int_{Q_i}g\,d\mu=\int q_ig\,d\mu\)</span>. Apply this to the bounded truncations of <span class="math" data-tex="\(-\log q_i\)">\(-\log q_i\)</span>, then sum:
+<span class="math math-display" data-tex="\[
+ \int I_\mu(\mathcal Q\mid\mathscr F)\,d\mu
+       =H_\mu(\mathcal Q\mid\mathscr F).
+ \tag{IE14}
+\]">\[
+ \int I_\mu(\mathcal Q\mid\mathscr F)\,d\mu
+       =H_\mu(\mathcal Q\mid\mathscr F).
+ \tag{IE14}
+\]</span>
+All sums are nonnegative, so no undefined difference involving infinite entropy has occurred.</p>
+<p><span id="OA-FLOW.IE.CHAIN"></span><a id="IE-chain"></a></p>
+<h2 id="3-chain-rules-conditioning-and-countable-tails">3. Chain rules, conditioning and countable tails</h2>
+<p>The logarithm and its derivative are constructed in <a href="OA-FLOW-SC.html#sc-00">SC0</a>. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the function <span class="math" data-tex="\(t-1-\log t\)">\(t-1-\log t\)</span> vanishes at one and has derivative <span class="math" data-tex="\(1-1/t\)">\(1-1/t\)</span>, negative below one and positive above one. The mean value theorem therefore proves <span class="math" data-tex="\(\log t\le t-1\)">\(\log t\le t-1\)</span>.</p>
+<p>For finite probability vectors <span class="math" data-tex="\(p=(p_i)\)">\(p=(p_i)\)</span>, <span class="math" data-tex="\(q=(q_i)\)">\(q=(q_i)\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_i p_i\log\frac{p_i}{q_i}\ge0,
+ \tag{IE15}
+\]">\[
+ \sum_i p_i\log\frac{p_i}{q_i}\ge0,
+ \tag{IE15}
+\]</span>
+with zero <span class="math" data-tex="\(p_i\)">\(p_i\)</span>-terms omitted and a term <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> when <span class="math" data-tex="\(p_i&gt;0=q_i\)">\(p_i&gt;0=q_i\)</span>. When all relevant <span class="math" data-tex="\(q_i&gt;0\)">\(q_i&gt;0\)</span>, the scalar inequality <span class="math" data-tex="\(\log t\le t-1\)">\(\log t\le t-1\)</span>, applied to <span class="math" data-tex="\(q_i/p_i\)">\(q_i/p_i\)</span>, gives
+<span class="math" data-tex="\(\sum_{p_i&gt;0}p_i\log(q_i/p_i)\le\sum_{p_i&gt;0}q_i-1\le0\)">\(\sum_{p_i&gt;0}p_i\log(q_i/p_i)\le\sum_{p_i&gt;0}q_i-1\le0\)</span>.
+This proves (IE15), including the remaining cases. In particular a probability distribution on at most <span class="math" data-tex="\(m\)">\(m\)</span> points has entropy at most <span class="math" data-tex="\(\log m\)">\(\log m\)</span>, by comparison with the uniform vector.</p>
+<p>Let <span class="math" data-tex="\(\mathcal A=(A_i)\)">\(\mathcal A=(A_i)\)</span>, <span class="math" data-tex="\(\mathcal B=(B_j)\)">\(\mathcal B=(B_j)\)</span> be finite or countable partitions. Put <span class="math" data-tex="\(p_{ij}=\mathbb E_\mu(1_{A_i\cap B_j}\mid\mathscr F)\)">\(p_{ij}=\mathbb E_\mu(1_{A_i\cap B_j}\mid\mathscr F)\)</span> and <span class="math" data-tex="\(p_i=\sum_jp_{ij}\)">\(p_i=\sum_jp_{ij}\)</span>. On <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, the conditional probability of <span class="math" data-tex="\(B_j\)">\(B_j\)</span> given <span class="math" data-tex="\(\mathscr F\vee\sigma(\mathcal A)\)">\(\mathscr F\vee\sigma(\mathcal A)\)</span> is <span class="math" data-tex="\(p_{ij}/p_i\)">\(p_{ij}/p_i\)</span>, assigning any value on its null zero-denominator part. To prove this, test <span class="math" data-tex="\(A_i\cap C\)">\(A_i\cap C\)</span>, <span class="math" data-tex="\(C\in\mathscr F\)">\(C\in\mathscr F\)</span>, and use
+<span class="math math-display" data-tex="\[
+ \int_{A_i\cap C}\frac{p_{ij}}{p_i}\,d\mu
+    =\int_C p_i\frac{p_{ij}}{p_i}\,d\mu
+    =\int_Cp_{ij}\,d\mu
+    =\mu(A_i\cap B_j\cap C).
+ \tag{IE16}
+\]">\[
+ \int_{A_i\cap C}\frac{p_{ij}}{p_i}\,d\mu
+    =\int_C p_i\frac{p_{ij}}{p_i}\,d\mu
+    =\int_Cp_{ij}\,d\mu
+    =\mu(A_i\cap B_j\cap C).
+ \tag{IE16}
+\]</span>
+The apparent quotient is bounded by one. All sets in <span class="math" data-tex="\(\mathscr F\vee\sigma(\mathcal A)\)">\(\mathscr F\vee\sigma(\mathcal A)\)</span> are, modulo completion, countable disjoint unions of sets <span class="math" data-tex="\(A_i\cap C_i\)">\(A_i\cap C_i\)</span>, <span class="math" data-tex="\(C_i\in\mathscr F\)">\(C_i\in\mathscr F\)</span>: those unions form a sigma algebra containing the generators. Thus the tests prove the full conditional-probability identity.</p>
+<p>On an actual atom <span class="math" data-tex="\(A_i\cap B_j\)">\(A_i\cap B_j\)</span> outside the null exceptions, all the probabilities being divided are positive. Taking logarithms gives the pointwise information chain rule, and then (IE14) gives the entropy chain rule:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ I_\mu(\mathcal A\vee\mathcal B\mid\mathscr F)
+   &amp;=I_\mu(\mathcal A\mid\mathscr F)
+      +I_\mu(\mathcal B\mid\mathscr F\vee\sigma(\mathcal A)),\\
+ H_\mu(\mathcal A\vee\mathcal B\mid\mathscr F)
+   &amp;=H_\mu(\mathcal A\mid\mathscr F)
+      +H_\mu(\mathcal B\mid\mathscr F\vee\sigma(\mathcal A)).
+ \end{aligned}
+ \tag{IE17}
+\]">\[
+ \begin{aligned}
+ I_\mu(\mathcal A\vee\mathcal B\mid\mathscr F)
+   &amp;=I_\mu(\mathcal A\mid\mathscr F)
+      +I_\mu(\mathcal B\mid\mathscr F\vee\sigma(\mathcal A)),\\
+ H_\mu(\mathcal A\vee\mathcal B\mid\mathscr F)
+   &amp;=H_\mu(\mathcal A\mid\mathscr F)
+      +H_\mu(\mathcal B\mid\mathscr F\vee\sigma(\mathcal A)).
+ \end{aligned}
+ \tag{IE17}
+\]</span>
+These equalities hold for countable partitions as equalities of nonnegative quantities, including infinity. Repeated application proves the finite ordered chain rules. In particular a refinement has entropy at least that of the partition it refines.</p>
+<p>Conditioning on a larger sigma algebra decreases entropy. First suppose <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> is finite and <span class="math" data-tex="\(\mathscr F\subseteq\mathscr G\)">\(\mathscr F\subseteq\mathscr G\)</span>. Write <span class="math" data-tex="\(p_i=\mathbb E(1_{Q_i}\mid\mathscr G)\)">\(p_i=\mathbb E(1_{Q_i}\mid\mathscr G)\)</span>, <span class="math" data-tex="\(q_i=\mathbb E(1_{Q_i}\mid\mathscr F)\)">\(q_i=\mathbb E(1_{Q_i}\mid\mathscr F)\)</span>. The tower property gives <span class="math" data-tex="\(\mathbb E(p_i\mid\mathscr F)=q_i\)">\(\mathbb E(p_i\mid\mathscr F)=q_i\)</span>, and <span class="math" data-tex="\(p_i=0\)">\(p_i=0\)</span> almost everywhere on <span class="math" data-tex="\(\{q_i=0\}\)">\(\{q_i=0\}\)</span>. Truncating the nonnegative <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>-measurable function <span class="math" data-tex="\(-\log q_i\)">\(-\log q_i\)</span> proves
+<span class="math" data-tex="\(\int p_i(-\log q_i)=\int q_i(-\log q_i)\)">\(\int p_i(-\log q_i)=\int q_i(-\log q_i)\)</span>.
+Both total entropies are at most <span class="math" data-tex="\(\log|\mathcal Q|\)">\(\log|\mathcal Q|\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ H_\mu(\mathcal Q\mid\mathscr F)-H_\mu(\mathcal Q\mid\mathscr G)
+     =\int\sum_i p_i\log\frac{p_i}{q_i}\,d\mu\ge0.
+ \tag{IE18}
+\]">\[
+ H_\mu(\mathcal Q\mid\mathscr F)-H_\mu(\mathcal Q\mid\mathscr G)
+     =\int\sum_i p_i\log\frac{p_i}{q_i}\,d\mu\ge0.
+ \tag{IE18}
+\]</span>
+The displayed subtraction is between finite quantities; (IE15) proves the inequality.</p>
+<p>For a countable <span class="math" data-tex="\(\mathcal Q=(Q_i)_{i\ge1}\)">\(\mathcal Q=(Q_i)_{i\ge1}\)</span>, let <span class="math" data-tex="\(\mathcal Q_m\)">\(\mathcal Q_m\)</span> retain its first <span class="math" data-tex="\(m\)">\(m\)</span> atoms and merge the rest into one tail atom. For every conditioning algebra,
+<span class="math math-display" data-tex="\[
+ H_\mu(\mathcal Q_m\mid\mathscr F)
+    \uparrow H_\mu(\mathcal Q\mid\mathscr F).
+ \tag{IE19}
+\]">\[
+ H_\mu(\mathcal Q_m\mid\mathscr F)
+    \uparrow H_\mu(\mathcal Q\mid\mathscr F).
+ \tag{IE19}
+\]</span>
+To see this directly, its conditional entropy density is
+<span class="math" data-tex="\(\sum_{i\le m}\eta(q_i)+\eta(\sum_{i&gt;m}q_i)\)">\(\sum_{i\le m}\eta(q_i)+\eta(\sum_{i&gt;m}q_i)\)</span>.
+Splitting one probability into two increases entropy, so these densities increase. The tail probability tends to zero, and continuity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> at zero identifies the limit with <span class="math" data-tex="\(\sum_i\eta(q_i)\)">\(\sum_i\eta(q_i)\)</span>. Monotone convergence proves (IE19). Thus (IE18) extends to countable partitions by applying it to <span class="math" data-tex="\(\mathcal Q_m\)">\(\mathcal Q_m\)</span>, with no subtraction of infinities.</p>
+<p>Write <span class="math" data-tex="\(H_\mu(\mathcal Q)=H_\mu(\mathcal Q\mid\{\varnothing,X\})\)">\(H_\mu(\mathcal Q)=H_\mu(\mathcal Q\mid\{\varnothing,X\})\)</span>. If <span class="math" data-tex="\(H_\mu(\mathcal Q)&lt;\infty\)">\(H_\mu(\mathcal Q)&lt;\infty\)</span>, the chain rule and conditioning inequality give the uniform tail estimate
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ 0&amp;\le H_\mu(\mathcal Q\mid\mathscr F)
+        -H_\mu(\mathcal Q_m\mid\mathscr F)
+       \le H_\mu(\mathcal Q\mid\sigma(\mathcal Q_m))\\
+   &amp;=H_\mu(\mathcal Q)-H_\mu(\mathcal Q_m)
+       \longrightarrow0.
+ \end{aligned}
+ \tag{IE20}
+\]">\[
+ \begin{aligned}
+ 0&amp;\le H_\mu(\mathcal Q\mid\mathscr F)
+        -H_\mu(\mathcal Q_m\mid\mathscr F)
+       \le H_\mu(\mathcal Q\mid\sigma(\mathcal Q_m))\\
+   &amp;=H_\mu(\mathcal Q)-H_\mu(\mathcal Q_m)
+       \longrightarrow0.
+ \end{aligned}
+ \tag{IE20}
+\]</span>
+Every entropy in this display is finite. In particular the estimate is uniform in <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>. It supplies the countable-tail control that mere convergence of individual atom probabilities would not provide.</p>
+<p><span id="OA-FLOW.IE.CONVERGENCE"></span><a id="IE-convergence"></a></p>
+<h2 id="4-increasing-conditioning-entropy-and-information-converge">4. Increasing conditioning: entropy and information converge</h2>
+<p>Let <span class="math" data-tex="\(\mathscr F_n\)">\(\mathscr F_n\)</span> increase and put
+<span class="math" data-tex="\(\mathscr F_\infty=\sigma(\bigcup_n\mathscr F_n)\)">\(\mathscr F_\infty=\sigma(\bigcup_n\mathscr F_n)\)</span>, completed.
+For <span class="math" data-tex="\(f\in L^2(\mu)\)">\(f\in L^2(\mu)\)</span>, denote its orthogonal projections onto <span class="math" data-tex="\(L^2(\mathscr F_n)\)">\(L^2(\mathscr F_n)\)</span> by <span class="math" data-tex="\(P_nf\)">\(P_nf\)</span>. If <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>, orthogonality and nested ranges give
+<span class="math math-display" data-tex="\[
+ \|P_mf-P_nf\|_2^2=\|P_mf\|_2^2-\|P_nf\|_2^2.
+ \tag{IE21}
+\]">\[
+ \|P_mf-P_nf\|_2^2=\|P_mf\|_2^2-\|P_nf\|_2^2.
+ \tag{IE21}
+\]</span>
+The squared norms increase and are bounded by <span class="math" data-tex="\(\|f\|_2^2\)">\(\|f\|_2^2\)</span>. Hence <span class="math" data-tex="\(P_nf\)">\(P_nf\)</span> converges in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, to the projection onto the closed span of their ranges.</p>
+<p>That span is all <span class="math" data-tex="\(L^2(\mathscr F_\infty)\)">\(L^2(\mathscr F_\infty)\)</span>. Here is the needed density argument. In a probability space, if a set algebra <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span> generates a sigma algebra, the sets approximable in measure by members of <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span> form a sigma algebra: complements and finite unions preserve the approximation; a countable union is first approximated by a finite subunion using continuity of measure, then each of its finitely many sets is approximated. This also includes all completed sets. Apply it to the algebra <span class="math" data-tex="\(\bigcup_n\mathscr F_n\)">\(\bigcup_n\mathscr F_n\)</span>. Its indicators are dense in <span class="math" data-tex="\(L^2(\mathscr F_\infty)\)">\(L^2(\mathscr F_\infty)\)</span>, using simple approximation and <span class="math" data-tex="\(\|1_A-1_B\|_2^2=\mu(A\triangle B)\)">\(\|1_A-1_B\|_2^2=\mu(A\triangle B)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \mathbb E_\mu(f\mid\mathscr F_n)
+    \longrightarrow\mathbb E_\mu(f\mid\mathscr F_\infty)
+       \quad\text{in }L^2.
+ \tag{IE22}
+\]">\[
+ \mathbb E_\mu(f\mid\mathscr F_n)
+    \longrightarrow\mathbb E_\mu(f\mid\mathscr F_\infty)
+       \quad\text{in }L^2.
+ \tag{IE22}
+\]</span>
+For bounded <span class="math" data-tex="\(f\)">\(f\)</span> these are the already constructed conditional expectations. No martingale theorem has been used.</p>
+<p>If <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> is finite, apply (IE22) to its atom indicators. Uniform continuity and boundedness of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> imply convergence of the integrals of <span class="math" data-tex="\(\eta(q_{i,n})\)">\(\eta(q_{i,n})\)</span>. For example, split into <span class="math" data-tex="\(|q_{i,n}-q_{i,\infty}|\le\delta\)">\(|q_{i,n}-q_{i,\infty}|\le\delta\)</span> and its complement, bounding the latter's measure by its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> error divided by <span class="math" data-tex="\(\delta^2\)">\(\delta^2\)</span>. Finite summation proves conditional-entropy convergence. For countable <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> of finite entropy, apply the uniform estimate (IE20) before passing to the limit in <span class="math" data-tex="\(n\)">\(n\)</span>, then let <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ H_\mu(\mathcal Q\mid\mathscr F_n)
+       \downarrow H_\mu(\mathcal Q\mid\mathscr F_\infty)
+       \qquad(H_\mu(\mathcal Q)&lt;\infty).
+ \tag{IE23}
+\]">\[
+ H_\mu(\mathcal Q\mid\mathscr F_n)
+       \downarrow H_\mu(\mathcal Q\mid\mathscr F_\infty)
+       \qquad(H_\mu(\mathcal Q)&lt;\infty).
+ \tag{IE23}
+\]</span></p>
+<p>There is also convergence of the actual information, needed to clarify the scope of this limiting argument:
+<span class="math math-display" data-tex="\[
+ I_\mu(\mathcal Q\mid\mathscr F_n)
+     \longrightarrow I_\mu(\mathcal Q\mid\mathscr F_\infty)
+     \quad\text{in }L^1
+     \qquad(H_\mu(\mathcal Q)&lt;\infty).
+ \tag{IE24}
+\]">\[
+ I_\mu(\mathcal Q\mid\mathscr F_n)
+     \longrightarrow I_\mu(\mathcal Q\mid\mathscr F_\infty)
+     \quad\text{in }L^1
+     \qquad(H_\mu(\mathcal Q)&lt;\infty).
+ \tag{IE24}
+\]</span>
+To prove it, first fix an atom <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>. Its limiting conditional probability <span class="math" data-tex="\(q_i\)">\(q_i\)</span> is positive almost everywhere on <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>. More quantitatively,
+<span class="math" data-tex="\(\mu(Q_i\cap\{q_i&lt;\delta\})=\int_{\{q_i&lt;\delta\}}q_i\,d\mu\le\delta\)">\(\mu(Q_i\cap\{q_i&lt;\delta\})=\int_{\{q_i&lt;\delta\}}q_i\,d\mu\le\delta\)</span>.
+On the complementary part <span class="math" data-tex="\(q_i\ge\delta\)">\(q_i\ge\delta\)</span>, convergence of <span class="math" data-tex="\(q_{i,n}\)">\(q_{i,n}\)</span> in probability and continuity of <span class="math" data-tex="\(-\log\)">\(-\log\)</span> away from zero imply convergence of the information in probability. Restrict to finitely many <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>'s with total measure as close to one as desired to obtain the same convergence on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Write these nonnegative information functions as <span class="math" data-tex="\(I_n,I\)">\(I_n,I\)</span>. Their means converge by (IE14) and (IE23), and <span class="math" data-tex="\(I\)">\(I\)</span> is integrable. Moreover <span class="math" data-tex="\((I-I_n)_+\to0\)">\((I-I_n)_+\to0\)</span> in probability and is dominated by <span class="math" data-tex="\(I\)">\(I\)</span>. Its integrals tend to zero: on <span class="math" data-tex="\(\{I\le M\}\)">\(\{I\le M\}\)</span> split at a difference threshold <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to get a bound <span class="math" data-tex="\(\varepsilon+M\mu((I-I_n)_+&gt;\varepsilon)\)">\(\varepsilon+M\mu((I-I_n)_+&gt;\varepsilon)\)</span>, and on <span class="math" data-tex="\(\{I&gt;M\}\)">\(\{I&gt;M\}\)</span> use the tail integral of <span class="math" data-tex="\(I\)">\(I\)</span>. Let <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>, then <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, then <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>. Finally
+<span class="math" data-tex="\(\|I_n-I\|_1=\int I_n+\int I-2\int\min(I_n,I)\to0\)">\(\|I_n-I\|_1=\int I_n+\int I-2\int\min(I_n,I)\to0\)</span>.
+This proves (IE24) without claiming that the information is pointwise bounded or pointwise monotone.</p>
+<p><span id="OA-FLOW.IE.RATES"></span><a id="IE-rates"></a></p>
+<h2 id="5-entropy-rate-and-finite-approximations">5. Entropy rate and finite approximations</h2>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be any invertible probability-preserving transformation and let <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> be countable with <span class="math" data-tex="\(H_\mu(\mathcal Q)&lt;\infty\)">\(H_\mu(\mathcal Q)&lt;\infty\)</span>. Its strict past is
+<span class="math math-display" data-tex="\[
+ \mathscr F_{\mathcal Q}^{-}
+    =\sigma\{\mathcal Q(U^{-j}x):j\ge1\}.
+ \tag{IE25}
+\]">\[
+ \mathscr F_{\mathcal Q}^{-}
+    =\sigma\{\mathcal Q(U^{-j}x):j\ge1\}.
+ \tag{IE25}
+\]</span>
+All block entropies are finite, bounded by <span class="math" data-tex="\(nH_\mu(\mathcal Q)\)">\(nH_\mu(\mathcal Q)\)</span>. Apply (IE17) to the ordered labels at times <span class="math" data-tex="\(0,\ldots,n-1\)">\(0,\ldots,n-1\)</span>, and move each term back to time zero by invariance and (IE10):
+<span class="math math-display" data-tex="\[
+ H_\mu\!\left(\bigvee_{j=0}^{n-1}U^{-j}\mathcal Q\right)
+   =\sum_{k=0}^{n-1}
+       H_\mu\!\left(\mathcal Q\mid
+          \sigma\{\mathcal Q(U^{-j}x):1\le j\le k\}\right).
+ \tag{IE26}
+\]">\[
+ H_\mu\!\left(\bigvee_{j=0}^{n-1}U^{-j}\mathcal Q\right)
+   =\sum_{k=0}^{n-1}
+       H_\mu\!\left(\mathcal Q\mid
+          \sigma\{\mathcal Q(U^{-j}x):1\le j\le k\}\right).
+ \tag{IE26}
+\]</span>
+For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the conditioning algebra is trivial. By (IE23), these summands decrease to <span class="math" data-tex="\(H_\mu(\mathcal Q\mid\mathscr F_{\mathcal Q}^{-})\)">\(H_\mu(\mathcal Q\mid\mathscr F_{\mathcal Q}^{-})\)</span>. Their Cesaro averages converge to the same number: a finite initial segment has vanishing average contribution, and the remaining terms are within any fixed tolerance of the limit. Hence the block limit exists and
+<span class="math math-display" data-tex="\[
+ h_\mu(U,\mathcal Q)
+       =H_\mu(\mathcal Q\mid\mathscr F_{\mathcal Q}^{-}).
+ \tag{IE27}
+\]">\[
+ h_\mu(U,\mathcal Q)
+       =H_\mu(\mathcal Q\mid\mathscr F_{\mathcal Q}^{-}).
+ \tag{IE27}
+\]</span>
+This proves the limit in (IE2) and also defines the rate of a countable finite-entropy partition.</p>
+<p>For partitions <span class="math" data-tex="\(\mathcal P,\mathcal Q\)">\(\mathcal P,\mathcal Q\)</span> each of finite entropy, use (IE17) on their two <span class="math" data-tex="\(n\)">\(n\)</span>-blocks, and then condition each <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>-symbol on at least its corresponding <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>-symbol. This gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ H_\mu(\mathcal P^{[0,n)})&amp;\le
+ H_\mu(\mathcal Q^{[0,n)})
+     +\sum_{j=0}^{n-1}H_\mu(U^{-j}\mathcal P\mid\sigma(U^{-j}\mathcal Q))\\
+ &amp;=H_\mu(\mathcal Q^{[0,n)})+nH_\mu(\mathcal P\mid\sigma(\mathcal Q)).
+ \end{aligned}
+ \tag{IE28}
+\]">\[
+ \begin{aligned}
+ H_\mu(\mathcal P^{[0,n)})&amp;\le
+ H_\mu(\mathcal Q^{[0,n)})
+     +\sum_{j=0}^{n-1}H_\mu(U^{-j}\mathcal P\mid\sigma(U^{-j}\mathcal Q))\\
+ &amp;=H_\mu(\mathcal Q^{[0,n)})+nH_\mu(\mathcal P\mid\sigma(\mathcal Q)).
+ \end{aligned}
+ \tag{IE28}
+\]</span>
+The notation in the first line abbreviates the joins in (IE2). Divide by <span class="math" data-tex="\(n\)">\(n\)</span>:
+<span class="math math-display" data-tex="\[
+ h_\mu(U,\mathcal P)\le h_\mu(U,\mathcal Q)
+                       +H_\mu(\mathcal P\mid\sigma(\mathcal Q)).
+ \tag{IE29}
+\]">\[
+ h_\mu(U,\mathcal P)\le h_\mu(U,\mathcal Q)
+                       +H_\mu(\mathcal P\mid\sigma(\mathcal Q)).
+ \tag{IE29}
+\]</span>
+Refinement increases every block entropy and therefore increases rate.</p>
+<p>The finite coarsenings <span class="math" data-tex="\(\mathcal Q_m\)">\(\mathcal Q_m\)</span> of a countable finite-entropy partition satisfy, by (IE20) and (IE29),
+<span class="math math-display" data-tex="\[
+ h_\mu(U,\mathcal Q_m)\le h_\mu(U,\mathcal Q)
+  \le h_\mu(U,\mathcal Q_m)+H_\mu(\mathcal Q)-H_\mu(\mathcal Q_m).
+ \tag{IE30}
+\]">\[
+ h_\mu(U,\mathcal Q_m)\le h_\mu(U,\mathcal Q)
+  \le h_\mu(U,\mathcal Q_m)+H_\mu(\mathcal Q)-H_\mu(\mathcal Q_m).
+ \tag{IE30}
+\]</span>
+Thus <span class="math" data-tex="\(h_\mu(U,\mathcal Q)=\lim_m h_\mu(U,\mathcal Q_m)\le h_\mu(U)\)">\(h_\mu(U,\mathcal Q)=\lim_m h_\mu(U,\mathcal Q_m)\le h_\mu(U)\)</span>. This proves that introducing such countable partitions does not enlarge the supremum over finite partitions.</p>
+<p>We will also use a finite-label approximation estimate. Suppose <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> has <span class="math" data-tex="\(m\)">\(m\)</span> labels and a <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>-measurable prediction of its label is wrong on a set of probability <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Let <span class="math" data-tex="\(D\)">\(D\)</span> be that error indicator. Applying the chain rule with <span class="math" data-tex="\(D\)">\(D\)</span>, conditioning reduction, and the entropy bound for at most <span class="math" data-tex="\(m\)">\(m\)</span> labels gives
+<span class="math math-display" data-tex="\[
+ H_\mu(\mathcal P\mid\sigma(\mathcal Q))
+   \le H_2(\varepsilon)+\varepsilon\log m,\qquad
+ H_2(t)=-t\log t-(1-t)\log(1-t).
+ \tag{IE31}
+\]">\[
+ H_\mu(\mathcal P\mid\sigma(\mathcal Q))
+   \le H_2(\varepsilon)+\varepsilon\log m,\qquad
+ H_2(t)=-t\log t-(1-t)\log(1-t).
+ \tag{IE31}
+\]</span>
+Indeed, when <span class="math" data-tex="\(D=0\)">\(D=0\)</span> the label is determined by <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>; when <span class="math" data-tex="\(D=1\)">\(D=1\)</span> its entropy is at most <span class="math" data-tex="\(\log m\)">\(\log m\)</span>; and <span class="math" data-tex="\(H(D\mid\mathcal Q)\le H(D)=H_2(\varepsilon)\)">\(H(D\mid\mathcal Q)\le H(D)=H_2(\varepsilon)\)</span>. This proves the estimate, including its limit zero as <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>.</p>
+<p><span id="OA-FLOW.IE.STOPPED"></span><a id="IE-stopped"></a></p>
+<h2 id="6-the-stopped-word-contains-exactly-one-return-s-information">6. The stopped word contains exactly one return's information</h2>
+<p>Choose a finite partition <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span> refining <span class="math" data-tex="\(\{E,X\setminus E\}\)">\(\{E,X\setminus E\}\)</span>, and suppose it has <span class="math" data-tex="\(m\)">\(m\)</span> atoms. For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, record the word
+<span class="math math-display" data-tex="\[
+ \mathcal R(x)=
+  \bigl(\mathcal P(Tx),\ldots,\mathcal P(T^{r(x)}x)\bigr).
+ \tag{IE32}
+\]">\[
+ \mathcal R(x)=
+  \bigl(\mathcal P(Tx),\ldots,\mathcal P(T^{r(x)}x)\bigr).
+ \tag{IE32}
+\]</span>
+This defines a countable partition of <span class="math" data-tex="\(E\)">\(E\)</span>. The initial symbol at time zero is excluded; the symbol at the next visit is included. The latter has an <span class="math" data-tex="\(E\)">\(E\)</span>-label, and every preceding symbol in the word has an outside label.</p>
+<p>The word partition has finite entropy, even when <span class="math" data-tex="\(r\)">\(r\)</span> is unbounded. Under <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, put <span class="math" data-tex="\(p_n=\nu(r=n)\)">\(p_n=\nu(r=n)\)</span>. If <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, compare its finite coarsening <span class="math" data-tex="\((p_1,\ldots,p_N,\sum_{n&gt;N}p_n)\)">\((p_1,\ldots,p_N,\sum_{n&gt;N}p_n)\)</span> with the corresponding coarsening of
+<span class="math math-display" data-tex="\[
+ q_n=a(1-a)^{n-1},\qquad \sum_{n&gt;N}q_n=(1-a)^N.
+ \tag{IE33}
+\]">\[
+ q_n=a(1-a)^{n-1},\qquad \sum_{n&gt;N}q_n=(1-a)^N.
+ \tag{IE33}
+\]</span>
+The finite inequality (IE15) bounds the coarse entropy by its cross entropy. For <span class="math" data-tex="\(n&gt;N\)">\(n&gt;N\)</span>, <span class="math" data-tex="\(-\log((1-a)^N)\le-\log q_n\)">\(-\log((1-a)^N)\le-\log q_n\)</span>. Therefore every such coarse entropy is bounded by
+<span class="math math-display" data-tex="\[
+ \sum_{n\ge1}p_n[-\log a-(n-1)\log(1-a)]
+   =-\log a-(a^{-1}-1)\log(1-a)&lt;\infty,
+ \tag{IE34}
+\]">\[
+ \sum_{n\ge1}p_n[-\log a-(n-1)\log(1-a)]
+   =-\log a-(a^{-1}-1)\log(1-a)&lt;\infty,
+ \tag{IE34}
+\]</span>
+using (IE7). Let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span> and apply (IE19) with trivial conditioning. This proves the same bound for <span class="math" data-tex="\(H_\nu(r)\)">\(H_\nu(r)\)</span>. If <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> and its mean is one, so <span class="math" data-tex="\(r=1\)">\(r=1\)</span> almost everywhere and <span class="math" data-tex="\(H_\nu(r)=0\)">\(H_\nu(r)=0\)</span>.</p>
+<p>The length <span class="math" data-tex="\(r\)">\(r\)</span> is determined by the word. Given <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, there are at most <span class="math" data-tex="\(m^n\)">\(m^n\)</span> possible words. The countable chain rule (IE17), proved before any finite-entropy assumption, and (IE15) consequently give
+<span class="math math-display" data-tex="\[
+ H_\nu(\mathcal R)=H_\nu(r)+H_\nu(\mathcal R\mid\sigma(r))
+       \le H_\nu(r)+\frac{\log m}{a}&lt;\infty.
+ \tag{IE35}
+\]">\[
+ H_\nu(\mathcal R)=H_\nu(r)+H_\nu(\mathcal R\mid\sigma(r))
+       \le H_\nu(r)+\frac{\log m}{a}&lt;\infty.
+ \tag{IE35}
+\]</span>
+This establishes finiteness before using the rate formula for <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ \mathscr G_0=\sigma\{\mathcal P(T^kx):k\le0\}.
+ \tag{IE36}
+\]">\[
+ \mathscr G_0=\sigma\{\mathcal P(T^kx):k\le0\}.
+ \tag{IE36}
+\]</span>
+The strict <span class="math" data-tex="\(S\)">\(S\)</span>-past of the word partition is exactly
+<span class="math math-display" data-tex="\[
+ \sigma\{\mathcal R(S^{-j}x):j\ge1\}
+       =\mathscr G_0|_E
+       \quad\text{modulo }\nu\text{-null sets}.
+ \tag{IE37}
+\]">\[
+ \sigma\{\mathcal R(S^{-j}x):j\ge1\}
+       =\mathscr G_0|_E
+       \quad\text{modulo }\nu\text{-null sets}.
+ \tag{IE37}
+\]</span>
+For the first inclusion, the full nonpositive <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>-name locates all past visits, because <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> detects <span class="math" data-tex="\(E\)">\(E\)</span>, and reads each intervening word. For the reverse inclusion, concatenate the past return words. The most recent one ends at time zero and supplies its <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>-label. Their lengths locate the preceding word boundaries; backward recurrence makes their cumulative lengths tend to infinity. Every fixed nonpositive integer coordinate is therefore read after finitely many words. Both reconstructions are measurable: the needed stopping index has countably many measurable integer level sets, and every finite word belongs to a countable alphabet. This proves equality of the generated sigma algebras, not merely an informal coding correspondence.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ p_i=\mathbb E_\mu(1_{P_i}\mid\mathscr F_{\mathcal P}^{-}),\qquad
+ I(x)=I_\mu(\mathcal P\mid\mathscr F_{\mathcal P}^{-})(x).
+ \tag{IE38}
+\]">\[
+ p_i=\mathbb E_\mu(1_{P_i}\mid\mathscr F_{\mathcal P}^{-}),\qquad
+ I(x)=I_\mu(\mathcal P\mid\mathscr F_{\mathcal P}^{-})(x).
+ \tag{IE38}
+\]</span>
+Then <span class="math" data-tex="\(I\ge0\)">\(I\ge0\)</span>, <span class="math" data-tex="\(I\)">\(I\)</span> is finite almost everywhere, and
+<span class="math" data-tex="\(\int_X I\,d\mu=h_\mu(T,\mathcal P)\)">\(\int_X I\,d\mu=h_\mu(T,\mathcal P)\)</span>, by (IE14) and (IE27).
+For a positive integer <span class="math" data-tex="\(j\)">\(j\)</span>, the information at step <span class="math" data-tex="\(j\)">\(j\)</span> conditioned on the original past and the preceding prefix is
+<span class="math math-display" data-tex="\[
+ -\log\mathbb E_\mu\!\left(
+      1_{\{\mathcal P(T^jx)=P_i\}}
+        \,\middle|\,
+      \mathscr G_0\vee
+           \sigma\{\mathcal P(T^kx):1\le k&lt;j\}\right)
+     =-\log p_i(T^jx).
+ \tag{IE39}
+\]">\[
+ -\log\mathbb E_\mu\!\left(
+      1_{\{\mathcal P(T^jx)=P_i\}}
+        \,\middle|\,
+      \mathscr G_0\vee
+           \sigma\{\mathcal P(T^kx):1\le k&lt;j\}\right)
+     =-\log p_i(T^jx).
+ \tag{IE39}
+\]</span>
+Indeed the conditioning algebra on the left is exactly
+<span class="math" data-tex="\(\sigma\{\mathcal P(T^kx):k\le j-1\}=(T^j)^{-1}\mathscr F_{\mathcal P}^{-}\)">\(\sigma\{\mathcal P(T^kx):k\le j-1\}=(T^j)^{-1}\mathscr F_{\mathcal P}^{-}\)</span>.
+Formula (IE10) proves the conditional probability identity. On the actual <span class="math" data-tex="\(i\)">\(i\)</span>-label this is <span class="math" data-tex="\(I(T^jx)\)">\(I(T^jx)\)</span>.</p>
+<p>We now justify stopping this chain at <span class="math" data-tex="\(r\)">\(r\)</span>; stopping is not an extra independence assumption. Fix an admissible word <span class="math" data-tex="\(\mathbf v=(v_1,\ldots,v_n)\)">\(\mathbf v=(v_1,\ldots,v_n)\)</span> ending in an <span class="math" data-tex="\(E\)">\(E\)</span>-label and having all earlier labels outside <span class="math" data-tex="\(E\)">\(E\)</span>. Write
+<span class="math math-display" data-tex="\[
+ C_{\mathbf v}=\{x:\mathcal P(T^jx)=v_j,\ 1\le j\le n\}.
+ \tag{IE40}
+\]">\[
+ C_{\mathbf v}=\{x:\mathcal P(T^jx)=v_j,\ 1\le j\le n\}.
+ \tag{IE40}
+\]</span>
+On <span class="math" data-tex="\(E\)">\(E\)</span>, this is precisely the event that the next return word is <span class="math" data-tex="\(\mathbf v\)">\(\mathbf v\)</span>, since its labels already specify the first positive return. By the pointwise chain rule in (IE17), iterated for the finite prefix, on <span class="math" data-tex="\(C_{\mathbf v}\)">\(C_{\mathbf v}\)</span>
+<span class="math math-display" data-tex="\[
+ -\log\mathbb E_\mu(1_{C_{\mathbf v}}\mid\mathscr G_0)
+      =\sum_{j=1}^n I(T^jx)
+ \quad\text{almost everywhere}.
+ \tag{IE41}
+\]">\[
+ -\log\mathbb E_\mu(1_{C_{\mathbf v}}\mid\mathscr G_0)
+      =\sum_{j=1}^n I(T^jx)
+ \quad\text{almost everywhere}.
+ \tag{IE41}
+\]</span>
+For precision, the conditional probability of the <span class="math" data-tex="\(j\)">\(j\)</span>-th actual symbol is the ratio of the conditional probability of its length-<span class="math" data-tex="\(j\)">\(j\)</span> prefix to that of the preceding prefix, as proved in (IE16). Multiplying these ratios telescopes to the conditional probability of <span class="math" data-tex="\(C_{\mathbf v}\)">\(C_{\mathbf v}\)</span>. Equation (IE39) identifies each factor. The zero denominators occur only on null parts of their actual prefix events.</p>
+<p>Since <span class="math" data-tex="\(E\in\mathscr G_0\)">\(E\in\mathscr G_0\)</span>, (IE11) says that the conditional probability on the left of (IE41), restricted to <span class="math" data-tex="\(E\)">\(E\)</span>, is the probability of this return-word atom under <span class="math" data-tex="\(\nu\)">\(\nu\)</span> given <span class="math" data-tex="\(\mathscr G_0|_E\)">\(\mathscr G_0|_E\)</span>. There is no starting factor <span class="math" data-tex="\(\nu(E)\)">\(\nu(E)\)</span>, and no extra stopping probability: the starting event is already in the conditioning algebra, and the stopping event is encoded by the final label.</p>
+<p>There are countably many finite admissible words, and countably many integer translates of the atom null exceptions in (IE38)–(IE39). Remove their union. Almost every point of <span class="math" data-tex="\(E\)">\(E\)</span> has one finite word, and (IE37)–(IE41) prove the exact information identity
+<span class="math math-display" data-tex="\[
+ I_\nu(\mathcal R\mid\mathscr F_{\mathcal R}^{-})(x)
+      =\sum_{j=1}^{r(x)}I(T^jx)
+      \quad\text{for }\nu\text{-almost every }x.
+ \tag{IE42}
+\]">\[
+ I_\nu(\mathcal R\mid\mathscr F_{\mathcal R}^{-})(x)
+      =\sum_{j=1}^{r(x)}I(T^jx)
+      \quad\text{for }\nu\text{-almost every }x.
+ \tag{IE42}
+\]</span>
+This is a finite sum at each such point; its integrated treatment remains nonnegative and does not require a bounded return time.</p>
+<p>Combine finite word entropy (IE35), the rate formula (IE27), and the tower integral (IE6):
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ h_\nu(S,\mathcal R)
+ &amp;=\int_E I_\nu(\mathcal R\mid\mathscr F_{\mathcal R}^{-})\,d\nu\\
+ &amp;=\frac1a\int_E\sum_{j=1}^{r(x)}I(T^jx)\,d\mu(x)\\
+ &amp;=\frac1a\int_X I\,d\mu
+ =\frac1a h_\mu(T,\mathcal P).
+ \end{aligned}
+ \tag{IE43}
+\]">\[
+ \begin{aligned}
+ h_\nu(S,\mathcal R)
+ &amp;=\int_E I_\nu(\mathcal R\mid\mathscr F_{\mathcal R}^{-})\,d\nu\\
+ &amp;=\frac1a\int_E\sum_{j=1}^{r(x)}I(T^jx)\,d\mu(x)\\
+ &amp;=\frac1a\int_X I\,d\mu
+ =\frac1a h_\mu(T,\mathcal P).
+ \end{aligned}
+ \tag{IE43}
+\]</span>
+This equality concerns each finite <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> refining <span class="math" data-tex="\(E\)">\(E\)</span>, and its countable finite-entropy word partition.</p>
+<p>For the first supremum inequality, let <span class="math" data-tex="\(\mathcal P_0\)">\(\mathcal P_0\)</span> be any finite partition of <span class="math" data-tex="\(X\)">\(X\)</span> and put <span class="math" data-tex="\(\mathcal P=\mathcal P_0\vee\{E,X\setminus E\}\)">\(\mathcal P=\mathcal P_0\vee\{E,X\setminus E\}\)</span>. Since countable finite-entropy rates are bounded by the full entropy, (IE30) and (IE43) give
+<span class="math math-display" data-tex="\[
+ h_\nu(S)\ge h_\nu(S,\mathcal R)
+       =a^{-1}h_\mu(T,\mathcal P)
+       \ge a^{-1}h_\mu(T,\mathcal P_0).
+ \tag{IE44}
+\]">\[
+ h_\nu(S)\ge h_\nu(S,\mathcal R)
+       =a^{-1}h_\mu(T,\mathcal P)
+       \ge a^{-1}h_\mu(T,\mathcal P_0).
+ \tag{IE44}
+\]</span>
+Taking all finite <span class="math" data-tex="\(\mathcal P_0\)">\(\mathcal P_0\)</span> proves <span class="math" data-tex="\(h_\nu(S)\ge h_\mu(T)/a\)">\(h_\nu(S)\ge h_\mu(T)/a\)</span>. If the latter is infinite, this already proves both sides of (IE3) are infinite.</p>
+<p>For the opposite inequality, let <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> be any finite partition of <span class="math" data-tex="\(E\)">\(E\)</span>, and extend it to <span class="math" data-tex="\(X\)">\(X\)</span> by adding <span class="math" data-tex="\(X\setminus E\)">\(X\setminus E\)</span> as one atom. Call this partition <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>. The final symbol of its word <span class="math" data-tex="\(\mathcal R(x)\)">\(\mathcal R(x)\)</span> is the <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>-label of <span class="math" data-tex="\(Sx\)">\(Sx\)</span>. Hence <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> refines <span class="math" data-tex="\(S^{-1}\mathcal Q\)">\(S^{-1}\mathcal Q\)</span>. Invariance makes the entropy rates of <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> and <span class="math" data-tex="\(S^{-1}\mathcal Q\)">\(S^{-1}\mathcal Q\)</span> identical, because all finite block distributions are shifted together. Therefore
+<span class="math math-display" data-tex="\[
+ h_\nu(S,\mathcal Q)
+   \le h_\nu(S,\mathcal R)
+   =a^{-1}h_\mu(T,\mathcal P)
+   \le a^{-1}h_\mu(T).
+ \tag{IE45}
+\]">\[
+ h_\nu(S,\mathcal Q)
+   \le h_\nu(S,\mathcal R)
+   =a^{-1}h_\mu(T,\mathcal P)
+   \le a^{-1}h_\mu(T).
+ \tag{IE45}
+\]</span>
+Taking all finite <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> proves the other inequality and completes (IE3). Every finite-partition calculation involved finite entropy; the final suprema are allowed to be infinite.</p>
+<h3 id="the-inverse-construction-an-arbitrary-integrable-integer-roof">The inverse construction: an arbitrary integrable integer roof</h3>
+<p>Let <span class="math" data-tex="\((Y,\nu,S)\)">\((Y,\nu,S)\)</span> be any invertible ergodic probability-preserving system and let <span class="math" data-tex="\(\ell:Y\to\{1,2,\ldots\}\)">\(\ell:Y\to\{1,2,\ldots\}\)</span> be measurable, with finite mean <span class="math" data-tex="\(R=\int_Y\ell\,d\nu\)">\(R=\int_Y\ell\,d\nu\)</span>. No bound on <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is assumed. Define
+<span class="math math-display" data-tex="\[
+ Z=\{(y,j):y\in Y,\ 0\le j&lt;\ell(y)\},\qquad
+ \int_Z F\,d\mu=\frac1R\int_Y\sum_{j=0}^{\ell(y)-1}F(y,j)\,d\nu(y)
+ \quad(F\ge0).
+ \tag{IE46}
+\]">\[
+ Z=\{(y,j):y\in Y,\ 0\le j&lt;\ell(y)\},\qquad
+ \int_Z F\,d\mu=\frac1R\int_Y\sum_{j=0}^{\ell(y)-1}F(y,j)\,d\nu(y)
+ \quad(F\ge0).
+ \tag{IE46}
+\]</span>
+Use the measurable disjoint-union sigma algebra, completed for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. This is a probability measure by nonnegative countable summation, because its value on <span class="math" data-tex="\(Z\)">\(Z\)</span> is <span class="math" data-tex="\(R/R=1\)">\(R/R=1\)</span>. The tower transformation and its inverse are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ V(y,j)&amp;=\begin{cases}(y,j+1),&amp;j+1&lt;\ell(y),\\(Sy,0),&amp;j+1=\ell(y),\end{cases}\\
+ V^{-1}(y,j)&amp;=\begin{cases}(y,j-1),&amp;j&gt;0,\\(S^{-1}y,\ell(S^{-1}y)-1),&amp;j=0.\end{cases}
+ \end{aligned}
+ \tag{IE47}
+\]">\[
+ \begin{aligned}
+ V(y,j)&amp;=\begin{cases}(y,j+1),&amp;j+1&lt;\ell(y),\\(Sy,0),&amp;j+1=\ell(y),\end{cases}\\
+ V^{-1}(y,j)&amp;=\begin{cases}(y,j-1),&amp;j&gt;0,\\(S^{-1}y,\ell(S^{-1}y)-1),&amp;j=0.\end{cases}
+ \end{aligned}
+ \tag{IE47}
+\]</span>
+These maps are measurable inverses by their countably many measurable level formulas. Integrating <span class="math" data-tex="\(F\circ V\)">\(F\circ V\)</span> replaces the sum of levels <span class="math" data-tex="\(0,\ldots,\ell(y)-1\)">\(0,\ldots,\ell(y)-1\)</span> by levels <span class="math" data-tex="\(1,\ldots,\ell(y)-1\)">\(1,\ldots,\ell(y)-1\)</span> and the term <span class="math" data-tex="\(F(Sy,0)\)">\(F(Sy,0)\)</span>. The last integral equals the integral of <span class="math" data-tex="\(F(y,0)\)">\(F(y,0)\)</span> by invariance of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, so <span class="math" data-tex="\(V\)">\(V\)</span> preserves <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Its inverse preserves <span class="math" data-tex="\(\mu\)">\(\mu\)</span> as well, and the maps therefore extend to the completions.</p>
+<p>An invariant indicator is constant along each finite tower, after removing the countably many translates of its null invariance failures. Its bottom-level indicator is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant, hence is zero or one almost everywhere. The nonnegative tower sum then makes the original indicator zero or one almost everywhere on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Thus <span class="math" data-tex="\(V\)">\(V\)</span> is ergodic.</p>
+<p>The bottom section <span class="math" data-tex="\(E=Y\times\{0\}\)">\(E=Y\times\{0\}\)</span> has mass <span class="math" data-tex="\(1/R\)">\(1/R\)</span>. Its normalized restriction is exactly <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, its return time is exactly <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and its return map is exactly <span class="math" data-tex="\(S\)">\(S\)</span>. Applying the theorem gives
+<span class="math math-display" data-tex="\[
+ h_\mu(V)=\frac{h_\nu(S)}R\qquad\text{in }[0,\infty].
+ \tag{IE48}
+\]">\[
+ h_\mu(V)=\frac{h_\nu(S)}R\qquad\text{in }[0,\infty].
+ \tag{IE48}
+\]</span>
+This is the finite-mean, possibly unbounded-roof formulation. Multiplying or dividing infinity by the finite positive number <span class="math" data-tex="\(R\)">\(R\)</span> is unambiguous. An infinite-mean roof would not define the probability measure (IE46), and is outside this probability theorem.</p>
+<p><span id="OA-FLOW.IE.NORMALIZATION"></span><a id="IE-normalization"></a></p>
+<h2 id="7-equivalent-invariant-probabilities-have-the-same-normalization">7. Equivalent invariant probabilities have the same normalization</h2>
+<p>Suppose <span class="math" data-tex="\(U\)">\(U\)</span> is ergodic and preserves a probability <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is another <span class="math" data-tex="\(U\)">\(U\)</span>-invariant probability with <span class="math" data-tex="\(\rho\)">\(\rho\)</span> equivalent to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The <a href="../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation">finite Radon–Nikodym construction</a> supplies a unique finite positive density <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(\rho=f\eta\)">\(\rho=f\eta\)</span>.</p>
+<p>For completeness, its construction uses only Hilbert representation: with <span class="math" data-tex="\(\lambda=\eta+\rho\)">\(\lambda=\eta+\rho\)</span>, the functional <span class="math" data-tex="\(g\mapsto\int g\,d\rho\)">\(g\mapsto\int g\,d\rho\)</span> is bounded on <span class="math" data-tex="\(L^2(\lambda)\)">\(L^2(\lambda)\)</span>. Its representing density <span class="math" data-tex="\(v\)">\(v\)</span> satisfies <span class="math" data-tex="\(0\le v\le1\)">\(0\le v\le1\)</span>, by indicator tests, and <span class="math" data-tex="\(\rho=v\lambda,\ \eta=(1-v)\lambda\)">\(\rho=v\lambda,\ \eta=(1-v)\lambda\)</span>. Absolute continuity removes <span class="math" data-tex="\(\{v=1\}\)">\(\{v=1\}\)</span>. Thus <span class="math" data-tex="\(f=v/(1-v)\)">\(f=v/(1-v)\)</span> has the stated properties; simple approximation proves the integral identity, and testing sets where two densities differ proves uniqueness.</p>
+<p>Invariance and change of variables give <span class="math" data-tex="\(f=f\circ U^{-1}\)">\(f=f\circ U^{-1}\)</span> almost everywhere. Each set <span class="math" data-tex="\(\{f&gt;q\}\)">\(\{f&gt;q\}\)</span>, <span class="math" data-tex="\(q\in\mathbb Q\)">\(q\in\mathbb Q\)</span>, is therefore invariant modulo null sets and has measure zero or one. These nested rational tests force <span class="math" data-tex="\(f\)">\(f\)</span> to be constant almost everywhere: their common threshold determines its value, with finiteness ensured by <span class="math" data-tex="\(\int f=1\)">\(\int f=1\)</span>. Its integral then makes that constant one. Consequently <span class="math" data-tex="\(\rho=\eta\)">\(\rho=\eta\)</span>.</p>
+<p>In particular, suppose <span class="math" data-tex="\(W:E_1\to E_2\)">\(W:E_1\to E_2\)</span> is an invertible measure-class map conjugating induced transformations from two ergodic probability systems. Write <span class="math" data-tex="\(a_i=\mu_i(E_i)&gt;0\)">\(a_i=\mu_i(E_i)&gt;0\)</span>, <span class="math" data-tex="\(\nu_i=\mu_i|_{E_i}/a_i\)">\(\nu_i=\mu_i|_{E_i}/a_i\)</span>. The pushforward <span class="math" data-tex="\(W_*\nu_1\)">\(W_*\nu_1\)</span> is invariant and equivalent to <span class="math" data-tex="\(\nu_2\)">\(\nu_2\)</span>; induced ergodicity and the preceding argument give
+<span class="math math-display" data-tex="\[
+ W_*\nu_1=\nu_2,\qquad
+ W_*(\mu_1|_{E_1})=\frac{a_1}{a_2}\,\mu_2|_{E_2}.
+ \tag{IE49}
+\]">\[
+ W_*\nu_1=\nu_2,\qquad
+ W_*(\mu_1|_{E_1})=\frac{a_1}{a_2}\,\mu_2|_{E_2}.
+ \tag{IE49}
+\]</span>
+Thus it is the normalized induced probabilities that are preserved. Pulling back finite partitions by <span class="math" data-tex="\(W\)">\(W\)</span> preserves their probabilities and all their orbit-join probabilities. It follows directly from (IE2), in both directions, that <span class="math" data-tex="\(h_{\nu_1}(S_1)=h_{\nu_2}(S_2)\)">\(h_{\nu_1}(S_1)=h_{\nu_2}(S_2)\)</span>, including infinite entropy.</p>
+<p><span id="OA-FLOW.IE.EXAMPLES"></span><a id="IE-examples"></a></p>
+<h2 id="8-the-two-entropy-values-needed-for-the-obstruction">8. The two entropy values needed for the obstruction</h2>
+<p><strong>Irrational rotation.</strong> On <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span>, let <span class="math" data-tex="\(T_\alpha x=x+\alpha\)">\(T_\alpha x=x+\alpha\)</span> with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> irrational, and use normalized Lebesgue measure. <a href="OA-FLOW-SC.html#sc-02">SC2</a> constructs this measure and proves translation invariance; passage through the endpoint uses its two half-open interval pieces.</p>
+<p>A partition <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> into finitely many arcs has only finitely many endpoints, say at most <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span>. Its <span class="math" data-tex="\(n\)">\(n\)</span>-fold refinement has at most <span class="math" data-tex="\(nL\)">\(nL\)</span> atoms, since all endpoints are among <span class="math" data-tex="\(n\)">\(n\)</span> translates of those endpoints. Thus
+<span class="math math-display" data-tex="\[
+ H_\mu(\mathcal Q^{[0,n)})\le\log(nL),\qquad
+ h_\mu(T_\alpha,\mathcal Q)=0.
+ \tag{IE50}
+\]">\[
+ H_\mu(\mathcal Q^{[0,n)})\le\log(nL),\qquad
+ h_\mu(T_\alpha,\mathcal Q)=0.
+ \tag{IE50}
+\]</span>
+Finite unions of rational-endpoint arcs form an algebra generating the completed Lebesgue sigma algebra in measure, by the approximation argument in Section 4. Given any finite partition <span class="math" data-tex="\(\mathcal P=(P_i)_{i=1}^m\)">\(\mathcal P=(P_i)_{i=1}^m\)</span> and <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/2\)">\(0&lt;\varepsilon&lt;1/2\)</span>, approximate its atoms by sets <span class="math" data-tex="\(A_i\)">\(A_i\)</span> from this algebra with total symmetric-difference error below <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Predict the label by the first <span class="math" data-tex="\(A_i\)">\(A_i\)</span> containing the point, with a fixed default if none contains it. Outside the union of the errors this is the correct label. A finite arc partition <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> containing all their endpoints determines this prediction. Equations (IE29), (IE31), and (IE50) give
+<span class="math math-display" data-tex="\[
+ 0\le h_\mu(T_\alpha,\mathcal P)
+      \le H_2(\varepsilon)+\varepsilon\log m.
+ \tag{IE51}
+\]">\[
+ 0\le h_\mu(T_\alpha,\mathcal P)
+      \le H_2(\varepsilon)+\varepsilon\log m.
+ \tag{IE51}
+\]</span>
+Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves <span class="math" data-tex="\(h_\mu(T_\alpha)=0\)">\(h_\mu(T_\alpha)=0\)</span>.</p>
+<p>This rotation is ergodic and free. For ergodicity, translations are continuous on <span class="math" data-tex="\(L^2(\mathbb T)\)">\(L^2(\mathbb T)\)</span>: for finite arc indicators the symmetric-difference measure tends to zero, and their linear span is dense by the same set approximation, so isometry extends continuity to every vector. The cyclic subgroup generated by an irrational <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is dense. One elementary proof uses the pigeonhole principle to find arbitrarily small nonzero distances of its elements from zero; after a sign change, integer multiples of such a positive distance approximate every circle point to within that distance. An invariant indicator for <span class="math" data-tex="\(T_\alpha\)">\(T_\alpha\)</span> is therefore invariant in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> under every circle translation. Choose a Borel representative for its set <span class="math" data-tex="\(A\)">\(A\)</span>, as SC2 permits. Lebesgue measure on the compact circle is Radon: enlarge its interval covers to open arcs with arbitrarily small added length, and apply complements to obtain compact inner approximations. The finite product integration theorem <a href="OA-FLOW-HR.html#hr-05">HR5</a> therefore gives
+<span class="math math-display" data-tex="\[
+ 0=\int_{\mathbb T}\!\int_{\mathbb T}
+       |1_A(x+t)-1_A(x)|^2\,dx\,dt
+      =2\mu(A)(1-\mu(A)).
+ \tag{IE52}
+\]">\[
+ 0=\int_{\mathbb T}\!\int_{\mathbb T}
+       |1_A(x+t)-1_A(x)|^2\,dx\,dt
+      =2\mu(A)(1-\mu(A)).
+ \tag{IE52}
+\]</span>
+Hence <span class="math" data-tex="\(\mu(A)\)">\(\mu(A)\)</span> is zero or one. No nonzero power of the rotation fixes a point, by irrationality. Lebesgue measure is nonatomic: its partitions into <span class="math" data-tex="\(k\)">\(k\)</span> equal arcs have maximum cell mass <span class="math" data-tex="\(1/k\)">\(1/k\)</span>, whereas a positive atom would have to lie modulo null sets in one cell of every such finite partition.</p>
+<p><strong>Binary Bernoulli shift.</strong> Let <span class="math" data-tex="\(X=\{0,1\}^{\mathbb Z}\)">\(X=\{0,1\}^{\mathbb Z}\)</span>, let <span class="math" data-tex="\(T x\)">\(T x\)</span> have coordinates <span class="math" data-tex="\((Tx)_j=x_{j+1}\)">\((Tx)_j=x_{j+1}\)</span>, and give all coordinates independent fair probabilities. This probability can be constructed from the actual <a href="OA-FLOW-HR.html#hr-02">HR2 representation theorem</a>: average a cylinder function over its finite coordinate set. These positive averages are consistent, of norm one, and extend to <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>.</p>
+<p>Here <span class="math" data-tex="\(X\)">\(X\)</span> is compact metrizable: enumerate its coordinates and use the metric <span class="math" data-tex="\(\sum_{k\ge1}2^{-k}|x_{j_k}-y_{j_k}|\)">\(\sum_{k\ge1}2^{-k}|x_{j_k}-y_{j_k}|\)</span>. A diagonal subsequence fixes every finite coordinate list and converges. The countable cylinder base gives a countable subcover from any open cover; if it had no finite subcover, points outside its first <span class="math" data-tex="\(n\)">\(n\)</span> members would contradict that subsequence property. Continuous functions are uniformly approximable by cylinder functions: finitely many sufficiently small cylinders cover <span class="math" data-tex="\(X\)">\(X\)</span>, and refining their coordinate sets makes the oscillation on each cylinder arbitrarily small. HR2 therefore gives a unique Borel probability with the finite fair cylinder values, and its completion gives the claimed probability space. The shift preserves it by its finite-coordinate permutation, first on cylinder functions and then by uniqueness of the representing measure.</p>
+<p>Let <span class="math" data-tex="\(\mathcal P_0\)">\(\mathcal P_0\)</span> be the coordinate-zero partition. Independence gives <span class="math" data-tex="\(2^n\)">\(2^n\)</span> equally likely atoms in its <span class="math" data-tex="\(n\)">\(n\)</span>-block, so its entropy is <span class="math" data-tex="\(n\log2\)">\(n\log2\)</span>. Thus <span class="math" data-tex="\(h_\mu(T)\ge\log2\)">\(h_\mu(T)\ge\log2\)</span>. Let <span class="math" data-tex="\(\mathcal Q_m\)">\(\mathcal Q_m\)</span> record the coordinates <span class="math" data-tex="\(-m,\ldots,m\)">\(-m,\ldots,m\)</span>. Its <span class="math" data-tex="\(n\)">\(n\)</span>-block records <span class="math" data-tex="\(n+2m\)">\(n+2m\)</span> independent coordinates, and hence
+<span class="math math-display" data-tex="\[
+ H_\mu(\mathcal Q_m^{[0,n)})=(n+2m)\log2,\qquad
+ h_\mu(T,\mathcal Q_m)=\log2.
+ \tag{IE53}
+\]">\[
+ H_\mu(\mathcal Q_m^{[0,n)})=(n+2m)\log2,\qquad
+ h_\mu(T,\mathcal Q_m)=\log2.
+ \tag{IE53}
+\]</span>
+The finite cylinder algebra generates the Borel sigma algebra and approximates every completed measurable set in measure by Section 4. For any finite partition <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, predict its labels with arbitrarily small error using finitely many coordinate tests, all contained in some <span class="math" data-tex="\(\mathcal Q_m\)">\(\mathcal Q_m\)</span>. Equations (IE29) and (IE31) give <span class="math" data-tex="\(h_\mu(T,\mathcal P)\le\log2\)">\(h_\mu(T,\mathcal P)\le\log2\)</span>. Taking the supremum proves
+<span class="math math-display" data-tex="\[
+ h_\mu(T)=\log2.
+ \tag{IE54}
+\]">\[
+ h_\mu(T)=\log2.
+ \tag{IE54}
+\]</span></p>
+<p>The shift is mixing, hence ergodic. Two cylinder events with finite coordinate sets are independent after a sufficiently large shift separates those sets. Approximate arbitrary events <span class="math" data-tex="\(A,B\)">\(A,B\)</span> by cylinder events <span class="math" data-tex="\(A',B'\)">\(A',B'\)</span>. Invariance bounds the difference of the intersection probabilities by <span class="math" data-tex="\(\mu(A\triangle A')+\mu(B\triangle B')\)">\(\mu(A\triangle A')+\mu(B\triangle B')\)</span>, and the difference of their product probabilities by the same bound. Let the errors tend to zero to obtain <span class="math" data-tex="\(\mu(A\cap T^{-n}B)\to\mu(A)\mu(B)\)">\(\mu(A\cap T^{-n}B)\to\mu(A)\mu(B)\)</span>. For an invariant event <span class="math" data-tex="\(A\)">\(A\)</span>, this forces <span class="math" data-tex="\(\mu(A)=\mu(A)^2\)">\(\mu(A)=\mu(A)^2\)</span>. The partition specifying any <span class="math" data-tex="\(k\)">\(k\)</span> different coordinates has maximum cell mass <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>. A positive atom would have to lie modulo null sets in one cell, so no positive atom exists. In particular each point is null. The fixed points of a nonzero <span class="math" data-tex="\(k\)">\(k\)</span>-th power are the finitely many binary sequences of period dividing <span class="math" data-tex="\(|k|\)">\(|k|\)</span>; each is null. Thus the action is essentially free.</p>
+<p>It follows from (IE3) and (IE49) that no positive-measure induced map of this Bernoulli shift can be measure-class conjugate to a positive-measure induced map of the irrational rotation. Their normalized entropies are respectively
+<span class="math math-display" data-tex="\[
+ \frac{\log2}{\mu_{\rm B}(E_{\rm B})}&gt;0
+ \quad\text{and}\quad 0.
+ \tag{IE55}
+\]">\[
+ \frac{\log2}{\mu_{\rm B}(E_{\rm B})}&gt;0
+ \quad\text{and}\quad 0.
+ \tag{IE55}
+\]</span>
+This is exactly the measured obstruction required before constructing the coefficient-factor absorption example.</p>
+<p><span id="OA-FLOW.IE.DIAGNOSTICS"></span><a id="IE-diagnostics"></a></p>
+<h2 id="9-exact-diagnostics-with-solutions">9. Exact diagnostics with solutions</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Return-word endpoints, the complete geometric return law, and the two entropy time scales." src="assets/entropy-return-times/entropy-returns.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>The timeline uses the exact word convention in (IE32), (IE37) and (IE42). For the fair binary shift, the bars show the first six return probabilities and a separate tail with mass 1/64; the distribution remains infinite. The third panel compares entropy per step in three different clocks, from (IE3), (IE48) and (IE56). <a href="assets/entropy-return-times/entropy-returns.svg">Vector figure</a> · <a href="assets/entropy-return-times/TERMS.md">Reproduction and terms</a>.</em></p>
+<p><strong>1. The full set has no time change.</strong> If <span class="math" data-tex="\(E=X\)">\(E=X\)</span> modulo null sets, then <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(r=1\)">\(r=1\)</span> almost everywhere, and <span class="math" data-tex="\(S=T\)">\(S=T\)</span>. The word (IE32) is the single label <span class="math" data-tex="\(\mathcal P(Tx)\)">\(\mathcal P(Tx)\)</span>. Its strict return past includes the original time-zero label, in agreement with (IE37). Formula (IE3) becomes <span class="math" data-tex="\(h_\mu(T)=h_\mu(T)\)">\(h_\mu(T)=h_\mu(T)\)</span>; the geometric estimate is replaced by <span class="math" data-tex="\(H(r)=0\)">\(H(r)=0\)</span>, not by an expression containing <span class="math" data-tex="\(\log0\)">\(\log0\)</span>.</p>
+<p><strong>2. An atomic system is allowed.</strong> Take the uniform three-cycle <span class="math" data-tex="\(0\mapsto1\mapsto2\mapsto0\)">\(0\mapsto1\mapsto2\mapsto0\)</span> and <span class="math" data-tex="\(E=\{0,2\}\)">\(E=\{0,2\}\)</span>. Then <span class="math" data-tex="\(a=2/3\)">\(a=2/3\)</span>, <span class="math" data-tex="\(r(0)=2,\ r(2)=1\)">\(r(0)=2,\ r(2)=1\)</span>, and the normalized induced measure assigns mass <span class="math" data-tex="\(1/2\)">\(1/2\)</span> to each point. Thus <span class="math" data-tex="\(\int r\,d\nu=3/2=1/a\)">\(\int r\,d\nu=3/2=1/a\)</span>, and <span class="math" data-tex="\(S\)">\(S\)</span> swaps the two points. Every original block partition has entropy at most <span class="math" data-tex="\(\log3\)">\(\log3\)</span>, and every induced block partition at most <span class="math" data-tex="\(\log2\)">\(\log2\)</span>, so both entropy rates vanish. This checks the theorem without an aperiodicity or nonatomicity hypothesis.</p>
+<p><strong>3. An unbounded return time with an exact mean and information.</strong> In the fair binary shift let <span class="math" data-tex="\(E=\{x:x_0=1\}\)">\(E=\{x:x_0=1\}\)</span>. Then <span class="math" data-tex="\(a=1/2\)">\(a=1/2\)</span>, and for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+ \nu(r=n)=2^{-n},\qquad
+ \int r\,d\nu=\sum_{n\ge1}n2^{-n}=2,\qquad
+ H_\nu(r)=2\log2.
+ \tag{IE56}
+\]">\[
+ \nu(r=n)=2^{-n},\qquad
+ \int r\,d\nu=\sum_{n\ge1}n2^{-n}=2,\qquad
+ H_\nu(r)=2\log2.
+ \tag{IE56}
+\]</span>
+The sum for the mean follows from nonnegative rearrangement:
+<span class="math" data-tex="\(\sum_{n\ge1}n2^{-n}=\sum_{j\ge1}\sum_{n\ge j}2^{-n}=2\)">\(\sum_{n\ge1}n2^{-n}=\sum_{j\ge1}\sum_{n\ge j}2^{-n}=2\)</span>.
+The next word is <span class="math" data-tex="\(0^{\,n-1}1\)">\(0^{\,n-1}1\)</span>, with conditional probability <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> given the entire past through time zero, by independence of future bits. Its information is <span class="math" data-tex="\(n\log2\)">\(n\log2\)</span>, the sum of its <span class="math" data-tex="\(n\)">\(n\)</span> one-step informations. Equation (IE3) gives <span class="math" data-tex="\(h_\nu(S)=2\log2\)">\(h_\nu(S)=2\log2\)</span>. In fact consecutive gaps have joint probability <span class="math" data-tex="\(2^{-(n_1+\cdots+n_k)}\)">\(2^{-(n_1+\cdots+n_k)}\)</span>; this independently checks the word probability and the absence of an additional stopping factor. No truncation of <span class="math" data-tex="\(r\)">\(r\)</span> is part of the theorem.</p>
+<p><strong>4. Conditional information can be unbounded at every finite stage.</strong> Let a partition <span class="math" data-tex="\((Q_n)_{n\ge1}\)">\((Q_n)_{n\ge1}\)</span> have probabilities <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>, and let <span class="math" data-tex="\(\mathscr F_m\)">\(\mathscr F_m\)</span> distinguish <span class="math" data-tex="\(Q_1,\ldots,Q_m\)">\(Q_1,\ldots,Q_m\)</span> and their remaining tail. On the first <span class="math" data-tex="\(m\)">\(m\)</span> atoms the conditional information is zero; on <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>, <span class="math" data-tex="\(n&gt;m\)">\(n&gt;m\)</span>, it is <span class="math" data-tex="\((n-m)\log2\)">\((n-m)\log2\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ H(\mathcal Q)&amp;=2\log2,\\
+ H(\mathcal Q_m)&amp;=(2-2^{1-m})\log2,\\
+ \|I(\mathcal Q\mid\mathscr F_m)-0\|_1
+   &amp;=2^{1-m}\log2\longrightarrow0.
+ \end{aligned}
+ \tag{IE57}
+\]">\[
+ \begin{aligned}
+ H(\mathcal Q)&amp;=2\log2,\\
+ H(\mathcal Q_m)&amp;=(2-2^{1-m})\log2,\\
+ \|I(\mathcal Q\mid\mathscr F_m)-0\|_1
+   &amp;=2^{1-m}\log2\longrightarrow0.
+ \end{aligned}
+ \tag{IE57}
+\]</span>
+The limiting conditioning algebra knows the whole partition, so its information is zero. Every finite-stage information is nevertheless unbounded, since all <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> have positive measure. Thus (IE24) is a convergence statement with finite-entropy tail control, not a bounded-information assertion.</p>
+<p><strong>5. Infinite entropy remains infinite after induction.</strong> Take independent fair bits indexed by <span class="math" data-tex="\(\mathbb Z\times\mathbb N\)">\(\mathbb Z\times\mathbb N\)</span>, and shift the first coordinate. The same compact cylinder construction and mixing proof apply. The finite partition recording the first <span class="math" data-tex="\(m\)">\(m\)</span> bits at time zero has <span class="math" data-tex="\(n\)">\(n\)</span>-block entropy <span class="math" data-tex="\(mn\log2\)">\(mn\log2\)</span>, so <span class="math" data-tex="\(h_\mu(T)=\infty\)">\(h_\mu(T)=\infty\)</span>. For <span class="math" data-tex="\(E=\{x:x_{0,1}=1\}\)">\(E=\{x:x_{0,1}=1\}\)</span>, the first-coordinate return time still has the geometric law in (IE56), of finite mean two. The lower supremum inequality (IE44) gives <span class="math" data-tex="\(h_\nu(S)\ge2m\log2\)">\(h_\nu(S)\ge2m\log2\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>, and therefore <span class="math" data-tex="\(h_\nu(S)=\infty\)">\(h_\nu(S)=\infty\)</span>. Finite mean return does not imply finite entropy.</p>
+<p><strong>6. The terminal symbol determines the normalization of the past.</strong> If the next visit is three steps away, the timeline used in this proof is</p>
+<table>
+<thead>
+<tr>
+<th>Original time</th>
+<th><span class="math" data-tex="\(0\)">\(0\)</span></th>
+<th><span class="math" data-tex="\(1\)">\(1\)</span></th>
+<th><span class="math" data-tex="\(2\)">\(2\)</span></th>
+<th><span class="math" data-tex="\(3=r(x)\)">\(3=r(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Membership</td>
+<td><span class="math" data-tex="\(E\)">\(E\)</span></td>
+<td>outside <span class="math" data-tex="\(E\)">\(E\)</span></td>
+<td>outside <span class="math" data-tex="\(E\)">\(E\)</span></td>
+<td><span class="math" data-tex="\(E\)">\(E\)</span></td>
+</tr>
+<tr>
+<td>Current return word</td>
+<td>excluded</td>
+<td>first symbol</td>
+<td>second symbol</td>
+<td>included terminal symbol</td>
+</tr>
+<tr>
+<td>Information summed in (IE42)</td>
+<td>none</td>
+<td><span class="math" data-tex="\(I(Tx)\)">\(I(Tx)\)</span></td>
+<td><span class="math" data-tex="\(I(T^2x)\)">\(I(T^2x)\)</span></td>
+<td><span class="math" data-tex="\(I(T^3x)\)">\(I(T^3x)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The preceding return word ends at time zero and therefore supplies the current <span class="math" data-tex="\(E\)">\(E\)</span>-label to the return past. This is why that past is <span class="math" data-tex="\(\mathscr G_0|_E\)">\(\mathscr G_0|_E\)</span>, and why (IE11) applies with <span class="math" data-tex="\(E\)">\(E\)</span> already known. A different word convention needs its corresponding past identity to be proved again.</p>
+<p><strong>7. A measure-class conjugacy need not preserve the unnormalized restrictions.</strong> If two positive sections have masses <span class="math" data-tex="\(a_1=1/3\)">\(a_1=1/3\)</span>, <span class="math" data-tex="\(a_2=1/5\)">\(a_2=1/5\)</span>, a conjugacy of their ergodic return maps must preserve their normalized invariant probabilities. Equation (IE49) then gives <span class="math" data-tex="\(W_*(\mu_1|_{E_1})=(5/3)\mu_2|_{E_2}\)">\(W_*(\mu_1|_{E_1})=(5/3)\mu_2|_{E_2}\)</span>. The total masses on both sides are <span class="math" data-tex="\(1/3\)">\(1/3\)</span>. Entropy comparison is made for the probability measures, not for the raw restrictions.</p>
+<p><strong>8. The obstruction survives every positive choice of section.</strong> For rotation section mass <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> the induced entropy is zero. For Bernoulli section mass <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> it is <span class="math" data-tex="\((\log2)/c\)">\((\log2)/c\)</span>, which is finite and strictly positive because <span class="math" data-tex="\(c\le1\)">\(c\le1\)</span>. A measure-class conjugacy would preserve the normalized probabilities by Section 7, and then preserve these entropies. The unequal values exclude it for every such pair of sections.</p>
+<p><strong>9. A prescribed unbounded roof has the expected tower entropy.</strong> On the binary Bernoulli base <span class="math" data-tex="\((Y,\nu,S)\)">\((Y,\nu,S)\)</span>, take <span class="math" data-tex="\(\ell(y)=\min\{n\ge1:y_n=1\}\)">\(\ell(y)=\min\{n\ge1:y_n=1\}\)</span>, assigning value one on the null event with no such bit. Then <span class="math" data-tex="\(\nu(\ell=n)=2^{-n}\)">\(\nu(\ell=n)=2^{-n}\)</span>, <span class="math" data-tex="\(R=2\)">\(R=2\)</span>, and the tower (IE46) has level masses
+<span class="math" data-tex="\(\mu(Y\times\{j\}\cap Z)=\nu(\ell&gt;j)/2=2^{-(j+1)}\)">\(\mu(Y\times\{j\}\cap Z)=\nu(\ell&gt;j)/2=2^{-(j+1)}\)</span>.
+They sum to one. Its bottom mass is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, its induced probability and transformation are exactly <span class="math" data-tex="\((\nu,S)\)">\((\nu,S)\)</span>, and (IE48) gives <span class="math" data-tex="\(h_\mu(V)=(\log2)/2\)">\(h_\mu(V)=(\log2)/2\)</span>. The roof depends on future base coordinates; the proof never assumes that it is independent of the base dynamics.</p>
+<p><span id="OA-FLOW.IE.SOURCES"></span><a id="IE-sources"></a></p>
+<h2 id="10-sources-and-prerequisites">10. Sources and prerequisites</h2>
+<p>The return-time identity is Abramov's induction formula. Its historical attribution is recorded in reference 1 of <a href="https://www.numdam.org/articles/10.1007/s10240-018-0098-3/">Tim Austin, <em>Measure concentration and the weak Pinsker property</em>, Publications Mathématiques de l’IHÉS 128 (2018), 1–119</a>.</p>
+<p>The proofs here start from <a href="OA-FLOW-SC.html#sc-02">scalar integration and L² completeness, SC2–7</a>, <a href="OA-FLOW-CF.html#oa-flow.cf.8">Hilbert projection and representation, CF8</a>, and <a href="OA-FLOW-HR.html#hr-02">compact Radon measure construction and finite product integration, HR2–5</a>. The scalar density argument in Section 7 is also proved in <a href="../OA-MOD/OA-MOD-DC.html#a-finite-radon-nikodym-density-from-hilbert-representation">OA-MOD's finite Radon–Nikodym lemma</a>. The conditional information, stopping identity and both entropy inequalities are proved in this lesson.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ZDC.html">Previous lesson</a><a href="OA-FLOW-IC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-IE.md">Lesson source</a></nav></main></body></html>

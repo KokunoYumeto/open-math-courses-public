@@ -1,6 +1,6 @@
 # Projective tangent bundles and their obstructions
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored material dedicated under CC0, except explicitly marked CC BY 4.0 adaptations.*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026; the rotation-group starting example by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Independently authored material dedicated under CC0.*
 
 This chapter asks three different geometric questions. Can a tangent bundle have a frame? How much normal rank would an immersion need? Can the manifold occur as a boundary? A characteristic class enters each question in a different way: as a class of the tangent bundle, as a coefficient of its multiplicative inverse, or as a number evaluated on a fundamental class. Keeping those three operations separate prevents a vanishing calculation from being mistaken for a construction.
 
@@ -14,23 +14,21 @@ Here \(\gamma\) is the tautological real line bundle. The [squares chapter](DG-C
 
 ### A rotation group supplies a starting example
 
-*This marked subsection adapts the rotation-group example in David Michael Roberts, Algebraic Topology (2019), Lecture 19, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Copyright © David Michael Roberts 2019. [LaTeX source, pinned revision](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019/blob/b947ad2e9f9e301bfe24590a9db653bc54fa1a53/Notes.tex#L3690). The AI adaptation adds the tangent-frame calculation and its Cayley-chart justification; this whole marked subsection retains CC BY 4.0 and its disclaimer of warranties. The [complete licence](https://creativecommons.org/licenses/by/4.0/legalcode.en) is also retained with the course.*
+The rotation group \(SO(3)\) consists of the orthogonal three-by-three matrices of determinant one. It has a tangent frame that can be written down directly. Section 2 constructs a diffeomorphism \(\mathbb {RP}^3\to SO(3)\) from quaternion conjugation, in its subsection on why the four-dimensional example is \(SO(3)\), and the local inverses given there are smooth maps on open sets of the space \(M_3(\mathbb R)\) of real three-by-three matrices. Consequently each tangent space \(T_RSO(3)\) is a three-dimensional subspace of \(M_3(\mathbb R)\), and it contains the velocity of every smooth curve in \(SO(3)\) through \(R\).
 
-Roberts's example presents the two-to-one map from unit quaternions to rotations in three dimensions. The quotient identifies \(\mathbb {RP}^3\) with \(SO(3)\); the complete quaternion and smooth-inverse calculations below establish that identification. There is also a direct way to see why the rotation group has a tangent frame, which gives us a concrete target for the projective calculation.
-
-Let \(A_1,A_2,A_3\) be a basis of the real skew-symmetric three-by-three matrices. At \(R\in SO(3)\), put
+Let \(\rho_1(t),\rho_2(t),\rho_3(t)\) be the rotations through the angle \(t\) about the three coordinate axes, and put \(A_i=\rho_i'(0)\). For the third axis,
+\[
+\rho_3(t)=\begin{pmatrix}\cos t&-\sin t&0\\ \sin t&\cos t&0\\ 0&0&1\end{pmatrix},
+\qquad
+A_3=\begin{pmatrix}0&-1&0\\ 1&0&0\\ 0&0&0\end{pmatrix}.
+\]
+The matrices \(A_1,A_2,A_3\) form a basis of the real skew-symmetric three-by-three matrices. For \(R\in SO(3)\) put
 \[
 X_i(R)=RA_i\qquad(1\leq i\leq3).
 \]
-These are smooth, linearly independent tangent vectors. Here is a local verification that includes the tangent-space claim. For a small skew-symmetric matrix \(A\), the Cayley expression
-\[
-C(A)=(I-A)^{-1}(I+A)
-\]
-is orthogonal: transposing and using commutation of the two polynomials in \(A\) gives \(C(A)^TC(A)=I\). Its determinant is one because \(\det(I+A)=\det(I-A)\). Near the identity its inverse is \((R-I)(R+I)^{-1}\), which is skew-symmetric when \(R^TR=I\). Thus it gives a smooth chart on \(SO(3)\), with derivative \(D C_0(A)=2A\). Left multiplication by \(R\) gives a chart at \(R\). The curve \(R C(tA_i/2)\) has derivative \(RA_i\), and these three derivatives form a basis of the tangent space. This proves the frame assertion.
+The curve \(t\mapsto R\rho_i(t)\) stays in \(SO(3)\) and has velocity \(RA_i\) at \(t=0\), so \(X_i(R)\in T_RSO(3)\). Multiplication by the invertible matrix \(R\) is injective, so \(RA_1,RA_2,RA_3\) are linearly independent; since the tangent space has dimension three, they form a basis of it. Each \(X_i\) is the restriction of the smooth map \(R\mapsto RA_i\) of \(M_3(\mathbb R)\), hence a smooth vector field. Thus \(X_1,X_2,X_3\) is a frame of \(TSO(3)\), and the diffeomorphism of Section 2 carries it to a frame of \(T\mathbb {RP}^3\).
 
-The later projective calculation must therefore be compatible with a trivial tangent bundle in dimension three. It will also explain why the analogous class calculation rules out a frame in dimension four. The rotation example supplies an actual frame; the obstruction test supplies a reason why a frame cannot exist in other cases.
-
-*End of the CC BY 4.0 adaptation. The remaining independently authored material retains CC0.*
+Any obstruction to a frame must therefore vanish on \(\mathbb {RP}^3\). The positive-degree Stiefel–Whitney classes, computed in Theorem 1.1 and Corollary 1.2 below, do vanish there, because \(3+1\) is a power of two. On \(\mathbb {RP}^4\) they do not all vanish, because \(4+1\) is not, so \(\mathbb {RP}^4\) has no frame. Vanishing classes are only a necessary condition for a frame; Section 2 constructs actual frames from bilinear multiplications.
 
 ## 1. The tangent bundle as a bundle of linear maps
 
@@ -378,6 +376,6 @@ Their evaluations are respectively \(1,0,0,0,1\), because \(w=1+a+a^4\) and \(\l
 
 Freely accessible comparisons are Allen Hatcher, *Vector Bundles and K-Theory*, version 2.2 (2017), [author PDF](https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf), Section 1.1, for projective tangent stabilization and the normed-algebra frame examples, and his *Algebraic Topology*, [author PDF](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf), Lemma 3.27 and Proposition 3.42, for compact-set fundamental classes and collars. The graph-coordinate identification, full bilinear-frame argument, inverse-class bounds and local boundary-chain calculation are proved here.
 
-John Milnor's [1957 lectures, with notes by James Stasheff](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf), Chapters II–III, give further reading on tangent bundles and vector fields. The stabilization, bilinear-frame restriction, inverse-class bounds and boundary-number arguments are proved here. David Michael Roberts's freely available [*Algebraic Topology* notes](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019) (2019), Lecture 19, are the source of the marked CC BY 4.0 rotation-group adaptation; its attribution and component licence are retained.
+John Milnor's [1957 lectures, with notes by James Stasheff](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf), Chapters II–III, give further reading on tangent bundles and vector fields. The stabilization, bilinear-frame restriction, inverse-class bounds and boundary-number arguments are proved here. David Michael Roberts's freely available [*Algebraic Topology* notes](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019) (2019), Lecture 19, describe \(SO(3)\) as the quotient of \(SU(2)\), the group of unit quaternions, by its centre \(\{\pm I\}\).
 
 The class tests are necessary conditions for a frame or immersion, with actual frames proved in the stated bilinear-algebra cases. The boundary-number implication is proved here in full; its all-dimensional converse is proved in the separate [unoriented-bordism companion](DG-CHAR-13E.html). No classification of all parallelizable projective spaces or construction of an immersion from a vanishing class is asserted. This edition was checked by the writing AI; independent review remains separate.

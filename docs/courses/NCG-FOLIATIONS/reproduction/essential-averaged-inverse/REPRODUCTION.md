@@ -1,0 +1,5 @@
+# Reproduction
+
+*K-theory of the leaf space*, Section 11BC. EAI.1–EAI.24. Proper-source phase averaging preserves the actual inverse class and yields exact arrow invariance. The full essential compression is proved self-adjoint regular, with nondegenerate B source, source-local compact resolvents and completed arrow graph domains. The finite Z/2 model is computed exactly in Q(sqrt(2)): averaging, unitary normalization, the positive reference, sixteen source products, four covariances and essential compression. Kernel action is -1; ordinary index +1 is not an equivariant scalar unit. Normal and physical graph controls require separate proofs.
+
+Use Python 3.13.9 and Pillow 12.2.0. Run `python -B draw_essential_averaged_inverse.py --output-dir out`; `--resources` selects the adjacent labelled-geometric-kernel resources if relocated. Compare PNG/SVG with ../../figures/ and ESSENTIAL-AVERAGED-INVERSE-CHECKS.json with this folder. The SVG embeds the unchanged font and complete notice. No private files are read.

@@ -1,0 +1,509 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Commuting approximations and finite domains of weights · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-UMET.html">Previous lesson</a><a href="OA-FLOW-TAIL.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-IAP.md">Lesson source</a></nav><h1 id="OA-FLOW.IAP.SETTING">Commuting approximations and finite domains of weights</h1>
+<p><em>Self-checked by the writing AI. Original exposition, model, data and drawing code: CC0-1.0. Source publications and installed fonts retain their own terms.</em></p>
+<p>A small bounded change of density can make a modular action integrable while leaving an infinite matrix algebra fixed. We construct this change inside the original centralizer. On a type III<span class="math" data-tex="\(_1\)">\(_1\)</span> factor it yields uniform approximation of one infinite-multiplicity weight by inner translates of another. For positive discrete type, a different bounded change makes the weight periodic. Both constructions lead to exact conjugacy of all four finite domains.</p>
+<p><a id="ia-setting"></a></p>
+<h2 id="1-the-conclusions-and-the-proof-inputs">1. The conclusions and the proof inputs</h2>
+<p>Unless a different scope is stated, <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> has separable predual and properly infinite identity. It need not be a factor. All weights in this lesson are faithful, normal and semifinite; equality and order of weights refer to the entire positive cone, including infinite values. Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ F_\varphi&amp;=\{x\in M_+:\varphi(x)&lt;\infty\},&amp;
+ N_\varphi&amp;=\{x\in M:\varphi(x^*x)&lt;\infty\},\\
+ A_\varphi&amp;=N_\varphi\cap N_\varphi^*,&amp;
+ \mathfrak m_\varphi&amp;=\operatorname{span}\{y^*x:x,y\in N_\varphi\}.
+\end{aligned}\tag{IA1}
+\]">\[
+\begin{aligned}
+ F_\varphi&amp;=\{x\in M_+:\varphi(x)&lt;\infty\},&amp;
+ N_\varphi&amp;=\{x\in M:\varphi(x^*x)&lt;\infty\},\\
+ A_\varphi&amp;=N_\varphi\cap N_\varphi^*,&amp;
+ \mathfrak m_\varphi&amp;=\operatorname{span}\{y^*x:x,y\in N_\varphi\}.
+\end{aligned}\tag{IA1}
+\]</span>
+Infinite multiplicity means that the centralizer <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> is properly infinite. This is stronger than the condition <span class="math" data-tex="\(\varphi(1)=\infty\)">\(\varphi(1)=\infty\)</span>.</p>
+<p>Use the normalized cocycles of <a href="OA-FLOW-BC.html#bc-4">BC4–5</a>. The relation <span class="math" data-tex="\(\varphi\preceq_a\psi\)">\(\varphi\preceq_a\psi\)</span> means that <span class="math" data-tex="\((D\varphi:D\psi)_t\)">\((D\varphi:D\psi)_t\)</span> has a contractive extension to <span class="math" data-tex="\(-a\leq\operatorname{Im}z\leq0\)">\(-a\leq\operatorname{Im}z\leq0\)</span>, holomorphic inside and continuous in the intrinsic sigma-strong topology on the closed strip. Write <span class="math" data-tex="\(\preceq_\infty\)">\(\preceq_\infty\)</span> when this holds at every depth <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and put
+<span class="math math-display" data-tex="\[
+ d_U(\varphi,\psi)=\inf\{r\geq0:
+ e^{-r}\varphi\preceq_\infty\psi
+                    \preceq_\infty e^r\varphi\},
+ \qquad\inf\varnothing=\infty.\tag{IA2}
+\]">\[
+ d_U(\varphi,\psi)=\inf\{r\geq0:
+ e^{-r}\varphi\preceq_\infty\psi
+                    \preceq_\infty e^r\varphi\},
+ \qquad\inf\varnothing=\infty.\tag{IA2}
+\]</span>
+The <a href="OA-FLOW-UMET.html#um-setting">proved uniform geometry, UM1–6</a> makes this an extended metric and gives the exact criterion
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+ e^{-r}\varphi\preceq_\infty\psi\preceq_\infty e^r\varphi\\
+ \Longleftrightarrow\quad
+ U(t)=(D\psi:D\varphi)_t\text{ extends norm-entirely,}\quad
+ \|U(z)\|\leq e^{r|\operatorname{Im}z|}.
+\end{gathered}\tag{IA3}
+\]">\[
+\begin{gathered}
+ e^{-r}\varphi\preceq_\infty\psi\preceq_\infty e^r\varphi\\
+ \Longleftrightarrow\quad
+ U(t)=(D\psi:D\varphi)_t\text{ extends norm-entirely,}\quad
+ \|U(z)\|\leq e^{r|\operatorname{Im}z|}.
+\end{gathered}\tag{IA3}
+\]</span>
+The <a href="OA-FLOW-WORD.html#wo-dual-order">half-strip theorem, WO2</a>, identifies <span class="math" data-tex="\(\preceq_{1/2}\)">\(\preceq_{1/2}\)</span> with ordinary weight order. These analytic results supply the order and distance estimates used below.</p>
+<p>We prove the following three assertions.</p>
+<ol>
+<li><strong>Commuting integrable approximation.</strong> If <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> is properly infinite, then for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is a weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of infinite multiplicity such that <span class="math" data-tex="\(\sigma^\psi\)">\(\sigma^\psi\)</span> is integrable,
+<span class="math math-display" data-tex="\[
+   \varphi\sigma_t^\psi=\varphi,\qquad
+   \psi\sigma_t^\varphi=\psi\quad(t\in\mathbb R),\qquad
+   d_U(\varphi,\psi)&lt;\varepsilon.\tag{IA4}
+   \]">\[
+   \varphi\sigma_t^\psi=\varphi,\qquad
+   \psi\sigma_t^\varphi=\psi\quad(t\in\mathbb R),\qquad
+   d_U(\varphi,\psi)&lt;\varepsilon.\tag{IA4}
+   \]</span></li>
+<li><strong>Uniform inner orbits in type III<span class="math" data-tex="\(_1\)">\(_1\)</span>.</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is a type III<span class="math" data-tex="\(_1\)">\(_1\)</span> factor and <span class="math" data-tex="\(\varphi_1,\varphi_2\)">\(\varphi_1,\varphi_2\)</span> have infinite multiplicity, then
+<span class="math math-display" data-tex="\[
+   \inf_{u\in\mathcal U(M)}
+       d_U(\varphi_1\circ\operatorname{Ad}u,\varphi_2)=0.
+   \tag{IA5}
+   \]">\[
+   \inf_{u\in\mathcal U(M)}
+       d_U(\varphi_1\circ\operatorname{Ad}u,\varphi_2)=0.
+   \tag{IA5}
+   \]</span></li>
+<li><strong>Conjugacy of finite domains.</strong> Under the hypotheses of assertion 2, or when <span class="math" data-tex="\(M\)">\(M\)</span> is a type III<span class="math" data-tex="\(_\lambda\)">\(_\lambda\)</span> factor with <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span> and merely <span class="math" data-tex="\(\varphi_1(1)=\varphi_2(1)=\infty\)">\(\varphi_1(1)=\varphi_2(1)=\infty\)</span>, there is a unitary <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span> such that
+<span class="math math-display" data-tex="\[
+   \begin{aligned}
+   u^*F_{\varphi_1}u&amp;=F_{\varphi_2},&amp;
+   u^*N_{\varphi_1}u&amp;=N_{\varphi_2},\\
+   u^*A_{\varphi_1}u&amp;=A_{\varphi_2},&amp;
+   u^*\mathfrak m_{\varphi_1}u&amp;=\mathfrak m_{\varphi_2}.
+   \end{aligned}\tag{IA6}
+   \]">\[
+   \begin{aligned}
+   u^*F_{\varphi_1}u&amp;=F_{\varphi_2},&amp;
+   u^*N_{\varphi_1}u&amp;=N_{\varphi_2},\\
+   u^*A_{\varphi_1}u&amp;=A_{\varphi_2},&amp;
+   u^*\mathfrak m_{\varphi_1}u&amp;=\mathfrak m_{\varphi_2}.
+   \end{aligned}\tag{IA6}
+   \]</span></li>
+</ol>
+<p>The proof of the positive-<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> clause also works without separable predual, because the inner-period and generalized-trace comparison providers have that full scope. Neither assertion 1 nor assertion 2 is promoted here to that larger scope. Assertion 3 makes no arbitrarily small uniform-distance claim in positive discrete type.</p>
+<p>The other inputs are concrete earlier results: <a href="OA-FLOW-PC.html#pc-5">PC3,5,7</a> for filling isometries and countable projection comparison; <a href="OA-FLOW-CZ.html#cz-0">CZ0,1,4,6</a> for finite-domain stability and exact centralizer perturbations; <a href="OA-FLOW-TID.html#tid-2">TID, TI7–9</a> for bounded positive orbit averages; <a href="OA-FLOW-CGF.html#cgf-8">CGF, CI1 and CI35–39</a> for the stabilized presentation and supported integrability criterion; <a href="OA-FLOW-MIV.html#miv-4">MIV4</a> for its coefficient center in type III<span class="math" data-tex="\(_1\)">\(_1\)</span>; and <a href="OA-FLOW-PW.html#pw-1">PW1–3</a> together with <a href="OA-FLOW-DDP.html#dd-existence">DDP2,3,7</a> for periodic correction and its scalar-sensitive comparison.</p>
+<p><span id="OA-FLOW.IAP.DOMAINS"></span><a id="ia-domains"></a></p>
+<h2 id="2-bounded-comparisons-preserve-the-entire-finite-structure">2. Bounded comparisons preserve the entire finite structure</h2>
+<p>Suppose <span class="math" data-tex="\(c,C&gt;0\)">\(c,C&gt;0\)</span> and
+<span class="math math-display" data-tex="\[
+ c\varphi\leq\psi\leq C\varphi\quad\text{on }M_+.
+ \tag{IA7}
+\]">\[
+ c\varphi\leq\psi\leq C\varphi\quad\text{on }M_+.
+ \tag{IA7}
+\]</span>
+For a positive element, finiteness of either value implies finiteness of the other; if one value is infinite, the appropriate lower inequality forces the other to be infinite. Thus <span class="math" data-tex="\(F_\varphi=F_\psi\)">\(F_\varphi=F_\psi\)</span>. Apply the same argument to <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> to obtain <span class="math" data-tex="\(N_\varphi=N_\psi\)">\(N_\varphi=N_\psi\)</span>. Applying it also to <span class="math" data-tex="\(xx^*\)">\(xx^*\)</span> gives equality of the star intersections. Finally the sets of products <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span>, and hence their linear spans, coincide. We have proved equality of all four sets in (IA1).</p>
+<p>This applies whenever <span class="math" data-tex="\(d_U(\varphi,\psi)&lt;\infty\)">\(d_U(\varphi,\psi)&lt;\infty\)</span>. Choose any finite admissible <span class="math" data-tex="\(r\)">\(r\)</span> in (IA2), restrict both all-depth comparisons to depth <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and use the half-strip theorem. It gives (IA7) with <span class="math" data-tex="\(c=e^{-r}\)">\(c=e^{-r}\)</span> and <span class="math" data-tex="\(C=e^r\)">\(C=e^r\)</span>. No difference of infinite weight values is formed.</p>
+<p>For every unitary <span class="math" data-tex="\(u\)">\(u\)</span>, let <span class="math" data-tex="\(\varphi^u=\varphi\circ\operatorname{Ad}u\)">\(\varphi^u=\varphi\circ\operatorname{Ad}u\)</span>, where <span class="math" data-tex="\(\operatorname{Ad}u(x)=uxu^*\)">\(\operatorname{Ad}u(x)=uxu^*\)</span>. Directly from (IA1),
+<span class="math math-display" data-tex="\[
+ (F_{\varphi^u},N_{\varphi^u},A_{\varphi^u},\mathfrak m_{\varphi^u})
+ =u^*(F_\varphi,N_\varphi,A_\varphi,\mathfrak m_\varphi)u.
+ \tag{IA8}
+\]">\[
+ (F_{\varphi^u},N_{\varphi^u},A_{\varphi^u},\mathfrak m_{\varphi^u})
+ =u^*(F_\varphi,N_\varphi,A_\varphi,\mathfrak m_\varphi)u.
+ \tag{IA8}
+\]</span>
+For example <span class="math" data-tex="\((uxu^*)^*(uxu^*)=ux^*xu^*\)">\((uxu^*)^*(uxu^*)=ux^*xu^*\)</span>, and conjugation carries <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span> to <span class="math" data-tex="\((uyu^*)^*(uxu^*)\)">\((uyu^*)^*(uxu^*)\)</span>. A positive scalar multiple of a weight has exactly the same four domains.</p>
+<p>We will also use unitary invariance of the distance. The actual normal-isomorphism covariance <a href="OA-FLOW-BC.html#bc-5">BC25</a> gives
+<span class="math math-display" data-tex="\[
+ (D\psi^u:D\varphi^u)_t=u^*(D\psi:D\varphi)_t u.
+ \tag{IA9}
+\]">\[
+ (D\psi^u:D\varphi^u)_t=u^*(D\psi:D\varphi)_t u.
+ \tag{IA9}
+\]</span>
+Conjugating a strip extension preserves its norm, holomorphy and both intrinsic boundary topologies. Conjugation by <span class="math" data-tex="\(u^*\)">\(u^*\)</span> gives the converse. Thus it preserves every strip order and
+<span class="math math-display" data-tex="\[
+ d_U(\varphi^u,\psi^u)=d_U(\varphi,\psi).
+ \tag{IA10}
+\]">\[
+ d_U(\varphi^u,\psi^u)=d_U(\varphi,\psi).
+ \tag{IA10}
+\]</span></p>
+<p><span id="OA-FLOW.IAP.MATRIX-MODEL"></span><a id="ia-matrix-model"></a></p>
+<h2 id="3-a-narrow-spectral-interval-with-infinitely-many-fixed-copies">3. A narrow spectral interval with infinitely many fixed copies</h2>
+<p>Let <span class="math" data-tex="\(C\subseteq M\)">\(C\subseteq M\)</span> be a unital properly infinite von Neumann algebra. The filling-family proof in PC5 supplies <span class="math" data-tex="\(v_j\in C\)">\(v_j\in C\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ v_i^*v_j=\delta_{ij}1,\qquad\sum_{j\geq1}v_jv_j^*=1
+ \quad\text{strongly}.\tag{IA11}
+\]">\[
+ v_i^*v_j=\delta_{ij}1,\qquad\sum_{j\geq1}v_jv_j^*=1
+ \quad\text{strongly}.\tag{IA11}
+\]</span>
+In a faithful representation on <span class="math" data-tex="\(H\)">\(H\)</span>, the map
+<span class="math" data-tex="\(V:\ell^2\otimes H\to H\)">\(V:\ell^2\otimes H\to H\)</span>, <span class="math" data-tex="\(V(e_j\otimes\eta)=v_j\eta\)">\(V(e_j\otimes\eta)=v_j\eta\)</span>, is an isometry on finite sums and onto because the range projections fill the identity. Its adjoint has coordinates <span class="math" data-tex="\((v_j^*\eta)_j\)">\((v_j^*\eta)_j\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ b\longmapsto V(b\otimes1_H)V^*\quad(b\in B(\ell^2))
+ \tag{IA12}
+\]">\[
+ b\longmapsto V(b\otimes1_H)V^*\quad(b\in B(\ell^2))
+ \tag{IA12}
+\]</span>
+is a faithful normal unital star homomorphism. Its finite matrices belong to <span class="math" data-tex="\(C\)">\(C\)</span>; their bounded strong-star limits also belong to <span class="math" data-tex="\(C\)">\(C\)</span>. This constructs a unital type I<span class="math" data-tex="\(_\infty\)">\(_\infty\)</span> subfactor rather than an inclusion into a proper corner.</p>
+<p>Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, put <span class="math" data-tex="\(I=[-\delta,\delta]\)">\(I=[-\delta,\delta]\)</span>, and identify <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> with the separable infinite-dimensional Hilbert space
+<span class="math math-display" data-tex="\[
+ K=L^2(I,dq)\otimes\ell^2.
+\]">\[
+ K=L^2(I,dq)\otimes\ell^2.
+\]</span>
+Through (IA12) regard <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span> as a unital subfactor <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span>. Define
+<span class="math math-display" data-tex="\[
+ Q\xi(q)=q\xi(q),\qquad
+ h=e^Q\otimes1,\qquad
+ e^{-\delta}1\leq h\leq e^\delta1.
+ \tag{IA13}
+\]">\[
+ Q\xi(q)=q\xi(q),\qquad
+ h=e^Q\otimes1,\qquad
+ e^{-\delta}1\leq h\leq e^\delta1.
+ \tag{IA13}
+\]</span>
+Here <span class="math" data-tex="\(Q\)">\(Q\)</span> is bounded self-adjoint on the entire first Hilbert factor. Its spectral projections are multiplication by the characteristic functions of Borel subsets of <span class="math" data-tex="\(I\)">\(I\)</span>. The spectrum of <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\([e^{-\delta},e^\delta]\)">\([e^{-\delta},e^\delta]\)</span>; every relatively open subinterval has a nonzero spectral projection. The second factor
+<span class="math math-display" data-tex="\[
+ D=1_{L^2(I)}\otimes B(\ell^2)
+       \subseteq\{h\}'\cap B\tag{IA14}
+\]">\[
+ D=1_{L^2(I)}\otimes B(\ell^2)
+       \subseteq\{h\}'\cap B\tag{IA14}
+\]</span>
+has the same identity as <span class="math" data-tex="\(M\)">\(M\)</span>, and is properly infinite. Thus shrinking <span class="math" data-tex="\(I\)">\(I\)</span> does not remove the infinite multiplicity.</p>
+<p>We check directly that <span class="math" data-tex="\(\gamma_t=\operatorname{Ad}h^{it}\)">\(\gamma_t=\operatorname{Ad}h^{it}\)</span> is integrable on <span class="math" data-tex="\(B\)">\(B\)</span>. Choose an orthonormal basis <span class="math" data-tex="\((\xi_j)\)">\((\xi_j)\)</span> of <span class="math" data-tex="\(L^2(I)\)">\(L^2(I)\)</span> made of bounded step functions, starting with <span class="math" data-tex="\(\xi_1=(2\delta)^{-1/2}1_I\)">\(\xi_1=(2\delta)^{-1/2}1_I\)</span>. One obtains it by Gram–Schmidt from a countable dense collection of interval step functions, retaining each nonzero remainder. Density and boundedness are preserved in this construction, as in the basis argument of TID before TI8. Let <span class="math" data-tex="\(P_n\)">\(P_n\)</span> project onto the first <span class="math" data-tex="\(n\)">\(n\)</span> basis vectors and let <span class="math" data-tex="\(q_n\)">\(q_n\)</span> project onto the first <span class="math" data-tex="\(n\)">\(n\)</span> standard coordinates in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. Then
+<span class="math math-display" data-tex="\[
+ a_n=P_n\otimes q_n\uparrow1_B.
+ \tag{IA15}
+\]">\[
+ a_n=P_n\otimes q_n\uparrow1_B.
+ \tag{IA15}
+\]</span>
+These are increasing projections: both tensor factors increase, and their ranges are nested with dense union.</p>
+<p>For <span class="math" data-tex="\(\eta\in L^2(I)\)">\(\eta\in L^2(I)\)</span>, extend <span class="math" data-tex="\(\overline{\xi_j}\eta\)">\(\overline{\xi_j}\eta\)</span> by zero outside <span class="math" data-tex="\(I\)">\(I\)</span>. It is in <span class="math" data-tex="\(L^1(\mathbb R)\cap L^2(\mathbb R)\)">\(L^1(\mathbb R)\cap L^2(\mathbb R)\)</span>: use Cauchy–Schwarz for the first assertion and boundedness of <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> for the second. The exact scalar Plancherel calculation proved in TID(TI8), with integration measure <span class="math" data-tex="\(dt\)">\(dt\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}
+ \big|\langle\eta,e^{itQ}\xi_j\rangle\big|^2dt
+ =2\pi\int_I|\xi_j(q)|^2|\eta(q)|^2dq.
+ \tag{IA16}
+\]">\[
+ \int_{\mathbb R}
+ \big|\langle\eta,e^{itQ}\xi_j\rangle\big|^2dt
+ =2\pi\int_I|\xi_j(q)|^2|\eta(q)|^2dq.
+ \tag{IA16}
+\]</span>
+Thus the positive orbit integral of the rank-one projection
+<span class="math" data-tex="\(\theta_{\xi_j,\xi_j}\)">\(\theta_{\xi_j,\xi_j}\)</span> is the bounded operator
+<span class="math" data-tex="\(2\pi M_{|\xi_j|^2}\)">\(2\pi M_{|\xi_j|^2}\)</span>. Testing arbitrary Hilbert vectors and summing the finite tensor coordinates proves
+<span class="math math-display" data-tex="\[
+ E_\gamma(a_n):=\int_{\mathbb R}\gamma_t(a_n)\,dt
+ =2\pi M_{\sum_{j=1}^n|\xi_j|^2}\otimes q_n,
+ \qquad
+ \|E_\gamma(a_n)\|\leq2\pi\sum_{j=1}^n\|\xi_j\|_\infty^2.
+ \tag{IA17}
+\]">\[
+ E_\gamma(a_n):=\int_{\mathbb R}\gamma_t(a_n)\,dt
+ =2\pi M_{\sum_{j=1}^n|\xi_j|^2}\otimes q_n,
+ \qquad
+ \|E_\gamma(a_n)\|\leq2\pi\sum_{j=1}^n\|\xi_j\|_\infty^2.
+ \tag{IA17}
+\]</span>
+The integrals are increasing limits of compact positive integrals. The vector identity and its bound give strong convergence to the displayed bounded operator. In particular,
+<span class="math math-display" data-tex="\[
+ E_\gamma(a_1)=\frac{\pi}{\delta}\,1_{L^2(I)}\otimes q_1.
+ \tag{IA18}
+\]">\[
+ E_\gamma(a_1)=\frac{\pi}{\delta}\,1_{L^2(I)}\otimes q_1.
+ \tag{IA18}
+\]</span>
+There is no bound uniform in <span class="math" data-tex="\(n\)">\(n\)</span> asserted or needed.</p>
+<p>For completeness, the direction of the integrability criterion used here is short. If <span class="math" data-tex="\(0\leq b_n\uparrow1\)">\(0\leq b_n\uparrow1\)</span> have bounded positive orbit averages for an action <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, then <span class="math" data-tex="\(b_n^{1/2}\)">\(b_n^{1/2}\)</span> lies in
+<span class="math" data-tex="\(\mathfrak n_E=\{x:E_\alpha(x^*x)\text{ is bounded}\}\)">\(\mathfrak n_E=\{x:E_\alpha(x^*x)\text{ is bounded}\}\)</span>.
+This is a left ideal since
+<span class="math" data-tex="\(x^*y^*yx\leq\|y\|^2x^*x\)">\(x^*y^*yx\leq\|y\|^2x^*x\)</span>.
+Therefore <span class="math" data-tex="\(y b_n^{1/2}\in\mathfrak n_E\)">\(y b_n^{1/2}\in\mathfrak n_E\)</span> and it converges strongly to every <span class="math" data-tex="\(y\in M\)">\(y\in M\)</span>. This proves the required ultraweak density and hence integrability. If the contractions lie in an invariant unital subalgebra, their compact orbit integrals and their bounded limits are the same in that subalgebra and in <span class="math" data-tex="\(M\)">\(M\)</span>. Their supremum remains <span class="math" data-tex="\(1_M\)">\(1_M\)</span>. This proves exactly the unital-subalgebra permanence used below. TID(TI7) also proves the converse criterion.</p>
+<p><span id="OA-FLOW.IAP.APPROXIMATION"></span><a id="ia-approximation"></a></p>
+<h2 id="4-insert-the-model-into-the-original-centralizer">4. Insert the model into the original centralizer</h2>
+<p>Take <span class="math" data-tex="\(C=M_\varphi\)">\(C=M_\varphi\)</span> in Section 3 and choose <span class="math" data-tex="\(0&lt;\delta&lt;\varepsilon\)">\(0&lt;\delta&lt;\varepsilon\)</span>. With <span class="math" data-tex="\(h\)">\(h\)</span> as in (IA13), define on every positive element
+<span class="math math-display" data-tex="\[
+ \psi(x)=\varphi(h^{1/2}xh^{1/2}).\tag{IA19}
+\]">\[
+ \psi(x)=\varphi(h^{1/2}xh^{1/2}).\tag{IA19}
+\]</span>
+The bounded invertible centralizer perturbation proved in CZ1 and CZ4 gives a faithful normal semifinite weight and the whole-cone inequalities
+<span class="math math-display" data-tex="\[
+ e^{-\delta}\varphi\leq\psi\leq e^\delta\varphi.
+ \tag{IA20}
+\]">\[
+ e^{-\delta}\varphi\leq\psi\leq e^\delta\varphi.
+ \tag{IA20}
+\]</span>
+Here order is in the density parameter, as proved in CZ1. We do not assert the generally false operator inequality <span class="math" data-tex="\(h^{1/2}xh^{1/2}\leq e^\delta x\)">\(h^{1/2}xh^{1/2}\leq e^\delta x\)</span>. CZ4 and the normalized balanced-matrix computation CZ6 also give
+<span class="math math-display" data-tex="\[
+ \sigma_t^\psi(x)=h^{it}\sigma_t^\varphi(x)h^{-it},
+ \qquad (D\psi:D\varphi)_t=h^{it}.
+ \tag{IA21}
+\]">\[
+ \sigma_t^\psi(x)=h^{it}\sigma_t^\varphi(x)h^{-it},
+ \qquad (D\psi:D\varphi)_t=h^{it}.
+ \tag{IA21}
+\]</span></p>
+<p>Every element of <span class="math" data-tex="\(B\)">\(B\)</span> is fixed by <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>, so <span class="math" data-tex="\(B\)">\(B\)</span> is invariant under <span class="math" data-tex="\(\sigma^\psi\)">\(\sigma^\psi\)</span> and its restricted action is exactly <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The contractions (IA15) and the bounded averages (IA17), now viewed in <span class="math" data-tex="\(M\)">\(M\)</span>, therefore prove integrability of <span class="math" data-tex="\(\sigma^\psi\)">\(\sigma^\psi\)</span>. Every element of the unital algebra <span class="math" data-tex="\(D\)">\(D\)</span> in (IA14) is fixed by (IA21). Its two isometries sending the standard basis into the even and odd coordinates have initial projection <span class="math" data-tex="\(1_M\)">\(1_M\)</span> and orthogonal final projections. They belong to <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>. Thus <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span> is properly infinite.</p>
+<p>Both modular invariances in (IA4) follow on the entire positive cone. Since <span class="math" data-tex="\(\sigma_t^\varphi(h)=h\)">\(\sigma_t^\varphi(h)=h\)</span> and <span class="math" data-tex="\(\varphi\sigma_t^\varphi=\varphi\)">\(\varphi\sigma_t^\varphi=\varphi\)</span>,
+<span class="math math-display" data-tex="\[
+ \psi(\sigma_t^\varphi(x))
+ =\varphi\bigl(\sigma_t^\varphi(h^{1/2}xh^{1/2})\bigr)=\psi(x).
+ \tag{IA22}
+\]">\[
+ \psi(\sigma_t^\varphi(x))
+ =\varphi\bigl(\sigma_t^\varphi(h^{1/2}xh^{1/2})\bigr)=\psi(x).
+ \tag{IA22}
+\]</span>
+Also <span class="math" data-tex="\(h^{it}\)">\(h^{it}\)</span> is a centralizer unitary for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. CZ0 proves that it preserves <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, including infinite values. Formula (IA21) consequently gives
+<span class="math math-display" data-tex="\[
+ \varphi(\sigma_t^\psi(x))
+ =\varphi(\sigma_t^\varphi(x))=\varphi(x).
+ \tag{IA23}
+\]">\[
+ \varphi(\sigma_t^\psi(x))
+ =\varphi(\sigma_t^\varphi(x))=\varphi(x).
+ \tag{IA23}
+\]</span>
+These are invariances of the weights, stronger than merely saying that the two automorphism groups commute.</p>
+<p>The bounded logarithm <span class="math" data-tex="\(\log h=Q\otimes1\)">\(\log h=Q\otimes1\)</span> gives the norm-entire extension
+<span class="math math-display" data-tex="\[
+ U(z)=h^{iz},\qquad
+ \|U(t+iy)\|=\|h^{-y}\|=e^{\delta|y|}.
+ \tag{IA24}
+\]">\[
+ U(z)=h^{iz},\qquad
+ \|U(t+iy)\|=\|h^{-y}\|=e^{\delta|y|}.
+ \tag{IA24}
+\]</span>
+The last equality follows from the full interval spectrum in (IA13), including its endpoint suprema; no endpoint eigenvectors are needed. Criterion (IA3) yields <span class="math" data-tex="\(d_U(\varphi,\psi)\leq\delta&lt;\varepsilon\)">\(d_U(\varphi,\psi)\leq\delta&lt;\varepsilon\)</span>, proving assertion 1. In fact the equality in (IA24) and uniqueness of entire continuation imply <span class="math" data-tex="\(d_U(\varphi,\psi)=\delta\)">\(d_U(\varphi,\psi)=\delta\)</span>: if the distance were smaller, (IA3) with an intermediate exponent and <span class="math" data-tex="\(y=1\)">\(y=1\)</span> would contradict (IA24).</p>
+<p>The trace of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span> played no role. It need not even be semifinite there. For an explicit example, let <span class="math" data-tex="\(H_0\)">\(H_0\)</span> be infinite-dimensional and let
+<span class="math math-display" data-tex="\[
+ M=B(H_0\otimes K),\qquad
+ \varphi=\operatorname{Tr}_{H_0}\otimes\operatorname{Tr}_K,
+ \qquad B=1\otimes B(K).
+\]">\[
+ M=B(H_0\otimes K),\qquad
+ \varphi=\operatorname{Tr}_{H_0}\otimes\operatorname{Tr}_K,
+ \qquad B=1\otimes B(K).
+\]</span>
+This <span class="math" data-tex="\(B\)">\(B\)</span> lies in <span class="math" data-tex="\(M_\varphi=M\)">\(M_\varphi=M\)</span>, but <span class="math" data-tex="\(\varphi(1\otimes b)=\infty\)">\(\varphi(1\otimes b)=\infty\)</span> for every nonzero <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>. Indeed a positive vector coefficient of <span class="math" data-tex="\(b\)">\(b\)</span>, repeated through arbitrarily many orthogonal coordinates of <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, gives arbitrarily large finite lower bounds for the trace. The same holds for <span class="math" data-tex="\(\psi|_B\)">\(\psi|_B\)</span> after inserting the invertible <span class="math" data-tex="\(h\)">\(h\)</span>. The restricted <em>action</em> is still integrable by (IA17). Thus replacing this argument by an identification of <span class="math" data-tex="\(\psi|_B\)">\(\psi|_B\)</span> with <span class="math" data-tex="\(\operatorname{Tr}(h\,\cdot)\)">\(\operatorname{Tr}(h\,\cdot)\)</span> would impose an unjustified extra assumption.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The interval density, entire-cocycle growth, fixed matrix multiplicity and exact first orbit average" src="assets/integrable-approximation/integrable-interval.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The model uses <span class="math" data-tex="\(\delta=\log2\)">\(\delta=\log2\)</span>. Its spectrum runs from <span class="math" data-tex="\(1/2\)">\(1/2\)</span> to <span class="math" data-tex="\(2\)">\(2\)</span>, with ratio <span class="math" data-tex="\(4\)">\(4\)</span>; its interval width is <span class="math" data-tex="\(2\log2\)">\(2\log2\)</span>. Equations (IA14), (IA17), (IA18) and (IA24) explain the four panels. The displayed matrix coordinates illustrate the first few members of an infinite factor, not a finite-dimensional approximation used in the proof. This is an operator model inside a centralizer, not a construction of a type III factor. <a href="assets/integrable-approximation/generate_model.py">Drawing source</a>, <a href="assets/integrable-approximation/model-data.json">exact formulas and samples</a>, and <a href="assets/integrable-approximation/TERMS.md">terms</a> accompany it.</p>
+<p><span id="OA-FLOW.IAP.III-ONE"></span><a id="ia-iii-one"></a></p>
+<h2 id="5-an-integrable-infinite-multiplicity-weight-in-type-iii-1">5. An integrable infinite-multiplicity weight in type III<span class="math" data-tex="\(_1\)">\(_1\)</span></h2>
+<p>Assume now that <span class="math" data-tex="\(M\)">\(M\)</span> is a type III<span class="math" data-tex="\(_1\)">\(_1\)</span> factor with separable predual. The actual construction <a href="OA-FLOW-CGF.html#cgf-1">CGF Section 1</a> supplies a stabilized trace-scaling presentation
+<span class="math math-display" data-tex="\[
+ M=N\rtimes_\theta\mathbb R,\qquad
+ \tau\theta_s=e^{-s}\tau,\qquad
+ \Phi=\widehat\tau,\qquad N=M_\Phi,
+ \tag{IA25}
+\]">\[
+ M=N\rtimes_\theta\mathbb R,\qquad
+ \tau\theta_s=e^{-s}\tau,\qquad
+ \Phi=\widehat\tau,\qquad N=M_\Phi,
+ \tag{IA25}
+\]</span>
+with <span class="math" data-tex="\(N\)">\(N\)</span> properly infinite and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> faithful normal semifinite. It is transported onto the original algebra using filling isometries, so all unitaries constructed below are elements of that original <span class="math" data-tex="\(M\)">\(M\)</span>. Its coefficient algebra has separable predual. The center-flow theorem MIV4 gives
+<span class="math math-display" data-tex="\[
+ S(M)=[0,\infty)\quad\Longrightarrow\quad Z(N)=\mathbb C1.
+ \tag{IA26}
+\]">\[
+ S(M)=[0,\infty)\quad\Longrightarrow\quad Z(N)=\mathbb C1.
+ \tag{IA26}
+\]</span>
+Thus <span class="math" data-tex="\(N\)">\(N\)</span> is a factor. The reference <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is dominant: the crossed-product unitaries satisfy <span class="math" data-tex="\(\Phi\operatorname{Ad}u_s=e^{-s}\Phi\)">\(\Phi\operatorname{Ad}u_s=e^{-s}\Phi\)</span>, as proved on the whole cone in CGF(CI2), and its centralizer is properly infinite.</p>
+<p>Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be any faithful integrable weight of infinite multiplicity. The proved supported integrability criterion CGF(CI35–39) gives a projection <span class="math" data-tex="\(e\in N\)">\(e\in N\)</span> and <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span> with
+<span class="math math-display" data-tex="\[
+ w^*w=1,\qquad ww^*=e,\qquad
+ \psi(x)=\Phi(w x w^*)\quad(x\geq0).
+ \tag{IA27}
+\]">\[
+ w^*w=1,\qquad ww^*=e,\qquad
+ \psi(x)=\Phi(w x w^*)\quad(x\geq0).
+ \tag{IA27}
+\]</span>
+Indeed the comparison is <span class="math" data-tex="\(\psi\sim\Phi_e\)">\(\psi\sim\Phi_e\)</span>; its defining partial isometry has the displayed supports because <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is faithful. Normal modular covariance carries <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span> to <span class="math" data-tex="\(eNe\)">\(eNe\)</span>, so <span class="math" data-tex="\(e\)">\(e\)</span> is properly infinite as a projection of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The projection <span class="math" data-tex="\(1_N\)">\(1_N\)</span> is countably decomposable: a faithful normal state on <span class="math" data-tex="\(M\)">\(M\)</span>, which exists by separable predual, restricts faithfully to <span class="math" data-tex="\(N\)">\(N\)</span>. Since <span class="math" data-tex="\(N\)">\(N\)</span> is a factor, <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span> has central support one. PC7 applies with countably decomposable source <span class="math" data-tex="\(1_N\)">\(1_N\)</span> and properly infinite target <span class="math" data-tex="\(e\)">\(e\)</span>, and gives <span class="math" data-tex="\(1_N\precsim e\)">\(1_N\precsim e\)</span>. Inclusion gives <span class="math" data-tex="\(e\precsim1_N\)">\(e\precsim1_N\)</span>; PC3 then supplies <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span> with
+<span class="math math-display" data-tex="\[
+ v^*v=e,\qquad vv^*=1.
+ \tag{IA28}
+\]">\[
+ v^*v=e,\qquad vv^*=1.
+ \tag{IA28}
+\]</span>
+This is the specific projection comparison needed here; infinite trace alone would not justify it without the countability or cardinal comparison hypotheses.</p>
+<p>We spell out why this centralizer partial isometry preserves the cut weight on the entire cone. For <span class="math" data-tex="\(y\in(eMe)_+\)">\(y\in(eMe)_+\)</span> with <span class="math" data-tex="\(\Phi(y)&lt;\infty\)">\(\Phi(y)&lt;\infty\)</span>, put <span class="math" data-tex="\(x=y^{1/2}\in N_\Phi\)">\(x=y^{1/2}\in N_\Phi\)</span>. The complete right-multiplication identity CZ0 gives
+<span class="math math-display" data-tex="\[
+ \Phi(vyv^*)
+ =\|\Lambda_\Phi(xv^*)\|^2
+ =\|J_\Phi\pi_\Phi(v)J_\Phi\Lambda_\Phi(x)\|^2
+ =\|\Lambda_\Phi(x)\|^2=\Phi(y).
+ \tag{IA29}
+\]">\[
+ \Phi(vyv^*)
+ =\|\Lambda_\Phi(xv^*)\|^2
+ =\|J_\Phi\pi_\Phi(v)J_\Phi\Lambda_\Phi(x)\|^2
+ =\|\Lambda_\Phi(x)\|^2=\Phi(y).
+ \tag{IA29}
+\]</span>
+For the third equality, the squared multiplier is <span class="math" data-tex="\(J_\Phi\pi_\Phi(v^*v)J_\Phi=J_\Phi\pi_\Phi(e)J_\Phi\)">\(J_\Phi\pi_\Phi(v^*v)J_\Phi=J_\Phi\pi_\Phi(e)J_\Phi\)</span>, which fixes <span class="math" data-tex="\(\Lambda_\Phi(x)\)">\(\Lambda_\Phi(x)\)</span> because <span class="math" data-tex="\(xe=x\)">\(xe=x\)</span>. The inverse map uses <span class="math" data-tex="\(v^*\)">\(v^*\)</span>, also in the centralizer. Applying the same finite argument to it shows that a finite value of <span class="math" data-tex="\(\Phi(vyv^*)\)">\(\Phi(vyv^*)\)</span> forces <span class="math" data-tex="\(\Phi(y)&lt;\infty\)">\(\Phi(y)&lt;\infty\)</span>. Hence (IA29) holds when either side is infinite as well.</p>
+<p>Now <span class="math" data-tex="\(a=vw\)">\(a=vw\)</span> is unitary: <span class="math" data-tex="\(a^*a=w^*ew=1\)">\(a^*a=w^*ew=1\)</span> and <span class="math" data-tex="\(aa^*=vev^*=1\)">\(aa^*=vev^*=1\)</span>. Combining (IA27)–(IA29) proves
+<span class="math math-display" data-tex="\[
+ \psi(x)=\Phi(a x a^*)\quad(x\in M_+).
+ \tag{IA30}
+\]">\[
+ \psi(x)=\Phi(a x a^*)\quad(x\in M_+).
+ \tag{IA30}
+\]</span>
+Every faithful integrable infinite-multiplicity weight is therefore unitarily equivalent to the same dominant reference. In particular it is itself dominant: conjugation transports the proper infiniteness of the centralizer and each scalar-absorption unitary. This supplies the needed dominance conclusion from integrability, rather than using it as a new assumption.</p>
+<p><span id="OA-FLOW.IAP.ORBITS"></span><a id="ia-orbits"></a></p>
+<h2 id="6-approximate-the-two-weights-then-match-the-approximants">6. Approximate the two weights, then match the approximants</h2>
+<p>Let <span class="math" data-tex="\(\varphi_1,\varphi_2\)">\(\varphi_1,\varphi_2\)</span> satisfy assertion 2, and fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Section 4 supplies faithful integrable infinite-multiplicity weights <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> with
+<span class="math math-display" data-tex="\[
+ d_U(\varphi_j,\psi_j)&lt;\varepsilon/2\qquad(j=1,2).
+ \tag{IA31}
+\]">\[
+ d_U(\varphi_j,\psi_j)&lt;\varepsilon/2\qquad(j=1,2).
+ \tag{IA31}
+\]</span>
+By (IA30) choose unitaries <span class="math" data-tex="\(a_j\)">\(a_j\)</span> such that <span class="math" data-tex="\(\psi_j=\Phi\circ\operatorname{Ad}a_j\)">\(\psi_j=\Phi\circ\operatorname{Ad}a_j\)</span>. Put <span class="math" data-tex="\(u=a_1^*a_2\)">\(u=a_1^*a_2\)</span>; then <span class="math" data-tex="\(\psi_1^u=\psi_2\)">\(\psi_1^u=\psi_2\)</span>. The triangle inequality and (IA10) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ d_U(\varphi_1^u,\varphi_2)
+ &amp;\leq d_U(\varphi_1^u,\psi_1^u)
+                +d_U(\psi_2,\varphi_2)\\
+ &amp;=d_U(\varphi_1,\psi_1)+d_U(\psi_2,\varphi_2)
+ &lt;\varepsilon.
+\end{aligned}\tag{IA32}
+\]">\[
+\begin{aligned}
+ d_U(\varphi_1^u,\varphi_2)
+ &amp;\leq d_U(\varphi_1^u,\psi_1^u)
+                +d_U(\psi_2,\varphi_2)\\
+ &amp;=d_U(\varphi_1,\psi_1)+d_U(\psi_2,\varphi_2)
+ &lt;\varepsilon.
+\end{aligned}\tag{IA32}
+\]</span>
+This proves (IA5). For any one such <span class="math" data-tex="\(u\)">\(u\)</span>, the distance is finite. Section 2 then equates the four finite domains of <span class="math" data-tex="\(\varphi_1^u\)">\(\varphi_1^u\)</span> and <span class="math" data-tex="\(\varphi_2\)">\(\varphi_2\)</span>, and (IA8) gives all of (IA6) with the stated conjugation side.</p>
+<p>These weights necessarily have infinite total mass. If a faithful weight <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with properly infinite centralizer had finite mass, two centralizer isometries with orthogonal ranges would each give <span class="math" data-tex="\(\rho(ss^*)=\rho(s^*s)=\rho(1)&gt;0\)">\(\rho(ss^*)=\rho(s^*s)=\rho(1)&gt;0\)</span> by the same finite-domain identity as (IA29). Additivity and their range sum at most one would imply <span class="math" data-tex="\(2\rho(1)\leq\rho(1)\)">\(2\rho(1)\leq\rho(1)\)</span>, a contradiction. The proof does not reverse this implication, and it makes no statement about faithful states in the uniform metric.</p>
+<p><span id="OA-FLOW.IAP.DISCRETE-TYPE"></span><a id="ia-discrete-type"></a></p>
+<h2 id="7-correct-the-modular-period-in-positive-discrete-type">7. Correct the modular period in positive discrete type</h2>
+<p>Let <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, put <span class="math" data-tex="\(L=-\log\lambda&gt;0\)">\(L=-\log\lambda&gt;0\)</span> and <span class="math" data-tex="\(P=2\pi/L\)">\(P=2\pi/L\)</span>, and let <span class="math" data-tex="\(M\)">\(M\)</span> be a type III<span class="math" data-tex="\(_\lambda\)">\(_\lambda\)</span> factor. In this section its predual may be arbitrary. Assume only that <span class="math" data-tex="\(\varphi_1,\varphi_2\)">\(\varphi_1,\varphi_2\)</span> are faithful normal semifinite and have infinite total mass.</p>
+<p>The actual inner-period proof <a href="OA-FLOW-DDP.html#dd-existence">DDP2</a>, including its extension from a full fixed corner in DDP1, says that <span class="math" data-tex="\(\sigma_P^{\varphi_j}\)">\(\sigma_P^{\varphi_j}\)</span> is inner. Choose <span class="math" data-tex="\(b_j\in\mathcal U(M)\)">\(b_j\in\mathcal U(M)\)</span> with
+<span class="math math-display" data-tex="\[
+ \sigma_P^{\varphi_j}=\operatorname{Ad}b_j.
+ \tag{IA33}
+\]">\[
+ \sigma_P^{\varphi_j}=\operatorname{Ad}b_j.
+ \tag{IA33}
+\]</span>
+Here is the full use of the bounded phase correction. Modular invariance says that <span class="math" data-tex="\(b_j\)">\(b_j\)</span> preserves <span class="math" data-tex="\(\varphi_j\)">\(\varphi_j\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. The weight-preserving-unitary criterion CZ0 therefore puts <span class="math" data-tex="\(b_j\)">\(b_j\)</span> in <span class="math" data-tex="\(M_{\varphi_j}\)">\(M_{\varphi_j}\)</span>. Since (IA33) fixes that centralizer pointwise, <span class="math" data-tex="\(b_j\in Z(M_{\varphi_j})\)">\(b_j\in Z(M_{\varphi_j})\)</span>. The proved bounded phase construction PW2, with its full Cayley domain and affiliation verification, supplies
+<span class="math math-display" data-tex="\[
+ 0\leq\Theta_j\leq2\pi1,\qquad
+ \Theta_j\in Z(M_{\varphi_j}),\qquad e^{i\Theta_j}=b_j.
+ \tag{IA34}
+\]">\[
+ 0\leq\Theta_j\leq2\pi1,\qquad
+ \Theta_j\in Z(M_{\varphi_j}),\qquad e^{i\Theta_j}=b_j.
+ \tag{IA34}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+ k_j=e^{-\Theta_j/P},\qquad
+ \nu_j(x)=\varphi_j(k_j^{1/2}xk_j^{1/2})
+ \quad(x\in M_+).
+ \tag{IA35}
+\]">\[
+ k_j=e^{-\Theta_j/P},\qquad
+ \nu_j(x)=\varphi_j(k_j^{1/2}xk_j^{1/2})
+ \quad(x\in M_+).
+ \tag{IA35}
+\]</span>
+The bounded centralizer perturbation gives
+<span class="math math-display" data-tex="\[
+ \lambda1\leq k_j\leq1,\qquad
+ \lambda\varphi_j\leq\nu_j\leq\varphi_j,\qquad
+ \sigma_t^{\nu_j}=\operatorname{Ad}(k_j^{it})\sigma_t^{\varphi_j}.
+ \tag{IA36}
+\]">\[
+ \lambda1\leq k_j\leq1,\qquad
+ \lambda\varphi_j\leq\nu_j\leq\varphi_j,\qquad
+ \sigma_t^{\nu_j}=\operatorname{Ad}(k_j^{it})\sigma_t^{\varphi_j}.
+ \tag{IA36}
+\]</span>
+In particular <span class="math" data-tex="\(\nu_j(1)=\infty\)">\(\nu_j(1)=\infty\)</span>. Moreover <span class="math" data-tex="\(k_j^{iP}=b_j^*\)">\(k_j^{iP}=b_j^*\)</span>, so (IA33) and (IA36) give <span class="math" data-tex="\(\sigma_P^{\nu_j}=\mathrm{id}\)">\(\sigma_P^{\nu_j}=\mathrm{id}\)</span>. Thus the <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span> are infinite generalized traces in the precise sense used in DDP7: faithful normal semifinite, infinite mass, and modular period <span class="math" data-tex="\(P\)">\(P\)</span>. No assumption about the original centralizers was added. By Section 2,
+<span class="math math-display" data-tex="\[
+ F_{\nu_j}=F_{\varphi_j},\quad
+ N_{\nu_j}=N_{\varphi_j},\quad
+ A_{\nu_j}=A_{\varphi_j},\quad
+ \mathfrak m_{\nu_j}=\mathfrak m_{\varphi_j}.
+ \tag{IA37}
+\]">\[
+ F_{\nu_j}=F_{\varphi_j},\quad
+ N_{\nu_j}=N_{\varphi_j},\quad
+ A_{\nu_j}=A_{\varphi_j},\quad
+ \mathfrak m_{\nu_j}=\mathfrak m_{\varphi_j}.
+ \tag{IA37}
+\]</span></p>
+<p>We retain the precise scalar in the comparison, and recall its actual construction. Let <span class="math" data-tex="\(v_t=(D\nu_2:D\nu_1)_t\)">\(v_t=(D\nu_2:D\nu_1)_t\)</span>. Since both modular groups have period <span class="math" data-tex="\(P\)">\(P\)</span>, their covariance gives <span class="math" data-tex="\(v_P\in Z(M)=\mathbb C1\)">\(v_P\in Z(M)=\mathbb C1\)</span>. There is a unique <span class="math" data-tex="\(a\in(\lambda,1]\)">\(a\in(\lambda,1]\)</span> with
+<span class="math math-display" data-tex="\[
+ v_P=a^{-iP}1.\tag{IA38}
+\]">\[
+ v_P=a^{-iP}1.\tag{IA38}
+\]</span>
+Indeed <span class="math" data-tex="\(\log a\in(-L,0]\)">\(\log a\in(-L,0]\)</span> parametrizes the circle once because <span class="math" data-tex="\(PL=2\pi\)">\(PL=2\pi\)</span>. Set <span class="math" data-tex="\(\omega_1=a^{-1}\nu_1\)">\(\omega_1=a^{-1}\nu_1\)</span>. The scalar cocycle rule gives <span class="math" data-tex="\((D\nu_2:D\omega_1)_P=1\)">\((D\nu_2:D\omega_1)_P=1\)</span>. The balanced weight <span class="math" data-tex="\(\Omega=\omega_1\oplus\nu_2\)">\(\Omega=\omega_1\oplus\nu_2\)</span> on <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span> is therefore periodic even on its off-diagonal entries, by BC's balanced modular formula.</p>
+<p>DDP2 proves that its fixed algebra is a semifinite factor. Its two diagonal projections have infinite <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>-trace. DDP3 proves their equivalence <em>in that fixed algebra</em>: at arbitrary cardinality it compares their sigma-finite cover cardinals, transports those cardinals through the faithful compact average, and observes that the two original diagonal corners are both isomorphic to <span class="math" data-tex="\(M\)">\(M\)</span>. Thus this step is the actual proved balanced comparison (DDP13), not the invalid rule that any two infinite-trace projections in any factor are equivalent.</p>
+<p>Choose the resulting fixed off-diagonal partial isometry <span class="math" data-tex="\(V=uE_{12}\)">\(V=uE_{12}\)</span>. Its two support identities imply <span class="math" data-tex="\(u^*u=uu^*=1\)">\(u^*u=uu^*=1\)</span>. The self-adjoint unitary <span class="math" data-tex="\(V+V^*\)">\(V+V^*\)</span> belongs to the balanced centralizer, so CZ0 says it preserves <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> on every positive matrix. Applying this to <span class="math" data-tex="\(\operatorname{diag}(0,x)\)">\(\operatorname{diag}(0,x)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \omega_1(uxu^*)=\nu_2(x),\qquad
+ \boxed{\nu_1\circ\operatorname{Ad}u=a\nu_2},\qquad
+ a\in(\lambda,1].
+ \tag{IA39}
+\]">\[
+ \omega_1(uxu^*)=\nu_2(x),\qquad
+ \boxed{\nu_1\circ\operatorname{Ad}u=a\nu_2},\qquad
+ a\in(\lambda,1].
+ \tag{IA39}
+\]</span>
+This is the scalar-sensitive comparison proved in DDP7. Infinite values are included. A scalar <span class="math" data-tex="\(a=1\)">\(a=1\)</span> has not been imposed.</p>
+<p>Positive scalar multiplication preserves all four finite domains, so (IA37)–(IA39), followed by (IA8), prove (IA6). One can also see the required whole-cone comparison directly:
+<span class="math math-display" data-tex="\[
+ a\lambda\varphi_2\leq\varphi_1\circ\operatorname{Ad}u
+                   \leq a\lambda^{-1}\varphi_2.
+ \tag{IA40}
+\]">\[
+ a\lambda\varphi_2\leq\varphi_1\circ\operatorname{Ad}u
+                   \leq a\lambda^{-1}\varphi_2.
+ \tag{IA40}
+\]</span>
+For the lower bound use <span class="math" data-tex="\(\nu_1^u\leq\varphi_1^u\)">\(\nu_1^u\leq\varphi_1^u\)</span> and <span class="math" data-tex="\(\nu_2\geq\lambda\varphi_2\)">\(\nu_2\geq\lambda\varphi_2\)</span>; for the upper bound use <span class="math" data-tex="\(\lambda\varphi_1^u\leq\nu_1^u=a\nu_2\leq a\varphi_2\)">\(\lambda\varphi_1^u\leq\nu_1^u=a\nu_2\leq a\varphi_2\)</span>. These constants prove domain equality, not an all-depth comparison or a vanishing uniform orbit distance. The positive discrete-type conclusion is now proved in its full stated scope.</p>
+<p><span id="OA-FLOW.IAP.DIAGNOSTICS"></span><a id="ia-diagnostics"></a></p>
+<h2 id="8-solved-checks-on-the-hypotheses-and-constants">8. Solved checks on the hypotheses and constants</h2>
+<p><strong>Why must the matrix inclusion be unital?</strong> If the contractions (IA15) converged only to a proper projection <span class="math" data-tex="\(p\)">\(p\)</span>, then <span class="math" data-tex="\(y a_n^{1/2}\)">\(y a_n^{1/2}\)</span> would converge to <span class="math" data-tex="\(yp\)">\(yp\)</span>. The integrable left ideal would not thereby approximate arbitrary elements. Filling (IA11) is exactly what makes its limit <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>What changes when the averaging measure is <span class="math" data-tex="\(dt/(2\pi)\)">\(dt/(2\pi)\)</span>?</strong> Both sides of (IA17) are divided by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>; the first average becomes <span class="math" data-tex="\((2\delta)^{-1}1\otimes q_1\)">\((2\delta)^{-1}1\otimes q_1\)</span>. Boundedness, density and integrability are unchanged. The figure and this lesson use <span class="math" data-tex="\(dt\)">\(dt\)</span>.</p>
+<p><strong>Why choose <span class="math" data-tex="\(\delta&lt;\varepsilon\)">\(\delta&lt;\varepsilon\)</span>?</strong> The constructed example has the exact distance <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, by (IA24). Choosing <span class="math" data-tex="\(\delta=\varepsilon\)">\(\delta=\varepsilon\)</span> would give equality, not the strict approximation requested in (IA4).</p>
+<p><strong>Does a small density perturbation make the old and new weights equal on their finite algebra?</strong> No. The domains agree by (IA20), but their values need not. Even multiplying a nonzero weight by <span class="math" data-tex="\(2\)">\(2\)</span> preserves every finite domain while changing its finite nonzero values and its normalized cocycle. Our conclusion is conjugacy of domains; scalar equality is asserted only where actually proved in (IA30) or (IA39).</p>
+<p><strong>Can the type III<span class="math" data-tex="\(_1\)">\(_1\)</span> proof use infinite total mass in place of infinite multiplicity?</strong> The argument uses proper infiniteness twice: to insert a unital infinite matrix algebra in the original centralizer, and to compare <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(1\)">\(1\)</span> in (IA28). Infinite total mass supplies neither step. In positive discrete type, the bounded phase and the proved periodic comparison replace these uses, which is why its hypothesis is weaker.</p>
+<p><span id="OA-FLOW.IAP.SOURCES"></span><a id="ia-sources"></a></p>
+<h2 id="source-context">Source context</h2>
+<p>The human source for this cluster is M. Takesaki, <em>Theory of Operator Algebras II</em>, XII.5, Theorem 5.9 and Corollaries 5.10–5.11, printed pp.426–427. The present organization begins with finite-domain transport and the explicit interval average, then separates the two mechanisms for inner comparison. The type-I restriction in the source is replaced by the action argument in Section 4; the positive discrete-type comparison retains the scalar required by the actual generalized-trace theorem.</p>
+<p>The conclusions concern infinite weights and conjugacy of their finite domains. They do not identify the norm distance between unitary orbits of bounded positive functionals; that comparison requires spectral-tail information.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-UMET.html">Previous lesson</a><a href="OA-FLOW-TAIL.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-IAP.md">Lesson source</a></nav></main></body></html>

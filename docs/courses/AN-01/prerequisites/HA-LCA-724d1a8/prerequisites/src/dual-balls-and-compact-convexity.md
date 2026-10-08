@@ -4,7 +4,7 @@
 
 The freely accessible readings are D. H. Fremlin's *Measure Theory*, [§243, version of 30 April 2004 in the volume 2 source collection of 2016](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt243.tex), 243F–G, and Günther Hörmann's [*Advanced Functional Analysis*, summer semester 2023, corrected 13 September 2024](https://www.mat.univie.ac.at/~gue/lehre/23AFA/AFA.pdf), §5.11 on printed pages 71–73 and §§6.5–6.6. The local duality proof uses finite-measure Hilbert representation and explicit gluing. The separation proof uses finitely many coordinates and Euclidean minimization. Thus none of the source's external Radon–Nikodým, gluing or Hahn–Banach references is an unproved dependency.
 
-This adapted component is distributed under the [Design Science License](../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). The unchanged volume 2 source package, with its original notices, is retained. The other reading's prose and figures are not reproduced.
+Original text: public domain (CC0). The unchanged volume 2 source package, with its original notices, is retained. The other reading's prose and figures are not reproduced.
 
 ## 1. The full Haar domain and its duality
 

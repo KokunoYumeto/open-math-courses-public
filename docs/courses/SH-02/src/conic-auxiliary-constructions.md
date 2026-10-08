@@ -392,4 +392,4 @@ All objects and maps retain the full \(D^+\) range. For \(n=0\), both direction 
 
 The cone-complement homeomorphism is constructed by stereographic projection and a distance integral, including cones of lower dimension. The convex-open formula follows by positive saturation and the already fixed conic restriction map. The ordinary radial formula follows by a submersion base-change proof and localization. These arguments make the geometric step, wider test sets and exact comparison maps explicit. The distinct Fourier adjunction-normalization and transformed-trace equalities remain with the Fourier normalization supplements.
 
-The mathematical antecedents are cited above. This newly written exposition is intended for the course's GFDL-1.2-or-later route.
+The mathematical antecedents are cited above.

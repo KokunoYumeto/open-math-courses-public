@@ -1,6 +1,6 @@
 # The symmetric groups III: characters and symmetric functions
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra in Codex, October 2026. Self-checked by the AI that wrote it. Independent AI review is not yet recorded. Independently authored text is public domain (CC0); the explicitly credited kernel-expansion proof paragraph in Lemma 1.2 is adapted under CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra in Codex, October 2026; the proof of the kernel expansions in Lemma 1.2 by Claude Opus 5.5 (Anthropic). Self-checked by the AI that wrote it. Independent AI review is not yet recorded. Independently authored text is public domain (CC0).*
 
 A cycle of length \(r\) will become the power sum \(p_r\). Disjoint cycles become products. Under this translation, inducing representations of two symmetric groups becomes multiplying symmetric functions, and the irreducible \(V_\lambda\) becomes the Schur function \(s_\lambda\). The translation gives both a character algorithm and a way to decompose permutation representations.
 
@@ -94,19 +94,25 @@ Define the Hall form over \(\mathbb Q\) by \(\langle p_\lambda,p_\mu\rangle=z_\l
 
 Consequently \(\langle h_\lambda,m_\mu\rangle=\delta_{\lambda\mu}\).
 
-**Proof.** First take finite alphabets. In \(\prod_j H_x(y_j)\), the coefficient of \(y^\alpha\) is \(\prod_j h_{\alpha_j}(x)\); collecting equal sorted exponent sequences yields \(\sum_\mu h_\mu(x)m_\mu(y)\). For the power-sum expansion, formal logarithms turn the product into the exponential of \(\sum_{r\geq1}p_r(x)p_r(y)/r\). Its factor indexed by \(r\) is
+**Proof.** Both expansions are identities in each bidegree \((n,n)\) separately. Fix finite alphabets \(x_1,\ldots,x_L\) and \(y_1,\ldots,y_M\). We show that in \(\mathbb Q[x_1,\ldots,x_L,y_1,\ldots,y_M]\) the part of bidegree \((n,n)\) of \(\prod_{i,j}(1-x_iy_j)^{-1}\) equals the images of both sums in (8). These images are compatible with setting variables to zero. Once \(L,M\geq n\), the products \(m_\lambda(x)m_\mu(y)\) with \(\lambda,\mu\vdash n\) are linearly independent, so restriction to the two finite alphabets is injective on \(\Lambda_{\mathbb Q}^{n}\otimes\Lambda_{\mathbb Q}^{n}\). Hence the finite-alphabet identities give (8) in each bidegree.
 
+Expanding every factor as a geometric series gives
 \[
-\sum_{a\geq0}\frac{p_r(x)^a p_r(y)^a}{r^a a!}.
+\prod_{i,j}(1-x_iy_j)^{-1}=\sum_{A}\ \prod_{i,j}(x_iy_j)^{a_{ij}},
 \]
+summed over all \(L\times M\) matrices \(A=(a_{ij})\) of nonnegative integers. The monomial of \(A\) is \(x^\alpha y^\beta\), where \(\alpha\) lists the row sums of \(A\) and \(\beta\) its column sums. So the coefficient of \(x^\alpha y^\beta\) on the left is the number \(N(\alpha,\beta)\) of such matrices with row sums \(\alpha\) and column sums \(\beta\). On the right, \(m_\mu(y)\) contains \(y^\beta\) exactly when \(\mu\) is obtained by sorting \(\beta\), and then with coefficient one. The coefficient of \(x^\alpha y^\beta\) in \(\sum_\mu h_\mu(x)m_\mu(y)\) is therefore the coefficient of \(x^\alpha\) in \(h_{\beta_1}(x)\cdots h_{\beta_M}(x)\). By (2), \(h_{\beta_j}\) is the sum of all monomials of degree \(\beta_j\), each once. Choosing a monomial \(x^{c_j}\) from each factor is the same as choosing the matrix with columns \(c_1,\ldots,c_M\): its column sums are \(\beta\), and its row sums form the exponent \(c_1+\cdots+c_M\). This coefficient is therefore also \(N(\alpha,\beta)\), which proves the first expansion.
 
-Choosing each multiplicity \(a=m_r(\mu)\) gives coefficient \(\prod_r(r^{m_r(\mu)}m_r(\mu)!)^{-1}=z_\mu^{-1}\). Each fixed degree has finitely many choices, and specialization is compatible with setting variables to zero. The finite-alphabet identities therefore give (8) in the degreewise completion.
-
-*Credit for the preceding kernel-expansion paragraph and displayed series:* adapted by GPT-6.1 Sol from Darij Grinberg and Victor Reiner, [*Hopf Algebras in Combinatorics*](https://www.cip.ifi.lmu.de/~grinberg/algebra/HopfComb.pdf), Proposition 2.5.15 and its proof, pp. 64–66, July 27, 2020 text with minor corrections dated September 6, 2026; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The AI adaptation uses finite alphabets first, this lesson's notation, and an explicit degreewise specialization argument. The following duality argument is independently authored.
+For the second, specialize (6) to the finite alphabet of the \(LM\) products \(x_iy_j\). Its complete series is \(\prod_{i,j}(1-x_iy_jt)^{-1}\), and its power sums are \(\sum_{i,j}(x_iy_j)^r=p_r(x)p_r(y)\). Thus
+\[
+\prod_{i,j}(1-x_iy_jt)^{-1}
+=\exp\Bigl(\sum_{r\geq1}\frac{p_r(x)p_r(y)}{r}\,t^r\Bigr)
+=\prod_{r\geq1}\ \sum_{a\geq0}\frac{\bigl(p_r(x)p_r(y)\bigr)^a}{r^a\,a!}\,t^{ra}.
+\]
+The variable \(t\) records the bidegree: the coefficient of \(t^n\) on the left is the part of bidegree \((n,n)\). A term of degree \(n\) on the right chooses exponents \(a_r\) with \(\sum_r ra_r=n\), that is, the multiplicities \(a_r=m_r(\mu)\) of a partition \(\mu\vdash n\). Its contribution is \(p_\mu(x)p_\mu(y)\prod_r\bigl(r^{m_r(\mu)}m_r(\mu)!\bigr)^{-1}=p_\mu(x)p_\mu(y)/z_\mu\), by (7). This proves the second expansion.
 
 For rational \(f\), the second sum satisfies \(\langle f(x),\mathcal K(x,y)\rangle=f(y)\), as one checks on the \(p\)-basis. Substitute \(f=m_\lambda\) into the first sum and compare coefficients in the \(m(y)\)-basis. This gives \(\langle m_\lambda,h_\mu\rangle=\delta_{\lambda\mu}\). Symmetry over \(\mathbb Q\), and then Hermitian extension, gives the displayed duality. \(\square\)
 
-*Comparison:* [Grinberg–Reiner, Proposition 2.5.15 and Corollary 2.5.17]. The complete generating function \(H(t)\) is infinite even in finitely many variables: for one variable, \(H(t)=(1-xt)^{-1}=\sum_{r\geq0}x^rt^r\), and every degree can be nonzero. A finite alphabet therefore permits degreewise specialization, not truncation at its size. The component credit in Lemma 1.2 describes the exact adapted part.
+*Comparison:* [Grinberg–Reiner, Proposition 2.5.15 and Corollary 2.5.17]. The complete generating function \(H(t)\) is infinite even in finitely many variables: for one variable, \(H(t)=(1-xt)^{-1}=\sum_{r\geq0}x^rt^r\), and every degree can be nonzero. A finite alphabet therefore permits degreewise specialization, not truncation at its size.
 
 ## 2. Determinants, tableaux and orthogonality
 
@@ -674,7 +680,7 @@ The final \(-1\) comes from the height-one vertical two-box strip of \((1,1)\). 
 
 ## References
 
-- [Grinberg–Reiner] Darij Grinberg and Victor Reiner, [*Hopf Algebras in Combinatorics*](https://www.cip.ifi.lmu.de/~grinberg/algebra/HopfComb.pdf), July 27, 2020, minor corrections September 6, 2026, Proposition 2.5.15, pp. 64–66, Corollary 2.5.17, Proposition 2.6.4 and Corollary 2.6.7. CC BY 4.0. Only the component explicitly credited in Lemma 1.2 is adapted from this work.
+- [Grinberg–Reiner] Darij Grinberg and Victor Reiner, [*Hopf Algebras in Combinatorics*](https://www.cip.ifi.lmu.de/~grinberg/algebra/HopfComb.pdf), July 27, 2020, minor corrections September 6, 2026, Proposition 2.5.15, pp. 64–66, Corollary 2.5.17, Proposition 2.6.4 and Corollary 2.6.7.
 - [Stembridge] John R. Stembridge, “A Concise Proof of the Littlewood–Richardson Rule,” *Electronic Journal of Combinatorics* 9 (2002), N5, theorem and skew-Schur corollary. [Journal article](https://www.combinatorics.org/ojs/index.php/eljc/article/view/v9i1n5).
 
 The next lesson uses Schur functions to describe the two commuting actions in Schur–Weyl duality.

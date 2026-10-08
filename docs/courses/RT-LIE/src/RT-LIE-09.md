@@ -4,7 +4,7 @@
 
 A Dynkin diagram records the angles and relative lengths of simple roots. Positive definiteness severely restricts its shape. We will first find every possible shape, then construct its roots, and finally compute its Weyl group order and Coxeter number. The exceptional systems will be concrete finite sets of vectors throughout.
 
-We use the definitions and proved results of [Root systems and their Weyl groups](RT-LIE-08.md): a root system is finite, reduced and crystallographic in a real Euclidean space; simple roots form a basis; every root is conjugate to a simple root; and the Weyl group acts simply transitively on chambers. Products act from right to left. All numbering below is the Bourbaki numbering specified by the displayed bases.
+We use the definitions and proved results of [Root systems and their Weyl groups](../RT-LIE-08.html#section-1): a root system is finite, reduced and crystallographic in a real Euclidean space; [simple roots form a basis](../RT-LIE-08.html#theorem-2-1); [every root is conjugate to a simple root](../RT-LIE-08.html#lemma-4-1); and [the Weyl group acts simply transitively on chambers](../RT-LIE-08.html#theorem-5-1). Products act from right to left. All numbering below is the Bourbaki numbering specified by the displayed bases.
 
 ## 1. Recovering roots from a diagram
 
@@ -124,7 +124,7 @@ To see the criterion directly, the second block becomes \(H_q-2p/(p+1)e_1e_1^t\)
 
 ## 3. Classical coordinate systems
 
-The vectors \(e_i\) are orthonormal. Section 8 of [Root systems and their Weyl groups](RT-LIE-08.md) already proves the axioms and bases for
+The vectors \(e_i\) are orthonormal. Section 8 of [Root systems and their Weyl groups](../RT-LIE-08.html#section-8) already proves the axioms and bases for
 \[
 \begin{aligned}
 A_n:&\quad \{e_i-e_j:i\ne j\}\subset\{x\in\mathbb R^{n+1}:\sum x_i=0\},
@@ -266,7 +266,7 @@ giving \(F_4\) with the arrow from vertex \(2\) to vertex \(3\).
 
 ### 4.3. G2 and completion of existence
 
-Use the already verified rank-two model of Section 6 of [Root systems and their Weyl groups](RT-LIE-08.md):
+Use the already verified rank-two model of Section 6 of [Root systems and their Weyl groups](../RT-LIE-08.html#section-6):
 \[
 \alpha_1=(1,0),\qquad \alpha_2=(-3/2,\sqrt3/2),
 \quad
@@ -421,7 +421,7 @@ Write \(\Phi_m(t)\) for the product of \(t-\zeta\) over primitive \(m\)-th roots
 
 The results, together with the preceding counts and orders, are:
 
-| Type | \(|\Phi|\) | \(|W|\) | \(h\) |
+| Type | \(\lvert\Phi\rvert\) | \(\lvert W\rvert\) | \(h\) |
 |---|---:|---:|---:|
 | \(A_n\) | \(n(n+1)\) | \((n+1)!\) | \(n+1\) |
 | \(B_n\) | \(2n^2\) | \(2^n n!\) | \(2n\) |
@@ -448,7 +448,7 @@ For \(A_n\), \(n\geq2\), the reversal of the chain gives a group of order two; \
 
 There are no further automorphisms. A tree automorphism preserves its branch point and arm lengths. The \(E_7,E_8\) arm lengths are all different, and in \(D_n\), \(n\geq5\), only the two one-edge arms agree. In the multiple-edged chains, any nontrivial chain automorphism would reverse the chain. For \(B_n,C_n\), \(n\geq3\), reversal moves the multiple edge; at rank two it reverses the arrow. For \(F_4,G_2\), reversal also reverses the arrow. These are forbidden. A chain of single edges has just its reversal and identity.
 
-The coroot system has base \(\alpha_i^\vee\) and Cartan matrix \(A^t\), by the duality proof in the preceding lesson. Thus duality reverses arrows. In the coordinates (3.1), \(B_n^\vee=C_n\) and \(C_n^\vee=B_n\). At rank two these are isomorphic; at rank at least three their oriented diagrams differ. The simply laced systems are self-dual after uniform scaling, and classification identifies the duals of \(F_4,G_2\) with their respective types after reversing the numbering.
+The coroot system has base \(\alpha_i^\vee\) and Cartan matrix \(A^t\), by the [duality proof](../RT-LIE-08.html#section-1) and [dual-base argument](../RT-LIE-08.html#section-3) in the preceding lesson. Thus duality reverses arrows. In the coordinates (3.1), \(B_n^\vee=C_n\) and \(C_n^\vee=B_n\). At rank two these are isomorphic; at rank at least three their oriented diagrams differ. The simply laced systems are self-dual after uniform scaling, and classification identifies the duals of \(F_4,G_2\) with their respective types after reversing the numbering.
 
 One elementary calculation explains a folding arrow. In \(D_4\), the three outer simple roots \(\alpha_1,\alpha_3,\alpha_4\) are pairwise orthogonal, have squared norm \(2\), and each pairs with \(\alpha_2\) by \(-1\). Set
 \[
@@ -511,7 +511,7 @@ Killing's *Die Zusammensetzung der stetigen endlichen Transformationsgruppen, Zw
 
 For comparison and further reading:
 
-- J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, Appendix C.g, C.52–C.57, pp.625–630 in the corrected 2021 text: Cartan matrices, rank two and the classification statement. This is the [author's freely accessible corrected text](https://www.jmilne.org/math/Books/AG.pdf) of the 2017 book.
+- J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, Appendix C.g, C.52–C.57, pp.625–630 in the corrected 2021 text, published 2022: Cartan matrices, rank two and the classification statement. This is the [author's freely accessible corrected text](https://www.jmilne.org/math/Books/iAG2022.pdf) of the 2017 book.
 - M. W. Davis, *The Geometry and Topology of Coxeter Groups* (2008), Appendix C, pp.433–438, and Appendix D, pp.439–448: positive-definite Coxeter forms and geometric representations, also in broader settings. [Author's first-edition PDF](https://people.math.osu.edu/davis.12/davisbook.pdf).
 - A. Kirillov Jr., *Introduction to Lie Groups and Lie Algebras*, §§7.8 and 7.10, pp.119–123 and 125–127: diagrams and the simply laced classification. The [author's notes](https://www.math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf) use the transpose Cartan convention.
 

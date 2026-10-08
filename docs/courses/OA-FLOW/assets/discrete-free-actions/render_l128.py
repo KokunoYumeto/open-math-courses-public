@@ -38,7 +38,7 @@ panels=[
 for x,y,w,h,title,lines in panels:
  ax.add_patch(plt.Rectangle((x,y),w,h,facecolor='#eef4f9',edgecolor='#284b63',lw=1.4))
  ax.text(x+.018,y+h-.025,title,weight='bold',fontsize=16,va='top')
- for i,t in enumerate(lines):ax.text(x+.018,y+h-.095-i*.055,t,fontsize=12.1,va='top')
+ for i,t in enumerate(lines):ax.text(x+.018,y+h-.095-i*.060,t,fontsize=12.1,va='top')
 fig.text(.05,.035,'FC0–FC4, FC6 and WK0. The 2 × 2 flip model is faithfully isomorphic to the four-dimensional regular representation.',fontsize=10.5)
 finish(fig,'fourier-inner-carrier')
 fig=plt.figure(figsize=(13,8));fig.text(.045,.945,'Orbit coordinates: six points, two inequivalent representations',fontsize=19,weight='bold')

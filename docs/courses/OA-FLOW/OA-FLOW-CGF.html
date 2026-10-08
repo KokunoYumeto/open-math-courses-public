@@ -1,0 +1,741 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The global carrier and integrable weights · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-DS.html">Previous lesson</a><a href="OA-FLOW-TCC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CGF.md">Lesson source</a></nav><h1 id="OA-FLOW.CGF.SETTING">The global carrier and integrable weights</h1>
+<p>A weight has both an inner-equivalence class and a modular action. The global carrier records the first as a projection in an abelian von Neumann algebra. We construct that algebra, identify exactly which of its sigma-finite projections have continuous scaling orbits, and relate that continuity to integrability of the weight's support modular action.</p>
+<p><em>Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications retain their own terms.</em></p>
+<p><a id="cgf-setting"></a></p>
+<h2 id="scope-and-the-three-comparisons">Scope and the three comparisons</h2>
+<p>Throughout, <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> has separable predual and properly infinite identity. It need not be a factor. Every weight is normal and semifinite; its modular action and centralizer are taken in its faithful support corner. The zero weight is included, with zero support and zero carrier. Equalities of weights hold on the entire positive cone, including infinite values.</p>
+<p>Three comparisons drive the proof: weight comparison becomes projection comparison in a balanced centralizer; an integrable action supplies full-support intertwiners with its regular amplification; and pointwise scalar absorption gives dominant uniqueness on the original central support. The last input is the proved <a href="OA-FLOW-DS.html#ds-6">pointwise dominant-weight theorem</a>. The continuous-field comparison in <a href="OA-FLOW-DWC.html#dwc-2">DWC</a> also remains available where an actual continuous field is supplied.</p>
+<p>The global carrier will have a nonseparable predual even though <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is separable. Continuity is therefore asserted only on its identified continuous sector. The finite-projection carrier for bounded normal functionals is a different construction.</p>
+<p><span id="OA-FLOW.CGF.1"></span><a id="cgf-1"></a></p>
+<h2 id="1-the-presentation-and-the-precise-conclusion">1. The presentation and the precise conclusion</h2>
+<p>Choose a stabilized trace-scaling presentation
+<span class="math math-display" data-tex="\[
+ M=N\rtimes_\theta\mathbb R,\qquad
+ \tau\theta_s=e^{-s}\tau,\qquad
+ \Phi=\widehat\tau,\qquad N=M_\Phi,
+ \tag{CI1}
+\]">\[
+ M=N\rtimes_\theta\mathbb R,\qquad
+ \tau\theta_s=e^{-s}\tau,\qquad
+ \Phi=\widehat\tau,\qquad N=M_\Phi,
+ \tag{CI1}
+\]</span>
+where <span class="math" data-tex="\(N\)">\(N\)</span> is properly infinite and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful normal semifinite. The relations are <span class="math" data-tex="\(u_sxu_s^*=\theta_s(x)\)">\(u_sxu_s^*=\theta_s(x)\)</span> and
+<span class="math" data-tex="\(\sigma_t^\Phi(u_s)=e^{-ist}u_s\)">\(\sigma_t^\Phi(u_s)=e^{-ist}u_s\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \Phi\operatorname{Ad}(u_s)=e^{-s}\Phi
+ \quad\hbox{on }M_+.
+ \tag{CI2}
+\]">\[
+ \Phi\operatorname{Ad}(u_s)=e^{-s}\Phi
+ \quad\hbox{on }M_+.
+ \tag{CI2}
+\]</span>
+All Haar normalizations and infinite values are those of the actual dual weight.</p>
+<p>This presentation exists at the stated scope. Form <span class="math" data-tex="\(C=M\rtimes_{\sigma^\omega}\mathbb R\)">\(C=M\rtimes_{\sigma^\omega}\mathbb R\)</span> from a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, supplied by the <a href="OA-FLOW-DS.html#ds-2">separable-predual construction</a>. <a href="OA-FLOW-CORE.html#core-1">CORE Sections 1–4</a> construct its faithful normal semifinite trace and its scaling action. <a href="OA-FLOW-ND.html#nd-construction">ND's complete duality map and inverse</a> identify the second crossing with <span class="math" data-tex="\(M\bar\otimes B(L^2\mathbb R)\)">\(M\bar\otimes B(L^2\mathbb R)\)</span>. Amplify <span class="math" data-tex="\(C\)">\(C\)</span>, its trace and its action by <span class="math" data-tex="\(B(\ell^2)\)">\(B(\ell^2)\)</span>, <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span> and the identity. Its crossing is the corresponding amplification of the second crossing: in the regular model interchange the constant <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> factor and check coefficient fields and translations; the inverse interchange is normal and onto. The new coefficient algebra is properly infinite. A countable filling family in <span class="math" data-tex="\(M\)">\(M\)</span>, supplied by <a href="OA-FLOW-PC.html#pc-5">PC5</a>, gives the normal stable isomorphism
+<span class="math math-display" data-tex="\[
+ A_v:M\bar\otimes B(\ell^2)\longrightarrow M,\qquad
+ A_v((x_{ij}))=\mathop{\mathrm{s^*\!-\!lim}}_F
+                  \sum_{i,j\in F}v_i x_{ij}v_j^*.
+ \tag{CI3}
+\]">\[
+ A_v:M\bar\otimes B(\ell^2)\longrightarrow M,\qquad
+ A_v((x_{ij}))=\mathop{\mathrm{s^*\!-\!lim}}_F
+                  \sum_{i,j\in F}v_i x_{ij}v_j^*.
+ \tag{CI3}
+\]</span>
+Indeed <span class="math" data-tex="\((\xi_i)\mapsto\sum_i v_i\xi_i\)">\((\xi_i)\mapsto\sum_i v_i\xi_i\)</span> is unitary; it proves boundedness, the normal inverse <span class="math" data-tex="\(x\mapsto(v_i^*xv_j)\)">\(x\mapsto(v_i^*xv_j)\)</span>, and all multiplication identities. A bijection of countable orthonormal bases absorbs both scalar Hilbert factors. Separable predual is retained. To obtain a separable faithful representation, take a countable norm-dense family of positive normal functionals and sum their norm-normalized values with strictly positive summable coefficients; the resulting normal state is faithful. Its GNS space is separable: choose a countable weak-star dense subset of the unit ball of <span class="math" data-tex="\(M\)">\(M\)</span>; its GNS images are weakly total, since their pairings with <span class="math" data-tex="\(\Lambda(y)\)">\(\Lambda(y)\)</span> are the normal functionals <span class="math" data-tex="\(x\mapsto\omega(y^*x)\)">\(x\mapsto\omega(y^*x)\)</span>, and a linear subspace has the same weak and norm closure. The GNS representation is faithful and normal. Its real regular representation and countable amplification act on separable spaces; restriction of the trace-class predual makes their generated algebras have separable predual. <a href="OA-FLOW-DWC.html#dwc-4">DWC Section 4</a> then gives <span class="math" data-tex="\(N=M_\Phi\)">\(N=M_\Phi\)</span> and (CI2), on the whole positive cone.</p>
+<p>Write <span class="math" data-tex="\(W_\infty(M)\)">\(W_\infty(M)\)</span> for zero together with all normal semifinite weights whose support-corner centralizer is properly infinite. We construct an abelian carrier <span class="math" data-tex="\((\mathcal A,p_M,\Theta)\)">\((\mathcal A,p_M,\Theta)\)</span>, then prove
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ d=p_M(\Phi),\qquad
+ J:Z(N)\overset{\cong}{\longrightarrow}\mathcal A d,\qquad
+ J(z)=p_M(\Phi_z)\quad(z\text{ a projection}),\\
+ J\theta_s=\Theta_sJ,\qquad \Theta_s(d)=d .
+ \end{gathered}
+ \tag{CI4}
+\]">\[
+ \begin{gathered}
+ d=p_M(\Phi),\qquad
+ J:Z(N)\overset{\cong}{\longrightarrow}\mathcal A d,\qquad
+ J(z)=p_M(\Phi_z)\quad(z\text{ a projection}),\\
+ J\theta_s=\Theta_sJ,\qquad \Theta_s(d)=d .
+ \end{gathered}
+ \tag{CI4}
+\]</span>
+For every normal semifinite <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, let <span class="math" data-tex="\(\dot\psi=A_{v*}(\psi\otimes\operatorname{Tr})\)">\(\dot\psi=A_{v*}(\psi\otimes\operatorname{Tr})\)</span>. The supported integrability theorem proved in Section 8 is
+<span class="math math-display" data-tex="\[
+ \sigma^{\psi|_{s(\psi)Ms(\psi)}}\text{ integrable}
+ \quad\Longleftrightarrow\quad \psi\precsim\Phi.
+ \tag{CI5}
+\]">\[
+ \sigma^{\psi|_{s(\psi)Ms(\psi)}}\text{ integrable}
+ \quad\Longleftrightarrow\quad \psi\precsim\Phi.
+ \tag{CI5}
+\]</span>
+This is also equivalent to sigma-strong continuity of
+<span class="math" data-tex="\(s\mapsto\Theta_s(p_M(\dot\psi))\)">\(s\mapsto\Theta_s(p_M(\dot\psi))\)</span>. The automorphism modulus and naturality are proved in Section 9; continuity in automorphism-group topologies and the characteristic square are separate conclusions.</p>
+<p><span id="OA-FLOW.CGF.2"></span><a id="cgf-2"></a></p>
+<h2 id="2-supported-comparison-and-arbitrary-balanced-sums">2. Supported comparison and arbitrary balanced sums</h2>
+<p>The actual <a href="../OA-MOD/OA-MOD-WC.html#the-balanced-centralizer-records-every-comparison">OA-MOD supported comparison proof, WC.1–23</a> applies to arbitrary normal semifinite weights. Its conventions use a partial isometry <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span>:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \alpha\sim\beta
+ &amp;\iff \alpha(x)=\beta(wxw^*)\quad(x\ge0),\\
+ &amp;\phantom{\iff{}}w^*w=s(\alpha),\quad ww^*=s(\beta);\\
+ \alpha\precsim\beta
+ &amp;\iff \alpha\sim\beta_e,\quad e\in\operatorname{Proj}(M_\beta).
+ \end{aligned}
+ \tag{CI6}
+\]">\[
+ \begin{aligned}
+ \alpha\sim\beta
+ &amp;\iff \alpha(x)=\beta(wxw^*)\quad(x\ge0),\\
+ &amp;\phantom{\iff{}}w^*w=s(\alpha),\quad ww^*=s(\beta);\\
+ \alpha\precsim\beta
+ &amp;\iff \alpha\sim\beta_e,\quad e\in\operatorname{Proj}(M_\beta).
+ \end{aligned}
+ \tag{CI6}
+\]</span>
+Both supports belong to their own faithful reduced algebras. Equivalence transports centralizers; cuts have centralizer <span class="math" data-tex="\(eM_\beta e\)">\(eM_\beta e\)</span>. Reflexivity is immediate; composing the corner isomorphisms and their implementing partial isometries proves transitivity. In a balanced support centralizer, the two supported diagonal projections are equivalent or subequivalent exactly when the weights are. In particular
+<span class="math math-display" data-tex="\[
+ \Phi_e\precsim\Phi_f
+       \iff e\precsim f\text{ in }N,\qquad e,f\in\operatorname{Proj}(N).
+ \tag{CI7}
+\]">\[
+ \Phi_e\precsim\Phi_f
+       \iff e\precsim f\text{ in }N,\qquad e,f\in\operatorname{Proj}(N).
+ \tag{CI7}
+\]</span>
+The weight-to-projection implication uses WC's supported transport criterion to put the actual implementer in <span class="math" data-tex="\(N\)">\(N\)</span>. Comparison in the larger algebra <span class="math" data-tex="\(M\)">\(M\)</span> would not suffice.</p>
+<p>Here is the arbitrary balanced-sum argument needed beyond a finite matrix theorem. Given normal semifinite <span class="math" data-tex="\(\phi_i\)">\(\phi_i\)</span> and arbitrary set <span class="math" data-tex="\(I\)">\(I\)</span>, set
+<span class="math math-display" data-tex="\[
+ \Lambda(X)=\sum_{i\in I}\phi_i(X_{ii}),\qquad
+ S=\sum_i s(\phi_i)\otimes e_{ii},\qquad X\ge0.
+ \tag{CI8}
+\]">\[
+ \Lambda(X)=\sum_{i\in I}\phi_i(X_{ii}),\qquad
+ S=\sum_i s(\phi_i)\otimes e_{ii},\qquad X\ge0.
+ \tag{CI8}
+\]</span>
+Every sum is the supremum of finite subsums. Finite unions prove additivity, and interchange of the finite-subset and increasing-net suprema proves normality. The support is <span class="math" data-tex="\(S\)">\(S\)</span>: a zero positive value forces each <span class="math" data-tex="\(s(\phi_i)X_{ii}s(\phi_i)\)">\(s(\phi_i)X_{ii}s(\phi_i)\)</span> to vanish; positivity gives <span class="math" data-tex="\(X^{1/2}(s(\phi_i)H\otimes e_i)=0\)">\(X^{1/2}(s(\phi_i)H\otimes e_i)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Conversely <span class="math" data-tex="\(\Lambda(X)=\Lambda(SXS)\)">\(\Lambda(X)=\Lambda(SXS)\)</span>, by the scalar support theorem. The reduced weight is faithful.</p>
+<p>For each <span class="math" data-tex="\(i\)">\(i\)</span>, choose finite positive contractions for <span class="math" data-tex="\(\phi_i\)">\(\phi_i\)</span> on its support increasing to <span class="math" data-tex="\(s(\phi_i)\)">\(s(\phi_i)\)</span>. Their finite diagonal sums form an increasing net of finite contractions tending strongly to <span class="math" data-tex="\(S\)">\(S\)</span>. Adding <span class="math" data-tex="\(1-S\)">\(1-S\)</span> gives finite contractions tending to one on the full algebra. The finite-contraction criterion, used with precisely this net in <a href="OA-FLOW-TW.html#tw-2">TW2</a>, proves semifiniteness.</p>
+<p>Each diagonal support <span class="math" data-tex="\(d_i=s(\phi_i)\otimes e_{ii}\)">\(d_i=s(\phi_i)\otimes e_{ii}\)</span> is modular-fixed: conjugation by the selfadjoint unitary <span class="math" data-tex="\(S-2d_i\)">\(S-2d_i\)</span> leaves every diagonal value in (CI8) unchanged, so <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0's whole-cone criterion</a> puts that unitary, and hence <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, in the reduced centralizer. The same holds for every finite sum of these projections. Its restricted weight is the finite balanced weight, with the exact same positive values; <a href="OA-FLOW-CZ.html#oa-flow.cz.5">CZ5's corner theorem</a> identifies its modular group with the restricted modular group. Thus the finite supported comparison theorem applies to every pair of diagonal coordinates in the arbitrary sum. No arbitrary-index modular formula or common intersection of unrelated finite ideals is assumed.</p>
+<p>The same reasoning applies to a weight <span class="math" data-tex="\(\sum_i\eta_i(e_i x e_i)\)">\(\sum_i\eta_i(e_i x e_i)\)</span> on any algebra, with orthogonal supports <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. It proves normal semifiniteness, support <span class="math" data-tex="\(\sum_i e_i\)">\(\sum_i e_i\)</span>, fixedness of every <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, and the correct reduced modular action. In particular such an orthogonal sum has properly infinite centralizer if every nonzero diagonal centralizer is properly infinite: sum two orthogonal isometries from each diagonal corner strongly; their initial projections sum to the whole support and their final projections remain orthogonal.</p>
+<p><span id="OA-FLOW.CGF.3"></span><a id="cgf-3"></a></p>
+<h2 id="3-the-universal-carrier-including-surjectivity-and-boolean-reconstruction">3. The universal carrier, including surjectivity and Boolean reconstruction</h2>
+<p>Take <span class="math" data-tex="\(I=W_\infty(M)\)">\(I=W_\infty(M)\)</span>, form (CI8), and put
+<span class="math math-display" data-tex="\[
+ Q=(S(M\bar\otimes B(\ell^2I))S)_\Lambda,\qquad
+ \mathcal A=Z(Q),\qquad p_M(\phi)=z_Q(d_\phi).
+ \tag{CI9}
+\]">\[
+ Q=(S(M\bar\otimes B(\ell^2I))S)_\Lambda,\qquad
+ \mathcal A=Z(Q),\qquad p_M(\phi)=z_Q(d_\phi).
+ \tag{CI9}
+\]</span>
+Zero has zero diagonal support. For nonzero <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, <span class="math" data-tex="\(d_\phi Qd_\phi=M_\phi\)">\(d_\phi Qd_\phi=M_\phi\)</span> is properly infinite and countably decomposable. A faithful normal state of <span class="math" data-tex="\(M\)">\(M\)</span> restricts faithfully to the support and centralizer. The central projection <span class="math" data-tex="\(z_Q(d_\phi)\)">\(z_Q(d_\phi)\)</span> is sigma-finite in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>: compression is an injective normal map from <span class="math" data-tex="\(\mathcal A z_Q(d_\phi)\)">\(\mathcal A z_Q(d_\phi)\)</span> into <span class="math" data-tex="\(d_\phi Qd_\phi\)">\(d_\phi Qd_\phi\)</span>, by <a href="OA-FLOW-PC.html#pc-4">PC4</a>; composing with that corner state supplies a faithful normal state. It is not necessary that <span class="math" data-tex="\(z_Q(d_\phi)\)">\(z_Q(d_\phi)\)</span> be countably decomposable in <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>The pairwise balanced comparison above and <a href="OA-FLOW-PC.html#pc-7">PC7's source-countable comparison</a> give
+<span class="math math-display" data-tex="\[
+ p_M(\phi)\le p_M(\psi)\iff\phi\precsim\psi,
+ \qquad p_M(\phi)=p_M(\psi)\iff\phi\sim\psi .
+ \tag{CI10}
+\]">\[
+ p_M(\phi)\le p_M(\psi)\iff\phi\precsim\psi,
+ \qquad p_M(\phi)=p_M(\psi)\iff\phi\sim\psi .
+ \tag{CI10}
+\]</span>
+For the second assertion use projection Cantor–Bernstein in the common balanced centralizer. These assertions include zero.</p>
+<p>To prove surjectivity, let <span class="math" data-tex="\(a\in\operatorname{Proj}_\sigma(\mathcal A)\)">\(a\in\operatorname{Proj}_\sigma(\mathcal A)\)</span>. Take a maximal orthogonal family of nonzero carrier projections <span class="math" data-tex="\(p_M(\phi_i)\le a\)">\(p_M(\phi_i)\le a\)</span>. It is countable, since a faithful normal state on <span class="math" data-tex="\(\mathcal A a\)">\(\mathcal A a\)</span> is strictly positive on each family member. Put <span class="math" data-tex="\(p_i=s(\phi_i)\)">\(p_i=s(\phi_i)\)</span>, <span class="math" data-tex="\(z_i=z_M(p_i)\)">\(z_i=z_M(p_i)\)</span>. Proper infiniteness of <span class="math" data-tex="\(M_{\phi_i}\)">\(M_{\phi_i}\)</span> implies proper infiniteness of <span class="math" data-tex="\(p_i\)">\(p_i\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. PC7 gives <span class="math" data-tex="\(p_i\sim z_i\)">\(p_i\sim z_i\)</span>: <span class="math" data-tex="\(z_i\)">\(z_i\)</span> is countably decomposable, has the same central support, and <span class="math" data-tex="\(p_i\)">\(p_i\)</span> is a properly infinite target.</p>
+<p>Choose a countable orthogonal filling family of isometries in <span class="math" data-tex="\(M\)">\(M\)</span>, and relocate <span class="math" data-tex="\(p_i\)">\(p_i\)</span> to <span class="math" data-tex="\(e_i=v_i z_i v_i^*\)">\(e_i=v_i z_i v_i^*\)</span>, using partial isometries with initial <span class="math" data-tex="\(e_i\)">\(e_i\)</span> and final <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. The transported weights <span class="math" data-tex="\(\psi_i\sim\phi_i\)">\(\psi_i\sim\phi_i\)</span> have orthogonal supports. Their sum <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has infinite multiplicity by Section 2. Inside the <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-diagonal, the fixed projections corresponding to <span class="math" data-tex="\(e_i\)">\(e_i\)</span> sum strongly to <span class="math" data-tex="\(d_\psi\)">\(d_\psi\)</span>; each is balanced-equivalent to <span class="math" data-tex="\(d_{\psi_i}\)">\(d_{\psi_i}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ p_M(\psi)=\bigvee_i p_M(\phi_i)\le a.
+ \tag{CI11}
+\]">\[
+ p_M(\psi)=\bigvee_i p_M(\phi_i)\le a.
+ \tag{CI11}
+\]</span>
+If the residual <span class="math" data-tex="\(r=a-p_M(\psi)\)">\(r=a-p_M(\psi)\)</span> is nonzero, some coordinate satisfies <span class="math" data-tex="\(b=r p_M(\phi)\ne0\)">\(b=r p_M(\phi)\ne0\)</span>, because <span class="math" data-tex="\(\bigvee_\phi z_Q(d_\phi)=1\)">\(\bigvee_\phi z_Q(d_\phi)=1\)</span>. The projection <span class="math" data-tex="\(bd_\phi\)">\(bd_\phi\)</span> corresponds to a nonzero central projection <span class="math" data-tex="\(h\in Z(M_\phi)\)">\(h\in Z(M_\phi)\)</span>. The weight <span class="math" data-tex="\(\phi_h\)">\(\phi_h\)</span> has centralizer <span class="math" data-tex="\(hM_\phi h\)">\(hM_\phi h\)</span>, still properly infinite. Its diagonal is equivalent to <span class="math" data-tex="\(bd_\phi\)">\(bd_\phi\)</span>, so its carrier is exactly <span class="math" data-tex="\(b\)">\(b\)</span>. This contradicts maximality. Thus <span class="math" data-tex="\(p_M\)">\(p_M\)</span> is onto. For <span class="math" data-tex="\(a=0\)">\(a=0\)</span> choose the empty family.</p>
+<p>Here is the Boolean reconstruction proof, rather than an unnamed reconstruction input. Let <span class="math" data-tex="\(f:\operatorname{Proj}_\sigma(A)\to\operatorname{Proj}_\sigma(B)\)">\(f:\operatorname{Proj}_\sigma(A)\to\operatorname{Proj}_\sigma(B)\)</span> be an order isomorphism of sigma-finite projections of two abelian von Neumann algebras. Every projection is the join of its sigma-finite subprojections: a nonzero remainder is detected by a normal positive functional, whose support supplies such a subprojection. Define
+<span class="math math-display" data-tex="\[
+ F(e)=\bigvee_{\substack{p\le e\\p\ \mathrm{sigma\!-\!finite}}}f(p).
+ \tag{CI12}
+\]">\[
+ F(e)=\bigvee_{\substack{p\le e\\p\ \mathrm{sigma\!-\!finite}}}f(p).
+ \tag{CI12}
+\]</span>
+A countable join of sigma-finite projections is sigma-finite: sum faithful normal functionals on their corners with positive summable normalized coefficients; the support of the sum is their join. Within a sigma-finite upper bound, every subprojection and every join are sigma-finite. Thus <span class="math" data-tex="\(f\)">\(f\)</span> preserves meets and all joins having such an upper bound. Distributivity of multiplication over increasing projection joins gives, for every sigma-finite <span class="math" data-tex="\(q\)">\(q\)</span>,
+<span class="math math-display" data-tex="\[
+ F(e)\,f(q)=f(eq).
+ \tag{CI13}
+\]">\[
+ F(e)\,f(q)=f(eq).
+ \tag{CI13}
+\]</span>
+Indeed the left side is the join of <span class="math" data-tex="\(f(pq)\)">\(f(pq)\)</span>, all bounded by <span class="math" data-tex="\(f(eq)\)">\(f(eq)\)</span>, and the term <span class="math" data-tex="\(p=eq\)">\(p=eq\)</span> attains that bound. Also <span class="math" data-tex="\(F(1)=1\)">\(F(1)=1\)</span>: a nonzero complement would contain a nonzero sigma-finite <span class="math" data-tex="\(f(q)\)">\(f(q)\)</span>, contrary to its definition. Construct <span class="math" data-tex="\(G\)">\(G\)</span> from <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> in the same way. Applying (CI13) twice and testing against every sigma-finite <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(GF(e)=e\)">\(GF(e)=e\)</span> and <span class="math" data-tex="\(FG(b)=b\)">\(FG(b)=b\)</span>. Hence <span class="math" data-tex="\(F\)">\(F\)</span> is an order isomorphism of complete projection lattices; it preserves complements and arbitrary joins.</p>
+<p>Extend it to finite linear combinations of orthogonal projections. Preservation of their products, adjoints and nonzero supports makes this extension an isometric star homomorphism. Spectral step approximations are norm dense in the abelian algebra, so it extends uniquely to a star isomorphism. It is normal: the star isomorphism and its inverse preserve positivity, so they form an order isomorphism of the positive cones. Upper bounds pull back to upper bounds; consequently bounded increasing suprema are preserved in both directions. This proves uniqueness of the carrier from (CI10).</p>
+<p>Scaling leaves supports and modular groups unchanged and preserves (CI6). Therefore Boolean reconstruction defines normal automorphisms
+<span class="math math-display" data-tex="\[
+ \Theta_s(p_M(\phi))=p_M(e^{-s}\phi),\qquad
+ \Theta_s\Theta_t=\Theta_{s+t}.
+ \tag{CI14}
+\]">\[
+ \Theta_s(p_M(\phi))=p_M(e^{-s}\phi),\qquad
+ \Theta_s\Theta_t=\Theta_{s+t}.
+ \tag{CI14}
+\]</span>
+No continuity of this action on all of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is inferred.</p>
+<p>For <span class="math" data-tex="\(z\in\operatorname{Proj}(Z(M))\)">\(z\in\operatorname{Proj}(Z(M))\)</span>, the original center has its exact embedding
+<span class="math math-display" data-tex="\[
+ \iota(z)=S(z\otimes1)\in\mathcal A,\qquad
+ p_M(\phi_z)=\iota(z)p_M(\phi),\qquad
+ p_M(\phi)\le\iota(z)\iff s(\phi)\le z .
+ \tag{CI15}
+\]">\[
+ \iota(z)=S(z\otimes1)\in\mathcal A,\qquad
+ p_M(\phi_z)=\iota(z)p_M(\phi),\qquad
+ p_M(\phi)\le\iota(z)\iff s(\phi)\le z .
+ \tag{CI15}
+\]</span>
+The map <span class="math" data-tex="\(z\mapsto S(z\otimes1)\)">\(z\mapsto S(z\otimes1)\)</span> is a normal unital star homomorphism on the whole center. The displayed projection identities follow by cutting <span class="math" data-tex="\(d_\phi\)">\(d_\phi\)</span> by the central projection <span class="math" data-tex="\(S(z\otimes1)\)">\(S(z\otimes1)\)</span>. Injectivity follows from the faithful <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>-coordinate. Extension by zero identifies the carrier of <span class="math" data-tex="\(zM\)">\(zM\)</span> with <span class="math" data-tex="\(\iota(z)\mathcal A\)">\(\iota(z)\mathcal A\)</span>; (CI15) and surjectivity prove both directions. The embedding intertwines scaling, and every <span class="math" data-tex="\(\iota(z)\)">\(\iota(z)\)</span> is scaling-fixed.</p>
+<p><span id="OA-FLOW.CGF.4"></span><a id="cgf-4"></a></p>
+<h2 id="4-why-the-global-carrier-has-a-nonseparable-predual">4. Why the global carrier has a nonseparable predual</h2>
+<h3 id="choose-a-weight-with-separable-gns-space-and-finite-centralizer-cuts">Choose a weight with separable GNS space and finite centralizer cuts</h3>
+<p>Choose a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. The <a href="OA-FLOW-DS.html#ds-2">Polish representation construction</a> proves that its GNS space <span class="math" data-tex="\(H_\omega\)">\(H_\omega\)</span> is separable. Put
+<span class="math math-display" data-tex="\[
+ B=M\bar\otimes B(\ell^2),\qquad
+ \Omega=\omega\bar\otimes\operatorname{Tr}.
+ \tag{NS1}
+\]">\[
+ B=M\bar\otimes B(\ell^2),\qquad
+ \Omega=\omega\bar\otimes\operatorname{Tr}.
+ \tag{NS1}
+\]</span>
+The <a href="OA-FLOW-TW.html#tw-2">full tensor weight</a> is faithful normal semifinite. Its <a href="OA-FLOW-TW.html#tw-4">onto GNS model</a> is
+<span class="math math-display" data-tex="\[
+ H_\Omega=H_\omega\otimes HS(\ell^2),
+ \tag{NS2}
+\]">\[
+ H_\Omega=H_\omega\otimes HS(\ell^2),
+ \tag{NS2}
+\]</span>
+which is separable: countable dense subsets in the two factors give a countable dense rational linear span of simple tensors. The matrix units are a countable orthonormal basis of the Hilbert–Schmidt factor.</p>
+<p>The <a href="OA-FLOW-TW.html#tw-5">exact modular tensor formula</a> gives
+<span class="math" data-tex="\(B_\Omega=M_\omega\bar\otimes B(\ell^2)\)">\(B_\Omega=M_\omega\bar\otimes B(\ell^2)\)</span>: a fixed bounded array has each matrix entry in <span class="math" data-tex="\(M_\omega\)">\(M_\omega\)</span>, and its finite-coordinate compressions converge strongly-star. This centralizer is properly infinite because it contains <span class="math" data-tex="\(1\otimes B(\ell^2)\)">\(1\otimes B(\ell^2)\)</span> unitally. With <span class="math" data-tex="\(p_n\)">\(p_n\)</span> the first <span class="math" data-tex="\(n\)">\(n\)</span>-coordinate projection,
+<span class="math math-display" data-tex="\[
+ e_n=1\otimes p_n\in B_\Omega,\qquad
+ e_n\uparrow1,\qquad \Omega(e_n)=n.
+ \tag{NS3}
+\]">\[
+ e_n=1\otimes p_n\in B_\Omega,\qquad
+ e_n\uparrow1,\qquad \Omega(e_n)=n.
+ \tag{NS3}
+\]</span>
+The exact finite values use <span class="math" data-tex="\(\omega(1)=1\)">\(\omega(1)=1\)</span> and the rank-one normalization of <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span>.</p>
+<p>The <a href="OA-FLOW-DS.html#ds-7">normal stable matrix isomorphism</a> <span class="math" data-tex="\(F:B\to M\)">\(F:B\to M\)</span> transports <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> to
+<span class="math" data-tex="\(\rho=\Omega\circ F^{-1}\)">\(\rho=\Omega\circ F^{-1}\)</span>. The formula
+<span class="math" data-tex="\(\Lambda_\rho(F(x))\mapsto\Lambda_\Omega(x)\)">\(\Lambda_\rho(F(x))\mapsto\Lambda_\Omega(x)\)</span> is an onto GNS unitary: its norm identity follows from the weight equality and its range contains the dense original GNS range. Modular covariance transports <span class="math" data-tex="\(B_\Omega\)">\(B_\Omega\)</span> and the projections <span class="math" data-tex="\(e_n\)">\(e_n\)</span> to <span class="math" data-tex="\(M_\rho\)">\(M_\rho\)</span> and <span class="math" data-tex="\(f_n=F(e_n)\)">\(f_n=F(e_n)\)</span>. Thus <span class="math" data-tex="\(\rho\in W_\infty(M)\)">\(\rho\in W_\infty(M)\)</span>, <span class="math" data-tex="\(H_\rho\)">\(H_\rho\)</span> is separable, and
+<span class="math math-display" data-tex="\[
+ f_n\in M_\rho,\qquad f_n\uparrow1,\qquad \rho(f_n)=n.
+ \tag{NS4}
+\]">\[
+ f_n\in M_\rho,\qquad f_n\uparrow1,\qquad \rho(f_n)=n.
+ \tag{NS4}
+\]</span>
+These finite cuts, rather than a semifiniteness assertion about an arbitrary centralizer, are all we need.</p>
+<h3 id="there-are-only-countably-many-modular-eigenvalues">There are only countably many modular eigenvalues</h3>
+<p>Define
+<span class="math math-display" data-tex="\[
+ E_\rho=\{a&gt;0:\exists\,x\ne0,\ 
+             \sigma_t^\rho(x)=a^{it}x\text{ for every }t\in\mathbb R\}.
+ \tag{NS5}
+\]">\[
+ E_\rho=\{a&gt;0:\exists\,x\ne0,\ 
+             \sigma_t^\rho(x)=a^{it}x\text{ for every }t\in\mathbb R\}.
+ \tag{NS5}
+\]</span>
+For <span class="math" data-tex="\(a\in E_\rho\)">\(a\in E_\rho\)</span>, choose such an <span class="math" data-tex="\(x\)">\(x\)</span>. Since <span class="math" data-tex="\(xf_n\to x\)">\(xf_n\to x\)</span> strongly, some <span class="math" data-tex="\(xf_n\ne0\)">\(xf_n\ne0\)</span>. It remains an eigenoperator and
+<span class="math math-display" data-tex="\[
+ \rho((xf_n)^*xf_n)\le\|x\|^2\rho(f_n)&lt;\infty.
+ \tag{NS6}
+\]">\[
+ \rho((xf_n)^*xf_n)\le\|x\|^2\rho(f_n)&lt;\infty.
+ \tag{NS6}
+\]</span>
+Faithfulness makes <span class="math" data-tex="\(\Lambda_\rho(xf_n)\ne0\)">\(\Lambda_\rho(xf_n)\ne0\)</span>. The complete GNS implementation gives
+<span class="math math-display" data-tex="\[
+ \Delta_\rho^{it}\Lambda_\rho(xf_n)
+       =a^{it}\Lambda_\rho(xf_n).
+ \tag{NS7}
+\]">\[
+ \Delta_\rho^{it}\Lambda_\rho(xf_n)
+       =a^{it}\Lambda_\rho(xf_n).
+ \tag{NS7}
+\]</span>
+This is the transported identity <a href="OA-FLOW-TW.html#tw-5">TW.5.r</a>, valid on the entire finite ideal.</p>
+<p>Vectors belonging to distinct <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are orthogonal. Unitarity of <span class="math" data-tex="\(\Delta_\rho^{it}\)">\(\Delta_\rho^{it}\)</span> makes their inner product equal to <span class="math" data-tex="\(a^{it}b^{-it}\)">\(a^{it}b^{-it}\)</span> times itself; some real <span class="math" data-tex="\(t\)">\(t\)</span> gives a phase different from one when <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>. Normalize one nonzero vector for each <span class="math" data-tex="\(a\)">\(a\)</span>. A separable Hilbert space has only countably many orthonormal vectors: the radius <span class="math" data-tex="\(1/3\)">\(1/3\)</span> balls around these vectors are pairwise disjoint, and a fixed countable dense subset must meet every ball. Therefore <span class="math" data-tex="\(E_\rho\)">\(E_\rho\)</span> is countable.</p>
+<p>Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be the multiplicative subgroup generated by <span class="math" data-tex="\(E_\rho\)">\(E_\rho\)</span>. It is countable, being a union over finite words in a countable alphabet and their inverses. Choose one representative from each coset of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> in <span class="math" data-tex="\(\mathbb R_+^*\)">\(\mathbb R_+^*\)</span>, and call the set <span class="math" data-tex="\(R\)">\(R\)</span>. It is uncountable: otherwise the countable union <span class="math" data-tex="\(R\Gamma\)">\(R\Gamma\)</span> would be countable. Only uncountability is needed.</p>
+<h3 id="distinct-scalar-multiples-have-orthogonal-carriers">Distinct scalar multiples have orthogonal carriers</h3>
+<p>For <span class="math" data-tex="\(a,b\in R\)">\(a,b\in R\)</span>, look at the two coordinates <span class="math" data-tex="\(a\rho,b\rho\)">\(a\rho,b\rho\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>. By the finite balanced-corner identity, an off-diagonal element <span class="math" data-tex="\(x\)">\(x\)</span> is fixed precisely when
+<span class="math math-display" data-tex="\[
+ a^{it}\sigma_t^\rho(x)b^{-it}=x
+       \quad(t\in\mathbb R),
+\quad\text{equivalently}\quad
+ \sigma_t^\rho(x)=(b/a)^{it}x.
+ \tag{NS8}
+\]">\[
+ a^{it}\sigma_t^\rho(x)b^{-it}=x
+       \quad(t\in\mathbb R),
+\quad\text{equivalently}\quad
+ \sigma_t^\rho(x)=(b/a)^{it}x.
+ \tag{NS8}
+\]</span>
+Indeed the scalar derivative is <span class="math" data-tex="\([D(a\rho):D\rho]_t=a^{it}1\)">\([D(a\rho):D\rho]_t=a^{it}1\)</span>; insert the two scalar derivatives in the full off-diagonal modular formula
+<a href="../OA-MOD/OA-MOD-WC.html#the-balanced-centralizer-records-every-comparison">WC.14</a>.
+That formula applies to any bounded off-diagonal coefficient by the displayed diagonal spatial implementation. The universal sum restricts to exactly this finite balanced weight, because its two diagonal projections are modular-fixed.</p>
+<p>If <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, then <span class="math" data-tex="\(b/a\notin\Gamma\)">\(b/a\notin\Gamma\)</span>, and hence <span class="math" data-tex="\(b/a\notin E_\rho\)">\(b/a\notin E_\rho\)</span>. Equation (NS8) forces <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ d_{a\rho}Qd_{b\rho}=0.
+ \tag{NS9}
+\]">\[
+ d_{a\rho}Qd_{b\rho}=0.
+ \tag{NS9}
+\]</span>
+For any projections <span class="math" data-tex="\(e,f\)">\(e,f\)</span> in a von Neumann algebra, <span class="math" data-tex="\(eQf=0\)">\(eQf=0\)</span> is equivalent to <span class="math" data-tex="\(z_Q(e)z_Q(f)=0\)">\(z_Q(e)z_Q(f)=0\)</span>. For the nontrivial direction, <span class="math" data-tex="\(euf=0\)">\(euf=0\)</span> for every unitary <span class="math" data-tex="\(u\)">\(u\)</span>. Thus <span class="math" data-tex="\(e\)">\(e\)</span> annihilates the join of <span class="math" data-tex="\(ufu^*\)">\(ufu^*\)</span>, which is <span class="math" data-tex="\(z_Q(f)\)">\(z_Q(f)\)</span> by <a href="OA-FLOW-PC.html#oa-flow.pc.2">the central-support construction</a>. Since <span class="math" data-tex="\(z_Q(f)\)">\(z_Q(f)\)</span> is central, it then annihilates <span class="math" data-tex="\(z_Q(e)\)">\(z_Q(e)\)</span>. The converse follows by inserting the two central supports around <span class="math" data-tex="\(eQf\)">\(eQf\)</span>.</p>
+<p>We have proved
+<span class="math math-display" data-tex="\[
+ p_M(a\rho)p_M(b\rho)=0\quad(a\ne b,\ a,b\in R).
+ \tag{NS10}
+\]">\[
+ p_M(a\rho)p_M(b\rho)=0\quad(a\ne b,\ a,b\in R).
+ \tag{NS10}
+\]</span>
+Each projection is nonzero, since <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is faithful and its diagonal projection is nonzero.</p>
+<p>Finally choose a normal positive functional <span class="math" data-tex="\(\nu_a\)">\(\nu_a\)</span> on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, supported under <span class="math" data-tex="\(p_M(a\rho)\)">\(p_M(a\rho)\)</span>, and normalized by <span class="math" data-tex="\(\nu_a(1)=1\)">\(\nu_a(1)=1\)</span>. Such a functional is obtained by choosing a nonzero vector in the projection's range in a faithful normal representation. For <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\nu_a-\nu_b\|
+ \ge |(\nu_a-\nu_b)(p_M(a\rho))|=1.
+ \tag{NS11}
+\]">\[
+ \|\nu_a-\nu_b\|
+ \ge |(\nu_a-\nu_b)(p_M(a\rho))|=1.
+ \tag{NS11}
+\]</span>
+A countable dense subset cannot meet all the disjoint radius <span class="math" data-tex="\(1/3\)">\(1/3\)</span> balls around these functionals. Hence <span class="math" data-tex="\(\mathcal A_*\)">\(\mathcal A_*\)</span> is nonseparable. This proves nonseparability from the carrier's actual central projections, not from the size of an auxiliary Hilbert space.</p>
+<p><span id="OA-FLOW.CGF.5"></span><a id="cgf-5"></a></p>
+<h2 id="5-the-centralizer-center-and-the-continuous-projection-sector">5. The centralizer center and the continuous projection sector</h2>
+<p>For <span class="math" data-tex="\(z\in\operatorname{Proj}(Z(N))\)">\(z\in\operatorname{Proj}(Z(N))\)</span>, set <span class="math" data-tex="\(J(z)=p_M(\Phi_z)\)">\(J(z)=p_M(\Phi_z)\)</span> and <span class="math" data-tex="\(d=p_M(\Phi)\)">\(d=p_M(\Phi)\)</span>. Nonzero central summands of properly infinite <span class="math" data-tex="\(N\)">\(N\)</span> are properly infinite, so these weights belong to <span class="math" data-tex="\(W_\infty(M)\)">\(W_\infty(M)\)</span>. Equations (CI7) and (CI10) show that <span class="math" data-tex="\(J\)">\(J\)</span> preserves and reflects order: for central <span class="math" data-tex="\(z,w\)">\(z,w\)</span>, <span class="math" data-tex="\(z\precsim w\)">\(z\precsim w\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> is exactly <span class="math" data-tex="\(z\le w\)">\(z\le w\)</span>.</p>
+<p>Given <span class="math" data-tex="\(a\le d\)">\(a\le d\)</span>, carrier surjectivity supplies <span class="math" data-tex="\(\psi\in W_\infty(M)\)">\(\psi\in W_\infty(M)\)</span> and (CI10) supplies <span class="math" data-tex="\(e\in N\)">\(e\in N\)</span> with <span class="math" data-tex="\(\psi\sim\Phi_e\)">\(\psi\sim\Phi_e\)</span>. If <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, <span class="math" data-tex="\(eNe\)">\(eNe\)</span> is properly infinite. Put <span class="math" data-tex="\(z=z_N(e)\)">\(z=z_N(e)\)</span>. Both <span class="math" data-tex="\(e,z\)">\(e,z\)</span> are countably decomposable; PC7 gives <span class="math" data-tex="\(e\sim z\)">\(e\sim z\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>. Thus <span class="math" data-tex="\(a=p_M(\Phi_e)=J(z)\)">\(a=p_M(\Phi_e)=J(z)\)</span>. The zero case gives <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Boolean reconstruction extends <span class="math" data-tex="\(J\)">\(J\)</span> uniquely to the normal star isomorphism in (CI4).</p>
+<p>For its sign, the partial isometry <span class="math" data-tex="\(u_s z\)">\(u_s z\)</span> has initial <span class="math" data-tex="\(z\)">\(z\)</span>, final <span class="math" data-tex="\(\theta_s(z)\)">\(\theta_s(z)\)</span>, and (CI2) gives, for every <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ \Phi_{\theta_s(z)}(u_s z x z u_s^*)
+      =e^{-s}\Phi_z(x).
+ \tag{CI16}
+\]">\[
+ \Phi_{\theta_s(z)}(u_s z x z u_s^*)
+      =e^{-s}\Phi_z(x).
+ \tag{CI16}
+\]</span>
+Thus <span class="math" data-tex="\(J(\theta_s(z))=\Theta_s(J(z))\)">\(J(\theta_s(z))=\Theta_s(J(z))\)</span>. Spectral step approximation and normality extend the identity to all of <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span>. In particular <span class="math" data-tex="\(d\)">\(d\)</span> is fixed, and the action on <span class="math" data-tex="\(\mathcal A d\)">\(\mathcal A d\)</span> is continuous. A normal positive functional on that corner extends to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> by multiplication by <span class="math" data-tex="\(d\)">\(d\)</span>, so its sigma-strong continuous orbits are also continuous in the full carrier.</p>
+<p>We use the <a href="OA-FLOW-DS.html#ds-6">proved dominant-weight comparison on the original central support</a>:</p>
+<p><strong>Central-support dominant uniqueness.</strong> If <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span> has properly infinite support centralizer and <span class="math" data-tex="\(\eta\sim e^{-t}\eta\)">\(\eta\sim e^{-t}\eta\)</span> for every <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, then
+<span class="math math-display" data-tex="\[
+ \eta\sim\Phi_{z_M(s(\eta))}.
+ \tag{CI17}
+\]">\[
+ \eta\sim\Phi_{z_M(s(\eta))}.
+ \tag{CI17}
+\]</span>
+The faithful theorem on each central summand plus PC7 gives precisely this statement. Indeed put <span class="math" data-tex="\(p=s(\eta)\)">\(p=s(\eta)\)</span>, <span class="math" data-tex="\(z=z_M(p)\)">\(z=z_M(p)\)</span>. Proper infiniteness of <span class="math" data-tex="\(M_\eta\)">\(M_\eta\)</span> makes <span class="math" data-tex="\(p\)">\(p\)</span> properly infinite, and PC7 gives a partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(v^*v=z\)">\(v^*v=z\)</span>, <span class="math" data-tex="\(vv^*=p\)">\(vv^*=p\)</span>. The weight <span class="math" data-tex="\(\eta(v\,\cdot\,v^*)\)">\(\eta(v\,\cdot\,v^*)\)</span> is faithful on <span class="math" data-tex="\(zM\)">\(zM\)</span>; its centralizer and every scalar equivalence transport through that same corner isomorphism. A central projection <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span> is modular-fixed for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>: its central phase unitaries preserve <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> trivially, so CZ0 applies. Hence <span class="math" data-tex="\(z\in N\)">\(z\in N\)</span>, and commutation with every <span class="math" data-tex="\(u_s\)">\(u_s\)</span> gives <span class="math" data-tex="\(\theta_s(z)=z\)">\(\theta_s(z)=z\)</span>. The presentation restricts to <span class="math" data-tex="\(zM=zN\rtimes_\theta\mathbb R\)">\(zM=zN\rtimes_\theta\mathbb R\)</span>, and <span class="math" data-tex="\(\Phi_z\)">\(\Phi_z\)</span> has the same required reference properties there. Applying the faithful theorem on <span class="math" data-tex="\(zM\)">\(zM\)</span> and transporting back proves (CI17). The pointwise-to-measurable-field argument is proved in <a href="OA-FLOW-DS.html#ds-2">DS Sections 2–5</a>; no continuous field is assumed here.</p>
+<p>Let <span class="math" data-tex="\(a\)">\(a\)</span> be sigma-finite in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> with continuous orbit, and form <span class="math" data-tex="\(b=\bigvee_{r\in\mathbb Q}\Theta_r(a)\)">\(b=\bigvee_{r\in\mathbb Q}\Theta_r(a)\)</span>. A sum of normal positive functionals faithful on the countably many translated projections, with strictly positive summable normalized coefficients, has support <span class="math" data-tex="\(b\)">\(b\)</span>; thus <span class="math" data-tex="\(b\)">\(b\)</span> is sigma-finite. If <span class="math" data-tex="\(r_n\to t\)">\(r_n\to t\)</span>, bounded sigma-strong convergence gives <span class="math" data-tex="\(\Theta_t(a)\le b\)">\(\Theta_t(a)\le b\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ \Theta_t(b)=\bigvee_{r\in\mathbb Q}\Theta_{t+r}(a)\le b;
+\]">\[
+ \Theta_t(b)=\bigvee_{r\in\mathbb Q}\Theta_{t+r}(a)\le b;
+\]</span>
+apply <span class="math" data-tex="\(-t\)">\(-t\)</span> to obtain equality. If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, then <span class="math" data-tex="\(a=0\le d\)">\(a=0\le d\)</span> immediately. Otherwise pick nonzero <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with carrier <span class="math" data-tex="\(b\)">\(b\)</span>. Invariance and (CI10) give <span class="math" data-tex="\(\eta\sim e^{-t}\eta\)">\(\eta\sim e^{-t}\eta\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. With <span class="math" data-tex="\(z=z_M(s(\eta))\)">\(z=z_M(s(\eta))\)</span>, (CI17) and (CI15) give <span class="math" data-tex="\(b=\iota(z)d\le d\)">\(b=\iota(z)d\le d\)</span>. Conversely each <span class="math" data-tex="\(a\le d\)">\(a\le d\)</span> has continuous orbit by (CI4). Hence
+<span class="math math-display" data-tex="\[
+ a\in\operatorname{Proj}_\sigma(\mathcal A):
+ \quad s\mapsto\Theta_s(a)\text{ is sigma-strong continuous}
+ \iff a\le d .
+ \tag{CI18}
+\]">\[
+ a\in\operatorname{Proj}_\sigma(\mathcal A):
+ \quad s\mapsto\Theta_s(a)\text{ is sigma-strong continuous}
+ \iff a\le d .
+ \tag{CI18}
+\]</span>
+The support correction in (CI17) is indispensable: on a nonfactor the rational join can be the proper sector <span class="math" data-tex="\(\iota(z)d\)">\(\iota(z)d\)</span>, not <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><span id="OA-FLOW.CGF.6"></span><a id="cgf-6"></a></p>
+<h2 id="6-countable-amplification-its-independence-and-its-cancellation">6. Countable amplification, its independence and its cancellation</h2>
+<p>For any normal semifinite <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, including zero, (CI3) defines
+<span class="math math-display" data-tex="\[
+ \dot\psi(x)=\sum_n\psi(v_n^*xv_n),\qquad
+ s(\dot\psi)=A_v(s(\psi)\otimes1).
+ \tag{CI19}
+\]">\[
+ \dot\psi(x)=\sum_n\psi(v_n^*xv_n),\qquad
+ s(\dot\psi)=A_v(s(\psi)\otimes1).
+ \tag{CI19}
+\]</span>
+The <a href="../OA-MOD/OA-MOD-TG.html#all-positive-values-and-nonfaithful-support-corners">supported tensor-weight proof</a>, TG.19–26, constructs the whole tensor weight, including <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>, and proves its modular group on its actual support. For the trace factor this group is <span class="math" data-tex="\(\sigma^\psi\otimes\mathrm{id}\)">\(\sigma^\psi\otimes\mathrm{id}\)</span>. Its fixed algebra is <span class="math" data-tex="\(M_\psi\bar\otimes B(\ell^2)\)">\(M_\psi\bar\otimes B(\ell^2)\)</span>: take matrix entries to prove one inclusion and bounded finite-coordinate compressions to prove the other. Every nonzero <span class="math" data-tex="\(\dot\psi\)">\(\dot\psi\)</span> therefore has infinite multiplicity.</p>
+<p>For another family <span class="math" data-tex="\(v_n'\)">\(v_n'\)</span>, the bounded strong-star sum <span class="math" data-tex="\(w=\sum_n v_n'v_n^*\)">\(w=\sum_n v_n'v_n^*\)</span> is unitary and
+<span class="math math-display" data-tex="\[
+ \dot\psi'(x)=\dot\psi(w^*xw).
+ \tag{CI20}
+\]">\[
+ \dot\psi'(x)=\dot\psi(w^*xw).
+ \tag{CI20}
+\]</span>
+If <span class="math" data-tex="\(q=s(\dot\psi)\)">\(q=s(\dot\psi)\)</span>, the transporter <span class="math" data-tex="\(qw^*\)">\(qw^*\)</span> has initial <span class="math" data-tex="\(wqw^*=s(\dot\psi')\)">\(wqw^*=s(\dot\psi')\)</span> and final <span class="math" data-tex="\(q\)">\(q\)</span>. Thus it implements supported equivalence, including zero, and the carrier is independent of the family.</p>
+<p>Here is the exact cancellation mechanism. Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> have properly infinite centralizer with unit <span class="math" data-tex="\(p=s(\chi)\)">\(p=s(\chi)\)</span>. Choose a filling family <span class="math" data-tex="\(r_n\in M_\chi\)">\(r_n\in M_\chi\)</span>, with <span class="math" data-tex="\(r_n^*r_m=\delta_{nm}p\)">\(r_n^*r_m=\delta_{nm}p\)</span> and <span class="math" data-tex="\(\sum_nr_nr_n^*=p\)">\(\sum_nr_nr_n^*=p\)</span>. In the supported tensor algebra put
+<span class="math math-display" data-tex="\[
+ R_\chi=\mathop{\mathrm{s^*\!-\!lim}}_F
+           \sum_{n\in F}r_n\otimes e_{1n},\quad
+ R_\chi^*R_\chi=p\otimes1,\quad
+ R_\chi R_\chi^*=p\otimes e_{11}.
+ \tag{CI21}
+\]">\[
+ R_\chi=\mathop{\mathrm{s^*\!-\!lim}}_F
+           \sum_{n\in F}r_n\otimes e_{1n},\quad
+ R_\chi^*R_\chi=p\otimes1,\quad
+ R_\chi R_\chi^*=p\otimes e_{11}.
+ \tag{CI21}
+\]</span>
+Orthogonality bounds each finite row by one; the squared coordinate tails prove both strong limits. The modular tensor formula makes <span class="math" data-tex="\(R_\chi\)">\(R_\chi\)</span> fixed. The full-cone partial-isometry transport identity follows from the faithful reduced weight: finite-domain cyclicity gives equality when either side is finite, applying the inverse for the reverse implication; otherwise both sides are infinite. This is exactly the argument proved for the rows in <a href="OA-FLOW-DWC.html#dwc-3">DWC Section 3</a>, applied on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>.</p>
+<p>In the balanced centralizer for <span class="math" data-tex="\((\chi_1\otimes\operatorname{Tr})\oplus(\chi_2\otimes\operatorname{Tr})\)">\((\chi_1\otimes\operatorname{Tr})\oplus(\chi_2\otimes\operatorname{Tr})\)</span>, put these rows in the two diagonal blocks. A comparison partial isometry <span class="math" data-tex="\(V\)">\(V\)</span> from the full first support into the second becomes
+<span class="math math-display" data-tex="\[
+ R_{\chi_2} V R_{\chi_1}^* .
+ \tag{CI22}
+\]">\[
+ R_{\chi_2} V R_{\chi_1}^* .
+ \tag{CI22}
+\]</span>
+Its initial projection is <span class="math" data-tex="\(s(\chi_1)\otimes e_{11}\)">\(s(\chi_1)\otimes e_{11}\)</span>, its final projection is at most <span class="math" data-tex="\(s(\chi_2)\otimes e_{11}\)">\(s(\chi_2)\otimes e_{11}\)</span>, and it remains in that same balanced centralizer. Its one rank-one matrix coefficient implements <span class="math" data-tex="\(\chi_1\precsim\chi_2\)">\(\chi_1\precsim\chi_2\)</span> by WC.15. Thus
+<span class="math math-display" data-tex="\[
+ \chi_1\otimes\operatorname{Tr}\precsim
+       \chi_2\otimes\operatorname{Tr}
+ \Longrightarrow \chi_1\precsim\chi_2
+ \tag{CI23}
+\]">\[
+ \chi_1\otimes\operatorname{Tr}\precsim
+       \chi_2\otimes\operatorname{Tr}
+ \Longrightarrow \chi_1\precsim\chi_2
+ \tag{CI23}
+\]</span>
+when both nonzero support centralizers are properly infinite. This is not cancellation for arbitrary finite corners.</p>
+<p>For the distinguished <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, choose the family <span class="math" data-tex="\(v_n\)">\(v_n\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>. The row identity (CI21), transported through (CI3), gives <span class="math" data-tex="\(\dot\Phi=\Phi\)">\(\dot\Phi=\Phi\)</span> on all of <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. If <span class="math" data-tex="\(\psi\precsim\Phi\)">\(\psi\precsim\Phi\)</span>, tensor its supported transporter and centralizer cut with <span class="math" data-tex="\(1\)">\(1\)</span>; this proves <span class="math" data-tex="\(\psi\otimes\operatorname{Tr}\precsim\Phi\otimes\operatorname{Tr}\)">\(\psi\otimes\operatorname{Tr}\precsim\Phi\otimes\operatorname{Tr}\)</span>. Transport through this fixed family to get <span class="math" data-tex="\(\dot\psi\precsim\Phi\)">\(\dot\psi\precsim\Phi\)</span>, and then use (CI20) for any other family. Conversely the fixed first-coordinate cut of <span class="math" data-tex="\(\psi\otimes\operatorname{Tr}\)">\(\psi\otimes\operatorname{Tr}\)</span> is equivalent to <span class="math" data-tex="\(\psi\)">\(\psi\)</span>; transitivity gives
+<span class="math math-display" data-tex="\[
+ \dot\psi\precsim\Phi\iff\psi\precsim\Phi.
+ \tag{CI24}
+\]">\[
+ \dot\psi\precsim\Phi\iff\psi\precsim\Phi.
+ \tag{CI24}
+\]</span>
+No infinite-multiplicity assumption on <span class="math" data-tex="\(\psi\)">\(\psi\)</span> enters this equivalence.</p>
+<p><span id="OA-FLOW.CGF.7"></span><a id="cgf-7"></a></p>
+<h2 id="7-supported-integrability-and-the-full-support-intertwiner">7. Supported integrability and the full-support intertwiner</h2>
+<p>For a continuous action <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on a von Neumann algebra <span class="math" data-tex="\(B\)">\(B\)</span>, define the extended positive orbit average by normal positive functional tests,
+<span class="math math-display" data-tex="\[
+ E_\beta(x)(\omega)=\int_{\mathbb R}\omega(\beta_t(x))\,dt.
+ \tag{CI25}
+\]">\[
+ E_\beta(x)(\omega)=\int_{\mathbb R}\omega(\beta_t(x))\,dt.
+ \tag{CI25}
+\]</span>
+Compact positive averages are normal, and their directed supremum defines this value, as in <a href="OA-FLOW-DA.html#da-positive">DA's positive-average construction</a>. Call the action integrable when
+<span class="math" data-tex="\(\mathfrak n_E=\{x:E_\beta(x^*x)\text{ is bounded}\}\)">\(\mathfrak n_E=\{x:E_\beta(x^*x)\text{ is bounded}\}\)</span>
+is ultraweakly dense.</p>
+<p>Equivalently there is an increasing net <span class="math" data-tex="\(0\le a_i\le1\)">\(0\le a_i\le1\)</span>, <span class="math" data-tex="\(a_i\uparrow1\)">\(a_i\uparrow1\)</span>, whose averages are bounded. For a proof, <span class="math" data-tex="\(\mathfrak n_E\)">\(\mathfrak n_E\)</span> is a linear left ideal by <span class="math" data-tex="\((x+y)^*(x+y)\le2x^*x+2y^*y\)">\((x+y)^*(x+y)\le2x^*x+2y^*y\)</span> and <span class="math" data-tex="\(x^*b^*bx\le\|b\|^2x^*x\)">\(x^*b^*bx\le\|b\|^2x^*x\)</span>. If it is dense, the join of the right supports of its elements is one. For finite subsets <span class="math" data-tex="\(F\subset\mathfrak n_E\)">\(F\subset\mathfrak n_E\)</span>, put <span class="math" data-tex="\(h_F=\sum_{x\in F}x^*x\)">\(h_F=\sum_{x\in F}x^*x\)</span>. The contractions
+<span class="math math-display" data-tex="\[
+ a_{F,n}=nh_F(1+nh_F)^{-1}\le nh_F
+ \tag{CI26}
+\]">\[
+ a_{F,n}=nh_F(1+nh_F)^{-1}\le nh_F
+ \tag{CI26}
+\]</span>
+have bounded averages. They increase with <span class="math" data-tex="\(F,n\)">\(F,n\)</span>, since inverse reverses order for strictly positive bounded operators. Their supremum is the join of the supports of all <span class="math" data-tex="\(h_F\)">\(h_F\)</span>, hence one. Conversely <span class="math" data-tex="\(a_i^{1/2}\in\mathfrak n_E\)">\(a_i^{1/2}\in\mathfrak n_E\)</span>, and <span class="math" data-tex="\(b a_i^{1/2}\to b\)">\(b a_i^{1/2}\to b\)</span> strongly for each <span class="math" data-tex="\(b\)">\(b\)</span>; the left-ideal property proves density.</p>
+<p>This criterion proves all permanence statements needed here. An invariant unital subalgebra's finite-average contractions work in the ambient algebra. Tensoring an integrable action with any action preserves those contractions as <span class="math" data-tex="\(a_i\otimes1\)">\(a_i\otimes1\)</span>. For a fixed projection <span class="math" data-tex="\(e\)">\(e\)</span>,
+<span class="math" data-tex="\(E_{\beta|eBe}(ea_i e)=eE_\beta(a_i)e\)">\(E_{\beta|eBe}(ea_i e)=eE_\beta(a_i)e\)</span>, so fixed corners are integrable. Normal equivariant isomorphisms transport the criterion in both directions. In particular, on the actual support,
+<span class="math math-display" data-tex="\[
+ \sigma^\psi\text{ integrable}
+       \iff\sigma^{\dot\psi}\text{ integrable}.
+ \tag{CI27}
+\]">\[
+ \sigma^\psi\text{ integrable}
+       \iff\sigma^{\dot\psi}\text{ integrable}.
+ \tag{CI27}
+\]</span>
+The reverse direction takes the fixed rank-one corner. The zero action on the zero algebra satisfies the criterion with its zero identity.</p>
+<p>We now prove the supported regular comparison rather than assuming that its cocycle is unitary. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> act on <span class="math" data-tex="\(B\)">\(B\)</span> and let <span class="math" data-tex="\(c_t\)">\(c_t\)</span> be a strongly-star continuous partial cocycle with
+<span class="math math-display" data-tex="\[
+ c_tc_t^*=p,\quad c_t^*c_t=\alpha_t(p),\quad
+ c_{s+t}=c_s\alpha_s(c_t).
+ \tag{CI28}
+\]">\[
+ c_tc_t^*=p,\quad c_t^*c_t=\alpha_t(p),\quad
+ c_{s+t}=c_s\alpha_s(c_t).
+ \tag{CI28}
+\]</span>
+Put <span class="math" data-tex="\(\beta_t(x)=c_t\alpha_t(x)c_t^*\)">\(\beta_t(x)=c_t\alpha_t(x)c_t^*\)</span> on <span class="math" data-tex="\(pBp\)">\(pBp\)</span>, <span class="math" data-tex="\(K=L^2(\mathbb R)\)">\(K=L^2(\mathbb R)\)</span>, <span class="math" data-tex="\((\rho_t f)(r)=f(r+t)\)">\((\rho_t f)(r)=f(r+t)\)</span>, and <span class="math" data-tex="\(\widetilde\alpha=\alpha\otimes\mathrm{id}\)">\(\widetilde\alpha=\alpha\otimes\mathrm{id}\)</span>. For partial cocycles <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, write
+<span class="math math-display" data-tex="\[
+ I(b,a)=\{X:X=e_bXe_a,\quad X a_t=b_t\widetilde\alpha_t(X)\}.
+ \tag{CI29}
+\]">\[
+ I(b,a)=\{X:X=e_bXe_a,\quad X a_t=b_t\widetilde\alpha_t(X)\}.
+ \tag{CI29}
+\]</span>
+On the corner with unit <span class="math" data-tex="\(\operatorname{diag}(e_b,e_a)\)">\(\operatorname{diag}(e_b,e_a)\)</span>, the partial cocycle <span class="math" data-tex="\(\operatorname{diag}(b_t,a_t)\)">\(\operatorname{diag}(b_t,a_t)\)</span> defines an automorphism group. Its action on an off-diagonal coefficient is <span class="math" data-tex="\(X\mapsto b_t\widetilde\alpha_t(X)a_t^*\)">\(X\mapsto b_t\widetilde\alpha_t(X)a_t^*\)</span>; being fixed is equivalent to (CI29), using the stated supports. Consequently <span class="math" data-tex="\(I(b,a)\)">\(I(b,a)\)</span> is exactly that off-diagonal fixed corner. Its polar decomposition stays in the fixed algebra, and its initial and final projections lie in the two fixed diagonal corners. Define <span class="math" data-tex="\(a\precsim b\)">\(a\precsim b\)</span> by the existence of such an intertwining partial isometry <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V^*V=e_a\)">\(V^*V=e_a\)</span> and <span class="math" data-tex="\(VV^*\le e_b\)">\(VV^*\le e_b\)</span>; use equality in the latter condition for equivalence. The off-diagonal description makes this precisely Murray–von Neumann subequivalence or equivalence of the diagonal projections. Products of compatible partial isometries give transitivity.</p>
+<p>Suppose <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is integrable. Let <span class="math" data-tex="\(q\)">\(q\)</span> be the join of right supports of
+<span class="math" data-tex="\(I(c\otimes\rho,c\otimes1)\)">\(I(c\otimes\rho,c\otimes1)\)</span>. Right multiplication by a unitary in the fixed initial corner permutes this family. Thus <span class="math" data-tex="\(q\)">\(q\)</span> is central there. That corner is <span class="math" data-tex="\(B^\beta\bar\otimes B(K)\)">\(B^\beta\bar\otimes B(K)\)</span>, with center <span class="math" data-tex="\(Z(B^\beta)\otimes1\)">\(Z(B^\beta)\otimes1\)</span>, by matrix entries. If <span class="math" data-tex="\(q\ne p\otimes1\)">\(q\ne p\otimes1\)</span>, write its complement as <span class="math" data-tex="\(e\otimes1\)">\(e\otimes1\)</span> with nonzero <span class="math" data-tex="\(e\in Z(B^\beta)\)">\(e\in Z(B^\beta)\)</span>.</p>
+<p>Compress the contractions from (CI26) by <span class="math" data-tex="\(e\)">\(e\)</span>. Choose a nonzero one, <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>, and put <span class="math" data-tex="\(x=y^{1/2}\)">\(x=y^{1/2}\)</span>. Then <span class="math" data-tex="\(x=exe\ne0\)">\(x=exe\ne0\)</span> and <span class="math" data-tex="\(E_\beta(x^*x)\)">\(E_\beta(x^*x)\)</span> is bounded. Choose nonzero <span class="math" data-tex="\(f\in C_c(\mathbb R)\)">\(f\in C_c(\mathbb R)\)</span>. On <span class="math" data-tex="\(L^2(\mathbb R,H)\)">\(L^2(\mathbb R,H)\)</span>, for a faithful normal representation of <span class="math" data-tex="\(B\)">\(B\)</span>, define
+<span class="math math-display" data-tex="\[
+ (Y\xi)(r)=\beta_{-r}(x)\int_{\mathbb R}f(t)\xi(t)\,dt.
+ \tag{CI30}
+\]">\[
+ (Y\xi)(r)=\beta_{-r}(x)\int_{\mathbb R}f(t)\xi(t)\,dt.
+ \tag{CI30}
+\]</span>
+The vector integral is bounded by <span class="math" data-tex="\(\|f\|_2\|\xi\|\)">\(\|f\|_2\|\xi\|\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|Y\xi\|^2
+ \le \|E_\beta(x^*x)\|\,\|f\|_2^2\|\xi\|^2.
+ \tag{CI31}
+\]">\[
+ \|Y\xi\|^2
+ \le \|E_\beta(x^*x)\|\,\|f\|_2^2\|\xi\|^2.
+ \tag{CI31}
+\]</span>
+Every constant operator in <span class="math" data-tex="\(B'\)">\(B'\)</span> commutes with <span class="math" data-tex="\(Y\)">\(Y\)</span>; <a href="OA-FLOW-ND.html#nd-tensor">ND's actual tensor-commutant theorem</a> puts <span class="math" data-tex="\(Y\)">\(Y\)</span> in <span class="math" data-tex="\(B\bar\otimes B(K)\)">\(B\bar\otimes B(K)\)</span>. Its initial and final supports are below <span class="math" data-tex="\(e\otimes1\)">\(e\otimes1\)</span>. It is nonzero: choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(x\eta\ne0\)">\(x\eta\ne0\)</span> and <span class="math" data-tex="\(\xi(t)=\overline{f(t)}\eta\)">\(\xi(t)=\overline{f(t)}\eta\)</span>; continuity of <span class="math" data-tex="\(r\mapsto\beta_{-r}(x)\eta\)">\(r\mapsto\beta_{-r}(x)\eta\)</span> gives a positive-norm output near zero.</p>
+<p>The intertwining calculation is pointwise on this complete bounded operator:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \bigl[(c_s\otimes\rho_s)\widetilde\alpha_s(Y)\xi\bigr](r)
+ &amp;=c_s\alpha_s(\beta_{-(r+s)}(x))
+                    \int f(t)\xi(t)\,dt\\
+ &amp;=\beta_{-r}(x)c_s\int f(t)\xi(t)\,dt\\
+ &amp;=\bigl[Y(c_s\otimes1)\xi\bigr](r).
+ \end{aligned}
+ \tag{CI32}
+\]">\[
+ \begin{aligned}
+ \bigl[(c_s\otimes\rho_s)\widetilde\alpha_s(Y)\xi\bigr](r)
+ &amp;=c_s\alpha_s(\beta_{-(r+s)}(x))
+                    \int f(t)\xi(t)\,dt\\
+ &amp;=\beta_{-r}(x)c_s\int f(t)\xi(t)\,dt\\
+ &amp;=\bigl[Y(c_s\otimes1)\xi\bigr](r).
+ \end{aligned}
+ \tag{CI32}
+\]</span>
+The middle identity follows from the action law for <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, multiplying on the right by <span class="math" data-tex="\(c_s\)">\(c_s\)</span> and using the support <span class="math" data-tex="\(\alpha_s(p)\)">\(\alpha_s(p)\)</span>. No cocycle is treated as a unitary outside its support. Normality of tensor transport justifies applying <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> to the coefficient operator: test both sides on compact scalar vector tensors. Since <span class="math" data-tex="\(Y=Y(e\otimes1)\ne0\)">\(Y=Y(e\otimes1)\ne0\)</span>, its right support contradicts the definition of the missing central part. Therefore
+<span class="math math-display" data-tex="\[
+ \bigvee_{Y\in I(c\otimes\rho,c\otimes1)}s_r(Y)=p\otimes1.
+ \tag{CI33}
+\]">\[
+ \bigvee_{Y\in I(c\otimes\rho,c\otimes1)}s_r(Y)=p\otimes1.
+ \tag{CI33}
+\]</span></p>
+<p>In the two-by-two fixed algebra, (CI33) implies that the central support of the initial diagonal is below that of the target diagonal. Indeed a central projection annihilating the target diagonal annihilates every off-diagonal intertwiner, hence every one of its right supports, and therefore the whole initial diagonal by (CI33). If <span class="math" data-tex="\(B^\beta\)">\(B^\beta\)</span> is properly infinite, both diagonal corners contain its unital copy and are properly infinite. When <span class="math" data-tex="\(B\)">\(B\)</span> has separable predual, the fixed algebra is countably decomposable: a faithful normal state of the stabilized ambient algebra restricts to it. PC7 therefore gives
+<span class="math math-display" data-tex="\[
+ c\otimes1\precsim c\otimes\rho .
+ \tag{CI34}
+\]">\[
+ c\otimes1\precsim c\otimes\rho .
+ \tag{CI34}
+\]</span>
+This retains the moving initial support <span class="math" data-tex="\(\alpha_t(p)\)">\(\alpha_t(p)\)</span>.</p>
+<p><span id="OA-FLOW.CGF.8"></span><a id="cgf-8"></a></p>
+<h2 id="8-the-complete-supported-integrability-criterion">8. The complete supported integrability criterion</h2>
+<p>The action <span class="math" data-tex="\(\sigma^\Phi\)">\(\sigma^\Phi\)</span> is the dual action by (CI1). <a href="OA-FLOW-DA.html#da-squares">DA's compact-square proof</a> gives a dense finite-average left ideal; (CI26) gives integrability. Fixed centralizer cuts and supported equivalences preserve integrability. Consequently <span class="math" data-tex="\(\psi\precsim\Phi\)">\(\psi\precsim\Phi\)</span> implies integrability of its support action.</p>
+<p>Conversely first let <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> be integrable and have infinite multiplicity. Put <span class="math" data-tex="\(p=s(\xi)\)">\(p=s(\xi)\)</span>, <span class="math" data-tex="\(\alpha=\sigma^\Phi\)">\(\alpha=\sigma^\Phi\)</span>, and <span class="math" data-tex="\(c_t=[D\xi:D\Phi]_t\)">\(c_t=[D\xi:D\Phi]_t\)</span>. The actual supported derivative theorem, WC.5–9, gives exactly (CI28) and <span class="math" data-tex="\(\beta=\sigma^\xi\)">\(\beta=\sigma^\xi\)</span>. Hence (CI34) applies.</p>
+<p>Complete <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by any faithful normal semifinite weight on <span class="math" data-tex="\((1-p)M(1-p)\)">\((1-p)M(1-p)\)</span>, forming
+<span class="math math-display" data-tex="\[
+ \omega(x)=\xi(pxp)+\chi((1-p)x(1-p)).
+ \tag{CI35}
+\]">\[
+ \omega(x)=\xi(pxp)+\chi((1-p)x(1-p)).
+ \tag{CI35}
+\]</span>
+<a href="OA-FLOW-NWR.html#nwr-4">NWR4</a> proves faithfulness, normal semifiniteness and <span class="math" data-tex="\(p\in M_\omega\)">\(p\in M_\omega\)</span>; <a href="OA-FLOW-SCW.html#scw-1">SCW1</a> proves the exact derivative <span class="math" data-tex="\(c_t=p[D\omega:D\Phi]_t\)">\(c_t=p[D\omega:D\Phi]_t\)</span>. Thus <span class="math" data-tex="\(c\otimes\rho\)">\(c\otimes\rho\)</span> is a fixed-corner reduction of the unitary cocycle <span class="math" data-tex="\(a_t=[D\omega:D\Phi]_t\)">\(a_t=[D\omega:D\Phi]_t\)</span> tensored with <span class="math" data-tex="\(\rho_t\)">\(\rho_t\)</span>.</p>
+<p>For completeness the absorption operator is
+<span class="math math-display" data-tex="\[
+ (V\zeta)(r)=a_{-r}\zeta(r),\qquad
+ a_s\otimes\rho_s
+     =V(1\otimes\rho_s)\widetilde\alpha_s(V^*).
+ \tag{CI36}
+\]">\[
+ (V\zeta)(r)=a_{-r}\zeta(r),\qquad
+ a_s\otimes\rho_s
+     =V(1\otimes\rho_s)\widetilde\alpha_s(V^*).
+ \tag{CI36}
+\]</span>
+The multiplier is unitary on the entire <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space, and belongs to the tensor algebra by commuting with the constant commutant. At coordinate <span class="math" data-tex="\(r\)">\(r\)</span> the equality is
+<span class="math" data-tex="\(a_{-r}\alpha_s(a_{-(r+s)}^*)=a_s\)">\(a_{-r}\alpha_s(a_{-(r+s)}^*)=a_s\)</span>, precisely the cocycle identity. This is the same full-tensor absorption mechanism as <a href="OA-FLOW-DWC.html#dwc-1">DWC1</a>. It gives <span class="math" data-tex="\(c\otimes\rho\precsim1\otimes\rho\)">\(c\otimes\rho\precsim1\otimes\rho\)</span>.</p>
+<p>For this particular reference action no measurable selection is needed to absorb the regular representation. In Fourier coordinates, the continuous multiplier <span class="math" data-tex="\(W(r)=u_{-r}\)">\(W(r)=u_{-r}\)</span> satisfies
+<span class="math" data-tex="\(\widetilde\alpha_t(W)=W(1\otimes M_{e^{itr}})\)">\(\widetilde\alpha_t(W)=W(1\otimes M_{e^{itr}})\)</span>. The negative-character Fourier transform sends right translation <span class="math" data-tex="\(\rho_t\)">\(\rho_t\)</span> to <span class="math" data-tex="\(M_{e^{itr}}\)">\(M_{e^{itr}}\)</span>. Transporting <span class="math" data-tex="\(W\)">\(W\)</span> back gives
+<span class="math math-display" data-tex="\[
+ \widetilde\alpha_t(W)=W(1\otimes\rho_t),
+ \qquad 1\otimes\rho\sim1\otimes1.
+ \tag{CI37}
+\]">\[
+ \widetilde\alpha_t(W)=W(1\otimes\rho_t),
+ \qquad 1\otimes\rho\sim1\otimes1.
+ \tag{CI37}
+\]</span>
+Both are onto unitaries on the full scalar amplification. Thus
+<span class="math" data-tex="\(c\otimes1\precsim1\otimes1\)">\(c\otimes1\precsim1\otimes1\)</span>.</p>
+<p>The tensor derivative is <span class="math" data-tex="\(c_t\otimes1\)">\(c_t\otimes1\)</span>: complete both weights faithfully as in (CI35), use the actual tensor derivative theorem <a href="OA-FLOW-TW.html#tw-6">TW6</a>, then cut by <span class="math" data-tex="\(p\otimes1\)">\(p\otimes1\)</span>. WC's supported balanced criterion converts the last partial-cocycle comparison to
+<span class="math math-display" data-tex="\[
+ \xi\otimes\operatorname{Tr}\precsim\Phi\otimes\operatorname{Tr}.
+ \tag{CI38}
+\]">\[
+ \xi\otimes\operatorname{Tr}\precsim\Phi\otimes\operatorname{Tr}.
+ \tag{CI38}
+\]</span>
+The proper infiniteness of the two support centralizers now permits precisely (CI21)–(CI23), giving <span class="math" data-tex="\(\xi\precsim\Phi\)">\(\xi\precsim\Phi\)</span>.</p>
+<p>For a general nonzero normal semifinite <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, apply this argument to <span class="math" data-tex="\(\xi=\dot\psi\)">\(\xi=\dot\psi\)</span>. Equations (CI19), (CI27) and (CI24) prove (CI5). If <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>, its support action, carrier and comparison are all zero; this case needs no completion or nonzero regular-intertwiner argument. Combining (CI10), (CI18) and (CI24), using (CI17), gives the full three-way assertion
+<span class="math math-display" data-tex="\[
+ \sigma^\psi\text{ integrable}
+ \iff \bigl[s\mapsto\Theta_s(p_M(\dot\psi))\text{ continuous}\bigr]
+ \iff \psi\precsim\Phi.
+ \tag{CI39}
+\]">\[
+ \sigma^\psi\text{ integrable}
+ \iff \bigl[s\mapsto\Theta_s(p_M(\dot\psi))\text{ continuous}\bigr]
+ \iff \psi\precsim\Phi.
+ \tag{CI39}
+\]</span>
+By (CI17), “<span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>” may be replaced by any faithful dominant weight, and the last assertion then holds for some such weight exactly when it holds for all.</p>
+<p><span id="OA-FLOW.CGF.9"></span><a id="cgf-9"></a></p>
+<h2 id="9-the-modulus-and-its-naturality">9. The modulus and its naturality</h2>
+<p>Let <span class="math" data-tex="\(f:M\to M'\)">\(f:M\to M'\)</span> be a normal star isomorphism between algebras in the stated scope. Transport <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to <span class="math" data-tex="\(f_*\psi=\psi\circ f^{-1}\)">\(f_*\psi=\psi\circ f^{-1}\)</span>. Its support is <span class="math" data-tex="\(f(s(\psi))\)">\(f(s(\psi))\)</span>, its support modular group is <span class="math" data-tex="\(f\sigma^\psi f^{-1}\)">\(f\sigma^\psi f^{-1}\)</span>, and its centralizer is <span class="math" data-tex="\(f(M_\psi)\)">\(f(M_\psi)\)</span>. Transport an implementer <span class="math" data-tex="\(w\)">\(w\)</span> in (CI6) to <span class="math" data-tex="\(f(w)\)">\(f(w)\)</span>; this proves preservation of both comparison relations, with inverse transport through <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span>. Boolean reconstruction therefore gives inverse normal carrier isomorphisms
+<span class="math math-display" data-tex="\[
+ \mathcal A(f)(p_M(\psi))=p_{M'}(f_*\psi),\qquad
+ \mathcal A(f)\Theta_s=\Theta'_s\mathcal A(f).
+ \tag{CI40}
+\]">\[
+ \mathcal A(f)(p_M(\psi))=p_{M'}(f_*\psi),\qquad
+ \mathcal A(f)\Theta_s=\Theta'_s\mathcal A(f).
+ \tag{CI40}
+\]</span>
+They preserve the original-center embeddings:
+<span class="math" data-tex="\(\mathcal A(f)(\iota_M(z))=\iota_{M'}(f(z))\)">\(\mathcal A(f)(\iota_M(z))=\iota_{M'}(f(z))\)</span>, first on projection cuts by (CI15), then spectrally. Weight transport proves identity and composition exactly:
+<span class="math" data-tex="\((g\circ f)_*=g_*f_*\)">\((g\circ f)_*=g_*f_*\)</span>, so <span class="math" data-tex="\(\mathcal A(g\circ f)=\mathcal A(g)\mathcal A(f)\)">\(\mathcal A(g\circ f)=\mathcal A(g)\mathcal A(f)\)</span>.</p>
+<p>For chosen trace-scaling presentations and dual weights <span class="math" data-tex="\(\Phi,\Phi'\)">\(\Phi,\Phi'\)</span>, the weight <span class="math" data-tex="\(f_*\Phi\)">\(f_*\Phi\)</span> has a supplied continuous eigenfield <span class="math" data-tex="\(f(u_{-r})\)">\(f(u_{-r})\)</span> and properly infinite centralizer. DWC compares it with <span class="math" data-tex="\(\Phi'\)">\(\Phi'\)</span> on the whole cone. Thus <span class="math" data-tex="\(\mathcal A(f)(d)=d'\)">\(\mathcal A(f)(d)=d'\)</span>. Here the supplied continuous field is enough for the comparison. Define
+<span class="math math-display" data-tex="\[
+ \operatorname{mod}_{\Phi,\Phi'}(f)
+   =(J')^{-1}\mathcal A(f)|_{\mathcal A d}J:
+       Z(N)\longrightarrow Z(N').
+ \tag{CI41}
+\]">\[
+ \operatorname{mod}_{\Phi,\Phi'}(f)
+   =(J')^{-1}\mathcal A(f)|_{\mathcal A d}J:
+       Z(N)\longrightarrow Z(N').
+ \tag{CI41}
+\]</span>
+This is a normal star isomorphism conjugating <span class="math" data-tex="\(\theta|_{Z(N)}\)">\(\theta|_{Z(N)}\)</span> with <span class="math" data-tex="\(\theta'|_{Z(N')}\)">\(\theta'|_{Z(N')}\)</span>. It respects identity, inverses and composition, since (CI40) does and the intermediate <span class="math" data-tex="\(J'\)">\(J'\)</span>'s cancel.</p>
+<p>For <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(M)\)">\(\alpha\in\operatorname{Aut}(M)\)</span>, (CI41) gives a group homomorphism into the normal automorphisms of <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span> commuting with <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. If <span class="math" data-tex="\(\alpha=\operatorname{Ad}(w)\)">\(\alpha=\operatorname{Ad}(w)\)</span>, the weights <span class="math" data-tex="\(\psi\circ\alpha^{-1}\)">\(\psi\circ\alpha^{-1}\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> are supported-equivalent via <span class="math" data-tex="\(s(\psi)w^*\)">\(s(\psi)w^*\)</span>, whose initial projection is <span class="math" data-tex="\(w s(\psi)w^*\)">\(w s(\psi)w^*\)</span> and final projection is <span class="math" data-tex="\(s(\psi)\)">\(s(\psi)\)</span>. Hence <span class="math" data-tex="\(\mathcal A(\alpha)\)">\(\mathcal A(\alpha)\)</span> fixes every sigma-finite carrier projection and therefore every projection and every element:
+<span class="math math-display" data-tex="\[
+ \operatorname{Inn}(M)\subseteq\ker\operatorname{mod}.
+ \tag{CI42}
+\]">\[
+ \operatorname{Inn}(M)\subseteq\ker\operatorname{mod}.
+ \tag{CI42}
+\]</span>
+Changing the chosen presentation gives the canonical conjugacy (CI41) for the identity of <span class="math" data-tex="\(M\)">\(M\)</span>; functoriality proves all choice comparisons. Neither equality of this kernel with inner automorphisms, topological continuity of the modulus, the full characteristic square, nor a factor classification follows from these identities.</p>
+<p><span id="OA-FLOW.CGF.10"></span><a id="cgf-10"></a></p>
+<h2 id="10-the-mechanism-and-solved-diagnostics">10. The mechanism and solved diagnostics</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The supported integrability criterion, with scalar amplification, full-support intertwiners, carrier order, and the central-support dominant-weight theorem at their exact proof locators." src="assets/global-carrier-integrability/cgf-mechanism.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1.</em> The right regular representation is <span class="math" data-tex="\(\rho_t f(r)=f(r+t)\)">\(\rho_t f(r)=f(r+t)\)</span>. The upper comparison takes place in a scalar amplification, with both supported diagonal corners retained. Equations (CI21)–(CI23) cancel the matrix factor only when the support centralizers are properly infinite. The orange implication uses the proved pointwise dominant-weight theorem and the original central support; it is valid for nonfactors. The arrows express proved implications, with no metric meaning. <a href="assets/global-carrier-integrability/render.ps1">Renderer</a>, <a href="assets/global-carrier-integrability/mechanism.mmd">editable logical source</a>, <a href="assets/global-carrier-integrability/data.json">data</a> and <a href="assets/global-carrier-integrability/TERMS.md">terms</a> accompany the diagram.</p>
+<h3 id="diagnostic-1-infinite-multiplicity-does-not-imply-a-continuous-carrier-orbit">Diagnostic 1. Infinite multiplicity does not imply a continuous carrier orbit</h3>
+<p>Let <span class="math" data-tex="\(M=B(\ell^2)\)">\(M=B(\ell^2)\)</span>, let <span class="math" data-tex="\(e\)">\(e\)</span> be a unit vector, and set <span class="math" data-tex="\(\varphi(x)=\langle xe,e\rangle\)">\(\varphi(x)=\langle xe,e\rangle\)</span>. Determine integrability of its support modular action, and continuity of the carrier orbit of its infinite amplification.</p>
+<p><strong>Solution.</strong> Its support is the rank-one projection <span class="math" data-tex="\(p_e\)">\(p_e\)</span>, and its support algebra is <span class="math" data-tex="\(p_eMp_e=\mathbb C p_e\)">\(p_eMp_e=\mathbb C p_e\)</span>. The restricted weight has value one on <span class="math" data-tex="\(p_e\)">\(p_e\)</span>; its modular action is trivial. For every nonzero positive scalar <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+ E_{\mathrm{id}}(a p_e)=\int_{\mathbb R}a p_e\,dt=+\infty\,p_e.
+ \tag{CGFM1}
+\]">\[
+ E_{\mathrm{id}}(a p_e)=\int_{\mathbb R}a p_e\,dt=+\infty\,p_e.
+ \tag{CGFM1}
+\]</span>
+In the precise normal-functional sense of (CI25), the finite-average left ideal is zero. The support action is not integrable, and (CI5) gives <span class="math" data-tex="\(\varphi\not\precsim\Phi\)">\(\varphi\not\precsim\Phi\)</span> for every faithful dominant reference weight <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>Choose a stable isomorphism <span class="math" data-tex="\(A_v\)">\(A_v\)</span> and form <span class="math" data-tex="\(\eta=\dot\varphi\)">\(\eta=\dot\varphi\)</span>. Before transport, its support corner is
+<span class="math" data-tex="\(p_eMp_e\bar\otimes B(\ell^2)\cong B(\ell^2)\)">\(p_eMp_e\bar\otimes B(\ell^2)\cong B(\ell^2)\)</span>, and its weight is exactly the standard trace. Hence its support modular action is trivial and its centralizer is properly infinite. Thus <span class="math" data-tex="\(\eta\in W_\infty(M)\)">\(\eta\in W_\infty(M)\)</span>.</p>
+<p>For distinct real <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, an off-diagonal element in the balanced centralizer of <span class="math" data-tex="\(e^{-s}\eta\)">\(e^{-s}\eta\)</span> and <span class="math" data-tex="\(e^{-t}\eta\)">\(e^{-t}\eta\)</span> must satisfy
+<span class="math math-display" data-tex="\[
+ e^{-isu}x e^{itu}=x\quad(u\in\mathbb R).
+ \tag{CGFM2}
+\]">\[
+ e^{-isu}x e^{itu}=x\quad(u\in\mathbb R).
+ \tag{CGFM2}
+\]</span>
+This is the balanced scalar formula (NS8), now in the faithful support corner of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, where the modular action is the identity. For some <span class="math" data-tex="\(u\)">\(u\)</span> the scalar factor differs from one; therefore <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The central-support argument of Section 4 shows that
+<span class="math math-display" data-tex="\[
+ a_s=\Theta_s(p_M(\eta)),\qquad a_sa_t=0\quad(s\ne t).
+ \tag{CGFM3}
+\]">\[
+ a_s=\Theta_s(p_M(\eta)),\qquad a_sa_t=0\quad(s\ne t).
+ \tag{CGFM3}
+\]</span>
+Every <span class="math" data-tex="\(a_s\)">\(a_s\)</span> is nonzero. Choose a normal state <span class="math" data-tex="\(\nu\)">\(\nu\)</span> of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> supported under <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, as in the last paragraph of Section 4. For all <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+ \nu\bigl((a_s-a_0)^*(a_s-a_0)\bigr)=\nu(a_s+a_0)=1.
+ \tag{CGFM4}
+\]">\[
+ \nu\bigl((a_s-a_0)^*(a_s-a_0)\bigr)=\nu(a_s+a_0)=1.
+ \tag{CGFM4}
+\]</span>
+This excludes sigma-strong continuity at zero. In particular, infinite multiplicity and sigma-finiteness of a carrier projection do not place it in the continuous sector. Equation (CI18) identifies the missing condition as <span class="math" data-tex="\(a_0\le d\)">\(a_0\le d\)</span>.</p>
+<h3 id="diagnostic-2-a-rational-orbit-join-can-remain-on-one-original-central-summand">Diagnostic 2. A rational orbit join can remain on one original central summand</h3>
+<p>Let <span class="math" data-tex="\(M=M_0\oplus M_0\)">\(M=M_0\oplus M_0\)</span>, where <span class="math" data-tex="\(M_0\ne0\)">\(M_0\ne0\)</span> satisfies the standing hypotheses, and let <span class="math" data-tex="\(\Phi=\Phi_0\oplus\Phi_0\)">\(\Phi=\Phi_0\oplus\Phi_0\)</span> for a faithful dominant <span class="math" data-tex="\(\Phi_0\)">\(\Phi_0\)</span>. Put <span class="math" data-tex="\(z=(1,0)\)">\(z=(1,0)\)</span> and <span class="math" data-tex="\(\eta=\Phi_z=\Phi_0\oplus0\)">\(\eta=\Phi_z=\Phi_0\oplus0\)</span>. Compute the rational orbit join of its carrier.</p>
+<p><strong>Solution.</strong> Each scalar multiple of <span class="math" data-tex="\(\Phi_0\)">\(\Phi_0\)</span> is equivalent to <span class="math" data-tex="\(\Phi_0\)">\(\Phi_0\)</span> in its own algebra. Extending the implementer by zero on the second summand proves the same supported equivalence for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Thus <span class="math" data-tex="\(\Theta_s(p_M(\eta))=p_M(\eta)\)">\(\Theta_s(p_M(\eta))=p_M(\eta)\)</span> for every real <span class="math" data-tex="\(s\)">\(s\)</span>. The original-center identity (CI15) gives
+<span class="math math-display" data-tex="\[
+ \bigvee_{r\in\mathbb Q}\Theta_r(p_M(\eta))
+   =p_M(\eta)=\iota(z)d&lt;d.
+ \tag{CGFM5}
+\]">\[
+ \bigvee_{r\in\mathbb Q}\Theta_r(p_M(\eta))
+   =p_M(\eta)=\iota(z)d&lt;d.
+ \tag{CGFM5}
+\]</span>
+The inequality is strict because <span class="math" data-tex="\(\Phi_{1-z}\ne0\)">\(\Phi_{1-z}\ne0\)</span>, so its carrier <span class="math" data-tex="\(\iota(1-z)d\)">\(\iota(1-z)d\)</span> is nonzero. The modular action of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is integrable by (CI5), and its carrier is continuous by (CI18). The proper central summand is fully consistent with both conclusions.</p>
+<h3 id="diagnostic-3-the-sign-of-the-carrier-flow">Diagnostic 3. The sign of the carrier flow</h3>
+<p>Take <span class="math" data-tex="\(N=L^\infty(\mathbb R,dq)\bar\otimes B(\ell^2)\)">\(N=L^\infty(\mathbb R,dq)\bar\otimes B(\ell^2)\)</span>,
+<span class="math" data-tex="\(\theta_s f(q)=f(q+s)\)">\(\theta_s f(q)=f(q+s)\)</span>, and
+<span class="math" data-tex="\(\tau(x)=\int e^q\operatorname{Tr}(x(q))\,dq\)">\(\tau(x)=\int e^q\operatorname{Tr}(x(q))\,dq\)</span>. Let <span class="math" data-tex="\(M=N\rtimes_\theta\mathbb R\)">\(M=N\rtimes_\theta\mathbb R\)</span>, <span class="math" data-tex="\(\Phi=\widehat\tau\)">\(\Phi=\widehat\tau\)</span>, and <span class="math" data-tex="\(z=1_{[0,1]}\otimes1\)">\(z=1_{[0,1]}\otimes1\)</span>. Which interval represents <span class="math" data-tex="\(\Theta_s(p_M(\Phi_z))\)">\(\Theta_s(p_M(\Phi_z))\)</span> under <span class="math" data-tex="\(J\)">\(J\)</span>?</p>
+<p><strong>Solution.</strong> Substitution <span class="math" data-tex="\(r=q+s\)">\(r=q+s\)</span> proves <span class="math" data-tex="\(\tau\theta_s=e^{-s}\tau\)">\(\tau\theta_s=e^{-s}\tau\)</span> on every positive element, by monotone convergence when the value is infinite. The coefficient algebra is properly infinite and has separable predual; its regular crossing acts on a separable Hilbert space and contains the same unital infinite matrix algebra. The standing hypotheses therefore hold. Directly,
+<span class="math math-display" data-tex="\[
+ \theta_s(z)=1_{[-s,1-s]}\otimes1.
+ \tag{CGFM6}
+\]">\[
+ \theta_s(z)=1_{[-s,1-s]}\otimes1.
+ \tag{CGFM6}
+\]</span>
+The implementer <span class="math" data-tex="\(u_sz\)">\(u_sz\)</span> has initial support <span class="math" data-tex="\(z\)">\(z\)</span> and final support <span class="math" data-tex="\(\theta_s(z)\)">\(\theta_s(z)\)</span>. Equation (CI16) gives
+<span class="math math-display" data-tex="\[
+ \Theta_s(p_M(\Phi_z))
+   =p_M(e^{-s}\Phi_z)
+   =p_M(\Phi_{\theta_s(z)})
+   =J(1_{[-s,1-s]}\otimes1).
+ \tag{CGFM7}
+\]">\[
+ \Theta_s(p_M(\Phi_z))
+   =p_M(e^{-s}\Phi_z)
+   =p_M(\Phi_{\theta_s(z)})
+   =J(1_{[-s,1-s]}\otimes1).
+ \tag{CGFM7}
+\]</span>
+The interval moves to the left when <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. For completeness this particular orbit is strongly continuous in the multiplication representation: away from its two endpoints, the indicators converge pointwise as <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, and dominated convergence applies after multiplication by any <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector. Normality of <span class="math" data-tex="\(J\)">\(J\)</span> transports the bounded sigma-strong orbit to the carrier, in agreement with (CI18).</p>
+<p>Finally, when <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>, its amplification, carrier and support algebra are zero. The finite-average contractions increase to the zero identity, and every assertion of (CI39) holds with no nonzero intertwiner or faithful completion required.</p>
+<p><span id="OA-FLOW.CGF.READING"></span><a id="cgf-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, XII.4.1–4.4(i), printed pp. 403–405, develops supported weight comparison and the global carrier. XII.4.18–4.21, printed pp. 417–419, treats dominant weights and the integrability characterization. The carrier for bounded normal functionals in XII.4.4(ii)–(iii) is a separate result.</p>
+<p>The earlier programme proofs used here include <a href="../OA-MOD/OA-MOD-WC.html#the-balanced-centralizer-records-every-comparison">supported weight derivatives and balanced comparison</a>, <a href="OA-FLOW-PC.html#oa-flow.pc.7">projection comparison</a>, <a href="OA-FLOW-TW.html#tw-2">full tensor weights</a>, <a href="OA-FLOW-DA.html#da-squares">dual-action integrability</a>, <a href="OA-FLOW-DWC.html#dwc-2">dominant comparison with continuous eigenfields</a>, and <a href="OA-FLOW-DS.html#ds-6">dominant comparison from pointwise scalar absorption</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-DS.html">Previous lesson</a><a href="OA-FLOW-TCC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CGF.md">Lesson source</a></nav></main></body></html>

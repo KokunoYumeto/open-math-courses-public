@@ -819,6 +819,490 @@ None of these equations makes `β` invertible for a general map. For example, fo
 
 Its image consists of rational sequences with a common denominator. The sequence `(1/n!)_{n≥1}` has no common denominator, so the map is not surjective. All derived objects in this example are computed as stated: `A` is projective, `Q` is flat, and after scalar extension `⊕Q` is projective. This confirms why the original public comparison correctly refrains from an unconditional isomorphism claim.
 
+<a id="SH02-PRP-WHITNEY-TUBE"></a>
+
+<a id="sh02-prp-whitney-tube--the-rank-test-for-a-whitney-tube"></a>
+
+## The rank test for a Whitney tube
+
+Let \(V\) be closed in a finite-dimensional smooth manifold \(M\), with a locally finite smooth Whitney $(a,b)$ stratification and the frontier rule. Write \(S<T\) when \(S\subset\overline T\setminus T\). A smooth tubular chart for \(S\) has base projection \(\pi_S\) and squared normal norm \(\rho_S\); its zero set is \(S\). For an incident upper stratum \(T\), after shrinking this tube near every point of \(S\), the map
+
+\[
+(\pi_S,\rho_S)|_T:T\cap\mathcal T_S
+\longrightarrow S\times(0,\infty)
+\quad\text{is a submersion}.
+\tag{WT1}
+\]
+
+**Proof.** In a local orthonormal trivialization of the normal bundle, use the tubular chart to write \(S=\mathbb R^d\times\{0\}\), \(\pi_S(u,w)=u\) and \(\rho_S(u,w)=|w|^2\). Whitney $(a,b)$ is invariant under this smooth change of coordinates: tangent planes transform by its derivative, and a secant difference transforms by the derivative at its limiting base plus \(o\) of the secant's length. At \(y=(u,w)\in T\), with \(w\ne0\), the kernel of \(d(\pi_S,\rho_S)\) is the orthogonal complement of
+
+\[
+E_y=(\mathbb R^d\times\{0\})
+\oplus\mathbb R(0,w/|w|).
+\tag{WT2}
+\]
+
+If (WT1) failed arbitrarily close to \(p\in S\), choose \(y_j\to p\) at which it fails. After subsequences, the fixed-dimensional planes \(T_{y_j}T\) and the unit normal secants \((0,w_j/|w_j|)\) converge to a plane \(L\) and a vector \(e\). Whitney $(a)$ puts \(T_pS\) in \(L\); Whitney $(b)$, using the lower point \(\pi_S(y_j)\), puts \(e\) in \(L\). Thus the limit of \(E_{y_j}\) lies in \(L\). Failure of surjectivity supplies a unit vector in \(E_{y_j}\cap(T_{y_j}T)^\perp\). A convergent subsequence would give a unit vector in both \(L\) and \(L^\perp\), a contradiction. This proves the local shrinking assertion. Local finiteness allows simultaneous shrinking for the finitely many upper strata near any given lower point. \(\square\)
+
+This is a rank lemma for a given tube. It does not construct mutually compatible tubes for all strata, or tubes compatible with a prescribed stratified submersion.
+
+<a id="SH02-PRP-CONTROLLED-FLOW"></a>
+<a id="sh02-prp-controlled-flow--from-a-controlled-field-to-an-open-local-flow"></a>
+
+## From a controlled field to an open local flow
+
+Suppose tubular control data have been supplied. Their neighborhoods may be shrunk to meet only their base stratum and incident higher strata. A stratified field \(\eta\) is a \(C^1\) tangent vector field \(\eta_T\) on each stratum \(T\). It is **controlled** when, for every \(S\), there is an open tube \(\mathcal T'_S\) on which, for every \(T>S\),
+
+\[
+d\rho_S(\eta_T)=0,\qquad
+ d\pi_S(\eta_T)=\eta_S\circ\pi_S.
+\tag{CF1}
+\]
+
+The usual compatibility identities between different tubes remain part of the supplied data. For the flow argument we use their tubular norm, their incident-stratum neighborhoods, and precisely (CF1). No continuity of \(\eta\) as an ambient vector field is assumed.
+
+**Compact tube observation.** If \(K\subset S\) is compact, a sufficiently small constant \(c>0\) gives a compact set
+
+\[
+C(K,c)=\{z\in V\cap\mathcal T'_S:
+\pi_S(z)\in K,\ \rho_S(z)\le c\}.
+\tag{CF2}
+\]
+
+Indeed choose a closed normal disk bundle over \(K\) of squared radius \(c\) entirely inside the open controlled tube. It is compact, and its tubular image is compact. Intersecting it with the closed set \(V\) remains compact and gives exactly (CF2). Compactness of \(K\) gives a common positive radius. This argument also shows that these tubes with radius tending to zero form a neighborhood basis over compact base pieces.
+
+The intersection of a positive-radius level with one upper stratum need not be compact. For example, in the partition of \(\mathbb R^2\) into the origin, the punctured horizontal axis and its complement, a circle centered at the origin meets the open stratum in a circle with two points deleted. The compact set used below is the closed tube in \(V\), not that stratum intersection.
+
+**Controlled-flow theorem.** The union of the ordinary maximal flows of the fields \(\eta_T\) defines a continuous stratum-preserving flow \(\alpha:J\to V\), where \(J\subset\mathbb R\times V\) is open and contains \(\{0\}\times V\). Its domain on each point is the ordinary maximal interval on that point's stratum. At every finite endpoint a trajectory leaves every compact subset of \(V\). Fixed-time maps are homeomorphisms between their open domains, with the opposite-time map as inverse.
+
+**Finite endpoints.** Let a trajectory in \(T\) have finite positive endpoint \(b\). If it returned to a compact subset arbitrarily close to \(b\), a subsequence would converge to some \(y\in V\). Let \(S\) contain \(y\). If \(S=T\), ordinary \(C^1\) ODE existence near \(y\) gives a uniform extension time and contradicts maximality. Otherwise the frontier rule gives \(S<T\).
+
+Choose a compact neighborhood of \(y\) in \(S\) on which the lower flow exists for a common small positive time \(\delta\). Its trajectories lie inside a larger compact base piece \(K\subset S\). Choose (CF2) inside the controlled tube, with room in both base and radius. For a sufficiently late trajectory point \(z_i\) tending to \(y\), its projection is in the chosen lower neighborhood, its positive radius is smaller than the chosen bound, and \(b-t_i<\delta\). As long as the upper trajectory stays in the tube, uniqueness of the lower ODE and (CF1) give
+
+\[
+\rho_S(\alpha(t_i+s,z))=\rho_S(z_i)>0,\qquad
+\pi_S(\alpha(t_i+s,z))
+=\alpha_S(s,\pi_S(z_i)).
+\tag{CF3}
+\]
+
+Here \(z\) is the original starting point and \(z_i=\alpha(t_i,z)\). These identities hold all the way up to \(b\): a first exit before \(b\) is impossible because the base stays in the interior of the chosen compact base neighborhood and the radius stays strictly below its bound. The closed tube containing those points lies inside the open control neighborhood, so a first exit point would still be an interior tube point. The returning subsequence must therefore have constant positive \(\rho_S\), contradicting \(\rho_S(y)=0\). This proves escape from every compact set at \(b\). Replacing \(\eta\) by \(-\eta\) proves the assertion at a finite negative endpoint. No escape assertion is needed at an infinite endpoint.
+
+**Openness and continuity across strata.** Fix \((t,x)\in J\), with \(x\in S\). Choose a slightly larger compact time interval \(I\) containing both \(0\) and \(t\) in its interior. Ordinary flow on \(S\) gives a compact neighborhood of \(x\) whose trajectories for times in \(I\) lie inside the interior of a compact base piece \(K\subset S\). For nearby points \(y\in V\), their projections lie in that neighborhood and their tube radii are sufficiently small. Until a possible endpoint, (CF1) gives
+
+\[
+\rho_S(\alpha(s,y))=\rho_S(y),\qquad
+\pi_S(\alpha(s,y))=\alpha_S(s,\pi_S(y)).
+\tag{CF4}
+\]
+
+The first-exit argument keeps these trajectories in a fixed compact controlled tube. An endpoint before the end of \(I\) would contradict the compact-escape assertion just proved. Thus \(I\times W\subset J\) for an open neighborhood \(W\) of \(x\) in \(V\), proving openness of \(J\).
+
+For \((s_j,y_j)\to(t,x)\), the same compact tube applies. Equation (CF4) makes their output projections tend to \(\alpha_S(t,x)\) and their radii tend to zero. Every subsequential output limit is therefore the zero normal vector over that projected point, namely \(\alpha_S(t,x)\). Compactness then gives convergence of all outputs, proving continuity. The space is metrizable, so this sequential test suffices. This argument does not infer ambient continuity of the vector field from stratumwise smoothness.
+
+Uniqueness on each stratum gives the group law and the translated maximal intervals
+
+\[
+J_{\alpha(s,x)}=J_x-s,\qquad
+\alpha(-s,\alpha(s,x))=x.
+\tag{CF5}
+\]
+
+Since \(J\) is open and \(\alpha\) is continuous, the fixed-time maps and these inverses are homeomorphisms of their open domains. The union of the maximal stratumwise domains is the domain just proved open; replacing that union by an intersection would be incorrect. Restrictions to smaller time-space neighborhoods are local flows as well, but the maximal flow is the one specified here. \(\square\)
+
+<a id="SH02-PRP-STRATIFIED-PRODUCT"></a>
+<a id="sh02-prp-stratified-product--the-actual-local-product-for-a-real-valued-lift"></a>
+
+### The actual local product for a real-valued lift
+
+Let \(f:V\to\mathbb R\) be continuous, smooth on each stratum, and let the supplied controlled field satisfy \(df(\eta_T)=1\) on each stratum. Subtract \(f(x)\) so that \(f(x)=0\). Along every trajectory,
+
+\[
+f(\alpha(t,y))=f(y)+t.
+\tag{CF6}
+\]
+
+By openness of \(J\), choose \(\epsilon>0\) and an open neighborhood \(W\) of \(x\) with \((-2\epsilon,2\epsilon)\times W\subset J\). Put \(P=W\cap f^{-1}(0)\) and \(I=(-\epsilon,\epsilon)\). The map \(\Phi:P\times I\to V\), \(\Phi(p,t)=\alpha(t,p)\), has an open image. To verify that point rather than assume it, define
+
+\[
+\begin{aligned}
+D&=\{y\in V:(-f(y),y)\in J\},&
+g(y)&=\alpha(-f(y),y),\\
+\Omega&=D\cap f^{-1}(I)\cap g^{-1}(P),&
+\Phi^{-1}(y)&=(g(y),f(y)).
+\end{aligned}
+\tag{CF7}
+\]
+
+The map \(y\mapsto(-f(y),y)\) is continuous, so \(D\) is open. The function \(g:D\to f^{-1}(0)\) is continuous by the flow theorem and (CF6). The set \(P\) is relatively open in the fibre, so \(\Omega\) is open in \(V\). For \(y\in\Omega\), the positive or negative flow from \(g(y)\in P\subset W\) exists for time \(f(y)\in I\), and (CF5) gives \(\Phi(g(y),f(y))=y\). Conversely, for \(y=\Phi(p,t)\), (CF6) gives \(f(y)=t\) and (CF5) gives \(g(y)=p\), so \(y\in\Omega\). Thus (CF7) is the actual continuous inverse, and \(\Phi\) is a stratum-preserving homeomorphism. In particular each original stratum meets this product as \((T\cap P)\times I\). There is no properness hypothesis on \(f\) and no global product claim.
+
+The smooth-ODE existence, uniqueness and dependence theorem, ordinary tubular neighborhoods and the displayed control data are the inputs of this proof. Mather’s *Notes on Topological Stability*, [Lemma 7.3 (typeset page 16)](https://webhomes.maths.ed.ac.uk/~v1ranick/surgery/mather.pdf#page=16) and [Proposition 10.1 (manuscript printed 53–56, PDF 133–136)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/matherj.pdf#page=133), are mathematical antecedents. The present argument spells out compact closed tubes, finite-endpoint trapping and continuity, with independently written exposition and calculations dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No licence to adapt the manuscript's text is asserted. The [compatible-tube construction](#SH02-PRP-COMPATIBLE-TUBES) below supplies these data for a smooth ambient map submersive on each stratum, relative to explicit ordinary differential-topology inputs. The [lift construction](#SH02-PRP-CONTROLLED-LIFT) below supplies a controlled field once those data are given; neither the radius-rank lemma nor the conditional flow theorem constructs the data.
+
+<a id="SH02-PRP-CONTROLLED-LIFT"></a>
+<a id="sh02-prp-controlled-lift--lifting-a-field-after-control-data-are-given"></a>
+
+## Lifting a field after control data are given
+
+Keep the closed finite-dimensional Whitney-stratified space above. Suppose compatible smooth tubular control data are already given, with the rank property (WT1) on every incident upper stratum. Let \(f:V\to P\) be continuous and smooth and submersive on each stratum, where \(P\) is a smooth manifold. Assume that, near each lower stratum \(R\), the given data satisfy
+
+\[
+f=f\circ\pi_R.
+\tag{CL1}
+\]
+
+For every smooth vector field \(\zeta\) on \(P\), there is a smooth stratumwise field \(\eta\) with \(df(\eta)=\zeta\circ f\) satisfying (CF1) on an open neighborhood of each lower stratum, common to all its incident upper strata. The field itself need not be continuous across strata. The proof must preserve the control identities when local fields are averaged.
+
+**A neighborhood lemma.** Given open neighborhoods \(A_R\) inside the supplied tubes, shrink them so they meet only \(R\) and its incident upper strata. There are a locally finite family of open neighborhoods \(C_R\) and closed neighborhoods \(B_R\) of \(R\) such that
+
+\[
+\begin{gathered}
+R\subset\operatorname{int}_V B_R\subset B_R\subset C_R\subset A_R,
+\qquad B_R\text{ is closed in }V\setminus\partial R,\\
+C_R\cap C_S=\varnothing\quad\text{if }R,S\text{ are incomparable},\\
+\pi_S(C_S\cap B_R)\subset A_R\quad\text{if }R<S.
+\end{gathered}
+\tag{CL2}
+\]
+
+Here \(\partial R=\overline R\setminus R\) is closed. Local closedness of a stratum makes \(R\) closed in \(V\setminus\partial R\), and the frontier rule gives \(\partial R\subset\partial S\) for \(R<S\).
+
+To prove the lemma, first enlarge the locally finite closed family \(\{\overline R\}\) to a locally finite open family \(\{H_R\}\). One direct construction is to cover \(V\) by open sets meeting only finitely many closures, take a locally finite refinement, and let \(H_R\) be the union of refinement sets that meet \(\overline R\). Each refinement set is assigned to only finitely many strata, so the resulting family is locally finite. Metrizability gives the required locally finite refinement.
+
+In a compatible metric \(d\), let \(D_R\) be the union of the closures of strata incomparable with \(R\). This is closed by local finiteness, and disjoint from \(R\) by the frontier rule. Put \(\delta_R(z)=\min(1,d(z,D_R))\), taking \(\delta_R=1\) if \(D_R\) is empty. The open neighborhood
+
+\[
+N_R=\{z:d(z,\overline R)<\delta_R(z)/3\}
+\tag{CL3}
+\]
+
+contains \(R\). If \(R,S\) are incomparable, membership in both \(N_R\) and \(N_S\) would give \(d(z,\overline R)<d(z,\overline S)/3\) and the reverse inequality, which is impossible.
+
+Construct \(C_S,B_S\) in increasing stratum dimension. Previously chosen \(B_R\) with \(R<S\) are closed in \(V\setminus\partial S\), because \(\partial R\subset\partial S\). On this open space, intersect \(A_S\cap H_S\cap N_S\) with
+
+\((V\setminus B_R)\cup\pi_S^{-1}(A_R)\) for every \(R<S\).
+
+The intersection is open: locally only finitely many \(B_R\) occur, and every other condition is automatic. It contains \(S\), since \(s\in S\cap B_R\) implies \(s\in A_R\) and \(\pi_S(s)=s\). Call this intersection \(C_S\). Normality of \(V\setminus\partial S\) now gives a closed neighborhood \(B_S\) of its closed subset \(S\) contained in \(C_S\). This proves (CL2), including the open room \(C_S\) around \(B_S\). No smooth partition has yet been taken.
+
+**Induction over the skeleton.** Suppose fields have been chosen on all strata of dimension at most \(k\), with the lift and control identities. Their union is a closed skeleton: the frontier rule and local finiteness retain all lower boundary strata. For each such \(R\), choose an open \(A_R\) on which its control identities with all already treated higher strata hold, and on which (CL1) holds. Relative open neighborhoods on the skeleton extend to open neighborhoods in \(V\). Apply the lemma once to this family, before constructing fields on any stratum of dimension \(k+1\).
+
+Fix one such stratum \(X\) and \(v\in X\). The active lower strata \(R\) with \(v\in B_R\) form a finite chain by (CL2). Moreover \(B_R\cap X\) is closed in \(X\): the higher-dimensional \(X\) misses \(\partial R\). Local finiteness and closedness therefore give a neighborhood of \(v\) in \(X\) meeting no inactive \(B_R\).
+
+If the active chain is nonempty, let \(Y\) be its largest member and take this neighborhood inside \(C_Y\cap X\). The submersion \((\pi_Y,\rho_Y)|_X\) has a smooth local right inverse for its differential; a smooth bundle metric supplies one by the adjoint and the inverse of the resulting positive definite operator. Thus choose a local field \(w\) with
+
+\[
+d\pi_Y(w)=\eta_Y\circ\pi_Y,\qquad d\rho_Y(w)=0.
+\tag{CL4}
+\]
+
+For any other active \(R<Y\) at a nearby point in \(B_R\), (CL2) puts \(\pi_Y(v)\) in \(A_R\). The supplied tube identities \(\pi_R\pi_Y=\pi_R\), \(\rho_R\pi_Y=\rho_R\) are therefore defined on a neighborhood of that point. Differentiating them and using the already controlled field on \(Y\) gives
+
+\[
+\begin{aligned}
+d\rho_R(w)&=d\rho_R(\eta_Y)\circ\pi_Y=0,\\
+d\pi_R(w)&=d\pi_R(\eta_Y)\circ\pi_Y
+=\eta_R\circ\pi_R,\\
+df(w)&=df(\eta_Y)\circ\pi_Y=\zeta\circ f.
+\end{aligned}
+\tag{CL5}
+\]
+
+The final line uses (CL1) on \(C_Y\). These equalities apply to every active constraint on the local neighborhood, even when \(Y\) ceases to be active at a nearby point: that point is still in \(C_Y\). No new active lower stratum can enter, by the neighborhood choice. If the active chain at \(v\) is empty, instead use an ordinary local lift through the submersion \(f|_X\), on a neighborhood avoiding all \(B_R\).
+
+These neighborhoods cover \(X\). Choose a smooth locally finite partition of unity \(\{\psi_i\}\) subordinate to them, with corresponding local fields \(w_i\), and set
+
+\[
+\eta_X=\sum_i\psi_iw_i,\qquad \sum_i\psi_i=1.
+\tag{CL6}
+\]
+
+At a point in \(B_R\cap X\), every contributing field satisfies the same affine equations \(d\rho_R(w_i)=0\), \(d\pi_R(w_i)=\eta_R\circ\pi_R\) and \(df(w_i)=\zeta\circ f\). Equation (CL6) preserves them because the differentials are linear at that point and the weights sum to one. Derivatives of the weights do not occur when a differential is applied to the value of a vector field. The new field is therefore controlled on the open neighborhood \(\operatorname{int}_V B_R\). The same family works for every new stratum \(X\), so this is one neighborhood per lower stratum rather than separate neighborhoods for each pair.
+
+Starting with the ordinary lifts on the lowest-dimensional strata and repeating finitely many dimension steps completes the construction. Later shrinkings preserve the earlier identities. For \(P=\mathbb R\) and \(\zeta=1\), this supplies the field used in (CF6); the preceding flow and product proofs then apply. No properness hypothesis or compactness of a stratum is used. \(\square\)
+
+[Mather, *Notes on Topological Stability*, Proposition 9.1, manuscript printed 46–50 / PDF 126–130](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/matherj.pdf#page=127), is the mathematical antecedent. This independent proof makes the neighborhood shrinking, closed active constraints and affine averaging explicit; its new exposition and calculations are dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The [compatible-tube construction](#SH02-PRP-COMPATIBLE-TUBES) below supplies those data for a smooth ambient map submersive on each stratum. Its ordinary differential-topology inputs are proved in the smooth foundations below.
+
+<a id="SH02-PRP-COMPATIBLE-TUBES"></a>
+<a id="sh02-prp-compatible-tubes--constructing-compatible-whitney-tubes"></a>
+
+## Constructing compatible Whitney tubes
+
+Let \(V\) be closed in a finite-dimensional smooth manifold \(M\), with a locally finite smooth Whitney $(a,b)$ stratification satisfying the frontier rule. Let \(f:M\to P\) be smooth and submersive on **every stratum**. Then there are smooth tubular data \((\mathcal T_S,\pi_S,\rho_S)\) such that
+
+\[
+f\pi_S=f,\qquad
+\pi_R\pi_S=\pi_R,\qquad \rho_R\pi_S=\rho_R\quad(R<S),
+\tag{CTU1}
+\]
+
+where the last two identities are required wherever both sides are defined. The tubes can be shrunk to a locally finite family, to exclude nonincident strata, and to satisfy (WT1). The ambient map need only be a submersion near \(V\): its stratumwise submersivity already gives this after restriction to an open neighborhood. Properness of \(f\) is unnecessary.
+
+The construction below uses the inverse function theorem, ordinary smooth ODE existence and dependence, smooth bundle metrics and connections, and smooth partitions of unity on manifolds. These are explicit ordinary differential-topology inputs. It constructs the compatible tubes directly; no relative tube-isotopy extension theorem is assumed.
+
+### Shrinking a local normal map to an actual tube
+
+Here is the needed injectivity lemma. Suppose \(X\) is a closed embedded submanifold of \(M\), \(E\to X\) is a smooth inner-product bundle, and \(F\) is defined on a neighborhood of its zero section, with \(F(x,0)=x\) and invertible differential there. Then a positive smooth radius \(\epsilon(x)\) makes \(F:B_\epsilon E\to M\) a diffeomorphism onto an open neighborhood of \(X\).
+
+For the proof take a locally finite ambient cover \(\{O_i\}\) near \(X\), whose closures over \(X\) are compact and lie in inverse-function charts for \(F\), and add \(M\setminus X\) to cover \(M\). For each \(O_i\) choose \(a_i>0\) such that the entire bundle region over \(X\cap O_i\) of radius \(a_i\) lies in its one injectivity chart. Compactness of its zero-section base supplies that radius. In a compatible Riemannian distance, let \(r>0\) be a Lipschitz function with Lipschitz constant at most one and such that every \(B_{3r(x)}(x)\), for \(x\in X\), lies in some \(O_i\). Explicitly, one eighth of the supremum of \(\min(1,d(z,M\setminus O))\) over the ambient cover is positive, Lipschitz and has this property. An empty complement is assigned capped distance one.
+
+Choose \(\epsilon\) small enough that \(F\) is defined and a local diffeomorphism on \(B_\epsilon E\), that \(\epsilon(x)<a_i\) whenever \(x\in O_i\), and that \(d(F(x,v),x)<r(x)/8\). The last condition is open around the zero section by continuity. Local finiteness and a smooth partition of unity give a positive smooth minorant satisfying all these restrictions. If \(F(x,v)=F(y,w)\), then
+
+\[
+d(x,y)<\frac{r(x)+r(y)}8
+\le\frac{2r(x)+d(x,y)}8,
+\qquad d(x,y)<\frac{2r(x)}7.
+\tag{CTU2}
+\]
+
+Thus \(x,y\) lie in one \(O_i\), and both vectors lie in its same injectivity chart. They are equal. An injective local diffeomorphism has smooth inverse on its open image, proving the lemma. For a locally closed \(X\), first restrict the ambient manifold to \(M\setminus\partial X\), in which \(X\) is closed, and keep the image there by shrinking.
+
+This also proves the ordinary tube theorem needed below. Choose a smooth Riemannian metric on \(M\), let \(E=(TX)^\perp\) over \(X\), and use the normal exponential map. The geodesic ODE gives a smooth map near the zero section whose differential there is \((a,v)\mapsto a+v\), an isomorphism. Apply the injectivity lemma. Consequently the following argument has no unproved ordinary-tube existence step beyond the stated calculus, ODE and metric inputs.
+
+### A normal motion preserving the existing lower controls
+
+Construct the data in increasing stratum dimension. Suppose data on the closed skeleton of dimensions less than \(k\) have already been made mutually compatible and compatible with \(f\). Shrink their tubes using (WT1) so \(q_R=(\pi_R,\rho_R)\) is submersive on every incident upper stratum. Local finiteness makes the simultaneous rank shrinking possible at each lower point.
+
+Apply the proof of (CL2) in the ambient manifold to these lower strata. That proof uses only their locally finite closed closures, their frontier rule, their retractions and metric normality; it does not require them to partition the ambient space. Closedness of \(V\) makes their closure family locally finite in \(M\) as well. Obtain locally finite \(B_R\subset C_R\subset A_R\subset\mathcal T_R\), with \(B_R\) closed in \(M\setminus\partial R\), open room \(C_R\), no incomparable overlaps, and
+
+\[
+\pi_Y(C_Y\cap B_R)\subset A_R\quad(R<Y).
+\tag{CTU3}
+\]
+
+Choose inner tubular restrictions \(I_R\) whose closures in \(M\setminus\partial R\) lie in \(\operatorname{int} B_R\). To do this first choose an open neighborhood of the closed subset \(R\) with closure inside \(\operatorname{int} B_R\), and then choose a positive smooth tube radius fitting inside it. This choice is made once for all strata of the new dimension.
+
+Fix a new stratum \(X\) of dimension \(k\), and choose an ordinary tube \(\phi:E\supset U\to M\) for \(X\), with a metric connection on \(E\). At \(u\in E_x\), write \(b^H_u\) for the horizontal lift of \(b\in T_xX\) and \(v^V_u\) for the vertical vector corresponding to \(v\in E_x\). For a function or manifold map \(h\) on the image define \(d^Hh(b)=d(h\phi)(b^H)\) and \(d^Vh(v)=d(h\phi)(v^V)\).
+
+Restrict \(U\) to an open neighborhood of the zero section whose image misses the old skeleton. On it \(d^Hf\) is surjective; whenever \(\phi(u)\in B_R\), also require \(d^Hq_R\) to be surjective. These are possible open restrictions: at the zero section they are respectively the submersion of \(f|_X\) and (WT1). Each \(B_R\) is closed off the old skeleton, and the family is locally finite, so inactive constraints can be excluded locally.
+
+At a point \(u\), the active \(R\) with \(\phi(u)\in B_R\) form a finite chain. On a small neighborhood exclude every inactive \(B_R\). If the chain has largest member \(Y\), keep that neighborhood inside \(\phi^{-1}(C_Y)\) and use a smooth right inverse \(L_Y\) of \(d^Hq_Y\) to choose the base correction
+
+\[
+b_Y(u,v)=-L_Y(u)\,d^Vq_Y(v),\qquad
+ d(q_Y\phi)(b_Y^H+v^V)=0.
+\tag{CTU4}
+\]
+
+For every other active \(R<Y\), (CTU3) ensures that the old identities \(q_R=q_R\pi_Y\) are actually defined near the point. Hence \(q_R\) factors there through the \(\pi_Y\) component of \(q_Y\). Also \(f=f\pi_Y\). Thus the same corrected motion annihilates all these maps. If there is no active lower stratum, instead use a right inverse of \(d^Hf\) and set \(b_f=-L_f d^Vf(v)\).
+
+A smooth locally finite partition of unity on \(U\) averages these local corrections. As in (CL6), every contributing correction satisfies the same active linear equations, now with the fixed inhomogeneous term \(d^Vh(v)\). The weights sum to one, so the average \(b(u,v)\), smooth and linear in \(v\), satisfies
+
+\[
+d(f\phi)(b^H+v^V)=0,\qquad
+ d(q_R\phi)(b^H+v^V)=0\quad\text{on }\phi^{-1}(B_R).
+\tag{CTU5}
+\]
+
+If the initially highest active constraint drops nearby, the local correction is still defined in the larger \(C_Y\); no previously inactive constraint can enter its local patch. This is why the closed constraint neighborhoods and their open room were chosen before taking the partition.
+
+### The actual tubular chart and the commutation identities
+
+On \(E\oplus E\) solve the smooth ODE
+
+\[
+\dot x=b(u,v),\qquad
+\nabla_t u=v,\qquad \nabla_t v=0,
+\qquad (x(0),u(0),v(0))=(x,0,v_0).
+\tag{CTU6}
+\]
+
+The first equation and the connection define the horizontal parts of the last two equations, so this is an ordinary smooth vector field on the indicated bundle. At \(v_0=0\) its trajectory is constant. Smooth ODE dependence gives existence for \(0\le t\le1\) on an open neighborhood of all such initial states; shrink the starting radius so the trajectory remains in \(U\). Define \(F_X(x,v_0)=\phi(u(1))\). Equation (CTU5) gives \(fF_X(x,v_0)=f(x)\).
+
+Linearizing (CTU6) at \((x,0,0)\) gives \(\delta v(t)=v_0\), \(\delta u(t)=t v_0\), and \(\delta x(t)=t b(0_x,v_0)\). Connection terms are quadratic in the varied normal variables there. Consequently the normal-quotient component of \(dF_X(v_0)\) is exactly \(v_0\); together with \(F_X(x,0)=x\) this makes the full differential invertible. The injectivity lemma supplies an actual tubular chart, with \(\pi_X(F_X(x,v_0))=x\) and \(\rho_X(F_X(x,v_0))=|v_0|^2\).
+
+For each old \(R\), keep every trajectory starting at \(x\in X\cap I_R\) inside \(\operatorname{int} B_R\). This is a legitimate radius restriction. The closure of \(I_R\) along \(X\) is contained in that open set because \(X\) misses \(\partial R\). At \(v_0=0\) the whole unit-time trajectory is the fixed \(x\); compact-time ODE dependence gives a radius bound near every point of that closure. Away from it the constraint is absent locally. Only finitely many old neighborhoods occur locally, so a positive smooth minorant meets all these bounds simultaneously. Along the resulting trajectory (CTU5) then gives
+
+\[
+q_R(F_X(x,v_0))=q_R(x)\quad(x\in X\cap I_R).
+\tag{CTU7}
+\]
+
+Replace the old tube domains by their fixed inner restrictions \(I_R\). Whenever \(m\in\mathcal T_X\cap I_R\) and \(\pi_X(m)\in I_R\), (CTU7) is precisely both old-new identities in (CTU1). Old-old identities survive restriction. The same \(I_R\) works for every \(X\) of dimension \(k\); their individual starting radii need not agree. There are no control identities between distinct strata of the same dimension.
+
+Finally shrink each new tube into a locally finite open expansion of its stratum closure and away from nonincident strata. Such expansions exist by the construction preceding (CL3); the excluded closures miss the base stratum by the frontier rule. These restrictions preserve all established identities. Repeating the dimension step finitely many times constructs the whole family. Applying (WT1) again after later restrictions retains the rank property. There is no infinite sequence of global shrinkings at a fixed lower point. \(\square\)
+
+For a smooth ambient real function submersive on the strata, this construction, the [controlled-lift proof](#SH02-PRP-CONTROLLED-LIFT), the [continuous-flow proof](#SH02-PRP-CONTROLLED-FLOW), and the [actual local product](#SH02-PRP-STRATIFIED-PRODUCT) now supply the complete geometric argument relative to the explicitly stated ordinary differential-topology inputs.
+
+The mathematical antecedent is [Mather, *Notes on Topological Stability*, Proposition 7.1, manuscript printed 33–40 / PDF 113–120](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/matherj.pdf#page=113). Its original handwritten qualifier requires submersion on each stratum. Its proof uses relative tube extension; the direct normal-motion proof above states its own inputs instead. The new independent exposition and calculations are dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/); no licence to adapt manuscript prose is asserted.
+
+<a id="SH02-PRP-SMOOTH-CONTROL"></a>
+<a id="sh02-prp-smooth-control--smooth-foundations-for-the-control-construction"></a>
+
+## Smooth foundations for the control construction
+
+This supplies the ordinary manifold inputs used in the [compatible-tube construction](#SH02-PRP-COMPATIBLE-TUBES), the [controlled lift](#SH02-PRP-CONTROLLED-LIFT), and their [local flow](#SH02-PRP-CONTROLLED-FLOW). The manifolds here are finite dimensional, Hausdorff, smooth and second countable, without boundary. Countability at infinity also gives second countability: cover each compact member of a countable exhaustion by finitely many charts and take their countable coordinate bases. Vector bundles have finite rank. The elementary starting facts are completeness of the real numbers, compactness of closed bounded Euclidean sets, elementary linear algebra, and Euclidean differentiation and integration with the chain rule and Taylor remainder. No inverse-function, ODE, partition-of-unity or tubular-neighborhood theorem is assumed below.
+
+### Contractions and local inverses
+
+In a complete normed space let a map \(T\) send a nonempty closed ball into itself and have Lipschitz constant \(0\leq q<1\). Starting at any point of the ball and iterating gives
+
+\[
+\|u_{j+1}-u_j\|\leq q^j\|u_1-u_0\|,
+\qquad
+\|u_{j+m}-u_j\|\leq\frac{q^j}{1-q}\|u_1-u_0\|.
+\tag{SCF1}
+\]
+
+The iterates are Cauchy, their limit remains in the ball, and continuity makes that limit a fixed point. Two fixed points have distance at most \(q\) times their own distance, so coincide. For the space of continuous functions on a compact interval with the supremum norm, completeness follows directly: a norm-Cauchy sequence has pointwise limits in Euclidean space, the same Cauchy bound implies uniform convergence, and an epsilon-over-three argument proves continuity of the limit.
+
+We also need smooth dependence of this fixed point, without importing an implicit-function theorem. Suppose \(T(u,p)\) is smooth on an open neighborhood of the ball and a finite-dimensional parameter neighborhood, maps the ball into itself with the same contraction constant, and its fixed points lie in the interior. Smoothness in a normed function space means differentiability with a remainder small in norm; the concrete operator needed below is checked explicitly. Write the fixed point as \(u(p)\). Comparing the two fixed-point equations first proves continuity and then a local Lipschitz bound:
+
+\[
+\|u(p+h)-u(p)\|
+\leq\frac{\|T(u(p),p+h)-T(u(p),p)\|}{1-q},
+\qquad
+D_pu=(I-D_uT)^{-1}D_pT.
+\tag{SCF2}
+\]
+
+For the derivative formula, put \(\Delta u=u(p+h)-u(p)\). The first inequality and a bound on the parameter derivative near the fixed point give \(\Delta u=O(|h|)\). Taylor's formula for the joint variables then gives
+\((I-D_uT)\Delta u=D_pT\,h+o(|h|)\).
+The inverse is the norm-convergent series \(\sum_{j\geq0}(D_uT)^j\), of norm at most \((1-q)^{-1}\). Thus the derivative exists and is continuous. Inversion of invertible bounded operators is itself smooth: near \(A\) expand \((A+H)^{-1}\) by the geometric series in \(A^{-1}H\); its first derivative is \(-A^{-1}HA^{-1}\), and repeated differentiation gives continuous multilinear derivatives. The displayed derivative formula therefore upgrades \(u\) from \(C^1\) to \(C^2\), and inductively to every finite differentiability order.
+
+Now let \(f\) be smooth between open subsets of \(\mathbb R^n\) and let \(A=Df(x_0)\) be invertible. On a sufficiently small closed ball of radius \(r\) about \(x_0\), continuity gives \(\|I-A^{-1}Df(x)\|\leq1/2\). For \(y\) near \(f(x_0)\) set
+
+\[
+T_y(x)=x-A^{-1}(f(x)-y),
+\qquad
+\|A^{-1}(y-f(x_0))\|<r/4.
+\tag{SCF3}
+\]
+
+The mean-value integral along a segment gives contraction constant \(1/2\), and the image lies in the ball of radius \(3r/4\). Its interior fixed point solves \(f(x)=y\) and depends smoothly on \(y\) by SCF2. The same segment estimate proves injectivity of \(f\) on the original ball: if \(f(x)=f(z)\), then \(x-z=T_y(x)-T_y(z)\). Restrict the open ball to the inverse image of the chosen open \(y\)-neighborhood. This gives an actual diffeomorphism, with inverse derivative \(Df(x)^{-1}\). Charts transfer this result to manifolds.
+
+### Smooth ODEs and compact time intervals
+
+Let \(F(t,z,\lambda)\) be smooth on an open Euclidean domain, where \(\lambda\) is a finite-dimensional parameter. Choose a compact product box inside the domain about \((0,z_0,\lambda_0)\), using a closed \(z\)-ball of radius \(r\), with room to enlarge that ball. On the box let \(K\) bound \(|F|\) and \(L\) bound \(\|D_zF\|\). Choose \(h>0\) within the time box so that \(hK<r/2\) and \(hL<1/2\), and take \(|p-z_0|<r/4\). On the closed ball \(\|z-z_0\|_\infty\leq r\) in \(C([-h,h],\mathbb R^n)\) define
+
+\[
+(\Theta_{p,\lambda}z)(t)
+=p+\int_0^t F(s,z(s),\lambda)\,ds,
+\qquad
+\|\Theta z-\Theta w\|_\infty\leq hL\|z-w\|_\infty.
+\tag{SCF4}
+\]
+
+The image has distance less than \(3r/4\) from the constant function \(z_0\), so SCF1 gives a unique fixed point. The fundamental theorem of calculus identifies it with a solution of \(\dot z=F(t,z,\lambda)\) and \(z(0)=p\). Any other local solution enters this same ball on a shorter interval; contraction uniqueness there, followed by restarting at an equality point, proves local uniqueness wherever two solutions overlap.
+
+Here the function-space smoothness used in SCF2 can be verified, rather than assumed. The pointwise substitution followed by integration has derivatives
+
+\
+\bigl(D_z^m\Theta[z\bigr)(t)
+=\int_0^t D_z^mF(s,z(s),\lambda)
+       [v_1(s),\ldots,v_m(s)]\,ds
+\quad(m\geq1).
+\tag{SCF5}
+\]
+
+Mixed parameter derivatives have the same form, and the initial-value derivative adds the constant function. All the finite-dimensional derivatives are bounded and uniformly continuous on a slightly larger compact box. Taylor remainders there, integrated over an interval of length at most \(h\), tend to zero in the supremum norm with the required order. This proves all the asserted continuous multilinear derivatives. SCF2 gives smooth dependence on \((p,\lambda)\) with values in the continuous-function space. Evaluation at a fixed time preserves these derivatives and their continuity. The integral equation then gives \(\partial_tz=F(t,z,\lambda)\); differentiation in parameters and repeated differentiation in time prove joint smoothness, including every mixed derivative. This argument does not assume that evaluation at a variable time is smooth on the whole continuous-function space.
+
+Initial time is included by replacing \(F(t,z,\lambda)\) with \(F(s+t,z,\lambda)\) and treating \(s\) as another parameter. In particular the derivatives of the solution are justified before writing the variational equation. For a direction \((a,b)\) in initial value and parameter, they satisfy
+
+\[
+\dot Z(t)=D_zF(t,z(t),\lambda)Z(t)
+          +D_\lambda F(t,z(t),\lambda)b,
+\qquad Z(0)=a.
+\tag{SCF6}
+\]
+
+The same local proof works in charts, and uniqueness identifies the chart solutions. A given solution on a compact time interval has compact graph. Cover that graph by finitely many of the local solution boxes just constructed and subdivide time finely enough that each successive piece stays in an appropriate box. Starting near its initial point, the finitely many smooth solution maps compose; shrink the initial neighborhood successively to keep each endpoint in the next box. This proves that nearby solutions exist on the whole interval and depend smoothly there. The finite subdivision is justified by pulling the boxes back to an open cover of the compact time interval and taking a Lebesgue number. Because the original solution has local continuations at the two endpoints, the conclusion holds on a slightly larger interval too. Thus the domain of the maximal local solution is open in time, initial value, initial time and parameter; maximal solutions are the union of their compatible local solutions.
+
+This also gives the compact nonescape criterion used for a smooth stratum. If a solution at a finite right endpoint has a subsequence converging to an interior point of the equation's domain, select a relatively compact chart ball there and a smaller concentric ball. A bound \(K\) for the vector field implies that traversing their fixed radial gap takes at least that gap divided by \(K\) (with the zero-field case immediate). For subsequence times sufficiently close to the endpoint, the solution cannot exit the larger ball before that endpoint. Its speed is then bounded, so it has a limit there. Solve at that endpoint and limit, and glue by uniqueness. For a solution confined in a compact subset of the domain, such a convergent subsequence exists. No global completeness assertion is needed.
+
+### Partitions, variable radii and locally finite neighborhoods
+
+A second-countable manifold has a countable cover by precompact coordinate balls. To see the countable-subcover step directly, for each member of a countable basis contained in some member of an open cover choose one such cover member; these choices cover the space. Starting with the precompact balls, form successive finite unions of their closures, choosing each next union large enough to contain the previous compact union in the union of the corresponding open balls and to include the next enumerated ball. This gives compact sets \(K_j\subset\operatorname{int}K_{j+1}\) whose interiors cover the manifold. Set \(K_j=\varnothing\) for \(j\leq0\).
+
+Given any open cover, cover each compact band \(K_j\setminus\operatorname{int}K_{j-1}\) by finitely many inner coordinate balls, with larger coordinate balls whose closures lie both in an assigned cover member and in \(\operatorname{int}K_{j+1}\setminus K_{j-2}\). Such choices exist because the band lies in that open shell. All these inner balls cover the manifold. The family of larger closed balls is locally finite: a neighborhood inside \(\operatorname{int}K_N\) misses every shell with \(j\geq N+2\), and only finitely many balls came from each remaining band.
+
+In each larger ball choose a nonnegative smooth bump positive on its inner ball and supported in a still smaller closed ball inside the larger one. For example in coordinates use \(b(\rho^2-|x|^2)\), where \(b(t)=e^{-1/t^2}\) for \(t>0\) and \(b(t)=0\) for \(t\leq0\). Every derivative for positive \(t\) is a polynomial in \(1/t\) times the exponential, tending to zero at the boundary; extension by zero is therefore smooth. Extending the coordinate bumps to the manifold gives functions \(b_i\) with locally finite supports and positive sum. Consequently
+
+\[
+\theta_i=\frac{b_i}{\sum_j b_j},
+\qquad
+\theta_i\geq0,\quad \sum_i\theta_i=1,\quad
+\operatorname{supp}\theta_i\subset U_i
+\tag{SCF7}
+\]
+
+is a smooth partition subordinate to the assigned cover. The local finiteness is neighborhood finiteness, not merely finiteness at each point. This is the scope needed for differentiating sums of local lifts.
+
+For any positive lower-semicontinuous function \(a\), choose local neighborhoods on which \(a>c_i>0\), and a partition subordinate to them. Then
+
+\[
+\varepsilon(x)=\tfrac12\sum_i\theta_i(x)c_i
+\quad\hbox{satisfies}\quad 0<\varepsilon(x)<a(x).
+\tag{SCF8}
+\]
+
+In particular an open neighborhood \(G\) of the zero section of a metrized finite-rank bundle contains a variable-radius disk neighborhood. Define
+\(a(x)=\sup\{0<r\leq1:\{v\in E_x:|v|\leq r\}\subset G\}\).
+It is positive. If \(a(x)>c\), choose a larger admissible radius; compactness of that fiber disk and a local trivialization show that slightly smaller disks remain in \(G\) over a neighborhood of \(x\). Hence \(a\) is lower semicontinuous. SCF8 supplies a smooth positive radius with its closed fiber disk in \(G\). Finitely many open requirements can first be intersected. For a locally finite family of requirements imposed over closed base sets, their implications define an open neighborhood of the zero section: locally only finitely many closed sets occur, and failure of one implication is closed locally. Apply the same radius argument to that neighborhood. This explains the variable shrinkings in the tube proof without a uniform radius.
+
+### Bundle metrics, connections and right inverses
+
+On a finite-rank real bundle, use local frames to put Euclidean metrics \(h_i\) on each trivialization and set \(h=\sum_i\theta_i h_i\). At every base point at least one weight is positive, so \(h\) is a positive definite smooth bundle metric. Likewise the local frame connections give a connection \(D=\sum_i\theta_iD_i\). The sum extends smoothly because each support lies inside its frame domain. Its Leibniz rule follows from \(\sum_i\theta_i=1\); differentiating the weights is not part of this definition.
+
+To make the connection metric compatible define the endomorphism-valued one-form \(A\) by
+
+\[
+h(A_Xs,t)=\tfrac12(D_Xh)(s,t),\qquad
+\nabla_Xs=D_Xs+A_Xs,\qquad \nabla h=0.
+\tag{SCF9}
+\]
+
+Here \((D_Xh)(s,t)=X(h(s,t))-h(D_Xs,t)-h(s,D_Xt)\) is a smooth symmetric tensor in \(s,t\). Nondegeneracy of \(h\) determines \(A\), and substituting the formula subtracts two halves of that tensor, proving the last identity.
+
+If a smooth bundle map \(B:E\to F\) is surjective, the metrics define its adjoint and the smooth right inverse
+
+\[
+L=B^*(BB^*)^{-1},\qquad BL=I_F.
+\tag{SCF10}
+\]
+
+Indeed \(\langle BB^*w,w\rangle=|B^*w|^2\) is positive for nonzero \(w\): surjectivity of \(B\) makes \(B^*\) injective. In a local frame its inverse is smooth by the determinant formula. This proves the right-inverse construction used in the affine lifting and horizontal correction equations.
+
+### Metrics, closed-set shrinkings and ordinary tubes
+
+Apply the bundle metric construction to the tangent bundle. Its Riemannian length distance \(d_g\) on each connected component is finite because a connected manifold is path connected by piecewise coordinate paths. It is positive off the diagonal and induces the given topology. For the local check, on a precompact coordinate ball the metric is bounded above and below by positive constants times the Euclidean metric. Straight segments give the upper distance bound near its center; any path exiting a smaller concentric ball has length at least the lower constant times its radial gap, and paths staying in the chart satisfy the Euclidean lower bound. This proves both positivity and the neighborhood comparison. A bounded compatible metric on the whole manifold is
+
+\[
+d(x,y)=
+\begin{cases}
+\min\{1,d_g(x,y)\},&x,y\text{ in the same component},\\
+2,&x,y\text{ in different components}.
+\end{cases}
+\tag{SCF11}
+\]
+
+The triangle inequality follows from that for length and the truncation inequality; a triangle crossing components has two sides equal to \(2\). For a closed set \(F\) in an open set \(G\), distances give the shrinking
+\(H=\{x:d(x,F)<\tfrac12d(x,M\setminus G)\}\).
+It contains \(F\) and its closure lies in \(G\). At a point outside \(G\) the second distance is zero and the first is positive, because \(F\) is closed. Empty sets are handled by taking \(H=\varnothing\) or \(H=M\) as appropriate. Thus the required normality and closed-neighborhood shrinkings follow from this explicit metric.
+
+For a locally finite family of closed sets \(F_i\), use the locally finite precompact ball cover above. Each closed ball meets only finitely many \(F_i\), by compactness and local finiteness. Let \(H_i\) be the union of the open balls meeting \(F_i\). It contains \(F_i\); the family of closures \(\overline H_i\) is locally finite, since locally only finitely many closed balls occur and each meets finitely many indices. Intersect with any assigned open neighborhood of \(F_i\), then apply the preceding metric shrinking to obtain open expansions whose closures remain inside those assigned neighborhoods and remain locally finite. All these arguments also apply in an open manifold obtained by deleting a frontier.
+
+For completeness, the ordinary normal exponential used in the tube construction has the required differential without assuming a tube theorem. Given the tangent metric, define its torsion-free metric connection by the Koszul identity
+\(2g(\nabla_XY,Z)=Xg(Y,Z)+Yg(Z,X)-Zg(X,Y)-g(X,[Y,Z])+g(Y,[Z,X])+g(Z,[X,Y])\).
+Expanding brackets and derivatives proves linearity in \(X,Z\) and the Leibniz rule in \(Y\); nondegeneracy defines the connection intrinsically. In coordinates its coefficients and geodesic equation are
+
+\[
+\Gamma^i_{jk}
+=\tfrac12g^{i\ell}
+(\partial_jg_{k\ell}+\partial_kg_{j\ell}-\partial_\ell g_{jk}),
+\qquad
+\dot q^i=v^i,\quad
+\dot v^i=-\Gamma^i_{jk}(q)v^jv^k.
+\tag{SCF12}
+\]
+
+Repeated indices are summed. SCF4–6 give a smooth local solution. At initial velocity zero it is the constant solution, defined throughout \([0,1]\); compact-time openness gives a neighborhood of each zero initial vector on which the time-one endpoint \(\exp_x(v)\) is defined smoothly. These neighborhoods together form an open neighborhood of the zero section, and SCF8 gives a positive variable radius inside it. At zero velocity the quadratic term in SCF12 has zero linearization. For initial variation \((a,w)\) the linearized solution is \(\delta v(t)=w\), \(\delta q(t)=a+tw\), so
+\(d\exp_{(x,0)}(a,w)=a+w\).
+
+For an embedded submanifold \(X\), take the normal bundle as the metric orthogonal complement of \(TX\). The restricted exponential fixes \(X\) and has invertible zero-section differential, since \(TX\oplus(TX)^\perp=TM|_X\). SCF3 supplies its local inverses. The [injective-radius lemma](#SH02-PRP-COMPATIBLE-TUBES) then produces a single variable-radius neighborhood on which it is an actual tube diffeomorphism; that lemma uses only these local inverses, a compatible metric and a smooth positive minorant, all proved here. For locally closed \(X\), delete its frontier first, making it closed in an open manifold. No geodesic completeness or fixed global radius has been used.
+
+The same constructions apply to the bundle system used in the compatible tube proof: its connection coefficients are smooth, and its zero-velocity trajectories are equilibria. SCF6 justifies its zero-section endpoint differential; SCF8 justifies the accumulated open radius restrictions. Together with the earlier Whitney rank, finite-chain lifting and controlled-flow arguments, these proofs discharge that route's ordinary smooth inputs relative to the elementary starting facts stated above. The deeper subanalytic and microsupport statements are separate inputs.
+
+The partition antecedent is Holger Brenner's lecture 22, Lemmas 22.6 and 22.9 and Theorem 22.10, in [the programme D50 reader](https://kokunoyumeto.github.io/program-matematika-indonesia/backend/d50/reader/index.html#o011-brenner-u22-l22). Its [exact captured edition and licence](https://github.com/KokunoYumeto/program-matematika-indonesia/blob/06be492fda092e4341f6286b2a7b081aecaa5d1a/docs/backend/d50/LICENSE.md) retain CC BY-SA 4.0 for that source and its translation. Its compact-exhaustion proof gives the neighborhood local finiteness needed here; the smooth specialization and flat-boundary check are made explicit above. For the ordinary ODE antecedents see Gerald Teschl, [*Ordinary Differential Equations and Dynamical Systems*, Theorems 2.1, 2.2, 2.10, 2.11 and 2.13–2.16](https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf#page=46), printed pages 35–38, 46–48 and 51–53. His preliminary edition has its own redistribution restrictions. This new section is an independently written proof of standard mathematical facts; it reproduces no source prose, source images or PDF, and is dedicated under [CC0](https://creativecommons.org/publicdomain/zero/1.0/). It makes no new-research or independent-review claim.
+
 ## Antecedents and reuse
 
 The Stacks Project supplies the mathematical antecedents identified by exact tags in these proofs. The [cited edition in the official repository](https://github.com/stacks/stacks-project/tree/a04446e57ec1fbc252a871afcec7752fb2807b14) has a [license notice](https://raw.githubusercontent.com/stacks/stacks-project/a04446e57ec1fbc252a871afcec7752fb2807b14/introduction.tex) specifies GFDL-1.2-or-later with no invariant sections or cover texts. The exposition and calculations here are original. The original programme exposition is dedicated under CC0 1.0 Universal.

@@ -2,11 +2,13 @@
 
 The Euler characteristic of a compact manifold can be computed from finite cells, from duality, or from intersections of a section with the zero section. These calculations explain both the vanishing in odd dimension and the Hopf index formula. Orientation lines let the same argument work on nonorientable manifolds.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original programme exposition, examples and solutions are dedicated to the public domain under CC0.*
 
-Learn first Perfect coefficients on compact fibres for finite compact cohomology, and Constructible costalks and Verdier duality for the dualizing orientation complex and actual duality. Continuous sections and supported cycle intersections proves the section class and its complete supported comparison. Differential sections and proper-below Euler indices proves the compact index for every continuous section. Orientations of conormal cycles and transverse intersections fixes the integral normal-first coefficient and ordered transverse sign. These are written programme proofs relative to their stated foundations; compatible triangulation and other lower foundational obligations remain open.
+The finite compact-cohomology proof supplies the perfect section complexes, and the trace-normalized dual-sections pairing supplies their actual duality map. The Euclidean compact-support generator, orientation line and submersion dualizing comparison fix the integral Thom class and \(\omega_X=\operatorname{or}_X[n]\). We use a finite compatible subanalytic triangulation for the compact manifold. The proof below keeps the skeleton localization maps, so their Euler sum is an integer over every field.
 
-Throughout, manifolds have no boundary. They are real analytic, Hausdorff and countable at infinity, with the standing finite dimension bounds. The compact manifold in the main theorems has dimension \(n\). The vector-field proof accepts smooth fields, and therefore includes every analytic field in the assigned exercise.
+For the index, the continuous-section supported unit and complete supported comparison identify the ordered cup with ordinary pullback of the cycle class and proper trace on its actual intersection. The compact characteristic-cycle index evaluates that class for every continuous section. The tangent sign of the graph-normalized conormal must be combined with the signed constant-sheaf coefficient; their two factors cancel for the positive zero-section Thom class used here. The ordered transverse formula and local map-of-pairs sign calculation then fix the determinant without a global orientation choice.
+
+Throughout, manifolds have no boundary. They are real analytic, Hausdorff and countable at infinity, with the standing finite dimension bounds. The compact manifold in the global theorems has dimension \(n\). The supported index is defined for continuous vector fields with isolated zeros. Its determinant formula applies when the field is continuously differentiable near the zero, in particular for smooth or analytic fields. Local indices require only an isolating neighborhood; compactness of \(X\) is used for the global Euler number and finite total trace.
 
 ## Finite cells give an integer independent of the field
 
@@ -25,7 +27,9 @@ For a finite-dimensional local system \(L\) of constant rank \(r\) on a connecte
  \qquad\text{(2)}
 \]
 
-**Proof.** Choose a finite compatible triangulation of the compact manifold and filter it by its closed skeleta. The difference between successive skeleta is a finite disjoint union of open simplices. The local system on each such simplex is constant of rank \(r\); compact sections are \(k^r[-\dim\sigma]\). The closed/open localization triangles and their finite compact-section long exact sequences make Euler characteristic additive.
+**Proof.** Fix a finite compatible triangulation, independent of the coefficient field, and let \(X_q\) be its closed \(q\)-skeleton, with \(X_{-1}=\varnothing\). Put \(L_q=L|_{X_q}\), let \(a_q:X_{q-1}\hookrightarrow X_q\) be the closed inclusion and \(b_q:X_q\setminus X_{q-1}\hookrightarrow X_q\) the open inclusion. The actual localization triangle is \(b_{q!}b_q^{-1}L_q\to L_q\to a_{q*}L_{q-1}\xrightarrow{+1}\). Applying \(R\Gamma_c(X_q;-)\), proper-support composition identifies its first term with the finite sum of compact section complexes on the open \(q\)-simplices, and its last term with \(R\Gamma_c(X_{q-1};L_{q-1})\).
+
+Every such simplex is contractible, so the restricted local system is constant with fibre \(k^r\). The ordered compact-support calculation on \(\mathbb R^q\) gives \(R\Gamma_c(\sigma^\circ;L)=k^r[-q]\). These terms are perfect. Starting with the empty skeleton, the finite triangles also prove perfection of the whole section complex while retaining all attaching maps. Each finite long exact cohomology sequence has alternating dimension sum zero. Hence the difference between the Euler numbers of two successive skeleta is \(r(-1)^q\) times the number of their new \(q\)-simplices. At the final compact skeleton ordinary and compact sections coincide.
 
 Adding the open-simplex contributions gives the first equality in (2). Applying the same argument to \(k_X\) gives the second. Euler additivity is an integer identity: for a finite cochain complex, the dimensions of the image of each differential occur once in each adjacent degree and cancel. No reduction of integers into \(k\) is involved.
 
@@ -44,7 +48,7 @@ Write \(\operatorname{or}_{X,k}\) for the orientation local system. It has rank 
  \qquad\text{(3)}
 \]
 
-The second comparison uses compactness of the coefficient support; ordinary and compact sections agree here. Both complexes are perfect.
+The second map is the transpose of the evaluation pairing followed by the point trace: \(R\Gamma(X;D_Xk_X)\otimes_k^L R\Gamma_c(X;k_X)\to R\Gamma_c(X;\omega_{X,k})\to k\). Dual-sections adjunction identifies its transpose with the displayed isomorphism. Compactness makes \(R\Gamma_c(X;k_X)=R\Gamma(X;k_X)\). The compact finiteness theorem applies both to the constant sheaf and to the rank-one orientation local system, so all these section complexes are perfect. The orientation line in (3) is retained even when it has nontrivial sign monodromy; its reduction in characteristic two still has rank one.
 
 Coefficient duality reverses the finite cohomology degrees without changing the Euler characteristic. A shift by \(n\) multiplies it by \((-1)^n\). Formula (2) gives the remaining equality:
 
@@ -70,7 +74,7 @@ Equivalently, the compact constructible-function duality theorem gives
 
 ## Turn a vector field into an admissible section
 
-Let \(v\) be a smooth vector field on \(X\). Choose a smooth positive definite metric \(g\), and lower its tangent index:
+Let \(v\) be a continuous vector field on the compact manifold \(X\), and choose a smooth positive definite metric \(g\). Lower its tangent index:
 
 \[
  \sigma=g^\flat(v):X\longrightarrow T^*X,\qquad
@@ -80,9 +84,9 @@ Let \(v\) be a smooth vector field on \(X\). Choose a smooth positive definite m
 
 Here is an explicit existence argument for \(g\). Choose finitely many coordinate neighborhoods and smaller neighborhoods covering \(X\), with closures inside the larger charts. In each chart choose a nonnegative smooth bump supported in the larger neighborhood and positive on the smaller one. Divide these bumps by their everywhere-positive sum to obtain a finite smooth partition of unity. The weighted sum of the pulled-back Euclidean metrics is smooth and positive definite. Each weighted term extends by zero outside its chart. Thus no global analytic metric is needed.
 
-The supported-section theorem accepts continuous sections, so the smooth section (6) lies in its actual domain. Positive definiteness gives \(\sigma(x)=0\) exactly when \(v(x)=0\).
+Positive definiteness gives \(\sigma(x)=0\) exactly when \(v(x)=0\). The section is continuous, so its graph is closed in the Hausdorff cotangent bundle, and \(\sigma\) is a proper closed embedding onto that graph. These facts suffice to define its exceptional counit and supported unit. For a smooth field one may compute that unit in smooth normal coordinates; no analyticity or isotropy of the graph is required.
 
-Let \(0_X\subset T^*X\) denote the zero section. Its normalized integral cycle is denoted \(\lambda_0\). In base coordinates \(x\) and cotangent coordinates \(\xi\), its coefficient is
+Let \(0_X\subset T^*X\) denote the zero section. Write \(\lambda_0\) for its positive integral fibre Thom class, viewed as a cycle with the relative cotangent orientation coefficient. In base coordinates \(x\) and cotangent coordinates \(\xi\), its coefficient is
 
 \[
  \operatorname{sgn}(dx_1\wedge\cdots\wedge dx_n)
@@ -91,14 +95,15 @@ Let \(0_X\subset T^*X\) denote the zero section. Its normalized integral cycle i
  \qquad\text{(7)}
 \]
 
-This is the codimension-zero case of the normalized conormal formula. The two orientation signs change together under a chart reversal, so (7) is intrinsic even on a nonorientable \(X\). Extending this integral generator to \(\mathbb Q\) gives
-\(\operatorname{CC}(\mathbb Q_X)\), with the preceding characteristic-cycle normalization.
+The normal-first ambient orientation is \(\Omega=d\xi_1\wedge\cdots\wedge d\xi_n\wedge dx_1\wedge\cdots\wedge dx_n\). A positive normal Thom generator in the fibre variables \(\xi\), with base orientation coefficient \(\operatorname{sgn}(dx)\), corresponds to (7). Under a base-coordinate change with Jacobian \(J\), the fibre frame changes by \(J^{-t}\). Their orientation signs therefore change together, and (7) glues without orienting \(X\).
+
+The graph-normalized conormal has a different convention: \([T_X^*X]=(-1)^n\lambda_0\). Its tangent zero-section factor comes from the graph inverse coefficient and is \((-1)^n\) times the positive fibre Thom unit. The constant-sheaf coefficient theorem contributes the same factor, so \(\operatorname{CC}(\mathbb Q_X)=(-1)^n[T_X^*X]_{\mathbb Q}=(\lambda_0)_{\mathbb Q}\). Thus \(\lambda_0=(-1)^n[T_X^*X]\) is the integral class used below. In odd dimension it must not be identified with the graph-normalized conormal itself.
 
 For integral coefficients put \(M=T^*X\) and \(\pi:M\to X\). The actual section unit and the ordered cup have types
 
 \[
  \begin{aligned}
- [\sigma]&\in H^0_{\sigma(X)}(M;\pi^!\mathbb Z_X),\\
+ {[\sigma]}&\in H^0_{\sigma(X)}(M;\pi^!\mathbb Z_X),\\
  \lambda_0&\in H^0_{0_X}(M;\pi^{-1}\omega_{X,\mathbb Z}),\\
  [\sigma]\cap\lambda_0
    &\in H^0_{\sigma(X)\cap0_X}(M;\omega_{M,\mathbb Z}).
@@ -106,12 +111,13 @@ For integral coefficients put \(M=T^*X\) and \(\pi:M\to X\). The actual section 
  \qquad\text{(8)}
 \]
 
-The first unit is normalized by \(\sigma^!\pi^!\mathbb Z_X=\mathbb Z_X\) and the closed-embedding counit. The cup uses
-\(\pi^!\mathbb Z_X\otimes^L\pi^{-1}\omega_{X,\mathbb Z}\to\omega_{M,\mathbb Z}\) in this order.
+Put \(G=\sigma(X)\), \(P=\pi^!\mathbb Z_X\) and \(E=\pi^{-1}\omega_{X,\mathbb Z}\). The section unit is the morphism \(\mathbb Z_G=\sigma_*\mathbb Z_X\to\sigma_*\sigma^!P\to P\), using the inverse of exceptional composition \(\sigma^!P\simeq\mathbb Z_X\), then the closed-embedding counit. The second input is the Thom morphism \(\lambda_0:\mathbb Z_{0_X}\to E\). Since the two closed constant sheaves tensor to \(\mathbb Z_{G\cap0_X}\), their supported cup is their ordered tensor followed by \(P\otimes^LE\to\pi^!\omega_{X,\mathbb Z}\simeq\omega_{M,\mathbb Z}\). This gives exactly the supports and types in (8).
+
+The coefficient order is the section first and the zero-section cycle second. The complete supported comparison says more than equality after forgetting support: its proper trace along \(\pi:G\cap0_X\to Z(v)\) is the morphism obtained by ordinary pullback \(\sigma^{-1}\lambda_0:\mathbb Z_{Z(v)}\to\omega_{X,\mathbb Z}\). Indeed transposing the cup along \(\sigma\) cancels its exceptional unit and counit; subsequent \(\pi\)-trace is the composite counit for \(\pi\sigma=1_X\). No factor is interchanged. Projection is a homeomorphism on this intersection, so the trace is proper there even in a noncompact local calculation. This is the map underlying the Thom pullback in (16).
 
 ## Isolated zeros carry integer local numbers
 
-Assume that the zero set \(Z(v)\) is finite. For a zero \(a\), restrict the class in (8) to a neighborhood meeting its support only at \((a,0)\). The normalized point trace defines
+Assume first that the zero set \(Z(v)\) is finite. For each zero \(a\), choose a neighborhood in \(T^*X\) meeting \(G\cap0_X\) only at \((a,0)\). The restricted class of (8) then has compact point support. Its point trace, with \(i_{(a,0)}^!\omega_{M,\mathbb Z}=\mathbb Z\), defines
 
 \[
  \operatorname{ind}_a(v)
@@ -120,9 +126,9 @@ Assume that the zero set \(Z(v)\) is finite. For a zero \(a\), restrict the clas
  \qquad\text{(9)}
 \]
 
-Open-extension composition proves independence of the chosen small neighborhood, exactly as in the supported-section lesson.
+For a smaller such neighborhood, the restricted point-supported class is the same under support excision, and open extension followed by trace is the trace on the smaller neighborhood. This is exceptional composition for the open inclusion and the map to a point. Two choices have a common smaller neighborhood, so the number is independent of that choice. The same definition makes sense at any isolated zero on a noncompact manifold. Its independence of the positive metric is proved below by the actual relative-pair homotopy. On compact \(X\), if every zero is isolated, the zero set is closed and compact and therefore finite.
 
-**Theorem.** For every smooth vector field on a compact \(X\) with finitely many isolated zeros,
+**Theorem.** For every continuous vector field on a compact \(X\) with finitely many isolated zeros,
 
 \[
  \chi_k(X)=\sum_{a\in Z(v)}\operatorname{ind}_a(v)
@@ -130,22 +136,21 @@ Open-extension composition proves independence of the chosen small neighborhood,
  \qquad\text{(10)}
 \]
 
-**Proof.** The intersection support in (8) is the finite set
-\(\{(a,0):a\in Z(v)\}\). Supported excision into disjoint small neighborhoods splits the class into its finitely many point-supported classes. Composition of traces makes its total integral the sum in (10).
+**Proof.** Put \(K=G\cap0_X=\{(a,0):a\in Z(v)\}\). Closed support at this finite set decomposes into the direct sum of its point supports. Restrict to disjoint small neighborhoods and use support excision. The supported-to-compact map and composition of open-extension traces then identify the trace of the class in (8) with the sum of its integral local numbers.
 
-Extend the normalized local orientation generators to \(\mathbb Q\). Each point trace then sends its integral local number to the same number in \(\mathbb Q\). There is no assertion here that an unrestricted ordinary direct image under a nonproper projection commutes with scalar extension: the comparison is on the finite point supports and their normalized traces.
+Extend these local Thom and orientation generators from \(\mathbb Z\) to \(\mathbb Q\). The relative orientation line is locally free over \(\mathbb Z\); the coefficient map preserves its square pairing, the ordered cup, and the point generator sent to \(1\) by trace. Thus the rational number of each point-supported class is exactly the image of its integer number. Only these finite supports and the normalized Thom maps are being compared, so no commutation of scalar extension with an unrestricted nonproper ordinary pushforward is needed.
 
-The rational zero cycle is \(\operatorname{CC}(\mathbb Q_X)\). The already proved compact continuous-section index therefore identifies this rational total with \(\chi_{\mathbb Q}(X)\). Both sides are integers, and \(\mathbb Z\to\mathbb Q\) is injective, so their equality is an integer equality. Formula (2) gives \(\chi_k(X)=\chi_{\mathbb Q}(X)\) for any field \(k\), proving (10). \(\square\)
+The rational cycle \((\lambda_0)_{\mathbb Q}\) is \(\operatorname{CC}(\mathbb Q_X)\), as proved after (7). For this constructible sheaf the microsupport is \(0_X\), its closed support is the compact manifold \(X\), and the section \(\sigma\) is continuous. The compact continuous-section theorem therefore applies to the same ordered cup. In terms of its actual maps, proper trace from \(K\), followed by enlargement from \(Z(v)\) to \(X\), is the base characteristic class \(C(\mathbb Q_X)\); the point trace of that class is \(\chi_{\mathbb Q}(X)\). Composition of those traces identifies the rational total with the image of the finite sum above.
+
+Both the sum and \(\chi_{\mathbb Q}(X)\) are integers. Injectivity of \(\mathbb Z\to\mathbb Q\) proves their equality in \(\mathbb Z\). The finite-cell argument (2), applied to the constant rank-one sheaf, gives \(\chi_k(X)=\chi_{\mathbb Q}(X)\) for every field \(k\). This proves (10), including characteristic two and nonorientable \(X\). \(\square\)
 
 An empty zero set is permitted. Its supported class and its finite sum are zero, so a nowhere-zero field forces \(\chi_k(X)=0\).
 
 ## The local determinant has no extra orientation sign
 
-Suppose that \(a\) is a nondegenerate zero. Choose a chart centered at \(a\), and write
-\(v(x)=Ax+O(|x|^2)\), with \(A\) invertible, for an analytic field. For a smooth field the differentiability remainder \(o(|x|)\) suffices.
+Suppose that \(v\) is continuously differentiable near a zero \(a\) and \(A=Dv(a)\) is invertible. Choose a coordinate chart centered at \(a\). Then \(v(x)=Ax+o(|x|)\); for an analytic field the stronger remainder \(O(|x|^2)\) is available. A smooth positive metric makes \(\sigma\) continuously differentiable there.
 
-The coordinate description of the smooth graph unit has the same orientation as the analytic graph calculation. Indeed the fibre translation
-\(\eta=\xi-\sigma(x)\) has determinant one and
+The graph unit can be computed directly as a supported Thom class. The coordinate change \((x,\xi)\mapsto(x,\eta)\), where \(\eta=\xi-\sigma(x)\), is a fibre translation with inverse \((x,\eta)\mapsto(x,\eta+\sigma(x))\). It preserves the relative fibre orientation and sends the graph to \(\eta=0\). In the continuously differentiable case its normal-first orientation satisfies
 
 \[
  d\eta_1\wedge\cdots\wedge d\eta_n\wedge dx
@@ -154,7 +159,7 @@ The coordinate description of the smooth graph unit has the same orientation as 
  \qquad\text{(11)}
 \]
 
-Every other term has an additional base differential and vanishes in the full wedge. The graph unit has its base tangent orientation tensored with the fibre orientation. This calculation needs neither symmetry of \(D\sigma\) nor an isotropic graph.
+Every other wedge term has an additional base differential and vanishes. Hence the supported graph Thom unit has base tangent orientation tensored with the fibre orientation, while the second input \(\lambda_0\) has the positive coefficient (7). This is a normal-coordinate computation of the classes in (8); it does not require placing a nonanalytic graph in the subanalytic cycle sheaf. Neither symmetry of \(D\sigma\) nor a Lagrangian graph is used.
 
 Let \(G=g(a)\) be the positive definite metric matrix and \(B=D\sigma(a)\). Differentiating \(g(x)v(x)\) gives \(B=GA\), since the term involving \(Dg\) is multiplied by \(v(a)=0\). In row order \((\xi,x)\), the tangent columns for the graph followed by the zero section give
 
@@ -177,7 +182,9 @@ The two submanifolds are transverse exactly when \(B\) is invertible. Their inte
  \qquad\text{(13)}
 \]
 
-because a positive definite \(G\) has positive determinant. This uses the graph as the first input. Reversing the two inputs would contribute \((-1)^n\); replacing \(\Omega\) by the symplectic orientation would require the factor already computed in the orientation lesson.
+because a positive definite \(G\) has positive determinant. The first input is the graph and the second is the positive Thom class \(\lambda_0\), not the differently signed graph-normalized conormal. Exchanging the two inputs would contribute \((-1)^n\); replacing \(\Omega\) by the symplectic orientation requires the corresponding ambient orientation comparison.
+
+There is also a direct local-cohomology check that includes the continuously differentiable case. Write the fibre-coordinate map of \(\sigma\) as \(h(x)=Bx+r(x)\), with \(r(x)=o(|x|)\). Choose a sufficiently small ball so that \(|r(x)|\leq\tfrac12\|B^{-1}\|^{-1}|x|\). Each map \(h_t(x)=Bx+t r(x)\), for \(0\leq t\leq1\), is then nonzero away from zero, by the reverse triangle inequality. These are maps of the same relative pair into \((\mathbb R^n,\mathbb R^n\setminus\{0\})\), so they induce the same pullback of the positive fibre Thom generator. The linear map \(B\) acts on that generator by \(\operatorname{sgn}\det B\): positive-determinant linear maps deform through invertible maps to the identity, and a coordinate reflection sends the ordered one-dimensional difference generator to its negative. The paired base orientation and point trace therefore give exactly (13).
 
 The formula also verifies coordinate independence directly. For a coordinate change with Jacobian \(J\) at the zero,
 
@@ -196,11 +203,11 @@ The derivative of \(J\) contributes nothing because \(v(a)=0\), and the base der
  \qquad\text{(15)}
 \]
 
-This follows from (10) and (13). In particular it proves the assigned rational-coefficient theorem on compact analytic manifolds, and gives its integer equality over every field. For a zero-dimensional compact manifold, the empty determinant is one; every point is a zero and contributes one.
+Every nondegenerate zero is isolated by the inverse function theorem. The closed zero set on compact \(X\) is therefore finite, so (10) and (13) give (15). This includes smooth and analytic fields and is an equality of integers over every coefficient field. For a zero-dimensional compact manifold, the empty determinant is one; every point is a zero and contributes one.
 
 ## A degenerate zero is read by its Thom pullback
 
-The definition (9) remains valid when the derivative is singular. Its local computation can be made directly from the normalized zero-section Thom class. On a coordinate neighborhood \(U\) containing only one zero, the supported section comparison identifies the local number with the image of that class under
+The definition (9) remains valid when the derivative is singular or the field is only continuous. Its computation uses the positive fibre Thom class \(\lambda_0\) fixed in (7). On a coordinate neighborhood \(U\) containing exactly one zero \(a\), ordinary pullback of its coefficient \(E=\pi^{-1}\omega_{U,\mathbb Z}\) along the section is \(\omega_{U,\mathbb Z}\), and the inverse image of its support \(0_U\) is \(\{a\}\). The supported comparison proved after (8) identifies the local cup number with
 
 \[
  \sigma^*:H^n_{0_U}(T^*U;\pi^{-1}\operatorname{or}_{U,\mathbb Z})
@@ -209,9 +216,7 @@ The definition (9) remains valid when the derivative is singular. Its local comp
  \qquad\text{(16)}
 \]
 
-The class in the first group is its normalized fibre Thom unit. The support pulls back to \(\{a\}\); the final isomorphism is the point trace of
-\(\omega_{U,\mathbb Z}=\operatorname{or}_{U,\mathbb Z}[n]\).
-The full section-intersection theorem supplies this actual pullback comparison. Thus (16) is the local degree with the paired orientation coefficient, rather than a new scalar convention.
+The class in the first group is the positive fibre Thom unit, not the graph-normalized conormal with its additional \((-1)^n\). Trivialize \(T^*U\) by the coordinate covectors. The class is the pullback of the positive generator of \(H^n_{\{0\}}(\mathbb R^n_\xi;\mathbb Z)\), tensored with the local base orientation. If \(h:U\to\mathbb R^n_\xi\) is the fibre-coordinate function of the section, (16) is precisely its map of pairs \((U,U\setminus\{a\})\to(\mathbb R^n,\mathbb R^n\setminus\{0\})\) on this generator. The last isomorphism in (16) pairs the local support orientation with \(\operatorname{or}_{U,\mathbb Z}\); it is the canonical point trace of \(\omega_{U,\mathbb Z}=\operatorname{or}_{U,\mathbb Z}[n]\). Thus it reads the integer local degree with both orientation factors retained.
 
 In dimension one, the local relative group is explicitly
 
@@ -221,10 +226,9 @@ In dimension one, the local relative group is explicitly
  \qquad\text{(17)}
 \]
 
-The two coordinates refer to the left and right punctured intervals. An increasing local coordinate pulls the positive Thom generator to itself. If a function defining the section is positive on both punctured intervals, the induced pullback sends a pair \((c_-,c_+)\) to
-\((c_+,c_+)\), which is zero in this quotient. Such a zero has index zero.
+The two coordinates refer to the left and right punctured intervals. The quotient is identified with \(\mathbb Z\) by \([(c_-,c_+)]\mapsto c_+-c_-\), using the increasing-coordinate Thom convention. Take a small target fibre interval containing the image of a sufficiently small base interval. If the fibre-coordinate function \(h\) is positive on both punctured base intervals, pullback of a locally constant pair on the punctured target sends \((c_-,c_+)\) to \((c_+,c_+)\). The localization long exact sequences are natural for this map of pairs, so its induced map on (17) is zero. Consequently such an isolated zero has index zero, regardless of its derivative.
 
-This description also proves independence of the chosen positive metric at an isolated zero. A convex interpolation of two positive metric matrices remains positive. The corresponding sections are nonzero away from the zero, so they give a homotopy of the same relative pair maps in (16). Relative cohomology pullback is unchanged: the usual prism homotopy for the interval gives a cochain homotopy between the two maps, and preserves the punctured subspace. Hence their local numbers agree. Global metric interpolation has exactly the same zero set.
+Finally let \(g_0,g_1\) be two positive metrics. Their convex interpolation \(g_t=(1-t)g_0+t g_1\) is positive definite, and \(\sigma_t=g_t^\flat(v)\) has exactly the same zero set for every \(t\). In an isolating chart, the homotopy \((t,x)\mapsto\sigma_t(x)\) is therefore a homotopy of the relative pair maps in (16). Its projection to \(U\) is always \(x\), so the pulled-back orientation coefficient is the same base orientation line throughout. After trivializing that line in the chart, the relative singular-cochain prism homotopy shows equality of the two induced pullbacks; it preserves the punctured subspace because no new zero is introduced. Equivalently one may use the proper-interval homotopy comparison on the corresponding support-localization triangles. Thus the point trace, and hence the local integer, is independent of the metric. The same argument applies to continuous \(v\); differentiability was used only for the determinant formula.
 
 ## Exercises with complete solutions
 
@@ -308,4 +312,4 @@ On \(S^1\), in the standard periodic coordinate, take
 
 ## References
 
-The vanishing of the Euler characteristic of a compact odd-dimensional manifold and the Hopf index formula for a nondegenerate vector field are classical; their sheaf-theoretic proofs here use the index theorem of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). The proof retains orientation local systems, supplies the integer finite-cell comparison for all fields, and applies the supported-section and compact characteristic-cycle index diagrams of the preceding lessons. The local block determinant fixes the sign for arbitrary vector fields; the Thom pullback also explains the degenerate isolated-zero example.
+M. Kashiwara, [Index theorem for constructible sheaves](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), Theorem 4.2, p. 199, gives the sheaf Euler index as an intersection with a differential graph, assuming compact closed sublevels on the coefficient support and compact intersection with the microsupport. The local quadratic calculation is Proposition 5.1 and Lemma 5.2, pp. 200–201; the general argument proceeds through generic perturbation and homotopy in §7. For compact constant coefficients the theorem gives the zero-section index. The linked programme lessons supply the continuous-section comparison, the integral local traces and the determinant calculation used here to obtain the vector-field formula, including on nonorientable manifolds.

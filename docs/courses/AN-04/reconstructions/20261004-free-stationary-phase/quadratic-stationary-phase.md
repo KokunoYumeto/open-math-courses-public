@@ -284,6 +284,8 @@ takes the limit on the Fourier side of (RG), giving the right side of
 the regularization. The product of the root phases is precisely
 \(e^{i\pi\operatorname{sgn}H/4}\). \(\square\)
 
+Original text: public domain (CC0).
+
 The root limit and its \(\pi/4\) phase in this proof are established
 explicitly in P16.3, including both signs of \(\lambda_j\).
 
@@ -483,8 +485,7 @@ above are written out here in new exposition, and the displayed normalization
 is verified directly by (G) and (EX), rather than copied without checking.
 
 The F0 programme proofs use the verified free author edition of Jiří Lebl,
-*Basic Analysis* 6.3, with exact earlier proof locators and the used exercises
-completed in the licensed prerequisite companions. P21 supplies the
+*Basic Analysis* 6.3, with exact earlier proof locators and the used exercises completed in the prerequisite companions. P21 supplies the
 change-of-variables steps instead of invoking a free citation in their place.
 
 Next required mathematical work: integrate the smooth

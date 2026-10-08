@@ -174,7 +174,7 @@ def page(title, body, *, math=False, depth="", footer=None, mathtools=False):
     config_name = "mathjax-mathtools-config.js" if mathtools else "mathjax-config.js"
     scripts = ('<script src="' + depth + 'assets/reader/' + config_name + '"></script><script defer src="' + depth + 'assets/mathjax/tex-svg.js"></script>') if math else ""
     if footer is None:
-        footer = 'Original lessons and drawings: <a href="' + depth + 'LICENSE">CC0 1.0</a>. K-theory Lemma 7.7 adaptation: CC BY 4.0. <a href="' + depth + 'sources.html">Sources, attribution and component terms</a>. MathJax: Apache License 2.0. This is an incomplete draft.'
+        footer = 'Original lessons and drawings: <a href="' + depth + 'LICENSE">CC0 1.0</a>. <a href="' + depth + 'sources.html">Sources, attribution and component terms</a>. MathJax: Apache License 2.0. This is an incomplete draft.'
     return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + html.escape(title) + '</title><link rel="stylesheet" href="' + depth + 'assets/reader/reader.css">' + scripts + '</head><body><main>' + body + '<footer>' + footer + '</footer></main></body></html>\n'
 
 
@@ -235,6 +235,8 @@ def build_companions(dest, core_units):
     target.mkdir(parents=True, exist_ok=True)
     aliases, root_rewrites = {}, {}
     entries = manifest["proof_files"]
+    if any(row["licence"] != "CC0-1.0" for row in entries):
+        raise ValueError("Companion mathematical text must have an explicit CC0 dedication")
     for row in entries:
         stem = Path(row["frozen_file"]).stem
         name = row["id"] + ".html"
@@ -342,16 +344,12 @@ def build_companions(dest, core_units):
         note = ""
         licence = html.escape(row["licence"])
         rights = ""
-        if row["licence"] == "GFDL-1.2-only":
-            rights += '<p>GNU Free Documentation License, Version 1.2 only; no Invariant Sections or Cover Texts. Retain <a href="AN-03/RIGHTS.md">rights notice</a>, <a href="AN-03/TITLE_PAGE.md">original title page</a>, <a href="AN-03/HISTORY.md">original history</a>, <a href="AN-03/COPYING">complete licence</a>, and <a href="AN-03/HTML-PROJECTION.md">this projection notice</a>.</p>'
         footer = licence + '. Source credits and component terms are retained. <a href="index.html">Companion readings and terms</a>.'
         if row.get("additional_projection_credit"):
             footer += " " + html.escape(row["additional_projection_credit"])
         (target / (row["id"]+".html")).write_text(page(row["source_title"],nav+note+rights+rendered,math=True,depth="../",footer=footer,mathtools=r"\begin{psmallmatrix}" in text),encoding="utf-8")
         parsed = IndexFromHTML(rendered)
         parsed_math[row["id"]] = {"formulas":len(parsed.math),"math_tex_sha256":sha(json.dumps(parsed.math,ensure_ascii=False).encode()),"source_sha256":row["sha256"],"heading_bindings":heading_bindings}
-    if any(row["licence"] == "GFDL-1.2-only" for row in entries):
-        (target / "AN-03/HTML-PROJECTION.md").write_text("# Spectral calculus — NCG supporting source projection\n\nThis is an HTML presentation of the exact admitted spectral-calculus source snapshot identified in the companion manifest. The source Markdown bytes are unchanged. Original AN-03 title, history, rights and complete GFDL 1.2 notices accompany this component. The HTML projection changes navigation, adds hash-bound source and notice downloads, supplies stable section anchors, and labels unavailable ancillary hyperlinks as readings outside this course import.\n\nProjection contributor: GPT-6.1 Sol (OpenAI), Ultra, October 2026. Publisher entity: Open Mathematics Courses collection. This projection retains GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. New presentation code is CC0 to the extent rights exist; it does not relicense the inherited GFDL work.\n",encoding="utf-8")
     rows = []
     for row in entries:
         title = render_markdown_math(row["source_title"]).removeprefix("<p>").removesuffix("</p>\n")
@@ -630,10 +628,12 @@ def build(args):
     notice_links = {"LICENSE": "LICENSE", "STATUS.md": "status.html", "SOURCE-LICENSES.md": "sources.html", **{"src/" + s + ".md": s + ".html" for s in SLUGS}}
     status = render_markdown_math((dest / "STATUS.md").read_text(encoding="utf-8"), local_links=notice_links)
     (dest / "status.html").write_text(page("Course status", '<nav><a href="index.html">Course contents</a></nav>' + status, math=True), encoding="utf-8")
-    source_notice = render_markdown_math((dest / "SOURCE-LICENSES.md").read_text(encoding="utf-8"), local_links=notice_links)
+    notice_text = (dest / "SOURCE-LICENSES.md").read_text(encoding="utf-8")
+    notice_links.update({href:href for href in re.findall(r"\]\(([^)]+)\)",notice_text) if not href.startswith(("https:","http:"))})
+    source_notice = render_markdown_math(notice_text, local_links=notice_links)
     rows = ''.join('<li><a href="' + s + '.html">' + html.escape(bindings[s]["title"]) + '</a> · <a href="src/' + s + '.md" download>Markdown</a></li>' for s in SLUGS)
     figure_rows = ''.join('<tr><td>' + html.escape(row["id"]) + '</td><td><a href="' + row["source"] + '" download>PNG</a></td><td><a href="figures/' + row["id"] + '.svg" download>Editable SVG</a></td></tr>' for row in figures["figures"])
-    sources_body = '<nav><a href="index.html">Course contents</a></nav>' + source_notice + '<h2>Lesson sources</h2><ol>' + rows + '</ol><p><a href="course.json">Course metadata</a> · <a href="../../downloads/' + DOWNLOAD_NAME + '" download>Download reader and sources</a></p><h2>Companion readings</h2><p><a href="companions/index.html">Algebra, topology, analysis and measure-theory readings</a>. Each retains its own source credits and licence. The GFDL 1.2 reading retains its required notices.</p><h2>Figures</h2><table><thead><tr><th>Figure</th><th>Rendering</th><th>Source</th></tr></thead><tbody>' + figure_rows + '</tbody></table><h2>Reader components</h2><ul><li><a href="component-licenses/LICENSE-reader-CC0.txt">Course renderer and adapter: CC0 1.0</a></li><li><a href="assets/mathjax/LICENSE">MathJax 3.2.2: Apache License 2.0</a></li><li><a href="component-licenses/LICENSE-markdown-it-py.txt">markdown-it-py 3.0.0: MIT</a></li><li><a href="component-licenses/LICENSE-mdurl.txt">mdurl 0.1.2: MIT</a></li></ul><p><a href="reader-source/README.md">Reader regeneration instructions</a> · <a href="reader-source/build_release.py">Build adapter</a></p>'
+    sources_body = '<nav><a href="index.html">Course contents</a></nav>' + source_notice + '<h2>Lesson sources</h2><ol>' + rows + '</ol><p><a href="course.json">Course metadata</a> · <a href="../../downloads/' + DOWNLOAD_NAME + '" download>Download reader and sources</a></p><h2>Companion readings</h2><p><a href="companions/index.html">Algebra, topology, analysis and measure-theory readings</a>. Each retains its own source credits and licence.</p><h2>Figures</h2><table><thead><tr><th>Figure</th><th>Rendering</th><th>Source</th></tr></thead><tbody>' + figure_rows + '</tbody></table><h2>Reader components</h2><ul><li><a href="component-licenses/LICENSE-reader-CC0.txt">Course renderer and adapter: CC0 1.0</a></li><li><a href="assets/mathjax/LICENSE">MathJax 3.2.2: Apache License 2.0</a></li><li><a href="component-licenses/LICENSE-markdown-it-py.txt">markdown-it-py 3.0.0: MIT</a></li><li><a href="component-licenses/LICENSE-mdurl.txt">mdurl 0.1.2: MIT</a></li></ul><p><a href="reader-source/README.md">Reader regeneration instructions</a> · <a href="reader-source/build_release.py">Build adapter</a></p>'
     (dest / "sources.html").write_text(page("Sources and component terms", sources_body), encoding="utf-8")
     intro = '<nav><a href="../../index.html">Open Mathematics Courses</a></nav>' + BANNER + '<h1>' + html.escape(metadata["title"]) + '</h1><p>' + html.escape(metadata["description"]) + '</p><p>Five lessons in English, with examples, exercises, solutions and ' + str(figure_count) + ' diagrams. Read the lessons in this order:</p><ol>' + rows + '</ol><p><a href="status.html">Proved scope and remaining questions</a> · <a href="sources.html">Sources, figures and component terms</a> · <a href="companions/index.html">Companion readings</a> · <a href="../../downloads/' + DOWNLOAD_NAME + '" download>Download reader and editable sources</a></p>'
     (dest / "index.html").write_text(page(metadata["title"], intro), encoding="utf-8")

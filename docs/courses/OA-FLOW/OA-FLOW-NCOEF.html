@@ -1,0 +1,739 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Normalized weights in a discrete coefficient algebra · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-SMULT.html">Previous lesson</a><a href="OA-FLOW-CBND.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-NCOEF.md">Lesson source</a></nav><h1 id="OA-FLOW.NCOEF.SETTING">Normalized weights in a discrete coefficient algebra</h1>
+<p>A single half-open interval of coefficient densities removes the ambiguity created by the implementing integer unitary. Within that interval, a partial isometry that transports weights must already belong to the coefficient algebra. We prove this by two independent arguments, identify the entire support centralizer, and then construct a nonzero coefficient subweight whose coefficient centralizer is properly infinite. The last condition is essential when the subweight is subsequently placed in the global carrier.</p>
+<p><em>Original exposition, models and reproducible figures are dedicated to CC0-1.0 to the extent of rights held. Source publications and the separately supplied font components retain their terms.</em></p>
+<p><a id="nc-setting"></a></p>
+<h2 id="1-the-two-scopes-and-supported-comparison">1. The two scopes and supported comparison</h2>
+<p>For Sections 2–5 let <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> be any semifinite von Neumann algebra with a specified faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Let <span class="math" data-tex="\(\theta\in\operatorname{Aut}(N)\)">\(\theta\in\operatorname{Aut}(N)\)</span>, and assume, on the entire positive cone,
+<span class="math math-display" data-tex="\[
+ \tau\circ\theta=\tau_\rho,\qquad
+ 0&lt;\rho\le\lambda_0 1,\qquad 0&lt;\lambda_0&lt;1.
+ \tag{NC1}
+\]">\[
+ \tau\circ\theta=\tau_\rho,\qquad
+ 0&lt;\rho\le\lambda_0 1,\qquad 0&lt;\lambda_0&lt;1.
+ \tag{NC1}
+\]</span>
+Here <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is affiliated with <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span>, and <span class="math" data-tex="\(0&lt;\rho\)">\(0&lt;\rho\)</span> means that its kernel is zero. The upper bound makes it bounded; its inverse need not be bounded. Put
+<span class="math math-display" data-tex="\[
+ M=N\rtimes_\theta\mathbb Z,\qquad
+ UxU^*=\theta(x),\qquad E:M\longrightarrow N,\qquad \phi=\tau\circ E.
+ \tag{NC2}
+\]">\[
+ M=N\rtimes_\theta\mathbb Z,\qquad
+ UxU^*=\theta(x),\qquad E:M\longrightarrow N,\qquad \phi=\tau\circ E.
+ \tag{NC2}
+\]</span>
+The regular representation, the faithful normal coefficient expectation and full coefficient reconstruction are the actual ones in <a href="OA-FLOW-VD.html#vd-discrete-regular">VD</a>. No separable-predual, factoriality, proper-infiniteness or faithful-state assumption is imposed in these sections. For the zero algebra, their assertions reduce to the unique zero weight and zero transporter.</p>
+<p>For the nonzero seed in <a href="#nc-seed">Section 6</a>, assume additionally that <span class="math" data-tex="\(M\)">\(M\)</span> is a factor with separable predual of type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span>, <span class="math" data-tex="\(0\le\lambda&lt;1\)">\(0\le\lambda&lt;1\)</span>, and that (NC2) is its specified lacunary infinite-multiplicity decomposition. For <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, this is <a href="OA-FLOW-LAC.html#lac-unitary">LAC</a>; its <span class="math" data-tex="\(N\)">\(N\)</span> is type <span class="math" data-tex="\(\mathrm{II}_\infty\)">\(\mathrm{II}_\infty\)</span> and may have nontrivial center. For <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, choose the specified fundamental-period infinite generalized trace of <a href="OA-FLOW-DDP.html#dd-recognition">DDP</a>, so that <span class="math" data-tex="\(\rho=\lambda1\)">\(\rho=\lambda1\)</span>. The importance of this last qualification is proved in <a href="#nc-two-block">Section 7</a>.</p>
+<p>Every weight below is normal and semifinite, but need not be faithful on <span class="math" data-tex="\(M\)">\(M\)</span>. Its centralizer is taken in its support corner. We use <a href="../OA-MOD/OA-MOD-WC.html#support-corners-cuts-and-the-comparison-relation">WC's supported comparison</a>:
+<span class="math math-display" data-tex="\[
+ \eta_2=\eta_1\circ\operatorname{Ad}v,\qquad
+ vv^*=s(\eta_1),\quad v^*v=s(\eta_2)
+ \quad\Longrightarrow\quad \eta_1\sim\eta_2.
+ \tag{NC3}
+\]">\[
+ \eta_2=\eta_1\circ\operatorname{Ad}v,\qquad
+ vv^*=s(\eta_1),\quad v^*v=s(\eta_2)
+ \quad\Longrightarrow\quad \eta_1\sim\eta_2.
+ \tag{NC3}
+\]</span>
+The displayed equality means equality on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, including infinity. Subequivalence means equivalence to a cut by a projection in the target support centralizer.</p>
+<p>Call <span class="math" data-tex="\(h\in N_+\)">\(h\in N_+\)</span> <strong>normalized</strong> when, with <span class="math" data-tex="\(p=s(h)\)">\(p=s(h)\)</span>,
+<span class="math math-display" data-tex="\[
+ \rho p\le h\le1,\qquad \ker(1-h)=\{0\}.
+ \tag{NC4}
+\]">\[
+ \rho p\le h\le1,\qquad \ker(1-h)=\{0\}.
+ \tag{NC4}
+\]</span>
+The zero density is allowed. The last condition does not assert <span class="math" data-tex="\(h\le(1-\varepsilon)1\)">\(h\le(1-\varepsilon)1\)</span> for any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Whenever <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> is used for commuting positive affiliated operators, it means <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span> and that <span class="math" data-tex="\(b-a\)">\(b-a\)</span> has zero kernel on <span class="math" data-tex="\(s(b)\)">\(s(b)\)</span>. Products and differences of the central operators used here are their joint spectral calculi; arbitrary unbounded products are never being assigned an unstated domain.</p>
+<p>The conclusions in the first scope are
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+  \phi_{h_2}=\phi_{h_1}\circ\operatorname{Ad}v
+  \text{ with the supports in (NC3)}
+       \ \Longrightarrow\ v\in N,\\
+  M_{\phi_h}=N_{\tau_h}
+       =\{h\}'\cap pNp,\\
+  \phi_{h_1}\precsim\phi_{h_2}
+       \ \Longleftrightarrow\ \tau_{h_1}\precsim\tau_{h_2}.
+ \end{gathered}
+ \tag{NC5}
+\]">\[
+ \begin{gathered}
+  \phi_{h_2}=\phi_{h_1}\circ\operatorname{Ad}v
+  \text{ with the supports in (NC3)}
+       \ \Longrightarrow\ v\in N,\\
+  M_{\phi_h}=N_{\tau_h}
+       =\{h\}'\cap pNp,\\
+  \phi_{h_1}\precsim\phi_{h_2}
+       \ \Longleftrightarrow\ \tau_{h_1}\precsim\tau_{h_2}.
+ \end{gathered}
+ \tag{NC5}
+\]</span>
+Thus both equivalence and subequivalence of normalized weights are decided in the coefficient algebra. No claim that every weight has a normalized representative is needed in proving (NC5).</p>
+<p><span id="OA-FLOW.NCOEF.DENSITY-COCYCLE"></span><a id="nc-density-cocycle"></a></p>
+<h2 id="2-the-reference-weight-and-the-right-sided-density">2. The reference weight and the right-sided density</h2>
+<p>The arbitrary-algebra converse in <a href="OA-FLOW-LAC.html#lac-converse">LAC, (LAC1)–(LACC4)</a> proves that <span class="math" data-tex="\(\phi=\tau E\)">\(\phi=\tau E\)</span> is the actual faithful normal semifinite dual weight and that
+<span class="math math-display" data-tex="\[
+ \sigma_t^\phi(x)=x\quad(x\in N),\qquad
+ \sigma_t^\phi(U)=U\rho^{it},\qquad M_\phi=N.
+ \tag{NC6}
+\]">\[
+ \sigma_t^\phi(x)=x\quad(x\in N),\qquad
+ \sigma_t^\phi(U)=U\rho^{it},\qquad M_\phi=N.
+ \tag{NC6}
+\]</span>
+The proof identifies the whole weight through the counting-Haar expectation, then applies the normalized dual-weight derivative. In particular it is a full-cone assertion. Its GNS space is the orthogonal sum of the <span class="math" data-tex="\(U^nL^2(N,\tau)\)">\(U^nL^2(N,\tau)\)</span> summands. Finite-trace projections form a directed net in that argument; their existence does not impose a countable decomposition on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, the density of the trace <span class="math" data-tex="\(\tau\theta^n\)">\(\tau\theta^n\)</span> is the central positive nonsingular affiliated operator
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \rho_0&amp;=1,\\
+ \rho_n&amp;=\prod_{j=0}^{n-1}\theta^{-j}(\rho)\quad(n&gt;0),\\
+ \rho_{-m}&amp;=\prod_{j=1}^{m}\theta^j(\rho^{-1})\quad(m&gt;0).
+ \end{aligned}
+ \tag{NC7}
+\]">\[
+ \begin{aligned}
+ \rho_0&amp;=1,\\
+ \rho_n&amp;=\prod_{j=0}^{n-1}\theta^{-j}(\rho)\quad(n&gt;0),\\
+ \rho_{-m}&amp;=\prod_{j=1}^{m}\theta^j(\rho^{-1})\quad(m&gt;0).
+ \end{aligned}
+ \tag{NC7}
+\]</span>
+For clarity, transport of a trace density has the exact orientation
+<span class="math math-display" data-tex="\[
+ \tau_a\circ\theta^k=\tau_{\rho_k\,\theta^{-k}(a)}.
+ \tag{NC8}
+\]">\[
+ \tau_a\circ\theta^k=\tau_{\rho_k\,\theta^{-k}(a)}.
+ \tag{NC8}
+\]</span>
+Apply <span class="math" data-tex="\(\theta^k\)">\(\theta^k\)</span> to bounded spectral cutoffs of <span class="math" data-tex="\(\theta^{-k}(a)\)">\(\theta^{-k}(a)\)</span>, use <span class="math" data-tex="\(\tau\theta^k=\tau_{\rho_k}\)">\(\tau\theta^k=\tau_{\rho_k}\)</span>, and then take the increasing extended values. Trace cyclicity and commutation with the central <span class="math" data-tex="\(\rho_k\)">\(\rho_k\)</span> identify the resulting joint density. The complete trace-density uniqueness theorem <a href="OA-FLOW-TD.html#td-5">TD5–7</a> gives (NC8), including its form domains. In particular,
+<span class="math math-display" data-tex="\[
+ \rho_{n+m}=\rho_n\theta^{-n}(\rho_m),\qquad
+ \theta^n(\rho_n)=\rho_{-n}^{-1},\qquad
+ \sigma_t^\phi(U^n)=U^n\rho_n^{it}.
+ \tag{NC9}
+\]">\[
+ \rho_{n+m}=\rho_n\theta^{-n}(\rho_m),\qquad
+ \theta^n(\rho_n)=\rho_{-n}^{-1},\qquad
+ \sigma_t^\phi(U^n)=U^n\rho_n^{it}.
+ \tag{NC9}
+\]</span>
+The last identity follows by multiplying (NC6) in the displayed order, using
+<span class="math" data-tex="\(aU=U\theta^{-1}(a)\)">\(aU=U\theta^{-1}(a)\)</span>; negative powers follow by taking adjoints. All imaginary powers are bounded unitaries, even when a positive or inverse density is unbounded.</p>
+<p>The inequalities needed below are
+<span class="math math-display" data-tex="\[
+ 0&lt;\rho_n\le\lambda_0^{\,n-1}\rho\le\rho\quad(n\ge1),
+ \qquad \rho_{-m}\ge\lambda_0^{-m}1\quad(m\ge1).
+ \tag{NC10}
+\]">\[
+ 0&lt;\rho_n\le\lambda_0^{\,n-1}\rho\le\rho\quad(n\ge1),
+ \qquad \rho_{-m}\ge\lambda_0^{-m}1\quad(m\ge1).
+ \tag{NC10}
+\]</span>
+They follow from the commuting factors of (NC7). No lower scalar bound for <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has been introduced.</p>
+<p>For any bounded <span class="math" data-tex="\(h\in N_+\)">\(h\in N_+\)</span>, <a href="OA-FLOW-CZ.html#cz-1">CZ1</a> gives the normal semifinite weight <span class="math" data-tex="\(\phi_h\)">\(\phi_h\)</span>. Its support is exactly <span class="math" data-tex="\(p=s(h)\)">\(p=s(h)\)</span>: faithfulness of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> makes <span class="math" data-tex="\(\phi_h(x)=0\)">\(\phi_h(x)=0\)</span> equivalent to <span class="math" data-tex="\(x^{1/2}h^{1/2}=0\)">\(x^{1/2}h^{1/2}=0\)</span>, hence to <span class="math" data-tex="\(x^{1/2}p=0\)">\(x^{1/2}p=0\)</span>. Normal bimodularity of <span class="math" data-tex="\(E\)">\(E\)</span> gives, directly on all <span class="math" data-tex="\(x\in M_+\)">\(x\in M_+\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \phi_h(x)
+ &amp;=\phi(h^{1/2}xh^{1/2})\\
+ &amp;=\tau\!\left(h^{1/2}E(x)h^{1/2}\right)
+ =(\tau_h\circ E)(x).
+ \end{aligned}
+ \tag{NC11}
+\]">\[
+ \begin{aligned}
+ \phi_h(x)
+ &amp;=\phi(h^{1/2}xh^{1/2})\\
+ &amp;=\tau\!\left(h^{1/2}E(x)h^{1/2}\right)
+ =(\tau_h\circ E)(x).
+ \end{aligned}
+ \tag{NC11}
+\]</span>
+The equality includes infinite values. Both sides are normal semifinite weights, by the perturbation theorem or <a href="../OA-MOD/OA-MOD-WC.html#faithful-expectations-preserve-support-comparison-and-orthogonal-sums">WC's full expectation theorem</a>. The normalized supported derivative is
+<span class="math math-display" data-tex="\[
+ (D\phi_h:D\phi)_t=h^{it},
+ \tag{NC12}
+\]">\[
+ (D\phi_h:D\phi)_t=h^{it},
+ \tag{NC12}
+\]</span>
+where <span class="math" data-tex="\(h^{it}\)">\(h^{it}\)</span> is its unitary power on <span class="math" data-tex="\(p\)">\(p\)</span>, extended by zero outside <span class="math" data-tex="\(p\)">\(p\)</span>. On <span class="math" data-tex="\(pMp\)">\(pMp\)</span> its modular group is
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\phi_h}(x)=h^{it}\sigma_t^\phi(x)h^{-it}.
+ \tag{NC13}
+\]">\[
+ \sigma_t^{\phi_h}(x)=h^{it}\sigma_t^\phi(x)h^{-it}.
+ \tag{NC13}
+\]</span>
+These are the actual supported versions of <a href="OA-FLOW-CZ.html#cz-balanced-cocycle">CZ's density derivative</a>, or equivalently <a href="../OA-MOD/OA-MOD-WC.html#the-supported-cocycle-against-a-faithful-reference">WC's balanced supported construction</a>. Equality of modular groups alone would not establish (NC12)'s scalar normalization.</p>
+<p><span id="OA-FLOW.NCOEF.SPECTRAL-SEPARATION"></span><a id="nc-spectral-separation"></a></p>
+<h2 id="3-two-complete-separation-arguments">3. Two complete separation arguments</h2>
+<p>We need a lemma whose strictness is spectral rather than uniform.</p>
+<p><strong>Separation lemma.</strong> Let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be positive nonsingular selfadjoint operators affiliated with a von Neumann algebra <span class="math" data-tex="\(Q\)">\(Q\)</span>, with
+<span class="math math-display" data-tex="\[
+ 0&lt;A\le1,\qquad \ker(1-A)=0,\qquad B\ge1.
+ \tag{NC14}
+\]">\[
+ 0&lt;A\le1,\qquad \ker(1-A)=0,\qquad B\ge1.
+ \tag{NC14}
+\]</span>
+If <span class="math" data-tex="\(x\in Q\)">\(x\in Q\)</span> satisfies <span class="math" data-tex="\(A^{it}x=xB^{it}\)">\(A^{it}x=xB^{it}\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. There is no separability hypothesis.</p>
+<p><strong>Spectral proof.</strong> Put <span class="math" data-tex="\(D=\log A\)">\(D=\log A\)</span>, <span class="math" data-tex="\(F=\log B\)">\(F=\log B\)</span>. We first justify the spectral-intertwining step. For a selfadjoint <span class="math" data-tex="\(T\)">\(T\)</span>, scalar spectral calculus gives
+<span class="math math-display" data-tex="\[
+ (1-iT)^{-1}=\int_0^\infty e^{-s}e^{isT}\,ds.
+ \tag{NC15}
+\]">\[
+ (1-iT)^{-1}=\int_0^\infty e^{-s}e^{isT}\,ds.
+ \tag{NC15}
+\]</span>
+The integral is strong on each vector, has norm at most one, and equals the resolvent because the scalar integral is <span class="math" data-tex="\((1-it)^{-1}\)">\((1-it)^{-1}\)</span>. Thus the given intertwiner also intertwines these resolvents and their adjoints. In the direct sum representation, the operator
+<span class="math math-display" data-tex="\[
+ X=\begin{pmatrix}0&amp;x\\0&amp;0\end{pmatrix}
+\]">\[
+ X=\begin{pmatrix}0&amp;x\\0&amp;0\end{pmatrix}
+\]</span>
+commutes with the resolvent of <span class="math" data-tex="\(D\oplus F\)">\(D\oplus F\)</span> and its adjoint. It consequently commutes with the bounded Borel calculus of that normal resolvent: the actual cyclic/Borel proof in <a href="../OA-MOD/OA-MOD-SK.html#bounded-borel-functions-and-the-spectral-measure">SK</a> gives this commutant property. The resolvent has zero kernel, so its spectral projection at zero vanishes even when zero belongs to its spectrum. The map <span class="math" data-tex="\(r\mapsto(1-ir)^{-1}\)">\(r\mapsto(1-ir)^{-1}\)</span> is injective with Borel inverse on its image; pullback of its spectral projections therefore gives
+<span class="math math-display" data-tex="\[
+ E_D(S)x=xE_F(S)\quad(S\subset\mathbb R\text{ Borel}).
+ \tag{NC16}
+\]">\[
+ E_D(S)x=xE_F(S)\quad(S\subset\mathbb R\text{ Borel}).
+ \tag{NC16}
+\]</span>
+This also proves the assertion by normal resolvent calculus on the full affiliated domains, rather than by an unproved rule for unbounded multiplication.</p>
+<p>For <span class="math" data-tex="\(S=(-\infty,0)\)">\(S=(-\infty,0)\)</span>, the left projection is <span class="math" data-tex="\(1\)">\(1\)</span>: <span class="math" data-tex="\(D\le0\)">\(D\le0\)</span>, and its zero projection is <span class="math" data-tex="\(\ker(1-A)=0\)">\(\ker(1-A)=0\)</span>. The right projection is zero because <span class="math" data-tex="\(F\ge0\)">\(F\ge0\)</span>. Equation (NC16) makes <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p><strong>Half-plane proof.</strong> Write <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span>. The intertwining identity and its adjoint show that <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> commutes with all <span class="math" data-tex="\(B^{it}\)">\(B^{it}\)</span> and <span class="math" data-tex="\(xx^*\)">\(xx^*\)</span> with all <span class="math" data-tex="\(A^{it}\)">\(A^{it}\)</span>. Their support projections <span class="math" data-tex="\(e=v^*v\)">\(e=v^*v\)</span>, <span class="math" data-tex="\(f=vv^*\)">\(f=vv^*\)</span> have the same commutations. Bounded polar approximation then gives
+<span class="math math-display" data-tex="\[
+ A^{it}v=vB^{it},\qquad
+ A^{it}f=vB^{it}v^*.
+ \tag{NC17}
+\]">\[
+ A^{it}v=vB^{it},\qquad
+ A^{it}f=vB^{it}v^*.
+ \tag{NC17}
+\]</span>
+For example <span class="math" data-tex="\(v\)">\(v\)</span> is the strong limit of <span class="math" data-tex="\(x(\varepsilon+|x|)^{-1}\)">\(x(\varepsilon+|x|)^{-1}\)</span>; each bounded approximate inverse commutes with <span class="math" data-tex="\(B^{it}\)">\(B^{it}\)</span>. Spectral commutation can also be read from the resolvent argument above, applied to the bounded products.</p>
+<p>Define a bounded operator-valued function by
+<span class="math math-display" data-tex="\[
+ H(z)=
+ \begin{cases}
+   A^{iz}f,&amp;\operatorname{Im}z\le0,\\
+   vB^{iz}v^*,&amp;\operatorname{Im}z\ge0.
+ \end{cases}
+ \qquad \|H(z)\|\le1.
+ \tag{NC18}
+\]">\[
+ H(z)=
+ \begin{cases}
+   A^{iz}f,&amp;\operatorname{Im}z\le0,\\
+   vB^{iz}v^*,&amp;\operatorname{Im}z\ge0.
+ \end{cases}
+ \qquad \|H(z)\|\le1.
+ \tag{NC18}
+\]</span>
+The signs matter: <span class="math" data-tex="\(A^{-y}\)">\(A^{-y}\)</span> is a contraction for <span class="math" data-tex="\(y\le0\)">\(y\le0\)</span>, and <span class="math" data-tex="\(B^{-y}\)">\(B^{-y}\)</span> is a contraction for <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>. Spectral dominated convergence gives strong boundary continuity. Inside either half-plane, the functions
+<span class="math" data-tex="\(|\log r|^k r^a\)">\(|\log r|^k r^a\)</span> for <span class="math" data-tex="\(0&lt;r\le1\)">\(0&lt;r\le1\)</span>, or <span class="math" data-tex="\((\log r)^k r^{-a}\)">\((\log r)^k r^{-a}\)</span> for <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, are bounded for every <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Their spectral integrals justify local norm derivatives of every order. Equation (NC17) makes the two boundary values equal.</p>
+<p>Apply a normal functional to <span class="math" data-tex="\(H\)">\(H\)</span>. <a href="OA-FLOW-AS.html#as-2">AS2's rectangle/Morera gluing proof</a> makes the resulting scalar function entire. It is bounded, so the scalar Cauchy derivative estimate on a circle of radius <span class="math" data-tex="\(R\)">\(R\)</span> gives derivative at most <span class="math" data-tex="\(\|\omega\|/R\)">\(\|\omega\|/R\)</span>; letting <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span> makes it constant. Normal functionals separate <span class="math" data-tex="\(Q\)">\(Q\)</span>, and hence <span class="math" data-tex="\(H(z)=H(0)=f\)">\(H(z)=H(0)=f\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(A^{it}f=f\)">\(A^{it}f=f\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>. For any vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the spectral measure of <span class="math" data-tex="\(A\)">\(A\)</span> at <span class="math" data-tex="\(f\xi\)">\(f\xi\)</span> therefore gives zero integral of <span class="math" data-tex="\(|r^{it}-1|^2\)">\(|r^{it}-1|^2\)</span> for every rational <span class="math" data-tex="\(t\)">\(t\)</span>. The countable intersection of their zero sets in <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span> is <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. Thus <span class="math" data-tex="\(f\xi\)">\(f\xi\)</span> belongs to the 1-eigenspace of <span class="math" data-tex="\(A\)">\(A\)</span>, which is zero. Hence <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, and <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. This argument uses scalar measures one vector at a time, not a common exceptional set for an arbitrary Hilbert basis.</p>
+<p><span id="OA-FLOW.NCOEF.RIGIDITY"></span><a id="nc-rigidity"></a></p>
+<h2 id="4-a-normalized-transporter-has-only-degree-zero">4. A normalized transporter has only degree zero</h2>
+<p>Let <span class="math" data-tex="\(h_1,h_2\)">\(h_1,h_2\)</span> be normalized, <span class="math" data-tex="\(p_j=s(h_j)\)">\(p_j=s(h_j)\)</span>, and suppose <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> has
+<span class="math math-display" data-tex="\[
+ vv^*=p_1,\qquad v^*v=p_2,\qquad
+ \phi_{h_2}(x)=\phi_{h_1}(vxv^*)\quad(x\in M_+).
+ \tag{NC19}
+\]">\[
+ vv^*=p_1,\qquad v^*v=p_2,\qquad
+ \phi_{h_2}(x)=\phi_{h_1}(vxv^*)\quad(x\in M_+).
+ \tag{NC19}
+\]</span>
+The zero cases force <span class="math" data-tex="\(v=0\)">\(v=0\)</span>; the following formulas also include them. Define
+<span class="math math-display" data-tex="\[
+ k_j=\rho(1-p_j)+h_j.
+ \tag{NC20}
+\]">\[
+ k_j=\rho(1-p_j)+h_j.
+ \tag{NC20}
+\]</span>
+Because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is central and <span class="math" data-tex="\(p_j\)">\(p_j\)</span> supports <span class="math" data-tex="\(h_j\)">\(h_j\)</span>,
+<span class="math math-display" data-tex="\[
+ 0&lt;\rho\le k_j\le1,\qquad \ker(1-k_j)=0.
+ \tag{NC21}
+\]">\[
+ 0&lt;\rho\le k_j\le1,\qquad \ker(1-k_j)=0.
+ \tag{NC21}
+\]</span>
+On <span class="math" data-tex="\(p_j\)">\(p_j\)</span> this is normalization; on <span class="math" data-tex="\(1-p_j\)">\(1-p_j\)</span> it follows from <span class="math" data-tex="\(\rho\le\lambda_0&lt;1\)">\(\rho\le\lambda_0&lt;1\)</span>. Thus <span class="math" data-tex="\(k_j\)">\(k_j\)</span> is nonsingular even if <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is not faithful.</p>
+<p>The exact supported covariance in <a href="../OA-MOD/OA-MOD-WC.html#the-balanced-centralizer-records-every-comparison">WC.12–14</a>, applied to (NC12) and (NC19), gives
+<span class="math math-display" data-tex="\[
+ v h_2^{it}=h_1^{it}\sigma_t^\phi(v).
+ \tag{NC22}
+\]">\[
+ v h_2^{it}=h_1^{it}\sigma_t^\phi(v).
+ \tag{NC22}
+\]</span>
+Both <span class="math" data-tex="\(p_j\)">\(p_j\)</span> are <span class="math" data-tex="\(\phi\)">\(\phi\)</span>-fixed. Consequently <span class="math" data-tex="\(vp_2=v\)">\(vp_2=v\)</span>, <span class="math" data-tex="\(p_1\sigma_t^\phi(v)=\sigma_t^\phi(v)\)">\(p_1\sigma_t^\phi(v)=\sigma_t^\phi(v)\)</span>, and (NC22) is equivalently
+<span class="math math-display" data-tex="\[
+ v k_2^{it}=k_1^{it}\sigma_t^\phi(v).
+ \tag{NC23}
+\]">\[
+ v k_2^{it}=k_1^{it}\sigma_t^\phi(v).
+ \tag{NC23}
+\]</span></p>
+<p>For <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, put <span class="math" data-tex="\(x_n=E(vU^{-n})\in N\)">\(x_n=E(vU^{-n})\in N\)</span>. The coefficient maps are normal. Their values on covariant words, together with (NC9), give on the full algebra
+<span class="math math-display" data-tex="\[
+ k_1^{it}x_n\theta^n(\rho_n^{it})
+      =x_n\theta^n(k_2^{it}),\qquad
+ k_1^{it}x_n=x_n\,\theta^n(k_2^{it}\rho_n^{-it}).
+ \tag{NC24}
+\]">\[
+ k_1^{it}x_n\theta^n(\rho_n^{it})
+      =x_n\theta^n(k_2^{it}),\qquad
+ k_1^{it}x_n=x_n\,\theta^n(k_2^{it}\rho_n^{-it}).
+ \tag{NC24}
+\]</span>
+One may verify this first on the bounded Fejer polynomials of <span class="math" data-tex="\(v\)">\(v\)</span>. Normality and their strong-star convergence justify passage to <span class="math" data-tex="\(v\)">\(v\)</span>; no unaveraged Fourier convergence is used.</p>
+<p>If <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, all factors in
+<span class="math math-display" data-tex="\[
+ B_n=\theta^n(k_2\rho_n^{-1})
+ \tag{NC25}
+\]">\[
+ B_n=\theta^n(k_2\rho_n^{-1})
+ \tag{NC25}
+\]</span>
+strongly commute where required, because <span class="math" data-tex="\(\rho_n\)">\(\rho_n\)</span> is central. Joint spectral calculus defines a positive nonsingular affiliated <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, and (NC10), (NC21) give <span class="math" data-tex="\(B_n\ge1\)">\(B_n\ge1\)</span>. Its unitary powers are precisely those on the right of (NC24). The separation lemma, by either proof, gives <span class="math" data-tex="\(x_n=0\)">\(x_n=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, move the central factor in the first equation of (NC24) to the left and put
+<span class="math math-display" data-tex="\[
+ C_n=k_1\theta^n(\rho_n)=k_1\rho_{-n}^{-1}\ge1,\qquad
+ D_n=\theta^n(k_2)\le1,\qquad \ker(1-D_n)=0.
+ \tag{NC26}
+\]">\[
+ C_n=k_1\theta^n(\rho_n)=k_1\rho_{-n}^{-1}\ge1,\qquad
+ D_n=\theta^n(k_2)\le1,\qquad \ker(1-D_n)=0.
+ \tag{NC26}
+\]</span>
+The inequality follows from <span class="math" data-tex="\(\rho_{-n}\le\rho\le k_1\)">\(\rho_{-n}\le\rho\le k_1\)</span>, since <span class="math" data-tex="\(-n&gt;0\)">\(-n&gt;0\)</span>. The coefficient identity is <span class="math" data-tex="\(C_n^{it}x_n=x_nD_n^{it}\)">\(C_n^{it}x_n=x_nD_n^{it}\)</span>. Take adjoints and replace <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span> to get
+<span class="math" data-tex="\(D_n^{it}x_n^*=x_n^*C_n^{it}\)">\(D_n^{it}x_n^*=x_n^*C_n^{it}\)</span>. The same lemma gives <span class="math" data-tex="\(x_n=0\)">\(x_n=0\)</span>.</p>
+<p>Only <span class="math" data-tex="\(x_0\)">\(x_0\)</span> remains. The <a href="OA-FLOW-VD.html#vd-discrete-regular">full coefficient uniqueness theorem</a>, or its bounded Fejer reconstruction, yields
+<span class="math math-display" data-tex="\[
+ v=x_0\in N.
+ \tag{NC27}
+\]">\[
+ v=x_0\in N.
+ \tag{NC27}
+\]</span>
+Both proofs of the separation lemma have therefore proved the complete transport assertion, including nonfaithful and zero supports and without a uniform upper gap for <span class="math" data-tex="\(h_j\)">\(h_j\)</span>.</p>
+<p><span id="OA-FLOW.NCOEF.CENTRALIZER"></span><a id="nc-centralizer"></a></p>
+<h2 id="5-exact-centralizers-cuts-and-comparison">5. Exact centralizers, cuts and comparison</h2>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be normalized and <span class="math" data-tex="\(p=s(h)\)">\(p=s(h)\)</span>. A unitary <span class="math" data-tex="\(w\)">\(w\)</span> of the actual support centralizer <span class="math" data-tex="\(M_{\phi_h}\)">\(M_{\phi_h}\)</span> has <span class="math" data-tex="\(w^*w=ww^*=p\)">\(w^*w=ww^*=p\)</span> and preserves <span class="math" data-tex="\(\phi_h\)">\(\phi_h\)</span> on the whole positive cone. The latter assertion is the full centralizer-unitary invariance in <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0</a>, not a finite-value trace computation. Apply (NC27) to <span class="math" data-tex="\(w\)">\(w\)</span> to get <span class="math" data-tex="\(w\in N\)">\(w\in N\)</span>.</p>
+<p>Every element of a unital von Neumann algebra is a linear combination of its unitaries: a selfadjoint contraction <span class="math" data-tex="\(a\)">\(a\)</span> is the real part of <span class="math" data-tex="\(a+i(p-a^2)^{1/2}\)">\(a+i(p-a^2)^{1/2}\)</span> in its corner; split a general element into real and imaginary parts and rescale. Hence <span class="math" data-tex="\(M_{\phi_h}\subset pNp\)">\(M_{\phi_h}\subset pNp\)</span>. On this corner (NC13) reduces to <span class="math" data-tex="\(\operatorname{Ad}h^{it}\)">\(\operatorname{Ad}h^{it}\)</span>. The spectral-intertwining argument (NC15)–(NC16) identifies its fixed algebra exactly:
+<span class="math math-display" data-tex="\[
+ \boxed{\quad M_{\phi_h}=N_{\tau_h}
+           =\{h\}'\cap pNp.\quad}
+ \tag{NC28}
+\]">\[
+ \boxed{\quad M_{\phi_h}=N_{\tau_h}
+           =\{h\}'\cap pNp.\quad}
+ \tag{NC28}
+\]</span>
+For the trace-density centralizer use the same perturbation formula with tracial reference <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Thus equality holds with the entire centralizer, not just a convenient subalgebra.</p>
+<p>If <span class="math" data-tex="\(e\in\operatorname{Proj}(M_{\phi_h})\)">\(e\in\operatorname{Proj}(M_{\phi_h})\)</span>, then <span class="math" data-tex="\(e\le p\)">\(e\le p\)</span>, <span class="math" data-tex="\(e\in N\)">\(e\in N\)</span> and <span class="math" data-tex="\(eh=he\)">\(eh=he\)</span>. With <span class="math" data-tex="\(k=eh\)">\(k=eh\)</span>, faithfulness of <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(s(k)=e\)">\(s(k)=e\)</span>, and
+<span class="math math-display" data-tex="\[
+ \rho e\le k,\qquad k\le1,\qquad \ker(1-k)=0,\qquad
+ (\phi_h)_e=\phi_k.
+ \tag{NC29}
+\]">\[
+ \rho e\le k,\qquad k\le1,\qquad \ker(1-k)=0,\qquad
+ (\phi_h)_e=\phi_k.
+ \tag{NC29}
+\]</span>
+For the kernel claim, <span class="math" data-tex="\(k\)">\(k\)</span> is zero on <span class="math" data-tex="\(1-e\)">\(1-e\)</span>, and on <span class="math" data-tex="\(e\)">\(e\)</span> its 1-eigenspace is contained in that of <span class="math" data-tex="\(h\)">\(h\)</span>. The weight identity is the direct equality of the two bounded sandwiches on every positive <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(\phi_{h_1}\precsim\phi_{h_2}\)">\(\phi_{h_1}\precsim\phi_{h_2}\)</span>. Choose <span class="math" data-tex="\(e\in M_{\phi_{h_2}}\)">\(e\in M_{\phi_{h_2}}\)</span> and the actual supported equivalence to <span class="math" data-tex="\((\phi_{h_2})_e\)">\((\phi_{h_2})_e\)</span>. Equation (NC29) writes this cut as the normalized <span class="math" data-tex="\(\phi_{eh_2}\)">\(\phi_{eh_2}\)</span>; (NC27) puts its implementing partial isometry in <span class="math" data-tex="\(N\)">\(N\)</span>. Restricting the whole-cone identity to <span class="math" data-tex="\(N_+\)">\(N_+\)</span> gives
+<span class="math" data-tex="\(\tau_{h_1}\sim(\tau_{h_2})_e\)">\(\tau_{h_1}\sim(\tau_{h_2})_e\)</span>, hence <span class="math" data-tex="\(\tau_{h_1}\precsim\tau_{h_2}\)">\(\tau_{h_1}\precsim\tau_{h_2}\)</span>. Conversely <a href="../OA-MOD/OA-MOD-WC.html#faithful-expectations-preserve-support-comparison-and-orthogonal-sums">expectation transfer WC36–42</a>, together with (NC11), gives the reverse implication. The same argument with full target support proves
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \phi_{h_1}\precsim\phi_{h_2}
+     &amp;\iff\tau_{h_1}\precsim\tau_{h_2},\\
+ \phi_{h_1}\sim\phi_{h_2}
+     &amp;\iff\tau_{h_1}\sim\tau_{h_2}.
+ \end{aligned}
+ \tag{NC30}
+\]">\[
+ \begin{aligned}
+ \phi_{h_1}\precsim\phi_{h_2}
+     &amp;\iff\tau_{h_1}\precsim\tau_{h_2},\\
+ \phi_{h_1}\sim\phi_{h_2}
+     &amp;\iff\tau_{h_1}\sim\tau_{h_2}.
+ \end{aligned}
+ \tag{NC30}
+\]</span>
+Compression preserves normalization. It need not preserve infinite multiplicity: a finite nonzero projection in a properly infinite semifinite centralizer gives a finite compressed centralizer. The seed construction next retains proper infiniteness by an explicit unital subalgebra, rather than by an unrestricted compression assertion.</p>
+<p><span id="OA-FLOW.NCOEF.SEED"></span><a id="nc-seed"></a></p>
+<h2 id="6-a-coefficient-seed-with-infinite-multiplicity">6. A coefficient seed with infinite multiplicity</h2>
+<p>We now use the separable type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span> factor scope in Section 1. Denote by <span class="math" data-tex="\(W_\infty(B)\)">\(W_\infty(B)\)</span> the zero weight and the normal semifinite weights on <span class="math" data-tex="\(B\)">\(B\)</span> whose nonzero support centralizer is properly infinite.</p>
+<p><strong>Seed theorem.</strong> For every nonzero <span class="math" data-tex="\(\psi\in W_\infty(M)\)">\(\psi\in W_\infty(M)\)</span>, there is <span class="math" data-tex="\(0\ne g\in N_+\)">\(0\ne g\in N_+\)</span> such that
+<span class="math math-display" data-tex="\[
+ \phi_g\precsim\psi,\qquad \tau_g\in W_\infty(N).
+ \tag{NC31}
+\]">\[
+ \phi_g\precsim\psi,\qquad \tau_g\in W_\infty(N).
+ \tag{NC31}
+\]</span>
+The density <span class="math" data-tex="\(g\)">\(g\)</span> is bounded. It need not yet satisfy (NC4). The second assertion is an essential part of the theorem.</p>
+<h3 id="a-central-perturbation-and-its-old-centralizer">A central perturbation and its old centralizer</h3>
+<p>Use the <a href="OA-FLOW-CMAS.html#cp-weights">central lacunary perturbation theorem, CPB16–18</a>, on the nonzero reduced weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. It supplies a nonzero <span class="math" data-tex="\(q\in Z(M_\psi)\)">\(q\in Z(M_\psi)\)</span> and a bounded <span class="math" data-tex="\(k\in Z(M_\psi)q\)">\(k\in Z(M_\psi)q\)</span>, invertible in <span class="math" data-tex="\(qM_\psi q\)">\(qM_\psi q\)</span>, such that
+<span class="math math-display" data-tex="\[
+ \chi=\psi_k,\qquad s(\chi)=q,\qquad
+ \chi\text{ is lacunary on }qMq.
+ \tag{NC32}
+\]">\[
+ \chi=\psi_k,\qquad s(\chi)=q,\qquad
+ \chi\text{ is lacunary on }qMq.
+ \tag{NC32}
+\]</span>
+For <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, use specifically the fundamental-period correction, so <span class="math" data-tex="\(\sigma_P^\chi=\mathrm{id}\)">\(\sigma_P^\chi=\mathrm{id}\)</span>, <span class="math" data-tex="\(P=2\pi/(-\log\lambda)\)">\(P=2\pi/(-\log\lambda)\)</span>. The bounded phase proof in <a href="OA-FLOW-DDP.html#dd-existence">DDP7</a> and <a href="OA-FLOW-PW.html#oa-flow.pw.3">PW3</a> supplies this directly; arbitrary lacunarity would be insufficient for the generalized-trace comparison below.</p>
+<p>The inclusion
+<span class="math math-display" data-tex="\[
+ qM_\psi q\subset Q:=(qMq)_\chi
+ \tag{NC33}
+\]">\[
+ qM_\psi q\subset Q:=(qMq)_\chi
+ \tag{NC33}
+\]</span>
+follows from the modular perturbation formula: <span class="math" data-tex="\(k\)">\(k\)</span> is central in the old centralizer. Since <span class="math" data-tex="\(q\)">\(q\)</span> is a nonzero central projection there, <span class="math" data-tex="\(qM_\psi q\)">\(qM_\psi q\)</span> is properly infinite. Its two orthogonal isometries have initial projection <span class="math" data-tex="\(q\)">\(q\)</span>, so (NC33) proves that <span class="math" data-tex="\(Q\)">\(Q\)</span> is properly infinite. Thus the perturbation retains infinite multiplicity, without asserting that arbitrary centralizer compression does so.</p>
+<h3 id="positive-lambda-undo-the-specified-periodic-correction">Positive lambda: undo the specified periodic correction</h3>
+<p>Assume <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>. The separable type III projection theorem <a href="OA-FLOW-PC.html#oa-flow.pc.8">PC8</a> gives a partial isometry from <span class="math" data-tex="\(1\)">\(1\)</span> onto <span class="math" data-tex="\(q\)">\(q\)</span>. Transport <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to <span class="math" data-tex="\(M\)">\(M\)</span> through its normal corner isomorphism. It has period <span class="math" data-tex="\(P\)">\(P\)</span>, and its centralizer is properly infinite, so its trace mass is infinite. The specified-periodic-weight theorem and comparison in <a href="OA-FLOW-DDP.html#dd-comparison">DDP Sections 2 and 7</a> give <span class="math" data-tex="\(a\in(\lambda,1]\)">\(a\in(\lambda,1]\)</span> and a partial isometry <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span> with
+<span class="math math-display" data-tex="\[
+ u^*u=1,\quad uu^*=q,\qquad
+ \chi(uxu^*)=a\phi(x)\quad(x\in M_+).
+ \tag{NC34}
+\]">\[
+ u^*u=1,\quad uu^*=q,\qquad
+ \chi(uxu^*)=a\phi(x)\quad(x\in M_+).
+ \tag{NC34}
+\]</span>
+This incorporates the unitary from the generalized-trace comparison into the chosen corner isometry. It is an equality of normalized weights, not an equality only of modular actions.</p>
+<p>Modular covariance gives <span class="math" data-tex="\(uNu^*=Q\)">\(uNu^*=Q\)</span>. Since <span class="math" data-tex="\(k\in Q\)">\(k\in Q\)</span>, put
+<span class="math math-display" data-tex="\[
+ b=u^*ku\in N,\qquad g=a b^{-1}.
+ \tag{NC35}
+\]">\[
+ b=u^*ku\in N,\qquad g=a b^{-1}.
+ \tag{NC35}
+\]</span>
+The inverse is bounded, <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>, and <span class="math" data-tex="\(s(g)=1\)">\(s(g)=1\)</span>. Undoing the bounded density in (NC32), directly on every positive element, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \psi_q(uxu^*)
+ &amp;=\chi(k^{-1/2}uxu^*k^{-1/2})\\
+ &amp;=a\phi(b^{-1/2}xb^{-1/2})
+ =\phi_g(x).
+ \end{aligned}
+ \tag{NC36}
+\]">\[
+ \begin{aligned}
+ \psi_q(uxu^*)
+ &amp;=\chi(k^{-1/2}uxu^*k^{-1/2})\\
+ &amp;=a\phi(b^{-1/2}xb^{-1/2})
+ =\phi_g(x).
+ \end{aligned}
+ \tag{NC36}
+\]</span>
+The factors commute where square roots are combined, and the products are bounded. Infinity is preserved by the same literal sandwiches. Hence <span class="math" data-tex="\(\phi_g\sim\psi_q\precsim\psi\)">\(\phi_g\sim\psi_q\precsim\psi\)</span>.</p>
+<p>The properly infinite algebra <span class="math" data-tex="\(u^*(qM_\psi q)u\)">\(u^*(qM_\psi q)u\)</span> is a unital subalgebra of <span class="math" data-tex="\(N\)">\(N\)</span>. It commutes with <span class="math" data-tex="\(b\)">\(b\)</span>, because <span class="math" data-tex="\(k\)">\(k\)</span> is central in <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>, and therefore commutes with <span class="math" data-tex="\(g\)">\(g\)</span>. The trace-density modular formula gives
+<span class="math" data-tex="\(N_{\tau_g}=\{g\}'\cap N\)">\(N_{\tau_g}=\{g\}'\cap N\)</span>. It contains that unital properly infinite algebra, so it too is properly infinite. This proves both assertions of (NC31).</p>
+<h3 id="type-iii-zero-build-both-central-supports">Type III-zero: build both central supports</h3>
+<p>Assume <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>. Both <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on <span class="math" data-tex="\(qMq\)">\(qMq\)</span> are faithful lacunary weights of infinite multiplicity. Form their faithful balanced weight on the support algebra
+<span class="math math-display" data-tex="\[
+ B=
+ \begin{pmatrix}1&amp;0\\0&amp;q\end{pmatrix}
+ M_2(M)
+ \begin{pmatrix}1&amp;0\\0&amp;q\end{pmatrix},
+ \qquad
+ \Omega(X)=\phi(X_{11})+\chi(X_{22}).
+ \tag{NC37}
+\]">\[
+ B=
+ \begin{pmatrix}1&amp;0\\0&amp;q\end{pmatrix}
+ M_2(M)
+ \begin{pmatrix}1&amp;0\\0&amp;q\end{pmatrix},
+ \qquad
+ \Omega(X)=\phi(X_{11})+\chi(X_{22}).
+ \tag{NC37}
+\]</span>
+Its modular action restricts to the two given actions on the diagonal corners. This is the full balanced construction in <a href="../OA-MOD/OA-MOD-WC.html#the-balanced-centralizer-records-every-comparison">WC</a>. The off-diagonal space is <span class="math" data-tex="\(Mq\ne0\)">\(Mq\ne0\)</span>.</p>
+<p>Using <a href="OA-FLOW-MG.html#oa-flow.mg.1">MG1</a> for the modular action gap and <a href="OA-FLOW-SS.html#ss-3">SS3</a> for the singleton fixed space, choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> smaller than both diagonal action gaps. Thus in either diagonal algebra the closed spectral subspace in <span class="math" data-tex="\([-\delta,\delta]\)">\([-\delta,\delta]\)</span> is its fixed algebra. The balanced action itself need <strong>not</strong> have a gap. Normal spectral filters and nonzero-element detection in <a href="OA-FLOW-GL.html#gl-3">GL3–4</a> give a nonzero off-diagonal <span class="math" data-tex="\(x\)">\(x\)</span> with compact spectrum in an interval <span class="math" data-tex="\(I\)">\(I\)</span> whose difference <span class="math" data-tex="\(I-I\)">\(I-I\)</span> is contained in <span class="math" data-tex="\((-\delta,\delta)\)">\((-\delta,\delta)\)</span>. To see that one such filter is nonzero, otherwise every compactly supported Fourier filter in the interval cover would kill the off-diagonal element; a finite partition of a compact Fourier support and the bounded compact-spectrum approximate identity would then kill it altogether.</p>
+<p>Write <span class="math" data-tex="\(x=v_0|x|\)">\(x=v_0|x|\)</span>. Products land in their respective diagonal gaps:
+<span class="math" data-tex="\(x^*x\in Q\)">\(x^*x\in Q\)</span>, <span class="math" data-tex="\(xx^*\in N\)">\(xx^*\in N\)</span>.
+Bounded polar approximation within the fixed right algebra, followed by <a href="OA-FLOW-GL.html#gl-4">GL's closed spectral subspaces</a>, gives
+<span class="math math-display" data-tex="\[
+ e_0=v_0^*v_0\in Q,\quad f_0=v_0v_0^*\in N,\qquad
+ v_0(e_0Qe_0)v_0^*=f_0Nf_0.
+ \tag{NC38}
+\]">\[
+ e_0=v_0^*v_0\in Q,\quad f_0=v_0v_0^*\in N,\qquad
+ v_0(e_0Qe_0)v_0^*=f_0Nf_0.
+ \tag{NC38}
+\]</span>
+Indeed <span class="math" data-tex="\(v_0Qv_0^*\)">\(v_0Qv_0^*\)</span> has diagonal spectrum in <span class="math" data-tex="\(I-I\)">\(I-I\)</span>, hence lies in <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(v_0^*Nv_0\subset Q\)">\(v_0^*Nv_0\subset Q\)</span> by the same calculation. These two inclusions and the actual support equations give the equality. This is the local narrow-band argument of <a href="OA-FLOW-LAC.html#lac-local">LAC, (LAC8)–(LAC9)</a>, applied to the two diagonal gaps; it does not assume lacunarity of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>Put <span class="math" data-tex="\(e=z_Q(e_0)\)">\(e=z_Q(e_0)\)</span>, <span class="math" data-tex="\(f=z_N(f_0)\)">\(f=z_N(f_0)\)</span>. Both <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> are properly infinite and countably decomposable: a faithful normal state of the separable ambient support algebra restricts faithfully to either one. The explicit amplification in <a href="OA-FLOW-LAC.html#lac-local">LACN2</a>, including finite initial projections, gives partial isometries
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ a_j\in Q,\quad a_j^*a_j=e_0,\quad
+       \sum_j a_ja_j^*=e,\\
+ b_j\in N,\quad b_j^*b_j=f_0,\quad
+       \sum_j b_jb_j^*=f,
+ \end{gathered}
+ \tag{NC39}
+\]">\[
+ \begin{gathered}
+ a_j\in Q,\quad a_j^*a_j=e_0,\quad
+       \sum_j a_ja_j^*=e,\\
+ b_j\in N,\quad b_j^*b_j=f_0,\quad
+       \sum_j b_jb_j^*=f,
+ \end{gathered}
+ \tag{NC39}
+\]</span>
+with orthogonal final projections in each family. The sums are strong. The construction compares <span class="math" data-tex="\(e\otimes E_{11}\)">\(e\otimes E_{11}\)</span> with <span class="math" data-tex="\(e_0\otimes1\)">\(e_0\otimes1\)</span> in <span class="math" data-tex="\(Qe\bar\otimes B(\ell^2)\)">\(Qe\bar\otimes B(\ell^2)\)</span>, and similarly on the other side; it never supposes that <span class="math" data-tex="\(e_0\)">\(e_0\)</span> or <span class="math" data-tex="\(f_0\)">\(f_0\)</span> was properly infinite.</p>
+<p>The orthogonal sum
+<span class="math math-display" data-tex="\[
+ v=\sum_j b_jv_0a_j^*,\qquad v^*v=e,\quad vv^*=f
+ \tag{NC40}
+\]">\[
+ v=\sum_j b_jv_0a_j^*,\qquad v^*v=e,\quad vv^*=f
+ \tag{NC40}
+\]</span>
+converges strongly-star by square-sum tails. Its finite partial sums have the same compact spectral support as <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, since their outside factors are fixed. The limit belongs to that closed spectral subspace. The two diagonal gap calculations again give
+<span class="math math-display" data-tex="\[
+ v(eQe)v^*=fNf.
+ \tag{NC41}
+\]">\[
+ v(eQe)v^*=fNf.
+ \tag{NC41}
+\]</span>
+Thus both endpoints, not only the initial one, have been made central in their respective centralizers.</p>
+<h3 id="the-central-density-and-the-cut-that-preserves-multiplicity">The central density and the cut that preserves multiplicity</h3>
+<p>On <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, define <span class="math" data-tex="\(\eta(x)=\phi(vxv^*)\)">\(\eta(x)=\phi(vxv^*)\)</span>. The actual corner modular theorem <a href="OA-FLOW-MG.html#oa-flow.mg.2">MG2</a> and normal transport show
+<span class="math math-display" data-tex="\[
+ (eMe)_\eta=eQe=(eMe)_{\chi_e}=:P.
+ \tag{NC42}
+\]">\[
+ (eMe)_\eta=eQe=(eMe)_{\chi_e}=:P.
+ \tag{NC42}
+\]</span>
+Both weights are faithful, lacunary and strictly semifinite. For the last assertion, the lacunary expectation/trace proof <a href="OA-FLOW-LAC.html#lac-expectation">LAC Section 1</a> makes the restriction to the centralizer semifinite, and <a href="../OA-MOD/OA-MOD-WC.html#strict-semifiniteness-is-semifiniteness-on-the-centralizer">WC24–27</a> gives the equivalence with strict semifiniteness.</p>
+<p>Here is the precise relative-commutant premise needed for central Radon–Nikodym comparison. A faithful lacunary strictly semifinite weight has an orthogonal family of finite centralizer projections filling its support. Each corresponding finite corner weight is faithful and lacunary, by spectral restriction. <a href="../OA-MOD/OA-MOD-WC.html#a-lacunary-functional-carries-ambient-maximal-abelian-algebras">WC's bounded lacunary MASA theorem</a> supplies a MASA of each corner lying in its centralizer. Their block sum is an ambient MASA: a commuting element commutes with every block unit, hence has no mixed blocks, and is diagonal in the respective corner MASAs. It follows that the centralizer's relative commutant is its center. Apply this to <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>.</p>
+<p>The full conditional theorem <a href="../OA-MOD/OA-MOD-WC.html#centralizer-inclusion-and-a-central-affiliated-density">WC34–35</a> therefore gives a positive nonsingular selfadjoint <span class="math" data-tex="\(h_1\)">\(h_1\)</span>, affiliated with <span class="math" data-tex="\(Z(P)\)">\(Z(P)\)</span>, such that
+<span class="math math-display" data-tex="\[
+ \chi_e=\eta_{h_1}.
+ \tag{NC43}
+\]">\[
+ \chi_e=\eta_{h_1}.
+ \tag{NC43}
+\]</span>
+This invokes the density theorem, not merely the existence of a lacunary perturbation. The normalization is fixed by the Connes derivative, and the equality is on the whole positive cone.</p>
+<p>Choose <span class="math" data-tex="\(0&lt;r&lt;R&lt;\infty\)">\(0&lt;r&lt;R&lt;\infty\)</span> with
+<span class="math math-display" data-tex="\[
+ 0\ne e_1=1_{[r,R]}(h_1)\in Z(P).
+ \tag{NC44}
+\]">\[
+ 0\ne e_1=1_{[r,R]}(h_1)\in Z(P).
+ \tag{NC44}
+\]</span>
+Such a cut exists because <span class="math" data-tex="\(h_1\)">\(h_1\)</span> is positive nonsingular; the countable cuts <span class="math" data-tex="\([1/n,n]\)">\([1/n,n]\)</span> increase to <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>We verify carefully that this cut is also central in the <em>old</em> centralizer <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>. The operator <span class="math" data-tex="\(k\)">\(k\)</span> is fixed by the modular action of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, so <span class="math" data-tex="\(k\in Q\)">\(k\in Q\)</span>. Since <span class="math" data-tex="\(e\in Z(Q)\)">\(e\in Z(Q)\)</span>, it commutes with <span class="math" data-tex="\(k\)">\(k\)</span>, and
+<span class="math" data-tex="\(\sigma_t^\psi(e)=k^{-it}\sigma_t^\chi(e)k^{it}=e\)">\(\sigma_t^\psi(e)=k^{-it}\sigma_t^\chi(e)k^{it}=e\)</span>.
+Moreover <span class="math" data-tex="\(qM_\psi q\subset Q\)">\(qM_\psi q\subset Q\)</span>, so <span class="math" data-tex="\(e\)">\(e\)</span> commutes with <span class="math" data-tex="\(qM_\psi q\)">\(qM_\psi q\)</span>. As <span class="math" data-tex="\(q\in Z(M_\psi)\)">\(q\in Z(M_\psi)\)</span>, this proves <span class="math" data-tex="\(e\in Z(M_\psi)\)">\(e\in Z(M_\psi)\)</span>. Next <span class="math" data-tex="\(ek\in P\)">\(ek\in P\)</span>; centrality of <span class="math" data-tex="\(e_1\)">\(e_1\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span> makes it commute with <span class="math" data-tex="\(k\)">\(k\)</span>. The same inverse perturbation formula makes <span class="math" data-tex="\(e_1\)">\(e_1\)</span> <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-fixed. Also <span class="math" data-tex="\(eM_\psi e\subset P\)">\(eM_\psi e\subset P\)</span>, so <span class="math" data-tex="\(e_1\)">\(e_1\)</span> commutes with this algebra and, by centrality of <span class="math" data-tex="\(e\)">\(e\)</span>, with all of <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ e_1\in Z(M_\psi),\qquad
+ \mathcal R=e_1M_\psi e_1\text{ is properly infinite}.
+ \tag{NC45}
+\]">\[
+ e_1\in Z(M_\psi),\qquad
+ \mathcal R=e_1M_\psi e_1\text{ is properly infinite}.
+ \tag{NC45}
+\]</span></p>
+<p>Within <span class="math" data-tex="\(P\)">\(P\)</span> put
+<span class="math math-display" data-tex="\[
+ h=k^{-1}h_1e_1,\qquad
+ \frac r{\|k\|}e_1\le h\le R\,\|k^{-1}\|e_1,\qquad s(h)=e_1.
+ \tag{NC46}
+\]">\[
+ h=k^{-1}h_1e_1,\qquad
+ \frac r{\|k\|}e_1\le h\le R\,\|k^{-1}\|e_1,\qquad s(h)=e_1.
+ \tag{NC46}
+\]</span>
+The product is bounded and positive because <span class="math" data-tex="\(h_1e_1\)">\(h_1e_1\)</span> is a bounded central element of <span class="math" data-tex="\(P\)">\(P\)</span> commuting with <span class="math" data-tex="\(ek^{-1}\)">\(ek^{-1}\)</span>. There is no product of two noncommuting unbounded operators.</p>
+<p>Undo (NC32) on <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and use (NC43). For every positive <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \psi_{e_1}(x)
+ &amp;=\chi_e(k^{-1/2}e_1xe_1k^{-1/2})\\
+ &amp;=\eta(h^{1/2}xh^{1/2}).
+ \end{aligned}
+ \tag{NC47}
+\]">\[
+ \begin{aligned}
+ \psi_{e_1}(x)
+ &amp;=\chi_e(k^{-1/2}e_1xe_1k^{-1/2})\\
+ &amp;=\eta(h^{1/2}xh^{1/2}).
+ \end{aligned}
+ \tag{NC47}
+\]</span>
+This is first a literal bounded sandwich with the bounded spectral cut <span class="math" data-tex="\(h_1e_1\)">\(h_1e_1\)</span>; the full perturbation theorem identifies it with (NC43), including infinite values.</p>
+<p>Finally define
+<span class="math math-display" data-tex="\[
+ g=vhv^*\in N_+,\qquad
+ f_1=ve_1v^*=s(g),\qquad
+ w=ve_1,\quad w^*w=e_1,\quad ww^*=f_1.
+ \tag{NC48}
+\]">\[
+ g=vhv^*\in N_+,\qquad
+ f_1=ve_1v^*=s(g),\qquad
+ w=ve_1,\quad w^*w=e_1,\quad ww^*=f_1.
+ \tag{NC48}
+\]</span>
+The order of the conjugation is forced by (NC40). Equation (NC41) puts <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>, and (NC47) gives
+<span class="math math-display" data-tex="\[
+ \psi_{e_1}(x)=\phi_g(wxw^*)\quad(x\in M_+).
+ \tag{NC49}
+\]">\[
+ \psi_{e_1}(x)=\phi_g(wxw^*)\quad(x\in M_+).
+ \tag{NC49}
+\]</span>
+Indeed <span class="math" data-tex="\(g^{1/2}w=vh^{1/2}\)">\(g^{1/2}w=vh^{1/2}\)</span>, so the two positive sandwiches coincide. Thus <span class="math" data-tex="\(\phi_g\sim\psi_{e_1}\precsim\psi\)">\(\phi_g\sim\psi_{e_1}\precsim\psi\)</span>.</p>
+<p>Every element of <span class="math" data-tex="\(\mathcal R=e_1M_\psi e_1\)">\(\mathcal R=e_1M_\psi e_1\)</span> commutes with <span class="math" data-tex="\(k\)">\(k\)</span>, because <span class="math" data-tex="\(k\in Z(M_\psi)\)">\(k\in Z(M_\psi)\)</span>, and with <span class="math" data-tex="\(h_1e_1\)">\(h_1e_1\)</span>, because this density is central in <span class="math" data-tex="\(P\)">\(P\)</span>. Hence it commutes with <span class="math" data-tex="\(h\)">\(h\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ v\mathcal R v^*\subset\{g\}'\cap f_1Nf_1=N_{\tau_g}.
+ \tag{NC50}
+\]">\[
+ v\mathcal R v^*\subset\{g\}'\cap f_1Nf_1=N_{\tau_g}.
+ \tag{NC50}
+\]</span>
+The left algebra is properly infinite and has unit <span class="math" data-tex="\(f_1\)">\(f_1\)</span>, the unit of the right algebra. Its two orthogonal isometries therefore prove that <span class="math" data-tex="\(N_{\tau_g}\)">\(N_{\tau_g}\)</span> is properly infinite. This establishes the missing multiplicity clause and completes (NC31) in type <span class="math" data-tex="\(\mathrm{III}_0\)">\(\mathrm{III}_0\)</span>.</p>
+<p><span id="OA-FLOW.NCOEF.TWO-BLOCK"></span><a id="nc-two-block"></a></p>
+<h2 id="7-lacunarity-alone-does-not-specify-a-generalized-trace">7. Lacunarity alone does not specify a generalized trace</h2>
+<p>Let <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be the specified fundamental-period generalized trace, and let <span class="math" data-tex="\(N=M_\phi\)">\(N=M_\phi\)</span> be its <span class="math" data-tex="\(\mathrm{II}_\infty\)">\(\mathrm{II}_\infty\)</span> factor. Choose orthogonal properly infinite projections <span class="math" data-tex="\(p,q\in N\)">\(p,q\in N\)</span> with <span class="math" data-tex="\(p+q=1\)">\(p+q=1\)</span>, using <a href="OA-FLOW-PC.html#oa-flow.pc.5">properly infinite halving</a>. Set
+<span class="math math-display" data-tex="\[
+ b=p+\lambda^{1/2}q,\qquad \omega=\phi_b.
+ \tag{NC51}
+\]">\[
+ b=p+\lambda^{1/2}q,\qquad \omega=\phi_b.
+ \tag{NC51}
+\]</span>
+The density is bounded invertible. Write <span class="math" data-tex="\(\varepsilon_p=0\)">\(\varepsilon_p=0\)</span>, <span class="math" data-tex="\(\varepsilon_q=1/2\)">\(\varepsilon_q=1/2\)</span>. For <span class="math" data-tex="\(i,j\in\{p,q\}\)">\(i,j\in\{p,q\}\)</span>, <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span> and <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>,
+<span class="math math-display" data-tex="\[
+ \sigma_t^\omega(i xU^n j)
+   =\lambda^{it(n+\varepsilon_i-\varepsilon_j)}
+                      i xU^n j .
+ \tag{NC52}
+\]">\[
+ \sigma_t^\omega(i xU^n j)
+   =\lambda^{it(n+\varepsilon_i-\varepsilon_j)}
+                      i xU^n j .
+ \tag{NC52}
+\]</span>
+All exponents belong to <span class="math" data-tex="\(\tfrac12\mathbb Z\)">\(\tfrac12\mathbb Z\)</span>. Thus <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has modular period <span class="math" data-tex="\(2P\)">\(2P\)</span>, <span class="math" data-tex="\(P=2\pi/(-\log\lambda)\)">\(P=2\pi/(-\log\lambda)\)</span>, and its complete positive modular spectrum is contained in <span class="math" data-tex="\(\lambda^{\mathbb Z/2}\)">\(\lambda^{\mathbb Z/2}\)</span>. This spectral assertion follows from the periodic Fourier/GNS proof <a href="OA-FLOW-PW.html#oa-flow.pw.6">PW4 and PW6</a>, not from eigenvector notation alone. Hence <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is lacunary.</p>
+<p>Its centralizer is exactly
+<span class="math math-display" data-tex="\[
+ M_\omega=pNp\oplus qNq.
+ \tag{NC53}
+\]">\[
+ M_\omega=pNp\oplus qNq.
+ \tag{NC53}
+\]</span>
+To prove it, take Fourier coefficients for the original degree action and compress each to its <span class="math" data-tex="\(i,j\)">\(i,j\)</span> blocks. Fixedness in (NC52) requires <span class="math" data-tex="\(n+\varepsilon_i-\varepsilon_j=0\)">\(n+\varepsilon_i-\varepsilon_j=0\)</span>. For integer <span class="math" data-tex="\(n\)">\(n\)</span>, only <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(i=j\)">\(i=j\)</span> survives. The bounded Fejer reconstruction gives (NC53); the converse is immediate. Both summands are properly infinite, so <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has infinite multiplicity, but its centralizer is not a factor.</p>
+<p>Also <span class="math" data-tex="\(pNq\ne0\)">\(pNq\ne0\)</span>, since <span class="math" data-tex="\(N\)">\(N\)</span> is a factor and both projections are nonzero: otherwise their central supports would be orthogonal by <a href="OA-FLOW-PC.html#oa-flow.pc.2">PC2</a>. A nonzero element of this corner has the frequency <span class="math" data-tex="\(-\tfrac12\log\lambda\)">\(-\tfrac12\log\lambda\)</span> in (NC52), which forces every modular period to be in <span class="math" data-tex="\(2P\mathbb Z\)">\(2P\mathbb Z\)</span>. The converse is already proved. Thus the fundamental period has changed from <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(2P\)">\(2P\)</span>. Infinite multiplicity plus lacunarity cannot replace the specified-period hypothesis used in (NC34).</p>
+<p><span id="OA-FLOW.NCOEF.MODELS"></span><a id="nc-models"></a></p>
+<h2 id="8-an-exact-nonconstant-density-and-solved-diagnostics">8. An exact nonconstant density and solved diagnostics</h2>
+<p>The following model belongs to the arbitrary-algebra scope of Sections 2–5. It is deliberately a type-I example, not a purported type-III-zero factor.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ N=\ell^\infty(\mathbb Z)\bar\otimes B(\ell^2\mathbb N),\qquad
+ w_{2j}=8^j,\quad w_{2j+1}=4\cdot8^j,
+ \qquad
+ \tau(x)=\sum_{j\in\mathbb Z}w_j\operatorname{Tr}(x(j)).
+ \tag{NC54}
+\]">\[
+ N=\ell^\infty(\mathbb Z)\bar\otimes B(\ell^2\mathbb N),\qquad
+ w_{2j}=8^j,\quad w_{2j+1}=4\cdot8^j,
+ \qquad
+ \tau(x)=\sum_{j\in\mathbb Z}w_j\operatorname{Tr}(x(j)).
+ \tag{NC54}
+\]</span>
+The positive sum defines a faithful normal semifinite trace: finite central-coordinate cuts combined with finite-rank cuts have finite trace and increase to one. Let <span class="math" data-tex="\(\theta(x)(j)=x(j+1)\)">\(\theta(x)(j)=x(j+1)\)</span>. Reindexing the nonnegative sum gives
+<span class="math math-display" data-tex="\[
+ \rho(j)=\frac{w_{j-1}}{w_j}
+   =\begin{cases}1/2,&amp;j\text{ even},\\1/4,&amp;j\text{ odd},\end{cases}
+ \qquad \tau\theta=\tau_\rho,\qquad
+ \rho_n(j)=\frac{w_{j-n}}{w_j}.
+ \tag{NC55}
+\]">\[
+ \rho(j)=\frac{w_{j-1}}{w_j}
+   =\begin{cases}1/2,&amp;j\text{ even},\\1/4,&amp;j\text{ odd},\end{cases}
+ \qquad \tau\theta=\tau_\rho,\qquad
+ \rho_n(j)=\frac{w_{j-n}}{w_j}.
+ \tag{NC55}
+\]</span>
+The equality holds for infinite sums as well, since both are suprema of finite subsums. All <span class="math" data-tex="\(\rho_n\)">\(\rho_n\)</span> are determined exactly by (NC55); in particular <span class="math" data-tex="\(\rho_2=1/8\)">\(\rho_2=1/8\)</span>, while <span class="math" data-tex="\(\rho_{-1}\)">\(\rho_{-1}\)</span> is 4 on even indices and 2 on odd indices.</p>
+<p>Represent the crossing on <span class="math" data-tex="\(\ell^2(\mathbb Z)\otimes\ell^2(\mathbb N)\)">\(\ell^2(\mathbb Z)\otimes\ell^2(\mathbb N)\)</span>, with <span class="math" data-tex="\(N\)">\(N\)</span> diagonal in the first coordinate and
+<span class="math math-display" data-tex="\[
+ U\delta_j=\delta_{j-1}.
+ \tag{NC56}
+\]">\[
+ U\delta_j=\delta_{j-1}.
+ \tag{NC56}
+\]</span>
+The projections of individual integers and powers of <span class="math" data-tex="\(U\)">\(U\)</span> generate every matrix unit in the first coordinate; bounded finite matrix compressions generate the full <span class="math" data-tex="\(B(\ell^2\mathbb Z)\)">\(B(\ell^2\mathbb Z)\)</span>. Thus this represented crossing is normally <span class="math" data-tex="\(B(\ell^2\mathbb Z)\bar\otimes B(\ell^2\mathbb N)\)">\(B(\ell^2\mathbb Z)\bar\otimes B(\ell^2\mathbb N)\)</span>. The coefficient expectation is its first-coordinate diagonal map, and
+<span class="math" data-tex="\(\phi=\operatorname{Tr}_{D}\otimes\operatorname{Tr}\)">\(\phi=\operatorname{Tr}_{D}\otimes\operatorname{Tr}\)</span>, where <span class="math" data-tex="\(D\delta_j=w_j\delta_j\)">\(D\delta_j=w_j\delta_j\)</span>. Positive finite diagonal compressions and monotone convergence prove the weight equality on the entire cone; the normal onto recognition and its inverse also follow from the expectation/GNS proof <a href="OA-FLOW-LAC.html#lac-recognition">LAC33</a>.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The alternating central density, its right-sided modular phase, a strict upper bound without a uniform gap, and a finite support cut." src="assets/normalized-coefficients/normalized-coefficients.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The first panel uses the exact weights in (NC54), so the phase on the arrow <span class="math" data-tex="\(\delta_{j+1}\mapsto\delta_j\)">\(\delta_{j+1}\mapsto\delta_j\)</span> is <span class="math" data-tex="\(\rho(j+1)^{it}\)">\(\rho(j+1)^{it}\)</span>. The second panel plots the exact central bands determined by (NC55), in the coordinate <span class="math" data-tex="\(\log_2\rho_n(j)\)">\(\log_2\rho_n(j)\)</span>. The third panel uses (NC58) below; its horizontal line is a limit and is not an eigenvalue. The final panel compares the infinite coefficient fiber with its actual rank-one corner. These are exact models of (NC9), (NC21), (NC28) and (NC50), not drawings of the measure space of a general type III factor.</p>
+<p><strong>1. Which side contains the modular density?</strong> At coordinate <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+ [D^{it}UD^{-it}\xi](j)
+       =\left(\frac{w_j}{w_{j+1}}\right)^{it}\xi(j+1)
+       =[U\rho^{it}\xi](j).
+ \tag{NC57}
+\]">\[
+ [D^{it}UD^{-it}\xi](j)
+       =\left(\frac{w_j}{w_{j+1}}\right)^{it}\xi(j+1)
+       =[U\rho^{it}\xi](j).
+ \tag{NC57}
+\]</span>
+At <span class="math" data-tex="\(j=0\)">\(j=0\)</span> its scalar is <span class="math" data-tex="\((1/4)^{it}\)">\((1/4)^{it}\)</span>; the incorrectly ordered <span class="math" data-tex="\(\rho^{it}U\)">\(\rho^{it}U\)</span> gives <span class="math" data-tex="\((1/2)^{it}\)">\((1/2)^{it}\)</span>. Thus the two operators differ, for example at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. The difference is not a Fourier convention: it is the noncommutation of <span class="math" data-tex="\(U\)">\(U\)</span> with the central coefficient.</p>
+<p><strong>2. Strictness need not leave a uniform gap.</strong> Define the central density
+<span class="math math-display" data-tex="\[
+ h(j)=1-\frac1{|j|+2}.
+ \tag{NC58}
+\]">\[
+ h(j)=1-\frac1{|j|+2}.
+ \tag{NC58}
+\]</span>
+Then <span class="math" data-tex="\(1/2\le h(j)&lt;1\)">\(1/2\le h(j)&lt;1\)</span>, so <span class="math" data-tex="\(\rho\le h\le1\)">\(\rho\le h\le1\)</span>. The operator <span class="math" data-tex="\(1-h\)">\(1-h\)</span> has zero kernel, but its values tend to zero as <span class="math" data-tex="\(|j|\to\infty\)">\(|j|\to\infty\)</span>; hence <span class="math" data-tex="\(\|h\|=1\)">\(\|h\|=1\)</span> and <span class="math" data-tex="\((1-h)^{-1}\)">\((1-h)^{-1}\)</span> is unbounded. Formula (NC28) still applies and gives <span class="math" data-tex="\(M_{\phi_h}=N\)">\(M_{\phi_h}=N\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> is central in <span class="math" data-tex="\(N\)">\(N\)</span>. No uniform spectral gap below one was used.</p>
+<p><strong>3. Why exclude the upper endpoint?</strong> The restriction excluding a 1-eigenspace is indispensable. In the model take
+<span class="math" data-tex="\(h_1=1_{\{0\}}\)">\(h_1=1_{\{0\}}\)</span>, <span class="math" data-tex="\(h_2=\rho(1)1_{\{1\}}=\tfrac14 1_{\{1\}}\)">\(h_2=\rho(1)1_{\{1\}}=\tfrac14 1_{\{1\}}\)</span>, tensored with the identity of the multiplicity factor. Both obey <span class="math" data-tex="\(\rho s(h_j)\le h_j\le1\)">\(\rho s(h_j)\le h_j\le1\)</span>, but <span class="math" data-tex="\(h_1\)">\(h_1\)</span> has eigenvalue one. Let <span class="math" data-tex="\(v=1_{\{0\}}U1_{\{1\}}\)">\(v=1_{\{0\}}U1_{\{1\}}\)</span>. It lies in degree one, has final support <span class="math" data-tex="\(1_{\{0\}}\)">\(1_{\{0\}}\)</span> and initial support <span class="math" data-tex="\(1_{\{1\}}\)">\(1_{\{1\}}\)</span>. The two density masses in the first coordinate are
+<span class="math" data-tex="\(w_0 h_1(0)=1=w_1 h_2(1)\)">\(w_0 h_1(0)=1=w_1 h_2(1)\)</span>.
+The trace formula therefore gives <span class="math" data-tex="\(\phi_{h_2}=\phi_{h_1}\operatorname{Ad}v\)">\(\phi_{h_2}=\phi_{h_1}\operatorname{Ad}v\)</span> on all positive elements, although <span class="math" data-tex="\(v\notin N\)">\(v\notin N\)</span>. The strict upper endpoint in (NC4) is exactly what rules this out.</p>
+<p><strong>4. Why does a finite cut lose multiplicity?</strong> Use <span class="math" data-tex="\(h\)">\(h\)</span> from (NC58), and let
+<span class="math" data-tex="\(e=1_{\{0\}}\otimes e_{11}\)">\(e=1_{\{0\}}\otimes e_{11}\)</span>.
+It is a projection in <span class="math" data-tex="\(N=M_{\phi_h}\)">\(N=M_{\phi_h}\)</span>. The compressed normalized density is <span class="math" data-tex="\(he=\tfrac12e\)">\(he=\tfrac12e\)</span>. Its coefficient centralizer is <span class="math" data-tex="\(eNe=\mathbb Ce\)">\(eNe=\mathbb Ce\)</span>, which is finite; before the cut the centralizer <span class="math" data-tex="\(N\)">\(N\)</span> is properly infinite. The cut is not central in <span class="math" data-tex="\(N\)">\(N\)</span>. In contrast, a nonzero central cut of a properly infinite algebra is properly infinite. Equations (NC44)–(NC50) deliberately obtain a cut central in the <em>old</em> centralizer before using that fact.</p>
+<p><strong>5. Check a negative degree.</strong> Here <span class="math" data-tex="\(\rho_2=1/8\)">\(\rho_2=1/8\)</span>, so for <span class="math" data-tex="\(n=-2\)">\(n=-2\)</span>,
+<span class="math" data-tex="\(\theta^{-2}(\rho_{-2})=8=\rho_2^{-1}\)">\(\theta^{-2}(\rho_{-2})=8=\rho_2^{-1}\)</span>.
+For any <span class="math" data-tex="\(k_1\ge\rho\)">\(k_1\ge\rho\)</span>, the operator <span class="math" data-tex="\(C_{-2}=8k_1\)">\(C_{-2}=8k_1\)</span> is at least 2. Meanwhile <span class="math" data-tex="\(D_{-2}=\theta^{-2}(k_2)\le1\)">\(D_{-2}=\theta^{-2}(k_2)\le1\)</span> and has no 1-eigenvector. The adjoint intertwiner in (NC26) must vanish by either separation proof. The reciprocal identity, not an informal reversal of the positive-degree inequality, supplies the sign.</p>
+<p><strong>6. A seed has to belong to the coefficient carrier's domain.</strong> A comparison <span class="math" data-tex="\(\phi_g\precsim\psi\)">\(\phi_g\precsim\psi\)</span> alone says nothing about whether <span class="math" data-tex="\(p_N(\tau_g)\)">\(p_N(\tau_g)\)</span> is defined in the infinite-multiplicity carrier. The rank-one <span class="math" data-tex="\(g=\tfrac12e\)">\(g=\tfrac12e\)</span> in diagnostic 4 has a perfectly good induced supported weight and a finite coefficient centralizer. The seed proof instead produces the unital inclusion <span class="math" data-tex="\(v\mathcal R v^*\subset N_{\tau_g}\)">\(v\mathcal R v^*\subset N_{\tau_g}\)</span>, with <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> properly infinite. Its two isometries have initial projection <span class="math" data-tex="\(s(g)\)">\(s(g)\)</span>, so proper infiniteness follows in the required support algebra itself.</p>
+<p><strong>7. The transport direction is dictated by the support.</strong> In (NC40), <span class="math" data-tex="\(v^*v=e\)">\(v^*v=e\)</span> is the corner containing <span class="math" data-tex="\(h\)">\(h\)</span>, and <span class="math" data-tex="\(vv^*=f\)">\(vv^*=f\)</span> is in <span class="math" data-tex="\(N\)">\(N\)</span>. Therefore <span class="math" data-tex="\(vhv^*\)">\(vhv^*\)</span> belongs to <span class="math" data-tex="\(fNf\)">\(fNf\)</span>, and its support is <span class="math" data-tex="\(ve_1v^*\)">\(ve_1v^*\)</span>. The expression <span class="math" data-tex="\(v^*hv\)">\(v^*hv\)</span> has no such conclusion. Equation (NC49) independently checks the direction by a literal positive sandwich.</p>
+<p><span id="OA-FLOW.NCOEF.READING"></span><a id="nc-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>The historical antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, XII.4.10–4.11 and 4.13–4.14, printed pp.410–414. The present proof keeps the full arbitrary-algebra rigidity statement separate from the separable factor seed, proves both separation mechanisms, includes the coefficient infinite-multiplicity conclusion needed by the carrier construction, and treats the two diagonal gaps of the balanced weight individually. The neighboring results construct central carrier intervals and then use this seed to exhaust the normalized band.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-SMULT.html">Previous lesson</a><a href="OA-FLOW-CBND.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-NCOEF.md">Lesson source</a></nav></main></body></html>

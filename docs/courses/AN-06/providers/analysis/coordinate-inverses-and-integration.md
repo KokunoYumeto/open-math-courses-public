@@ -1,23 +1,25 @@
 # Coordinate inverses, integration and surface measure
 
-**Source and terms.** This expanded prerequisite reading follows Jiří Lebl's freely available *Basic Analysis II*, version 6.3, 15 May 2026: [Section 8.5, printed pp. 51–57](https://www.jirka.org/ra/realanal2.pdf#page=51), and [Section 10.7, printed pp. 134–137](https://www.jirka.org/ra/realanal2.pdf#page=134). It is a derivative reading under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), one of the author's two offered licences, and is excluded from the course's CC0 dedication. Adapted and expanded by GPT-6 Astra (OpenAI), 4–5 October 2026. Self-checked by the writing AI. 
+*Written by GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
-Read the [Euclidean measure and product proof](finite-derivative-l2.md#euclidean-products) first, then this reading, then that reading's Fourier subsection. Only its measure subsection is an input here. This order avoids using the polar-coordinate Gaussian calculation to justify change of variables. The finite linear algebra, product and chain rules used here are proved below. The one-variable fundamental theorem is supplied by the [continuous-input argument through (13)](hilbert-valued-integration.md#continuous-primitives) in the integration reading, applied to real scalars; that argument uses only the earlier measure facts. This is the order of its use here. The remaining starting axioms are the usual field operations, ordered-real completeness and set theory with choice. Every inverse, volume-change and surface-coordinate fact used below has its stated proof.
+A regular energy surface can be described by its energy and its tangential coordinates. To integrate in those coordinates, we need both an inverse map and the correct volume factor. We construct these two ingredients, then identify the surface measure that appears when an approximate delta function concentrates on one energy level.
+
+The starting measure results are [Euclidean measure and products](finite-derivative-l2.md#euclidean-products). The continuous scalar fundamental theorem is proved in [Banach-valued integration, through equation (13)](hilbert-valued-integration.md#continuous-primitives); only its real scalar case is needed here. The same reading proves [finite-dimensional compactness and extrema](hilbert-valued-integration.md#compact-scalar-calculus). These arguments precede Fourier normalization: the polar substitution proved below is an input to the Gaussian calculation in the Fourier reading. We use field operations, completeness of the ordered real numbers and set theory with choice as the underlying axioms. Further reading is given at the end.
 
 <a id="coordinate-linear-algebra"></a>
-## The finite linear algebra and differential rules
+## 1. Matrices and first-order approximations
 
-The finite-dimensional facts needed here follow directly from field operations and the positive square root already proved in the measure reading. We spell them out to specify the inputs to the coordinate arguments.
+We first establish the finite-dimensional rules used in the constructions. For real vectors, the quadratic inequality $|v-tu|^2\geq0$, with $t\in\mathbb R$, gives $|v\cdot u|\leq|v|\,|u|$ by minimization when $u\ne0$; when $u=0$ the assertion is immediate. Applying this bound to the cross term in $|v+w|^2$ proves the triangle inequality. The maximum norm and Euclidean norm satisfy $|v|_\infty\leq|v|\leq\sqrt n\,|v|_\infty$. A Cauchy sequence therefore converges by taking each of its finitely many coordinate limits. A matrix defines a bounded map: its $i$th output coordinate has absolute value at most the absolute row sum times $|v|_\infty$. Applying two matrix bounds successively proves $\|AB\|\leq\|A\|\|B\|$.
 
-For real vectors, expanding $|v-tu|^2\ge0$ and minimizing the quadratic in the real number $t$ gives $(v\cdot u)^2\le|v|^2|u|^2$; the case $u=0$ is immediate. Expanding $|v+w|^2$ then proves the triangle inequality. Also $|v|_\infty\le|v|\le\sqrt n\,|v|_\infty$. Completeness of either norm follows by taking the limits of the finitely many Cauchy coordinates. Every matrix is bounded in these norms: in the maximum norm, each output coordinate is bounded by its row's sum of absolute entries times the input norm. Products satisfy $\|AB\|\le\|A\|\|B\|$ by applying the two bounds successively. If a subspace has a finite independent spanning list, subtracting the projections onto the preceding normalized vectors and normalizing each nonzero residual constructs an orthonormal basis. The residual is nonzero precisely because the original list was independent.
+The signed permutation sum defines an alternating multilinear determinant, normalized to be one on the standard basis. Conversely, expand the columns of any alternating multilinear function in that basis. Terms with a repeated basis vector vanish; the remaining terms are determined by their permutation signs. This proves uniqueness of the determinant. Apply uniqueness to the columns $Av_1,\ldots,Av_n$ to obtain $\det(AB)=\det A\det B$. The permutation formula also gives $\det A^T=\det A$. Expansion along a row or column proves $A\operatorname{adj}A=(\det A)I$ and its reversed product: off-diagonal entries are determinants with a repeated row or column. Hence $\det A\ne0$ gives an inverse.
 
-Define the determinant as the alternating multilinear function of the columns taking value one on the standard basis. Existence is given by the finite signed permutation sum. Expanding each column in the standard basis proves uniqueness, since terms with repeated basis columns vanish and all other terms have their permutation sign. For fixed $A$, the function $\det(Av_1,\ldots,Av_n)$ is alternating multilinear in the $v_j$ and equals $\det A$ on the standard basis. Uniqueness proves $\det(AB)=\det A\det B$. The same column expansion gives the cofactor formula and $A\,\operatorname{adj}A=(\det A)I$: a diagonal entry is the cofactor expansion of $\det A$, and an off-diagonal entry is the expansion of a determinant with two equal rows. Transposition gives the identity in the other order. Thus nonzero determinant gives the inverse by the adjugate formula.
+We also need the converse without assuming it. If a square matrix has zero kernel, its first column contains a nonzero pivot. Row interchange, nonzero row scaling and subtraction of row multiples reduce it to a first pivot above a smaller square block. That block has zero kernel: a vector annihilated by it could be extended, by solving the first row, to a vector in the original kernel. Induction, starting with a nonzero scalar, reduces the whole matrix to the identity. Thus zero kernel implies invertibility. Each elimination operation has nonzero determinant by the alternating rule, so an invertible matrix has nonzero determinant. These operations also express it as a product of coordinate permutations, single-coordinate scalings and shears.
 
-For completeness, elimination uses no further existence theorem. Consider a square matrix with zero kernel; invertible matrices have this property. Its first column has a nonzero entry; permute it into the first row, scale that row to make the entry one, and subtract multiples of it from the other rows. The remaining square block also has zero kernel, since a vector in its kernel would give one in the full matrix's kernel by solving the first row. The one-dimensional case is a nonzero scalar. Induction therefore reduces the remaining block to the identity; then remove the entries above the diagonal. This expresses every invertible matrix as a product of row permutations, nonzero row scalings and row additions. These operations have determinants respectively their permutation sign, their scaling factor and one, directly from alternating multilinearity. In particular an invertible matrix has nonzero determinant, and its inverse entries are smooth rational functions of its entries once the scalar differential rules below are proved. In dimension zero the determinant is one, the space is a singleton with counting measure, and the inverse and volume assertions are identities.
+For independent columns, subtract the orthogonal projections onto the columns already normalized, and divide each residual by its positive norm. Independence prevents a zero residual. This gives an orthonormal basis for their span. Add standard basis vectors outside that span until it is the whole space to obtain an orthonormal extension. In particular, if $M$ has $d$ independent columns, this construction gives $M=QR$, with $Q^TQ=I_d$ and $R$ upper triangular with positive diagonal. Consequently $\det(M^TM)=(\det R)^2>0$. The positive square roots used here are supplied by the earlier scalar measure foundations. In dimension zero the determinant is one and the space consists of one point; all inverse and volume formulas below then have their evident counting-measure meaning.
 
 <a id="coordinate-differential-rules"></a>
 
-Total differentiability at $x$ means $F(x+h)=F(x)+Ah+r(h)$, where $A$ is linear and $|r(h)|/|h|\to0$. The matrix bound above implies continuity at $x$ and $F(x+h)-F(x)=O(|h|)$. If $G$ is differentiable at $F(x)$, write its analogous expansion with linear part $B$. Substituting the first expansion into the second gives
+Let differentiability mean $F(x+h)=F(x)+Ah+o(|h|)$ with a linear map $A$. This implies continuity and the bound $F(x+h)-F(x)=O(|h|)$. For a differentiable $G$ at $F(x)$, substitute this expansion in the corresponding expansion of $G$. Its linear part is $DG(F(x))A$ and its remaining term is $o(|h|)$, since the intermediate increment is $O(|h|)$. Thus, with $A=DF(x)$ and $B=DG(F(x))$,
 \[
  \begin{gathered}
  (G\circ F)(x+h)-(G\circ F)(x)\\
@@ -25,16 +27,14 @@ Total differentiability at $x$ means $F(x+h)=F(x)+Ah+r(h)$, where $A$ is linear 
  \end{gathered}
  \tag{DC1}
 \]
-Indeed $B r(h)=o(|h|)$, and the second remainder is $o(|F(x+h)-F(x)|)=o(|h|)$, with value zero when that increment is zero. This proves the chain rule with its full hypotheses.
-
-For a bounded bilinear map $\mathcal B$, expand $\mathcal B(u+\Delta u,v+\Delta v)-\mathcal B(u,v)$ into its two linear terms and $\mathcal B(\Delta u,\Delta v)$. For differentiable inputs the last term is $O(|h|^2)=o(|h|)$. This proves the product rule, including scalar multiplication, dot products and ordered matrix products. Sums and fixed linear maps follow directly from the definition. For $z\ne0$, subtracting the proposed linear part from the difference of reciprocals gives
+The case of a zero intermediate increment causes no exception: the second remainder is then zero. For a bounded bilinear map, expansion of its two arguments leaves the product of their increments after the two first-order terms. That product is $O(|h|^2)$, proving the product rule. Sums and fixed linear maps follow by adding their remainders. For the reciprocal, the exact identity
 \[
  \frac1{z+h}-\frac1z+\frac h{z^2}
- =\frac{h^2}{z^2(z+h)}.
+ =\frac{h^2}{z^2(z+h)}
 \]
-The denominator stays bounded away from zero near $h=0$, so the remainder divided by $|h|$ tends to zero. This proves the reciprocal rule over the reals (and over the complex numbers when needed). Repeated product and chain rules make polynomials and rational functions smooth on their domains. Continuity of the displayed derivative formulas proves the $C^1$ rules; induction proves the corresponding $C^k$ rules at every finite order.
+proves differentiability at every nonzero real or complex $z$. These rules give the usual derivatives of polynomials and rational functions, and their continuous derivatives at every finite order. In particular, the adjugate formula makes matrix inversion smooth where the determinant is nonzero.
 
-The [continuous scalar fundamental theorem](hilbert-valued-integration.md#continuous-primitives), proved there through equation (13), uses only the earlier measure construction and the compactness argument stated there. Apply it to each component of the curve $t\mapsto F(x'+t(x-x'))$, whose derivative is given by (DC1). Write $v=x-x'$ and $\gamma(t)=x'+tv$. Whenever this segment lies in the domain of a $C^1$ map, we obtain
+Apply the earlier scalar fundamental theorem to each component of $F$ along the segment from $x'$ to $x$. With $v=x-x'$ and $\gamma(t)=x'+tv$, a $C^1$ map defined on a neighborhood of this segment satisfies
 \[
  \begin{gathered}
  F(x)-F(x')=\int_0^1 DF(\gamma(t))v\,dt,\\
@@ -43,79 +43,97 @@ The [continuous scalar fundamental theorem](hilbert-valued-integration.md#contin
  \end{gathered}
  \tag{DC2}
 \]
-The norm bound for a finite-dimensional integral follows from the scalar integral inequality: for a nonzero integral vector $v$, pair with $v/|v|$ and use Cauchy–Schwarz; the zero case is immediate. This proves the line-segment estimate used in local inversion.
+To justify the vector norm bound using only scalar integration, pair a nonzero integral with its own unit direction and apply the scalar integral inequality and the vector inequality proved above. A zero integral already satisfies the bound. The same argument applies to either of the equivalent finite-dimensional norms.
 
 <a id="coordinate-inverse"></a>
-## Local inversion with the full finite regularity
+## 2. Solving for coordinates
 
-Let $F:U\to\mathbb R^n$ be $C^1$ on an open set, and let $DF(x_0)$ be invertible. Translate the two origins and multiply the output by $DF(x_0)^{-1}$. It suffices to treat $F(0)=0$, $DF(0)=I$. On a sufficiently small closed ball $\overline B(0,r)\subset U$, continuity gives $\|DF-I\|\le1/2$. Integrating along a line segment in that ball gives
+Suppose $F:U\to\mathbb R^n$ is $C^1$, $U$ is open and $DF(x_0)$ is invertible. Translate $x_0$ and $F(x_0)$ to zero, then multiply the output by $DF(x_0)^{-1}$. It is enough to construct an inverse when $F(0)=0$ and $DF(0)=I$. Choose $r>0$ so that $\overline B(0,r)\subset U$ and $\|DF-I\|\leq1/2$ on that ball. The segment formula applied to $F-I$ gives
 \[
- |F(x)-F(x')-(x-x')|\le\tfrac12|x-x'|,
- \qquad |F(x)-F(x')|\ge\tfrac12|x-x'|.
+ \begin{gathered}
+ |F(x)-F(x')-(x-x')|\le\tfrac12|x-x'|,\\
+ |F(x)-F(x')|\ge\tfrac12|x-x'|.
+ \end{gathered}
  \tag{CI1}
 \]
-For $|y|<r/2$, the map $T_y(x)=x-F(x)+y$ takes the closed ball into itself and has Lipschitz constant at most $1/2$. Starting at any $x_1$ in the ball, set $x_{j+1}=T_y(x_j)$. Successive differences are at most $2^{1-j}|x_2-x_1|$. Their geometric sum makes the sequence Cauchy. Completeness gives a limit, continuity makes it a fixed point, and the contraction inequality makes it unique. Thus $F(x)=y$ has a unique solution $G(y)$, with $|G(y)|\le2|y|<r$.
+In particular $F$ is injective there. Also $|DF(x)v|\geq|v|/2$, so each $DF(x)$ has zero kernel and hence an inverse of norm at most two, by the finite linear algebra above.
 
-The second inequality in (CI1) makes $G$ Lipschitz with constant two. On the open preimage of $B(0,r/2)$ within $B(0,r)$, $F$ and $G$ are mutual inverses. Every matrix $DF(x)$ there is invertible: if $A=I-H$ with $\|H\|\le1/2$, the norm-convergent series $\sum_{j\ge0}H^j$ is its two-sided inverse, by multiplication of finite partial sums and passage to the limit. Its norm is at most two.
+One can also construct this matrix inverse explicitly. Write $DF(x)=I-H$, where $\|H\|\leq1/2$. The partial sums $\sum_{j=0}^N H^j$ are Cauchy in the finite-dimensional matrix space, and multiplication by $I-H$ on either side gives $I-H^{N+1}$. Their limit is therefore the two-sided inverse, with norm at most $\sum_{j\geq0}2^{-j}=2$.
 
-Write $x=G(y)$ and $h=G(y+k)-G(y)$. Differentiability of $F$ gives
-$k=DF(x)h+o(|h|)$. Since $|h|\le2|k|$, multiplication by the bounded inverse gives
+**Existence by a minimum.** Fix $|y|<r/4$ and minimize $|F(x)-y|^2$ on the closed ball. A minimum exists by the earlier compactness and extreme-value proof. At $x=0$ its value is less than $r^2/16$. On the boundary, (CI1) gives $|F(x)-y|\geq r/2-|y|>r/4$. A minimizing point is therefore interior. Each directional derivative there vanishes: its one-variable difference quotients from the positive and negative sides have opposite signs and the same limit. Differentiating the square gives
+\[
+ DF(x)^T(F(x)-y)=0.
+\]
+The transpose is invertible, so $F(x)=y$. Injectivity makes this solution unique; denote it by $G(y)$. Formula (CI1) gives $|G(y)|\leq2|y|<r$ and $|G(y)-G(z)|\leq2|y-z|$. The open set $B(0,r)\cap F^{-1}(B(0,r/4))$ is thus mapped bijectively onto $B(0,r/4)$, with a continuous inverse.
+
+**A convergent alternative.** The same normalized equation can be solved on the larger target ball $|y|<r/2$ by iteration. Set $T_y(x)=x-F(x)+y$. Equation (CI1) shows that $T_y$ maps the closed ball of radius $r$ into itself and has Lipschitz constant at most $1/2$. Choose $x_1$ in that ball and put $x_{j+1}=T_y(x_j)$. Then $|x_{j+1}-x_j|\leq2^{1-j}|x_2-x_1|$. Summing this geometric bound proves that the iterates are Cauchy. Their limit is in the closed ball and solves $T_y(x)=x$ by continuity. The contraction inequality excludes two distinct fixed points. This gives the same inverse on the smaller ball, and extends the construction to $B(0,r/2)$, still with $|G(y)|\leq2|y|<r$. It also gives an explicit tail bound by summing the remaining successive differences.
+
+To obtain the derivative, let $x=G(y)$ and $h=G(y+k)-G(y)$. The Lipschitz bound gives $|h|\leq2|k|$, whereas differentiability of $F$ gives $k=DF(x)h+o(|h|)$. Multiply by the bounded matrix inverse to obtain
 \[
  G(y+k)-G(y)=DF(G(y))^{-1}k+o(|k|).
  \tag{CI2}
 \]
-This proves total differentiability. Matrix inversion is continuous on the invertible matrices: $A^{-1}-B^{-1}=A^{-1}(B-A)B^{-1}$. Hence (CI2) gives a continuous derivative and proves the $C^1$ inverse theorem. Repeating at every point shows that a map with everywhere invertible derivative is locally open. In particular a globally injective such map is a diffeomorphism onto its open image.
+The identity $A^{-1}-B^{-1}=A^{-1}(B-A)B^{-1}$ proves continuity of matrix inversion here. Hence (CI2) gives a continuous derivative. Undoing the initial affine transformations proves the $C^1$ inverse theorem at $x_0$. Applying it at every point shows that an everywhere nonsingular $C^1$ map is locally open. If it is also injective, its local inverse maps agree on overlaps and give a $C^1$ diffeomorphism onto its open image.
 
-The positive real powers used in the Hölder bounds are constructed and differentiated in the [elementary-function reading, (EF6)–(EF7)](elementary-functions-and-cutoffs.md#logarithm-and-real-powers). Suppose now $F\in C^{k,\alpha}_{\mathrm{loc}}$, with integer $k\ge1$ and $0<\alpha<1$. Differentiating (CI2) inductively gives $G\in C^k$. Here matrix inversion is smooth wherever the determinant is nonzero, because its entries are cofactors divided by the determinant; differentiating an inverse also follows directly from $d(A^{-1})=-A^{-1}(dA)A^{-1}$. Repeated product and chain rules show that each derivative of $G$ of order $j\le k$ is a finite sum of products of inverse matrices $DF(G)^{-1}$ and derivatives $D^\ell F(G)$ with $\ell\le j$. No derivative of $F$ of order greater than $j$ occurs.
+<a id="coordinate-holder-inverse"></a>
 
-On smaller compact convex coordinate neighborhoods, $G$ is Lipschitz. Composition of an $\alpha$-Hölder function with a Lipschitz map is $\alpha$-Hölder: its seminorm is multiplied by at most the Lipschitz constant to power $\alpha$. Products of bounded Hölder functions are Hölder, by subtracting one factor at a time. A Lipschitz function on a set of finite positive diameter $D$ is $\alpha$-Hölder with bound $LD^{1-\alpha}$, since $d\le D^{1-\alpha}d^\alpha$ for $0\le d\le D$; on a singleton the assertion is immediate. Derivatives $D^\ell F$ with $\ell<k$ are locally Lipschitz by their bounded next derivatives; $D^kF$ is Hölder by assumption. The inverse-matrix difference identity gives the same Hölder control of $DF(G)^{-1}$. The preceding finite formulas therefore make $D^kG$ Hölder. This proves the full $C^{k,\alpha}$ assertion, including $k=1$. It also proves uniform bounds on a smaller chart in terms of its size, the inverse-derivative bound and the stated $C^{k,\alpha}$ bounds. Smoothness follows by applying the finite statement at every order.
+**Finite regularity.** If $F$ is $C^k$, differentiate $DG=(DF\circ G)^{-1}$ repeatedly. The identity obtained by differentiating $A^{-1}A=I$ is $d(A^{-1})=-A^{-1}(dA)A^{-1}$. Together with the product and chain rules it shows inductively that every derivative of $G$ of order $j\leq k$ is a finite sum of products of factors $(DF\circ G)^{-1}$ and $(D^\ell F)\circ G$, with $\ell\leq j$. This both proves $G\in C^k$ and identifies precisely the required derivatives of $F$.
 
-For a real scalar $p(\tau,\eta)$ with $\partial_\tau p\ne0$, apply this result to $F(\tau,\eta)=(p(\tau,\eta),\eta)$. Its inverse has the form $(\Sigma(\lambda,\eta),\eta)$ and
+Now let $F\in C^{k,\alpha}_{\mathrm{loc}}$, where $k\geq1$ and $0<\alpha<1$. The [real-power construction](elementary-functions-and-cutoffs.md#logarithm-and-real-powers) supplies the powers in these seminorms. On smaller compact coordinate neighborhoods, $G$ is Lipschitz, all factors in the preceding formulas are bounded, and the inverse matrices have a uniform bound. A Hölder function composed with an $L$-Lipschitz map has Hölder seminorm multiplied by at most $L^\alpha$. The difference of a finite product is the sum of terms obtained by replacing one factor at a time, so products of bounded Hölder functions are Hölder. Derivatives $D^\ell F$ with $\ell<k$ are locally Lipschitz by (DC2). On a set of diameter $D>0$, a Lipschitz bound implies a Hölder bound through $d\leq D^{1-\alpha}d^\alpha$; a singleton needs no estimate. For $k=1$, the matrix inverse difference identity directly preserves the Hölder bound of $DF\circ G$. For $k>1$ it does the same, with local Lipschitz control available. Therefore the formula for $D^kG$ is Hölder. All constants depend only on the chosen chart sizes, the inverse first-derivative bound and the stated finite bounds for $F$. Applying the finite-order argument for every $k$ proves the smooth case.
+
+For a real function $p(\tau,\eta)$ with $\partial_\tau p\ne0$, the map $(\tau,\eta)\mapsto(p(\tau,\eta),\eta)$ has an invertible triangular derivative. Its local inverse is $(\lambda,\eta)\mapsto(\Sigma(\lambda,\eta),\eta)$. Differentiating $p(\Sigma(\lambda,\eta),\eta)=\lambda$ gives
 \[
- \partial_\lambda\Sigma=(\partial_\tau p)^{-1},\qquad
+ \begin{gathered}
+ \partial_\lambda\Sigma=(\partial_\tau p)^{-1},\\
  \partial_{\eta_j}\Sigma=-\partial_{\eta_j}p/(\partial_\tau p).
+ \end{gathered}
  \tag{CI3}
 \]
-The right sides are evaluated at $(\Sigma,\eta)$. These identities and the preceding proof give precisely $C^1$, $C^{k,\alpha}$ or smooth graph coordinates, according to the actual hypothesis on $p$.
+The derivatives on the right are evaluated at $(\Sigma,\eta)$. The inverse has the same $C^1$, $C^{k,\alpha}$ or smooth regularity just proved, according to the hypothesis on $p$.
 
 <a id="coordinate-integration"></a>
-## Change of variables for Lebesgue integrals
+## 3. The local volume factor
 
-Let $F:U\to V$ be a $C^1$ diffeomorphism of open subsets of $\mathbb R^n$. We prove, for every nonnegative Lebesgue-measurable $h$, and also for every absolutely integrable complex $h$,
+Let $F:U\to V$ be a $C^1$ diffeomorphism between open subsets of $\mathbb R^n$. We will prove
 \[
- \int_V h(y)\,dy=\int_U h(F(x))\,|\det DF(x)|\,dx.
+ \int_V h(y)\,dy=\int_U h(F(x))\,|\det DF(x)|\,dx
  \tag{CI4}
 \]
+for every nonnegative completed-Lebesgue-measurable function, and for every absolutely integrable complex function. We use a volume estimate first, then extend the resulting identity from continuous tests to measures.
 
-First, an invertible linear map $A$ scales Lebesgue measure by $|\det A|$. Gaussian elimination expresses it as a product of coordinate permutations, multiplication of one coordinate by a nonzero scalar, and addition of a multiple of one coordinate to another. The product theorem proves the assertion for permutations. For scaling it follows from one-dimensional length scaling, first on intervals and then on measurable sets by the outer-measure definition. For a shear, fix all coordinates except the changed one; each fibre is merely translated, so the product theorem preserves its measure. These operations have determinant absolute values respectively one, the absolute scalar and one. Multiplication of their determinant factors proves the claim for $A$. This argument applies to Borel sets and nonnegative functions. For completed measurable sets it applies too, because a linear Lipschitz map takes null sets to null sets by the covering argument in the next paragraph.
+**Linear maps and null sets.** A coordinate permutation preserves product measure. Multiplying one coordinate by a nonzero number scales length, first for intervals and then for outer measure by scaling the interval covers; it therefore scales product measure by that number's absolute value. For a shear, fix all coordinates except the coordinate being changed. The fiber is translated, so its length is unchanged, and the product theorem gives unchanged volume. The elimination factorization from Section 1 consequently shows that an invertible linear map $A$ scales Borel volume by $|\det A|$. Applying the same operations to nonnegative simple functions, and then their increasing limits, gives the corresponding integral identity.
 
-A Lipschitz map on a bounded cube takes null subsets to null sets. Cover the subset by cubes of total volume less than $\varepsilon$ and intersect each covering cube with the domain cube. Any two points of such an intersection, for a covering cube of side $s$, have images at distance at most $L\sqrt n\,s$. If the intersection is nonempty, choose one image point; the entire image lies in a cube about it of side $2L\sqrt n\,s$. Here $L$ is the map's Lipschitz constant. Empty intersections contribute nothing, and for $L=0$ each nonempty image is a singleton of measure zero. Thus the outer measure of each image is at most $(2L\sqrt n)^n$ times the covering cube volume. Sum and let $\varepsilon$ tend to zero. No extension of the map outside its domain cube is needed. Cube covers suffice for this null-set argument. For a bounded rectangle with side lengths $l_i$, cover it by the finitely many cubes of a mesh of width $h$ that meet it, enlarging them arbitrarily slightly to open cubes if needed. Their total volume is at most $\prod_i(l_i+2h)$ up to that arbitrarily small enlargement. As $h\to0$ this tends to the rectangle volume. For a countable rectangular cover choose the excess for its $j$th rectangle below $\varepsilon 2^{-j}$. Thus a null set has cube covers of arbitrarily small total volume. A $C^1$ map is Lipschitz on each sufficiently small compact cube by integrating its derivative on segments. A countable cover by such cubes therefore proves local preservation of null sets for $F$ and for $F^{-1}$. In particular images of cube faces are null.
+Here is the null-set fact needed for completed measures. If a map is $L$-Lipschitz on a bounded cube, intersect that cube with a cover of a null subset by cubes of side lengths $s_j$. In every nonempty intersection choose one point. The image of the intersection lies in a cube centered at its image point, of side $2L\sqrt n\,s_j$. Thus its image has outer measure at most $(2L\sqrt n)^n s_j^n$. Summing and letting the covering volume tend to zero proves that the image is null. If $L=0$, the image is a singleton and the conclusion follows directly. Cube covers of arbitrarily small volume are available from the rectangular definition of null sets: a rectangle with side lengths $l_i$ can be covered by fine mesh cubes with total volume approaching $\prod_i l_i$; for a countable collection of rectangles assign excess less than $\varepsilon2^{-j}$ to its $j$th member. A $C^1$ map is Lipschitz on each sufficiently small closed cube, by (DC2). Rational cubes give a countable cover of its open domain. Hence both $F$ and $F^{-1}$ preserve null sets locally and therefore globally. In particular the images of cube faces are null, and linear volume scaling extends to completed measurable sets.
 
-Here is the local volume estimate that supplies the Jacobian. Work in a fixed compact neighborhood on which $DF$ and $DF^{-1}$ are bounded and $DF$ is uniformly continuous. For a small cube $Q$ of side $s$ and center $a$, put $A=DF(a)$ and
+**Small cubes.** Work on a compact neighborhood contained in $U$. There $DF$ is uniformly continuous and its inverse is bounded. For a closed cube $Q$ of side $s$, center $a$, contained in this neighborhood, set $A=DF(a)$ and $H(x)=a+A^{-1}(F(x)-F(a))$. Given $0<\varepsilon<1/2$, all sufficiently small such cubes satisfy $\|DH-I\|_\infty\leq\varepsilon$ uniformly. The segment formula gives $|H(x)-x|_\infty\leq\varepsilon s$. Thus $H(Q)$ is contained in the cube with each face moved outward by $\varepsilon s$.
+
+The cube with each face moved inward by $\varepsilon s$ is also contained in $H(Q)$; we prove this rather than assuming that an almost linear image has no holes. Let $Q^-$ be the open inner cube. A boundary point $x$ of $Q$ has a coordinate equal to a face coordinate, so $H(x)$ cannot lie in $Q^-$ by the preceding bound. The set $H(Q)\cap Q^-$ is relatively closed in $Q^-$ because $H(Q)$ is compact. It is also relatively open: any preimage of a point of $Q^-$ is in the interior of $Q$, where the inverse theorem makes $H$ locally open. It contains the center, since $H(a)=a$. For $y\in Q^-$, the segment $a+t(y-a)$ stays in $Q^-$. Its parameters lying in $H(Q)$ form a closed and relatively open subset of $[0,1]$ containing zero. Such a subset is all of $[0,1]$: otherwise the supremum of its initial interval belongs to the subset by closedness and can be extended by openness, a contradiction. Therefore $y\in H(Q)$.
+
+The inner inclusion also admits a convergent construction. For $y\in Q^-$, the map $x\mapsto x-H(x)+y$ takes $Q$ into itself, since each coordinate changes from $y$ by at most $\varepsilon s$. Its Lipschitz constant in the maximum norm is at most $\varepsilon<1$. The geometric Cauchy argument of Section 2 gives a fixed point in the complete closed cube, and that point satisfies $H(x)=y$.
+
+Linear scaling and the two inclusions now give
 \[
- H(x)=a+A^{-1}(F(x)-F(a)).
-\]
-Use the maximum norm and its induced matrix norm. Uniform continuity permits $s$ so small that $\|DH-I\|\le\varepsilon<1/2$ on every such cube, uniformly. Since $H(a)=a$, the segment formula gives $|H(x)-x|_\infty\le\varepsilon s$ on $Q$. Thus $H(Q)$ lies in the cube obtained by expanding every face of $Q$ by $\varepsilon s$. Conversely, if $y$ lies in the cube obtained by shrinking every face by $\varepsilon s$, the map $x\mapsto y-(H(x)-x)$ takes $Q$ into itself and has contraction constant at most $\varepsilon$. The geometric-iteration proof above gives a fixed point; hence $y\in H(Q)$. Linear volume scaling now gives
-\[
- (1-2\varepsilon)^n |\det DF(a)|\,|Q|
- \le |F(Q)|\le
- (1+2\varepsilon)^n |\det DF(a)|\,|Q|.
+ \begin{gathered}
+ (1-2\varepsilon)^n |\det DF(a)|\,|Q|\le |F(Q)|,\\
+ |F(Q)|\le (1+2\varepsilon)^n |\det DF(a)|\,|Q|.
+ \end{gathered}
  \tag{CI5}
 \]
-The images in question are compact and hence measurable. No unproved assertion that an image fills an approximate parallelepiped is needed: its inner inclusion was proved by the contraction argument.
+All images used here are compact, hence measurable. The constants are uniform over the chosen compact neighborhood. The absolute determinant is essential; no orientation assumption was made.
 
-Take $h\in C_c(V)$. The compact preimage of its support lies in the interior of a finite union $S$ of closed grid cubes contained in $U$. Such a union exists by the positive distance of this compact set from the complement of $U$. Subdivide those cubes into a common fine grid. Their interiors are disjoint; by injectivity their images overlap only on null images of faces. On each small cube $Q$, uniform continuity of $h\circ F$ makes the difference between $\int_{F(Q)}h$ and $h(F(a))|F(Q)|$ at most $\operatorname{osc}_Q(h\circ F)|F(Q)|$. The total error tends to zero since the oscillations tend uniformly to zero and the total image volume stays bounded. Estimate (CI5) then replaces $|F(Q)|$ by $|\det DF(a)||Q|$ with total error tending to zero. The resulting sums converge to $\int_S h(F(x))|\det DF(x)|dx$: the integrand is continuous and its step approximations converge uniformly. Both integrands vanish outside the respective union. This proves (CI4) for $C_c(V)$, for complex functions by their real and imaginary parts.
+**Continuous functions.** For $h\in C_c(V)$, the set $F^{-1}(\operatorname{supp}h)$ is compact. Enclose it in the interior of a finite union $S$ of closed grid cubes contained in $U$. To construct $S$, use the positive distance of this compact set from the complement of $U$ and a sufficiently fine grid, including the neighboring cubes that meet its boundary. When $U=\mathbb R^n$, any sufficiently large finite grid neighborhood suffices; when $h=0$, the identity is immediate. Subdivide $S$ into cubes $Q$. Injectivity makes their image interiors disjoint except for images of their faces, which have measure zero. On each image, replace $h$ by its value $h(F(a))$ at the center image. The error is at most the oscillation of $h\circ F$ on $Q$ times $|F(Q)|$. Uniform continuity makes the sum of these errors tend to zero, since the total image volume is $|F(S)|<\infty$. Equation (CI5) replaces $|F(Q)|$ by $|\det DF(a)||Q|$, again with total error tending to zero. The resulting sums tend to the integral of the continuous function $h(F(x))|\det DF(x)|$ on $S$, by uniform convergence of its cube step approximations. Both sides vanish outside the relevant unions. This proves (CI4) for continuous compactly supported complex $h$.
 
-For completeness this equality determines the full measures. Put $\nu(E)=\int_{F^{-1}(E)}|\det DF(x)|dx$ for Borel $E\subset V$. It is a measure by monotone convergence, finite on compact subsets of $V$. For any open $O\subset V$, continuous functions with compact support in $O$ increase to $1_O$: one explicit choice is
+**Measurable functions.** Define $\nu(E)=\int_{F^{-1}(E)}|\det DF|\,dx$ for Borel $E\subset V$. This is a measure by monotone convergence and is finite on compact subsets. For an open $O\subset V$, the continuous functions
 \[
- h_j(y)=\min(1,(j\operatorname{dist}(y,\mathbb R^n\setminus O)-1)_+)
-        \min(1,(j-|y|)_+).
+ h_j(y)=\min\{1,(j\operatorname{dist}(y,\mathbb R^n\setminus O)-1)_+\}
+        \min\{1,(j-|y|)_+\}
 \]
-If $O=\mathbb R^n$, take the first factor to be one. Monotone convergence and the already proved continuous case give $\nu(O)=|O|$. On each bounded open exhaustion of $V$, the two measures are finite and agree on all relatively open sets, a family closed under finite intersections generating its Borel sets. The pi-lambda argument proved in the Euclidean-product reading makes the measures equal on every Borel set there. Exhaustion gives equality on all Borel sets of $V$. Local null preservation for $F^{-1}$ extends this to completed Lebesgue sets and makes composition with $F$ well defined up to null sets. Simple approximation and monotone convergence prove (CI4) for nonnegative functions. Applying it to the absolute value and then to the positive and negative real and imaginary parts proves the absolutely integrable case.
+increase to $1_O$ and have compact support in $O$. If $O=\mathbb R^n$, use one for the first factor. The continuous case and monotone convergence imply $\nu(O)=|O|$. Exhaust $V$ by bounded open sets whose closures are compact in $V$, for example by imposing $|y|<j$ and distance greater than $1/j$ from its complement; omit the distance condition when $V=\mathbb R^n$. On each, the two finite measures agree on all relatively open sets. These sets are closed under finite intersections and generate the Borel sets, so the earlier [measure uniqueness proof](finite-derivative-l2.md#general-product-measures) by the pi-lambda argument gives equality on every Borel set. Exhaustion gives equality throughout $V$. Pullback by $F$ also preserves completed measurability, since $F^{-1}$ takes null sets to null sets. The equality therefore extends to the completed measures. Increasing simple approximation proves (CI4) for nonnegative $h$. Applying it to $|h|$ and then to the positive and negative real and imaginary parts proves the absolutely integrable complex case.
 
 <a id="polar-substitution"></a>
+## 4. Polar and surface coordinates
 
-For completeness, the polar map is $F(r,\theta)=(r\cos\theta,r\sin\theta)$ on $(0,\infty)\times(0,2\pi)$. The [proved trigonometric identities and complete-circle parametrization (EF10)–(EF12)](elementary-functions-and-cutoffs.md#trigonometry-and-period) give determinant $r(\cos^2\theta+\sin^2\theta)=r>0$. They also give bijectivity onto the plane with the nonnegative horizontal ray removed: the norm determines $r$, and the unit-circle parametrization determines the unique angle in that interval. The local inverse theorem and bijectivity make the inverse continuously differentiable on that open image. The removed ray is null by the Euclidean product theorem, since its intersection with each bounded box lies in a product with a singleton of length zero. Therefore (CI4) gives, for every nonnegative measurable $h$, and also for every absolutely integrable complex $h$,
+The map $(r,\theta)\mapsto(r\cos\theta,r\sin\theta)$, on $(0,\infty)\times(0,2\pi)$, has determinant $r$. The [trigonometric identities and circle parametrization](elementary-functions-and-cutoffs.md#trigonometry-and-period) prove this calculation and show that its image is the plane with the nonnegative horizontal ray removed. Its radius and angle are unique there. Local inversion and this bijectivity make it a $C^1$ diffeomorphism onto that open image. The omitted ray is null: its bounded pieces lie in products of intervals with a zero-length singleton. Equation (CI4) gives
 \[
  \begin{gathered}
  \int_{\mathbb R^2}h(x,y)\,dx\,dy\\
@@ -124,74 +142,87 @@ For completeness, the polar map is $F(r,\theta)=(r\cos\theta,r\sin\theta)$ on $(
  \end{gathered}
  \tag{CI8}
 \]
-This supplies the full polar substitution, with its actual domain and normalization, used in the Fourier Gaussian calculation.
+This holds for nonnegative measurable $h$ and for absolutely integrable complex $h$, with completed-measure interpretation. It supplies the polar normalization used in the Fourier Gaussian integral.
 
 <a id="surface-coordinates"></a>
-## Surface coordinates and energy measure
 
-For a $C^1$ embedded hypersurface with a parametrization $\kappa$ of full rank, define its Euclidean area in that chart by
+Let $M$ be a $C^1$ embedded hypersurface in $\mathbb R^n$, $n\geq1$. A chart $\kappa$ is a rank-$n-1$ map from an open subset of $\mathbb R^{n-1}$ that is a homeomorphism onto a relatively open subset of $M$. Define the chart area element by
 \[
- dS=\sqrt{\det(D\kappa^{T}D\kappa)}\,d\eta.
+ dS=\sqrt{\det(D\kappa^TD\kappa)}\,d\eta.
  \tag{CI6}
 \]
-Here an embedded chart is a $C^1$ map from an open subset of $\mathbb R^{n-1}$, of rank $n-1$, which is a homeomorphism onto a relatively open part of the hypersurface. Its Gram matrix is positive definite. Indeed, applying the finite Gram–Schmidt construction to the independent columns gives $D\kappa=QR$, where $Q^TQ=I$ and $R$ is square upper triangular with positive diagonal. Thus $\det(D\kappa^TD\kappa)=(\det R)^2>0$. For a zero-dimensional chart the empty determinant is one.
+Its Gram determinant is positive by the orthogonalization in Section 1. For $n=1$ the empty determinant is one and the chart consists of one point, with counting measure.
 
-This definition is independent of the parametrization. The transition map on an overlap is actually a $C^1$ diffeomorphism; we verify that before using it. At a common point choose an orthonormal matrix $Q$ spanning the image of $D\kappa_1$. The derivative of $a\mapsto Q^T\kappa_1(a)$ is invertible at that point, since $Q^T$ is an isomorphism on that image. The inverse theorem gives a $C^1$ inverse $g$ on a smaller open coordinate neighborhood. The embedded-chart homeomorphisms let us restrict the overlap so that both images lie there. The transition is then $\psi=g\circ Q^T\kappa_2$, hence is $C^1$. Reversing the two charts proves its inverse is $C^1$ as well. The local expressions agree on overlaps by uniqueness of the chart parameters. In dimension one these are maps between zero-dimensional singletons and the assertion is immediate. On an overlap, write $\kappa_2=\kappa_1\circ\psi$. The chain rule and determinant multiplication give
+We check coordinate independence, including differentiability of the transition map. At a common point of two charts, choose an orthonormal matrix $Q$ spanning the tangent image of $D\kappa_1$. The map $a\mapsto Q^T\kappa_1(a)$ has invertible derivative there. Let $g$ be its local $C^1$ inverse. Shrink the overlap using the two chart homeomorphisms; then the transition from chart 2 to chart 1 is $g\circ Q^T\kappa_2$. It is $C^1$, and the reversed construction proves that its inverse is $C^1$. If $\kappa_2=\kappa_1\circ\psi$, the chain rule and determinant multiplication give
 \[
- \sqrt{\det(D\kappa_2^{T}D\kappa_2)}
+ \sqrt{\det(D\kappa_2^TD\kappa_2)}
  =|\det D\psi|\,
-   \sqrt{\det(D\kappa_1^{T}D\kappa_1)}\circ\psi.
+   \sqrt{\det(D\kappa_1^TD\kappa_1)}\circ\psi.
 \]
-Formula (CI4) proves agreement of the chart integrals for nonnegative Borel functions and absolutely integrable functions; completion handles null-set modifications in either chart. Orthogonal ambient changes leave the Gram matrix unchanged, so this is Euclidean surface measure. These local measures define one measure on the hypersurface. To see this explicitly, choose a countable chart cover: the countable family of ambient rational balls is a base, and for each base member whose intersection with the surface lies in a chart choose one such chart; these chosen charts cover the surface. Replace the resulting relatively open chart domains $V_j$ by the disjoint Borel sets $V_j\setminus\bigcup_{i<j}V_i$, and sum their chart measures. On every chart this sum agrees with its own measure by countable additivity and the overlap formula. The same observation proves independence of the chosen cover. Complete the resulting Borel measure to obtain the completed surface measure.
+Equation (CI4) identifies the chart integrals on overlaps. The rational-ball base of ambient Euclidean space gives a countable chart cover: for each base member whose intersection with $M$ is contained in some chart, choose one such chart. Subtract the earlier chart domains from each successive domain to form disjoint Borel pieces, and sum their chart measures. The overlap identity and countable additivity show that this gives each original chart measure and is independent of the chosen cover. Complete this Borel measure. Orthogonal changes of ambient coordinates preserve the Gram matrix, so the resulting measure is Euclidean surface measure. No orientation or second derivative of $M$ is required.
 
-The graph over the tangent plane used in the trace proof follows from local inversion. At a point $\xi$, let $Q:\mathbb R^{n-1}\to T_\xi M$ be an orthonormal parametrization of its tangent plane. In any embedded chart through $\xi$, the derivative of $\eta\mapsto Q^T(\kappa(\eta)-\xi)$ is invertible. Apply (CI1)–(CI2) to use this projection as the new coordinate $v$. Then
-$\kappa(v)=\xi+Qv+\nu h(v)$, with $h(0)=0$ and $Dh(0)=0$, exactly as required for tangent-scale concentration. Here extend the columns of $Q$ to an orthonormal basis by finite Gram–Schmidt and let $\nu$ be the last vector. The scalar $h(v)=\nu^T(\kappa(v)-\xi)$ has derivative zero at the origin because the original tangent image is orthogonal to $\nu$. No second derivative is assumed.
-
-For a graph $\kappa(\eta)=(\varphi(\eta),\eta)$, its Gram matrix is $I+\nabla\varphi\,\nabla\varphi^T$. A basis with its first vector parallel to the gradient gives eigenvalues $1+|\nabla\varphi|^2,1,\ldots,1$ (all are one if the gradient is zero). Hence $dS=\sqrt{1+|\nabla\varphi|^2}\,d\eta$. In dimension one this is counting measure on the zero-dimensional surface.
-
-Apply (CI3) to a regular level of a scalar real $p$. The energy map $(\tau,\eta)\mapsto(p(\tau,\eta),\eta)$ has determinant $\partial_\tau p$. Equations (CI3), (CI4) and (CI6) therefore give
+The tangent-plane graph also follows from the same inverse construction. At $\xi\in M$, choose orthonormal tangent columns $Q$ and a unit normal $\nu$. Projection of a chart onto $Q$ has invertible derivative. Use $v=Q^T(\kappa-\xi)$ as coordinates. Then the chart is
 \[
- d\xi=|\partial_\tau p|^{-1}\,d\lambda\,d\eta,
- \qquad dS=\frac{|\nabla p|}{|\partial_\tau p|}\,d\eta,
- \qquad d\sigma_\lambda=\frac{dS}{|\nabla p|}.
+ \kappa(v)=\xi+Qv+\nu h(v),\qquad h(0)=0,\quad Dh(0)=0.
+\]
+The final derivative vanishes because the tangent image is orthogonal to $\nu$. For a graph $(\varphi(\eta),\eta)$ the Gram matrix is $I+\nabla\varphi\,\nabla\varphi^T$. In a basis beginning with the gradient direction its diagonal eigenvalues are $1+|\nabla\varphi|^2,1,\ldots,1$; for a zero gradient it is the identity. Thus $dS=\sqrt{1+|\nabla\varphi|^2}\,d\eta$, including the zero-dimensional convention.
+
+## 5. Integrating by energy
+
+Suppose $p\in C^1(\Omega;\mathbb R)$ and $\partial_\tau p\ne0$ on a coordinate patch where $\Phi(\tau,\eta)=(p(\tau,\eta),\eta)$ is a diffeomorphism. Write its inverse as $a(\lambda,\eta)=(\Sigma(\lambda,\eta),\eta)$. Its Jacobian, the graph formula above and (CI3) imply
+\[
+ \begin{gathered}
+ d\xi=|\partial_\tau p|^{-1}\,d\lambda\,d\eta,\\
+ dS=\frac{|\nabla p|}{|\partial_\tau p|}\,d\eta,\qquad
+ d\sigma_\lambda=\frac{dS}{|\nabla p|}.
+ \end{gathered}
  \tag{CI7}
 \]
-These identities prove the local coarea formula by nonnegative product integration, and by absolute integration for signed inputs. More explicitly, on a coordinate patch $U$ where $\Phi(\xi)=(p(\xi),\eta)$ is a diffeomorphism, set $a(t,\eta)=\Phi^{-1}(t,\eta)$ and $J(t,\eta)=|\partial_\tau p(a(t,\eta))|^{-1}$. For a nonnegative measurable $f$ on $U$, extend $f(a(t,\eta))J(t,\eta)$ by zero outside $\Phi(U)$. Applying (CI4) and then the product theorem gives its iterated integral in $t$ and $\eta$. On the slice at $t$, (CI3) and the graph Gram determinant identify $J(t,\eta)d\eta$ with $dS/|\nabla p|$. This proves
+Every factor on the right is evaluated at the inverse point. The absolute values include either sign of $\partial_\tau p$.
+
+For a nonnegative measurable $f$ on this patch $U$, extend $f(a(t,\eta))|\partial_\tau p(a(t,\eta))|^{-1}$ by zero off $\Phi(U)$. Change of variables and the product theorem identify its full integral with its iterated integral in $t$ and $\eta$. At each regular slice the graph Gram determinant gives exactly the area factor in (CI7). Hence
 \[
  \begin{gathered}
  \int_U f(\xi)\,d\xi\\
  =\int_{\mathbb R}\left(\int_{U\cap p^{-1}(t)}
-             f\,\frac{dS}{|\nabla p|}\right)dt.
+              f\,\frac{dS}{|\nabla p|}\right)dt.
  \end{gathered}
  \tag{CI9}
 \]
-For completed-measurable inputs the slices and their integrals are interpreted for almost every $t$, exactly as in the completed product theorem. For absolutely integrable complex $f$, apply the nonnegative formula to $|f|$ and then to the four signed real components. Thus the assertions include the same completed-measurable generality as (CI4).
+For completed-measurable $f$, the slice statement and inner integrals are interpreted for almost every $t$, as in the completed product theorem. Apply the formula first to $|f|$ and then to its four nonnegative real components for absolutely integrable complex $f$. This proves the full local coarea formula used here.
+
+<a id="finite-partitions"></a>
+## 6. Localizing a compact set
+
+Let $K$ be compact and covered by open coordinate neighborhoods. For each of its points choose a ball whose doubled closed ball remains in one assigned neighborhood. Finitely many smaller balls cover $K$. The [smooth plateau construction](elementary-functions-and-cutoffs.md#smooth-flat-cutoffs) gives $0\leq\varphi_j\leq1$, equal to one on each smaller ball and supported in its doubled ball. The function $s=\sum_j\varphi_j$ is positive on an open neighborhood $W$ of $K$, and $\varphi_j/s$ sum to one there. Alternatively, $\varphi_j/(\sum_l\varphi_l^2)^{1/2}$ have squared sum one; the positive square root is smooth by the proved real-power calculus. Restriction to a $C^1$ surface gives continuous weights on that surface. An alternative bump, positive throughout the unit ball, is $e^{-1/(1-|x|^2)}$ inside that ball and zero outside; the same flat-function proof establishes smoothness across its boundary, and translation and scaling give the corresponding bump on any ball.
+
+To obtain functions defined on the whole ambient open set, cover $K$ by finitely many further plateau regions with functions $0\leq\psi_l\leq1$ supported compactly inside $W$. Set $\chi=1-\prod_l(1-\psi_l)$. Then $0\leq\chi\leq1$, its support is compact in $W$, and it is one near $K$. Define $w_j=\chi\varphi_j/s$ on $W$, extending it by zero outside. This is smooth because $\chi$ vanishes on a neighborhood of the complement of $W$. Each $w_j$ is compactly supported in its assigned chart and $\sum_jw_j=\chi$. The same multiplication gives compactly supported squared partitions that have squared sum one near $K$. An empty compact set requires no terms.
+
+We will also need intersecting supports to share a chart. For a finite cover $U_j$ of a nonempty compact set, first dispose of the case where one $U_j$ is the entire ambient space. Otherwise each distance to its closed complement is a continuous function: the triangle inequality makes distance to a fixed nonempty set 1-Lipschitz. The maximum of these finitely many distances has a positive minimum $\delta$ on $K$. A subset of diameter less than $\delta$ meeting $K$ at $x$ lies in any cover member whose complement has distance at least $\delta$ from $x$. Choose the supporting balls above centered in $K$ with radii less than $\delta/4$. The union of two intersecting closed supports has diameter less than $\delta$ and contains one of those centers. It is therefore contained in a common chart. This is the finite localization property used when combining radiation formulas.
 
 <a id="regular-level-limit"></a>
+## 7. Concentration on a regular level
 
-We give the continuity and localization details of the regular-level limit. Let $p\in C^1(\Omega;\mathbb R)$ on an open Euclidean set, let $\lambda$ be a regular value, meaning $\nabla p\ne0$ on $p^{-1}(\lambda)$, and let $f\in C_c(\Omega)$ be complex valued. First suppose the support of $f$ is compactly contained in one patch $U$ as above. The function $g(t,\eta)=f(a(t,\eta))J(t,\eta)$ has compact support inside $\Phi(U)$. Extending it by zero gives a continuous compactly supported function on the full coordinate space: outside that compact support it already vanishes on an open neighborhood of the boundary of $\Phi(U)$. It is uniformly continuous and supported in a fixed finite box. Consequently
+Let $p\in C^1(\Omega;\mathbb R)$, let $\lambda$ be a regular value, and let $f\in C_c(\Omega)$ be complex valued. Thus $\nabla p\ne0$ on $p^{-1}(\lambda)$; other levels may have critical points. Put $P_\varepsilon(t)=\varepsilon/(\pi(t^2+\varepsilon^2))$.
+
+First assume that $f$ has compact support in one energy-coordinate patch $U$ from Section 5. Set $g(t,\eta)=f(a(t,\eta))|\partial_\tau p(a(t,\eta))|^{-1}$. Its support is compact inside $\Phi(U)$, so its extension by zero is a continuous compactly supported function on the entire coordinate space. In particular it is uniformly continuous and supported in a fixed box. Therefore
 \[
  q(t)=\int_{\mathbb R^{n-1}}g(t,\eta)\,d\eta
  \tag{CI10}
 \]
-is continuous with compact support: a difference $|q(t)-q(s)|$ is bounded by the volume of the fixed projected box times the uniform modulus of continuity of $g$. In dimension one the zero-dimensional integral means evaluation and the box volume is one. The slice formula gives $q(\lambda)=\int_{p^{-1}(\lambda)}f\,dS/|\nabla p|$. Formula (CI9) now changes the integral of $P_\varepsilon(p-\lambda)f$ into the integral of $P_\varepsilon(t-\lambda)q(t)$. The [arctangent and Poisson-kernel proof (EF13)–(EF15)](elementary-functions-and-cutoffs.md#arctangent-and-poisson-kernel) therefore proves the desired limit on this patch.
+is continuous and compactly supported: the difference at two values of $t$ is bounded by the projected box volume times the uniform modulus of continuity of $g$. For $n=1$, this integral is evaluation in the zero-dimensional variable and the volume is one. The slice identity gives $q(\lambda)=\int_{p^{-1}(\lambda)}f\,dS/|\nabla p|$. By (CI9), the integral of $P_\varepsilon(p-\lambda)f$ is the integral of $P_\varepsilon(t-\lambda)q(t)$. The [proved Poisson-kernel approximate identity](elementary-functions-and-cutoffs.md#arctangent-and-poisson-kernel) makes the latter tend to $q(\lambda)$.
 
-For general $f$, the case $f=0$ is immediate. Otherwise its nonempty compact support $K$ meets the level in a compact set $S$. If $S$ is empty, the continuous function $|p-\lambda|$ has a positive minimum on $K$, and the entire integral tends to zero by the estimate below. Otherwise finitely many such coordinate patches cover $S$, since some partial derivative is nonzero at each point. The compactly supported partition proved in the next section provides smooth $w_j$, each supported compactly in its own patch, whose sum $\chi$ equals one on a neighborhood of $S$. Apply the patch result to each $fw_j$. If the remainder $f(1-\chi)$ is nonzero, its compact support is disjoint from the level, so $|p-\lambda|\ge\delta>0$ on that support. Its absolute integral against $P_\varepsilon(p-\lambda)$ is at most $\varepsilon\|f(1-\chi)\|_1/(\pi\delta^2)$, which tends to zero. A zero remainder contributes nothing. Since the weights sum to one on $S$, their surface integrals add to the full surface integral. We have proved
+For general $f$, let $K=\operatorname{supp}f$ and $S=K\cap p^{-1}(\lambda)$. If $S$ is nonempty, it is compact, and some partial derivative of $p$ is nonzero near each of its points. Finitely many energy-coordinate patches cover it. Section 6 supplies smooth functions $w_j$ compactly supported in those patches, with sum $\chi=1$ near $S$. Apply the patch result to $fw_j$. The remaining function $f(1-\chi)$ has compact support disjoint from $p^{-1}(\lambda)$. If it is nonzero, compactness gives $|p-\lambda|\geq\delta>0$ on its support, and its integral against $P_\varepsilon(p-\lambda)$ has absolute value at most $\varepsilon\|f(1-\chi)\|_1/(\pi\delta^2)$, which tends to zero. If $S$ is empty, the same argument applies directly to $f$; if $f=0$, there is nothing to prove. The surface integrals of the chart pieces add to the integral of $f$ because their weights sum to one near $S$. We conclude that
 \[
  \begin{gathered}
  \lim_{\varepsilon\downarrow0}
-  \int_\Omega P_\varepsilon(p(\xi)-\lambda)f(\xi)\,d\xi\\
+   \int_\Omega P_\varepsilon(p(\xi)-\lambda)f(\xi)\,d\xi\\
  =\int_{p^{-1}(\lambda)}f\,\frac{dS}{|\nabla p|}.
  \end{gathered}
  \tag{CI11}
 \]
-The right-hand integral is finite: finitely many compact chart pieces cover its support, and the chart Jacobian and reciprocal gradient are continuous there. This proves $\delta(p-\lambda)=d\sigma_\lambda$ against every compactly supported continuous test, without any regularity requirement on other levels away from the support's neighborhood of $p=\lambda$.
+The surface integral is finite: its support is covered by finitely many compact chart pieces, on which the Jacobian and reciprocal gradient are bounded. This proves the identity $\delta(p-\lambda)=d\sigma_\lambda$ against every compactly supported continuous test, including empty levels and either sign of the graph derivative.
 
-<a id="finite-partitions"></a>
-## Finite localization on a compact set
+## Further reading
 
-The partitions used above can be constructed explicitly. The [flat-function proof (EF16)–(EF18)](elementary-functions-and-cutoffs.md#smooth-flat-cutoffs) proves the smoothness, support and positivity of the bumps used here, including at their boundary. For each point of a compact set $K$, choose a ball $B(x,r)$ whose doubled closed ball lies in an assigned open coordinate neighborhood. Compactness selects finitely many of the smaller balls covering $K$. On each use a nonnegative smooth bump $\varphi_j$ equal to one on the smaller ball and supported in the larger ball. The plateau construction (EF18) supplies these; a positive interior bump also follows from $e^{-1/(1-|x|^2)}$ inside the unit ball and zero outside, followed by translation and scaling. The sum $s=\sum_j\varphi_j$ is positive on an open neighborhood $W$ of $K$. Dividing each bump by $s$ gives a smooth partition there. Dividing instead by the square root of the sum of the squared bumps gives a partition whose squared terms sum to one. Restriction to a $C^1$ surface gives the continuous partitions needed for its amplitudes.
-
-When functions on the entire ambient open set are required, choose finitely many additional plateau bumps $\psi_l$ with support compactly in $W$, whose regions of value one cover $K$. The same doubled-ball construction gives them. The function $\chi=1-\prod_l(1-\psi_l)$ is smooth, supported compactly in $W$ and equals one on a neighborhood of $K$, with $0\le\chi\le1$. Define $w_j=\chi\varphi_j/s$ on $W$ and zero outside it. This extension is smooth because the support of $\chi$ is a compact subset of $W$. Each $w_j$ has compact support in its assigned chart and $\sum_jw_j=\chi$. This is exactly the global compactly supported partition used in (CI11). The case of an empty compact set requires no terms.
-
-A common patch for intersecting supports is also available. For a finite open cover of a nonempty compact set, a member equal to the whole ambient space already gives the assertion. Otherwise the continuous function $x\mapsto\max_j\operatorname{dist}(x,\mathbb R^n\setminus U_j)$ has a positive minimum $\delta$ on that set. If a subset of diameter less than $\delta$ contains a point $x$ of the compact set, choose $j$ with distance at least $\delta$ at $x$; every point of the subset then lies in $U_j$. Center the supporting balls at points of the compact set and choose their radii less than $\delta/4$. The union of two intersecting closed supports has diameter less than $\delta$ and meets the compact set at a center, so it lies in a common chart. These constructions prove the finite-cover facts used to combine the local radiation formulas.
+Jiří Lebl, [*Basic Analysis II*, version 6.3, 15 May 2026](https://www.jirka.org/ra/realanal2.pdf), Section 8.5, printed pages 51–57, treats inverse and implicit functions; Section 10.7, printed pages 134–137, treats change of variables. The complete programme arguments above also supply the completed-measure, finite Hölder, surface and regular-level forms used by the later lessons.

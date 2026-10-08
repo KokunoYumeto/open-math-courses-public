@@ -2,9 +2,11 @@
 
 A compactly supported sheaf with nonzero ordinary cohomology has a microsupport point over every covector direction. A single isolated linear test can certify that its cohomology is nonzero: when its localized coefficient is an unshifted rank-\(m\) skyscraper, the whole global cohomology complex is \(k^m\). This proves the assigned cotangent-projection theorem over every field.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original programme exposition, examples and solutions are dedicated to the public domain under CC0.*
 
-Learn first Pure and simple sheaves from directional tests for the closed support test and its compatibility with localized representatives. Pure test degrees and strong Morse inequalities states and proves the exact arbitrary-field filtration used here, separately from its characteristic-cycle formulas. Its written SH-02 provider is Local jumps and finite Morse data and A finite filtration by local tests. Their proper-support, endpoint, localization and connecting-map proofs retain their exact earlier foundational obligations. The argument below supplies the localized-model and projection steps in full.
+The neighborhood-uniform support test and thick point localization specify the local category and its denominators. The closed-test discussion gives the same direct cone-vanishing argument for localized representatives. We use that argument below; it requires neither a smooth Lagrangian model nor transverse intersection.
+
+Pure test degrees and strong Morse inequalities supplies the arbitrary-field filtration, separately from its characteristic-zero cycle formulas. Its current SH-02 providers are Local jumps and finite Morse data and A finite filtration by local tests. We spell out the restriction maps, their supported fibres and both endpoints. The sublevel deformation proof applies to arbitrary bounded sheaves; compact-neighborhood continuity and the open-union comparison provide its endpoint maps. Thus the projection argument retains whole complexes over every field.
 
 ## The source hypotheses include a present microsupport point
 
@@ -20,7 +22,7 @@ Let \(V\) be a finite-dimensional real vector space, \(k\) any field, and
  \qquad\text{(1)}
 \]
 
-The integer \(m\) initially denotes the dimension of a finite coefficient space, so \(m\ge0\). The equality of sets in (1) says that \(p\) actually belongs to \(\operatorname{SS}(F)\).
+Here support always means the closed support, including a boundary point at which the stalk itself can be zero. The integer \(m\) initially denotes the dimension of a finite coefficient space, so \(m\ge0\). The equality of sets in (1) says that \(p\) actually belongs to \(\operatorname{SS}(F)\).
 
 Recall the localization:
 
@@ -46,9 +48,7 @@ Put \(\ell(x)=\langle x,\xi_0\rangle\) and \(c=\ell(x_0)\). The exact local test
  \qquad\text{(3)}
 \]
 
-If \(p\notin\operatorname{SS}(G)\), the defining microsupport vanishing test with
-\(d\ell_{x_0}=\xi_0\) makes (3) zero. Hence this exact functor kills
-\(\mathcal N_p\), inverts every denominator whose cone belongs to that kernel, and factors through (2). Applying it to the given localized isomorphism computes
+For \(j:\{\ell<c\}\hookrightarrow V\), the actual localization triangle at \(x_0\) is \(M_p(G)\to G_{x_0}\to(Rj_*j^{-1}G)_{x_0}\xrightarrow{+1}\); its second arrow is restriction toward lower height. This specifies (3) as a triangulated functor, including its maps. Finite cohomological dimension on \(V\) keeps the values bounded. If \(p\notin\operatorname{SS}(G)\), the defining neighborhood-uniform vanishing criterion applies in particular to \(\ell\), whose differential at \(x_0\) is \(\xi_0\). Hence \(M_p(G)=0\). Applying this functor to the cone triangle of any denominator makes that denominator invertible, so the universal property of (2) gives a functor on the whole quotient, including fraction representatives. Applying it to the specified localized isomorphism computes
 
 \[
  M_p(F)\simeq M_p(k_{\{x_0\}}^{\,m})\simeq k^m.
@@ -70,9 +70,9 @@ The graph of \(d\ell\) is the constant-covector section \(V\times\{\xi_0\}\). Th
  \qquad\text{(5)}
 \]
 
-The second property follows from compact closed support, even though the linear function on \(V\) is usually nonproper. Its restriction to the coefficient support is proper. The only local test required by the finite Morse theorem is (4), which is bounded and finite-dimensional.
+Write \(D=\operatorname{supp}(F)\). The second property follows from compact closed support, even though the linear function on \(V\) is usually nonproper. For any compact interval \(I\), \(D\cap\ell^{-1}(I)\) is closed in compact \(D\), so \(\ell|_D\) is proper. Proper-on-support direct image, rather than properness of the ambient linear map, is therefore available. The local test (4) is bounded and finite-dimensional.
 
-Recall the actual arbitrary-field filtration. If a smooth function has finitely many microsupport graph intersections, the closed sublevel support condition and finite local tests give triangles
+Recall the actual arbitrary-field filtration. More generally, for a smooth height \(\varphi\) and an arbitrary \(F\in D^b(k_V)\), assume that each closed support sublevel is compact, that the graph of \(d\varphi\) meets \(\operatorname{SS}(F)\) at finitely many points \(p_i=(x_i;d\varphi_{x_i})\), and that the corresponding local tests \(M_{p_i}(F)=(R\Gamma_{\{\varphi\geq\varphi(x_i)\}}F)_{x_i}\) have bounded finite-dimensional cohomology. These hypotheses require no constructibility or transversality. Write \(c_1<\cdots<c_r\) for the distinct critical values. In the notation \(\varphi=\ell\) of our application, the filtration gives triangles
 
 \[
  B_0=0,\qquad B_r\simeq R\Gamma(V;F),\qquad
@@ -82,7 +82,19 @@ Recall the actual arbitrary-field filtration. If a smooth function has finitely 
  \qquad\text{(6)}
 \]
 
-The maps from an upper sublevel to a lower one are ordinary restrictions. Proper direct image to the real line and its supported localization identify \(L_\nu\) with the indicated closed local tests. On the critical fibre those tests vanish away from the finitely many microsupport intersections; proper base change then gives their actual finite direct sum. The one-sided finite-band comparisons identify levels between jumps and retain the endpoints. These are the exact maps of the preceding written filtration.
+Here is a construction that retains the arrows. Suppose first that \(r>0\), and put \(E_t=R\Gamma(\{\varphi<t\};F)\). The support is bounded below: choose one nonempty compact sublevel, take its minimum, and observe that every point of the support outside that sublevel has larger height. Choose \(t_0\) below this minimum, \(t_\nu\in(c_\nu,c_{\nu+1})\) for \(0<\nu<r\), and \(t_r>c_r\). Set \(B_\nu=E_{t_\nu}\). The maps \(B_\nu\to B_{\nu-1}\) are ordinary restrictions. Their fibres are initially the supported section complexes in the closed part \(\{t_{\nu-1}\leq\varphi<t_\nu\}\) of the open set \(\{\varphi<t_\nu\}\).
+
+On an interval of heights containing no graph intersection, the defining microsupport tests vanish on every level. To check the sublevel deformation hypotheses directly, take \(U_t=\{\varphi<t\}\). The closure of \(U_t\setminus U_s\), intersected with the support, is a closed subset of the compact band \(\{s\leq\varphi\leq t\}\cap D\). The limiting front \(\bigcap_{t>s}\overline{U_t\setminus U_s}\) lies in \(\{\varphi=s\}\). For a later time it lies inside \(U_t\), where the supported test vanishes automatically; at the equal time \(t=s\), vanishing is precisely the positive closed test. The deformation theorem on an open parameter interval consequently gives the actual restriction isomorphisms between the \(E_t\), including the limit toward the upper open endpoint. No negative-covector condition or duality of the coefficient complex is being substituted.
+
+At a critical value \(c=c_\nu\), put \(Y=\{\varphi\leq c\}\), \(U=\{\varphi<c\}\), and \(A_c=R\Gamma(Y;F|_Y)\). The compact set \(K=D\cap Y\) has the relative neighborhoods \(D\cap\{\varphi<c+\epsilon\}\) as a cofinal system when \(\epsilon\downarrow0\). Indeed all these sets lie in one fixed compact support sublevel; points outside a prescribed neighborhood with heights decreasing to \(c\) would have a limit in \(K\), a contradiction. Compact-neighborhood continuity therefore identifies the cohomology of \(A_c\) with the filtered colimit of the upper open-sublevel cohomologies. The restriction maps in that system are isomorphisms, because no further critical value intervenes. The natural restriction \(B_\nu\to A_c\) is thus a quasi-isomorphism. The open-sublevel deformation comparison also identifies \(R\Gamma(U;F)\to B_{\nu-1}\) by its actual restriction map.
+
+Now restrict the support-localization triangle for \(\{\varphi\geq c\}\) to \(Y\). If \(j:U\hookrightarrow V\) and \(j':U\hookrightarrow Y\), the natural comparison \((Rj_*F|_U)|_Y\to Rj'_*F|_U\) is an isomorphism: a neighborhood in \(Y\) is the intersection of a neighborhood in \(V\) with \(Y\), and both intersect \(U\) in the same open set. The derived direct-image stalk calculations therefore agree. Taking sections on \(Y\) gives the triangle
+\(R\Gamma(Y;(R\Gamma_{\{\varphi\geq c\}}F)|_Y)\to A_c\to R\Gamma(U;F)\xrightarrow{+1}\).
+The sheaf complex \((R\Gamma_{\{\varphi\geq c\}}F)|_Y\) has zero stalk below \(c\), and on the fibre at \(c\) its stalk vanishes except at the finitely many points \(x_i\) with \(\varphi(x_i)=c\). For the closed inclusion \(i:S=\{x_i:\varphi(x_i)=c\}\hookrightarrow Y\), its restriction unit to \(i_*i^{-1}\) of it is an isomorphism on every stalk. Sections on the finite discrete set \(S\) are an exact finite direct sum. This identifies the first term with \(L_\nu=\bigoplus_{\varphi(x_i)=c}M_{p_i}(F)\), and gives (6) with its connecting map.
+
+The proper-image description is the same construction. For \(H=R\varphi_*F\), localization identifies \(R\Gamma_{[c,\infty)}H\) with \(R\varphi_*R\Gamma_{\{\varphi\geq c\}}F\). The latter coefficient is still supported inside \(D\), on which \(\varphi\) is proper. Proper base change at \(c\) gives sections of its restriction to the critical fibre, and the finite-support argument just given yields the same \(L_\nu\). This explains the local direct sum without assuming that a nonproper ordinary image can be evaluated on a closed fibre.
+
+Finally, \(B_0=0\). Above \(c_r\), all open-sublevel restrictions are isomorphisms. An increasing sequence of such levels exhausts \(V\). Its inverse cohomology system is constant in every degree, and its first derived limit vanishes: the difference map on products is surjective by recursive lifting along the isomorphisms. The open-union comparison identifies \(R\Gamma(V;F)\to B_r\) as a quasi-isomorphism. When there are no intersections, start below the support and the same argument gives zero at every stage and globally. For finitely many finite local tests, induction in the displayed triangles makes every \(B_\nu\) perfect. This proves the full proper-below filtration and retains every attaching map.
 
 In our case there is one critical value \(c\) and one summand. Formula (6) is the triangle \(M_p(F)\to B_1\to0\xrightarrow{+1}\). It yields
 
@@ -91,7 +103,7 @@ In our case there is one critical value \(c\) and one summand. Formula (6) is th
  \qquad\text{(7)}
 \]
 
-For completeness, a level below the minimum of \(\ell\) on the compact support has zero sublevel complex. A level above its maximum contains all coefficient support and has global complex \(R\Gamma(V;F)\). The finite-band theorem transports these endpoints to the one-jump triangle. No escape of support at infinity or limiting extra term is present.
+In the present compact-support application there is an even shorter endpoint check. A level below the minimum of \(\ell|_D\) has zero sublevel complex, and a level above its maximum contains all of \(D\). The latter has the same global complex as \(V\), by the closed-support adjunction \(F\simeq i_*i^{-1}F\) for \(i:D\hookrightarrow V\). Thus the endpoints can be chosen outside the entire support, and the single supported-localization triangle already proves (7). The exhaustion argument above is only needed for the more general proper-below filtration. No contribution arrives from infinity.
 
 In particular
 
@@ -119,7 +131,7 @@ We now prove a useful statement independent of (1).
  \qquad\text{(9)}
 \]
 
-Every closed support sublevel is compact. The zero-intersection case of the same finite-band theorem therefore identifies all sublevel section complexes. A level below the compact support starts at zero; a level above it is the global complex. Hence
+Let \(D_G\) be the compact closed support. If it is nonempty, choose \(a<\min h(D_G)\) and \(b>\max h(D_G)\). The missing direction in (9) makes every positive local support test for \(h\) vanish. For \(U_t=\{h<t\}\), the supported closures of increments lie in the compact \(D_G\); the limiting front lies on \(h=s\), so the equal-time test is exactly the one that vanishes, and all later-time tests vanish inside \(U_t\). The sublevel deformation theorem therefore identifies the actual restriction from \(\{h<b\}\) to \(\{h<a\}\). The source computes \(R\Gamma(V;G)\) because it contains the closed support, and the target is zero. This argument uses bounded complexes of arbitrary sheaves: it makes no constructibility, finite-stalk, finite-local-test or characteristic-zero assumption. Hence
 
 \[
  R\Gamma(V;G)=0.
@@ -150,9 +162,9 @@ The same proof permits a nonzero perfect coefficient complex \(P\) in place of t
  \qquad\text{(12)}
 \]
 
-The local test is finite and bounded because \(P\) is perfect, so (6) applies. Its one triangle gives the middle isomorphism, and the missing-direction lemma gives the last conclusion. A nonzero \(P\) can have Euler number zero; the argument keeps its whole complex.
+The point-extension functor and the support test commute with tensoring by a perfect coefficient complex: represent \(P\) by a bounded finite complex of finite-dimensional vector spaces and apply the functors term by term. The skyscraper test is therefore \(P\) with its entire differential. Alternatively it follows directly because this point-supported complex is already supported in the closed test set. The localized isomorphism is carried to that same \(P\) by the exact quotient functor. Its local cohomology is bounded and finite-dimensional, so the one triangle of (6) gives the middle isomorphism in (12), and the missing-direction lemma gives the last conclusion. A nonzero \(P\) can have Euler number zero; no Euler-number nonvanishing is used.
 
-If \(V\) has dimension zero, its dual is one point. The hypotheses give a nonzero coefficient at that point, and (7)–(12) have the same interpretation. If \(\xi_0=0\) in positive dimension, (1) forces the entire closed support to be \(\{x_0\}\); point-support adjunction gives the same global complex directly.
+If \(V\) has dimension zero, its dual is one point. The hypotheses give a nonzero coefficient at that point, and (7)–(12) have the same interpretation. If \(\xi_0=0\) in positive dimension, the zero-section support identity forces the entire closed support to be \(\{x_0\}\). For its inclusion \(i\), the ordinary restriction unit \(F\to i_*i^{-1}F=i_*F_{x_0}\) is an isomorphism on every stalk. It gives \(R\Gamma(V;F)\simeq F_{x_0}\). The constant closed test identifies this stalk with the specified coefficient complex, giving the same conclusion directly.
 
 ## Exercises with complete solutions
 
@@ -230,4 +242,4 @@ Intersecting with \(q^{-1}(\xi_0)\) leaves at most \(p\); the extra assumption r
 
 ## References
 
-The full cotangent projection of a compactly supported real constructible sheaf over a field is a classical consequence of the index theory of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). The proof here uses the arbitrary-field finite Morse filtration and retains the whole local coefficient complex. It also explains the forced positive multiplicity, the zero-covector case, support properness and the distinction between integer rank and scalar trace. Its graded extension and counterexamples are proved explicitly.
+M. Kashiwara, [Index theorem for constructible sheaves](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), Theorem 4.2, p. 199, relates the sheaf Euler characteristic to an intersection with a differential graph when the closed sublevels on the coefficient support and the graph–microsupport intersection are compact. Its introduction, p. 194, explains the change of sublevel cohomology through local Morse tests. The proof above uses the linked arbitrary-field Morse filtration to retain the entire local coefficient complex, rather than only its Euler characteristic. This is what also handles positive characteristic and a nonzero coefficient complex of Euler number zero.

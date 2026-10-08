@@ -1,0 +1,728 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compatible lifts and the phase of an outer period · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-BRL.html">Previous lesson</a><a href="OA-FLOW-TRP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CPP.md">Lesson source</a></nav><h1 id="OA-FLOW.CPP.COMPATIBLE">Compatible lifts and the phase of an outer period</h1>
+<p><em>Original exposition, proofs, examples and reproducible diagrams: CC0-1.0. Cited publications and existing components retain their own terms.</em></p>
+<p>An inner automorphism has many unitary implementers, differing by a scalar of modulus one. Choosing one implementer for each inner automorphism records two kinds of phase: the phase lost in multiplication and the phase lost under conjugation. Their compatibility has a concrete consequence. For an automorphism whose first inner power is its <span class="math" data-tex="\(p\)">\(p\)</span>-th power, the entire characteristic class is one <span class="math" data-tex="\(p\)">\(p\)</span>-th root of unity.</p>
+<p>We first build the algebra of compatible lifts. Its quotient by changes of phase is compact for countable discrete groups. A measurable choice of implementers then gives an intrinsic class for every nonzero factor with separable predual, and an explicit perturbation calculation proves cocycle-conjugacy invariance.</p>
+<p><a id="cp-compatible"></a></p>
+<h2 id="1-lifting-conjugation-as-well-as-multiplication">1. Lifting conjugation as well as multiplication</h2>
+<p>Write <span class="math" data-tex="\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span>. Let <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> be a normal subgroup. A <strong>normalized compatible pair</strong> consists of functions
+<span class="math math-display" data-tex="\[
+ \lambda:N\times G\longrightarrow\mathbb T,\qquad
+ \mu:N\times N\longrightarrow\mathbb T
+\]">\[
+ \lambda:N\times G\longrightarrow\mathbb T,\qquad
+ \mu:N\times N\longrightarrow\mathbb T
+\]</span>
+satisfying, for <span class="math" data-tex="\(a,b,c,m,n\in N\)">\(a,b,c,m,n\in N\)</span> and <span class="math" data-tex="\(g,h\in G\)">\(g,h\in G\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ &amp;\mu(a,b)\mu(ab,c)=\mu(a,bc)\mu(b,c), &amp;&amp;\text{(multiplication)}\\
+ &amp;\lambda(a,gh)=\lambda(a,g)\lambda(g^{-1}ag,h), &amp;&amp;\text{(action)}\\
+ &amp;\frac{\lambda(a,g)\lambda(b,g)}{\lambda(ab,g)}
+       =\frac{\mu(g^{-1}ag,g^{-1}bg)}{\mu(a,b)}, &amp;&amp;\text{(compatibility)}\\
+ &amp;\lambda(m,n)=\frac{\mu(n,n^{-1}mn)}{\mu(m,n)}, &amp;&amp;\text{(inner action)}\\
+ &amp;\mu(e,a)=\mu(a,e)=1,\qquad
+   \lambda(e,g)=\lambda(a,e)=1. &amp;&amp;\text{(normalization)}
+\end{aligned}\tag{CP1}
+\]">\[
+\begin{aligned}
+ &amp;\mu(a,b)\mu(ab,c)=\mu(a,bc)\mu(b,c), &amp;&amp;\text{(multiplication)}\\
+ &amp;\lambda(a,gh)=\lambda(a,g)\lambda(g^{-1}ag,h), &amp;&amp;\text{(action)}\\
+ &amp;\frac{\lambda(a,g)\lambda(b,g)}{\lambda(ab,g)}
+       =\frac{\mu(g^{-1}ag,g^{-1}bg)}{\mu(a,b)}, &amp;&amp;\text{(compatibility)}\\
+ &amp;\lambda(m,n)=\frac{\mu(n,n^{-1}mn)}{\mu(m,n)}, &amp;&amp;\text{(inner action)}\\
+ &amp;\mu(e,a)=\mu(a,e)=1,\qquad
+   \lambda(e,g)=\lambda(a,e)=1. &amp;&amp;\text{(normalization)}
+\end{aligned}\tag{CP1}
+\]</span>
+Denote their set by <span class="math" data-tex="\(Z(G,N,\mathbb T)\)">\(Z(G,N,\mathbb T)\)</span>. These are equations in scalar groups, so pointwise multiplication and pointwise inversion preserve every equation. The constant pair is their identity. Thus <span class="math" data-tex="\(Z(G,N,\mathbb T)\)">\(Z(G,N,\mathbb T)\)</span> is an abelian group.</p>
+<p>For standard Borel groups, with <span class="math" data-tex="\(N\)">\(N\)</span> a Borel normal subgroup carrying the inherited Borel structure and all group operations Borel, we require both functions to be jointly Borel and write <span class="math" data-tex="\(Z_{\mathrm B}(G,N,\mathbb T)\)">\(Z_{\mathrm B}(G,N,\mathbb T)\)</span>. The algebraic arguments below preserve this requirement. For countable discrete groups every function involved is Borel.</p>
+<p>Here is the object encoded by all five lines of (CP1).</p>
+<p><strong>Compatible-lift theorem.</strong> A pair in (CP1) defines a central extension
+<span class="math math-display" data-tex="\[
+ 1\longrightarrow\mathbb T
+ \xrightarrow{\ i\ }E_\mu
+ \xrightarrow{\ q\ }N\longrightarrow1,\qquad
+ E_\mu=\mathbb T\times N,
+ \quad i(z)=(z,e),\quad q(z,n)=n,
+ \tag{CP2}
+\]">\[
+ 1\longrightarrow\mathbb T
+ \xrightarrow{\ i\ }E_\mu
+ \xrightarrow{\ q\ }N\longrightarrow1,\qquad
+ E_\mu=\mathbb T\times N,
+ \quad i(z)=(z,e),\quad q(z,n)=n,
+ \tag{CP2}
+\]</span>
+together with an action <span class="math" data-tex="\(\beta:G\to\operatorname{Aut}(E_\mu)\)">\(\beta:G\to\operatorname{Aut}(E_\mu)\)</span> that fixes the kernel pointwise and covers conjugation on <span class="math" data-tex="\(N\)">\(N\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+ \beta_n=\operatorname{Ad}_{E_\mu}(1,n)\qquad(n\in N).
+ \tag{CP3}
+\]">\[
+ \beta_n=\operatorname{Ad}_{E_\mu}(1,n)\qquad(n\in N).
+ \tag{CP3}
+\]</span>
+Conversely, such an extension and action, supplied with a normalized section, produce exactly the identities (CP1).</p>
+<p><strong>Proof.</strong> Define
+<span class="math math-display" data-tex="\[
+ (z,a)(w,b)=(zw\mu(a,b),ab).
+ \tag{CP4}
+\]">\[
+ (z,a)(w,b)=(zw\mu(a,b),ab).
+ \tag{CP4}
+\]</span>
+The first line of (CP1) makes the two products of three elements equal. Normalization gives the identity <span class="math" data-tex="\((1,e)\)">\((1,e)\)</span>. Substituting <span class="math" data-tex="\((a,a^{-1},a)\)">\((a,a^{-1},a)\)</span> in that first line gives
+<span class="math" data-tex="\(\mu(a,a^{-1})=\mu(a^{-1},a)\)">\(\mu(a,a^{-1})=\mu(a^{-1},a)\)</span>; hence
+<span class="math math-display" data-tex="\[
+ (z,a)^{-1}=(z^{-1}\mu(a^{-1},a)^{-1},a^{-1})
+ \tag{CP5}
+\]">\[
+ (z,a)^{-1}=(z^{-1}\mu(a^{-1},a)^{-1},a^{-1})
+ \tag{CP5}
+\]</span>
+is both a left and a right inverse. Formula (CP4) makes <span class="math" data-tex="\(i(\mathbb T)\)">\(i(\mathbb T)\)</span> central, and proves the exactness of (CP2).</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+ \beta_g(z,n)=
+   \bigl(z\lambda(gng^{-1},g),\,gng^{-1}\bigr).
+ \tag{CP6}
+\]">\[
+ \beta_g(z,n)=
+   \bigl(z\lambda(gng^{-1},g),\,gng^{-1}\bigr).
+ \tag{CP6}
+\]</span>
+The compatibility equation, applied to <span class="math" data-tex="\(a=gng^{-1}\)">\(a=gng^{-1}\)</span> and <span class="math" data-tex="\(b=gmg^{-1}\)">\(b=gmg^{-1}\)</span>, says precisely that the scalar coordinates of
+<span class="math" data-tex="\(\beta_g((z,n)(w,m))\)">\(\beta_g((z,n)(w,m))\)</span> and <span class="math" data-tex="\(\beta_g(z,n)\beta_g(w,m)\)">\(\beta_g(z,n)\beta_g(w,m)\)</span> agree. The action equation gives
+<span class="math math-display" data-tex="\[
+ \lambda(ghn(gh)^{-1},gh)
+ =\lambda(ghn(gh)^{-1},g)\lambda(hnh^{-1},h),
+\]">\[
+ \lambda(ghn(gh)^{-1},gh)
+ =\lambda(ghn(gh)^{-1},g)\lambda(hnh^{-1},h),
+\]</span>
+so <span class="math" data-tex="\(\beta_g\beta_h=\beta_{gh}\)">\(\beta_g\beta_h=\beta_{gh}\)</span>. Normalization gives <span class="math" data-tex="\(\beta_e=1\)">\(\beta_e=1\)</span>, and <span class="math" data-tex="\(\beta_{g^{-1}}\)">\(\beta_{g^{-1}}\)</span> is its inverse. It also gives <span class="math" data-tex="\(\beta_g i(z)=i(z)\)">\(\beta_g i(z)=i(z)\)</span>.</p>
+<p>Put <span class="math" data-tex="\(s(n)=(1,n)\)">\(s(n)=(1,n)\)</span>. If <span class="math" data-tex="\(a=nmn^{-1}\)">\(a=nmn^{-1}\)</span>, then
+<span class="math math-display" data-tex="\[
+ s(n)s(m)=\mu(n,m)s(nm),\qquad
+ s(a)s(n)=\mu(a,n)s(nm).
+\]">\[
+ s(n)s(m)=\mu(n,m)s(nm),\qquad
+ s(a)s(n)=\mu(a,n)s(nm).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ s(n)s(m)s(n)^{-1}
+   =\frac{\mu(n,m)}{\mu(nmn^{-1},n)}s(nmn^{-1})
+   =\beta_n(s(m)),
+\]">\[
+ s(n)s(m)s(n)^{-1}
+   =\frac{\mu(n,m)}{\mu(nmn^{-1},n)}s(nmn^{-1})
+   =\beta_n(s(m)),
+\]</span>
+where the last equality is the inner-action equation. Both maps fix the central circle, so (CP3) holds on every element.</p>
+<p>For the converse, let <span class="math" data-tex="\(s:N\to E\)">\(s:N\to E\)</span> be a section with <span class="math" data-tex="\(s(e)=1\)">\(s(e)=1\)</span>. Identify the central kernel with <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, and define the unique scalars
+<span class="math math-display" data-tex="\[
+ s(a)s(b)=\mu(a,b)s(ab),\qquad
+ \beta_g(s(g^{-1}ag))=\lambda(a,g)s(a).
+ \tag{CP7}
+\]">\[
+ s(a)s(b)=\mu(a,b)s(ab),\qquad
+ \beta_g(s(g^{-1}ag))=\lambda(a,g)s(a).
+ \tag{CP7}
+\]</span>
+Associating <span class="math" data-tex="\(s(a)s(b)s(c)\)">\(s(a)s(b)s(c)\)</span> in the two ways gives the multiplication equation. Applying first <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span>, then <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span>, to
+<span class="math" data-tex="\(s(h^{-1}g^{-1}agh)\)">\(s(h^{-1}g^{-1}agh)\)</span> gives the action equation with <span class="math" data-tex="\(g^{-1}ag\)">\(g^{-1}ag\)</span>. Applying <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span> to the product
+<span class="math" data-tex="\(s(g^{-1}ag)s(g^{-1}bg)\)">\(s(g^{-1}ag)s(g^{-1}bg)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \mu(g^{-1}ag,g^{-1}bg)\lambda(ab,g)
+ =\lambda(a,g)\lambda(b,g)\mu(a,b),
+\]">\[
+ \mu(g^{-1}ag,g^{-1}bg)\lambda(ab,g)
+ =\lambda(a,g)\lambda(b,g)\mu(a,b),
+\]</span>
+which is the compatibility equation. Finally <span class="math" data-tex="\(\beta_n=\operatorname{Ad}s(n)\)">\(\beta_n=\operatorname{Ad}s(n)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \beta_n(s(n^{-1}mn))
+ =s(n)s(n^{-1}mn)s(n)^{-1}
+ =\frac{\mu(n,n^{-1}mn)}{\mu(m,n)}s(m).
+\]">\[
+ \beta_n(s(n^{-1}mn))
+ =s(n)s(n^{-1}mn)s(n)^{-1}
+ =\frac{\mu(n,n^{-1}mn)}{\mu(m,n)}s(m).
+\]</span>
+This is the inner-action equation. The normalization identities follow from <span class="math" data-tex="\(s(e)=1\)">\(s(e)=1\)</span>.</p>
+<p>In the Borel setting, formulas (CP4)–(CP6) are Borel operations on the standard Borel set <span class="math" data-tex="\(\mathbb T\times N\)">\(\mathbb T\times N\)</span>; no product <em>group topology</em> is asserted. Conversely, Borel operations, a Borel section and a Borel identification of the kernel make (CP7) jointly Borel. For countable discrete <span class="math" data-tex="\(G,N\)">\(G,N\)</span>, the displayed formulas are continuous in the ordinary product topology of <span class="math" data-tex="\(\mathbb T\times N\)">\(\mathbb T\times N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.CPP.GAUGE"></span><a id="cp-gauge"></a></p>
+<h2 id="2-changes-of-phase-and-restriction-to-another-group">2. Changes of phase and restriction to another group</h2>
+<p>Let <span class="math" data-tex="\(f:N\to\mathbb T\)">\(f:N\to\mathbb T\)</span>, <span class="math" data-tex="\(f(e)=1\)">\(f(e)=1\)</span>. Replacing a section by
+<span class="math" data-tex="\(s^f(a)=f(a)s(a)\)">\(s^f(a)=f(a)s(a)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+  \lambda^f(a,g)&amp;=\lambda(a,g)
+       \frac{f(g^{-1}ag)}{f(a)},\\
+  \mu^f(a,b)&amp;=\mu(a,b)\frac{f(a)f(b)}{f(ab)}.
+ \end{aligned}\tag{CP8}
+\]">\[
+ \begin{aligned}
+  \lambda^f(a,g)&amp;=\lambda(a,g)
+       \frac{f(g^{-1}ag)}{f(a)},\\
+  \mu^f(a,b)&amp;=\mu(a,b)\frac{f(a)f(b)}{f(ab)}.
+ \end{aligned}\tag{CP8}
+\]</span>
+Write the two factors on the right as <span class="math" data-tex="\(\partial_1f,\partial_2f\)">\(\partial_1f,\partial_2f\)</span>, and put
+<span class="math" data-tex="\(\partial f=(\partial_1f,\partial_2f)\)">\(\partial f=(\partial_1f,\partial_2f)\)</span>.</p>
+<p>All their identities can also be checked without using an extension. The two sides of the multiplication equation for <span class="math" data-tex="\(\partial_2f\)">\(\partial_2f\)</span> reduce to
+<span class="math" data-tex="\(f(a)f(b)f(c)/f(abc)\)">\(f(a)f(b)f(c)/f(abc)\)</span>. For the action equation,
+<span class="math math-display" data-tex="\[
+ \frac{f(h^{-1}g^{-1}agh)}{f(a)}
+ =\frac{f(g^{-1}ag)}{f(a)}
+   \frac{f(h^{-1}g^{-1}agh)}{f(g^{-1}ag)}.
+\]">\[
+ \frac{f(h^{-1}g^{-1}agh)}{f(a)}
+ =\frac{f(g^{-1}ag)}{f(a)}
+   \frac{f(h^{-1}g^{-1}agh)}{f(g^{-1}ag)}.
+\]</span>
+For compatibility,
+<span class="math math-display" data-tex="\[
+ \frac{\partial_1f(a,g)\partial_1f(b,g)}{\partial_1f(ab,g)}
+ =\frac{f(g^{-1}ag)f(g^{-1}bg)/f(g^{-1}abg)}
+        {f(a)f(b)/f(ab)}.
+\]">\[
+ \frac{\partial_1f(a,g)\partial_1f(b,g)}{\partial_1f(ab,g)}
+ =\frac{f(g^{-1}ag)f(g^{-1}bg)/f(g^{-1}abg)}
+        {f(a)f(b)/f(ab)}.
+\]</span>
+This is <span class="math" data-tex="\(\partial_2f(g^{-1}ag,g^{-1}bg)/\partial_2f(a,b)\)">\(\partial_2f(g^{-1}ag,g^{-1}bg)/\partial_2f(a,b)\)</span>. For inner action,
+<span class="math math-display" data-tex="\[
+ \frac{\partial_2f(n,n^{-1}mn)}{\partial_2f(m,n)}
+ =\frac{f(n^{-1}mn)}{f(m)}
+ =\partial_1f(m,n).
+\]">\[
+ \frac{\partial_2f(n,n^{-1}mn)}{\partial_2f(m,n)}
+ =\frac{f(n^{-1}mn)}{f(m)}
+ =\partial_1f(m,n).
+\]</span>
+Normalization is immediate from <span class="math" data-tex="\(f(e)=1\)">\(f(e)=1\)</span>. Thus <span class="math" data-tex="\(\partial f\in Z\)">\(\partial f\in Z\)</span>. Also
+<span class="math" data-tex="\(\partial(f_1f_2)=\partial f_1\,\partial f_2\)">\(\partial(f_1f_2)=\partial f_1\,\partial f_2\)</span>, by direct cancellation in (CP8).</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ B(G,N,\mathbb T)=\{\partial f:f(e)=1\},\qquad
+ \Lambda(G,N,\mathbb T)=Z(G,N,\mathbb T)/B(G,N,\mathbb T).
+ \tag{CP9}
+\]">\[
+ B(G,N,\mathbb T)=\{\partial f:f(e)=1\},\qquad
+ \Lambda(G,N,\mathbb T)=Z(G,N,\mathbb T)/B(G,N,\mathbb T).
+ \tag{CP9}
+\]</span>
+For Borel pairs use normalized Borel <span class="math" data-tex="\(f\)">\(f\)</span> and write <span class="math" data-tex="\(B_{\mathrm B},\Lambda_{\mathrm B}\)">\(B_{\mathrm B},\Lambda_{\mathrm B}\)</span>. These are abelian groups. Their definition does not presuppose that a Borel function space is a Polish space.</p>
+<p>The change of phase is an actual isomorphism of compatible extensions:
+<span class="math math-display" data-tex="\[
+ T_f:E_{\mu^f}\longrightarrow E_\mu,\qquad
+ T_f(z,n)=(zf(n),n).
+ \tag{CP10}
+\]">\[
+ T_f:E_{\mu^f}\longrightarrow E_\mu,\qquad
+ T_f(z,n)=(zf(n),n).
+ \tag{CP10}
+\]</span>
+For products, the necessary equality is
+<span class="math" data-tex="\(\mu^f(a,b)f(ab)=f(a)f(b)\mu(a,b)\)">\(\mu^f(a,b)f(ab)=f(a)f(b)\mu(a,b)\)</span>. For the action, with <span class="math" data-tex="\(a=gng^{-1}\)">\(a=gng^{-1}\)</span>, it is
+<span class="math" data-tex="\(\lambda^f(a,g)f(a)=\lambda(a,g)f(n)\)">\(\lambda^f(a,g)f(a)=\lambda(a,g)f(n)\)</span>. These are exactly (CP8). The inverse is <span class="math" data-tex="\(T_{f^{-1}}\)">\(T_{f^{-1}}\)</span>, with the corresponding changed pair. Thus it fixes the kernel and quotient and intertwines every <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span>. It is Borel whenever <span class="math" data-tex="\(f\)">\(f\)</span> is Borel.</p>
+<p>Conversely, an isomorphism of two such extensions that is the identity on the kernel and quotient must have the form (CP10): its value on <span class="math" data-tex="\((1,n)\)">\((1,n)\)</span> determines a unique <span class="math" data-tex="\(f(n)\)">\(f(n)\)</span>, and centrality determines its value on <span class="math" data-tex="\((z,n)\)">\((z,n)\)</span>. Preserving multiplication and the action forces (CP8). In the Borel category that first coordinate is Borel. Therefore (CP9) classifies these compatible extensions, admitting a section in the stated category, up to isomorphisms fixing the kernel, quotient and <span class="math" data-tex="\(G\)">\(G\)</span>-action. A section is a choice of coordinates and need not be preserved by the isomorphism. Changing the section changes the pair by exactly a gauge, and leaves its class.</p>
+<p>There is a useful functorial rule. If <span class="math" data-tex="\(\eta:H\to G\)">\(\eta:H\to G\)</span> is a homomorphism and <span class="math" data-tex="\(K\triangleleft H\)">\(K\triangleleft H\)</span> satisfies <span class="math" data-tex="\(\eta(K)\subseteq N\)">\(\eta(K)\subseteq N\)</span>, set
+<span class="math math-display" data-tex="\[
+ \lambda_\eta(k,h)=\lambda(\eta(k),\eta(h)),\qquad
+ \mu_\eta(k,l)=\mu(\eta(k),\eta(l)).
+ \tag{CP11}
+\]">\[
+ \lambda_\eta(k,h)=\lambda(\eta(k),\eta(h)),\qquad
+ \mu_\eta(k,l)=\mu(\eta(k),\eta(l)).
+ \tag{CP11}
+\]</span>
+Each line of (CP1) pulls back because
+<span class="math" data-tex="\(\eta(h^{-1}kh)=\eta(h)^{-1}\eta(k)\eta(h)\)">\(\eta(h^{-1}kh)=\eta(h)^{-1}\eta(k)\eta(h)\)</span>.
+Furthermore <span class="math" data-tex="\(\eta^*(\partial f)=\partial(f\circ\eta|_K)\)">\(\eta^*(\partial f)=\partial(f\circ\eta|_K)\)</span>, so (CP11) descends to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Identity and composition hold on the functions themselves. In the Borel setting require the indicated homomorphism and restrictions to be Borel.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Compatible lifts and a change of phase" src="assets/characteristic-pairs/compatible-lifts.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1.</em> The two rows are the central extensions (CP2) before and after a gauge. The vertical comparison is the actual isomorphism (CP10), with its kernel and quotient fixed. The right panel displays the two paths in (CP7) and the phase <span class="math" data-tex="\(\lambda(a,g)\)">\(\lambda(a,g)\)</span> between them. The inner-action identity is precisely the condition that an <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span> acts by conjugation with its lift. These are diagrams of proved maps, not additional topological assertions. The intrinsic-phase questions originate in Takesaki, <em>Theory of Operator Algebras III</em>, XVII.3, Exercise 1, p.292; the diagrams and proofs here are original. <a href="assets/characteristic-pairs/render.py">Reproduction source</a>.</p>
+<p><span id="OA-FLOW.CPP.COMPACT"></span><a id="cp-compact"></a></p>
+<h2 id="3-the-compact-quotient-for-countable-groups">3. The compact quotient for countable groups</h2>
+<p><strong>Compact-quotient theorem.</strong> For a countable discrete group <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span>, give pairs the pointwise topology. Then <span class="math" data-tex="\(Z(G,N,\mathbb T)\)">\(Z(G,N,\mathbb T)\)</span>, <span class="math" data-tex="\(B(G,N,\mathbb T)\)">\(B(G,N,\mathbb T)\)</span>, and <span class="math" data-tex="\(\Lambda(G,N,\mathbb T)\)">\(\Lambda(G,N,\mathbb T)\)</span> are compact metrizable abelian groups. In particular the quotient is Hausdorff.</p>
+<p><strong>Proof.</strong> The coordinate set
+<span class="math" data-tex="\(I=(N\times G)\sqcup(N\times N)\)">\(I=(N\times G)\sqcup(N\times N)\)</span> is countable. On <span class="math" data-tex="\(\mathbb T^I\)">\(\mathbb T^I\)</span> choose an enumeration and the translation-invariant metric
+<span class="math math-display" data-tex="\[
+ d(x,y)=\sum_{j\ge1}2^{-j}|x_j-y_j|.
+ \tag{CP12}
+\]">\[
+ d(x,y)=\sum_{j\ge1}2^{-j}|x_j-y_j|.
+ \tag{CP12}
+\]</span>
+For a finite coordinate set use the corresponding finite sum. A finite initial sum and a geometric tail prove that this metric gives precisely coordinatewise convergence. Every sequence has a coordinatewise convergent subsequence by repeated subsequence extraction in the compact circle and the diagonal procedure; the same tail estimate gives convergence in (CP12).</p>
+<p>Here is the passage from this sequential assertion to compactness. If there were no finite <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-net, successive choices outside the previous <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-balls would give a sequence of mutually separated points, with no convergent subsequence. Hence finite nets exist. Every open cover has a positive Lebesgue radius: otherwise choose <span class="math" data-tex="\(x_k\)">\(x_k\)</span> whose ball of radius <span class="math" data-tex="\(1/k\)">\(1/k\)</span> lies in no single member of the cover. A subsequence converges to <span class="math" data-tex="\(x\)">\(x\)</span>, and some member of the cover contains <span class="math" data-tex="\(B(x,\delta)\)">\(B(x,\delta)\)</span>. For large subsequence indices, <span class="math" data-tex="\(d(x_k,x)&lt;\delta/2\)">\(d(x_k,x)&lt;\delta/2\)</span> and <span class="math" data-tex="\(1/k&lt;\delta/2\)">\(1/k&lt;\delta/2\)</span>, contradicting the choice of <span class="math" data-tex="\(x_k\)">\(x_k\)</span>. A finite net with mesh smaller than this Lebesgue radius now supplies a finite subcover. Thus the product is compact. Its group operations are continuous coordinatewise.</p>
+<p>Every equation in (CP1) compares finite products of coordinates, so its solution set is closed. Their intersection <span class="math" data-tex="\(Z\)">\(Z\)</span> is therefore a compact metrizable abelian group. Likewise
+<span class="math math-display" data-tex="\[
+ F_N=\{f\in\mathbb T^N:f(e)=1\}
+\]">\[
+ F_N=\{f\in\mathbb T^N:f(e)=1\}
+\]</span>
+is compact. Each coordinate of <span class="math" data-tex="\(\partial f\)">\(\partial f\)</span> uses only finitely many evaluations, so <span class="math" data-tex="\(\partial:F_N\to Z\)">\(\partial:F_N\to Z\)</span> is continuous. Its image <span class="math" data-tex="\(B\)">\(B\)</span> is compact, hence closed in the Hausdorff group <span class="math" data-tex="\(Z\)">\(Z\)</span>. This proves the essential closedness assertion; the image of an arbitrary continuous map need not be closed without this compactness.</p>
+<p>An explicit quotient metric is
+<span class="math math-display" data-tex="\[
+ D(xB,yB)=\min_{b\in B}d(x,yb).
+ \tag{CP13}
+\]">\[
+ D(xB,yB)=\min_{b\in B}d(x,yb).
+ \tag{CP13}
+\]</span>
+Compactness of <span class="math" data-tex="\(B\)">\(B\)</span> gives the minimum. Translation invariance and inversion invariance of (CP12) show that the value is independent of representatives and symmetric. Its value is zero exactly when <span class="math" data-tex="\(xB=yB\)">\(xB=yB\)</span>, since the minimum is attained. If <span class="math" data-tex="\(b,c\)">\(b,c\)</span> minimize the two successive distances, then
+<span class="math math-display" data-tex="\[
+ d(x,zcb)\le d(x,yb)+d(yb,zcb)
+             =d(x,yb)+d(y,zc),
+\]">\[
+ d(x,zcb)\le d(x,yb)+d(yb,zcb)
+             =d(x,yb)+d(y,zc),
+\]</span>
+so (CP13) satisfies the triangle inequality. The inverse image of a quotient ball is the union of translates of an ordinary open ball, and
+<span class="math math-display" data-tex="\[
+ B_D(xB,\varepsilon)=q(B_d(x,\varepsilon)).
+\]">\[
+ B_D(xB,\varepsilon)=q(B_d(x,\varepsilon)).
+\]</span>
+Also <span class="math" data-tex="\(q\)">\(q\)</span> is open for the quotient topology, since <span class="math" data-tex="\(q^{-1}q(O)=\bigcup_{b\in B}Ob\)">\(q^{-1}q(O)=\bigcup_{b\in B}Ob\)</span>. These facts show that (CP13) gives exactly that topology. The continuous image <span class="math" data-tex="\(Z/B\)">\(Z/B\)</span> of compact <span class="math" data-tex="\(Z\)">\(Z\)</span> is compact and this metric is Hausdorff. Multiplication and inversion descend continuously: <span class="math" data-tex="\(q\times q\)">\(q\times q\)</span> is an open quotient map, and the group operations commute with the quotient maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.CPP.INTRINSIC"></span><a id="cp-intrinsic"></a></p>
+<h2 id="4-a-borel-choice-of-implementer-for-a-separable-factor">4. A Borel choice of implementer for a separable factor</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a factor with separable predual. Write
+<span class="math math-display" data-tex="\[
+ G_M=\operatorname{Aut}(M),\qquad N_M=\operatorname{Inn}(M)
+       =\{\operatorname{Ad}u:u\in\mathcal U(M)\}.
+ \tag{CP14}
+\]">\[
+ G_M=\operatorname{Aut}(M),\qquad N_M=\operatorname{Inn}(M)
+       =\{\operatorname{Ad}u:u\in\mathcal U(M)\}.
+ \tag{CP14}
+\]</span>
+Use the <span class="math" data-tex="\(u\)">\(u\)</span>-topology on <span class="math" data-tex="\(G_M\)">\(G_M\)</span>:
+<span class="math" data-tex="\(\alpha_i\to\alpha\)">\(\alpha_i\to\alpha\)</span> means
+<span class="math" data-tex="\(\|\varphi\circ\alpha_i-\varphi\circ\alpha\|\to0\)">\(\|\varphi\circ\alpha_i-\varphi\circ\alpha\|\to0\)</span> for all <span class="math" data-tex="\(\varphi\in M_*\)">\(\varphi\in M_*\)</span>.
+Use the strong topology on <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span>.</p>
+<p>We use two earlier complete results at their precise scopes. The <a href="../OA-MOD/OA-MOD-CL.html#the-precise-topology-of-a-standard-implementation">standard implementation theorem</a> identifies the <span class="math" data-tex="\(u\)">\(u\)</span>-topology with strong convergence of canonical standard unitaries and represents positive normal functionals by cone vectors. The <a href="OA-FLOW-BRL.html#real-intrinsic">Polish model proof</a>, specifically its unitary and automorphism arguments, proves Polishness at separable predual. The <a href="../NCG-FOLIATIONS/companions/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-06">Borel injection theorem</a>, Theorem 4.3(5), says that an injective Borel map from a standard Borel space into a Polish space has Borel image and Borel inverse onto that image. We apply it to an explicit phase slice below.</p>
+<p>Here are the topology checks needed for that application. In standard form the Hilbert space is separable: a countable norm-dense family of positive normal functionals has dense cone representatives by
+<span class="math" data-tex="\(\|\xi_\varphi-\xi_\psi\|^2\le\|\varphi-\psi\|\)">\(\|\xi_\varphi-\xi_\psi\|^2\le\|\varphi-\psi\|\)</span>, and the cone has dense complex span. On unitaries of a separable Hilbert space, if <span class="math" data-tex="\((\xi_j)\)">\((\xi_j)\)</span> is dense in its unit ball,
+<span class="math math-display" data-tex="\[
+ d_U(u,v)=\sum_{j\ge1}2^{-j}
+ \bigl(\|(u-v)\xi_j\|+\|(u^*-v^*)\xi_j\|\bigr)
+ \tag{CP15}
+\]">\[
+ d_U(u,v)=\sum_{j\ge1}2^{-j}
+ \bigl(\|(u-v)\xi_j\|+\|(u^*-v^*)\xi_j\|\bigr)
+ \tag{CP15}
+\]</span>
+is complete and compatible. Indeed a Cauchy sequence and its adjoints have strong limits <span class="math" data-tex="\(T,S\)">\(T,S\)</span>; bounded-product convergence gives <span class="math" data-tex="\(TS=ST=1\)">\(TS=ST=1\)</span>, and scalar products give <span class="math" data-tex="\(S=T^*\)">\(S=T^*\)</span>. Strong closedness of <span class="math" data-tex="\(M\)">\(M\)</span> makes <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span> closed in this group. The countable evaluation embedding makes it second countable and hence separable.</p>
+<p>The standard implementers of <span class="math" data-tex="\(G_M\)">\(G_M\)</span> form the closed subgroup of unitaries normalizing <span class="math" data-tex="\(M\)">\(M\)</span>, commuting with <span class="math" data-tex="\(J\)">\(J\)</span>, and preserving the closed cone in both directions. Passing to a limit in each condition, for both a unitary and its adjoint, proves closedness. The standard implementation theorem therefore makes <span class="math" data-tex="\(G_M\)">\(G_M\)</span> Polish. It also makes evaluation
+<span class="math math-display" data-tex="\[
+ (\gamma,u)\longmapsto\gamma(u)
+ \tag{CP16}
+\]">\[
+ (\gamma,u)\longmapsto\gamma(u)
+ \tag{CP16}
+\]</span>
+jointly continuous on <span class="math" data-tex="\(G_M\times\mathcal U(M)\)">\(G_M\times\mathcal U(M)\)</span>: it is
+<span class="math" data-tex="\(U(\gamma)uU(\gamma)^*\)">\(U(\gamma)uU(\gamma)^*\)</span>, a product of strongly convergent bounded operators.</p>
+<p>The adjoint map <span class="math" data-tex="\(\operatorname{Ad}:\mathcal U(M)\to G_M\)">\(\operatorname{Ad}:\mathcal U(M)\to G_M\)</span> is continuous. For a positive normal functional represented by <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the functional
+<span class="math" data-tex="\(\varphi\circ\operatorname{Ad}u\)">\(\varphi\circ\operatorname{Ad}u\)</span> is represented by <span class="math" data-tex="\(u^*\xi\)">\(u^*\xi\)</span>. The estimate
+<span class="math" data-tex="\(\|\omega_\eta-\omega_\zeta\|\le(\|\eta\|+\|\zeta\|)\|\eta-\zeta\|\)">\(\|\omega_\eta-\omega_\zeta\|\le(\|\eta\|+\|\zeta\|)\|\eta-\zeta\|\)</span>
+proves norm convergence, and decomposing a normal functional into a linear combination of positive ones gives the stated topology. Its kernel is precisely <span class="math" data-tex="\(\mathbb T1\)">\(\mathbb T1\)</span>: a unitary implementing the identity commutes with every element of a factor.</p>
+<p><strong>Borel-section theorem.</strong> The subgroup <span class="math" data-tex="\(N_M\)">\(N_M\)</span> is Borel in <span class="math" data-tex="\(G_M\)">\(G_M\)</span>, and there exists a normalized Borel map
+<span class="math math-display" data-tex="\[
+ u:N_M\to\mathcal U(M),\qquad
+ \operatorname{Ad}u(a)=a,\qquad u(e)=1.
+ \tag{CP17}
+\]">\[
+ u:N_M\to\mathcal U(M),\qquad
+ \operatorname{Ad}u(a)=a,\qquad u(e)=1.
+ \tag{CP17}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a countable sequence <span class="math" data-tex="\((\varphi_j)_{j\ge0}\)">\((\varphi_j)_{j\ge0}\)</span> in <span class="math" data-tex="\(M_*\)">\(M_*\)</span> separating the points of <span class="math" data-tex="\(M\)">\(M\)</span>, with <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> a normal state. Such a sequence is obtained by adding a normal state to a norm-dense sequence in the unit ball of the separable predual; the predual separates <span class="math" data-tex="\(M\)">\(M\)</span>. A normal state exists by restricting a nonzero vector functional in a faithful normal representation and normalizing it.</p>
+<p>Every unitary <span class="math" data-tex="\(v\)">\(v\)</span> has a least <span class="math" data-tex="\(j(v)\)">\(j(v)\)</span> with <span class="math" data-tex="\(\varphi_{j(v)}(v)\ne0\)">\(\varphi_{j(v)}(v)\ne0\)</span>. Normal functionals are continuous on bounded strong-star sets: this follows for positive ones from their cone-vector representation, and for all of them by linear decomposition. Thus the sets specifying this least index are Borel. Define
+<span class="math math-display" data-tex="\[
+ r(v)=
+ \frac{\overline{\varphi_{j(v)}(v)}}{|\varphi_{j(v)}(v)|}\,v.
+ \tag{CP18}
+\]">\[
+ r(v)=
+ \frac{\overline{\varphi_{j(v)}(v)}}{|\varphi_{j(v)}(v)|}\,v.
+ \tag{CP18}
+\]</span>
+This is Borel. For <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>, <span class="math" data-tex="\(j(zv)=j(v)\)">\(j(zv)=j(v)\)</span> and <span class="math" data-tex="\(r(zv)=r(v)\)">\(r(zv)=r(v)\)</span>. Its range is the Borel set
+<span class="math math-display" data-tex="\[
+ S=\bigcup_{j\ge0}
+ \{v\in\mathcal U(M):
+   \varphi_i(v)=0\ (i&lt;j),\ \varphi_j(v)\in(0,\infty)\}.
+ \tag{CP19}
+\]">\[
+ S=\bigcup_{j\ge0}
+ \{v\in\mathcal U(M):
+   \varphi_i(v)=0\ (i&lt;j),\ \varphi_j(v)\in(0,\infty)\}.
+ \tag{CP19}
+\]</span>
+Every scalar orbit meets <span class="math" data-tex="\(S\)">\(S\)</span>, and meets it once: positivity of the first nonzero functional fixes the phase. The restriction
+<span class="math" data-tex="\(\operatorname{Ad}|_S:S\to G_M\)">\(\operatorname{Ad}|_S:S\to G_M\)</span> is Borel and injective, with image <span class="math" data-tex="\(N_M\)">\(N_M\)</span>.
+As a Borel subset of a Polish space, <span class="math" data-tex="\(S\)">\(S\)</span> is standard Borel; the Borel injection theorem gives that image Borel and its inverse Borel. That inverse is (CP17). The orbit of <span class="math" data-tex="\(1\)">\(1\)</span> meets <span class="math" data-tex="\(S\)">\(S\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span>, since <span class="math" data-tex="\(\varphi_0(1)=1\)">\(\varphi_0(1)=1\)</span>, so the section is normalized. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Borel structure on <span class="math" data-tex="\(N_M\)">\(N_M\)</span> here is the one inherited from <span class="math" data-tex="\(G_M\)">\(G_M\)</span>. We do not require <span class="math" data-tex="\(N_M\)">\(N_M\)</span> to be closed or assert that this inherited topology is Polish. This distinction is why a continuous-section assumption does not enter the argument.</p>
+<p>Apply (CP7) to <span class="math" data-tex="\(E=\mathcal U(M)\)">\(E=\mathcal U(M)\)</span>, with quotient <span class="math" data-tex="\(\operatorname{Ad}\)">\(\operatorname{Ad}\)</span>, and with <span class="math" data-tex="\(G_M\)">\(G_M\)</span> acting by evaluation (CP16). Inner automorphisms act by conjugation with their implementers, so (CP3) holds. Thus there are unique scalars
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ u(a)u(b)&amp;=\mu_u(a,b)u(ab),\\
+ \gamma(u(\gamma^{-1}a\gamma))&amp;=\lambda_u(a,\gamma)u(a).
+ \end{aligned}\tag{CP20}
+\]">\[
+ \begin{aligned}
+ u(a)u(b)&amp;=\mu_u(a,b)u(ab),\\
+ \gamma(u(\gamma^{-1}a\gamma))&amp;=\lambda_u(a,\gamma)u(a).
+ \end{aligned}\tag{CP20}
+\]</span>
+Their uniqueness uses factoriality. They are jointly Borel: each corresponding product
+<span class="math" data-tex="\(u(a)u(b)u(ab)^*\)">\(u(a)u(b)u(ab)^*\)</span>, or
+<span class="math" data-tex="\(\gamma(u(\gamma^{-1}a\gamma))u(a)^*\)">\(\gamma(u(\gamma^{-1}a\gamma))u(a)^*\)</span>, is a Borel scalar unitary, and applying the fixed normal state <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> extracts its scalar. Normality of <span class="math" data-tex="\(N_M\)">\(N_M\)</span> follows from
+<span class="math" data-tex="\(\gamma\operatorname{Ad}u\gamma^{-1}=\operatorname{Ad}\gamma(u)\)">\(\gamma\operatorname{Ad}u\gamma^{-1}=\operatorname{Ad}\gamma(u)\)</span>; all restricted group maps are Borel.</p>
+<p>The compatible-lift theorem proves every identity in (CP1) for (CP20). Two normalized Borel sections <span class="math" data-tex="\(u,u'\)">\(u,u'\)</span> satisfy <span class="math" data-tex="\(u'(a)=f(a)u(a)\)">\(u'(a)=f(a)u(a)\)</span>, where
+<span class="math math-display" data-tex="\[
+ f(a)=\varphi_0(u'(a)u(a)^*)\in\mathbb T
+\]">\[
+ f(a)=\varphi_0(u'(a)u(a)^*)\in\mathbb T
+\]</span>
+is Borel and <span class="math" data-tex="\(f(e)=1\)">\(f(e)=1\)</span>. Formula (CP8) therefore proves that
+<span class="math math-display" data-tex="\[
+ \mathfrak x_M=[\lambda_u,\mu_u]
+       \in\Lambda_{\mathrm B}(G_M,N_M,\mathbb T)
+ \tag{CP21}
+\]">\[
+ \mathfrak x_M=[\lambda_u,\mu_u]
+       \in\Lambda_{\mathrm B}(G_M,N_M,\mathbb T)
+ \tag{CP21}
+\]</span>
+is independent of the section.</p>
+<p>It is also intrinsic under specified normal isomorphisms. For
+<span class="math" data-tex="\(\Phi:M\to P\)">\(\Phi:M\to P\)</span>, put <span class="math" data-tex="\(F(\gamma)=\Phi\gamma\Phi^{-1}\)">\(F(\gamma)=\Phi\gamma\Phi^{-1}\)</span> and choose
+<span class="math math-display" data-tex="\[
+ u_P(F(a))=\Phi(u_M(a)).
+ \tag{CP22}
+\]">\[
+ u_P(F(a))=\Phi(u_M(a)).
+ \tag{CP22}
+\]</span>
+Composition with <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span> transports predual norms isometrically, so <span class="math" data-tex="\(F\)">\(F\)</span> is a homeomorphism of automorphism groups. A normal isomorphism is strong-star continuous on bounded sets, since its seminorms are the seminorms for pulled-back normal positive functionals. Thus (CP22) is a normalized Borel section. Direct substitution in (CP20) leaves the scalar factors unchanged. Other sections change them by (CP8). This proves natural transport of (CP21), with exact identity and composition, for all factors with separable predual. No hyperfiniteness or type assumption is used.</p>
+<p><span id="OA-FLOW.CPP.ACTIONS"></span><a id="cp-actions"></a></p>
+<h2 id="5-actions-and-an-exact-cocycle-perturbation">5. Actions and an exact cocycle perturbation</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be countable discrete and <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> an action on such a factor. Its inner kernel
+<span class="math math-display" data-tex="\[
+ N(\alpha)=\{n\in G:\alpha_n\text{ is inner}\}
+ \tag{CP23}
+\]">\[
+ N(\alpha)=\{n\in G:\alpha_n\text{ is inner}\}
+ \tag{CP23}
+\]</span>
+is normal: products and inverses of inner automorphisms are inner, and conjugating an inner automorphism remains inner. Choose <span class="math" data-tex="\(u_n\in\mathcal U(M)\)">\(u_n\in\mathcal U(M)\)</span> implementing <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span>, <span class="math" data-tex="\(n\in N(\alpha)\)">\(n\in N(\alpha)\)</span>, with <span class="math" data-tex="\(u_e=1\)">\(u_e=1\)</span>. Define
+<span class="math math-display" data-tex="\[
+ u_nu_m=\mu_\alpha(n,m)u_{nm},\qquad
+ \alpha_g(u_{g^{-1}ng})=\lambda_\alpha(n,g)u_n.
+ \tag{CP24}
+\]">\[
+ u_nu_m=\mu_\alpha(n,m)u_{nm},\qquad
+ \alpha_g(u_{g^{-1}ng})=\lambda_\alpha(n,g)u_n.
+ \tag{CP24}
+\]</span>
+All implementers of a fixed automorphism differ by a scalar, so these equations define phases. The action on <span class="math" data-tex="\(M\)">\(M\)</span> gives (CP1) exactly as in (CP7). Alternatively choose <span class="math" data-tex="\(u_n=u(\alpha_n)\)">\(u_n=u(\alpha_n)\)</span> in (CP17); then (CP24) is exactly the pullback (CP11). Hence
+<span class="math math-display" data-tex="\[
+ \chi(\alpha)=[\lambda_\alpha,\mu_\alpha]
+   =\alpha^*(\mathfrak x_M)
+   \in\Lambda(G,N(\alpha),\mathbb T).
+ \tag{CP25}
+\]">\[
+ \chi(\alpha)=[\lambda_\alpha,\mu_\alpha]
+   =\alpha^*(\mathfrak x_M)
+   \in\Lambda(G,N(\alpha),\mathbb T).
+ \tag{CP25}
+\]</span>
+Any other choices change the pair by the normalized function relating the implementers. Countability ensures that all choices are Borel.</p>
+<p><strong>Cocycle-conjugacy theorem.</strong> Suppose <span class="math" data-tex="\(\Phi:M\to P\)">\(\Phi:M\to P\)</span> is a normal isomorphism, set
+<span class="math" data-tex="\(\gamma_g=\Phi\alpha_g\Phi^{-1}\)">\(\gamma_g=\Phi\alpha_g\Phi^{-1}\)</span>, and let unitaries <span class="math" data-tex="\(w_g\in P\)">\(w_g\in P\)</span> satisfy
+<span class="math math-display" data-tex="\[
+ w_e=1,\qquad w_{gh}=w_g\gamma_g(w_h).
+ \tag{CP26}
+\]">\[
+ w_e=1,\qquad w_{gh}=w_g\gamma_g(w_h).
+ \tag{CP26}
+\]</span>
+Then <span class="math" data-tex="\(\beta_g=\operatorname{Ad}w_g\circ\gamma_g\)">\(\beta_g=\operatorname{Ad}w_g\circ\gamma_g\)</span> is an action,
+<span class="math" data-tex="\(N(\beta)=N(\alpha)\)">\(N(\beta)=N(\alpha)\)</span>, and <span class="math" data-tex="\(\chi(\beta)=\chi(\alpha)\)">\(\chi(\beta)=\chi(\alpha)\)</span> under this common group identification.</p>
+<p><strong>Proof.</strong> Equation (CP26) gives
+<span class="math" data-tex="\(\beta_g\beta_h=\operatorname{Ad}(w_g\gamma_g(w_h))\gamma_{gh}=\beta_{gh}\)">\(\beta_g\beta_h=\operatorname{Ad}(w_g\gamma_g(w_h))\gamma_{gh}=\beta_{gh}\)</span>.
+Conjugation by <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and multiplication by an inner automorphism preserve whether an automorphism is inner, giving equality of the kernels.</p>
+<p>Replace <span class="math" data-tex="\(M,\alpha,u_n\)">\(M,\alpha,u_n\)</span> by <span class="math" data-tex="\(P,\gamma,\Phi(u_n)\)">\(P,\gamma,\Phi(u_n)\)</span>; (CP22) preserves the pair. It is therefore enough to treat <span class="math" data-tex="\(\gamma=\alpha\)">\(\gamma=\alpha\)</span> on one algebra. The actual implementers for <span class="math" data-tex="\(\beta_n\)">\(\beta_n\)</span> are
+<span class="math math-display" data-tex="\[
+ v_n=w_nu_n.
+ \tag{CP27}
+\]">\[
+ v_n=w_nu_n.
+ \tag{CP27}
+\]</span>
+Since <span class="math" data-tex="\(u_nxu_n^*=\alpha_n(x)\)">\(u_nxu_n^*=\alpha_n(x)\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ v_nv_m
+ &amp;=w_n\alpha_n(w_m)u_nu_m\\
+ &amp;=w_{nm}\mu_\alpha(n,m)u_{nm}
+  =\mu_\alpha(n,m)v_{nm}.
+ \end{aligned}\tag{CP28}
+\]">\[
+ \begin{aligned}
+ v_nv_m
+ &amp;=w_n\alpha_n(w_m)u_nu_m\\
+ &amp;=w_{nm}\mu_\alpha(n,m)u_{nm}
+  =\mu_\alpha(n,m)v_{nm}.
+ \end{aligned}\tag{CP28}
+\]</span>
+Thus the multiplication factor is unchanged, not merely cohomologous.</p>
+<p>Put <span class="math" data-tex="\(h=g^{-1}ng\)">\(h=g^{-1}ng\)</span>. The two equal expressions for <span class="math" data-tex="\(w_{gh}=w_{ng}\)">\(w_{gh}=w_{ng}\)</span> give
+<span class="math math-display" data-tex="\[
+ w_g\alpha_g(w_h)
+  =w_n\alpha_n(w_g)=w_nu_nw_gu_n^*.
+\]">\[
+ w_g\alpha_g(w_h)
+  =w_n\alpha_n(w_g)=w_nu_nw_gu_n^*.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \beta_g(v_h)
+ &amp;=w_g\alpha_g(w_h)\alpha_g(u_h)w_g^*\\
+ &amp;=w_nu_nw_gu_n^*
+       \lambda_\alpha(n,g)u_nw_g^*
+  =\lambda_\alpha(n,g)v_n .
+ \end{aligned}\tag{CP29}
+\]">\[
+ \begin{aligned}
+ \beta_g(v_h)
+ &amp;=w_g\alpha_g(w_h)\alpha_g(u_h)w_g^*\\
+ &amp;=w_nu_nw_gu_n^*
+       \lambda_\alpha(n,g)u_nw_g^*
+  =\lambda_\alpha(n,g)v_n .
+ \end{aligned}\tag{CP29}
+\]</span>
+Both factors are identical for the transported choice (CP27). Arbitrary normalized implementers differ from this choice by (CP8), proving equality of classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.CPP.CYCLIC"></span><a id="cp-cyclic"></a></p>
+<h2 id="6-every-cyclic-class-in-one-coordinate">6. Every cyclic class in one coordinate</h2>
+<p>Use additive notation for <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. For <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span> let
+<span class="math" data-tex="\(\mathbb T[p]=\{\zeta\in\mathbb T:\zeta^p=1\}\)">\(\mathbb T[p]=\{\zeta\in\mathbb T:\zeta^p=1\}\)</span>.</p>
+<p><strong>Cyclic calculation.</strong> Evaluation at one coordinate gives a topological group isomorphism
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Lambda(\mathbb Z,p\mathbb Z,\mathbb T)
+   &amp;\longrightarrow\mathbb T[p],
+ &amp;[\lambda,\mu]&amp;\longmapsto\lambda(p,1)
+ &amp;&amp;(p\ge1).
+ \end{aligned}\tag{CP30}
+\]">\[
+ \begin{aligned}
+ \Lambda(\mathbb Z,p\mathbb Z,\mathbb T)
+   &amp;\longrightarrow\mathbb T[p],
+ &amp;[\lambda,\mu]&amp;\longmapsto\lambda(p,1)
+ &amp;&amp;(p\ge1).
+ \end{aligned}\tag{CP30}
+\]</span>
+Its inverse is the class of
+<span class="math math-display" data-tex="\[
+ \mu_\zeta(kp,lp)=1,\qquad
+ \lambda_\zeta(kp,r)=\zeta^{kr}
+ \quad(k,l,r\in\mathbb Z).
+ \tag{CP31}
+\]">\[
+ \mu_\zeta(kp,lp)=1,\qquad
+ \lambda_\zeta(kp,r)=\zeta^{kr}
+ \quad(k,l,r\in\mathbb Z).
+ \tag{CP31}
+\]</span>
+Under <span class="math" data-tex="\(j+p\mathbb Z\mapsto e^{2\pi ij/p}\)">\(j+p\mathbb Z\mapsto e^{2\pi ij/p}\)</span>, the target is
+<span class="math" data-tex="\(\mathbb Z/p\mathbb Z\)">\(\mathbb Z/p\mathbb Z\)</span>. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, the normal subgroup is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and the characteristic group is the one-element group. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, (CP30) is also the one-element group.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>. Every normalized multiplier on <span class="math" data-tex="\(p\mathbb Z\)">\(p\mathbb Z\)</span> can be removed by an explicit gauge. In the group <span class="math" data-tex="\(E_\mu\)">\(E_\mu\)</span> of (CP4), let <span class="math" data-tex="\(t=(1,p)\)">\(t=(1,p)\)</span> and write, for all integers <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+ t^k=(a_k,kp),\qquad a_0=1.
+\]">\[
+ t^k=(a_k,kp),\qquad a_0=1.
+\]</span>
+The inverse (CP5) defines negative powers as well. The group power law gives
+<span class="math math-display" data-tex="\[
+ a_{k+l}=a_ka_l\mu(kp,lp).
+\]">\[
+ a_{k+l}=a_ka_l\mu(kp,lp).
+\]</span>
+With <span class="math" data-tex="\(f(kp)=a_k\)">\(f(kp)=a_k\)</span>, (CP8) therefore gives <span class="math" data-tex="\(\mu^f=1\)">\(\mu^f=1\)</span>. This proves the needed trivialization on the entire infinite cyclic subgroup, including negative integers.</p>
+<p>Since <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is abelian, <span class="math" data-tex="\(\partial_1f=1\)">\(\partial_1f=1\)</span> for <em>every</em> gauge. Thus this trivialization does not change <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The action equation makes <span class="math" data-tex="\(\lambda(n,\cdot)\)">\(\lambda(n,\cdot)\)</span> a character of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Compatibility with <span class="math" data-tex="\(\mu^f=1\)">\(\mu^f=1\)</span> makes <span class="math" data-tex="\(\lambda(\cdot,r)\)">\(\lambda(\cdot,r)\)</span> a character of <span class="math" data-tex="\(p\mathbb Z\)">\(p\mathbb Z\)</span>. Integer powers, including inverses, yield
+<span class="math math-display" data-tex="\[
+ \lambda(kp,r)=\lambda(p,1)^{kr}.
+\]">\[
+ \lambda(kp,r)=\lambda(p,1)^{kr}.
+\]</span>
+The inner-action equation, now with trivial multiplier, gives
+<span class="math" data-tex="\(\lambda(p,p)=1\)">\(\lambda(p,p)=1\)</span>, so <span class="math" data-tex="\(\zeta=\lambda(p,1)\)">\(\zeta=\lambda(p,1)\)</span> satisfies <span class="math" data-tex="\(\zeta^p=1\)">\(\zeta^p=1\)</span>.
+Conversely (CP31) satisfies multiplication and normalization, both character equations, and compatibility. Its inner-action equation is
+<span class="math" data-tex="\(\lambda(kp,lp)=\zeta^{klp}=1\)">\(\lambda(kp,lp)=\zeta^{klp}=1\)</span>, as required. This proves surjectivity and shows that a fixed <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> gives a unique class. Different values cannot be gauge equivalent because <span class="math" data-tex="\(\partial_1f=1\)">\(\partial_1f=1\)</span>.</p>
+<p>Evaluation is a continuous homomorphism on <span class="math" data-tex="\(Z\)">\(Z\)</span>, constant on gauge classes, so it descends continuously through the quotient. The compact-quotient theorem makes its domain compact; <span class="math" data-tex="\(\mathbb T[p]\)">\(\mathbb T[p]\)</span> is Hausdorff. A continuous bijection from a compact space to a Hausdorff space has continuous inverse: images of closed sets are compact and hence closed. This proves the topological assertion.</p>
+<p>For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, normalization forces
+<span class="math" data-tex="\(\lambda(0,r)=1\)">\(\lambda(0,r)=1\)</span> and <span class="math" data-tex="\(\mu(0,0)=1\)">\(\mu(0,0)=1\)</span>; there is only one pair and one class. There is no coordinate <span class="math" data-tex="\(\lambda(p,1)\)">\(\lambda(p,1)\)</span> carrying a free phase in this case. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, <span class="math" data-tex="\(\mathbb T[1]=\{1\}\)">\(\mathbb T[1]=\{1\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inner-action line of (CP1) is essential to this calculation. If it is omitted, (CP31) satisfies every remaining line for <strong>every</strong> <span class="math" data-tex="\(\zeta\in\mathbb T\)">\(\zeta\in\mathbb T\)</span>. The same trivialization argument then gives a circle of classes for every <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, because gauges still leave <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> unchanged. For example
+<span class="math" data-tex="\(\zeta=e^{2\pi i/(p+1)}\)">\(\zeta=e^{2\pi i/(p+1)}\)</span> has
+<span class="math" data-tex="\(\lambda(p,p)=\zeta^p\ne1\)">\(\lambda(p,p)=\zeta^p\ne1\)</span>. This explicitly separates compatible inner conjugation from the weaker action-and-multiplier equations.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="One root of unity determines the cyclic pair" src="assets/characteristic-pairs/cyclic-phase.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 2.</em> The exact model is <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, <span class="math" data-tex="\(\zeta=e^{4\pi i/5}\)">\(\zeta=e^{4\pi i/5}\)</span>. The left panel marks the orbit <span class="math" data-tex="\(\zeta^r\)">\(\zeta^r\)</span>, <span class="math" data-tex="\(r=0,\ldots,5\)">\(r=0,\ldots,5\)</span>; step 5 returns to 1. The right panel records the integer residues <span class="math" data-tex="\(2kr\bmod5\)">\(2kr\bmod5\)</span>, so its cell is exactly <span class="math" data-tex="\(\lambda(5k,r)=\exp(2\pi i(2kr\bmod5)/5)\)">\(\lambda(5k,r)=\exp(2\pi i(2kr\bmod5)/5)\)</span>. The column <span class="math" data-tex="\(r=5\)">\(r=5\)</span> is all zero residues: it displays the inner condition <span class="math" data-tex="\(\lambda(5k,5)=1\)">\(\lambda(5k,5)=1\)</span>. Color indicates exact residue classes, not an approximate test of the theorem. The cyclic questions are from Takesaki, <em>Theory of Operator Algebras III</em>, XVII.3, Exercises 2(c) and 3, p.293; the displayed computation and diagram are original. <a href="assets/characteristic-pairs/render.py">Reproduction source and arithmetic checks</a>.</p>
+<p><span id="OA-FLOW.CPP.PERIOD"></span><a id="cp-period"></a></p>
+<h2 id="7-the-automorphism-obstruction-is-the-characteristic-coordinate">7. The automorphism obstruction is the characteristic coordinate</h2>
+<p>Let <span class="math" data-tex="\(\theta\in\operatorname{Aut}(M)\)">\(\theta\in\operatorname{Aut}(M)\)</span>. Its action of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is <span class="math" data-tex="\(r\mapsto\theta^r\)">\(r\mapsto\theta^r\)</span>. Define the <strong>outer period</strong>
+<span class="math math-display" data-tex="\[
+ p_0(\theta)=
+ \begin{cases}
+ \min\{p\ge1:\theta^p\text{ is inner}\},&amp;
+       \text{if this set is nonempty},\\
+ 0,&amp;\text{otherwise}.
+ \end{cases}\tag{CP32}
+\]">\[
+ p_0(\theta)=
+ \begin{cases}
+ \min\{p\ge1:\theta^p\text{ is inner}\},&amp;
+       \text{if this set is nonempty},\\
+ 0,&amp;\text{otherwise}.
+ \end{cases}\tag{CP32}
+\]</span>
+The subgroup <span class="math" data-tex="\(N(\theta)=\{r:\theta^r\text{ is inner}\}\)">\(N(\theta)=\{r:\theta^r\text{ is inner}\}\)</span> is exactly
+<span class="math" data-tex="\(p_0(\theta)\mathbb Z\)">\(p_0(\theta)\mathbb Z\)</span>. Indeed, if it contains a positive integer, division with remainder by its least positive member shows that every member is a multiple of that member. Otherwise a nonzero member would give a positive one by changing its sign, so the subgroup is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(p=p_0(\theta)\ge1\)">\(p=p_0(\theta)\ge1\)</span>, and choose <span class="math" data-tex="\(v\in\mathcal U(M)\)">\(v\in\mathcal U(M)\)</span> with
+<span class="math" data-tex="\(\theta^p=\operatorname{Ad}v\)">\(\theta^p=\operatorname{Ad}v\)</span>. Commutation of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with its powers gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Ad}\theta(v)
+  =\theta\operatorname{Ad}v\,\theta^{-1}
+  =\operatorname{Ad}v.
+\]">\[
+ \operatorname{Ad}\theta(v)
+  =\theta\operatorname{Ad}v\,\theta^{-1}
+  =\operatorname{Ad}v.
+\]</span>
+Factoriality therefore gives a unique <span class="math" data-tex="\(\omega\in\mathbb T\)">\(\omega\in\mathbb T\)</span> with
+<span class="math math-display" data-tex="\[
+ \theta(v)=\omega v,\qquad
+ v=\theta^p(v)=\omega^p v.
+ \tag{CP33}
+\]">\[
+ \theta(v)=\omega v,\qquad
+ v=\theta^p(v)=\omega^p v.
+ \tag{CP33}
+\]</span>
+Thus <span class="math" data-tex="\(\omega^p=1\)">\(\omega^p=1\)</span>. Replacing <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(zv\)">\(zv\)</span>, <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>, leaves <span class="math" data-tex="\(\omega\)">\(\omega\)</span> unchanged. This scalar is the obstruction <span class="math" data-tex="\(\operatorname{Ob}(\theta)\)">\(\operatorname{Ob}(\theta)\)</span> for positive outer period.</p>
+<p>Choose the implementers <span class="math" data-tex="\(u_{kp}=v^k\)">\(u_{kp}=v^k\)</span> for every integer <span class="math" data-tex="\(k\)">\(k\)</span>. They implement
+<span class="math" data-tex="\(\theta^{kp}\)">\(\theta^{kp}\)</span>, and their multiplication factor is 1. Iterating (CP33), for positive and negative powers alike, gives
+<span class="math math-display" data-tex="\[
+ \theta^r(v^k)=\omega^{rk}v^k.
+\]">\[
+ \theta^r(v^k)=\omega^{rk}v^k.
+\]</span>
+Hence their pair is exactly (CP31) with <span class="math" data-tex="\(\zeta=\omega\)">\(\zeta=\omega\)</span>, and
+<span class="math math-display" data-tex="\[
+ \boxed{\quad
+ \chi(\theta)=\theta^*(\mathfrak x_M)
+  \ \longleftrightarrow\ 
+  \lambda(p,1)=\operatorname{Ob}(\theta)=\omega .
+ \quad}\tag{CP34}
+\]">\[
+ \boxed{\quad
+ \chi(\theta)=\theta^*(\mathfrak x_M)
+  \ \longleftrightarrow\ 
+  \lambda(p,1)=\operatorname{Ob}(\theta)=\omega .
+ \quad}\tag{CP34}
+\]</span>
+In particular the sign is fixed by the actual equation <span class="math" data-tex="\(\theta(v)=\omega v\)">\(\theta(v)=\omega v\)</span>.</p>
+<p>For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, <span class="math" data-tex="\(\theta=\operatorname{Ad}v\)">\(\theta=\operatorname{Ad}v\)</span> fixes <span class="math" data-tex="\(v\)">\(v\)</span>, so <span class="math" data-tex="\(\omega=1\)">\(\omega=1\)</span> and the characteristic class is trivial. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, no positive inner power supplies a unitary <span class="math" data-tex="\(v\)">\(v\)</span>; <span class="math" data-tex="\(N(\theta)=\{0\}\)">\(N(\theta)=\{0\}\)</span> and <span class="math" data-tex="\(\chi(\theta)\)">\(\chi(\theta)\)</span> is the unique class computed above. If a scalar obstruction is desired for all automorphisms, one may set <span class="math" data-tex="\(\operatorname{Ob}(\theta)=1\)">\(\operatorname{Ob}(\theta)=1\)</span> at <span class="math" data-tex="\(p=0\)">\(p=0\)</span> by convention. It then records no additional information. The formula <span class="math" data-tex="\(\mathbb Z/p\mathbb Z\)">\(\mathbb Z/p\mathbb Z\)</span> in (CP30) is reserved for <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>.</p>
+<p>The equality also gives an explicit outer-conjugacy check. Let <span class="math" data-tex="\(\Phi:M\to P\)">\(\Phi:M\to P\)</span>, set <span class="math" data-tex="\(\alpha=\Phi\theta\Phi^{-1}\)">\(\alpha=\Phi\theta\Phi^{-1}\)</span>, and let
+<span class="math" data-tex="\(\theta'=\operatorname{Ad}w\circ\alpha\)">\(\theta'=\operatorname{Ad}w\circ\alpha\)</span>. In the semidirect product
+<span class="math" data-tex="\(\mathcal U(P)\rtimes_\alpha\mathbb Z\)">\(\mathcal U(P)\rtimes_\alpha\mathbb Z\)</span>, write
+<span class="math math-display" data-tex="\[
+ (w,1)^r=(w_r,r).
+\]">\[
+ (w,1)^r=(w_r,r).
+\]</span>
+The multiplication <span class="math" data-tex="\((a,r)(b,s)=(a\alpha^r(b),r+s)\)">\((a,r)(b,s)=(a\alpha^r(b),r+s)\)</span> gives, for all integers,
+<span class="math math-display" data-tex="\[
+ w_{r+s}=w_r\alpha^r(w_s),\quad
+ w_r=w\alpha(w)\cdots\alpha^{r-1}(w)\ (r&gt;0),\quad
+ w_{-r}=\alpha^{-r}(w_r^*).
+ \tag{CP35}
+\]">\[
+ w_{r+s}=w_r\alpha^r(w_s),\quad
+ w_r=w\alpha(w)\cdots\alpha^{r-1}(w)\ (r&gt;0),\quad
+ w_{-r}=\alpha^{-r}(w_r^*).
+ \tag{CP35}
+\]</span>
+Conjugation by these powers proves
+<span class="math" data-tex="\((\theta')^r=\operatorname{Ad}w_r\circ\alpha^r\)">\((\theta')^r=\operatorname{Ad}w_r\circ\alpha^r\)</span>, including negative <span class="math" data-tex="\(r\)">\(r\)</span>. Thus the inner kernels and outer periods agree. For <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, put <span class="math" data-tex="\(v_0=\Phi(v)\)">\(v_0=\Phi(v)\)</span> and <span class="math" data-tex="\(v'=w_pv_0\)">\(v'=w_pv_0\)</span>. This implements <span class="math" data-tex="\((\theta')^p\)">\((\theta')^p\)</span>. The equality
+<span class="math math-display" data-tex="\[
+ w\alpha(w_p)=w_{p+1}
+             =w_p\alpha^p(w)=w_pv_0wv_0^*
+\]">\[
+ w\alpha(w_p)=w_{p+1}
+             =w_p\alpha^p(w)=w_pv_0wv_0^*
+\]</span>
+then proves directly
+<span class="math math-display" data-tex="\[
+ \theta'(v')
+ =w\alpha(w_p)\alpha(v_0)w^*
+ =\omega\,w_pv_0=\omega v'.
+ \tag{CP36}
+\]">\[
+ \theta'(v')
+ =w\alpha(w_p)\alpha(v_0)w^*
+ =\omega\,w_pv_0=\omega v'.
+ \tag{CP36}
+\]</span>
+This is the implementer formula behind the invariance of the obstruction, and is consistent with the general calculation (CP27)–(CP29).</p>
+<p><span id="OA-FLOW.CPP.DIAGNOSTICS"></span><a id="cp-diagnostics"></a></p>
+<h2 id="8-a-finite-check-of-the-conjugation-order">8. A finite check of the conjugation order</h2>
+<p>The inverse conjugation in (CP1) can be detected in a six-element group. Let <span class="math" data-tex="\(G=N=S_3\)">\(G=N=S_3\)</span>, compose permutations from right to left, and set
+<span class="math math-display" data-tex="\[
+ a=(12),\quad g=(123),\quad h=(12),\qquad
+ f((23))=i,\quad f(x)=1\ \text{for }x\ne(23).
+\]">\[
+ a=(12),\quad g=(123),\quad h=(12),\qquad
+ f((23))=i,\quad f(x)=1\ \text{for }x\ne(23).
+\]</span>
+Take the compatible pair <span class="math" data-tex="\((\lambda,\mu)=\partial f\)">\((\lambda,\mu)=\partial f\)</span>. Then
+<span class="math math-display" data-tex="\[
+ g^{-1}ag=(13),\qquad gag^{-1}=(23),\qquad
+ h^{-1}(13)h=(23).
+\]">\[
+ g^{-1}ag=(13),\qquad gag^{-1}=(23),\qquad
+ h^{-1}(13)h=(23).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ \lambda(a,gh)=i,\quad
+ \lambda(a,g)\lambda(g^{-1}ag,h)=1\cdot i=i,
+\]">\[
+ \lambda(a,gh)=i,\quad
+ \lambda(a,g)\lambda(g^{-1}ag,h)=1\cdot i=i,
+\]</span>
+whereas
+<span class="math math-display" data-tex="\[
+ \lambda(a,g)\lambda(gag^{-1},h)=1\cdot(-i)=-i.
+\]">\[
+ \lambda(a,g)\lambda(gag^{-1},h)=1\cdot(-i)=-i.
+\]</span>
+Both the multiplication factor <span class="math" data-tex="\(\mu=\partial_2f\)">\(\mu=\partial_2f\)</span> and inner compatibility are present. Thus reversing the conjugation in the action equation is incompatible even with pairs obtained by changing the phase of a split extension. This check also distinguishes a convention for <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> from an interchangeable choice of notation.</p>
+<p><span id="OA-FLOW.CPP.READING"></span><a id="cp-reading"></a></p>
+<h2 id="reading">Reading</h2>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, Chapter XVII, §3, Exercises 1–3, printed pp.292–293, poses the intrinsic characteristic-pair, countable-action and cyclic-obstruction questions. Proposition 3.13 and Definition 3.14, printed pp.283–284, identify the positive-period scalar obstruction. The present construction derives its conventions from the compatible central extension and proves the finite-period and zero-period cases separately. The earlier standard implementation, Polish unitary-group and injective-Borel-image proofs cited in Section 4 provide the precise measurable prerequisites.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-BRL.html">Previous lesson</a><a href="OA-FLOW-TRP.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CPP.md">Lesson source</a></nav></main></body></html>

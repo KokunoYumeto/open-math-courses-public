@@ -9,13 +9,21 @@ All manifolds and maps in this lesson are real analytic, finite dimensional, Hau
 \tag{1}
 \]
 
-Our prerequisites are the signed analytic normal deformation and the singular one-form pullback, closure and surjective-detection calculus in Subanalytic sets and limiting tangent directions. Proper analytic uniformization remains an explicit deep input. The main boundary proof below uses ordinary analytic Taylor expansion on that smooth source; the retained alternative uses the separate monomial-resolution input. No coefficient ring occurs here. We prove the normal-cone theorem in adapted analytic coordinates along a general **positive-conic** analytic Lagrangian; no contact normal-form reduction is required.
+The proof uses the following programme results.
 
-Kashiwara and Schapira, [*Micro-hyperbolic systems*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Microhyp.pdf), treat boundary forms and normal-cone isotropy. The calculations below specify the conventions and the subanalytic isotropic-input generality used here.
+- The [analytic deformation construction](../SH02/normal-geometry.md#sh02-ng-construction--the-deformation-manifold-and-its-maps) and [signed normal-cone convention](subanalytic-sets-and-limiting-tangent-directions.md#the-signed-normal-cone-prerequisite) identify the central cone with the closure of the positive lift, including zero normal vectors.
+- [Proper analytic uniformization](subanalytic-sets-and-limiting-tangent-directions.md#a-locally-finite-assembly-with-a-fixed-source-dimension) maps a smooth analytic manifold properly onto each closed subanalytic set. Its locally finite construction covers the countable-at-infinity, possibly noncompact case used here.
+- The [singular one-form criterion](subanalytic-sets-and-limiting-tangent-directions.md#one-forms-on-a-singular-set) and [pullback, closure and surjective-detection rules](subanalytic-sets-and-limiting-tangent-directions.md#analytic-maps-and-locally-finite-unions) interpret vanishing on all limiting tangent vectors. Their set-theoretic inputs are the [local subanalytic calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis), [intrinsic regular-locus theorem](subanalytic-sets-and-limiting-tangent-directions.md#every-intrinsic-regular-point-in-each-dimension) and [analytic curve-selection construction](subanalytic-sets-and-limiting-tangent-directions.md#from-a-local-analytic-presentation-to-analytic-curve-selection).
+- The optional second boundary proof also uses [proper function resolution](subanalytic-sets-and-limiting-tangent-directions.md#from-finite-local-towers-to-the-global-function-resolution), with a signed monomial expression near the resolved zero set.
 
-<span id="vanishing-at-a-boundary-approached-from-its-complement"></span>
+The main boundary calculation uses analytic Taylor expansion on the uniformizing smooth source. No coefficient ring occurs here. We prove the normal-cone theorem in adapted analytic coordinates along a general **positive-conic** analytic Lagrangian; no contact normal-form reduction is required.
 
-## Vanishing at a boundary approached from its complement {#boundary-vanishing}
+Kashiwara and Schapira, [*Micro-hyperbolic systems*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Microhyp.pdf), Acta Mathematica 142 (1979), §§10.2–10.5, printed pp. 49–52, supply the classical boundary-form and first-normal-form methods. Proposition 10.4.1 gives boundary vanishing, Proposition 10.5.1 gives the canonical-form identity, and Theorem 10.5.2 states the homogeneous Lagrangian-input application. The proof below treats the stated positive-conic subanalytic isotropic input and includes the possible zeroes of the Euler field.
+
+<a id="boundary-vanishing"></a>
+<a id="vanishing-at-a-boundary-approached-from-its-complement-boundary-vanishing"></a>
+
+## Vanishing at a boundary approached from its complement
 
 Work locally on an analytic product with coordinates \((x,t)\), and let \(Y=\{t=0\}\). Suppose \(Z\) is subanalytic and
 
@@ -44,7 +52,10 @@ The first equality is tangential one-form vanishing; the second is pointwise fun
 
 By uniformization choose a proper analytic \(f:M\to X\) with image this closed \(Z\). Put \(h=t\circ f\). Discard the connected components on which \(h\) is identically zero. The remaining union \(M_1\) is open and closed in \(M\), so the restricted map is still proper. Its image is closed and contains \(Z\setminus Y\), because a preimage of a point with nonzero \(t\) cannot be on a discarded component. Density in (2) therefore makes its image all of \(Z\). This argument explains why a whole boundary component upstairs can be discarded without losing the boundary downstairs.
 
-### The smooth-source calculation {#analytic-boundary-without-function-resolution}
+<a id="analytic-boundary-without-function-resolution"></a>
+<a id="the-smooth-source-calculation-analytic-boundary-without-function-resolution"></a>
+
+### The smooth-source calculation
 
 Retain the proper analytic uniformization \(f:M_1\to X\) onto the closed set \(Z\), after discarding components on which \(t\circ f\) is identically zero. Put
 
@@ -109,9 +120,12 @@ The map \(f\) is onto \(Z\), so \(f(D)=Z\cap Y\). The pointwise equality \(B=0\)
 
 For the identity theorem used here, the set where an analytic function has zero germ is open. It is also closed: at a limit of such points every derivative vanishes by continuity, so the convergent Taylor series is zero near the limit. On a connected component this set is therefore empty or the whole component. This proves both the nonzero-germ assertion and density of the nonzero set of a non-identically-zero analytic coefficient.
 
-The calculation uses analytic coordinates, convergent Taylor expansion, the analytic identity theorem, and the previously stated singular one-form calculus. It does not use unique factorization, Weierstrass division, a gradient inequality, or monomial resolution. Proper subanalytic uniformization remains an explicit deep prerequisite; this argument does not reconstruct its proof or assert that its classical constructions are independent of resolution.
+This calculation uses analytic coordinates, convergent Taylor expansion, the identity theorem proved above, and the linked singular one-form calculus. It requires no further resolution of the uniformizing source. The construction of proper uniformization in the programme uses function resolution; the direct calculation therefore does not assert resolution independence of the full prerequisite chain.
 
-### An alternative through monomial resolution {#boundary-monomial-alternative}
+<a id="boundary-monomial-alternative"></a>
+<a id="an-alternative-through-monomial-resolution-boundary-monomial-alternative"></a>
+
+### An alternative through monomial resolution
 
 The direct argument above has proved the boundary lemma. The following useful alternative records precisely what the additional normal-crossing resolution input supplies.
 
@@ -252,9 +266,10 @@ a_0=K^*\lambda_L+d\ell.
 
 Both the minus sign in (18) and the exact differential in (19) matter. The first-order form \(a_0\) need not itself be the canonical form on the cotangent normal bundle.
 
-<span id="the-full-lagrangian-normal-cone-theorem"></span>
+<a id="lagrangian-normal-cone-isotropy"></a>
+<a id="the-full-lagrangian-normal-cone-theorem-lagrangian-normal-cone-isotropy"></a>
 
-## The full Lagrangian normal-cone theorem {#lagrangian-normal-cone-isotropy}
+## The full Lagrangian normal-cone theorem
 
 Let \(S\subset T^*X\) be a positive-conic subanalytic isotropic set, and let \(L\) be as above. Under (11),
 
@@ -414,7 +429,10 @@ d\ell=\sum_{i,j}\partial_{y_i}B_j(y,0)v_jdy_i+\sum_jB_j(y,0)dv_j.
 
 Subtracting (32) from (31) leaves the coefficients in (18), hence \(a_0-d\ell=K^*\lambda_L\). Merely knowing \(a_0|_C=0\) would give \(K^*\lambda_L|_C=-d\ell|_C\), which need not be zero. The boundary theorem supplies \(\ell|_C=0\) as a function, so its differential also restricts to zero. This is why both boundary conclusions, rather than just the form conclusion, enter the normal-cone theorem.
 
-### A normal order that jumps {#boundary-normal-order-jump}
+<a id="boundary-normal-order-jump"></a>
+<a id="a-normal-order-that-jumps-boundary-normal-order-jump"></a>
+
+### A normal order that jumps
 
 *Difficulty: Advanced.*
 
@@ -434,16 +452,21 @@ Since \(x^2+y^2\) is positive except at the origin, the real zero set is exactly
 
 On \(D\), \(B=0\) and the ambient covector \(A\) is \(-2x^2\,dy\). It need not be zero away from the origin, but it annihilates the tangent line spanned by \(\partial_x\); therefore \(A|_D=0\) in the required tangential sense. The coefficient argument first proves the tangential equality where \(x^2\ne0\), and continuity supplies the origin. Also \(B/h=1/y\) off \(D\), so dividing \(B\) by the entire function \(h\) would not be an analytic operation.
 
-## Source comparison and exact foundation boundary {#boundary-source-and-foundations}
+<a id="boundary-source-and-foundations"></a>
+<a id="source-methods-and-proof-inputs-boundary-source-and-foundations"></a>
+<a id="source-comparison-and-exact-foundation-boundary"></a>
+<a id="source-comparison-and-exact-foundation-boundary-boundary-source-and-foundations"></a>
 
-The cited work uses uniformization followed by a generic-power calculation. Our main proof instead works on every smooth submanifold of the analytic zero set, uses the least normal degree whose coefficient function is not identically zero, and then uses continuity at its order jumps. The monomial calculation supplies a second proof with an additional resolution input. Neither argument here supplies the uniformization theorem itself.
+## Source methods and proof inputs
 
-The cited work expresses the cotangent identification with the Hamiltonian map. With our convention, the inverse of (11) is induced by minus that map. Computing in adapted coordinates gives (18)–(19), including the exact differential; the fibre model and the sixth solved check verify those signs directly. We use these calculations before the limiting-operation applications, with additional counterexamples and the order-jump check, rather than reproduce the paper's exposition or exercise sequence.
+Proposition 10.4.1 of the cited paper uses proper uniformization followed by a generic-power calculation. Here the least nonzero normal degree is taken over analytic coefficient functions on each connected coordinate chart. It proves tangential vanishing on every analytic submanifold of the zero set, and continuity includes points where that normal degree jumps. The monomial calculation gives a second proof after resolving the function on the smooth source.
 
-The unresolved transitive inputs are the subanalytic closure, regularity, inverse-image and curve-selection facts; proper analytic uniformization; and Sard's theorem in surjective one-form detection. Their existing programme provider states these deep inputs explicitly. The optional monomial route additionally uses function resolution. This reading supplies the boundary calculation and its normal-cone consequence over those inputs, not a complete proof of those foundations.
+The paper uses its Hamiltonian map to identify the normal bundle with a cotangent bundle. With convention (12), the inverse of (11) is induced by minus that map. The adapted-coordinate calculation (18)–(19) retains the exact differential; the fibre model and sixth solved check verify its sign. Subtracting that differential after both boundary vanishings proves the isotropic-input statement here.
+
+The boundary lemma uses proper uniformization and singular one-form detection with their stated hypotheses. In the latter proof, the full smooth Sard theorem and dense regular lifts apply to the induced surjection between manifolds with countable atlases; they require neither compactness nor properness of that surjection. The exact subanalytic set, regularity and curve-selection inputs, and the extra resolution input of the alternative, are supplied by the programme sections linked at the beginning.
 
 <span id="the-limiting-operation-consequence-to-develop"></span>
 
 ## Limiting-operation consequences
 
-The normal-cone theorem supplies the cotangent isotropy needed for limiting fibre sums and characteristic inverse images. Their exact diagonal and graph slices are proved in Limiting cotangent sums and characteristic inverse images. The theorem here retains the intrinsic \(-H\) identification, the canonical-form kernel constraint and the full general positive-conic analytic Lagrangian before those applications.
+The normal-cone theorem supplies the cotangent isotropy needed for limiting fibre sums and characteristic inverse images. Their exact diagonal and graph slices are proved in [Limiting cotangent sums and characteristic inverse images](limiting-cotangent-sums-and-characteristic-inverse-images.md#isotropy-of-the-full-limiting-sum-limiting-sum-isotropy). The theorem here retains the intrinsic \(-H\) identification, the canonical-form kernel constraint and the full general positive-conic analytic Lagrangian before those applications.

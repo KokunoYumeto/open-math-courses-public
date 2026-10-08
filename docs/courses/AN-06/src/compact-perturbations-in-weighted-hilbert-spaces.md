@@ -131,6 +131,8 @@ This is an interpolation statement for an arbitrary positive bounded weight. It 
 
 ## 3. A preserved norm supplies the missing endpoint
 
+The compact extension through the dual weighted space is Hörmander’s argument in [H2, Lemma 14.6.9]. Here the weight is only measurable and the underlying measure space is arbitrary.
+
 **Theorem 3.1.** Let \(T\) be compact on \(H_0\), and suppose
 
 \[
@@ -246,3 +248,4 @@ Both endpoint norms equal \(2|e^{i\phi}-1|/\sqrt3\); the middle norm is \(|e^{i\
 - [Finite-dimensional and metric compactness](../providers/analysis/compact-fredholm-families.md#fredholm-finite-tools).
 - [Bounded strips and the three-lines inequality](../providers/analysis/bounded-strips.md#three-lines), with both boundary constants and the finite-rectangle proof.
 
+- [H2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Springer, 2005, Lemma 14.6.9, pp. 262–263. ISBN 978-3-540-26964-9. [Edition information](https://doi.org/10.1007/b138375).

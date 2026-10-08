@@ -1,6 +1,6 @@
 # Extreme points and matrix blocks
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0. The credited subsection “States and mixtures on a matrix block” retains CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; the subsection “States and mixtures on a matrix block” by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An extreme point of a convex set cannot move in two opposite directions while staying inside the set. For the unit ball of a C*-algebra, the directions that remain available are described by two defect projections. In finite dimensions those defects disappear, and the algebra itself separates into full matrix blocks. The same blocks then describe every representation, including representations on Hilbert spaces of arbitrary dimension.
 
@@ -196,54 +196,44 @@ This is a faithful state. Its GNS space has dimension five, the vector-space dim
 
 ### States and mixtures on a matrix block
 
-*Adapted by GPT-6.1 Sol (OpenAI) from Klaas Landsman, [Foundations of Quantum Theory: From Classical Concepts to Operator Algebras](https://doi.org/10.1007/978-3-319-51777-3), Springer, 2017, Theorem 2.7, Lemma 2.11 and Proposition 2.14, pp. 44–48. © The Author(s) 2017. This entire subsection, including its proofs and example, is licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). AI changes: matrix notation, expanded positivity and support arguments, and placement after the matrix-block construction. The finite-dimensional hypothesis is retained.*
+A single block \(M_n(\mathbb C)\), \(n\geq1\), already shows how states, their extreme points and their decompositions are organized. A **state** is a positive linear functional with value one at the identity, and it is **pure** when it is an extreme point of the convex set of states. A **density matrix** is a positive matrix of trace one. For a unit vector \(u\), write \(P_u=uu^*\) for the projection onto \(\mathbb Cu\). Landsman's open-access book [Landsman] treats the same material in the language of quantum states.
 
-Fix \(n\geq1\). A **density matrix** is a positive matrix \(\rho\in M_n(\mathbb C)\) with \(\operatorname{Tr}\rho=1\). A state is a positive linear functional taking the identity to one. A state is **pure** when it is extreme in the convex state space.
+**Proposition.** The map \(\rho\mapsto\varphi_\rho\), \(\varphi_\rho(a)=\operatorname{Tr}(\rho a)\), is an affine bijection from the density matrices onto the states of \(M_n(\mathbb C)\). A state is pure exactly when its density matrix has rank one, that is, when it is a vector state \(a\mapsto u^*au\) for a unit vector \(u\).
 
-**Proposition.** Every state of \(M_n(\mathbb C)\) has a unique expression
+**Proof.** Every linear functional \(\varphi\) on \(M_n(\mathbb C)\) is \(\varphi_\rho\) for exactly one matrix \(\rho\), namely \(\rho_{ji}=\varphi(e_{ij})\), because \(\operatorname{Tr}(\rho e_{ij})=\rho_{ji}\). If \(\varphi_\rho\) is positive, then \(\xi^*\rho\xi=\operatorname{Tr}(\rho\,\xi\xi^*)=\varphi_\rho(\xi\xi^*)\geq0\) for every vector \(\xi\). A complex matrix whose quadratic form is real and nonnegative is self-adjoint and positive, so \(\rho\geq0\). Conversely, if \(\rho\geq0\), then \(\operatorname{Tr}(\rho\,b^*b)=\operatorname{Tr}(b\rho b^*)\geq0\) because \(b\rho b^*\) is positive; so \(\varphi_\rho\) is positive. In both directions \(\varphi_\rho(1)=\operatorname{Tr}\rho\). The correspondence is linear, so it is affine and identifies the extreme points of the two convex sets.
+
+Equip \(M_n(\mathbb C)\) with the Hilbert–Schmidt norm \(\|a\|_2=\operatorname{Tr}(a^*a)^{1/2}\). For a density matrix with eigenvalues \(\lambda_1,\ldots,\lambda_n\geq0\),
 \[
-\varphi_\rho(a)=\operatorname{Tr}(\rho a),
-\qquad \rho\geq0,\quad \operatorname{Tr}\rho=1.
+\|\rho\|_2^2=\sum_j\lambda_j^2\leq\Bigl(\sum_j\lambda_j\Bigr)^2=1,
 \]
-This is an affine correspondence. Its extreme points are exactly the rank-one density matrices, or equivalently the vector states associated to unit vectors.
-
-**Proof.** The trace pairing is nondegenerate: pairing a matrix with the matrix units reads all its entries. Hence every linear functional has a unique representing matrix \(\rho\). For any vector \(v\), positivity gives
+with equality exactly when one eigenvalue is \(1\) and the others vanish, that is, when \(\rho\) has rank one. Suppose \(P_u=t\rho_1+(1-t)\rho_2\) with \(0<t<1\) and density matrices \(\rho_1,\rho_2\). Then
 \[
-v^*\rho v=\varphi_\rho(vv^*)\geq0.
+1=\|P_u\|_2\leq t\|\rho_1\|_2+(1-t)\|\rho_2\|_2\leq1.
 \]
-Polarization implies that \(\rho\) is self-adjoint, and the displayed inequality then makes it positive. Normalization gives \(\operatorname{Tr}\rho=\varphi_\rho(1)=1\). Conversely, diagonalizing a positive trace-one matrix expresses \(\varphi_\rho\) as a positive weighted sum of unit vector states. It is therefore a state. Linearity and uniqueness of the pairing prove the affine assertion.
+Hence \(\|\rho_1\|_2=\|\rho_2\|_2=1\), and the triangle inequality is an equality. In an inner-product space this forces \(\rho_1\) and \(\rho_2\) to be nonnegative multiples of one another; equal norms make them equal, and therefore both equal \(P_u\). So every rank-one density matrix is extreme.
 
-Let \(P_u=uu^*\) for a unit vector \(u\). Suppose \(P_u=t\rho_1+(1-t)\rho_2\), where \(0<t<1\) and both \(\rho_i\) are density matrices. For \(v\perp u\), the nonnegative quadratic forms \(v^*\rho_i v\) have a weighted sum of zero, so both vanish. Since \(v^*\rho_i v=\|\rho_i^{1/2}v\|^2\), each \(\rho_i\) annihilates \(u^\perp\). Self-adjointness puts its range in \(\mathbb Cu\), and trace one forces \(\rho_i=P_u\). Thus \(P_u\) is extreme.
+If \(\rho\) has rank at least two, take a unit eigenvector \(u\) for a positive eigenvalue \(\lambda<1\). The matrix \(\sigma=(1-\lambda)^{-1}(\rho-\lambda P_u)\) is positive, because \(\rho-\lambda P_u\) acts as \(\rho\) on \(u^\perp\) and as \(0\) on \(\mathbb Cu\), and it has trace one. It differs from \(P_u\), since \(\sigma u=0\). Thus \(\rho=\lambda P_u+(1-\lambda)\sigma\) is a proper mixture of two different density matrices and is not extreme. Finally, \(\operatorname{Tr}(P_ua)=u^*au\), so the rank-one density matrices give exactly the vector states. \(\square\)
 
-If instead \(\rho\) has at least two positive eigenvalues \(\lambda_1,\lambda_2\), choose orthonormal eigenvectors \(u_1,u_2\) and \(0<\varepsilon<\min(\lambda_1,\lambda_2)\). The two distinct matrices
+**Corollary.** Every density matrix \(\rho\) is a mixture of \(m=\operatorname{rank}\rho\leq n\) pure states with orthonormal vectors:
 \[
-\rho_\pm=\rho\pm\varepsilon(P_{u_1}-P_{u_2})
+\rho=\sum_{j=1}^{m}\lambda_jP_{u_j},\qquad \lambda_j>0,\quad \sum_j\lambda_j=1.
 \]
-are positive and have trace one, with midpoint \(\rho\). Hence \(\rho\) is not extreme. \(\square\)
+Among mixtures with orthonormal vectors and positive weights, the weights and the projections \(P_{u_j}\) are determined up to order exactly when every positive eigenvalue of \(\rho\) is simple.
 
-**Corollary.** Every density matrix is a mixture of at most \(n\) pure states:
-\[
-\begin{gathered}
-\rho=\sum_{j=1}^{m}\lambda_jP_{u_j},
-\qquad m=\operatorname{rank}\rho\leq n,\\
-\lambda_j>0,\qquad\sum_j\lambda_j=1.
-\end{gathered}
-\]
-where the \(u_j\) are orthonormal. Among such orthogonal decompositions, the projections and weights are unique up to order exactly when all positive eigenvalues are simple.
+**Proof.** The spectral theorem gives such a mixture, using an orthonormal eigenbasis and omitting the zero eigenvalues; the weights sum to \(\operatorname{Tr}\rho=1\). Conversely, let \(\rho=\sum_k\mu_kP_{w_k}\) with orthonormal \(w_k\) and \(\mu_k>0\). Then \(\rho w_k=\mu_kw_k\), and \(\rho\) vanishes on the orthogonal complement of the \(w_k\). So the \(\mu_k\) are the positive eigenvalues with their multiplicities, and the \(w_k\) with \(\mu_k=\lambda\) form an orthonormal basis of the \(\lambda\)-eigenspace. When each positive eigenspace is a line, its projection is forced. When a positive eigenvalue has orthonormal eigenvectors \(w_1,w_2\), the vectors \((w_1\pm w_2)/\sqrt2\) are another orthonormal pair with the same span. Since \(P_{w_1}+P_{w_2}\) is the projection onto that span, it is unchanged, while the individual rank-one projections change. \(\square\)
 
-**Proof.** The spectral theorem gives the displayed decomposition, after omitting zero eigenvalues. In any orthogonal pure-state decomposition, its vectors are eigenvectors with the corresponding weights as eigenvalues. Simple positive eigenvalues determine their one-dimensional eigenspaces. A repeated positive eigenvalue admits different orthonormal bases in its eigenspace; rotating two basis vectors changes their rank-one projections without changing \(\rho\). \(\square\)
-
-**Example.** Even a simple positive spectrum does not ensure uniqueness among all pure-state mixtures. In \(M_2(\mathbb C)\), let
+**Example.** Without orthogonality, even a simple spectrum allows other mixtures. In \(M_2(\mathbb C)\) put
 \[
-\rho=\begin{pmatrix}2/3&0\\0&1/3\end{pmatrix},
-\qquad u_\pm=\begin{pmatrix}\sqrt{2/3}\\\pm\sqrt{1/3}\end{pmatrix}.
+\rho=\begin{pmatrix}3/4&0\\0&1/4\end{pmatrix},
+\qquad w_\pm=\begin{pmatrix}\sqrt3/2\\\pm1/2\end{pmatrix}.
 \]
-Both vectors are unit vectors, and direct multiplication shows
+Then
 \[
-\rho=\tfrac23P_{e_1}+\tfrac13P_{e_2}
-=\tfrac12P_{u_+}+\tfrac12P_{u_-}.
+P_{w_\pm}=\begin{pmatrix}3/4&\pm\sqrt3/4\\\pm\sqrt3/4&1/4\end{pmatrix},
+\qquad
+\rho=\tfrac34P_{e_1}+\tfrac14P_{e_2}=\tfrac12P_{w_+}+\tfrac12P_{w_-}.
 \]
-In the second mixture the off-diagonal entries cancel. Its vectors are not orthogonal, since \(u_+^*u_-=1/3\). Thus the spectral mixture is unique among orthogonal mixtures, while another mixture still represents the same state.
+The vectors \(w_\pm\) are unit vectors at angle \(60^\circ\), with \(w_+^*w_-=\tfrac12\). The spectral mixture is the unique orthogonal one, but the same state is also an equal mixture of two non-orthogonal pure states.
 
 ## 4. Representations and multiplicity spaces
 
@@ -391,7 +381,7 @@ The two classification arguments connect these tools in different ways. Minimal 
 
 [Kelley–Vaught] J. L. Kelley and R. L. Vaught, [“The positive cone in Banach algebras,”](https://doi.org/10.1090/S0002-9947-1953-0054175-2) *Transactions of the American Mathematical Society* **74** (1953), 44–55.
 
-[Landsman] Klaas Landsman, [*Foundations of Quantum Theory: From Classical Concepts to Operator Algebras*](https://doi.org/10.1007/978-3-319-51777-3), Springer, 2017, Sections 2.2–2.3, pp. 44–48. The credited state-and-mixture subsection above is adapted under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+[Landsman] Klaas Landsman, [*Foundations of Quantum Theory: From Classical Concepts to Operator Algebras*](https://doi.org/10.1007/978-3-319-51777-3), Springer, 2017, Sections 2.2–2.3, pp. 44–48. Open access.
 
 [Löwner] K. Löwner, [“Über monotone Matrixfunktionen,”](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0038/LOG_0014.pdf) *Mathematische Zeitschrift* **38** (1934), 177–216.
 

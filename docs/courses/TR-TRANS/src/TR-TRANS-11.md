@@ -1,6 +1,6 @@
 # Wronskians and Roth's rational-point lemma
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original exposition and proofs: public domain (CC0), except the explicitly credited polynomial-curve calculation under CC BY 4.0. Linked formal normalization proofs retain their own licence.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; the second proof for polynomials in Section 1 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original exposition and proofs: public domain (CC0). Linked formal normalization proofs retain their own licence.*
 
 The last lesson produced a polynomial with many vanishing Taylor coefficients at an algebraic point. We now need to stop that vanishing from persisting at a carefully chosen rational point. The rational coordinates alone are insufficient: a polynomial can contain a high power of \(qX-p\). Its height must also be small, and its degrees must decrease quickly from one variable to the next.
 
@@ -56,28 +56,30 @@ For rational functions of one variable that are \(K\)-independent, the determina
 
 **Proof.** Lemma 11.1 supplies independent derivative rows with orders at most \(\ell-1\). The first has order zero; the second must have order one, since a repeat would be dependent. Inductively the \(\ell\)-th row must have order \(\ell-1\): all smaller orders already appear among its predecessors. Thus the determinant supplied by that lemma is the one asserted. \(\square\)
 
-### A polynomial curve calculation (Goel–Lunia–Ray)
+### A second proof for polynomials: restriction to a monomial curve
 
-This paragraph adapts the generalized-Wronskian calculation in §2.6 of Shivani Goel, Rashi Lunia and Anwesh Ray, [*Diophantine approximation and the subspace theorem*, arXiv:2502.00731v2](https://arxiv.org/abs/2502.00731v2), from the authors' supplied TeX source. It retains [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The adaptation chooses the substitution base strictly larger than every partial degree and supplies the derivative expansion. The authors have not reviewed this adaptation.
-
-For independent polynomials \(\varphi_1,\ldots,\varphi_k\) in \(r\) variables, choose an integer \(b\) greater than every partial degree and substitute
+For polynomials, Lemma 11.1 can also be reduced to the one-variable case. Let \(\varphi_1,\ldots,\varphi_k\) be polynomials in \(r\) variables that are linearly independent over \(K\), and fix an integer \(b\) larger than the degree of every \(\varphi_j\) in each single variable. Restrict to the curve
 
 \[
- X_j=t^{b^{j-1}}\quad(1\le j\le r).
+ X_j=t^{\,b^{j-1}}\qquad(1\le j\le r).
 \]
 
-The exponent of a substituted monomial is \(\sum_j a_jb^{j-1}\). Since \(0\le a_j<b\), uniqueness of base-\(b\) expansion proves that distinct monomials remain distinct. The substituted polynomials \(\Phi_j(t)\) are therefore independent, and Lemma 11.2 gives a nonzero one-variable Wronskian. The chain rule, followed by induction on \(h\), gives
+A monomial \(X_1^{a_1}\cdots X_r^{a_r}\) with every \(a_j<b\) becomes \(t^{\,a_1+a_2b+\cdots+a_rb^{r-1}}\), and different exponent vectors give different powers of \(t\), because base-\(b\) digits are unique. So restriction is injective on the \(K\)-span of the monomials occurring in the \(\varphi_j\). The restricted polynomials \(\Phi_j(t)=\varphi_j(t,t^b,\ldots,t^{b^{r-1}})\) are therefore independent, and Lemma 11.2 makes their one-variable Wronskian nonzero.
+
+Their derivatives are controlled by the divided derivatives of the \(\varphi_j\) along the curve. By induction on \(h\),
 
 \[
  \frac{d^h}{dt^h}\Phi_j(t)
- =\sum_{|\boldsymbol i|\le h}c_{h,\boldsymbol i}(t)
+ =\sum_{|\boldsymbol i|\le h}c_{h,\boldsymbol i}(t)\,
        (D_{\boldsymbol i}\varphi_j)(t,t^b,\ldots,t^{b^{r-1}}),
- \qquad c_{h,\boldsymbol i}\in\mathbb Q[t].
+ \qquad c_{h,\boldsymbol i}\in\mathbb Q[t],
 \]
 
-For \(h=0\) this is the substitution itself. Differentiating a coefficient leaves the derivative order unchanged; differentiating a substituted partial derivative raises that order by one and multiplies by a polynomial derivative of \(t^{b^{j-1}}\). This proves the asserted order bound and polynomial coefficients. Expand the one-variable Wronskian row by row. Each term is a polynomial coefficient times a substituted generalized Wronskian with row orders at most \(0,1,\ldots,k-1\). Since the sum is nonzero, at least one of these generalized Wronskians is nonzero.
+with coefficients \(c_{h,\boldsymbol i}\) independent of \(j\). For \(h=0\) the sum is the restriction itself. Differentiating one term either differentiates its coefficient, which keeps the order \(|\boldsymbol i|\), or, by the chain rule, replaces \(D_{\boldsymbol i}\varphi_j\) by \(\sum_m\frac{d}{dt}\bigl(t^{b^{m-1}}\bigr)\,\partial_mD_{\boldsymbol i}\varphi_j\) along the curve. Since \(\partial_mD_{\boldsymbol i}=(i_m+1)D_{\boldsymbol i+\boldsymbol e_m}\), this raises the order by one and keeps polynomial coefficients.
 
-This gives a useful interpretation of the polynomial criterion: one curve can probe all coordinates, while expansion of its derivatives reveals the mixed rows that a single coordinate derivative misses. The rational-function criterion, in its full generality, is proved by the row-space argument above.
+Now take the one-variable Wronskian with rows \(\frac{d^h}{dt^h}(\Phi_1,\ldots,\Phi_k)\), \(0\le h\le k-1\). Substituting the formula into each row and expanding by multilinearity writes it as a \(\mathbb Q[t]\)-linear combination of determinants whose row of index \(h\) is \((D_{\boldsymbol i_h}\varphi_1,\ldots,D_{\boldsymbol i_h}\varphi_k)\) along the curve, with \(|\boldsymbol i_h|\le h\). These are generalized Wronskians (11.1) of the \(\varphi_j\), restricted to the curve. The combination is nonzero, so one of them is a nonzero polynomial in \(t\); the corresponding generalized Wronskian of \(\varphi_1,\ldots,\varphi_k\) is then nonzero.
+
+The curve sees every variable at once, and the mixed rows that no single coordinate derivative produces appear in the expansion of its derivatives. Goel, Lunia and Ray use the same reduction in their account of the subspace theorem. For rational functions in general, the row-space argument above is the proof.
 
 ## 2. Separating the final variable
 
@@ -387,4 +389,4 @@ The proof is ineffective in its application to irrational approximation because 
 - The Stacks Project, the exact linked formal normalization proofs in section 5, under their GNU Free Documentation License.
 
 
-- Shivani Goel, Rashi Lunia and Anwesh Ray, [*Diophantine approximation and the subspace theorem*, arXiv:2502.00731v2](https://arxiv.org/abs/2502.00731v2), §2.5, generalized Wronskians. The polynomial-curve calculation in Section 1 adapts the supplied TeX source under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); its substitution bound and derivative expansion are explained there.
+- Shivani Goel, Rashi Lunia and Anwesh Ray, [*Diophantine approximation and the subspace theorem*, arXiv:2502.00731v2](https://arxiv.org/abs/2502.00731v2), §2.5, generalized Wronskians. The reduction to one variable along a monomial curve appears there as well.

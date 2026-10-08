@@ -1,6 +1,6 @@
 # Open projections and closed one-sided ideals
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0. The credited Kaneda–Schick example retains CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; the example of equivalent projections by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: CC0 1.0.*
 
 Suppose a collection of operators is meant to act only on part of a system. A projection in the bidual describes such a part, but it need not be recoverable from the original algebra. This lesson asks how to recognize the parts that can be recovered: through positive approximations, through closed one-sided ideals, or through what states fail to see.
 
@@ -40,24 +40,32 @@ u_n(t)=\frac{t}{t+1/n},\qquad u_n\uparrow z.
 \]
 The evaluations satisfy \(\delta_t(z)=1\) for \(t>0\) and \(\delta_0(z)=0\). The net constructs an open part, namely the part seen away from the endpoint. Its complement cannot be obtained in the same way: \(\delta_{1/n}\to\delta_0\) on continuous functions, but their evaluations at \(1-z\) are zero and the limiting evaluation is one. An increasing limit of continuous positive evaluations is lower semicontinuous, so this jump rules out openness of \(1-z\).
 
-The final worked problem will prove the ideal identification and explain why passing to that ideal changes the admissible scalar identity. Before building the general criterion, the following human-authored example combines this endpoint jump with the matrix calculation.
+The final worked problem will prove the ideal identification and explain why passing to that ideal changes the admissible scalar identity. Before building the general criterion, the following example combines such a jump with the matrix calculation.
 
 ### Equivalent projections can see different open pieces
 
-*Adapted from Masayoshi Kaneda and Thomas Schick, [Open projections and Murray–von Neumann equivalence](https://doi.org/10.1112/blms.12820), published version, 2023, Example 1.1. © 2023 The Authors. This entire subsection is under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). GPT-6.1 Sol (OpenAI) replaces indicator notation by \(z=s(h)\) and supplies the evaluation-state proof of nonopenness.*
-
-For \(B=C([0,1])\otimes M_2\), use the central projection \(z\) above and put
+Openness is not preserved by Murray–von Neumann equivalence in the bidual. Kaneda and Schick [Kaneda–Schick] give an example in which the obstruction sits at an endpoint; in the following one it sits at an interior point. Let \(B=C([0,1])\otimes M_2\), so that \(B^{**}=C([0,1])^{**}\otimes M_2\). Besides \(z=s(h)\), take
 \[
-v=(1-z)\otimes e_{11}+z\otimes e_{12}.
+g(t)=\max\bigl(t-\tfrac12,0\bigr),\qquad y=s(g).
 \]
-Orthogonality of \(z,1-z\) gives
+The contractions \(g/(g+1/n)\) increase to \(y\). By normality, \(\delta_t(y)=1\) for \(t>\tfrac12\) and \(\delta_t(y)=0\) for \(t\le\tfrac12\).
+
+First, \(y\le z\). Since \(u_nh\to h\) uniformly, \(zh=h\). The function \(k(t)=g(t)/t\), extended by \(0\) on \([0,\tfrac12]\), is continuous and \(g=hk\), so \(zg=g\). Hence \(z\) fixes every \(g(g+1/n)^{-1}\), and in the strong limit \(zy=y\). Thus \(z-y\) and \(y\) are orthogonal projections. Put
+\[
+v=(z-y)\otimes e_{11}+y\otimes e_{21}.
+\]
+Using \((z-y)y=0\),
 \[
 \begin{aligned}
-p=vv^*&=1\otimes e_{11},\\
-q=v^*v&=(1-z)\otimes e_{11}+z\otimes e_{22}.
+p=v^*v&=(z-y)\otimes e_{11}+y\otimes e_{11}=z\otimes e_{11},\\
+q=vv^*&=(z-y)\otimes e_{11}+y\otimes e_{22},
 \end{aligned}
 \]
-Thus \(v\) implements Murray–von Neumann equivalence. The constant approximation makes \(p\) open. The states \(\psi_t(b)=\langle b(t)e_1,e_1\rangle\) satisfy \(\psi_{1/n}\to\psi_0\), but \(\psi_{1/n}(q)=0\) and \(\psi_0(q)=1\). If \(q\) were an increasing limit from \(B_+\), its state evaluation would be a supremum of continuous functions and hence lower semicontinuous. The jump contradicts that conclusion, so \(q\) is not open.
+so \(p\) and \(q\) are Murray–von Neumann equivalent. The projection \(p\) is open, since \(u_n\otimes e_{11}\) increases to it. The states \(\psi_t(b)=\langle b(t)e_1,e_1\rangle\) depend continuously on \(t\), and
+\[
+\psi_t(q)=\delta_t(z)-\delta_t(y)=\begin{cases}1,&0<t\le\tfrac12,\\0,&t=0\text{ or }t>\tfrac12.\end{cases}
+\]
+If \(q\) were an increasing limit from \(B_+\), its state evaluation would be a supremum of continuous functions of \(t\) and hence lower semicontinuous. But \(\psi_{1/2}(q)=1\) while \(\psi_{1/2+1/n}(q)=0\) for every \(n\geq2\). So \(q\) is not open.
 
 ## The dictionary we want to prove
 
@@ -325,6 +333,6 @@ The projection \(z\) is the identity of \(I^{**}\), so \(-z\in(I_1)_{\mathrm{sa}
 
 ## References
 
-[Kaneda–Schick] Masayoshi Kaneda and Thomas Schick, [“Open projections and Murray–von Neumann equivalence”](https://doi.org/10.1112/blms.12820), *Bulletin of the London Mathematical Society* **55** (2023), 1808–1816. The marked subsection adapts Example 1.1 of the published HTML version under CC BY 4.0.
+[Kaneda–Schick] Masayoshi Kaneda and Thomas Schick, [“Open projections and Murray–von Neumann equivalence”](https://doi.org/10.1112/blms.12820), *Bulletin of the London Mathematical Society* **55** (2023), 1808–1816.
 
 [Brown] Lawrence G. Brown, [Semicontinuity and closed faces of C*-algebras](https://arxiv.org/abs/1312.3624v2), arXiv:1312.3624v2, 11 July 2014.

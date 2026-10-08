@@ -2,13 +2,13 @@
 
 A cotangent correspondence can be a graph even when the corresponding sheaf operator loses information. The missing condition is an identity condition on the kernel's directional endomorphisms. In this lesson we prove that condition sufficient for an equivalence, and explain how the equivalence transports the entire sheaf of directional morphisms.
 
-Use Dual kernels and an unchanged parameter and Directional morphisms through a sheaf kernel. Two additional inputs come from Local models and change of ambient manifold and Local morphisms in cotangent directions: the conormal coefficient model, and the microlocal unit, duality and submanifold formulas. We state exactly what is needed. Their foundational proofs remain prerequisites.
+Use [Dual kernels and an unchanged parameter](dual-kernels-and-an-unchanged-parameter.md) and [Directional morphisms through a sheaf kernel](directional-morphisms-through-a-sheaf-kernel.md). The additional local inputs are the [conormal coefficient model](../SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold), the [submanifold formula](../SH02/microlocal-hom.md#sh02-mh-submanifold--recovering-microlocalization-from-hom), the [microlocal identity and composition maps](../SH02/microlocal-hom.md#sh02-mh-composition--directional-composition-identities-and-associativity), and the [worked microlocal-duality proof](../SH02/microlocal-hom.md#sh02-mh-problems--worked-problems-and-solutions). That duality uses the [constructible biduality theorem](../SH02/cohomological-biduality.md#sh02-cb-biduality--duality-exchanges-the-two-local-measurements) and its [external-Hom evaluation comparison](../SH02/cohomological-biduality.md#sh02-cb-external-hom--a-constructible-factor-in-a-product). We state exactly what is needed; the named proofs and their further hypotheses remain prerequisites.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
 
 ## The correspondence and the identity condition
 
-The coefficient ring \(k\) is commutative with identity and finite global dimension. Manifolds are smooth, Hausdorff, finite dimensional and countable at infinity. Objects are globally bounded complexes of sheaves of \(k\)-modules. Cohomological constructibility has the formal-system and perfect stalk/costalk meaning stated in the dual-kernel lesson; mere boundedness does not imply it.
+The coefficient ring \(k\) is commutative with identity and finite global dimension. Manifolds are smooth, Hausdorff, finite dimensional and countable at infinity. Objects are globally bounded complexes of sheaves of \(k\)-modules. The selected cotangent regions are open. Cohomological constructibility has the formal-system and perfect stalk/costalk meaning stated in the dual-kernel lesson; mere boundedness does not imply it.
 
 Write \(P=X\times Y\),
 \(p_1(x,y;\xi,\eta)=(x;\xi)\), and
@@ -219,7 +219,7 @@ Let \(k\) be a field, \(f:Y\to X\) a diffeomorphism, and \(K=(k\oplus k)_{\Gamma
 
 Let \(f:Y\to X\) be a diffeomorphism and let \(L\) be a locally free rank-one \(k\)-local system on \(Y\). For \(K=L_{\Gamma_f}[s]\), determine the two inverse operators and verify (3) without choosing a global trivialization of \(L\).
 
-**Solution.** The left operator is \(G\mapsto f_*(L\otimes G)[s]\). Its inverse and right adjoint is \(F\mapsto L^{-1}\otimes f^{-1}F[-s]\). All coefficients are locally perfect, and the relation is the same proper graph as for \(k_{\Gamma_f}\). Locally trivialize \(L\). The submanifold formula reduces self microlocal Hom on the graph conormal to \(R\operatorname{Hom}_k(k[s],k[s])=k\). Its identity is one. Changing trivialization multiplies source and target by inverse units, which cancel in self Hom; these local identity maps glue to exactly (3). Monodromy affects the operator but does not obstruct this identity condition. The kernel and its inverse shifts have opposite signs.
+**Solution.** The left operator is \(G\mapsto f_*(L\otimes G)[s]\). Its inverse and right adjoint is \(F\mapsto L^{-1}\otimes f^{-1}F[-s]\). All coefficients are locally perfect. For a nonzero coefficient ring, the relation is the same proper graph as for \(k_{\Gamma_f}\). Over the zero ring the relation is empty, both categories are zero, and the inverse formulas and identity condition still hold. Locally trivialize \(L\). The submanifold formula reduces self microlocal Hom on the graph conormal to \(R\operatorname{Hom}_k(k[s],k[s])=k\). Its identity is one. Changing trivialization multiplies source and target by inverse units, which cancel in self Hom; these local identity maps glue to exactly (3). Monodromy affects the operator but does not obstruct this identity condition. The kernel and its inverse shifts have opposite signs.
 
 ### Why the parameter variable is needed
 
@@ -242,7 +242,7 @@ Since \(\eta_{RF}\) is invertible, \(R\epsilon_F=(\eta_{RF})^{-1}\) is invertibl
 
 ## References
 
-Kashiwara and Schapira, *Microlocal study of sheaves*, Proposition 6.2.2 and Theorem 6.3.4 with its proof, printed 106 and 111–113, supplies the readable conormal coefficient model and contact-equivalence theorem. The graph condition, the two cotangent-region conditions, cohomological constructibility and the identity on microlocal endomorphisms are essential hypotheses. Schapira’s 2016 review, Theorem 5.11, restates the contact equivalence; it does not prove the entire foundational kernel calculus.
+Kashiwara and Schapira, *Microlocal study of sheaves*, Proposition 6.2.2 and Theorem 6.3.4 with its proof, printed 106 and 111–113, supplies the readable conormal coefficient model and contact-equivalence theorem. The graph condition, the two cotangent-region conditions, cohomological constructibility and the identity on microlocal endomorphisms are essential hypotheses. Schapira’s 2016 review, Theorem 5.11 on p. 29, restates the contact equivalence and its microlocal-Hom transport; it does not supply their full proof. Schapira’s sheaf lecture notes, pp. 94–97, provide the exceptional-adjunction and internal-Hom background. The programme proofs named above supply the precise ranges and comparisons used here.
 
 ## Readable source and dependency account
 

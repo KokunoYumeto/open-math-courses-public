@@ -1,10 +1,12 @@
 # Shrinking localization and complex fixed-point traces
 
-An expanding space computes a local contribution by compact cohomology. A shrinking space computes it by sections with support in that space. The two complexes can have different degrees even when their traces agree. We prove the supported formula, including singular maps on the shrinking space, then use complex scalar transport to compute holomorphic fixed-point traces. Constant real coefficients recover the determinant sign.
+The compact cohomology of an expanding space and the supported cohomology of a shrinking space can have different degrees while computing the same local contribution. The shrinking construction uses ordinary supported pullback, so it still makes sense when the map collapses a direction. We will stabilize an explicit support map, compare its operator with the cutoff operator, and then remove the choice of shrinking space. A local complex-scalar family will turn these real results into holomorphic stalk and costalk formulas.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and complete solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Learn first Expanding subspaces and hyperbolic Lefschetz cutoffs, Homotopies and local cutoffs for Lefschetz contributions, Constructible costalks and Verdier duality, and Specializing Lefschetz contributions to the tangent space. The complex application also uses the written complex constructibility of specialization and complex Euler equation. The normalized support adjunctions, conic Euler and submersion descent, and complex-orbit descent are current SH-02 prerequisites. Their transitive foundations and independent review remain open.
+The preceding lesson proves the spectral subspace conditions, conic projection and contraction maps, forward cutoff stabilization, and the zero trace on positive rays. We use the supported cutoff morphism and that lesson's parameter-unit proof, with the evaluated constructible biduality and ordinary/compact dual-section comparison.
+
+For the complex application we use the actual maps in tangent specialization, complex constructibility of specialization, and the complex Euler equation. The submersion microsupport criterion and whole-complex parameter descent supply transport on a small scalar disk. Each application below checks its support and map; a global trivialization around a punctured complex orbit is not assumed.
 
 Throughout the linear proof, \(V\) is a finite-dimensional real vector space, \(k\) a characteristic-zero field, and \(F\in D^b_{\mathbb R\text{-c}}(k_V)\) is positively conic with perfect stalks. Fix
 \[
@@ -21,7 +23,7 @@ Let \(S\subset V\) be a shrinking space: it is invariant, \(u|_S\) has no real e
  u^{-1}S=S.
  \qquad\text{(2)}
 \]
-It does not require \(u|_S\) to be invertible. Put \(C_S=R\Gamma_S(V;F)\). Its action \(U_S\) is
+Indeed the quotient endomorphism on \(V/S\) has no zero eigenvalue and is therefore invertible. If \(uv\in S\), its quotient class vanishes, so the class of \(v\) vanishes as well; the reverse inclusion follows from invariance. This proves (2) without requiring \(u|_S\) to be invertible. Put \(C_S=R\Gamma_S(V;F)\). Its action \(U_S\) is
 \[
  \begin{aligned}
  C_S&\xrightarrow{u^*}
@@ -31,9 +33,11 @@ It does not require \(u|_S\) to be invertible. Put \(C_S=R\Gamma_S(V;F)\). Its a
  \end{aligned}
  \qquad\text{(3)}
 \]
-The first arrow is the supported ordinary pullback defined by the ordinary unit and the closed-support adjunction. No compact-support pullback by a singular map is being asserted.
+The first arrow combines the ordinary unit for \(u\) with the natural comparison
+\(u^{-1}R\mathcal Hom(k_S,F)\to R\mathcal Hom(k_{u^{-1}S},u^{-1}F)\).
+To define this comparison, pull back evaluation, identify \(u^{-1}k_S=k_{u^{-1}S}\), and curry. It is a natural morphism and need not be an isomorphism. Applying ordinary global sections and then \(\phi\) gives exactly (3). This construction is available for a singular \(u\); it uses no compact-support pullback by that map.
 
-For the closed inclusion \(i:S\hookrightarrow V\), put \(H=i^!F\). Constructible exceptional inverse image makes \(H\) perfect constructible, and equivariant exceptional inverse image makes it conic. Closed adjunction identifies \(C_S=R\Gamma(S;H)\); ordinary conic contraction identifies this complex with \(H_0\). It is therefore perfect.
+For the closed inclusion \(i:S\hookrightarrow V\), put \(H=i^!F\). Perfect exceptional inverse image makes \(H\) bounded constructible. The inclusion is equivariant for positive dilation. The normalized transport through exceptional inverse image therefore makes \(H\) conic: the two parameter submersions have the same positive relative orientation and shift. Closed adjunction identifies \(C_S=R\Gamma(S;H)\). The actual ordinary contraction map, restriction to the zero stalk, identifies this complex with \(H_0\), so it is perfect. Its endomorphism will be the one induced by (3), not an arbitrarily chosen action on an abstractly isomorphic stalk.
 
 The theorem to prove is
 \[
@@ -61,7 +65,7 @@ The plus ball is closed, and the minus ball open. Its intersection with its inve
  =u_+^{-1}\overline B_a^+\times B_b^-.
  \qquad\text{(7)}
 \]
-It is closed in \(Q_{a,b}\) and open in \(u^{-1}Q_{a,b}\). Closedness follows from the closed plus inverse ball; openness follows from the open minus ball inside its preimage. The adapted inequalities give the two containments required for this product identity.
+The inequalities give \(u_+^{-1}\overline B_a^+\subset B_a^+\) and \(B_b^-\subset u_-^{-1}B_b^-\), even when \(u_-\) is singular. Thus (7) is closed in \(Q_{a,b}\), by its closed plus factor, and open in \(u^{-1}Q_{a,b}\), by its open minus factor. These are relative statements, exactly in the order required for the supported cutoff. A zero-dimensional factor has both its open and closed ball equal to the point; all containments and maps then retain their stated meanings.
 
 Its compact closure has no fixed point other than zero. The supported cutoff theorem gives
 \[
@@ -69,16 +73,18 @@ Its compact closure has no fixed point other than zero. The supported cutoff the
  \quad\text{on }C_{Q_{a,b}}=R\Gamma_{Q_{a,b}}(V;F).
  \qquad\text{(8)}
 \]
-The operator is supported pullback to \(u^{-1}Q_{a,b}\), the coefficient map, open restriction to (7), then enlargement of its closed plus support to \(\overline B_a^+\).
+The coefficient for this application is \(R\Gamma_{Q_{a,b}}F\). It is perfect constructible, and its ambient closed support lies in the compact closure of the box. Its common correspondence support is consequently compact. Since \(u-1\) is invertible, there is no additional fixed point on that closure. The operator in (8) is ordinary supported pullback to \(u^{-1}Q_{a,b}\), the coefficient map, open restriction to (7), and enlargement of its closed plus support to \(\overline B_a^+\). These are the evaluation-defined inverse comparison and the two contravariant cutoff arrows of the supported cutoff theorem.
 
 We compare this complex with \(C_{V_-}\). Restrict to the open minus ball, then enlarge the zero plus support to the closed plus ball. These specified maps give
 \[
  \beta_{a,b}:C_{V_-}\longrightarrow C_{Q_{a,b}}.
  \qquad\text{(9)}
 \]
-Here \(C_{Q_{a,b}}\) can be calculated as
-\(R\Gamma(V_+\times B_b^-;R\Gamma_{\overline B_a^+\times B_b^-}F)\).
-This is open restriction followed by closed support, with ordinary sections on the open ambient set.
+Write \(O_b=V_+\times B_b^-\) and \(N_b=\{0\}\times B_b^-\). The first step of \(\beta_{a,b}\) is ordinary open restriction
+\(R\Gamma_{V_-}(V;F)\to R\Gamma_{N_b}(O_b;F|_{O_b})\).
+The second is the inclusion of closed support \(N_b\subset Q_{a,b}\) inside \(O_b\). It is induced contravariantly by \(k_{Q_{a,b}}\to k_{N_b}\). Locally closed support adjunction identifies the target with
+\(R\Gamma(O_b;R\Gamma_{Q_{a,b}}^{O_b}(F|_{O_b}))=C_{Q_{a,b}}\).
+Thus (9) uses ordinary sections on the open ambient set; the minus direction has acquired no compact-support degree.
 
 ## Duality proves stabilization of that support map
 
@@ -89,7 +95,12 @@ For a locally closed inclusion \(\ell:L\hookrightarrow V\), duality and its adju
  D_V(R\ell_*\ell^!F)=\ell_!\ell^{-1}D_VF.
  \qquad\text{(10)}
 \]
-For a closed inclusion this is exceptional inverse-image duality; for an open inclusion it is ordinary/open-extension duality. Factoring a locally closed inclusion proves the stated formula, with no dimension inserted into \(D_VF\). These are the normalized Verdier duality maps.
+One can verify this particular map directly. The bidual evaluation of \(F\) and tensor–Hom adjunction identify
+\[
+R\Gamma_LF=R\mathcal Hom(k_L,F)
+\simeq D_V(k_L\otimes D_VF).
+\]
+The first Hom input is bounded, and both \(k_L\) and \(F\) are perfect constructible, so the tensor is constructible and biduality applies. Dualizing the displayed evaluation comparison gives (10), since \(k_L\otimes D_VF=\ell_!\ell^{-1}D_VF\). This also fixes its naturality for the coefficient arrows of open extension and closed restriction. The dualizing complex already contains the ambient orientation and degree; no new dimension shift is inserted.
 
 Both the supported and compact complexes below are perfect. For a relatively compact locally closed set this follows from constructible operations with compact ambient closed support. For \(V_-\), ordinary contraction proves perfection of \(C_{V_-}\), and proper-support contraction proves perfection of \(R\Gamma_c(V_-;D_VF|_{V_-})\). Thus the general ordinary/proper duality identity and constructible biduality may be reversed to give
 \[
@@ -99,7 +110,9 @@ Both the supported and compact complexes below are perfect. For a relatively com
  \end{aligned}
  \qquad\text{(11)}
 \]
-In particular, we established the finite coefficient condition before inverting a duality map for nonproper ordinary sections.
+More explicitly, put \(M_L=k_L\otimes D_VF\). The evaluated global dual-section comparison gives
+\(C_L\simeq R\Gamma(V;D_VM_L)\simeq R\Gamma_c(V;M_L)^\vee\).
+For either \(L=Q_{a,b}\) or \(L=V_-\), the compact complex on the right is perfect by the preceding finiteness checks. Dualizing and using its actual coefficient bidual evaluation therefore gives (11), with the maps induced by the same pairing. For \(V_-\), this uses the conicity of the ordinary restriction of \(D_VF\) and its proper-support contraction; it does not require the inclusion or projection to be proper. Finiteness is established before reversing the duality comparison.
 
 Apply the forward stabilization theorem of the preceding lesson to \(D_VF\), using \(V_-\) as its open expanding coordinate and \(V_+\) as its closed coordinate. That theorem concerns a conic coefficient and a box; its proof requires no linear dynamics in those coordinates. For fixed \(a\), it gives
 \[
@@ -119,9 +132,19 @@ Let \(q:V\to V_+\) project along \(V_-\), and put \(G=Rq_!D_VF\). The conic proj
  \end{aligned}
  \qquad\text{(13)}
 \]
-The composite of (12) and (13) is the dual of (9). To check this, dualize its two defining steps. Ordinary restriction to the open minus ball becomes open extension in that coordinate. Enlargement of the zero plus support becomes restriction to the zero plus fibre. Those two maps commute: their inclusions concern different factors, and their interchange is the open/closed base-change identity. After integrating the minus coordinate, closed plus restriction is exactly the counit giving \(G|_0\) in (13). Thus the dual of (9) is this composite, not an unspecified isomorphism between its terms.
+Let \(K=D_VF\). Under the pairings (11), the dual of the closed support enlargement is closed restriction from \(Q_{a,b}\) to \(N_b\), and the dual of the ordinary open restriction is open extension from \(N_b\) to \(V_-\). The two possible orders form the square
+\[
+\begin{array}{ccc}
+R\Gamma_c(Q_{a,b};K)&\longrightarrow&R\Gamma_c(\overline B_a^+\times V_-;K)\\
+\downarrow&&\downarrow\\
+R\Gamma_c(N_b;K)&\longrightarrow&R\Gamma_c(V_-;K).
+\end{array}
+\]
+The horizontal maps are open extension in the minus coordinate; the vertical maps are closed restriction to the zero plus fibre. This is a Cartesian open/closed inclusion square. On its coefficient sheaves both paths are the same closed restriction followed by the open-extension counit. Tensoring with \(K\), then composing proper-support direct images, proves commutation with those actual maps.
 
-Equations (12) and (13) make the dual map invertible. Perfect biduality then makes \(\beta_{a,b}\) invertible. This proves the support stabilization.
+The lower path is \(\beta_{a,b}^\vee\) by evaluation naturality. The upper horizontal path is (12). Integrating along \(q\) identifies the upper right term with sections of \(G=Rq_!K\) on the compact closed ball. Proper-support base change identifies the vertical restriction with the ordinary restriction \(R\Gamma(\overline B_a^+;G)\to G_0\), followed by the fibre identification in (13). Thus the upper path is precisely (12)–(13), and proves the claimed identification of the dual map. No inverse to \(u_-\), nor a dual dynamics map, is used in this argument.
+
+Fix \(a>0\) first. The forward stabilization theorem then supplies one bound \(b_0(a)\) such that (12) is invertible for every \(b>b_0(a)\); it is a statement about conic coefficients and open/closed boxes, independent of dynamics. The conic projection theorem applies to simultaneous conicity of \(K\), as its hemisphere compactification proof shows; conicity along the individual fibres of \(q\) is not required. Equation (13) is invertible for every positive \(a\), by its actual conic closed-ball restriction. Hence the dual map is invertible for all these \(b\), and perfect biduality makes \(\beta_{a,b}\) invertible. If the minus factor is zero, the forward extension is already identity; if the plus factor is zero, the closed restriction is identity. This includes both degenerate splittings.
 
 ## The original shrinking operator commutes with stabilization
 
@@ -130,7 +153,11 @@ Since \(u^{-1}V_-=V_-\), (3) gives \(U_{V_-}\). We have an equality of actual ma
  \beta_{a,b}U_{V_-}=U_{Q_{a,b}}\beta_{a,b}.
  \qquad\text{(14)}
 \]
-Indeed, the zero plus support is contained in \(u_+^{-1}\overline B_a^+\). Pullback therefore sends its enlargement into the support enlargement used in the cutoff. In the minus coordinate, pulling back the open restriction produces restriction to \(u_-^{-1}B_b^-\); the cutoff then restricts to \(B_b^-\). The containment \(u_-B_b^-\subset B_b^-\) makes this the same restriction as taking (3) and restricting its result to \(B_b^-\). The coefficient map commutes with each restriction. Naturality and transitivity of the closed-support counits identify both plus enlargements with enlargement of zero support to \(\overline B_a^+\). These facts prove (14) before either map is an isomorphism.
+To verify the square, retain all three plus supports
+\(\{0\}\subset u_+^{-1}\overline B_a^+\subset\overline B_a^+\)
+and both minus opens \(B_b^-\subset u_-^{-1}B_b^-\). Pulling back \(\beta_{a,b}\) pulls the zero plus support to itself, because \(u_+\) is invertible, and pulls its open ambient set to \(V_+\times u_-^{-1}B_b^-\). The cutoff then restricts this minus open to \(B_b^-\). This is the same composite ordinary restriction as first applying \(U_{V_-}\) on the whole minus space and then restricting to \(B_b^-\).
+
+In the plus coordinate, the first path enlarges zero support directly to \(\overline B_a^+\); the second enlarges it through \(u_+^{-1}\overline B_a^+\). Transitivity of closed support inclusion identifies these maps. The evaluation-defined supported inverse comparison is natural in the support coefficient, and \(\phi\) is natural under both restrictions and support inclusions. Moving it through these squares therefore preserves the composite. The open/closed square used above commutes as well. These identities prove (14) as an equality of derived morphisms for every \(a,b>0\), before stabilization. Singular \(u_-\) changes none of the containments or the ordinary restriction maps.
 
 For sufficiently large \(b\), (9) is invertible. Equations (8) and (14) prove (4) for \(S=V_-\) in the hyperbolic case. Singular \(u_-\) causes no difficulty: the proof uses ordinary supported pullback, and duality was used to check \(\beta\), not to replace \(u_-\) by an inverse.
 
@@ -141,14 +168,14 @@ Let
  P=\left(\bigoplus_{\lambda\in[0,1)}V^\mathbb C_\lambda\right)\cap V.
  \qquad\text{(15)}
 \]
-Every shrinking space contains \(P\), and \(P\) is itself shrinking. For a shrinking \(S\), retain \(H=i^!F\) on \(S\). The inverse support comparison for \(u^{-1}S=S\), followed by \(\phi\), defines
+The spectral inclusions force every shrinking space to contain each whole generalized block with eigenvalue in \([0,1)\), including the zero block. Thus every such space contains \(P\). Its restriction has only these eigenvalues and its quotient has none of them, so \(P\) is itself shrinking and \(u^{-1}P=P\). These assertions include nilpotent blocks, not just eigenspaces. For a shrinking \(S\), retain \(H=i^!F\) on \(S\). The inverse support comparison for \(u^{-1}S=S\), followed by \(\phi\), defines
 \[
  \chi:u_S^{-1}H\longrightarrow H.
  \qquad\text{(16)}
 \]
-This is obtained by restricting the map
+Since \(R\Gamma_SF=i_*H\) and \(u^{-1}S=S\), the square of \(u\) with the closed inclusion \(i\) is Cartesian. Closed proper base change identifies \(u^{-1}i_*H\) with \(i_*u_S^{-1}H\). Now restrict
 \(u^{-1}R\Gamma_SF\to R\Gamma_S(u^{-1}F)\to R\Gamma_SF\)
-to \(S\); closed proper base change identifies its source with \(u_S^{-1}H\). Its ordinary section operator is (3).
+to \(S\), using the evaluation-defined first comparison and then \(\phi\). This constructs (16). Ordinary unit naturality and closed direct-image composition show that the ordinary pullback operator on \(R\Gamma(S;H)\) is exactly (3). No inverse of \(u_S\) enters.
 
 Put \(L=S/P\), \(A=u_{S/P}\), \(p:S\to L\), and \(G=Rp_*H\). The induced \(A\) has no real eigenvalue in \([0,\infty)\): the full primary blocks in \([0,1)\) have been removed, blocks greater than one were excluded from \(S\), and one is absent. In particular \(A\) is invertible. The conic projection theorem makes \(G\) perfect constructible.
 
@@ -166,7 +193,11 @@ The first arrow is defined by adjunction from the ordinary counit
  \longrightarrow u_S^{-1}H.
  \qquad\text{(18)}
 \]
-We do not declare this comparison invertible. The square need not be Cartesian when \(u|_P\) is singular, and no such assertion is needed.
+Write \(c:A^{-1}Rp_*H\to Rp_*u_S^{-1}H\) for that comparison and \(\epsilon_H:p^{-1}Rp_*H\to H\) for the ordinary counit. Its defining mate identity is
+\[
+\epsilon_{u_S^{-1}H}\,p^{-1}c=u_S^{-1}\epsilon_H,
+\]
+after the canonical identification \(p^{-1}A^{-1}=u_S^{-1}p^{-1}\). This fixes the comparison and the dynamics map, rather than only their objects. The square need not be Cartesian when \(u|_P\) is singular, so \(c\) is not declared invertible. All global and supported comparisons below use this mate in its given direction.
 
 Ordinary composition gives \(R\Gamma(L;G)=R\Gamma(S;H)=C_S\), with its operator (3). At zero, the closed-support adjunction gives
 \[
@@ -185,9 +216,13 @@ Here is the nonproper adjunction check. For the point inclusion \(e:0\hookrighta
  \end{aligned}
  \qquad\text{(20)}
 \]
-This proves the first map of (19) by Yoneda. The second is exceptional composition for the two closed inclusions. Transposing (18) through these same adjunctions gives the supported \(u_S\)-pullback on \(P\), followed by \(\chi\). Indeed \(u_S^{-1}P=P\), since \(A^{-1}(0)=0\). Exceptional composition and the support comparison in (16) identify it with \(U_P\). Consequently (19) intertwines the actual operators.
+This proves the first map of (19) by Yoneda, through ordinary adjunction and the closed point counit; properness of \(p\) has not been asserted. Exceptional composition for \(P\hookrightarrow S\hookrightarrow V\) gives the second map, with the composite closed-support counit.
 
-The positive-ray lemma from the preceding lesson says that the punctured ordinary trace on \(L\setminus0\) is zero. Its proof applies to the given \(\psi\), whether or not that coefficient map is invertible. Localization at zero, together with (19), therefore gives
+These comparisons also fix the actions. For ordinary sections, transpose (17) under \(p^{-1}\dashv Rp_*\). Its transpose is (18) followed by \(\chi\); the mate identity above and the ordinary triangular identity turn the resulting global operator into ordinary \(u_S\)-pullback followed by \(\chi\), namely \(U_S\). For point-supported sections perform the same transposition in (20). The inverse image of the point is \(P\), and \(u_S^{-1}P=P\) because \(A\) is invertible. The supported inverse comparison then becomes supported pullback along \(u_S\) on \(P\). The composite closed counit identifies the action of \(\chi\) with the action induced by \(\phi\) on \(R\Gamma_P(V;F)\). Naturality of evaluation, from which both support comparisons are curried, makes these identifications commute with the coefficient map. Thus the two identified operators are precisely \(U_S\) and \(U_P\), including the ordinary pullbacks.
+
+The positive-ray proof applies to this particular \(\psi\). Its quotient map \([v]\mapsto[Av]\) on the compact sphere of positive rays has no fixed point, because a fixed ray would give a positive real eigenvalue. Whole-complex radial descent identifies the ordinary punctured operator with the descended coefficient operator on that sphere. The compact correspondence trace there is zero, even when \(\psi\) is not invertible.
+
+All terms of the localization triangle at zero are perfect: the ordinary term is \(G_0\) by conic contraction, the point-supported term is a constructible costalk, and the punctured term is the finite sphere complex. The triangle is a triangle of endomorphisms, since \(A^{-1}(0)=0\) and (17) is the given coefficient map. With (19) it reads \(C_P\to C_S\to R\Gamma(L\setminus0;G)\xrightarrow{+1}\), carrying the two operators just identified. Trace additivity follows from the finite invariant long exact cohomology sequence: traces on consecutive image subspaces cancel. The zero punctured trace therefore gives
 \[
  \operatorname{str}(U_S)=\operatorname{str}(U_P).
  \qquad\text{(21)}
@@ -196,17 +231,21 @@ For \(L=0\) this is the identity. In the hyperbolic case \(V_-\) is shrinking, s
 
 ## Scalar deformation also preserves the supported operator
 
-Choose positive \(t\) near one with \(tu\) never having eigenvalue one. A fixed shrinking space \(S\) remains shrinking: its finitely many positive eigenvalues remain on their original side of one, and zero remains inside \([0,1)\). Normalized positive conic transport gives one family \(\phi_t:(tu)^{-1}F\to F\).
+Choose a small closed interval \(I\subset(0,\infty)\) about one such that \(tu\) never has eigenvalue one. The same \(S\) is shrinking for every parameter after making \(I\) smaller: its finitely many positive real eigenvalues and those of the quotient stay on their original side of one; zero stays zero, and negative or nonreal eigenvalues stay outside the positive real intervals. In particular \((tu)^{-1}S=S\) throughout \(I\).
 
-The linear-family class theorem gives constant \(C_0(\phi_t)\). The operators \(U_{S,t}\) have constant trace too. To prove this without assuming that \(u_S\) is proper or invertible, use the support \(S\times I\) on \(V\times I\). Its inverse image under \((v,t)\mapsto(tuv,t)\) is itself, because the quotient map is invertible for every \(t\). The ordinary unit, support comparison and family coefficient map consequently define its supported section operator over \(I\).
+The normalized positive transport of \(F\) is an isomorphism between inverse image by scalar multiplication and inverse image by projection, restricting to identity at one. Pull it back by \((v,t)\mapsto(uv,t)\), then compose with the pullback of \(\phi\). This gives a single family coefficient morphism for \(tu\), whose slice at one is the original \(\phi\).
 
-On every open parameter interval \(J\), closed-support adjunction and ordinary interval descent identify
+The linear-family class theorem gives constant \(C_0(\phi_t)\). The operators \(U_{S,t}\) have constant trace too. Put \(P=\mathrm{pr}_V^{-1}F\), and let \(h(v,t)=(tuv,t)\). The equality \(h^{-1}(S\times I)=S\times I\) holds for every parameter, even if \(u_S\) is singular. The ordinary unit for \(h\), the comparison obtained by pulling back evaluation, and the one family coefficient morphism define an endomorphism of \(R\Gamma_{S\times I}(V\times I;P)\).
+
+For the projection to \(V\), the supported parameter-unit comparison of the homotopy lesson applies to any closed support \(S\). Compactness of \(I\), ordinary fibre evaluation and the closed-support adjunction give
+\(C_S\xrightarrow{\sim}R\Gamma_{S\times I}(V\times I;P)\).
+Compactness of \(S\) is not used for this unit statement; it was needed there only for integrating a class. The same result on an open interval follows from whole-complex interval descent. In particular, on every open parameter interval \(J\), closed-support adjunction and ordinary interval descent identify
 \[
  R\Gamma_{S\times J}(V\times J;\mathrm{pr}_V^{-1}F)
  \simeq C_S.
  \qquad\text{(22)}
 \]
-The restriction maps are the identity under this identification: both are inverse slice restrictions after ordinary pullback. Hence the parameter direct image is the constant perfect complex \(C_S\). Its induced family endomorphism has identical slice maps by interval descent. This proves trace constancy for the supported operators.
+These are the maps induced by the same ordinary unit, and their inverses are the supported slice restrictions. Restriction in the parameter commutes with the unit, so all transition maps are identity under (22). More directly on the closed interval \(I\), every slice restriction inverts the one displayed unit. Supported pullback commutes with further slice pullback, since \(h i_t=i_t(tu)\), and the family coefficient map restricts to \(\phi_t\). Therefore each slice intertwines the family endomorphism with exactly \(U_{S,t}\). All these endomorphisms of the fixed perfect complex \(C_S\) are the same, proving trace constancy. No proper-support pullback by \(h\), and no inverse to \(u_S\), is needed.
 
 Choose \(t\) avoiding the finitely many values \(1/|\lambda|\) for nonzero eigenvalues. The hyperbolic theorem applies to \(tu\). Constancy of both sides now proves (4) for the original \(u\). The shrinking-space theorem is complete.
 
@@ -219,7 +258,9 @@ Let \(X\) now be a complex analytic manifold, \(F\in D^b_{\mathbb C\text{-c}}(k_
  \qquad \det_{\mathbb C}(1-df_x)\ne0.
  \qquad\text{(23)}
 \]
-The tangent-specialization theorem replaces this local number by the number for \(V=T_xX\), \(u=df_x\), and the actual induced coefficient map on \(K=\nu_xF\). It also gives \(K_0\simeq F_x\) and the normalized point-costalk comparison. Complex constructibility of specialization makes \(K\) complex constructible; specialization also makes it positively conic.
+The determinant condition makes \(x\) an isolated fixed point by the analytic inverse function theorem applied to \(f-\mathrm{id}\). Tangent specialization replaces its local number by that for \(V=T_xX\), \(u=df_x\), and
+\(\nu\phi:u^{-1}K\xrightarrow{\alpha_f}\nu_x(f^{-1}F)\xrightarrow{\nu_x\phi}K\), where \(K=\nu_xF\).
+The ordinary inverse comparison \(\alpha_f\) is kept in its given direction, even for singular \(df_x\). The natural zero-stalk restriction compares it with ordinary pullback at \(x\); hence the induced map on \(K_0\simeq F_x\) is \(\phi_x\). The point-costalk object comparison is also available, but its compatibility with a dynamical supported pullback will be used only in the local-isomorphism case below. Complex constructibility of specialization makes \(K\) complex constructible with perfect stalks, and real specialization makes it positively conic. These are separate inputs: the positive deformation chamber is not treated as a holomorphic open set.
 
 We need transport by a small complex scalar, not a globally trivial action of \(\mathbb C^*\). Write a cotangent covector as the real part of a complex covector \(\xi\). The conic Euler criterion gives \(\operatorname{Re}\langle v,\xi\rangle=0\) on \(\operatorname{SS}(K)\). Complex cotangent conicity also puts \(i\xi\) in that set; its Euler equation gives the imaginary part zero. Thus
 \[
@@ -229,17 +270,21 @@ We need transport by a small complex scalar, not a globally trivial action of \(
 \]
 The factor two in the alternative real-covector convention does not change this annihilator.
 
-Let \(D\subset\mathbb C^*\) be a sufficiently small contractible disk about one and \(a(v,\lambda)=\lambda v\), \(p(v,\lambda)=v\). Since \(a\) is a submersion, exact submersion pullback computes its microsupport. By (24), the parameter component of every pulled-back covector vanishes: differentiation in the two real parameter directions gives the real and imaginary parts of \(\langle v,\xi\rangle\). The horizontal microsupport criterion therefore makes \(a^{-1}K\) locally constant along the \(D\)-fibres of \(p\).
+Take a small rectangular coordinate neighborhood \(D_0\subset\mathbb C^*\) of one, and let \(a(v,\lambda)=\lambda v\), \(p(v,\lambda)=v\). The differential of the submersion \(a\) is
+\(da(\dot v,\dot\lambda)=\lambda\dot v+\dot\lambda v\).
+For \((\lambda v;\xi)\in\operatorname{SS}(K)\), its cotangent pullback has components \((\lambda\xi,\langle v,\xi\rangle)\), interpreted by real parts. Equation (24) at \(\lambda v\) says \(\lambda\langle v,\xi\rangle=0\); since \(\lambda\ne0\), the scalar component vanishes. Exact submersion pullback therefore puts all of \(\operatorname{SS}(a^{-1}K)\) in the horizontal cotangent bundle for \(p\). The submersion descent criterion now makes the whole bounded complex locally a pullback from \(V\), and its cohomology locally constant on every parameter fibre. This argument also includes \(v=0\).
 
-Whole-complex descent over this contractible two-dimensional parameter gives an isomorphism
+Apply whole-complex interval descent successively to the two real coordinates of \(D_0\), and then restrict to a smaller disk \(D\) about one. It gives the following isomorphism
 \[
  a^{-1}K\simeq p^{-1}K
  \quad\text{normalized to the identity at }\lambda=1.
  \qquad\text{(25)}
 \]
-One may use a rectangular coordinate disk and apply contractible-parameter descent twice; restriction to the smaller disk gives the same normalized map by uniqueness. This retains the extension data of the bounded complex. Nontrivial monodromy around a complete punctured orbit is allowed.
+Its actual construction is useful. Put \(B=a^{-1}K\). Parameter descent says that the ordinary counit \(p^{-1}Rp_*B\to B\) and evaluation at one \(Rp_*B\to K\) are isomorphisms. The map in (25) is the inverse of that counit followed by the pullback of evaluation. It restricts to identity at one by the ordinary triangular identity. Full faithfulness of parameter pullback, proved by the same descent, makes this normalized comparison unique. Thus it preserves the extension data of the whole bounded complex. On the zero orbit both restrictions are the constant complex \(K_0\); uniqueness makes (25) the identity there for every parameter. None of this asserts trivial monodromy around all of \(\mathbb C^*\).
 
-Shrink \(D\) so that \(\lambda u\) has no eigenvalue one throughout it. The induced coefficient morphism and (25) give one family for \(\lambda u\). Choose \(\lambda\in D\) such that each nonzero complex eigenvalue of \(\lambda u\) is nonreal. Only finitely many real lines in the scalar plane are forbidden, so such a choice exists arbitrarily close to one. A path in \(D\) joins it to one, and the linear-family theorem preserves the local contribution.
+There are only finitely many nonzero eigenvalues \(\mu\) of \(u\), and \(1/\mu\ne1\). Shrink \(D\) to avoid all these finitely many points; then \(\lambda u\) has no eigenvalue one throughout \(D\). Pull (25) back by \((v,\lambda)\mapsto(uv,\lambda)\), and follow it by the pullback of \(\nu\phi\). This constructs a single family coefficient morphism for \(\lambda u\), with the original morphism at \(\lambda=1\).
+
+For every nonzero \(\mu\), the condition \(\lambda\mu\in\mathbb R\) defines one real line in the scalar plane. Their finite union has empty interior. Choose \(\lambda\in D\) outside it, so every nonzero complex eigenvalue of \(\lambda u\) is nonreal. Zero eigenvalues are allowed and stay zero. Along a path in \(D\) from one to this value, the supported fixed locus is contained in the compact set \(\{0\}\times[0,1]\). The linear-family theorem applied to the one coefficient morphism consequently preserves the local contribution.
 
 ## Stalk trace, and costalk trace for a local isomorphism
 
@@ -248,16 +293,18 @@ For the rotated \(\lambda u\), the zero subspace is expanding: its restriction h
  \boxed{C_x(\phi)=\operatorname{str}(\phi_x).}
  \qquad\text{(26)}
 \]
-The point coefficient map in the parameter family is the original one: restriction of (25) to the fixed zero orbit is the identity, and a morphism of constant complexes on the connected disk has one slice map. The specialization zero-section comparison intertwines that map with \(\phi_x\).
+The point coefficient map in that family is the original one: (25) is identity on the zero orbit, and the pulled-back morphism there is the fixed endomorphism \((\nu\phi)_0\). The zero-stalk comparison for the actual \(\alpha_f\) identifies it with \(\phi_x\). This remains true when \(u\) has zero eigenvalues: the stalk of \(u^{-1}K\) at zero is \(K_0\), even though the full inverse image of the point may be larger than the point. No point-support pullback for a singular normal map was used to prove (26).
 
-If \(0\notin\operatorname{Ev}(df_x)\), the inverse function theorem makes \(f\) a local isomorphism at \(x\). Its point-support operator \(U_{\{x\}}\) is therefore defined by supported pullback near \(x\), followed by \(\phi\). The normal map \(u\) is invertible. After the same scalar rotation, the zero subspace is also shrinking, because every quotient eigenvalue is nonreal and zero is absent. The shrinking theorem gives
+If \(0\notin\operatorname{Ev}(df_x)\), the inverse function theorem supplies neighborhoods \(O,O'\) of \(x\) for which \(f:O\to O'\) is an analytic isomorphism. Its inverse image of \(x\) in \(O\) is just \(x\). Thus ordinary supported pullback, followed by \(\phi\), defines the local point-support operator \(U_{\{x\}}\). Excision identifies it with the point-supported complex on \(X\). Other preimages of \(x\) outside \(O\) do not affect this local component; no global injectivity is assumed. The normal map \(u\) is invertible. After the same scalar rotation, the zero subspace is also shrinking, because every quotient eigenvalue is nonreal and zero is absent. The shrinking theorem gives
 \[
  \boxed{C_x(\phi)
  =\operatorname{str}\bigl(U_{\{x\}}:
  R\Gamma_{\{x\}}(X;F)\longrightarrow R\Gamma_{\{x\}}(X;F)\bigr).}
  \qquad\text{(27)}
 \]
-To identify the action, the family inverse image of zero is zero at every parameter. Apply the supported parameter argument (22) with \(S=0\), using the transport (25). Its point-support operators are identical under the normalized slice maps. The tangent-specialization point-support comparison is built from the same closed counit and boundary connecting map; naturality for \(f^{-1}(x)=\{x\}\) near \(x\) intertwines the original and normal operators. Hence (27) concerns the original point-support action, without an extra parameter or orientation sign.
+For the scalar path, invertibility of \(\lambda u\) makes the inverse image of zero equal zero at every parameter. The supported parameter argument (22), applied to this path with \(S=0\) and the one morphism from (25), identifies all of its point-support operators with the original normal one.
+
+It remains to compare the nonlinear action with that normal action. In the local-isomorphism neighborhoods just chosen, the lifted map of normal deformations is an isomorphism and preserves the zero-normal parameter axis. Pullback of the closed point counit and of its localization triangle therefore commutes with the boundary connecting map that defines the point-costalk comparison. Exceptional composition identifies the original and normal support counits. This is the dynamical naturality square in the tangent-specialization proof for a local isomorphism; it intertwines \(U_{\{x\}}\) with the action of \(\nu\phi\) on \(R\Gamma_{\{0\}}(V;K)\). The positive parameter and exceptional boundary degrees already cancel in that comparison. Thus (27) concerns the original operator, without an additional orientation sign. An isomorphism of costalk objects alone would not identify these actions; the local-isomorphism hypothesis is used in this square.
 
 The additional invertibility condition has content. A branched holomorphic map can have a defined point-support action whose trace differs from the local contribution, as the fourth exercise shows.
 
@@ -265,7 +312,7 @@ The additional invertibility condition has content. A branched holomorphic map c
 
 Return to a real analytic manifold, constant \(F=k_X\), canonical coefficient map, and a transverse fixed point \(x\). Transversality is \(\det_{\mathbb R}(1-u)\ne0\), where \(u=df_x\). Tangent specialization gives \(k_V\) with its canonical map. Choose the minimal expanding space \(W\), the sum of the real generalized eigenspaces with eigenvalue greater than one, and set \(d=\dim_{\mathbb R}W\).
 
-Compact cohomology of \(W\) is its orientation line in degree \(d\), written \(k[-d]\) after an orientation is chosen. All eigenvalues of \(u|_W\) are positive, so \(\det(u|_W)>0\). Its proper pullback preserves the compact orientation generator. The expanding theorem gives \(C_x(\phi)=(-1)^d\).
+Compact cohomology of \(W\) is its orientation line in degree \(d\), written \(k[-d]\) after an orientation is chosen. The restriction \(u|_W\) is invertible and has determinant equal to the product of its positive eigenvalues with their algebraic multiplicities. Hence it has positive determinant. Its proper pullback acts by \(+1\) on the compact orientation line. Concretely, in a real Jordan basis one can first scale the nilpotent parts to zero and then move the positive diagonal entries to one. This is a path of invertible maps; the associated proper linear family preserves the normalized orientation class. Thus the actual coefficient operator is identity on that line in degree \(d\), and the expanding theorem gives \(C_x(\phi)=(-1)^d\). No invertibility of \(u\) on the complementary directions is required.
 
 This equals the determinant sign. A real eigenvalue greater than one contributes a negative factor to \(\det(1-u)\), with its algebraic multiplicity. Every other real eigenvalue contributes a positive factor, since one is excluded. Each nonreal conjugate pair contributes
 \[
@@ -300,7 +347,7 @@ This explains the positive constant-coefficient holomorphic contribution. The re
 
 Let \(u=-\mathrm{id}\) on \(\mathbb R\), with constant coefficient and its canonical map. Compare the expanding space zero and the shrinking space zero.
 
-**Solution.** Both spaces satisfy their spectral conditions because the quotient eigenvalue is \(-1\). The expanding complex is the stalk \(k\), with identity and trace one. The shrinking complex is the zero costalk \(k[-1]\). Reflection acts by \(-1\) on its degree-one orientation generator, so its alternating trace is also one. The complexes have nonzero cohomology in different degrees. Both compute \(C_0=1\).
+**Solution.** Both spaces satisfy their spectral conditions because the quotient eigenvalue is \(-1\). The expanding complex is the stalk \(k\), with identity and trace one. The shrinking complex is the zero costalk \(k[-1]\). To see the actual action, localization at zero has the diagonal map \(k\to k\oplus k\), with the two punctured rays ordered left and right. Its fibre has degree-one cohomology \((k\oplus k)/\operatorname{diag}k\). Reflection exchanges the two rays and therefore acts by \(-1\) on this quotient. Its alternating trace is \((-1)^1(-1)=1\), also one. The complexes have nonzero cohomology in different degrees. Both compute \(C_0=1\).
 
 ### A shrinking map can collapse a direction
 
@@ -308,7 +355,7 @@ Let \(u=-\mathrm{id}\) on \(\mathbb R\), with constant coefficient and its canon
 
 Take \(u=\operatorname{diag}(2,0,\tfrac12)\) on \(\mathbb R^3\), \(F=k_{\mathbb R^3}\), and \(S=\{x_1=0\}\). Calculate (3), including its degree.
 
-**Solution.** The restriction to \(S\) has eigenvalues zero and \(1/2\), and its quotient has eigenvalue two, so \(S\) is shrinking and \(u^{-1}S=S\). Exceptional restriction to the codimension-one plane is the normal orientation line shifted by \(-1\); its ordinary sections on \(S\) are \(k[-1]\). The normal map \(x_1\mapsto2x_1\) preserves the generator. Pullback on the constant ordinary sections on \(S\), even though it collapses the zero-eigenvalue coordinate, is the identity. Thus \(U_S\) has degree-one action \(+1\) and trace \(-1\). The shrinking theorem gives \(C_0=-1\), agreeing with \(\det(1-u)=(-1)(1)(1/2)<0\).
+**Solution.** The restriction to \(S\) has eigenvalues zero and \(1/2\), and its quotient has eigenvalue two, so \(S\) is shrinking and \(u^{-1}S=S\). Exceptional restriction to the codimension-one plane is the normal orientation line shifted by \(-1\); its ordinary sections on \(S\) are \(k[-1]\). This action can be computed without inverting the collapsing map. The complement of \(S\) consists of the two contractible half-spaces \(x_1<0\) and \(x_1>0\). Ordinary localization has the diagonal restriction \(k\to k\oplus k\), whose fibre is \(k[-1]\). Since \(u^{-1}S=S\), supported pullback gives a map of these localization triangles. It is identity on the ambient constant section and on the constants of each of the two half-spaces, because \(x_1\mapsto2x_1\) preserves their order. Collapsing the second coordinate changes neither section map. Thus \(U_S\) is identity on the quotient in degree one and has trace \(-1\), agreeing with the normal-orientation description. The shrinking theorem gives \(C_0=-1\), agreeing with \(\det(1-u)=(-1)(1)(1/2)<0\).
 
 ### The closed-plus open-minus box has one supported degree
 
@@ -316,7 +363,7 @@ Take \(u=\operatorname{diag}(2,0,\tfrac12)\) on \(\mathbb R^3\), \(F=k_{\mathbb 
 
 For \(u(x,y)=(2x,y/2)\) and constant coefficients, compute \(R\Gamma_{[-a,a]\times(-b,b)}(\mathbb R^2;k)\) and its cutoff trace.
 
-**Solution.** Localize the constant sheaf on the plus line into the closed interval and its two complementary rays. Ordinary sections give the diagonal map \(k\to k^2\). Its fibre has one copy of \(k\) in degree one, so the plus support complex is \(k[-1]\). The open minus factor contributes ordinary sections \(R\Gamma((-b,b);k)=k\); it contributes no compact-support degree. The product gives \(k[-1]\). Positive dilation in the plus normal direction preserves the supported generator, and contraction in the minus direction preserves the constant section. The cutoff trace is therefore \(-1\), equal to the shrinking-plane trace and \(C_0\).
+**Solution.** Localize the constant sheaf on the plus line into the closed interval and its two complementary rays. Ordinary sections give the diagonal map \(k\to k^2\). Its fibre has one copy of \(k\) in degree one, so the plus support complex is \(k[-1]\). The open minus factor contributes ordinary sections \(R\Gamma((-b,b);k)=k\); it contributes no compact-support degree. The product gives \(k[-1]\). The operator first pulls the plus closed support back to \([-a/2,a/2]\). On the two complementary rays, positive dilation preserves the ordered constants; closed support enlargement back to \([-a,a]\) also restricts each ordered complementary constant identically. Their quotient generator therefore has action \(+1\). In the minus direction, inverse image enlarges the open interval to \((-2b,2b)\), and the cutoff restricts back to \((-b,b)\); pullback and restriction both preserve its ordinary constant section. The tensor factors stay in plus-then-minus order. Hence the full cutoff operator is identity on \(k[-1]\), with trace \(-1\), equal to the shrinking-plane trace and \(C_0\).
 
 ### Branching separates local and point-support traces
 
@@ -324,7 +371,7 @@ For \(u(x,y)=(2x,y/2)\) and constant coefficients, compute \(R\Gamma_{[-a,a]\tim
 
 For \(f(z)=z^2\) near zero in \(\mathbb C\), with constant coefficient and canonical map, calculate the stalk, local and point-support traces. Explain the extra hypothesis in (27).
 
-**Solution.** The derivative at zero is zero, so one is absent. The stalk map is the identity on \(k\), and (26) gives local contribution one. The point preimage is \(\{0\}\), so a point-support operator is defined, although \(f\) is branched. Localization identifies \(H^2_{\{0\}}(\mathbb C;k)\) with \(H^1(\mathbb C^*;k)\) near zero. On a small circle, \(z\mapsto z^2\) has degree two, so pullback multiplies the degree-one circle class, and hence the degree-two support generator, by two. The costalk is \(k[-2]\) and its trace is two. Thus the costalk trace need not equal the local contribution when \(df_x\) has a zero eigenvalue. The local-isomorphism condition in (27) excludes this branching.
+**Solution.** The derivative at zero is zero, so one is absent. The stalk map is the identity on \(k\), and (26) gives local contribution one. The point preimage is \(\{0\}\), so a point-support operator is defined, although \(f\) is branched. Localization identifies \(H^2_{\{0\}}(\mathbb C;k)\) with \(H^1(\mathbb C^*;k)\) near zero. Choose small source and target disks for which \(z^2\) maps the punctured source disk to the punctured target disk. Supported pullback is the morphism of their localization triangles induced by the ordinary unit and the canonical coefficient map. The connecting isomorphism from punctured degree-one cohomology to point-supported degree two therefore intertwines these maps. On an oriented circle the map has degree two: a positively oriented source loop traverses the target twice. Its pullback multiplies the degree-one circle class, and hence the degree-two support generator, by two. The costalk is \(k[-2]\) and its trace is two. Thus the costalk trace need not equal the local contribution when \(df_x\) has a zero eigenvalue. The local-isomorphism condition in (27) excludes this branching.
 
 ### Puncture monodromy survives scalar transport
 
@@ -338,7 +385,7 @@ Let \(j:\mathbb C^*\hookrightarrow\mathbb C\), let \(L\) have finite-dimensional
  \simeq R\Gamma(S^1;L)[-1].
  \qquad\text{(32)}
 \]
-The circle complex is \([M\xrightarrow{T-1}M]\) in degrees zero and one. Under the chosen continuation its action is represented, up to the corresponding homotopy, by \(B\) on both terms. The shifted compact complex has degrees one and two; its trace is \(-\operatorname{tr}B+\operatorname{tr}B=0\). Equivalently, the traces on \(\ker(T-1)\) and \(\operatorname{coker}(T-1)\) agree by the invariant kernel/image exact sequences. The same cancellation holds after replacing \(B\) by \(BT^q\). This calculation allows nontrivial \(T\); no global trivialization of complex scaling was used.
+The circle complex is \([M\xrightarrow{T-1}M]\) in degrees zero and one. Under the chosen continuation its action is represented, up to the corresponding homotopy, by \(B\) on both terms. The shifted compact complex has degrees one and two; its trace is \(-\operatorname{tr}B+\operatorname{tr}B=0\). Equivalently, the traces on \(\ker(T-1)\) and \(\operatorname{coker}(T-1)\) agree by the invariant kernel/image exact sequences. The same cancellation holds after replacing \(B\) by \(BT^q\). Here the compact calculation is a valid check of the local number for every allowed \(a\). The map \(z\mapsto az\) is a local isomorphism, so (27) gives the point-support trace. The conic support-inclusion isomorphism identifies that point-support complex with \(R\Gamma_c(\mathbb C;F)=R\Gamma_c(\mathbb C^*;L)\), and commutes with proper pullback by this scalar homeomorphism and the coefficient map. Thus the operator just computed is the same supported operator; no general compact-cohomology trace formula for arbitrary noncompact coefficient support is being assumed. Nontrivial \(T\) is retained throughout, and no global trivialization of complex scaling was used.
 
 ### Graded point coefficients need their alternating trace
 
@@ -374,8 +421,6 @@ Let \(F=k_{[0,\infty)}\) on \(\mathbb R\) with its canonical positive-dilation m
 
 ## Source context and the next chapter
 
-These results are the shrinking case and the complex fixed-point traces in Kashiwara's microlocal Lefschetz fixed-point formula for constructible sheaves. The supported proof above supplies the stabilization map, the singular shrinking comparison, the scalar-family action and the complex parameter descent.
+Y. Ike, [*Hyperbolic localization via shrinking subbundles*](https://arxiv.org/abs/1602.04651v3), arXiv 1602.04651v3, 5 May 2017, §4, Definitions 4.3–4.4, specifies shrinking subbundles and their supported operator. Proposition 4.5 states a local component trace formula and omits its proof. Proposition 4.6 compares the expanding and shrinking trace functions. These results concern normal bundles over smooth fixed components. The present point proof supplies the reversed-box stabilization and its dynamical compatibility, including a singular map on the minimal shrinking block.
 
-Yuichi Ike, [Hyperbolic localization via shrinking subbundles](https://arxiv.org/abs/1602.04651v3), develops the shrinking construction for higher-dimensional fixed components. Its setting supplies useful further context; the point theorem and all coefficient maps used here have been proved in this course.
-
-These three selected point targets are now taught relative to the stated written prerequisites. The course continues with constructible functions and Lagrangian cycles in §9.7, then the assigned perverse-sheaf and differential-system chapters. Full finer atomization, lower geometric proofs, existing-lesson reconciliation.
+The complex application uses specialization and a normalized scalar family on a small disk. Its point-costalk formula requires a local isomorphism; the branched example explains that hypothesis. The next chapter relates constructible functions to Lagrangian cycles.

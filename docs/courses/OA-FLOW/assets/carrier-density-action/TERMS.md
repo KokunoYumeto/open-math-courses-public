@@ -1,0 +1,1 @@
+New original mathematical diagram, exact interval data and plotting source are CC0 to the extent of rights held. No external images or AI-generated bitmap assets. Matplotlib retains its license. Text uses DejaVu Sans under the reproduced font license.

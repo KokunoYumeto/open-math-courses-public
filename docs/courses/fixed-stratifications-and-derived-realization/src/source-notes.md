@@ -44,8 +44,8 @@ The topology used for local-coefficient cohomology, the neighborhood computation
 
 ## Reuse and changes
 
-Original AI expression, added explanatory checks, exercises and solutions, and the reader implementation are dedicated under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Human source material and any protected adaptation of it retain their source terms: Lunts–Schnürer, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with the attribution and modification notice above. The CC0 dedication is limited to the original AI contribution and does not remove the attribution or other terms applicable to a human component.
+The text, explanatory checks, exercises and solutions, and the reader implementation are dedicated under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). They are written independently; the results and proof routes are credited to Lunts–Schnürer above.
 
-The source document is not bundled. The versioned reference above identifies the human source; the teaching prose, expanded calculations and complete solutions in this collection carry the component terms stated here.
+The source document is not bundled; the versioned reference above identifies it.
 
 [Reading index](../index.html) · [Reuse terms](../LICENSE.txt) · Provenance

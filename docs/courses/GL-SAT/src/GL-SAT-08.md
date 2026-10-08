@@ -4,7 +4,7 @@
 
 Two modifications at different points are independent. When their points collide, their common endpoint remembers convolution. We prove that the global sheaf connecting these situations is uniquely determined by its restriction to different points. Exchanging those points therefore constructs commutativity. Its action on cohomology includes the usual signs of graded tensor products; a component sign converts it to the symmetry of ordinary vector spaces.
 
-Let \(G/\mathbb C\) be connected reductive and let \(\Lambda\) be a field of characteristic zero. All perverse sheaves have finite Schubert support. Write \(\mathcal S_G\) for the classical Satake heart, \(O_\lambda=\operatorname{Gr}^{\lambda}\), \(Z_\lambda=\overline{O_\lambda}_{\mathrm{red}}\), and \(d_\lambda=\langle2\rho,\lambda\rangle\). The affine Grassmannian itself retains its full scheme structure; reduced Schubert supports are the varieties on which these classical sheaves live.
+Let \(G/\mathbb C\) be connected reductive and let \(\Lambda\) be a field of characteristic zero. All perverse sheaves have finite Schubert support. Sections 1–9 use these classical coefficients. Appendix A proves the fixed-affine-line fusion, graded interchange, component sign and categorical trace over every allowed algebraically closed ground field with finite rational coefficients. Appendix B constructs the full formal-coordinate action and proves independence of the curve, collision point and coordinate. Write \(\mathcal S_G\) for the classical Satake heart, \(O_\lambda=\operatorname{Gr}^{\lambda}\), \(Z_\lambda=\overline{O_\lambda}_{\mathrm{red}}\), and \(d_\lambda=\langle2\rho,\lambda\rangle\). The affine Grassmannian itself retains its full scheme structure; reduced Schubert supports are the varieties on which these classical sheaves live.
 
 We use Beauville–Laszlo gluing and the moduli interpretation, §§1–3 and Theorem 8.1, for arbitrary-base moving modifications; Convolution and rigidity, §§1–6 and 9, for the bounded correspondences, semismallness and monoidal cohomology; and The Satake category, equations (2.4) and (6.1), for descent over contractible parameters and exact faithful cohomology. General IC parity and semisimplicity are not used. The strict extension criterion is proved in Intermediate extensions and intersection complexes, §1.
 
@@ -308,6 +308,615 @@ Its two simples have no maps between them, and each simple's endomorphisms are s
 *Solution.* Choose finite bounds for the objects. The substitution estimate of §6 makes their coordinate actions factor through a finite \(\mathscr A_r\); the finite group \(J_mG\rtimes\mathscr A_r\) is connected and preserves their orbit strata. Parameter descent gives normalized local transport of the whole perverse complex. The proper action homeomorphism identifies its total cohomology system with the constant system, so every transport loop acts trivially on cohomology. Exact faithfulness from Lesson 6 makes its perverse automorphism the identity, including any possible extension automorphism. Thus transport descends to the unique coordinate-equivariant structure and its cocycle, without semisimplicity.
 
 An étale coordinate at the chosen curve point identifies a neighbourhood with selected formal branches of the affine line. For several nearby sections exclude distinct sections with equal coordinate images. The selected section in each inverse-image graph is open and closed; removing other branches makes all divisor thickenings isomorphic to the affine-line thickenings, by the étale open-immersion criterion. This gives a comparison on completed and punctured neighbourhoods over every parameter ring. Gluing with the prescribed trivial complement compares both the endpoint and chain functors. The finite-coordinate structures compare their descended coefficient complexes. Proper base change then compares the global images, whose strict boundary bounds identify them with the same intermediate extension. Their open exchange maps agree, so uniqueness identifies their extensions, and diagonal restriction identifies the local constraint. Two choices of coordinates differ by a coordinate substitution; its proved cocycle identifies those comparisons on overlaps. Two pointed curves compare with the affine line and hence with each other. All comparisons commute with composition, since they are restriction and uniquely effective gluing. This proves the asserted independence. \(\square\)
+
+## Appendix A. Actual rational fusion and the component-adjusted symmetry
+
+Let \(k\) be algebraically closed, let \(\ell\) be invertible in \(k\), and let \(E/\mathbf Q_\ell\) be finite. Use the genuine rational Satake heart and the actual convolution, rigidity and graded tensor-cohomology comparisons proved in Convolution and rigidity, Appendices A–C. The construction here uses the fixed coordinate \(t\) on the affine line. It proves sheaf-level fusion, the graded interchange and the component adjustment giving the ordinary vector symmetry. Appendix B supplies the rational comparison for arbitrary curves and full formal coordinates.
+
+Labels A.1–A.5 refer to this appendix. Links labeled Lesson 7 refer to its earlier rational convolution and tensor-cohomology proofs; links labeled Lesson 6 refer to its supported orientation, genuine category and exact faithful cohomology. Bare coefficient-operation locators M, O, P and Q are to Semi-infinite orbits and weight functors. The full monic endpoint construction is already in §1 above; its formal lattice, gluing and affine-hull inputs are proved in Loop groups and the affine Grassmannian, Lemmas 2.1,4.4,7.2, and Beauville–Laszlo gluing and the moduli interpretation, §§1–3 and Theorem 8.1. The component invariant is proved in Orbits and Schubert varieties, §5.
+
+For freely accessible comparison reading, see Mirković–Vilonen, [Geometric Langlands duality and representations of algebraic groups over commutative rings](https://arxiv.org/abs/math/0401222v5), §§5–6, and Zhu, [An introduction to affine Grassmannians and the geometric Satake equivalence](https://arxiv.org/abs/1603.05593v2), §§5.2,5.4. The supported divisor map below is defined before checking product charts, and the point interchange fixes the single common base factor \(E_U[2]\). The trace calculation proves directly why an odd object's negative naive dimension cannot be carried to an ordinary vector dimension.
+
+### A.1. Actual divisor restriction for the moving coefficient charts
+
+The following argument uses the specific coefficient charts of the moving source. It proves their divisor comparison directly from smooth trace and proper adjunction. It does not invoke a general theorem asserting purity for an arbitrary rational ULA complex.
+
+![The actual supported divisor comparison passes through proper image and gives strict intermediate-extension fusion](assets/rational-fusion-divisor-comparison.png)
+
+Lemma A.1.1.1 defines \(\theta_A\) by pulling the positive base class, tensoring the coefficient and transposing its supported counit. Smooth line transitivity identifies that map on the fixed-product charts; the actual ordinary and supported proper mates carry it to the endpoint image. Lemma A.1.2.1 uses closed perverse degrees \(-1,+1\) to prove the strict extension. Theorem A.3.1.1 identifies its diagonal fiber with convolution, and Theorem A.3.2.1 extends point exchange with its fixed common base normalization. Editable SVG source.
+
+#### A.1.1. The supported class and its product-chart comparison
+
+Put \(B=\mathbf A^2_{a,b}\), \(D=\{b-a=0\}\), and let \(i_B:D\hookrightarrow B\). For a separated finite-type \(q:Y\to B\), write \(i_Y:Y_D\hookrightarrow Y\). The positive supported class of this base divisor gives the actual morphism
+\[
+u_B:i_{B*}E_D(-1)[-2]\longrightarrow E_B.
+\tag{A.1.1.1}
+\]
+In coordinates \((a,\delta=b-a)\), it is the zero-section counit for the trivial line over \(\mathbf A^1_a\). Its normalization is Lesson 6, Lemma A.1.1.1 and the Lesson 6, relative Kummer comparison A.1.2.1. These are maps with support, before forgetting that support.
+
+Actual closed pullback GL-SAT-05 M.6.1.2 pulls (A.1.1.1) to
+\(u_Y:i_{Y*}E_{Y_D}(-1)[-2]\to E_Y\).
+For bounded rational constructible \(A\) on \(Y\), tensoring it with this map, and using the actual closed projection identity O.1.2.1, defines
+\[
+i_{Y*}i_Y^*A(-1)[-2]\longrightarrow A.
+\tag{A.1.1.2}
+\]
+Its transpose in the supported adjunction is the specified divisor comparison
+\[
+\theta_{Y,A}:i_Y^*A(-1)[-2]\longrightarrow i_Y^!A.
+\tag{A.1.1.3}
+\]
+It is natural in \(A\), fixed by the positive base orientation, and compatible with étale restriction. The map is defined without a local product assumption.
+
+**Lemma A.1.1.1.** Suppose an étale cover \(U_j\to Y\) has étale maps over \(B\),
+\[
+h_j:U_j\longrightarrow X_j\times B,
+\]
+and specified coefficient identifications
+\(A|_{U_j}=h_j^*\operatorname{pr}_{X_j}^*F_j\)
+for bounded rational constructible \(F_j\) on separated finite-type \(X_j\). Then (A.1.1.3) is an isomorphism. If \(m:Y\to Z\) is proper over \(B\), its actual proper image \(K=Rm_*A\) has the same isomorphism
+\[
+\theta_{Z,K}:i_Z^*K(-1)[-2]\xrightarrow{\sim}i_Z^!K.
+\tag{A.1.1.4}
+\]
+Here \(i_Z:Z_D\hookrightarrow Z\), and both maps are those transposed from the pulled base class (A.1.1.1). No product charts on \(Z\) are required.
+
+**Proof.** First work on \(X\times B\). Change coordinates from \((a,b)\) to \((a,\delta)\), and put \(T=X\times\mathbf A^1_a\). Let \(v:T\times\mathbf A^1_\delta\to T\) be the line projection and \(s:T\hookrightarrow T\times\mathbf A^1\) its zero section. The coefficient is \(v^*F_T\), where \(F_T\) is the pullback of \(F\) to \(T\). Smooth trace and coherent exceptional transitivity, GL-SAT-05 P.2.4.1, give
+\[
+v^!F_T=v^*F_T(1)[2],\qquad
+s^!v^!F_T=(vs)^!F_T=F_T.
+\]
+Cancel the invertible Tate line and the shift, using the counit-defined invertible-line comparison P.3.4.1. Thus
+\[
+s^!v^*F_T=F_T(-1)[-2].
+\tag{A.1.1.5}
+\]
+This also specifies the section counit: after applying \(Rv_!\) its composite with the line trace is the identity of \(F_T\), by transitivity for \(vs=1\).
+
+We check that (A.1.1.5) inverts the defined map (A.1.1.3), rather than a map with an undetermined scalar. The class (A.1.1.1), pulled to \(T\), is the positive zero-section counit. Tensor it with \(v^*F_T\). The actual projection comparison O.4.3.1 identifies its image under the line trace with \(1_{F_T}\) tensored with the trace of that positive point class, which is \(1\). Under \(Rv_!\dashv v^!\), this composite corresponds to the identity on \(Rv_!s_*F_T=F_T\). Its transpose is therefore exactly the section counit for \(v^!F_T\); canceling the Tate line gives (A.1.1.2) for \(v^*F_T\). Transposing under \(s_*\dashv s^!\) identifies (A.1.1.3) with (A.1.1.5)'s inverse. This uses the trace-normalized map, not only the displayed shifts.
+
+Pull this computation along \(h_j\). Étale pullback preserves the supported comparison and its counit: the slice restriction has exact extension-by-zero left adjoint and therefore preserves injective module resolutions for the supported right adjoint. Equivalently it is the étale, relative-dimension-zero instance of the actual exceptional and dual exchanges P.3.3.1. The closed pullback square preserves (A.1.1.1) and the closed projection identity, so the resulting comparison is exactly \(\theta_{Y,A}\) on \(U_j\). It is invertible there. These charts are a conservative étale cover; the cone of the constructible comparison is consequently zero. This proves the first assertion and also shows that overlapping coefficient identifications cannot change its normalization: the map was defined globally by the base class.
+
+For the second assertion, actual proper base change O.4.1.1 gives
+\[
+i_Z^*Rm_*A=Rm_{D*}i_Y^*A.
+\tag{A.1.1.6}
+\]
+There is also the actual supported-image comparison
+\[
+i_Z^!Rm_*A=Rm_{D*}i_Y^!A.
+\tag{A.1.1.7}
+\]
+To prove it, test against a constructible \(H\) on \(Z_D\). The ordinary pullback adjunction, closed pullback M.6.1.2 and the supported adjunction give, in order,
+\[
+\begin{aligned}
+R\operatorname{Hom}(H,i_Z^!Rm_*A)
+&=R\operatorname{Hom}(i_{Z*}H,Rm_*A)\\
+&=R\operatorname{Hom}(m^*i_{Z*}H,A)\\
+&=R\operatorname{Hom}(i_{Y*}m_D^*H,A)\\
+&=R\operatorname{Hom}(m_D^*H,i_Y^!A)\\
+&=R\operatorname{Hom}(H,Rm_{D*}i_Y^!A).
+\end{aligned}
+\]
+Enhanced Yoneda supplies (A.1.1.7). These identifications retain the counits, since each line is its stated adjunction or the actual closed pullback map.
+
+Under (A.1.1.6)–(A.1.1.7), the map \(\theta_{Z,K}\) is \(Rm_{D*}\theta_{Y,A}\). Indeed its defining supported counit tensors the proper image with the pulled base class. Proper projection rewrites that tensor as the proper image of the coefficient tensored with the same class on \(Y\). The closed pullback identity identifies the support objects; the image counit and the closed counit are the two compositions in the preceding mapping calculation. Transposing them gives exactly \(Rm_{D*}\theta_{Y,A}\). Derived proper image preserves isomorphisms, so the already proved isomorphism gives (A.1.1.4). Every comparison is canonical and natural in coefficient maps and proper image composition. □
+
+#### A.1.2. The strict divisor criterion for intermediate extension
+
+**Lemma A.1.2.1.** Let \(i:Z_D\hookrightarrow Z\) and \(j:Z_U\hookrightarrow Z\) be a closed-open pair of separated finite-type schemes. Let \(F\) be bounded rational constructible. Suppose
+\[
+j^*F\text{ is perverse},\qquad
+i^*F[-1]\text{ is perverse},\qquad
+i^!F\simeq i^*F(-1)[-2].
+\tag{A.1.2.1}
+\]
+Then \(F\) is perverse and is the unique intermediate extension of its specified open restriction:
+\[
+F=j_{!*}j^*F.
+\tag{A.1.2.2}
+\]
+It has no nonzero perverse subobject or quotient supported on \(Z_D\). The identification is natural in open comparisons which extend to such objects.
+
+**Proof.** Write \(G=i^*F[-1]\), a perverse object by hypothesis. Thus \(i^*F=G[1]\) lies in perverse degrees at most \(-1\). The exceptional comparison gives
+\(i^!F=G(-1)[-1]\), in perverse degrees at least \(1\). A Tate line preserves the support conditions for the perverse structure and has degree zero.
+
+The closed-open upper support criterion puts \(F\) in the upper perverse half: its restrictions to both pieces are in that half, and ordinary closed/open inverse image preserves the cohomology support calculations. The lower criterion is the corresponding statement for \(i^!\) and \(j^*\); it follows by dualizing the upper criterion with the actual dual exchanges and biduality. Hence \(F\) is perverse. These are the perverse gluing conditions proved in the earlier programme lesson Intermediate extensions and intersection complexes, §1.
+
+Any perverse object supported on the closed part is \(i_*S\) for a perverse \(S\), by the actual closed equivalence and closed-open triangle. A map from it to \(F\) is
+\[
+\operatorname{Hom}(i_*S,F)=\operatorname{Hom}(S,i^!F)=0,
+\]
+by perverse orthogonality from degrees at most zero to degrees at least one. A map from \(F\) to it is
+\[
+\operatorname{Hom}(F,i_*S)=\operatorname{Hom}(i^*F,S)=0,
+\]
+by orthogonality from degrees at most minus one to degrees at least zero. This proves the stated absence of closed subobjects and quotients.
+
+For completeness, use the actual open unit and counit to obtain
+\[
+{}^pH^0j_!j^*F\longrightarrow F
+\longrightarrow{}^pH^0Rj_*j^*F.
+\tag{A.1.2.3}
+\]
+The cokernel of the first map and the kernel of the second restrict to zero on the open, since those restrictions are identities and open restriction is perverse exact. They are therefore closed supported. The preceding vanishing forces the first map to be onto and the second injective. The image of their composite is exactly \(F\), which is the definition of \(j_{!*}j^*F\). It identifies its open restriction with the specified identity.
+
+Intermediate extension is fully faithful on these open perverse objects, by the same image and adjunction argument: a map is extended by the open image construction, and a map restricting to zero has image supported on the closed part, hence zero. Therefore any extension of a given open comparison between objects satisfying (A.1.2.1) is unique, and the identification (A.1.2.2) is natural. This proof never identifies two global derived morphisms merely because their restrictions to an étale cover agree; the actual supported comparison is supplied separately by Lemma A.1.1.1. □
+
+### A.2. A finite global endpoint for the moving convolution source
+
+#### A.2.1. The uniform bound and the actual proper morphism
+
+**Lemma A.2.1.1.** For the two-point source \(\mathcal Y\) of Lesson 7, Theorem C.4.1.1, choose faithful matrix bounds \(N_1,N_2\) on the two supports. There is a separated finite-type endpoint scheme \(Z_M\to B=\mathbf A^2\), with \(M=N_1+N_2\), and an actual proper map over \(B\)
+\[
+m_B:\mathcal Y\longrightarrow Z_M.
+\tag{A.2.1.1}
+\]
+Its endpoint functor retains all parameter algebras and nilpotents. Off the diagonal it is the product endpoint of the two independent modifications; on the diagonal it is the local convolution endpoint. Increasing \(M\) gives the usual closed finite support comparison. One common such stage can be chosen for both input orders, and swapping \(a,b\) acts on it by relabeling the two sections.
+
+**Proof.** Write \(f_1=t-a\), \(f_2=t-b\), and \(f=f_1f_2\). The all-ring monic moving-endpoint construction in §1 of this lesson gives the finite separated endpoint stage at bound \(f^{\pm M}\). We spell out the inputs that ensure its applicability here. Successive monic division identifies
+\[
+\widehat {R[t]}_{(f)}=R[[u]][t]/(f(t)-u),\qquad u=f(t),
+\tag{A.2.1.2}
+\]
+with basis \(1,t\) over \(R[[u]]\). A bounded projective matrix lattice is encoded in the finite projective Grassmannian of \(f^{-M}\widehat A^d/f^M\widehat A^d\); stability under \(t\) is a closed matrix condition. The splitting and operator-kernel calculation of that section, using GL-SAT-02 Lemma 2.1 and the monic resolution \(t-T\), recover exactly the full projective lattice from the finite quotient. No assertion about flat completion of an arbitrary module is used. For \(G\), the faithful quotient's equivariant affine hull, its negative-coefficient equations and its modulo-\(f\) open-locus minors cut out a locally closed finite stage. Their all-ring argument in that section uses GL-SAT-02 Lemmas 4.4 and 7.2 and the gluing equivalence of GL-SAT-03 §§1–3. It uses no complex topology or characteristic-zero exponential. Thus the same construction applies over the present allowed ground field and gives the asserted separated finite-type \(Z_M\).
+
+The universal last bundle on \(\mathcal Y\times\mathbf A^1_t\) and its away-from-\(f\) frame define the endpoint transformation. Its bound holds on every parameter algebra. In the faithful representation write \(\mathcal E_0\) for the trivial bundle, \(\mathcal E_1\) for the first modification and \(\mathcal E_2\) for the last. Through their specified away frames, the first support bound gives
+\[
+f_1^{N_1}\mathcal E_0\subset\mathcal E_1
+\subset f_1^{-N_1}\mathcal E_0.
+\]
+The relative second support gives
+\[
+f_2^{N_2}\mathcal E_1\subset\mathcal E_2
+\subset f_2^{-N_2}\mathcal E_1.
+\]
+These inclusions are checked on finite formal-frame charts and agree on overlaps because the relative lattice conditions are invariant under frame change. The gluing equivalence makes them inclusions of the global bundles, not only of geometric lattices. Composing gives the bounds with \(f_1^{N_1}f_2^{N_2}\). Since \(M\geq N_1,N_2\), multiplication by the remaining nonnegative powers of the two monic polynomials gives
+\[
+f^M\mathcal E_0\subset\mathcal E_2
+\subset f^{-M}\mathcal E_0.
+\tag{A.2.1.3}
+\]
+All inclusions retain base change, by their finite quotient and bundle descriptions. They place the endpoint in the represented \(Z_M\), so Yoneda gives the actual morphism (A.2.1.1).
+
+Lesson 7, Theorem C.4.1.1 proves \(\mathcal Y\to B\) proper. The target \(Z_M\to B\) is separated. The graph of \(m_B\) is therefore closed in \(\mathcal Y\times_BZ_M\); its projection to \(Z_M\) is the base change of the proper map \(\mathcal Y\to B\). Their composite \(m_B\) is proper. This establishes properness without requiring \(Z_M\) itself to be proper over \(B\).
+
+On \(a\ne b\), the Chinese remainder and away-frame gluing give the two independent endpoint modifications, as in GL-SAT-03 Theorem 8.1. On \(a=b\), the \(f\)-adic and \((t-a)\)-adic filtrations are cofinal since \(f=(t-a)^2\); the endpoint is the same local final bundle. Translation by \(a\) identifies its finite stage with the corresponding local stage times the diagonal parameter. This equality is on the full moduli functor. Enlargement of bounds is the same finite lattice/support inclusion. Finally \(f_1f_2=f_2f_1\), so the finite target equations and bounds are invariant under relabeling the two points. This supplies the common stage and its swap, including on the diagonal over arbitrary algebras. □
+
+### A.3. Rational sheaf-level fusion and the graded symmetry
+
+#### A.3.1. The proper family is the strict intermediate extension
+
+**Theorem A.3.1.1.** Let \(P,Q\) be genuine finite-\(E\) rational Satake objects. On a common finite endpoint stage of Lemma A.2.1.1 put
+\[
+K_{P,Q}=Rm_{B*}\mathcal A,\qquad
+\mathcal F_{P,Q}=K_{P,Q}[2],
+\tag{A.3.1.1}
+\]
+where \(\mathcal A\) is the unshifted moving coefficient of Lesson 7, Theorem C.4.1.1. The complex \(K_{P,Q}\) is ULA over \(B\). The shifted \(\mathcal F_{P,Q}\) is perverse and is the intermediate extension of the factorized off-diagonal coefficient:
+\[
+\mathcal F_{P,Q}=j_{!*}\bigl((P\boxtimes Q)\boxtimes E_U[2]\bigr).
+\tag{A.3.1.2}
+\]
+Here the open sheaf is viewed on its two independent finite endpoint supports in \(Z_M|_U\). Along the diagonal \(i:Z_{M,D}\hookrightarrow Z_M\), its actual ordinary and exceptional restrictions satisfy
+\[
+i^*\mathcal F_{P,Q}[-1]=(P*Q)\boxtimes E_D[1],
+\qquad
+i^!\mathcal F_{P,Q}[1]=(P*Q)\boxtimes E_D(-1)[1].
+\tag{A.3.1.3}
+\]
+The finite diagonal support inclusions are understood in these formulas. In particular restriction at \((a,b)=(0,0)\), followed by \([-2]\), is exactly \(P*Q\). The comparisons are natural and independent of support/frame enlargement.
+
+**Proof.** The source and coefficient are those already constructed in Lesson 7, Theorem C.4.1.1, and the proper endpoint is Lemma A.2.1.1. The finite étale coefficient charts are pullbacks of the fixed \(P\boxtimes Q\) on \(X_1\times X_2\) times \(B\), with their common frame shifts canceled. One integral model on that fixed product gives precisely the local finite ULA models used in Lesson 7, Theorem C.2.2.1. Apply that theorem to the proper map \(m_B\), with target \(Z_M\to B\), to obtain the actual ULA assertion for \(K_{P,Q}\). Proper image makes it bounded rational constructible.
+
+Off the diagonal the specified first bundle frame trivializes its second disc. Full endpoint factorization identifies the source with the ordinary product of the two supports and \(m_B\) with its product endpoint inclusion. Thus the off-diagonal restriction in (A.3.1.2) is the actual proper comparison, and is perverse by Lesson 7, Theorem A.4.1.1 and exact closed extension.
+
+On \(D\), the coordinate \(t-a\) identifies the moving source and coefficient with the local twisted source and twisted coefficient times \(D\). Formula (Lesson 7, (C.4.1.3)) has no remaining base or frame shift. Actual proper base change O.4.1.1 therefore gives
+\[
+i^*K_{P,Q}=(P*Q)\boxtimes E_D.
+\tag{A.3.1.4}
+\]
+Its finite support is a closed Schubert support in the diagonal local endpoint stage, so the displayed formula includes its actual closed extension. Convolution is perverse by Lesson 7, Theorem A.6.1.1; external normalized pullback along the smooth curve \(D\) makes \((P*Q)\boxtimes E_D[1]\) perverse. This is the first assertion of (A.3.1.3).
+
+The moving source has exactly the product coefficient charts of Lemma A.1.1.1. That lemma and its proper-image assertion identify the specified supported comparison as
+\[
+i^!K_{P,Q}=i^*K_{P,Q}(-1)[-2].
+\tag{A.3.1.5}
+\]
+Shift by \([2]\) and then by \([1]\) to obtain the second formula in (A.3.1.3). It is perverse with its degree-zero Tate line. Lemma A.1.2.1 now applies to \(\mathcal F_{P,Q}\): its open restriction is perverse, its closed ordinary restriction lies in perverse degree \(-1\), and its closed exceptional restriction lies in degree \(1\). It gives perversity, absence of closed subobjects and quotients, and the actual intermediate-extension identity (A.3.1.2). Thus the fusion assertion includes its sheaf comparison, rather than only the cohomology of its fibers.
+
+At the origin, proper base change identifies the source with the local twisted source and its endpoint with the local convolution morphism. Removing the common \([2]\) gives \(P*Q\) with its stated normalization. Morphisms of coefficients and the support/frame comparisons descend on the original charts and pass through the actual proper maps. Their open restrictions are the ordered external coefficient maps. Intermediate-extension full faithfulness then makes them the unique global comparisons and retains their composition identities. This proves naturality and independence. □
+
+#### A.3.2. Exchange of points gives the graded convolution symmetry
+
+**Theorem A.3.2.1.** There are natural genuine rational-heart isomorphisms
+\[
+c'_{P,Q}:P*Q\xrightarrow{\sim}Q*P
+\tag{A.3.2.1}
+\]
+whose action under Lesson 7, Theorem C.4.1.1's tensor comparison is the graded vector interchange:
+\[
+H(c'_{P,Q})\,\mu_{P,Q}(x\otimes y)
+=\mu_{Q,P}\bigl((-1)^{ij}y\otimes x\bigr),
+\quad x\in H^i(P),\ y\in H^j(Q).
+\tag{A.3.2.2}
+\]
+Together with the existing convolution associator and unitors, these maps make the rational heart symmetric monoidal, with total cohomology symmetric monoidal into graded vector spaces. This statement retains the graded constraint; the component sign producing the ordinary vector constraint is a further assertion.
+
+**Proof.** Let \(\sigma:B\to B\) interchange \(a,b\). Relabeling the sections gives the actual involution \(\sigma_Z\) of a common endpoint stage from Lemma A.2.1.1. On the factorized off-diagonal target, the derived external symmetry of \(P,Q\), followed by this relabeling, gives
+\[
+j^*\mathcal F_{P,Q}\xrightarrow{\sim}
+j^*\sigma_Z^*\mathcal F_{Q,P}.
+\tag{A.3.2.3}
+\]
+Fix the base normalization explicitly: both sides use the one constant coefficient \(E_U[2]\), whose pullback under \(\sigma\) is its identity comparison. The map exchanges the unshifted Satake coefficient factors and leaves this common base factor intact. It does not exchange two separately odd base shifts. Thus its derived coefficient signs are the ordinary graded external signs of \(P,Q\).
+
+Both global objects in (A.3.2.3) are intermediate extensions by theorem A.3.1.1; pullback by the scheme isomorphism \(\sigma_Z\) preserves that image construction. Full faithfulness therefore extends (A.3.2.3) uniquely to an isomorphism
+\(\mathcal F_{P,Q}\to\sigma_Z^*\mathcal F_{Q,P}\).
+On the diagonal \(\sigma_Z\) is the identity of the endpoint functor, since the repeated labeled sections have the same bundle and off-divisor frame. This is an all-parameter equality from Lemma A.2.1.1. Restrict at the origin and remove \([2]\). Theorem A.3.1.1 identifies the resulting morphism with (A.3.2.1). It is a map between the convolution heart objects, and is genuine: the connected finite-jet Hom comparison, Lesson 6, Theorem B.1.4.1, says that every underlying perverse morphism between these genuine objects respects their specified actions. It also makes the support/level comparisons the genuine ones.
+
+We check its cohomology map using the comparison already constructed, rather than imposing it as a characterization whose existence is unproved. Let \(q_M:Z_M\to B\) be the endpoint projection. Ordinary image composition identifies
+\[
+Rq_{M*}K_{P,Q}=R\tau_*\mathcal A.
+\]
+This is the moving cohomology object in Lesson 7, Theorem C.4.1.1. On \(U\), (A.3.2.3), with its common base shift removed, induces the ordered proper Künneth interchange. On homogeneous cohomology it is exactly \((-1)^{ij}y\otimes x\), by the derived tensor symmetry. The normal constant extension in Lesson 7, Lemma C.3.1.1 makes this the same cohomology map on all \(B\); pullback by \(\sigma\) preserves its constant normalization. At the origin its constant comparison is precisely \(\mu\). This proves (A.3.2.2), including its grading and Tate lines.
+
+Naturality follows from naturality of the external interchange and unique intermediate extension. The square of (A.3.2.3) is the identity: the external symmetry squares to the identity and \(\sigma_Z^2=1\), with the fixed constant base comparison. Its unique extension and diagonal restriction consequently give \(c'_{Q,P}c'_{P,Q}=1\).
+
+For the hexagon identities use the exact faithful cohomology functor, Lesson 6, Theorem B.3.2.1, and its actual monoidal comparisons from Lesson 7, Theorem C.4.2.1. Every term is a genuine perverse object, so equality after this functor detects equality of the maps. Under \(\mu\), both sides of each hexagon are the graded vector hexagon. On homogeneous degrees \(i,j,k\), moving the first factor past the other two contributes \((-1)^{i(j+k)}\), the product \((-1)^{ij}(-1)^{ik}\); the opposite hexagon has the same bilinear exponent calculation. Ordered tensor associativity retains those equalities. The unit has degree zero and its interchange has sign \(1\), so the existing unitors obey the corresponding compatibility. Faithfulness gives both hexagons and unit identities on the heart. No semisimple decomposition is used.
+
+The strong monoidal functor of Lesson 7, Theorem C.4.2.1 now carries this symmetry to the graded one by (A.3.2.2). To turn it into the ordinary ungraded vector symmetry requires the component-parity comparison; that will use the weight grading and an explicit scalar adjustment. □
+
+### A.4. The component sign and categorical dimension
+
+#### A.4.1. Weight cohomology has the component parity
+
+**Lemma A.4.1.1.** The component map of GL-SAT-04 §5 gives a well-defined homomorphism
+\[
+p:\pi_1(G)=X_*(T)/\mathbf Z\Phi^\vee\longrightarrow\mathbf Z/2,
+\qquad p([\lambda])=\langle2\rho,\lambda\rangle\bmod2.
+\tag{A.4.1.1}
+\]
+An object \(P\) supported on component \(c\) has \(H^r(P)=0\) unless \(r\equiv p(c)\pmod2\). Every finite-support object has a canonical finite direct sum decomposition by these open-and-closed components. Convolution adds the component classes and their parities.
+
+**Proof.** GL-SAT-04 §5 proves the actual component classification and local constancy on every bounded stage. The root calculation there gives \(\langle2\rho,\alpha_i^\vee\rangle=2\) for each simple coroot. Every coroot-lattice difference is an integral combination of these simple coroots, so its pairing with \(2\rho\) is even. This proves that (A.4.1.1) is well defined; additivity of the pairing proves it is a homomorphism.
+
+The finite-stage component subsets are open and closed, including on the full scheme because reduction preserves topological points. Restriction and extension on the finitely many components meeting a support therefore give its canonical direct sum decomposition. These functors preserve the genuine actions and the perverse support conditions.
+
+The semi-infinite orbit \(S_\nu=N(k((t)))t^\nu K/K\) lies on the component of \(t^\nu\). To check this without a numerical weight assertion, every bounded set of positive-root Laurent coefficients is the image of an affine-space root-coordinate chart containing the identity, by GL-SAT-05's finite unipotent charts. Its image in the Grassmannian is connected and contains \(t^\nu\). Taking the increasing union shows the asserted component containment on geometric points, which is what is needed to test the intersection with a finite support. Thus if \(P\) is on component \(c\), its weight functor \(F_\nu(P)\) vanishes unless \([\nu]=c\).
+
+The actual weight splitting GL-SAT-05 Theorem Q.4.3.1, on the genuine heart of Lesson 6, Theorem B.3.2.1, places \(F_\nu(P)\) in ordinary cohomological degree \(\langle2\rho,\nu\rangle\). Every nonzero summand consequently has degree of parity \(p(c)\), proving the cohomology assertion. This uses the weight splitting, not a general IC stalk parity or a semisimple decomposition.
+
+The component invariant in GL-SAT-04 §5 is a homomorphism on loop representatives: its construction lifts to the torus quotient of the central extension and takes its integral valuations modulo the coroot lattice. Multiplication adds those valuations, and a positive-loop frame has class zero. In a two-step modification the last loop is the product of the first loop and the second relative loop. Its class is therefore the sum of the input classes, independent of those frames. All geometric points in the finite source have that class; the proper endpoint image and its coefficient have no support on any other open-and-closed component. This proves the convolution assertion and its parity additivity. □
+
+![Weight cohomology has the component parity, whose scalar adjustment cancels the graded interchange sign and makes categorical dimension positive](assets/component-sign-and-trace.png)
+
+Lemma A.4.1.1 proves that the root pairing descends to components and that weight cohomology has their parity. Theorem A.4.2.1 multiplies the fusion interchange by \((-1)^{p(P)p(Q)}\), checks both hexagons and unit compatibility, and evaluates the actual rigidity trace. Exercises A.5.2–A.5.3 compute the odd minuscule trace and every entry of its cohomology interchange, retaining the Tate lines. Editable SVG source.
+
+#### A.4.2. The adjusted symmetry is the ordinary vector symmetry
+
+**Theorem A.4.2.1.** For component-homogeneous objects of parities \(p(P),p(Q)\), define
+\[
+c_{P,Q}=(-1)^{p(P)p(Q)}c'_{P,Q},
+\tag{A.4.2.1}
+\]
+and extend by the canonical finite component decompositions. This is a natural symmetric constraint for the existing rational convolution. Total cohomology, with Lesson 7, Theorem C.4.1.1's tensor comparison and its grading forgotten, is an exact faithful symmetric monoidal functor to ordinary finite-dimensional \(E\)-vector spaces.
+
+For a nonzero object \(P\) on one component, its categorical dimension for the unadjusted constraint is
+\[
+\dim_{c'}P=(-1)^{p(P)}\dim_E H(P),
+\qquad \dim_cP=\dim_EH(P).
+\tag{A.4.2.2}
+\]
+In particular \(\dim_{c'}IC_\lambda^{\mathrm{raw}}
+=(-1)^{d_\lambda}\dim_EH(IC_\lambda^{\mathrm{raw}})\).
+An odd nonzero object therefore prevents the unadjusted symmetry from admitting a symmetric fiber functor to ordinary vector spaces. The adjusted category is neutral Tannakian in the definition by its exhibited fiber functor; no general recognition theorem replaces these explicit calculations.
+
+**Proof.** The component decomposition is canonical by Lemma A.4.1.1. Morphisms respect it, and convolution adds components, so the scalar rule defines a natural constraint on each pair of summands and hence on every object. The inverse constraint has the same scalar twice; their product is \(1\), retaining theorem A.3.2.1's involutivity. For the first hexagon the extra scalar is
+\((-1)^{p(P)(p(Q)+p(R))}\),
+which is \((-1)^{p(P)p(Q)}(-1)^{p(P)p(R)}\). The second hexagon uses the same bilinear identity in the other variable. The unit has component zero and parity zero, so the scalar is \(1\) for either unit. These identities and the proved graded constraint give symmetry and both hexagons with the existing associator and unitors. Direct sums retain them on all component blocks.
+
+Every homogeneous cohomology degree of \(P,Q\) has parity \(p(P),p(Q)\), by Lemma A.4.1.1. Equation (A.3.2.2) therefore gives
+\[
+(-1)^{p(P)p(Q)}(-1)^{ij}=1
+\]
+on every nonzero homogeneous tensor. Thus the adjusted map under \(\mu\) is the ordinary vector flip. Forgetting the finite grading preserves its tensor product, and Lesson 7, Theorem C.4.2.1 supplies the actual unit and associativity comparisons. Lesson 6, Theorem B.3.2.1 gives exactness and faithfulness of this same functor. This proves the stated fiber-functor assertion.
+
+We compute dimension with the actual rigidity of Lesson 7, Theorem B.5.1.1. Use its right dual \(VP\), evaluation \(VP*P\to1\) and coevaluation \(1\to P*VP\). A strong monoidal functor carries these two triangle identities to those for the graded vector dual of \(H(P)\). The resulting pairing identifies \(H(VP)\) with that graded dual: finite-dimensional vector duality and the two triangles prove nondegeneracy, without a basis choice or a simple decomposition. Choose a homogeneous basis \(v_\alpha\) of degrees \(r_\alpha\) to evaluate the trace, with its dual \(\phi_\alpha\) of degree \(-r_\alpha\). The coevaluation is \(\sum_\alpha v_\alpha\otimes\phi_\alpha\). Interchange followed by evaluation gives
+\[
+\sum_\alpha(-1)^{r_\alpha(-r_\alpha)}
+\phi_\alpha(v_\alpha)=\sum_\alpha(-1)^{r_\alpha}.
+\tag{A.4.2.3}
+\]
+This is independent of the basis, being the categorical trace of the identity. Lemma A.4.1.1 makes every exponent have the same parity \(p(P)\), so it is the first number in (A.4.2.2). The dual component is \(-c\) by the frame inversion of Lesson 7, Theorem B.2.1.1, and its parity is also \(p(c)\). The equality of dual parity also follows directly from the nondegenerate graded pairing. The adjustment in (A.4.2.1) therefore multiplies that trace by \((-1)^{p(P)^2}=(-1)^{p(P)}\), giving the second number. For the unit, \(\operatorname{End}(1)=E\), since it is the rank-one point object. Its scalar trace is preserved by the exhibited fiber functor, so these are the dimensions in the category itself.
+
+The highest-line calculation in GL-SAT-06 B.3.2.1 makes every simple's total cohomology nonzero; exactness through its finite composition series makes it nonzero for every nonzero object. An odd such object consequently has a negative integer dimension for \(c'\). Any symmetric strong monoidal functor to ordinary finite-dimensional vector spaces preserves the rigidity trace, by its tensor, symmetry and evaluation comparisons. That target trace is the nonnegative integer vector dimension. It cannot equal this negative integer in the characteristic-zero field \(E\). Thus the sign change is forced for an ordinary symmetric fiber functor whenever an odd component occurs.
+
+Finally the genuine heart is \(E\)-linear abelian with finite-dimensional Hom, has the unit with endomorphisms \(E\), is rigid by the earlier actual triangles, and now has a symmetric constraint and an exact faithful symmetric fiber functor. These are the defining data of a neutral Tannakian category. Its reconstruction and dual-group identification remain separate subsequent course theorems. □
+
+### A.5. Four solved rational fusion and sign checks
+
+#### A.5.1. Torus endpoints over all parameter rings
+
+**Exercise A.5.1 (introductory).** Take \(G=\mathbb G_m\) and the reduced-support point objects \(\delta_n,\delta_m\), indexed by integer cocharacters. Write their two-point endpoint lattice over an arbitrary parameter algebra, compute its diagonal and fusion product, and determine its symmetry and dimension. Keep the distinction between these supports and the full torus Grassmannian's nilpotent directions.
+
+**Solution.** The rank-one bundle with its away frame has local lattice
+\[
+(t-a)^n(t-b)^m\widehat A,\qquad
+\widehat A=\widehat{R[t]}_{(f)},\quad f=(t-a)(t-b),
+\]
+inside the localized rank-one \(\widehat A\)-module, with the full rank-two monic completion over \(R[[u]]\) in (A.2.1.2). Negative powers describe the same invertible divisor module in its punctured completion. It is the full family endpoint of the two specified divisor modifications. On the diagonal the filtrations are cofinal and the lattice is \((t-a)^{n+m}R[[t-a]]\). The local fusion product is consequently \(\delta_{n+m}\), with cohomology \(E\) in degree zero. All point objects have \(p=0\) because \(\rho=0\) for a torus. Exchanging the factors has sign \(1\), and both categorical dimensions are \(1\).
+
+This computation fixes finite reduced point supports for the coefficient objects. The monic endpoint functor remains defined over the full parameter algebra; it has not asserted that the full torus Grassmannian has no infinitesimal directions. Those directions were computed in GL-SAT-04 Exercise 6.4. □
+
+#### A.5.2. The odd minuscule component
+
+**Exercise A.5.2 (intermediate).** For the raw minuscule \(PGL_2\) object \(P=E_{\mathbf P^1}[1]\), compute the unadjusted and adjusted categorical dimensions and its raw right dual. Explain why the naive constraint cannot have an ordinary symmetric fiber functor, without invoking a classification of tensor categories.
+
+**Solution.** The projective-line calculation gives \(H^{-1}(P)=E\), \(H^1(P)=E(-1)\), and no other cohomology. GL-SAT-04 §5 identifies its component as odd, so (A.4.2.2) gives \(\dim_{c'}P=-2\) and \(\dim_cP=2\). Its type is self-dual and has \(d=1\); the raw inversion/duality calculation in Lesson 7, Theorem B.2.1.1 gives \(VP=P(1)\). Its cohomology is the graded dual of the two displayed lines, with \(E(1)\) in degree \(-1\) and \(E\) in degree \(1\).
+
+Any ordinary symmetric fiber functor must carry the evaluation, coevaluation and interchange defining dimension to the same vector trace. It would make \(-2\) the dimension of a finite-dimensional vector space, impossible in characteristic zero. The argument uses the computed trace and its preservation, not a general Tannakian recognition criterion. □
+
+#### A.5.3. The four entries of the minuscule interchange
+
+**Exercise A.5.3 (intermediate).** For the raw minuscule \(GL_2\) object choose symbols \(x\) in its degree-\(-1\) line \(E\) and \(y\) in its degree-\(1\) line \(E(-1)\). Compute \(c'_{P,P}\) and \(c_{P,P}\) on all four ordered tensors and on the two-dimensional degree-zero group.
+
+**Solution.** The tensor comparison retains the four degrees \((-1,-1),(-1,1),(1,-1),(1,1)\), with lines \(E,E(-1),E(-1),E(-2)\). Each factor degree is odd. Hence
+\[
+xx\mapsto-xx,\quad xy\mapsto-yx,\quad
+yx\mapsto-xy,\quad yy\mapsto-yy
+\]
+for \(c'\), where juxtaposition denotes ordered tensor. On the degree-zero summands, in the ordered basis \((xy,yx)\), its matrix is
+\[
+\begin{pmatrix}0&-1\\-1&0\end{pmatrix}.
+\]
+The object's component is odd, so \(c=-c'\). It fixes the extreme tensors and exchanges \(xy,yx\) with matrix \(\begin{pmatrix}0&1\\1&0\end{pmatrix}\). The coefficient identifications use the two actual Tate lines and their tensor product; choosing symbols has not trivialized the Tate twists in the statement. □
+
+#### A.5.4. A common base shift fixes the unit normalization
+
+**Exercise A.5.4 (advanced).** Take the trivial group and its unit object \(E\) on the point. If one interchanges two separately shifted curve coefficients \(E_{\mathbf A^1}[1]\), what scalar does the derived external symmetry give? Compare with the base normalization in theorem A.3.2.1 and explain the unit constraint.
+
+**Solution.** Each separately shifted coefficient has its local generator in degree \(-1\). Exchanging them gives \((-1)^{(-1)(-1)}=-1\). Their ordered tensor is the constant coefficient on the two-dimensional base shifted by \([2]\), but that isomorphism does not make the separately shifted exchange equal to the identity pullback of the one constant \(E_U[2]\).
+
+Theorem A.3.2.1 retains this one common base factor and exchanges only the unshifted Satake coefficient factors. For the trivial group's unit those have degree zero, so its map is \(+1\). Restriction and removal of \([2]\) consequently give \(c'_{1,1}=1\), as required by the existing unitors. Using the separate odd base exchange without correcting its extra minus would instead give \(-1\) on that unit pair and violate unit compatibility. This is why the proof specifies the actual base comparison before diagonal restriction. □
+
+## Appendix B. Rational fusion independent of the curve and full coordinate
+
+Let \(k\) be algebraically closed, let \(\ell\) be invertible in \(k\), and let \(E/\mathbf Q_\ell\) be finite. The coefficients are the genuine rational Satake objects of Lesson 6, Appendix B. Appendix A of this lesson constructs their fixed-affine-line fusion and both symmetric constraints. We now prove the normalized action of every origin-preserving formal coordinate, construct the moving coefficients on an arbitrary smooth separated curve, and compare its actual tensor and interchange maps with that fixed-coordinate model.
+
+Labels B.1–B.4 and A.1–A.4 refer to this lesson. Every other programme input is named by lesson: Lesson 7, Appendices A and C, proves rational torsor descent, tangent-one coordinate invariance, uniform rational proper ULA comparison, constant extension over a normal base and the actual tensor-cohomology map. Bare coefficient-operation locators O, P and Q are to Lesson 5. The elementary curve inputs are proved in Smooth morphisms, Theorems 2.1,4.1,5.2; the formal bundle comparison is proved in Lesson 3, §§1–3. The endpoint and monic charts are §1 and Lemma A.2.1.1 above.
+
+For freely accessible comparison reading, see Mirković–Vilonen, [Geometric Langlands duality and representations of algebraic groups over commutative rings](https://arxiv.org/abs/math/0401222v5), §5, and Zhu, [An introduction to affine Grassmannians and the geometric Satake equivalence](https://arxiv.org/abs/1603.05593v2), §§3.1–3.2,5.4. The proofs here retain the parameter extension class, the all-ring graph completion and the proper coefficient maps. Constancy of the relative ordinary cohomology sheaves is proved; a global splitting of the derived cohomology complex over the curve is not assumed.
+
+### B.1. The rotation extension class and component cohomology parity
+
+#### B.1.1. The actual punctured-line parameter comparison
+
+**Lemma B.1.1.1.** Let \(p:\mathbb G_m\times Y\to Y\), with \(Y\) separated of finite type, and let \(L\) be bounded rational constructible. The ordinary unit, restriction at parameter \(1\) and positive zero-section boundary give a natural actual splitting
+\[
+Rp_*p^*L=L\oplus L(-1)[-1].
+\tag{B.1.1.1}
+\]
+In this splitting restriction at \(1\) is projection to the first term. Thus for perverse \(Q,S\), ordinary pullback and that restriction give
+\[
+\operatorname{Ext}^1_{\mathbb G_m\times Y}(p^*Q,p^*S)
+=\operatorname{Ext}^1_Y(Q,S)
+\oplus\operatorname{Hom}_Y(Q,S(-1)).
+\tag{B.1.1.2}
+\]
+The same formula holds after shifting both pullbacks by \([1]\). The second summand is cup product of the pulled coefficient morphism with the nonzero parameter boundary class, with its specified shift and tensor comparisons.
+
+If \(Y\) is proper, applying the proper relative cohomology functor \(Rh_*\), \(h:\mathbb G_m\times Y\to\mathbb G_m\), carries that second summand to the same parameter-class construction on the map
+\(R\Gamma(Y,Q)\to R\Gamma(Y,S)(-1)\).
+This is the actual projection comparison, including its signs and Tate line.
+
+**Proof.** Let \(q:\mathbf A^1\times Y\to Y\), let \(i\) be its zero section and \(j\) its punctured-line open. The line's actual supported comparison for a pulled coefficient is
+\[
+i^!q^*L=L(-1)[-2].
+\]
+It follows from smooth normalization and \(qi=1\), Lesson 5, Theorem P.2.4.1, with the actual section counit as checked for the coefficient product in Lemma A.1.1.1. Apply \(Rq_*\) to the closed-open triangle for \(q^*L\). The affine-line unit Lesson 5, §Q.1.2.1 identifies \(Rq_*q^*L=L\), with zero-section restriction its inverse. Ordinary image composition for the closed section and the open gives the actual triangle
+\[
+L(-1)[-2]\xrightarrow{e_L}L
+\xrightarrow{u}Rp_*p^*L
+\xrightarrow{\beta}L(-1)[-1].
+\tag{B.1.1.3}
+\]
+The map \(e_L\) is the coefficient tensored with the trivial line's global Euler class. This equality uses the closed projection identity O.1.2.1 and the positive supported orientation, not a test of a degree-two map on local charts. The global supported Kummer proof in Lesson 6, §A.1.2.1 identifies the resulting arrow with \(c_1(\mathcal O_Y)\); its trivial frame gives the zero connecting cocycle. Thus \(e_L=0\) for this actual map.
+
+Restriction at \(1\) gives \(r:Rp_*p^*L\to L\), with \(ru=1\) by the ordinary adjunction unit and \(p\circ1=1_Y\). The map \((r,\beta)\) to \(L\oplus L(-1)[-1]\) is therefore an isomorphism of the split triangle (B.1.1.3). This is a natural splitting specified by the section and boundary, with no choice of a null homotopy or a Tate generator. Taking \(Y\) a point gives \(R\Gamma(\mathbb G_m,E)=E\oplus E(-1)[-1]\), whose boundary is the identity on its degree-one line.
+
+Ordinary derived adjunction now gives
+\[
+R\operatorname{Hom}_{\mathbb G_m\times Y}(p^*Q,p^*S)
+=R\operatorname{Hom}_Y(Q,S)
+\oplus R\operatorname{Hom}_Y(Q,S(-1))[-1].
+\]
+Taking degree one proves (B.1.1.2). Its first projection is exactly parameter restriction, since it is \(r\) from the stated splitting. The point boundary class is the adjoint of the second inclusion for the point case. Pulling that class to the product and tensoring the coefficient morphism gives the second inclusion for general \(L\): the supported orientation, closed projection, affine-line unit and punctured-open unit used in (B.1.1.3) are precisely their coefficient-tensor versions. This proves the cup-product assertion with its actual tensor and shift maps. A common shift of both inputs cancels in the mapping complex.
+
+For proper \(Y\), actual proper base change identifies \(Rh_*p^*L\) with the constant complex \(R\Gamma(Y,L)\) on \(\mathbb G_m\). Proper projection O.4.3.1 commutes its parameter-class tensor with \(Rh_*\). Its image counit is the same one defining that projection map, so the coefficient morphism and parameter boundary pass to the displayed cohomology morphism and the same boundary. This proves the last assertion, including the comparison rather than just the dimensions of the two summands. □
+
+![The actual rotation obstruction is detected by proper cohomology and the nonzero parameter boundary](assets/rotation-extension-obstruction.png)
+
+Lemma B.1.1.1 fixes the punctured-line splitting by its actual unit, section and positive supported boundary. In Theorem B.1.2.1 the difference of the two pulled extensions is a morphism \(\nu:Q\to S(-1)\). Component parity fixes their endpoint cohomology actions; the proper projection comparison sends that difference to the nonzero boundary applied to \(H(\nu)\). Its injectivity and faithful cohomology force \(\nu=0\). Theorem B.2.1.1 combines rotation with tangent-one coordinates. Exercise B.4.2 explains why restriction at the identity alone would not suffice. Editable SVG source.
+
+#### B.1.2. Rational rotation acts on every heart object
+
+**Theorem B.1.2.1.** Every genuine finite-\(E\) rational Satake object has a unique normalized genuine \(\mathbb G_m\) action for rotation \(t\mapsto zt\). It is compatible with its finite-jet spherical action. Its induced action on the constant relative ordinary cohomology complex over \(\mathbb G_m\) is the identity. No semisimplicity or categorical splitting of an extension is assumed.
+
+**Proof.** Rotation is an actual action on each reduced finite Schubert support \(Y\). In a faithful bounded lattice quotient its coordinates are multiplication of the finitely many Laurent coefficients by powers of the unit \(z\), all regular on \(\mathbb G_m\). It preserves each Cartan type because \((zt)^\lambda=t^\lambda\lambda(z)\), with \(\lambda(z)\) integral. As in the full finite-stage calculation of Lesson 7, §C.1.2.1, the product of the reduced support with this smooth group is reduced, so preservation of its geometric orbits preserves its defining closed ideal. The inverse rotation proves the same assertion in reverse. Rotation also acts on every \(J_nG\) by substitution in \(R[t]/t^n\).
+
+For a simple raw \(S=IC_\lambda^{\mathrm{raw}}\), normalized smooth pullback along action and projection has the same constant rank-one system on \(\mathbb G_m\times O_\lambda\), shifted by \(d_\lambda+1\). Intermediate extension and its full faithfulness give the action isomorphism, identity at parameter \(1\). The connected-group normalization theorem Lesson 6, §B.1.4.1 makes it genuine and unique.
+
+We first handle an object on a single component; the general object is its canonical finite component direct sum, by Lemma A.4.1.1. Proceed by finite composition length, Lesson 6, §B.2.3.1. Choose a heart sequence
+\(0\to S\to P\to Q\to0\)
+with \(S\) simple. Its two endpoints have normalized rotation actions by induction. Write \(a,p:\mathbb G_m\times Y\to Y\) for action and projection. Pull the extension by \(a\) and \(p\), use the endpoint actions to identify both extensions with ones of \(p^*Q[1]\) by \(p^*S[1]\), and compare their connecting maps. Both restrict at parameter \(1\) to the original extension. Lemma B.1.1.1 says their difference is therefore the second-summand class of a morphism
+\[
+\nu:Q\longrightarrow S(-1).
+\tag{B.1.2.1}
+\]
+It remains to show this actual morphism is zero. Restriction at parameter \(1\) alone would not show that.
+
+The support \(Y\) is proper. Remove the common smooth \([1]\) normalization for this relative cohomology calculation. Put \(h:\mathbb G_m\times Y\to\mathbb G_m\), and let \(V_R=R\Gamma(Y,R)\) for each of the three coefficient objects \(R\). Both \(Rh_*p^*R\) and \(Rh_*a^*R\) are canonically the constant complex \(V_R\). The first comparison is proper base change. For the second, the isomorphism \(\phi:(z,y)\mapsto(z,zy)\) satisfies \(a=p\phi\) and \(h\phi=h\); ordinary image composition for \(\phi^{-1}\) gives the same comparison. Both are normalized to the identity at \(z=1\) and retain coefficient morphisms.
+
+Each \(V_R\) has cohomology only in the parity of the one component, by Lemma A.4.1.1. A bounded complex of finite \(E\)-vector spaces splits into its cohomology and contractible pairs: choose complements to boundaries inside cycles and to cycles inside each term. Hence maps of derived degree \(1\) or \(-1\) between two such same-parity complexes are zero; their degree-zero maps are their graded cohomology maps. In particular
+\[
+\operatorname{Hom}_{D(E)}(V_Q,V_S[1])=0,
+\qquad
+\operatorname{Hom}_{D(E)}(V_R,V_R(-1)[-1])=0.
+\tag{B.1.2.2}
+\]
+For finite constant vector complexes on \(\mathbb G_m\), their mapping complex is their finite vector Hom complex tensored with \(R\Gamma(\mathbb G_m,E)\): compute internal Hom on finitely many finite free terms, then take sections. Lemma B.1.1.1's point calculation and the second vanishing in (B.1.2.2) consequently show that every degree-zero endomorphism of the constant \(V_R\) is determined by its restriction at \(1\). The normalized endpoint rotation actions therefore induce the identity on those constant complexes.
+
+Apply \(Rh_*\) to the two extension connecting maps. Under the preceding canonical constant comparisons, each is the constant map induced by the original \(V_Q\to V_S[1]\), hence zero by the first vanishing in (B.1.2.2). The endpoint identifications induce identities, so the image of their difference is zero as well. Lemma B.1.1.1's proper projection assertion identifies it with the parameter boundary class applied to
+\(V_Q\xrightarrow{H(\nu)}V_S(-1)\).
+That parameter-class map is injective on graded degree-zero coefficient maps: the point boundary is an isomorphism of its nonzero degree-one line, and the derived finite vector decomposition computes each homogeneous component of the Hom group. All signs in its shift comparison are the specified tensor signs and are units. Therefore \(H(\nu)=0\). Exact faithful cohomology, Lesson 6, §B.3.2.1, detects morphisms in the genuine heart; \(S(-1)\) is again an object of that heart. It follows that \(\nu=0\).
+
+The two actual extension classes are now equal. Their triangles have the same endpoints and connecting map, so the triangle morphism axiom supplies a middle map fixing the endpoints. Perverse cohomology of their short exact sequences makes it an isomorphism. Normalize its restriction at \(1\) by composing the inverse of that restriction pulled along \(p\). The connected-group normalization theorem gives the unique genuine rotation structure on \(P\). This completes the induction. It proves invariance of the extension class; it has not chosen or asserted a splitting of that extension.
+
+Combining this weak rotation isomorphism with the given spherical action gives weak invariance under \(J_nG\rtimes\mathbb G_m\). Its underlying scheme is the product of two smooth connected groups. Connected-group normalization makes it genuine and unique, whose restrictions are the already specified actions. This proves spherical compatibility and compatibility with inflation and support enlargement. The direct sum of the component constructions is canonical and has the same uniqueness.
+
+Finally the cohomology argument above applies to any constructed component object, not only to an endpoint in the induction. Its normalized action on the constant relative \(V_P\) is the identity by its parity and the degree-zero parameter comparison. The direct sum over components preserves those identities, proving the last assertion for every \(P\). □
+
+### B.2. Full origin-preserving formal coordinates
+
+#### B.2.1. Combining rotation and tangent-one coordinates
+
+Write \(\operatorname{Aut}_m\) for the group of origin-preserving \(R\)-algebra automorphisms of \(R[t]/t^m\), \(m\geq2\). Its coordinate expression is
+\[
+\sigma(t)=zt+a_2t^2+\cdots+a_{m-1}t^{m-1},
+\qquad z\in R^\times.
+\tag{B.2.1.1}
+\]
+Use composition of these ring substitutions for its group law. Every such substitution has an inverse by recursive coefficient comparison, dividing only by powers of the unit \(z\). Thus the underlying smooth connected scheme is \(\mathbb G_m\times\mathbf A^{m-2}\).
+
+**Theorem B.2.1.1.** Every finite-support genuine rational Satake object has a canonical normalized action of sufficiently deep \(\operatorname{Aut}_m\), compatible with its spherical action and every morphism. If its faithful support bound is \(N\) and its spherical level is \(n\), it is enough to take
+\[
+m\geq\max(2,n,2N+2).
+\tag{B.2.1.2}
+\]
+It gives a genuine action of \(J_nG\rtimes\operatorname{Aut}_m\), compatible with increasing levels and enlarging supports. The induced action on its constant relative ordinary cohomology complex is the identity. Consequently formal origin-preserving coordinate changes transport its coefficients with coherent comparisons retaining the canonical cohomology normalization.
+
+**Proof.** Let \(\gamma_z(t)=zt\). The derivative-one kernel is the group \(A_m^1\) of Lesson 7, §C.1.2.1. Every (B.2.1.1) factors uniquely as \(\tau\gamma_z\), with \(\tau\in A_m^1\), since \((\tau\gamma_z)(t)=z\tau(t)\) for the ring substitution composition. Conjugating \(\tau(t)=t+\sum_jb_jt^j\) by \(\gamma_z\) multiplies \(b_j\) by \(z^{j-1}\), a regular unit monomial. Hence this is the actual split semidirect product with that derivative-one kernel, in the stated ring-automorphism convention.
+
+The kernel of formal automorphisms onto \(\operatorname{Aut}_m\) has derivative one and substitution \(t\pmod{t^m}\). The full faithful-matrix calculation in Lesson 7, §C.1.2.1 gives
+\(g^{-1}\sigma(g)=1\pmod{t^{m-1-2N}}\)
+and its inverse, on all parameter algebras. Bound (B.2.1.2) therefore makes that kernel act trivially on the support. Rotation preserves the same lattice bounds; the finite substitutions have polynomial coefficients with the allowed inverse powers of \(z\), preserve orbit types, and preserve the reduced closed support ideal as in that earlier calculation. This defines the actual finite-stage \(\operatorname{Aut}_m\) action. The condition \(m\geq n\) makes it act on \(J_nG\) as well.
+
+The derivative-one action is already genuine by Lesson 7, §C.1.2.1. The rotation action is genuine by theorem B.1.2.1. Their weak invariance isomorphisms compose along the two factors of the displayed semidirect action map, yielding a normalized weak action isomorphism for \(\operatorname{Aut}_m\). This statement does not assume that the two factors commute. Since the full group is smooth connected, Lesson 6, §B.1.4.1 makes the weak action uniquely genuine; its restrictions equal both previously constructed structures by their uniqueness. Combining it with the spherical weak action and applying the same normalization to \(J_nG\rtimes\operatorname{Aut}_m\) proves their compatibility.
+
+An underlying perverse morphism between these genuine objects commutes with the normalized full group actions by the connected-group Hom theorem. Under level projections the actual support actions and semidirect laws agree. Their pulled-back coefficient structures restrict to the same identity at the group identity, so uniqueness supplies the level and support comparisons, including triple composition. This gives a coherent action of all formal automorphisms, interpreted through these sufficiently deep finite quotients.
+
+For the cohomology assertion first work on one component. The underlying parameter scheme is \(\mathbb G_m\times\mathbf A^{m-2}\); Lesson 7, §C.1.1.1 removes its affine parameter factor in every derived Hom degree. Thus its constant finite-vector-complex endomorphisms have the same degree-zero comparison as over \(\mathbb G_m\). Cohomology parity and lemma B.1.1.1 make that endomorphism determined by its restriction at the identity, exactly as in theorem B.1.2.1. The geometric action automorphism over this parameter, together with proper support, canonically identifies both relative image complexes with the constant cohomology complex. The normalized action therefore induces its identity. Full coordinate action preserves components, so the actual action on a general object and its proper image respects their finite component decompositions. The component identities give the identity on their direct sum, even when both parities occur.
+
+Changing a formal coordinate gives an element of the finite coordinate torsor at a sufficiently deep level. The genuine action just proved is its coefficient transport; its cocycle gives all composition comparisons and its unit fixes their normalization. The same transport on relative cohomology is the proved identity. This establishes the stated coherent coordinate comparison needed for descent on a smooth curve. Construction of the moving curve coefficients and their fusion will be given separately using its étale formal-coordinate charts. □
+
+### B.3. Rational coefficients and fusion on an arbitrary smooth curve
+
+![Finite coordinate torsors and all-ring graph completions identify the actual curve fusion with its affine model](assets/curve-coordinate-fusion.png)
+
+Theorem B.3.1.1 descends the coefficients through the full coordinate torsor, represents the proper two-step support and removes the unwanted branches in an étale collision chart. The graph-ideal sequence proves the selected sum finite flat of rank two even over nilpotent parameter rings. Actual proper comparison, strict intermediate extension and the normal-base cohomology extension then retain the tensor map and both symmetric constraints. Exercises B.4.3–B.4.4 compute the characteristic-dependent squared-coordinate transition and the exact diagonal ideal on its correct neighborhood. Editable SVG source.
+
+#### B.3.1. The formal-coordinate torsor and the comparison at a collision
+
+**Theorem B.3.1.1.** Let \(X\) be a smooth connected separated curve of finite type over the allowed algebraically closed field. Each genuine finite-\(E\) rational Satake object \(P\) has a canonical finite-support relative object \(P_X\), perverse and ULA over \(X\), whose expression in a formal coordinate is \(P\boxtimes E_X[1]\). The formal-coordinate comparisons are those of theorem B.2.1.1, and every ordinary relative cohomology sheaf has the constant normalization with fiber \(H^r(P)\), before this common curve shift.
+
+For two such objects there is an actual proper moving-endpoint image over \(X^2\). After the common base shift \([2]\), it is the intermediate extension of their unshifted external families on the distinct-point locus. Its diagonal restriction, normalized by \([-1]\), is \((P*Q)_X\). Its point interchange at a collision gives the same \(c'_{P,Q}\) as theorem A.3.2.1, and its tensor-cohomology comparison is the same \(\mu_{P,Q}\) as Lesson 7, Theorem C.4.1.1 under these coordinate identifications. Thus the local tensor and both symmetric constraints, their unit and associativity comparisons, and their trace dimensions are independent of the smooth curve, collision point and formal coordinate. A disconnected curve is treated on its components.
+
+**Proof.** A relative-dimension-one étale coordinate exists locally on \(X\), by the earlier programme lesson Smooth morphisms, Theorem 4.1. If \(z\) is such a coordinate, then around the diagonal of \(X\times X\) its relative parameter is \(z(u)-z(x)\), with \(x\) the base point and \(u\) the moving curve variable. Formal étaleness, proved in that lesson's standard charts and in Lesson 3's gluing inputs, identifies every finite neighborhood of this diagonal with the truncated parameter algebra. On an overlap another coordinate has expansion with zero constant coefficient and invertible linear coefficient. Those finite coefficients are regular functions on the overlap: they are the coefficients in the finite free diagonal jet module. The recursion uses powers of that invertible linear coefficient, not factorial denominators. Hence the functor of truncated formal coordinate frames is an actual torsor
+\[
+C_m\longrightarrow X
+\quad\text{under }\operatorname{Aut}_m.
+\tag{B.3.1.1}
+\]
+Local coordinates trivialize it; its transition substitutions are exactly the algebra automorphisms in (B.2.1.1). This constructs the torsor and its cocycle over all parameter algebras.
+
+Choose a reduced finite Schubert union \(Y\) supporting \(P\), and take sufficiently deep \(m\) as in theorem B.2.1.1. Its \(\operatorname{Aut}_m\) action preserves \(Y\). The finite faithful lattice quotient carries a linear action of the same group: substitution uses finitely many truncated coefficients and powers of the unit linear coefficient. Its equivariant Plücker embedding gives a closed invariant projective representation containing \(Y\), just as in Lesson 7, §C.4.1.1. Descend that representation through \(C_m\) to a vector bundle on \(X\), and descend \(Y\)'s closed ideal in its projective bundle. This represents the associated support \(Y_X\), projective over \(X\). The full moduli identification with the moving Grassmannian is the formal restriction and gluing equivalence Lesson 3, §§1–3, including its fixed away frame.
+
+The genuine action of theorem B.2.1.1 and normalized torsor descent Lesson 7, §A.1.2.1 descend \(P\) with the common curve shift \([1]\). Equal group-dimension shifts cancel on local frame charts, giving the stated expression for \(P_X\). Étale chart transitions and the action cocycle make this independent of the chosen coordinates and levels. Each local expression is perverse by the rational external-product and smooth-pullback proofs. A model of its one fixed \(P\), with its common integral curve shift, gives finite ULA models on the finitely many separated quasi-compact charts. The local-model proper ULA theorem Lesson 7, §C.2.2.1, applied also to the identity proper map, proves the ULA assertion. In particular no integral coordinate-equivariant model has been presumed.
+
+Write \(B_X(P)=P_X[-1]\) for the unshifted family coefficient. Proper comparison for \(Y_X\to X\) computes its local ordinary cohomology sheaves as the constant \(H^r(P)\). On a coordinate overlap the transition is the full-coordinate action of theorem B.2.1.1, whose cohomology comparison is the identity in every degree. Thus these sheaves glue to the asserted constant normalization. The statement concerns the cohomology sheaves and does not require a global derived splitting of the relative complex on \(X\).
+
+Construct the two-step source over \(X^2\) by gluing the first bundle and then modifying it at the second section. Frames of the second finite disc together with its formal coordinate form the finite torsor for \(J_nG\rtimes\operatorname{Aut}_m\). Its coefficient action on \(Q\) is genuine by theorem B.2.1.1. Choose common larger levels for both supports and their convolution bound. The finite faithful quotient and its Plücker representation carry this semidirect action, so the associated second-support scheme is projective over the first support times \(X\). The first support is projective over \(X\); their complete two-step source is therefore proper over \(X^2\). All these torsors have étale-local sections by Smooth morphisms, Theorem 5.2, and the finite-disc smooth lifting Lesson 2, Lemma 4.1. Their normalized coefficient charts are étale pullbacks of the fixed \(P\boxtimes Q\) times the parameter chart, with the common base \([2]\) removed. Descent gives an unshifted \(\mathcal A_X\) and its perverse construction coefficient \(\mathcal A_X[2]\).
+
+The finite endpoint stages for a smooth curve were represented in §1 of this lesson by the full formal gluing functor and its finite monic charts. The bundle bounds used in lemma A.2.1.1 hold in each such chart. Thus the global last-bundle transformation maps into a finite separated endpoint scheme. Its graph in the product with the already proper source proves its map \(m_X\) proper. Set \(K_X=Rm_{X*}\mathcal A_X\) and \(\mathcal F_X=K_X[2]\). The charts just constructed give the integral finite ULA models required by Lesson 7, §C.2.2.1. It follows that \(K_X\), and its proper total image to \(X^2\), are ULA with their actual restrictions.
+
+We give the precise étale comparison near the collision divisor, because distinct points can have the same image under an étale coordinate. Choose \(z:U\to\mathbf A^1\) as above. The diagonal is open and closed in \(U\times_{\mathbf A^1}U\): it is open by étaleness and closed by separatedness. The complement of this diagonal inside that closed fiber product is therefore closed in \(U^2\). Remove it and call the resulting open neighborhood of the diagonal \(W\). Then
+\[
+(z,z):W\longrightarrow\mathbf A^2
+\]
+is étale and pulls the affine diagonal back to exactly the curve diagonal, scheme-theoretically.
+
+The two selected section neighborhoods also have the same completed union as in the affine model. Take \(U\) affine, as in the étale-coordinate theorem, and work on an affine parameter chart \(\operatorname{Spec}R\) of \(W\). Its two graph ideals \(I_1,I_2\) are invertible. The exact sequence
+\[
+0\longrightarrow I_1/(I_1I_2)
+\longrightarrow\mathcal O/(I_1I_2)
+\longrightarrow\mathcal O/I_1\longrightarrow0
+\]
+has outside terms the line \(I_1|_{\Gamma_2}\) and the rank-one graph algebra. The projection from \(U_R\) is affine, so direct image is exact on these quasi-coherent modules. Its middle algebra is consequently an extension of two finite locally free rank-one modules, hence finite locally free of rank two. For the powers of \(I=I_1I_2\), each \(I^j/I^{j+1}\) is an invertible module on that finite flat sum of graphs; the same filtration makes every finite neighborhood finite locally free over \(R\).
+
+The coordinate gives a map \(R[t]/((t-a)(t-b))\) into the initial graph-sum algebra. On geometric fibers it is an isomorphism: for distinct sections use the two Chinese remainder pieces, and for a collision use the étale parameter's length-two quotient. Thus its determinant is a unit over every local parameter ring and the rank-two map is an isomorphism, including nilpotents. Near the selected graphs, each pulled equation \(z(u)-z(x_i)\) differs from the corresponding graph ideal generator by a unit. This follows on a collision fiber from its invertible derivative, and off a collision from the two distinct coordinate images; these are exactly the branches retained by \(W\). The product equation therefore has the same ideal powers in the formal neighborhood. Formal étale uniqueness lifts the initial identification to all of these thickenings and their completions. The removed unwanted branches ensure these are the two selected neighborhoods. Lesson 3's gluing equivalence now identifies the endpoint and chain diagrams over \(W\) with the corresponding affine diagrams, retaining every bundle, away frame and coefficient transition.
+
+Consequently theorem A.3.1.1's supported comparison and strict perverse extension hold on this étale neighborhood of every collision point. Off the collision divisor the two independent formal neighborhoods give the ordinary external coefficient \(B_X(P)\boxtimes B_X(Q)\), with one common \([2]\) base normalization. It is perverse by its product charts. Perversity and the absence of collision-supported subobjects and quotients are étale local, by the support criteria and the closed-open calculation in lemma A.1.2.1. The globally defined proper image \(\mathcal F_X\) is therefore the intermediate extension of that open coefficient. These are identifications from the actual units and counits of its global image construction; equality of unrelated derived maps on a cover has not been assumed.
+
+On the diagonal, a chosen formal coordinate gives the local twisted source and local convolution endpoint with its actual coefficient. Coordinate change acts on that convolution coefficient by its induced finite-chain comparison: proper base change and the tensor comparison carry the two input actions to a weak action on \(P*Q\), identity at the coordinate-group identity. Connected-group normalization identifies it with the canonical action of theorem B.2.1.1 on \(P*Q\). Thus those diagonal comparisons glue to \((P*Q)_X\), with \(i^*\mathcal F_X[-1]=(P*Q)_X\). This also retains the existing associator and unitors, since their proper chain counits and underlying perverse morphisms respect the same genuine coordinate structures.
+
+Finally the total cohomology sheaves off the diagonal have the specified constant fibers \(H(P)\otimes H(Q)\). This follows from the proper relative Künneth comparison on the independent supports and the just-proved coordinate normalization of each input cohomology sheaf. The base \(X^2\) is smooth and hence normal, by Smooth morphisms, Theorem 2.1. It is connected: the connected horizontal curve \(X\times\{x_0\}\) meets every connected vertical curve \(\{x\}\times X\) for \(x\in X(k)\); their union is connected and contains all closed points, so its closure is \(X^2\). A connected normal Noetherian scheme is integral, as proved in Lesson 7, §C.3.1.1. Thus its ULA proper total image and that lemma extend the constant comparison uniquely across the diagonal. On \(W\) it is the actual étale pullback of Lesson 7, §C.4.1.1's affine comparison: both are the same proper and Künneth maps off the diagonal, with the same unique normal extension. At the collision the formal coordinate is \(z(u)-z(x)\), so the affine diagonal translation identifies its comparison with \(\mu_{P,Q}\). Another coordinate has the normalized full-coordinate transport already proved to act identically on the input and convolution cohomology sheaves. Hence the same equality holds under every coordinate identification.
+
+Exchange of the two curve sections fixes the single common base factor and interchanges the unshifted coefficient families. Unique intermediate extension gives its global map, as in theorem A.3.2.1. At the collision it induces the graded flip under the same \(\mu\). Faithful cohomology on the local rational heart therefore makes it exactly \(c'_{P,Q}\). The component action preserves the Cartan component and its parity, so the scalar adjustment also gives exactly \(c_{P,Q}\). The existing associativity, unit and rigidity maps are already retained by the diagonal coordinate transport; their trace dimensions are those computed with these same maps. This proves independence of curve, point and coordinate, including the monoidal and symmetric comparisons. Smooth curve components are disjoint open and closed, so the same construction applies componentwise if \(X\) is disconnected. □
+
+### B.4. Four solved full-coordinate and curve checks
+
+#### B.4.1. Truncated ring substitution, with the product order specified
+
+**Exercise B.4.1 (introductory).** Write a ring substitution in \(\operatorname{Aut}_4\) as \(\sigma(t)=zt+at^2+bt^3\). For \(\tau(t)=wt+ct^2+dt^3\), compute \(\sigma\tau\) in the ring-automorphism convention, its inverse, and rotation conjugation on the tangent-one kernel. State which divisions are used.
+
+**Solution.** The ring composite is \(\sigma(\tau(t))\), where \(\sigma\) fixes the coefficient ring. Substitute \(\sigma(t)\) into \(wt+ct^2+dt^3\). Its square is \(z^2t^2+2zat^3\), and its cube is \(z^3t^3\). Thus
+\[
+(z,a,b)(w,c,d)=(zw,wa+cz^2,wb+2cza+dz^3).
+\]
+Solving the last two coefficients for the identity, with \(w=z^{-1}\), gives
+\[
+(z,a,b)^{-1}=(z^{-1},-a/z^3,2a^2/z^5-b/z^4).
+\]
+These identities are valid over every parameter ring; only the unit \(z\) is inverted. For \(\gamma_z=(z,0,0)\), the same product gives
+\(\gamma_z(1,a,b)\gamma_z^{-1}=(1,za,z^2b)\).
+This is the weight \(j-1\) on the coefficient of \(t^j\). In characteristic two the displayed factors of \(2\) vanish; no forbidden division by \(2\) has entered the formal inverse. □
+
+#### B.4.2. Restriction at the identity does not detect the extension class
+
+**Exercise B.4.2 (intermediate).** Take \(Y\) a point and \(Q=S=E\). Compute the two terms in (B.1.1.2). Explain why an extension on the parameter \(\mathbb G_m\) can restrict to a split sequence at \(1\) but be nonzero globally, and why theorem B.1.2.1 nevertheless kills its particular rotation obstruction.
+
+**Solution.** Finite-dimensional vector sequences split, so \(\operatorname{Ext}^1_E(E,E)=0\). The second term is \(\operatorname{Hom}_E(E,E(-1))=E(-1)\). Thus
+\[
+\operatorname{Ext}^1_{\mathbb G_m}(E,E)=E(-1).
+\]
+A nonzero parameter boundary class, tensored with a nonzero map \(E\to E(-1)\), gives such a nonzero extension. Its restriction at the point \(1\) has zero extension class, by the first projection in (B.1.1.2). Consequently that restriction alone cannot distinguish it from the zero global class.
+
+The rotation proof has the additional proper relative cohomology calculation. Its two endpoint actions induce identities on their constant same-parity cohomology complexes, and both original connecting maps have zero cohomology. The extra parameter term must therefore also have zero relative cohomology. Lemma B.1.1.1 carries it to that same nonzero boundary class times \(H(\nu)\); injectivity of this parameter summand and faithfulness force \(\nu=0\). This is a constraint on the actual pulled rotation extensions, not a claim that the displayed parameter Ext group vanishes. □
+
+#### B.4.3. A coordinate in one characteristic can fail in another
+
+**Exercise B.4.3 (intermediate).** On \(X=\mathbb G_m\) put \(s=u-x\) at the section \(u=x\). Expand \(u^2-x^2\) in \(s\) and decide when it is a formal coordinate. Give a derivative-one alternative in characteristic two and describe the coefficient/cohomology transport of a Satake object.
+
+**Solution.** The expansion is \(2xs+s^2\). If the characteristic is not two, \(x\) is a unit on \(\mathbb G_m\), so its linear coefficient \(2x\) is invertible and this is an element of sufficiently deep \(\operatorname{Aut}_m\). In characteristic two the expansion is just \(s^2\), with zero linear coefficient; it is not an origin-preserving formal coordinate automorphism. In that characteristic the coordinate function \(u+u^2\) instead gives the relative parameter \(s+s^2\), of derivative one. Its Jacobian is \(1\), so it is étale, and the truncated substitution lies in \(A_m^1\).
+
+Theorem B.2.1.1 gives the coefficient transport in the first case; Lesson 7, §C.1.2.1 supplies it in the derivative-one case as well. The action cocycle retains the compositions of these frame changes. On every ordinary cohomology sheaf its normalization is the identity, so these changes preserve both input cohomology and the tensor comparison in theorem B.3.1.1. □
+
+#### B.4.4. Removing the second branch in an étale curve chart
+
+**Exercise B.4.4 (advanced).** In characteristic different from two let \(X=\mathbb G_m\) and use the étale coordinate \(z(u)=u^2\). Find an open neighborhood \(W\) of the diagonal in \(X^2\) on which \((z,z)\) pulls the affine diagonal back to precisely the curve diagonal over all parameter rings. Explain how fusion there compares with the coordinate \(u\).
+
+**Solution.** Take
+\[
+W=\{(x_1,x_2):x_1+x_2\ne0\}\subset\mathbb G_m^2.
+\]
+Every diagonal point lies in this open because \(2x\) is a unit. On \(W\),
+\[
+x_1^2-x_2^2=(x_1-x_2)(x_1+x_2),
+\]
+and the second factor is invertible. The pulled-back diagonal ideal is therefore exactly \((x_1-x_2)\), even when the parameter ring has nilpotents. Both coordinate derivatives \(2x_1,2x_2\) are units, so \((z,z):W\to\mathbf A^2\) is étale. The excluded pairs \((x,-x)\) are distinct curve points with identical squared coordinates; keeping them would confuse two independent modifications with an affine collision.
+
+At a collision point the two formal coordinates have transition \(s\mapsto2xs+s^2\), the full-coordinate element computed in Exercise B.4.3. The completed two-section and bundle-gluing comparisons of theorem B.3.1.1 identify both moving diagrams on \(W\) with their affine models. The genuine coordinate transport retains the coefficients and acts identically on their ordinary cohomology sheaves. Actual proper comparison and the unique normal extension then make both tensor maps the same \(\mu\). Point exchange has the same graded flip under that map, and faithful cohomology identifies the resulting local morphism with the same \(c'\). The parity adjustment consequently gives the same ordinary \(c\). This proves the coordinate comparison using the scheme-theoretic diagonal and coefficient maps, rather than just the equality of the geometric fibers. □
 
 ## References
 

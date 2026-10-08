@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fréchet duality and smooth convolution solvability</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L170.html">Previous lesson</a> · <a href="#8-the-exact-smooth-solvability-equivalence">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#4-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="learning-fr-chet-duality-and-smooth-convolution-solvability">Learning Fréchet duality and smooth convolution solvability</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>An operator can approximate every right-hand side and still fail to solve some equations. The missing ingredient is a bound on its inverses. For convolution, that bound has two parts: the inverse distributions must stay inside one compact set, and their orders must stay bounded. The formal chapter constructs both bounds and explains why they close the dual range.</p>
+<p>Basic references are <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">Tao's Baire-category notes</a>, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The full arguments are in the accompanying formal chapter. <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies Hahn–Banach, Baire and Fréchet open mapping. Begin with <a href="AN02-L170.html">Support distances and admissible convolution domains</a> for the geometric criterion, and <a href="AN02-L163.html">Slow decrease and entire Fourier division</a> for invertibility.</p>
+<h2 id="1-what-the-dual-criteria-say">1. What the dual criteria say</h2>
+<p>For a continuous linear map <span class="math" data-index="0" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> between Fréchet spaces, the adjoint acts by</p>
+<span class="math math-display" id="eq-E1.1" data-index="1" data-tex="\[
+ T&#x27;g(x)=g(Tx),\qquad g\in F&#x27;,\ x\in E.
+ \tag{E1.1}
+\]">\[
+ T&#x27;g(x)=g(Tx),\qquad g\in F&#x27;,\ x\in E.
+ \tag{E1.1}
+\]</span>
+<p>The pairing is bilinear, including over the complex field. Injectivity of <span class="math" data-index="2" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> means that no nonzero continuous scalar test annihilates the whole range of <span class="math" data-index="3" data-tex="\(T\)">\(T\)</span>. Hahn–Banach then makes that range dense. Surjectivity needs more.</p>
+<p>Theorem 4.2 of the formal chapter gives the exact additional condition:</p>
+<span class="math math-display" id="eq-E1.2" data-index="4" data-tex="\[
+ T\text{ is onto}
+ \quad\Longleftrightarrow\quad
+ T&#x27;\text{ is injective and }T&#x27;(F&#x27;)
+ \text{ is closed in }\sigma(E&#x27;,E).
+ \tag{E1.2}
+\]">\[
+ T\text{ is onto}
+ \quad\Longleftrightarrow\quad
+ T&#x27;\text{ is injective and }T&#x27;(F&#x27;)
+ \text{ is closed in }\sigma(E&#x27;,E).
+ \tag{E1.2}
+\]</span>
+<p>Here weak-star convergence means convergence on every vector of <span class="math" data-index="5" data-tex="\(E\)">\(E\)</span>.</p>
+<p>How can one establish that closure? For a neighborhood <span class="math" data-index="6" data-tex="\(U\)">\(U\)</span> of zero in <span class="math" data-index="7" data-tex="\(E\)">\(E\)</span>, its polar is</p>
+<span class="math math-display" id="eq-E1.3" data-index="8" data-tex="\[
+ U^\circ=\{\ell\in E&#x27;:|\ell(x)|\le1\text{ for all }x\in U\}.
+ \tag{E1.3}
+\]">\[
+ U^\circ=\{\ell\in E&#x27;:|\ell(x)|\le1\text{ for all }x\in U\}.
+ \tag{E1.3}
+\]</span>
+<p>Theorem 3.1 says that a linear <span class="math" data-index="9" data-tex="\(M\subset E&#x27;\)">\(M\subset E&#x27;\)</span> is weak-star closed exactly when every section <span class="math" data-index="10" data-tex="\(M\cap U^\circ\)">\(M\cap U^\circ\)</span> is weak-star closed. The proof constructs seminorms from those sections, identifies a quotient dual and turns approximate openness into openness by summable corrections. It applies to all Fréchet spaces. A sequence argument alone would not prove compactness of arbitrary weak-star polars; Lemma 1.1 supplies the full product-compactness proof.</p>
+<p>For convolution <span class="math" data-index="11" data-tex="\(Tu=\mu*u\)">\(Tu=\mu*u\)</span>, the adjoint is <span class="math" data-index="12" data-tex="\(T&#x27;\phi=\check\mu*\phi\)">\(T&#x27;\phi=\check\mu*\phi\)</span>. Support convexity confines <span class="math" data-index="13" data-tex="\(\phi\)">\(\phi\)</span> to one compact subset of the equation domain when <span class="math" data-index="14" data-tex="\(T&#x27;\phi\)">\(T&#x27;\phi\)</span> lies in a fixed polar. Invertibility gives a common polynomial bound for <span class="math" data-index="15" data-tex="\(F_\phi\)">\(F_\phi\)</span>, hence a common distributional order. Lemma 7.1 places the entire inverse polar inside one compact polar and proves it closed there.</p>
+<h2 id="2-four-worked-examples">2. Four worked examples</h2>
+<h3 id="example-1-a-shift-on-a-product-fr-chet-space">Example 1. A shift on a product Fréchet space</h3>
+<p>Let <span class="math" data-index="16" data-tex="\(E=\mathbb K^{\mathbb N}\)">\(E=\mathbb K^{\mathbb N}\)</span> with</p>
+<span class="math math-display" id="eq-E2.1" data-index="17" data-tex="\[
+ p_j(x)=\max_{1\le k\le j}|x_k|.
+ \tag{E2.1}
+\]">\[
+ p_j(x)=\max_{1\le k\le j}|x_k|.
+ \tag{E2.1}
+\]</span>
+<p>Every coordinatewise Cauchy sequence has a coordinatewise limit, and its first <span class="math" data-index="18" data-tex="\(j\)">\(j\)</span> coordinates converge uniformly for each finite <span class="math" data-index="19" data-tex="\(j\)">\(j\)</span>. Thus this topology is complete and metrizable: <span class="math" data-index="20" data-tex="\(E\)">\(E\)</span> is Fréchet.</p>
+<p>Every continuous linear functional depends on finitely many coordinates. Indeed continuity gives <span class="math" data-index="21" data-tex="\(|\ell(x)|\le C p_j(x)\)">\(|\ell(x)|\le C p_j(x)\)</span> for some <span class="math" data-index="22" data-tex="\(C,j\)">\(C,j\)</span>. A vector with its first <span class="math" data-index="23" data-tex="\(j\)">\(j\)</span> coordinates zero has seminorm zero, so scaling it gives <span class="math" data-index="24" data-tex="\(\ell(x)=0\)">\(\ell(x)=0\)</span>. Consequently</p>
+<span class="math math-display" id="eq-E2.2" data-index="25" data-tex="\[
+ \ell_a(x)=\sum_{k=1}^j a_kx_k,\qquad E&#x27;=\mathbb K^{(\mathbb N)},
+ \tag{E2.2}
+\]">\[
+ \ell_a(x)=\sum_{k=1}^j a_kx_k,\qquad E&#x27;=\mathbb K^{(\mathbb N)},
+ \tag{E2.2}
+\]</span>
+<p>where the parentheses mean finite support. Conversely each finite sum is continuous. The polar <span class="math" data-index="26" data-tex="\(B_{p_j}\)">\(B_{p_j}\)</span> is exactly</p>
+<span class="math math-display" id="eq-E2.3" data-index="27" data-tex="\[
+ \{a:a_k=0\ (k&gt;j),\ \sum_{k=1}^j|a_k|\le1\}.
+ \tag{E2.3}
+\]">\[
+ \{a:a_k=0\ (k&gt;j),\ \sum_{k=1}^j|a_k|\le1\}.
+ \tag{E2.3}
+\]</span>
+<p>The upper bound follows from the triangle inequality. For equality, choose <span class="math" data-index="28" data-tex="\(x_k\)">\(x_k\)</span> of modulus one so that each <span class="math" data-index="29" data-tex="\(a_kx_k=|a_k|\)">\(a_kx_k=|a_k|\)</span>. This includes complex coefficients without changing the bilinear pairing.</p>
+<p>Define <span class="math" data-index="30" data-tex="\(Tx=(x_2,x_3,\ldots)\)">\(Tx=(x_2,x_3,\ldots)\)</span>. It is continuous because <span class="math" data-index="31" data-tex="\(p_j(Tx)\le p_{j+1}(x)\)">\(p_j(Tx)\le p_{j+1}(x)\)</span>, and it is onto: given <span class="math" data-index="32" data-tex="\(y\)">\(y\)</span>, choose <span class="math" data-index="33" data-tex="\(x_1=0\)">\(x_1=0\)</span> and <span class="math" data-index="34" data-tex="\(x_{k+1}=y_k\)">\(x_{k+1}=y_k\)</span>. Its adjoint inserts a zero:</p>
+<span class="math math-display" id="eq-E2.4" data-index="35" data-tex="\[
+ T&#x27;a=(0,a_1,a_2,\ldots).
+ \tag{E2.4}
+\]">\[
+ T&#x27;a=(0,a_1,a_2,\ldots).
+ \tag{E2.4}
+\]</span>
+<p>It is injective, and its range is the weak-star closed hyperplane <span class="math" data-index="36" data-tex="\(\{a:a_1=0\}\)">\(\{a:a_1=0\}\)</span>, since <span class="math" data-index="37" data-tex="\(a_1=\ell_a(e_1)\)">\(a_1=\ell_a(e_1)\)</span> is an evaluation. This is (E1.2) in a nonnormable space.</p>
+<h3 id="example-2-dense-range-with-unbounded-inverses">Example 2. Dense range with unbounded inverses</h3>
+<p>On <span class="math" data-index="38" data-tex="\(E=F=\ell^2(\mathbb N)\)">\(E=F=\ell^2(\mathbb N)\)</span>, use the bilinear identification
+<span class="math" data-index="39" data-tex="\(\ell_a(x)=\sum_ka_kx_k\)">\(\ell_a(x)=\sum_ka_kx_k\)</span>, with <span class="math" data-index="40" data-tex="\(a\in\ell^2\)">\(a\in\ell^2\)</span>. Cauchy–Schwarz proves continuity and the norm is <span class="math" data-index="41" data-tex="\(\|a\|_2\)">\(\|a\|_2\)</span>, attained using the conjugate phase of <span class="math" data-index="42" data-tex="\(a\)">\(a\)</span> in the test vector. Conversely, for a continuous <span class="math" data-index="43" data-tex="\(\ell\)">\(\ell\)</span>, set <span class="math" data-index="44" data-tex="\(a_k=\ell(e_k)\)">\(a_k=\ell(e_k)\)</span>. Testing on the first <span class="math" data-index="45" data-tex="\(N\)">\(N\)</span> conjugate coefficients normalized in <span class="math" data-index="46" data-tex="\(\ell^2\)">\(\ell^2\)</span> gives <span class="math" data-index="47" data-tex="\(\sum_{k\le N}|a_k|^2\le\|\ell\|^2\)">\(\sum_{k\le N}|a_k|^2\le\|\ell\|^2\)</span>, including the case when that finite sum is zero. Hence <span class="math" data-index="48" data-tex="\(a\in\ell^2\)">\(a\in\ell^2\)</span>, and equality with <span class="math" data-index="49" data-tex="\(\ell_a\)">\(\ell_a\)</span> on all of <span class="math" data-index="50" data-tex="\(\ell^2\)">\(\ell^2\)</span> follows by truncation and continuity. This proves the full dual identification. Define</p>
+<span class="math math-display" id="eq-E2.5" data-index="51" data-tex="\[
+ (Tx)_k=3^{-k}x_k.
+ \tag{E2.5}
+\]">\[
+ (Tx)_k=3^{-k}x_k.
+ \tag{E2.5}
+\]</span>
+<p>It is bounded with norm <span class="math" data-index="52" data-tex="\(1/3\)">\(1/3\)</span>. Its range contains every finite sequence, hence is dense. Its adjoint is the same diagonal multiplier and is injective.</p>
+<p>Nevertheless the vector</p>
+<span class="math math-display" id="eq-E2.6" data-index="53" data-tex="\[
+ a_k=\frac{3^{-k}}{\sqrt{k}}
+ \tag{E2.6}
+\]">\[
+ a_k=\frac{3^{-k}}{\sqrt{k}}
+ \tag{E2.6}
+\]</span>
+<p>has no preimage in <span class="math" data-index="54" data-tex="\(\ell^2\)">\(\ell^2\)</span>: a preimage would have coordinates <span class="math" data-index="55" data-tex="\(1/\sqrt{k}\)">\(1/\sqrt{k}\)</span>, whose squared norm is the divergent harmonic series. The image does belong to <span class="math" data-index="56" data-tex="\(\ell^2\)">\(\ell^2\)</span>, since</p>
+<span class="math math-display" id="eq-E2.7" data-index="57" data-tex="\[
+ \|a\|_2^2=\sum_{k\ge1}\frac{9^{-k}}{k}
+ =\log(9/8)&lt;1.
+ \tag{E2.7}
+\]">\[
+ \|a\|_2^2=\sum_{k\ge1}\frac{9^{-k}}{k}
+ =\log(9/8)&lt;1.
+ \tag{E2.7}
+\]</span>
+<p>To prove the equality, integrate the uniformly convergent geometric series on <span class="math" data-index="58" data-tex="\(0\le t\le1/9\)">\(0\le t\le1/9\)</span>: <span class="math" data-index="59" data-tex="\(\sum_{k\ge1}t^k/k=-\log(1-t)\)">\(\sum_{k\ge1}t^k/k=-\log(1-t)\)</span>.</p>
+<p>Let <span class="math" data-index="60" data-tex="\(a^{(N)}\)">\(a^{(N)}\)</span> be the first <span class="math" data-index="61" data-tex="\(N\)">\(N\)</span> coordinates of <span class="math" data-index="62" data-tex="\(a\)">\(a\)</span>, with all later coordinates zero. Then <span class="math" data-index="63" data-tex="\(a^{(N)}=T&#x27;b^{(N)}\)">\(a^{(N)}=T&#x27;b^{(N)}\)</span>, where <span class="math" data-index="64" data-tex="\(b^{(N)}_k=1/\sqrt{k}\)">\(b^{(N)}_k=1/\sqrt{k}\)</span> for <span class="math" data-index="65" data-tex="\(k\le N\)">\(k\le N\)</span>. All <span class="math" data-index="66" data-tex="\(a^{(N)}\)">\(a^{(N)}\)</span> lie in the unit dual ball and converge in norm, hence weak-star, to <span class="math" data-index="67" data-tex="\(a\)">\(a\)</span>. The limit is outside <span class="math" data-index="68" data-tex="\(T&#x27;(F&#x27;)\)">\(T&#x27;(F&#x27;)\)</span>. Thus even the section of that range by the unit polar is not closed.</p>
+<p>The quantitative obstruction is</p>
+<span class="math math-display" id="eq-E2.8" data-index="69" data-tex="\[
+ \|b^{(N)}\|_2=\sqrt{H_N},\qquad
+ \log(N+1)\le H_N=\sum_{k=1}^N\frac1k\le1+\log N,
+ \tag{E2.8}
+\]">\[
+ \|b^{(N)}\|_2=\sqrt{H_N},\qquad
+ \log(N+1)\le H_N=\sum_{k=1}^N\frac1k\le1+\log N,
+ \tag{E2.8}
+\]</span>
+<p>obtained by upper and lower integral comparisons for <span class="math" data-index="70" data-tex="\(1/t\)">\(1/t\)</span>. Meanwhile</p>
+<span class="math math-display" id="eq-E2.9" data-index="71" data-tex="\[
+ \|a-a^{(N)}\|_2
+ \le\frac{3^{-N}}{\sqrt{8(N+1)}}.
+ \tag{E2.9}
+\]">\[
+ \|a-a^{(N)}\|_2
+ \le\frac{3^{-N}}{\sqrt{8(N+1)}}.
+ \tag{E2.9}
+\]</span>
+<p>Indeed <span class="math" data-index="72" data-tex="\(1/k\le1/(N+1)\)">\(1/k\le1/(N+1)\)</span> in the tail and its geometric sum is <span class="math" data-index="73" data-tex="\(9^{-N}/8\)">\(9^{-N}/8\)</span>. The data converge rapidly while the inverse norms grow without bound.</p>
+<figure><img class="course-figure" width="1170" height="1530" src="reproduce/L171/figures/dense-range-and-growing-inverse-norms.png" alt="Inverse norms grow with the harmonic sum while an explicit bound on the image error decays exponentially." /><figcaption class="native"><a href="reproduce/L171/figures/dense-range-and-growing-inverse-norms.png">Open full-size PNG</a> · <a href="reproduce/L171/figures/dense-range-and-growing-inverse-norms.svg">Open SVG</a></figcaption></figure>
+<p>The upper panel shows the exact finite harmonic sums and both proved bounds in (E2.8). The lower panel shows the upper bound in (E2.9), rather than an asserted equality for the tail. These inequalities prove the behavior for every <span class="math" data-index="74" data-tex="\(N\)">\(N\)</span>; the plotted samples illustrate it.</p>
+<h3 id="example-3-translation-on-disconnected-domains">Example 3. Translation on disconnected domains</h3>
+<p>Take <span class="math" data-index="75" data-tex="\(\mu=\delta_{2/3}\)">\(\mu=\delta_{2/3}\)</span> and</p>
+<span class="math math-display" id="eq-E2.10" data-index="76" data-tex="\[
+ X_1=(-4,-2)\cup(0,3),\qquad
+ X_2=(2/3,11/3).
+ \tag{E2.10}
+\]">\[
+ X_1=(-4,-2)\cup(0,3),\qquad
+ X_2=(2/3,11/3).
+ \tag{E2.10}
+\]</span>
+<p>Then <span class="math" data-index="77" data-tex="\(X_2-\operatorname{supp}\mu=(0,3)\subset X_1\)">\(X_2-\operatorname{supp}\mu=(0,3)\subset X_1\)</span>. For any smooth <span class="math" data-index="78" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="79" data-tex="\(X_2\)">\(X_2\)</span>, set</p>
+<span class="math math-display" id="eq-E2.11" data-index="80" data-tex="\[
+ u(y)=
+ \begin{cases}
+ f(y+2/3),&amp;y\in(0,3),\\
+ 0,&amp;y\in(-4,-2).
+ \end{cases}
+ \tag{E2.11}
+\]">\[
+ u(y)=
+ \begin{cases}
+ f(y+2/3),&amp;y\in(0,3),\\
+ 0,&amp;y\in(-4,-2).
+ \end{cases}
+ \tag{E2.11}
+\]</span>
+<p>It is smooth on <span class="math" data-index="81" data-tex="\(X_1\)">\(X_1\)</span>, since the two components are disjoint open intervals, and
+<span class="math" data-index="82" data-tex="\((\mu*u)(x)=u(x-2/3)=f(x)\)">\((\mu*u)(x)=u(x-2/3)=f(x)\)</span>.</p>
+<p>The kernel is invertible: its Fourier transform has modulus one on the real line and satisfies the slow-decrease definition by using the real center itself. For any compact <span class="math" data-index="83" data-tex="\(\phi\)">\(\phi\)</span> in <span class="math" data-index="84" data-tex="\(X_2\)">\(X_2\)</span>, <span class="math" data-index="85" data-tex="\(T&#x27;\phi=\delta_{-2/3}*\phi\)">\(T&#x27;\phi=\delta_{-2/3}*\phi\)</span> translates its support into <span class="math" data-index="86" data-tex="\((0,3)\)">\((0,3)\)</span>. Both support distances to the respective complements are equal, since translation preserves the distances to the two endpoints of those intervals. Thus this pair is support-convex. Keeping the entire translated component is essential. A smaller interval would acquire new boundary points that <span class="math" data-index="87" data-tex="\(X_1\)">\(X_1\)</span> does not have.</p>
+<p>The unused component permits arbitrary additional smooth choices of <span class="math" data-index="88" data-tex="\(u\)">\(u\)</span>. Surjectivity asserts existence, and does not imply a unique solution.</p>
+<h3 id="example-4-the-derivative-and-the-mass-zero-dual-range">Example 4. The derivative and the mass-zero dual range</h3>
+<p>Let <span class="math" data-index="89" data-tex="\(X=(-2,2)\)">\(X=(-2,2)\)</span>, <span class="math" data-index="90" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span>. The distributional convention
+<span class="math" data-index="91" data-tex="\(\delta&#x27;_0(h)=-h&#x27;(0)\)">\(\delta&#x27;_0(h)=-h&#x27;(0)\)</span> gives</p>
+<span class="math math-display" id="eq-E2.12" data-index="92" data-tex="\[
+ Tu=\mu*u=u&#x27;,\qquad T&#x27;\phi=-\phi&#x27;.
+ \tag{E2.12}
+\]">\[
+ Tu=\mu*u=u&#x27;,\qquad T&#x27;\phi=-\phi&#x27;.
+ \tag{E2.12}
+\]</span>
+<p>Every smooth <span class="math" data-index="93" data-tex="\(f\)">\(f\)</span> has the smooth solution <span class="math" data-index="94" data-tex="\(u(x)=\int_0^xf(t)\,dt\)">\(u(x)=\int_0^xf(t)\,dt\)</span>. Constants form the kernel.</p>
+<p>The exact compact dual range is</p>
+<span class="math math-display" id="eq-E2.13" data-index="95" data-tex="\[
+ T&#x27;(\mathcal E&#x27;(X))
+   =\{\psi\in\mathcal E&#x27;(X):\psi(1)=0\}.
+ \tag{E2.13}
+\]">\[
+ T&#x27;(\mathcal E&#x27;(X))
+   =\{\psi\in\mathcal E&#x27;(X):\psi(1)=0\}.
+ \tag{E2.13}
+\]</span>
+<p>Necessity follows from <span class="math" data-index="96" data-tex="\((-\phi&#x27;)(1)=\phi(1&#x27;)=0\)">\((-\phi&#x27;)(1)=\phi(1&#x27;)=0\)</span>. For sufficiency, extend a compact <span class="math" data-index="97" data-tex="\(\psi\)">\(\psi\)</span> to the real line and assume <span class="math" data-index="98" data-tex="\(\psi(1)=0\)">\(\psi(1)=0\)</span>. For a compact test <span class="math" data-index="99" data-tex="\(\theta\)">\(\theta\)</span>, put</p>
+<span class="math math-display" id="eq-E2.14" data-index="100" data-tex="\[
+ v(\theta)=-\psi\left(y\longmapsto
+                    \int_{-\infty}^y\theta(t)\,dt\right).
+ \tag{E2.14}
+\]">\[
+ v(\theta)=-\psi\left(y\longmapsto
+                    \int_{-\infty}^y\theta(t)\,dt\right).
+ \tag{E2.14}
+\]</span>
+<p>This is a distribution: on each fixed compact test family, the primitive and its derivatives near <span class="math" data-index="101" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span> have bounds by finitely many test seminorms. Since the primitive of <span class="math" data-index="102" data-tex="\(\theta&#x27;\)">\(\theta&#x27;\)</span> is <span class="math" data-index="103" data-tex="\(\theta\)">\(\theta\)</span>, one has <span class="math" data-index="104" data-tex="\(v&#x27;=\psi\)">\(v&#x27;=\psi\)</span>.</p>
+<p>If <span class="math" data-index="105" data-tex="\(\operatorname{supp}\psi\subset[a,b]\subset X\)">\(\operatorname{supp}\psi\subset[a,b]\subset X\)</span>, a test supported to the left of <span class="math" data-index="106" data-tex="\([a,b]\)">\([a,b]\)</span> has a constant primitive on that interval; its pairing vanishes by <span class="math" data-index="107" data-tex="\(\psi(1)=0\)">\(\psi(1)=0\)</span>. A test to the right has primitive zero there. Splitting a test outside <span class="math" data-index="108" data-tex="\([a,b]\)">\([a,b]\)</span> into its left and right portions proves <span class="math" data-index="109" data-tex="\(\operatorname{supp}v\subset[a,b]\)">\(\operatorname{supp}v\subset[a,b]\)</span>. Hence <span class="math" data-index="110" data-tex="\(\phi=-v\)">\(\phi=-v\)</span> lies in <span class="math" data-index="111" data-tex="\(\mathcal E&#x27;(X)\)">\(\mathcal E&#x27;(X)\)</span> and <span class="math" data-index="112" data-tex="\(T&#x27;\phi=\psi\)">\(T&#x27;\phi=\psi\)</span>. The zero distribution is handled by <span class="math" data-index="113" data-tex="\(\phi=0\)">\(\phi=0\)</span>.</p>
+<p>The range in (2.13) is weak-star closed because evaluation at the constant function is continuous. The adjoint is injective: a compact distribution with derivative zero is zero, or one can use compact convolution injectivity from the formal chapter. Thus (E1.2) recovers the antiderivative result.</p>
+<figure><img class="course-figure" width="1170" height="1440" src="reproduce/L171/figures/zero-mass-dual-range-and-compact-primitive.png" alt="A negative unit-mass bump and a positive unit-mass bump form a zero-mass distribution; their negative primitive is compact and equals one between the bumps." /><figcaption class="native"><a href="reproduce/L171/figures/zero-mass-dual-range-and-compact-primitive.png">Open full-size PNG</a> · <a href="reproduce/L171/figures/zero-mass-dual-range-and-compact-primitive.svg">Open SVG</a></figcaption></figure>
+<p>Here <span class="math" data-index="114" data-tex="\(\rho\)">\(\rho\)</span> is the nonnegative smooth probability bump of radius <span class="math" data-index="115" data-tex="\(1/4\)">\(1/4\)</span> defined below. The plotted functions are</p>
+<span class="math math-display" id="eq-E2.15" data-index="116" data-tex="\[
+ \psi(x)=\rho(x-1/2)-\rho(x+1/2),\qquad
+ \phi(x)=-\int_{-\infty}^x\psi(t)\,dt.
+ \tag{E2.15}
+\]">\[
+ \psi(x)=\rho(x-1/2)-\rho(x+1/2),\qquad
+ \phi(x)=-\int_{-\infty}^x\psi(t)\,dt.
+ \tag{E2.15}
+\]</span>
+<p>Thus <span class="math" data-index="117" data-tex="\(-\phi&#x27;=\psi\)">\(-\phi&#x27;=\psi\)</span>, both supports are contained in <span class="math" data-index="118" data-tex="\([-3/4,3/4]\)">\([-3/4,3/4]\)</span>, and <span class="math" data-index="119" data-tex="\(\phi=1\)">\(\phi=1\)</span> on <span class="math" data-index="120" data-tex="\([-1/4,1/4]\)">\([-1/4,1/4]\)</span>. The curves are numerical samples of these exact formulas. The bump is <span class="math" data-index="121" data-tex="\(\rho(t)=c\exp[-1/(1-16t^2)]\)">\(\rho(t)=c\exp[-1/(1-16t^2)]\)</span> for <span class="math" data-index="122" data-tex="\(|t|&lt;1/4\)">\(|t|&lt;1/4\)</span>, zero elsewhere, with <span class="math" data-index="123" data-tex="\(c\)">\(c\)</span> chosen so its integral is one. Smoothness at the endpoints follows from exponential decay dominating every power, as in the cutoff construction in the linked foundation.</p>
+<h2 id="3-reading-the-convolution-theorem-correctly">3. Reading the convolution theorem correctly</h2>
+<p>Theorem 8.1 concerns a compact kernel and nonempty open domains satisfying
+<span class="math" data-index="124" data-tex="\(X_2-\operatorname{supp}\mu\subset X_1\)">\(X_2-\operatorname{supp}\mu\subset X_1\)</span>. It equates:</p>
+<ol>
+<li>Smooth solutions for every smooth forcing on <span class="math" data-index="125" data-tex="\(X_2\)">\(X_2\)</span>.</li>
+<li>Distributional solutions for every smooth forcing on <span class="math" data-index="126" data-tex="\(X_2\)">\(X_2\)</span>.</li>
+<li>Kernel invertibility and support convexity of the domain pair.</li>
+</ol>
+<p>The forcing remains smooth in both solution statements. The theorem does not replace it by an arbitrary distribution. It also imposes no uniqueness condition.</p>
+<p>For sufficiency, the proof passes through</p>
+<span class="math math-display" id="eq-E3.1" data-index="127" data-tex="\[
+ \begin{aligned}
+ &amp;\operatorname{supp}(T&#x27;\phi)\subset K_1,\quad
+       |T&#x27;\phi(u)|\le q_{K_1,N}(u)\\
+ &amp;\qquad\Longrightarrow
+       \operatorname{supp}\phi\subset K_2\Subset X_2,\quad
+       |F_\phi(\xi)|\le C(1+|\xi|)^m\\
+ &amp;\qquad\Longrightarrow
+       |\phi(h)|\le B q_{L_2,2s}(h),\quad 2s&gt;m+n.
+ \end{aligned}
+ \tag{E3.1}
+\]">\[
+ \begin{aligned}
+ &amp;\operatorname{supp}(T&#x27;\phi)\subset K_1,\quad
+       |T&#x27;\phi(u)|\le q_{K_1,N}(u)\\
+ &amp;\qquad\Longrightarrow
+       \operatorname{supp}\phi\subset K_2\Subset X_2,\quad
+       |F_\phi(\xi)|\le C(1+|\xi|)^m\\
+ &amp;\qquad\Longrightarrow
+       |\phi(h)|\le B q_{L_2,2s}(h),\quad 2s&gt;m+n.
+ \end{aligned}
+ \tag{E3.1}
+\]</span>
+<p>The first support bound is geometric. The polynomial bound uses the complete space of weighted entire quotients and Baire. The last bound uses a fixed cutoff, Schwartz inversion and an integrable frequency weight. Every member of the inverse polar obeys the same bounds. Closedness inside one compact polar then gives compactness of the whole inverse polar.</p>
+<h2 id="4-exercises-and-full-solutions">4. Exercises and full solutions</h2>
+<p><strong>Exercise 1 (10 points).</strong> On <span class="math" data-index="128" data-tex="\(\mathbb C^{\mathbb N}\)">\(\mathbb C^{\mathbb N}\)</span> with (E2.1), define <span class="math" data-index="129" data-tex="\(Rx=(0,x_1,x_2,\ldots)\)">\(Rx=(0,x_1,x_2,\ldots)\)</span>. Compute its kernel, range, adjoint and adjoint kernel. Identify which condition in (E1.2) fails. Determine <span class="math" data-index="130" data-tex="\(B_{p_2}\)">\(B_{p_2}\)</span> explicitly for complex coefficients.</p>
+<p><em>Solution.</em> The kernel of <span class="math" data-index="131" data-tex="\(R\)">\(R\)</span> is zero, and its range is <span class="math" data-index="132" data-tex="\(\{y:y_1=0\}\)">\(\{y:y_1=0\}\)</span>, a proper closed subspace. The bilinear pairing gives <span class="math" data-index="133" data-tex="\(R&#x27;a=(a_2,a_3,\ldots)\)">\(R&#x27;a=(a_2,a_3,\ldots)\)</span>. Its kernel is the one-dimensional span of the first coordinate functional, so adjoint injectivity fails. Its range is all the finite sequences and is therefore closed as a subset of <span class="math" data-index="134" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. The polar consists of <span class="math" data-index="135" data-tex="\(a_k=0\)">\(a_k=0\)</span> for <span class="math" data-index="136" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, with <span class="math" data-index="137" data-tex="\(|a_1|+|a_2|\le1\)">\(|a_1|+|a_2|\le1\)</span>. If a coefficient beyond the second were nonzero, a test with its first two coordinates zero could make its value arbitrarily large. For the first two coefficients, choose <span class="math" data-index="138" data-tex="\(x_k=\overline{a_k}/|a_k|\)">\(x_k=\overline{a_k}/|a_k|\)</span> when <span class="math" data-index="139" data-tex="\(a_k\ne0\)">\(a_k\ne0\)</span>, and <span class="math" data-index="140" data-tex="\(x_k=0\)">\(x_k=0\)</span> otherwise. This attains <span class="math" data-index="141" data-tex="\(|a_1|+|a_2|\)">\(|a_1|+|a_2|\)</span> with <span class="math" data-index="142" data-tex="\(p_2(x)\le1\)">\(p_2(x)\le1\)</span>, proving both directions.</p>
+<p><strong>Exercise 2 (10 points).</strong> Replace the multiplier in Example 2 by <span class="math" data-index="143" data-tex="\(d_k=5^{-k}\)">\(d_k=5^{-k}\)</span>. Give a vector in <span class="math" data-index="144" data-tex="\(\ell^2\)">\(\ell^2\)</span> outside the range, a sequence in the adjoint range converging weak-star to it inside the unit polar, and explicit inverse and tail bounds.</p>
+<p><em>Solution.</em> Set <span class="math" data-index="145" data-tex="\(a_k=5^{-k}/\sqrt{k}\)">\(a_k=5^{-k}/\sqrt{k}\)</span>. Its norm squared is <span class="math" data-index="146" data-tex="\(-\log(1-1/25)=\log(25/24)&lt;1\)">\(-\log(1-1/25)=\log(25/24)&lt;1\)</span>, by the same integrated geometric series. A preimage must equal <span class="math" data-index="147" data-tex="\(1/\sqrt{k}\)">\(1/\sqrt{k}\)</span>, which is not square summable. The truncations <span class="math" data-index="148" data-tex="\(a^{(N)}=T&#x27;b^{(N)}\)">\(a^{(N)}=T&#x27;b^{(N)}\)</span> have inverse squared norms <span class="math" data-index="149" data-tex="\(H_N\)">\(H_N\)</span>, between <span class="math" data-index="150" data-tex="\(\log(N+1)\)">\(\log(N+1)\)</span> and <span class="math" data-index="151" data-tex="\(1+\log N\)">\(1+\log N\)</span>. They lie inside the unit polar. Their squared tail norm is at most <span class="math" data-index="152" data-tex="\(25^{-N}/[24(N+1)]\)">\(25^{-N}/[24(N+1)]\)</span>, so they converge in norm to <span class="math" data-index="153" data-tex="\(a\)">\(a\)</span>. Cauchy–Schwarz makes this convergence pointwise on every <span class="math" data-index="154" data-tex="\(\ell^2\)">\(\ell^2\)</span> vector. Thus the adjoint range section by the unit polar is not closed, and adjoint injectivity together with density does not imply surjectivity.</p>
+<p><strong>Exercise 3 (10 points).</strong> In the summable-lifting proof, explain why completeness of <span class="math" data-index="155" data-tex="\(E\)">\(E\)</span> suffices although <span class="math" data-index="156" data-tex="\(G\)">\(G\)</span> is not assumed complete. Retain the bounds for an arbitrary fixed <span class="math" data-index="157" data-tex="\(p_k\)">\(p_k\)</span>, the chosen neighborhood seminorm <span class="math" data-index="158" data-tex="\(p_{j_0}\)">\(p_{j_0}\)</span>, and an arbitrary <span class="math" data-index="159" data-tex="\(q_k\)">\(q_k\)</span>.</p>
+<p><em>Solution.</em> The terms satisfy <span class="math" data-index="160" data-tex="\(p_{j_0+j}(x_j)&lt;\varepsilon2^{-j-2}\)">\(p_{j_0+j}(x_j)&lt;\varepsilon2^{-j-2}\)</span>. Once <span class="math" data-index="161" data-tex="\(j_0+j\ge k\)">\(j_0+j\ge k\)</span>, monotonicity bounds <span class="math" data-index="162" data-tex="\(p_k(x_j)\)">\(p_k(x_j)\)</span> by that same number; the finitely many earlier terms do not affect the Cauchy property of the partial sums. Their limit <span class="math" data-index="163" data-tex="\(x\)">\(x\)</span> exists in complete <span class="math" data-index="164" data-tex="\(E\)">\(E\)</span>. Also <span class="math" data-index="165" data-tex="\(p_{j_0}(x)\le\sum_{j\ge0}\varepsilon2^{-j-2}=\varepsilon/2&lt;\varepsilon\)">\(p_{j_0}(x)\le\sum_{j\ge0}\varepsilon2^{-j-2}=\varepsilon/2&lt;\varepsilon\)</span>, so <span class="math" data-index="166" data-tex="\(x\)">\(x\)</span> lies in the prescribed neighborhood. The residual <span class="math" data-index="167" data-tex="\(r_j\)">\(r_j\)</span> satisfies <span class="math" data-index="168" data-tex="\(q_{j+1}(r_j)&lt;2^{-j}\)">\(q_{j+1}(r_j)&lt;2^{-j}\)</span>, hence tends to zero in every fixed <span class="math" data-index="169" data-tex="\(q_k\)">\(q_k\)</span>. The finite sums already have images <span class="math" data-index="170" data-tex="\(y-r_j\)">\(y-r_j\)</span>; continuity takes their limit to <span class="math" data-index="171" data-tex="\(Sx=y\)">\(Sx=y\)</span>. No Cauchy limit is sought in <span class="math" data-index="172" data-tex="\(G\)">\(G\)</span>: the residuals converge to its already existing zero, and the image limit is the already existing <span class="math" data-index="173" data-tex="\(y\)">\(y\)</span>. Finally the image contains a neighborhood and is linear, so absorption makes it all of <span class="math" data-index="174" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Exercise 4 (10 points).</strong> In Theorem 3.1, prove the identity (3.2) from the bipolar theorem, including the case <span class="math" data-index="175" data-tex="\(q_j(x)=0\)">\(q_j(x)=0\)</span>. Explain how the quotient topology then proves closure of <span class="math" data-index="176" data-tex="\(M\)">\(M\)</span>.</p>
+<p><em>Solution.</em> The prepolar of <span class="math" data-index="177" data-tex="\(C_j\)">\(C_j\)</span> is <span class="math" data-index="178" data-tex="\(P=\{x:q_j(x)\le1\}\)">\(P=\{x:q_j(x)\le1\}\)</span>. If <span class="math" data-index="179" data-tex="\(|\ell(x)|\le q_j(x)\)">\(|\ell(x)|\le q_j(x)\)</span>, then <span class="math" data-index="180" data-tex="\(\ell\)">\(\ell\)</span> belongs to <span class="math" data-index="181" data-tex="\(P^\circ\)">\(P^\circ\)</span>. Conversely, if <span class="math" data-index="182" data-tex="\(\ell\in P^\circ\)">\(\ell\in P^\circ\)</span> and <span class="math" data-index="183" data-tex="\(q_j(x)&gt;0\)">\(q_j(x)&gt;0\)</span>, apply the polar inequality to <span class="math" data-index="184" data-tex="\(x/q_j(x)\)">\(x/q_j(x)\)</span>. If <span class="math" data-index="185" data-tex="\(q_j(x)=0\)">\(q_j(x)=0\)</span>, every scalar multiple of <span class="math" data-index="186" data-tex="\(x\)">\(x\)</span> lies in <span class="math" data-index="187" data-tex="\(P\)">\(P\)</span>, forcing <span class="math" data-index="188" data-tex="\(\ell(x)=0\)">\(\ell(x)=0\)</span>. Thus <span class="math" data-index="189" data-tex="\(P^\circ=\{\ell:|\ell|\le q_j\}\)">\(P^\circ=\{\ell:|\ell|\le q_j\}\)</span>. Since <span class="math" data-index="190" data-tex="\(C_j\)">\(C_j\)</span> is weak-star closed and absolutely convex, the bipolar theorem gives <span class="math" data-index="191" data-tex="\(P^\circ=C_j\)">\(P^\circ=C_j\)</span>. This identifies the <span class="math" data-index="192" data-tex="\(q_j\)">\(q_j\)</span>-continuous dual of <span class="math" data-index="193" data-tex="\(E/N\)">\(E/N\)</span> with <span class="math" data-index="194" data-tex="\(M\)">\(M\)</span>. The quotient map is approximately open because the bipolar of its <span class="math" data-index="195" data-tex="\(p_j\)">\(p_j\)</span> unit-ball image is <span class="math" data-index="196" data-tex="\(\{q_j\le1\}\)">\(\{q_j\le1\}\)</span>, which contains <span class="math" data-index="197" data-tex="\(\{q_j&lt;1\}\)">\(\{q_j&lt;1\}\)</span>. Summable lifting makes it open. Therefore its topology is the original quotient topology, whose continuous dual is <span class="math" data-index="198" data-tex="\(N^\perp\)">\(N^\perp\)</span>. Hence <span class="math" data-index="199" data-tex="\(M=N^\perp\)">\(M=N^\perp\)</span>, an intersection of weak-star closed evaluation kernels.</p>
+<p><strong>Exercise 5 (8 points).</strong> Let <span class="math" data-index="200" data-tex="\(X_1=(-5,-3)\cup(1,4)\)">\(X_1=(-5,-3)\cup(1,4)\)</span>, <span class="math" data-index="201" data-tex="\(\mu=\delta_{-1/2}\)">\(\mu=\delta_{-1/2}\)</span>. Choose the full equation component corresponding to <span class="math" data-index="202" data-tex="\((1,4)\)">\((1,4)\)</span>, construct solutions for every smooth forcing there, and compute the two support distances for <span class="math" data-index="203" data-tex="\(\phi=\delta_2+\delta_3\)">\(\phi=\delta_2+\delta_3\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math" data-index="204" data-tex="\((\mu*u)(x)=u(x+1/2)\)">\((\mu*u)(x)=u(x+1/2)\)</span>, the equation component is <span class="math" data-index="205" data-tex="\(X_2=(1/2,7/2)\)">\(X_2=(1/2,7/2)\)</span>. Set <span class="math" data-index="206" data-tex="\(u(y)=f(y-1/2)\)">\(u(y)=f(y-1/2)\)</span> on <span class="math" data-index="207" data-tex="\((1,4)\)">\((1,4)\)</span>, with zero on the other component. The adjoint translates by <span class="math" data-index="208" data-tex="\(+1/2\)">\(+1/2\)</span>, so <span class="math" data-index="209" data-tex="\(T&#x27;\phi=\delta_{5/2}+\delta_{7/2}\)">\(T&#x27;\phi=\delta_{5/2}+\delta_{7/2}\)</span>. The distance of <span class="math" data-index="210" data-tex="\(\{2,3\}\)">\(\{2,3\}\)</span> to <span class="math" data-index="211" data-tex="\(X_2^c\)">\(X_2^c\)</span> is <span class="math" data-index="212" data-tex="\(1/2\)">\(1/2\)</span>, attained from <span class="math" data-index="213" data-tex="\(3\)">\(3\)</span> to <span class="math" data-index="214" data-tex="\(7/2\)">\(7/2\)</span>. The image support has distance <span class="math" data-index="215" data-tex="\(1/2\)">\(1/2\)</span> to <span class="math" data-index="216" data-tex="\(X_1^c\)">\(X_1^c\)</span>, attained from <span class="math" data-index="217" data-tex="\(7/2\)">\(7/2\)</span> to <span class="math" data-index="218" data-tex="\(4\)">\(4\)</span>. Compatibility and smoothness hold on the two components separately. Extra solutions can be obtained by changing <span class="math" data-index="219" data-tex="\(u\)">\(u\)</span> arbitrarily on <span class="math" data-index="220" data-tex="\((-5,-3)\)">\((-5,-3)\)</span>.</p>
+<p><strong>Exercise 6 (10 points).</strong> Establish (E2.14) and its compact-support conclusion in detail. Apply it to <span class="math" data-index="221" data-tex="\(\psi=\delta_{1/2}-\delta_{-1/2}\)">\(\psi=\delta_{1/2}-\delta_{-1/2}\)</span>, and give the inverse <span class="math" data-index="222" data-tex="\(\phi\)">\(\phi\)</span> with <span class="math" data-index="223" data-tex="\(-\phi&#x27;=\psi\)">\(-\phi&#x27;=\psi\)</span>.</p>
+<p><em>Solution.</em> On a fixed compact support for <span class="math" data-index="224" data-tex="\(\theta\)">\(\theta\)</span>, its primitive is bounded on a compact neighborhood of <span class="math" data-index="225" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span> by a finite interval length times <span class="math" data-index="226" data-tex="\(\|\theta\|_\infty\)">\(\|\theta\|_\infty\)</span>; its <span class="math" data-index="227" data-tex="\(r\)">\(r\)</span>-th derivative for <span class="math" data-index="228" data-tex="\(r\ge1\)">\(r\ge1\)</span> equals <span class="math" data-index="229" data-tex="\(\theta^{(r-1)}\)">\(\theta^{(r-1)}\)</span>. A finite-order bound for <span class="math" data-index="230" data-tex="\(\psi\)">\(\psi\)</span> therefore proves continuity in the test-function topology. The identity <span class="math" data-index="231" data-tex="\(\int_{-\infty}^y\theta&#x27;(t)\,dt=\theta(y)\)">\(\int_{-\infty}^y\theta&#x27;(t)\,dt=\theta(y)\)</span> gives <span class="math" data-index="232" data-tex="\(v&#x27;=\psi\)">\(v&#x27;=\psi\)</span> with the displayed sign. If a test is supported left of <span class="math" data-index="233" data-tex="\([a,b]\)">\([a,b]\)</span>, its primitive on <span class="math" data-index="234" data-tex="\([a,b]\)">\([a,b]\)</span> is a constant and is killed by zero mass. If it is supported right, the primitive is zero there. Any compact test outside <span class="math" data-index="235" data-tex="\([a,b]\)">\([a,b]\)</span> splits into those two tests, proving that <span class="math" data-index="236" data-tex="\(v\)">\(v\)</span> is supported in <span class="math" data-index="237" data-tex="\([a,b]\)">\([a,b]\)</span>. For the given atoms, <span class="math" data-index="238" data-tex="\(v\)">\(v\)</span> is the locally integrable function equal to <span class="math" data-index="239" data-tex="\(-1\)">\(-1\)</span> on <span class="math" data-index="240" data-tex="\((-1/2,1/2)\)">\((-1/2,1/2)\)</span> and zero outside. Its derivative is <span class="math" data-index="241" data-tex="\(\delta_{1/2}-\delta_{-1/2}\)">\(\delta_{1/2}-\delta_{-1/2}\)</span>. Hence <span class="math" data-index="242" data-tex="\(\phi\)">\(\phi\)</span> is the indicator of <span class="math" data-index="243" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>, understood as a distribution; endpoint values do not change that distribution.</p>
+<p><strong>Exercise 7 (10 points).</strong> Why does the uniform-division lemma retain the fixed factor <span class="math" data-index="244" data-tex="\((1+|\zeta|)^{-N}\)">\((1+|\zeta|)^{-N}\)</span>? Prove its Baire rescaling bound and explain why the common exponent is stronger than assigning a separate exponent to each quotient.</p>
+<p><em>Solution.</em> The product transform in a fixed inverse polar has order at most <span class="math" data-index="245" data-tex="\(N\)">\(N\)</span>, so its entire growth bound is <span class="math" data-index="246" data-tex="\(C(1+|\zeta|)^Ne^{H_K(\operatorname{Im}\zeta)}\)">\(C(1+|\zeta|)^Ne^{H_K(\operatorname{Im}\zeta)}\)</span>. Dropping this factor would discard transforms that actually occur. The norm in (5.2) keeps it, and the local nonzero-multiplier estimate proves compact evaluation continuity and Banach completeness with that weight. Entire division gives each quotient some real polynomial bound, so the closed sets <span class="math" data-index="247" data-tex="\(D_j\)">\(D_j\)</span> in (5.4) cover the entire Banach space. If <span class="math" data-index="248" data-tex="\(B(G_0,r)\subset D_j\)">\(B(G_0,r)\subset D_j\)</span>, then <span class="math" data-index="249" data-tex="\(G_0+H\)">\(G_0+H\)</span> and <span class="math" data-index="250" data-tex="\(G_0\)">\(G_0\)</span> give <span class="math" data-index="251" data-tex="\(|H(\xi)|\le2j(1+|\xi|)^j\)">\(|H(\xi)|\le2j(1+|\xi|)^j\)</span> for <span class="math" data-index="252" data-tex="\(\|H\|&lt;r\)">\(\|H\|&lt;r\)</span>. For nonzero <span class="math" data-index="253" data-tex="\(G\)">\(G\)</span>, use <span class="math" data-index="254" data-tex="\(H=rG/(2\|G\|)\)">\(H=rG/(2\|G\|)\)</span> to obtain <span class="math" data-index="255" data-tex="\(|G(\xi)|\le(4j/r)\|G\|(1+|\xi|)^j\)">\(|G(\xi)|\le(4j/r)\|G\|(1+|\xi|)^j\)</span>. The zero quotient is immediate. The same <span class="math" data-index="256" data-tex="\(j\)">\(j\)</span> controls every quotient in the norm unit ball; individual exponents could grow without bound and would not supply one distributional seminorm polar.</p>
+<p><strong>Exercise 8 (12 points).</strong> In dimension one, suppose an inverse family has support in one compact <span class="math" data-index="257" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span> and <span class="math" data-index="258" data-tex="\(|F_\phi(\xi)|\le C(1+|\xi|)^2\)">\(|F_\phi(\xi)|\le C(1+|\xi|)^2\)</span>. Use a fixed smooth compact cutoff to bound its action by derivatives of order at most four. Compute the frequency-weight integral exactly.</p>
+<p><em>Solution.</em> Choose <span class="math" data-index="259" data-tex="\(\chi\in C_c^\infty(X_2)\)">\(\chi\in C_c^\infty(X_2)\)</span> equal to one near <span class="math" data-index="260" data-tex="\(K_2\)">\(K_2\)</span>, with support <span class="math" data-index="261" data-tex="\(L\)">\(L\)</span>. The derivative identity</p>
+<span class="math math-display" id="eq-E4.1" data-index="262" data-tex="\[
+ (1+\xi^2)^2F_{\chi h}(\xi)
+   =F_{\chi h-2(\chi h)&#x27;&#x27;+(\chi h)&#x27;&#x27;&#x27;&#x27;}(\xi)
+ \tag{E4.1}
+\]">\[
+ (1+\xi^2)^2F_{\chi h}(\xi)
+   =F_{\chi h-2(\chi h)&#x27;&#x27;+(\chi h)&#x27;&#x27;&#x27;&#x27;}(\xi)
+ \tag{E4.1}
+\]</span>
+<p>follows by four integrations by parts, with no boundary terms. Leibniz's rule and the finite support length give a constant <span class="math" data-index="263" data-tex="\(C_\chi\)">\(C_\chi\)</span> such that</p>
+<span class="math math-display" id="eq-E4.2" data-index="264" data-tex="\[
+ |F_{\chi h}(-\xi)|\le C_\chi(1+\xi^2)^{-2}
+                  \max_{0\le r\le4}\sup_L|h^{(r)}|.
+ \tag{E4.2}
+\]">\[
+ |F_{\chi h}(-\xi)|\le C_\chi(1+\xi^2)^{-2}
+                  \max_{0\le r\le4}\sup_L|h^{(r)}|.
+ \tag{E4.2}
+\]</span>
+<p>Here all cutoff derivatives through order four are fixed. On <span class="math" data-index="265" data-tex="\(0\le t&lt;\infty\)">\(0\le t&lt;\infty\)</span>,
+<span class="math" data-index="266" data-tex="\(\int_0^\infty(1+t^2)^{-2}dt=\pi/4\)">\(\int_0^\infty(1+t^2)^{-2}dt=\pi/4\)</span>,
+<span class="math" data-index="267" data-tex="\(\int_0^\infty t(1+t^2)^{-2}dt=1/2\)">\(\int_0^\infty t(1+t^2)^{-2}dt=1/2\)</span>, and
+<span class="math" data-index="268" data-tex="\(\int_0^\infty t^2(1+t^2)^{-2}dt=\pi/4\)">\(\int_0^\infty t^2(1+t^2)^{-2}dt=\pi/4\)</span>.
+The first and third follow from <span class="math" data-index="269" data-tex="\(t=\tan\theta\)">\(t=\tan\theta\)</span>, integrating <span class="math" data-index="270" data-tex="\(\cos^2\theta\)">\(\cos^2\theta\)</span> and <span class="math" data-index="271" data-tex="\(\sin^2\theta\)">\(\sin^2\theta\)</span> on <span class="math" data-index="272" data-tex="\([0,\pi/2]\)">\([0,\pi/2]\)</span>; the middle follows from <span class="math" data-index="273" data-tex="\(s=1+t^2\)">\(s=1+t^2\)</span>. Therefore</p>
+<span class="math math-display" id="eq-E4.3" data-index="274" data-tex="\[
+ \int_{\mathbb R}\frac{(1+|\xi|)^2}{(1+\xi^2)^2}\,d\xi
+ =\pi+2.
+ \tag{E4.3}
+\]">\[
+ \int_{\mathbb R}\frac{(1+|\xi|)^2}{(1+\xi^2)^2}\,d\xi
+ =\pi+2.
+ \tag{E4.3}
+\]</span>
+<p>Bilinear Schwartz inversion gives</p>
+<span class="math math-display" id="eq-E4.4" data-index="275" data-tex="\[
+ |\phi(h)|\le
+ \frac{CC_\chi(\pi+2)}{2\pi}
+       \max_{0\le r\le4}\sup_L|h^{(r)}|.
+ \tag{E4.4}
+\]">\[
+ |\phi(h)|\le
+ \frac{CC_\chi(\pi+2)}{2\pi}
+       \max_{0\le r\le4}\sup_L|h^{(r)}|.
+ \tag{E4.4}
+\]</span>
+<p>The reflected frequency in (4.2), the factor <span class="math" data-index="276" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span>, and every derivative order are retained. Thus the entire family lies in one seminorm polar. Support confinement alone would not provide the uniform order needed here.</p>
+<p><strong>Exercise 9 (10 points).</strong> For <span class="math" data-index="277" data-tex="\(\mu=\delta_0\)">\(\mu=\delta_0\)</span>, <span class="math" data-index="278" data-tex="\(X_1=(-2,2)\)">\(X_1=(-2,2)\)</span>, <span class="math" data-index="279" data-tex="\(X_2=(-1,1)\)">\(X_2=(-1,1)\)</span>, show that the smooth forcing</p>
+<span class="math math-display" id="eq-E4.5" data-index="280" data-tex="\[
+ f(x)=\exp\bigl((1-x)^{-2}\bigr)
+ \tag{E4.5}
+\]">\[
+ f(x)=\exp\bigl((1-x)^{-2}\bigr)
+ \tag{E4.5}
+\]</span>
+<p>has no distributional solution on <span class="math" data-index="281" data-tex="\(X_1\)">\(X_1\)</span>. Relate this to support convexity.</p>
+<p><em>Solution.</em> A solution would be a distribution <span class="math" data-index="282" data-tex="\(u\)">\(u\)</span> whose restriction to <span class="math" data-index="283" data-tex="\(X_2\)">\(X_2\)</span> is <span class="math" data-index="284" data-tex="\(f\)">\(f\)</span>. Choose nonnegative <span class="math" data-index="285" data-tex="\(\eta\in C_c^\infty((-1/4,1/4))\)">\(\eta\in C_c^\infty((-1/4,1/4))\)</span> with integral one. Put <span class="math" data-index="286" data-tex="\(a_j=2^{-j}\)">\(a_j=2^{-j}\)</span>, <span class="math" data-index="287" data-tex="\(t_j=1-a_j\)">\(t_j=1-a_j\)</span>, and <span class="math" data-index="288" data-tex="\(\theta_j(x)=\eta((x-t_j)/a_j)\)">\(\theta_j(x)=\eta((x-t_j)/a_j)\)</span>. For <span class="math" data-index="289" data-tex="\(j\ge1\)">\(j\ge1\)</span>, its support is contained in <span class="math" data-index="290" data-tex="\([1-5a_j/4,1-3a_j/4]\subset[0,3/2]\cap X_2\)">\([1-5a_j/4,1-3a_j/4]\subset[0,3/2]\cap X_2\)</span>. On that support <span class="math" data-index="291" data-tex="\(f(x)\ge\exp(16/(25a_j^2))\)">\(f(x)\ge\exp(16/(25a_j^2))\)</span>, so positivity gives</p>
+<span class="math math-display" id="eq-E4.6" data-index="292" data-tex="\[
+ u(\theta_j)=\int f\theta_j
+       \ge a_j\exp(16/(25a_j^2)).
+ \tag{E4.6}
+\]">\[
+ u(\theta_j)=\int f\theta_j
+       \ge a_j\exp(16/(25a_j^2)).
+ \tag{E4.6}
+\]</span>
+<p>A distribution on <span class="math" data-index="293" data-tex="\(X_1\)">\(X_1\)</span> has a finite-order bound on the fixed compact test support <span class="math" data-index="294" data-tex="\([0,3/2]\)">\([0,3/2]\)</span>. Thus <span class="math" data-index="295" data-tex="\(|u(\theta_j)|\le C a_j^{-N}\)">\(|u(\theta_j)|\le C a_j^{-N}\)</span> for some <span class="math" data-index="296" data-tex="\(C,N\)">\(C,N\)</span>, absorbing the fixed derivatives of <span class="math" data-index="297" data-tex="\(\eta\)">\(\eta\)</span>. This contradicts (E4.6), since the exponential dominates <span class="math" data-index="298" data-tex="\(a_j^{-N-1}\)">\(a_j^{-N-1}\)</span>; taking logarithms makes the contradiction explicit. For the point test <span class="math" data-index="299" data-tex="\(\delta_0\)">\(\delta_0\)</span>, its distance to <span class="math" data-index="300" data-tex="\(X_2^c\)">\(X_2^c\)</span> is <span class="math" data-index="301" data-tex="\(1\)">\(1\)</span>, while the unchanged image has distance <span class="math" data-index="302" data-tex="\(2\)">\(2\)</span> to <span class="math" data-index="303" data-tex="\(X_1^c\)">\(X_1^c\)</span>. The pair fails the exact support-distance criterion despite the invertible identity kernel. Mere compatibility does not ensure solvability.</p>
+<p><strong>Exercise 10 (10 points).</strong> On the whole real line let <span class="math" data-index="304" data-tex="\(\mu=\delta_0-\delta_1\)">\(\mu=\delta_0-\delta_1\)</span>. Prove invertibility directly from slow decrease, apply Theorem 8.1 to arbitrary smooth forcing, and find explicit solutions for <span class="math" data-index="305" data-tex="\(f(x)=e^{\lambda x}\)">\(f(x)=e^{\lambda x}\)</span>, including every resonant <span class="math" data-index="306" data-tex="\(\lambda\in2\pi i\mathbb Z\)">\(\lambda\in2\pi i\mathbb Z\)</span>.</p>
+<p><em>Solution.</em> The transform is <span class="math" data-index="307" data-tex="\(F_\mu(\zeta)=1-e^{-i\zeta}\)">\(F_\mu(\zeta)=1-e^{-i\zeta}\)</span>. For every real center <span class="math" data-index="308" data-tex="\(\xi\)">\(\xi\)</span>, choose <span class="math" data-index="309" data-tex="\(\zeta=\xi+i\)">\(\zeta=\xi+i\)</span>. Then <span class="math" data-index="310" data-tex="\(|\zeta-\xi|=1\le2\log(2+|\xi|)\)">\(|\zeta-\xi|=1\le2\log(2+|\xi|)\)</span>, and</p>
+<span class="math math-display" id="eq-E4.7" data-index="311" data-tex="\[
+ |1-e^{-i(\xi+i)}|\ge e-1&gt;1
+                    \ge(2+|\xi|)^{-2}.
+ \tag{E4.7}
+\]">\[
+ |1-e^{-i(\xi+i)}|\ge e-1&gt;1
+                    \ge(2+|\xi|)^{-2}.
+ \tag{E4.7}
+\]</span>
+<p>This is a slow-decrease window bound with constant <span class="math" data-index="312" data-tex="\(2\)">\(2\)</span>, so the kernel is invertible by the linked characterization. The whole-space domain pair is support-convex by the convex maximal-domain theorem, or because both complement distances are infinite for every nonzero compact test. Thus Theorem 8.1 gives a smooth solution for every smooth <span class="math" data-index="313" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-index="314" data-tex="\(e^{-\lambda}\ne1\)">\(e^{-\lambda}\ne1\)</span>, take <span class="math" data-index="315" data-tex="\(u(x)=e^{\lambda x}/(1-e^{-\lambda})\)">\(u(x)=e^{\lambda x}/(1-e^{-\lambda})\)</span>. Then <span class="math" data-index="316" data-tex="\(u(x)-u(x-1)=f(x)\)">\(u(x)-u(x-1)=f(x)\)</span>. If <span class="math" data-index="317" data-tex="\(\lambda=2\pi ik\)">\(\lambda=2\pi ik\)</span>, take <span class="math" data-index="318" data-tex="\(u(x)=x e^{\lambda x}\)">\(u(x)=x e^{\lambda x}\)</span>, since the exponential is one-periodic. This includes <span class="math" data-index="319" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>. Real forcing can be handled by real parts because the operator has real coefficients. Real Fourier zeros at <span class="math" data-index="320" data-tex="\(2\pi k\)">\(2\pi k\)</span> therefore do not contradict invertibility or the smooth-forcing theorem.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, “245B, Notes 9: The Baire category theorem and its Banach space consequences,” 2009, freely readable <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">notes</a>.</li>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, “Fourier transformation of distributions,” freely readable <a href="https://web.math.ku.dk/~grubb/dist5.pdf">lecture notes</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+<li>The full polars, lifting, dual closure, adjoint criterion and smooth-solvability proofs are in the accompanying formal chapter. The examples and exercises here are original.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Support geometry controls where a transpose inverse can live. Fourier division controls its order. Together these give smooth convolution solvability, once the relevant dual range is closed. We prove the two general Fréchet-space duality statements needed for that conclusion, including the polar-section closure criterion, and then construct the uniform bounds for convolution.</p>
+<p>Basic references are <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">Tao's notes on Baire's theorem and its Banach-space consequences</a>, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. Normed Hahn–Banach, dual norm tests, dual operator-space completeness, Baire and the full Fréchet open-mapping theorem are proved in Sections 3, 5, 6 and 14 of <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>. We use the seminorm extension and gauge arguments proved in Propositions 1.1–1.2 of <a href="AN02-L042.html#from-normed-extension-to-seminorm-bounds">Continuous functionals, test families and compact limits</a>. Compact scalar disks and their finite-dimensional topology are supplied by <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a>.</p>
+<p>The exact Fourier inputs are the entire-division characterization in Theorem 1.1 of <a href="AN02-L163.html#1-five-descriptions-of-slow-decrease">Slow decrease and entire Fourier division</a>, the local nonzero-entire-multiplier estimate in Lemma 2.1 of <a href="AN02-L168.html#2-a-complete-space-of-entire-quotients">Analytic forcing and smooth convolution solutions</a>, and the compact Fourier growth criterion in Theorem CF2.1 of <a href="AN02-L122.html#2-the-compact-support-growth-criterion">Compact Fourier division and multiplicity-sensitive annihilators</a>. <a href="AN02-L170.html#3-proof-of-the-support-distance-criterion">Support distances and admissible convolution domains</a> supplies confinement for compact distributions. We supply every additional duality and uniform-bound argument below.</p>
+<p>The Fourier pairing uses Theorem 1.1, with its full normalization, of <a href="prerequisites/prerequisite-bridges.html#fourier-inversion-on-the-schwartz-space">Fourier transforms, finite spectra and convex separation</a>. Smooth cutoffs inside an arbitrary open domain are proved in Section 13.10 of the linked metric foundation.</p>
+<h2 id="1-weak-star-polars-and-compactness">1. Weak-star polars and compactness</h2>
+<p>All vector spaces in the duality sections are over <span class="math" data-index="321" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-index="322" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Duals consist of continuous linear functionals; the pairing is bilinear. For a locally convex space <span class="math" data-index="323" data-tex="\(E\)">\(E\)</span>, its weak-star dual topology <span class="math" data-index="324" data-tex="\(\sigma(E&#x27;,E)\)">\(\sigma(E&#x27;,E)\)</span> is pointwise convergence on <span class="math" data-index="325" data-tex="\(E\)">\(E\)</span>. For <span class="math" data-index="326" data-tex="\(U\subset E\)">\(U\subset E\)</span>, write</p>
+<span class="math math-display" id="eq-1.1" data-index="327" data-tex="\[
+ U^\circ=\{\ell\in E&#x27;:|\ell(x)|\le1\text{ for every }x\in U\}.
+ \tag{1.1}
+\]">\[
+ U^\circ=\{\ell\in E&#x27;:|\ell(x)|\le1\text{ for every }x\in U\}.
+ \tag{1.1}
+\]</span>
+<p>For <span class="math" data-index="328" data-tex="\(A\subset E&#x27;\)">\(A\subset E&#x27;\)</span>, its prepolar is defined by the same inequality with the roles reversed. A set is absolutely convex when it is convex and balanced under scalar multiplication by scalars of modulus at most one.</p>
+<p><strong>Lemma 1.1 (compact seminorm polars).</strong> If <span class="math" data-index="329" data-tex="\(p\)">\(p\)</span> is a continuous seminorm on <span class="math" data-index="330" data-tex="\(E\)">\(E\)</span>, then</p>
+<span class="math math-display" id="eq-1.2" data-index="331" data-tex="\[
+ B_p=\{\ell\in E&#x27;:|\ell(x)|\le p(x)\text{ for every }x\in E\}
+ \tag{1.2}
+\]">\[
+ B_p=\{\ell\in E&#x27;:|\ell(x)|\le p(x)\text{ for every }x\in E\}
+ \tag{1.2}
+\]</span>
+<p>is weak-star compact and closed. It is the polar of <span class="math" data-index="332" data-tex="\(\{x:p(x)&lt;1\}\)">\(\{x:p(x)&lt;1\}\)</span>.</p>
+<p><em>Proof.</em> Homogeneity, including scaling vectors in <span class="math" data-index="333" data-tex="\(\ker p\)">\(\ker p\)</span>, proves the last assertion. Embed <span class="math" data-index="334" data-tex="\(B_p\)">\(B_p\)</span> by its values in the product of compact scalar disks</p>
+<span class="math math-display" id="eq-1.3" data-index="335" data-tex="\[
+ \prod_{x\in E}\{z:|z|\le p(x)\}.
+ \tag{1.3}
+\]">\[
+ \prod_{x\in E}\{z:|z|\le p(x)\}.
+ \tag{1.3}
+\]</span>
+<p>Linearity is a closed condition: the equations at <span class="math" data-index="336" data-tex="\(x+y\)">\(x+y\)</span> and at <span class="math" data-index="337" data-tex="\(\lambda x\)">\(\lambda x\)</span> are closed equations between finitely many coordinates. Any point satisfying those equations is linear and is continuous by the bound <span class="math" data-index="338" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-index="339" data-tex="\(B_p\)">\(B_p\)</span> is a closed subset of this product. The product topology on it is exactly the weak-star topology.</p>
+<p>Here is the needed arbitrary-product compactness argument. We use Zorn's lemma, also used in the normed Hahn–Banach proof. Every proper filter extends to an ultrafilter: order proper filters containing it by inclusion; the union of a chain remains a proper filter, since each finite collection of its members lies in one filter of the chain. A maximal member therefore exists. Its maximality implies that for any subset <span class="math" data-index="340" data-tex="\(A\)">\(A\)</span>, either <span class="math" data-index="341" data-tex="\(A\)">\(A\)</span> or its complement belongs to it. Indeed, if adjoining <span class="math" data-index="342" data-tex="\(A\)">\(A\)</span> cannot preserve properness, one existing filter member is disjoint from <span class="math" data-index="343" data-tex="\(A\)">\(A\)</span>, so the complement belongs to the filter.</p>
+<p>On a compact space, the closures of the members of an ultrafilter have the finite-intersection property and hence have a common point. Every neighborhood of that point belongs to the ultrafilter: otherwise its closed complement would belong to it and would exclude the point from one of those closures. The filter therefore converges. Conversely, if every ultrafilter converges but an open cover has no finite subcover, the complements of finite unions of cover members generate a proper filter. An ultrafilter extending it cannot converge, since at any candidate limit a containing cover member and its complement would both belong to the filter. This is a contradiction.</p>
+<p>For a product of compact Hausdorff spaces, each coordinate image of an ultrafilter converges to a unique coordinate point. These points form a product point, and every finite-coordinate basic neighborhood belongs to the ultrafilter. Hence it converges in the product. The disk product in (1.3) is nonempty, since the zero coordinates belong to every factor. This proves its compactness with no countability or separability restriction. A closed subset is compact. The weak-star topology is Hausdorff, since distinct functionals differ at some vector, so compact subsets are closed. <span class="math" data-index="344" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (bipolar separation).</strong> In a Hausdorff locally convex space <span class="math" data-index="345" data-tex="\(Z\)">\(Z\)</span>, the bipolar of a nonempty absolutely convex set <span class="math" data-index="346" data-tex="\(A\)">\(A\)</span> is its closure, using the continuous dual pairing.</p>
+<p><em>Proof.</em> Every continuous functional bounded by one on <span class="math" data-index="347" data-tex="\(A\)">\(A\)</span> remains so on its closure <span class="math" data-index="348" data-tex="\(C\)">\(C\)</span>, giving one inclusion. Let <span class="math" data-index="349" data-tex="\(z_0\notin C\)">\(z_0\notin C\)</span>. Choose a balanced convex open neighborhood <span class="math" data-index="350" data-tex="\(W\)">\(W\)</span> of zero such that <span class="math" data-index="351" data-tex="\((z_0+W)\cap C=\varnothing\)">\((z_0+W)\cap C=\varnothing\)</span>. Put <span class="math" data-index="352" data-tex="\(V=W/3\)">\(V=W/3\)</span>. Choose <span class="math" data-index="353" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span> sufficiently close to one that <span class="math" data-index="354" data-tex="\((\lambda-1)z_0\in W/3\)">\((\lambda-1)z_0\in W/3\)</span>. Then <span class="math" data-index="355" data-tex="\(\lambda z_0\notin C+V\)">\(\lambda z_0\notin C+V\)</span>: otherwise <span class="math" data-index="356" data-tex="\(c=\lambda z_0-v\)">\(c=\lambda z_0-v\)</span> would lie in <span class="math" data-index="357" data-tex="\(z_0+W\)">\(z_0+W\)</span> for some <span class="math" data-index="358" data-tex="\(c\in C\)">\(c\in C\)</span>, a contradiction.</p>
+<p>The open absolutely convex absorbing set <span class="math" data-index="359" data-tex="\(C+V\)">\(C+V\)</span> has a continuous seminorm gauge <span class="math" data-index="360" data-tex="\(g\)">\(g\)</span>, by the linked gauge proof. It satisfies <span class="math" data-index="361" data-tex="\(g(c)\le1\)">\(g(c)\le1\)</span> on <span class="math" data-index="362" data-tex="\(C\)">\(C\)</span> and</p>
+<span class="math math-display" id="eq-1.4" data-index="363" data-tex="\[
+ g(z_0)\ge1/\lambda&gt;1.
+ \tag{1.4}
+\]">\[
+ g(z_0)\ge1/\lambda&gt;1.
+ \tag{1.4}
+\]</span>
+<p>On the scalar line through <span class="math" data-index="364" data-tex="\(z_0\)">\(z_0\)</span>, define <span class="math" data-index="365" data-tex="\(L(tz_0)=t g(z_0)\)">\(L(tz_0)=t g(z_0)\)</span>. It is bounded by <span class="math" data-index="366" data-tex="\(g\)">\(g\)</span>. The linked seminorm Hahn–Banach theorem extends it continuously to <span class="math" data-index="367" data-tex="\(Z\)">\(Z\)</span>, with <span class="math" data-index="368" data-tex="\(|L|\le g\)">\(|L|\le g\)</span>. Thus <span class="math" data-index="369" data-tex="\(|L(c)|\le1\)">\(|L(c)|\le1\)</span> on <span class="math" data-index="370" data-tex="\(A\)">\(A\)</span>, but <span class="math" data-index="371" data-tex="\(L(z_0)&gt;1\)">\(L(z_0)&gt;1\)</span>. This excludes <span class="math" data-index="372" data-tex="\(z_0\)">\(z_0\)</span> from the bipolar and proves equality. <span class="math" data-index="373" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-index="374" data-tex="\(Z=E&#x27;\)">\(Z=E&#x27;\)</span> with its weak-star topology, every continuous linear <span class="math" data-index="375" data-tex="\(L\)">\(L\)</span> is evaluation at a vector of <span class="math" data-index="376" data-tex="\(E\)">\(E\)</span>. Continuity bounds <span class="math" data-index="377" data-tex="\(L\)">\(L\)</span> by finitely many evaluations at <span class="math" data-index="378" data-tex="\(x_1,\ldots,x_k\)">\(x_1,\ldots,x_k\)</span>. It therefore vanishes when those evaluations vanish, and factors through their range in the finite-dimensional scalar space. Extend that finite-dimensional linear map and write</p>
+<span class="math math-display" id="eq-1.5" data-index="379" data-tex="\[
+ L(\ell)=\sum_j a_j\ell(x_j)=\ell\left(\sum_j a_jx_j\right).
+ \tag{1.5}
+\]">\[
+ L(\ell)=\sum_j a_j\ell(x_j)=\ell\left(\sum_j a_jx_j\right).
+ \tag{1.5}
+\]</span>
+<p>Consequently Lemma 1.2 also gives the weak-star bipolar theorem in the dual pair <span class="math" data-index="380" data-tex="\((E&#x27;,E)\)">\((E&#x27;,E)\)</span>. In particular a weak-star closed linear <span class="math" data-index="381" data-tex="\(M\subset E&#x27;\)">\(M\subset E&#x27;\)</span> equals the annihilator of its preannihilator.</p>
+<h2 id="2-turning-approximate-openness-into-openness">2. Turning approximate openness into openness</h2>
+<p><strong>Lemma 2.1 (summable lifting).</strong> Let <span class="math" data-index="382" data-tex="\(E\)">\(E\)</span> be Fréchet, let <span class="math" data-index="383" data-tex="\(G\)">\(G\)</span> be a Hausdorff metrizable locally convex space, and let <span class="math" data-index="384" data-tex="\(S:E\to G\)">\(S:E\to G\)</span> be continuous and linear. Suppose the closure of <span class="math" data-index="385" data-tex="\(S(U)\)">\(S(U)\)</span> contains a neighborhood of zero in <span class="math" data-index="386" data-tex="\(G\)">\(G\)</span> for every neighborhood <span class="math" data-index="387" data-tex="\(U\)">\(U\)</span> of zero in <span class="math" data-index="388" data-tex="\(E\)">\(E\)</span>. Then <span class="math" data-index="389" data-tex="\(S\)">\(S\)</span> is open and surjective. Completeness of <span class="math" data-index="390" data-tex="\(G\)">\(G\)</span> is not required for this implication.</p>
+<p><em>Proof.</em> Choose increasing defining seminorms <span class="math" data-index="391" data-tex="\(p_j\)">\(p_j\)</span> on <span class="math" data-index="392" data-tex="\(E\)">\(E\)</span> and <span class="math" data-index="393" data-tex="\(q_j\)">\(q_j\)</span> on <span class="math" data-index="394" data-tex="\(G\)">\(G\)</span>. To prove that the image of an arbitrary neighborhood <span class="math" data-index="395" data-tex="\(U\)">\(U\)</span> contains a neighborhood, choose <span class="math" data-index="396" data-tex="\(j_0,\varepsilon&gt;0\)">\(j_0,\varepsilon&gt;0\)</span> such that <span class="math" data-index="397" data-tex="\(\{p_{j_0}&lt;\varepsilon\}\subset U\)">\(\{p_{j_0}&lt;\varepsilon\}\subset U\)</span>. For <span class="math" data-index="398" data-tex="\(j\ge0\)">\(j\ge0\)</span>, put</p>
+<span class="math math-display" id="eq-2.1" data-index="399" data-tex="\[
+ U_j=\{x:p_{j_0+j}(x)&lt;\varepsilon2^{-j-2}\}.
+ \tag{2.1}
+\]">\[
+ U_j=\{x:p_{j_0+j}(x)&lt;\varepsilon2^{-j-2}\}.
+ \tag{2.1}
+\]</span>
+<p>Choose balanced open neighborhoods <span class="math" data-index="400" data-tex="\(V_j\)">\(V_j\)</span> in <span class="math" data-index="401" data-tex="\(G\)">\(G\)</span> contained in <span class="math" data-index="402" data-tex="\(\overline{S(U_j)}\)">\(\overline{S(U_j)}\)</span> and also in <span class="math" data-index="403" data-tex="\(\{q_{j+1}&lt;2^{-j}\}\)">\(\{q_{j+1}&lt;2^{-j}\}\)</span>.</p>
+<p>For <span class="math" data-index="404" data-tex="\(y\in V_0\)">\(y\in V_0\)</span>, use its membership in <span class="math" data-index="405" data-tex="\(\overline{S(U_0)}\)">\(\overline{S(U_0)}\)</span> to choose <span class="math" data-index="406" data-tex="\(x_0\in U_0\)">\(x_0\in U_0\)</span> with <span class="math" data-index="407" data-tex="\(r_1=y-Sx_0\in V_1\)">\(r_1=y-Sx_0\in V_1\)</span>. Inductively, from <span class="math" data-index="408" data-tex="\(r_j\in V_j\subset\overline{S(U_j)}\)">\(r_j\in V_j\subset\overline{S(U_j)}\)</span>, choose <span class="math" data-index="409" data-tex="\(x_j\in U_j\)">\(x_j\in U_j\)</span> with <span class="math" data-index="410" data-tex="\(r_{j+1}=r_j-Sx_j\in V_{j+1}\)">\(r_{j+1}=r_j-Sx_j\in V_{j+1}\)</span>. Every fixed <span class="math" data-index="411" data-tex="\(p_k\)">\(p_k\)</span> is eventually bounded on the terms by the summable <span class="math" data-index="412" data-tex="\(\varepsilon2^{-j-2}\)">\(\varepsilon2^{-j-2}\)</span>, so <span class="math" data-index="413" data-tex="\(\sum_jx_j\)">\(\sum_jx_j\)</span> is Cauchy in every defining seminorm. Completeness gives <span class="math" data-index="414" data-tex="\(x\in E\)">\(x\in E\)</span>. Also <span class="math" data-index="415" data-tex="\(p_{j_0}(x)\le\varepsilon/2&lt;\varepsilon\)">\(p_{j_0}(x)\le\varepsilon/2&lt;\varepsilon\)</span>, hence <span class="math" data-index="416" data-tex="\(x\in U\)">\(x\in U\)</span>.</p>
+<p>The residuals tend to zero in every <span class="math" data-index="417" data-tex="\(q_k\)">\(q_k\)</span>, because <span class="math" data-index="418" data-tex="\(q_k(r_j)\le q_{j+1}(r_j)&lt;2^{-j}\)">\(q_k(r_j)\le q_{j+1}(r_j)&lt;2^{-j}\)</span> once <span class="math" data-index="419" data-tex="\(j+1\ge k\)">\(j+1\ge k\)</span>. Continuity and Hausdorffness give <span class="math" data-index="420" data-tex="\(Sx=y\)">\(Sx=y\)</span>. Therefore <span class="math" data-index="421" data-tex="\(V_0\subset S(U)\)">\(V_0\subset S(U)\)</span>. This proves openness. The linear range contains a neighborhood of zero; that neighborhood absorbs every vector of <span class="math" data-index="422" data-tex="\(G\)">\(G\)</span>, so the range is all of <span class="math" data-index="423" data-tex="\(G\)">\(G\)</span>. <span class="math" data-index="424" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-closed-polar-sections-determine-a-closed-dual-subspace">3. Closed polar sections determine a closed dual subspace</h2>
+<p><strong>Theorem 3.1 (linear polar-section criterion).</strong> If <span class="math" data-index="425" data-tex="\(E\)">\(E\)</span> is Fréchet and <span class="math" data-index="426" data-tex="\(M\)">\(M\)</span> is a linear subspace of <span class="math" data-index="427" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>, then <span class="math" data-index="428" data-tex="\(M\)">\(M\)</span> is weak-star closed if and only if <span class="math" data-index="429" data-tex="\(M\cap U^\circ\)">\(M\cap U^\circ\)</span> is weak-star closed for every neighborhood <span class="math" data-index="430" data-tex="\(U\)">\(U\)</span> of zero in <span class="math" data-index="431" data-tex="\(E\)">\(E\)</span>.</p>
+<p>The nontrivial direction is the linear polar-section form of the Banach–Dieudonné theorem. We prove it for general Fréchet spaces.</p>
+<p><em>Proof.</em> If <span class="math" data-index="432" data-tex="\(M\)">\(M\)</span> is closed, every section is closed because a polar is an intersection of closed evaluation inequalities.</p>
+<p>Conversely, choose increasing defining seminorms <span class="math" data-index="433" data-tex="\(p_j\)">\(p_j\)</span>, set <span class="math" data-index="434" data-tex="\(B_j=B_{p_j}\)">\(B_j=B_{p_j}\)</span>, and put <span class="math" data-index="435" data-tex="\(C_j=M\cap B_j\)">\(C_j=M\cap B_j\)</span>. The hypothesis makes <span class="math" data-index="436" data-tex="\(C_j\)">\(C_j\)</span> weak-star closed. It is absolutely convex and contains zero. Define</p>
+<span class="math math-display" id="eq-3.1" data-index="437" data-tex="\[
+ q_j(x)=\sup_{\ell\in C_j}|\ell(x)|,\qquad
+ N=\{x:\ell(x)=0\text{ for all }\ell\in M\}.
+ \tag{3.1}
+\]">\[
+ q_j(x)=\sup_{\ell\in C_j}|\ell(x)|,\qquad
+ N=\{x:\ell(x)=0\text{ for all }\ell\in M\}.
+ \tag{3.1}
+\]</span>
+<p>Then <span class="math" data-index="438" data-tex="\(q_j\le p_j\)">\(q_j\le p_j\)</span>, and the <span class="math" data-index="439" data-tex="\(q_j\)">\(q_j\)</span> increase. They vanish exactly on <span class="math" data-index="440" data-tex="\(N\)">\(N\)</span> as a family. Indeed every <span class="math" data-index="441" data-tex="\(\ell\in M\)">\(\ell\in M\)</span> is bounded by some <span class="math" data-index="442" data-tex="\(c p_j\)">\(c p_j\)</span>, so <span class="math" data-index="443" data-tex="\(\ell/c\in C_j\)">\(\ell/c\in C_j\)</span>. On <span class="math" data-index="444" data-tex="\(G=E/N\)">\(G=E/N\)</span>, the <span class="math" data-index="445" data-tex="\(q_j\)">\(q_j\)</span> therefore define a Hausdorff metrizable locally convex topology.</p>
+<p>The continuous dual of this <span class="math" data-index="446" data-tex="\(G\)">\(G\)</span>, identified by pullback to <span class="math" data-index="447" data-tex="\(E\)">\(E\)</span>, is exactly <span class="math" data-index="448" data-tex="\(M\)">\(M\)</span>. Every <span class="math" data-index="449" data-tex="\(\ell\in M\)">\(\ell\in M\)</span> is bounded by <span class="math" data-index="450" data-tex="\(c q_j\)">\(c q_j\)</span>, as just shown, so is continuous on <span class="math" data-index="451" data-tex="\(G\)">\(G\)</span>. Conversely, a functional continuous for the <span class="math" data-index="452" data-tex="\(q_j\)">\(q_j\)</span> is bounded by <span class="math" data-index="453" data-tex="\(c q_j\)">\(c q_j\)</span> for some <span class="math" data-index="454" data-tex="\(j\)">\(j\)</span> and is also continuous for the original topology because <span class="math" data-index="455" data-tex="\(q_j\le p_j\)">\(q_j\le p_j\)</span>. Lemma 1.2 on the weak-star closed <span class="math" data-index="456" data-tex="\(C_j\)">\(C_j\)</span> gives</p>
+<span class="math math-display" id="eq-3.2" data-index="457" data-tex="\[
+ \{\ell\in E&#x27;:|\ell(x)|\le q_j(x)\text{ for all }x\}=C_j.
+ \tag{3.2}
+\]">\[
+ \{\ell\in E&#x27;:|\ell(x)|\le q_j(x)\text{ for all }x\}=C_j.
+ \tag{3.2}
+\]</span>
+<p>For completeness, the prepolar of <span class="math" data-index="458" data-tex="\(C_j\)">\(C_j\)</span> is <span class="math" data-index="459" data-tex="\(\{q_j\le1\}\)">\(\{q_j\le1\}\)</span>; homogeneity, including <span class="math" data-index="460" data-tex="\(\ker q_j\)">\(\ker q_j\)</span>, identifies its polar with the set on the left of (3.2). The weak-star bipolar equality then proves (3.2). Thus the continuous functional divided by <span class="math" data-index="461" data-tex="\(c\)">\(c\)</span> lies in <span class="math" data-index="462" data-tex="\(C_j\)">\(C_j\)</span>, hence in <span class="math" data-index="463" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Let <span class="math" data-index="464" data-tex="\(S:E\to G\)">\(S:E\to G\)</span> be the quotient map, continuous since <span class="math" data-index="465" data-tex="\(q_j\le p_j\)">\(q_j\le p_j\)</span>. For <span class="math" data-index="466" data-tex="\(U_j=\{p_j&lt;1\}\)">\(U_j=\{p_j&lt;1\}\)</span>, its image has polar <span class="math" data-index="467" data-tex="\(C_j\)">\(C_j\)</span> in the dual <span class="math" data-index="468" data-tex="\(G&#x27;=M\)">\(G&#x27;=M\)</span>. Apply Lemma 1.2 in <span class="math" data-index="469" data-tex="\(G\)">\(G\)</span>:</p>
+<span class="math math-display" id="eq-3.3" data-index="470" data-tex="\[
+ \overline{S(U_j)}=\{z\in G:q_j(z)\le1\}.
+ \tag{3.3}
+\]">\[
+ \overline{S(U_j)}=\{z\in G:q_j(z)\le1\}.
+ \tag{3.3}
+\]</span>
+<p>In particular it contains a neighborhood of zero. Scaling and the increasing seminorm base show the same for the image of every original neighborhood. Lemma 2.1 makes <span class="math" data-index="471" data-tex="\(S\)">\(S\)</span> open.</p>
+<p>Its quotient topology from the original <span class="math" data-index="472" data-tex="\(E\)">\(E\)</span> is therefore exactly the <span class="math" data-index="473" data-tex="\(q_j\)">\(q_j\)</span> topology. Continuous functionals on that quotient are precisely the original functionals annihilating <span class="math" data-index="474" data-tex="\(N\)">\(N\)</span>: continuity in either direction follows from the quotient map being continuous and open. Since its dual is <span class="math" data-index="475" data-tex="\(M\)">\(M\)</span>, we get</p>
+<span class="math math-display" id="eq-3.4" data-index="476" data-tex="\[
+ M=N^\perp=\{\ell\in E&#x27;:\ell|_N=0\}.
+ \tag{3.4}
+\]">\[
+ M=N^\perp=\{\ell\in E&#x27;:\ell|_N=0\}.
+ \tag{3.4}
+\]</span>
+<p>This is weak-star closed, being an intersection of closed evaluation kernels. The cases <span class="math" data-index="477" data-tex="\(M=\{0\}\)">\(M=\{0\}\)</span>, <span class="math" data-index="478" data-tex="\(N=E\)">\(N=E\)</span> and zero seminorms are included. No separability or sequential characterization of weak-star compactness was used. <span class="math" data-index="479" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-surjectivity-through-the-adjoint">4. Surjectivity through the adjoint</h2>
+<p><strong>Lemma 4.1 (complete Fréchet quotients).</strong> If <span class="math" data-index="480" data-tex="\(N\)">\(N\)</span> is a closed linear subspace of a Fréchet <span class="math" data-index="481" data-tex="\(E\)">\(E\)</span>, then <span class="math" data-index="482" data-tex="\(E/N\)">\(E/N\)</span> is Fréchet. For increasing seminorms <span class="math" data-index="483" data-tex="\(p_j\)">\(p_j\)</span>, its defining seminorms are</p>
+<span class="math math-display" id="eq-4.1" data-index="484" data-tex="\[
+ \overline p_j(x+N)=\inf_{n\in N}p_j(x+n).
+ \tag{4.1}
+\]">\[
+ \overline p_j(x+N)=\inf_{n\in N}p_j(x+n).
+ \tag{4.1}
+\]</span>
+<p><em>Proof.</em> These are well-defined increasing seminorms. Their balls are the images of the corresponding open balls of <span class="math" data-index="485" data-tex="\(p_j\)">\(p_j\)</span>, by the infimum definition. They give the quotient topology and make the quotient map open. Closedness of <span class="math" data-index="486" data-tex="\(N\)">\(N\)</span> makes the family separate cosets: if <span class="math" data-index="487" data-tex="\(x\notin N\)">\(x\notin N\)</span>, one original seminorm ball about <span class="math" data-index="488" data-tex="\(x\)">\(x\)</span> misses <span class="math" data-index="489" data-tex="\(N\)">\(N\)</span>, so its quotient seminorm is positive.</p>
+<p>For a Cauchy sequence of cosets, extract a subsequence <span class="math" data-index="490" data-tex="\(y_j\)">\(y_j\)</span> such that <span class="math" data-index="491" data-tex="\(\overline p_j(y_{j+1}-y_j)&lt;2^{-j}\)">\(\overline p_j(y_{j+1}-y_j)&lt;2^{-j}\)</span>. Choose representatives <span class="math" data-index="492" data-tex="\(e_j\)">\(e_j\)</span> of those differences with <span class="math" data-index="493" data-tex="\(p_j(e_j)&lt;2^{1-j}\)">\(p_j(e_j)&lt;2^{1-j}\)</span>. A representative of <span class="math" data-index="494" data-tex="\(y_1\)">\(y_1\)</span> plus <span class="math" data-index="495" data-tex="\(\sum_je_j\)">\(\sum_je_j\)</span> converges in <span class="math" data-index="496" data-tex="\(E\)">\(E\)</span>, since every fixed seminorm bounds the tail by a summable series. Its coset is the limit of the extracted sequence. The original Cauchy sequence has the same limit by the seminorm triangle inequalities. The quotient is metrizable from the countable separating family, so this proves completeness. <span class="math" data-index="497" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (adjoint surjectivity criterion).</strong> For a continuous linear <span class="math" data-index="498" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> between Fréchet spaces, <span class="math" data-index="499" data-tex="\(T\)">\(T\)</span> is surjective if and only if its adjoint</p>
+<span class="math math-display" id="eq-4.2" data-index="500" data-tex="\[
+ T&#x27;:F&#x27;\to E&#x27;,\qquad (T&#x27;g)(x)=g(Tx),
+ \tag{4.2}
+\]">\[
+ T&#x27;:F&#x27;\to E&#x27;,\qquad (T&#x27;g)(x)=g(Tx),
+ \tag{4.2}
+\]</span>
+<p>is injective and has weak-star closed range.</p>
+<p><em>Proof, necessity.</em> Surjectivity gives injectivity of <span class="math" data-index="501" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>. The full Fréchet open-mapping theorem in the linked foundation makes <span class="math" data-index="502" data-tex="\(T\)">\(T\)</span> open. Every <span class="math" data-index="503" data-tex="\(\ell\in E&#x27;\)">\(\ell\in E&#x27;\)</span> annihilating <span class="math" data-index="504" data-tex="\(\ker T\)">\(\ker T\)</span> defines a well-defined linear <span class="math" data-index="505" data-tex="\(g\)">\(g\)</span> on <span class="math" data-index="506" data-tex="\(F\)">\(F\)</span> by <span class="math" data-index="507" data-tex="\(g(Tx)=\ell(x)\)">\(g(Tx)=\ell(x)\)</span>. Choose a neighborhood <span class="math" data-index="508" data-tex="\(U\)">\(U\)</span> on which <span class="math" data-index="509" data-tex="\(|\ell|\le1\)">\(|\ell|\le1\)</span>. Openness makes <span class="math" data-index="510" data-tex="\(T(U)\)">\(T(U)\)</span> a neighborhood and bounds <span class="math" data-index="511" data-tex="\(g\)">\(g\)</span> there, so <span class="math" data-index="512" data-tex="\(g\)">\(g\)</span> is continuous. Thus</p>
+<span class="math math-display" id="eq-4.3" data-index="513" data-tex="\[
+ T&#x27;(F&#x27;)=(\ker T)^\perp,
+ \tag{4.3}
+\]">\[
+ T&#x27;(F&#x27;)=(\ker T)^\perp,
+ \tag{4.3}
+\]</span>
+<p>which is weak-star closed.</p>
+<p><em>Proof, sufficiency.</em> Injectivity of <span class="math" data-index="514" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> makes <span class="math" data-index="515" data-tex="\(T(E)\)">\(T(E)\)</span> dense: otherwise the linked closed-subspace separation theorem gives a nonzero <span class="math" data-index="516" data-tex="\(g\in F&#x27;\)">\(g\in F&#x27;\)</span> vanishing on its closure, contradicting injectivity. Put <span class="math" data-index="517" data-tex="\(N=\ker T\)">\(N=\ker T\)</span>. The weak-star closed linear range has preannihilator <span class="math" data-index="518" data-tex="\(N\)">\(N\)</span>, because the continuous dual of the Hausdorff locally convex <span class="math" data-index="519" data-tex="\(F\)">\(F\)</span> separates points. Lemma 1.2 therefore gives <span class="math" data-index="520" data-tex="\(T&#x27;(F&#x27;)=N^\perp\)">\(T&#x27;(F&#x27;)=N^\perp\)</span>. On the complete quotient <span class="math" data-index="521" data-tex="\(H=E/N\)">\(H=E/N\)</span>, the induced <span class="math" data-index="522" data-tex="\(\widetilde T:H\to F\)">\(\widetilde T:H\to F\)</span> is injective, continuous and has dense range, and its adjoint maps onto all of <span class="math" data-index="523" data-tex="\(H&#x27;\)">\(H&#x27;\)</span>.</p>
+<p>Fix a defining seminorm <span class="math" data-index="524" data-tex="\(p_j\)">\(p_j\)</span> of <span class="math" data-index="525" data-tex="\(H\)">\(H\)</span>. The space</p>
+<span class="math math-display" id="eq-4.4" data-index="526" data-tex="\[
+ D_j=\{\ell\in H&#x27;:\|\ell\|_j
+       :=\sup_{p_j(x)\le1}|\ell(x)|&lt;\infty\}
+ \tag{4.4}
+\]">\[
+ D_j=\{\ell\in H&#x27;:\|\ell\|_j
+       :=\sup_{p_j(x)\le1}|\ell(x)|&lt;\infty\}
+ \tag{4.4}
+\]</span>
+<p>is Banach: it is the bounded dual of the normed quotient <span class="math" data-index="527" data-tex="\(H/\ker p_j\)">\(H/\ker p_j\)</span>, whose dual completeness is proved in the linked operator-space theorem; completeness of that normed quotient is unnecessary. Normed Hahn–Banach gives
+<span class="math" data-index="528" data-tex="\(p_j(x)=\sup_{\|\ell\|_j\le1}|\ell(x)|\)">\(p_j(x)=\sup_{\|\ell\|_j\le1}|\ell(x)|\)</span>.</p>
+<p>For increasing defining seminorms <span class="math" data-index="529" data-tex="\(q_m\)">\(q_m\)</span> on <span class="math" data-index="530" data-tex="\(F\)">\(F\)</span>, put</p>
+<span class="math math-display" id="eq-4.5" data-index="531" data-tex="\[
+ A_m=D_j\cap\widetilde T&#x27;(mB_{q_m}).
+ \tag{4.5}
+\]">\[
+ A_m=D_j\cap\widetilde T&#x27;(mB_{q_m}).
+ \tag{4.5}
+\]</span>
+<p>Lemma 1.1 and weak-star continuity of the adjoint make <span class="math" data-index="532" data-tex="\(\widetilde T&#x27;(mB_{q_m})\)">\(\widetilde T&#x27;(mB_{q_m})\)</span> compact, hence weak-star closed. Norm convergence in <span class="math" data-index="533" data-tex="\(D_j\)">\(D_j\)</span> implies pointwise convergence, so <span class="math" data-index="534" data-tex="\(A_m\)">\(A_m\)</span> is norm-closed. These sets cover <span class="math" data-index="535" data-tex="\(D_j\)">\(D_j\)</span>: every functional has a lift in <span class="math" data-index="536" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>, bounded by <span class="math" data-index="537" data-tex="\(c q_k\)">\(c q_k\)</span>, and an integer <span class="math" data-index="538" data-tex="\(m\ge\max(c,k)\)">\(m\ge\max(c,k)\)</span> puts that lift in <span class="math" data-index="539" data-tex="\(mB_{q_m}\)">\(mB_{q_m}\)</span>.</p>
+<p>If <span class="math" data-index="540" data-tex="\(D_j=\{0\}\)">\(D_j=\{0\}\)</span>, then <span class="math" data-index="541" data-tex="\(p_j=0\)">\(p_j=0\)</span> and the desired estimate is automatic. Otherwise Baire gives a norm ball <span class="math" data-index="542" data-tex="\(B(\ell_0,r)\subset A_m\)">\(B(\ell_0,r)\subset A_m\)</span>. Subtracting its two lifts shows that every <span class="math" data-index="543" data-tex="\(h\)">\(h\)</span> with <span class="math" data-index="544" data-tex="\(\|h\|_j&lt;r\)">\(\|h\|_j&lt;r\)</span> has a lift <span class="math" data-index="545" data-tex="\(g\)">\(g\)</span> with <span class="math" data-index="546" data-tex="\(|g(y)|\le2m q_m(y)\)">\(|g(y)|\le2m q_m(y)\)</span>. Rescaling shows that each <span class="math" data-index="547" data-tex="\(\|\ell\|_j\le1\)">\(\|\ell\|_j\le1\)</span> has a lift bounded by <span class="math" data-index="548" data-tex="\((4m/r)q_m\)">\((4m/r)q_m\)</span>. The dual norm test yields</p>
+<span class="math math-display" id="eq-4.6" data-index="549" data-tex="\[
+ p_j(x)\le (4m/r)q_m(\widetilde Tx).
+ \tag{4.6}
+\]">\[
+ p_j(x)\le (4m/r)q_m(\widetilde Tx).
+ \tag{4.6}
+\]</span>
+<p>For every <span class="math" data-index="550" data-tex="\(j\)">\(j\)</span> there is such a bound. Thus the inverse on the range is continuous. If <span class="math" data-index="551" data-tex="\(\widetilde Tx_k\)">\(\widetilde Tx_k\)</span> converges in <span class="math" data-index="552" data-tex="\(F\)">\(F\)</span>, (4.6) makes <span class="math" data-index="553" data-tex="\(x_k\)">\(x_k\)</span> Cauchy in every seminorm of <span class="math" data-index="554" data-tex="\(H\)">\(H\)</span>. Completeness gives <span class="math" data-index="555" data-tex="\(x_k\to x\)">\(x_k\to x\)</span>, and continuity gives the limit <span class="math" data-index="556" data-tex="\(\widetilde Tx\)">\(\widetilde Tx\)</span>. The range is therefore sequentially closed, hence closed in the metrizable <span class="math" data-index="557" data-tex="\(F\)">\(F\)</span>. Its density makes it all of <span class="math" data-index="558" data-tex="\(F\)">\(F\)</span>. Hence <span class="math" data-index="559" data-tex="\(T\)">\(T\)</span> is surjective. <span class="math" data-index="560" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-a-uniform-real-bound-for-entire-quotients">5. A uniform real bound for entire quotients</h2>
+<p>Let <span class="math" data-index="561" data-tex="\(\mu\)">\(\mu\)</span> be an invertible compact distribution on <span class="math" data-index="562" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="563" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and put</p>
+<span class="math math-display" id="eq-5.1" data-index="564" data-tex="\[
+ A(\zeta)=F_{\check\mu}(\zeta)=F_\mu(-\zeta),\qquad
+ F_a(\zeta)=a_x(e^{-ix\cdot\zeta}).
+ \tag{5.1}
+\]">\[
+ A(\zeta)=F_{\check\mu}(\zeta)=F_\mu(-\zeta),\qquad
+ F_a(\zeta)=a_x(e^{-ix\cdot\zeta}).
+ \tag{5.1}
+\]</span>
+<p>Reflection preserves the slow-decrease window bounds by replacing both the real center and the complex argument by their negatives. Thus <span class="math" data-index="565" data-tex="\(\check\mu\)">\(\check\mu\)</span> is invertible too, and <span class="math" data-index="566" data-tex="\(A\not\equiv0\)">\(A\not\equiv0\)</span>.</p>
+<p><strong>Lemma 5.1 (uniform weighted division).</strong> For every nonempty compact convex <span class="math" data-index="567" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> and integer <span class="math" data-index="568" data-tex="\(N\ge0\)">\(N\ge0\)</span>, there are <span class="math" data-index="569" data-tex="\(C&lt;\infty\)">\(C&lt;\infty\)</span> and integer <span class="math" data-index="570" data-tex="\(m\ge0\)">\(m\ge0\)</span> such that every entire <span class="math" data-index="571" data-tex="\(G\)">\(G\)</span> with</p>
+<span class="math math-display" id="eq-5.2" data-index="572" data-tex="\[
+ \|G\|_{N,K}=
+ \sup_{\zeta\in\mathbb C^n}|A(\zeta)G(\zeta)|
+          (1+|\zeta|)^{-N}e^{-H_K(\operatorname{Im}\zeta)}&lt;\infty
+ \tag{5.2}
+\]">\[
+ \|G\|_{N,K}=
+ \sup_{\zeta\in\mathbb C^n}|A(\zeta)G(\zeta)|
+          (1+|\zeta|)^{-N}e^{-H_K(\operatorname{Im}\zeta)}&lt;\infty
+ \tag{5.2}
+\]</span>
+<p>satisfies</p>
+<span class="math math-display" id="eq-5.3" data-index="573" data-tex="\[
+ |G(\xi)|\le C\|G\|_{N,K}(1+|\xi|)^m
+                 \quad(\xi\in\mathbb R^n).
+ \tag{5.3}
+\]">\[
+ |G(\xi)|\le C\|G\|_{N,K}(1+|\xi|)^m
+                 \quad(\xi\in\mathbb R^n).
+ \tag{5.3}
+\]</span>
+<p>The constants depend on <span class="math" data-index="574" data-tex="\(\mu,N,K\)">\(\mu,N,K\)</span>, not on <span class="math" data-index="575" data-tex="\(G\)">\(G\)</span>.</p>
+<p><em>Proof.</em> The space in (5.2) is Banach. The local division estimate in the linked analytic-forcing lesson bounds each compact supremum of <span class="math" data-index="576" data-tex="\(G\)">\(G\)</span> by a compact supremum of <span class="math" data-index="577" data-tex="\(AG\)">\(AG\)</span>, hence by a constant times this norm. The weight and its reciprocal are bounded on that compact set. A norm-Cauchy sequence converges locally uniformly to an entire <span class="math" data-index="578" data-tex="\(G\)">\(G\)</span>. Passing to the pointwise limit in its weighted norm inequality, then taking the supremum, proves norm convergence and finiteness of the limit's norm. Nondegeneracy follows because <span class="math" data-index="579" data-tex="\(A\)">\(A\)</span> is nonzero on an open set and the identity theorem determines <span class="math" data-index="580" data-tex="\(G\)">\(G\)</span>. The exact polynomial factor is retained throughout.</p>
+<p>The product <span class="math" data-index="581" data-tex="\(AG\)">\(AG\)</span> obeys the compact Fourier growth criterion with this fixed <span class="math" data-index="582" data-tex="\(K,N\)">\(K,N\)</span>, so it is a compact-distribution transform by Theorem CF2.1. The entire-division characterization of invertibility for <span class="math" data-index="583" data-tex="\(\check\mu\)">\(\check\mu\)</span> makes <span class="math" data-index="584" data-tex="\(G\)">\(G\)</span> a compact-distribution transform too. It therefore has some polynomial growth on real frequencies.</p>
+<p>On the complete space in (5.2), the sets</p>
+<span class="math math-display" id="eq-5.4" data-index="585" data-tex="\[
+ D_j=\{G:|G(\xi)|\le j(1+|\xi|)^j
+                     \text{ for every real }\xi\},\qquad j\ge1,
+ \tag{5.4}
+\]">\[
+ D_j=\{G:|G(\xi)|\le j(1+|\xi|)^j
+                     \text{ for every real }\xi\},\qquad j\ge1,
+ \tag{5.4}
+\]</span>
+<p>are closed by evaluation continuity and cover the space. Baire gives <span class="math" data-index="586" data-tex="\(B(G_0,r)\subset D_j\)">\(B(G_0,r)\subset D_j\)</span>. Subtracting the bounds at <span class="math" data-index="587" data-tex="\(G_0+H\)">\(G_0+H\)</span> and <span class="math" data-index="588" data-tex="\(G_0\)">\(G_0\)</span> gives <span class="math" data-index="589" data-tex="\(|H(\xi)|\le2j(1+|\xi|)^j\)">\(|H(\xi)|\le2j(1+|\xi|)^j\)</span> for <span class="math" data-index="590" data-tex="\(\|H\|_{N,K}&lt;r\)">\(\|H\|_{N,K}&lt;r\)</span>. Scaling <span class="math" data-index="591" data-tex="\(H=rG/(2\|G\|_{N,K})\)">\(H=rG/(2\|G\|_{N,K})\)</span> gives (5.3) with <span class="math" data-index="592" data-tex="\(m=j\)">\(m=j\)</span>, <span class="math" data-index="593" data-tex="\(C=4j/r\)">\(C=4j/r\)</span>. The zero space and zero quotient are immediate. <span class="math" data-index="594" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-compact-duals-and-continuity-of-convolution">6. Compact duals and continuity of convolution</h2>
+<p>Let <span class="math" data-index="595" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span> be nonempty open sets with</p>
+<span class="math math-display" id="eq-6.1" data-index="596" data-tex="\[
+ X_2-\operatorname{supp}\mu\subset X_1.
+ \tag{6.1}
+\]">\[
+ X_2-\operatorname{supp}\mu\subset X_1.
+ \tag{6.1}
+\]</span>
+<p>The linked smooth-space completeness theorem makes <span class="math" data-index="597" data-tex="\(E=C^\infty(X_1)\)">\(E=C^\infty(X_1)\)</span>, <span class="math" data-index="598" data-tex="\(F=C^\infty(X_2)\)">\(F=C^\infty(X_2)\)</span> Fréchet. Their continuous duals are <span class="math" data-index="599" data-tex="\(\mathcal E&#x27;(X_1)\)">\(\mathcal E&#x27;(X_1)\)</span>, <span class="math" data-index="600" data-tex="\(\mathcal E&#x27;(X_2)\)">\(\mathcal E&#x27;(X_2)\)</span>.</p>
+<p>Here is the exact dual identification. A continuous functional on <span class="math" data-index="601" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span> is bounded by</p>
+<span class="math math-display" id="eq-6.2" data-index="602" data-tex="\[
+ |\ell(h)|\le C\max_{|\alpha|\le N}\sup_K|\partial^\alpha h|
+ \tag{6.2}
+\]">\[
+ |\ell(h)|\le C\max_{|\alpha|\le N}\sup_K|\partial^\alpha h|
+ \tag{6.2}
+\]</span>
+<p>for one compact <span class="math" data-index="603" data-tex="\(K\subset X\)">\(K\subset X\)</span>, after taking a finite union of the observation compacts. Its restriction to compact tests is a distribution supported in <span class="math" data-index="604" data-tex="\(K\)">\(K\)</span>. Inserting a cutoff equal to one near <span class="math" data-index="605" data-tex="\(K\)">\(K\)</span> leaves every value unchanged, because the difference has zero displayed seminorm. Thus it is the compact distributional action on all smooth functions near that support. Conversely a compact distribution has a finite-order bound on a compact neighborhood of its support inside <span class="math" data-index="606" data-tex="\(X\)">\(X\)</span>, making its action continuous on <span class="math" data-index="607" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span>. Convexity is unnecessary.</p>
+<p>Convolution is a continuous linear map</p>
+<span class="math math-display" id="eq-6.3" data-index="608" data-tex="\[
+ T:C^\infty(X_1)\to C^\infty(X_2),\qquad Tu=\mu*u.
+ \tag{6.3}
+\]">\[
+ T:C^\infty(X_1)\to C^\infty(X_2),\qquad Tu=\mu*u.
+ \tag{6.3}
+\]</span>
+<p>For compact <span class="math" data-index="609" data-tex="\(Q\subset X_2\)">\(Q\subset X_2\)</span>, the whole set <span class="math" data-index="610" data-tex="\(Q-\operatorname{supp}\mu\)">\(Q-\operatorname{supp}\mu\)</span> is compact inside <span class="math" data-index="611" data-tex="\(X_1\)">\(X_1\)</span>. Choose a fixed small neighborhood of the kernel support whose differences with <span class="math" data-index="612" data-tex="\(Q\)">\(Q\)</span> still lie in one compact neighborhood <span class="math" data-index="613" data-tex="\(L\subset X_1\)">\(L\subset X_1\)</span>, and insert one cutoff there. Finite order <span class="math" data-index="614" data-tex="\(r\)">\(r\)</span> of <span class="math" data-index="615" data-tex="\(\mu\)">\(\mu\)</span>, Leibniz's rule and differentiation under its pairing give</p>
+<span class="math math-display" id="eq-6.4" data-index="616" data-tex="\[
+ \max_{|\alpha|\le k}\sup_Q|\partial^\alpha(\mu*u)|
+       \le C_Q\max_{|\beta|\le k+r}\sup_L|\partial^\beta u|.
+ \tag{6.4}
+\]">\[
+ \max_{|\alpha|\le k}\sup_Q|\partial^\alpha(\mu*u)|
+       \le C_Q\max_{|\beta|\le k+r}\sup_L|\partial^\beta u|.
+ \tag{6.4}
+\]</span>
+<p>These are the actual seminorm bounds for continuity.</p>
+<p>The bilinear adjoint is</p>
+<span class="math math-display" id="eq-6.5" data-index="617" data-tex="\[
+ T&#x27;\phi=\check\mu*\phi,\qquad \phi\in\mathcal E&#x27;(X_2).
+ \tag{6.5}
+\]">\[
+ T&#x27;\phi=\check\mu*\phi,\qquad \phi\in\mathcal E&#x27;(X_2).
+ \tag{6.5}
+\]</span>
+<p>Its image support lies in <span class="math" data-index="618" data-tex="\(\operatorname{supp}\phi-\operatorname{supp}\mu\subset X_1\)">\(\operatorname{supp}\phi-\operatorname{supp}\mu\subset X_1\)</span>. For nonzero <span class="math" data-index="619" data-tex="\(\mu\)">\(\mu\)</span>, compact convolution injectivity makes <span class="math" data-index="620" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> injective: the transforms of nonzero compact factors are nonzero entire functions, and their product cannot vanish identically. The exact ordinary-support theorem gives the same conclusion.</p>
+<h2 id="7-compact-inverse-polars-from-fourier-division">7. Compact inverse polars from Fourier division</h2>
+<p><strong>Lemma 7.1.</strong> Suppose <span class="math" data-index="621" data-tex="\(\mu\)">\(\mu\)</span> is invertible and the pair in (6.1) is <span class="math" data-index="622" data-tex="\(\mu\)">\(\mu\)</span>-convex for supports. For every basic neighborhood</p>
+<span class="math math-display" id="eq-7.1" data-index="623" data-tex="\[
+ U=\{u\in C^\infty(X_1):
+          q_{K_1,N}(u):=\max_{|\alpha|\le N}
+                          \sup_{K_1}|\partial^\alpha u|&lt;1\},
+ \tag{7.1}
+\]">\[
+ U=\{u\in C^\infty(X_1):
+          q_{K_1,N}(u):=\max_{|\alpha|\le N}
+                          \sup_{K_1}|\partial^\alpha u|&lt;1\},
+ \tag{7.1}
+\]</span>
+<p>the set <span class="math" data-index="624" data-tex="\(U^\circ\cap T&#x27;(F&#x27;)\)">\(U^\circ\cap T&#x27;(F&#x27;)\)</span> is weak-star compact.</p>
+<p><em>Proof.</em> Each <span class="math" data-index="625" data-tex="\(\psi\in U^\circ\)">\(\psi\in U^\circ\)</span> obeys</p>
+<span class="math math-display" id="eq-7.2" data-index="626" data-tex="\[
+ |\psi(u)|\le q_{K_1,N}(u),\qquad
+                \operatorname{supp}\psi\subset K_1.
+ \tag{7.2}
+\]">\[
+ |\psi(u)|\le q_{K_1,N}(u),\qquad
+                \operatorname{supp}\psi\subset K_1.
+ \tag{7.2}
+\]</span>
+<p>Scaling gives the bound for a positive seminorm; arbitrarily large scalar multiples give vanishing for seminorm zero, and also the support inclusion. Put</p>
+<span class="math math-display" id="eq-7.3" data-index="627" data-tex="\[
+ \Phi=\{\phi\in\mathcal E&#x27;(X_2):T&#x27;\phi\in U^\circ\}.
+ \tag{7.3}
+\]">\[
+ \Phi=\{\phi\in\mathcal E&#x27;(X_2):T&#x27;\phi\in U^\circ\}.
+ \tag{7.3}
+\]</span>
+<p>Distributional confinement in the linked support-distance criterion gives one compact <span class="math" data-index="628" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span> containing every support in <span class="math" data-index="629" data-tex="\(\Phi\)">\(\Phi\)</span>. If <span class="math" data-index="630" data-tex="\(K_1\)">\(K_1\)</span> or <span class="math" data-index="631" data-tex="\(K_2\)">\(K_2\)</span> is empty, only the zero inverse remains and the assertion follows. Assume both are nonempty.</p>
+<p>Evaluate (7.2) on the exponential, with a cutoff constant near <span class="math" data-index="632" data-tex="\(K_1\)">\(K_1\)</span>:</p>
+<span class="math math-display" id="eq-7.4" data-index="633" data-tex="\[
+ |F_\psi(\zeta)|\le
+     (1+|\zeta|)^N e^{H_{K_1}(\operatorname{Im}\zeta)}.
+ \tag{7.4}
+\]">\[
+ |F_\psi(\zeta)|\le
+     (1+|\zeta|)^N e^{H_{K_1}(\operatorname{Im}\zeta)}.
+ \tag{7.4}
+\]</span>
+<p>The cutoff derivatives vanish on <span class="math" data-index="634" data-tex="\(K_1\)">\(K_1\)</span>, so no enlarged support enters this bound. Replace <span class="math" data-index="635" data-tex="\(K_1\)">\(K_1\)</span> by its compact convex hull in the support function. That hull need not lie inside a nonconvex <span class="math" data-index="636" data-tex="\(X_1\)">\(X_1\)</span>; only the entire growth bound uses it.</p>
+<p>Since <span class="math" data-index="637" data-tex="\(F_\psi=A F_\phi\)">\(F_\psi=A F_\phi\)</span>, Lemma 5.1 gives uniformly</p>
+<span class="math math-display" id="eq-7.5" data-index="638" data-tex="\[
+ |F_\phi(\xi)|\le C(1+|\xi|)^m\quad(\phi\in\Phi).
+ \tag{7.5}
+\]">\[
+ |F_\phi(\xi)|\le C(1+|\xi|)^m\quad(\phi\in\Phi).
+ \tag{7.5}
+\]</span>
+<p>Choose a fixed <span class="math" data-index="639" data-tex="\(\chi\in C_c^\infty(X_2)\)">\(\chi\in C_c^\infty(X_2)\)</span> equal to one near <span class="math" data-index="640" data-tex="\(K_2\)">\(K_2\)</span>, with compact support <span class="math" data-index="641" data-tex="\(L_2\)">\(L_2\)</span>. For <span class="math" data-index="642" data-tex="\(h\in C^\infty(X_2)\)">\(h\in C^\infty(X_2)\)</span>, extend <span class="math" data-index="643" data-tex="\(\chi h\)">\(\chi h\)</span> by zero to the real space. For an integer <span class="math" data-index="644" data-tex="\(s\)">\(s\)</span> with <span class="math" data-index="645" data-tex="\(2s&gt;m+n\)">\(2s&gt;m+n\)</span>, integration by parts gives</p>
+<span class="math math-display" id="eq-7.6" data-index="646" data-tex="\[
+ |F_{\chi h}(-\xi)|\le C_\chi(1+|\xi|^2)^{-s}
+          \max_{|\alpha|\le2s}\sup_{L_2}|\partial^\alpha h|.
+ \tag{7.6}
+\]">\[
+ |F_{\chi h}(-\xi)|\le C_\chi(1+|\xi|^2)^{-s}
+          \max_{|\alpha|\le2s}\sup_{L_2}|\partial^\alpha h|.
+ \tag{7.6}
+\]</span>
+<p>Indeed <span class="math" data-index="647" data-tex="\((1+|\xi|^2)^sF_{\chi h}=F_{(1-\Delta)^s(\chi h)}\)">\((1+|\xi|^2)^sF_{\chi h}=F_{(1-\Delta)^s(\chi h)}\)</span>. The right side's <span class="math" data-index="648" data-tex="\(L^1\)">\(L^1\)</span> norm is bounded by a fixed finite box volume, cutoff derivative constants and the finite Leibniz coefficients.</p>
+<p>Schwartz inversion, with finite-order uniform interchange in the compact distributional pairing, yields</p>
+<span class="math math-display" id="eq-7.7" data-index="649" data-tex="\[
+ \begin{aligned}
+ |\phi(h)|
+ &amp;\le (2\pi)^{-n}C
+           \int(1+|\xi|)^m|F_{\chi h}(-\xi)|\,d\xi\\
+ &amp;\le B\max_{|\alpha|\le2s}
+                       \sup_{L_2}|\partial^\alpha h|.
+ \end{aligned}
+ \tag{7.7}
+\]">\[
+ \begin{aligned}
+ |\phi(h)|
+ &amp;\le (2\pi)^{-n}C
+           \int(1+|\xi|)^m|F_{\chi h}(-\xi)|\,d\xi\\
+ &amp;\le B\max_{|\alpha|\le2s}
+                       \sup_{L_2}|\partial^\alpha h|.
+ \end{aligned}
+ \tag{7.7}
+\]</span>
+<p>The integral of <span class="math" data-index="650" data-tex="\((1+|\xi|)^m(1+|\xi|^2)^{-s}\)">\((1+|\xi|)^m(1+|\xi|^2)^{-s}\)</span> is finite since <span class="math" data-index="651" data-tex="\(2s&gt;m+n\)">\(2s&gt;m+n\)</span>. Thus <span class="math" data-index="652" data-tex="\(\Phi\)">\(\Phi\)</span> lies in one seminorm polar <span class="math" data-index="653" data-tex="\(V^\circ\)">\(V^\circ\)</span> of <span class="math" data-index="654" data-tex="\(F\)">\(F\)</span>, compact by Lemma 1.1.</p>
+<p>The adjoint is weak-star continuous, because evaluation of <span class="math" data-index="655" data-tex="\(T&#x27;\phi\)">\(T&#x27;\phi\)</span> at <span class="math" data-index="656" data-tex="\(u\)">\(u\)</span> is evaluation of <span class="math" data-index="657" data-tex="\(\phi\)">\(\phi\)</span> at the fixed <span class="math" data-index="658" data-tex="\(Tu\)">\(Tu\)</span>. Since <span class="math" data-index="659" data-tex="\(U^\circ\)">\(U^\circ\)</span> is closed, <span class="math" data-index="660" data-tex="\(\Phi=(T&#x27;)^{-1}(U^\circ)\)">\(\Phi=(T&#x27;)^{-1}(U^\circ)\)</span> is closed. It is a closed subset of the compact <span class="math" data-index="661" data-tex="\(V^\circ\)">\(V^\circ\)</span>, hence compact. Its continuous image is exactly</p>
+<span class="math math-display" id="eq-7.8" data-index="662" data-tex="\[
+ T&#x27;\Phi=U^\circ\cap T&#x27;(F&#x27;),
+ \tag{7.8}
+\]">\[
+ T&#x27;\Phi=U^\circ\cap T&#x27;(F&#x27;),
+ \tag{7.8}
+\]</span>
+<p>proving the lemma. <span class="math" data-index="663" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-the-exact-smooth-solvability-equivalence">8. The exact smooth solvability equivalence</h2>
+<p><strong>Theorem 8.1.</strong> For a compact distribution <span class="math" data-index="664" data-tex="\(\mu\)">\(\mu\)</span> and nonempty open domains satisfying (6.1), these conditions are equivalent:</p>
+<ol>
+<li>Every <span class="math" data-index="665" data-tex="\(f\in C^\infty(X_2)\)">\(f\in C^\infty(X_2)\)</span> has <span class="math" data-index="666" data-tex="\(u\in C^\infty(X_1)\)">\(u\in C^\infty(X_1)\)</span> with <span class="math" data-index="667" data-tex="\(\mu*u=f\)">\(\mu*u=f\)</span> on <span class="math" data-index="668" data-tex="\(X_2\)">\(X_2\)</span>.</li>
+<li>Every <span class="math" data-index="669" data-tex="\(f\in C^\infty(X_2)\)">\(f\in C^\infty(X_2)\)</span> has <span class="math" data-index="670" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span> with <span class="math" data-index="671" data-tex="\(\mu*u=f\)">\(\mu*u=f\)</span> on <span class="math" data-index="672" data-tex="\(X_2\)">\(X_2\)</span>.</li>
+<li>The kernel is invertible and <span class="math" data-index="673" data-tex="\((X_1,X_2)\)">\((X_1,X_2)\)</span> is <span class="math" data-index="674" data-tex="\(\mu\)">\(\mu\)</span>-convex for supports.</li>
+</ol>
+<p>The forcing is smooth in both solution statements. Arbitrary distributional forcing requires additional singular-support geometry.</p>
+<p><em>Proof.</em> The zero kernel makes all three conditions false: nonempty <span class="math" data-index="675" data-tex="\(X_2\)">\(X_2\)</span> has nonzero smooth functions, and zero is not invertible. For nonzero <span class="math" data-index="676" data-tex="\(\mu\)">\(\mu\)</span>, condition 1 implies condition 2 by the regular-distribution inclusion.</p>
+<p>Condition 2 implies invertibility by Theorem 1.1 of <a href="AN02-L169.html">Smooth forcing, invertible kernels and support confinement</a>. Its Theorem 5.1 gives confinement, and the linked support-distance equivalence gives <span class="math" data-index="677" data-tex="\(\mu\)">\(\mu\)</span>-convexity. Thus condition 3 follows.</p>
+<p>Assume condition 3. The operator (6.3) is continuous between Fréchet spaces and its adjoint is injective. Lemma 7.1 makes every basic polar section of its dual range compact, hence closed. For any other neighborhood <span class="math" data-index="678" data-tex="\(U\)">\(U\)</span>, choose a basic <span class="math" data-index="679" data-tex="\(U_0\subset U\)">\(U_0\subset U\)</span>. Then</p>
+<span class="math math-display" id="eq-8.1" data-index="680" data-tex="\[
+ U^\circ\cap T&#x27;(F&#x27;)
+       =U^\circ\cap\bigl(U_0^\circ\cap T&#x27;(F&#x27;)\bigr)
+ \tag{8.1}
+\]">\[
+ U^\circ\cap T&#x27;(F&#x27;)
+       =U^\circ\cap\bigl(U_0^\circ\cap T&#x27;(F&#x27;)\bigr)
+ \tag{8.1}
+\]</span>
+<p>is closed, since the basic section is compact and <span class="math" data-index="681" data-tex="\(U^\circ\)">\(U^\circ\)</span> is closed. Theorem 3.1 makes the entire dual range weak-star closed; Theorem 4.2 makes <span class="math" data-index="682" data-tex="\(T\)">\(T\)</span> surjective. This proves condition 1 for every smooth forcing and completes the equivalence on arbitrary compatible open domains. <span class="math" data-index="683" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, “245B, Notes 9: The Baire category theorem and its Banach space consequences,” 2009, freely readable <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">notes</a>.</li>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, “Fourier transformation of distributions,” freely readable <a href="https://web.math.ku.dk/~grubb/dist5.pdf">lecture notes</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+<li>The normed Hahn–Banach, Baire and Fréchet open-mapping proofs and exact Fourier/support inputs are the internal lessons linked above. The arbitrary polar compactness, bipolar receiver, summable lifting, polar-section theorem, quotient completeness, adjoint criterion and uniform convolution estimate are proved here.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/frechet-duality-and-smooth-convolution-solvability.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L171/frechet-duality-and-smooth-convolution-solvability-formal.md" download>frechet-duality-and-smooth-convolution-solvability-formal.md</a></li><li><a href="reproduce/L171/frechet-duality-and-smooth-convolution-solvability-learner.md" download>frechet-duality-and-smooth-convolution-solvability-learner.md</a></li><li><a href="reproduce/L171/make_figures228.py" download>make_figures228.py</a></li><li><a href="reproduce/L171/check_numerics228.py" download>check_numerics228.py</a></li><li><a href="reproduce/L171/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L171/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L171/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L171/figures/geometry228.json" download>figures/geometry228.json</a></li><li><a href="reproduce/L171/figures/dense-range-and-growing-inverse-norms.png" download>figures/dense-range-and-growing-inverse-norms.png</a></li><li><a href="reproduce/L171/figures/dense-range-and-growing-inverse-norms.svg" download>figures/dense-range-and-growing-inverse-norms.svg</a></li><li><a href="reproduce/L171/figures/zero-mass-dual-range-and-compact-primitive.png" download>figures/zero-mass-dual-range-and-compact-primitive.png</a></li><li><a href="reproduce/L171/figures/zero-mass-dual-range-and-compact-primitive.svg" download>figures/zero-mass-dual-range-and-compact-primitive.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

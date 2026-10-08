@@ -6,7 +6,9 @@
 
 Near a regular energy surface, one frequency is a smooth function of the others. A small long-range perturbation moves that graph. Dividing by the graph factor suggests a first-order equation in one spatial coordinate. Such an equation still has many homogeneous solutions. An outgoing condition selects one of them, even when the initial information permits squared mass to grow proportionally to the radius of a ball.
 
-We first prove the outgoing evolution estimate directly from its kernel. We then construct the perturbed energy graph and control every derivative of its polynomial factor and reciprocal. Read [Endpoint spaces and flat energy shells](endpoint-spaces-and-flat-energy-shells.md) for the spatial norms, and [Admissible differential perturbations](admissible-differential-perturbations.md) for the differential coefficient class. The [measure and Euclidean product proofs](../providers/analysis/finite-derivative-l2.md#measure-foundations) give the scalar integral, convergence and slice facts; the same reading proves [Fourier inversion and Plancherel](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The [coordinate inverse and bump proofs](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-inverse) supply the regular free graph and smooth cutoffs. Section 3 constructs the vector integrals used here. Freely accessible background references are Teschl's evolution and initial-value texts [T, ODE] and Yafaev's *Lectures on scattering theory* [Y]. The evolution, rough-slice recovery, root and quotient proofs are given below.
+We first prove the outgoing evolution estimate directly from its kernel. We then construct the perturbed energy graph and control every derivative of its polynomial factor and reciprocal. Read [Endpoint spaces and flat energy shells](endpoint-spaces-and-flat-energy-shells.md#endpoint-shell-spaces) for the spatial norms, and [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-coefficient-class) for the differential coefficient class. The [measure and Euclidean product proofs](../providers/analysis/finite-derivative-l2.md#measure-foundations) give the scalar integral, convergence and slice facts; the same reading proves [Fourier inversion and Plancherel](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The [coordinate inverse proof](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-inverse) supplies the regular free graph, and the [finite covering and bump construction](../providers/analysis/coordinate-inverses-and-integration.md#finite-partitions) supplies the smooth cutoffs. Section 3 constructs the vector integrals used here. Freely accessible background references are Teschl's evolution and initial-value texts [T, ODE] and Yafaev's *Lectures on scattering theory* [Y]. The evolution, rough-slice recovery, root and quotient proofs are given below.
+
+<a id="energy-shell-spaces"></a>
 
 ## 1. What an outgoing condition must control
 
@@ -60,6 +62,8 @@ Two slice estimates will be useful:
 
 For the first, each \(f1_{S_j}\) has slices supported in \([-r_j,r_j]\). Cauchy–Schwarz in \(s\) bounds its slice integral by \((2r_j)^{1/2}\|f\|_{L^2(S_j)}\); sum over \(j\). For the second, integrate the uniform slice bound on the same interval.
 
+<a id="energy-shell-kernel"></a>
+
 ## 2. A real symbol and its adjoint defect
 
 Let \(b(s,z,\eta)\) be real and smooth, with support in one fixed compact set of \(\eta\in\mathbb R^d\). Suppose every \(\eta\) derivative is uniformly bounded. Suppose also that there is a nonnegative \(w\in L^1(\mathbb R)\) such that
@@ -101,6 +105,8 @@ We will use the following kernel inequality. If
 
 then its \(L^2\) operator norm is at most \((M_1M_2)^{1/2}\). To prove it, apply weighted Cauchy–Schwarz to \(\int K(z,y)h(y)\,dy\), then integrate in \(z\) and use Fubini. Thus (7), with \(N>d\), bounds \(A(s)\) uniformly.
 
+<a id="energy-shell-adjoint"></a>
+
 Reality of \(b\) identifies the kernel of \(A(s)-A(s)^*\) as the inverse Fourier integral of
 \(b(s,z,\eta)-b(s,y,\eta)\). The segment formula and (5), including its differentiated versions, bound that amplitude's \(\eta\) derivatives by \(C_\alpha w(s)|z-y|\). Repeating the integration by parts gives
 
@@ -117,6 +123,8 @@ Reality of \(b\) identifies the kernel of \(A(s)-A(s)^*\) as the inverse Fourier
 Take \(N>d+1\) for the second line. A real left symbol need not give a self-adjoint operator. What we have proved is an integrable bound on its failure of self-adjointness.
 
 ## 3. Constructing the outgoing evolution
+
+The outgoing estimate and the existence statement for integrable forcing are due to Hörmander [H4, Lemma 30.5.4]. We prove them here by constructing the propagator and then recovering Hilbert-space slices from the outgoing ball bound.
 
 **Theorem 3.1.** Under the hypotheses of Section 2, let \(g\in L^1(\mathbb R;\mathcal H)\). There is a solution of
 
@@ -135,11 +143,15 @@ with a continuous, locally absolutely continuous \(\mathcal H\)-valued represent
 
 Every distributional solution \(v\in B^*\) of (10) satisfying (3) has this representative and bound. In particular it is unique among the \(B^*\) solutions satisfying (3). The constant depends on the symbol bounds and \(\int w\), and is independent of \(g\).
 
-Here are the integration facts needed for the full \(L^1\) forcing class. The space \(\mathcal H=L^2(\mathbb R^d)\) is separable: the Euclidean rectangle-approximation proof makes step functions on finitely many rational boxes with rational real and imaginary values dense. In dimension zero use \(\mathbb C\). A strongly measurable \(\mathcal H\)-valued function with integrable norm is approximable in integral norm by finite-valued simple functions. Explicitly, first restrict to a bounded time interval and bounded values, losing arbitrarily little norm integral. Cover its values by balls of radius \(1/j\) centered in a countable dense subset, assign each value to the first such ball, and then keep finitely many of the resulting measurable sets. The discarded tail has vanishing measure; the values on the retained interval are bounded. This gives finite simple approximations with integral error tending to zero.
+<a id="energy-shell-integrals"></a>
+
+Here are the integration facts needed for the full \(L^1\) forcing class. The space \(\mathcal H=L^2(\mathbb R^d)\) is separable: the [Euclidean rectangle-approximation proof](../providers/analysis/finite-derivative-l2.md#euclidean-products) makes step functions on finitely many rational boxes with rational real and imaginary values dense. In dimension zero use \(\mathbb C\). A strongly measurable \(\mathcal H\)-valued function with integrable norm is approximable in integral norm by finite-valued simple functions. Explicitly, first restrict to a bounded time interval and bounded values, losing arbitrarily little norm integral. Cover its values by balls of radius \(1/j\) centered in a countable dense subset, assign each value to the first such ball, and then keep finitely many of the resulting measurable sets. The discarded tail has vanishing measure; the values on the retained interval are bounded. This gives finite simple approximations with integral error tending to zero.
 
 For a simple function \(F=\sum_k h_k1_{E_k}\) on disjoint finite-measure sets define \(\int F=\sum_k |E_k|h_k\). The triangle inequality gives \(\|\int F\|\le\int\|F\|\), so completion defines the integral for the preceding \(L^1\) class and makes it independent of the approximation. Pairing with a fixed vector, or applying a bounded operator, commutes with the integral by the same norm estimate. In particular the primitive \(G(s)=\int_a^s F(t)\,dt\) is locally absolutely continuous: sums of its increments over disjoint intervals are bounded by the norm integral over their union, which tends to zero with that union's measure by truncating the integrable scalar function \(\|F\|\). Testing against a compact smooth scalar function and using scalar Fubini proves \(G'=F\) as a vector distribution. These facts also construct improper integrals whenever the norm has an integrable tail.
 
 For continuous operator-valued functions on compact intervals use Riemann sums in operator norm, as in the [continuous-vector integral proof](../providers/analysis/euclidean-approximation-and-convolution.md#oscillatory-integrals-and-averages). The same uniform-continuity estimate applies in the complete normed space of bounded operators: an operator-norm Cauchy sequence has a pointwise vector limit which is linear and bounded, and convergence to it is in operator norm. Thus no operator measurability assumption beyond the stated norm continuity is required.
+
+<a id="energy-shell-evolution"></a>
 
 We begin with existence. Since \(\sup_s\|A(s)\|\le M\), iteration of
 \[
@@ -176,6 +188,8 @@ For \(\varepsilon>0\), divide (14) by \(\|u(s)\|^2+\varepsilon\). The absolute d
  \tag{15}
 \]
 
+<a id="energy-shell-outgoing"></a>
+
 Define
 
 \[
@@ -190,7 +204,7 @@ The integral converges in \(\mathcal H\) by (15), and \(\|v(s)\|\le C_0q(s)\). I
 \[
  v(s)=U(s,a)\left(v(a)+i\int_a^s U(a,t)g(t)\,dt\right).
 \]
-The bracket is locally absolutely continuous by the primitive construction, and \(U(s,a)\) is continuously differentiable in operator norm. The product is therefore locally absolutely continuous. Testing its product rule, or first using simple approximations to \(g\), gives \(\partial_sv=iAv+ig\) in distributions, including the sign in (10). The same formula gives the inhomogeneous integral equation on each finite interval.
+The bracket is locally absolutely continuous by the primitive construction, and \(U(s,a)\) is continuously differentiable in operator norm. The product is therefore locally absolutely continuous. The [product rule for a norm-differentiable operator and an integrable primitive](../providers/analysis/hilbert-valued-integration.md#operator-products) gives \(\partial_sv=iAv+ig\) in distributions, including the sign in (10). The same formula gives the inhomogeneous integral equation on each finite interval.
 
 The bound and (4) give \(v\in B^*\). To prove (3), fix \(S<\min(T,0)\). For \(R\) large enough,
 
@@ -204,6 +218,8 @@ The bound and (4) give \(v\in B^*\). To prove (3), fix \(S<\min(T,0)\). For \(R\
 \]
 
 The first term bounds the interval \([-R,S]\); omitting a nonexistent interval only reduces it. Let \(R\to\infty\), then \(S\to-\infty\). Since \(q(S)\to0\), this proves the condition.
+
+<a id="energy-shell-weighted-slices"></a>
 
 ## 4. Recovering slices from a rough outgoing solution
 
@@ -221,6 +237,8 @@ The shell estimate implies
 
 Indeed, the tail sum is bounded by a constant times
 \(\sum_j2^{j(1-2p)}\). Fubini therefore gives polynomially weighted \(L^2\) slices for almost every \(s\). Their strong measurability also follows from the rectangle proof: approximate the weighted function by finite product step functions in the space-time \(L^2\) norm and take a subsequence whose slice errors tend to zero almost everywhere. On bounded time intervals the weight is equivalent to a weight in \(z\) alone. The rapidly decreasing kernel (7) acts on these slices as a distribution and as a locally square-integrable function. Indeed, for bounded output \(z\), Cauchy–Schwarz bounds its value by the weighted slice norm times the \(L^2_y\) norm of \(K_s(z,y)(1+|y|)^p\), uniformly finite on bounded output sets by (7). Integration in bounded \(s,z\) proves local square integrability.
+
+<a id="energy-shell-near-error"></a>
 
 Choose a real smooth \(\chi\), between zero and one, equal to one on the unit ball and zero outside the ball of radius two. Put
 \(\chi_R(x)=\chi(x/R)\) and \(v_R=\chi_Rv\). The distributional product rule gives
@@ -271,6 +289,8 @@ First apply it to the near input \(1_{\{|x|\le4R\}}v\). Integrating its slice no
  \tag{23}
 \]
 
+<a id="energy-shell-far-error"></a>
+
 The far input requires a separate estimate. Decompose it into annuli
 \(r_j<|(s,y)|\le2r_j\), with \(r_j=4R\,2^j\). For a nonzero kernel output, \(|(s,z)|\le2R\), whereas the input cutoff is zero. Also \(|s|\le2R\), so
 \[
@@ -301,8 +321,10 @@ Here (2) bounds the annular \(L^2\) norm by \(C r_j^{1/2}\|v\|_{B^*}\). Choose \
  \tag{26}
 \]
 
+<a id="energy-shell-slice-recovery"></a>
+
 Now \(v_R\) is globally \(L^2\) and has compact support. Equation (19) implies
-\(\partial_sv_R=iAv_R+i(\chi_Rg+e_R)\) in local \(L^1(\mathbb R;\mathcal H)\). It therefore has a locally absolutely continuous representative, as follows directly. Subtract the vector primitive of the right side constructed in Section 3, leaving a locally integrable vector distribution \(F\) with \(F'=0\). Choose \(\rho\in C_c^\infty(\mathbb R)\), \(\int\rho=1\), and set \(h=\int\rho(s)F(s)\,ds\in\mathcal H\). Every compact smooth test \(\varphi\) has
+\(\partial_sv_R=iAv_R+i(\chi_Rg+e_R)\) in local \(L^1(\mathbb R;\mathcal H)\). To pass from the scalar space-time equation to this vector identity, test first against products of a compact smooth function of \(s\) and a compact smooth function of \(z\). Every term is now locally integrable with values in \(\mathcal H\), so [density of the latter test functions in \(L^2_z\)](../providers/analysis/euclidean-approximation-and-convolution.md#mollification) extends these pairings to all vectors and identifies the vector distribution. In dimension zero only the scalar time test is needed. It therefore has a locally absolutely continuous representative, as follows directly. Subtract the vector primitive of the right side constructed in Section 3, leaving a locally integrable vector distribution \(F\) with \(F'=0\). Choose \(\rho\in C_c^\infty(\mathbb R)\), \(\int\rho=1\), and set \(h=\int\rho(s)F(s)\,ds\in\mathcal H\). Every compact smooth test \(\varphi\) has
 \(\psi=\varphi-(\int\varphi)\rho\) of integral zero, so \(\Psi(s)=\int_{-\infty}^s\psi(t)\,dt\) is compact and smooth. The identity \(F'=0\) gives \(\int F\psi=0\), hence \(\int F\varphi=h\int\varphi\). Thus \(F=h\) as a vector distribution and almost everywhere. For the last conclusion pair with a countable dense subset of \(\mathcal H\); scalar convolution with compact smooth approximate identities and their local \(L^1\) convergence, proved in [Approximation and convolution](../providers/analysis/euclidean-approximation-and-convolution.md#mollification), identifies each scalar function almost everywhere. The common null set and density identify the vector. Adding the primitive back gives the claimed representative.
 
 This representative is zero for \(s<-2R\), since it is continuous and agrees there almost everywhere with zero. Variation of constants is valid for this rough forcing as well: multiplying the integral equation by \(U(a,s)\), or approximating its \(L^1\) right side by simple functions, gives the formula in Section 3. Uniqueness follows by iterating the homogeneous norm inequality, with bound \(M^k|s-a|^k/k!\) at its \(k\)-th iteration. Thus (15) implies, for \(s\le T\),
@@ -316,6 +338,8 @@ This representative is zero for \(s<-2R\), since it is continuous and agrees the
 Take \(R\) and the upper bound \(T\) through the positive integers. Outside one common null set, \(v_R(s,z)=\chi_R(s,z)v(s,z)\). Fatou's lemma in \(z\), followed by (26), proves \(\|v(s)\|_{\mathcal H}\le C_0q(s)\) for almost every \(s\). The slices now belong to \(\mathcal H\) and are uniformly bounded. Equation (10) gives a locally absolutely continuous representative, and continuity extends the inequality to every \(s\).
 
 For \(g=0\) this inequality forces \(v=0\). The difference of two \(B^*\) solutions satisfying (3) again satisfies (3), by the squared triangle inequality. Thus uniqueness follows. Solutions obeying (11) satisfy (3) by (17), so the existence statement is unique in its asserted class as well. This completes Theorem 3.1. \(\square\)
+
+<a id="energy-shell-root"></a>
 
 ## 5. Moving a regular energy graph
 
@@ -351,6 +375,8 @@ Assume the full bounds
 \]
 
 for every \(\beta\). Suppose also that \(L=0\) on \(|x|<R_0\), where \(R_0\) may be chosen large with the constants in (30) fixed.
+
+The perturbed-root estimate is Hörmander [H4, Lemma 30.5.1].
 
 **Theorem 5.1.** For \(R_0\) sufficiently large, there is a unique root \(\xi_1=a(x,\eta)\) near \(E(\eta)\) of \(P(\xi)+L(x,\xi)=\lambda\). It is smooth on a neighborhood of the compact patch and satisfies, for every \(\alpha,\beta\),
 
@@ -392,7 +418,9 @@ Here is smooth dependence before differentiating that root. Put \(p=(x,\eta)\). 
 \]
 The coefficient has absolute value at least \(1/2\), so this proves differentiability and the continuous derivative formula \(D_ph=(1-F_h)^{-1}D_pF\). Inductively differentiating that formula proves smoothness at every finite order. Uniqueness of the small root makes these local constructions agree.
 
-For the derivative estimates, concavity gives, whenever \(b_0,\ldots,b_q\ge0\),
+<a id="energy-shell-derivative-budget"></a>
+
+For the derivative estimates, \(\mu\) is concave because its slope decreases from \(1\) to \((1+\delta)/2\), and \(\mu(0)=\delta\). Concavity gives, whenever \(b_0,\ldots,b_q\ge0\),
 \[
  \sum_{j=0}^q\mu(b_j)
  \ge \mu\!\left(\sum_{j=0}^q b_j\right)+q\delta.
@@ -401,11 +429,15 @@ For the derivative estimates, concavity gives, whenever \(b_0,\ldots,b_q\ge0\),
 
 To see this, fix their sum \(B>0\). A point in the simplex is the convex combination, with weights \(b_j/B\), of its vertices. Concavity of the sum bounds its value below by the common vertex value \(\mu(B)+q\mu(0)\). For \(B=0\) the inequality is equality.
 
+<a id="energy-shell-root-jets"></a>
+
 At order zero, (33) gives (31). Induct in total mixed derivative order. Differentiating the identity produces the term \(F_h\partial_\eta^\alpha\partial_x^\beta h\), which we move to the left. Every remaining finite chain term is either a derivative of \(F\) alone, or a derivative of \(F\) multiplied by \(q\ge1\) lower-order derivatives of \(h\). Their physical orders \(b_0,\ldots,b_q\) sum to \(|\beta|\). The induction hypothesis and (34) bound the term by \(C X^{-\mu(|\beta|)}\), with additional decay when \(q>0\). Division by \(1-F_h\), whose absolute value is at least \(1/2\), proves (31) at the next order. This includes all frequency derivatives. \(\square\)
+
+<a id="energy-shell-division"></a>
 
 ## 6. Dividing the polynomial without losing decay
 
-Ellipticity implies that the homogeneous degree-\(m\) part of \(P\), evaluated at the first coordinate vector, is nonzero. Thus \(P\) has degree \(m\) in \(\xi_1\), with a nonzero constant leading coefficient. For \(R_0\) large the corresponding coefficient of \(L\) is uniformly small. Polynomial division therefore gives
+Ellipticity implies that the homogeneous degree-\(m\) part of \(P\), evaluated at the first coordinate vector, is nonzero. Thus \(P\) has degree \(m\) in \(\xi_1\), with a nonzero constant leading coefficient. For \(R_0\) large the corresponding coefficient of \(L\) is uniformly small. For any polynomial \(R(u)\) with \(R(a)=0\), the finite identity \(u^j-a^j=(u-a)\sum_{r=0}^{j-1}u^{j-1-r}a^r\), obtained by cancellation of consecutive terms, factors every nonconstant monomial of \(R(u)-R(a)\). Applying it at the two roots gives
 
 \[
  \begin{aligned}
@@ -417,6 +449,8 @@ Ellipticity implies that the homogeneous degree-\(m\) part of \(P\), evaluated a
 \]
 
 Both quotients have degree \(m-1\) in \(\xi_1\). On the chosen collar \(Q_0=J(\xi_1-E(\eta),\eta)\), so it is bounded away from zero.
+
+The quotient and reciprocal estimates are Hörmander [H4, Lemmas 30.5.2–30.5.3].
 
 **Proposition 6.1.** On every fixed compact collar as above, every mixed derivative satisfies
 
@@ -455,6 +489,8 @@ q_{m-1}=r_m,\\ \qquad
 
 Induct downward in \(j\). Multiplication by \(E(\eta)\) costs no physical decay. For multiplication by \(a-E\), every product-rule term has two physical orders whose sum is \(|\beta|\). Equations (31) and (34) give at least the required exponent, with an extra \(\delta\). This proves all coefficient estimates. The polynomial's powers of \(\xi_1\) and their derivatives are bounded on the fixed collar, giving the first line of (36).
 
+<a id="energy-shell-reciprocal"></a>
+
 The zeroth estimate and the large zero region give
 \(|Q-Q_0|\le |Q_0|/2\). Hence \(Q\) is uniformly bounded away from zero. Set \(f=Q^{-1}-Q_0^{-1}\). Its zeroth bound follows directly, and
 \[
@@ -465,6 +501,8 @@ The zeroth estimate and the large zero region give
 The right side has every required mixed bound. Induct on total derivative order in (39), isolating \(Q\partial_\xi^\alpha\partial_x^\beta f\). A differentiated \(Q_0\) has only frequency derivatives and a fixed bound. A differentiated \(Q-Q_0\), multiplied by a lower derivative of \(f\), is controlled by (34). The induction hypothesis thus bounds every other term by \(C X^{-\mu(|\beta|)}\). Divide by the uniformly nonzero \(Q\). This proves the second line. \(\square\)
 
 These are exact polynomial identities. In left quantization, a product of operators can also contain terms with frequency and physical derivatives of their symbols. Equation (35) alone does not identify the forcing of a first-order equation obtained from a differential equation.
+
+<a id="energy-shell-application"></a>
 
 ## 7. Applying the outgoing theorem to the energy root
 
@@ -502,6 +540,8 @@ The theorem also constructs its unique outgoing solution for every \(g\in L^1(\m
 ### Use the conclusion
 
 Follow the outgoing kernel estimate to the slice recovery, then check the perturbed energy root and its reciprocal derivatives. The graph factorization and the outgoing uniqueness principle perform different jobs.
+
+<a id="energy-shell-solutions"></a>
 
 ## 8. Exercises with complete solutions
 
@@ -573,3 +613,5 @@ Nevertheless \(v(s,z)=i h(z)\int_{-\infty}^s\rho(t)\,dt\) is continuous, locally
 - [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, free author's online second edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), 2014, Theorem 5.1, pp. 145–146. This supplies the self-adjoint evolution comparison; the possibly nonsymmetric, time-dependent evolution and rough forcing used here are proved in Sections 2–4.
 - [ODE] Gerald Teschl, [*Ordinary Differential Equations and Dynamical Systems*, free author's preliminary edition](https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf), April 2012, §2.2. Its integral iteration is the initial-value comparison. Section 3 writes the operator-norm series, both time directions and the integrable adjoint-defect bound explicitly.
 - [Y] Dmitri Yafaev, [*Lectures on scattering theory*, free author preprint, arXiv:math/0403213v1](https://arxiv.org/pdf/math/0403213v1), 12 March 2004; lecture notes prepared by Andrew Hassell. Section 1 introduces the scattering context. The endpoint outgoing condition, slice recovery and polynomial factor estimates in this lesson have their written proofs above.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Lemmas 30.5.1–30.5.3 and proofs, pp. 315–317; Lemma 30.5.4 and proof, pp. 318–319. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

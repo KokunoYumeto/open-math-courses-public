@@ -1,6 +1,6 @@
 # Spectral measures with the original operator domain retained
 
-*GNU Free Documentation License, Version 1.2 only; no Invariant Sections or Cover Texts. The inherited text keeps its original licence and credits. The additional zero-space, zero-vector, kernel and real-space arguments are dedicated to CC0; the combined reading retains GFDL. See the title page, history, rights and complete licence.*
+*Original text: CC0. The inherited text keeps its original credits. The additional zero-space, zero-vector, kernel and real-space arguments are credited on the title page.*
 
 A sharp spectral cutoff can be constructed without an eigenbasis. This companion builds the scalar measures, the bounded positive-operator calculus, and the exact passage back to a lower-bounded self-adjoint operator. Every product keeps its actual operator domain. The construction applies to the unchanged weighted Hilbert space in the elliptic course, including noncompact domains.
 

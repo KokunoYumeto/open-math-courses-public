@@ -1,0 +1,367 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cocycle matrix actions and the representation continuity test · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-GCC.html">Previous lesson</a><a href="OA-FLOW-L113.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L112.md">Lesson source</a></nav><p class="notice">Preserved cocycle matrix proof, completed representation-continuity and atomic-summand exposition, and original illustration by GPT-6.1 Sol (OpenAI), Ultra. Spot-checked by GPT-6 Astra in a separate session.</p><p><a id="oa-flow.l112.0"></a><a id="l112-opening-context"></a></p>
+<h1 id="OA-FLOW.L112.0">Cocycle matrix actions and the representation continuity test</h1>
+<p>A norm-continuous action on a C*-algebra need not become a continuous normal action in every representation. We first state that representation test and prove a concrete obstruction in the universal representation of <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>. Shrinking bumps converge strongly to nonzero atomic projections, but translating the limiting projection makes a normal vector functional jump.</p>
+<p>The final construction puts a unitary cocycle into a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix action. Its two fixed diagonal corners carry the original and perturbed actions; the general equivalent-fixed-corner theorem then transfers their Connes spectra. Continuity of this action is proved directly in the concrete predual.</p>
+<p><em>Restored local proof, 5 October 2026. Spot-checked in a separate AI session. The concluding Connes-spectrum application uses the exact earlier canonical GCC proof. Original exposition, new proofs and illustration are CC0-1.0 to the extent of rights held.</em></p>
+<p><span id="OA-FLOW.L112.INPUTS"></span><a id="oa-flow.l112.inputs"></a></p>
+<p><a id="cm-inputs"></a></p>
+<h2 id="exact-earlier-setting-and-conventions">Exact earlier setting and conventions</h2>
+<p>The C*-representation statements use arbitrary nonunital C*-algebras, arbitrary Hilbert spaces and arbitrary LCH groups. Only the cocycle/Connes part imposes the original LCA hypothesis. Representations are nondegenerate where stipulated. Von Neumann automorphisms are normal, meaning ultraweakly continuous. Strong convergence is vectorwise convergence; every use of strong-to-ultraweak convergence below has an explicit uniform operator bound.</p>
+<p>The exact earlier proofs are <a href="OA-FLOW-GNS.html#gns-theorem-5-1">GNS5.1</a>, <a href="OA-FLOW-GNS.html#gns-lemma-7-1">GNS7.1</a>, <a href="OA-FLOW-GNS.html#gns-theorem-7-3">GNS7.3</a>, the concrete predual <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–6</a>, bounded bicommutant density <a href="OA-FLOW-BD.html#oa-flow.bd.4">BD4–5</a>, and finite normal tensor transport <a href="OA-FLOW-NCF.html#ncf-1">NCF1</a>. <a href="OA-FLOW-PC.html#oa-flow.projection.pc1">PC1</a> supplies arbitrary projection joins; <a href="OA-FLOW-CF.html#oa-flow.cf.6">CF6–9</a> supplies the C*, Hilbert norm and forced-unitization facts. Complete integration and action-continuity alternatives in AT and the free-source GNS development remain available. No abstract bidual W* construction is used.</p>
+<p>The current general spectral framework has negative labels: an eigenphase <span class="math" data-tex="\(e^{-it\lambda}\)">\(e^{-it\lambda}\)</span> has label <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, by <a href="OA-FLOW-SS.html#ss-3">SS3</a>. The historical displays M1–M23 are retained, except that M21 now states the proved concrete summand <span class="math" data-tex="\(zP\)">\(zP\)</span> rather than an unproved abstract-bidual identification.</p>
+<p><span id="OA-FLOW.L112.PREDUAL"></span><a id="oa-flow.l112.predual"></a></p>
+<p><a id="cm-predual"></a></p>
+<h2 id="a-full-predual-continuity-estimate">A full predual continuity estimate</h2>
+<p>Let <span class="math" data-tex="\(Q\subseteq B(\mathcal H)\)">\(Q\subseteq B(\mathcal H)\)</span> be a concrete von Neumann algebra, and let <span class="math" data-tex="\(V_t\)">\(V_t\)</span> be a strongly continuous unitary family normalizing <span class="math" data-tex="\(Q\)">\(Q\)</span>: <span class="math" data-tex="\(V_tQV_t^*=Q\)">\(V_tQV_t^*=Q\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. There is no group-law requirement for the following estimate; the choice <span class="math" data-tex="\(Q=B(\mathcal H)\)">\(Q=B(\mathcal H)\)</span> is automatic. Its adjoints are strongly continuous, since</p>
+<p><a id="equation-cm1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|V_t^*\xi-V_s^*\xi\|=\|\xi-V_tV_s^*\xi\|\longrightarrow0.
+ \tag{CM1}
+\]">\[
+ \|V_t^*\xi-V_s^*\xi\|=\|\xi-V_tV_s^*\xi\|\longrightarrow0.
+ \tag{CM1}
+\]</span>
+Conjugation is normal: in CP6's vector-series tests, evaluating <span class="math" data-tex="\(VXV^*\)">\(VXV^*\)</span> replaces the two square-summable vector sequences by their unitary images. With <span class="math" data-tex="\(\omega_{\xi,\eta}(X)=\langle X\xi,\eta\rangle\)">\(\omega_{\xi,\eta}(X)=\langle X\xi,\eta\rangle\)</span>, the two-vector difference gives</p>
+<p><a id="equation-cm8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|\omega_{\xi,\eta}\circ\operatorname{Ad}(V_t)
+       -\omega_{\xi,\eta}\circ\operatorname{Ad}(V_s)\|
+ \leq \|V_t^*\xi-V_s^*\xi\|\,\|\eta\|
+       +\|\xi\|\,\|V_t^*\eta-V_s^*\eta\|.
+ \tag{CM8}
+\]">\[
+ \|\omega_{\xi,\eta}\circ\operatorname{Ad}(V_t)
+       -\omega_{\xi,\eta}\circ\operatorname{Ad}(V_s)\|
+ \leq \|V_t^*\xi-V_s^*\xi\|\,\|\eta\|
+       +\|\xi\|\,\|V_t^*\eta-V_s^*\eta\|.
+ \tag{CM8}
+\]</span>
+Indeed split <span class="math" data-tex="\(\langle XV_t^*\xi,V_t^*\eta\rangle-\langle XV_s^*\xi,V_s^*\eta\rangle\)">\(\langle XV_t^*\xi,V_t^*\eta\rangle-\langle XV_s^*\xi,V_s^*\eta\rangle\)</span> into the first-vector and second-vector differences, and take the supremum over <span class="math" data-tex="\(\|X\|\leq1\)">\(\|X\|\leq1\)</span>. CP6 represents every normal functional by a series whose tail norm is bounded by <span class="math" data-tex="\(\sum_{n&gt;N}\|\xi_n\|\,\|\eta_n\|\to0\)">\(\sum_{n&gt;N}\|\xi_n\|\,\|\eta_n\|\to0\)</span>. Unitary conjugation preserves functional norms, so truncate that series, use (CM8) on its finite part, and bound the two remaining tails uniformly. This proves the full predual norm continuity in (M6), on arbitrary Hilbert spaces.</p>
+<p>This proves point-ultraweak continuity of an inner action implemented by a strongly continuous unitary representation, since <span class="math" data-tex="\(|\omega(V_tXV_t^*-V_sXV_s^*)|\)">\(|\omega(V_tXV_t^*-V_sXV_s^*)|\)</span> is bounded by the proved predual norm difference times <span class="math" data-tex="\(\|X\|\)">\(\|X\|\)</span>. It does not assert operator-norm continuity of the implementing unitaries.</p>
+<p><span id="OA-FLOW.L112.SYSTEMS"></span><a id="oa-flow.l112.systems"></a></p>
+<p><a id="cm-systems"></a></p>
+<h2 id="norm-continuous-c-star-covariant-systems">Norm-continuous C-star covariant systems</h2>
+<p>A <strong>C*-covariant system</strong> is a triple <span class="math" data-tex="\((A,G,\alpha)\)">\((A,G,\alpha)\)</span> consisting of a C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, a locally compact group <span class="math" data-tex="\(G\)">\(G\)</span>, and a homomorphism</p>
+<p><a id="equation-m12"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha:G\longrightarrow\operatorname{Aut}(A) \tag{M12}$$">$$\alpha:G\longrightarrow\operatorname{Aut}(A) \tag{M12}$$</span></p>
+<p>such that every orbit is norm continuous:</p>
+<p><a id="equation-m13"></a></p>
+<p><span class="math math-display" data-tex="$$\lim_{s\to t}\|\alpha_s(a)-\alpha_t(a)\|=0,
+\qquad a\in A,\quad t\in G. \tag{M13}$$">$$\lim_{s\to t}\|\alpha_s(a)-\alpha_t(a)\|=0,
+\qquad a\in A,\quad t\in G. \tag{M13}$$</span></p>
+<p>Continuity at the identity suffices. Indeed</p>
+<p><a id="equation-m14"></a></p>
+<p><span class="math math-display" data-tex="$$\|\alpha_s(a)-\alpha_t(a)\|
+=\|\alpha_t(\alpha_{t^{-1}s}(a)-a)\|
+=\|\alpha_{t^{-1}s}(a)-a\|. \tag{M14}$$">$$\|\alpha_s(a)-\alpha_t(a)\|
+=\|\alpha_t(\alpha_{t^{-1}s}(a)-a)\|
+=\|\alpha_{t^{-1}s}(a)-a\|. \tag{M14}$$</span></p>
+<p>No commutativity of <span class="math" data-tex="\(G\)">\(G\)</span> is needed for this definition.</p>
+<p>The equality in (M14) uses isometry, including nonunital algebras. CF9 constructs the forced unitization <span class="math" data-tex="\(A^\dagger=A\oplus\mathbb C1_{\mathrm{new}}\)">\(A^\dagger=A\oplus\mathbb C1_{\mathrm{new}}\)</span> with its isometric inclusion of <span class="math" data-tex="\(A\)">\(A\)</span>. An automorphism extends by <span class="math" data-tex="\(\alpha^\dagger(a+\lambda1_{\mathrm{new}})=\alpha(a)+\lambda1_{\mathrm{new}}\)">\(\alpha^\dagger(a+\lambda1_{\mathrm{new}})=\alpha(a)+\lambda1_{\mathrm{new}}\)</span>; its multiplication and involution formulas immediately make this a unital star homomorphism with the similarly extended inverse. CF6's unital contractivity applied in both directions gives isometry on <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span>, hence on <span class="math" data-tex="\(A\)">\(A\)</span>. Likewise an algebraic star representation into nonzero <span class="math" data-tex="\(B(\mathcal H)\)">\(B(\mathcal H)\)</span> extends by <span class="math" data-tex="\(a+\lambda1_{\mathrm{new}}\mapsto\pi(a)+\lambda I\)">\(a+\lambda1_{\mathrm{new}}\mapsto\pi(a)+\lambda I\)</span>, so CF6 proves its contractivity; the zero Hilbert space case is immediate. No abelian group hypothesis or pre-existing continuity of the algebraic homomorphism is used.</p>
+<p><span id="OA-FLOW.L112.REPRESENTATIONS"></span><a id="oa-flow.l112.representations"></a></p>
+<p><a id="cm-representations"></a></p>
+<h2 id="a-representation-must-carry-a-continuous-von-neumann-action">A representation must carry a continuous von Neumann action</h2>
+<p>Let <span class="math" data-tex="\(\pi:A\to B(\mathcal H)\)">\(\pi:A\to B(\mathcal H)\)</span> be a nondegenerate representation and put</p>
+<p><a id="equation-m15"></a></p>
+<p><span class="math math-display" data-tex="$$P=\pi(A)''. \tag{M15}$$">$$P=\pi(A)''. \tag{M15}$$</span></p>
+<p>The representation is an <strong><span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-representation</strong> when there is a point-ultraweakly continuous action</p>
+<p><a id="equation-m16"></a></p>
+<p><span class="math math-display" data-tex="$$\widetilde\alpha:G\longrightarrow\operatorname{Aut}(P) \tag{M16}$$">$$\widetilde\alpha:G\longrightarrow\operatorname{Aut}(P) \tag{M16}$$</span></p>
+<p>satisfying</p>
+<p><a id="equation-m17"></a></p>
+<p><span class="math math-display" data-tex="$$\widetilde\alpha_t(\pi(a))
+=\pi(\alpha_t(a)),
+\qquad a\in A,\quad t\in G. \tag{M17}$$">$$\widetilde\alpha_t(\pi(a))
+=\pi(\alpha_t(a)),
+\qquad a\in A,\quad t\in G. \tag{M17}$$</span></p>
+<p>Such an action is unique if it exists: <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> is ultraweakly dense in <span class="math" data-tex="\(P\)">\(P\)</span>, and every <span class="math" data-tex="\(\widetilde\alpha_t\)">\(\widetilde\alpha_t\)</span> is normal. In particular, (M17) forces <span class="math" data-tex="\(\ker\pi\)">\(\ker\pi\)</span> to be <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-invariant. Kernel invariance alone does not supply the continuity in (M16).</p>
+<p>If a strongly continuous unitary representation <span class="math" data-tex="\(U:G\to\mathcal U(\mathcal H)\)">\(U:G\to\mathcal U(\mathcal H)\)</span> implements the covariance,</p>
+<p><a id="equation-m18"></a></p>
+<p><span class="math math-display" data-tex="$$U_t\pi(a)U_t^*=\pi(\alpha_t(a)), \tag{M18}$$">$$U_t\pi(a)U_t^*=\pi(\alpha_t(a)), \tag{M18}$$</span></p>
+<p>then <span class="math" data-tex="\(\widetilde\alpha_t=\operatorname{Ad}(U_t)|_P\)">\(\widetilde\alpha_t=\operatorname{Ad}(U_t)|_P\)</span> supplies (M16). The earlier predual-norm estimate, also used in (M6), proves its point-ultraweak continuity.</p>
+<p>Here is the exact density and topology argument. Nondegeneracy puts the essential support at <span class="math" data-tex="\(1_{\mathcal H}\)">\(1_{\mathcal H}\)</span>. BD4 gives, for each <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>, a uniformly bounded strong-star net from <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> converging to <span class="math" data-tex="\(x\)">\(x\)</span>, and BD5/CP4 turns it into an ultraweakly convergent net. Thus two normal extensions agreeing on <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> agree on all of <span class="math" data-tex="\(P\)">\(P\)</span>. Applying an extension and its inverse to <span class="math" data-tex="\(\pi(a)=0\)">\(\pi(a)=0\)</span> proves invariance of the kernel.</p>
+<p>For (M18), unitary conjugation carries <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> onto itself and hence carries its bicommutant onto itself: conjugating a commutation equation gives the corresponding commutation equation. The earlier full predual estimate supplies its normality and continuity on all of <span class="math" data-tex="\(P\)">\(P\)</span>, not only on the C*-generators.</p>
+<p><span id="OA-FLOW.L112.OBSTRUCTION"></span><a id="oa-flow.l112.obstruction"></a></p>
+<p><a id="cm-obstruction"></a></p>
+<h2 id="the-obstruction-inside-the-concrete-universal-representation">The obstruction inside the concrete universal representation</h2>
+<p>The universal representation does not automatically satisfy (M16). Let</p>
+<p><a id="equation-m19"></a></p>
+<p><span class="math math-display" data-tex="$$A=C_0(\mathbb R),\qquad
+(\alpha_t f)(s)=f(s-t). \tag{M19}$$">$$A=C_0(\mathbb R),\qquad
+(\alpha_t f)(s)=f(s-t). \tag{M19}$$</span></p>
+<p>This is a C*-covariant system. To include its elementary premises, <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>, with pointwise operations, conjugation and the supremum norm, is a C*-algebra. A uniform Cauchy sequence has a uniform limit; the usual local epsilon estimate proves continuity of that limit. Approximation by one sequence member makes the limit vanish at infinity. Thus it is complete, and <span class="math" data-tex="\(\|f^*f\|_\infty=\|f\|_\infty^2\)">\(\|f^*f\|_\infty=\|f\|_\infty^2\)</span>. A nonnegative member has its continuous square root in <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, so positivity is exactly pointwise nonnegativity.</p>
+<p>Translation preserves the operations, norm and vanishing at infinity, with inverse translation by <span class="math" data-tex="\(-t\)">\(-t\)</span>. It also preserves <span class="math" data-tex="\(C_c(\mathbb R)\)">\(C_c(\mathbb R)\)</span>. For <span class="math" data-tex="\(f\in C_c\)">\(f\in C_c\)</span> and <span class="math" data-tex="\(|t|\leq1\)">\(|t|\leq1\)</span>, both translated supports lie in one fixed compact interval. Uniform continuity there gives <span class="math" data-tex="\(\|\alpha_t f-f\|_\infty\to0\)">\(\|\alpha_t f-f\|_\infty\to0\)</span>. To prove that continuity uniformly, for each point <span class="math" data-tex="\(r\)">\(r\)</span> choose <span class="math" data-tex="\(\delta_r&gt;0\)">\(\delta_r&gt;0\)</span> such that <span class="math" data-tex="\(|f(q)-f(r)|&lt;\varepsilon/2\)">\(|f(q)-f(r)|&lt;\varepsilon/2\)</span> when <span class="math" data-tex="\(|q-r|&lt;2\delta_r\)">\(|q-r|&lt;2\delta_r\)</span>. A finite subcover of the intervals <span class="math" data-tex="\((r-\delta_r,r+\delta_r)\)">\((r-\delta_r,r+\delta_r)\)</span> covers the compact interval. If two points are closer than the minimum of its finitely many <span class="math" data-tex="\(\delta_r\)">\(\delta_r\)</span>, select a covering interval for the first; both points are within <span class="math" data-tex="\(2\delta_r\)">\(2\delta_r\)</span> of its centre. The triangle inequality gives variation less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Every <span class="math" data-tex="\(f\in C_0\)">\(f\in C_0\)</span> is uniformly approximable by compactly supported <span class="math" data-tex="\(f\chi_R\)">\(f\chi_R\)</span>, where <span class="math" data-tex="\(\chi_R=1\)">\(\chi_R=1\)</span> on <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>, decreases linearly to zero on each of <span class="math" data-tex="\([R,2R]\)">\([R,2R]\)</span> and <span class="math" data-tex="\([-2R,-R]\)">\([-2R,-R]\)</span>, and is zero outside <span class="math" data-tex="\([-2R,2R]\)">\([-2R,2R]\)</span>. Indeed <span class="math" data-tex="\(\|f-f\chi_R\|_\infty\leq\sup_{|r|&gt;R}|f(r)|\to0\)">\(\|f-f\chi_R\|_\infty\leq\sup_{|r|&gt;R}|f(r)|\to0\)</span>. Translation is isometric, so approximation proves (M13) on all of <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<p>Use GNS7.3's direct sum of the GNS representations of all states, denoted <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on <span class="math" data-tex="\(\mathcal H_u\)">\(\mathcal H_u\)</span>, and put <span class="math" data-tex="\(P=\pi(A)''\)">\(P=\pi(A)''\)</span>. The representation is faithful, isometric and nondegenerate. Evaluation at <span class="math" data-tex="\(s\)">\(s\)</span> is a state: it is positive, bounded by the supremum norm, and the compact bump below has value and norm one. Its GNS summand supplies a unit vector <span class="math" data-tex="\(\xi_s\)">\(\xi_s\)</span>. GNS5.1 gives</p>
+<p><a id="equation-cm2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \pi(f)\xi_s=f(s)\xi_s\quad(f\in C_0(\mathbb R)).
+ \tag{CM2}
+\]">\[
+ \pi(f)\xi_s=f(s)\xi_s\quad(f\in C_0(\mathbb R)).
+ \tag{CM2}
+\]</span>
+For example the squared norm of the difference is
+<span class="math" data-tex="\(\operatorname{ev}_s(|f|^2)-2|f(s)|^2+|f(s)|^2=0\)">\(\operatorname{ev}_s(|f|^2)-2|f(s)|^2+|f(s)|^2=0\)</span>.
+No identification with <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span> is asserted.</p>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span> define</p>
+<p><a id="equation-cm3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ f_{n,s}(r)=\max\{0,1-n|r-s|\},\qquad a_{n,s}=\pi(f_{n,s}).
+ \tag{CM3}
+\]">\[
+ f_{n,s}(r)=\max\{0,1-n|r-s|\},\qquad a_{n,s}=\pi(f_{n,s}).
+ \tag{CM3}
+\]</span>
+These positive contractions decrease with <span class="math" data-tex="\(n\)">\(n\)</span>. They have a strong limit. To prove this directly, for <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span> put <span class="math" data-tex="\(d=a_{n,s}-a_{m,s}=\pi(f_{n,s}-f_{m,s})\)">\(d=a_{n,s}-a_{m,s}=\pi(f_{n,s}-f_{m,s})\)</span>. The scalar function <span class="math" data-tex="\(h=f_{n,s}-f_{m,s}\)">\(h=f_{n,s}-f_{m,s}\)</span> satisfies <span class="math" data-tex="\(0\leq h\leq1\)">\(0\leq h\leq1\)</span>; the function <span class="math" data-tex="\(\sqrt{h-h^2}\)">\(\sqrt{h-h^2}\)</span> is in <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Therefore <span class="math" data-tex="\(d-d^2\geq0\)">\(d-d^2\geq0\)</span>, and</p>
+<p><a id="equation-cm4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|(a_{n,s}-a_{m,s})\eta\|^2
+ \leq\langle(a_{n,s}-a_{m,s})\eta,\eta\rangle.
+ \tag{CM4}
+\]">\[
+ \|(a_{n,s}-a_{m,s})\eta\|^2
+ \leq\langle(a_{n,s}-a_{m,s})\eta,\eta\rangle.
+ \tag{CM4}
+\]</span>
+The scalar forms <span class="math" data-tex="\(\langle a_{n,s}\eta,\eta\rangle\)">\(\langle a_{n,s}\eta,\eta\rangle\)</span> decrease to a finite nonnegative limit, so (CM4) makes the vector sequence Cauchy. Its vectorwise limit is a bounded linear operator <span class="math" data-tex="\(p_s\)">\(p_s\)</span>, with <span class="math" data-tex="\(\|p_s\|\leq1\)">\(\|p_s\|\leq1\)</span>. Positivity, self-adjointness and <span class="math" data-tex="\(p_s\leq a_{n,s}\)">\(p_s\leq a_{n,s}\)</span> pass to the limit by forms. Since <span class="math" data-tex="\(P\)">\(P\)</span> is a commutant and each <span class="math" data-tex="\(a_{n,s}\)">\(a_{n,s}\)</span> commutes with every member of <span class="math" data-tex="\(\pi(A)'\)">\(\pi(A)'\)</span>, passing the commutation equation to the strong limit gives <span class="math" data-tex="\(p_s\in P\)">\(p_s\in P\)</span>.</p>
+<p>For each <span class="math" data-tex="\(f\in C_0\)">\(f\in C_0\)</span>, continuity at <span class="math" data-tex="\(s\)">\(s\)</span> gives</p>
+<p><a id="equation-cm5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|(f-f(s))f_{n,s}\|_\infty
+ \leq \sup_{|r-s|\leq1/n}|f(r)-f(s)|\longrightarrow0.
+ \tag{CM5}
+\]">\[
+ \|(f-f(s))f_{n,s}\|_\infty
+ \leq \sup_{|r-s|\leq1/n}|f(r)-f(s)|\longrightarrow0.
+ \tag{CM5}
+\]</span>
+Isometry of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and the strong limit give
+<span class="math" data-tex="\(\pi(f)p_s=f(s)p_s\)">\(\pi(f)p_s=f(s)p_s\)</span>. Apply this first with <span class="math" data-tex="\(f=f_{m,s}\)">\(f=f_{m,s}\)</span>; then let <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span> strongly to obtain <span class="math" data-tex="\(p_s^2=p_s\)">\(p_s^2=p_s\)</span>. Equation (CM2) gives <span class="math" data-tex="\(p_s\xi_s=\xi_s\)">\(p_s\xi_s=\xi_s\)</span>, so this is a nonzero projection.</p>
+<p>The algebra <span class="math" data-tex="\(P\)">\(P\)</span> is abelian, without a bidual theorem. Since <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> is abelian, <span class="math" data-tex="\(P\subset\pi(A)'\)">\(P\subset\pi(A)'\)</span>; every element of <span class="math" data-tex="\(P=(\pi(A)')'\)">\(P=(\pi(A)')'\)</span> commutes with every element of that larger commutant, hence with every element of <span class="math" data-tex="\(P\)">\(P\)</span>. For <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span>, choose <span class="math" data-tex="\(f\in C_c\)">\(f\in C_c\)</span> with <span class="math" data-tex="\(f(r)\ne f(s)\)">\(f(r)\ne f(s)\)</span>. The scalar relations for <span class="math" data-tex="\(p_r,p_s\)">\(p_r,p_s\)</span>, together with commutation, give
+<span class="math" data-tex="\((f(r)-f(s))p_rp_s=0\)">\((f(r)-f(s))p_rp_s=0\)</span>. Thus the projections <span class="math" data-tex="\(p_s\)">\(p_s\)</span> are pairwise orthogonal. PC1 supplies their arbitrary join</p>
+<p><a id="equation-m20"></a></p>
+<p><span class="math math-display" data-tex="$$z=\bigvee_{s\in\mathbb R}p_s. \tag{M20}$$">$$z=\bigvee_{s\in\mathbb R}p_s. \tag{M20}$$</span></p>
+<p>It is central in <span class="math" data-tex="\(P\)">\(P\)</span>. In fact each <span class="math" data-tex="\(p_sP=\mathbb Cp_s\)">\(p_sP=\mathbb Cp_s\)</span>. Every bounded operator on <span class="math" data-tex="\(p_s\mathcal H_u\)">\(p_s\mathcal H_u\)</span>, extended by zero on its perpendicular complement, commutes with <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>: the restriction of <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span> there is the scalar <span class="math" data-tex="\(f(s)\)">\(f(s)\)</span>, and <span class="math" data-tex="\(p_s\)">\(p_s\)</span> reduces it. Thus every <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span> commutes with all of these operators. Commuting with each rank-one projection makes every nonzero vector an eigenvector for the restriction of <span class="math" data-tex="\(x\)">\(x\)</span>; applying this to the sum of two independent vectors makes their eigenvalues equal. The restriction is scalar, proving the assertion, including arbitrary dimension.</p>
+<p>The atomic summand is the proved concrete von Neumann algebra</p>
+<p><a id="equation-m21"></a></p>
+<p><span class="math math-display" data-tex="$$zP\cong\ell^\infty(\mathbb R). \tag{M21}$$">$$zP\cong\ell^\infty(\mathbb R). \tag{M21}$$</span></p>
+<p>Here is the full map and its topology. For bounded <span class="math" data-tex="\(F:\mathbb R\to\mathbb C\)">\(F:\mathbb R\to\mathbb C\)</span>, the finite sums <span class="math" data-tex="\(\sum_{s\in S}F(s)p_s\)">\(\sum_{s\in S}F(s)p_s\)</span>, indexed by finite subsets <span class="math" data-tex="\(S\)">\(S\)</span>, have norm at most <span class="math" data-tex="\(\|F\|_\infty\)">\(\|F\|_\infty\)</span>. On each vector their squared tail is bounded by <span class="math" data-tex="\(\|F\|_\infty^2\sum_{s\notin S}\|p_s\eta\|^2\)">\(\|F\|_\infty^2\sum_{s\notin S}\|p_s\eta\|^2\)</span>. Orthogonality bounds the total scalar sum by <span class="math" data-tex="\(\|\eta\|^2\)">\(\|\eta\|^2\)</span>; its definition as the supremum of finite subsums makes the tails tend to zero. Consequently the finite sums have a strong limit <span class="math" data-tex="\(\Phi(F)\in zP\)">\(\Phi(F)\in zP\)</span>. Its adjoint is <span class="math" data-tex="\(\Phi(\overline F)\)">\(\Phi(\overline F)\)</span>, by the same argument. It satisfies <span class="math" data-tex="\(\Phi(F)p_s=F(s)p_s\)">\(\Phi(F)p_s=F(s)p_s\)</span>, so testing <span class="math" data-tex="\(\xi_s\)">\(\xi_s\)</span> gives <span class="math" data-tex="\(\|\Phi(F)\|=\|F\|_\infty\)">\(\|\Phi(F)\|=\|F\|_\infty\)</span>. These identities prove linearity, multiplicativity and preservation of adjoints, since an operator in <span class="math" data-tex="\(zP\)">\(zP\)</span> vanishing on every <span class="math" data-tex="\(p_s\mathcal H_u\)">\(p_s\mathcal H_u\)</span> vanishes on their closed span <span class="math" data-tex="\(z\mathcal H_u\)">\(z\mathcal H_u\)</span>. Conversely <span class="math" data-tex="\(xp_s=F(s)p_s\)">\(xp_s=F(s)p_s\)</span>, with <span class="math" data-tex="\(|F(s)|\leq\|x\|\)">\(|F(s)|\leq\|x\|\)</span>, for <span class="math" data-tex="\(x\in zP\)">\(x\in zP\)</span>, and <span class="math" data-tex="\(x=\Phi(F)\)">\(x=\Phi(F)\)</span>. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an onto isometric star isomorphism.</p>
+<p>For completeness it and its inverse are normal. Realize <span class="math" data-tex="\(\ell^\infty(\mathbb R)\)">\(\ell^\infty(\mathbb R)\)</span> diagonally on the arbitrary Hilbert direct sum <span class="math" data-tex="\(\ell^2(\mathbb R)\)">\(\ell^2(\mathbb R)\)</span> of GNS7.1. This is a concrete von Neumann algebra: it is the commutant of the one-coordinate rank-one projections. An operator commuting with each such projection takes each basis vector to a scalar multiple of itself; boundedness bounds the coefficients, and finite-coordinate density makes it exactly the associated diagonal operator. PC1 makes <span class="math" data-tex="\(zP\)">\(zP\)</span> a concrete corner on <span class="math" data-tex="\(z\mathcal H_u\)">\(z\mathcal H_u\)</span>, so CP6 applies on both sides. A vector test of <span class="math" data-tex="\(\Phi(F)\)">\(\Phi(F)\)</span> is</p>
+<p><a id="equation-cm6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \langle\Phi(F)\eta,\zeta\rangle
+ =\sum_s F(s)\langle p_s\eta,p_s\zeta\rangle,\qquad
+ \sum_s|\langle p_s\eta,p_s\zeta\rangle|
+ \leq\|\eta\|\,\|\zeta\|.
+ \tag{CM6}
+\]">\[
+ \langle\Phi(F)\eta,\zeta\rangle
+ =\sum_s F(s)\langle p_s\eta,p_s\zeta\rangle,\qquad
+ \sum_s|\langle p_s\eta,p_s\zeta\rangle|
+ \leq\|\eta\|\,\|\zeta\|.
+ \tag{CM6}
+\]</span>
+The bound is finite Cauchy--Schwarz followed by the supremum over finite sets. An absolutely summable scalar family <span class="math" data-tex="\(c_s\)">\(c_s\)</span> has countable support, since each set <span class="math" data-tex="\(\{|c_s|\geq1/k\}\)">\(\{|c_s|\geq1/k\}\)</span> is finite. Its functional <span class="math" data-tex="\(\sum_s c_sF(s)\)">\(\sum_s c_sF(s)\)</span> is a normal vector test of the diagonal algebra: choose coordinates <span class="math" data-tex="\(a_s=\sqrt{|c_s|}\)">\(a_s=\sqrt{|c_s|}\)</span> and <span class="math" data-tex="\(b_s=\overline{c_s}/\sqrt{|c_s|}\)">\(b_s=\overline{c_s}/\sqrt{|c_s|}\)</span>, with both zero when <span class="math" data-tex="\(c_s=0\)">\(c_s=0\)</span>. They lie in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> and <span class="math" data-tex="\(\langle Fa,b\rangle=\sum_s c_sF(s)\)">\(\langle Fa,b\rangle=\sum_s c_sF(s)\)</span>. CP6's vector-series description and norm closure now make the pullback of every normal functional on <span class="math" data-tex="\(zP\)">\(zP\)</span> normal. Conversely every normal test of the diagonal algebra is such an absolutely summable coefficient family, by applying the same Cauchy--Schwarz estimate to its CP6 vector series. Under <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span>, it pulls back to the norm-convergent sum <span class="math" data-tex="\(\sum_s c_s\langle x\xi_s,\xi_s\rangle\)">\(\sum_s c_s\langle x\xi_s,\xi_s\rangle\)</span>, a normal functional on <span class="math" data-tex="\(zP\)">\(zP\)</span> by CP6. This proves normality in both directions on the entire spaces, rather than only on bounded convergent nets.</p>
+<p>Suppose a normal automorphism <span class="math" data-tex="\(\theta_t\)">\(\theta_t\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> extends the translation <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> on <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>. Bounded strong convergence is ultraweak convergence by CP6's finite-series/tail estimate, so</p>
+<p><a id="equation-cm7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \theta_t(p_s)
+ =\lim_n\theta_t(\pi(f_{n,s}))
+ =\lim_n\pi(f_{n,s+t})=p_{s+t}.
+ \tag{CM7}
+\]">\[
+ \theta_t(p_s)
+ =\lim_n\theta_t(\pi(f_{n,s}))
+ =\lim_n\pi(f_{n,s+t})=p_{s+t}.
+ \tag{CM7}
+\]</span>
+Here each limit is justified ultraweakly, and the last also exists strongly by the proved construction. Normality is used on the whole algebra; no existence of a normal extension has been assumed or supplied. An automorphism preserves joins by the order inverse, so <span class="math" data-tex="\(\theta_t(z)=z\)">\(\theta_t(z)=z\)</span>. On the concrete summand its forced formula is exactly</p>
+<p><a id="equation-m22"></a></p>
+<p><span class="math math-display" data-tex="$$(\widetilde\alpha_tF)(s)=F(s-t). \tag{M22}$$">$$(\widetilde\alpha_tF)(s)=F(s-t). \tag{M22}$$</span></p>
+<p>In this formula <span class="math" data-tex="\(\widetilde\alpha_t=\Phi^{-1}\theta_t\Phi\)">\(\widetilde\alpha_t=\Phi^{-1}\theta_t\Phi\)</span> is merely the transported hypothetical normal extension; it is not presumed continuous. Indeed multiplying <span class="math" data-tex="\(\theta_t\Phi(F)\)">\(\theta_t\Phi(F)\)</span> by <span class="math" data-tex="\(p_s=\theta_t(p_{s-t})\)">\(p_s=\theta_t(p_{s-t})\)</span> gives <span class="math" data-tex="\(F(s-t)p_s\)">\(F(s-t)p_s\)</span>, which proves (M22) on every coordinate.</p>
+<p>Take <span class="math" data-tex="\(q=p_0\)">\(q=p_0\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span>, identified under <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span> with the indicator of <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. The functional <span class="math" data-tex="\(\varepsilon_0(x)=\langle x\xi_0,\xi_0\rangle\)">\(\varepsilon_0(x)=\langle x\xi_0,\xi_0\rangle\)</span> is normal on all of <span class="math" data-tex="\(P\)">\(P\)</span> by CP6 and restricts under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to coordinate evaluation at <span class="math" data-tex="\(0\)">\(0\)</span>. Write <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> for this vector functional as well as its coordinate restriction. In the following display <span class="math" data-tex="\(\widetilde\alpha_t\)">\(\widetilde\alpha_t\)</span> denotes <span class="math" data-tex="\(\theta_t\)">\(\theta_t\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span> as well as its transported restriction, and the two identified scalar evaluations coincide. Therefore every such extension satisfies</p>
+<p><a id="equation-m23"></a></p>
+<p><span class="math math-display" data-tex="$$\varepsilon_0(\widetilde\alpha_t(q))
+=
+\begin{cases}
+1,&amp;t=0,\\
+0,&amp;t\ne0.
+\end{cases} \tag{M23}$$">$$\varepsilon_0(\widetilde\alpha_t(q))
+=
+\begin{cases}
+1,&amp;t=0,\\
+0,&amp;t\ne0.
+\end{cases} \tag{M23}$$</span></p>
+<p>In (M23) the same notation denotes the normal extension on <span class="math" data-tex="\(P\)">\(P\)</span> and its restriction under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>; both scalar evaluations are identical by construction. The orbit of <span class="math" data-tex="\(q\)">\(q\)</span> is not ultraweakly continuous at <span class="math" data-tex="\(0\)">\(0\)</span>. Thus no family of normal extensions satisfying (M17) can satisfy (M16), and the universal representation is not an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-representation.</p>
+<p><strong>Additional problem.</strong> Do the shrinking bumps <span class="math" data-tex="\(a_{n,s}\to p_s\)">\(a_{n,s}\to p_s\)</span> converge in operator norm?</p>
+<p><strong>Solution.</strong> No; <span class="math" data-tex="\(\|a_{n,s}-p_s\|=1\)">\(\|a_{n,s}-p_s\|=1\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Positivity and <span class="math" data-tex="\(p_s\leq a_{n,s}\leq1\)">\(p_s\leq a_{n,s}\leq1\)</span> give the upper bound. For <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span>, orthogonality gives <span class="math" data-tex="\(p_s\xi_r=0\)">\(p_s\xi_r=0\)</span>, whereas <span class="math" data-tex="\(a_{n,s}\xi_r=f_{n,s}(r)\xi_r\)">\(a_{n,s}\xi_r=f_{n,s}(r)\xi_r\)</span>. As <span class="math" data-tex="\(r\to s\)">\(r\to s\)</span> through distinct points this value approaches one, proving the lower bound. Strong convergence tests one fixed vector at a time; the norm takes the supremum over all of these vectors. Moreover, for fixed <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(\varepsilon_0(\pi(f_{n,t}))=\max\{0,1-n|t|\}\)">\(\varepsilon_0(\pi(f_{n,t}))=\max\{0,1-n|t|\}\)</span> converges to the discontinuous scalar in (M23), so the convergence is not locally uniform in <span class="math" data-tex="\(t\)">\(t\)</span>. This identifies the exact continuity failure.</p>
+<p><span id="OA-FLOW.COCMAT.ACTION"></span><a id="oa-flow.cocmat.action"></a></p>
+<p><a id="cm-matrix"></a></p>
+<h2 id="a-cocycle-produces-a-matrix-action">A cocycle produces a matrix action</h2>
+<p>Let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> be a point-ultraweakly continuous action of a locally compact abelian group, written additively, and let <span class="math" data-tex="\(u:G\to\mathcal U(M)\)">\(u:G\to\mathcal U(M)\)</span> be a strongly continuous unitary <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-cocycle:</p>
+<p><a id="equation-m1"></a></p>
+<p><span class="math math-display" data-tex="$$u_{s+t}=u_s\alpha_s(u_t),\qquad s,t\in G. \tag{M1}$$">$$u_{s+t}=u_s\alpha_s(u_t),\qquad s,t\in G. \tag{M1}$$</span></p>
+<p>On <span class="math" data-tex="\(M_2=M\mathbin{\overline\otimes}M_2(\mathbb C)\)">\(M_2=M\mathbin{\overline\otimes}M_2(\mathbb C)\)</span>, put</p>
+<p><a id="equation-m2"></a></p>
+<p><span class="math math-display" data-tex="$$D_t=
+\begin{pmatrix}1&amp;0\\0&amp;u_t\end{pmatrix},
+\qquad
+\gamma_t=\operatorname{Ad}(D_t)\circ(\alpha_t\otimes\operatorname{id}). \tag{M2}$$">$$D_t=
+\begin{pmatrix}1&amp;0\\0&amp;u_t\end{pmatrix},
+\qquad
+\gamma_t=\operatorname{Ad}(D_t)\circ(\alpha_t\otimes\operatorname{id}). \tag{M2}$$</span></p>
+<p>Entrywise,</p>
+<p><a id="equation-m3"></a></p>
+<p><span class="math math-display" data-tex="$$
+\gamma_t
+\begin{pmatrix}x_{11}&amp;x_{12}\\x_{21}&amp;x_{22}\end{pmatrix}
+=
+\begin{pmatrix}
+\alpha_t(x_{11})&amp;
+\alpha_t(x_{12})u_t^*\\
+u_t\alpha_t(x_{21})&amp;
+u_t\alpha_t(x_{22})u_t^*
+\end{pmatrix}. \tag{M3}
+$$">$$
+\gamma_t
+\begin{pmatrix}x_{11}&amp;x_{12}\\x_{21}&amp;x_{22}\end{pmatrix}
+=
+\begin{pmatrix}
+\alpha_t(x_{11})&amp;
+\alpha_t(x_{12})u_t^*\\
+u_t\alpha_t(x_{21})&amp;
+u_t\alpha_t(x_{22})u_t^*
+\end{pmatrix}. \tag{M3}
+$$</span></p>
+<p>The cocycle identity is exactly the group-law calculation:</p>
+<p><a id="equation-m4"></a></p>
+<p><span class="math math-display" data-tex="$$D_s(\alpha_s\otimes\operatorname{id})(D_t)
+=
+\begin{pmatrix}1&amp;0\\0&amp;u_s\alpha_s(u_t)\end{pmatrix}
+=D_{s+t}. \tag{M4}$$">$$D_s(\alpha_s\otimes\operatorname{id})(D_t)
+=
+\begin{pmatrix}1&amp;0\\0&amp;u_s\alpha_s(u_t)\end{pmatrix}
+=D_{s+t}. \tag{M4}$$</span></p>
+<p>Therefore</p>
+<p><a id="equation-m5"></a></p>
+<p><span class="math math-display" data-tex="$$\gamma_s\gamma_t
+=\operatorname{Ad}\!\left(D_s(\alpha_s\otimes\operatorname{id})(D_t)\right)
+\circ(\alpha_{s+t}\otimes\operatorname{id})
+=\gamma_{s+t}. \tag{M5}$$">$$\gamma_s\gamma_t
+=\operatorname{Ad}\!\left(D_s(\alpha_s\otimes\operatorname{id})(D_t)\right)
+\circ(\alpha_{s+t}\otimes\operatorname{id})
+=\gamma_{s+t}. \tag{M5}$$</span></p>
+<p>The action is point-ultraweakly continuous. Indeed <span class="math" data-tex="\(t\mapsto D_t\)">\(t\mapsto D_t\)</span> is strong-star continuous. Finite sums of vector functionals are norm dense in the predual, so every normal functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span> satisfies</p>
+<p><a id="equation-m6"></a></p>
+<p><span class="math math-display" data-tex="$$\|\omega\circ\operatorname{Ad}(D_t)
+-\omega\circ\operatorname{Ad}(D_s)\|\longrightarrow0
+\qquad(t\to s). \tag{M6}$$">$$\|\omega\circ\operatorname{Ad}(D_t)
+-\omega\circ\operatorname{Ad}(D_s)\|\longrightarrow0
+\qquad(t\to s). \tag{M6}$$</span></p>
+<p>Split a matrix coefficient of <span class="math" data-tex="\(\gamma_t(X)-\gamma_s(X)\)">\(\gamma_t(X)-\gamma_s(X)\)</span> into the change of the predual functional in (M6) and the fixed-functional evaluation of
+<span class="math" data-tex="\((\alpha_t^{(2)}-\alpha_s^{(2)})(X)\)">\((\alpha_t^{(2)}-\alpha_s^{(2)})(X)\)</span>. The first tends to zero in norm and the second by point-ultraweak continuity of the amplification. This proves the required continuity without claiming operator-norm continuity of <span class="math" data-tex="\(t\mapsto D_t\)">\(t\mapsto D_t\)</span>.</p>
+<p>NCF1 constructs <span class="math" data-tex="\(M\bar\otimes M_2\)">\(M\bar\otimes M_2\)</span> as concrete two-by-two entries and gives the normal amplification of every <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>. Its point-ultraweak continuity follows on finite matrix vector tests from the continuity of each entry; CP6's norm-dense finite tests extend it to every normal functional, using <span class="math" data-tex="\(\|\alpha_t^{(2)}X\|=\|X\|\)">\(\|\alpha_t^{(2)}X\|=\|X\|\)</span>. Normality of conjugation is the square-summable vector substitution proved above. Thus <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> is a normal automorphism, and (M4)–(M5) give an action. The cocycle identity at zero gives <span class="math" data-tex="\(u_0=1\)">\(u_0=1\)</span>, so <span class="math" data-tex="\(\gamma_0=\operatorname{id}\)">\(\gamma_0=\operatorname{id}\)</span>; the group law gives the inverse. There is no operator-norm continuity requirement on <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><span id="OA-FLOW.COCMAT.CORNERS"></span><a id="oa-flow.cocmat.corners"></a></p>
+<p><a id="cm-corners"></a></p>
+<h2 id="the-two-fixed-corners-encode-cocycle-perturbation">The two fixed corners encode cocycle perturbation</h2>
+<p>Let</p>
+<p><a id="equation-m7"></a></p>
+<p><span class="math math-display" data-tex="$$e_{11}=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},
+\qquad
+e_{22}=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}. \tag{M7}$$">$$e_{11}=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},
+\qquad
+e_{22}=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}. \tag{M7}$$</span></p>
+<p>Formula (M3) gives</p>
+<p><a id="equation-m8"></a></p>
+<p><span class="math math-display" data-tex="$$e_{11},e_{22}\in\operatorname{Proj}(M_2^\gamma). \tag{M8}$$">$$e_{11},e_{22}\in\operatorname{Proj}(M_2^\gamma). \tag{M8}$$</span></p>
+<p>Under the canonical identifications <span class="math" data-tex="\(e_{ii}M_2e_{ii}\cong M\)">\(e_{ii}M_2e_{ii}\cong M\)</span>, the two reduced actions are</p>
+<p><a id="equation-m9"></a></p>
+<p><span class="math math-display" data-tex="$$\gamma^{e_{11}}=\alpha,
+\qquad
+\gamma^{e_{22}}=\alpha^u,
+\qquad
+\alpha_t^u=\operatorname{Ad}(u_t)\circ\alpha_t. \tag{M9}$$">$$\gamma^{e_{11}}=\alpha,
+\qquad
+\gamma^{e_{22}}=\alpha^u,
+\qquad
+\alpha_t^u=\operatorname{Ad}(u_t)\circ\alpha_t. \tag{M9}$$</span></p>
+<p>The standard matrix unit</p>
+<p><span class="math math-display" data-tex="$$v=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}$$">$$v=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}$$</span></p>
+<p>satisfies <span class="math" data-tex="\(v^*v=e_{11}\)">\(v^*v=e_{11}\)</span> and <span class="math" data-tex="\(vv^*=e_{22}\)">\(vv^*=e_{22}\)</span>. Thus the two fixed projections are equivalent in the ambient matrix algebra. If the algebra is zero, both reduced algebras are zero and the literal Connes intersections are the same empty intersection, so the conclusion below is immediate. Otherwise apply the complete general <a href="OA-FLOW-GCC.html#gcc-equivalence">equivalent-fixed-corner theorem</a>. Its application to these two corners gives</p>
+<p><a id="equation-m10"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{\Gamma(\alpha)=\Gamma(\alpha^u).} \tag{M10}$$">$$\boxed{\Gamma(\alpha)=\Gamma(\alpha^u).} \tag{M10}$$</span></p>
+<p>Notice what the matrix construction accomplishes. The partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> need not be fixed by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>; equivalence in the ambient algebra is enough. The cocycle is stored in the off-diagonal action so that both corner units themselves are fixed.</p>
+<p><strong>Problem.</strong> Take <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, the trivial action of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and <span class="math" data-tex="\(u_t=e^{it\lambda}\)">\(u_t=e^{it\lambda}\)</span> with <span class="math" data-tex="\(\lambda\in\mathbb R\)">\(\lambda\in\mathbb R\)</span>. Compute <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> on <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>.</p>
+<p><strong>Solution.</strong> Formula (M3) becomes</p>
+<p><a id="equation-m11"></a></p>
+<p><span class="math math-display" data-tex="$$\gamma_t
+\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+=
+\begin{pmatrix}
+a&amp;e^{-it\lambda}b\\
+e^{it\lambda}c&amp;d
+\end{pmatrix}. \tag{M11}$$">$$\gamma_t
+\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+=
+\begin{pmatrix}
+a&amp;e^{-it\lambda}b\\
+e^{it\lambda}c&amp;d
+\end{pmatrix}. \tag{M11}$$</span></p>
+<p>The two scalar diagonal corners both carry the trivial action even though the off-diagonal phases are <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. With the declared negative spectral convention their labels are <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span>, respectively. This is the finite-dimensional model of (M9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The general Connes-spectrum application uses neither an ambient factor hypothesis nor a fixed implementing partial isometry. The corner identifications intertwine all normal Fourier filters, hence their hull spectra and fixed-projection intersections. This last assertion follows by pulling the scalar tests through the normal isomorphisms; fixed projections correspond bijectively. The displayed conclusion (M10) consumes the actual accepted GCC proof body, not its introductory statement. Its exact current canonical ranges and earlier position are bound in this consumer's dependency ledger. BC, OT or a real-action specialization cannot replace that full-group theorem.</p>
+<p><span id="OA-FLOW.L112.SOURCES"></span><a id="oa-flow.l112.sources"></a></p>
+<p><a id="cm-sources"></a></p>
+<h2 id="sources-and-finite-scope">Sources and finite scope</h2>
+<p>The matrix construction and representation-continuity definition correspond to Takesaki, <em>Theory of Operator Algebras II</em>, <a href="https://doi.org/10.1007/978-3-662-10451-4">XI.2 Lemma 2.3, Definition 2.4 and following warning, printed 333</a>. The concrete shrinking-bump proof replaces the historical unsupported abstract-bidual sentence while preserving its universal-representation counterexample and atomic-summand conclusion. The new order begins with the continuity test and obstruction, then uses the matrix construction as the concluding transport application.</p>
+<p>The existing free-source GNS/CP development and normal-action alternatives are retained. Arveson, <a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf"><em>On groups of automorphisms of operator algebras</em></a>, J. Funct. Anal. 15 (1974), §1, provides a primary account of the distinction between weak integration and actual continuity hypotheses. The complete local providers, rather than these citations, prove every premise used here.</p>
+<p>This chapter proves the arbitrary-Hilbert continuity test and its concrete failure, the full atomic summand and both normal inverse maps, and the normal matrix action at the stated LCA cocycle hypotheses. M10 is the explicit general application of the separately accepted, earlier canonical GCC proof. It asserts no whole C3/C1–C6 completion or general recognition/integrability theorem.</p>
+<p><a id="oa-flow.l112.figure"></a></p>
+<h2 id="OA-FLOW.L112.FIGURE">Strong limits and the normal-action continuity test</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Shrinking bumps, a discontinuous normal test, and two fixed matrix corners" src="assets/cocycle-matrix-continuity/assets/continuity-corners.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The left panels illustrate the complete concrete universal-representation proof in <a href="OA-FLOW-L112.html#cm-obstruction">CM2–7 and M19–23</a>. Here <span class="math" data-tex="\(A=C_0(\mathbb R)\)">\(A=C_0(\mathbb R)\)</span>, <span class="math" data-tex="\((\alpha_t f)(r)=f(r-t)\)">\((\alpha_t f)(r)=f(r-t)\)</span>, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is the nondegenerate direct sum of all state GNS representations. The plotted functions are the exact scalar bumps</p>
+<p><a id="equation-cmf1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ f_{n,0}(r)=\max(0,1-n|r|),\qquad n=1,2,4.
+ \tag{CMF1}
+\]">\[
+ f_{n,0}(r)=\max(0,1-n|r|),\qquad n=1,2,4.
+ \tag{CMF1}
+\]</span>
+The vertices <span class="math" data-tex="\((-1/n,0),(0,1),(1/n,0)\)">\((-1/n,0),(0,1),(1/n,0)\)</span> determine these piecewise-linear graphs exactly. Raster display uses numerical coordinates, but their semantic data retains the rational vertices. The curves are not graphs of operator-norm convergence.</p>
+<p>The proof gives positive contractions <span class="math" data-tex="\(a_n=\pi(f_{n,0})\)">\(a_n=\pi(f_{n,0})\)</span> converging strongly to a nonzero projection <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. The evaluation summand has a unit vector <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span> with <span class="math" data-tex="\(p_0\xi_0=\xi_0\)">\(p_0\xi_0=\xi_0\)</span>. Every hypothetical normal extension of translation is forced to satisfy <span class="math" data-tex="\(\theta_t(p_s)=p_{s+t}\)">\(\theta_t(p_s)=p_{s+t}\)</span>, and the actual normal vector functional <span class="math" data-tex="\(\varepsilon_0(x)=\langle x\xi_0,\xi_0\rangle\)">\(\varepsilon_0(x)=\langle x\xi_0,\xi_0\rangle\)</span> gives</p>
+<p><a id="equation-cmf2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \varepsilon_0(\theta_t(p_0))=\mathbf1_{\{0\}}(t),\qquad
+ \varepsilon_0(\theta_t(a_n))=\max(0,1-n|t|).
+ \tag{CMF2}
+\]">\[
+ \varepsilon_0(\theta_t(p_0))=\mathbf1_{\{0\}}(t),\qquad
+ \varepsilon_0(\theta_t(a_n))=\max(0,1-n|t|).
+ \tag{CMF2}
+\]</span>
+Panel 2 uses an open dot at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and a filled dot at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>; there is no vertical segment in the function graph. Thus the forced scalar orbit is discontinuous. The normal extensions are hypothetical, not a claimed continuous action. Each bump test is continuous, and their pointwise limit is not locally uniform in <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Panel 3 compares actual tests: for the fixed vector <span class="math" data-tex="\(\xi_{1/3}\)">\(\xi_{1/3}\)</span>, <span class="math" data-tex="\(\|(a_n-p_0)\xi_{1/3}\|=\max(0,1-n/3)\)">\(\|(a_n-p_0)\xi_{1/3}\|=\max(0,1-n/3)\)</span>, giving <span class="math" data-tex="\(2/3,1/3,0,\ldots\)">\(2/3,1/3,0,\ldots\)</span>. The moving vector at <span class="math" data-tex="\(r_n=1/(2n)\)">\(r_n=1/(2n)\)</span> has bump value <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The complete proof gives the stronger exact norm assertion <span class="math" data-tex="\(\|a_n-p_0\|=1\)">\(\|a_n-p_0\|=1\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, by taking the supremum of evaluations at distinct points tending to zero. No uniform strong-convergence rate on all unit vectors is asserted.</p>
+<p>Panel 4 shows a separate general construction from <a href="OA-FLOW-L112.html#cm-matrix">M1–M11</a>. Its group is arbitrary LCH abelian, its algebra and Hilbert space are arbitrary, and its cocycle is strongly continuous:</p>
+<p><a id="equation-cmf3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ u_{s+t}=u_s\alpha_s(u_t),\qquad
+ \gamma_t=\operatorname{Ad}\operatorname{diag}(1,u_t)\circ\alpha_t^{(2)}.
+ \tag{CMF3}
+\]">\[
+ u_{s+t}=u_s\alpha_s(u_t),\qquad
+ \gamma_t=\operatorname{Ad}\operatorname{diag}(1,u_t)\circ\alpha_t^{(2)}.
+ \tag{CMF3}
+\]</span>
+The four drawn entries are exactly M3. The fixed diagonal projections have reduced actions <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\alpha^u\)">\(\alpha^u\)</span>, and the lower-left matrix unit implements their ambient equivalence. It need not be fixed. The full separately accepted <a href="OA-FLOW-GCC.html#gcc-equivalence">general fixed-corner theorem</a> gives <span class="math" data-tex="\(\Gamma(\alpha)=\Gamma(\alpha^u)\)">\(\Gamma(\alpha)=\Gamma(\alpha^u)\)</span>; this application uses the exact earlier canonical GCC theorem. Neither a real-action factor specialization nor the discontinuous extension of the left panels replaces that input.</p>
+<p>The normality and full predual-norm continuity estimate are proved in the earlier <a href="OA-FLOW-L112.html#cm-predual">local predual section</a>. With the negative Fourier convention, the scalar example <span class="math" data-tex="\(u_t=e^{it\lambda}\)">\(u_t=e^{it\lambda}\)</span> has upper-right phase <span class="math" data-tex="\(e^{-it\lambda}\)">\(e^{-it\lambda}\)</span> and label <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and lower-left phase <span class="math" data-tex="\(e^{it\lambda}\)">\(e^{it\lambda}\)</span> and label <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span>. Those phases are not silently interchanged in the diagram.</p>
+<p>The source antecedent for the matrix construction and continuity warning is Takesaki, <em>Theory of Operator Algebras II</em>, <a href="https://doi.org/10.1007/978-3-662-10451-4">XI.2 Lemma 2.3, Definition 2.4 and following warning, printed 333</a>. The shrinking-bump construction, concrete atomic-summand proof, exact topology checks and combined figure are original here; the actual source page contains no corresponding model or illustration. Earlier free GNS/CP/AT contributions are retained.</p>
+<p><a href="assets/cocycle-matrix-continuity/assets/continuity-corners.svg">Editable SVG</a>, <a href="assets/cocycle-matrix-continuity/assets/continuity-corners-data.json">exact semantic data</a>, and <a href="assets/cocycle-matrix-continuity/render_continuity.py">reproduction source</a> accompany the native 3200×2200 PNG. Fonts use the installed DejaVu Sans family; no font file is redistributed. Original illustration and caption: GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, CC0-1.0 to the extent of rights held.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-GCC.html">Previous lesson</a><a href="OA-FLOW-L113.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L112.md">Lesson source</a></nav></main></body></html>

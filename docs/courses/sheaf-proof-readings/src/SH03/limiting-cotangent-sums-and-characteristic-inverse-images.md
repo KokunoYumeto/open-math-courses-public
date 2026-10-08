@@ -2,15 +2,18 @@
 
 Two nearby conormal directions can cancel while each grows without bound. Their finite remainder may contain a direction that no ordinary same-base sum sees. Likewise, the transpose differential of a map can have a finite limit on increasingly large input covectors near a critical point. The limiting cotangent operations retain these phenomena. We will prove that they preserve subanalytic isotropy, using exact slices of Lagrangian normal cones.
 
-All manifolds are real analytic, finite dimensional, Hausdorff and countable at infinity; all maps below are analytic. Conic means invariant under every positive cotangent-fibre dilation. Isotropy of a subanalytic cotangent set means that its canonical one-form restricts to zero on its regular locus. We use the singular analytic-form calculus and the full normal-cone theorem in Boundary forms and Lagrangian normal cones. No sheaf coefficient ring or boundedness hypothesis enters these geometric operations.
+All manifolds are real analytic, finite dimensional, Hausdorff and countable at infinity; all maps below are analytic. Conic means invariant under every positive cotangent-fibre dilation. Isotropy of a subanalytic cotangent set means that its canonical one-form restricts to zero on its regular locus. We use the singular analytic-form calculus and the full normal-cone theorem in [Boundary forms and Lagrangian normal cones](boundary-forms-and-lagrangian-normal-cones.md#the-full-lagrangian-normal-cone-theorem). No sheaf coefficient ring or boundedness hypothesis enters these geometric operations.
 
-Kashiwara and Schapira, [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), treat normal-cone sequences and simultaneous scaling for conormal restrictions. Here the diagonal and arbitrary-map graph slices are proved explicitly, followed by isotropy from the boundary-form theorem. Both directions, zero covectors and unbounded inputs are retained.
+Kashiwara and Schapira, [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §1.2, printed pp. 15–17, give the normal-cone sequence definition and Proposition 1.2.1 with its simultaneous-scaling proof for a submanifold restriction. Here the diagonal and arbitrary-map graph slices are proved explicitly, followed by isotropy from the boundary-form theorem. Both directions, zero covectors and unbounded inputs are retained.
 
-## The exact dependency of the isotropy assertion {#limiting-geometry-inputs}
+<a id="limiting-geometry-inputs"></a>
+<a id="the-exact-dependency-of-the-isotropy-assertion-limiting-geometry-inputs"></a>
 
-The sequence geometry, joint scale and slice identities below do not use a sheaf coefficient ring, constructibility or any derived-category bound. They apply to arbitrary positive-conic subsets. Subanalytic isotropy enters only when the boundary-form normal-cone theorem is applied. That theorem uses the following explicit subanalytic inputs: closure and analytic inverse-image calculus, density of the regular locus and analytic curve selection, proper analytic uniformization of closed subanalytic sets. Its surjective one-form detection uses uniformization and Sard's theorem. The boundary reading proves its main smooth-source step by normal Taylor expansion and retains a monomial-resolution proof as an optional alternative; only that alternative adds function resolution. The local analytic division and canonical-form calculations are proved there; naming the deeper inputs does not supply their transitive proofs.
+## The exact dependency of the isotropy assertion
 
-The normal-deformation charts are the divided-coordinate charts already constructed in the normal-scaling reading. For analytic adapted changes, their extension at parameter zero is analytic: a convergent power series vanishing at \(t=0\) is divisible by \(t\), with convergent analytic quotient. Thus no global tubular-neighborhood or contact normal-form theorem is needed for the local slice calculations.
+The sequence geometry, joint scale and slice identities below apply to arbitrary positive-conic subsets. Subanalytic isotropy enters through the linked normal-cone theorem. Its [boundary calculation](boundary-forms-and-lagrangian-normal-cones.md#the-smooth-source-calculation-analytic-boundary-without-function-resolution) uses analytic Taylor expansion on a proper uniformizing smooth source. The [proper uniformization construction](subanalytic-sets-and-limiting-tangent-directions.md#a-locally-finite-assembly-with-a-fixed-source-dimension) covers closed subanalytic sets on the stated countable-at-infinity manifolds. The [local subanalytic set calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis) and [singular one-form pullback, closure and surjective detection](subanalytic-sets-and-limiting-tangent-directions.md#analytic-maps-and-locally-finite-unions) supply the set and form operations. The latter proof uses Sard for a surjection between manifolds. Proper uniformization itself uses function resolution; the optional second boundary proof resolves the function on the uniformizing source separately. These geometric arguments involve no sheaf coefficients, constructibility assumption or derived-category bound.
+
+The normal-deformation charts are the [divided-coordinate charts](normal-scaling-and-microlocal-hom.md#normal-scaling-and-the-positive-deformation-normal-deformation-charts) constructed in the normal-scaling reading. For analytic adapted changes, their extension at parameter zero is analytic: a convergent power series vanishing at \(t=0\) is divisible by \(t\), with convergent analytic quotient. Thus no global tubular-neighborhood or contact normal-form theorem is needed for the local slice calculations.
 
 ## The product bounds in the definitions
 
@@ -51,11 +54,14 @@ y_j\to y,\quad x_j\to f(y),\quad (x_j;\xi_j)\in A,\\
 \tag{3}
 \]
 
-The differential is evaluated at the moving \(y_j\). In (1) and (3), individual covectors need not converge. The product controls how fast they may grow relative to the base mismatch. All zero covectors are allowed.
+The differential is evaluated at the moving \(y_j\). In (1) and (3), individual covectors need not converge. The product controls how fast they may grow relative to the base mismatch. Zero covectors are permitted whenever they belong to the chosen input sets.
 
 The ordinary operations are respectively \(A+B\), with both inputs at one base point, and \(f_df_\pi^{-1}A\), with \(x=f(y)\) and \(\eta=(df_y)^t\xi\). Constant witnesses show that these ordinary sets are contained in the limiting operations. This does not give equality in general.
 
-## Coordinate covariance with the large covectors retained {#weighted-coordinate-covariance}
+<a id="weighted-coordinate-covariance"></a>
+<a id="coordinate-covariance-with-the-large-covectors-retained-weighted-coordinate-covariance"></a>
+
+## Coordinate covariance with the large covectors retained
 
 The intrinsic slices (11) and (20) already show coordinate independence. The following direct estimates explain the role of their product bounds. Work in smaller relatively compact coordinate neighborhoods. All coordinate derivatives and inverse matrices used below are bounded there. An analytic coordinate change is \(C^2\), so its first derivative and its inverse-transpose matrix are locally Lipschitz.
 
@@ -121,7 +127,10 @@ Then \(t_j>0\), \(t_j\to0\), and
 
 For \(a_j>0\), the first bound follows by dropping the positive second term in (5); for \(a_j=0\), its left side is zero. Also \(t_j\le\sqrt{a_j}+1/j\), proving its limit. Thus division by \(t_j\) kills the position error while multiplication by \(t_j\) kills every covector bounded by \(m_j\). This supplies an actual normal-deformation sequence over the zero conormal base.
 
-## The joint scale is equivalent to the weighted condition {#joint-scale-equivalence}
+<a id="joint-scale-equivalence"></a>
+<a id="the-joint-scale-is-equivalent-to-the-weighted-condition-joint-scale-equivalence"></a>
+
+## The joint scale is equivalent to the weighted condition
 
 For \(m_j\ge1\) and \(a_j\ge0\), the weighted condition has exactly the following content:
 
@@ -232,7 +241,10 @@ The finite sum makes this equivalent to the product with the first covector. Hen
 
 This route uses a conormal to a diagonal in the base. In the contravariant graph convention, the construction for \(f^\sharp(A,B)\) uses \(A\times B^a\), while the limiting sum is \((\mathrm{id})^\sharp(A,B^a)\). The two antipodes cancel, giving exactly the product in (7).
 
-## Comparing the two diagonal coordinate conventions {#diagonal-sign-comparison}
+<a id="diagonal-sign-comparison"></a>
+<a id="comparing-the-two-diagonal-coordinate-conventions-diagonal-sign-comparison"></a>
+
+## Comparing the two diagonal coordinate conventions
 
 The slice coordinates (12) use \(x=x_1\), \(\delta=x_2-x_1\), \(\nu=\xi_2\), while the earlier full-conormal calculation uses \(z=x_2\), \(u=x_1-x_2\), \(a=\xi_1\). On the diagonal conormal, \(\nu=-a\), and their normal displacements satisfy \(v_\delta=-v_u\). Consequently
 
@@ -244,9 +256,10 @@ The slice coordinates (12) use \(x=x_1\), \(\delta=x_2-x_1\), \(\nu=\xi_2\), whi
 
 The change of normal sign is accompanied by the change of conormal parameter. Both conventions therefore select the same slice at zero conormal base and zero position-normal component, with output \(\sigma\), not \(-\sigma\). For the graph, the exact equality \(\theta\,dy+\xi\,dx=s\,dy+\nu\,d\delta\) in (27) fixes the same sign. The normal identification is always \(K([w])(v)=\omega(w,v)\), whose inverse is induced by \(-H\).
 
-<span id="isotropy-of-the-full-limiting-sum"></span>
+<a id="limiting-sum-isotropy"></a>
+<a id="isotropy-of-the-full-limiting-sum-limiting-sum-isotropy"></a>
 
-## Isotropy of the full limiting sum {#limiting-sum-isotropy}
+## Isotropy of the full limiting sum
 
 **Theorem.** If \(A,B\subset T^*X\) are positive-conic subanalytic isotropic sets, then \(A\widehat+ B\) is closed, positive-conic, subanalytic and isotropic. The inputs need not be closed.
 
@@ -261,9 +274,10 @@ subanalytic, positive-conic and isotropic. It is also closed as a normal cone in
 
 The proof covers cancellation at infinite covector norm through a closed normal-cone slice. It does not require properness of an unrestricted cotangent projection.
 
-<span id="the-graph-conormal-and-characteristic-inverse-image"></span>
+<a id="characteristic-inverse-isotropy"></a>
+<a id="the-graph-conormal-and-characteristic-inverse-image-characteristic-inverse-isotropy"></a>
 
-## The graph conormal and characteristic inverse image {#characteristic-inverse-isotropy}
+## The graph conormal and characteristic inverse image
 
 For \(f:Y\to X\), use the graph \(G=\{(y,f(y))\}\subset Y\times X\), and set
 
@@ -325,7 +339,10 @@ Unscale to \(\xi_j=a_j'/t_j\in A\). Its product in (3) equals
 
 Permuting the two base factors to the alternate order \(X\times Y\) preserves their summed canonical form. Also the antipode on the zero section changes nothing, so (18) retains the graph construction's variance.
 
-## Nonclosed inputs and actual closure invariance {#limiting-input-closures}
+<a id="limiting-input-closures"></a>
+<a id="nonclosed-inputs-and-actual-closure-invariance-limiting-input-closures"></a>
+
+## Nonclosed inputs and actual closure invariance
 
 The normal cone is closed in its normal bundle and depends only on the closure of its input. This can also be checked with its exact scales: if an input point is only in the closure, approximate it by an actual point within \(t_j/j\) in the adapted coordinates for a witness of deformation parameter \(t_j\). The error in its divided normal coordinate is at most \(1/j\), and its tangent-base error also tends to zero.
 
@@ -443,7 +460,10 @@ For \(f:Y\to X\), derive the canonical-form transformation (21), compute its nor
 
 Its exterior derivative is \(ds\wedge dy+d\nu\wedge d\delta\). Evaluation on a normal vector \((v,\eta)\) and a graph-conormal tangent gives \(\eta\,dy-v\,d\nu\), with the minus sign prescribed by (10). The embedding fixes \(\nu=0\), sets the coefficient of \(d\nu\) to zero, and keeps \(\eta\,dy\). Pulling back the cotangent canonical form therefore gives \(\lambda_Y\) exactly, including zero covectors. Finally the contravariant graph convention uses \(A\times B^a\), and the sum substitutes \(B^a\) as its second input. Since \((B^a)^a=B\), its graph-normal product is \(A\times B\). Permuting factors preserves the summed canonical form and inserts no further sign.
 
-### The weighted product cannot be omitted {#weighted-product-essential-check}
+<a id="weighted-product-essential-check"></a>
+<a id="the-weighted-product-cannot-be-omitted-weighted-product-essential-check"></a>
+
+### The weighted product cannot be omitted
 
 *Difficulty: Advanced.*
 
@@ -501,11 +521,14 @@ Zero input covectors give all zero outputs, so \(c^\sharp\Lambda=T_{\mathbb R}^*
 
 The extra directions in this check are excluded by the weighted hypotheses, not by input closedness, properness or subanalytic regularity. The theorem's unbounded-covector scope allows growth exactly when its product with the relevant base mismatch tends to zero.
 
-## Source comparison and exact scope {#limiting-source-and-scope}
+<a id="limiting-source-and-scope"></a>
+<a id="source-comparison-and-exact-scope-limiting-source-and-scope"></a>
+
+## Source comparison and exact scope
 
 The cited normal-cone proof simultaneously scales normal displacements and covectors for a conormal restriction. Formula (5) makes a single positive choice valid even at zero mismatch and bounded covector size; (LG4) proves its converse. The diagonal and graph arguments then establish the exact slice identities (11) and (20) in both directions. The coordinate estimates (LG1)–(LG3) explicitly compare the derivative at the moving map image with the covector transformation at the nearby input point. The closure approximations and the parabola exercise preserve those weighted errors. These additions and the separately proved boundary-form calculation provide the stated geometry; the conormal restriction criterion alone does not establish the full arbitrary-map preservation statements.
 
-The cited treatment supplies the normal-cone comparison. Subanalytic foundations, uniformization and Sard remain the explicit mathematical inputs listed at the start.
+The cited treatment supplies the normal-cone comparison; the programme proofs linked above supply the subanalytic and boundary-form inputs. Independently written programme expression is dedicated under CC0 1.0 Universal. The human source retains its own terms; no source prose, figures or exercise text is reproduced here.
 
 ## What these operations supply for stratifications
 

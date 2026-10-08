@@ -4,22 +4,26 @@ Suppose a function has derivative constrained to an isotropic cotangent set. Why
 
 We first prove this directly on the source manifold. We then establish the two cotangent transports, including their singular-set form calculus and the variable-rank linear-image argument. This also recovers the critical-value conclusion through the cotangent bundle of the line. Manifolds are finite dimensional, real analytic, Hausdorff and countable at infinity. Conic means invariant under every strictly positive fibre scale. No coefficient ring or sheaf finiteness condition enters these geometric results.
 
-Kashiwara–Schapira's [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/) uses canonical forms to establish proper cotangent transport. We give its compactness and singular-form steps below, alongside a direct critical-set proof using analytic curve selection.
+The canonical-form argument for proper cotangent transport appears in Kashiwara–Schapira's [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/), proof of Proposition 8.3.1, printed pp. 148–149. We give its compactness and singular-form steps below. The direct critical-set proof is developed here from analytic curve selection; the cited proposition concerns proper sheaf images.
 
 *Programme exposition: CC0. AI contributors: GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, October 2026.*
 
-## Exact geometric inputs {#geometric-inputs}
+<a id="geometric-inputs"></a>
+
+## Exact geometric inputs
 
 We use the following foundational results as prerequisites:
 
-1. Subanalytic sets are closed under finite Boolean operations, closure and analytic inverse image. Their regular loci are subanalytic and dense. A regular point has an ambient neighborhood in which the set is a closed analytic submanifold.
-2. If a point lies in the closure of a subanalytic set, an analytic curve through that point enters the set at every sufficiently small positive parameter. Squaring the parameter gives a two-sided version if needed. This applies to the auxiliary subanalytic sets used below.
-3. An analytic map proper on the closure of a subanalytic subset has subanalytic image of that subset. The subset itself need not be closed.
-4. Every closed subanalytic set admits a proper surjective analytic parametrization by a manifold. For the analytic map in (C9), we use the analytic critical-value theorem, (A1)–(A8). Its analytic Taylor, implicit-function and constant-rank inputs remain explicitly stated calculus prerequisites.
+1. The [set calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis) and [intrinsic regular-locus theorem](subanalytic-sets-and-limiting-tangent-directions.md#every-intrinsic-regular-point-in-each-dimension) give the following facts. Subanalytic sets are closed under finite Boolean operations, closure and analytic inverse image. Their regular loci are subanalytic and dense. A regular point has an ambient neighborhood in which the set is a closed analytic submanifold.
+2. The [local curve-selection theorem](subanalytic-sets-and-limiting-tangent-directions.md#from-a-local-analytic-presentation-to-analytic-curve-selection) has this form: if a point lies in the closure of a subanalytic set, an analytic curve through that point enters the set at every sufficiently small positive parameter. Squaring the parameter gives a two-sided version if needed. This applies to the auxiliary subanalytic sets used below.
+3. The [image theorem with properness on the selected closure](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis) states that an analytic map proper on the closure of a subanalytic subset has subanalytic image of that subset. The subset itself need not be closed.
+4. [Proper uniformization](subanalytic-sets-and-limiting-tangent-directions.md#dimension-controlled-proper-uniformization) proves that every closed subanalytic set admits a proper surjective analytic parametrization by a manifold. For the analytic map in (C9), we use the [analytic critical-value theorem](finite-conormal-closures-and-generic-base-directions.md#analytic-critical-values-by-source-dimension-descent-analytic-critical-values), (A1)–(A8). Its analytic Taylor, implicit-function and constant-rank inputs remain explicitly stated calculus prerequisites.
 
-Subanalytic sets and limiting tangent directions states the geometric prerequisites in their wider normal-cone setting. Its local curve-selection reduction identifies the required analytic preparation and cell/Puiseux inputs. Here items 1–2 suffice for the direct critical-value proof, together with elementary compactness and one-variable calculus. Items 3–4 enter the general image theorems later.
+[Subanalytic sets and limiting tangent directions](subanalytic-sets-and-limiting-tangent-directions.md#one-forms-on-a-singular-set) states the geometric prerequisites in their wider normal-cone setting. Its [local curve-selection reduction](subanalytic-sets-and-limiting-tangent-directions.md#from-a-local-analytic-presentation-to-analytic-curve-selection) identifies the required analytic preparation and cell/Puiseux inputs. Here items 1–2 suffice for the direct critical-value proof, together with elementary compactness and one-variable calculus. Items 3–4 enter the general image theorems later.
 
-## Testing a one-form along approaches to a singular set {#singular-form-calculus}
+<a id="singular-form-calculus"></a>
+
+## Testing a one-form along approaches to a singular set
 
 For an analytic one-form \(\theta\) and subanalytic \(E\subset M\), write \(\theta|_E=0\) when the form kills every tangent vector at every regular point of \(E\). It does not mean that the ambient covector is zero. In a coordinate chart define the point cone by
 
@@ -66,7 +70,9 @@ For \(T^*X\), let \(\alpha_X\) be the canonical one-form, \(\alpha_{(x,\xi)}(v)=
 
 <span id="the-microlocal-bertinisard-theorem"></span>
 
-## Critical values directly from analytic curves {#direct-critical-set-proof}
+<a id="direct-critical-set-proof"></a>
+
+## Critical values directly from analytic curves
 
 Let \(\varphi:X\to\mathbb R\) be analytic and \(\Lambda\subset T^*X\) closed, conic, subanalytic and isotropic. Assume that \(\varphi|_{\pi(\Lambda)}\) is proper. The selected values are
 
@@ -109,7 +115,9 @@ Indeed, scaling any member of a nonempty fibre to zero stays in the closed set; 
 
 The same proof applies to the negative test \(-d\varphi_x\in\Lambda\), using \(s_-(x)=(x,-d\varphi_x)\) and \(s_-^*\alpha=-d\varphi\). Each signed value set is closed and locally finite; so is their union. The hypotheses impose positive conicity, not invariance under the antipodal map.
 
-## Detecting vanishing after a surjective analytic map {#surjective-form-detection}
+<a id="surjective-form-detection"></a>
+
+## Detecting vanishing after a surjective analytic map
 
 The transport theorems need the converse of (C4). Suppose \(h(E')=E\), with both subsets subanalytic. Then
 
@@ -126,9 +134,11 @@ hq:(hq)^{-1}(V)\longrightarrow N
 \tag{C9}
 \]
 
-The domain \((hq)^{-1}(V)\) is an open analytic manifold and the map (C9) is analytic into the embedded analytic manifold \(N\). Both have countable atlases. For positive-dimensional \(N\), the analytic critical-value theorem makes regular values dense in each target chart: critical values have measure zero, and surjectivity ensures a lift at every value. This invokes only that theorem's standalone calculus proof, not the later conormal or isotropic results in its host lesson. At a regular value, an onto differential lifts every tangent vector of \(N\); the zero pullback therefore kills every such vector. Continuity of \(\theta|_N\) extends this to all points of \(N\). When \(\dim N=0\), tangent spaces vanish. This proves (C8) at every regular point. Properness was used for the available uniformization; it was not imposed on \(h\), and we did not infer that an arbitrary analytic image is subanalytic.
+The domain \((hq)^{-1}(V)\) is an open analytic manifold and the map (C9) is analytic into the embedded analytic manifold \(N\). Both have countable atlases. For positive-dimensional \(N\), the [analytic critical-value theorem](finite-conormal-closures-and-generic-base-directions.md#analytic-critical-values-by-source-dimension-descent-analytic-critical-values) makes regular values dense in each target chart: critical values have measure zero, and surjectivity ensures a lift at every value. This invokes only that theorem's standalone calculus proof, not the later conormal or isotropic results in its host lesson. At a regular value, an onto differential lifts every tangent vector of \(N\); the zero pullback therefore kills every such vector. Continuity of \(\theta|_N\) extends this to all points of \(N\). When \(\dim N=0\), tangent spaces vanish. This proves (C8) at every regular point. Properness was used for the available uniformization; it was not imposed on \(h\), and we did not infer that an arbitrary analytic image is subanalytic.
 
-## The two cotangent maps {#the-two-maps-have-different-targets}
+<a id="the-two-maps-have-different-targets"></a>
+
+## The two cotangent maps
 
 For an analytic \(f:Y\to X\), set
 
@@ -159,7 +169,7 @@ f_d^*\alpha_Y=f_\pi^*\alpha_X
 
 These conventions use the transpose differential with its displayed positive sign. No antipodal map enters this identity.
 
-## Proper direct transport {#proper-direct-transport}
+## Proper direct transport
 
 Given conic subanalytic isotropic \(\Lambda_Y\subset T^*Y\), define
 
@@ -178,7 +188,9 @@ A converging sequence in the image has preimages in the compact inverse image of
 
 There is also a distinct weaker image assertion. If only \(f_\pi|_{\overline A}\) is proper, input 3 and the same form argument still give a conic subanalytic isotropic image of \(A\). They do not make that image closed. Neither version assumes global properness of the base map.
 
-## Variable-rank linear images and inverse transport {#isotropic-inverse-transport}
+<a id="isotropic-inverse-transport"></a>
+
+## Variable-rank linear images and inverse transport
 
 We supply the conic-image calculation used for the other direction. Work locally over a relatively compact base chart, using analytic bundle coordinates. Let \(L:E\to F\) be an analytic linear bundle map over the identity and \(H\subset E\) a positive-conic subanalytic set. Let \(D\) be the closed unit disk bundle and set
 
@@ -208,7 +220,9 @@ I_f(\Lambda_X)=f_d\bigl(f_\pi^{-1}(\Lambda_X)\bigr)
 
 is conic, subanalytic and isotropic, without a noncharacteristic or rank assumption. Indeed, \(B=f_\pi^{-1}(\Lambda_X)\) is a conic subanalytic subset of the bundle \(C_f\to Y\). The linear-image calculation applies to \(f_d\). Equations (C4) and (3) make \(f_d^*\alpha_Y\) vanish on \(B\), and (C8) detects vanishing on its image. This is the ordinary transpose-differential image; it makes no claim to equal a limiting characteristic inverse.
 
-## A second proof using the cotangent line {#why-a-one-dimensional-isotropic-image-has-isolated-covector-tests}
+<a id="why-a-one-dimensional-isotropic-image-has-isolated-covector-tests"></a>
+
+## A second proof using the cotangent line
 
 For conic subanalytic isotropic \(\Gamma\subset T^*\mathbb R\), consider
 
@@ -304,8 +318,10 @@ Both slices \(a=1\) and \(a=-1\) select only \(t=0\). Directly, \(\pm2x\,dx\) li
 
 **Solution.** The base equation is \(y^3=0\), so \(y=0\). Every input covector is allowed, but \(df_y^t\xi=3y^2\xi=0\). The ordinary inverse transport is the single zero covector \((0;0)\), a zero-dimensional conic analytic isotropic set. The conormal of \(f^{-1}(0)=\{0\}\) is the full fibre. The difference reflects the actual zero derivative; no noncharacteristic condition was available to identify these sets, and a limiting inverse construction is a different operation.
 
-## Sources and scope {#references-and-further-geometric-work}
+<a id="references-and-further-geometric-work"></a>
 
-Kashiwara and Schapira, [*Microlocal Study of Sheaves*](https://www.numdam.org/item/AST_1985__128__1_0/), Astérisque 128 (1985), develops the isotropic-set setting and canonical-form transport for locally closed subanalytic sets. The transport statements here allow arbitrary subanalytic subsets: the form test (C1)–(C4), uniformization and the proper-closure image theorem supply the required arguments for that broader convention.
+## Sources and scope
+
+Kashiwara and Schapira, [*Microlocal Study of Sheaves*](https://www.numdam.org/item/AST_1985__128__1_0/), Astérisque 128 (1985), Definition 8.2.1 and Proposition 8.2.2, printed p. 144, gives the isotropic-set setting; Proposition 8.3.1, pp. 148–149, uses canonical-form transport for proper sheaf images. Section 8.2.1, p. 143, stipulates locally closed subanalytic sets. The transport statements here allow arbitrary subanalytic subsets: the form test (C1)–(C4), uniformization and the proper-closure image theorem supply the required arguments for that broader convention.
 
 The form test, pullback/closure/union rules, local constancy on the selected source set, compactness proof of finite values, surjective detection, conic linear-image calculation and cotangent-line comparison are proved above from the listed prerequisites. The subanalytic foundations and elementary analytic-calculus inputs remain prerequisites. The analytic critical-value theorem used in (C9) has its full argument in the linked section, independent of that lesson's later conormal results. The constructibility criterion for sheaves additionally requires microsupport and stratification results; it is not a conclusion of this geometric lesson.

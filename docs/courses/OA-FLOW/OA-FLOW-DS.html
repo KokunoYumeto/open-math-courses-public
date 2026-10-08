@@ -1,0 +1,849 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pointwise absorption and dominant weights · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-OES.html">Previous lesson</a><a href="OA-FLOW-CGF.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DS.md">Lesson source</a></nav><h1 id="OA-FLOW.DS.SETTING">Pointwise absorption and dominant weights</h1>
+<p>Suppose a weight can absorb every positive scalar by an inner change of coordinates. The implementing unitaries may have been chosen separately, with no dependence on the scalar. To compare two such weights, we first turn these unrelated choices into one measurable operator field. We then compare their trace amplifications and cancel the extra matrix factor using isometries in their centralizers.</p>
+<p>For a weight supported on a proper projection, there is one further obstruction: the original central support. We identify it exactly, construct dominant weights, and give a direct-sum example where the obstruction occurs.</p>
+<p><em>Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications and font components retain their own terms.</em></p>
+<p><a id="ds-setting"></a></p>
+<h2 id="scope-and-the-comparison-mechanism">Scope and the comparison mechanism</h2>
+<p>Throughout, <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> is a von Neumann algebra with separable predual and properly infinite identity. All weights are normal and semifinite, and equality of weights always means equality on the entire positive cone, including infinite values. A supported weight is faithful on its support corner; its centralizer is taken in that corner.</p>
+<p>Separability is used to obtain a Polish unitary group and a Borel choice. Proper infiniteness of the weight centralizers is used later to cancel the amplification. Neither assumption is replaced by a factor hypothesis. The zero weight and zero algebra have their explicit conventions in the examples.</p>
+<p>The earlier <a href="OA-FLOW-DWC.html#dwc-2">comparison of dominant weights with supplied continuous eigenfields</a> remains available for arbitrary preduals. Here we prove the comparison from pointwise scalar equivalence under separable predual. The selected field need not be continuous or multiplicative.</p>
+<p>Our measure-selection input is the proved <a href="../OA-MOD/OA-MOD-SCF.html#choose-a-witness-after-completing-the-measure">witness selection after completing the measure</a>. Section 3 supplies its scalar tightness premise and then repairs its conull Borel representative at every real parameter. Sections 4–7 prove the full normal tensor and weight comparisons.</p>
+<p><span id="OA-FLOW.DS.1"></span><a id="ds-1"></a></p>
+<h2 id="1-supported-equivalence-and-the-theorem">1. Supported equivalence and the theorem</h2>
+<p>For a normal semifinite weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, put <span class="math" data-tex="\(p=s(\psi)\)">\(p=s(\psi)\)</span>. The support theorem <a href="OA-FLOW-NWR.html#nwr-1">NWR1</a> and its <a href="OA-FLOW-NWR.html#nwr-4">semifinite-corner argument</a> give
+<span class="math math-display" data-tex="\[
+ \psi(x)=\psi(pxp)\quad(x\in M_+),\qquad
+ \psi_p:=\psi|_{(pMp)_+}\text{ faithful normal semifinite}.
+ \tag{DSEL1}
+\]">\[
+ \psi(x)=\psi(pxp)\quad(x\in M_+),\qquad
+ \psi_p:=\psi|_{(pMp)_+}\text{ faithful normal semifinite}.
+ \tag{DSEL1}
+\]</span>
+Write <span class="math" data-tex="\(M_\psi=(pMp)_{\psi_p}\)">\(M_\psi=(pMp)_{\psi_p}\)</span>, with identity <span class="math" data-tex="\(p\)">\(p\)</span>. Infinite multiplicity means that this algebra is properly infinite. The zero weight will be treated separately.</p>
+<p>For supported weights <span class="math" data-tex="\(\psi,\eta\)">\(\psi,\eta\)</span>, with supports <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, define <span class="math" data-tex="\(\psi\sim\eta\)">\(\psi\sim\eta\)</span> when a partial isometry <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ a^*a=p,\qquad aa^*=q,\qquad
+ \psi(x)=\eta(axa^*)\quad(x\in M_+).
+ \tag{DSEL2}
+\]">\[
+ a^*a=p,\qquad aa^*=q,\qquad
+ \psi(x)=\eta(axa^*)\quad(x\in M_+).
+ \tag{DSEL2}
+\]</span>
+This agrees with <a href="OA-FLOW-SCW.html#scw-4">SCW's supported comparison convention</a>. Adjoint and composition of the implementing partial isometries prove symmetry and transitivity: for symmetry apply (DSEL1) and substitute <span class="math" data-tex="\(a^*ya\)">\(a^*ya\)</span>; for transitivity multiply the two partial isometries in their support order. Equivalence preserves central support by <a href="OA-FLOW-PC.html#oa-flow.pc.2">central support under equivalence</a>. For faithful weights the partial isometry is a unitary.</p>
+<p>A faithful weight <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is called dominant when <span class="math" data-tex="\(M_\Phi\)">\(M_\Phi\)</span> is properly infinite and <span class="math" data-tex="\(\Phi\sim c\Phi\)">\(\Phi\sim c\Phi\)</span> for every <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.</p>
+<p><strong>Theorem.</strong> Such a dominant weight exists on <span class="math" data-tex="\(M\)">\(M\)</span>. Fix any one of them. If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has infinite multiplicity and
+<span class="math math-display" data-tex="\[
+ \psi\sim c\psi\quad(c&gt;0),
+ \tag{DSEL3}
+\]">\[
+ \psi\sim c\psi\quad(c&gt;0),
+ \tag{DSEL3}
+\]</span>
+then
+<span class="math math-display" data-tex="\[
+ \boxed{\quad \psi\sim\Phi
+       \quad\Longleftrightarrow\quad z_M(s(\psi))=1.\quad}
+ \tag{DSEL4}
+\]">\[
+ \boxed{\quad \psi\sim\Phi
+       \quad\Longleftrightarrow\quad z_M(s(\psi))=1.\quad}
+ \tag{DSEL4}
+\]</span>
+In particular all faithful dominant weights are unitarily equivalent, with equality on the entire positive cone. For a specified stabilized trace-scaling crossed-product presentation, its dual trace weight is one possible <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>The proof below first handles faithful weights by measurable regularization, then reduces a full supported weight to that case. Finally it constructs a dominant weight directly on every properly infinite <span class="math" data-tex="\(M\)">\(M\)</span>. No continuity hypothesis is added to (DSEL3).</p>
+<p><span id="OA-FLOW.DS.2"></span><a id="ds-2"></a></p>
+<h2 id="2-the-unitary-group-really-is-a-polish-parameter-space">2. The unitary group really is a Polish parameter space</h2>
+<p>We record the consequences of separable predual that the selection argument needs. Normal states have a countable norm-dense subset <span class="math" data-tex="\((\rho_n)\)">\((\rho_n)\)</span>: choose one point from each member of a countable metric basis that meets the set of normal states. Set
+<span class="math" data-tex="\(\rho=\sum_{n\ge1}2^{-n}\rho_n\)">\(\rho=\sum_{n\ge1}2^{-n}\rho_n\)</span> is a faithful normal state. A positive element annihilated by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is annihilated by every <span class="math" data-tex="\(\rho_n\)">\(\rho_n\)</span>, hence by every normal state, and thus by every concrete vector state; it is zero.</p>
+<p>Its <a href="OA-FLOW-GNS.html#gns-theorem-5-1">GNS representation</a> <span class="math" data-tex="\((\pi,H,\Omega)\)">\((\pi,H,\Omega)\)</span> is faithful and normal. Faithfulness follows from
+<span class="math" data-tex="\(\|\pi(x)\Omega\|^2=\rho(x^*x)\)">\(\|\pi(x)\Omega\|^2=\rho(x^*x)\)</span>. For normality, the coefficient functionals on dense GNS vectors are
+<span class="math math-display" data-tex="\[
+ x\longmapsto\langle\pi(x)\pi(a)\Omega,\pi(b)\Omega\rangle
+ =\rho(b^*xa),
+ \tag{DSEL5}
+\]">\[
+ x\longmapsto\langle\pi(x)\pi(a)\Omega,\pi(b)\Omega\rangle
+ =\rho(b^*xa),
+ \tag{DSEL5}
+\]</span>
+which are normal. Approximation of both vectors and the bound for a vector functional put every coefficient in the norm-closed predual; summable vector series give normality on the whole ultraweak topology. These are the concrete predual properties proved in <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–6</a>.</p>
+<p>The Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> is separable. Indeed the unit ball of <span class="math" data-tex="\(M=(M_*)^*\)">\(M=(M_*)^*\)</span> is compact by <a href="OA-FLOW-ST12.html#oa-flow.st.1">weak-star compactness</a>, and its weak-star topology is metrizable: on that ball the evaluations at a countable norm-dense subset of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> determine all evaluations by the uniform operator bound. A compact metric space has a countable dense subset <span class="math" data-tex="\((x_n)\)">\((x_n)\)</span>. The closed linear span of <span class="math" data-tex="\(\pi(x_n)\Omega\)">\(\pi(x_n)\Omega\)</span> is all of <span class="math" data-tex="\(H\)">\(H\)</span>: a vector orthogonal to it defines, by (DSEL5) and approximation, a normal functional vanishing on the dense subset of the unit ball, hence on <span class="math" data-tex="\(M\)">\(M\)</span>. Cyclicity then makes the vector zero. The normal inverse and bounded strong-star topology are supplied by <a href="OA-FLOW-ST12.html#oa-flow.st.2">normal isomorphisms and bounded strong-star convergence</a>.</p>
+<p>Identify <span class="math" data-tex="\(M\)">\(M\)</span> with this faithful normal image. Choose a dense sequence <span class="math" data-tex="\((\xi_n)\)">\((\xi_n)\)</span> in the unit ball of <span class="math" data-tex="\(H\)">\(H\)</span>. The unitary group <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span> has the compatible metric
+<span class="math math-display" data-tex="\[
+ d(u,v)=\sum_{n\ge1}2^{-n}
+ \left(\min(1,\|(u-v)\xi_n\|)
+       +\min(1,\|(u^*-v^*)\xi_n\|)\right).
+ \tag{DSEL6}
+\]">\[
+ d(u,v)=\sum_{n\ge1}2^{-n}
+ \left(\min(1,\|(u-v)\xi_n\|)
+       +\min(1,\|(u^*-v^*)\xi_n\|)\right).
+ \tag{DSEL6}
+\]</span>
+A Cauchy sequence has strong limits <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> for its operators and adjoints, first on the dense sequence and then on all vectors by the common norm bound. Strong continuity of bounded products gives <span class="math" data-tex="\(uv=vu=1\)">\(uv=vu=1\)</span> and <span class="math" data-tex="\(v=u^*\)">\(v=u^*\)</span>; strong closedness puts <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. Thus the metric is complete. The coordinate embedding into the countable product of copies of <span class="math" data-tex="\(H\times H\)">\(H\times H\)</span> makes this topology second countable, hence separable. Multiplication and inversion are continuous by bounded strong-star multiplication. Therefore <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span> is a Polish topological group.</p>
+<p>For any normal automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, the map <span class="math" data-tex="\(u\mapsto\alpha(u)\)">\(u\mapsto\alpha(u)\)</span> is continuous for (DSEL6), by ST2. In particular, this applies to every member of a modular group.</p>
+<p><span id="OA-FLOW.DS.3"></span><a id="ds-3"></a></p>
+<h2 id="3-an-everywhere-borel-eigenunitary-selector">3. An everywhere Borel eigenunitary selector</h2>
+<p><strong>Selection lemma.</strong> Let <span class="math" data-tex="\(\alpha:\mathbb R\to\operatorname{Aut}(M)\)">\(\alpha:\mathbb R\to\operatorname{Aut}(M)\)</span> be a normal point-strong-star continuous action. Suppose that for every <span class="math" data-tex="\(r\in\mathbb R\)">\(r\in\mathbb R\)</span> there is a unitary <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span> with
+<span class="math math-display" data-tex="\[
+ \alpha_t(u)=e^{irt}u\quad(t\in\mathbb R).
+ \tag{DSEL7}
+\]">\[
+ \alpha_t(u)=e^{irt}u\quad(t\in\mathbb R).
+ \tag{DSEL7}
+\]</span>
+Then there is a Borel map <span class="math" data-tex="\(X:\mathbb R\to\mathcal U(M)\)">\(X:\mathbb R\to\mathcal U(M)\)</span> for the strong-star topology such that (DSEL7) holds with <span class="math" data-tex="\(u=X(r)\)">\(u=X(r)\)</span> for <strong>all</strong> <span class="math" data-tex="\(r,t\in\mathbb R\)">\(r,t\in\mathbb R\)</span>, and <span class="math" data-tex="\(X(0)=1\)">\(X(0)=1\)</span>.</p>
+<p>First form the closed relation
+<span class="math math-display" data-tex="\[
+ \mathcal E=
+ \bigcap_{t\in\mathbb Q}
+ \{(r,u):\alpha_t(u)=e^{irt}u\}
+ \subseteq\mathbb R\times\mathcal U(M).
+ \tag{DSEL8}
+\]">\[
+ \mathcal E=
+ \bigcap_{t\in\mathbb Q}
+ \{(r,u):\alpha_t(u)=e^{irt}u\}
+ \subseteq\mathbb R\times\mathcal U(M).
+ \tag{DSEL8}
+\]</span>
+Each equality is closed by the continuity just proved. For a pair in this relation, continuity in <span class="math" data-tex="\(t\)">\(t\)</span> extends the equality from <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Thus its fibers are exactly the nonempty sets prescribed in (DSEL7). Each is a right coset of the closed group <span class="math" data-tex="\(\mathcal U(M^\alpha)\)">\(\mathcal U(M^\alpha)\)</span>: if <span class="math" data-tex="\(u,v\)">\(u,v\)</span> have frequency <span class="math" data-tex="\(r\)">\(r\)</span>, then <span class="math" data-tex="\(u^*v\)">\(u^*v\)</span> is fixed, and multiplying <span class="math" data-tex="\(u\)">\(u\)</span> by a fixed unitary gives another such <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>We use only the completed-measure selection result actually proved in <a href="../OA-MOD/OA-MOD-SCF.html#choose-a-witness-after-completing-the-measure">OA-MOD's witness construction</a>. It applies to the Borel relation (DSEL8), with Lebesgue measure on the standard sigma-finite base <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and gives a completed-measurable selector. Its proof codes a Borel relation by a closed relation with a Baire-space witness, proves that the projected hitting sets are measurable in the completed measure, and successively chooses the first shrinking closed cell with a nonempty fiber. Completeness gives a point in the closed fiber. This result alone makes no everywhere Borel-selector assertion.</p>
+<p>The scalar tightness premise in that proof is available directly here. For a finite Borel measure on a Polish space with a complete metric, cover the space at level <span class="math" data-tex="\(n\)">\(n\)</span> by countably many balls of radius <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>, and retain finitely many capturing all but <span class="math" data-tex="\(\varepsilon2^{-n}\)">\(\varepsilon2^{-n}\)</span> of the measure. The intersection of the resulting finite unions of closed balls is closed and totally bounded, hence compact by completeness, and its complement has measure at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Borel regularity follows by the usual finite-measure closed/open approximation argument: distance neighborhoods approximate closed sets from outside; complements and countable unions preserve the class of sets approximable by a closed subset and an open superset. Intersect the retained closed subset with a compact set from the preceding construction. Thus every Borel set has compact subsets of arbitrarily close measure. The same facts hold after completing the measure by removing Borel null supersets.</p>
+<p>A completed-measurable map into a Polish space has a Borel version off a Borel null set. To verify this, approximate it by countably valued maps using the first element of a countable <span class="math" data-tex="\(1/n\)">\(1/n\)</span>-net within distance <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Replace their countably many completed-measurable level sets by Borel versions, remove the countable union of null discrepancies, and take the pointwise Cauchy limit. The locus where the Borel approximants are Cauchy is Borel; completeness gives their limit there. Assign the identity outside that locus. Applied to our selector, this gives a Borel <span class="math" data-tex="\(X_0:\mathbb R\to\mathcal U(M)\)">\(X_0:\mathbb R\to\mathcal U(M)\)</span> such that
+<span class="math math-display" data-tex="\[
+ E=\{r:(r,X_0(r))\in\mathcal E\}
+ \text{ is Borel and conull.}
+ \tag{DSEL9}
+\]">\[
+ E=\{r:(r,X_0(r))\in\mathcal E\}
+ \text{ is Borel and conull.}
+ \tag{DSEL9}
+\]</span></p>
+<p>We now remove the exceptional parameters by an explicit argument. Choose a compact <span class="math" data-tex="\(K\subset E\cap[0,1]\)">\(K\subset E\cap[0,1]\)</span> of positive Lebesgue measure. Such a set exists by inner regularity. Put
+<span class="math math-display" data-tex="\[
+ h(r)=\int_{\mathbb R}1_K(q)1_K(q-r)\,dq.
+ \tag{DSEL10}
+\]">\[
+ h(r)=\int_{\mathbb R}1_K(q)1_K(q-r)\,dq.
+ \tag{DSEL10}
+\]</span>
+Then <span class="math" data-tex="\(h(0)=|K|&gt;0\)">\(h(0)=|K|&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+ |h(r)-h(0)|
+ \le\|1_K(\,\cdot-r)-1_K\|_1\longrightarrow0.
+ \tag{DSEL11}
+\]">\[
+ |h(r)-h(0)|
+ \le\|1_K(\,\cdot-r)-1_K\|_1\longrightarrow0.
+ \tag{DSEL11}
+\]</span>
+The norm continuity is the exact translation statement in <a href="OA-FLOW-L24.html#oa-flow.grp.translations">L24, Lemma 3.1</a>. Consequently, for some <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, every <span class="math" data-tex="\(|r|&lt;\varepsilon\)">\(|r|&lt;\varepsilon\)</span> is a difference of two points of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>For <span class="math" data-tex="\(r\in K-K\)">\(r\in K-K\)</span> define
+<span class="math math-display" data-tex="\[
+ a(r)=\min\{q\in K:q-r\in K\}.
+ \tag{DSEL12}
+\]">\[
+ a(r)=\min\{q\in K:q-r\in K\}.
+ \tag{DSEL12}
+\]</span>
+The set minimized is nonempty and compact. This is a Borel function: for every real <span class="math" data-tex="\(b\)">\(b\)</span>, the set
+<span class="math math-display" data-tex="\[
+ \{r\in K-K:a(r)\le b\}
+ =\{q-q':q\in K\cap(-\infty,b],\ q'\in K\}
+ \tag{DSEL13}
+\]">\[
+ \{r\in K-K:a(r)\le b\}
+ =\{q-q':q\in K\cap(-\infty,b],\ q'\in K\}
+ \tag{DSEL13}
+\]</span>
+is compact. Thus no general coset-selection theorem is needed to select this pair. On <span class="math" data-tex="\((-\varepsilon,\varepsilon)\)">\((-\varepsilon,\varepsilon)\)</span>, set
+<span class="math math-display" data-tex="\[
+ Y(r)=X_0(a(r))X_0(a(r)-r)^*.
+ \tag{DSEL14}
+\]">\[
+ Y(r)=X_0(a(r))X_0(a(r)-r)^*.
+ \tag{DSEL14}
+\]</span>
+Both arguments belong to <span class="math" data-tex="\(K\subset E\)">\(K\subset E\)</span>. Products and adjoints in the unitary group are continuous, so <span class="math" data-tex="\(Y\)">\(Y\)</span> is Borel; and the two scalar frequencies subtract, giving
+<span class="math math-display" data-tex="\[
+ \alpha_t(Y(r))=e^{irt}Y(r)
+ \quad(|r|&lt;\varepsilon,\ t\in\mathbb R),\qquad Y(0)=1.
+ \tag{DSEL15}
+\]">\[
+ \alpha_t(Y(r))=e^{irt}Y(r)
+ \quad(|r|&lt;\varepsilon,\ t\in\mathbb R),\qquad Y(0)=1.
+ \tag{DSEL15}
+\]</span>
+Finally let
+<span class="math math-display" data-tex="\[
+ n(r)=1+\left\lfloor |r|/\varepsilon\right\rfloor,
+ \qquad X(r)=Y(r/n(r))^{\,n(r)}.
+ \tag{DSEL16}
+\]">\[
+ n(r)=1+\left\lfloor |r|/\varepsilon\right\rfloor,
+ \qquad X(r)=Y(r/n(r))^{\,n(r)}.
+ \tag{DSEL16}
+\]</span>
+Here <span class="math" data-tex="\(|r/n(r)|&lt;\varepsilon\)">\(|r/n(r)|&lt;\varepsilon\)</span>. On each Borel stratum where <span class="math" data-tex="\(n(r)\)">\(n(r)\)</span> is constant, this is a Borel expression, so <span class="math" data-tex="\(X\)">\(X\)</span> is Borel on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Applying <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> to its power gives <span class="math" data-tex="\(e^{irt}X(r)\)">\(e^{irt}X(r)\)</span>, since the scalar phase commutes with every factor. Also <span class="math" data-tex="\(X(0)=1\)">\(X(0)=1\)</span>. This proves the lemma with no exceptional value of <span class="math" data-tex="\(r\)">\(r\)</span> or <span class="math" data-tex="\(t\)">\(t\)</span>. It proves neither continuity of <span class="math" data-tex="\(X\)">\(X\)</span> nor a group law in <span class="math" data-tex="\(r\)">\(r\)</span>, and neither is needed below.</p>
+<p><span id="OA-FLOW.DS.4"></span><a id="ds-4"></a></p>
+<h2 id="4-the-borel-field-defines-a-normal-tensor-multiplier">4. The Borel field defines a normal tensor multiplier</h2>
+<p>Let <span class="math" data-tex="\(X:\mathbb R\to\mathcal U(M)\)">\(X:\mathbb R\to\mathcal U(M)\)</span> be Borel in (DSEL6). With <span class="math" data-tex="\(H\)">\(H\)</span> as above and <span class="math" data-tex="\(L=L^2(\mathbb R,dq)\)">\(L=L^2(\mathbb R,dq)\)</span>, define
+<span class="math math-display" data-tex="\[
+ (\mathfrak X\xi)(q)=X(q)\xi(q)
+ \quad\bigl(\xi\in L^2(\mathbb R,H)\bigr).
+ \tag{DSEL17}
+\]">\[
+ (\mathfrak X\xi)(q)=X(q)\xi(q)
+ \quad\bigl(\xi\in L^2(\mathbb R,H)\bigr).
+ \tag{DSEL17}
+\]</span>
+Each fixed-vector map <span class="math" data-tex="\(q\mapsto X(q)\zeta\)">\(q\mapsto X(q)\zeta\)</span> is Borel into the separable Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, hence strongly measurable by countable simple approximation. Approximating a general measurable <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by simple vector fields proves measurability of <span class="math" data-tex="\(q\mapsto X(q)\xi(q)\)">\(q\mapsto X(q)\xi(q)\)</span>. Pointwise norm preservation makes (DSEL17) an isometry, and the Borel adjoint field supplies its inverse. Thus <span class="math" data-tex="\(\mathfrak X\)">\(\mathfrak X\)</span> is a unitary on the full Hilbert space, using <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24's tensor/function identification</a>.</p>
+<p>More precisely,
+<span class="math math-display" data-tex="\[
+ \mathfrak X\in M\bar\otimes L^\infty(\mathbb R)
+ \subseteq M\bar\otimes B(L).
+ \tag{DSEL18}
+\]">\[
+ \mathfrak X\in M\bar\otimes L^\infty(\mathbb R)
+ \subseteq M\bar\otimes B(L).
+ \tag{DSEL18}
+\]</span>
+Here is a proof of membership without appealing to an unspecified decomposition theorem. Choose a countable dense sequence <span class="math" data-tex="\((v_j)\)">\((v_j)\)</span> in <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span>. For each <span class="math" data-tex="\(n,q\)">\(n,q\)</span>, take the least <span class="math" data-tex="\(j\)">\(j\)</span> such that <span class="math" data-tex="\(d(X(q),v_j)&lt;1/n\)">\(d(X(q),v_j)&lt;1/n\)</span>, and call its value <span class="math" data-tex="\(X_n(q)\)">\(X_n(q)\)</span>. The level sets <span class="math" data-tex="\(E_{nj}\)">\(E_{nj}\)</span> are Borel and partition <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Finite partial sums
+<span class="math math-display" data-tex="\[
+ \sum_{j\le m}v_j\otimes1_{E_{nj}}
+ \tag{DSEL19}
+\]">\[
+ \sum_{j\le m}v_j\otimes1_{E_{nj}}
+ \tag{DSEL19}
+\]</span>
+have norm at most one and converge strongly, together with their adjoints, to the multiplication operator of <span class="math" data-tex="\(X_n\)">\(X_n\)</span>: the squared norm of a tail on a vector field is bounded by its squared integral on the remaining partition cells. Thus this operator belongs to the tensor algebra. Pointwise strong-star convergence <span class="math" data-tex="\(X_n(q)\to X(q)\)">\(X_n(q)\to X(q)\)</span> and the bound two permit dominated convergence against <span class="math" data-tex="\(\|\xi(q)\|^2\)">\(\|\xi(q)\|^2\)</span>, for both operators and adjoints. Their multiplication operators converge strongly-star to <span class="math" data-tex="\(\mathfrak X\)">\(\mathfrak X\)</span>, proving (DSEL18).</p>
+<p>Normal transport also has its exact field meaning. For a normal automorphism <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, the field <span class="math" data-tex="\(\gamma(X(q))\)">\(\gamma(X(q))\)</span> is Borel by ST2, and
+<span class="math math-display" data-tex="\[
+ (\gamma\bar\otimes\operatorname{id})(\mathfrak X)
+ =M_{\gamma\circ X}.
+ \tag{DSEL20}
+\]">\[
+ (\gamma\bar\otimes\operatorname{id})(\mathfrak X)
+ =M_{\gamma\circ X}.
+ \tag{DSEL20}
+\]</span>
+The normal amplification is the actual map constructed in <a href="OA-FLOW-TW.html#tw-1">TW1</a>. To check (DSEL20), choose a scalar orthonormal basis <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>. The <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> matrix entry of <span class="math" data-tex="\(\mathfrak X\)">\(\mathfrak X\)</span> is the weak-star integral
+<span class="math math-display" data-tex="\[
+ b_{ij}=\int_{\mathbb R}
+       e_j(q)\overline{e_i(q)}X(q)\,dq\in M.
+ \tag{DSEL21}
+\]">\[
+ b_{ij}=\int_{\mathbb R}
+       e_j(q)\overline{e_i(q)}X(q)\,dq\in M.
+ \tag{DSEL21}
+\]</span>
+For every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, its pairing is the scalar integral of
+<span class="math" data-tex="\(e_j\overline{e_i}\,\omega(X(q))\)">\(e_j\overline{e_i}\,\omega(X(q))\)</span>. The integrand is measurable: a normal functional is continuous on the bounded strong-star unitary group, as follows from its vector series. Its absolute integral is at most
+<span class="math" data-tex="\(\|\omega\|\|e_j\|_2\|e_i\|_2\)">\(\|\omega\|\|e_j\|_2\|e_i\|_2\)</span>. Thus CP6's duality constructs the entry as an actual element of <span class="math" data-tex="\(M\)">\(M\)</span>. Pairing <span class="math" data-tex="\(\gamma(b_{ij})\)">\(\gamma(b_{ij})\)</span> with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> substitutes the normal functional <span class="math" data-tex="\(\omega\circ\gamma\)">\(\omega\circ\gamma\)</span>, proving (DSEL20) in every entry. TW1's bounded-array description makes the equality hold on the entire tensor algebra.</p>
+<p>In particular, if (DSEL7) holds for the selected field, then for each real <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+ (\alpha_t\bar\otimes\operatorname{id})(\mathfrak X)
+ =\mathfrak X(1\otimes V_t),
+ \qquad (V_tf)(q)=e^{itq}f(q).
+ \tag{DSEL22}
+\]">\[
+ (\alpha_t\bar\otimes\operatorname{id})(\mathfrak X)
+ =\mathfrak X(1\otimes V_t),
+ \qquad (V_tf)(q)=e^{itq}f(q).
+ \tag{DSEL22}
+\]</span>
+The equality is first a pointwise identity on every vector field and then an equality of bounded operators. There is no common-null-set assertion over an uncountable family of separately chosen fields: the single selected <span class="math" data-tex="\(X\)">\(X\)</span> already satisfies every parameter identity.</p>
+<p><span id="OA-FLOW.DS.5"></span><a id="ds-5"></a></p>
+<h2 id="5-compare-faithful-weights-under-pointwise-scalar-absorption">5. Compare faithful weights under pointwise scalar absorption</h2>
+<p>Let <span class="math" data-tex="\(\chi_1,\chi_2\)">\(\chi_1,\chi_2\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(M\)">\(M\)</span>, each with properly infinite centralizer, and assume <span class="math" data-tex="\(\chi_j\sim c\chi_j\)">\(\chi_j\sim c\chi_j\)</span> for every <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Faithfulness turns the equivalences into unitaries. Taking the desired scalar or its reciprocal gives, for every <span class="math" data-tex="\(r\)">\(r\)</span>, some unitary <span class="math" data-tex="\(u\)">\(u\)</span> with
+<span class="math math-display" data-tex="\[
+ \chi_j\circ\operatorname{Ad}(u)=e^r\chi_j.
+ \tag{DSEL23}
+\]">\[
+ \chi_j\circ\operatorname{Ad}(u)=e^r\chi_j.
+ \tag{DSEL23}
+\]</span>
+The exact inner formula <a href="OA-FLOW-GDA.html#equation-gda34">GDA34</a> and the scalar derivative formula <a href="OA-FLOW-BC.html#bc-5">BC24</a> show that this equality is equivalent to
+<span class="math math-display" data-tex="\[
+ u^*\sigma_t^{\chi_j}(u)=e^{irt}1,
+ \quad\text{or}\quad
+ \sigma_t^{\chi_j}(u)=e^{irt}u.
+ \tag{DSEL24}
+\]">\[
+ u^*\sigma_t^{\chi_j}(u)=e^{irt}1,
+ \quad\text{or}\quad
+ \sigma_t^{\chi_j}(u)=e^{irt}u.
+ \tag{DSEL24}
+\]</span>
+For the converse use <a href="OA-FLOW-GDA.html#gda-7">GDA7's fixed-reference injectivity</a>, so this is an equivalence of weights with their full scalar normalization. The selection lemma supplies Borel fields <span class="math" data-tex="\(X_j(r)\)">\(X_j(r)\)</span> satisfying (DSEL24) for all <span class="math" data-tex="\(r,t\)">\(r,t\)</span>.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+ A=M\bar\otimes B(L),\qquad
+ \Omega_j=\chi_j\bar\otimes\operatorname{Tr},\qquad
+ k=1\otimes e^Q,
+ \quad(Qf)(q)=qf(q),
+ \qquad \eta_j=(\Omega_j)_k.
+ \tag{DSEL25}
+\]">\[
+ A=M\bar\otimes B(L),\qquad
+ \Omega_j=\chi_j\bar\otimes\operatorname{Tr},\qquad
+ k=1\otimes e^Q,
+ \quad(Qf)(q)=qf(q),
+ \qquad \eta_j=(\Omega_j)_k.
+ \tag{DSEL25}
+\]</span>
+The usual scalar trace is normalized to take value one on a rank-one projection. <a href="OA-FLOW-TW.html#tw-2">TW2</a> constructs <span class="math" data-tex="\(\Omega_j\)">\(\Omega_j\)</span> on the whole cone; <a href="OA-FLOW-TW.html#tw-5">TW5</a> gives
+<span class="math" data-tex="\(\sigma_t^{\Omega_j}=\sigma_t^{\chi_j}\bar\otimes\operatorname{id}\)">\(\sigma_t^{\Omega_j}=\sigma_t^{\chi_j}\bar\otimes\operatorname{id}\)</span>. The positive nonsingular density <span class="math" data-tex="\(k\)">\(k\)</span> is affiliated with this centralizer. The full <a href="OA-FLOW-CZ.html#cz-2">CZ2 construction</a> is
+<span class="math math-display" data-tex="\[
+ \eta_j(Y)=\sup_{\delta&gt;0}
+  \Omega_j(k_\delta^{1/2}Yk_\delta^{1/2}),
+ \qquad k_\delta=k(1+\delta k)^{-1},
+ \tag{DSEL26}
+\]">\[
+ \eta_j(Y)=\sup_{\delta&gt;0}
+  \Omega_j(k_\delta^{1/2}Yk_\delta^{1/2}),
+ \qquad k_\delta=k(1+\delta k)^{-1},
+ \tag{DSEL26}
+\]</span>
+with the increasing scalar supremum as <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, and <a href="OA-FLOW-CZ.html#cz-6">the derivative of a centralizer density</a> gives
+<span class="math" data-tex="\((D\eta_j:D\Omega_j)_t=1\otimes V_t\)">\((D\eta_j:D\Omega_j)_t=1\otimes V_t\)</span>. The weights <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> are faithful normal semifinite.</p>
+<p>For the Borel multipliers <span class="math" data-tex="\(\mathfrak X_j\)">\(\mathfrak X_j\)</span> constructed above, (DSEL22) now reads
+<span class="math math-display" data-tex="\[
+ \mathfrak X_j^*\sigma_t^{\Omega_j}(\mathfrak X_j)
+ =1\otimes V_t.
+ \tag{DSEL27}
+\]">\[
+ \mathfrak X_j^*\sigma_t^{\Omega_j}(\mathfrak X_j)
+ =1\otimes V_t.
+ \tag{DSEL27}
+\]</span>
+The inner derivative formula and fixed-reference injectivity imply
+<span class="math math-display" data-tex="\[
+ \Omega_j\circ\operatorname{Ad}(\mathfrak X_j)=\eta_j
+ \quad\text{on }A_+.
+ \tag{DSEL28}
+\]">\[
+ \Omega_j\circ\operatorname{Ad}(\mathfrak X_j)=\eta_j
+ \quad\text{on }A_+.
+ \tag{DSEL28}
+\]</span>
+This is the step for which mere unrelated pointwise choices would not suffice.</p>
+<p>The unconditional regularized comparison in <a href="OA-FLOW-DWC.html#dwc-2">regularized weight comparison</a> applies to the two faithful weights and gives
+<span class="math math-display" data-tex="\[
+ \eta_2=\eta_1\circ\operatorname{Ad}(v^*)
+ \quad\text{for a unitary }v\in A.
+ \tag{DSEL29}
+\]">\[
+ \eta_2=\eta_1\circ\operatorname{Ad}(v^*)
+ \quad\text{for a unitary }v\in A.
+ \tag{DSEL29}
+\]</span>
+Its proof uses the strongly continuous relative modular cocycle
+<span class="math" data-tex="\(c_t=(D\chi_2:D\chi_1)_t\)">\(c_t=(D\chi_2:D\chi_1)_t\)</span>, rather than continuity of <span class="math" data-tex="\(X_j\)">\(X_j\)</span>. Specifically <a href="OA-FLOW-DWC.html#dwc-1">DWC1</a> constructs <span class="math" data-tex="\(v\)">\(v\)</span> with
+<span class="math math-display" data-tex="\[
+ c_t\otimes V_t
+ =v(1\otimes V_t)
+       (\sigma_t^{\chi_1}\bar\otimes\operatorname{id})(v^*);
+ \tag{DSEL30}
+\]">\[
+ c_t\otimes V_t
+ =v(1\otimes V_t)
+       (\sigma_t^{\chi_1}\bar\otimes\operatorname{id})(v^*);
+ \tag{DSEL30}
+\]</span>
+DWC2 then identifies the actual weights by the normalized derivative. Combining (DSEL28) and (DSEL29), in order, gives
+<span class="math math-display" data-tex="\[
+ U=\mathfrak X_1v^*\mathfrak X_2^*\in\mathcal U(A),
+ \qquad \Omega_2=\Omega_1\circ\operatorname{Ad}(U).
+ \tag{DSEL31}
+\]">\[
+ U=\mathfrak X_1v^*\mathfrak X_2^*\in\mathcal U(A),
+ \qquad \Omega_2=\Omega_1\circ\operatorname{Ad}(U).
+ \tag{DSEL31}
+\]</span></p>
+<p>For completeness, the cancellation uses no remaining regularity of the selected fields. Choose, by <a href="OA-FLOW-PC.html#oa-flow.pc.5">properly infinite filling families</a>, filling isometries <span class="math" data-tex="\(r_{jn}\in M_{\chi_j}\)">\(r_{jn}\in M_{\chi_j}\)</span>, with
+<span class="math" data-tex="\(r_{jn}^*r_{jm}=\delta_{nm}1\)">\(r_{jn}^*r_{jm}=\delta_{nm}1\)</span> and <span class="math" data-tex="\(\sum_nr_{jn}r_{jn}^*=1\)">\(\sum_nr_{jn}r_{jn}^*=1\)</span> strongly. In a countable orthonormal basis of <span class="math" data-tex="\(L\)">\(L\)</span>, let
+<span class="math math-display" data-tex="\[
+ R_j=\sum_{n\ge1}r_{jn}\otimes e_{1n},\qquad
+ e=1\otimes e_{11}.
+ \tag{DSEL32}
+\]">\[
+ R_j=\sum_{n\ge1}r_{jn}\otimes e_{1n},\qquad
+ e=1\otimes e_{11}.
+ \tag{DSEL32}
+\]</span>
+The row series and its adjoint converge strongly by orthogonal square-sum tails; hence <span class="math" data-tex="\(R_j\in A_{\Omega_j}\)">\(R_j\in A_{\Omega_j}\)</span>, with <span class="math" data-tex="\(R_j^*R_j=1\)">\(R_j^*R_j=1\)</span>, <span class="math" data-tex="\(R_jR_j^*=e\)">\(R_jR_j^*=e\)</span>. The <a href="OA-FLOW-DWC.html#dwc-3">whole-cone row identity in DWC3</a> gives
+<span class="math math-display" data-tex="\[
+ \Omega_j(R_jYR_j^*)=\Omega_j(Y),\qquad
+ \Omega_j(R_j^*ZR_j)=\Omega_j(Z)\quad(Z\in(eAe)_+).
+ \tag{DSEL33}
+\]">\[
+ \Omega_j(R_jYR_j^*)=\Omega_j(Y),\qquad
+ \Omega_j(R_j^*ZR_j)=\Omega_j(Z)\quad(Z\in(eAe)_+).
+ \tag{DSEL33}
+\]</span>
+To recall why infinity is included, centralizer ideal stability and cyclicity prove equality when either side is finite; applying the inverse corner map proves finiteness in the other direction. Thus one side cannot be finite when the other is infinite. No finite value of <span class="math" data-tex="\(\Omega_j(e)\)">\(\Omega_j(e)\)</span> is assumed.</p>
+<p>Now <span class="math" data-tex="\(a=R_1UR_2^*\)">\(a=R_1UR_2^*\)</span> is a unitary of <span class="math" data-tex="\(eAe\)">\(eAe\)</span>, and
+<span class="math math-display" data-tex="\[
+ \Omega_1(aZa^*)
+ =\Omega_1(UR_2^*ZR_2U^*)
+ =\Omega_2(R_2^*ZR_2)
+ =\Omega_2(Z).
+ \tag{DSEL34}
+\]">\[
+ \Omega_1(aZa^*)
+ =\Omega_1(UR_2^*ZR_2U^*)
+ =\Omega_2(R_2^*ZR_2)
+ =\Omega_2(Z).
+ \tag{DSEL34}
+\]</span>
+Write <span class="math" data-tex="\(a=w\otimes e_{11}\)">\(a=w\otimes e_{11}\)</span>. The rank-one normalization
+<span class="math" data-tex="\(\Omega_j(x\otimes e_{11})=\chi_j(x)\)">\(\Omega_j(x\otimes e_{11})=\chi_j(x)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \boxed{\ \chi_2(x)=\chi_1(wxw^*)\quad(x\in M_+),
+          \qquad w\in\mathcal U(M).\ }
+ \tag{DSEL35}
+\]">\[
+ \boxed{\ \chi_2(x)=\chi_1(wxw^*)\quad(x\in M_+),
+          \qquad w\in\mathcal U(M).\ }
+ \tag{DSEL35}
+\]</span>
+This proves faithful dominant-weight uniqueness from the original pointwise scalar hypothesis.</p>
+<p><span id="OA-FLOW.DS.6"></span><a id="ds-6"></a></p>
+<h2 id="6-reduce-exactly-the-full-supported-case">6. Reduce exactly the full supported case</h2>
+<p>Let <span class="math" data-tex="\(p=s(\psi)\)">\(p=s(\psi)\)</span>, assume (DSEL3), and assume <span class="math" data-tex="\(z_M(p)=1\)">\(z_M(p)=1\)</span>. Infinite multiplicity supplies two isometries with initial projection <span class="math" data-tex="\(p\)">\(p\)</span> and orthogonal final projections below <span class="math" data-tex="\(p\)">\(p\)</span>, inside <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>. They are also elements of <span class="math" data-tex="\(pMp\)">\(pMp\)</span>; hence <span class="math" data-tex="\(p\)">\(p\)</span> is properly infinite as a projection of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The faithful normal state constructed in Section 2 makes <span class="math" data-tex="\(1\)">\(1\)</span> countably decomposable: an orthogonal family of nonzero projections has positive state values, and only finitely many can have value at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. <a href="OA-FLOW-PC.html#oa-flow.pc.7">comparison from countably decomposable projections</a>, with source <span class="math" data-tex="\(1\)">\(1\)</span> and target <span class="math" data-tex="\(p\)">\(p\)</span>, therefore gives <span class="math" data-tex="\(1\precsim p\)">\(1\precsim p\)</span>. Inclusion gives <span class="math" data-tex="\(p\precsim1\)">\(p\precsim1\)</span>. <a href="OA-FLOW-PC.html#oa-flow.pc.3">projection Cantor–Bernstein</a> yields a partial isometry <span class="math" data-tex="\(s\in M\)">\(s\in M\)</span> with
+<span class="math math-display" data-tex="\[
+ s^*s=1,\qquad ss^*=p.
+ \tag{DSEL36}
+\]">\[
+ s^*s=1,\qquad ss^*=p.
+ \tag{DSEL36}
+\]</span>
+The map <span class="math" data-tex="\(F:M\to pMp\)">\(F:M\to pMp\)</span>, <span class="math" data-tex="\(F(x)=sxs^*\)">\(F(x)=sxs^*\)</span>, is a normal isomorphism with normal inverse <span class="math" data-tex="\(y\mapsto s^*ys\)">\(y\mapsto s^*ys\)</span>; its multiplication and inverse identities follow from the two displayed projections. Define
+<span class="math math-display" data-tex="\[
+ \chi(x)=\psi(sxs^*)\quad(x\in M_+).
+ \tag{DSEL37}
+\]">\[
+ \chi(x)=\psi(sxs^*)\quad(x\in M_+).
+ \tag{DSEL37}
+\]</span>
+Normal isomorphism transport makes <span class="math" data-tex="\(\chi\)">\(\chi\)</span> faithful normal semifinite. Modular covariance <a href="OA-FLOW-BC.html#bc-5">BC5</a> gives
+<span class="math" data-tex="\(M_\chi=s^*M_\psi s\)">\(M_\chi=s^*M_\psi s\)</span>, so it is properly infinite.</p>
+<p>For each <span class="math" data-tex="\(r\)">\(r\)</span>, (DSEL3) supplies a unitary <span class="math" data-tex="\(b_r\)">\(b_r\)</span> of the supported algebra <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, oriented so that
+<span class="math" data-tex="\(\psi_p\circ\operatorname{Ad}(b_r)=e^r\psi_p\)">\(\psi_p\circ\operatorname{Ad}(b_r)=e^r\psi_p\)</span>. Then <span class="math" data-tex="\(s^*b_rs\)">\(s^*b_rs\)</span> is a unitary of <span class="math" data-tex="\(M\)">\(M\)</span>, and direct substitution shows
+<span class="math math-display" data-tex="\[
+ \chi\circ\operatorname{Ad}(s^*b_rs)=e^r\chi.
+ \tag{DSEL38}
+\]">\[
+ \chi\circ\operatorname{Ad}(s^*b_rs)=e^r\chi.
+ \tag{DSEL38}
+\]</span>
+The faithful theorem compares <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with a fixed dominant <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, giving <span class="math" data-tex="\(\chi=\Phi\circ\operatorname{Ad}(w)\)">\(\chi=\Phi\circ\operatorname{Ad}(w)\)</span> for some <span class="math" data-tex="\(w\in\mathcal U(M)\)">\(w\in\mathcal U(M)\)</span>. Put <span class="math" data-tex="\(a=ws^*\)">\(a=ws^*\)</span>. Then
+<span class="math math-display" data-tex="\[
+ a^*a=p,\qquad aa^*=1,\qquad
+ \begin{aligned}
+ \Phi(axa^*)&amp;=\chi(s^*xs)\\
+              &amp;=\psi(pxp)=\psi(x)\quad(x\in M_+).
+ \end{aligned}
+ \tag{DSEL39}
+\]">\[
+ a^*a=p,\qquad aa^*=1,\qquad
+ \begin{aligned}
+ \Phi(axa^*)&amp;=\chi(s^*xs)\\
+              &amp;=\psi(pxp)=\psi(x)\quad(x\in M_+).
+ \end{aligned}
+ \tag{DSEL39}
+\]</span>
+Thus <span class="math" data-tex="\(\psi\sim\Phi\)">\(\psi\sim\Phi\)</span>. Conversely, (DSEL2) and PC2 imply that equivalence to a faithful weight forces <span class="math" data-tex="\(z_M(p)=z_M(1)=1\)">\(z_M(p)=z_M(1)=1\)</span>. This proves both directions of (DSEL4).</p>
+<p>More generally, the same argument in <span class="math" data-tex="\(zM\)">\(zM\)</span>, where <span class="math" data-tex="\(z=z_M(p)\)">\(z=z_M(p)\)</span>, compares <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with the restriction of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to that central summand, extended by zero on <span class="math" data-tex="\((1-z)M\)">\((1-z)M\)</span>. Indeed every modular group fixes the center by <a href="OA-FLOW-NC.html#oa-flow.nc.4">NC4</a>; <a href="OA-FLOW-CZ.html#cz-5">CZ5</a> gives the faithful normal semifinite central restriction. Compressing the filling isometries of <span class="math" data-tex="\(M_\Phi\)">\(M_\Phi\)</span> by <span class="math" data-tex="\(z\)">\(z\)</span> gives a filling family in its centralizer, and the scalar implementers commute with <span class="math" data-tex="\(z\)">\(z\)</span>. Thus the obstruction is exactly central support, not faithfulness of the original supported weight.</p>
+<p><span id="OA-FLOW.DS.7"></span><a id="ds-7"></a></p>
+<h2 id="7-existence-and-the-dual-trace-representative">7. Existence and the dual trace representative</h2>
+<p>The existence assertion can be proved directly, without presuming an unproved stabilized decomposition. Choose a faithful normal state <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. Let
+<span class="math math-display" data-tex="\[
+ K=L^2(\mathbb R,dq)\otimes\ell^2(\mathbb N),\qquad
+ A=M\bar\otimes B(K),\qquad
+ \Omega=\rho\bar\otimes\operatorname{Tr}_K,
+ \qquad k=1\otimes e^Q\otimes1.
+ \tag{DSEL40}
+\]">\[
+ K=L^2(\mathbb R,dq)\otimes\ell^2(\mathbb N),\qquad
+ A=M\bar\otimes B(K),\qquad
+ \Omega=\rho\bar\otimes\operatorname{Tr}_K,
+ \qquad k=1\otimes e^Q\otimes1.
+ \tag{DSEL40}
+\]</span>
+The domain of <span class="math" data-tex="\(e^Q\otimes1\)">\(e^Q\otimes1\)</span> consists of fields <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with
+<span class="math" data-tex="\(\int e^{2q}\|\xi(q)\|_{\ell^2}^2dq&lt;\infty\)">\(\int e^{2q}\|\xi(q)\|_{\ell^2}^2dq&lt;\infty\)</span>. Compact coordinate truncation proves density; multiplication by the strictly positive function <span class="math" data-tex="\(e^q\)">\(e^q\)</span> gives a positive nonsingular selfadjoint operator. Its spectral projections belong to <span class="math" data-tex="\(1\otimes L^\infty(\mathbb R)\otimes1\)">\(1\otimes L^\infty(\mathbb R)\otimes1\)</span>, which is fixed by <span class="math" data-tex="\(\sigma^\Omega\)">\(\sigma^\Omega\)</span>. Define <span class="math" data-tex="\(\eta=\Omega_k\)">\(\eta=\Omega_k\)</span> by the whole-cone cutoff formula (DSEL26). CZ2 makes it faithful normal semifinite, and <a href="OA-FLOW-CZ.html#cz-5">CZ5</a> gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^\eta
+ =\sigma_t^\rho\bar\otimes
+        \operatorname{Ad}(V_t\otimes1).
+ \tag{DSEL41}
+\]">\[
+ \sigma_t^\eta
+ =\sigma_t^\rho\bar\otimes
+        \operatorname{Ad}(V_t\otimes1).
+ \tag{DSEL41}
+\]</span>
+The algebra <span class="math" data-tex="\(A_\eta\)">\(A_\eta\)</span> contains the unital subalgebra
+<span class="math" data-tex="\(1\otimes1\otimes B(\ell^2)\)">\(1\otimes1\otimes B(\ell^2)\)</span>. Its even- and odd-coordinate isometries have orthogonal ranges and initial projection one; thus <span class="math" data-tex="\(A_\eta\)">\(A_\eta\)</span> is properly infinite.</p>
+<p>For <span class="math" data-tex="\((\lambda_r f)(q)=f(q-r)\)">\((\lambda_r f)(q)=f(q-r)\)</span>, direct calculation gives
+<span class="math math-display" data-tex="\[
+ V_t\lambda_r V_t^*=e^{irt}\lambda_r.
+ \tag{DSEL42}
+\]">\[
+ V_t\lambda_r V_t^*=e^{irt}\lambda_r.
+ \tag{DSEL42}
+\]</span>
+Hence <span class="math" data-tex="\(Z_r=1\otimes\lambda_r\otimes1\)">\(Z_r=1\otimes\lambda_r\otimes1\)</span> is a strongly continuous eigenunitary field for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. By (DSEL24),
+<span class="math" data-tex="\(\eta\circ\operatorname{Ad}(Z_r)=e^r\eta\)">\(\eta\circ\operatorname{Ad}(Z_r)=e^r\eta\)</span> on all of <span class="math" data-tex="\(A_+\)">\(A_+\)</span>.</p>
+<p>Proper infiniteness of <span class="math" data-tex="\(M\)">\(M\)</span> now moves this example back to <span class="math" data-tex="\(M\)">\(M\)</span>. The space <span class="math" data-tex="\(K\)">\(K\)</span> has a countable orthonormal basis, and PC5 supplies filling isometries <span class="math" data-tex="\((s_n)\)">\((s_n)\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. The row
+<span class="math" data-tex="\(R=\sum_ns_n\otimes e_{1n}\)">\(R=\sum_ns_n\otimes e_{1n}\)</span> satisfies <span class="math" data-tex="\(R^*R=1_A\)">\(R^*R=1_A\)</span>, <span class="math" data-tex="\(RR^*=1\otimes e_{11}\)">\(RR^*=1\otimes e_{11}\)</span>, with strong-star convergence exactly as in (DSEL32). Thus
+<span class="math math-display" data-tex="\[
+ A\longrightarrow M,\qquad
+ X\longmapsto F(X),\quad
+ RXR^*=F(X)\otimes e_{11},
+ \tag{DSEL43}
+\]">\[
+ A\longrightarrow M,\qquad
+ X\longmapsto F(X),\quad
+ RXR^*=F(X)\otimes e_{11},
+ \tag{DSEL43}
+\]</span>
+is a normal isomorphism with normal inverse. No weight preservation by this row is required: define <span class="math" data-tex="\(\Phi=\eta\circ F^{-1}\)">\(\Phi=\eta\circ F^{-1}\)</span>. Normal transport preserves faithfulness, normality and semifiniteness, carries <span class="math" data-tex="\(A_\eta\)">\(A_\eta\)</span> onto <span class="math" data-tex="\(M_\Phi\)">\(M_\Phi\)</span>, and carries the unitaries <span class="math" data-tex="\(Z_r\)">\(Z_r\)</span> to scalar implementers of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Therefore <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is dominant, proving existence.</p>
+<p>If <span class="math" data-tex="\(M=N\rtimes_\theta\mathbb R\)">\(M=N\rtimes_\theta\mathbb R\)</span> is a specified stabilized trace-scaling presentation with <span class="math" data-tex="\(N\)">\(N\)</span> properly infinite and <span class="math" data-tex="\(\tau\theta_s=e^{-s}\tau\)">\(\tau\theta_s=e^{-s}\tau\)</span>, the actual dual weight <span class="math" data-tex="\(\widetilde\tau\)">\(\widetilde\tau\)</span> has centralizer <span class="math" data-tex="\(N\)">\(N\)</span> and satisfies
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\widetilde\tau}(u_s)=e^{-ist}u_s
+ \tag{DSEL44}
+\]">\[
+ \sigma_t^{\widetilde\tau}(u_s)=e^{-ist}u_s
+ \tag{DSEL44}
+\]</span>
+by <a href="OA-FLOW-DWC.html#dwc-4">DWC4</a> and its exact modular providers. Taking <span class="math" data-tex="\(s=-r\)">\(s=-r\)</span> and applying (DSEL24) gives
+<span class="math" data-tex="\(\widetilde\tau\circ\operatorname{Ad}(u_{-r})=e^r\widetilde\tau\)">\(\widetilde\tau\circ\operatorname{Ad}(u_{-r})=e^r\widetilde\tau\)</span>. It is dominant, so (DSEL35) identifies it with the weight constructed above and (DSEL39) identifies every full supported weight in the theorem with it. This proves the original dual-weight conclusion whenever that presentation is used, without changing its scalar sign.</p>
+<p><span id="OA-FLOW.DS.8"></span><a id="ds-8"></a></p>
+<h2 id="8-models-and-solved-diagnostics">8. Models and solved diagnostics</h2>
+<p>The following models show how the measurable eigenfield construction, proper infiniteness of the supported centralizer, and full central support in the original algebra enter <a href="#ds-1">Sections 1–7</a>. They also keep the scalar normalization visible on positive elements of infinite weight.</p>
+<h3 id="the-weighted-translation-model">The weighted translation model</h3>
+<p>Put <span class="math" data-tex="\(H_0=L^2(\mathbb R,dq)\)">\(H_0=L^2(\mathbb R,dq)\)</span>, <span class="math" data-tex="\(H=H_0\otimes\ell^2(\mathbb N)\)">\(H=H_0\otimes\ell^2(\mathbb N)\)</span>, and <span class="math" data-tex="\(B=B(H)\)">\(B=B(H)\)</span>, where <span class="math" data-tex="\(\mathbb N=\{1,2,3,\ldots\}\)">\(\mathbb N=\{1,2,3,\ldots\}\)</span> and <span class="math" data-tex="\((\delta_n)_{n\ge1}\)">\((\delta_n)_{n\ge1}\)</span> is the multiplicity basis. On <span class="math" data-tex="\(H\)">\(H\)</span>, let
+<span class="math math-display" data-tex="\[
+ (h\xi)(q)=e^q\xi(q),\qquad
+ D(h)=\left\{\xi:\int_{\mathbb R}e^{2q}\|\xi(q)\|^2\,dq&lt;\infty\right\}.
+ \tag{DSM1}
+\]">\[
+ (h\xi)(q)=e^q\xi(q),\qquad
+ D(h)=\left\{\xi:\int_{\mathbb R}e^{2q}\|\xi(q)\|^2\,dq&lt;\infty\right\}.
+ \tag{DSM1}
+\]</span>
+Multiplication by <span class="math" data-tex="\(e^q\)">\(e^q\)</span> is positive, selfadjoint and nonsingular. Truncating to bounded intervals in <span class="math" data-tex="\(q\)">\(q\)</span> proves density of its domain and convergence in its graph norm. Define, on the entire positive cone,
+<span class="math math-display" data-tex="\[
+ h_\delta=h(1+\delta h)^{-1},\qquad
+ \nu(x)=\sup_{\delta&gt;0}\operatorname{Tr}(h_\delta^{1/2}x h_\delta^{1/2})
+ \quad(x\in B_+).
+ \tag{DSM2}
+\]">\[
+ h_\delta=h(1+\delta h)^{-1},\qquad
+ \nu(x)=\sup_{\delta&gt;0}\operatorname{Tr}(h_\delta^{1/2}x h_\delta^{1/2})
+ \quad(x\in B_+).
+ \tag{DSM2}
+\]</span>
+The supremum increases as <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. The <a href="OA-FLOW-CZ.html#cz-2">unbounded-density construction</a> makes <span class="math" data-tex="\(\nu\)">\(\nu\)</span> faithful, normal and semifinite; its <a href="OA-FLOW-CZ.html#cz-5">full modular formula</a> gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^\nu=\operatorname{Ad}(V_t\otimes1),\qquad
+ (V_tf)(q)=e^{itq}f(q),\qquad
+ (\lambda_rf)(q)=f(q-r),\qquad Z_r=\lambda_r\otimes1.
+ \tag{DSM3}
+\]">\[
+ \sigma_t^\nu=\operatorname{Ad}(V_t\otimes1),\qquad
+ (V_tf)(q)=e^{itq}f(q),\qquad
+ (\lambda_rf)(q)=f(q-r),\qquad Z_r=\lambda_r\otimes1.
+ \tag{DSM3}
+\]</span>
+This is the concrete instance of (DSEL40)–(DSEL42) in <a href="#ds-7">Section 7</a>. The centralizer contains <span class="math" data-tex="\(1\otimes B(\ell^2)\)">\(1\otimes B(\ell^2)\)</span>. In that subalgebra the isometries
+<span class="math" data-tex="\(j_0\delta_n=\delta_{2n}\)">\(j_0\delta_n=\delta_{2n}\)</span> and <span class="math" data-tex="\(j_1\delta_n=\delta_{2n-1}\)">\(j_1\delta_n=\delta_{2n-1}\)</span> have orthogonal ranges summing to one. Hence <span class="math" data-tex="\(B_\nu\)">\(B_\nu\)</span> is properly infinite. Diagnostic 1 proves scalar absorption directly from (DSM2), including infinite values, so <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is dominant.</p>
+<p>The figure shows actual parameter coordinates in the selector construction and the two original central summands in the support obstruction.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The selector uses two points of the good interval to obtain their frequency difference, then adds three equal frequencies; the support diagram shows why a partial isometry cannot reach a missing central summand." src="assets/pointwise-dominant-weights/ds-models.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1.</em> In the upper left, <span class="math" data-tex="\(a(r)\)">\(a(r)\)</span> and <span class="math" data-tex="\(a(r)-r\)">\(a(r)-r\)</span> lie in <span class="math" data-tex="\(K=[1/4,3/4]\)">\(K=[1/4,3/4]\)</span>, and their signed difference is <span class="math" data-tex="\(r\)">\(r\)</span>. The upper right uses <span class="math" data-tex="\(r=7/6\)">\(r=7/6\)</span>, <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, and <span class="math" data-tex="\(r/n=7/18\)">\(r/n=7/18\)</span>; the three arrows add exact frequencies. The lower panel records supports in <span class="math" data-tex="\(B\oplus B\)">\(B\oplus B\)</span>, not dimensions or finite traces. Diagnostic 2 proves the coordinate formulas, and Diagnostic 5 proves the central obstruction. The drawing is an original schematic of these exact objects. <a href="assets/pointwise-dominant-weights/render.py">Reproducible source</a>, <a href="assets/pointwise-dominant-weights/data.json">exact data</a>, <a href="assets/pointwise-dominant-weights/ds-models.png">PNG</a>, <a href="assets/pointwise-dominant-weights/TERMS.md">terms</a> and <a href="assets/pointwise-dominant-weights/FONT-LICENSE.txt">font license</a> accompany the figure.</p>
+<h3 id="diagnostic-1-determine-the-scalar-including-infinite-values">Diagnostic 1. Determine the scalar, including infinite values</h3>
+<p>Compute <span class="math" data-tex="\(\nu\circ\operatorname{Ad}(Z_r)\)">\(\nu\circ\operatorname{Ad}(Z_r)\)</span>, check it on a rank-one projection, and reconcile its sign with the crossed-product generators in (DSEL44).</p>
+<p><strong>Solution.</strong> On the full domain, substitution gives
+<span class="math math-display" data-tex="\[
+ Z_r^*hZ_r=e^r h,\qquad
+ Z_r^*h_\delta Z_r=e^r h_{\delta e^r},\qquad
+ V_t\lambda_rV_t^*=e^{irt}\lambda_r.
+ \tag{DSM4}
+\]">\[
+ Z_r^*hZ_r=e^r h,\qquad
+ Z_r^*h_\delta Z_r=e^r h_{\delta e^r},\qquad
+ V_t\lambda_rV_t^*=e^{irt}\lambda_r.
+ \tag{DSM4}
+\]</span>
+For the first identity the domain condition becomes
+<span class="math" data-tex="\(\int e^{2q}\|\xi(q-r)\|^2dq=e^{2r}\int e^{2q}\|\xi(q)\|^2dq\)">\(\int e^{2q}\|\xi(q-r)\|^2dq=e^{2r}\int e^{2q}\|\xi(q)\|^2dq\)</span>, so it also identifies the domains. The bounded identity follows by spectral calculus. Unitary invariance of the positive trace and (DSM2) now give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \nu(Z_rxZ_r^*)
+ &amp;=\sup_{\delta&gt;0}\operatorname{Tr}\!\left((Z_r^*h_\delta Z_r)^{1/2}
+                 x(Z_r^*h_\delta Z_r)^{1/2}\right)\\
+ &amp;=e^r\sup_{\delta&gt;0}\operatorname{Tr}
+       (h_{\delta e^r}^{1/2}x h_{\delta e^r}^{1/2})
+ =e^r\nu(x).
+ \end{aligned}
+ \tag{DSM5}
+\]">\[
+ \begin{aligned}
+ \nu(Z_rxZ_r^*)
+ &amp;=\sup_{\delta&gt;0}\operatorname{Tr}\!\left((Z_r^*h_\delta Z_r)^{1/2}
+                 x(Z_r^*h_\delta Z_r)^{1/2}\right)\\
+ &amp;=e^r\sup_{\delta&gt;0}\operatorname{Tr}
+       (h_{\delta e^r}^{1/2}x h_{\delta e^r}^{1/2})
+ =e^r\nu(x).
+ \end{aligned}
+ \tag{DSM5}
+\]</span>
+The positive suprema and trace invariance apply even when their value is infinite; no subtraction of weights occurs.</p>
+<p>For a unit vector <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, let <span class="math" data-tex="\(p_\xi\)">\(p_\xi\)</span> be its rank-one projection. Taking the trace of the rank-one cutoff and using monotone convergence gives
+<span class="math math-display" data-tex="\[
+ \nu(p_\xi)=\int_{\mathbb R}e^q\|\xi(q)\|^2dq\in[0,\infty].
+ \tag{DSM6}
+\]">\[
+ \nu(p_\xi)=\int_{\mathbb R}e^q\|\xi(q)\|^2dq\in[0,\infty].
+ \tag{DSM6}
+\]</span>
+In particular <span class="math" data-tex="\(\xi=1_{[0,1]}\otimes\delta_1\)">\(\xi=1_{[0,1]}\otimes\delta_1\)</span> has weight <span class="math" data-tex="\(e-1\)">\(e-1\)</span>, and its translate has weight <span class="math" data-tex="\(e^r(e-1)\)">\(e^r(e-1)\)</span>. A unit vector proportional to <span class="math" data-tex="\(1_{[0,\infty)}e^{-q/4}\otimes\delta_1\)">\(1_{[0,\infty)}e^{-q/4}\otimes\delta_1\)</span> has infinite weight before and after translation, exactly as (DSM5) states. Finally <span class="math" data-tex="\(u_s\)">\(u_s\)</span> in (DSEL44) has frequency <span class="math" data-tex="\(-s\)">\(-s\)</span>, so <a href="#ds-5">Section 5's normalized inner derivative</a> gives <span class="math" data-tex="\(\widetilde\tau\circ\operatorname{Ad}(u_s)=e^{-s}\widetilde\tau\)">\(\widetilde\tau\circ\operatorname{Ad}(u_s)=e^{-s}\widetilde\tau\)</span>. The implementer for the scalar <span class="math" data-tex="\(e^r\)">\(e^r\)</span> is <span class="math" data-tex="\(u_{-r}\)">\(u_{-r}\)</span>.</p>
+<h3 id="diagnostic-2-repair-a-deliberately-wrong-borel-value">Diagnostic 2. Repair a deliberately wrong Borel value</h3>
+<p>For the action in (DSM3), consider the Borel field
+<span class="math math-display" data-tex="\[
+ X_0(r)=
+ \begin{cases}Z_r,&amp;r\ne0,\\ Z_1,&amp;r=0.\end{cases}
+ \qquad E=\mathbb R\setminus\{0\},\qquad K=[1/4,3/4].
+ \tag{DSM7}
+\]">\[
+ X_0(r)=
+ \begin{cases}Z_r,&amp;r\ne0,\\ Z_1,&amp;r=0.\end{cases}
+ \qquad E=\mathbb R\setminus\{0\},\qquad K=[1/4,3/4].
+ \tag{DSM7}
+\]</span>
+Carry out the complete repair in <a href="#ds-3">Section 3</a>, including a parameter outside <span class="math" data-tex="\(K-K\)">\(K-K\)</span>.</p>
+<p><strong>Solution.</strong> The eigenidentity fails at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, since <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> has frequency one rather than zero. The good set is exactly <span class="math" data-tex="\(E\)">\(E\)</span>. Elementary interval intersection gives
+<span class="math math-display" data-tex="\[
+ \int 1_K(q)1_K(q-r)\,dq=\max(0,1/2-|r|),\qquad
+ K-K=[-1/2,1/2].
+ \tag{DSM8}
+\]">\[
+ \int 1_K(q)1_K(q-r)\,dq=\max(0,1/2-|r|),\qquad
+ K-K=[-1/2,1/2].
+ \tag{DSM8}
+\]</span>
+Thus <span class="math" data-tex="\(\varepsilon=1/2\)">\(\varepsilon=1/2\)</span> works for the open interval used in (DSEL15). For every <span class="math" data-tex="\(r\in K-K\)">\(r\in K-K\)</span>, the first point of <span class="math" data-tex="\(K\cap(K+r)\)">\(K\cap(K+r)\)</span> is
+<span class="math math-display" data-tex="\[
+ a(r)=\max(1/4,1/4+r),\qquad b(r)=a(r)-r,
+ \qquad a(r),b(r)\in K,\qquad a(r)-b(r)=r.
+ \tag{DSM9}
+\]">\[
+ a(r)=\max(1/4,1/4+r),\qquad b(r)=a(r)-r,
+ \qquad a(r),b(r)\in K,\qquad a(r)-b(r)=r.
+ \tag{DSM9}
+\]</span>
+Both arguments are good, including at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Since <span class="math" data-tex="\(Z_aZ_b^*=Z_{a-b}\)">\(Z_aZ_b^*=Z_{a-b}\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ Y(r)=X_0(a(r))X_0(b(r))^*=Z_r\quad(|r|&lt;1/2),\\
+ n(r)=1+\lfloor2|r|\rfloor,\qquad
+ X(r)=Y(r/n(r))^{n(r)}=Z_r\quad(r\in\mathbb R).
+ \end{gathered}
+ \tag{DSM10}
+\]">\[
+ \begin{gathered}
+ Y(r)=X_0(a(r))X_0(b(r))^*=Z_r\quad(|r|&lt;1/2),\\
+ n(r)=1+\lfloor2|r|\rfloor,\qquad
+ X(r)=Y(r/n(r))^{n(r)}=Z_r\quad(r\in\mathbb R).
+ \end{gathered}
+ \tag{DSM10}
+\]</span>
+In particular <span class="math" data-tex="\(Y(0)=Z_{1/4}Z_{1/4}^*=1\)">\(Y(0)=Z_{1/4}Z_{1/4}^*=1\)</span>; the bad value <span class="math" data-tex="\(X_0(0)\)">\(X_0(0)\)</span> is never used. At <span class="math" data-tex="\(r=7/6\)">\(r=7/6\)</span>, the exact choices are
+<span class="math math-display" data-tex="\[
+ n=3,\qquad r/n=7/18,\qquad
+ a(r/n)=23/36,\quad b(r/n)=1/4,\qquad
+ (Z_{23/36}Z_{1/4}^*)^3=Z_{7/6}.
+ \tag{DSM11}
+\]">\[
+ n=3,\qquad r/n=7/18,\qquad
+ a(r/n)=23/36,\quad b(r/n)=1/4,\qquad
+ (Z_{23/36}Z_{1/4}^*)^3=Z_{7/6}.
+ \tag{DSM11}
+\]</span>
+The extra one in <span class="math" data-tex="\(n(r)\)">\(n(r)\)</span> ensures a strict inequality <span class="math" data-tex="\(|r/n(r)|&lt;1/2\)">\(|r/n(r)|&lt;1/2\)</span>, even when <span class="math" data-tex="\(2|r|\)">\(2|r|\)</span> is an integer. Although the repaired field in this example is continuous and multiplicative, the abstract proof uses only Borel products, adjoints and powers: eigenfrequencies subtract in a product with an adjoint and add in a power. It neither assumes nor deduces those additional properties.</p>
+<p>Assigning the identity to every bad value is not a general repair. For example, keep <span class="math" data-tex="\(Z_r\)">\(Z_r\)</span> except at <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, and put <span class="math" data-tex="\(X_0(1)=1\)">\(X_0(1)=1\)</span>. This is another Borel field correct on a conull set, but its value at one still has frequency zero. A conull statement alone cannot be substituted at a specified parameter; the compact-set construction supplies that missing pointwise assertion.</p>
+<h3 id="diagnostic-3-an-everywhere-discontinuous-eigenfield-with-no-group-law">Diagnostic 3. An everywhere discontinuous eigenfield with no group law</h3>
+<p>Construct a normalized Borel eigenfield for <span class="math" data-tex="\(\sigma^\nu\)">\(\sigma^\nu\)</span> that is discontinuous at every parameter and is not multiplicative.</p>
+<p><strong>Solution.</strong> On <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, choose the fixed unitary <span class="math" data-tex="\(c\)">\(c\)</span> given by <span class="math" data-tex="\(c\delta_1=-\delta_1\)">\(c\delta_1=-\delta_1\)</span>, <span class="math" data-tex="\(c\delta_n=\delta_n\)">\(c\delta_n=\delta_n\)</span> for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Let <span class="math" data-tex="\(S=\mathbb Q\setminus\{0\}\)">\(S=\mathbb Q\setminus\{0\}\)</span> and set
+<span class="math math-display" data-tex="\[
+ W(r)=\lambda_r\otimes c^{1_S(r)}.
+ \qquad W(0)=1,\qquad
+ \sigma_t^\nu(W(r))=e^{irt}W(r)
+ \quad(r,t\in\mathbb R).
+ \tag{DSM12}
+\]">\[
+ W(r)=\lambda_r\otimes c^{1_S(r)}.
+ \qquad W(0)=1,\qquad
+ \sigma_t^\nu(W(r))=e^{irt}W(r)
+ \quad(r,t\in\mathbb R).
+ \tag{DSM12}
+\]</span>
+The indicator of <span class="math" data-tex="\(S\)">\(S\)</span> is Borel, the translation field is strongly continuous, and multiplication on bounded sets is strong-star continuous. Hence <span class="math" data-tex="\(W\)">\(W\)</span> is Borel in the metric of <a href="#ds-2">Section 2</a>. Its second factor belongs to the centralizer, which proves the eigenidentity.</p>
+<p>At any <span class="math" data-tex="\(r_0\)">\(r_0\)</span>, approach through nonzero rationals and through irrationals. On a nonzero vector <span class="math" data-tex="\(f\otimes\delta_1\)">\(f\otimes\delta_1\)</span>, the two strong limits are <span class="math" data-tex="\(-\lambda_{r_0}f\otimes\delta_1\)">\(-\lambda_{r_0}f\otimes\delta_1\)</span> and <span class="math" data-tex="\(\lambda_{r_0}f\otimes\delta_1\)">\(\lambda_{r_0}f\otimes\delta_1\)</span>, respectively; they differ by norm <span class="math" data-tex="\(2\|f\|\)">\(2\|f\|\)</span>. Thus no point of continuity exists. Moreover
+<span class="math math-display" data-tex="\[
+ W(1/2)^2=\lambda_1\otimes1\ne\lambda_1\otimes c=W(1).
+ \tag{DSM13}
+\]">\[
+ W(1/2)^2=\lambda_1\otimes1\ne\lambda_1\otimes c=W(1).
+ \tag{DSM13}
+\]</span>
+Nevertheless <a href="#ds-4">Section 4</a> applies to this field, and the comparison proof requires nothing further of it.</p>
+<h3 id="diagnostic-4-the-normal-tensor-operator-can-forget-a-null-set">Diagnostic 4. The normal tensor operator can forget a null set</h3>
+<p>Describe the multiplication operators associated with <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> on <span class="math" data-tex="\(L^2(\mathbb R_r,H)\)">\(L^2(\mathbb R_r,H)\)</span>, verify their modular transport directly, and explain what their equality does not prove about the fields.</p>
+<p><strong>Solution.</strong> Writing vectors as <span class="math" data-tex="\(\xi(r,q)\in\ell^2\)">\(\xi(r,q)\in\ell^2\)</span>, the first multiplier is the unitary shear
+<span class="math math-display" data-tex="\[
+ (\mathfrak Z\xi)(r,q)=\xi(r,q-r),\qquad
+ (\mathfrak Z^*\xi)(r,q)=\xi(r,q+r).
+ \tag{DSM14}
+\]">\[
+ (\mathfrak Z\xi)(r,q)=\xi(r,q-r),\qquad
+ (\mathfrak Z^*\xi)(r,q)=\xi(r,q+r).
+ \tag{DSM14}
+\]</span>
+Fubini and the measure-preserving substitution in <span class="math" data-tex="\(q\)">\(q\)</span> prove the two norm identities and inverse formulas. Section 4 gives <span class="math" data-tex="\(\mathfrak Z\in B\bar\otimes L^\infty(\mathbb R_r)\)">\(\mathfrak Z\in B\bar\otimes L^\infty(\mathbb R_r)\)</span> by its bounded simple-field approximations, so this is also a statement about the normal tensor algebra. The multiplier <span class="math" data-tex="\(\mathfrak W\)">\(\mathfrak W\)</span> has the additional factor <span class="math" data-tex="\(c^{1_S(r)}\)">\(c^{1_S(r)}\)</span>. Since <span class="math" data-tex="\(S\)">\(S\)</span> is null,
+<span class="math math-display" data-tex="\[
+ \mathfrak W=\mathfrak Z,\qquad
+ (\sigma_t^\nu\bar\otimes\operatorname{id})(\mathfrak Z)
+ =\mathfrak Z(1\otimes V_t^{(r)}),\qquad
+ (V_t^{(r)}g)(r)=e^{itr}g(r).
+ \tag{DSM15}
+\]">\[
+ \mathfrak W=\mathfrak Z,\qquad
+ (\sigma_t^\nu\bar\otimes\operatorname{id})(\mathfrak Z)
+ =\mathfrak Z(1\otimes V_t^{(r)}),\qquad
+ (V_t^{(r)}g)(r)=e^{itr}g(r).
+ \tag{DSM15}
+\]</span>
+For the second identity, conjugating (DSM14) by multiplication by <span class="math" data-tex="\(e^{itq}\)">\(e^{itq}\)</span> contributes exactly <span class="math" data-tex="\(e^{itq}e^{-it(q-r)}=e^{itr}\)">\(e^{itq}e^{-it(q-r)}=e^{itr}\)</span>. It therefore holds on the entire Hilbert space. The same identity for <span class="math" data-tex="\(\mathfrak W\)">\(\mathfrak W\)</span> follows either from equality or from the everywhere eigenidentity (DSM12).</p>
+<p>Equality of these normal multipliers cannot imply equality or continuity of their chosen pointwise representatives: <span class="math" data-tex="\(W\)">\(W\)</span> differs from <span class="math" data-tex="\(Z\)">\(Z\)</span> at every nonzero rational and is everywhere discontinuous. Similarly (DSM7) defines the same multiplier but fails the eigenidentity at zero. Section 3 proves the everywhere assertion before Section 4 passes to operators; one cannot recover it from operator equality alone.</p>
+<h3 id="diagnostic-5-a-missing-original-central-summand-is-an-obstruction">Diagnostic 5. A missing original central summand is an obstruction</h3>
+<p>Let <span class="math" data-tex="\(M=B\oplus B\)">\(M=B\oplus B\)</span>, <span class="math" data-tex="\(\psi=\nu\oplus0\)">\(\psi=\nu\oplus0\)</span>, and <span class="math" data-tex="\(\Phi=\nu\oplus\nu\)">\(\Phi=\nu\oplus\nu\)</span>. Verify all relevant hypotheses for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and decide whether <span class="math" data-tex="\(\psi\sim\Phi\)">\(\psi\sim\Phi\)</span>.</p>
+<p><strong>Solution.</strong> Both summands have separable predual and properly infinite identity, so <span class="math" data-tex="\(M\)">\(M\)</span> does too. The weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is normal and semifinite: its finite ideal is the direct sum of the finite ideal of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and the entire second summand, hence is ultraweakly dense. Its support and original central support are
+<span class="math math-display" data-tex="\[
+ p=s(\psi)=1\oplus0,\qquad z_M(p)=p,\qquad
+ M_\psi=B_\nu\oplus0.
+ \tag{DSM16}
+\]">\[
+ p=s(\psi)=1\oplus0,\qquad z_M(p)=p,\qquad
+ M_\psi=B_\nu\oplus0.
+ \tag{DSM16}
+\]</span>
+The supported centralizer is properly infinite with identity <span class="math" data-tex="\(p\)">\(p\)</span>. The unitaries <span class="math" data-tex="\(Z_r\oplus0\)">\(Z_r\oplus0\)</span> of <span class="math" data-tex="\(pMp\)">\(pMp\)</span> implement the scalar identity <span class="math" data-tex="\(\psi_p\circ\operatorname{Ad}(Z_r\oplus0)=e^r\psi_p\)">\(\psi_p\circ\operatorname{Ad}(Z_r\oplus0)=e^r\psi_p\)</span>. Equivalently, to realize the convention (DSEL2) for <span class="math" data-tex="\(\psi\sim e^r\psi\)">\(\psi\sim e^r\psi\)</span>, use <span class="math" data-tex="\(Z_{-r}\oplus0\)">\(Z_{-r}\oplus0\)</span>. Thus every positive scalar is absorbed in exactly the supported sense of <a href="#ds-1">Section 1</a>. The faithful weight <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is dominant by applying these same constructions on both summands.</p>
+<p>If a partial isometry <span class="math" data-tex="\(a=(a_1,a_2)\in M\)">\(a=(a_1,a_2)\in M\)</span> implemented <span class="math" data-tex="\(\psi\sim\Phi\)">\(\psi\sim\Phi\)</span>, it would satisfy
+<span class="math math-display" data-tex="\[
+ a^*a=(1,0),\qquad aa^*=(1,1).
+ \tag{DSM17}
+\]">\[
+ a^*a=(1,0),\qquad aa^*=(1,1).
+ \tag{DSM17}
+\]</span>
+The second component of the first equation forces <span class="math" data-tex="\(a_2^*a_2=0\)">\(a_2^*a_2=0\)</span>, hence <span class="math" data-tex="\(a_2=0\)">\(a_2=0\)</span>; the second component of the second equation would then read <span class="math" data-tex="\(0=1\)">\(0=1\)</span>. This is impossible. The obstruction concerns central support in the original algebra <span class="math" data-tex="\(M\)">\(M\)</span>, even though the supported weight is faithful on its own corner. The central-summand conclusion of <a href="#ds-6">Section 6</a> remains exact: the restriction of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(pM\)">\(pM\)</span>, extended by zero, is precisely <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<h3 id="diagnostic-6-a-proper-support-can-still-be-full">Diagnostic 6. A proper support can still be full</h3>
+<p>In the factor <span class="math" data-tex="\(B\)">\(B\)</span>, let <span class="math" data-tex="\(s=1\otimes j_0\)">\(s=1\otimes j_0\)</span>, <span class="math" data-tex="\(p=ss^*&lt;1\)">\(p=ss^*&lt;1\)</span>, and define <span class="math" data-tex="\(\omega(x)=\nu(s^*xs)\)">\(\omega(x)=\nu(s^*xs)\)</span> for <span class="math" data-tex="\(x\in B_+\)">\(x\in B_+\)</span>. Determine its support, scalar implementers and equivalence to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p><strong>Solution.</strong> Compression is normal and positive. On <span class="math" data-tex="\(pBp\)">\(pBp\)</span>, the map <span class="math" data-tex="\(y\mapsto s^*ys\)">\(y\mapsto s^*ys\)</span> is a normal isomorphism onto <span class="math" data-tex="\(B\)">\(B\)</span>, so the restriction of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is faithful, normal and semifinite. Its extension by the support compression is semifinite on <span class="math" data-tex="\(B\)">\(B\)</span> as well: the positive selfadjoint density equal to <span class="math" data-tex="\(shs^*\)">\(shs^*\)</span> on <span class="math" data-tex="\(pH\)">\(pH\)</span> and zero on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span> has dense square-root domain <span class="math" data-tex="\(D\)">\(D\)</span>. The same trace cutoffs as (DSM2) identify its density weight with <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. For <span class="math" data-tex="\(v\in D\)">\(v\in D\)</span> and <span class="math" data-tex="\(u\in H\)">\(u\in H\)</span>, the rank-one operator <span class="math" data-tex="\(|u\rangle\langle v|\)">\(|u\rangle\langle v|\)</span> belongs to the finite left ideal, because its adjoint square is <span class="math" data-tex="\(\|u\|^2|v\rangle\langle v|\)">\(\|u\|^2|v\rangle\langle v|\)</span> and has finite weight. Their span is strongly dense, proving semifiniteness. Thus the support is exactly <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(B\)">\(B\)</span> is a factor and <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>, its original central support is one. Normal modular transport gives
+<span class="math math-display" data-tex="\[
+ B_\omega=sB_\nu s^*,\qquad
+ b_r=sZ_rs^*\in\mathcal U(pBp),\qquad
+ \omega(b_rxb_r^*)=e^r\omega(x).
+ \tag{DSM18}
+\]">\[
+ B_\omega=sB_\nu s^*,\qquad
+ b_r=sZ_rs^*\in\mathcal U(pBp),\qquad
+ \omega(b_rxb_r^*)=e^r\omega(x).
+ \tag{DSM18}
+\]</span>
+The first equality makes the supported centralizer properly infinite; the last follows by multiplying out <span class="math" data-tex="\(s^*s=1\)">\(s^*s=1\)</span> and using (DSM5). Finally <span class="math" data-tex="\(a=s^*\)">\(a=s^*\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ a^*a=p,\qquad aa^*=1,\qquad
+ \nu(axa^*)=\nu(s^*xs)=\omega(x)\quad(x\in B_+).
+ \tag{DSM19}
+\]">\[
+ a^*a=p,\qquad aa^*=1,\qquad
+ \nu(axa^*)=\nu(s^*xs)=\omega(x)\quad(x\in B_+).
+ \tag{DSM19}
+\]</span>
+Therefore <span class="math" data-tex="\(\omega\sim\nu\)">\(\omega\sim\nu\)</span>, although <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is not faithful on <span class="math" data-tex="\(B\)">\(B\)</span>. This separates full central support from equality of support with one.</p>
+<h3 id="diagnostic-7-scalar-absorption-does-not-imply-infinite-multiplicity">Diagnostic 7. Scalar absorption does not imply infinite multiplicity</h3>
+<p>Remove the <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> factor from the model: let <span class="math" data-tex="\(B_0=B(H_0)\)">\(B_0=B(H_0)\)</span> and <span class="math" data-tex="\(\nu_0=\operatorname{Tr}_{e^Q}\)">\(\nu_0=\operatorname{Tr}_{e^Q}\)</span>. Prove that <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> absorbs every positive scalar but cannot be equivalent to a dominant weight on <span class="math" data-tex="\(B_0\)">\(B_0\)</span>.</p>
+<p><strong>Solution.</strong> The cutoff proof of Diagnostic 1 works unchanged, so <span class="math" data-tex="\(\nu_0\circ\operatorname{Ad}(\lambda_r)=e^r\nu_0\)">\(\nu_0\circ\operatorname{Ad}(\lambda_r)=e^r\nu_0\)</span>. Its modular group is <span class="math" data-tex="\(\operatorname{Ad}(V_t)\)">\(\operatorname{Ad}(V_t)\)</span>. We claim
+<span class="math math-display" data-tex="\[
+ (B_0)_{\nu_0}=\{V_t:t\in\mathbb R\}'
+              =L^\infty(\mathbb R)\quad\text{acting by multiplication}.
+ \tag{DSM20}
+\]">\[
+ (B_0)_{\nu_0}=\{V_t:t\in\mathbb R\}'
+              =L^\infty(\mathbb R)\quad\text{acting by multiplication}.
+ \tag{DSM20}
+\]</span>
+Here is a direct proof of the second equality. If <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, then for <span class="math" data-tex="\(\xi,\eta\in H_0\)">\(\xi,\eta\in H_0\)</span> the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function
+<span class="math" data-tex="\(g=\xi\overline{T^*\eta}-(T\xi)\overline\eta\)">\(g=\xi\overline{T^*\eta}-(T\xi)\overline\eta\)</span> has <span class="math" data-tex="\(\int e^{itq}g(q)dq=0\)">\(\int e^{itq}g(q)dq=0\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>. The <a href="OA-FLOW-FF.html#oa-flow.ff.3">proved scalar Fourier uniqueness theorem</a> gives <span class="math" data-tex="\(g=0\)">\(g=0\)</span> almost everywhere. Testing against any bounded measurable scalar function now proves that <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every multiplication operator.</p>
+<p>To identify this commutant without a multiplicity assumption, take the strictly positive vector <span class="math" data-tex="\(\zeta(q)=e^{-|q|}\in H_0\)">\(\zeta(q)=e^{-|q|}\in H_0\)</span>, and put <span class="math" data-tex="\(f(q)=(T\zeta)(q)/\zeta(q)\)">\(f(q)=(T\zeta)(q)/\zeta(q)\)</span>. Commutation with indicators gives
+<span class="math math-display" data-tex="\[
+ \int_A |f|^2|\zeta|^2\le\|T\|^2\int_A|\zeta|^2
+ \quad\text{for every measurable }A.
+ \tag{DSM21}
+\]">\[
+ \int_A |f|^2|\zeta|^2\le\|T\|^2\int_A|\zeta|^2
+ \quad\text{for every measurable }A.
+ \tag{DSM21}
+\]</span>
+Hence <span class="math" data-tex="\(|f|\le\|T\|\)">\(|f|\le\|T\|\)</span> almost everywhere. For bounded <span class="math" data-tex="\(b\)">\(b\)</span>, one has <span class="math" data-tex="\(T(b\zeta)=fb\zeta\)">\(T(b\zeta)=fb\zeta\)</span>. Such vectors are dense, by truncating <span class="math" data-tex="\(\xi/\zeta\)">\(\xi/\zeta\)</span> for any <span class="math" data-tex="\(\xi\in H_0\)">\(\xi\in H_0\)</span>, so <span class="math" data-tex="\(T=M_f\)">\(T=M_f\)</span>. Conversely, multiplication operators commute with all <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, proving (DSM20).</p>
+<p>This centralizer is abelian and cannot have properly infinite identity: in an abelian algebra <span class="math" data-tex="\(v^*v=1\)">\(v^*v=1\)</span> implies <span class="math" data-tex="\(vv^*=1\)">\(vv^*=1\)</span>, so two isometries cannot have orthogonal ranges. The algebra <span class="math" data-tex="\(B_0\)">\(B_0\)</span> itself is properly infinite and has separable predual. <a href="#ds-7">Section 7</a> supplies a faithful dominant weight <span class="math" data-tex="\(\Phi_0\)">\(\Phi_0\)</span> on it; concretely one may transport <span class="math" data-tex="\(\nu\)">\(\nu\)</span> along a Hilbert-space unitary <span class="math" data-tex="\(H_0\cong H_0\otimes\ell^2\)">\(H_0\cong H_0\otimes\ell^2\)</span>. If <span class="math" data-tex="\(\nu_0\sim\Phi_0\)">\(\nu_0\sim\Phi_0\)</span>, faithfulness makes the implementer unitary, and modular covariance would identify their centralizers. One is abelian and the other properly infinite, a contradiction. Thus infinite multiplicity is a necessary hypothesis in the dominant-weight conclusion, not a consequence of pointwise scalar absorption.</p>
+<h3 id="diagnostic-8-cancel-an-amplification-whose-corner-has-infinite-weight">Diagnostic 8. Cancel an amplification whose corner has infinite weight</h3>
+<p>For the dominant model <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, set <span class="math" data-tex="\(A=B\bar\otimes B(\ell^2)\)">\(A=B\bar\otimes B(\ell^2)\)</span>, <span class="math" data-tex="\(\Omega=\nu\bar\otimes\operatorname{Tr}\)">\(\Omega=\nu\bar\otimes\operatorname{Tr}\)</span>, and <span class="math" data-tex="\(e=1\otimes e_{11}\)">\(e=1\otimes e_{11}\)</span>. Construct a centralizer row and determine whether the cancellation argument requires <span class="math" data-tex="\(\Omega(e)&lt;\infty\)">\(\Omega(e)&lt;\infty\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(n,k\ge1\)">\(n,k\ge1\)</span>, define <span class="math" data-tex="\(v_n\delta_k=\delta_{2^{n-1}(2k-1)}\)">\(v_n\delta_k=\delta_{2^{n-1}(2k-1)}\)</span> on the multiplicity space of <span class="math" data-tex="\(H\)">\(H\)</span>. Every positive integer has a unique such expression, so
+<span class="math" data-tex="\(v_n^*v_m=\delta_{nm}1\)">\(v_n^*v_m=\delta_{nm}1\)</span> and <span class="math" data-tex="\(\sum_n v_nv_n^*=1\)">\(\sum_n v_nv_n^*=1\)</span> strongly. Put <span class="math" data-tex="\(r_n=1_{H_0}\otimes v_n\in B_\nu\)">\(r_n=1_{H_0}\otimes v_n\in B_\nu\)</span>. With the matrix units in the additional amplification factor,
+<span class="math math-display" data-tex="\[
+ R=\sum_{n\ge1}r_n\otimes e_{1n}\in A_\Omega,\qquad
+ R^*R=1,\qquad RR^*=e.
+ \tag{DSM22}
+\]">\[
+ R=\sum_{n\ge1}r_n\otimes e_{1n}\in A_\Omega,\qquad
+ R^*R=1,\qquad RR^*=e.
+ \tag{DSM22}
+\]</span>
+The two series converge strongly by the square-sum argument of (DSEL32). The weight identities of <a href="#ds-5">Section 5</a>, proved on the whole cone by <a href="OA-FLOW-DWC.html#dwc-3">centralizer-row cancellation</a>, give
+<span class="math math-display" data-tex="\[
+ \Omega(RYR^*)=\Omega(Y)\quad(Y\in A_+),\qquad
+ \Omega(R^*ZR)=\Omega(Z)\quad(Z\in(eAe)_+).
+ \tag{DSM23}
+\]">\[
+ \Omega(RYR^*)=\Omega(Y)\quad(Y\in A_+),\qquad
+ \Omega(R^*ZR)=\Omega(Z)\quad(Z\in(eAe)_+).
+ \tag{DSM23}
+\]</span>
+They include the infinite values. Indeed, the rank-one projections onto <span class="math" data-tex="\(1_{[0,1]}\otimes\delta_k\)">\(1_{[0,1]}\otimes\delta_k\)</span> are orthogonal and each has <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-weight <span class="math" data-tex="\(e-1\)">\(e-1\)</span>. Their finite sums are bounded by one, so <span class="math" data-tex="\(\nu(1)\ge N(e-1)\)">\(\nu(1)\ge N(e-1)\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>; hence <span class="math" data-tex="\(\Omega(e)=\nu(1)=\infty\)">\(\Omega(e)=\nu(1)=\infty\)</span>. Yet the row identities hold, and <span class="math" data-tex="\(\Omega(x\otimes e_{11})=\nu(x)\)">\(\Omega(x\otimes e_{11})=\nu(x)\)</span> retains the exact normalization.</p>
+<p>Isometries merely lying in <span class="math" data-tex="\(B\)">\(B\)</span> do not establish these weight identities. Already the ambient unitary <span class="math" data-tex="\(Z_r\)">\(Z_r\)</span>, for <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, changes the finite value of the rank-one projection in Diagnostic 1 by <span class="math" data-tex="\(e^r\)">\(e^r\)</span>. The centralizer condition in the row construction is precisely what supplies weight preservation; ambient proper infiniteness alone supplies only an algebraic stabilization.</p>
+<h3 id="the-zero-cases-and-the-two-comparison-routes">The zero cases and the two comparison routes</h3>
+<p>On nonzero <span class="math" data-tex="\(M\)">\(M\)</span>, the zero weight has support zero and is equivalent only to the zero weight: (DSEL2) forces <span class="math" data-tex="\(a^*a=0\)">\(a^*a=0\)</span>, hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(aa^*=0\)">\(aa^*=0\)</span>. Its supported centralizer is the zero algebra, excluded by the nonzero proper-infiniteness convention in infinite multiplicity. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, there is only the unique zero weight and its zero equivalence; no nonzero proper-infiniteness assertion is made.</p>
+<p>Finally, the countability used in <a href="#ds-6">Section 6</a> belongs to the separable-predual theorem proved here. It cannot be discarded merely because a projection has full central support. In <span class="math" data-tex="\(B(\ell^2(I))\)">\(B(\ell^2(I))\)</span> with <span class="math" data-tex="\(I\)">\(I\)</span> uncountable, projection onto a countably infinite coordinate subset is properly infinite and has central support one, but is not equivalent to the identity: their Hilbert-space ranges have different cardinal dimensions. The earlier <a href="OA-FLOW-DWC.html#dwc-2">DWC comparison</a> remains a separate proved route for faithful weights on arbitrary preduals when continuous eigenfields and properly infinite centralizers are supplied. The present result removes the continuous-field hypothesis under separable predual and pointwise scalar equivalence, with the exact supported qualification (DSEL4).</p>
+<p><span id="OA-FLOW.DS.READING"></span><a id="ds-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, Theorem XII.4.18, Lemma XII.4.19 and Definition XII.4.20, printed pp. 417–418, discuss scalar absorption, regularized comparison and dominant weights.</p>
+<p>The earlier programme proofs used here are <a href="OA-FLOW-DWC.html#dwc-2">dominant-weight comparison</a>, <a href="OA-FLOW-TW.html#tw-1">normal matrix amplification</a>, <a href="OA-FLOW-PC.html#oa-flow.pc.7">projection comparison</a>, and <a href="../OA-MOD/OA-MOD-SCF.html#choose-a-witness-after-completing-the-measure">measurable witness selection</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-OES.html">Previous lesson</a><a href="OA-FLOW-CGF.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DS.md">Lesson source</a></nav></main></body></html>

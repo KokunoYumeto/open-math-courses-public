@@ -1,0 +1,61 @@
+"""CC0: exact algebra schematics for V10.1–V10.18. No third-party assets."""
+from pathlib import Path
+from html import escape
+W, H = 1460, 1480
+parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+         '<rect width="1460" height="1480" fill="#f5f7fb"/>',
+         '<style>text{font-family:Arial,sans-serif;fill:#15283b}.title{font-size:32px;font-weight:700}.head{font-size:26px;font-weight:700}.body{font-size:22px}.small{font-size:20px}.formula{font-size:25px;font-family:Georgia,serif}</style>',
+         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#476889"/></marker></defs>']
+def text(x, y, s, cls='body'):
+    parts.append(f'<text x="{x}" y="{y}" class="{cls}">{escape(s)}</text>')
+def box(x, y, w, h, fill='#fff'):
+    parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="{fill}" stroke="#b8c8db" stroke-width="2"/>')
+def arrow(x1, y1, x2, y2):
+    parts.append(f'<path d="M{x1} {y1} L{x2} {y2}" stroke="#476889" stroke-width="3" marker-end="url(#arrow)"/>')
+text(35, 48, 'Actual Jones rows: two failed balancing shortcuts', 'title')
+text(35, 84, 'Index four; full all-smooth amenability is proved. Algebra boxes are schematic.', 'small')
+box(30, 112, 1400, 220)
+text(55, 151, 'The physical inclusion and its ordinary tunnel', 'head')
+text(55, 194, 'M = Q ⊗ D       N = 1(q₀) ⊗ Q≥₁ ⊗ D', 'formula')
+text(55, 231, 'Lⱼ = 1(q₀,…,qⱼ₋₁) ⊗ Q≥ⱼ ⊗ D', 'formula')
+text(55, 268, 'Bell cup fⱼ = ½ Σ Eab(qⱼ) Eab(qⱼ₊₁);     E(fⱼ) = ¼ · 1', 'formula')
+text(55, 310, 'Actual core: S = 1(q₀) ⊗ Q≥₁, R = Q.     Z(S) = Z(R) = ℂ; every row has J = 0.', 'small')
+box(30, 352, 1400, 445)
+text(55, 392, 'A right move destroys one fixed physical target', 'head')
+box(55, 420, 570, 224, '#e9f4ee')
+box(834, 420, 570, 224, '#fceeee')
+text(75, 457, 'Before: k = 2ᵐ;  k² Weyl columns', 'body')
+text(75, 495, 'hₘ = k⁻² qₘ;  Tr(qₘ) = k²', 'formula')
+text(75, 533, 'Fresh dₘ₊₁ coordinate is the trace-vector line.', 'small')
+text(75, 571, 'Fixed s = diag(1,−1) in q₁ commutes with hₘ.', 'small')
+text(75, 615, '‖s hₘ s* − hₘ‖₁ = 0', 'formula')
+arrow(650, 526, 808, 526)
+text(642, 480, 'Right move', 'small')
+text(661, 566, 'q₁ ↔ dₘ₊₁', 'small')
+text(854, 457, 'After: h′ₘ = vₘ hₘ v*ₘ', 'formula')
+text(854, 495, 'q′ₘ = vₘ qₘ v*ₘ;  q′ₘ s q′ₘ = 0', 'formula')
+text(854, 533, 'q′ₘ and s q′ₘ s* are orthogonal.', 'small')
+text(854, 571, 'Both supports still have canonical trace k².', 'small')
+text(854, 615, '‖s h′ₘ s* − h′ₘ‖₁ = 2', 'formula')
+text(55, 690, 'Both row sums, exact physical marginal, compatibility and J = 0 survive the move.', 'body')
+text(55, 729, 'Rows aₘ and s aₘ have the same initial density, but outputs at distance 2.', 'body')
+text(55, 768, 'Thus this operation is not determined by h alone. Proofs: V10.7–V10.10.', 'small')
+box(30, 817, 1400, 281)
+text(55, 858, 'Right-sum-one rows do not approximate every compatible balanced state', 'head')
+text(55, 901, 'Fixed physical tail p = E₁₁(d₁); fixed test T = right multiplication by p ∈ A.', 'body')
+text(55, 942, 'Columns E₁₁, E₂₁: left sum 1, right sum 2p. Add an increasing Weyl tail.', 'body')
+text(55, 987, 'Actual central compatible cluster: φ(T) = 1.', 'formula')
+text(740, 987, 'Every right-sum-one row: ψ(T) = ½.', 'formula')
+text(55, 1031, 'The actual centers are scalar, so this φ already satisfies the original joint identity.', 'small')
+text(55, 1071, 'A different suitable balanced state exists. Existence is not refuted. Proofs: V10.11–V10.14.', 'small')
+box(30, 1118, 1400, 310)
+text(55, 1159, 'The full compact alternative still requires the unrestricted amenability step', 'head')
+text(55, 1202, 'Kbal = ⋂ε>0 weak* closure {coisometric Jones-row states with J ≤ ε}', 'formula')
+text(55, 1242, 'Exactly the compatible original-trace states satisfying φ ι = φ ι P₀, including singular states.', 'small')
+text(55, 1284, 'Either a central state in Kbal gives simultaneous small J and physical defects;', 'body')
+text(55, 1324, 'or a fixed finite commutator sum H has ψₐ(H) ≥ c₀ > 0 whenever Jₐ ≤ ε₀.', 'body')
+text(55, 1366, 'Full all-smooth amenability must exclude that separator. No exclusion is assumed here.', 'small')
+text(55, 1406, 'Proofs: V10.15–V10.18. Full marked corners, residual partition and generating scope remain.', 'small')
+text(35, 1461, 'Human context: S. Popa (1994), Definition 3.1.1. Original diagram: CC0-1.0.', 'small')
+parts.append('</svg>')
+Path(__file__).with_name('right-column-moves-and-balanced-states-v10.svg').write_text('\n'.join(parts), encoding='utf-8')

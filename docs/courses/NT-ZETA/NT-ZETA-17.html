@@ -31,7 +31,7 @@
 </aside>
 <article class="lesson">
 <h1 id="zeros-on-the-critical-line-hardy-and-the-mollifier-method">Zeros on the critical line: Hardy and the mollifier method</h1>
-<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and calculations are public domain (CC0); separately licensed proof sources retain their stated licences.</em></p>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Section 24 by Claude Opus 5.5 (Anthropic). Self-check is by the writing AI. Original exposition and calculations are public domain (CC0).</em></p>
 <p>Symmetry of the zeros about the critical line does not force a zero to lie on that line. Hardy's argument adds an analytic ingredient: on a long interval, the integral of zeta is large, whereas a real normalization of zeta has a much smaller signed integral. If that real function kept one sign, these two facts would contradict one another. We will prove the estimates, obtain sign changes even on shorter intervals, and then develop the mollifier method from a simple critical-line proportion greater than one third to the longer-mollifier bounds of Conrey and Pratt, Robles, Zaharescu and Zeindler.</p>
 <p>We use the functional equation from <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>, Theorem 3.1; the continuous logarithm and Stirling estimate for the gamma function from <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, Theorem 3.1; the height truncation from <a href="NT-ZETA-06.html">Growth in the critical strip</a>, Theorem 1.1; and the integral derivative tests from <a href="NT-ZETA-07.html">Exponential sums and a subconvex bound</a>, Lemmas 1.1–1.2. The reciprocal bound needed for the Möbius calculation is in <a href="NT-ZETA-08.html">The zero-free line and the classical zero-free region</a>, Theorem 4.1. The zero count and the moments used later are in <a href="NT-ZETA-10.html">Counting the zeros</a>, Theorem 2.1, and <a href="NT-ZETA-16.html">Mean values of Dirichlet polynomials and zeta</a>.</p>
 <p>The first six sections explain the real-function argument and Riemann–Siegel computation. Sections 7–9 introduce the counting method and its short mollifier. The extension beyond half-length then needs two kinds of preparation: additive transformations and spectral cancellation of reciprocal phases. Sections 10–22 supply those arguments, Section 23 gives the Conrey certificates, and Sections 24–26 prove the convolution-mollifier improvement. The spectral argument uses the exact internal automorphic Hilbert-space prerequisite stated in Section 16; its current proof state is specified there.</p>
@@ -6178,310 +6178,196 @@ Taking logarithms in the proved counting inequality gives a strict improvement o
 The chosen <span class="math" data-tex="$\theta$">$\theta$</span> is a fixed rational below <span class="math" data-tex="$4/7$">$4/7$</span>, so no estimate at the unproved endpoint <span class="math" data-tex="$\theta=4/7$">$\theta=4/7$</span> is required.</p>
 <p>These explicit rational choices prove both Conrey proportions. We next improve the approximation to the inverse auxiliary function by adding convolution coefficients.</p>
 <h2 id="24-reciprocal-cancellation-for-convolution-coefficients">24. Reciprocal cancellation for convolution coefficients</h2>
-<p>To improve the approximation to the inverse auxiliary function, use Möbius convolved with generalized von Mangoldt functions. The coefficients can be nonzero on integers with repeated prime factors. We separate those factors at the gcd and keep the integer coupling in the reciprocal bound.</p>
-<p><em>This section adapts Section 4 of Pratt, Robles, Zaharescu and Zeindler, “More than five-twelfths of the zeros of zeta are on the critical line”, <a href="https://doi.org/10.1007/s40687-019-0199-8">DOI 10.1007/s40687-019-0199-8</a>, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The coprime identities, truncated algebra, grouping, coupling calculation and exponent estimates have been expanded and reorganized. This adapted section retains CC BY 4.0.</em></p>
-<p>We use Dirichlet convolution and
+<p>The stronger mollifier of Section 26 uses, besides the Möbius function, the generalized von Mangoldt functions
 <span class="math math-display" data-tex="$$
-\Lambda_k=\mu*(\log^k),\qquad \Lambda_1=\Lambda.
+\Lambda_k=\mu*\log^k\qquad(k\ge1),
 $$">$$
-\Lambda_k=\mu*(\log^k),\qquad \Lambda_1=\Lambda.
+\Lambda_k=\mu*\log^k\qquad(k\ge1),
 $$</span>
-Here <span class="math" data-tex="$\log^k(n)=(\log n)^k$">$\log^k(n)=(\log n)^k$</span>, with <span class="math" data-tex="$\log^0$">$\log^0$</span> the constant-one arithmetic function. The later mollifier has coefficients given by a finite linear combination of
+where <span class="math" data-tex="$\log^k(n)=(\log n)^k$">$\log^k(n)=(\log n)^k$</span> and <span class="math" data-tex="$\log^0$">$\log^0$</span> is the constant function one; thus <span class="math" data-tex="$\Lambda_1=\Lambda$">$\Lambda_1=\Lambda$</span>. Its coefficients are finite linear combinations of
 <span class="math math-display" data-tex="$$
-(\mu*\Lambda_1^{*k_1}*\cdots*\Lambda_D^{*k_D})(n)
- P(\log(N/n)/\log N),
+(\mu*\Lambda_1^{*k_1}*\cdots*\Lambda_D^{*k_D})(n)\,P\bigl(\log(N/n)/\log N\bigr)
 $$">$$
-(\mu*\Lambda_1^{*k_1}*\cdots*\Lambda_D^{*k_D})(n)
- P(\log(N/n)/\log N),
+(\mu*\Lambda_1^{*k_1}*\cdots*\Lambda_D^{*k_D})(n)\,P\bigl(\log(N/n)/\log N\bigr)
 $$</span>
-with fixed convolution orders and polynomials. The squarefree indicator is absent. We prove the reciprocal cancellation needed for these coefficients. Section 25 inserts this bound into the Gaussian additive transformation already proved locally.</p>
-<h3 id="24-1-separating-the-gcd-and-its-prime-supported-part">24.1. Separating the gcd and its prime-supported part</h3>
-<p>The recurrence
+with fixed exponents and polynomials. Unlike <span class="math" data-tex="$\mu$">$\mu$</span>, such coefficients do not vanish on integers with square factors. Section 25 needs cancellation when they are summed against reciprocal phases <span class="math" data-tex="$e(a\overline H/K)$">$e(a\overline H/K)$</span>, and (24.9) below supplies it. The proof splits off the part of the variable that shares primes with a fixed integer <span class="math" data-tex="$d$">$d$</span>, decomposes the rest into bilinear pieces, and bounds the pieces by the interval completion (12.5) and the coupled estimate (20.10). The part that is split off enters the inverse in the phase, and every bound records its size.</p>
+<h3 id="24-1-prime-power-building-blocks-and-the-gcd-split">24.1. Prime-power building blocks and the gcd split</h3>
+<p>For <span class="math" data-tex="$\operatorname{Re}s&gt;1$">$\operatorname{Re}s&gt;1$</span>, logarithmic differentiation of the Euler product gives <span class="math" data-tex="$\sum_n\Lambda(n)n^{-s}=-\zeta&#x27;/\zeta$">$\sum_n\Lambda(n)n^{-s}=-\zeta&#x27;/\zeta$</span>, and <span class="math" data-tex="$F_k(s)=\sum_n\Lambda_k(n)n^{-s}$">$F_k(s)=\sum_n\Lambda_k(n)n^{-s}$</span> equals <span class="math" data-tex="$(-1)^k\zeta^{(k)}/\zeta$">$(-1)^k\zeta^{(k)}/\zeta$</span>. Differentiating,
 <span class="math math-display" data-tex="$$
-\Lambda_{k+1}(n)=\log n\,\Lambda_k(n)+(\Lambda*\Lambda_k)(n)
+F_k&#x27;=-F_{k+1}+F_kF_1 ,
 $$">$$
-\Lambda_{k+1}(n)=\log n\,\Lambda_k(n)+(\Lambda*\Lambda_k)(n)
+F_k&#x27;=-F_{k+1}+F_kF_1 ,
 $$</span>
-follows by differentiating
-<span class="math" data-tex="$\sum\Lambda_k(n)n^{-s}=(-1)^k\zeta^{(k)}(s)/\zeta(s)$">$\sum\Lambda_k(n)n^{-s}=(-1)^k\zeta^{(k)}(s)/\zeta(s)$</span>
-in the absolutely convergent half-plane. Logarithmic differentiation of the Euler product identifies <span class="math" data-tex="$-\zeta&#x27;/\zeta$">$-\zeta&#x27;/\zeta$</span> with <span class="math" data-tex="$\Lambda$">$\Lambda$</span>.
-Also
-<span class="math math-display" data-tex="$$
-\log n\,(f_1*\cdots*f_r)(n)
- =\sum_{i=1}^r(f_1*\cdots*(f_i\log)*\cdots*f_r)(n),
-$$">$$
-\log n\,(f_1*\cdots*f_r)(n)
- =\sum_{i=1}^r(f_1*\cdots*(f_i\log)*\cdots*f_r)(n),
-$$</span>
-by splitting <span class="math" data-tex="$\log(n_1\cdots n_r)$">$\log(n_1\cdots n_r)$</span>.
-Induction consequently expresses each <span class="math" data-tex="$\Lambda_k$">$\Lambda_k$</span> as a finite linear combination of convolutions of functions <span class="math" data-tex="$(\log^j)\Lambda$">$(\log^j)\Lambda$</span>, each supported on prime powers.</p>
-<p>Write <span class="math" data-tex="$u=hv$">$u=hv$</span>, where <span class="math" data-tex="$h\mid d^\infty$">$h\mid d^\infty$</span> contains every prime power in <span class="math" data-tex="$u$">$u$</span> whose prime divides <span class="math" data-tex="$d$">$d$</span>, and <span class="math" data-tex="$(v,d)=1$">$(v,d)=1$</span>. Then <span class="math" data-tex="$(dh,v)=1$">$(dh,v)=1$</span>.
-For <span class="math" data-tex="$\lambda_i=(\log^{j_i})\Lambda$">$\lambda_i=(\log^{j_i})\Lambda$</span> and <span class="math" data-tex="$C=\mu*\lambda_1*\cdots*\lambda_r$">$C=\mu*\lambda_1*\cdots*\lambda_r$</span>, we have the exact coprime identity
+which on coefficients says <span class="math" data-tex="$\Lambda_{k+1}=\Lambda_k\cdot\log+\Lambda*\Lambda_k$">$\Lambda_{k+1}=\Lambda_k\cdot\log+\Lambda*\Lambda_k$</span>. Since <span class="math" data-tex="$\log$">$\log$</span> is additive along factorizations, <span class="math" data-tex="$(f_1*\cdots*f_r)\cdot\log=\sum_if_1*\cdots*(f_i\cdot\log)*\cdots*f_r$">$(f_1*\cdots*f_r)\cdot\log=\sum_if_1*\cdots*(f_i\cdot\log)*\cdots*f_r$</span>. Induction on <span class="math" data-tex="$k$">$k$</span> therefore writes each <span class="math" data-tex="$\Lambda_k$">$\Lambda_k$</span> as a combination, with integer coefficients, of convolutions of the functions <span class="math" data-tex="$\lambda_j=\log^j\cdot\Lambda$">$\lambda_j=\log^j\cdot\Lambda$</span>, <span class="math" data-tex="$j\ge0$">$j\ge0$</span>, each supported on prime powers. Every mollifier coefficient is then a combination of functions <span class="math" data-tex="$C=\mu*\lambda_{j_1}*\cdots*\lambda_{j_r}$">$C=\mu*\lambda_{j_1}*\cdots*\lambda_{j_r}$</span>, multiplied by a polynomial in <span class="math" data-tex="$\log n$">$\log n$</span>.</p>
+<p>Fix a positive integer <span class="math" data-tex="$d$">$d$</span>. Each positive integer <span class="math" data-tex="$u$">$u$</span> factors uniquely as <span class="math" data-tex="$u=hv$">$u=hv$</span>, where <span class="math" data-tex="$h$">$h$</span> consists of the prime powers of <span class="math" data-tex="$u$">$u$</span> at primes dividing <span class="math" data-tex="$d$">$d$</span>, so that <span class="math" data-tex="$h\mid d^\infty$">$h\mid d^\infty$</span>, and <span class="math" data-tex="$(v,d)=1$">$(v,d)=1$</span>; in particular <span class="math" data-tex="$(dh,v)=1$">$(dh,v)=1$</span>. For <span class="math" data-tex="$C$">$C$</span> as above,
 <span class="math math-display" data-tex="$$
 C(dhv)=\sum_{S\subset\{1,\ldots,r\}}
- (\mu*{\textstyle\prod_{i\in S}^{*}}\lambda_i)(dh)
- (\mu*{\textstyle\prod_{i\notin S}^{*}}\lambda_i)(v). \tag{24.1}
+ \Bigl(\mu*\mathop{\ast}_{i\in S}\lambda_{j_i}\Bigr)(dh)\,
+ \Bigl(\mu*\mathop{\ast}_{i\notin S}\lambda_{j_i}\Bigr)(v).
+ \tag{24.1}
 $$">$$
 C(dhv)=\sum_{S\subset\{1,\ldots,r\}}
- (\mu*{\textstyle\prod_{i\in S}^{*}}\lambda_i)(dh)
- (\mu*{\textstyle\prod_{i\notin S}^{*}}\lambda_i)(v). \tag{24.1}
+ \Bigl(\mu*\mathop{\ast}_{i\in S}\lambda_{j_i}\Bigr)(dh)\,
+ \Bigl(\mu*\mathop{\ast}_{i\notin S}\lambda_{j_i}\Bigr)(v).
+ \tag{24.1}
 $$</span>
-In the defining convolution each prime-power <span class="math" data-tex="$\lambda_i$">$\lambda_i$</span>-factor lies wholly on one side of the coprime product. The remaining <span class="math" data-tex="$\mu$">$\mu$</span>-factor splits multiplicatively. This gives exactly one term for its subset <span class="math" data-tex="$S$">$S$</span>, proving (24.1).
-The additive logarithm separates the polynomial and any further log powers in the same way.
-The first factor in (24.1), denoted <span class="math" data-tex="$G(h)$">$G(h)$</span>, satisfies
+Indeed, in a factorization <span class="math" data-tex="$dhv=m\,n_1\cdots n_r$">$dhv=m\,n_1\cdots n_r$</span> in which every <span class="math" data-tex="$n_i$">$n_i$</span> is a prime power, each <span class="math" data-tex="$n_i$">$n_i$</span> divides exactly one of the coprime numbers <span class="math" data-tex="$dh$">$dh$</span> and <span class="math" data-tex="$v$">$v$</span>; let <span class="math" data-tex="$S$">$S$</span> be the set of <span class="math" data-tex="$i$">$i$</span> with <span class="math" data-tex="$n_i\mid dh$">$n_i\mid dh$</span>. The remaining factor <span class="math" data-tex="$m$">$m$</span> splits into its parts dividing <span class="math" data-tex="$dh$">$dh$</span> and <span class="math" data-tex="$v$">$v$</span>, on which <span class="math" data-tex="$\mu$">$\mu$</span> is multiplicative. So each term on the left occurs exactly once on the right. A polynomial in <span class="math" data-tex="$\log(dhv)=\log(dh)+\log v$">$\log(dhv)=\log(dh)+\log v$</span> splits by the binomial theorem in the same way. The first factor <span class="math" data-tex="$G_S(h)$">$G_S(h)$</span> in (24.1) is a sum over at most <span class="math" data-tex="$\tau(dh)^r$">$\tau(dh)^r$</span> factorizations of terms bounded by a fixed power of <span class="math" data-tex="$\log(2dh)$">$\log(2dh)$</span>, so
 <span class="math math-display" data-tex="$$
-|G(h)|\ll \tau(dh)^C(\log(2N))^C
+|G_S(h)|\ll\tau(dh)^C\log^C(2dh)
 $$">$$
-|G(h)|\ll \tau(dh)^C(\log(2N))^C
+|G_S(h)|\ll\tau(dh)^C\log^C(2dh)
 $$</span>
-for a fixed <span class="math" data-tex="$C$">$C$</span>, by counting its fixed number of divisor factorizations. This bound also covers finite linear combinations.</p>
-<h3 id="24-2-a-full-short-factor-identity">24.2. A full short-factor identity</h3>
-<p>For <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, set <span class="math" data-tex="$M(s)=\sum_{m\le x^{1/K}}\mu(m)m^{-s}$">$M(s)=\sum_{m\le x^{1/K}}\mu(m)m^{-s}$</span>.
-The Dirichlet-algebra identity
+for a fixed <span class="math" data-tex="$C$">$C$</span>; the same holds for finite combinations.</p>
+<h3 id="24-2-a-truncated-identity-and-the-bilinear-split">24.2. A truncated identity and the bilinear split</h3>
+<p>Let <span class="math" data-tex="$x\ge2$">$x\ge2$</span> and <span class="math" data-tex="$M(s)=\sum_{m\le\sqrt x}\mu(m)m^{-s}$">$M(s)=\sum_{m\le\sqrt x}\mu(m)m^{-s}$</span>. As formal Dirichlet series,
 <span class="math math-display" data-tex="$$
-\frac1\zeta=
- \sum_{j=1}^K(-1)^{j-1}\binom Kj M^j\zeta^{j-1}
- +\frac1\zeta(1-\zeta M)^K \tag{24.2}
+\frac1\zeta=2M-M^2\zeta+\frac1\zeta\,(1-\zeta M)^2 .
+\tag{24.2}
 $$">$$
-\frac1\zeta=
- \sum_{j=1}^K(-1)^{j-1}\binom Kj M^j\zeta^{j-1}
- +\frac1\zeta(1-\zeta M)^K \tag{24.2}
+\frac1\zeta=2M-M^2\zeta+\frac1\zeta\,(1-\zeta M)^2 .
+\tag{24.2}
 $$</span>
-is the binomial theorem. The coefficients of <span class="math" data-tex="$1-\zeta M$">$1-\zeta M$</span> vanish on
-<span class="math" data-tex="$n\le x^{1/K}$">$n\le x^{1/K}$</span>. Thus its <span class="math" data-tex="$K$">$K$</span>-fold product has no coefficient on
-<span class="math" data-tex="$n\le x$">$n\le x$</span>, since every nonzero factor exceeds <span class="math" data-tex="$x^{1/K}$">$x^{1/K}$</span>.
-Equation (24.2) gives the complete truncated identity for <span class="math" data-tex="$\mu(n)$">$\mu(n)$</span> on that range. Multiplying it by <span class="math" data-tex="$-\zeta&#x27;$">$-\zeta&#x27;$</span> gives the identity for <span class="math" data-tex="$\Lambda(n)$">$\Lambda(n)$</span> there, with one unrestricted logarithmic factor and <span class="math" data-tex="$j-1$">$j-1$</span> unrestricted constant-one factors in its <span class="math" data-tex="$j$">$j$</span>-th term.
-Multiplying <span class="math" data-tex="$\Lambda(n)$">$\Lambda(n)$</span> by <span class="math" data-tex="$\log^q n$">$\log^q n$</span> and using the multinomial theorem distributes this log power over its factors. These operations prove the weighted identities used below, including all short-factor restrictions.</p>
-<p>Apply(24.2) with <span class="math" data-tex="$K=2$">$K=2$</span> to the <span class="math" data-tex="$\mu$">$\mu$</span>-factor and the identities just derived to the fixed prime-power factors in a coefficient <span class="math" data-tex="$C(u)$">$C(u)$</span>.
-Divide every factor into dyadic intervals, <span class="math" data-tex="$u\asymp U$">$u\asymp U$</span>. The number of interval tuples is a fixed power of <span class="math" data-tex="$\log(2U)$">$\log(2U)$</span>; the grouped coefficients are <span class="math" data-tex="$O_\epsilon(u^\epsilon)$">$O_\epsilon(u^\epsilon)$</span> by the elementary divisor bound.
-Every restricted Möbius factor is at most <span class="math" data-tex="$(2U)^{1/2}$">$(2U)^{1/2}$</span>; every unrestricted factor is a fixed log power or the constant-one function.</p>
-<p>Put <span class="math" data-tex="$W=U^{1/4}$">$W=U^{1/4}$</span>. For bounded <span class="math" data-tex="$U$">$U$</span>, direct estimates suffice. Otherwise a dyadic factor exceeding a sufficiently large fixed multiple of <span class="math" data-tex="$U/W$">$U/W$</span> must be unrestricted, because <span class="math" data-tex="$(2U)^{1/2}=o(U^{3/4})$">$(2U)^{1/2}=o(U^{3/4})$</span>. Group it as <span class="math" data-tex="$f$">$f$</span> and all other factors as <span class="math" data-tex="$e$">$e$</span>. This is Type I: <span class="math" data-tex="$e\ll W$">$e\ll W$</span>, and its unrestricted coefficient is a log power.
-If no such large factor exists, either one factor lies between fixed multiples of <span class="math" data-tex="$W,U/W$">$W,U/W$</span>, or multiply small factors greedily until their product first exceeds <span class="math" data-tex="$W$">$W$</span>. In the latter case this product is at most a fixed multiple of <span class="math" data-tex="$W^2\le U/W$">$W^2\le U/W$</span>. Its complementary product is also between fixed multiples of <span class="math" data-tex="$W,U/W$">$W,U/W$</span>.
-This is Type II, with <span class="math" data-tex="$ef\asymp U$">$ef\asymp U$</span> and
+At <span class="math" data-tex="$n\le\sqrt x$">$n\le\sqrt x$</span> the coefficient of <span class="math" data-tex="$\zeta M$">$\zeta M$</span> is <span class="math" data-tex="$\sum_{m\mid n}\mu(m)$">$\sum_{m\mid n}\mu(m)$</span>, so <span class="math" data-tex="$1-\zeta M$">$1-\zeta M$</span> has no coefficients on <span class="math" data-tex="$1\le n\le\sqrt x$">$1\le n\le\sqrt x$</span>. Its square therefore has none on <span class="math" data-tex="$n\le x$">$n\le x$</span>, and neither has the last term of (24.2). Writing <span class="math" data-tex="$\mu_{\le\sqrt x}$">$\mu_{\le\sqrt x}$</span> for <span class="math" data-tex="$\mu$">$\mu$</span> restricted to <span class="math" data-tex="$[1,\sqrt x]$">$[1,\sqrt x]$</span>, we obtain for <span class="math" data-tex="$n\le x$">$n\le x$</span>
 <span class="math math-display" data-tex="$$
-W\ll E\le F\ll U/W,\qquad E\le C\sqrt U. \tag{24.3}
+\mu(n)=2\mu_{\le\sqrt x}(n)-(\mu_{\le\sqrt x}*\mu_{\le\sqrt x}*1)(n).
 $$">$$
-W\ll E\le F\ll U/W,\qquad E\le C\sqrt U. \tag{24.3}
+\mu(n)=2\mu_{\le\sqrt x}(n)-(\mu_{\le\sqrt x}*\mu_{\le\sqrt x}*1)(n).
 $$</span>
-Fixed constants in these inequalities only change implicit constants.
-Original product endpoints change the interval of the last free variable; they are allowed in the reciprocal bound and removed by partial summation when needed. Smooth dimensionless product cutoffs separate by Mellin inversion, with an integrable transform after repeated integration by parts. Thus no unproved combinatorial regrouping or arbitrary coefficient restriction is hidden in (24.3).</p>
-<h3 id="24-3-type-i-and-type-ii-bounds-with-the-coupling-parameter">24.3. Type I and Type II bounds with the coupling parameter</h3>
-<p>Let <span class="math" data-tex="$U_0,V,A\ge1$">$U_0,V,A\ge1$</span>, let <span class="math" data-tex="$h$">$h$</span> be a positive integer with <span class="math" data-tex="$1\le h\le2U_0$">$1\le h\le2U_0$</span>, put <span class="math" data-tex="$U=U_0/h$">$U=U_0/h$</span>, and consider
+Multiplying (24.2) by <span class="math" data-tex="$-\zeta&#x27;$">$-\zeta&#x27;$</span>, whose coefficients are <span class="math" data-tex="$\log n$">$\log n$</span>, gives for <span class="math" data-tex="$n\le x$">$n\le x$</span>
 <span class="math math-display" data-tex="$$
-B_h=\sum_{0&lt;a\le A}\nu(a)
- \sum_{\substack{v\asymp V\\(v,h)=1}}r(v)
- \sum_{\substack{u\asymp U\\(u,dv)=1}}
- C(u)f(hu)(\log u)^j e(-a\overline{hu}/v).
+\Lambda(n)=2(\mu_{\le\sqrt x}*\log)(n)-(\mu_{\le\sqrt x}*\mu_{\le\sqrt x}*1*\log)(n).
 $$">$$
-B_h=\sum_{0&lt;a\le A}\nu(a)
- \sum_{\substack{v\asymp V\\(v,h)=1}}r(v)
- \sum_{\substack{u\asymp U\\(u,dv)=1}}
- C(u)f(hu)(\log u)^j e(-a\overline{hu}/v).
+\Lambda(n)=2(\mu_{\le\sqrt x}*\log)(n)-(\mu_{\le\sqrt x}*\mu_{\le\sqrt x}*1*\log)(n).
 $$</span>
-The coefficients <span class="math" data-tex="$\nu,r$">$\nu,r$</span> have arbitrarily small divisor-power bounds. For the application, <span class="math" data-tex="$f(x)$">$f(x)$</span> is a finite sum of fixed logarithmic polynomials times the dimensionless power <span class="math" data-tex="$(x/U_0)^{i\tau+\gamma}$">$(x/U_0)^{i\tau+\gamma}$</span>, with <span class="math" data-tex="$\gamma$">$\gamma$</span> in a fixed compact set. Its supremum on the interval is bounded by a fixed logarithmic power, and its total variation costs at most <span class="math" data-tex="$1+|\tau|$">$1+|\tau|$</span> times that power. All displayed estimates allow an arbitrary small factor in <span class="math" data-tex="$d,h,A,U_0,V$">$d,h,A,U_0,V$</span>, and the factor <span class="math" data-tex="$1+|\tau|$">$1+|\tau|$</span>. The frequency <span class="math" data-tex="$A$">$A$</span> need not be bounded by a fixed power of <span class="math" data-tex="$T$">$T$</span>.</p>
-<p>We use dyadic blocks contained in <span class="math" data-tex="$[U,2U]$">$[U,2U]$</span>, allowing truncated endpoints; the corresponding <span class="math" data-tex="$H$">$H$</span>-block lies in <span class="math" data-tex="$[U_0,2U_0]$">$[U_0,2U_0]$</span>. Fixed larger supports are covered by finitely many such blocks. First assume <span class="math" data-tex="$h\le U_0$">$h\le U_0$</span>, so <span class="math" data-tex="$U\ge1$">$U\ge1$</span>.</p>
-<p>In Type I write <span class="math" data-tex="$u=ef$">$u=ef$</span>, <span class="math" data-tex="$e\asymp E\ll W$">$e\asymp E\ll W$</span>, and retain the logarithmic unrestricted <span class="math" data-tex="$f$">$f$</span>-coefficient. Partial summation and the completed Weil estimate give its interval sum
+Multiplying by <span class="math" data-tex="$\log^jn$">$\log^jn$</span> and distributing <span class="math" data-tex="$\log^j$">$\log^j$</span> of a product over its factors by the multinomial theorem gives a formula of the same kind for <span class="math" data-tex="$\lambda_j$">$\lambda_j$</span>.</p>
+<p>Consider <span class="math" data-tex="$C(u)$">$C(u)$</span> for <span class="math" data-tex="$u$">$u$</span> in a dyadic range <span class="math" data-tex="$u\asymp U$">$u\asymp U$</span>, possibly truncated. Take <span class="math" data-tex="$x=2U$">$x=2U$</span> and replace the Möbius factor and every <span class="math" data-tex="$\lambda_{j_i}$">$\lambda_{j_i}$</span> by these formulas. Then <span class="math" data-tex="$C(u)$">$C(u)$</span> becomes a fixed finite combination of convolutions of boundedly many factors of two kinds: restricted Möbius factors, supported on <span class="math" data-tex="$[1,\sqrt{2U}]$">$[1,\sqrt{2U}]$</span>, and unrestricted factors, each a fixed power of <span class="math" data-tex="$\log$">$\log$</span>, the constant one included. Split every factor dyadically. The number of dyadic patterns is a fixed power of <span class="math" data-tex="$\log(2U)$">$\log(2U)$</span>, and the grouped coefficients are <span class="math" data-tex="$O_\epsilon(u^\epsilon)$">$O_\epsilon(u^\epsilon)$</span> by the divisor bound.</p>
+<p>Put <span class="math" data-tex="$W=U^{1/4}$">$W=U^{1/4}$</span>; bounded <span class="math" data-tex="$U$">$U$</span> is estimated directly. For large <span class="math" data-tex="$U$">$U$</span> every restricted factor is below <span class="math" data-tex="$\sqrt{2U}$">$\sqrt{2U}$</span>, which is smaller than any fixed multiple of <span class="math" data-tex="$U/W=U^{3/4}$">$U/W=U^{3/4}$</span>.</p>
+<ul>
+<li>If some factor exceeds a suitable fixed multiple of <span class="math" data-tex="$U/W$">$U/W$</span>, it is unrestricted. Call it <span class="math" data-tex="$f$">$f$</span> and the product of the others <span class="math" data-tex="$e$">$e$</span>; then <span class="math" data-tex="$e\ll W$">$e\ll W$</span>. This is <em>Type I</em>.</li>
+<li>Otherwise, if some factor lies between fixed multiples of <span class="math" data-tex="$W$">$W$</span> and <span class="math" data-tex="$U/W$">$U/W$</span>, the product of the remaining factors also lies between fixed multiples of <span class="math" data-tex="$W$">$W$</span> and <span class="math" data-tex="$U/W$">$U/W$</span>. If no factor lies in that range, all factors are below a fixed multiple of <span class="math" data-tex="$W$">$W$</span>; multiply them one at a time until the partial product first exceeds <span class="math" data-tex="$W$">$W$</span>. It is then at most a fixed multiple of <span class="math" data-tex="$W^2\le U/W$">$W^2\le U/W$</span>, and the complementary product again lies between fixed multiples of <span class="math" data-tex="$W$">$W$</span> and <span class="math" data-tex="$U/W$">$U/W$</span>. In either case call the smaller of the two products <span class="math" data-tex="$e$">$e$</span> and the larger <span class="math" data-tex="$f$">$f$</span>. This is <em>Type II</em>: <span class="math" data-tex="$u=ef$">$u=ef$</span> with <span class="math" data-tex="$ef\asymp U$">$ef\asymp U$</span> and
 <span class="math math-display" data-tex="$$
-\ll (1+|\tau|)(dhAU_0V)^\epsilon
- v^{1/2}(a,v)\{1+U/(Ev)\}.
+W\ll E\le F\ll U/W,\qquad E\ll\sqrt U .
+\tag{24.3}
 $$">$$
-\ll (1+|\tau|)(dhAU_0V)^\epsilon
- v^{1/2}(a,v)\{1+U/(Ev)\}.
+W\ll E\le F\ll U/W,\qquad E\ll\sqrt U .
+\tag{24.3}
+$$</span></li>
+</ul>
+<p>A condition that the product of the factors lies in a given dyadic interval only restricts the range of the last variable summed, and the estimates of Section 24.3 allow arbitrary subintervals. A smooth cutoff in the product separates into the factors by Mellin inversion, since its Mellin transform is integrable after repeated integration by parts. Sharp product cutoffs in Type II are treated in Section 24.3.</p>
+<h3 id="24-3-sums-of-the-two-types">24.3. Sums of the two types</h3>
+<p>Let <span class="math" data-tex="$U_0,V,A\ge1$">$U_0,V,A\ge1$</span>, let <span class="math" data-tex="$h$">$h$</span> be an integer with <span class="math" data-tex="$1\le h\le2U_0$">$1\le h\le2U_0$</span>, and put <span class="math" data-tex="$U=U_0/h$">$U=U_0/h$</span>. We estimate
+<span class="math math-display" data-tex="$$
+B_h=\sum_{0&lt;a\le A}\nu(a)\sum_{\substack{v\asymp V\\(v,h)=1}}r(v)\sum_{\substack{u\asymp U\\(u,dv)=1}}C(u)\,f(hu)\,(\log u)^j\,e\bigl(-a\overline{hu}/v\bigr).
+$$">$$
+B_h=\sum_{0&lt;a\le A}\nu(a)\sum_{\substack{v\asymp V\\(v,h)=1}}r(v)\sum_{\substack{u\asymp U\\(u,dv)=1}}C(u)\,f(hu)\,(\log u)^j\,e\bigl(-a\overline{hu}/v\bigr).
 $$</span>
-Indeed <span class="math" data-tex="$he$">$he$</span> is a unit modulo <span class="math" data-tex="$v$">$v$</span>, so the frequency gcd is exactly <span class="math" data-tex="$(a,v)$">$(a,v)$</span>. To impose <span class="math" data-tex="$(f,d)=1$">$(f,d)=1$</span>, use the finite Möbius divisor expansion. A divisor sharing a prime with <span class="math" data-tex="$v$">$v$</span> gives an empty unit range; every remaining divisor is invertible modulo <span class="math" data-tex="$v$">$v$</span>, leaves that frequency gcd unchanged, and its multiplicity costs <span class="math" data-tex="$d^\epsilon$">$d^\epsilon$</span>.
-The elementary divisor expansion gives
-<span class="math" data-tex="$\sum_{a\le A,v\asymp V}(a,v)\ll AV\log(2AV)$">$\sum_{a\le A,v\asymp V}(a,v)\ll AV\log(2AV)$</span>.
-Summing <span class="math" data-tex="$e,a,v$">$e,a,v$</span> therefore gives
+Here <span class="math" data-tex="$\nu$">$\nu$</span> and <span class="math" data-tex="$r$">$r$</span> are bounded by arbitrarily small powers of their arguments, and <span class="math" data-tex="$f(x)$">$f(x)$</span> is a finite sum of fixed polynomials in <span class="math" data-tex="$\log x$">$\log x$</span> times <span class="math" data-tex="$(x/U_0)^{i\tau+\gamma}$">$(x/U_0)^{i\tau+\gamma}$</span>, with <span class="math" data-tex="$\gamma$">$\gamma$</span> in a fixed compact set. On the summation range <span class="math" data-tex="$|f|$">$|f|$</span> is at most a fixed power of a logarithm, and its total variation is at most <span class="math" data-tex="$1+|\tau|$">$1+|\tau|$</span> times such a power. Every bound below may lose a factor <span class="math" data-tex="$(dhAU_0V)^\epsilon$">$(dhAU_0V)^\epsilon$</span> and a factor <span class="math" data-tex="$1+|\tau|$">$1+|\tau|$</span>; the frequency bound <span class="math" data-tex="$A$">$A$</span> need not be a power of <span class="math" data-tex="$T$">$T$</span>. The ranges are dyadic blocks in <span class="math" data-tex="$[U,2U]$">$[U,2U]$</span>, possibly truncated, so that <span class="math" data-tex="$hu$">$hu$</span> lies in <span class="math" data-tex="$[U_0,2U_0]$">$[U_0,2U_0]$</span>; larger fixed supports use finitely many blocks. Suppose first that <span class="math" data-tex="$h\le U_0$">$h\le U_0$</span>, so that <span class="math" data-tex="$U\ge1$">$U\ge1$</span>.</p>
+<p><em>Type I.</em> Here <span class="math" data-tex="$u=ef$">$u=ef$</span> with <span class="math" data-tex="$e\asymp E\ll W$">$e\asymp E\ll W$</span>, and the unrestricted factor <span class="math" data-tex="$f$">$f$</span> carries a power of <span class="math" data-tex="$\log$">$\log$</span>. Fix <span class="math" data-tex="$a$">$a$</span>, <span class="math" data-tex="$v$">$v$</span> and <span class="math" data-tex="$e$">$e$</span>. The <span class="math" data-tex="$f$">$f$</span>-sum runs over an interval of length <span class="math" data-tex="$\ll U/E$">$\ll U/E$</span>. The condition <span class="math" data-tex="$(f,d)=1$">$(f,d)=1$</span> is removed by Möbius inversion over the divisors of <span class="math" data-tex="$d$">$d$</span>: divisors sharing a prime with <span class="math" data-tex="$v$">$v$</span> contribute nothing, the others are units modulo <span class="math" data-tex="$v$">$v$</span>, and their number costs <span class="math" data-tex="$d^\epsilon$">$d^\epsilon$</span>. Since <span class="math" data-tex="$he$">$he$</span> is a unit modulo <span class="math" data-tex="$v$">$v$</span>, the frequency <span class="math" data-tex="$-a\overline{he}$">$-a\overline{he}$</span> has gcd <span class="math" data-tex="$(a,v)$">$(a,v)$</span> with <span class="math" data-tex="$v$">$v$</span>. Partial summation and the interval completion (12.5), in its form with <span class="math" data-tex="$(a,v)$">$(a,v)$</span> in place of its square root, bound the <span class="math" data-tex="$f$">$f$</span>-sum by
 <span class="math math-display" data-tex="$$
-|B_h^{\rm I}|\ll (1+|\tau|)(dhAU_0V)^\epsilon
- \{AWV^{3/2}+AUV^{1/2}\}. \tag{24.4}
+(1+|\tau|)(dhAU_0V)^\epsilon\,v^{1/2}(a,v)\Bigl(1+\frac U{Ev}\Bigr).
 $$">$$
-|B_h^{\rm I}|\ll (1+|\tau|)(dhAU_0V)^\epsilon
- \{AWV^{3/2}+AUV^{1/2}\}. \tag{24.4}
+(1+|\tau|)(dhAU_0V)^\epsilon\,v^{1/2}(a,v)\Bigl(1+\frac U{Ev}\Bigr).
+$$</span>
+Summing over the at most <span class="math" data-tex="$E$">$E$</span> values of <span class="math" data-tex="$e$">$e$</span> replaces the last factor by <span class="math" data-tex="$E+U/v\le W+U/V$">$E+U/v\le W+U/V$</span>. Grouping by the gcd gives <span class="math" data-tex="$\sum_{a\le A,\,v\asymp V}(a,v)\ll AV\log(2AV)$">$\sum_{a\le A,\,v\asymp V}(a,v)\ll AV\log(2AV)$</span>. Hence
+<span class="math math-display" data-tex="$$
+|B_h^{\rm I}|\ll(1+|\tau|)(dhAU_0V)^\epsilon\bigl(AWV^{3/2}+AUV^{1/2}\bigr).
+\tag{24.4}
+$$">$$
+|B_h^{\rm I}|\ll(1+|\tau|)(dhAU_0V)^\epsilon\bigl(AWV^{3/2}+AUV^{1/2}\bigr).
+\tag{24.4}
 $$</span></p>
-<p>For Type II, the binomial logarithm identity and <span class="math" data-tex="$(ef)^{i\tau+\gamma}=e^{i\tau+\gamma}f^{i\tau+\gamma}$">$(ef)^{i\tau+\gamma}=e^{i\tau+\gamma}f^{i\tau+\gamma}$</span> separate the actual weights without a power of <span class="math" data-tex="$|\tau|$">$|\tau|$</span>. A sharp product endpoint is separated by the truncated Perron formula proved in lesson eleven, with its cutoff placed halfway between consecutive integers. Take the truncation height to be a sufficiently large fixed power of <span class="math" data-tex="$dhAU_0V$">$dhAU_0V$</span>. Its error is bounded termwise using the divisor coefficient bounds, and its vertical integral costs a logarithm; all additional imaginary powers have modulus one. This is uniform in <span class="math" data-tex="$\tau$">$\tau$</span>. Apply the coupled reciprocal estimate (20.10), with frequency <span class="math" data-tex="$N=A$">$N=A$</span>, reciprocal factor <span class="math" data-tex="$E$">$E$</span>, outer factor <span class="math" data-tex="$F$">$F$</span>, outer modulus <span class="math" data-tex="$V$">$V$</span>, and integer coupling <span class="math" data-tex="$h$">$h$</span>.
-Since <span class="math" data-tex="$EF\asymp U$">$EF\asymp U$</span>, its bound is
+<p><em>Type II.</em> Here <span class="math" data-tex="$u=ef$">$u=ef$</span> with (24.3). The binomial theorem expands <span class="math" data-tex="$(\log ef)^j$">$(\log ef)^j$</span>, and <span class="math" data-tex="$(hef/U_0)^{i\tau+\gamma}=(h/U_0)^{i\tau+\gamma}e^{i\tau+\gamma}f^{i\tau+\gamma}$">$(hef/U_0)^{i\tau+\gamma}=(h/U_0)^{i\tau+\gamma}e^{i\tau+\gamma}f^{i\tau+\gamma}$</span> separates the weight into the two variables with no power of <span class="math" data-tex="$|\tau|$">$|\tau|$</span>. A sharp condition on <span class="math" data-tex="$ef$">$ef$</span> is separated by the truncated kernel of Lemma 1.1 of <a href="NT-ZETA-11.html">Perron's formula and the explicit formula for prime counting</a>, with the cutoff halfway between consecutive integers and the truncation height a large fixed power of <span class="math" data-tex="$dhAU_0V$">$dhAU_0V$</span>. Its error terms are bounded trivially with the divisor bounds for the coefficients, its vertical integral costs a logarithm, and the extra imaginary powers have modulus one. Now apply (20.10) with frequency <span class="math" data-tex="$A$">$A$</span> in place of <span class="math" data-tex="$N$">$N$</span>, the variable <span class="math" data-tex="$e\asymp E$">$e\asymp E$</span> in place of <span class="math" data-tex="$a$">$a$</span>, the variable <span class="math" data-tex="$f\asymp F$">$f\asymp F$</span> in place of <span class="math" data-tex="$b$">$b$</span>, the modulus <span class="math" data-tex="$v\asymp V$">$v\asymp V$</span>, and the coupling <span class="math" data-tex="$j=h$">$j=h$</span>, which is coprime to <span class="math" data-tex="$v$">$v$</span>. Since <span class="math" data-tex="$EF\asymp U$">$EF\asymp U$</span>, this gives
 <span class="math math-display" data-tex="$$
-(AUV)^{1/2}
- \left\{(UV/E)^{1/2}
- +(A+E)^{1/4}
- [(UV/E)(A+hE)(V+hE^2)+hAU^2]^{1/4}\right\}. \tag{24.5}
+|B_h^{\rm II}|\ll(dhAU_0V)^\epsilon(AUV)^{1/2}\Bigl\{\Bigl(\frac{UV}E\Bigr)^{1/2}+(A+E)^{1/4}\Bigl[\frac{UV}E\,(A+hE)(V+hE^2)+hAU^2\Bigr]^{1/4}\Bigr\}.
+\tag{24.5}
 $$">$$
-(AUV)^{1/2}
- \left\{(UV/E)^{1/2}
- +(A+E)^{1/4}
- [(UV/E)(A+hE)(V+hE^2)+hAU^2]^{1/4}\right\}. \tag{24.5}
-$$</span>
-The inequalities are uniform in truncated endpoints. Divisor coefficients and smooth separation costs are absorbed into the stated small power.</p>
-<p>Expanding the fourth power in (24.5), merging the smaller terms using <span class="math" data-tex="$h\ge1$">$h\ge1$</span>, and taking fourth roots bounds it by the following nine monomials:
+|B_h^{\rm II}|\ll(dhAU_0V)^\epsilon(AUV)^{1/2}\Bigl\{\Bigl(\frac{UV}E\Bigr)^{1/2}+(A+E)^{1/4}\Bigl[\frac{UV}E\,(A+hE)(V+hE^2)+hAU^2\Bigr]^{1/4}\Bigr\}.
+\tag{24.5}
+$$</span></p>
+<p>Use <span class="math" data-tex="$(A+E)(A+hE)\le A^2+2hAE+hE^2$">$(A+E)(A+hE)\le A^2+2hAE+hE^2$</span>, which holds because <span class="math" data-tex="$h\ge1$">$h\ge1$</span>. Multiply out the product of <span class="math" data-tex="$(A+E)$">$(A+E)$</span> with the bracket and take fourth roots term by term. Together with the first term, this bounds the braces in (24.5), after multiplication by <span class="math" data-tex="$(AUV)^{1/2}$">$(AUV)^{1/2}$</span>, by a constant times the sum of the nine monomials
 <span class="math math-display" data-tex="$$
-\begin{array}{c|rrrrr}
-&amp;h&amp;A&amp;U&amp;V&amp;E\\ \hline
-0&amp;0&amp;1/2&amp;1&amp;1&amp;-1/2\\
-1&amp;0&amp;1&amp;3/4&amp;1&amp;-1/4\\
-2&amp;1/4&amp;3/4&amp;3/4&amp;1&amp;0\\
-3&amp;1/4&amp;1/2&amp;3/4&amp;1&amp;1/4\\
-4&amp;1/4&amp;1&amp;3/4&amp;3/4&amp;1/4\\
-5&amp;1/2&amp;3/4&amp;3/4&amp;3/4&amp;1/2\\
-6&amp;1/2&amp;1/2&amp;3/4&amp;3/4&amp;3/4\\
-7&amp;1/4&amp;1&amp;1&amp;1/2&amp;0\\
-8&amp;1/4&amp;3/4&amp;1&amp;1/2&amp;1/4
-\end{array} \tag{24.6}
+\begin{gathered}
+A^{1/2}UVE^{-1/2},\qquad AU^{3/4}VE^{-1/4},\qquad h^{1/4}AU^{3/4}V^{3/4}E^{1/4},\\
+h^{1/4}A^{3/4}U^{3/4}V,\qquad h^{1/2}A^{3/4}U^{3/4}V^{3/4}E^{1/2},\qquad h^{1/4}A^{1/2}U^{3/4}VE^{1/4},\\
+h^{1/2}A^{1/2}U^{3/4}V^{3/4}E^{3/4},\qquad h^{1/4}AUV^{1/2},\qquad h^{1/4}A^{3/4}UV^{1/2}E^{1/4}.
+\end{gathered}
+\tag{24.6}
 $$">$$
-\begin{array}{c|rrrrr}
-&amp;h&amp;A&amp;U&amp;V&amp;E\\ \hline
-0&amp;0&amp;1/2&amp;1&amp;1&amp;-1/2\\
-1&amp;0&amp;1&amp;3/4&amp;1&amp;-1/4\\
-2&amp;1/4&amp;3/4&amp;3/4&amp;1&amp;0\\
-3&amp;1/4&amp;1/2&amp;3/4&amp;1&amp;1/4\\
-4&amp;1/4&amp;1&amp;3/4&amp;3/4&amp;1/4\\
-5&amp;1/2&amp;3/4&amp;3/4&amp;3/4&amp;1/2\\
-6&amp;1/2&amp;1/2&amp;3/4&amp;3/4&amp;3/4\\
-7&amp;1/4&amp;1&amp;1&amp;1/2&amp;0\\
-8&amp;1/4&amp;3/4&amp;1&amp;1/2&amp;1/4
-\end{array} \tag{24.6}
+\begin{gathered}
+A^{1/2}UVE^{-1/2},\qquad AU^{3/4}VE^{-1/4},\qquad h^{1/4}AU^{3/4}V^{3/4}E^{1/4},\\
+h^{1/4}A^{3/4}U^{3/4}V,\qquad h^{1/2}A^{3/4}U^{3/4}V^{3/4}E^{1/2},\qquad h^{1/4}A^{1/2}U^{3/4}VE^{1/4},\\
+h^{1/2}A^{1/2}U^{3/4}V^{3/4}E^{3/4},\qquad h^{1/4}AUV^{1/2},\qquad h^{1/4}A^{3/4}UV^{1/2}E^{1/4}.
+\end{gathered}
+\tag{24.6}
 $$</span>
-Each row lists exponents. The first row comes from the first term of (24.5). The other rows are precisely the expansion of
-<span class="math" data-tex="$(AUV)^2[(UV/E)(A+E)(A+hE)(V+hE^2)+hAU^2(A+E)]$">$(AUV)^2[(UV/E)(A+E)(A+hE)(V+hE^2)+hAU^2(A+E)]$</span>;
-when <span class="math" data-tex="$h+1$">$h+1$</span> occurs, use <span class="math" data-tex="$h+1\le2h$">$h+1\le2h$</span>.
-This displays all powers of the coupling parameter rather than absorbing them into an unjustified constant.</p>
-<h3 id="24-4-the-critical-parameter-substitution-and-the-h--sum">24.4. The critical parameter substitution and the <span class="math" data-tex="$h$">$h$</span>-sum</h3>
-<p>First evaluate the monomials at the positive real reference value
+The first is the first term of (24.5). The other eight are the fourth roots of the eight terms of
 <span class="math math-display" data-tex="$$
-A_0=U_0V/T.
+(AUV)^2\Bigl[\frac{UV}E\,(A^2+2hAE+hE^2)(V+hE^2)+hAU^2(A+E)\Bigr],
 $$">$$
-A_0=U_0V/T.
+(AUV)^2\Bigl[\frac{UV}E\,(A^2+2hAE+hE^2)(V+hE^2)+hAU^2(A+E)\Bigr],
 $$</span>
-This is an algebraic comparison value and need not be an integer or at least one. Suppose <span class="math" data-tex="$U_0,V\le y$">$U_0,V\le y$</span>. Divide each monomial in (24.6) by <span class="math" data-tex="$A$">$A$</span>.
-Use <span class="math" data-tex="$E^{-b}\ll U^{-b/4}$">$E^{-b}\ll U^{-b/4}$</span> for <span class="math" data-tex="$b&gt;0$">$b&gt;0$</span>, and
-<span class="math" data-tex="$E^b\ll U^{b/2}$">$E^b\ll U^{b/2}$</span>, by (24.3). Substitute <span class="math" data-tex="$U=U_0/h$">$U=U_0/h$</span> and
-<span class="math" data-tex="$A=A_0$">$A=A_0$</span>. The resulting expressions are
+in the order in which they arise, with the factors <span class="math" data-tex="$2^{1/4}$">$2^{1/4}$</span> dropped. Every power of the coupling parameter <span class="math" data-tex="$h$">$h$</span> is kept.</p>
+<h3 id="24-4-a-comparison-frequency-and-the-sum-over-the-split-off-part">24.4. A comparison frequency and the sum over the split-off part</h3>
+<p>Divide each monomial in (24.6) by <span class="math" data-tex="$A$">$A$</span>. Bound powers of <span class="math" data-tex="$E$">$E$</span> by (24.3): <span class="math" data-tex="$E^{-b}\ll U^{-b/4}$">$E^{-b}\ll U^{-b/4}$</span> and <span class="math" data-tex="$E^{b}\ll U^{b/2}$">$E^{b}\ll U^{b/2}$</span> for <span class="math" data-tex="$b&gt;0$">$b&gt;0$</span>. Then substitute <span class="math" data-tex="$U=U_0/h$">$U=U_0/h$</span> and the reference value <span class="math" data-tex="$A_0=U_0V/T$">$A_0=U_0V/T$</span>, a positive real number that need not be an integer. In the order of (24.6), the results are
 <span class="math math-display" data-tex="$$
-\begin{array}{c|l|r}
-&amp;\text{remaining }T,U_0,V\text{ powers}&amp;
- \text{decay power of }h\\ \hline
-0&amp;T^{1/2}U_0^{3/8}V^{1/2}&amp;7/8\\
-1&amp;U_0^{11/16}V&amp;11/16\\
-2&amp;T^{1/4}U_0^{1/2}V^{3/4}&amp;1/2\\
-3&amp;T^{1/2}U_0^{3/8}V^{1/2}&amp;5/8\\
-4&amp;U_0^{7/8}V^{3/4}&amp;5/8\\
-5&amp;T^{1/4}U_0^{3/4}V^{1/2}&amp;1/2\\
-6&amp;T^{1/2}U_0^{5/8}V^{1/4}&amp;5/8\\
-7&amp;U_0V^{1/2}&amp;3/4\\
-8&amp;T^{1/4}U_0^{7/8}V^{1/4}&amp;7/8
-\end{array}
+\begin{gathered}
+T^{1/2}U_0^{3/8}V^{1/2}h^{-7/8},\qquad U_0^{11/16}Vh^{-11/16},\qquad U_0^{7/8}V^{3/4}h^{-5/8},\\
+T^{1/4}U_0^{1/2}V^{3/4}h^{-1/2},\qquad T^{1/4}U_0^{3/4}V^{1/2}h^{-1/2},\qquad T^{1/2}U_0^{3/8}V^{1/2}h^{-5/8},\\
+T^{1/2}U_0^{5/8}V^{1/4}h^{-5/8},\qquad U_0V^{1/2}h^{-3/4},\qquad T^{1/4}U_0^{7/8}V^{1/4}h^{-7/8}.
+\end{gathered}
 $$">$$
-\begin{array}{c|l|r}
-&amp;\text{remaining }T,U_0,V\text{ powers}&amp;
- \text{decay power of }h\\ \hline
-0&amp;T^{1/2}U_0^{3/8}V^{1/2}&amp;7/8\\
-1&amp;U_0^{11/16}V&amp;11/16\\
-2&amp;T^{1/4}U_0^{1/2}V^{3/4}&amp;1/2\\
-3&amp;T^{1/2}U_0^{3/8}V^{1/2}&amp;5/8\\
-4&amp;U_0^{7/8}V^{3/4}&amp;5/8\\
-5&amp;T^{1/4}U_0^{3/4}V^{1/2}&amp;1/2\\
-6&amp;T^{1/2}U_0^{5/8}V^{1/4}&amp;5/8\\
-7&amp;U_0V^{1/2}&amp;3/4\\
-8&amp;T^{1/4}U_0^{7/8}V^{1/4}&amp;7/8
-\end{array}
+\begin{gathered}
+T^{1/2}U_0^{3/8}V^{1/2}h^{-7/8},\qquad U_0^{11/16}Vh^{-11/16},\qquad U_0^{7/8}V^{3/4}h^{-5/8},\\
+T^{1/4}U_0^{1/2}V^{3/4}h^{-1/2},\qquad T^{1/4}U_0^{3/4}V^{1/2}h^{-1/2},\qquad T^{1/2}U_0^{3/8}V^{1/2}h^{-5/8},\\
+T^{1/2}U_0^{5/8}V^{1/4}h^{-5/8},\qquad U_0V^{1/2}h^{-3/4},\qquad T^{1/4}U_0^{7/8}V^{1/4}h^{-7/8}.
+\end{gathered}
 $$</span>
-Since <span class="math" data-tex="$U_0,V\le y$">$U_0,V\le y$</span>, each is bounded by
+Let <span class="math" data-tex="$y\ge1$">$y\ge1$</span> with <span class="math" data-tex="$U_0,V\le y$">$U_0,V\le y$</span>. The terms with <span class="math" data-tex="$T^{1/2}$">$T^{1/2}$</span> then have <span class="math" data-tex="$y$">$y$</span>-exponent <span class="math" data-tex="$7/8$">$7/8$</span>, and the terms without <span class="math" data-tex="$T$">$T$</span> have <span class="math" data-tex="$y$">$y$</span>-exponent at most <span class="math" data-tex="$7/4$">$7/4$</span>. The terms with <span class="math" data-tex="$T^{1/4}$">$T^{1/4}$</span> have <span class="math" data-tex="$y$">$y$</span>-exponent at most <span class="math" data-tex="$5/4$">$5/4$</span>, and
 <span class="math math-display" data-tex="$$
-T^{1/2}y^{7/8}+y^{7/4}
+T^{1/4}y^{5/4}\le\bigl(T^{1/2}y^{7/8}\cdot y^{7/4}\bigr)^{1/2}\le\tfrac12\bigl(T^{1/2}y^{7/8}+y^{7/4}\bigr),
 $$">$$
-T^{1/2}y^{7/8}+y^{7/4}
+T^{1/4}y^{5/4}\le\bigl(T^{1/2}y^{7/8}\cdot y^{7/4}\bigr)^{1/2}\le\tfrac12\bigl(T^{1/2}y^{7/8}+y^{7/4}\bigr),
 $$</span>
-times its listed <span class="math" data-tex="$h$">$h$</span>-decay. For the three <span class="math" data-tex="$T^{1/4}$">$T^{1/4}$</span> rows, use
-<span class="math" data-tex="$T^{1/4}y^{5/4}\le
-\sqrt{(T^{1/2}y^{7/8})(y^{7/4})}$">$T^{1/4}y^{5/4}\le
-\sqrt{(T^{1/2}y^{7/8})(y^{7/4})}$</span>, because <span class="math" data-tex="$y\ge1$">$y\ge1$</span>,
-and then the arithmetic-geometric-mean inequality; the row with <span class="math" data-tex="$y^{9/8}$">$y^{9/8}$</span> is smaller. The non-<span class="math" data-tex="$T$">$T$</span> rows have total degree at most <span class="math" data-tex="$7/4$">$7/4$</span>.
-Type I in (24.4), divided by <span class="math" data-tex="$A$">$A$</span>, also has this bound and at least <span class="math" data-tex="$h^{-1/4}$">$h^{-1/4}$</span> decay.</p>
-<p>This comparison controls every actual frequency range <span class="math" data-tex="$A\ge1$">$A\ge1$</span>, not just <span class="math" data-tex="$A=A_0$">$A=A_0$</span>. In every monomial <span class="math" data-tex="$A$">$A$</span> has exponent <span class="math" data-tex="$a$">$a$</span> with <span class="math" data-tex="$0&lt;a\le1$">$0&lt;a\le1$</span>. The function
+because <span class="math" data-tex="$5/4\le21/16$">$5/4\le21/16$</span>. So each expression is at most <span class="math" data-tex="$(T^{1/2}y^{7/8}+y^{7/4})h^{-1/2}$">$(T^{1/2}y^{7/8}+y^{7/4})h^{-1/2}$</span>. The Type I bound (24.4), divided by <span class="math" data-tex="$A$">$A$</span>, is <span class="math" data-tex="$WV^{3/2}+UV^{1/2}=U_0^{1/4}V^{3/2}h^{-1/4}+U_0V^{1/2}h^{-1}\le2y^{7/4}h^{-1/4}$">$WV^{3/2}+UV^{1/2}=U_0^{1/4}V^{3/2}h^{-1/4}+U_0V^{1/2}h^{-1}\le2y^{7/4}h^{-1/4}$</span>.</p>
+<p>These bounds at the reference value control every frequency <span class="math" data-tex="$A\ge1$">$A\ge1$</span>. In each monomial of (24.6) and of (24.4), <span class="math" data-tex="$A$">$A$</span> occurs with an exponent <span class="math" data-tex="$\alpha\in(0,1]$">$\alpha\in(0,1]$</span>. The function <span class="math" data-tex="$A\mapsto A^\alpha/\max(TA,U_0V)$">$A\mapsto A^\alpha/\max(TA,U_0V)$</span> equals <span class="math" data-tex="$A^\alpha/(U_0V)$">$A^\alpha/(U_0V)$</span> for <span class="math" data-tex="$A\le A_0$">$A\le A_0$</span>, which is nondecreasing, and <span class="math" data-tex="$A^{\alpha-1}/T$">$A^{\alpha-1}/T$</span> for <span class="math" data-tex="$A\ge A_0$">$A\ge A_0$</span>, which is nonincreasing. Its largest value over all <span class="math" data-tex="$A&gt;0$">$A&gt;0$</span> is therefore <span class="math" data-tex="$A_0^{\alpha-1}/T$">$A_0^{\alpha-1}/T$</span>. Consequently a monomial at frequency <span class="math" data-tex="$A$">$A$</span> is at most <span class="math" data-tex="$\max(TA,U_0V)/T$">$\max(TA,U_0V)/T$</span> times the same monomial divided by <span class="math" data-tex="$A$">$A$</span> at <span class="math" data-tex="$A=A_0$">$A=A_0$</span>. Writing <span class="math" data-tex="$h^{-1/4}$">$h^{-1/4}$</span> for the weakest decay that occurs, we obtain for <span class="math" data-tex="$1\le h\le U_0$">$1\le h\le U_0$</span>
 <span class="math math-display" data-tex="$$
-\frac{A^a}{\max(TA,U_0V)}
-$$">$$
-\frac{A^a}{\max(TA,U_0V)}
-$$</span>
-increases up to <span class="math" data-tex="$A_0$">$A_0$</span> and decreases thereafter. Its maximum is <span class="math" data-tex="$A_0^a/(TA_0)$">$A_0^a/(TA_0)$</span>, including when <span class="math" data-tex="$A_0&lt;1$">$A_0&lt;1$</span>. The two Type I monomials have <span class="math" data-tex="$a=1$">$a=1$</span> and obey the same assertion. Consequently
-<span class="math math-display" data-tex="$$
-|B_h|\ll_\epsilon
-(1+|\tau|)(dhAy)^\epsilon
-\max(TA,U_0V)
-\{T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\}h^{-1/4}.
+|B_h|\ll_\epsilon(1+|\tau|)(dhAy)^\epsilon\max(TA,U_0V)\bigl(T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\bigr)h^{-1/4}.
 \tag{24.7}
 $$">$$
-|B_h|\ll_\epsilon
-(1+|\tau|)(dhAy)^\epsilon
-\max(TA,U_0V)
-\{T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\}h^{-1/4}.
+|B_h|\ll_\epsilon(1+|\tau|)(dhAy)^\epsilon\max(TA,U_0V)\bigl(T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\bigr)h^{-1/4}.
 \tag{24.7}
-$$</span>
-The uniform <span class="math" data-tex="$h^{-1/4}$">$h^{-1/4}$</span> is weaker than, and hence covered by, every decay power in the table. This is the form required by the exact Gaussian dual kernel.</p>
-<p>For the remaining range <span class="math" data-tex="$U_0&lt;h\le2U_0$">$U_0&lt;h\le2U_0$</span>, we have <span class="math" data-tex="$1/2\le U&lt;1$">$1/2\le U&lt;1$</span>. The residual dyadic interval contains at most the single positive integer <span class="math" data-tex="$u=1$">$u=1$</span>. Its fixed convolution coefficient is bounded; the constant-one convention gives <span class="math" data-tex="$(\log1)^0=1$">$(\log1)^0=1$</span>, whereas positive logarithmic powers vanish. The dimensionless factor <span class="math" data-tex="$h/U_0\in(1,2]$">$h/U_0\in(1,2]$</span> has bounded amplitude. Summing the divisor-bounded outer coefficients, absorbing the fixed logarithmic powers and renaming an arbitrarily small epsilon, gives
+$$</span></p>
+<p>For <span class="math" data-tex="$U_0&lt;h\le2U_0$">$U_0&lt;h\le2U_0$</span> we have <span class="math" data-tex="$1/2\le U&lt;1$">$1/2\le U&lt;1$</span>, so the only possible <span class="math" data-tex="$u$">$u$</span> is <span class="math" data-tex="$u=1$">$u=1$</span>. Its coefficient is bounded: <span class="math" data-tex="$C(1)$">$C(1)$</span> is <span class="math" data-tex="$1$">$1$</span> or <span class="math" data-tex="$0$">$0$</span>, <span class="math" data-tex="$(\log1)^j$">$(\log1)^j$</span> is <span class="math" data-tex="$1$">$1$</span> or <span class="math" data-tex="$0$">$0$</span>, and <span class="math" data-tex="$|f(h)|$">$|f(h)|$</span> is bounded since <span class="math" data-tex="$h/U_0\in(1,2]$">$h/U_0\in(1,2]$</span>. Summing the outer coefficients gives <span class="math" data-tex="$|B_h|\ll_\epsilon(dhAy)^\epsilon AV$">$|B_h|\ll_\epsilon(dhAy)^\epsilon AV$</span>. Since <span class="math" data-tex="$h\le2U_0\le2y$">$h\le2U_0\le2y$</span> and <span class="math" data-tex="$V\le y$">$V\le y$</span>,
 <span class="math math-display" data-tex="$$
-|B_h|\ll_\epsilon(1+|\tau|)(dhAy)^\epsilon AV.
-\tag{24.7a}
+\max(TA,U_0V)\,T^{-1}y^{7/4}h^{-1/4}\ge Ay^{7/4}(2y)^{-1/4}\ge2^{-1/4}AV .
 $$">$$
-|B_h|\ll_\epsilon(1+|\tau|)(dhAy)^\epsilon AV.
-\tag{24.7a}
+\max(TA,U_0V)\,T^{-1}y^{7/4}h^{-1/4}\ge Ay^{7/4}(2y)^{-1/4}\ge2^{-1/4}AV .
 $$</span>
-Since <span class="math" data-tex="$U_0,V\le y$">$U_0,V\le y$</span> and <span class="math" data-tex="$y\ge1$">$y\ge1$</span>, we have <span class="math" data-tex="$h\le2y$">$h\le2y$</span> and
+So (24.7) holds for all <span class="math" data-tex="$1\le h\le2U_0$">$1\le h\le2U_0$</span>, with a fixed change in the implied constant.</p>
+<p>The split-off part is summed with the following bound: for fixed <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span> and <span class="math" data-tex="$C$">$C$</span>, and every <span class="math" data-tex="$\epsilon&gt;0$">$\epsilon&gt;0$</span>,
 <span class="math math-display" data-tex="$$
-\begin{aligned}
-\max(TA,U_0V)T^{-1}y^{7/4}h^{-1/4}
- &amp;\ge Ay^{7/4}h^{-1/4}\\
- &amp;\ge2^{-1/4}Ay^{3/2}\\
- &amp;\ge2^{-1/4}AV.
-\end{aligned}\tag{24.7b}
+\sum_{h\mid d^\infty}\tau(dh)^Ch^{-c}\ll_{c,C,\epsilon}d^\epsilon .
+\tag{24.8}
 $$">$$
-\begin{aligned}
-\max(TA,U_0V)T^{-1}y^{7/4}h^{-1/4}
- &amp;\ge Ay^{7/4}h^{-1/4}\\
- &amp;\ge2^{-1/4}Ay^{3/2}\\
- &amp;\ge2^{-1/4}AV.
-\end{aligned}\tag{24.7b}
+\sum_{h\mid d^\infty}\tau(dh)^Ch^{-c}\ll_{c,C,\epsilon}d^\epsilon .
+\tag{24.8}
 $$</span>
-Thus (24.7) holds throughout <span class="math" data-tex="$1\le h\le2U_0$">$1\le h\le2U_0$</span>, with the same exponents and a fixed change in its implicit constant. This includes the full part of <span class="math" data-tex="$H\in[U_0,2U_0]$">$H\in[U_0,2U_0]$</span> supported on primes dividing <span class="math" data-tex="$d$">$d$</span>, and the coupling <span class="math" data-tex="$j$">$j$</span> in Section 25.2.</p>
-<p>For every fixed <span class="math" data-tex="$c&gt;0,C$">$c&gt;0,C$</span>, and every <span class="math" data-tex="$\epsilon&gt;0$">$\epsilon&gt;0$</span>,
-<span class="math math-display" data-tex="$$
-\sum_{h\mid d^\infty}\tau(dh)^C h^{-c}\ll_{c,C,\epsilon}d^\epsilon. \tag{24.8}
-$$">$$
-\sum_{h\mid d^\infty}\tau(dh)^C h^{-c}\ll_{c,C,\epsilon}d^\epsilon. \tag{24.8}
-$$</span>
-Use <span class="math" data-tex="$\tau(dh)\le\tau(d)\tau(h)$">$\tau(dh)\le\tau(d)\tau(h)$</span>. The remaining sum factors into
-<span class="math" data-tex="$\prod_{p\mid d}\sum_{j\ge0}(j+1)^Cp^{-cj}$">$\prod_{p\mid d}\sum_{j\ge0}(j+1)^Cp^{-cj}$</span>.
-Each local factor is <span class="math" data-tex="$1+O_C(p^{-c})$">$1+O_C(p^{-c})$</span>. For all sufficiently large primes it is at most <span class="math" data-tex="$p^{\epsilon/2}$">$p^{\epsilon/2}$</span>; the finitely many smaller-prime factors have a bounded product depending on <span class="math" data-tex="$\epsilon,c,C$">$\epsilon,c,C$</span>. Combine this with
-<span class="math" data-tex="$\tau(d)^C\ll_\epsilon d^{\epsilon/2}$">$\tau(d)^C\ll_\epsilon d^{\epsilon/2}$</span>, after renaming epsilon.
-This proves (24.8). Choose the epsilon in (24.7) smaller than <span class="math" data-tex="$1/8$">$1/8$</span>, so its <span class="math" data-tex="$h^\epsilon$">$h^\epsilon$</span> leaves a positive decay exponent for (24.8). The fixed logarithmic factor in <span class="math" data-tex="$G(h)$">$G(h)$</span> is absorbed in <span class="math" data-tex="$y^\epsilon$">$y^\epsilon$</span>.</p>
-<p>Combining (24.1),(24.7),(24.8), for <span class="math" data-tex="$H\asymp U_0,K\asymp V$">$H\asymp U_0,K\asymp V$</span>, gives the precise convolution sum estimate
+Indeed <span class="math" data-tex="$\tau(dh)\le\tau(d)\tau(h)$">$\tau(dh)\le\tau(d)\tau(h)$</span>, and the sum over <span class="math" data-tex="$h\mid d^\infty$">$h\mid d^\infty$</span> is the product over <span class="math" data-tex="$p\mid d$">$p\mid d$</span> of <span class="math" data-tex="$\sum_{k\ge0}(k+1)^Cp^{-ck}=1+O_{c,C}(p^{-c})$">$\sum_{k\ge0}(k+1)^Cp^{-ck}=1+O_{c,C}(p^{-c})$</span>. This factor is at most <span class="math" data-tex="$p^{\epsilon/2}$">$p^{\epsilon/2}$</span> for every prime <span class="math" data-tex="$p$">$p$</span> beyond a bound depending on <span class="math" data-tex="$c,C,\epsilon$">$c,C,\epsilon$</span>, and the finitely many remaining factors are bounded. Finally <span class="math" data-tex="$\tau(d)^C\ll_\epsilon d^{\epsilon/2}$">$\tau(d)^C\ll_\epsilon d^{\epsilon/2}$</span>.</p>
+<p>Now let <span class="math" data-tex="$d\le y$">$d\le y$</span>, let <span class="math" data-tex="$p$">$p$</span> be a fixed polynomial, let <span class="math" data-tex="$\nu$">$\nu$</span> and <span class="math" data-tex="$r$">$r$</span> be as above, and let either sign be chosen. Write <span class="math" data-tex="$H=hu$">$H=hu$</span> as in Section 24.1, expand <span class="math" data-tex="$C(dH)$">$C(dH)$</span> by (24.1), and expand <span class="math" data-tex="$p(\log h+\log u)$">$p(\log h+\log u)$</span> binomially. The condition <span class="math" data-tex="$(H,K)=1$">$(H,K)=1$</span> becomes <span class="math" data-tex="$(h,K)=1$">$(h,K)=1$</span> and <span class="math" data-tex="$(u,K)=1$">$(u,K)=1$</span>, and <span class="math" data-tex="$(u,d)=1$">$(u,d)=1$</span> holds by construction. So the sum below is a combination of sums <span class="math" data-tex="$G_S(h)B_h$">$G_S(h)B_h$</span> over <span class="math" data-tex="$h\mid d^\infty$">$h\mid d^\infty$</span>, <span class="math" data-tex="$h\le2U_0$">$h\le2U_0$</span>, in which <span class="math" data-tex="$C(u)$">$C(u)$</span> is replaced by its second factor in (24.1), a function of the same kind. Choose the <span class="math" data-tex="$\epsilon$">$\epsilon$</span> in (24.7) below <span class="math" data-tex="$1/8$">$1/8$</span>. The bound for <span class="math" data-tex="$G_S(h)$">$G_S(h)$</span>, (24.7) and (24.8) with <span class="math" data-tex="$c=1/8$">$c=1/8$</span> give
 <span class="math math-display" data-tex="$$
 \begin{aligned}
-&amp;\left|\sum_{a\asymp A}\nu(a)
- \sum_{K\asymp V}r(K)
- \sum_{\substack{H\asymp U_0\\(H,K)=1}}
- C(dH)(H/U_0)^{i\tau+\gamma}p(\log H)
- e(\pm a\overline H/K)\right|\\
-&amp;\quad\ll_\epsilon
- (1+|\tau|)(dAy)^\epsilon
- \max(TA,U_0V)
- \{T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\}.
-\end{aligned} \tag{24.9}
+&amp;\Bigl|\sum_{a\asymp A}\nu(a)\sum_{K\asymp V}r(K)\sum_{\substack{H\asymp U_0\\(H,K)=1}}C(dH)\,(H/U_0)^{i\tau+\gamma}\,p(\log H)\,e(\pm a\overline H/K)\Bigr|\\
+&amp;\qquad\ll_\epsilon(1+|\tau|)(dAy)^\epsilon\max(TA,U_0V)\bigl(T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\bigr).
+\end{aligned}
+\tag{24.9}
 $$">$$
 \begin{aligned}
-&amp;\left|\sum_{a\asymp A}\nu(a)
- \sum_{K\asymp V}r(K)
- \sum_{\substack{H\asymp U_0\\(H,K)=1}}
- C(dH)(H/U_0)^{i\tau+\gamma}p(\log H)
- e(\pm a\overline H/K)\right|\\
-&amp;\quad\ll_\epsilon
- (1+|\tau|)(dAy)^\epsilon
- \max(TA,U_0V)
- \{T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\}.
-\end{aligned} \tag{24.9}
+&amp;\Bigl|\sum_{a\asymp A}\nu(a)\sum_{K\asymp V}r(K)\sum_{\substack{H\asymp U_0\\(H,K)=1}}C(dH)\,(H/U_0)^{i\tau+\gamma}\,p(\log H)\,e(\pm a\overline H/K)\Bigr|\\
+&amp;\qquad\ll_\epsilon(1+|\tau|)(dAy)^\epsilon\max(TA,U_0V)\bigl(T^{-1/2}y^{7/8}+T^{-1}y^{7/4}\bigr).
+\end{aligned}
+\tag{24.9}
 $$</span>
-Here <span class="math" data-tex="$p$">$p$</span> is fixed, <span class="math" data-tex="$d\le y$">$d\le y$</span>, the second coefficient vector is arbitrary of small divisor-power size, and either sign is allowed. Coprimality with <span class="math" data-tex="$d$">$d$</span> belongs to the residual <span class="math" data-tex="$u$">$u$</span>-factor in (24.1), exactly as in the definition of <span class="math" data-tex="$B_h$">$B_h$</span>. Extra powers of <span class="math" data-tex="$\log d$">$\log d$</span> or normalized logarithms do not affect the conclusion.
-Estimate(24.9) gives the saving for <span class="math" data-tex="$y=T^\theta,\theta&lt;4/7$">$y=T^\theta,\theta&lt;4/7$</span> when inserted into the independently proved Gaussian transformation. It establishes the arithmetic input for nonsquarefree convolution terms, without presuming the PRZZ numerical proportion.</p>
+The coefficients <span class="math" data-tex="$r$">$r$</span> are arbitrary of small divisor-power size, and further powers of <span class="math" data-tex="$\log d$">$\log d$</span> or of normalized logarithms do not change the conclusion. For <span class="math" data-tex="$y=T^\theta$">$y=T^\theta$</span> with <span class="math" data-tex="$\theta&lt;4/7$">$\theta&lt;4/7$</span>, both terms in the last factor are negative powers of <span class="math" data-tex="$T$">$T$</span>, so (24.9) saves a power of <span class="math" data-tex="$T$">$T$</span> over the trivial bound <span class="math" data-tex="$\max(TA,U_0V)$">$\max(TA,U_0V)$</span>. Section 25 inserts this into the Gaussian transformation. No numerical critical-line proportion is assumed in this section.</p>
 <h2 id="25-the-convolution-shifted-mean">25. The convolution shifted mean</h2>
 <p>The arithmetic bound in Section 24 fits the same Gaussian transformation. A logarithmic bound for the unsigned residue weights supplies the positivity argument even before the convolution main term is evaluated.</p>
 <p>For fixed nonnegative integers <span class="math" data-tex="$k_1,\ldots,k_D$">$k_1,\ldots,k_D$</span>, write
@@ -7153,10 +7039,10 @@ since <span class="math" data-tex="$\int_0^1PP&#x27;=1/2$">$\int_0^1PP&#x27;=1/2
 <li>J.-M. Deshouillers and H. Iwaniec, <em>Kloosterman sums and Fourier coefficients of cusp forms</em> (1982), complete Göttingen digitization in <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0070/LOG_0018.pdf">printed page 219</a> and <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0070/LOG_0019.pdf">printed pages 220–288</a>; Theorems 9–12.</li>
 <li>J.-M. Deshouillers and H. Iwaniec, <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa43/aa4339.pdf"><em>Power mean-values for Dirichlet's polynomials and the Riemann zeta-function, II</em></a> (1984), freely supplied by the publisher's mathematical archive, complete five-page article; Lemma 1.</li>
 <li>W. Gabcke, <a href="https://d-nb.info/1072293277/34"><em>Neue Herleitung und explizite Restabschätzung der Riemann-Siegel-Formel</em></a>, complete author-reset dissertation (2015), 133 pages.</li>
-<li>K. Pratt, N. Robles, A. Zaharescu and D. Zeindler, <a href="https://link.springer.com/content/pdf/10.1007/s40687-019-0199-8.pdf"><em>More than five-twelfths of the zeros of zeta are on the critical line</em></a> (2020), complete freely readable CC BY 4.0 article; Sections 4 and 8.</li>
+<li>K. Pratt, N. Robles, A. Zaharescu and D. Zeindler, <a href="https://link.springer.com/content/pdf/10.1007/s40687-019-0199-8.pdf"><em>More than five-twelfths of the zeros of zeta are on the critical line</em></a> (2020), complete freely readable article; Sections 4 and 8.</li>
 </ul>
 <p>Each result used in the argument has its proof here or in the earlier programme lesson specified at its use.</p>
-<p>Section 24 is an attributed adaptation under CC BY 4.0, as stated there. The remaining exposition and the independently written calculations are dedicated to the public domain under CC0. The numerical polynomial choices in Section 26 are credited to Pratt, Robles, Zaharescu and Zeindler, Section 8 of their <a href="https://doi.org/10.1007/s40687-019-0199-8">open article</a>. Their printed full <span class="math" data-tex="$Q$">$Q$</span> is normalized to have <span class="math" data-tex="$Q(0)=1$">$Q(0)=1$</span>, and the length is fixed strictly below <span class="math" data-tex="$4/7$">$4/7$</span>. The finite rational certificates accompany the editable sources; floating-point decimals play no role in the strict inequalities. Authorship and self-check are by GPT-6.1 Sol at Ultra, with no claim of independent human review.</p>
+<p>The exposition and the calculations are dedicated to the public domain under CC0. The numerical polynomial choices in Section 26 are credited to Pratt, Robles, Zaharescu and Zeindler, Section 8 of their <a href="https://doi.org/10.1007/s40687-019-0199-8">open article</a>. Their printed full <span class="math" data-tex="$Q$">$Q$</span> is normalized to have <span class="math" data-tex="$Q(0)=1$">$Q(0)=1$</span>, and the length is fixed strictly below <span class="math" data-tex="$4/7$">$4/7$</span>. The finite rational certificates accompany the editable sources; floating-point decimals play no role in the strict inequalities. Authorship and self-check are by GPT-6.1 Sol at Ultra, and for Section 24 by Claude Opus 5.5 (Anthropic), with no claim of independent human review.</p>
 <h2 id="appendix-a-arbitrary-order-stirling-and-the-exact-phase">Appendix A. Arbitrary-order Stirling and the exact phase</h2>
 <p>This appendix supplies the arbitrary-order expansion used in Section 5.5. We use the continuous gamma logarithm and exact first remainder proved in <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, Theorem 3.1, together with its reflection and duplication identities, Theorems 2.2–2.3. The Bernoulli generating identities were proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Solution 5; we recall their short derivations to track every endpoint. The sign of the even Bernoulli numbers follows from <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>, Theorem 4.2, equation (22). No arbitrary-order Stirling expansion is assumed.</p>
 <h3 id="a-1-bounded-periodic-bernoulli-functions">A.1. Bounded periodic Bernoulli functions</h3>
@@ -7526,7 +7412,7 @@ Thus multiplication by the existing finite expansion of <span class="math" data-
 <p class="small source-link"><a href="src/NT-ZETA-17.md" download>Editable Markdown source of this lesson</a></p>
 </main>
 <footer class="site-footer">
-<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0.</p>
 <nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
 </footer>
 </body>

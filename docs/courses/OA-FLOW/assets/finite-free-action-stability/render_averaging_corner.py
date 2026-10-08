@@ -112,6 +112,6 @@ text(.55,.36,'All finite entries are checked exactly. The general trace and arbi
 fig.savefig(out/'averaging-corner.png', dpi=200)
 fig.savefig(out/'averaging-corner.svg', metadata={'Date':None})
 plt.close(fig)
-font_license = O.parent / 'character-normalization-exact-cocycle-kernel-restoration-20261005/FONT-LICENSE.txt'
+font_license = O.parent / 'character-normalization-exact-cocycle-kernel/FONT-LICENSE.txt'
 shutil.copyfile(font_license, out/'FONT-LICENSE.txt')
 print(json.dumps({'pixels':[3000,2200],'exact_model_checks':True,'coefficient_basis_checks':coefficient_checks,'output':str(out)}))

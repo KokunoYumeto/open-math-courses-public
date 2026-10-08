@@ -151,6 +151,8 @@ Here is the nonstationary bound in the exact uniform form needed. On a cell set 
 
 Iterate this identity \(A\) times. Each resulting amplitude is a finite sum of products of derivatives of \(B_g\) and derivatives of \(a_g\) of orders at most \(A\); their supports lie in the same fixed compact cell. Their \(L^1\) norms are uniformly bounded. Hence the cell integral is bounded by \(C_A\lambda^{-A}\), with a constant independent of the lattice cell and of \(x,t\).
 
+A complementary coordinate proof of this nonstationary estimate is given in Hörmander [HW, Lemma A.1].
+
 The Jacobian \(q^{-n}\) cancels the number \(O(q^n)\) of cells. Since \(q\le L^c\), we have \(\lambda\ge L^{1-c}\). Increase \(A\) to obtain any prescribed power in (6). Spatial differentiation replaces \(a\) by a fixed polynomial times \(a\), so the argument applies unchanged. The variable \(x/t\) and the estimates in \(\tau\) include negative time. ∎
 
 We will also need a time-dependent amplitude. The same proof works when it has a fixed compact frequency support and
@@ -390,6 +392,10 @@ To make the rapid-tail step explicit, a pointwise bound \(C_N(|x|+\tau)^{-N}\) h
 
 ## 5. Integrate the error, then extend by density
 
+The modified-wave construction and coefficient estimates are due to Hörmander [H4, Theorem 30.4.1 and Lemmas 30.4.2–30.4.3]. The cone below is taken about the signed velocity for each time end.
+
+The earlier stationary-phase proof in [HW, Theorem 3.9] assumes that the Hessian determinant of the free polynomial is not identically zero and uses its own admissibility conditions. Sections 2–4 here prove the estimates for every nonconstant real polynomial by nonstationary cancellation, the exact coefficient-segment identity and the finite-derivative operator bound.
+
 **Theorem 5.1 (modified wave operators).** Assume (2)–(4) and the self-adjoint extension described in Section 1. Fix a sign \(\sigma\). Suppose (5) holds in a cone containing \(\sigma v(\xi)\) for almost every regular frequency \(\xi\). Then the strong limit
 
 \[
@@ -535,6 +541,8 @@ But the proposed comparison satisfies
 
 Its limits along these two sequences are \(Zu\) and \(-Zu\). They differ. The missing negative cone permits a nonzero background phase on the left; the positive cone contains no information about it.
 
+Condition (iv) in [H4, §30.4] is stated at the positive velocity, while Theorem 30.4.1 there asserts both time limits.
+
 Example (33) shows that a cone condition at the positive velocity alone does not control both time directions. Theorem 5.1 uses the signed velocity required by the general nonelliptic assertion.
 
 When the short coefficients satisfy (5) in every direction, both signs are available. The example addresses the directional hypothesis when coefficients are allowed to behave differently in different cones.
@@ -636,7 +644,7 @@ For each fixed \(x\), \(F(x+at)-F(at)\) is the integral of \(F'\) over an interv
 \tag{42}
 \]
 
-Multiplication by a function of modulus one preserves the Fourier condition \(P_0\widehat u\in L^2\), so \(M_\sigma\) preserves \(\mathcal D(H_0)\) and commutes there with \(H_0\). It also commutes with the free unitary group. Equation (29) therefore proves both the group and domain identities for the new wave operators. Their ranges and isometry properties are unchanged. If the original two ranges coincide, \(S\) is unitary by the isometry calculation in *Wave operators and modified phases*, and the displayed formula keeps \(\widetilde S\) unitary. If their ranges have not been shown to coincide, both \(S\) and \(\widetilde S\) are only known from these assumptions to be contractions. A fixed phase changes the comparison's coordinates; it cannot supply a missing completeness proof.
+Multiplication by a function of modulus one preserves the Fourier condition \(P_0\widehat u\in L^2\), so \(M_\sigma\) preserves \(\mathcal D(H_0)\) and commutes there with \(H_0\). It also commutes with the free unitary group. Equation (29) therefore proves both the group and domain identities for the new wave operators. Their ranges and isometry properties are unchanged. If the original two ranges coincide, \(S\) is unitary by the [isometry calculation in Section 5](#modified-wave-spectral-measures), and the displayed formula keeps \(\widetilde S\) unitary. If their ranges have not been shown to coincide, both \(S\) and \(\widetilde S\) are only known from these assumptions to be contractions. A fixed phase changes the comparison's coordinates; it cannot supply a missing completeness proof.
 
 ## References
 
@@ -645,3 +653,5 @@ Multiplication by a function of modulus one preserves the Fourier condition \(P_
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, free author's online second edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), 2014, Theorem 5.1, pp. 145–146, Theorem 12.2 and Lemma 12.3, pp. 284–285.
 
 [HW] Lars Hörmander, [*The existence of wave operators in scattering theory*, freely readable journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf), 1976, Theorem 3.9 and its proof, pp. 83–86, and Lemma A.1, p. 88.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.4, hypotheses (i)–(v), Theorem 30.4.1, Lemmas 30.4.2–30.4.3 and their proofs, (30.4.1)–(30.4.15), pp. 308–313. The signed-cone correction is explained in Section 6 above. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

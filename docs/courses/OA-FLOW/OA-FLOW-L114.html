@@ -1,0 +1,484 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Integrable actions: orbit averages, filters and actual eigenoperators · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L113.html">Previous lesson</a><a href="OA-FLOW-L117.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L114.md">Lesson source</a></nav><p class="notice">Preserved integrable-action proof, completed full-cone average, controlled finite-ideal density, coefficient field, filter and spectral detection exposition, and original illustration by GPT-6.1 Sol (OpenAI), Ultra. Spot-checked by GPT-6 Astra in a separate session.</p><p><a id="oa-flow.l114.0"></a><a id="l114-opening-context"></a></p>
+<h1 id="OA-FLOW.L114.0">Integrable actions: orbit averages, filters and actual eigenoperators</h1>
+<p>An integrable orbit has a weak Fourier field. The proof starts with the entire positive orbit average and its bounded domain, then proves a uniform coefficient estimate and the exact filter multiplier. Those steps identify the field support and show why an integrable action detects actual eigenoperators in every nonzero open localization.</p>
+<p>The arbitrary LCH abelian group and arbitrary von Neumann algebra are retained. Weak C0 decay is distinguished from operator-norm decay. The real translation example is a separate exact model; it is not a countable reduction of the group.</p>
+<p><em>Restored local proof, 5 October 2026. Spot-checked in a separate AI session. Original expression and illustration are CC0-1.0 to the extent of rights held; earlier component terms remain their own.</em></p>
+<p><span id="OA-FLOW.L114.INPUTS"></span><a id="oa-flow.l114.inputs"></a></p>
+<p><a id="ip-inputs"></a></p>
+<h2 id="earlier-proofs-and-two-fourier-conventions">Earlier proofs and two Fourier conventions</h2>
+<p>The complete normal integration theorem is <a href="OA-FLOW-AT.html#oa-flow.at.3">AT3–5</a>; <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–6</a> supplies the concrete quotient predual and its vector series. The full extended cone, including its infinite part, is <a href="OA-FLOW-EP.html#oa-flow.ep.2">EP2–4</a>, with normal spectral transport in <a href="OA-FLOW-FF.html#oa-flow.ff.6">FF-5</a>. <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a> supplies the operator-valued finite ideals; <a href="OA-FLOW-GW.html#oa-flow.gw.4">GW4</a> proves the hereditary-cone density mechanism. Bounded monotone limits are the purely operator-theoretic <a href="OA-FLOW-WF.html#oa-flow.wf.2">WF2</a>, and <a href="OA-FLOW-PC.html#oa-flow.projection.pc1">PC1</a> supplies arbitrary projection joins.</p>
+<p>Use the actual arbitrary-group Haar conventions <a href="OA-FLOW-HR.html#hr-03">HR3/5/7–9</a>. Finite-exponent classes have Borel representatives on sigma compact carriers. Product integration uses the Radon product with its qualified carrier theorem, not an unrestricted product-Borel identification. The scalar <a href="OA-FLOW-HARMONIC.html#oa-flow.xgaps.cstar.h1">H1</a> proves Fourier injectivity and C0 regularity; <a href="OA-FLOW-LF.html#lf-1">LF1</a>, <a href="OA-FLOW-GL.html#gl-1">GL1–3/7</a> and <a href="OA-FLOW-SS.html#ss-3">SS3</a> supply local plateaus, exact hull/filter laws and singleton synthesis.</p>
+<p><span id="OA-FLOW.L114.CONVENTIONS"></span><a id="oa-flow.l114.conventions"></a></p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is LCH abelian, <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>, <span class="math" data-tex="\(M\)">\(M\)</span> is a nonzero von Neumann algebra, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a point-ultraweakly continuous normal action. The retained I-formulas use positive spectral labels. Write <span class="math" data-tex="\(p\mapsto-p\)">\(p\mapsto-p\)</span> for inversion of characters. For the same <span class="math" data-tex="\(b\in L^1(G)\)">\(b\in L^1(G)\)</span>, put</p>
+<p><a id="equation-ip1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ F_b^-(p)=\int b(t)\overline{p(t)}\,dt,\qquad
+ f_b^+(p)=\int b(t)p(t)\,dt=F_b^-(-p),\qquad Rf(p)=f(-p).
+ \tag{IP1}
+\]">\[
+ F_b^-(p)=\int b(t)\overline{p(t)}\,dt,\qquad
+ f_b^+(p)=\int b(t)p(t)\,dt=F_b^-(-p),\qquad Rf(p)=f(-p).
+ \tag{IP1}
+\]</span>
+Inversion of an abelian group preserves the fixed Haar measure: its image is a left Haar measure, so HR7 makes it <span class="math" data-tex="\(c\,ds\)">\(c\,ds\)</span>; applying inversion twice gives <span class="math" data-tex="\(c^2=1\)">\(c^2=1\)</span>, hence <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Thus <span class="math" data-tex="\(b(t)\mapsto b(-t)\)">\(b(t)\mapsto b(-t)\)</span> is an isometric involution on <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, and its negative transform is <span class="math" data-tex="\(f_b^+\)">\(f_b^+\)</span>. The positive and negative Fourier algebras are the same set of functions, with the same norm; <span class="math" data-tex="\(R\)">\(R\)</span> is an isometric algebra involution.</p>
+<p>Let <span class="math" data-tex="\(T_b\)">\(T_b\)</span> be the actual normal AT5 filter. The positive-label annihilator is <span class="math" data-tex="\(\{f_b^+:T_bx=0\}=R\{F_b^-:T_bx=0\}\)">\(\{f_b^+:T_bx=0\}=R\{F_b^-:T_bx=0\}\)</span>. Taking hulls gives, directly,</p>
+<p><a id="equation-ip2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\alpha(x)=-\operatorname{sp}_\alpha(x),\qquad
+ M_\alpha(E)=M_{\mathrm{GL}}(-E),\qquad
+ \operatorname{Sp}(\alpha)=-\operatorname{sp}(\alpha).
+ \tag{IP2}
+\]">\[
+ \operatorname{Sp}_\alpha(x)=-\operatorname{sp}_\alpha(x),\qquad
+ M_\alpha(E)=M_{\mathrm{GL}}(-E),\qquad
+ \operatorname{Sp}(\alpha)=-\operatorname{sp}(\alpha).
+ \tag{IP2}
+\]</span>
+The same reflection transports all filter supports, ideals and their hulls. An eigenphase <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> has the GL/SS label <span class="math" data-tex="\(-p\)">\(-p\)</span>, hence the retained positive label <span class="math" data-tex="\(p\)">\(p\)</span>. The open filter span with positive supports in <span class="math" data-tex="\(V\)">\(V\)</span> is the negative-support span for <span class="math" data-tex="\(-V\)">\(-V\)</span>. Every GL/SS use below is through this dictionary; no sign is silently identified.</p>
+<p><span id="OA-FLOW.L114.AVERAGE"></span><a id="oa-flow.l114.average"></a><span id="OA-FLOW.INTSPEC.DOMAIN"></span><a id="oa-flow.intspec.domain"></a></p>
+<p><a id="ip-average"></a></p>
+<h2 id="the-bounded-integrability-domain">The bounded integrability domain</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact abelian group, let <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>, and write</p>
+<p><a id="equation-i1"></a></p>
+<p><span class="math math-display" data-tex="$$ (s,p)=p(s),\qquad s\in G,\ p\in H. \tag{I1}$$">$$ (s,p)=p(s),\qquad s\in G,\ p\in H. \tag{I1}$$</span></p>
+<p>Fix Haar measure <span class="math" data-tex="\(ds\)">\(ds\)</span> and a point-ultraweakly continuous action</p>
+<p><a id="equation-i2"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha:G\longrightarrow\operatorname{Aut}(M) \tag{I2}$$">$$\alpha:G\longrightarrow\operatorname{Aut}(M) \tag{I2}$$</span></p>
+<p>on a nonzero von Neumann algebra.  For <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span> and compact <span class="math" data-tex="\(K\subset G\)">\(K\subset G\)</span>, put</p>
+<p><a id="equation-i3"></a></p>
+<p><span class="math math-display" data-tex="$$T_{\alpha,K}(a)=\int_K\alpha_s(a)\,ds. \tag{I3}$$">$$T_{\alpha,K}(a)=\int_K\alpha_s(a)\,ds. \tag{I3}$$</span></p>
+<p>The positive integrability domain and its complex span are</p>
+<p><a id="equation-i4"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\mathcal P_\alpha^+
+&amp;=\left\{a\in M_+:\sup_{K\Subset G}\|T_{\alpha,K}(a)\|&lt;\infty\right\},\\
+\mathfrak p_\alpha&amp;=\operatorname{span}_{\mathbb C}\mathcal P_\alpha^+.
+\end{aligned} \tag{I4}$$">$$\begin{aligned}
+\mathcal P_\alpha^+
+&amp;=\left\{a\in M_+:\sup_{K\Subset G}\|T_{\alpha,K}(a)\|&lt;\infty\right\},\\
+\mathfrak p_\alpha&amp;=\operatorname{span}_{\mathbb C}\mathcal P_\alpha^+.
+\end{aligned} \tag{I4}$$</span></p>
+<p>For <span class="math" data-tex="\(a\in\mathcal P_\alpha^+\)">\(a\in\mathcal P_\alpha^+\)</span>, monotone completeness gives the bounded positive orbit integral</p>
+<p><a id="equation-i5"></a></p>
+<p><span class="math math-display" data-tex="$$T_\alpha(a)=\sup_{K\Subset G}T_{\alpha,K}(a)\in M_+. \tag{I5}$$">$$T_\alpha(a)=\sup_{K\Subset G}T_{\alpha,K}(a)\in M_+. \tag{I5}$$</span></p>
+<p>Here is the full operator-valued weight behind this bounded domain. Put <span class="math" data-tex="\(N=M^\alpha\)">\(N=M^\alpha\)</span>. Each automorphism is normal, so its fixed-point kernel is ultraweakly closed; the intersection is a unital star subalgebra, hence a concrete von Neumann algebra. AT3 gives norm-continuous predual orbits. For compact <span class="math" data-tex="\(K\)">\(K\)</span>, AT5 with <span class="math" data-tex="\(1_K\in L^1(G)\)">\(1_K\in L^1(G)\)</span> constructs a normal positive map <span class="math" data-tex="\(T_{\alpha,K}\)">\(T_{\alpha,K}\)</span> on all of <span class="math" data-tex="\(M\)">\(M\)</span>, with norm at most <span class="math" data-tex="\(|K|\)">\(|K|\)</span>. Equivalently its preadjoint is the Bochner integral of the predual orbit on <span class="math" data-tex="\(K\)">\(K\)</span>; compact norm image supplies its finite simple approximants.</p>
+<p>For every <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span>, define first in <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span></p>
+<p><a id="equation-ip3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal T(a)=\sup_{K\Subset G}T_{\alpha,K}(a),\qquad
+ \mathcal T(a)(\omega)=\sup_K\int_K\omega(\alpha_s(a))\,ds
+ =\int_G\omega(\alpha_s(a))\,ds\quad(\omega\in M_*^+).
+ \tag{IP3}
+\]">\[
+ \mathcal T(a)=\sup_{K\Subset G}T_{\alpha,K}(a),\qquad
+ \mathcal T(a)(\omega)=\sup_K\int_K\omega(\alpha_s(a))\,ds
+ =\int_G\omega(\alpha_s(a))\,ds\quad(\omega\in M_*^+).
+ \tag{IP3}
+\]</span>
+Finite unions direct the compact sets. EP4 gives the entire increasing supremum, including infinite values; equivalently it is an additive homogeneous lower semicontinuous functional on <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>, since each compact evaluation is norm continuous. The last equality is the Radon compact-inner formula for a continuous nonnegative function, including infinity (HR5). Directedness likewise proves additivity in <span class="math" data-tex="\(a\)">\(a\)</span>, using one common compact upper bound for two lower approximations; <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>.</p>
+<p>Haar translation of the compacts gives <span class="math" data-tex="\(\alpha_t(\mathcal T(a))=\mathcal T(a)\)">\(\alpha_t(\mathcal T(a))=\mathcal T(a)\)</span> and <span class="math" data-tex="\(\mathcal T(\alpha_t(a))=\mathcal T(a)\)">\(\mathcal T(\alpha_t(a))=\mathcal T(a)\)</span>. In the EP2–3 intrinsic spectral pair, its finite-part projection and every finite-part spectral projection are consequently fixed, by uniqueness and FF-5 normal spectral transport. They belong to <span class="math" data-tex="\(N\)">\(N\)</span>. The same pair therefore reconstructs a unique value <span class="math" data-tex="\(T_\alpha(a)\in\widehat N_+\)">\(T_\alpha(a)\in\widehat N_+\)</span>, whose normal inclusion into <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span> is <span class="math" data-tex="\(\mathcal T(a)\)">\(\mathcal T(a)\)</span>. This includes a zero finite part and a nonzero infinite-part projection; it is not just a bounded fixed element. To see affiliation explicitly, every unitary in <span class="math" data-tex="\(N'\)">\(N'\)</span> commutes with those projections, hence with their bounded spectral truncations and the full closed form. EP3 reconstructs its value on every positive normal test. FF-5 supplies the faithful inclusion's order reflection and preservation of increasing suprema.</p>
+<p>For a bounded increasing net <span class="math" data-tex="\(a_i\uparrow a\)">\(a_i\uparrow a\)</span>, normality of each compact map gives</p>
+<p><a id="equation-ip4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal T(a)(\omega)=\sup_K\sup_i\omega(T_{\alpha,K}(a_i))
+ =\sup_i\sup_K\omega(T_{\alpha,K}(a_i))
+ =\sup_i\mathcal T(a_i)(\omega).
+ \tag{IP4}
+\]">\[
+ \mathcal T(a)(\omega)=\sup_K\sup_i\omega(T_{\alpha,K}(a_i))
+ =\sup_i\sup_K\omega(T_{\alpha,K}(a_i))
+ =\sup_i\mathcal T(a_i)(\omega).
+ \tag{IP4}
+\]</span>
+These are the same two directed suprema; no arbitrary-net measurable monotone convergence is invoked. The inclusion reflects this identity in <span class="math" data-tex="\(\widehat N_+\)">\(\widehat N_+\)</span>, proving normality. For <span class="math" data-tex="\(b\in N\)">\(b\in N\)</span>, fixedness gives <span class="math" data-tex="\(T_{\alpha,K}(b^*ab)=b^*T_{\alpha,K}(a)b\)">\(T_{\alpha,K}(b^*ab)=b^*T_{\alpha,K}(a)b\)</span>. Test the supremum at <span class="math" data-tex="\(\omega_b(z)=\omega(b^*zb)\)">\(\omega_b(z)=\omega(b^*zb)\)</span>, which is normal positive by CP6, and use EP4/FF-5 transport to obtain <span class="math" data-tex="\(T_\alpha(b^*ab)=b^*T_\alpha(a)b\)">\(T_\alpha(b^*ab)=b^*T_\alpha(a)b\)</span> in the entire extended cone. Thus <span class="math" data-tex="\(T_\alpha\)">\(T_\alpha\)</span> is an operator-valued weight.</p>
+<p>It is faithful. If its value at <span class="math" data-tex="\(a\)">\(a\)</span> is zero, every continuous nonnegative scalar orbit <span class="math" data-tex="\(s\mapsto\omega(\alpha_s(a))\)">\(s\mapsto\omega(\alpha_s(a))\)</span> has integral zero. A nonzero value would persist on a nonempty open set of positive Haar measure, a contradiction. Its value at the identity is <span class="math" data-tex="\(\omega(a)\)">\(\omega(a)\)</span>; positive vector tests separate <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, so <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>The bounded-output criterion is exactly (I4). A uniform norm bound on the compact averages gives their bounded strong supremum by WF2, hence a bounded value by EP3; conversely a bounded extended value dominates every compact average, giving the same norm bound. The value is in <span class="math" data-tex="\(N_+\)">\(N_+\)</span>, and its inclusion is precisely (I5).</p>
+<p><span id="OA-FLOW.L114.DENSITY"></span><a id="oa-flow.l114.density"></a></p>
+<p><a id="ip-density"></a></p>
+<h2 id="integrability-and-a-controlled-dense-bounded-domain">Integrability and a controlled dense bounded domain</h2>
+<p>Write <span class="math" data-tex="\(F=\mathcal P_\alpha^+\)">\(F=\mathcal P_\alpha^+\)</span>, <span class="math" data-tex="\(\mathcal N_T=\{x:T_\alpha(x^*x)\in N_+\}\)">\(\mathcal N_T=\{x:T_\alpha(x^*x)\in N_+\}\)</span>, and <span class="math" data-tex="\(\mathfrak m_T=\operatorname{span}\mathcal N_T^*\mathcal N_T\)">\(\mathfrak m_T=\operatorname{span}\mathcal N_T^*\mathcal N_T\)</span>. EP6 proves that <span class="math" data-tex="\(F\)">\(F\)</span> is additive and hereditary, that <span class="math" data-tex="\(\mathcal N_T\)">\(\mathcal N_T\)</span> is a left ideal, and that <span class="math" data-tex="\(\mathfrak m_T=\operatorname{span}F=\mathfrak p_\alpha\subset\mathcal N_T\)">\(\mathfrak m_T=\operatorname{span}F=\mathfrak p_\alpha\subset\mathcal N_T\)</span>. These are operator-valued bounded-value statements, not scalar finiteness.</p>
+<p>The action is <strong>integrable</strong> when this operator-valued weight is semifinite, meaning <span class="math" data-tex="\(\mathcal N_T\)">\(\mathcal N_T\)</span> is weak-operator dense. This is equivalent to ultraweak density of <span class="math" data-tex="\(\mathfrak p_\alpha\)">\(\mathfrak p_\alpha\)</span>. Here is the full GW4 hereditary-cone argument with its hypotheses checked.</p>
+<p>If <span class="math" data-tex="\(\mathfrak p_\alpha\)">\(\mathfrak p_\alpha\)</span> is ultraweakly dense, its inclusion in <span class="math" data-tex="\(\mathcal N_T\)">\(\mathcal N_T\)</span> gives weak-operator density. Conversely let <span class="math" data-tex="\(q\)">\(q\)</span> be the join of all projections belonging to <span class="math" data-tex="\(F\)">\(F\)</span>, using PC1. For <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>, its bounded spectral projection <span class="math" data-tex="\(p_\epsilon=1_{[\epsilon,\infty)}(a)\leq\epsilon^{-1}a\)">\(p_\epsilon=1_{[\epsilon,\infty)}(a)\leq\epsilon^{-1}a\)</span> belongs to <span class="math" data-tex="\(F\)">\(F\)</span> by heredity. As <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>, these projections increase strongly to <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span>, so <span class="math" data-tex="\(s(a)\leq q\)">\(s(a)\leq q\)</span>. If <span class="math" data-tex="\(x\in\mathcal N_T\)">\(x\in\mathcal N_T\)</span>, apply this to <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span>; then <span class="math" data-tex="\(x(1-q)=0\)">\(x(1-q)=0\)</span>. That equation defines a weak-operator closed space. Density makes it contain <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(q=1\)">\(q=1\)</span>.</p>
+<p>Direct the entire cone <span class="math" data-tex="\(F\)">\(F\)</span> by operator order, which is directed because <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is an upper bound. Put <span class="math" data-tex="\(e_a=a(1+a)^{-1}\)">\(e_a=a(1+a)^{-1}\)</span>. Bounded functional calculus gives <span class="math" data-tex="\(0\leq e_a\leq1\)">\(0\leq e_a\leq1\)</span> and <span class="math" data-tex="\(e_a\leq a\)">\(e_a\leq a\)</span>, so <span class="math" data-tex="\(e_a\in F\)">\(e_a\in F\)</span>. The inverse inequality is justified as in GW4: if <span class="math" data-tex="\(0&lt;A\leq B\)">\(0&lt;A\leq B\)</span> are invertible, <span class="math" data-tex="\(C=A^{-1/2}BA^{-1/2}\geq1\)">\(C=A^{-1/2}BA^{-1/2}\geq1\)</span>, hence <span class="math" data-tex="\(C^{-1}\leq1\)">\(C^{-1}\leq1\)</span> and <span class="math" data-tex="\(B^{-1}=A^{-1/2}C^{-1}A^{-1/2}\leq A^{-1}\)">\(B^{-1}=A^{-1/2}C^{-1}A^{-1/2}\leq A^{-1}\)</span>. Thus <span class="math" data-tex="\(a\leq b\)">\(a\leq b\)</span> implies <span class="math" data-tex="\(e_a\leq e_b\)">\(e_a\leq e_b\)</span>. WF2 supplies their increasing strong supremum <span class="math" data-tex="\(E\leq1\)">\(E\leq1\)</span>. For every projection <span class="math" data-tex="\(p\in F\)">\(p\in F\)</span>, <span class="math" data-tex="\(np\in F\)">\(np\in F\)</span> and <span class="math" data-tex="\(e_{np}=n(1+n)^{-1}p\)">\(e_{np}=n(1+n)^{-1}p\)</span>, so <span class="math" data-tex="\(E\geq p\)">\(E\geq p\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> is identity on <span class="math" data-tex="\(p\mathcal H\)">\(p\mathcal H\)</span>. Since their join is <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(E=1\)">\(E=1\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(e_a^2\leq e_a\)">\(e_a^2\leq e_a\)</span> gives <span class="math" data-tex="\(e_a\in\mathcal N_T\)">\(e_a\in\mathcal N_T\)</span>; the left ideal gives <span class="math" data-tex="\(xe_a\in\mathcal N_T\)">\(xe_a\in\mathcal N_T\)</span> for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. Therefore</p>
+<p><a id="equation-ip5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ e_a x e_a\in\mathfrak m_T=\mathfrak p_\alpha,\qquad
+ \|e_a x e_a\|\leq\|x\|,\qquad
+ e_a x e_a\longrightarrow x\quad\hbox{strongly and ultraweakly}.
+ \tag{IP5}
+\]">\[
+ e_a x e_a\in\mathfrak m_T=\mathfrak p_\alpha,\qquad
+ \|e_a x e_a\|\leq\|x\|,\qquad
+ e_a x e_a\longrightarrow x\quad\hbox{strongly and ultraweakly}.
+ \tag{IP5}
+\]</span>
+Strong convergence follows by splitting the two factors with their common bound. CP6's finite-vector and series-tail estimate proves ultraweak convergence of this bounded net. This proves the converse density implication with actual controlled approximants; it never turns an unbounded weak-operator approximation into an ultraweak one.</p>
+<p><a id="ip-coefficients"></a></p>
+<h2 id="a-norm-controlled-coefficient-estimate">A norm-controlled coefficient estimate</h2>
+<p>The domain provides more than separate scalar integrability.  For <span class="math" data-tex="\(x\in\mathfrak p_\alpha\)">\(x\in\mathfrak p_\alpha\)</span>, define the finite gauge</p>
+<p><a id="equation-i6"></a></p>
+<p><span class="math math-display" data-tex="$$q_\alpha(x)=\inf\left\{
+\sum_{j=1}^n|c_j|\,\|T_\alpha(a_j)\|:
+x=\sum_{j=1}^n c_ja_j, a_j\in\mathcal P_\alpha^+
+\right\}. \tag{I6}$$">$$q_\alpha(x)=\inf\left\{
+\sum_{j=1}^n|c_j|\,\|T_\alpha(a_j)\|:
+x=\sum_{j=1}^n c_ja_j, a_j\in\mathcal P_\alpha^+
+\right\}. \tag{I6}$$</span></p>
+<p>We first supply the quotient-norm detail for every normal functional, without invoking an unproved norm-controlled positive decomposition. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, CP5–6 give a lift <span class="math" data-tex="\(u\in E_{\mathcal H}\)">\(u\in E_{\mathcal H}\)</span> of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> with <span class="math" data-tex="\(\|u\|&lt;\|\omega\|+\delta/3\)">\(\|u\|&lt;\|\omega\|+\delta/3\)</span>. Improve the CP4 telescoping construction using <a href="OA-FLOW-CP.html#oa-flow.cp.2">CP2's projective-cost norm</a>: choose algebraic <span class="math" data-tex="\(v_k\)">\(v_k\)</span> with errors <span class="math" data-tex="\(\epsilon_k&gt;0\)">\(\epsilon_k&gt;0\)</span>, <span class="math" data-tex="\(\sum_k\epsilon_k&lt;\delta/6\)">\(\sum_k\epsilon_k&lt;\delta/6\)</span>, and represent <span class="math" data-tex="\(d_1=v_1,d_k=v_k-v_{k-1}\)">\(d_1=v_1,d_k=v_k-v_{k-1}\)</span> by finite tensor sums with additional total cost less than <span class="math" data-tex="\(\delta/3\)">\(\delta/3\)</span>. The norm cost of the blocks is at most
+<span class="math" data-tex="\(\|u\|+\epsilon_1+\sum_{k\geq2}(\epsilon_k+\epsilon_{k-1})
+=\|u\|+2\sum_k\epsilon_k\)">\(\|u\|+\epsilon_1+\sum_{k\geq2}(\epsilon_k+\epsilon_{k-1})
+=\|u\|+2\sum_k\epsilon_k\)</span>.
+Thus listing all blocks yields a vector series</p>
+<p><a id="equation-ip6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \omega(z)=\sum_j\langle z\xi_j,\eta_j\rangle,\qquad
+ \sum_j\|\xi_j\|\,\|\eta_j\|&lt;\|\omega\|+\delta.
+ \tag{IP6}
+\]">\[
+ \omega(z)=\sum_j\langle z\xi_j,\eta_j\rangle,\qquad
+ \sum_j\|\xi_j\|\,\|\eta_j\|&lt;\|\omega\|+\delta.
+ \tag{IP6}
+\]</span>
+The summability makes the series absolutely norm convergent. Positive reciprocal rescaling balances each pair, if desired, giving both square-summable sequences with total squared norms equal to this cost. Zero terms are discarded.</p>
+<p>For <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span> and <span class="math" data-tex="\(B=\|T_\alpha(a)\|\)">\(B=\|T_\alpha(a)\|\)</span>, normality on the bounded compact supremum and the Radon formula already proved in (IP3) give
+<span class="math" data-tex="\(\int\langle\alpha_s(a)\xi,\xi\rangle\,ds\leq B\|\xi\|^2\)">\(\int\langle\alpha_s(a)\xi,\xi\rangle\,ds\leq B\|\xi\|^2\)</span>.
+The bounded positive square root gives pointwise Cauchy–Schwarz</p>
+<p><a id="equation-ip7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ |\langle\alpha_s(a)\xi,\eta\rangle|
+ \leq \langle\alpha_s(a)\xi,\xi\rangle^{1/2}
+        \langle\alpha_s(a)\eta,\eta\rangle^{1/2}.
+ \tag{IP7}
+\]">\[
+ |\langle\alpha_s(a)\xi,\eta\rangle|
+ \leq \langle\alpha_s(a)\xi,\xi\rangle^{1/2}
+        \langle\alpha_s(a)\eta,\eta\rangle^{1/2}.
+ \tag{IP7}
+\]</span>
+Scalar integral Cauchy–Schwarz and countable nonnegative monotone convergence, valid on arbitrary measure spaces, therefore bound the absolute integral of the series in (IP6) by <span class="math" data-tex="\(B(\|\omega\|+\delta)\)">\(B(\|\omega\|+\delta)\)</span>. Let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. For a finite decomposition <span class="math" data-tex="\(x=\sum c_ja_j\)">\(x=\sum c_ja_j\)</span> take the triangle inequality and then its infimum in (I6). This proves the stronger constant-one bound</p>
+<p><a id="equation-ip8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \int_G|\omega(\alpha_s(x))|\,ds\leq q_\alpha(x)\|\omega\|,
+ \tag{IP8}
+\]">\[
+ \int_G|\omega(\alpha_s(x))|\,ds\leq q_\alpha(x)\|\omega\|,
+ \tag{IP8}
+\]</span>
+and in particular preserves the original weaker bound</p>
+<p><a id="equation-i7"></a></p>
+<p><span class="math math-display" data-tex="$$\int_G|\omega(\alpha_s(x))|\,ds
+\le 2q_\alpha(x)\|\omega\|. \tag{I7}$$">$$\int_G|\omega(\alpha_s(x))|\,ds
+\le 2q_\alpha(x)\|\omega\|. \tag{I7}$$</span></p>
+<p>Indeed, for <span class="math" data-tex="\(a\in\mathcal P_\alpha^+\)">\(a\in\mathcal P_\alpha^+\)</span> and <span class="math" data-tex="\(\varphi\in M_*^+\)">\(\varphi\in M_*^+\)</span>,</p>
+<p><a id="equation-i8"></a></p>
+<p><span class="math math-display" data-tex="$$\int_G\varphi(\alpha_s(a))\,ds
+=\varphi(T_\alpha(a))
+\le\|\varphi\|\,\|T_\alpha(a)\|, \tag{I8}$$">$$\int_G\varphi(\alpha_s(a))\,ds
+=\varphi(T_\alpha(a))
+\le\|\varphi\|\,\|T_\alpha(a)\|, \tag{I8}$$</span></p>
+<p>and the actual near-norm vector-series argument above, followed by a finite positive decomposition of <span class="math" data-tex="\(x\)">\(x\)</span>, yields (I7).  This uniform estimate is what makes the operator-valued Fourier coefficient below an element of <span class="math" data-tex="\(M=(M_*)^*\)">\(M=(M_*)^*\)</span>; scalar <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-membership by itself would not suffice.</p>
+<p><span id="OA-FLOW.L114.FIELD"></span><a id="oa-flow.l114.field"></a><span id="OA-FLOW.INTSPEC.FOURIER"></span><a id="oa-flow.intspec.fourier"></a></p>
+<p><a id="ip-field"></a></p>
+<h2 id="weak-fourier-coefficients-are-eigenoperators">Weak Fourier coefficients are eigenoperators</h2>
+<p>For <span class="math" data-tex="\(x\in\mathfrak p_\alpha\)">\(x\in\mathfrak p_\alpha\)</span> and <span class="math" data-tex="\(p\in H\)">\(p\in H\)</span>, define <span class="math" data-tex="\(\widehat x(p)\in M\)">\(\widehat x(p)\in M\)</span> by</p>
+<p><a id="equation-i9"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{
+\omega(\widehat x(p))
+=\int_G\overline{(s,p)}\,\omega(\alpha_s(x))\,ds
+\qquad(\omega\in M_*).} \tag{I9}$$">$$\boxed{
+\omega(\widehat x(p))
+=\int_G\overline{(s,p)}\,\omega(\alpha_s(x))\,ds
+\qquad(\omega\in M_*).} \tag{I9}$$</span></p>
+<p>Estimate (I7) proves that the right side is a bounded linear functional of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, uniformly in <span class="math" data-tex="\(p\)">\(p\)</span>, so (I9) really does define an element of <span class="math" data-tex="\(M\)">\(M\)</span>.  For <span class="math" data-tex="\(t\in G\)">\(t\in G\)</span>, Haar translation and the group law give</p>
+<p><a id="equation-i10"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\omega(\alpha_t(\widehat x(p)))
+&amp;=\int_G\overline{(s,p)}\,
+       \omega(\alpha_{t+s}(x))\,ds\\
+&amp;=(t,p)\int_G\overline{(r,p)}\,
+       \omega(\alpha_r(x))\,dr.
+\end{aligned} \tag{I10}$$">$$\begin{aligned}
+\omega(\alpha_t(\widehat x(p)))
+&amp;=\int_G\overline{(s,p)}\,
+       \omega(\alpha_{t+s}(x))\,ds\\
+&amp;=(t,p)\int_G\overline{(r,p)}\,
+       \omega(\alpha_r(x))\,dr.
+\end{aligned} \tag{I10}$$</span></p>
+<p>Normal functionals separate <span class="math" data-tex="\(M\)">\(M\)</span>, hence</p>
+<p><a id="equation-i11"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{\alpha_t(\widehat x(p))=(t,p)\widehat x(p).} \tag{I11}$$">$$\boxed{\alpha_t(\widehat x(p))=(t,p)\widehat x(p).} \tag{I11}$$</span></p>
+<p>Thus every nonzero value of the Fourier field is a <span class="math" data-tex="\(p\)">\(p\)</span>-eigenoperator.  By the complete <a href="OA-FLOW-SS.html#ss-3">SS3</a> singleton theorem and the proved reflection dictionary,</p>
+<p><a id="equation-i12"></a></p>
+<p><span class="math math-display" data-tex="$$\widehat x(p)\ne0
+\quad\Longrightarrow\quad
+0\ne\widehat x(p)\in M_\alpha(\{p\}). \tag{I12}$$">$$\widehat x(p)\ne0
+\quad\Longrightarrow\quad
+0\ne\widehat x(p)\in M_\alpha(\{p\}). \tag{I12}$$</span></p>
+<p>For each <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, the scalar function</p>
+<p><a id="equation-i13"></a></p>
+<p><span class="math math-display" data-tex="$$p\longmapsto\omega(\widehat x(p)) \tag{I13}$$">$$p\longmapsto\omega(\widehat x(p)) \tag{I13}$$</span></p>
+<p>is the negative-sign Fourier transform of the <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>-function
+<span class="math" data-tex="\(s\mapsto\omega(\alpha_s(x))\)">\(s\mapsto\omega(\alpha_s(x))\)</span>.  Reflection preserves the Fourier algebra, so (I13) belongs to <span class="math" data-tex="\(A(H)\subset C_0(H)\)">\(A(H)\subset C_0(H)\)</span>.  Consequently <span class="math" data-tex="\(p\mapsto\widehat x(p)\)">\(p\mapsto\widehat x(p)\)</span> is ultraweakly continuous and vanishes at infinity after every normal-functional pairing.  This is weak <span class="math" data-tex="\(C_0\)">\(C_0\)</span>-decay, not convergence to zero in operator norm.</p>
+<p><a id="ip-injectivity"></a></p>
+<h2 id="scalar-regularity-and-field-injectivity">Scalar regularity and field injectivity</h2>
+<p>Define the support of the <span class="math" data-tex="\(M\)">\(M\)</span>-valued field by</p>
+<p><a id="equation-i14"></a></p>
+<p><span class="math math-display" data-tex="$$E_x=\operatorname{supp}\widehat x
+=H\setminus\bigcup\{U\subset H:U\text{ is open and }
+\widehat x|_U=0\}. \tag{I14}$$">$$E_x=\operatorname{supp}\widehat x
+=H\setminus\bigcup\{U\subset H:U\text{ is open and }
+\widehat x|_U=0\}. \tag{I14}$$</span></p>
+<p>We first record injectivity on the integrable domain.  If <span class="math" data-tex="\(y\in\mathfrak p_\alpha\)">\(y\in\mathfrak p_\alpha\)</span> and <span class="math" data-tex="\(\widehat y(p)=0\)">\(\widehat y(p)=0\)</span> for every <span class="math" data-tex="\(p\in H\)">\(p\in H\)</span>, then Fourier uniqueness applied to each</p>
+<p><a id="equation-i15"></a></p>
+<p><span class="math math-display" data-tex="$$s\longmapsto\omega(\alpha_s(y))\in L^1(G) \tag{I15}$$">$$s\longmapsto\omega(\alpha_s(y))\in L^1(G) \tag{I15}$$</span></p>
+<p>makes that scalar function zero almost everywhere.  It is continuous by point-ultraweak continuity, so it is zero everywhere.  At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, this says <span class="math" data-tex="\(\omega(y)=0\)">\(\omega(y)=0\)</span> for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, and therefore <span class="math" data-tex="\(y=0\)">\(y=0\)</span>.</p>
+<p><span id="OA-FLOW.L114.FILTERS"></span><a id="oa-flow.l114.filters"></a><span id="OA-FLOW.INTSPEC.MULTIPLIER"></span><a id="oa-flow.intspec.multiplier"></a></p>
+<p><a id="ip-filters"></a></p>
+<h2 id="filtering-preserves-the-domain-and-multiplies-the-field">Filtering preserves the domain and multiplies the field</h2>
+<p>Let <span class="math" data-tex="\(f=\mathcal Fb\in A(H)\)">\(f=\mathcal Fb\in A(H)\)</span>, using the positive Fourier sign</p>
+<p><a id="equation-i16"></a></p>
+<p><span class="math math-display" data-tex="$$f(p)=\int_Gb(t)(t,p)\,dt. \tag{I16}$$">$$f(p)=\int_Gb(t)(t,p)\,dt. \tag{I16}$$</span></p>
+<p>The normal AT5 filter, in the retained positive-label convention, is</p>
+<p><a id="equation-i17"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_f(x)=\int_Gb(t)\alpha_t(x)\,dt. \tag{I17}$$">$$\alpha_f(x)=\int_Gb(t)\alpha_t(x)\,dt. \tag{I17}$$</span></p>
+<p>We first verify the domain statement needed to take its Fourier field.  If <span class="math" data-tex="\(a\in\mathcal P_\alpha^+\)">\(a\in\mathcal P_\alpha^+\)</span> and <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>, then <span class="math" data-tex="\(y=T_b(a)\)">\(y=T_b(a)\)</span> is a bounded positive element by AT5. For each positive normal test, the qualified product calculation described below gives</p>
+<p><a id="equation-i18"></a></p>
+<p><span class="math math-display" data-tex="$$T_\alpha(y)=\left(\int_Gb(t)\,dt\right)T_\alpha(a). \tag{I18}$$">$$T_\alpha(y)=\left(\int_Gb(t)\,dt\right)T_\alpha(a). \tag{I18}$$</span></p>
+<p>The equality is first tested after inclusion in the full extended cone; its right side is bounded, so EP3 makes its left side bounded too. Thus <span class="math" data-tex="\(y\in\mathcal P_\alpha^+\)">\(y\in\mathcal P_\alpha^+\)</span>.  Decomposing a complex <span class="math" data-tex="\(b\)">\(b\)</span> into four nonnegative functions and <span class="math" data-tex="\(x\)">\(x\)</span> into integrable positive elements proves</p>
+<p><a id="equation-i19"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_f(\mathfrak p_\alpha)\subset\mathfrak p_\alpha. \tag{I19}$$">$$\alpha_f(\mathfrak p_\alpha)\subset\mathfrak p_\alpha. \tag{I19}$$</span></p>
+<p>Scalar Fubini, justified by (I7) and <span class="math" data-tex="\(b\in L^1(G)\)">\(b\in L^1(G)\)</span>, now gives</p>
+<p><a id="equation-i20"></a></p>
+<p><span class="math math-display" data-tex="$$\widehat{\alpha_f(x)}(p)=f(p)\widehat x(p). \tag{I20}$$">$$\widehat{\alpha_f(x)}(p)=f(p)\widehat x(p). \tag{I20}$$</span></p>
+<p>Here are all measure and domain qualifications for (I18) and (I20). Let <span class="math" data-tex="\(c(r)=\omega(\alpha_r(x))\)">\(c(r)=\omega(\alpha_r(x))\)</span>. It is continuous and belongs to <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> by the proved coefficient estimate; for (I18) take <span class="math" data-tex="\(x=a\)">\(x=a\)</span> and a positive <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. HR3/8–9 provide Borel representatives of <span class="math" data-tex="\(b,c\)">\(b,c\)</span> on sigma compact carriers. For the actual continuous coefficient, its nonzero set lies in a countable union of the open sigma compact cosets from HR8: a nonzero value on a coset gives a positive integral of <span class="math" data-tex="\(|c|\)">\(|c|\)</span> on a nonempty relatively compact open subset, and only countably many cosets can have positive integral. Thus one may take an actual sigma compact carrier for <span class="math" data-tex="\(c\)">\(c\)</span>, not change its continuous values.</p>
+<p>On coordinates <span class="math" data-tex="\((r,t)\)">\((r,t)\)</span>, <span class="math" data-tex="\(|c(r)b(t)|\)">\(|c(r)b(t)|\)</span> has a sigma-finite Radon-product carrier by HR5's qualified rectangle theorem. The homeomorphism <span class="math" data-tex="\((s,t)\mapsto(s+t,t)\)">\((s,t)\mapsto(s+t,t)\)</span> preserves this Radon product by HR7 and carries that carrier to a sigma-finite one. HR5 Tonelli/Fubini therefore gives</p>
+<p><a id="equation-ip9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \iint |b(t)c(s+t)|\,ds\,dt=\|b\|_1\|c\|_1&lt;\infty.
+ \tag{IP9}
+\]">\[
+ \iint |b(t)c(s+t)|\,ds\,dt=\|b\|_1\|c\|_1&lt;\infty.
+ \tag{IP9}
+\]</span>
+The same argument controls changes of a Borel representative of <span class="math" data-tex="\(b\)">\(b\)</span>: a null subset in its sigma compact carrier times the coefficient carrier is a null Radon rectangle, and the shear preserves it. Completed representatives are handled by HR5's null-slice statement. No unrestricted product-Borel equality, global sigma-finiteness, or countable exhaustion of <span class="math" data-tex="\(G\)">\(G\)</span> is claimed.</p>
+<p>For positive <span class="math" data-tex="\(a,b,\omega\)">\(a,b,\omega\)</span>, normality permits
+<span class="math" data-tex="\(\omega(\alpha_s(T_ba))=\int b(t)\omega(\alpha_{s+t}(a))\,dt\)">\(\omega(\alpha_s(T_ba))=\int b(t)\omega(\alpha_{s+t}(a))\,dt\)</span>.
+Tonelli on that carrier and <span class="math" data-tex="\(r=s+t\)">\(r=s+t\)</span> give (I18) on every positive normal test; translation invariance makes its inner integral independent of <span class="math" data-tex="\(t\)">\(t\)</span>. For complex inputs the four nonnegative parts of the scalar <span class="math" data-tex="\(b\)">\(b\)</span> and the finite positive decomposition of <span class="math" data-tex="\(x\)">\(x\)</span> give (I19); countable scalar convergence and the bound (IP9) justify the complex Fubini passage. Finally <span class="math" data-tex="\(\overline{p(s)}=\overline{p(r)}p(t)\)">\(\overline{p(s)}=\overline{p(r)}p(t)\)</span>, so the two scalar factors are <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span> and <span class="math" data-tex="\(\omega(\widehat x(p))\)">\(\omega(\widehat x(p))\)</span>. This proves (I20) on every normal test of <span class="math" data-tex="\(M\)">\(M\)</span>, with the exact positive sign of (I16).</p>
+<p><span id="OA-FLOW.INTSPEC.SUPPORT"></span><a id="oa-flow.intspec.support"></a></p>
+<p><a id="ip-support"></a></p>
+<h2 id="the-field-support-is-exactly-the-positive-label-vector-spectrum">The field support is exactly the positive-label vector spectrum</h2>
+<p>Equations (I19)--(I20), field injectivity, and continuity now yield the exact annihilator formula</p>
+<p><a id="equation-i21"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_f(x)=0
+\quad\Longleftrightarrow\quad
+f|_{E_x}=0. \tag{I21}$$">$$\alpha_f(x)=0
+\quad\Longleftrightarrow\quad
+f|_{E_x}=0. \tag{I21}$$</span></p>
+<p>For the forward implication, <span class="math" data-tex="\(f\widehat x=0\)">\(f\widehat x=0\)</span>, so the closed zero set of <span class="math" data-tex="\(f\)">\(f\)</span> contains the nonzero set of <span class="math" data-tex="\(\widehat x\)">\(\widehat x\)</span> and hence its support.  For the reverse implication, (I20) makes the Fourier field of <span class="math" data-tex="\(\alpha_f(x)\)">\(\alpha_f(x)\)</span> identically zero, and injectivity applies because of (I19).</p>
+<p>Therefore the annihilator ideal of <span class="math" data-tex="\(x\)">\(x\)</span> is exactly <span class="math" data-tex="\(I(E_x)\)">\(I(E_x)\)</span>.  Fourier-algebra regularity gives <span class="math" data-tex="\(h(I(E_x))=E_x\)">\(h(I(E_x))=E_x\)</span>, and the reflected GL2 hull definition proves</p>
+<p><a id="equation-i22"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{\operatorname{Sp}_\alpha(x)=\operatorname{supp}\widehat x
+\qquad(x\in\mathfrak p_\alpha).} \tag{I22}$$">$$\boxed{\operatorname{Sp}_\alpha(x)=\operatorname{supp}\widehat x
+\qquad(x\in\mathfrak p_\alpha).} \tag{I22}$$</span></p>
+<p>For completeness, the regularity step is only point separation. If <span class="math" data-tex="\(p\notin E_x\)">\(p\notin E_x\)</span>, LF1 gives a compact plateau equal to one at <span class="math" data-tex="\(p\)">\(p\)</span> and supported in <span class="math" data-tex="\(H\setminus E_x\)">\(H\setminus E_x\)</span>; it belongs to <span class="math" data-tex="\(I(E_x)\)">\(I(E_x)\)</span>. Thus <span class="math" data-tex="\(p\notin h(I(E_x))\)">\(p\notin h(I(E_x))\)</span>. Every function of <span class="math" data-tex="\(I(E_x)\)">\(I(E_x)\)</span> vanishes on <span class="math" data-tex="\(E_x\)">\(E_x\)</span>, giving the other inclusion. This proves the exact hull equality without asserting arbitrary closed-set synthesis.</p>
+<p><a id="ip-filtered-support"></a></p>
+<h2 id="fourier-filters-multiply-the-field-exactly">Fourier filters multiply the field exactly</h2>
+<p>The support inclusion valid for arbitrary vectors becomes a full pointwise formula on <span class="math" data-tex="\(\mathfrak p_\alpha\)">\(\mathfrak p_\alpha\)</span>:</p>
+<p><a id="equation-i23"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{
+\widehat{\alpha_f(x)}=f\widehat x,\qquad
+\operatorname{Sp}_\alpha(\alpha_f(x))
+=\operatorname{supp}(f\widehat x).} \tag{I23}$$">$$\boxed{
+\widehat{\alpha_f(x)}=f\widehat x,\qquad
+\operatorname{Sp}_\alpha(\alpha_f(x))
+=\operatorname{supp}(f\widehat x).} \tag{I23}$$</span></p>
+<p>There is still no general equality</p>
+<p><a id="equation-i24"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{supp}(f\widehat x)
+=\operatorname{supp}f\cap\operatorname{supp}\widehat x; \tag{I24}$$">$$\operatorname{supp}(f\widehat x)
+=\operatorname{supp}f\cap\operatorname{supp}\widehat x; \tag{I24}$$</span></p>
+<p>zeros of <span class="math" data-tex="\(f\)">\(f\)</span> can remove spectral points.  Formula (I23) identifies the exact mechanism rather than replacing the always-valid inclusion by (I24).</p>
+<p>As a concrete sign check, take <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, <span class="math" data-tex="\(M=L^\infty(\mathbb R)\)">\(M=L^\infty(\mathbb R)\)</span>, and</p>
+<p><a id="equation-i25"></a></p>
+<p><span class="math math-display" data-tex="$$(\alpha_t x)(r)=x(r-t). \tag{I25}$$">$$(\alpha_t x)(r)=x(r-t). \tag{I25}$$</span></p>
+<p>For <span class="math" data-tex="\(x\in L^1(\mathbb R)\cap L^\infty(\mathbb R)\)">\(x\in L^1(\mathbb R)\cap L^\infty(\mathbb R)\)</span>, equations (I9) and a change of variables give</p>
+<p><a id="equation-i26"></a></p>
+<p><span class="math math-display" data-tex="$$\widehat x(p)(r)
+=e^{-irp}\int_{\mathbb R}e^{iup}x(u)\,du. \tag{I26}$$">$$\widehat x(p)(r)
+=e^{-irp}\int_{\mathbb R}e^{iup}x(u)\,du. \tag{I26}$$</span></p>
+<p>The factor <span class="math" data-tex="\(e^{-irp}\)">\(e^{-irp}\)</span> satisfies
+<span class="math" data-tex="\(\alpha_t(e^{-irp})=e^{itp}e^{-irp}\)">\(\alpha_t(e^{-irp})=e^{itp}e^{-irp}\)</span>, exactly as (I11) requires.  Hence the operator-valued support in (I22) is the support of the ordinary scalar Fourier transform in (I26).</p>
+<p>The translation model is an actual integrable normal action. The full real-frequency character identification and its compact-uniform dual topology are proved in <a href="OA-FLOW-AF.html#af-4">AF4</a>. Realize <span class="math" data-tex="\(L^\infty(\mathbb R)\)">\(L^\infty(\mathbb R)\)</span> by multiplication on <span class="math" data-tex="\(L^2(\mathbb R,dr)\)">\(L^2(\mathbb R,dr)\)</span>, the concrete multiplication algebra of <a href="OA-FLOW-ND.html#nd-multiplication">ND's multiplier proof</a>. The translation unitaries are strongly continuous by L24's translation theorem and HR3 density; their conjugations implement (I25), are normal by CP6 and continuous by AT1. For <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, qualified scalar Tonelli (here the real product is sigma finite) gives</p>
+<p><a id="equation-ip10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ T_\alpha(a)=\left(\int_{\mathbb R}a(r)\,dr\right)1,
+ \quad\text{including }\infty\,1,\qquad
+ F=L^1(\mathbb R)_+\cap L^\infty(\mathbb R).
+ \tag{IP10}
+\]">\[
+ T_\alpha(a)=\left(\int_{\mathbb R}a(r)\,dr\right)1,
+ \quad\text{including }\infty\,1,\qquad
+ F=L^1(\mathbb R)_+\cap L^\infty(\mathbb R).
+ \tag{IP10}
+\]</span>
+Indeed the vector test <span class="math" data-tex="\(\int ds\int dr\,a(r-s)|\xi(r)|^2\)">\(\int ds\int dr\,a(r-s)|\xi(r)|^2\)</span> is
+<span class="math" data-tex="\((\int a)\|\xi\|_2^2\)">\((\int a)\|\xi\|_2^2\)</span>, also when the first factor is infinite; this identifies the full extended pair, not just its finite vectors. The bounded-domain cutoffs <span class="math" data-tex="\(1_{[-n,n]}\)">\(1_{[-n,n]}\)</span> and their sandwiches approximate every multiplier strongly with a common bound. Thus <span class="math" data-tex="\(\mathfrak p_\alpha=L^1\cap L^\infty\)">\(\mathfrak p_\alpha=L^1\cap L^\infty\)</span> is ultraweakly dense and the action is integrable. Formula (I26) follows on each normal test by the same integrable carrier calculation with <span class="math" data-tex="\(u=r-s\)">\(u=r-s\)</span>; equality of the bounded multipliers follows because their normal tests separate. It is independent of the chosen measurable representative.</p>
+<p>Its fixed algebra consists of constants. If a multiplier <span class="math" data-tex="\(x\)">\(x\)</span> is fixed, choose a continuous compactly supported scalar <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> of integral one. The representative <span class="math" data-tex="\(b*x\)">\(b*x\)</span> is bounded continuous: translation in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> of <span class="math" data-tex="\(b\)">\(b\)</span> bounds its difference by <span class="math" data-tex="\(\|x\|_\infty\|L_hb-b\|_1\)">\(\|x\|_\infty\|L_hb-b\|_1\)</span>. AT5 makes it equal to <span class="math" data-tex="\(x\)">\(x\)</span>. Its continuous representative is translation invariant, since equality of two continuous representatives almost everywhere is everywhere by Haar full support. Hence it is constant.</p>
+<p>An exact figure model uses</p>
+<p><a id="equation-ip11"></a></p>
+<p><span class="math math-display" data-tex="\[
+ x(r)=e^{-|r|},\quad b(t)=\tfrac12e^{-|t|},\quad
+ f(p)=\frac1{1+p^2},\quad
+ \widehat x(p)(r)=\frac{2e^{-irp}}{1+p^2},\quad
+ \alpha_f(x)(r)=\frac{1+|r|}{2}e^{-|r|}.
+ \tag{IP11}
+\]">\[
+ x(r)=e^{-|r|},\quad b(t)=\tfrac12e^{-|t|},\quad
+ f(p)=\frac1{1+p^2},\quad
+ \widehat x(p)(r)=\frac{2e^{-irp}}{1+p^2},\quad
+ \alpha_f(x)(r)=\frac{1+|r|}{2}e^{-|r|}.
+ \tag{IP11}
+\]</span>
+For clarity, the elementary complex exponential calculus used in this exact model follows from its series: <span class="math" data-tex="\(\sum_{n\geq0}(zu)^n/n!\)">\(\sum_{n\geq0}(zu)^n/n!\)</span> and its derivative series converge uniformly on each bounded real interval. Integrating the derivative series termwise using CF1's norm integral and then its fundamental theorem proves <span class="math" data-tex="\((e^{zu})'=ze^{zu}\)">\((e^{zu})'=ze^{zu}\)</span>. The absolutely convergent Cauchy product gives <span class="math" data-tex="\(e^{zu}e^{wu}=e^{(z+w)u}\)">\(e^{zu}e^{wu}=e^{(z+w)u}\)</span>; conjugation gives <span class="math" data-tex="\(|e^{ipu}|=1\)">\(|e^{ipu}|=1\)</span> for real <span class="math" data-tex="\(p,u\)">\(p,u\)</span>. For <span class="math" data-tex="\(u\geq0\)">\(u\geq0\)</span>, <span class="math" data-tex="\(e^u\geq1+u\)">\(e^u\geq1+u\)</span>, so <span class="math" data-tex="\(e^{-u}\to0\)">\(e^{-u}\to0\)</span>. Its primitive gives <span class="math" data-tex="\(\int_0^R e^{-u}\,du=1-e^{-R}\uparrow1\)">\(\int_0^R e^{-u}\,du=1-e^{-R}\uparrow1\)</span>; SC8 identifies these finite-interval integrals with Lebesgue integrals and SC4 passes to the nonnegative infinite limit.</p>
+<p>These are bounded integrable functions. Split the exponential integral at zero:
+<span class="math" data-tex="\(\int_0^\infty e^{-(1-ip)u}\,du=(1-ip)^{-1}\)">\(\int_0^\infty e^{-(1-ip)u}\,du=(1-ip)^{-1}\)</span>,
+as its elementary primitive and the vanishing endpoint give; add its reflected conjugate to obtain <span class="math" data-tex="\(2/(1+p^2)\)">\(2/(1+p^2)\)</span>. This is a finite-interval fundamental-theorem calculation followed by the absolutely integrable limit. It proves <span class="math" data-tex="\(f\)">\(f\)</span> and the field in (IP11) at Lebesgue normalization, with no missing <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> factor. For <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, splitting <span class="math" data-tex="\(b*x\)">\(b*x\)</span> into <span class="math" data-tex="\((-\infty,0)\)">\((-\infty,0)\)</span>, <span class="math" data-tex="\((0,r)\)">\((0,r)\)</span>, <span class="math" data-tex="\((r,\infty)\)">\((r,\infty)\)</span> gives respectively <span class="math" data-tex="\(e^{-r}/4\)">\(e^{-r}/4\)</span>, <span class="math" data-tex="\(re^{-r}/2\)">\(re^{-r}/2\)</span>, <span class="math" data-tex="\(e^{-r}/4\)">\(e^{-r}/4\)</span>; reflection gives the displayed formula for every <span class="math" data-tex="\(r\)">\(r\)</span>. Consequently its Fourier field is exactly <span class="math" data-tex="\(2e^{-irp}/(1+p^2)^2\)">\(2e^{-irp}/(1+p^2)^2\)</span> by (I20). All supports here are <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; this example shows attenuation rather than a strict support cut and makes no general norm-decay assertion.</p>
+<p><span id="OA-FLOW.INTSPEC.DETECTION"></span><a id="oa-flow.intspec.detection"></a></p>
+<p><a id="ip-open"></a></p>
+<h2 id="open-spectral-localization-detects-an-eigenfrequency">Open spectral localization detects an eigenfrequency</h2>
+<p>Assume for this section and the next that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is integrable. For open <span class="math" data-tex="\(V\subset H\)">\(V\subset H\)</span>, define the actual positive-label open filter span:</p>
+<p><a id="equation-i27"></a></p>
+<p><span class="math math-display" data-tex="$$M_0^\alpha(V)
+=\overline{\operatorname{span}\{\alpha_f(y):
+f\in A(H),\ \operatorname{supp}f\subset V,\ y\in M\}}^{\,uw}. \tag{I27}$$">$$M_0^\alpha(V)
+=\overline{\operatorname{span}\{\alpha_f(y):
+f\in A(H),\ \operatorname{supp}f\subset V,\ y\in M\}}^{\,uw}. \tag{I27}$$</span></p>
+<p>This is the space denoted <span class="math" data-tex="\(M^\alpha(V)\)">\(M^\alpha(V)\)</span> in the source statement.  We prove</p>
+<p><a id="equation-i28"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{
+M_0^\alpha(V)\ne\{0\}
+\quad\Longleftrightarrow\quad
+V\text{ contains }p\text{ with }M_\alpha(\{p\})\ne\{0\}.} \tag{I28}$$">$$\boxed{
+M_0^\alpha(V)\ne\{0\}
+\quad\Longleftrightarrow\quad
+V\text{ contains }p\text{ with }M_\alpha(\{p\})\ne\{0\}.} \tag{I28}$$</span></p>
+<p>Suppose first that <span class="math" data-tex="\(0\ne y\in M_\alpha(\{p\})\)">\(0\ne y\in M_\alpha(\{p\})\)</span> for some <span class="math" data-tex="\(p\in V\)">\(p\in V\)</span>.  Singleton synthesis gives <span class="math" data-tex="\(\alpha_ty=(t,p)y\)">\(\alpha_ty=(t,p)y\)</span>.  Choose <span class="math" data-tex="\(f\in A_c(H)\)">\(f\in A_c(H)\)</span> with</p>
+<p><a id="equation-i29"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{supp}f\subset V,\qquad f(p)=1. \tag{I29}$$">$$\operatorname{supp}f\subset V,\qquad f(p)=1. \tag{I29}$$</span></p>
+<p>Then <span class="math" data-tex="\(\alpha_f(y)=f(p)y=y\)">\(\alpha_f(y)=f(p)y=y\)</span>, so <span class="math" data-tex="\(y\in M_0^\alpha(V)\)">\(y\in M_0^\alpha(V)\)</span>.</p>
+<p>A direct converse exhibits the mechanism without first passing to a closed spectral space. If (I27) is nonzero, one of its generators <span class="math" data-tex="\(T_b(y)=\alpha_f(y)\)">\(T_b(y)=\alpha_f(y)\)</span> is nonzero. The normal map <span class="math" data-tex="\(T_b\)">\(T_b\)</span> has an ultraweakly closed proper kernel. The proved density of <span class="math" data-tex="\(\mathfrak p_\alpha\)">\(\mathfrak p_\alpha\)</span> therefore gives <span class="math" data-tex="\(x\in\mathfrak p_\alpha\)">\(x\in\mathfrak p_\alpha\)</span> with <span class="math" data-tex="\(T_b(x)\ne0\)">\(T_b(x)\ne0\)</span>. By (I19) this filtered element belongs to <span class="math" data-tex="\(\mathfrak p_\alpha\)">\(\mathfrak p_\alpha\)</span>; injectivity of its field gives some <span class="math" data-tex="\(q\)">\(q\)</span> with</p>
+<p><a id="equation-ip12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ 0\ne\widehat{\alpha_f(x)}(q)=f(q)\widehat x(q).
+ \tag{IP12}
+\]">\[
+ 0\ne\widehat{\alpha_f(x)}(q)=f(q)\widehat x(q).
+ \tag{IP12}
+\]</span>
+Thus <span class="math" data-tex="\(q\in\{f\ne0\}\subset\operatorname{supp}f\subset V\)">\(q\in\{f\ne0\}\subset\operatorname{supp}f\subset V\)</span> and <span class="math" data-tex="\(\widehat x(q)\ne0\)">\(\widehat x(q)\ne0\)</span>. Equations (I11)–(I12) give the required nonzero <span class="math" data-tex="\(q\)">\(q\)</span>-eigenoperator. This proves the converse directly with a normal filter and actual dense integrable inputs.</p>
+<p><strong>Retained closed-space alternative.</strong> For the converse, assume that <span class="math" data-tex="\(M_\alpha(\{p\})=\{0\}\)">\(M_\alpha(\{p\})=\{0\}\)</span> for every <span class="math" data-tex="\(p\in V\)">\(p\in V\)</span>.  Equation (I12) gives</p>
+<p><a id="equation-i30"></a></p>
+<p><span class="math math-display" data-tex="$$\widehat x(p)=0
+\qquad(x\in\mathfrak p_\alpha,\ p\in V). \tag{I30}$$">$$\widehat x(p)=0
+\qquad(x\in\mathfrak p_\alpha,\ p\in V). \tag{I30}$$</span></p>
+<p>By (I22),</p>
+<p><a id="equation-i31"></a></p>
+<p><span class="math math-display" data-tex="$$\mathfrak p_\alpha\subset M_\alpha(H\setminus V). \tag{I31}$$">$$\mathfrak p_\alpha\subset M_\alpha(H\setminus V). \tag{I31}$$</span></p>
+<p>The right side is an ultraweakly closed spectral space, while integrability makes <span class="math" data-tex="\(\mathfrak p_\alpha\)">\(\mathfrak p_\alpha\)</span> ultraweakly dense.  Hence</p>
+<p><a id="equation-i32"></a></p>
+<p><span class="math math-display" data-tex="$$M=M_\alpha(H\setminus V). \tag{I32}$$">$$M=M_\alpha(H\setminus V). \tag{I32}$$</span></p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is supported in <span class="math" data-tex="\(V\)">\(V\)</span>, the reflected GL3 filter-support inclusion puts every <span class="math" data-tex="\(\alpha_f(y)\)">\(\alpha_f(y)\)</span> simultaneously in the spectra <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span> and <span class="math" data-tex="\(H\setminus V\)">\(H\setminus V\)</span>.  Its spectrum is empty, so it is zero.  All generators in (I27) vanish, proving <span class="math" data-tex="\(M_0^\alpha(V)=\{0\}\)">\(M_0^\alpha(V)=\{0\}\)</span>.  This establishes (I28) without any countability or metrizability assumption on <span class="math" data-tex="\(G\)">\(G\)</span> or <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><span id="OA-FLOW.INTSPEC.POINTSPECTRUM"></span><a id="oa-flow.intspec.pointspectrum"></a></p>
+<p><a id="ip-point"></a></p>
+<h2 id="the-action-spectrum-is-the-closed-point-spectrum">The action spectrum is the closed point spectrum</h2>
+<p>Let</p>
+<p><a id="equation-i33"></a></p>
+<p><span class="math math-display" data-tex="$$P_\alpha=\{p\in H:M_\alpha(\{p\})\ne\{0\}\},\qquad
+E=\overline{P_\alpha}. \tag{I33}$$">$$P_\alpha=\{p\in H:M_\alpha(\{p\})\ne\{0\}\},\qquad
+E=\overline{P_\alpha}. \tag{I33}$$</span></p>
+<p>For <span class="math" data-tex="\(x\in\mathfrak p_\alpha\)">\(x\in\mathfrak p_\alpha\)</span>, every nonzero value <span class="math" data-tex="\(\widehat x(p)\)">\(\widehat x(p)\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-eigenoperator.  Thus its nonzero set lies in <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span>, and (I22) gives</p>
+<p><a id="equation-i34"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{Sp}_\alpha(x)\subset E. \tag{I34}$$">$$\operatorname{Sp}_\alpha(x)\subset E. \tag{I34}$$</span></p>
+<p>Equivalently, <span class="math" data-tex="\(\mathfrak p_\alpha\subset M_\alpha(E)\)">\(\mathfrak p_\alpha\subset M_\alpha(E)\)</span>.  This closed spectral space contains an ultraweakly dense subspace, so it is all of <span class="math" data-tex="\(M\)">\(M\)</span>.  The reflected GL7 action-spectrum formula then yields</p>
+<p><a id="equation-i35"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{Sp}(\alpha)\subset E. \tag{I35}$$">$$\operatorname{Sp}(\alpha)\subset E. \tag{I35}$$</span></p>
+<p>Conversely, a nonzero <span class="math" data-tex="\(p\)">\(p\)</span>-eigenoperator has vector spectrum <span class="math" data-tex="\(\{p\}\)">\(\{p\}\)</span>, hence</p>
+<p><a id="equation-i36"></a></p>
+<p><span class="math math-display" data-tex="$$P_\alpha\subset\operatorname{Sp}(\alpha). \tag{I36}$$">$$P_\alpha\subset\operatorname{Sp}(\alpha). \tag{I36}$$</span></p>
+<p>The action spectrum is closed.  Taking closures in (I36) and combining with (I35) proves</p>
+<p><a id="equation-i37"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{
+\operatorname{Sp}(\alpha)
+=\overline{\{p\in H:M_\alpha(\{p\})\ne\{0\}\}}.} \tag{I37}$$">$$\boxed{
+\operatorname{Sp}(\alpha)
+=\overline{\{p\in H:M_\alpha(\{p\})\ne\{0\}\}}.} \tag{I37}$$</span></p>
+<p>For the translation action (I25), every character <span class="math" data-tex="\(r\mapsto e^{-irp}\)">\(r\mapsto e^{-irp}\)</span> is a nonzero <span class="math" data-tex="\(p\)">\(p\)</span>-eigenoperator.  Formula (I37) therefore gives <span class="math" data-tex="\(\operatorname{Sp}(\alpha)=\mathbb R\)">\(\operatorname{Sp}(\alpha)=\mathbb R\)</span>, while (I26) shows how each individual integrable element can have a much smaller spectrum.</p>
+<p><strong>Problem.</strong> Let <span class="math" data-tex="\(x\in\mathfrak p_\alpha\)">\(x\in\mathfrak p_\alpha\)</span> and suppose <span class="math" data-tex="\(\widehat x\)">\(\widehat x\)</span> is nonzero at <span class="math" data-tex="\(p\)">\(p\)</span>.  Show directly, without invoking (I28), that every neighborhood <span class="math" data-tex="\(V\ni p\)">\(V\ni p\)</span> has <span class="math" data-tex="\(M_0^\alpha(V)\ne\{0\}\)">\(M_0^\alpha(V)\ne\{0\}\)</span>.</p>
+<p><strong>Solution.</strong> Ultraweak continuity of <span class="math" data-tex="\(\widehat x\)">\(\widehat x\)</span> supplies a point <span class="math" data-tex="\(q\in V\)">\(q\in V\)</span> with <span class="math" data-tex="\(\widehat x(q)\ne0\)">\(\widehat x(q)\ne0\)</span>; one may take <span class="math" data-tex="\(q=p\)">\(q=p\)</span>.  Equation (I11) makes <span class="math" data-tex="\(\widehat x(q)\)">\(\widehat x(q)\)</span> a nonzero <span class="math" data-tex="\(q\)">\(q\)</span>-eigenoperator.  Choose the cutoff in (I29).  The eigenvector calculation gives <span class="math" data-tex="\(\alpha_f(\widehat x(q))=\widehat x(q)\)">\(\alpha_f(\widehat x(q))=\widehat x(q)\)</span>, which is a nonzero generator of <span class="math" data-tex="\(M_0^\alpha(V)\)">\(M_0^\alpha(V)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.L114.SOURCES"></span><a id="oa-flow.l114.sources"></a></p>
+<p><a id="ip-sources"></a></p>
+<h2 id="sources-and-bounded-conclusion">Sources and bounded conclusion</h2>
+<p>The integrable-action spectral assertions correspond to Takesaki, <em>Theory of Operator Algebras II</em>, <a href="https://doi.org/10.1007/978-3-662-10451-4">XI.2 Lemma 2.6, printed 334–335</a>. The complete local normal/extended average, controlled density, near-norm vector-series estimate, qualified product integrations and direct open-localization argument supply the steps required here. The historical I1–I37 displays, translation model and original problem/solution are retained.</p>
+<p>The earlier freely accessible Haar, Fourier and normal-action developments remain in use. Arveson, <a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-arveson/1970s/1974_On_groups_of_automorphisms_of_operator_algebras.pdf"><em>On groups of automorphisms of operator algebras</em></a>, J. Funct. Anal. 15 (1974), Section 1, is a primary account of integration with explicit continuity hypotheses; LF/GL/SS supply the actual complete scalar and normal-action proofs used here. Citations do not replace programme premises.</p>
+<p>The bounded conclusion is the full normal faithful orbit-integration operator-valued weight, its exact bounded domain and semifiniteness criterion; the integrable-domain Fourier field and exact multiplier/support formula; and, for an integrable action, open eigenfrequency detection and the closed point-spectrum theorem. No recognition, dual-system integrability, Connes subgroup or whole C3/C1–C6 conclusion is inferred.</p>
+<p><a id="oa-flow.l114.figure"></a></p>
+<h2 id="OA-FLOW.L114.FIGURE">An exact orbit field and the integrability mechanism</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Orbit averaging, filtering and eigenoperators" src="assets/integrable-point-spectrum/assets/integrable-point-spectrum.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The first three panels show exact functions for the normal translation action
+<span class="math" data-tex="\(\alpha_t(x)(r)=x(r-t)\)">\(\alpha_t(x)(r)=x(r-t)\)</span> on <span class="math" data-tex="\(L^\infty(\mathbb R,dr)\)">\(L^\infty(\mathbb R,dr)\)</span>. The fourth panel fixes
+the sign dictionary. The bottom row is a proof diagram for the arbitrary LCH
+abelian-group theorem, conditional on integrability where explicitly marked.
+It is not a representation of a general group by the real line.</p>
+<p>In panel A, <span class="math" data-tex="\(x(r)=e^{-|r|}\)">\(x(r)=e^{-|r|}\)</span>, <span class="math" data-tex="\(b(t)=\tfrac12e^{-|t|}\)">\(b(t)=\tfrac12e^{-|t|}\)</span>, and
+<span class="math" data-tex="\(y=T_bx=b*x=\tfrac12(1+|r|)e^{-|r|}\)">\(y=T_bx=b*x=\tfrac12(1+|r|)e^{-|r|}\)</span>.
+Both positive functions have integral <span class="math" data-tex="\(2\)">\(2\)</span>, while <span class="math" data-tex="\(\int b=1\)">\(\int b=1\)</span>.
+Thus their full orbit averages are <span class="math" data-tex="\(T_\alpha(x)=T_\alpha(y)=2\,1\)">\(T_\alpha(x)=T_\alpha(y)=2\,1\)</span>.
+The convolution calculation and all finite/infinite domain conventions are
+proved in <a href="OA-FLOW-L114.html#ip-filtered-support">IP10–11</a>.</p>
+<p>Panel B plots the exact multiplier norms
+<span class="math" data-tex="\(\|\widehat x(p)\|_\infty=2/(1+p^2)\)">\(\|\widehat x(p)\|_\infty=2/(1+p^2)\)</span> and
+<span class="math" data-tex="\(\|\widehat y(p)\|_\infty=2/(1+p^2)^2\)">\(\|\widehat y(p)\|_\infty=2/(1+p^2)^2\)</span>.
+The filter is <span class="math" data-tex="\(f(p)=1/(1+p^2)\)">\(f(p)=1/(1+p^2)\)</span>, and
+<span class="math" data-tex="\(\widehat y(p)(r)=f(p)\widehat x(p)(r)\)">\(\widehat y(p)(r)=f(p)\widehat x(p)(r)\)</span>, with
+<span class="math" data-tex="\(\widehat x(p)(r)=2e^{-irp}/(1+p^2)\)">\(\widehat x(p)(r)=2e^{-irp}/(1+p^2)\)</span>.
+Every displayed frequency amplitude is positive; both supports are all of
+<span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. This exact example shows attenuation, not a strict support cut.
+Its norm decay is a fact of these functions, not a general Fourier-field claim.</p>
+<p>Panel C gives the real and imaginary parts of the actual <span class="math" data-tex="\(p=1\)">\(p=1\)</span> eigenfunctions:
+<span class="math" data-tex="\(\widehat x(1)(r)=e^{-ir}\)">\(\widehat x(1)(r)=e^{-ir}\)</span> and <span class="math" data-tex="\(\widehat y(1)(r)=\tfrac12e^{-ir}\)">\(\widehat y(1)(r)=\tfrac12e^{-ir}\)</span>.
+Translation gives <span class="math" data-tex="\(\alpha_t(\widehat x(1))=e^{it}\widehat x(1)\)">\(\alpha_t(\widehat x(1))=e^{it}\widehat x(1)\)</span>.
+The positive frequency is <span class="math" data-tex="\(1\)">\(1\)</span>, whereas the earlier negative-label GL/SS
+frequency is <span class="math" data-tex="\(-1\)">\(-1\)</span>. These are continuous representatives of multipliers;
+point evaluation is not used as a normal functional on <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>.</p>
+<p>Panel D records the two transforms and their reflection:
+the coefficient field uses <span class="math" data-tex="\(\overline{p(s)}\)">\(\overline{p(s)}\)</span>, while the scalar filter
+uses <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span>. <a href="OA-FLOW-L114.html#ip-inputs">IP1–2</a>
+proves the reflected spectra and spaces; (I11) proves the positive eigenphase.</p>
+<p>The bottom row starts with normal compact averages and their entire extended
+positive supremum, including infinity. <a href="OA-FLOW-L114.html#ip-average">The averaging proof</a>
+places it in the fixed algebra's extended cone. <a href="OA-FLOW-L114.html#ip-density">The density proof</a>
+uses bounded sandwiches with a common norm bound, rather than an unbounded
+weak-operator approximation. For an integrable action, normality of a nonzero
+open filter and this density give a nonzero filtered integrable element.
+The multiplier formula and field injectivity then produce <span class="math" data-tex="\(p\in V\)">\(p\in V\)</span> with
+<span class="math" data-tex="\(\widehat x(p)\ne0\)">\(\widehat x(p)\ne0\)</span>. It is an actual <span class="math" data-tex="\(p\)">\(p\)</span>-eigenoperator.
+<a href="OA-FLOW-L114.html#ip-open">The direct open proof</a>
+retains the separate closed-space alternative; <a href="OA-FLOW-L114.html#ip-point">the final proof</a>
+gives <span class="math" data-tex="\(\operatorname{Sp}(\alpha)=\overline{P_\alpha}\)">\(\operatorname{Sp}(\alpha)=\overline{P_\alpha}\)</span>.</p>
+<p>Plot samples illustrate exact formulas already proved in the lesson; they are
+not numerical evidence for the general theorem. The renderer and JSON retain
+the sample coordinates, formulas, positive/negative labels and mass identities.
+The independent exact example and proof organization accompany the spectral
+conclusions of Takesaki, <a href="https://doi.org/10.1007/978-3-662-10451-4"><em>Theory of Operator Algebras II</em>, XI.2 Lemma 2.6,
+printed 334–335</a>. Earlier freely accessible
+Haar, Fourier and action proofs remain the actual programme inputs.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L113.html">Previous lesson</a><a href="OA-FLOW-L117.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L114.md">Lesson source</a></nav></main></body></html>

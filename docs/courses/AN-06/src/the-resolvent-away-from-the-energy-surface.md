@@ -62,6 +62,8 @@ Fix \(\lambda\in\mathbb R\), and let
 This set is compact and can be empty. Let \(\chi\in C_c^\infty(\mathbb R^n)\) equal one on a neighborhood of \(M_\lambda\).
 
 <a id="off-energy-theorem"></a>
+This off-energy result is Hörmander [H4, Proposition 30.2.3].
+
 **Theorem 1.1.** There is \(r>0\) such that, if \(u\in\mathcal S'\) solves
 
 \[
@@ -89,6 +91,8 @@ whenever the right side is finite. The radius can be chosen before the exponents
 The energy need not be a regular value of \(P_0\), and \(z\) may be real. Membership (6) holds for every tempered solution, even before any auxiliary norm of \(u\) is known to be finite. The theorem controls the frequencies outside the energy neighborhood; estimates inside it require a different argument.
 
 ## 2. The smooth calculus used in the proof
+
+For the broader finite composition and quantization-change formulas, see Hörmander [H3, Theorems 18.5.4 and 18.5.10].
 
 We use the same metric and Planck weight as in the preceding lesson:
 
@@ -227,6 +231,8 @@ The residual becomes small in either distant position or large frequency:
 This allows an asymptotic sum with a joint Schwartz error.
 
 <a id="off-energy-joint-summation"></a>
+Frequency-cutoff symbol summation is Hörmander [H3, Proposition 18.1.3]. The proof of [H4, Proposition 30.2.3] also cuts off in position; the following construction gives the joint estimates and parameter uniformity.
+
 **Lemma 4.1.** Suppose, for each \(j\ge0\), \(b_{j,z}\) is a uniformly bounded family in \(S(w h^j)\), with \(w=\langle\xi\rangle^{-m}\). There is a uniformly bounded family \(b_z\in S(w)\) satisfying, for every \(N\ge1\),
 
 \[
@@ -533,3 +539,7 @@ The two constants are finite for every displayed exponent. Let \(h_0=M_{-t'}J_{-
 [HJS] Andrew Hassell, Qiuye Jia and Ethan Sussman, [*Lecture notes on non-elliptic Fredholm theory*, arXiv:2604.18956v1](https://arxiv.org/abs/2604.18956v1), Proposition 2.3 and §2.4, constructs smooth scattering parametrices with Schwartz kernels. Proposition 4.10 states the localized version and refers back to that construction. Proposition 2.3 leaves the finite-to-asymptotic telescoping identity as an exercise. Here \(G_\delta\) admits the weaker position derivative scale, and Lemmas 4.1–6.1 supply the joint summation, exact finite telescoping and uniform kernel bounds used in this lesson.
 
 The remaining part \(\chi(D)u\) lies near the energy surface and is not controlled by division by \(P_0-\lambda\). At noncritical frequencies its Hamiltonian direction can instead guide a positive-commutator estimate. Combining such an estimate with the off-energy result is the next step toward boundary values of the long-range resolvent, radiation conditions and the point spectrum. The off-energy theorem itself does not establish those conclusions.
+
+[H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Proposition 18.1.3, pp. 66–67; Theorem 18.5.4, p. 155; Theorem 18.5.10 and (18.5.21), pp. 159–161. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, (30.2.5)–(30.2.6), (30.2.9), and Proposition 30.2.3 with its joint inverse construction and (30.2.10), pp. 284–286. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

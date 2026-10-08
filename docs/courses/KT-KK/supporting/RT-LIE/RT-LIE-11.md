@@ -26,7 +26,7 @@ Thus the index on the acting generator is the **second** index of a Cartan entry
 <a id="RTLIE11-P11"></a>
 **Proposition 1.1 (Chevalley generators).** The \(e_i,f_i,h_i\) generate \(\mathfrak g\). They satisfy
 \[
-\begin{aligned}
+\begin{aligned}[c]
 [h_i,h_j]&=0,&
 [h_i,e_j]&=a_{ji}e_j,&
 [h_i,f_j]&=-a_{ji}f_j,\\

@@ -4,13 +4,14 @@ Constructibility combines geometric control with a coefficient condition. The ge
 
 Let \(k\) be a commutative ring of finite global dimension. Let \(X\) be a finite-dimensional real analytic manifold, Hausdorff and countable at infinity. We work with \(F\in D^b(k_X)\). Bounded means a finite global cohomological degree interval. Local finiteness and subanalyticity are in the ambient manifold. No finite-generation assumption is made for the weak constructibility results. Noetherian hypotheses will be stated where used.
 
-Use Microlocal stratifications by removing bad loci, Unshared conormal directions and dimension filtrations, and Involutive subsets of subanalytic isotropic sets. The full tensor estimate, missing-submanifold boundary estimate, and involutivity of the entire microsupport have exact programme proofs with their stated coefficient scopes. The closed-embedding formula and zero-section local-constancy criterion, including bounded derived local descent, have explicit programme proofs in the companion lesson. We state the application contracts below. The foundations on which their proofs depend are not all proved in these lessons. For human-source context, Hohl and Schapira’s [*Unusual functorialities for weakly constructible sheaves*](https://arxiv.org/abs/2303.11189v2), §4, recalls the isotropic and Lagrangian descriptions and the perfect-stalk definition. It does not supply their proofs. We prove the equivalences here through restriction to a stratum and extension from its complement, using the exact programme estimates below. Schapira’s [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), §2.2–2.3, supplies further context for local support tests, the zero-section criterion and the closed-embedding formula. The distinction between those statements and complete programme proofs is retained.
+Use [Microlocal stratifications by removing bad loci](microlocal-stratifications-by-removing-bad-loci.md), [Unshared conormal directions and dimension filtrations](unshared-conormal-directions-and-dimension-filtrations.md), and [Involutive subsets of subanalytic isotropic sets](involutive-subsets-of-subanalytic-isotropic-sets.md). The [full tensor estimate](limiting-covectors-at-open-boundaries.md#products-restriction-and-the-limiting-sum-limiting-tensor-estimate), [missing-submanifold boundary estimate](limiting-covectors-at-open-boundaries.md#the-trace-across-a-missing-submanifold-missing-submanifold-trace), and [involutivity of the entire microsupport](normal-scaling-and-microlocal-hom.md#involutivity-of-the-entire-microsupport-microsupport-involutivity) have exact programme proofs with their stated coefficient scopes. The [closed-embedding formula](small-balls-central-fibres-and-supported-cohomology.md#closed-embeddings-preserve-every-local-support-test-closed-embedding-microsupport-proof) and [zero-section local-constancy criterion](small-balls-central-fibres-and-supported-cohomology.md#zero-microsupport-gives-a-constant-bounded-complex-zero-section-criterion-proof), including bounded derived local descent, have explicit programme proofs in the companion lesson. We state the application contracts below. For human-source context, Hohl and Schapira’s [*Unusual functorialities for weakly constructible sheaves*](https://arxiv.org/abs/2303.11189v2), §4, recalls the isotropic and Lagrangian descriptions and the perfect-stalk definition. It does not supply their proofs. We prove the equivalences here through restriction to a stratum and extension from its complement, using the exact programme estimates below. Schapira’s [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), §2.2–2.3, supplies further context for local support tests, the zero-section criterion and the closed-embedding formula. The distinction between those statements and complete programme proofs is retained.
 
 *Programme text begun by GPT-6.1 Sol (OpenAI), Ultra, September 2026; developed by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently written programme expression is public domain (CC0).*
 
-<span id="the-exact-sheaf-estimates-used-here"></span>
+<a id="constructibility-inputs"></a>
+<a id="the-exact-sheaf-estimates-used-here-constructibility-inputs"></a>
 
-## The exact sheaf estimates used here {#constructibility-inputs}
+## The exact sheaf estimates used here
 
 For bounded sheaf complexes, the full tensor estimate is
 
@@ -20,7 +21,7 @@ For bounded sheaf complexes, the full tensor estimate is
 \tag{1}
 \]
 
-It requires neither constructibility nor a noncharacteristic condition. The \(\widehat{+}\) operation retains unbounded cancelling covectors and the position-covector product established in Limiting cotangent sums and characteristic inverse images.
+It requires neither constructibility nor a noncharacteristic condition. The \(\widehat{+}\) operation retains unbounded cancelling covectors and the position-covector product established in [Limiting cotangent sums and characteristic inverse images](limiting-cotangent-sums-and-characteristic-inverse-images.md).
 
 If \(i:S\hookrightarrow U\) is a closed smooth embedding and \(H\in D^b(k_S)\), the exact cotangent formula is
 
@@ -38,7 +39,7 @@ Here \(i_d:T^*U|_S\to T^*S\) restricts a covector to the tangent of \(S\), and \
 \tag{3}
 \]
 
-The proved zero-section criterion identifies the right side with every \(H^j(H)\) being locally constant. It also retains the bounded derived local-descent statement: on a sufficiently small contractible chart, \(H\) is a constant bounded coefficient complex. It does not discard extension data between cohomology degrees.
+The [proved zero-section criterion](small-balls-central-fibres-and-supported-cohomology.md#zero-microsupport-gives-a-constant-bounded-complex-zero-section-criterion-proof) identifies the right side with every \(H^j(H)\) being locally constant. It also retains the bounded derived local-descent statement: on a sufficiently small contractible chart, \(H\) is a constant bounded coefficient complex. It does not discard extension data between cohomology degrees.
 
 For a closed smooth \(S\subset U\), its open complement \(j:U\setminus S\hookrightarrow U\), and \(K\in D^b(k_{U\setminus S})\), the boundary estimate we use is
 
@@ -50,13 +51,14 @@ For a closed smooth \(S\subset U\), its open complement \(j:U\setminus S\hookrig
 
 The first microsupport on the right is regarded in \(T^*U|_{U\setminus S}\) and need not be ambient closed. There is no properness hypothesis on the open embedding. The exact missing-submanifold estimate applies to both ordinary and zero extensions, but the localization triangle below uses \(j_!\). Finally, microsupport is local, obeys the triangle inequality, and is a closed conic involutive set for every bounded \(F\), including its singular points and zero covectors.
 
-The uniform compact-cap proof and extension-continuity calculations supply preliminary steps for the limiting estimates. The directional projector and cap-test converse are now supplied. The uniform propagation and noncharacteristic open-boundary inputs are also supplied. The limiting-boundary prerequisite supplies the arbitrary-open and missing-submanifold applications. Equation (4) is therefore proved with its stated arbitrary bounded coefficients. The full limiting tensor estimate (1) is also proved with the stated bounded coefficients and finite global dimension, without perfectness, constructibility or a noncharacteristic assumption. The directional-identity proof of involutivity applies at all points of microsupport without assuming its subanalyticity. The microlocal refinement proof gives compatible μ-stratifications over its explicitly stated subanalytic foundations. These are result-level providers; the remaining transitive foundational proofs are separate obligations.
+The [uniform compact-cap proof and extension-continuity calculations](small-balls-central-fibres-and-supported-cohomology.md#one-compact-cap-works-for-an-entire-family-uniform-compact-cap-proof) supply preliminary steps for the limiting estimates. The [directional projector and cap-test converse](directional-neighborhoods-and-the-compact-cap-test.md#from-the-cap-comparison-back-to-all-local-tests-compact-cap-converse) are now supplied. The [uniform propagation and noncharacteristic open-boundary inputs](directional-neighborhoods-and-the-compact-cap-test.md#propagation-for-a-prescribed-cone-directional-propagation) are also supplied. The [limiting-boundary prerequisite](limiting-covectors-at-open-boundaries.md#the-trace-across-a-missing-submanifold-missing-submanifold-trace) supplies the arbitrary-open and missing-submanifold applications. Equation (4) is therefore proved with its stated arbitrary bounded coefficients. The [full limiting tensor estimate (1)](limiting-covectors-at-open-boundaries.md#products-restriction-and-the-limiting-sum-limiting-tensor-estimate) is also proved with the stated bounded coefficients and finite global dimension, without perfectness, constructibility or a noncharacteristic assumption. The [directional-identity proof of involutivity](normal-scaling-and-microlocal-hom.md#involutivity-of-the-entire-microsupport-microsupport-involutivity) applies at all points of microsupport without assuming its subanalyticity. The [microlocal refinement proof](microlocal-stratifications-by-removing-bad-loci.md#closed-bad-set-induction) gives compatible μ-stratifications over its explicitly stated subanalytic foundations. The estimates use the derived sheaf operations and local subanalytic calculus established in those linked lessons.
 
 These are application prerequisites. The present proof derives constructibility from them; it does not replace the boundary estimate by a finite-covector approximation or assume subanalyticity of arbitrary microsupport.
 
-<span id="a-fixed-μ-stratification-criterion"></span>
+<a id="fixed-stratification-criterion"></a>
+<a id="a-fixed-μ-stratification-criterion-fixed-stratification-criterion"></a>
 
-## A fixed μ-stratification criterion {#fixed-stratification-criterion}
+## A fixed μ-stratification criterion
 
 Let \(\mathcal S=(S_a)\) be a μ-stratification of \(X\), and write
 
@@ -93,9 +95,10 @@ For the last inclusion, take a full limiting witness. Local finiteness reduces i
 
 The extension in (6) is supported on \(S\), so (7) is its entire local microsupport bound. Formula (3) gives zero intrinsic microsupport for \(i^{-1}F\). The zero-section criterion proves local constancy of its cohomology. Inverse image is exact, so these are precisely \(H^j(F)|_S\). This proves the first implication at every point.
 
-<span id="removing-a-stratum-from-the-closed-residual"></span>
+<a id="closed-residual-induction"></a>
+<a id="removing-a-stratum-from-the-closed-residual-closed-residual-induction"></a>
 
-## Removing a stratum from the closed residual {#closed-residual-induction}
+## Removing a stratum from the closed residual
 
 **Proof of 1 ⇒ 2.** The problem is local. Choose a neighborhood meeting only finitely many strata, and restrict everything to it. Maintain a closed union \(Y\) of its strata such that the desired microsupport bound is already proved outside \(Y\). Initially \(Y\) is the whole neighborhood.
 
@@ -122,9 +125,10 @@ The second inclusion uses the already-established conormal bound on the compleme
 
 Both outside terms of (8) have the desired bound on \(U\). The triangle microsupport inequality gives it for \(F|_U\). We have removed one stratum from the residual. Repeat until the finite local residual is empty. This proves the bound on the chosen neighborhood; locality proves it globally. No globally finite stratification was assumed. \(\square\)
 
-<span id="three-equivalent-geometric-descriptions"></span>
+<a id="geometric-equivalence"></a>
+<a id="three-equivalent-geometric-descriptions-geometric-equivalence"></a>
 
-## Three equivalent geometric descriptions {#geometric-equivalence}
+## Three equivalent geometric descriptions
 
 **Constructibility criterion.** For \(F\in D^b(k_X)\), the following are equivalent:
 
@@ -140,9 +144,10 @@ For 2 ⇒ 3, use involutivity of the whole microsupport and the theorem recoveri
 
 The Lagrangian conclusion describes the directional support of a bounded sheaf complex. It does not determine the coefficient modules, their shifts, the gluing maps or the monodromy of local systems.
 
-<span id="weak-constructibility-and-perfect-stalks"></span>
+<a id="perfect-stalk-criterion"></a>
+<a id="weak-constructibility-and-perfect-stalks-perfect-stalk-criterion"></a>
 
-## Weak constructibility and perfect stalks {#perfect-stalk-criterion}
+## Weak constructibility and perfect stalks
 
 Call \(F\) **weakly R-constructible** when it satisfies the three geometric conditions above. Call it **R-constructible** when it is weakly R-constructible and every stalk complex \(F_x\) is perfect over \(k\). A perfect complex is quasi-isomorphic to a bounded complex of finitely generated projective \(k\)-modules.
 
@@ -160,9 +165,10 @@ A torsion module can be perfect without being projective as a degree-zero module
 
 For clarity, the cone closure just used holds over an arbitrary ring. A bounded complex of projective modules has an exact Hom functor on acyclic complexes up to cohomology: first check a single projective module by exactness of Hom, then add its finitely many degrees through the truncation filtration. Thus derived morphisms out of it are represented by cochain maps. Represent two perfect objects by bounded finite-projective complexes and represent their morphism by such a map. The mapping cone has in each degree the direct sum of two finite-projective modules and remains bounded. It represents the derived cone and is perfect. Shifts preserve the same property. This supplies the coefficient argument used below without a Noetherian hypothesis.
 
-<span id="the-constructible-categories"></span>
+<a id="constructible-categories"></a>
+<a id="the-constructible-categories-constructible-categories"></a>
 
-## The constructible categories {#constructible-categories}
+## The constructible categories
 
 The full subcategories \(D^b_{\mathrm{w\text{-}R\text{-}c}}(k_X)\) and \(D^b_{\mathrm{R\text{-}c}}(k_X)\) of \(D^b(k_X)\) are triangulated.
 
@@ -270,7 +276,10 @@ Equivalently, \(F\) is the direct image of the constant-value sheaf on the close
 
 Both are infinite-dimensional, although every stalk is perfect. The sheaf's support is noncompact. Local constructibility does not supply finite global cohomology without the compactness or proper-support hypotheses of the later finiteness theorems.
 
-### Two restriction maps determine the cotangent rays {#interval-ray-model}
+<a id="interval-ray-model"></a>
+<a id="two-restriction-maps-determine-the-cotangent-rays-interval-ray-model"></a>
+
+### Two restriction maps determine the cotangent rays
 
 *Difficulty: Intermediate.*
 
@@ -285,7 +294,7 @@ construct the sheaf whose nearby left and right values are \(L\) and \(R\), and 
 
 **Solution.** A section on an open set is a locally constant left-valued function and a locally constant right-valued function, together with an element \(u\in A\) when the set contains zero. On the two components next to zero the functions must have values \(a(u)\) and \(b(u)\). The usual gluing of locally constant functions, and agreement of \(u\) on overlaps containing zero, prove the sheaf axiom. Shrinking connected neighborhoods shows that the three stalk values and restriction maps are exactly (G1). The three-piece decomposition is a μ-stratification, so the fixed-stratification theorem gives weak constructibility. Perfectness of the three stalk values supplies its coefficient condition.
 
-Apply support localization to a small neighborhood of zero with the closed support \(\{x\geq0\}\). The complementary open set is the left half interval. Its constant-sheaf cohomology is \(L\) in degree zero, by the constant-interval calculation. The stalk at zero of the derived open direct image is the filtered limit of these half-interval sections; shrinking maps are the identity. Thus the stalk localization triangle is the fibre triangle for \(a:A\to L\). The other support uses \(b:A\to R\):
+Apply support localization to a small neighborhood of zero with the closed support \(\{x\geq0\}\). The complementary open set is the left half interval. Its constant-sheaf cohomology is \(L\) in degree zero, by the [constant-interval calculation](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#homotopy-invariance-from-a-proper-interval-proper-interval-homotopy). The stalk at zero of the derived open direct image is the filtered limit of these half-interval sections; shrinking maps are the identity. Thus the stalk localization triangle is the fibre triangle for \(a:A\to L\). The other support uses \(b:A\to R\):
 
 \[
  \bigl(R\mathcal\Gamma_{\{x\geq0\}}F\bigr)_0
@@ -325,7 +334,12 @@ Take a nonzero coefficient ring and write \(k_+\) for the constant sheaf on \([0
 
 For the open right half interval the negative test is \([0\to k]\), with its nonzero cohomology in degree one. Its stalk at zero is zero although its microsupport contains the zero covector there as a limit. For the closed right half interval the positive test is \([k\to0]\), in degree zero. This verifies both signs and shows why the geometric bound for a fixed stratification does not determine the sheaf or its gluing maps.
 
-![Four exact microsupport models on an interval.](assets/constructibility-rays.svg)
+<figure>
+<div class="figure-scroll" role="region" tabindex="0" aria-label="Scrollable illustration: Four exact microsupport models on an interval." style="max-width:100%;overflow-x:auto;">
+<img src="../../assets/97b289fb90af-constructibility-rays.svg" alt="Four exact microsupport models on an interval." style="display:block;max-width:none;width:960px;height:auto;">
+</div>
+<figcaption>Four exact microsupport models on an interval.</figcaption>
+</figure>
 
 *Figure.* Horizontal coordinate \(x\) is the base and vertical coordinate \(\xi\) represents \(\xi\,dx\). Each drawn segment continues as indicated by its arrows; only its intersection with a finite coordinate window is shown. The origin is included in all four microsupports. The blue horizontal parts are zero covectors, and the orange vertical parts are the nonzero rays supplied by the respective non-isomorphisms in (G3). Formulas (G1)–(G4) prove the models, including the shift for the open half interval. No claim of equality with the full conormal of an arbitrary stratification is made.
 
@@ -333,18 +347,21 @@ For the open right half interval the negative test is \([0\to k]\), with its non
 
 We have proved constructibility through microsupport and separated its coefficient requirement. The next step compares bounded complexes of constructible sheaves with the constructible part of the ambient derived category. That comparison requires simultaneous triangulations of actual complexes and their quasi-isomorphism roofs, followed by the full functorial and finiteness arguments.
 
-## Human sources and exact proof scope {#sources-and-proof-scope}
+<a id="sources-and-proof-scope"></a>
+<a id="human-sources-and-exact-proof-scope-sources-and-proof-scope"></a>
 
-Hohl and Schapira, [*Unusual functorialities for weakly constructible sheaves*](https://arxiv.org/abs/2303.11189v2), arXiv version 2 of 7 January 2025, §2 and the opening of §4, distinguish arbitrary weak coefficients from perfect stalks and recall the two microsupport descriptions. The source version was checked through the authors' native TeX. Those opening statements cite prior work rather than give the geometric equivalence proof. The argument here supplies both fixed-stratification directions, the closed-residual induction, the isotropic-to-Lagrangian step, the ring hypotheses, the category arguments and complete worked examples. Later functoriality results of that paper require their own hypotheses and proofs; none is inferred here merely from its bibliography.
+## Human sources and exact proof scope
 
-Schapira, [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), 19 January 2016, §2.2–2.3, gives the local-support definition, Example 2.5's constant and half-space models, and the closed-embedding case of Theorem 2.9. It explicitly omits the involutivity proof. The present lesson uses the exact linked programme proof instead. The interval calculation (G1)–(G4) derives each sign and degree from the actual two restriction maps; the human reference is credited for the classical models. No source prose, figure or exercise sequence is reproduced.
+Hohl and Schapira, [*Unusual functorialities for weakly constructible sheaves*](https://arxiv.org/abs/2303.11189v2), arXiv version 2 of 7 January 2025, §2 and the opening of §4, distinguish arbitrary weak coefficients from perfect stalks and recall the two microsupport descriptions. In the authors' native TeX, the coefficient and perfection conventions occur in §2, and the recalled microsupport criteria and perfect-stalk definition occur at the beginning of §4. Those opening statements cite prior work rather than give the geometric equivalence proof. The argument here supplies both fixed-stratification directions, the closed-residual induction, the isotropic-to-Lagrangian step, the ring hypotheses, the category arguments and complete worked examples. Later functoriality results of that paper require their own hypotheses and proofs; none is inferred here merely from its bibliography.
 
-Transitive derived and elementary topological foundations, and the deep subanalytic closure, regularity, dimension, component, curve-selection and uniformization inputs to the geometric providers, remain separately recorded work. This lesson does not certify full prerequisite closure or full-course source and structure clearance.
+Schapira, [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), 19 January 2016, §2.2–2.3, pp. 6–11, gives Definition 2.3's uniform local-support tests, Example 2.5's constant and half-space models, and the closed-embedding case of Theorem 2.9. It explicitly omits the involutivity proof. The present lesson uses the exact linked programme proof instead. The interval calculation (G1)–(G4) derives each sign and degree from the actual two restriction maps; the human reference is credited for the classical models. No source prose, figure or exercise sequence is reproduced.
+
+The geometric proofs use the subanalytic closure, regularity, dimension, component, curve-selection and uniformization results cited in their prerequisite sections. The sheaf estimates use localization, derived operations and constant-coefficient homotopy calculations.
 
 ## Readable source and dependency account
 
 The freely readable comparison is Kashiwara and Schapira, *Microlocal study of sheaves*, Definition 8.2.5, Theorem 8.2.6 and Lemma 8.2.7, printed pp. 145–148 (PDF pp. 148–151). The exact fixed-stratification criterion in this lesson is proved using the displayed estimates and the ordered microlocal condition; it is not obtained by discarding that condition from an ordinary stratification.
 
-The 1985 theorem separates weak constructibility from perfect coefficients and proves the reverse geometric implication with noncharacteristic balls. Here the closed-residual induction supplies the fixed microlocal stratification argument. Its full limiting estimates, zero-section criterion, involutivity and geometric refinement remain separate providers. No finite-generation or Noetherian assumption is inserted into the weak theorem; perfect stalks are an additional condition. A readable statement is not a proof of every transitive foundational input.
+Kashiwara and Schapira prove Theorem 8.2.6 in the bounded-below category: the forward implication uses a local topological product along a Whitney stratum, while Lemma 8.2.7 proves local constancy through noncharacteristic balls and their actual restriction maps. This lesson works in the bounded category stated at the start. It proves the fixed microlocal-stratification criterion through restriction, tensor product and closed-residual induction, then applies involutivity and compatible conormal covers. The perfect-stalk definition is already present in Definition 8.2.5; the finite-generation equivalence here additionally uses the stated Noetherian and finite-global-dimension hypotheses.
 
 Checked comparison: [Kashiwara–Schapira, *Microlocal study of sheaves*, Astérisque 128 (1985)](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf). This comparison complements the Hohl–Schapira and Schapira review accounts above. Original programme exposition remains CC0; the human works retain their own rights.

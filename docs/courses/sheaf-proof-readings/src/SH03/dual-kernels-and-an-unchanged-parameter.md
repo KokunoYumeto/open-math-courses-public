@@ -2,7 +2,7 @@
 
 Two constructions complete the elementary localized kernel calculus. A relative dual turns a constructible kernel into a kernel for the opposite adjoint. A diagonal in an extra variable lets the original operator act while that variable remains a parameter. We will prove both constructions and keep their orientation factors and cotangent signs visible.
 
-Use Kernels that preserve chosen cotangent directions and Adjoints of localized sheaf kernels. The exact constructibility and biduality input is Finite local data and sheaf biduality. The microlocal dual–tensor comparison is the constructible comparison in Cotangent directions that survive a limiting operation.
+Use [Kernels that preserve chosen cotangent directions](kernels-that-preserve-chosen-cotangent-directions.md) and [Adjoints of localized sheaf kernels](adjoints-of-localized-sheaf-kernels.md). The exact constructibility and biduality input is [Finite local data and sheaf biduality](../SH02/cohomological-biduality.md#sh02-cb-biduality--duality-exchanges-the-two-local-measurements). The microlocal dual–tensor comparison is the constructible comparison in [Cotangent directions that survive a limiting operation](../SH02/characteristic-estimates.md#sh02-che-004--the-microsupport-of-microlocal-hom).
 
 *Original programme exposition by GPT-6.1 Sol (OpenAI), Ultra, September 2026; source comparison and editorial revision by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently expressed programme text is dedicated under CC0. Human sources retain their own terms.*
 
@@ -129,7 +129,7 @@ If both conditions hold, the three functors form adjunctions
 
 **Proof.** The reciprocal relation shows that reverse admissibility of \(K\) is forward admissibility of \(K_R\). Apply Theorem 1 to \(K_R\), with the two manifolds exchanged. Its left dual is canonically \(K\): after transposition, it is the double relative dual with coefficient \(q_2^{-1}\omega_Y\), and invertible-line cancellation plus biduality gives this identification. The result is \(\Phi_{K_R}\simeq\Psi_K\), proving (10). Under both conditions both projections of the reciprocal relation are proper, so both dual kernels satisfy both conditions as well. The localized adjunction theorem therefore applies to each relevant pair. Equation (5) identifies the right adjoint of \(\Phi_{K_L}\) with \(\Phi_K\); equation (10) identifies the right adjoint of \(\Phi_K\) with \(\Phi_{K_R}\). This gives (11). \(\square\)
 
-For example, take \(X\) to be a point and \(Y\) a compact manifold, with \(K=k_Y\). Then \(\Phi_K=R\Gamma(Y;-)\), \(K_L=k_Y\), and \(K_R=\omega_Y\). Its left adjoint is the constant-complex functor; its right adjoint tensors a constant complex with \(\omega_Y\). The reciprocal zero-section relation alone does not distinguish these two complexes.
+For example, take \(X\) to be a point and \(Y\) a compact manifold, with \(K=k_Y\). Then \(\Phi_K=R\Gamma(Y;-)\), \(K_L=k_Y\), and \(K_R=\omega_Y\). Its left adjoint is the constant-complex functor; its right adjoint tensors a constant complex with \(\omega_Y\). For a nonzero coefficient ring, both reciprocal relations are the zero section; for the zero ring both are empty. The cotangent relation alone does not distinguish these two complexes.
 
 ## Inserting the identity in a parameter variable
 
@@ -203,7 +203,7 @@ To see nonsurjectivity, the quotient \((\prod k)/(\bigoplus k)\) is nonzero, as 
 
 Let \(f(y)=3y\) and \(K=k_{\Gamma_f}[s]\), and take \(Z=\mathbb R\). Find the graph, twisted relation and operator of \(\Theta_ZK\).
 
-**Solution.** The graph is \((y,z')\mapsto(3y,z')\). In kernel microsupport its equations are \(x=3y\), \(z=z'\), \(\alpha=3\xi\) and the two \(Z\) components \(\zeta,-\zeta\). The twisted relation therefore sends an input \((y,z';\alpha,\beta)\) to \((3y,z';\alpha/3,\beta)\). The operator is the direct image by this diffeomorphism followed by \([s]\). The \(Z\) variable contributes neither another antipodal sign nor a dimension shift.
+**Solution.** The underlying graph is \((y,z')\mapsto(3y,z')\). For a nonzero coefficient ring, its kernel microsupport equations are \(x=3y\), \(z=z'\), \(\alpha=3\xi\) and the two \(Z\) components \(\zeta,-\zeta\). The twisted relation therefore sends an input \((y,z';\alpha,\beta)\) to \((3y,z';\alpha/3,\beta)\). For the zero ring all kernel complexes vanish and their microsupport and relations are empty. In either case the operator is the direct image by this diffeomorphism followed by \([s]\). The \(Z\) variable contributes neither another antipodal sign nor a dimension shift.
 
 ### Replacing a diagonal by a constant plane
 

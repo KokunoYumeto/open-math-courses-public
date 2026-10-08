@@ -1,6 +1,6 @@
 # Frequency calculus for an action of Euclidean space
 
-*Written by GPT-6.1 Sol (OpenAI), September 2026, at Ultra. Not yet reviewed. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra. Self-checked by the writing AI. Public domain (CC0).*
 
 An action of \(\mathbb R^n\) lets us combine algebra coefficients with translation operators. A polynomial in frequency gives a differential operator. A smooth frequency function gives a pseudodifferential operator, and its behavior at large frequency determines a principal symbol. The first task is to make these statements meaningful before taking operator norms or indices.
 
@@ -565,6 +565,10 @@ We do not need a smooth lift of every individual symbol on \(C\). The middle map
 
 ### The index comparison
 
+**K-theory hypotheses.** The index comparison uses stable complex C*-algebra K-theory. The ordinary prerequisites have proofs for arbitrary coefficients: scalar-kernel normalization in K0, normalized K1 and split scalar quotients, the natural index boundary, cone suspension, Bott periodicity, and natural six-term exactness. These proofs retain their stated upstream foundations.
+
+The comparisons (7.8) and (7.U2) additionally assume the natural Connes–Thom isomorphism for arbitrary, possibly nonunital and nonseparable coefficients, including the signed suspension identity and ordered iteration specified below. A full proof of that dynamic family and its compatibility is a prerequisite; ordinary Bott periodicity and a vector-bundle Thom theorem alone do not establish it. The arguments here prove the symbol-extension, deformation and relative-ideal comparisons under those hypotheses.
+
 Write \(\Gamma_\alpha^i:K_i(A)\to K_{i+1}(A\rtimes_\alpha\mathbb R)\) for the suspension-compatible Connes–Thom family with the positive projection model recalled in (7.16). We will use the **index-normalized** family
 \[
 \Phi_\alpha^i=(-1)^i\Gamma_\alpha^i,\qquad i=0,1.
@@ -647,6 +651,113 @@ Thus \((e_0)_*x=\Psi_A^{-1}[v]\). Since \((e_1)_*=(e_0)_*\), evaluation at one y
 The boundary kills the constant part of \(u\), so (7.3)–(7.4) identify the left side with \(\operatorname{Ind}_B(P)\). This proves (7.8). All constructions are stable under matrix enlargement, which gives the assertion for \(M_k(E)\). \(\square\)
 
 For \(n=2\), the symbol \(z a+1-a\) therefore has index \(\Phi_\alpha[a]\). A symbol independent of \(\omega\) has index zero. The theorem determines a class in the crossed-product K-group even when a representation of that algebra has no ordinary Fredholm index. A numerical formula needs the further choice and analysis of an appropriate trace.
+
+### Coefficients without an identity
+
+Theorem 7.3 extends to a possibly nonunital coefficient algebra. The extension requires distinguishing the calculus built from the coefficient unitization from the unitization of the coefficient calculus itself. The former contains arbitrary scalar frequency functions; the latter adjoins only a constant identity.
+
+Let \(A\) be any complex C*-algebra with a pointwise norm-continuous action \(\alpha\) of \(\mathbb R^n\), \(n\ge1\). Let \(A^+=A\oplus\mathbb C1\) be its external unitization, even when \(A\) already has an identity. Extend the action by fixing the new unit and write \(q:A^+\to\mathbb C\) for the scalar quotient. Use the smooth order-zero symbols and leading limits of (2.1)–(2.2). Put
+\[
+ B_A=A\rtimes_\alpha\mathbb R^n,\qquad
+ B_{A^+}=A^+\rtimes_{\alpha^+}\mathbb R^n,\qquad
+ B_{\mathbb C}=C^*(\mathbb R^n).
+\]
+The already constructed unital calculus is \(E_{A^+}\subset M(B_{A^+})\). Define \(E_A\) initially as the norm closure in \(E_{A^+}\) of the operators whose symbols take values in \(A^\infty\). We will prove that restriction gives its actual multiplier realization on \(B_A\).
+
+**Theorem 7.3a.** Restriction embeds \(E_A\) faithfully and isometrically in \(M(B_A)\). Its principal symbol gives the exact sequence
+\[
+ 0\longrightarrow B_A\longrightarrow E_A
+ \xrightarrow{\ \sigma_A\ } C(S^{n-1},A)\longrightarrow0.
+ \tag{7.U1}
+\]
+Use the same basepoint \(\omega_*=-e_1\), kernel-minus-cokernel boundary, sphere Bott map and ordered index-normalized Thom family as in (7.1)–(7.8). For \(P\in M_k(E_A^+)\) whose principal symbol \(u=\sigma_A^+(P)\) is invertible in \(M_k(C(S^{n-1},A)^+)\),
+\[
+ \operatorname{Ind}_{B_A}(P)
+ =\Phi_\alpha\!\left(\Psi_A^{-1}(\operatorname{red}[u])\right)
+ \in K_0(B_A).
+ \tag{7.U2}
+\]
+Here \(E_A^+\) is the external unitization of \(E_A\). The quotient scalar part of \(u\) is a fixed matrix, constant on the sphere. Thus \(u(\omega)u(\omega_*)^{-1}\) has scalar part \(1_k\) and represents its reduced relative class.
+
+**Proof, step 1: the split crossed-product quotient.** The inclusion of coefficient kernels gives an isometric embedding \(B_A\subset B_{A^+}\). Indeed, every nondegenerate covariant representation \((\pi,U)\) of \(A\) extends by \(\pi^+(a+\lambda1)=\pi(a)+\lambda I\), so the ambient full crossed-product norm is at least the coefficient-\(A\) norm. Conversely, a covariant representation of \(A^+\), restricted to the invariant subspace \(\overline{\pi(A)H}\), is a nondegenerate covariant representation of \(A\). An \(A\)-valued kernel acts as zero on its orthogonal complement. This proves the reverse norm inequality. Multiplication of kernels makes the image a closed two-sided ideal.
+
+The equivariant quotient \(q\) induces \(q_B:B_{A^+}\to B_{\mathbb C}\). Its scalar coefficient section \(s_B\) is the integrated map induced by \(\lambda\mapsto\lambda1\), and \(q_Bs_B=\mathrm{id}\). In particular \(s_B\) is isometric. The sequence
+\[
+ 0\longrightarrow B_A\longrightarrow B_{A^+}
+ \mathrel{\mathop{\longrightarrow}^{q_B}}B_{\mathbb C}
+ \longrightarrow0,\qquad q_Bs_B=\mathrm{id},
+ \tag{7.U3}
+\]
+is exact. To verify its kernel directly, take \(z\in\ker q_B\) and approximate it by integrated smooth coefficient kernels \(z_j\), using Proposition 1.1 for \(A^+\). Then \(z_j-s_Bq_B(z_j)\) has an \(A\)-valued kernel and
+\[
+ \|z-(z_j-s_Bq_B(z_j))\|\le2\|z-z_j\|\longrightarrow0.
+\]
+Hence \(z\in B_A\). The full and regular Euclidean crossed-product norms agree by the regular-representation argument in Theorem 5.2, so this is also the ideal sequence for that realization.
+
+**Step 2: the split completed calculus.** Apply Lemma 7.2 to \(q\). It gives \(q_E:E_{A^+}\to E_{\mathbb C}\) with
+\[
+ q_E(P_\rho)=P_{q\circ\rho},\qquad
+ q_E|_{B_{A^+}}=q_B.
+ \tag{7.U4}
+\]
+By Example 6.4, \(E_{\mathbb C}=C(X_n)\), where \(X_n\) is the radial compactification of frequency space. Scalar functional calculus of the commuting canonical group unitaries gives a contractive section \(s_E:C(X_n)\to E_{A^+}\). For a smooth scalar leading symbol \(\kappa\), this section is \(s_E(P_\kappa)=P_{\kappa1}\).
+
+To check both its range and its norm before completion, bounded continuous scalar frequency functions act by the continuous multiplier functional calculus, with norm at most their supremum norm. Polynomials in the bounded radial coordinates \(\xi_j/\sqrt{1+|\xi|^2}\), together with constants, are uniformly dense in \(C(X_n)\) by Stone–Weierstrass. Each is a smooth scalar order-zero symbol with a leading limit, so its image belongs to \(E_{A^+}\). Contractivity extends this section to all of \(C(X_n)\). Applying \(q_E\) on the dense scalar symbols gives \(q_Es_E=\mathrm{id}\); it also proves \(s_E|_{B_{\mathbb C}}=s_B\).
+
+We claim that \(E_A=\ker q_E\). Each coefficient-\(A\) symbol maps to zero. Conversely, approximate \(z\in\ker q_E\) by \(P_{\rho_j}\in E_{A^+}\). The operators
+\[
+ P_{\rho_j}-s_Eq_E(P_{\rho_j})
+ =P_{\rho_j-(q\circ\rho_j)1}
+\]
+have smooth \(A\)-valued symbols, with exactly the required order bounds and leading limits. Their distance from \(z\) is at most \(2\|P_{\rho_j}-z\|\). Thus they converge to \(z\), proving the claim. It follows that \(E_A\) is a closed two-sided ideal of \(E_{A^+}\), and that
+\(E_A\cap B_{A^+}=\ker q_B=B_A\).
+
+**Step 3: faithful restriction and the symbol sequence.** Multiplication by an element of \(E_A\), on either side, preserves \(B_A=E_A\cap B_{A^+}\). It therefore defines a compatible multiplier of \(B_A\). This restricted representation is faithful. Suppose \(z\in E_A\) and \(zB_A=0\). For \(c\in B_{\mathbb C}\), the product \(z s_B(c)\) belongs to \(E_A\cap B_{A^+}=B_A\) and annihilates \(B_A\): the ideal property gives \(s_B(c)B_A\subset B_A\). A member of a C*-algebra annihilating that algebra is zero, by a contractive approximate identity. Hence \(z s_B(c)=0\).
+
+Every \(b\in B_{A^+}\) decomposes as
+\(b=(b-s_Bq_B(b))+s_Bq_B(b)\), with its first term in \(B_A\). Therefore \(zB_{A^+}=0\). The faithful multiplier realization of \(E_{A^+}\) gives \(z=0\). The resulting injective C*-homomorphism \(E_A\to M(B_A)\) is isometric. Faithfulness is proved for this coefficient calculus, rather than assumed for the restriction of every ambient multiplier.
+
+Write \(q_S:C(S^{n-1},A^+)\to C(S^{n-1})\) for the pointwise scalar quotient and \(s_S(f)=f1\) for its section. The identity \(\sigma_{\mathbb C}q_E=q_S\sigma_{A^+}\) is the commuting symbol diagram of Lemma 7.2. Thus the principal symbols of \(E_A\) lie in \(C(S^{n-1},A)\). The symbol kernel is precisely \(E_A\cap B_{A^+}=B_A\). For surjectivity let \(h\in C(S^{n-1},A)\), and lift it to \(R\in E_{A^+}\) by Theorem 6.3. The scalar principal symbol of \(q_E(R)\) is zero. The scalar symbol extension therefore gives \(c=q_E(R)\in B_{\mathbb C}\). Now
+\[
+ R_A=R-s_B(c)\in E_A,\qquad
+ \sigma_A(R_A)=h.
+ \tag{7.U5}
+\]
+The subtracted term is in \(B_{A^+}\) and has zero principal symbol. This proves the surjectivity and exactness in (7.U1), including the completed kernel.
+
+**Step 4: Bott, Thom and the relative boundary.** The split quotient \(A^+\to\mathbb C\) and (7.U3), together with six-term exactness, identify the ideal K-groups with kernels:
+\[
+ \begin{aligned}
+ K_i(A)&\cong\ker\bigl(K_i(A^+)\to K_i(\mathbb C)\bigr),\\
+ K_i(B_A)&\cong\ker\bigl(K_i(B_{A^+})\to K_i(B_{\mathbb C})\bigr).
+ \end{aligned}
+ \tag{7.U6}
+\]
+In particular both ideal inclusions are injective on K-theory. The quotient of sphere coefficient algebras also splits pointwise by scalar functions. Its K-theory inclusion is injective, and commutation with evaluation at \(\omega_*\) identifies the reduced sphere group for \(A\) with the kernel of the scalar map between the reduced sphere groups for \(A^+\) and \(\mathbb C\).
+
+The unital sphere Bott maps are natural for \(q\). Since both are isomorphisms, their restriction to those kernels is an isomorphism \(\Psi_A\). The same argument with the natural ordered Thom maps gives an isomorphism \(\Phi_\alpha:K_{n\bmod2}(A)\to K_0(B_A)\). These are the usual relative maps: all coefficient, suspension and boundary constructions commute with the ideal inclusions. They retain the already specified convention \(\Phi_\alpha^i=(-1)^i\Gamma_\alpha^i\), the order \(e_n,\ldots,e_1\), the final frequency order \((\xi_1,\ldots,\xi_n)\), and the radial Bott calibration. No new sign is selected.
+
+There are natural embeddings \(E_A^+\to E_{A^+}\) and \(C(S^{n-1},A)^+\to C(S^{n-1},A^+)\), sending the new unit to the unit of the respective unital calculus. They are injective because applying the scalar quotient to a constant scalar unit separates it from the ideal. Denote the induced ideal and symbol K-maps by \(i_{B,*}\) and \(i_{S,*}\), and the coefficient K-map by \(i_{A,*}\). Naturality of (7.1), applied to the inclusion of (7.U1) into the unital symbol extension, gives
+\[
+ \begin{aligned}
+ i_{B,*}\partial_A[u]
+ &=\partial_{\alpha^+}i_{S,*}[u]\\
+ &=\Phi_{\alpha^+}\Psi_{A^+}^{-1}
+       \bigl(i_{S,*}\operatorname{red}[u]\bigr)\\
+ &=i_{B,*}\Phi_\alpha\Psi_A^{-1}
+       \bigl(\operatorname{red}[u]\bigr).
+ \end{aligned}
+ \tag{7.U7}
+\]
+The middle equality is Theorem 7.3 for \(A^+\), applied to the embedded \(P\); reduction commutes with the inclusion. Its symbol has constant scalar part, so the reduced class lies in the just identified scalar kernel. Naturality of \(\Psi\) and \(\Phi\) gives the last equality. Injectivity of \(i_{B,*}\) proves (7.U2). The boundary and every inclusion are stable under matrix enlargement. Thus the argument covers all matrix sizes and every relative class. \(\square\)
+
+![Split scalar quotients and the relative index restriction](../assets/nonunital-action-index.png)
+
+*Figure 7.3a. Here \(B(A),E(A)\) denote \(B_A,E_A\), with the same notation for \(A^+\) and \(\mathbb C\). The top row is the unitalized coefficient calculus; the middle row is its scalar quotient; the lower row consists of the scalar-quotient kernels. The sections \(s_B,s_E,s_S\) commute with the displayed ideal and principal-symbol maps. A scalar symbol with zero leading part is in \(B_{\mathbb C}\), which permits the lift correction (7.U5). Restriction is faithful by step 3, and injectivity on K-theory permits cancellation in (7.U7). The diagram is algebraic and encodes no geometric scale. Proof: Theorem 7.3a, steps 1–4, (7.U1)–(7.U7).*
+
+Open the figure at full size: [PNG](../assets/nonunital-action-index.png) · [SVG](../assets/nonunital-action-index.svg). Reproducible drawing: [nonunital-action-index.py](../../tools/nonunital-action-index.py).
+
+The all-dimensional formulas (7.8) and (7.U2) compute a K-theory class. A formula for its trace, a higher-degree Chern-current range, or a measured-flow comparison requires the further numerical index argument.
 
 ### The dual trace fixes the frequency measure
 

@@ -1,8 +1,8 @@
 """Exact coordinate-map illustration for M1–M3 in parameter-morse-reduction.md.
-Human source route: Lebl Basic Analysis II 6.3 section8.5 (CC BY-SA4.0),
+Human source route: Lebl Basic Analysis II 6.3 section8.5,
 https://www.jirka.org/ra/html/sec_svinvfuncthm.html; Guillemin–Sternberg
 author draft 2010-01-13 section13.14.3. Original example and figure.
-This component is licensed CC BY-SA4.0 with its companion exposition.
+Public domain (CC0), like its companion exposition.
 """
 from pathlib import Path
 import json

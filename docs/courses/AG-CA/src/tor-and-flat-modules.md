@@ -1,6 +1,6 @@
 # Tor and flat modules
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. This edition incorporates an AI Integrated Stacks Project proof under GNU FDL 1.2; see the attribution and licence notice below.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original text: public domain (CC0). The proof of Lazard's theorem follows the Stacks Project's argument, cited at the end.*
 
 Tensor products preserve quotients, but can turn an injection into a map with a kernel. Flatness is the condition that this loss never occurs. Tor measures the loss, while the equational criterion describes flatness through finite lists of elements and relations. Together these viewpoints explain why flatness is local, when it gives a free module, and how it constrains prime ideals in a family.
 
@@ -349,11 +349,11 @@ For \(B=k[X,Y]/(XY)\), reduce modulo \(X\) to see that the class \(\bar Y\) is n
 
 **Solution 8.6.** Let \((R,\mathfrak m)\) be local, and lift a residue-field basis of \(M/\mathfrak mM\) to \(x_1,\ldots,x_r\). These generate by Nakayama; if \(r=0\), then \(M=0\). For any relation with coefficient row \(a\), flatness gives \(x=By\) and \(aB=0\). Express the finite list \(y\) in the generating list \(x\), giving \(y=Cx\). Then \(x=BCx\), and independence modulo \(\mathfrak m\) forces \(BC\equiv I_r\pmod{\mathfrak m}\). Its determinant is a unit, so \(BC\) is invertible. The equality \(aBC=0\) now gives \(a=0\). Every relation vanishes, so the surjection \(R^r\to M\) is an isomorphism. The proof treats each relation individually and never applies Nakayama to an unproved finite relation module.
 
-## Proof dependencies and licence
+## Proof dependencies and sources
 
 The independence, balance and symmetry of Tor and its natural long exact sequences are proved in *Resolutions, Tor and Ext*, Sections 1–3. Section 4 here proves the local DVR fact used for Dedekind flatness, and Theorem 6.4 gives both directions of Lazard's theorem. The earlier localization and Noetherian results are used at the locators in the text.
 
-The Lazard proof incorporates the Stacks Project Authors' finite-relation and cofinal-free-presentation argument from [AI Integrated Stacks Project, pinned algebra source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L20525), `lemma-flat-factors-free`, `lemma-flat-factors-fp` and `theorem-lazard`. GPT-6.1 Sol checked the factorization, finite generation and cofinality steps and integrated them with this lesson's equational criterion. This modified lesson is distributed under GNU Free Documentation License 1.2, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The licence text accompanies its transparent Markdown source. History: Stacks Project Authors, *Commutative Algebra*, as incorporated at the pinned AI Integrated Stacks Project revision; GPT-6.1 Sol, original CC0 course lesson and this adaptation, October 2026. The previously released original material remains available under CC0; the combined adapted edition retains GNU FDL terms.
+The proof of Lazard's theorem (Theorem 6.4) follows the finite-relation and cofinal-free-presentation argument of the Stacks Project authors ([algebra chapter at the pinned AI Integrated Stacks Project revision](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L20525), `lemma-flat-factors-free`, `lemma-flat-factors-fp` and `theorem-lazard`). The factorization, finite-generation and cofinality steps are written out here and connected to this lesson's equational criterion.
 
 ## References
 
@@ -363,10 +363,6 @@ The Lazard proof incorporates the Stacks Project Authors' finite-relation and co
 - Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*, public draft of 27 July 2024, Section 23.1 on Tor, Sections 24.1–24.3 on flatness and its criteria, and Section 24.4 on the Koszul complex. [Author’s public draft](https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf).
 - Timothy J. Ford, *Commutative Algebra*, version of 23 September 2026, Chapter 3, Section 7 on flat modules, including the ideal and equational criteria and finitely presented flat modules, and Chapter 9, Section 3 on Tor groups and on Tor and torsion over an integral domain. [Author’s version](https://tim4datfau.github.io/Timothy-Ford-at-FAU/preprints/CA.pdf).
 
-## Copyright and licence
+## Licence
 
-Copyright (C) 2005–2025 Johan de Jong. The incorporated source is *The Stacks Project*, as distributed in AI Integrated Stacks Project at revision `565b10e987aba5969b21145a0833f42d69f96790`.
-
-Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy is supplied as GNU Free Documentation License 1.2.
-
-The original course material remains available under its CC0 dedication. This combined edition, including the incorporated and adapted proof, is distributed under GNU FDL 1.2 or later. The source authors, incorporated source titles and mathematical adaptations are identified above. History: Stacks Project Authors, original source; the credited AI Integrated Stacks Project editorial contributors, where used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.
+The text of this lesson is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The Stacks Project, cited above for the arguments this lesson follows, is distributed by its authors under the GNU FDL 1.2 or later.

@@ -10,7 +10,7 @@ An action can move each predual vector continuously while its operators fail to 
 
 ## Norm continuity puts the identity in the filter algebra
 
-Assume first that \(s\mapsto\alpha_s\) is continuous in operator norm. Let \(a_V\in C_c(G)\) be the nonnegative unit-mass approximate identity proved in [L24](OA-FLOW-L24.md#oa-flow.grp.algebra) and BS2, supported in shrinking identity neighborhoods \(V\), and put \(e_V=\mathcal Fa_V\). The complete integrated-action proof BS1 gives
+Assume first that \(s\mapsto\alpha_s\) is continuous in operator norm. Let \(a_V\in C_c(G)\) be the nonnegative unit-mass approximate identity proved in [L24](OA-FLOW-L24.md#oa-flow.grp.algebra) and [BS2](OA-FLOW-BS.md#bs-2), supported in shrinking identity neighborhoods \(V\), and put \(e_V=\mathcal Fa_V\). The complete integrated-action proof BS1 gives
 
 <a id="equation-n1"></a>
 
@@ -30,13 +30,13 @@ If \(X=\{0\}\), the action is norm continuous and its action spectrum is empty, 
 
 ## A compact spectrum gives one identity filter
 
-Conversely, suppose \(E=\operatorname{Sp}(\alpha)\) is compact. The complete compact-set plateau LF4 supplies \(f\in A_c(H)\) equal to one on an open neighborhood of \(E\). Write \(f=\mathcal Fa\), and represent it by the finite measure \(d\mu(t)=a(-t)\,dt\) as in (F7) of [the four-tests proof](OA-FLOW-L88.md#oa-flow.frequency.measures). Then \(\widehat\mu=f\). The local measure identity (O8) of [the individual-operator proof](OA-FLOW-L89.md#oa-flow.frequency.operator) yields
+Conversely, suppose \(E=\operatorname{Sp}(\alpha)\) is compact. The complete compact-set plateau [LF4](OA-FLOW-LF.md#lf-4) supplies \(f\in A_c(H)\) equal to one on an open neighborhood of \(E\). Write \(f=\mathcal Fa\), and represent it by the finite measure \(d\mu(t)=a(-t)\,dt\) as in (F7) of [the four-tests proof](OA-FLOW-L88.md#oa-flow.frequency.measures). Then \(\widehat\mu=f\). The local measure identity (O8) of [the individual-operator proof](OA-FLOW-L89.md#oa-flow.frequency.operator) yields
 
 <a id="equation-n3"></a>
 
 $$\alpha_f=\alpha_\mu=I.\tag{N3}$$
 
-The neighborhood in this cutoff is important: the argument uses the minimal local ideal and does not require every Fourier function vanishing pointwise on \(E\) to annihilate the action. If \(E=\varnothing\), the full empty-hull and essentiality proofs LF6 and BS2–3 imply \(X=\{0\}\), and the conclusion is again immediate.
+The neighborhood in this cutoff is important: the argument uses the minimal local ideal and does not require every Fourier function vanishing pointwise on \(E\) to annihilate the action. If \(E=\varnothing\), the full empty-hull and essentiality proofs [LF6](OA-FLOW-LF.md#lf-6) and [BS2–3](OA-FLOW-BS.md#bs-2) imply \(X=\{0\}\), and the conclusion is again immediate.
 
 <a id="OA-FLOW.NORMCONT.REVERSE"></a><a id="oa-flow.normcont.reverse"></a>
 

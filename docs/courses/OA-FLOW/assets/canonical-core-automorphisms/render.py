@@ -15,7 +15,7 @@ from matplotlib.patches import Rectangle, FancyArrowPatch
 
 HERE=Path(__file__).resolve().parent
 plt.rcParams.update({"font.family":"DejaVu Sans","font.size":13,
-                     "mathtext.fontset":"dejavusans","svg.fonttype":"none"})
+                     "mathtext.fontset":"dejavusans","svg.fonttype":"none","svg.hashsalt":"OA-FLOW-canonical-core-automorphisms-v1"})
 INK="#213345";MUTED="#596c7c";BLUE="#176495";GREEN="#2c7c50";ORANGE="#b25725"
 fig,axes=plt.subplots(2,2,figsize=(18,13))
 fig.patch.set_facecolor("#fbfcfe")
@@ -123,7 +123,7 @@ txt(ax,.5,.035,"Eight samples shown; the formulas and full strong/u proofs hold 
 fig.text(.5,.025,"Proofs: CIM6.d–n (full matrix and field identities), CIM6.o–p (phase obstruction), CIM6.s–v and CIM7.d–f (infinite model).",
          ha="center",fontsize=12,color=MUTED)
 for ext in ("png","svg"):
-    fig.savefig(HERE/f"canonical-core-automorphisms.{ext}",dpi=160,facecolor=fig.get_facecolor())
+    fig.savefig(HERE/f"canonical-core-automorphisms.{ext}",dpi=160,facecolor=fig.get_facecolor(),**({"metadata":{"Date":None}} if ext == "svg" else {}))
 plt.close(fig)
 
 data={

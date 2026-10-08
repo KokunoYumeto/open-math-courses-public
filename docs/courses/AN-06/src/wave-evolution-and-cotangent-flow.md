@@ -392,6 +392,8 @@ They imply a smooth joint kernel directly. In a chart, \(y\mapsto\partial_y^\bet
 
 <a id="wave-parametrix"></a>
 
+The wave-kernel theorem and its exact wavefront relation are also given by Hörmander [H4, Theorem 29.1.1 and (29.1.6), pp. 251–253]. The fixed-spatial-point restriction is discussed there on p. 253.
+
 **Theorem 5.2 (the wave kernel).** The kernel (12) belongs to
 \[
 I^{-1/4}(\mathbb R\times X\times X,\Lambda).
@@ -544,3 +546,4 @@ Their wavefront relations coincide, as also follows from their identical transpo
 - [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical analysis*, author text dated April 25, 2012. Sections 8.7.5 and 8.13. [Author PDF](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf).
 - [W] Jared Wunsch, *Microlocal analysis and evolution equations*, lecture notes, arXiv:0812.3181v3 (2023 revision of 2008 notes). Sections 4.1 and 6. [Author preprint](https://arxiv.org/abs/0812.3181v3).
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. [Freely readable complete GDZ scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Section 29.1, Theorem 29.1.1 and (29.1.6), pp. 251–253. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Convolution modulo smooth functions and compact singularity bounds</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L171.html">Previous lesson</a> · <a href="#3-the-compact-singularity-condition-and-its-distance-form">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#4-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="learning-convolution-modulo-smooth-functions">Learning convolution modulo smooth functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Ordinary convolution samples the full support of its kernel. An equation modulo smooth functions can ignore the kernel's smooth part. This changes which open domains can be used. It also changes the compactness question: singularities must stay away from the equation boundary, while smooth tails may extend much farther.</p>
+<p>Basic references are <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Melrose's differential-analysis course</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The accompanying formal chapter constructs the quotient operation and proves its two necessary conditions. Use <a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a> for the isolated-singularity obstruction, <a href="AN02-L164.html">Recovering singularities from convolution profiles</a> for bounded singular hulls, and <a href="AN02-L012.html">Singular supports and arbitrary distribution data</a> for the increasing-order Sobolev mechanism.</p>
+<h2 id="1-the-operation-and-the-geometric-test">1. The operation and the geometric test</h2>
+<p>Write <span class="math" data-index="0" data-tex="\(Q(X)=\mathcal D&#x27;(X)/C^\infty(X)\)">\(Q(X)=\mathcal D&#x27;(X)/C^\infty(X)\)</span>. Two distributions define the same class when their difference is smooth on all of <span class="math" data-index="1" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-index="2" data-tex="\(\mu\)">\(\mu\)</span> is compact, the condition for its quotient operation is</p>
+<span class="math math-display" id="eq-E1.1" data-index="3" data-tex="\[
+ X_2-\operatorname{sing\,supp}\mu\subset X_1.
+ \tag{E1.1}
+\]">\[
+ X_2-\operatorname{sing\,supp}\mu\subset X_1.
+ \tag{E1.1}
+\]</span>
+<p>Near any compact output set, replace <span class="math" data-index="4" data-tex="\(\mu\)">\(\mu\)</span> by a compact kernel supported close to its singular support and differing from <span class="math" data-index="5" data-tex="\(\mu\)">\(\mu\)</span> by a smooth function. Ordinary convolution with that replacement is defined there. Different replacements differ smoothly, and a partition of unity patches the local answers into one class. Theorem 1.2 of the formal chapter proves every step.</p>
+<p>Two compact kernels whose difference is smooth induce the same quotient operation. Their compositions agree with convolution of the kernels, whenever the singular sampling conditions allow the composition. A smooth product induces the zero map. These facts concern classes; they do not assign an ordinary convolution to every distribution on every domain.</p>
+<p>Surjectivity on <span class="math" data-index="6" data-tex="\(Q(X_2)\)">\(Q(X_2)\)</span> forces kernel invertibility and this condition: for each compact <span class="math" data-index="7" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>, one compact <span class="math" data-index="8" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span> must contain the singular support of every compact <span class="math" data-index="9" data-tex="\(v\)">\(v\)</span> on <span class="math" data-index="10" data-tex="\(X_2\)">\(X_2\)</span> whose adjoint image has singularities only in <span class="math" data-index="11" data-tex="\(K_1\)">\(K_1\)</span>. The adjoint image is <span class="math" data-index="12" data-tex="\(\check\mu*v\)">\(\check\mu*v\)</span>, with a reflected kernel and a bilinear pairing.</p>
+<p>For an invertible kernel, that condition is exactly</p>
+<span class="math math-display" id="eq-E1.2" data-index="13" data-tex="\[
+ d_{X_2}(\operatorname{sing\,supp}v)
+   =d_{X_1}(\operatorname{sing\,supp}(\check\mu*v)).
+ \tag{E1.2}
+\]">\[
+ d_{X_2}(\operatorname{sing\,supp}v)
+   =d_{X_1}(\operatorname{sing\,supp}(\check\mu*v)).
+ \tag{E1.2}
+\]</span>
+<p>Distance to an empty complement and the distance of an empty singular set are infinite. Invertibility is an essential hypothesis of this equivalence. Singular sets are not preserved by mollification: every mollified compact distribution is smooth. The proof instead cuts off smooth tails and translates the actual singularities towards a boundary.</p>
+<h2 id="2-four-worked-examples">2. Four worked examples</h2>
+<p>For the smooth bumps below, let</p>
+<span class="math math-display" id="eq-E2.1" data-index="14" data-tex="\[
+ \rho(t)=
+ \begin{cases}
+ c\exp[-1/(1-16t^2)],&amp;|t|&lt;1/4,\\
+ 0,&amp;|t|\ge1/4,
+ \end{cases}
+ \qquad \int_{\mathbb R}\rho(t)\,dt=1.
+ \tag{E2.1}
+\]">\[
+ \rho(t)=
+ \begin{cases}
+ c\exp[-1/(1-16t^2)],&amp;|t|&lt;1/4,\\
+ 0,&amp;|t|\ge1/4,
+ \end{cases}
+ \qquad \int_{\mathbb R}\rho(t)\,dt=1.
+ \tag{E2.1}
+\]</span>
+<p>The positive normalizing constant exists because the unnormalized continuous bump has a finite positive integral. Its zero extension is smooth: each derivative near an endpoint is a polynomial in reciprocal powers of <span class="math" data-index="15" data-tex="\(1-16t^2\)">\(1-16t^2\)</span>, times the exponential, and the exponential dominates every such power. Thus its support is exactly <span class="math" data-index="16" data-tex="\([-1/4,1/4]\)">\([-1/4,1/4]\)</span>.</p>
+<h3 id="example-1-a-smooth-tail-changes-ordinary-sampling">Example 1. A smooth tail changes ordinary sampling</h3>
+<p>Let</p>
+<span class="math math-display" id="eq-E2.2" data-index="17" data-tex="\[
+ \mu=\delta_{1/3}+\rho(\,\cdot-3),\qquad
+ X_1=(-1,1),\qquad X_2=(-2/3,4/3).
+ \tag{E2.2}
+\]">\[
+ \mu=\delta_{1/3}+\rho(\,\cdot-3),\qquad
+ X_1=(-1,1),\qquad X_2=(-2/3,4/3).
+ \tag{E2.2}
+\]</span>
+<p>The singular support of <span class="math" data-index="18" data-tex="\(\mu\)">\(\mu\)</span> is <span class="math" data-index="19" data-tex="\(\{1/3\}\)">\(\{1/3\}\)</span>, so (E1.1) holds with equality:
+<span class="math" data-index="20" data-tex="\(X_2-\{1/3\}=X_1\)">\(X_2-\{1/3\}=X_1\)</span>. The ordinary support also contains <span class="math" data-index="21" data-tex="\([11/4,13/4]\)">\([11/4,13/4]\)</span>. At output <span class="math" data-index="22" data-tex="\(x=0\)">\(x=0\)</span>, that tail would sample an input near <span class="math" data-index="23" data-tex="\(-3\)">\(-3\)</span>, outside <span class="math" data-index="24" data-tex="\(X_1\)">\(X_1\)</span>. Ordinary convolution with an arbitrary distribution on <span class="math" data-index="25" data-tex="\(X_1\)">\(X_1\)</span> therefore has no such full-domain definition.</p>
+<p>In the quotient, the tail is discarded and the operation is translation by <span class="math" data-index="26" data-tex="\(1/3\)">\(1/3\)</span>. For every <span class="math" data-index="27" data-tex="\(f\in\mathcal D&#x27;(X_2)\)">\(f\in\mathcal D&#x27;(X_2)\)</span>, define <span class="math" data-index="28" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span> by</p>
+<span class="math math-display" id="eq-E2.3" data-index="29" data-tex="\[
+ u(\theta)=f\bigl(x\longmapsto\theta(x-1/3)\bigr),
+          \qquad\theta\in C_c^\infty(X_1).
+ \tag{E2.3}
+\]">\[
+ u(\theta)=f\bigl(x\longmapsto\theta(x-1/3)\bigr),
+          \qquad\theta\in C_c^\infty(X_1).
+ \tag{E2.3}
+\]</span>
+<p>The displayed test has compact support in <span class="math" data-index="30" data-tex="\(X_2\)">\(X_2\)</span>. For regular functions, this says <span class="math" data-index="31" data-tex="\(u(y)=f(y+1/3)\)">\(u(y)=f(y+1/3)\)</span>. Distributional translation gives
+<span class="math" data-index="32" data-tex="\(\delta_{1/3}*u=f\)">\(\delta_{1/3}*u=f\)</span>, hence <span class="math" data-index="33" data-tex="\(\mu_*[u]=[f]\)">\(\mu_*[u]=[f]\)</span>.</p>
+<p>The kernel is invertible, consistently with Theorem 2.1. Here is a direct slow-decrease check. On real frequencies,</p>
+<span class="math math-display" id="eq-E2.4" data-index="34" data-tex="\[
+ F_\mu(\xi)=e^{-i\xi/3}+e^{-3i\xi}F_\rho(\xi).
+ \tag{E2.4}
+\]">\[
+ F_\mu(\xi)=e^{-i\xi/3}+e^{-3i\xi}F_\rho(\xi).
+ \tag{E2.4}
+\]</span>
+<p>Integration by parts makes <span class="math" data-index="35" data-tex="\(F_\rho\)">\(F_\rho\)</span> tend rapidly to zero. Thus <span class="math" data-index="36" data-tex="\(|F_\mu(\xi)|\ge1/2\)">\(|F_\mu(\xi)|\ge1/2\)</span> for sufficiently large <span class="math" data-index="37" data-tex="\(|\xi|\)">\(|\xi|\)</span>. The entire transform is not zero, since that real lower bound holds. For real centers in a fixed bounded interval, the maximum of <span class="math" data-index="38" data-tex="\(|F_\mu|\)">\(|F_\mu|\)</span> on the closed complex unit disk about the center is a continuous positive function: continuity follows from compact parameterization, and positivity from the entire identity principle. Its minimum there is positive. Choose a sufficiently large slow-decrease constant so its logarithmic windows contain those unit disks and its polynomial lower threshold is smaller than that minimum and <span class="math" data-index="39" data-tex="\(1/2\)">\(1/2\)</span>. The complex-window characterization in the linked slow-decrease theorem then proves invertibility.</p>
+<figure><img class="course-figure" width="1170" height="1368" src="reproduce/L172/figures/singular-sampling-and-a-remote-smooth-tail.png" alt="The singular atom samples inside the solution interval while the smooth kernel tail would sample outside it; only the atom is needed for the quotient operation." /><figcaption class="native"><a href="reproduce/L172/figures/singular-sampling-and-a-remote-smooth-tail.png">Open full-size PNG</a> · <a href="reproduce/L172/figures/singular-sampling-and-a-remote-smooth-tail.svg">Open SVG</a></figcaption></figure>
+<p>At the output <span class="math" data-index="40" data-tex="\(x=0\)">\(x=0\)</span>, the atom samples <span class="math" data-index="41" data-tex="\(y=-1/3\)">\(y=-1/3\)</span>, and the tail samples the band <span class="math" data-index="42" data-tex="\(y\in[-13/4,-11/4]\)">\(y\in[-13/4,-11/4]\)</span>. The solution interval is <span class="math" data-index="43" data-tex="\((-1,1)\)">\((-1,1)\)</span>. The dashed tail band describes the unavailable ordinary sampling, while the quotient operation uses the singular atom. These are support-set diagrams, with schematic vertical placement and exact horizontal interval differences from (E2.2).</p>
+<h3 id="example-2-cutting-off-a-smooth-input-tail">Example 2. Cutting off a smooth input tail</h3>
+<p>Take <span class="math" data-index="44" data-tex="\(v=\delta_0+\rho(\,\cdot-3)\)">\(v=\delta_0+\rho(\,\cdot-3)\)</span>, <span class="math" data-index="45" data-tex="\(X_2=(-1,1)\)">\(X_2=(-1,1)\)</span>, and <span class="math" data-index="46" data-tex="\(\mu=\delta_{1/3}\)">\(\mu=\delta_{1/3}\)</span>. Its ordinary support does not lie in <span class="math" data-index="47" data-tex="\(X_2\)">\(X_2\)</span>, but its singular support does. Choose <span class="math" data-index="48" data-tex="\(\chi\in C_c^\infty((-1,1))\)">\(\chi\in C_c^\infty((-1,1))\)</span> equal to one near zero. The smooth tail has support disjoint from <span class="math" data-index="49" data-tex="\(\chi\)">\(\chi\)</span>, so <span class="math" data-index="50" data-tex="\(\chi v=\delta_0\)">\(\chi v=\delta_0\)</span>, and the removed part is smooth.</p>
+<p>Use <span class="math" data-index="51" data-tex="\(X_1=(-4/3,2/3)\)">\(X_1=(-4/3,2/3)\)</span>. The full adjoint image is</p>
+<span class="math math-display" id="eq-E2.5" data-index="52" data-tex="\[
+ \check\mu*v=\delta_{-1/3}+\rho(\,\cdot-8/3).
+ \tag{E2.5}
+\]">\[
+ \check\mu*v=\delta_{-1/3}+\rho(\,\cdot-8/3).
+ \tag{E2.5}
+\]</span>
+<p>Only <span class="math" data-index="53" data-tex="\(-1/3\)">\(-1/3\)</span> is singular. Its singular distance to <span class="math" data-index="54" data-tex="\(X_1^c\)">\(X_1^c\)</span> is one, as is the distance of <span class="math" data-index="55" data-tex="\(\{0\}\)">\(\{0\}\)</span> to <span class="math" data-index="56" data-tex="\(X_2^c\)">\(X_2^c\)</span>. Cutting off <span class="math" data-index="57" data-tex="\(v\)">\(v\)</span> leaves both singular sets unchanged.</p>
+<p>This is the precise extension used in the translation argument of Theorem 3.2. A full support may leave the domain while the singular support stays inside it. The cutoff extension of confinement allows that situation.</p>
+<h3 id="example-3-one-datum-with-orders-increasing-towards-the-boundary">Example 3. One datum with orders increasing towards the boundary</h3>
+<p>Set <span class="math" data-index="58" data-tex="\(X_1=(-2,2)\)">\(X_1=(-2,2)\)</span>, <span class="math" data-index="59" data-tex="\(X_2=(-1,1)\)">\(X_2=(-1,1)\)</span>, and <span class="math" data-index="60" data-tex="\(\mu=\delta_0\)">\(\mu=\delta_0\)</span>. Define</p>
+<span class="math math-display" id="eq-E2.6" data-index="61" data-tex="\[
+ x_j=1-2^{-j},\qquad
+ f=\sum_{j\ge1}\delta_{x_j}^{(j)}\quad\text{on }X_2,
+ \tag{E2.6}
+\]">\[
+ x_j=1-2^{-j},\qquad
+ f=\sum_{j\ge1}\delta_{x_j}^{(j)}\quad\text{on }X_2,
+ \tag{E2.6}
+\]</span>
+<p>where the superscript denotes the ordinary <span class="math" data-index="62" data-tex="\(j\)">\(j\)</span>-th distributional derivative. Every compact subset of <span class="math" data-index="63" data-tex="\(X_2\)">\(X_2\)</span> meets only finitely many <span class="math" data-index="64" data-tex="\(x_j\)">\(x_j\)</span>, so this sum is a distribution there.</p>
+<p>It has no extension to <span class="math" data-index="65" data-tex="\(X_1\)">\(X_1\)</span>, even modulo a smooth function on <span class="math" data-index="66" data-tex="\(X_2\)">\(X_2\)</span>. Suppose <span class="math" data-index="67" data-tex="\(u|_{X_2}=f+g\)">\(u|_{X_2}=f+g\)</span> with <span class="math" data-index="68" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span> and <span class="math" data-index="69" data-tex="\(g\)">\(g\)</span> smooth on <span class="math" data-index="70" data-tex="\(X_2\)">\(X_2\)</span>. On the fixed compact test support <span class="math" data-index="71" data-tex="\([0,3/2]\subset X_1\)">\([0,3/2]\subset X_1\)</span>, <span class="math" data-index="72" data-tex="\(u\)">\(u\)</span> has a finite order <span class="math" data-index="73" data-tex="\(N\)">\(N\)</span>. Choose <span class="math" data-index="74" data-tex="\(j&gt;N\)">\(j&gt;N\)</span>. A small interval about <span class="math" data-index="75" data-tex="\(x_j\)">\(x_j\)</span> contains no other <span class="math" data-index="76" data-tex="\(x_\ell\)">\(x_\ell\)</span> and lies inside <span class="math" data-index="77" data-tex="\(X_2\)">\(X_2\)</span>.</p>
+<p>Choose <span class="math" data-index="78" data-tex="\(\eta_j\in C_c^\infty((-1,1))\)">\(\eta_j\in C_c^\infty((-1,1))\)</span> with <span class="math" data-index="79" data-tex="\(\eta_j^{(j)}(0)=1\)">\(\eta_j^{(j)}(0)=1\)</span>, for example <span class="math" data-index="80" data-tex="\(t^j/j!\)">\(t^j/j!\)</span> times a cutoff equal to one near zero. For sufficiently small <span class="math" data-index="81" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put</p>
+<span class="math math-display" id="eq-E2.7" data-index="82" data-tex="\[
+ \theta_\varepsilon(x)=\varepsilon^j
+                   \eta_j((x-x_j)/\varepsilon).
+ \tag{E2.7}
+\]">\[
+ \theta_\varepsilon(x)=\varepsilon^j
+                   \eta_j((x-x_j)/\varepsilon).
+ \tag{E2.7}
+\]</span>
+<p>All derivatives through order <span class="math" data-index="83" data-tex="\(N\)">\(N\)</span> tend uniformly to zero, with bounds <span class="math" data-index="84" data-tex="\(C_j\varepsilon^{j-N}\)">\(C_j\varepsilon^{j-N}\)</span>. But</p>
+<span class="math math-display" id="eq-E2.8" data-index="85" data-tex="\[
+ f(\theta_\varepsilon)=(-1)^j,\qquad
+ g(\theta_\varepsilon)=O(\varepsilon^{j+1})\longrightarrow0.
+ \tag{E2.8}
+\]">\[
+ f(\theta_\varepsilon)=(-1)^j,\qquad
+ g(\theta_\varepsilon)=O(\varepsilon^{j+1})\longrightarrow0.
+ \tag{E2.8}
+\]</span>
+<p>The bound on the smooth term is local near this one fixed <span class="math" data-index="86" data-tex="\(x_j\)">\(x_j\)</span>. Thus <span class="math" data-index="87" data-tex="\(u(\theta_\varepsilon)\)">\(u(\theta_\varepsilon)\)</span> tends to a nonzero value, contradicting its finite-order estimate. No global growth bound on <span class="math" data-index="88" data-tex="\(g\)">\(g\)</span> was assumed.</p>
+<p>The corresponding compact witnesses are <span class="math" data-index="89" data-tex="\(v_j=\delta_{x_j}\)">\(v_j=\delta_{x_j}\)</span>. Their unchanged image singularities all lie in the one compact <span class="math" data-index="90" data-tex="\([1/2,1]\subset X_1\)">\([1/2,1]\subset X_1\)</span>, while no compact subset of <span class="math" data-index="91" data-tex="\(X_2\)">\(X_2\)</span> contains all their singular points. The two distances are</p>
+<span class="math math-display" id="eq-E2.9" data-index="92" data-tex="\[
+ d_{X_2}(\{x_j\})=2^{-j},\qquad
+ d_{X_1}(\{x_j\})=1+2^{-j}.
+ \tag{E2.9}
+\]">\[
+ d_{X_2}(\{x_j\})=2^{-j},\qquad
+ d_{X_1}(\{x_j\})=1+2^{-j}.
+ \tag{E2.9}
+\]</span>
+<p>The failure of compact confinement and the increasing-order datum express the same boundary obstruction.</p>
+<figure><img class="course-figure" width="1170" height="1475" src="reproduce/L172/figures/escaping-singularities-and-increasing-orders.png" alt="Singular points tend to the excluded equation boundary; their derivative orders increase, and the equation-domain distances tend to zero while the solution-domain distances stay positive." /><figcaption class="native"><a href="reproduce/L172/figures/escaping-singularities-and-increasing-orders.png">Open full-size PNG</a> · <a href="reproduce/L172/figures/escaping-singularities-and-increasing-orders.svg">Open SVG</a></figcaption></figure>
+<p>The first panel shows the first five points, their derivative orders and the excluded boundary at <span class="math" data-index="93" data-tex="\(1\)">\(1\)</span>. The second shows the exact distances in (E2.9) for further points. The contradiction applies to the full infinite distribution (E2.6), not just to the plotted samples.</p>
+<h3 id="example-4-infinite-distances-do-not-detect-a-smooth-kernel">Example 4. Infinite distances do not detect a smooth kernel</h3>
+<p>Let <span class="math" data-index="94" data-tex="\(\mu=\rho\)">\(\mu=\rho\)</span>, and <span class="math" data-index="95" data-tex="\(X_1=X_2=\mathbb R\)">\(X_1=X_2=\mathbb R\)</span>. Its quotient map is zero, because its singular support is empty. Hence it cannot solve the class of any point mass. For every compact <span class="math" data-index="96" data-tex="\(v\)">\(v\)</span>, <span class="math" data-index="97" data-tex="\(\check\rho*v\)">\(\check\rho*v\)</span> is smooth.</p>
+<p>Nevertheless the distance identity alone reads</p>
+<span class="math math-display" id="eq-E2.10" data-index="98" data-tex="\[
+ d_{\mathbb R}(\operatorname{sing\,supp}v)=\infty
+        =d_{\mathbb R}(\varnothing).
+ \tag{E2.10}
+\]">\[
+ d_{\mathbb R}(\operatorname{sing\,supp}v)=\infty
+        =d_{\mathbb R}(\varnothing).
+ \tag{E2.10}
+\]</span>
+<p>It holds for every compact input. Confinement fails: the point masses <span class="math" data-index="99" data-tex="\(\delta_x\)">\(\delta_x\)</span>, for all <span class="math" data-index="100" data-tex="\(x\in\mathbb R\)">\(x\in\mathbb R\)</span>, have smooth images, while no one compact contains all their singular points. Theorem 3.2 explicitly assumes invertibility, and therefore makes no erroneous inference from (E2.10).</p>
+<h2 id="3-how-the-increasing-order-proof-handles-a-general-kernel">3. How the increasing-order proof handles a general kernel</h2>
+<p>The formal argument uses compact <span class="math" data-index="101" data-tex="\(v_j\)">\(v_j\)</span> with singular points escaping every compact subset of <span class="math" data-index="102" data-tex="\(X_2\)">\(X_2\)</span>, while their image singularities remain inside one <span class="math" data-index="103" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>. Each <span class="math" data-index="104" data-tex="\(v_j\)">\(v_j\)</span> has some negative Sobolev order <span class="math" data-index="105" data-tex="\(s_j\)">\(s_j\)</span>. Its derivatives cannot all remain in the one space <span class="math" data-index="106" data-tex="\(H^{s_j-a_{j-1}}_{\rm loc}\)">\(H^{s_j-a_{j-1}}_{\rm loc}\)</span> near its singular point, so choose a derivative of order <span class="math" data-index="107" data-tex="\(a_j&gt;a_{j-1}\)">\(a_j&gt;a_{j-1}\)</span> that leaves that space.</p>
+<p>The full kernel may have an unusable smooth tail. It is replaced, separately near each compact test family, by <span class="math" data-index="108" data-tex="\(\kappa_j=\theta_j\mu\)">\(\kappa_j=\theta_j\mu\)</span>. The removed part is smooth. Every <span class="math" data-index="109" data-tex="\(\kappa_j\)">\(\kappa_j\)</span> has one common finite kernel order <span class="math" data-index="110" data-tex="\(r\)">\(r\)</span>, although its constants may vary. This gives</p>
+<span class="math math-display" id="eq-E3.1" data-index="111" data-tex="\[
+ \check\kappa_j*v_j\in H^{s_j-r}.
+ \tag{E3.1}
+\]">\[
+ \check\kappa_j*v_j\in H^{s_j-r}.
+ \tag{E3.1}
+\]</span>
+<p>A cutoff of the image near <span class="math" data-index="112" data-tex="\(K_1\)">\(K_1\)</span> places its singular part on a fixed compact set in <span class="math" data-index="113" data-tex="\(X_1\)">\(X_1\)</span>. Any proposed solution has one finite order <span class="math" data-index="114" data-tex="\(c\)">\(c\)</span> there. All other terms are smooth and can be estimated at any chosen Sobolev order. For large <span class="math" data-index="115" data-tex="\(j\)">\(j\)</span>, <span class="math" data-index="116" data-tex="\(a_{j-1}\ge c+r\)">\(a_{j-1}\ge c+r\)</span>, and the equation forces the forbidden derivative back into <span class="math" data-index="117" data-tex="\(H^{s_j-a_{j-1}}_{\rm loc}\)">\(H^{s_j-a_{j-1}}_{\rm loc}\)</span>. That is the contradiction.</p>
+<p>The supports of every ordinary pairing lie inside its domain. The common quantity is <span class="math" data-index="118" data-tex="\(c+r\)">\(c+r\)</span>; constants and smooth errors need not be common across all <span class="math" data-index="119" data-tex="\(j\)">\(j\)</span>.</p>
+<h2 id="4-exercises-and-full-solutions">4. Exercises and full solutions</h2>
+<p><strong>Exercise 1 (10 points).</strong> Let <span class="math" data-index="120" data-tex="\(\mu=i\delta_{-2/5}+b\)">\(\mu=i\delta_{-2/5}+b\)</span>, with <span class="math" data-index="121" data-tex="\(b\)">\(b\)</span> compact and smooth, and let <span class="math" data-index="122" data-tex="\(X_1=(0,2)\)">\(X_1=(0,2)\)</span>, <span class="math" data-index="123" data-tex="\(X_2=(-2/5,8/5)\)">\(X_2=(-2/5,8/5)\)</span>. Construct a quotient solution for every datum. Compute the reflected kernel modulo smooth functions, and solve for <span class="math" data-index="124" data-tex="\(f=\delta_{3/5}\)">\(f=\delta_{3/5}\)</span>. Keep the complex pairing bilinear.</p>
+<p><em>Solution.</em> The singular kernel samples <span class="math" data-index="125" data-tex="\(u(x+2/5)\)">\(u(x+2/5)\)</span>, so set <span class="math" data-index="126" data-tex="\(u(y)=f(y-2/5)/i\)">\(u(y)=f(y-2/5)/i\)</span> in the distributional translation sense. More explicitly, <span class="math" data-index="127" data-tex="\(u(\theta)=f(x\mapsto\theta(x+2/5))/i\)">\(u(\theta)=f(x\mapsto\theta(x+2/5))/i\)</span>; its test has compact support in <span class="math" data-index="128" data-tex="\(X_2\)">\(X_2\)</span>. Then <span class="math" data-index="129" data-tex="\(i\delta_{-2/5}*u=f\)">\(i\delta_{-2/5}*u=f\)</span>, and the smooth part <span class="math" data-index="130" data-tex="\(b\)">\(b\)</span> does not change the quotient class. Reflection gives <span class="math" data-index="131" data-tex="\(\check\mu=i\delta_{2/5}+\check b\)">\(\check\mu=i\delta_{2/5}+\check b\)</span>: the coefficient remains <span class="math" data-index="132" data-tex="\(i\)">\(i\)</span>. For the point datum, <span class="math" data-index="133" data-tex="\(u=-i\delta_1\)">\(u=-i\delta_1\)</span>, and <span class="math" data-index="134" data-tex="\(i\delta_{-2/5}*(-i\delta_1)=\delta_{3/5}\)">\(i\delta_{-2/5}*(-i\delta_1)=\delta_{3/5}\)</span>. Conjugating the coefficient in the reflected kernel would contradict this bilinear calculation.</p>
+<p><strong>Exercise 2 (10 points).</strong> With <span class="math" data-index="135" data-tex="\(X=(-1,1)\)">\(X=(-1,1)\)</span>, <span class="math" data-index="136" data-tex="\(Y=(-2/3,4/3)\)">\(Y=(-2/3,4/3)\)</span>, take <span class="math" data-index="137" data-tex="\(a=\delta_{1/3}+b\)">\(a=\delta_{1/3}+b\)</span> and <span class="math" data-index="138" data-tex="\(c=\delta_{-1/3}+d\)">\(c=\delta_{-1/3}+d\)</span>, where <span class="math" data-index="139" data-tex="\(b,d\)">\(b,d\)</span> are compact smooth functions. Prove that their quotient maps are mutual inverses on the translated domains.</p>
+<p><em>Solution.</em> The singular sets are <span class="math" data-index="140" data-tex="\(\{1/3\}\)">\(\{1/3\}\)</span> and <span class="math" data-index="141" data-tex="\(\{-1/3\}\)">\(\{-1/3\}\)</span>; the compatibility relations are <span class="math" data-index="142" data-tex="\(Y-\{1/3\}=X\)">\(Y-\{1/3\}=X\)</span> and <span class="math" data-index="143" data-tex="\(X-\{-1/3\}=Y\)">\(X-\{-1/3\}=Y\)</span>. Their product is</p>
+<span class="math math-display" id="eq-E4.1" data-index="144" data-tex="\[
+ c*a=\delta_0+\delta_{-1/3}*b+d*\delta_{1/3}+d*b.
+ \tag{E4.1}
+\]">\[
+ c*a=\delta_0+\delta_{-1/3}*b+d*\delta_{1/3}+d*b.
+ \tag{E4.1}
+\]</span>
+<p>The last three terms are compact smooth functions by differentiation in the smooth factor. The composition lemma therefore gives <span class="math" data-index="145" data-tex="\(c_*a_*=(\delta_0)_*\)">\(c_*a_*=(\delta_0)_*\)</span>, the identity on <span class="math" data-index="146" data-tex="\(Q(X)\)">\(Q(X)\)</span>. Compact convolution is commutative, so the reverse composition is the identity on <span class="math" data-index="147" data-tex="\(Q(Y)\)">\(Q(Y)\)</span>. This conclusion uses only proper local representatives of the two kernels and does not require their full supports to satisfy ordinary sampling inclusions.</p>
+<p><strong>Exercise 3 (8 points).</strong> For <span class="math" data-index="148" data-tex="\(v=\delta_0-2\delta_{1/2}+\rho(\,\cdot-3)\)">\(v=\delta_0-2\delta_{1/2}+\rho(\,\cdot-3)\)</span>, <span class="math" data-index="149" data-tex="\(X_2=(-1/2,1)\)">\(X_2=(-1/2,1)\)</span>, <span class="math" data-index="150" data-tex="\(\mu=\delta_{1/4}\)">\(\mu=\delta_{1/4}\)</span>, and <span class="math" data-index="151" data-tex="\(X_1=(-3/4,3/4)\)">\(X_1=(-3/4,3/4)\)</span>, compute the singular sets and their distances. Explain why the full input support need not lie in <span class="math" data-index="152" data-tex="\(X_2\)">\(X_2\)</span>.</p>
+<p><em>Solution.</em> The singular set is <span class="math" data-index="153" data-tex="\(T=\{0,1/2\}\)">\(T=\{0,1/2\}\)</span>. The reflected kernel is <span class="math" data-index="154" data-tex="\(\delta_{-1/4}\)">\(\delta_{-1/4}\)</span>, so the image singular set is <span class="math" data-index="155" data-tex="\(W=\{-1/4,1/4\}\)">\(W=\{-1/4,1/4\}\)</span>, with the coefficients unchanged. Each distance is <span class="math" data-index="156" data-tex="\(1/2\)">\(1/2\)</span>, measured to the closer endpoint of the respective interval. The smooth tail is supported in <span class="math" data-index="157" data-tex="\([11/4,13/4]\)">\([11/4,13/4]\)</span>, outside <span class="math" data-index="158" data-tex="\(X_2\)">\(X_2\)</span>, but a cutoff inside <span class="math" data-index="159" data-tex="\(X_2\)">\(X_2\)</span> equal to one near <span class="math" data-index="160" data-tex="\(T\)">\(T\)</span> removes it and preserves both singular sets. Condition (E1.2) and its compact-confinement extension concern this cutoff class, not the full ordinary support.</p>
+<p><strong>Exercise 4 (10 points).</strong> Apply the compact receiver in Theorem 3.2 to <span class="math" data-index="161" data-tex="\(\mu=\delta_0\)">\(\mu=\delta_0\)</span>, <span class="math" data-index="162" data-tex="\(X_1=X_2=(-3,-1)\cup(1,3)\)">\(X_1=X_2=(-3,-1)\cup(1,3)\)</span>, and <span class="math" data-index="163" data-tex="\(K_1=\{-2,2\}\)">\(K_1=\{-2,2\}\)</span>. Compute <span class="math" data-index="164" data-tex="\(B,\delta,K_2\)">\(B,\delta,K_2\)</span>, and show why requiring <span class="math" data-index="165" data-tex="\(B\subset X_1\)">\(B\subset X_1\)</span> would be an incorrect extra assumption.</p>
+<p><em>Solution.</em> The kernel singular hull is <span class="math" data-index="166" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Thus <span class="math" data-index="167" data-tex="\(B=[-2,2]\)">\(B=[-2,2]\)</span> and <span class="math" data-index="168" data-tex="\(d_{X_1}(K_1)=1\)">\(d_{X_1}(K_1)=1\)</span>, so <span class="math" data-index="169" data-tex="\(\delta=1\)">\(\delta=1\)</span>. The points of <span class="math" data-index="170" data-tex="\(B\)">\(B\)</span> with distance at least one from <span class="math" data-index="171" data-tex="\(X_2^c\)">\(X_2^c\)</span> are exactly <span class="math" data-index="172" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-index="173" data-tex="\(2\)">\(2\)</span>; hence <span class="math" data-index="174" data-tex="\(K_2=\{-2,2\}\)">\(K_2=\{-2,2\}\)</span>. The identity image has the same singular support as its input, so this receiver works. The hull <span class="math" data-index="175" data-tex="\(B\)">\(B\)</span> contains the entire gap <span class="math" data-index="176" data-tex="\([-1,1]\)">\([-1,1]\)</span>, outside the open domain. Its role is to give a bounded ambient set; the positive-distance condition then trims it into the domain.</p>
+<p><strong>Exercise 5 (8 points).</strong> Prove directly that a compact smooth kernel fails the real-window slow-decrease condition. Then explain the infinite-distance example without concluding invertibility.</p>
+<p><em>Solution.</em> Integration by parts gives, for every integer <span class="math" data-index="177" data-tex="\(M\)">\(M\)</span>, <span class="math" data-index="178" data-tex="\(|F_\mu(\xi)|\le C_M(1+|\xi|)^{-M}\)">\(|F_\mu(\xi)|\le C_M(1+|\xi|)^{-M}\)</span>. Fix a real logarithmic window radius constant, for example one. For large <span class="math" data-index="179" data-tex="\(q=|\xi|\)">\(q=|\xi|\)</span>, every real displacement <span class="math" data-index="180" data-tex="\(|h|&lt;\log(2+q)\)">\(|h|&lt;\log(2+q)\)</span> has <span class="math" data-index="181" data-tex="\(|\xi+h|\ge q/2\)">\(|\xi+h|\ge q/2\)</span>. Given any proposed lower-bound constant <span class="math" data-index="182" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, choose <span class="math" data-index="183" data-tex="\(M&gt;A\)">\(M&gt;A\)</span>. For sufficiently large <span class="math" data-index="184" data-tex="\(q\)">\(q\)</span>, <span class="math" data-index="185" data-tex="\(C_M(1+q/2)^{-M}&lt;(A+q)^{-A}\)">\(C_M(1+q/2)^{-M}&lt;(A+q)^{-A}\)</span>. Thus the window supremum fails that lower bound, and no <span class="math" data-index="186" data-tex="\(A\)">\(A\)</span> works. The real-window characterization proves noninvertibility. On the full real line, both complement distances are infinite independently of this decay, so the distance equality alone cannot encode invertibility. Point masses at arbitrary locations prove that compact singularity confinement still fails.</p>
+<p><strong>Exercise 6 (10 points).</strong> Prove that the nonzero distribution <span class="math" data-index="187" data-tex="\(\delta_{x_0}^{(m)}\)">\(\delta_{x_0}^{(m)}\)</span> has order exactly <span class="math" data-index="188" data-tex="\(m\)">\(m\)</span> in a neighborhood of <span class="math" data-index="189" data-tex="\(x_0\)">\(x_0\)</span>, for <span class="math" data-index="190" data-tex="\(m\ge0\)">\(m\ge0\)</span>. Show that adding a smooth function does not lower this local order when <span class="math" data-index="191" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>.</p>
+<p><em>Solution.</em> Its action is <span class="math" data-index="192" data-tex="\((-1)^m\theta^{(m)}(x_0)\)">\((-1)^m\theta^{(m)}(x_0)\)</span>, so order at most <span class="math" data-index="193" data-tex="\(m\)">\(m\)</span> is immediate. For <span class="math" data-index="194" data-tex="\(m\ge1\)">\(m\ge1\)</span>, choose a compact <span class="math" data-index="195" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-index="196" data-tex="\(\eta^{(m)}(0)=1\)">\(\eta^{(m)}(0)=1\)</span>, and test on <span class="math" data-index="197" data-tex="\(\theta_\varepsilon(x)=\varepsilon^m\eta((x-x_0)/\varepsilon)\)">\(\theta_\varepsilon(x)=\varepsilon^m\eta((x-x_0)/\varepsilon)\)</span>. All derivatives through order <span class="math" data-index="198" data-tex="\(m-1\)">\(m-1\)</span> tend uniformly to zero, while the distribution's value stays <span class="math" data-index="199" data-tex="\((-1)^m\)">\((-1)^m\)</span>. Thus no order-<span class="math" data-index="200" data-tex="\((m-1)\)">\((m-1)\)</span> estimate exists. A smooth added term has value <span class="math" data-index="201" data-tex="\(O(\varepsilon^{m+1})\)">\(O(\varepsilon^{m+1})\)</span> on these tests and does not change this contradiction. For <span class="math" data-index="202" data-tex="\(m=0\)">\(m=0\)</span>, order zero is the smallest allowed nonnegative distributional order, and the nonzero point mass attains it.</p>
+<p><strong>Exercise 7 (12 points).</strong> On <span class="math" data-index="203" data-tex="\(X_2=(0,2)\)">\(X_2=(0,2)\)</span>, set <span class="math" data-index="204" data-tex="\(x_j=2-3^{-j}\)">\(x_j=2-3^{-j}\)</span> and <span class="math" data-index="205" data-tex="\(f=\sum_{j\ge1}\delta_{x_j}^{(2j)}\)">\(f=\sum_{j\ge1}\delta_{x_j}^{(2j)}\)</span>. Prove that it is a distribution there but has no extension modulo a smooth function to <span class="math" data-index="206" data-tex="\(X_1=(-1,3)\)">\(X_1=(-1,3)\)</span>. Identify a compact set witnessing failure of singular confinement for the identity kernel.</p>
+<p><em>Solution.</em> Each compact subset of <span class="math" data-index="207" data-tex="\(X_2\)">\(X_2\)</span> has positive distance from <span class="math" data-index="208" data-tex="\(2\)">\(2\)</span> and meets only finitely many <span class="math" data-index="209" data-tex="\(x_j\)">\(x_j\)</span>. Thus the sum is locally finite. If <span class="math" data-index="210" data-tex="\(u|_{X_2}=f+g\)">\(u|_{X_2}=f+g\)</span> with <span class="math" data-index="211" data-tex="\(g\)">\(g\)</span> smooth, <span class="math" data-index="212" data-tex="\(u\)">\(u\)</span> has one order <span class="math" data-index="213" data-tex="\(N\)">\(N\)</span> on the fixed compact test support <span class="math" data-index="214" data-tex="\([1,5/2]\subset X_1\)">\([1,5/2]\subset X_1\)</span>. Choose <span class="math" data-index="215" data-tex="\(2j&gt;N\)">\(2j&gt;N\)</span>, and a small interval around <span class="math" data-index="216" data-tex="\(x_j\)">\(x_j\)</span> avoiding all other points. With <span class="math" data-index="217" data-tex="\(\eta^{(2j)}(0)=1\)">\(\eta^{(2j)}(0)=1\)</span>, the tests <span class="math" data-index="218" data-tex="\(\varepsilon^{2j}\eta((x-x_j)/\varepsilon)\)">\(\varepsilon^{2j}\eta((x-x_j)/\varepsilon)\)</span> have every derivative through order <span class="math" data-index="219" data-tex="\(N\)">\(N\)</span> tending to zero. The datum acts by <span class="math" data-index="220" data-tex="\(1\)">\(1\)</span>, and the smooth term tends to zero, contradicting the order bound. The compact image-singularity set <span class="math" data-index="221" data-tex="\(K_1=[5/3,2]\subset X_1\)">\(K_1=[5/3,2]\subset X_1\)</span> contains all <span class="math" data-index="222" data-tex="\(x_j\)">\(x_j\)</span>. The compact witnesses <span class="math" data-index="223" data-tex="\(\delta_{x_j}\)">\(\delta_{x_j}\)</span> have no uniform compact singular support bound inside <span class="math" data-index="224" data-tex="\(X_2\)">\(X_2\)</span>, since their limit point is the excluded boundary <span class="math" data-index="225" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>Exercise 8 (12 points).</strong> Explain why the locally truncated kernels in Theorem 4.1 have one common order <span class="math" data-index="226" data-tex="\(r\)">\(r\)</span>, but need not have common constants. Deduce the Fourier loss <span class="math" data-index="227" data-tex="\(H^{s_j}\to H^{s_j-r}\)">\(H^{s_j}\to H^{s_j-r}\)</span>, and explain which part of the proposed solution has one common order <span class="math" data-index="228" data-tex="\(c\)">\(c\)</span>.</p>
+<p><em>Solution.</em> On a fixed compact neighborhood of <span class="math" data-index="229" data-tex="\(\operatorname{supp}\mu\)">\(\operatorname{supp}\mu\)</span>, the kernel satisfies <span class="math" data-index="230" data-tex="\(|\mu(h)|\le C\max_{|\alpha|\le r}\sup|\partial^\alpha h|\)">\(|\mu(h)|\le C\max_{|\alpha|\le r}\sup|\partial^\alpha h|\)</span>. Multiplication by <span class="math" data-index="231" data-tex="\(\theta_j\)">\(\theta_j\)</span> replaces <span class="math" data-index="232" data-tex="\(h\)">\(h\)</span> by <span class="math" data-index="233" data-tex="\(\theta_jh\)">\(\theta_jh\)</span>. The full Leibniz sum has only derivatives of <span class="math" data-index="234" data-tex="\(h\)">\(h\)</span> through order <span class="math" data-index="235" data-tex="\(r\)">\(r\)</span>; derivatives of <span class="math" data-index="236" data-tex="\(\theta_j\)">\(\theta_j\)</span> change the constant <span class="math" data-index="237" data-tex="\(C_j\)">\(C_j\)</span> but not <span class="math" data-index="238" data-tex="\(r\)">\(r\)</span>. Cutoffs with supports shrinking towards a singular set can indeed have growing derivative constants. Applying the bound to a real exponential gives <span class="math" data-index="239" data-tex="\(|F_{\kappa_j}(\xi)|\le C_j\langle\xi\rangle^r\)">\(|F_{\kappa_j}(\xi)|\le C_j\langle\xi\rangle^r\)</span>. Fourier multiplication therefore sends <span class="math" data-index="240" data-tex="\(v_j\in H^{s_j}\)">\(v_j\in H^{s_j}\)</span> to <span class="math" data-index="241" data-tex="\(\check\kappa_j*v_j\in H^{s_j-r}\)">\(\check\kappa_j*v_j\in H^{s_j-r}\)</span>. Multiplication by the fixed smooth cutoff <span class="math" data-index="242" data-tex="\(\chi\)">\(\chi\)</span> preserves that Sobolev order. The singular image part convolved with any test on <span class="math" data-index="243" data-tex="\(Y_j\)">\(Y_j\)</span> has support in the one compact <span class="math" data-index="244" data-tex="\(\operatorname{supp}\chi+\overline Y_1\subset X_1\)">\(\operatorname{supp}\chi+\overline Y_1\subset X_1\)</span>; the distribution <span class="math" data-index="245" data-tex="\(u\)">\(u\)</span> has one order <span class="math" data-index="246" data-tex="\(c\)">\(c\)</span> on that compact test space. Smooth image parts and smooth errors may use constants depending on <span class="math" data-index="247" data-tex="\(j\)">\(j\)</span>, because they can be estimated at every real Sobolev order. Thus the necessary common bound is the fixed loss <span class="math" data-index="248" data-tex="\(c+r\)">\(c+r\)</span>.</p>
+<p><strong>Exercise 9 (10 points).</strong> Let <span class="math" data-index="249" data-tex="\(\mu=\delta_{1/4}\)">\(\mu=\delta_{1/4}\)</span>, <span class="math" data-index="250" data-tex="\(X_2=(-1,1)\)">\(X_2=(-1,1)\)</span>, <span class="math" data-index="251" data-tex="\(X_1=(-3/2,3/2)\)">\(X_1=(-3/2,3/2)\)</span>. Use translated point tests to exhibit strict failure of (E1.2) and to disprove uniform singular confinement. Compute a single swept compact containing all the image singularities.</p>
+<p><em>Solution.</em> For <span class="math" data-index="252" data-tex="\(v=\delta_0\)">\(v=\delta_0\)</span>, the input distance is one, while the image <span class="math" data-index="253" data-tex="\(\delta_{-1/4}\)">\(\delta_{-1/4}\)</span> has distance <span class="math" data-index="254" data-tex="\(5/4\)">\(5/4\)</span>. Translate by <span class="math" data-index="255" data-tex="\(s\in[0,1)\)">\(s\in[0,1)\)</span>. Each <span class="math" data-index="256" data-tex="\(v_s=\delta_s\)">\(v_s=\delta_s\)</span> lies in <span class="math" data-index="257" data-tex="\(\mathcal E&#x27;(X_2)\)">\(\mathcal E&#x27;(X_2)\)</span>, but its singular point tends to the excluded boundary <span class="math" data-index="258" data-tex="\(1\)">\(1\)</span>. Every image is <span class="math" data-index="259" data-tex="\(\delta_{s-1/4}\)">\(\delta_{s-1/4}\)</span>, with singular support in <span class="math" data-index="260" data-tex="\(K_1=[-1/4,3/4]\subset X_1\)">\(K_1=[-1/4,3/4]\subset X_1\)</span>. That compact has distance <span class="math" data-index="261" data-tex="\(3/4\)">\(3/4\)</span> from <span class="math" data-index="262" data-tex="\(X_1^c\)">\(X_1^c\)</span>. No compact <span class="math" data-index="263" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span> can contain all the points <span class="math" data-index="264" data-tex="\(s&lt;1\)">\(s&lt;1\)</span>. Compatibility still holds, since <span class="math" data-index="265" data-tex="\(X_2-\{1/4\}=(-5/4,3/4)\subset X_1\)">\(X_2-\{1/4\}=(-5/4,3/4)\subset X_1\)</span>. This example separates compatibility from the stronger boundary condition.</p>
+<p><strong>Exercise 10 (10 points).</strong> Suppose a compact <span class="math" data-index="266" data-tex="\(v\)">\(v\)</span> is singular exactly at zero and <span class="math" data-index="267" data-tex="\(\mu*v\)">\(\mu*v\)</span> is smooth. Prove that the quotient equation for a point mass in a nonempty equation domain cannot be solved, using the canonical composition law rather than assuming that the full kernels have proper ordinary sampling domains.</p>
+<p><em>Solution.</em> Let <span class="math" data-index="268" data-tex="\(x_0\in X_2\)">\(x_0\in X_2\)</span> and suppose <span class="math" data-index="269" data-tex="\(\mu_*[u]=[\delta_{x_0}]\)">\(\mu_*[u]=[\delta_{x_0}]\)</span>, where the singular sampling condition defines the map from <span class="math" data-index="270" data-tex="\(X_1\)">\(X_1\)</span> to <span class="math" data-index="271" data-tex="\(X_2\)">\(X_2\)</span>. Since <span class="math" data-index="272" data-tex="\(S_v=\{0\}\)">\(S_v=\{0\}\)</span>, <span class="math" data-index="273" data-tex="\(v_*\)">\(v_*\)</span> is an endomorphism of <span class="math" data-index="274" data-tex="\(Q(X_2)\)">\(Q(X_2)\)</span>. Composition gives <span class="math" data-index="275" data-tex="\(v_*\mu_*[u]=(\mu*v)_*[u]=0\)">\(v_*\mu_*[u]=(\mu*v)_*[u]=0\)</span>, because a smooth compact kernel induces zero. On the right, <span class="math" data-index="276" data-tex="\(v_*[\delta_{x_0}]\)">\(v_*[\delta_{x_0}]\)</span> is the class of the translate of <span class="math" data-index="277" data-tex="\(v\)">\(v\)</span>, singular at <span class="math" data-index="278" data-tex="\(x_0\)">\(x_0\)</span>, so it is nonzero. This contradiction uses local proper representatives of the kernels; their smooth tails may lie outside the ordinary sampling region. If <span class="math" data-index="279" data-tex="\(\mu\)">\(\mu\)</span> itself is smooth, its quotient map is already zero and the same point datum cannot be solved.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, “Fourier transformation of distributions,” freely readable <a href="https://web.math.ku.dk/~grubb/dist5.pdf">lecture notes</a>.</li>
+<li>Richard B. Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, freely readable <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">course materials</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+<li>The full quotient-operation, invertibility-necessity, compact-confinement and distance proofs are in the accompanying formal chapter. The examples and exercises here are original.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A smooth part of a compact convolution kernel can be ignored when an equation is considered modulo smooth functions. This gives a larger domain of definition than ordinary convolution. We construct that operation and its composition law, prove the two necessary conditions for solving every distributional datum modulo smooth functions, and express the geometric condition through distances of singular supports.</p>
+<p>Basic references are <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Melrose's differential-analysis course</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The full isolated-singularity smoothing characterization is Theorem 1.1 of <a href="AN02-L162.html">Frequency-selective singularities and smooth convolutions</a>. Theorem 1.1 of <a href="AN02-L163.html">Slow decrease and entire Fourier division</a> identifies invertibility, and Corollary 6.1 of <a href="AN02-L164.html#6-a-uniform-difference-set-bound-for-invertible-inputs">Recovering singularities from convolution profiles</a> gives the exact compact singular-hull subtraction bound.</p>
+<p>We use the Fourier norm, scalar duality and cutoff estimates in <a href="AN02-L008.html">Measuring regularity with weighted Fourier spaces</a>, and the all-order embeddings and localization in <a href="AN02-L009.html">Local regularity, sharp embeddings, and compactness</a>. Lemma 3.1 of <a href="AN02-L012.html#why-surjectivity-modulo-smooth-functions-is-necessary">Singular supports and arbitrary distribution data</a> proves that membership of every derivative in one fixed local Sobolev order implies smoothness. Its increasing-order obstruction is the starting mechanism for Section 4; we prove here the additional kernel localization and two-domain argument for general compact convolution kernels. Section 13.10 of <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies smooth cutoffs. All additional arguments are supplied below.</p>
+<p>The seminorm Hahn–Banach extension used in the final local duality step is Proposition 1.1 of <a href="AN02-L042.html#from-normed-extension-to-seminorm-bounds">Continuous functionals, test families and compact limits</a>.</p>
+<p>Throughout, <span class="math" data-index="280" data-tex="\(n\ge1\)">\(n\ge1\)</span>, all distributions may be complex, and their pairing with tests is bilinear. Write</p>
+<span class="math math-display" id="eq-1.1" data-index="281" data-tex="\[
+ \check a(\theta)=a(\theta(-\,\cdot)),\qquad
+ S_a=\operatorname{sing\,supp}a,\qquad
+ Q(X)=\mathcal D&#x27;(X)/C^\infty(X).
+ \tag{1.1}
+\]">\[
+ \check a(\theta)=a(\theta(-\,\cdot)),\qquad
+ S_a=\operatorname{sing\,supp}a,\qquad
+ Q(X)=\mathcal D&#x27;(X)/C^\infty(X).
+ \tag{1.1}
+\]</span>
+<p>Singular support is the complement of the largest open set on which the distribution agrees with a smooth function. Compact sets are allowed to be empty.</p>
+<h2 id="1-the-local-operation-on-singularity-classes">1. The local operation on singularity classes</h2>
+<p>We first record the required patching construction. Given an open cover of an open Euclidean <span class="math" data-index="282" data-tex="\(X\)">\(X\)</span>, there is a locally finite smooth partition of unity subordinate to a refinement with compact supports in cover members. To see this, choose compact exhaustion sets <span class="math" data-index="283" data-tex="\(K_j\subset\operatorname{int}K_{j+1}\)">\(K_j\subset\operatorname{int}K_{j+1}\)</span>, with their interiors covering <span class="math" data-index="284" data-tex="\(X\)">\(X\)</span>, and put <span class="math" data-index="285" data-tex="\(K_0=K_{-1}=\varnothing\)">\(K_0=K_{-1}=\varnothing\)</span>. Cover each compact annulus <span class="math" data-index="286" data-tex="\(K_j\setminus\operatorname{int}K_{j-1}\)">\(K_j\setminus\operatorname{int}K_{j-1}\)</span> by finitely many small balls whose closures lie in a member of the given cover and in <span class="math" data-index="287" data-tex="\(\operatorname{int}K_{j+1}\setminus K_{j-2}\)">\(\operatorname{int}K_{j+1}\setminus K_{j-2}\)</span>. At each point such a ball exists: the annulus misses <span class="math" data-index="288" data-tex="\(K_{j-2}\)">\(K_{j-2}\)</span> and lies in <span class="math" data-index="289" data-tex="\(\operatorname{int}K_{j+1}\)">\(\operatorname{int}K_{j+1}\)</span>. Choose smaller balls still covering the annulus and nonnegative smooth bumps supported in the first balls and positive on the smaller ones. The full family is locally finite, since a compact subset of <span class="math" data-index="290" data-tex="\(X\)">\(X\)</span> is contained in some <span class="math" data-index="291" data-tex="\(K_J\)">\(K_J\)</span>, and the supports for <span class="math" data-index="292" data-tex="\(j&gt;J+2\)">\(j&gt;J+2\)</span> miss <span class="math" data-index="293" data-tex="\(K_J\)">\(K_J\)</span>. Its sum is positive everywhere; divide the bumps by that smooth positive sum. The quotient functions give the asserted partition. The compact exhaustion is the distance-and-radius exhaustion proved in the linked foundation.</p>
+<p><strong>Lemma 1.1 (smooth errors and compact singular sets).</strong> A compact smooth function convolved with a compact distribution is smooth. For compact distributions <span class="math" data-index="294" data-tex="\(a,b\)">\(a,b\)</span>,</p>
+<span class="math math-display" id="eq-1.2" data-index="295" data-tex="\[
+ \operatorname{sing\,supp}(a*b)\subset S_a+S_b.
+ \tag{1.2}
+\]">\[
+ \operatorname{sing\,supp}(a*b)\subset S_a+S_b.
+ \tag{1.2}
+\]</span>
+<p>If a compact distribution <span class="math" data-index="296" data-tex="\(v\)">\(v\)</span> has <span class="math" data-index="297" data-tex="\(S_v\subset X\)">\(S_v\subset X\)</span>, then a cutoff <span class="math" data-index="298" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one near <span class="math" data-index="299" data-tex="\(S_v\)">\(S_v\)</span> gives</p>
+<span class="math math-display" id="eq-1.3" data-index="300" data-tex="\[
+ S_{\chi v}=S_v,\qquad v-\chi v\in C_c^\infty(\mathbb R^n).
+ \tag{1.3}
+\]">\[
+ S_{\chi v}=S_v,\qquad v-\chi v\in C_c^\infty(\mathbb R^n).
+ \tag{1.3}
+\]</span>
+<p><em>Proof.</em> Differentiate the smooth factor in the compact distributional pairing; its derivatives depend continuously and smoothly on the output variable on each compact set, and every derivative passes through the finite-order pairing. This proves the first assertion.</p>
+<p>For (1.2), choose cutoffs supported in arbitrarily small neighborhoods of <span class="math" data-index="301" data-tex="\(S_a,S_b\)">\(S_a,S_b\)</span> and equal to one near those sets. Each removed part is smooth and compact. Every convolution term containing a removed part is smooth by the first assertion. The remaining term has ordinary support inside the sum of the two chosen support neighborhoods. Let their radii decrease to zero. Compactness shows that the intersection of these closed outer sums is <span class="math" data-index="302" data-tex="\(S_a+S_b\)">\(S_a+S_b\)</span>: otherwise a sequence of approximating pairs would have a limit pair in the two compact singular sets representing a point outside their sum. If either singular set is empty, that factor is already smooth and the convolution is smooth. Finally (1.3) follows because the cutoff is one at every singular point and <span class="math" data-index="303" data-tex="\(v\)">\(v\)</span> is smooth everywhere else. The removed part is compactly supported. <span class="math" data-index="304" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2 (canonical convolution on the quotient).</strong> Let <span class="math" data-index="305" data-tex="\(a\)">\(a\)</span> be compact and let <span class="math" data-index="306" data-tex="\(X,Y\)">\(X,Y\)</span> be open with</p>
+<span class="math math-display" id="eq-1.4" data-index="307" data-tex="\[
+ Y-S_a\subset X.
+ \tag{1.4}
+\]">\[
+ Y-S_a\subset X.
+ \tag{1.4}
+\]</span>
+<p>There is a well-defined linear map</p>
+<span class="math math-display" id="eq-1.5" data-index="308" data-tex="\[
+ a_*:Q(X)\longrightarrow Q(Y).
+ \tag{1.5}
+\]">\[
+ a_*:Q(X)\longrightarrow Q(Y).
+ \tag{1.5}
+\]</span>
+<p>It agrees with ordinary convolution wherever the latter is defined. Adding a compact smooth function to <span class="math" data-index="309" data-tex="\(a\)">\(a\)</span> does not change this map.</p>
+<p><em>Proof.</em> Let <span class="math" data-index="310" data-tex="\(W\Subset Y\)">\(W\Subset Y\)</span> be open. The compact difference <span class="math" data-index="311" data-tex="\(\overline W-S_a\)">\(\overline W-S_a\)</span> lies in <span class="math" data-index="312" data-tex="\(X\)">\(X\)</span>, hence has a positive margin from its closed complement. Choose a compact neighborhood <span class="math" data-index="313" data-tex="\(L\)">\(L\)</span> of <span class="math" data-index="314" data-tex="\(S_a\)">\(S_a\)</span> sufficiently small that <span class="math" data-index="315" data-tex="\(\overline W-L\Subset X\)">\(\overline W-L\Subset X\)</span>. Choose <span class="math" data-index="316" data-tex="\(\theta\in C_c^\infty\)">\(\theta\in C_c^\infty\)</span> equal to one near <span class="math" data-index="317" data-tex="\(S_a\)">\(S_a\)</span>, supported in <span class="math" data-index="318" data-tex="\(L\)">\(L\)</span>, and set <span class="math" data-index="319" data-tex="\(a_W=\theta a\)">\(a_W=\theta a\)</span>. Then</p>
+<span class="math math-display" id="eq-1.6" data-index="320" data-tex="\[
+ a-a_W\in C_c^\infty,\qquad
+ \overline W-\operatorname{supp}a_W\Subset X.
+ \tag{1.6}
+\]">\[
+ a-a_W\in C_c^\infty,\qquad
+ \overline W-\operatorname{supp}a_W\Subset X.
+ \tag{1.6}
+\]</span>
+<p>If <span class="math" data-index="321" data-tex="\(S_a=\varnothing\)">\(S_a=\varnothing\)</span>, take <span class="math" data-index="322" data-tex="\(a_W=0\)">\(a_W=0\)</span>.</p>
+<p>For <span class="math" data-index="323" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>, multiply <span class="math" data-index="324" data-tex="\(u\)">\(u\)</span> by a fixed compact cutoff equal to one on a neighborhood of the second compact set in (1.6), extend this compact distribution by zero, and form <span class="math" data-index="325" data-tex="\(a_W*u\)">\(a_W*u\)</span> on <span class="math" data-index="326" data-tex="\(W\)">\(W\)</span>. The local restriction is independent of that cutoff: the kernel only samples the displayed compact neighborhood.</p>
+<p>Two choices of <span class="math" data-index="327" data-tex="\(a_W\)">\(a_W\)</span> differ by a compact smooth function. Their full supports both satisfy the second condition in (1.6). One input cutoff can serve their union of sampling compacts; convolution of the difference with that compact distribution is smooth. Thus their restrictions differ smoothly on <span class="math" data-index="328" data-tex="\(W\)">\(W\)</span>. The same argument on overlaps of two output neighborhoods proves consistency of the local classes. Smooth input changes give smooth output changes.</p>
+<p>Choose a locally finite partition of unity <span class="math" data-index="329" data-tex="\(\eta_j\)">\(\eta_j\)</span> on <span class="math" data-index="330" data-tex="\(Y\)">\(Y\)</span>, with compact supports inside neighborhoods <span class="math" data-index="331" data-tex="\(W_j\Subset Y\)">\(W_j\Subset Y\)</span>. If <span class="math" data-index="332" data-tex="\(g_j=a_{W_j}*u\)">\(g_j=a_{W_j}*u\)</span> there, the locally finite sum of the distributions <span class="math" data-index="333" data-tex="\(\eta_jg_j\)">\(\eta_jg_j\)</span>, extended by zero, defines <span class="math" data-index="334" data-tex="\(g\in\mathcal D&#x27;(Y)\)">\(g\in\mathcal D&#x27;(Y)\)</span>. On <span class="math" data-index="335" data-tex="\(W_i\)">\(W_i\)</span>, the difference between <span class="math" data-index="336" data-tex="\(g\)">\(g\)</span> and <span class="math" data-index="337" data-tex="\(g_i\)">\(g_i\)</span> is
+<span class="math" data-index="338" data-tex="\(\sum_j\eta_j(g_j-g_i)\)">\(\sum_j\eta_j(g_j-g_i)\)</span>, which is locally a finite sum of smooth functions. Hence <span class="math" data-index="339" data-tex="\(g\)">\(g\)</span> represents exactly the local classes just constructed. Any two global representatives with those local classes differ smoothly everywhere and therefore define the same member of <span class="math" data-index="340" data-tex="\(Q(Y)\)">\(Q(Y)\)</span>.</p>
+<p>This proves (1.5), linearity and independence of choices. The argument also permits any compact representative <span class="math" data-index="341" data-tex="\(a_W\)">\(a_W\)</span> with <span class="math" data-index="342" data-tex="\(a-a_W\)">\(a-a_W\)</span> smooth and the proper sampling condition in (1.6); it need not be produced by the particular cutoff. This observation proves invariance under adding a compact smooth kernel. When ordinary convolution is defined, it is itself such a local representative, and has the same class. <span class="math" data-index="343" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3 (composition).</strong> Suppose compact <span class="math" data-index="344" data-tex="\(a,b\)">\(a,b\)</span> and open <span class="math" data-index="345" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span> satisfy</p>
+<span class="math math-display" id="eq-1.7" data-index="346" data-tex="\[
+ Y-S_a\subset X,\qquad Z-S_b\subset Y.
+ \tag{1.7}
+\]">\[
+ Y-S_a\subset X,\qquad Z-S_b\subset Y.
+ \tag{1.7}
+\]</span>
+<p>Then the convolution kernel <span class="math" data-index="347" data-tex="\(b*a\)">\(b*a\)</span> defines a map from <span class="math" data-index="348" data-tex="\(Q(X)\)">\(Q(X)\)</span> to <span class="math" data-index="349" data-tex="\(Q(Z)\)">\(Q(Z)\)</span>, and</p>
+<span class="math math-display" id="eq-1.8" data-index="350" data-tex="\[
+ b_*a_*=(b*a)_*.
+ \tag{1.8}
+\]">\[
+ b_*a_*=(b*a)_*.
+ \tag{1.8}
+\]</span>
+<p>In particular a smooth compact product gives the zero composition.</p>
+<p><em>Proof.</em> Lemma 1.1 and (1.7) give
+<span class="math" data-index="351" data-tex="\(Z-S_{b*a}\subset Z-(S_b+S_a)\subset X\)">\(Z-S_{b*a}\subset Z-(S_b+S_a)\subset X\)</span>, so the product map is defined. On a fixed <span class="math" data-index="352" data-tex="\(W\Subset Z\)">\(W\Subset Z\)</span>, first choose a compact representative <span class="math" data-index="353" data-tex="\(b_W\)">\(b_W\)</span> of <span class="math" data-index="354" data-tex="\(b\)">\(b\)</span>, with support in a sufficiently small neighborhood of <span class="math" data-index="355" data-tex="\(S_b\)">\(S_b\)</span>, so that <span class="math" data-index="356" data-tex="\(\overline W-\operatorname{supp}b_W\Subset Y\)">\(\overline W-\operatorname{supp}b_W\Subset Y\)</span>. Next choose a compact representative <span class="math" data-index="357" data-tex="\(a_W\)">\(a_W\)</span> of <span class="math" data-index="358" data-tex="\(a\)">\(a\)</span>, close enough to <span class="math" data-index="359" data-tex="\(S_a\)">\(S_a\)</span>, so that</p>
+<span class="math math-display" id="eq-1.9" data-index="360" data-tex="\[
+ \overline W-\operatorname{supp}b_W-\operatorname{supp}a_W
+                    \Subset X.
+ \tag{1.9}
+\]">\[
+ \overline W-\operatorname{supp}b_W-\operatorname{supp}a_W
+                    \Subset X.
+ \tag{1.9}
+\]</span>
+<p>An input cutoff equal to one near this compact makes all the convolutions ordinary compact convolutions on <span class="math" data-index="361" data-tex="\(W\)">\(W\)</span>. Their associativity is the equality of the two iterated compact distributional pairings applied to the same smooth test. The factor cutoffs make every test compact on the required sampling neighborhoods, so the pairing can be taken in either order.</p>
+<p>Furthermore <span class="math" data-index="362" data-tex="\(b*a-b_W*a_W\)">\(b*a-b_W*a_W\)</span> is smooth and compact: expand the difference into products containing <span class="math" data-index="363" data-tex="\(a-a_W\)">\(a-a_W\)</span> or <span class="math" data-index="364" data-tex="\(b-b_W\)">\(b-b_W\)</span> and apply Lemma 1.1. Thus <span class="math" data-index="365" data-tex="\(b_W*a_W\)">\(b_W*a_W\)</span> represents the product class on <span class="math" data-index="366" data-tex="\(W\)">\(W\)</span>. The local composition agrees with it, and Theorem 1.2 patches these equalities. If either singular set is empty, the corresponding map is zero and the same conclusion follows directly. <span class="math" data-index="367" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-isolated-singularities-obstruct-noninvertible-kernels">2. Isolated singularities obstruct noninvertible kernels</h2>
+<p>Fix a compact kernel <span class="math" data-index="368" data-tex="\(\mu\)">\(\mu\)</span>, nonempty open <span class="math" data-index="369" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span>, and assume</p>
+<span class="math math-display" id="eq-2.1" data-index="370" data-tex="\[
+ X_2-S_\mu\subset X_1.
+ \tag{2.1}
+\]">\[
+ X_2-S_\mu\subset X_1.
+ \tag{2.1}
+\]</span>
+<p>The map <span class="math" data-index="371" data-tex="\(\mu_*:Q(X_1)\to Q(X_2)\)">\(\mu_*:Q(X_1)\to Q(X_2)\)</span> is now defined. Invertibility always means the exact equivalent slow-decrease and entire-division conditions in the linked preceding theorem.</p>
+<p><strong>Theorem 2.1 (invertibility is necessary).</strong> If <span class="math" data-index="372" data-tex="\(\mu_*\)">\(\mu_*\)</span> is surjective, then <span class="math" data-index="373" data-tex="\(\mu\)">\(\mu\)</span> is invertible.</p>
+<p><em>Proof.</em> Suppose <span class="math" data-index="374" data-tex="\(\mu\)">\(\mu\)</span> is not invertible. The slow-decrease theorem gives a collapsed profile; the isolated-singularity smoothing theorem supplies a compact continuous <span class="math" data-index="375" data-tex="\(v\)">\(v\)</span>, singular exactly at zero, with</p>
+<span class="math math-display" id="eq-2.2" data-index="376" data-tex="\[
+ \mu*v\in C_c^\infty.
+ \tag{2.2}
+\]">\[
+ \mu*v\in C_c^\infty.
+ \tag{2.2}
+\]</span>
+<p>The factor <span class="math" data-index="377" data-tex="\(v\)">\(v\)</span> can have arbitrarily small support. Since <span class="math" data-index="378" data-tex="\(S_v=\{0\}\)">\(S_v=\{0\}\)</span>, its quotient operation is an endomorphism of <span class="math" data-index="379" data-tex="\(Q(X_2)\)">\(Q(X_2)\)</span>, regardless of its full support.</p>
+<p>Choose <span class="math" data-index="380" data-tex="\(x_0\in X_2\)">\(x_0\in X_2\)</span>. Surjectivity gives <span class="math" data-index="381" data-tex="\(\mu_*[u]=[\delta_{x_0}]\)">\(\mu_*[u]=[\delta_{x_0}]\)</span>. Apply <span class="math" data-index="382" data-tex="\(v_*\)">\(v_*\)</span> and Lemma 1.3. The left side is zero because <span class="math" data-index="383" data-tex="\(v*\mu\)">\(v*\mu\)</span> is smooth. The right side is the class of the translate of <span class="math" data-index="384" data-tex="\(v\)">\(v\)</span> by <span class="math" data-index="385" data-tex="\(x_0\)">\(x_0\)</span>, which has singular support <span class="math" data-index="386" data-tex="\(\{x_0\}\)">\(\{x_0\}\)</span> and is therefore nonzero in <span class="math" data-index="387" data-tex="\(Q(X_2)\)">\(Q(X_2)\)</span>. To verify this local description, use any sufficiently small output neighborhood of <span class="math" data-index="388" data-tex="\(x_0\)">\(x_0\)</span> and the ordinary compact convolution <span class="math" data-index="389" data-tex="\(v*\delta_{x_0}\)">\(v*\delta_{x_0}\)</span>; its restriction has precisely that singularity. This contradiction proves invertibility. Zero and smooth kernels are included: their quotient maps are zero, whereas a point mass defines a nonzero target class. <span class="math" data-index="390" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-compact-singularity-condition-and-its-distance-form">3. The compact singularity condition and its distance form</h2>
+<p>For each compact <span class="math" data-index="391" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>, consider the condition that there be compact <span class="math" data-index="392" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span> with</p>
+<span class="math math-display" id="eq-3.1" data-index="393" data-tex="\[
+ \begin{gathered}
+ v\in\mathcal E&#x27;(X_2),\qquad
+ \operatorname{sing\,supp}(\check\mu*v)\subset K_1\\
+ \Longrightarrow\quad S_v\subset K_2.
+ \end{gathered}
+ \tag{3.1}
+\]">\[
+ \begin{gathered}
+ v\in\mathcal E&#x27;(X_2),\qquad
+ \operatorname{sing\,supp}(\check\mu*v)\subset K_1\\
+ \Longrightarrow\quad S_v\subset K_2.
+ \end{gathered}
+ \tag{3.1}
+\]</span>
+<p>This controls the singular support of the input, not its ordinary support.</p>
+<p><strong>Proposition 3.1.</strong> Condition (3.1) for every compact <span class="math" data-index="394" data-tex="\(K_1\)">\(K_1\)</span> forces invertibility of <span class="math" data-index="395" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-index="396" data-tex="\(\mu\)">\(\mu\)</span> is not invertible, neither is <span class="math" data-index="397" data-tex="\(\check\mu\)">\(\check\mu\)</span>: reflection replaces each real center and complex argument by its negative in the slow-decrease window bound, and reflection is its own inverse. For any <span class="math" data-index="398" data-tex="\(x\in X_2\)">\(x\in X_2\)</span>, apply the isolated-singularity theorem to <span class="math" data-index="399" data-tex="\(\check\mu\)">\(\check\mu\)</span>, with a support ball compactly contained in <span class="math" data-index="400" data-tex="\(X_2\)">\(X_2\)</span>, to find <span class="math" data-index="401" data-tex="\(v_x\in\mathcal E&#x27;(X_2)\)">\(v_x\in\mathcal E&#x27;(X_2)\)</span> singular exactly at <span class="math" data-index="402" data-tex="\(x\)">\(x\)</span> with <span class="math" data-index="403" data-tex="\(\check\mu*v_x\)">\(\check\mu*v_x\)</span> smooth. Apply (3.1) with <span class="math" data-index="404" data-tex="\(K_1=\varnothing\)">\(K_1=\varnothing\)</span>. It would place every <span class="math" data-index="405" data-tex="\(x\in X_2\)">\(x\in X_2\)</span> in one compact subset of <span class="math" data-index="406" data-tex="\(X_2\)">\(X_2\)</span>, which is impossible for a nonempty open set in positive dimension. Such an open set cannot itself be a compact subset of itself: if it were compact, it would be closed as well, and the connected real space would make it either empty or all of <span class="math" data-index="407" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>; the latter is not compact. <span class="math" data-index="408" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-index="409" data-tex="\(d_X(A)=\inf_{x\in A}\operatorname{dist}(x,\mathbb R^n\setminus X)\)">\(d_X(A)=\inf_{x\in A}\operatorname{dist}(x,\mathbb R^n\setminus X)\)</span>, with <span class="math" data-index="410" data-tex="\(d_X(\varnothing)=\infty\)">\(d_X(\varnothing)=\infty\)</span>, and with distance to an empty complement equal to infinity.</p>
+<p><strong>Theorem 3.2 (singular-support distance criterion).</strong> Assume <span class="math" data-index="411" data-tex="\(\mu\)">\(\mu\)</span> is invertible. Under (2.1), condition (3.1) for every compact <span class="math" data-index="412" data-tex="\(K_1\)">\(K_1\)</span> is equivalent to</p>
+<span class="math math-display" id="eq-3.2" data-index="413" data-tex="\[
+ d_{X_2}(S_v)
+  =d_{X_1}\bigl(\operatorname{sing\,supp}(\check\mu*v)\bigr)
+                  \qquad(v\in\mathcal E&#x27;(X_2)).
+ \tag{3.2}
+\]">\[
+ d_{X_2}(S_v)
+  =d_{X_1}\bigl(\operatorname{sing\,supp}(\check\mu*v)\bigr)
+                  \qquad(v\in\mathcal E&#x27;(X_2)).
+ \tag{3.2}
+\]</span>
+<p><em>Proof of the forward distance inequality.</em> Put <span class="math" data-index="414" data-tex="\(S=S_\mu\)">\(S=S_\mu\)</span>, <span class="math" data-index="415" data-tex="\(T=S_v\)">\(T=S_v\)</span>, and <span class="math" data-index="416" data-tex="\(W=\operatorname{sing\,supp}(\check\mu*v)\)">\(W=\operatorname{sing\,supp}(\check\mu*v)\)</span>. Lemma 1.1 gives <span class="math" data-index="417" data-tex="\(W\subset T-S\)">\(W\subset T-S\)</span>. If <span class="math" data-index="418" data-tex="\(r&lt;d_{X_2}(T)\)">\(r&lt;d_{X_2}(T)\)</span>, every closed <span class="math" data-index="419" data-tex="\(r\)">\(r\)</span>-ball about a point of <span class="math" data-index="420" data-tex="\(T\)">\(T\)</span> lies in <span class="math" data-index="421" data-tex="\(X_2\)">\(X_2\)</span>. Subtract any point of <span class="math" data-index="422" data-tex="\(S\)">\(S\)</span> and use (2.1): its corresponding ball lies in <span class="math" data-index="423" data-tex="\(X_1\)">\(X_1\)</span>. Therefore</p>
+<span class="math math-display" id="eq-3.3" data-index="424" data-tex="\[
+ d_{X_1}(W)\ge d_{X_2}(T).
+ \tag{3.3}
+\]">\[
+ d_{X_1}(W)\ge d_{X_2}(T).
+ \tag{3.3}
+\]</span>
+<p>If the right side is infinite, use every finite <span class="math" data-index="425" data-tex="\(r\)">\(r\)</span>. Empty <span class="math" data-index="426" data-tex="\(T\)">\(T\)</span> gives smooth <span class="math" data-index="427" data-tex="\(v\)">\(v\)</span>, hence empty <span class="math" data-index="428" data-tex="\(W\)">\(W\)</span>; invertibility conversely makes empty <span class="math" data-index="429" data-tex="\(W\)">\(W\)</span> imply empty <span class="math" data-index="430" data-tex="\(T\)">\(T\)</span>, by the smoothing characterization.</p>
+<p><em>Proof that confinement gives equality.</em> Condition (3.1) also applies to every global compact distribution whose singular support lies inside <span class="math" data-index="431" data-tex="\(X_2\)">\(X_2\)</span>, even if its ordinary support does not. Indeed apply the cutoff in (1.3) to that singular support. It preserves both singular sets in (3.2), because the removed smooth compact part has smooth convolution. The cutoff version lies in <span class="math" data-index="432" data-tex="\(\mathcal E&#x27;(X_2)\)">\(\mathcal E&#x27;(X_2)\)</span>.</p>
+<p>If (3.3) is strict, its smaller side is finite and <span class="math" data-index="433" data-tex="\(T\)">\(T\)</span> is nonempty. Choose a nearest pair <span class="math" data-index="434" data-tex="\(x_0\in T\)">\(x_0\in T\)</span>, <span class="math" data-index="435" data-tex="\(y_0\notin X_2\)">\(y_0\notin X_2\)</span>. It exists by compactness of <span class="math" data-index="436" data-tex="\(T\)">\(T\)</span> and closedness of the nonempty complement. Set</p>
+<span class="math math-display" id="eq-3.4" data-index="437" data-tex="\[
+ t=|y_0-x_0|=d_{X_2}(T)&gt;0,\qquad
+ e=(y_0-x_0)/t.
+ \tag{3.4}
+\]">\[
+ t=|y_0-x_0|=d_{X_2}(T)&gt;0,\qquad
+ e=(y_0-x_0)/t.
+ \tag{3.4}
+\]</span>
+<p>For every <span class="math" data-index="438" data-tex="\(0\le s&lt;t\)">\(0\le s&lt;t\)</span>, <span class="math" data-index="439" data-tex="\(T+se\subset X_2\)">\(T+se\subset X_2\)</span>. Every image singular set is <span class="math" data-index="440" data-tex="\(W+se\)">\(W+se\)</span>, since translation commutes with convolution. They all lie in the fixed swept compact</p>
+<span class="math math-display" id="eq-3.5" data-index="441" data-tex="\[
+ K_1=W+[0,t]e\Subset X_1:
+ \quad \operatorname{dist}(K_1,X_1^c)
+                  \ge d_{X_1}(W)-t&gt;0.
+ \tag{3.5}
+\]">\[
+ K_1=W+[0,t]e\Subset X_1:
+ \quad \operatorname{dist}(K_1,X_1^c)
+                  \ge d_{X_1}(W)-t&gt;0.
+ \tag{3.5}
+\]</span>
+<p>The extended form of (3.1) confines every <span class="math" data-index="442" data-tex="\(T+se\)">\(T+se\)</span>, <span class="math" data-index="443" data-tex="\(s&lt;t\)">\(s&lt;t\)</span>, to one compact <span class="math" data-index="444" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span>. But <span class="math" data-index="445" data-tex="\(x_0+se\to y_0\notin X_2\)">\(x_0+se\to y_0\notin X_2\)</span>, contradicting that fixed compact bound. Infinite <span class="math" data-index="446" data-tex="\(d_{X_1}(W)\)">\(d_{X_1}(W)\)</span> satisfies the same swept-compact assertion by finite-ball containment. Thus equality holds.</p>
+<p><em>Proof that equality gives confinement.</em> An invertible compact kernel is nonsmooth, so <span class="math" data-index="447" data-tex="\(S\)">\(S\)</span> is nonempty. The exact singular-hull subtraction bound, applied to <span class="math" data-index="448" data-tex="\(\check\mu\)">\(\check\mu\)</span>, gives</p>
+<span class="math math-display" id="eq-3.6" data-index="449" data-tex="\[
+ \operatorname{ch}T
+   \subset \operatorname{ch}W+\operatorname{ch}S.
+ \tag{3.6}
+\]">\[
+ \operatorname{ch}T
+   \subset \operatorname{ch}W+\operatorname{ch}S.
+ \tag{3.6}
+\]</span>
+<p>The sign follows from <span class="math" data-index="450" data-tex="\(\operatorname{ch}S_{\check\mu}=-\operatorname{ch}S\)">\(\operatorname{ch}S_{\check\mu}=-\operatorname{ch}S\)</span>; the subtraction bound uses convex singular hulls. If <span class="math" data-index="451" data-tex="\(W=\varnothing\)">\(W=\varnothing\)</span>, then <span class="math" data-index="452" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>, and confinement is immediate.</p>
+<p>For a nonempty compact <span class="math" data-index="453" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>, put</p>
+<span class="math math-display" id="eq-3.7" data-index="454" data-tex="\[
+ B=\operatorname{ch}K_1+\operatorname{ch}S,\qquad
+ \delta=\min\{1,d_{X_1}(K_1)\}&gt;0,\qquad
+ K_2=\{x\in B:\operatorname{dist}(x,X_2^c)\ge\delta\}.
+ \tag{3.7}
+\]">\[
+ B=\operatorname{ch}K_1+\operatorname{ch}S,\qquad
+ \delta=\min\{1,d_{X_1}(K_1)\}&gt;0,\qquad
+ K_2=\{x\in B:\operatorname{dist}(x,X_2^c)\ge\delta\}.
+ \tag{3.7}
+\]</span>
+<p>The hulls and their sum are compact. The final set is closed in <span class="math" data-index="455" data-tex="\(B\)">\(B\)</span>, hence compact, and its positive distance condition places it in <span class="math" data-index="456" data-tex="\(X_2\)">\(X_2\)</span>. For empty <span class="math" data-index="457" data-tex="\(X_2^c\)">\(X_2^c\)</span>, the distance condition is automatic. Equations (3.2), (3.6) give <span class="math" data-index="458" data-tex="\(T\subset K_2\)">\(T\subset K_2\)</span> whenever <span class="math" data-index="459" data-tex="\(W\subset K_1\)">\(W\subset K_1\)</span>. If <span class="math" data-index="460" data-tex="\(K_1=\varnothing\)">\(K_1=\varnothing\)</span>, take <span class="math" data-index="461" data-tex="\(K_2=\varnothing\)">\(K_2=\varnothing\)</span>. The hull of <span class="math" data-index="462" data-tex="\(K_1\)">\(K_1\)</span> need not lie in nonconvex <span class="math" data-index="463" data-tex="\(X_1\)">\(X_1\)</span>; it is used only for boundedness. This proves (3.1) in all cases. <span class="math" data-index="464" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 3.3.</strong> For an invertible compact kernel and a pair satisfying (2.1), call the pair <strong>convex for singular supports</strong> when it satisfies the equivalent confinement and distance conditions of Theorem 3.2. One can instead use confinement as the defining condition for arbitrary kernels; Proposition 3.1 then supplies invertibility.</p>
+<p>The invertibility condition must be retained when using only the distance identity. For a smooth kernel with <span class="math" data-index="465" data-tex="\(X_2=\mathbb R^n\)">\(X_2=\mathbb R^n\)</span>, both distances in (3.2) are infinite for every compact input, but the image has no singularities and there is no uniform confinement of the input singularities. The empty-support convention does not make that kernel invertible.</p>
+<h2 id="4-why-solving-every-singularity-class-forces-confinement">4. Why solving every singularity class forces confinement</h2>
+<p>The proof must accommodate distributions of orders increasing along the equation domain. A single fixed negative Sobolev order for all input data would miss this obstruction.</p>
+<p>Use <span class="math" data-index="466" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and <span class="math" data-index="467" data-tex="\(H^s=\{v:\langle\xi\rangle^sF_v(\xi)\in L^2\}\)">\(H^s=\{v:\langle\xi\rangle^sF_v(\xi)\in L^2\}\)</span>, with the preceding Fourier normalization. Compact distributions belong to <span class="math" data-index="468" data-tex="\(H^s\)">\(H^s\)</span> for some sufficiently negative <span class="math" data-index="469" data-tex="\(s\)">\(s\)</span>, because their transforms have polynomial growth. We need two elementary estimates. If <span class="math" data-index="470" data-tex="\(v\in H^s\)">\(v\in H^s\)</span> is compact and <span class="math" data-index="471" data-tex="\(\varphi\)">\(\varphi\)</span> is a compact smooth test, Fourier inversion and Cauchy–Schwarz give</p>
+<span class="math math-display" id="eq-4.1" data-index="472" data-tex="\[
+ \sup_x|D^\beta(v*\varphi)(x)|
+   \le C_\beta\|v\|_{H^s}
+                    \|\varphi\|_{H^{|\beta|-s}}.
+ \tag{4.1}
+\]">\[
+ \sup_x|D^\beta(v*\varphi)(x)|
+   \le C_\beta\|v\|_{H^s}
+                    \|\varphi\|_{H^{|\beta|-s}}.
+ \tag{4.1}
+\]</span>
+<p>Indeed its Fourier integrand is <span class="math" data-index="473" data-tex="\(\xi^\beta F_vF_\varphi\)">\(\xi^\beta F_vF_\varphi\)</span>, and <span class="math" data-index="474" data-tex="\(|\xi^\beta|\le\langle\xi\rangle^{|\beta|}\)">\(|\xi^\beta|\le\langle\xi\rangle^{|\beta|}\)</span>; the two weighted factors are square integrable.</p>
+<p>If <span class="math" data-index="475" data-tex="\(k\)">\(k\)</span> is a compact smooth function, every derivative of <span class="math" data-index="476" data-tex="\(k*\varphi\)">\(k*\varphi\)</span> has a bound by <span class="math" data-index="477" data-tex="\(C_{k,\beta,r}\|\varphi\|_{H^r}\)">\(C_{k,\beta,r}\|\varphi\|_{H^r}\)</span> for every real <span class="math" data-index="478" data-tex="\(r\)">\(r\)</span>. Integration by parts makes <span class="math" data-index="479" data-tex="\(F_k\)">\(F_k\)</span> decay faster than every power, so the same Fourier Cauchy–Schwarz argument applies with arbitrary <span class="math" data-index="480" data-tex="\(r\)">\(r\)</span>. Both statements remain true for reflected tests and translated evaluations.</p>
+<p><strong>Theorem 4.1 (compact singularity confinement is necessary).</strong> Surjectivity of <span class="math" data-index="481" data-tex="\(\mu_*:Q(X_1)\to Q(X_2)\)">\(\mu_*:Q(X_1)\to Q(X_2)\)</span> implies (3.1) for every compact <span class="math" data-index="482" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>.</p>
+<p><em>Proof.</em> Suppose (3.1) fails for one compact <span class="math" data-index="483" data-tex="\(K_1\)">\(K_1\)</span>. Take a compact exhaustion <span class="math" data-index="484" data-tex="\(L_j\)">\(L_j\)</span> of <span class="math" data-index="485" data-tex="\(X_2\)">\(X_2\)</span>. Inductively choose <span class="math" data-index="486" data-tex="\(v_j\in\mathcal E&#x27;(X_2)\)">\(v_j\in\mathcal E&#x27;(X_2)\)</span> and <span class="math" data-index="487" data-tex="\(x_j\in S_{v_j}\)">\(x_j\in S_{v_j}\)</span> such that</p>
+<span class="math math-display" id="eq-4.2" data-index="488" data-tex="\[
+ \operatorname{sing\,supp}(\check\mu*v_j)\subset K_1,
+ \qquad
+ x_j\notin L_j\cup\bigcup_{\ell&lt;j}\operatorname{supp}v_\ell.
+ \tag{4.2}
+\]">\[
+ \operatorname{sing\,supp}(\check\mu*v_j)\subset K_1,
+ \qquad
+ x_j\notin L_j\cup\bigcup_{\ell&lt;j}\operatorname{supp}v_\ell.
+ \tag{4.2}
+\]</span>
+<p>At each stage the forbidden union is compact in <span class="math" data-index="489" data-tex="\(X_2\)">\(X_2\)</span>, so failure of uniform confinement permits this choice. The points <span class="math" data-index="490" data-tex="\(x_j\)">\(x_j\)</span> are locally finite in <span class="math" data-index="491" data-tex="\(X_2\)">\(X_2\)</span>.</p>
+<p>Choose a fixed cutoff <span class="math" data-index="492" data-tex="\(\chi\in C_c^\infty(X_1)\)">\(\chi\in C_c^\infty(X_1)\)</span> equal to one near <span class="math" data-index="493" data-tex="\(K_1\)">\(K_1\)</span>. Choose decreasing symmetric bounded neighborhoods <span class="math" data-index="494" data-tex="\(Y_j\)">\(Y_j\)</span> of zero with</p>
+<span class="math math-display" id="eq-4.3" data-index="495" data-tex="\[
+ \begin{gathered}
+ \operatorname{supp}\chi+\overline Y_1\Subset X_1,\qquad
+ \operatorname{supp}v_j+\overline Y_j\Subset X_2,\\
+ x_\ell\notin\operatorname{supp}v_j+\overline Y_j
+                        \quad(\ell&gt;j).
+ \end{gathered}
+ \tag{4.3}
+\]">\[
+ \begin{gathered}
+ \operatorname{supp}\chi+\overline Y_1\Subset X_1,\qquad
+ \operatorname{supp}v_j+\overline Y_j\Subset X_2,\\
+ x_\ell\notin\operatorname{supp}v_j+\overline Y_j
+                        \quad(\ell&gt;j).
+ \end{gathered}
+ \tag{4.3}
+\]</span>
+<p>For empty <span class="math" data-index="496" data-tex="\(K_1\)">\(K_1\)</span> take <span class="math" data-index="497" data-tex="\(\chi=0\)">\(\chi=0\)</span>. The last requirement is possible because a locally finite set of future points, disjoint from the compact support, has positive distance from that support; its intersection with a compact neighborhood is finite.</p>
+<p>After shrinking <span class="math" data-index="498" data-tex="\(Y_j\)">\(Y_j\)</span> further, choose a cutoff <span class="math" data-index="499" data-tex="\(\theta_j\)">\(\theta_j\)</span> equal to one near <span class="math" data-index="500" data-tex="\(S_\mu\)">\(S_\mu\)</span> and set <span class="math" data-index="501" data-tex="\(\kappa_j=\theta_j\mu\)">\(\kappa_j=\theta_j\mu\)</span>, with its support close enough to <span class="math" data-index="502" data-tex="\(S_\mu\)">\(S_\mu\)</span> that</p>
+<span class="math math-display" id="eq-4.4" data-index="503" data-tex="\[
+ (\operatorname{supp}v_j+\overline Y_j)
+                         -\operatorname{supp}\kappa_j
+                              \Subset X_1.
+ \tag{4.4}
+\]">\[
+ (\operatorname{supp}v_j+\overline Y_j)
+                         -\operatorname{supp}\kappa_j
+                              \Subset X_1.
+ \tag{4.4}
+\]</span>
+<p>This uses the compact singular sampling set and (2.1), as in Theorem 1.2. When <span class="math" data-index="504" data-tex="\(S_\mu=\varnothing\)">\(S_\mu=\varnothing\)</span>, take <span class="math" data-index="505" data-tex="\(\kappa_j=0\)">\(\kappa_j=0\)</span>. The kernel differences <span class="math" data-index="506" data-tex="\(\mu-\kappa_j\)">\(\mu-\kappa_j\)</span> are smooth and compact. A single order <span class="math" data-index="507" data-tex="\(r\ge0\)">\(r\ge0\)</span> bounds every <span class="math" data-index="508" data-tex="\(\kappa_j\)">\(\kappa_j\)</span> as a compact distribution: multiplying <span class="math" data-index="509" data-tex="\(\mu\)">\(\mu\)</span>, of fixed finite order <span class="math" data-index="510" data-tex="\(r\)">\(r\)</span>, by a smooth cutoff changes its constants but not that order. Consequently</p>
+<span class="math math-display" id="eq-4.5" data-index="511" data-tex="\[
+ |F_{\kappa_j}(\xi)|\le C_j\langle\xi\rangle^r
+ \tag{4.5}
+\]">\[
+ |F_{\kappa_j}(\xi)|\le C_j\langle\xi\rangle^r
+ \tag{4.5}
+\]</span>
+<p>with possibly different constants. Every compact kernel has such a global finite-order bound by the test topology on one compact neighborhood of its support.</p>
+<p>Choose <span class="math" data-index="512" data-tex="\(s_j\)">\(s_j\)</span> with <span class="math" data-index="513" data-tex="\(v_j\in H^{s_j}\)">\(v_j\in H^{s_j}\)</span>, and set <span class="math" data-index="514" data-tex="\(a_0=0\)">\(a_0=0\)</span>. The all-derivative Sobolev smoothness lemma supplies a multiindex <span class="math" data-index="515" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> for which</p>
+<span class="math math-display" id="eq-4.6" data-index="516" data-tex="\[
+ D^{\alpha_j}v_j\notin
+       H^{s_j-a_{j-1}}_{\rm loc}(x_j+Y_j),
+ \qquad a_j=|\alpha_j|&gt;a_{j-1}.
+ \tag{4.6}
+\]">\[
+ D^{\alpha_j}v_j\notin
+       H^{s_j-a_{j-1}}_{\rm loc}(x_j+Y_j),
+ \qquad a_j=|\alpha_j|&gt;a_{j-1}.
+ \tag{4.6}
+\]</span>
+<p>If every derivative belonged to that same local space, the lemma would make <span class="math" data-index="517" data-tex="\(v_j\)">\(v_j\)</span> smooth near its singular point. All derivatives of order at most <span class="math" data-index="518" data-tex="\(a_{j-1}\)">\(a_{j-1}\)</span> do belong there by the global Fourier bound; this proves the strict inequality.</p>
+<p>The locally finite sum</p>
+<span class="math math-display" id="eq-4.7" data-index="519" data-tex="\[
+ f=\sum_{j\ge1}(-D)^{\alpha_j}\delta_{x_j}
+                       \in\mathcal D&#x27;(X_2)
+ \tag{4.7}
+\]">\[
+ f=\sum_{j\ge1}(-D)^{\alpha_j}\delta_{x_j}
+                       \in\mathcal D&#x27;(X_2)
+ \tag{4.7}
+\]</span>
+<p>is therefore well-defined: on each compact test support only finitely many summands act. Assume surjectivity for its class and choose <span class="math" data-index="520" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span>. On a neighborhood of <span class="math" data-index="521" data-tex="\(\operatorname{supp}v_j+\overline Y_j\)">\(\operatorname{supp}v_j+\overline Y_j\)</span>, the actual local representative <span class="math" data-index="522" data-tex="\(\kappa_j*u\)">\(\kappa_j*u\)</span> is defined and has</p>
+<span class="math math-display" id="eq-4.8" data-index="523" data-tex="\[
+ \kappa_j*u=f+g_j
+ \tag{4.8}
+\]">\[
+ \kappa_j*u=f+g_j
+ \tag{4.8}
+\]</span>
+<p>for a smooth <span class="math" data-index="524" data-tex="\(g_j\)">\(g_j\)</span> there, by Theorem 1.2. The smooth error may depend on <span class="math" data-index="525" data-tex="\(j\)">\(j\)</span>; no uniform bound on these errors is used.</p>
+<p>Put <span class="math" data-index="526" data-tex="\(A_j=\check\kappa_j*v_j\)">\(A_j=\check\kappa_j*v_j\)</span>. It is compactly supported in <span class="math" data-index="527" data-tex="\(X_1\)">\(X_1\)</span> by (4.4), and its singular support lies in <span class="math" data-index="528" data-tex="\(K_1\)">\(K_1\)</span>, because its difference from <span class="math" data-index="529" data-tex="\(\check\mu*v_j\)">\(\check\mu*v_j\)</span> is smooth. Test (4.8) on <span class="math" data-index="530" data-tex="\(v_j*\varphi\)">\(v_j*\varphi\)</span>, for <span class="math" data-index="531" data-tex="\(\varphi\in C_c^\infty(Y_j)\)">\(\varphi\in C_c^\infty(Y_j)\)</span>. This is a smooth compact test in <span class="math" data-index="532" data-tex="\(X_2\)">\(X_2\)</span>. The bilinear convolution transpose and (4.3) give</p>
+<span class="math math-display" id="eq-4.9" data-index="533" data-tex="\[
+ \begin{aligned}
+ (D^{\alpha_j}v_j*\varphi)(x_j)
+ &amp;=u(A_j*\varphi)-g_j(v_j*\varphi)\\
+ &amp;\quad-\sum_{\ell&lt;j}
+       (D^{\alpha_\ell}v_j*\varphi)(x_\ell).
+ \end{aligned}
+ \tag{4.9}
+\]">\[
+ \begin{aligned}
+ (D^{\alpha_j}v_j*\varphi)(x_j)
+ &amp;=u(A_j*\varphi)-g_j(v_j*\varphi)\\
+ &amp;\quad-\sum_{\ell&lt;j}
+       (D^{\alpha_\ell}v_j*\varphi)(x_\ell).
+ \end{aligned}
+ \tag{4.9}
+\]</span>
+<p>Future terms vanish. All pairings here are ordinary local pairings, with their full supports inside the relevant domains by (4.3), (4.4). The truncated kernels justify this identity even when ordinary convolution with the full <span class="math" data-index="534" data-tex="\(\mu\)">\(\mu\)</span> would not be defined.</p>
+<p>The finite sum in (4.9) is bounded by
+<span class="math" data-index="535" data-tex="\(C_j\|\varphi\|_{H^{a_{j-1}-s_j}}\)">\(C_j\|\varphi\|_{H^{a_{j-1}-s_j}}\)</span>, by (4.1). The smooth-error term has a bound by <span class="math" data-index="536" data-tex="\(C_{j,t}\|\varphi\|_{H^t}\)">\(C_{j,t}\|\varphi\|_{H^t}\)</span> for every real <span class="math" data-index="537" data-tex="\(t\)">\(t\)</span>: insert a compact smooth cutoff of <span class="math" data-index="538" data-tex="\(g_j\)">\(g_j\)</span> equal to it near the sampling support, move the compact convolution onto that smooth test, and use Fourier duality. Its resulting test in the <span class="math" data-index="539" data-tex="\(\varphi\)">\(\varphi\)</span> variable is smooth and compact.</p>
+<p>Split the image as</p>
+<span class="math math-display" id="eq-4.10" data-index="540" data-tex="\[
+ A_j=A_j&#x27;+A_j&#x27;&#x27;,\qquad A_j&#x27;=\chi A_j,\qquad
+                 A_j&#x27;&#x27;=(1-\chi)A_j.
+ \tag{4.10}
+\]">\[
+ A_j=A_j&#x27;+A_j&#x27;&#x27;,\qquad A_j&#x27;=\chi A_j,\qquad
+                 A_j&#x27;&#x27;=(1-\chi)A_j.
+ \tag{4.10}
+\]</span>
+<p>The second part is smooth and compact, since all image singularities lie where <span class="math" data-index="541" data-tex="\(\chi=1\)">\(\chi=1\)</span>. Its support plus <span class="math" data-index="542" data-tex="\(\overline Y_j\)">\(\overline Y_j\)</span> lies in <span class="math" data-index="543" data-tex="\(X_1\)">\(X_1\)</span>, as a subset of the full sampling compact in (4.4). Applying the finite order of <span class="math" data-index="544" data-tex="\(u\)">\(u\)</span> there and the smooth-kernel estimate following (4.1) bounds <span class="math" data-index="545" data-tex="\(u(A_j&#x27;&#x27;*\varphi)\)">\(u(A_j&#x27;&#x27;*\varphi)\)</span> by <span class="math" data-index="546" data-tex="\(C_{j,t}\|\varphi\|_{H^t}\)">\(C_{j,t}\|\varphi\|_{H^t}\)</span> for any real <span class="math" data-index="547" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Equations (4.5) and the exact Sobolev cutoff multiplier estimate give</p>
+<span class="math math-display" id="eq-4.11" data-index="548" data-tex="\[
+ A_j&#x27;\in H^{s_j-r}.
+ \tag{4.11}
+\]">\[
+ A_j&#x27;\in H^{s_j-r}.
+ \tag{4.11}
+\]</span>
+<p>Its convolution with <span class="math" data-index="549" data-tex="\(\varphi\)">\(\varphi\)</span> is supported in the one fixed compact
+<span class="math" data-index="550" data-tex="\(\operatorname{supp}\chi+\overline Y_1\Subset X_1\)">\(\operatorname{supp}\chi+\overline Y_1\Subset X_1\)</span>. Let <span class="math" data-index="551" data-tex="\(c\)">\(c\)</span> be an order of <span class="math" data-index="552" data-tex="\(u\)">\(u\)</span> on this compact. Estimate (4.1) therefore gives</p>
+<span class="math math-display" id="eq-4.12" data-index="553" data-tex="\[
+ |u(A_j&#x27;*\varphi)|
+                    \le C_j\|\varphi\|_{H^{c+r-s_j}}.
+ \tag{4.12}
+\]">\[
+ |u(A_j&#x27;*\varphi)|
+                    \le C_j\|\varphi\|_{H^{c+r-s_j}}.
+ \tag{4.12}
+\]</span>
+<p>If <span class="math" data-index="554" data-tex="\(\chi=0\)">\(\chi=0\)</span>, this term vanishes and one may take <span class="math" data-index="555" data-tex="\(c=0\)">\(c=0\)</span>. The key point is that <span class="math" data-index="556" data-tex="\(c+r\)">\(c+r\)</span> is fixed, although the cutoffs and smooth errors vary with <span class="math" data-index="557" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Since the strictly increasing integers <span class="math" data-index="558" data-tex="\(a_{j-1}\)">\(a_{j-1}\)</span> tend to infinity, (4.9)–(4.12), with <span class="math" data-index="559" data-tex="\(t=a_{j-1}-s_j\)">\(t=a_{j-1}-s_j\)</span>, give for all sufficiently large <span class="math" data-index="560" data-tex="\(j\)">\(j\)</span></p>
+<span class="math math-display" id="eq-4.13" data-index="561" data-tex="\[
+ |(D^{\alpha_j}v_j*\varphi)(x_j)|
+              \le C_j\|\varphi\|_{H^{a_{j-1}-s_j}}
+                       \quad(\varphi\in C_c^\infty(Y_j)).
+ \tag{4.13}
+\]">\[
+ |(D^{\alpha_j}v_j*\varphi)(x_j)|
+              \le C_j\|\varphi\|_{H^{a_{j-1}-s_j}}
+                       \quad(\varphi\in C_c^\infty(Y_j)).
+ \tag{4.13}
+\]</span>
+<p>Reflection about <span class="math" data-index="562" data-tex="\(x_j\)">\(x_j\)</span> converts the left side into the action of <span class="math" data-index="563" data-tex="\(D^{\alpha_j}v_j\)">\(D^{\alpha_j}v_j\)</span> on a test in <span class="math" data-index="564" data-tex="\(x_j+Y_j\)">\(x_j+Y_j\)</span>, and preserves the Sobolev norm. Multiply an arbitrary Schwartz test by a compact smooth cutoff in that neighborhood. The cutoff multiplier estimate makes the resulting action bounded in <span class="math" data-index="565" data-tex="\(H^{a_{j-1}-s_j}\)">\(H^{a_{j-1}-s_j}\)</span>. Seminorm Hahn–Banach and the scalar <span class="math" data-index="566" data-tex="\(L^2\)">\(L^2\)</span> Fourier duality extend it to that Hilbert space and identify the compactly localized distribution with an element of <span class="math" data-index="567" data-tex="\(H^{s_j-a_{j-1}}\)">\(H^{s_j-a_{j-1}}\)</span>. For precision, the bounded functional is represented by an <span class="math" data-index="568" data-tex="\(L^2\)">\(L^2\)</span> function after the isometry <span class="math" data-index="569" data-tex="\(h\mapsto\langle\xi\rangle^{a_{j-1}-s_j}F_h\)">\(h\mapsto\langle\xi\rangle^{a_{j-1}-s_j}F_h\)</span>; the bilinear pairing reflects the frequency, which leaves this even weight unchanged. Fourier inversion identifies that representative with the original action on compact tests.</p>
+<p>Varying the cutoff proves
+<span class="math" data-index="570" data-tex="\(D^{\alpha_j}v_j\in H^{s_j-a_{j-1}}_{\rm loc}(x_j+Y_j)\)">\(D^{\alpha_j}v_j\in H^{s_j-a_{j-1}}_{\rm loc}(x_j+Y_j)\)</span>, contradicting (4.6). Thus failure of confinement prevents surjectivity, and (3.1) is necessary. <span class="math" data-index="571" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument proves necessity for every distributional datum, not just for a fixed-order subspace. It does not yet prove sufficiency of the geometric condition. That requires a separate construction of the quotient solutions.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, “Fourier transformation of distributions,” freely readable <a href="https://web.math.ku.dk/~grubb/dist5.pdf">lecture notes</a>.</li>
+<li>Richard B. Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, freely readable <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">course materials</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+<li>The full isolated-singularity, slow-decrease and singular-hull bounds are the exact preceding lessons linked above. The increasing-order Sobolev obstruction in the linked polynomial chapter is extended here with the full general-kernel and two-domain localization argument.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/convolution-modulo-smooth-functions-and-compact-singularity-bounds.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L172/convolution-modulo-smooth-functions-formal.md" download>convolution-modulo-smooth-functions-formal.md</a></li><li><a href="reproduce/L172/convolution-modulo-smooth-functions-learner.md" download>convolution-modulo-smooth-functions-learner.md</a></li><li><a href="reproduce/L172/make_figures231.py" download>make_figures231.py</a></li><li><a href="reproduce/L172/check_numerics231.py" download>check_numerics231.py</a></li><li><a href="reproduce/L172/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L172/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L172/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L172/figures/geometry231.json" download>figures/geometry231.json</a></li><li><a href="reproduce/L172/figures/singular-sampling-and-a-remote-smooth-tail.png" download>figures/singular-sampling-and-a-remote-smooth-tail.png</a></li><li><a href="reproduce/L172/figures/singular-sampling-and-a-remote-smooth-tail.svg" download>figures/singular-sampling-and-a-remote-smooth-tail.svg</a></li><li><a href="reproduce/L172/figures/escaping-singularities-and-increasing-orders.png" download>figures/escaping-singularities-and-increasing-orders.png</a></li><li><a href="reproduce/L172/figures/escaping-singularities-and-increasing-orders.svg" download>figures/escaping-singularities-and-increasing-orders.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

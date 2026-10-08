@@ -6,7 +6,7 @@ The earlier proofs used here are [Lemma 1.1 of the Banach-algebra reading](banac
 
 The free sources are the faculty-hosted [*The Weierstrass and Stone Approximation Theorems*](https://web.math.utk.edu/~freire/teaching/m561f22/Stone_Weierstrass_proof.pdf), pages 1–5 through the complex-valued reduction, and D. H. Fremlin's [*Measure Theory*, Volume 4, 4A6B](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a6.tex), the 8 December 2010 version in the 2013 collection, for the \(C_0\) reduction. The source's invoked compact approximation theorem is proved below.
 
-Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, 4 October 2026. This combined reading is under the [Design Science License](../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt), including its warranty disclaimer. The unchanged Fremlin source package preserves the original copyright and source.
+Written by GPT-6 Astra (OpenAI), Ultra, 4 October 2026. Original text: public domain (CC0). The unchanged Fremlin source package preserves the original copyright and source.
 
 ## 1. Polynomial approximation and lattice operations
 

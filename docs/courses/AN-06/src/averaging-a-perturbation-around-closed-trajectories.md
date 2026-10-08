@@ -49,6 +49,8 @@ is compact and injective. It is self-adjoint: for \(f=(L+D+a)u\) and \(g=(L+D+a)
 
 ## 1. The orbit average and an exact commutator
 
+The orbit average and bounded-generator reduction are developed by Hörmander [H4, (29.2.10)–(29.2.13)].
+
 Set
 \[
 V_t=e^{itL}Ve^{-itL},\qquad
@@ -218,6 +220,8 @@ Every sum is finite, and all endpoint counts are closed.
 
 Weak convergence need not give convergence of distribution functions at their jumps.
 
+The distribution estimate is Hörmander [H4, Lemma 29.2.6].
+
 **Lemma 4.1.** For probability measures \(\rho_k\) in a common compact interval converging weakly to \(\rho\), every \(\varepsilon>0\) admits a threshold beyond which
 \[
 \theta(s-\varepsilon)-\varepsilon
@@ -255,6 +259,8 @@ N_a(\lambda)=\sum_{k>k_0}w(k)\theta(\lambda-hk).
 \tag{24}
 \]
 The choice of the finite initial threshold affects it only by a bounded high-energy term.
+
+The averaged counting theorem is Hörmander [H4, Theorem 29.2.7 and (29.2.16)–(29.2.18)].
 
 **Theorem 5.1.** For every \(\delta>0\),
 \[
@@ -467,6 +473,24 @@ First choose \(\eta\) small, then \(M\) large. This proves uniform polynomial ap
 
 To pass to \(L^2\), use the written [Euclidean finite-norm density proof](../providers/analysis/euclidean-approximation-and-convolution.md#finite-p-density) and [surface-coordinate and finite-partition construction](../providers/analysis/coordinate-inverses-and-integration.md#finite-partitions). Multiply an arbitrary sphere \(L^2\) function by a finite smooth partition subordinate to relatively compact coordinate patches. Each coordinate piece has compact support inside its chart. On a fixed larger compact chart set, the smooth surface density is bounded above and below by positive constants, so weighted and ordinary \(L^2\) norms are comparable. Approximate the piece by Euclidean compact smooth functions in \(L^2\), multiplying the approximants by a fixed chart cutoff equal to one on its support. This retains convergence and makes extension by zero smooth on the sphere. Summing the finitely many approximants proves that smooth, hence continuous, functions are dense in sphere \(L^2\). The uniform polynomial approximation above now proves that the harmonic restrictions are a complete orthogonal collection in \(L^2(S^n)\).
 
+<a id="averaging-regularity-density"></a>
+
+**A second density proof, using regularity of measure.** This argument applies to every finite Borel measure \(\mu\) on a compact metric space \(Y\), including surface measure on \(S^n\). We first prove the regularity needed for the approximation. Countable additivity gives continuity from below by disjointifying an increasing union, and continuity from above by taking complements in the finite-measure space. These are the measure properties constructed in [the simple-integral and convergence proofs](../providers/analysis/finite-derivative-l2.md#simple-integral-construction).
+
+For each closed \(F\subset Y\), its open \(1/j\)-neighborhoods decrease to \(F\). Indeed, distance to a nonempty set is \(1\)-Lipschitz by the triangle inequality, and distance zero to a closed set means membership. Continuity from above therefore gives an open \(U\supset F\) with \(\mu(U\setminus F)\) arbitrarily small. The empty set is immediate. A closed subset of \(Y\) is compact: add its open complement to any open cover and take a finite subcover of \(Y\). Conversely, a compact subset of a metric space is closed: for a point \(x\) outside it, the balls \(B(y,d(x,y)/3)\) centered in that subset have a finite subcover, and the triangle inequality gives a positive lower bound for its distance from \(x\). Let \(\mathcal R\) be the Borel sets \(E\) for which every \(\varepsilon>0\) admits compact \(K\subset E\) and open \(U\supset E\) with \(\mu(U\setminus K)<\varepsilon\). Closed sets belong to \(\mathcal R\). Complements belong whenever a set does: replace \(K,U\) by \(Y\setminus U,Y\setminus K\).
+
+For \(E=\bigcup_{j\geq1}E_j\) with \(E_j\in\mathcal R\), choose \(K_j\subset E_j\subset U_j\) with \(\mu(U_j\setminus K_j)<\varepsilon 2^{-j-2}\). Then \(U=\bigcup_jU_j\) is open and \(\mu(U\setminus E)<\varepsilon/4\). Continuity from below gives \(N\) with \(\mu(E\setminus\bigcup_{j\leq N}E_j)<\varepsilon/4\). The compact set \(K=\bigcup_{j\leq N}K_j\) lies in \(E\) and satisfies \(\mu(E\setminus K)<\varepsilon/2\); hence \(\mu(U\setminus K)<\varepsilon\). Thus \(\mathcal R\) is a sigma-algebra containing the closed sets, so contains every Borel set. For a set in the completed measure, choose Borel \(E_-\subset E\subset E_+\) with \(\mu(E_+\setminus E_-)=0\), as in [the completion construction](../providers/analysis/finite-derivative-l2.md#completed-product-measures). Approximate \(E_-\) from inside and \(E_+\) from outside with errors less than \(\varepsilon/2\); the same conclusion follows.
+
+Given these \(K\subset E\subset U\), when \(K\ne\varnothing\) and \(U\ne Y\) set
+\[
+ \varphi(x)=\frac{d(x,Y\setminus U)}{d(x,K)+d(x,Y\setminus U)}.
+\]
+The denominator is positive: its vanishing would put \(x\) in both disjoint closed sets. Thus \(\varphi\) is continuous, between zero and one, equal to one on \(K\), and zero off \(U\). If \(K=\varnothing\), use zero; if \(K\ne\varnothing\) and \(U=Y\), use one. In every case
+\[
+ \|\varphi-\mathbf1_E\|_{L^2(\mu)}^2\leq\mu(U\setminus K)<\varepsilon.
+\]
+Finite linear combinations and the [proved simple-function density in \(L^2\)](../providers/analysis/finite-derivative-l2.md#complete-function-spaces) show that continuous functions are dense in \(L^2(\mu)\). On the sphere, combine this with the uniform polynomial approximation and harmonic decomposition above. This gives a second proof of completeness of the harmonic restrictions.
+
 <a id="averaging-laplacian-domain"></a>
 
 **The full operator spectrum.** Start \(-\Delta_{S^n}\) on smooth functions. It is densely defined, symmetric and nonnegative by the just-proved Green identity. Define \(D\) to be the diagonal operator on the complete harmonic decomposition, with eigenvalues \(\ell(\ell+n-1)\) and domain consisting exactly of the vectors satisfying
@@ -475,6 +499,16 @@ To pass to \(L^2\), use the written [Euclidean finite-norm density proof](../pro
  [\ell(\ell+n-1)]^2\|\mathsf P_\ell u\|_2^2<\infty,
 \]
 where \(\mathsf P_\ell\) is the orthogonal projection onto the harmonic restrictions. Testing the adjoint against each basis vector forces its image coordinates to be these real eigenvalues times the coordinates of its input. Such an image is in \(L^2\) exactly on the displayed domain; there the pairing identity holds by Cauchy–Schwarz. Thus \(D=D^*\). Finite harmonic sums approximate every vector in this domain in graph norm, by truncating the two convergent squared sums. For smooth \(u\), integration by parts identifies the coefficients of \(-\Delta u\) with those of \(Du\); Parseval gives the domain condition and equality. Hence the smooth operator is contained in the closed operator \(D\), while its graph closure contains the graph closure of all finite harmonic sums, which is \(D\). Both inclusions prove that its closure is exactly \(D\), with no separate deficiency-index theorem. The eigenvalues tend to infinity with finite multiplicities, so the diagonal resolvent is compact and there is no additional spectrum. The [classical scalar elliptic-domain proof](../providers/analysis/classical-scalar-calculus.md) and the preceding real-power lesson identify the usual domain as \(H^2\) and the square-root domain as \(H^1\). This proves the full harmonic spectrum. ∎
+
+<a id="averaging-deficiency-kernels"></a>
+
+**A second self-adjointness proof, using the deficiency kernels.** Put \(T=-\Delta_{S^n}\) on smooth functions. Symmetry and density make it closable: if \(u_j\to0\) and \(Tu_j\to v\) in \(L^2\), then \((v,\phi)=\lim_j(u_j,T\phi)=0\) for every smooth \(\phi\), so \(v=0\). Its graph closure \(A\) is a densely defined closed symmetric operator, since the symmetry identity passes to graph limits. Define \(A^*f\) by \((Au,f)=(u,A^*f)\) on \(\mathcal D(A)\) whenever this functional is bounded in \(\|u\|_2\); the [Hilbert representing-vector proof](../providers/analysis/finite-trace-ideals.md#elementary-hilbert-tools) gives its existence and uniqueness.
+
+If \(f\in\ker(A^*\mp i)\), pair this identity with every harmonic eigenfunction of real eigenvalue \(\lambda=\ell(\ell+n-1)\). It gives \((\lambda\pm i)(\phi,f)=0\). All coefficients of \(f\) vanish, so completeness implies \(f=0\). To show directly why these two kernel conditions give self-adjointness, symmetry yields
+\[
+ \|(A\pm i)u\|_2^2=\|Au\|_2^2+\|u\|_2^2.
+\]
+Each range \(\operatorname{ran}(A\pm i)\) is closed: convergence of the images makes both \(u\) and \(Au\) Cauchy by this equality, and the closed graph supplies their limit. Its orthogonal complement is \(\ker(A^*\mp i)\) by the defining adjoint identity, so the range is also dense and hence equals \(L^2\). For \(f\in\mathcal D(A^*)\), solve \((A-i)u=(A^*-i)f\) with \(u\in\mathcal D(A)\). Since \(A\subset A^*\), the difference \(f-u\) belongs to \(\ker(A^*-i)=0\). Thus \(\mathcal D(A^*)\subset\mathcal D(A)\), and the reverse inclusion follows from symmetry. Therefore \(A=A^*\). The coefficient and graph-truncation calculation above identifies this closure with the same diagonal operator \(D\) and its displayed full domain.
 
 We can now determine the square-root shifts, multiplicity products and both return phases in every dimension.
 
@@ -629,3 +663,4 @@ The normal-form source has a different order convention. [SUV, §3.1, Propositio
 - [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical Analysis*, author edition dated April 25, 2012. [Freely accessible author text](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf), §10.2 and §§11.3–11.4.
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. [Freely accessible digitized full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf), §3.
 - [Z] Steve Zelditch, “Fine structure of Zoll spectra,” *Journal of Functional Analysis* 143 (1997), 415–460. [Elsevier open archive](https://doi.org/10.1006/jfan.1996.2981), §4, Proposition 4.9. 
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, (29.2.10)–(29.2.18), Lemma 29.2.6 and Theorem 29.2.7, pp. 269–271. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

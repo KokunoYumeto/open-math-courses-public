@@ -4,7 +4,7 @@
 
 A prime can divide the discriminant for two different reasons: the field extension can ramify, or an order can lose information before reduction. The trace pairing detects both. We will prove the criterion for arbitrary orders, over any Dedekind base, and keep inseparable residue fields in view.
 
-We assume the ideal theory of Noether's axioms for Dedekind domains, elementary traces of linear maps, and the characterization of a finite étale algebra over a field as a finite product of finite separable extensions [Milne FT, Proposition 8.6 and Corollary 8.7; Stacks, Tag 00U3]. Basic references are [Noether], [Milne] and [Stacks].
+We assume the ideal theory of Noether's axioms for Dedekind domains, elementary traces of linear maps, and the characterization of a finite étale algebra over a field as a finite product of finite separable extensions. Its full proof is in Unramified morphisms, Lemma 3.1 and Theorem 3.2, together with the flat unramified criterion of Étale morphisms and their local structure, Theorem 1.3: finite-dimensional algebras are flat over their field, and finite type over a field is finite presentation. Compare [Milne FT, Proposition 8.6 and Corollary 8.7; Stacks, Tag 00U3]. Basic references are [Noether], [Milne] and [Stacks].
 
 ## 1. The trace measures multiplication
 
@@ -23,13 +23,13 @@ The regular representation, not a reduced trace from a noncommutative algebra, i
 
 **Lemma 1.2.** For a finite field extension \(F/k\), its trace pairing is nondegenerate if and only if \(F/k\) is separable.
 
-**Proof in the separable case.** By the primitive element theorem write \(F=k(\theta)\), with distinct conjugates \(\theta_1,\ldots,\theta_n\) in a splitting field. For the power basis, the trace matrix is \(V^{\mathsf T}V\), where \(V_{ij}=\theta_i^{j-1}\). Indeed, after scalar extension multiplication is diagonal in the decomposition into embeddings, so trace is the sum of the embedded elements. The Vandermonde determinant \(\prod_{i<j}(\theta_j-\theta_i)\) is nonzero. Therefore the trace determinant is nonzero.
+**Proof in the separable case.** By the full finite separable primitive-element proof in Algebraic integers and rings of integers, Section 1, “Separable embeddings and a primitive element”, write \(F=k(\theta)\), with distinct conjugates \(\theta_1,\ldots,\theta_n\) in a splitting field. For the power basis, the trace matrix is \(V^{\mathsf T}V\), where \(V_{ij}=\theta_i^{j-1}\). Indeed, after scalar extension multiplication is diagonal in the decomposition into embeddings, so trace is the sum of the embedded elements. The Vandermonde determinant \(\prod_{i<j}(\theta_j-\theta_i)\) is nonzero. Therefore the trace determinant is nonzero.
 
 **Proof in the inseparable case.** The characteristic is \(p>0\). Let \(F_s\) be the maximal separable subextension. The extension \(F/F_s\) is purely inseparable and nontrivial: for every algebraic element, a sufficiently high \(p\)-power is separable, which proves the first assertion. A finite purely inseparable extension can be built as a tower of degree-\(p\) extensions. In a degree-\(p\) step with basis \(1,u,\ldots,u^{p-1}\) and \(u^p\) in the base, multiplication by \(u^j\) has zero diagonal for \(1\le j<p\), and multiplication by \(1\) has trace \(p=0\). Thus the trace map at that step is zero. Transitivity of trace makes \(\operatorname{Tr}_{F/F_s}\), and then \(\operatorname{Tr}_{F/k}\), zero. Transitivity follows by expressing a multiplication matrix in blocks over a basis of the intermediate field and summing its diagonal block traces. Hence the pairing is degenerate. \(\square\)
 
 **Theorem 1.3.** A finite commutative \(k\)-algebra is étale over \(k\) if and only if its trace pairing is nondegenerate.
 
-**Proof.** A nondegenerate pairing has no nonzero nilpotents by Lemma 1.1. A reduced finite-dimensional commutative algebra is a product of fields: it is Artinian, its finitely many maximal ideals are pairwise comaximal, their intersection is the zero nilradical, and the Chinese remainder theorem gives the product. On a product the trace pairing is the orthogonal direct sum of the field pairings. Lemma 1.2 now says that every factor must be separable. Conversely, a product of separable fields has a nondegenerate direct-sum pairing. This is exactly the finite étale characterization. \(\square\)
+**Proof.** A nondegenerate pairing has no nonzero nilpotents by Lemma 1.1. A reduced finite-dimensional commutative algebra is a product of fields, by Noetherian and Artinian rings, Lemma 4.1 and Theorem 4.2: it is Artinian, its finitely many maximal ideals are pairwise comaximal, their intersection is the zero nilradical, and the Chinese remainder theorem gives the product. On a product the trace pairing is the orthogonal direct sum of the field pairings. Lemma 1.2 now says that every factor must be separable. Conversely, a product of separable fields has a nondegenerate direct-sum pairing. This is exactly the finite étale characterization whose full programme proof is linked in the introduction. In that proof, separable fields have zero differentials, whereas a nontrivial purely inseparable field step has nonzero differentials; these field assertions are proved in Kähler differentials, Theorem 6.2 and Proposition 6.3. Thus the characterization includes imperfect ground fields. \(\square\)
 
 Over an imperfect field, reducedness alone is insufficient. For example, \(\mathbb F_p(t)[u]/(u^p-t)\) is a field and has identically zero trace pairing.
 
@@ -80,7 +80,7 @@ If \(O\subseteq B\), their local bases are related by an inclusion matrix \(P\),
  \mathfrak d_{O/R}=\mathfrak i_{B/O}^{\,2}\mathfrak d_{B/R}.
 \]
 
-Here \(\mathfrak i_{B/O}\) is the index ideal with \(\mathfrak p\)-exponent \(\operatorname{length}_{R_{\mathfrak p}}(B_{\mathfrak p}/O_{\mathfrak p})\). Over a DVR, diagonal reduction of \(P\) shows that this length is \(v_{\mathfrak p}(\det P)\), and the determinant basis-change formula proves the assertion. Over \(\mathbb Z\) this is the usual square of the integer lattice index.
+Here \(\mathfrak i_{B/O}\) is the index ideal with \(\mathfrak p\)-exponent \(\operatorname{length}_{R_{\mathfrak p}}(B_{\mathfrak p}/O_{\mathfrak p})\). Over a DVR, choose an entry of least valuation in \(P\), move it to the first position, and use its divisibility of all entries to clear its row and column by invertible operations. Repeat on the remaining matrix. The cokernel is then a direct sum of \(R_{\mathfrak p}/(\pi^{a_i})\), of length \(\sum_i a_i=v_{\mathfrak p}(\det P)\), and the determinant basis-change formula proves the assertion. Over \(\mathbb Z\) this is the usual square of the integer lattice index.
 
 For a computational test of maximality, Discriminants and integral bases, Theorem 2.6, proves **Dedekind's index criterion**. Let \(\alpha\) be an integral primitive element of a number field, with monic minimal polynomial \(f\in\mathbb Z[T]\). Write \(\bar f=\prod_i\bar g_i^{e_i}\) modulo a rational prime \(p\), with distinct monic irreducible factors, choose monic integer lifts \(g_i\), and put
 
@@ -88,13 +88,13 @@ For a computational test of maximality, Discriminants and integral bases, Theore
  F=\bigl(f-\prod_i g_i^{e_i}\bigr)/p\in\mathbb Z[T].
 \]
 
-Then \(p\) does not divide \([\mathcal O_L:\mathbb Z[\alpha]]\) if and only if \(\bar g_i\nmid\bar F\) for every repeated factor \(e_i\ge2\). This stated input tests the defect of the order; Theorem 3.1 tests its entire non-étale fibre. The integer index-discriminant formula is also proved there, Theorem 2.3 and equations (2)–(3); our local determinant argument above gives its relative ideal form.
+Then \(p\) does not divide \([\mathcal O_L:\mathbb Z[\alpha]]\) if and only if \(\bar g_i\nmid\bar F\) for every repeated factor \(e_i\ge2\). The cited earlier lesson supplies its complete proof: its endomorphism-ring test for the radical \(J=(p,\prod_i g_i(\alpha))\) detects a missing integral element, and its polynomial computation makes that defect equivalent to the repeated-factor condition just stated. Thus this proved criterion tests the defect of the order; Theorem 3.1 tests its entire non-étale fibre. The integer index-discriminant formula is also proved there, Theorem 2.3 and equations (2)–(3); our local determinant argument above gives its relative ideal form.
 
 Noether's 1929 *Über Maximalbereiche aus ganzzahligen Funktionen* studies a related denominator problem: starting from a finitely generated ring of integral functions, saturate it by nonzero integer denominators and ask which primes and denominator powers are required [Noether, opening paragraphs]. In the present discriminant theorem, the maximal order means the integral closure in the field.
 
 ## 4. Four reductions worth comparing
 
-For a quadratic field of discriminant \(d_K\), write its integer ring as \(\mathbb Z[\omega]\). The order \(O_f=\mathbb Z+f\mathbb Z\omega\) has basis \(1,f\omega\), so \(\operatorname{disc}(O_f)=f^2d_K\). This distinguishes primes dividing the conductor from primes ramifying in the maximal order.
+The quadratic integer-basis criterion, including both congruence cases, is proved in Algebraic integers and rings of integers, Theorem 1.4. For a quadratic field of discriminant \(d_K\), write its integer ring as \(\mathbb Z[\omega]\). The order \(O_f=\mathbb Z+f\mathbb Z\omega\) has basis \(1,f\omega\), so \(\operatorname{disc}(O_f)=f^2d_K\). This distinguishes primes dividing the conductor from primes ramifying in the maximal order.
 
 For \(O=\mathbb Z[3i]\), set \(u=3i\). Its defining polynomial is \(T^2+9\); its trace matrix in \(1,u\) is \(\operatorname{diag}(2,-18)\). Thus its discriminant is \(-36\), and
 
@@ -120,7 +120,14 @@ For a relative arithmetic example, let \(K=\mathbb Q(i)\), \(R=\mathbb Z[i]\), a
 
 **1.** The basis \(1,3i\) gives the diagonal entries \(2,-18\), so the determinant is \(-36\). Reduction of the presentation \(\mathbb Z[T]/(T^2+9)\) gives \(\mathbb F_3[T]/(T^2)\). Its nonzero nilpotent \(T\) explains the degeneracy.
 
-**2.** When \(f\) has distinct roots \(r_i\), the determinant is \(\prod_{i<j}(r_j-r_i)^2\). The norm of \(f'(u)\) is \(\prod_i f'(r_i)=(-1)^{n(n-1)/2}\prod_{i<j}(r_j-r_i)^2\). To include repeated roots and every characteristic, regard both sides as polynomials with integer coefficients in the coefficients of a universal monic polynomial. They agree over characteristic zero on the dense set of distinct-root polynomials, hence are the same universal polynomial. Specialization proves the formula for all \(f\). Over an algebraic closure, \(N(f'(u))\) is the resultant \(\operatorname{Res}(f,f')\); it is zero exactly when a root is repeated. This also follows directly from the root product formula by specialization.
+**2.** Extend the ground field to an algebraic closure; Proposition 2.1 preserves the trace matrix and its determinant, and the multiplication matrix likewise preserves the norm. When \(f\) has distinct roots \(r_i\), evaluation identifies its algebra with a product of copies of that field. The trace determinant is \(\prod_{i<j}(r_j-r_i)^2\), and the norm of \(f'(u)\) is
+
+\[
+\prod_i f'(r_i)
+=(-1)^{n(n-1)/2}\prod_{i<j}(r_j-r_i)^2.
+\]
+
+If a root is repeated, the Chinese remainder decomposition has a factor \(\bar k[T]/((T-r)^a)\) with \(a>1\). Its nonzero nilpotent \(T-r\), extended by zero on the other factors, makes the trace form degenerate by Lemma 1.1. Thus the discriminant is zero. In the same factor \(f'(u)\) has zero constant term and is nilpotent, so its multiplication determinant is zero; hence its norm in the entire algebra is zero too. This proves the identity in all characteristics, including repeated-root and inseparable cases, and proves that its value is nonzero exactly when \(f\) is square-free. Degree one gives both sides equal to one.
 
 **3.** Put \(u^p=t\). Multiplication by \(u^j\), \(1\le j<p\), cyclically shifts the power basis with factors of \(t\) on wraparound, so every diagonal entry is zero. Multiplication by \(1\) has trace \(p=0\). Linearity shows that every element has trace zero, and consequently every pairing entry is zero.
 
@@ -128,14 +135,16 @@ For a relative arithmetic example, let \(K=\mathbb Q(i)\), \(R=\mathbb Z[i]\), a
 
 **5.** The ring \(O_K\) is Dedekind. A finite torsion-free order is free over each localization at a nonzero prime. Choose such a local basis, reduce its multiplication matrices, and apply Theorem 1.3 to the residue algebra. Changes between local bases multiply the discriminant coefficient by a unit square, so the criterion is independent of the choices and defines the relative discriminant ideal. It detects precisely the non-étale fibres and includes index primes of nonmaximal orders.
 
-## What this lesson does not prove
+## Proof dependencies
 
-The primitive element theorem [Milne FT, Theorem 5.1], the Artinian product structure [Stacks, Tag 00KJ], the local DVR characterization [Tag 034X], and the finite étale field-algebra characterization [Milne FT, Proposition 8.6 and Corollary 8.7; Stacks, Tag 00U3] are prerequisites. Dedekind’s index criterion is stated with the *Discriminants and integral bases*, Theorem 2.6 locator above. The trace-form criterion itself, including inseparable fields, is proved here. The quadratic integral-basis criterion supplies the maximal orders in the examples. Noncommutative orders use different trace conventions and are outside this theorem; [Voight] explains that setting.
+The trace-pairing criterion, its inseparable-field argument, the arbitrary-order discriminant criterion, the local index-discriminant calculation, all four reductions and all five exercise solutions are proved above. The complete earlier primitive-element, Artinian product, finite étale field-algebra, field-differential, quadratic-basis and index-criterion proofs have the exact links and locators at their applications. The DVR and Dedekind localization characterization is proved in Discrete valuation rings and Dedekind domains, and in the first lesson's ideal theory. No external citation replaces a supplied proof. Noncommutative orders use different trace conventions and are outside this theorem; [Voight]'s free corrected edition explains that setting.
+
+The linked combined Kähler-differential edition retains its declared GNU FDL terms; its expression is not reproduced here. This lesson's new exposition is independently written CC0. An export omitting a linked component retains that external proof dependency.
 
 ## References
 
 - **[Milne]** J. S. Milne, *Fields and Galois Theory*, Theorems 5.1 and 5.18, Proposition 8.6 and Corollary 8.7, and *Algebraic Number Theory*, Chapters 2–3 (quadratic bases in the Introduction, p. 8); [author's notes](https://www.jmilne.org/math/CourseNotes/).
 - **[Stacks]** The Stacks Project, Tags [0BIE](https://stacks.math.columbia.edu/tag/0BIE), [0BVH](https://stacks.math.columbia.edu/tag/0BVH) and [0BJF](https://stacks.math.columbia.edu/tag/0BJF). The corresponding [AI Integrated Stacks Project English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html) contains AI-proposed corrections and additions, not reviewed by the Stacks Project's maintainers.
-- **[Noether]** Emmy Noether, *Der Diskriminantensatz für die Ordnungen eines algebraischen Zahl- oder Funktionenkörpers*, Journal für die reine und angewandte Mathematik **157** (1927), 82–104, especially Sections 6–8; and *Über Maximalbereiche aus ganzzahligen Funktionen*, Matematicheskii Sbornik **36** (1929), 65–72.
-- **[Voight]** John Voight, *Quaternion Algebras*, Graduate Texts in Mathematics 288, Springer, 2021, Chapters 7 and 9–15, [author's edition](https://math.dartmouth.edu/~jvoight/quat.html).
+- **[Noether]** Emmy Noether, *The Discriminant Theorem for Orders of an Algebraic Number Field or Function Field*, especially Sections 6–8, and *On Maximal Domains of Integral Functions*, in the [freely accessible English corpus edition](https://zenodo.org/records/21923146), version 2026.08.13-r1, items 31 and 35; [editable source and linked reader](https://github.com/KokunoYumeto/emmy-noether-en). This is a machine-assisted working translation. The original articles are *Der Diskriminantensatz für die Ordnungen eines algebraischen Zahl- oder Funktionenkörpers*, Journal für die reine und angewandte Mathematik **157** (1927), 82–104, and *Über Maximalbereiche aus ganzzahligen Funktionen*, Matematicheskii Sbornik **36** (1929), 65–72; the latter also has a [free original-journal archive entry](https://www.mathnet.ru/eng/sm7340).
+- **[Voight]** John Voight, [*Quaternion Algebras*, free corrected author edition](https://jvoight.github.io/quat-book-v1.0.5.pdf), stable version 1.0.5, 10 January 2024, Chapters 7 and 9–15; [author's version page](https://jvoight.github.io/quat.html).
 - **Additional prerequisite tags:** [00KJ](https://stacks.math.columbia.edu/tag/00KJ), [00U3](https://stacks.math.columbia.edu/tag/00U3), and [034X](https://stacks.math.columbia.edu/tag/034X).

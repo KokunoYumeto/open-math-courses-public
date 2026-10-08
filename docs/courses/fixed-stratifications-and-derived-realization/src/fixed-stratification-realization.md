@@ -4,7 +4,7 @@ A fixed stratification retains derived information precisely when its one-stratu
 
 Ordinary sheaf adjunctions, injective and projective resolutions, truncation triangles and exact coproducts are prerequisites. The proof includes the needed finite gluing and comparison calculations. Equations 22–35 retain their locators in the parent lesson. This reading begins a new coefficient convention; its rings need not be commutative or have finite global dimension.
 
-*Original AI teaching expression and solutions: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Human mathematical source and adapted proof structure: Lunts–Schnürer, CC BY 4.0; see [Sources and reuse](#sources-and-reuse).*
+*Original AI teaching expression and solutions: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Mathematical source and proof route: Lunts–Schnürer; see [Sources and reuse](#sources-and-reuse).*
 
 ## Realization for a fixed stratification
 
@@ -262,7 +262,7 @@ Let \(A=k[t]\), \(J=(t)\), and \(B=A/J=k\). Compare \(\operatorname{Ext}^1_B(k,k
 
 Valery A. Lunts and Olaf M. Schnürer, [*Categories of constructible sheaves*, arXiv:2601.05477v1](https://arxiv.org/abs/2601.05477v1), 9 January 2026, supplies the results and proof route: Theorem 4.1 (pp. 11–13) for one stratum; Proposition 5.24 and Theorem 5.25 (pp. 24–27) for boundary comparisons and fixed-stratification realization; Definition 6.2, Lemma 6.6, Corollary 6.8 and Theorem 6.10 (pp. 27–30) for the link test. The finite-cohomology distinction corresponds to Lemma 7.2 and Corollary 7.5 (pp. 31–32). The finite-kernel alternative here explicitly requires the kernel order to be a unit in the coefficient ring; a statement only about characteristic would not suffice for every ring allowed here.
 
-The original AI expression, expanded checks, exercises, solutions and reader code are dedicated under CC0. This dedication does not relicense the human source or any protected material adapted from it: Lunts–Schnürer is attributed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The presentation is rewritten and condensed, with calculations expanded; its proof structure is source-derived. No verbatim source prose is included. The [source and dependency notes](../source-notes.html) identify the exact passages, changes and remaining prerequisites.
+The text, checks, exercises, solutions and reader code are dedicated under CC0. The results and the route of the proofs are those of Lunts–Schnürer, credited above; the wording, the expanded calculations and the exercises are written independently. The [source and dependency notes](../source-notes.html) identify the exact passages, changes and remaining prerequisites.
 
 Ordinary derived-category formalism and the topological facts used to compute local-coefficient cohomology remain explicit prerequisites. The realization criteria use the Lunts–Schnürer results and proof route identified above; this reading does not supply a complete development of those underlying foundations.
 

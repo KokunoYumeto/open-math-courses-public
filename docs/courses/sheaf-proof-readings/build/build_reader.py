@@ -9,6 +9,7 @@ import html
 import json
 import re
 import subprocess
+from reader_empty_sets import repair_empty_set_glyphs
 from bs4 import BeautifulSoup
 
 
@@ -134,7 +135,7 @@ def render(body, title, links):
             heading.insert_before(soup.new_tag('span',id=identity[1]))
     if len(soup.find_all('math')) != count or soup.find('merror'):
         raise ValueError('MathML projection failed: '+title)
-    return str(soup), count
+    return repair_empty_set_glyphs(str(soup)), count
 
 
 def rebuild(root):

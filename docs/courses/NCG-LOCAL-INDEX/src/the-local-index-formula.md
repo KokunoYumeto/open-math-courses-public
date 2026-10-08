@@ -718,9 +718,7 @@ For bounded \(A_j\), the integral is well defined. Schatten Hölder gives
 
 \]
 
-Indeed \(\|e^{-uv_jD^2}\|_{1/v_j}
-
-=\operatorname{Tr}(e^{-uD^2})^{v_j}\) when \(v_j>0\); a zero \(v_j\) contributes the identity with norm one. The simplex has volume \(1/n!\). The trace estimate holds for both supertraces.
+Indeed \(\|e^{-uv_jD^2}\|_{1/v_j}=\operatorname{Tr}(e^{-uD^2})^{v_j}\) when \(v_j>0\); a zero \(v_j\) contributes the identity with norm one. The simplex has volume \(1/n!\). The trace estimate holds for both supertraces.
 
 **Theorem 6.3 (the heat cocycle).** Let \(d_{\mathcal D}a=[\mathcal D,a]\), and set
 
@@ -2618,9 +2616,7 @@ Squaring returns \(e_t\); its range is the first coordinate line for every \(t\)
 
 \(a_{-3}=b_{-3}/8\), \(a_{-2}=b_{-2}/4\), \(a_{-1}=b_{-1}/2\).
 
-Hence \(\operatorname{Res}z^2Z(z)=b_{-3}/8
-
-=2^{-3}\operatorname{Res}s^2\zeta(s)\), exactly the coefficient \(2^{-\ell-1}\). The spectral-variable correction depends on the Laurent order; a single factor of two would not correct all higher residues.
+Hence \(\operatorname{Res}z^2Z(z)=b_{-3}/8=2^{-3}\operatorname{Res}s^2\zeta(s)\), exactly the coefficient \(2^{-\ell-1}\). The spectral-variable correction depends on the Laurent order; a single factor of two would not correct all higher residues.
 
 **Exercise 18 (advanced).** Double the one-dimensional harmonic example of Exercise 13. Compute the unitized degree-zero residue and the bounded degree-two character. Check their values on the external Chern cycle of \((1,0)\).
 

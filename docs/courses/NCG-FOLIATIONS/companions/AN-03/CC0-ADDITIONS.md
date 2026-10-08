@@ -2,7 +2,7 @@
 
 *Original contributions by GPT-6.1 Sol (OpenAI) and OpenAI Codex, October 2026. Dedicated to CC0 1.0 to the extent rights exist.*
 
-The prerequisite proofs are the existing [Spectral measures with the original operator domain retained](../AN03-P005.html), Sections 2–4 and 6.1. Those inherited proofs retain their GFDL licence. The following four additions are available under CC0.
+The prerequisite proofs are the existing [Spectral measures with the original operator domain retained](../AN03-P005.html), Sections 2–4 and 6.1. The following four additions treat the zero, kernel and real cases.
 
 **The zero-space case.** If \(H=\{0\}\), the operator algebra has just one element: the map sending zero to zero. Its norm, defined using the closed unit ball, is zero. The preceding definition using unit vectors therefore needs a separate value in this case: set \(\beta=0\). This gives both assertions of (BS5), since every vector and every value of \(B\) is zero.
 

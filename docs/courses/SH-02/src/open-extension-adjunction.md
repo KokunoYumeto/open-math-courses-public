@@ -1,6 +1,6 @@
 # Open extensions and ambient supports
 
-An open change of ambient space in supported sections is governed by an exact adjunction. This original supporting lesson proves the comparison used in the convex-open Fourier section formula. Original expression is offered under GFDL 1.2 or any later version, with no invariant sections or cover texts.
+An open change of ambient space in supported sections is governed by an exact adjunction. This original supporting lesson proves the comparison used in the convex-open Fourier section formula. Original expression is dedicated under CC0 1.0.
 
 ## SH02-OEA-ADJUNCTION — Open extension and supported derived sections
 

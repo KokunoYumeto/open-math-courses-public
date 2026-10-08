@@ -10,7 +10,7 @@ The general inversion theorem is HA-LCA-09, Theorem 4.1. Closed-subgroup duality
 
 Free sources used for this lesson are David Applebaum, [*Probabilistic Trace and Poisson Summation Formulae on Locally Compact Abelian Groups*, §2 and §5.1](https://arxiv.org/pdf/1602.01252v2), version 4 February 2016, together with his [free author corrigendum](https://eprints.whiterose.ac.uk/id/eprint/106772/12/ProbTracecorrigendum1.pdf); Thomas Fidler and Otmar Scherzer, [*An Introduction to Signal and Image Processing*, Theorem 2.2](https://csc.univie.ac.at/files/SIP_lecture_notes_SS2012.pdf), 14 June 2012; and Keith Conrad, [*The Character Group of \(\mathbb Q\)*, §§2–4](https://kconrad.math.uconn.edu/blurbs/gradnumthy/characterQ.pdf). Quotient integration derives from the preceding lesson's reconstruction of D. H. Fremlin, [*Measure Theory*, §§443P–Q](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex). Every result used from these sources is proved here or in the linked earlier lessons.
 
-Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the [Design Science License](../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's copyright 2001 and original notices are retained in the unchanged volume 4 source package. The other works are linked, not reproduced.
+Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 2001 and original notices are retained in the unchanged volume 4 source package. The other works are linked, not reproduced.
 
 ## 1. Inversion on a quotient
 

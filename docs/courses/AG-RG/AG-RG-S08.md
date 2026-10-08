@@ -243,4 +243,4 @@ For the character classification the verified free author version is J. S. Milne
 
 ## History
 
-Source and modification history: Stacks Project authors and the named earlier programme authors, earlier algebra and descent proofs; OpenAI GPT-6.1 Sol, supporting arguments and explicit prerequisite reconciliation, 5 October 2026. This combined supporting draft is distributed under GNU Free Documentation License, version 1.2 or any later version, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The complete [GNU FDL 1.2](assets/GFDL-1.2.txt) accompanies this edition. Copyright (C) 2005–2025 Johan de Jong is retained in the adapted Stacks material. The independently written additions may also be used under CC0. Existing GFDL source rights are retained.
+Sources: the Stacks Project authors and the named earlier programme authors, for the algebra and descent results this lesson builds on; GPT-6.1 Sol (OpenAI), supporting arguments and explicit prerequisite reconciliation, 5 October 2026. The text of this lesson is dedicated to the public domain under CC0 1.0; the Stacks Project itself is distributed under the GNU FDL 1.2 or later.

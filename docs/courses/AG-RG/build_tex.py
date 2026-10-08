@@ -91,6 +91,11 @@ def convert(text):
     converted=re.sub(r'^((?:For completeness, this list follows from the reflection axioms,|Over [^\n]+?, it is useful initially to allow a smooth affine monomorphism)[^\n]+)$',
                      lambda m:r'\begingroup\microtypesetup{expansion=false,protrusion=false}'+'\n'+m[1]+'\n'+r'\par\endgroup',
                      converted,flags=re.M)
+    # Keep E9.1's closing reference with the preceding proof paragraph.
+    # The penalty is local and ends after the paragraph has been typeset.
+    converted=re.sub(r'^(It is quasi-compact\. Its graph [^\n]+)$',
+                     lambda m:r'\begingroup\widowpenalty=10000'+'\n'+m[1]+'\n'+r'\par\endgroup',
+                     converted,flags=re.M)
     return converted
 
 licence=(out/'assets/GFDL-1.2.txt').read_text(encoding='utf8')
@@ -134,7 +139,7 @@ for unit in catalog['courses'][0]['units']:
         body=r'\setcounter{chapter}{'+str(i-1)+'}\n'+body
     bodies.append(body)
     front=credit
-    gfdl=i in (3,5) or unit.get('license_expression','').startswith('GFDL')
+    gfdl=unit.get('license_expression','').startswith('GFDL')
     if not gfdl:
         front=front.replace('Attributed Stacks adaptations retain\ntheir GNU Free Documentation License obligations, as recorded for each component.\nThe cumulative collection includes the complete version 1.2 licence below.',
                             'Cited works retain their own licences.')

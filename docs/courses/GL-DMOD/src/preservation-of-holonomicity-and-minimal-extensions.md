@@ -135,7 +135,7 @@ The construction is functorial, and duality exchanges its two bounds and the can
 \]
 If $N$ is simple, a nonzero submodule of $j_{!*}N$ restricts either to zero or to all of $N$. The first case is prohibited; in the second its quotient is a boundary module and is prohibited. Hence $j_{!*}N$ is simple.
 
-The image definition parallels BBD, Definition 1.4.22 and its perverse-sheaf notation 2.1.7. The argument here takes place directly in differential-operator modules; it does not invoke Riemann–Hilbert.
+The image definition and its uniqueness have been proved directly in differential-operator modules.
 
 ## 5. Classification and the affine-line examples
 
@@ -264,14 +264,13 @@ Each has dimension two and generic length one: at its generic point the other tw
 
 ## 8. What this lesson does not prove
 
-The algebraic-geometric tools used for affine covers and closed affine-space embeddings are prerequisites. The filtered growth criterion, duality on holonomic modules, generic-connection theorem, transfer composition and Kashiwara equivalence are the earlier proved course results explicitly cited above. BBD's perverse-sheaf formalism is cited only to identify its parallel image definition; its sheaf theory is not reproved here. No Riemann–Hilbert or regular-singularity theorem is used.
+The algebraic-geometric tools used for affine covers and closed affine-space embeddings are prerequisites. The filtered growth criterion, duality on holonomic modules, generic-connection theorem, transfer composition and Kashiwara equivalence are the earlier proved course results explicitly cited above. No Riemann–Hilbert or regular-singularity theorem is used.
 
 Localization, preservation by both inverse and direct image, curve de Rham finiteness, minimal-extension uniqueness, simplicity and classification, and every exercise calculation have been proved in this lesson.
 
 ## References
 
 - C. Schnell, [*Algebraic D-modules*](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), Theorem 18.5 and Lecture 19, Lemmas 19.1, 19.4–19.6: preservation and the Weyl-algebra reduction.
-- A. Beilinson, J. Bernstein and P. Deligne, *Faisceaux pervers*, Definition 1.4.22; notation 2.1.7, printed page 58: the parallel intermediate-extension definition.
-- A. Beilinson and V. Drinfeld, *Quantization of Hitchin's integrable system and Hecke eigensheaves*, Sections 7.2.8–7.2.11 and 7.3.6–7.3.10: the direct-image construction and composition conventions.
-- V. Ginzburg, *Lectures on D-modules*, Sections 4.3.9–4.3.14 and Proposition 4.4.4: localization, inverse images and minimal extensions.
+- A. Beilinson and V. Drinfeld, [*Quantization of Hitchin's integrable system and Hecke eigensheaves*](https://www.math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf), freely accessible author draft, Sections 7.2.8–7.2.11 and 7.3.6–7.3.10: the direct-image construction and composition conventions.
+- V. Ginzburg, [*Lectures on D-modules*](https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf), freely accessible lecture notes, Sections 4.3.9–4.3.14 and Proposition 4.4.4: localization, inverse images and minimal extensions.
 - P. Etingof, [*Introduction to algebraic D-modules*](https://math.mit.edu/~etingof/dmodwien.pdf), Exercise 3.20: the simple-module classification.

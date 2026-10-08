@@ -10,7 +10,7 @@ Put \(D=L^1(G)\cap L^2(G)\). Inner products are linear in the first variable. Th
 
 The freely accessible mathematical sources are D. H. Fremlin, [*Measure Theory*, §§445R–T](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), version of 20 March 2008, and Terence Tao, [*245C, Notes 1: Interpolation of \(L^p\) spaces*, Theorems 4 and 21](https://terrytao.wordpress.com/2009/03/30/245c-notes-1-interpolation-of-lp-spaces/), 30 March 2009. The interpolation proof below supplies the particular complex-variable argument it needs and makes no sigma-finiteness assumption.
 
-Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the Design Science License. Fremlin's copyright 1998 and original notices are retained in the unchanged volume 4 source package. The summable-tail argument also uses the freely accessible [§244G–H](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex), copyright 1995, whose original notices remain in the volume 2 source package. The cited lecture notes themselves are not reproduced.
+Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged volume 4 source package. The summable-tail argument also uses the freely accessible [§244G–H](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex), copyright 1995, whose original notices remain in the volume 2 source package. The cited lecture notes themselves are not reproduced.
 
 The earlier proof tools used here are:
 

@@ -46,7 +46,7 @@ Z(M)^\alpha=\mathbb C1
 M\rtimes_\alpha G\text{ is a factor}\bigr].} \tag{F3}
 \]
 
-Its spectral input is the complete L115 dual-center kernel proof, with its precise arbitrary-LCA setting:
+Its spectral input is the complete [L115 dual-center kernel proof](OA-FLOW-L115.md#dk-kernel), with its precise [arbitrary-LCA setting](OA-FLOW-L115.md#dk-inputs):
 
 <a id="equation-f4"></a>
 

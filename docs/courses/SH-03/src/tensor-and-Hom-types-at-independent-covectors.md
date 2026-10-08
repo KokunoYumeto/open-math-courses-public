@@ -2,7 +2,7 @@
 
 External products put two independent directional problems on one product manifold. Their types tensor and their normalized shifts add. External internal Hom reverses the first covector, takes derived module Hom of the coefficient types, and subtracts the first shift from the second. We prove both assertions, including the first-factor orientation degree and the case of coefficient modules of infinite rank.
 
-Use How simple-sheaf shifts change along a Lagrangian for the coefficient-object normalization and type transport. Let \(k\) be a commutative ring of finite global dimension and \(X_i\) finite-dimensional real smooth manifolds. The input sheaves and their coefficient complexes are arbitrary bounded objects. The proofs below use the derived tensor–Hom adjunction, the exceptional-operation identities, and duality and cohomological dimension on manifolds. The constant-coefficient and closed-support comparisons needed here are given explicitly below.
+Use [How simple-sheaf shifts change along a Lagrangian](how-simple-sheaf-shifts-change-along-a-lagrangian.md#follow-a-transverse-auxiliary-plane) for transport along auxiliary planes. The [conormal coefficient model](../../sheaf-proof-readings/src/SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold) and the [normalized conormal type formula](../../microlocal-composition-and-pure-sheaves/src/pure-and-simple-sheaves-from-directional-tests.md#type-purity-and-simplicity) supply the local representatives and their ordinary degrees. Let \(k\) be a commutative ring of finite global dimension and \(X_i\) finite-dimensional real smooth manifolds. The input sheaves and their coefficient complexes are arbitrary bounded objects. The proofs below use the [derived tensor–Hom adjunction](../../sheaf-proof-readings/src/SH02/open-prerequisite-proofs.md#sh02-prp-df-c--currying-and-the-derived-closed-structure), the [exceptional-operation identities](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-diagonal--diagonals-and-product-tests), and [duality and cohomological dimension on manifolds](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-homological-dimension--bounds-for-derived-hom). The constant-coefficient and closed-support comparisons needed here are given explicitly below.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
@@ -30,7 +30,7 @@ R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
 
 These are local statements near the specified covectors, including zero covectors. The bounds proved below place both outputs and both coefficient types in the bounded derived category. No finite-rank coefficient hypothesis is added.
 
-The external tensor estimate, (Q5)–(Q9), and external Hom estimate, (MO6)–(MO7), give, in the displayed argument order,
+The [external tensor estimate](../../sheaf-proof-readings/src/SH03/limiting-covectors-at-open-boundaries.md#a-fixed-cut-can-test-several-directions-external-product-microsupport), (Q5)–(Q9), and [external Hom estimate](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-external-hom--reversing-the-second-direction), (MO6)–(MO7), give, in the displayed argument order,
 
 \[
 \begin{split}
@@ -42,7 +42,7 @@ The external tensor estimate, (Q5)–(Q9), and external Hom estimate, (MO6)–(M
 \qquad\text{(3)}
 \]
 
-For the Hom estimate the first input is the contravariant one: use the external Hom theorem with the factors interchanged and then permute the product factors. This places the antipode on the first covector.
+For the Hom estimate the first input is the contravariant one: use the external Hom theorem with the factors interchanged and then permute the product factors. This places the antipode on the first covector. If an excluded covector is zero, the zero-section support property makes the corresponding factor vanish on a base neighborhood; both external operations then vanish on the relevant product neighborhood. Thus the estimates also include zero covector components.
 
 They also let us replace each factor by an isomorphic point-localized representative. For example a replacement cone in the first factor avoids \(p_1\); the tensor cone avoids \((p_1,p_2)\) by the first bound, and the contravariant Hom cone avoids \((p_1^a,p_2)\) by the second. The exact triangles give the corresponding denominator arrows. This justifies the conormal computations that follow.
 
@@ -66,7 +66,7 @@ R\mathcal Hom(E,F)\in D^{[c-b,\,d-a+3n+g+1]}(k_X).
 \tag{H2}
 \]
 
-The manifold Hom theorem, (M38)–(M44), proves this for arbitrary sheaves. Here is its argument with the two kinds of Hom distinguished. It uses the dimension theorem in the same lesson and the exceptional-operation rectangle and diagonal identities, (EX.27)–(EX.28). Those identities are proved for a bounded first Hom input and a bounded-below second input, so they can be used before an upper bound for sheaf Hom has been established.
+The [manifold Hom theorem](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-homological-dimension--bounds-for-derived-hom), (M38)–(M44), proves this for arbitrary sheaves. Here is its argument with the two kinds of Hom distinguished. It uses the dimension theorem in the same lesson and the [exceptional-operation rectangle and diagonal identities](../../sheaf-proof-readings/src/SH02/exceptional-operations.md#sh02-ex-diagonal--diagonals-and-product-tests), (EX.27)–(EX.28). Those identities are proved for a bounded first Hom input and a bounded-below second input, so they can be used before an upper bound for sheaf Hom has been established.
 
 First let \(E,F\) be sheaves in degree zero and work in an \(n\)-dimensional coordinate neighborhood \(W\). This neighborhood and all its open subsets are countable at infinity. Write \(q_1,q_2:W\times W\to W\), and set
 
@@ -108,7 +108,7 @@ For modules, a projective resolution of length at most \(g\) makes the possible 
 
 ## Tensor at a conormal chart
 
-First suppose \(\Lambda_i=T_{M_i}^*X_i\) near the points, with \(c_i=\operatorname{codim}M_i\). The coefficient-object model and its normalized type formula give
+First suppose \(\Lambda_i=T_{M_i}^*X_i\) near the points, with \(c_i=\operatorname{codim}M_i\). Replace the inputs by their conormal coefficient models using (3). Equalities involving the original inputs in (4)–(6) are interpreted in the appropriate point-localized categories. The subsequent tensor and support calculations are ordinary sheaf computations for those chosen models. The coefficient-object model and its normalized type formula give
 
 \[
 F_i\simeq (L_i)_{M_i}[s_i],
@@ -206,7 +206,7 @@ R\Gamma\bigl(U;R\mathcal Hom(A_U,B_U)\bigr)
 
 This adjunction can be checked on resolutions. Choose a bounded representative of \(A\) and a bounded-below injective sheaf resolution \(I\) of \(B_U\). Constant inverse image is exact, so its right adjoint \(\Gamma(U;-)\) sends injective sheaves to injective modules. For an injective sheaf \(J\), the sheaf \(\mathcal Hom(A_U^i,J)\) is flabby: a map on a smaller open extends by injectivity from the open extension of its source into the source on the larger open. Each degree of \(\mathcal Hom^\bullet(A_U,I)\) is a finite product of such sheaves. This bounded-below complex therefore computes its derived sections termwise. The ordinary constant-sheaf adjunction identifies its section complex with \(\operatorname{Hom}_k^\bullet(A,\Gamma(U;I))\), which computes the right side of (8). This uses no finite-rank hypothesis.
 
-The constant-section computation on a coordinate ball, (M5), identifies the actual units \(B\to R\Gamma(U;B_U)\) and \(C\to R\Gamma(U;C_U)\) as isomorphisms. Under (8), the map induced by (H5), precomposed with the latter unit, is exactly \(R\operatorname{Hom}_k(A,-)\) applied to the former unit: this follows by evaluating the defining curried map. It is therefore an isomorphism. These identifications commute with restriction to smaller balls because the units and evaluation do. Passing to cohomology stalks over this basis proves (H5).
+The [constant-section computation on a coordinate ball](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator), (M5), identifies the actual units \(B\to R\Gamma(U;B_U)\) and \(C\to R\Gamma(U;C_U)\) as isomorphisms. Under (8), the map induced by (H5), precomposed with the latter unit, is exactly \(R\operatorname{Hom}_k(A,-)\) applied to the former unit: this follows by evaluating the defining curried map. It is therefore an isomorphism. These identifications commute with restriction to smaller balls because the units and evaluation do. Passing to cohomology stalks over this basis proves (H5).
 
 This argument never moves Hom from an infinite module through a filtered colimit: the comparison is already an isomorphism on derived sections over each ball. For the orientation line \(\mathcal O_1\) in (6), apply (H5) on its local trivializations. Changing a trivialization multiplies both sides by the same orientation transition function, by naturality in \(B\). The local comparisons thus glue to
 
@@ -226,7 +226,7 @@ R\Gamma_M^T(C_T)
 \tag{G1}
 \]
 
-To see the coefficient content of this formula, choose a product chart \(U\times V\subset T\) in which \(M\) is \(U\times\{0\}\), \(U\) is a ball in \(M\), and \(V\) is a normal ball of dimension \(c_1\). Sections with support in \(U\times\{0\}\) are the fibre of restriction from \(U\times V\) to \(U\times(V\setminus\{0\})\). Contracting the \(U\)-coordinate supplies a homotopy of this pair over \(V\), so its relative constant-coefficient cohomology is the local cohomology of \(C_V\) at zero. The proper-interval homotopy and point-support computation, (O1)–(O4) and (O11), compute the actual coefficient map as
+To see the coefficient content of this formula, choose a product chart \(U\times V\subset T\) in which \(M\) is \(U\times\{0\}\), \(U\) is a ball in \(M\), and \(V\) is a normal ball of dimension \(c_1\). Sections with support in \(U\times\{0\}\) are the fibre of restriction from \(U\times V\) to \(U\times(V\setminus\{0\})\). Contracting the \(U\)-coordinate supplies a homotopy of this pair over \(V\), so its relative constant-coefficient cohomology is the local cohomology of \(C_V\) at zero. The [proper-interval homotopy](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#homotopy-invariance-from-a-proper-interval-proper-interval-homotopy), [point-to-compact comparison](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-actual-point-to-compact-comparison-point-to-compact-comparison) and [constant-coefficient relative-ball calculation](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#constant-coefficients-on-relative-balls-constant-relative-balls), (O1)–(O4) and (O11), compute the actual coefficient map as
 
 \[
 C\otimes_k H^{c_1}_{\{0\}}(V;k)[-c_1]
@@ -234,11 +234,11 @@ C\otimes_k H^{c_1}_{\{0\}}(V;k)[-c_1]
 \tag{G2}
 \]
 
-Those formulas are proved for arbitrary bounded \(C\). They use the endpoint difference on an interval, compact-support integration in ordered normal coordinates, and excision; they do not require a finite-rank Künneth formula. The normal local-cohomology group is a free rank-one module, and a normal coordinate change acts on it by its local degree. The orientation transition calculation identifies that degree with the sign of the normal determinant. Hence these normal lines glue as \(\operatorname{or}_{M/T}\).
+Those formulas are proved for arbitrary bounded \(C\). They use the endpoint difference on an interval, compact-support integration in ordered normal coordinates, and excision; they do not require a finite-rank Künneth formula. The normal local-cohomology group is a free rank-one module, and a normal coordinate change acts on it by its local degree. The [orientation transition calculation](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#coordinate-changes-and-their-signs-orientation-coordinate-signs) identifies that degree with the sign of the normal determinant. Hence these normal lines glue as \(\operatorname{or}_{M/T}\).
 
 For clarity, the global morphism checked by this calculation is the coefficient multiplication comparison
 \(C_M\otimes h^!k_T\to h^!C_T\).
-The closed-embedding orientation formula identifies \(h^!k_T\) with \(\operatorname{or}_{M/T}[-c_1]\). On the product chart its stalk comparison is precisely (G2), including its coefficient-first tensor order. It is an isomorphism at every point. Closed extension then proves (G1), with no assertion about this tensor comparison for a nonconstant sheaf on \(T\).
+The [closed-embedding orientation formula](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-closed--the-closed-embedding-comparison) identifies \(h^!k_T\) with \(\operatorname{or}_{M/T}[-c_1]\). On the product chart its stalk comparison is precisely (G2), including its coefficient-first tensor order. It is an isomorphism at every point. Closed extension then proves (G1), with no assertion about this tensor comparison for a nonconstant sheaf on \(T\).
 
 Closed support is compatible with closed extension in this square:
 
@@ -293,7 +293,7 @@ The first covector is antipodal by (3). In a full conormal fibre the antipode pr
 
 We now prove (1)–(2) on general smooth conic \(\Lambda_i\). Points where the base projection has locally constant rank form an open dense subset. To see density, choose in any nonempty coordinate patch the largest integer rank attained there. A nonzero minor at a point of that rank stays nonzero on a smaller neighborhood, while maximality in the patch prevents a larger rank. The rank is therefore constant there. Rank zero causes no exception: if that is the maximum, every derivative in the patch is zero.
 
-Here is the actual conormal geometry at a nonzero point of constant rank \(r\), as in constant-rank conormal recognition, Theorem 5.1. Write \(n=\dim X\). Use an invertible \(r\)-by-\(r\) minor of the projection to take its first \(r\) output coordinates and the remaining domain coordinates as coordinates \((u,v)\) on \(\Lambda\). The inverse function theorem gives
+Here is the actual conormal geometry at a nonzero point of constant rank \(r\), as in [constant-rank conormal recognition, Theorem 5.1](../../AN-04/reconstructions/20261005-restored-prescribed-coordinates/prescribed-canonical-coordinates-and-isotropic-fibers.md#5-recognize-conormal-germs-where-the-base-projection-has-constant-rank). Write \(n=\dim X\). Use an invertible \(r\)-by-\(r\) minor of the projection to take its first \(r\) output coordinates and the remaining domain coordinates as coordinates \((u,v)\) on \(\Lambda\). The inverse function theorem gives
 
 \[
 \pi(u,v)=(u,h(u,v)).
@@ -303,9 +303,9 @@ Since the first derivative block is \((I,0)\), constant rank \(r\) forces \(\par
 
 The fibre-radial vector \(R\) is tangent to \(\Lambda\) by conicity. Since \(\omega=d\theta\) and \(\iota_R\omega=\theta\), isotropy gives \(\theta|_{T\Lambda}=0\). For \((x,\xi)\in\Lambda\) and \(v\in T_xM\), choose \(w\in T_{(x,\xi)}\Lambda\) with \(d\pi(w)=v\); then \(\xi(v)=\theta(w)=0\). Thus \(\Lambda\subset T_M^*X\) locally. Both embedded manifolds have dimension \(n\); the inclusion has an invertible derivative and is an open embedding after shrinking. This proves equality of germs near the selected covector. It asserts no equality with all conormal directions or with a global conormal bundle. At a nonzero point \(R\ne0\) lies in the projection kernel, so \(r<n\).
 
-At a zero covector use the smooth-conic zero-covector proof. To recall its essential step, dilation invariance splits the tangent Lagrangian as \(P\oplus P^\perp\). In adapted coordinates, projection to tangential base coordinates \(a\) and normal covectors \(\beta\) is invertible, so the germ is \(b=g(a,\beta)\), \(\alpha=h(a,\beta)\). Dilation gives \(g(a,t\beta)=g(a,\beta)\) and \(h(a,t\beta)=t h(a,\beta)\). Smoothness at \(\beta=0\) makes \(g=g_0(a)\) and \(h\) linear in \(\beta\); the vanishing tautological form gives \(h=-dg_0(a)^T\beta\). These are exactly the conormal equations of \(b=g_0(a)\), including zero covectors. Thus this case also supplies the conormal chart needed for (4)–(9).
+At a zero covector use the [smooth-conic zero-covector proof](../../microlocal-composition-and-pure-sheaves/src/pure-and-simple-sheaves-from-directional-tests.md#a-smooth-conic-lagrangian-at-the-zero-covector-is-conormal). To recall its essential step, dilation invariance splits the tangent Lagrangian as \(P\oplus P^\perp\). In adapted coordinates, projection to tangential base coordinates \(a\) and normal covectors \(\beta\) is invertible, so the germ is \(b=g(a,\beta)\), \(\alpha=h(a,\beta)\). Dilation gives \(g(a,t\beta)=g(a,\beta)\) and \(h(a,t\beta)=t h(a,\beta)\). Smoothness at \(\beta=0\) makes \(g=g_0(a)\) and \(h\) linear in \(\beta\); the vanishing tautological form gives \(h=-dg_0(a)^T\beta\). These are exactly the conormal equations of \(b=g_0(a)\), including zero covectors. Thus this case also supplies the conormal chart needed for (4)–(9).
 
-Take a small connected coordinate neighborhood \(P_i\subset\Lambda_i\) of each chosen \(p_i\). The real common-complement construction gives at \(p_i\) a Lagrangian plane transverse to both \(V_i\) and \(A_i=T\Lambda_i\), in every possible intersection dimension. Extend that plane as a constant Lagrangian plane in a local symplectic frame. After shrinking \(P_i\), openness of transversality gives a continuous family \(\mu_i\) transverse to both varying planes. The rank of their intersection need not be locally constant. Define
+Take a small connected coordinate neighborhood \(P_i\subset\Lambda_i\) of each chosen \(p_i\). The [real common-complement construction](how-simple-sheaf-shifts-change-along-a-lagrangian.md#a-common-complement-over-the-reals) gives at \(p_i\) a Lagrangian plane transverse to both \(V_i\) and \(A_i=T\Lambda_i\), in every possible intersection dimension. Extend that plane as a constant Lagrangian plane in a local symplectic frame. After shrinking \(P_i\), openness of transversality gives a continuous family \(\mu_i\) transverse to both varying planes. The rank of their intersection need not be locally constant. Define
 
 \[
 d_i(q)=d_i+\frac12\bigl[
@@ -315,13 +315,13 @@ d_i(q)=d_i+\frac12\bigl[
 \qquad\text{(10)}
 \]
 
-These shifts have the required parity even where the projection rank jumps. Put \(n_i=\dim X_i\) and \(r_i(q)=\dim(V_i(q)\cap A_i(q))\). Since the other two pairwise intersections with \(\mu_i\) vanish, the degenerate ordered-index parity formula gives
+These shifts have the required parity even where the projection rank jumps. Put \(n_i=\dim X_i\) and \(r_i(q)=\dim(V_i(q)\cap A_i(q))\). Since the other two pairwise intersections with \(\mu_i\) vanish, the [degenerate ordered-index parity formula](normal-forms-and-the-shift-of-a-submanifold-transform.md#the-ordered-index-degeneracy-parity-and-the-cocycle) gives
 
 \[
 \tau(V_i(q),A_i(q),\mu_i(q))\equiv n_i+r_i(q)\pmod2.
 \]
 
-Subtract the same congruence at \(p_i\) and use \(d_i-r_i(p_i)/2\in\mathbb Z\). Formula (10) then gives \(d_i(q)-r_i(q)/2\in\mathbb Z\), as required. It also makes \(d_i(q)-\tau(V_i(q),A_i(q),\mu_i(q))/2\) constant. The continuous-family type theorem consequently gives type \(L_i\) with shift \(d_i(q)\) throughout the connected \(P_i\). This uses local constancy of type; it does not require the half-integer-valued shifts in (10) themselves to be continuous.
+Subtract the same congruence at \(p_i\) and use \(d_i-r_i(p_i)/2\in\mathbb Z\). Formula (10) then gives \(d_i(q)-r_i(q)/2\in\mathbb Z\), as required. It also makes \(d_i(q)-\tau(V_i(q),A_i(q),\mu_i(q))/2\) constant. The [continuous-family type theorem](how-simple-sheaf-shifts-change-along-a-lagrangian.md#follow-a-transverse-auxiliary-plane) consequently gives type \(L_i\) with shift \(d_i(q)\) throughout the connected \(P_i\). This uses local constancy of type; it does not require the half-integer-valued shifts in (10) themselves to be continuous.
 
 For the tensor output, use \(\mu_1\oplus\mu_2\). Its inertia is the sum of the two input inertias, because the product symplectic space is the direct sum. Hence
 \(d_1(q_1)+d_2(q_2)-\tau_{\mathrm{product}}/2\)

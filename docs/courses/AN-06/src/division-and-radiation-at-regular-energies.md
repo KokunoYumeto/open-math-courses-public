@@ -1,6 +1,6 @@
 # Division and radiation at regular energies
 
-*Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0. The linked coordinate supplement retains CC BY-SA 4.0.*
+*Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
 
 **Working question: Why do the two boundary denominators produce different tails?** The denominator \(p-\lambda-i0\) selects the upper resolvent. In the transport model, integrating from the left creates the tail on the right. Reversing the sign reverses that selection. A zero trace cancels the persistent amplitude and permits stronger weights; it does not change the order of the original operator.
@@ -507,6 +507,8 @@ For a smooth compact amplitude and Schwartz \(\Psi\), expand the Fourier integra
 \]
 For each fixed \(h,\eta\), the phase tends to \(-h\cdot\nabla F(\eta)\). On the compact amplitude support dominated convergence gives the inner limit. Its absolute value is at most \(\|b\|_2^2\), by Cauchy–Schwarz, so the integrable \(|\widehat\Psi(h)|\) permits dominated integration in \(h\). Fourier inversion gives the right side of (P1). Smooth approximation of \(b\) in \(L^2\) is uniform in \(R\): Plancherel bounds the change of the quadratic observation by \(\|\Psi\|_\infty\|b-b_j\|_2(\|b\|_2+\|b_j\|_2)\), and the limiting form has the same bound. Finally uniform approximation of a continuous compactly supported \(\Psi\) by smooth functions extends (P1), with error at most \(\|\Psi-\Psi_j\|_\infty\|b\|_2^2\). If the phase is initially defined only near the compact amplitude support, a \(C^1\) cutoff extends it to the whole space before this calculation. This calculation supplies the full phase-concentration input directly, with the inverse-transform sign retained.
 
+The phase-concentration identity (P1) is the inverse-transform version of Hörmander [H1], Theorem 7.1.29. The surface-layer formula is the codimension-one case of his Theorem 7.1.28; the preceding surface lesson and the calculations here give its complete proof in our Fourier normalization.
+
 Write the surface as \(\xi_1=\Sigma(\eta)\), with \(J(\eta)=\sqrt{1+|\nabla\Sigma(\eta)|^2}\), and set \(b(\eta)=a(\Sigma(\eta),\eta)J(\eta)\). Then \(b\in L^2\) on the compact patch and, with \(t=x_1\), \(y=x'\),
 \[
  E a(t,y)=(2\pi)^{-1/2}
@@ -536,3 +538,5 @@ With nonzero trace, the upper and lower solutions differ. The proof used the upp
 
 - [Y] Dmitri Yafaev, *Lectures on scattering theory*, 2004, [arXiv:math/0403213](https://arxiv.org/abs/math/0403213).
 - [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition, American Mathematical Society, 2014. [Freely readable author's edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf).
+
+- [H1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), 2003 reprint, Springer, Theorems 7.1.28–7.1.29, pp. 175–176. [Edition information](https://doi.org/10.1007/978-3-642-61497-2).

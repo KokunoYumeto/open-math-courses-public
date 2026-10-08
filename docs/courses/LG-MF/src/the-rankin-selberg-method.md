@@ -48,12 +48,12 @@ Here \(\operatorname{Re}t>1\); the primitive-row expression includes the factor 
 \[
  \int_0^\infty\int_0^1|f(x+iy)|^2y^{k+\sigma-2}\,dx\,dy<\infty:
 \]
-at zero the integrand after the \(x\)-integration is bounded by \(Cy^{\sigma-2}\), and at infinity it decays exponentially times a power. The Fourier series converges absolutely at every fixed positive height, so integrating its square over \(x\) gives
+at zero the integrand after the \(x\)-integration is bounded by \(Cy^{\sigma-2}\), and at infinity it decays exponentially times a power. The coefficient estimate of the Petersson lesson, Theorem 2.1, bounds \(|a_n|\) by a constant times \(n^{k/2}\). Thus the Fourier series converges absolutely and uniformly for \(0\le x\le1\), \(\epsilon\le y\le M\), for every \(0<\epsilon<M\). Integrate the squares of its finite partial sums and pass to their uniform limit. Since \(\int_0^1e^{2\pi i(n-r)x}dx\) is one when \(n=r\) and zero otherwise, this gives
 \[
  \int_0^1|f(x+iy)|^2dx
        =\sum_{n\ge1}|a_n|^2e^{-4\pi ny}.
 \]
-Tonelli, followed by \(v=4\pi ny\), therefore yields
+The diagonal series is locally uniformly convergent for \(y>0\), including after multiplication by \(y^{k+\sigma-2}\): its terms are bounded on each compact height interval by a constant times \(n^ke^{-4\pi n\epsilon}\). Apply the nonnegative continuous-series assertion of The upper half-plane and the modular group, Lemma 0.3, then substitute \(v=4\pi ny\). It yields
 \[
  \int_0^\infty\int_0^1|f(x+iy)|^2y^{k+\sigma-2}dx\,dy
  =\frac{\Gamma(k+\sigma-1)}{(4\pi)^{k+\sigma-1}}
@@ -79,21 +79,23 @@ This domain is better than the one obtained by separately inserting Hecke's coef
 \tag{1.5}
 \]
 
-**Proof.** First unfold the absolute values with the nonnegative series \(E(z,\sigma)\), \(\sigma=\operatorname{Re}t\). Invariance of \(H\) and of \(d\mu\), and the fundamental-set tiling, give by Tonelli
+**Proof.** First unfold the absolute values with the nonnegative series \(E(z,\sigma)\), \(\sigma=\operatorname{Re}t>1\). Its locally uniform convergence follows directly from the bottom rows: on a compact subset of \(\mathfrak H\), \(|cz+d|\ge\epsilon\sqrt{c^2+d^2}\) and \(y\) is bounded. Hence its summands \(y^\sigma|cz+d|^{-2\sigma}\) have a summable lattice majorant. The dyadic annulus of radius \(2^j\) contributes \(O(2^{(2-2\sigma)j})\), which is summable precisely for \(\sigma>1\). Multiplication by the continuous function \(|H|y^{-2}\) preserves local uniform convergence. The nonnegative plane-series assertion of the first lesson, Lemma 0.3, therefore permits the positive sum to pass through the integral on \(\mathcal F\).
+
+In each term change variables \(w=\gamma z\). Invariance of \(H\) and of \(d\mu\) gives the integral of the period-one function \(|H(w)|\operatorname{Im}(w)^{\sigma-2}\) on \(\gamma\mathcal F\). The Petersson lesson, Lemma 4.0 with \(h=1\), projects these regions into the strip and proves their locally finite partition and the equality of the positive integrals. Consequently
 \[
  \int_{\mathcal F}|H(z)|E(z,\sigma)d\mu
  =\int_0^\infty\int_0^1|H(x+iy)|y^{\sigma-2}dx\,dy<\infty.
 \tag{1.6}
 \]
-The last inequality follows from (1.2) near zero and cusp decay near infinity. The sets \(\gamma\mathcal F\) for representatives of \(\Gamma_\infty\backslash\Gamma\) cover a fundamental set for translations, up to measure-zero boundaries. Both groups contain \(-I\), which acts trivially, so there is no additional factor of two.
+The last inequality follows from the bound \(C_{f,g}y^{\sigma-2}\) near zero and \(Cy^{k+\sigma-2}e^{-4\pi y}\) near infinity. Joining these bounds on a compact height interval gives a continuous integrable majorant depending only on \(y\), so Lemma 0.3 also justifies the displayed iterated rectangular integral. The projected tiles are \(\bigcup_{r\in\mathbb Z}(T^r\gamma\mathcal F\cap\{0\le x<1\})\); a domain \(\gamma\mathcal F\) itself need not lie in one strip. Both groups contain \(-I\), which acts trivially, so there is no additional factor of two.
 
-Absolute convergence now permits unfolding the complex integral:
+The complex coset summands have exactly this positive absolute majorant, since \(|\operatorname{Im}(\gamma z)^t|=\operatorname{Im}(\gamma z)^\sigma\). Their summed absolute integrals are finite by (1.6). The complex-series assertion of Lemma 0.3 and the absolute-integral part of Lemma 4.0 now unfold the complex integral:
 \[
  I_{f,g}(t)=\int_0^\infty\int_0^1
                  f(x+iy)\overline{g(x+iy)}y^{t+k-2}dx\,dy.
 \tag{1.7}
 \]
-At a fixed height, termwise Fourier integration gives
+On each compact positive-height rectangle both Fourier series converge absolutely uniformly, by the same coefficient estimate used in Lemma 1.1. Multiply their finite partial sums, integrate over \(x\), and pass to the uniform limit to obtain
 \[
  \int_0^1 f(x+iy)\overline{g(x+iy)}dx
                   =\sum_{n\ge1}a_n\overline{b_n}e^{-4\pi ny}.
@@ -104,7 +106,7 @@ For \(u=t+k-1\), Lemma 1.1 shows that the integrals of the absolute values of th
  \frac{\Gamma(\operatorname{Re}u)}{(4\pi)^{\operatorname{Re}u}}
                \sum_{n\ge1}|a_n b_n|n^{-\operatorname{Re}u}<\infty.
 \]
-Fubini thus permits the final Mellin integration. Its individual term is
+The diagonal series in (1.8), multiplied by \(y^{u-1}\), is uniformly convergent on each compact positive-height interval: its absolute terms are bounded there by a constant times \(n^ke^{-4\pi n\epsilon}\). Its absolute Mellin integrals have the finite sum just displayed. The one-variable complex-series assertion of Lemma 0.3 therefore permits the final Mellin integration. Its individual term is
 \(\int_0^\infty e^{-4\pi ny}y^{u-1}dy=(4\pi n)^{-u}\Gamma(u)\), proving (1.5). ∎
 
 ## 2. The completed function and its residue
@@ -165,7 +167,7 @@ For the first bound, split the integers into the two rays on either side of \(-b
 \tag{2.4b}
 \]
 The constant is absolute and the estimate is uniform in \(x\). If \(|\operatorname{Re}t|\le A\), with \(A\ge0\), then \(|v^{t-1}+v^{-t}|\le2v^A\). Substituting \(v=yw\) bounds the entire part of (2.4a) by
-\(C_A y^{A+3/2}\), since \(\int_0^\infty e^{-\pi w/2}w^A dw\) is finite. Multiplication by \(|H(z)|\le C y^ke^{-4\pi y}\) and by the measure factor \(y^{-2}\) gives an integrable majorant for every compact parameter set. On the compact remainder of \(\mathcal F\), the preceding lesson's Gaussian bound supplies the same domination. Cauchy's formula on a small parameter circle, followed by dominated integration, proves that integrating this entire part gives an entire function.
+\(C_A y^{A+3/2}\), since \(\int_0^\infty e^{-\pi w/2}w^A dw\) is finite. Multiplication by \(|H(z)|\le C y^ke^{-4\pi y}\) and by the measure factor \(y^{-2}\) gives an integrable majorant for every compact parameter set. On the compact remainder of \(\mathcal F\), the preceding lesson's Gaussian bound supplies the same domination. The entire part is jointly continuous in \((t,z)\), by its locally uniform Gaussian integral, and holomorphic in \(t\) for each \(z\). Apply the continuous holomorphic-parameter assertion of the first lesson, Lemma 0.3, with density \(y^{-2}\) and the majorant just obtained. Its compact Riemann sums and uniform integral tails prove that integrating this entire part gives an entire function.
 
 Thus the only meromorphic terms in the integrated formula are
 \(\langle f,g\rangle/(2(t-1))-\langle f,g\rangle/(2t)\). This proves both residues, including the case of a zero inner product. Both the rational expression and the two integral powers in (2.4a) are unchanged under \(t\mapsto1-t\), which proves the reflection after integration. No continuous-spectrum theorem is used. For comparison, writing \(\Xi(w)=\pi^{-w/2}\Gamma(w/2)\zeta(w)\), the preceding lesson's Fourier expansion has constant term
@@ -174,6 +176,24 @@ Thus the only meromorphic terms in the integrated formula are
 \tag{2.4}
 \]
 The apparent poles of the two individual \(\Xi\)-terms at \(t=1/2\) cancel by (2.4a); treating them separately would conceal that cancellation. ∎
+
+### Continuous integral route for the Gamma facts
+
+The Gamma integral, recurrence, continuation and entire reciprocal used in Theorem 2.2 have their explicit integral and product proofs in The Gamma function and Stirling's formula, Theorems 1.1–1.2. The two integral limits in those proofs admit the following continuous route from lesson 01, Lemma 0.3.
+
+On a compact parameter set in \(\operatorname{Re}z>0\), choose \(0<a\le\operatorname{Re}z\le b\). The integrand \(e^{-u}u^{z-1}\), for \(u>0\), is jointly continuous and holomorphic in \(z\), and its absolute value is bounded by the fixed continuous integrable function
+\[
+ M(u)=e^{-u}(u^{a-1}+u^{b-1}).
+\]
+The power integral converges at zero because \(a>0\); the exponential controls every fixed power at infinity, as follows by bounding that power with a sufficiently high term of the exponential series. The holomorphic-parameter part of Lemma 0.3 therefore proves holomorphy of the Gamma integral without differentiation under a measurable integral. Integration by parts, with these endpoint bounds, gives its recurrence.
+
+For Gauss's limit, put \(F_N(u,z)=u^{z-1}(1-u/N)^N\) on \(0<u<N\), and zero on \(u\ge N\), where \(N\) is a positive integer. This is continuous on \(u>0\), including at \(u=N\), and \(|F_N(u,z)|\le M(u)\), since \(\log(1-v)\le-v\) for \(0\le v<1\). On \(0<\epsilon\le u\le B\) and \(N>2B\), the power series for the real logarithm gives
+\[
+ |N\log(1-u/N)+u|\le B^2/N.
+\]
+Hence \(F_N\to e^{-u}u^{z-1}\) uniformly on every compact positive-\(u\) interval, uniformly on the compact parameter set. Cut off the two tails using the same \(M\), then use this compact uniform estimate; the integrals converge uniformly in the parameters. This is precisely the continuous tail argument of Lemma 0.3. Repeated integration by parts in the finite beta integral and the affine substitution \(u=Nt\), justified directly by its interval Riemann sums, now give Gauss's limit.
+
+The remaining finite-product argument is the explicit proof in Theorem 1.2 of the linked lesson: its logarithmic tails are \(O_K(n^{-2})\), uniformly on compact sets. The constant \(H_N-\log N\) converges by real completeness: it is decreasing because \(\log(1+1/N)\ge1/(N+1)\), and bounded below by the integral comparison \(H_N\ge\log(N+1)\). Thus that product converges locally uniformly to an entire function with just the stated simple zeros, and its product with Gamma equals one in the right half-plane and hence meromorphically everywhere. These arguments supply the Gamma facts needed here using continuous integrals; they do not assume a general measurable convergence theorem.
 
 **Theorem 2.2 (continuation, functional equation and poles).** The function \(\Lambda_{f,g}\) is meromorphic on \(\mathbb C\), holomorphic except for possible simple poles at \(u=k,k-1\), and
 \[
@@ -601,10 +621,10 @@ Give a complete argument for arbitrary cusp forms and for the divisor estimate n
 
 ### Solution 1
 
-For \(\sigma=\operatorname{Re}t>1\), boundedness of \(H\) gives integrability of \(|H|y^{\sigma-2}\) on the part of the strip with \(0<y<1\); cusp decay gives it on \(y\ge1\). Tonelli applied to the positive coset sum shows that the integral over \(\mathcal F\) of \(|H|E(z,\sigma)\) is this finite strip integral. Thus Fubini is available for the complex coset sum. Change variables \(w=\gamma z\) in each summand. Invariance of \(H\) and of \(d\mu\) makes its contribution \(\int_{\gamma\mathcal F}H(w)\operatorname{Im}(w)^t d\mu(w)\). The coset translates form a translation fundamental set, giving (1.7).
+For \(\sigma=\operatorname{Re}t>1\), boundedness of \(H\) gives integrability of \(|H|y^{\sigma-2}\) on the part of the strip with \(0<y<1\); cusp decay gives it on \(y\ge1\). The bottom-row estimate in Theorem 1.2 proves local uniform convergence of the positive coset sum. Apply the first lesson, Lemma 0.3, to pass this nonnegative series through the integral. Change variables \(w=\gamma z\) in each term; invariance of \(H\) and of \(d\mu\) makes its contribution the integral of \(|H(w)|\operatorname{Im}(w)^{\sigma-2}\) on \(\gamma\mathcal F\). The width-one projected tiling proved in the Petersson lesson, Lemma 4.0, sums these to the finite strip integral. The complex-series assertion of Lemma 0.3 is now applicable, and the same projected partition for \(H(w)\operatorname{Im}(w)^{t-2}\) gives (1.7).
 
-Expand the two Fourier series at a fixed positive height. The elementary integral
-\(\int_0^1e^{2\pi i(n-m)x}dx\) is one for \(n=m\) and zero otherwise, so only \(a_n\overline{b_n}e^{-4\pi ny}\) remains. The diagonal-square computation (1.4) and Cauchy–Schwarz show that the sum of its absolute Mellin integrals is finite for \(\operatorname{Re}(t+k-1)>k\). It is therefore legitimate to integrate each diagonal term. With \(v=4\pi ny\),
+Expand the two Fourier series uniformly on each compact positive-height rectangle, as justified by Theorem 2.1 of the Petersson lesson. The elementary integral
+\(\int_0^1e^{2\pi i(n-m)x}dx\) is one for \(n=m\) and zero otherwise, so only \(a_n\overline{b_n}e^{-4\pi ny}\) remains. The diagonal-square computation (1.4), using the nonnegative continuous-series assertion of Lemma 0.3, and Cauchy–Schwarz show that the sum of its absolute Mellin integrals is finite for \(\operatorname{Re}(t+k-1)>k\). The diagonal series is locally uniformly convergent for \(y>0\), so the complex-series assertion of that lemma permits integration of each term. With \(v=4\pi ny\),
 \[
  \int_0^\infty y^{t+k-2}e^{-4\pi ny}dy
   =(4\pi n)^{-t-k+1}\int_0^\infty v^{t+k-2}e^{-v}dv.
@@ -687,7 +707,7 @@ The general continuous-boundary Wiener–Ikehara theorem is stated before (4.1),
 
 The inherited results are precisely: the Petersson lesson, Theorems 1.1 and 2.1, for integrability, positivity and the invariant bound; the level-one Hecke lesson, Theorems 4.2–4.3, for the normalized orthogonal eigenbasis, multiplicity one and coefficient recurrences; the ring lesson, Theorem 2.2 and Theorem 4.1, for the discriminant product and \(S_{12}=\mathbb C\Delta\); and the preceding Eisenstein lesson, Theorem 2.2, Theorem 3.2 and Corollary 3.3, for the Fourier expansion, completed continuation, reflection and residue. Its Section 3 and Solution 3 supply the zeta continuation and \(\zeta(2)=\pi^2/6\). No Maass spectral existence theorem is needed for the integral proof.
 
-The Gamma integral, recurrence, meromorphic continuation and entire reciprocal have programme proofs in The Gamma function and Stirling's formula, Theorems 1.1–1.2. We use Tonelli, Fubini, dominated integration, Fourier orthogonality and Cauchy–Schwarz as in the Petersson and Eisenstein lessons. The holomorphic-parameter step in Lemma 2.1 follows from Cauchy's formula and its explicit Gaussian majorant. The polynomial root argument in Lemma 3.1 is proved there. The composite-Simpson error estimate is proved from its explicit remainder kernel in (4.10a); it affects the numerical approximation, while (4.5)–(4.7) are exact identities.
+The Gamma integral, recurrence, meromorphic continuation and entire reciprocal have programme proofs in The Gamma function and Stirling's formula, Theorems 1.1–1.2. The nonnegative and absolutely integrable continuous-series interchanges, the rectangular integral exchange, and the holomorphic-parameter integration used here are proved in The upper half-plane and the modular group, Lemma 0.3. The coset unfolding uses The Petersson inner product and Poincaré series, Lemma 4.0, whose locally finite projected tiles have zero-area boundaries on compact truncations. Fourier orthogonality is obtained from finite Fourier polynomials and their uniform limits in Lemma 1.1 and Theorem 1.2; the Cauchy–Schwarz estimate is the finite-sum inequality followed by increasing limits. The holomorphic-parameter step in Lemma 2.1 checks the explicit Gaussian majorant against the same continuous integration lemma. Real completeness, elementary continuous integration and compactness remain foundational prerequisites. The real plane change-of-variables theorem for the Möbius substitutions has not been proved here, and general measurable-domain integration retains its separate prerequisite status in the Petersson lesson, Theorem 1.1. These continuous arguments make no assertion of general measurable Tonelli, Fubini or dominated convergence. The polynomial root argument in Lemma 3.1 is proved there. The composite-Simpson error estimate is proved from its explicit remainder kernel in (4.10a); it affects the numerical approximation, while (4.5)–(4.7) are exact identities.
 
 The higher-rank tensor-factor algebra is proved in (5.4). Its identification with local integrals and the general completed continuation, Getz–Hahn, Theorems 11.6.1 and 11.7.1, remain required proofs for the higher-rank extension. A general symmetric-square lifting theorem, the Langlands–Shahidi method, and the historical quantitative Rankin–Selberg mean-square remainder are likewise not proved here. The full-level unfolding, continuation, residues, functional equation and local algebra above are independently derived from the explicit Eisenstein formulas and proved earlier analytic inputs.
 

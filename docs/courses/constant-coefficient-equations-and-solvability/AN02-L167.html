@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Exponential-polynomial solutions and convex approximation</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L166.html">Previous lesson</a> · <a href="#1-the-equation-and-the-approximation-topology">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="learning-convex-approximation-for-convolution-equations">Learning convex approximation for convolution equations</h1>
+<p>Original exposition, examples and solutions: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>A compact convolution kernel determines where a local equation makes sense. Its complex characteristic frequencies supply explicit entire solutions. On an open convex set, finite sums of these solutions approximate every smooth homogeneous solution, with all derivatives on each compact observation set. The proof connects three objects: an annihilator, an entire quotient, and a convex analytic carrier.</p>
+<p>Basic references are Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, Melrose's <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">Tempered distributions and the Fourier transform</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. Read <a href="AN02-L122.html">Compact Fourier division and multiplicity-sensitive annihilators</a> for the negative-exponential transform convention, and <a href="AN02-L146.html#af1-the-definition-and-the-exact-theorem">Fourier transforms of analytic functionals on a real convex carrier</a> for the precise small-exponential-loss criterion. The complete arguments for this lesson are Theorems 1.1, 3.1 and 5.1 and Lemmas 4.1–4.2 below.</p>
+<h2 id="1-the-equation-and-the-approximation-topology">1. The equation and the approximation topology</h2>
+<p>For a nonzero compact distribution <span class="math" data-index="0" data-tex="\(\mu\)">\(\mu\)</span>, put</p>
+<span class="math math-display" id="eq-L1" data-index="1" data-tex="\[
+ X_\mu=\{x:x-\operatorname{supp}\mu\subset X\}.
+ \tag{L1}
+\]">\[
+ X_\mu=\{x:x-\operatorname{supp}\mu\subset X\}.
+ \tag{L1}
+\]</span>
+<p>Every point used in the convolution must belong to <span class="math" data-index="2" data-tex="\(X\)">\(X\)</span>. This condition, together with a neighborhood of the compact translated support, lets the finite-order distribution act on <span class="math" data-index="3" data-tex="\(y\mapsto u(x-y)\)">\(y\mapsto u(x-y)\)</span>. The set <span class="math" data-index="4" data-tex="\(X_\mu\)">\(X_\mu\)</span> is open. It is convex when <span class="math" data-index="5" data-tex="\(X\)">\(X\)</span> is convex.</p>
+<p>The homogeneous solution space is</p>
+<span class="math math-display" id="eq-L2" data-index="6" data-tex="\[
+ N_\mu(X)=\{u\in C^\infty(X):\mu*u=0\text{ in }X_\mu\}.
+ \tag{L2}
+\]">\[
+ N_\mu(X)=\{u\in C^\infty(X):\mu*u=0\text{ in }X_\mu\}.
+ \tag{L2}
+\]</span>
+<p>The approximating space <span class="math" data-index="7" data-tex="\(E_\mu\)">\(E_\mu\)</span> consists of finite linear combinations of</p>
+<span class="math math-display" id="eq-L3" data-index="8" data-tex="\[
+ f(x)e^{ix\cdot\lambda},\qquad
+ f\text{ a polynomial},\quad\lambda\in\mathbb C^n,
+ \quad\mu*(f e^{ix\cdot\lambda})=0\text{ everywhere}.
+ \tag{L3}
+\]">\[
+ f(x)e^{ix\cdot\lambda},\qquad
+ f\text{ a polynomial},\quad\lambda\in\mathbb C^n,
+ \quad\mu*(f e^{ix\cdot\lambda})=0\text{ everywhere}.
+ \tag{L3}
+\]</span>
+<p>The polynomial factors remember zero multiplicities. Theorem 5.1 says that for each compact <span class="math" data-index="9" data-tex="\(K\subset X\)">\(K\subset X\)</span>, derivative order <span class="math" data-index="10" data-tex="\(m\)">\(m\)</span>, and tolerance <span class="math" data-index="11" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, a single such finite sum satisfies</p>
+<span class="math math-display" id="eq-L4" data-index="12" data-tex="\[
+ \max_{|\alpha|\leq m}\sup_K|\partial^\alpha(u-h)|&lt;\varepsilon.
+ \tag{L4}
+\]">\[
+ \max_{|\alpha|\leq m}\sup_K|\partial^\alpha(u-h)|&lt;\varepsilon.
+ \tag{L4}
+\]</span>
+<p>An approximation on one compact set does not impose a global growth bound on <span class="math" data-index="13" data-tex="\(u\)">\(u\)</span>, and the finite sum can change when the set, derivative order or tolerance changes.</p>
+<h2 id="2-why-the-reflected-symbol-appears">2. Why the reflected symbol appears</h2>
+<p>Write</p>
+<span class="math math-display" id="eq-L5" data-index="14" data-tex="\[
+ F_v(\zeta)=v(e^{-ix\cdot\zeta}),\qquad
+ B(\zeta)=F_\mu(-\zeta).
+ \tag{L5}
+\]">\[
+ F_v(\zeta)=v(e^{-ix\cdot\zeta}),\qquad
+ B(\zeta)=F_\mu(-\zeta).
+ \tag{L5}
+\]</span>
+<p>Then</p>
+<span class="math math-display" id="eq-L6" data-index="15" data-tex="\[
+ \mu*e^{-ix\cdot\zeta}=B(\zeta)e^{-ix\cdot\zeta}.
+ \tag{L6}
+\]">\[
+ \mu*e^{-ix\cdot\zeta}=B(\zeta)e^{-ix\cdot\zeta}.
+ \tag{L6}
+\]</span>
+<p>At a zero of <span class="math" data-index="16" data-tex="\(B\)">\(B\)</span> of directional order <span class="math" data-index="17" data-tex="\(r\)">\(r\)</span>, differentiating (L6) <span class="math" data-index="18" data-tex="\(k&lt;r\)">\(k&lt;r\)</span> times produces the solutions
+<span class="math" data-index="19" data-tex="\((-ix\cdot\theta)^k e^{-ix\cdot\zeta}\)">\((-ix\cdot\theta)^k e^{-ix\cdot\zeta}\)</span>.
+If a compact <span class="math" data-index="20" data-tex="\(v\)">\(v\)</span> kills all solutions, its transform has all the corresponding zero derivatives. One-variable division on transverse complex lines removes every zero of <span class="math" data-index="21" data-tex="\(B\)">\(B\)</span>. A Cauchy circle that surrounds the roots makes the quotient holomorphic in the other variables too, even when roots collide. Theorem 1.1 gives the exact equivalence</p>
+<span class="math math-display" id="eq-L7" data-index="22" data-tex="\[
+ v(E_\mu)=0
+ \quad\Longleftrightarrow\quad
+ F_v=B G\text{ with }G\text{ entire}.
+ \tag{L7}
+\]">\[
+ v(E_\mu)=0
+ \quad\Longleftrightarrow\quad
+ F_v=B G\text{ with }G\text{ entire}.
+ \tag{L7}
+\]</span>
+<p>The converse uses the full finite polynomial-jet product identity, so it covers arbitrary polynomial factors rather than only powers of one directional coordinate.</p>
+<p><strong>Example 1: a shifted first derivative.</strong> Let <span class="math" data-index="23" data-tex="\(\mu=\delta&#x27;_a\)">\(\mu=\delta&#x27;_a\)</span> on the line, with <span class="math" data-index="24" data-tex="\(a=3/4\)">\(a=3/4\)</span>. The derivative distribution acts by <span class="math" data-index="25" data-tex="\(\delta&#x27;_a(\phi)=-\phi&#x27;(a)\)">\(\delta&#x27;_a(\phi)=-\phi&#x27;(a)\)</span>. Consequently</p>
+<span class="math math-display" id="eq-L8" data-index="26" data-tex="\[
+ \mu*u(x)=u&#x27;(x-a),\qquad
+ F_\mu(\zeta)=i\zeta e^{-ia\zeta},\qquad
+ B(\zeta)=-i\zeta e^{ia\zeta}.
+ \tag{L8}
+\]">\[
+ \mu*u(x)=u&#x27;(x-a),\qquad
+ F_\mu(\zeta)=i\zeta e^{-ia\zeta},\qquad
+ B(\zeta)=-i\zeta e^{ia\zeta}.
+ \tag{L8}
+\]</span>
+<p>Take <span class="math" data-index="27" data-tex="\(X=(-2,2)\)">\(X=(-2,2)\)</span>. Then <span class="math" data-index="28" data-tex="\(X_\mu=(a-2,a+2)\)">\(X_\mu=(a-2,a+2)\)</span>, and the local equation says <span class="math" data-index="29" data-tex="\(u&#x27;=0\)">\(u&#x27;=0\)</span> throughout <span class="math" data-index="30" data-tex="\(X\)">\(X\)</span>. Its solutions are constants.
+At a characteristic frequency the polynomial factor must also be constant: the only zero of <span class="math" data-index="31" data-tex="\(B\)">\(B\)</span> is the simple zero at the origin. Thus <span class="math" data-index="32" data-tex="\(E_\mu\)">\(E_\mu\)</span> consists exactly of constants, and approximation is equality in this example.</p>
+<p>For <span class="math" data-index="33" data-tex="\(v=\delta_{-1}-\delta_1\)">\(v=\delta_{-1}-\delta_1\)</span>, the transform is <span class="math" data-index="34" data-tex="\(2i\sin\zeta\)">\(2i\sin\zeta\)</span>, and its quotient is</p>
+<span class="math math-display" id="eq-L9" data-index="35" data-tex="\[
+ G(\zeta)=-2e^{-ia\zeta}\frac{\sin\zeta}{\zeta}.
+ \tag{L9}
+\]">\[
+ G(\zeta)=-2e^{-ia\zeta}\frac{\sin\zeta}{\zeta}.
+ \tag{L9}
+\]</span>
+<p>The apparent singularity at zero is removable. The quotient's carrier is <span class="math" data-index="36" data-tex="\([a-1,a+1]\)">\([a-1,a+1]\)</span>, because <span class="math" data-index="37" data-tex="\(\sin\zeta/\zeta\)">\(\sin\zeta/\zeta\)</span> is the transform of the probability measure with constant density <span class="math" data-index="38" data-tex="\(1/2\)">\(1/2\)</span> on <span class="math" data-index="39" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Multiplication by <span class="math" data-index="40" data-tex="\(-2e^{-ia\zeta}\)">\(-2e^{-ia\zeta}\)</span> scales and translates that measure. The reflected derivative carrier is <span class="math" data-index="41" data-tex="\(\{-a\}\)">\(\{-a\}\)</span>, and their sum is <span class="math" data-index="42" data-tex="\([-1,1]=\operatorname{conv}\operatorname{supp}v\)">\([-1,1]=\operatorname{conv}\operatorname{supp}v\)</span>. All signs locate the carrier correctly.</p>
+<p><strong>Example 2: a double translation difference.</strong> Let <span class="math" data-index="43" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and</p>
+<span class="math math-display" id="eq-L10" data-index="44" data-tex="\[
+ \mu=(\delta_0-\delta_a)*(\delta_0-\delta_a)
+             =\delta_0-2\delta_a+\delta_{2a}.
+ \tag{L10}
+\]">\[
+ \mu=(\delta_0-\delta_a)*(\delta_0-\delta_a)
+             =\delta_0-2\delta_a+\delta_{2a}.
+ \tag{L10}
+\]</span>
+<p>The reflected symbol is <span class="math" data-index="45" data-tex="\(B(\zeta)=(1-e^{ia\zeta})^2\)">\(B(\zeta)=(1-e^{ia\zeta})^2\)</span>. Its zeros <span class="math" data-index="46" data-tex="\(2\pi k/a\)">\(2\pi k/a\)</span> have order two, so the polynomial solutions at each frequency have the form</p>
+<span class="math math-display" id="eq-L11" data-index="47" data-tex="\[
+ (A+Bx)e^{2\pi ikx/a}.
+ \tag{L11}
+\]">\[
+ (A+Bx)e^{2\pi ikx/a}.
+ \tag{L11}
+\]</span>
+<p>To see that there are no higher-degree polynomial factors, the second difference of a polynomial of degree <span class="math" data-index="48" data-tex="\(d\geq2\)">\(d\geq2\)</span> has leading coefficient <span class="math" data-index="49" data-tex="\(a^2d(d-1)\)">\(a^2d(d-1)\)</span> times its original leading coefficient and degree <span class="math" data-index="50" data-tex="\(d-2\)">\(d-2\)</span>.</p>
+<p>A smooth global homogeneous solution has the form</p>
+<span class="math math-display" id="eq-L12" data-index="51" data-tex="\[
+ u(x)=p(x)+xq(x),\qquad p,q\text{ smooth and }a\text{-periodic}.
+ \tag{L12}
+\]">\[
+ u(x)=p(x)+xq(x),\qquad p,q\text{ smooth and }a\text{-periodic}.
+ \tag{L12}
+\]</span>
+<p>Indeed <span class="math" data-index="52" data-tex="\(g(x)=u(x)-u(x-a)\)">\(g(x)=u(x)-u(x-a)\)</span> is periodic by the homogeneous equation. Set <span class="math" data-index="53" data-tex="\(q=g/a\)">\(q=g/a\)</span> and <span class="math" data-index="54" data-tex="\(p=u-xq\)">\(p=u-xq\)</span>. Then
+<span class="math" data-index="55" data-tex="\(p(x)-p(x-a)=g(x)-a q(x)=0\)">\(p(x)-p(x-a)=g(x)-a q(x)=0\)</span>.
+Conversely the second difference of (L12) is zero. Fourier partial sums for <span class="math" data-index="56" data-tex="\(p,q\)">\(p,q\)</span> converge with every fixed derivative: integrating their coefficients by parts arbitrarily many times gives bounds by every negative power of the integer frequency. On a bounded interval, multiplying the second sum by <span class="math" data-index="57" data-tex="\(x\)">\(x\)</span> preserves each fixed derivative convergence. This gives an explicit approximation by (L11).</p>
+<h2 id="3-quotients-have-convex-analytic-carriers">3. Quotients have convex analytic carriers</h2>
+<p>The logarithm of a nonzero entire function is PSH, allowing minus infinity at its zeros. After smoothing the compact distributions by one nonzero compact smooth <span class="math" data-index="58" data-tex="\(\phi\)">\(\phi\)</span>, the two products</p>
+<span class="math math-display" id="eq-L13" data-index="59" data-tex="\[
+ F_\phi F_{\check\mu},\qquad F_\phi F_v
+ \tag{L13}
+\]">\[
+ F_\phi F_{\check\mu},\qquad F_\phi F_v
+ \tag{L13}
+\]</span>
+<p>are transforms of compact smooth functions. Their logarithms have uniform imaginary-growth bounds and exact support indicators. Theorem 3.1 proves that their indicator difference is a support function, and gives</p>
+<span class="math math-display" id="eq-L14" data-index="60" data-tex="\[
+ |G(\zeta)|\leq C_\varepsilon
+ e^{H_{K_2}(\operatorname{Im}\zeta)+\varepsilon|\zeta|}
+ \quad\text{for every }\varepsilon&gt;0,
+ \qquad
+ K_2+\operatorname{conv}\operatorname{supp}\check\mu
+       =\operatorname{conv}\operatorname{supp}v.
+ \tag{L14}
+\]">\[
+ |G(\zeta)|\leq C_\varepsilon
+ e^{H_{K_2}(\operatorname{Im}\zeta)+\varepsilon|\zeta|}
+ \quad\text{for every }\varepsilon&gt;0,
+ \qquad
+ K_2+\operatorname{conv}\operatorname{supp}\check\mu
+       =\operatorname{conv}\operatorname{supp}v.
+ \tag{L14}
+\]</span>
+<p>Every small loss is allowed, with its own constant. A real-axis polynomial bound is not asserted. The analytic-functional theorem supplies <span class="math" data-index="61" data-tex="\(\sigma\)">\(\sigma\)</span> carried by <span class="math" data-index="62" data-tex="\(K_2\)">\(K_2\)</span> with <span class="math" data-index="63" data-tex="\(F_\sigma=G\)">\(F_\sigma=G\)</span>, including a proved action on holomorphic germs near that real convex carrier.</p>
+<p><strong>Example 3: three translated rectangles.</strong> In two dimensions take</p>
+<span class="math math-display" id="eq-L15" data-index="64" data-tex="\[
+ \mu=\delta_{(0,0)}+2\delta_{(2,0)}+3\delta_{(0,1)},\qquad
+ K_2=[-1/2,1/2]\times[-1/4,1/4].
+ \tag{L15}
+\]">\[
+ \mu=\delta_{(0,0)}+2\delta_{(2,0)}+3\delta_{(0,1)},\qquad
+ K_2=[-1/2,1/2]\times[-1/4,1/4].
+ \tag{L15}
+\]</span>
+<p>Let <span class="math" data-index="65" data-tex="\(\sigma\)">\(\sigma\)</span> be the probability measure with constant density on <span class="math" data-index="66" data-tex="\(K_2\)">\(K_2\)</span>, and set <span class="math" data-index="67" data-tex="\(v=\sigma*\check\mu\)">\(v=\sigma*\check\mu\)</span>. Direct convolution pairing gives
+<span class="math" data-index="68" data-tex="\(v(h)=\sigma(\mu*h)=0\)">\(v(h)=\sigma(\mu*h)=0\)</span> for every entire homogeneous solution.
+Its quotient is</p>
+<span class="math math-display" id="eq-L16" data-index="69" data-tex="\[
+ G(\zeta)=
+ \frac{\sin(\zeta_1/2)}{\zeta_1/2}
+ \frac{\sin(\zeta_2/4)}{\zeta_2/4},
+ \qquad
+ H_{K_2}(\eta)=\tfrac12|\eta_1|+\tfrac14|\eta_2|.
+ \tag{L16}
+\]">\[
+ G(\zeta)=
+ \frac{\sin(\zeta_1/2)}{\zeta_1/2}
+ \frac{\sin(\zeta_2/4)}{\zeta_2/4},
+ \qquad
+ H_{K_2}(\eta)=\tfrac12|\eta_1|+\tfrac14|\eta_2|.
+ \tag{L16}
+\]</span>
+<p>Each sine quotient takes value one at zero. The reflected support triangle has vertices <span class="math" data-index="70" data-tex="\((0,0),(-2,0),(0,-1)\)">\((0,0),(-2,0),(0,-1)\)</span> and support function</p>
+<span class="math math-display" id="eq-L17" data-index="71" data-tex="\[
+ H_{K_-}(\eta)=\max\{0,-2\eta_1,-\eta_2\}.
+ \tag{L17}
+\]">\[
+ H_{K_-}(\eta)=\max\{0,-2\eta_1,-\eta_2\}.
+ \tag{L17}
+\]</span>
+<p>Positive weights make the actual support of <span class="math" data-index="72" data-tex="\(v\)">\(v\)</span> the union of the three translated rectangles. Its convex hull is the pentagon with vertices</p>
+<span class="math math-display" id="eq-L18" data-index="73" data-tex="\[
+ (-5/2,-1/4),\ (-1/2,-5/4),\ (1/2,-5/4),\
+ (1/2,1/4),\ (-5/2,1/4).
+ \tag{L18}
+\]">\[
+ (-5/2,-1/4),\ (-1/2,-5/4),\ (1/2,-5/4),\
+ (1/2,1/4),\ (-5/2,1/4).
+ \tag{L18}
+\]</span>
+<p>Its support function is <span class="math" data-index="74" data-tex="\(H_{K_2}+H_{K_-}\)">\(H_{K_2}+H_{K_-}\)</span>.
+For <span class="math" data-index="75" data-tex="\(X=(-3,1)\times(-2,1)\)">\(X=(-3,1)\times(-2,1)\)</span>, every vertex and the whole pentagon lie in <span class="math" data-index="76" data-tex="\(X\)">\(X\)</span>. The exact convolution domain is <span class="math" data-index="77" data-tex="\(X_\mu=(-1,1)^2\)">\(X_\mu=(-1,1)^2\)</span>, which contains <span class="math" data-index="78" data-tex="\(K_2\)">\(K_2\)</span>.</p>
+<figure><img class="course-figure" width="2432" height="1121" src="reproduce/L167/figures/reflected-carriers-and-convex-domain.png" alt="Three reflected translates of the rectangle give the actual support of the annihilator; their convex hull lies inside the open domain, and the original rectangle lies inside the convolution domain." /><figcaption class="native"><a href="reproduce/L167/figures/reflected-carriers-and-convex-domain.png">Open full-size PNG</a> · <a href="reproduce/L167/figures/reflected-carriers-and-convex-domain.svg">Open SVG</a></figcaption></figure>
+<p>The shaded translated rectangles are the actual support. The dashed pentagon is its convex hull <span class="math" data-index="79" data-tex="\(K_v=K_2+K_-\)">\(K_v=K_2+K_-\)</span>. The second panel shows the open domain <span class="math" data-index="80" data-tex="\(X\)">\(X\)</span>, its erosion <span class="math" data-index="81" data-tex="\(X_\mu\)">\(X_\mu\)</span>, and the analytic carrier <span class="math" data-index="82" data-tex="\(K_2\)">\(K_2\)</span>. Boundary lines show the defining inequalities; they do not add boundary points to the two open sets. The caption illustrates (5.9), not an equality of nonconvex supports for arbitrary complex kernels.</p>
+<h2 id="4-from-entire-tests-to-local-homogeneous-solutions">4. From entire tests to local homogeneous solutions</h2>
+<p>On entire tests, the transform identity gives</p>
+<span class="math math-display" id="eq-L19" data-index="83" data-tex="\[
+ v(h)=\sigma(\mu*h).
+ \tag{L19}
+\]">\[
+ v(h)=\sigma(\mu*h).
+ \tag{L19}
+\]</span>
+<p>Differentiating at frequency zero gives every polynomial moment. Uniform Taylor convergence and the two continuity bounds then prove this identity for all entire tests.</p>
+<p>A general smooth test cannot be inserted into an analytic functional. Instead take a compact smooth <span class="math" data-index="84" data-tex="\(w\)">\(w\)</span> and Gaussian-smoothed entire <span class="math" data-index="85" data-tex="\(w_j=E_j*w\)">\(w_j=E_j*w\)</span>. Then</p>
+<span class="math math-display" id="eq-L20" data-index="86" data-tex="\[
+ w_j\longrightarrow w\text{ smoothly on the real space},\qquad
+ \mu*w_j=E_j*(\mu*w).
+ \tag{L20}
+\]">\[
+ w_j\longrightarrow w\text{ smoothly on the real space},\qquad
+ \mu*w_j=E_j*(\mu*w).
+ \tag{L20}
+\]</span>
+<p>If <span class="math" data-index="87" data-tex="\(\mu*w\)">\(\mu*w\)</span> is analytic near <span class="math" data-index="88" data-tex="\(K_2\)">\(K_2\)</span>, Lemma 4.1 proves uniform complex convergence near that carrier. Its contour move removes the positive factor from the imaginary part of the Gaussian exponent.</p>
+<figure><img class="course-figure" width="2432" height="1102" src="reproduce/L167/figures/gaussian-contour-localization.png" alt="A one-variable Gaussian contour is moved from the real interval to the height of the complex observation point; vertical endpoint contributions have a strictly negative exponential bound." /><figcaption class="native"><a href="reproduce/L167/figures/gaussian-contour-localization.png">Open full-size PNG</a> · <a href="reproduce/L167/figures/gaussian-contour-localization.svg">Open SVG</a></figcaption></figure>
+<p>For this diagram <span class="math" data-index="89" data-tex="\(R=1\)">\(R=1\)</span>, <span class="math" data-index="90" data-tex="\(z=2/5+i/5\)">\(z=2/5+i/5\)</span>, and the integration interval is <span class="math" data-index="91" data-tex="\([-2,2]\)">\([-2,2]\)</span>. The shifted horizontal contour has height <span class="math" data-index="92" data-tex="\(1/5\)">\(1/5\)</span>. The normalized logarithmic modulus on it is <span class="math" data-index="93" data-tex="\(-(2/5-t)^2\)">\(-(2/5-t)^2\)</span>. On the right and left vertical sides it is at most <span class="math" data-index="94" data-tex="\(-63/25\)">\(-63/25\)</span> and <span class="math" data-index="95" data-tex="\(-143/25\)">\(-143/25\)</span>, respectively. Both are below the general bound <span class="math" data-index="96" data-tex="\(-15/16\)">\(-15/16\)</span> used in (4.9). The curves show the actual exponent per <span class="math" data-index="97" data-tex="\(j\)">\(j\)</span>, not a numerical proof of convergence.</p>
+<p>To use the local equation, choose a cutoff equal to one near the whole convex carrier <span class="math" data-index="98" data-tex="\(K_v\)">\(K_v\)</span>, with support in <span class="math" data-index="99" data-tex="\(X\)">\(X\)</span>, and set <span class="math" data-index="100" data-tex="\(w=\chi u\)">\(w=\chi u\)</span>. Then <span class="math" data-index="101" data-tex="\(v(w)=v(u)\)">\(v(w)=v(u)\)</span>, and <span class="math" data-index="102" data-tex="\(\mu*w=0\)">\(\mu*w=0\)</span> near <span class="math" data-index="103" data-tex="\(K_2\)">\(K_2\)</span>. The real smooth limit controls the left side of (L19); the uniform complex limit controls the right side. Thus <span class="math" data-index="104" data-tex="\(v(u)=0\)">\(v(u)=0\)</span>. Continuous separation proves the density.</p>
+<p><strong>Example 4: an empty convolution domain can still give useful approximants.</strong> Let <span class="math" data-index="105" data-tex="\(\mu=\delta_0-\delta_2\)">\(\mu=\delta_0-\delta_2\)</span> and <span class="math" data-index="106" data-tex="\(X=(-3/4,3/4)\)">\(X=(-3/4,3/4)\)</span>. Then</p>
+<span class="math math-display" id="eq-L21" data-index="107" data-tex="\[
+ X_\mu=X\cap(X+2)=\varnothing.
+ \tag{L21}
+\]">\[
+ X_\mu=X\cap(X+2)=\varnothing.
+ \tag{L21}
+\]</span>
+<p>The local equation imposes no condition. Nevertheless the restrictions of the two-periodic exponentials <span class="math" data-index="108" data-tex="\(e^{i\pi kx}\)">\(e^{i\pi kx}\)</span> are dense in all smooth functions on <span class="math" data-index="109" data-tex="\(X\)">\(X\)</span>.
+Here is a direct construction. For a compact observation set <span class="math" data-index="110" data-tex="\(K\subset X\)">\(K\subset X\)</span>, choose <span class="math" data-index="111" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one near <span class="math" data-index="112" data-tex="\(K\)">\(K\)</span>, and extend <span class="math" data-index="113" data-tex="\(w=\chi u\)">\(w=\chi u\)</span> by zero. Its periodization</p>
+<span class="math math-display" id="eq-L22" data-index="114" data-tex="\[
+ p(x)=\sum_{\ell\in\mathbb Z}w(x-2\ell)
+ \tag{L22}
+\]">\[
+ p(x)=\sum_{\ell\in\mathbb Z}w(x-2\ell)
+ \tag{L22}
+\]</span>
+<p>is smooth and two-periodic. The supports in different translates are disjoint and the sum is locally finite. On <span class="math" data-index="115" data-tex="\(X\)">\(X\)</span> only the term <span class="math" data-index="116" data-tex="\(\ell=0\)">\(\ell=0\)</span> can occur, so <span class="math" data-index="117" data-tex="\(p=u\)">\(p=u\)</span> near <span class="math" data-index="118" data-tex="\(K\)">\(K\)</span>. For</p>
+<span class="math math-display" id="eq-L23" data-index="119" data-tex="\[
+ c_k=\frac12\int_{-1}^{1}p(x)e^{-i\pi kx}\,dx,
+ \tag{L23}
+\]">\[
+ c_k=\frac12\int_{-1}^{1}p(x)e^{-i\pi kx}\,dx,
+ \tag{L23}
+\]</span>
+<p>integration by parts <span class="math" data-index="120" data-tex="\(N\)">\(N\)</span> times, with all periodic endpoint terms canceling, gives
+<span class="math" data-index="121" data-tex="\(|c_k|\leq C_N|k|^{-N}\)">\(|c_k|\leq C_N|k|^{-N}\)</span> for <span class="math" data-index="122" data-tex="\(k\ne0\)">\(k\ne0\)</span>.
+For any fixed derivative order <span class="math" data-index="123" data-tex="\(m\)">\(m\)</span>, choosing <span class="math" data-index="124" data-tex="\(N&gt;m+1\)">\(N&gt;m+1\)</span> makes the differentiated Fourier series absolutely and uniformly convergent. To identify its sum, use the period-two Fejér kernel</p>
+<span class="math math-display" id="eq-L24" data-index="125" data-tex="\[
+ K_N(t)=\frac1{2(N+1)}
+                 \left|\sum_{k=0}^N e^{i\pi kt}\right|^2.
+ \tag{L24}
+\]">\[
+ K_N(t)=\frac1{2(N+1)}
+                 \left|\sum_{k=0}^N e^{i\pi kt}\right|^2.
+ \tag{L24}
+\]</span>
+<p>It is nonnegative, and integrating its finite expansion on <span class="math" data-index="126" data-tex="\([-1,1]\)">\([-1,1]\)</span> gives integral one: unequal frequencies integrate to zero and the <span class="math" data-index="127" data-tex="\(N+1\)">\(N+1\)</span> diagonal terms each integrate to two. If <span class="math" data-index="128" data-tex="\(\delta\leq|t|\leq1\)">\(\delta\leq|t|\leq1\)</span>, the finite geometric sum gives</p>
+<span class="math math-display" id="eq-L25" data-index="129" data-tex="\[
+ K_N(t)\leq
+       \frac1{2(N+1)\sin^2(\pi\delta/2)}.
+ \tag{L25}
+\]">\[
+ K_N(t)\leq
+       \frac1{2(N+1)\sin^2(\pi\delta/2)}.
+ \tag{L25}
+\]</span>
+<p>Thus its mass outside any neighborhood of zero tends to zero. Splitting its convolution with the uniformly continuous periodic <span class="math" data-index="130" data-tex="\(p\)">\(p\)</span> at that neighborhood proves uniform convergence to <span class="math" data-index="131" data-tex="\(p\)">\(p\)</span>. Expanding the same finite kernel shows these convolutions are the Cesàro means of the Fourier partial sums. The already absolutely convergent Fourier series has the same Cesàro limit as its ordinary sum, so that sum is <span class="math" data-index="132" data-tex="\(p\)">\(p\)</span>. Uniform convergence of every differentiated series and the fundamental theorem of calculus identify the corresponding derivatives with those of <span class="math" data-index="133" data-tex="\(p\)">\(p\)</span>. Fourier partial sums therefore approximate <span class="math" data-index="134" data-tex="\(u\)">\(u\)</span> with every prescribed finite collection of derivatives on <span class="math" data-index="135" data-tex="\(K\)">\(K\)</span>.</p>
+<h2 id="5-exercises-and-full-solutions">5. Exercises and full solutions</h2>
+<p>The ten exercises total 100 points.</p>
+<p><strong>Exercise 1 (10 points).</strong> For <span class="math" data-index="136" data-tex="\(\mu=\delta&#x27;_a\)">\(\mu=\delta&#x27;_a\)</span>, derive all three identities in (L8), including the reflected symbol, and identify every polynomial-exponential homogeneous solution.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-index="137" data-tex="\(\partial_yu(x-y)=-u&#x27;(x-y)\)">\(\partial_yu(x-y)=-u&#x27;(x-y)\)</span>, pairing with <span class="math" data-index="138" data-tex="\(\delta&#x27;_a\)">\(\delta&#x27;_a\)</span> gives <span class="math" data-index="139" data-tex="\(u&#x27;(x-a)\)">\(u&#x27;(x-a)\)</span>. Pairing with <span class="math" data-index="140" data-tex="\(e^{-iy\zeta}\)">\(e^{-iy\zeta}\)</span> gives <span class="math" data-index="141" data-tex="\(i\zeta e^{-ia\zeta}\)">\(i\zeta e^{-ia\zeta}\)</span>, and replacing <span class="math" data-index="142" data-tex="\(\zeta\)">\(\zeta\)</span> by <span class="math" data-index="143" data-tex="\(-\zeta\)">\(-\zeta\)</span> gives <span class="math" data-index="144" data-tex="\(-i\zeta e^{ia\zeta}\)">\(-i\zeta e^{ia\zeta}\)</span>. A homogeneous <span class="math" data-index="145" data-tex="\(f(x)e^{ix\lambda}\)">\(f(x)e^{ix\lambda}\)</span> has derivative zero everywhere, so it is constant. More explicitly, its derivative equation is <span class="math" data-index="146" data-tex="\(f&#x27;+i\lambda f=0\)">\(f&#x27;+i\lambda f=0\)</span>. If <span class="math" data-index="147" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>, the highest coefficient of a nonzero polynomial <span class="math" data-index="148" data-tex="\(f\)">\(f\)</span> cannot vanish in this equation. If <span class="math" data-index="149" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, <span class="math" data-index="150" data-tex="\(f&#x27;=0\)">\(f&#x27;=0\)</span>, so <span class="math" data-index="151" data-tex="\(f\)">\(f\)</span> is constant. The zero polynomial gives the zero solution at any frequency.</p>
+<p><strong>Exercise 2 (10 points).</strong> For the double difference in Example 2, prove the polynomial degree assertion and give the two transform conditions imposed on an annihilator at each characteristic frequency.</p>
+<p><strong>Solution.</strong> Taylor's finite expansion gives
+<span class="math" data-index="152" data-tex="\(f(x-a)=f(x)-a f&#x27;(x)+a^2f&#x27;&#x27;(x)/2+\cdots\)">\(f(x-a)=f(x)-a f&#x27;(x)+a^2f&#x27;&#x27;(x)/2+\cdots\)</span>
+and
+<span class="math" data-index="153" data-tex="\(f(x-2a)=f(x)-2a f&#x27;(x)+2a^2f&#x27;&#x27;(x)+\cdots\)">\(f(x-2a)=f(x)-2a f&#x27;(x)+2a^2f&#x27;&#x27;(x)+\cdots\)</span>.
+In <span class="math" data-index="154" data-tex="\(f(x)-2f(x-a)+f(x-2a)\)">\(f(x)-2f(x-a)+f(x-2a)\)</span>, the constant and first-derivative terms cancel and the second-derivative coefficient is <span class="math" data-index="155" data-tex="\(a^2\)">\(a^2\)</span>. Higher derivatives have smaller degree. For degree <span class="math" data-index="156" data-tex="\(d\geq2\)">\(d\geq2\)</span>, the leading coefficient is therefore <span class="math" data-index="157" data-tex="\(a^2d(d-1)\)">\(a^2d(d-1)\)</span> times the original one. The polynomial kernel has degree at most one.
+Writing <span class="math" data-index="158" data-tex="\(A=F_v\)">\(A=F_v\)</span> and <span class="math" data-index="159" data-tex="\(\zeta_k=2\pi k/a\)">\(\zeta_k=2\pi k/a\)</span>, the conditions are <span class="math" data-index="160" data-tex="\(A(\zeta_k)=A&#x27;(\zeta_k)=0\)">\(A(\zeta_k)=A&#x27;(\zeta_k)=0\)</span>. Indeed <span class="math" data-index="161" data-tex="\(A&#x27;(\zeta_k)=v(-ix e^{-ix\zeta_k})\)">\(A&#x27;(\zeta_k)=v(-ix e^{-ix\zeta_k})\)</span>, so annihilating both <span class="math" data-index="162" data-tex="\(e^{-ix\zeta_k}\)">\(e^{-ix\zeta_k}\)</span> and <span class="math" data-index="163" data-tex="\(x e^{-ix\zeta_k}\)">\(x e^{-ix\zeta_k}\)</span> gives exactly those two zeros. All double zeros of <span class="math" data-index="164" data-tex="\(B\)">\(B\)</span> are then removable in <span class="math" data-index="165" data-tex="\(A/B\)">\(A/B\)</span>, which is entire in one variable.</p>
+<p><strong>Exercise 3 (8 points).</strong> Compute <span class="math" data-index="166" data-tex="\(X_\mu\)">\(X_\mu\)</span> for Example 3, and verify both <span class="math" data-index="167" data-tex="\(K_2\subset X_\mu\)">\(K_2\subset X_\mu\)</span> and <span class="math" data-index="168" data-tex="\(K_v\subset X\)">\(K_v\subset X\)</span> with strict margins.</p>
+<p><strong>Solution.</strong> The three membership conditions are <span class="math" data-index="169" data-tex="\((x_1,x_2)\in X\)">\((x_1,x_2)\in X\)</span>, <span class="math" data-index="170" data-tex="\((x_1-2,x_2)\in X\)">\((x_1-2,x_2)\in X\)</span>, and <span class="math" data-index="171" data-tex="\((x_1,x_2-1)\in X\)">\((x_1,x_2-1)\in X\)</span>. They give</p>
+<span class="math math-display" data-index="172" data-tex="\[
+ x_1\in(-3,1)\cap(-1,3)=(-1,1),\qquad
+ x_2\in(-2,1)\cap(-1,2)=(-1,1).
+\]">\[
+ x_1\in(-3,1)\cap(-1,3)=(-1,1),\qquad
+ x_2\in(-2,1)\cap(-1,2)=(-1,1).
+\]</span>
+<p>Thus <span class="math" data-index="173" data-tex="\(X_\mu=(-1,1)^2\)">\(X_\mu=(-1,1)^2\)</span>. The rectangle has coordinate margins <span class="math" data-index="174" data-tex="\(1/2\)">\(1/2\)</span> and <span class="math" data-index="175" data-tex="\(3/4\)">\(3/4\)</span> inside it. The pentagon has coordinate ranges <span class="math" data-index="176" data-tex="\([-5/2,1/2]\)">\([-5/2,1/2]\)</span> and <span class="math" data-index="177" data-tex="\([-5/4,1/4]\)">\([-5/4,1/4]\)</span>; their distances from the four sides of <span class="math" data-index="178" data-tex="\(X\)">\(X\)</span> are <span class="math" data-index="179" data-tex="\(1/2,1/2,3/4,3/4\)">\(1/2,1/2,3/4,3/4\)</span>. Convexity includes every point between the listed vertices with the same coordinate bounds.</p>
+<p><strong>Exercise 4 (8 points).</strong> Let <span class="math" data-index="180" data-tex="\(H_1(\eta)=2|\eta|\)">\(H_1(\eta)=2|\eta|\)</span> and <span class="math" data-index="181" data-tex="\(H_3(\eta)=|\eta|\)">\(H_3(\eta)=|\eta|\)</span> on the line. Show that their difference is not a support function. What does Theorem 3.1 rule out?</p>
+<p><strong>Solution.</strong> The difference is <span class="math" data-index="182" data-tex="\(H_2(\eta)=-|\eta|\)">\(H_2(\eta)=-|\eta|\)</span>. Subadditivity would require
+<span class="math" data-index="183" data-tex="\(H_2(0)\leq H_2(1)+H_2(-1)\)">\(H_2(0)\leq H_2(1)+H_2(-1)\)</span>, which reads <span class="math" data-index="184" data-tex="\(0\leq-2\)">\(0\leq-2\)</span>. Thus it is not sublinear and cannot support a nonempty compact convex set. Although <span class="math" data-index="185" data-tex="\(H_1\)">\(H_1\)</span> and <span class="math" data-index="186" data-tex="\(H_3\)">\(H_3\)</span> individually support the intervals <span class="math" data-index="187" data-tex="\([-2,2]\)">\([-2,2]\)</span> and <span class="math" data-index="188" data-tex="\([-1,1]\)">\([-1,1]\)</span>, no triple of proper PSH functions satisfying all hypotheses of Theorem 3.1 can have those indicators with <span class="math" data-index="189" data-tex="\(p_3=p_1+p_2\)">\(p_3=p_1+p_2\)</span>. The sum hypothesis imposes an additional compatibility that arbitrary support functions need not have.</p>
+<p><strong>Exercise 5 (10 points).</strong> Recover the constant <span class="math" data-index="190" data-tex="\(2^{2n+2}L\)">\(2^{2n+2}L\)</span> in (3.10) from the growing-ball and double-submean estimates. Identify where the parameter-disk radius disappears.</p>
+<p><strong>Solution.</strong> On <span class="math" data-index="191" data-tex="\(B(0,2\delta t)\)">\(B(0,2\delta t)\)</span>, <span class="math" data-index="192" data-tex="\(|H_j(\operatorname{Im}\zeta)|/t\leq2\delta\ell_j\)">\(|H_j(\operatorname{Im}\zeta)|/t\leq2\delta\ell_j\)</span>. The growing-ball absolute-error bound has factor two, hence its upper limit is <span class="math" data-index="193" data-tex="\(4\delta\ell_j|D|\)">\(4\delta\ell_j|D|\)</span>. Sum the two errors to obtain <span class="math" data-index="194" data-tex="\(4\delta L|D|\)">\(4\delta L|D|\)</span>. The averaging ball centered at <span class="math" data-index="195" data-tex="\(q\)">\(q\)</span> has radius <span class="math" data-index="196" data-tex="\(\delta t\)">\(\delta t\)</span>, so replacing it by the containing ball increases the normalized bound by the volume ratio <span class="math" data-index="197" data-tex="\(2^{2n}\)">\(2^{2n}\)</span>. Division by the disk area cancels <span class="math" data-index="198" data-tex="\(|D|\)">\(|D|\)</span>. The remaining Lipschitz error is <span class="math" data-index="199" data-tex="\(La|y|\)">\(La|y|\)</span>, which tends to zero as <span class="math" data-index="200" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span> after taking the upper limit. The resulting constant is <span class="math" data-index="201" data-tex="\(2^{2n}4L=2^{2n+2}L\)">\(2^{2n}4L=2^{2n+2}L\)</span>. The supremum on the left is independent of <span class="math" data-index="202" data-tex="\(a\)">\(a\)</span>, so this last limit changes only the bound.</p>
+<p><strong>Exercise 6 (8 points).</strong> Explain why the quotient-growth proof translates the origin, and why the two original indicators remain unchanged.</p>
+<p><strong>Solution.</strong> A proper PSH function may equal minus infinity at the origin. In that case <span class="math" data-index="203" data-tex="\(p_2(0)/t\)">\(p_2(0)/t\)</span> cannot give a finite seed excluding uniform collapse. Proper functions are finite almost everywhere, so choose one point <span class="math" data-index="204" data-tex="\(z_*\)">\(z_*\)</span> at which all three are finite. Their translated relation still holds. For <span class="math" data-index="205" data-tex="\(j=1,3\)">\(j=1,3\)</span>, the new envelope is <span class="math" data-index="206" data-tex="\(M_j(\eta+\operatorname{Im}z_*)\)">\(M_j(\eta+\operatorname{Im}z_*)\)</span>. Its difference from <span class="math" data-index="207" data-tex="\(M_j(\eta)\)">\(M_j(\eta)\)</span> is bounded by the fixed quantity <span class="math" data-index="208" data-tex="\(\ell_j|\operatorname{Im}z_*|\)">\(\ell_j|\operatorname{Im}z_*|\)</span>, using the envelope's Lipschitz bound. After setting <span class="math" data-index="209" data-tex="\(\eta=ty\)">\(\eta=ty\)</span> and dividing by <span class="math" data-index="210" data-tex="\(t\)">\(t\)</span>, the difference tends to zero. Thus the indicators are unchanged, while the scaled quotient has finite origin values tending to zero.</p>
+<p><strong>Exercise 7 (10 points).</strong> Suppose <span class="math" data-index="211" data-tex="\(g\in C_c^\infty\)">\(g\in C_c^\infty\)</span> vanishes whenever <span class="math" data-index="212" data-tex="\(\operatorname{dist}(x,K)&lt;d\)">\(\operatorname{dist}(x,K)&lt;d\)</span>, with <span class="math" data-index="213" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. Give a direct uniform complex Gaussian estimate near <span class="math" data-index="214" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-index="215" data-tex="\(\operatorname{dist}(\operatorname{Re}z,K)&lt;d/4\)">\(\operatorname{dist}(\operatorname{Re}z,K)&lt;d/4\)</span>, every point of <span class="math" data-index="216" data-tex="\(\operatorname{supp}g\)">\(\operatorname{supp}g\)</span> is at least <span class="math" data-index="217" data-tex="\(3d/4\)">\(3d/4\)</span> from <span class="math" data-index="218" data-tex="\(\operatorname{Re}z\)">\(\operatorname{Re}z\)</span>. If also <span class="math" data-index="219" data-tex="\(|\operatorname{Im}z|&lt;d/4\)">\(|\operatorname{Im}z|&lt;d/4\)</span>, (4.8) gives</p>
+<span class="math math-display" data-index="220" data-tex="\[
+ |g_j(z)|\leq
+ \left(\frac j\pi\right)^{n/2}\|g\|_1
+ \exp\!\left[-j\left(\frac{9d^2}{16}-\frac{d^2}{16}\right)\right]
+ =\left(\frac j\pi\right)^{n/2}\|g\|_1e^{-jd^2/2}.
+\]">\[
+ |g_j(z)|\leq
+ \left(\frac j\pi\right)^{n/2}\|g\|_1
+ \exp\!\left[-j\left(\frac{9d^2}{16}-\frac{d^2}{16}\right)\right]
+ =\left(\frac j\pi\right)^{n/2}\|g\|_1e^{-jd^2/2}.
+\]</span>
+<p>This tends to zero uniformly on that fixed complex neighborhood. The polynomial prefactor is dominated by the negative exponential. This direct estimate suffices for a zero germ; Lemma 4.1 proves the more general nonzero analytic-germ assertion too.</p>
+<p><strong>Exercise 8 (8 points).</strong> Verify the two exact vertical-side constants in the Gaussian diagram and compare them with the general contour estimate.</p>
+<p><strong>Solution.</strong> At <span class="math" data-index="221" data-tex="\(w=2+is\)">\(w=2+is\)</span>, <span class="math" data-index="222" data-tex="\(0\leq s\leq1/5\)">\(0\leq s\leq1/5\)</span>, the exponent per <span class="math" data-index="223" data-tex="\(j\)">\(j\)</span> is
+<span class="math" data-index="224" data-tex="\(-((2/5-2)^2-(1/5-s)^2)\leq-(64/25-1/25)=-63/25\)">\(-((2/5-2)^2-(1/5-s)^2)\leq-(64/25-1/25)=-63/25\)</span>.
+At <span class="math" data-index="225" data-tex="\(w=-2+is\)">\(w=-2+is\)</span>, it is at most
+<span class="math" data-index="226" data-tex="\(-((2/5+2)^2-1/25)=-(144/25-1/25)=-143/25\)">\(-((2/5+2)^2-1/25)=-(144/25-1/25)=-143/25\)</span>.
+Since <span class="math" data-index="227" data-tex="\(63/25&gt;15/16\)">\(63/25&gt;15/16\)</span> and <span class="math" data-index="228" data-tex="\(143/25&gt;15/16\)">\(143/25&gt;15/16\)</span>, both bounds imply the weaker uniform bound <span class="math" data-index="229" data-tex="\(-15/16\)">\(-15/16\)</span>. On the shifted interval <span class="math" data-index="230" data-tex="\(s=1/5\)">\(s=1/5\)</span>, the imaginary difference is zero and the exponent is exactly <span class="math" data-index="231" data-tex="\(-(2/5-t)^2\)">\(-(2/5-t)^2\)</span>.</p>
+<p><strong>Exercise 9 (8 points).</strong> Why does equality on the exponential tests in (5.12) imply equality on every entire test, and why is real smooth convergence alone insufficient for the later limit involving <span class="math" data-index="232" data-tex="\(\sigma\)">\(\sigma\)</span>?</p>
+<p><strong>Solution.</strong> Exponentials have uniformly convergent power series and parameter derivatives on each bounded complex set. Differentiating the equality at frequency zero gives equality on every monomial with the same nonzero factor <span class="math" data-index="233" data-tex="\((-i)^{|\alpha|}\)">\((-i)^{|\alpha|}\)</span>, and therefore on every polynomial. The Taylor polynomials of an entire test converge uniformly on a larger polydisk; Cauchy estimates control all finite derivatives required by <span class="math" data-index="234" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-index="235" data-tex="\(v\)">\(v\)</span>, and the analytic-functional bound controls <span class="math" data-index="236" data-tex="\(\sigma\)">\(\sigma\)</span> on its complex neighborhood. These bounds pass polynomial equality to the entire test. For a subsequent smooth limit, <span class="math" data-index="237" data-tex="\(\sigma\)">\(\sigma\)</span> is only known to be continuous on holomorphic germs with complex-neighborhood bounds. No real distributional finite-order bound is available. Uniform convergence on a fixed complex neighborhood, supplied by Lemma 4.1, is the required continuity input.</p>
+<p><strong>Exercise 10 (20 points).</strong> Explain why the cutoff in the density proof is taken equal to one near the whole <span class="math" data-index="238" data-tex="\(K_v\)">\(K_v\)</span> (10 points). Then show that convexity cannot simply be dropped by taking a derivative kernel on a disconnected open subset of the line (10 points).</p>
+<p><strong>Solution.</strong> Equation (5.9) gives</p>
+<span class="math math-display" data-index="239" data-tex="\[
+ \operatorname{supp}v\subset K_v,\qquad
+ K_2-\operatorname{supp}\mu\subset K_2+K_-=K_v.
+\]">\[
+ \operatorname{supp}v\subset K_v,\qquad
+ K_2-\operatorname{supp}\mu\subset K_2+K_-=K_v.
+\]</span>
+<p>Thus one cutoff equal to one near <span class="math" data-index="240" data-tex="\(K_v\)">\(K_v\)</span> simultaneously preserves the pairing with <span class="math" data-index="241" data-tex="\(v\)">\(v\)</span> and every translated germ used by the convolution near <span class="math" data-index="242" data-tex="\(K_2\)">\(K_2\)</span>. A cutoff known only on one translated piece would not justify both assertions. The entire convex hull is compact inside <span class="math" data-index="243" data-tex="\(X\)">\(X\)</span>, so such a compact cutoff exists. A common margin from its plateau, together with compactness of the carrier and kernel support, makes <span class="math" data-index="244" data-tex="\(\mu*(\chi u)=\mu*u=0\)">\(\mu*(\chi u)=\mu*u=0\)</span> in a neighborhood of <span class="math" data-index="245" data-tex="\(K_2\)">\(K_2\)</span>.</p>
+<p>For the second part take <span class="math" data-index="246" data-tex="\(X=(-2,-1)\cup(1,2)\)">\(X=(-2,-1)\cup(1,2)\)</span> and <span class="math" data-index="247" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span>. Then <span class="math" data-index="248" data-tex="\(X_\mu=X\)">\(X_\mu=X\)</span>, and the equation is <span class="math" data-index="249" data-tex="\(u&#x27;=0\)">\(u&#x27;=0\)</span> on each component. Let <span class="math" data-index="250" data-tex="\(u=0\)">\(u=0\)</span> on the first and <span class="math" data-index="251" data-tex="\(u=1\)">\(u=1\)</span> on the second. The only global polynomial-exponential homogeneous solutions are constants, by Exercise 1. At the two-point compact set <span class="math" data-index="252" data-tex="\(\{-3/2,3/2\}\)">\(\{-3/2,3/2\}\)</span>, every complex constant <span class="math" data-index="253" data-tex="\(c\)">\(c\)</span> has
+<span class="math" data-index="254" data-tex="\(\max\{|c|,|1-c|\}\geq1/2\)">\(\max\{|c|,|1-c|\}\geq1/2\)</span>, since <span class="math" data-index="255" data-tex="\(1\leq|c|+|1-c|\)">\(1\leq|c|+|1-c|\)</span>.
+No constants approximate <span class="math" data-index="256" data-tex="\(u\)">\(u\)</span> with arbitrarily small even zeroth-derivative error. This gives a concrete failure on a nonconvex open set without altering the convex theorem.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>, lecture notes, Chapter 5. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Online reading</a>.</li>
+<li>Richard Melrose, <em>Introduction to Microlocal Analysis</em>, MIT lecture notes, revised 2007. Chapter 1, <em>Tempered distributions and the Fourier transform</em>. <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">Online reading</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990; 2003 reprint.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; 2005 reprint.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Exponential-polynomial solutions retain the multiplicities of the complex zeros of a convolution symbol. Their annihilators are exactly the compact Fourier transforms divisible by that symbol. We prove this algebraic statement, find the convex analytic carrier of the quotient, and deduce smooth approximation on every open convex domain. The argument applies to every nonzero compact convolution operator, without a polynomial assumption on the symbol or an invertibility assumption.</p>
+<p>Basic references are Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, Melrose's <em>Introduction to Microlocal Analysis</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. We use the Fourier convention, compact-distribution continuity and Fourier injectivity proved in <a href="AN02-L122.html">Compact Fourier division and multiplicity-sensitive annihilators</a>, and the local Cauchy formula and compact parameter integration in <a href="AN02-L045.html#cauchy-estimates-and-parameter-contours">Cauchy bounds, root counts and analytic extensions</a>. The convex-support argument uses the precise analytic-functional reconstruction in <a href="AN02-L146.html#af1-the-definition-and-the-exact-theorem">Fourier transforms of analytic functionals on a real convex carrier</a>, including its proved holomorphic-germ action in Section AF8. Section 3 names the exact envelope, average and compactness results needed for the growth argument.</p>
+<h2 id="1-all-polynomial-jets-at-a-characteristic-frequency">1. All polynomial jets at a characteristic frequency</h2>
+<p>Let <span class="math" data-index="257" data-tex="\(0\ne\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(0\ne\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span>. Use</p>
+<span class="math math-display" id="eq-1.1" data-index="258" data-tex="\[
+ F_\mu(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle,\qquad
+ B(\zeta)=F_\mu(-\zeta).
+ \tag{1.1}
+\]">\[
+ F_\mu(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle,\qquad
+ B(\zeta)=F_\mu(-\zeta).
+ \tag{1.1}
+\]</span>
+<p>The entire function <span class="math" data-index="259" data-tex="\(B\)">\(B\)</span> is not identically zero, by Fourier injectivity. Let <span class="math" data-index="260" data-tex="\(E_\mu\)">\(E_\mu\)</span> be the linear span of all functions</p>
+<span class="math math-display" id="eq-1.2" data-index="261" data-tex="\[
+ h(x)=f(x)e^{ix\cdot\lambda},\qquad
+ \lambda\in\mathbb C^n,\quad f\in\mathbb C[x_1,\ldots,x_n],
+ \qquad \mu*h=0\text{ on }\mathbb R^n.
+ \tag{1.2}
+\]">\[
+ h(x)=f(x)e^{ix\cdot\lambda},\qquad
+ \lambda\in\mathbb C^n,\quad f\in\mathbb C[x_1,\ldots,x_n],
+ \qquad \mu*h=0\text{ on }\mathbb R^n.
+ \tag{1.2}
+\]</span>
+<p>Each is smooth and entire in <span class="math" data-index="262" data-tex="\(x\)">\(x\)</span>. Compact distributions pair with these functions by inserting a compact smooth cutoff equal to one near their support. The pairing is complex linear, with no complex conjugation.</p>
+<p><strong>Theorem 1.1 (the entire annihilator quotient).</strong> For <span class="math" data-index="263" data-tex="\(v\in\mathcal E&#x27;(\mathbb R^n)\)">\(v\in\mathcal E&#x27;(\mathbb R^n)\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-index="264" data-tex="\(v(h)=0\)">\(v(h)=0\)</span> for every <span class="math" data-index="265" data-tex="\(h\in E_\mu\)">\(h\in E_\mu\)</span>.</li>
+<li>There is an entire function <span class="math" data-index="266" data-tex="\(G\)">\(G\)</span> on <span class="math" data-index="267" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> such that</li>
+</ol>
+<span class="math math-display" id="eq-1.3" data-index="268" data-tex="\[
+ F_v(\zeta)=B(\zeta)G(\zeta)=F_\mu(-\zeta)G(\zeta).
+ \tag{1.3}
+\]">\[
+ F_v(\zeta)=B(\zeta)G(\zeta)=F_\mu(-\zeta)G(\zeta).
+ \tag{1.3}
+\]</span>
+<p>The quotient is unique. This assertion supplies no polynomial growth bound on <span class="math" data-index="269" data-tex="\(G\)">\(G\)</span>.</p>
+<p><em>Proof of 1 implying 2.</em> Write <span class="math" data-index="270" data-tex="\(A=F_v\)">\(A=F_v\)</span>. Fix <span class="math" data-index="271" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>. If <span class="math" data-index="272" data-tex="\(B(\zeta_0)\ne0\)">\(B(\zeta_0)\ne0\)</span>, ordinary division is holomorphic near that point. Otherwise choose a real vector <span class="math" data-index="273" data-tex="\(\theta\ne0\)">\(\theta\ne0\)</span> such that <span class="math" data-index="274" data-tex="\(t\mapsto B(\zeta_0+t\theta)\)">\(t\mapsto B(\zeta_0+t\theta)\)</span> is not identically zero. Such a vector exists: the first nonzero homogeneous term <span class="math" data-index="275" data-tex="\(P\)">\(P\)</span> of the Taylor series at <span class="math" data-index="276" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> cannot vanish on every real vector. A complex polynomial vanishing on <span class="math" data-index="277" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is zero, as follows by applying the one-variable polynomial identity successively in each coordinate.</p>
+<p>Complete <span class="math" data-index="278" data-tex="\(\theta\)">\(\theta\)</span> to a real linear basis. Its complexification gives coordinates</p>
+<span class="math math-display" id="eq-1.4" data-index="279" data-tex="\[
+ \zeta=\zeta_0+T(s,t),\qquad s\in\mathbb C^{n-1},\quad t\in\mathbb C,
+ \qquad T(0,t)=t\theta.
+ \tag{1.4}
+\]">\[
+ \zeta=\zeta_0+T(s,t),\qquad s\in\mathbb C^{n-1},\quad t\in\mathbb C,
+ \qquad T(0,t)=t\theta.
+ \tag{1.4}
+\]</span>
+<p>In dimension one there is no <span class="math" data-index="280" data-tex="\(s\)">\(s\)</span> variable. Choose <span class="math" data-index="281" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> so that <span class="math" data-index="282" data-tex="\(B(\zeta_0+T(0,t))\)">\(B(\zeta_0+T(0,t))\)</span> has no zero on <span class="math" data-index="283" data-tex="\(|t|=\rho\)">\(|t|=\rho\)</span>. The zeros of a nonzero one-variable holomorphic function are isolated: factor the first nonzero Taylor term at each zero. By compactness and continuity, there is a neighborhood <span class="math" data-index="284" data-tex="\(S\)">\(S\)</span> of <span class="math" data-index="285" data-tex="\(0\)">\(0\)</span> such that</p>
+<span class="math math-display" id="eq-1.5" data-index="286" data-tex="\[
+ B(\zeta_0+T(s,t))\ne0,\qquad s\in S,\quad |t|=\rho.
+ \tag{1.5}
+\]">\[
+ B(\zeta_0+T(s,t))\ne0,\qquad s\in S,\quad |t|=\rho.
+ \tag{1.5}
+\]</span>
+<p>Shrink it if necessary to give a positive lower bound on every smaller compact parameter set. For each fixed <span class="math" data-index="287" data-tex="\(s\)">\(s\)</span>, this one-variable function is nonzero and has only finitely many zeros in <span class="math" data-index="288" data-tex="\(|t|&lt;\rho\)">\(|t|&lt;\rho\)</span>, since it is holomorphic past the closed disk and nonzero on its boundary.</p>
+<p>Suppose <span class="math" data-index="289" data-tex="\(t=\tau\)">\(t=\tau\)</span> is such a zero of order <span class="math" data-index="290" data-tex="\(m\)">\(m\)</span>, and put <span class="math" data-index="291" data-tex="\(\zeta=\zeta_0+T(s,\tau)\)">\(\zeta=\zeta_0+T(s,\tau)\)</span>. For <span class="math" data-index="292" data-tex="\(0\leq k&lt;m\)">\(0\leq k&lt;m\)</span>, consider</p>
+<span class="math math-display" id="eq-1.6" data-index="293" data-tex="\[
+ h_k(x)=(-ix\cdot\theta)^k e^{-ix\cdot\zeta}.
+ \tag{1.6}
+\]">\[
+ h_k(x)=(-ix\cdot\theta)^k e^{-ix\cdot\zeta}.
+ \tag{1.6}
+\]</span>
+<p>Compact-distribution continuity permits differentiating the exponential identity</p>
+<span class="math math-display" id="eq-1.7" data-index="294" data-tex="\[
+ \mu*e^{-ix\cdot(\zeta+t\theta)}
+       =B(\zeta+t\theta)e^{-ix\cdot(\zeta+t\theta)}
+ \tag{1.7}
+\]">\[
+ \mu*e^{-ix\cdot(\zeta+t\theta)}
+       =B(\zeta+t\theta)e^{-ix\cdot(\zeta+t\theta)}
+ \tag{1.7}
+\]</span>
+<p>in <span class="math" data-index="295" data-tex="\(t\)">\(t\)</span>. Every derivative of <span class="math" data-index="296" data-tex="\(B\)">\(B\)</span> of order at most <span class="math" data-index="297" data-tex="\(k\)">\(k\)</span> vanishes at <span class="math" data-index="298" data-tex="\(t=0\)">\(t=0\)</span>, so <span class="math" data-index="299" data-tex="\(\mu*h_k=0\)">\(\mu*h_k=0\)</span>. These functions belong to <span class="math" data-index="300" data-tex="\(E_\mu\)">\(E_\mu\)</span>, with frequency <span class="math" data-index="301" data-tex="\(-\zeta\)">\(-\zeta\)</span>. The annihilator hypothesis gives</p>
+<span class="math math-display" id="eq-1.8" data-index="302" data-tex="\[
+ \partial_\theta^k A(\zeta)=v(h_k)=0,\qquad 0\leq k&lt;m.
+ \tag{1.8}
+\]">\[
+ \partial_\theta^k A(\zeta)=v(h_k)=0,\qquad 0\leq k&lt;m.
+ \tag{1.8}
+\]</span>
+<p>Thus, for each fixed <span class="math" data-index="303" data-tex="\(s\)">\(s\)</span>, every zero of the denominator in the disk occurs in the numerator with at least the same order. The one-variable quotient extends holomorphically across all of them.</p>
+<p>Joint holomorphy does not require choosing the roots smoothly, or supposing that they are simple. Define on <span class="math" data-index="304" data-tex="\(S\times\{|t|&lt;\rho\}\)">\(S\times\{|t|&lt;\rho\}\)</span></p>
+<span class="math math-display" id="eq-1.9" data-index="305" data-tex="\[
+ G_0(s,t)=\frac1{2\pi i}\int_{|w|=\rho}
+ \frac{A(\zeta_0+T(s,w))}
+      {B(\zeta_0+T(s,w))(w-t)}\,dw.
+ \tag{1.9}
+\]">\[
+ G_0(s,t)=\frac1{2\pi i}\int_{|w|=\rho}
+ \frac{A(\zeta_0+T(s,w))}
+      {B(\zeta_0+T(s,w))(w-t)}\,dw.
+ \tag{1.9}
+\]</span>
+<p>Equation (1.5), local compact bounds and the Cauchy formula make this holomorphic jointly in <span class="math" data-index="306" data-tex="\(s,t\)">\(s,t\)</span>. For example, on each smaller polydisk all parameter derivatives pass under the compact integral, and its local power series converge uniformly there. For fixed <span class="math" data-index="307" data-tex="\(s\)">\(s\)</span>, the Cauchy formula for the extended one-variable quotient makes (1.9) equal to that quotient inside the disk. Hence <span class="math" data-index="308" data-tex="\(B G_0=A\)">\(B G_0=A\)</span> there.</p>
+<p>These local quotients agree on overlaps: on the open set where <span class="math" data-index="309" data-tex="\(B\ne0\)">\(B\ne0\)</span> each is <span class="math" data-index="310" data-tex="\(A/B\)">\(A/B\)</span>, and that set is dense in every overlap, since a nonzero entire function cannot vanish on an open set. Continuity then gives equality across its zeros. They glue to an entire <span class="math" data-index="311" data-tex="\(G\)">\(G\)</span> satisfying (1.3).</p>
+<p><em>Proof of 2 implying 1.</em> This direction must handle every polynomial solution, rather than only the directional monomials used above. Write <span class="math" data-index="312" data-tex="\(h(x)=f(x)e^{-ix\cdot\zeta_0}\)">\(h(x)=f(x)e^{-ix\cdot\zeta_0}\)</span>. Taylor expansion of the polynomial <span class="math" data-index="313" data-tex="\(f(x-y)\)">\(f(x-y)\)</span> inside the convolution gives</p>
+<span class="math math-display" id="eq-1.10" data-index="314" data-tex="\[
+ \mu*h(x)=e^{-ix\cdot\zeta_0}Q(x),\qquad
+ Q(x)=\sum_\beta
+   \frac{i^{|\beta|}}{\beta!}
+   (\partial_\zeta^\beta B)(\zeta_0)
+   \partial_x^\beta f(x)
+   =B(\zeta_0+i\partial_x)f(x).
+ \tag{1.10}
+\]">\[
+ \mu*h(x)=e^{-ix\cdot\zeta_0}Q(x),\qquad
+ Q(x)=\sum_\beta
+   \frac{i^{|\beta|}}{\beta!}
+   (\partial_\zeta^\beta B)(\zeta_0)
+   \partial_x^\beta f(x)
+   =B(\zeta_0+i\partial_x)f(x).
+ \tag{1.10}
+\]</span>
+<p>The sum is finite because derivatives beyond the degree of <span class="math" data-index="315" data-tex="\(f\)">\(f\)</span> vanish. For the sign, <span class="math" data-index="316" data-tex="\(\partial_\zeta^\beta B(\zeta_0)=\langle\mu,(iy)^\beta e^{iy\cdot\zeta_0}\rangle\)">\(\partial_\zeta^\beta B(\zeta_0)=\langle\mu,(iy)^\beta e^{iy\cdot\zeta_0}\rangle\)</span>, and the coefficient <span class="math" data-index="317" data-tex="\((-y)^\beta\)">\((-y)^\beta\)</span> in <span class="math" data-index="318" data-tex="\(f(x-y)\)">\(f(x-y)\)</span> gives precisely <span class="math" data-index="319" data-tex="\(i^{|\beta|}\partial_\zeta^\beta B\)">\(i^{|\beta|}\partial_\zeta^\beta B\)</span>.</p>
+<p>For a holomorphic germ <span class="math" data-index="320" data-tex="\(H\)">\(H\)</span>, put</p>
+<span class="math math-display" id="eq-1.11" data-index="321" data-tex="\[
+ \Lambda_f(H)=
+       \left.f(i\partial_\zeta)H(\zeta)\right|_{\zeta=\zeta_0}.
+ \tag{1.11}
+\]">\[
+ \Lambda_f(H)=
+       \left.f(i\partial_\zeta)H(\zeta)\right|_{\zeta=\zeta_0}.
+ \tag{1.11}
+\]</span>
+<p>The product rule yields the finite identity</p>
+<span class="math math-display" id="eq-1.12" data-index="322" data-tex="\[
+ \Lambda_f(BG)=\Lambda_Q(G).
+ \tag{1.12}
+\]">\[
+ \Lambda_f(BG)=\Lambda_Q(G).
+ \tag{1.12}
+\]</span>
+<p>To see every coefficient, if <span class="math" data-index="323" data-tex="\(f(x)=\sum_\alpha f_\alpha x^\alpha\)">\(f(x)=\sum_\alpha f_\alpha x^\alpha\)</span>, the term indexed by <span class="math" data-index="324" data-tex="\(\beta\leq\alpha\)">\(\beta\leq\alpha\)</span> on either side is</p>
+<span class="math math-display" id="eq-1.13" data-index="325" data-tex="\[
+ f_\alpha\binom{\alpha}{\beta}i^{|\alpha|}
+   (\partial_\zeta^\beta B)(\zeta_0)
+   (\partial_\zeta^{\alpha-\beta}G)(\zeta_0).
+ \tag{1.13}
+\]">\[
+ f_\alpha\binom{\alpha}{\beta}i^{|\alpha|}
+   (\partial_\zeta^\beta B)(\zeta_0)
+   (\partial_\zeta^{\alpha-\beta}G)(\zeta_0).
+ \tag{1.13}
+\]</span>
+<p>Since <span class="math" data-index="326" data-tex="\(\mu*h=0\)">\(\mu*h=0\)</span>, (1.10) says <span class="math" data-index="327" data-tex="\(Q=0\)">\(Q=0\)</span>. Now</p>
+<span class="math math-display" id="eq-1.14" data-index="328" data-tex="\[
+ v(h)=\Lambda_f(A)=\Lambda_f(BG)=\Lambda_Q(G)=0.
+ \tag{1.14}
+\]">\[
+ v(h)=\Lambda_f(A)=\Lambda_f(BG)=\Lambda_Q(G)=0.
+ \tag{1.14}
+\]</span>
+<p>This proves annihilation of each generator of <span class="math" data-index="329" data-tex="\(E_\mu\)">\(E_\mu\)</span>, and hence of its span. If two entire quotients existed, their difference would vanish on the nonempty open set <span class="math" data-index="330" data-tex="\(B\ne0\)">\(B\ne0\)</span> and therefore everywhere. This proves uniqueness. <span class="math" data-index="331" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument uses local one-variable circles with compact holomorphic parameter integration. It works through collisions of characteristic zeros and for nonpolynomial symbols. It does not identify an entire quotient with a compact-distribution transform without proving the required growth.</p>
+<p><strong>Example 1. A translation difference has infinitely many characteristic frequencies.</strong> For <span class="math" data-index="332" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, let <span class="math" data-index="333" data-tex="\(\mu=\delta_0-\delta_a\)">\(\mu=\delta_0-\delta_a\)</span> on <span class="math" data-index="334" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Then <span class="math" data-index="335" data-tex="\(B(\zeta)=1-e^{ia\zeta}\)">\(B(\zeta)=1-e^{ia\zeta}\)</span>, whose zeros <span class="math" data-index="336" data-tex="\(2\pi k/a\)">\(2\pi k/a\)</span>, <span class="math" data-index="337" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, are simple. The entire quotient criterion is equivalent to <span class="math" data-index="338" data-tex="\(F_v(2\pi k/a)=0\)">\(F_v(2\pi k/a)=0\)</span> for every <span class="math" data-index="339" data-tex="\(k\)">\(k\)</span>. The corresponding solutions <span class="math" data-index="340" data-tex="\(e^{-2\pi ikx/a}\)">\(e^{-2\pi ikx/a}\)</span> are <span class="math" data-index="341" data-tex="\(a\)">\(a\)</span>-periodic. A nonconstant polynomial factor cannot give another solution at one of these frequencies: the difference <span class="math" data-index="342" data-tex="\(f(x)-f(x-a)\)">\(f(x)-f(x-a)\)</span> has degree one less than <span class="math" data-index="343" data-tex="\(f\)">\(f\)</span>, with nonzero leading coefficient <span class="math" data-index="344" data-tex="\(a\,\deg(f)\)">\(a\,\deg(f)\)</span> times that of <span class="math" data-index="345" data-tex="\(f\)">\(f\)</span>. Thus the kernel among those polynomials consists of constants. This example has an entire symbol rather than a polynomial one.</p>
+<p><strong>Example 2. Reflection is essential.</strong> Define <span class="math" data-index="346" data-tex="\(\check\mu\)">\(\check\mu\)</span> by <span class="math" data-index="347" data-tex="\(\check\mu(\phi)=\mu(\phi(-\,\cdot))\)">\(\check\mu(\phi)=\mu(\phi(-\,\cdot))\)</span>, and take <span class="math" data-index="348" data-tex="\(v=\check\mu\)">\(v=\check\mu\)</span>. Then <span class="math" data-index="349" data-tex="\(F_v(\zeta)=F_\mu(-\zeta)=B(\zeta)\)">\(F_v(\zeta)=F_\mu(-\zeta)=B(\zeta)\)</span>, so its quotient is <span class="math" data-index="350" data-tex="\(G=1\)">\(G=1\)</span>. Directly, for every homogeneous solution <span class="math" data-index="351" data-tex="\(h\)">\(h\)</span>, <span class="math" data-index="352" data-tex="\(v(h)=\langle\mu,h(-y)\rangle=(\mu*h)(0)=0\)">\(v(h)=\langle\mu,h(-y)\rangle=(\mu*h)(0)=0\)</span>. Using <span class="math" data-index="353" data-tex="\(F_\mu(\zeta)\)">\(F_\mu(\zeta)\)</span> as the divisor would lose this identity for a general nonsymmetric <span class="math" data-index="354" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<h2 id="2-the-domain-on-which-a-compact-convolution-is-defined">2. The domain on which a compact convolution is defined</h2>
+<p>Let <span class="math" data-index="355" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open and convex and set</p>
+<span class="math math-display" id="eq-2.1" data-index="356" data-tex="\[
+ X_\mu=\{x:x-\operatorname{supp}\mu\subset X\},\qquad
+ N_\mu(X)=\{u\in C^\infty(X):\mu*u=0\text{ in }X_\mu\}.
+ \tag{2.1}
+\]">\[
+ X_\mu=\{x:x-\operatorname{supp}\mu\subset X\},\qquad
+ N_\mu(X)=\{u\in C^\infty(X):\mu*u=0\text{ in }X_\mu\}.
+ \tag{2.1}
+\]</span>
+<p>The set <span class="math" data-index="357" data-tex="\(X_\mu\)">\(X_\mu\)</span> may be empty. It is open: at a point in it, the compact set <span class="math" data-index="358" data-tex="\(x-\operatorname{supp}\mu\)">\(x-\operatorname{supp}\mu\)</span> has positive distance from the complement of <span class="math" data-index="359" data-tex="\(X\)">\(X\)</span>, and a sufficiently small translation remains inside <span class="math" data-index="360" data-tex="\(X\)">\(X\)</span>. It is convex because each set <span class="math" data-index="361" data-tex="\(X+y\)">\(X+y\)</span>, <span class="math" data-index="362" data-tex="\(y\in\operatorname{supp}\mu\)">\(y\in\operatorname{supp}\mu\)</span>, is convex and <span class="math" data-index="363" data-tex="\(X_\mu\)">\(X_\mu\)</span> is their intersection.</p>
+<p>The convolution is continuous from <span class="math" data-index="364" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span> to <span class="math" data-index="365" data-tex="\(C^\infty(X_\mu)\)">\(C^\infty(X_\mu)\)</span>. Indeed, for any compact <span class="math" data-index="366" data-tex="\(K\subset X_\mu\)">\(K\subset X_\mu\)</span>, the compact set <span class="math" data-index="367" data-tex="\(K-\operatorname{supp}\mu\)">\(K-\operatorname{supp}\mu\)</span> lies in <span class="math" data-index="368" data-tex="\(X\)">\(X\)</span>. Choose a compact neighborhood of it in <span class="math" data-index="369" data-tex="\(X\)">\(X\)</span>. Finite-order continuity of <span class="math" data-index="370" data-tex="\(\mu\)">\(\mu\)</span>, with fixed cutoffs on a small neighborhood of its support, bounds each derivative of <span class="math" data-index="371" data-tex="\(\mu*u\)">\(\mu*u\)</span> on <span class="math" data-index="372" data-tex="\(K\)">\(K\)</span> by finitely many derivatives of <span class="math" data-index="373" data-tex="\(u\)">\(u\)</span> on that compact neighborhood. Differentiation in <span class="math" data-index="374" data-tex="\(x\)">\(x\)</span> passes through the pairing in those same smooth seminorms. These are exactly the compact seminorm estimates for the two Fréchet topologies.</p>
+<p>Consequently <span class="math" data-index="375" data-tex="\(N_\mu(X)\)">\(N_\mu(X)\)</span> is a closed subspace of <span class="math" data-index="376" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span>, and the restrictions of <span class="math" data-index="377" data-tex="\(E_\mu\)">\(E_\mu\)</span> lie in it. If <span class="math" data-index="378" data-tex="\(X_\mu=\varnothing\)">\(X_\mu=\varnothing\)</span>, the condition is empty and <span class="math" data-index="379" data-tex="\(N_\mu(X)=C^\infty(X)\)">\(N_\mu(X)=C^\infty(X)\)</span>.</p>
+<h2 id="3-the-convex-carrier-of-an-exponential-quotient">3. The convex carrier of an exponential quotient</h2>
+<p>For a proper plurisubharmonic function <span class="math" data-index="380" data-tex="\(p\)">\(p\)</span> with
+<span class="math" data-index="381" data-tex="\(p(x+i\eta)\leq c+\ell|\eta|\)">\(p(x+i\eta)\leq c+\ell|\eta|\)</span>, the <a href="AN02-L139.html#psh-envelope-theorem">horizontal-envelope theorem</a> defines</p>
+<span class="math math-display" id="eq-3.1" data-index="382" data-tex="\[
+ M_p(\eta)=\sup_x p(x+i\eta),\qquad
+ H_p(\eta)=\lim_{t\to\infty}\frac{M_p(t\eta)}t.
+ \tag{3.1}
+\]">\[
+ M_p(\eta)=\sup_x p(x+i\eta),\qquad
+ H_p(\eta)=\lim_{t\to\infty}\frac{M_p(t\eta)}t.
+ \tag{3.1}
+\]</span>
+<p>The function <span class="math" data-index="383" data-tex="\(H_p\)">\(H_p\)</span> is the support function of a nonempty compact convex set. It is positively homogeneous and <span class="math" data-index="384" data-tex="\(\ell\)">\(\ell\)</span>-Lipschitz, and the same theorem's recession argument gives</p>
+<span class="math math-display" id="eq-3.2" data-index="385" data-tex="\[
+ p(x+i\eta)\leq M_p(0)+H_p(\eta).
+ \tag{3.2}
+\]">\[
+ p(x+i\eta)\leq M_p(0)+H_p(\eta).
+ \tag{3.2}
+\]</span>
+<p>We will also use the <a href="AN02-L141.html#growing-ball-average-theorem">growing-ball average theorem</a>, the <a href="AN02-L143.html#psh-local-compactness">local compactness and Hartogs comparison</a>, and Lemma 3.1 in <a href="AN02-L163.html#3-a-half-plane-bound-with-no-residual-polynomial-loss">Slow decrease and entire division</a>. Those results include properness, singular values and moving compact maxima.</p>
+<p><strong>Theorem 3.1 (support-function subtraction for a quotient).</strong> Let <span class="math" data-index="386" data-tex="\(p_1,p_2,p_3\)">\(p_1,p_2,p_3\)</span> be proper PSH functions on <span class="math" data-index="387" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, and suppose</p>
+<span class="math math-display" id="eq-3.3" data-index="388" data-tex="\[
+ p_3=p_1+p_2,\qquad
+ p_j(x+i\eta)\leq c_j+\ell_j|\eta|
+       \quad(j=1,3),
+ \tag{3.3}
+\]">\[
+ p_3=p_1+p_2,\qquad
+ p_j(x+i\eta)\leq c_j+\ell_j|\eta|
+       \quad(j=1,3),
+ \tag{3.3}
+\]</span>
+<p>where <span class="math" data-index="389" data-tex="\(\ell_j\geq0\)">\(\ell_j\geq0\)</span>. Write <span class="math" data-index="390" data-tex="\(H_j=H_{p_j}\)">\(H_j=H_{p_j}\)</span> for <span class="math" data-index="391" data-tex="\(j=1,3\)">\(j=1,3\)</span>. Then</p>
+<span class="math math-display" id="eq-3.4" data-index="392" data-tex="\[
+ H_2=H_3-H_1
+ \tag{3.4}
+\]">\[
+ H_2=H_3-H_1
+ \tag{3.4}
+\]</span>
+<p>is the support function of a nonempty compact convex set. For every <span class="math" data-index="393" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is a finite <span class="math" data-index="394" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> such that</p>
+<span class="math math-display" id="eq-3.5" data-index="395" data-tex="\[
+ p_2(z)\leq H_2(\operatorname{Im}z)
+                   +\varepsilon|z|+C_\varepsilon
+       \qquad(z\in\mathbb C^n).
+ \tag{3.5}
+\]">\[
+ p_2(z)\leq H_2(\operatorname{Im}z)
+                   +\varepsilon|z|+C_\varepsilon
+       \qquad(z\in\mathbb C^n).
+ \tag{3.5}
+\]</span>
+<p>There is no assumption of a real-axis polynomial bound for <span class="math" data-index="396" data-tex="\(p_2\)">\(p_2\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-index="397" data-tex="\(L=\ell_1+\ell_3\)">\(L=\ell_1+\ell_3\)</span>. The difference <span class="math" data-index="398" data-tex="\(H_2\)">\(H_2\)</span> is initially only a continuous positively homogeneous <span class="math" data-index="399" data-tex="\(L\)">\(L\)</span>-Lipschitz function. In particular,
+<span class="math" data-index="400" data-tex="\(|H_2(\eta)|\leq L|\eta|\)">\(|H_2(\eta)|\leq L|\eta|\)</span>. We must prove its convexity; an arbitrary difference of support functions need not be convex.</p>
+<p>Choose a point <span class="math" data-index="401" data-tex="\(z_*\)">\(z_*\)</span> where the three functions are finite. Such points have full measure, since the functions are proper and locally integrable. Replace <span class="math" data-index="402" data-tex="\(p_j(z)\)">\(p_j(z)\)</span> temporarily by <span class="math" data-index="403" data-tex="\(p_j(z+z_*)\)">\(p_j(z+z_*)\)</span>. The indicators <span class="math" data-index="404" data-tex="\(H_1,H_3\)">\(H_1,H_3\)</span> do not change: the horizontal envelopes are translated by <span class="math" data-index="405" data-tex="\(\operatorname{Im}z_*\)">\(\operatorname{Im}z_*\)</span>, and the Lipschitz bound makes this fixed translation disappear after division by <span class="math" data-index="406" data-tex="\(t\)">\(t\)</span>. At the end, translating (3.5) back changes only <span class="math" data-index="407" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span>. We may therefore assume <span class="math" data-index="408" data-tex="\(p_2(0)\)">\(p_2(0)\)</span> is finite.</p>
+<p>We first obtain an estimate on translated balls of radius proportional to <span class="math" data-index="409" data-tex="\(t\)">\(t\)</span>. Fix <span class="math" data-index="410" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, a real vector <span class="math" data-index="411" data-tex="\(y\)">\(y\)</span>, a complex number <span class="math" data-index="412" data-tex="\(w_0\)">\(w_0\)</span>, and <span class="math" data-index="413" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Use</p>
+<span class="math math-display" id="eq-3.6" data-index="414" data-tex="\[
+ B_t=B(0,2\delta t),\qquad
+ D=D(w_0,a)\subset\mathbb C,\qquad
+ e_{j,t}(\zeta,w)=\frac{p_j(\zeta+twy)}t
+                           -H_j((\operatorname{Im}w)y).
+ \tag{3.6}
+\]">\[
+ B_t=B(0,2\delta t),\qquad
+ D=D(w_0,a)\subset\mathbb C,\qquad
+ e_{j,t}(\zeta,w)=\frac{p_j(\zeta+twy)}t
+                           -H_j((\operatorname{Im}w)y).
+ \tag{3.6}
+\]</span>
+<p>For <span class="math" data-index="415" data-tex="\(j=1,3\)">\(j=1,3\)</span>, the growing-ball theorem, with the parameter disk <span class="math" data-index="416" data-tex="\(\overline D\)">\(\overline D\)</span>, gives</p>
+<span class="math math-display" id="eq-3.7" data-index="417" data-tex="\[
+ \limsup_{t\to\infty}
+ \frac1{|B_t|}\int_{B_t}\int_D |e_{j,t}|\,dA(w)\,dV(\zeta)
+ \leq 4\delta\ell_j\,|D|.
+ \tag{3.7}
+\]">\[
+ \limsup_{t\to\infty}
+ \frac1{|B_t|}\int_{B_t}\int_D |e_{j,t}|\,dA(w)\,dV(\zeta)
+ \leq 4\delta\ell_j\,|D|.
+ \tag{3.7}
+\]</span>
+<p>Indeed its right side is twice the normalized integral of
+<span class="math" data-index="418" data-tex="\(|H_j(\operatorname{Im}\zeta)|/t\)">\(|H_j(\operatorname{Im}\zeta)|/t\)</span>, and
+<span class="math" data-index="419" data-tex="\(|\operatorname{Im}\zeta|\leq2\delta t\)">\(|\operatorname{Im}\zeta|\leq2\delta t\)</span> on <span class="math" data-index="420" data-tex="\(B_t\)">\(B_t\)</span>.
+All norms and volumes here are Euclidean, with <span class="math" data-index="421" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> of real dimension <span class="math" data-index="422" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p>The relation in (3.3) implies, almost everywhere,</p>
+<span class="math math-display" id="eq-3.8" data-index="423" data-tex="\[
+ \frac{p_2(\zeta+twy)}t-H_2((\operatorname{Im}w)y)
+                         =e_{3,t}-e_{1,t}.
+ \tag{3.8}
+\]">\[
+ \frac{p_2(\zeta+twy)}t-H_2((\operatorname{Im}w)y)
+                         =e_{3,t}-e_{1,t}.
+ \tag{3.8}
+\]</span>
+<p>This uses the common full-measure set where the proper PSH functions are finite, without subtracting two minus-infinite values.</p>
+<p>For <span class="math" data-index="424" data-tex="\(|q|\leq\delta t\)">\(|q|\leq\delta t\)</span>, apply the submean inequality first in the <span class="math" data-index="425" data-tex="\(\zeta\)">\(\zeta\)</span>-ball <span class="math" data-index="426" data-tex="\(B(q,\delta t)\)">\(B(q,\delta t)\)</span>, and then in the <span class="math" data-index="427" data-tex="\(w\)">\(w\)</span>-disk <span class="math" data-index="428" data-tex="\(D\)">\(D\)</span>. The first ball is contained in <span class="math" data-index="429" data-tex="\(B_t\)">\(B_t\)</span>. The two averages and (3.8) bound</p>
+<span class="math math-display" id="eq-3.9" data-index="430" data-tex="\[
+ \frac{p_2(q+tw_0y)}t-H_2((\operatorname{Im}w_0)y)
+ \leq
+ \frac1{|B(q,\delta t)|\,|D|}
+ \int_{B_t}\int_D (|e_{1,t}|+|e_{3,t}|)\,dA\,dV
+                       +La|y|.
+ \tag{3.9}
+\]">\[
+ \frac{p_2(q+tw_0y)}t-H_2((\operatorname{Im}w_0)y)
+ \leq
+ \frac1{|B(q,\delta t)|\,|D|}
+ \int_{B_t}\int_D (|e_{1,t}|+|e_{3,t}|)\,dA\,dV
+                       +La|y|.
+ \tag{3.9}
+\]</span>
+<p>The last term bounds the change of <span class="math" data-index="431" data-tex="\(H_2\)">\(H_2\)</span> across the disk.
+Fubini is valid: for each fixed <span class="math" data-index="432" data-tex="\(t\)">\(t\)</span>, translation in the full <span class="math" data-index="433" data-tex="\(\zeta\)">\(\zeta\)</span>-variable bounds every absolute integral by a local <span class="math" data-index="434" data-tex="\(L^1\)">\(L^1\)</span> integral on a common compact set. A line restriction that is identically minus infinite contributes only on the exceptional set of translations; a minus-infinite value at the left makes the inequality automatic. Thus the two submean steps preserve the canonical PSH representative.</p>
+<p>The volume ratio is <span class="math" data-index="435" data-tex="\(2^{2n}\)">\(2^{2n}\)</span>. Equations (3.7)–(3.9), followed by <span class="math" data-index="436" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span>, give, with <span class="math" data-index="437" data-tex="\(C=2^{2n+2}L\)">\(C=2^{2n+2}L\)</span>,</p>
+<span class="math math-display" id="eq-3.10" data-index="438" data-tex="\[
+ \limsup_{t\to\infty}\ \sup_{|q|\leq\delta t}
+ \left\{\frac{p_2(q+tw_0y)}t-H_2((\operatorname{Im}w_0)y)\right\}
+ \leq C\delta.
+ \tag{3.10}
+\]">\[
+ \limsup_{t\to\infty}\ \sup_{|q|\leq\delta t}
+ \left\{\frac{p_2(q+tw_0y)}t-H_2((\operatorname{Im}w_0)y)\right\}
+ \leq C\delta.
+ \tag{3.10}
+\]</span>
+<p>The constants are independent of <span class="math" data-index="439" data-tex="\(y,w_0,\delta\)">\(y,w_0,\delta\)</span>. Each limiting assertion is made for fixed values of those parameters; no uniform exceptional-set claim is needed.</p>
+<p>Taking <span class="math" data-index="440" data-tex="\(y=0,\delta=1\)">\(y=0,\delta=1\)</span> in (3.10) shows that, for all sufficiently large <span class="math" data-index="441" data-tex="\(t\)">\(t\)</span>,
+<span class="math" data-index="442" data-tex="\(\sup_{|q|\leq t}p_2(q)\leq(C+1)t\)">\(\sup_{|q|\leq t}p_2(q)\leq(C+1)t\)</span>.
+Set <span class="math" data-index="443" data-tex="\(t=|z|\)">\(t=|z|\)</span> outside that fixed ball and use local upper boundedness inside it. There are <span class="math" data-index="444" data-tex="\(A,D\geq0\)">\(A,D\geq0\)</span> such that</p>
+<span class="math math-display" id="eq-3.11" data-index="445" data-tex="\[
+ p_2(z)\leq A|z|+D.
+ \tag{3.11}
+\]">\[
+ p_2(z)\leq A|z|+D.
+ \tag{3.11}
+\]</span>
+<p>Consequently <span class="math" data-index="446" data-tex="\(U_t(z)=p_2(tz)/t\)">\(U_t(z)=p_2(tz)/t\)</span>, <span class="math" data-index="447" data-tex="\(t\geq1\)">\(t\geq1\)</span>, is locally uniformly upper bounded. At the origin <span class="math" data-index="448" data-tex="\(U_t(0)=p_2(0)/t\to0\)">\(U_t(0)=p_2(0)/t\to0\)</span>. The compactness alternative therefore excludes uniform collapse: along every sequence <span class="math" data-index="449" data-tex="\(t_j\to\infty\)">\(t_j\to\infty\)</span>, some subsequence has a proper PSH local <span class="math" data-index="450" data-tex="\(L^1\)">\(L^1\)</span> limit <span class="math" data-index="451" data-tex="\(V\)">\(V\)</span>. The pointwise upper-limit inequality gives <span class="math" data-index="452" data-tex="\(V(0)\geq0\)">\(V(0)\geq0\)</span>, and (3.11) gives <span class="math" data-index="453" data-tex="\(V(z)\leq A|z|\)">\(V(z)\leq A|z|\)</span>.</p>
+<p>Pass (3.10) to that limit. On each ball in question, the eventual constant upper bound passes through local <span class="math" data-index="454" data-tex="\(L^1\)">\(L^1\)</span> convergence almost everywhere and then everywhere by the submean inequality. Thus</p>
+<span class="math math-display" id="eq-3.12" data-index="455" data-tex="\[
+ V(q+w_0y)\leq H_2((\operatorname{Im}w_0)y)+C\delta
+                 \quad(|q|&lt;\delta).
+ \tag{3.12}
+\]">\[
+ V(q+w_0y)\leq H_2((\operatorname{Im}w_0)y)+C\delta
+                 \quad(|q|&lt;\delta).
+ \tag{3.12}
+\]</span>
+<p>Letting <span class="math" data-index="456" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span> with <span class="math" data-index="457" data-tex="\(q=0\)">\(q=0\)</span> gives
+<span class="math" data-index="458" data-tex="\(V(wy)\leq H_2((\operatorname{Im}w)y)\)">\(V(wy)\leq H_2((\operatorname{Im}w)y)\)</span>.
+In particular <span class="math" data-index="459" data-tex="\(V\leq0\)">\(V\leq0\)</span> on <span class="math" data-index="460" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Taking <span class="math" data-index="461" data-tex="\(q=x\)">\(q=x\)</span> and then <span class="math" data-index="462" data-tex="\(\delta\downarrow|x|\)">\(\delta\downarrow|x|\)</span> gives</p>
+<span class="math math-display" id="eq-3.13" data-index="463" data-tex="\[
+ V(x+isy)\leq sH_2(y)+C|x|
+                 \quad(x,y\in\mathbb R^n,\ s\geq0).
+ \tag{3.13}
+\]">\[
+ V(x+isy)\leq sH_2(y)+C|x|
+                 \quad(x,y\in\mathbb R^n,\ s\geq0).
+ \tag{3.13}
+\]</span>
+<p>Fix <span class="math" data-index="464" data-tex="\(x,y\)">\(x,y\)</span>. The function</p>
+<span class="math math-display" id="eq-3.14" data-index="465" data-tex="\[
+ w\longmapsto V(x+wy)-(\operatorname{Im}w)H_2(y)
+ \tag{3.14}
+\]">\[
+ w\longmapsto V(x+wy)-(\operatorname{Im}w)H_2(y)
+ \tag{3.14}
+\]</span>
+<p>is subharmonic on the whole plane or identically minus infinite. It is at most zero on the real axis, bounded above by <span class="math" data-index="466" data-tex="\(C|x|\)">\(C|x|\)</span> on the positive imaginary axis, and has a linear upper bound on the upper half-plane by <span class="math" data-index="467" data-tex="\(V(z)\leq A|z|\)">\(V(z)\leq A|z|\)</span>. The proved half-plane comparison therefore makes it at most zero there. Evaluating at <span class="math" data-index="468" data-tex="\(w=i\)">\(w=i\)</span> yields</p>
+<span class="math math-display" id="eq-3.15" data-index="469" data-tex="\[
+ V(x+iy)\leq H_2(y).
+ \tag{3.15}
+\]">\[
+ V(x+iy)\leq H_2(y).
+ \tag{3.15}
+\]</span>
+<p>In particular <span class="math" data-index="470" data-tex="\(V(0)=0\)">\(V(0)=0\)</span> and <span class="math" data-index="471" data-tex="\(M_V(0)=0\)">\(M_V(0)=0\)</span>. Since (3.15) gives the imaginary-growth bound <span class="math" data-index="472" data-tex="\(V(x+iy)\leq L|y|\)">\(V(x+iy)\leq L|y|\)</span>, the envelope theorem applies to <span class="math" data-index="473" data-tex="\(V\)">\(V\)</span>. Its support function <span class="math" data-index="474" data-tex="\(h_V\)">\(h_V\)</span> satisfies</p>
+<span class="math math-display" id="eq-3.16" data-index="475" data-tex="\[
+ V(z)\leq h_V(\operatorname{Im}z),\qquad h_V\leq H_2.
+ \tag{3.16}
+\]">\[
+ V(z)\leq h_V(\operatorname{Im}z),\qquad h_V\leq H_2.
+ \tag{3.16}
+\]</span>
+<p>The second inequality follows by taking the recession of
+<span class="math" data-index="476" data-tex="\(M_V(ty)\leq H_2(ty)=tH_2(y)\)">\(M_V(ty)\leq H_2(ty)=tH_2(y)\)</span>.</p>
+<p>Let <span class="math" data-index="477" data-tex="\(H\)">\(H\)</span> be the supremum of <span class="math" data-index="478" data-tex="\(h_V\)">\(h_V\)</span> over all proper limits obtained in this way. This family is nonempty. Each associated compact convex set lies in the closed ball of radius <span class="math" data-index="479" data-tex="\(L\)">\(L\)</span>, because <span class="math" data-index="480" data-tex="\(h_V(y)\leq L|y|\)">\(h_V(y)\leq L|y|\)</span>. Their closed convex hull is a nonempty compact convex set, whose support function is exactly <span class="math" data-index="481" data-tex="\(H\)">\(H\)</span>. In particular <span class="math" data-index="482" data-tex="\(H\)">\(H\)</span> is finite, continuous and sublinear, and</p>
+<span class="math math-display" id="eq-3.17" data-index="483" data-tex="\[
+ V(z)\leq H(\operatorname{Im}z),\qquad H\leq H_2.
+ \tag{3.17}
+\]">\[
+ V(z)\leq H(\operatorname{Im}z),\qquad H\leq H_2.
+ \tag{3.17}
+\]</span>
+<p>For every <span class="math" data-index="484" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the compact Hartogs bound now gives</p>
+<span class="math math-display" id="eq-3.18" data-index="485" data-tex="\[
+ U_t(z)\leq H(\operatorname{Im}z)+\varepsilon
+                 \quad(|z|\leq1,\ t\geq T_\varepsilon).
+ \tag{3.18}
+\]">\[
+ U_t(z)\leq H(\operatorname{Im}z)+\varepsilon
+                 \quad(|z|\leq1,\ t\geq T_\varepsilon).
+ \tag{3.18}
+\]</span>
+<p>Here is the full sequence argument. If this failed, select offending <span class="math" data-index="486" data-tex="\(t_j\to\infty\)">\(t_j\to\infty\)</span>. Their finite origin values exclude collapse, so a subsequence converges locally in <span class="math" data-index="487" data-tex="\(L^1\)">\(L^1\)</span> to one of the <span class="math" data-index="488" data-tex="\(V\)">\(V\)</span>'s defining <span class="math" data-index="489" data-tex="\(H\)">\(H\)</span>. Apply the Hartogs comparison on the closed unit ball with the continuous comparison function <span class="math" data-index="490" data-tex="\(H(\operatorname{Im}z)\)">\(H(\operatorname{Im}z)\)</span>. Equation (3.17) makes the upper limit of the excess at most zero, contradicting the fixed positive excess. Thus (3.18) holds for all sufficiently large real <span class="math" data-index="491" data-tex="\(t\)">\(t\)</span>, rather than merely for one selected sequence.</p>
+<p>For <span class="math" data-index="492" data-tex="\(|z|\geq T_\varepsilon\)">\(|z|\geq T_\varepsilon\)</span>, put <span class="math" data-index="493" data-tex="\(t=|z|\)">\(t=|z|\)</span> in (3.18) and use positive homogeneity. Local upper boundedness on the remaining ball supplies a finite constant, giving</p>
+<span class="math math-display" id="eq-3.19" data-index="494" data-tex="\[
+ p_2(z)\leq H(\operatorname{Im}z)+\varepsilon|z|+C_\varepsilon.
+ \tag{3.19}
+\]">\[
+ p_2(z)\leq H(\operatorname{Im}z)+\varepsilon|z|+C_\varepsilon.
+ \tag{3.19}
+\]</span>
+<p>We still have to identify this <span class="math" data-index="495" data-tex="\(H\)">\(H\)</span> with the original difference. By (3.2),</p>
+<span class="math math-display" id="eq-3.20" data-index="496" data-tex="\[
+ p_3(x+iy)\leq M_{p_1}(0)+H_1(y)+H(y)
+                          +\varepsilon|x+iy|+C_\varepsilon.
+ \tag{3.20}
+\]">\[
+ p_3(x+iy)\leq M_{p_1}(0)+H_1(y)+H(y)
+                          +\varepsilon|x+iy|+C_\varepsilon.
+ \tag{3.20}
+\]</span>
+<p>Fix real <span class="math" data-index="497" data-tex="\(x,y\)">\(x,y\)</span> and apply the half-plane comparison once more, this time to</p>
+<span class="math math-display" id="eq-3.21" data-index="498" data-tex="\[
+ w\longmapsto p_3(x+wy)-M_{p_3}(0)
+       -(\operatorname{Im}w)\bigl(H_1(y)+H(y)+\varepsilon|y|\bigr).
+ \tag{3.21}
+\]">\[
+ w\longmapsto p_3(x+wy)-M_{p_3}(0)
+       -(\operatorname{Im}w)\bigl(H_1(y)+H(y)+\varepsilon|y|\bigr).
+ \tag{3.21}
+\]</span>
+<p>Its real-axis values are at most zero. On <span class="math" data-index="499" data-tex="\(w=is\)">\(w=is\)</span>, (3.20) and
+<span class="math" data-index="500" data-tex="\(|x+isy|\leq|x|+s|y|\)">\(|x+isy|\leq|x|+s|y|\)</span> bound it above by
+<span class="math" data-index="501" data-tex="\(M_{p_1}(0)+C_\varepsilon-M_{p_3}(0)+\varepsilon|x|\)">\(M_{p_1}(0)+C_\varepsilon-M_{p_3}(0)+\varepsilon|x|\)</span>, independently of <span class="math" data-index="502" data-tex="\(s\geq0\)">\(s\geq0\)</span>.
+Its upper-half-plane linear growth follows directly from the original bound on <span class="math" data-index="503" data-tex="\(p_3\)">\(p_3\)</span>. The comparison therefore gives</p>
+<span class="math math-display" id="eq-3.22" data-index="504" data-tex="\[
+ p_3(x+iy)\leq M_{p_3}(0)+H_1(y)+H(y)+\varepsilon|y|.
+ \tag{3.22}
+\]">\[
+ p_3(x+iy)\leq M_{p_3}(0)+H_1(y)+H(y)+\varepsilon|y|.
+ \tag{3.22}
+\]</span>
+<p>Take the supremum over <span class="math" data-index="505" data-tex="\(x\)">\(x\)</span>, replace <span class="math" data-index="506" data-tex="\(y\)">\(y\)</span> by <span class="math" data-index="507" data-tex="\(ty\)">\(ty\)</span>, divide by <span class="math" data-index="508" data-tex="\(t\)">\(t\)</span>, and let <span class="math" data-index="509" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>. Then let <span class="math" data-index="510" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. We obtain
+<span class="math" data-index="511" data-tex="\(H_3\leq H_1+H\)">\(H_3\leq H_1+H\)</span>, hence <span class="math" data-index="512" data-tex="\(H_2\leq H\)">\(H_2\leq H\)</span>. Together with (3.17), this proves <span class="math" data-index="513" data-tex="\(H=H_2\)">\(H=H_2\)</span>. Equation (3.19) proves (3.5). Translating back from <span class="math" data-index="514" data-tex="\(z_*\)">\(z_*\)</span> adds at most
+<span class="math" data-index="515" data-tex="\(L|\operatorname{Im}z_*|+\varepsilon|z_*|\)">\(L|\operatorname{Im}z_*|+\varepsilon|z_*|\)</span> to its constant. This proves the theorem in the original coordinates. <span class="math" data-index="516" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem establishes convexity of the difference by producing the limiting convex carriers and proving the reverse support inequality. It does not assume indicator additivity for <span class="math" data-index="517" data-tex="\(p_2\)">\(p_2\)</span> before establishing an appropriate growth bound.</p>
+<h2 id="4-gaussian-smoothing-in-a-complex-neighborhood">4. Gaussian smoothing in a complex neighborhood</h2>
+<p>The Gaussian below uses the bilinear square, with no complex conjugation:</p>
+<span class="math math-display" id="eq-4.1" data-index="518" data-tex="\[
+ E_j(z)=\left(\frac j\pi\right)^{n/2}
+               \exp\left(-j\sum_{k=1}^n z_k^2\right),
+ \qquad j=1,2,\ldots.
+ \tag{4.1}
+\]">\[
+ E_j(z)=\left(\frac j\pi\right)^{n/2}
+               \exp\left(-j\sum_{k=1}^n z_k^2\right),
+ \qquad j=1,2,\ldots.
+ \tag{4.1}
+\]</span>
+<p>Its real restriction is positive and has integral one. For completeness,
+<span class="math" data-index="519" data-tex="\((\int_{\mathbb R}e^{-s^2}\,ds)^2=\int_{\mathbb R^2}e^{-|x|^2}\,dx=\pi\)">\((\int_{\mathbb R}e^{-s^2}\,ds)^2=\int_{\mathbb R^2}e^{-|x|^2}\,dx=\pi\)</span>
+by polar coordinates; positivity selects the square root, and scaling and products give the stated normalization in every dimension.</p>
+<p><strong>Lemma 4.1 (analytic localization).</strong> Let <span class="math" data-index="520" data-tex="\(g\in C_c^\infty(\mathbb R^n)\)">\(g\in C_c^\infty(\mathbb R^n)\)</span>, and let <span class="math" data-index="521" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> be compact. Suppose <span class="math" data-index="522" data-tex="\(g\)">\(g\)</span> has a holomorphic extension <span class="math" data-index="523" data-tex="\(\widetilde g\)">\(\widetilde g\)</span> to a complex neighborhood of <span class="math" data-index="524" data-tex="\(K\)">\(K\)</span>. Then</p>
+<span class="math math-display" id="eq-4.2" data-index="525" data-tex="\[
+ g_j(z)=\int_{\mathbb R^n}E_j(z-t)g(t)\,dt
+ \tag{4.2}
+\]">\[
+ g_j(z)=\int_{\mathbb R^n}E_j(z-t)g(t)\,dt
+ \tag{4.2}
+\]</span>
+<p>is entire, tends to <span class="math" data-index="526" data-tex="\(g\)">\(g\)</span> in <span class="math" data-index="527" data-tex="\(C^\infty(\mathbb R^n)\)">\(C^\infty(\mathbb R^n)\)</span>, and tends uniformly to <span class="math" data-index="528" data-tex="\(\widetilde g\)">\(\widetilde g\)</span> on some fixed complex neighborhood of <span class="math" data-index="529" data-tex="\(K\)">\(K\)</span>. In particular, if <span class="math" data-index="530" data-tex="\(g=0\)">\(g=0\)</span> in a real neighborhood of <span class="math" data-index="531" data-tex="\(K\)">\(K\)</span>, the uniform complex limit is zero.</p>
+<p><em>Proof.</em> Entire dependence follows by passing every complex derivative through the integral over the fixed compact support of <span class="math" data-index="532" data-tex="\(g\)">\(g\)</span>. The exponential and all its derivatives are uniformly bounded there when <span class="math" data-index="533" data-tex="\(z\)">\(z\)</span> ranges over a compact set. The resulting local power series converge uniformly on such sets.</p>
+<p>For real <span class="math" data-index="534" data-tex="\(x\)">\(x\)</span>, integration by parts gives
+<span class="math" data-index="535" data-tex="\(\partial^\alpha g_j=E_j*\partial^\alpha g\)">\(\partial^\alpha g_j=E_j*\partial^\alpha g\)</span>.
+Each derivative of <span class="math" data-index="536" data-tex="\(g\)">\(g\)</span> is bounded and uniformly continuous on the real space. If <span class="math" data-index="537" data-tex="\(\omega_\alpha(r)\)">\(\omega_\alpha(r)\)</span> is its modulus of continuity, splitting the Gaussian average at <span class="math" data-index="538" data-tex="\(|t|=r\)">\(|t|=r\)</span> gives</p>
+<span class="math math-display" id="eq-4.3" data-index="539" data-tex="\[
+ \|\partial^\alpha g_j-\partial^\alpha g\|_\infty
+ \leq \omega_\alpha(r)
+       +2\|\partial^\alpha g\|_\infty\,2^{n/2}e^{-jr^2/2}.
+ \tag{4.3}
+\]">\[
+ \|\partial^\alpha g_j-\partial^\alpha g\|_\infty
+ \leq \omega_\alpha(r)
+       +2\|\partial^\alpha g\|_\infty\,2^{n/2}e^{-jr^2/2}.
+ \tag{4.3}
+\]</span>
+<p>The tail bound uses</p>
+<span class="math math-display" id="eq-4.4" data-index="540" data-tex="\[
+ \left(\frac j\pi\right)^{n/2}
+ \int_{|t|\geq r}e^{-j|t|^2}\,dt
+ \leq 2^{n/2}e^{-jr^2/2},
+ \tag{4.4}
+\]">\[
+ \left(\frac j\pi\right)^{n/2}
+ \int_{|t|\geq r}e^{-j|t|^2}\,dt
+ \leq 2^{n/2}e^{-jr^2/2},
+ \tag{4.4}
+\]</span>
+<p>obtained by keeping <span class="math" data-index="541" data-tex="\(e^{-jr^2/2}\)">\(e^{-jr^2/2}\)</span> from one half of the exponent and integrating the other half over all of <span class="math" data-index="542" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>.
+First let <span class="math" data-index="543" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>, then <span class="math" data-index="544" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>.
+This proves uniform convergence of every fixed derivative, and hence the stated smooth convergence.</p>
+<p>We prove the complex assertion locally with a quantitative contour estimate. Fix <span class="math" data-index="545" data-tex="\(x_0\in K\)">\(x_0\in K\)</span>. Choose <span class="math" data-index="546" data-tex="\(R&gt;0\)">\(R&gt;0\)</span> small enough that <span class="math" data-index="547" data-tex="\(\widetilde g\)">\(\widetilde g\)</span> is holomorphic past the closed product box</p>
+<span class="math math-display" id="eq-4.5" data-index="548" data-tex="\[
+ P=\{w:|\operatorname{Re}w_k-x_{0,k}|\leq3R,\
+                   |\operatorname{Im}w_k|\leq R,\ 1\leq k\leq n\}.
+ \tag{4.5}
+\]">\[
+ P=\{w:|\operatorname{Re}w_k-x_{0,k}|\leq3R,\
+                   |\operatorname{Im}w_k|\leq R,\ 1\leq k\leq n\}.
+ \tag{4.5}
+\]</span>
+<p>It is bounded there by some <span class="math" data-index="549" data-tex="\(M\)">\(M\)</span>. Put</p>
+<span class="math math-display" id="eq-4.6" data-index="550" data-tex="\[
+ Q=\prod_{k=1}^n[x_{0,k}-2R,x_{0,k}+2R],
+ \qquad
+ z=x+i\eta,\quad
+ |x_k-x_{0,k}|\leq R,\quad |\eta|\leq R/4.
+ \tag{4.6}
+\]">\[
+ Q=\prod_{k=1}^n[x_{0,k}-2R,x_{0,k}+2R],
+ \qquad
+ z=x+i\eta,\quad
+ |x_k-x_{0,k}|\leq R,\quad |\eta|\leq R/4.
+ \tag{4.6}
+\]</span>
+<p>On the real box, <span class="math" data-index="551" data-tex="\(\widetilde g=g\)">\(\widetilde g=g\)</span>. In (4.2), the contribution from <span class="math" data-index="552" data-tex="\(\mathbb R^n\setminus Q\)">\(\mathbb R^n\setminus Q\)</span> has absolute value at most</p>
+<span class="math math-display" id="eq-4.7" data-index="553" data-tex="\[
+ \left(\frac j\pi\right)^{n/2}\|g\|_1
+                              e^{-15jR^2/16}.
+ \tag{4.7}
+\]">\[
+ \left(\frac j\pi\right)^{n/2}\|g\|_1
+                              e^{-15jR^2/16}.
+ \tag{4.7}
+\]</span>
+<p>Indeed at least one coordinate satisfies <span class="math" data-index="554" data-tex="\(|t_k-x_k|\geq R\)">\(|t_k-x_k|\geq R\)</span>, while</p>
+<span class="math math-display" id="eq-4.8" data-index="555" data-tex="\[
+ |e^{-j\sum(z_k-t_k)^2}|
+                  =e^{-j(|x-t|^2-|\eta|^2)}.
+ \tag{4.8}
+\]">\[
+ |e^{-j\sum(z_k-t_k)^2}|
+                  =e^{-j(|x-t|^2-|\eta|^2)}.
+ \tag{4.8}
+\]</span>
+<p>In the integral over <span class="math" data-index="556" data-tex="\(Q\)">\(Q\)</span>, move each coordinate interval from height zero to height <span class="math" data-index="557" data-tex="\(\eta_k\)">\(\eta_k\)</span>, successively. Cauchy's theorem on the coordinate rectangle equates the original interval integral to the shifted one plus its two vertical-side integrals. All rectangles and their products lie in <span class="math" data-index="558" data-tex="\(P\)">\(P\)</span>. On a side in coordinate <span class="math" data-index="559" data-tex="\(k\)">\(k\)</span>, the real part of that coordinate is <span class="math" data-index="560" data-tex="\(x_{0,k}\pm2R\)">\(x_{0,k}\pm2R\)</span>, so its distance from <span class="math" data-index="561" data-tex="\(x_k\)">\(x_k\)</span> is at least <span class="math" data-index="562" data-tex="\(R\)">\(R\)</span>. The imaginary vector at every intermediate contour point has each coordinate either zero, <span class="math" data-index="563" data-tex="\(\eta_\ell\)">\(\eta_\ell\)</span>, or between those two. Therefore its imaginary distance from <span class="math" data-index="564" data-tex="\(\eta\)">\(\eta\)</span> is at most <span class="math" data-index="565" data-tex="\(|\eta|\leq R/4\)">\(|\eta|\leq R/4\)</span>. Equation (4.8) again gives the same exponentially decreasing bound on every side. Summing the <span class="math" data-index="566" data-tex="\(2n\)">\(2n\)</span> side contributions yields</p>
+<span class="math math-display" id="eq-4.9" data-index="567" data-tex="\[
+ \left|
+ \left(\frac j\pi\right)^{n/2}
+ \int_Q e^{-j\sum(z_k-t_k)^2}\widetilde g(t)\,dt
+ -
+ \left(\frac j\pi\right)^{n/2}
+ \int_Q e^{-j|x-t|^2}\widetilde g(t+i\eta)\,dt
+ \right|
+ \leq
+ \left(\frac j\pi\right)^{n/2}
+       2M(4R)^{n-1}\sum_k|\eta_k|\,e^{-15jR^2/16}.
+ \tag{4.9}
+\]">\[
+ \left|
+ \left(\frac j\pi\right)^{n/2}
+ \int_Q e^{-j\sum(z_k-t_k)^2}\widetilde g(t)\,dt
+ -
+ \left(\frac j\pi\right)^{n/2}
+ \int_Q e^{-j|x-t|^2}\widetilde g(t+i\eta)\,dt
+ \right|
+ \leq
+ \left(\frac j\pi\right)^{n/2}
+       2M(4R)^{n-1}\sum_k|\eta_k|\,e^{-15jR^2/16}.
+ \tag{4.9}
+\]</span>
+<p>The telescoping contour moves explain every term: the already moved coordinates are integrated on shifted horizontal intervals, the later coordinates on real intervals, and the current coordinate on one vertical side. These have respective lengths <span class="math" data-index="568" data-tex="\(4R\)">\(4R\)</span> and <span class="math" data-index="569" data-tex="\(|\eta_k|\)">\(|\eta_k|\)</span>. The same estimate covers negative <span class="math" data-index="570" data-tex="\(\eta_k\)">\(\eta_k\)</span>.</p>
+<p>The last integral in (4.9) is a real Gaussian average of the holomorphic values at height <span class="math" data-index="571" data-tex="\(\eta\)">\(\eta\)</span>. Uniform continuity on <span class="math" data-index="572" data-tex="\(P\)">\(P\)</span> bounds its difference from <span class="math" data-index="573" data-tex="\(\widetilde g(x+i\eta)\)">\(\widetilde g(x+i\eta)\)</span> by a modulus of continuity on <span class="math" data-index="574" data-tex="\(|t-x|&lt;r\)">\(|t-x|&lt;r\)</span>, plus</p>
+<span class="math math-display" id="eq-4.10" data-index="575" data-tex="\[
+ 2M\,2^{n/2}e^{-jr^2/2}
+                    +M\,2^{n/2}e^{-jR^2/2}
+ \tag{4.10}
+\]">\[
+ 2M\,2^{n/2}e^{-jr^2/2}
+                    +M\,2^{n/2}e^{-jR^2/2}
+ \tag{4.10}
+\]</span>
+<p>on the remaining part and on the missing Gaussian mass outside <span class="math" data-index="576" data-tex="\(Q\)">\(Q\)</span>. We may choose <span class="math" data-index="577" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span>. Equations (4.7), (4.9) and (4.10), followed by <span class="math" data-index="578" data-tex="\(j\to\infty\)">\(j\to\infty\)</span> and then <span class="math" data-index="579" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>, prove uniform convergence throughout the smaller closed region in (4.6). Finitely many corresponding open smaller regions cover <span class="math" data-index="580" data-tex="\(K\)">\(K\)</span>; their union is a fixed complex neighborhood on which the same convergence is uniform.</p>
+<p>If the initial hypothesis is phrased as real analyticity near <span class="math" data-index="581" data-tex="\(K\)">\(K\)</span>, it gives the required extension: the local real power series converge holomorphically on sufficiently small complex polydisks centered at real points. Intersections of such polydisks are connected and have a real open intersection whenever nonempty. The identity principle makes their extensions agree there. A finite collection around the compact set supplies a single complex neighborhood. When <span class="math" data-index="582" data-tex="\(g\)">\(g\)</span> vanishes near <span class="math" data-index="583" data-tex="\(K\)">\(K\)</span>, take its extension there to be zero. <span class="math" data-index="584" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (commuting smoothing and compact convolution).</strong> Let <span class="math" data-index="585" data-tex="\(w\in C_c^\infty(\mathbb R^n)\)">\(w\in C_c^\infty(\mathbb R^n)\)</span> and <span class="math" data-index="586" data-tex="\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span>. Put <span class="math" data-index="587" data-tex="\(w_j=E_j*w\)">\(w_j=E_j*w\)</span>. Then <span class="math" data-index="588" data-tex="\(w_j\)">\(w_j\)</span> is entire, <span class="math" data-index="589" data-tex="\(w_j\to w\)">\(w_j\to w\)</span> smoothly on the real space, and</p>
+<span class="math math-display" id="eq-4.11" data-index="590" data-tex="\[
+ \mu*w_j=E_j*(\mu*w)
+ \tag{4.11}
+\]">\[
+ \mu*w_j=E_j*(\mu*w)
+ \tag{4.11}
+\]</span>
+<p>as entire functions. If <span class="math" data-index="591" data-tex="\(\mu*w\)">\(\mu*w\)</span> is analytic near a compact real <span class="math" data-index="592" data-tex="\(K\)">\(K\)</span>, the right side tends uniformly in a fixed complex neighborhood of <span class="math" data-index="593" data-tex="\(K\)">\(K\)</span> to its holomorphic extension.</p>
+<p><em>Proof.</em> The first statements are Lemma 4.1. A compact distribution convolved with <span class="math" data-index="594" data-tex="\(w\)">\(w\)</span> is a compact smooth function, by finite-order differentiation under its pairing. For each real <span class="math" data-index="595" data-tex="\(y\)">\(y\)</span>, the change of variables <span class="math" data-index="596" data-tex="\(s=t+y\)">\(s=t+y\)</span> gives</p>
+<span class="math math-display" id="eq-4.12" data-index="597" data-tex="\[
+ \int E_j(z-s)w(s-y)\,ds
+                       =\int E_j(z-y-t)w(t)\,dt.
+ \tag{4.12}
+\]">\[
+ \int E_j(z-s)w(s-y)\,ds
+                       =\int E_j(z-y-t)w(t)\,dt.
+ \tag{4.12}
+\]</span>
+<p>Pair both sides with <span class="math" data-index="598" data-tex="\(\mu\)">\(\mu\)</span> in <span class="math" data-index="599" data-tex="\(y\)">\(y\)</span>, using a fixed cutoff near its support. The smooth seminorms of all integrands on that cutoff support are integrably bounded: on the left all relevant <span class="math" data-index="600" data-tex="\(s\)">\(s\)</span> lie in a common compact set, and on the right <span class="math" data-index="601" data-tex="\(t\)">\(t\)</span> lies in <span class="math" data-index="602" data-tex="\(\operatorname{supp}w\)">\(\operatorname{supp}w\)</span>. Finite-order continuity permits exchanging the pairing and integration. The two sides become <span class="math" data-index="603" data-tex="\(E_j*(\mu*w)\)">\(E_j*(\mu*w)\)</span> and <span class="math" data-index="604" data-tex="\(\mu*w_j\)">\(\mu*w_j\)</span>, proving (4.11) for every complex <span class="math" data-index="605" data-tex="\(z\)">\(z\)</span>, with locally uniform derivative bounds. Apply Lemma 4.1 to the compact smooth function <span class="math" data-index="606" data-tex="\(\mu*w\)">\(\mu*w\)</span> for the final conclusion. <span class="math" data-index="607" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-density-on-every-open-convex-domain">5. Density on every open convex domain</h2>
+<p><strong>Theorem 5.1 (convex approximation by exponential-polynomial solutions).</strong> For every nonzero <span class="math" data-index="608" data-tex="\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span> and every open convex <span class="math" data-index="609" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span>, the restrictions of <span class="math" data-index="610" data-tex="\(E_\mu\)">\(E_\mu\)</span> are dense in <span class="math" data-index="611" data-tex="\(N_\mu(X)\)">\(N_\mu(X)\)</span> in the <span class="math" data-index="612" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span> topology. Explicitly, if <span class="math" data-index="613" data-tex="\(u\in N_\mu(X)\)">\(u\in N_\mu(X)\)</span>, <span class="math" data-index="614" data-tex="\(K\subset X\)">\(K\subset X\)</span> is compact, <span class="math" data-index="615" data-tex="\(m\)">\(m\)</span> is a nonnegative integer, and <span class="math" data-index="616" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a finite exponential-polynomial solution <span class="math" data-index="617" data-tex="\(h\in E_\mu\)">\(h\in E_\mu\)</span> such that</p>
+<span class="math math-display" id="eq-5.1" data-index="618" data-tex="\[
+ \max_{|\alpha|\leq m}\ \sup_{x\in K}
+                          |\partial^\alpha(u-h)(x)|&lt;\varepsilon.
+ \tag{5.1}
+\]">\[
+ \max_{|\alpha|\leq m}\ \sup_{x\in K}
+                          |\partial^\alpha(u-h)(x)|&lt;\varepsilon.
+ \tag{5.1}
+\]</span>
+<p>The convolution kernel can be a distribution of any finite order and need not be invertible.</p>
+<p><em>Proof.</em> Empty <span class="math" data-index="619" data-tex="\(X\)">\(X\)</span> is immediate, so assume <span class="math" data-index="620" data-tex="\(X\ne\varnothing\)">\(X\ne\varnothing\)</span>.
+We use the locally convex separation proved in Proposition 1.2 of <a href="AN02-L042.html#from-normed-extension-to-seminorm-bounds">Continuous functionals, test families and compact limits</a>.
+It suffices to prove that every continuous linear functional on <span class="math" data-index="621" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span> annihilating the restrictions of <span class="math" data-index="622" data-tex="\(E_\mu\)">\(E_\mu\)</span> also annihilates <span class="math" data-index="623" data-tex="\(N_\mu(X)\)">\(N_\mu(X)\)</span>.
+Such a functional is a compact distribution <span class="math" data-index="624" data-tex="\(v\in\mathcal E&#x27;(X)\)">\(v\in\mathcal E&#x27;(X)\)</span>.
+Here is the relevant dual identification. Continuity bounds the functional by finitely many compact derivative seminorms, which may be combined into</p>
+<span class="math math-display" id="eq-5.2" data-index="625" data-tex="\[
+ |v(u)|\leq C\max_{|\alpha|\leq m}\sup_Q|\partial^\alpha u|
+                 \quad(u\in C^\infty(X))
+ \tag{5.2}
+\]">\[
+ |v(u)|\leq C\max_{|\alpha|\leq m}\sup_Q|\partial^\alpha u|
+                 \quad(u\in C^\infty(X))
+ \tag{5.2}
+\]</span>
+<p>for one compact <span class="math" data-index="626" data-tex="\(Q\subset X\)">\(Q\subset X\)</span>. Restrict to compact smooth tests to obtain a distribution supported in <span class="math" data-index="627" data-tex="\(Q\)">\(Q\)</span>. Conversely, for arbitrary <span class="math" data-index="628" data-tex="\(u\in C^\infty(X)\)">\(u\in C^\infty(X)\)</span>, insert a cutoff equal to one near <span class="math" data-index="629" data-tex="\(Q\)">\(Q\)</span>; (5.2) makes the value unchanged. This gives its compact distributional extension to the real space and its usual action on all smooth functions near the support.</p>
+<p>If <span class="math" data-index="630" data-tex="\(v=0\)">\(v=0\)</span>, there is nothing to prove. Otherwise Theorem 1.1 gives the unique nonzero entire <span class="math" data-index="631" data-tex="\(G\)">\(G\)</span> such that</p>
+<span class="math math-display" id="eq-5.3" data-index="632" data-tex="\[
+ F_v(\zeta)=F_{\check\mu}(\zeta)G(\zeta),\qquad
+ F_{\check\mu}(\zeta)=F_\mu(-\zeta).
+ \tag{5.3}
+\]">\[
+ F_v(\zeta)=F_{\check\mu}(\zeta)G(\zeta),\qquad
+ F_{\check\mu}(\zeta)=F_\mu(-\zeta).
+ \tag{5.3}
+\]</span>
+<p>Define the nonempty compact convex sets</p>
+<span class="math math-display" id="eq-5.4" data-index="633" data-tex="\[
+ K_v=\operatorname{conv}\operatorname{supp}v,\qquad
+ K_-=\operatorname{conv}\operatorname{supp}\check\mu
+                 =-\operatorname{conv}\operatorname{supp}\mu.
+ \tag{5.4}
+\]">\[
+ K_v=\operatorname{conv}\operatorname{supp}v,\qquad
+ K_-=\operatorname{conv}\operatorname{supp}\check\mu
+                 =-\operatorname{conv}\operatorname{supp}\mu.
+ \tag{5.4}
+\]</span>
+<p>Their compactness follows by reducing each finite convex combination in <span class="math" data-index="634" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> to at most <span class="math" data-index="635" data-tex="\(n+1\)">\(n+1\)</span> points using affine dependence. The resulting hull is the continuous image of a compact support product and the closed coefficient simplex. Since <span class="math" data-index="636" data-tex="\(X\)">\(X\)</span> is convex and contains the support of <span class="math" data-index="637" data-tex="\(v\)">\(v\)</span>, it contains <span class="math" data-index="638" data-tex="\(K_v\)">\(K_v\)</span>; compactness then gives a positive neighborhood of <span class="math" data-index="639" data-tex="\(K_v\)">\(K_v\)</span> inside <span class="math" data-index="640" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Choose any nonzero <span class="math" data-index="641" data-tex="\(\phi\in C_c^\infty(\mathbb R^n)\)">\(\phi\in C_c^\infty(\mathbb R^n)\)</span> and set <span class="math" data-index="642" data-tex="\(K_\phi=\operatorname{conv}\operatorname{supp}\phi\)">\(K_\phi=\operatorname{conv}\operatorname{supp}\phi\)</span>. The compact convolutions <span class="math" data-index="643" data-tex="\(\phi*\check\mu\)">\(\phi*\check\mu\)</span> and <span class="math" data-index="644" data-tex="\(\phi*v\)">\(\phi*v\)</span> are nonzero smooth functions. They are nonzero because their Fourier transforms are products of nonzero entire functions, and Fourier injectivity applies. Their logarithmic transforms</p>
+<span class="math math-display" id="eq-5.5" data-index="645" data-tex="\[
+ p_1=\log|F_\phi F_{\check\mu}|,\qquad
+ p_2=\log|G|,\qquad
+ p_3=\log|F_\phi F_v|
+ \tag{5.5}
+\]">\[
+ p_1=\log|F_\phi F_{\check\mu}|,\qquad
+ p_2=\log|G|,\qquad
+ p_3=\log|F_\phi F_v|
+ \tag{5.5}
+\]</span>
+<p>are proper PSH and satisfy <span class="math" data-index="646" data-tex="\(p_3=p_1+p_2\)">\(p_3=p_1+p_2\)</span>, including at their zeros.
+Regard the two smooth compact functions as finite complex measures. The exact <a href="AN02-L142.html#MI1">measure-indicator theorem</a> gives the imaginary-growth bounds for <span class="math" data-index="647" data-tex="\(p_1,p_3\)">\(p_1,p_3\)</span> and identifies their indicators. The compact-distribution convolution support theorem, Theorem 3.1 in <a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a>, gives</p>
+<span class="math math-display" id="eq-5.6" data-index="648" data-tex="\[
+ H_1=H_{K_\phi}+H_{K_-},\qquad
+ H_3=H_{K_\phi}+H_{K_v}.
+ \tag{5.6}
+\]">\[
+ H_1=H_{K_\phi}+H_{K_-},\qquad
+ H_3=H_{K_\phi}+H_{K_v}.
+ \tag{5.6}
+\]</span>
+<p>These statements use ordinary support, not singular support. The logarithm remains proper through characteristic zeros by Lemma Z2 in <a href="AN02-L137.html#proof-Z2">Fourier endpoints and the asymptotic density of zeros</a>.</p>
+<p>Apply Theorem 3.1. The difference</p>
+<span class="math math-display" id="eq-5.7" data-index="649" data-tex="\[
+ H_2=H_{K_v}-H_{K_-}
+ \tag{5.7}
+\]">\[
+ H_2=H_{K_v}-H_{K_-}
+ \tag{5.7}
+\]</span>
+<p>is the support function of a nonempty compact convex <span class="math" data-index="650" data-tex="\(K_2\)">\(K_2\)</span>, and</p>
+<span class="math math-display" id="eq-5.8" data-index="651" data-tex="\[
+ |G(\zeta)|\leq C_\varepsilon
+       e^{H_{K_2}(\operatorname{Im}\zeta)+\varepsilon|\zeta|}
+       \quad\hbox{for every }\varepsilon&gt;0.
+ \tag{5.8}
+\]">\[
+ |G(\zeta)|\leq C_\varepsilon
+       e^{H_{K_2}(\operatorname{Im}\zeta)+\varepsilon|\zeta|}
+       \quad\hbox{for every }\varepsilon&gt;0.
+ \tag{5.8}
+\]</span>
+<p>The constants may depend on <span class="math" data-index="652" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.
+Equality of support functions and their proved uniqueness give the exact sum</p>
+<span class="math math-display" id="eq-5.9" data-index="653" data-tex="\[
+ K_2+K_-=K_v\subset X.
+ \tag{5.9}
+\]">\[
+ K_2+K_-=K_v\subset X.
+ \tag{5.9}
+\]</span>
+<p>In particular every <span class="math" data-index="654" data-tex="\(a\in K_2\)">\(a\in K_2\)</span> has
+<span class="math" data-index="655" data-tex="\(a-\operatorname{supp}\mu\subset X\)">\(a-\operatorname{supp}\mu\subset X\)</span>, so <span class="math" data-index="656" data-tex="\(K_2\subset X_\mu\)">\(K_2\subset X_\mu\)</span>.</p>
+<p>The precise analytic-functional theorem in <a href="AN02-L146.html#af1-the-definition-and-the-exact-theorem">Fourier transforms of analytic functionals on a real convex carrier</a>, Theorem AF1, now gives an analytic functional <span class="math" data-index="657" data-tex="\(\sigma\)">\(\sigma\)</span> carried by <span class="math" data-index="658" data-tex="\(K_2\)">\(K_2\)</span> with</p>
+<span class="math math-display" id="eq-5.10" data-index="659" data-tex="\[
+ F_\sigma=G.
+ \tag{5.10}
+\]">\[
+ F_\sigma=G.
+ \tag{5.10}
+\]</span>
+<p>Section AF8 of that lesson proves its unique action on holomorphic germs near this real convex carrier. For each complex neighborhood <span class="math" data-index="660" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-index="661" data-tex="\(K_2\)">\(K_2\)</span>, a constant bounds this action by <span class="math" data-index="662" data-tex="\(C_\Omega\sup_\Omega|h|\)">\(C_\Omega\sup_\Omega|h|\)</span> for holomorphic <span class="math" data-index="663" data-tex="\(h\)">\(h\)</span> there. We use that proved local action below; we do not regard <span class="math" data-index="664" data-tex="\(\sigma\)">\(\sigma\)</span> as a real distribution.</p>
+<p>First, for every entire <span class="math" data-index="665" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" id="eq-5.11" data-index="666" data-tex="\[
+ v(h)=\sigma(\mu*h).
+ \tag{5.11}
+\]">\[
+ v(h)=\sigma(\mu*h).
+ \tag{5.11}
+\]</span>
+<p>To prove the identity on the actual test space, the convolution of an entire test with <span class="math" data-index="667" data-tex="\(\mu\)">\(\mu\)</span> is entire, by finite-order differentiation through the pairing. Both sides of (5.11) are continuous for uniform holomorphic convergence on sufficiently large bounded complex sets. On the right choose a bounded complex neighborhood of <span class="math" data-index="668" data-tex="\(K_2\)">\(K_2\)</span>; finite-order continuity of <span class="math" data-index="669" data-tex="\(\mu\)">\(\mu\)</span> and the Cauchy estimates control the convolution there by the supremum of <span class="math" data-index="670" data-tex="\(h\)">\(h\)</span> on a larger bounded complex set containing all the relevant translated points. On the left the same Cauchy estimates control the finitely many derivatives required by <span class="math" data-index="671" data-tex="\(v\)">\(v\)</span>.</p>
+<p>For <span class="math" data-index="672" data-tex="\(h(x)=e^{-ix\cdot\zeta}\)">\(h(x)=e^{-ix\cdot\zeta}\)</span>, the right side is</p>
+<span class="math math-display" id="eq-5.12" data-index="673" data-tex="\[
+ \sigma\bigl(F_\mu(-\zeta)e^{-ix\cdot\zeta}\bigr)
+                 =F_\mu(-\zeta)G(\zeta)=F_v(\zeta).
+ \tag{5.12}
+\]">\[
+ \sigma\bigl(F_\mu(-\zeta)e^{-ix\cdot\zeta}\bigr)
+                 =F_\mu(-\zeta)G(\zeta)=F_v(\zeta).
+ \tag{5.12}
+\]</span>
+<p>Differentiate this identity at <span class="math" data-index="674" data-tex="\(\zeta=0\)">\(\zeta=0\)</span>, with uniform exponential series on the bounded complex sets just described. It gives equality on every monomial and hence every polynomial. The Taylor polynomials of an arbitrary entire <span class="math" data-index="675" data-tex="\(h\)">\(h\)</span> converge uniformly on a larger polydisk, and Cauchy estimates give convergence of each required derivative on the smaller compact sets. The two continuity bounds pass polynomial equality to <span class="math" data-index="676" data-tex="\(h\)">\(h\)</span>. This proves (5.11) for every entire test.</p>
+<p>Next let <span class="math" data-index="677" data-tex="\(w\in C_c^\infty(\mathbb R^n)\)">\(w\in C_c^\infty(\mathbb R^n)\)</span> and suppose <span class="math" data-index="678" data-tex="\(g=\mu*w\)">\(g=\mu*w\)</span> is analytic near <span class="math" data-index="679" data-tex="\(K_2\)">\(K_2\)</span>. Lemma 4.2 gives entire <span class="math" data-index="680" data-tex="\(w_j=E_j*w\)">\(w_j=E_j*w\)</span>, real smooth convergence <span class="math" data-index="681" data-tex="\(w_j\to w\)">\(w_j\to w\)</span>, and uniform complex convergence <span class="math" data-index="682" data-tex="\(\mu*w_j\to\widetilde g\)">\(\mu*w_j\to\widetilde g\)</span> on a fixed neighborhood of <span class="math" data-index="683" data-tex="\(K_2\)">\(K_2\)</span>. Finite-order continuity of <span class="math" data-index="684" data-tex="\(v\)">\(v\)</span> and the local holomorphic bound for <span class="math" data-index="685" data-tex="\(\sigma\)">\(\sigma\)</span> pass (5.11) to the limit:</p>
+<span class="math math-display" id="eq-5.13" data-index="686" data-tex="\[
+ v(w)=\sigma(\widetilde{\mu*w}).
+ \tag{5.13}
+\]">\[
+ v(w)=\sigma(\widetilde{\mu*w}).
+ \tag{5.13}
+\]</span>
+<p>Here the right side is the germ action on the analytic extension near <span class="math" data-index="687" data-tex="\(K_2\)">\(K_2\)</span>. In particular it is zero if <span class="math" data-index="688" data-tex="\(\mu*w=0\)">\(\mu*w=0\)</span> near <span class="math" data-index="689" data-tex="\(K_2\)">\(K_2\)</span>.</p>
+<p>Finally take <span class="math" data-index="690" data-tex="\(u\in N_\mu(X)\)">\(u\in N_\mu(X)\)</span>. Choose a compact smooth cutoff
+<span class="math" data-index="691" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one near the whole compact convex set <span class="math" data-index="692" data-tex="\(K_v=K_2+K_-\)">\(K_v=K_2+K_-\)</span>, and extend <span class="math" data-index="693" data-tex="\(w=\chi u\)">\(w=\chi u\)</span> by zero to <span class="math" data-index="694" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. It is compact and smooth. The cutoff equals one near both <span class="math" data-index="695" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span> and <span class="math" data-index="696" data-tex="\(K_2-\operatorname{supp}\mu\)">\(K_2-\operatorname{supp}\mu\)</span>, which are subsets of <span class="math" data-index="697" data-tex="\(K_v\)">\(K_v\)</span>. Thus</p>
+<span class="math math-display" id="eq-5.14" data-index="698" data-tex="\[
+ v(u)=v(w),\qquad \mu*w=0
+                     \quad\hbox{in a real neighborhood of }K_2.
+ \tag{5.14}
+\]">\[
+ v(u)=v(w),\qquad \mu*w=0
+                     \quad\hbox{in a real neighborhood of }K_2.
+ \tag{5.14}
+\]</span>
+<p>For the second assertion, compactness supplies a common neighborhood on which every translated point <span class="math" data-index="699" data-tex="\(x-y\)">\(x-y\)</span>, <span class="math" data-index="700" data-tex="\(y\in\operatorname{supp}\mu\)">\(y\in\operatorname{supp}\mu\)</span>, lies in the region <span class="math" data-index="701" data-tex="\(\chi=1\)">\(\chi=1\)</span>. This neighborhood is also contained in <span class="math" data-index="702" data-tex="\(X_\mu\)">\(X_\mu\)</span>. On a neighborhood of the support in the <span class="math" data-index="703" data-tex="\(y\)">\(y\)</span>-variable, <span class="math" data-index="704" data-tex="\(w(x-y)=u(x-y)\)">\(w(x-y)=u(x-y)\)</span>; the finite-order distributional pairing is therefore unchanged. The homogeneous equation for <span class="math" data-index="705" data-tex="\(u\)">\(u\)</span> gives the zero.
+Equation (5.13) now gives <span class="math" data-index="706" data-tex="\(v(u)=0\)">\(v(u)=0\)</span>, as required.</p>
+<p>Locally convex separation proves that the closure of the restricted exponential-polynomial space contains <span class="math" data-index="707" data-tex="\(N_\mu(X)\)">\(N_\mu(X)\)</span>. Its closure is also contained there because the kernel is closed, as proved in Section 2. The two spaces are equal. A neighborhood in the smooth topology uses finitely many compact derivative seminorms; combining their compacts and derivative orders gives (5.1). This proves the theorem. <span class="math" data-index="708" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.2 (an empty convolution domain).</strong> If <span class="math" data-index="709" data-tex="\(X\)">\(X\)</span> is open and convex and <span class="math" data-index="710" data-tex="\(X_\mu=\varnothing\)">\(X_\mu=\varnothing\)</span>, the restrictions of <span class="math" data-index="711" data-tex="\(E_\mu\)">\(E_\mu\)</span> are dense in all of <span class="math" data-index="712" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span>.</p>
+<p><em>Proof.</em> The homogeneous equation imposes no condition on the empty set, so <span class="math" data-index="713" data-tex="\(N_\mu(X)=C^\infty(X)\)">\(N_\mu(X)=C^\infty(X)\)</span>. Apply Theorem 5.1. <span class="math" data-index="714" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>, lecture notes, Chapter 5. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Online reading</a>. Background on Schwartz functions, distributional Fourier transforms and compact-support continuity.</li>
+<li>Richard Melrose, <em>Introduction to Microlocal Analysis</em>, MIT lecture notes, revised 2007. Chapter 1, <em>Tempered distributions and the Fourier transform</em>. <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">Online reading</a>; <a href="https://math.mit.edu/~rbm/iml/Front.pdf">title and contents</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990; 2003 reprint. Background on compact Fourier transforms, analytic functionals and Gaussian analytic localization.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; 2005 reprint. Reference for approximation by exponential-polynomial solutions of compact convolution equations.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/exponential-polynomial-solutions-and-convex-approximation.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L167/exponential-polynomial-solutions-and-convex-approximation-formal.md" download>exponential-polynomial-solutions-and-convex-approximation-formal.md</a></li><li><a href="reproduce/L167/exponential-polynomial-solutions-and-convex-approximation-learner.md" download>exponential-polynomial-solutions-and-convex-approximation-learner.md</a></li><li><a href="reproduce/L167/make_figures216.py" download>make_figures216.py</a></li><li><a href="reproduce/L167/check_numerics216.py" download>check_numerics216.py</a></li><li><a href="reproduce/L167/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L167/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L167/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L167/figures/geometry216.json" download>figures/geometry216.json</a></li><li><a href="reproduce/L167/figures/reflected-carriers-and-convex-domain.png" download>figures/reflected-carriers-and-convex-domain.png</a></li><li><a href="reproduce/L167/figures/reflected-carriers-and-convex-domain.svg" download>figures/reflected-carriers-and-convex-domain.svg</a></li><li><a href="reproduce/L167/figures/gaussian-contour-localization.png" download>figures/gaussian-contour-localization.png</a></li><li><a href="reproduce/L167/figures/gaussian-contour-localization.svg" download>figures/gaussian-contour-localization.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

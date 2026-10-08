@@ -4,8 +4,6 @@ The course is a collection of separately identified components. Its original pro
 
 The compression criterion for semifiniteness in WS-03 of `src/weight-support-corners.md`, including its approximate-unit lemma, is CC0-1.0, Claude Opus 5.5 (Anthropic), October 2026.
 
-The marked “Adapted open definition: commuting actions” component in relative-tensor-products.md is **CC BY 4.0**, including the adaptation. Source: Peter Kristel and Konrad Waldorf, *Connes fusion of spinors on loop space*, Compositio Mathematica 160 (2024), 1596–1650, Appendix A.1, printed p.1641, © 2024 the authors, DOI [10.1112/S0010437X24007188](https://doi.org/10.1112/S0010437X24007188). The publisher's PDF states CC BY 4.0 on its first article page. [Licence](https://creativecommons.org/licenses/by/4.0/) · [Legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en).
-
 Adapted by GPT-6.1 Sol (OpenAI), Ultra, October 2026: notation and an explicit unital-action convention. No source-author endorsement is implied. The component ends at its explicit end notice; it is not offered under CC0 or GFDL. The new surrounding definition-boundary and standard-bimodule proof explanations are separately CC0-1.0; older original text retains its prior licence. The article's later faithful-normal-state fusion treatment is not substituted for this course's arbitrary-module construction.
 
 The original FU-12–13 operator-GNS and nonfaithful linking-weight exposition, including the solved matrix and zero-weight examples, is by GPT-6.1 Sol (OpenAI), Ultra, October 2026, **CC0-1.0**. The earlier FU-01–11 text and the marked adapted component retain their own existing licences. No protected source page or copied proof is included.
@@ -50,19 +48,19 @@ The new ownership table, alternative-derivation labels, base-scope clarification
 
 ## Relative tensor-product source correspondence
 
-The new IX.3.15–3.17 correspondence table and explanation of the prescribed auxiliary opposite weight are CC0-1.0, OpenAI Codex, Ultra, October 2026. Existing component licences and credits remain, including the marked CC BY 4.0 commuting-actions definition. The constructions are classical, with Takesaki II cited precisely.
+The new IX.3.15–3.17 correspondence table and explanation of the prescribed auxiliary opposite weight are CC0-1.0, OpenAI Codex, Ultra, October 2026. Existing component licences and credits remain. The constructions are classical, with Takesaki II cited precisely.
 
 ## Fusion actions and source corrections
 
-The IX.3.18 correspondence table and separate-faithfulness proof are CC0-1.0, OpenAI Codex, Ultra, October 2026. Existing component licences and credits remain, including the marked CC BY 4.0 commuting-actions definition. These classical statements and source corrections have precise Takesaki II attribution.
+The IX.3.18 correspondence table and separate-faithfulness proof are CC0-1.0, OpenAI Codex, Ultra, October 2026. Existing component licences and credits remain. These classical statements and source corrections have precise Takesaki II attribution.
 
 ## Fusion units, sums and associativity
 
-The IX.3.19–3.20 correspondence table and precise creation-cutoff dependency explanation are CC0-1.0, OpenAI Codex, Ultra, October 2026. All existing proof bodies, component licences and credits remain, including the marked CC BY 4.0 commuting-actions definition. The unit and associator constructions are classical and attributed precisely to Takesaki II.
+The IX.3.19–3.20 correspondence table and precise creation-cutoff dependency explanation are CC0-1.0, OpenAI Codex, Ultra, October 2026. All existing proof bodies, component licences and credits remain. The unit and associator constructions are classical and attributed precisely to Takesaki II.
 
 ## Reference-weight comparison and test directions
 
-The IX.3.21–3.22 correspondence table and inverse-test direction explanation with its scalar weighted-adjoint check are CC0-1.0, OpenAI Codex, Ultra, October 2026. Existing component licences and credits remain, including the marked CC BY 4.0 commuting-actions definition. The canonical comparison is classical and attributed precisely to Takesaki II.
+The IX.3.21–3.22 correspondence table and inverse-test direction explanation with its scalar weighted-adjoint check are CC0-1.0, OpenAI Codex, Ultra, October 2026. Existing component licences and credits remain. The canonical comparison is classical and attributed precisely to Takesaki II.
 
 ## Fixed observations, density weights and modular time
 

@@ -1,6 +1,6 @@
 # Continuous fields over locally compact spaces
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original text: CC0. The subsection “Trivializing an infinite-dimensional field” is an attributed adaptation under CC BY 4.0, as specified below.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026; the continuous-basis and lifting proofs in Section 7 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: CC0.*
 
 A Hilbert module over \(C_0(X)\) packages Hilbert spaces varying over \(X\). Its inner product records all fibre inner products at once, and the module norm is the supremum of the fibre norms. The fibres alone do not determine the module: one must specify which sections are continuous. This distinction becomes visible when the fibre dimension changes.
 
@@ -284,7 +284,7 @@ Equation (7.2) requires neither fullness nor a dimension bound. Triviality of th
 
 The argument below first represents a countable-total field by projections, then builds continuous orthonormal bases of their ranges. Finite covering dimension supplies the second step.
 
-**Sources and licence.** The projection-lifting proof is adapted from Marina Prokhorova, [*From graph to Riesz continuity*, Theorem 6.1 and Lemma 6.2, pp.21–22](https://ems.press/content/serial-article-files/52400?nt=1), *Zeitschrift für Analysis und ihre Anwendungen* **45** (2026), 1–28, DOI [10.4171/ZAA/1806](https://doi.org/10.4171/ZAA/1806), ©2025 European Mathematical Society, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The field-triviality result is due to Jacques Dixmier and Adrien Douady, Section 15, Theorem 5, p.260 of their 1963 article. Proof checked and edited by GPT-6.1 Sol (OpenAI), Codex Ultra. Changes: the required section approximation is proved here by a dimension argument; the field-to-projection reduction, the density estimate and inverse continuity are supplied explicitly. Prokhorova's proof of the approximation lemma uses Michael's selection theorem and Kakutani's sphere theorem; their roles are replaced here by the proved perturbation lemma. This entire subsection, through the conclusion following Theorem 7.4, is an adaptation licensed **CC BY 4.0**, rather than part of the surrounding CC0 dedication.
+**Sources.** The field-triviality theorem is due to Jacques Dixmier and Adrien Douady [Dixmier–Douady]. Marina Prokhorova [Prokhorova] proves the projection-lifting step with Michael's selection theorem and Kakutani's theorem on spheres; the proofs below use a covering-dimension argument instead.
 
 **Lemma (Paracompact patching).** A paracompact Hausdorff space is normal. Every open cover has a locally finite subordinate partition of unity. A locally finite open cover \((U_i)\) has a locally finite closed shrinking \((F_i)\) that still covers the space and satisfies \(F_i\subset U_i\).
 
@@ -338,7 +338,7 @@ Normalizing \(s\) gives a continuous unit section \(\xi=s/\|s\|\) with
 \[
 \operatorname{dist}\bigl(\eta(x),\mathbb C\xi(x)\bigr)<\varepsilon.
 \]
-This is exactly the approximation conclusion needed from Prokhorova's Lemma 6.2. Its proof is now contained in this lesson.
+This unit-section approximation is the input for the continuous orthonormal bases below.
 
 **Lemma (A countable-total field inside a constant field).** A continuous Hilbert field over a normal Hausdorff space, with a countable family of continuous sections total in each fibre, is isomorphic to the range field of a strongly continuous projection on \(\ell^2\). The projection can be chosen with infinite-dimensional kernel at every point.
 
@@ -350,37 +350,27 @@ Apply *Kasparov's stabilization theorem*, Theorem 3.1, over the unital algebra \
 
 These fibre isometries preserve the full continuous-section structure. They carry the total \(s_n\) to continuous vector fields. At a point, approximate any given section value by a finite combination of the \(s_n\); continuity of the error norm makes that approximation valid on a neighborhood. Conversely, a continuous vector field in \(p_x\ell^2\) is locally approximable by finite combinations of those image sections by the same argument. The local approximation axiom in both fields proves continuity in both directions. ∎
 
+**Lemma (Continuous orthonormal bases).** Let \(X\) be a paracompact Hausdorff space of finite covering dimension, and let \(r:X\to B(\ell^2)\) be a strongly continuous orthogonal projection whose range is infinite-dimensional at every point. There are continuous sections \(\xi_1,\xi_2,\ldots\) with \(\xi_k(x)\in r_x\ell^2\) such that, for every \(x\), the vectors \(\xi_1(x),\xi_2(x),\ldots\) form an orthonormal basis of \(r_x\ell^2\).
+
+*Proof.* Fix a countable dense subset of \(\ell^2\) and a sequence \(g_1,g_2,\ldots\) in which each of its members occurs infinitely often. We choose the \(\xi_m\) one at a time. Suppose \(\xi_1,\ldots,\xi_{m-1}\) are continuous and orthonormal at every point, and put
+\[
+\pi_m(x)=r_x-\sum_{j<m}\xi_j(x)\xi_j(x)^*,
+\]
+the projection onto the orthogonal complement of \(\xi_1(x),\ldots,\xi_{m-1}(x)\) inside \(r_x\ell^2\). Each rank-one term is norm continuous, because \(\|\xi\xi^*-\zeta\zeta^*\|\le2\|\xi-\zeta\|\) for unit vectors, so \(\pi_m\) is strongly continuous; its range still has infinite dimension. The unit-section approximation above, applied to \(\pi_m\) and the section \(x\mapsto\pi_m(x)g_m\) with \(\varepsilon=1/m\), gives a continuous unit section \(\xi_m\) of \(\pi_m\) such that \(\pi_m(x)g_m\) lies within \(1/m\) of \(\mathbb C\xi_m(x)\). The new vector is orthogonal to the earlier ones. Since \(r_xg_m-\pi_m(x)g_m\) lies in the span of \(\xi_1(x),\ldots,\xi_{m-1}(x)\),
+\[
+\operatorname{dist}\bigl(r_xg_m,\operatorname{span}\{\xi_1(x),\ldots,\xi_m(x)\}\bigr)<1/m .
+\]
+The orthonormal family spans a dense subspace of \(r_x\ell^2\). Given \(v\in r_x\ell^2\) and \(\varepsilon>0\), choose a member \(h\) of the dense set with \(\|v-h\|<\varepsilon/2\), and an index \(m>2/\varepsilon\) with \(g_m=h\). Then \(\|v-r_xg_m\|=\|r_x(v-h)\|<\varepsilon/2\), and \(r_xg_m\) lies within \(1/m<\varepsilon/2\) of the span of the \(\xi_k(x)\). So the distance from \(v\) to that span is less than \(\varepsilon\). ∎
+
 **Lemma (Lifting an infinite-rank projection).** If \(p:X\to B(\ell^2)\) is a strongly continuous projection of infinite rank and corank over a paracompact Hausdorff space of finite covering dimension, there is a strongly continuous unitary \(u_x\) with \(p_x=u_xp_0u_x^*\), for any fixed projection \(p_0\) of infinite rank and corank.
 
-*Proof adapted from Prokhorova, Theorem 6.1.* Choose a dense sequence \((h_n)\) in \(\ell^2\) whose every tail is dense; one explicit choice repeats the first \(m\) members of a fixed countable dense set for \(m=1,2,\ldots\). Starting with \(p_1=p\), apply the unit-section approximation just proved to \(p_nh_n\), with error \(1/n\). This gives a continuous unit vector \(\xi_n(x)\in p_n(x)\ell^2\). Let \(q_n(x)\) be the projection onto its span and set \(p_{n+1}=p_n-q_n\). The bound
-\[
-\|q_n(x)-q_n(y)\|\leq2\|\xi_n(x)-\xi_n(y)\|
-\]
-shows norm continuity of \(q_n\), and hence strong continuity of \(p_{n+1}\). Removing finitely many lines preserves infinite rank. The vectors \(\xi_n(x)\) are orthonormal, and
-\[
-\|p_{n+1}(x)h_n\|<1/n.
-\]
-For \(v\in p_x\ell^2\) and \(L_x=\overline{\operatorname{span}}\{\xi_n(x)\}\),
-\[
-\begin{aligned}
-\operatorname{dist}(v,L_x)
-&\leq\|v-p_xh_n\|+\|p_{n+1}(x)h_n\|\\
-&\leq\|v-h_n\|+1/n.
-\end{aligned}
-\]
-Tail density makes the right side arbitrarily small, proving that these vectors form a basis of the range. Apply the same construction to \(1-p\), obtaining a continuous orthonormal basis of its range.
-
-Map fixed orthonormal bases of \(p_0\ell^2\) and \((1-p_0)\ell^2\) to the two constructed bases. This defines a unitary \(u_x\) with the stated projection identity. It is strongly continuous on finite combinations of the fixed basis vectors; the uniform bound \(\|u_x\|=1\) extends continuity to every vector. Its inverse is strongly continuous too, since for fixed \(v\)
-\[
-\|u_x^*v-u_{x_0}^*v\|=\|v-u_xu_{x_0}^*v\|\longrightarrow0.
-\]
-Thus \(u\) and \(u^*\) preserve continuous vector sections. ∎
+*Proof.* Apply the preceding lemma to \(p\) and to \(1-p\). This gives continuous sections \(\xi_k\) and \(\zeta_k\) whose values are orthonormal bases of \(p_x\ell^2\) and of \((1-p_x)\ell^2\). Fix orthonormal bases \((e_k)\) of \(p_0\ell^2\) and \((f_k)\) of \((1-p_0)\ell^2\), and let \(u_x\) send \(e_k\mapsto\xi_k(x)\) and \(f_k\mapsto\zeta_k(x)\). It carries an orthonormal basis of \(\ell^2\) onto one, so it is unitary, and \(u_xp_0u_x^*=p_x\). For each basis vector \(w\), the map \(x\mapsto u_xw\) is continuous, hence so is \(x\mapsto u_xw\) for every finite combination \(w\). For general \(w\), take a finite combination \(w'\) with \(\|w-w'\|<\delta\); then \(\|u_xw-u_yw\|\le2\delta+\|u_xw'-u_yw'\|\), which proves strong continuity. For the adjoint, \(\|u_x^*v-u_y^*v\|=\|u_x(u_x^*v-u_y^*v)\|=\|v-u_xu_y^*v\|\), and this tends to zero as \(x\to y\) by strong continuity at the fixed vector \(u_y^*v\). Hence \(u\) and \(u^*\) both preserve continuous vector sections. ∎
 
 **Theorem 7.4 (Dixmier–Douady triviality).** A separable continuous field with every fibre of Hilbert dimension \(\aleph_0\), over a paracompact Hausdorff space of finite covering dimension, is unitarily isomorphic as a continuous field to the constant \(\ell^2\) field.
 
 *Proof.* Paracompact patching gives normality. The countable-total-field lemma represents the field as \(p_x\ell^2\), with \(p\) strongly continuous and of infinite rank and corank. The projection-lifting lemma identifies this range field with the constant range of \(p_0\). The unitary and its inverse preserve norm-continuous vector sections, and the representation lemma identifies exactly the prescribed section structures. Since \(p_0\ell^2\cong\ell^2\), this is the required continuous-field unitary. ∎
 
-For our locally compact \(X\), the unitary preserves fibre norms and hence vanishing at infinity, giving \(\Gamma_0(H)\cong C_0(X,\ell^2)\). In particular this applies to a countably generated field of infinite-dimensional fibres over a finite-dimensional compact Hausdorff space. Separability here is the countable-total-section condition; Example 7.2 explains why separable fibres alone do not suffice. Finite covering dimension is used in the finite-dimensional avoidance lemma, whereas stabilization itself needs no dimension bound. This concludes the CC BY 4.0 subsection.
+For our locally compact \(X\), the unitary preserves fibre norms and hence vanishing at infinity, giving \(\Gamma_0(H)\cong C_0(X,\ell^2)\). In particular this applies to a countably generated field of infinite-dimensional fibres over a finite-dimensional compact Hausdorff space. Separability here is the countable-total-section condition; Example 7.2 explains why separable fibres alone do not suffice. Finite covering dimension is used in the finite-dimensional avoidance lemma, whereas stabilization itself needs no dimension bound.
 
 ### The continuous-trace gluing class
 
@@ -416,7 +406,7 @@ These functions are continuous at zero, and the supremum norm is complete, so th
 
 The cutoff and finite-partition lemma in Section 5 of *Finite projective modules, frames and K₀* supplies the locally compact topology used here. Functional calculus is the exact foundation provider identified in the first Hilbert-module lesson. The module prerequisites supply Cauchy–Schwarz, tensor fibres, closedness of C*-homomorphic images, and the frame projection [*Finite projective modules, frames and K₀*, Theorem 1.2]. Stabilization and full amplification were proved in the stabilization lesson [Theorems 3.1 and 4.2].
 
-Theorem 7.4 includes the countable-total-field reduction and complete projection-lifting argument. The preceding lemmas prove paracompact patching, finite-dimensional avoidance and the unit-section approximation, so neither Michael selection nor an external proof link is a required input. The projection proof retains Prokhorova’s credit and CC BY 4.0 licence. The continuous-trace gluing class and its classification are proved after their algebraic prerequisites in *The Rieffel correspondence and induced representations*, Section 8. The references retain credit for the classical theory. The groupoid-field correspondence has the exact written programme provider and full section conventions stated in Section 8; Connes remains the historical credit. No measurable direct-integral theory or elliptic groupoid calculus is used to prove the ordinary module–field dictionary.
+Theorem 7.4 includes the countable-total-field reduction and complete projection-lifting argument. The preceding lemmas prove paracompact patching, finite-dimensional avoidance and the unit-section approximation, so neither Michael selection nor an external proof link is a required input. The continuous-trace gluing class and its classification are proved after their algebraic prerequisites in *The Rieffel correspondence and induced representations*, Section 8. The references retain credit for the classical theory. The groupoid-field correspondence has the exact written programme provider and full section conventions stated in Section 8; Connes remains the historical credit. No measurable direct-integral theory or elliptic groupoid calculus is used to prove the ordinary module–field dictionary.
 
 ## References
 
@@ -428,4 +418,4 @@ Theorem 7.4 includes the countable-total-field reduction and complete projection
 
 [Dixmier–Douady] Jacques Dixmier and Adrien Douady, “Champs continus d'espaces hilbertiens et de C*-algèbres,” *Bulletin de la Société Mathématique de France* 91 (1963), 227–284, Definition 6 and Section 15, Theorem 5. [Original article](https://numdam.org/articles/10.24033/bsmf.1596/).
 
-[Prokhorova] Marina Prokhorova, [“From graph to Riesz continuity”](https://ems.press/content/serial-article-files/52400?nt=1), *Zeitschrift für Analysis und ihre Anwendungen* 45 (2026), 1–28, Theorem 6.1 and Lemma 6.2, pp.21–22. ©2025 European Mathematical Society, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the attributed adaptation and its changes are identified in Section 7.
+[Prokhorova] Marina Prokhorova, [“From graph to Riesz continuity”](https://ems.press/content/serial-article-files/52400?nt=1), *Zeitschrift für Analysis und ihre Anwendungen* 45 (2026), 1–28, Theorem 6.1 and Lemma 6.2, pp.21–22. Another proof of the lifting step.

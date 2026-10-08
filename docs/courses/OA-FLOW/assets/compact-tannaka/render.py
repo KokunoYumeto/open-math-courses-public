@@ -9,7 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 OUT=Path(__file__).resolve().parent
-plt.rcParams.update({'font.family':'DejaVu Sans','mathtext.fontset':'dejavusans','font.size':12,'svg.fonttype':'path'})
+plt.rcParams.update({'font.family':'DejaVu Sans','mathtext.fontset':'dejavusans','font.size':12,'svg.fonttype':'path','svg.hashsalt':'OA-FLOW-compact-tannaka-v1'})
 fig,(ax,curve)=plt.subplots(1,2,figsize=(12,5.7),layout='constrained',gridspec_kw={'width_ratios':[1,1.25]})
 t=np.linspace(0,2*np.pi,721)
 ax.plot(np.cos(t),np.sin(t),color='#a4adb7',lw=1.3)
@@ -36,6 +36,6 @@ curve.spines[['top','right']].set_visible(False)
 curve.grid(axis='x',color='#e4e8ec',lw=.8)
 fig.suptitle('Invariant tensors recover the six symmetries of $S_3$\n'+r'Quadratic: $O(2)$     +     cubic: $x^3-3xy^2$',fontsize=19)
 fig.savefig(OUT/'invariant-tensors.png',dpi=160,facecolor='white')
-fig.savefig(OUT/'invariant-tensors.svg',facecolor='white')
+fig.savefig(OUT/'invariant-tensors.svg',facecolor='white',metadata={'Date':None})
 (OUT/'data.json').write_text(json.dumps({'polynomial':'x^3-3*x*y^2','circle_restriction':'cos(3*theta)','maxima_angles':['0','2*pi/3','4*pi/3'],'counterexample_angle':'pi/3','counterexample_values':[1,-1]},indent=2),encoding='utf-8')
 plt.close(fig)

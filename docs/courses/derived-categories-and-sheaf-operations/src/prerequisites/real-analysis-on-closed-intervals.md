@@ -2,7 +2,7 @@
 
 Why does a continuous function attain an extreme value, and why can an integral recover a change? Completeness connects the interval, limit and calculus proofs needed for the analytic examples.
 
-*Adapted from Jiří Lebl's Basic Analysis, volume I, version 6.3, and the programme teaching edition by GPT-6 Astra (OpenAI), at Ultra. Selection, local reading links and the stated scalar starting point were edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026, with an elementary geometric-tail clarification. The AI contributions are self-checked; independent or human review is not asserted. This component remains CC BY-SA 4.0. The [source and edition notice](assets/notices/real-analysis-source-notice.html) identifies the editable source passages and changes.*
+*Follows Jiří Lebl's Basic Analysis, volume I, version 6.3, in the programme teaching edition by GPT-6 Astra (OpenAI), at Ultra. Selection, local reading links and the stated scalar starting point are by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026, with an elementary geometric-tail clarification. Self-checked by the writing AI. Original text: public domain (CC0). The [source and edition notice](assets/notices/real-analysis-source-notice.html) identifies the source passages.*
 
 ## Starting point
 
@@ -202,6 +202,6 @@ Complex-valued continuous integrands are integrated by their real and imaginary 
 
 ## Sources and next reading
 
-Jiří Lebl, [Basic Analysis: Introduction to Real Analysis](https://www.jirka.org/ra/), volume I, version 6.3. The [source and edition notice](assets/notices/real-analysis-source-notice.html) retains the licence and native source passages.
+Jiří Lebl, [Basic Analysis: Introduction to Real Analysis](https://www.jirka.org/ra/), volume I, version 6.3. The [source and edition notice](assets/notices/real-analysis-source-notice.html) links the native source passages.
 
 Continue with [The complex exponential and the circle](complex-exponential-and-the-circle.md).

@@ -116,6 +116,8 @@ For the spherical sign, define the tangential gradient's ambient components to b
 
 ## 2. The power estimate and its exact constant
 
+The elliptic and indefinite power estimates appear in Hörmander [H2, Propositions 14.7.1 and 14.7.3]. His Theorems 14.7.2 and 14.7.4 give the corresponding rapid-decay uniqueness conclusions.
+
 **Theorem 2.1 (quadratic power estimate).** For \(\lambda>0\), \(\tau>0\), and \(u\in C_c^\infty(O)\),
 
 \[
@@ -708,3 +710,4 @@ Thus \(\lambda=-1\), \(V=2\operatorname{sech}^2x\) solve the equation. Both \(u\
 - [LS] József Lőrinczi and Itaru Sasaki, *Embedded eigenvalues and Neumann–Wigner potentials for relativistic Schrödinger operators*, Journal of Functional Analysis **273** (2017), 1548–1575. Section 1 gives the classical construction and its background. [Author preprint, version 3, 13 December 2016](https://arxiv.org/abs/1605.00196v3).
 
 - Tosio Kato, [*Growth properties of solutions of the reduced wave equation with a variable coefficient*](https://www.mathnet.ru/eng/mat756). Russian translation by E. P. Fonshteyn, *Matematika* **5**:1 (1961), 115–135. The linked Math-Net record supplies the full freely readable 21-page translation.
+- [H2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Springer, 2005, Section 14.7, Propositions 14.7.1 and 14.7.3 and Theorems 14.7.2 and 14.7.4, pp. 264–268. ISBN 978-3-540-26964-9. [Edition information](https://doi.org/10.1007/b138375).

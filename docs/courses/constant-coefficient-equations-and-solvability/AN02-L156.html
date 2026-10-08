@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Why complex Fourier weights need a construction</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L155.html">Previous lesson</a> · <a href="#nw1-the-naive-support-weight-has-actual-negative-curvature">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="why-complex-fourier-weights-need-a-construction">Why complex Fourier weights need a construction</h1>
+<p><em>Original learner exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>The chapter's closing notes explain an apparent obstruction: the usual support-growth expression with a logarithmic decay term need not be plurisubharmonic. The completed weight constructions overcome that obstruction by controlling curvature, carrier enlargement and test-space topology together.</p>
+<p>The <a href="#complete-proof">full proof</a> treats all three notes on printed pp.300–301 of Hörmander II. It gives actual negative-curvature examples, a positive strict seed, the exact neighborhood equivalence and the local coordinate calculation. The note's broader-domain and systems references retain their actual scope.</p>
+<h2 id="what-each-source-note-contributes">What each source note contributes</h2>
+<table>
+<thead>
+<tr>
+<th>Source note</th>
+<th>Concrete treatment here</th>
+<th>Scope of the resulting claim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Broader pseudoconvex and Stein settings, p.300</td>
+<td>Local Levi covariance is proved in NW4; <a href="AN02-L144.html#complete-proof">L144</a> contains the actual weighted Euclidean proof</td>
+<td>The source's broader global theorem is a reference, not a theorem imported from a coordinate change</td>
+</tr>
+<tr>
+<td>Equivalent strict weights, p.301</td>
+<td>NW1–NW3 compute the obstruction and prove the exact cofinal topology comparison; <a href="AN02-L149.html#complete-proof">L149</a> and <a href="AN02-L153.html#tp5-a-single-strict-psh-weighted-neighborhood">L153</a> supply both complete constructions</td>
+<td>Compact weighted tests and compact smooth tests have their distinct stated topologies; weights can depend on the neighborhood</td>
+</tr>
+<tr>
+<td>Scalar versus systems fundamental principle, p.301</td>
+<td>NW5 identifies the scalar theorem and the additional systems ingredients named in the source</td>
+<td><a href="AN02-L155.html#ar3-the-full-characteristic-surface-formula">L155</a> gives the full scalar arbitrary-distribution formula; no general systems theorem is claimed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="worked-example-1-a-full-dimensional-carrier-still-gives-negative-curvature">Worked example 1: a full-dimensional carrier still gives negative curvature</h2>
+<p>For <span class="math" data-index="0" data-tex="\(z=\xi+i\eta\)">\(z=\xi+i\eta\)</span>, <span class="math" data-index="1" data-tex="\(r=|z|\)">\(r=|z|\)</span>, <span class="math" data-index="2" data-tex="\(K=[-R,R]\)">\(K=[-R,R]\)</span>, and <span class="math" data-index="3" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, set</p>
+<span class="math math-display" id="eq-L156.1" data-index="4" data-tex="\[
+\psi(z)=R|\eta|-\kappa\log(1+r).
+\tag{L156.1}
+\]">\[
+\psi(z)=R|\eta|-\kappa\log(1+r).
+\tag{L156.1}
+\]</span>
+<p>On <span class="math" data-index="5" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, the support term is affine. Radial differentiation gives</p>
+<span class="math math-display" id="eq-L156.2" data-index="6" data-tex="\[
+\partial_z\partial_{\bar z}\psi
+=-\frac{\kappa}{4r(1+r)^2}&lt;0.
+\tag{L156.2}
+\]">\[
+\partial_z\partial_{\bar z}\psi
+=-\frac{\kappa}{4r(1+r)^2}&lt;0.
+\tag{L156.2}
+\]</span>
+<p>Thus using a carrier with interior does not make this weight PSH. For example at <span class="math" data-index="7" data-tex="\(z=i\)">\(z=i\)</span> and <span class="math" data-index="8" data-tex="\(\kappa=4\)">\(\kappa=4\)</span>, its Levi coefficient is <span class="math" data-index="9" data-tex="\(-1/4\)">\(-1/4\)</span>, independent of <span class="math" data-index="10" data-tex="\(R\)">\(R\)</span>.</p>
+<p>This has a direct circle-mean interpretation. Around any smooth point <span class="math" data-index="11" data-tex="\(z_0\)">\(z_0\)</span> in the upper half-plane, Taylor expansion and the averages of <span class="math" data-index="12" data-tex="\(\cos\theta,\sin\theta,\cos^2\theta,\sin^2\theta\)">\(\cos\theta,\sin\theta,\cos^2\theta,\sin^2\theta\)</span> yield</p>
+<span class="math math-display" id="eq-L156.3" data-index="13" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}\psi(z_0+h e^{i\theta})d\theta-\psi(z_0)
+=h^2\,\partial_z\partial_{\bar z}\psi(z_0)+o(h^2).
+\tag{L156.3}
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}\psi(z_0+h e^{i\theta})d\theta-\psi(z_0)
+=h^2\,\partial_z\partial_{\bar z}\psi(z_0)+o(h^2).
+\tag{L156.3}
+\]</span>
+<p>The linear terms average to zero, the mixed quadratic term averages to zero, and each pure quadratic has mean <span class="math" data-index="14" data-tex="\(h^2/2\)">\(h^2/2\)</span> before its Taylor factor <span class="math" data-index="15" data-tex="\(1/2\)">\(1/2\)</span>. The remainder is uniform on the shrinking circle. At <span class="math" data-index="16" data-tex="\(z_0=i\)">\(z_0=i\)</span>, the right side is negative for all sufficiently small <span class="math" data-index="17" data-tex="\(h\)">\(h\)</span>, contradicting the submean inequality. Choose <span class="math" data-index="18" data-tex="\(h&lt;1\)">\(h&lt;1\)</span> so the circle never touches the nonsmooth axis.</p>
+<h2 id="worked-example-2-strict-curvature-with-an-explicit-support-cost">Worked example 2: strict curvature with an explicit support cost</h2>
+<p>Choose <span class="math" data-index="19" data-tex="\(a=2\)">\(a=2\)</span>, <span class="math" data-index="20" data-tex="\(t=4096\)">\(t=4096\)</span>, <span class="math" data-index="21" data-tex="\(R=1/128\)">\(R=1/128\)</span>, and <span class="math" data-index="22" data-tex="\(K=[-R,R]\)">\(K=[-R,R]\)</span>. Put</p>
+<span class="math math-display" id="eq-L156.4" data-index="23" data-tex="\[
+\Psi(z)=R|\eta|-2\log(t^2+|z|^2)
+ +\frac{\sqrt{t^2+\eta^2}}{\sqrt t}-(t^2+\eta^2)^{1/4}.
+\tag{L156.4}
+\]">\[
+\Psi(z)=R|\eta|-2\log(t^2+|z|^2)
+ +\frac{\sqrt{t^2+\eta^2}}{\sqrt t}-(t^2+\eta^2)^{1/4}.
+\tag{L156.4}
+\]</span>
+<p>The equality <span class="math" data-index="24" data-tex="\(\sqrt t=32a=64\)">\(\sqrt t=32a=64\)</span> makes the full <a href="#nw2-the-strict-seed-supplies-the-missing-curvature">NW2 calculation</a> applicable:</p>
+<span class="math math-display" id="eq-L156.5" data-index="25" data-tex="\[
+\mathcal L_\Psi\ge\frac1{32}(4096^2+\eta^2)^{-3/4}I.
+\tag{L156.5}
+\]">\[
+\mathcal L_\Psi\ge\frac1{32}(4096^2+\eta^2)^{-3/4}I.
+\tag{L156.5}
+\]</span>
+<p>The support function contributes nonnegative distributional curvature on the axis. Away from it the ordinary smooth coefficient already has the positive bound shown.</p>
+<p>The added radial term has slope at most <span class="math" data-index="26" data-tex="\(1/\sqrt t=1/64\)">\(1/\sqrt t=1/64\)</span>. Thus the enlarged carrier <span class="math" data-index="27" data-tex="\(L=[-3/128,3/128]\)">\(L=[-3/128,3/128]\)</span> absorbs the cost:</p>
+<span class="math math-display" id="eq-L156.6" data-index="28" data-tex="\[
+H_K(\eta)+\frac{|\eta|}{64}=H_L(\eta),\qquad
+p_t(\eta)\le\frac{|\eta|}{64}+64.
+\tag{L156.6}
+\]">\[
+H_K(\eta)+\frac{|\eta|}{64}=H_L(\eta),\qquad
+p_t(\eta)\le\frac{|\eta|}{64}+64.
+\tag{L156.6}
+\]</span>
+<p>Both carriers lie strictly inside <span class="math" data-index="29" data-tex="\(X=(-1/32,1/32)\)">\(X=(-1/32,1/32)\)</span>. The strict seed controls a real mathematical tradeoff: positive curvature requires spare support growth. Compatible maxima and increasing imaginary-strip cutoffs in L153 turn such seeds into one final neighborhood weight.</p>
+<figure><img class="course-figure" width="2432" height="1046" src="reproduce/L156/figures/negative-naive-and-positive-strict-curvature.png" alt="Negative curvature of the naive support weight and the exact positive strict-seed coefficient with its proved lower bound." /><figcaption class="native"><a href="reproduce/L156/figures/negative-naive-and-positive-strict-curvature.png">Open full-size PNG</a> · <a href="reproduce/L156/figures/negative-naive-and-positive-strict-curvature.svg">Open SVG</a></figcaption></figure>
+<p>The left panel samples the actual coefficient on <span class="math" data-index="30" data-tex="\(\xi=0,\eta&gt;0\)">\(\xi=0,\eta&gt;0\)</span>. The right uses <span class="math" data-index="31" data-tex="\(q=\eta/t&gt;0\)">\(q=\eta/t&gt;0\)</span> and multiplies both strict coefficients by <span class="math" data-index="32" data-tex="\(t^{3/2}\)">\(t^{3/2}\)</span>; the support term is affine at every displayed point. The exact formulas, scaling and support intervals are recorded in <a href="reproduce/L156/figures/geometry.json">geometry.json</a>.</p>
+<h2 id="worked-example-3-a-critical-holomorphic-map-can-lose-strictness">Worked example 3: a critical holomorphic map can lose strictness</h2>
+<p>For <span class="math" data-index="33" data-tex="\(\varphi(w)=|w|^2\)">\(\varphi(w)=|w|^2\)</span> and <span class="math" data-index="34" data-tex="\(h(z)=z^2\)">\(h(z)=z^2\)</span>, the pullback is</p>
+<span class="math math-display" id="eq-L156.7" data-index="35" data-tex="\[
+\varphi(h(z))=|z|^4,\qquad
+\mathcal L_{\varphi\circ h}=|h&#x27;(z)|^2\mathcal L_\varphi=4|z|^2.
+\tag{L156.7}
+\]">\[
+\varphi(h(z))=|z|^4,\qquad
+\mathcal L_{\varphi\circ h}=|h&#x27;(z)|^2\mathcal L_\varphi=4|z|^2.
+\tag{L156.7}
+\]</span>
+<p>The target coefficient is one everywhere. The pullback coefficient vanishes at the critical point <span class="math" data-index="36" data-tex="\(z=0\)">\(z=0\)</span>. On an annulus <span class="math" data-index="37" data-tex="\(|z|\ge\epsilon&gt;0\)">\(|z|\ge\epsilon&gt;0\)</span>, it is at least <span class="math" data-index="38" data-tex="\(4\epsilon^2\)">\(4\epsilon^2\)</span>. A chosen local inverse away from zero is a valid coordinate chart; <span class="math" data-index="39" data-tex="\(z^2\)">\(z^2\)</span> is not one global chart around zero.</p>
+<p>The calculation demonstrates precisely what local coordinate covariance preserves. It does not give a global weighted estimate on an arbitrary manifold. The chapter's Fourier proof also uses translations and compact convex support functions in a global vector space.</p>
+<figure><img class="course-figure" width="2432" height="1046" src="reproduce/L156/figures/holomorphic-pullback-and-loss-of-strictness.png" alt="Exact radial values and Levi coefficients under the holomorphic map z to z squared." /><figcaption class="native"><a href="reproduce/L156/figures/holomorphic-pullback-and-loss-of-strictness.png">Open full-size PNG</a> · <a href="reproduce/L156/figures/holomorphic-pullback-and-loss-of-strictness.svg">Open SVG</a></figcaption></figure>
+<p>Every point on the radial axis means the norm of an actual complex coordinate. The target is evaluated at <span class="math" data-index="40" data-tex="\(|w|=|z|^2\)">\(|w|=|z|^2\)</span>; the figure shows the exact identity <span class="math" data-index="41" data-tex="\(\varphi(w)=|z|^4\)">\(\varphi(w)=|z|^4\)</span> and the exact pullback coefficient <span class="math" data-index="42" data-tex="\(4|z|^2\)">\(4|z|^2\)</span>. It is not a global-coordinate or manifold-solvability diagram.</p>
+<h2 id="worked-example-4-equivalent-neighborhoods-require-a-family-of-weights">Worked example 4: equivalent neighborhoods require a family of weights</h2>
+<p>Let <span class="math" data-index="43" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> carry its smooth compact support-stage topology, and let <span class="math" data-index="44" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> contain every seminorm</p>
+<span class="math math-display" id="eq-L156.8" data-index="45" data-tex="\[
+q_\phi(v)=\left(\int_{\mathbb C^n}|F_v(z)|^2e^{-2\phi(z)}dV(z)\right)^{1/2}
+\tag{L156.8}
+\]">\[
+q_\phi(v)=\left(\int_{\mathbb C^n}|F_v(z)|^2e^{-2\phi(z)}dV(z)\right)^{1/2}
+\tag{L156.8}
+\]</span>
+<p>with the three L153 conditions. Each is stage-continuous by full smooth Fourier decay and the compact-growth estimate. Therefore the topology they generate is no finer than the original one.</p>
+<p>Conversely a given zero-neighborhood contains a convex balanced zero-neighborhood <span class="math" data-index="46" data-tex="\(V\)">\(V\)</span>. The full weighted-neighborhood theorem constructs a possibly different <span class="math" data-index="47" data-tex="\(\phi\)">\(\phi\)</span> with <span class="math" data-index="48" data-tex="\(\{q_\phi&lt;1\}\subset V\)">\(\{q_\phi&lt;1\}\subset V\)</span>. Every original neighborhood thus contains one generated by <span class="math" data-index="49" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>; the generated topology is no coarser either. The two topologies coincide.</p>
+<p>This statement is cofinality of the family, not the assertion that one fixed norm describes the whole smooth-test topology. The four-condition L149 theorem instead uses the fixed weighted test space <span class="math" data-index="50" data-tex="\(B_{2,k}\cap\mathcal E&#x27;(X)\)">\(B_{2,k}\cap\mathcal E&#x27;(X)\)</span>. L153 and L155 allow derivative orders that increase over an exhaustion. The original proofs retain those separate interfaces.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<ol>
+<li>
+<p><strong>Compute the exact naive coefficient at <span class="math" data-index="51" data-tex="\(z=1+i\)">\(z=1+i\)</span>, <span class="math" data-index="52" data-tex="\(\kappa=4\)">\(\kappa=4\)</span>.</strong> Here <span class="math" data-index="53" data-tex="\(r=\sqrt2\)">\(r=\sqrt2\)</span>, and the support term is affine because <span class="math" data-index="54" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. NW3 gives <span class="math" data-index="55" data-tex="\(-1/[\sqrt2(1+\sqrt2)^2]\)">\(-1/[\sqrt2(1+\sqrt2)^2]\)</span>. It is strictly negative for every <span class="math" data-index="56" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, so the carrier size cannot cure the obstruction at this point.</p>
+</li>
+<li>
+<p><strong>Why does the positive curvature on the axis not repair this weight?</strong> Take a nonnegative nonzero smooth test supported in a small disk entirely within <span class="math" data-index="57" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. The support term's Laplacian vanishes there, while the logarithmic term has the strictly negative NW3 coefficient. Its distributional Levi pairing with that test is negative. Any positive measure on the disjoint axis has zero pairing with the same test, so it cannot make the full Levi distribution positive.</p>
+</li>
+<li>
+<p><strong>Verify the smooth negative-curvature variant.</strong> Write <span class="math" data-index="58" data-tex="\(s=1+z\bar z\)">\(s=1+z\bar z\)</span>. Then <span class="math" data-index="59" data-tex="\(\partial_z\log s=\bar z/s\)">\(\partial_z\log s=\bar z/s\)</span>, and <span class="math" data-index="60" data-tex="\(\partial_{\bar z}(\bar z/s)=1/s-z\bar z/s^2=1/s^2\)">\(\partial_{\bar z}(\bar z/s)=1/s-z\bar z/s^2=1/s^2\)</span>. Multiplication by <span class="math" data-index="61" data-tex="\(-\kappa/2\)">\(-\kappa/2\)</span> gives the strict negative coefficient in NW4, with no singular carrier ridge.</p>
+</li>
+<li>
+<p><strong>Prove the radial lower bound in NW6.</strong> For <span class="math" data-index="62" data-tex="\(0&lt;q\le1\)">\(0&lt;q\le1\)</span>, <span class="math" data-index="63" data-tex="\(q^{3/4}\ge q\)">\(q^{3/4}\ge q\)</span>, so <span class="math" data-index="64" data-tex="\(q^{3/4}+1/4-3q/4\ge q/4+1/4\ge1/4\)">\(q^{3/4}+1/4-3q/4\ge q/4+1/4\ge1/4\)</span>. The transverse expression is <span class="math" data-index="65" data-tex="\(t^{-1/2}s^{1/4}-1/2\ge1/2\)">\(t^{-1/2}s^{1/4}-1/2\ge1/2\)</span>, since <span class="math" data-index="66" data-tex="\(s\ge t^2\)">\(s\ge t^2\)</span>. These are the actual real-Hessian eigenvalue ratios. Divide by four for the complex Hessian, then subtract the logarithm bound <span class="math" data-index="67" data-tex="\(a/s\le s^{-3/4}/32\)">\(a/s\le s^{-3/4}/32\)</span> using <span class="math" data-index="68" data-tex="\(\sqrt t\ge32a\)">\(\sqrt t\ge32a\)</span>. The result is exactly NW7.</p>
+</li>
+<li>
+<p><strong>Check the numerical support intervals without dropping a growth term.</strong> The original interval has radius <span class="math" data-index="69" data-tex="\(1/128\)">\(1/128\)</span>, and the correction has slope at most <span class="math" data-index="70" data-tex="\(1/64=2/128\)">\(1/64=2/128\)</span>. Their sum is <span class="math" data-index="71" data-tex="\(3/128\)">\(3/128\)</span>, exactly the radius of <span class="math" data-index="72" data-tex="\(L\)">\(L\)</span>. Also <span class="math" data-index="73" data-tex="\(3/128&lt;1/32=4/128\)">\(3/128&lt;1/32=4/128\)</span>, leaving a strict gap before the domain boundary. The additive constant <span class="math" data-index="74" data-tex="\(\sqrt t=64\)">\(\sqrt t=64\)</span> only changes the multiplicative weight constant; it does not change the support function.</p>
+</li>
+<li>
+<p><strong>Prove that the whole-complex seminorm is continuous on one support stage.</strong> Let <span class="math" data-index="75" data-tex="\(S\)">\(S\)</span> be the compact support. The growth bound gives <span class="math" data-index="76" data-tex="\(e^{-\phi}\le C(1+|z|)^{N_S}e^{-H_S(\eta)}\)">\(e^{-\phi}\le C(1+|z|)^{N_S}e^{-H_S(\eta)}\)</span>, while integration by parts bounds <span class="math" data-index="77" data-tex="\(|F_v|\le C_L(1+|z|)^{-L}e^{H_S(\eta)}p_L(v)\)">\(|F_v|\le C_L(1+|z|)^{-L}e^{H_S(\eta)}p_L(v)\)</span>. Their product cancels the support exponential. The square is integrable in real dimension <span class="math" data-index="78" data-tex="\(2n\)">\(2n\)</span> when <span class="math" data-index="79" data-tex="\(L&gt;N_S+n\)">\(L&gt;N_S+n\)</span>, so <span class="math" data-index="80" data-tex="\(q_\phi(v)\le C&#x27; p_L(v)\)">\(q_\phi(v)\le C&#x27; p_L(v)\)</span>. This proves exactly the stage continuity used in the cofinality argument.</p>
+</li>
+<li>
+<p><strong>State both directions of the topology comparison.</strong> Continuity of every <span class="math" data-index="81" data-tex="\(q_\phi\)">\(q_\phi\)</span> makes all finite intersections of its open balls original zero-neighborhoods, so their topology is no finer. The construction supplies a <span class="math" data-index="82" data-tex="\(q_\phi\)">\(q_\phi\)</span> ball inside every convex balanced original neighborhood, so every original neighborhood contains a generated one; their topology is no coarser. Both inclusions prove equality. It does not supply one universal <span class="math" data-index="83" data-tex="\(\phi\)">\(\phi\)</span> or pointwise equality of weights.</p>
+</li>
+<li>
+<p><strong>Derive the Levi pullback in arbitrary finite dimension.</strong> Differentiate <span class="math" data-index="84" data-tex="\(\varphi(h(z),\overline{h(z)})\)">\(\varphi(h(z),\overline{h(z)})\)</span> once in a holomorphic variable and once in an antiholomorphic variable. Holomorphicity kills mixed derivatives of <span class="math" data-index="85" data-tex="\(h\)">\(h\)</span>, and antiholomorphicity kills those of its conjugate. The remaining sum has the mixed target Hessian contracted with <span class="math" data-index="86" data-tex="\(Dh\,w\)">\(Dh\,w\)</span> and its conjugate. With the <span class="math" data-index="87" data-tex="\(w^*\mathcal Lw\)">\(w^*\mathcal Lw\)</span> convention, it is <span class="math" data-index="88" data-tex="\(w^*Dh^*\mathcal L_\varphi Dh\,w\)">\(w^*Dh^*\mathcal L_\varphi Dh\,w\)</span>, proving NW10.</p>
+</li>
+<li>
+<p><strong>Find a strict lower bound on a compact inverse chart for <span class="math" data-index="89" data-tex="\(z^2\)">\(z^2\)</span>.</strong> A compact set avoiding zero has <span class="math" data-index="90" data-tex="\(|z|\ge\epsilon&gt;0\)">\(|z|\ge\epsilon&gt;0\)</span>. Hence <span class="math" data-index="91" data-tex="\(|h&#x27;(z)|^2=4|z|^2\ge4\epsilon^2\)">\(|h&#x27;(z)|^2=4|z|^2\ge4\epsilon^2\)</span>, and its pullback of the target coefficient one has that positive bound. At zero the derivative vanishes, so the same claim on a set containing zero is false. A local inverse branch exists around a nonzero point; two-to-one global behavior is a separate issue.</p>
+</li>
+<li>
+<p><strong>Why do scalar factor multiplicities not settle a polynomial system?</strong> Each scalar representation ensures that one polynomial annihilates its kernels and includes all repeated-factor amplitudes. A system requires every equation to annihilate the same distribution and its data to satisfy relations among those equations. Separate densities for separate scalar equations do not enforce common support or those relations. The source explicitly adds local algebraic geometry and higher-form cohomology for its general systems reference, while proving the single-operator case here. Thus the correct course statement is the full scalar theorem with its actual boundary.</p>
+</li>
+</ol>
+<h2 id="reproduce-and-follow-the-proofs">Reproduce and follow the proofs</h2>
+<p>The <a href="#complete-proof">formal source</a>, <a href="reproduce/L156/make_figures181.py">figure program</a>, <a href="reproduce/L156/figures/geometry.json">exact geometry</a>, <a href="reproduce/L156/check_examples181.py">independent checks</a>, <a href="reproduce/L156/independent-example-checks181.json">actual results</a> and <a href="reproduce/L156/README-reproduce.md">reproduction guide</a> are provided. The checks supplement the full calculations and topology proofs.</p>
+<p>The human source is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Notes on printed pp.300–301. The broader-domain and systems references remain references. These notes treatments and their exact linked providers do not complete Chapter16, earlier assigned residuals or recursive prerequisite closure.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>The closing notes of Hörmander's Chapter15 explain why the complex weights were constructed, which broader settings motivate the method, and why the chapter proves the scalar constant-coefficient case. We give the exact negative-curvature calculation and topology comparison, and identify the limits of the current theorems. These are treatments of the three source notes, not assertions that their externally referenced theories have been proved here.</p>
+<p>The human source is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, printed pp.300–301. The approved current-edition native pages313–314 were read privately. The mathematical providers are the full <a href="AN02-L149.html#complete-proof">L149 four-condition compact-weight construction</a>, <a href="AN02-L153.html#tp5-a-single-strict-psh-weighted-neighborhood">L153 smooth-test neighborhood construction</a>, <a href="AN02-L144.html#complete-proof">L144 weighted Cauchy–Riemann proof</a>, and <a href="AN02-L155.html#ar3-the-full-characteristic-surface-formula">L155 arbitrary-distribution representations</a>. None of the protected source body or source images is included.</p>
+<h2 id="nw1-the-naive-support-weight-has-actual-negative-curvature">NW1. The naive support weight has actual negative curvature</h2>
+<p>In one complex dimension, put <span class="math" data-index="92" data-tex="\(z=\xi+i\eta\)">\(z=\xi+i\eta\)</span>, <span class="math" data-index="93" data-tex="\(r=|z|\)">\(r=|z|\)</span>, and take the full-dimensional compact real interval <span class="math" data-index="94" data-tex="\(K=[-R,R]\)">\(K=[-R,R]\)</span>, <span class="math" data-index="95" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>. Its support function is <span class="math" data-index="96" data-tex="\(H_K(\eta)=R|\eta|\)">\(H_K(\eta)=R|\eta|\)</span>. For <span class="math" data-index="97" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, consider the exact naive expression</p>
+<span class="math math-display" id="eq-NW1" data-index="98" data-tex="\[
+\psi(z)=H_K(\eta)-\kappa\log(1+|z|).
+\tag{NW1}
+\]">\[
+\psi(z)=H_K(\eta)-\kappa\log(1+|z|).
+\tag{NW1}
+\]</span>
+<p>On either open half-plane <span class="math" data-index="99" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> or <span class="math" data-index="100" data-tex="\(\eta&lt;0\)">\(\eta&lt;0\)</span>, the support function is affine and has zero ordinary Laplacian. There <span class="math" data-index="101" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, so the real radial Laplacian gives</p>
+<span class="math math-display" id="eq-NW2" data-index="102" data-tex="\[
+\Delta\log(1+r)
+=-\frac1{(1+r)^2}+\frac1{r(1+r)}
+=\frac1{r(1+r)^2}.
+\tag{NW2}
+\]">\[
+\Delta\log(1+r)
+=-\frac1{(1+r)^2}+\frac1{r(1+r)}
+=\frac1{r(1+r)^2}.
+\tag{NW2}
+\]</span>
+<p>With <span class="math" data-index="103" data-tex="\(\partial_z=(\partial_\xi-i\partial_\eta)/2\)">\(\partial_z=(\partial_\xi-i\partial_\eta)/2\)</span>, the one-dimensional Levi coefficient is one quarter of the Laplacian. Consequently</p>
+<span class="math math-display" id="eq-NW3" data-index="104" data-tex="\[
+\partial_z\partial_{\bar z}\psi
+=-\frac{\kappa}{4r(1+r)^2}&lt;0
+\quad(\eta\ne0).
+\tag{NW3}
+\]">\[
+\partial_z\partial_{\bar z}\psi
+=-\frac{\kappa}{4r(1+r)^2}&lt;0
+\quad(\eta\ne0).
+\tag{NW3}
+\]</span>
+<p>This proves that <span class="math" data-index="105" data-tex="\(\psi\)">\(\psi\)</span> is not PSH. The positive distributional curvature of <span class="math" data-index="106" data-tex="\(R|\eta|\)">\(R|\eta|\)</span> on the real axis cannot repair a negative coefficient on either open half-plane. To see this in the distributional definition, choose any nonzero nonnegative smooth test compactly supported inside such a half-plane; the integral of the smooth NW3 coefficient against it is strictly negative. Thus the failure does not depend on the nonsmooth axis or on a degenerate carrier.</p>
+<p>There is also a completely smooth variant when <span class="math" data-index="107" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span>:</p>
+<span class="math math-display" id="eq-NW4" data-index="108" data-tex="\[
+\widetilde\psi(z)=-\frac{\kappa}{2}\log(1+|z|^2),\qquad
+\partial_z\partial_{\bar z}\widetilde\psi
+=-\frac{\kappa}{2(1+|z|^2)^2}&lt;0.
+\tag{NW4}
+\]">\[
+\widetilde\psi(z)=-\frac{\kappa}{2}\log(1+|z|^2),\qquad
+\partial_z\partial_{\bar z}\widetilde\psi
+=-\frac{\kappa}{2(1+|z|^2)^2}&lt;0.
+\tag{NW4}
+\]</span>
+<p>Direct Wirtinger differentiation proves NW4. It is another counterexample, distinct from the exact NW1 calculation.</p>
+<h2 id="nw2-the-strict-seed-supplies-the-missing-curvature">NW2. The strict seed supplies the missing curvature</h2>
+<p>Let <span class="math" data-index="109" data-tex="\(t\ge1\)">\(t\ge1\)</span>, <span class="math" data-index="110" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and <span class="math" data-index="111" data-tex="\(\sqrt t\ge32a\)">\(\sqrt t\ge32a\)</span>. In any complex dimension set</p>
+<span class="math math-display" id="eq-NW5" data-index="112" data-tex="\[
+\begin{aligned}
+s&amp;=t^2+|\eta|^2,\qquad q=t^2/s,\\
+p_t(\eta)&amp;=t^{-1/2}s^{1/2}-s^{1/4},\\
+\Psi(z)&amp;=H_K(\eta)-a\log(t^2+|z|^2)+p_t(\eta).
+\end{aligned}
+\tag{NW5}
+\]">\[
+\begin{aligned}
+s&amp;=t^2+|\eta|^2,\qquad q=t^2/s,\\
+p_t(\eta)&amp;=t^{-1/2}s^{1/2}-s^{1/4},\\
+\Psi(z)&amp;=H_K(\eta)-a\log(t^2+|z|^2)+p_t(\eta).
+\end{aligned}
+\tag{NW5}
+\]</span>
+<p>The full convex-support proof in L153 makes <span class="math" data-index="113" data-tex="\(H_K\)">\(H_K\)</span> PSH distributionally. The logarithm's ordinary Levi matrix is
+<span class="math" data-index="114" data-tex="\(I/(t^2+|z|^2)-\overline z z^{\mathsf T}/(t^2+|z|^2)^2\)">\(I/(t^2+|z|^2)-\overline z z^{\mathsf T}/(t^2+|z|^2)^2\)</span>, between zero and <span class="math" data-index="115" data-tex="\(I/(t^2+|z|^2)\)">\(I/(t^2+|z|^2)\)</span>. Its negative contribution therefore has magnitude at most <span class="math" data-index="116" data-tex="\(a/s\)">\(a/s\)</span>.</p>
+<p>For completeness, the radial real Hessian eigenvalues of <span class="math" data-index="117" data-tex="\(p_t\)">\(p_t\)</span>, after division by <span class="math" data-index="118" data-tex="\(s^{-3/4}\)">\(s^{-3/4}\)</span>, are</p>
+<span class="math math-display" id="eq-NW6" data-index="119" data-tex="\[
+t^{-1/2}s^{1/4}-\tfrac12\ge\tfrac12
+\quad\text{transversely},\qquad
+q^{3/4}+\tfrac14-\tfrac34q\ge\tfrac14
+\quad\text{radially}.
+\tag{NW6}
+\]">\[
+t^{-1/2}s^{1/4}-\tfrac12\ge\tfrac12
+\quad\text{transversely},\qquad
+q^{3/4}+\tfrac14-\tfrac34q\ge\tfrac14
+\quad\text{radially}.
+\tag{NW6}
+\]</span>
+<p>These follow from two ordinary derivatives of <span class="math" data-index="120" data-tex="\(t^{-1/2}s^{1/2}-s^{1/4}\)">\(t^{-1/2}s^{1/2}-s^{1/4}\)</span>. The second lower bound uses <span class="math" data-index="121" data-tex="\(q^{3/4}\ge q\)">\(q^{3/4}\ge q\)</span> for <span class="math" data-index="122" data-tex="\(0&lt;q\le1\)">\(0&lt;q\le1\)</span>. At <span class="math" data-index="123" data-tex="\(\eta=0\)">\(\eta=0\)</span> their limits agree; in dimension one only the radial eigenvalue is needed. Dividing by four for the complex Hessian gives <span class="math" data-index="124" data-tex="\(\mathcal L_{p_t}\ge s^{-3/4}I/16\)">\(\mathcal L_{p_t}\ge s^{-3/4}I/16\)</span>. Also
+<span class="math" data-index="125" data-tex="\(a/s\le a\,t^{-1/2}s^{-3/4}\le s^{-3/4}/32\)">\(a/s\le a\,t^{-1/2}s^{-3/4}\le s^{-3/4}/32\)</span>.
+Thus</p>
+<span class="math math-display" id="eq-NW7" data-index="126" data-tex="\[
+\mathcal L_\Psi\ge\frac1{32}(t^2+|\eta|^2)^{-3/4}I
+\ge\frac{t^{-3/2}}{32}(1+|\eta|^2)^{-3/4}I.
+\tag{NW7}
+\]">\[
+\mathcal L_\Psi\ge\frac1{32}(t^2+|\eta|^2)^{-3/4}I
+\ge\frac{t^{-3/2}}{32}(1+|\eta|^2)^{-3/4}I.
+\tag{NW7}
+\]</span>
+<p>Every inequality is distributional if the support function is nonsmooth. Positivity of <span class="math" data-index="127" data-tex="\(p_t\)">\(p_t\)</span> follows from <span class="math" data-index="128" data-tex="\(s^{1/2}\ge t\)">\(s^{1/2}\ge t\)</span>, and its gradient norm is at most <span class="math" data-index="129" data-tex="\(t^{-1/2}\)">\(t^{-1/2}\)</span>. The logarithmic gradient norm is at most <span class="math" data-index="130" data-tex="\(a/t\)">\(a/t\)</span>.</p>
+<p>The added curvature has a support-growth cost. If <span class="math" data-index="131" data-tex="\(K+t^{-1/2}\overline B\subset L\)">\(K+t^{-1/2}\overline B\subset L\)</span>, then</p>
+<span class="math math-display" id="eq-NW8" data-index="132" data-tex="\[
+H_K(\eta)+t^{-1/2}|\eta|\le H_L(\eta),\qquad
+p_t(\eta)\le t^{-1/2}|\eta|+\sqrt t.
+\tag{NW8}
+\]">\[
+H_K(\eta)+t^{-1/2}|\eta|\le H_L(\eta),\qquad
+p_t(\eta)\le t^{-1/2}|\eta|+\sqrt t.
+\tag{NW8}
+\]</span>
+<p>The latter follows from <span class="math" data-index="133" data-tex="\(s^{1/2}\le t+|\eta|\)">\(s^{1/2}\le t+|\eta|\)</span> and discarding the nonpositive term <span class="math" data-index="134" data-tex="\(-s^{1/4}\)">\(-s^{1/4}\)</span>. Therefore the seed uses a controlled enlargement of the carrier. It is not obtained by merely smoothing a real-frequency moderate weight.</p>
+<h2 id="nw3-equivalent-neighborhoods-not-identical-weight-functions">NW3. Equivalent neighborhoods, not identical weight functions</h2>
+<p>Let <span class="math" data-index="135" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> have its compact smooth support-stage inductive topology on an open convex <span class="math" data-index="136" data-tex="\(X\)">\(X\)</span>. For every weight with the three L153 conditions, define</p>
+<span class="math math-display" id="eq-NW9" data-index="137" data-tex="\[
+q_\phi(v)=\left(\int_{\mathbb C^n}|F_v(z)|^2e^{-2\phi(z)}\,dV(z)\right)^{1/2}.
+\tag{NW9}
+\]">\[
+q_\phi(v)=\left(\int_{\mathbb C^n}|F_v(z)|^2e^{-2\phi(z)}\,dV(z)\right)^{1/2}.
+\tag{NW9}
+\]</span>
+<p>Each <span class="math" data-index="138" data-tex="\(q_\phi\)">\(q_\phi\)</span> is continuous in that topology: on a fixed support <span class="math" data-index="139" data-tex="\(S\)">\(S\)</span>, the full smooth Fourier estimate of L153 TP11 and <span class="math" data-index="140" data-tex="\(e^{-\phi}\le C_S(1+|z|)^{N_S}e^{-H_S(\eta)}\)">\(e^{-\phi}\le C_S(1+|z|)^{N_S}e^{-H_S(\eta)}\)</span> bound the integrand by a finite derivative seminorm squared times <span class="math" data-index="141" data-tex="\((1+|z|)^{-2(L-N_S)}\)">\((1+|z|)^{-2(L-N_S)}\)</span>; choose <span class="math" data-index="142" data-tex="\(L&gt;N_S+n\)">\(L&gt;N_S+n\)</span>. The <span class="math" data-index="143" data-tex="\(L^2\)">\(L^2\)</span> triangle inequality makes it a seminorm, and its restrictions to all stages are continuous.</p>
+<p>Let <span class="math" data-index="144" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the family of all these seminorms, allowing the constants and weights to depend on the neighborhood. Its generated topology is at most the smooth-test topology, by that continuity. Conversely every smooth-test zero-neighborhood contains a convex balanced zero-neighborhood <span class="math" data-index="145" data-tex="\(V\)">\(V\)</span>, and the fully proved L153 TP5 produces one such <span class="math" data-index="146" data-tex="\(\phi\)">\(\phi\)</span> with <span class="math" data-index="147" data-tex="\(\{q_\phi&lt;1\}\subset V\)">\(\{q_\phi&lt;1\}\subset V\)</span>. Thus every original zero-neighborhood contains a zero-neighborhood generated by <span class="math" data-index="148" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. The two topologies coincide.</p>
+<p>This is the precise equivalence needed in the note. It does not assert a single fixed <span class="math" data-index="149" data-tex="\(\phi\)">\(\phi\)</span> gives the entire LF topology, or pointwise comparability of the naive weight and one strict weight. The distinct L149 theorem gives the corresponding four-condition construction on <span class="math" data-index="150" data-tex="\(B_{2,k}\cap\mathcal E&#x27;(X)\)">\(B_{2,k}\cap\mathcal E&#x27;(X)\)</span>, with the actual support stages and a fixed moderate <span class="math" data-index="151" data-tex="\(k\)">\(k\)</span>. L153 gives the smooth-test topology, whose required derivative orders can vary with stage. The full L155 proof uses this latter topology to represent distributions with unbounded local orders. These two completed constructions meet the two different test-space requirements.</p>
+<h2 id="nw4-coordinate-covariance-and-the-broader-domain-note">NW4. Coordinate covariance and the broader-domain note</h2>
+<p>For a holomorphic map <span class="math" data-index="152" data-tex="\(h:\Omega\to\Omega&#x27;\)">\(h:\Omega\to\Omega&#x27;\)</span> and a smooth real function <span class="math" data-index="153" data-tex="\(\varphi\)">\(\varphi\)</span>, the chain rule gives the exact Levi pullback</p>
+<span class="math math-display" id="eq-NW10" data-index="154" data-tex="\[
+\mathcal L_{\varphi\circ h}(z)[w]
+=\mathcal L_\varphi(h(z))[Dh(z)w].
+\tag{NW10}
+\]">\[
+\mathcal L_{\varphi\circ h}(z)[w]
+=\mathcal L_\varphi(h(z))[Dh(z)w].
+\tag{NW10}
+\]</span>
+<p>Indeed a mixed <span class="math" data-index="155" data-tex="\(z,\bar z\)">\(z,\bar z\)</span> derivative of <span class="math" data-index="156" data-tex="\(h\)">\(h\)</span> or <span class="math" data-index="157" data-tex="\(\overline h\)">\(\overline h\)</span> is zero; only the product of a holomorphic first derivative, the mixed Hessian of <span class="math" data-index="158" data-tex="\(\varphi\)">\(\varphi\)</span>, and its conjugate derivative remains. With the Hermitian matrix convention <span class="math" data-index="159" data-tex="\(w^*\mathcal L_\varphi w\)">\(w^*\mathcal L_\varphi w\)</span>, the matrix is <span class="math" data-index="160" data-tex="\(Dh(z)^*\mathcal L_\varphi(h(z))Dh(z)\)">\(Dh(z)^*\mathcal L_\varphi(h(z))Dh(z)\)</span>.</p>
+<p>For a proper PSH target without smoothness, positive local radial convolution preserves PSH and recovers its value at every point, as proved in <a href="AN02-L143.html#HC6">L143 HC6</a> with its explicit radial-recovery provider. On a neighborhood of the compact image of any closed source complex disc, these smoothings have a common finite upper bound. Their pullbacks satisfy the line submean inequality by NW10. Apply Fatou to that upper bound minus the circle integrands and use pointwise recovery to pass the inequality to the pullback. Upper semicontinuity follows from upper semicontinuity of the target and continuity of <span class="math" data-index="161" data-tex="\(h\)">\(h\)</span>. The pullback is therefore PSH, with an identically <span class="math" data-index="162" data-tex="\(-\infty\)">\(-\infty\)</span> component permitted; if the target itself is identically <span class="math" data-index="163" data-tex="\(-\infty\)">\(-\infty\)</span>, that case is immediate. No monotonicity of the smoothing family is needed. If <span class="math" data-index="164" data-tex="\(h\)">\(h\)</span> is biholomorphic and <span class="math" data-index="165" data-tex="\(\varphi\)">\(\varphi\)</span> has a strict smooth Levi bound, the smallest singular value of <span class="math" data-index="166" data-tex="\(Dh\)">\(Dh\)</span> has a positive minimum on each compact subset; NW10 retains a positive local bound there.</p>
+<p>The model <span class="math" data-index="167" data-tex="\(h(z)=z^2\)">\(h(z)=z^2\)</span>, <span class="math" data-index="168" data-tex="\(\varphi(w)=|w|^2\)">\(\varphi(w)=|w|^2\)</span>, gives</p>
+<span class="math math-display" id="eq-NW11" data-index="169" data-tex="\[
+\varphi\circ h=|z|^4,\qquad
+\partial_z\partial_{\bar z}|z|^4=4|z|^2.
+\tag{NW11}
+\]">\[
+\varphi\circ h=|z|^4,\qquad
+\partial_z\partial_{\bar z}|z|^4=4|z|^2.
+\tag{NW11}
+\]</span>
+<p>Thus positivity pulls back, but strict positivity is lost at the critical point <span class="math" data-index="170" data-tex="\(z=0\)">\(z=0\)</span>. Away from zero, a chosen local inverse chart restores the strictly positive local bound.</p>
+<p>This local coordinate fact is not the global <span class="math" data-index="171" data-tex="\(L^2\)">\(L^2\)</span> solvability theorem on arbitrary pseudoconvex domains or Stein manifolds mentioned in the source note. Our <a href="AN02-L144.html#complete-proof">L144 proof</a> establishes its stated Euclidean-domain weighted estimate; the compact Fourier constructions above use the vector space <span class="math" data-index="172" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, its translations, support functions and whole-space transforms. The broader geometric theory cited in the note would require its own domain, metric, bundle, completeness and boundary hypotheses and a proof of the corresponding global estimate. We neither import nor silently infer that theorem from a change of coordinates.</p>
+<h2 id="nw5-the-scalar-and-systems-boundary">NW5. The scalar and systems boundary</h2>
+<p>The completed L150/L152/L155 representation theorems concern one scalar polynomial operator. They retain every factor and multiplicity of that polynomial, but this does not constitute the general systems fundamental principle. For several polynomial equations, common characteristic sets and algebraic relations among the equations must be handled together; separate scalar representations do not by themselves impose those relations on their densities.</p>
+<p>The source's closing note explicitly points to additional local algebraic geometry and bounded cohomology for higher-degree forms when describing the full systems theory, and explains why the chapter restricts its proof to one operator. We retain that boundary. The three notes are accounted for as: broader-domain reference with its actual scope; proved strict-weight and topology constructions above and in the exact providers; and an explicit scalar/systems boundary. No externally cited systems theorem is marked proved, no new systems assignment is inferred, and no unrelated source is required for these scalar results.</p>
+<h2 id="source-locators-and-course-obligations">Source locators and course obligations</h2>
+<p>The note records are N15-dbar-domains on printedp300 and N15-equivalent-weights/N15-system-boundary on printedp301 of Hörmander II. The actual native pages are313/314. Original calculations NW1–NW11 and the full topology argument give the mathematical clarification; the linked original lessons give the full weighted estimates and representation providers.</p>
+<p>This notes treatment does not claim the entire assigned course is complete. Chapter15 passage coverage, all78 Chapter16 exact targets, every assigned residual in Chapters10–13 and recursive prerequisite closure remain separate explicit obligations.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/why-complex-fourier-weights-need-a-construction.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L156/complex-weight-notes-formal.md" download>complex-weight-notes-formal.md</a></li><li><a href="reproduce/L156/complex-weight-notes-learner.md" download>complex-weight-notes-learner.md</a></li><li><a href="reproduce/L156/make_figures181.py" download>make_figures181.py</a></li><li><a href="reproduce/L156/check_examples181.py" download>check_examples181.py</a></li><li><a href="reproduce/L156/independent-example-checks181.json" download>independent-example-checks181.json</a></li><li><a href="reproduce/L156/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L156/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L156/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L156/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L156/figures/negative-naive-and-positive-strict-curvature.png" download>figures/negative-naive-and-positive-strict-curvature.png</a></li><li><a href="reproduce/L156/figures/negative-naive-and-positive-strict-curvature.svg" download>figures/negative-naive-and-positive-strict-curvature.svg</a></li><li><a href="reproduce/L156/figures/holomorphic-pullback-and-loss-of-strictness.png" download>figures/holomorphic-pullback-and-loss-of-strictness.png</a></li><li><a href="reproduce/L156/figures/holomorphic-pullback-and-loss-of-strictness.svg" download>figures/holomorphic-pullback-and-loss-of-strictness.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

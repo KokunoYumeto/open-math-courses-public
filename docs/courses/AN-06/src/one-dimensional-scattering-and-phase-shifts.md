@@ -107,6 +107,8 @@ For \(z\notin\mathbb R\), choose its square root \(k_z\) with \(\operatorname{Im
 
 <a id="line-green-kernel"></a>
 
+The boundary kernels, channel ordering and eigenphase interpretation below are those of Hörmander [H2, Example 14.6.10].
+
 **Lemma 2.1.** The free resolvent is convolution with (6). At \(z=k^2\pm i0\), its kernels are
 
 \[
@@ -311,3 +313,4 @@ This is a unitary conjugation, so the characteristic polynomial and eigenvalues 
 
 - Gerald Teschl, [*Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf). American Mathematical Society, 2014. Section 6.1, Lemma 6.3 and Theorem 6.4, printed pages 158–159: the relative-bound and resolvent-range proof of self-adjointness. Section 9.1, Theorem 9.1 and its proof, printed pages 218–219: existence and uniqueness for locally integrable coefficients by the factorially convergent Volterra series. Equations (9.4)–(9.6), page 218, give the conserved Wronskian.
 - Erik Koelink, [*Scattering Theory*](https://fa.ewi.tudelft.nl/~koelink/dictaat-scattering.pdf), Spring 2006, course wi4211. Theorem 4.1.2 and its proof, printed pages 48–50: the Jost construction for real integrable potentials. Section 4.2 Proposition 4.2.1 and equations (4.2.1)–(4.2.2): conserved Wronskians, transmission, reflection, and the unitary two-channel scattering matrix.
+- [H2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Springer, 2005, Example 14.6.10, pp. 263–264. ISBN 978-3-540-26964-9. [Edition information](https://doi.org/10.1007/b138375).

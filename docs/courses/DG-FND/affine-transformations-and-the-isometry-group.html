@@ -1,1 +1,870 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Affine transformations and the isometry group</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. The data carried by a symmetry</a></li><li><a href="#part-b">B. Distance detects the smooth structure</a></li><li><a href="#part-c">C. Turning the closed orbit into a Lie group</a></li><li><a href="#part-d">D. Frames, affine groups and complete fields</a></li><li><a href="#part-e">E. Passing to quotients and computing examples</a></li><li><a href="#part-f">F. Completeness and affine rigidity</a></li><li><a href="#part-g">G. What maximal symmetry forces</a></li><li><a href="#part-h">H. Worked comparisons</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="affine-transformations-and-the-isometry-group">Affine transformations and the isometry group</h1>
+<p>A connection turns the derivative of a transformation at one point into global information. We first identify that information, then show how it gives a smooth structure on the group of global transformations. The distinction between a locally defined flow and a global one is essential when the manifold is incomplete.</p>
+<p>Manifolds are smooth, finite dimensional, Hausdorff and second countable. They have no boundary and are connected unless stated otherwise. Metrics are positive definite. Our conventions are
+<span class="math math-display" data-tex="\[
+T(Y,Z)=\nabla_YZ-\nabla_ZY-[Y,Z],\qquad
+R(Y,Z)V=\nabla_Y\nabla_ZV-\nabla_Z\nabla_YV-\nabla_{[Y,Z]}V.
+\]">\[
+T(Y,Z)=\nabla_YZ-\nabla_ZY-[Y,Z],\qquad
+R(Y,Z)V=\nabla_Y\nabla_ZV-\nabla_Z\nabla_YV-\nabla_{[Y,Z]}V.
+\]</span>
+The freely available notes of Čap explain the use of a coframe on a frame bundle; Pecastaing's notes explain one-jet determination and Killing fields. Their exact versions are listed at the end. The later sections combine these local tools with the covering, de Rham and space-form theorems to compute quotient groups and classify maximal symmetry. All results used below have proofs here or at the linked earlier programme locators.</p>
+<h2 id="part-a">A. The data carried by a symmetry</h2>
+<p>For a smooth map <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> between manifolds with connections, <strong>affine</strong> means <span class="math" data-tex="\(\nabla df=0\)">\(\nabla df=0\)</span>, with the pullback connection on <span class="math" data-tex="\(f^*TN\)">\(f^*TN\)</span>. An affine transformation is an affine diffeomorphism from <span class="math" data-tex="\(M\)">\(M\)</span> onto itself. A smooth field <span class="math" data-tex="\(X\)">\(X\)</span> is <strong>infinitesimally affine</strong> if each map of its local flow is affine on its domain.</p>
+<p id="lemma-a-1"><strong>Lemma A.1 (Affine maps and their first data).</strong> The affine condition is equivalent to the parallelism of <span class="math" data-tex="\(df\)">\(df\)</span>, and in coordinates reads
+<span class="math math-display" data-tex="\[
+\partial_i\partial_j f^\alpha+
+\Gamma'{}^\alpha_{\beta\gamma}(f)\partial_i f^\beta\partial_j f^\gamma
+-\Gamma^k_{ij}\partial_k f^\alpha=0.
+\tag{A.1}
+\]">\[
+\partial_i\partial_j f^\alpha+
+\Gamma'{}^\alpha_{\beta\gamma}(f)\partial_i f^\beta\partial_j f^\gamma
+-\Gamma^k_{ij}\partial_k f^\alpha=0.
+\tag{A.1}
+\]</span>
+It implies transport and exponential naturality:
+<span class="math math-display" data-tex="\[
+df_{\gamma(t)}P^\gamma_{0t}
+=P^{f\gamma}_{0t}df_{\gamma(0)},\qquad
+f(\exp_pv)=\exp_{f(p)}(df_pv)
+\tag{A.2}
+\]">\[
+df_{\gamma(t)}P^\gamma_{0t}
+=P^{f\gamma}_{0t}df_{\gamma(0)},\qquad
+f(\exp_pv)=\exp_{f(p)}(df_pv)
+\tag{A.2}
+\]</span>
+whenever the source geodesic segment in the second formula exists. An affine map on a connected domain is determined by its value and differential at one point. A <span class="math" data-tex="\(C^2\)">\(C^2\)</span> map satisfying (A.1) is automatically smooth. Equivalently, one may start with a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> map that takes every parallel vector along a smooth curve to a parallel vector along its image: that map is smooth and affine as defined above. Transport along the <span class="math" data-tex="\(C^1\)">\(C^1\)</span> image curves has the meaning proved in <a href="curvature-and-holonomy-groups.html#lemma-c-2">Curvature and holonomy C.2</a>.</p>
+<p><strong>Proof.</strong> <a href="holonomy-killing-fields-and-analytic-extension.html#lemma-a-1">Killing fields A.1</a> proves the coordinate equation, transport identity, geodesic naturality and connected-domain uniqueness directly from the derivative axioms. The geodesic identity holds for a whole existing source segment: its image solves the target geodesic equation with the stated initial data, so <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a> identifies it with that target solution on the entire segment. In particular the required target segment exists.</p>
+<p>For the regularity assertion, a <span class="math" data-tex="\(C^2\)">\(C^2\)</span> solution of (A.1) still satisfies the same chain-rule calculation along geodesics. On a normal neighbourhood it therefore equals
+<span class="math math-display" data-tex="\[
+x\longmapsto \exp_{f(p)}\!\left(df_p\,\exp_p^{-1}x\right).
+\]">\[
+x\longmapsto \exp_{f(p)}\!\left(df_p\,\exp_p^{-1}x\right).
+\]</span>
+The exponential and its local inverse are smooth by <a href="geodesics-normal-coordinates-and-curvature.html#theorem-b-1">Geodesics B.1</a>. The right side is smooth after restricting the neighbourhood, and proves the assertion at every <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>For the <span class="math" data-tex="\(C^1\)">\(C^1\)</span> transport formulation, take a source geodesic <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Its velocity is parallel, so the velocity <span class="math" data-tex="\(df(\dot\gamma)\)">\(df(\dot\gamma)\)</span> of the <span class="math" data-tex="\(C^1\)">\(C^1\)</span> image curve is parallel there. In coordinates, a parallel vector along a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> path solves a linear equation with continuous coefficients, and is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>, by <a href="curvature-and-holonomy-groups.html#lemma-c-2">Curvature and holonomy C.2</a> and <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a>. Thus the image curve is <span class="math" data-tex="\(C^2\)">\(C^2\)</span>; its velocity has zero covariant derivative and it solves the geodesic equation. <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a> gives the same exponential identity. The preceding normal-coordinate formula therefore makes <span class="math" data-tex="\(f\)">\(f\)</span> smooth. Along any curve now expand a vector as <span class="math" data-tex="\(V(t)=P_{0t}c(t)\)">\(V(t)=P_{0t}c(t)\)</span> in a parallel frame. Transport preservation gives <span class="math" data-tex="\(dfV=P'_{0t}df_p c(t)\)">\(dfV=P'_{0t}df_p c(t)\)</span>. Differentiating the coefficient column yields <span class="math" data-tex="\(D_t(dfV)=dfD_tV\)">\(D_t(dfV)=dfD_tV\)</span>, by <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a>. At each initial point and in every tangent direction this says <span class="math" data-tex="\(\nabla df=0\)">\(\nabla df=0\)</span>. The converse was already proved by transport naturality. No rank assumption or torsion-free condition is used. □</p>
+<p>Define the endomorphism
+<span class="math math-display" data-tex="\[
+A_X(Y)=[X,Y]-\nabla_XY=-\nabla_YX-T(X,Y).
+\tag{A.3}
+\]">\[
+A_X(Y)=[X,Y]-\nabla_XY=-\nabla_YX-T(X,Y).
+\tag{A.3}
+\]</span>
+The last equality follows from the definition of torsion. In particular the formula <span class="math" data-tex="\(A_X=-\nabla X\)">\(A_X=-\nabla X\)</span> applies only when the torsion vanishes.</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (The affine infinitesimal equation with torsion).</strong> A smooth field <span class="math" data-tex="\(X\)">\(X\)</span> is infinitesimally affine if and only if
+<span class="math math-display" data-tex="\[
+\nabla_YA_X=R(X,Y)\quad\text{for every }Y.
+\tag{A.4}
+\]">\[
+\nabla_YA_X=R(X,Y)\quad\text{for every }Y.
+\tag{A.4}
+\]</span>
+These fields form a vector space and a Lie algebra for the usual vector-field bracket. If <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> belong to it, then
+<span class="math math-display" data-tex="\[
+A_{[X,Y]}=[A_X,A_Y]-R(X,Y).
+\tag{A.5}
+\]">\[
+A_{[X,Y]}=[A_X,A_Y]-R(X,Y).
+\tag{A.5}
+\]</span>
+At each <span class="math" data-tex="\(p\)">\(p\)</span>, the map <span class="math" data-tex="\(X\mapsto(X_p,(A_X)_p)\)">\(X\mapsto(X_p,(A_X)_p)\)</span> is injective. Consequently the dimension is at most <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(L_XZ=[X,Z]\)">\(L_XZ=[X,Z]\)</span> on vector fields. The coordinate bracket of <a href="principal-bundles-and-associated-bundles.html#lemma-c-3">Principal bundles C.3</a> gives <span class="math" data-tex="\(L_X=\nabla_X+A_X\)">\(L_X=\nabla_X+A_X\)</span>; the derivative terms cancel in their difference, which is precisely the smooth tensor (A.3). Differentiate the pullback of the connection by the local flow of <span class="math" data-tex="\(X\)">\(X\)</span>. The derivative at zero is
+<span class="math math-display" data-tex="\[
+(\mathcal L_X\nabla)(Y,Z)
+=[X,\nabla_YZ]-\nabla_{[X,Y]}Z-\nabla_Y[X,Z].
+\tag{A.6}
+\]">\[
+(\mathcal L_X\nabla)(Y,Z)
+=[X,\nabla_YZ]-\nabla_{[X,Y]}Z-\nabla_Y[X,Z].
+\tag{A.6}
+\]</span>
+Indeed the derivative of the pullback of a vector field is its bracket with <span class="math" data-tex="\(X\)">\(X\)</span>, and the product rule gives the three terms. This is the same coordinate differentiation used in <a href="holonomy-killing-fields-and-analytic-extension.html#lemma-e-1">Killing fields E.1</a>; it does not require zero torsion. Substituting <span class="math" data-tex="\(L_X=\nabla_X+A_X\)">\(L_X=\nabla_X+A_X\)</span> into (A.6), as an operator on <span class="math" data-tex="\(Z\)">\(Z\)</span>, gives
+<span class="math math-display" data-tex="\[
+[L_X,\nabla_Y]-\nabla_{[X,Y]}
+=R(X,Y)+[A_X,\nabla_Y]
+=R(X,Y)-\nabla_YA_X.
+\tag{A.7}
+\]">\[
+[L_X,\nabla_Y]-\nabla_{[X,Y]}
+=R(X,Y)+[A_X,\nabla_Y]
+=R(X,Y)-\nabla_YA_X.
+\tag{A.7}
+\]</span>
+The connection on endomorphisms is the one proved in <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a>.</p>
+<p>If the local flow preserves the connection, (A.7) vanishes. Conversely the flow law and the chain rule show that the derivative of <span class="math" data-tex="\(\phi_t^*\nabla\)">\(\phi_t^*\nabla\)</span> is <span class="math" data-tex="\(\phi_t^*(\mathcal L_X\nabla)\)">\(\phi_t^*(\mathcal L_X\nabla)\)</span>. Differences of connections are tensors: the derivative-of-a-scalar terms cancel when their Leibniz rules are subtracted. Thus this differentiation can be done entry by entry in any coordinate chart. If (A.7) vanishes, the pullback is constant on each flow interval by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>. This proves (A.4).</p>
+<p>Linearity follows from the linearity of (A.7) in <span class="math" data-tex="\(X\)">\(X\)</span>. For bracket closure, pullback by an affine local diffeomorphism preserves equation (A.7), by its definition as the derivative of a pulled-back connection. Thus, when <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> are affine fields, <span class="math" data-tex="\(\phi_t^*Y\)">\(\phi_t^*Y\)</span> is an affine field on every common flow neighbourhood. Differentiating its zero equation at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> gives the zero equation for <span class="math" data-tex="\([X,Y]\)">\([X,Y]\)</span>. Smooth dependence, and commutation of these finite coordinate derivatives, follow from <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> and 0.3. This argument is local at each point, hence proves global bracket closure.</p>
+<p>The identity <span class="math" data-tex="\([L_X,L_Y]=L_{[X,Y]}\)">\([L_X,L_Y]=L_{[X,Y]}\)</span> follows from the Jacobi identity for vector fields, <a href="principal-bundles-and-associated-bundles.html#lemma-c-3">Principal bundles C.3</a>. Expanding it using <span class="math" data-tex="\(L_X=\nabla_X+A_X\)">\(L_X=\nabla_X+A_X\)</span> yields
+<span class="math math-display" data-tex="\[
+A_{[X,Y]}
+=R(X,Y)+\nabla_XA_Y-\nabla_YA_X+[A_X,A_Y].
+\]">\[
+A_{[X,Y]}
+=R(X,Y)+\nabla_XA_Y-\nabla_YA_X+[A_X,A_Y].
+\]</span>
+Equation (A.4) says that the middle two terms are respectively <span class="math" data-tex="\(R(Y,X)\)">\(R(Y,X)\)</span> and <span class="math" data-tex="\(-R(X,Y)\)">\(-R(X,Y)\)</span>; their sum with the first term is <span class="math" data-tex="\(-R(X,Y)\)">\(-R(X,Y)\)</span>. This proves (A.5).</p>
+<p>Along any smooth path <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, the pair <span class="math" data-tex="\(v=X|_\gamma,A=A_X|_\gamma\)">\(v=X|_\gamma,A=A_X|_\gamma\)</span> obeys
+<span class="math math-display" data-tex="\[
+D_tv=-A\dot\gamma-T(v,\dot\gamma),\qquad
+D_tA=R(v,\dot\gamma).
+\tag{A.8}
+\]">\[
+D_tv=-A\dot\gamma-T(v,\dot\gamma),\qquad
+D_tA=R(v,\dot\gamma).
+\tag{A.8}
+\]</span>
+In any local frame this is a homogeneous linear ordinary differential equation for the <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span> entries of <span class="math" data-tex="\((v,A)\)">\((v,A)\)</span>. <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a> supplies the frame expression, and <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> gives uniqueness. A pair initially zero remains zero, successively on the finitely many chart pieces of a path. Any two points of a connected manifold can be joined by a piecewise smooth coordinate path, <a href="curvature-and-holonomy-groups.html#lemma-c-4">Curvature and holonomy C.4</a>. Thus a field with zero initial pair vanishes everywhere. Injection into the <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span>-dimensional space gives the dimension bound by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.2</a>. □</p>
+<p id="corollary-a-3"><strong>Corollary A.3 (Killing fields and their geodesic restrictions).</strong> For a Riemannian metric and its Levi-Civita connection, a field is Killing exactly when
+<span class="math math-display" data-tex="\[
+g(\nabla_YX,Z)+g(Y,\nabla_ZX)=0.
+\tag{A.9}
+\]">\[
+g(\nabla_YX,Z)+g(Y,\nabla_ZX)=0.
+\tag{A.9}
+\]</span>
+It is then infinitesimally affine, <span class="math" data-tex="\(A_X=-\nabla X\)">\(A_X=-\nabla X\)</span> is skew-adjoint, and its value and covariant derivative at one point determine it. The space of Killing fields has dimension at most <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span>. Along an affinely parametrized geodesic,
+<span class="math math-display" data-tex="\[
+D_t^2X+R(X,\dot\gamma)\dot\gamma=0.
+\tag{A.10}
+\]">\[
+D_t^2X+R(X,\dot\gamma)\dot\gamma=0.
+\tag{A.10}
+\]</span></p>
+<p><strong>Proof.</strong> <a href="holonomy-killing-fields-and-analytic-extension.html#lemma-e-1">Killing fields E.1</a> proves (A.9), its equivalence to preservation by the local flow, bracket closure, and (A.4) for the Levi-Civita connection. <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a> proves that a local isometry preserves that connection. The one-jet injection is A.2, restricted to <span class="math" data-tex="\(T_pM\oplus\mathfrak{so}(T_pM,g_p)\)">\(T_pM\oplus\mathfrak{so}(T_pM,g_p)\)</span>. In an orthonormal frame the second summand consists of skew matrices, with one free entry for each pair <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, and hence dimension <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span>; <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-f-2">Riemannian connections F.2</a> constructs those frames. Finally <span class="math" data-tex="\(D_tX=-A_X\dot\gamma\)">\(D_tX=-A_X\dot\gamma\)</span>; differentiate, use <span class="math" data-tex="\(D_t\dot\gamma=0\)">\(D_t\dot\gamma=0\)</span> and (A.4), to obtain (A.10) with the displayed sign. □</p>
+<h2 id="part-b">B. Distance detects the smooth structure</h2>
+<p id="lemma-b-1"><strong>Lemma B.1 (Smooth distance coordinates).</strong> At any point <span class="math" data-tex="\(q\)">\(q\)</span> of an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional Riemannian manifold, <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, one can choose nearby points <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span> so that
+<span class="math math-display" data-tex="\[
+D_b(y)=\bigl(d(y,b_1)^2,\ldots,d(y,b_n)^2\bigr)
+\tag{B.1}
+\]">\[
+D_b(y)=\bigl(d(y,b_1)^2,\ldots,d(y,b_n)^2\bigr)
+\tag{B.1}
+\]</span>
+is a smooth coordinate map near <span class="math" data-tex="\(q\)">\(q\)</span>. This map and its local inverse depend smoothly on sufficiently small changes of the <span class="math" data-tex="\(b_i\)">\(b_i\)</span>.</p>
+<p><strong>Proof.</strong> Work in a strongly convex neighbourhood supplied by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-b-5">Riemannian connections B.5</a>. For <span class="math" data-tex="\(b,y\)">\(b,y\)</span> there, let <span class="math" data-tex="\(\sigma_y:[0,1]\to M\)">\(\sigma_y:[0,1]\to M\)</span> be the unique affine minimizing geodesic from <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. Its constant speed and energy-length relation, <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-f-3">Riemannian connections F.3</a>, give energy <span class="math" data-tex="\(d(b,y)^2/2\)">\(d(b,y)^2/2\)</span>. The first variation formula of <a href="jacobi-fields-conjugate-points-and-the-morse-index-theorem.html#theorem-a-3">Jacobi fields A.3</a>, with the initial endpoint fixed and the final endpoint varying with velocity <span class="math" data-tex="\(w\)">\(w\)</span>, gives
+<span class="math math-display" data-tex="\[
+d_y\!\left(\tfrac12 d(b,y)^2\right)(w)
+=g_y(\dot\sigma_y(1),w)=-g_y(\log_y b,w).
+\tag{B.2}
+\]">\[
+d_y\!\left(\tfrac12 d(b,y)^2\right)(w)
+=g_y(\dot\sigma_y(1),w)=-g_y(\log_y b,w).
+\tag{B.2}
+\]</span>
+The final equality follows by reversing the same affine segment and using geodesic uniqueness, <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a>. Smooth dependence on both endpoints is part of <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-b-5">Riemannian connections B.5</a>.</p>
+<p>Choose an orthonormal basis <span class="math" data-tex="\(e_i\)">\(e_i\)</span> at <span class="math" data-tex="\(q\)">\(q\)</span>, as in <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-f-2">Riemannian connections F.2</a>, and set <span class="math" data-tex="\(b_i=\exp_q(\epsilon e_i)\)">\(b_i=\exp_q(\epsilon e_i)\)</span> for one sufficiently small <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. The differential of (B.1) at <span class="math" data-tex="\(q\)">\(q\)</span> has rows <span class="math" data-tex="\(w\mapsto-2\epsilon g_q(e_i,w)\)">\(w\mapsto-2\epsilon g_q(e_i,w)\)</span>, so it is invertible. <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> gives the coordinate chart. For parameter dependence apply that same inverse theorem to the map <span class="math" data-tex="\((b,y)\mapsto(b,D_b(y))\)">\((b,y)\mapsto(b,D_b(y))\)</span>; its block derivative is invertible at the chosen data. Its inverse keeps <span class="math" data-tex="\(b\)">\(b\)</span> fixed and is therefore the desired smooth family of inverses. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (A distance isometry is a smooth metric isometry).</strong> Any distance-preserving bijection <span class="math" data-tex="\(f:(M,d_g)\to(N,d_h)\)">\(f:(M,d_g)\to(N,d_h)\)</span> is a smooth diffeomorphism and satisfies <span class="math" data-tex="\(f^*h=g\)">\(f^*h=g\)</span>. Conversely a smooth metric-preserving diffeomorphism preserves distance.</p>
+<p><strong>Proof.</strong> Such a bijection and its inverse are continuous. <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-2">Riemannian connections A.2</a> identifies the distance topology with the manifold topology. Near <span class="math" data-tex="\(q=f(p)\)">\(q=f(p)\)</span>, choose the points of B.1 so close to <span class="math" data-tex="\(q\)">\(q\)</span> that both they and their preimages <span class="math" data-tex="\(a_i=f^{-1}(b_i)\)">\(a_i=f^{-1}(b_i)\)</span> lie in respective strongly convex neighbourhoods of <span class="math" data-tex="\(q,p\)">\(q,p\)</span>. This is possible by continuity of the inverse. Shrink the neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span> so that <span class="math" data-tex="\(f\)">\(f\)</span> takes it into the distance-coordinate chart. There
+<span class="math math-display" data-tex="\[
+D_b(f(x))=\bigl(d_g(x,a_1)^2,\ldots,d_g(x,a_m)^2\bigr),
+\]">\[
+D_b(f(x))=\bigl(d_g(x,a_1)^2,\ldots,d_g(x,a_m)^2\bigr),
+\]</span>
+where <span class="math" data-tex="\(m=\dim N\)">\(m=\dim N\)</span>. Each component is smooth by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-b-5">Riemannian connections B.5</a>. Composing with the smooth inverse of <span class="math" data-tex="\(D_b\)">\(D_b\)</span> proves that <span class="math" data-tex="\(f\)">\(f\)</span> is smooth. Apply the same argument to its inverse. Thus their differentials are inverse linear maps, and the dimensions agree. If one manifold has dimension zero, connectedness makes it a point and bijectivity gives the same conclusion directly.</p>
+<p>For a smooth curve <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c(0)=p,c'(0)=v\)">\(c(0)=p,c'(0)=v\)</span>, normal coordinates and <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-b-3">Riemannian connections B.3</a> give
+<span class="math math-display" data-tex="\[
+\lim_{t\to0}\frac{d_g(p,c(t))}{|t|}=|v|_g.
+\]">\[
+\lim_{t\to0}\frac{d_g(p,c(t))}{|t|}=|v|_g.
+\]</span>
+Indeed the logarithm of <span class="math" data-tex="\(c(t)\)">\(c(t)\)</span> is <span class="math" data-tex="\(tv+o(t)\)">\(tv+o(t)\)</span>, and in this normal ball its norm is the distance. Apply the identity to <span class="math" data-tex="\(f\circ c\)">\(f\circ c\)</span> and use distance preservation to obtain <span class="math" data-tex="\(|df_pv|_h=|v|_g\)">\(|df_pv|_h=|v|_g\)</span>. The polarization identity
+<span class="math" data-tex="\(2g(v,w)=|v+w|^2-|v|^2-|w|^2\)">\(2g(v,w)=|v+w|^2-|v|^2-|w|^2\)</span>
+then proves <span class="math" data-tex="\(f^*h=g\)">\(f^*h=g\)</span>. The converse, including preservation of the infimum of curve lengths, is <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>. □</p>
+<p>Write <span class="math" data-tex="\(G=\operatorname{Isom}(M,g)\)">\(G=\operatorname{Isom}(M,g)\)</span>, with the compact-open topology, equivalently uniform convergence on compact subsets. Fix an orthonormal frame <span class="math" data-tex="\(u:\mathbb R^n\to T_pM\)">\(u:\mathbb R^n\to T_pM\)</span> and put
+<span class="math math-display" data-tex="\[
+J(f)=df_pu\in\operatorname O(M).
+\tag{B.3}
+\]">\[
+J(f)=df_pu\in\operatorname O(M).
+\tag{B.3}
+\]</span></p>
+<p id="lemma-b-3"><strong>Lemma B.3 (Closed frame orbit without completeness).</strong> The map <span class="math" data-tex="\(J\)">\(J\)</span> is a homeomorphism of <span class="math" data-tex="\(G\)">\(G\)</span> onto a closed subset of <span class="math" data-tex="\(\operatorname O(M)\)">\(\operatorname O(M)\)</span>. Convergence in <span class="math" data-tex="\(G\)">\(G\)</span> to an isometry gives smooth convergence on compact subsets. In particular, convergence of <span class="math" data-tex="\(J(f_j)\)">\(J(f_j)\)</span> to any orthonormal frame produces a global isometry as the smooth limit of <span class="math" data-tex="\(f_j\)">\(f_j\)</span>.</p>
+<p><strong>Proof.</strong> Injectivity follows from A.1 and <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>. We give the global convergence argument, because a target exponential need not exist for every tangent vector.</p>
+<p>First define a local compactness radius
+<span class="math math-display" data-tex="\[
+\rho(x)=\min\left(1,\sup\{r&gt;0:\overline B(x,r)\text{ is compact}\}\right).
+\tag{B.4}
+\]">\[
+\rho(x)=\min\left(1,\sup\{r&gt;0:\overline B(x,r)\text{ is compact}\}\right).
+\tag{B.4}
+\]</span>
+It is positive: a small closed distance ball is contained in a compact coordinate neighbourhood, by the local distance estimates in <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-2">Riemannian connections A.2</a>. Every closed ball of radius less than <span class="math" data-tex="\(\rho(x)\)">\(\rho(x)\)</span> is compact, since it is a closed subset of a larger compact ball. If <span class="math" data-tex="\(s+d(x,y)&lt;r&lt;\rho(x)\)">\(s+d(x,y)&lt;r&lt;\rho(x)\)</span>, the closed <span class="math" data-tex="\(s\)">\(s\)</span>-ball at <span class="math" data-tex="\(y\)">\(y\)</span> is a closed subset of that compact <span class="math" data-tex="\(r\)">\(r\)</span>-ball. Letting <span class="math" data-tex="\(r\)">\(r\)</span> increase shows <span class="math" data-tex="\(\rho(y)\geq\rho(x)-d(x,y)\)">\(\rho(y)\geq\rho(x)-d(x,y)\)</span>; exchange <span class="math" data-tex="\(x,y\)">\(x,y\)</span> to see that <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is 1-Lipschitz. Distance isometries preserve it. A Cauchy sequence <span class="math" data-tex="\(y_j\)">\(y_j\)</span> with <span class="math" data-tex="\(\rho(y_j)\geq\delta&gt;0\)">\(\rho(y_j)\geq\delta&gt;0\)</span> converges in <span class="math" data-tex="\(M\)">\(M\)</span>: its tail lies in the compact closed ball of radius <span class="math" data-tex="\(3\delta/4\)">\(3\delta/4\)</span> about one sufficiently late <span class="math" data-tex="\(y_j\)">\(y_j\)</span>. Compactness gives a convergent subsequence, and the Cauchy property gives convergence of the whole sequence, using <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>.</p>
+<p>Suppose now <span class="math" data-tex="\(J(f_j)\to a\)">\(J(f_j)\to a\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> based at <span class="math" data-tex="\(q\)">\(q\)</span>. On a sufficiently small normal neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+f_j(x)=\exp_{f_j(p)}\!\left(df_j|_p\,\log_p x\right).
+\tag{B.5}
+\]">\[
+f_j(x)=\exp_{f_j(p)}\!\left(df_j|_p\,\log_p x\right).
+\tag{B.5}
+\]</span>
+The target exponential is defined uniformly here for all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>: the initial frames lie in a compact subset of a frame chart near <span class="math" data-tex="\(a\)">\(a\)</span>, and the local geodesic existence theorem gives a common small vector ball. <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a> and B.1 therefore give smooth convergence on smaller compact subsets.</p>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be the set of points having a neighbourhood on which this whole sequence converges smoothly on compact subsets. It is nonempty and open. Its local limits agree on overlaps and preserve the metric. For <span class="math" data-tex="\(x,z\in U\)">\(x,z\in U\)</span>, passage to the limit in the distance identity gives <span class="math" data-tex="\(d(f(x),f(z))=d(x,z)\)">\(d(f(x),f(z))=d(x,z)\)</span>, including when the points lie in different members of the cover.</p>
+<p>We show that <span class="math" data-tex="\(U\)">\(U\)</span> is closed. If <span class="math" data-tex="\(x_k\in U\)">\(x_k\in U\)</span> tends to <span class="math" data-tex="\(x\)">\(x\)</span>, the sequence <span class="math" data-tex="\(f_j(x)\)">\(f_j(x)\)</span> is Cauchy. For any tolerance, first fix <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(d(x,x_k)\)">\(d(x,x_k)\)</span> smaller than a third of it; then use convergence of <span class="math" data-tex="\(f_j(x_k)\)">\(f_j(x_k)\)</span> and
+<span class="math math-display" data-tex="\[
+d(f_j(x),f_l(x))
+\leq 2d(x,x_k)+d(f_j(x_k),f_l(x_k)).
+\tag{B.6}
+\]">\[
+d(f_j(x),f_l(x))
+\leq 2d(x,x_k)+d(f_j(x_k),f_l(x_k)).
+\tag{B.6}
+\]</span>
+Since <span class="math" data-tex="\(\rho(f_j(x))=\rho(x)&gt;0\)">\(\rho(f_j(x))=\rho(x)&gt;0\)</span>, (B.4) shows <span class="math" data-tex="\(f_j(x)\to y\in M\)">\(f_j(x)\to y\in M\)</span>. Choose an orthonormal frame <span class="math" data-tex="\(v\)">\(v\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>. The frames <span class="math" data-tex="\(df_j|_xv\)">\(df_j|_xv\)</span> lie over a compact set, so <a href="completeness-and-the-hopf-rinow-theorem.html#lemma-d-2">Hopf–Rinow D.2</a> makes them precompact. Every convergent subsequence of these frames gives, by (B.5) centred at <span class="math" data-tex="\(x\)">\(x\)</span>, a smooth limiting local isometry on the same sufficiently small connected normal neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>. The neighbourhood can be fixed for all these subsequences because the frames over a compact neighbourhood of <span class="math" data-tex="\(y\)">\(y\)</span> form a compact set.</p>
+<p>Any two such limits agree on <span class="math" data-tex="\(V\cap U\)">\(V\cap U\)</span>, which contains a nonempty open set since <span class="math" data-tex="\(x\)">\(x\)</span> is in the closure of <span class="math" data-tex="\(U\)">\(U\)</span>. They consequently have the same first data at a point of that set; A.1 makes them equal on connected <span class="math" data-tex="\(V\)">\(V\)</span>. Thus all cluster frames are identical, and the whole frame sequence converges: otherwise a subsequence outside a fixed neighbourhood of the unique cluster frame would have another convergent subsequence by compactness. Formula (B.5) now gives smooth convergence on <span class="math" data-tex="\(V\)">\(V\)</span>, so <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span>. Connectedness implies <span class="math" data-tex="\(U=M\)">\(U=M\)</span>.</p>
+<p>The resulting global map <span class="math" data-tex="\(f\)">\(f\)</span> is distance preserving and satisfies <span class="math" data-tex="\(f^*g=g\)">\(f^*g=g\)</span>. To see that it is onto, use (B.5) near <span class="math" data-tex="\(p\)">\(p\)</span> and its smoothly varying local inverses near <span class="math" data-tex="\(q=f(p)\)">\(q=f(p)\)</span>. The inverse theorem of <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> shows that <span class="math" data-tex="\(f_j^{-1}(q)\to p\)">\(f_j^{-1}(q)\to p\)</span> and the derivatives there converge to <span class="math" data-tex="\(df_p^{-1}\)">\(df_p^{-1}\)</span>. These are the actual global inverse maps on that neighbourhood by injectivity. Apply the preceding convergence argument to <span class="math" data-tex="\(f_j^{-1}\)">\(f_j^{-1}\)</span>, now at the fixed point <span class="math" data-tex="\(q\)">\(q\)</span>, obtaining a global map <span class="math" data-tex="\(h\)">\(h\)</span>. Smooth local convergence and the identities <span class="math" data-tex="\(f_jf_j^{-1}=\operatorname{id}=f_j^{-1}f_j\)">\(f_jf_j^{-1}=\operatorname{id}=f_j^{-1}f_j\)</span> imply <span class="math" data-tex="\(fh=hf=\operatorname{id}\)">\(fh=hf=\operatorname{id}\)</span>: the moving intermediate points stay in a compact coordinate neighbourhood, on which convergence is uniform. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is a global isometry. This proves that <span class="math" data-tex="\(J(G)\)">\(J(G)\)</span> is closed and that its inverse parametrization gives smooth convergence.</p>
+<p>For the remaining direction of continuity, fix <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, choose small <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, and put <span class="math" data-tex="\(p_i=\exp_p(\epsilon ue_i)\)">\(p_i=\exp_p(\epsilon ue_i)\)</span>. For every isometry <span class="math" data-tex="\(f\)">\(f\)</span> sufficiently close to <span class="math" data-tex="\(f_0\)">\(f_0\)</span> at these finitely many points,
+<span class="math math-display" data-tex="\[
+df_pue_i=\epsilon^{-1}\log_{f(p)}f(p_i).
+\tag{B.7}
+\]">\[
+df_pue_i=\epsilon^{-1}\log_{f(p)}f(p_i).
+\tag{B.7}
+\]</span>
+The uniform small normal radius about <span class="math" data-tex="\(f_0(p)\)">\(f_0(p)\)</span>, supplied by the endpoint inverse of <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-b-5">Riemannian connections B.5</a>, justifies the formula: the vector on the right is the unique small logarithm, and the isometric vector <span class="math" data-tex="\(\epsilon df_pue_i\)">\(\epsilon df_pue_i\)</span> has that prescribed small norm. The right side is continuous in the finitely many values. This proves continuity of <span class="math" data-tex="\(J\)">\(J\)</span> in the compact-open topology.</p>
+<p>Finally, the topology of uniform convergence on compact sets agrees here with the compact-open topology. In one direction, a compact image inside an open set has a positive distance from the complement after covering it by finitely many metric balls. In the other, cover a compact source set by finitely many small balls and impose closeness at their centres; the common 1-Lipschitz bound for isometries and the triangle inequality give uniform closeness on the source set. These observations also show directly that the preceding sequential convergence assertions describe the stated topology, since the frame bundle has countable coordinate neighbourhood bases. □</p>
+<h2 id="part-c">C. Turning the closed orbit into a Lie group</h2>
+<p>We retain <span class="math" data-tex="\(G,u,J\)">\(G,u,J\)</span> from Part B. A useful consequence of the exponential formula is <strong>smooth propagation of first data near an actual isometry</strong>. Namely, on every fixed compact source set the map <span class="math" data-tex="\(f\)">\(f\)</span>, and every finite number of its derivatives, are smooth functions of <span class="math" data-tex="\(J(f)\)">\(J(f)\)</span>, restricted to the possible frame values. Here “smooth” means that the functions extend smoothly to a neighbourhood in the ambient frame bundle.</p>
+<p>To verify this consequence, fix an actual <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. Join <span class="math" data-tex="\(p\)">\(p\)</span> to a desired point by a finite chain of small normal neighbourhoods, each next centre lying in the preceding neighbourhood. <a href="curvature-and-holonomy-groups.html#lemma-c-4">Curvature and holonomy C.4</a> supplies a piecewise smooth path, and compactness of its parameter interval gives a finite chain using <a href="geodesics-normal-coordinates-and-curvature.html#theorem-b-1">Geodesics B.1</a>. Start with (B.5). Evaluate and differentiate that formula at the next centre to obtain its new first data, and use the same exponential formula there. At <span class="math" data-tex="\(J(f_0)\)">\(J(f_0)\)</span> every necessary segment exists. Openness of the finite-time geodesic domain and its smooth dependence, <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a>, permit all these operations for arbitrary initial frames sufficiently close to <span class="math" data-tex="\(J(f_0)\)">\(J(f_0)\)</span>. They need not be frames of actual isometries. Finitely many chains cover any given compact set. This proves the asserted smooth extensions, including their derivatives. Extensions from different chains need agree only on actual isometries; that is all that will be used.</p>
+<p id="lemma-c-1"><strong>Lemma C.1 (A limiting infinitesimal symmetry is complete).</strong> Choose frame coordinates <span class="math" data-tex="\(z\)">\(z\)</span> centred at <span class="math" data-tex="\(u\)">\(u\)</span>. Suppose <span class="math" data-tex="\(g_j\in G\)">\(g_j\in G\)</span>, <span class="math" data-tex="\(\epsilon_j&gt;0\)">\(\epsilon_j&gt;0\)</span>, <span class="math" data-tex="\(\epsilon_j\to0\)">\(\epsilon_j\to0\)</span>, and
+<span class="math math-display" data-tex="\[
+z(J(g_j))/\epsilon_j\longrightarrow w.
+\tag{C.1}
+\]">\[
+z(J(g_j))/\epsilon_j\longrightarrow w.
+\tag{C.1}
+\]</span>
+The normalized coordinate differences <span class="math" data-tex="\((g_j-\operatorname{id})/\epsilon_j\)">\((g_j-\operatorname{id})/\epsilon_j\)</span> converge smoothly on compact coordinate subsets to a global Killing field <span class="math" data-tex="\(X\)">\(X\)</span>. Its lifted first data at <span class="math" data-tex="\(u\)">\(u\)</span> are <span class="math" data-tex="\(w\)">\(w\)</span>, and <span class="math" data-tex="\(X\)">\(X\)</span> is complete.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(F(a,x)\)">\(F(a,x)\)</span> be any of the smooth propagation formulas just established, with <span class="math" data-tex="\(F(0,x)=x\)">\(F(0,x)=x\)</span>. In coordinates, the fundamental theorem of calculus gives
+<span class="math math-display" data-tex="\[
+\frac{F(a_j,x)-x}{\epsilon_j}
+=\int_0^1 D_aF(sa_j,x)\frac{a_j}{\epsilon_j}\,ds
+\longrightarrow D_aF(0,x)w.
+\tag{C.2}
+\]">\[
+\frac{F(a_j,x)-x}{\epsilon_j}
+=\int_0^1 D_aF(sa_j,x)\frac{a_j}{\epsilon_j}\,ds
+\longrightarrow D_aF(0,x)w.
+\tag{C.2}
+\]</span>
+The same formula after every fixed number of <span class="math" data-tex="\(x\)">\(x\)</span>-derivatives proves smooth convergence on compact subsets, by uniform continuity of the next derivatives, <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>. Taylor expansion of a coordinate change shows that these limits transform as tangent vectors. Since the actual maps agree on overlaps, so do their limiting vectors. They define a smooth global <span class="math" data-tex="\(X\)">\(X\)</span>. Dividing <span class="math" data-tex="\(g_j^*g-g=0\)">\(g_j^*g-g=0\)</span> by <span class="math" data-tex="\(\epsilon_j\)">\(\epsilon_j\)</span> and taking the limit with first derivatives gives <span class="math" data-tex="\(\mathcal L_Xg=0\)">\(\mathcal L_Xg=0\)</span>, the coordinate equation of <a href="holonomy-killing-fields-and-analytic-extension.html#lemma-e-1">Killing fields E.1</a>. At <span class="math" data-tex="\(p\)">\(p\)</span> the initial exponential formula has exactly the prescribed value and derivative, so the derivative of its lifted frame value is the identity in the <span class="math" data-tex="\(a\)">\(a\)</span>-coordinates. Hence the lifted first data of <span class="math" data-tex="\(X\)">\(X\)</span> are <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p>It remains to prove completeness, which does not follow from A.3. Lift each <span class="math" data-tex="\(g_j\)">\(g_j\)</span> to the orthonormal frame bundle by <span class="math" data-tex="\(\widehat g_j(v)=dg_jv\)">\(\widehat g_j(v)=dg_jv\)</span>. The first-derivative version of (C.2) gives, in any relatively compact frame chart,
+<span class="math math-display" data-tex="\[
+\widehat g_j(v)=v+\epsilon_j\widehat X(v)+\epsilon_j r_j(v),
+\qquad \|r_j\|_{C^1}\longrightarrow0.
+\tag{C.3}
+\]">\[
+\widehat g_j(v)=v+\epsilon_j\widehat X(v)+\epsilon_j r_j(v),
+\qquad \|r_j\|_{C^1}\longrightarrow0.
+\tag{C.3}
+\]</span>
+Here <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span> is the generator of the natural lift of the local flow of <span class="math" data-tex="\(X\)">\(X\)</span>; differentiating a flow and its first spatial derivatives gives exactly this vector field, by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. The inverses have the same expansion with <span class="math" data-tex="\(-\widehat X\)">\(-\widehat X\)</span>, by local inversion and the chain rule.</p>
+<p>For clarity we prove the iteration assertion needed from (C.3). In a frame chart about <span class="math" data-tex="\(u\)">\(u\)</span>, choose a closed box and a smaller box containing <span class="math" data-tex="\(u\)">\(u\)</span>. The vector field and its first derivative are bounded there. For one fixed sufficiently small <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, its integral curve <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span>, <span class="math" data-tex="\(|t|\leq2\tau\)">\(|t|\leq2\tau\)</span>, stays in the smaller box, by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. Its exact one-step increment at time <span class="math" data-tex="\(t\)">\(t\)</span> differs from <span class="math" data-tex="\(\epsilon_j\widehat X(v(t))\)">\(\epsilon_j\widehat X(v(t))\)</span> by at most <span class="math" data-tex="\(C\epsilon_j^2\)">\(C\epsilon_j^2\)</span>: integrate the vector field over the step and use its derivative bound and the speed bound. For the approximate iterates the error consequently satisfies
+<span class="math math-display" data-tex="\[
+e_{k+1}\leq(1+C\epsilon_j)e_k+
+\epsilon_j\eta_j+C\epsilon_j^2,\qquad e_0=0,
+\tag{C.4}
+\]">\[
+e_{k+1}\leq(1+C\epsilon_j)e_k+
+\epsilon_j\eta_j+C\epsilon_j^2,\qquad e_0=0,
+\tag{C.4}
+\]</span>
+where <span class="math" data-tex="\(\eta_j\to0\)">\(\eta_j\to0\)</span> bounds <span class="math" data-tex="\(r_j\)">\(r_j\)</span>. Summing the geometric series gives
+<span class="math" data-tex="\(e_k\leq C_\tau(\eta_j+\epsilon_j)\)">\(e_k\leq C_\tau(\eta_j+\epsilon_j)\)</span>
+for <span class="math" data-tex="\(k\epsilon_j\leq\tau\)">\(k\epsilon_j\leq\tau\)</span>. The bound keeps all iterates in the larger box for large <span class="math" data-tex="\(j\)">\(j\)</span>: if there were a first exit, the same estimate up to that step would contradict the positive margin. For negative times apply this argument to the inverse maps. Taking integers <span class="math" data-tex="\(m_j\)">\(m_j\)</span> with <span class="math" data-tex="\(m_j\epsilon_j\to t\)">\(m_j\epsilon_j\to t\)</span> proves
+<span class="math math-display" data-tex="\[
+J(g_j^{m_j})=\widehat g_j^{\,m_j}(u)\longrightarrow v(t)
+\quad (|t|&lt;\tau).
+\tag{C.5}
+\]">\[
+J(g_j^{m_j})=\widehat g_j^{\,m_j}(u)\longrightarrow v(t)
+\quad (|t|&lt;\tau).
+\tag{C.5}
+\]</span>
+For example, decrease <span class="math" data-tex="\(\tau\)">\(\tau\)</span> so <span class="math" data-tex="\(C\tau&lt;1/2\)">\(C\tau&lt;1/2\)</span>. The elementary inequalities
+<span class="math" data-tex="\((1+x)\leq(1-x)^{-1}\)">\((1+x)\leq(1-x)^{-1}\)</span> for <span class="math" data-tex="\(0\leq x&lt;1\)">\(0\leq x&lt;1\)</span> and
+<span class="math" data-tex="\((1-x)^k\geq1-kx\)">\((1-x)^k\geq1-kx\)</span>, the latter by induction, give
+<span class="math" data-tex="\((1+C\epsilon_j)^k\leq2\)">\((1+C\epsilon_j)^k\leq2\)</span> for <span class="math" data-tex="\(k\epsilon_j\leq\tau\)">\(k\epsilon_j\leq\tau\)</span>.
+Summing at most <span class="math" data-tex="\(k\)">\(k\)</span> terms then gives the stated error bound directly.</p>
+<p>B.3 now makes <span class="math" data-tex="\(g_j^{m_j}\)">\(g_j^{m_j}\)</span> converge to a global isometry <span class="math" data-tex="\(h_t\)">\(h_t\)</span>. These maps depend smoothly on <span class="math" data-tex="\(t\)">\(t\)</span>: their frames <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span> do, and the propagation formulas give smooth dependence near every fixed <span class="math" data-tex="\(t\)">\(t\)</span> and on every compact source set. Apply the same iteration estimate on a small neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span> where the local flow of <span class="math" data-tex="\(X\)">\(X\)</span> exists for <span class="math" data-tex="\(|t|\leq2\tau\)">\(|t|\leq2\tau\)</span>, decreasing <span class="math" data-tex="\(\tau\)">\(\tau\)</span> if necessary. It shows <span class="math" data-tex="\(h_t=\phi_t^X\)">\(h_t=\phi_t^X\)</span> on that neighbourhood for <span class="math" data-tex="\(|t|&lt;\tau\)">\(|t|&lt;\tau\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+h_sh_t=h_{s+t}
+\tag{C.6}
+\]">\[
+h_sh_t=h_{s+t}
+\tag{C.6}
+\]</span>
+whenever <span class="math" data-tex="\(|s|+|t|\)">\(|s|+|t|\)</span> is sufficiently small: the equality holds on a smaller nonempty neighbourhood by the local flow law, and A.1 extends equality to all of connected <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>This local group extends to all real parameters. Explicitly, for <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, choose a positive integer <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(|t|/m\)">\(|t|/m\)</span> in a fixed interval on which (C.6) applies, and define <span class="math" data-tex="\(H_t=(h_{t/m})^m\)">\(H_t=(h_{t/m})^m\)</span>. Two choices agree by refining to a common multiple and repeatedly applying (C.6) while the partial sums remain in that small interval. Taking a common sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span> for <span class="math" data-tex="\(s,t,s+t\)">\(s,t,s+t\)</span> proves <span class="math" data-tex="\(H_sH_t=H_{s+t}\)">\(H_sH_t=H_{s+t}\)</span>; the two small factors commute by (C.6). Near any parameter <span class="math" data-tex="\(t\)">\(t\)</span>, write <span class="math" data-tex="\(H_{t+r}=H_th_r\)">\(H_{t+r}=H_th_r\)</span>, which proves smoothness.</p>
+<p>At every point <span class="math" data-tex="\(x\)">\(x\)</span>, a small local flow interval for <span class="math" data-tex="\(X\)">\(X\)</span> exists. Applying the same coordinate iteration estimate at <span class="math" data-tex="\(x\)">\(x\)</span>, for a possibly smaller time interval depending on <span class="math" data-tex="\(x\)">\(x\)</span>, shows <span class="math" data-tex="\(h_r(x)=\phi_r^X(x)\)">\(h_r(x)=\phi_r^X(x)\)</span> there. Thus the derivative of <span class="math" data-tex="\(H_r(x)\)">\(H_r(x)\)</span> at zero is <span class="math" data-tex="\(X_x\)">\(X_x\)</span>. Differentiating <span class="math" data-tex="\(H_{t+r}(x)=H_r(H_t(x))\)">\(H_{t+r}(x)=H_r(H_t(x))\)</span> at <span class="math" data-tex="\(r=0\)">\(r=0\)</span> gives <span class="math" data-tex="\(\frac d{dt}H_t(x)=X_{H_t(x)}\)">\(\frac d{dt}H_t(x)=X_{H_t(x)}\)</span> for all real <span class="math" data-tex="\(t\)">\(t\)</span>. These are global integral curves, proving completeness. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (The isometry group and its Lie algebra).</strong> With its compact-open topology, <span class="math" data-tex="\(G\)">\(G\)</span> is a finite-dimensional Lie group acting smoothly on <span class="math" data-tex="\(M\)">\(M\)</span>, and
+<span class="math math-display" data-tex="\[
+\dim G\leq n(n+1)/2.
+\tag{C.7}
+\]">\[
+\dim G\leq n(n+1)/2.
+\tag{C.7}
+\]</span>
+Its stabilizer at a point is compact. If <span class="math" data-tex="\(M\)">\(M\)</span> is compact, <span class="math" data-tex="\(G\)">\(G\)</span> is compact. Its one-parameter subgroups are exactly the flows of complete Killing fields. For a left action, the map from the group Lie algebra to its fundamental vector fields is an anti-isomorphism; negating those fields gives an isomorphism with the usual vector-field bracket. No completeness of <span class="math" data-tex="\(M\)">\(M\)</span> is required.</p>
+<p><strong>Proof.</strong> Work first with <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. In the tangent space <span class="math" data-tex="\(T_u\operatorname O(M)\)">\(T_u\operatorname O(M)\)</span>, let <span class="math" data-tex="\(E\)">\(E\)</span> be the set of velocities at zero of curves <span class="math" data-tex="\(J(g(t))\)">\(J(g(t))\)</span> that are smooth as ambient frame curves, with <span class="math" data-tex="\(g(0)=\operatorname{id}\)">\(g(0)=\operatorname{id}\)</span>. Multiplication and inversion of such frame-parametrized curves are smooth near zero before any manifold structure on <span class="math" data-tex="\(G\)">\(G\)</span> has been declared. Indeed,
+<span class="math math-display" data-tex="\[
+J(fg)=df_{g(p)}\,dg_pu
+\]">\[
+J(fg)=df_{g(p)}\,dg_pu
+\]</span>
+is a smooth function of <span class="math" data-tex="\(J(f),J(g)\)">\(J(f),J(g)\)</span> by the propagation formula and its derivatives. For inversion, solve the smooth local formula <span class="math" data-tex="\(F(a,x)=p\)">\(F(a,x)=p\)</span> near <span class="math" data-tex="\(a=0,x=p\)">\(a=0,x=p\)</span> by <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> and differentiate its inverse. This gives a smooth expression for <span class="math" data-tex="\(J(f^{-1})\)">\(J(f^{-1})\)</span>.</p>
+<p>At the identity, the derivative of the multiplication expression adds the two frame velocities, since each factor alone gives the identity on its own tangent variable. Thus products of the curves <span class="math" data-tex="\(g_1(at)g_2(bt)\)">\(g_1(at)g_2(bt)\)</span> show that <span class="math" data-tex="\(E\)">\(E\)</span> is a vector subspace. The zero curve is included. It has finite dimension <span class="math" data-tex="\(d\leq\dim\operatorname O(M)=n(n+1)/2\)">\(d\leq\dim\operatorname O(M)=n(n+1)/2\)</span>, the frame dimension computed in <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-f-2">Riemannian connections F.2</a>.</p>
+<p>Every <span class="math" data-tex="\(w\in E\)">\(w\in E\)</span> is the first data of a complete Killing field: apply C.1 to <span class="math" data-tex="\(g(1/j)\)">\(g(1/j)\)</span>, <span class="math" data-tex="\(\epsilon_j=1/j\)">\(\epsilon_j=1/j\)</span>. Conversely the global flow of any complete Killing field gives such a curve, smooth by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. First-data injectivity in A.3 shows that these identifications are injective. Choose a basis <span class="math" data-tex="\(w_1,\ldots,w_d\)">\(w_1,\ldots,w_d\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span> and the corresponding complete fields <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. Write
+<span class="math math-display" data-tex="\[
+\Phi_a=\phi^{X_1}_{a_1}\circ\cdots\circ\phi^{X_d}_{a_d}.
+\]">\[
+\Phi_a=\phi^{X_1}_{a_1}\circ\cdots\circ\phi^{X_d}_{a_d}.
+\]</span>
+Choose a smooth coordinate slice <span class="math" data-tex="\(s\mapsto u(s)\)">\(s\mapsto u(s)\)</span> through <span class="math" data-tex="\(u\)">\(u\)</span>, tangent to a vector-space complement of <span class="math" data-tex="\(E\)">\(E\)</span>. Linear algebra in <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.2</a> supplies the complement. The map
+<span class="math math-display" data-tex="\[
+(a,s)\longmapsto\widehat\Phi_a(u(s))
+\tag{C.8}
+\]">\[
+(a,s)\longmapsto\widehat\Phi_a(u(s))
+\tag{C.8}
+\]</span>
+has invertible derivative at zero, since its two derivative images are precisely those complementary spaces. <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> makes it a diffeomorphism on sufficiently small neighbourhoods.</p>
+<p>The slice meets <span class="math" data-tex="\(J(G)\)">\(J(G)\)</span> only at <span class="math" data-tex="\(u\)">\(u\)</span> near <span class="math" data-tex="\(u\)">\(u\)</span>. Otherwise take nonzero <span class="math" data-tex="\(s_j\to0\)">\(s_j\to0\)</span> with <span class="math" data-tex="\(u(s_j)=J(r_j)\)">\(u(s_j)=J(r_j)\)</span>. Normalize the frame-coordinate differences by <span class="math" data-tex="\(\epsilon_j=|z(J(r_j))|\)">\(\epsilon_j=|z(J(r_j))|\)</span>. A subsequence converges to a unit tangent vector <span class="math" data-tex="\(w\)">\(w\)</span> in the complementary slice, by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. Lemma C.1 makes that vector the first data of a complete Killing field. Its global flow puts <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span>, contradicting complementarity.</p>
+<p>For <span class="math" data-tex="\(f\)">\(f\)</span> sufficiently close to the identity, (C.8) writes <span class="math" data-tex="\(J(f)=\widehat\Phi_a(u(s))\)">\(J(f)=\widehat\Phi_a(u(s))\)</span>. Then <span class="math" data-tex="\(J(\Phi_a^{-1}f)=u(s)\)">\(J(\Phi_a^{-1}f)=u(s)\)</span>, so the slice conclusion and injectivity of <span class="math" data-tex="\(J\)">\(J\)</span> give <span class="math" data-tex="\(s=0\)">\(s=0\)</span> and <span class="math" data-tex="\(f=\Phi_a\)">\(f=\Phi_a\)</span>. Conversely all these <span class="math" data-tex="\(\Phi_a\)">\(\Phi_a\)</span> belong to <span class="math" data-tex="\(G\)">\(G\)</span>. Hence (C.8) identifies <span class="math" data-tex="\(J(G)\)">\(J(G)\)</span> locally with the embedded slice <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Left translates give a <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional smooth manifold structure on <span class="math" data-tex="\(G\)">\(G\)</span>, with exactly its given topology by B.3. It is Hausdorff and second countable because <span class="math" data-tex="\(J(G)\)">\(J(G)\)</span> is a subspace of the second-countable frame manifold.</p>
+<p>Multiplication is smooth everywhere by the same frame expression and smooth propagation near any fixed pair of actual isometries. Inversion is smooth by solving <span class="math" data-tex="\(F(a,x)=p\)">\(F(a,x)=p\)</span> near <span class="math" data-tex="\(x=f_0^{-1}(p)\)">\(x=f_0^{-1}(p)\)</span>; its derivative in <span class="math" data-tex="\(x\)">\(x\)</span> is invertible at the fixed <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. In a target slice chart, the transverse coordinates of these maps vanish, so their ambient smoothness implies smoothness into <span class="math" data-tex="\(G\)">\(G\)</span>. This proves the Lie-group assertion. The propagation formulas also prove joint smoothness of the action on every group chart and manifold chart.</p>
+<p>The usual Lie-group exponential and uniqueness of one-parameter subgroups are proved in <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a>. Differentiating a smooth action shows that a one-parameter subgroup is the global flow of its fundamental vector field; it preserves the metric, so that field is Killing. Conversely we have just proved that every complete Killing flow is a smooth one-parameter subgroup. The sign can be seen directly from conjugation: the fundamental field associated to <span class="math" data-tex="\(\operatorname{Ad}(f)Y\)">\(\operatorname{Ad}(f)Y\)</span> is <span class="math" data-tex="\(f_*Y_M\)">\(f_*Y_M\)</span>, whereas differentiating <span class="math" data-tex="\((\phi_t^X)_*Y_M\)">\((\phi_t^X)_*Y_M\)</span> gives <span class="math" data-tex="\(-[X_M,Y_M]\)">\(-[X_M,Y_M]\)</span>, the negative of the pullback derivative in <a href="principal-bundles-and-associated-bundles.html#lemma-c-3">Principal bundles C.3</a>. Thus <span class="math" data-tex="\([X,Y]_M=-[X_M,Y_M]\)">\([X,Y]_M=-[X_M,Y_M]\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(J(G_p)\)">\(J(G_p)\)</span> is the closed subset <span class="math" data-tex="\(J(G)\cap\operatorname O_p(M)\)">\(J(G)\cap\operatorname O_p(M)\)</span> of a compact orthogonal fibre, so <span class="math" data-tex="\(G_p\)">\(G_p\)</span> is compact. If <span class="math" data-tex="\(M\)">\(M\)</span> is compact, <a href="completeness-and-the-hopf-rinow-theorem.html#lemma-d-2">Hopf–Rinow D.2</a> makes the whole orthonormal frame bundle compact, and B.3 makes <span class="math" data-tex="\(G\)">\(G\)</span> compact. In dimension zero <span class="math" data-tex="\(M\)">\(M\)</span> is one point and <span class="math" data-tex="\(G\)">\(G\)</span> is the trivial zero-dimensional Lie group, with all the asserted properties. □</p>
+<h2 id="part-d">D. Frames, affine groups and complete fields</h2>
+<p>On the full frame bundle <span class="math" data-tex="\(P=\operatorname{Fr}(TM)\)">\(P=\operatorname{Fr}(TM)\)</span>, let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be the solder form and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> the connection form. <a href="linear-and-affine-connections.html#theorem-d-1">Linear connections D.1</a> and H.2 prove that
+<span class="math math-display" data-tex="\[
+\eta=(\theta,\omega):TP\longrightarrow
+\mathbb R^n\oplus\mathfrak{gl}(n,\mathbb R)
+\tag{D.1}
+\]">\[
+\eta=(\theta,\omega):TP\longrightarrow
+\mathbb R^n\oplus\mathfrak{gl}(n,\mathbb R)
+\tag{D.1}
+\]</span>
+is a coframe, meaning a smooth linear isomorphism on each tangent space.</p>
+<p id="lemma-d-1"><strong>Lemma D.1 (Natural lifts and the torsion term).</strong> A diffeomorphism <span class="math" data-tex="\(f\)">\(f\)</span> has the equivariant lift <span class="math" data-tex="\(\widehat f(u)=df_{\pi(u)}u\)">\(\widehat f(u)=df_{\pi(u)}u\)</span>, which preserves <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Conversely every equivariant bundle diffeomorphism preserving <span class="math" data-tex="\(\theta\)">\(\theta\)</span> has this form. The lift preserves <span class="math" data-tex="\(\omega\)">\(\omega\)</span> if and only if <span class="math" data-tex="\(f\)">\(f\)</span> is affine.</p>
+<p>The generator <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span> of the lifted local flow of <span class="math" data-tex="\(X\)">\(X\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\theta_u(\widehat X)=u^{-1}X_p,\qquad
+\omega_u(\widehat X)=-u^{-1}(A_X)_pu.
+\tag{D.2}
+\]">\[
+\theta_u(\widehat X)=u^{-1}X_p,\qquad
+\omega_u(\widehat X)=-u^{-1}(A_X)_pu.
+\tag{D.2}
+\]</span>
+It preserves <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, is equivariant, and preserves <span class="math" data-tex="\(\omega\)">\(\omega\)</span> precisely when <span class="math" data-tex="\(X\)">\(X\)</span> is infinitesimally affine. In that case it commutes with every field having a constant value under <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p><strong>Proof.</strong> Equivariance follows from <span class="math" data-tex="\(df(ua)=(dfu)a\)">\(df(ua)=(dfu)a\)</span>. Since <span class="math" data-tex="\(\pi\widehat f=f\pi\)">\(\pi\widehat f=f\pi\)</span>, the definition of the solder form gives
+<span class="math math-display" data-tex="\[
+\theta_{\widehat f(u)}(d\widehat f\,V)
+=(dfu)^{-1}df(d\pi V)=u^{-1}d\pi V.
+\]">\[
+\theta_{\widehat f(u)}(d\widehat f\,V)
+=(dfu)^{-1}df(d\pi V)=u^{-1}d\pi V.
+\]</span>
+For the converse, if <span class="math" data-tex="\(F\)">\(F\)</span> covers <span class="math" data-tex="\(f\)">\(f\)</span>, this same equation applied to arbitrary <span class="math" data-tex="\(V\in T_uP\)">\(V\in T_uP\)</span> says <span class="math" data-tex="\(F(u)^{-1}df(d\pi V)=u^{-1}d\pi V\)">\(F(u)^{-1}df(d\pi V)=u^{-1}d\pi V\)</span>. The submersion <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span> is onto, so <span class="math" data-tex="\(F(u)=dfu\)">\(F(u)=dfu\)</span>. In particular <span class="math" data-tex="\(df\)">\(df\)</span> is invertible.</p>
+<p><a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a> identifies the connection form with covariant differentiation. Its local expression along a frame path <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> is the matrix of the derivatives of its columns:
+<span class="math math-display" data-tex="\[
+\omega(\dot u)=u^{-1}D_tu.
+\tag{D.3}
+\]">\[
+\omega(\dot u)=u^{-1}D_tu.
+\tag{D.3}
+\]</span>
+An affine map commutes with vector transport by A.1, so its lift preserves horizontal spaces; equivariance preserves the fundamental vertical fields, and <a href="connections-and-parallel-transport.html#theorem-a-2">Connections A.2</a> then gives preservation of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Conversely preservation of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> takes horizontal frame paths to horizontal frame paths, hence takes every parallel vector to a parallel vector. Along a curve, write any vector in a parallel frame; differentiating its coefficient column proves <span class="math" data-tex="\(D_t(dfV)=dfD_tV\)">\(D_t(dfV)=dfD_tV\)</span>. At each point and in each tangent direction this is <span class="math" data-tex="\(\nabla df=0\)">\(\nabla df=0\)</span>.</p>
+<p>For the flow <span class="math" data-tex="\(\phi_t\)">\(\phi_t\)</span>, the base velocity of <span class="math" data-tex="\(d\phi_tu\)">\(d\phi_tu\)</span> is <span class="math" data-tex="\(X\)">\(X\)</span>, which proves the first identity of (D.2). For a column <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span>, choose a curve <span class="math" data-tex="\(c(s)\)">\(c(s)\)</span> with <span class="math" data-tex="\(c'(0)=v\)">\(c'(0)=v\)</span>. In the surface <span class="math" data-tex="\(\phi_t(c(s))\)">\(\phi_t(c(s))\)</span>, the coordinate derivatives commute. The definition of torsion in <a href="linear-and-affine-connections.html#theorem-d-1">Linear connections D.1</a> therefore gives
+<span class="math math-display" data-tex="\[
+D_t(d\phi_t v)\big|_{t=0}=\nabla_vX+T(X,v)=-A_Xv.
+\]">\[
+D_t(d\phi_t v)\big|_{t=0}=\nabla_vX+T(X,v)=-A_Xv.
+\]</span>
+Substitute in (D.3) to obtain the second identity. Equivariance and preservation of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> follow by differentiating the already proved identities for the lifted flow. Preservation of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is equivalent to the affine flow condition, also just proved. Finally if <span class="math" data-tex="\(Z_b\)">\(Z_b\)</span> is the field with constant <span class="math" data-tex="\(\eta(Z_b)=b\)">\(\eta(Z_b)=b\)</span>, then
+<span class="math math-display" data-tex="\[
+(\mathcal L_{\widehat X}\eta)(Z_b)
+=\widehat X(\eta(Z_b))-\eta([\widehat X,Z_b])
+=-\eta([\widehat X,Z_b]).
+\]">\[
+(\mathcal L_{\widehat X}\eta)(Z_b)
+=\widehat X(\eta(Z_b))-\eta([\widehat X,Z_b])
+=-\eta([\widehat X,Z_b]).
+\]</span>
+The left side vanishes for an affine field. Invertibility of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> proves the commutation assertion. This Lie-derivative formula is the degree-one identity in <a href="curvature-and-holonomy-groups.html#lemma-a-2">Curvature and holonomy A.2</a>. □</p>
+<p id="lemma-d-2"><strong>Lemma D.2 (Automorphisms of a coframe).</strong> Let <span class="math" data-tex="\(N\)">\(N\)</span> be connected and let <span class="math" data-tex="\(\eta:TN\to\mathbb R^m\)">\(\eta:TN\to\mathbb R^m\)</span> be a smooth coframe. A diffeomorphism preserving <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is determined by its value at any fixed <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span>. Its values on compact subsets depend smoothly on that one value, restricted to the values that occur. The automorphisms form a Lie group of dimension at most <span class="math" data-tex="\(m\)">\(m\)</span>, and evaluation at <span class="math" data-tex="\(v\)">\(v\)</span> is a smooth embedding onto a closed subset of <span class="math" data-tex="\(N\)">\(N\)</span>. Its Lie algebra consists, with the left-action sign convention of C.2, of complete fields <span class="math" data-tex="\(Z\)">\(Z\)</span> satisfying <span class="math" data-tex="\(\mathcal L_Z\eta=0\)">\(\mathcal L_Z\eta=0\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(Z_i=\eta^{-1}(e_i)\)">\(Z_i=\eta^{-1}(e_i)\)</span>. A coframe-preserving map <span class="math" data-tex="\(F\)">\(F\)</span> carries each <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span> to itself, so it commutes with their local flows by uniqueness, <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. The map
+<span class="math math-display" data-tex="\[
+(t_1,\ldots,t_m)\longmapsto
+\phi^{Z_m}_{t_m}\cdots\phi^{Z_1}_{t_1}(v)
+\tag{D.4}
+\]">\[
+(t_1,\ldots,t_m)\longmapsto
+\phi^{Z_m}_{t_m}\cdots\phi^{Z_1}_{t_1}(v)
+\tag{D.4}
+\]</span>
+has invertible derivative at zero, so <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> makes it a coordinate map near <span class="math" data-tex="\(v\)">\(v\)</span>. Commuting <span class="math" data-tex="\(F\)">\(F\)</span> past the finite flow word expresses its value in this chart as the same word starting at <span class="math" data-tex="\(F(v)\)">\(F(v)\)</span>. The expression is smooth for arbitrary nearby starting values. Flow words can reach every point of <span class="math" data-tex="\(N\)">\(N\)</span>: their reachability classes are open by (D.4), and partition the connected manifold into disjoint open sets. Propagating the formula along a finite word proves uniqueness and smooth dependence near every point; finitely many such neighbourhoods handle a compact set.</p>
+<p>Define the Riemannian metric <span class="math" data-tex="\(h=\sum_i\eta^i\otimes\eta^i\)">\(h=\sum_i\eta^i\otimes\eta^i\)</span>. It is smooth and positive definite because <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a coframe. Every automorphism is an isometry of <span class="math" data-tex="\(h\)">\(h\)</span>. The automorphism subgroup is closed in <span class="math" data-tex="\(\operatorname{Isom}(N,h)\)">\(\operatorname{Isom}(N,h)\)</span>: C.2 and B.3 give smooth local convergence of isometries, and the identity <span class="math" data-tex="\(F^*\eta=\eta\)">\(F^*\eta=\eta\)</span> passes to the limit with first derivatives. <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-1">Invariant connections A.1</a> now makes it an embedded Lie subgroup. Its action is smooth by C.2. A one-parameter subgroup gives a complete field <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(\mathcal L_Z\eta=0\)">\(\mathcal L_Z\eta=0\)</span>. Conversely that condition makes <span class="math" data-tex="\((\phi_t^Z)^*\eta\)">\((\phi_t^Z)^*\eta\)</span> constant wherever the flow exists, by the chain rule and <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>, so a complete such field gives a one-parameter subgroup.</p>
+<p>If <span class="math" data-tex="\(\mathcal L_Z\eta=0\)">\(\mathcal L_Z\eta=0\)</span>, the last computation in D.1 gives <span class="math" data-tex="\([Z,Z_i]=0\)">\([Z,Z_i]=0\)</span>. In coordinates, differentiation of <span class="math" data-tex="\(d\phi_{-t}^{Z_i}Z(\phi_t^{Z_i}x)\)">\(d\phi_{-t}^{Z_i}Z(\phi_t^{Z_i}x)\)</span> equals the pullback of <span class="math" data-tex="\([Z_i,Z]\)">\([Z_i,Z]\)</span>, <a href="principal-bundles-and-associated-bundles.html#lemma-c-3">Principal bundles C.3</a> and <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. Hence the flows of every <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span> carry <span class="math" data-tex="\(Z\)">\(Z\)</span> into itself. Its value at <span class="math" data-tex="\(v\)">\(v\)</span> determines it along all the words in (D.4), and hence everywhere. Thus evaluation of these infinitesimal fields at <span class="math" data-tex="\(v\)">\(v\)</span> is injective, proving both the dimension bound and injectivity of the derivative of the group evaluation map. The constant-rank theorem, <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.4</a>, gives local immersion charts.</p>
+<p>Evaluation is a homeomorphism onto its image and that image is closed. In fact preservation of the coframe forces
+<span class="math math-display" data-tex="\[
+dF_v=\eta_{F(v)}^{-1}\eta_v.
+\tag{D.5}
+\]">\[
+dF_v=\eta_{F(v)}^{-1}\eta_v.
+\tag{D.5}
+\]</span>
+If <span class="math" data-tex="\(F_j(v)\to w\)">\(F_j(v)\to w\)</span>, their <span class="math" data-tex="\(h\)">\(h\)</span>-orthonormal frame values consequently converge by (D.5). B.3 supplies a global limiting isometry, which still preserves the coframe; it is the required limiting automorphism. Conversely convergence in the group topology gives convergence of values. The same formulas, or their countable local bases, prove the homeomorphism assertion. A smooth injective immersion that is a homeomorphism onto its image is an embedding: in a constant-rank chart it is the coordinate inclusion, and the homeomorphism lets one restrict the ambient neighbourhood to exclude the rest of the image near the point. Thus evaluation has the stated embedding property. □</p>
+<p id="theorem-d-3"><strong>Theorem D.3 (The affine transformation group).</strong> The affine transformation group of a connected smooth <span class="math" data-tex="\(n\)">\(n\)</span>-manifold with a connection is a Lie group of dimension at most <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span>. It acts smoothly on <span class="math" data-tex="\(M\)">\(M\)</span>. Its Lie algebra is the space of complete infinitesimally affine fields, with the sign convention in C.2. The topology is smooth convergence on compact subsets, equivalently the topology of one frame value <span class="math" data-tex="\(f\mapsto df_pu\)">\(f\mapsto df_pu\)</span>. The connection need not be complete.</p>
+<p><strong>Proof.</strong> Dimension zero is the trivial group on a point. Otherwise take the coframe (D.1) and the connected component <span class="math" data-tex="\(P_0\)">\(P_0\)</span> of a fixed frame <span class="math" data-tex="\(u\)">\(u\)</span>. This component maps onto <span class="math" data-tex="\(M\)">\(M\)</span>: lift a piecewise smooth path from <span class="math" data-tex="\(\pi(u)\)">\(\pi(u)\)</span> to any desired base point horizontally, using <a href="connections-and-parallel-transport.html#theorem-c-1">Connections C.1</a>. The lifted path remains in <span class="math" data-tex="\(P_0\)">\(P_0\)</span>.</p>
+<p>Put <span class="math" data-tex="\(K=\{a\in\operatorname{GL}(n,\mathbb R):R_a(P_0)=P_0\}\)">\(K=\{a\in\operatorname{GL}(n,\mathbb R):R_a(P_0)=P_0\}\)</span>. It is an open subgroup: the inverse image of the open component <span class="math" data-tex="\(P_0\)">\(P_0\)</span> under <span class="math" data-tex="\(a\mapsto ua\)">\(a\mapsto ua\)</span> is exactly <span class="math" data-tex="\(K\)">\(K\)</span>. To check that equivalence, <span class="math" data-tex="\(R_a(P_0)\)">\(R_a(P_0)\)</span> is the component containing <span class="math" data-tex="\(ua\)">\(ua\)</span>, since right translation is a homeomorphism. The subgroup and inverse conditions follow by composition. It is closed as well, because its complement is a union of its open cosets. Within any fibre of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, two frames differ by exactly one <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span>. Local sections with values in <span class="math" data-tex="\(P_0\)">\(P_0\)</span> give local trivializations with fibre <span class="math" data-tex="\(K\)">\(K\)</span>. These claims follow directly by restricting the frame charts of <a href="principal-bundles-and-associated-bundles.html#theorem-c-1">Principal bundles C.1</a> and A.2.</p>
+<p>By D.2 the coframe automorphism group of <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is a Lie group. In it take the subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of maps commuting with every <span class="math" data-tex="\(R_a\)">\(R_a\)</span>, <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span>. It is closed: for fixed <span class="math" data-tex="\(a,v\)">\(a,v\)</span> the equation <span class="math" data-tex="\(F(va)=F(v)a\)">\(F(va)=F(v)a\)</span> is a closed equality of continuous evaluations, and one intersects these equalities over all <span class="math" data-tex="\(a,v\)">\(a,v\)</span>. <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-1">Invariant connections A.1</a> makes <span class="math" data-tex="\(H\)">\(H\)</span> a Lie subgroup.</p>
+<p>Every <span class="math" data-tex="\(F\in H\)">\(F\in H\)</span> descends to a diffeomorphism <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, because it maps each <span class="math" data-tex="\(K\)">\(K\)</span>-fibre onto a <span class="math" data-tex="\(K\)">\(K\)</span>-fibre; its inverse does the same. In local sections the formula <span class="math" data-tex="\(f(x)=\pi F(s(x))\)">\(f(x)=\pi F(s(x))\)</span> proves smoothness. The solder-form calculation of D.1, applied on <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, says <span class="math" data-tex="\(F(u)=dfu\)">\(F(u)=dfu\)</span>; the connection-form calculation then says <span class="math" data-tex="\(f\)">\(f\)</span> is affine. Conversely the lift of an affine transformation that preserves <span class="math" data-tex="\(P_0\)">\(P_0\)</span> belongs to <span class="math" data-tex="\(H\)">\(H\)</span>. Thus <span class="math" data-tex="\(H\)">\(H\)</span> identifies exactly with that subgroup <span class="math" data-tex="\(A_0\)">\(A_0\)</span> of the full affine group <span class="math" data-tex="\(A\)">\(A\)</span>. The derivative evaluation injection in D.2 gives <span class="math" data-tex="\(\dim A_0\leq\dim P_0=n+n^2\)">\(\dim A_0\leq\dim P_0=n+n^2\)</span>.</p>
+<p>There is no connected-frame-bundle assumption here. Every component of <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(R_aP_0\)">\(R_aP_0\)</span> for some <span class="math" data-tex="\(a\)">\(a\)</span>: a horizontal path gives a frame in <span class="math" data-tex="\(P_0\)">\(P_0\)</span> over the base point of a chosen frame, and the two frames differ by such an <span class="math" data-tex="\(a\)">\(a\)</span>. An equivariant lift preserving <span class="math" data-tex="\(P_0\)">\(P_0\)</span> therefore preserves every component, so <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is normal in <span class="math" data-tex="\(A\)">\(A\)</span>. Its cosets inject into the set of components of <span class="math" data-tex="\(P\)">\(P\)</span> by their image of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>; that set is countable because <span class="math" data-tex="\(P\)">\(P\)</span> is second countable and its components are disjoint nonempty open sets.</p>
+<p>Give each coset the translated smooth structure of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. This is a Hausdorff second-countable manifold, with each coset open. Evaluation <span class="math" data-tex="\(J_A(f)=df_pu\)">\(J_A(f)=df_pu\)</span> identifies its topology with its image topology in <span class="math" data-tex="\(P\)">\(P\)</span>: on <span class="math" data-tex="\(A_0\)">\(A_0\)</span> this is D.2 restricted to the closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span>; on each other coset use the fixed natural lift of its representative. Distinct cosets have frame values in distinct components of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>The same finite chain of exponential formulas used at the start of Part C applies to affine maps by A.1, without any metric: near a fixed actual affine map, all the finitely many needed geodesic segments still exist for nearby initial frames. It expresses their values and derivatives smoothly in <span class="math" data-tex="\(J_A(f)\)">\(J_A(f)\)</span>. Consequently the formulas for <span class="math" data-tex="\(J_A(fg)\)">\(J_A(fg)\)</span> and <span class="math" data-tex="\(J_A(f^{-1})\)">\(J_A(f^{-1})\)</span> used in C.2 prove smooth multiplication and inversion on every pair of cosets. As there, local embedded charts on each coset justify smoothness into the group. The action on <span class="math" data-tex="\(M\)">\(M\)</span> is smooth by those propagation formulas (also directly by the local-section formula for <span class="math" data-tex="\(H\)">\(H\)</span>). The same formulas show that frame convergence gives smooth convergence on compact sets; the reverse follows by evaluating first derivatives at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Finally a smooth one-parameter subgroup acts by the global flow of its fundamental field, which is infinitesimally affine by differentiation. Conversely a complete infinitesimally affine field has affine flow maps for all real times, by A.2 on successive local intervals. Their natural lifts preserve <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, since each frame trajectory begins there. They depend smoothly on time by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>, so give a smooth one-parameter subgroup of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, by its frame embedding. This proves the Lie-algebra assertion and the sign is precisely the left-action sign already proved in C.2. □</p>
+<p id="theorem-d-4"><strong>Theorem D.4 (Geodesic completeness makes affine fields complete).</strong> If the connection is geodesically complete, every infinitesimally affine field is complete. In particular every Killing field on a complete Riemannian manifold is complete.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be an affine field and lift it to <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span>. By D.1 it commutes with each standard horizontal field <span class="math" data-tex="\(B(e_i)\)">\(B(e_i)\)</span>, and with each fundamental vertical field <span class="math" data-tex="\(\zeta_C\)">\(\zeta_C\)</span>. The horizontal fields are complete by <a href="geodesics-normal-coordinates-and-curvature.html#theorem-g-1">Geodesics G.1</a>. The vertical fields have the complete flow <span class="math" data-tex="\(R_{\exp(tC)}\)">\(R_{\exp(tC)}\)</span>, by <a href="connections-and-parallel-transport.html#theorem-a-2">Connections A.2</a> and <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a>. Choose a matrix basis for <span class="math" data-tex="\(C\)">\(C\)</span>. These <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span> complete fields span every tangent space by <a href="linear-and-affine-connections.html#theorem-h-2">Linear connections H.2</a>.</p>
+<p>On a connected component of <span class="math" data-tex="\(P\)">\(P\)</span>, their flow words reach every point, by the inverse-function and open-orbit argument in D.2. Fix a frame <span class="math" data-tex="\(u\)">\(u\)</span>, and choose an interval <span class="math" data-tex="\((-\epsilon,\epsilon)\)">\((-\epsilon,\epsilon)\)</span> on which the integral curve of <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span> starting there exists. If <span class="math" data-tex="\(v=W(u)\)">\(v=W(u)\)</span>, where <span class="math" data-tex="\(W\)">\(W\)</span> is a finite composition of the complete flows just listed, the curve
+<span class="math math-display" data-tex="\[
+t\longmapsto W(\phi_t^{\widehat X}(u))
+\tag{D.6}
+\]">\[
+t\longmapsto W(\phi_t^{\widehat X}(u))
+\tag{D.6}
+\]</span>
+exists on that same interval and is an integral curve of <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span> starting at <span class="math" data-tex="\(v\)">\(v\)</span>. Indeed vanishing brackets imply that each constituent flow preserves <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span>, by the derivative calculation in D.2. Two choices of <span class="math" data-tex="\(W\)">\(W\)</span> give the same curve by the uniqueness theorem of <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. Thus the maximal flow is defined for all starting frames in this component for the common interval <span class="math" data-tex="\((-\epsilon,\epsilon)\)">\((-\epsilon,\epsilon)\)</span>. It is smooth there by that local flow theorem; existence on the common interval is the new assertion furnished by (D.6).</p>
+<p>Iterating intervals of length less than <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> extends every trajectory for all positive and negative time, the pieces agreeing by uniqueness. The projection of this complete lifted trajectory is the integral curve of <span class="math" data-tex="\(X\)">\(X\)</span>, by (D.2). Since <span class="math" data-tex="\(P_0\)">\(P_0\)</span> projects onto <span class="math" data-tex="\(M\)">\(M\)</span>, all such base curves are complete. For a complete Riemannian metric, <a href="completeness-and-the-hopf-rinow-theorem.html#theorem-b-2">Hopf–Rinow B.2</a> gives geodesic completeness of its Levi-Civita connection, and A.3 makes every Killing field affine. The preceding argument then applies. □</p>
+<h2 id="part-e">E. Passing to quotients and computing examples</h2>
+<p id="theorem-e-1"><strong>Theorem E.1 (The deck normalizer).</strong> Let <span class="math" data-tex="\(\pi:\widetilde M\to M\)">\(\pi:\widetilde M\to M\)</span> be the universal covering of a connected manifold with a connection, and give <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> the pulled-back connection. Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be its deck group. Then
+<span class="math math-display" data-tex="\[
+\operatorname{Aff}(M)=
+N_{\operatorname{Aff}(\widetilde M)}(\Gamma)/\Gamma.
+\tag{E.1}
+\]">\[
+\operatorname{Aff}(M)=
+N_{\operatorname{Aff}(\widetilde M)}(\Gamma)/\Gamma.
+\tag{E.1}
+\]</span>
+For a Riemannian metric and its lifted metric the analogous formula is
+<span class="math math-display" data-tex="\[
+\operatorname{Isom}(M)=
+N_{\operatorname{Isom}(\widetilde M)}(\Gamma)/\Gamma.
+\tag{E.2}
+\]">\[
+\operatorname{Isom}(M)=
+N_{\operatorname{Isom}(\widetilde M)}(\Gamma)/\Gamma.
+\tag{E.2}
+\]</span>
+These are isomorphisms of Lie groups. The normalizers are closed, the deck group is discrete, and each quotient projection is a local diffeomorphism. In particular the group downstairs and its normalizer upstairs have the same dimension. Neither connection nor metric completeness is required.</p>
+<p><strong>Proof.</strong> The covering and lifting constructions, including uniqueness of based lifts, are proved in <a href="flat-connections-and-infinitesimal-holonomy.html#lemma-d-1">Flat connections D.1</a> and <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a>. For an automorphism <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, the composite <span class="math" data-tex="\(f\pi\)">\(f\pi\)</span> is another universal covering. The based covering isomorphism gives a lift <span class="math" data-tex="\(\widetilde f:\widetilde M\to\widetilde M\)">\(\widetilde f:\widetilde M\to\widetilde M\)</span> with <span class="math" data-tex="\(\pi\widetilde f=f\pi\)">\(\pi\widetilde f=f\pi\)</span>. Applying the inverse construction to <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> proves that the lift is a diffeomorphism. Covering charts show it preserves the pulled-back connection, or metric, respectively. Moreover
+<span class="math" data-tex="\(\widetilde f\gamma\widetilde f^{-1}\)">\(\widetilde f\gamma\widetilde f^{-1}\)</span> is a deck map for every <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>. Conversely a normalizing automorphism sends deck orbits to deck orbits, so descends to an automorphism, smooth and structure-preserving in covering charts. The kernel of descent is exactly <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. This proves the group equalities.</p>
+<p>Write <span class="math" data-tex="\(G\)">\(G\)</span> for either group upstairs; its Lie structure and first-jet embedding are C.2 and D.3. The fibre <span class="math" data-tex="\(\pi^{-1}(\pi(x))\)">\(\pi^{-1}(\pi(x))\)</span> is closed and discrete. If deck maps <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span> converge in <span class="math" data-tex="\(G\)">\(G\)</span>, their values at <span class="math" data-tex="\(x\)">\(x\)</span> eventually coincide: a convergent sequence in that fibre is eventually constant. Deck maps agreeing at one point agree everywhere by uniqueness of lifts. Thus <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is closed and discrete in <span class="math" data-tex="\(G\)">\(G\)</span>. If <span class="math" data-tex="\(g_j\)">\(g_j\)</span> normalize <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and <span class="math" data-tex="\(g_j\to g\)">\(g_j\to g\)</span>, then for every <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>
+<span class="math math-display" data-tex="\[
+g_j\gamma g_j^{-1}\longrightarrow g\gamma g^{-1}\in\Gamma.
+\]">\[
+g_j\gamma g_j^{-1}\longrightarrow g\gamma g^{-1}\in\Gamma.
+\]</span>
+Using inverses too gives <span class="math" data-tex="\(g\Gamma g^{-1}=\Gamma\)">\(g\Gamma g^{-1}=\Gamma\)</span>. Hence <span class="math" data-tex="\(N=N_G(\Gamma)\)">\(N=N_G(\Gamma)\)</span> is closed. <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-1">Invariant connections A.1</a> makes it an embedded Lie subgroup; <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a> gives the smooth quotient <span class="math" data-tex="\(N/\Gamma\)">\(N/\Gamma\)</span>. Since <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has zero-dimensional tangent space, the quotient charts there are local diffeomorphisms. Normality makes multiplication and inversion smooth in these local charts.</p>
+<p>For completeness, the abstract bijection with the group downstairs respects the Lie structures already constructed. Fix <span class="math" data-tex="\(x\)">\(x\)</span> over <span class="math" data-tex="\(p\)">\(p\)</span>, and a covering sheet <span class="math" data-tex="\(V\)">\(V\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span>. For <span class="math" data-tex="\(f\)">\(f\)</span> near the identity downstairs there is a unique lift with <span class="math" data-tex="\(\widetilde f(x)\in V\)">\(\widetilde f(x)\in V\)</span>; its value is the smooth expression <span class="math" data-tex="\((\pi|_V)^{-1}(f(p))\)">\((\pi|_V)^{-1}(f(p))\)</span>, and its derivative is
+<span class="math math-display" data-tex="\[
+d\widetilde f_x=(d\pi_{\widetilde f(x)})^{-1}\,df_p\,d\pi_x.
+\]">\[
+d\widetilde f_x=(d\pi_{\widetilde f(x)})^{-1}\,df_p\,d\pi_x.
+\]</span>
+Thus its first jet depends smoothly on the first jet of <span class="math" data-tex="\(f\)">\(f\)</span>. The embedded jet descriptions of C.2 and D.3, and the embeddedness of <span class="math" data-tex="\(N\)">\(N\)</span>, make this a smooth map into <span class="math" data-tex="\(N\)">\(N\)</span>. Conversely the jet of a descended map is obtained from this equation by multiplication by the two differentials of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so descent is smooth. These maps are local inverses; translating them proves (E.1) and (E.2) as Lie-group statements. □</p>
+<p id="proposition-e-2"><strong>Proposition E.2 (Round spheres).</strong> For the round sphere <span class="math" data-tex="\(S_a^n\subset\mathbb R^{n+1}\)">\(S_a^n\subset\mathbb R^{n+1}\)</span> of radius <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Isom}(S_a^n)=O(n+1),\qquad
+\mathfrak{kill}(S_a^n)=\{x\mapsto Bx:B^T=-B\}.
+\tag{E.3}
+\]">\[
+\operatorname{Isom}(S_a^n)=O(n+1),\qquad
+\mathfrak{kill}(S_a^n)=\{x\mapsto Bx:B^T=-B\}.
+\tag{E.3}
+\]</span>
+The dimension is <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span>. On <span class="math" data-tex="\(S_a^1\)">\(S_a^1\)</span> the Killing fields are precisely constant angular-speed fields.</p>
+<p><strong>Proof.</strong> Orthogonal maps restrict to isometries. <a href="holonomy-killing-fields-and-analytic-extension.html#exercise-d-3">Killing fields D.3</a> proves that every local sphere isometry extends uniquely to an ambient orthogonal map by extending its value and differential; that proof includes <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. In particular every global isometry has this form. Its explicit extension formula is smooth in the first jet, so the identification is an isomorphism of Lie groups by C.2.</p>
+<p>For a skew matrix <span class="math" data-tex="\(B\)">\(B\)</span>, the linear ODE gives <span class="math" data-tex="\(e^{tB}\)">\(e^{tB}\)</span>; differentiating <span class="math" data-tex="\((e^{tB})^Te^{tB}\)">\((e^{tB})^Te^{tB}\)</span> gives zero and its value at zero is <span class="math" data-tex="\(I\)">\(I\)</span>. Thus <span class="math" data-tex="\(Bx\)">\(Bx\)</span> is a complete Killing field. The sphere spans its ambient vector space, so this assignment is injective. There are <span class="math" data-tex="\((n+1)n/2\)">\((n+1)n/2\)</span> independent skew entries; A.3 bounds the entire Killing space by the same number, giving equality. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> every skew matrix is a constant multiple of <span class="math" data-tex="\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>, whose field is constant angular rotation. The linear ODE and its global exponential are <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> and <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a>. □</p>
+<p id="proposition-e-3"><strong>Proposition E.3 (Euclidean space and flat tori).</strong> Euclidean affine and metric transformations are, respectively,
+<span class="math math-display" data-tex="\[
+x\longmapsto Ax+b,\quad A\in GL(n,\mathbb R);
+\qquad
+x\longmapsto Qx+b,\quad Q\in O(n).
+\tag{E.4}
+\]">\[
+x\longmapsto Ax+b,\quad A\in GL(n,\mathbb R);
+\qquad
+x\longmapsto Qx+b,\quad Q\in O(n).
+\tag{E.4}
+\]</span>
+Their infinitesimal fields are <span class="math" data-tex="\(Bx+b\)">\(Bx+b\)</span>, with arbitrary <span class="math" data-tex="\(B\)">\(B\)</span>, or skew <span class="math" data-tex="\(B\)">\(B\)</span>, respectively; all these fields are complete.</p>
+<p>If <span class="math" data-tex="\(L\subset\mathbb R^n\)">\(L\subset\mathbb R^n\)</span> is a full lattice and <span class="math" data-tex="\(T_L=\mathbb R^n/L\)">\(T_L=\mathbb R^n/L\)</span> has the flat metric, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Isom}(T_L)&amp;=T_L\rtimes O(L),
+&amp;O(L)&amp;=\{Q\in O(n):QL=L\},\\
+\operatorname{Aff}(T_L)&amp;=T_L\rtimes\operatorname{Aut}_{\mathbb Z}(L),
+&amp;\operatorname{Aut}_{\mathbb Z}(L)&amp;=\{A\in GL(n,\mathbb R):AL=L\}.
+\end{aligned}
+\tag{E.5}
+\]">\[
+\begin{aligned}
+\operatorname{Isom}(T_L)&amp;=T_L\rtimes O(L),
+&amp;O(L)&amp;=\{Q\in O(n):QL=L\},\\
+\operatorname{Aff}(T_L)&amp;=T_L\rtimes\operatorname{Aut}_{\mathbb Z}(L),
+&amp;\operatorname{Aut}_{\mathbb Z}(L)&amp;=\{A\in GL(n,\mathbb R):AL=L\}.
+\end{aligned}
+\tag{E.5}
+\]</span>
+The first linear group is finite and the second is discrete, conjugate to <span class="math" data-tex="\(GL(n,\mathbb Z)\)">\(GL(n,\mathbb Z)\)</span> in a lattice basis. Both identity components are <span class="math" data-tex="\(T_L\)">\(T_L\)</span>, and all infinitesimal affine fields, hence all Killing fields, on the torus are translations.</p>
+<p><strong>Proof.</strong> The Euclidean Christoffel symbols vanish. Equation (A.1) says that every second derivative of an affine map is zero; its first derivative is constant on connected <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, giving (E.4), with invertibility exactly when <span class="math" data-tex="\(A\)">\(A\)</span> is invertible. The metric identity makes <span class="math" data-tex="\(A^TA=I\)">\(A^TA=I\)</span>. For a field, Theorem A.2 with <span class="math" data-tex="\(R=T=0\)">\(R=T=0\)</span> says that <span class="math" data-tex="\(-DX\)">\(-DX\)</span> is constant, so <span class="math" data-tex="\(X=Bx+b\)">\(X=Bx+b\)</span>. The Killing equation is <span class="math" data-tex="\(B+B^T=0\)">\(B+B^T=0\)</span>. Its integral curve is
+<span class="math math-display" data-tex="\[
+\Phi_t(x)=e^{tB}x+\int_0^t e^{(t-s)B}b\,ds,
+\]">\[
+\Phi_t(x)=e^{tB}x+\int_0^t e^{(t-s)B}b\,ds,
+\]</span>
+defined for all real <span class="math" data-tex="\(t\)">\(t\)</span>; differentiation verifies the equation and uniqueness is <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>.</p>
+<p>Choose a lattice basis and write <span class="math" data-tex="\(L=V\mathbb Z^n\)">\(L=V\mathbb Z^n\)</span>, with <span class="math" data-tex="\(V\)">\(V\)</span> invertible. Nonzero lattice vectors are uniformly separated from zero because
+<span class="math" data-tex="\(\lvert Vk\rvert\geq\lvert k\rvert/\|V^{-1}\|\)">\(\lvert Vk\rvert\geq\lvert k\rvert/\|V^{-1}\|\)</span>.
+Translations by <span class="math" data-tex="\(L\)">\(L\)</span> therefore act freely and properly discontinuously; the quotient covering and its metric are constructed in <a href="sectional-curvature-and-space-forms.html#theorem-d-3">Sectional curvature D.3</a>. Its universal cover is <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, which contracts by <span class="math" data-tex="\(x\mapsto tx\)">\(x\mapsto tx\)</span>. Conjugation by <span class="math" data-tex="\(f(x)=Ax+b\)">\(f(x)=Ax+b\)</span> sends the translation by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to translation by <span class="math" data-tex="\(A\lambda\)">\(A\lambda\)</span>. E.1 now proves (E.5), including the multiplication
+<span class="math math-display" data-tex="\[
+(\bar b,A)(\bar d,C)=(\bar b+A\bar d,AC).
+\]">\[
+(\bar b,A)(\bar d,C)=(\bar b+A\bar d,AC).
+\]</span>
+Here <span class="math" data-tex="\(A\)">\(A\)</span> acts on the torus because it preserves <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>In a lattice basis <span class="math" data-tex="\(V^{-1}AV\)">\(V^{-1}AV\)</span> and its inverse have integer entries. Their determinants are integers with product one, so the determinant is <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; conversely an integer matrix of determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> has integer inverse by the cofactor formula. This is exactly <span class="math" data-tex="\(GL(n,\mathbb Z)\)">\(GL(n,\mathbb Z)\)</span>, a discrete set of matrices. If <span class="math" data-tex="\(Q\in O(L)\)">\(Q\in O(L)\)</span>, the image of each fixed lattice basis vector has the same length as that vector. Only finitely many lattice vectors lie in a bounded ball, since their integer coordinates are bounded by <span class="math" data-tex="\(\|V^{-1}\|\)">\(\|V^{-1}\|\)</span> times its radius. There are consequently only finitely many possible ordered images of the basis, proving finiteness of <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span>.</p>
+<p>The torus is connected, being the continuous image of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>; the quotient linear groups in (E.5) are discrete. The identity components are therefore exactly its translations. One can also see every infinitesimal field directly: its unique lift is obtained by applying <span class="math" data-tex="\((d\pi_x)^{-1}\)">\((d\pi_x)^{-1}\)</span> to the field at <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span>. It is affine locally, hence <span class="math" data-tex="\(Bx+b\)">\(Bx+b\)</span> by the same equation as above. Deck invariance requires <span class="math" data-tex="\(B(x+\lambda)+b=Bx+b\)">\(B(x+\lambda)+b=Bx+b\)</span>, so <span class="math" data-tex="\(B\lambda=0\)">\(B\lambda=0\)</span> for every lattice vector. Since <span class="math" data-tex="\(L\)">\(L\)</span> spans, <span class="math" data-tex="\(B=0\)">\(B=0\)</span>. All constant fields descend and are Killing. □</p>
+<h2 id="part-f">F. Completeness and affine rigidity</h2>
+<p>An affine map preserves a connection. A metric supplies additional parallel data, so an affine transformation of its Levi–Civita connection need not preserve the metric. Completeness severely restricts that difference.</p>
+<p id="theorem-f-1"><strong>Theorem F.1 (A complete manifold with a strict homothety).</strong> Suppose a connected complete Riemannian manifold admits a diffeomorphism <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f^*g=c^2g\)">\(f^*g=c^2g\)</span>, where <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and <span class="math" data-tex="\(c\ne1\)">\(c\ne1\)</span>. Then the manifold is globally isometric to Euclidean space.</p>
+<p><strong>Proof.</strong> Replace <span class="math" data-tex="\(f\)">\(f\)</span> by its inverse if necessary, so <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>. Lengths of curves scale by <span class="math" data-tex="\(c\)">\(c\)</span>; applying the same observation to <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> proves
+<span class="math math-display" data-tex="\[
+d(fx,fy)=c\,d(x,y).
+\]">\[
+d(fx,fy)=c\,d(x,y).
+\]</span>
+Starting at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, put <span class="math" data-tex="\(x_k=f^kx_0\)">\(x_k=f^kx_0\)</span>. The triangle inequality gives, for <span class="math" data-tex="\(m&gt;k\)">\(m&gt;k\)</span>,
+<span class="math math-display" data-tex="\[
+d(x_k,x_m)\leq
+d(x_0,fx_0)\sum_{j=k}^{m-1}c^j
+\leq \frac{c^k}{1-c}\,d(x_0,fx_0).
+\]">\[
+d(x_k,x_m)\leq
+d(x_0,fx_0)\sum_{j=k}^{m-1}c^j
+\leq \frac{c^k}{1-c}\,d(x_0,fx_0).
+\]</span>
+Metric completeness gives <span class="math" data-tex="\(x_k\to q\)">\(x_k\to q\)</span>; continuity gives <span class="math" data-tex="\(f(q)=q\)">\(f(q)=q\)</span>. If <span class="math" data-tex="\(q'\)">\(q'\)</span> were another fixed point, <span class="math" data-tex="\(d(q,q')=c\,d(q,q')\)">\(d(q,q')=c\,d(q,q')\)</span> would force <span class="math" data-tex="\(q=q'\)">\(q=q'\)</span>.</p>
+<p>The Levi–Civita connection for <span class="math" data-tex="\(c^2g\)">\(c^2g\)</span> is the same as that for <span class="math" data-tex="\(g\)">\(g\)</span>: it is torsion-free and compatible with both, so uniqueness in <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a> applies. Naturality there shows <span class="math" data-tex="\(f\)">\(f\)</span> is affine. Write <span class="math" data-tex="\(df_q=cO\)">\(df_q=cO\)</span>, where <span class="math" data-tex="\(O\)">\(O\)</span> is orthogonal on <span class="math" data-tex="\(T_qM\)">\(T_qM\)</span>. <a href="completeness-and-the-hopf-rinow-theorem.html#theorem-b-2">Hopf–Rinow B.2</a> makes
+<span class="math" data-tex="\(E=\exp_q:T_qM\to M\)">\(E=\exp_q:T_qM\to M\)</span> defined everywhere and onto. Lemma A.1 gives
+<span class="math math-display" data-tex="\[
+E(cOv)=f(E(v)).
+\tag{F.1}
+\]">\[
+E(cOv)=f(E(v)).
+\tag{F.1}
+\]</span>
+If <span class="math" data-tex="\(E(v)=E(w)\)">\(E(v)=E(w)\)</span>, iteration gives
+<span class="math" data-tex="\(E(c^kO^kv)=E(c^kO^kw)\)">\(E(c^kO^kv)=E(c^kO^kw)\)</span>.
+For large <span class="math" data-tex="\(k\)">\(k\)</span> both vectors lie in the normal ball where <span class="math" data-tex="\(E\)">\(E\)</span> is injective (<a href="geodesics-normal-coordinates-and-curvature.html#theorem-b-1">Geodesics B.1</a>). Hence <span class="math" data-tex="\(v=w\)">\(v=w\)</span>.</p>
+<p>It remains to prove that this bijection is an isometry; injectivity alone would not exclude a singular derivative. Set <span class="math" data-tex="\(h=E^*g\)">\(h=E^*g\)</span>, a smooth bilinear tensor on the entire vector space, initially allowing degeneracy. Differentiating (F.1) and using <span class="math" data-tex="\(f^*g=c^2g\)">\(f^*g=c^2g\)</span> yields
+<span class="math math-display" data-tex="\[
+h_v(V,W)=h_{cOv}(OV,OW)
+=h_{c^kO^kv}(O^kV,O^kW).
+\tag{F.2}
+\]">\[
+h_v(V,W)=h_{cOv}(OV,OW)
+=h_{c^kO^kv}(O^kV,O^kW).
+\tag{F.2}
+\]</span>
+At zero, <span class="math" data-tex="\(dE_0=I\)">\(dE_0=I\)</span>, so <span class="math" data-tex="\(h_0=g_q\)">\(h_0=g_q\)</span>. Smoothness implies
+<span class="math" data-tex="\(\|h_z-g_q\|\to0\)">\(\|h_z-g_q\|\to0\)</span> as <span class="math" data-tex="\(z\to0\)">\(z\to0\)</span>, where the operator norm uses <span class="math" data-tex="\(g_q\)">\(g_q\)</span>. The difference between the last expression in (F.2) and <span class="math" data-tex="\(g_q(V,W)\)">\(g_q(V,W)\)</span> is at most
+<span class="math math-display" data-tex="\[
+\|h_{c^kO^kv}-g_q\|\,|V|\,|W|,
+\]">\[
+\|h_{c^kO^kv}-g_q\|\,|V|\,|W|,
+\]</span>
+because <span class="math" data-tex="\(O^k\)">\(O^k\)</span> is orthogonal. It tends to zero. Thus <span class="math" data-tex="\(E^*g=g_q\)">\(E^*g=g_q\)</span> everywhere. Its differential is invertible everywhere, so the inverse theorem makes the bijection <span class="math" data-tex="\(E\)">\(E\)</span> a global diffeomorphism and isometry. This is the contraction argument of <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-g-2">De Rham decomposition G.2</a> with an orthogonal factor allowed in the contraction. It also covers the zero-dimensional point. □</p>
+<p id="theorem-f-2"><strong>Theorem F.2 (Irreducible factors and identity components).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be connected and complete, with irreducible full real holonomy representation and positive dimension. Every affine transformation is an isometry, except when <span class="math" data-tex="\(M\)">\(M\)</span> is the Euclidean line.</p>
+<p>For a complete simply connected manifold with the de Rham decomposition
+<span class="math math-display" data-tex="\[
+M=\mathbb R^r\times M_1\times\cdots\times M_k,
+\tag{F.3}
+\]">\[
+M=\mathbb R^r\times M_1\times\cdots\times M_k,
+\tag{F.3}
+\]</span>
+where the <span class="math" data-tex="\(M_i\)">\(M_i\)</span> are non-Euclidean irreducible factors, one has
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Aff}(M)^0&amp;=
+\operatorname{Aff}(\mathbb R^r)^0
+\times\prod_i\operatorname{Isom}(M_i)^0,\\
+\operatorname{Isom}(M)^0&amp;=
+\operatorname{Isom}(\mathbb R^r)^0
+\times\prod_i\operatorname{Isom}(M_i)^0.
+\end{aligned}
+\tag{F.4}
+\]">\[
+\begin{aligned}
+\operatorname{Aff}(M)^0&amp;=
+\operatorname{Aff}(\mathbb R^r)^0
+\times\prod_i\operatorname{Isom}(M_i)^0,\\
+\operatorname{Isom}(M)^0&amp;=
+\operatorname{Isom}(\mathbb R^r)^0
+\times\prod_i\operatorname{Isom}(M_i)^0.
+\end{aligned}
+\tag{F.4}
+\]</span>
+An arbitrary affine transformation preserves the Euclidean distribution and permutes the non-Euclidean factor distributions; those permutations need not belong to the identity component.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is affine, <span class="math" data-tex="\(f^*g\)">\(f^*g\)</span> is a parallel positive definite symmetric tensor. Write it as <span class="math" data-tex="\(g(S\,\cdot,\cdot)\)">\(g(S\,\cdot,\cdot)\)</span>; the induced tensor-connection rules in <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a> show that <span class="math" data-tex="\(S\)">\(S\)</span> is parallel and self-adjoint. Transport around a loop commutes with <span class="math" data-tex="\(S_p\)">\(S_p\)</span>. The real spectral proof in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-h-2">De Rham decomposition H.2</a> decomposes <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span> into its orthogonal eigenspaces, all invariant under the full holonomy group. Irreducibility therefore gives <span class="math" data-tex="\(S_p=\lambda I\)">\(S_p=\lambda I\)</span>. Parallel transport along paths gives the same constant <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> at every point. Hence <span class="math" data-tex="\(f\)">\(f\)</span> is a homothety. If <span class="math" data-tex="\(\lambda\ne1\)">\(\lambda\ne1\)</span>, F.1 makes <span class="math" data-tex="\(M\)">\(M\)</span> Euclidean. The trivial holonomy representation of Euclidean space is irreducible in positive dimension only in dimension one. This proves the first assertion, including manifolds which are not simply connected.</p>
+<p><a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-e-3">De Rham decomposition E.3</a> proves (F.3) with its uniqueness as a decomposition into parallel distributions. We spell out why its uniqueness applies to affine transformations, which might not initially be orthogonal. At a product point the holonomy is the product of the independent factor holonomies; its fixed subspace is exactly <span class="math" data-tex="\(E_0=T\mathbb R^r\)">\(E_0=T\mathbb R^r\)</span>, and each nontrivial factor module <span class="math" data-tex="\(E_i\)">\(E_i\)</span> is irreducible. Every nontrivial irreducible invariant subspace <span class="math" data-tex="\(W\)">\(W\)</span> equals some <span class="math" data-tex="\(E_i\)">\(E_i\)</span>: choose a nonzero projection of <span class="math" data-tex="\(W\)">\(W\)</span> onto <span class="math" data-tex="\(E_i\)">\(E_i\)</span>. Since that factor has no fixed vectors, some factor-holonomy element <span class="math" data-tex="\(h\)">\(h\)</span>, acting trivially on all other factors, has <span class="math" data-tex="\((h-I)W\ne0\)">\((h-I)W\ne0\)</span>. Thus <span class="math" data-tex="\(W\cap E_i\ne0\)">\(W\cap E_i\ne0\)</span>, and irreducibility forces <span class="math" data-tex="\(W=E_i\)">\(W=E_i\)</span>. This is also the module argument in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-e-3">De Rham decomposition E.3</a>.</p>
+<p>By transport naturality (A.2), <span class="math" data-tex="\(df_p\)">\(df_p\)</span> conjugates full holonomy at <span class="math" data-tex="\(p\)">\(p\)</span> to full holonomy at <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span>. It consequently carries the fixed subspace to the fixed subspace and the nontrivial irreducible subspaces to a permutation of their counterparts. Parallel transport makes that permutation independent of the point. The image distributions vary continuously with <span class="math" data-tex="\(f\)">\(f\)</span>, so the permutation is constant on the identity component and equals the identity there.</p>
+<p>Suppose first that every distribution is preserved. In product coordinates the derivative of each output component vanishes on all the other input distributions. A connected manifold is joined by piecewise coordinate paths (<a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.2</a>), so that output depends only on its own input. Thus
+<span class="math math-display" data-tex="\[
+f(x,y_1,\ldots,y_k)
+=(f_0(x),f_1(y_1),\ldots,f_k(y_k)).
+\]">\[
+f(x,y_1,\ldots,y_k)
+=(f_0(x),f_1(y_1),\ldots,f_k(y_k)).
+\]</span>
+The inverse has the same splitting, proving each factor map is a diffeomorphism. The product connection equation, proved in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-e-3">De Rham decomposition E.3</a>, makes each <span class="math" data-tex="\(f_i\)">\(f_i\)</span> affine on its factor. The first part of the present proof makes <span class="math" data-tex="\(f_i\)">\(f_i\)</span> an isometry for <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>. The Euclidean factor is unrestricted within its affine group. For a permutation of distributions the same argument applies after reordering output factors; maps between different factors are only asserted to be affine.</p>
+<p>All these product identifications and their inverses are smooth: values and first derivatives of the factor maps are obtained by restricting the product first jet, and C.2 and D.3 give the jet embeddings. A finite product of connected Lie groups is connected; conversely the projection of a connected set to any factor is connected. Therefore the identity component of a finite product is the product of identity components. Applying this to the subgroup with no factor permutation proves the affine formula in (F.4). For an isometry, its Euclidean factor must also be an isometry, and the same argument gives the second formula. Zero-dimensional Euclidean factors and empty products mean the trivial group. □</p>
+<p id="corollary-f-3"><strong>Corollary F.3 (Bounded affine fields).</strong> On a connected complete Riemannian manifold, every bounded infinitesimal affine field is Killing. If its universal cover has no Euclidean de Rham factor, then
+<span class="math" data-tex="\(\operatorname{Aff}(M)^0=\operatorname{Isom}(M)^0\)">\(\operatorname{Aff}(M)^0=\operatorname{Isom}(M)^0\)</span>.
+The same equality holds on every compact connected Riemannian manifold.</p>
+<p><strong>Proof.</strong> Theorem D.4 makes every infinitesimal affine field <span class="math" data-tex="\(X\)">\(X\)</span> complete. Lift the metric and the field to the universal cover. Completeness of the lifted metric is <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-e-4">Hopf–Rinow E.4</a>: a lifted geodesic can be continued by lifting its complete projected geodesic. More explicitly, the lift of the field is defined by the inverse covering differential. Each complete integral curve downstairs has a unique path lift on every compact time interval by <a href="flat-connections-and-infinitesimal-holonomy.html#lemma-d-1">Flat connections D.1</a>; uniqueness joins these lifts for all real times. They are integral curves upstairs. Local covering charts and uniqueness of ODE solutions make the resulting flow smooth. It consists of affine transformations, starts at the identity, and lies in the identity component in F.2.</p>
+<p>On the product universal cover the lifted generator consequently has the form
+<span class="math math-display" data-tex="\[
+\widetilde X(x,y_1,\ldots,y_k)
+=(Bx+b,Y_1(y_1),\ldots,Y_k(y_k)),
+\tag{F.5}
+\]">\[
+\widetilde X(x,y_1,\ldots,y_k)
+=(Bx+b,Y_1(y_1),\ldots,Y_k(y_k)),
+\tag{F.5}
+\]</span>
+with every <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> Killing. If <span class="math" data-tex="\(|X|\)">\(|X|\)</span> is bounded, so is <span class="math" data-tex="\(|\widetilde X|\)">\(|\widetilde X|\)</span>, because the covering is a local isometry. Fix all <span class="math" data-tex="\(y_i\)">\(y_i\)</span> and put <span class="math" data-tex="\(x=tv\)">\(x=tv\)</span>. The product norm bounds <span class="math" data-tex="\(|tBv+b|\)">\(|tBv+b|\)</span> for all real <span class="math" data-tex="\(t\)">\(t\)</span>, forcing <span class="math" data-tex="\(Bv=0\)">\(Bv=0\)</span> for every <span class="math" data-tex="\(v\)">\(v\)</span>. Thus <span class="math" data-tex="\(B=0\)">\(B=0\)</span> and <span class="math" data-tex="\(\widetilde X\)">\(\widetilde X\)</span> is Killing. The Killing equation is local, so it descends to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>If there is no Euclidean factor, (F.5) is Killing without a boundedness hypothesis. The Lie algebra description D.3 then shows that every one-parameter affine subgroup consists of isometries. The identity component is generated by its exponential neighbourhood, as proved in <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a>, so it is contained in the isometry group. These paths lie in its identity component; the reverse inclusion is immediate from the Levi–Civita naturality and the common jet topology. If <span class="math" data-tex="\(M\)">\(M\)</span> is compact, <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-b-3">Hopf–Rinow B.3</a> gives completeness and every smooth field is bounded. The first argument then gives the same Lie-algebra equality and identity-component equality. □</p>
+<h2 id="part-g">G. What maximal symmetry forces</h2>
+<p>The dimensions of fields and of global transformation groups need not agree on an incomplete manifold. The first theorem concerns all fields with locally structure-preserving flows; the next two concern groups of transformations defined on the whole manifold.</p>
+<p id="theorem-g-1"><strong>Theorem G.1 (Maximal infinitesimal symmetry).</strong> If a connected Riemannian <span class="math" data-tex="\(n\)">\(n\)</span>-manifold, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, has <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span> linearly independent Killing fields, its sectional curvature is constant. If a connected manifold with a connection has <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span> linearly independent infinitesimal affine fields, its torsion and curvature vanish and it has local coordinates in which the connection coefficients vanish. No completeness hypothesis is needed.</p>
+<p><strong>Proof.</strong> At any <span class="math" data-tex="\(p\)">\(p\)</span>, the injective Killing first-data map from A.3 takes values in
+<span class="math" data-tex="\(T_pM\oplus\mathfrak{so}(T_pM)\)">\(T_pM\oplus\mathfrak{so}(T_pM)\)</span>.
+Equality of dimensions makes it onto. In particular, given any skew map <span class="math" data-tex="\(B\)">\(B\)</span>, there is a Killing field with <span class="math" data-tex="\(X(p)=0\)">\(X(p)=0\)</span> and <span class="math" data-tex="\((\nabla X)_p=B\)">\((\nabla X)_p=B\)</span>. Its local flow fixes <span class="math" data-tex="\(p\)">\(p\)</span>, and its differential there solves <span class="math" data-tex="\(\dot F=BF\)">\(\dot F=BF\)</span>, so equals <span class="math" data-tex="\(e^{tB}\)">\(e^{tB}\)</span>. Thus the curvature at <span class="math" data-tex="\(p\)">\(p\)</span> is invariant under these orthogonal maps: local isometries preserve the Levi–Civita connection by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>, and hence preserve its curvature.</p>
+<p>We record explicitly the elementary rotation facts used here and below. A rotation in a coordinate two-plane, identity on the perpendicular complement, is the exponential of the skew matrix with entries <span class="math" data-tex="\(B_{ij}=-\theta,B_{ji}=\theta\)">\(B_{ij}=-\theta,B_{ji}=\theta\)</span>; the two-dimensional exponential and its angles are <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. Such plane rotations generate <span class="math" data-tex="\(SO(m)\)">\(SO(m)\)</span>. Indeed, successively rotate in the planes containing the first coordinate axis to eliminate the other coordinates of the first column of an orthogonal matrix, ending with <span class="math" data-tex="\(e_1\)">\(e_1\)</span>. If a negative sign remains, a rotation by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in a plane containing that axis changes it. The remaining block is orthogonal with determinant one; induction reduces it in its own coordinate planes. The terminal one-dimensional block is <span class="math" data-tex="\(1\)">\(1\)</span>. Reversing this finite elimination writes the original matrix as a product of plane rotations. Each rotation has a path to the identity, so <span class="math" data-tex="\(SO(m)\)">\(SO(m)\)</span> is connected. Invariance under small <span class="math" data-tex="\(e^{tB}\)">\(e^{tB}\)</span> implies invariance under every <span class="math" data-tex="\(e^{tB}\)">\(e^{tB}\)</span> by finite subdivision of <span class="math" data-tex="\(t\)">\(t\)</span>, and hence under <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, any two unoriented tangent two-planes are carried to each other by an element of <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>: choose orthonormal bases of the planes, extend to orthonormal bases of the whole space by subtracting projections and normalizing, and choose the sign of one complementary basis vector to make the resulting map have determinant one. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> there is only one tangent two-plane. Thus at every point all sectional curvatures have a common value <span class="math" data-tex="\(\kappa(p)\)">\(\kappa(p)\)</span>. <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a> proves, by polarization of the algebraic curvature symmetries, that
+<span class="math math-display" data-tex="\[
+R_p(u,v)w=\kappa(p)\bigl(g_p(v,w)u-g_p(u,w)v\bigr).
+\tag{G.1}
+\]">\[
+R_p(u,v)w=\kappa(p)\bigl(g_p(v,w)u-g_p(u,w)v\bigr).
+\tag{G.1}
+\]</span>
+A smooth local orthonormal frame, obtained by the same Gram–Schmidt operations on a coordinate frame, shows that <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is smooth: it is the curvature of the plane spanned by the first two frame vectors. Every local Killing flow preserves it, so <span class="math" data-tex="\(X\kappa=0\)">\(X\kappa=0\)</span>. The first-data map is onto also in its value component, and hence Killing values span every tangent space. It follows that <span class="math" data-tex="\(d\kappa=0\)">\(d\kappa=0\)</span>; along coordinate paths it is constant, and connectedness makes it globally constant.</p>
+<p>For the affine statement, A.2 gives an injective map of the affine-field space into
+<span class="math" data-tex="\(T_pM\oplus\operatorname{End}(T_pM)\)">\(T_pM\oplus\operatorname{End}(T_pM)\)</span>, again onto by the assumed dimension. Choose <span class="math" data-tex="\(X(p)=0\)">\(X(p)=0\)</span> and <span class="math" data-tex="\(A_X(p)=-I\)">\(A_X(p)=-I\)</span>. Since <span class="math" data-tex="\(A_X=-\nabla X-T(X,\cdot)\)">\(A_X=-\nabla X-T(X,\cdot)\)</span>, this means <span class="math" data-tex="\(dX_p=I\)">\(dX_p=I\)</span>. Its local affine flow fixes <span class="math" data-tex="\(p\)">\(p\)</span> and has differential <span class="math" data-tex="\(e^tI\)">\(e^tI\)</span>. Torsion and curvature are natural under affine maps: substituting the transported connection and bracket into their definitions gives, for any affine <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+df\,T(u,v)=T(df\,u,df\,v),\qquad
+df\,R(u,v)w=R(df\,u,df\,v)df\,w.
+\tag{G.2}
+\]">\[
+df\,T(u,v)=T(df\,u,df\,v),\qquad
+df\,R(u,v)w=R(df\,u,df\,v)df\,w.
+\tag{G.2}
+\]</span>
+The bracket naturality is <a href="principal-bundles-and-associated-bundles.html#lemma-c-3">Principal bundles C.3</a> and the connection tensor definitions are <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a> and <a href="linear-and-affine-connections.html#theorem-b-3">Linear connections B.3</a>. For this particular flow, (G.2) says
+<span class="math" data-tex="\(e^tT_p=e^{2t}T_p\)">\(e^tT_p=e^{2t}T_p\)</span> and <span class="math" data-tex="\(e^tR_p=e^{3t}R_p\)">\(e^tR_p=e^{3t}R_p\)</span>.
+Choosing a small nonzero <span class="math" data-tex="\(t\)">\(t\)</span> forces both tensors to vanish. This works at every <span class="math" data-tex="\(p\)">\(p\)</span>. <a href="sectional-curvature-and-space-forms.html#theorem-g-1">Sectional curvature G.1</a> supplies the complete local-coordinate proof that <span class="math" data-tex="\(T=R=0\)">\(T=R=0\)</span> is equivalent to vanishing connection coefficients in suitable charts. □</p>
+<p id="theorem-g-2"><strong>Theorem G.2 (Maximal global isometry groups).</strong> A connected Riemannian manifold of dimension <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> has an isometry group of dimension <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span> if and only if it is isometric to one of
+<span class="math math-display" data-tex="\[
+\mathbb R^n,\qquad H_a^n,\qquad S_a^n,\qquad
+\mathbb{RP}_a^n=S_a^n/\{I,-I\},\quad a&gt;0.
+\tag{G.3}
+\]">\[
+\mathbb R^n,\qquad H_a^n,\qquad S_a^n,\qquad
+\mathbb{RP}_a^n=S_a^n/\{I,-I\},\quad a&gt;0.
+\tag{G.3}
+\]</span>
+In dimension one, the manifolds with a one-dimensional isometry group are the line and the circles, with their arclength metrics.</p>
+<p><strong>Proof.</strong> By C.2 the group's Lie algebra is the space of complete Killing fields. Maximal dimension fills the entire possible first-data space at every point. Choose <span class="math" data-tex="\(n\)">\(n\)</span> such fields whose values form a tangent basis. The map obtained by composing their small flows and applying them to <span class="math" data-tex="\(p\)">\(p\)</span> has invertible derivative at zero; <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> shows that the orbit contains a neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span>. The same is true at every point. Orbits of the identity component are therefore disjoint open sets; connectedness forces a single orbit. <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-b-3">Hopf–Rinow B.3</a> now proves completeness of <span class="math" data-tex="\(M\)">\(M\)</span>. This step obtains completeness from the isometry group; it was not assumed.</p>
+<p>Theorem G.1 gives constant curvature. <a href="sectional-curvature-and-space-forms.html#theorem-d-2">Sectional curvature D.2</a> and <a href="sectional-curvature-and-space-forms.html#theorem-d-3">Sectional curvature D.3</a> identify
+<span class="math math-display" data-tex="\[
+M=X_\kappa/\Gamma
+\]">\[
+M=X_\kappa/\Gamma
+\]</span>
+where <span class="math" data-tex="\(X_\kappa\)">\(X_\kappa\)</span> is the corresponding complete simply connected Euclidean, spherical or hyperbolic model, and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is its freely acting deck group. The simply connected assertions for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> are <a href="sectional-curvature-and-space-forms.html#lemma-c-3">Sectional curvature C.3</a>. Write <span class="math" data-tex="\(G=\operatorname{Isom}(X_\kappa)\)">\(G=\operatorname{Isom}(X_\kappa)\)</span>. It has dimension <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span>. In the Euclidean and spherical cases this follows from E.2 and E.3. In the hyperbolic case use the hyperboloid
+<span class="math math-display" data-tex="\[
+H_a^n=\{(x,t):|x|^2-t^2=-a^2,\ t&gt;0\},\qquad o=(0,a).
+\]">\[
+H_a^n=\{(x,t):|x|^2-t^2=-a^2,\ t&gt;0\},\qquad o=(0,a).
+\]</span>
+Spatial rotations give <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span> independent infinitesimal stabilizers at <span class="math" data-tex="\(o\)">\(o\)</span>. For each unit spatial vector <span class="math" data-tex="\(v\)">\(v\)</span>, the map which is the identity on <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span> and is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}\cosh s&amp;\sinh s\\ \sinh s&amp;\cosh s\end{pmatrix}
+\]">\[
+\begin{pmatrix}\cosh s&amp;\sinh s\\ \sinh s&amp;\cosh s\end{pmatrix}
+\]</span>
+on the <span class="math" data-tex="\((v,t)\)">\((v,t)\)</span>-plane preserves the Lorentz form and its future sheet. It restricts to an isometry of the induced metric. The <span class="math" data-tex="\(n\)">\(n\)</span> coordinate boost fields have independent values at <span class="math" data-tex="\(o\)">\(o\)</span>, so together these transformations attain the upper bound of A.3. They also act transitively with spatial rotations: the points
+<span class="math" data-tex="\((a\sinh s\,v,a\cosh s)\)">\((a\sinh s\,v,a\cosh s)\)</span>, <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, exhaust the hyperboloid by <a href="sectional-curvature-and-space-forms.html#theorem-c-2">Sectional curvature C.2</a>. Both rotations and boosts have paths to the identity.</p>
+<p>By E.1, <span class="math" data-tex="\(N_G(\Gamma)\)">\(N_G(\Gamma)\)</span> has the same dimension as <span class="math" data-tex="\(G\)">\(G\)</span>, so its embedded inclusion is locally a diffeomorphism at the identity. It therefore contains an identity neighbourhood, and hence all of <span class="math" data-tex="\(G^0\)">\(G^0\)</span> by generation from that neighbourhood (<a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a>). For any fixed <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, conjugation
+<span class="math math-display" data-tex="\[
+G^0\longrightarrow\Gamma,\qquad h\longmapsto h\gamma h^{-1}
+\]">\[
+G^0\longrightarrow\Gamma,\qquad h\longmapsto h\gamma h^{-1}
+\]</span>
+is continuous and has connected domain and discrete target. It is constant, so <span class="math" data-tex="\(G^0\)">\(G^0\)</span> centralizes <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, a map commuting with every translation satisfies
+<span class="math" data-tex="\(\gamma(x)=x+b\)">\(\gamma(x)=x+b\)</span>, by applying commutation to <span class="math" data-tex="\(x=T_x(0)\)">\(x=T_x(0)\)</span>. If it also commutes with every rotation in <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>, then <span class="math" data-tex="\(b\)">\(b\)</span> is fixed by all such rotations. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> every nonzero vector is moved by a rotation in a plane containing it, so <span class="math" data-tex="\(b=0\)">\(b=0\)</span>.</p>
+<p>On <span class="math" data-tex="\(H_a^n\)">\(H_a^n\)</span>, the point <span class="math" data-tex="\(\gamma(o)\)">\(\gamma(o)\)</span> must be fixed by all spatial <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span> rotations. Its spatial coordinate is consequently zero, and the future hyperboloid equation then forces <span class="math" data-tex="\(\gamma(o)=o\)">\(\gamma(o)=o\)</span>. Commutation with the transitive rotations and boosts gives <span class="math" data-tex="\(\gamma(x)=x\)">\(\gamma(x)=x\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>On <span class="math" data-tex="\(S_a^n\)">\(S_a^n\)</span>, the stabilizer in <span class="math" data-tex="\(SO(n+1)\)">\(SO(n+1)\)</span> of a point <span class="math" data-tex="\(p\)">\(p\)</span> rotates its <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional perpendicular space. Its only fixed points on the sphere are <span class="math" data-tex="\(p,-p\)">\(p,-p\)</span>, since <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. Thus a map commuting with <span class="math" data-tex="\(SO(n+1)\)">\(SO(n+1)\)</span> has <span class="math" data-tex="\(\gamma(p)\in\{p,-p\}\)">\(\gamma(p)\in\{p,-p\}\)</span>. The scalar <span class="math" data-tex="\(\langle\gamma(p),p\rangle/a^2\)">\(\langle\gamma(p),p\rangle/a^2\)</span> is continuous with values in <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span> on the connected sphere, so its sign is constant. Hence <span class="math" data-tex="\(\gamma=I\)">\(\gamma=I\)</span> or <span class="math" data-tex="\(-I\)">\(-I\)</span>. These arguments show that the only deck possibilities are the trivial group in the first two cases, and either the trivial or antipodal group in the spherical case.</p>
+<p>Conversely the first three models have the stated maximal dimensions by the preceding calculations. The antipodal group is central in <span class="math" data-tex="\(O(n+1)\)">\(O(n+1)\)</span> and acts freely, so E.1 gives
+<span class="math" data-tex="\(\operatorname{Isom}(\mathbb{RP}_a^n)=O(n+1)/\{I,-I\}\)">\(\operatorname{Isom}(\mathbb{RP}_a^n)=O(n+1)/\{I,-I\}\)</span>,
+with the same dimension. <a href="sectional-curvature-and-space-forms.html#theorem-d-3">Sectional curvature D.3</a> constructs its quotient metric.</p>
+<p>In dimension one the orbit argument still proves completeness. Curvature is zero, since it is alternating in two tangent inputs (<a href="linear-and-affine-connections.html#theorem-b-3">Linear connections B.3</a>). The complete flat classification <a href="sectional-curvature-and-space-forms.html#theorem-g-2">Sectional curvature G.2</a> makes the universal cover the metric line: equivalently its global unit parallel frame gives arclength coordinate on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Every deck isometry is <span class="math" data-tex="\(x\mapsto\varepsilon x+b\)">\(x\mapsto\varepsilon x+b\)</span> by E.3. A reflection has the fixed point <span class="math" data-tex="\(b/2\)">\(b/2\)</span>, so cannot be a nontrivial deck map. <a href="sectional-curvature-and-space-forms.html#theorem-g-3">Sectional curvature G.3</a> shows that a discrete translation subgroup of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is zero or <span class="math" data-tex="\(\ell\mathbb Z\)">\(\ell\mathbb Z\)</span>, <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>. The quotients are the line or the circle of circumference <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; E.2 and E.3 show that their isometry groups have dimension one. □</p>
+<p id="theorem-g-3"><strong>Theorem G.3 (Maximal global affine groups).</strong> A connected <span class="math" data-tex="\(n\)">\(n\)</span>-manifold with a connection has affine transformation group of dimension <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span> if and only if it is affinely isomorphic to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with its standard connection. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this means the point.</p>
+<p><strong>Proof.</strong> By D.3 the Lie algebra consists of complete infinitesimal affine fields. The full dimension makes their first-data map onto at every <span class="math" data-tex="\(p\)">\(p\)</span>. Theorem G.1 therefore gives <span class="math" data-tex="\(T=R=0\)">\(T=R=0\)</span>. We must still prove completeness; transitivity of an affine group alone would not do so.</p>
+<p>At each <span class="math" data-tex="\(p\)">\(p\)</span> choose a complete affine field <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(X(p)=0\)">\(X(p)=0\)</span> and <span class="math" data-tex="\(dX_p=I\)">\(dX_p=I\)</span>. Its global flow <span class="math" data-tex="\(f_t\)">\(f_t\)</span> fixes <span class="math" data-tex="\(p\)">\(p\)</span> and has <span class="math" data-tex="\(df_t|_p=e^tI\)">\(df_t|_p=e^tI\)</span>. Given any <span class="math" data-tex="\(v\in T_pM\)">\(v\in T_pM\)</span>, choose <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> large enough that <span class="math" data-tex="\(e^{-s}v\)">\(e^{-s}v\)</span> lies in a small exponential neighbourhood. The geodesic with this initial vector exists on an open time interval containing <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Its image under <span class="math" data-tex="\(f_s\)">\(f_s\)</span> is a geodesic on the same interval with initial vector <span class="math" data-tex="\(v\)">\(v\)</span>, by A.1. Hence the geodesic with any initial vector exists at least through time one. For any finite positive time <span class="math" data-tex="\(T\)">\(T\)</span>, apply the same assertion to <span class="math" data-tex="\(Tv\)">\(Tv\)</span> and rescale its affine parameter; for negative times use <span class="math" data-tex="\(-v\)">\(-v\)</span>. Geodesic uniqueness (<a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a>) joins these segments to the entire real line. Thus the connection is geodesically complete.</p>
+<p><a href="sectional-curvature-and-space-forms.html#theorem-g-2">Sectional curvature G.2</a> now gives <span class="math" data-tex="\(M=\mathbb R^n/\Gamma\)">\(M=\mathbb R^n/\Gamma\)</span> with its standard affine connection and a freely acting deck subgroup <span class="math" data-tex="\(\Gamma\subset\operatorname{Aff}(\mathbb R^n)\)">\(\Gamma\subset\operatorname{Aff}(\mathbb R^n)\)</span>. E.1 and the assumed dimension show that its normalizer has full dimension in <span class="math" data-tex="\(\operatorname{Aff}(\mathbb R^n)\)">\(\operatorname{Aff}(\mathbb R^n)\)</span>. As in G.2, it contains the identity component and that component centralizes <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. It contains all translations and all positive scalar dilations, each joined to the identity by an explicit path. Commutation with translations makes any <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span> a translation <span class="math" data-tex="\(x\mapsto x+b\)">\(x\mapsto x+b\)</span>. Commutation with <span class="math" data-tex="\(x\mapsto2x\)">\(x\mapsto2x\)</span> then gives <span class="math" data-tex="\(b=2b\)">\(b=2b\)</span>, so <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. The deck group is trivial, proving the result in every positive dimension, including one. Conversely E.3 identifies the Euclidean affine group with <span class="math" data-tex="\(\mathbb R^n\rtimes GL(n,\mathbb R)\)">\(\mathbb R^n\rtimes GL(n,\mathbb R)\)</span>, of dimension <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span>. A connected zero-dimensional manifold is a point and its group has dimension zero. □</p>
+<h2 id="part-h">H. Worked comparisons</h2>
+<p id="exercise-h-1"><strong>Exercise H.1 (Euclidean fields and the bracket sign).</strong> Determine all infinitesimal affine and Killing fields on Euclidean space and their brackets. Compare the usual vector-field bracket with the commutator of affine matrices.</p>
+<p><strong>Solution.</strong> Proposition E.3 gives
+<span class="math math-display" data-tex="\[
+X(x)=Bx+b,\qquad Y(x)=Cx+d,
+\]">\[
+X(x)=Bx+b,\qquad Y(x)=Cx+d,
+\]</span>
+with arbitrary matrices for affine fields and skew matrices for Killing fields. In coordinates the usual bracket is <span class="math" data-tex="\(dY(X)-dX(Y)\)">\(dY(X)-dX(Y)\)</span>, hence
+<span class="math math-display" data-tex="\[
+[X,Y](x)=(CB-BC)x+Cb-Bd.
+\tag{H.1}
+\]">\[
+[X,Y](x)=(CB-BC)x+Cb-Bd.
+\tag{H.1}
+\]</span>
+The homogeneous affine matrices representing the same generators are
+<span class="math math-display" data-tex="\[
+\widehat X=\begin{pmatrix}B&amp;b\\0&amp;0\end{pmatrix},
+\qquad
+\widehat Y=\begin{pmatrix}C&amp;d\\0&amp;0\end{pmatrix}.
+\]">\[
+\widehat X=\begin{pmatrix}B&amp;b\\0&amp;0\end{pmatrix},
+\qquad
+\widehat Y=\begin{pmatrix}C&amp;d\\0&amp;0\end{pmatrix}.
+\]</span>
+Their matrix commutator is
+<span class="math math-display" data-tex="\[
+[\widehat X,\widehat Y]
+=\begin{pmatrix}BC-CB&amp;Bd-Cb\\0&amp;0\end{pmatrix}.
+\tag{H.2}
+\]">\[
+[\widehat X,\widehat Y]
+=\begin{pmatrix}BC-CB&amp;Bd-Cb\\0&amp;0\end{pmatrix}.
+\tag{H.2}
+\]</span>
+Thus the map taking a matrix generator to its field for the left action is an anti-homomorphism, as in C.2; putting a minus sign in that map makes it a homomorphism for the usual field bracket. At any point <span class="math" data-tex="\(p\)">\(p\)</span>, the derivative gives <span class="math" data-tex="\(B=dX_p\)">\(B=dX_p\)</span> and the value then gives <span class="math" data-tex="\(b=X(p)-Bp\)">\(b=X(p)-Bp\)</span>, explicitly recovering the field from its first data. The affine field space and group both have dimension <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span>; the Killing field space and isometry group both have dimension <span class="math" data-tex="\(n+n(n-1)/2=n(n+1)/2\)">\(n+n(n-1)/2=n(n+1)/2\)</span>. The flows are the complete flows written in E.3. □</p>
+<p id="exercise-h-2"><strong>Exercise H.2 (Square and rectangular tori).</strong> Compare the full isometry and affine groups and their fields for
+<span class="math math-display" data-tex="\[
+L_{\mathrm{sq}}=\mathbb Z(1,0)+\mathbb Z(0,1),
+\qquad
+L_{\mathrm{rec}}=\mathbb Z(1,0)+\mathbb Z(0,\sqrt2).
+\]">\[
+L_{\mathrm{sq}}=\mathbb Z(1,0)+\mathbb Z(0,1),
+\qquad
+L_{\mathrm{rec}}=\mathbb Z(1,0)+\mathbb Z(0,\sqrt2).
+\]</span>
+Do the isometry-group dimensions distinguish the metrics?</p>
+<p><strong>Solution.</strong> For the square lattice the unit lattice vectors are exactly
+<span class="math" data-tex="\(\pm e_1,\pm e_2\)">\(\pm e_1,\pm e_2\)</span>. An orthogonal lattice map must take the ordered standard basis to a signed permutation of that basis; each such permutation does preserve the lattice. There are <span class="math" data-tex="\(2^2\cdot2=8\)">\(2^2\cdot2=8\)</span> possibilities. For the rectangular lattice a vector <span class="math" data-tex="\((m,\sqrt2\,n)\)">\((m,\sqrt2\,n)\)</span> has squared length <span class="math" data-tex="\(m^2+2n^2\)">\(m^2+2n^2\)</span>. Its shortest nonzero vectors are only <span class="math" data-tex="\(\pm e_1\)">\(\pm e_1\)</span>. Any orthogonal lattice map therefore preserves the first axis and its perpendicular axis, giving just the four diagonal sign matrices. All four do preserve the lattice.</p>
+<p>By E.3 the respective isometry groups are the translation torus semidirect these groups of orders eight and four. Their identity components are both two-dimensional tori, so their dimensions do not distinguish the metrics. Their point stabilizers do: an isometry between the two tori would conjugate stabilizers, contradicting the different orders.</p>
+<p>In each lattice's own basis its full affine group is
+<span class="math math-display" data-tex="\[
+(\mathbb R^2/\mathbb Z^2)\rtimes GL(2,\mathbb Z).
+\]">\[
+(\mathbb R^2/\mathbb Z^2)\rtimes GL(2,\mathbb Z).
+\]</span>
+Indeed the linear identification between the bases induces an affine diffeomorphism of the tori and conjugates the affine groups. In the original rectangular Euclidean coordinates its linear factors are <span class="math" data-tex="\(VAV^{-1}\)">\(VAV^{-1}\)</span>, <span class="math" data-tex="\(A\in GL(2,\mathbb Z)\)">\(A\in GL(2,\mathbb Z)\)</span>, <span class="math" data-tex="\(V=\operatorname{diag}(1,\sqrt2)\)">\(V=\operatorname{diag}(1,\sqrt2)\)</span>, usually not orthogonal. Every infinitesimal affine or Killing field on either torus is a constant translation; both field spaces have dimension two. □</p>
+<p id="exercise-h-3"><strong>Exercise H.3 (The open Euclidean ball).</strong> On the open unit ball <span class="math" data-tex="\(B^n\subset\mathbb R^n\)">\(B^n\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, determine the Killing fields, the global isometries and the complete Killing fields. Give a bounded affine field which is not Killing.</p>
+<p><strong>Solution.</strong> The flat first-data equation A.2 gives <span class="math" data-tex="\(X(x)=Bx+b\)">\(X(x)=Bx+b\)</span> on any connected Euclidean open set: <span class="math" data-tex="\(-DX\)">\(-DX\)</span> is constant, and then <span class="math" data-tex="\(X-Bx\)">\(X-Bx\)</span> has zero derivative and is constant along coordinate paths. A.3 says exactly that <span class="math" data-tex="\(B\)">\(B\)</span> is skew for a Killing field. Thus the ball has the maximal <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span>-dimensional space of Killing fields.</p>
+<p>A global isometry is smooth by B.2 and affine by Levi–Civita naturality. The vanishing Hessian equation makes it <span class="math" data-tex="\(f(x)=Qx+b\)">\(f(x)=Qx+b\)</span>, <span class="math" data-tex="\(Q\in O(n)\)">\(Q\in O(n)\)</span>. If <span class="math" data-tex="\(f(B^n)=B^n\)">\(f(B^n)=B^n\)</span>, take the supremum of the scalar product with any unit vector <span class="math" data-tex="\(v\)">\(v\)</span>. The supremum on the ball is <span class="math" data-tex="\(1\)">\(1\)</span>, while that on its image is
+<span class="math math-display" data-tex="\[
+\sup_{|x|&lt;1}\langle v,Qx+b\rangle=1+\langle v,b\rangle.
+\]">\[
+\sup_{|x|&lt;1}\langle v,Qx+b\rangle=1+\langle v,b\rangle.
+\]</span>
+Thus <span class="math" data-tex="\(\langle v,b\rangle=0\)">\(\langle v,b\rangle=0\)</span> for every unit <span class="math" data-tex="\(v\)">\(v\)</span>, so <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Every orthogonal map preserves the ball; its full isometry group is therefore <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span>, of dimension <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span>.</p>
+<p>If a Killing field on the ball is complete, its global flow consists of these isometries and fixes zero; differentiating there gives <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Conversely a field <span class="math" data-tex="\(Bx\)">\(Bx\)</span> with <span class="math" data-tex="\(B\)">\(B\)</span> skew has the complete rotational flow <span class="math" data-tex="\(e^{tB}x\)">\(e^{tB}x\)</span>. Finally <span class="math" data-tex="\(X(x)=x\)">\(X(x)=x\)</span> is infinitesimally affine and bounded by one in norm, but
+<span class="math" data-tex="\(\mathcal L_Xg=2g\)">\(\mathcal L_Xg=2g\)</span>, so it is not Killing. Its flow <span class="math" data-tex="\(e^tx\)">\(e^tx\)</span>, starting at any nonzero point, leaves the ball in finite positive time. This shows why completeness is necessary in F.3. The unrestricted affine fields <span class="math" data-tex="\(Bx+b\)">\(Bx+b\)</span> also have the maximal <span class="math" data-tex="\(n+n^2\)">\(n+n^2\)</span> dimension on this ball, although Theorem G.3 prevents its global affine group from having that dimension. □</p>
+<p id="exercise-h-4"><strong>Exercise H.4 (A line times a round sphere).</strong> For <span class="math" data-tex="\(M=\mathbb R\times S_a^2\)">\(M=\mathbb R\times S_a^2\)</span> with its product metric, compute both full transformation groups, both infinitesimal field spaces, bounded affine fields, dimensions and components.</p>
+<p><strong>Solution.</strong> The sphere is complete and simply connected by <a href="sectional-curvature-and-space-forms.html#theorem-c-2">Sectional curvature C.2</a> and <a href="sectional-curvature-and-space-forms.html#lemma-c-3">Sectional curvature C.3</a>. Its holonomy is irreducible on its two-dimensional tangent space: <a href="sectional-curvature-and-space-forms.html#theorem-c-1">Sectional curvature C.1</a> gives
+<span class="math math-display" data-tex="\[
+R(e_1,e_2)e_1=-a^{-2}e_2,\qquad
+R(e_1,e_2)e_2=a^{-2}e_1
+\]">\[
+R(e_1,e_2)e_1=-a^{-2}e_2,\qquad
+R(e_1,e_2)e_2=a^{-2}e_1
+\]</span>
+for an orthonormal pair. This nonzero rotation generator belongs to the holonomy Lie algebra by <a href="curvature-and-holonomy-groups.html#theorem-g-3">Curvature and holonomy G.3</a>. Any holonomy-invariant real line would be invariant under that generator by differentiation, which the displayed formula forbids. Hence the product has exactly its line as Euclidean factor and exactly one non-Euclidean irreducible factor.</p>
+<p>The distribution argument in F.2 applies even outside the identity component. With just one non-Euclidean factor, no permutation is possible, so every affine map is a product. Its sphere factor is an isometry by the irreducible part of F.2. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Aff}(M)&amp;=\operatorname{Aff}(\mathbb R)\times O(3),\\
+f(t,y)&amp;=(\alpha t+\beta,Qy),
+&amp;&amp;\alpha\ne0,\quad Q\in O(3),\\
+\operatorname{Isom}(M)&amp;=(\mathbb R\rtimes\{1,-1\})\times O(3),
+\end{aligned}
+\tag{H.3}
+\]">\[
+\begin{aligned}
+\operatorname{Aff}(M)&amp;=\operatorname{Aff}(\mathbb R)\times O(3),\\
+f(t,y)&amp;=(\alpha t+\beta,Qy),
+&amp;&amp;\alpha\ne0,\quad Q\in O(3),\\
+\operatorname{Isom}(M)&amp;=(\mathbb R\rtimes\{1,-1\})\times O(3),
+\end{aligned}
+\tag{H.3}
+\]</span>
+where the isometry formula restricts <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>.</p>
+<p>Completeness and D.4 identify all infinitesimal affine fields with generators of the identity component. E.2 and E.3 give precisely
+<span class="math math-display" data-tex="\[
+X(t,y)=(ct+b,By),\qquad B^T=-B.
+\tag{H.4}
+\]">\[
+X(t,y)=(ct+b,By),\qquad B^T=-B.
+\tag{H.4}
+\]</span>
+It is Killing exactly when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, by the product Killing equation. Its squared norm is
+<span class="math" data-tex="\((ct+b)^2+|By|^2\)">\((ct+b)^2+|By|^2\)</span>.
+The sphere term is bounded by <span class="math" data-tex="\(a^2\|B\|^2\)">\(a^2\|B\|^2\)</span>, so the field is bounded exactly when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. Thus the bounded and Killing fields are <span class="math" data-tex="\((b,By)\)">\((b,By)\)</span>, and every <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> produces an unbounded non-Killing affine field. The affine group and affine field space have dimension <span class="math" data-tex="\(2+3=5\)">\(2+3=5\)</span>; the isometry group and Killing space have dimension <span class="math" data-tex="\(1+3=4\)">\(1+3=4\)</span>.</p>
+<p>The two components of <span class="math" data-tex="\(\operatorname{Aff}(\mathbb R)\)">\(\operatorname{Aff}(\mathbb R)\)</span> are distinguished by the sign of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, each connected in its coordinates <span class="math" data-tex="\((\alpha,\beta)\)">\((\alpha,\beta)\)</span>. The two components of <span class="math" data-tex="\(O(3)\)">\(O(3)\)</span> are distinguished by determinant: its positive component <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> is connected by the plane-rotation argument in G.1, and multiplication by a fixed reflection identifies the other component with it. Thus each full group in (H.3) has four components. This includes all orientation reversals on either factor. □</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>Andreas Čap, <em>G-structures</em>, lecture notes, Fall Term 2021/22, §§1.2 and 3.10. <a href="https://www.mat.univie.ac.at/~cap/files/G-Struct.pdf">Author-hosted notes</a>.</li>
+<li>Vincent Pecastaing, <em>Lie groups and Riemannian symmetric spaces</em>, lecture notes, 28 July 2023, §§1.4 and 3.3. <a href="https://math.univ-cotedazur.fr/~pecastaing/symmetric_spaces.pdf">Author-hosted notes</a>.</li>
+</ul>
+<p>Earlier programme proofs used here are linked at their points of use. In particular, the local flow and inverse theorems are in <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> and 2.1, and the closed-subgroup theorem is in <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-1">Invariant connections A.1</a>.</p>
+</article><footer><p><a href="src/affine-transformations-and-the-isometry-group.md">Chapter source</a> · <a href="index.html">Course contents</a></p><p>New exposition: CC0 1.0.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

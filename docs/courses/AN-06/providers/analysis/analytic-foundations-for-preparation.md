@@ -1,148 +1,212 @@
 # Analytic foundations for preparation
 
-**Human source and terms.** The preparation construction discussed here is Jean-Pierre Demailly's treatment in the freely available author version of [*Complex Analytic and Differential Geometry*, 21 June 2012, Chapter II, Section 2.A, printed pages 79–81](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=79). His [OpenContent grant](https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html) permits web distribution and modification while preserving his authorship. This supplementary reading retains that custom grant and is excluded from the course's CC0 dedication. Adapted and expanded by GPT-6 Astra (OpenAI), 4 October 2026. Self-checked by the writing AI. 
+*Written by GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
-Read this before the programme's Weierstrass division and analytic preparation readings, and before [quantitative polynomial growth](quantitative-polynomial-growth.md). We prove the zero-counting, root-continuity, symmetric-function and parameter-integral facts that those arguments need. In particular, a reference to the argument principle or to joint analyticity is not being used in place of a proof.
+An analytic function that has finite order in one coordinate can be separated into a nonvanishing factor and a monic polynomial in that coordinate. We construct this factorization by solving a convergent coefficient equation. We then recover the polynomial from contour integrals, which also give bounds for division of bounded analytic functions. Both constructions allow repeated roots and real analytic data.
 
-The earlier scalar inputs are proved in *Cauchy's theorem for cycles and its consequences*: Theorems 2.1–2.3 give Goursat's triangle argument, primitives on a convex domain and Cauchy's formula; Lemma 3.1 and Theorem 3.2 give convergent power series and Cauchy's coefficient estimates; Theorems 3.3, 3.6 and 3.7 prove Liouville, the maximum modulus principle and the identity theorem. Exercise 1, including its solution, proves the fundamental theorem of algebra from Liouville. Only these scalar sections are used. The global cycle theorem and the Banach-valued extension are not inputs here. 
+The scalar complex-analysis inputs are in *Cauchy's theorem for cycles and its consequences*. Lemma 0.1 proves contour bounds, uniform-limit passage and iterated integration; Theorems 2.1–2.3 prove Goursat's triangle theorem, convex-domain primitives and Cauchy's formula. Lemma 3.1 and Theorem 3.2 give Taylor series and coefficient bounds. Corollary 3.3, Theorems 3.6–3.7 and the solution of Exercise 1 give Liouville's theorem, the maximum modulus and identity principles, and polynomial factorization over the complex numbers. We also use the proved [real-power calculus](elementary-functions-and-cutoffs.md#logarithm-and-real-powers), [finite linear algebra](coordinate-inverses-and-integration.md#coordinate-linear-algebra), and [compactness and scalar mean values](hilbert-valued-integration.md#compact-scalar-calculus). The arguments below precede [quantitative polynomial growth](quantitative-polynomial-growth.md).
 
 <a id="analytic-algebra"></a>
-## 1. Power series, units and real branches
+## 1. Operations on convergent series
 
-An analytic germ in finitely many variables is a power series absolutely convergent on some polydisc. On every strictly smaller closed polydisc, the series and each differentiated series converge uniformly: a derivative introduces a fixed polynomial in the indices, which is summable against the geometric ratio between the two radii. Products may therefore be rearranged absolutely. Substitution of analytic germs is legitimate after shrinking until the sums of absolute values of the inner series lie strictly within the convergence polydisc of the outer series. The resulting majorant is the absolutely convergent outer series evaluated at those sums. This proves that the substitution defines an analytic germ.
+Write a power series in finitely many variables as $\sum_\alpha c_\alpha z^\alpha$. Analyticity means absolute convergence on some open polydisc. Choose two polyradii, with the smaller strictly below the larger and the latter still in that polydisc. On the smaller closed polydisc each differentiated term is bounded by its original weighted coefficient times a polynomial in $\alpha$ and a geometric factor. The geometric decay absorbs the polynomial. Thus the series and every fixed derivative series converge uniformly there, and termwise differentiation is valid. Absolute convergence also permits multiplication: finite convolution gives each coefficient, and the sum of the absolute values of the product terms is at most the product of the two absolute sums.
 
-If $h(0)\ne0$, write $h=h(0)(1+k)$ with $k(0)=0$. Shrink until the sum of the absolute values of the series for $k$ is less than one. The geometric series
+For composition, first center the inner functions at their values at the base point. Their zero-constant series have absolute sums tending to zero as the polyradius tends to zero. Choose it so that those sums are inside the convergence polydisc of the outer series. Substitution is then dominated by the absolute outer series evaluated at these sums. Its partial sums converge absolutely to an analytic series, proving the composition rule.
+
+If $h(0)\ne0$, write $h=h(0)(1+k)$ with $k(0)=0$. On a sufficiently small polydisc the absolute coefficient sum of $k$ is below one. Multiplication of the finite geometric sums and passage to the absolute limit prove
 \[
- h^{-1}=h(0)^{-1}\sum_{j\ge0}(-k)^j
+ h^{-1}=h(0)^{-1}\sum_{j\ge0}(-k)^j.
  \tag{AF1}
 \]
-converges absolutely there, and its product with $h$ is one. Thus a nonvanishing analytic germ has an analytic reciprocal. A real analytic series extends to the complex polydisc with the same coefficients and a smaller radius. Restriction back to real points recovers the original function. Conversely, a complex analytic function fixed by coefficientwise conjugation has real Taylor coefficients and a real analytic restriction.
+Thus the reciprocal is analytic. A convergent real power series has the same absolutely convergent complex extension after reducing its radii. A complex series with real coefficients restricts to a real analytic function; conversely, invariance under coefficient conjugation forces its coefficients to be real.
 
-For a rational number $\alpha=p/q$ with integers $p$ and $q>0$, define $c_0=1$ and $c_{j+1}=(\alpha-j)c_j/(j+1)$. The series $B(t)=\sum c_jt^j$ converges absolutely for $|t|<1$ (or terminates), by the ratio test, and its coefficients give
-$(1+t)B'(t)=\alpha B(t)$, $B(0)=1$. Differentiating with integer powers shows that $B(t)^q(1+t)^{-p}$ has derivative zero on the real interval $(-1,1)$; it is one at zero. Hence $B(t)^q=(1+t)^p$. It never vanishes on that interval and starts positive, so by continuity it is the positive real branch $(1+t)^{p/q}$. If $a>0$, the same argument gives $(a+t)^\alpha=a^\alpha B(t/a)$ on $|t|<a$. These formulas prove the reciprocal and rational-power branch statements used in the preparation proof, always on neighborhoods where their positive base stays away from zero.
+Here are the positive rational powers needed later. Given $\alpha=p/q$, where $p\in\mathbb Z$ and $q\ge1$, let $c_0=1$ and $c_{j+1}=(\alpha-j)c_j/(j+1)$. The resulting series $B(t)=\sum_{j\ge0}c_jt^j$ either terminates or converges absolutely for $|t|<1$: on every smaller radius the ratio of consecutive absolute terms is eventually bounded by a number below one. Coefficient comparison gives $(1+t)B'=\alpha B$. On the real interval $(-1,1)$, the derivative of $B^q(1+t)^{-p}$ is consequently zero. The scalar mean-value theorem and its value at zero give $B^q=(1+t)^p$. This identity prevents a zero of $B$; continuity and $B(0)=1$ select the positive real branch. For every $a>0$, the expansion $a^\alpha B(t/a)$ therefore equals $(a+t)^\alpha$ on $|t|<a$.
 
-A nonzero complex polynomial cannot vanish at every point of $\mathbb R^d$: fix all but one real variable, compare its one-variable coefficients, and repeat in the remaining variables. The same assertion holds on any real open box by the identical argument. A finite product of nonzero polynomials is nonzero: order monomials lexicographically and multiply their leading terms. Hence finitely many nonzero homogeneous polynomials admit a common real vector where all are nonzero. Completing that vector to a real basis gives an invertible real linear change of variables. Its substitution preserves analytic convergence by the preceding majorant argument. This justifies simultaneous regular coordinate directions for finitely many real analytic germs, as well as the complex version.
+We can also choose one regular direction for finitely many nonzero germs, including germs with complex coefficients but real coordinate changes. A polynomial vanishing on a real open box is zero: fix all but one variable, use the fact that a nonzero one-variable polynomial has only finitely many roots, and repeat this argument on its coefficient polynomials. The product of finitely many nonzero polynomials is nonzero, because the product of their lexicographically greatest monomials is its unique greatest monomial with a nonzero coefficient. Apply these facts to the first nonzero homogeneous terms of the germs. On a real box avoiding the origin there is a vector where their product is nonzero. Restriction of each germ to that line has exactly its first homogeneous degree as vanishing order. Complete the vector to a real basis. The resulting invertible linear substitution is analytic by the composition argument above and supplies the desired common normal coordinate.
 
 <a id="zero-counting"></a>
-## 2. Removable zeros and the argument principle on a disc
+## 2. Counting zeros by their multiplicities
 
-First suppose $f$ is holomorphic and bounded by $M$ on $0<|z-a|<r$. Define $H(z)=(z-a)^2f(z)$ away from $a$ and $H(a)=0$. Then $H$ is continuous at $a$ and
-\[
- \frac{H(a+h)-H(a)}h=h f(a+h)\longrightarrow0.
-\]
-It is holomorphic throughout the disc and has $H(a)=H'(a)=0$. The earlier Taylor theorem therefore gives $H(z)=(z-a)^2F(z)$ with $F$ holomorphic, and $F=f$ off $a$. This proves the bounded removable-singularity assertion without assuming a Laurent expansion.
+We begin with removal of a bounded puncture. Suppose $f$ is holomorphic and bounded near $a$, except possibly at $a$. Set $H(z)=(z-a)^2f(z)$ off $a$, and $H(a)=0$. Boundedness makes $H$ continuous at $a$ and gives $H(a+h)/h=hf(a+h)\to0$. Hence $H$ is holomorphic throughout the disc and has its first two Taylor coefficients zero. Divide its Taylor series by $(z-a)^2$. The quotient is holomorphic and agrees with $f$ away from $a$, proving the removal assertion.
 
-If a holomorphic $f$ is not identically zero on a connected domain, the identity theorem and its Taylor proof show that each zero has a finite multiplicity: locally
-$f(z)=(z-a)^m v(z)$ with $m\ge1$ and $v(a)\ne0$. Its zeros are isolated. Suppose now that $f$ is holomorphic on a neighborhood of $\{|z-c|\le r\}$ and nonzero on the boundary circle. There are only finitely many zeros inside: infinitely many would accumulate in this compact disc, contradicting either the boundary nonvanishing or the identity theorem. List them as $a_1,\ldots,a_N$, with multiplicities $m_1,\ldots,m_N$. Removing their Taylor factors gives
+Now let $f$ be holomorphic near a closed disc and nonzero on its boundary. Its zeros in the disc are finite. Otherwise compactness would produce an accumulation point; a boundary accumulation contradicts continuity and nonvanishing, and an interior one contradicts the proved identity theorem. At each zero the first nonzero Taylor coefficient gives a finite order $m$. Dividing out these local factors produces a function with no zero near the closed disc. Consequently, for distinct zeros $a_\nu$ and their multiplicities $m_\nu$,
 \[
- f(z)=v(z)\prod_{\nu=1}^N(z-a_\nu)^{m_\nu},
+ f(z)=v(z)\prod_{\nu=1}^{N}(z-a_\nu)^{m_\nu},
+ \qquad v(z)\ne0.
  \tag{AF2}
 \]
-where $v$ is holomorphic and nonzero on a neighborhood of the closed disc, after shrinking that neighborhood if necessary. Thus $v'/v$ is holomorphic there by (AF1). Logarithmic differentiation and Cauchy's formula imply, for every polynomial $h$,
+All divisions through a zero here are justified by its convergent Taylor factor; shrinking the surrounding neighborhood excludes any other zero of $v$.
+
+Let the circle be $|z-c|=r$, traversed positively, and let $h$ be a polynomial. Differentiating the finite product in (AF2) gives $f'/f=v'/v+\sum_\nu m_\nu/(z-a_\nu)$ on the circle. The first summand is holomorphic on a slightly larger disc, by (AF1). Cauchy's theorem makes its product with $h$ integrate to zero, while Cauchy's formula evaluates each remaining summand. Thus
 \[
- \frac1{2\pi i}\int_{|z-c|=r}h(z)\frac{f'(z)}{f(z)}\,dz
- =\sum_{\nu=1}^N m_\nu h(a_\nu).
+ \frac1{2\pi i}\int_{|z-c|=r}
+       h(z)\frac{f'(z)}{f(z)}\,dz
+ =\sum_{\nu=1}^{N}m_\nu h(a_\nu).
  \tag{AF3}
 \]
-Indeed, the $h v'/v$ term has integral zero by Cauchy's theorem on a slightly larger disc, and each $h(z)/(z-a_\nu)$ term has integral $2\pi i h(a_\nu)$. For $h=1$, (AF3) is the argument principle needed here. It counts multiplicity. For $h(z)=z^j$ it proves the power-sum formula, including repeated zeros. No meromorphic residue theorem is an additional input.
+Taking $h=1$ counts all zeros with multiplicity. Taking $h(z)=z^j$ gives their power sums. This derivation needs neither a choice of logarithm nor a meromorphic residue formula.
 
 <a id="root-continuity"></a>
-## 3. Stable zero counts and continuity of root multisets
+## 3. Perturbing an unordered set of roots
 
-Let $f_u(z)$ and $\partial_zf_u(z)$ depend continuously on a parameter $u$, uniformly for $z$ on a fixed circle, and suppose each $f_u$ is holomorphic on a neighborhood of its closed disc. If $f_{u_0}$ has no boundary zero, its boundary minimum is positive. Uniform continuity preserves a positive lower bound for $u$ near $u_0$. The integral in (AF3) with $h=1$ then depends continuously on $u$. It is an integer, so it is locally constant. This proves stable zero counts directly.
+Suppose a family $f_u$ is holomorphic near a fixed closed disc, and both $f_u$ and $f'_u$ vary continuously with $u$, uniformly on the boundary. At a parameter $u_0$ where the boundary is zero-free, its positive minimum stays bounded below for nearby parameters. The left side of (AF3), with $h=1$, is then continuous in $u$. Since its values are integers, the zero count is locally constant.
 
-Apply this separately to disjoint small discs around the distinct roots of a monic degree-$s$ polynomial $p_{u_0}$ with continuously varying coefficients. The polynomial and its derivative vary uniformly on each of their boundary circles. For nearby $u$, each small disc contains exactly the multiplicity of its central root at $u_0$. All roots of $p_u$ lie in a common large disc: if
-$p_u(z)=z^s+b_1(u)z^{s-1}+\cdots+b_s(u)$ and $M\ge\max_j|b_j(u)|$, then for $|z|>1+M$,
+For a monic polynomial of degree $s\ge1$, a local coefficient bound $M\ge\max_j|b_j(u)|$ gives, when $|z|>1+M$,
 \[
- \left|\sum_{j=1}^s b_j(u)z^{s-j}\right|
+ \left|\sum_{j=1}^{s} b_j(u)z^{s-j}\right|
  \le M\sum_{j=0}^{s-1}|z|^j<|z|^s.
  \tag{AF4}
 \]
-The polynomial has exactly $s$ complex roots with multiplicity by the earlier fundamental theorem of algebra and successive polynomial division. The counts in the small discs already sum to $s$, so there are no others. As their radii can be arbitrarily small, this proves continuity of the root multiset. It does not assume continuously labelled roots on an arbitrary parameter space, and it does not assume holomorphic labels at multiple roots.
+There are no roots outside that common disc. Around the distinct roots at $u_0$, choose disjoint small discs. Uniform boundary convergence holds for the polynomial and its derivative, so the count in each disc stays equal to the multiplicity of its original root. These counts sum to $s$. The fundamental theorem of algebra and successive division by linear factors give exactly $s$ roots with multiplicity, so none are missing. Since the small discs can be made arbitrarily small, this proves continuity of the multiset of roots. It makes no assertion about a global labelling or analytic labels at a collision. A constant monic polynomial has the empty multiset.
 
-The same counting argument applies to an analytic family $g(u,z)$ on a fixed disc whose boundary is zero-free. Choosing disjoint circles around the finitely many zeros at $u_0$ shows that nearby fibre zeros, with multiplicities, remain in those circles, and that their total number is unchanged. In particular, if $g(0,z)$ has its only zero at zero in the chosen disc, all these zeros approach zero as $u\to0$.
+For an analytic family on a fixed disc with zero-free boundary, use the same argument on the outer circle and on disjoint circles around its zeros at $u_0$. The inner counts account for the entire outer count and therefore exhaust the nearby zeros. In particular, if the only zero at $u=0$ is the origin, every zero in the disc tends to the origin as $u\to0$.
 
 <a id="newton-identities"></a>
-## 4. Newton's identities, without choosing root branches
+## 4. Recovering a polynomial from power sums
 
-For an unordered list $a_1,\ldots,a_s$, including repetitions, put $S_j=\sum_\nu a_\nu^j$, $e_0=1$ and
+Let $a_1,\ldots,a_s$ be any list, allowing repeated and zero entries. Put $S_j=\sum_\nu a_\nu^j$, and define the elementary symmetric functions by
 \[
- E(t)=\prod_{\nu=1}^s(1-a_\nu t)
-      =\sum_{k=0}^s(-1)^k e_k t^k.
+ E(t)=\prod_{\nu=1}^{s}(1-a_\nu t)
+     =\sum_{k=0}^{s}(-1)^ke_kt^k,
+ \qquad e_0=1.
 \]
-Near $t=0$ all denominators are nonzero, and finite logarithmic differentiation followed by geometric series gives
+For sufficiently small $t$, product differentiation and the geometric expansions of $(1-a_\nu t)^{-1}$ give $-tE'(t)=E(t)\sum_{j\ge1}S_jt^j$. Equating the coefficient of $t^k$ yields
 \[
- -t E'(t)=E(t)\sum_{j\ge1}S_jt^j.
-\]
-Comparing coefficients of $t^k$, for $1\le k\le s$, yields
-\[
- k e_k=\sum_{j=1}^k(-1)^{j-1}e_{k-j}S_j.
+ k e_k=\sum_{j=1}^{k}(-1)^{j-1}e_{k-j}S_j,
+ \qquad 1\le k\le s.
  \tag{AF5}
 \]
-This is a finite recursive expression for each $e_k$ as a polynomial with rational coefficients in $S_1,\ldots,S_k$. It holds with repeated or zero roots. Therefore analytic power sums imply analytic coefficients of the monic polynomial having that multiset of roots. No selection theorem for root branches is needed.
+Starting with $e_0=1$, this is a finite recursion expressing $e_k$ as a rational-coefficient polynomial in $S_1,\ldots,S_k$. Thus analytic power sums give analytic polynomial coefficients even at multiple roots. No root branches enter the calculation.
 
 <a id="parameter-integrals"></a>
-## 5. Why the parameter integrals are jointly analytic
+## 5. Parameter integrals as convergent series
 
-Here is the precise uniform assertion. Let $u\in\mathbb C^d$, let $\Gamma$ be a fixed circle, and let $F(u,\zeta)$ be continuous on a neighborhood of $\{|u_i-u_i^0|\le R_i\}\times\Gamma$, and holomorphic in each $u_i$ there when all other variables are fixed. The scalar Cauchy formula applied successively in $u_1,\ldots,u_d$ gives the iterated Cauchy integral. Expanding each of its kernels geometrically gives
+Let $u\in\mathbb C^d$ and let $\Gamma$ be a fixed circle. Assume $F(u,\zeta)$ is continuous on a neighborhood of a closed parameter polydisc times $\Gamma$, and holomorphic in each parameter with the others fixed. Apply the scalar Cauchy formula in each parameter on circles of radii $R_i$ about $u_i^0$. Their product is an iterated integral for $F$. Expand its kernels geometrically on smaller radii $\rho_i<R_i$. The coefficient integrals are continuous in $\zeta$ and satisfy
 \[
+ \begin{gathered}
  F(u,\zeta)=\sum_{\alpha\in\mathbb N^d}
- A_\alpha(\zeta)(u-u^0)^\alpha,
- \qquad |A_\alpha(\zeta)|\le M\prod_i R_i^{-\alpha_i},
+             A_\alpha(\zeta)(u-u^0)^\alpha,\\
+ |A_\alpha(\zeta)|\le M\prod_iR_i^{-\alpha_i},
+ \end{gathered}
  \tag{AF6}
 \]
-where $M$ is the supremum on the compact integration tori times $\Gamma$. The coefficients are continuous in $\zeta$. For $|u_i-u_i^0|\le\rho_i<R_i$, the sum of the majorants is at most $M\prod_i(1-\rho_i/R_i)^{-1}$. This proves uniform absolute convergence simultaneously in $u$ and $\zeta$. Every exchange here follows first for finite geometric sums and then from this uniform bound. Interchanging the finite-dimensional contour integrals is also justified by uniform approximation with their rectangular Riemann sums.
+where $M$ is the supremum on the compact integration tori times $\Gamma$. The total majorant on the smaller polydisc is $M\prod_i(1-\rho_i/R_i)^{-1}$. It proves uniform absolute convergence in the parameters and on the circle together. Finite kernel sums followed by this uniform bound justify all limit passages; interchange of the contour integrals follows from the earlier continuous iterated-integration lemma, or directly from their rectangular Riemann sums.
 
-It follows, by termwise integration, that
+Termwise contour integration now proves analyticity of
 \[
- u\longmapsto\int_\Gamma F(u,\zeta)\,d\zeta
+ u\longmapsto\int_\Gamma F(u,\zeta)\,d\zeta.
  \tag{AF7}
 \]
-is analytic. Compactness of $\Gamma$ provides a common smaller parameter polydisc whenever $F$ is given only on a neighborhood of $\{u^0\}\times\Gamma$.
+When the data are initially defined only near $\{u^0\}\times\Gamma$, compactness of the circle supplies one common smaller parameter polydisc for this argument.
 
-For the Cauchy extension on $\Gamma=\{|\zeta|=r\}$, also take $|w|\le b<r$ and expand
-\[
- \frac1{\zeta-w}=\sum_{k\ge0}\frac{w^k}{\zeta^{k+1}}.
-\]
-Together with (AF6) this gives an absolutely and uniformly convergent power series in $(u-u^0,w)$ for
+There is also a joint assertion for a Cauchy extension. On $|\zeta|=r$ and $|w|\le b<r$, expand $(\zeta-w)^{-1}=\sum_{k\ge0}w^k\zeta^{-k-1}$. Combining this series with (AF6) gives an absolutely convergent series in $(u-u^0,w)$ for
 \[
  \frac1{2\pi i}\int_{|\zeta|=r}
        \frac{F(u,\zeta)}{\zeta-w}\,d\zeta.
  \tag{AF8}
 \]
-As $b$ can be any number below $r$, the extension is jointly analytic throughout the interior. The analogous expansion centered at an arbitrary interior $w^0$ follows by expanding in $(w-w^0)/(\zeta-w^0)$ on a small enough disc. This proves the joint assertion directly from scalar Cauchy formulas; a separate theorem about several complex variables is not being silently invoked.
+Indeed, the additional geometric majorant is $1/(r-b)$. To center at any other interior point $w^0$, expand instead in $(w-w^0)/(\zeta-w^0)$ for $|w-w^0|<\operatorname{dist}(w^0,\Gamma)$. This proves joint analyticity at every interior point directly from the scalar formulas. For no parameter variables the assertion reduces to the scalar Cauchy construction.
 
 <a id="preparation-interface"></a>
-## 6. Applying the proved facts to Weierstrass preparation and division
+## 6. Solving division in coefficient space
 
-We now check precisely the analytic interface of the earlier programme reading. Let $g(u,w)$ be an analytic germ with $g(0,w)$ of finite order $s\ge1$ at zero. Its Taylor factor is $w^s v(w)$, $v(0)\ne0$. Choose $r>0$ small enough that $v$ is nonzero on a neighborhood of $|w|\le r$. Continuity on a compact annulus about $|w|=r$ then gives a common parameter polydisc on which $g$ is nonzero on that annulus.
+<a id="coefficient-division"></a>
 
-The case $s=0$ is immediate: $g$ is itself a unit near zero and one takes $P=1$. For real analytic $g$, use its complexification from Section 1. At real parameters its fibre roots are closed under complex conjugation with the same multiplicities. Their elementary symmetric functions are therefore real, so the resulting $P$ and $U=g/P$ restrict to real analytic functions. This provides the real division and preparation statements required by the later real-variable argument.
+Write the coordinates as $(u,w)\in\mathbb C^d\times\mathbb C$. Suppose $g(0,w)$ has finite order $s$ at zero. If $s=0$, the reciprocal construction already gives preparation with $P=1$, unit $U=g$, and division $f=g(f/g)+0$. A positive lower bound on a smaller closed polydisc gives the quotient bound. We henceforth take $s\ge1$.
 
-Equations (AF3) and (AF7) show that
+For positive weights $\delta,r$, consider coefficient arrays with finite norm
+\[
+ \|f\|_{\delta,r}
+ =\sum_{\alpha\in\mathbb N^d,\,k\ge0}
+       |f_{\alpha k}|\delta^{|\alpha|}r^k.
+ \tag{AD1}
+\]
+They define analytic functions on the open polydisc and continuous functions on its closure, by uniform absolute convergence. Every analytic germ belongs to such a space after reducing its radii. Multiplication has norm at most the product of the norms: expand the coefficient convolution and sum its nonnegative absolute terms, taking suprema of finite partial sums.
+
+This normed coefficient space is complete. For a Cauchy sequence, each weighted coefficient has a limit. Fix a Cauchy tolerance and pass to these limits in any finite sum of coefficient differences from a sufficiently late term. Its bound is the same tolerance. Taking the supremum over all finite sets proves that the full norm difference has this bound; it also proves that the limiting array has finite norm. Thus convergence occurs in the norm. This proves the completeness needed below without importing a theorem about function spaces.
+
+Let $J_s$ retain the terms of degree less than $s$ in $w$, and let $D_s$ discard those terms and divide the rest by $w^s$. Then
+\[
+ \begin{gathered}
+ f=w^sD_sf+J_sf,\\
+ \|D_sf\|_{\delta,r}\le r^{-s}\|f\|_{\delta,r},\\
+ \|J_sf\|_{\delta,r}\le\|f\|_{\delta,r}.
+ \end{gathered}
+ \tag{AD2}
+\]
+The coefficient series in $u$ of $J_sf$ converge, so it is a polynomial in $w$ of degree below $s$ with analytic coefficients.
+
+Write $g(0,w)=w^sv(w)$ with $v(0)\ne0$, and choose a small normal radius on which $v$ is a unit. Set $h(u,w)=g(u,w)/v(w)=w^s+E(u,w)$. Every coefficient of $E$ with $u$-degree zero vanishes. Choose an initial parameter radius $\delta_0$ and a normal radius $r$ for which $\|E\|_{\delta_0,r}<\infty$. For $0<\delta\le\delta_0$,
+$\|E\|_{\delta,r}\le(\delta/\delta_0)\|E\|_{\delta_0,r}$, since every term has positive parameter degree. Reduce $\delta$ until $\rho=r^{-s}\|E\|_{\delta,r}<1/3$. When $d=0$, $E=0$ and no reduction is required.
+
+Division $f=hq+R$, with $\deg_wR<s$, is equivalent under $D_s$ to $q+D_s(Eq)=D_sf$. Put $Tq=D_s(Eq)$. Its norm is at most $\rho<1$. Completeness and the geometric bound on $T^jD_sf$ give the convergent solution
+\[
+ \begin{gathered}
+ q=\sum_{j\ge0}(-T)^jD_sf,\\
+ R=f-hq.
+ \end{gathered}
+ \tag{AD3}
+\]
+Multiplication of finite sums by $I+T$ leaves a last term tending to zero, so the equation holds. It gives $D_sR=0$, hence $R=J_sR$. For two solutions, their quotient difference satisfies $q=-Tq$, and the norm inequality forces $q=0$; their remainder difference is then zero. This proves existence and uniqueness in the coefficient space. It proves the same assertion for analytic germs, because any two candidate germ solutions and the data belong to a common smaller weighted space where the same contraction bound holds.
+
+Apply this division to $f=w^s$. Since $D_sf=1$, its quotient $q_*$ satisfies $\|q_*-1\|\le\rho/(1-\rho)<1/2$. It is a unit, both by (AF1) and by the norm-convergent geometric inverse. At $u=0$ the equation has $E=0$, so $q_*(0,w)=1$ and $R_*(0,w)=0$. Therefore
+\[
+ \begin{gathered}
+ P=w^s-R_*=h q_*,\\
+ U=v/q_*,\qquad g=UP,\\
+ P(u,w)=w^s+\sum_{j=1}^s a_j(u)w^{s-j},\\
+ a_j(0)=0.
+ \end{gathered}
+ \tag{AD4}
+\]
+This constructs the distinguished monic polynomial and the analytic unit. After reducing the polydisc again, they are analytic on a neighborhood of its closure and the unit stays bounded away from zero.
+
+For any analytic $f$, the same coefficient argument divides by $P$: now $E=P-w^s$ again has zero parameter-constant part. Division by $g=UP$ follows by replacing the quotient for $P$ by its quotient by $U$. In real analytic data, complexification gives the same constructions. Every coefficient operation, geometric sum and reciprocal preserves real coefficients, so the resulting units, quotients and remainders have real analytic restrictions.
+
+The distinguished factorization is unique. If $g=\widetilde U\widetilde P$ is another such factorization, restriction to $u=0$ shows that the degree of $\widetilde P$ is $s$. Take a common small polydisc where both units are nonzero. By the root-multiset continuity in Section 3, all roots of both polynomials lie in its normal disc for sufficiently small parameters. In each fibre their roots, including multiplicities, are precisely the zeros of $g$. A monic polynomial is the product of its linear factors, so $P=\widetilde P$, and then $U=\widetilde U$. This also identifies factorizations obtained by different choices of coefficient weights.
+
+## 7. Contour formulas and uniform division bounds
+
+There is a second construction that records the zeros directly. Choose a normal circle $|w|=r$ enclosing only the order-$s$ zero of $g(0,w)$, with $g(0,w)$ nonzero on a surrounding closed annulus. By continuity and compactness, that annulus remains zero-free on a small parameter polydisc. Sections 2 and 5 apply to
 \[
  S_j(u)=\frac1{2\pi i}\int_{|\zeta|=r}
-        \zeta^j\frac{\partial_\zeta g(u,\zeta)}{g(u,\zeta)}\,d\zeta
+       \zeta^j\frac{\partial_\zeta g(u,\zeta)}{g(u,\zeta)}\,d\zeta.
  \tag{AF9}
 \]
-is analytic, that $S_0=s$, and that $S_j$ for $j\ge1$ is the power sum of the fibre zeros. Equation (AF5) gives analytic $e_k(u)$, with $e_k(0)=0$. Thus $P(u,w)=w^s-e_1(u)w^{s-1}+\cdots+(-1)^s e_s(u)$ has exactly the same zeros and multiplicities as $g$ inside the circle.
+These functions are analytic. Continuity makes $|S_0(u)-s|<1/2$ after shrinking the parameter polydisc, so its integer-valued zero count is exactly $s$ there. The other $S_j$ are the power sums of the fibre zeros. Newton's recursion gives analytic $e_k$ with $e_k(0)=0$. The polynomial $w^s-e_1w^{s-1}+\cdots+(-1)^se_s$ therefore has exactly those zeros and multiplicities.
 
-For each fixed $u$, cancellation of the local Taylor factors makes both $g/P$ and $P/g$ holomorphic through their apparent singularities. On the boundary annulus they already are analytic quotients. Formula (AF8), applied to each boundary quotient, supplies jointly analytic extensions to the interior. Scalar Cauchy's formula identifies them with the fibrewise extensions. Their product is one there, either by the scalar identity theorem on each fibre or by continuity at the cancelled zeros. Consequently $g=UP$ with a jointly analytic unit $U$. All assertions about multiplicity and dependence on $u$ have now been justified.
+To obtain the unit by this route, cancel the equal Taylor factors of $g$ and this polynomial on each fibre. Both quotients extend holomorphically through the fibre zeros. On the boundary annulus the quotients are already jointly analytic by (AF1). Apply (AF8) to their boundary values. Scalar Cauchy's formula identifies the jointly analytic interior extensions with the fibrewise quotients. Their product is one, including at a cancelled zero by continuity. This proves preparation by the contour route; uniqueness identifies its factors with (AD4). For real data, conjugation preserves each fibre multiset with its multiplicities, so its elementary symmetric functions are real. This also proves the real-form assertion by the contour route.
 
-For division, take $f$ analytic on a neighborhood of a closed, smaller adapted polydisc and define
+For a function $f$ analytic near a closed adapted polydisc, write $f_u(w)=f(u,w)$ and $P_u(w)=P(u,w)$. Set
+\[
+ K_u(\zeta,w)=\frac{P_u(\zeta)-P_u(w)}{\zeta-w}.
+\]
+Division by $P$ has the formulas
 \[
  \begin{aligned}
  q(u,w)&=\frac1{2\pi i}\int_{|\zeta|=r}
-     \frac{f(u,\zeta)}{P(u,\zeta)(\zeta-w)}\,d\zeta,\\
+       \frac{f_u(\zeta)}{P_u(\zeta)(\zeta-w)}\,d\zeta,\\
  R(u,w)&=\frac1{2\pi i}\int_{|\zeta|=r}
-     \frac{f(u,\zeta)}{P(u,\zeta)}
-     \frac{P(u,\zeta)-P(u,w)}{\zeta-w}\,d\zeta.
+       \frac{f_u(\zeta)K_u(\zeta,w)}{P_u(\zeta)}\,d\zeta.
  \end{aligned}
  \tag{AF10}
 \]
-Equation (AF8) proves analyticity of $q$. The polynomial identity
-$(\zeta^k-w^k)/(\zeta-w)=\sum_{\ell=0}^{k-1}\zeta^{k-1-\ell}w^\ell$ makes $R$ a polynomial of degree less than $s$ with analytic parameter coefficients by (AF7). Adding $Pq$ and $R$ gives $f$ by scalar Cauchy's formula. Uniqueness follows by subtracting two divisions: the difference of their remainders has all $s$ roots with multiplicity because it is holomorphically divisible by $P$, but has degree less than $s$. It must be zero by successive one-variable polynomial division, and then so must the difference of their quotients.
+The first integral is jointly analytic by (AF8). In the second, use $(\zeta^k-w^k)/(\zeta-w)=\sum_{\ell=0}^{k-1}\zeta^{k-1-\ell}w^\ell$. Thus $K_u(\zeta,w)$ extends polynomially across $\zeta=w$ and has degree below $s$ in $w$. Each coefficient integral is analytic by (AF7). Adding $Pq$ and $R$ leaves exactly the scalar Cauchy formula for $f$, proving division.
 
-The estimates used in the Noetherian argument also have uniform constants. Shrink the parameter polydisc so that $|P(u,\zeta)|\ge\mu>0$ on a fixed closed annulus $r_0\le|\zeta|\le r$, while all roots lie in $|w|<r_0$. The finite polynomial quotient in (AF10) is bounded uniformly for $|w|\le r$ and $|\zeta|$ in this annulus. It follows that $|R|\le C\sup|f|$. On any circle $r_0<t<r$, the identity $q=(f-R)/P$ bounds $|q|$ by $\mu^{-1}(1+C)\sup|f|$. The proved scalar maximum modulus principle extends this bound to $|w|\le t$; increasing $t$ gives the bound on $|w|<r$. For bounded $f$ defined only on the open adapted polydisc, use contours with $t<r$. The resulting divisions agree on overlaps by the just-proved uniqueness, so the same uniform bounds and analytic functions hold throughout the open polydisc. Division by $g=UP$ replaces $q$ by $q/U$, whose analyticity and bounds follow from the proved reciprocal and the unit's positive lower bound on a smaller closed polydisc.
+There is also a fibrewise uniqueness proof. Subtract two divisions. The remainder difference is a polynomial of degree below $s$ and is holomorphically divisible by $P$. It consequently vanishes at every root of $P$ with at least that root's multiplicity. Successive division by these linear factors forces the remainder difference to be zero, and then the quotient difference is zero. This agrees with coefficient-space uniqueness and includes collisions. Conjugating a division of real data gives another division of the same data; uniqueness fixes both coefficient arrays under conjugation, again proving that their real restrictions are analytic.
 
-The remaining algebraic Noetherian and preparation arguments are the exact earlier programme proofs in *Weierstrass preparation and division* and *Analytic finiteness for preparation*. They are read after this supplement. The second reading proves its convergent Puiseux conclusion through its finite preparation induction. Neither a free primary source nor the presence of a link is a substitute for that programme proof.
+We finish with the uniform estimate, including data defined only on an open polydisc. Reduce the parameter radius so that all roots lie in $|w|<r_0<r$ and
+$|P(u,\zeta)|\ge\mu>0$ on the fixed closed annulus $r_0\le|\zeta|\le r$, uniformly on the closed parameter polydisc. This is possible by root continuity and compactness. The polynomial
+$K_u(\zeta,w)$ is bounded in absolute value by a constant $K_0$ there for $|w|\le r$, including the diagonal by its polynomial extension.
+
+For a contour of any radius $\tau\in(r_0,r)$, the second formula (AF10) therefore gives
+$|R|\le C_R\sup|f|$, with $C_R=rK_0/\mu$ independent of $\tau$ and $f$. On a circle $|w|=t$ with $r_0<t<\tau$, the identity $q=(f-R)/P$ gives
+$|q|\le\mu^{-1}(1+C_R)\sup|f|$. The earlier maximum modulus principle gives the same bound throughout $|w|\le t$.
+
+If $f$ is bounded and analytic only on the open adapted polydisc, fix $\tau<r$ and apply the contour construction on a small neighborhood of any given parameter. Every contour is inside the domain of $f$, so Section 5 applies there. Different parameter neighborhoods and different radii give the same divisions on overlaps by the fibrewise uniqueness proof: every radius exceeds $r_0$ and encloses all $s$ roots. Thus the quotients and remainder coefficients glue analytically on the entire open polydisc. To bound a given smaller disc $|w|\le t$, choose $t<\tau<r$. The preceding constants do not depend on either radius. Letting $t$ tend to $r$ proves the uniform bounds for $q$ and $R$ on the whole open polydisc. For division by $g=UP$, replace $q$ by $q/U$ and use the unit's positive lower bound on the closed adapted polydisc. The degree-zero case has the reciprocal bound from Section 6. These estimates supply the bounded-data division used in the later Noetherian argument.
+
+## Further reading
+
+Jean-Pierre Demailly, [*Complex Analytic and Differential Geometry*, 21 June 2012, Chapter II, Section 2.A, printed pages 79–81](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=79), gives the classical contour construction of preparation and division and its bounded-data estimate.
+
+The subsequent programme readings *Weierstrass preparation and division* and *Analytic finiteness for preparation* develop the algebraic and Noetherian consequences. The latter proves its one-variable convergent Puiseux conclusion through finite preparation induction. Their analytic inputs have been proved above.

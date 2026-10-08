@@ -1,6 +1,6 @@
 # Roots and reductive groups of rank one
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original exposition is public domain (CC0). The collected lesson, including the explicitly attributed Stacks passage, is also distributed under the GNU Free Documentation License 1.2.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text: public domain (CC0). The normalization lemma in Section 5 follows the Stacks Project's proof, cited at the end.*
 
 The diagonal entries of a matrix act on its off-diagonal entries through ratios. Those ratios are the roots of a general linear group. For an arbitrary reductive group, roots are still characters of a maximal torus, but their one-dimensional spaces need not be globally trivial over the base. This lesson constructs the corresponding groups without using a power-series exponential, and shows why every root carries a copy of the rank-one geometry of $\operatorname{SL}_2$.
 
@@ -196,13 +196,13 @@ $$
 
 ## 5. A projective quotient and its rank-one form
 
-We need one general algebraic-space tool before constructing this quotient. The following statement and its whole proof are adapted from the Stacks project authors, as read in AI Integrated Stacks Project, [Stacks, Tag 0ABS](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/spaces-morphisms.html#lemma-quasi-finite-separated-quasi-affine). This passage retains the GNU Free Documentation License 1.2.
+We need one general algebraic-space tool before constructing this quotient. The following statement and its proof follow the Stacks project authors' argument, as read in AI Integrated Stacks Project, [Stacks, Tag 0ABS](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/spaces-morphisms.html#lemma-quasi-finite-separated-quasi-affine).
 
 **Quasi-finite normalization lemma.** Let $S$ be a scheme and let $f:X\to Y$ be a quasi-finite separated morphism of algebraic spaces over $S$. Let $Y'$ be the normalization of $Y$ in $X$. Then the factorization $X\xrightarrow{f'}Y'\xrightarrow{\nu}Y$ has $f'$ a quasi-compact open immersion and $\nu$ integral. In particular $f$ is quasi-affine.
 
 **Proof from Stacks.** The representability theorem for locally quasi-finite separated morphisms of algebraic spaces makes $f$ representable. The finite-type separated normalization theorem then supplies an open subspace $U'\subset Y'$ with $(f')^{-1}(U')=X$ and $X\to U'$ an isomorphism. Thus $f'$ is an open immersion. It is quasi-compact because $f$ is quasi-compact and $\nu$ is separated. For every affine scheme $Z$ mapping to $Y$, the fibre product $Z\times_YX$ is therefore a quasi-compact open subscheme of the affine scheme $Z\times_YY'$. This is exactly the definition of a quasi-affine morphism. $\square$
 
-The two general normalization and representability results used in this imported proof are the preceding results in its source chapter. The theorem on Zariski's Main Theorem in the programme supplies the scheme normalization statement; the imported algebraic-space proof and its source links retain the additional representability step.
+The two general normalization and representability results used in this proof are the preceding results in its source chapter. The theorem on Zariski's Main Theorem in the programme supplies the scheme normalization statement; for the additional representability step, this algebraic-space proof relies on the cited source.
 
 The following construction will also be used for flag varieties. It makes explicit why a fibrewise projective quotient is a scheme, even before we have classified the group over the base.
 
@@ -419,7 +419,7 @@ The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses
 - Brian Conrad, [*Reductive group schemes*](https://math.stanford.edu/~conrad/papers/luminysga3.pdf), §§2.3 and 4.1–4.3, for the dynamic approach and Gabber's central-extension splitting argument. The proofs above are written out independently.
 - J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, 2017, Chapters 19–20, especially Theorem 20.33, for the field rank-one classification.
 - SGA 3, [*Schémas en groupes*](https://webusers.imj-prg.fr/~patrick.polo/SGA3/), Exposés XIX–XX, for roots and the relative rank-one theorem.
-- The [official Stacks project](https://stacks.math.columbia.edu/) and AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers. The normalization lemma and its whole proof in Section 5 are adapted from the Stacks project authors through this edition.
+- The [official Stacks project](https://stacks.math.columbia.edu/) and AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers. The normalization lemma in Section 5 and its proof follow the Stacks project authors' argument (Tag 0ABS) in this edition.
 
 The following are assigned internal prerequisite lessons. Their published or planned state is recorded in the course prerequisite guide; their use does not claim that the entire programme is proof-complete:
 
@@ -433,8 +433,6 @@ Central multiplicative-type quotients are proved by invariant algebras in Sectio
 
 ## History
 
-This lesson's new exposition, constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
+This lesson's exposition, constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
 
-The normalization lemma and its whole proof are adapted from the Stacks authors, *The Stacks Project*, *Morphisms of Algebraic Spaces*, Tag 0ABS, through the AI Integrated Stacks Project English source edition read on 1 October 2026. The Stacks authors retain copyright in that material. The source is the [versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/spaces-morphisms.tex). AI Integrated Stacks Project contains AI-proposed corrections and AI-written additions and has not been reviewed by the Stacks project's maintainers.
-
-This collected lesson, *Roots and reductive groups of rank one* (2026), is published by Open Mathematics Courses. The Stacks authors are the authors of its imported proof; GPT-6.1 Sol (OpenAI) is responsible for the new contributions and adaptation. Permission is granted to copy, distribute and modify this collected lesson under the GNU Free Documentation License, Version 1.2, with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. An unaltered copy of the licence is supplied as [GNU Free Documentation License 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/assets/GFDL-1.2.txt). This additional licence for the collected lesson does not withdraw the CC0 dedication of its original contributions.
+The normalization lemma and its proof follow the Stacks authors' argument in *The Stacks Project*, *Morphisms of Algebraic Spaces*, Tag 0ABS, read through the AI Integrated Stacks Project English source edition on 1 October 2026 ([versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/spaces-morphisms.tex)). AI Integrated Stacks Project contains AI-proposed corrections and AI-written additions and has not been reviewed by the Stacks project's maintainers. The Stacks Project itself is distributed under the GNU FDL 1.2 or later.

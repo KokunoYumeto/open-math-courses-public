@@ -15,6 +15,6 @@ Each result used by a lesson has its proof locally or in an exact supplied earli
 - [Schwartz functions and Fourier inversion](prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.html) · [editable source](prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md) · CC0-1.0
 - [Smooth flows with all parameter derivatives](prerequisites/U011-free-foundations/smooth-parameter-flows-U072.html) · [editable source](prerequisites/U011-free-foundations/smooth-parameter-flows-U072.md) · CC0 1.0
 - [Complex scalars and finite algebra — selected programme proofs](prerequisites/U011-free-foundations/stable-prerequisite-bridges.html) · [editable source](prerequisites/U011-free-foundations/stable-prerequisite-bridges.md) · CC0 1.0
-- [Weierstrass preparation and division](prerequisites/U011-free-foundations/weierstrass-preparation-U070.html) · [editable source](prerequisites/U011-free-foundations/weierstrass-preparation-U070.md) · Demailly-OpenContent-custom; CC0 receiving notes
+- [Weierstrass preparation and division](prerequisites/U011-free-foundations/weierstrass-preparation-U070.html) · [editable source](prerequisites/U011-free-foundations/weierstrass-preparation-U070.md) · CC0 1.0
 
 [The HA-LCA quotient/lattice route](prerequisites/HA-LCA-724d1a8/AN01-INTEGRATION.html) includes its complete provider edition and precise record of the 192 proof blocks checked for AN-01.

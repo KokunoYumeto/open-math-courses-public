@@ -1,10 +1,11 @@
 """Exact noncommuting M2 densities: twisted versus ordinary multiplication."""
 from pathlib import Path
-import json
+import json, re
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+matplotlib.rcParams["svg.hashsalt"] = "OA-FLOW-balanced-cocycle-v1"
 
 d=Path(__file__).resolve().parent
 rotation=np.array([[1,-1],[1,1]],dtype=float)/np.sqrt(2)
@@ -46,7 +47,14 @@ fig.text(.5,.135,r"$u_{s+t}=u_s\,\sigma_s^\varphi(u_t)$",ha="center",fontsize=19
 fig.text(.5,.052,"BC-4, equation BC20. The entries and error norms are exact; cell shading records entry modulus only.",
          ha="center",fontsize=11)
 fig.savefig(d/"assets"/"balanced-cocycle.png",dpi=180,bbox_inches="tight")
-fig.savefig(d/"assets"/"balanced-cocycle.svg",bbox_inches="tight")
+svg_path=d/"assets"/"balanced-cocycle.svg"
+fig.savefig(svg_path,bbox_inches="tight",metadata={"Date":None})
+# Identical embedded images share a backend ID; unused image IDs are omitted.
+svg_text=svg_path.read_text(encoding="utf-8")
+image_ids=re.findall(r'<image\b[^>]*\bid="([^"]+)"',svg_text)
+assert all("#"+ident not in svg_text for ident in image_ids), "Referenced image ID"
+svg_text=re.sub(r'(<image\b[^>]*?)\s+id="[^"]+"',r"\1",svg_text)
+svg_path.write_text(svg_text,encoding="utf-8")
 plt.close(fig)
 def serial(m):return [[[float(z.real),float(z.imag)] for z in row] for row in m]
 (d/"balanced-cocycle-numerics.json").write_text(json.dumps({

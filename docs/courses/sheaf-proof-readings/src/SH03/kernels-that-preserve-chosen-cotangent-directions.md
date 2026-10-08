@@ -265,7 +265,7 @@ For admissible kernels Theorem 2 makes both parenthesizations admissible. Theore
 
 The second identity takes the final kernel to be an object on \(Z\times\{\mathrm{pt}\}\). This proves it on the full localized categories, rather than merely on ordinary sheaf representatives.
 
-The diagonal kernel \(k_{\Delta_X}\) is admissible from \(\Omega_X\) to itself. Its twisted relation is the diagonal of \(\Omega_X\times\Omega_X\), so projection to the output is a homeomorphism. Its transform is the identity by the ordinary diagonal formula.
+The diagonal kernel \(k_{\Delta_X}\) is admissible from \(\Omega_X\) to itself. If \(k\neq0\), its twisted relation is the diagonal of \(\Omega_X\times\Omega_X\), so projection to the output is a homeomorphism. If \(k=0\), the kernel and all unital coefficient modules are zero; its relation is empty, and admissibility holds because the empty projection is proper. In both cases its transform is the identity by the ordinary diagonal formula, including the identity functor of the zero category.
 
 **Theorem 4.** Suppose \(K\) and \(L\) are admissible in the two opposite directions and there are localized kernel isomorphisms
 

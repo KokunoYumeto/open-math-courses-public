@@ -1,6 +1,6 @@
 # Oldforms, newforms and the theory of Atkin, Lehner and Li
 
-The operators at primes dividing the level behave differently on oldforms and newforms. The pair \(g(z),g(pz)\) has a two-dimensional \(U_p\)-matrix even when \(g\) originally spans a single eigenline. The new subspace removes these repetitions by orthogonality. This lesson develops primitive-level uniqueness and the decomposition of every cusp form into degeneracies. Those general deductions remain conditional on the Fourier-support, level-lowering and arithmetic proof gaps stated where they enter. The local degeneracy and finite symbol calculations are retained in full. Appendix A proves the fixed-character Fourier-support statement for one prime, including conductor obstruction and vanishing for primes outside the level.
+The operators at primes dividing the level behave differently on oldforms and newforms. The pair \(g(z),g(pz)\) has a two-dimensional \(U_p\)-matrix even when \(g\) originally spans a single eigenline. The new subspace removes these repetitions by orthogonality. This lesson develops primitive-level uniqueness and the decomposition of every cusp form into degeneracies. Sections 3.3–3.7 prove the fixed-character Fourier-support theorem for every finite auxiliary set, including its weighted traces and exact lower levels. Appendix A supplies the one-prime argument used there. The unrestricted \(\Gamma_1\) support statement and the Petersson, spectral and arithmetic prerequisites retain the proof requirements stated below.
 
 Throughout, \(k\ge2\) is an integer. All spaces are complex vector spaces. We keep the unitary slash
 \[
@@ -140,7 +140,7 @@ both factors preserve the old space. At bad primes use Lemmas 2.1 and 2.2 to see
 
 ## 3. The main lemma and the new eigenbasis
 
-The following is an explicit input from newform theory.
+We first state the full Fourier-support problem. Its fixed-character form is proved in Theorem 3.7 below.
 
 **Main lemma, with an auxiliary finite set of primes.** Suppose \(D\ge1\) and \(h\in S_k(\Gamma_1(N))\) satisfies
 \[
@@ -152,7 +152,7 @@ h=\sum_{p\mid(N,D)}V_ph_p.
 \]
 The empty sum is zero. On a character component only those lower levels through which its character factors can contribute.
 
-For a fixed character, the freely accessible original paper of Li, Section 2, Theorem 2 and Corollary 1 contains this result. The freely accessible Diamond–Im survey states the unrestricted \(\Gamma_1\) version in Proposition 6.2.1. **Proof gap:** the general Fourier-support lemma has not yet been proved locally or located in an earlier programme lesson. The deductions below retain their full scope, but depend on this unresolved lemma. Appendix A supplies the fixed-character one-prime support proof at every level. It does not yet prove the auxiliary-set statement. A joint Hecke/diamond eigenspace already has a fixed character, so the fixed-character version suffices for those deductions. We do not assume that an arbitrary Fourier support condition is preserved by diamond projection.
+Li's original paper treats the fixed-character theorem; the Diamond–Im survey also states the unrestricted \(\Gamma_1\) version. **Remaining proof requirement:** the unrestricted support statement has not been proved here or supplied by an exact earlier programme lesson. Theorem 3.7 proves the fixed-character auxiliary-set statement, using Theorem A.1 and the traces below. A joint Hecke/diamond eigenspace already has a fixed character, so that theorem supplies the support input to existence. It also applies to a difference of two forms whose characters have already been identified. Arbitrary diamond projection is not assumed to preserve Fourier support.
 
 Taking \(D=N\) gives the usual level-supported main lemma. Its auxiliary-\(D\) form is needed when eigenvalue comparisons omit extra primes.
 
@@ -166,7 +166,7 @@ Let \(h\in E\) have \(a_1(h)=0\). For each \(n\) prime to \(N\), the coefficient
 \[
 a_1(T_nh)=a_n(h).
 \]
-The left side is the eigenvalue of \(T_n\) times \(a_1(h)\), hence zero. The main lemma with \(D=N\) puts \(h\) in the old space. Since it was new, positivity gives \(h=0\). Thus \(a_1:E\to\mathbb C\) is injective, so every nonzero \(E\) is one-dimensional and its generator has nonzero first coefficient.
+The left side is the eigenvalue of \(T_n\) times \(a_1(h)\), hence zero. The fixed-character theorem, Theorem 3.7 with \(D=N\), puts \(h\) in the old space. Since it was new, positivity gives \(h=0\). Thus \(a_1:E\to\mathbb C\) is injective, so every nonzero \(E\) is one-dimensional and its generator has nonzero first coefficient.
 
 Every \(U_p\) preserves the new space and commutes with all the good operators and diamonds. It therefore preserves each line \(E\). These lines are eigenlines for all \(U_p\), and the recurrences give every \(T_n\). Dividing each generator by its first coefficient yields the required basis. \(\square\)
 
@@ -199,6 +199,294 @@ Indeed \(f\|A=p^{-k/2}g\), so the constant factor makes no difference. The group
 T^{-1}UT^{-1}=S.
 \]
 The matrices \(S,T\) generate the full modular group. Thus \(g\) has its weight-\(k\) transformation law. It is holomorphic on the upper half-plane and its displayed expansion vanishes at infinity. Every cusp of the full modular group is equivalent to infinity, so it is cuspidal. The defining identity gives \(f(z)=g(pz)\). \(\square\)
+
+<a id="finite-weighted-trace"></a>
+
+### 3.3. Finite cosets and the character-weighted trace
+
+Write \(S_k(N,\chi_N)=S_k(\Gamma_0(N),\chi_N)\), where
+\(f\|_k\gamma=\chi_N(\gamma_{22})f\). A character at a lower modulus is always named separately. Its pullback agrees with \(\chi_N\) on units modulo \(N\), without identifying their zero extensions on all integers. We may assume \(\chi_N(-1)=(-1)^k\), since otherwise the space is zero.
+
+For every prime \(r\), Fourier averaging defines
+\[
+\begin{gathered}
+E_rf(z)=\frac1r\sum_{u=0}^{r-1}f((z+u)/r)\\
+=\sum_{n\ge1}a_{rn}(f)e^{2\pi inz}.
+\end{gathered}
+\]
+Thus \(E_r=U_r\) whenever \(r\mid N\). We use the unitary slash fixed at the beginning of this lesson; in particular positive scalar matrices act trivially and
+\(V_r=r^{-k/2}(\|_k\operatorname{diag}(r,1))\).
+
+**Lemma 3.3.** Suppose \(N=rL\) and \(\chi_N\) descends to \(\chi_L\). Put
+\[
+\begin{gathered}
+G=\Gamma_0(L),\qquad H=G\cap\Gamma^0(r),\\
+A_r=\operatorname{diag}(1,r),\\
+T=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+\end{gathered}
+\]
+If \(F=f\|_kA_r\), for \(f\in S_k(N,\chi_N)\), then the finite character-weighted trace
+\[
+\begin{gathered}
+\mathcal T F=
+\sum_{\rho\in H\backslash G}
+\chi_L(\rho_{22})^{-1}F\|_k\rho,\\
+\mathcal T F\in S_k(L,\chi_L).
+\end{gathered}
+\tag{3.1}
+\]
+When \(r\mid L\), its representatives can be chosen as \(T^u\), \(0\le u<r\), and
+\[
+\begin{gathered}
+E_rf=r^{k/2-1}\mathcal T(f\|_kA_r),\\
+E_rf\in S_k(L,\chi_L).
+\end{gathered}
+\tag{3.2}
+\]
+
+**Proof.** For \(\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in H\),
+\[
+A_r\gamma A_r^{-1}
+=\begin{pmatrix}a&b/r\\rc&d\end{pmatrix}\in\Gamma_0(N).
+\]
+The entry \(d\) is a unit modulo \(L\) and modulo \(r\), because \(ad\equiv1\pmod r\). The slash cocycle gives \(F\|_k\gamma=\chi_L(d)F\). Rational-slash cusp preservation, proved in Hecke operators for the congruence groups, Section 2 immediately after (2.3), gives cuspidality at \(H\).
+
+If \(r\mid L\), a matrix \(\gamma\in G\) is upper triangular modulo \(r\). Its upper-left entry \(a\) is nonzero. Choose \(u\equiv b/a\pmod r\); then \(\gamma T^{-u}\in H\). This gives the stated left-coset representatives, and \(T^{u-v}\in H\) only when \(r\mid u-v\).
+
+If \(r\nmid L\), reduction of \(G\) onto \(\mathrm{SL}_2(\mathbb F_r)\) is surjective: prescribe identity modulo \(L\) and an arbitrary determinant-one matrix modulo \(r\), then use CRT and integral lifting from Congruence subgroups, cusps and elliptic points, Lemmas 1.0–1.1. The image of \(H\) is the lower triangular subgroup. Its left cosets are classified by the projective first row. Indeed left multiplication scales that row; conversely two proportional first rows make the upper-right entry of their quotient zero. The lines are \([1:u]\), \(0\le u<r\), and \([0:1]\). Choose \(rx-Ly=1\). Then
+\[
+R=\begin{pmatrix}rx&y\\L&1\end{pmatrix}
+\]
+has determinant one and first row \([0:1]\) modulo \(r\). Thus \(T^0,\ldots,T^{r-1},R\) exhaust the \(r+1\) left cosets. This argument includes \(r=2\) and \(L=1\).
+
+The function \(\lambda(\gamma)=\chi_L(\gamma_{22})\) is a group character on \(G\), since lower-right entries multiply modulo \(L\). Replacing \(\rho\) by \(h\rho\), with \(h\in H\), leaves the corresponding summand in (3.1) unchanged: the factor \(\lambda(h)\) from the transformation of \(F\) cancels its inverse in the weight. If \(\rho\gamma=h_\rho\rho'\), then
+\[
+\lambda(\rho)^{-1}\lambda(h_\rho)
+=\lambda(\gamma)\lambda(\rho')^{-1}.
+\]
+Reindexing proves \((\mathcal TF)\|_k\gamma=\lambda(\gamma)\mathcal TF\). Each summand vanishes at every rational cusp after passing to a common congruence subgroup, so the finite sum is cuspidal; its lower-level transformation law then gives the lower-level cusp condition.
+
+All the displayed representatives have lower-right entry one. Their actual character weights are therefore one, even for a nontrivial character. Finally
+\[
+\begin{gathered}
+\sum_{u=0}^{r-1}F\|_kT^u\\
+=r^{-k/2}\sum_{u=0}^{r-1}f((z+u)/r)\\
+=r^{1-k/2}E_rf.
+\end{gathered}
+\]
+If \(r\mid L\), there is no remaining representative, giving (3.2). \(\square\)
+
+<a id="prime-once-trace"></a>
+
+### 3.4. A prime occurring once and compatible partial matrices
+
+**Proposition 3.4.** Suppose \(q\Vert N\), put \(L=N/q\), and suppose \(\chi_N\) descends to \(\chi_L\). Choose integers \(x,y,z\) with \(qx-Lyz=1\), and set
+\[
+\begin{gathered}
+A_q^N=\begin{pmatrix}qx&y\\Nz&q\end{pmatrix},\\
+W_q^N f=f\|_k A_q^N,\\
+R=A_q^{-1}A_q^N=\begin{pmatrix}qx&y\\Lz&1\end{pmatrix}.
+\end{gathered}
+\tag{3.3}
+\]
+Here \(A_q=\operatorname{diag}(1,q)\). The operator \(W_q^N\) is independent of these choices on this character space, preserves that space, and has square \(\chi_L(q)I\). Moreover
+\[
+\begin{gathered}
+\Psi_q^N f:=E_qf+q^{k/2-1}W_q^Nf,\\
+\Psi_q^Nf\in S_k(N/q,\chi_{N/q}).
+\end{gathered}
+\tag{3.4}
+\]
+
+**Proof.** Taking \(z=1\) gives a choice by Bezout. More generally \((z,q)=1\) permits a choice, since \((q,Lz)=1\). The determinants in (3.3) are \(q\) and one. Modulo \(q\), the first row of \(R\) is \([0:y]=[0:1]\). It supplies precisely the final coset in Lemma 3.3. Hence
+\[
+\mathcal T(f\|_k A_q)
+=q^{1-k/2}E_qf+f\|_k A_q^N.
+\]
+Multiplication by \(q^{k/2-1}\) proves (3.4), with its exact constant and cusp condition.
+
+For completeness the matrix properties needed at enlarged levels can be checked without a normalizer theorem. For
+\(\gamma=\left(\begin{smallmatrix}a&b\\Nc&d\end{smallmatrix}\right)\in\Gamma_0(N)\), the inverse of \(A_q^N\) is
+\(\left(\begin{smallmatrix}1&-y/q\\-Lz&x\end{smallmatrix}\right)\). Write the conjugated matrix as \(\left(\begin{smallmatrix}a'&b'\\c'&d'\end{smallmatrix}\right)\). Its four entries are
+\[
+\begin{gathered}
+a'=qxa+Nyc\\
+{}-Nxzb-Lyzd,\\
+b'=xy(d-a)+qx^2b-Ly^2c,\\
+c'=N\bigl(z(a-d)+qc-Lz^2b\bigr),\\
+d'=-Lzya-Nyc\\
+{}+Nzxb+qxd.
+\end{gathered}
+\tag{3.5}
+\]
+Every entry is integral; the lower-left is divisible by \(N\); and the lower-right is congruent to \(d\pmod L\), since \(qx\equiv1\pmod L\). The descended character is therefore preserved. Cuspidality follows from the same rational-slash argument as in Lemma 3.3. Also
+\[
+\begin{gathered}
+(A_q^N)^2=q\delta,\\
+\delta=\begin{pmatrix}
+qx^2+Lyz&y(x+1)\\
+Nz(x+1)&Lyz+q
+\end{pmatrix},\\
+\delta\in\Gamma_0(N).
+\end{gathered}
+\tag{3.6}
+\]
+Its determinant is one and \(\delta_{22}\equiv q\pmod L\), so \((W_q^N)^2=\chi_L(q)I\). This scalar is nonzero. Conjugation sends the group into itself by (3.5); its square is conjugation by \(\delta\), which is onto. Thus the first conjugation is onto as well, proving normalization of the group.
+
+For two choices, write \(A_1A_2^{-1}=K=(K_{ij})\). Matrix multiplication gives
+\[
+\begin{gathered}
+K_{11}=qx_1-Ly_1z_2,\\
+K_{12}=-x_1y_2+y_1x_2,\\
+K_{21}=N(z_1-z_2),\\
+K_{22}=qx_2-Lz_1y_2,\\
+K\in\Gamma_0(N).
+\end{gathered}
+\tag{3.7}
+\]
+Its lower-right entry equals \(1+Ly_2(z_2-z_1)\), so its character is one. Since \(A_1=(A_1A_2^{-1})A_2\), the right-action law proves equality of the two operators.
+
+Finally suppose \(M=qJ\), \(q\nmid J\), \(d\mid M\), \(q\nmid d\), and put \(B_d=\operatorname{diag}(d,1)\). Conjugating an allowed matrix at level \(M\) gives
+\[
+\begin{gathered}
+\widetilde A=B_d A_q^M B_d^{-1},\\
+\widetilde A=\begin{pmatrix}qx&dy\\Mz/d&q\end{pmatrix},\\
+(V_dh)\|_k A_q^M=V_d(h\|_k\widetilde A).
+\end{gathered}
+\tag{3.8}
+\]
+The conjugate is an allowed matrix at \(M/d\), because \(qx-(M/(dq))(dy)z=1\). Also \(E_qV_d=V_dE_q\) coefficient by coefficient. Whenever the actual level of \(h\) divides \(M/d\) and its character descends on removing \(q\), these equalities are the stated fixed-character modular identities. \(\square\)
+
+<a id="support-filters-conductor"></a>
+
+### 3.5. Fourier filters and the untouched conductor
+
+Put \(P_r=V_rE_r\) and \(\mathcal A_r=I-P_r\). The first retains precisely the coefficients whose indices are divisible by \(r\); the second retains precisely those whose indices are prime to \(r\). Distinct-prime filters commute. For an ordered finite list \(r_1,\ldots,r_t\), telescoping gives
+\[
+I-\prod_{i=1}^t\mathcal A_{r_i}
+=\sum_{i=1}^t V_{r_i}E_{r_i}\prod_{j<i}\mathcal A_{r_j}.
+\tag{3.9}
+\]
+These are identities of holomorphic functions: finite averages and dilations have convergent Fourier expansions, and equal expansions determine equal functions.
+
+**Lemma 3.5.** For \(h\in S_k(M,\chi_M)\), the filter \(\mathcal A_rh\) has level dividing \(Mr^2\), with character inflated from \(\chi_M\). If \(r\mid M\), level \(Mr\) suffices. If \(r^2\mid M\) and \(\chi_M\) descends modulo \(M/r\), the filter stays at level \(M\). Further, if \(M=NR\) with \(q\nmid R\), inflation preserves the character obstruction to removing \(q\): for \(q\mid N\),
+\[
+\begin{gathered}
+\chi_M\text{ descends modulo }M/q\\
+\Longleftrightarrow\\
+\chi_N\text{ descends modulo }N/q.
+\end{gathered}
+\tag{3.10}
+\]
+
+**Proof.** Proposition 1.1 and its identical \(\Gamma_0\) conjugation put \(V_rh\) at level \(Mr\), with the inflated character. At a bad prime, Hecke operators for the congruence groups, Lemma 2.2 and Theorem 2.3, give \(E_rh\in S_k(M,\chi_M)\). At a good prime their Fourier formula gives
+\[
+E_rh=T_rh-\chi_M(r)r^{k-1}V_rh
+\in S_k(Mr,\chi_{Mr}).
+\]
+Applying \(V_r\) once more proves the uniform bound
+\[
+\mathcal A_rh\in S_k(Mr^2,\chi_{Mr^2}).
+\tag{3.11}
+\]
+If \(r\mid M\), the bad-prime bound instead gives \(Mr\). In the final case Lemma 3.3 gives \(E_rh\) at \(M/r\), and its dilation returns to \(M\). In every case this construction raises only the prime \(r\).
+
+For \(a\mid b\), unit reduction \((\mathbb Z/b\mathbb Z)^*\to(\mathbb Z/a\mathbb Z)^*\) is onto. At a prime already in \(a\), any lift of its unit residue to the higher prime power remains a unit; at new primes prescribe residue one. CRT combines these choices. Thus a character descends precisely when it is trivial on the reduction kernel, since the value at any unit lift then defines the lower character.
+
+One implication in (3.10) follows by inflating a character from \(N/q\) to \(M/q\). For the converse suppose \(\chi_N\) fails to descend. Choose a unit \(e\pmod N\) with \(e\equiv1\pmod{N/q}\) and \(\chi_N(e)\ne1\). Keep its residue at the \(q\)-power of \(M\), which is the same as that of \(N\); prescribe one at every other prime power of \(M\). CRT gives a unit \(E\pmod M\) reducing to \(e\pmod N\) and equal to one modulo \(M/q\). Its inflated character is not one, so \(\chi_M\) fails to descend. This allows \(R\) and \(N\) to share any primes other than \(q\). If \(q\nmid N\), the condition \(q\nmid R\) simply keeps \(q\) outside \(M\). \(\square\)
+
+<a id="common-level-support-extraction"></a>
+
+### 3.6. Extracting one admissible support prime
+
+Call a prime \(q\) *admissible at* \((N,\chi_N)\) if \(q\mid N\) and \(\chi_N\) descends modulo \(N/q\).
+
+**Lemma 3.6.** Suppose the nonzero coefficients of \(f\in S_k(N,\chi_N)\) have indices divisible by at least one prime in a finite nonempty set \(Q\) of admissible primes. For any chosen \(q\in Q\), there is \(\phi\in S_k(N/q,\chi_{N/q})\) such that \(f-V_q\phi\) is supported on multiples of the primes in \(Q\setminus\{q\}\), at its original level \(N\) and character \(\chi_N\).
+
+**Proof.** If \(q^2\mid N\), take \(\phi=E_qf\). Lemma 3.3 gives its lower level, and \(f-V_q\phi=\mathcal A_qf\) removes all indices divisible by \(q\). If \(Q=\{q\}\), Theorem A.1 directly supplies \(f=V_q\phi\). Hence we may assume \(q\Vert N\) and enumerate the other primes as \(r_1,\ldots,r_{t-1}\), with \(r_t=q\).
+
+Set
+\[
+M=N\prod_{i<t}r_i^2,\quad
+F_i=\prod_{j<i}\mathcal A_{r_j}f,\quad
+\Phi_i=E_{r_i}F_i.
+\]
+The support hypothesis kills \(\prod_{i=1}^t\mathcal A_{r_i}f\), so (3.9) gives
+\[
+f=\sum_{i<t}V_{r_i}\Phi_i+V_q\Phi_t.
+\tag{3.12}
+\]
+By Lemma 3.5, \(F_t\) is a purely \(q\)-supported form at level \(M\). The exponent of \(q\) is still one, and its character descends modulo \(M/q\) by (3.10). Theorem A.1 gives \(\Phi_t\in S_k(M/q,\chi_{M/q})\).
+
+For \(i<t\), the actual level of \(F_i\) divides \(N\prod_{j<i}r_j^2\). Since \(r_i\mid N\), bad-prime stability of \(E_{r_i}\) puts \(\Phi_i\) at that same level. This level divides \(M/r_i\): the exponent of \(r_i\) in \(M/r_i\) is one greater than in \(N\), and every other required exponent is present. Its character, inflated from \(\chi_N\), descends modulo \(M/(r_iq)\), because \(N/q\) divides that modulus. These divisibilities justify every lower-level trace that follows.
+
+Choose \(qx-(M/q)y=1\), and use one common matrix
+\[
+W=\begin{pmatrix}qx&y\\M&q\end{pmatrix}.
+\tag{3.13}
+\]
+At level \(M\) it is an allowed \(A_q^M\) with \(z=1\); at level \(N\) it is an allowed \(A_q^N\) with \(z=M/N\), which is prime to \(q\). The choice independence in Proposition 3.4 therefore permits the same matrix in the original-level trace. Put \(B_r=\operatorname{diag}(r,1)\), \(W_i=B_{r_i}WB_{r_i}^{-1}\), and
+\[
+\begin{gathered}
+\Psi_i=E_q\Phi_i+q^{k/2-1}\Phi_i\|_k W_i,\\
+\Psi_i\in S_k(M/(r_iq),\chi_{M/(r_iq)}).
+\end{gathered}
+\]
+The membership is (3.4) at \(M/r_i\), using the verified character descent. The compatibility (3.8) and \(E_qV_{r_i}=V_{r_i}E_q\) make the trace of the \(i\)-th term in (3.12) equal to \(V_{r_i}\Psi_i\).
+
+For the last term, \(q^{-1}B_qW=\left(\begin{smallmatrix}qx&y\\M/q&1\end{smallmatrix}\right)\) lies in \(\Gamma_0(M/q)\) and has character one. The unitary slash therefore gives
+\[
+(V_q\Phi_t)\|_kW=q^{-k/2}\Phi_t,
+\qquad E_qV_q\Phi_t=\Phi_t.
+\]
+Applying the original-level trace to (3.12) consequently yields the exact common-level identity
+\[
+\begin{gathered}
+\Psi_q^Nf=(1+q^{-1})\Phi_t\\
+{}+\sum_{i<t}V_{r_i}\Psi_i.
+\end{gathered}
+\tag{3.14}
+\]
+It holds at level \(M/q\), while its left side belongs to level \(N/q\) by (3.4). Set
+\[
+\begin{gathered}
+\phi=(1+q^{-1})^{-1}\Psi_q^Nf,\\
+\phi\in S_k(N/q,\chi_{N/q}).
+\end{gathered}
+\tag{3.15}
+\]
+At every index \(m\) prime to all the \(r_i\), the sum in (3.14) has zero coefficient. Hence \(a_m(\phi)=a_m(\Phi_t)=a_{qm}(f)\); the last equality holds because all the other-prime filters leave the coefficient at \(qm\) unchanged. For an index \(n\) prime to every \(r_i\), if \(q\nmid n\) then both \(f\) and \(V_q\phi\) have zero coefficient there by support. If \(n=qm\), their coefficients agree by the equality just proved at \(m\). This proves the support assertion for every such index. Proposition 1.1 puts the subtracted degeneracy at the original level and character. \(\square\)
+
+![The finite trace and its coefficient extraction](../figures/newform-weighted-trace.png)
+
+*Figure 1.* For \(q\Vert N\) and character descended to \(N/q\), the translation sum and remaining matrix term in the \(q+1\) coset trace combine with coefficient \(q^{k/2-1}\) to give the lower-level form (3.4). The lower panel is a coefficient diagram for (3.14)–(3.15). Its coefficient equality is asserted at indices prime to every other support prime \(r_i\). Each \(V_{r_i}\) term then vanishes, leaving exactly the factor \(1+q^{-1}\); the residual keeps level \(N\). Lemma 3.3 and Proposition 3.4 prove the matrix and character facts, and Lemma 3.6 proves the extraction. Li's original article treats these trace and support mechanisms.
+
+<a id="fixed-character-auxiliary-support"></a>
+
+### 3.7. The fixed-character auxiliary-set theorem
+
+**Theorem 3.7.** Let \(k\ge2\), \(N,D\ge1\), and \(f\in S_k(N,\chi_N)\). If \(a_n(f)=0\) whenever \((n,D)=1\), then
+\[
+\begin{gathered}
+f=\sum_{q\mid(N,D)}V_qh_q,\\
+h_q\in S_k(N/q,\chi_{N/q}).
+\end{gathered}
+\tag{3.16}
+\]
+where only admissible primes contribute: the character must descend modulo \(N/q\). If there are none, \(f=0\).
+
+**Proof.** Let \(P\) be the distinct prime divisors of \(D\). If \(P\) is empty, every positive Fourier coefficient vanishes, so \(f=0\). Otherwise its support is in the union of the multiples of primes in \(P\).
+
+Suppose \(p\in P\) is outside \(N\), or divides \(N\) but has a non-descending character. Apply the other-prime filters:
+\[
+F=\prod_{r\in P\setminus\{p\}}\mathcal A_rf,
+\qquad M=N\prod_{r\in P\setminus\{p\}}r^2.
+\]
+Lemma 3.5 places this purely \(p\)-supported form at level \(M\), raising no \(p\)-exponent. If \(p\nmid N\), it remains outside \(M\); otherwise (3.10) retains its conductor obstruction. Theorem A.1 forces \(F=0\). At indices divisible by none of the other primes the filters left the coefficient of \(f\) unchanged, so those coefficients of \(f\) vanish. Its support is therefore already in the multiples of \(P\setminus\{p\}\). Repeat this finite procedure to remove all inadmissible primes. It leaves a set \(Q\) of admissible primes dividing \((N,D)\).
+
+If \(Q\) is empty, the form is zero. Otherwise Lemma 3.6 subtracts a level-\(N/q\) degeneracy and removes a chosen prime from the support set. The residual has the same original level and character, so all the remaining admissibility conditions persist. Repeating for the finite set \(Q\) leaves no possible nonzero positive Fourier coefficient. The residual is zero and the sum of the subtractions is (3.16). \(\square\)
+
+The proof uses the one-prime theorem of Appendix A, the CRT and integral lifting of lesson 2, rational-slash cusp preservation and prime Hecke formulas of lesson 9, and the coefficient-bound finite dimensionality used in Appendix A from lesson 6. It does not use the Riemann–Roch dimension formula, Petersson adjoints, simultaneous spectral decomposition or attached Galois representations. The elementary analytic and arithmetic foundations disclosed with those earlier proofs remain prerequisites. The unrestricted \(\Gamma_1(N)\) support problem stated at the start of Section 3 still requires its own argument.
 
 ## 4. Multiplicity across levels
 
@@ -244,7 +532,7 @@ This argument uses neither a choice of roots of Hecke polynomials nor a claim th
 
 For this cross-level comparison, write \(\chi\) at its primitive conductor \(C\); \(S(L,\chi)\) means its pullback to the units modulo \(L\). Values such as \(\chi(q)\) in a lower-level good-prime formula are evaluated at that conductor. They must not be replaced by the zero extension of an induced character at a higher level divisible by \(q\).
 
-Fix such a character \(\chi\) and a prime \(q\mid L\) through which it can descend to level \(L/q\). Write \(S(L,\chi)=S_k(\Gamma_0(L),\chi)\). We need the following level-lowering fact, proved by the coset calculations in Li, Section 1, Lemmas 1 and 3, printed pages 287 and 289:
+Fix such a character \(\chi\) and a prime \(q\mid L\) through which it can descend to level \(L/q\). Write \(S(L,\chi)=S_k(\Gamma_0(L),\chi)\). Lemma 3.3 proves the first level-lowering formula:
 \[
 q^2\mid L\quad\Longrightarrow\quad
 E_q:S(L,\chi)\longrightarrow S(L/q,\chi).
@@ -262,7 +550,7 @@ E_q+q^{k/2-1}W_q^L:
 S(L,\chi)\longrightarrow S(L/q,\chi).
 \tag{4.2}
 \]
-Both assertions concern cusp forms, including their cusp conditions. We retain these elementary coset results as stated inputs along with the main lemma; they are not assumptions of multiplicity one.
+Proposition 3.4 proves (4.2), including every matrix and character assertion just stated. Both formulas concern cusp forms, with the cusp conditions established in the finite trace proof. They provide the lower-level maps used in the comparison; they do not assume multiplicity one.
 
 Define
 \[
@@ -393,7 +681,7 @@ Here the common character automatically descends from \(M\) to \(M/q\). Remove t
 **Theorem 4.4.** Suppose \(f\) and \(g\) are normalized newforms of levels \(M,N\), the same weight and the same character, with equal \(a_p\) outside a finite set. Then \(f=g\) and \(M=N\).
 
 **Proof.** Set \(L=\operatorname{lcm}(M,N)\). Choose \(D\) divisible by \(L\) and by every exceptional prime. The Hecke recurrences with the common character and coprime multiplicativity show
-\(a_n(f)=a_n(g)\) whenever \((n,D)=1\). The main lemma gives
+\(a_n(f)=a_n(g)\) whenever \((n,D)=1\). The fixed-character theorem, Theorem 3.7 at the common level \(L\), gives
 \[
 f-g=\sum_{q\in P}V_qh_q,
 \qquad h_q\in S(L/q,\chi),
@@ -578,7 +866,13 @@ where \(w_p\) is its \(W_p\)-sign, whereas
 \[
 p^2\mid N:\qquad a_p(f)=0.
 \]
-With our slash convention the minus sign belongs in the first formula. The required mechanism is the vanishing of the level-lowering trace operator \(U_p+p^{k/2-1}W_p\) on the newspace. **Proof gap:** that trace identity and the general bad-prime coefficient formulas remain to be proved locally or in an earlier programme lesson. The freely accessible original paper of Li, Section 2, Theorem 3, Case I gives the source statement with its character qualifications; we have not replaced those qualifications by a blanket assertion for all characters.
+**Proof of the displayed trivial-character formulas.** Theorem 2.3 puts \(U_pf\) in the newspace. If \(p^2\mid N\), Lemma 3.3 also puts it at level \(N/p\), hence in the oldspace. Positivity forces \(U_pf=0\), so its first coefficient \(a_p(f)\) is zero. If \(p\Vert N\), Proposition 3.4 gives
+\[
+U_pf+p^{k/2-1}W_pf\in S_k(N/p).
+\]
+The partial involution preserves the newspace by Proposition 5.2, so both summands are new while their sum is old. It is zero. On the normalized newform, \(U_pf=a_p(f)f\) and \(W_pf=w_pf\). Therefore \(a_p(f)=-w_pp^{k/2-1}\), with the stated minus sign. \(\square\)
+
+The same lowering argument applies at fixed characters whenever the character descends through removal of the prime, using Proposition 3.4 and the newspace preservation proved in Section 4.2. It does not supply the ramified-character coefficient classification. Li's original paper treats the bad-prime alternatives with their character qualifications. These newspace deductions retain the earlier Petersson and spectral prerequisites of Theorems 2.3 and 3.1.
 
 For the level-11 weight-two form of the preceding lesson, \(a_{11}=1\). Thus \(w_{11}=-1\). The Fricke sign and the functional-equation sign have different roles: the forthcoming Mellin calculation gives the root number \(i^k\epsilon_N\). In weight two this changes the sign; the level-11 form therefore has root number \(+1\).
 
@@ -1022,16 +1316,16 @@ This is an identity of convergent Fourier expansions whenever the left-hand inpu
 
 If \(g\ne0\) has first nonzero coefficient at \(n_0\), these dilations have first nonzero indices \(p^j n_0\). In any finite relation choose the least \(j\) with nonzero scalar. At \(p^j n_0\) that term contributes a nonzero coefficient, while every larger dilation contributes zero. Thus the dilations are linearly independent. This contradicts finite dimensionality: lesson 06, Theorem 6.1, proves the character coefficient bound by its finite norm and the earlier valence formula, so the map to the first finitely many coefficients is injective. This argument uses that bound, not the Riemann–Roch dimension formula. Therefore \(f=g=0\).
 
-### A.5. The remaining general support problem
+### A.5. From one prime to the auxiliary support problem
 
-Theorem A.1 covers a fixed character and one prime. In the general main lemma of Section 3, nonzero indices may be divisible by different primes of the auxiliary integer \(D\). Extracting one component must preserve the remaining support conditions and return it to the correct lower level. The Fourier annihilators \(1-V_pU_p\) can raise levels. A prime dividing the level exactly once requires the weighted trace calculation. Moreover, arbitrary diamond projection has not been proved to preserve this support condition. Thus the auxiliary-set decomposition and unrestricted-character version remain required proofs; the general deductions in Sections 3–4 still depend on them.
+Theorem A.1 covers a fixed character and one prime. For the auxiliary problem, nonzero indices can be divisible by different primes of \(D\). Sections 3.3–3.7 supply the additional argument: Lemma 3.5 controls the raised levels of the Fourier filters, Proposition 3.4 gives the weighted trace at a prime occurring once, and Lemma 3.6 extracts a lower-level component while preserving the other support conditions. Theorem 3.7 then proves the full fixed-character auxiliary-set decomposition. Arbitrary diamond projection has not been proved to preserve this support condition, so the unrestricted \(\Gamma_1\) statement remains a separate proof requirement.
 
 The earlier written inputs to this appendix are lesson 02's CRT and determinant-one reduction proofs; lesson 04, Proposition 1.1, for the slash cocycle; lesson 09, Section 2 immediately after (2.3), for rational-slash cusp preservation, with Lemma 2.2 and Theorem 2.3 for fixed-character prime-space preservation and the good-prime Fourier formula; and lesson 06, Theorem 6.1, for the coefficient bound and finite dimensionality. That last input follows from the finite norm and the earlier valence formula. This appendix uses no Riemann–Roch dimension formula. These exact earlier arguments retain their disclosed elementary foundation requirements.
 
 ## What this lesson does not prove
 
-* The unrestricted Fourier-support main lemma with auxiliary \(D\) on \(\Gamma_1(N)\): Diamond–Im's freely accessible survey, Proposition 6.2.1. The fixed-character form used in our deductions is in Li's freely accessible original paper, Section 2, Theorem 2 and Corollary 1. Their availability does not supply a local or earlier programme proof: the general lemma remains a proof gap. The prime-level trivial-character case is proved in Theorem 3.2 above. Appendix A proves the fixed-character one-prime statement at arbitrary level; it does not yet supply the auxiliary-set decomposition.
-* The two level-lowering coset formulas (4.1)–(4.2): Li, Section 1, Lemmas 1 and 3, printed pages 287 and 289. They remain proof gaps, alongside the Fourier-support input to the conditional multiplicity and decomposition deductions above. The stated bad-prime coefficient formulas are Li, Section 2, Theorem 3, Case I; their trace identity also remains a proof gap, and no formula from its ramified-character Case II is assumed.
+* The unrestricted Fourier-support main lemma with auxiliary \(D\) on \(\Gamma_1(N)\), stated in the Diamond–Im survey. Its full statement is retained in Section 3. The fixed-character theorem is proved in Theorem 3.7, using the arbitrary-level one-prime theorem of Appendix A; arbitrary diamond projection is not used to extend it. The prime-level trivial-character case also has the direct proof of Theorem 3.2 and Solution 4.
+* The elementary analytic foundations underlying Petersson convergence, change of variables and adjoints in lessons 7 and 9, the positivity and finite-dimensional simultaneous spectral arguments used for newspaces, and their exact programme proof closure. These remain distinct from the finite weighted trace and support proof of Sections 3.3–3.7. Lemma 3.3 and Proposition 3.4 prove both lower-level formulas (4.1)–(4.2); Section 5 proves the displayed trivial-character bad-prime formulas from them and newspace stability. The ramified-character bad-prime classification is not proved here.
 * The number-field coefficients and attached Shimura–Deligne representations used only to compare initially different characters: Diamond–Im, Corollary 12.4.5 and Section 12.5, equations (12.5.1)–(12.5.3), printed pages 115 and 120. The geometric construction uses Shimura's weight-two theory and Deligne's higher-weight cohomology; it is not a consequence of the main lemma.
 * Chebotarev's finite-extension theorem, used in Lemma 4.1: Milne, *Algebraic Number Theory*, Theorem 8.31. The passage from that statement to equality of continuous traces and then determinants is proved above.
 * Completeness of the Manin presentation, period injectivity and Hecke path compatibility used in the two finite computations are proved locally in Lemma 6.1. The perfect pairing and dimension \(g\) of each cusp sector remain conditional on the earlier identity with its stated elementary foundation requirements \(\dim S_2=g\). Corollary 6.2 proves the finite integral lattice and algebraic integrality of the computed symbol eigenvalues; identifying all of them with form eigenvalues inherits the perfect-pairing gap. No later programme result is used for this computational model. Stein's freely available author text, Theorems 8.4, 8.21 and 8.23, remains a comparison reference.

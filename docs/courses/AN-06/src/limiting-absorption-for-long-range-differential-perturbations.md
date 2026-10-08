@@ -68,6 +68,10 @@ Thus \(h\in S(\Xi^m,G_1)\) means
 All symbols act by left quantization.
 Including \(t=0\) in (4) gives the same vanishing condition on a smooth symbol, by continuity along each ray.
 
+<a id="lap-theorem"></a>
+
+This limiting-absorption theorem is Hörmander [H4, Theorem 30.2.10].
+
 **Theorem 1.1 (limiting absorption).** The eigenvalues in the regular free-energy set have finite multiplicity, form a discrete subset of that set, and have eigenfunctions in \(H^{m,t}\) for every real \(t\), where
 \(\|u\|_{m,t}=\|X^t\langle D\rangle^m u\|_2\).
 Every compact \(K\subset\Omega\) has an open neighborhood \(K'\subset\mathbb C\) and a constant \(C_K\) such that
@@ -124,6 +128,8 @@ Both empty free shells and dimension one are included. An eigenvalue has been ex
 
 ## 2. Compactness of bounded derivative graphs
 
+<a id="lap-compactness"></a>
+
 **Lemma 2.1.** A bounded sequence in \(\mathcal Y_m\) has a subsequence for which every derivative converges weak-star in \(B^*\) to the corresponding derivative of one distribution \(u\). Along that subsequence,
 
 \[
@@ -138,7 +144,7 @@ Apply Gram–Schmidt to a countable dense list in a shell, skipping zero residua
 
 The normalized shell bound passes to the limits by weak lower semicontinuity. Thus each joined limit belongs to \(B^*\). Against a test in \(B\), the finite-shell part converges weakly and the remaining pairing is bounded by the uniform endpoint norm times the \(B\)-norm of the test's tail. This proves weak-star convergence. Compact smooth tests show that the limits respect all distributional derivative identities.
 
-The derivative bounds give boundedness in \(H^m\) on every fixed ball. The finite-rank kernel argument in [Radiation for limits of long-range resolvents, Section 3](radiation-for-limits-of-long-range-resolvents.md#3-strong-weighted-convergence-of-the-graph) then gives local compactness: a compact cutoff followed by a Fourier cutoff at frequency \(L\) has an \(L^2\) remainder at most \(CL^{-m}\) times that local \(H^m\) bound. For fixed \(L\), its map between bounded supports has a square-integrable kernel, hence is a norm limit of finite-rank maps by approximation of that kernel by finite tensor sums. The local sequence is consequently \(L^2\) precompact. Every convergent local subsequence has the already identified distributional limit \(u\); if the whole sequence did not converge locally, a subsequence a fixed distance from \(u\) would have a convergent further subsequence, a contradiction.
+The derivative bounds give boundedness in \(H^m\) on every fixed ball. The finite-rank kernel argument in [Radiation for limits of long-range resolvents, Section 3](radiation-for-limits-of-long-range-resolvents.md#radiation-local-compactness) then gives local compactness: a compact cutoff followed by a Fourier cutoff at frequency \(L\) has an \(L^2\) remainder at most \(CL^{-m}\) times that local \(H^m\) bound. For fixed \(L\), its map between bounded supports has a square-integrable kernel, hence is a norm limit of finite-rank maps by approximation of that kernel by finite tensor sums. The local sequence is consequently \(L^2\) precompact. Every convergent local subsequence has the already identified distributional limit \(u\); if the whole sequence did not converge locally, a subsequence a fixed distance from \(u\) would have a convergent further subsequence, a contradiction.
 
 For the tail, the uniform endpoint bound gives
 
@@ -153,14 +159,16 @@ For the tail, the uniform endpoint bound gives
 
 The last geometric tail tends to zero exactly when \(b>1/2\). Choose \(R\), then use local convergence on its interior. This proves (9). \(\square\)
 
+<a id="lap-rough-graph"></a>
+
 **Lemma 2.2 (limits of the actual equation).** Suppose also
 \(z_j\to\lambda\) and
 \((H-z_j)u_j=f_j\to f\) in \(B\). Then
 \((H-\lambda)u=f\) with the actual local products. For a graph of nonreal resolvents approaching from one fixed half-plane, its limit has the corresponding radiation condition (7).
 
-**Proof.** On a compact set, all derivatives converge weakly in \(L^2\). The sharp local coefficient multiplier from the admissible-perturbation lesson is a bounded map from local \(H^m\) to \(L^2\), after input and output compact cutoffs. This holds even for unbounded lower coefficients. Its weak continuity identifies the limit of the local differential expression; no rough coefficient is differentiated. The limiting equation follows from \(f_j\to f\) and \(z_j\to\lambda\).
+**Proof.** On a compact set, all derivatives converge weakly in \(L^2\). The [sharp local coefficient multiplier](admissible-differential-perturbations.md#admissible-global-mapping) is a bounded map from local \(H^m\) to \(L^2\), after input and output compact cutoffs. This holds even for unbounded lower coefficients. Its weak continuity identifies the limit of the local differential expression; no rough coefficient is differentiated. The limiting equation follows from \(f_j\to f\) and \(z_j\to\lambda\).
 
-For upper resolvents, the full graph-limit theorem in the radiation lesson applies. Its Lemma 3.1 also upgrades (9) to strong \(H^{m,-b}\) convergence on these graphs, using the weighted graph inequality on already known weighted inputs. The latter inequality does not assert new regularity of an arbitrary distribution.
+For upper resolvents, the [full graph-limit theorem](radiation-for-limits-of-long-range-resolvents.md#radiation-theorem) applies. Its [strong weighted graph argument](radiation-for-limits-of-long-range-resolvents.md#radiation-rough-graph) also upgrades (9) to strong \(H^{m,-b}\) convergence on these graphs, using the weighted graph inequality on already known weighted inputs. The latter inequality does not assert new regularity of an arbitrary distribution.
 
 For a lower graph, apply the upper theorem to
 
@@ -178,6 +186,8 @@ The full \(1\)-admissible class, ellipticity and domain are preserved. Moreover
 \(\nabla\widetilde P_0=-v\) makes its positive bundle exactly
 \(N_-(M_\lambda)\). This gives the lower radiation condition and the same weighted convergence. \(\square\)
 
+<a id="lap-topology"></a>
+
 On every bounded subset of \(\mathcal Y_m\), this weak-star topology is metrizable. If \((\psi_k)\) is dense in \(B\), one possible metric is
 
 \[
@@ -194,20 +204,22 @@ This is a metric: the tests separate distributions by density, and \(s/(1+s)\) i
 
 ## 3. Homogeneous radiation solutions are eigenfunctions
 
+<a id="lap-homogeneous"></a>
+
 **Lemma 3.1.** At any regular free energy \(\lambda\), a homogeneous solution \(u\in\mathcal Y_m\) satisfying either sign of (7) is an \(L^2\) eigenfunction, and in fact belongs to \(H^{m,t}\) for every real \(t\).
 
-**Proof.** For the upper condition, the zero-flux corollary applies to \(f=0\), whose imaginary pairing is zero. It gives
+**Proof.** For the upper condition, the [zero-flux corollary](outgoing-flux-and-vanishing-shell-mass.md#flux-zero) applies to \(f=0\), whose imaginary pairing is zero. It gives
 
 \[
  D^\alpha u\in\dot B^*,\qquad |\alpha|\le m.
  \tag{13}
 \]
 
-The homogeneous polynomial-decay corollary in the weighted endpoint lesson now gives \(u\in H^{m,t}\) for every \(t\). In particular \(u\in H^m=\mathcal D(H)\), so its actual differential equation is the operator eigenvalue equation.
+The [homogeneous polynomial-decay corollary](weighted-endpoint-estimates-and-polynomial-decay.md#decay-homogeneous) now gives \(u\in H^{m,t}\) for every \(t\). In particular \(u\in H^m=\mathcal D(H)\), so its actual differential equation is the operator eigenvalue equation.
 
 For the lower condition apply zero flux to \(-H\), free energy \(-\lambda\), and zero forcing, as in (11). The conclusion (13) is unchanged. Apply the same weighted decay result to the original equation. An empty shell causes no difficulty in either result. \(\square\)
 
-Conversely every regular-energy eigenfunction has all these weights, by Theorem 9.1 of the weighted endpoint lesson. In particular each of its derivatives belongs to \(B\), \(L^2\) and \(\dot B^*\). A full-order symbol action belongs to \(L^2\): use the exact decomposition into order-zero maps followed by derivatives from the radiation lesson, and their \(L^2\) bounds. Hence it satisfies both radiation conditions. We have proved, at a regular energy,
+Conversely every regular-energy eigenfunction has all these weights, by [the point-spectrum theorem](weighted-endpoint-estimates-and-polynomial-decay.md#decay-point-spectrum). In particular each of its derivatives belongs to \(B\), \(L^2\) and \(\dot B^*\). A full-order symbol action belongs to \(L^2\): use the [exact decomposition into order-zero maps followed by derivatives](radiation-for-limits-of-long-range-resolvents.md#radiation-exact-bundle), and their \(L^2\) bounds. Hence it satisfies both radiation conditions. We have proved, at a regular energy,
 
 \[
  \begin{gathered}
@@ -218,11 +230,15 @@ Conversely every regular-energy eigenfunction has all these weights, by Theorem 
  \tag{14}
 \]
 
+<a id="lap-open-energies"></a>
+
 The weighted endpoint lesson also proves finite multiplicity and local finiteness of these eigenvalues. The set \(Z(P_0)\) is closed: if critical values converge, ellipticity bounds the corresponding frequencies, and a subsequence converges to a critical point. Local finiteness of \(\mathcal A\) away from this closed set shows that \(\mathcal A\cup Z(P_0)\) is closed. Thus \(\Omega\) is open.
+
+<a id="lap-compact-error"></a>
 
 ## 4. Removing the compact error
 
-The combined-estimate theorem gives, on a fixed punctured disc about each regular \(\lambda\),
+The [combined-estimate theorem](combining-the-long-range-resolvent-estimates.md#combined-theorem) gives, on a fixed punctured disc about each regular \(\lambda\),
 
 \[
  \|R(z)f\|_{\mathcal Y_m}
@@ -253,6 +269,8 @@ Thus \(u\ne0\). Lemma 2.2 gives the homogeneous actual equation and the radiatio
 
 For compact \(K\subset\Omega\), cover \(K\) by finitely many such discs and take the maximum of their constants. Their union is a complex neighborhood \(K'\), giving (5) for every nonreal \(z\) in it. The centers and radii can first be reduced so that their real traces lie in \(\Omega\). This proves the uniform estimate required by Theorem 1.1.
 
+<a id="lap-boundary"></a>
+
 ## 5. Existence and full radiation characterization
 
 Fix \(\lambda\in\Omega\), \(f\in B\), and one sign \(\sigma\). For every sequence \(z_j\to\lambda\) from that half-plane, (5) makes its derivative graphs bounded. Lemmas 2.1 and 2.2 give a subsequential limit \(u\) satisfying the actual equation and (7).
@@ -270,6 +288,8 @@ The limit depends linearly on \(f\), and weak lower semicontinuity on each shell
 \]
 
 The distributional derivatives in (6) are those of its zeroth-order limit, by compact smooth testing. For any other solution of the actual equation with the derivative and radiation conditions (7), subtraction of the constructed solution again gives a homogeneous radiation solution. The same argument proves equality. This establishes the full characterization, including solutions that were not supplied with an approximating resolvent graph.
+
+<a id="lap-continuity"></a>
 
 ## 6. Continuity up to the real boundary
 
@@ -293,7 +313,7 @@ The endpoint bound is uniform for both terms. Thus their difference tends weak-s
  \tag{20}
 \]
 
-The same proof permits \(z_j\) already in the closed chosen half-plane: keep its genuinely nonreal terms, and approximate only the real-boundary terms as in (19). At a nonreal limiting point, the resolvent identity and the ordinary \(L^2\) resolvent bound give continuity in \(H^m\), hence in \(\mathcal Y_m\). Indeed
+The same proof permits \(z_j\) already in the closed chosen half-plane: keep its genuinely nonreal terms, and approximate only the real-boundary terms as in (19). At a nonreal limiting point, the [resolvent identity and ordinary \(L^2\) bound](resolvents-domains-and-spectral-density.md#u001-resolvent-identities) give continuity in \(H^m\), hence in \(\mathcal Y_m\). Indeed
 
 \[
  \begin{gathered}
@@ -308,6 +328,8 @@ On a disc that stays off the real axis, the first two lines control the \(L^2\) 
 
 In particular, with \(f\) fixed, the scalar pairing
 \((R(z)f,f)\) is continuous up to either real boundary. This uses \(f\in B\) as the test in the endpoint duality, rather than an unproved \(L^2\) boundary convergence.
+
+<a id="lap-poisson"></a>
 
 ## 7. Recovering the spectral measure with the correct sign
 
@@ -357,6 +379,8 @@ Now suppose \(\chi\in C_c(\Omega)\) and \(f\in B\). A compact neighborhood of it
 
 Section 6 gives pointwise convergence of this scalar pairing to its boundary pairing. Dominated convergence in the \(\lambda\) integral of (22), combined with the Poisson argument, proves (8). A complex continuous test follows by separating its real and imaginary parts. This completes every assertion of Theorem 1.1. \(\square\)
 
+<a id="lap-density"></a>
+
 The continuous nonnegative function
 
 \[
@@ -373,7 +397,9 @@ is the density of \(\mu_f\) there. Nonnegativity follows from (22) and boundary 
  \chi_k(t)=\min\{1,k\operatorname{dist}(t,\mathbb R\setminus(a,b))\}
 \]
 
-have compact support in \(\Omega\) and increase to \(1_{(a,b)}\). Monotone convergence in (8) gives equality of the two measures on these intervals, including \(J\). Both measures are finite on \(J\), since \(q_{\sigma,f}\) is bounded on \(\overline J\). The intervals and the empty set form an intersection-stable family generating its Borel sets. The [proved pi-lambda argument](../providers/analysis/finite-derivative-l2.md#euclidean-products) therefore gives equality on all Borel subsets of \(J\). Countably many such intervals cover \(\Omega\); disjointifying that cover proves equality throughout \(\Omega\). Finally two continuous densities with the same measure agree at every point: a nonzero difference at one point would have a fixed sign bounded away from zero on a smaller interval and a nonzero integral there. This also proves that the two signs give the same continuous density.
+have compact support in \(\Omega\) and increase to \(1_{(a,b)}\). Monotone convergence in (8) gives equality of the two measures on these intervals, including \(J\). Both measures are finite on \(J\), since \(q_{\sigma,f}\) is bounded on \(\overline J\). The intervals and the empty set form an intersection-stable family generating its Borel sets. The [proved pi-lambda argument](../providers/analysis/finite-derivative-l2.md#pi-lambda-uniqueness) therefore gives equality on all Borel subsets of \(J\). Countably many such intervals cover \(\Omega\); disjointifying that cover proves equality throughout \(\Omega\). Finally two continuous densities with the same measure agree at every point: a nonzero difference at one point would have a fixed sign bounded away from zero on a smaller interval and a nonzero integral there. This also proves that the two signs give the same continuous density.
+
+<a id="lap-projection"></a>
 
 ## 8. The reduced boundary value at an eigenvalue
 
@@ -407,6 +433,8 @@ Thus
  \tag{29}
 \]
 
+<a id="lap-reduced"></a>
+
 **Theorem 8.1 (reduced limiting absorption).** There is a disc about \(\lambda_0\), containing no other regular eigenvalue or critical free energy on its real trace, such that
 
 \[
@@ -424,11 +452,15 @@ For either sign, these resolvents have derivative weak-star limits
 
 The compactness and uniqueness arguments in Section 5 now apply on the orthogonal space. Every limit has radiation and \(\Pi u=0\). The difference of two limits is in \(Z_0\) by Lemma 3.1, and is also orthogonal to it; hence it is zero. The constructed solution is unique among all solutions with these conditions. \(\square\)
 
+<a id="lap-reduced-continuity"></a>
+
 On a smaller real interval \(I\) about \(\lambda_0\), this gives a continuous reduced boundary family
 \(R^\perp_\sigma(\lambda):B_\perp\to\mathcal Y_m\), including
 \(\lambda=\lambda_0\). For other \(\lambda\in I\), it is the restriction of
 \(R_\sigma(\lambda)\), whose outputs remain orthogonal to \(Z_0\) by (29).
 The argument of Section 6 applies with the same uniform estimate (30); at the center its uniqueness statement is the orthogonal uniqueness just proved. Thus continuity includes all derivatives in the weak-star topology, and also strong \(B_\perp\) variation of the forcing.
+
+<a id="lap-graph"></a>
 
 ## 9. The complete graph limit at an eigenvalue
 
@@ -442,6 +474,8 @@ Fix any sequence \(z_j\to\lambda_0\) through one chosen half-plane. A limiting g
  \end{gathered}
  \tag{31}
 \]
+
+This graph decomposition is the eigenvalue remark following Hörmander [H4, Theorem 30.2.10].
 
 **Theorem 9.1 (graph limit).** The set of these pairs is exactly
 
@@ -503,6 +537,8 @@ For a fixed forcing with \(\Pi f\ne0\), (29) displays the pole; a finite boundar
 ### Use the conclusion
 
 Check the reduced boundary value and the full graph description at an eigenvalue separately. For good energies retain the topology of every derivative limit and the sign in the spectral-measure formula.
+
+<a id="lap-solutions"></a>
 
 ## 10. Graded exercises with complete solutions
 
@@ -717,7 +753,7 @@ Yafaev [Y], §3, concerns \(H=-\Delta+v\) with real scalar \(v\) and
 \(|\partial^\alpha v|\le C_\alpha X^{-\rho-|\alpha|}\), \(\rho>0\), \(|\alpha|\le1\). Equation (3.5) is the dilation Mourre estimate on a sufficiently small positive-energy interval. Its consequence is continuous weighted \(L^2\) resolvent boundary values with weight \(r>1/2\), away from eigenvalues. The lectures state the passage from that commutator estimate to the limiting absorption principle without proving it. This gives a scalar operator-norm comparison, without replacing the endpoint, every-derivative or eigenvalue-reduction proof here.
 
 Isozaki [I], §2, Lemmas 2.4–2.6, concerns \(H=-\Delta+V\), real \(V\in C^3\), with
-\(\partial^\alpha V=O(|x|^{-\delta-|\alpha|})\), \(0\le|\alpha|\le3\), at positive energy. Its proof differentiates a spherical radiation pairing, solves the resulting oscillatory first-order equation by an integrating factor, and uses a Green identity to recover the norm flux. Earlier LAP and radiation estimates are imported. The author-uploaded text is readable, but the available extraction loses formula symbols and a readable PDF was not retrieved; consequently no exact normalization or sign is transferred from it. The full radial identity, sharp shell passage and all derivative tails used here are proved in the preceding flux lesson.
+\(\partial^\alpha V=O(|x|^{-\delta-|\alpha|})\), \(0\le|\alpha|\le3\), at positive energy. Its proof differentiates a spherical radiation pairing, solves the resulting oscillatory first-order equation by an integrating factor, and uses a Green identity to recover the norm flux. Earlier LAP and radiation estimates are imported. This scalar argument illustrates the radial-flux mechanism. The [full radial identity, sharp shell passage and all derivative tails](outgoing-flux-and-vanishing-shell-mass.md#flux-radial-identity) used here are proved for the polynomial differential operator in the preceding flux lesson.
 
 The result-level roles in the five long-range lessons are therefore explicit:
 
@@ -742,4 +778,6 @@ The result-level roles in the five long-range lessons are therefore explicit:
 
 [Y] Dmitri Yafaev, [*Lectures on scattering theory*, arXiv:math/0403213v1](https://arxiv.org/pdf/math/0403213v1), submitted 12 March 2004, §3, especially equation (3.5) and its LAP discussion. The lectures cite external proofs for that implication.
 
-[I] Hiroshi Isozaki, [*Eikonal equations and spectral representations for long-range Schrödinger Hamiltonians*](https://projecteuclid.org/euclid.kjm/1250522277), J. Math. Kyoto Univ. 20(2) (1980), 243–261, §2, Lemmas 2.4–2.6. Access and formula-extraction limits are stated above; the article is a mechanism comparison, not an exact-formula proof provider.
+[I] Hiroshi Isozaki, [*Eikonal equations and spectral representations for long-range Schrödinger Hamiltonians*, author-uploaded text](https://www.researchgate.net/publication/258235181_Eikonal_equations_and_spectral_representations_for_long-range_Schrodinger_Hamiltonians), J. Math. Kyoto Univ. 20(2) (1980), 243–261, §2, Lemmas 2.4–2.6. The spherical radiation pairing and Green identity give a scalar comparison with the polynomial flux argument.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Theorem 30.2.10, formulas (30.2.30)–(30.2.31), its proof and the following eigenvalue graph remark, pp. 295–296. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

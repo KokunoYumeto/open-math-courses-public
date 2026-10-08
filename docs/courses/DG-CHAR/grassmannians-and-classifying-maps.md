@@ -1,6 +1,6 @@
 # Grassmannians and classifying maps
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text is dedicated to the public domain under CC0. The marked adaptation in Lemma 8.1 retains David Michael Roberts’s CC BY 4.0 licence.*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026; the proof of Lemma 8.1 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Independently authored text is dedicated to the public domain under CC0.*
 
 The finite stabilization theorem replaces an abstract bundle on a compact base by a continuously moving subspace of one fixed vector space. A Grassmannian records that moving subspace. Passing to infinitely many coordinates makes this construction work for every paracompact Hausdorff base, and homotopies of the resulting maps describe bundle isomorphisms.
 
@@ -220,11 +220,17 @@ A **covering map** \(p:P\to X\) is locally a projection \(U\times S\to U\) with 
 
 **Lemma 8.1 (a cover of an interval is trivial).** Every covering over \(I\) is isomorphic to \(I\times p^{-1}(0)\), with its initial fibre fixed. Each point of that fibre determines a unique lifted path.
 
-**Proof.** A finite chain of overlapping closed intervals lies in trivializing open sets and covers \(I\). Glue their trivializations successively. On an overlap, the comparison sends each sheet to a sheet; this permutation is constant because the overlap is connected and the sheets are discrete. Relabel the next interval by that permutation. The trivializations and their inverses now agree, so the finite closed-set pasting lemma gives inverse global maps. A section is uniquely determined by its initial sheet, since in this trivialization its discrete coordinate is constant. \(\square\)
+**Proof.** Write \(F=p^{-1}(0)\). By the compactness argument after this proof, there are points \(0=t_0<t_1<\cdots<t_N=1\) such that each \(I_k=[t_{k-1},t_k]\) lies in an open set \(U_k\) over which \(p\) is a projection: there is a homeomorphism \(\phi_k:p^{-1}(U_k)\to U_k\times S_k\) over \(U_k\), with \(S_k\) discrete. In particular \(\phi_1\) identifies \(F\) with the discrete set \(S_1\). Define bijections \(\sigma_k:F\to S_k\) one at a time. Let \(\sigma_1(e)\) be the \(S_1\)-coordinate of \(\phi_1(e)\). For \(k\geq2\), the point \(\phi_{k-1}^{-1}(t_{k-1},\sigma_{k-1}(e))\) lies over \(t_{k-1}\in U_{k-1}\cap U_k\); let \(\sigma_k(e)\) be its \(S_k\)-coordinate under \(\phi_k\). Each \(\sigma_k\) is a bijection, because \(\phi_{k-1}\) and \(\phi_k\) both identify the fibre over \(t_{k-1}\) with their discrete sets.
 
-*Source and licence for Lemma 8.1:* adapted from David Michael Roberts, *Algebraic Topology* (2019), proposition labelled `covering_sp_of_interval_triv` and its corollary, [source](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019/blob/b947ad2e9f9e301bfe24590a9db653bc54fa1a53/Notes.tex). Copyright © David Michael Roberts 2019; this adapted lemma retains [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/), including its disclaimer of warranties. The proof has been shortened and the notation changed. The other proofs in this chapter are independently authored.
+For \(t\in I_k\) put \(\Phi(t,e)=\phi_k^{-1}(t,\sigma_k(e))\). At \(t_{k-1}\), which lies in both \(I_{k-1}\) and \(I_k\), the two formulas agree by the choice of \(\sigma_k\). Each formula is continuous on \(I_k\times F\) because \(F\) is discrete, so the pasting lemma for the finitely many closed sets \(I_k\times F\) makes \(\Phi:I\times F\to P\) continuous. Moreover \(\Phi(0,e)=e\) and \(p(\Phi(t,e))=t\). Over \(I_k\), the map
+\[
+p^{-1}(I_k)\longrightarrow I_k\times F,\qquad x\longmapsto\bigl(p(x),\,\sigma_k^{-1}(\operatorname {pr}_2\phi_k(x))\bigr)
+\]
+and \(\Phi\) are mutually inverse. Hence \(\Phi\) is a bijection, these inverse formulas agree over each \(t_k\), and the pasting lemma for the closed sets \(p^{-1}(I_k)\) makes \(\Phi^{-1}\) continuous. Thus \(\Phi\) is an isomorphism of covers over \(I\) that fixes the initial fibre.
 
-The finite chain used there exists by a compactness argument that is also useful below. For an open cover of a compact metric space, choose at every point a ball of radius \(2r\) in a cover member; finitely many radius-\(r\) balls cover the space. Any set of diameter smaller than the least of these finitely many radii, and meeting one of the smaller balls, lies in the corresponding larger ball. This is the required Lebesgue number. Subdivide the interval into shorter pieces and slightly enlarge the pieces while retaining that diameter bound.
+For \(e\in F\), the path \(t\mapsto\Phi(t,e)\) lifts the identity of \(I\) and starts at \(e\). If \(s:I\to P\) is another such lift, the second coordinate of \(\Phi^{-1}\circ s\) is a continuous map from the connected interval to the discrete set \(F\). It is therefore constant, with value \(e\), and \(s(t)=\Phi(t,e)\). \(\square\)
+
+The subdivision used there exists by a compactness argument that is also useful below. For an open cover of a compact metric space, choose at every point a ball of radius \(2r\) in a cover member; finitely many radius-\(r\) balls cover the space. Any set of diameter smaller than the least of these finitely many radii, and meeting one of the smaller balls, lies in the corresponding larger ball. This is the required Lebesgue number. Subdivide the interval into closed pieces of smaller length.
 
 For a path \(\alpha:I\to X\), apply Lemma 8.1 to its pullback cover. This proves existence and uniqueness of its lift from a chosen point. Reversing and concatenating paths reverse and compose the resulting fibre bijections.
 
@@ -399,6 +405,6 @@ The orientation cover of the tautological line is exactly \(S^\infty\), so its \
 
 [H] Allen Hatcher, *Vector Bundles and K-Theory*, version 2.2, 2017, [author's text](https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf). Copyrighted reference; no text or figures reproduced here.
 
-[AT] Allen Hatcher, *Algebraic Topology*, corrected author-hosted electronic text, [author's text](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf). Section 1.3 treats arbitrary-sheet covers and their monodromy, including disconnected covers; Appendix A proves the compact-subcomplex and local-neighbourhood facts. The present chapter gives its own proofs, with the separately credited interval-cover adaptation above.
+[AT] Allen Hatcher, *Algebraic Topology*, corrected author-hosted electronic text, [author's text](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf). Section 1.3 treats arbitrary-sheet covers and their monodromy, including disconnected covers; Appendix A proves the compact-subcomplex and local-neighbourhood facts. The present chapter gives its own proofs.
 
-[R] David Michael Roberts, *Algebraic Topology*, lecture notes, 2019, [repository](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019). Copyright © David Michael Roberts 2019, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The marked Lemma 8.1 is adapted from the interval-cover proposition and corollary; attribution, change notice and licence are retained above. [Complete source licence](https://creativecommons.org/licenses/by/4.0/legalcode.en).
+[R] David Michael Roberts, *Algebraic Topology*, lecture notes, 2019, [repository](https://github.com/DavidMichaelRoberts/AlgebraicTopology2019). These notes also prove that every covering of an interval is trivial.

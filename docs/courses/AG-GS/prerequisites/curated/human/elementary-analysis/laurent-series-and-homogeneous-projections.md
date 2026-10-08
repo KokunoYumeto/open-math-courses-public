@@ -1,6 +1,6 @@
 # Laurent series and homogeneous projections
 
-*The one-variable theorem and its contour proof are adapted from Jiří Lebl's **Guide to Cultivating Complex Analysis: Working the Complex Field**, version 1.9. This modified teaching unit is CC BY-SA 4.0. GPT-6 Astra (OpenAI), in Codex at Ultra, wrote the product-domain estimates, homogeneous projections, complex contraction and worked solutions, and self-checked the unit. No independent AI or human review is claimed. [Source and edition](laurent-source-notice.html).*
+*The one-variable theorem and its contour proof follow Jiří Lebl's **Guide to Cultivating Complex Analysis: Working the Complex Field**, version 1.9. GPT-6 Astra (OpenAI), in Codex at Ultra, wrote the unit, including the product-domain estimates, homogeneous projections, complex contraction and worked solutions. Self-checked by the writing AI. Original text: public domain (CC0). [Source and edition](laurent-source-notice.html).*
 
 A Laurent series distinguishes two kinds of behaviour: powers that extend through a coordinate hyperplane, and negative powers that need that hyperplane removed. Keeping that distinction in several coordinates gives a precise way to extend parts of a holomorphic function. It also explains the elementary complex underlying analytic projective-space cohomology.
 
@@ -227,4 +227,4 @@ Their geometric ratios give exactly the stated regions of normal convergence. In
 
 ## Source and further reading
 
-Jiří Lebl's [*Guide to Cultivating Complex Analysis: Working the Complex Field*](https://www.jirka.org/ca/), version 1.9, supplies the one-variable Laurent theorem and its proof. [The author's editable LaTeX](https://github.com/jirilebl/ca/blob/v1.9/ca.tex) and the [selected unmodified source passage](LEBL-LAURENT-SOURCE.tex) accompany the [source notice](laurent-source-notice.html). The explicit estimates, several-variable statements, homogeneous complex, illustration and solutions in this teaching unit are identified AI contributions; the unit retains CC BY-SA 4.0 throughout. Earlier programme proofs keep their own notices and terms.
+Jiří Lebl's [*Guide to Cultivating Complex Analysis: Working the Complex Field*](https://www.jirka.org/ca/), version 1.9, supplies the one-variable Laurent theorem and its proof. [The author's editable LaTeX](https://github.com/jirilebl/ca/blob/v1.9/ca.tex) and the [selected unmodified source passage](LEBL-LAURENT-SOURCE.tex) accompany the [source notice](laurent-source-notice.html). The explicit estimates, several-variable statements, homogeneous complex, illustration and solutions in this teaching unit are by GPT-6 Astra (OpenAI). Earlier programme proofs keep their own notices and terms.

@@ -8,6 +8,8 @@ A differential perturbation can change the highest derivatives, contain unbounde
 
 This lesson gives the coefficient conditions, proves their global mapping consequences, and constructs both the real-symbol and symmetric splittings. Read [Polynomial localizations and rough coefficients](polynomial-localizations-and-rough-coefficients.md) for the exact Sobolev estimates, and [Regularizing long-range coefficients](long-range-coefficient-calculus.md) for the smoothing theorem. The free primary coefficient-smoothing proof is Hörmander [HW], Lemma 3.3. The expression-level adjoint calculation is proved below. [Approximation, convolution and integer Sobolev density](../providers/analysis/euclidean-approximation-and-convolution.md) supplies the exact Hölder, density, convolution and translation facts used with those proofs; its [Proposition 5.1](../providers/analysis/euclidean-approximation-and-convolution.md#oscillatory-integrals-and-averages) proves the oscillatory-integral limit in Solution 6.3.
 
+The coefficient multiplier and admissible class are Hörmander [H4, Lemma 30.1.2 and Definition 30.1.3]; the local-to-global argument below spells out their Sobolev mapping consequences.
+
 Throughout, \(n,m\geq1\) are integers,
 \(D_j=-i\partial_j\), and \(\langle x\rangle=(1+|x|^2)^{1/2}\).
 The \(H^m(\mathbb R^n)\) norm is
@@ -216,6 +218,8 @@ A highest-order short-range coefficient can also alter the local principal symbo
 The regularization theorem allows all derivatives of the long-range coefficients to be used, with a precise loss at high orders.
 
 <a id="admissible-regularization"></a>
+The coefficient regularization and its full derivative budget are Hörmander [H4, Lemma 30.1.1].
+
 **Theorem 4.1.** Suppose \(V\) is \(K\)-admissible and has the splitting above. After replacing \(\varepsilon\), if necessary, by a smaller number in \((0,1)\), choose \(0<b<\varepsilon\). Then
 
 \[
@@ -277,6 +281,8 @@ For smooth coefficients, integration by parts on compact tests gives the followi
 In the middle expression \(D^\alpha\overline{\widetilde\ell_\alpha}\) denotes operator composition with multiplication; the last expression is its coefficient expansion.
 
 <a id="admissible-symmetric-split"></a>
+Hörmander [H4, p. 280] gives the symmetric-average splitting and also proposes the Weyl alternative. We verify the coefficient corrections and their decay in both cases.
+
 **Theorem 5.1.** With the real smooth splitting of Theorem 4.1, put
 
 \[
@@ -365,7 +371,72 @@ Use \(\xi^\alpha e^{i(x-y)\cdot\xi}=(-D_y)^\alpha e^{i(x-y)\cdot\xi}\), then int
         D^{\alpha-\beta}u(x).
 \]
 
-This is a finite distribution identity, not a formal infinite expansion. It can first be tested on compact smooth inputs; the bounded smooth coefficients and their derivatives extend its action to Schwartz inputs. Summing over \(\alpha\) gives the stated exact differential expression. For comparison, [Lerner’s freely readable author chapter](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), Theorems 2.3.18–2.3.19, printed p. 100, treats general changes of quantization and composition. Its kernel uses \(e^{2\pi i(x-y)\cdot\eta}\); the substitution \(\xi=2\pi\eta\) gives our convention. The finite polynomial kernel identity needed here was proved directly above, without using that general metric calculus as a prerequisite.
+This finite distribution identity first holds on compact smooth inputs. The bounded smooth coefficients and their derivatives extend its action to Schwartz inputs. Summing over \(\alpha\) gives the stated exact differential expression.
+
+<a id="admissible-weyl-left-symbol"></a>
+Writing \(a_L\) for the left symbol and \(T_{1/2}\) for this conversion on polynomial symbols, the same identity reads
+
+\[
+ a_L=T_{1/2}\ell
+ =\sum_{\beta}\frac{2^{-|\beta|}}{\beta!}
+       D_x^\beta\partial_\xi^\beta\ell.
+\]
+
+The sum stops at \(|\beta|=m\). Indeed, for a monomial \(\xi^\alpha\), the derivative \(\partial_\xi^\beta\xi^\alpha/\beta!\) is \({\alpha\choose\beta}\xi^{\alpha-\beta}\) when \(\beta\leq\alpha\), and is zero otherwise. Thus this compact symbol formula has exactly the coefficients just proved by the kernel calculation. It includes every lower-order term.
+
+<a id="admissible-finite-fourier-conversion"></a>
+
+**A second exactness argument, using the Fourier transform of a polynomial.** This also explains why an infinite quantization-change expansion leaves no remainder here. In this calculation use the unnormalized full transform
+\[
+ (\mathcal F a)(\eta,z)=
+  \int e^{-i(x\cdot\eta+\xi\cdot z)}a(x,\xi)\,dx\,d\xi,
+\]
+interpreted by the [proved tempered Fourier duality](../providers/analysis/finite-derivative-l2.md#tempered-fourier-duality). A polynomial
+\(a(x,\xi)=\sum_{|\alpha|\leq m}f_\alpha(x)\xi^\alpha\)
+with bounded smooth coefficients defines a tempered distribution: its absolute pairing with a Schwartz test is bounded by a constant times a sufficiently high weighted supremum of that test. Fourier inversion at zero gives
+\(\mathcal F_\xi 1=(2\pi)^n\delta_0\). Differentiating the test transform then gives
+\[
+ (\mathcal F a)(\eta,z)
+   =(2\pi)^n\sum_{|\alpha|\leq m}
+          i^{|\alpha|}\widehat f_\alpha(\eta)
+                         \partial_z^\alpha\delta_0(z).
+\]
+Here the product in distinct variables means
+\[
+ \big\langle\widehat f_\alpha(\eta)\partial_z^\alpha\delta_0(z),
+                 \Phi(\eta,z)\big\rangle
+   =(-1)^{|\alpha|}
+        \big\langle\widehat f_\alpha,
+                        \partial_z^\alpha\Phi(\,\cdot\,,0)\big\rangle .
+\]
+Restriction of each test derivative to \(z=0\) is continuous into Schwartz space in \(\eta\), as follows directly from its weighted derivative bounds. Thus this formula defines a continuous functional. Applying Fourier inversion and the polynomial derivative identity to tests verifies the displayed transform, including its factor and sign. In particular its support in the \(z\) variable is zero and its derivative order in that variable is at most \(m\).
+
+For real \(t\), define
+\[
+ T_t a=\mathcal F^{-1}
+                 \bigl(e^{it\eta\cdot z}\mathcal F a\bigr).
+\]
+Multiplication here is legitimate on tempered distributions. Every derivative of the exponential is that same bounded exponential times a polynomial in \((\eta,z)\). The product rule therefore bounds each Schwartz seminorm of \(e^{it\eta\cdot z}\Phi\) by finitely many seminorms of \(\Phi\), and transposition defines the product.
+
+The function
+\[
+ e^{it\eta\cdot z}
+   -\sum_{|\beta|\leq m}
+        \frac{(it)^{|\beta|}}{\beta!}\eta^\beta z^\beta
+\]
+has every \(z\) derivative through order \(m\) equal to zero at \(z=0\), identically in \(\eta\), by the scalar exponential series and the multiindex product rule. Its product with \(\mathcal F a\) is consequently zero: in each term above, the derivative of its product with a test at \(z=0\) is zero by the finite product rule. Hence the displayed finite polynomial can replace the exponential exactly. Since
+\[
+ \mathcal F(D_x^\beta\partial_\xi^\beta a)
+       =\eta^\beta(iz)^\beta\mathcal F a,
+\]
+Fourier inversion gives the finite identity
+\[
+ T_t a=\sum_{|\beta|\leq m}\frac{t^{|\beta|}}{\beta!}
+                             D_x^\beta\partial_\xi^\beta a.
+\]
+At \(t=1/2\) and \(a=\ell\) this is exactly the left symbol already obtained from the Weyl kernel. The two arguments agree for every lower-order coefficient as well as the principal one.
+
+For comparison, [Lerner’s freely readable author chapter](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), Theorems 2.3.18–2.3.19, printed p. 100, treats general changes of quantization and composition. Its kernel uses \(e^{2\pi i(x-y)\cdot\eta}\); the substitution \(\xi=2\pi\eta\) gives our convention. The finite polynomial kernel identity needed here was proved directly above, without using that general metric calculus as a prerequisite.
 
 Reality of \(\ell\) makes the Weyl kernel equal to the complex conjugate of its transpose. Testing that distributional identity on two Schwartz inputs gives \(L_w^*=L_w\) on those tests. In the difference \(L_w-\widetilde L\), every term has \(|\beta|\geq1\), hence differential order at most \(m-1\). Its coefficient is bounded by
 \(C\langle x\rangle^{-M(|\beta|)}\leq C\langle x\rangle^{-1-b}\).
@@ -558,3 +629,4 @@ Thus \(M(0),\ldots,M(4)\) are
 
 
 - [Y] Dmitri Yafaev, notes prepared by Andrew Hassell, *Lectures on scattering theory*, 2004. [Author's paper](https://arxiv.org/abs/math/0403213).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Lemmas 30.1.1–30.1.2, Definition 30.1.3 and the following symmetric/Weyl splitting discussion, pp. 278–280. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

@@ -1,0 +1,1 @@
+Original mathematical drawing and renderer released under CC BY 4.0, matching the mathematical manuscript. No third-party figure was copied or adapted. DejaVu Sans font license retained below; SVG uses text elements.

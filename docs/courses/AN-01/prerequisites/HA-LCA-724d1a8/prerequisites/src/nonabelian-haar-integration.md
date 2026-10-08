@@ -4,7 +4,7 @@
 
 The freely accessible source material is Terence Tao's [2011 notes on Haar measure, §1](https://terrytao.wordpress.com/2011/09/27/254a-notes-3-haar-measure-and-the-peter-weyl-theorem/), especially Theorem 3 and Exercises 6–7; D. H. Fremlin's *Measure Theory*, [§442, version of 21 March 2007](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt442.tex), 442C–K, [§443, version of 14 January 2013](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex), 443G, and [§444, version of 4 June 2013](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt444.tex), 444O–Q; and B. Bekka, P. de la Harpe and A. Valette's [free author draft dated 23 February 2007](https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf), A.3.2–A.3.4, A.4 and the integrated-representation statement on printed page 436 in F.4. Source exercises and external references are not proof providers. Every result used below is proved here or linked to its complete proof in an earlier programme reading.
 
-This adapted component is distributed under the [Design Science License](../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's original copyright notices for §§442, 443 and 444 are 1998, 2001 and 1999. The unchanged volume 4 source package is retained. The other sources' prose and figures are not reproduced.
+Original text: public domain (CC0). Fremlin's original copyright notices for §§442, 443 and 444 are 1998, 2001 and 1999. The unchanged volume 4 source package is retained. The other sources' prose and figures are not reproduced.
 
 ## 1. Compact control in a group
 

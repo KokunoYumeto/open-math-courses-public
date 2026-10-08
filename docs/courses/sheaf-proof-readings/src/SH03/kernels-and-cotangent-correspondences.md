@@ -263,7 +263,7 @@ Take \(X=Z=\{\mathrm{pt}\}\), \(Y=\mathbb R\), and \(K=L=k_{\mathbb R}\), with \
 
 Take \(X=Z=\{\mathrm{pt}\}\), \(Y=\mathbb R\), and \(K=L=k_{\{0\}}\). Compute \(S\), verify properness, and test (9).
 
-**Solution.** The support intersection is the point \(0\), so it is proper. Both kernels have the full cotangent fibre over zero as microsupport. Every nonzero \(\eta\in T_0^*\mathbb R\) satisfies both clauses on the left of (9). Thus cancellation fails. In this particular example the convolution is still \(k\); failure of a sufficient hypothesis is not a proof that the conclusion is false. Theorem 1 simply provides no estimate through its noncharacteristic tensor argument in this case.
+**Solution.** Suppose first that \(k\neq0\). The support intersection is the point \(0\), so it is proper. Both kernels have the full cotangent fibre over zero as microsupport. Every nonzero \(\eta\in T_0^*\mathbb R\) satisfies both clauses on the left of (9). Thus cancellation fails. In this particular example the convolution is still \(k\); failure of a sufficient hypothesis is not a proof that the conclusion is false. Theorem 1 simply provides no estimate through its noncharacteristic tensor argument in this case. If \(k=0\), every unital \(k\)-module is zero, so \(K=L=0\), both microsupports and \(S\) are empty, and the convolution is zero. The empty support is proper and (9) holds vacuously in this case.
 
 ### Shifts and inverse kernels
 

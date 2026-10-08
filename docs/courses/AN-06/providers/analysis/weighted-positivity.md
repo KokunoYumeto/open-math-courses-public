@@ -239,3 +239,97 @@ For the last assertion, the ordinary order-zero bound is $|\partial_x^\alpha\par
 In Lemma 3 the position and frequency errors in (P9) are $r^2R^{-3}$ and $r^{-2}R^{-1}$. Equating them gives $r^2=R$ and error $R^{-2}$, which matches the weighted lower bound after spatial localization. In Theorem 4 the corresponding errors are $r^2$ and $r^{-2}R^{-2}$. Their balance gives $r^2=R^{-1}$ and error $R^{-1}$.
 
 In both cases the positive packet operator is controlled directly by the isometry. For real nonnegative symbols this gives the sign; for complex symbols it preserves coefficient one in front of the supremum $M$. The two-position amplitude bound then controls the Gaussian-convolution error and the exact change from Weyl to left quantization at the appropriate scale.
+
+<a id="ordinary-order-zero-positivity"></a>
+## An order-zero lower bound with a half-order error
+
+The following version also permits a quadratic-form proof of high-frequency norm bounds. Its hypotheses differ from (P16): no decay of position derivatives is required.
+
+**Theorem 5.** Let $b(y,\eta)\ge0$ be smooth and real, with
+\[
+ |\partial_y^\alpha\partial_\eta^\beta b(y,\eta)|
+ \le B_{\alpha\beta}\langle\eta\rangle^{-|\beta|}.
+ \tag{P20}
+\]
+Then, for every $w\in L^2$,
+\[
+ \operatorname{Re}(\operatorname{Op}_L(b)w,w)
+ \ge-C\|w\|_{H^{-1/2}}^2.
+ \tag{P21}
+\]
+Only finitely many $B_{\alpha\beta}$ enter $C$. In particular the estimate is uniform in families with uniform displayed seminorms. There is no compact-support assumption. In dimension zero it is the scalar inequality $b|w|^2\ge0$.
+
+**Proof.** Put $a(x,\xi)=b(\xi,-x)$. Its derivatives satisfy
+\[
+ |\partial_x^\alpha\partial_\xi^\beta a(x,\xi)|
+ \le B_{\beta\alpha}X^{-|\alpha|}.
+ \tag{P22}
+\]
+We first prove the lower bound $-C\|X^{-1/2}u\|_2^2$ for $A=\operatorname{Op}_L(a)$. Lemma 2 bounds $A$ on $L^2$ since all the required derivatives are bounded.
+
+Use the square partition $\rho_j$ and larger nonnegative cutoffs $\chi_j$ from (P11). The symbols $a_j=\chi_j a$ obey
+$|\partial_x^\alpha\partial_\xi^\beta a_j|\le C_{\alpha\beta}R_j^{-|\alpha|}$, uniformly in $j$. Apply the packet construction with $r=R_j^{1/2}$. Its positive operator $Q_r(a_j)$ has Weyl symbol $a_j*G_r$. The same two separate Taylor expansions as in (P9) give
+\[
+ \|\partial_x^\alpha\partial_\xi^\beta(a_j*G_r-a_j)\|_\infty
+ \le C_{\alpha\beta}
+ (r^2R_j^{-2-|\alpha|}+r^{-2}R_j^{-|\alpha|})
+ \le C'_{\alpha\beta}R_j^{-1}.
+ \tag{P23}
+\]
+The exact left-minus-Weyl amplitude (P10) contains a position derivative, so all its required derivatives are also $O(R_j^{-1})$. Lemma 2 bounds both errors. Since $\chi_j=1$ on the output support of $\rho_j u$, exact left multiplication gives
+\[
+ \operatorname{Re}(A\rho_j u,\rho_j u)
+ =\operatorname{Re}(\operatorname{Op}_L(a_j)\rho_j u,\rho_j u)
+ \ge-CR_j^{-1}\|\rho_j u\|_2^2.
+ \tag{P24}
+\]
+The sum of these error bounds is at most $C\|X^{-1/2}u\|_2^2$.
+
+Here the frequency derivatives in (P22) need not decrease at infinity, so we prove the partition error directly with amplitudes. Write $h=x-y$, $Y=\langle y\rangle$, and $z_t=y+th$. The scalar fundamental theorem gives
+\[
+ \begin{aligned}
+ m(x,y)&=\tfrac12\sum_j(\rho_j(x)-\rho_j(y))^2
+          =\sum_{k,l=1}^n h_kh_l q_{kl}(x,y),\\
+ q_{kl}(x,y)&=\tfrac12\sum_j
+       \left(\int_0^1\partial_k\rho_j(z_t)\,dt\right)
+       \left(\int_0^1\partial_l\rho_j(z_s)\,ds\right).
+ \end{aligned}
+ \tag{P25}
+\]
+Only finitely many partition functions meet any fixed segment. Every derivative in $x,y$ of either integral in (P25) introduces bounded powers of $t,1-t$ and higher derivatives of $\rho_j$. At each point $z$, finite overlap and (P11) give
+$\sum_j|\partial^\nu\rho_j(z)|^2\le C_\nu\langle z\rangle^{-2}$ for $|\nu|\ge1$. Apply Cauchy--Schwarz to the sum in $j$ at fixed $s,t$, then integrate over the unit square. For every pair of multi-indices this proves
+\[
+ |\partial_x^\mu\partial_y^\nu q_{kl}(x,y)|
+ \le C_{\mu\nu} I(x,y)^2,\qquad
+ I(x,y)=\int_0^1\langle y+t(x-y)\rangle^{-1}\,dt.
+ \tag{P26}
+\]
+The same bounds hold for all finite partial sums in (P25).
+
+If $|h|\le X/2$, brackets along the segment are comparable to $X$, so $I\le C/X$ and $X^{1/2}Y^{1/2}I^2\le C$. If $H=|h|>X/2$, then $H>1/2$, $X\le2H$ and $Y\le3H$. Orthogonal projection onto the line of $h$ bounds $I$ by $H^{-1}$ times the integral of $(1+s^2)^{-1/2}$ over an interval of length $H$. An even function decreasing in $|s|$ has its largest such interval integral when centered at zero: moving either endpoint toward zero increases that integral until the endpoints have equal absolute values. Splitting this centered interval at $|s|=1$ gives an upper bound $C\log(2+H)$. Consequently
+\[
+ X^{1/2}Y^{1/2}I^2
+ \le C\frac{\log^2(2+H)}{H}\le C'.
+ \tag{P27}
+\]
+The last bound follows, for $H\ge1$, from
+$\log H=\int_1^H t^{-1}dt\le4H^{1/4}$, and on $1/2\le H\le1$ from continuity. Derivatives of $X^{1/2}$ and $Y^{1/2}$ are bounded by constants times those same weights. The product rule and (P26)--(P27) therefore bound every required derivative of $X^{1/2}Y^{1/2}q_{kl}$ uniformly.
+
+The partition error $E=A-\sum_j\rho_j A\rho_j$ has kernel multiplier $m$. Transfer the two factors $h_kh_l$ in (P25) to the frequency variable. The weighted operator $X^{1/2}EX^{1/2}$ then has amplitude
+\[
+ -\sum_{k,l}X^{1/2}Y^{1/2}q_{kl}(x,y)
+                   \partial_{\xi_k}\partial_{\xi_l}a(x,\xi).
+ \tag{P28}
+\]
+All its finitely many derivatives required by Lemma 2 are bounded, by (P22) and the preceding calculation. Thus
+\[
+ |(Eu,u)|\le C\|X^{-1/2}u\|_2^2.
+ \tag{P29}
+\]
+
+We justify this identity as well as its bound. For a finite partition sum use
+$\tfrac12\sum_{j\le J}(\rho_j^2 A+A\rho_j^2-2\rho_j A\rho_j)$; its kernel has the corresponding finite sum of squares. Insert a smooth frequency cutoff at radius $L$ before the two integrations by parts. Terms in which at least one frequency derivative hits that cutoff tend to zero in the bounded-amplitude norm: they have an extra factor $L^{-1}$ or $L^{-2}$, and all remaining derivatives are uniformly bounded. The other pairings converge by the oscillatory cutoff argument of Lemma 2. This proves (P28) for each finite partition sum. The derivative bounds above are uniform in $J$, and the amplitudes and their derivatives converge on compact sets. The same Schwartz-pairing limit from Lemma 2 passes this uniform bound to the full amplitude. On the operator side $\sum_{j\le J}\rho_j^2$ tends strongly to the identity, while
+$\sum_j|(A\rho_j u,\rho_j v)|\le\|A\|\|u\|_2\|v\|_2$ by Cauchy--Schwarz and the square partition. These facts identify the limit with $E$. Initially put $u=X^{1/2}v$ with $v$ Schwartz in the weighted identity; multiplication by these smooth polynomially bounded weights preserves Schwartz space. This proves (P29) for Schwartz $u$, with no unexamined diagonal distribution.
+
+Summing (P24) and adding (P29) proves the desired lower bound for $A$. The Fourier calculation preceding (P16) gives
+$\mathcal F A\mathcal F^{-1}=\operatorname{Op}_{\mathrm{right}}(b)$. Since $b$ is real, this right operator and its left adjoint have the same real quadratic form. Plancherel identifies $\|X^{-1/2}u\|_2$ with $\|\mathcal Fu\|_{H^{-1/2}}$. This proves (P21) on Schwartz space. Boundedness of the left operator by Lemma 2 and of the negative Sobolev multiplier extends it by density to every $w\in L^2$. Every step used a fixed finite derivative list, proving the claimed uniformity. $\square$

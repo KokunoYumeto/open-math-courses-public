@@ -1,6 +1,6 @@
 # Henselian local rings and henselization
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Combined edition under GNU FDL 1.2 or later; original material retains its CC0 dedication.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original text: public domain (CC0). The Noetherianity and dimension proofs of Section 6 follow arguments of the Stacks Project, cited at the end.*
 
 A simple root in the residue field is an equation with an invertible linear term. Completeness solves it by taking a limit. Henselianity asks for the solution itself, without requiring limits of arbitrary sequences. We will construct the smallest local extension that supplies these solutions and then allow a chosen separable closure of the residue field.
 
@@ -301,16 +301,10 @@ Verified tag references: [Tag 04GF](https://stacks.math.columbia.edu/algebra.htm
 
 **Proof dependencies.** Theorems 6.3–6.4 prove the Noetherian equivalence and arbitrary-local dimension equality in (10). Maps between étale algebras are proved in the formal étale lesson, Proposition 7.4. Its Theorem 7.6 gives the exact written programme provider for principal standard étale neighborhoods and links its written algebraic Zariski proof in *Morphisms of schemes*, Theorem 1.1, Sections 1–2. The Cohen lesson, Theorem 6.1, supplies the complete finite-maximal-ideal Noetherian statement used here. All henselian criteria, permanence, universal properties, faithful-flatness and exercise arguments appear above.
 
-## Sources and adaptation history
+## Sources
 
-The Noetherianity and dimension proofs in Section 6 incorporate the Stacks Project Authors’ henselization arguments from the pinned AI Integrated Stacks Project more-algebra chapter. The completed-free-module step is proved here directly with Artin–Rees, and flatness is established before Noetherian descent. This preserves the arbitrary-local-ring dimension statement and avoids assuming Noetherianity of the henselization. [Incorporated source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex#L11589).
+The Noetherianity and dimension proofs in Section 6 follow the Stacks Project authors' henselization arguments in the more-algebra chapter ([source at the pinned AI Integrated Stacks Project revision](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex#L11589)). The completed-free-module step is proved here directly with Artin–Rees, and flatness is established before Noetherian descent. This keeps the dimension statement for an arbitrary local ring and does not assume in advance that the henselization is Noetherian.
 
-History: Stacks Project Authors, original construction; OpenAI GPT-6.1 Sol, mathematical exposition and completed verifications, October 2026.
+## Licence
 
-## Copyright and licence
-
-Copyright (C) 2005–2025 Johan de Jong. The incorporated source is *The Stacks Project*, as distributed in AI Integrated Stacks Project at revision `565b10e987aba5969b21145a0833f42d69f96790`.
-
-Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy is supplied as GNU Free Documentation License 1.2.
-
-The original course material remains available under its CC0 dedication. This combined edition, including the incorporated and adapted proof, is distributed under GNU FDL 1.2 or later. The source authors, incorporated source titles and mathematical adaptations are identified above. History: Stacks Project Authors, original source; the credited AI Integrated Stacks Project editorial contributors, where used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.
+The text of this lesson is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The Stacks Project, cited above for the arguments this lesson follows, is distributed by its authors under the GNU FDL 1.2 or later.

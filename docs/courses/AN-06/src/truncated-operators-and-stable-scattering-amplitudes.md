@@ -7,9 +7,11 @@
 
 Cutting off a force makes it act only in a bounded region. We want to recover the original scattering problem as that region grows. Agreement on every bounded set does not by itself control a resolvent at real energy or an amplitude measured at infinite distance. The proof needs a common resolvent bound, a radiation condition that survives the changing operator, and a uniform estimate for the final amplitude.
 
-Read [Admissible differential perturbations](admissible-differential-perturbations.md) and [Regularizing long-range coefficients](long-range-coefficient-calculus.md) for the coefficient classes used here. [Limiting absorption for long-range differential perturbations](limiting-absorption-for-long-range-differential-perturbations.md) supplies the fixed-operator boundary values and homogeneous radiation uniqueness. The kernel argument comes from [Frequency cutoffs and compact scattering remainders](frequency-cutoffs-and-compact-scattering-remainders.md). The local Hamilton geometry is in [Hamilton trajectories under a long-range force](hamilton-trajectories-under-a-long-range-force.md), [Escaping Lagrangians on regular energy surfaces](escaping-lagrangians-on-regular-energy-surfaces.md), and [Generating functions and the end of a localized force](generating-functions-and-the-end-of-a-localized-force.md). Finally, [Commuting coordinates for long-range evolution](commuting-coordinates-for-long-range-evolution.md) and [Transverse moments and outgoing amplitudes](transverse-moments-and-outgoing-amplitudes.md) give the factored evolution and its amplitude stability theorem.
+Read [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-coefficient-class) and [Regularizing long-range coefficients](long-range-coefficient-calculus.md#coefficient-dyadic-regularization) for the coefficient classes used here. [Limiting absorption for long-range differential perturbations](limiting-absorption-for-long-range-differential-perturbations.md#lap-theorem) supplies the fixed-operator boundary values and homogeneous radiation uniqueness. The kernel argument comes from [Frequency cutoffs and compact scattering remainders](frequency-cutoffs-and-compact-scattering-remainders.md#cutoff-compact-remainder). The local Hamilton geometry is in [Hamilton trajectories under a long-range force](hamilton-trajectories-under-a-long-range-force.md), [Escaping Lagrangians on regular energy surfaces](escaping-lagrangians-on-regular-energy-surfaces.md), and [Generating functions and the end of a localized force](generating-functions-and-the-end-of-a-localized-force.md). Finally, [Commuting coordinates for long-range evolution](commuting-coordinates-for-long-range-evolution.md) and [Transverse moments and outgoing amplitudes](transverse-moments-and-outgoing-amplitudes.md#amplitude-uniform-stability) give the factored evolution and its amplitude stability theorem.
 
-We use Fourier inversion, Plancherel and smooth finite-dimensional flows. The complete [Hilbert-valued integration receiver](../providers/analysis/hilbert-valued-integration.md) proves the norm fundamental theorem, bounded-map integral rule, propagator variation and integrable tails used below. The arbitrary-self-adjoint spectral theorem, including its original second-moment domain, is proved in [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain), through the complete bundled unitary and Cayley-transform proofs, with no lower-bound or separability assumption. Section 1 of [Wave operators and modified phases](wave-operators-and-modified-phases.md) proves the group and generator criterion. [Distorted Fourier transforms and spectral density](distorted-fourier-transforms-and-spectral-density.md), Lemma 1.1, proves continuous-test spectral inversion. Hörmander's freely accessible wave-operator paper [H76] treats differential perturbations and phase comparison; Yafaev [Y] treats a Schrödinger model. Their comparison theorems do not supply the uniform truncation and strong channel-amplitude assertion proved here. Teschl [T] and Oh [O] supply spectral and analytic background.
+We use Fourier inversion, Plancherel and smooth finite-dimensional flows. The complete [Hilbert-valued integration receiver](../providers/analysis/hilbert-valued-integration.md) proves the norm fundamental theorem, bounded-map integral rule, propagator variation and integrable tails used below. The arbitrary-self-adjoint spectral theorem, including its original second-moment domain, is proved in [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain), through the complete bundled unitary and Cayley-transform proofs, with no lower-bound or separability assumption. Section 1 of [Wave operators and modified phases](wave-operators-and-modified-phases.md) proves the group and generator criterion. [Distorted Fourier transforms and spectral density](distorted-fourier-transforms-and-spectral-density.md), [Lemma 1.1](distorted-fourier-transforms-and-spectral-density.md#distorted-poisson), proves continuous-test spectral inversion. Hörmander's freely accessible wave-operator paper [H76] treats differential perturbations and phase comparison; Yafaev [Y] treats a Schrödinger model. Their comparison theorems do not supply the uniform truncation and strong channel-amplitude assertion proved here. Teschl [T] and Oh [O] supply spectral and analytic background.
+
+<a id="truncation-setting"></a>
 
 ## 1. The approximation statements
 
@@ -51,6 +53,8 @@ Choose real \(\rho\in C_c^\infty(\mathbb R^n)\), equal to one on the unit ball, 
 
 Let \(Z(P_0)\) be the critical values of \(P_0\), let \(\mathcal A\) be the eigenvalues of \(H\) outside that set, and put \(\Omega=\mathbb R\setminus(Z(P_0)\cup\mathcal A)\).
 
+The cutoff approximation and common boundary estimate below follow the construction in Hörmander [H4, §30.5, p. 326].
+
 **Theorem 1.1.** Let \(I\subset\Omega\) be a compact interval. For all sufficiently large \(j\), \(H_j\) is self-adjoint on the common domain \(H^m\), has no eigenvalue on \(I\), and has both boundary resolvents there. There are a complex neighborhood \(\mathcal O\) of \(I\) and \(C_I\), independent of \(j\), such that
 
 \[
@@ -75,6 +79,8 @@ The same bound holds for \(R_{j,\sigma}(\lambda)=(H_j-\lambda-\sigma i0)^{-1}\),
 \]
 
 For fixed \(f\), these convergences are uniform in \(\lambda\in I\), with weak-star uniformity understood for each \(B\) test. They also hold for norm-continuous \(B\)-valued \(f(\lambda)\), or for \(f_j(\lambda)\) converging to it uniformly in \(B\).
+
+This amplitude convergence is Hörmander [H4, (30.5.37)]. The source leaves its detailed uniformity argument to the reader; Sections 8–12 give that argument with the data, phases and operator norms specified.
 
 **Theorem 1.2.** Work in a fixed regular frequency chart with a positive distinguished free velocity component. Use one compact frequency cutoff \(\chi\), one transverse cutoff, and the normalized Hamilton constructions with one common starting time. Let \(G_j,G\) be their local real generating functions, and set
 
@@ -102,6 +108,8 @@ Each line takes the transverse slice at \(x_1=s\) after applying the full freque
 The conclusion also holds for the compact forcing families in Theorem 1.1. The other boundary sign and outgoing direction have the corresponding signed construction. In dimension one the transverse Hilbert space is \(\mathbb C\). Empty free shells have no local channels, and are covered by the off-energy estimates.
 
 We prove the resolvent statement first. We then obtain strong localized forcing, compare finite Hamilton trajectories and normalized actions, and apply the amplitude stability theorem.
+
+<a id="truncation-real-split"></a>
 
 ## 2. What the cutoff changes
 
@@ -157,7 +165,7 @@ A positive cutoff derivative of order \(q\) has size \(C_qj^{-q}\) on \(j\le|x|\
 
 For a rough coefficient, the exponent required at the lower order \(\beta\) is no greater than the exponent at order \(\alpha\). The inclusion between these local \(L^p\) spaces on a unit ball is bounded. Multiplication by a cutoff derivative therefore preserves the required product estimate and short-range decay. All commutator terms have lower order, so the continuous highest coefficients are retained.
 
-The full principal coefficients agree with those of \(H\) on \(|x|<j\). Outside that ball the perturbing principal coefficients are uniformly small for large \(j\). The bounded cutoff gives a common ellipticity modulus through its transition region. [The Sobolev domain of an elliptic operator](the-sobolev-domain-of-an-elliptic-operator.md) consequently gives the asserted realization of \(H_j\).
+The full principal coefficients agree with those of \(H\) on \(|x|<j\). Outside that ball the perturbing principal coefficients are uniformly small for large \(j\). The bounded cutoff gives a common ellipticity modulus through its transition region. [The Sobolev domain of an elliptic operator](the-sobolev-domain-of-an-elliptic-operator.md#domain-transfer) consequently gives the asserted realization of \(H_j\).
 
 The same actual local product estimate yields
 
@@ -182,6 +190,10 @@ Insert \(H=H_j+(H-H_j)\) in the fixed graph inequality. For \(u\in H^m\),
 
 Absorption for large \(j\) gives one graph constant. The opposite bound follows from the common coefficient product estimates.
 
+<a id="truncation-groups"></a>
+
+The common-domain comparison below is the argument for Hörmander [H4, (30.5.44), pp. 328–329], with its difference quotient made explicit.
+
 For later use, the unitary groups converge strongly on finite time intervals. For \(f\in H^m\), spectral evolution preserves its graph norm, and the common-domain product rule gives
 
 \[
@@ -200,6 +212,8 @@ Here is the common-domain product rule explicitly. Put \(w(t)=e^{-itH}f\). Spect
 
 Approximate any \(L^2\) vector by \(H^m\) vectors. The two unitary approximation errors have sum at most \(2\|f-f_k\|\). Choose \(k\), then \(j\). This proves strong finite-time convergence for every \(L^2\) vector.
 
+<a id="truncation-weighted-graphs"></a>
+
 ## 3. Bounded graphs have strong weighted limits
 
 Suppose \((H_j-z_j)u_j=f_j\), \(z_j\to\lambda\), \(f_j\to f\) in \(B\), and \(\|u_j\|_{\mathcal Y_m}\) is bounded. The derivative-graph compactness lemma in the limiting-absorption prerequisite supplies a subsequence with weak-star derivatives and
@@ -210,10 +224,10 @@ Suppose \((H_j-z_j)u_j=f_j\), \(z_j\to\lambda\), \(f_j\to f\) in \(B\), and \(\|
  \tag{17}
 \]
 
-Its proof uses local Sobolev compactness and the summable shell tail \(\sum r_k^{1-2b}\). On every fixed ball, \(H_j=H\) eventually, including all differential products. The sharp local coefficient product is a bounded map from local \(H^m\) to \(L^2\). Its weak continuity identifies the equation
+Its [complete compactness proof](limiting-absorption-for-long-range-differential-perturbations.md#lap-compactness) uses local Sobolev compactness and the summable shell tail \(\sum r_k^{1-2b}\). On every fixed ball, \(H_j=H\) eventually, including all differential products. The sharp local coefficient product is a bounded map from local \(H^m\) to \(L^2\). Its weak continuity identifies the equation
 \((H-\lambda)u=f\).
 
-The derivative endpoint bound also puts every \(u_j,u\) in \(H^{m,-b}\). Insert the comparable weight on each unit ball in the coefficient product proof. The coefficients of \(H_j-H\) have uniformly small local norms by (13). Weighted integer derivative equivalence, proved in [Weighted Sobolev spaces and rough elliptic estimates](weighted-sobolev-spaces-and-rough-elliptic-estimates.md), gives
+The derivative endpoint bound also puts every \(u_j,u\) in \(H^{m,-b}\). Insert the comparable weight on each unit ball in the coefficient product proof. The coefficients of \(H_j-H\) have uniformly small local norms by (13). Weighted integer derivative equivalence, proved in [Weighted Sobolev spaces and rough elliptic estimates](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-integer-derivatives), gives
 
 \[
 \begin{gathered}
@@ -243,6 +257,8 @@ Apply the fixed weighted graph inequality to these already known weighted Sobole
 \]
 
 This conclusion is conditional on a bounded endpoint graph. The common resolvent bound will be proved below.
+
+<a id="truncation-symmetric-split"></a>
 
 ## 4. A symmetric split for the resolvent estimate
 
@@ -294,6 +310,8 @@ The strict choice of gap also gives, for every fixed \(t\),
 
 Indeed, \(X^{d_*}\) times the local norm of \((\rho_j^2-1)c_\alpha\) is bounded by \(Cj^{-(\epsilon_S-\delta)}\). Each commutator coefficient gains a cutoff power. Conjugating the input weight adds derivatives of \(X^{-t}\) and lowers the differential order; its new local \(L^p\) exponent is no larger than the old one. Apply the unit-ball product estimate, integrate over centers by Fubini, and sum the finitely many differentiated terms. This proves (24) for the actual products.
 
+<a id="truncation-compact-error"></a>
+
 ## 5. One estimate with a compact error
 
 We first allow eigenvalues. On a complex neighborhood of any compact regular free-energy interval,
@@ -318,7 +336,7 @@ The weighted version of (13) at weight \(-d_*\) makes the fixed weighted graph i
 
 The primary \(S_j\) map at weight \(-d_*\) bounds \(\|S_ju\|_2\) by the same expression.
 
-Choose \(\chi_0,\chi\in C_c^\infty\), equal one near the free shells, with \(\chi=1\) near \(\operatorname{supp}\chi_0\). Their support lies away from critical frequencies. [The resolvent away from the energy surface](the-resolvent-away-from-the-energy-surface.md) gives, uniformly,
+Choose \(\chi_0,\chi\in C_c^\infty\), equal one near the free shells, with \(\chi=1\) near \(\operatorname{supp}\chi_0\). Their support lies away from critical frequencies. [The resolvent away from the energy surface](the-resolvent-away-from-the-energy-surface.md#off-energy-resolvent-estimate) gives, uniformly,
 
 \[
  \|(1-\chi(D))u\|_{m,0}
@@ -356,7 +374,7 @@ For the near-energy part, \(u\in H^m\) already implies \(S_ju\in H^{0,d_*}\subse
  \tag{30}
 \]
 
-Its output weight is \(a_*>1/2\). [A resolvent estimate at noncritical frequencies](a-resolvent-estimate-at-noncritical-frequencies.md), applied to the symmetric \(P_0+L_j\), consequently gives
+Its output weight is \(a_*>1/2\). [A resolvent estimate at noncritical frequencies](a-resolvent-estimate-at-noncritical-frequencies.md#noncritical-shell-estimate), applied to the symmetric \(P_0+L_j\), consequently gives
 
 \[
  \|\chi(D)u\|_{B^*}
@@ -376,6 +394,8 @@ A fixed compact-frequency multiplier bounds every derivative of \(\chi(D)u\) by 
 \]
 
 Choose \(\eta\) after the common constant from (27)–(31) and absorb. This proves (25). Apply the same argument to \(-H_j\) for the lower half-plane. A finite energy cover supplies one neighborhood of the whole interval. If the nearby free shells are empty, take \(\chi=0\) and use only (27).
+
+<a id="truncation-radiation"></a>
 
 ## 6. Radiation survives the changing operator
 
@@ -450,6 +470,8 @@ This is the full radiation condition. In dimension one the escape construction u
 
 For lower resolvents apply the argument to \(-H_j,-H,-P_0\), with \(-z_j,-f_j\). Its positive bundle is the original negative bundle. The same actual products, weights and domain assertions hold.
 
+<a id="truncation-boundary"></a>
+
 ## 7. Remove the compact error and take boundary limits
 
 Return to \(I\subset\Omega\). If no common bound (5) existed, choose \(j_k\ge k\), nonreal \(z_k\) of distance at most \(1/k\) from \(I\), and normalized graphs
@@ -491,6 +513,8 @@ Let \(\lambda_j\to\lambda\), \(f_j\to f\), and fix a sign. Choose a countable de
 has pairing less than \(1/j\) against the first \(j\) tests, for all \(|\alpha|\le m\). Boundary existence permits this finite choice. The common endpoint bound extends the small difference to every test by density. Section 6 applies to the genuine nonreal graphs and gives the limiting-energy radiation condition. Every subsequential limit is consequently \(R_\sigma(\lambda)f\), by homogeneous uniqueness. Bounded graph compactness excludes a subsequence separated from that limit in any weak-star test.
 
 The real boundary graphs themselves satisfy their actual equations and the common derivative bound. Section 3 upgrades this weak convergence to (6) for every \(b>1/2\). For fixed \(f\), a failed uniform conclusion on \(I\) would give a sequence of energies with a convergent subsequence. Apply (6) along it and the fixed-\(H\) boundary continuity, with the same weighted graph upgrade. Both limits coincide, a contradiction. The same compactness argument works for the forcing families stated in Theorem 1.1. This proves that theorem.
+
+<a id="truncation-kernels"></a>
 
 ## 8. Real roots and changing compact kernels
 
@@ -586,7 +610,9 @@ The double annular coefficient sum for these compact kernels has one summable ma
  \tag{50}
 \]
 
-The fixed \(\mathcal R_\lambda\) and \(T_\lambda S^{\mathrm r}\) are compact graph maps by the frequency-kernel prerequisite. They send bounded derivative-wise weak-star convergence to norm convergence, and are norm continuous in energy.
+The fixed \(\mathcal R_\lambda\) and \(T_\lambda S^{\mathrm r}\) are compact graph maps by the [compact remainder](frequency-cutoffs-and-compact-scattering-remainders.md#cutoff-compact-remainder) and [smoothed-coefficient](frequency-cutoffs-and-compact-scattering-remainders.md#cutoff-smoothed-coefficients) proofs. They send bounded derivative-wise weak-star convergence to norm convergence, and are norm continuous in energy.
+
+<a id="truncation-slices"></a>
 
 ## 9. Strong forcing produces strong local slices
 
@@ -626,7 +652,7 @@ The root comparison and compact transverse kernels also give
 
 The second line follows from the real-kernel adjoint calculation and the common first physical derivative bound. Its integral is finite. Time derivatives of those kernels give local operator-norm continuity.
 
-Each boundary solution has its own directional radiation. A fixed angular cutoff away from its outgoing velocity rays gives vanishing normalized ball mass in the region \(s<T\), for every fixed \(T\). The outgoing theorem in the energy-root prerequisite identifies its continuous transverse representative as
+Each boundary solution has its own directional radiation. A fixed angular cutoff away from its outgoing velocity rays gives vanishing normalized ball mass in the region \(s<T\), for every fixed \(T\). The [outgoing theorem in the energy-root prerequisite](energy-shell-factors-and-outgoing-equations.md#energy-shell-outgoing) identifies its continuous transverse representative as
 
 \[
  v_{j,\lambda}(s)
@@ -646,6 +672,8 @@ The embedding \(B\subset L^1(\mathbb R_s;L^2_z)\) turns (52) into strong integra
 \]
 
 All slices have one common bound for every \(s\). This argument also proves strong slice continuity in energy. In transverse dimension zero the root operator is real scalar and its adjoint defect is zero.
+
+<a id="truncation-phases"></a>
 
 ## 10. Compare the normalized Hamilton phases
 
@@ -696,6 +724,8 @@ The two projection maps are identical there, and their unique inverses select th
 
 This holds on an open neighborhood of the common cutoff support. All frequency jets agree, and the fixed real compact-frequency extensions agree everywhere. The comparison fixes action constants as well as differentials; Exercise 4 explains why that matters.
 
+<a id="truncation-factors"></a>
+
 ## 11. The factored equations have common constants
 
 Apply the explicit coordinate-telescoping factors from the commuting-coordinates prerequisite to each \(G_j,a_j\), using the same cutoffs. Its near and far derivative partitions use only their common root and phase bounds. The metric is the same:
@@ -721,6 +751,8 @@ Write \(k\) for a transverse coordinate index and \(j\) for truncation. With \(A
 \tag{61}
 \]
 
+Here \(F_{j,k}=B_{j,k}A_{j,k}\) is a product of symbols, with \(A_{j,k}(s,z,\eta)=z_k+\partial_{\eta_k}G_j(s,\eta)\). The corresponding coordinate operator is its left quantization. The [exact ordering identity](commuting-coordinates-for-long-range-evolution.md#commuting-ordering) supplies \(\mathcal T_j\) when passing from the symbol product to the operator product.
+
 They have the common bounds
 \(\|\mathcal T_j(s)\|+\|M_j(s)-M_j(s)^*\|\le Cs^{-1-\delta}\).
 
@@ -736,6 +768,8 @@ For fixed \(S\), (59) makes all canonical coordinates identical. On the near bra
 \]
 
 Smooth dependence of finite sheets, flows, actions and their inverses on energy gives local norm continuity in that parameter by the same kernel bounds. When there are no transverse coordinates, the sums are empty and \(G_s=a\).
+
+<a id="truncation-amplitudes"></a>
 
 ## 12. Take the amplitude limit
 
@@ -759,11 +793,11 @@ Its initial values at \(s_0\) converge strongly and uniformly in energy by (55).
 
 The limiting pair \(\lambda\mapsto(v_\lambda(s_0),h_\lambda)\) is norm continuous into \(\mathcal H\times L^1\). Slice continuity treats the initial value; local norm continuity of the ordering correction and its common integrable tail treat the forcing. Its image is compact.
 
-All hypotheses of the uniform amplitude theorem in the transverse-moments prerequisite now hold: common factor, coordinate and individual adjoint bounds; local generator convergence; fixed-time phase convergence, which here is eventual equality; and strong convergence of the initial data and integrable forcing.
+All hypotheses of the [uniform amplitude theorem](transverse-moments-and-outgoing-amplitudes.md#amplitude-uniform-stability) now hold: common factor, coordinate and individual adjoint bounds; local generator convergence; fixed-time phase convergence, which here is eventual equality; and strong convergence of the initial data and integrable forcing.
 
 To recall its order of limits, approximate the compact limiting data family by finitely many weighted data pairs. For each fixed pair the canonical moment estimate gives a common amplitude tail \(C_kS^{-\delta}\), in addition to its integrable forcing tail. Choose the finite approximation, then \(S\), then \(j\). At this fixed \(S\), Duhamel and (59) give convergence of phase-corrected solutions. Uniform energy bounds remove the data approximation. This proves (8) for arbitrary data in \(\mathcal H\times L^1\), with no first-moment assumption on the original forcing.
 
-Here is the explicit compact-family estimate behind this passage. Equip data with \(\|(w,h)\|_{\mathcal D}=\|w\|+\|h\|_{L^1}\). The common propagator bound and the unitary phase correction bound both the finite-slice maps and their amplitude limits by one constant \(C_A\) on \(\mathcal D\). For \(\varepsilon>0\), choose a finite \(\varepsilon\)-net \(d_1,\ldots,d_N\) for the limiting data family, with each \(d_k\) having smooth compactly supported transverse data and time forcing. Such pairs are dense in \(\mathcal D\): approximate simple \(L^1\) forcing functions by smooth compactly supported functions, and approximate their finitely many \(\mathcal H\) values in the same way. On the compact energy interval these pairs have uniformly bounded canonical moments at \(s_0\), because every required phase jet there is commonly bounded. The moment estimate therefore gives one \(K_\varepsilon\), valid for these finitely many pairs, all energies and all sufficiently large \(j\). Take \(S\) beyond their forcing supports. With \(d_{j,\lambda}=(v_{j,\lambda}(s_0),h_{j,\lambda})\) and \(d_\lambda=(v_\lambda(s_0),h_\lambda)\), the triangle inequality gives
+Here is the explicit compact-family estimate behind this passage. Equip data with \(\|(w,h)\|_{\mathcal D}=\|w\|+\|h\|_{L^1}\). The common propagator bound and the unitary phase correction bound both the finite-slice maps and their amplitude limits by one constant \(C_A\) on \(\mathcal D\). For \(\varepsilon>0\), choose a finite \(\varepsilon\)-net \(d_1,\ldots,d_N\) for the limiting data family, with each \(d_k\) having smooth compactly supported transverse initial data and a finite simple time forcing of bounded support whose values are smooth and compactly supported in the transverse variables. Such pairs are dense in \(\mathcal D\): truncate the time tail, approximate by finite simple \(L^1\) functions, and approximate their finitely many \(\mathcal H\) values by smooth compactly supported vectors. This is the [all-data density argument](transverse-moments-and-outgoing-amplitudes.md#amplitude-all-data), and gives the required weighted integrability without a time differentiability assumption. On the compact energy interval these pairs have uniformly bounded canonical moments at \(s_0\), because every required phase jet there is commonly bounded. The moment estimate therefore gives one \(K_\varepsilon\), valid for these finitely many pairs, all energies and all sufficiently large \(j\). Take \(S\) beyond their forcing supports. With \(d_{j,\lambda}=(v_{j,\lambda}(s_0),h_{j,\lambda})\) and \(d_\lambda=(v_\lambda(s_0),h_\lambda)\), the triangle inequality gives
 
 \[
  \begin{aligned}
@@ -781,6 +815,8 @@ Taking the unitary transverse Fourier transform gives the same strong iterated l
 ### Use the conclusion
 
 Keep the order of cutoff, spectral-boundary and amplitude limits explicit. Verify strong local slices and the comparison of normalized Hamilton phases before taking the final amplitude limit.
+
+<a id="truncation-solutions"></a>
 
 ## 13. Graded exercises with complete solutions
 
@@ -885,6 +921,8 @@ Thus the forcing has no finite first time moment. The phase differences vanish o
 
 Only fixed-time phase comparison and integrable forcing were needed.
 
+<a id="compact-force-setting"></a>
+
 ## 14. The full compact-force stationary comparison
 
 The next lesson needs a stationary transform for each fixed \(H_j\). Its highest differential coefficients may change inside the cutoff. Thus the compact-map hypothesis of [Asymptotic completeness for short-range operators](asymptotic-completeness-for-short-range-operators.md) cannot be assumed here: a compactly supported coefficient multiplying an order-\(m\) derivative need not give a compact map on the order-\(m\) graph. We prove the needed comparison using the full elliptic limiting-absorption theorem instead. The highest-order terms are retained throughout.
@@ -893,9 +931,9 @@ Fix a real elliptic \(p=P_0\) of order \(m\ge1\), and let
 \[
  K=p(D)+C(x,D),\qquad \mathcal D(K)=H^m,
 \]
-where \(C\) is a symmetric \(1\)-admissible differential perturbation with all its coefficients supported in one bounded set, including any continuous highest coefficients. The total expression is elliptic. Each sufficiently large \(H_j\) satisfies these assumptions by Section 2. Constants in this subsection may depend on this fixed compact force. The full limiting-absorption theorem applies because it is a special case of its admissible decay class; it does not require a compact perturbation map.
+where \(C\) is a symmetric \(1\)-admissible differential perturbation with all its coefficients supported in one bounded set, including any continuous highest coefficients. The total expression is elliptic. Each sufficiently large \(H_j\) satisfies these assumptions by Section 2. Constants in this subsection may depend on this fixed compact force. The [full limiting-absorption theorem](limiting-absorption-for-long-range-differential-perturbations.md#lap-theorem) applies because this is a special case of its admissible decay class; it does not require a compact perturbation map.
 
-Put \(\Sigma_K=Z(p)\cup\mathcal A_K\), where \(\mathcal A_K\) consists of the regular-energy eigenvalues, and let \(\Omega_K=\mathbb R\setminus\Sigma_K\). That theorem proves that \(\Sigma_K\) is closed and countable and gives the boundary resolvents \(R_{K,\sigma}(\lambda):B\to\mathcal Y_m\), their actual equations and their full signed radiation uniqueness. We will construct canonical transforms \(J_{K,\sigma}\) and ordinary wave operators \(W_{K,\sigma}\) such that
+Put \(\Sigma_K=Z(p)\cup\mathcal A_K\), where \(\mathcal A_K\) consists of the regular-energy eigenvalues, and let \(\Omega_K=\mathbb R\setminus\Sigma_K\). The [finite critical-value proof](polynomial-translations-and-regular-energies.md#polynomial-critical-values), together with [discreteness and closedness of the exceptional set](limiting-absorption-for-long-range-differential-perturbations.md#lap-open-energies), shows that \(\Sigma_K\) is closed and countable. The limiting-absorption theorem gives the boundary resolvents \(R_{K,\sigma}(\lambda):B\to\mathcal Y_m\), their actual equations and their full signed radiation uniqueness. We will construct canonical transforms \(J_{K,\sigma}\) and ordinary wave operators \(W_{K,\sigma}\) such that
 \[
  \begin{gathered}
  J_{K,\sigma}^*J_{K,\sigma}=E_K(\Omega_K),\qquad
@@ -909,6 +947,8 @@ The transform vanishes on all eigenvectors, including eigenvectors at critical e
 
 We will use that every level set of the nonconstant polynomial \(p\) is null. The full dimension-induction and Fubini proof is in [Distorted Fourier transforms and spectral density, Section 2](distorted-fourier-transforms-and-spectral-density.md): outside the common zero set of a nonzero one-variable coefficient, a polynomial section has only finitely many roots. In particular the free Fourier multiplier has no \(L^2\) eigenvectors, so its good energies are precisely the regular ones.
 
+<a id="compact-force-factorization"></a>
+
 ### Boundary factorization without compactness
 
 Choose a compact smooth cutoff \(\zeta=1\) on a neighbourhood of every coefficient support. The actual local coefficient-product estimates give
@@ -918,7 +958,7 @@ Choose a compact smooth cutoff \(\zeta=1\) on a neighbourhood of every coefficie
 \]
 The first inequality uses that the output is supported in a fixed ball, on which \(B\) and \(L^2\) have comparable norms. The second follows by summing the finitely many derivatives on that ball. The same first inequality holds for global \(H^m\) inputs. No coefficient is differentiated. Symmetry extends to \(H^m\) by compact smooth approximation and these product bounds.
 
-For later use, \(\lambda\mapsto CR_{K,\sigma}(\lambda)f\) is norm continuous in \(B\) for each \(f\in B\); the corresponding nonreal approach has the same limit. Indeed the fixed-operator graph argument in Section 3, or Lemma 2.2 of the limiting-absorption lesson, gives strong \(H^{m,-b}\) convergence for every \(b>1/2\). Its hypotheses are the common endpoint graph bound, convergence of the forcing in \(B\), and the actual equation. With the operator fixed, the coefficient-difference term in (19) is zero. Multiplication by \(\zeta\) and the preceding estimate then give strong \(B\) convergence of the products. The free operator has the same property with \(C\) as the compactly supported output map.
+For later use, \(\lambda\mapsto CR_{K,\sigma}(\lambda)f\) is norm continuous in \(B\) for each \(f\in B\); the corresponding nonreal approach has the same limit. Indeed the fixed-operator graph argument in Section 3, or [Lemma 2.2 of the limiting-absorption lesson](limiting-absorption-for-long-range-differential-perturbations.md#lap-rough-graph), gives strong \(H^{m,-b}\) convergence for every \(b>1/2\). Its hypotheses are the common endpoint graph bound, convergence of the forcing in \(B\), and the actual equation. With the operator fixed, the coefficient-difference term in (19) is zero. Multiplication by \(\zeta\) and the preceding estimate then give strong \(B\) convergence of the products. The free operator has the same property with \(C\) as the compactly supported output map.
 
 For \(\lambda\in\Omega_K\) set
 \[
@@ -942,9 +982,11 @@ Conversely, for \(f\in B\), the free solution \(u_0=R_{0,\sigma}(\lambda)f\) bel
 \]
 The last identity follows from the first factorization and \(A_\sigma f=f-CR_{K,\sigma}f\). Thus \(A_\sigma\) is the actual bounded inverse of \(I+CR_{0,\sigma}\). This proof uses radiation uniqueness, with no Fredholm or relative-compactness inference.
 
+<a id="compact-force-transform"></a>
+
 ### Construct the stationary transform and its spectral norm
 
-Let \(T_\lambda\) be the canonical free Fourier trace from [Global radiation and flux](global-radiation-and-flux.md). This prerequisite applies to the elliptic polynomial: its strength is at most \(C\langle\xi\rangle^m\le C'(1+|p(\xi)|)\), so its simple-characteristic condition holds; an invariant direction would contradict ellipticity of the highest homogeneous part. On compact regular bands the free shell is compact and \(|\nabla p|\) is bounded below.
+Let \(T_\lambda\) be the canonical free Fourier trace from [Global radiation and flux](global-radiation-and-flux.md#global-amplitude-flux). This prerequisite applies to the elliptic polynomial: its strength is at most \(C\langle\xi\rangle^m\le C'(1+|p(\xi)|)\), so its simple-characteristic condition holds; an invariant direction would contradict ellipticity of the highest homogeneous part. On compact regular bands the free shell is compact and \(|\nabla p|\) is bounded below.
 
 For \(f\in B\), prescribe the shell values
 \[
@@ -966,11 +1008,15 @@ Continuous-test spectral inversion, Lemma 1.1 of the same earlier lesson, applie
 \]
 Dense \(B\subset L^2\) thus gives a unique bounded extension \(J_{K,\sigma}\), with norm at most one, and polarization gives \(J_{K,\sigma}^*J_{K,\sigma}=E_K(\Omega_K)\).
 
+<a id="compact-force-spectral-parts"></a>
+
 The same density calculation with a real continuous compactly supported energy test \(b\) gives \(J_{K,\sigma}^*b(p)J_{K,\sigma}=b(K)E_K(\Omega_K)\). Using it for \(b^2\) and expanding a squared norm proves
 \(b(p)J_{K,\sigma}=J_{K,\sigma}b(K)E_K(\Omega_K)\).
 Complex linearity includes complex continuous tests. To extend this to bounded Borel functions on \(\Omega_K\), approximate relatively open interval indicators by continuous compactly supported functions there, bounded by one; an increasing compact exhaustion supplies their support cutoffs. Dominated convergence in both spectral measures passes the identity to the limit. The sets whose indicators intertwine are closed under complements relative to \(\Omega_K\), intersections by multiplying the identities, and countable disjoint unions by strong additivity. Disjointifying a countable union shows that they form a sigma algebra, hence contain all Borel subsets. The transform vanishes on \(E_K(\Sigma_K)L^2\) by its norm identity and has zero values on \(p^{-1}(\Sigma_K)\). Bounded simple approximation therefore proves the assertion for every bounded Borel multiplier on \(\mathbb R\), including the unitary groups.
 
 There is no remaining continuous spectral mass on \(\Sigma_K\). On \(\Omega_K\), the spectral density makes every null-set projection annihilate dense \(B\), hence all of \(L^2\). On the countable complement, the spectral theorem gives \(E_K(\{\lambda\})L^2=\ker(K-\lambda)\): the second-moment domain formula proves one direction, and integrating \(|t-\lambda|^2\) proves the other. Countable strong additivity makes \(E_K(\Sigma_K)L^2\) precisely the closed span of all eigenvectors. Thus \(E_K(\Omega_K)L^2=\mathcal H_{\mathrm{ac}}(K)\), and there is no singular continuous part.
+
+<a id="compact-force-waves"></a>
 
 ### Ordinary waves for a full-order compact force
 
@@ -988,6 +1034,10 @@ The norm integral and the integrable bound above construct the two limits
  W_{K,\sigma}f=\lim_{t\to\sigma\infty}e^{itK}e^{-itp(D)}f.
 \]
 They are isometries and extend from these dense packets to all of \(L^2\). Packet density follows by smooth approximation off the null zero set of a nonzero polynomial derivative, with the compact cutoff argument already proved in Section 1 of *Modified waves and the direction of escape*. Time translation of the defining limits gives group intertwining; the spectral-intertwining proof in [Wave operators and modified phases](wave-operators-and-modified-phases.md), Proposition 2.1, then gives all Borel energy projections. Every level set of the nonconstant polynomial \(p\) is null by the polynomial-zero-set proof identified at the start of this section. Hence \(p^{-1}(\Sigma_K)\) is null and \(\operatorname{ran}W_{K,\sigma}\subset E_K(\Omega_K)L^2\).
+
+<a id="compact-force-damping"></a>
+
+The damped-integral method is Hörmander [H2, Theorem 14.6.5 and its proof]. Chapter XIV assumes the compact perturbation map in Definition 14.4.1. Here the preceding radiation argument proves the required inverse for the full compact-force class, and the comparison below checks the integral and spectral hypotheses for that class.
 
 ### The matching-sign comparison
 
@@ -1010,7 +1060,9 @@ give the exact \(B\)-valued identity
 \]
 To justify applying \(C\), first take the integral in \(H^m\); the free orbit has a constant \(H^m\) norm, so damping makes it norm integrable. Fourier transformation evaluates it as the free resolvent. The bounded map \(C:H^m\to B\) commutes with this integral. This argument includes every order-\(m\) term.
 
-Apply \(J_{K,\sigma}\) to the damped vector, and use its group intertwining. On a compact good energy interval the continuous path \(CF_t\) is uniformly bounded in \(B\); \(A_\sigma(\lambda)\) and the canonical trace have common bounds. Their trace integrand is therefore bounded in shell \(L^2\) by \(C e^{-\varepsilon|t|}\). The parameter-partition construction above works with \((\lambda,t)\) as parameter, giving a jointly measurable representative. Coarea and Cauchy–Schwarz on each compact energy-coordinate patch make its absolute integral in \((t,\xi)\) finite. Scalar Fubini identifies its time integral with the Hilbert integral: for a test \(q\in L^2\) the absolute paired integral is bounded by \(\|q\|_2\int\|F(t)\|_2dt\); truncated tests \(q=h1_{\{|h|\le N\}}\), followed by monotone convergence, show that the scalar time integral \(h\) belongs to \(L^2\) with this same norm bound. This is also the complete scalar-interchange proof in Section 2 of the earlier short-range comparison lesson, with all its actual hypotheses now verified for \(C\).
+<a id="compact-force-comparison"></a>
+
+Apply \(J_{K,\sigma}\) to the damped vector, and use its group intertwining. On a compact good energy interval the continuous path \(CF_t\) is uniformly bounded in \(B\); \(A_\sigma(\lambda)\) and the canonical trace have common bounds. Their trace integrand is therefore bounded in shell \(L^2\) by \(C e^{-\varepsilon|t|}\). The path \((\lambda,t)\mapsto A_\sigma(\lambda)CF_t\) is jointly continuous in \(B\): split an increment into \(A_\sigma(\lambda)(CF_t-CF_{t_0})\) and \((A_\sigma(\lambda)-A_\sigma(\lambda_0))CF_{t_0}\), and use the common operator bound and strong continuity on the fixed vector. The [joint parameter-partition construction](asymptotic-completeness-for-short-range-operators.md#completeness-joint-assembly) therefore gives a jointly measurable representative. Coarea and Cauchy–Schwarz on each compact energy-coordinate patch make its absolute integral in \((t,\xi)\) finite. Scalar Fubini identifies its time integral with the Hilbert integral: for a test \(q\in L^2\) the absolute paired integral is bounded by \(\|q\|_2\int\|F(t)\|_2dt\); truncated tests \(q=h1_{\{|h|\le N\}}\), followed by monotone convergence, show that the scalar time integral \(h\) belongs to \(L^2\) with this same norm bound. This is also the complete scalar-interchange proof in Section 2 of the earlier short-range comparison lesson, with all its actual hypotheses now verified for \(C\).
 
 Consequently, for almost every energy and shell point, the transform of the damped vector has representative
 \[
@@ -1024,6 +1076,8 @@ The free strong weighted graph limit, followed by the compactly supported coeffi
 \]
 The dense packet class and the common operator bounds extend this identity to every \(f\in L^2\).
 
+<a id="compact-force-onto"></a>
+
 Finally, \(J_{K,\sigma}\) is isometric on \(E_K(\Omega_K)L^2\), and the wave range lies there. For \(v=E_K(\Omega_K)v\), put \(f=\mathcal F^{-1}J_{K,\sigma}v\). The matching identity gives \(J_{K,\sigma}W_{K,\sigma}f=J_{K,\sigma}v\); injectivity on that subspace gives \(W_{K,\sigma}f=v\). Thus both maps are onto their stated spaces, and \(W_{K,\sigma}=J_{K,\sigma}^*\mathcal F\). Their band restrictions satisfy the same identities with the corresponding energy projections. In particular all stationary and wave comparison inputs required for the actual cutoffs \(H_j\) have now been proved, without imposing a lower-order condition on their compact perturbations.
 
 ## 15. From local amplitudes to the long-range spectral transform
@@ -1033,6 +1087,10 @@ The two approximation theorems and the full compact-force comparison provide the
 ## References
 
 - [Y] Dmitri Yafaev, *Lectures on scattering theory*, arXiv:math/0403213v1, 12 March 2004; prepared by Andrew Hassell from the 2001 ANU lectures. [Free version read](https://arxiv.org/pdf/math/0403213v1). Sections 2–3 provide short-range and long-range Schrödinger context; the full differential-coefficient comparison is proved above.
-- [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition, 2014. [Freely readable author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf). Theorems 5.1 and 12.3 give spectral-inversion and Cook-integral context. The local proofs include the domains and full coefficient class used here.
+- [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition, 2014. [Freely readable author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf). Theorem 5.1 gives the self-adjoint unitary evolution and generator domain; Lemma 12.3 gives the Cook-integral criterion. The local proofs include the domains and full coefficient class used here.
 - [O] Sung-Jin Oh, *Lecture Notes for Math 222A*, University of California, Berkeley, Fall 2023. [Free lecture notes](https://math.berkeley.edu/~sjoh/pdfs/notes-math222a.pdf), Section 2.4.1 on Hamilton characteristics.
 - [H76] Lars Hörmander, *The existence of wave operators in scattering theory*, Mathematische Zeitschrift **146** (1976), 69–91. [Freely accessible journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf). Theorems 3.9–3.10 assume \(\det P_0''\not\equiv0\); their wave-existence and phase-comparison conclusions are distinct from Theorems 1.1–1.2 here.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.5, the cutoff comparison and (30.5.37), p. 326; (30.5.44) and its proof, pp. 328–329. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).
+
+[H2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Springer, 2005, Definition 14.4.1, p. 243; Theorems 14.6.4–14.6.5 and their proofs, pp. 257–259. ISBN 978-3-540-26964-9. [Edition information](https://doi.org/10.1007/978-3-540-26964-9).

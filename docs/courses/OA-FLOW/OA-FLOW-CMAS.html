@@ -1,0 +1,511 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Central perturbations, spectral gaps, and ambient maximal abelian algebras · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-TP.html">Previous lesson</a><a href="OA-FLOW-SMULT.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CMAS.md">Lesson source</a></nav><h1 id="OA-FLOW.CMAS.SETTING">Central perturbations, spectral gaps, and ambient maximal abelian algebras</h1>
+<p>A small central change of a weight can remove all modular frequencies near zero except zero itself. Centrality lets the change preserve the old centralizer and lets the local constructions exhaust it by orthogonal corners. We first localize inside an arbitrarily prescribed central corner, then construct ambient maximal abelian algebras and identify weights from their centralizers.</p>
+<p><em>Original exposition, examples, diagram, data and drawing code are dedicated to CC0-1.0 to the extent of rights held. Cited publications and the externally referenced font retain their own terms.</em></p>
+<p><a id="cp-setting"></a></p>
+<h2 id="1-statements-supports-and-exact-earlier-inputs">1. Statements, supports, and exact earlier inputs</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a factor with separable predual of type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span>, <span class="math" data-tex="\(0\leq\lambda&lt;1\)">\(0\leq\lambda&lt;1\)</span>. Thus <span class="math" data-tex="\(S(M)=\{0,1\}\)">\(S(M)=\{0,1\}\)</span> when <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, and <span class="math" data-tex="\(S(M)=\{0\}\cup\lambda^{\mathbb Z}\)">\(S(M)=\{0\}\cup\lambda^{\mathbb Z}\)</span> otherwise. A normal semifinite weight need not be faithful. For such a weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, put <span class="math" data-tex="\(p=s(\varphi)\)">\(p=s(\varphi)\)</span>, and use the reduced convention
+<span class="math math-display" data-tex="\[
+ \varphi(x)=\varphi(pxp),\qquad
+ M_\varphi=(pMp)_{\varphi^p},\qquad C_\varphi=Z(M_\varphi),
+ \quad \varphi^p=\varphi|_{(pMp)_+}.
+ \tag{CPB1}
+\]">\[
+ \varphi(x)=\varphi(pxp),\qquad
+ M_\varphi=(pMp)_{\varphi^p},\qquad C_\varphi=Z(M_\varphi),
+ \quad \varphi^p=\varphi|_{(pMp)_+}.
+ \tag{CPB1}
+\]</span>
+The restriction <span class="math" data-tex="\(\varphi^p\)">\(\varphi^p\)</span> is faithful normal semifinite. All modular groups and centralizers of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> below belong to <span class="math" data-tex="\(pMp\)">\(pMp\)</span>. This is the actual supported-weight convention and proof <a href="../OA-MOD/src/weight-comparison-centralizer-transport.md#support-corners-cuts-and-the-comparison-relation">WC.1–3</a>, not an extension of a nonfaithful modular group to all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>A weight is <strong>strictly semifinite</strong> if it is a sum of bounded normal positive functionals with pairwise orthogonal supports. Equivalently its restriction to its reduced centralizer is semifinite; <a href="../OA-MOD/src/weight-comparison-centralizer-transport.md#strict-semifiniteness-is-semifiniteness-on-the-centralizer">WC.24–27</a> proves both directions, including infinite values. A faithful weight <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on a nonzero algebra <span class="math" data-tex="\(B\)">\(B\)</span> is <strong>lacunary</strong> if for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>
+<span class="math math-display" data-tex="\[
+ B_{\sigma^\rho}([-\delta,\delta])=B_\rho.
+ \tag{CPB2}
+\]">\[
+ B_{\sigma^\rho}([-\delta,\delta])=B_\rho.
+ \tag{CPB2}
+\]</span>
+Use positive eigenfrequencies: <span class="math" data-tex="\(\alpha_t(x)=e^{itr}x\)">\(\alpha_t(x)=e^{itr}x\)</span> has frequency <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(T_gx=\int g(t)\alpha_t(x)\,dt\)">\(T_gx=\int g(t)\alpha_t(x)\,dt\)</span> has multiplier <span class="math" data-tex="\(\widehat g(r)=\int g(t)e^{itr}\,dt\)">\(\widehat g(r)=\int g(t)e^{itr}\,dt\)</span>. These are weak-star normal integrals. <a href="OA-FLOW-MG.html#oa-flow.mg.1">MG1</a> identifies the complete action spectrum with <span class="math" data-tex="\(\operatorname{Sp}(\log\Delta_\rho)\)">\(\operatorname{Sp}(\log\Delta_\rho)\)</span> for arbitrary faithful NSF weights. Thus an action gap is a gap around <span class="math" data-tex="\(1\)">\(1\)</span> in the positive modular-operator spectrum. No vector <span class="math" data-tex="\(\Lambda_\rho(1)\)">\(\Lambda_\rho(1)\)</span> is assumed to exist.</p>
+<p>We prove three conclusions.</p>
+<ol>
+<li>
+<p><strong>Local central perturbation.</strong> If <span class="math" data-tex="\(\varphi\neq0\)">\(\varphi\neq0\)</span> is normal semifinite and <span class="math" data-tex="\(0\neq r\in\operatorname{Proj}(C_\varphi)\)">\(0\neq r\in\operatorname{Proj}(C_\varphi)\)</span>, there are <span class="math" data-tex="\(0\neq f\in\operatorname{Proj}(C_\varphi)\)">\(0\neq f\in\operatorname{Proj}(C_\varphi)\)</span>, <span class="math" data-tex="\(f\leq r\)">\(f\leq r\)</span>, and <span class="math" data-tex="\(h\in(C_\varphi)_+\)">\(h\in(C_\varphi)_+\)</span>, with <span class="math" data-tex="\(s(h)=f\)">\(s(h)=f\)</span> and <span class="math" data-tex="\(mf\leq h\leq Mf\)">\(mf\leq h\leq Mf\)</span> for some <span class="math" data-tex="\(0&lt;m\leq M&lt;\infty\)">\(0&lt;m\leq M&lt;\infty\)</span>, such that <span class="math" data-tex="\(\varphi_h(x)=\varphi(h^{1/2}xh^{1/2})\)">\(\varphi_h(x)=\varphi(h^{1/2}xh^{1/2})\)</span> is lacunary on <span class="math" data-tex="\(fMf\)">\(fMf\)</span>. This includes every nonzero supported NSF weight without strict semifiniteness. If <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, one can take <span class="math" data-tex="\(f=r\)">\(f=r\)</span>, <span class="math" data-tex="\(m=\lambda\)">\(m=\lambda\)</span>, <span class="math" data-tex="\(M=1\)">\(M=1\)</span>, with modular period <span class="math" data-tex="\(2\pi/(-\log\lambda)\)">\(2\pi/(-\log\lambda)\)</span>.</p>
+</li>
+<li>
+<p><strong>Ambient MASA.</strong> If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful and strictly semifinite, <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> contains a maximal abelian von Neumann subalgebra of <span class="math" data-tex="\(M\)">\(M\)</span>. Consequently <span class="math" data-tex="\(M_\varphi'\cap M=C_\varphi\)">\(M_\varphi'\cap M=C_\varphi\)</span>.</p>
+</li>
+<li>
+<p><strong>Centralizer-density criterion.</strong> For faithful strictly semifinite <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span>,
+<span class="math math-display" data-tex="\[
+ M_\varphi\subseteq M_\psi
+ \quad\Longleftrightarrow\quad
+ \psi=\varphi_h.
+ \tag{CPB3}
+\]">\[
+ M_\varphi\subseteq M_\psi
+ \quad\Longleftrightarrow\quad
+ \psi=\varphi_h.
+ \tag{CPB3}
+\]</span>
+Here the right side means that there is a unique nonsingular positive self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(C_\varphi\)">\(C_\varphi\)</span> giving the equality on the whole positive cone. Neither <span class="math" data-tex="\(h\)">\(h\)</span> nor <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> need be bounded. The conditional version in Section 7 needs only faithful NSF <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> and <span class="math" data-tex="\(M_\varphi'\cap M=C_\varphi\)">\(M_\varphi'\cap M=C_\varphi\)</span>; it does not assume strict semifiniteness of either weight.</p>
+</li>
+</ol>
+<p>The exact spectral inputs are <a href="OA-FLOW-GL.html#gl-3">GL2–6</a>, reflected to the convention above, for closed spaces, local filters, compact approximation, adjoint reflection and the product rule; <a href="OA-FLOW-SS.html#ss-3">SS3</a> for <span class="math" data-tex="\(B_\alpha(\{0\})=B^\alpha\)">\(B_\alpha(\{0\})=B^\alpha\)</span>; <a href="OA-FLOW-GCC.html#equation-c14">GCC, C14–15</a> for central-support replacement without changing corner spectra; and <a href="OA-FLOW-L121.html#oa-flow.l121.sc2">L121, SC2–4 and D23–30</a> for mutually approximating central fixed corners and directed thickened spectra. <a href="OA-FLOW-MIV.html#miv-2">MIV2.h</a> gives <span class="math" data-tex="\(\exp\Gamma(\sigma^\rho)=S(B)\cap(0,\infty)\)">\(\exp\Gamma(\sigma^\rho)=S(B)\cap(0,\infty)\)</span> for every factor and faithful NSF reference. <a href="OA-FLOW-Z.html#oa-flow.z.3">Z3</a> constructs a bounded fixed implementer from a bounded action spectrum, and <a href="OA-FLOW-Z.html#oa-flow.z.4">Z4</a> proves spectral displacement through an actual linking algebra. <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0–6</a> supplies whole-cone density order, full finite domains and the normalized cocycle. These are proved programme inputs; Sections 2–7 supply the additional assembly.</p>
+<p>The support corner <span class="math" data-tex="\(pMp\)">\(pMp\)</span> and every nonzero later corner have the same type: <a href="OA-FLOW-CT.html#oa-flow.ct.2">CT1–2</a> gives <span class="math" data-tex="\(x\mapsto vxv^*\)">\(x\mapsto vxv^*\)</span>, with normal inverse <span class="math" data-tex="\(y\mapsto v^*yv\)">\(y\mapsto v^*yv\)</span>, and transports full modular graphs and their spectral intersection. The type preservation includes zero in <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><span id="OA-FLOW.CMAS.CENTRAL-ANNULUS"></span><a id="cp-central-annulus"></a></p>
+<h2 id="2-remove-a-compact-annulus-inside-the-prescribed-central-corner">2. Remove a compact annulus inside the prescribed central corner</h2>
+<p>We prove an action statement with no separability or finite-weight hypothesis. Let <span class="math" data-tex="\(B\)">\(B\)</span> be any factor, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> a point-ultraweakly continuous normal real action, <span class="math" data-tex="\(N=B^\alpha\)">\(N=B^\alpha\)</span>, <span class="math" data-tex="\(C=Z(N)\)">\(C=Z(N)\)</span>, and suppose <span class="math" data-tex="\(\Gamma(\alpha)=\{0\}\)">\(\Gamma(\alpha)=\{0\}\)</span>. For each <span class="math" data-tex="\(0\neq r\in\operatorname{Proj}(C)\)">\(0\neq r\in\operatorname{Proj}(C)\)</span> and <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>, some <span class="math" data-tex="\(0\neq f\in\operatorname{Proj}(C)\)">\(0\neq f\in\operatorname{Proj}(C)\)</span>, <span class="math" data-tex="\(f\leq r\)">\(f\leq r\)</span>, satisfies
+<span class="math math-display" data-tex="\[
+ \operatorname{Sp}(\alpha^f)\cap A_\mu=\varnothing,
+ \qquad A_\mu=[-2\mu,-\mu]\cup[\mu,2\mu].
+ \tag{CPB4}
+\]">\[
+ \operatorname{Sp}(\alpha^f)\cap A_\mu=\varnothing,
+ \qquad A_\mu=[-2\mu,-\mu]\cup[\mu,2\mu].
+ \tag{CPB4}
+\]</span></p>
+<p>Write <span class="math" data-tex="\(S_f=\operatorname{Sp}(\alpha^f)\)">\(S_f=\operatorname{Sp}(\alpha^f)\)</span>. Consider only the family under the prescribed <span class="math" data-tex="\(r\)">\(r\)</span>:
+<span class="math math-display" data-tex="\[
+ \mathcal F_r=
+ \{S_f+[-\varepsilon,\varepsilon]:
+    0\neq f\in\operatorname{Proj}(C),\ f\leq r,\ \varepsilon&gt;0\}.
+ \tag{CPB5}
+\]">\[
+ \mathcal F_r=
+ \{S_f+[-\varepsilon,\varepsilon]:
+    0\neq f\in\operatorname{Proj}(C),\ f\leq r,\ \varepsilon&gt;0\}.
+ \tag{CPB5}
+\]</span>
+Its members are closed: from a convergent net in a closed set plus a compact interval, pass to a subnet whose interval components converge; the closed-set components then converge too. Only the interval, not <span class="math" data-tex="\(S_f\)">\(S_f\)</span>, is assumed compact.</p>
+<p>The central-ergodicity hypothesis in L121 holds because <span class="math" data-tex="\(B\)">\(B\)</span> is a factor. Its D23 gives, for nonzero <span class="math" data-tex="\(e_1,e_2\in C\)">\(e_1,e_2\in C\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, nonzero central <span class="math" data-tex="\(f_j\leq e_j\)">\(f_j\leq e_j\)</span> with
+<span class="math math-display" data-tex="\[
+ S_{f_1}\subseteq S_{f_2}+[-\eta,\eta],
+ \qquad S_{f_2}\subseteq S_{f_1}+[-\eta,\eta].
+ \tag{CPB6}
+\]">\[
+ S_{f_1}\subseteq S_{f_2}+[-\eta,\eta],
+ \qquad S_{f_2}\subseteq S_{f_1}+[-\eta,\eta].
+ \tag{CPB6}
+\]</span>
+That proof localizes a nonzero element of <span class="math" data-tex="\(e_1Be_2\)">\(e_1Be_2\)</span> to a compact frequency interval, saturates it on both sides by <span class="math" data-tex="\(N\)">\(N\)</span> and by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and joins its left and right supports. The joins are central in <span class="math" data-tex="\(N\)">\(N\)</span>; they need not be equal. Two-sided range density detects a nonzero sandwich, and its compact outside spectra give the error interval. This works even when <span class="math" data-tex="\(e_1e_2=0\)">\(e_1e_2=0\)</span>.</p>
+<p>For directedness <strong>within</strong> <span class="math" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span>, start with <span class="math" data-tex="\(S_{e_j}+[-\varepsilon_j,\varepsilon_j]\)">\(S_{e_j}+[-\varepsilon_j,\varepsilon_j]\)</span>, <span class="math" data-tex="\(e_j\leq r\)">\(e_j\leq r\)</span>. Choose <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> with <span class="math" data-tex="\(2d&lt;\min(\varepsilon_1,\varepsilon_2)\)">\(2d&lt;\min(\varepsilon_1,\varepsilon_2)\)</span>, and use (CPB6) with error <span class="math" data-tex="\(d\)">\(d\)</span>. The member <span class="math" data-tex="\(S_{f_1}+[-d,d]\)">\(S_{f_1}+[-d,d]\)</span> lies in the first original set by restriction and in the second by (CPB6). Its projection still lies under <span class="math" data-tex="\(r\)">\(r\)</span>. Iterate for finitely many sets. No purported nonzero intersection of the <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is used.</p>
+<p>The restricted family is cofinal in the family using all nonzero central projections. Given <span class="math" data-tex="\(0\neq e\in C\)">\(0\neq e\in C\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, apply (CPB6) to <span class="math" data-tex="\(r,e\)">\(r,e\)</span>, with error <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, obtaining <span class="math" data-tex="\(f\leq r\)">\(f\leq r\)</span>, <span class="math" data-tex="\(g\leq e\)">\(g\leq e\)</span>. Then
+<span class="math math-display" data-tex="\[
+ S_f+[-\varepsilon/2,\varepsilon/2]
+ \subseteq S_g+[-\varepsilon,\varepsilon]
+ \subseteq S_e+[-\varepsilon,\varepsilon].
+ \tag{CPB7}
+\]">\[
+ S_f+[-\varepsilon/2,\varepsilon/2]
+ \subseteq S_g+[-\varepsilon,\varepsilon]
+ \subseteq S_e+[-\varepsilon,\varepsilon].
+ \tag{CPB7}
+\]</span>
+GCC C15 and closedness give
+<span class="math math-display" data-tex="\[
+ \bigcap\mathcal F_r
+ =\bigcap_{\substack{0\neq e\in\operatorname{Proj}(C)\\\varepsilon&gt;0}}
+       (S_e+[-\varepsilon,\varepsilon])
+ =\bigcap_{0\neq e\in\operatorname{Proj}(C)}S_e
+ =\Gamma(\alpha)=\{0\}.
+ \tag{CPB8}
+\]">\[
+ \bigcap\mathcal F_r
+ =\bigcap_{\substack{0\neq e\in\operatorname{Proj}(C)\\\varepsilon&gt;0}}
+       (S_e+[-\varepsilon,\varepsilon])
+ =\bigcap_{0\neq e\in\operatorname{Proj}(C)}S_e
+ =\Gamma(\alpha)=\{0\}.
+ \tag{CPB8}
+\]</span>
+Indeed a point outside a closed <span class="math" data-tex="\(S_e\)">\(S_e\)</span> is excluded by a sufficiently small thickening. Cofinality and the subfamily inclusion give the first equality in both directions. The complements of members of <span class="math" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span> cover the compact annulus <span class="math" data-tex="\(A_\mu\)">\(A_\mu\)</span>. A finite subcover and downward directedness give one member disjoint from the entire annulus, and its underlying <span class="math" data-tex="\(S_f\)">\(S_f\)</span> is disjoint too. This proves (CPB4).</p>
+<p><strong>A retained second route.</strong> Apply <a href="OA-FLOW-CS.html#oa-flow.cs.3">CS3</a> to <span class="math" data-tex="\(\alpha^r\)">\(\alpha^r\)</span> on the factor <span class="math" data-tex="\(rBr\)">\(rBr\)</span>. Its fixed algebra is <span class="math" data-tex="\(rNr\)">\(rNr\)</span>, its Connes spectrum is still zero, and its directed family of all fixed-corner thickenings has intersection zero. Compactness gives a nonzero fixed projection <span class="math" data-tex="\(e\leq r\)">\(e\leq r\)</span>, initially not central, with the annular gap. Set <span class="math" data-tex="\(f=c_{rNr}(e)\)">\(f=c_{rNr}(e)\)</span>. GCC C14, inside this exact reduced algebra, gives
+<span class="math" data-tex="\(\operatorname{Sp}((\alpha^r)^f)=\operatorname{Sp}((\alpha^r)^e)\)">\(\operatorname{Sp}((\alpha^r)^f)=\operatorname{Sp}((\alpha^r)^e)\)</span>.
+Since <span class="math" data-tex="\(r\in Z(N)\)">\(r\in Z(N)\)</span>, <span class="math" data-tex="\(Z(rNr)=rZ(N)\)">\(Z(rNr)=rZ(N)\)</span>; hence <span class="math" data-tex="\(0\neq f\leq r\)">\(0\neq f\leq r\)</span> belongs to <span class="math" data-tex="\(C\)">\(C\)</span>. Ambient and reduced filters agree by GCC C4. This proves (CPB4) by a second route. The fixed projection alone would not be enough; central-support replacement is essential.</p>
+<p><span id="OA-FLOW.CMAS.MIDDLE"></span><a id="cp-middle"></a></p>
+<h2 id="3-flatten-the-middle-algebra-with-a-central-bounded-implementer">3. Flatten the middle algebra with a central bounded implementer</h2>
+<p>Work on <span class="math" data-tex="\(B_0=fBf\)">\(B_0=fBf\)</span>, with identity <span class="math" data-tex="\(f\)">\(f\)</span>, write <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> for the restricted action and <span class="math" data-tex="\(N_0=fNf\)">\(N_0=fNf\)</span>. The weak-star closed space
+<span class="math math-display" data-tex="\[
+ Q=(B_0)_\alpha([-\mu,\mu])
+ \tag{CPB9}
+\]">\[
+ Q=(B_0)_\alpha([-\mu,\mu])
+ \tag{CPB9}
+\]</span>
+is a von Neumann algebra. It contains <span class="math" data-tex="\(f\)">\(f\)</span>, is star closed by reflection, and is multiplicatively closed: a product has spectrum in <span class="math" data-tex="\([-2\mu,2\mu]\)">\([-2\mu,2\mu]\)</span>, but also in the full action spectrum, which misses <span class="math" data-tex="\(A_\mu\)">\(A_\mu\)</span>. Thus it is again in the middle space. The restricted action on <span class="math" data-tex="\(Q\)">\(Q\)</span> is normal and point-ultraweakly continuous, has spectrum in <span class="math" data-tex="\([-\mu,\mu]\)">\([-\mu,\mu]\)</span>, and has fixed algebra exactly <span class="math" data-tex="\(N_0\)">\(N_0\)</span>.</p>
+<p>Apply Z3's complete bounded-spectrum construction to this <strong>restricted algebra</strong> <span class="math" data-tex="\(Q\)">\(Q\)</span>. It gives
+<span class="math math-display" data-tex="\[
+ a=a^*\in Q^\alpha=N_0,\qquad
+ -\frac{\mu}{2}f\leq a\leq\frac{\mu}{2}f,\qquad
+ \alpha_t|_Q=\operatorname{Ad}(e^{ita})|_Q.
+ \tag{CPB10}
+\]">\[
+ a=a^*\in Q^\alpha=N_0,\qquad
+ -\frac{\mu}{2}f\leq a\leq\frac{\mu}{2}f,\qquad
+ \alpha_t|_Q=\operatorname{Ad}(e^{ita})|_Q.
+ \tag{CPB10}
+\]</span>
+More precisely, in <span class="math" data-tex="\(Q\)">\(Q\)</span> take the left annihilator <span class="math" data-tex="\(p(s)\)">\(p(s)\)</span> of <span class="math" data-tex="\(Q_\alpha([s,\infty))\)">\(Q_\alpha([s,\infty))\)</span>. These are increasing fixed projections, zero for <span class="math" data-tex="\(s\leq0\)">\(s\leq0\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> for <span class="math" data-tex="\(s&gt;\mu\)">\(s&gt;\mu\)</span>. Tagged sums
+<span class="math" data-tex="\(\sum_j\tau_j(p(s_j)-p(s_{j-1}))\)">\(\sum_j\tau_j(p(s_j)-p(s_{j-1}))\)</span> converge in norm as the mesh tends to zero: refinement changes a sum by at most its mesh, and common refinements compare two sums. They give <span class="math" data-tex="\(0\leq b\leq\mu f\)">\(0\leq b\leq\mu f\)</span>; Z3's full half-line comparison proves <span class="math" data-tex="\(\alpha|_Q=\operatorname{Ad}(e^{itb})\)">\(\alpha|_Q=\operatorname{Ad}(e^{itb})\)</span>. Set <span class="math" data-tex="\(a=b-\mu f/2\)">\(a=b-\mu f/2\)</span>. Its bounded generator is obtained by differentiating the smooth filter equal to one near the bounded spectrum. This is not a use of ambient half-lines, an unproved continuity assertion for <span class="math" data-tex="\(p(s)\)">\(p(s)\)</span>, or an unbounded generator on an unspecified domain.</p>
+<p>There is a further centrality conclusion. Every <span class="math" data-tex="\(x\in N_0\)">\(x\in N_0\)</span> is fixed, so <span class="math" data-tex="\(e^{ita}xe^{-ita}=x\)">\(e^{ita}xe^{-ita}=x\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. Differentiating the bounded exponential in norm at zero gives <span class="math" data-tex="\(i[a,x]=0\)">\(i[a,x]=0\)</span>. Since <span class="math" data-tex="\(a\in N_0\)">\(a\in N_0\)</span>,
+<span class="math math-display" data-tex="\[
+ a\in Z(N_0)=fC,\qquad k=e^{-a}\in(fC)_+,\qquad
+ e^{-\mu/2}f\leq k\leq e^{\mu/2}f.
+ \tag{CPB11}
+\]">\[
+ a\in Z(N_0)=fC,\qquad k=e^{-a}\in(fC)_+,\qquad
+ e^{-\mu/2}f\leq k\leq e^{\mu/2}f.
+ \tag{CPB11}
+\]</span>
+The equality <span class="math" data-tex="\(Z(fNf)=fC\)">\(Z(fNf)=fC\)</span> uses the already established centrality of <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>. Exponentials are taken in <span class="math" data-tex="\(fBf\)">\(fBf\)</span>, and <span class="math" data-tex="\(k\)">\(k\)</span> is extended by zero outside <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The normal continuous action
+<span class="math" data-tex="\(\beta_t=\operatorname{Ad}(k^{it})\alpha_t=\operatorname{Ad}(e^{-ita})\alpha_t\)">\(\beta_t=\operatorname{Ad}(k^{it})\alpha_t=\operatorname{Ad}(e^{-ita})\alpha_t\)</span>
+is the identity on <span class="math" data-tex="\(Q\)">\(Q\)</span>, fixes <span class="math" data-tex="\(N_0\)">\(N_0\)</span> pointwise and fixes <span class="math" data-tex="\(a,k\)">\(a,k\)</span>.
+To prove its full spectral displacement, on <span class="math" data-tex="\(M_2(B_0)\)">\(M_2(B_0)\)</span> set
+<span class="math math-display" data-tex="\[
+ W_t(X)=
+ \begin{pmatrix}f&amp;0\\0&amp;e^{-ita}\end{pmatrix}
+ (\alpha_t(X_{ij}))
+ \begin{pmatrix}f&amp;0\\0&amp;e^{ita}\end{pmatrix},\qquad
+ v=f\otimes e_{21}.
+ \tag{CPB12}
+\]">\[
+ W_t(X)=
+ \begin{pmatrix}f&amp;0\\0&amp;e^{-ita}\end{pmatrix}
+ (\alpha_t(X_{ij}))
+ \begin{pmatrix}f&amp;0\\0&amp;e^{ita}\end{pmatrix},\qquad
+ v=f\otimes e_{21}.
+ \tag{CPB12}
+\]</span>
+Here <span class="math" data-tex="\(M_2(B_0)\)">\(M_2(B_0)\)</span> denotes the ordinary two-by-two matrix von Neumann algebra. Since <span class="math" data-tex="\(a\)">\(a\)</span> is fixed, the diagonal multipliers obey the cocycle law, so <span class="math" data-tex="\(W\)">\(W\)</span> is an actual normal continuous action. Its diagonal corners are <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. Filtering <span class="math" data-tex="\(W_t(v)=e^{-ita}\otimes e_{21}\)">\(W_t(v)=e^{-ita}\otimes e_{21}\)</span> gives <span class="math" data-tex="\(\widehat g(-a)\otimes e_{21}\)">\(\widehat g(-a)\otimes e_{21}\)</span>, so its spectrum lies in <span class="math" data-tex="\([-\mu/2,\mu/2]\)">\([-\mu/2,\mu/2]\)</span>; the same bound holds for <span class="math" data-tex="\(v^*\)">\(v^*\)</span>. The identity <span class="math" data-tex="\(x\otimes e_{22}=v(x\otimes e_{11})v^*\)">\(x\otimes e_{22}=v(x\otimes e_{11})v^*\)</span> and two product rules give, for every closed <span class="math" data-tex="\(E\)">\(E\)</span>,
+<span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\alpha(x)\subseteq E
+ \ \Longrightarrow\
+ \operatorname{Sp}_\beta(x)\subseteq E+[-\mu,\mu].
+ \tag{CPB13}
+\]">\[
+ \operatorname{Sp}_\alpha(x)\subseteq E
+ \ \Longrightarrow\
+ \operatorname{Sp}_\beta(x)\subseteq E+[-\mu,\mu].
+ \tag{CPB13}
+\]</span>
+The sum is closed because the error interval is compact. This proves the sign and both contributions to the displacement.</p>
+<p>Choose a smooth compact Fourier multiplier <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, equal to one near <span class="math" data-tex="\([-\mu,\mu]\)">\([-\mu,\mu]\)</span>, supported in <span class="math" data-tex="\((-2\mu,2\mu)\)">\((-2\mu,2\mu)\)</span>, and let <span class="math" data-tex="\(k_\chi\)">\(k_\chi\)</span> be its inverse Fourier kernel, so <span class="math" data-tex="\(\widehat{k_\chi}=\chi\)">\(\widehat{k_\chi}=\chi\)</span>. The actual filter gives for every <span class="math" data-tex="\(x\in B_0\)">\(x\in B_0\)</span>
+<span class="math math-display" data-tex="\[
+ x=x_{\rm mid}+x_{\rm out},\quad x_{\rm mid}=T_{k_\chi}^\alpha x\in Q,\quad
+ \operatorname{Sp}_\alpha(x_{\rm out})
+ \subseteq(-\infty,-2\mu]\cup[2\mu,\infty).
+ \tag{CPB14}
+\]">\[
+ x=x_{\rm mid}+x_{\rm out},\quad x_{\rm mid}=T_{k_\chi}^\alpha x\in Q,\quad
+ \operatorname{Sp}_\alpha(x_{\rm out})
+ \subseteq(-\infty,-2\mu]\cup[2\mu,\infty).
+ \tag{CPB14}
+\]</span>
+Local filters see <span class="math" data-tex="\(1-\chi=0\)">\(1-\chi=0\)</span> near the middle; outside it the original annulus is already absent. The filter localization and closed-space criterion justify this even for elements without compact spectrum. The first term is <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-fixed; (CPB13) moves the second into <span class="math" data-tex="\((-\infty,-\mu]\cup[\mu,\infty)\)">\((-\infty,-\mu]\cup[\mu,\infty)\)</span>. Every smooth <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-filter with compact support in the punctured interval <span class="math" data-tex="\((-\mu,\mu)\setminus\{0\}\)">\((-\mu,\mu)\setminus\{0\}\)</span> therefore vanishes on every <span class="math" data-tex="\(x\)">\(x\)</span>. Local action-spectrum detection and SS3 prove
+<span class="math math-display" data-tex="\[
+ \operatorname{Sp}(\beta)\subseteq(-\infty,-\mu]\cup\{0\}\cup[\mu,\infty),
+ \qquad (B_0)_\beta([-\delta,\delta])=(B_0)^\beta
+ \quad(0&lt;\delta&lt;\mu).
+ \tag{CPB15}
+\]">\[
+ \operatorname{Sp}(\beta)\subseteq(-\infty,-\mu]\cup\{0\}\cup[\mu,\infty),
+ \qquad (B_0)_\beta([-\delta,\delta])=(B_0)^\beta
+ \quad(0&lt;\delta&lt;\mu).
+ \tag{CPB15}
+\]</span>
+The negative endpoint is <span class="math" data-tex="\(-\mu\)">\(-\mu\)</span>. Replacing it by <span class="math" data-tex="\(+\mu\)">\(+\mu\)</span> would destroy the gap.</p>
+<p><span id="OA-FLOW.CMAS.WEIGHTS"></span><a id="cp-weights"></a></p>
+<h2 id="4-apply-the-construction-to-arbitrary-supported-weights">4. Apply the construction to arbitrary supported weights</h2>
+<p>Let <span class="math" data-tex="\(\varphi\neq0\)">\(\varphi\neq0\)</span> be normal semifinite on the stated <span class="math" data-tex="\(M\)">\(M\)</span>. The weight <span class="math" data-tex="\(\varphi^p\)">\(\varphi^p\)</span> is faithful NSF on the nonzero support factor. For type <span class="math" data-tex="\(\mathrm{III}_0\)">\(\mathrm{III}_0\)</span>, CT1–2 and MIV2.h give
+<span class="math" data-tex="\(\Gamma(\sigma^{\varphi^p})=\log\{1\}=\{0\}\)">\(\Gamma(\sigma^{\varphi^p})=\log\{1\}=\{0\}\)</span>.
+For each prescribed <span class="math" data-tex="\(0\neq r\in\operatorname{Proj}(C_\varphi)\)">\(0\neq r\in\operatorname{Proj}(C_\varphi)\)</span>, Sections 2–3 produce <span class="math" data-tex="\(0\neq f\leq r\)">\(0\neq f\leq r\)</span>, <span class="math" data-tex="\(a\in fC_\varphi\)">\(a\in fC_\varphi\)</span>, and <span class="math" data-tex="\(h=e^{-a}\)">\(h=e^{-a}\)</span>, extended by zero off <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><a href="OA-FLOW-MG.html#oa-flow.mg.2">MG2</a> makes <span class="math" data-tex="\(\varphi^f=\varphi|_{fMf}\)">\(\varphi^f=\varphi|_{fMf}\)</span> faithful NSF with the restricted modular action even if <span class="math" data-tex="\(\varphi(f)=\infty\)">\(\varphi(f)=\infty\)</span>. CZ1 and CZ4 then identify the whole weight, bounds and modular action:
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \varphi_h(x)=\varphi(h^{1/2}xh^{1/2}),\quad x\in M_+,\qquad
+ s(\varphi_h)=s(h)=f,\\
+ e^{-\mu/2}\varphi_f(x)\leq\varphi_h(x)\leq e^{\mu/2}\varphi_f(x),
+ \qquad \varphi_f(x)=\varphi(fxf),\\
+ \sigma_t^{(\varphi_h)^f}
+   =\operatorname{Ad}(e^{-ita})\sigma_t^{\varphi^f}.
+ \end{gathered}
+ \tag{CPB16}
+\]">\[
+ \begin{gathered}
+ \varphi_h(x)=\varphi(h^{1/2}xh^{1/2}),\quad x\in M_+,\qquad
+ s(\varphi_h)=s(h)=f,\\
+ e^{-\mu/2}\varphi_f(x)\leq\varphi_h(x)\leq e^{\mu/2}\varphi_f(x),
+ \qquad \varphi_f(x)=\varphi(fxf),\\
+ \sigma_t^{(\varphi_h)^f}
+   =\operatorname{Ad}(e^{-ita})\sigma_t^{\varphi^f}.
+ \end{gathered}
+ \tag{CPB16}
+\]</span>
+These are order inequalities in the <strong>density parameter</strong>, proved on the whole cone by CZ1. They do not assert <span class="math" data-tex="\(h^{1/2}xh^{1/2}\leq\|h\|x\)">\(h^{1/2}xh^{1/2}\leq\|h\|x\)</span>. Faithfulness on <span class="math" data-tex="\(pMp\)">\(pMp\)</span> shows that <span class="math" data-tex="\(\varphi_h(x)=0\)">\(\varphi_h(x)=0\)</span> exactly when <span class="math" data-tex="\(x^{1/2}h^{1/2}=0\)">\(x^{1/2}h^{1/2}=0\)</span>, equivalently <span class="math" data-tex="\(x^{1/2}f=0\)">\(x^{1/2}f=0\)</span> because <span class="math" data-tex="\(h\)">\(h\)</span> is invertible on <span class="math" data-tex="\(f\)">\(f\)</span>. This proves its support.</p>
+<p>Write <span class="math" data-tex="\(F_\rho=\{x\in M_+:\rho(x)&lt;\infty\}\)">\(F_\rho=\{x\in M_+:\rho(x)&lt;\infty\}\)</span>, <span class="math" data-tex="\(\mathfrak n_\rho=\{x:\rho(x^*x)&lt;\infty\}\)">\(\mathfrak n_\rho=\{x:\rho(x^*x)&lt;\infty\}\)</span>, <span class="math" data-tex="\(\mathfrak A_\rho=\mathfrak n_\rho\cap\mathfrak n_\rho^*\)">\(\mathfrak A_\rho=\mathfrak n_\rho\cap\mathfrak n_\rho^*\)</span>, and <span class="math" data-tex="\(\mathfrak m_\rho=\operatorname{span}\mathfrak n_\rho^*\mathfrak n_\rho\)">\(\mathfrak m_\rho=\operatorname{span}\mathfrak n_\rho^*\mathfrak n_\rho\)</span>. Any bounds <span class="math" data-tex="\(mf\leq h\leq Mf\)">\(mf\leq h\leq Mf\)</span>, <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, give
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ F_{\varphi_h}=F_{\varphi_f},\quad
+ \mathfrak n_{\varphi_h}=\mathfrak n_{\varphi_f},\quad
+ \mathfrak A_{\varphi_h}=\mathfrak A_{\varphi_f},\quad
+ \mathfrak m_{\varphi_h}=\mathfrak m_{\varphi_f},\\
+ \mathfrak n_{\varphi_h}=\{x\in M:xh^{1/2}\in\mathfrak n_\varphi\},\\
+ (\varphi^f)_h=(\varphi_h)^f,\qquad
+ ((\varphi^f)_h)_{h^{-1}}=\varphi^f\quad\text{on }(fMf)_+.
+ \end{gathered}
+ \tag{CPB17}
+\]">\[
+ \begin{gathered}
+ F_{\varphi_h}=F_{\varphi_f},\quad
+ \mathfrak n_{\varphi_h}=\mathfrak n_{\varphi_f},\quad
+ \mathfrak A_{\varphi_h}=\mathfrak A_{\varphi_f},\quad
+ \mathfrak m_{\varphi_h}=\mathfrak m_{\varphi_f},\\
+ \mathfrak n_{\varphi_h}=\{x\in M:xh^{1/2}\in\mathfrak n_\varphi\},\\
+ (\varphi^f)_h=(\varphi_h)^f,\qquad
+ ((\varphi^f)_h)_{h^{-1}}=\varphi^f\quad\text{on }(fMf)_+.
+ \end{gathered}
+ \tag{CPB17}
+\]</span>
+Apply whole-cone comparison to <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> and <span class="math" data-tex="\(xx^*\)">\(xx^*\)</span> for the first line; the second is the defining sandwich. The third uses the bounded inverse on <span class="math" data-tex="\(f\)">\(f\)</span>, not on <span class="math" data-tex="\(1-f\)">\(1-f\)</span>. The reduced GNS map is
+<span class="math" data-tex="\(\Lambda_{(\varphi^f)_h}(x)=\Lambda_{\varphi^f}(xh^{1/2})\)">\(\Lambda_{(\varphi^f)_h}(x)=\Lambda_{\varphi^f}(xh^{1/2})\)</span>;
+CZ3 proves density in the full reduced GNS space using the bounded inverse right multiplier. CZ6 gives normalized reduced cocycle <span class="math" data-tex="\(h^{it}\)">\(h^{it}\)</span>. Sections 2–3 prove lacunarity, and MG1 identifies the genuine modular-operator gap. No step requires finite total mass or strict semifiniteness.</p>
+<p>There is an exact inclusion
+<span class="math math-display" data-tex="\[
+ fM_\varphi f\subseteq M_{\varphi_h}.
+ \tag{CPB18}
+\]">\[
+ fM_\varphi f\subseteq M_{\varphi_h}.
+ \tag{CPB18}
+\]</span>
+Every old fixed element in this corner commutes with <span class="math" data-tex="\(h\)">\(h\)</span>. If <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> is properly infinite, its nonzero <strong>central</strong> summand <span class="math" data-tex="\(fM_\varphi\)">\(fM_\varphi\)</span> is properly infinite: compress two orthogonal isometries by the central <span class="math" data-tex="\(f\)">\(f\)</span>. The same isometries witness proper infiniteness of the larger <span class="math" data-tex="\(M_{\varphi_h}\)">\(M_{\varphi_h}\)</span>. An arbitrary noncentral finite projection would not preserve that conclusion.</p>
+<p><span id="OA-FLOW.CMAS.PERIODIC"></span><a id="cp-periodic"></a></p>
+<h2 id="5-positive-lambda-bounded-phase-and-affiliated-cut-alternatives">5. Positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>: bounded phase and affiliated-cut alternatives</h2>
+<p>Suppose <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, and set <span class="math" data-tex="\(L=-\log\lambda&gt;0\)">\(L=-\log\lambda&gt;0\)</span>, <span class="math" data-tex="\(T=2\pi/L\)">\(T=2\pi/L\)</span>. The actual inner-period theorem <a href="OA-FLOW-IP.html#oa-flow.ip.0">IP0–6</a>, applied to <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, produces a unitary <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(\sigma_T^{\varphi^p}=\operatorname{Ad}b\)">\(\sigma_T^{\varphi^p}=\operatorname{Ad}b\)</span> on the whole support algebra. <a href="OA-FLOW-PW.html#oa-flow.pw.1">PW1</a> proves <span class="math" data-tex="\(b\in C_\varphi\)">\(b\in C_\varphi\)</span>: modular time preserves the whole weight, the weight-preserving-unitary criterion puts <span class="math" data-tex="\(b\)">\(b\)</span> in the centralizer, and that automorphism fixes the centralizer pointwise. <a href="OA-FLOW-PW.html#oa-flow.pw.2">PW2</a>'s Borel/Cayley construction gives a bounded phase <span class="math" data-tex="\(\Theta\in C_\varphi\)">\(\Theta\in C_\varphi\)</span>, <span class="math" data-tex="\(0\leq\Theta\leq2\pi p\)">\(0\leq\Theta\leq2\pi p\)</span>, with <span class="math" data-tex="\(e^{i\Theta}=b\)">\(e^{i\Theta}=b\)</span>.</p>
+<p>For the prescribed <span class="math" data-tex="\(r\in\operatorname{Proj}(C_\varphi)\)">\(r\in\operatorname{Proj}(C_\varphi)\)</span>, put
+<span class="math math-display" data-tex="\[
+ f=r,\qquad h=r e^{-\Theta/T},\qquad
+ \lambda r\leq h\leq r,\qquad h^{iT}=rb^*\quad\text{on }r.
+ \tag{CPB19}
+\]">\[
+ f=r,\qquad h=r e^{-\Theta/T},\qquad
+ \lambda r\leq h\leq r,\qquad h^{iT}=rb^*\quad\text{on }r.
+ \tag{CPB19}
+\]</span>
+The fixed corner is legitimate without finite mass. Its perturbed modular group satisfies
+<span class="math math-display" data-tex="\[
+ \sigma_T^{(\varphi_h)^r}
+ =\operatorname{Ad}(rb^*)\operatorname{Ad}(rb)
+ =\mathrm{id}_{rMr}.
+ \tag{CPB20}
+\]">\[
+ \sigma_T^{(\varphi_h)^r}
+ =\operatorname{Ad}(rb^*)\operatorname{Ad}(rb)
+ =\mathrm{id}_{rMr}.
+ \tag{CPB20}
+\]</span>
+<a href="OA-FLOW-PW.html#oa-flow.pw.3">PW3</a> proves all finite-domain comparisons and the normalized cocycle, as in (CPB16–17). A <span class="math" data-tex="\(T\)">\(T\)</span>-periodic action has spectrum in <span class="math" data-tex="\(L\mathbb Z\)">\(L\mathbb Z\)</span>: if <span class="math" data-tex="\(e^{iTr_0}\neq1\)">\(e^{iTr_0}\neq1\)</span>, choose a smooth local Fourier multiplier near <span class="math" data-tex="\(r_0\)">\(r_0\)</span>, divide it on its compact support by <span class="math" data-tex="\(e^{iTr}-1\)">\(e^{iTr}-1\)</span>, and apply the resulting <span class="math" data-tex="\(L^1\)">\(L^1\)</span> filter to <span class="math" data-tex="\(\alpha_T-\mathrm{id}=0\)">\(\alpha_T-\mathrm{id}=0\)</span>. This kills a multiplier nonzero at <span class="math" data-tex="\(r_0\)">\(r_0\)</span>. Thus any <span class="math" data-tex="\(0&lt;\delta&lt;L\)">\(0&lt;\delta&lt;L\)</span> gives (CPB2). The inclusion (CPB18) persists. This bounded correction works for every faithful NSF weight, not only functionals.</p>
+<p>An affiliated alternative remains useful if an implementer is already written
+<span class="math" data-tex="\(\sigma_T^{\varphi^p}=\operatorname{Ad}(d^{iT})\)">\(\sigma_T^{\varphi^p}=\operatorname{Ad}(d^{iT})\)</span>, with nonsingular positive <span class="math" data-tex="\(d\)">\(d\)</span> affiliated with <span class="math" data-tex="\(C_\varphi\)">\(C_\varphi\)</span>, without bounds on <span class="math" data-tex="\(d\)">\(d\)</span> or its inverse. Its central projections <span class="math" data-tex="\(q_n=1_{[1/n,n]}(d)\)">\(q_n=1_{[1/n,n]}(d)\)</span> increase to <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(rq_n\uparrow r\neq0\)">\(rq_n\uparrow r\neq0\)</span>, some <span class="math" data-tex="\(f=rq_n\)">\(f=rq_n\)</span> is nonzero. This intersection is justified by monotone exhaustion, not by a general assertion about central projections. Define
+<span class="math math-display" data-tex="\[
+ h=d^{-1}f,\qquad n^{-1}f\leq h\leq nf.
+ \tag{CPB21}
+\]">\[
+ h=d^{-1}f,\qquad n^{-1}f\leq h\leq nf.
+ \tag{CPB21}
+\]</span>
+All products here are bounded spectral products on the selected corner. In particular <span class="math" data-tex="\(h^{iT}=d^{-iT}f\)">\(h^{iT}=d^{-iT}f\)</span>, and cancellation gives (CPB20) on <span class="math" data-tex="\(fMf\)">\(fMf\)</span>, with the complete domains (CPB17). The bounded-phase route avoids a cut; the affiliated route is valid after the explicitly selected nonzero cut.</p>
+<p><span id="OA-FLOW.CMAS.MASA"></span><a id="cp-masa"></a></p>
+<h2 id="6-from-local-gaps-to-an-ambient-masa">6. From local gaps to an ambient MASA</h2>
+<p>First consider the finite-weight step. Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be a faithful bounded normal positive functional on any <span class="math" data-tex="\(B\)">\(B\)</span>, with <span class="math" data-tex="\(B_{\sigma^\omega}([-\delta,\delta])=B_\omega\)">\(B_{\sigma^\omega}([-\delta,\delta])=B_\omega\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is a MASA of <span class="math" data-tex="\(B_\omega\)">\(B_\omega\)</span>, then <span class="math" data-tex="\(D=A'\cap B\)">\(D=A'\cap B\)</span> is invariant under the modular group. Take
+<span class="math" data-tex="\(x\in D\cap B_{\sigma^\omega}([u-\delta/2,u+\delta/2])\)">\(x\in D\cap B_{\sigma^\omega}([u-\delta/2,u+\delta/2])\)</span>.
+The product rule gives <span class="math" data-tex="\(x^*x,xx^*\in A\)">\(x^*x,xx^*\in A\)</span>. Their supports lie in <span class="math" data-tex="\(A\)">\(A\)</span>. Since <span class="math" data-tex="\(x\)">\(x\)</span> commutes with <span class="math" data-tex="\(A\)">\(A\)</span>, its left and right supports coincide; its polar partial isometry lies in <span class="math" data-tex="\(D\)">\(D\)</span>, is unitary on that support, and commutes with <span class="math" data-tex="\(|x|\)">\(|x|\)</span>. Hence <span class="math" data-tex="\(xx^*=x^*x\)">\(xx^*=x^*x\)</span>.</p>
+<p>The full bounded GNS calculation <a href="../OA-MOD/src/weight-comparison-centralizer-transport.md#a-lacunary-functional-carries-ambient-maximal-abelian-algebras">WC.43–47</a> gives a finite positive measure <span class="math" data-tex="\(\nu_x\)">\(\nu_x\)</span>, supported in <span class="math" data-tex="\([-u-\delta/2,-u+\delta/2]\)">\([-u-\delta/2,-u+\delta/2]\)</span>, such that
+<span class="math math-display" data-tex="\[
+ F(t)=\omega(\sigma_t^\omega(x^*)x)=\int e^{its}\,d\nu_x(s),\quad
+ F(i)=\int e^{-s}\,d\nu_x(s)=\omega(xx^*),\quad
+ F(0)=\omega(x^*x).
+ \tag{CPB22}
+\]">\[
+ F(t)=\omega(\sigma_t^\omega(x^*)x)=\int e^{its}\,d\nu_x(s),\quad
+ F(i)=\int e^{-s}\,d\nu_x(s)=\omega(xx^*),\quad
+ F(0)=\omega(x^*x).
+ \tag{CPB22}
+\]</span>
+This is the spectral measure of <span class="math" data-tex="\(\log\Delta_\omega\)">\(\log\Delta_\omega\)</span> on <span class="math" data-tex="\(\Lambda_\omega(x)\)">\(\Lambda_\omega(x)\)</span>, reflected to match <span class="math" data-tex="\(x^*\)">\(x^*\)</span>. Filtering the bounded GNS map proves the support assertion. The full Tomita domain identity
+<span class="math" data-tex="\(\|\Delta_\omega^{1/2}\Lambda_\omega(x)\|^2=\omega(xx^*)\)">\(\|\Delta_\omega^{1/2}\Lambda_\omega(x)\|^2=\omega(xx^*)\)</span>
+gives the imaginary-time moment. Compact support makes the entire integral legitimate.</p>
+<p>If <span class="math" data-tex="\(u&gt;\delta\)">\(u&gt;\delta\)</span>, then <span class="math" data-tex="\(F(i)\geq e^{u-\delta/2}F(0)&gt;F(0)\)">\(F(i)\geq e^{u-\delta/2}F(0)&gt;F(0)\)</span> unless <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Normality of <span class="math" data-tex="\(x\)">\(x\)</span> forces equality, so faithfulness gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>; reflection removes <span class="math" data-tex="\(u&lt;-\delta\)">\(u&lt;-\delta\)</span>. For any smooth compact multiplier supported off <span class="math" data-tex="\([-\delta,\delta]\)">\([-\delta,\delta]\)</span>, cover its support by finitely many such vanishing intervals and split it with a smooth partition. Every filtered piece of any element of <span class="math" data-tex="\(D\)">\(D\)</span> vanishes. The closed-space criterion gives <span class="math" data-tex="\(D\subseteq B_{\sigma^\omega}([-\delta,\delta])=B_\omega\)">\(D\subseteq B_{\sigma^\omega}([-\delta,\delta])=B_\omega\)</span>. Maximality in <span class="math" data-tex="\(B_\omega\)">\(B_\omega\)</span> now yields
+<span class="math math-display" data-tex="\[
+ A'\cap B=A.
+ \tag{CPB23}
+\]">\[
+ A'\cap B=A.
+ \tag{CPB23}
+\]</span>
+This filter argument avoids enlarging the final spectral band by a half-width. The imaginary-time integrand is <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span>, not the printed source's exponential with an additional interval-center factor.</p>
+<p>Now let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be any faithful bounded functional on the stated type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span> factor. In every nonzero centralizer-center corner <span class="math" data-tex="\(r\)">\(r\)</span>, Sections 4–5 give <span class="math" data-tex="\(0\neq f\leq r\)">\(0\neq f\leq r\)</span> and a bounded support-invertible central density <span class="math" data-tex="\(h\)">\(h\)</span> such that <span class="math" data-tex="\((\omega_h)^f\)">\((\omega_h)^f\)</span> is lacunary. This is a bounded faithful functional on <span class="math" data-tex="\(fMf\)">\(fMf\)</span>, because <span class="math" data-tex="\(\omega_h(f)\leq\|h\|\omega(f)&lt;\infty\)">\(\omega_h(f)\leq\|h\|\omega(f)&lt;\infty\)</span>. The operator <span class="math" data-tex="\(h\)">\(h\)</span> belongs to its new centralizer. Choose a MASA <span class="math" data-tex="\(A_f\)">\(A_f\)</span> of that centralizer containing the abelian algebra generated by <span class="math" data-tex="\(h,f\)">\(h,f\)</span>. Equation (CPB23) makes <span class="math" data-tex="\(A_f\)">\(A_f\)</span> a MASA of <span class="math" data-tex="\(fMf\)">\(fMf\)</span>, and for <span class="math" data-tex="\(x\in A_f\)">\(x\in A_f\)</span>,
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\omega^f}(x)
+ =h^{-it}\sigma_t^{(\omega_h)^f}(x)h^{it}=x.
+ \tag{CPB24}
+\]">\[
+ \sigma_t^{\omega^f}(x)
+ =h^{-it}\sigma_t^{(\omega_h)^f}(x)h^{it}=x.
+ \tag{CPB24}
+\]</span>
+Thus <span class="math" data-tex="\(A_f\subseteq fM_\omega f\)">\(A_f\subseteq fM_\omega f\)</span>.</p>
+<p>Choose a maximal pairwise orthogonal family of nonzero <span class="math" data-tex="\(f_i\in C_\omega\)">\(f_i\in C_\omega\)</span>, each admitting an ambient MASA <span class="math" data-tex="\(A_i\subseteq f_iM_\omega f_i\)">\(A_i\subseteq f_iM_\omega f_i\)</span>. A nonzero residual <span class="math" data-tex="\(r=1-\sum_i f_i\)">\(r=1-\sum_i f_i\)</span> would be in <span class="math" data-tex="\(C_\omega\)">\(C_\omega\)</span> and would admit a further member by the preceding prescribed-corner construction. Hence the strong sum is <span class="math" data-tex="\(1\)">\(1\)</span>. Set
+<span class="math math-display" data-tex="\[
+ A=\left\{\sum_i a_i:\ a_i\in A_i,\ \sup_i\|a_i\|&lt;\infty\right\}
+ \subseteq M_\omega .
+ \tag{CPB25}
+\]">\[
+ A=\left\{\sum_i a_i:\ a_i\in A_i,\ \sup_i\|a_i\|&lt;\infty\right\}
+ \subseteq M_\omega .
+ \tag{CPB25}
+\]</span>
+This is a unital abelian von Neumann algebra, with bounded strong block sums. Weak-star closedness follows from the normal coordinates <span class="math" data-tex="\(x\mapsto f_i x f_j\)">\(x\mapsto f_i x f_j\)</span>: the off-diagonal entries vanish and each diagonal entry is in the weak-star closed <span class="math" data-tex="\(A_i\)">\(A_i\)</span>. If <span class="math" data-tex="\(x\in A'\cap M\)">\(x\in A'\cap M\)</span>, it commutes with each <span class="math" data-tex="\(f_i\in A\)">\(f_i\in A\)</span>, so <span class="math" data-tex="\(f_i x f_j=0\)">\(f_i x f_j=0\)</span> for <span class="math" data-tex="\(i\neq j\)">\(i\neq j\)</span>; also <span class="math" data-tex="\(f_i x f_i\in A_i'\cap f_iMf_i=A_i\)">\(f_i x f_i\in A_i'\cap f_iMf_i=A_i\)</span>. Bounded strong reconstruction puts <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>. This proves ambient maximality without requiring <span class="math" data-tex="\(f_i\)">\(f_i\)</span> central in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Finally let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be faithful strictly semifinite. WC.24–27 supplies pairwise orthogonal <span class="math" data-tex="\(e_j\in M_\varphi\)">\(e_j\in M_\varphi\)</span>, each of finite positive <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-mass, with strong sum <span class="math" data-tex="\(1\)">\(1\)</span>. They need not be central in <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>. The restriction <span class="math" data-tex="\(\varphi^{e_j}\)">\(\varphi^{e_j}\)</span> is a faithful bounded functional on the type-preserving corner <span class="math" data-tex="\(e_jMe_j\)">\(e_jMe_j\)</span>, with centralizer <span class="math" data-tex="\(e_jM_\varphi e_j\)">\(e_jM_\varphi e_j\)</span>. Apply the previous construction in each corner. Its ambient MASAs <span class="math" data-tex="\(B_j\subseteq e_jM_\varphi e_j\)">\(B_j\subseteq e_jM_\varphi e_j\)</span> have block sum <span class="math" data-tex="\(B\subseteq M_\varphi\)">\(B\subseteq M_\varphi\)</span>; the identical mixed-entry argument proves <span class="math" data-tex="\(B'\cap M=B\)">\(B'\cap M=B\)</span>. Separability ensures countability of nonzero orthogonal families, but block reconstruction itself works for arbitrary families. An element commuting with <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> commutes with <span class="math" data-tex="\(B\)">\(B\)</span>, hence lies in <span class="math" data-tex="\(B\subseteq M_\varphi\)">\(B\subseteq M_\varphi\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ M_\varphi'\cap M=Z(M_\varphi)=C_\varphi.
+ \tag{CPB26}
+\]">\[
+ M_\varphi'\cap M=Z(M_\varphi)=C_\varphi.
+ \tag{CPB26}
+\]</span>
+This supplies the type-dependent premise left open in WC.34–35.</p>
+<p><span id="OA-FLOW.CMAS.DENSITY"></span><a id="cp-density"></a></p>
+<h2 id="7-the-full-density-criterion-and-its-domains">7. The full density criterion and its domains</h2>
+<p>We first work on any von Neumann algebra <span class="math" data-tex="\(B\)">\(B\)</span>, with faithful NSF <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> and <span class="math" data-tex="\(B_\varphi'\cap B=C_\varphi\)">\(B_\varphi'\cap B=C_\varphi\)</span>. If <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> is nonsingular and affiliated with <span class="math" data-tex="\(C_\varphi\)">\(C_\varphi\)</span>, CZ2 constructs <span class="math" data-tex="\(\varphi_h\)">\(\varphi_h\)</span> on every <span class="math" data-tex="\(x\in B_+\)">\(x\in B_+\)</span>:
+<span class="math math-display" data-tex="\[
+ \varphi_h(x)=
+ \sup_n\varphi\!\left((hp_n)^{1/2}x(hp_n)^{1/2}\right),
+ \qquad p_n=1_{[1/n,n]}(h)\uparrow1.
+ \tag{CPB27}
+\]">\[
+ \varphi_h(x)=
+ \sup_n\varphi\!\left((hp_n)^{1/2}x(hp_n)^{1/2}\right),
+ \qquad p_n=1_{[1/n,n]}(h)\uparrow1.
+ \tag{CPB27}
+\]</span>
+All displayed products are bounded. CZ1 proves parameter monotonicity even when <span class="math" data-tex="\(x\)">\(x\)</span> does not commute with the density; CZ2 proves additivity, normality, faithfulness and semifiniteness of this supremum. Its exact finite left ideal and GNS vectors are
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ x\in\mathfrak n_{\varphi_h}
+ &amp;\Longleftrightarrow
+ xh^{1/2}p_n\in\mathfrak n_\varphi\text{ for every }n,\
+ \sup_n\|\Lambda_\varphi(xh^{1/2}p_n)\|^2&lt;\infty,\\
+ \Lambda_{\varphi_h}(x)&amp;=
+ \lim_n\Lambda_\varphi(xh^{1/2}p_n).
+ \end{split}
+ \tag{CPB28}
+\]">\[
+ \begin{split}
+ x\in\mathfrak n_{\varphi_h}
+ &amp;\Longleftrightarrow
+ xh^{1/2}p_n\in\mathfrak n_\varphi\text{ for every }n,\
+ \sup_n\|\Lambda_\varphi(xh^{1/2}p_n)\|^2&lt;\infty,\\
+ \Lambda_{\varphi_h}(x)&amp;=
+ \lim_n\Lambda_\varphi(xh^{1/2}p_n).
+ \end{split}
+ \tag{CPB28}
+\]</span>
+The difference of successive squared norms is the squared norm of the vector difference, by disjoint spectral density additivity, so the limit exists. The finite-star and finite linear domains are
+<span class="math" data-tex="\(\mathfrak n_{\varphi_h}\cap\mathfrak n_{\varphi_h}^*\)">\(\mathfrak n_{\varphi_h}\cap\mathfrak n_{\varphi_h}^*\)</span> and
+<span class="math" data-tex="\(\operatorname{span}\mathfrak n_{\varphi_h}^*\mathfrak n_{\varphi_h}\)">\(\operatorname{span}\mathfrak n_{\varphi_h}^*\mathfrak n_{\varphi_h}\)</span>.
+This states the full domain even if an uncut <span class="math" data-tex="\(xh^{1/2}\)">\(xh^{1/2}\)</span> is unbounded.</p>
+<p>CZ5–6 gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\varphi_h}=\operatorname{Ad}(h^{it})\sigma_t^\varphi,
+ \qquad (D\varphi_h:D\varphi)_t=h^{it}.
+ \tag{CPB29}
+\]">\[
+ \sigma_t^{\varphi_h}=\operatorname{Ad}(h^{it})\sigma_t^\varphi,
+ \qquad (D\varphi_h:D\varphi)_t=h^{it}.
+ \tag{CPB29}
+\]</span>
+Its proof first works on <span class="math" data-tex="\(p_nBp_n\)">\(p_nBp_n\)</span>, where the density and inverse are bounded, and then passes through normal maps along <span class="math" data-tex="\(p_nxp_n\to x\)">\(p_nxp_n\to x\)</span>. Centrality of the spectral projections of <span class="math" data-tex="\(h\)">\(h\)</span> makes <span class="math" data-tex="\(B_\varphi\subseteq B_{\varphi_h}\)">\(B_\varphi\subseteq B_{\varphi_h}\)</span>.</p>
+<p>Conversely suppose <span class="math" data-tex="\(B_\varphi\subseteq B_\psi\)">\(B_\varphi\subseteq B_\psi\)</span>. <a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a> constructs the normalized strongly continuous cocycle <span class="math" data-tex="\(u_t=(D\psi:D\varphi)_t\)">\(u_t=(D\psi:D\varphi)_t\)</span>, with
+<span class="math" data-tex="\(\sigma_t^\psi=\operatorname{Ad}(u_t)\sigma_t^\varphi\)">\(\sigma_t^\psi=\operatorname{Ad}(u_t)\sigma_t^\varphi\)</span>.
+Both groups fix every <span class="math" data-tex="\(x\in B_\varphi\)">\(x\in B_\varphi\)</span>, so <span class="math" data-tex="\(u_t x=xu_t\)">\(u_t x=xu_t\)</span>, and the relative-commutant assumption puts <span class="math" data-tex="\(u_t\in C_\varphi\)">\(u_t\in C_\varphi\)</span>. The old action is trivial there, so the cocycle law is <span class="math" data-tex="\(u_{s+t}=u_su_t\)">\(u_{s+t}=u_su_t\)</span>. <a href="OA-FLOW-RF.html#oa-flow.rf.5">RF5</a> gives <span class="math" data-tex="\(u_t=e^{itA}\)">\(u_t=e^{itA}\)</span> for a unique self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span>. A commutant unitary of <span class="math" data-tex="\(C_\varphi\)">\(C_\varphi\)</span> commutes with the group's Laplace resolvent, hence with <span class="math" data-tex="\(A\)">\(A\)</span> and its spectral projections by that generator construction. Thus
+<span class="math math-display" data-tex="\[
+ h=e^A&gt;0,\quad\ker h=0,\quad
+ h\text{ is affiliated with }C_\varphi,\qquad u_t=h^{it}.
+ \tag{CPB30}
+\]">\[
+ h=e^A&gt;0,\quad\ker h=0,\quad
+ h\text{ is affiliated with }C_\varphi,\qquad u_t=h^{it}.
+ \tag{CPB30}
+\]</span>
+The functional calculus defines <span class="math" data-tex="\(e^A\)">\(e^A\)</span> on its full squared-integral domain; <span class="math" data-tex="\(e^s\neq0\)">\(e^s\neq0\)</span> gives nonsingularity. No boundedness follows or is needed.</p>
+<p>The weight <span class="math" data-tex="\(\varphi_h\)">\(\varphi_h\)</span> has the same normalized cocycle by (CPB29). For whole-cone uniqueness, the BC4 chain law gives <span class="math" data-tex="\((D\psi:D\varphi_h)_t=1\)">\((D\psi:D\varphi_h)_t=1\)</span>. Therefore the off-diagonal element <span class="math" data-tex="\(1\)">\(1\)</span> in the balanced modular group has constant entire orbit. <a href="OA-FLOW-MA.html#oa-flow.ma.4">MA4, MA11</a>, applied to this element with half-strip value <span class="math" data-tex="\(1\)">\(1\)</span>, gives both inequalities
+<span class="math" data-tex="\(\psi(x)\leq\varphi_h(x)\)">\(\psi(x)\leq\varphi_h(x)\)</span> and <span class="math" data-tex="\(\varphi_h(x)\leq\psi(x)\)">\(\varphi_h(x)\leq\psi(x)\)</span> for every <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>, including infinity. Hence <span class="math" data-tex="\(\psi=\varphi_h\)">\(\psi=\varphi_h\)</span>. RF5's generator uniqueness gives uniqueness of <span class="math" data-tex="\(h\)">\(h\)</span>. Equal modular groups alone would lose a scalar; the normalized cocycle does not.</p>
+<p>Combining this conditional theorem with (CPB26) proves (CPB3). In fact no prior strictness assumption on a faithful NSF <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is needed when <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> has the stated type and is strictly semifinite. If <span class="math" data-tex="\(\psi=\varphi_h\)">\(\psi=\varphi_h\)</span>, it is strictly semifinite automatically: take the finite sums <span class="math" data-tex="\(e_F\)">\(e_F\)</span> of finite-<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> centralizer pieces and the cuts <span class="math" data-tex="\(p_n\)">\(p_n\)</span>. Since <span class="math" data-tex="\(h\)">\(h\)</span> is central in <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span>, the projections <span class="math" data-tex="\(e_Fp_n\)">\(e_Fp_n\)</span> increase jointly to <span class="math" data-tex="\(1\)">\(1\)</span>, lie in <span class="math" data-tex="\(M_\psi\)">\(M_\psi\)</span>, and satisfy <span class="math" data-tex="\(\psi(e_Fp_n)\leq n\varphi(e_F)&lt;\infty\)">\(\psi(e_Fp_n)\leq n\varphi(e_F)&lt;\infty\)</span>. For positive <span class="math" data-tex="\(x\in M_\psi\)">\(x\in M_\psi\)</span>, the elements <span class="math" data-tex="\(x^{1/2}e_Fp_nx^{1/2}\uparrow x\)">\(x^{1/2}e_Fp_nx^{1/2}\uparrow x\)</span> have finite weight by centralizer cyclicity. Thus <span class="math" data-tex="\(\psi|_{M_\psi}\)">\(\psi|_{M_\psi}\)</span> is semifinite, and WC.24–27 applies.</p>
+<p><span id="OA-FLOW.CMAS.MODEL"></span><a id="cp-model"></a></p>
+<h2 id="8-exact-finite-dimensional-model-of-the-flattening">8. Exact finite-dimensional model of the flattening</h2>
+<p>This matrix action illustrates the mechanism; it is not a type III factor. On <span class="math" data-tex="\(B=M_4(\mathbb C)\)">\(B=M_4(\mathbb C)\)</span>, with ordinary unnormalized trace, set
+<span class="math math-display" data-tex="\[
+ d=\operatorname{diag}\left(\tfrac12,-\tfrac12,\tfrac{13}2,\tfrac{11}2\right),
+ \quad D=e^d,\quad \varphi(x)=\operatorname{Tr}(Dx),\quad
+ \alpha_t(x)=e^{itd}xe^{-itd},\quad \mu=2.
+ \tag{CPB31}
+\]">\[
+ d=\operatorname{diag}\left(\tfrac12,-\tfrac12,\tfrac{13}2,\tfrac{11}2\right),
+ \quad D=e^d,\quad \varphi(x)=\operatorname{Tr}(Dx),\quad
+ \alpha_t(x)=e^{itd}xe^{-itd},\quad \mu=2.
+ \tag{CPB31}
+\]</span>
+The weight is faithful finite normal. All finite domains are the whole algebra and continuity is in norm. Its GNS space identifies with Hilbert–Schmidt matrices by <span class="math" data-tex="\(x\mapsto xD^{1/2}\)">\(x\mapsto xD^{1/2}\)</span>, and its full modular operator is <span class="math" data-tex="\(L_D R_{D^{-1}}\)">\(L_D R_{D^{-1}}\)</span>. Direct multiplication gives <span class="math" data-tex="\(\alpha_t(e_{ij})=e^{it(d_i-d_j)}e_{ij}\)">\(\alpha_t(e_{ij})=e^{it(d_i-d_j)}e_{ij}\)</span>. Thus the exact spectrum is <span class="math" data-tex="\(\{0,\pm1,\pm5,\pm6,\pm7\}\)">\(\{0,\pm1,\pm5,\pm6,\pm7\}\)</span>, missing <span class="math" data-tex="\([-4,-2]\cup[2,4]\)">\([-4,-2]\cup[2,4]\)</span>.</p>
+<p>The middle algebra is <span class="math" data-tex="\(Q=M_{\{1,2\}}\oplus M_{\{3,4\}}\)">\(Q=M_{\{1,2\}}\oplus M_{\{3,4\}}\)</span>, because exactly its matrix units have frequencies in <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>. The old centralizer and its center are both the diagonal algebra, since the <span class="math" data-tex="\(d_i\)">\(d_i\)</span> are distinct. Put
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ a=\operatorname{diag}\left(\tfrac12,-\tfrac12,\tfrac12,-\tfrac12\right),
+ \qquad k=e^{-a},\\
+ d-a=\operatorname{diag}(0,0,6,6),\\
+ \varphi_k(x)=\operatorname{Tr}\!\left(\operatorname{diag}(1,1,e^6,e^6)x\right).
+ \end{gathered}
+ \tag{CPB32}
+\]">\[
+ \begin{gathered}
+ a=\operatorname{diag}\left(\tfrac12,-\tfrac12,\tfrac12,-\tfrac12\right),
+ \qquad k=e^{-a},\\
+ d-a=\operatorname{diag}(0,0,6,6),\\
+ \varphi_k(x)=\operatorname{Tr}\!\left(\operatorname{diag}(1,1,e^6,e^6)x\right).
+ \end{gathered}
+ \tag{CPB32}
+\]</span>
+Then <span class="math" data-tex="\(a\)">\(a\)</span> is central in the old centralizer, has norm <span class="math" data-tex="\(1/2\leq\mu/2\)">\(1/2\leq\mu/2\)</span>, and implements <span class="math" data-tex="\(\alpha|_Q\)">\(\alpha|_Q\)</span>. The new action fixes <span class="math" data-tex="\(Q\)">\(Q\)</span>, has exact spectrum <span class="math" data-tex="\(\{0,-6,6\}\)">\(\{0,-6,6\}\)</span>, and has centralizer exactly <span class="math" data-tex="\(Q\)">\(Q\)</span>, as follows directly from its density. Its normalized cocycle is <span class="math" data-tex="\(k^{it}=e^{-ita}\)">\(k^{it}=e^{-ita}\)</span>. Every matrix unit has new frequency <span class="math" data-tex="\((d_i-d_j)-(a_i-a_j)\)">\((d_i-d_j)-(a_i-a_j)\)</span>; its actual displacement is at most <span class="math" data-tex="\(1\)">\(1\)</span>, within the proved general bound <span class="math" data-tex="\(\mu=2\)">\(\mu=2\)</span>. Old frequencies <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> move to zero, positive outer frequencies <span class="math" data-tex="\(5,6,7\)">\(5,6,7\)</span> to <span class="math" data-tex="\(6\)">\(6\)</span>, and negative ones to <span class="math" data-tex="\(-6\)">\(-6\)</span>.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact annuli, the two-sided shift, and the matrix frequencies" src="assets/central-perturbations/central-perturbations.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure.</em> The upper panel displays the containments (CPB4), (CPB11), (CPB13–15), with <span class="math" data-tex="\(\mu=2\)">\(\mu=2\)</span>. Shaded annuli exclude old frequencies; the punctured interval after correction is the proved new gap. The lower panel plots every distinct old frequency and its exact matrix-unit target in (CPB31–32). Its segments are not a spectral transport map for a general action. The formula <span class="math" data-tex="\(\beta_t=\operatorname{Ad}(e^{-ita})\alpha_t\)">\(\beta_t=\operatorname{Ad}(e^{-ita})\alpha_t\)</span> fixes the sign. Rational data and the original renderer reproduce PNG and SVG using the existing programme font without redistributing it.</p>
+<p><span id="OA-FLOW.CMAS.DIAGNOSTICS"></span><a id="cp-diagnostics"></a></p>
+<h2 id="9-solved-diagnostics">9. Solved diagnostics</h2>
+<p><strong>1. Why must the weight be nonzero?</strong> If <span class="math" data-tex="\(\varphi=0\)">\(\varphi=0\)</span>, then <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, its reduced centralizer and center are zero, and no nonzero <span class="math" data-tex="\(h\in(C_\varphi)_+\)">\(h\in(C_\varphi)_+\)</span> exists. The zero weight is excluded precisely from the nonzero perturbation conclusion.</p>
+<p><strong>2. Why not intersect nonzero central projections?</strong> In the matrix model <span class="math" data-tex="\(e_{11},e_{22}\)">\(e_{11},e_{22}\)</span> are nonzero central projections of the diagonal centralizer, yet <span class="math" data-tex="\(e_{11}e_{22}=0\)">\(e_{11}e_{22}=0\)</span>. They have a nonzero ambient bridge <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span>. Equations (CPB6–8) compare spectra through bridges; their directedness concerns frequency sets, not common subprojections.</p>
+<p><strong>3. What if the negative endpoint were <span class="math" data-tex="\(+\mu\)">\(+\mu\)</span>?</strong> Then <span class="math" data-tex="\((-\infty,\mu]\cup[\mu,\infty)=\mathbb R\)">\((-\infty,\mu]\cup[\mu,\infty)=\mathbb R\)</span>, leaving no gap. The actual displacement of <span class="math" data-tex="\((-\infty,-2\mu]\)">\((-\infty,-2\mu]\)</span> by <span class="math" data-tex="\([-\mu,\mu]\)">\([-\mu,\mu]\)</span> is <span class="math" data-tex="\((-\infty,-\mu]\)">\((-\infty,-\mu]\)</span>, exactly as in (CPB13–15).</p>
+<p><strong>4. What does the wrong perturbation sign do?</strong> In the upper-left <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> block, <span class="math" data-tex="\(d=a=\operatorname{diag}(1/2,-1/2)\)">\(d=a=\operatorname{diag}(1/2,-1/2)\)</span>. The correct <span class="math" data-tex="\(k=e^{-a}\)">\(k=e^{-a}\)</span> makes the density the identity and sends the <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> frequency <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>. Using <span class="math" data-tex="\(e^a\)">\(e^a\)</span> instead gives log density <span class="math" data-tex="\(2a\)">\(2a\)</span> and frequency <span class="math" data-tex="\(2\)">\(2\)</span>, doubling rather than cancelling the middle generator.</p>
+<p><strong>5. Why is the bounded implementer central?</strong> Mere membership <span class="math" data-tex="\(a\in N_0\)">\(a\in N_0\)</span> would not preserve the old centralizer. The proof uses both <span class="math" data-tex="\(a\in Q^\alpha=N_0\)">\(a\in Q^\alpha=N_0\)</span> and the fact that <span class="math" data-tex="\(\operatorname{Ad}(e^{ita})\)">\(\operatorname{Ad}(e^{ita})\)</span> fixes every <span class="math" data-tex="\(x\in N_0\)">\(x\in N_0\)</span>. Norm differentiation gives <span class="math" data-tex="\([a,x]=0\)">\([a,x]=0\)</span>, proving the missing centrality.</p>
+<p><strong>6. How are mixed terms removed in a block MASA?</strong> Commutation with every block identity gives <span class="math" data-tex="\(e_i x e_j=x e_i e_j=0\)">\(e_i x e_j=x e_i e_j=0\)</span> for <span class="math" data-tex="\(i\neq j\)">\(i\neq j\)</span>. Each diagonal entry lies in the corresponding ambient MASA, and bounded strong summation reconstructs <span class="math" data-tex="\(x\)">\(x\)</span>. The projections need not be central in <span class="math" data-tex="\(M\)">\(M\)</span>, so this applies to the noncentral finite pieces from strict semifiniteness.</p>
+<p><strong>7. Does bounded density order imply sandwich order?</strong> No. With <span class="math" data-tex="\(h=\operatorname{diag}(4,1)\)">\(h=\operatorname{diag}(4,1)\)</span> and <span class="math" data-tex="\(x=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\geq0\)">\(x=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+ 4x-h^{1/2}xh^{1/2}=\begin{pmatrix}0&amp;2\\2&amp;3\end{pmatrix}
+\]">\[
+ 4x-h^{1/2}xh^{1/2}=\begin{pmatrix}0&amp;2\\2&amp;3\end{pmatrix}
+\]</span>
+has determinant <span class="math" data-tex="\(-4\)">\(-4\)</span> and is not positive. The weight order in CZ1 uses centralizer cyclicity and finite-domain estimates, so (CPB16) is valid without this false operator inequality.</p>
+<p><strong>8. Where is a nonzero intersection justified for an affiliated density?</strong> In <span class="math" data-tex="\(L^\infty(0,\infty)\)">\(L^\infty(0,\infty)\)</span>, <span class="math" data-tex="\(d(s)=s\)">\(d(s)=s\)</span> has neither a bounded inverse nor a bounded upper bound. For <span class="math" data-tex="\(r=1_E\neq0\)">\(r=1_E\neq0\)</span>, the increasing union <span class="math" data-tex="\(E\cap[1/n,n]\)">\(E\cap[1/n,n]\)</span> equals <span class="math" data-tex="\(E\)">\(E\)</span> modulo null sets. One cut <span class="math" data-tex="\(f\)">\(f\)</span> is nonzero, and <span class="math" data-tex="\(d^{-1}f\)">\(d^{-1}f\)</span> lies between <span class="math" data-tex="\(1/n\)">\(1/n\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> on <span class="math" data-tex="\(f\)">\(f\)</span>. This is the exact exhaustion argument of (CPB21), compatible with Diagnostic 2.</p>
+<p><strong>9. Why is the density unique, not just unique up to scalar?</strong> If <span class="math" data-tex="\(\psi=c\varphi\)">\(\psi=c\varphi\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, the modular groups agree, but <span class="math" data-tex="\((D\psi:D\varphi)_t=c^{it}1\)">\((D\psi:D\varphi)_t=c^{it}1\)</span>. Equation (CPB30) recovers exactly <span class="math" data-tex="\(h=c1\)">\(h=c1\)</span>. The whole-cone equality uses this normalized cocycle.</p>
+<p><strong>10. Does the arbitrary NSF local theorem yield a finite state?</strong> The comparisons <span class="math" data-tex="\(m\varphi_f\leq\varphi_h\leq M\varphi_f\)">\(m\varphi_f\leq\varphi_h\leq M\varphi_f\)</span> preserve an infinite value at <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(\varphi(f)=\infty\)">\(\varphi(f)=\infty\)</span>, then <span class="math" data-tex="\(\varphi_h(f)=\infty\)">\(\varphi_h(f)=\infty\)</span>. The spectral proof still works without <span class="math" data-tex="\(\Lambda_\varphi(f)\)">\(\Lambda_\varphi(f)\)</span>. Finite mass enters the MASA proof only after strict semifiniteness supplies finite pieces.</p>
+<p><strong>11. Must a positive-type lacunary weight have a factorial centralizer?</strong> No. Take the earlier <a href="OA-FLOW-DDP.html#dd-existence">DDP fundamental-period generalized trace</a> <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, with <span class="math" data-tex="\(N=M_\rho\)">\(N=M_\rho\)</span>, and complementary nonzero projections <span class="math" data-tex="\(p,q\in N\)">\(p,q\in N\)</span>. Set <span class="math" data-tex="\(b=p+\lambda^{1/2}q\)">\(b=p+\lambda^{1/2}q\)</span>. On a degree-<span class="math" data-tex="\(n\)">\(n\)</span> block <span class="math" data-tex="\(p_iMp_j\)">\(p_iMp_j\)</span>, the modular multiplier for <span class="math" data-tex="\(\rho_b\)">\(\rho_b\)</span> is <span class="math" data-tex="\((b_i/b_j)^{it}\lambda^{int}\)">\((b_i/b_j)^{it}\lambda^{int}\)</span>. A mixed block would require an integer to equal a half-integer in order to be fixed. <a href="OA-FLOW-DDP.html#dd-recognition">DDP's Fourier reconstruction</a> therefore gives <span class="math" data-tex="\(M_{\rho_b}=pNp\oplus qNq\)">\(M_{\rho_b}=pNp\oplus qNq\)</span>. Its frequencies lie in <span class="math" data-tex="\(\tfrac12(\log\lambda)\mathbb Z\)">\(\tfrac12(\log\lambda)\mathbb Z\)</span>, so it is lacunary, while <span class="math" data-tex="\(\sigma_T^{\rho_b}=\operatorname{Ad}(p-q)\neq\mathrm{id}\)">\(\sigma_T^{\rho_b}=\operatorname{Ad}(p-q)\neq\mathrm{id}\)</span>. If both projections are properly infinite, this centralizer is properly infinite but nonfactorial. This explains why the following normal-form lesson must specify its reference rather than infer factoriality from lacunarity.</p>
+<p><span id="OA-FLOW.CMAS.SOURCES"></span><a id="cp-sources"></a></p>
+<h2 id="10-further-reading">10. Further reading</h2>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Chapter XII, §4, Definition 4.6 and Lemmas 4.7–4.9, printed pp.407–410, <a href="https://doi.org/10.1007/978-3-662-10451-4">DOI</a>, gives the strict-semifiniteness, ambient-MASA, local perturbation and central-density statements. The opening convention on p.403 concerns separable algebras and defines modular objects of a possibly nonfaithful weight on its support corner.</p>
+<p>For the central-annulus step on p.409, equations (CPB5–8) give the prescribed-corner localization and the exact compactness argument. The bounded implementer must be central in the old centralizer, as proved after (CPB10). The outside negative endpoint is <span class="math" data-tex="\(-\mu\)">\(-\mu\)</span> in (CPB15); the moment on p.408 is <span class="math" data-tex="\(\int e^{-s}\,d\nu_x(s)\)">\(\int e^{-s}\,d\nu_x(s)\)</span>, as in (CPB22). The local perturbation assertion requires a nonzero input weight.</p>
+<p>The discrete-normal-form statements beginning on p.410 require further results about coefficient densities, their exact centralizers, Fourier rigidity and carrier bands. In positive type the fundamental-period reference must be specified: Diagnostic 11 explains why lacunarity and infinite multiplicity alone do not imply a factorial centralizer. Those additional normalization results are separate from the central perturbation and centralizer-density theorems proved here.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-TP.html">Previous lesson</a><a href="OA-FLOW-SMULT.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CMAS.md">Lesson source</a></nav></main></body></html>

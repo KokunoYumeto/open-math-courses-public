@@ -4,7 +4,7 @@
 
 The freely accessible sources are D. H. Fremlin, [*Measure Theory*, §445A–B, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), and Terence Tao, [245C, Notes 2, Definition 8 and Exercises 9–11](https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/), dated 6 April 2009. Source hints and elementary auxiliary claims are proved below. The earlier programme proofs we use are [compactness and elementary calculus](../prerequisites/src/banach-spectrum.md), [compact cutoffs and representation](../prerequisites/src/finite-radon-representation.md), [uniform approximation](../prerequisites/src/uniform-approximation.md), [integration](../prerequisites/src/integration-and-l1.md), and [Haar measure](../prerequisites/src/haar-measure.md).
 
-Adaptation and new exposition: GPT-6 Astra (OpenAI), Ultra, October 2026; checked by its author. This combined lesson is under the [Design Science License](../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's original copyright 1998 and source notices are retained in the original source package.
+Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's original copyright 1998 and source notices are retained in the original source package.
 
 ## 1. The topology of frequencies
 

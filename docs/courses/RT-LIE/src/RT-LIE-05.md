@@ -377,5 +377,5 @@ Every classification, multiplicity, tensor-product and Verma-module assertion ma
 
 ## References
 
-- **[Milne]** J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, corrected 2021 text, published 2022, §§20g and 20k. These describe \(SL_2\) and its torus and root subgroups; the Lie-module proofs are provided here. [Author's corrected 2021 edition](https://www.jmilne.org/math/Books/AG.pdf).
+- **[Milne]** J. S. Milne, *Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field*, corrected 2021 text, published 2022, §§20g and 20k. These describe \(SL_2\) and its torus and root subgroups; the Lie-module proofs are provided here. [Author's corrected 2021 edition](https://www.jmilne.org/math/Books/iAG2022.pdf).
 - **[Kirillov]** A. Kirillov Jr., *An Introduction to Lie Groups and Lie Algebras*, §4.8, especially Theorems 4.59–4.60. The weight-reversal operator names in the latter are corrected in (3.2). [Author's notes](https://math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf).

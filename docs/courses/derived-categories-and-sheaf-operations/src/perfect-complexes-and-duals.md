@@ -1,6 +1,6 @@
 # Perfect complexes and duals on a ringed space
 
-*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the [course notice](../LICENCE.md).*
+*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original text: public domain (CC0). Authorship and sources are listed in the [course notice](../LICENCE.md).*
 
 A perfect complex is locally a finite calculation with finite projective coefficients. This finiteness has two complementary descriptions: arbitrarily accurate finite approximations, together with a bound on the degrees that tensor products can create; and a dual that permits evaluation and coevaluation. We prove the equivalence on arbitrary ringed spaces. Local rings simplify the models, but are not a hypothesis of the main theorem.
 
@@ -8,7 +8,7 @@ The prerequisites are [Flat modules and K-flat resolutions](flat-modules-and-k-f
 
 Throughout, \(\mathcal O=\mathcal O_X\) is commutative and unital, and all derived categories are unbounded. Write \([K,L]=R\mathcal Hom(K,L)\). A “finite projective sheaf” here means a direct summand of \(\mathcal O^r\) for finite \(r\); a “locally finite projective sheaf” has that property on an open cover. Bounds stated locally need not be uniform on the space.
 
-The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Strictly perfect complexes”, “Pseudo-coherent modules”, “Tor dimension”, “Perfect complexes” and “Duals”, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). We prove the finite-model criterion and duality, including the finite-cell argument needed for the converse. Source attribution and the licence for adapted passages appear in the [course notice](../LICENCE.md).
+The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Strictly perfect complexes”, “Pseudo-coherent modules”, “Tor dimension”, “Perfect complexes” and “Duals”, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). We prove the finite-model criterion and duality, including the finite-cell argument needed for the converse. Source attribution appears in the [course notice](../LICENCE.md).
 ## 1. Finite models and local maps
 
 A complex is **strictly perfect** if it is bounded and each term is finite projective. An object is **perfect** if, on an open cover, it is isomorphic in the derived category to a strictly perfect complex. Cones, shifts and tensor products of strictly perfect complexes are strictly perfect: in each degree only finitely many summands occur; a tensor product of summands of \(\mathcal O^r\) and \(\mathcal O^s\) is a summand of \(\mathcal O^{rs}\). Pullback preserves these splittings.

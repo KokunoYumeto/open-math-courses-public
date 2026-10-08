@@ -7,9 +7,11 @@
 
 A modified wave operator follows a long-range phase and sends a free state to an interacting state. Its construction preserves the norm. Completeness asks a further question: does every state orthogonal to the eigenvectors arise this way? We answer it by comparing waves with a stationary transform on one energy band at a time. A short Hilbert-space argument then turns an isometry into an explicit formula for the missing preimage.
 
-Read [Admissible differential perturbations](admissible-differential-perturbations.md) for the precise coefficient class and [Limiting absorption for long-range differential perturbations](limiting-absorption-for-long-range-differential-perturbations.md) for real-energy resolvents. [Truncated operators and stable scattering amplitudes](truncated-operators-and-stable-scattering-amplitudes.md) proves the approximation of their local amplitudes. The normalized actions are constructed in [Escaping Lagrangians on regular energy surfaces](escaping-lagrangians-on-regular-energy-surfaces.md) and [Generating functions and the end of a localized force](generating-functions-and-the-end-of-a-localized-force.md). For the time-dependent construction, use [Smooth long-range phases from Hamilton trajectories](smooth-long-range-phases-from-hamilton-trajectories.md) and [Modified waves and the direction of escape](modified-waves-and-the-direction-of-escape.md).
+Read [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-coefficient-class) for the precise coefficient class and [Limiting absorption for long-range differential perturbations](limiting-absorption-for-long-range-differential-perturbations.md#lap-theorem) for real-energy resolvents. [Truncated operators and stable scattering amplitudes](truncated-operators-and-stable-scattering-amplitudes.md#truncation-amplitudes) proves the approximation of their local amplitudes. The normalized actions are constructed in [Escaping Lagrangians on regular energy surfaces](escaping-lagrangians-on-regular-energy-surfaces.md) and [Generating functions and the end of a localized force](generating-functions-and-the-end-of-a-localized-force.md#generator-free-end). For the time-dependent construction, use [Smooth long-range phases from Hamilton trajectories](smooth-long-range-phases-from-hamilton-trajectories.md#phase-global-extension) and [Modified waves and the direction of escape](modified-waves-and-the-direction-of-escape.md#modified-wave-existence).
 
-The stationary prerequisites are [Global radiation and flux](global-radiation-and-flux.md) for the canonical free Fourier trace, [Distorted Fourier transforms and spectral density](distorted-fourier-transforms-and-spectral-density.md), Lemma 1.1 and Section 2, for continuous-test spectral inversion and measurable assembly, and [The full compact-force stationary comparison](truncated-operators-and-stable-scattering-amplitudes.md#14-the-full-compact-force-stationary-comparison) for the actual truncated operators. That last proof includes changes to the highest coefficients. The earlier compact-graph short-range theorem alone would not cover them. The arbitrary-self-adjoint measure and exact domain are proved in [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain), through the complete bundled unitary and Cayley-transform proofs, with no lower-bound or separability assumption. [Wave operators and modified phases](wave-operators-and-modified-phases.md), Section 1, proves the group and generator criterion and then the scattering identities. The finiteness of polynomial critical values is proved in [Polynomial translations and regular energies](polynomial-translations-and-regular-energies.md). Fourier inversion and Plancherel are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization); coarea is proved in [Coordinate integration, CI7](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-integration); bounded Hilbert functionals are represented in [Elementary Hilbert tools](../providers/analysis/finite-trace-ideals.md#elementary-hilbert-tools). The outgoing and Cook integrals use [Hilbert-valued integration](../providers/analysis/hilbert-valued-integration.md), with its norm bounds and tail limits. Section 6 recovers the comparison multiplier by a strong-limit argument and also proves the scalar \(L^1\) representation for the alternative weak-star argument. The freely accessible references have distinct roles: Hörmander [H76] treats differential-polynomial phase construction and wave existence, while Yafaev [Y] gives a long-range Schrödinger comparison and the free author texts of Teschl [T] and Oh [O] supply spectral and analytic context. None replaces a programme proof of the complete differential-polynomial statement below.
+The stationary prerequisites are [Global radiation and flux](global-radiation-and-flux.md#global-trace-extension) for the canonical free Fourier trace, [Distorted Fourier transforms and spectral density](distorted-fourier-transforms-and-spectral-density.md#distorted-poisson), Lemma 1.1 and Section 2, for continuous-test spectral inversion and measurable assembly, and [The full compact-force stationary comparison](truncated-operators-and-stable-scattering-amplitudes.md#compact-force-setting) for the actual truncated operators. That last proof includes changes to the highest coefficients. The earlier compact-graph short-range theorem alone would not cover them. The arbitrary-self-adjoint measure and exact domain are proved in [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain), through the complete bundled unitary and Cayley-transform proofs, with no lower-bound or separability assumption. [Wave operators and modified phases](wave-operators-and-modified-phases.md), Section 1, proves the group and generator criterion and then the scattering identities. The finiteness of polynomial critical values is proved in [Polynomial translations and regular energies](polynomial-translations-and-regular-energies.md#polynomial-critical-values). Fourier inversion and Plancherel are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization); coarea is proved in [Coordinate integration, CI7](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-integration); bounded Hilbert functionals are represented in [Elementary Hilbert tools](../providers/analysis/finite-trace-ideals.md#elementary-hilbert-tools). The outgoing and Cook integrals use [Hilbert-valued integration](../providers/analysis/hilbert-valued-integration.md), with its norm bounds and tail limits. Section 6 recovers the comparison multiplier by a strong-limit argument and also proves the scalar \(L^1\) representation for the alternative weak-star argument. The freely accessible references have distinct roles: Hörmander [H76] treats differential-polynomial phase construction and wave existence, while Yafaev [Y] gives a long-range Schrödinger comparison and the free author texts of Teschl [T] and Oh [O] supply spectral and analytic context. None replaces a programme proof of the complete differential-polynomial statement below.
+
+<a id="spectral-completeness-setting"></a>
 
 ## 1. The complete range
 
@@ -34,6 +36,8 @@ These are self-adjoint realizations. Let \(W(\xi,t)\) be the real global phase c
 
 Let \(\mathcal H_{\mathrm{pp}}\) be the closed span of **all** eigenvectors of \(H\), including any eigenvectors at critical energies.
 
+The completeness, scattering and scalar-modifier conclusions are Hörmander [H4, Theorem 30.5.10]. We give the spectral assembly and multiplier arguments explicitly, retaining the full coefficient class.
+
 **Theorem 1.1 (completeness).** The operator \(H\) has no singular continuous spectrum, and
 
 \[
@@ -57,7 +61,11 @@ vanish on \(\mathcal H_{\mathrm{pp}}\) and are unitary from its orthogonal compl
 
 We first isolate the norm argument. We then construct its stationary and time-dependent inputs, and finally pass from compact energy bands to the full space.
 
+<a id="spectral-completeness-rigidity"></a>
+
 ## 2. A contraction becomes onto
+
+This norm argument isolates the final bandwise step in Hörmander [H4, p. 329, following (30.5.42)′].
 
 **Lemma 2.1.** Let \(J:\mathcal H\to L^2(X)\) satisfy \(J^*J=P\), where \(P\) is an orthogonal projection. Let \(M\) be scalar multiplication with \(|M|\le1\). Suppose an isometry \(U:L^2(X)\to\mathcal H\) satisfies \(U=J^*M\). Then \(|M|=1\) almost everywhere, \(U\) maps onto \(P\mathcal H\), and \(J\) is unitary from \(P\mathcal H\) to \(L^2(X)\). Here \(X\) is a sigma-finite measure space.
 
@@ -78,6 +86,8 @@ Consequently the integral of \((1-|M|^2)|q|^2\) is zero. Test characteristic fun
 Also \(J^*=PJ^*\), so every image lies in \(P\mathcal H\). This proves the range assertion. Since multiplication by \(M\) is onto and \(U\) is an isometry, \(J^*\) is an isometry on all of \(L^2(X)\). Thus \(JJ^*=1\), completing the proof. ∎
 
 This lemma explains the main task. We need a stationary map with the exact band norm, a strong limit of the waves, and a comparison multiplier bounded by one. A weak limit of phases can have smaller modulus; the isometry is what excludes that loss.
+
+<a id="spectral-completeness-channels"></a>
 
 ## 3. Read a stationary transform from the outgoing channels
 
@@ -135,6 +145,8 @@ In a positive chart write \(x=(s,z)\), \(\xi=(\xi_1,\eta)\), and express the she
 
 Here \(T_\lambda\) is the canonical trace defined by completion from Schwartz forcing. It is not restriction of an arbitrary ambient \(L^2\) representative.
 
+<a id="spectral-completeness-free-trace"></a>
+
 Outside the finite force, the local phase has the exact value \(G_j(s,\eta)=sE_\lambda(\eta)-\psi_{\infty,j}(E_\lambda(\eta),\eta)\). For free forcing \(f_0\), the positive outgoing integral yields
 
 \
@@ -178,11 +190,19 @@ Indeed the graph surface factor is \(g/v_\nu\). On the compact chart \(v_\nu\) i
  \tag{15}
 \]
 
-Thus there is one strong shell limit \(F_If\). Its overlaps agree because the finite-\(j\) functions already agree. It is norm continuous under fixed local \(L^2(\eta)\) trivializations: the finite-\(j\) canonical trace and forcing depend continuously on energy, their phase is smooth, and the convergence is locally uniform. All formulas apply to reflected negative coordinate directions. In dimension one the transverse space is \(\mathbb C\) and shell surface measure is counting measure.
+Thus there is one strong shell limit \(F_If\). Its overlaps agree because the finite-\(j\) functions already agree. It is norm continuous under fixed local \(L^2(\eta)\) trivializations: the finite-\(j\) canonical trace and forcing depend continuously on energy, their phase is smooth, and the convergence is locally uniform. For the trace continuity just used, work in a fixed compact chart. At a chosen energy approximate the \(B\)-valued forcing by a single Schwartz function. Strong continuity of the forcing and the common canonical trace bound control the approximation uniformly at nearby energies. The trace of the fixed Schwartz function on the smoothly varying graph is continuous in \(L^2(d\eta)\) by dominated convergence on the compact coordinate support. Choosing the approximation first proves the asserted continuity for the original forcing. This uses the [trace extension](global-radiation-and-flux.md#global-trace-extension) and [measurable assembly](distorted-fourier-transforms-and-spectral-density.md#distorted-measurable-assembly) with their actual hypotheses.
+
+All formulas apply to reflected negative coordinate directions. In dimension one the transverse space is \(\mathbb C\) and shell surface measure is counting measure.
+
+<a id="spectral-completeness-assembly"></a>
+
+The shell assembly, flux and band norm are Hörmander [H4, (30.5.38)–(30.5.40)]. The constants below use the unitary Fourier convention fixed in this lesson.
 
 ## 4. Flux gives the exact band norm
 
 We must assemble the shell values measurably before using coarea. For fixed \(f\in B\), each \(F_jf\) has the canonical measurable representative of the short-range transform, multiplied by its smooth phase. Select a subsequence whose successive shell \(L^2\) differences have summable norms, uniformly in \(\lambda\in I\). On every fixed shell, Minkowski's inequality bounds the \(L^2\) norm of the sum of their absolute differences by this summable series. Monotone convergence shows that the pointwise series converges almost everywhere on that shell. Define \(F_If\) by this pointwise limit, and set it to zero where convergence fails. It is measurable and represents the strong limit on **each** shell. Coarea then identifies its ambient \(L^2\) class. This construction prevents ambient null-set choices from silently changing prescribed shell values.
+
+<a id="spectral-completeness-flux"></a>
 
 Symmetry gives a real value for \((u_j,V_ju_j)\). To justify this for a boundary solution, use the compact \(H^m\) function \(\rho_ju_j\). The expression equals its symmetric \(V\) quadratic form; local coefficient products and \(H^m\) approximation justify the identity. The exact free forcing-flux identity, together with (11), consequently gives
 
@@ -222,6 +242,8 @@ The second equality is coarea. Define \(J_If=F_If\) on the band and zero elsewhe
 
 At this stage surjectivity is not assumed.
 
+<a id="spectral-completeness-borel"></a>
+
 We also need spectral intertwining. The same continuous-test identity, followed by polarization, gives \(J_I^*\chi(P_0)J_I=\chi(H)P_I\) for real continuous \(\chi\) on \(I\). Use it again for \(\chi^2\). Expanding the squared norm of \(\chi(P_0)J_If-J_I\chi(H)P_If\) makes the two squared terms and the cross term the same spectral integral. The result is zero. Here is the Borel extension explicitly. Continuous functions bounded by one approximate the indicator of an open interval relative to \(I\), and dominated convergence in both spectral measures passes the operator identity to that indicator. The class of sets whose indicators intertwine is closed under complements relative to \(I\), intersections by multiplying their identities, and countable disjoint unions by strong additivity. Disjointifying a general countable union therefore makes it a sigma algebra containing the relatively open intervals, hence all Borel sets of \(I\). Bounded simple approximations, followed by dominated convergence, give every bounded Borel function. Consequently
 
 \[
@@ -247,6 +269,10 @@ Write the regularized real-left splitting as \(V=L^{\mathrm r}+S^{\mathrm r}\). 
 
 The same constants, enlarged once, work for all \(j\). Their short coefficients have a common positive gap \(\kappa=\min(\delta_0,\epsilon_0)>0\): on each unit ball centered at \(y\), their \(L^2\) norm is at most \(C\langle y\rangle^{-1-\kappa}\). Here \(\epsilon_0\) is the positive short-range gap of the splitting. This follows from the local \(L^p\) bounds with \(p\ge2\); no derivative of a rough short coefficient is used.
 
+<a id="spectral-completeness-common-phases"></a>
+
+The finite-force comparison is Hörmander [H4, (30.5.41)–(30.5.44)]. The proof below supplies common choices for the phase construction and an explicit uniform Cook tail.
+
 **Lemma 5.1 (common modifiers and wave convergence).** The global phases \(W_j,W\) can be constructed with one common choice of exhaustion, cutoffs and restart times. For any compact regular-frequency set \(K\) and finite \(S\),
 
 \[
@@ -264,11 +290,13 @@ For either sign, the corresponding modified waves converge strongly:
  \tag{23}
 \]
 
-**Proof.** Use the global phase construction of *Smooth long-range phases from Hamilton trajectories*. Choose the frequency exhaustion, spatial and velocity buffers, and all smooth cutoffs once for the family. At each finite restart step the contraction threshold and inverse-action derivative bounds depend on common coefficient bounds and the finitely many preceding data bounds. These are uniform by induction. Choose the restart time uniformly and also larger than its index. This yields common late-time thresholds and common phase derivative bounds on each compact regular-frequency set.
+**Proof.** Use the [restart construction](smooth-long-range-phases-from-hamilton-trajectories.md#phase-restarted-graph), [exact overlap agreement](smooth-long-range-phases-from-hamilton-trajectories.md#phase-exact-gluing) and [locally finite global extension](smooth-long-range-phases-from-hamilton-trajectories.md#phase-global-extension). Choose the frequency exhaustion, spatial and velocity buffers, and all smooth cutoffs once for the family. At each finite restart step the contraction threshold and inverse-action derivative bounds depend on common coefficient bounds and the finitely many preceding data bounds. These are uniform by induction. Choose the restart time uniformly and also larger than its index. This yields common late-time thresholds and common phase derivative bounds on each compact regular-frequency set.
 
 For fixed \(K,S\), only finitely many factors of the smooth extension are active. Every action in this finite prefix uses finitely many trajectories and preceding initial action values, with times bounded by the relevant fixed restart times. The compact enlarged frequency sets and common trajectory bounds put all those finite paths in one position ball. Once \(j\) exceeds its radius, the long coefficients and all their jets agree with the untruncated coefficients there. Induct through the restarts: the free initial actions agree; their cutoff initial values agree; uniqueness gives identical trajectories, inverses and integrated actions. Exact overlap agreement and the common final extension give (22), including its additive phase constants and early-time values. No one radius for the infinite exhaustion is asserted.
 
-Let \(\widehat u\in C_c^\infty(K)\). The short coefficients' cone envelope is at most \(Cr^{-1-\kappa}\) in every cone. The concentration estimate in *Modified waves and the direction of escape* uses finitely many common phase jets. Its estimates away from the escape cone use a common weighted square-integrability bound on the rough coefficients. The finite-derivative \(L^2\) estimates for the long residual also use common seminorms. The actual packet residual therefore satisfies, on a sufficiently late half-line,
+<a id="spectral-completeness-wave-limit"></a>
+
+Let \(\widehat u\in C_c^\infty(K)\). The short coefficients' cone envelope is at most \(Cr^{-1-\kappa}\) in every cone. The [concentration estimate](modified-waves-and-the-direction-of-escape.md#modified-wave-concentration) uses finitely many common phase jets. Its estimates away from the escape cone use a common weighted square-integrability bound on the rough coefficients. The [rough coefficient bound](modified-waves-and-the-direction-of-escape.md#modified-wave-rough-coefficients) and [finite-derivative bound for the long residual](modified-waves-and-the-direction-of-escape.md#modified-wave-finite-derivative-budget) also use common seminorms. The actual packet residual therefore satisfies, on a sufficiently late half-line,
 
 \[
  \begin{aligned}
@@ -281,7 +309,9 @@ Let \(\widehat u\in C_c^\infty(K)\). The short coefficients' cone envelope is at
 
 where \(\delta>0\) is a fixed smaller phase exponent. All constants and the starting threshold are independent of \(j\). The domain and graph-continuity product rule is the one proved in that prerequisite. Cook integration gives a common tail \(C_u(R^{-\kappa}+R^{-\delta}+R^{-1})\).
 
-Split the difference of the limiting waves into these two tails and the comparison at the fixed time \(\sigma R\). Choose \(R\) large first. Formula (22) makes the Fourier modifiers equal on the packet for large \(j\), and the truncation theorem's strong finite-time group convergence compares \(e^{i\sigma RH_j}\) with \(e^{i\sigma RH}\). Then choose \(j\) large. This proves (23) on dense packets; isometry extends it to all \(L^2\). The same cone bounds hold for both signed directions. ∎
+Split the difference of the limiting waves into these two tails and the comparison at the fixed time \(\sigma R\). Choose \(R\) large first. Formula (22) makes the Fourier modifiers equal on the packet for large \(j\), and the [strong finite-time group convergence](truncated-operators-and-stable-scattering-amplitudes.md#truncation-groups) compares \(e^{i\sigma RH_j}\) with \(e^{i\sigma RH}\). Then choose \(j\) large. This proves (23) on dense packets; isometry extends it to all \(L^2\). The same cone bounds hold for both signed directions. ∎
+
+<a id="spectral-completeness-compact-end"></a>
 
 For fixed \(j\), the long force vanishes outside a bounded ball. Its phase position obeys \(\partial_\xi W_j=t\nabla P_0+O(|t|^{1-\delta})\), and therefore eventually leaves this ball on each compact regular-frequency set. The Hamilton–Jacobi equation then becomes \(W_{j,t}=P_0\) exactly. At positive time there is a smooth real function \(\phi_j\) such that
 
@@ -314,13 +344,15 @@ The full compact-force comparison in Section 14 of the truncation lesson proves 
 
 Here \(J_I^{(j)}v=F_jv\) on the band and is zero off it. To check the sign, \(J_j^{\mathrm{short}}v=e^{-i\psi_{\infty,j}}F_jv\); moving that factor from the second entry to the first changes \(e^{-i\phi_j}\) into \(e^{i(\psi_{\infty,j}-\phi_j)}\).
 
-There is a direct strong-limit construction of the multiplier. Work on the free band space \(K=Q_IL^2(d\xi)\), and write \(U_jq=\mathcal W_{j,+}\mathcal F^{-1}q\), \(Uq=\mathcal W_+\mathcal F^{-1}q\). The matching identity \(J_j^{\mathrm{short}}\mathcal W_{j,+}^{\mathrm{short}}=\mathcal F\) is proved in Section 14 of the truncation lesson for the full compact-force class. Its damped-integral argument uses the bounded inverse obtained from full radiation uniqueness, rather than importing the compact-graph hypothesis of the earlier short-range theorem. Together with (9), (26), and the free-band spectral intertwining, this gives
+<a id="spectral-completeness-strong-multiplier"></a>
+
+There is a direct strong-limit construction of the multiplier. Work on the free band space \(K=Q_IL^2(d\xi)\), and write \(U_jq=\mathcal W_{j,+}\mathcal F^{-1}q\), \(Uq=\mathcal W_+\mathcal F^{-1}q\). The matching identity \(J_j^{\mathrm{short}}\mathcal W_{j,+}^{\mathrm{short}}=\mathcal F\) is proved in Section 14 of the truncation lesson for the full compact-force class. Its [damped-integral comparison](truncated-operators-and-stable-scattering-amplitudes.md#compact-force-comparison) uses the [bounded inverse obtained from full radiation uniqueness](truncated-operators-and-stable-scattering-amplitudes.md#compact-force-factorization), retaining every highest-order coefficient product. Together with (9), (26), and the free-band spectral intertwining, this gives
 
 \[
  J_I^{(j)}U_jq=M_jq,\qquad q\in K.
 \]
 
-Each \(J_I^{(j)}\) is a contraction: its band norm is \(\|E_{H_j}(I)v\|\). The uniform shell convergence and coarea first give \(J_I^{(j)}v\to J_Iv\) for \(v\in B\). Density and the common contraction bound extend this strong convergence to every fixed \(v\in L^2\). In particular, for each \(q\in K\),
+Each \(J_I^{(j)}\) is a contraction: its band norm is \(\|E_{H_j}(I)v\|\). The [uniform amplitude convergence](truncated-operators-and-stable-scattering-amplitudes.md#truncation-amplitudes), the shell conversion (13)–(14) and coarea first give \(J_I^{(j)}v\to J_Iv\) for \(v\in B\). Density and the common contraction bound extend this strong convergence to every fixed \(v\in L^2\). In particular, for each \(q\in K\),
 
 \[
  \begin{aligned}
@@ -338,6 +370,10 @@ This uses the stationary convergence on the fixed vector \(Uq\); it does not ass
 Thus the squared-error sum is finite almost everywhere, its summands tend to zero, and the unit moduli give \(|M|=1\) almost everywhere on the band. This also proves the precise strong-\(L^2\)-to-pointwise-subsequence fact used below. All \(M_j\) commute with multiplication by measurable indicators, and strong limits preserve that commutation. Hence \(T1_A=1_AM\) for every measurable \(A\subset K_I\). Finite simple functions and \(L^2\) approximation give \(Tq=Mq\) for all \(q\in K\). This identifies the whole sequence's strong limit; the almost-everywhere subsequence was used only to identify its modulus.
 
 Pass (27) using this strong multiplier convergence, strong wave convergence, and strong convergence of \(J_I^{(j)}v\). Cauchy–Schwarz controls both pairing errors, first for \(v\in B\) and then by density for every \(v\). This already proves (28), with a unit multiplier. Smooth packets supported in the interior of the free band are dense in \(K\): each endpoint shell is a null set by its regular-energy coordinates. Thus no endpoint component is lost when extending the pairing identity.
+
+<a id="spectral-completeness-weak-multiplier"></a>
+
+The weak multiplier passage is the method in Hörmander [H4, p. 329, (30.5.42)′–(30.5.42)″].
 
 For completeness, the following alternative scalar compactness argument obtains a contractive multiplier before norm rigidity identifies its modulus. It is useful when only the pairing identity (27), rather than the direct finite-force composition identity, is available. The restrictions to \(K_I\) of finite simple functions on rational coordinate boxes, with rational complex coefficients, form a countable dense family in \(L^1(K_I)\): truncate an integrable function in value, approximate it by a simple function, and approximate its finite-measure level sets by finite unions of boxes. The complete finite-measure box approximation and Euclidean product proof is in [Euclidean measure and products](../providers/analysis/finite-derivative-l2.md#euclidean-products). Approximating the finitely many bounded box endpoints by rational endpoints makes their total symmetric-difference volume arbitrarily small; rational complex coefficients then give the stated countable density. The selected scalar simple-density, subsequence and completeness proofs are also freely available in [Hunter, Measure Theory, Sections 7.3–7.4](https://www.math.ucdavis.edu/~hunter/measure_theory/measure_notes.pdf#page=85), Theorem 7.8, Lemma 7.9, Theorem 7.10 and Corollary 7.11.
 
@@ -370,6 +406,8 @@ The alternative passage needs no pointwise or strong convergence of \(M_j\). App
 
 Both constructions give the same multiplier: Lemma 2.1 makes \(J_I^*\) injective on the band space, so (28) identifies their action on every band vector. In particular the direct argument proves strong convergence of the whole sequence \(M_j\), while the alternative scalar extraction suffices for completeness without that stronger conclusion.
 
+<a id="spectral-completeness-band-preimage"></a>
+
 For any \(v=P_Iv\), its concrete free preimage is
 
 \[
@@ -387,6 +425,8 @@ Conversely spectral intertwining of the waves puts every free band image in \(P_
 \]
 
 The Hamilton starting time and action normalization may depend on \(I\). They can change \(J_I\) and \(M\), but their product in (31) is fixed by the chosen global wave. This is sufficient for agreement between bands; a single Hamilton starting time over all energies is unnecessary.
+
+<a id="spectral-completeness-spectral-parts"></a>
 
 ## 7. Good energies account for the whole continuous space
 
@@ -411,9 +451,11 @@ A noneigenvalue singleton contributes zero, even at a critical value. Eigenvecto
 
 The free polynomial has wholly absolutely continuous spectrum. Its critical set is null: it is contained in the zero set of a nonzero polynomial partial derivative. Near every other frequency, a nonzero partial derivative gives local energy coordinates. The inverse image of a scalar null set is null there by Fubini and change of variables. A countable chart cover proves the assertion on all momentum space. The wave spectral intertwining therefore places the range in \(E_H(\Omega)L^2\).
 
-Take increasing finite unions of compact good intervals exhausting \(\Omega\). Formula (30) puts every vector in the corresponding \(H\) spectral subspace in the wave range. These subspaces have dense union in \(E_H(\Omega)L^2\). The range is closed because the wave is an isometry. This proves positive-time completeness. If a good interval has an empty free band, its shell norm in (17) is zero and inversion gives \(P_I=0\); there is no omitted channel.
+<a id="spectral-completeness-full-range"></a>
 
-For negative time apply the same construction to \(-H\) and \(-P_0\), using \(\widetilde W(\xi,s)=W(\xi,-s)\). Its positive-time wave is the original negative-time wave. The boundary solutions correspond through
+Take increasing finite unions of compact good intervals exhausting \(\Omega\). Explicitly, enumerate all closed intervals with rational endpoints contained in \(\Omega\), and take the union of the first \(N\). Every point of the open set lies inside one such interval. Merging overlapping intervals expresses each finite union as finitely many disjoint compact good intervals, so the band argument applies to each component. Formula (30) puts every vector in the corresponding \(H\) spectral subspace in the wave range. These subspaces have dense union in \(E_H(\Omega)L^2\). The range is closed because the wave is an isometry. This proves positive-time completeness. If a good interval has an empty free band, its shell norm in (17) is zero and inversion gives \(P_I=0\); there is no omitted channel.
+
+For negative time use the [exact time-reversal construction](smooth-long-range-phases-from-hamilton-trajectories.md#phase-time-reversal) for \(-H\) and \(-P_0\), with \(\widetilde W(\xi,s)=W(\xi,-s)\). This is the future construction used to define the negative-time part of the chosen global phase. Its positive-time wave is the original negative-time wave. The boundary solutions correspond through
 
 \[
  R_+^{-H}(-\lambda)=-R_-^H(\lambda).
@@ -421,6 +463,8 @@ For negative time apply the same construction to \(-H\) and \(-P_0\), using \(\w
 \]
 
 The forcing changes to \(-f\); any scalar sign in its stationary normalization is a unit phase. The range conclusion has no such ambiguity. This proves (3) for both signs.
+
+<a id="spectral-completeness-scattering"></a>
 
 Write \(P_{\mathrm{ac}}=E_H(\Omega)\). Completeness gives \(\mathcal W_\pm\mathcal W_\pm^*=P_{\mathrm{ac}}\) and \(\mathcal W_\pm^*\mathcal W_\pm=1\). Hence
 
@@ -433,7 +477,11 @@ Write \(P_{\mathrm{ac}}=E_H(\Omega)\). Completeness gives \(\mathcal W_\pm\mathc
 
 Wave group intertwining implies that \(\mathcal S\) commutes with the free group. Its strong difference quotients then show preservation of \(\mathcal D(H_0)\) and commutation with \(H_0\) there. Spectral intertwining also gives commutation with every bounded Borel energy multiplier. Finally (4) follows by taking adjoints and using Plancherel. These transforms vanish on eigenvectors and are onto the full momentum space. Formula (31) identifies their band restrictions with the local-amplitude construction. Theorem 1.1 is proved. ∎
 
+<a id="spectral-completeness-scalar-gauge"></a>
+
 ## 8. Changing a scalar modifier changes a unit phase
+
+This scalar-modifier conclusion is also part of Hörmander [H4, Theorem 30.5.10]. Here its scalar nature follows from the exact comparison of the two Fourier multipliers.
 
 **Theorem 8.1.** Suppose another real scalar phase \(W'(\xi,t)\) satisfies the phase, velocity and short-range cone hypotheses of *Modified waves and the direction of escape*, for this \(H\) and one time sign. Let its modified wave be \(\mathcal W'\). Then there is a measurable \(N(\xi)\), with \(|N|=1\) almost everywhere, such that
 
@@ -470,6 +518,8 @@ This conclusion uses the exact scalar frequency multiplication in (38). Commutat
 ### Use the conclusion
 
 Construct a preimage on one good energy band, then account for all continuous states using the stated exceptional-energy set. Changing a scalar modifier changes a unit phase; it must not change the completeness claim.
+
+<a id="spectral-completeness-solutions"></a>
 
 ## 9. Exercises with complete solutions
 
@@ -563,6 +613,8 @@ It commutes with every frequency indicator, including indicators separating equa
 ## References
 
 - [Y] Dmitri Yafaev, *Lectures on scattering theory*, arXiv:math/0403213v1, 12 March 2004; prepared by Andrew Hassell from the 2001 ANU lectures. [Free version read](https://arxiv.org/pdf/math/0403213v1). Section 3 treats long-range Schrödinger comparison; it does not supply the full differential-polynomial theorem here.
-- [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition, 2014. [Freely readable author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf). Theorems 5.1 and 12.3 supply spectral-inversion and Cook-integral context, with the required programme proofs identified above.
+- [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition, 2014. [Freely readable author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf). Theorem 5.1 gives the self-adjoint unitary evolution and generator domain; Lemma 12.3 gives the Cook-integral criterion. The required programme proofs are identified above.
 - [O] Sung-Jin Oh, *Lecture Notes for Math 222A*, University of California, Berkeley, Fall 2023. [Free lecture notes](https://math.berkeley.edu/~sjoh/pdfs/notes-math222a.pdf), Section 2.4.1 on Hamilton characteristics.
 - [H76] Lars Hörmander, *The existence of wave operators in scattering theory*, Mathematische Zeitschrift **146** (1976), 69–91. [Freely accessible journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf). Section 3 constructs modified waves for admissible differential perturbations; Theorems 3.9–3.10 assume \(\det P_0''\not\equiv0\) and establish existence and comparison of ranges. They do not prove asymptotic completeness.
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, §30.5, (30.5.38)–(30.5.45), pp. 327–329; Theorem 30.5.10 and its proof, p. 329. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

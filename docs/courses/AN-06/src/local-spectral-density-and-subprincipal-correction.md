@@ -26,6 +26,8 @@ on compact coordinate sets. A classical symbol has, in addition, an expansion in
 
 ## 1. The two invariant symbols and an energy integral
 
+The scalar half-density subprincipal convention is that of Hörmander [H3, (18.1.32) and Theorem 18.1.33].
+
 In a half-density coordinate frame, write the left symbols as
 \[
 P_L=p+p_0+S^{-1},\qquad
@@ -272,6 +274,8 @@ These estimates follow just by integrating a symbol of order \(n-3\). At \(n=2\)
 ## 5. The local coefficient calculation
 
 Let \(K_B(t,y)\) be the diagonal restriction of the kernel of \(E(t)B\), a density on \(X\) with distributional dependence on \(t\). Composition with the pseudodifferential identity relation leaves its wavefront inside the wave relation by the [transverse composition proof](../providers/analysis/transverse-composition-and-graph-operators.md#transverse-composition). Its nonzero time covector excludes the diagonal conormal, so (R1)–(R2) give this actual restriction; the spatial half densities multiply to a density as in (R13) and the discussion following it.
+
+The subprincipal and Poisson-bracket coefficients appear in Hörmander [H4, Proposition 29.1.2]; the moving-boundary calculation is Lemma 29.1.3 there.
 
 **Theorem 5.1 (the first two local spectral coefficients).** Near \(t=0\), \(K_B\) is conormal to \(\{0\}\times X\). There is \(A\in S^n(X\times\mathbb R;\Omega_X)\), normalized by \(A(y,0)=0\), such that for sufficiently small time
 \[
@@ -531,3 +535,5 @@ The primitive estimate in [AFV, equation (3.7)] has a logarithmic remainder in d
 - [AFV] Zhirayr Avetisyan, Yan-Long Fang and Dmitri Vassiliev, *Spectral asymptotics for first order systems*, arXiv:1512.06281v2 (2016). Sections 2–3. [Author preprint](https://arxiv.org/abs/1512.06281v2).
 - [GS] Victor Guillemin and Shlomo Sternberg, *Semi-classical analysis*, author text dated April 25, 2012. Introduction Section 0.5, printed pages xi–xii, for the semiclassical functional-calculus and trace comparison. [Author PDF](https://people.math.harvard.edu/~shlomo/docs/Semi_Classical_Analysis_Start.pdf).
 - [DG] Johannes J. Duistermaat and Victor W. Guillemin, “The spectrum of positive elliptic operators and periodic bicharacteristics,” *Inventiones Mathematicae* 29 (1975), 39–79. Introduction for the classical positive-elliptic and wave-trace setting. [Freely readable complete GDZ scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf).
+- [H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, (18.1.32), p. 83, and Theorems 18.1.33–18.1.34, pp. 92–93. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+- [H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Proposition 29.1.2 and Lemma 29.1.3, pp. 253–256. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

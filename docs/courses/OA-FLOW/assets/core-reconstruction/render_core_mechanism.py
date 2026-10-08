@@ -4,6 +4,7 @@ CC0-1.0 to the extent of rights in this new figure source.
 No simulation of a von Neumann algebra is asserted.
 """
 from pathlib import Path
+import re
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -13,7 +14,7 @@ from matplotlib.patches import Polygon
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "assets"
 OUT.mkdir(exist_ok=True)
-plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12})
+plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12, "svg.hashsalt": "OA-FLOW-core-reconstruction-v1"})
 fig, (left, right) = plt.subplots(1, 2, figsize=(13.2, 6.0))
 fig.subplots_adjust(left=.07, right=.97, top=.83, bottom=.28, wspace=.34)
 fig.suptitle("Spectral bands make the trace finite; translation fixes its scaling", fontsize=17, y=.96)
@@ -53,5 +54,11 @@ fig.text(.07,.048,"Left: actual joint support used in the bounded antiunitary ca
         "Right: interval trace masses and their shift (C16–C17, C32). These are spectral coordinates, not a model of M.",
         fontsize=10.6,color="#333333")
 fig.savefig(OUT/"core-spectral-mechanism.png",dpi=170)
-fig.savefig(OUT/"core-spectral-mechanism.svg")
+svg_path = OUT/"core-spectral-mechanism.svg"
+fig.savefig(svg_path, metadata={"Date": None})
+# Canonical serialization changes only separators, never path tokens.
+svg_text = svg_path.read_text(encoding="utf-8")
+svg_text = re.sub(r'(\bd=")([^"]*)(")',
+                  lambda match: match.group(1) + " ".join(match.group(2).split()) + match.group(3), svg_text)
+svg_path.write_text(svg_text, encoding="utf-8", newline="\n")
 plt.close(fig)

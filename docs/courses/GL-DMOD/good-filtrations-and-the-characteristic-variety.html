@@ -33,7 +33,7 @@
 <h1 id="good-filtrations-and-the-characteristic-variety">Good filtrations and the characteristic variety</h1>
 <p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
 <p>The two operators <span class="math" data-tex="\(x\partial\)">\(x\partial\)</span> and <span class="math" data-tex="\(x^2\partial-1\)">\(x^2\partial-1\)</span> on the line have leading symbols <span class="math" data-tex="\(x\xi\)">\(x\xi\)</span> and <span class="math" data-tex="\(x^2\xi\)">\(x^2\xi\)</span>. Both vanish on the same cross in the cotangent plane: the zero section and the fiber over zero. But the second symbol vanishes twice along that fiber. We will attach this geometric support, together with its multiplicities, to the module of an equation. The construction must survive changing the generators and the filtration used to expose the leading terms.</p>
-<p>We assume the <a href="differential-operators-and-the-weyl-algebra.html">differential-operator algebra</a>, the <a href="d-modules-flat-connections-and-local-systems.html">connection interpretation of D-modules</a>, and commutative algebra concerning finite modules, localization, support and composition length. The <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100">Algebraic Geometry Bridge</a> supplies the geometric background. All arguments except the explicitly stated involutivity theorem are developed here.</p>
+<p>We assume the <a href="differential-operators-and-the-weyl-algebra.html">differential-operator algebra</a>, the <a href="d-modules-flat-connections-and-local-systems.html">connection interpretation of D-modules</a>, and commutative algebra concerning finite modules, localization, support and composition length. The <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100">Algebraic Geometry Bridge</a> supplies the geometric background. The filtration and characteristic-cycle arguments are developed here, together with the complete general involutivity proof in Section 7.</p>
 <p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be algebraically closed of characteristic zero, and let <span class="math" data-tex="\(X\)">\(X\)</span> be a smooth separated variety of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span>. D-modules are left modules quasi-coherent over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>. The order filtration on <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span> has <span class="math" data-tex="\(F_{-1}\mathcal D_X=0\)">\(F_{-1}\mathcal D_X=0\)</span> and</p>
 <span class="math math-display" data-tex="\[
 \operatorname{gr}\mathcal D_X\cong\operatorname{Sym}_{\mathcal O_X}\mathcal T_X.
@@ -400,7 +400,7 @@ Q_{-1}=A_1/A_1(\theta+1)\longrightarrow L.
 \]</span>
 <p>For its last isomorphism send the generator of <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> to the class of <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>. It is killed by <span class="math" data-tex="\(x\)">\(x\)</span>, and its successive derivatives are the independent negative Laurent monomials modulo polynomials. Theorem 4.1 then combines the zero-section and fiber cycles.</p>
 <h2 id="7-involutivity-and-the-dimension-bound">7. Involutivity and the dimension bound</h2>
-<p><strong>Gabber's involutivity theorem (statement).</strong> For a filtered Noetherian ring with commutative Noetherian associated graded containing <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, the radical of the annihilator of the graded module of a finite module with a good filtration is involutive for the commutator Poisson bracket. In our setting, if <span class="math" data-tex="\(I\)">\(I\)</span> is the reduced ideal of <span class="math" data-tex="\(\operatorname{Ch}(M)\)">\(\operatorname{Ch}(M)\)</span>, the conclusion is</p>
+<p><strong>Theorem 7.0 (Gabber involutivity).</strong> For a filtered Noetherian ring with commutative Noetherian associated graded containing <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, the radical of the annihilator of the graded module of a finite module with a good filtration is involutive for the commutator Poisson bracket. In our setting, if <span class="math" data-tex="\(I\)">\(I\)</span> is the reduced ideal of <span class="math" data-tex="\(\operatorname{Ch}(M)\)">\(\operatorname{Ch}(M)\)</span>, the conclusion is</p>
 <span class="math math-display" data-tex="\[
 \{I,I\}\subset I.
 \tag{7.1}
@@ -408,12 +408,563 @@ Q_{-1}=A_1/A_1(\theta+1)\longrightarrow L.
 \{I,I\}\subset I.
 \tag{7.1}
 \]</span>
-<p>This is [Kashiwara–Schapira, Theorem 11.2.2], a theorem about filtered rings before its analytic specialization. The characteristic-zero hypothesis supplies <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>; the order filtration and its Noetherianity supply the other hypotheses. We use the theorem as a stated external result. It is not proved in this lesson.</p>
+<p>The proof below follows the first-order trace strategy in Ginzburg's freely accessible <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, Theorem 1.2.8 and Lemma 1.2.9, and in Singh and Kumar's <a href="https://www.researchgate.net/publication/263610454_On_the_Involutivity_of_the_Characteristic_Variety">freely accessible author version</a>, Sections 3–5. We prove the coefficient-field and fraction constructions needed to retain the full Noetherian statement, including associated graded rings that are not of finite type over a field. The order filtration of <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> supplies the hypotheses by the preceding lesson.</p>
+<p><strong>Proof of Theorem 7.0.</strong> Write <span class="math" data-tex="$S=\operatorname{gr}_F A$">$S=\operatorname{gr}_F A$</span> and <span class="math" data-tex="$N=\operatorname{gr}_G M$">$N=\operatorname{gr}_G M$</span>. A good filtration supplies a finite <span class="math" data-tex="$S$">$S$</span>-module <span class="math" data-tex="$N$">$N$</span>. The argument below only requires these graded finiteness hypotheses, so it also covers integer-indexed filtrations without a finite-type assumption on <span class="math" data-tex="$S$">$S$</span>.</p>
+<h3 id="first-order-rees-quotient">First-order Rees quotient</h3>
+<p>Use a central indeterminate <span class="math" data-tex="\(t\)">\(t\)</span> and form the Rees ring and module
+<span class="math math-display" data-tex="\[
+\mathcal R=\bigoplus_{j\in\mathbf Z}F_jA\,t^j
+       \subseteq A[t,t^{-1}],\qquad
+\mathcal L=\bigoplus_{j\in\mathbf Z}G_jM\,t^j
+       \subseteq M[t,t^{-1}].
+\]">\[
+\mathcal R=\bigoplus_{j\in\mathbf Z}F_jA\,t^j
+       \subseteq A[t,t^{-1}],\qquad
+\mathcal L=\bigoplus_{j\in\mathbf Z}G_jM\,t^j
+       \subseteq M[t,t^{-1}].
+\]</span>
+Since <span class="math" data-tex="\(1\in F_0A\subseteq F_1A\)">\(1\in F_0A\subseteq F_1A\)</span>, multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> is an operation on both objects. It is injective, by their inclusions in the Laurent objects. Put
+<span class="math math-display" data-tex="\[
+\mathcal A=\mathcal R/t^2\mathcal R,\qquad
+\mathcal M=\mathcal L/t^2\mathcal L,\qquad h=t.
+\tag{7.1a}
+\]">\[
+\mathcal A=\mathcal R/t^2\mathcal R,\qquad
+\mathcal M=\mathcal L/t^2\mathcal L,\qquad h=t.
+\tag{7.1a}
+\]</span>
+The parameter <span class="math" data-tex="\(h\)">\(h\)</span> is central and <span class="math" data-tex="\(h^2=0\)">\(h^2=0\)</span>. Degree by degree,
+<span class="math math-display" data-tex="\[
+\mathcal A/h\mathcal A=S,\qquad
+\mathcal M/h\mathcal M=N.
+\]">\[
+\mathcal A/h\mathcal A=S,\qquad
+\mathcal M/h\mathcal M=N.
+\]</span>
+Cancellation of <span class="math" data-tex="\(t\)">\(t\)</span> in the Laurent objects proves
+<span class="math math-display" data-tex="\[
+\ker(h:\mathcal A\to\mathcal A)=h\mathcal A,\qquad
+\ker(h:\mathcal M\to\mathcal M)=h\mathcal M.
+\tag{7.1b}
+\]">\[
+\ker(h:\mathcal A\to\mathcal A)=h\mathcal A,\qquad
+\ker(h:\mathcal M\to\mathcal M)=h\mathcal M.
+\tag{7.1b}
+\]</span>
+For example <span class="math" data-tex="\(t\ell\in t^2\mathcal L\)">\(t\ell\in t^2\mathcal L\)</span> implies
+<span class="math" data-tex="\(\ell\in t\mathcal L\)">\(\ell\in t\mathcal L\)</span>. Consequently multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> identifies
+<span class="math" data-tex="\(\mathcal A/h\mathcal A\)">\(\mathcal A/h\mathcal A\)</span> with <span class="math" data-tex="\(h\mathcal A\)">\(h\mathcal A\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> with
+<span class="math" data-tex="\(h\mathcal M\)">\(h\mathcal M\)</span>.</p>
+<p>The first-order ring <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> canonically contains <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, even if this was not assumed for <span class="math" data-tex="\(A\)">\(A\)</span>. An integer <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> is invertible modulo <span class="math" data-tex="\(h\mathcal A\)">\(h\mathcal A\)</span>. Choose <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(nu=1+hv\)">\(nu=1+hv\)</span>. Since <span class="math" data-tex="\((1+hv)^{-1}=1-hv\)">\((1+hv)^{-1}=1-hv\)</span>, <span class="math" data-tex="\(n\)">\(n\)</span> is invertible in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Its inverse is central, so the rational scalars give a central field. The kernel/image identities (7.1b) say precisely that these objects are free, hence flat, over <span class="math" data-tex="\(\mathbf Q[h]/(h^2)\)">\(\mathbf Q[h]/(h^2)\)</span>: lift a <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-basis of the quotient. Subtracting a finite combination of its lifts from any vector leaves <span class="math" data-tex="\(h y\)">\(h y\)</span>; reducing <span class="math" data-tex="\(y\)">\(y\)</span> and subtracting its basis combination gives the required expression in those lifts and their <span class="math" data-tex="\(h\)">\(h\)</span>-multiples. A relation <span class="math" data-tex="\(\sum_i(q_i+h r_i)e_i=0\)">\(\sum_i(q_i+h r_i)e_i=0\)</span> first gives <span class="math" data-tex="\(q_i=0\)">\(q_i=0\)</span> after reduction. Then (7.1b) gives <span class="math" data-tex="\(\sum_i r_i e_i\in h\mathcal M\)">\(\sum_i r_i e_i\in h\mathcal M\)</span>, so a second reduction gives <span class="math" data-tex="\(r_i=0\)">\(r_i=0\)</span>. The same argument applies to the ring.</p>
+<p>The module <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> is finite over <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Lift finitely many <span class="math" data-tex="\(S\)">\(S\)</span>-generators of <span class="math" data-tex="\(N\)">\(N\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> be their <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>-span. For <span class="math" data-tex="\(Q=\mathcal M/P\)">\(Q=\mathcal M/P\)</span>, reduction gives <span class="math" data-tex="\(Q=hQ\)">\(Q=hQ\)</span>; hence <span class="math" data-tex="\(Q=h^2Q=0\)">\(Q=h^2Q=0\)</span>. This does not require <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> to be finite over <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.
+Similarly <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is left and right Noetherian: the ideal <span class="math" data-tex="\(h\mathcal A\)">\(h\mathcal A\)</span> and quotient <span class="math" data-tex="\(\mathcal A/h\mathcal A\)">\(\mathcal A/h\mathcal A\)</span> are Noetherian modules over <span class="math" data-tex="\(S\)">\(S\)</span>, so their two-step extension is Noetherian on each side. Indeed, in an ascending chain of ideals the images in the quotient and the intersections with the ideal eventually stabilize. A later member can then have no nonzero quotient over that fixed member: subtract an element with the same image and use the equal intersections. Thus the chain itself stabilizes. No Noetherianity assertion for <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> is used.</p>
+<p>Commutativity of <span class="math" data-tex="\(S\)">\(S\)</span> gives
+<span class="math" data-tex="\([F_iA,F_jA]\subseteq F_{i+j-1}A\)">\([F_iA,F_jA]\subseteq F_{i+j-1}A\)</span>, and therefore
+<span class="math" data-tex="\([\mathcal R,\mathcal R]\subseteq t\mathcal R\)">\([\mathcal R,\mathcal R]\subseteq t\mathcal R\)</span>. Dividing a first-order commutator by <span class="math" data-tex="\(h\)">\(h\)</span> using (7.1b) gives exactly
+<span class="math math-display" data-tex="\[
+\{\sigma_i(a),\sigma_j(b)\}
+   =\sigma_{i+j-1}([a,b]).
+\tag{7.1c}
+\]">\[
+\{\sigma_i(a),\sigma_j(b)\}
+   =\sigma_{i+j-1}([a,b]).
+\tag{7.1c}
+\]</span>
+Changing lifts changes only lower-order terms. The commutator Leibniz and Jacobi identities prove that (7.1c) is the usual Poisson bracket. It remains to prove radical-annihilator involutivity for the finite flat first-order module <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>.</p>
+<h3 id="localization-of-first-order-modules">Localization of first-order modules</h3>
+<p>More generally let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> have a central <span class="math" data-tex="\(h\)">\(h\)</span>, with <span class="math" data-tex="\(h^2=0\)">\(h^2=0\)</span>, let <span class="math" data-tex="\(B=\mathcal A/h\mathcal A\)">\(B=\mathcal A/h\mathcal A\)</span> be commutative, and assume the ring identity in (7.1b). Suppose <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> satisfies the module identity in (7.1b).
+Fix a prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>, and let <span class="math" data-tex="\(T\)">\(T\)</span> be the full preimage of <span class="math" data-tex="\(B\setminus\mathfrak p\)">\(B\setminus\mathfrak p\)</span>.</p>
+<p>Every commutator belongs to <span class="math" data-tex="\(h\mathcal A\)">\(h\mathcal A\)</span>, and is central: if
+<span class="math" data-tex="\(c=hr\)">\(c=hr\)</span>, then <span class="math" data-tex="\([c,a]=h[r,a]=0\)">\([c,a]=h[r,a]=0\)</span>.
+For <span class="math" data-tex="\(s\in T\)">\(s\in T\)</span>, <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, and <span class="math" data-tex="\(c=[s,a]\)">\(c=[s,a]\)</span>, we have
+<span class="math math-display" data-tex="\[
+s^2a=(as+2c)s,\qquad
+as^2=s(sa-2c).
+\tag{7.1d}
+\]">\[
+s^2a=(as+2c)s,\qquad
+as^2=s(sa-2c).
+\tag{7.1d}
+\]</span>
+These are the left and right common-multiple conditions for denominators. Moreover
+<span class="math math-display" data-tex="\[
+as=0\ \Longrightarrow\ s^2a=0,\qquad
+sa=0\ \Longrightarrow\ as^2=0.
+\tag{7.1e}
+\]">\[
+as=0\ \Longrightarrow\ s^2a=0,\qquad
+sa=0\ \Longrightarrow\ as^2=0.
+\tag{7.1e}
+\]</span>
+For the first implication, <span class="math" data-tex="\(c=sa\)">\(c=sa\)</span>, and
+<span class="math" data-tex="\(s^2a=s(as)+sc=sc=cs=(sa)s=0\)">\(s^2a=s(as)+sc=sc=cs=(sa)s=0\)</span>; the other is symmetric.
+Thus denominator torsion can also be removed on the required side.</p>
+<p>Here is the fraction construction and the exactness fact used below. Left fractions in a module are pairs <span class="math" data-tex="\((s,m)\)">\((s,m)\)</span>, written <span class="math" data-tex="\(s^{-1}m\)">\(s^{-1}m\)</span>. Two pairs <span class="math" data-tex="\((s,m)\)">\((s,m)\)</span>, <span class="math" data-tex="\((u,n)\)">\((u,n)\)</span> are equivalent when there are <span class="math" data-tex="\(v,w\in T\)">\(v,w\in T\)</span> such that
+<span class="math math-display" data-tex="\[
+vs=wu,\qquad vm=wn.
+\tag{7.1f}
+\]">\[
+vs=wu,\qquad vm=wn.
+\tag{7.1f}
+\]</span>
+Common left multiples exist by (7.1d). When both factors being compared are denominators, all multipliers can be chosen in <span class="math" data-tex="\(T\)">\(T\)</span>: their reductions lie outside the prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. This also proves transitivity of (7.1f), by taking a common left multiple of the two intervening multipliers.</p>
+<p>Addition uses a common left denominator. For multiplication or the localized scalar action, choose <span class="math" data-tex="\(v\in T,c\in\mathcal A\)">\(v\in T,c\in\mathcal A\)</span> with <span class="math" data-tex="\(va=cu\)">\(va=cu\)</span>, and use
+<span class="math math-display" data-tex="\[
+(s^{-1}a)(u^{-1}m)=(vs)^{-1}(cm).
+\tag{7.1g}
+\]">\[
+(s^{-1}a)(u^{-1}m)=(vs)^{-1}(cm).
+\tag{7.1g}
+\]</span>
+Formula (7.1d) supplies such <span class="math" data-tex="\(v,c\)">\(v,c\)</span>, for example <span class="math" data-tex="\(v=u^2\)">\(v=u^2\)</span>.
+These operations are independent of choices. To verify this, refine any two common-denominator expressions to a common left multiple. Any discrepancy between their coefficient multipliers annihilates an original denominator; (7.1e) supplies a further denominator annihilating that discrepancy. A common left multiple handles the finitely many discrepancies together. The resulting numerators are equal. For associativity of three fractions <span class="math" data-tex="\(s^{-1}a,u^{-1}b,v^{-1}m\)">\(s^{-1}a,u^{-1}b,v^{-1}m\)</span>, choose <span class="math" data-tex="\(pa=qu\)">\(pa=qu\)</span>, <span class="math" data-tex="\(rb=wv\)">\(rb=wv\)</span>, and <span class="math" data-tex="\(tq=zr\)">\(tq=zr\)</span>, with <span class="math" data-tex="\(p,r,t\in T\)">\(p,r,t\in T\)</span>, by the common-multiple formula. Both parenthesizations then give <span class="math" data-tex="\((tps)^{-1}zwm\)">\((tps)^{-1}zwm\)</span>: for the left one use <span class="math" data-tex="\(tp(ab)=zwv\)">\(tp(ab)=zwv\)</span>, and for the right one use <span class="math" data-tex="\(tp,a=z(ru)\)">\(tp,a=z(ru)\)</span>. Independence of choices was just proved, so these common choices establish associativity. Refining to common left denominators similarly makes the two distributive identities the ordinary distributive identities in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and its module. Thus these formulas construct the ring <span class="math" data-tex="\(\mathcal A_T\)">\(\mathcal A_T\)</span> and modules <span class="math" data-tex="\(\mathcal M_T\)">\(\mathcal M_T\)</span>. A map making every element of <span class="math" data-tex="\(T\)">\(T\)</span> invertible necessarily sends <span class="math" data-tex="\(s^{-1}a\)">\(s^{-1}a\)</span> to the corresponding inverse product, proving the universal property.</p>
+<p>An immediate consequence of (7.1f) is the precise zero criterion
+<span class="math math-display" data-tex="\[
+s^{-1}m=0
+ \quad\Longleftrightarrow\quad
+vm=0\text{ for some }v\in T.
+\tag{7.1h}
+\]">\[
+s^{-1}m=0
+ \quad\Longleftrightarrow\quad
+vm=0\text{ for some }v\in T.
+\tag{7.1h}
+\]</span>
+Localization is exact. Surjections lift numerators. If the image of
+<span class="math" data-tex="\(s^{-1}m\)">\(s^{-1}m\)</span> in a localized quotient is zero, (7.1h) supplies <span class="math" data-tex="\(v\in T\)">\(v\in T\)</span>
+with <span class="math" data-tex="\(vm\)">\(vm\)</span> in the original kernel; then
+<span class="math" data-tex="\(s^{-1}m=(vs)^{-1}(vm)\)">\(s^{-1}m=(vs)^{-1}(vm)\)</span> comes from the localization of that kernel.
+Finite generation is also preserved, by writing each numerator in terms of a fixed finite generating set.</p>
+<p>Reduction of the fraction construction gives
+<span class="math math-display" data-tex="\[
+\mathcal A_T/h\mathcal A_T=B_{\mathfrak p},\qquad
+\mathcal M_T/h\mathcal M_T=N_{\mathfrak p}.
+\tag{7.1i}
+\]">\[
+\mathcal A_T/h\mathcal A_T=B_{\mathfrak p},\qquad
+\mathcal M_T/h\mathcal M_T=N_{\mathfrak p}.
+\tag{7.1i}
+\]</span>
+The kernel/image condition for <span class="math" data-tex="\(h\)">\(h\)</span> is preserved. If
+<span class="math" data-tex="\(h\,s^{-1}m=0\)">\(h\,s^{-1}m=0\)</span>, clear a denominator by (7.1h) to obtain
+<span class="math" data-tex="\(hvm=0\)">\(hvm=0\)</span>. Before localization, (7.1b) gives <span class="math" data-tex="\(vm=hy\)">\(vm=hy\)</span>; hence
+<span class="math math-display" data-tex="\[
+s^{-1}m=(vs)^{-1}(hy)\in h\mathcal M_T.
+\]">\[
+s^{-1}m=(vs)^{-1}(hy)\in h\mathcal M_T.
+\]</span>
+The reverse containment is automatic, and the same proof applies to the ring.</p>
+<p>The first-order commutator bracket on <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span> is the extension of the bracket on <span class="math" data-tex="\(B\)">\(B\)</span>: restricting to <span class="math" data-tex="\(B\)">\(B\)</span> agrees, and the derivation identity forces
+<span class="math" data-tex="\(\{s^{-1},b\}=-s^{-2}\{s,b\}\)">\(\{s^{-1},b\}=-s^{-2}\{s,b\}\)</span>.
+In particular it agrees with the original symbol bracket after the reduction (7.1a). For reference the denominator formula is
+<span class="math math-display" data-tex="\[
+\left\{\frac a s,\frac b u\right\}
+=\frac{\{a,b\}}{su}
+ -\frac{b\{a,u\}}{su^2}
+ -\frac{a\{s,b\}}{s^2u}
+ +\frac{ab\{s,u\}}{s^2u^2}.
+\tag{7.1j}
+\]">\[
+\left\{\frac a s,\frac b u\right\}
+=\frac{\{a,b\}}{su}
+ -\frac{b\{a,u\}}{su^2}
+ -\frac{a\{s,b\}}{s^2u}
+ +\frac{ab\{s,u\}}{s^2u^2}.
+\tag{7.1j}
+\]</span>
+Its derivation follows by expanding both arguments as products with inverses.
+An arbitrary first-order deformation gives an antisymmetric biderivation; Jacobi is not needed in the local trace argument. In our Rees situation Jacobi was already proved in (7.1c).</p>
+<h3 id="coefficient-field-in-a-finite-artin-quotient">Coefficient field in a finite Artin quotient</h3>
+<p>We prove the needed elementary coefficient-field fact. Let <span class="math" data-tex="\(C\)">\(C\)</span> be a commutative Artin local <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-algebra with nilpotent maximal ideal and residue field <span class="math" data-tex="\(K\)">\(K\)</span>. There is a subfield of <span class="math" data-tex="\(C\)">\(C\)</span> whose residue map is an isomorphism onto <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Choose a transcendence basis <span class="math" data-tex="\(T_0\)">\(T_0\)</span> of <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span>, of arbitrary cardinality, and choose lifts of all its elements to <span class="math" data-tex="\(C\)">\(C\)</span>. A nonzero polynomial in finitely many such lifts has nonzero residue, so is a unit. Thus these lifts embed
+<span class="math" data-tex="\(F=\mathbf Q(T_0)\)">\(F=\mathbf Q(T_0)\)</span> into <span class="math" data-tex="\(C\)">\(C\)</span>.
+The extension <span class="math" data-tex="\(K/F\)">\(K/F\)</span> is algebraic. We lift it by adjoining algebraic elements, without any finiteness restriction on that extension. Partially order the pairs consisting of an intermediate field <span class="math" data-tex="\(F\subseteq L\subseteq K\)">\(F\subseteq L\subseteq K\)</span> and a field embedding <span class="math" data-tex="\(L\to C\)">\(L\to C\)</span> extending the chosen embedding of <span class="math" data-tex="\(F\)">\(F\)</span> and inducing the identity on residues. A chain has the union of its fields and embeddings as an upper bound. Zorn's lemma gives a maximal pair.</p>
+<p>If <span class="math" data-tex="\(\theta\in K\setminus L\)">\(\theta\in K\setminus L\)</span>, let <span class="math" data-tex="\(p(T)\in L[T]\)">\(p(T)\in L[T]\)</span> be its irreducible polynomial and view its coefficients in <span class="math" data-tex="\(C\)">\(C\)</span>. In characteristic zero, <span class="math" data-tex="\(p&#x27;\ne0\)">\(p&#x27;\ne0\)</span> and <span class="math" data-tex="\(\deg p&#x27;&lt;\deg p\)">\(\deg p&#x27;&lt;\deg p\)</span>; irreducibility implies <span class="math" data-tex="\(p&#x27;(\theta)\ne0\)">\(p&#x27;(\theta)\ne0\)</span>. For any lift <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span> of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span> is in the nilpotent maximal ideal <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>, and <span class="math" data-tex="\(p&#x27;(x)\)">\(p&#x27;(x)\)</span> is a unit. The correction</p>
+<span class="math math-display" data-tex="\[
+x&#x27; = x-p(x)p&#x27;(x)^{-1}
+\]">\[
+x&#x27; = x-p(x)p&#x27;(x)^{-1}
+\]</span>
+<p>satisfies <span class="math" data-tex="\(p(x&#x27;)\in (p(x))^2\)">\(p(x&#x27;)\in (p(x))^2\)</span>, by expanding the polynomial at <span class="math" data-tex="\(x\)">\(x\)</span>: its constant and linear terms cancel and each remaining term contains the square of the correction. Iteration therefore puts the error in <span class="math" data-tex="\(\mathfrak n^{2^r}\)">\(\mathfrak n^{2^r}\)</span>, which is zero for some finite <span class="math" data-tex="\(r\)">\(r\)</span>. The corrected <span class="math" data-tex="\(x\)">\(x\)</span> is an exact root with residue <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Evaluation gives a unital homomorphism <span class="math" data-tex="\(L[T]/(p)\to C\)">\(L[T]/(p)\to C\)</span>. Its domain is the field <span class="math" data-tex="\(L(\theta)\)">\(L(\theta)\)</span>, so its kernel is zero. This extends the maximal pair, a contradiction. Hence the maximal field is all of <span class="math" data-tex="\(K\)">\(K\)</span>, proving the assertion. The transcendence basis itself exists by the same maximal-chain argument on algebraically independent subsets: maximality makes every remaining element algebraic. No completeness or infinite Newton limit is used.</p>
+<h3 id="the-finite-length-trace">The finite-length trace</h3>
+<p>Localize the first-order pair at a minimal prime of the support of <span class="math" data-tex="\(N\)">\(N\)</span>, using the fraction construction above, and keep the notation <span class="math" data-tex="\(\mathcal A,\mathcal M\)">\(\mathcal A,\mathcal M\)</span> for the localized objects. Put
+<span class="math math-display" data-tex="\[
+R=B_{\mathfrak p},\quad \mathfrak m=\mathfrak pR,\quad
+K=R/\mathfrak m,\quad N=N_{\mathfrak p}.
+\]">\[
+R=B_{\mathfrak p},\quad \mathfrak m=\mathfrak pR,\quad
+K=R/\mathfrak m,\quad N=N_{\mathfrak p}.
+\]</span>
+The finite module <span class="math" data-tex="\(N\)">\(N\)</span> is nonzero and its support is just the closed point.
+Indeed a support prime contained in <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> equals <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> by minimality.
+Finiteness gives
+<span class="math" data-tex="\(\operatorname{Supp}N=V(\operatorname{Ann}_RN)\)">\(\operatorname{Supp}N=V(\operatorname{Ann}_RN)\)</span>: a product of denominators killing a finite generating set proves the converse to the immediate inclusion.
+Hence <span class="math" data-tex="\(\sqrt{\operatorname{Ann}_RN}=\mathfrak m\)">\(\sqrt{\operatorname{Ann}_RN}=\mathfrak m\)</span>.
+If <span class="math" data-tex="\(x_1,\ldots,x_e\)">\(x_1,\ldots,x_e\)</span> generate <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> and each
+<span class="math" data-tex="\(x_j^{a_j}\)">\(x_j^{a_j}\)</span> annihilates <span class="math" data-tex="\(N\)">\(N\)</span>, every monomial of total degree
+<span class="math" data-tex="\(1+\sum_j(a_j-1)\)">\(1+\sum_j(a_j-1)\)</span> annihilates <span class="math" data-tex="\(N\)">\(N\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\mathfrak m^sN=0
+\tag{7.1k}
+\]">\[
+\mathfrak m^sN=0
+\tag{7.1k}
+\]</span>
+for some <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>.
+Its finite <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-adic filtration has finite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>-quotients, so <span class="math" data-tex="\(N\)">\(N\)</span> has finite positive length. Here length and its additivity are the proved <a href="../AG-CA/AG-CA-03.html#3-measuring-a-module-by-simple-pieces">AG-CA 03, Theorem 3.3</a>; refining each vector-space layer by a basis gives its composition series.</p>
+<p>Let <span class="math" data-tex="\(\mathfrak q\subseteq\mathcal A\)">\(\mathfrak q\subseteq\mathcal A\)</span> be the inverse image of
+<span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Reduction and centrality of <span class="math" data-tex="\(h\)">\(h\)</span> give
+<span class="math math-display" data-tex="\[
+\mathfrak q^s\mathcal M\subseteq h\mathcal M,\qquad
+\mathfrak q^{2s}\mathcal M
+ \subseteq h\mathfrak q^s\mathcal M=0.
+\tag{7.1l}
+\]">\[
+\mathfrak q^s\mathcal M\subseteq h\mathcal M,\qquad
+\mathfrak q^{2s}\mathcal M
+ \subseteq h\mathfrak q^s\mathcal M=0.
+\tag{7.1l}
+\]</span>
+The commutative ring <span class="math" data-tex="\(C=R/\mathfrak m^{2s}\)">\(C=R/\mathfrak m^{2s}\)</span> is Artin: its finite maximal-ideal filtration has finite-dimensional residue-field quotients, since <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is finitely generated. Their finite total composition length bounds the number of strict inclusions in any descending chain of ideals, proving the Artin assertion. Apply the coefficient-field construction above to choose its coefficient field <span class="math" data-tex="\(K\)">\(K\)</span>. Since the <span class="math" data-tex="\(R\)">\(R\)</span>-action on <span class="math" data-tex="\(N\)">\(N\)</span> factors through <span class="math" data-tex="\(C\)">\(C\)</span>, this makes <span class="math" data-tex="\(N\)">\(N\)</span> a finite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>-space.</p>
+<p>Choose a <span class="math" data-tex="\(K\)">\(K\)</span>-basis <span class="math" data-tex="\(n_1,\ldots,n_\ell\)">\(n_1,\ldots,n_\ell\)</span> adapted to the
+<span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-adic filtration and lift it to <span class="math" data-tex="\(m_i\in\mathcal M\)">\(m_i\in\mathcal M\)</span>.
+Write <span class="math" data-tex="\(w_i\)">\(w_i\)</span> for its filtration levels. We say a matrix is strictly block triangular when its <span class="math" data-tex="\(ij\)">\(ij\)</span>-entry is zero unless <span class="math" data-tex="\(w_j&gt;w_i\)">\(w_j&gt;w_i\)</span>.
+Multiplication by an element of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> has this property; multiplication by any element of <span class="math" data-tex="\(R\)">\(R\)</span> preserves the filtration.</p>
+<p>Choose coefficient lifts <span class="math" data-tex="\(\sigma:K\to\mathcal A\)">\(\sigma:K\to\mathcal A\)</span> through the chosen field in <span class="math" data-tex="\(C\)">\(C\)</span>, retaining zero as zero. One may choose them <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-linearly. Their reductions in <span class="math" data-tex="\(R\)">\(R\)</span> need not form a field, and no <span class="math" data-tex="\(K\)">\(K\)</span>-action on <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> is asserted. They act on <span class="math" data-tex="\(N\)">\(N\)</span> as their exact <span class="math" data-tex="\(K\)">\(K\)</span>-scalars. Products of coefficient lifts agree with the field products modulo
+<span class="math math-display" data-tex="\[
+h\mathcal A+\mathfrak q^{2s},
+\tag{7.1m}
+\]">\[
+h\mathcal A+\mathfrak q^{2s},
+\tag{7.1m}
+\]</span>
+because their reductions agree modulo <span class="math" data-tex="\(\mathfrak m^{2s}\)">\(\mathfrak m^{2s}\)</span>.
+The reduction of <span class="math" data-tex="\(\mathfrak q^{2s}\)">\(\mathfrak q^{2s}\)</span> surjects onto
+<span class="math" data-tex="\(\mathfrak m^{2s}\)">\(\mathfrak m^{2s}\)</span>, by lifting sums of products; subtracting such lifts proves (7.1m).</p>
+<p>Take <span class="math" data-tex="\(a,b\in\mathcal A\)">\(a,b\in\mathcal A\)</span> with reductions in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>.
+Their actions on <span class="math" data-tex="\(N\)">\(N\)</span> have strictly block-triangular matrices
+<span class="math" data-tex="\(U_0,V_0\)">\(U_0,V_0\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>.
+The identification <span class="math" data-tex="\(h\mathcal M\simeq N\)">\(h\mathcal M\simeq N\)</span> in (7.1b) supplies correction matrices <span class="math" data-tex="\(U_1,V_1\)">\(U_1,V_1\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>, so that
+<span class="math math-display" data-tex="\[
+\begin{split}
+a m_i&amp;=\sum_j\sigma((U_0)_{ij})m_j+
+                h\sum_j\sigma((U_1)_{ij})m_j,\\
+b m_i&amp;=\sum_j\sigma((V_0)_{ij})m_j+
+                h\sum_j\sigma((V_1)_{ij})m_j .
+\end{split}
+\tag{7.1n}
+\]">\[
+\begin{split}
+a m_i&amp;=\sum_j\sigma((U_0)_{ij})m_j+
+                h\sum_j\sigma((U_1)_{ij})m_j,\\
+b m_i&amp;=\sum_j\sigma((V_0)_{ij})m_j+
+                h\sum_j\sigma((V_1)_{ij})m_j .
+\end{split}
+\tag{7.1n}
+\]</span>
+All sums and matrices are finite.</p>
+<p>Expand <span class="math" data-tex="\(abm_i-bam_i\)">\(abm_i-bam_i\)</span>, moving <span class="math" data-tex="\(a,b\)">\(a,b\)</span> past these coefficient lifts. There are exactly three kinds of contributions.</p>
+<p>First, the leading coefficient matrix has entries
+<span class="math math-display" data-tex="\[
+\sum_j\left(
+\sigma((V_0)_{ij})\sigma((U_0)_{jk})
+-\sigma((U_0)_{ij})\sigma((V_0)_{jk})\right).
+\tag{7.1o}
+\]">\[
+\sum_j\left(
+\sigma((V_0)_{ij})\sigma((U_0)_{jk})
+-\sigma((U_0)_{ij})\sigma((V_0)_{jk})\right).
+\tag{7.1o}
+\]</span>
+It is strictly block triangular. Its image in <span class="math" data-tex="\(C\)">\(C\)</span> is
+<span class="math" data-tex="\(V_0U_0-U_0V_0=0\)">\(V_0U_0-U_0V_0=0\)</span>, because the two multiplication operators on <span class="math" data-tex="\(N\)">\(N\)</span> commute. Each entry of (7.1o) therefore lies in
+<span class="math" data-tex="\(h\mathcal A+\mathfrak q^{2s}\)">\(h\mathcal A+\mathfrak q^{2s}\)</span>.
+The <span class="math" data-tex="\(\mathfrak q^{2s}\)">\(\mathfrak q^{2s}\)</span>-part acts by zero by (7.1l).
+The remaining part is <span class="math" data-tex="\(h\)">\(h\)</span> times multiplication by an element of <span class="math" data-tex="\(R\)">\(R\)</span>, applied in an already strictly triangular position.
+Since such multiplication preserves filtration, its resulting operator on <span class="math" data-tex="\(N\)">\(N\)</span> is still strictly block triangular and has zero <span class="math" data-tex="\(K\)">\(K\)</span>-trace.</p>
+<p>Second, moving coefficients gives terms
+<span class="math math-display" data-tex="\[
+[a,\sigma((V_0)_{ij})]m_j
+ -[b,\sigma((U_0)_{ij})]m_j.
+\tag{7.1p}
+\]">\[
+[a,\sigma((V_0)_{ij})]m_j
+ -[b,\sigma((U_0)_{ij})]m_j.
+\tag{7.1p}
+\]</span>
+Each commutator is <span class="math" data-tex="\(h\)">\(h\)</span> times an element of <span class="math" data-tex="\(R\)">\(R\)</span>.
+Each nonzero original position has <span class="math" data-tex="\(w_j&gt;w_i\)">\(w_j&gt;w_i\)</span>.
+The same filtration argument makes this contribution to the operator on <span class="math" data-tex="\(N\)">\(N\)</span> strictly block triangular, of trace zero.</p>
+<p>Third, the mixed matrix terms, after division by <span class="math" data-tex="\(h\)">\(h\)</span> and identification with <span class="math" data-tex="\(N\)">\(N\)</span>, are the ordinary <span class="math" data-tex="\(K\)">\(K\)</span>-matrix
+<span class="math math-display" data-tex="\[
+V_0U_1+V_1U_0-U_0V_1-U_1V_0
+ =[V_0,U_1]+[V_1,U_0].
+\tag{7.1q}
+\]">\[
+V_0U_1+V_1U_0-U_0V_1-U_1V_0
+ =[V_0,U_1]+[V_1,U_0].
+\tag{7.1q}
+\]</span>
+Coefficient multiplication here is exactly multiplication in <span class="math" data-tex="\(K\)">\(K\)</span>, since it acts on <span class="math" data-tex="\(N\)">\(N\)</span>. The trace of each matrix commutator is zero by interchanging the finite summation indices and using commutativity of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>It follows from (7.1o)–(7.1q) that multiplication by
+<span class="math" data-tex="\(c=\{\bar a,\bar b\}\)">\(c=\{\bar a,\bar b\}\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, which is the operator obtained from
+<span class="math" data-tex="\([a,b]=hz\)">\([a,b]=hz\)</span>, where <span class="math" data-tex="\(z\in\mathcal A\)">\(z\in\mathcal A\)</span> lifts <span class="math" data-tex="\(c\)">\(c\)</span>, has zero <span class="math" data-tex="\(K\)">\(K\)</span>-trace.
+For any <span class="math" data-tex="\(c\in R\)">\(c\in R\)</span>, however, multiplication on each quotient
+<span class="math" data-tex="\(\mathfrak m^jN/\mathfrak m^{j+1}N\)">\(\mathfrak m^jN/\mathfrak m^{j+1}N\)</span> is its residue scalar
+<span class="math" data-tex="\(c_0\in K\)">\(c_0\in K\)</span>. In an adapted basis this computes its trace:
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_K(c:N\to N)
+   =\ell_R(N)\,c_0.
+\tag{7.1r}
+\]">\[
+\operatorname{tr}_K(c:N\to N)
+   =\ell_R(N)\,c_0.
+\tag{7.1r}
+\]</span>
+The length is a positive integer, invertible in <span class="math" data-tex="\(K\)">\(K\)</span>.
+Thus the residue of <span class="math" data-tex="\(\{\bar a,\bar b\}\)">\(\{\bar a,\bar b\}\)</span> is zero. We have proved
+<span class="math math-display" data-tex="\[
+\{\mathfrak m,\mathfrak m\}\subseteq\mathfrak m.
+\tag{7.1s}
+\]">\[
+\{\mathfrak m,\mathfrak m\}\subseteq\mathfrak m.
+\tag{7.1s}
+\]</span></p>
+<h3 id="return-to-the-radical-ideal">Return to the radical ideal</h3>
+<p>The needed commutative facts were proved in <a href="../AG-CA/AG-CA-02.html#3-points-left-after-division-and-fibres">AG-CA 02, Theorem 3.1</a> and <a href="../AG-CA/AG-CA-02.html#6-where-a-module-is-visible">Proposition 6.1</a>, and <a href="../AG-CA/AG-CA-03.html#2-polynomial-rings-and-finite-geometric-descriptions">AG-CA 03, Proposition 2.2</a>: prime correspondence for localization, support equal to the annihilator locus for a finite module, and the finite minimal-prime decomposition of a radical in a Noetherian ring. Thus there are finitely many minimal primes
+<span class="math" data-tex="\(\mathfrak p_1,\ldots,\mathfrak p_r\)">\(\mathfrak p_1,\ldots,\mathfrak p_r\)</span> over
+<span class="math" data-tex="\(\operatorname{Ann}_B N\)">\(\operatorname{Ann}_B N\)</span>, with
+<span class="math math-display" data-tex="\[
+\sqrt{\operatorname{Ann}_B N}=\bigcap_j\mathfrak p_j.
+\]">\[
+\sqrt{\operatorname{Ann}_B N}=\bigcap_j\mathfrak p_j.
+\]</span>
+For completeness, the radical is the intersection of the primes containing the annihilator: if <span class="math" data-tex="\(f\)">\(f\)</span> is outside that radical, localization of the quotient at its powers is a nonzero ring. A maximal ideal there contracts to a prime containing the annihilator and excluding <span class="math" data-tex="\(f\)">\(f\)</span>, by the proved localized prime correspondence. Every such prime contains a minimal one: the intersection of a descending chain of primes is prime, so the maximal-chain principle applied with reverse inclusion gives a minimal prime below it. This also proves the displayed finite intersection identity. Apply the finite-length trace argument above at each such prime.
+For <span class="math" data-tex="\(f,g\in\mathfrak p_j\)">\(f,g\in\mathfrak p_j\)</span>, (7.1s) puts
+<span class="math" data-tex="\(\{f,g\}/1\)">\(\{f,g\}/1\)</span> in <span class="math" data-tex="\(\mathfrak p_jB_{\mathfrak p_j}\)">\(\mathfrak p_jB_{\mathfrak p_j}\)</span>.
+Clearing a denominator outside <span class="math" data-tex="\(\mathfrak p_j\)">\(\mathfrak p_j\)</span> and using primality gives
+<span class="math" data-tex="\(\{f,g\}\in\mathfrak p_j\)">\(\{f,g\}\in\mathfrak p_j\)</span>.
+Therefore each minimal support prime is involutive, and so is their finite intersection. For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> the annihilator is the whole ring and the conclusion is immediate.</p>
+<p>Applying this result to the first-order Rees pair proves (7.1), with exactly the original commutator Poisson bracket by (7.1c). This completes the full filtered Noetherian statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>Involutivity here is the coisotropic condition. It requires brackets of two equations for the variety to vanish on the variety. It does <strong>not</strong> require <span class="math" data-tex="\(\{S,I\}\subset I\)">\(\{S,I\}\subset I\)</span>: for the zero section, <span class="math" data-tex="\(\xi_i\in I\)">\(\xi_i\in I\)</span> but <span class="math" data-tex="\(\{\xi_i,x_i\}=1\)">\(\{\xi_i,x_i\}=1\)</span>.</p>
-<p><strong>Corollary 7.1.</strong> Every irreducible component of <span class="math" data-tex="\(\operatorname{Ch}(M)\)">\(\operatorname{Ch}(M)\)</span> has dimension at least <span class="math" data-tex="\(d\)">\(d\)</span>. In particular <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> implies <span class="math" data-tex="\(\dim\operatorname{Ch}(M)\geq d\)">\(\dim\operatorname{Ch}(M)\geq d\)</span>.</p>
-<p><strong>Proof.</strong> For an irreducible component <span class="math" data-tex="\(C\)">\(C\)</span>, remove the other components and choose a smooth point of <span class="math" data-tex="\(C\)">\(C\)</span>. Such points form a dense open set in characteristic zero. On this open set the ideal in (7.1) is the ideal of <span class="math" data-tex="\(C\)">\(C\)</span>, so the same bracket condition holds. Localization preserves it by the quotient rule and the Leibniz identity.</p>
-<p>Let <span class="math" data-tex="\(V=T_p(T^*X)\)">\(V=T_p(T^*X)\)</span>, of dimension <span class="math" data-tex="\(2d\)">\(2d\)</span>, with its nondegenerate symplectic form, and <span class="math" data-tex="\(W=T_pC\)">\(W=T_pC\)</span>. Differentials of functions vanishing on <span class="math" data-tex="\(C\)">\(C\)</span> span its conormal space, the annihilator of <span class="math" data-tex="\(W\)">\(W\)</span>. The symplectic identification sends this conormal space to <span class="math" data-tex="\(W^\perp\)">\(W^\perp\)</span>. Condition (7.1) says that these Hamiltonian vectors annihilate every other defining function, hence are tangent to <span class="math" data-tex="\(C\)">\(C\)</span>. Thus <span class="math" data-tex="\(W^\perp\subset W\)">\(W^\perp\subset W\)</span>. Since <span class="math" data-tex="\(\dim W^\perp=2d-\dim W\)">\(\dim W^\perp=2d-\dim W\)</span>, it follows that <span class="math" data-tex="\(2d-\dim W\leq\dim W\)">\(2d-\dim W\leq\dim W\)</span>, or <span class="math" data-tex="\(\dim C\geq d\)">\(\dim C\geq d\)</span>. Nonzero modules have nonempty characteristic varieties by Section 2, giving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<p>When all components have dimension <span class="math" data-tex="\(d\)">\(d\)</span>, they are Lagrangian at their smooth points: the same inclusion has equal dimensions and becomes <span class="math" data-tex="\(W^\perp=W\)">\(W^\perp=W\)</span>. The next lesson will study these minimal-dimension modules, called holonomic modules, and give an algebraic dimension argument for Weyl algebras.</p>
+<p><strong>Corollary 7.1 (componentwise dimension and coisotropy).</strong> Every irreducible component of <span class="math" data-tex="\(\operatorname{Ch}(M)\)">\(\operatorname{Ch}(M)\)</span> has dimension at least <span class="math" data-tex="\(d\)">\(d\)</span>. In particular <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> implies <span class="math" data-tex="\(\dim\operatorname{Ch}(M)\geq d\)">\(\dim\operatorname{Ch}(M)\geq d\)</span>.</p>
+<p><strong>Proof.</strong> For an irreducible component <span class="math" data-tex="\(C\)">\(C\)</span>, remove the other components and choose a smooth point of <span class="math" data-tex="\(C\)">\(C\)</span>. Such points form a dense open set by the proved <a href="../AG-CA/AG-CA-18.html#3-cotangent-spaces-and-separable-residue-fields">AG-CA 18, Corollary 3.3</a>. On this open set the ideal in (7.1) is the ideal of <span class="math" data-tex="\(C\)">\(C\)</span>, so the same bracket condition holds. Localization preserves it by the quotient rule and the Leibniz identity.</p>
+<p>The cotangent form can be checked directly. For the projection <span class="math" data-tex="\(\pi:T^*X\to X\)">\(\pi:T^*X\to X\)</span>, define the tautological one-form by <span class="math" data-tex="\(\theta_\lambda(v)=\lambda(d\pi(v))\)">\(\theta_\lambda(v)=\lambda(d\pi(v))\)</span>. In cotangent coordinates, <span class="math" data-tex="\(\theta=\sum_i\xi_i\,dx_i\)">\(\theta=\sum_i\xi_i\,dx_i\)</span>, so <span class="math" data-tex="\(\omega=-d\theta=\sum_i dx_i\wedge d\xi_i\)">\(\omega=-d\theta=\sum_i dx_i\wedge d\xi_i\)</span> is closed and nondegenerate. The matrix of this form is invertible in every coordinate chart. Its Hamiltonian bracket has <span class="math" data-tex="\(\{\xi_i,x_j\}=\delta_{ij}\)">\(\{\xi_i,x_j\}=\delta_{ij}\)</span>, agreeing with the commutator symbol convention; this follows by solving <span class="math" data-tex="\(\omega(H_f,-)=df\)">\(\omega(H_f,-)=df\)</span> in these coordinates and evaluating <span class="math" data-tex="\(H_f(g)\)">\(H_f(g)\)</span>. Thus the construction glues independently of coordinates. Let <span class="math" data-tex="\(V=T_p(T^*X)\)">\(V=T_p(T^*X)\)</span>, of dimension <span class="math" data-tex="\(2d\)">\(2d\)</span>, with this form, and <span class="math" data-tex="\(W=T_pC\)">\(W=T_pC\)</span>. By the tangent-space definition, <span class="math" data-tex="\(W\)">\(W\)</span> consists exactly of the tangent vectors that annihilate all local equations of <span class="math" data-tex="\(C\)">\(C\)</span>. Linear algebra therefore identifies the span of their differentials with the conormal space, the annihilator of <span class="math" data-tex="\(W\)">\(W\)</span>. The symplectic identification sends this conormal space to <span class="math" data-tex="\(W^\perp\)">\(W^\perp\)</span>. Condition (7.1) says that these Hamiltonian vectors annihilate every other defining function, hence are tangent to <span class="math" data-tex="\(C\)">\(C\)</span>. Thus <span class="math" data-tex="\(W^\perp\subset W\)">\(W^\perp\subset W\)</span>. Since <span class="math" data-tex="\(\dim W^\perp=2d-\dim W\)">\(\dim W^\perp=2d-\dim W\)</span>, it follows that <span class="math" data-tex="\(2d-\dim W\leq\dim W\)">\(2d-\dim W\leq\dim W\)</span>, or <span class="math" data-tex="\(\dim C\geq d\)">\(\dim C\geq d\)</span>. Nonzero modules have nonempty characteristic varieties by Section 2, giving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Theorem 7.0, components of dimension <span class="math" data-tex="\(d\)">\(d\)</span> are Lagrangian at their smooth points: the inclusion has equal dimensions and becomes <span class="math" data-tex="\(W^\perp=W\)">\(W^\perp=W\)</span>. The next lesson studies minimal whole-dimension modules, called holonomic modules. The independent result below proves the dimension bound needed for their finite-length and duality arguments.</p>
+<h3 id="7-1-an-independent-whole-dimension-bound">7.1. An independent whole-dimension bound</h3>
+<p>The PBW normal form, symbol algebra and left/right Noetherianity are proved in <a href="differential-operators-and-the-weyl-algebra.html#3-why-%C3%A9tale-coordinates-suffice">Differential operators and the Weyl algebra, Theorems 3.2, 4.1 and 5.1</a>, including the smooth-affine extension following Theorem 5.1. Good-filtration existence, comparability and characteristic-support independence are proved in Sections 1–2 above. Those proofs use no algebraic closedness: homogeneous generators, bounded-below reduction and symbol annihilators work over any characteristic-zero field. The geometric prerequisites are the <a href="../AG-CA/AG-CA-18.html#3-cotangent-spaces-and-separable-residue-fields">dense smooth-locus theorem, AG-CA 18 Corollary 3.3</a>, and the <a href="../AG-FSE/smooth-morphisms.html#4-%C3%A9tale-coordinates-and-the-dimension-formula">differential-basis coordinate criterion, AG-FSE Theorem 4.1</a>. The normal-direction decomposition, its coherence, and its characteristic-support calculation are proved below. No involutivity theorem, Gabber theorem, or later closed-immersion equivalence is used.</p>
+<p><strong>Theorem 7.2 (whole-dimension Bernstein inequality).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic zero, let <span class="math" data-tex="\(X/k\)">\(X/k\)</span> be smooth, separated and of finite type, of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a coherent left <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span>-module, quasi-coherent over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Ch}(M)\ge d.
+\tag{7.2}
+\]">\[
+\dim\operatorname{Ch}(M)\ge d.
+\tag{7.2}
+\]</span>
+<p>This concerns the dimension of the whole support. It does not say that every irreducible component has dimension at least <span class="math" data-tex="\(d\)">\(d\)</span>. For a smooth scheme with components of different dimensions, apply the statement separately to each open and closed component where <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>; a bound using a larger component where <span class="math" data-tex="\(M=0\)">\(M=0\)</span> would be false.</p>
+<h4 id="finite-normal-taylor-decomposition">Finite normal Taylor decomposition</h4>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be an affine smooth ring with étale coordinates
+<span class="math" data-tex="\((z_1,\ldots,z_s,t_1,\ldots,t_c)\)">\((z_1,\ldots,z_s,t_1,\ldots,t_c)\)</span>. Put <span class="math" data-tex="\(I=(t_1,\ldots,t_c)\)">\(I=(t_1,\ldots,t_c)\)</span>, <span class="math" data-tex="\(A=R/I\)">\(A=R/I\)</span>, and assume <span class="math" data-tex="\(Z=\operatorname{Spec}A\)">\(Z=\operatorname{Spec}A\)</span> is the smooth coordinate subvariety. All coordinate derivations commute. Write <span class="math" data-tex="\(\partial_i=\partial_{t_i}\)">\(\partial_i=\partial_{t_i}\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+[\partial_i,t_j]=\delta_{ij},\qquad [t_i,\partial_j]=-\delta_{ij}.
+\tag{7.3}
+\]">\[
+[\partial_i,t_j]=\delta_{ij},\qquad [t_i,\partial_j]=-\delta_{ij}.
+\tag{7.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be a left <span class="math" data-tex="\(D_R\)">\(D_R\)</span>-module on which every <span class="math" data-tex="\(t_i\)">\(t_i\)</span> acts locally nilpotently. For each <span class="math" data-tex="\(m\)">\(m\)</span>, if <span class="math" data-tex="\(t_i^{q_i}m=0\)">\(t_i^{q_i}m=0\)</span>, every sufficiently large total-degree monomial in the commuting <span class="math" data-tex="\(t_i\)">\(t_i\)</span> kills <span class="math" data-tex="\(m\)">\(m\)</span>. Thus <span class="math" data-tex="\(I^qm=0\)">\(I^qm=0\)</span> for some <span class="math" data-tex="\(q\)">\(q\)</span> depending on <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+N=\bigcap_i\ker(t_i:L\to L),\qquad
+\pi(m)=\sum_{\alpha\in\mathbf N^c}
+\frac{1}{\alpha!}\partial_t^\alpha t^\alpha m.
+\tag{7.4}
+\]">\[
+N=\bigcap_i\ker(t_i:L\to L),\qquad
+\pi(m)=\sum_{\alpha\in\mathbf N^c}
+\frac{1}{\alpha!}\partial_t^\alpha t^\alpha m.
+\tag{7.4}
+\]</span>
+<p>Every sum is finite on each vector. The projection signs are positive for (7.3). In one variable,
+<span class="math math-display" data-tex="\[
+t\partial^a=\partial^at-a\partial^{a-1},\qquad
+t^a\partial=\partial t^a-at^{a-1}.
+\]">\[
+t\partial^a=\partial^at-a\partial^{a-1},\qquad
+t^a\partial=\partial t^a-at^{a-1}.
+\]</span>
+Substitute these into (7.4) and reindex to obtain <span class="math" data-tex="\(t\pi=0\)">\(t\pi=0\)</span> and <span class="math" data-tex="\(\pi\partial=0\)">\(\pi\partial=0\)</span>. The highest terms vanish by local nilpotence. Different normal directions commute, so the product of the one-variable projections is (7.4). Hence</p>
+<span class="math math-display" data-tex="\[
+\pi(L)\subset N,\quad \pi|_N=\mathrm{id},\quad
+\pi(\partial_t^\alpha n)=0\quad(n\in N,\ \alpha\ne0).
+\tag{7.5}
+\]">\[
+\pi(L)\subset N,\quad \pi|_N=\mathrm{id},\quad
+\pi(\partial_t^\alpha n)=0\quad(n\in N,\ \alpha\ne0).
+\tag{7.5}
+\]</span>
+<p>The reconstruction formula is</p>
+<span class="math math-display" data-tex="\[
+m=\sum_{\alpha\in\mathbf N^c}
+\frac{(-1)^{|\alpha|}}{\alpha!}
+\partial_t^\alpha\pi(t^\alpha m).
+\tag{7.6}
+\]">\[
+m=\sum_{\alpha\in\mathbf N^c}
+\frac{(-1)^{|\alpha|}}{\alpha!}
+\partial_t^\alpha\pi(t^\alpha m).
+\tag{7.6}
+\]</span>
+<p>Insert (7.4) on the right and collect terms with <span class="math" data-tex="\(\gamma=\alpha+\beta\)">\(\gamma=\alpha+\beta\)</span>. The coefficient of <span class="math" data-tex="\(\partial_t^\gamma t^\gamma m\)">\(\partial_t^\gamma t^\gamma m\)</span> is
+<span class="math math-display" data-tex="\[
+\sum_{\alpha\le\gamma}
+ \frac{(-1)^{|\alpha|}}{\alpha!(\gamma-\alpha)!}
+=\frac{1}{\gamma!}\prod_i\sum_{a=0}^{\gamma_i}
+ (-1)^a\binom{\gamma_i}{a}.
+\]">\[
+\sum_{\alpha\le\gamma}
+ \frac{(-1)^{|\alpha|}}{\alpha!(\gamma-\alpha)!}
+=\frac{1}{\gamma!}\prod_i\sum_{a=0}^{\gamma_i}
+ (-1)^a\binom{\gamma_i}{a}.
+\]</span>
+It is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. The sums are finite, proving (7.6). Thus reconstruction, unlike projection, has alternating signs.</p>
+<p>The sum is direct. For <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, commutation followed by (7.5) gives
+<span class="math math-display" data-tex="\[
+\pi(t^\alpha\partial_t^\beta n)
+=\begin{cases}(-1)^{|\alpha|}\alpha!\,n,&amp;\alpha=\beta,\\
+0,&amp;\alpha\ne\beta.
+\end{cases}
+\tag{7.7}
+\]">\[
+\pi(t^\alpha\partial_t^\beta n)
+=\begin{cases}(-1)^{|\alpha|}\alpha!\,n,&amp;\alpha=\beta,\\
+0,&amp;\alpha\ne\beta.
+\end{cases}
+\tag{7.7}
+\]</span>
+If <span class="math" data-tex="\(\alpha\le\beta\)">\(\alpha\le\beta\)</span>, first obtain a scalar multiple of
+<span class="math" data-tex="\(\partial_t^{\beta-\alpha}n\)">\(\partial_t^{\beta-\alpha}n\)</span>; otherwise a remaining <span class="math" data-tex="\(t_i\)">\(t_i\)</span> kills <span class="math" data-tex="\(n\)">\(n\)</span>.
+Applying <span class="math" data-tex="\(\pi t^\alpha\)">\(\pi t^\alpha\)</span> to a finite relation therefore extracts its
+<span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-coefficient. We have proved the <span class="math" data-tex="\(k\)">\(k\)</span>-linear decomposition
+<span class="math math-display" data-tex="\[
+L=\bigoplus_{\alpha\in\mathbf N^c}\partial_t^\alpha N.
+\tag{7.8}
+\]">\[
+L=\bigoplus_{\alpha\in\mathbf N^c}\partial_t^\alpha N.
+\tag{7.8}
+\]</span>
+No assertion that <span class="math" data-tex="\(R=A[t]\)">\(R=A[t]\)</span> has been made; it is generally false on an arbitrary étale chart.</p>
+<h4 id="tangential-action-and-coherence">Tangential action and coherence</h4>
+<p>The ring <span class="math" data-tex="\(A\)">\(A\)</span> acts on <span class="math" data-tex="\(N\)">\(N\)</span> by choosing a coefficient lift to <span class="math" data-tex="\(R\)">\(R\)</span>. Different lifts differ by <span class="math" data-tex="\(I\)">\(I\)</span>, which kills <span class="math" data-tex="\(N\)">\(N\)</span>. The tangential derivations <span class="math" data-tex="\(\partial_{z_j}\)">\(\partial_{z_j}\)</span> preserve <span class="math" data-tex="\(N\)">\(N\)</span>, induce the coordinate derivations of <span class="math" data-tex="\(A\)">\(A\)</span>, and satisfy its differential-operator relations. PBW supplies a left <span class="math" data-tex="\(D_A\)">\(D_A\)</span>-action.</p>
+<p>Suppose <span class="math" data-tex="\(L\)">\(L\)</span> is finite over <span class="math" data-tex="\(D_R\)">\(D_R\)</span>. Expand finitely many generators <span class="math" data-tex="\(m_\ell\)">\(m_\ell\)</span> by (7.6). There are finitely many coefficients
+<span class="math math-display" data-tex="\[
+n_{\ell,\alpha}=\frac{(-1)^{|\alpha|}}{\alpha!}\pi(t^\alpha m_\ell)\in N.
+\]">\[
+n_{\ell,\alpha}=\frac{(-1)^{|\alpha|}}{\alpha!}\pi(t^\alpha m_\ell)\in N.
+\]</span>
+Let <span class="math" data-tex="\(N_0\)">\(N_0\)</span> be their <span class="math" data-tex="\(D_A\)">\(D_A\)</span>-span and <span class="math" data-tex="\(L_0=\sum_\alpha\partial_t^\alpha N_0\)">\(L_0=\sum_\alpha\partial_t^\alpha N_0\)</span>.
+Normal derivations preserve <span class="math" data-tex="\(L_0\)">\(L_0\)</span> by raising exponents. Tangential derivations preserve it because they commute with normal derivations. Coefficient multiplication preserves it by the exact identity
+<span class="math math-display" data-tex="\[
+r\partial_t^\alpha n
+=\sum_{\beta\le\alpha}(-1)^{|\beta|}
+ \binom{\alpha}{\beta}\partial_t^{\alpha-\beta}
+ ((\partial_t^\beta r)n).
+\tag{7.9}
+\]">\[
+r\partial_t^\alpha n
+=\sum_{\beta\le\alpha}(-1)^{|\beta|}
+ \binom{\alpha}{\beta}\partial_t^{\alpha-\beta}
+ ((\partial_t^\beta r)n).
+\tag{7.9}
+\]</span>
+Here <span class="math" data-tex="\((\partial_t^\beta r)n\)">\((\partial_t^\beta r)n\)</span> depends only on its coefficient class in <span class="math" data-tex="\(A\)">\(A\)</span>, and belongs to <span class="math" data-tex="\(N_0\)">\(N_0\)</span>. PBW therefore makes <span class="math" data-tex="\(L_0\)">\(L_0\)</span> a <span class="math" data-tex="\(D_R\)">\(D_R\)</span>-submodule. It contains all the original generators, so <span class="math" data-tex="\(L_0=L\)">\(L_0=L\)</span>. Applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives <span class="math" data-tex="\(N=N_0\)">\(N=N_0\)</span>. Thus <span class="math" data-tex="\(N\)">\(N\)</span> is finite over <span class="math" data-tex="\(D_A\)">\(D_A\)</span>, and Noetherianity proves coherence.</p>
+<p>Sheaf-theoretically, the kernel intersection defining <span class="math" data-tex="\(N\)">\(N\)</span> is quasi-coherent over <span class="math" data-tex="\(Z\)">\(Z\)</span>, because the maps <span class="math" data-tex="\(t_i\)">\(t_i\)</span> are coefficient-linear. Kernels commute with localization. Finite generation on this affine chart therefore gives a coherent <span class="math" data-tex="\(\mathcal D_Z\)">\(\mathcal D_Z\)</span>-module. This proves the required local nilpotent normal-form fact directly.</p>
+<h4 id="a-good-total-order-filtration">A good total-order filtration</h4>
+<p>Choose a good order filtration <span class="math" data-tex="\(G_jN\)">\(G_jN\)</span> generated in degree zero by finitely many <span class="math" data-tex="\(D_A\)">\(D_A\)</span>-generators, with <span class="math" data-tex="\(G_jN=0\)">\(G_jN=0\)</span> for <span class="math" data-tex="\(j&lt;0\)">\(j&lt;0\)</span>. Each piece is finite over <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(\operatorname{gr}_G N\)">\(\operatorname{gr}_G N\)</span> is finite over <span class="math" data-tex="\(A[\zeta_1,\ldots,\zeta_s]\)">\(A[\zeta_1,\ldots,\zeta_s]\)</span>. Define
+<span class="math math-display" data-tex="\[
+F_pL=\bigoplus_{|\alpha|\le p}
+ \partial_t^\alpha G_{p-|\alpha|}N\quad(p\ge0),\qquad
+F_pL=0\quad(p&lt;0).
+\tag{7.10}
+\]">\[
+F_pL=\bigoplus_{|\alpha|\le p}
+ \partial_t^\alpha G_{p-|\alpha|}N\quad(p\ge0),\qquad
+F_pL=0\quad(p&lt;0).
+\tag{7.10}
+\]</span>
+Directness and exhaustiveness follow from (7.8). Formula (7.9) makes each piece an <span class="math" data-tex="\(R\)">\(R\)</span>-submodule.</p>
+<p>Each piece is finite over <span class="math" data-tex="\(R\)">\(R\)</span>. Choose finite <span class="math" data-tex="\(A\)">\(A\)</span>-generators of the finitely many <span class="math" data-tex="\(G_jN\)">\(G_jN\)</span> for <span class="math" data-tex="\(0\le j\le p\)">\(0\le j\le p\)</span>. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, choose a lift <span class="math" data-tex="\(r\in R\)">\(r\in R\)</span>; then
+<span class="math math-display" data-tex="\[
+\partial_t^\alpha(an)
+=\sum_{\beta\le\alpha}\binom{\alpha}{\beta}
+ (\partial_t^\beta r)\partial_t^{\alpha-\beta}n.
+\]">\[
+\partial_t^\alpha(an)
+=\sum_{\beta\le\alpha}\binom{\alpha}{\beta}
+ (\partial_t^\beta r)\partial_t^{\alpha-\beta}n.
+\]</span>
+The finitely many allowed normal powers of those chosen generators therefore generate <span class="math" data-tex="\(F_pL\)">\(F_pL\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span>. This does not extend an <span class="math" data-tex="\(A\)">\(A\)</span>-action to the whole <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Coefficients preserve <span class="math" data-tex="\(F_p\)">\(F_p\)</span>, and normal and tangential derivations take it into <span class="math" data-tex="\(F_{p+1}\)">\(F_{p+1}\)</span>. PBW proves full order compatibility. Symbols of the chosen generators generate the associated graded over the full symbol ring, so this is a good order filtration.</p>
+<p>Send the symbol of <span class="math" data-tex="\(n\in G_jN\)">\(n\in G_jN\)</span>, multiplied by <span class="math" data-tex="\(\eta^\alpha\)">\(\eta^\alpha\)</span>, to the symbol of <span class="math" data-tex="\(\partial_t^\alpha n\)">\(\partial_t^\alpha n\)</span> in degree <span class="math" data-tex="\(j+|\alpha|\)">\(j+|\alpha|\)</span>. The direct sum (7.10) proves bijectivity degree by degree. In (7.9), terms with <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span> lower the total filtration degree, so the coefficient action on the associated graded is through <span class="math" data-tex="\(R\to A\)">\(R\to A\)</span>. Tangential symbols act on <span class="math" data-tex="\(\operatorname{gr}N\)">\(\operatorname{gr}N\)</span>, and normal symbols multiply by <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>. Also
+<span class="math math-display" data-tex="\[
+t_i\partial_t^\alpha n=-\alpha_i\partial_t^{\alpha-e_i}n,
+\]">\[
+t_i\partial_t^\alpha n=-\alpha_i\partial_t^{\alpha-e_i}n,
+\]</span>
+so <span class="math" data-tex="\(t_iF_pL\subset F_{p-1}L\)">\(t_iF_pL\subset F_{p-1}L\)</span>. We obtain an actual graded symbol-module isomorphism
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{gr}_F L&amp;\simeq(\operatorname{gr}_G N)[\eta_1,\ldots,\eta_c],\\
+I\operatorname{gr}_F L&amp;=0.
+\end{aligned}
+\tag{7.11}
+\]">\[
+\begin{aligned}
+\operatorname{gr}_F L&amp;\simeq(\operatorname{gr}_G N)[\eta_1,\ldots,\eta_c],\\
+I\operatorname{gr}_F L&amp;=0.
+\end{aligned}
+\tag{7.11}
+\]</span></p>
+<p>Its support, inside the closed coefficient locus <span class="math" data-tex="\(Z\)">\(Z\)</span>, is
+<span class="math" data-tex="\(\operatorname{Ch}_Z(N)\times\mathbf A^c\)">\(\operatorname{Ch}_Z(N)\times\mathbf A^c\)</span> in these cotangent coordinates.
+Indeed the annihilator of a polynomial extension is the polynomial extension of the annihilator: a polynomial annihilates every constant vector exactly when each coefficient does. Each reduced support component becomes its product with affine <span class="math" data-tex="\(c\)">\(c\)</span>-space. Adjoining <span class="math" data-tex="\(c\)">\(c\)</span> independent transcendental variables to its function field adds <span class="math" data-tex="\(c\)">\(c\)</span> to its dimension. Characteristic-support independence gives
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Ch}_U(L)=\dim\operatorname{Ch}_Z(N)+c.
+\tag{7.12}
+\]">\[
+\dim\operatorname{Ch}_U(L)=\dim\operatorname{Ch}_Z(N)+c.
+\tag{7.12}
+\]</span></p>
+<h4 id="proof-of-the-theorem">Proof of the theorem</h4>
+<p>The coefficient support of a coherent D-module is locally closed without an infinite-union argument. On an affine chart choose finitely many D-generators and their <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-span <span class="math" data-tex="\(H\)">\(H\)</span>. This span is coherent over the Noetherian coefficient ring. Its stalk is zero precisely when all the generators vanish on a neighborhood, precisely when the D-module stalk is zero. Thus the coefficient support equals <span class="math" data-tex="\(\operatorname{Supp}H\)">\(\operatorname{Supp}H\)</span> on that chart. These local closed sets agree, giving a closed set <span class="math" data-tex="\(S=\operatorname{Supp}_{\mathcal O_X}M\)">\(S=\operatorname{Supp}_{\mathcal O_X}M\)</span>.</p>
+<p>Choose a maximal-dimensional irreducible component <span class="math" data-tex="\(Z\)">\(Z\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>, of dimension <span class="math" data-tex="\(s\)">\(s\)</span>, and its generic point <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Give <span class="math" data-tex="\(Z\)">\(Z\)</span> its reduced structure. The earlier dense smooth-locus theorem applies in characteristic zero. Remove the other support components and the nonsmooth locus of <span class="math" data-tex="\(Z\)">\(Z\)</span>. After shrinking about <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, the support is exactly the smooth closed subvariety <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>We construct an affine adapted coordinate neighborhood <span class="math" data-tex="\(U\)">\(U\)</span>, with <span class="math" data-tex="\(Z\cap U=V(t_1,\ldots,t_c)\)">\(Z\cap U=V(t_1,\ldots,t_c)\)</span>, <span class="math" data-tex="\(c=d-s\)">\(c=d-s\)</span>, and tangent coordinates <span class="math" data-tex="\(z_1,\ldots,z_s\)">\(z_1,\ldots,z_s\)</span>. Put <span class="math" data-tex="\(K=k(Z)\)">\(K=k(Z)\)</span> and let <span class="math" data-tex="\(I\)">\(I\)</span> be the ideal of <span class="math" data-tex="\(Z\)">\(Z\)</span>. Smooth local rings are regular by <a href="../AG-CA/AG-CA-18.html#3-cotangent-spaces-and-separable-residue-fields">AG-CA 18 Theorem 3.2</a>, and the <a href="../AG-CA/AG-CA-09.html#4-parameters-measure-dimension-and-height">height formula, AG-CA 09 Theorem 4.3</a>, gives <span class="math" data-tex="\(\dim\mathcal O_{X,\gamma}=c\)">\(\dim\mathcal O_{X,\gamma}=c\)</span>. Its maximal ideal is <span class="math" data-tex="\(I_\gamma\)">\(I_\gamma\)</span>, so <span class="math" data-tex="\(I_\gamma/I_\gamma^2\)">\(I_\gamma/I_\gamma^2\)</span> has dimension <span class="math" data-tex="\(c\)">\(c\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>. The <a href="../AG-CA/AG-CA-16.html#3-the-two-fundamental-sequences">conormal sequence and separable-field differential calculation, AG-CA 16 Theorem 3.3 and Theorem 6.2</a>, give
+<span class="math math-display" data-tex="\[
+I_\gamma/I_\gamma^2\longrightarrow
+\Omega^1_{X/k}\otimes K\longrightarrow\Omega^1_{K/k}\longrightarrow0.
+\]">\[
+I_\gamma/I_\gamma^2\longrightarrow
+\Omega^1_{X/k}\otimes K\longrightarrow\Omega^1_{K/k}\longrightarrow0.
+\]</span>
+The middle and last dimensions are <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>. Thus the first map has rank <span class="math" data-tex="\(c\)">\(c\)</span> and is injective; independence of the conormal differentials has been justified at the actual generic point.</p>
+<p>Choose <span class="math" data-tex="\(t_1,\ldots,t_c\in I\)">\(t_1,\ldots,t_c\in I\)</span> representing this basis and a separating transcendence basis <span class="math" data-tex="\(z_1,\ldots,z_s\)">\(z_1,\ldots,z_s\)</span> of <span class="math" data-tex="\(K/k\)">\(K/k\)</span>. After shrinking, the <span class="math" data-tex="\(z_j\)">\(z_j\)</span> are regular on <span class="math" data-tex="\(Z\)">\(Z\)</span> and have coefficient lifts to <span class="math" data-tex="\(X\)">\(X\)</span>. Their differentials together with the <span class="math" data-tex="\(dt_i\)">\(dt_i\)</span> form a basis of the differential fibre at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Nakayama gives <span class="math" data-tex="\(I_\gamma=(t_1,\ldots,t_c)_\gamma\)">\(I_\gamma=(t_1,\ldots,t_c)_\gamma\)</span>. The finite ambient module <span class="math" data-tex="\(I/(t_1,\ldots,t_c)\)">\(I/(t_1,\ldots,t_c)\)</span> then vanishes on a principal neighborhood by clearing denominators, so these equations define <span class="math" data-tex="\(Z\cap U\)">\(Z\cap U\)</span> scheme-theoretically. Invert the determinant of the combined differentials and apply the earlier coordinate criterion, which holds at arbitrary scheme points. The resulting map <span class="math" data-tex="\(U\to\mathbf A_k^d\)">\(U\to\mathbf A_k^d\)</span> is étale. Its base change along the zero normal-coordinate locus makes <span class="math" data-tex="\(Z\cap U\to\mathbf A_k^s\)">\(Z\cap U\to\mathbf A_k^s\)</span> étale too. No splitting of the coefficient ring is asserted.</p>
+<p>Put <span class="math" data-tex="\(L=\Gamma(U,M)\)">\(L=\Gamma(U,M)\)</span>. It is finite over <span class="math" data-tex="\(D_R\)">\(D_R\)</span>. Since <span class="math" data-tex="\(M|_{D(t_i)}=0\)">\(M|_{D(t_i)}=0\)</span>, quasi-coherent affine localization gives <span class="math" data-tex="\(L[t_i^{-1}]=0\)">\(L[t_i^{-1}]=0\)</span>, so each <span class="math" data-tex="\(t_i\)">\(t_i\)</span> acts locally nilpotently. Apply the proved normal decomposition and filtration.</p>
+<p>The resulting <span class="math" data-tex="\(N\)">\(N\)</span> is nonzero at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Kernels commute with stalk localization, and (7.6) holds in the localized module too. If their intersection were zero there, reconstruction would force <span class="math" data-tex="\(M_\gamma=0\)">\(M_\gamma=0\)</span>.</p>
+<p>We have <span class="math" data-tex="\(\dim\operatorname{Ch}_Z(N)\ge s\)">\(\dim\operatorname{Ch}_Z(N)\ge s\)</span> by an elementary graded support argument, rather than a Bernstein inequality on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Choose the filtration above generated in degree zero. Its degree-zero term is nonzero at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>: its elements generate <span class="math" data-tex="\(N\)">\(N\)</span> over <span class="math" data-tex="\(D_Z\)">\(D_Z\)</span>, so their simultaneous vanishing would imply <span class="math" data-tex="\(N_\gamma=0\)">\(N_\gamma=0\)</span>. The degree-zero part of
+<span class="math math-display" data-tex="\[
+(\operatorname{gr}N)/(\zeta_1,\ldots,\zeta_s)\operatorname{gr}N
+\]">\[
+(\operatorname{gr}N)/(\zeta_1,\ldots,\zeta_s)\operatorname{gr}N
+\]</span>
+at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is that nonzero coefficient space. More explicitly, <span class="math" data-tex="\(E=(\operatorname{gr}_G N)\otimes_A K\)">\(E=(\operatorname{gr}_G N)\otimes_A K\)</span> is nonnegatively graded with <span class="math" data-tex="\(E_0\ne0\)">\(E_0\ne0\)</span>. Hence <span class="math" data-tex="\(E/(\zeta)E\ne0\)">\(E/(\zeta)E\ne0\)</span>; this quotient remains nonzero on localization at <span class="math" data-tex="\((\zeta)\subset K[\zeta]\)">\((\zeta)\subset K[\zeta]\)</span>, so <span class="math" data-tex="\(E\)">\(E\)</span> also remains nonzero there. Thus the zero cotangent vector over <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> belongs to <span class="math" data-tex="\(\operatorname{Ch}_Z(N)\)">\(\operatorname{Ch}_Z(N)\)</span>. Closedness makes its closure, the zero section over <span class="math" data-tex="\(Z\cap U\)">\(Z\cap U\)</span>, belong to that support. Its dimension is <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>Equation (7.12) now yields
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Ch}_U(M)\ge s+c=d.
+\]">\[
+\dim\operatorname{Ch}_U(M)\ge s+c=d.
+\]</span>
+Characteristic support restricts to <span class="math" data-tex="\(T^*U\)">\(T^*U\)</span>; its dimension there is at most its global dimension. This proves (7.2). The argument includes <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, with no normal variables and identity projection, and <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, with no tangential variables. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inequality holds for right modules as well. The canonical-bundle side change proved in the preceding connection lesson sends a right module to a coherent left module. In a volume trivialization, transposition fixes coefficient symbols and negates covector symbols; its volume correction has order zero. The induced map <span class="math" data-tex="\((x,\xi)\mapsto(x,-\xi)\)">\((x,\xi)\mapsto(x,-\xi)\)</span> preserves each conic characteristic support, and tensoring with a line bundle changes no support. Thus it preserves characteristic dimension and the left inequality applies.</p>
 <h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
 <p><strong>Exercise 8.1 (easy).</strong> Compute the characteristic variety and cycle of the Airy module <span class="math" data-tex="\(A_1/A_1(\partial^2-x)\)">\(A_1/A_1(\partial^2-x)\)</span>. Give its underlying finite-rank connection.</p>
 <p><strong>Solution.</strong> The principal symbol is <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span>, so Theorem 5.1 gives the zero section as the reduced support. Localization of <span class="math" data-tex="\(k[x,\xi]/(\xi^2)\)">\(k[x,\xi]/(\xi^2)\)</span> at <span class="math" data-tex="\((\xi)\)">\((\xi)\)</span> has two residue-field factors as in (3.2); the cycle is <span class="math" data-tex="\(2[Z]\)">\(2[Z]\)</span>. Division by the operator monic in <span class="math" data-tex="\(\partial\)">\(\partial\)</span> gives the free <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>-basis <span class="math" data-tex="\(e_0=e\)">\(e_0=e\)</span>, <span class="math" data-tex="\(e_1=\partial e\)">\(e_1=\partial e\)</span>. The actions <span class="math" data-tex="\(\partial e_0=e_1\)">\(\partial e_0=e_1\)</span>, <span class="math" data-tex="\(\partial e_1=x e_0\)">\(\partial e_1=x e_0\)</span> give the connection matrix</p>
@@ -458,14 +1009,15 @@ A(x)=\begin{pmatrix}0&amp;x\\1&amp;0\end{pmatrix}.
 <p><strong>Exercise 8.6 (medium).</strong> Let <span class="math" data-tex="\(0\to M&#x27;\to M\to M&#x27;&#x27;\to0\)">\(0\to M&#x27;\to M\to M&#x27;&#x27;\to0\)</span> be exact. Prove the union formula for characteristic varieties using induced filtrations, and identify the precise dimension range in which component multiplicities are additive.</p>
 <p><strong>Solution.</strong> Give <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> the intersection filtration and <span class="math" data-tex="\(M&#x27;&#x27;\)">\(M&#x27;&#x27;\)</span> the image filtration from a good filtration of <span class="math" data-tex="\(M\)">\(M\)</span>. Their Rees modules are a finite submodule and quotient of the Rees module of <span class="math" data-tex="\(M\)">\(M\)</span>, so both filtrations are good. Strictness gives (4.3). An exact sequence of localized symbol modules has a zero middle term precisely when both end terms are zero, giving the union formula. At a generic point of a component of maximal dimension <span class="math" data-tex="\(r\)">\(r\)</span> of the union, all nonzero terms have finite length. Their lengths add, proving additivity of the dimension-<span class="math" data-tex="\(r\)">\(r\)</span> cycles. For a component of an end term contained properly in a larger component of the middle support, it is no longer a component of that union; no such formula for the full mixed-dimensional cycle follows. The example <span class="math" data-tex="\(\mathcal D_X\oplus\mathcal O_X\)">\(\mathcal D_X\oplus\mathcal O_X\)</span> in Section 4 shows the failure explicitly.</p>
 <h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
-<p>Gabber's involutivity theorem is the external theorem used in Section 7, in exactly its filtered-ring characteristic-zero form [Kashiwara–Schapira, Theorem 11.2.2]. We prove its symplectic dimension consequence, not its general algebraic proof. [Ginzburg, Theorem 1.2.5 and Corollary 1.2.10] give the same involutivity statement and discuss its proof. Proving that an unradicalized symbol ideal is closed under brackets does not by itself prove the theorem about its radical.</p>
+<p>Theorem 7.0 proves radical-annihilator involutivity in the full filtered Noetherian setting, using the first-order Rees quotient, exact fraction localization, the finite Artin coefficient field and the finite-length trace. Corollary 7.1 proves coisotropy and the dimension bound for each irreducible characteristic component. Theorem 7.2 separately proves the whole-dimension inequality without using involutivity. No step infers radical bracket closure merely from bracket closure of an unreduced symbol ideal.</p>
 <p>The remaining imported background consists of elementary support and length theory for finite modules over Noetherian commutative rings, smooth adapted étale coordinates for a smooth closed embedding, and the cotangent bundle's nondegenerate symplectic form. The normal-form and Noetherian arguments for <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span>, and canonical-bundle side-changing, were proved in the preceding lessons. This lesson proves filtration existence and comparability, support and multiplicity independence, the exact-sequence statements, the cyclic hypersurface formula, the zero-section criterion, and all displayed characteristic-variety and cycle calculations. It does not prove regularity or classify all extensions of the punctured-line connection.</p>
 <h2 id="references">References</h2>
 <ul>
 <li>M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §6.4 and §10.1, for involutivity and the characteristic variety of analytic D-modules; V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, for good filtrations. The Rees Noetherian argument above proves the good-submodule property in the algebraic setting used here.</li>
 <li>Victor Ginzburg, with Vladimir Baranovsky and Sam Evens, <em>Lectures on D-modules</em>, 1998, Sections 1.1.10–1.1.23 for good filtrations and lattice comparison; Theorem 1.2.5 and Corollary 1.2.10 for involutivity. <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf">University-hosted notes</a>. Multiplicities in this lesson are the generic composition lengths (3.1); Exercise 8.3 explains why reduction before taking a rank loses information.</li>
+<li>Jyoti Singh and Shiv Datt Kumar, <em>On the Involutivity of the Characteristic Variety</em>, Sections 3–5. <a href="https://www.researchgate.net/publication/263610454_On_the_Involutivity_of_the_Characteristic_Variety">Free full-text version uploaded by the author</a>. The coefficient-field construction and the full first-order trace calculation used here are proved in Section 7.</li>
 <li>Roman Bezrukavnikov, <em>Noncommutative Algebra</em>, MIT 18.706, spring 2023, Section 24.6 for the related filtered growth dimension of a module. <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/">Open course materials</a>. That dimension and the Bernstein filtration will be treated in the next lesson.</li>
-<li>Alexander Beilinson and Vladimir Drinfeld, <em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em>, Section 1.1.4 for the filtration on differential operators and its cotangent interpretation. The calculation here concerns smooth varieties; it does not assume a global filtration on a stack.</li>
+<li>Alexander Beilinson and Vladimir Drinfeld, <a href="https://www.math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em>, free author draft</a>, Section 1.1.4 for the filtration on differential operators and its cotangent interpretation. The calculation here concerns smooth varieties; it does not assume a global filtration on a stack.</li>
 <li>The Stacks project, <em>Commutative Algebra</em>, <a href="https://stacks.math.columbia.edu/tag/09CH">Tag 09CH, Differential operators</a>, as compared in the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-differential-operators">AI Integrated Stacks Project English reader</a>. AI Integrated Stacks Project is an edition with AI-proposed corrections and additions, not reviewed by the official Stacks maintainers. The characteristic variety and cycle constructions here go beyond that section.</li>
 </ul>
 

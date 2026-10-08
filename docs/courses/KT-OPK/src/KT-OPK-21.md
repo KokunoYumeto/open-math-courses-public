@@ -737,9 +737,9 @@ Both coefficient algebras and both crossed products are separable, since the gro
 \tag{6.4}
 \]
 
-These are the actual Morita inverse products of [*Connections and the existence of the Kasparov product*, Proposition 7.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-c9822bcc4659). Their evaluation maps are proved in [*Imprimitivity bimodules and Morita equivalence*, Theorem 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/hilbert-c-star-modules-and-morita-equivalence/imprimitivity-bimodules-and-morita-equivalence.html).
+These are the actual Morita inverse products of [*Connections and the existence of the Kasparov product*, Proposition 7.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-09.html#7-morita-and-external-products). Their evaluation maps are proved in [*Imprimitivity bimodules and Morita equivalence*, Theorem 3.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/hilbert-c-star-modules-and-morita-equivalence/imprimitivity-bimodules-and-morita-equivalence.html).
 
-For the real action \(\tau\), use the Thom class \(t_\tau\in KK^1(M_\alpha,C)\) and its inverse \(d_\tau\in KK^1(C,M_\alpha)\) from [*Descent and the K-theory of crossed products*, §§4–6, Theorem 6.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-e674f564ac7f). In that lesson's positive Fourier and right-Clifford conventions, \(d_\tau=-t_{\widehat\tau}\widehat\otimes m_\tau\), where \(m_\tau\) is the Takai Morita class. Both inverse identities are part of that theorem. Define
+For the real action \(\tau\), use the Thom class \(t_\tau\in KK^1(M_\alpha,C)\) and its inverse \(d_\tau\in KK^1(C,M_\alpha)\) from [*Descent and the K-theory of crossed products*, §§4–6, Theorem 6.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-18.html#6-the-fack-skandalis-argument). In that lesson's positive Fourier and right-Clifford conventions, \(d_\tau=-t_{\widehat\tau}\widehat\otimes m_\tau\), where \(m_\tau\) is the Takai Morita class. Both inverse identities are part of that theorem. Define
 
 \[
 \begin{aligned}

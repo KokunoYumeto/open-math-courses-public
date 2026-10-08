@@ -2,7 +2,7 @@
 
 For a smooth map of manifolds, a selected covector has two associated cotangent points. The direction on the source controls a microlocal direct image; the direction on the target controls an inverse image. When the relevant cotangent map is transverse to the input Lagrangian, the output is a bounded germ with a smooth Lagrangian microsupport bound. Its coefficient type can then be calculated by the graph kernel.
 
-Use The type and shift of a transverse kernel composition for the graph-kernel degree formula. The formal operations, their representation and their relative dualizing comparison use the exact programme proofs linked below. Those arguments retain their stated geometric and sheaf-operation prerequisites. Coefficients are arbitrary bounded complexes over a commutative finite-global-dimension ring \(k\). Manifolds are smooth, finite dimensional, real, Hausdorff and second countable.
+Use [the ordered transverse-composition formula](the-type-and-shift-of-a-transverse-kernel-composition.md#the-ordered-middle-index) for the graph-kernel degree calculation. The [conormal coefficient normalization](../../microlocal-composition-and-pure-sheaves/src/pure-and-simple-sheaves-from-directional-tests.md#type-purity-and-simplicity) gives the graph kernel its half-codimension shift. The formal operations, their representation and their relative dualizing comparison use the exact programme proofs linked below. Those arguments retain their stated geometric and sheaf-operation prerequisites. Coefficients are arbitrary bounded complexes over a commutative finite-global-dimension ring \(k\). Manifolds are smooth, finite dimensional, real, Hausdorff and second countable.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
@@ -87,7 +87,7 @@ f_{!,p}^\mu G
 \qquad\text{(4)}
 \]
 
-The direct-image germ-neighborhood proof identifies this system with the formal operation indexed by all incoming denominators. Its local isolated incidence, supplied by (2), satisfies the isolated direct-image representation theorem, so it is represented by an ordinary bounded object. That theorem identifies the ordinary microlocal direct image with it by the **canonical** proper-to-ordinary comparison. It also confines its microsupport witnesses to an arbitrarily small neighborhood of \(p\), giving the bound by \(\Lambda_X\).
+Here \(G_U\) denotes extension by zero of the restriction of \(G\) to the open neighborhood \(U\). The [direct-image germ-neighborhood proof](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-direct-germs--direct-images-use-the-germ-at-the-chosen-basepoint) identifies this system with the formal operation indexed by all incoming denominators. Its local isolated incidence, supplied by (2), satisfies the [isolated direct-image representation theorem](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-direct-rep--isolated-incidence-and-proper-support), so it is represented by an ordinary bounded object. That theorem identifies the ordinary microlocal direct image with it by the **canonical** proper-to-ordinary comparison. It also confines its microsupport witnesses to an arbitrarily small neighborhood of \(p\), giving the bound by \(\Lambda_X\).
 
 For (3), the represented ordinary and exceptional microlocal inverse images are
 
@@ -103,7 +103,7 @@ f_{\mu,p}^{!}F
 \qquad\text{(5)}
 \]
 
-All indexing arrows are isomorphisms at \(p_X\), with the two opposite variances shown. The formal-operation definitions and comparison maps fix those variances and the particular arrow in (5). The isolated inverse-image representation theorem applies because (3) isolates the lift over \(p_Y\). It represents both formal objects, identifies the displayed canonical comparison and confines their microsupport to \(\Lambda_Y\). Locally \(\omega_{Y/X}=\operatorname{or}_{Y/X}[\dim Y-\dim X]\); the relative orientation line is retained before any trivialization.
+All indexing arrows are isomorphisms at \(p_X\), with the two opposite variances shown. The [formal-operation definitions](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-four--four-microlocal-operations-and-their-variance) fix those variances, and the [canonical comparison construction](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-adjunction--the-comparison-maps-before-representability) fixes the particular arrow in (5), including its ambient category before representability. The [isolated inverse-image representation theorem](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-pull-rep--when-microlocal-inverse-images-are-ordinary-objects) applies because (3) isolates the lift over \(p_Y\). It represents both formal objects, identifies the displayed canonical comparison and confines their microsupport to \(\Lambda_Y\). Locally \(\omega_{Y/X}=\operatorname{or}_{Y/X}[\dim Y-\dim X]\); the relative orientation line is retained before any trivialization.
 
 Quotation marks in (4)–(5) denote formal pro or ind objects. They do not denote an ordinary inverse or direct limit of sheaves. The representation theorem concerns their morphisms against test objects. Likewise these represented germs need not be the ordinary global images of the original representative. That stronger statement requires the separate full-fibre and support/noncharacteristic hypotheses of the representation theorem.
 
@@ -132,16 +132,16 @@ d_{\mathrm{dir}}
 \qquad\text{(7)}
 \]
 
-**Proof.** Let \(\Gamma_f\subset X\times Y\) be the graph and \(\delta_f(y)=(f(y),y)\). Its codimension is \(\dim X\), so its constant kernel \(k_{\Gamma_f}\) is simple with normalized shift \(\dim X/2\), including at the zero conormal. The ordinary closed-graph projection formula is
+**Proof.** Let \(\Gamma_f\subset X\times Y\) be the graph and \(\delta_f(y)=(f(y),y)\). Its codimension is \(\dim X\), so its constant kernel \(k_{\Gamma_f}\) has coefficient type \(k\) with normalized shift \(\dim X/2\), including at the zero conormal. This coefficient-type statement also covers the zero ring; simplicity is not needed for the graph calculation. The ordinary [closed-graph projection formula](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-projection-proof-projection-arbitrary-coefficients) gives
 
 \[
 k_{\Gamma_f}\otimes^Lq_Y^{-1}G\simeq\delta_{f*}G,
 \qquad Rq_{X!}\delta_{f*}G\simeq Rf_!G.
 \]
 
-Closed direct image introduces no exceptional orientation factor here.
+The second identification is [composition of proper-support images](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#composing-proper-images-and-preserving-c-softness-proper-image-composition), applied to the closed graph embedding and its target projection. Closed direct image introduces no exceptional orientation factor here.
 
-We can identify the formal systems using the bounded-composition comparison, formula (8). Its two fixed-base conditions hold for this graph before any kernel replacement. With the output covector fixed at \(p_X\), the graph forces the sole middle covector \(p_Y=df_{y_0}^t\xi_0\), which is condition (4) of that provider. A zero output covector forces a zero middle covector, excluding its nonzero cancellation in condition (5). Local composability follows from the incidence immersion already proved. Thus its canonical comparison is
+We can identify the formal systems using [the bounded-composition comparison, formula (8)](../../microlocal-composition-and-pure-sheaves/src/microlocal-composition-at-prescribed-covectors.md#why-the-formal-composition-is-a-bounded-germ). Its two fixed-base conditions hold for this graph before any kernel replacement. With the output covector fixed at \(p_X\), the graph forces the sole middle covector \(p_Y=df_{y_0}^t\xi_0\), which is condition (4) of that provider. A zero output covector forces a zero middle covector, excluding its nonzero cancellation in condition (5). Local composability follows from the incidence immersion already proved. Thus its canonical comparison is
 
 \[
 k_{\Gamma_f}\circ_\mu G
@@ -150,7 +150,7 @@ k_{\Gamma_f}\circ_\mu G
 \simeq\text{“}\!\lim_{U\ni y_0}\!\text{”}\,Rf_!(G_U).
 \]
 
-The second map is the same closed-graph calculation on each ordinary term, and commutes with restriction and denominator transitions. The direct-germ theorem MC.25 identifies the last system with (4). This proves the required graph comparison as a formal morphism comparison, without declaring base restrictions cofinal among all kernel denominators before convolution.
+The second map is the same closed-graph calculation on each ordinary term, and commutes with restriction and denominator transitions. The [direct-germ theorem MC.25](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-direct-germs--direct-images-use-the-germ-at-the-chosen-basepoint) identifies the last system with (4). This proves the required graph comparison as a formal morphism comparison, without declaring base restrictions cofinal among all kernel denominators before convolution.
 
 The graph's twisted middle map is \(f_d\). Its transversality to \(\Lambda_Y\) is precisely the hypothesis for general kernel composition. The first propagated plane is \(B_Y\), and the second is \(A_Y\), because the last manifold is a point. The general relation index is consequently the ordered source-space index (6). Substitution into the composition theorem gives
 \(\dim X/2+d-(\dim Y+r_Y)/2\), which is (7), with coefficient \(k\otimes^L L=L\). The represented output has exactly the Lagrangian bound already established in (2). \(\square\)
@@ -168,7 +168,7 @@ f_{\mu,p}^{-1}F\text{ has type }L\text{ with shift }d.
 
 **Proof.** Use \(\Gamma_f\subset Y\times X\) as the transposed graph kernel. Its codimension remains \(\dim X\), hence its normalized shift is \(\dim X/2\). For every ordinary representative \(F'\), projection of this graph to \(Y\) is the identity, and the closed-graph tensor calculation gives \(k_{\Gamma_f}\circ F'=f^{-1}F'\), with no orientation or exceptional-inverse factor.
 
-To pass to the selected germ, use the good incoming representatives \(F'\to F\) constructed in the proof of MC.14–MC.18. They are cofinal among incoming denominators; each is noncharacteristic near \(y_0\) and its entire fixed-base incidence over \(p_Y\) contains only \(p_X\). For the pair \((k_{\Gamma_f},F')\), the latter property is the fixed-base condition (4) of the bounded-composition comparison. Noncharacteristicity excludes a nonzero \(\xi\in\operatorname{SS}(F')_{x_0}\) with \(df_{y_0}^t\xi=0\), which is exactly its cancellation condition (5).
+To pass to the selected germ, use the good incoming representatives \(F'\to F\) constructed in the proof of [MC.14–MC.18](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-pull-rep--when-microlocal-inverse-images-are-ordinary-objects). They are cofinal among incoming denominators; each is noncharacteristic near \(y_0\) and its entire fixed-base incidence over \(p_Y\) contains only \(p_X\). For the pair \((k_{\Gamma_f},F')\), the latter property is the fixed-base condition (4) of the [bounded-composition comparison](../../microlocal-composition-and-pure-sheaves/src/microlocal-composition-at-prescribed-covectors.md#why-the-formal-composition-is-a-bounded-germ). Noncharacteristicity excludes a nonzero \(\xi\in\operatorname{SS}(F')_{x_0}\) with \(df_{y_0}^t\xi=0\), which is exactly its cancellation condition (5).
 
 Its formula (8) therefore expresses the graph action by the formal system
 
@@ -238,7 +238,7 @@ For an explicit sign check, write the three vectors as \((0,u),(v,0),(w,aw)\), w
 
 The relative dimension is zero. Formula (7) therefore gives shift \(1/2\) at \(+dx\) and \(-1/2\) at \(-dx\), both with type \(k\).
 
-The map \(y\mapsto y^2\) is proper, and the entire incidence over each fixed nonzero \((0;\xi)\) consists of the single lift \(y=0\). Thus the original ordinary direct image represents the microlocal image by the full proper isolated-incidence prerequisite. Proper base change gives its stalks: zero for \(x<0\), \(k\) at zero, and \(k\oplus k\) for \(x>0\). The generization to the two positive branches is the diagonal \(k\to k\oplus k\).
+The map \(y\mapsto y^2\) is proper, and the entire incidence over each fixed nonzero \((0;\xi)\) consists of the single lift \(y=0\). Thus the original ordinary direct image represents the microlocal image by the full proper isolated-incidence prerequisite. [Proper base change](../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#composing-proper-images-and-preserving-c-softness-proper-image-composition) gives its stalks: zero for \(x<0\), \(k\) at zero, and \(k\oplus k\) for \(x>0\). The generization to the two positive branches is the diagonal \(k\to k\oplus k\).
 
 ## A diagram of the fold and its two tests
 
@@ -309,4 +309,4 @@ Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://we
 
 Theorem 7.3.3, printed pp. 132–135 (PDF pp. 135–138), states that ordinary inverse image preserves the normalized pure shift. It assumes noncharacteristic pullback as well as transverse, embedded and isolated incidence. The direct and inverse statements above concern represented germs at one selected lift; identifying them with the original global images requires the separate full-fibre and support hypotheses explained after (5).
 
-The linked programme proofs of isolated inverse-image representation, direct-image germ neighborhoods, and isolated direct-image representation construct those selected operations. The comparison-map construction supplies the relative orientation complex and canonical arrow. The graph calculations above apply the transverse composition formula to arbitrary bounded coefficient complexes. The fold computes the actual stalk maps and support tests, checking both the source-space index and the two half-integer degrees.
+The linked programme proofs of [isolated inverse-image representation](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-pull-rep--when-microlocal-inverse-images-are-ordinary-objects), [direct-image germ neighborhoods](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-direct-germs--direct-images-use-the-germ-at-the-chosen-basepoint), and [isolated direct-image representation](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-direct-rep--isolated-incidence-and-proper-support) construct those selected operations. The [comparison-map construction](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-adjunction--the-comparison-maps-before-representability) supplies the relative orientation complex and canonical arrow. The graph calculations above apply the [transverse composition formula](the-type-and-shift-of-a-transverse-kernel-composition.md#the-ordered-middle-index) to arbitrary bounded coefficient complexes. The fold computes the actual stalk maps and support tests, checking both the source-space index and the two half-integer degrees.

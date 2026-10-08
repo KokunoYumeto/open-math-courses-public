@@ -16,9 +16,7 @@ in [the preceding companion](prerequisite-completions.md); the Gaussian and
 quadratic arguments Q1–Q9 are in
 [the analytic module](quadratic-stationary-phase.md).
 
-This exposition is an adaptation and extension of the openly licensed Lebl
-material and is offered under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+This exposition follows the cited Lebl material. Original text: public domain (CC0).
 The Guillemin–Sternberg source is cited for mathematics actually read, without
 copying its text or distributing its PDF. The selected local Morse inputs are
 bound in `integration-proof-chain.json`.

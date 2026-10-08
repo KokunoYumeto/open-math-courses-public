@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
-The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity, a finite-generator reduction of the parity question, ordinary Lefschetz and IC parity for homogeneous affine cones, and parity for every quasi-minuscule label. The root-coordinate resolution and bounded flag comparison hold over other algebraically closed ground fields. The rational-adic Euler calculation in §5.14 proves the parity implication under an explicit supported-localization hypothesis; that geometric hypothesis remains to be proved in this generality. The general parity theorem is concluded in Lesson 11 after the classical tensor equivalence; this lesson proves its geometric inputs and conditional generator criterion.
+The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity, a finite-generator reduction of the parity question, ordinary Lefschetz and IC parity for homogeneous affine cones, and parity for every quasi-minuscule label. The root-coordinate resolution and bounded flag comparison hold over other algebraically closed ground fields. The rational-adic Euler calculation in §5.14 and Appendix A proves quasi-minuscule stalk and costalk parity over every algebraically closed ground field with ell invertible, for finite rational coefficient extensions, including the supported Kummer comparison and actual coefficient maps. Appendix B establishes the underlying genuine finite-jet rational Satake heart over every algebraically closed field with \(\ell\) invertible, for finite \(E/\mathbf Q_\ell\): jet independence, constant equivariant orbit systems, simple classification, raw duality twists and exact faithful cohomology. The automatic orbit-constructible equivariance theorem of §2.2 retains its classical complex scope. The general parity theorem is concluded in Lesson 11 after the classical tensor equivalence; this lesson proves its geometric inputs and conditional generator criterion.
 
 Full classical characteristic-zero semisimplicity is proved later in Identifying the dual group, Theorem 8.3, using the convolution and reconstruction developed after this lesson and the vanishing of IC self-extensions. That proof also gives every standard-object equality. It is proved before general ordinary IC parity, which is then concluded in that lesson, Theorem 8.4. The later equivalence is not an input to the constructions in this lesson.
 
@@ -1127,62 +1127,25 @@ Its complex fibre is ample by the product of fundamental highest-line embeddings
 
 ### 5.14. The isolated IC calculation in rational-adic coefficients
 
-**Proposition 5.14 (conditional isolated-stratum calculation).** Let \(k\) be algebraically closed, \(\ell\) invertible, \(E/\mathbf Q_\ell\) finite, and \(\xi\) a dominant short coroot. Use the proper line resolution (5.35), and put \(d=\langle2\rho,\xi\rangle\), \(n=\dim Y=d-1\), \(L=L_\theta\). Write \(i:\{t^0\}\to U\), \(j:U\setminus\{t^0\}\to U\), and \(i_Y:Y\to L\), \(j_L:L^\times\to L\). In a constructible finite-system theory with proper base change and the recollement properties used in §1, assume that \(E[d]\) is perverse on this open stratum and that the following supported comparison holds, compatibly with coefficient reduction:
+**Theorem 5.14 (rational isolated-stratum parity).** Let \(k\) be algebraically closed, \(\ell\) invertible, \(E/\mathbf Q_\ell\) finite, and \(\xi\) a dominant short coroot. Use the proper line resolution (5.35), and put \(d=\langle2\rho,\xi\rangle\), \(n=\dim Y=d-1\), and \(L=L_\theta\). In the actual rational constructible theory of Semi-infinite orbits and weight functors, Appendices M–Q, the raw quasi-minuscule IC has stalk and costalk parity \(d\) at every geometric closed point.
+
+The finite supported comparison is the actual distinguished triangle
 \[
 \Lambda_{m,Y}(-1)[-2]
- \xrightarrow{\ c_1(L)\ }\Lambda_{m,Y}
- \longrightarrow i_Y^*Rj_{L*}\Lambda_m,
- \qquad \Lambda_m=\mathbf Z/\ell^m.
+\xrightarrow{\,c_1(L)\,}\Lambda_{m,Y}
+\longrightarrow i_Y^*Rj_{L,*}\Lambda_m\longrightarrow,
+\qquad \Lambda_m=\mathbf Z/\ell^m,
 \tag{P06}
 \]
-Here (P06) is a distinguished triangle, with its specified Kummer orientation and forget-support map. Assume also that its rational finite-system realization respects this triangle and closed restriction. Then the stalk and costalk of the intermediate extension at \(t^0\) vanish outside parity \(d\).
+with the positive Kummer orientation and forget-support map. Appendix A proves this triangle and its integral and rational realizations, including ordinary closed restriction and the actual open image.
 
-The geometric comparison (P06) is an additional hypothesis. The one-dimensional Kummer calculation in Poincaré duality for curves, Lemma 4.2 identifies the orientation at zero of \(\mathbf A^1\). Pulling it to \(\mathbf A^1\times V\), for a line-bundle chart \(V\subset Y\), also requires comparison of the complementary open direct image. That comparison is not supplied by the trait calculation alone. Thus the argument here proves the implication from (P06), rather than an unconditional rational-adic parity theorem over every ground field.
-
-**Proof.** Put \(e=c_1(L)\). The stated sign can be checked from the specified orientation: the zero section is a Cartier divisor with fibre coordinate as local equation. Ratios of these equations are the transition units of \(\mathcal O(Y)\). Their Kummer boundary is its first Chern class, and restriction of \(\mathcal O(Y)\) to \(Y\) is the normal line \(L\). This verifies the negative-tautological sign in (P06); it does not establish the supported comparison itself.
-
-Applying sections to the assumed triangle (P06) gives
+**Proof.** Lemma A.1.1.1 constructs the zero-section purity map by smooth trace and transitivity. Lemma A.1.2.1 identifies its global forget-support map by the relative Kummer class of the divisor line, whose zero-section restriction is \(L\). Theorems A.2.1.1–A.2.2.1 give (P06) and its actual coefficient realizations. Proper composition and base change in Lemma A.2.3.1 then identify the vertex stalk with the Euler cone
 \[
-C_m=\operatorname{cone}\left(
-R\Gamma(Y,\Lambda_m(-1))[-2]
- \xrightarrow{\ e\ }R\Gamma(Y,\Lambda_m)\right)
- \simeq i^*Rj_*\Lambda_m.
-\tag{5.58}
-\]
-Indeed \(Rj_*=Rf_{L*}Rj_{L*}\), by composition and the isomorphism of punctured opens. Proper base change for \(f_L\) then computes its point stalk by \(R\Gamma(Y,i_Y^*Rj_{L*}\Lambda_m)\). This uses a proper comparison after composition.
-
-Theorem 5.13 gives finite free even flag cohomology and coefficient-compatible bases. The integral flag complex is bounded perfect, with these reductions; its Euler map is the same Kummer class. The cones in (5.58) are therefore reductions of a bounded perfect complex. Their derived inverse limit, tensored with \(E\), gives
-\[
-C=\operatorname{cone}\left(
-R\Gamma(Y,E(-1))[-2]\xrightarrow{\ e\ }R\Gamma(Y,E)\right)
- =i^*Rj_*E.
+C=\operatorname{Cone}\left(
+R\Gamma(Y,E(-1))[-2]\xrightarrow{\,c_1(L)\,}R\Gamma(Y,E)\right).
 \tag{5.59}
 \]
-This also proves bounded constructibility of this particular open image: it is constant on its smooth open, and has the displayed finite cohomology at its only boundary point. Ordinary image preserves the integral inverse limit because it is a right adjoint. The assumed compatibility of the rational realization with closed restriction and (P06) gives the displayed stalk identity. Perfectness establishes the coefficient passage for the Euler cone; it does not prove that compatibility for arbitrary open images.
-
-The complex fibre of \(L^{-1}\) is ample by §5.10. Its integral character and Chern matrix are preserved by the flag-family proof of Theorem 5.13, parts (a)–(e). Hence \(e\) has the same Lefschetz injectivity and surjectivity in every ground characteristic; its negative sign does not affect either. More precisely,
-\[
-e:H^a(Y,E(-1))\to H^{a+2}(Y,E)
-\]
-is injective for \(a<n\) and surjective for \(a\ge n-1\). For injectivity, a class killed by \(e\) is killed by the Lefschetz isomorphism \(e^{n-a}\). For surjectivity to degree \(b=a+2\ge n+1\), factor one \(e\) off the isomorphism \(e^{b-n}:H^{2n-b}\to H^b\). Groups outside degrees \([0,2n]\) vanish.
-
-Since flag cohomology is even, (5.59) identifies its even \(H^s(C)\) with the cokernel of \(e:H^{s-2}(Y,E(-1))\to H^s(Y,E)\), and its odd \(H^s(C)\) with the kernel of \(e:H^{s-1}(Y,E(-1))\to H^{s+1}(Y,E)\). Consequently
-\[
-H^s(C)=0\quad
-\begin{cases}
-s\text{ odd and }s\le n,\\
-s\text{ even and }s\ge n+1.
-\end{cases}
-\tag{5.60}
-\]
-
-The two-stratum intermediate extension can now be constructed explicitly. Put \(A=Rj_*E[d]\) and define \(K\) by
-\[
-K\longrightarrow A\longrightarrow i_*\tau_{\ge0}i^*A.
-\]
-Its open restriction is \(E[d]\), its point stalk is \(\tau_{\le-1}i^*A\), and \(i^!A=0\) by open-image/closed-support adjunction. Therefore its point costalk is \((\tau_{\ge0}i^*A)[-1]\). The stalk vanishes in degrees at least zero and the costalk in degrees at most zero. These are the strict perverse bounds excluding point quotients and subobjects. The intermediate-extension characterization in Intermediate extensions and intersection complexes, §1 identifies \(K=IC_U^{\mathrm{raw}}\).
-
-For a negative stalk degree \(r\), set \(s=r+d\le d-1=n\). If \(r\) has parity opposite to \(d\), then \(s\) is odd, so (5.60) makes its group zero. For a positive costalk degree \(r\), the group is \(H^{r-1+d}(C)\). Its index \(s=r-1+d\ge d=n+1\) is even when \(r\) has parity opposite to \(d\), and again the group is zero. Thus both point groups have parity \(d\), proving the asserted conditional calculation. Locality identifies this intermediate extension with the restriction of \(IC_{Z_\xi}^{\mathrm{raw}}\) whenever the latter is defined in the stated theory. To conclude parity at every point of its smooth orbit also requires the corresponding smooth point orientations. Neither those orientations nor (P06) are asserted without proof here. \(\square\)
+Theorem 5.13 gives even flag cohomology and the Lefschetz injectivity and surjectivity of this actual Chern matrix. Theorem A.3.1.1 writes out the cone exact sequence and both perverse cuts: the stalk is \(\tau_{\leq-1}(C[d])\), and the costalk is \((\tau_{\geq0}(C[d]))[-1]\). Its lower odd and upper even vanishings give parity \(d\) for both cuts. Corollary A.3.2.1 supplies the actual smooth point orientation, giving stalk degree \(-d\) and costalk degree \(d\) on the smooth orbit. This proves the assertion on both strata. \(\square\)
 
 ## 6. Exact and faithful total cohomology
 
@@ -1552,9 +1515,622 @@ The other two slices lie in the smooth orbit: \(\mathbb A^2\) has shifted compac
 
 ## 10. Remaining general assertions
 
-The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, and the bounded examples and modular counterexamples are proved above. Proposition 5.3 gives the standard-object criterion and Lemma 5.4 the intersection-map splitting step. Lemma 5.6 proves the minimum-norm lattice assertion and a conditional faithful tensor-generator statement. Theorems 5.7–5.10 prove ordinary homogeneous Lefschetz, cone IC parity, every quasi-minuscule IC's parity, and parity under convolution with a parity IC. Corollary 5.11 combines those inputs under its explicit tensor-equivalence hypothesis. Sections 5.12–5.13 prove the uniform root-jet resolution and rational-adic flag Lefschetz with its actual line and twists. Section 5.14 proves the isolated-stratum Euler-cone and truncation implication under the explicit supported comparison (P06).
+The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, and the bounded examples and modular counterexamples are proved above. Proposition 5.3 gives the standard-object criterion and Lemma 5.4 the intersection-map splitting step. Lemma 5.6 proves the minimum-norm lattice assertion and a conditional faithful tensor-generator statement. Theorems 5.7–5.10 prove ordinary homogeneous Lefschetz, cone IC parity, every quasi-minuscule IC's parity, and parity under convolution with a parity IC. Corollary 5.11 combines those inputs under its explicit tensor-equivalence hypothesis. Sections 5.12–5.13 prove the uniform root-jet resolution and rational-adic flag Lefschetz with its actual line and twists. Theorem 5.14 and Appendix A prove the actual supported Euler triangle (P06), its coefficient comparisons, and unconditional rational-adic quasi-minuscule stalk and costalk parity.
 
-General characteristic-zero semisimplicity, standard–IC equality and the full classical equivalence are proved subsequently in Identifying the dual group, §§8.4–8.5. Its Theorem 8.4 then applies the conditional generator criterion and concludes general ordinary IC stalk and costalk parity. It also resolves the rootwise identity-lift criterion (5.9). This order does not use general parity in reconstruction. The relative-Lefschetz and intersection-form premises in §5.5 remain alternative sufficient conditions, and are not needed for the proved classical theorem. Perversity, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8. Proposition 5.12 and Theorem 5.13 prove the uniform quasi-minuscule resolution and rational-adic homogeneous flag Lefschetz over every algebraically closed ground field with ell invertible. The supported comparison (P06), its finite-system compatibility and the smooth point orientations remain inputs to be proved before the all-ground-field quasi-minuscule parity theorem is concluded. The full rational-adic category, general hyperbolic localization and general Satake equivalence remain unfinished.
+General characteristic-zero semisimplicity, standard–IC equality and the full classical equivalence are proved subsequently in Identifying the dual group, §§8.4–8.5. Its Theorem 8.4 then applies the conditional generator criterion and concludes general ordinary IC stalk and costalk parity. It also resolves the rootwise identity-lift criterion (5.9). This order does not use general parity in reconstruction. The relative-Lefschetz and intersection-form premises in §5.5 remain alternative sufficient conditions, and are not needed for the proved classical theorem. Perversity, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8. Proposition 5.12 and Theorem 5.13 prove the uniform quasi-minuscule resolution and rational-adic homogeneous flag Lefschetz over every algebraically closed ground field with ell invertible. Appendix A proves the supported comparison (P06), its actual finite/integral/rational maps and the smooth point orientations, concluding quasi-minuscule IC parity for finite E over every allowed algebraically closed ground field. Lesson 5, Appendix Q, proves rational hyperbolic localization and the exact weight functors. Appendix B proves the underlying genuine finite-E rational category over every allowed algebraically closed ground field, including jet independence, simple classification, raw duality and exact faithful cohomology. Rational convolution and fusion, general rational parity and complete Satake deductions, and algebraic coefficient descent remain separate obligations.
+
+## Appendix A. The global supported Euler triangle and rational IC parity
+
+The zero-section purity shift does not by itself identify the global Euler map. This appendix constructs the relative Kummer class of the divisor with its complement trivialization, compares it with the trace-normalized supported orientation, and then forgets support. This gives \(c_1(L)\) with its actual gluing and coefficient maps. The proper line resolution converts that triangle into the actual vertex Euler cone; the two perverse truncations prove the rational isolated IC parity calculation.
+
+The finite trace, Kummer and support inputs are the earlier programme proofs in Constructible complexes on algebraic varieties, AD.3–AD.4, AI.2, BI.2 and BJ.5–BJ.6. Actual integral/rational operations, duality and hyperbolic comparison are proved in Lesson 5, Appendices M–Q. These proof locators carry the used results; external source references do not replace them.
+
+### A.1. The global zero-section class
+
+Let \(S\) be separated of finite type over a field in which \(\ell\) is invertible. Let \(L\) be a line bundle on \(S\), let \(q:\mathbb V(L)\to S\) be its total space in the convention that points are vectors in \(L\), and write \(s:S\hookrightarrow\mathbb V(L)\) for its zero section and \(j:L^\times\hookrightarrow\mathbb V(L)\) for the complement. Put \(T=\mathbb V(L)\). The section is an effective Cartier divisor: on a line frame its ideal is generated by its polynomial fiber coordinate, a nonzerodivisor over any base ring.
+
+#### A.1.1. The supported identification is specified by transitivity
+
+**Lemma A.1.1.1.** For finite coefficients \(\Lambda_m=\mathbf Z/\ell^m\), the actual supported right adjoint has a trace-normalized isomorphism
+\[
+s_m^!\Lambda_{m,T}=\Lambda_{m,S}(-1)[-2].
+\tag{A.1.1.1}
+\]
+The same holds for the actual integral and finite-\(E\) rational constant sheaves. Its section counit is normalized by the identity composite for \(qs=1\), and its local orientation is the positive point class.
+
+**Proof.** The line projection is smooth of pure relative dimension one. Finite smooth adjunction and trace GL-PERV BJ.5–BJ.6 give
+\(q_m^!\Lambda_{m,S}=q^*\Lambda_{m,S}(1)[2]\).
+The adjunction for the composite \(qs=1\) gives
+\[
+s_m^!q_m^!\Lambda_{m,S}=\Lambda_{m,S}.
+\]
+Cancel the pulled-back invertible line and shift using the counit-defined invertible-twist comparison GL-PERV BH.7, equation(BH.21). This gives (A.1.1.1) with its actual counit. On a trivial line chart, BJ.6, equation(BJ.15), identifies it with the parameter-section orientation \(-\lambda\kappa(t)\), whose affine-line trace is \(+1\). Transitivity specifies the map globally, so no choice of a chartwise scalar is used to glue the orientation.
+
+The same argument uses actual integral smooth normalization P.2.4.1, transitivity and P.3.4.1's invertible-twist comparison, and then their actual rationalization. These maps retain all finite reductions by P.2.2.1. The counit for \(qs=1\) is the \(s\)-counit followed by the \(q\)-counit, and is the identity; hence every stated version has that normalization.
+
+We also specify the base compatibility needed to test the class. For a change of \(S\), the line projection and its section pull back to the corresponding line and section. The smooth \(q^!\)-comparison is the trace mate of proper-support base change; GL-PERV BJ.6, equation(BJ.14), identifies it with the ordinary pullback formula. Pasting it with the section counit and \(qs=1\) gives the section comparison on the input pulled back from \(S\). Under (A.1.1.1) it is the identity of the pulled-back inverse Tate line. This proves this particular section comparison, including its counit. It does not assert base change for an arbitrary exceptional inverse image. □
+
+#### A.1.2. A relative Kummer class keeps the global gluing
+
+**Lemma A.1.2.1.** With the normalization of Lemma A.1.1.1, the image of the section counit under ordinary restriction to \(S\) is the first Chern class:
+\[
+\Lambda_{m,S}(-1)[-2]
+\xrightarrow{\,c_1^{(m)}(L)\,}\Lambda_{m,S}.
+\tag{A.1.2.1}
+\]
+Here the source is identified with \(s^*s_*\Lambda_{m,S}(-1)[-2]\), the target with \(s^*\Lambda_{m,T}\), and \(c_1^{(m)}\) is the connecting class of the exact étale Kummer sequence. The map retains its signs and coefficient transitions.
+
+**Proof.** We give a global class argument, since equality of these degree-two maps cannot be inferred from equality on trivial line charts alone.
+
+For an abelian étale sheaf \(A\), use the relative complex
+\[
+R\Gamma_{S}(T,A)
+=\operatorname{Fib}\bigl(R\Gamma(T,A)\to R\Gamma(L^\times,A)\bigr).
+\tag{A.1.2.2}
+\]
+For \(A=\mathbf G_m\), its degree-one classes are line bundles on \(T\) with a specified trivialization on \(L^\times\), modulo isomorphism of those pairs. To check this description, choose trivializing étale charts and their frame transitions. A degree-one cocycle consists of those transitions together with units on the punctured charts whose ratios are the restricted transitions. A coboundary is a change of frames and of the resulting trivialization. This is exactly line-bundle descent and its isomorphisms, proved in GL-PERV AD.3. The cone differential of (A.1.2.2) imposes that same ratio relation. Passing to a common étale hypercover gives all cocycles and their identifications, by the hypercover descent proof used in B.1. Thus this description identifies the relative class itself, not just its forgetful image.
+
+The divisor line \(M=\mathcal O_T(S)\), with the trivialization on its complement given by its canonical divisor section, supplies such a relative class. Applying (A.1.2.2) to the exact Kummer sequence
+\[
+1\longrightarrow\mu_{\ell^m}
+\longrightarrow\mathbf G_m
+\xrightarrow{\ell^m}\mathbf G_m
+\longrightarrow1
+\tag{A.1.2.3}
+\]
+gives its connecting class
+\[
+\theta_m\in H^2_S(T,\mu_{\ell^m}).
+\tag{A.1.2.4}
+\]
+The sequence is exact because an invertible unit has an étale \(\ell^m\)-th-root cover with invertible derivative; this is the explicit calculation of GL-PERV AD.4. Forgetting the relative trivialization is a map of the exact coefficient complexes and their relative fibers. Naturality of the connecting map consequently gives
+\[
+\theta_m\longmapsto c_1^{(m)}(\mathcal O_T(S))
+\quad\text{in }H^2(T,\mu_{\ell^m}).
+\tag{A.1.2.5}
+\]
+This is the global equality carried by the relative cocycle. It includes the transition units of the divisor line on overlaps.
+
+Identify (A.1.2.4) with the normalized supported fundamental class. Lemma A.1.1.1 gives
+\[
+R s_m^!\mu_{\ell^m}=\Lambda_{m,S}[-2],
+\qquad
+H^2_S(T,\mu_{\ell^m})=H^0(S,\Lambda_m).
+\tag{A.1.2.6}
+\]
+Thus a supported degree-two class is a section of the degree-zero constant sheaf under that normalization. Such sections can be tested on an open cover and on its geometric stalks. On a trivial line chart the relative class is the class of the zero divisor with its canonical complement trivialization. To determine its scalar, compactify that line to \(\mathbf P^1\). The corresponding relative divisor line is \(\mathcal O(1)\); forgetting its relative class gives \(c_1^{(m)}\mathcal O(1)\) by (A.1.2.5). At a geometric base point this forgetful map from degree-two cohomology with support at zero to degree-two projective-line cohomology is an isomorphism: its complement is \(\mathbf A^1\), whose degree-one and degree-two allowed constant cohomology vanish by the finite affine-line trace and duality calculation underlying Q.1.2.1. The positive Kummer class of \(\mathcal O(1)\) has trace \(1\), by GL-PERV BI.2. Lemma A.1.1.1's orientation also has trace \(1\). The two supported classes are therefore equal on this fiber.
+
+All relative Kummer classes pull back by their units, transitions and root covers. The particular section comparison specified in Lemma A.1.1.1 identifies (A.1.2.6) under this pullback, and proper projective-line comparison identifies its trace. Hence the scalar just computed is the geometric stalk of the degree-zero section in (A.1.2.6). It is \(1\) at every such stalk; therefore \(\theta_m\) is precisely the global supported class of the normalized section counit. This determines its sign before any coefficient reduction. Equivalently on a parameter chart it is \(-\lambda\kappa(t)\), with the connecting conventions of GL-PERV AI.2.
+
+Finally apply \(s^*\) to (A.1.2.5). The normal line of the zero divisor is \(L\). Explicitly if its local frames satisfy \(e_b=e_a g_{ab}\), its fiber equations satisfy \(t_b=g_{ab}^{-1}t_a\), and the divisor frames \(t_a^{-1}\) have transition \(g_{ab}\). Thus \(s^*\mathcal O_T(S)=L\), with these actual transitions. The Kummer connecting map commutes with this inverse image. The resulting class is \(c_1^{(m)}(L)\).
+
+A class in \(H^2(S,\mu_{\ell^m})\) is equivalently a map \(\Lambda_{m,S}(-1)[-2]\to\Lambda_{m,S}\): the source's coefficient line is invertible, and global derived Hom from the rank-one constant coefficient object computes the derived sections of its target. Under this identification the supported class was the section counit, so the resulting equality is exactly (A.1.2.1). Every construction used the actual Kummer coefficient sequence and divisor trivialization; their root and coefficient transitions preserve this equality. □
+
+### A.2. The supported Euler triangle and its coefficient realization
+
+![The relative Kummer class, its forget-support image and the global Euler triangle](assets/supported-kummer-euler.png)
+
+Lemma A.1.1.1 fixes the supported orientation by the composite section counit and smooth line trace. Lemma A.1.2.1 constructs the global relative class of \(\mathcal O_{\mathbb V(L)}(S)\), with its canonical complement trivialization; it is the supported section \(1\). Forgetting support and restricting to \(S\) gives \(c_1(L)\), with the actual divisor frame transitions. Theorems A.2.1.1–A.2.2.1 retain that arrow in the finite, integral and rational triangles. Editable SVG source.
+
+#### A.2.1. The finite triangle has its specified Euler arrow
+
+**Theorem A.2.1.1.** The finite supported comparison required in (P06) is the actual distinguished triangle
+\[
+\Lambda_{m,S}(-1)[-2]
+\xrightarrow{\,c_1^{(m)}(L)\,}\Lambda_{m,S}
+\longrightarrow s^*Rj_*\Lambda_{m,L^\times}
+\longrightarrow\Lambda_{m,S}(-1)[-1].
+\tag{A.2.1.1}
+\]
+It is compatible with coefficient reduction and with the trace-normalized finite section counit.
+
+**Proof.** The actual closed–open supported triangle is
+\[
+s_*s_m^!\Lambda_{m,T}\longrightarrow\Lambda_{m,T}
+\longrightarrow Rj_*\Lambda_{m,L^\times}\longrightarrow.
+\tag{A.2.1.2}
+\]
+It is the fiber of the ordinary open unit, whose representing supported adjunction and counit were proved in O.2.2.1 and its finite version. Apply exact ordinary restriction \(s^*\). The closed identity \(s^*s_*=1\) and Lemma A.1.1.1 identify its first term; Lemma A.1.2.1 identifies its first arrow, including its global Kummer class. This gives (A.2.1.1) without a complementary-open base-change assumption.
+
+For coefficient compatibility use the integral constant object: its finite constant reductions are the stated constant sheaves. O.2.1.1 gives its ordinary open-image comparison, O.2.2.3 its supported comparison, and M.6.1.5 its ordinary restriction, with the same unit and counit. The trace and Kummer comparisons of Lemmas A.1.1.1–A.1.2.1 identify the first arrow under these reductions. Thus the entire finite triangle, not just its three object values, is coefficient compatible. This uses the two-term reduction over the DVR, not an arbitrary nonperfect finite-ring scalar comparison for ordinary image. □
+
+#### A.2.2. The actual integral and rational triangles
+
+**Theorem A.2.2.1.** For \(O\) the valuation ring of a finite \(E/\mathbf Q_\ell\), the actual integral supported triangle is
+\[
+\widehat O_S(-1)[-2]
+\xrightarrow{\,c_1(L)\,}\widehat O_S
+\longrightarrow s_O^*Rj_*\widehat O_{L^\times}
+\longrightarrow,
+\tag{A.2.2.1}
+\]
+and actual localization gives
+\[
+\widehat E_S(-1)[-2]
+\xrightarrow{\,c_1(L)_E\,}\widehat E_S
+\longrightarrow s_E^*Rj_*\widehat E_{L^\times}
+\longrightarrow.
+\tag{A.2.2.2}
+\]
+The finite reductions of the entire first triangle are its normalized finite Euler triangles. In particular its ordinary closed restriction and open image are the actual functors used in (P06).
+
+**Proof.** Work directly with the integral supported triangle of O.2.2.1 for \(\widehat O_T\), and apply actual \(s_O^*\). Lemma A.1.1.1 gives its first term and trace-normalized counit. Denote its first arrow by \(e_O\). Actual reductions of each operation and each unit/counit in M.6, O.2 and P.2 identify its finite arrows with Theorem A.2.1.1, after finite scalar extension from a cyclic ring to \(O_n\). P.1.1.1 proves that scalar extension carries the proper-support and trace maps even when this scalar extension is not flat.
+
+We specify the completed Chern class rather than infer equality of integral maps from their first reductions. Take the étale Kummer complexes (A.1.2.3) for \(\ell^r\), with their actual root transitions, and the relative divisor object used in Lemma A.1.2.1. The root covers, frame transitions and changes of frame give maps of those coefficient complexes; applying relative derived sections supplies a coherent diagram of relative connecting maps. Its enhanced homotopy limit defines the completed relative Kummer class. Its forget-support image is the completed Kummer class of \(\mathcal O_T(S)\); pullback along \(s\) is \(c_1(L)\).
+
+Here is why the identification of this full diagram with the supported orientation is legitimate. At each cyclic finite level its space of supported degree-two coefficient maps is
+\[
+\operatorname{Map}_{\Lambda_m,S}
+(\Lambda_m,R s_m^!\mu_{\ell^m}[2])
+=\operatorname{Map}_{\Lambda_m,S}(\Lambda_m,\Lambda_m).
+\tag{A.2.2.3}
+\]
+Its derived mapping complex is \(R\Gamma(S,\Lambda_m)\), in degrees at least zero. The mapping space therefore has no positive homotopy groups; its components are \(H^0(S,\Lambda_m)\). Within the component of a given section the comparison has a unique homotopy, with no higher ambiguity. Lemma A.1.2.1 identified both classes with the section \(1\). Their actual coefficient transitions carry that section to the same section, so the identifications form a coherent diagram, including its homotopies. This uses discreteness of these supported spaces, not a false claim that arbitrary global degree-two maps are determined on local charts.
+
+Finite scalar extension gives the same discrete supported comparison for \(O_n\): the constant source is free over its coefficient ring and its target is that same constant ring in degree zero. The \(\ell\)-power and \(\pi\)-power filtrations on \(O\) are cofinal because their valuations bound each other. Their inverse limits therefore give the same completed coefficient line and the same coherent relative class. P.1.3.1 identifies mapping into a complete target with the limit of its finite mapping complexes; Lemma A.1.1.1 identifies that supported target and its orientation. Taking the enhanced limit of the just-identified diagram thus identifies the integral relative class with the normalized supported counit itself. Forgetting support and restricting gives \(e_O=c_1(L)\), proving (A.2.2.1).
+
+All terms of the integral triangle are constructible and complete by M–P. Actual rational pullback and ordinary-image comparisons identify its localization with (A.2.2.2), preserving the unit, counit and Euler map. This is the actual localization of the supported triangle, rather than an asserted tensor interchange with an arbitrary inverse limit. The same coefficient comparisons identify every normalized finite reduction. □
+
+#### A.2.3. The proper contraction computes the actual vertex stalk
+
+**Lemma A.2.3.1.** In the proper line resolution \(f_L:L\to U\) of GL-SAT-06, equation(5.35), let \(i:\{t^0\}\hookrightarrow U\) be its exceptional vertex and \(j_U:U\setminus\{t^0\}\hookrightarrow U\) its smooth open. Then the actual rational open-image stalk is
+\[
+i^*Rj_{U,*}\widehat E
+=\operatorname{Cone}\left(
+R\Gamma(Y,\widehat E(-1))[-2]
+\xrightarrow{\,c_1(L)\,}R\Gamma(Y,\widehat E)\right).
+\tag{A.2.3.1}
+\]
+The integral comparison has the same formula with \(O\), and reduces to the finite comparisons.
+
+**Proof.** The punctured line maps isomorphically to the smooth punctured open by the stated proper resolution. Hence ordinary composition gives
+\[
+Rj_{U,*}\widehat E=Rf_{L,*}Rj_*\widehat E.
+\]
+Apply actual proper base change O.4.1.1 to \(f_L\). Its vertex fiber is the zero-section \(Y\), so the resulting stalk is \(R\Gamma(Y,s^*Rj_*\widehat E)\), with precisely that restriction map. Theorem A.2.2.1 identifies its supported triangle and Euler arrow. Derived sections preserves finite triangles, giving (A.2.3.1). The same argument is integral and preserves its actual finite comparisons. Properness is used after composition; no special-fiber ordinary comparison for a nonproper line projection was assumed. □
+
+### A.3. The unconditional rational isolated IC calculation
+
+![The Euler-cone vanishing ranges and the exact stalk and costalk truncation indices](assets/isolated-ic-euler-cuts.png)
+
+Lemma A.2.3.1 identifies the actual proper vertex stalk with the global Euler cone. Theorem A.3.1.1 combines its exact cohomology sequence with Theorem 5.13's Lefschetz matrix. The negative stalk cut uses index \(s=r+d\), while the positive costalk cut uses \(s=r-1+d\); their two vanishing ranges give parity \(d\). Exercise A.4.4 checks the shifts, including degree zero. Editable SVG source.
+
+#### A.3.1. The stalk and costalk are the two cuts of the Euler cone
+
+**Theorem A.3.1.1.** In the dominant short-coroot line resolution of GL-SAT-06 §5.12, for every algebraically closed \(k\), every invertible \(\ell\), and every finite \(E/\mathbf Q_\ell\), the stalk and costalk of the raw intersection complex at \(t^0\) vanish outside parity \(d=\langle2\rho,\xi\rangle\). The supported comparison (P06) and its rational realization therefore hold for the actual constructible theory.
+
+**Proof.** Keep \(Y,L,U,i,j_U\) of Lemma A.2.3.1 and put \(n=\dim Y=d-1\). The proper line resolution and its punctured-open isomorphism are the actual geometric construction in GL-SAT-06 Proposition 5.12. The flag cohomology and Lefschetz statement proved in its Theorem 5.13 give finite free even cohomology and, for the class \(e=c_1(L)\),
+\[
+e:H^a(Y,E(-1))\longrightarrow H^{a+2}(Y,E)
+\]
+injective when \(a<n\) and surjective when \(a\geq n-1\). Here \(L^{-1}\) is ample; its Chern matrix is the coefficient-compatible matrix of that theorem. Negating this class does not change injectivity or surjectivity. If \(a<n\), a class killed by \(e\) is killed by the Lefschetz isomorphism \(e^{n-a}\), hence is zero. Its full coefficient form is \(H^a(Y,E(a-n))\xrightarrow{\sim}H^{2n-a}(Y,E)\); tensoring by an invertible Tate line gives the corresponding form for any initial twist. For target degree \(b=a+2\geq n+1\), factor one \(e\) off \(e^{b-n}:H^{2n-b}(Y,E(n-b))\xrightarrow{\sim}H^b(Y,E)\), proving surjectivity with the stated twist. Outside \([0,2n]\) the flag groups vanish. This uses no Satake semisimplicity.
+
+Theorem A.2.2.1 and Lemma A.2.3.1 identify the actual vertex complex:
+\[
+C=i^*Rj_{U,*}E
+=\operatorname{Cone}\left(
+R\Gamma(Y,E(-1))[-2]\xrightarrow{e}R\Gamma(Y,E)\right).
+\tag{A.3.1.1}
+\]
+Its cohomology exact sequence and even flag cohomology identify even degree \(s\) with the cokernel of \(e:H^{s-2}(Y,E(-1))\to H^s(Y,E)\), and odd degree \(s\) with the kernel of \(e:H^{s-1}(Y,E(-1))\to H^{s+1}(Y,E)\). Thus
+\[
+H^s(C)=0\quad
+\begin{cases}
+s\text{ odd and }s\leq n,\\
+s\text{ even and }s\geq n+1.
+\end{cases}
+\tag{A.3.1.2}
+\]
+
+The punctured open is smooth of dimension \(d\), so \(E[d]\) is perverse by smooth orientation P.3.4.1 and the support inequalities of The perverse t-structure, §2. That proof constructs the heart in the actual rational setting now supplied by M–P, as explained in Q.4.2. Put \(A=Rj_{U,*}E[d]\), bounded constructible by O.2.1.2, and define its canonical fiber
+\[
+K\longrightarrow A
+\longrightarrow i_*\tau_{\geq0}i^*A\longrightarrow.
+\tag{A.3.1.3}
+\]
+The second arrow is the ordinary restriction unit followed by ordinary truncation. Its open restriction is \(E[d]\), and
+\[
+i^*K=\tau_{\leq-1}(C[d]).
+\tag{A.3.1.4}
+\]
+Also \(i^!A=0\): maps from a point object into \(Rj_{U,*}\) are maps from its zero open restriction, by ordinary open adjunction. Supported adjunction detects that vanishing. Applying \(i^!\) gives
+\[
+i^!K=(\tau_{\geq0}(C[d]))[-1].
+\tag{A.3.1.5}
+\]
+The point stalk consequently vanishes in degrees at least zero and its point costalk in degrees at most zero. With the smooth open placement these are the perverse tests, with strict bounds excluding point quotients and subobjects.
+
+For completeness these bounds identify the intermediate extension. For every point vector space \(V\), adjunction and ordinary truncation give
+\(\operatorname{Hom}(K,i_*V)=0=\operatorname{Hom}(i_*V,K)\).
+For any perverse extension of \(E[d]\), the ordinary open counit and unit induce maps from \({}^pH^0j_!E[d]\) and to \({}^pH^0Rj_*E[d]\). Their cokernel and kernel are point-supported, since their open restrictions are the identity. Absence of a point quotient makes the first map onto; absence of a point subobject makes the second injective. Their composite then has image exactly \(j_{!*}E[d]\), independent of the extension. Therefore \(K=j_{!*}E[d]=IC_U^{\mathrm{raw}}\), with its specified open identity.
+
+For negative stalk degree \(r\), its Euler-cone index is \(s=r+d\leq n\). Opposite parity of \(r\) to \(d\) makes \(s\) odd, so (A.3.1.2) kills it. For positive costalk degree \(r\), (A.3.1.5) gives \(s=r-1+d\geq n+1\); opposite parity makes this index even, so it is again zero. The other stalk and costalk degrees vanish by the strict truncation bounds. This proves the stated parity.
+
+Theorem A.2.1.1 proves exactly the finite triangle (P06), including its Kummer and forget-support map. Theorem A.2.2.1 proves its actual rational realization and closed restriction; Lemma A.2.3.1 proves the proper vertex comparison. These establish every additional supported-operation premise of the calculation in §5.14. □
+
+#### A.3.2. Smooth orbit points have the same parity
+
+**Corollary A.3.2.1.** The raw quasi-minuscule intersection complex on \(Z_\xi\) has stalk and costalk parity \(d\) at every geometric closed point in the actual rational-adic theory over every allowed algebraically closed ground field, for finite \(E\).
+
+**Proof.** The geometric two-orbit description proved in GL-SAT-06 §5.12 gives the smooth \(d\)-dimensional orbit and \(t^0\). On the smooth orbit the raw IC is \(E[d]\). At a closed point \(x\) its stalk is \(E[d]\), in degree \(-d\). Its costalk is \(E(-d)[-d]\), in degree \(d\): apply transitivity of the structural exceptional maps and cancel their smooth orientation lines as in P.2.4.1 and P.3.4.1. The point is smooth of dimension zero and the orbit of dimension \(d\), so their shifts and twists subtract to \((-d)[-2d]\) before the IC shift. Both degrees have parity \(d\).
+
+At the vertex use Theorem A.3.1.1. The proper line-resolution neighborhood contains the vertex, and ordinary open restriction preserves the intermediate-extension construction and its point stalk and costalk. Thus its local \(IC_U^{\mathrm{raw}}\) is the restriction of \(IC_{Z_\xi}^{\mathrm{raw}}\). This covers every closed geometric point of the two strata. Algebraic coefficient descent remains a separate assertion. □
+
+### A.4. Four solved Euler and IC checks
+
+#### A.4.1. A trivialized line and its boundary cohomology
+
+**Exercise A.4.1 (introductory).** Give \(L=\mathcal O_S\) a specified global frame. Compute the Euler triangle's third term. Explain what data give its splitting.
+
+**Solution.** The specified frame gives a trivialized divisor-line restriction, so its Kummer connecting class \(c_1(L)\) is zero with the nullhomotopy supplied by that frame. The cone representative of the Euler triangle is therefore
+\[
+s^*Rj_*E=E_S\oplus E_S(-1)[-1].
+\]
+Its sheaf cohomology is \(E_S\) in degree zero and \(E_S(-1)\) in degree one. This is the ordinary local punctured-line complex, not compact cohomology of the affine line. The splitting uses the specified trivialization's nullhomotopy of the Euler map. The triangle alone with a degree-zero Euler class does not supply a chosen nullhomotopy in the enhanced mapping space. Changing a frame by a unit changes the Kummer trivialization data, so the assertion does not assign that splitting to an unframed line bundle. □
+
+#### A.4.2. The degree-two line and its rational Euler cone
+
+**Exercise A.4.2 (intermediate).** Take \(Y=\mathbf P^1_k\) and \(L=\mathcal O(-2)\). Compute the cohomology of its global rational Euler cone, including Tate lines, and the two vertex IC cuts when \(d=2\). For \(O=\mathbf Z_2\), identify the extra integral cohomology group.
+
+**Solution.** The projective-line splitting gives \(H^0(Y,E)=E\) and \(H^2(Y,E)=E(-1)\), with no other groups. The Euler class is \(-2\) times the positive degree-one generator, since tensor-square and inverse line transitions multiply and negate the Kummer connecting cocycle. Thus
+\[
+e:H^0(Y,E(-1))\longrightarrow H^2(Y,E)
+\]
+is multiplication by \(-2\), an isomorphism for every finite \(E/\mathbf Q_\ell\), including \(\ell=2\). The cone consequently has
+\[
+H^0(C)=E,\qquad H^3(C)=E(-2),
+\]
+and all other groups zero. The degree-three group is the kernel of the map from \(H^2(Y,E(-1))=E(-2)\) to the zero group \(H^4(Y,E)\).
+
+With \(d=2\), the stalk cut \(\tau_{\leq-1}(C[2])\) has \(E\) in degree \(-2\); the costalk cut \((\tau_{\geq0}(C[2]))[-1]\) has \(E(-2)\) in degree \(2\). Both are even. These are the actual cuts whenever this line is the proper resolution of the stated isolated cone.
+
+Over \(\mathbf Z_2\), multiplication by \(-2\) is injective with cokernel \((O/2)(-1)\). Hence the integral Euler cone has the additional group \(H^2(C_O)=(O/2)(-1)\), besides \(O\) in degree zero and \(O(-2)\) in degree three. This torsion disappears on rationalization. The rational calculation therefore supplies no integral semisimplicity or integral IC-parity assertion. □
+
+#### A.4.3. A global class invisible on the trivializing charts
+
+**Exercise A.4.3 (intermediate).** For \(L=\mathcal O(1)\) on \(\mathbf P^1_k\), show that the Euler map is zero on each standard affine trivializing chart and nonzero globally. Contrast this with the supported fundamental class. Explain why reduction modulo \(\ell\) alone cannot fix the integral orientation.
+
+**Solution.** On each affine chart the chosen line frame kills the Kummer first Chern class. Globally \(c_1(\mathcal O(1))\) has degree and trace \(1\), by the proved projective-line Kummer splitting, so its map \(E(-1)[-2]\to E\) is nonzero. Ordinary global degree-two maps cannot therefore be compared merely by their restrictions to those two charts.
+
+Before forgetting support, the relative class of the zero divisor is a degree-zero section of the constant coefficient sheaf under
+\(R s^!\mu_{\ell^m}[2]=\Lambda_m\).
+Its section is exactly \(1\), and those sections can be compared on an open cover. Theorem A.2.2.1 also proves that this supported mapping space is discrete. This is why the proof first identifies the global relative divisor class with the supported orientation, then forgets support to get the global Euler map.
+
+Integrally, both \(1\) and \(1+\ell\) reduce to \(1\) modulo \(\ell\), but define distinct maps over \(O\). Multiplying an orientation by \(1+\ell\) would change its composed section-counit/line-trace map to multiplication by \(1+\ell\), violating the specified identity for \(qs=1\). Thus the actual trace counit fixes the integral normalization; first reduction only detects invertibility. □
+
+#### A.4.4. The two truncation indices
+
+**Exercise A.4.4 (advanced).** Let \(d=n+1\), and suppose a bounded Euler cone \(C\) satisfies the vanishing ranges (A.3.1.2). For
+\[
+K_0=\tau_{\leq-1}(C[d]),\qquad
+K_!=\bigl(\tau_{\geq0}(C[d])\bigr)[-1],
+\]
+derive their cohomology indices and prove that both vanish outside parity \(d\). Include degree zero.
+
+**Solution.** For \(r<0\), \(H^r(K_0)=H^{r+d}(C)\); for \(r\geq0\) it is zero. If \(r<0\) has opposite parity to \(d\), the index \(s=r+d\) is odd and at most \(d-1=n\), so it is killed by the first range of (A.3.1.2).
+
+For \(r>0\), the shift convention gives
+\[
+H^r(K_!)=H^{r-1+d}(C).
+\]
+For \(r\leq0\) it is zero, because the truncation had no negative-degree cohomology before the shift \([-1]\). If \(r>0\) has opposite parity to \(d\), its index \(s=r-1+d\) is even and at least \(d=n+1\), so the second range kills it. Degree zero vanishes for both cuts by their truncation bounds. These index calculations distinguish the costalk shift \([-1]\) from \([1]\); the latter would give the wrong strict perverse bound and the wrong parity test. □
+
+## Appendix B. The genuine rational Satake heart on finite supports
+
+Fix an algebraically closed ground field with \(\ell\) invertible and a finite extension \(E/\mathbf Q_\ell\). This appendix constructs the underlying genuine finite-jet rational Satake heart with its actual morphisms, support comparisons, simple objects, duality twists and exact faithful cohomology. Its connected-group Hom argument uses proper Schubert support and degree-zero truncation; it permits higher cohomology of the acting group.
+
+The free comparison is Mirković–Vilonen, [Geometric Langlands duality and representations of algebraic groups over commutative rings](https://arxiv.org/abs/math/0401222), §2 for the classical category and the section on other ground fields for its étale variants. Here the proofs retain actual finite-\(E\) operations and genuine action maps, using Lesson 5, Appendices M–Q, and the supported comparisons of this lesson's Appendix A. The existence of an action is not inferred for every orbit-constructible object in positive characteristic.
+
+### B.1. Connected-group maps in the actual rational perverse heart
+
+Let \(k\) be algebraically closed with \(\ell\) invertible, and let \(E/\mathbf Q_\ell\) be finite. Use the actual rational constructible operations and duality of GL-SAT-05 M–P, and the perverse support heart of The perverse t-structure, §2, whose operation inputs are now proved at this scope. Denote its structural duality by \(D_X\). A genuine equivariant object has an action isomorphism, its identity normalization and its multiplication cocycle; no automatic action on all orbit-constructible objects is assumed.
+
+#### B.1.1. Smooth normalized pullback
+
+**Lemma B.1.1.1.** For a smooth morphism \(u:X\to Y\) of pure relative dimension \(h\), actual pullback \(u^*[h]\) is perverse t-exact. It is conservative if \(u\) is surjective.
+
+**Proof.** First verify ordinary t-exactness on the constructible inputs being used. A rational lisse sheaf is locally free over \(\widehat E\) on a pro-étale frame, so actual scalar pullback has no higher Tor and is again a degree-zero lisse sheaf. For a locally closed stratum inclusion \(b\), M.6.1.2 gives the actual pullback comparison for \(b_!\), including the closed part; extension by zero and closed image are exact. Thus pullback of a locally closed extended lisse sheaf remains a degree-zero sheaf. A constructible sheaf has a finite open–closed filtration by those pieces, from the ordinary localization short exact sequence. Pulling its finite triangles proves that its actual pullback is in degree zero as well. The finite ordinary truncation tower of a bounded constructible complex now proves ordinary t-exactness. Consequently
+\(\mathcal H^r(u^*K[h])=u^*\mathcal H^{r+h}(K)\).
+The inverse image of a constructible support of dimension at most \(a\) has dimension at most \(a+h\), since a smooth map has all nonempty fibers of that dimension, as follows from its étale affine-space coordinates. If \(K\) satisfies the upper support inequality, this makes the new support dimension at most
+\(-(r+h)+h=-r\).
+Thus \(u^*[h]\) preserves the upper perverse half.
+
+Actual dual exchange P.3.3.1 and smooth normalization P.2.4.1 give
+\[
+D_Xu^*K[h]=u^!D_YK[-h]
+=u^*D_YK(h)[h].
+\tag{B.1.1.1}
+\]
+The Tate line has degree zero and does not change supports. Apply the proved upper assertion to \(D_YK\); the support definition of the lower perverse half and biduality then give the lower assertion. This proves t-exactness.
+
+If the pullback of a cohomology sheaf is zero under a surjective smooth map, every geometric stalk is zero: each geometric target point has a geometric lift, and ordinary pullback takes that stalk to the same vector space. Hence the original sheaf is zero. Applying this to the bounded ordinary cohomology sheaves proves conservativity. □
+
+#### B.1.2. The smooth internal-Hom comparison
+
+**Lemma B.1.2.1.** For \(K,L\in D_c^b(Y,E)\) and smooth \(u\) as above, the canonical evaluation transpose is an isomorphism
+\[
+u^*R\mathcal Hom_Y(K,L)
+\xrightarrow{\sim}
+R\mathcal Hom_X(u^*K,u^*L).
+\tag{B.1.2.1}
+\]
+Its composition comparison and restriction along an identity section retain the actual evaluation maps.
+
+**Proof.** Constructible biduality and tensor–Hom adjunction first give the canonical identity
+\[
+R\mathcal Hom_Y(K,L)
+=D_Y(K\otimes D_YL).
+\tag{B.1.2.2}
+\]
+Indeed replace \(L\) by its actual double dual in internal Hom and transpose the inner dual: both sides become internal Hom from \(K\otimes D_YL\) into \(\Omega_Y\). This identity uses the actual bidual evaluation.
+
+Write \(M=E_X(h)[2h]\), the invertible smooth orientation line. P.3.3.1 and P.2.4.1 identify
+\[
+D_Xu^*L=u^*D_YL\otimes M.
+\]
+Use (B.1.2.2) on \(X\), monoidality of pullback, and the inverse-line dual comparison P.3.4.1:
+\[
+\begin{aligned}
+R\mathcal Hom_X(u^*K,u^*L)
+&=D_X\bigl(u^*(K\otimes D_YL)\otimes M\bigr)\\
+&=D_Xu^*(K\otimes D_YL)\otimes M^{-1}\\
+&=u^*D_Y(K\otimes D_YL)\otimes M\otimes M^{-1}\\
+&=u^*R\mathcal Hom_Y(K,L).
+\end{aligned}
+\tag{B.1.2.3}
+\]
+The forward inverse of this chain is exactly the map that transposes pullback of \(K\otimes R\mathcal Hom(K,L)\to L\). To check the map, transpose each equality through tensor–Hom: it becomes that same evaluation, the double-evaluation identity, and evaluation of \(M\otimes M^{-1}\). Their triangle identities cancel the two inserted duals and the inverse line. The smooth orientation shift is even, and every remaining rearrangement uses the same graded symmetry as evaluation. Thus no scalar or sign has been chosen.
+
+These tensor, evaluation, exceptional transitivity and smooth comparisons retain composition by P.2.4.1 and P.3.3.1. Their chain consequently identifies the smooth comparison for a composite with the composite comparison. Ordinary pullback of the canonical evaluation map along any section is that same evaluation on its pullbacks; at an identity section its source and target comparisons are the identity. This proves the asserted normalization. □
+
+![Proper support and perverse degree bounds identify connected-group degree-zero maps](assets/proper-support-heart-hom.png)
+
+Lemma B.1.2.1 identifies the actual smooth internal Hom. Since the finite support \(Y\) is proper, its image over \(H\) is the constant complex \(V=R\Gamma(Y,R\mathcal Hom(P,Q))\) by proper base change. Perverse orthogonality kills negative degrees of \(V\); connectedness then gives its degree-zero sections and the inverse restriction at \(1\). Theorems B.1.3.1–B.1.4.1 use these actual maps to normalize the action and prove its cocycle. Exercise B.4.1 checks a group with nonzero higher cohomology. Editable SVG source.
+
+#### B.1.3. Proper support replaces a product-Hom assumption
+
+**Theorem B.1.3.1.** Let \(Y\) be proper, let \(H\) be a smooth connected finite-type \(k\)-scheme with a \(k\)-point \(1\), and let \(p:H\times Y\to Y\). For perverse \(P,Q\), pullback and restriction at \(1\) are inverse bijections
+\[
+\operatorname{Hom}(P,Q)
+\xrightarrow{\sim}
+\operatorname{Hom}(p^*P[\dim H],p^*Q[\dim H]).
+\tag{B.1.3.1}
+\]
+Here \(H\) may have nonzero higher cohomology.
+
+**Proof.** Put \(A=R\mathcal Hom_Y(P,Q)\), which is bounded constructible by O.3.2.2, and \(V=R\Gamma(Y,A)\). Proper constructible image makes \(V\) a bounded finite-dimensional \(E\)-complex. The negative-degree groups of \(V\) vanish:
+\[
+H^r(V)=\operatorname{Hom}(P,Q[r])=0\qquad(r<0),
+\tag{B.1.3.2}
+\]
+by perverse t-structure orthogonality. Let \(\pi:H\times Y\to H\). It is proper, and actual proper base change from \(Y\to\operatorname{Spec}k\) gives
+\[
+R\pi_*p^*A=V_H,
+\tag{B.1.3.3}
+\]
+the actual constant pullback of \(V\). Its map is the proper counit transpose, rather than a claimed product-Hom formula for a nonproper map.
+
+Lemma B.1.2.1 identifies internal Hom of the two pullbacks with \(p^*A\). Global sections and (B.1.3.3) therefore identify their derived mapping complex with
+\[
+R\Gamma(H,V_H).
+\tag{B.1.3.4}
+\]
+Because \(V\) has no negative cohomology, ordinary truncation gives a triangle from \((H^0V)_H\) to \(V_H\) whose third term is in degrees at least one. Derived sections, a right derived functor of sections, preserves that lower bound. Consequently
+\[
+H^0R\Gamma(H,V_H)=\Gamma(H,(H^0V)_H).
+\tag{B.1.3.5}
+\]
+
+For a finite-dimensional coefficient space \(W\), connectedness gives \(\Gamma(H,W_H)=W\). To verify the adic coefficient assertion, constant \(O_n\)-sections on a connected scheme have one value, so \(\Gamma(H,\widehat O_H)=\varprojlim_n O_n=O\). The actual rational sections/localization comparison N.1.3.1 gives \(\Gamma(H,\widehat E_H)=E\). A finite basis proves the assertion for \(W\). Restriction at the point \(1\) is its inverse, and this identification is independent of that basis.
+
+Combining (B.1.3.2)–(B.1.3.5) gives (B.1.3.1). The common shifts cancel in Hom. The canonical smooth Hom comparison and proper base-change unit identify the map from \(\operatorname{Hom}(P,Q)\) as ordinary pullback; their restrictions at \(1\) are the identity, by Lemma B.1.2.1. Hence the inverse is exactly the stated section restriction. Higher cohomology of \(H\) cannot contribute in degree zero, because (B.1.3.2) eliminates the negative Hom degrees it would need. □
+
+#### B.1.4. Normalization proves the genuine action cocycle
+
+**Theorem B.1.4.1.** Let a smooth connected algebraic group \(H\) act on proper \(Y\). Forgetting genuine equivariance on its rational perverse heart is fully faithful. An underlying perverse sheaf admits such a structure precisely when \(p^*P\simeq a^*P\); if it admits one, its normalized structure is unique.
+
+**Proof.** Both action \(a\) and projection \(p\) are smooth of dimension \(\dim H\), since \((h,y)\mapsto(h,hy)\) is an automorphism of the product. A given isomorphism \(p^*P\to a^*P\) restricts at \(1\) to an automorphism \(b\) of \(P\). Precompose with \(p^*b^{-1}\) to normalize it. The quotient of two normalized isomorphisms is an automorphism of \(p^*P\) whose section restriction is the identity. Theorem B.1.3.1 makes it the identity, proving uniqueness.
+
+On \(H^2\times Y\), the two cocycle composites have the same domain, the ordinary projection pullback of \(P\), and the same target, its pullback by the multiplied action. Their quotient is therefore an automorphism of that domain. Its restriction at \((1,1)\) is the identity. Theorem B.1.3.1 applies to the connected smooth \(H^2\), forcing that quotient to be the identity. Thus normalization supplies the actual cocycle, not merely its fiber values.
+
+For a morphism \(f:P\to Q\), conjugating \(a^*f\) by their structures gives a map \(p^*P\to p^*Q\) with section restriction \(f\). Theorem B.1.3.1 identifies it with \(p^*f\), exactly the equivariance condition. Conversely forgetting a compatible morphism preserves it as an ordinary morphism. This proves full faithfulness. None of the proof asserts existence of the initial isomorphism for an arbitrary orbit-constructible object. □
+
+### B.2. Finite jets, orbit systems and the rational Satake category
+
+#### B.2.1. Jet inflation descends the actual action maps
+
+**Theorem B.2.1.1.** Suppose the action on a proper finite support \(Y\) factors through \(J_mG\). For every \(n\geq m\), inflation along \(J_nG\to J_mG\) is an equivalence of the genuine-equivariant rational perverse hearts.
+
+**Proof.** The finite-jet geometry of GL-SAT-02 §4 and GL-SAT-06 §1 gives smooth connected \(J_rG\) and the reduction map \(q:J_nG\to J_mG\). We specify its affine-space form over every \(k\)-algebra. Evaluation at the constant term and its constant section give an isomorphism of schemes
+\[
+J_rG=G\times U_r,\qquad
+U_r=\ker(J_rG\to G).
+\tag{B.2.1.1}
+\]
+A jet with identity constant term lies in the opposite-root–torus–positive-root big cell: the nilpotent thickening has the same underlying points as its constant term, which belongs to that open. Unique ordered root coordinates have zero constant term; torus coordinates have constant term one. Their remaining truncated coefficients are free. Thus \(U_r\) is an affine space of dimension \((r-1)\dim G\), and reduction forgets precisely the coefficients above order \(m-1\). Its coordinate factorization commutes with reduction by uniqueness of the root-cell factorization. Hence (B.2.1.1) identifies \(q\) with a projection forgetting \((n-m)\dim G\) affine coordinates, as a map of schemes; it does not assert a splitting as groups.
+
+For \(q\times1_Y\), the actual ordinary adjunction unit
+\[
+B\longrightarrow R(q\times1_Y)_*(q\times1_Y)^*B
+\tag{B.2.1.2}
+\]
+is an isomorphism on every bounded rational constructible \(B\), by successively applying the relative affine-line unit Q.1.2.1 and ordinary composition. The double product \(q\times q\times1_Y\) has the same assertion, with twice as many coordinates. Adjunction makes these pullbacks fully faithful on the actual constructible derived categories.
+
+The two \(J_nG\)-action pullbacks of \(P\) are the pullbacks of the \(J_mG\)-projection and action objects, since the action factors through \(J_mG\). Full faithfulness therefore descends the given action isomorphism uniquely, and descends its inverse as well. Its identity normalization descends by restricting to the identity section. Its two multiplication composites descend along the fully faithful double pullback; their equality upstairs consequently proves the cocycle downstairs. Morphisms descend by the same argument. Inflation reverses this construction, proving the equivalence. No acyclicity of arbitrary sheaves on the affine fibers, or descent of arbitrary source complexes, was asserted. The unit (B.2.1.2) concerns pullbacks of the specified base complexes. □
+
+#### B.2.2. Connected stabilizers trivialize genuine orbit systems
+
+**Lemma B.2.2.1.** Let smooth connected \(H\) act transitively on an orbit \(O\), with smooth connected stabilizer \(C\). A rational constructible sheaf with genuine \(H\)-equivariance is a constant finite-rank local system on \(O\). Every ordinary cohomology sheaf of a genuine-equivariant constructible complex restricted to \(O\) has this property.
+
+**Proof.** Choose \(x\in O(k)\). Restrict the actual action isomorphism to \(H\times\{x\}\). It identifies the pullback under the orbit map \(a_x:H\to O\) with the constant sheaf of its stalk \(V\) at \(x\). This stalk is finite dimensional. The orbit map is smooth surjective, because it is a torsor under smooth \(C\). Smooth coordinates give étale-local sections through its geometric lifts, by GL-SAT-05 A.15. Pulling the constant identification along these sections proves that the sheaf on \(O\) is lisse.
+
+Its stabilizer action on \(V\) is a matrix of global sections of \(\widehat E_C\). Connectedness gives \(\Gamma(C,\widehat E_C)=E\), by the completed coefficient and rational sections calculation in Theorem B.1.3.1. The matrix is therefore constant. Identity normalization makes its value at \(1\) the identity, so it is the identity everywhere on \(C\).
+
+This proves the full constant descent, not merely triviality of its stabilizer on one stalk. The orbit fiber product is
+\[
+H\times_OH=H\times C,\qquad (h,c)\longmapsto(h,hc).
+\]
+The action cocycle makes the transport at \(hc\) equal to transport at \(h\) followed by the stabilizer transport at \(c\). The latter is the identity. Thus the trivialization of the pullback has exactly the identity descent comparison on \(H\times_OH\). The étale-local sections just used descend it to the constant sheaf \(V_O\); on overlaps their comparisons agree by that identity. This establishes the claimed global constant system without an adic fundamental-group representation theorem.
+
+Ordinary pullback is t-exact on the constructible complexes by the first part of Lemma B.1.1.1. The action isomorphism, unit and cocycle therefore give those same data on each ordinary cohomology sheaf. Applying the sheaf argument to each of them proves the last assertion. □
+
+#### B.2.3. The finite-support category and its composition series
+
+**Theorem B.2.3.1.** Genuine finite-jet equivariant perverse sheaves with finite Schubert support form an \(E\)-linear abelian category \(\operatorname{Sat}_G(E)\), independent of jet and closed support stage, whose forgetful inclusion in the ordinary rational perverse category is exact and fully faithful. Every object has finite length. Its simple objects are
+\[
+IC_{\lambda,E}^{\mathrm{raw}}
+=j_{\lambda,!*}E[d_\lambda],
+\quad d_\lambda=\langle2\rho,\lambda\rangle,
+\tag{B.2.3.1}
+\]
+for dominant coweights, with
+\[
+\operatorname{End}(IC_{\lambda,E}^{\mathrm{raw}})=E,\qquad
+\operatorname{Hom}(IC_{\lambda,E}^{\mathrm{raw}},
+IC_{\mu,E}^{\mathrm{raw}})=0\quad(\lambda\ne\mu).
+\tag{B.2.3.2}
+\]
+
+**Proof.** A finite closed Schubert union has a genuine action of a sufficiently large finite jet group by the scheme factorization of §1. For any two objects choose a common proper support and a common jet quotient. The groups are smooth connected, so Theorem B.1.4.1 makes forgetting fully faithful there. Theorem B.2.1.1 removes the jet choice.
+
+Smooth normalized pullback is exact on the perverse heart by Lemma B.1.1.1. Thus the kernel and cokernel of a compatible morphism inherit its action isomorphisms from the two exact action/projection pullbacks. Their unit and cocycle are inherited as well. This proves that the genuine category is abelian and the forgetful inclusion exact. Closed extension to a larger support is perverse t-exact: ordinary support dimensions are unchanged, and actual dual exchange for the closed proper image preserves the same lower inequalities. It is fully faithful since its closed restriction is the identity. Its equivariance is the pulled-back action via the actual closed base-change maps. This proves independence of closed stage. Only finite supports and common finite choices occur.
+
+We record the preservation needed for boundary objects. Along an equivariant map, ordinary pullback preserves the action by its commuting action square. Ordinary image does so by actual smooth base change Q.1.1.1 for the group action and projection squares. Duality preserves it: dualizing the two ordinary action pullbacks gives two exceptional pullbacks with the same smooth orientation line \((\dim H)[2\dim H]\), which cancels. Proper-support image and exceptional inverse image then preserve it by the actual dual exchanges of P.3.3.1. All these maps retain the supplied cocycle by their composition comparisons. Perverse truncations preserve it because smooth normalized pullback is t-exact and therefore commutes with those truncations by their uniqueness. Hence open extension, closed restriction, closed supported restriction and their perverse boundary cuts are genuine-equivariant objects.
+
+To prove finite length use induction on the finite number of orbit strata. For a single smooth orbit, Lemma B.2.2.1 makes all ordinary cohomology sheaves constant. The upper and lower perverse tests put their only cohomology in degree \(-d_\lambda\); the object is consequently a constant finite-dimensional system shifted by \(d_\lambda\). Its subobjects in the genuine category are such systems as well. Strict chains change their ranks and therefore terminate.
+
+In general choose a finite union \(U\) of maximal open orbit strata of the support and let \(i:F\hookrightarrow Y\) be its invariant closed complement. On each component of \(U\) the preceding finite-rank argument applies. The actual localization triangles and perverse cohomology give the maximal boundary subobject and quotient
+\[
+i_*{}^pH^0i^!R\hookrightarrow R,\qquad
+R\twoheadrightarrow i_*{}^pH^0i^*R.
+\tag{B.2.3.3}
+\]
+The first map is injective since \(Rj_*j^*R\) has no negative perverse cohomology; the second is onto since \(j_!j^*R\) has no positive perverse cohomology. These half-bounds follow directly from the perverse open–closed support tests and actual duality. Heart adjunction makes every boundary subobject or quotient factor through its corresponding object in (B.2.3.3). Those two objects are genuine by the preservation just proved, and have finite length by induction on \(F\).
+
+For an ascending chain in \(P\), its constant ranks on \(U\) stabilize. After a fixed stage \(P_n\), each later \(P_m/P_n\) is a boundary subobject of the single \(P/P_n\); it lies in that object's finite-length boundary subobject. Hence the chain stabilizes. For a descending chain choose a stage after its open ranks stabilize. Every later quotient is a boundary quotient of that stage and factors through its one finite-length boundary quotient; the resulting chain stabilizes too. Both chain conditions give a finite composition series, by successively choosing a maximal proper subobject. This proof uses equivariant constant orbit systems and needs no extension theorem for arbitrary adic lisse systems across a boundary.
+
+Finally construct (B.2.3.1). The constant orbit sheaf has tautological genuine equivariance. Its intermediate extension is the image of the map from the perverse !-extension to the perverse *-extension. The operation and truncation preservation above make that image genuine. Equivalently smooth normalized pullback commutes with this image: actual open proper-support base change and ordinary smooth base change identify its two extension functors, and t-exactness preserves their perverse image.
+
+A simple genuine object has a nonzero constant shifted restriction on some maximal open orbit of its support. A line in its constant fiber generates a map from the perverse !-extension of that line. Its image is a nonzero genuine subobject; simplicity makes it the whole object. The map from that line's !-extension to the object's open *-extension has the same composite as the canonical !–* map for the line. Absence of a boundary subobject makes the latter embedding into the *-extension injective, and hence its image identifies the simple object with the intermediate extension of that line. Thus its open rank is one and it is exactly (B.2.3.1).
+
+Conversely a rank-one constant intermediate extension is simple: a nonzero proper subobject or quotient would either change its rank-one open system or be supported on the boundary; the intermediate-extension characterization forbids both. An endomorphism restricts to a scalar on its open line. The difference from that scalar has boundary image, again forbidden; hence its endomorphism ring is \(E\). Distinct orbit supports cannot give an isomorphism between simples, so their Hom is zero. Finite composition series then bound the Hom dimensions by induction in either argument, proving all Hom spaces in this category finite dimensional. □
+
+### B.3. Duality, orbit cohomology and the faithful cohomology functor
+
+#### B.3.1. The raw duality twist and even orbit cohomology
+
+**Theorem B.3.1.1.** Actual structural duality is an exact anti-equivalence of \(\operatorname{Sat}_G(E)\), with
+\[
+D(IC_{\lambda,E}^{\mathrm{raw}})
+=IC_{\lambda,E}^{\mathrm{raw}}(d_\lambda).
+\tag{B.3.1.1}
+\]
+Every orbit has finite-dimensional ordinary cohomology, zero in odd degrees. Its IC restriction and exceptional restriction have constant ordinary cohomology sheaves.
+
+**Proof.** Perverse duality reverses the support halves and is exact on the heart by the actual biduality of P.3.2.1 and the support definition. The genuine action is preserved by the smooth orientation cancellation proved in Theorem B.2.3.1, and proper closed extension retains its finite support. Hence it defines the claimed anti-equivalence.
+
+On the smooth \(d_\lambda\)-dimensional orbit the raw constant IC placement dualizes to \(E(d_\lambda)[d_\lambda]\), by \(\Omega_O=E(d_\lambda)[2d_\lambda]\). Duality exchanges the !- and *-extension maps and their boundary tests, so it preserves intermediate extension while dualizing the open system. Tensor with the degree-zero Tate line is exact and commutes with the two extension maps and their perverse image. This proves (B.3.1.1) with its actual Tate twist.
+
+The orbit projection \(O_\lambda\to G/P_\lambda^-\) has the Zariski locally trivial affine-space fibers given by the root-coordinate orbit calculation of GL-SAT-04 §2. The relative affine-line unit Q.1.2.1, composed for those affine coordinates and checked on these local base charts, gives its actual ordinary image of the constant sheaf as the constant sheaf. Ordinary restriction to an open base preserves the comparison, so these units give a global isomorphism. Thus
+\[
+R\Gamma(O_\lambda,E)=R\Gamma(G/P_\lambda^-,E).
+\tag{B.3.1.2}
+\]
+The Bruhat cell calculation in AG-RG-06 Theorem 7.1 gives the flag variety a finite affine paving. A cell's boundary is stable under the Borel and is a union of smaller-dimensional cells. Ordering by dimension therefore gives closed initial unions. Each dimension-\(e\) affine cell has actual compact complex \(E(-e)[-2e]\), by the iterated smooth affine-line trace Q.1.2.1 and proper-support composition. The compact long exact sequences for this finite closed filtration consequently kill every odd group, starting from the empty union. All groups are finite; the flag variety is proper, so they are its ordinary groups. This proves the orbit assertion using (B.3.1.2).
+
+Ordinary IC restrictions retain genuine equivariance and Lemma B.2.2.1 makes their cohomology sheaves constant on each orbit. Exceptional IC restrictions retain it by Theorem B.2.3.1's operation comparison, so the same lemma applies to them as well. □
+
+![Finite-jet descent, genuine simple objects and the nonzero highest weight line](assets/rational-jet-and-highest-line.png)
+
+Theorem B.2.1.1 descends the action isomorphism and cocycle through the actual affine-coordinate pullbacks; the scheme coordinates do not replace group multiplication. Theorem B.2.3.1 gives constant equivariant orbit systems, simple raw ICs and finite composition series. Their raw duality twist is Theorem B.3.1.1. Theorem B.3.2.1 computes \(F_\lambda(IC_\lambda^{\mathrm{raw}})=E(-d_\lambda)\) in degree \(d_\lambda\), so exact cohomology detects every simple and every image object. Editable SVG source.
+
+#### B.3.2. The highest weight line detects every simple object
+
+**Theorem B.3.2.1.** Total cohomology is a finite-dimensional exact faithful \(E\)-linear functor on \(\operatorname{Sat}_G(E)\). Its actual weight splitting is the one in Q.4.3.1. In raw normalization, each simple object has the nonzero highest weight line
+\[
+F_\lambda(IC_{\lambda,E}^{\mathrm{raw}})
+=E(-d_\lambda)
+\quad\text{in cohomological degree }d_\lambda.
+\tag{B.3.2.1}
+\]
+
+**Proof.** Q.4.2.1–Q.4.3.1 already prove concentration, exactness, finite-dimensionality and the canonical weight splitting on these genuine finite-jet objects. We prove the required nonzero line with its twist, then use the composition series rather than assume faithfulness.
+
+The top-extreme calculation of GL-SAT-05 §7, equation(7.3), gives
+\[
+A_0=S_\lambda\cap Z_\lambda
+=Z_\lambda\setminus H_\lambda,
+\tag{B.3.2.2}
+\]
+a nonempty dense open irreducible locus of dimension \(d_\lambda\). It lies in \(O_\lambda\). Indeed if \(S_\lambda\cap O_\mu\) is nonempty, its attracting cocharacter orbit has limit \(t^\lambda\), by the finite-stage identification of GL-SAT-05 §11. The closed invariant \(Z_\mu\) contains that orbit and its limit. Thus \(t^\lambda\in Z_\mu\), which gives \(\lambda\leq\mu\) by GL-SAT-04 Theorem 3.5. An orbit in \(Z_\lambda\) has \(\mu\leq\lambda\) by that same closure order, so \(\mu=\lambda\). As an open of the reduced integral \(Z_\lambda\), contained in its smooth orbit, \(A_0\) is smooth and connected. The IC restricts to \(E[d_\lambda]\) on it.
+
+Use actual dual exchange for \(a:A_0\to\operatorname{Spec}k\):
+\[
+D_kR\Gamma_c(A_0,E)
+=R\Gamma(A_0,D_{A_0}E)
+=R\Gamma(A_0,E(d_\lambda))[2d_\lambda].
+\tag{B.3.2.3}
+\]
+All groups are finite-dimensional by constructible proper-support image. Degree \(-2d_\lambda\) on the right is
+\(\Gamma(A_0,E(d_\lambda))=E(d_\lambda)\),
+because \(A_0\) is connected, by the completed coefficient section argument of Theorem B.1.3.1. Linear duality at the geometric point therefore gives
+\[
+H_c^{2d_\lambda}(A_0,E)=E(-d_\lambda).
+\]
+After the raw shift \(d_\lambda\), this is exactly (B.3.2.1), since \(h_\lambda=d_\lambda\). The comparison is the dual of the identity constant section and the actual smooth orientation; it requires no choice of a Tate generator.
+
+Every nonzero object has a finite composition series by Theorem B.2.3.1. Each simple factor has nonzero total cohomology by (B.3.2.1). Exactness makes total cohomology dimensions additive through this series, so a nonzero object has nonzero cohomology. If a morphism has zero cohomology map, exactness identifies cohomology of its image with the zero image of that linear map. The image object is then zero by the just-proved detection; hence the original morphism is zero. This proves faithfulness. Exactness of the underlying functor does not assert a splitting of every categorical extension; its tensor and commutativity comparisons remain the convolution and fusion assertions. □
+
+### B.4. Four solved rational-category checks
+
+#### B.4.1. Connectedness allows higher group cohomology
+
+**Exercise B.4.1 (introductory).** For \(H=\mathbb G_m\), \(Y=\operatorname{Spec}k\), and \(P=Q=E\), check (B.1.3.1). Compare degree-one derived Hom before and after pullback.
+
+**Solution.** Theorem A.2.2.1 for the trivial line over a point and its ordinary affine-line unit give
+\[
+R\Gamma(\mathbb G_m,E)=E\oplus E(-1)[-1],
+\]
+with the splitting supplied by the coordinate's trivialization as in Exercise A.4.1. Thus \(H^0=E\) and \(H^1=E(-1)\). Normalized smooth pullback places \(E[1]\) in the perverse heart of \(\mathbb G_m\); its endomorphisms are \(H^0R\Gamma(\mathbb G_m,E)=E\), and restriction at \(1\) is the identity on that constant value.
+
+Degree-one derived Hom on the point is zero, whereas
+\(\operatorname{Hom}(E[1],E[1][1])=E(-1)\) on \(\mathbb G_m\). The heart full-faithfulness theorem is therefore compatible with this nonzero higher cohomology and does not assert derived full faithfulness of that smooth pullback. The proof used absence of negative perverse Hom degrees, not vanishing of the positive group cohomology. □
+
+#### B.4.2. Jet coordinates and group multiplication
+
+**Exercise B.4.2 (intermediate).** Write a point of \(J_3\mathbb G_m\) as \(c(1+at+bt^2)\), and compute multiplication and reduction to \(J_2\mathbb G_m\). Identify the affine projection used for inflation.
+
+**Solution.** Here \(c\) is invertible and \(a,b\) are arbitrary coefficients. Modulo \(t^3\),
+\[
+c(1+at+bt^2)c'(1+a't+b't^2)
+=cc'\bigl(1+(a+a')t+(b+b'+aa')t^2\bigr).
+\]
+As schemes \(J_3\mathbb G_m=\mathbb G_m\times\mathbf A^2\), and reduction is
+\((c,a,b)\mapsto(c,a)\), a one-coordinate affine projection. Its kernel is \(1+bt^2\), whose multiplication adds \(b\). The cross term \(aa'\) shows that the chosen affine coordinates on all jets are not a direct-product group law.
+
+Theorem B.2.1.1 uses the scheme projection and the actual relative affine-line unit on pulled-back base complexes. It descends action maps and their cocycle through full faithfulness; it uses no group splitting in these coordinates and no averaging by a cover degree. This calculation works over every base \(k\)-algebra. □
+
+#### B.4.3. Raw duality on a minuscule projective line
+
+**Exercise B.4.3 (intermediate).** On a minuscule \(GL_2\) support \(Y=\mathbf P^1\), let \(P=E[1]\). Compute \(DP\), the graded total cohomology of \(P\), and the highest weight line. Check the duality of total cohomology with its Tate twists.
+
+**Solution.** Smooth orientation gives
+\[
+DP=E(1)[1].
+\]
+The projective-line unit and positive Kummer class give \(H^{-1}(Y,P)=E\) and \(H^1(Y,P)=E(-1)\), with all other groups zero. Its highest coweight has \(d_\lambda=1\), so Theorem B.3.2.1 gives its highest weight line \(E(-1)\) in degree \(1\). The other line has degree \(-1\).
+
+For \(DP\), the groups are \(E(1)\) in degree \(-1\) and \(E\) in degree \(1\). They are the linear duals of the two groups of \(P\), with their degrees reversed, as required by actual proper dual exchange. This verifies the raw twist \(DIC_\lambda=IC_\lambda(d_\lambda)\). No half-Tate normalization or chosen trivialization of \(E(1)\) was used. □
+
+#### B.4.4. Exactness detects objects and images
+
+**Exercise B.4.4 (advanced).** Let \(0\to IC_\lambda\to P\to IC_\mu\to0\) be a sequence in the genuine rational Satake heart. Show that total cohomology of \(P\) is nonzero and prove that an exact functor which detects zero objects is faithful. Explain the implication for splitting this extension.
+
+**Solution.** Exact total cohomology gives a short exact sequence of finite-dimensional vector spaces. Its dimension is the sum of the two simple dimensions, each positive by its highest weight line (B.3.2.1); therefore \(H^*(P)\ne0\).
+
+For an arbitrary morphism \(f:A\to B\), its image belongs to the abelian category. An exact functor \(F\) preserves the image factorization, so \(F(\operatorname{im}f)=\operatorname{im}(Ff)\). If \(Ff=0\), that image has zero \(F\)-value. Detection of zero objects implies \(\operatorname{im}f=0\), which implies \(f=0\). Thus such an exact functor is faithful.
+
+A vector-space splitting of the displayed short exact sequence need not be the image of a categorical morphism. Faithfulness makes an existing categorical morphism detectable; it does not make every linear map lift. Hence these conclusions do not by themselves split \(P\) or establish Satake semisimplicity. □
 
 ## References
 

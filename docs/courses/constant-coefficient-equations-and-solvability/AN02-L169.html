@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Smooth forcing, invertible kernels and support confinement</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L168.html">Previous lesson</a> · <a href="#1-two-levels-of-smooth-forcing">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#4-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="smooth-forcing-invertible-kernels-and-support-confinement">Smooth forcing, invertible kernels and support confinement</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Two necessary conditions arise when a convolution equation is solvable for smooth forcing. Compact smooth forcing already requires slow Fourier decrease of the kernel. Allowing every smooth forcing also prevents transpose-test supports from escaping toward the boundary while their convolutions remain in a fixed compact set. We explain the common estimate, work through kernels with and without zeros, and exhibit the boundary obstruction.</p>
+<p>Basic references are <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">Melrose's tempered-distribution notes</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. Read <a href="AN02-L163.html#1-five-descriptions-of-slow-decrease">Slow decrease and entire Fourier division</a> for the definition and equivalent characterizations of an invertible compact distribution, and <a href="AN02-L162.html#1-the-smoothing-question">Frequency-selective singularities and smooth convolutions</a> for the arbitrarily localized nonsmooth factor used in the proof. The complete argument below includes the Baire estimate and both necessary conditions.</p>
+<h2 id="1-two-levels-of-smooth-forcing">1. Two levels of smooth forcing</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(X_1,X_2\subset\mathbb R^n\)">\(X_1,X_2\subset\mathbb R^n\)</span> be nonempty open sets with</p>
+<span class="math math-display" id="eq-L1" data-index="1" data-tex="\[
+ X_2-\operatorname{supp}\mu\subset X_1.
+ \tag{L1}
+\]">\[
+ X_2-\operatorname{supp}\mu\subset X_1.
+ \tag{L1}
+\]</span>
+<p>Our convolution and bilinear transpose are</p>
+<span class="math math-display" id="eq-L2" data-index="2" data-tex="\[
+ (\mu*u)(x)=\mu_y(u(x-y)),\qquad
+ \langle\mu*u,v\rangle=\langle u,\check\mu*v\rangle,
+ \quad \check\mu(\phi)=\mu(\phi(-\,\cdot)).
+ \tag{L2}
+\]">\[
+ (\mu*u)(x)=\mu_y(u(x-y)),\qquad
+ \langle\mu*u,v\rangle=\langle u,\check\mu*v\rangle,
+ \quad \check\mu(\phi)=\mu(\phi(-\,\cdot)).
+ \tag{L2}
+\]</span>
+<p>The compatibility condition makes the transpose test compactly supported inside <span class="math" data-index="3" data-tex="\(X_1\)">\(X_1\)</span>. Neither domain needs to be convex or connected.</p>
+<p>If every <span class="math" data-index="4" data-tex="\(f\in C_c^\infty(X_2)\)">\(f\in C_c^\infty(X_2)\)</span> has a distributional solution on <span class="math" data-index="5" data-tex="\(X_1\)">\(X_1\)</span>, then <span class="math" data-index="6" data-tex="\(\mu\)">\(\mu\)</span> is invertible. One exact formulation is: for some <span class="math" data-index="7" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-L3" data-index="8" data-tex="\[
+ \sup_{|\zeta-c|&lt;A\log(2+|c|)}|F_\mu(\zeta)|
+                         &gt;(A+|c|)^{-A}
+ \quad(c\in\mathbb R^n,\ \zeta\in\mathbb C^n).
+ \tag{L3}
+\]">\[
+ \sup_{|\zeta-c|&lt;A\log(2+|c|)}|F_\mu(\zeta)|
+                         &gt;(A+|c|)^{-A}
+ \quad(c\in\mathbb R^n,\ \zeta\in\mathbb C^n).
+ \tag{L3}
+\]</span>
+<p>Zeros of <span class="math" data-index="9" data-tex="\(F_\mu\)">\(F_\mu\)</span> are allowed. “Invertible” does not mean that its pointwise reciprocal is entire or that a compact convolution inverse exists.</p>
+<p>Under the stronger hypothesis of a distributional solution for every <span class="math" data-index="10" data-tex="\(f\in C^\infty(X_2)\)">\(f\in C^\infty(X_2)\)</span>, one additionally has:</p>
+<span class="math math-display" id="eq-L4" data-index="11" data-tex="\[
+ \begin{gathered}
+ \text{for every compact }K_1\subset X_1
+       \text{ there is compact }K_2\subset X_2\text{ such that}\\
+ v\in C_c^\infty(X_2),\
+       \operatorname{supp}(\check\mu*v)\subset K_1
+       \ \Longrightarrow\ \operatorname{supp}v\subset K_2.
+ \end{gathered}
+ \tag{L4}
+\]">\[
+ \begin{gathered}
+ \text{for every compact }K_1\subset X_1
+       \text{ there is compact }K_2\subset X_2\text{ such that}\\
+ v\in C_c^\infty(X_2),\
+       \operatorname{supp}(\check\mu*v)\subset K_1
+       \ \Longrightarrow\ \operatorname{supp}v\subset K_2.
+ \end{gathered}
+ \tag{L4}
+\]</span>
+<p>The compact <span class="math" data-index="12" data-tex="\(K_2\)">\(K_2\)</span> is uniform over all such tests <span class="math" data-index="13" data-tex="\(v\)">\(v\)</span>. Conditions (L3) and (L4) are necessary here; their sufficiency on general domains requires additional arguments.</p>
+<h2 id="2-why-one-complete-space-is-enough">2. Why one complete space is enough</h2>
+<p>Write <span class="math" data-index="14" data-tex="\(B(f,v)=\int fv\)">\(B(f,v)=\int fv\)</span>. For fixed <span class="math" data-index="15" data-tex="\(v\)">\(v\)</span>, it is continuous in <span class="math" data-index="16" data-tex="\(f\)">\(f\)</span>. For fixed <span class="math" data-index="17" data-tex="\(f\)">\(f\)</span>, choose a solution <span class="math" data-index="18" data-tex="\(u_f\)">\(u_f\)</span>, and use</p>
+<span class="math math-display" id="eq-L5" data-index="19" data-tex="\[
+ B(f,v)=u_f(\check\mu*v).
+ \tag{L5}
+\]">\[
+ B(f,v)=u_f(\check\mu*v).
+ \tag{L5}
+\]</span>
+<p>When the transpose tests have one compact support, distributional continuity gives an order and constant that can initially depend on <span class="math" data-index="20" data-tex="\(f\)">\(f\)</span>. Baire's theorem removes that dependence.</p>
+<p>The precise lemma requires only completeness of the first variable. With increasing seminorms <span class="math" data-index="21" data-tex="\(q_N\)">\(q_N\)</span> on a Fréchet space <span class="math" data-index="22" data-tex="\(F\)">\(F\)</span> and <span class="math" data-index="23" data-tex="\(p_M\)">\(p_M\)</span> on a second vector space <span class="math" data-index="24" data-tex="\(V\)">\(V\)</span>, separate bounds imply</p>
+<span class="math math-display" id="eq-L6" data-index="25" data-tex="\[
+ |B(f,v)|\le Cq_N(f)p_M(v)
+ \tag{L6}
+\]">\[
+ |B(f,v)|\le Cq_N(f)p_M(v)
+ \tag{L6}
+\]</span>
+<p>for one <span class="math" data-index="26" data-tex="\(C,N,M\)">\(C,N,M\)</span>. The closed sets
+<span class="math" data-index="27" data-tex="\(\{f:|B(f,v)|\le m p_m(v)\text{ for all }v\}\)">\(\{f:|B(f,v)|\le m p_m(v)\text{ for all }v\}\)</span>
+cover <span class="math" data-index="28" data-tex="\(F\)">\(F\)</span>. One has interior; subtracting two points in that interior and rescaling yields the bound. No continuous choice of solutions and no completeness of <span class="math" data-index="29" data-tex="\(V\)">\(V\)</span> is required.</p>
+<p>For compact forcing, take <span class="math" data-index="30" data-tex="\(F\)">\(F\)</span> to be the complete space of smooth tests supported in a fixed compact <span class="math" data-index="31" data-tex="\(K\subset X_2\)">\(K\subset X_2\)</span>. The estimate says that every derivative of a regularized compact <span class="math" data-index="32" data-tex="\(w\)">\(w\)</span> whose transpose convolution is smooth has the same distributional order <span class="math" data-index="33" data-tex="\(N\)">\(N\)</span>. Constants may depend on the derivative. Fourier tests then give</p>
+<span class="math math-display" id="eq-L7" data-index="34" data-tex="\[
+ |\xi^\gamma F_w(\xi)|\le C_\gamma(1+|\xi|)^N
+                  \quad\hbox{for every }\gamma.
+ \tag{L7}
+\]">\[
+ |\xi^\gamma F_w(\xi)|\le C_\gamma(1+|\xi|)^N
+                  \quad\hbox{for every }\gamma.
+ \tag{L7}
+\]</span>
+<p>Taking arbitrarily large coordinate powers makes <span class="math" data-index="35" data-tex="\(F_w\)">\(F_w\)</span> rapidly decreasing; Fourier inversion makes <span class="math" data-index="36" data-tex="\(w\)">\(w\)</span> smooth. The available localized smoothing-factor theorem contradicts this if the kernel is not invertible.</p>
+<p>For arbitrary smooth forcing, take <span class="math" data-index="37" data-tex="\(F=C^\infty(X_2)\)">\(F=C^\infty(X_2)\)</span>. Its resulting seminorm sees only one compact <span class="math" data-index="38" data-tex="\(K_2\)">\(K_2\)</span>. A test <span class="math" data-index="39" data-tex="\(v\)">\(v\)</span> nonzero outside <span class="math" data-index="40" data-tex="\(K_2\)">\(K_2\)</span> can be detected by <span class="math" data-index="41" data-tex="\(f=\theta\overline v\)">\(f=\theta\overline v\)</span> supported there: the seminorm is zero, whereas <span class="math" data-index="42" data-tex="\(\int fv=\int\theta|v|^2&gt;0\)">\(\int fv=\int\theta|v|^2&gt;0\)</span>. That proves support confinement.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-a-translated-point-mass-on-disconnected-domains">Example 1: a translated point mass on disconnected domains</h3>
+<p>Take <span class="math" data-index="43" data-tex="\(a=3/4\)">\(a=3/4\)</span>, <span class="math" data-index="44" data-tex="\(\mu=\delta_a\)">\(\mu=\delta_a\)</span>, and</p>
+<span class="math math-display" id="eq-L8" data-index="45" data-tex="\[
+ X_2=(-3,-2)\cup(1,2),\qquad
+ X_1=X_2-a=(-15/4,-11/4)\cup(1/4,5/4).
+ \tag{L8}
+\]">\[
+ X_2=(-3,-2)\cup(1,2),\qquad
+ X_1=X_2-a=(-15/4,-11/4)\cup(1/4,5/4).
+ \tag{L8}
+\]</span>
+<p>For every smooth <span class="math" data-index="46" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="47" data-tex="\(X_2\)">\(X_2\)</span>, the smooth function <span class="math" data-index="48" data-tex="\(u(t)=f(t+a)\)">\(u(t)=f(t+a)\)</span> on <span class="math" data-index="49" data-tex="\(X_1\)">\(X_1\)</span> satisfies</p>
+<span class="math math-display" id="eq-L9" data-index="50" data-tex="\[
+ (\delta_a*u)(x)=u(x-a)=f(x).
+ \tag{L9}
+\]">\[
+ (\delta_a*u)(x)=u(x-a)=f(x).
+ \tag{L9}
+\]</span>
+<p>Disconnectedness creates no obstruction for this compatible translated pair.</p>
+<p>Its transform is <span class="math" data-index="51" data-tex="\(F_\mu(\zeta)=e^{-ia\zeta}\)">\(F_\mu(\zeta)=e^{-ia\zeta}\)</span>, of modulus one on the real axis. In (L3), choose <span class="math" data-index="52" data-tex="\(A=2\)">\(A=2\)</span> and use <span class="math" data-index="53" data-tex="\(\zeta=c\)">\(\zeta=c\)</span>. Then <span class="math" data-index="54" data-tex="\(1&gt;(2+|c|)^{-2}\)">\(1&gt;(2+|c|)^{-2}\)</span>, with a positive window radius, proving slow decrease directly.</p>
+<p>Also <span class="math" data-index="55" data-tex="\((\check\mu*v)(t)=v(t+a)\)">\((\check\mu*v)(t)=v(t+a)\)</span>, so its support is <span class="math" data-index="56" data-tex="\(\operatorname{supp}v-a\)">\(\operatorname{supp}v-a\)</span>. For a compact <span class="math" data-index="57" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>, choose <span class="math" data-index="58" data-tex="\(K_2=K_1+a\subset X_2\)">\(K_2=K_1+a\subset X_2\)</span>; this proves (L4) exactly.</p>
+<figure><img class="course-figure" width="1733" height="958" src="reproduce/L169/figures/disconnected-domains-and-transpose-supports.png" alt="Disconnected equation and solution domains related by an exact translation, with a compact test and its reflected transpose support" /><figcaption class="native"><a href="reproduce/L169/figures/disconnected-domains-and-transpose-supports.png">Open full-size PNG</a> · <a href="reproduce/L169/figures/disconnected-domains-and-transpose-supports.svg">Open SVG</a></figcaption></figure>
+<p>Open circles mark the excluded endpoints of the domains in (L8). The closed test support <span class="math" data-index="59" data-tex="\(K=[5/4,7/4]\)">\(K=[5/4,7/4]\)</span> lies in the right component of <span class="math" data-index="60" data-tex="\(X_2\)">\(X_2\)</span>. Its transpose support is <span class="math" data-index="61" data-tex="\(K-a=[1/2,1]\)">\(K-a=[1/2,1]\)</span>, inside the right component of <span class="math" data-index="62" data-tex="\(X_1\)">\(X_1\)</span>. The arrow subtracts <span class="math" data-index="63" data-tex="\(a=3/4\)">\(a=3/4\)</span>; the domain translation and the transpose reflection use the same physical coordinates.</p>
+<h3 id="example-2-an-averaging-kernel-with-characteristic-zeros">Example 2: an averaging kernel with characteristic zeros</h3>
+<p>Let <span class="math" data-index="64" data-tex="\(\mu\)">\(\mu\)</span> have density <span class="math" data-index="65" data-tex="\(1/2\)">\(1/2\)</span> on <span class="math" data-index="66" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Its entire transform is</p>
+<span class="math math-display" id="eq-L10" data-index="67" data-tex="\[
+ F_\mu(\zeta)=\frac{\sin\zeta}{\zeta},\qquad F_\mu(0)=1.
+ \tag{L10}
+\]">\[
+ F_\mu(\zeta)=\frac{\sin\zeta}{\zeta},\qquad F_\mu(0)=1.
+ \tag{L10}
+\]</span>
+<p>For each real <span class="math" data-index="68" data-tex="\(c\)">\(c\)</span>, choose a nearest point <span class="math" data-index="69" data-tex="\(t=\pi/2+k\pi\)">\(t=\pi/2+k\pi\)</span>. Then <span class="math" data-index="70" data-tex="\(|t-c|\le\pi/2\)">\(|t-c|\le\pi/2\)</span>, <span class="math" data-index="71" data-tex="\(|\sin t|=1\)">\(|\sin t|=1\)</span>, and</p>
+<span class="math math-display" id="eq-L11" data-index="72" data-tex="\[
+ |F_\mu(t)|=\frac1{|t|}
+       \ge\frac1{|c|+\pi/2}&gt;(3+|c|)^{-3}.
+ \tag{L11}
+\]">\[
+ |F_\mu(t)|=\frac1{|t|}
+       \ge\frac1{|c|+\pi/2}&gt;(3+|c|)^{-3}.
+ \tag{L11}
+\]</span>
+<p>The inequality is strict because <span class="math" data-index="73" data-tex="\(|c|+\pi/2&lt;|c|+3&lt;(3+|c|)^3\)">\(|c|+\pi/2&lt;|c|+3&lt;(3+|c|)^3\)</span>. The point lies in the complex window with <span class="math" data-index="74" data-tex="\(A=3\)">\(A=3\)</span>, since <span class="math" data-index="75" data-tex="\(3\log(2+|c|)\ge3\log2&gt;\pi/2\)">\(3\log(2+|c|)\ge3\log2&gt;\pi/2\)</span>. Thus the kernel is invertible despite its infinitely many real zeros.</p>
+<p>There is also a direct solution for every compact smooth <span class="math" data-index="76" data-tex="\(f\)">\(f\)</span> on the real line:</p>
+<span class="math math-display" id="eq-L12" data-index="77" data-tex="\[
+ u(x)=2\sum_{k=0}^{\infty}f&#x27;(x-1-2k).
+ \tag{L12}
+\]">\[
+ u(x)=2\sum_{k=0}^{\infty}f&#x27;(x-1-2k).
+ \tag{L12}
+\]</span>
+<p>The sum is locally finite, since its arguments eventually lie below the compact support of <span class="math" data-index="78" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>, uniformly on any bounded set of <span class="math" data-index="79" data-tex="\(x\)">\(x\)</span>. Hence <span class="math" data-index="80" data-tex="\(u\)">\(u\)</span> is smooth. Its average telescopes:</p>
+<span class="math math-display" id="eq-L13" data-index="81" data-tex="\[
+ \begin{aligned}
+ (\mu*u)(x)
+ &amp;=\sum_{k=0}^{\infty}
+       \bigl[f(x-2k)-f(x-2-2k)\bigr]\\
+ &amp;=f(x).
+ \end{aligned}
+ \tag{L13}
+\]">\[
+ \begin{aligned}
+ (\mu*u)(x)
+ &amp;=\sum_{k=0}^{\infty}
+       \bigl[f(x-2k)-f(x-2-2k)\bigr]\\
+ &amp;=f(x).
+ \end{aligned}
+ \tag{L13}
+\]</span>
+<p>Every integration involves only finitely many terms on the compact averaging interval. The formula proves this compact-forcing example; it does not claim that the displayed series remains locally finite for noncompact forcing.</p>
+<h3 id="example-3-a-smooth-compact-kernel-and-analytic-forcing">Example 3: a smooth compact kernel and analytic forcing</h3>
+<p>Let</p>
+<span class="math math-display" id="eq-L14" data-index="82" data-tex="\[
+ b(y)=
+ \begin{cases}
+ (1+y/3)e^{-1/(1-4y^2)},&amp;|y|&lt;1/2,\\
+ 0,&amp;|y|\ge1/2,
+ \end{cases}
+ \qquad d\mu(y)=b(y)\,dy.
+ \tag{L14}
+\]">\[
+ b(y)=
+ \begin{cases}
+ (1+y/3)e^{-1/(1-4y^2)},&amp;|y|&lt;1/2,\\
+ 0,&amp;|y|\ge1/2,
+ \end{cases}
+ \qquad d\mu(y)=b(y)\,dy.
+ \tag{L14}
+\]</span>
+<p>The flat exponential makes every derivative vanish at the endpoints: each derivative is bounded by finitely many powers of <span class="math" data-index="83" data-tex="\((1-4y^2)^{-1}\)">\((1-4y^2)^{-1}\)</span> times the decaying exponential. Thus <span class="math" data-index="84" data-tex="\(b\)">\(b\)</span> is smooth, compactly supported and positive inside its support.</p>
+<p>This kernel is not invertible. Fix any candidate <span class="math" data-index="85" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>. Integration by parts <span class="math" data-index="86" data-tex="\(m\)">\(m\)</span> times gives</p>
+<span class="math math-display" id="eq-L15" data-index="87" data-tex="\[
+ |F_\mu(\zeta)|\le \|b^{(m)}\|_1|\zeta|^{-m}
+                       e^{|\operatorname{Im}\zeta|/2}.
+ \tag{L15}
+\]">\[
+ |F_\mu(\zeta)|\le \|b^{(m)}\|_1|\zeta|^{-m}
+                       e^{|\operatorname{Im}\zeta|/2}.
+ \tag{L15}
+\]</span>
+<p>For large real <span class="math" data-index="88" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and <span class="math" data-index="89" data-tex="\(|\zeta-c|&lt;A\log(2+c)\)">\(|\zeta-c|&lt;A\log(2+c)\)</span>, one has <span class="math" data-index="90" data-tex="\(|\zeta|\ge c/2\)">\(|\zeta|\ge c/2\)</span>. Therefore the window supremum is at most
+<span class="math" data-index="91" data-tex="\(2^m\|b^{(m)}\|_1c^{-m}(2+c)^{A/2}\)">\(2^m\|b^{(m)}\|_1c^{-m}(2+c)^{A/2}\)</span>.
+Choose an integer <span class="math" data-index="92" data-tex="\(m&gt;3A/2\)">\(m&gt;3A/2\)</span>. This is <span class="math" data-index="93" data-tex="\(o(c^{-A})\)">\(o(c^{-A})\)</span>, violating the lower bound in (L3) for large <span class="math" data-index="94" data-tex="\(c\)">\(c\)</span>. Since <span class="math" data-index="95" data-tex="\(A\)">\(A\)</span> was arbitrary, the kernel is not slowly decreasing.</p>
+<p>The necessity theorem consequently excludes solvability for every compact smooth forcing on any compatible pair of nonempty open domains. Yet the particular analytic forcing <span class="math" data-index="96" data-tex="\(f(x)=e^x\)">\(f(x)=e^x\)</span> has a smooth entire solution on the line:</p>
+<span class="math math-display" id="eq-L16" data-index="97" data-tex="\[
+ d=\int_{-1/2}^{1/2}b(y)e^{-y}\,dy&gt;0,\qquad
+ u(x)=e^x/d,\qquad \mu*u=e^x.
+ \tag{L16}
+\]">\[
+ d=\int_{-1/2}^{1/2}b(y)e^{-y}\,dy&gt;0,\qquad
+ u(x)=e^x/d,\qquad \mu*u=e^x.
+ \tag{L16}
+\]</span>
+<p>Direct integration verifies the identity. Solving selected analytic forcing does not imply the universal compact smooth-forcing hypothesis.</p>
+<h3 id="example-4-an-invertible-kernel-with-a-boundary-obstruction">Example 4: an invertible kernel with a boundary obstruction</h3>
+<p>Take <span class="math" data-index="98" data-tex="\(\mu=\delta_0\)">\(\mu=\delta_0\)</span>, <span class="math" data-index="99" data-tex="\(X_1=(-2,2)\)">\(X_1=(-2,2)\)</span>, <span class="math" data-index="100" data-tex="\(X_2=(-1,1)\)">\(X_2=(-1,1)\)</span>. Every compact smooth <span class="math" data-index="101" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="102" data-tex="\(X_2\)">\(X_2\)</span> extends by zero to a smooth function on <span class="math" data-index="103" data-tex="\(X_1\)">\(X_1\)</span>, and that extension solves the equation. The kernel is invertible.</p>
+<p>Choose a nonzero smooth bump <span class="math" data-index="104" data-tex="\(\beta\)">\(\beta\)</span> supported exactly in <span class="math" data-index="105" data-tex="\([-1,1]\)">\([-1,1]\)</span>, positive inside, and set for <span class="math" data-index="106" data-tex="\(j\ge2\)">\(j\ge2\)</span></p>
+<span class="math math-display" id="eq-L17" data-index="107" data-tex="\[
+ v_j(x)=\beta\bigl(4j(x-1+1/j)\bigr),\qquad
+ \operatorname{supp}v_j=
+       [1-5/(4j),\,1-3/(4j)].
+ \tag{L17}
+\]">\[
+ v_j(x)=\beta\bigl(4j(x-1+1/j)\bigr),\qquad
+ \operatorname{supp}v_j=
+       [1-5/(4j),\,1-3/(4j)].
+ \tag{L17}
+\]</span>
+<p>Each test lies in <span class="math" data-index="108" data-tex="\(C_c^\infty(X_2)\)">\(C_c^\infty(X_2)\)</span>. Its transpose convolution is itself, and all these supports fit in <span class="math" data-index="109" data-tex="\(K_1=[-5/4,5/4]\subset X_1\)">\(K_1=[-5/4,5/4]\subset X_1\)</span>. They cannot fit in one compact <span class="math" data-index="110" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span>, since they approach the excluded endpoint <span class="math" data-index="111" data-tex="\(1\)">\(1\)</span>. Condition (L4) fails. Hence the equation cannot be solved distributionally on <span class="math" data-index="112" data-tex="\(X_1\)">\(X_1\)</span> for every smooth <span class="math" data-index="113" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="114" data-tex="\(X_2\)">\(X_2\)</span>.</p>
+<p>An explicit obstructed forcing is <span class="math" data-index="115" data-tex="\(f(x)=e^{1/(1-x)}\)">\(f(x)=e^{1/(1-x)}\)</span>. Suppose a distribution <span class="math" data-index="116" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="117" data-tex="\(X_1\)">\(X_1\)</span> agreed with it on <span class="math" data-index="118" data-tex="\(X_2\)">\(X_2\)</span>. Let <span class="math" data-index="119" data-tex="\(\chi\)">\(\chi\)</span> be a nonnegative smooth bump supported in <span class="math" data-index="120" data-tex="\([-1,1]\)">\([-1,1]\)</span>, with <span class="math" data-index="121" data-tex="\(Z=\int\chi&gt;0\)">\(Z=\int\chi&gt;0\)</span>, and for small <span class="math" data-index="122" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> put</p>
+<span class="math math-display" id="eq-L18" data-index="123" data-tex="\[
+ \phi_h(x)=\chi\bigl((x-1+2h)/h\bigr).
+ \tag{L18}
+\]">\[
+ \phi_h(x)=\chi\bigl((x-1+2h)/h\bigr).
+ \tag{L18}
+\]</span>
+<p>Its support is <span class="math" data-index="124" data-tex="\([1-3h,1-h]\subset X_2\)">\([1-3h,1-h]\subset X_2\)</span>, inside one fixed compact neighborhood of <span class="math" data-index="125" data-tex="\(1\)">\(1\)</span> in <span class="math" data-index="126" data-tex="\(X_1\)">\(X_1\)</span>. Finite distributional order gives <span class="math" data-index="127" data-tex="\(|u(\phi_h)|\le C h^{-N}\)">\(|u(\phi_h)|\le C h^{-N}\)</span> for fixed <span class="math" data-index="128" data-tex="\(C,N\)">\(C,N\)</span>. But positivity yields</p>
+<span class="math math-display" id="eq-L19" data-index="129" data-tex="\[
+ u(\phi_h)=\int f\phi_h\ge hZ\,e^{1/(3h)}.
+ \tag{L19}
+\]">\[
+ u(\phi_h)=\int f\phi_h\ge hZ\,e^{1/(3h)}.
+ \tag{L19}
+\]</span>
+<p>The right side grows faster than every power <span class="math" data-index="130" data-tex="\(h^{-N}\)">\(h^{-N}\)</span>, a contradiction. For example, the exponential series lower bound of degree <span class="math" data-index="131" data-tex="\(N+2\)">\(N+2\)</span> already makes <span class="math" data-index="132" data-tex="\(h^{N+1}e^{1/(3h)}\)">\(h^{N+1}e^{1/(3h)}\)</span> tend to infinity. This forcing is smooth inside <span class="math" data-index="133" data-tex="\(X_2\)">\(X_2\)</span>, although it has no distributional extension across the endpoint.</p>
+<figure><img class="course-figure" width="1573" height="1089" src="reproduce/L169/figures/escaping-tests-and-fixed-transpose-support.png" alt="Compact test supports approaching an excluded endpoint while their transpose supports remain in a fixed compact subset of the larger solution domain" /><figcaption class="native"><a href="reproduce/L169/figures/escaping-tests-and-fixed-transpose-support.png">Open full-size PNG</a> · <a href="reproduce/L169/figures/escaping-tests-and-fixed-transpose-support.svg">Open SVG</a></figcaption></figure>
+<p>For <span class="math" data-index="134" data-tex="\(j=2,4,8,16\)">\(j=2,4,8,16\)</span>, the bars are the exact closed intervals in (L17). Their right endpoints approach <span class="math" data-index="135" data-tex="\(1\)">\(1\)</span>. The fixed compact <span class="math" data-index="136" data-tex="\(K_1=[-5/4,5/4]\)">\(K_1=[-5/4,5/4]\)</span> belongs to the larger solution domain. The open equation domain excludes <span class="math" data-index="137" data-tex="\(1\)">\(1\)</span>; no single compact subset of it contains the entire test family.</p>
+<h2 id="4-exercises-and-full-solutions">4. Exercises and full solutions</h2>
+<p>The ten exercises total 100 points. Each solution states the hypotheses used in its argument.</p>
+<p><strong>Exercise 1 (10 points; introductory).</strong> For <span class="math" data-index="138" data-tex="\(\mu=\delta_{-2/3}\)">\(\mu=\delta_{-2/3}\)</span>, let <span class="math" data-index="139" data-tex="\(X_2=(0,1)\cup(3,4)\)">\(X_2=(0,1)\cup(3,4)\)</span> and <span class="math" data-index="140" data-tex="\(X_1=X_2+2/3\)">\(X_1=X_2+2/3\)</span>. Determine the transpose action and one smooth solution for every smooth forcing on <span class="math" data-index="141" data-tex="\(X_2\)">\(X_2\)</span>. State the support confinement compact associated to <span class="math" data-index="142" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>.</p>
+<p><em>Solution.</em> Here <span class="math" data-index="143" data-tex="\(a=-2/3\)">\(a=-2/3\)</span>. The transpose kernel is <span class="math" data-index="144" data-tex="\(\delta_{2/3}\)">\(\delta_{2/3}\)</span>, so <span class="math" data-index="145" data-tex="\((\check\mu*v)(t)=v(t-2/3)\)">\((\check\mu*v)(t)=v(t-2/3)\)</span>, with support <span class="math" data-index="146" data-tex="\(\operatorname{supp}v+2/3\)">\(\operatorname{supp}v+2/3\)</span>. The solution <span class="math" data-index="147" data-tex="\(u(t)=f(t-2/3)\)">\(u(t)=f(t-2/3)\)</span> on <span class="math" data-index="148" data-tex="\(X_1\)">\(X_1\)</span> satisfies <span class="math" data-index="149" data-tex="\((\mu*u)(x)=u(x+2/3)=f(x)\)">\((\mu*u)(x)=u(x+2/3)=f(x)\)</span>. If the transpose support is inside <span class="math" data-index="150" data-tex="\(K_1\)">\(K_1\)</span>, the original support lies in <span class="math" data-index="151" data-tex="\(K_2=K_1-2/3\)">\(K_2=K_1-2/3\)</span>. This is compact inside <span class="math" data-index="152" data-tex="\(X_2\)">\(X_2\)</span>. No convexity or connectedness has entered. On real frequencies the transform has modulus one, and <span class="math" data-index="153" data-tex="\(A=2\)">\(A=2\)</span> in (L3) gives a strict lower bound.</p>
+<p><strong>Exercise 2 (10 points; intermediate).</strong> Verify (L12)–(L13) for an arbitrary compact smooth <span class="math" data-index="154" data-tex="\(f\)">\(f\)</span>. Explain why replacing “compact smooth” by “smooth” in the locally finite series argument is unjustified.</p>
+<p><em>Solution.</em> Let <span class="math" data-index="155" data-tex="\(\operatorname{supp}f\subset[-R,R]\)">\(\operatorname{supp}f\subset[-R,R]\)</span>. On a bounded interval of <span class="math" data-index="156" data-tex="\(x\)">\(x\)</span>, the values <span class="math" data-index="157" data-tex="\(x-1-2k\)">\(x-1-2k\)</span> eventually lie below <span class="math" data-index="158" data-tex="\(-R\)">\(-R\)</span>, uniformly for all <span class="math" data-index="159" data-tex="\(x\)">\(x\)</span> there, so every derivative of the sum is locally finite. For each <span class="math" data-index="160" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" id="eq-S1" data-index="161" data-tex="\[
+ \frac12\int_{-1}^{1}2f&#x27;(x-y-1-2k)\,dy
+                  =f(x-2k)-f(x-2-2k).
+ \tag{S1}
+\]">\[
+ \frac12\int_{-1}^{1}2f&#x27;(x-y-1-2k)\,dy
+                  =f(x-2k)-f(x-2-2k).
+ \tag{S1}
+\]</span>
+<p>The factor <span class="math" data-index="162" data-tex="\(1/2\)">\(1/2\)</span> cancels the prefactor <span class="math" data-index="163" data-tex="\(2\)">\(2\)</span>. Relabel the second term in the finite sum to obtain <span class="math" data-index="164" data-tex="\(f(x)-f(x-2L-2)\)">\(f(x)-f(x-2L-2)\)</span> after indices <span class="math" data-index="165" data-tex="\(0,\ldots,L\)">\(0,\ldots,L\)</span>. For sufficiently large <span class="math" data-index="166" data-tex="\(L\)">\(L\)</span> the final value is zero. This proves the identity everywhere. A general smooth function need not vanish at any of those negative arguments; for <span class="math" data-index="167" data-tex="\(f(x)=e^{-x}\)">\(f(x)=e^{-x}\)</span>, even the terms in (L12) grow exponentially with <span class="math" data-index="168" data-tex="\(k\)">\(k\)</span>. The particular series then does not define a solution, irrespective of what another solvability theorem might provide.</p>
+<p><strong>Exercise 3 (8 points; intermediate).</strong> Show directly that the averaging kernel satisfies (L3) with <span class="math" data-index="169" data-tex="\(A=3\)">\(A=3\)</span>. At the center <span class="math" data-index="170" data-tex="\(c=\pi\)">\(c=\pi\)</span>, identify a point of its window where its transform is nonzero.</p>
+<p><em>Solution.</em> The grid <span class="math" data-index="171" data-tex="\(\pi/2+k\pi\)">\(\pi/2+k\pi\)</span> has spacing <span class="math" data-index="172" data-tex="\(\pi\)">\(\pi\)</span>, so every real <span class="math" data-index="173" data-tex="\(c\)">\(c\)</span> lies within <span class="math" data-index="174" data-tex="\(\pi/2\)">\(\pi/2\)</span> of some grid point <span class="math" data-index="175" data-tex="\(t\)">\(t\)</span>. Its sine has modulus one, and <span class="math" data-index="176" data-tex="\(|t|\le|c|+\pi/2\)">\(|t|\le|c|+\pi/2\)</span>. Since <span class="math" data-index="177" data-tex="\(3\log2&gt;\pi/2\)">\(3\log2&gt;\pi/2\)</span>, the point is strictly inside the window. Inequality (L11) gives the required strict lower bound. At <span class="math" data-index="178" data-tex="\(c=\pi\)">\(c=\pi\)</span>, either <span class="math" data-index="179" data-tex="\(t=\pi/2\)">\(t=\pi/2\)</span> or <span class="math" data-index="180" data-tex="\(t=3\pi/2\)">\(t=3\pi/2\)</span> works. Although <span class="math" data-index="181" data-tex="\(F_\mu(\pi)=0\)">\(F_\mu(\pi)=0\)</span>, these nearby values are <span class="math" data-index="182" data-tex="\(2/\pi\)">\(2/\pi\)</span> and <span class="math" data-index="183" data-tex="\(-2/(3\pi)\)">\(-2/(3\pi)\)</span>, respectively. The theorem concerns a window supremum, not the value at its center.</p>
+<p><strong>Exercise 4 (10 points; advanced).</strong> Reconstruct the complete-first-variable argument for (L6). Address a nonzero <span class="math" data-index="184" data-tex="\(f\)">\(f\)</span> whose chosen seminorm <span class="math" data-index="185" data-tex="\(q_N(f)\)">\(q_N(f)\)</span> is zero, and state whether completeness of <span class="math" data-index="186" data-tex="\(V\)">\(V\)</span> is needed.</p>
+<p><em>Solution.</em> The sets <span class="math" data-index="187" data-tex="\(E_m=\{f:|B(f,v)|\le m p_m(v)\text{ for all }v\}\)">\(E_m=\{f:|B(f,v)|\le m p_m(v)\text{ for all }v\}\)</span> are closed because <span class="math" data-index="188" data-tex="\(B(\,\cdot\,,v)\)">\(B(\,\cdot\,,v)\)</span> is continuous for each <span class="math" data-index="189" data-tex="\(v\)">\(v\)</span>. They cover the complete first space by the separate bound and monotonicity of the second seminorms. Baire supplies <span class="math" data-index="190" data-tex="\(f_0+\{h:q_N(h)&lt;\delta\}\subset E_m\)">\(f_0+\{h:q_N(h)&lt;\delta\}\subset E_m\)</span>. Subtracting the inequalities for <span class="math" data-index="191" data-tex="\(f_0+h\)">\(f_0+h\)</span> and <span class="math" data-index="192" data-tex="\(f_0\)">\(f_0\)</span> gives <span class="math" data-index="193" data-tex="\(2m p_m(v)\)">\(2m p_m(v)\)</span>. For positive <span class="math" data-index="194" data-tex="\(q_N(f)\)">\(q_N(f)\)</span>, scaling by <span class="math" data-index="195" data-tex="\(\delta/(2q_N(f))\)">\(\delta/(2q_N(f))\)</span> gives <span class="math" data-index="196" data-tex="\(4m q_N(f)p_m(v)/\delta\)">\(4m q_N(f)p_m(v)/\delta\)</span>. If <span class="math" data-index="197" data-tex="\(q_N(f)=0\)">\(q_N(f)=0\)</span>, every multiple <span class="math" data-index="198" data-tex="\(tf\)">\(tf\)</span> lies in the neighborhood, so <span class="math" data-index="199" data-tex="\(|t||B(f,v)|\le2m p_m(v)\)">\(|t||B(f,v)|\le2m p_m(v)\)</span> for arbitrary <span class="math" data-index="200" data-tex="\(t\)">\(t\)</span>. Hence <span class="math" data-index="201" data-tex="\(B(f,v)=0\)">\(B(f,v)=0\)</span>. The closed sets and the Baire theorem belong to <span class="math" data-index="202" data-tex="\(F\)">\(F\)</span>; neither completeness nor a Hausdorff topology on <span class="math" data-index="203" data-tex="\(V\)">\(V\)</span> is used.</p>
+<p><strong>Exercise 5 (10 points; advanced).</strong> In two real dimensions suppose that for every multi-index <span class="math" data-index="204" data-tex="\(\gamma\)">\(\gamma\)</span>,
+<span class="math" data-index="205" data-tex="\(|\xi^\gamma F(\xi)|\le C_\gamma(1+|\xi|)^3\)">\(|\xi^\gamma F(\xi)|\le C_\gamma(1+|\xi|)^3\)</span>.
+Prove a bound <span class="math" data-index="206" data-tex="\(|F(\xi)|\le C_r(1+|\xi|)^{-r}\)">\(|F(\xi)|\le C_r(1+|\xi|)^{-r}\)</span> for any integer <span class="math" data-index="207" data-tex="\(r\ge0\)">\(r\ge0\)</span>, assuming continuity on bounded sets.</p>
+<p><em>Solution.</em> For <span class="math" data-index="208" data-tex="\(|\xi|\ge1\)">\(|\xi|\ge1\)</span>, one of its coordinates has modulus at least <span class="math" data-index="209" data-tex="\(|\xi|/\sqrt2\)">\(|\xi|/\sqrt2\)</span>. Choose <span class="math" data-index="210" data-tex="\(\gamma=(3+r)e_k\)">\(\gamma=(3+r)e_k\)</span> for that coordinate. The two corresponding constants have a finite maximum <span class="math" data-index="211" data-tex="\(C_*\)">\(C_*\)</span>. Thus</p>
+<span class="math math-display" id="eq-S2" data-index="212" data-tex="\[
+ |F(\xi)|\le C_*2^{(3+r)/2}|\xi|^{-3-r}
+                  (1+|\xi|)^3
+           \le C_*2^{(3+r)/2+3+r}(1+|\xi|)^{-r}.
+ \tag{S2}
+\]">\[
+ |F(\xi)|\le C_*2^{(3+r)/2}|\xi|^{-3-r}
+                  (1+|\xi|)^3
+           \le C_*2^{(3+r)/2+3+r}(1+|\xi|)^{-r}.
+ \tag{S2}
+\]</span>
+<p>We used <span class="math" data-index="213" data-tex="\((1+|\xi|)^3\le2^3|\xi|^3\)">\((1+|\xi|)^3\le2^3|\xi|^3\)</span> and
+<span class="math" data-index="214" data-tex="\(|\xi|^{-r}\le2^r(1+|\xi|)^{-r}\)">\(|\xi|^{-r}\le2^r(1+|\xi|)^{-r}\)</span>. Continuity bounds <span class="math" data-index="215" data-tex="\(F\)">\(F\)</span> on the unit ball, so increasing the constant includes bounded frequencies. The constants need not be uniform over all <span class="math" data-index="216" data-tex="\(\gamma\)">\(\gamma\)</span>; for each <span class="math" data-index="217" data-tex="\(r\)">\(r\)</span>, only the two chosen derivatives are used. The exponent <span class="math" data-index="218" data-tex="\(3\)">\(3\)</span> is fixed independently of <span class="math" data-index="219" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p><strong>Exercise 6 (8 points; intermediate).</strong> Why does rapid real Fourier decay imply smoothness of a compact distribution? State an integrability exponent sufficient to obtain a derivative of order <span class="math" data-index="220" data-tex="\(m\)">\(m\)</span>, and retain the inverse Fourier factor.</p>
+<p><em>Solution.</em> Choose an integer <span class="math" data-index="221" data-tex="\(r&gt;n+m\)">\(r&gt;n+m\)</span>. Then the estimate <span class="math" data-index="222" data-tex="\(|F_w(\xi)|\le C_r(1+|\xi|)^{-r}\)">\(|F_w(\xi)|\le C_r(1+|\xi|)^{-r}\)</span> makes <span class="math" data-index="223" data-tex="\(|\xi|^mF_w(\xi)\)">\(|\xi|^mF_w(\xi)\)</span> integrable; radial shell integration compares its tail to <span class="math" data-index="224" data-tex="\(\int_1^\infty t^{n-1+m-r}\,dt\)">\(\int_1^\infty t^{n-1+m-r}\,dt\)</span>, which converges. The function</p>
+<span class="math math-display" id="eq-S3" data-index="225" data-tex="\[
+ W(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}F_w(\xi)\,d\xi
+ \tag{S3}
+\]">\[
+ W(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}F_w(\xi)\,d\xi
+ \tag{S3}
+\]</span>
+<p>has every derivative of order at most <span class="math" data-index="226" data-tex="\(m\)">\(m\)</span> by differentiation under the integrable bound. Dominated convergence makes them continuous. As <span class="math" data-index="227" data-tex="\(m\)">\(m\)</span> is arbitrary, <span class="math" data-index="228" data-tex="\(W\)">\(W\)</span> is smooth. Schwartz inversion on a test <span class="math" data-index="229" data-tex="\(\phi\)">\(\phi\)</span>, with uniform convergence of the finitely many derivatives needed by the distribution, gives
+<span class="math" data-index="230" data-tex="\(w(\phi)=(2\pi)^{-n}\int F_w(\xi)F_\phi(-\xi)\,d\xi=\int W\phi\)">\(w(\phi)=(2\pi)^{-n}\int F_w(\xi)F_\phi(-\xi)\,d\xi=\int W\phi\)</span>.
+Thus <span class="math" data-index="231" data-tex="\(w=W\)">\(w=W\)</span> as distributions. Both the factor and the reflected test frequency are necessary for this bilinear convention.</p>
+<p><strong>Exercise 7 (10 points; intermediate).</strong> Choose a point and radius for the localized smoothing factor in the disconnected domain <span class="math" data-index="232" data-tex="\(X_2=(-3,-2)\cup(1,2)\)">\(X_2=(-3,-2)\cup(1,2)\)</span>. Show how its exact location and radius allow the necessity proof to work without convexity.</p>
+<p><em>Solution.</em> Take <span class="math" data-index="233" data-tex="\(x_0=3/2\)">\(x_0=3/2\)</span>, <span class="math" data-index="234" data-tex="\(a=1/8\)">\(a=1/8\)</span>, and <span class="math" data-index="235" data-tex="\(K=[5/4,7/4]\)">\(K=[5/4,7/4]\)</span>. Then <span class="math" data-index="236" data-tex="\(\overline B_a(x_0)=[11/8,13/8]\)">\(\overline B_a(x_0)=[11/8,13/8]\)</span> lies in the interior of <span class="math" data-index="237" data-tex="\(K=\overline B_{2a}(x_0)\)">\(K=\overline B_{2a}(x_0)\)</span>, and <span class="math" data-index="238" data-tex="\(K\subset(1,2)\subset X_2\)">\(K\subset(1,2)\subset X_2\)</span>. Noninvertibility of the reflected kernel would give a compact continuous <span class="math" data-index="239" data-tex="\(w\)">\(w\)</span> supported in the inner interval, not of class <span class="math" data-index="240" data-tex="\(C^1\)">\(C^1\)</span>, whose reflected convolution is smooth. The fixed-support Baire estimate applies on this <span class="math" data-index="241" data-tex="\(K\)">\(K\)</span>. Small mollifiers stay in <span class="math" data-index="242" data-tex="\(K\)">\(K\)</span>, every derivative obtains the common order, and Fourier decay makes <span class="math" data-index="243" data-tex="\(w\)">\(w\)</span> smooth, contradicting the chosen factor. All support gaps occur inside one component; no convex hull of the whole disconnected domain is required.</p>
+<p><strong>Exercise 8 (8 points; intermediate).</strong> In Theorem 5.1, show that the test <span class="math" data-index="244" data-tex="\(f=\theta\overline v\)">\(f=\theta\overline v\)</span> detects a nonzero value outside <span class="math" data-index="245" data-tex="\(K_2\)">\(K_2\)</span>. Explain why the argument cannot use a test topology with a different compact set for each <span class="math" data-index="246" data-tex="\(v\)">\(v\)</span>.</p>
+<p><em>Solution.</em> If <span class="math" data-index="247" data-tex="\(v(x_0)\ne0\)">\(v(x_0)\ne0\)</span> outside the closed compact <span class="math" data-index="248" data-tex="\(K_2\)">\(K_2\)</span>, choose a small ball about <span class="math" data-index="249" data-tex="\(x_0\)">\(x_0\)</span> disjoint from <span class="math" data-index="250" data-tex="\(K_2\)">\(K_2\)</span> and inside <span class="math" data-index="251" data-tex="\(X_2\)">\(X_2\)</span>. Take a nonnegative smooth <span class="math" data-index="252" data-tex="\(\theta\)">\(\theta\)</span> supported there and positive at <span class="math" data-index="253" data-tex="\(x_0\)">\(x_0\)</span>. All derivatives of <span class="math" data-index="254" data-tex="\(f=\theta\overline v\)">\(f=\theta\overline v\)</span> vanish near <span class="math" data-index="255" data-tex="\(K_2\)">\(K_2\)</span>, so <span class="math" data-index="256" data-tex="\(q_N(f)=0\)">\(q_N(f)=0\)</span>. Continuity of <span class="math" data-index="257" data-tex="\(v\)">\(v\)</span> makes <span class="math" data-index="258" data-tex="\(\theta|v|^2\)">\(\theta|v|^2\)</span> positive on a smaller open neighborhood; hence <span class="math" data-index="259" data-tex="\(\int fv=\int\theta|v|^2&gt;0\)">\(\int fv=\int\theta|v|^2&gt;0\)</span>, contradicting the uniform estimate. If the observation compact depended on <span class="math" data-index="260" data-tex="\(v\)">\(v\)</span>, it could include this very support, and its seminorm need not vanish. Baire in the complete full smooth-forcing space supplies one compact for every admissible <span class="math" data-index="261" data-tex="\(v\)">\(v\)</span>, which is precisely the confinement conclusion.</p>
+<p><strong>Exercise 9 (8 points; advanced).</strong> For the smooth density in (L14), choose a derivative order that defeats a proposed slow-decrease constant <span class="math" data-index="262" data-tex="\(A=4\)">\(A=4\)</span>. Explain why the integration-by-parts bound is valid for complex frequencies.</p>
+<p><em>Solution.</em> The support radius is <span class="math" data-index="263" data-tex="\(1/2\)">\(1/2\)</span>. Take <span class="math" data-index="264" data-tex="\(m=7&gt;3A/2=6\)">\(m=7&gt;3A/2=6\)</span>. For complex <span class="math" data-index="265" data-tex="\(\zeta\ne0\)">\(\zeta\ne0\)</span>, integration by parts gives
+<span class="math" data-index="266" data-tex="\((i\zeta)^mF_b(\zeta)=F_{b^{(m)}}(\zeta)\)">\((i\zeta)^mF_b(\zeta)=F_{b^{(m)}}(\zeta)\)</span>.
+All boundary terms vanish because the density and every derivative are flat at the support endpoints. The right side is bounded by
+<span class="math" data-index="267" data-tex="\(\|b^{(m)}\|_1e^{|\operatorname{Im}\zeta|/2}\)">\(\|b^{(m)}\|_1e^{|\operatorname{Im}\zeta|/2}\)</span>, yielding (L15). In the <span class="math" data-index="268" data-tex="\(A=4\)">\(A=4\)</span> logarithmic window, <span class="math" data-index="269" data-tex="\(|\zeta|\ge c/2\)">\(|\zeta|\ge c/2\)</span> for all sufficiently large positive <span class="math" data-index="270" data-tex="\(c\)">\(c\)</span>, so the supremum is at most <span class="math" data-index="271" data-tex="\(2^7\|b^{(7)}\|_1c^{-7}(2+c)^2=O(c^{-5})\)">\(2^7\|b^{(7)}\|_1c^{-7}(2+c)^2=O(c^{-5})\)</span>. This is smaller than <span class="math" data-index="272" data-tex="\((4+c)^{-4}\)">\((4+c)^{-4}\)</span> for sufficiently large <span class="math" data-index="273" data-tex="\(c\)">\(c\)</span>. An arbitrary <span class="math" data-index="274" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> is defeated by any integer <span class="math" data-index="275" data-tex="\(m&gt;3A/2\)">\(m&gt;3A/2\)</span>, so failure is not restricted to the chosen constant.</p>
+<p><strong>Exercise 10 (18 points; advanced).</strong> Show that a point mass cannot have all its derivatives bounded by one fixed smooth-test order <span class="math" data-index="276" data-tex="\(N\)">\(N\)</span>, even with a different constant for every derivative. Then prove both the support escape and explicit forcing obstruction in Example 4.</p>
+<p><em>Solution.</em> Choose a smooth cutoff <span class="math" data-index="277" data-tex="\(\eta\)">\(\eta\)</span> equal to one near zero and supported in <span class="math" data-index="278" data-tex="\((-1,1)\)">\((-1,1)\)</span>, and set <span class="math" data-index="279" data-tex="\(P(t)=t^{N+1}\eta(t)\)">\(P(t)=t^{N+1}\eta(t)\)</span>. For <span class="math" data-index="280" data-tex="\(0&lt;h\le1\)">\(0&lt;h\le1\)</span>, put <span class="math" data-index="281" data-tex="\(f_h(x)=h^N P(x/h)\)">\(f_h(x)=h^N P(x/h)\)</span>. Each test is supported in <span class="math" data-index="282" data-tex="\([-h,h]\)">\([-h,h]\)</span>. For <span class="math" data-index="283" data-tex="\(0\le k\le N\)">\(0\le k\le N\)</span>,</p>
+<span class="math math-display" id="eq-S4" data-index="284" data-tex="\[
+ \|f_h^{(k)}\|_\infty
+     =h^{N-k}\|P^{(k)}\|_\infty
+     \le\max_{0\le k\le N}\|P^{(k)}\|_\infty,
+ \quad
+ |(\delta_0^{(N+1)})(f_h)|=(N+1)!/h.
+ \tag{S4}
+\]">\[
+ \|f_h^{(k)}\|_\infty
+     =h^{N-k}\|P^{(k)}\|_\infty
+     \le\max_{0\le k\le N}\|P^{(k)}\|_\infty,
+ \quad
+ |(\delta_0^{(N+1)})(f_h)|=(N+1)!/h.
+ \tag{S4}
+\]</span>
+<p>The last equality uses the bilinear distributional derivative sign, whose modulus is one, and <span class="math" data-index="285" data-tex="\(P^{(N+1)}(0)=(N+1)!\)">\(P^{(N+1)}(0)=(N+1)!\)</span>. Thus no finite constant for that one derivative can bound it by the fixed <span class="math" data-index="286" data-tex="\(N\)">\(N\)</span>-order seminorm. Constants depending on the derivative do not repair the missing order.</p>
+<p>For Example 4, the support intervals in (L17) are contained in <span class="math" data-index="287" data-tex="\(X_2\)">\(X_2\)</span> for every <span class="math" data-index="288" data-tex="\(j\ge2\)">\(j\ge2\)</span> and in the fixed <span class="math" data-index="289" data-tex="\(K_1\)">\(K_1\)</span>. Their right endpoints tend to <span class="math" data-index="290" data-tex="\(1\)">\(1\)</span>. A compact <span class="math" data-index="291" data-tex="\(K_2\subset(-1,1)\)">\(K_2\subset(-1,1)\)</span> has a positive distance from <span class="math" data-index="292" data-tex="\(1\)">\(1\)</span>, so one sufficiently large <span class="math" data-index="293" data-tex="\(j\)">\(j\)</span> puts a point of <span class="math" data-index="294" data-tex="\(\operatorname{supp}v_j\)">\(\operatorname{supp}v_j\)</span> above every point of <span class="math" data-index="295" data-tex="\(K_2\)">\(K_2\)</span>. Confinement fails, although <span class="math" data-index="296" data-tex="\(\delta_0\)">\(\delta_0\)</span> is invertible and compact forcing extends by zero.</p>
+<p>Finally a hypothetical distributional extension of <span class="math" data-index="297" data-tex="\(f=e^{1/(1-x)}\)">\(f=e^{1/(1-x)}\)</span> has finite order <span class="math" data-index="298" data-tex="\(N\)">\(N\)</span> on the fixed compact neighborhood of <span class="math" data-index="299" data-tex="\(1\)">\(1\)</span> that contains every <span class="math" data-index="300" data-tex="\(\phi_h\)">\(\phi_h\)</span>. Scaling gives the upper bound <span class="math" data-index="301" data-tex="\(Ch^{-N}\)">\(Ch^{-N}\)</span>. Since <span class="math" data-index="302" data-tex="\(\phi_h\ge0\)">\(\phi_h\ge0\)</span>, its mass is <span class="math" data-index="303" data-tex="\(hZ\)">\(hZ\)</span>, and <span class="math" data-index="304" data-tex="\(1-x\le3h\)">\(1-x\le3h\)</span> on its support, integration gives the lower bound <span class="math" data-index="305" data-tex="\(hZ e^{1/(3h)}\)">\(hZ e^{1/(3h)}\)</span>. The ratio to <span class="math" data-index="306" data-tex="\(h^{-N}\)">\(h^{-N}\)</span> is at least <span class="math" data-index="307" data-tex="\(Z h^{N+1}e^{1/(3h)}\)">\(Z h^{N+1}e^{1/(3h)}\)</span>, which tends to infinity by the exponential-series term of degree <span class="math" data-index="308" data-tex="\(N+2\)">\(N+2\)</span>. This contradicts the finite-order bound. The obstruction concerns growth at the excluded endpoint, not a lack of smoothness inside the forcing domain.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, “Fourier transformation of distributions,” freely readable <a href="https://web.math.ku.dk/~grubb/dist5.pdf">lecture notes</a>.</li>
+<li>Richard B. Melrose, <em>Introduction to Microlocal Analysis</em>, MIT, 2007, Chapter 1, “Tempered distributions and the Fourier transform,” freely readable <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">notes</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+<li>The complete proof below supplies the shared Baire lemma, fixed-support regularization, rapid Fourier decay and full smooth-forcing support confinement. Its exact earlier localized-smoothing and slow-decrease theorems are linked in the introduction.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Solvability for analytic forcing holds for every nonzero compact kernel. Solvability for every compact smooth forcing requires an invertible kernel. Solvability for every smooth forcing also confines transpose-test supports whenever their convolutions stay in a fixed compact set. We prove both necessary conditions on arbitrary compatible open domains. One complete-space argument supplies their common bilinear estimate.</p>
+<p>Basic references are <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">Melrose's tempered-distribution notes</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The exact earlier mathematical inputs are Theorem 1.1 of <a href="AN02-L162.html#1-the-smoothing-question">Frequency-selective singularities and smooth convolutions</a>, including its prescribed center and arbitrarily small support radius, and Theorem 1.1 and Definition 6.1 of <a href="AN02-L163.html#1-five-descriptions-of-slow-decrease">Slow decrease and entire Fourier division</a>. The complete-metric Baire theorem and completeness of both fixed-support tests and <span class="math" data-index="309" data-tex="\(C^\infty(X_2)\)">\(C^\infty(X_2)\)</span> are proved in Sections 6 and 14.2 of <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>. The exact Fourier inversion on Schwartz tests is Theorem 1.1 of <a href="prerequisites/prerequisite-bridges.html#fourier-inversion-on-the-schwartz-space">Fourier transforms, finite spectra and convex separation</a>. Smooth cutoffs are supplied by Section 13.10 of <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a>.</p>
+<h2 id="1-compatible-domains-and-the-necessary-condition">1. Compatible domains and the necessary condition</h2>
+<p>Let <span class="math" data-index="310" data-tex="\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span>, <span class="math" data-index="311" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and let <span class="math" data-index="312" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span> be nonempty open sets satisfying</p>
+<span class="math math-display" id="eq-1.1" data-index="313" data-tex="\[
+ X_2-\operatorname{supp}\mu\subset X_1.
+ \tag{1.1}
+\]">\[
+ X_2-\operatorname{supp}\mu\subset X_1.
+ \tag{1.1}
+\]</span>
+<p>Then <span class="math" data-index="314" data-tex="\(\mu*u\)">\(\mu*u\)</span> is defined as a distribution on <span class="math" data-index="315" data-tex="\(X_2\)">\(X_2\)</span> for every <span class="math" data-index="316" data-tex="\(u\in\mathcal D&#x27;(X_1)\)">\(u\in\mathcal D&#x27;(X_1)\)</span>. Write <span class="math" data-index="317" data-tex="\(\check\mu(\phi)=\mu(\phi(-\,\cdot))\)">\(\check\mu(\phi)=\mu(\phi(-\,\cdot))\)</span>. The transpose identity is</p>
+<span class="math math-display" id="eq-1.2" data-index="318" data-tex="\[
+ \langle\mu*u,\phi\rangle=\langle u,\check\mu*\phi\rangle,
+ \qquad \phi\in C_c^\infty(X_2).
+ \tag{1.2}
+\]">\[
+ \langle\mu*u,\phi\rangle=\langle u,\check\mu*\phi\rangle,
+ \qquad \phi\in C_c^\infty(X_2).
+ \tag{1.2}
+\]</span>
+<p>Indeed the support of <span class="math" data-index="319" data-tex="\(\check\mu*\phi\)">\(\check\mu*\phi\)</span> is contained in the compact set
+<span class="math" data-index="320" data-tex="\(\operatorname{supp}\phi-\operatorname{supp}\mu\subset X_1\)">\(\operatorname{supp}\phi-\operatorname{supp}\mu\subset X_1\)</span>. Changing <span class="math" data-index="321" data-tex="\(x-y\)">\(x-y\)</span> to a new variable gives (1.2) for smooth <span class="math" data-index="322" data-tex="\(u\)">\(u\)</span>; the same finite-order compact-kernel transpose defines the convolution for a distribution <span class="math" data-index="323" data-tex="\(u\)">\(u\)</span>. It needs no convexity of either domain.</p>
+<p><strong>Theorem 1.1.</strong> Suppose that for every <span class="math" data-index="324" data-tex="\(f\in C_c^\infty(X_2)\)">\(f\in C_c^\infty(X_2)\)</span>, there is a <span class="math" data-index="325" data-tex="\(u_f\in\mathcal D&#x27;(X_1)\)">\(u_f\in\mathcal D&#x27;(X_1)\)</span> with</p>
+<span class="math math-display" id="eq-1.3" data-index="326" data-tex="\[
+ \mu*u_f=f\quad\hbox{in }X_2 .
+ \tag{1.3}
+\]">\[
+ \mu*u_f=f\quad\hbox{in }X_2 .
+ \tag{1.3}
+\]</span>
+<p>Then <span class="math" data-index="327" data-tex="\(\mu\)">\(\mu\)</span> is invertible. Equivalently, its Fourier transform <span class="math" data-index="328" data-tex="\(F_\mu\)">\(F_\mu\)</span> obeys, for some <span class="math" data-index="329" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-1.4" data-index="330" data-tex="\[
+ \sup_{\substack{\zeta\in\mathbb C^n\\
+       |\zeta-c|&lt;A\log(2+|c|)}}|F_\mu(\zeta)|&gt;(A+|c|)^{-A}
+            \quad(c\in\mathbb R^n).
+ \tag{1.4}
+\]">\[
+ \sup_{\substack{\zeta\in\mathbb C^n\\
+       |\zeta-c|&lt;A\log(2+|c|)}}|F_\mu(\zeta)|&gt;(A+|c|)^{-A}
+            \quad(c\in\mathbb R^n).
+ \tag{1.4}
+\]</span>
+<p>This necessity does not assert that invertibility alone suffices on every compatible domain. It uses only compact smooth forcing, and allows arbitrary distributional solutions.</p>
+<p>The hypothesis implies <span class="math" data-index="331" data-tex="\(\mu\ne0\)">\(\mu\ne0\)</span>: if <span class="math" data-index="332" data-tex="\(\mu=0\)">\(\mu=0\)</span>, its convolution is zero, whereas the nonempty open set <span class="math" data-index="333" data-tex="\(X_2\)">\(X_2\)</span> has a nonzero smooth compact bump. We assume <span class="math" data-index="334" data-tex="\(\mu\ne0\)">\(\mu\ne0\)</span> below.</p>
+<h2 id="2-a-common-bilinear-estimate">2. A common bilinear estimate</h2>
+<p>We first isolate the complete-space argument.</p>
+<p><strong>Lemma 2.1 (one complete variable).</strong> Let <span class="math" data-index="335" data-tex="\(F\)">\(F\)</span> be a Fréchet space with increasing defining seminorms <span class="math" data-index="336" data-tex="\(q_N\)">\(q_N\)</span>, and let <span class="math" data-index="337" data-tex="\(V\)">\(V\)</span> be a vector space with increasing seminorms <span class="math" data-index="338" data-tex="\(p_M\)">\(p_M\)</span>. Suppose <span class="math" data-index="339" data-tex="\(B:F\times V\to\mathbb C\)">\(B:F\times V\to\mathbb C\)</span> is bilinear, continuous in <span class="math" data-index="340" data-tex="\(f\)">\(f\)</span> for every fixed <span class="math" data-index="341" data-tex="\(v\)">\(v\)</span>, and for every fixed <span class="math" data-index="342" data-tex="\(f\)">\(f\)</span> has a bound
+<span class="math" data-index="343" data-tex="\(|B(f,v)|\le C_f p_{M_f}(v)\)">\(|B(f,v)|\le C_f p_{M_f}(v)\)</span>. Then for some <span class="math" data-index="344" data-tex="\(C,N,M\)">\(C,N,M\)</span>,</p>
+<span class="math math-display" id="eq-2.0" data-index="345" data-tex="\[
+ |B(f,v)|\le C q_N(f)p_M(v).
+ \tag{2.0}
+\]">\[
+ |B(f,v)|\le C q_N(f)p_M(v).
+ \tag{2.0}
+\]</span>
+<p>Completeness of <span class="math" data-index="346" data-tex="\(V\)">\(V\)</span>, or even separation by its seminorms, is unnecessary.</p>
+<p><em>Proof.</em> For integers <span class="math" data-index="347" data-tex="\(m\ge1\)">\(m\ge1\)</span>, define <span class="math" data-index="348" data-tex="\(E_m\)">\(E_m\)</span> by <span class="math" data-index="349" data-tex="\(|B(f,v)|\le m p_m(v)\)">\(|B(f,v)|\le m p_m(v)\)</span> for every <span class="math" data-index="350" data-tex="\(v\)">\(v\)</span>. Each is closed in <span class="math" data-index="351" data-tex="\(F\)">\(F\)</span>, by the assumed continuity in <span class="math" data-index="352" data-tex="\(f\)">\(f\)</span>, and they cover <span class="math" data-index="353" data-tex="\(F\)">\(F\)</span> by increasing <span class="math" data-index="354" data-tex="\(m\)">\(m\)</span> to dominate <span class="math" data-index="355" data-tex="\(C_f,M_f\)">\(C_f,M_f\)</span>. Baire gives some <span class="math" data-index="356" data-tex="\(E_m\)">\(E_m\)</span> with interior. A finite-seminorm neighborhood in that interior contains <span class="math" data-index="357" data-tex="\(f_0+\{h:q_N(h)&lt;\delta\}\)">\(f_0+\{h:q_N(h)&lt;\delta\}\)</span>, since the seminorms increase. Subtract the inequalities at <span class="math" data-index="358" data-tex="\(f_0+h\)">\(f_0+h\)</span> and <span class="math" data-index="359" data-tex="\(f_0\)">\(f_0\)</span> to get <span class="math" data-index="360" data-tex="\(|B(h,v)|\le2m p_m(v)\)">\(|B(h,v)|\le2m p_m(v)\)</span> for <span class="math" data-index="361" data-tex="\(q_N(h)&lt;\delta\)">\(q_N(h)&lt;\delta\)</span>. Rescale <span class="math" data-index="362" data-tex="\(h=\delta f/(2q_N(f))\)">\(h=\delta f/(2q_N(f))\)</span> when <span class="math" data-index="363" data-tex="\(q_N(f)&gt;0\)">\(q_N(f)&gt;0\)</span>. When <span class="math" data-index="364" data-tex="\(q_N(f)=0\)">\(q_N(f)=0\)</span>, apply the bound to arbitrarily large multiples of <span class="math" data-index="365" data-tex="\(f\)">\(f\)</span>, obtaining <span class="math" data-index="366" data-tex="\(B(f,v)=0\)">\(B(f,v)=0\)</span>. This proves (2.0) with <span class="math" data-index="367" data-tex="\(C=4m/\delta\)">\(C=4m/\delta\)</span>, <span class="math" data-index="368" data-tex="\(M=m\)">\(M=m\)</span>. The zero first space is immediate. <span class="math" data-index="369" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a compact <span class="math" data-index="370" data-tex="\(K\subset X_2\)">\(K\subset X_2\)</span>, let</p>
+<span class="math math-display" id="eq-2.1" data-index="371" data-tex="\[
+ \mathcal D_K=\{\phi\in C^\infty(\mathbb R^n):
+                \operatorname{supp}\phi\subset K\},\qquad
+ q_N(f)=\max_{|\alpha|\le N}\sup_{\mathbb R^n}|\partial^\alpha f|,
+ \quad
+ p_M(v)=\max_{|\beta|\le M}\sup_{\mathbb R^n}
+                       |\partial^\beta(\check\mu*v)|.
+ \tag{2.1}
+\]">\[
+ \mathcal D_K=\{\phi\in C^\infty(\mathbb R^n):
+                \operatorname{supp}\phi\subset K\},\qquad
+ q_N(f)=\max_{|\alpha|\le N}\sup_{\mathbb R^n}|\partial^\alpha f|,
+ \quad
+ p_M(v)=\max_{|\beta|\le M}\sup_{\mathbb R^n}
+                       |\partial^\beta(\check\mu*v)|.
+ \tag{2.1}
+\]</span>
+<p>The <span class="math" data-index="372" data-tex="\(q_N\)">\(q_N\)</span> are increasing and define the complete fixed-support Fréchet topology. The <span class="math" data-index="373" data-tex="\(p_M\)">\(p_M\)</span> are finite increasing seminorms on the second copy of <span class="math" data-index="374" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span>. Completeness in that second topology will not be used.</p>
+<p><strong>Corollary 2.2 (fixed-support test estimate).</strong> Under (1.3), there are <span class="math" data-index="375" data-tex="\(C&lt;\infty\)">\(C&lt;\infty\)</span> and integers <span class="math" data-index="376" data-tex="\(N,M\ge0\)">\(N,M\ge0\)</span>, depending on <span class="math" data-index="377" data-tex="\(K\)">\(K\)</span>, such that</p>
+<span class="math math-display" id="eq-2.2" data-index="378" data-tex="\[
+ \left|\int f(x)v(x)\,dx\right|\le C q_N(f)p_M(v)
+                  \quad(f,v\in\mathcal D_K).
+ \tag{2.2}
+\]">\[
+ \left|\int f(x)v(x)\,dx\right|\le C q_N(f)p_M(v)
+                  \quad(f,v\in\mathcal D_K).
+ \tag{2.2}
+\]</span>
+<p><em>Proof.</em> Put <span class="math" data-index="379" data-tex="\(B(f,v)=\int fv\)">\(B(f,v)=\int fv\)</span>. For fixed <span class="math" data-index="380" data-tex="\(v\)">\(v\)</span>, this is continuous in the <span class="math" data-index="381" data-tex="\(q_N\)">\(q_N\)</span> topology on the first variable: <span class="math" data-index="382" data-tex="\(|B(f,v)|\le q_0(f)\|v\|_1\)">\(|B(f,v)|\le q_0(f)\|v\|_1\)</span>.</p>
+<p>For fixed <span class="math" data-index="383" data-tex="\(f\)">\(f\)</span>, choose the solution <span class="math" data-index="384" data-tex="\(u_f\)">\(u_f\)</span>. Formula (1.2) gives</p>
+<span class="math math-display" id="eq-2.3" data-index="385" data-tex="\[
+ B(f,v)=u_f(\check\mu*v).
+ \tag{2.3}
+\]">\[
+ B(f,v)=u_f(\check\mu*v).
+ \tag{2.3}
+\]</span>
+<p>All its tests have support in the single compact set <span class="math" data-index="386" data-tex="\(K-\operatorname{supp}\mu\subset X_1\)">\(K-\operatorname{supp}\mu\subset X_1\)</span>. Distributional continuity on a fixed compact set bounds (2.3) by <span class="math" data-index="387" data-tex="\(C_f p_{M_f}(v)\)">\(C_f p_{M_f}(v)\)</span> for some finite <span class="math" data-index="388" data-tex="\(C_f\)">\(C_f\)</span> and <span class="math" data-index="389" data-tex="\(M_f\)">\(M_f\)</span>. Constants and orders may initially depend on <span class="math" data-index="390" data-tex="\(f\)">\(f\)</span>; the next step removes that dependence.</p>
+<p>Lemma 2.1 now applies with the complete first copy of <span class="math" data-index="391" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span> and the indicated seminorms on the second copy. It gives (2.2). No linear choice or continuous dependence of the solutions <span class="math" data-index="392" data-tex="\(u_f\)">\(u_f\)</span> has been assumed. <span class="math" data-index="393" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-smooth-outputs-force-a-common-distributional-order">3. Smooth outputs force a common distributional order</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-index="394" data-tex="\(w\)">\(w\)</span> be a compact distribution whose support lies in the interior of <span class="math" data-index="395" data-tex="\(K\)">\(K\)</span>, and suppose <span class="math" data-index="396" data-tex="\(\check\mu*w\)">\(\check\mu*w\)</span> is smooth. Under the estimate (2.2), <span class="math" data-index="397" data-tex="\(w\)">\(w\)</span> is smooth.</p>
+<p><em>Proof.</em> Choose a nonnegative <span class="math" data-index="398" data-tex="\(\chi\in C_c^\infty(\mathbb R^n)\)">\(\chi\in C_c^\infty(\mathbb R^n)\)</span> supported in the unit ball, with integral one, and put
+<span class="math" data-index="399" data-tex="\(\chi_\varepsilon(x)=\varepsilon^{-n}\chi(x/\varepsilon)\)">\(\chi_\varepsilon(x)=\varepsilon^{-n}\chi(x/\varepsilon)\)</span>. For sufficiently small <span class="math" data-index="400" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-index="401" data-tex="\(w_\varepsilon=w*\chi_\varepsilon\)">\(w_\varepsilon=w*\chi_\varepsilon\)</span> belongs to <span class="math" data-index="402" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span>. Compactness of <span class="math" data-index="403" data-tex="\(\operatorname{supp}w\)">\(\operatorname{supp}w\)</span> inside <span class="math" data-index="404" data-tex="\(\operatorname{int}K\)">\(\operatorname{int}K\)</span> supplies the required fixed gap.</p>
+<p>Set <span class="math" data-index="405" data-tex="\(g=\check\mu*w\)">\(g=\check\mu*w\)</span>. This is compactly supported and smooth. For every multi-index <span class="math" data-index="406" data-tex="\(\gamma\)">\(\gamma\)</span>,</p>
+<span class="math math-display" id="eq-3.1" data-index="407" data-tex="\[
+ \check\mu*\partial^\gamma w_\varepsilon
+       =(\partial^\gamma g)*\chi_\varepsilon,\qquad
+ p_M(\partial^\gamma w_\varepsilon)
+       \le \max_{|\beta|\le M}\|\partial^{\beta+\gamma}g\|_\infty
+       =:C_\gamma&lt;\infty .
+ \tag{3.1}
+\]">\[
+ \check\mu*\partial^\gamma w_\varepsilon
+       =(\partial^\gamma g)*\chi_\varepsilon,\qquad
+ p_M(\partial^\gamma w_\varepsilon)
+       \le \max_{|\beta|\le M}\|\partial^{\beta+\gamma}g\|_\infty
+       =:C_\gamma&lt;\infty .
+ \tag{3.1}
+\]</span>
+<p>The positive mollifier has <span class="math" data-index="408" data-tex="\(L^1\)">\(L^1\)</span> norm one, which proves the estimate. Compact convolution and differentiation commute by the finite-order pairing and ordinary differentiation of its test.</p>
+<p>Apply (2.2) with <span class="math" data-index="409" data-tex="\(v=\partial^\gamma w_\varepsilon\)">\(v=\partial^\gamma w_\varepsilon\)</span>:</p>
+<span class="math math-display" id="eq-3.2" data-index="410" data-tex="\[
+ \left|\int f\,\partial^\gamma w_\varepsilon\right|
+       \le C C_\gamma q_N(f)\quad(f\in\mathcal D_K).
+ \tag{3.2}
+\]">\[
+ \left|\int f\,\partial^\gamma w_\varepsilon\right|
+       \le C C_\gamma q_N(f)\quad(f\in\mathcal D_K).
+ \tag{3.2}
+\]</span>
+<p>Mollifiers converge to the identity on every compact-distribution test pairing: the convolved test and its derivatives converge uniformly on a fixed compact neighborhood of <span class="math" data-index="411" data-tex="\(\operatorname{supp}w\)">\(\operatorname{supp}w\)</span>. Hence <span class="math" data-index="412" data-tex="\(\partial^\gamma w_\varepsilon\to\partial^\gamma w\)">\(\partial^\gamma w_\varepsilon\to\partial^\gamma w\)</span> distributionally. Taking the limit in (3.2) gives the same bound for <span class="math" data-index="413" data-tex="\((\partial^\gamma w)(f)\)">\((\partial^\gamma w)(f)\)</span>. Its order <span class="math" data-index="414" data-tex="\(N\)">\(N\)</span> is independent of <span class="math" data-index="415" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p>Choose <span class="math" data-index="416" data-tex="\(\eta\in C_c^\infty(\operatorname{int}K)\)">\(\eta\in C_c^\infty(\operatorname{int}K)\)</span> equal to one near <span class="math" data-index="417" data-tex="\(\operatorname{supp}w\)">\(\operatorname{supp}w\)</span>. All distributional derivatives of <span class="math" data-index="418" data-tex="\(w\)">\(w\)</span> have support there. The Leibniz rule bounds</p>
+<span class="math math-display" id="eq-3.3" data-index="419" data-tex="\[
+ q_N(\eta f)\le C_\eta\max_{|\alpha|\le N}
+                       \sup_{\operatorname{supp}\eta}|\partial^\alpha f|.
+ \tag{3.3}
+\]">\[
+ q_N(\eta f)\le C_\eta\max_{|\alpha|\le N}
+                       \sup_{\operatorname{supp}\eta}|\partial^\alpha f|.
+ \tag{3.3}
+\]</span>
+<p>Thus the derivative distribution can be tested on an arbitrary smooth <span class="math" data-index="420" data-tex="\(f\)">\(f\)</span> by inserting <span class="math" data-index="421" data-tex="\(\eta\)">\(\eta\)</span>, with a bound of the same order <span class="math" data-index="422" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Use <span class="math" data-index="423" data-tex="\(f(x)=e^{-ix\cdot\xi}\)">\(f(x)=e^{-ix\cdot\xi}\)</span>, <span class="math" data-index="424" data-tex="\(\xi\in\mathbb R^n\)">\(\xi\in\mathbb R^n\)</span>. Fourier differentiation and (3.3) give</p>
+<span class="math math-display" id="eq-3.4" data-index="425" data-tex="\[
+ |\xi^\gamma F_w(\xi)|=|F_{\partial^\gamma w}(\xi)|
+       \le C&#x27;_\gamma(1+|\xi|)^N .
+ \tag{3.4}
+\]">\[
+ |\xi^\gamma F_w(\xi)|=|F_{\partial^\gamma w}(\xi)|
+       \le C&#x27;_\gamma(1+|\xi|)^N .
+ \tag{3.4}
+\]</span>
+<p>For any integer <span class="math" data-index="426" data-tex="\(r\ge0\)">\(r\ge0\)</span>, take <span class="math" data-index="427" data-tex="\(\gamma=(N+r)e_k\)">\(\gamma=(N+r)e_k\)</span>, <span class="math" data-index="428" data-tex="\(k=1,\ldots,n\)">\(k=1,\ldots,n\)</span>. At every <span class="math" data-index="429" data-tex="\(|\xi|\ge1\)">\(|\xi|\ge1\)</span>, choose <span class="math" data-index="430" data-tex="\(k\)">\(k\)</span> with <span class="math" data-index="431" data-tex="\(|\xi_k|\ge|\xi|/\sqrt n\)">\(|\xi_k|\ge|\xi|/\sqrt n\)</span>. The finite maximum of the corresponding constants then yields</p>
+<span class="math math-display" id="eq-3.5" data-index="432" data-tex="\[
+ |F_w(\xi)|\le C_r(1+|\xi|)^{-r}.
+ \tag{3.5}
+\]">\[
+ |F_w(\xi)|\le C_r(1+|\xi|)^{-r}.
+ \tag{3.5}
+\]</span>
+<p>Bounded frequencies are included by increasing <span class="math" data-index="433" data-tex="\(C_r\)">\(C_r\)</span>, since <span class="math" data-index="434" data-tex="\(F_w\)">\(F_w\)</span> is continuous. The order <span class="math" data-index="435" data-tex="\(N\)">\(N\)</span> remains fixed while <span class="math" data-index="436" data-tex="\(\gamma\)">\(\gamma\)</span> becomes arbitrarily large.</p>
+<p>For every multi-index <span class="math" data-index="437" data-tex="\(\alpha\)">\(\alpha\)</span>, choose <span class="math" data-index="438" data-tex="\(r&gt;n+|\alpha|\)">\(r&gt;n+|\alpha|\)</span> in (3.5). Then <span class="math" data-index="439" data-tex="\(\xi^\alpha F_w(\xi)\)">\(\xi^\alpha F_w(\xi)\)</span> is integrable. Fourier inversion defines</p>
+<span class="math math-display" id="eq-3.6" data-index="440" data-tex="\[
+ W(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+                     e^{ix\cdot\xi}F_w(\xi)\,d\xi ,
+ \tag{3.6}
+\]">\[
+ W(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+                     e^{ix\cdot\xi}F_w(\xi)\,d\xi ,
+ \tag{3.6}
+\]</span>
+<p>with every derivative obtained by an absolutely convergent integral. Dominated convergence makes these derivatives continuous, so <span class="math" data-index="441" data-tex="\(W\)">\(W\)</span> is smooth. To identify it with <span class="math" data-index="442" data-tex="\(w\)">\(w\)</span>, take a compact smooth test <span class="math" data-index="443" data-tex="\(\phi\)">\(\phi\)</span>. The linked Schwartz inversion theorem writes</p>
+<span class="math math-display" id="eq-3.7" data-index="444" data-tex="\[
+ \phi(x)=(2\pi)^{-n}\int e^{-ix\cdot\xi}F_\phi(-\xi)\,d\xi.
+ \tag{3.7}
+\]">\[
+ \phi(x)=(2\pi)^{-n}\int e^{-ix\cdot\xi}F_\phi(-\xi)\,d\xi.
+ \tag{3.7}
+\]</span>
+<p>Its integral and every finite number of spatial derivatives converge uniformly near the support of <span class="math" data-index="445" data-tex="\(w\)">\(w\)</span>, because <span class="math" data-index="446" data-tex="\(F_\phi\)">\(F_\phi\)</span> decays rapidly. Finite-order continuity therefore permits applying <span class="math" data-index="447" data-tex="\(w\)">\(w\)</span> inside that integral, yielding</p>
+<span class="math math-display" id="eq-3.8" data-index="448" data-tex="\[
+ w(\phi)=(2\pi)^{-n}\int F_w(\xi)F_\phi(-\xi)\,d\xi
+                         =\int W(x)\phi(x)\,dx.
+ \tag{3.8}
+\]">\[
+ w(\phi)=(2\pi)^{-n}\int F_w(\xi)F_\phi(-\xi)\,d\xi
+                         =\int W(x)\phi(x)\,dx.
+ \tag{3.8}
+\]</span>
+<p>The last equality follows from integrability and Fubini in (3.6). Thus <span class="math" data-index="449" data-tex="\(w=W\)">\(w=W\)</span> distributionally and is smooth. The argument does not require an additional negative-Sobolev regularity theorem. <span class="math" data-index="450" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-excluding-a-localized-smoothing-factor">4. Excluding a localized smoothing factor</h2>
+<p><em>Proof of Theorem 1.1.</em> Reflection preserves slow decrease: <span class="math" data-index="451" data-tex="\(F_{\check\mu}(\zeta)=F_\mu(-\zeta)\)">\(F_{\check\mu}(\zeta)=F_\mu(-\zeta)\)</span>, and the map <span class="math" data-index="452" data-tex="\((c,\zeta)\mapsto(-c,-\zeta)\)">\((c,\zeta)\mapsto(-c,-\zeta)\)</span> preserves the radius and lower bound in (1.4). Thus <span class="math" data-index="453" data-tex="\(\mu\)">\(\mu\)</span> is invertible exactly when <span class="math" data-index="454" data-tex="\(\check\mu\)">\(\check\mu\)</span> is invertible.</p>
+<p>Suppose <span class="math" data-index="455" data-tex="\(\mu\)">\(\mu\)</span> were not invertible. The full equivalence in Theorem 1.1 of <a href="AN02-L163.html#1-five-descriptions-of-slow-decrease">Slow decrease and entire Fourier division</a> supplies a collapsed profile for <span class="math" data-index="456" data-tex="\(\check\mu\)">\(\check\mu\)</span>. Theorem 1.1 of <a href="AN02-L162.html#1-the-smoothing-question">Frequency-selective singularities and smooth convolutions</a> then gives the following at any chosen <span class="math" data-index="457" data-tex="\(x_0\in X_2\)">\(x_0\in X_2\)</span> and any sufficiently small <span class="math" data-index="458" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>: a compact continuous <span class="math" data-index="459" data-tex="\(w\)">\(w\)</span>, supported in <span class="math" data-index="460" data-tex="\(\overline B_a(x_0)\)">\(\overline B_a(x_0)\)</span>, singular only at <span class="math" data-index="461" data-tex="\(x_0\)">\(x_0\)</span>, not of class <span class="math" data-index="462" data-tex="\(C^1\)">\(C^1\)</span>, with</p>
+<span class="math math-display" id="eq-4.1" data-index="463" data-tex="\[
+ \check\mu*w\in C^\infty(\mathbb R^n).
+ \tag{4.1}
+\]">\[
+ \check\mu*w\in C^\infty(\mathbb R^n).
+ \tag{4.1}
+\]</span>
+<p>Choose <span class="math" data-index="464" data-tex="\(a\)">\(a\)</span> so <span class="math" data-index="465" data-tex="\(\overline B_{2a}(x_0)\subset X_2\)">\(\overline B_{2a}(x_0)\subset X_2\)</span>, and take <span class="math" data-index="466" data-tex="\(K=\overline B_{2a}(x_0)\)">\(K=\overline B_{2a}(x_0)\)</span>. The support of <span class="math" data-index="467" data-tex="\(w\)">\(w\)</span> lies in its interior. Corollary 2.2 supplies the common test estimate on this exact <span class="math" data-index="468" data-tex="\(K\)">\(K\)</span>, and Lemma 3.1 applied to (4.1) makes <span class="math" data-index="469" data-tex="\(w\)">\(w\)</span> smooth. This contradicts its failure to be <span class="math" data-index="470" data-tex="\(C^1\)">\(C^1\)</span>.</p>
+<p>Consequently <span class="math" data-index="471" data-tex="\(\check\mu\)">\(\check\mu\)</span>, and hence <span class="math" data-index="472" data-tex="\(\mu\)">\(\mu\)</span>, is invertible. The slow-decrease equivalence gives (1.4). This proves the full necessity theorem for every compatible pair of nonempty open domains. <span class="math" data-index="473" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-support-confinement-for-arbitrary-smooth-forcing">5. Support confinement for arbitrary smooth forcing</h2>
+<p><strong>Theorem 5.1.</strong> Strengthen the solvability hypothesis to every <span class="math" data-index="474" data-tex="\(f\in C^\infty(X_2)\)">\(f\in C^\infty(X_2)\)</span>. Then for every compact <span class="math" data-index="475" data-tex="\(K_1\subset X_1\)">\(K_1\subset X_1\)</span>, there is a compact <span class="math" data-index="476" data-tex="\(K_2\subset X_2\)">\(K_2\subset X_2\)</span> such that</p>
+<span class="math math-display" id="eq-5.1" data-index="477" data-tex="\[
+ v\in C_c^\infty(X_2),\quad
+       \operatorname{supp}(\check\mu*v)\subset K_1
+       \quad\Longrightarrow\quad
+       \operatorname{supp}v\subset K_2.
+ \tag{5.1}
+\]">\[
+ v\in C_c^\infty(X_2),\quad
+       \operatorname{supp}(\check\mu*v)\subset K_1
+       \quad\Longrightarrow\quad
+       \operatorname{supp}v\subset K_2.
+ \tag{5.1}
+\]</span>
+<p>The conclusion concerns smooth compact tests. It is not an assertion that the same solution estimates hold for arbitrary distributional tests.</p>
+<p><em>Proof.</em> Take <span class="math" data-index="478" data-tex="\(F=C^\infty(X_2)\)">\(F=C^\infty(X_2)\)</span> with increasing compact derivative seminorms from a compact exhaustion, and take</p>
+<span class="math math-display" id="eq-5.2" data-index="479" data-tex="\[
+ V=\{v\in C_c^\infty(X_2):
+                  \operatorname{supp}(\check\mu*v)\subset K_1\},\qquad
+ p_M(v)=\max_{|\beta|\le M}\sup_{\mathbb R^n}
+                         |\partial^\beta(\check\mu*v)|.
+ \tag{5.2}
+\]">\[
+ V=\{v\in C_c^\infty(X_2):
+                  \operatorname{supp}(\check\mu*v)\subset K_1\},\qquad
+ p_M(v)=\max_{|\beta|\le M}\sup_{\mathbb R^n}
+                         |\partial^\beta(\check\mu*v)|.
+ \tag{5.2}
+\]</span>
+<p>This is a vector space with increasing seminorms. Its completeness is not needed. For fixed <span class="math" data-index="480" data-tex="\(v\)">\(v\)</span>, the map <span class="math" data-index="481" data-tex="\(f\mapsto\int fv\)">\(f\mapsto\int fv\)</span> is continuous on <span class="math" data-index="482" data-tex="\(C^\infty(X_2)\)">\(C^\infty(X_2)\)</span>, bounded by a supremum on the compact support of <span class="math" data-index="483" data-tex="\(v\)">\(v\)</span>. For fixed <span class="math" data-index="484" data-tex="\(f\)">\(f\)</span>, its solution <span class="math" data-index="485" data-tex="\(u_f\)">\(u_f\)</span> and the transpose identity give</p>
+<span class="math math-display" id="eq-5.3" data-index="486" data-tex="\[
+ \int fv=u_f(\check\mu*v),\qquad
+                  \left|\int fv\right|\le C_f p_{M_f}(v).
+ \tag{5.3}
+\]">\[
+ \int fv=u_f(\check\mu*v),\qquad
+                  \left|\int fv\right|\le C_f p_{M_f}(v).
+ \tag{5.3}
+\]</span>
+<p>Here all tests for <span class="math" data-index="487" data-tex="\(u_f\)">\(u_f\)</span> have support in the fixed <span class="math" data-index="488" data-tex="\(K_1\)">\(K_1\)</span>. Apply Lemma 2.1 to the complete first space. One resulting seminorm has the form</p>
+<span class="math math-display" id="eq-5.4" data-index="489" data-tex="\[
+ q_N(f)=\max_{|\alpha|\le N}\sup_{K_2}|\partial^\alpha f|,
+ \quad\hbox{for one compact }K_2\subset X_2,
+ \qquad
+ \left|\int fv\right|\le Cq_N(f)p_M(v).
+ \tag{5.4}
+\]">\[
+ q_N(f)=\max_{|\alpha|\le N}\sup_{K_2}|\partial^\alpha f|,
+ \quad\hbox{for one compact }K_2\subset X_2,
+ \qquad
+ \left|\int fv\right|\le Cq_N(f)p_M(v).
+ \tag{5.4}
+\]</span>
+<p>Finite unions of the compact sets in finitely many initial seminorms give such a compact <span class="math" data-index="490" data-tex="\(K_2\)">\(K_2\)</span>; increasing the order gives the stated maximum.</p>
+<p>If an admissible <span class="math" data-index="491" data-tex="\(v\)">\(v\)</span> were nonzero at some <span class="math" data-index="492" data-tex="\(x_0\in X_2\setminus K_2\)">\(x_0\in X_2\setminus K_2\)</span>, choose a nonnegative smooth bump <span class="math" data-index="493" data-tex="\(\theta\)">\(\theta\)</span> supported in a small ball there, with <span class="math" data-index="494" data-tex="\(\theta(x_0)&gt;0\)">\(\theta(x_0)&gt;0\)</span>. The smooth compact function <span class="math" data-index="495" data-tex="\(f=\theta\overline v\)">\(f=\theta\overline v\)</span> has <span class="math" data-index="496" data-tex="\(q_N(f)=0\)">\(q_N(f)=0\)</span>, but</p>
+<span class="math math-display" id="eq-5.5" data-index="497" data-tex="\[
+ \int fv=\int\theta|v|^2&gt;0,
+ \tag{5.5}
+\]">\[
+ \int fv=\int\theta|v|^2&gt;0,
+ \tag{5.5}
+\]</span>
+<p>contradicting (5.4). Thus <span class="math" data-index="498" data-tex="\(v\)">\(v\)</span> is zero off <span class="math" data-index="499" data-tex="\(K_2\)">\(K_2\)</span>, and its support is contained in the closed set <span class="math" data-index="500" data-tex="\(K_2\)">\(K_2\)</span>. This proves (5.1), including <span class="math" data-index="501" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span> and empty <span class="math" data-index="502" data-tex="\(K_1\)">\(K_1\)</span>. <span class="math" data-index="503" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Compact smooth forcing sufficed for Theorem 1.1. The complete space <span class="math" data-index="504" data-tex="\(C^\infty(X_2)\)">\(C^\infty(X_2)\)</span> in Theorem 5.1 requires solvability for every smooth forcing. A function that grows without bound near the boundary can detect a domain obstruction that compact forcing misses.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, “Fourier transformation of distributions,” freely readable <a href="https://web.math.ku.dk/~grubb/dist5.pdf">lecture notes</a>.</li>
+<li>Richard B. Melrose, <em>Introduction to Microlocal Analysis</em>, MIT, 2007, Chapter 1, “Tempered distributions and the Fourier transform,” freely readable <a href="https://math.mit.edu/~rbm/iml/Chapter1.pdf">notes</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+<li>The exact previously proved isolated-smoothing-factor and slow-decrease equivalences are linked in the introduction. The Baire level-set argument, common-order regularization and rapid Fourier decay are proved here.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/smooth-forcing-invertible-kernels-and-support-confinement.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L169/smooth-forcing-and-invertible-convolution-kernels-formal.md" download>smooth-forcing-and-invertible-convolution-kernels-formal.md</a></li><li><a href="reproduce/L169/smooth-forcing-and-invertible-convolution-kernels-learner.md" download>smooth-forcing-and-invertible-convolution-kernels-learner.md</a></li><li><a href="reproduce/L169/make_figures222.py" download>make_figures222.py</a></li><li><a href="reproduce/L169/check_numerics222.py" download>check_numerics222.py</a></li><li><a href="reproduce/L169/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L169/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L169/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L169/figures/geometry222.json" download>figures/geometry222.json</a></li><li><a href="reproduce/L169/figures/disconnected-domains-and-transpose-supports.png" download>figures/disconnected-domains-and-transpose-supports.png</a></li><li><a href="reproduce/L169/figures/disconnected-domains-and-transpose-supports.svg" download>figures/disconnected-domains-and-transpose-supports.svg</a></li><li><a href="reproduce/L169/figures/escaping-tests-and-fixed-transpose-support.png" download>figures/escaping-tests-and-fixed-transpose-support.png</a></li><li><a href="reproduce/L169/figures/escaping-tests-and-fixed-transpose-support.svg" download>figures/escaping-tests-and-fixed-transpose-support.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

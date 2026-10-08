@@ -8,7 +8,7 @@ A small cyclic spectrum in one fixed corner is enough to recognize a central fix
 
 Let $M\ne0$ be a concrete von Neumann algebra on an arbitrary Hilbert space, let $G$ be a locally compact Hausdorff abelian group, and let $\alpha:G\to\operatorname{Aut}(M)$ be a normal point-ultraweakly continuous action. Suppose $Z(M)^\alpha=\mathbb C1$. Write $H=\widehat G$, $F=M^\alpha$, $D=Z(F)$ and $\Gamma=\Gamma(\alpha)$. Frequencies have the positive L115 convention. For $0<r<\pi$ put $V(r)=\{e^{i\theta}:|\theta|<r\}$. An ordinary operator spectrum on a corner is distinguished throughout from the action spectrum in $H$.
 
-The earlier proofs used below are [Projection comparison and the countably decomposable type III case, PC2 and PC4](OA-FLOW-PC.md#oa-flow.pc.2) for central supports and corner centers; [Lifting innerness and cocycles from a full corner](OA-FLOW-L117.md#oa-flow.fullcorner.inner) for the unique prescribed lift; The dual-center kernel through central overlap for absorption and the subgroup property; Connes spectrum through fixed corners for reduced actions and their intersection; and [Mutual corner approximation through a family of spectral bridges](OA-FLOW-L121.md#oa-flow.l121.sc0) for closed thickenings and their directedness. The operator-spectrum formula in [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) uses the specified-predual hypotheses of [Inputs for action frequencies and norm continuity](OA-FLOW-AF.md#af-0), supplied by [General normal actions: predual continuity and the integrated maps](OA-FLOW-AT.md#oa-flow.at.3) and the reduced-action setting just cited. [Small fixed corners, inner spectra and annihilating times](OA-FLOW-L122.md#oa-flow.l122.directannihilator) supplies the reverse annihilator inclusion. [Compact topology and the Hilbert tensor construction, H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies compact-neighborhood shrinking, compact images and finite products. The innerness criterion is proved in [Read an inner implementer from a circle eigenunitary, CE0–CE5](OA-FLOW-L124.md#ce0), with its conclusion at [Read an inner implementer from a circle eigenunitary — CE5](OA-FLOW-L124.md#ce5). The fixed small-spectrum theorem is proved in [A central order correction fixes the implementer and retains its bound, CO0–CO4](OA-FLOW-L125.md#co0), with the precise bound at [A central order correction fixes the implementer and retains its bound — CO4](OA-FLOW-L125.md#co4).
+The earlier proofs used below are [Projection comparison and the countably decomposable type III case, PC2 and PC4](OA-FLOW-PC.md#oa-flow.pc.2) for central supports and corner centers; [Lifting innerness and cocycles from a full corner](OA-FLOW-L117.md#oa-flow.fullcorner.inner) for the unique prescribed lift; [The dual-center kernel through central overlap](OA-FLOW-L115.md#oa-flow.connes.absorption) for absorption and the subgroup property; [Connes spectrum through fixed corners](OA-FLOW-GCC.md#oa-flow.gcc.setting) for reduced actions and their intersection; and [Mutual corner approximation through a family of spectral bridges](OA-FLOW-L121.md#oa-flow.l121.sc0) for closed thickenings and their directedness. The operator-spectrum formula in [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) uses the specified-predual hypotheses of [Inputs for action frequencies and norm continuity](OA-FLOW-AF.md#af-0), supplied by [General normal actions: predual continuity and the integrated maps](OA-FLOW-AT.md#oa-flow.at.3) and the reduced-action setting just cited. [Small fixed corners, inner spectra and annihilating times](OA-FLOW-L122.md#oa-flow.l122.directannihilator) supplies the reverse annihilator inclusion. [Compact topology and the Hilbert tensor construction, H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies compact-neighborhood shrinking, compact images and finite products. The innerness criterion is proved in [Read an inner implementer from a circle eigenunitary, CE0–CE5](OA-FLOW-L124.md#ce0), with its conclusion at [Read an inner implementer from a circle eigenunitary — CE5](OA-FLOW-L124.md#ce5). The fixed small-spectrum theorem is proved in [A central order correction fixes the implementer and retains its bound, CO0–CO4](OA-FLOW-L125.md#co0), with the precise bound at [A central order correction fixes the implementer and retains its bound — CO4](OA-FLOW-L125.md#co4).
 
 <a id="lc0"></a>
 <a id="oa-flow.l126.lc0"></a>
@@ -32,7 +32,7 @@ It is equivariant because $e$ is fixed. If $ze$ is fixed, then $(\alpha_s(z)-z)e
 Z(eMe)^{\alpha^e}=\mathbb Ce.
 \tag{LC3}
 \]
-The corner action is normal and point-ultraweakly continuous by the complete compression and predual argument in Connes spectrum through fixed corners — GCC SETTING. Neither $e\in Z(F)$ nor $e\in Z(M)$ was required.
+The corner action is normal and point-ultraweakly continuous by the complete compression and predual argument in [Connes spectrum through fixed corners — GCC SETTING](OA-FLOW-GCC.md#oa-flow.gcc.setting). Neither $e\in Z(F)$ nor $e\in Z(M)$ was required.
 
 <a id="lc1"></a>
 <a id="oa-flow.l126.lc1"></a>
@@ -44,7 +44,7 @@ Fix $t\in G$ and put $\sigma=\alpha_t$. Suppose there exist a nonzero fixed proj
 \operatorname{Sp}_{\mathcal L(eMe)}(\sigma^e)\subset V(r).
 \tag{LC4}
 \]
-The discrete cyclic action $n\mapsto(\sigma^e)^n$ meets the actual dual-Banach hypotheses: its maps are normal isometries and its predual orbit maps are continuous because $\mathbb Z$ is discrete. Applying [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) at the generator $1$ identifies its action spectrum in $\widehat{\mathbb Z}=\mathbb T$ with the operator spectrum in (LC4); the former is closed, so taking its closure changes nothing. The dual-center kernel through central overlap — L115 SUBGROUP makes its Connes spectrum a subgroup contained in this spectrum.
+The discrete cyclic action $n\mapsto(\sigma^e)^n$ meets the actual dual-Banach hypotheses: its maps are normal isometries and its predual orbit maps are continuous because $\mathbb Z$ is discrete. Applying [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) at the generator $1$ identifies its action spectrum in $\widehat{\mathbb Z}=\mathbb T$ with the operator spectrum in (LC4); the former is closed, so taking its closure changes nothing. [The dual-center kernel through central overlap — L115 SUBGROUP](OA-FLOW-L115.md#oa-flow.connes.subgroup) makes its Connes spectrum a subgroup contained in this spectrum.
 
 No subgroup of $\mathbb T$ except $\{1\}$ is contained in $\{z:\operatorname{Re}z>0\}$. Indeed, for $z\ne1$ choose a principal argument of absolute value $a\in(0,\pi]$ and replace $z$ by $z^{-1}$ if needed. If $a\ge\pi/2$, $z$ already has nonpositive real part. Otherwise, the least integer $n$ with $na\ge\pi/2$ has $\pi/2\le na<\pi/2+a<\pi$, so $z^n$ has nonpositive real part. Consequently
 <a id="equation-lc5"></a>
@@ -87,9 +87,9 @@ S=\pi(\operatorname{Sp}(\alpha))\text{ is compact},
 \qquad \pi:H\longrightarrow H/\Gamma.
 \tag{LC9}
 \]
-The whole quotient is not assumed compact. Here $\Gamma$ is closed by The dual-center kernel through central overlap — L115 SUBGROUP. The quotient map is open, since $\pi^{-1}\pi(O)=\bigcup_{\gamma\in\Gamma}(O+\gamma)$ is open for every open $O$. The quotient is Hausdorff: if $x-y\notin\Gamma$, choose an identity neighborhood $W$ with $x-y+W-W$ disjoint from the closed set $\Gamma$; then $\pi(x+W)$ and $\pi(y+W)$ are disjoint open neighborhoods. The induced addition and inverse are continuous by their lifts and openness of $\pi$; for addition the product quotient map is open on basic rectangles, so the same quotient-topology test applies.
+The whole quotient is not assumed compact. Here $\Gamma$ is closed by [The dual-center kernel through central overlap — L115 SUBGROUP](OA-FLOW-L115.md#oa-flow.connes.subgroup). The quotient map is open, since $\pi^{-1}\pi(O)=\bigcup_{\gamma\in\Gamma}(O+\gamma)$ is open for every open $O$. The quotient is Hausdorff: if $x-y\notin\Gamma$, choose an identity neighborhood $W$ with $x-y+W-W$ disjoint from the closed set $\Gamma$; then $\pi(x+W)$ and $\pi(y+W)$ are disjoint open neighborhoods. The induced addition and inverse are continuous by their lifts and openness of $\pi$; for addition the product quotient map is open on basic rectangles, so the same quotient-topology test applies.
 
-For every $0\ne e\in\operatorname{Proj}(D)$, every fixed subcorner of $eMe$ is also fixed in $M$, whence $\Gamma\subset\Gamma(\alpha^e)$. The dual-center kernel through central overlap — L115 ABSORPTION applied inside $eMe$ gives
+For every $0\ne e\in\operatorname{Proj}(D)$, every fixed subcorner of $eMe$ is also fixed in $M$, whence $\Gamma\subset\Gamma(\alpha^e)$. [The dual-center kernel through central overlap — L115 ABSORPTION](OA-FLOW-L115.md#oa-flow.connes.absorption) applied inside $eMe$ gives
 <a id="equation-lc10"></a>
 \[
 \operatorname{Sp}(\alpha^e)+\Gamma=\operatorname{Sp}(\alpha^e).
@@ -102,7 +102,7 @@ A_{e,U}=\operatorname{Sp}(\alpha^e)+U,
 \qquad K_{e,U}=\pi(A_{e,U}).
 \tag{LC11}
 \]
-[Mutual corner approximation through a family of spectral bridges — L121 SC0](OA-FLOW-L121.md#oa-flow.l121.sc0) proves $A_{e,U}$ closed. Equation (LC10) makes it saturated, so $\pi^{-1}(K_{e,U})=A_{e,U}$, and the quotient topology makes $K_{e,U}$ closed. Connes spectrum through fixed corners — GCC SETTING's restricted filters show $\operatorname{Sp}(\alpha^e)\subset\operatorname{Sp}(\alpha)$: an annihilator of the whole action also annihilates its restriction, and taking the hull reverses ideal inclusion. Hence
+[Mutual corner approximation through a family of spectral bridges — L121 SC0](OA-FLOW-L121.md#oa-flow.l121.sc0) proves $A_{e,U}$ closed. Equation (LC10) makes it saturated, so $\pi^{-1}(K_{e,U})=A_{e,U}$, and the quotient topology makes $K_{e,U}$ closed. [Connes spectrum through fixed corners — GCC SETTING](OA-FLOW-GCC.md#oa-flow.gcc.setting)'s restricted filters show $\operatorname{Sp}(\alpha^e)\subset\operatorname{Sp}(\alpha)$: an annihilator of the whole action also annihilates its restriction, and taking the hull reverses ideal inclusion. Hence
 <a id="equation-lc12"></a>
 \[
 K_{e,U}\subset S+\pi(U).
@@ -112,7 +112,7 @@ K_{e,U}\subset S+\pi(U).
 
 [Mutual corner approximation through a family of spectral bridges — L121 DIRECTED.THICKENING](OA-FLOW-L121.md#oa-flow.directed.thickening) proves downward directedness when all identity neighborhoods are allowed. Given two members with compact neighborhoods, apply that theorem to find a refining member $\operatorname{Sp}(\alpha^f)+W$. [Compact topology and the Hilbert tensor construction — H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies a compact identity neighborhood $U'\subset W$. Then $A_{f,U'}$ still refines both. Thus the compact-neighborhood family, and its image family, are downward directed.
 
-Connes spectrum through fixed corners — GCC INTERSECTION states that the intersection of all central fixed-corner spectra is $\Gamma$. If $p\notin\Gamma$, choose such a corner with $p\notin\operatorname{Sp}(\alpha^e)$. Closedness gives an identity neighborhood $W$ with $p-W$ disjoint from that spectrum; shrink to a compact identity neighborhood $U\subset W$. Then $p\notin A_{e,U}$. Conversely (LC10) and zero frequency imply $\Gamma\subset A_{e,U}$ for all pairs. Thus
+[Connes spectrum through fixed corners — GCC INTERSECTION](OA-FLOW-GCC.md#oa-flow.gcc.intersection) states that the intersection of all central fixed-corner spectra is $\Gamma$. If $p\notin\Gamma$, choose such a corner with $p\notin\operatorname{Sp}(\alpha^e)$. Closedness gives an identity neighborhood $W$ with $p-W$ disjoint from that spectrum; shrink to a compact identity neighborhood $U\subset W$. Then $p\notin A_{e,U}$. Conversely (LC10) and zero frequency imply $\Gamma\subset A_{e,U}$ for all pairs. Thus
 <a id="equation-lc13"></a>
 \[
 \bigcap_{e,U} A_{e,U}=\Gamma,
@@ -143,7 +143,7 @@ Take $t\in\Gamma^\perp$. The continuous character $p\mapsto(t,p)$ is constant on
 \qquad O=\chi_t^{-1}(V(a)).
 \tag{LC15}
 \]
-LC2 supplies a nonzero central fixed projection $e$ whose action spectrum evaluates inside $V(a)$. The reduced action has the actual concrete predual by Connes spectrum through fixed corners — GCC SETTING, and [General normal actions: predual continuity and the integrated maps — AT1–3](OA-FLOW-AT.md#oa-flow.at.3) give norm-continuous predual orbits. Thus the full specified-dual hypotheses of [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) hold, with both-sign power bounds equal to one. Its formula gives
+LC2 supplies a nonzero central fixed projection $e$ whose action spectrum evaluates inside $V(a)$. The reduced action has the actual concrete predual by [Connes spectrum through fixed corners — GCC SETTING](OA-FLOW-GCC.md#oa-flow.gcc.setting), and [General normal actions: predual continuity and the integrated maps — AT1–3](OA-FLOW-AT.md#oa-flow.at.3) give norm-continuous predual orbits. Thus the full specified-dual hypotheses of [The spectrum of one action operator](OA-FLOW-L89.md#oa-flow.opsp.formula) hold, with both-sign power bounds equal to one. Its formula gives
 <a id="equation-lc16"></a>
 \[
 \operatorname{Sp}_{\mathcal L(eMe)}(\alpha_t^e)
@@ -174,7 +174,7 @@ W_s=\operatorname{diag}(1,e^{is},e^{2is}),\qquad
 \tag{LC18}
 \]
 The center of $M$ is scalar, so the action is centrally ergodic. Entrywise,
-$\alpha_s(E_{ij})=e^{i(\lambda_i-\lambda_j)s}E_{ij}$ for $(\lambda_1,\lambda_2,\lambda_3)=(0,1,2)$. The fixed algebra is exactly the diagonal matrices: every off-diagonal entry has a nonzero integer frequency and is moved by some $s$. Each nonzero scalar corner $E_{ii}ME_{ii}$ is fixed pointwise. Zero belongs to every fixed-corner spectrum, while that scalar corner has spectrum $\{0\}$; hence $\Gamma=\{0\}$. The finite action spectrum is $\{-2,-1,0,1,2\}$: Fourier filtering multiplies each matrix unit by the transform at its displayed frequency, and the scalar frequency-separating tests in Connes spectrum through fixed corners — GCC SETTING identify precisely these five values. Thus $S$ is compact although $H/\Gamma=\mathbb R$ is not.
+$\alpha_s(E_{ij})=e^{i(\lambda_i-\lambda_j)s}E_{ij}$ for $(\lambda_1,\lambda_2,\lambda_3)=(0,1,2)$. The fixed algebra is exactly the diagonal matrices: every off-diagonal entry has a nonzero integer frequency and is moved by some $s$. Each nonzero scalar corner $E_{ii}ME_{ii}$ is fixed pointwise. Zero belongs to every fixed-corner spectrum, while that scalar corner has spectrum $\{0\}$; hence $\Gamma=\{0\}$. The finite action spectrum is $\{-2,-1,0,1,2\}$: Fourier filtering multiplies each matrix unit by the transform at its displayed frequency, and the scalar frequency-separating tests in [Connes spectrum through fixed corners — GCC SETTING](OA-FLOW-GCC.md#oa-flow.gcc.setting) identify precisely these five values. Thus $S$ is compact although $H/\Gamma=\mathbb R$ is not.
 
 At $t=\pi/2$, the corner automorphism is the identity and its chosen corner implementer is $v=e$. The unique lift prescribed by (LC7) is
 <a id="equation-lc19"></a>
@@ -272,7 +272,7 @@ $$
 $$
 
 Apply the Connes-spectrum absorption law of
-The dual-center kernel through central overlap to $\alpha^e$;
+[The dual-center kernel through central overlap](OA-FLOW-L115.md#oa-flow.connes.absorption) to $\alpha^e$;
 (Q3) follows from (Q4).
 
 Let $U$ range over compact neighborhoods of $0$ in $H$, and set

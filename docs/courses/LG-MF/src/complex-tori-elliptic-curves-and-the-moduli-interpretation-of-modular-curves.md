@@ -1,10 +1,9 @@
 # Complex tori, elliptic curves and the moduli interpretation of modular curves
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The upper half-plane can describe either a lattice shape or an elliptic curve. A congruence subgroup records a point, a cyclic subgroup, or an ordered torsion basis on that curve. This interpretation also explains why Hecke operators count isogenies.
 
-We use the surjectivity of \(j\) proved in The valence formula and the ring of modular forms of level one, Theorem 3.1, and the lifting result of Congruence subgroups, cusps and elliptic points, Lemma 1.1. Elementary complex analysis supplies Liouville's theorem, normally convergent series, the residue theorem and local holomorphic inverses. All uniformization and moduli arguments needed below are proved here.
+We use the surjectivity of \(j\) proved in The valence formula and the ring of modular forms of level one, Theorem 3.1, and the lifting result of Congruence subgroups, cusps and elliptic points, Lemma 1.1. Elementary complex analysis supplies Liouville's theorem, normally convergent series, the residue theorem and local holomorphic inverses. Section 3.1 also uses the compact-curve Riemann–Roch and genus-comparison proofs of Dimension formulas for congruence subgroups, Appendix A, with the remaining analytic foundations specified there. The cubic-to-lattice proof and the moduli arguments are given below.
 
 A lattice is \(\Lambda=\mathbb Z\omega_1+\mathbb Z\omega_2\subset\mathbb C\), where \(\omega_1,\omega_2\) are linearly independent over \(\mathbb R\). Choose their order so that \(\operatorname{Im}(\omega_2/\omega_1)>0\). We write
 \[
@@ -183,6 +182,248 @@ A tangent contributes a repeated zero, so the same argument includes coincident 
 
 ## 3. Every complex elliptic curve comes from a lattice
 
+<a id="genus-one-cubic"></a>
+
+### 3.1. A cubic from an analytic genus-one surface
+
+The lattice construction starts with a quotient of \(\mathbb C\). We now construct the same kind of cubic directly from an arbitrary pointed compact Riemann surface of genus one. The precise prerequisites are Dimension formulas for congruence subgroups, Appendix A.4–A.6: duality, the Riemann–Roch formula (R16), the canonical degree (R17), the degree-zero divisor identity and the compact maximum argument; and Appendix A.7: equality of the analytic and topological genera. Its boundary-integration formula (R1), in A.1, gives the residue identity used below. A.1 constructs the smooth Hilbert/Sobolev completions and weak-test maps. The real-calculus, continuous-integral existence, coordinate change-of-variables and Stokes prerequisites stated there remain required. The elementary complex-analytic inputs are the Cauchy, Taylor, identity and local-inverse results of The upper half-plane and the modular group, Lemma 0.2 and its consequences, and the Laurent expansions of Modular forms, lattice functions and Eisenstein series, Lemma 0.1.
+
+**Theorem 3.0 (the analytic genus-one cubic).** Let \(X\) be a compact connected Riemann surface without boundary of topological genus one, let \(P\in X\), and choose a nonzero holomorphic differential \(\omega\) on \(X\). There are meromorphic functions \(x,y:X\to\mathbb P^1(\mathbb C)\), holomorphic on \(X\setminus\{P\}\), and numbers \(a,b\in\mathbb C\) with \(a^3-27b^2\ne0\), such that the projective cubic defined by the following equation and the displayed map satisfy
+\[
+\begin{gathered}
+C_{a,b}\subset\mathbb P^2(\mathbb C),\\
+Y^2Z\\
+=4X_0^3-aX_0Z^2-bZ^3,\\
+\Phi:X\longrightarrow C_{a,b},\\
+\Phi(Q)=[x(Q):y(Q):1],\\
+Q\ne P,\\
+\Phi(P)=O=[0:1:0].
+\end{gathered}
+\tag{G0}
+\]
+is a pointed biholomorphism. The cubic is nonsingular, \(y=dx/\omega\), and \(\Phi^*(dx/y)=\omega\). The symbol \(X_0\) denotes the projective coordinate, rather than the surface. No algebraic model or period lattice for the given \(X\) is assumed.
+
+**Proof.**
+
+<a id="genus-one-pole-spaces"></a>
+
+#### Pole-order spaces and a nowhere vanishing differential
+
+For an integer \(n\ge0\), let
+\[
+L(nP)=\left\{f:
+\begin{gathered}
+f\text{ meromorphic on }X,\\
+f\text{ has no pole off }P,\\
+\operatorname{ord}_P f\ge-n
+\end{gathered}\right\}.
+\]
+It includes zero. This is exactly \(H^0(X,\mathcal O(nP))\): the local frame at \(P\) is \(t^{-n}\), so a section is a meromorphic function with the stated pole bound. The meromorphic section \(1\) has zero order \(n\) in that local frame, hence \(\deg\mathcal O(nP)=n\) by Dimension formulas for congruence subgroups, Appendix A.6.
+
+The genus bridge gives \(h^0(K)=1\) and \(\deg K=0\), where \(K\) is the differential bundle. The zero orders of the chosen nonzero holomorphic differential \(\omega\) are nonnegative and sum to \(\deg K=0\), so it vanishes nowhere. For \(n\ge1\), \(K(-nP)\) has degree \(-n\) and has no nonzero holomorphic section. Thus (R16) gives
+\[
+\begin{gathered}
+\dim L(nP)=n\quad(n\ge1),\\
+L(0)=L(P)=\mathbb C.
+\end{gathered}
+\tag{G1}
+\]
+The last assertion uses compactness and the local maximum argument for holomorphic functions, as proved in that appendix, A.6.
+
+In a coordinate disk around \(P\), integrate the convergent power series for \(\omega\), with primitive zero at \(P\). Its derivative is nonzero; the earlier local inverse result makes that primitive a coordinate \(t\), with
+\(t(P)=0\) and \(\omega=dt\). No period or global primitive is asserted.
+
+We will use the total-residue identity for a meromorphic one-form on \(X\). Here is its precise reduction to the earlier foundation. Delete disjoint small coordinate disks about its finitely many poles. The form is closed on the remaining surface, since locally it is a holomorphic coefficient times \(dz\). Applying (R1) gives a zero sum of the negatively oriented small-circle integrals. The Laurent expansions give each positively oriented integral as \(2\pi i\) times its residue. Therefore the sum of the residues is zero. Finiteness of the pole set follows from isolated poles and compactness. This proves the residue identity from (R1) for the forms used below.
+
+<a id="genus-one-normalized-coordinates"></a>
+
+#### Normalize the pole-two and pole-three coordinates
+
+Choose \(x\in L(2P)\setminus L(P)\). It has a double pole at \(P\). Scale it to have leading coefficient one in the coordinate \(t\), and subtract its constant Laurent coefficient. Initially write
+\[
+\begin{gathered}
+x=t^{-2}+c_{-1}t^{-1}+c_1t\\
+{}+c_2t^2+c_3t^3+c_4t^4+\cdots.
+\end{gathered}
+\]
+The differential \(x\omega\) has its only possible pole at \(P\). Its total residue is therefore \(c_{-1}=0\). Now \(x^2\omega\) also has only that pole; its residue is \(2c_1\), so \(c_1=0\). Consequently
+\[
+\begin{gathered}
+x=t^{-2}+c_2t^2+c_3t^3\\
+{}+c_4t^4+O(t^5).
+\end{gathered}
+\tag{G2}
+\]
+These normalizations determine \(x\) uniquely for the chosen \(\omega\): two such choices in the two-dimensional space \(L(2P)\) differ by a scalar and a constant, both fixed by the prescribed leading and constant coefficients.
+
+Define the globally meromorphic function
+\[
+y=\frac{dx}{\omega}.
+\]
+This quotient is well-defined because \(\omega\) has no zeros. It is holomorphic away from \(P\), and near \(P\)
+\[
+\begin{gathered}
+y=-2t^{-3}+2c_2t+3c_3t^2\\
+{}+4c_4t^3+O(t^4).
+\end{gathered}
+\tag{G3}
+\]
+Thus its only pole has order three. This also constructs the pole-three coordinate without choosing an unrelated section of \(L(3P)\).
+
+The functions
+\[
+1,\ x,\ y,\ x^2,\ xy,\ x^3
+\tag{G4}
+\]
+have distinct pole orders \(0,2,3,4,5,6\). Comparing the most singular term proves their linear independence. Together with (G1), their successive initial segments are bases of \(L(nP)\) for \(1\le n\le6\). In particular (G4) is a basis of \(L(6P)\), while \(y^2\) is another element of that six-dimensional space.
+
+<a id="genus-one-cubic-relation"></a>
+
+#### Derive the normalized cubic relation
+
+Rather than hide changes of coordinates in a general cubic relation, compute its pole terms from (G2)–(G3):
+\[
+\begin{gathered}
+y^2-4x^3\\
+=-20c_2t^{-2}-24c_3t^{-1}\\
+{}-28c_4+O(t).
+\end{gathered}
+\tag{G5}
+\]
+The order-six leading terms cancel. There are no order-five, order-four or order-three terms, because the order-minus-one and the order-zero terms of \(x\), and its order-one term, were explicitly removed or proved zero.
+
+Put \(a=20c_2\). Then \(y^2-4x^3+ax\) lies in \(L(P)=\mathbb C\). Its Laurent series therefore has no \(t^{-1}\) term and is constant. It follows that \(c_3=0\), and its constant value is \(-28c_4\). With \(b=28c_4\), we obtain
+\[
+y^2=4x^3-ax-b.\tag{G6}
+\]
+In particular the coefficient \(4\), the signs, and the scaling of \(y\) are determined by \(y=dx/\omega\); they are not inferred from a reference using \(y/2\).
+
+Replacing \(\omega\) by \(s\omega\), for \(s\in\mathbb C^\times\), changes the normalized coordinates and coefficients to
+\[
+\begin{gathered}
+x\longmapsto s^{-2}x,\quad y\longmapsto s^{-3}y,\\
+a\longmapsto s^{-4}a,\quad b\longmapsto s^{-6}b.
+\end{gathered}
+\tag{G7}
+\]
+This follows by using \(t'=st\), the uniqueness of the normalized pole-two function, and the defining derivative quotient. They agree with the lattice scalings in (3.1) below.
+
+<a id="genus-one-discriminant"></a>
+
+#### Prove the discriminant is nonzero
+
+Write \(p(u)=4u^3-au-b\). Suppose it has a repeated root \(r\). It then factors as
+\[
+p(u)=4(u-r)^2(u-s),
+\]
+where \(s=r\) is allowed. The meromorphic function
+\[
+v=\frac{y}{x-r}
+\]
+has a simple pole at \(P\), by the exact orders in (G2)–(G3). It has no pole elsewhere. Indeed, if \(x(Q)\ne r\), its denominator is nonzero. If \(x-r\) has zero order \(m\ge1\) at \(Q\), equation (G6) gives \(\operatorname{ord}_Q y=m\) when \(s\ne r\), or \(\operatorname{ord}_Q y=3m/2\) when \(s=r\). In either case \(y/(x-r)\) is holomorphic at \(Q\). Hence \(v\in L(P)\) but has a pole, contradicting (G1). Thus \(p\) has no repeated root.
+
+The elementary root and discriminant facts used in that paragraph can be checked without an algebraic-geometry theorem. A nonconstant complex polynomial has a root: if it had none, its reciprocal would be entire and bounded, both on a large disk by compactness and outside it by its leading term. Liouville's theorem, obtained from Cauchy's coefficient estimates, would make the reciprocal constant. Polynomial division then gives the full factorization. For the present cubic a repeated root satisfies
+\(a=12r^2\), \(b=-8r^3\), so \(a^3=27b^2\). Conversely, if that equality holds, either \(a=b=0\) and \(r=0\), or \(a\ne0\) and \(r=-3b/(2a)\) satisfies \(p(r)=p'(r)=0\). Therefore
+\[
+a^3-27b^2\ne0.\tag{G8}
+\]
+
+The projective cubic \(C\) in (G0) has just one point with \(Z=0\), namely \(O=[0:1:0]\). On the affine part a singularity would require both \(y=0\) and \(p'(x)=0\), hence a repeated root, which was excluded. At \(O\), the partial derivative with respect to \(Z\) of
+\(Y^2Z-4X_0^3+aX_0Z^2+bZ^3\) is \(1\) in the chart \(Y=1\). Thus the projective cubic is nonsingular in the algebraic gradient sense. Its actual local analytic charts are also proved next, so no multivariable implicit-function theorem is concealed in this assertion.
+
+<a id="genus-one-cubic-map"></a>
+
+#### Define the map and prove every fiber statement
+
+Away from \(P\), define
+\[
+\begin{gathered}
+\Phi(Q)=[x(Q):y(Q):1],\\
+\Phi(P)=O.
+\end{gathered}
+\tag{G9}
+\]
+Equation (G6) makes its image lie on \(C\). In the projective chart \(Y\ne0\), put \(u=X_0/Y\), \(w=Z/Y\). At \(P\),
+\[
+\begin{gathered}
+u\circ\Phi=x/y=-t/2+O(t^5),\\
+w\circ\Phi=1/y=-t^3/2+O(t^7).
+\end{gathered}
+\tag{G10}
+\]
+These are holomorphic at \(P\), and the first has nonzero derivative. Hence (G9) is a holomorphic extension. That first derivative supplies the local inverse at infinity; its full target chart is verified in [the final part of the proof](#genus-one-local-inverses).
+
+To verify that it identifies the whole cubic, and not just a component or an unspecified normalization, fix any \(u_0\in\mathbb C\). The meromorphic function \(x-u_0\) has exactly one pole, of order two. The degree-zero divisor identity proved in lesson 06, A.6 therefore says that it has exactly two zeros counted with multiplicity.
+
+If \(p(u_0)\ne0\), then \(y\ne0\) at each such zero, by (G6). Since \(dx=y\omega\) and \(\omega\ne0\), the zero of \(x-u_0\) is simple. There are consequently two distinct points \(Q_1,Q_2\) above \(u_0\). The one-form \(\omega/(x-u_0)\) is holomorphic at \(P\) and has only simple poles at \(Q_1,Q_2\), with residues \(1/y(Q_1)\) and \(1/y(Q_2)\). Their sum is zero. Thus
+\[
+y(Q_2)=-y(Q_1),
+\]
+and the two points map separately to the two affine cubic points with first coordinate \(u_0\). This proves both coverage and injectivity at every nonbranch affine fiber.
+
+If \(p(u_0)=0\), its root is simple by (G8). At every point in the fiber we have \(y=0\), so \(dx=0\) and the zero order of \(x-u_0\) is at least two. The total order is two, so the fiber has exactly one point \(Q\), with
+\[
+\begin{gathered}
+\operatorname{ord}_Q(x-u_0)=2,\\
+\operatorname{ord}_Q y=1.
+\end{gathered}
+\tag{G11}
+\]
+The second assertion follows by substituting the simple-root expansion of \(p\) into (G6). It maps to the unique affine cubic point \((u_0,0)\). Finally only \(P\) maps to infinity, and the projective cubic has only the point \(O\) there. Thus \(\Phi\) is bijective on the entire projective cubic.
+
+<a id="genus-one-local-inverses"></a>
+
+#### Prove the local analytic inverses
+
+At an affine cubic point with \(y_0\ne0\), its local curve is the graph
+\[
+y=y_0\sqrt{p(x)/y_0^2},
+\]
+where the square root is the convergent binomial power series near \(1\), chosen to have value \(1\). A nearby solution with \(y\) close to \(y_0\) must be this branch. Thus \(x\) is a local coordinate on \(C\). It is also a local coordinate on \(X\), because \(dx=y\omega\ne0\). In these coordinates \(\Phi\) is the identity and its inverse is holomorphic.
+
+At an affine point \((r,0)\), the derivative \(p'(r)\) is nonzero. The earlier one-variable holomorphic inverse theorem gives a local inverse \(\kappa\) to \(p\) near \(r\), with \(\kappa(0)=r\). The local cubic is
+\[
+x=\kappa(y^2),
+\]
+so \(y\) is its coordinate. By (G11), \(y\) has a simple zero on \(X\) at the corresponding point, and is its local coordinate as well. Again the map is the identity in these local coordinates.
+
+For completeness, the projective chart near \(O\) can be verified without importing a multivariable implicit-function theorem. Its equation is
+\[
+w=4u^3-auw^2-bw^3.\tag{G12}
+\]
+The function \(u(t)=x/y\) in (G10) has a one-variable local inverse. It supplies a holomorphic solution \(w=w(u)\) of (G12) for all sufficiently small \(u\), with \(w(0)=0\). If two small solutions \(w_1,w_2\) have the same \(u\), subtracting their equations gives
+\[
+\begin{gathered}
+B=1+au(w_1+w_2)\\
+{}+b(w_1^2+w_1w_2+w_2^2),\\
+(w_1-w_2)B=0.
+\end{gathered}
+\]
+Choose the neighborhood so that the absolute value of the terms of \(B\) after \(1\) is less than \(1/2\). The factor \(B\) cannot vanish, so \(w_1=w_2\). Therefore every sufficiently nearby cubic point lies on the graph already supplied by \(\Phi\). Its local coordinate is \(u\), and (G10) gives a holomorphic local inverse from that coordinate. This proves the required local chart at infinity directly.
+
+All local inverses agree because the global map is bijective. They give a global pointed biholomorphism, proving (G0).
+
+The differential \(dx/y\) extends over the whole cubic. At a branch point its expression in the coordinate \(y\) is \(2\kappa'(y^2)\,dy\), with nonzero coefficient at \(y=0\). At infinity, (G12) gives \(w=u^3h(u)\), where
+\[
+ h(u)=\frac{4}{1+au w(u)+b w(u)^2},\qquad h(0)=4.
+\]
+This is a holomorphic nonvanishing function on a sufficiently small disk. Since \(x=u/w\), \(y=1/w\), we have
+\[
+\begin{gathered}
+\frac{dx}{y}\\
+=\left(1-u\frac{w'(u)}{w(u)}\right)du\\
+=\left(-2-u\frac{h'(u)}{h(u)}\right)du.
+\end{gathered}
+\tag{G13}
+\]
+It therefore extends holomorphically and does not vanish at infinity either. On \(X\setminus\{P\}\), away from the zeros of \(y\), the identity \(dx=y\omega\) gives \(\Phi^*(dx/y)=\omega\). Both sides now extend holomorphically everywhere, so the identity theorem gives the asserted equality on all of \(X\). \(\square\)
+
+![Pole-order bases and the degree-two fibers of the constructed function](../figures/genus-one-pole-bases-and-fibers.png)
+
+Figure 3.1. The spaces and bases are (G1)–(G4). Each regular finite value of \(x:X\to\mathbb P^1(\mathbb C)\) has two distinct preimages with opposite nonzero \(y\)-coordinates. Each of the three distinct roots of \(p(u)=4u^3-au-b\) has one preimage of multiplicity two, and infinity has the double pole \(P\). These are fiber multiplicities of \(x\); the cubic itself is smooth. The exact local orders and coordinates are (G10)–(G11), and the full local inverse argument is in [the final part of the proof](#genus-one-local-inverses).
+
+### 3.2. From a cubic to a lattice
+
 Homothety gives
 \[
  g_2(c\Lambda)=c^{-4}g_2(\Lambda),\qquad
@@ -238,7 +479,20 @@ An isomorphism of elliptic curves, composed with their parametrizations, is a ho
 \((x,y)\mapsto(c^{-2}x,c^{-3}y)\) between \(E_\Lambda\) and \(E_{c\Lambda}\).
 Theorem 1.1 and (1.3) prove the first two bijections; the earlier coordinate theorem for \(j\) proves the last. \(\square\)
 
-The analytic maps used above are also algebraic maps of the displayed cubics. We give the function-field argument, so that this assertion does not require an algebraic uniformization theorem.
+<a id="analytic-genus-one-uniformization"></a>
+
+#### Analytic genus-one uniformization
+
+**Corollary 3.1a (analytic genus-one uniformization).** For every \((X,P)\) in Theorem 3.0 there is a lattice \(\Lambda\subset\mathbb C\) and a pointed biholomorphism
+\[
+ U:(X,P)\longrightarrow(\mathbb C/\Lambda,0).
+ \tag{3.4b}
+\]
+The lattice is unique up to homothety.
+
+**Proof.** Theorem 3.0 gives \(\Phi:X\to C_{a,b}\) with \(\Phi(P)=O\). Theorem 3.1 chooses \(\Lambda\) with \(g_2(\Lambda)=a\) and \(g_3(\Lambda)=b\). Theorem 2.3 gives the pointed biholomorphism \(\Phi_\Lambda:\mathbb C/\Lambda\to C_{a,b}\). Thus \(U=\Phi_\Lambda^{-1}\circ\Phi\) has the asserted source, target and holomorphic inverse. Two such maps give a pointed biholomorphism between their target tori; Theorem 1.1 makes their lattices homothetic. This proves the corollary with the same Riemann–Roch foundations as Theorem 3.0. \(\square\)
+
+The torus isogenies induce algebraic maps between the displayed cubics. The following function-field argument proves this assertion directly.
 
 **Proposition 3.2 (the elliptic function field).** Every meromorphic function on \(\mathbb C/\Lambda\) has a unique expression
 \[
@@ -665,7 +919,7 @@ The analytic inputs used without reproving them are the modular coordinate theor
 
 Formula (4.2) defines and proves the analytic Weil pairing needed for the moduli proof. The orientation of the lattice basis fixes its sign, and Theorem 4.1 uses precisely that pairing and the specified primitive root. Comparison with a divisor-and-function pairing over arbitrary fields remains a separate proof task; the analytic argument does not assert that comparison. Galbraith's freely distributed note, §§3–5, provides an independent check of the analytic convention.
 
-Theorem 3.1 proves uniformization for the complex Weierstrass cubics defined in (0.2), and Proposition 3.2 proves algebraicity of their torus isogenies directly. An extension to all smooth genus-one algebraic curves with a point still requires the construction of Weierstrass coordinates. General fields, reduction, Tate modules and algebraic modular-curve models over \(\mathbb Q\) also require additional proofs. These extensions are retained as arithmetic proof tasks, rather than used as prerequisites for the analytic moduli bijections. In particular those bijections classify marked complex curves; they do not prove a universal-family theorem on every coarse quotient. The original freely accessible Deligne–Rapoport paper, Chapters II–IV and VII, formulates the algebraic family and cusp questions.
+Theorem 3.0 constructs Weierstrass coordinates and a pointed biholomorphism for every compact connected analytic genus-one surface, using the arbitrary-line-bundle Riemann–Roch, divisor-degree and genus-comparison proofs of Dimension formulas for congruence subgroups, Appendix A. Its real-calculus, continuous-integral existence, coordinate change-of-variables and Stokes prerequisites remain inherited requirements; A.1 supplies the smooth completions and weak-test maps. Theorem 3.1 and Corollary 3.1a then give analytic uniformization; the original lattice-series construction in Theorems 2.1–2.3 remains a separate explicit route for tori. Proposition 3.2 proves algebraicity of torus isogenies between the displayed cubics. For a separately given smooth genus-one algebraic curve with a point, the analytic meromorphic functions constructed in Theorem 3.0 still have to be identified with rational functions on that algebraic curve, and its biholomorphism with an algebraic isomorphism. The analytic construction does not supply that comparison or GAGA. Weierstrass constructions over arbitrary fields, reduction, Tate modules and algebraic modular-curve models over \(\mathbb Q\) also require additional proofs. These extensions are retained as arithmetic proof tasks, rather than used as prerequisites for the analytic moduli bijections. In particular those bijections classify marked complex curves; they do not prove a universal-family theorem on every coarse quotient. The original freely accessible Deligne–Rapoport paper, Chapters II–IV and VII, formulates the algebraic family and cusp questions.
 
 ## References
 

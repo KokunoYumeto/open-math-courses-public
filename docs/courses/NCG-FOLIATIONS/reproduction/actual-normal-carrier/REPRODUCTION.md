@@ -1,0 +1,5 @@
+# Reproduction
+
+*K-theory of the leaf space*, Section 11BE. ANC.1–ANC.17. Actual nondegenerate B-source inverse class on a represented ordinary standard carrier with a completed metric normal connection. Genuine nondegenerate degenerate augmentation preserves d_X and full unbounded arrow domains. The finite two-arrow M2 illustration checks 16 exact rational representation products, 4 source covariances, 4 graded source commutators, 4 unbounded source formulas and 4 transported covariances. Its wrong off-diagonal identity gives odd-source error norm 2. Infinite absorption, actual inverse class and connection closure are proved in the lesson; full normal derivative and original physical graph estimates remain unproved.
+
+Use Python 3.13.9 and Pillow 12.2.0. Run `python -B draw_actual_normal_carrier.py --output-dir out`; `--resources` selects the adjacent labelled-geometric-kernel resources if relocated. Compare PNG/SVG with ../../figures/ and ACTUAL-NORMAL-CARRIER-CHECKS.json with this folder. The SVG embeds the unchanged font and complete notice. No private files are read.

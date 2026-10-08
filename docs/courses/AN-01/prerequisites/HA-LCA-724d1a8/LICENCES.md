@@ -1,8 +1,8 @@
 # Component licences and editable sources
 
-This is a collection of separately licensed mathematical readings. The licence printed in each reading governs that component.
+The readings of this collection are dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
-The following adaptations of D. H. Fremlin's freely accessible *Measure Theory* retain the [Design Science License](assets/fremlin/DESIGN-SCIENCE-LICENSE.txt), the original copyright notices, and the warranty disclaimer. Adaptation and additional exposition are identified in each reading.
+The following readings follow arguments of D. H. Fremlin's freely accessible *Measure Theory*, which each cites where it uses them; their wording is the course's own. Fremlin distributes *Measure Theory* under the [Design Science License](assets/fremlin/DESIGN-SCIENCE-LICENSE.txt).
 
 - [Finite Radon representation on locally compact spaces](prerequisites/src/finite-radon-representation.md)
 - [Finite Radon products and convolution of measures](prerequisites/src/finite-radon-products.md)
@@ -23,10 +23,10 @@ The following adaptations of D. H. Fremlin's freely accessible *Measure Theory* 
 - [Subgroups, quotients and annihilators](src/subgroups-quotients-and-annihilators.md)
 - [The Poisson summation formula](src/the-poisson-summation-formula.md)
 
-The unchanged original source packages are included:
+Fremlin's unchanged original source packages are included under his licence:
 
 - measure-theory-vol1-2011-source.tar.gz
 - measure-theory-vol2-2016-source.tar.gz
 - measure-theory-vol4-2013-source.tar.gz
 
-The remaining new exposition is released under CC0 where its component notice says so. Source PDFs used for research are not redistributed with this reader. MathJax retains its [software licence](assets/mathjax/LICENSE) and [font licences](assets/mathjax/FONT-LICENSES.txt). Every HTML page links to its editable Markdown source; the Markdown is the preferred form for modification.
+Source PDFs used for research are not redistributed with this reader. MathJax retains its [software licence](assets/mathjax/LICENSE) and [font licences](assets/mathjax/FONT-LICENSES.txt). Every HTML page links to its editable Markdown source; the Markdown is the preferred form for modification.

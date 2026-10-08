@@ -143,7 +143,7 @@ c&=\sum_j\Big(\sum_i a_{ij}\Big)p_j.
 
 Every column sum is positive, so \(c\) is invertible. Starting with \(h_0\), the ideal it generates contains all positive \(h_k\) by the first equation and all negative ones by the second, multiplying by \(c^{-1}\). The span of \(a h_k\), for \(a\in\mathcal O_A\), is dense in \(D\), by Fourier approximation to continuous crossed-product kernels. Hence the ideal is all of \(D\).
 
-The full-corner Morita map identifies \(K_*(F_A)\) with \(K_*(D)\). Both algebras are separable and thus σ-unital. The precise stable-isomorphism theorem [*Stable isomorphism and the Brown–Green–Rieffel theorem*, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-270b2b08017a) now gives
+The full-corner Morita map identifies \(K_*(F_A)\) with \(K_*(D)\). Both algebras are separable and thus σ-unital. The precise stable-isomorphism theorem [*Stable isomorphism and the Brown–Green–Rieffel theorem*, Theorem 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/hilbert-c-star-modules-and-morita-equivalence/stable-isomorphism-and-the-brown-green-rieffel-theorem.html#2-brown-green-rieffel) now gives
 
 \[
 B:=D\otimes\mathcal K\cong F_A\otimes\mathcal K.
@@ -1350,7 +1350,7 @@ q_A:A\rtimes F_n\longrightarrow A\rtimes_rF_n
 \]
 is a KK-equivalence.
 
-*Proof.* The Cayley tree has trivial vertex and edge stabilizers. In [*Descent and the K-theory of crossed products*, Lemma 9.1 and Theorem 9.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-e674f564ac7f), the rooted-tree coisometry and its explicit representation homotopy give a weakly regular cycle representing \(1\in KK^{F_n}(\mathbb C,\mathbb C)\). Thus \(F_n\) is K-amenable. Theorem 8.2 of that lesson applies because \(F_n\) is countable discrete and \(A\) is separable. It constructs \(z_A\in KK(A\rtimes_rF_n,A\rtimes F_n)\) by factoring the full descended unit cycle through the reduced left representation, and proves
+*Proof.* The Cayley tree has trivial vertex and edge stabilizers. In [*Descent and the K-theory of crossed products*, Lemma 9.1 and Theorem 9.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-KK/KT-KK-18.html#9-the-tree-homotopy-and-free-groups), the rooted-tree coisometry and its explicit representation homotopy give a weakly regular cycle representing \(1\in KK^{F_n}(\mathbb C,\mathbb C)\). Thus \(F_n\) is K-amenable. Theorem 8.2 of that lesson applies because \(F_n\) is countable discrete and \(A\) is separable. It constructs \(z_A\in KK(A\rtimes_rF_n,A\rtimes F_n)\) by factoring the full descended unit cycle through the reduced left representation, and proves
 \[
 \begin{gathered}
 {}[q_A]\widehat\otimes_{A\rtimes_rF_n}z_A=1_{A\rtimes F_n},\\

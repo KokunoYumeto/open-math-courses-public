@@ -14972,7 +14972,7 @@ Proof of ([the indicated step](#native-varieties-item-immediate-specialization-l
 #### Lemma. The geometric construction
  Let $k$ be a field. Let $X$ be a scheme over $k$. Assume $X$ is connected and has a point $x$ such that $k$ is algebraically closed in $\kappa(x)$. Then $X$ is geometrically connected. In particular, if $X$ has a $k$-rational point and $X$ is connected, then $X$ is geometrically connected.
 
-**Proof.** Set $T = \operatorname{Spec}(\kappa(x))$. Let $\overline{k}$ be a separable algebraic closure of $k$. The assumption on $\kappa(x)/k$ implies that $T_{\overline{k}}$ is irreducible, see Algebra, Lemma [Field extensions (uncovered prerequisite)](#uncovered-algebra-lemma-field-extension-geometrically-irreducible). Hence by Lemma [The geometric construction (uncovered prerequisite)](#uncovered-varieties-lemma-geometrically-connected-criterion) we see that $X_{\overline{k}}$ is connected. By Lemma [Criteria for the geometric construction (uncovered prerequisite)](#uncovered-varieties-lemma-characterize-geometrically-connected) we conclude that $X$ is geometrically connected. $\square$
+**Proof.** Set $T = \operatorname{Spec}(\kappa(x))$. Let $\overline{k}$ be a separable algebraic closure of $k$. The assumption on $\kappa(x)/k$ implies that $T_{\overline{k}}$ is irreducible, see [No new algebraic constants, Proposition 2.G](../../AG-GS/AG-GS-03.html#gs03-relative-constants-geometric-irreducibility). Hence by [A connected scheme receiving a geometrically connected scheme, Theorem 2.F](../../AG-GS/AG-GS-03.html#gs03-geometrically-connected-morphism-criterion) we see that $X_{\overline{k}}$ is connected. By [Testing geometric properties over a closure, Proposition 2.D](../../AG-GS/AG-GS-03.html#gs03-separable-closure-test) we conclude that $X$ is geometrically connected. $\square$
 
 #### Moduli of sheaves and proper spaces
 
@@ -19269,15 +19269,15 @@ Lower native prerequisite: `topology.tex` / `lemma-characterize-closed-Noetheria
 
 #### Criteria for the geometric construction
 
-Lower native prerequisite: `varieties.tex` / `lemma-characterize-geometrically-connected`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `varieties.tex`.
+Full proof: [Testing geometric properties over a closure, Proposition 2.D](../../AG-GS/AG-GS-03.html#gs03-separable-closure-test). Geometric connectedness of an arbitrary scheme over a field is equivalent to connectedness after passage to a separable closure.
 
 #### The geometric construction
 
-Lower native prerequisite: `varieties.tex` / `lemma-geometrically-connected-criterion`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `varieties.tex`.
+Full proof: [A connected scheme receiving a geometrically connected scheme, Theorem 2.F](../../AG-GS/AG-GS-03.html#gs03-geometrically-connected-morphism-criterion). A morphism from a nonempty geometrically connected scheme to a connected scheme over the same field forces the target to be geometrically connected; no quasi-compactness, finite-type or separation assumption is used.
 
 #### Field extensions
 
-Lower native prerequisite: `algebra.tex` / `lemma-field-extension-geometrically-irreducible`. No separately included proof or exact verified programme binding is claimed for this supporting reference. Its consumers are `varieties.tex`.
+Full proof: [No new algebraic constants, Proposition 2.G](../../AG-GS/AG-GS-03.html#gs03-relative-constants-geometric-irreducibility). It proves geometric irreducibility of a field extension when the ground field is relatively algebraically closed in it, without finite-generation or separability assumptions.
 
 #### Affine neighbourhoods and finite algebras
 

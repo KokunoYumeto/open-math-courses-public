@@ -10,12 +10,13 @@
 A first-order equation has a useful energy estimate when the integral of its adjoint defect is finite. A long-range phase supplies coordinates that commute with its free part. Factoring the remaining coefficient through those coordinates produces an evolution equation whose energy stays uniformly controlled. The individual factor products matter: each must have a small adjoint defect.
 
 
-We first prove the evolution principle. We then construct commuting coordinates, obtain real factors by the fundamental theorem of calculus, and count every derivative needed for their operator estimates. Read [Energy-shell factors and outgoing equations](energy-shell-factors-and-outgoing-equations.md) for the perturbed energy root, and [Generating functions and the end of a localized force](generating-functions-and-the-end-of-a-localized-force.md) for the full generating-function estimates. Our calculus foundation is the programme proof [The separate moving-coordinate metric, Theorem 7.1](../providers/analysis/finite-weighted-calculus.md#moving-coordinate-calculus). Section 3 explains its application and the normalization correspondence with Lerner's free author chapter [L]; Sections 4–5 derive the factor estimates. Teschl's free preliminary text [O] provides the Picard and integrating-factor correspondence, whose operator-valued proofs are written here. Yafaev's free lecture paper [Y], Teschl's free author edition [T], and Hörmander's freely readable general-polynomial paper [H] place modified waves in context. Theorem 3.9 of [H] has stronger coefficient and Hessian hypotheses than the generality retained here; its proof does not replace ours.
+We first prove the evolution principle. We then construct commuting coordinates, obtain real factors by the fundamental theorem of calculus, and count every derivative needed for their operator estimates. Read [Energy-shell factors and outgoing equations, the root and all its derivatives](energy-shell-factors-and-outgoing-equations.md#energy-shell-root-jets), and [Generating functions and the end of a localized force, Theorem 2.1](generating-functions-and-the-end-of-a-localized-force.md#generator-mixed-coordinates). We use the case \(\kappa=2\) of that generator theorem. The exact finite composition, adjoint and boundedness results are proved in [The separate moving-coordinate metric, Theorem 7.1](../providers/analysis/finite-weighted-calculus.md#moving-coordinate-calculus). Lerner [L] treats general metric calculus; Teschl [O] treats Picard iteration and integrating factors. Yafaev [Y], Teschl [T] and Hörmander [H] discuss the scattering setting. Theorem 3.9 of [H] assumes stronger coefficient and Hessian conditions than those used here.
 
 
-Our convention is \(D=-i\partial\), with left quantization. All Hilbert inner products are linear in the first entry. Fourier inversion and Plancherel are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The exact Bochner integral, norm primitive, product and variation arguments are proved in [Hilbert-valued integration for the evolution equations](../providers/analysis/hilbert-valued-integration.md).
+Our convention is \(D=-i\partial\), with left quantization. All Hilbert inner products are linear in the first entry. Fourier inversion and Plancherel are proved in [Fourier facts](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The [Bochner integral](../providers/analysis/hilbert-valued-integration.md#bochner-integral), [distributional primitives](../providers/analysis/hilbert-valued-integration.md#distributional-primitives), [operator products](../providers/analysis/hilbert-valued-integration.md#operator-products) and [variation of constants](../providers/analysis/hilbert-valued-integration.md#variation-of-constants) are proved in *Hilbert-valued integration for the evolution equations*.
 
 
+<a id="commuting-evolution"></a>
 ## 1. Evolution with an integrable adjoint defect
 
 
@@ -63,7 +64,7 @@ It is locally absolutely continuous. A constant independent of the terminal time
 \]
 
 
-The homogeneous propagator has a uniform bound in both time directions.
+The homogeneous propagator has a uniform bound in both time directions. One may take \(C=\exp(\frac12\int_{s_0}^{\infty}\omega(q)\,dq)\).
 
 
 **Proof.** Fix a finite interval and a time \(t\) in it. Starting with \(U_0(s,t)=I\), define
@@ -124,6 +125,7 @@ The local propagators concatenate to every finite interval. Variation of constan
 which is locally absolutely continuous and proves (3). Conversely, a continuous distributional solution has derivative \(i(Mv+h)\), which is locally integrable. Subtract its Bochner primitive; every scalar pairing of the difference has zero distributional derivative and is constant. Thus the solution is locally absolutely continuous, and the variation formula proves uniqueness. \(\square\)
 
 
+<a id="commuting-setup"></a>
 ## 2. Coordinates adapted to a real phase
 
 
@@ -184,6 +186,8 @@ The two formulas at \(k=2\) coincide. Before frequency extension, the real energ
 These are the hypotheses proved in the linked energy-root and generating-function lessons. Multiply \(G,a,E\) by the same real compact transverse frequency cutoff \(\psi\). We retain their names for these extensions. Their estimates persist by the product rule. The graph identity is used where \(\psi=1\). In particular \(N=G_s-a\) has cancellation of its free \(\psi E\) term everywhere.
 
 
+The commuting coordinates below are Hörmander [H4, (30.5.20)–(30.5.21)].
+
 Set
 
 
@@ -202,6 +206,7 @@ Set
 \]
 
 
+<a id="commuting-coordinates"></a>
 These operators commute on Schwartz tests:
 
 
@@ -234,9 +239,10 @@ The phase removes these coordinates exactly:
 \]
 
 
-Fourier transformation makes this the product rule for \(i\partial_{\eta_j}(e^{-iG}\widehat v)\). It extends to the coordinate domain by smooth approximation.
+Fourier transformation makes this the product rule for \(i\partial_{\eta_j}(e^{-iG}\widehat v)\). Here is the domain extension. For \(v\) with \(z_jv\in L^2\), spatial cutoffs first approximate \(v\) in the norm \(\|v\|_2+\|z_jv\|_2\), by dominated convergence. Mollifying a compactly supported cutoff then approximates it in the same norm: the identity \(z_j(\rho_\varepsilon*v)=\rho_\varepsilon*(z_jv)+(y_j\rho_\varepsilon)*v\) has an error of norm at most \(C\varepsilon\|v\|_2\), by the [Young and mollifier estimates](../providers/analysis/euclidean-approximation-and-convolution.md#mollification). Thus choose Schwartz \(v_\ell\to v\) in this graph norm. The multiplier \(G_{\eta_j}(s,D_z)\) is bounded, so \(A_jv_\ell\to A_jv\). The phase multiplier is unitary, and (11) shows that \(z_je^{-iG}v_\ell\to e^{-iG}A_jv\). Coordinate multiplication is closed: if \(w_\ell\to w\) and \(z_jw_\ell\to f\) in \(L^2\), testing on every bounded ball identifies \(f=z_jw\). It follows that \(e^{-iG}v\) belongs to the coordinate domain and satisfies (11). The same argument with the inverse phase proves preservation of the domain in both directions.
 
 
+<a id="commuting-metric"></a>
 ## 3. The moving metric and the calculus we use
 
 
@@ -289,7 +295,8 @@ All constants below are uniform in \(s\). The metric is slowly varying: a small 
 For \(t=X(y)/X(z)\), the same Lipschitz inequality gives \(t\le1+t^c\sqrt Q\). If \(t\ge2\), then \(t^{1-c}\le2\sqrt Q\); otherwise it is bounded. Thus both bracket ratios have polynomial bounds in \(1+Q\). Comparing the coefficients in (12) proves dual temperateness. The same argument proves local continuity and temperateness of every fixed power of \(X\), including its products with a constant power of \(s\). Reflection of the frequency directions leaves the metric unchanged. These verifications give common structural constants for the linked calculus.
 
 
-The proof of the calculus for (12) is given in the earlier programme provider [The separate moving-coordinate metric, Theorem 7.1](../providers/analysis/finite-weighted-calculus.md#moving-coordinate-calculus). Its weights are every fixed real power \(s^aX^b\), including all weights and derivative weights used here. That proof treats arbitrary smooth symbols in (13), without a frequency-support restriction. It proves the oscillatory-integral estimates, finite Taylor remainders, exact Schwartz and distribution identities, and the uniform \(L^2\) bound. It is a separate argument from that provider's metric with decreasing frequency-derivative scale.
+<a id="commuting-calculus"></a>
+The [oscillatory estimate](../providers/analysis/finite-weighted-calculus.md#moving-oscillatory-estimate), [finite Taylor formulas](../providers/analysis/finite-weighted-calculus.md#moving-finite-formulas), [exact operator identities](../providers/analysis/finite-weighted-calculus.md#moving-exact-operators) and [uniform boundedness proof](../providers/analysis/finite-weighted-calculus.md#moving-uniform-bound) in *The separate moving-coordinate metric* prove the calculus for (12). Its weights are every fixed real power \(s^aX^b\), including all weights and derivative weights used here. That proof treats arbitrary smooth symbols in (13), without a frequency-support restriction. It proves the oscillatory-integral estimates, finite Taylor remainders, exact Schwartz and distribution identities, and the uniform \(L^2\) bound. It is a separate argument from that provider's metric with decreasing frequency-derivative scale.
 
 For comparison with the free source [L], that source uses the Fourier kernel \(e^{2\pi iz\cdot\xi}\) and \(D_z=(2\pi i)^{-1}\partial_z\). Put \(\eta=2\pi\xi\) and \(\widetilde f(z,\xi)=f(z,2\pi\xi)\). Our operator with symbol \(f\) is exactly its operator with symbol \(\widetilde f\), by the frequency Jacobian. Use in its phase space the metric
 \[
@@ -350,11 +357,30 @@ The uniform \(L^2\) bound is proved in (M13)–(M16) of the provider. Partition 
 \]
 
 
+<a id="commuting-weyl-coefficient-check"></a>
+
+The coefficient calculation in (15) can also be checked through Weyl symbols, as in Lerner [L, Theorems 2.3.7 and 2.3.18–2.3.19]. Before restriction to the diagonal, let the following constant-coefficient operators act on \(f(z,\eta)q(y,\theta)\):
+\[
+ \begin{aligned}
+ P&=D_z\cdot D_\eta,& Q&=D_y\cdot D_\theta,\\
+ R&=D_z\cdot D_\theta,& S&=D_\eta\cdot D_y.
+ \end{aligned}
+\]
+The two inner changes of quantization contribute the differential phase \(-i(P+Q)/2\). The Weyl product contributes \(i(S-R)/2\). The outer change \(T_{1/2}\), acting after diagonal restriction, contributes \(i(P+Q+R+S)/2\), because a diagonal derivative is the sum of the two corresponding derivatives before restriction. These operators commute, and their sum is \(iS\). Thus their finite exponential polynomials agree, through paired order \(K-1\), with that of \(\exp(iS)\). Its coefficient is
+\[
+ \frac{\partial_\eta^\alpha f\,D_y^\alpha q}{\alpha!},
+\]
+which gives the coefficient and sign in (15). This is a finite polynomial identity: commuting generators give the multinomial formula at each retained degree. The finite quantization-change and product remainders proved in the provider, (M5) and (M10)–(M12), keep every discarded term in \(S(w_fw_qh_s^K,g_s)\); the weights are closed under products and powers of \(h_s\). The outer \(T_{1/2}\) is essential to this calculation.
+
+For source comparison, Lerner [L, Theorem 2.5.1, pp. 111–112] proves the general variable-metric bound by first estimating a symbol confined to a fixed ellipsoid, then using a metric partition, estimates for pairs of confined symbols and Cotlar summation. The constants are controlled by finite symbol seminorms and the common metric and weight bounds. The normalization and structural checks above place this family within that theorem, and quantization conversion gives the left-symbol bound. The complete programme proof of the specialization used here is the position-partition argument in (M13)–(M16), including its summable distant-input remainder.
+
+<a id="commuting-schwartz"></a>
 The exact kernel formulas and product theorem give these identities on Schwartz functions. Here their domains can also be checked directly. Each factor symbol is compactly supported in frequency and its derivative of order \(k\) in frequency grows at most like a fixed power of \(X\) times \(X^{ck}\), where \(c<1\). In its kernel, integrate by parts \(k\) times in frequency away from \(|z-y|=0\). For \(|y|<|z|/2\), the factor \(|z-y|^{-k}\) then dominates \(X^{ck}\); choosing \(k\) large gives any requested power of decay in \(z\). For \(|y|\ge|z|/2\), use the arbitrary decay of the Schwartz input in \(y\), with enough seminorms to absorb the finite symbol growth and the integral. Derivatives in the output variable obey the same estimate. This proves that each such operator preserves Schwartz space continuously.
 
 For the adjoint kernel interchange \(z\) and \(y\). In the region \(|y|<|z|/2\), integration by parts again gives any inverse power of \(|z|\), while its symbol growth is a finite power of \(y\) absorbed by a Schwartz seminorm of the input. In the other region that input already has arbitrary decay. Thus the adjoints preserve Schwartz space too, and transposition extends the operators and their compositions to tempered distributions. Coordinate operators themselves act by multiplication plus a smooth compact-frequency multiplier. All our compositions therefore have their indicated domains before bounded extension. Only finite expansions will be used.
 
 
+<a id="commuting-factorization"></a>
 ## 4. Real factors from coordinate differences
 
 
@@ -423,6 +449,9 @@ The far factors are used only where their denominator is nonzero. All expression
 \]
 
 
+<a id="commuting-factor-estimates"></a>
+The factorization and full factor estimates are Hörmander [H4, Lemma 30.5.5]. The proof here uses successive coordinate differences and keeps the individual product estimates explicit.
+
 **Theorem 4.1 (full factor estimates).** For \(|\alpha_0+\beta_0|\le1\),
 
 
@@ -465,6 +494,7 @@ These assertions include every further metric derivative. Moreover,
 \]
 
 
+<a id="commuting-partitions"></a>
 **Proof: the derivative budget near the graph.** First derive the size of every inner derivative from (8). A derivative of order \(k\ge1\) of \(G_\eta\) differentiates \(G\) \(k+1\) times. The contribution from \(sE\) is \(O(s)\). The remaining contribution is \(O(s^{k+2-\mu(k+1)})\). Since \(\mu(k+1)=1+r(k+1)\), including its consistent value at \(k+1=2\), this gives
 
 
@@ -530,6 +560,7 @@ Here and below an order denotes any multi-index of that length. This table prove
 \(\mu(b+2)\ge2+\delta+rb\).
 The zeroth prefix is weaker than these bounds since \(r\ge\delta\).
 
+<a id="commuting-near-products"></a>
 For the individual difference \(F_j^{\,n}\), the free \(E\) term cancels even at physical order zero. If \(b\ge1\) and \(k\ge1\), a term with inner blocks uses outer physical order \(b+q\ge2\), and (23) gives exponent
 \(cK+rq-\delta e-\mu(b+q)=cK-1-rb-\delta e\).
 Terms with \(q=0\) use \(s^{-\mu(b)}\), bounded by the same expression because \(\mu(b)\ge1+rb-c\) for \(b\ge1\). Therefore
@@ -559,6 +590,7 @@ For \(b=0\), no inner block gives \(s^{-\delta}\). One block of order one gives 
 To check (21), increase \(k\) by one for a frequency prefix and \(b\) by one for a physical prefix. With both increases the last exponent becomes exactly \(ck-rb-1-\delta\), using \(c-r=-\delta\). Without the frequency increase use \(r\ge\delta\); the zero-frequency physical cases use \(\mu(b+1)\ge1+\delta+rb\). The remaining two prefixes follow from the first two rows. This establishes all jets, including the mixed prefix, directly from (8).
 
 
+<a id="commuting-far-factors"></a>
 **Proof: far factors and transition.** Since \(G_\eta=O(s)\), on \(|A|\ge s\) one has \(X\asymp|A|\). Equation (8) gives
 
 
@@ -592,9 +624,11 @@ The needed ratio estimates can now be counted explicitly. Let \(R(A)\) denote ei
 If \(k=0\), take \(q=0\); if \(k>0\), every term has \(q\ge1\). A frequency prefix uses total order \(k+1\), so its exponent is at most \(\ell-b+ck\). A physical prefix uses \(b+1\), so its weight has one more factor \(X^{-1}\); since \(r<1\), any further physical derivatives are also sufficient for (13). A mixed prefix enjoys both facts. With \(\ell=-1\), (26) and the product rule prove the far bounds in (20). With \(\ell=0\), they prove all four far bounds in (21).
 
 
+<a id="commuting-transition"></a>
 On the transition \(X\asymp s\). Every positive frequency jet of \(A/s\) of order \(k\) is at most \(Cs^{c(k-1)}\), and every physical derivative contributes \(s^{-1}\). A term in \(\partial_z^b\partial_\eta^k\phi_0(A/s)\) with \(q\) positive frequency blocks is therefore bounded by \(Cs^{-b+c(k-q)}\); all derivatives of \(\phi_0\) are bounded. The same prefix count as for the ratios shows that \(\Phi\) and its frequency prefix have weight one, while its physical and mixed prefixes have weight \(s^{-1}\). The product rule for \(\Phi C_j\), \((1-\Phi)D_j\), and their corresponding products now proves (20)–(21) globally. Only the compact transition uses both constructions. \(\square\)
 
 
+<a id="commuting-ordering"></a>
 ## 5. Individual operator defects
 
 
@@ -632,6 +666,9 @@ In particular \(\mathcal C_j\) extends boundedly, with norm \(O(s^{-\delta})\). 
 \]
 
 
+<a id="commuting-defects"></a>
+The individual operator-defect bounds are Hörmander [H4, Lemma 30.5.6].
+
 **Theorem 5.1.** All these defects extend boundedly to \(L^2(\mathbb R^d)\), and
 
 
@@ -666,6 +703,7 @@ For the individual adjoint defect of \(\operatorname{Op}_L(F_j)\), its real zero
 By (27), the remaining two terms in \(\mathcal Q_j\) are the derivative correction and its adjoint; (16) bounds both, since taking an operator adjoint preserves its norm. Applying (16) to each finite term and remainder proves (29). The identities start on Schwartz tests, and their bounded extensions are unique by density. The proof treats each \(j\) separately, as required. \(\square\)
 
 
+<a id="commuting-moments"></a>
 One further bound will control transverse moments. Put
 
 
@@ -707,13 +745,17 @@ Then \(M\) is uniformly bounded, norm continuous locally in \(s\), and
 The first follows from (29) and the reality of \(G_s\). For the second, \([z_k,q(s,z,D_z)]=i(\partial_{\eta_k}q)(s,z,D_z)\). The frequency prefix of \(F_j\) has weight \(s^{-\delta}\). The second frequency derivative of \(B_j\) has weight \(s^{-\delta}X^{c-1}\), bounded by a constant since \(c<1\) and \(X\ge s\). Finally \(G_{s\eta_k}(s,D_z)\) is uniformly bounded by (8). The linked \(L^2\) theorem proves (31).
 
 
+<a id="commuting-continuity"></a>
 For local norm continuity, on a compact \(s\) interval all frequency jets of the explicit near and far factors and of their \(s\) derivatives are uniformly bounded in \(z\). The far denominators satisfy \(|A|\ge s\), and the transition occupies a bounded \(z\) region. Compact frequency support therefore gives kernels bounded by \(C_N(1+|z-y|)^{-N}\), for every finite \(N\), with the same bounds for their \(s\) derivatives. For \(N>d\), integration in either variable gives the Schur bound. It proves local norm continuity of \(\mathcal B_j\), its frequency-derivative operators, (27), \(\mathcal T\), and \(M\). Finally
 \(\mathcal R_{kj}=i\operatorname{Op}_L(\partial_{\eta_k}B_j)+[G_{\eta_k}(s,D_z),\mathcal B_j]\)
 is locally norm continuous because every operator in this formula is bounded and locally norm continuous. The formula for \([z_k,M]\) just used has the same property.
 
 
+<a id="commuting-equation"></a>
 ## 6. The factored Cauchy equation
 
+
+This Cauchy estimate is Hörmander [H4, Lemma 30.5.7], obtained here from the propagator constructed in Theorem 1.1.
 
 **Corollary 6.1.** For every \(h\in L^1_{\mathrm{loc}}([s_0,\infty);L^2_z)\) and \(v_0\in L^2_z\), the equation
 
@@ -745,7 +787,7 @@ If a frequency-localized solution satisfies \((D_s-a(s,z,D_z))v=g\) and its Four
 \]
 
 
-A bounded-slice outgoing solution and \(g\in L^1(ds;L^2_z)\) therefore give an integrable right side on this half-line, by (29). This is the equation whose phase-corrected amplitudes will be studied next.
+For the bounded \(L^2_z\) slices obtained in [Frequency cutoffs and compact scattering remainders](frequency-cutoffs-and-compact-scattering-remainders.md#cutoff-radiation), the support step is exact: at each time the symbol difference in (19) vanishes on the support of \(\widehat v\), so its pairing against every Schwartz test is zero. Such an outgoing solution and \(g\in L^1(ds;L^2_z)\) therefore give an integrable right side on this half-line, by (29). This is the equation whose phase-corrected amplitudes will be studied next.
 
 
 For \(d=0\), the transverse factors are absent. The graph identity is \(G_s=a\), and all statements reduce to the real scalar equation; sums of transverse defects are zero.
@@ -757,6 +799,7 @@ For \(d=0\), the transverse factors are absent. The graph identity is \(G_s=a\),
 Check each factor's operator and adjoint defect in the moving metric. Compare the abstract integrable-defect evolution with the exact factored Cauchy equation before transferring the bound to an amplitude.
 
 
+<a id="commuting-solutions"></a>
 ## 7. Exercises with complete solutions
 
 
@@ -877,3 +920,5 @@ Its norm is the exponential of \(-aJ_\delta(s,t)\). The integral over the whole 
 - [L] Nicolas Lerner, *Metrics on the Phase Space and Non-Selfadjoint Pseudodifferential Operators*, freely available author Chapter 2. Theorem 2.3.7, printed pp. 91–92; Theorems 2.3.18–2.3.19, p. 100; Theorem 2.5.1 and its proof, pp. 111–112. [Free author chapter](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf).
 - [O] Gerald Teschl, *Ordinary Differential Equations and Dynamical Systems*, author's preliminary version, 2012. Theorem 2.5 and Corollary 2.6, pp. 40–41, give Picard iteration; Lemma 2.7, pp. 42–43, gives the integrating-factor estimate. [Author's online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf).
 - [H] Lars Hörmander, “The existence of wave operators in scattering theory,” *Mathematische Zeitschrift* **146** (1976), 69–91. [Digitized paper](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, (30.5.18)–(30.5.21), p. 320; Lemma 30.5.5 and proof, pp. 320–322; Lemmas 30.5.6–30.5.7 and proofs, pp. 322–323. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

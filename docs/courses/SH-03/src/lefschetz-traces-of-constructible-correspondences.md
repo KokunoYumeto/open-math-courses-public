@@ -2,9 +2,11 @@
 
 A correspondence can move information from one point to another before taking a trace. Its local class lives where the two maps coincide. Compactness of their common support makes the trace finite even when the original sheaf has noncompact support and infinite-dimensional global cohomology.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Learn first Constructible traces and local Euler indices, Closed supports and evaluated proper transport, and Proper characteristic classes and the compact index. We use their actual diagonal comparison, graded evaluation, exceptional counit and compatibility of supported evaluation with the proper trace. Perfect operations and finite microlocal coefficients proves the compact supported-cohomology finiteness needed here. The supported cycle intersection supplies the graph interpretation. These are written programme proofs relative to their stated foundations; transitive prerequisite closure remains open.
+The identity and evaluated tensor fixes the diagonal identity and its graded contraction. The evaluated proper-Hom map identifies the dual of the return map through its actual pairing. The Hom comparison before contraction and its evaluation square transport the identity through a proper image on its closed coefficient support.
+
+Perfect operations and compact supported cohomology provide the finite intermediate complex. The supported intersection construction retains the order of the graph and diagonal factors and their orientation coefficients. The proof below specifies the two support comparisons, verifies the dual return map by evaluation, and uses a compact cutoff to allow noncompact sheaf support. No properness of either correspondence map is imposed.
 
 ## The two maps determine three supports
 
@@ -55,7 +57,7 @@ Then
  \qquad\text{(5)}
 \]
 
-have different roles. The complex \(P\) is perfect by compact supported-cohomology finiteness. The cohomology of \(C\) need not be finite-dimensional.
+have different roles. To see that \(P\) is perfect, write \(B_T=R\Gamma_TB=R\mathcal Hom(k_T,B)\). Perfect internal Hom makes \(B_T\) bounded constructible, and its closed support lies in compact \(T\). Proper direct-image finiteness for its map to a point gives \(P=R\Gamma(Y;B_T)\) perfect. The cohomology of \(C\) need not be finite-dimensional.
 
 Ordinary pullback followed by (3) gives \(a:C\to P\). For the return map use
 
@@ -111,6 +113,8 @@ is a finite sum. The point trace proof in the first prerequisite identifies the 
 
 This is a trace in \(k\). It need not be an integer: the correspondence may act by arbitrary coefficient endomorphisms. If \(F\) has compact closed support, \(C\) is perfect, and (10) is its usual supertrace.
 
+In the self-map case \(Y=X\), \(g=\mathrm{id}_X\), compact \(S\) already makes \(T=f^{-1}S\cap S\) compact. Here the exceptional counit in (6) is the identity, and \(b\) is exactly the support-forgetting map \(R\Gamma_T(X;F)\to R\Gamma(X;F)\). The supported lift (3) composes to \(\phi\), so \(U_\phi\) is the ordinary composite \(R\Gamma(X;F)\to R\Gamma(X;f^{-1}F)\xrightarrow{R\Gamma(\phi)}R\Gamma(X;F)\). This holds for every analytic \(f\), with no properness assumption on \(f\).
+
 ## Pull the diagonal identity to the coincidence set
 
 Write \(D_XF=R\mathcal Hom(F,\omega_X)\) and \(K=F\boxtimes D_XF\). The normalized diagonal comparison from the trace prerequisite is
@@ -121,7 +125,7 @@ Write \(D_XF=R\mathcal Hom(F,\omega_X)\) and \(K=F\boxtimes D_XF\). The normaliz
  \qquad\text{(11)}
 \]
 
-Under global adjunction, the identity of \(F\) gives a supported diagonal class
+For clarity, the external-Hom map used in (11) is the evaluated isomorphism \(F\boxtimes D_XF\simeq R\mathcal Hom(p_2^{-1}F,p_1^!F)\). Exceptional restriction along \(\delta\), followed by \(p_i\delta=\mathrm{id}_X\), recovers \(R\mathcal Hom(F,F)\) with its actual evaluation order. Under this inverse comparison and closed exceptional adjunction, \(\mathrm{id}_F\) becomes a particular morphism \(u_\Delta:k_\Delta\to K\). It represents the supported diagonal class
 
 \[
  e_\Delta(F)\in H^0_\Delta(X\times X;K).
@@ -130,7 +134,7 @@ Under global adjunction, the identity of \(F\) gives a supported diagonal class
 
 Its underlying construction is the actual exceptional diagonal restriction, with the product evaluation and its graded tensor order.
 
-For any map \(h\), the ordinary unit \(K\to Rh_*h^{-1}K\), followed by supported sections, supplies
+For any continuous map \(h:Y\to X\times X\) in the standing sheaf-theoretic setting, the ordinary unit \(K\to Rh_*h^{-1}K\), followed by supported sections, supplies
 
 \[
  R\Gamma_\Delta(X\times X;K)
@@ -149,7 +153,7 @@ Here is the derived adjunction check of the support comparison. Let \(i:W=h^{-1}
  \end{aligned}
  \qquad\text{(13a)}
 \]
-Thus \(\delta^!Rh_*H\simeq Rv_*i^!H\), with the isomorphism fixed by these adjunctions. Apply it to the ordinary unit \(K\to Rh_*h^{-1}K\), then take global sections. The result is (13), since \(R\Gamma(W;i^!h^{-1}K)=R\Gamma_W(Y;h^{-1}K)\). This proves its map and support, without imposing properness on \(h\) or choosing a pullback of dualizing complexes.
+Thus \(\delta^!Rh_*H\simeq Rv_*i^!H\), with the isomorphism fixed by these adjunctions. Apply it to the ordinary unit \(K\to Rh_*h^{-1}K\), then take global sections. The result is (13), since \(R\Gamma(W;i^!h^{-1}K)=R\Gamma_W(Y;h^{-1}K)\). This proves its map and support, without imposing properness on \(h\) or choosing a pullback of dualizing complexes. Equivalently, apply exact ordinary inverse image to \(u_\Delta\); closed base change identifies its source \(h^{-1}k_\Delta\) with \(k_W\). This morphism \(k_W\to h^{-1}K\) represents precisely (13), since its adjunction transpose is the same ordinary unit followed by (13a). This description proves compatibility with further ordinary pullback, open restriction, and support-forgetting maps. Analyticity of \(h\) is not used for this comparison.
 
 For \(h=(f,g)\), constructible duality gives the evaluated comparison
 
@@ -160,7 +164,9 @@ For \(h=(f,g)\), constructible duality gives the evaluated comparison
  \qquad\text{(14)}
 \]
 
-Here \(D_Y(g^!F)\simeq g^{-1}D_XF\), by exceptional-Hom duality and biduality. Both sides are supported on \(T\); therefore the class pulled back in (13) refines from support \(W\) to \(Z=W\cap T\).
+Apply exceptional-Hom duality to \(D_XF\): \(g^!D_XD_XF\simeq D_Y(g^{-1}D_XF)\). Constructible biduality identifies its left side with \(B\); dualizing again gives the actual comparison \(D_YB\simeq g^{-1}D_XF\). This proves (14) through evaluation and biduality, without identifying an arbitrary exceptional inverse image with a shifted ordinary inverse image.
+
+The tensor in (14) vanishes off \(T\), since its two factors vanish off \(f^{-1}S\) and \(g^{-1}S\). Thus the closed-support composition law identifies \(R\Gamma_W(h^{-1}K)\) with \(R\Gamma_Z(h^{-1}K)\). Equivalently, closed adjunction factors the pulled-back morphism \(k_W\to h^{-1}K\) uniquely through \(k_Z\). This is the supported refinement used below; it does not infer a supported lift merely from a class whose restriction happens to vanish.
 
 Apply \(\phi\) to the first factor and then the ordered contraction
 \(B\otimes D_YB\to\omega_Y\). This defines
@@ -170,7 +176,7 @@ Apply \(\phi\) to the first factor and then the ordered contraction
  \qquad\text{(15)}
 \]
 
-Construction (11)–(15) does **not** require (4). Only integrating it and using the finite intermediate trace will require compactness. The contraction is symmetry followed by dual-first evaluation, so its point value is the supertrace with signs \((-1)^j\).
+Explicitly, (15) is the composite \(k_Z\to A\otimes D_YB\xrightarrow{\phi\otimes1}B\otimes D_YB\to\omega_Y\), with the first arrow just constructed. The last arrow is graded symmetry followed by dual-first evaluation; its point value is the supertrace with signs \((-1)^j\). All support maps and both coefficient arrows are specified before taking cohomology. Construction (11)–(15) requires no compactness of \(T\). Compactness is used for the global integration and finite intermediate trace.
 
 The class is linear in \(\phi\), invariant under an isomorphism of the coefficient complex compatible with \(\phi\), and compatible with open restriction. These follow from the actual units, counits, support comparison and evaluation: conjugating the coefficient object conjugates the identity in (12), and evaluation cancels the two conjugate factors.
 
@@ -185,12 +191,15 @@ The class is linear in \(\phi\), invariant under an isomorphism of the coefficie
 
 The integral is the map from support \(Z\) to compact support, followed by the proper point trace \(R\Gamma_c(Y;\omega_Y)\to k\).
 
-First suppose that \(S\) is compact. Then \(C\) is perfect, and proper duality for \(X\to\mathrm{pt}\) identifies
-\(R\Gamma(X;D_XF)\) with \(C^\vee\). The product and diagonal maps in the proper characteristic-class proof, **before contraction**, identify (12) with the tensor representing \(\mathrm{id}_C\). This uses its Hom comparison and evaluation square, not only its final identity index formula.
+First suppose that \(S\) is compact. Then \(C\) is perfect and its ordinary and compact section complexes agree. Evaluated duality for the map to a point gives \(R\Gamma(X;D_XF)\simeq C^\vee\). Its product comparison identifies \(R\Gamma(X\times X;K)\) with \(C\otimes C^\vee\): both coefficient supports are compact, so the proper-image product and projection maps apply to these factors. The map forgetting the diagonal support in (12) is therefore a morphism \(k\to C\otimes C^\vee\).
 
-The ordinary \(f\)-pullback and \(\phi\) send the first tensor factor to \(P\) by \(a\). Perfect duality and the compact support cutoff identify \(P^\vee\) with \(R\Gamma(T;(D_YB)|_T)\): the internal-Hom formula gives \(D_Y(R\Gamma_TB)=k_T\otimes D_YB\), and properly supported global duality gives the stated pairing. The second factor therefore goes by ordinary \(g\)-pullback to sections of \(D_YB\) and then to its restriction on \(T\). This is exactly the dual \(b^\vee:C^\vee\to P^\vee\).
+The endomorphism comparison in the proper characteristic-class proof identifies this particular morphism with \(\mathrm{coev}_C\). Indeed its Hom route takes \(\mathrm{id}_F\) first to the exceptional unit of its supported direct image and then to the identity of \(C\), by the exceptional triangular identity. The product evaluation comparison identifies that route with the tensor route before contraction. Consequently the tensor is the identity tensor itself, not merely some tensor with the same numerical trace.
 
-To verify the last assertion, pair a section of \(R\Gamma_TB\) with the pulled-back dual section. The evaluated internal-adjunction formula in the closed-support prerequisite says that integrating their contraction equals pairing the original dual section with (6): projection, the ordinary counit, evaluation, then the exceptional counit give the same ordered pairing. Compactness of \(T\) supplies the proper support throughout. Currying this equality determines \(b^\vee\).
+The ordinary \(f\)-pullback and the supported lift of \(\phi\) send the first tensor factor to \(P\) by \(a\). Put \(B_T=R\Gamma_TB\). The internal-Hom duality formula gives \(B_T\simeq D_Y(k_T\otimes D_YB)\); constructible biduality therefore gives \(D_YB_T\simeq k_T\otimes D_YB\). Both sides have compact support. Evaluated global duality identifies \(P^\vee\) with \(R\Gamma(T;(D_YB)|_T)\), pairing a supported \(B\)-section with the ordinary restriction of a \(D_YB\)-section to \(T\).
+
+The candidate second-factor map is \(R\Gamma(X;D_XF)\to R\Gamma(Y;g^{-1}D_XF)\simeq R\Gamma(Y;D_YB)\to R\Gamma(T;(D_YB)|_T)\). The first arrow is ordinary pullback and the last is ordinary closed restriction. Under the two evaluated duality identifications this map is \(b^\vee:C^\vee\to P^\vee\), as the following pairing check shows.
+
+Pair a section of \(B_T\) with the ordinary pullback of a dual section on \(X\). Projection formula moves the latter through \(Rg_!\); the ordinary inverse-image counit evaluates its pulled-back germ. The coefficient comparison (14) then contracts it with \(g^!F\). Evaluated internal adjunction identifies this contraction followed by the \(g\)-trace with evaluation after \(Rg_!g^!F\to F\). Composing with the point trace gives the pairing of the original dual section with (6). These are equalities of derived pairings, not just pointwise section values: they are the curry/evaluation identity in the closed-support prerequisite, followed by the support-forgetting identity (EX.41). The properly supported factor is \(B_T\), whose support lies in compact \(T\); no properness of \(g\) on all of \(Y\), or on all of \(\operatorname{supp}(B)\), is needed. Currying this equality of pairings proves the asserted formula for \(b^\vee\), with the same graded order.
 
 The resulting trace square can be written
 
@@ -206,7 +215,9 @@ The resulting trace square can be written
 For a homogeneous basis \(e_{j,r}\) of a finite representative of \(C\), its value is
 \(\sum_{j,r}(-1)^j e^*_{j,r}(ba(e_{j,r}))\). Boundary traces cancel by the point trace proof, leaving \(\operatorname{str}(ba)\).
 
-On the sheaf side, the same path is (13)–(15) followed by integration: it pulls both factors to \(Y\), retains the coincidence support, applies \(\phi\), and evaluates. Enlarging \(Z\) to \(T\) for this pairing uses the natural inclusion of support conditions; it does not change the final properly supported trace. The evaluated identity above verifies the bottom cell of this comparison, and the proper diagonal/Hom comparison verifies its top cell. Thus (17) is the full trace diagram with its maps specified. It proves (16) for compact \(S\).
+To identify the sheaf path with this tensor path, first enlarge the class support from \(Z\) to \(T\). Ordinary pullback of the representing diagonal morphism, as checked after (13a), commutes with forgetting diagonal support. Thus its image is the ordinary pullback of the actual identity tensor just computed. Naturality of tensor pullback and the supported lift (3) takes its first factor by \(a\); the second factor is the ordinary restriction of the pulled-back dual section to \(T\), the map just proved to be \(b^\vee\). Their contraction and point trace are exactly \(\mathrm{contr}_P\), by the evaluated duality pairing of \(B_T\).
+
+Integration of the original \(Z\)-supported class factors through that same enlargement to \(T\), since \(Z\subset T\) and \(T\) is compact. Hence this comparison proves equality of the two integrals without inferring equality of \(Z\)-supported classes from their images after support is forgotten. The identity/Hom calculation supplies the top cell of (17), ordinary support pullback supplies its middle cell, and the verified pairing supplies its bottom cell. This proves (16) for compact \(S\).
 
 ## A compact cutoff removes the extra support assumption
 
@@ -254,7 +265,7 @@ For the traces, identify the intermediate supported complex by (19). Put \(C_G=R
 
 Therefore \(U_\phi=c_Cb_Ga\) and \(U_{\phi_G}=b_Gac_C\). Each degree factors through finite-dimensional \(H^j(C_G)\), so (9) proves equality of their alternating traces. Applying the compact-\(S\) theorem to \(G\) and using (21) proves (16) in full.
 
-This proves the noncompact-support extension in Exercise IX.9. The cutoff is a proof device: independence of its choice follows because its trace is the intrinsic finite-rank trace of (7), and its class is the intrinsic supported class (15).
+This proves the theorem for noncompact \(S\) with compact common support \(T\). The cutoff introduces no new choice in the answer: its trace is the intrinsic finite-rank trace of (7), and (21) identifies its class with the intrinsic supported class (15).
 
 ## Local contributions keep their own trace
 
@@ -281,7 +292,7 @@ Now specialize to \(Y=X\), \(g=\mathrm{id}\), and \(\phi:f^{-1}F\to F\). At a fi
  \qquad\text{(24)}
 \]
 
-The last arrow projects the isolated component of the support, after intersecting it with \(T\). It is not an ordinary stalk restriction. The induced traces of \(\phi_x\), of (24), and the number \(C_x(\phi)\) can differ.
+The first arrow is the ordinary supported pullback (13) for the closed set \(\{x\}\). For the second arrow use the supported lift (3): after composition of support functors its output has support in \(E=f^{-1}(x)\cap T\). Since \(x\) is isolated in the closed set \(E\), both \(\{x\}\) and \(E\setminus\{x\}\) are closed, disjoint components of this support. The support complex splits over these two sets, and its projection to the first is the last arrow of (24). No compactness of the second component is required for this finite splitting. The point-supported complex is perfect by compact supported-cohomology finiteness. Thus (24) has a defined supertrace, but its projection is not an ordinary stalk restriction. The traces of \(\phi_x\), of (24), and the number \(C_x(\phi)\) can differ.
 
 The local number depends only on the germ of the pair: if \(F\) and \(F'\) are isomorphic on a neighbourhood \(U\) of an isolated fixed point, and the isomorphism intertwines their morphisms on \(U\cap f^{-1}U\), then
 \[
@@ -301,13 +312,22 @@ Let \(X\) be compact, \(F=k_X\), and \(\phi:f^{-1}k_X\to k_X\) the canonical map
  \qquad\text{(26)}
 \]
 
-The class on the right is supported on the fixed locus, with its graph parameter identified with \(X\). Both fundamental classes use the orientation coefficient inherited from the second projection, as in the normalized diagonal construction; no global orientation of \(X\) is chosen.
+Here the right-hand class is first formed on \(M=X\times X\) and then identified with a class on its closed graph parameter \(X\). Write \(p_1,p_2:M\to X\), \(h=(f,\mathrm{id})\), \(o=\operatorname{or}_X\), and \(n=\dim X\). The two fundamental classes have the following precise, different coefficient presentations:
+\[
+ [\Gamma_f]\in H^0_{\Gamma_f}(M;p_2^!k_X)
+       =H^n_{\Gamma_f}(M;p_1^{-1}o),\qquad
+ [\Delta_X]\in H^0_{\Delta_X}(M;p_1^!k_X)
+       =H^n_{\Delta_X}(M;p_2^{-1}o).
+\]
+The graph class is the exceptional counit whose adjoint under \(p_2h=\mathrm{id}\) is \(1\); the diagonal class is the one whose adjoint under \(p_1\delta=\mathrm{id}\) is \(1\). They use the positive normal Thom maps fixed by these adjunctions. For the constant coefficient object, the diagonal identity (12) is exactly this second class, since \(K=k_X\boxtimes\omega_X=p_2^{-1}\omega_X\).
 
-On the coincidence set the first and second projections agree. Their orientation lines are therefore canonically identified there, and the integral orientation-square pairing supplies the output dualizing coefficient. This is the coefficient pairing in (26); it does not assert a global trivialization of the orientation line on \(X\times X\). With an excess fixed locus, the intersection remains a supported cohomology class, as in the intersection prerequisite, rather than a literal zero-dimensional cycle.
+Cup the graph first and the diagonal second. The coefficient map is the trace-normalized exceptional tensor comparison \(p_2^!k_X\otimes p_2^{-1}\omega_X\to p_2^!\omega_X=\omega_M\). In codimension degrees it pairs \(p_1^{-1}o\otimes p_2^{-1}o\) with the product orientation line. Thus the cup lies in \(H^0_{\Gamma_f\cap\Delta_X}(M;\omega_M)\). Closed graph adjunction and \(h^!\omega_M=\omega_X\) identify this group with \(H^0_{\operatorname{Fix}(f)}(X;\omega_X)\), the group containing \(C(\phi)\). These are the identifications in (26). No global orientation or identification of \(f^{-1}o\) with \(o\) is needed.
 
-**Proof.** Here \(K=k_X\boxtimes\omega_X\). The product evaluation identifies the diagonal identity (12) with the normalized diagonal fundamental class: in a coordinate ball, exceptional diagonal restriction cancels the normal orientation and dimension shift, and its point trace sends the positive generator to one. These are exactly the normal Thom and fundamental-cycle maps in the supported intersection prerequisite.
+**Proof.** The external-Hom comparison for \(k_X\) identifies the diagonal identity with the class just described: exceptional composition along \(p_1\delta=\mathrm{id}\) takes its adjoint to \(1\). Pull that class back ordinarily along \(h\) using (13). Its coefficient becomes \(h^{-1}p_2^{-1}\omega_X=\omega_X\), and its support becomes the fixed locus. In (14) the first factor is \(k_X\), and contraction is the unit action \(k_X\otimes\omega_X\to\omega_X\). Therefore this pulled-back class is precisely (15).
 
-Restriction to \(h=(f,\mathrm{id})\) pulls that diagonal class to the graph. The fundamental-class projection formula for a closed graph identifies this pullback, with its retained support, with the intersection of the graph fundamental class and the diagonal class. This is the actual supported cup/intersection construction: it is defined by the same restriction, normal counit and coefficient pairing, also at nontransverse intersections. In (14) the first factor is \(k_X\), and the last contraction is \(k_X\otimes\omega_X\to\omega_X\), the identity. Thus (15) is precisely that supported intersection class. Integrating and applying (16) proves (26). \(\square\)
+The graph-first cup gives the same class under closed graph adjunction. To verify the comparison, project the second factor through \(h_*\) in the graph counit, then use the exceptional tensor map above. The resulting map into \(\omega_M\) has adjoint the pulled-back second factor followed by \(h^!\omega_M=\omega_X\): the first factor has adjoint \(1\), and the exceptional triangular identity cancels its unit and counit. This is the supported projection formula for these particular maps. It proves equality with the ordinary diagonal pullback while keeping the fixed support, including at excess or nontransverse intersections. Composing the graph trace with the point trace is the point trace on \(X\), so integration and (16) prove (26). \(\square\)
+
+The factors in this base-manifold intersection are the stated normal Thom classes. Their tensor order and relative dualizing coefficients already determine their signs; no cotangent conormal normalization factor is appended. In particular, (26) remains a supported cohomology class when the fixed locus has positive dimension, rather than a literal zero-dimensional cycle.
 
 When there are no coincidences, (15) lies in the zero support group, so the correspondence trace is zero. A positive-dimensional fixed locus still has the supported class and global integral; the finite point sum (23) is used only for a finite locus. Computing general isolated contributions from specialization and expanding or shrinking spaces is the next treatment.
 
@@ -356,8 +376,7 @@ On \(\mathbb R\), put
 Verify that \(f\) is an analytic diffeomorphism with exactly two fixed points and that it preserves the interval. For the canonical coefficient isomorphism, compare the global trace, the two stalk traces, and the two point-support traces. What follows about the local contributions without yet computing each separately?
 
 **Solution.** The derivative of \(t(1-t)e^{-t^2}\) is
-\((1-2t-2t^2+2t^3)e^{-t^2}\). Each of
-\(|t|e^{-t^2},t^2e^{-t^2},|t|^3e^{-t^2}\) is at most one, so its absolute value is at most seven. Thus \(f'(t)\ge3/10>0\). Also \(f(t)-t\to0\) at both infinities. The map is bijective, and its nonzero derivative makes its inverse analytic. Its displacement vanishes exactly at \(0,1\); monotonicity makes it a homeomorphism of \([0,1]\).
+\((1-2t-2t^2+2t^3)e^{-t^2}\). For \(p=1,2,3\), differentiation on \(t\geq0\) gives \(\max |t|^pe^{-t^2}=(p/(2e))^{p/2}<1\). Also \(e^{-t^2}\leq1\). The absolute value of the displayed derivative is therefore at most \(1+2+2+2=7\). Thus \(f'(t)\ge3/10>0\). Also \(f(t)-t\to0\) at both infinities. The map is bijective, and its nonzero derivative makes its inverse analytic. Its displacement vanishes exactly at \(0,1\); monotonicity makes it a homeomorphism of \([0,1]\).
 
 Here \(T=[0,1]\), \(Z=\{0,1\}\), and \(R\Gamma(\mathbb R;F)=k\). Pullback of a constant interval section is the same section, so \(L(\phi)=1\). Both endpoint stalk actions are the identity on \(k\), with trace one.
 
@@ -394,12 +413,10 @@ On the same infinite discrete \(X=\mathbb N\), take \(Y=X\), \(f=g=\mathrm{id}\)
 
 **Solution.** The supported class (15) is still defined, with \(S=T=Z=X\). At every point it is the coefficient identity class. But \(P=C=\prod_{n\ge1}k\) is not perfect, and the identity has infinite-dimensional image. No finite-dimensional invariant subspace can contain it, so (8) does not define its trace. The infinitely many local contributions cannot be summed by the finite support argument (23), and there is no proper point trace for this noncompactly supported class.
 
-For the zero correspondence the induced endomorphism has rank zero, so its finite-rank trace is zero even though \(T\) is still noncompact. Thus (4) is a sufficient geometric hypothesis for the theorem, not a claim that every individually traceable map must have compact \(T\). The counterexample concerns the identity and the failure of the theorem's general finiteness and proper integration guarantees.
+For the zero self-correspondence the ordinary pullback followed by the zero coefficient map is the zero endomorphism of \(R\Gamma(X;F)\). It has rank zero and finite-rank trace zero even though \(T\) is noncompact. This action is defined directly; the compactly supported return map (6) is not being asserted for arbitrary sections with noncompact support. The class (15) is also zero by linearity and thus has the empty compact support. Consequently (4) is a sufficient geometric hypothesis for the theorem, not a claim that every individually traceable map must have compact \(T\). The counterexample concerns the identity and the failure of the theorem's general finiteness and proper integration guarantees.
 
 ## References and further reading
 
-Lefschetz traces of constructible correspondences go back to Kashiwara's microlocal Lefschetz fixed-point formula for constructible sheaves. The compact cutoff argument above supplies the extension, with finite-rank trace understood explicitly.
+Y. Matsui and K. Takeuchi, [*Microlocal study of Lefschetz fixed point formulas for higher-dimensional fixed point sets*](https://arxiv.org/abs/0812.4480v1), arXiv 0812.4480v1, 24 December 2008, §2, pp. 4–5, present the self-map characteristic class in Kashiwara's Lefschetz theory. Their equations (2.4)–(2.10) pull the diagonal identity to the graph and evaluate it; Definitions 2.2 and 2.4 distinguish the supported class and its local contributions, and Theorem 2.3 identifies their sum with the global trace for compact sheaf support. This account uses complex coefficients. The correspondence theorem above treats two maps, an exceptional target and compact common support; its proof gives the actual factorization through the perfect complex \(P\).
 
-Y. Matsui and K. Takeuchi, [*Microlocal study of Lefschetz fixed point formulas for higher-dimensional fixed point sets*, arXiv0812.4480v1, 24 December 2008](https://arxiv.org/abs/0812.4480v1), §2, describes the self-map characteristic class and local contributions with complex coefficients and compact sheaf support. Its later sections study smooth fixed components and Lefschetz cycles under additional hypotheses. Those component-localization results are separate from the general correspondence trace proved here.
-
-Y. Ike, [*Microlocal Lefschetz classes of graph trace kernels*, arXiv1504.05439v3, 15 February 2016](https://arxiv.org/abs/1504.05439v3), §3.2, packages a self-map identity and evaluation into a graph trace kernel. Lemma3.7 constructs its two maps by diagonal and graph adjunction; equations(3.15)–(3.16) recover the graded trace over a point. The paper uses the graph \((x,f(x))\) and dual-first factors. Comparing with our \((f(x),x)\) requires the graded exchange of both factors. Its microlocal composition theorem is further reading.
+Y. Ike, [*Microlocal Lefschetz classes of graph trace kernels*](https://arxiv.org/abs/1504.05439v3), arXiv 1504.05439v3, 15 February 2016, §3.2, pp. 9–11, packages a self-map identity and evaluation into a graph trace kernel. Lemma 3.7 constructs its two maps by diagonal and graph adjunction; equations (3.15)–(3.16) recover the graded trace over a point. The paper uses the graph \((x,f(x))\) and dual-first factors. Comparing with our \((f(x),x)\) requires the graded exchange of both factors. Its later microlocal composition theorem is a further development.

@@ -1,6 +1,6 @@
 # Quasi-coherent sheaves and concentrated scheme maps
 
-*Written and mathematically self-checked by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. The affine, small-submodule and Čech arguments adapt the Stacks project authors' proofs in the pinned AI Integrated Stacks Project edition; those adaptations retain GFDL-1.2-or-later. The unbounded comparisons and expanded explanations are independently written. See the [course notice](../LICENCE.md) for authorship and terms. No independent review or formalization is claimed.*
+*Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI. Original text: public domain (CC0). The affine, small-submodule and Čech arguments follow the Stacks project authors' proofs in the pinned AI Integrated Stacks Project edition. The unbounded comparisons and expanded explanations are independently written. See the [course notice](../LICENCE.md) for authorship and sources.*
 
 On a scheme, quasi-coherent cohomology permits stronger projection and base-change results than arbitrary sheaves on a ringed space. This lesson develops the extra algebra and cohomology before proving those results for unbounded complexes.
 

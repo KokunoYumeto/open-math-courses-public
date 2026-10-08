@@ -1,6 +1,6 @@
 # Local tools for bundles and transport
 
-*Written by GPT-6 Astra (OpenAI), Ultra effort, October 2026. Original exposition is dedicated under CC0 1.0. The attributed Brenner component and its marked completions in Section 3 retain CC BY-SA 4.0.*
+*Written by GPT-6 Astra (OpenAI), Ultra effort, October 2026. Original text: public domain (CC0). Section 3 follows Holger Brenner's construction of partitions of unity, cited there.*
 
 To construct a bundle or transport a vector, we need coordinates that solve equations, solutions that vary smoothly with their data, and smooth functions that join local constructions. We develop these tools in that order. The last construction applies them to a quotient of a Lie group.
 
@@ -242,153 +242,55 @@ a\exp(tA)a^{-1}=\exp(t\operatorname{Ad}(a)A).
 
 This proves each asserted property. □
 
-For the countability arguments in the next section, the following elementary details will be useful. Pairs of nonnegative integers can be listed by increasing sum, listing the finitely many pairs of each sum in increasing first coordinate. Thus a countable union of listed countable families is countable, by listing the pairs of indices and discarding repetitions. A countable basis restricts to a countable basis on any subspace by intersecting its members with that subspace: every relatively open neighbourhood is the intersection of an ambient open set with the subspace, and a basis member can be chosen inside that ambient set at the chosen point. Finally, the exponential bound used in the attributed boundary completion below is already proved in Lemma 0.5, without assuming an exponential-series theorem.
+For the countability arguments in the next section, the following elementary details will be useful. Pairs of nonnegative integers can be listed by increasing sum, listing the finitely many pairs of each sum in increasing first coordinate. Thus a countable union of listed countable families is countable, by listing the pairs of indices and discarding repetitions. A countable basis restricts to a countable basis on any subspace by intersecting its members with that subspace: every relatively open neighbourhood is the intersection of an ambient open set with the subspace, and a basis member can be chosen inside that ambient set at the chosen point. Finally, the flat cutoff factor used below is Lemma 0.5, proved without assuming an exponential-series theorem.
 
 ## 3. Smooth weights with controlled support
 
-The **support** of a function is the closure of the set on which it is nonzero. A **compact exhaustion** is a sequence of compact sets \(A_n\) with \(A_n\subset\operatorname{int}A_{n+1}\) and \(\bigcup_{n\geq0}A_n=M\). We write \(U(a,r)\) for an open Euclidean ball and \(B(a,r)\) for its closed ball in the source passages below.
+The **support** of a function is the closure of the set on which it is nonzero. A **compact exhaustion** is a sequence of compact sets \(A_n\) with \(A_n\subset\operatorname{int}A_{n+1}\) and \(\bigcup_{n\geq0}A_n=M\). We write \(U(a,r)\) for an open Euclidean ball and \(B(a,r)\) for its closed ball.
 
-The following three complete statements and proofs are adapted from Holger Brenner and the Wikiversity contributors, [Lecture 22 of *Differentialgeometrie (Osnabrück 2023)*](https://de.wikiversity.org/w/index.php?oldid=1052940), Lemmas 22.6 and 22.9 and Theorem 22.10, through the [complete English edition](https://github.com/KokunoYumeto/brenner-differentialgeometrie-en/releases/tag/v2026.09.01-complete). They retain [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). English translation, mathematical typography and local labels are adapted; the explicitly marked completions supply the countable-subcover argument, shell selection, local finiteness and bump-boundary derivatives. The source theorem asserts continuous differentiability; smoothness on our smooth manifolds follows from the same construction. Source images are not reused.
+The construction below follows Holger Brenner's [Lecture 22 of *Differentialgeometrie (Osnabrück 2023)*](https://de.wikiversity.org/w/index.php?oldid=1052940) (Lemmas 22.6 and 22.9, Definitions 22.7 and 22.8, Theorem 22.10; see also the [programme's English edition](https://github.com/KokunoYumeto/brenner-differentialgeometrie-en/releases/tag/v2026.09.01-complete)). Brenner states the theorem for continuously differentiable partitions; the same construction gives smooth partitions for smooth charts. Complete proofs are given here.
 
-> **Lemma 3.A (compact exhaustion; Brenner 22.6).** Let \(M\) be a manifold with a countable basis for its topology. Then \(M\) has a compact exhaustion.
->
-> **Proof.** For every point \(P\in M\) there is an open coordinate neighborhood \(P\in U\), \(\alpha:U\to V\), and ball neighborhoods
->
-> \[
-> U(\alpha(P),\epsilon)
-> \subset B(\alpha(P),\epsilon)\subset V.
-> \]
->
-> Since the coordinate map is a homeomorphism and closed balls are compact, \(B_P=\alpha^{-1}(B(\alpha(P),\epsilon))\) is a compact subset of \(M\) containing the open neighborhood \(U_P=\alpha^{-1}(U(\alpha(P),\epsilon))\) of \(P\). The sets \(U_P\), \(P\in M\), form an open cover of \(M\), so by Exercise 2.8 (*Measure and Integration Theory (Osnabrück 2022–2023)*) there is a countable subcover.
->
-> *Countable-subcover completion.* Let \(\{E_m\}_{m\geq0}\) be a countable basis. For every \(E_m\) contained in some member of an open cover, choose one such member. These choices cover \(M\): a point in a cover member lies in a basis element contained in that member. Thus every open cover has a countable subcover.
->
-> Denote it by \(U_n\), \(n\in\mathbb N\), (where the \(U_n\) lie in the compact subsets \(B_n\)). We now define recursively a monotonically increasing map
->
-> \[
-> \mathbb N\longrightarrow\mathbb N,\qquad k\longmapsto n_k,
-> \]
->
-> such that
->
-> \[
-> A_k=\bigcup_{n=0}^{n_k}B_n
-> \]
->
-> is a compact exhaustion of \(M\). As finite unions of compact sets, the \(A_k\) are compact. We begin with \(n_0=0\). Suppose \(n_k\) has already been constructed. The set \(A_k\cup B_{n_k+1}\) is compact and is therefore contained in a finite subunion \(\bigcup_{n=0}^{n_{k+1}}U_n\), where the upper index is chosen so that \(n_{k+1}\geq n_k+1\). With this choice,
->
-> \[
-> A_k\subset\bigcup_{n=0}^{n_{k+1}}U_n
-> \subset\bigcup_{n=0}^{n_{k+1}}B_n=A_{k+1}.
-> \]
->
-> and this sequence is an exhaustion because the \(U_n\), \(n\in\mathbb N\), form an open cover of \(M\).
->
-> *Exhaustion completion.* The middle union is open, so \(A_k\subset\operatorname{int}A_{k+1}\); and \(n_k\geq k\) ensures that every \(U_n\) is eventually contained in an \(A_k\). If the subcover is finite and \(M\) is nonempty, repeat a member to index it by \(\mathbb N\). For \(M=\varnothing\), take \(A_k=\varnothing\) throughout. □
->
-> **Lemma 3.B (subordinate atlas; Brenner 22.9).** Let \(M\) be a manifold with a countable basis for its topology. Let \(M=\bigcup_{i\in I}W_i\) be an open cover of \(M\). Then there is a countable compatible atlas \((U_j,\alpha_j,V_j)\), \(j\in J\), with ball neighborhoods
->
-> \[
-> U(0,\delta_j)\subset B(0,\epsilon_j)\subset V_j,
-> \qquad 0<\delta_j<\epsilon_j,
-> \]
->
-> (where \(0\in V_j\subset\mathbb R^d\) and \(\delta_j<\epsilon_j\)) such that for every \(j\in J\) there is a \(W_{i(j)}\) with \(U_j\subset W_{i(j)}\) such that \(M\) is covered by \(\alpha_j^{-1}(U(0,\delta_j))\), \(j\in J\), and every point \(P\in M\) belongs to only finitely many of the sets \(U_j\).
->
-> **Proof.** Let the open cover \(W_i\), \(i\in I\), be given. Furthermore, let \(A_n\), \(n\in\mathbb N\), be a compact exhaustion of \(M\), which exists by Lemma 3.A. The open sets \(\operatorname{int}A_{n+2}\setminus A_{n-1}\) also form an open cover, because every point \(P\in M\) has a least \(n\in\mathbb N\) such that \(P\in A_n\) (with the convention \(A_{-1}=\varnothing\)). For this \(n\), \(P\notin A_{n-1}\) and \(P\in A_n\subset\operatorname{int}A_{n+1}\).
->
-> By considering the intersections \(W_i\cap(\operatorname{int}A_{n+2}\setminus A_{n-1})\), we may assume that every set in the cover lies in some \(\operatorname{int}A_{n+2}\setminus A_{n-1}\). For every point \(P\in M\) there is an open (compatible) coordinate neighborhood \(P\in U_P\), contained in one of the \(W_i\) and having ball neighborhoods
->
-> \[
-> U(0,\delta_P)\subset B(0,\epsilon_P)\subset V_P.
-> \]
->
-> such that \(P\in\alpha_P^{-1}(U(0,\delta_P))\) and \(\delta_P<\epsilon_P\). These sets \(\alpha_P^{-1}(U(0,\delta_P))\), \(P\in M\), also form an open cover of \(M\). By Exercise 2.8 (*Measure and Integration Theory (Osnabrück 2022–2023)*) we may pass to a countable subcover. Thus we may assume that a system of charts \(U_j\), \(j\in\mathbb N\), together with ball neighborhoods \(U(0,\delta_j)\subset B(0,\epsilon_j)\subset V_j\) is given such that \(\alpha_j^{-1}(U(0,\delta_j))\), \(j\in\mathbb N\), is also an open cover of \(M\), each \(U_j\) is contained in some \(W_{i(j)}\), and the relationship to the compact exhaustion described above holds. We will define a subset \(J\subset\mathbb N\) such that the family \(U_j\), \(j\in J\), also satisfies the finiteness property.
->
-> *Shell-selection completion.* Make these choices separately for each compact layer \(A_{n+1}\setminus\operatorname{int}A_n\), requiring its charts to lie in \(\operatorname{int}A_{n+2}\setminus A_{n-1}\). This is possible because that entire layer is contained in that open shell. Also choose charts covering \(A_0\) inside \(\operatorname{int}A_1\). Each layer has a countable subcover by the same basis argument (applied to its subspace topology). Their countable union is the initial chart system. Thus the initial system contains enough charts of each specified shell for the following finite selections; an arbitrary countable subcover of all shells need not have this property.
->
-> First, compactness of \(A_0\) gives a finite index set \(J_{-1}\) such that the sets \(\alpha_j^{-1}(U(0,\delta_j))\), \(j\in J_{-1}\), cover \(A_0\). For \(n\in\mathbb N\) consider the compact set \(A_{n+1}\setminus\operatorname{int}A_n\). It is covered by finitely many of the sets \(\alpha_j^{-1}(U(0,\delta_j))\), \(j\in\mathbb N\), and only indices \(j\) for which \(U_j\) is contained in \(\operatorname{int}A_{n+2}\setminus A_{n-1}\) are needed. Denote the corresponding finite index set by \(J_n\), and set
->
-> \[
-> J=J_{-1}\cup\bigcup_{n\geq0}J_n.
-> \]
->
-> Then each \(A_k\) meets only finitely many of the sets \(U_j\), \(j\in J\).
->
-> *Cover and local-finiteness completion.* The smaller balls cover \(M\): if a point first enters the exhaustion at \(A_r\), it lies in \(A_0\) when \(r=0\), and in \(A_r\setminus\operatorname{int}A_{r-1}\) otherwise. A chart selected from \(J_n\) with \(n\geq k+1\) misses \(A_k\), since it misses \(A_{n-1}\supset A_k\). Only the finitely many selections \(J_{-1},J_0,\ldots,J_k\) can meet \(A_k\). For a point \(P\), choose \(k\) with \(P\in\operatorname{int}A_k\). That interior is a neighbourhood meeting only finitely many charts. Consequently the selected atlas is locally finite, which is stronger than the pointwise finiteness in the source statement. □
->
-> **Definition 3.C (partition of unity; Brenner 22.7).** Let \(X\) be a topological space. A family of functions \(h_j:X\to\mathbb R\) indexed by \(j\in J\) is called a **partition of unity** if the following properties hold.
->
-> 1. We have \(h_j(X)\subset[0,1]\) for every \(j\in J\).
-> 2. Every point \(P\in X\) has an open neighborhood \(P\in U\) such that the restricted functions \(h_j|_U\) are identically zero, with only finitely many exceptions.
-> 3. We have \(\sum_{j\in J}h_j=1\).
->
-> If all \(h_j\) are continuous, this is called a continuous partition of unity.
->
-> The second property ensures that the sum in (3) is defined, since for every point \(P\in X\) and all but finitely many \(j\in J\) the equality \(h_j(P)=0\) holds. On a manifold such a partition is called differentiable if all \(h_j\) are differentiable functions.
->
-> **Definition 3.D (subordinate partition; Brenner 22.8).** Let \(X=\bigcup_{i\in I}W_i\) be an open cover of a topological space \(X\). A partition of unity \(h_j:X\to\mathbb R\) indexed by \(j\in J\) is called a partition of unity **subordinate** to the cover if for every \(j\in J\) there is an open set \(W_{i(j)}\) in the cover such that the support of \(h_j\) is contained in \(W_{i(j)}\).
->
-> **Theorem 3.E (partition of unity; Brenner 22.10).** Let \(M\) be a differentiable manifold with a countable basis for its topology. Then every open cover admits a continuously differentiable partition of unity subordinate to that cover.
->
-> **Proof.** By Lemma 3.B we may assume that an open cover consists of coordinate domains \(U_j\), \(j\in J\), (\(J\) countable) with \(\alpha_j:U_j\to V_j\) and with ball neighborhoods
->
-> \[
-> U(0,\delta_j)\subset B(0,\epsilon_j)\subset V_j,
-> \qquad \delta_j<\epsilon_j,
-> \]
->
-> (with \(\delta_j<\epsilon_j\)) such that the sets \(\alpha_j^{-1}(U(0,\delta_j))\) also cover \(M\) and every point \(P\in M\) belongs to only finitely many of the \(U_j\), and in particular to only finitely many of these sets \(\alpha_j^{-1}(U(0,\delta_j))\). On \(V_j\) consider the function \(g_j\) defined by the following formula. *Notation for the formula:* \(s_j(v)=\delta_j^2-\|v\|^2\).
->
-> \[
-> g_j(v)=
-> \begin{cases}
-> e^{-1/s_j(v)^2},
->       &\|v\|<\delta_j,\\
-> 0,    &\|v\|\geq\delta_j.
-> \end{cases}
-> \]
->
-> This function is positive precisely on \(U(0,\delta_j)\) and its support is \(B(0,\delta_j)\). Considering the two open subsets (which cover \(V_j\)) \(U(0,\epsilon_j)\) and \(V_j\setminus B(0,\delta_j)\) shows that \(g_j\) is infinitely differentiable.
->
-> *Boundary-derivative completion.* Put \(\eta(t)=e^{-1/t^2}\) for \(t>0\), and \(\eta(t)=0\) for \(t\leq0\). On \(t>0\), every derivative is \(p(1/t)e^{-1/t^2}\) for a polynomial \(p\), by induction using the product and chain rules. Every such expression, even after division by \(t\), tends to zero as \(t\downarrow0\): with \(u=1/t\), the exponential-series bound \(e^{u^2}\geq u^{2N}/N!\) dominates any specified polynomial by taking \(2N\) larger than its degree. Inductively, the difference quotient at zero of each extended derivative is zero, and the next derivative is continuous there. Thus \(\eta\) is smooth with all derivatives zero at zero. Since \(g_j(v)=\eta(\delta_j^2-\|v\|^2)\), the claimed smoothness includes the boundary sphere.
->
-> Define a function \(\widetilde g_j:M\to\mathbb R\) by
->
-> \[
-> \widetilde g_j(x)=
-> \begin{cases}
-> g_j(\alpha_j(x)),
->       &x\in\alpha_j^{-1}(U(0,\delta_j)),\\
-> 0,    &\text{otherwise}.
-> \end{cases}
-> \]
->
-> This function is continuously differentiable on \(M\), because the “annular strip” \(B(0,\epsilon_j)\setminus U(0,\delta_j)\) allows a smooth transition.
->
-> *Extension completion.* The compact support \(\alpha_j^{-1}(B(0,\delta_j))\) lies inside \(U_j\); every point outside \(U_j\) has a neighbourhood missing that support. Inside \(U_j\), the boundary-derivative completion applies. Thus \(\widetilde g_j\) is continuously differentiable, and is smooth when the charts are smooth.
->
-> Set
->
-> \[
-> \widetilde g(x):=\sum_{j\in J}\widetilde g_j(x).
-> \]
->
-> This is a finite sum at every point, since the support of \(\widetilde g_j\) is contained in
->
-> \[
-> \alpha_j^{-1}(B(0,\delta_j))\subset U_j.
-> \]
->
-> This function is continuously differentiable on \(M\) and positive everywhere, because the \(\widetilde g_j(x)\) are positive on the covering sets \(\alpha_j^{-1}(U(0,\delta_j))\). Then the functions
->
-> \[
-> h_j=\frac{\widetilde g_j}{\widetilde g}
-> \]
->
-> form the required partition of unity.
->
-> *Sum completion.* The local finiteness proved in Lemma 3.B makes \(\widetilde g\) a finite sum on a neighbourhood of each point; pointwise finiteness alone would not suffice for differentiability. Its positivity makes division legitimate. The functions \(h_j\) take values in \([0,1]\), have the required supports and local finiteness, and sum to one. When the charts are smooth, every step is smooth. On the empty manifold the empty family satisfies the assertion. □
+**Lemma 3.A (compact exhaustion).** Every manifold \(M\) whose topology has a countable basis admits a compact exhaustion.
+
+**Proof.** First, every open cover \((O_\lambda)_{\lambda\in\Lambda}\) of \(M\) has a countable subcover. Fix a countable basis \((E_m)_{m\geq0}\). Let \(S\) be the set of indices \(m\) for which \(E_m\) lies inside at least one member of the cover, and for each \(m\in S\) pick one such member \(O_{\lambda(m)}\). A point \(x\in M\) lies in some \(O_\lambda\); since \(O_\lambda\) is open, some basis set satisfies \(x\in E_m\subset O_\lambda\). Then \(m\in S\) and \(x\in E_m\subset O_{\lambda(m)}\). Hence the countably many sets \(O_{\lambda(m)}\), \(m\in S\), cover \(M\).
+
+If \(M\) is empty, every \(A_k\) is empty. Otherwise, for each \(x\in M\) choose a chart \(\alpha:U\to V\) around \(x\) and a radius \(r>0\) with \(B(\alpha(x),r)\subset V\). The set \(C_x=\alpha^{-1}(B(\alpha(x),r))\) is compact, as the image of a closed ball (Lemma 0.1) under the continuous map \(\alpha^{-1}\), and it contains the open neighbourhood \(O_x=\alpha^{-1}(U(\alpha(x),r))\) of \(x\). By the first paragraph, countably many of the sets \(O_x\) cover \(M\). Listing them with repetitions if necessary gives open sets \(O_n\) and compact sets \(C_n\supset O_n\), \(n\geq0\), with \(\bigcup_nO_n=M\).
+
+Choose integers \(0=n_0<n_1<n_2<\cdots\) recursively and put \(A_k=C_0\cup\cdots\cup C_{n_k}\), a compact set. When \(n_k\) is known, the open sets \(O_n\) cover \(A_k\), so finitely many of them do; take \(n_{k+1}>n_k\) so large that \(O_0,\ldots,O_{n_{k+1}}\) cover \(A_k\). Then
+\[
+A_k\subset O_0\cup\cdots\cup O_{n_{k+1}}\subset C_0\cup\cdots\cup C_{n_{k+1}}=A_{k+1}.
+\]
+The middle set is open, so \(A_k\subset\operatorname{int}A_{k+1}\). Since \(n_k\geq k\), we have \(O_k\subset C_k\subset A_k\), so the sets \(A_k\) exhaust \(M\). □
+
+**Lemma 3.B (subordinate atlas).** Suppose the topology of the manifold \(M\) has a countable basis, and let \((W_i)_{i\in I}\) be an open cover of \(M\). There is a countable family of compatible charts \(\alpha_j:U_j\to V_j\subset\mathbb R^d\), \(j\in J\), with radii \(0<\delta_j<\epsilon_j\) and \(B(0,\epsilon_j)\subset V_j\), such that
+
+1. every \(U_j\) lies in some member \(W_{i(j)}\) of the cover;
+2. the sets \(\alpha_j^{-1}(U(0,\delta_j))\), \(j\in J\), cover \(M\);
+3. every point of \(M\) has a neighbourhood meeting only finitely many \(U_j\); in particular, every point lies in only finitely many \(U_j\).
+
+**Proof.** If \(M\) is empty, take \(J\) empty. Otherwise let \((A_n)_{n\geq0}\) be a compact exhaustion (Lemma 3.A), and put \(A_{-1}=A_{-2}=\varnothing\). For \(n\geq0\) define the layer and the shell
+\[
+L_n=A_n\setminus\operatorname{int}A_{n-1},\qquad S_n=\operatorname{int}A_{n+1}\setminus A_{n-2}.
+\]
+The layer \(L_n\) is compact, being closed in \(A_n\). The shell \(S_n\) is open, because the compact set \(A_{n-2}\) is closed in the Hausdorff space \(M\). The layer lies in the shell: \(L_n\subset A_n\subset\operatorname{int}A_{n+1}\), and \(A_{n-2}\subset\operatorname{int}A_{n-1}\) does not meet \(L_n\). The layers cover \(M\): if \(n\) is the least index with \(x\in A_n\), then \(x\notin A_{n-1}\supset\operatorname{int}A_{n-1}\), so \(x\in L_n\).
+
+Fix \(n\geq0\). Each \(x\in L_n\) lies in some \(W_i\), so \(W_i\cap S_n\) is an open neighbourhood of \(x\). Restricting a compatible chart around \(x\) to this neighbourhood and translating gives a compatible chart \(\alpha:U\to V\) with \(x\in U\subset W_i\cap S_n\) and \(\alpha(x)=0\); choose \(0<\delta<\epsilon\) with \(B(0,\epsilon)\subset V\). The open sets \(\alpha^{-1}(U(0,\delta))\) chosen in this way for the points of \(L_n\) cover the compact layer, so finitely many of them do. Let \(J_n\) index such a finite choice of charts, and let \(J\) be the disjoint union of the sets \(J_n\), \(n\geq0\). It is countable.
+
+Property 1 holds by construction, and property 2 holds because the layers cover \(M\). For property 3, let \(x\in M\) and choose \(k\) with \(x\in\operatorname{int}A_k\); such \(k\) exists because \(x\in A_m\subset\operatorname{int}A_{m+1}\) for some \(m\). A chart \(j\in J_n\) has \(U_j\subset S_n\), which does not meet \(A_{n-2}\). If \(n\geq k+2\), then \(A_k\subset A_{n-2}\), so \(U_j\) does not meet the neighbourhood \(\operatorname{int}A_k\) of \(x\). Only the charts in the finitely many sets \(J_0,\ldots,J_{k+1}\) can meet it. □
+
+**Definition 3.C (partition of unity).** On a topological space \(X\), a family \((h_j)_{j\in J}\) of functions \(h_j:X\to[0,1]\) is a **partition of unity** if every point of \(X\) has a neighbourhood on which all but finitely many \(h_j\) vanish identically, and \(\sum_{j\in J}h_j(x)=1\) for every \(x\in X\). The first condition makes each of these sums finite. The partition is called continuous, differentiable or smooth when every \(h_j\) is.
+
+**Definition 3.D (subordinate partition).** For an open cover \((W_i)_{i\in I}\) of a topological space \(X\), a partition of unity \((h_j)_{j\in J}\) on \(X\) is **subordinate** to the cover if for every \(j\in J\) the support of \(h_j\) lies in some member \(W_{i(j)}\).
+
+**Theorem 3.E (partition of unity).** Suppose the topology of the differentiable manifold \(M\) has a countable basis. Every open cover of \(M\) has a subordinate partition of unity consisting of continuously differentiable functions, whose supports are compact and lie in coordinate domains contained in members of the cover. If \(M\) is smooth, the partition can be chosen smooth.
+
+**Proof.** If \(M\) is empty, the empty family is such a partition. Otherwise take charts \(\alpha_j:U_j\to V_j\), \(j\in J\), as in Lemma 3.B, compatible with the given differentiable, respectively smooth, structure. Let \(\eta\) be the flat cutoff factor of Lemma 0.5, and define \(g_j:M\to[0,\infty)\) by
+\[
+g_j(x)=\eta\bigl(\delta_j^2-\|\alpha_j(x)\|^2\bigr)\quad(x\in U_j),\qquad g_j(x)=0\quad(x\notin U_j).
+\]
+On \(U_j\) this is the composition of \(\alpha_j\), a polynomial and \(\eta\); it is continuously differentiable, and smooth when \(\alpha_j\) is smooth. It is positive exactly on \(P_j=\alpha_j^{-1}(U(0,\delta_j))\). The set \(K_j=\alpha_j^{-1}(B(0,\delta_j))\) is compact, as the image of a closed ball inside \(V_j\) under \(\alpha_j^{-1}\), and therefore closed in \(M\); it contains \(P_j\), so the support of \(g_j\) lies in \(K_j\subset U_j\). On the open set \(M\setminus K_j\) the function \(g_j\) vanishes identically. The open sets \(U_j\) and \(M\setminus K_j\) cover \(M\), so \(g_j\) is continuously differentiable on all of \(M\), and smooth in the smooth case.
+
+Put \(g=\sum_{j\in J}g_j\). By property 3 of Lemma 3.B, every point has a neighbourhood meeting only finitely many \(U_j\); on it all other \(g_j\) vanish identically, so near every point \(g\) is a finite sum of continuously differentiable (smooth) functions. Every point lies in some \(P_j\) by property 2, and \(g_j>0\) there; hence \(g>0\) everywhere. The functions \(h_j=g_j/g\) are therefore continuously differentiable (smooth), take values in \([0,1]\), vanish outside \(K_j\) and sum to one. Each support lies in the compact set \(K_j\subset U_j\subset W_{i(j)}\), and the local finiteness of the \(U_j\) gives the local finiteness required in Definition 3.C. Thus \((h_j)_{j\in J}\) is the required partition of unity. □
 
 **Theorem 3.1 (smooth partition and cutoff).** Every open cover of a smooth manifold admits a locally finite smooth partition of unity subordinate to it. Its supports can be chosen compact and contained in coordinate neighbourhoods lying in members of the cover. If \(K\) is closed and \(U\) is an open neighbourhood of \(K\), there is a smooth function \(\chi:M\to[0,1]\) equal to one on a neighbourhood of \(K\), with support contained in \(U\).
 
@@ -472,6 +374,6 @@ The parametrization has trivial kernel: a kernel element has \(t\in\mathbb Z\) a
 
 [Mrowka] Tomasz Mrowka, *Geometry of Manifolds*, MIT 18.965, Fall 2004, [free Lecture 4](https://ocw.mit.edu/courses/18-965-geometry-of-manifolds-fall-2004/resources/lecture4/), Theorems 5.1–5.2. The finite-dimensional proofs here use only the explicitly proved linear and analytic steps; no Banach open-mapping theorem is invoked.
 
-[Brenner] Holger Brenner and the Wikiversity contributors, *Differentialgeometrie (Osnabrück 2023)*, [Lecture 22, revision 1052940](https://de.wikiversity.org/w/index.php?oldid=1052940), [page histories](https://de.wikiversity.org/w/index.php?title=Kurs:Differentialgeometrie_(Osnabr%C3%BCck_2023)/Vorlesung_22&action=history). English translation and adaptation: *Smooth Manifolds and Differential Geometry*, [complete edition v2026.09.01-complete](https://github.com/KokunoYumeto/brenner-differentialgeometrie-en/releases/tag/v2026.09.01-complete). The attributed Section 3 and its marked completions retain CC BY-SA 4.0.
+[Brenner] Holger Brenner and the Wikiversity contributors, *Differentialgeometrie (Osnabrück 2023)*, [Lecture 22, revision 1052940](https://de.wikiversity.org/w/index.php?oldid=1052940), [page histories](https://de.wikiversity.org/w/index.php?title=Kurs:Differentialgeometrie_(Osnabr%C3%BCck_2023)/Vorlesung_22&action=history). English edition: *Smooth Manifolds and Differential Geometry*, [complete edition v2026.09.01-complete](https://github.com/KokunoYumeto/brenner-differentialgeometrie-en/releases/tag/v2026.09.01-complete). Section 3 follows its construction of partitions of unity in independently written proofs.
 
 [Michor] Peter W. Michor, *Topics in Differential Geometry*, [freely available author version](https://www.mat.univie.ac.at/~michor/dgbook.pdf), Section 5.11. The quotient construction is proved in Section 4 with its embeddedness hypothesis explicit; no closed-subgroup theorem is assumed.

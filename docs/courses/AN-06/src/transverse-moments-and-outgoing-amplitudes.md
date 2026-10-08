@@ -10,9 +10,10 @@
 A long-range phase follows the motion of an outgoing packet. After removing that phase, its transverse position stays controlled and the packet converges in a fixed Hilbert space. We prove this first for data with a transverse moment. A uniform energy estimate then extends the amplitude limit to arbitrary square-integrable initial data and integrable forcing.
 
 
-Read [Commuting coordinates for long-range evolution](commuting-coordinates-for-long-range-evolution.md) for the phase, the real factors and their exact operator bounds, including its earlier programme proof of the moving-metric calculus. The outgoing equation to which they apply is constructed in [Energy-shell factors and outgoing equations](energy-shell-factors-and-outgoing-equations.md); its continuous forcing is proved in [Frequency cutoffs and compact scattering remainders](frequency-cutoffs-and-compact-scattering-remainders.md). We derive the moment and amplitude statements below from these proved operator bounds, density and [Hilbert-valued integration](../providers/analysis/hilbert-valued-integration.md), including the full scalar measure proof linked there, bounded-functional separation, integration in the first-moment space and the norm tail estimate. Teschl's free preliminary text [O], Sections 2.3–2.4, gives the finite-dimensional Picard and integrating-factor correspondence; the preceding lesson supplies the operator-valued proof. The free texts [Y] and [T] provide scattering context. Hörmander's freely readable paper [H] treats modified wave operators for polynomial differential operators; its Theorem 3.9 has stronger coefficient and Hessian hypotheses, and is not an input to the stationary amplitude proof here.
+Read [Commuting coordinates for long-range evolution](commuting-coordinates-for-long-range-evolution.md), especially the [full factor estimates](commuting-coordinates-for-long-range-evolution.md#commuting-factor-estimates), [individual defects](commuting-coordinates-for-long-range-evolution.md#commuting-defects), [coordinate commutators](commuting-coordinates-for-long-range-evolution.md#commuting-moments) and [local norm continuity](commuting-coordinates-for-long-range-evolution.md#commuting-continuity). Its [integrable-defect evolution theorem](commuting-coordinates-for-long-range-evolution.md#commuting-evolution) supplies the uniform energy bound in both time directions. [Energy-shell factors and outgoing equations](energy-shell-factors-and-outgoing-equations.md#energy-shell-application) constructs the outgoing equation; [Frequency cutoffs and compact scattering remainders](frequency-cutoffs-and-compact-scattering-remainders.md#cutoff-forcing) proves continuity of its forcing. We use the [Bochner integral](../providers/analysis/hilbert-valued-integration.md#bochner-integral), [product rule](../providers/analysis/hilbert-valued-integration.md#operator-products), [variation formula](../providers/analysis/hilbert-valued-integration.md#variation-of-constants) and [integrable-tail argument](../providers/analysis/hilbert-valued-integration.md#integrable-tails) from *Hilbert-valued integration*. Teschl [O], Sections 2.3–2.4, discusses Picard iteration and integrating factors. Yafaev [Y] and Teschl [T] discuss scattering theory; Hörmander's Theorem 3.9 [H] treats modified wave operators with stronger coefficient and Hessian hypotheses.
 
 
+<a id="amplitude-setup"></a>
 We use \(D=-i\partial\), \(\mathcal H=L^2(\mathbb R^d_z)\), and \(s\ge s_0\ge1\). Norms without subscripts are \(\mathcal H\) norms. Fix \(0<\delta<1/3\). Write
 
 
@@ -33,7 +34,7 @@ We use \(D=-i\partial\), \(\mathcal H=L^2(\mathbb R^d_z)\), and \(s\ge s_0\ge1\)
 \]
 
 
-The real compact-frequency phase and factors are those of the preceding lesson. In particular \(M\) is uniformly bounded and locally norm continuous, and
+The real compact-frequency phase and factors are those of the preceding lesson. Its [phase-domain identity](commuting-coordinates-for-long-range-evolution.md#commuting-coordinates) holds on the full coordinate domain in both directions. In particular \(M\) is uniformly bounded and locally norm continuous, and
 
 
 \[
@@ -87,10 +88,12 @@ Put
 \]
 
 
-Coordinate multiplication is closed: convergence of \(v_n\) and \(z_jv_n\) in \(\mathcal H\), tested against compactly supported smooth functions, identifies the latter limit as \(z_jv\). This also proves completeness of (3).
+<a id="amplitude-moment-space"></a>
+Coordinate multiplication is closed: convergence of \(v_n\) and \(z_jv_n\) in \(\mathcal H\), tested against compactly supported smooth functions, identifies the latter limit as \(z_jv\). This also proves completeness of (3). More precisely, the graph map \(Jv=(v,z_1v,\ldots,z_dv)\) has closed image in \(\mathcal H^{d+1}\). The induced inner product \((u,v)_1=(u,v)+\sum_j(z_ju,z_jv)\) makes \(\mathcal H_1\) a Hilbert space. Its norm is \((\|v\|^2+W(v)^2)^{1/2}\), which is bounded above by the norm in (3) and bounds that norm divided by \(\sqrt{d+1}\). Thus the Hilbert-valued integral and product rules apply in this space as well; the equivalent norm (3) has the same integrable functions and locally absolutely continuous curves.
 
 
-Smooth compactly supported functions are dense in \(\mathcal H_1\). The needed unweighted density, convolution inequality and smooth approximate identities are proved in [Euclidean approximation and convolution](../providers/analysis/euclidean-approximation-and-convolution.md). First apply a physical cutoff tending to one; both ordinary and coordinate-weighted tails tend to zero by dominated convergence. For a smooth approximate identity \(\rho_\varepsilon\),
+<a id="amplitude-density"></a>
+Smooth compactly supported functions are dense in \(\mathcal H_1\). The needed [unweighted density](../providers/analysis/euclidean-approximation-and-convolution.md#finite-p-density), [convolution inequality](../providers/analysis/euclidean-approximation-and-convolution.md#holder-and-young) and [smooth approximate identities](../providers/analysis/euclidean-approximation-and-convolution.md#mollification) are proved in *Euclidean approximation and convolution*. First apply a physical cutoff tending to one; both ordinary and coordinate-weighted tails tend to zero by dominated convergence. For a smooth approximate identity \(\rho_\varepsilon\),
 
 
 \[
@@ -109,6 +112,7 @@ The first term converges to \(z_jv\), while the second tends to zero because
 \(\|z_j\rho_\varepsilon\|_{L^1}=O(\varepsilon)\). Apply this after the cutoff. It proves the density claim without losing the moment.
 
 
+<a id="amplitude-domain"></a>
 Let \(K_j=[z_j,M]\). On Schwartz tests,
 
 
@@ -129,6 +133,9 @@ Approximate in \(\mathcal H_1\). Boundedness of \(M\) and \(K_j\) makes both ter
 \]
 The same inequality for \(M(s)-M(t)\), with commutators \(K_j(s)-K_j(t)\), proves local norm continuity on \(\mathcal H_1\). Thus the norm Picard construction works on this complete space, even though the uniform energy estimate will be taken in \(\mathcal H\).
 
+
+<a id="amplitude-moment-estimate"></a>
+This moment estimate is Hörmander [H4, Lemma 30.5.8].
 
 **Theorem 1.1 (the full moment estimate).** If \(v_0\in\mathcal H_1\) and \(h\in L^1_{\mathrm{loc}}(ds;\mathcal H_1)\), the unique solution of
 
@@ -204,6 +211,7 @@ The ordinary energy estimate and Fubini's theorem yield
 For each fixed \(t\), the sum \(W(h(t))+(s-t)\|h(t)\|\) is at most \(\sqrt2\) times the square root of the sum of their squares. That square root is exactly the integrand norm in (6). Equations (8)–(9) prove the claim. \(\square\)
 
 
+<a id="amplitude-coordinate-energy"></a>
 ## 2. Energy in the commuting coordinates
 
 
@@ -225,6 +233,8 @@ The preceding moment can grow linearly. The phase coordinates have a stronger es
 \]
 
 
+The coordinate estimate below is part of Hörmander [H4, Lemma 30.5.9 and its proof].
+
 **Lemma 2.1.** For the weighted data of Theorem 1.1,
 
 
@@ -244,7 +254,10 @@ The corresponding homogeneous estimate holds backward with the same kind of unif
 
 For Schwartz tests the commuting identities give
 \([\mathcal L,A_j]=-\sum_k[A_j,\mathcal B_k]A_k=-\sum_k\mathcal R_{jk}A_k\).
-This involves only the first coordinate vector on its right side. At each time, approximate \(v\) in \(\mathcal H_1\) by the compactly supported smooth functions constructed above. Each \(A_k\) is continuous from \(\mathcal H_1\) to \(\mathcal H\), and each \(\mathcal R_{jk}\) is bounded on \(\mathcal H\). The identity thus passes to the limit in distributions. Combining it with the product rule for \(Y\) gives the ordinary Hilbert-space equation
+At each fixed time this is the spatial operator identity
+\([A_j,M]-i b_j'=-\sum_k\mathcal R_{jk}A_k\).
+Both sides are continuous from \(\mathcal H_1\) to \(\mathcal H\): \(M\) preserves \(\mathcal H_1\) by (5), each \(A_k\) maps \(\mathcal H_1\) continuously into \(\mathcal H\), and \(M,\mathcal R_{jk},b_j'\) are bounded on \(\mathcal H\). Graph-norm density therefore extends this identity to every vector in \(\mathcal H_1\). For the actual time-dependent solution, the Bochner product rule now gives
+\((D_s-M)Y_j=A_jh+([A_j,M]-i b_j')v\) almost everywhere. Substitution gives the ordinary Hilbert-space equation
 
 
 \[
@@ -283,9 +296,12 @@ For the homogeneous coordinate equation, the derivative of \(\|Y\|_{\mathcal H^d
 Its variation integral for the forcing vector \((A_jh)_j\) proves (11). No second spatial moment is used. \(\square\)
 
 
+The finite-interval Picard construction also preserves \(\mathcal H_1\) for terminal data evolved backward. The matrix energy estimate just proved is uniform in that orientation too.
+
 This proof controls the whole coordinate vector. It does not replace each individual commutator or adjoint estimate by an estimate for their sum.
 
 
+<a id="amplitude-weighted"></a>
 ## 3. The amplitude for weighted data
 
 
@@ -318,6 +334,8 @@ This multiplier is unitary. Its derivative and its coordinate identity are
 
 \]
 
+
+The weighted amplitude conclusion is Hörmander [H4, Lemma 30.5.9].
 
 **Theorem 3.1.** Suppose \(v_0\in\mathcal H_1\) and
 
@@ -388,7 +406,7 @@ Moreover,
 Here \(\Lambda_s(z)=1+(s^2+|z|^2)^{1/2}\). Constants may depend on the fixed \(s_0\).
 
 
-**Proof.** The bound \(\|G_\eta(s,D_z)\|\le Cs\) shows that
+**Proof.** Condition (16) also gives the required local \(\mathcal H_1\)-valued integrability. Indeed the bounded multipliers \(z_j\mathbf1_{\{|z|\le R\}}\) applied to the strongly measurable forcing converge in \(\mathcal H\) to \(z_jh(s)\) for almost every \(s\). These coordinate maps are therefore strongly measurable. The closed graph map \(J\) identifies \(h\) as a strongly measurable \(\mathcal H_1\)-valued function, and its graph norm is locally integrable by (16). The bound \(\|G_\eta(s,D_z)\|\le Cs\) shows that
 
 \(H_A(s)\le W(h(s))+Cs\|h(s)\|\). Thus (16) makes (17) finite. Lemma 2.1 gives \(V(s)\le CM_A\). The equation (1) now gives the first line of (18), using the integrable bounds on each \(\mathcal B_j\).
 
@@ -399,6 +417,7 @@ The bound on the norm of this integral tends to zero as \(s\to\infty\), uniforml
 \(\int_s^\infty t^{-1-\delta}\,dt=s^{-\delta}/\delta\).
 
 
+<a id="amplitude-limit-moment"></a>
 The second identity in (15) gives \(W(w(s))=V(s)\le CM_A\). This moment passes to the strong limit using bounded truncations: multiplication by \(\min(|z|,R)\) has norm at most \(R\), so
 \(\|\min(|z|,R)v_\infty\|=\lim_{s\to\infty}\|\min(|z|,R)w(s)\|\le CM_A\).
 Monotone convergence as \(R\to\infty\) gives \(W(v_\infty)\le CM_A\) and \(v_\infty\in\mathcal H_1\). Finally the ordinary energy estimate bounds
@@ -407,11 +426,30 @@ Monotone convergence as \(R\to\infty\) gives \(W(v_\infty)\le CM_A\) and \(v_\in
 \(V(s_0)\le W(v_0)+Cs_0\|v_0\|\). Combining these estimates proves (19). \(\square\)
 
 
+<a id="amplitude-fatou-moment"></a>
+
+There is also a direct Fatou proof of the first-moment conclusion. Strong convergence permits an increasing sequence \(s_k\geq\max(s_0,k)\) such that \(\|w(s_k)-v_\infty\|\leq2^{-k}\). Apply [monotone convergence](../providers/analysis/finite-derivative-l2.md#monotone-integral-and-convergence) to the finite partial sums of the nonnegative squared differences. It gives
+\[
+ \int_{\mathbb R^d}\sum_{k=1}^{\infty}|w(s_k,z)-v_\infty(z)|^2\,dz
+ =\sum_{k=1}^{\infty}\|w(s_k)-v_\infty\|^2
+ \leq\sum_{k=1}^{\infty}4^{-k}<\infty.
+\]
+Consequently the sum is finite almost everywhere, so its terms tend to zero there. For these representatives, \(w(s_k,z)\to v_\infty(z)\) almost everywhere. [Fatou's inequality](../providers/analysis/finite-derivative-l2.md#monotone-integral-and-convergence), applied to \(|z|^2|w(s_k,z)|^2\), now yields
+\[
+ W(v_\infty)^2
+ \leq\liminf_{k\to\infty}W(w(s_k))^2
+ \leq C^2M_A^2.
+\]
+Combining this with the same unweighted energy bound and initial-coordinate estimate gives (19). This argument, like the truncation proof, establishes the moment of the limit without asserting convergence in the moment norm.
+
+<a id="amplitude-all-data"></a>
 ## 4. Every integrable forcing has an amplitude
 
 
 The weighted hypothesis is useful for a rate and a moment, but it is not needed for existence of the limit.
 
+
+Hörmander [H4, the paragraph after Lemma 30.5.9] extends the amplitude to arbitrary square-integrable data and integrable forcing by the approximation argument written out below.
 
 **Theorem 4.1.** For every \(v_0\in\mathcal H\) and \(h\in L^1(ds;\mathcal H)\), the solution of \(\mathcal Lv=h\) has a strong phase-corrected amplitude:
 
@@ -467,6 +505,7 @@ Apply the same estimate to two approximations and let \(s\to\infty\). Their ampl
 This argument gives existence for all \(L^1\) forcing. It asserts a moment and the explicit rate (18) only when the weighted assumptions hold.
 
 
+<a id="amplitude-outgoing-application"></a>
 For an outgoing frequency-localized solution, the preceding lessons give
 
 \(\mathcal Lv=g+\mathcal Tv\), where \(g\in L^1(ds;\mathcal H)\),
@@ -479,11 +518,14 @@ Thus Theorem 4.1 applies to its actual right side. The limit is independent of c
 When \(d=0\), the coordinate vectors are empty and the moments vanish. The equation is \(A_0v=h\); (15) directly integrates it and gives (20). All formulas above retain this interpretation.
 
 
+<a id="amplitude-stability"></a>
 ## 5. Stability under approximation
 
 
 To pass from truncated coefficients to a full force, convergence on each bounded time interval must be combined with a uniform estimate at infinity. The following statement specifies both ingredients.
 
+
+The proof below makes explicit the uniform-tail comparison underlying Hörmander [H4, (30.5.37)]. We state and prove the parameter hypotheses for this family of systems.
 
 **Theorem 5.1.** Let systems indexed by \(n\) and a limiting system have the structure (1)–(2), with the same \(s_0,\delta\) and common constants, including the bound for the individual adjoint defects used to obtain the uniform evolution estimate. Suppose
 
@@ -576,6 +618,7 @@ All phases in (22) are real Fourier multipliers, so the elementary inequality
 \(|e^{-ia}-e^{-ib}|\le|a-b|\) gives convergence of their exponentials in operator norm at \(S\). Thus \(w_n^k(S)\to w^k(S)\). Choose \(k\) to make the limiting data errors small, then \(S\) to make (24) small, then \(n\) to make (25), the phase error and the data errors small. The triangle inequality proves the asserted amplitude convergence. \(\square\)
 
 
+<a id="amplitude-uniform-stability"></a>
 There is a useful uniform version. Suppose an additional parameter \(p\) ranges over a compact set, the convergence in (22) is uniform in \(p\), all structural bounds are common, and the limiting data pair is norm continuous into
 \(\mathcal D=\mathcal H\times L^1(ds;\mathcal H)\), with norm \(\|(u,f)\|_{\mathcal D}=\|u\|+\|f\|_{L^1}\).
 Its image \(K\) is compact. Given \(\varepsilon>0\), density and compactness give finitely many weighted data pairs \(d_1,\ldots,d_m\), with bounded time support, whose \(\varepsilon\)-balls cover \(K\). The amplitude operators for every system have one common norm bound on \(\mathcal D\). Thus (23) makes the two errors between actual data and the chosen center at most \(C\varepsilon\), plus the uniformly vanishing data error from (22).
@@ -589,6 +632,7 @@ There are only finitely many centers. Their weighted bounds in (17) have a commo
 Write the three terms in the approximation comparison: data error, fixed-data evolution error and limiting amplitude error. Check where the common energy constant is used, then retain stability for every integrable forcing.
 
 
+<a id="amplitude-solutions"></a>
 ## 6. Exercises with complete solutions
 
 
@@ -744,3 +788,5 @@ For \(d=0\), the same argument has no coordinates; directly \(Fv_0=e^{-iG(s_0)}v
 - [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, freely readable author edition of the second edition, 2014, Chapter 12. [Free author PDF](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf).
 - [O] Gerald Teschl, *Ordinary Differential Equations and Dynamical Systems*, author's preliminary version, 2012. Theorem 2.5 and Corollary 2.6, pp. 40–41, give Picard iteration; Lemma 2.7, pp. 42–43, gives the integrating-factor estimate. [Author's online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf).
 - [H] Lars Hörmander, “The existence of wave operators in scattering theory,” *Mathematische Zeitschrift* **146** (1976), 69–91. [Digitized paper](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Lemma 30.5.8 and proof, p. 324; Lemma 30.5.9 and proof, pp. 324–325; the extension following that lemma and (30.5.37), p. 326. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

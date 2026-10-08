@@ -1982,7 +1982,7 @@ The first part of the proof put \(R_y\) in \(\Lambda^2T_y^*M\otimes\mathcal H_y\
 
 Theorem F.10 proves containment of curvature in the holonomy algebra and the full derivative criterion. Part G.3 proves the additional statement that transported curvature spans that algebra, and G.5 derives the first holonomy criterion.
 
-The construction in this part uses the exact free Bryant arXiv version cited above, together with the complete earlier programme proofs specified at each step. New exposition and proof completions: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. Source prose, figures and files are not reproduced. The attributed Brenner component remains in its earlier programme lesson with its own terms.
+The construction in this part uses the exact free Bryant arXiv version cited above, together with the complete earlier programme proofs specified at each step. New exposition and proof completions: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. Source prose, figures and files are not reproduced. The partitions of unity it uses are proved in Local tools for bundles and transport.
 
 ## G. Transported curvature generates holonomy
 

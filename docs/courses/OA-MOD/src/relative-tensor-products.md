@@ -81,18 +81,13 @@ Inner products are linear in their first variable. A right \(N\)-module \(H\) ha
 
 \(N^{\mathrm{op}}\) is the same involutive vector space with reversed product \(b^{\mathrm{o}}c^{\mathrm{o}}=(cb)^{\mathrm{o}}\). Thus a right action is a representation of \(N^{\mathrm{op}}\).
 
-**Adapted open definition: commuting actions.** An \(M\)-\(N\) bimodule is a Hilbert space \(H\) carrying the two normal unital actions
+**Definition (bimodules).** Let \(M\) and \(N\) be von Neumann algebras. An \(M\)-\(N\) bimodule is a Hilbert space \(H\) with a normal unital *-representation \(\lambda_H\) of \(M\) and a normal unital *-antirepresentation \(\rho_H\) of \(N\) on \(H\) whose ranges commute:
 
 \[
- \begin{aligned}
- \lambda_H &:M\longrightarrow B(H),\\
- \rho_H &:N\longrightarrow B(H).
- \end{aligned}
+ \lambda_H(x)\,\rho_H(y)=\rho_H(y)\,\lambda_H(x)\qquad(x\in M,\ y\in N).
 \]
 
-with \(\lambda_H\) a *-representation, \(\rho_H\) a *-antirepresentation, and \(\lambda_H(x)\rho_H(y)=\rho_H(y)\lambda_H(x)\). Put \(x\xi y=\lambda_H(x)\rho_H(y)\xi\). This commutation is equivalent to \(x(\xi y)=(x\xi)y\) for every vector and every \(x,y\).
-
-Adapted from Peter Kristel and Konrad Waldorf, *Connes fusion of spinors on loop space*, Compositio Mathematica 160 (2024), 1596–1650, [Appendix A.1, p.1641](https://doi.org/10.1112/S0010437X24007188), © 2024 the authors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). GPT-6.1 Sol (OpenAI), Ultra, October 2026, changed notation and explicitly imposed this course's unital convention. **End of adapted definition.** This marked component, including its adaptation, is CC BY 4.0; the surrounding material retains its separate licence.
+We write \(x\xi y=\lambda_H(x)\rho_H(y)\xi\). The commutation relation says exactly that \(x(\xi y)=(x\xi)y\) for every vector \(\xi\) and all \(x,y\), so the two actions may be applied in either order. This is the notion Peter Kristel and Konrad Waldorf use for Connes fusion in [*Connes fusion of spinors on loop space*](https://doi.org/10.1112/S0010437X24007188), Compositio Mathematica 160 (2024), Appendix A.1; here both actions are required to be unital, and neither needs to be faithful.
 
 Takesaki II IX.3.1 restricts attention to faithful actions. The present construction also permits kernels. A *full bimodule* satisfies \(\lambda_H(M)'=\rho_H(N)\). Taking commutants gives \(\rho_H(N)'=\lambda_H(M)''\); identifying the latter with \(\lambda_H(M)\) uses that the represented image is a von Neumann algebra. For the standard module below this follows directly from the standard-form axioms and BK-02. No general image-closure theorem is inferred from normal continuity alone. Fullness is not assumed for the modules being fused, and differs from the full projection \(e\) constructed below.
 

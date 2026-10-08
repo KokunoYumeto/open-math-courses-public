@@ -10,13 +10,7 @@ This is a modified version of the earlier course draft *Elliptic Operators & Bou
 
 **Publisher:** AN-03 local course project.
 
-Copyright © 2026 AN-03 course project contributors.
-
-Copyright © 2026 OpenAI Codex contributors for the NCG companion modifications.
-
-Permission is granted to copy, distribute and modify the 36 revised inherited units under the terms of the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy of that license is included in [COPYING](COPYING).
-
-The added CC0 lessons are separate works collected with those units. Their routes are identified in the course metadata. See [Rights and licenses](RIGHTS.md) and [History](HISTORY.md).
+Original text: CC0.
 
 ## NCG companion modification
 
@@ -24,4 +18,4 @@ The added CC0 lessons are separate works collected with those units. Their route
 
 **Publisher of this companion edition:** Open Mathematics Courses collection.
 
-The earlier AN-03 mathematical text remains under GFDL 1.2 only. The added zero-space, zero-vector, noninjective-kernel and real-Hilbert-space arguments are new original contributions by the modification entities above, dedicated to CC0 1.0 to the extent rights exist. Their separate source is [CC0 additions](CC0-ADDITIONS.md). The combined modified reading remains GFDL 1.2 only, with no Invariant Sections or Cover Texts; the CC0 dedication does not relicense inherited expression.
+The added zero-space, zero-vector, noninjective-kernel and real-Hilbert-space arguments are new original contributions by the modification entities above, dedicated to CC0 1.0 to the extent rights exist. Their separate source is [CC0 additions](CC0-ADDITIONS.md). The combined reading, including the earlier AN-03 mathematical text, is dedicated to CC0 1.0.

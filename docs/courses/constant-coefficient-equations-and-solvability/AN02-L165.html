@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Isolated atoms and separated singularities</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L164.html">Previous lesson</a> · <a href="#1-a-geometric-core-shared-by-every-profile">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="isolated-atoms-and-separated-singularities">Isolated atoms and separated singularities</h1>
+<p>Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>An isolated atom cannot lose its singularity when we select a convolution profile. This forces every profile carrier to contain that atom. A collection of isolated atoms can therefore pin an entire convex body inside every carrier, even when the distribution has infinitely many support points. Separate singularities also let us recover the exact maximum law for the indicators of a sum.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em> and <em>245B, Notes 9</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. Prerequisites are <a href="AN02-L164.html">Recovering singularities from convolution profiles</a>, for a compact selector singular at one point; <a href="AN02-L161.html">Changing centers in Fourier windows</a>, for simultaneous control of finitely many profiles; and <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, for extraction on common frequencies. The <a href="#complete-proof">complete proof</a> supplies the local convolution calculus, the isolated-point bound, the full relative-boundary atomic construction and both directions of the joint maximum formula.</p>
+<h2 id="1-a-geometric-core-shared-by-every-profile">1. A geometric core shared by every profile</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(u\)">\(u\)</span> be a compact distribution. Its logarithmic profiles use</p>
+<span class="math math-display" id="eq-T1" data-index="1" data-tex="\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|}.
+ \tag{T1}
+\]">\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|}.
+ \tag{T1}
+\]</span>
+<p>The centers <span class="math" data-index="2" data-tex="\(c\)">\(c\)</span> are real and escape to infinity. A proper profile converges locally in <span class="math" data-index="3" data-tex="\(L^1\)">\(L^1\)</span>, with a canonical PSH representative. Its indicator <span class="math" data-index="4" data-tex="\(h\)">\(h\)</span> is the support function of a nonempty compact convex carrier <span class="math" data-index="5" data-tex="\(C_h\)">\(C_h\)</span>. A collapsed profile has indicator <span class="math" data-index="6" data-tex="\(-\infty\)">\(-\infty\)</span> and empty carrier.</p>
+<p>Write <span class="math" data-index="7" data-tex="\(I(u)\)">\(I(u)\)</span> for the isolated points of the ordinary support, and let</p>
+<span class="math math-display" id="eq-T2" data-index="8" data-tex="\[
+ K_I=\overline{\operatorname{conv}I(u)}.
+ \tag{T2}
+\]">\[
+ K_I=\overline{\operatorname{conv}I(u)}.
+ \tag{T2}
+\]</span>
+<p>Theorem 3.1 of the complete proof gives</p>
+<span class="math math-display" id="eq-T3" data-index="9" data-tex="\[
+ K_I\subset C_h
+       \quad\text{for every }h\in\mathcal J(u).
+ \tag{T3}
+\]">\[
+ K_I\subset C_h
+       \quad\text{for every }h\in\mathcal J(u).
+ \tag{T3}
+\]</span>
+<p>If <span class="math" data-index="10" data-tex="\(I(u)\)">\(I(u)\)</span> is nonempty, no profile collapses and <span class="math" data-index="11" data-tex="\(u\)">\(u\)</span> is invertible.</p>
+<p>To understand the mechanism, split off the distribution <span class="math" data-index="12" data-tex="\(a\)">\(a\)</span> supported at an isolated point <span class="math" data-index="13" data-tex="\(x\)">\(x\)</span>, leaving a remainder <span class="math" data-index="14" data-tex="\(b\)">\(b\)</span> that vanishes near <span class="math" data-index="15" data-tex="\(x\)">\(x\)</span>. Select a compact <span class="math" data-index="16" data-tex="\(v\)">\(v\)</span> singular only at zero so that the output singular hull is the chosen <span class="math" data-index="17" data-tex="\(C_h\)">\(C_h\)</span>. The point-supported polynomial operator <span class="math" data-index="18" data-tex="\(a\)">\(a\)</span> has output singular hull exactly <span class="math" data-index="19" data-tex="\(\{x\}\)">\(\{x\}\)</span>. The remainder <span class="math" data-index="20" data-tex="\(b*v\)">\(b*v\)</span> is smooth near <span class="math" data-index="21" data-tex="\(x\)">\(x\)</span>, since</p>
+<span class="math math-display" id="eq-T4" data-index="22" data-tex="\[
+ \operatorname{sing\,supp}(b*v)
+    \subset\operatorname{sing\,supp}b+
+           \operatorname{sing\,supp}v
+    =\operatorname{sing\,supp}b.
+ \tag{T4}
+\]">\[
+ \operatorname{sing\,supp}(b*v)
+    \subset\operatorname{sing\,supp}b+
+           \operatorname{sing\,supp}v
+    =\operatorname{sing\,supp}b.
+ \tag{T4}
+\]</span>
+<p>Thus the singularity at <span class="math" data-index="23" data-tex="\(x\)">\(x\)</span> survives in <span class="math" data-index="24" data-tex="\(u*v\)">\(u*v\)</span>, forcing <span class="math" data-index="25" data-tex="\(x\in C_h\)">\(x\in C_h\)</span>. This works for every isolated support point and every selected profile.</p>
+<p>The convolution containment in (T4) has a full proof in Lemma 2.1. It follows by cutting each compact distribution into a compact smooth part and a part supported in an arbitrarily small neighborhood of its singular support. Every convolution term with a smooth factor is smooth. Only the pair of small singular neighborhoods can contribute singular points.</p>
+<p>For nonzero finite-support distributions, every support point is isolated. The common core is the entire convex hull of the support, while every carrier is already contained in that hull. Therefore</p>
+<span class="math math-display" id="eq-T5" data-index="26" data-tex="\[
+ \mathcal J(u)=\{H_{\operatorname{conv}(\operatorname{supp}u)}\}.
+ \tag{T5}
+\]">\[
+ \mathcal J(u)=\{H_{\operatorname{conv}(\operatorname{supp}u)}\}.
+ \tag{T5}
+\]</span>
+<p>Its convolution singular hull always adds exactly to the unknown input hull.</p>
+<h2 id="2-prescribing-a-convex-carrier-with-positive-atoms">2. Prescribing a convex carrier with positive atoms</h2>
+<p>Theorem 4.1 constructs a nonnegative measure with any compact convex <span class="math" data-index="27" data-tex="\(K\)">\(K\)</span> as its sole profile carrier. Empty <span class="math" data-index="28" data-tex="\(K\)">\(K\)</span> uses the zero measure. A singleton uses one point mass.</p>
+<p>In positive affine dimension, work in the affine hull <span class="math" data-index="29" data-tex="\(A\)">\(A\)</span> of <span class="math" data-index="30" data-tex="\(K\)">\(K\)</span>, and choose a relative-interior point <span class="math" data-index="31" data-tex="\(o\)">\(o\)</span>. On each finite <span class="math" data-index="32" data-tex="\(1/m\)">\(1/m\)</span>-net of the relative boundary <span class="math" data-index="33" data-tex="\(B\)">\(B\)</span>, move the net inward:</p>
+<span class="math math-display" id="eq-T6" data-index="34" data-tex="\[
+ x_{m,b}=2^{-m}o+(1-2^{-m})b,\qquad b\in B_m.
+ \tag{T6}
+\]">\[
+ x_{m,b}=2^{-m}o+(1-2^{-m})b,\qquad b\in B_m.
+ \tag{T6}
+\]</span>
+<p>These points are interior relative to <span class="math" data-index="35" data-tex="\(A\)">\(A\)</span>, are distinct, and approach exactly the boundary. Each is isolated among the support points, because all sufficiently late blocks lie close to the boundary while this fixed interior point has positive distance from it.</p>
+<p>List them as <span class="math" data-index="36" data-tex="\(x_1,x_2,\ldots\)">\(x_1,x_2,\ldots\)</span>, and set</p>
+<span class="math math-display" id="eq-T7" data-index="37" data-tex="\[
+ u=\sum_{j\geq1}2^{-j}\delta_{x_j}.
+ \tag{T7}
+\]">\[
+ u=\sum_{j\geq1}2^{-j}\delta_{x_j}.
+ \tag{T7}
+\]</span>
+<p>The weights are positive and total one. The closed convex hull of the isolated atoms contains every boundary point and hence all of <span class="math" data-index="38" data-tex="\(K\)">\(K\)</span>. Formula (T3) forces <span class="math" data-index="39" data-tex="\(K\)">\(K\)</span> into every carrier; support containment forces the reverse inclusion. Thus <span class="math" data-index="40" data-tex="\(\mathcal J(u)=\{H_K\}\)">\(\mathcal J(u)=\{H_K\}\)</span>.</p>
+<p>The support of the measure includes the boundary limit points. It need not consist just of the atoms. All support points are singular in this construction: singularity at each isolated atom and closedness of singular support include their entire closure.</p>
+<figure><img class="course-figure" width="1527" height="818" src="reproduce/L165/figures/isolated-atoms-and-relative-boundaries.png" alt="The first three inward boundary nets in the unit disk have radii one half, three quarters and seven eighths; isolated atoms on an embedded segment approach its two endpoint support limits." /><figcaption class="native"><a href="reproduce/L165/figures/isolated-atoms-and-relative-boundaries.png">Open full-size PNG</a> · <a href="reproduce/L165/figures/isolated-atoms-and-relative-boundaries.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> On the left, <span class="math" data-index="41" data-tex="\(o=0\)">\(o=0\)</span>, <span class="math" data-index="42" data-tex="\(K\)">\(K\)</span> is the unit disk, and the boundary net for block <span class="math" data-index="43" data-tex="\(m\)">\(m\)</span> has <span class="math" data-index="44" data-tex="\(\lceil2\pi m\rceil\)">\(\lceil2\pi m\rceil\)</span> equally spaced points. The first three contracted blocks are shown; the complete construction uses all <span class="math" data-index="45" data-tex="\(m\geq1\)">\(m\geq1\)</span>. On the right, the first five pairs of Example 3's atoms approach the endpoints of the segment in <span class="math" data-index="46" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, with <span class="math" data-index="47" data-tex="\(x_2=x_3=0\)">\(x_2=x_3=0\)</span>. The endpoints belong to the support as limits and are not isolated atoms. Marker sizes show locations, not masses. Proof locators: complete proof, Theorems 3.1 and 4.1; Example 3 and Exercises 5–7. Background: Hörmander's isolated-support-point geometry.</p>
+<h2 id="3-a-sum-uses-a-common-frequency-tuple">3. A sum uses a common frequency tuple</h2>
+<p>For compact distributions <span class="math" data-index="48" data-tex="\(u_1,\ldots,u_k\)">\(u_1,\ldots,u_k\)</span> with pairwise disjoint singular supports, put <span class="math" data-index="49" data-tex="\(u=\sum_i u_i\)">\(u=\sum_i u_i\)</span>. Theorem 6.1 states that a joint tuple satisfies</p>
+<span class="math math-display" id="eq-T8" data-index="50" data-tex="\[
+ (h,h_1,\ldots,h_k)\in\mathcal J(u,u_1,\ldots,u_k)
+       \quad\Longrightarrow\quad h=\max_i h_i.
+ \tag{T8}
+\]">\[
+ (h,h_1,\ldots,h_k)\in\mathcal J(u,u_1,\ldots,u_k)
+       \quad\Longrightarrow\quad h=\max_i h_i.
+ \tag{T8}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="eq-T9" data-index="51" data-tex="\[
+ \mathcal J(u)=
+ \{\max_i h_i:(h_1,\ldots,h_k)
+                         \in\mathcal J(u_1,\ldots,u_k)\}.
+ \tag{T9}
+\]">\[
+ \mathcal J(u)=
+ \{\max_i h_i:(h_1,\ldots,h_k)
+                         \in\mathcal J(u_1,\ldots,u_k)\}.
+ \tag{T9}
+\]</span>
+<p>The maximum is pointwise in the direction. A collapsed coordinate contributes <span class="math" data-index="52" data-tex="\(-\infty\)">\(-\infty\)</span>; an entirely collapsed tuple gives a collapsed sum.</p>
+<p>The joint condition matters. The two transforms in a sum can cancel, and one cannot choose unrelated frequency sequences for the components. The proof instead selects one convolution factor for the whole finite tuple. Each convolved component has the prescribed carrier and has singular support inside its original singular support. These singular supports remain disjoint, so none can cancel locally. Their union has convex hull whose support function is exactly the maximum in (T8).</p>
+<p>Ordinary supports may overlap. It is the separation of singular supports that ensures this local noncancellation.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-a-finite-constellation-of-differential-atoms">Example 1: a finite constellation of differential atoms</h3>
+<p>In <span class="math" data-index="53" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take</p>
+<span class="math math-display" id="eq-T10" data-index="54" data-tex="\[
+ u=\delta_{(-2,0)}
+       +\partial_1\delta_{(1,0)}
+       +(1-\partial_2^2)\delta_{(0,2)}.
+ \tag{T10}
+\]">\[
+ u=\delta_{(-2,0)}
+       +\partial_1\delta_{(1,0)}
+       +(1-\partial_2^2)\delta_{(0,2)}.
+ \tag{T10}
+\]</span>
+<p>Each term is a nonzero point-supported distribution, and the support consists of exactly those three distinct points. Hence every indicator is</p>
+<span class="math math-display" id="eq-T11" data-index="55" data-tex="\[
+ h(\eta_1,\eta_2)
+       =\max\{-2\eta_1,\eta_1,2\eta_2\}.
+ \tag{T11}
+\]">\[
+ h(\eta_1,\eta_2)
+       =\max\{-2\eta_1,\eta_1,2\eta_2\}.
+ \tag{T11}
+\]</span>
+<p>The carrier is the triangle with those vertices. For instance <span class="math" data-index="56" data-tex="\(h(1,0)=1\)">\(h(1,0)=1\)</span>, <span class="math" data-index="57" data-tex="\(h(-1,0)=2\)">\(h(-1,0)=2\)</span>, <span class="math" data-index="58" data-tex="\(h(0,1)=2\)">\(h(0,1)=2\)</span>, and <span class="math" data-index="59" data-tex="\(h(0,-1)=0\)">\(h(0,-1)=0\)</span>.</p>
+<p>The derivative orders and coefficients affect the profiles and transform zeros, but do not alter this unique indicator. For every compact <span class="math" data-index="60" data-tex="\(w\)">\(w\)</span>, its output singular hull is the triangle plus <span class="math" data-index="61" data-tex="\(S_w\)">\(S_w\)</span>. The statement concerns singular hulls, not the assertion that every point of that triangle is singular in <span class="math" data-index="62" data-tex="\(u\)">\(u\)</span>.</p>
+<h3 id="example-2-overlapping-support-with-separate-singularities">Example 2: overlapping support with separate singularities</h3>
+<p>Let <span class="math" data-index="63" data-tex="\(f\)">\(f\)</span> be smooth, supported in <span class="math" data-index="64" data-tex="\([-2,3]\)">\([-2,3]\)</span>, and positive on <span class="math" data-index="65" data-tex="\((-2,3)\)">\((-2,3)\)</span>, and define on the line</p>
+<span class="math math-display" id="eq-T12" data-index="66" data-tex="\[
+ u_1=\delta_{-1}+f,\qquad u_2=\delta_2-f.
+ \tag{T12}
+\]">\[
+ u_1=\delta_{-1}+f,\qquad u_2=\delta_2-f.
+ \tag{T12}
+\]</span>
+<p>Both ordinary supports are <span class="math" data-index="67" data-tex="\([-2,3]\)">\([-2,3]\)</span>, but their singular supports are the separate singletons <span class="math" data-index="68" data-tex="\(\{-1\}\)">\(\{-1\}\)</span> and <span class="math" data-index="69" data-tex="\(\{2\}\)">\(\{2\}\)</span>. Their sum is <span class="math" data-index="70" data-tex="\(\delta_{-1}+\delta_2\)">\(\delta_{-1}+\delta_2\)</span>.</p>
+<p>The profile indicators of the summands are <span class="math" data-index="71" data-tex="\(-\eta\)">\(-\eta\)</span> and <span class="math" data-index="72" data-tex="\(2\eta\)">\(2\eta\)</span>. To check this without treating the smooth part as a singular atom, integrate its compact smooth transform by parts. For <span class="math" data-index="73" data-tex="\(q=|c|\)">\(q=|c|\)</span>, <span class="math" data-index="74" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, and all sufficiently large <span class="math" data-index="75" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" id="eq-T13" data-index="76" data-tex="\[
+ |F_f(c+z\log q)|\leq C_{N,M}q^{-N+3M}
+           \quad\text{for every integer }N.
+ \tag{T13}
+\]">\[
+ |F_f(c+z\log q)|\leq C_{N,M}q^{-N+3M}
+           \quad\text{for every integer }N.
+ \tag{T13}
+\]</span>
+<p>Here <span class="math" data-index="77" data-tex="\(|c+\operatorname{Re}z\log q|\geq q/2\)">\(|c+\operatorname{Re}z\log q|\geq q/2\)</span>, so the complex denominator from integration by parts has modulus at least <span class="math" data-index="78" data-tex="\(q/2\)">\(q/2\)</span>. The physical exponential on <span class="math" data-index="79" data-tex="\([-2,3]\)">\([-2,3]\)</span> has modulus at most <span class="math" data-index="80" data-tex="\(q^{3M}\)">\(q^{3M}\)</span>. There are no boundary terms.
+After dividing by the point-mass exponential, at worst another <span class="math" data-index="81" data-tex="\(q^{2M}\)">\(q^{2M}\)</span> appears. Choose <span class="math" data-index="82" data-tex="\(N&gt;5M\)">\(N&gt;5M\)</span>. The ratio of the smooth transform to that exponential tends uniformly to zero. Thus</p>
+<span class="math math-display" id="eq-T14" data-index="83" data-tex="\[
+ L_{u_1}(z,c)\longrightarrow-\operatorname{Im}z,\qquad
+ L_{u_2}(z,c)\longrightarrow2\operatorname{Im}z
+ \tag{T14}
+\]">\[
+ L_{u_1}(z,c)\longrightarrow-\operatorname{Im}z,\qquad
+ L_{u_2}(z,c)\longrightarrow2\operatorname{Im}z
+ \tag{T14}
+\]</span>
+<p>locally uniformly. These give the stated indicators.</p>
+<p>The maximum law, or finite-support Corollary 3.2, now gives</p>
+<span class="math math-display" id="eq-T15" data-index="84" data-tex="\[
+ \mathcal J(u_1+u_2)=\{\max(-\eta,2\eta)\}
+                    =\{H_{[-1,2]}(\eta)\}.
+ \tag{T15}
+\]">\[
+ \mathcal J(u_1+u_2)=\{\max(-\eta,2\eta)\}
+                    =\{H_{[-1,2]}(\eta)\}.
+ \tag{T15}
+\]</span>
+<p>The cancellation of the smooth backgrounds is allowed. The separated point singularities survive.</p>
+<h3 id="example-3-infinitely-many-isolated-atoms-on-a-segment">Example 3: infinitely many isolated atoms on a segment</h3>
+<p>Take the segment from <span class="math" data-index="85" data-tex="\((-1,0,0)\)">\((-1,0,0)\)</span> to <span class="math" data-index="86" data-tex="\((1,0,0)\)">\((1,0,0)\)</span> in <span class="math" data-index="87" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, and define</p>
+<span class="math math-display" id="eq-T16" data-index="88" data-tex="\[
+ u=\sum_{m=1}^{\infty}2^{-m-1}
+       \left(\delta_{(-(1-2^{-m}),0,0)}
+                  +\delta_{((1-2^{-m}),0,0)}\right).
+ \tag{T16}
+\]">\[
+ u=\sum_{m=1}^{\infty}2^{-m-1}
+       \left(\delta_{(-(1-2^{-m}),0,0)}
+                  +\delta_{((1-2^{-m}),0,0)}\right).
+ \tag{T16}
+\]</span>
+<p>The measure has mass one. Its atoms are isolated, while the two endpoints are non-isolated support points. Their closed convex hull is the entire segment. Therefore every indicator is <span class="math" data-index="89" data-tex="\(h(\eta)=|\eta_1|\)">\(h(\eta)=|\eta_1|\)</span>, including directions with nonzero second and third coordinates. Those coordinates do not affect the dot product with this segment.</p>
+<p>The relative boundary consists of two endpoints. Its ambient boundary is the whole segment, because it has empty interior in <span class="math" data-index="90" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. The relative construction is what gives isolated interior atoms approaching just the two endpoints.
+The transform is</p>
+<span class="math math-display" id="eq-T17" data-index="91" data-tex="\[
+ F_u(\zeta)=\sum_{m\geq1}2^{-m}
+                     \cos((1-2^{-m})\zeta_1).
+ \tag{T17}
+\]">\[
+ F_u(\zeta)=\sum_{m\geq1}2^{-m}
+                     \cos((1-2^{-m})\zeta_1).
+ \tag{T17}
+\]</span>
+<p>This series converges uniformly on compact complex sets: each cosine is bounded by <span class="math" data-index="92" data-tex="\(e^{|\operatorname{Im}\zeta_1|}\)">\(e^{|\operatorname{Im}\zeta_1|}\)</span>, and the weights sum to one. Its unique indicator follows from the isolated-atom proof, without replacing the finite maximum theorem by an unproved infinite-sum version.</p>
+<h3 id="example-4-why-singular-support-separation-is-essential">Example 4: why singular-support separation is essential</h3>
+<p>Let <span class="math" data-index="93" data-tex="\(u_1=\delta_0\)">\(u_1=\delta_0\)</span>, <span class="math" data-index="94" data-tex="\(u_2=-\delta_0\)">\(u_2=-\delta_0\)</span>. Each has the constant-zero logarithmic profile and indicator zero, and their joint pair is <span class="math" data-index="95" data-tex="\((0,0)\)">\((0,0)\)</span> on every escaping real sequence. Yet <span class="math" data-index="96" data-tex="\(u_1+u_2=0\)">\(u_1+u_2=0\)</span>, so the sum has only the collapsed indicator <span class="math" data-index="97" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p>Thus <span class="math" data-index="98" data-tex="\(\max(0,0)=0\)">\(\max(0,0)=0\)</span> is not the sum's indicator. The singular supports coincide at zero and the two singularities cancel completely. This violates the hypothesis of the maximum law.
+By contrast, a compact smooth summand has empty singular support, disjoint from every other one. Its collapsed indicator contributes nothing to a maximum with a proper indicator.</p>
+<figure><img class="course-figure" width="1904" height="760" src="reproduce/L165/figures/separate-singularities-and-cancellation.png" alt="Two distributions have the same interval support but different point singularities that survive their sum; two opposite point masses at the same location instead cancel to the zero distribution." /><figcaption class="native"><a href="reproduce/L165/figures/separate-singularities-and-cancellation.png">Open full-size PNG</a> · <a href="reproduce/L165/figures/separate-singularities-and-cancellation.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The left panel shows Example 2's ordinary supports <span class="math" data-index="99" data-tex="\([-2,3]\)">\([-2,3]\)</span>, singular points <span class="math" data-index="100" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-index="101" data-tex="\(2\)">\(2\)</span>, and the sum's singular hull <span class="math" data-index="102" data-tex="\([-1,2]\)">\([-1,2]\)</span>. The right panel shows Example 4's complete cancellation at zero. Vertical positions distinguish distribution rows; only the horizontal coordinate is physical. Gray support intervals are not distribution densities. Proof locators: complete proof, Lemma 2.2 and Theorem 6.1; Examples 2 and 4. Background: Hörmander's convolution profile geometry and Tao's Fourier discussion.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The exercises total 100 points.</p>
+<h3 id="exercise-1-singular-support-convolution-containment-10-points">Exercise 1: singular-support convolution containment (10 points)</h3>
+<p>Prove <span class="math" data-index="103" data-tex="\(\operatorname{sing\,supp}(a*b)\subset
+\operatorname{sing\,supp}a+\operatorname{sing\,supp}b\)">\(\operatorname{sing\,supp}(a*b)\subset
+\operatorname{sing\,supp}a+\operatorname{sing\,supp}b\)</span> for compact distributions. Include the case of a smooth factor.</p>
+<p><em>Solution.</em> A compact smooth factor <span class="math" data-index="104" data-tex="\(f\)">\(f\)</span> gives
+<span class="math" data-index="105" data-tex="\((f*b)(x)=\langle b(y),f(x-y)\rangle\)">\((f*b)(x)=\langle b(y),f(x-y)\rangle\)</span>, with a fixed cutoff in <span class="math" data-index="106" data-tex="\(y\)">\(y\)</span>. Differentiation in <span class="math" data-index="107" data-tex="\(x\)">\(x\)</span> converges in all test-function seminorms and passes through the continuous distribution pairing, so this is smooth.
+For nonempty singular supports, cut <span class="math" data-index="108" data-tex="\(a\)">\(a\)</span> into <span class="math" data-index="109" data-tex="\(a_\varepsilon\)">\(a_\varepsilon\)</span> supported in their radius-<span class="math" data-index="110" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> neighborhood and a compact smooth remainder, using a cutoff equal to one near its singular support. Do the same for <span class="math" data-index="111" data-tex="\(b\)">\(b\)</span>. In their convolution expansion every term but <span class="math" data-index="112" data-tex="\(a_\varepsilon*b_\varepsilon\)">\(a_\varepsilon*b_\varepsilon\)</span> has a smooth factor. The remaining term is supported in the sum of the two small support neighborhoods. Hence the singular support is within the radius-<span class="math" data-index="113" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span> neighborhood of the compact singular-support sum. A point outside that closed sum has positive distance from it. Choose <span class="math" data-index="114" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> smaller than half the distance to exclude it. If one singular support is empty, that factor is smooth and the first argument applies.</p>
+<h3 id="exercise-2-local-noncancellation-8-points">Exercise 2: local noncancellation (8 points)</h3>
+<p>Show that a finite sum with pairwise disjoint singular supports has singular support equal to their union. Explain why ordinary support disjointness is unnecessary.</p>
+<p><em>Solution.</em> Outside the union every summand is locally smooth. At a point in one singular support, choose a neighborhood avoiding all the other singular supports; there are only finitely many closed sets to avoid. The other summands are smooth there. If the sum were smooth, subtracting those smooth functions would make the one singular summand smooth too, a contradiction. Ordinary supports can overlap in regions where their distributions are smooth. The proof only uses local smoothness of the other summands, as Example 2 illustrates.</p>
+<h3 id="exercise-3-an-isolated-point-in-the-ordinary-support-12-points">Exercise 3: an isolated point in the ordinary support (12 points)</h3>
+<p>Prove directly that every profile carrier contains an isolated support point <span class="math" data-index="115" data-tex="\(x\)">\(x\)</span>, including why a collapsed profile is impossible.</p>
+<p><em>Solution.</em> Split <span class="math" data-index="116" data-tex="\(u=a+b\)">\(u=a+b\)</span> with <span class="math" data-index="117" data-tex="\(a\neq0\)">\(a\neq0\)</span> supported at <span class="math" data-index="118" data-tex="\(x\)">\(x\)</span> and <span class="math" data-index="119" data-tex="\(b\)">\(b\)</span> vanishing near <span class="math" data-index="120" data-tex="\(x\)">\(x\)</span>, using an isolating smooth cutoff. Realize the chosen indicator <span class="math" data-index="121" data-tex="\(h\)">\(h\)</span> by a compact selector <span class="math" data-index="122" data-tex="\(v\)">\(v\)</span> singular only at zero, with <span class="math" data-index="123" data-tex="\(S_{u*v}=C_h\)">\(S_{u*v}=C_h\)</span>.
+The full point-supported polynomial theorem gives <span class="math" data-index="124" data-tex="\(S_{a*v}=\{x\}+S_v=\{x\}\)">\(S_{a*v}=\{x\}+S_v=\{x\}\)</span>, so <span class="math" data-index="125" data-tex="\(a*v\)">\(a*v\)</span> is singular exactly at <span class="math" data-index="126" data-tex="\(x\)">\(x\)</span>. Exercise 1 gives <span class="math" data-index="127" data-tex="\(\operatorname{sing\,supp}(b*v)\subset\operatorname{sing\,supp}b\)">\(\operatorname{sing\,supp}(b*v)\subset\operatorname{sing\,supp}b\)</span>, which avoids a neighborhood of <span class="math" data-index="128" data-tex="\(x\)">\(x\)</span>. This smooth contribution cannot cancel the singularity of <span class="math" data-index="129" data-tex="\(a*v\)">\(a*v\)</span>. Therefore <span class="math" data-index="130" data-tex="\(x\in S_{u*v}=C_h\)">\(x\in S_{u*v}=C_h\)</span>. If the chosen profile were collapsed its carrier would be empty, a contradiction.
+Applying this to every isolated support point and taking a closed convex hull puts their entire common core in every carrier.</p>
+<h3 id="exercise-4-a-finite-support-triangle-8-points">Exercise 4: a finite-support triangle (8 points)</h3>
+<p>For Example 1 compute the indicator in directions <span class="math" data-index="131" data-tex="\((1,1)\)">\((1,1)\)</span>, <span class="math" data-index="132" data-tex="\((-1,1)\)">\((-1,1)\)</span> and <span class="math" data-index="133" data-tex="\((0,-1)\)">\((0,-1)\)</span>. Why does the order-two derivative at the top vertex not change the carrier? Does the distribution have singularities at every interior point of the triangle?</p>
+<p><em>Solution.</em> Formula (T11) gives respectively <span class="math" data-index="134" data-tex="\(\max(-2,1,2)=2\)">\(\max(-2,1,2)=2\)</span>, <span class="math" data-index="135" data-tex="\(\max(2,-1,2)=2\)">\(\max(2,-1,2)=2\)</span>, and <span class="math" data-index="136" data-tex="\(\max(0,0,-2)=0\)">\(\max(0,0,-2)=0\)</span>.
+Each of the three support points is isolated and is in every carrier; every carrier is already in their convex hull. The derivative order changes the Fourier polynomial at that point but the nonzero point-supported profile indicator remains the point's linear support function. Thus the carrier is the same triangle. The actual singular support is just the three vertices: each nonzero point-supported summand is singular there, and the distribution vanishes locally everywhere else. Interior points of the triangle are hull points rather than new singular points.</p>
+<h3 id="exercise-5-empty-sets-singletons-and-relative-boundary-10-points">Exercise 5: empty sets, singletons and relative boundary (10 points)</h3>
+<p>Give a measure with sole carrier <span class="math" data-index="137" data-tex="\(K\)">\(K\)</span> when <span class="math" data-index="138" data-tex="\(K\)">\(K\)</span> is empty or a singleton. For a nontrivial segment in <span class="math" data-index="139" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, identify the relative interior and relative boundary and explain why the ambient boundary gives the wrong construction.</p>
+<p><em>Solution.</em> Use <span class="math" data-index="140" data-tex="\(u=0\)">\(u=0\)</span> for empty <span class="math" data-index="141" data-tex="\(K\)">\(K\)</span>, with sole indicator <span class="math" data-index="142" data-tex="\(-\infty\)">\(-\infty\)</span> and empty carrier. For <span class="math" data-index="143" data-tex="\(K=\{x\}\)">\(K=\{x\}\)</span>, use <span class="math" data-index="144" data-tex="\(\delta_x\)">\(\delta_x\)</span>, whose translation profile has indicator <span class="math" data-index="145" data-tex="\(x\cdot\eta\)">\(x\cdot\eta\)</span> and carrier <span class="math" data-index="146" data-tex="\(\{x\}\)">\(\{x\}\)</span>.
+For a segment the affine hull is its line. The relative interior is the open segment, and the relative boundary is its two endpoints. Moving these two endpoints inward in successive blocks gives isolated interior atoms whose only accumulation points are the endpoints.
+In the ambient space the segment has empty interior, so its ambient boundary is the entire segment. Interior atoms chosen to accumulate everywhere along it would no longer have the isolation property used to pin every carrier. The construction must use the geometry in the affine hull. A singleton has empty relative boundary, which is why it needs its own direct point-mass case.</p>
+<h3 id="exercise-6-the-mass-support-and-transform-of-the-segment-measure-10-points">Exercise 6: the mass, support and transform of the segment measure (10 points)</h3>
+<p>Verify the mass, support and transform of (T16), and determine all its indicator values. Justify compact complex convergence of its transform series.</p>
+<p><em>Solution.</em> The mass is
+<span class="math" data-index="147" data-tex="\(\sum_{m\geq1}2\cdot2^{-m-1}=\sum_{m\geq1}2^{-m}=1\)">\(\sum_{m\geq1}2\cdot2^{-m-1}=\sum_{m\geq1}2^{-m}=1\)</span>.
+Its support is the closure of the atoms: those isolated points together with the two endpoints. Every neighborhood of an atom has positive mass, and every neighborhood of an endpoint contains an atom. Outside this closure an open neighborhood contains no atom and has zero measure.
+Pairing the two point-mass exponentials at each <span class="math" data-index="148" data-tex="\(m\)">\(m\)</span> gives
+<span class="math" data-index="149" data-tex="\(2^{-m}\cos((1-2^{-m})\zeta_1)\)">\(2^{-m}\cos((1-2^{-m})\zeta_1)\)</span>. On a compact complex set with <span class="math" data-index="150" data-tex="\(|\operatorname{Im}\zeta_1|\leq R\)">\(|\operatorname{Im}\zeta_1|\leq R\)</span>, its modulus is at most <span class="math" data-index="151" data-tex="\(2^{-m}e^R\)">\(2^{-m}e^R\)</span>. Uniform summability proves the series convergence and permits its identification with the measure's Fourier integral.
+The closed convex hull of the isolated atoms is the segment. The common-core theorem and the upper carrier containment give the sole indicator <span class="math" data-index="152" data-tex="\(h(\eta)=|\eta_1|\)">\(h(\eta)=|\eta_1|\)</span>. In directions <span class="math" data-index="153" data-tex="\((0,1,0)\)">\((0,1,0)\)</span>, <span class="math" data-index="154" data-tex="\((1,0,2)\)">\((1,0,2)\)</span> and <span class="math" data-index="155" data-tex="\((-3,4,5)\)">\((-3,4,5)\)</span>, the values are <span class="math" data-index="156" data-tex="\(0,1,3\)">\(0,1,3\)</span>.</p>
+<h3 id="exercise-7-why-each-contracted-boundary-net-gives-isolated-atoms-12-points">Exercise 7: why each contracted boundary net gives isolated atoms (12 points)</h3>
+<p>For the construction (T6), prove that every point is in the relative interior, that different blocks have distinct points, and that the accumulation set is exactly the relative boundary.</p>
+<p><em>Solution.</em> Choose a relative ball of radius <span class="math" data-index="157" data-tex="\(r\)">\(r\)</span> about <span class="math" data-index="158" data-tex="\(o\)">\(o\)</span> inside <span class="math" data-index="159" data-tex="\(K\)">\(K\)</span>. Convexity places the ball of radius <span class="math" data-index="160" data-tex="\(2^{-m}r\)">\(2^{-m}r\)</span> about <span class="math" data-index="161" data-tex="\(x_{m,b}\)">\(x_{m,b}\)</span> inside <span class="math" data-index="162" data-tex="\(K\)">\(K\)</span>, so the point is in the relative interior.
+Equality of points from two blocks puts their boundary points on the same ray from <span class="math" data-index="163" data-tex="\(o\)">\(o\)</span>. Such a ray has only one boundary endpoint. An earlier point on that ray with a later point of <span class="math" data-index="164" data-tex="\(K\)">\(K\)</span> beyond it would have a relative ball from convex interpolation with the ball about <span class="math" data-index="165" data-tex="\(o\)">\(o\)</span>, and would be interior. Thus the endpoints agree, and equality of the two contractions forces their indices to agree. Distinct points within a net stay distinct under contraction.
+Writing <span class="math" data-index="166" data-tex="\(R=\max_{b\in B}|b-o|\)">\(R=\max_{b\in B}|b-o|\)</span>, every point of block <span class="math" data-index="167" data-tex="\(m\)">\(m\)</span> has distance at most <span class="math" data-index="168" data-tex="\(2^{-m}R\)">\(2^{-m}R\)</span> from <span class="math" data-index="169" data-tex="\(B\)">\(B\)</span>. A subsequence through infinitely many blocks can therefore accumulate only on <span class="math" data-index="170" data-tex="\(B\)">\(B\)</span>; finitely many blocks contain finitely many points and cannot supply a new accumulation point. Conversely the <span class="math" data-index="171" data-tex="\(1/m\)">\(1/m\)</span>-nets approximate any fixed boundary point, and their contracted points differ from it by at most <span class="math" data-index="172" data-tex="\(1/m+2^{-m}R\)">\(1/m+2^{-m}R\)</span>. This tends to zero through distinct points.
+A fixed interior atom has positive distance from <span class="math" data-index="173" data-tex="\(B\)">\(B\)</span>. All late blocks are outside a sufficiently small neighborhood of it, and the finitely many early atoms can be removed by a smaller neighborhood. Hence it is isolated in the full support.</p>
+<h3 id="exercise-8-a-common-selector-for-a-joint-tuple-10-points">Exercise 8: a common selector for a joint tuple (10 points)</h3>
+<p>Explain how one selector can realize several prescribed carriers on the same escaping sequence. Include collapsed coordinates and why separate selectors would not prove the maximum law.</p>
+<p><em>Solution.</em> Take one logarithmic neighborhood union controlling the entire finite tuple. The common-neighborhood corollary takes the maximum of finitely many thresholds for each compact parameter ball and tolerance, then builds one expanding radius sequence. Proper coordinates have their own indicator ceilings; collapsed coordinates collapse throughout that union.
+The compact selector collapses outside it and has the zero profile on a subsequence of the original centers. Every proper selected input profile is retained on this subsequence, so its product attains the desired carrier. Every other proper product carrier comes from centers inside the union; the input ceiling bounds it by the prescribed carrier and the selector's proper carrier is <span class="math" data-index="174" data-tex="\(\{0\}\)">\(\{0\}\)</span>. Hull recovery gives exact equality.
+For a collapsed coordinate, the input collapses inside and the selector outside. A common local upper bound for the other factor and a maximum of the two frequency thresholds force every product profile to collapse; its hull is empty.
+Separate selectors would produce different outputs and would not give a single identity <span class="math" data-index="175" data-tex="\(u*v=\sum_i u_i*v\)">\(u*v=\sum_i u_i*v\)</span> with all prescribed hulls simultaneously. The finite common construction supplies the shared factor required for that identity.</p>
+<h3 id="exercise-9-both-directions-of-the-family-maximum-formula-12-points">Exercise 9: both directions of the family maximum formula (12 points)</h3>
+<p>Prove the joint maximum identity for separate singularities, and then both inclusions in (T9). Explain the all-collapsed case.</p>
+<p><em>Solution.</em> Use a common selector for the tuple consisting of the sum and all summands. Its output singular hulls are the prescribed carriers <span class="math" data-index="176" data-tex="\(C_h,C_{h_i}\)">\(C_h,C_{h_i}\)</span>. Convolution with this selector puts each output singular support inside the original one, so they remain pairwise disjoint. The local noncancellation result makes their sum's singular support their union. Taking convex hulls gives
+<span class="math" data-index="177" data-tex="\(C_h=\operatorname{conv}\bigcup_i C_{h_i}\)">\(C_h=\operatorname{conv}\bigcup_i C_{h_i}\)</span>, whose support function is <span class="math" data-index="178" data-tex="\(\max_i h_i\)">\(\max_i h_i\)</span>.
+For an indicator of the sum, finite projection extends its profile to every summand on a common further subsequence. The joint identity then puts it in the right side of (T9).
+Conversely a joint tuple of summand profiles extends to include the sum, retaining all the prescribed profiles. The same identity proves that their maximum is an actual sum indicator.
+If all summand carriers are empty, all selected outputs are smooth and their finite sum is smooth. Its hull is empty and its indicator is <span class="math" data-index="179" data-tex="\(-\infty=\max_i(-\infty)\)">\(-\infty=\max_i(-\infty)\)</span>. If some coordinate is proper, the hull union is nonempty and collapsed coordinates can be omitted from the maximum.</p>
+<h3 id="exercise-10-overlapping-singularities-permit-complete-cancellation-8-points">Exercise 10: overlapping singularities permit complete cancellation (8 points)</h3>
+<p>Use two point distributions to disprove a maximum law without singular-support separation. Then explain why a smooth summand does satisfy the separation condition and has no effect on the indicator family.</p>
+<p><em>Solution.</em> Let <span class="math" data-index="180" data-tex="\(u_1=\delta_0\)">\(u_1=\delta_0\)</span>, <span class="math" data-index="181" data-tex="\(u_2=-\delta_0\)">\(u_2=-\delta_0\)</span>. Their transforms are <span class="math" data-index="182" data-tex="\(1,-1\)">\(1,-1\)</span>, with normalized logarithms zero on every escaping sequence. Their only joint indicator pair is <span class="math" data-index="183" data-tex="\((0,0)\)">\((0,0)\)</span>, but their zero sum has normalized logarithm identically <span class="math" data-index="184" data-tex="\(-\infty\)">\(-\infty\)</span>. Thus its indicator is collapsed rather than the maximum zero. The singular supports both equal <span class="math" data-index="185" data-tex="\(\{0\}\)">\(\{0\}\)</span>.
+A compact smooth summand has empty singular support, disjoint from any singular support. Its only indicator is collapsed. The joint projection theorem permits every original profile to extend to include that smooth summand; its collapsed coordinate is the only possible added one. The maximum theorem therefore preserves every original indicator, since <span class="math" data-index="186" data-tex="\(\max(h,-\infty)=h\)">\(\max(h,-\infty)=h\)</span>, including an originally collapsed <span class="math" data-index="187" data-tex="\(h\)">\(h\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Compact Fourier transforms and convolution; its normalization differs from (T1).</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009. Background for the preceding full compact-selector construction.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. The common-core,atomic construction and joint maximum arguments are supplied in the complete proof above.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>An isolated point of a distribution's support leaves a singularity that no convolution profile can hide. This gives a common geometric core for all its profile carriers. We use this observation to construct measures with any prescribed compact convex carrier, and then examine the maximum law for sums whose singularities are separate.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em> and <em>245B, Notes 9</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The prerequisites are <a href="AN02-L164.html#2-realizing-one-prescribed-convolution-hull">Recovering singularities from convolution profiles</a>, especially the one-point selector, its <a href="AN02-L164.html#7-polynomial-symbols-concentrated-at-one-point">point-supported polynomial operators</a> and its <a href="AN02-L164.html#5-when-singular-hulls-always-add">universal hull-addition criterion</a>; <a href="AN02-L161.html#3-one-profile-controls-expanding-logarithmic-neighborhoods">Changing centers in Fourier windows</a>, including the finite common-neighborhood corollary; <a href="AN02-L162.html#4-selecting-an-isolated-singularity">Frequency-selective singularities and smooth convolutions</a>, for the actual compact selector construction; <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, for finite coordinate projection; and <a href="AN02-L163.html#1-five-descriptions-of-slow-decrease">Slow decrease and entire Fourier division</a>, for invertibility. The local singular-support calculus needed below is proved here.</p>
+<h2 id="1-the-geometric-information-in-a-profile">1. The geometric information in a profile</h2>
+<p>For a compact distribution <span class="math" data-index="188" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="189" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="190" data-tex="\(n\geq1\)">\(n\geq1\)</span>, use</p>
+<span class="math math-display" id="eq-1.1" data-index="191" data-tex="\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]">\[
+ F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2.
+ \tag{1.1}
+\]</span>
+<p>Write <span class="math" data-index="192" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span> for the directional indicators of proper local <span class="math" data-index="193" data-tex="\(L^1\)">\(L^1\)</span> profiles and collapsed profiles. A proper indicator <span class="math" data-index="194" data-tex="\(h\)">\(h\)</span> is the support function of a nonempty compact convex carrier <span class="math" data-index="195" data-tex="\(C_h\)">\(C_h\)</span>. The collapsed indicator is <span class="math" data-index="196" data-tex="\(-\infty\)">\(-\infty\)</span>, with <span class="math" data-index="197" data-tex="\(C_{-\infty}=\varnothing\)">\(C_{-\infty}=\varnothing\)</span>. Support functions and carriers are taken in this extended sense throughout.</p>
+<p>The family <span class="math" data-index="198" data-tex="\(\mathcal J(u_1,\ldots,u_k)\)">\(\mathcal J(u_1,\ldots,u_k)\)</span> consists of indicator tuples from one escaping real sequence with a joint proper-or-collapsed extraction in every coordinate. It is not the Cartesian product of the individual families. Every individual coordinate or finite subtuple can be extended to a tuple containing further compact distributions, by the finite joint-profile projection theorem.</p>
+<p>Let</p>
+<span class="math math-display" id="eq-1.2" data-index="199" data-tex="\[
+ A(u)=\operatorname{sing\,supp}u,\qquad
+ S_u=\operatorname{conv}A(u).
+ \tag{1.2}
+\]">\[
+ A(u)=\operatorname{sing\,supp}u,\qquad
+ S_u=\operatorname{conv}A(u).
+ \tag{1.2}
+\]</span>
+<p>The singular support is compact; its convex hull is compact when nonempty. The <a href="AN02-L158.html#4-the-hull-recovered-from-all-logarithmic-profiles">full hull recovery theorem</a> proves</p>
+<span class="math math-display" id="eq-1.3" data-index="200" data-tex="\[
+ S_u=\overline{\operatorname{conv}
+                   \bigcup_{h\in\mathcal J(u)}C_h}.
+ \tag{1.3}
+\]">\[
+ S_u=\overline{\operatorname{conv}
+                   \bigcup_{h\in\mathcal J(u)}C_h}.
+ \tag{1.3}
+\]</span>
+<p>In particular each proper carrier lies in <span class="math" data-index="201" data-tex="\(S_u\)">\(S_u\)</span>, and <span class="math" data-index="202" data-tex="\(S_u\)">\(S_u\)</span> lies in the convex hull of the ordinary support. The family is nonempty by the PSH compactness alternative on any escaping sequence.</p>
+<p>If a finite family of indicators has at least one proper member, the function <span class="math" data-index="203" data-tex="\(\max_i h_i\)">\(\max_i h_i\)</span> is the support function of the convex hull of their proper carriers. Indeed a continuous linear functional has the same supremum on a set and its convex hull. If every member is collapsed, the maximum is <span class="math" data-index="204" data-tex="\(-\infty\)">\(-\infty\)</span> and this hull is empty.</p>
+<h2 id="2-convolution-cannot-create-a-new-pair-of-singular-points">2. Convolution cannot create a new pair of singular points</h2>
+<p>We first establish the local facts that prevent cancellation near an isolated singularity.</p>
+<p><strong>Lemma 2.1 (compact singular-support calculus).</strong> For compact distributions <span class="math" data-index="205" data-tex="\(a,b\)">\(a,b\)</span>,</p>
+<span class="math math-display" id="eq-2.1" data-index="206" data-tex="\[
+ \operatorname{supp}(a*b)\subset
+                       \operatorname{supp}a+\operatorname{supp}b,
+ \qquad
+ A(a*b)\subset A(a)+A(b).
+ \tag{2.1}
+\]">\[
+ \operatorname{supp}(a*b)\subset
+                       \operatorname{supp}a+\operatorname{supp}b,
+ \qquad
+ A(a*b)\subset A(a)+A(b).
+ \tag{2.1}
+\]</span>
+<p>An empty summand makes the corresponding sum empty. In particular <span class="math" data-index="207" data-tex="\(a*b\)">\(a*b\)</span> is smooth if either factor is smooth. If <span class="math" data-index="208" data-tex="\(A(b)=\{0\}\)">\(A(b)=\{0\}\)</span>, then <span class="math" data-index="209" data-tex="\(A(a*b)\subset A(a)\)">\(A(a*b)\subset A(a)\)</span>.</p>
+<p><em>Proof.</em> For the ordinary support assertion, take a test function <span class="math" data-index="210" data-tex="\(\phi\)">\(\phi\)</span> supported outside the compact sum of the two supports. Choose compact smooth cutoffs equal to one near those supports and with sufficiently small support neighborhoods. The test function
+<span class="math" data-index="211" data-tex="\(\chi_a(x)\chi_b(y)\phi(x+y)\)">\(\chi_a(x)\chi_b(y)\phi(x+y)\)</span> then vanishes near the product of the two distribution supports. Its iterated distribution pairing, which defines <span class="math" data-index="212" data-tex="\((a*b)(\phi)\)">\((a*b)(\phi)\)</span>, is zero. More explicitly the positive distance between the two compact sets lets us make <span class="math" data-index="213" data-tex="\(\phi(x+y)\)">\(\phi(x+y)\)</span> identically zero on the product of the cutoff supports. Hence the outer and inner pairings both vanish. This proves the first assertion locally outside that sum.</p>
+<p>If <span class="math" data-index="214" data-tex="\(f\)">\(f\)</span> is compact and smooth and <span class="math" data-index="215" data-tex="\(b\)">\(b\)</span> is a compact distribution, its convolution is the smooth function</p>
+<span class="math math-display" id="eq-2.2" data-index="216" data-tex="\[
+ (f*b)(x)=\langle b(y),f(x-y)\rangle.
+ \tag{2.2}
+\]">\[
+ (f*b)(x)=\langle b(y),f(x-y)\rangle.
+ \tag{2.2}
+\]</span>
+<p>Insert a fixed cutoff in <span class="math" data-index="217" data-tex="\(y\)">\(y\)</span>, equal to one near <span class="math" data-index="218" data-tex="\(\operatorname{supp}b\)">\(\operatorname{supp}b\)</span>, to make this pairing a test-function pairing. As <span class="math" data-index="219" data-tex="\(x\)">\(x\)</span> varies on any compact set, each derivative in <span class="math" data-index="220" data-tex="\(x\)">\(x\)</span> of the cutoff times <span class="math" data-index="221" data-tex="\(f(x-y)\)">\(f(x-y)\)</span> exists and varies continuously in every test-function derivative seminorm. Continuity of <span class="math" data-index="222" data-tex="\(b\)">\(b\)</span> therefore permits every derivative through the pairing. The resulting function represents the convolution distribution: integration against a test function in <span class="math" data-index="223" data-tex="\(x\)">\(x\)</span> commutes with the pairing because its Riemann sums converge in that same test-function topology. Thus it is smooth. Commutativity gives the same conclusion when the second factor is smooth.</p>
+<p>Assume both singular supports are nonempty. For any <span class="math" data-index="224" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a compact smooth cutoff <span class="math" data-index="225" data-tex="\(\theta_a\)">\(\theta_a\)</span> equal to one on a neighborhood of <span class="math" data-index="226" data-tex="\(A(a)\)">\(A(a)\)</span> and supported inside its open <span class="math" data-index="227" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-neighborhood. Write</p>
+<span class="math math-display" id="eq-2.3" data-index="228" data-tex="\[
+ a=\theta_a a+(1-\theta_a)a=a_\varepsilon+a_{\mathrm{sm}}.
+ \tag{2.3}
+\]">\[
+ a=\theta_a a+(1-\theta_a)a=a_\varepsilon+a_{\mathrm{sm}}.
+ \tag{2.3}
+\]</span>
+<p>The second summand is compact and smooth. It vanishes near <span class="math" data-index="229" data-tex="\(A(a)\)">\(A(a)\)</span>, and elsewhere it is a smooth multiple of a locally smooth distribution. The first is supported within the closed <span class="math" data-index="230" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-neighborhood of <span class="math" data-index="231" data-tex="\(A(a)\)">\(A(a)\)</span>. Decompose <span class="math" data-index="232" data-tex="\(b\)">\(b\)</span> in the same way.</p>
+<p>Every convolution term containing a smooth summand is smooth by (2.2). Consequently</p>
+<span class="math math-display" id="eq-2.4" data-index="233" data-tex="\[
+ A(a*b)\subset
+       \operatorname{supp}a_\varepsilon+
+       \operatorname{supp}b_\varepsilon
+       \subset A(a)+A(b)+\overline B_{2\varepsilon}(0).
+ \tag{2.4}
+\]">\[
+ A(a*b)\subset
+       \operatorname{supp}a_\varepsilon+
+       \operatorname{supp}b_\varepsilon
+       \subset A(a)+A(b)+\overline B_{2\varepsilon}(0).
+ \tag{2.4}
+\]</span>
+<p>To justify the first inclusion at a point outside the displayed support sum, the remaining convolution term vanishes on a neighborhood there and all other terms are smooth. The compact set <span class="math" data-index="234" data-tex="\(A(a)+A(b)\)">\(A(a)+A(b)\)</span> is closed. Any point outside it has positive distance from it, so (2.4) for sufficiently small <span class="math" data-index="235" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> excludes that point from <span class="math" data-index="236" data-tex="\(A(a*b)\)">\(A(a*b)\)</span>. This proves the second assertion. If one singular support is empty, its compact distribution is smooth and (2.2) proves the empty case directly. <span class="math" data-index="237" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (separate singularities cannot cancel).</strong> If <span class="math" data-index="238" data-tex="\(a_1,\ldots,a_k\)">\(a_1,\ldots,a_k\)</span> are compact distributions with pairwise disjoint singular supports, then</p>
+<span class="math math-display" id="eq-2.5" data-index="239" data-tex="\[
+ A\!\left(\sum_i a_i\right)=\bigcup_i A(a_i).
+ \tag{2.5}
+\]">\[
+ A\!\left(\sum_i a_i\right)=\bigcup_i A(a_i).
+ \tag{2.5}
+\]</span>
+<p>The ordinary supports may overlap.</p>
+<p><em>Proof.</em> Outside the union every summand is smooth locally, so their sum is smooth. If <span class="math" data-index="240" data-tex="\(x\in A(a_i)\)">\(x\in A(a_i)\)</span>, pairwise disjointness and the finite number of summands give a neighborhood of <span class="math" data-index="241" data-tex="\(x\)">\(x\)</span> on which all other summands are smooth. If their sum with <span class="math" data-index="242" data-tex="\(a_i\)">\(a_i\)</span> were smooth near <span class="math" data-index="243" data-tex="\(x\)">\(x\)</span>, subtracting the other smooth summands would make <span class="math" data-index="244" data-tex="\(a_i\)">\(a_i\)</span> smooth there. This contradicts <span class="math" data-index="245" data-tex="\(x\in A(a_i)\)">\(x\in A(a_i)\)</span>. Thus every point of the union remains singular. <span class="math" data-index="246" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-isolated-support-points-belong-to-every-carrier">3. Isolated support points belong to every carrier</h2>
+<p>Let <span class="math" data-index="247" data-tex="\(I(u)\)">\(I(u)\)</span> be the set of isolated points of the ordinary support of <span class="math" data-index="248" data-tex="\(u\)">\(u\)</span>, and put</p>
+<span class="math math-display" id="eq-3.1" data-index="249" data-tex="\[
+ K_I=\overline{\operatorname{conv} I(u)}.
+ \tag{3.1}
+\]">\[
+ K_I=\overline{\operatorname{conv} I(u)}.
+ \tag{3.1}
+\]</span>
+<p>If there are no isolated support points, set <span class="math" data-index="250" data-tex="\(K_I=\varnothing\)">\(K_I=\varnothing\)</span> and <span class="math" data-index="251" data-tex="\(H_{K_I}=-\infty\)">\(H_{K_I}=-\infty\)</span>. Otherwise <span class="math" data-index="252" data-tex="\(K_I\)">\(K_I\)</span> is a nonempty compact convex set contained in the convex hull of <span class="math" data-index="253" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>.</p>
+<p><strong>Theorem 3.1 (a common carrier core).</strong> Every <span class="math" data-index="254" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span> satisfies</p>
+<span class="math math-display" id="eq-3.2" data-index="255" data-tex="\[
+ H_{K_I}(\eta)\leq h(\eta)
+       \quad(\eta\in\mathbb R^n).
+ \tag{3.2}
+\]">\[
+ H_{K_I}(\eta)\leq h(\eta)
+       \quad(\eta\in\mathbb R^n).
+ \tag{3.2}
+\]</span>
+<p>Equivalently every carrier contains <span class="math" data-index="256" data-tex="\(K_I\)">\(K_I\)</span>. If <span class="math" data-index="257" data-tex="\(I(u)\neq\varnothing\)">\(I(u)\neq\varnothing\)</span>, all profiles are proper; in particular <span class="math" data-index="258" data-tex="\(u\)">\(u\)</span> is invertible.</p>
+<p><em>Proof.</em> The conclusion is immediate in the empty-<span class="math" data-index="259" data-tex="\(I(u)\)">\(I(u)\)</span> case, so take <span class="math" data-index="260" data-tex="\(x\in I(u)\)">\(x\in I(u)\)</span>. There is an open ball about <span class="math" data-index="261" data-tex="\(x\)">\(x\)</span> containing no other point of <span class="math" data-index="262" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. Choose a smooth cutoff equal to one near <span class="math" data-index="263" data-tex="\(x\)">\(x\)</span> and supported in that ball, and write <span class="math" data-index="264" data-tex="\(u=a+b\)">\(u=a+b\)</span> using that cutoff. Then <span class="math" data-index="265" data-tex="\(a\)">\(a\)</span> is nonzero and supported at the single point <span class="math" data-index="266" data-tex="\(x\)">\(x\)</span>, while <span class="math" data-index="267" data-tex="\(b\)">\(b\)</span> vanishes on a neighborhood of <span class="math" data-index="268" data-tex="\(x\)">\(x\)</span>. Nonzero follows from <span class="math" data-index="269" data-tex="\(x\in\operatorname{supp}u\)">\(x\in\operatorname{supp}u\)</span>: if this cutoff piece were zero, <span class="math" data-index="270" data-tex="\(u\)">\(u\)</span> would vanish near <span class="math" data-index="271" data-tex="\(x\)">\(x\)</span>.</p>
+<p>The full point-support finite-jet theorem and polynomial-profile result in the preceding chapter apply to <span class="math" data-index="272" data-tex="\(a\)">\(a\)</span>. For every compact distribution <span class="math" data-index="273" data-tex="\(v\)">\(v\)</span>,</p>
+<span class="math math-display" id="eq-3.3" data-index="274" data-tex="\[
+ S_{a*v}=\{x\}+S_v.
+ \tag{3.3}
+\]">\[
+ S_{a*v}=\{x\}+S_v.
+ \tag{3.3}
+\]</span>
+<p>Fix any <span class="math" data-index="275" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span>. The profile-realization theorem gives a compact continuous <span class="math" data-index="276" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>, singular exactly at zero, with</p>
+<span class="math math-display" id="eq-3.4" data-index="277" data-tex="\[
+ S_v=\{0\},\qquad S_{u*v}=C_h.
+ \tag{3.4}
+\]">\[
+ S_v=\{0\},\qquad S_{u*v}=C_h.
+ \tag{3.4}
+\]</span>
+<p>It includes the collapsed case, where the second hull is empty.</p>
+<p>Formula (3.3) makes <span class="math" data-index="278" data-tex="\(S_{a*v}=\{x\}\)">\(S_{a*v}=\{x\}\)</span>. Thus <span class="math" data-index="279" data-tex="\(A(a*v)=\{x\}\)">\(A(a*v)=\{x\}\)</span>: a nonempty singular hull consisting of one point has exactly that nonempty singular support. By Lemma 2.1, <span class="math" data-index="280" data-tex="\(A(b*v)\subset A(b)\)">\(A(b*v)\subset A(b)\)</span>, and <span class="math" data-index="281" data-tex="\(b*v\)">\(b*v\)</span> is smooth near <span class="math" data-index="282" data-tex="\(x\)">\(x\)</span>. The singularity of <span class="math" data-index="283" data-tex="\(a*v\)">\(a*v\)</span> therefore survives in
+<span class="math" data-index="284" data-tex="\(u*v=a*v+b*v\)">\(u*v=a*v+b*v\)</span>, by the local argument of Lemma 2.2. Hence</p>
+<span class="math math-display" id="eq-3.5" data-index="285" data-tex="\[
+ x\in A(u*v)\subset S_{u*v}=C_h.
+ \tag{3.5}
+\]">\[
+ x\in A(u*v)\subset S_{u*v}=C_h.
+ \tag{3.5}
+\]</span>
+<p>This rules out a collapsed <span class="math" data-index="286" data-tex="\(h\)">\(h\)</span>, and places every isolated support point in every proper carrier. Each carrier is closed and convex, so contains <span class="math" data-index="287" data-tex="\(K_I\)">\(K_I\)</span>. Taking support functions gives (3.2).</p>
+<p>When <span class="math" data-index="288" data-tex="\(I(u)\neq\varnothing\)">\(I(u)\neq\varnothing\)</span>, the absence of a collapsed profile is the full slow-decrease criterion, and hence invertibility, from the preceding entire-division chapter. <span class="math" data-index="289" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses one selector for the whole distribution and the exact polynomial operator at the isolated point. It does not require a maximum formula for an arbitrary sum of Fourier transforms.</p>
+<p><strong>Corollary 3.2 (finite support).</strong> Suppose <span class="math" data-index="290" data-tex="\(u\neq0\)">\(u\neq0\)</span> has finite support, and let <span class="math" data-index="291" data-tex="\(K=\operatorname{conv}(\operatorname{supp}u)\)">\(K=\operatorname{conv}(\operatorname{supp}u)\)</span>. Then</p>
+<span class="math math-display" id="eq-3.6" data-index="292" data-tex="\[
+ \mathcal J(u)=\{H_K\},\qquad
+ S_{u*v}=K+S_v
+       \quad\text{for every compact }v.
+ \tag{3.6}
+\]">\[
+ \mathcal J(u)=\{H_K\},\qquad
+ S_{u*v}=K+S_v
+       \quad\text{for every compact }v.
+ \tag{3.6}
+\]</span>
+<p>Thus <span class="math" data-index="293" data-tex="\(u\)">\(u\)</span> is invertible even though its transform may have real zeros.</p>
+<p><em>Proof.</em> Every support point is isolated, so Theorem 3.1 gives <span class="math" data-index="294" data-tex="\(H_K\leq h\)">\(H_K\leq h\)</span> for every indicator. Every proper carrier is contained in <span class="math" data-index="295" data-tex="\(S_u\subset K\)">\(S_u\subset K\)</span>, by (1.3), giving the reverse inequality. There is no collapsed indicator and the family is nonempty. Therefore it is exactly <span class="math" data-index="296" data-tex="\(\{H_K\}\)">\(\{H_K\}\)</span>.
+Every nonzero one-point distribution is singular at its support point. Indeed a smooth function supported at one point is zero, while that distribution is nonzero. Thus every support point of <span class="math" data-index="297" data-tex="\(u\)">\(u\)</span> is singular and <span class="math" data-index="298" data-tex="\(S_u=K\)">\(S_u=K\)</span>. Apply the universal singleton-indicator addition criterion in the preceding chapter to obtain (3.6). <span class="math" data-index="299" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-positive-atoms-can-prescribe-any-compact-convex-carrier">4. Positive atoms can prescribe any compact convex carrier</h2>
+<p><strong>Theorem 4.1 (a measure with one prescribed indicator).</strong> For every compact convex <span class="math" data-index="300" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span>, there is a finite nonnegative measure <span class="math" data-index="301" data-tex="\(u\)">\(u\)</span>, supported in <span class="math" data-index="302" data-tex="\(K\)">\(K\)</span>, such that</p>
+<span class="math math-display" id="eq-4.1" data-index="303" data-tex="\[
+ \mathcal J(u)=\{H_K\}.
+ \tag{4.1}
+\]">\[
+ \mathcal J(u)=\{H_K\}.
+ \tag{4.1}
+\]</span>
+<p>If <span class="math" data-index="304" data-tex="\(K\neq\varnothing\)">\(K\neq\varnothing\)</span>, <span class="math" data-index="305" data-tex="\(u\)">\(u\)</span> can have total mass one. It then has singular hull <span class="math" data-index="306" data-tex="\(K\)">\(K\)</span>, is invertible, and satisfies universal singular-hull addition.</p>
+<p><em>Proof for the empty and singleton cases.</em> For <span class="math" data-index="307" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, choose <span class="math" data-index="308" data-tex="\(u=0\)">\(u=0\)</span>; every profile is collapsed and its sole indicator is <span class="math" data-index="309" data-tex="\(H_\varnothing=-\infty\)">\(H_\varnothing=-\infty\)</span>. If <span class="math" data-index="310" data-tex="\(K=\{x\}\)">\(K=\{x\}\)</span>, choose <span class="math" data-index="311" data-tex="\(u=\delta_x\)">\(u=\delta_x\)</span> and use Corollary 3.2.</p>
+<p><em>Construction in positive affine dimension.</em> Let <span class="math" data-index="312" data-tex="\(A\)">\(A\)</span> be the affine hull of a nonempty <span class="math" data-index="313" data-tex="\(K\)">\(K\)</span>, of dimension <span class="math" data-index="314" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Work with the Euclidean metric restricted to <span class="math" data-index="315" data-tex="\(A\)">\(A\)</span>. Choose <span class="math" data-index="316" data-tex="\(d+1\)">\(d+1\)</span> affinely independent points of <span class="math" data-index="317" data-tex="\(K\)">\(K\)</span>. Their simplex lies in <span class="math" data-index="318" data-tex="\(K\)">\(K\)</span>, and its barycenter has a relative open ball contained in that simplex. Hence there are <span class="math" data-index="319" data-tex="\(o\in K\)">\(o\in K\)</span> and <span class="math" data-index="320" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with
+<span class="math" data-index="321" data-tex="\(\overline B_r^A(o)\subset K\)">\(\overline B_r^A(o)\subset K\)</span>, after decreasing the radius if necessary. In particular <span class="math" data-index="322" data-tex="\(o\)">\(o\)</span> is in the relative interior of <span class="math" data-index="323" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The relative boundary <span class="math" data-index="324" data-tex="\(B=\partial_A K\)">\(B=\partial_A K\)</span> is compact and nonempty. For any unit direction in <span class="math" data-index="325" data-tex="\(A\)">\(A\)</span>, the ray from <span class="math" data-index="326" data-tex="\(o\)">\(o\)</span> meets <span class="math" data-index="327" data-tex="\(K\)">\(K\)</span> in a closed bounded interval of positive length. Its outer endpoint is in <span class="math" data-index="328" data-tex="\(B\)">\(B\)</span>. Every boundary point on that ray is this endpoint: if a point on the ray lay strictly before a further point of <span class="math" data-index="329" data-tex="\(K\)">\(K\)</span>, taking its convex combination with the relative ball about <span class="math" data-index="330" data-tex="\(o\)">\(o\)</span> would put a relative ball about that point inside <span class="math" data-index="331" data-tex="\(K\)">\(K\)</span>, contradicting its being a boundary point.</p>
+<p>For each integer <span class="math" data-index="332" data-tex="\(m\geq1\)">\(m\geq1\)</span>, choose a finite <span class="math" data-index="333" data-tex="\(1/m\)">\(1/m\)</span>-net <span class="math" data-index="334" data-tex="\(B_m\subset B\)">\(B_m\subset B\)</span>, with distinct points within that net, and set</p>
+<span class="math math-display" id="eq-4.2" data-index="335" data-tex="\[
+ t_m=1-2^{-m},\qquad
+ X_m=\{(1-t_m)o+t_m b:b\in B_m\}.
+ \tag{4.2}
+\]">\[
+ t_m=1-2^{-m},\qquad
+ X_m=\{(1-t_m)o+t_m b:b\in B_m\}.
+ \tag{4.2}
+\]</span>
+<p>A finite net exists by compactness: select finitely many radius-<span class="math" data-index="336" data-tex="\(1/m\)">\(1/m\)</span> balls with centers in <span class="math" data-index="337" data-tex="\(B\)">\(B\)</span> covering <span class="math" data-index="338" data-tex="\(B\)">\(B\)</span>. Every <span class="math" data-index="339" data-tex="\(x\in X_m\)">\(x\in X_m\)</span> is in the relative interior of <span class="math" data-index="340" data-tex="\(K\)">\(K\)</span>, since convexity puts the relative ball
+<span class="math" data-index="341" data-tex="\(B^A_{(1-t_m)r}(x)\)">\(B^A_{(1-t_m)r}(x)\)</span> in <span class="math" data-index="342" data-tex="\(K\)">\(K\)</span>.</p>
+<p>All these points are distinct, including across different <span class="math" data-index="343" data-tex="\(m\)">\(m\)</span>. Equality of two such points would put their two boundary points on the same ray from <span class="math" data-index="344" data-tex="\(o\)">\(o\)</span>. The uniqueness of the boundary endpoint on that ray makes the boundary points equal, and then the distinct <span class="math" data-index="345" data-tex="\(t_m\)">\(t_m\)</span>'s make the indices equal.</p>
+<p>Let <span class="math" data-index="346" data-tex="\(R=\max_{b\in B}|b-o|\)">\(R=\max_{b\in B}|b-o|\)</span>. Every point of <span class="math" data-index="347" data-tex="\(X_m\)">\(X_m\)</span> has distance at most <span class="math" data-index="348" data-tex="\(2^{-m}R\)">\(2^{-m}R\)</span> from <span class="math" data-index="349" data-tex="\(B\)">\(B\)</span>. Therefore every accumulation point of the sequence obtained by listing the finite <span class="math" data-index="350" data-tex="\(X_m\)">\(X_m\)</span>'s in increasing <span class="math" data-index="351" data-tex="\(m\)">\(m\)</span> lies in <span class="math" data-index="352" data-tex="\(B\)">\(B\)</span>. Conversely, for each <span class="math" data-index="353" data-tex="\(b\in B\)">\(b\in B\)</span> choose <span class="math" data-index="354" data-tex="\(b_m\in B_m\)">\(b_m\in B_m\)</span> with <span class="math" data-index="355" data-tex="\(|b_m-b|&lt;1/m\)">\(|b_m-b|&lt;1/m\)</span>, allowing a non-strict bound if needed. Then</p>
+<span class="math math-display" id="eq-4.3" data-index="356" data-tex="\[
+ |(1-t_m)o+t_m b_m-b|
+           \leq 2^{-m}R+1/m\longrightarrow0.
+ \tag{4.3}
+\]">\[
+ |(1-t_m)o+t_m b_m-b|
+           \leq 2^{-m}R+1/m\longrightarrow0.
+ \tag{4.3}
+\]</span>
+<p>These points are distinct, so <span class="math" data-index="357" data-tex="\(b\)">\(b\)</span> is an accumulation point. Thus the accumulation set is exactly <span class="math" data-index="358" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Enumerate all the distinct interior points as <span class="math" data-index="359" data-tex="\(x_1,x_2,\ldots\)">\(x_1,x_2,\ldots\)</span>, and define</p>
+<span class="math math-display" id="eq-4.4" data-index="360" data-tex="\[
+ u=\sum_{j=1}^{\infty}2^{-j}\delta_{x_j}.
+ \tag{4.4}
+\]">\[
+ u=\sum_{j=1}^{\infty}2^{-j}\delta_{x_j}.
+ \tag{4.4}
+\]</span>
+<p>This defines a nonnegative Borel measure of mass one: for any Borel set sum the nonnegative weights of its points; countable additivity follows by interchanging nonnegative sums. Its support is</p>
+<span class="math math-display" id="eq-4.5" data-index="361" data-tex="\[
+ \operatorname{supp}u=\overline{\{x_j:j\geq1\}}
+                         =\{x_j:j\geq1\}\cup B\subset K.
+ \tag{4.5}
+\]">\[
+ \operatorname{supp}u=\overline{\{x_j:j\geq1\}}
+                         =\{x_j:j\geq1\}\cup B\subset K.
+ \tag{4.5}
+\]</span>
+<p>To verify the first equality, a neighborhood meeting an atom has positive measure, and any neighborhood of a limit point meets such an atom. Outside the closure there is an open neighborhood with no atom and zero measure.</p>
+<p>Each <span class="math" data-index="362" data-tex="\(x_j\)">\(x_j\)</span> is isolated in this support. It has positive relative distance from <span class="math" data-index="363" data-tex="\(B\)">\(B\)</span>. All sufficiently late blocks lie closer to <span class="math" data-index="364" data-tex="\(B\)">\(B\)</span> than half that distance, so cannot approach <span class="math" data-index="365" data-tex="\(x_j\)">\(x_j\)</span>; the finitely many earlier atoms can be excluded by a smaller ball. The same ambient ball excludes them and <span class="math" data-index="366" data-tex="\(B\)">\(B\)</span>, since distances on <span class="math" data-index="367" data-tex="\(A\)">\(A\)</span> are the ambient distances between these points.</p>
+<p>The closed convex hull of the isolated atoms is <span class="math" data-index="368" data-tex="\(K\)">\(K\)</span>. It contains <span class="math" data-index="369" data-tex="\(B\)">\(B\)</span> by (4.3). To see that <span class="math" data-index="370" data-tex="\(\operatorname{conv}B=K\)">\(\operatorname{conv}B=K\)</span>, any relative-interior point of <span class="math" data-index="371" data-tex="\(K\)">\(K\)</span> lies on a segment whose two endpoints are the outer boundary points in opposite directions on a line through it. The intersection of <span class="math" data-index="372" data-tex="\(K\)">\(K\)</span> with that line is a bounded closed interval containing the point in its interior. Both endpoints are relative boundary points: a relative open ball there would extend the line interval. The point is their convex combination. Boundary points already belong to <span class="math" data-index="373" data-tex="\(B\)">\(B\)</span>. This proves the claimed convex-hull equality.</p>
+<p>Theorem 3.1 now gives <span class="math" data-index="374" data-tex="\(H_K\leq h\)">\(H_K\leq h\)</span> for every profile indicator. Conversely every proper carrier is contained in <span class="math" data-index="375" data-tex="\(S_u\subset K\)">\(S_u\subset K\)</span>, giving <span class="math" data-index="376" data-tex="\(h\leq H_K\)">\(h\leq H_K\)</span>. There are isolated atoms, so a collapsed profile is impossible. The nonempty profile family therefore has exactly the sole indicator <span class="math" data-index="377" data-tex="\(H_K\)">\(H_K\)</span>.</p>
+<p>For completeness its singular hull is indeed <span class="math" data-index="378" data-tex="\(K\)">\(K\)</span>. Near each isolated atom the measure is a nonzero multiple of <span class="math" data-index="379" data-tex="\(\delta_{x_j}\)">\(\delta_{x_j}\)</span>, so it is singular there. A smooth function cannot represent this point mass: it would be zero on the punctured neighborhood and hence at the center by continuity. The singular support is closed and contains the closure in (4.5). Since it is always contained in the ordinary support, the two supports are equal for this measure. Their convex hull is <span class="math" data-index="380" data-tex="\(K\)">\(K\)</span>. Invertibility and universal addition follow from the preceding full profile criteria. <span class="math" data-index="381" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This construction uses relative interior and relative boundary. It therefore applies to a segment or a planar convex body in a higher-dimensional ambient space. The singleton case was treated separately because its relative boundary is empty.</p>
+<h2 id="5-one-selector-can-serve-a-finite-tuple">5. One selector can serve a finite tuple</h2>
+<p>To understand sums with separated singularities, we need the selector to preserve several prescribed profile carriers simultaneously.</p>
+<p><strong>Lemma 5.1 (simultaneous realization).</strong> Suppose a finite tuple of compact distributions <span class="math" data-index="382" data-tex="\(a_1,\ldots,a_\ell\)">\(a_1,\ldots,a_\ell\)</span> has prescribed proper-or-collapsed profiles on one escaping real sequence, with indicators <span class="math" data-index="383" data-tex="\(h_1,\ldots,h_\ell\)">\(h_1,\ldots,h_\ell\)</span>. For every <span class="math" data-index="384" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a compact continuous <span class="math" data-index="385" data-tex="\(v\notin C^1\)">\(v\notin C^1\)</span>, supported in <span class="math" data-index="386" data-tex="\(\overline B_\varepsilon(0)\)">\(\overline B_\varepsilon(0)\)</span>, such that</p>
+<span class="math math-display" id="eq-5.1" data-index="387" data-tex="\[
+ A(v)=\{0\},\qquad S_{a_i*v}=C_{h_i}
+                  \quad(1\leq i\leq\ell).
+ \tag{5.1}
+\]">\[
+ A(v)=\{0\},\qquad S_{a_i*v}=C_{h_i}
+                  \quad(1\leq i\leq\ell).
+ \tag{5.1}
+\]</span>
+<p><em>Proof.</em> The finite common-neighborhood corollary in the changing-frequency chapter supplies radii <span class="math" data-index="388" data-tex="\(r_j\to\infty\)">\(r_j\to\infty\)</span> and one union</p>
+<span class="math math-display" id="eq-5.2" data-index="389" data-tex="\[
+ E=\bigcup_j B_{\mathbb R^n}(c_j,r_j\log|c_j|).
+ \tag{5.2}
+\]">\[
+ E=\bigcup_j B_{\mathbb R^n}(c_j,r_j\log|c_j|).
+ \tag{5.2}
+\]</span>
+<p>For every proper coordinate the normalized logarithms satisfy, on each compact parameter set and with every positive tolerance, the eventual ceiling</p>
+<span class="math math-display" id="eq-5.3" data-index="390" data-tex="\[
+ L_{a_i}(z,d)\leq N_i+h_i(\operatorname{Im}z)
+                         +\text{tolerance}
+       \quad(d\in E,\ |d|\to\infty).
+ \tag{5.3}
+\]">\[
+ L_{a_i}(z,d)\leq N_i+h_i(\operatorname{Im}z)
+                         +\text{tolerance}
+       \quad(d\in E,\ |d|\to\infty).
+ \tag{5.3}
+\]</span>
+<p>Each collapsed coordinate collapses uniformly locally along the entire union. The corollary is a finite diagonal: take the maximum of all coordinate thresholds at each parameter radius and tolerance, then choose one expanding radius sequence. It retains each coordinate's own order and indicator.</p>
+<p>Apply the full frequency-selective construction to this <span class="math" data-index="391" data-tex="\(E\)">\(E\)</span> and to the support radius <span class="math" data-index="392" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The resulting <span class="math" data-index="393" data-tex="\(v\)">\(v\)</span> has singular support <span class="math" data-index="394" data-tex="\(\{0\}\)">\(\{0\}\)</span>, collapses uniformly locally outside <span class="math" data-index="395" data-tex="\(E\)">\(E\)</span>, and has the zero proper profile on a subsequence of the original centers <span class="math" data-index="396" data-tex="\(c_j\)">\(c_j\)</span>. Every prescribed coordinate profile is retained on that same subsequence.</p>
+<p>For a proper <span class="math" data-index="397" data-tex="\(h_i\)">\(h_i\)</span>, the selected product profile is the prescribed <span class="math" data-index="398" data-tex="\(a_i\)">\(a_i\)</span> profile plus zero. Its carrier <span class="math" data-index="399" data-tex="\(C_{h_i}\)">\(C_{h_i}\)</span> thus occurs in the output family, so is contained in <span class="math" data-index="400" data-tex="\(S_{a_i*v}\)">\(S_{a_i*v}\)</span>. Conversely a proper output profile cannot have infinitely many centers outside <span class="math" data-index="401" data-tex="\(E\)">\(E\)</span>: the selector's exterior collapse and a common local upper bound for <span class="math" data-index="402" data-tex="\(L_{a_i}\)">\(L_{a_i}\)</span> would collapse that subsequence. On a tail inside <span class="math" data-index="403" data-tex="\(E\)">\(E\)</span>, extract its two input profiles jointly. Both are proper, since a collapsed input would collapse the product. Passing (5.3) to the canonical PSH representative gives</p>
+<span class="math math-display" id="eq-5.4" data-index="404" data-tex="\[
+ U_i(z)\leq N_i+h_i(\operatorname{Im}z).
+ \tag{5.4}
+\]">\[
+ U_i(z)\leq N_i+h_i(\operatorname{Im}z).
+ \tag{5.4}
+\]</span>
+<p>Indeed a proper <span class="math" data-index="405" data-tex="\(L^1\)">\(L^1\)</span> extraction first gives this bound almost everywhere. Submean on small balls and continuity of the right side give it pointwise. Its directional indicator is at most <span class="math" data-index="406" data-tex="\(h_i\)">\(h_i\)</span>, by dividing along positive dilations and letting the dilation radius tend to infinity. Its carrier is therefore contained in <span class="math" data-index="407" data-tex="\(C_{h_i}\)">\(C_{h_i}\)</span>.</p>
+<p>Every proper selector profile has a nonempty carrier contained in <span class="math" data-index="408" data-tex="\(S_v=\{0\}\)">\(S_v=\{0\}\)</span>, hence has carrier <span class="math" data-index="409" data-tex="\(\{0\}\)">\(\{0\}\)</span>. The exact common-frequency convolution law makes every proper output carrier a subset of <span class="math" data-index="410" data-tex="\(C_{h_i}+\{0\}=C_{h_i}\)">\(C_{h_i}+\{0\}=C_{h_i}\)</span>. The closed-convex-hull recovery formula (1.3) proves the reverse containment and hence (5.1).</p>
+<p>For a collapsed <span class="math" data-index="411" data-tex="\(h_i\)">\(h_i\)</span>, <span class="math" data-index="412" data-tex="\(L_{a_i}\)">\(L_{a_i}\)</span> collapses inside <span class="math" data-index="413" data-tex="\(E\)">\(E\)</span> and <span class="math" data-index="414" data-tex="\(L_v\)">\(L_v\)</span> collapses outside <span class="math" data-index="415" data-tex="\(E\)">\(E\)</span>. On each parameter compact set the other input has a common upper bound. Taking a finite maximum of the two required frequency thresholds makes their sum smaller than any prescribed negative bound at all sufficiently large centers. Thus all output profiles collapse. Their carriers are empty, so (1.3) makes the singular hull empty and the output smooth. This proves (5.1) for every coordinate, with the same <span class="math" data-index="416" data-tex="\(v\)">\(v\)</span>. <span class="math" data-index="417" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finiteness of the tuple permits the common diagonal. No assertion about an arbitrary infinite tuple is needed.</p>
+<h2 id="6-separated-singularities-give-a-maximum-law">6. Separated singularities give a maximum law</h2>
+<p><strong>Theorem 6.1 (the joint maximum formula).</strong> Let <span class="math" data-index="418" data-tex="\(u_1,\ldots,u_k\)">\(u_1,\ldots,u_k\)</span> be compact distributions with pairwise disjoint singular supports, and put <span class="math" data-index="419" data-tex="\(u=\sum_i u_i\)">\(u=\sum_i u_i\)</span>. If
+<span class="math" data-index="420" data-tex="\((h,h_1,\ldots,h_k)\in\mathcal J(u,u_1,\ldots,u_k)\)">\((h,h_1,\ldots,h_k)\in\mathcal J(u,u_1,\ldots,u_k)\)</span>, then</p>
+<span class="math math-display" id="eq-6.1" data-index="421" data-tex="\[
+ h=\max_{1\leq i\leq k} h_i.
+ \tag{6.1}
+\]">\[
+ h=\max_{1\leq i\leq k} h_i.
+ \tag{6.1}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="eq-6.2" data-index="422" data-tex="\[
+ \mathcal J(u)=
+ \left\{\max_i h_i:
+           (h_1,\ldots,h_k)\in\mathcal J(u_1,\ldots,u_k)\right\}.
+ \tag{6.2}
+\]">\[
+ \mathcal J(u)=
+ \left\{\max_i h_i:
+           (h_1,\ldots,h_k)\in\mathcal J(u_1,\ldots,u_k)\right\}.
+ \tag{6.2}
+\]</span>
+<p>Both formulas include collapsed coordinates and an entirely collapsed tuple.</p>
+<p><em>Proof of the joint identity.</em> Apply Lemma 5.1 to the tuple containing <span class="math" data-index="423" data-tex="\(u\)">\(u\)</span> and all <span class="math" data-index="424" data-tex="\(u_i\)">\(u_i\)</span>. It gives one compact <span class="math" data-index="425" data-tex="\(v\)">\(v\)</span>, singular exactly at zero, with</p>
+<span class="math math-display" id="eq-6.3" data-index="426" data-tex="\[
+ S_{u*v}=C_h,\qquad S_{u_i*v}=C_{h_i}.
+ \tag{6.3}
+\]">\[
+ S_{u*v}=C_h,\qquad S_{u_i*v}=C_{h_i}.
+ \tag{6.3}
+\]</span>
+<p>By Lemma 2.1, <span class="math" data-index="427" data-tex="\(A(u_i*v)\subset A(u_i)\)">\(A(u_i*v)\subset A(u_i)\)</span>. These output singular supports are therefore pairwise disjoint. Bilinearity gives <span class="math" data-index="428" data-tex="\(u*v=\sum_i(u_i*v)\)">\(u*v=\sum_i(u_i*v)\)</span>. Lemma 2.2 then yields</p>
+<span class="math math-display" id="eq-6.4" data-index="429" data-tex="\[
+ A(u*v)=\bigcup_i A(u_i*v),\qquad
+ C_h=\operatorname{conv}\bigcup_i C_{h_i}.
+ \tag{6.4}
+\]">\[
+ A(u*v)=\bigcup_i A(u_i*v),\qquad
+ C_h=\operatorname{conv}\bigcup_i C_{h_i}.
+ \tag{6.4}
+\]</span>
+<p>The second equality follows by taking convex hulls in the first and using (6.3). Taking a convex hull of the union of the individual convex hulls gives the same set as taking the convex hull of the original union. There are only finitely many compact sets, so this convex hull is compact and needs no extra closure. Empty sets can be omitted; if all are empty, both sides are empty.
+Taking support functions in (6.4) proves (6.1), including the all-collapsed case.</p>
+<p><em>Proof of the family identity.</em> For each <span class="math" data-index="430" data-tex="\(h\in\mathcal J(u)\)">\(h\in\mathcal J(u)\)</span>, extend its profile to a joint tuple containing every <span class="math" data-index="431" data-tex="\(u_i\)">\(u_i\)</span>, using the finite projection theorem. Formula (6.1) puts <span class="math" data-index="432" data-tex="\(h\)">\(h\)</span> in the right side of (6.2).
+Conversely a tuple in <span class="math" data-index="433" data-tex="\(\mathcal J(u_1,\ldots,u_k)\)">\(\mathcal J(u_1,\ldots,u_k)\)</span> can be extended to include <span class="math" data-index="434" data-tex="\(u\)">\(u\)</span>. The prescribed component profiles are retained on a further subsequence. Its added indicator <span class="math" data-index="435" data-tex="\(h\)">\(h\)</span> satisfies (6.1), so the maximum is an actual member of <span class="math" data-index="436" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span>. This proves the opposite inclusion. <span class="math" data-index="437" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem concerns the indicators of profiles on the same frequencies. It does not assert addition of normalized logarithms for a sum, or pointwise dominance of one Fourier summand at every complex frequency. Without separate singularities the conclusion can fail: <span class="math" data-index="438" data-tex="\(u_1=\delta_0\)">\(u_1=\delta_0\)</span> and <span class="math" data-index="439" data-tex="\(u_2=-\delta_0\)">\(u_2=-\delta_0\)</span> each have indicator zero, while their zero sum has only the collapsed indicator.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, 2021. Background on compact support, entire Fourier transforms and convolution; its normalization differs from (1.1).</li>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/">245B, Notes 9: The Baire category theorem and its Banach space consequences</a>, 2009. Background on the complete frequency-selective construction used in the preceding lesson.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983. Compact distributions, singular support and polynomial Fourier transforms.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI. Isolated support points and convolution profile geometry. The local calculus,common-core argument,atomic construction and finite joint maximum formula are proved above.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/isolated-atoms-and-separated-singularities.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L165/isolated-atoms-and-profile-maxima-formal.md" download>isolated-atoms-and-profile-maxima-formal.md</a></li><li><a href="reproduce/L165/isolated-atoms-and-profile-maxima-learner.md" download>isolated-atoms-and-profile-maxima-learner.md</a></li><li><a href="reproduce/L165/make_figures210.py" download>make_figures210.py</a></li><li><span class="unlinked">check_numerics210.py</span></li><li><a href="reproduce/L165/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L165/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L165/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L165/figures/geometry210.json" download>figures/geometry210.json</a></li><li><a href="reproduce/L165/figures/isolated-atoms-and-relative-boundaries.png" download>figures/isolated-atoms-and-relative-boundaries.png</a></li><li><a href="reproduce/L165/figures/isolated-atoms-and-relative-boundaries.svg" download>figures/isolated-atoms-and-relative-boundaries.svg</a></li><li><a href="reproduce/L165/figures/separate-singularities-and-cancellation.png" download>figures/separate-singularities-and-cancellation.png</a></li><li><a href="reproduce/L165/figures/separate-singularities-and-cancellation.svg" download>figures/separate-singularities-and-cancellation.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

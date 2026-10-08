@@ -1,6 +1,6 @@
 # Original proof of the modular fundamental theorem at arbitrary Hilbert-algebra scope
 
-Reconstruction, 2026-10-04. This is a complete deduction from the precise earlier programme contracts listed below. No external citation is an input to the argument. Freely readable sources are audited separately in the free-source record in [core-source-lineage.json](../core-source-lineage.json); their existence does not replace any proof below.
+Reconstruction, 2026-10-04. This is a complete deduction from the precise earlier programme contracts listed below. No external citation is an input to the argument. Freely readable sources are audited separately in the free-source record in core-source-lineage.json; their existence does not replace any proof below.
 
 The statement covers the full completion of every left Hilbert algebra on an arbitrary Hilbert space, both von Neumann algebras, every bounded multiplication vector, and faithful normal semifinite weights. It has no state, cyclic-vector, separability or sigma-finiteness hypothesis.
 

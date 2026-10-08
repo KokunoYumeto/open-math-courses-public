@@ -9,21 +9,24 @@ Let \(X\) be a real analytic manifold of dimension \(n\), Hausdorff and countabl
 \tag{1}
 \]
 
-Conic means invariant under every positive fibre dilation. Isotropic means \(\alpha|_A=0\) on the regular locus of the subanalytic set \(A\). We use the singular one-form calculus in Subanalytic sets and limiting tangent directions and the conic image theorem in Conic subanalytic images and isotropic dimension. There are no sheaf coefficients in this lesson.
+Conic means invariant under every positive fibre dilation. Isotropic means \(\alpha|_A=0\) on the regular locus of the subanalytic set \(A\). We use the singular one-form calculus in [Subanalytic sets and limiting tangent directions](subanalytic-sets-and-limiting-tangent-directions.md#one-forms-on-a-singular-set) and the conic image theorem in [Conic subanalytic images and isotropic dimension](conic-subanalytic-images-and-isotropic-dimension.md#linear-images-including-changing-rank). The [proper-closure set calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis), [pair normal-cone construction](subanalytic-sets-and-limiting-tangent-directions.md#the-signed-normal-cone-prerequisite), and [subset, closure and locally finite union rules](subanalytic-sets-and-limiting-tangent-directions.md#analytic-maps-and-locally-finite-unions) supply the other set and one-form operations used below. There are no sheaf coefficients in this lesson.
 
 The conormal interpretation of subanalytic isotropic sets is developed by Masaki Kashiwara and Pierre Schapira in [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985). The proofs below obtain a finite conormal-closure cover by decreasing projection rank and treat a prescribed base through its critical values. All bars below denote closure in the indicated ambient manifold.
 
-## Source account: submersion witnesses and decreasing projection rank {#source-account}
+<a id="source-account"></a>
+<a id="source-account-submersion-witnesses-and-decreasing-projection-rank-source-account"></a>
+
+## Source account: submersion witnesses and decreasing projection rank
 
 Kashiwara and Schapira, [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Proposition 8.2.3, pp. 144–145, place a closed conic subanalytic isotropic set inside the total conormal of a Whitney real-analytic stratification. Their proof first chooses compatible Whitney stratifications of the cotangent set and its projection for which each stratum map is a submersion. Canonical-form vanishing then forces every covector to annihilate the tangent space of the corresponding base stratum. Equation (9) below uses precisely this tangent-lifting mechanism. The source adopts locally closed subanalytic sets in §8.2, p. 143; the present argument separately specifies its nonclosed remainders and generalized conormals on arbitrary subanalytic bases.
 
 The proof organization here does not use that stratified-map existence theorem as its input. Bounded tangent witnesses first make rank loci and conormals subanalytic through proper-closure projection. At maximum projection rank, the analytic critical-value argument and constant-rank calculus produce a dense submersion locus over a smooth base. Removing the closed conormal piece removes every regular point of that rank, and the remaining set is used without closing it. Rank then strictly decreases. The result is a finite family of possibly disconnected smooth bases; they are not asserted to be strata or to satisfy the frontier rule. For a prescribed base, the proof instead removes the relative closures of critical-value images on each regular dimension part and passes tangent annihilation to singular cotangent limits.
 
-Bierstone and Milman, [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), Publications Mathématiques de l’IHÉS 67 (1988), Definition 3.1, Lemmas 3.4–3.6 and Remark 3.5, pp. 16–18, supply the local-lift, rank and dimension framework. Their proof of the complement theorem, Theorem 3.10 on p. 19, uses fibre cutting and induction; Theorem 7.2 on pp. 37–38 treats the fixed-dimensional smooth loci using further analytic-locus results. These are pertinent foundational comparisons, not a proof of all the dimension and singular-form rules assumed below. In particular, density alone is never used as a substitute for the stated strict dimension drop.
+Bierstone and Milman, [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), Publications Mathématiques de l’IHÉS 67 (1988), Definition 3.1, Lemmas 3.4 and 3.6 and Remark 3.5, pp. 16–18, supply the local-lift, rank and dimension framework. Their proof of the complement theorem, Theorem 3.10 on p. 19, uses fibre cutting and induction; Theorem 7.2 on pp. 37–38 treats the fixed-dimensional smooth loci using further analytic-locus results. These are pertinent foundational comparisons, not a proof of all the dimension and singular-form rules assumed below. In particular, density alone is never used as a substitute for the stated strict dimension drop.
 
 The analytic critical-value theorem A1–A8 has its full source-dimension proof in this lesson. A nonzero maximum-rank minor separates a constant-rank region; its zero set is covered by countably many regular derivative hypersurfaces. Each original critical point is still critical for the restricted map, permitting induction. Lower-dimensional images are null by the explicit cube estimate. Neither of the passages just cited is being credited with this exact proof, and the argument supplies neither a locally finite hypersurface partition nor a subanalytic critical-value image. In the generic-base application, conic projection separately supplies subanalyticity, which is needed to turn the null exceptional image into a nowhere-dense relative closure.
 
-The order is analytic critical values, bounded witnesses, rank removal, the conormal-cover equivalence, and the prescribed-base statement, with six complete solved tests. The closed-cover theorem and the separate nonclosed generic-base corollary retain their stated scopes. Independently expressed programme text is dedicated under CC0 1.0 Universal; no human prose, figure or exercise sequence is imported or relicensed. No comparison with an unread treatment is claimed. Full subanalytic dimension, regularity, singular-form and analytic-calculus foundations remain explicit transitive obligations.
+The order is analytic critical values, bounded witnesses, rank removal, the conormal-cover equivalence, and the prescribed-base statement, with six complete solved tests. The closed-cover theorem and the separate nonclosed generic-base corollary retain their stated scopes. Independently expressed programme text is dedicated under CC0 1.0 Universal; no human prose, figure or exercise sequence is imported or relicensed.
 
 ## The precise dimension prerequisite
 
@@ -37,9 +40,14 @@ We need the following further part of the underlying subanalytic dimension theor
 
 Dimension is monotone under inclusion and agrees with manifold dimension on an analytic submanifold. The regular locus is open in \(E\); its parts of each fixed dimension are subanalytic and open and closed in the regular locus. We use \(\dim\varnothing=-\infty\).
 
-These are explicit prerequisite facts, rather than consequences asserted merely from density. A dense regular locus by itself would not prove the strict inequality in (2). The dimension and regularity framework is developed by Edward Bierstone and Pierre D. Milman in [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), Publications Mathématiques de l’IHÉS 67 (1988). The full underlying dimension proofs remain prerequisites. Analytic Taylor expansion, the inverse/implicit-function theorem and the constant-rank theorem remain the analytic-calculus inputs. The [analytic critical-value theorem](#analytic-critical-values) needed below is proved directly here, with no previously chosen Whitney stratification. These elementary calculus results are prerequisites, distinct from the analytic critical-value argument proved below.
+The [intrinsic regular-locus theorem](subanalytic-sets-and-limiting-tangent-directions.md#every-intrinsic-regular-point-in-each-dimension) identifies regular dimension with analytic-cell dimension and proves subanalyticity of every regular dimension part. The [cell-dimension calculus](../../../analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#dimension-fibrewise-closure-and-the-frontier) and [strict frontier theorem](../../../analytic-finiteness-and-preparation/src/analytic-finiteness-for-preparation.md#strict-frontier-decrease) give a direct verification of (2). Shrink to the interior of a compact coordinate box contained in a bounded witness chart. The proved local-to-global comparison makes the trace in this box globally subanalytic, so it admits a finite analytic-cell partition. Let \(d\) be the largest cell dimension. The lower-dimensional cells already have dimension less than \(d\). For a dimension-\(d\) cell \(C\), its intersection with the closure of any other cell \(D\) lies in \(\overline D\setminus D\), since the cells are disjoint. Strict frontier decrease makes each such intersection lower-dimensional. Outside these finitely many intersections, an ambient neighbourhood meets no other cell, so the trace agrees there with the embedded analytic manifold \(C\); every such point is regular. The singular part is therefore contained in a finite union of lower-dimensional sets, proving the strict inequality. Closure preserves the trace's dimension by the same frontier theorem. Shrinking inside the chart identifies its local closure with the ambient closure of the original set. Applying this at every point proves the closure equality and the singular-dimension bound on the manifold. For dimension zero the exceptional union is empty, as required.
 
-## Analytic critical values by source-dimension descent {#analytic-critical-values}
+A dense regular locus by itself would not prove the strict inequality in (2). The dimension and regularity framework is developed by Edward Bierstone and Pierre D. Milman in [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), Publications Mathématiques de l’IHÉS 67 (1988). The finite-cell, frontier and intrinsic regular-locus results named above are the dimension inputs. Analytic Taylor expansion and the proved [real analytic inverse, implicit and constant-rank coordinates](subanalytic-sets-and-limiting-tangent-directions.md#real-analytic-inverse-implicit-and-constant-rank-coordinates) are the analytic-calculus inputs. The [analytic critical-value theorem](#analytic-critical-values) needed below is proved directly here, with no previously chosen Whitney stratification. These elementary calculus results are prerequisites, distinct from the analytic critical-value argument proved below.
+
+<a id="analytic-critical-values"></a>
+<a id="analytic-critical-values-by-source-dimension-descent-analytic-critical-values"></a>
+
+## Analytic critical values by source-dimension descent
 
 **Analytic critical-value theorem.** Let \(f:M\to N\) be an analytic map between finite-dimensional Hausdorff analytic manifolds with countable atlases. Let \(e=\dim N\), treating the open components of each target dimension separately if necessary. The critical-value set
 
@@ -52,7 +60,10 @@ has Lebesgue measure zero in every target coordinate chart. No properness, suban
 
 We supply three elementary steps before proving the theorem.
 
-### Step A.1. Lower-dimensional smooth images {#critical-values-null-images}
+<a id="critical-values-null-images"></a>
+<a id="step-a1-lower-dimensional-smooth-images-critical-values-null-images"></a>
+
+### Step A.1. Lower-dimensional smooth images
 
 Suppose \(r<e\), and \(\psi\) is a \(C^1\) map from an open subset of \(\mathbb R^r\) to \(\mathbb R^e\). Cover its domain by countably many compact cubes contained in that open subset. On one such cube \(K\), enlarge it slightly within the domain and bound the derivative there by \(L\). Subdivide \(K\) into cubes of side at most \(\delta\). At most \(C_K\delta^{-r}\) cubes are needed for \(0<\delta\le1\). The mean-value estimate puts the image of each cube in an \(e\)-cube of side at most \(2(1+L)\sqrt r\,\delta\). Its outer measure is therefore bounded above by
 
@@ -63,7 +74,10 @@ Suppose \(r<e\), and \(\psi\) is a \(C^1\) map from an open subset of \(\mathbb 
 
 Let \(\delta\downarrow0\). This proves that \(\psi(K)\) has measure zero; countable subadditivity gives the assertion on the whole domain. The case \(r=0\) is a point on each chart and is immediate. Thus every embedded \(r\)-dimensional smooth submanifold of \(\mathbb R^e\) has measure zero, by its countable parametrization charts. Coordinate changes preserve zero outer measure: on a countable cover by relatively compact coordinate balls they are Lipschitz, and the same cube-cover estimate in equal dimensions multiplies the total cover volume by a bounded constant.
 
-### Step A.2. A derivative hypersurface cover {#critical-values-hypersurfaces}
+<a id="critical-values-hypersurfaces"></a>
+<a id="step-a2-a-derivative-hypersurface-cover-critical-values-hypersurfaces"></a>
+
+### Step A.2. A derivative hypersurface cover
 
 Let \(h\) be a non-identically-zero analytic function on a connected open coordinate set \(U\subset\mathbb R^m\), where \(m\ge1\). Define, for each multi-index \(\beta\in\mathbb N^m\),
 
@@ -89,11 +103,17 @@ The nonzero germ assertion needed here follows directly from analyticity. The se
 
 Hence \(p\in H_\beta\). This proves (A4). The hypersurfaces may overlap and may include points outside \(\{h=0\}\). They need not form a partition or a locally finite family. Only their countability and the dimension decrease will be used.
 
-### Step A.3. Constant-rank images {#critical-values-constant-rank}
+<a id="critical-values-constant-rank"></a>
+<a id="step-a3-constant-rank-images-critical-values-constant-rank"></a>
+
+### Step A.3. Constant-rank images
 
 If a \(C^1\) map has constant rank \(r<e\) on an open source manifold, the constant-rank theorem puts its image near every source point in an embedded \(r\)-dimensional target submanifold. A countable source subcover and A.1 show that its whole image has measure zero in target coordinates. This argument is valid for a nonproper map and an unbounded source.
 
-### Induction on source dimension {#critical-values-dimension-induction}
+<a id="critical-values-dimension-induction"></a>
+<a id="induction-on-source-dimension-critical-values-dimension-induction"></a>
+
+### Induction on source dimension
 
 **Proof.** We induct on the source dimension \(m\). A zero-dimensional source with a countable atlas has countably many points. For \(e>0\), its image has measure zero. For \(e=0\) there are no critical points, in every source dimension.
 
@@ -128,7 +148,7 @@ The use of (A7) is essential: although \(H_\beta\) need not be contained in the 
 
 **Dense regular lifts.** If \(f:M\to N\) is analytic and onto, then the set of \(y\in N\) having a lift \(p\) with surjective \(df_p\) is dense in \(N\). For \(e>0\), every target point outside the null set \(f(C_f)\) has a lift by surjectivity, and each of its lifts is regular. Every nonempty target open set has positive coordinate measure, so this complement is dense. For \(e=0\), every differential onto the zero tangent space is surjective. We have asserted the existence of dense regular lifts, not that the differential is onto everywhere.
 
-![Schematic of the analytic critical-value proof by decreasing source dimension.](assets/analytic-critical-values.svg)
+![Schematic of the analytic critical-value proof by decreasing source dimension.](../../assets/analytic-critical-values.svg)
 
 *Proof schematic.* On a connected source chart, a nonzero maximum-rank minor separates the constant-rank part from the remaining critical points. Formulas (A3)–(A4) give a countable analytic-hypersurface cover of the latter. The restriction inequality (A7) permits induction on source dimension, and (A8) then controls their images. The hypersurfaces can overlap; they are not claimed to be a stratification. See [Steps A.1–A.3 and the induction](#analytic-critical-values) for the complete argument.
 
@@ -155,7 +175,10 @@ for which the vectors \(dg_pv_i\) are linearly independent. Independence is an a
 
 For \(g=\pi\) and positive-conic \(M\subset T^*X\), these rank loci are also positive-conic. A fibre dilation preserves \(M\), and its composition with \(\pi\) equals \(\pi\). Thus it carries the restricted differential to a map of the same rank.
 
-## Conormals from bounded tangent witnesses {#bounded-conormal-witnesses}
+<a id="bounded-conormal-witnesses"></a>
+<a id="conormals-from-bounded-tangent-witnesses-bounded-conormal-witnesses"></a>
+
+## Conormals from bounded tangent witnesses
 
 Let \(G\subset X\) be an analytic submanifold that is subanalytic in \(X\), and suppose the programme tangent/normal-cone calculus has supplied subanalyticity of \(TG\subset TX\). Work in an analytic coordinate chart and put
 
@@ -335,7 +358,10 @@ Finally take any \(p\in A\) over \(Y_0\). Choose regular points \(p_k\in A_{\mat
 
 This proof does not require a surjective projection onto all of \(Y\). If the cotangent set has no fibres over a generic part of \(Y\), the assertion there holds directly; critical values account for its smaller projected parts.
 
-### Nonclosed isotropic inputs {#nonclosed-generic-conormality}
+<a id="nonclosed-generic-conormality"></a>
+<a id="nonclosed-isotropic-inputs-nonclosed-generic-conormality"></a>
+
+### Nonclosed isotropic inputs
 
 **Corollary.** The conclusion (17) remains true when the positive-conic subanalytic isotropic set \(\Lambda\) is not closed.
 

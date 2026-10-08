@@ -4,7 +4,7 @@
 
 The discriminant detects a bad fibre in the base. A different is an ideal upstairs, so it can distinguish the primes of the extension. There are three constructions: annihilate the diagonal, differentiate the relations, or dualize the trace. Their agreement for Dedekind extensions is a theorem, not part of their definitions.
 
-We assume Orders and the discriminant theorem, finite presentations, Kähler differentials and Fitting ideals; the differential background belongs to **Kähler differentials**. The scheme interpretation of vanishing differentials is developed in Unramified morphisms, Section 2. Here we work with finite ring maps. The arithmetic different-exponent theorem is stated precisely below. Basic references are [Stacks], [Noether] and [Sutherland].
+We assume Orders and the discriminant theorem, finite presentations, Kähler differentials and Fitting ideals; the differential background, including localization and the conormal presentation, is proved in Kähler differentials, Theorems 2.1–2.2, 3.3 and 5.1. The scheme interpretation of vanishing differentials is developed in Unramified morphisms, Proposition 1.1 and Theorem 3.3. Here we work with finite ring maps. The arithmetic different-exponent theorem is proved below, including imperfect residue fields. Basic references are [Stacks], [Noether] and [Sutherland].
 
 ## 1. Three constructions with different inputs
 
@@ -85,42 +85,184 @@ No nonzerodivisor assumption on \(f'\) is needed for the first two computations.
 
 There is a canonical isomorphism \(I/I^2\simeq\Omega_{B/A}\), sending the class of \(b\otimes1-1\otimes b\) to \(db\). For a prime \(\mathfrak q\subset B\), let \(\mathfrak Q=\mu^{-1}(\mathfrak q)\subset C\). If \(\Omega_{B/A,\mathfrak q}=0\), then \(I_{\mathfrak Q}/I_{\mathfrak Q}^2=0\). Since \(I\) is finite and \(I_{\mathfrak Q}\) lies in the local maximal ideal, Nakayama gives \(I_{\mathfrak Q}=0\). Clearing denominators for its finitely many generators produces \(h\in\operatorname{Ann}I\) with \(h\notin\mathfrak Q\), so \(\mu(h)\notin\mathfrak q\). Thus \(\mathfrak D_N\) is a unit at \(\mathfrak q\). The converse follows because such an \(h\) annihilates \(I\) and becomes invertible in \(C_{\mathfrak Q}\).
 
-For a finite presented module \(M\) over a local ring, \(\operatorname{Fitt}_0(M)\) is the unit ideal exactly when \(M=0\): a unit maximal minor makes the presentation surjective, and the reverse direction is immediate. Therefore \(\mathfrak D_K\) has the same support. For a finite presented algebra, vanishing of relative differentials at a point is the unramified criterion [Stacks, Tags 0BVU and 0BVY]. We have proved the corresponding support statements for \(\mathfrak D_N\) and \(\mathfrak D_K\).
+For a finitely presented module \(M\) over a local ring, \(\operatorname{Fitt}_0(M)\) is the unit ideal exactly when \(M=0\): a unit maximal minor makes the presentation surjective, and the reverse direction is immediate. Therefore \(\mathfrak D_K\) has the same support. For an algebra of finite presentation, the equivalence of vanishing relative differentials with unramifiedness at a point is proved in Unramified morphisms, Theorem 3.3; compare [Stacks, Tags 0BVU and 0BVY]. We have proved the corresponding support statements for \(\mathfrak D_N\) and \(\mathfrak D_K\).
 
-For finite flat maps, the different defined by the trace-dual module has support exactly the non-étale locus [Stacks, Tags 0BW5 and 0BW9]. Flatness turns unramifiedness into étaleness. This trace-dual support theorem is a stated prerequisite; it does not assert equality of all three ideals for every finite flat algebra.
-
-**Proposition 4.1.** If \(A\) is a normal Noetherian domain and \(B\) is finite projective with finite separable generic algebra, then \(\mathfrak D_N\subseteq\mathfrak D_D\).
-
-**Proof.** An element \(\alpha=\sum u_i\otimes v_i\) annihilating \(I\) defines
+**Proposition 4.1.** If \(A\) is a normal Noetherian domain and \(B\) is finite projective with finite separable generic algebra, then
 
 \[
- F_\alpha:\operatorname{Hom}_A(B,A)\to B,
- \qquad \lambda\mapsto\sum u_i\lambda(v_i).
+ \mathfrak D_N=\mathfrak D_D.
 \]
 
-The relation \((b\otimes1)\alpha=(1\otimes b)\alpha\) makes it \(B\)-linear. Generically, extend scalars to split the separable algebra into copies of a field. An element annihilating the diagonal ideal has only diagonal components; contraction with the sum-of-components trace functional gives exactly its multiplication image. Returning by faithful scalar extension, and identifying the dual with \(B^*\), we obtain \(F_\alpha(x)=\mu(\alpha)x\) for every \(x\in B^*\). Its values lie in \(B\), so \(\mu(\alpha)B^*\subseteq B\). Every generator of the Noether different belongs to the Dedekind different. \(\square\)
+In particular the containment \(\mathfrak D_N\subseteq\mathfrak D_D\) holds without a complete-intersection assumption.
+
+**Proof.** Put \(B^\vee=\operatorname{Hom}_A(B,A)\). Finite projectivity gives the isomorphism
+
+\[
+ B\otimes_A B\longrightarrow\operatorname{Hom}_A(B^\vee,B),
+ \qquad \sum_i u_i\otimes v_i\longmapsto
+ \left(\lambda\longmapsto\sum_i u_i\lambda(v_i)\right).
+\tag{4.1}
+\]
+
+To verify surjectivity and injectivity explicitly, choose a finite dual basis \(v_j,\lambda_j\) with \(b=\sum_j\lambda_j(b)v_j\). The inverse sends \(F\) to \(\sum_j F(\lambda_j)\otimes v_j\); substituting the dual-basis identity in both composites gives the identity.
+
+The ideal \(I\) is generated by \(b\otimes1-1\otimes b\). Under (4.1), multiplication by this difference sends \(F\) to \(bF-F\circ b\), where \((b\lambda)(v)=\lambda(bv)\). Therefore
+
+\[
+ \operatorname{Ann}_C I
+ \cong\operatorname{Hom}_B(B^\vee,B)
+ =\operatorname{Hom}_B(B^*,B).
+\tag{4.2}
+\]
+
+The last equality uses the generic trace identification. A \(B\)-linear map from \(B^*\) to \(B\) extends to an \(L\)-linear map from \(L\) to itself, hence is multiplication by a unique \(x\in L\). Its values are in \(B\) exactly when \(xB^*\subseteq B\), namely when \(x\in\mathfrak D_D\).
+
+It remains to check which element the multiplication map \(\mu\) associates to (4.2). Extend the generic field to split \(L\) into copies of a field. The diagonal annihilator consists of tensors with only diagonal components. Contracting such a tensor against the sum-of-components trace functional yields its diagonal components, exactly its multiplication image. Thus for an annihilating tensor \(\alpha\), its associated map on \(B^*\) is multiplication by \(\mu(\alpha)\). Faithful field extension and torsion-freeness descend this identity. Formula (4.2) now says that the image of \(\mu\) is precisely \(\mathfrak D_D\). \(\square\)
+
+Consequently, under these trace hypotheses, the Dedekind different is a unit at a point precisely when \(\Omega_{B/A}\) vanishes there, by the diagonal-support argument above. For a finite flat map of Noetherian rings, this is exactly the étale locus: the equivalence of flatness plus vanishing differentials with étaleness has a full proof in Étale morphisms and their local structure, Lemma 1.2 and Theorem 1.3. This proves the trace-dual support assertion in the setting where our Dedekind different is defined. It does not assert equality with the Kähler different for every finite flat algebra; that equality will use the regular-sequence presentation.
 
 ## 5. Equality for finite Dedekind extensions
 
+The comparison is proved first for a finite local DVR map and then descended from completed factors. The two preliminary lemmas supply the determinant and the presentation needed when residue extensions are inseparable.
+
 **Lemma 5.1.** A finite extension of complete DVRs \(R\subset S\) with separable residue extension is monogenic over \(R\).
 
-**Proof.** Write \(k\subset\ell\) for the residue fields. Choose a primitive element \(\bar u\) of \(\ell/k\), lift its monic separable polynomial to \(h\in R[T]\), and apply Hensel's lemma in \(S\) to obtain \(u\in S\) with \(h(u)=0\) and residue \(\bar u\). Let \(\pi\) be a uniformizer of \(S\), and put \(\theta=u+\pi\). Taylor expansion gives \(h(\theta)=h'(u)\pi\pmod{\pi^2}\), so \(h(\theta)\) is a uniformizer too. The residue of \(\theta\) generates \(\ell/k\).
+**Proof.** Write \(k\subset\ell\) for the residue fields. Choose a primitive element \(\bar u\) of \(\ell/k\), using the finite separable primitive-element proof in Algebraic integers and rings of integers, Section 1, “Separable embeddings and a primitive element”, lift its monic separable polynomial to \(h\in R[T]\), and obtain a root \(u\in S\) with residue \(\bar u\) by the following direct lifting argument. Start with any lift \(u_0\). Its derivative is a unit. Set \(u_{r+1}=u_r-h(u_r)/h'(u_r)\); Taylor expansion makes the valuation of the error at least double at each step, while the derivative remains a unit. The sequence is Cauchy, and completeness gives the asserted root. Uniqueness with this residue follows from \(h(v)-h(u)=(v-u)(h'(u)+(v-u)w)\), whose second factor is a unit. This is the simple-root form of Hensel's lemma, proved here. Let \(\pi\) be a uniformizer of \(S\), and put \(\theta=u+\pi\). Taylor expansion gives \(h(\theta)=h'(u)\pi\pmod{\pi^2}\), so \(h(\theta)\) is a uniformizer too. The residue of \(\theta\) generates \(\ell/k\).
 
 Let \(e\) be the ramification index. Every element of \(S/\pi_R S=S/(\pi^e)\) is a sum of terms consisting of a lift of a residue element times a power of \(h(\theta)\), of exponents less than \(e\): subtract a residue representative and repeat in the successive quotients \((\pi^j)/(\pi^{j+1})\). Each residue representative can be chosen as a polynomial in \(\theta\) with coefficients in \(R\). Thus \(R[\theta]\) surjects onto \(S/\pi_R S\). The finite \(R\)-module \(S/R[\theta]\) is equal to its multiple by \(\pi_R\); Nakayama makes it zero. \(\square\)
 
-**Theorem 5.2.** For a finite extension of Dedekind domains \(A\subset B\) with separable fraction-field extension,
+**Lemma 5.1a (the determinant of the diagonal).** Let \(A\to P\) be a ring map and \(f_1,\ldots,f_n\) a regular sequence in \(P\). Suppose \(B=P/(f_1,\ldots,f_n)\) is flat over \(A\). Put \(Q=P\otimes_A B\), and suppose that the evaluation map \(Q\to B\) has kernel generated by a regular sequence \(g_1,\ldots,g_n\). Write
+
+\[
+ f_i\otimes1=\sum_j a_{ij}g_j.
+\]
+
+In \(C=B\otimes_A B\), the annihilator of the diagonal ideal is freely generated as a \(B\)-module by the image of \(\det(a_{ij})\).
+
+**Proof.** For a list \(h_1,\ldots,h_n\) in a ring \(T\), its Koszul complex has term \(\bigwedge^r T^n\) in degree \(r\), with differential
+
+\[
+ d(e_{i_1}\wedge\cdots\wedge e_{i_r})
+ =\sum_{s=1}^r(-1)^{s-1}h_{i_s}
+ e_{i_1}\wedge\cdots\widehat{e_{i_s}}\cdots\wedge e_{i_r}.
+\]
+
+For a regular list this resolves \(T/(h_1,\ldots,h_n)\). Here is the exactness argument: adjoining the last entry forms the mapping cone of multiplication by that entry on the preceding Koszul complex. Inductively the preceding complex has homology only in degree zero. The new cone has first homology equal to the kernel of that multiplication on the preceding quotient, and degree-zero homology equal to its cokernel. Regularity makes the kernel zero. This proves the assertion, including the empty list.
+
+Apply this to \(K=K_P(f)\) and \(M=K_Q(g)\). Both augmented complexes resolve the same \(P\)-module \(B\). All terms of \(M\) are flat over \(P\): for a \(P\)-module \(V\), tensoring with \(Q\) is \(V\otimes_A B\), which is exact. The coefficient matrix defines a \(P\)-linear map \(K\to M\), sending \(e_i\) to \(\sum_j a_{ij}e_j\) in degree one and using exterior powers in higher degrees. The displayed differential formula verifies that it is a chain map. On the augmentations it is the identity of \(B\).
+
+This map still induces an isomorphism on homology after tensoring over \(P\) with \(B\). To justify this step without assuming that \(B\) is flat over \(P\), its mapping cone is a bounded exact complex of flat \(P\)-modules. Every such complex remains exact after arbitrary tensoring. Indeed start at its lowest nonzero degree: the image onto that flat term has flat kernel, since in a short exact sequence with flat middle and quotient the kernel is flat. Continue upward. Each resulting short exact sequence has flat quotient, so tensoring preserves it. The kernel assertion itself follows by applying tensor to a diagram for an injection of modules: flatness of middle and quotient makes the kernel's tensor map injective.
+
+After tensoring, \(K\) has zero differentials and top homology \(B\). The top homology of \(M\otimes_P B\) consists exactly of those elements of \(C\) killed by every \(g_i\), hence is \(\operatorname{Ann}_C I\). The map on top exterior powers sends \(1\) to \(\det(a_{ij})\). It therefore identifies \(B\) with that annihilator. \(\square\)
+
+This is a proof of the diagonal determinant lemma often associated with Tate; compare [Stacks, Tag 0BWC]. The argument uses the explicit complexes, rather than importing a different formula as a premise.
+
+**Lemma 5.1b (a finite DVR map has a complete-intersection presentation).** Let \(R\subset S\) be a finite extension of DVRs, with the map local. There are generators \(b_1,\ldots,b_n\) of \(S\) as an \(R\)-algebra, a localization \(P=R[X_1,\ldots,X_n]_{\mathfrak n}\), and polynomials \(f_1,\ldots,f_n\) forming a regular sequence in \(P\), such that
+
+\[
+ P/(f_1,\ldots,f_n)=S,\qquad X_i\longmapsto b_i.
+\]
+
+No separability of the residue extension is required.
+
+**Proof.** Finite module generators also generate the algebra. Let \(\mathfrak n\) be the inverse image of the maximal ideal of \(S\) under the polynomial surjection. Elements outside \(\mathfrak n\) have unit images in the local ring \(S\), so localizing retains surjectivity. Write \(k\subset\ell\) for the finite residue extension.
+
+The local ring \(P\) is regular of dimension \(n+1\). One can see this directly, even at an inseparable residue point. Write \(\pi\) for the uniformizer of \(R\), and \(\bar b_i\) for the residues. The successive algebras \(k_j=k[\bar b_1,\ldots,\bar b_j]\) are fields, since they are finite domains over \(k\). Lift the coefficients of the monic minimal polynomial of \(\bar b_j\) over \(k_{j-1}\) to polynomials in the preceding variables over \(R\), obtaining a polynomial \(h_j\), monic in \(X_j\). Successively quotienting by \(\pi,h_1,\ldots,h_j\) gives \(k_j[X_{j+1},\ldots,X_n]\), before the indicated localization. Thus the ideals generated by these successive lists are prime, remain distinct in \(P\), and end in its maximal ideal. They give a chain of length \(n+1\) starting with zero. The maximal ideal has the \(n+1\) generators \(\pi,h_1,\ldots,h_n\), so the general bound of dimension by the number of maximal-ideal generators gives the reverse inequality. Its embedding dimension and dimension are both \(n+1\).
+
+Let \(J=\ker(P\to S)\). The surjection of cotangent spaces has target dimension one, since \(S\) is a DVR. Choose \(n\) elements of \(J\) whose classes give a basis of its kernel, and complete them to a basis of \(\mathfrak nP/(\mathfrak nP)^2\). They are part of a regular system of parameters. The full proof that these parameters are regular, that their successive quotients are regular local domains, and that a regular quotient's kernel is generated by the corresponding parameters is in Regular local rings, Theorem 1.1 and Proposition 1.4. In the present case the quotient by the chosen \(n\) elements is a dimension-one regular local domain, hence a DVR, mapping onto \(S\). A nonzero kernel would give a zero-dimensional quotient, since every nonzero ideal of a DVR contains a power of its uniformizer. Therefore the kernel is zero. Clear each chosen element's denominator, which is a unit of \(P\), to obtain the asserted polynomials \(f_i\); multiplying individual entries by units preserves the regular-sequence conditions. \(\square\)
+
+**Theorem 5.2 (the comparison theorem).** For a finite extension of Dedekind domains \(A\subset B\) with separable fraction-field extension,
 
 \[
  \mathfrak D_N=\mathfrak D_K=\mathfrak D_D.
 \]
 
-**Proof when residue extensions are separable.** Localize at a prime of \(A\), then complete. The finite algebra becomes a product of complete DVRs, one for each prime of \(B\) above it. Each is monogenic by Lemma 5.1, so Theorem 3.1 gives equality on every factor. The constructions commute with this flat base change: for \(\mathfrak D_N\) use Proposition 3.2; for \(\mathfrak D_K\) use the differential presentation and Fitting minors; for \(\mathfrak D_D\) use \(B^*\simeq\operatorname{Hom}_A(B,A)\) and finite presentation. Completion is faithfully flat over the localized DVR, so the equality descends. Equality at all base primes proves equality globally.
+**Proof for a finite local DVR extension.** Such an \(R\subset S\) is finite free over \(R\), since it is torsion-free over a PID. Use Lemma 5.1b. In \(P\otimes_R S\), put \(g_j=X_j-b_j\). They form a regular sequence: in the polynomial ring over \(S\), translation turns them into the coordinate variables, whose successive quotients are polynomial rings over \(S\); localization preserves their injectivity and their final quotient \(S\). They generate the kernel of evaluation to \(S\).
 
-**General residue fields.** A finite map between these regular one-dimensional rings is flat and a local complete intersection. Flatness follows from torsion-freeness over each DVR. For the second assertion, a local polynomial presentation has a regular ambient local ring and regular quotient; its kernel is generated by a regular sequence [Stacks, Tag 00NR]. The finite flat local complete intersection different theorem [Stacks, Tags 0BWD and 0BWG], obtained from Tate's determinant lemma [Stacks, Tag 0BWC], identifies the Noether and Kähler differents. Such a map has invertible relative dual, so [Stacks, Tags 0BW5 and 0BW6] identifies these with the Dedekind different. These precisely stated local complete intersection theorems are the cited inputs for the inseparable-residue case. \(\square\)
+Polynomial subtraction, variable by variable, writes
 
-For relations \(f_1,\ldots,f_n\) in a finite flat local complete intersection presentation, Tate's formula gives the different as the Jacobian determinant \(\det(\partial f_i/\partial x_j)\). This is the multivariable form of the difference quotient in Section 3. It explains Noether's ideal differentiation: differentiate the ideal of relations, with presentation independence supplied by the theorem.
+\[
+ f_i(X)-f_i(b)=\sum_j a_{ij}(X,b)(X_j-b_j),
+ \qquad a_{ij}(b,b)=\frac{\partial f_i}{\partial X_j}(b).
+\]
 
-The arithmetic exponent theorem says, for finite separable extensions of DVRs, that \(v_{\mathfrak P}(\mathfrak D_D)\ge e_{\mathfrak P}-1\), with equality exactly when the residue extension is separable and the ramification index is prime to the residue characteristic. The arithmetic treatment belongs to **The different and the discriminant**. For number fields see [Sutherland, Theorem 12.27] and, with a complete proof for extensions of the rational numbers, [Conrad, Theorem 4.13]; the argument covering imperfect residue fields is given in Normal integral bases in tame extensions, Section 2, after Theorem 2.1. We state the exponent theorem here as an input rather than restrict its scope to finite residue fields. The norm identity for the discriminant is [Sutherland, Theorem 12.17].
+Here \(f_i(b)=0\). Lemma 5.1a says that the annihilator of the diagonal ideal is generated by the image of \(\det(a_{ij})\). Its multiplication image is therefore
+
+\[
+ \mathfrak D_N=
+ \left(\det\left(\frac{\partial f_i}{\partial X_j}(b)\right)\right).
+\tag{5.1}
+\]
+
+The conormal presentation gives
+
+\[
+ S^n\xrightarrow{(\partial f_i/\partial X_j)^{\mathsf T}}S^n
+ \longrightarrow\Omega_{S/R}\longrightarrow0.
+\]
+
+Localization of the polynomial algebra does not change this presentation. Its zeroth Fitting ideal is the determinant ideal in (5.1), proving \(\mathfrak D_K=\mathfrak D_N\). Proposition 4.1 proves \(\mathfrak D_N=\mathfrak D_D\). This argument works with arbitrary residue fields and in every characteristic, provided the generic extension is separable.
+
+**Descent to the Dedekind extension.** Localize at a nonzero prime \(\mathfrak p\) of \(A\), obtaining a DVR \(R\) and the finite semilocal algebra \(T=B\otimes_A R\). Its maximal ideals are the finitely many primes over \(\mathfrak p\). The radical of \(\pi T\) is their intersection; some power of that radical lies in \(\pi T\), because \(T/\pi T\) is Artinian. Thus their powers and the powers of \(\pi T\) define cofinal filtrations. The Chinese remainder theorem and completion give
+
+\[
+ T\otimes_R\widehat R
+ =\prod_{\mathfrak P\mid\mathfrak p}\widehat{B_{\mathfrak P}}.
+\tag{5.2}
+\]
+
+Each factor is a complete DVR: in the completion of a DVR, a nonzero element has a first nonzero uniformizer coefficient, and division by the corresponding power of the uniformizer leaves a unit. Each factor is finite over \(\widehat R\), being a direct summand of the finite module on the left, and the map is local. Its fraction field is a separable factor of the base-changed generic algebra.
+
+The exact finite-module completion and faithful flatness used here are proved in Completion, Theorems 3.1 and 3.2. Proposition 3.2 gives base change for \(\mathfrak D_N\). The differential presentation and its minors give base change for \(\mathfrak D_K\). For the trace construction, the dual of the finite free module commutes with base change, and the trace is the trace of its multiplication matrix. The colon condition also commutes with this flat extension: choose a nonzero \(c\in R\) with \(cT^*\subset T\); if \(w_1,\ldots,w_r\) generate \(cT^*\), then
+
+\[
+ \mathfrak D_D=\ker\left(T\longrightarrow(T/cT)^r,
+ \ b\longmapsto(bw_i\bmod cT)_i\right).
+\]
+
+Flatness preserves this finite kernel. All three ideals of a product algebra are the products of those in the factors. For the Noether ideal, the off-diagonal tensor factors have zero annihilator, since the diagonal ideal is the whole ring on them. Apply the local proof factor by factor in (5.2), then descend by faithful flatness. Equality at all base primes proves the global equality. At the generic point all three ideals are the unit ideal by separability. If the base is a field, that generic calculation is the entire assertion. \(\square\)
+
+Lemma 5.1 remains a useful simpler route when the residue fields are separable: its monogenic presentation reduces (5.1) to \(f'(\theta)\), exactly as in Section 3. The multivariable formula shows what replaces the single derivative at an inseparable residue point. Its ideal is independent of the presentation because it equals the intrinsically defined ideals above; no comparison theorem is left as a cited premise.
+
+**Theorem 5.3 (the different exponent and tameness).** For a finite separable local extension of DVRs \(R\subset S\), let \(e\) be its ramification index and \(d=v_S(\mathfrak D_D)\). Then
+
+\[
+ d\ge e-1,
+ \qquad d=e-1
+ \quad\Longleftrightarrow\quad
+ \ell/k\text{ is separable and }e\ne0\text{ in }k.
+\]
+
+Thus equality means tame ramification; in residue characteristic zero the condition on \(e\) is automatic.
+
+**Proof.** Complete if necessary, as in Theorem 5.2. Put \(\mathfrak m_S=(t)\) and let \(\pi\) be the uniformizer of \(R\), so \(\pi S=t^eS\). The nondegenerate trace pairing identifies \(S^*\) with a finite full lattice in the fraction field. As a fractional ideal of the DVR \(S\), it is \(t^{-d}S\).
+
+If \(z\in t^{-(e-1)}S\) and \(y\in S\), then \(b=\pi zy\in tS\). Multiplication by \(b\) on \(S/\pi S\) is nilpotent, since \(b^e\in\pi S\). Its matrix trace over \(k\) is zero: a basis adapted to the successive kernels of a nilpotent operator makes its matrix strictly triangular. Reduction of a multiplication matrix computes the reduction of its trace. Therefore \(\operatorname{Tr}(\pi zy)\in\pi R\), and \(K\)-linearity gives \(\operatorname{Tr}(zy)\in R\). This proves \(t^{-(e-1)}S\subseteq S^*\), or \(d\ge e-1\).
+
+Next
+
+\[
+ \operatorname{Tr}(S)\subseteq\pi R
+ \quad\Longleftrightarrow\quad \pi^{-1}\in S^*
+ \quad\Longleftrightarrow\quad d\ge e.
+\tag{5.3}
+\]
+
+The filtration of \(S/\pi S=S/t^eS\) by powers of \(t\) has \(e\) quotients each isomorphic to \(\ell\). Multiplication by \(b\in S\) induces multiplication by \(\bar b\) on every quotient. A basis adapted to the filtration computes its trace as
+
+\[
+ \operatorname{Tr}_{S/R}(b)\bmod\pi
+ =e\operatorname{Tr}_{\ell/k}(\bar b).
+\tag{5.4}
+\]
+
+The field-trace criterion in the preceding lesson, Lemma 1.2, says that a finite field extension has nonzero trace exactly when it is separable. For clarity, in the inseparable case write \(M\) for its maximal separable intermediate field. In a nontrivial purely inseparable simple step, the matrix of multiplication in the power basis has zero trace: the minimal polynomial is \(T^{p^r}-a\), and every relevant power has zero diagonal except a scalar multiple of the identity, whose degree is zero in characteristic \(p\). A tower of such steps and trace transitivity gives zero trace on \(\ell/M\), hence on \(\ell/k\). The separable case has a nondegenerate trace pairing by Lemma 1.2, so its trace functional cannot vanish. This also verifies the criterion for imperfect fields.
+
+Consequently (5.4) is nonzero precisely under the two stated tame conditions. Since \(d\) is an integer already at least \(e-1\), (5.3) now gives the claimed equivalence. \(\square\)
+
+For a finite extension with several primes over the base prime, apply this theorem to each factor in (5.2). Trace surjectivity for the whole algebra requires at least one tame factor; in a Galois extension transitivity of the primes makes their ramification behavior identical. This distinction is used in the next lesson.
+
+The norm identity \(\mathfrak d_{B/A}=N_{L/K}(\mathfrak D_{B/A})\) is proved in The different and the discriminant, Theorem 14.3. That proof covers the arbitrary Dedekind base used here: it localizes the finite trace lattice, identifies the determinant valuation with the length of the trace-dual quotient, and counts each residue-field factor with its residue degree. It does not require a global integral basis. The ideal norm identity has no sign ambiguity; for the signed integer discriminant of a number field, the corresponding numerical formula uses its absolute value. Compare the free treatment [Sutherland, Theorem 12.17].
 
 ## 6. Examples and exercises
 
@@ -144,11 +286,13 @@ For \(k[t]\subset k[u]\) with \(u^2=t\) and characteristic different from two, t
 
 **4.** With generators \(d_i=b_i\otimes1-1\otimes b_i\) of \(I\), use \(\operatorname{Ann}I=\ker(C\to C^r)\), \(c\mapsto(cd_i)_i\). Exactness of localization identifies its localized kernel with the annihilator of the localized diagonal ideal. Multiplication and its image also localize. This proves the assertion without assuming the annihilator itself is principal.
 
-**5.** Lift a separable residue primitive element by Hensel, add a uniformizer, and use the polynomial \(h\) to recover a uniformizer from the sum. Powers of \(h(\theta)\), with polynomial residue representatives in \(\theta\), span \(S/\pi_R S\). Nakayama gives \(S=R[\theta]\). Its minimal polynomial is monic and separable over the fraction field, so the three computations of Theorem 3.1 apply. Faithfully flat completion and localization then allow the ideal equality to descend as in Theorem 5.2. Without residue separability, this construction has no invertible derivative \(h'(u)\); the local complete intersection theorem supplies the general comparison instead.
+**5.** Lift a separable residue primitive element by Hensel, add a uniformizer, and use the polynomial \(h\) to recover a uniformizer from the sum. Powers of \(h(\theta)\), with polynomial residue representatives in \(\theta\), span \(S/\pi_R S\). Nakayama gives \(S=R[\theta]\). Its minimal polynomial is monic and separable over the fraction field, so the three computations of Theorem 3.1 apply. Faithfully flat completion and localization then allow the ideal equality to descend as in Theorem 5.2. Without residue separability, this construction has no invertible derivative \(h'(u)\); the regular-sequence determinant argument of Lemmas 5.1a–5.1b and Theorem 5.2 supplies the general comparison instead.
 
-## What this lesson does not prove
+## Proof dependencies
 
-Hensel's lemma, the local regular-sequence criterion, Tate's determinant lemma, the finite flat local complete intersection different theorem, and the different-exponent theorem are stated inputs with the locators above. The finite flat trace-dual support theorem is [Stacks, Tag 0BW9]. Euler's formula, monogenic computations, localization, the containment, monogenicity with separable residue fields and the comparison in that case are proved here.
+The preceding lesson proves the generic trace pairing and field-trace criterion. The earlier Kähler-differential lesson proves the universal differential and conormal presentation. The unramified and étale lessons prove the geometric interpretation of differential vanishing, with the exact locators given above. Regular local rings, Theorem 1.1 and Proposition 1.4, supplies the regular-parameter and regular-quotient properties; its underlying parameter proof is Regular sequences, depth and Cohen–Macaulay modules, Theorem 6.1. Completion, Theorems 3.1–3.2, supplies exact finite-module completion and faithful flatness. The discriminant-norm identity has its full proof in the earlier arithmetic lesson, Theorem 14.3.
+
+The simple-root lifting, diagonal determinant lemma, finite DVR complete-intersection presentation, general comparison, trace-dual support assertion and different-exponent theorem are proved here. No external source citation replaces any of these proofs. The linked combined Kähler-differential and depth editions retain their GNU FDL terms; their source expression is not imported into this independently written CC0 lesson. An export omitting a linked component retains that external proof dependency.
 
 ## References
 

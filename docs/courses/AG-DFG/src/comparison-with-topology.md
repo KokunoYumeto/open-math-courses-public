@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-An algebraic finite étale cover over the complex numbers can be read as a finite covering space in the classical topology. The comparison includes singular and nonreduced schemes. We first construct the analytic structure on a topological cover and prove the proper case using coherent algebras and GAGA. We then state Riemann existence in finite type, extend it by gluing, and prove the fundamental-group and curve computations.
+An algebraic finite étale cover over the complex numbers can be read as a finite covering space in the classical topology. The comparison includes singular and nonreduced schemes. We first construct the analytic structure on a topological cover and prove the proper case using coherent algebras and GAGA. We then apply the general Riemann existence theorem, explain its extension by gluing, and prove the fundamental-group and curve computations.
 
 Our algebraic fundamental groups, fibre functors and left-action conventions are those of *Galois categories*, Section 5.2 and *The étale fundamental group*, Section 1. A connected scheme is nonempty. A finite covering space is locally a disjoint union of finitely many copies of the base; the empty cover is allowed. Its degree is locally constant and need not be the same on different connected components.
 
@@ -21,7 +21,7 @@ Analytification respects products, open subschemes and closed immersions: on cha
 
 For a nonseparated scheme we use the glued analytic locally ringed space, which can be non-Hausdorff. Statements about analytic spaces below permit this gluing convention. Each algebraic affine chart has a Hausdorff analytification, and all local constructions take place in such charts. Proper schemes are separated and have the usual Hausdorff analytification. No separatedness restriction is being inserted into the finite type comparison theorem.
 
-Here are the local analytic prerequisites we use. The ring of convergent power series is Noetherian; its maximal-ideal completion is the formal power-series ring. Analytic structure sheaves and their finitely presented modules are coherent. These are the local analytic algebra and Oka coherence inputs. For every complex point \(x\), put
+The local analytic prerequisites are proved in Complex analytic spaces and analytification, Proposition 1.1, and Lemma 2.1: the ring of convergent power series is Noetherian, its maximal-ideal completion is the formal power-series ring, and quotient analytic structure sheaves and their finitely presented modules are coherent. Theorem 3.2 there constructs the charts and maps with their full ideals, including nilpotents and non-Hausdorff gluing. For every complex point \(x\), put
 \[
 R=\mathcal O_{X,x},\qquad S=\mathcal O_{X^{\mathrm{an}},x}.
 \]
@@ -31,7 +31,7 @@ Then \(R\to S\) is faithfully flat and induces an isomorphism on completions. Th
 I\mathbf C[[z_1,\ldots,z_r]].
 \tag{1.2}
 \]
-Completion of a Noetherian local ring is faithfully flat. Thus \(\widehat S=\widehat R\) is flat over \(R\) and faithfully flat over \(S\); descent of flatness proves that \(S\) is flat over \(R\). The map is local with residue field \(\mathbf C\), hence faithfully flat. This is the same local argument as the [completed-local-ring comparison](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-theorem-analytification-completed-local-rings) and [faithful-flatness theorem](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-theorem-analytification-local-faithfully-flat), applied here to arbitrary defining ideals.
+Completion of a Noetherian local ring is faithfully flat. Thus \(\widehat S=\widehat R\) is flat over \(R\) and faithfully flat over \(S\); descent of flatness proves that \(S\) is flat over \(R\). The map is local with residue field \(\mathbf C\), hence faithfully flat. The complete comparison and flatness proof for arbitrary defining ideals is Complex analytic spaces and analytification, Theorem 4.1. Its hypotheses are exactly that \(X\) is locally of finite type over \(\mathbf C\) and \(x\) is a complex point; no reducedness, separatedness or quasi-compactness is required.
 
 For an algebraic coherent module \(\mathcal M\), analytification is pullback along (1.1), and
 \[
@@ -41,18 +41,20 @@ For an algebraic coherent module \(\mathcal M\), analytification is pullback alo
 \simeq\mathcal M^{\mathrm{an}}\otimes\mathcal N^{\mathrm{an}}.
 \tag{1.3}
 \]
-It is exact by faithful flatness. These formulas also show compatibility with units, symmetry and associativity of tensor products. See the [stalk formula](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-lemma-analytification-module-stalks) and [coherent-module comparison](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-lemma-analytification-exact-faithful-coherent).
+It is exact by faithful flatness. These formulas also show compatibility with units, symmetry and associativity of tensor products. These functorial identifications, exactness and faithfulness for every locally finite type complex scheme are proved in Complex analytic spaces and analytification, Proposition 5.1.
 
-**Analytic étaleness input.** For a morphism \(f:Y\to X\) of schemes of finite type over \(\mathbf C\),
+**Proposition 1.1 (analytic étaleness).** For a morphism \(f:Y\to X\) of schemes of finite type over \(\mathbf C\),
 \[
 f\text{ is étale}
 \quad\Longleftrightarrow\quad
 f^{\mathrm{an}}\text{ is a local isomorphism of analytic spaces}.
 \tag{1.4}
 \]
-[Stacks, Tag 0HFE](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-lemma-etale-analytification-local-isomorphism)
+*Proof.* For the forward implication use Finite étale covers and their analytification, Lemma 2.2. Its standard étale chart has equation \(F(z,t)=(t-\varphi(z))u(z,t)\), where \(u\) is an analytic unit. Quotienting the ambient holomorphic sheaf by the full base ideal and by \(F\) is therefore the same as substituting \(t=\varphi(z)\) and quotienting by that base ideal. The implicit-function graph is a local analytic isomorphism even when the base ideal has nilpotents. The lemma applies to arbitrary étale morphisms, without finiteness of the morphism.
 
-The same assertion for schemes locally of finite type follows by applying (1.4) to affine charts in source and target. Both properties are local on these charts. This input concerns analytic local isomorphisms, including the structure sheaf.
+Conversely suppose \(f^{\mathrm{an}}\) is a local analytic isomorphism. At a complex point \(y\), with \(x=f(y)\), put \(A=\mathcal O_{X,x}\) and \(B=\mathcal O_{Y,y}\). The functorial completed-local-ring comparison just proved identifies \(\widehat A\to\widehat B\) with the completion of the analytic stalk map, so it is an isomorphism. The common completion is flat over \(A\) and faithfully flat over \(B\); the same descent-of-flatness argument gives flatness of \(B\) over \(A\). The completed isomorphism also identifies the cotangent spaces over the common residue field \(\mathbf C\). Thus \(\mathfrak m_A\) spans \(\mathfrak m_B/\mathfrak m_B^2\), and Nakayama applied to \(\mathfrak m_B/\mathfrak m_AB\) gives \(\mathfrak m_AB=\mathfrak m_B\). The pointwise criterion following Étale morphisms and their local structure, Theorem 1.3 now gives étaleness at \(y\): the morphism is locally of finite presentation, the local map is flat, and the residue-field extension is the identity. The étale locus is open. A nonempty closed complement in any finite type affine chart of \(Y\) would contain a complex point, so this proves étaleness everywhere. \(\square\)
+
+The same assertion for schemes locally of finite type follows by applying this proof to finite type affine charts in source and target. Both properties are local on these charts. No separatedness or quasi-compactness is needed. For comparison, see [Stacks, Tag 0HFE](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-lemma-etale-analytification-local-isomorphism).
 
 A local homeomorphism alone is insufficient. The reduction
 \(\operatorname{Spec}\mathbf C\to\operatorname{Spec}\mathbf C[\epsilon]/(\epsilon^2)\)
@@ -85,9 +87,9 @@ is a coherent, finite locally free \(\mathcal O_{X^{\mathrm{an}}}\)-algebra: ove
 
 ## 3. The proper case from GAGA
 
-We state the permitted GAGA input in the generality needed here.
+We use the proper-scheme GAGA theorem in its full scheme generality.
 
-**Proper-scheme GAGA input.** If \(X\) is a proper scheme over \(\mathbf C\), analytification induces an exact equivalence
+**Proper-scheme GAGA.** If \(X\) is a proper scheme over \(\mathbf C\), analytification induces an exact equivalence
 \[
 \operatorname{Coh}(X)\simeq
 \operatorname{Coh}(X^{\mathrm{an}})
@@ -95,7 +97,7 @@ We state the permitted GAGA input in the generality needed here.
 \]
 and isomorphisms \(H^q(X,\mathcal M)\simeq
 H^q(X^{\mathrm{an}},\mathcal M^{\mathrm{an}})\) for coherent \(\mathcal M\).
-See [Hall, *GAGA theorems*, Theorem A and Example 9.4, pages 2 and 22](https://bpb-ap-se2.wpmucdn.com/blogs.unimelb.edu.au/dist/5/501/files/2021/05/get.pdf).
+The category equivalence is proved in Serre's comparison theorems and Chow's theorem, Theorem 6.11; Proposition 6.9 gives all coherent-module morphisms and extension classes, and Theorem 6.7 gives cohomology. Exactness and tensor compatibility are the local statements (1.3). [Hall, *GAGA theorems*, Theorem A and Example 9.4, pages 2 and 22](https://bpb-ap-se2.wpmucdn.com/blogs.unimelb.edu.au/dist/5/501/files/2021/05/get.pdf), is further reading.
 This includes nonreduced proper schemes. Serre's original [Theorems 1–3, Section 3, no. 12, pages 19–20](https://www.numdam.org/item/AIF_1956__6__1_0/) and the frozen [GAGA statements](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-section-gaga-statements) give the projective variety version; that version alone does not justify replacing “projective” by “proper.”
 
 **Theorem 3.1.** For \(X\) proper over \(\mathbf C\), analytification is an equivalence from schemes finite étale over \(X\) to finite topological covers of \(X(\mathbf C)\), with all morphisms.
@@ -146,7 +148,7 @@ For full faithfulness, an analytic morphism of two covers corresponds to an anal
 
 ## 4. Riemann existence, gluing and reduction
 
-**Riemann existence input.** For a scheme \(X\) of finite type over \(\mathbf C\), analytification gives an equivalence
+**Riemann existence.** For a scheme \(X\) of finite type over \(\mathbf C\), analytification gives an equivalence
 \[
 \operatorname{F\acute Et}(X)
 \simeq
@@ -155,9 +157,9 @@ For full faithfulness, an analytic morphism of two covers corresponds to an anal
 \{\text{finite covering spaces of }X(\mathbf C)\}.
 \tag{4.1}
 \]
-All morphisms over \(X\) are included. There is no normality, smoothness, reducedness or properness hypothesis. We state the first equivalence as the permitted comparison theorem; Proposition 2.1 proves the analytic-to-topological equivalence. [Stacks, Tag 0HFL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-theorem-riemann-existence)
+All morphisms over \(X\) are included. The Riemann existence theorem, Theorem 2.1, proves the composite equivalence, in fact for every scheme locally of finite type over \(\mathbf C\). Proposition 2.1 gives the analytic-to-topological equivalence and its inverse on every morphism. Hence the composite equivalence gives the first equivalence in (4.1), with the analytic structure sheaf retained. There is no normality, smoothness, reducedness, separatedness, properness or quasi-compactness hypothesis. The provider's proof reduces to an affine reduced chart, resolves that chart and descends the algebraized cover along the proper surjective resolution; full faithfulness supplies the descent maps even on singular fibre products. Its Corollary 2.3 states the analytic form for varieties; the broader scheme form used here follows instead from its Theorem 2.1 and our Proposition 2.1. [Stacks, Tag 0HFL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-theorem-riemann-existence), is an additional comparison reference.
 
-Theorem 3.1 supplies an independent proof of (4.1) in the proper case from GAGA. In the general case, essential surjectivity of analytification is the substantive existence input. Giving a topological cover an analytic structure does not itself algebraize it.
+Theorem 3.1 supplies an independent proof of (4.1) in the proper case from GAGA. In the general case, the linked Riemann existence proof supplies essential surjectivity of analytification. Giving a topological cover an analytic structure does not itself algebraize it.
 
 **Proposition 4.1.** The equivalence (4.1) holds for \(X\) locally of finite type over \(\mathbf C\), including non-quasi-compact \(X\).
 
@@ -179,13 +181,13 @@ Their complex-point spaces are equal with the same topology. Thus the reduced Ri
 
 ## 5. Profinite completion is the entire comparison
 
-Let \(X\) be connected of finite type over \(\mathbf C\), choose \(x\in X(\mathbf C)\), and let \(\bar x:\operatorname{Spec}\mathbf C\to X\) be that geometric point.
+Let \(X\) be connected and locally of finite type over \(\mathbf C\), choose \(x\in X(\mathbf C)\), and let \(\bar x:\operatorname{Spec}\mathbf C\to X\) be that geometric point.
 
-We first justify the topology needed for covering-space classification. In an affine chart the reduced underlying classical space is a closed real algebraic set: take real and imaginary parts of its defining polynomials. The local conic structure theorem for semialgebraic sets gives a basis of contractible neighbourhoods, including at singular points. An isolated point has its singleton as such a neighbourhood. This is a stated topology input; see [Coste, *An introduction to semialgebraic geometry*, Theorem 4.4, page 63](http://blogs.mat.ucm.es/jesusr/wp-content/uploads/sites/52/2020/03/SAG.pdf#page=64). Its norm-preserving cone description restricts to open balls, so these are neighbourhoods rather than merely closed neighbourhoods. Hence \(X(\mathbf C)\) is locally path connected and semilocally simply connected.
+The topology needed for covering-space classification is proved in The Riemann existence theorem, Proposition 3.3: every complex point of any scheme locally of finite type over \(\mathbf C\) has a basis of open neighbourhoods strongly deformation retracting onto that point. The proof identifies an affine chart with a closed real algebraic set, applies compatible relative triangulation to the Euclidean unit grid, and constructs arbitrarily small open sets by barycentric-coordinate inequalities. It includes isolated and singular points and uses no reducedness, separatedness or quasi-compactness. Consequently \(X(\mathbf C)\) is locally path connected and semilocally simply connected. The exact triangulation statement and its lower subanalytic and analytic prerequisites are recorded in Subanalytic triangulations on analytic manifolds, Relative polyhedron theorem: the complex has finite dimension, is locally finite with closed Euclidean support, and the prescribed subanalytic family is locally finite in the ambient space. Here its support is all of \(\mathbf R^{2n}\) and the family is the single closed algebraic set. Those lower prerequisites remain prerequisites of that provider.
 
-It is also connected. Otherwise a nontrivial clopen partition would define a section of the trivial two-sheeted topological cover selecting one sheet on each part. By full faithfulness in (4.1), this section would be the analytification of a section \(X\to X\amalg X\). The inverse images of the two components would be a nontrivial clopen partition of the connected scheme \(X\), a contradiction. Local path connectedness now makes \(X(\mathbf C)\) path connected. This argument also works for a nonseparated \(X\), since the local charts and cover equivalence suffice.
+It is also connected. Otherwise a nontrivial clopen partition would define a section of the trivial two-sheeted topological cover selecting one sheet on each part. By full faithfulness in (4.1) and Proposition 4.1, this section would be the analytification of a section \(X\to X\amalg X\). The inverse images of the two components would be a nontrivial clopen partition of the connected scheme \(X\), a contradiction. Local path connectedness now makes \(X(\mathbf C)\) path connected. This argument also works for a nonseparated \(X\), since the local charts and cover equivalence suffice.
 
-Put \(G=\pi_1^{\mathrm{top}}(X(\mathbf C),x)\). Covering-space classification identifies finite covers, with their fibre over \(x\), with finite left \(G\)-sets, with their underlying set. The construction and its full faithfulness were given in the covering-space section of the Galois-category lesson; the topology prerequisite is the usual lifting and classification theorem.
+Put \(G=\pi_1^{\mathrm{top}}(X(\mathbf C),x)\). Covering-space classification identifies finite covers, with their fibre over \(x\), with finite left \(G\)-sets, with their underlying set. The construction and its full faithfulness were given in the covering-space section of the Galois-category lesson. The Riemann existence theorem, Theorem 3.2, applies that classification under exactly the local path and homotopy conditions just supplied by Proposition 3.3, for a connected locally finite type complex scheme and the chosen complex base point.
 
 Every action on a finite set factors through a quotient \(G/N\) for a normal subgroup \(N\) of finite index: take the kernel of the permutation representation. Define
 \[
@@ -410,12 +412,12 @@ When the base has nilpotents, the transported sheaf has those nilpotents on ever
 
 ## 8. Inputs and reading
 
-The owned arguments here are the analytic-cover construction with all morphisms, the proper GAGA algebraization of covers, gluing to locally finite type, the fibre-functor proof of profinite comparison, the punctured-sphere and surface-group computations, and the passage to every algebraically closed characteristic-zero field. Their explicit prerequisites are:
+The arguments developed here are the analytic-cover construction with all morphisms, the proper GAGA algebraization of covers, gluing to locally finite type, the fibre-functor proof of profinite comparison, the punctured-sphere and surface-group computations, and the passage to every algebraically closed characteristic-zero field. Their explicit prerequisites are:
 
-- Local analytic algebra and coherence, the structure of analytification, and the analytic local-isomorphism criterion [Tag 0HFE](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-lemma-etale-analytification-local-isomorphism). The defining-ideal and completion arguments in Section 1 explain the use on nonreduced charts.
-- Proper-scheme GAGA as stated in (3.1), with its precise Hall reference. The [projective GAGA theorem](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-theorem-gaga-cohomology) supplies the cohomology comparison used for complex projective curves.
-- General finite type Riemann existence [Tag 0HFL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-theorem-riemann-existence), stated in (4.1). Its confirmed fundamental-group consequence [Tag 0HFM](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-fundamental-group-complex) is proved in Section 5.
-- Covering-space classification, van Kampen and the classification of compact orientable surfaces; local semialgebraic conic structure in Section 5; and the precise compact Riemann-surface Hodge–Dolbeault statement (6.5). The surface polygon and the attaching-word calculation are developed here. Hatcher's Sections 1.2–1.3 provide the topology references.
+- Complex analytic spaces and analytification, Proposition 1.1, Lemma 2.1, Theorem 3.2, Theorem 4.1, and Proposition 5.1 supply quotient coherence, local algebra, the full-ideal construction, completed local rings and coherent-module compatibility. They apply to every locally finite type complex scheme. Proposition 1.1 here proves the analytic local-isomorphism criterion using Finite étale covers and their analytification, Lemma 2.2, and the algebraic pointwise criterion from AG-FSE.
+- Proper-scheme GAGA (3.1), proved in Serre's comparison theorems and Chow's theorem, Theorem 6.11, Proposition 6.9, and Theorem 6.7. The hypothesis is properness over \(\mathbf C\); projectivity and reducedness are unnecessary. The same cohomology theorem supplies the comparison for complex projective curves.
+- The Riemann existence theorem, Theorem 2.1, supplies the cover equivalence for every scheme locally of finite type over \(\mathbf C\), with all morphisms. Proposition 2.1 here supplies its analytic form in that full scope. Proposition 3.3, supplies the contractible open neighbourhood basis; Theorem 3.2, gives the profinite comparison for connected \(X\) and \(x\in X(\mathbf C)\). Section 5 also proves that comparison directly through finite group actions. The local-neighbourhood proof uses the exact relative triangulation theorem linked there, with its stated lower analytic prerequisites.
+- Covering-space classification, van Kampen and the classification of compact orientable surfaces; the contractible neighbourhoods used in Section 5; and the precise compact Riemann-surface Hodge–Dolbeault statement (6.5). The surface polygon and the attaching-word calculation are developed here. Hatcher's Sections 1.2–1.3 provide the topology references.
 - Finite-projective module descent from the descent lesson, Section 3, the finite flat étale criterion, and finite normalization of algebraic curves. Riemann–Hurwitz and the covering-category interpretation of function-field extensions were developed in the étale fundamental-group lesson.
 - Topological invariance and proper algebraically closed field-extension invariance from the preceding course proofs, with [Tags 0BQN](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-proposition-universal-homeomorphism) and [0A49](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-invariant-over-proper). Formula (6.10) uses affine Čech cohomology and [flat base change, Tag 02KH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-flat-base-change-cohomology).
 

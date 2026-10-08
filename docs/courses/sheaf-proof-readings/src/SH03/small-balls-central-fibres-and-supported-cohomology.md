@@ -2,11 +2,11 @@
 
 The three small-ball comparisons can be read from one arrow between two coefficient complexes. The ordinary sections give its source, the punctured sections give its target, and supported sections give its fibre. We first calculate that arrow on an interval, including its closed endpoint and compact-support maps, then transfer the calculation along the proper scalar map \(h=|\varphi|^2\).
 
-*Scope.* The scalar and support comparisons, uniform compact-cap implication, extension-continuity calculations, proper-image and closed-embedding microsupport formulas, deformation and zero-section criteria, and closed-cutoff argument are proved below. The directional reading proves the cap-test converse, and the limiting-boundary reading proves the arbitrary-open and missing-submanifold estimates. The limiting tensor proof treats arbitrary bounded coefficients over a ring of finite global dimension. Subanalytic foundations and the constructibility/microsupport criterion have separate proof requirements. The cotangent lesson supplies critical-value and cotangent-transport arguments relative to those subanalytic foundations.
+*Scope.* The scalar and support comparisons, uniform compact-cap implication, extension-continuity calculations, proper-image and closed-embedding microsupport formulas, deformation and zero-section criteria, and closed-cutoff argument are proved below. The [directional reading](directional-neighborhoods-and-the-compact-cap-test.md#from-the-cap-comparison-back-to-all-local-tests-compact-cap-converse) proves the cap-test converse, and the [limiting-boundary reading](limiting-covectors-at-open-boundaries.md) proves the arbitrary-open and missing-submanifold estimates. The [limiting tensor proof](limiting-covectors-at-open-boundaries.md#products-restriction-and-the-limiting-sum-limiting-tensor-estimate) treats arbitrary bounded coefficients over a ring of finite global dimension. The constructibility/microsupport criterion uses its linked subanalytic and microlocal prerequisites. The cotangent lesson supplies critical-value and cotangent-transport arguments relative to those subanalytic foundations.
 
 *AI-written exposition: GPT-6 Astra (OpenAI), Ultra; worked solutions: GPT-6.1 Sol (OpenAI), Ultra. Original programme expression is dedicated to the public domain under CC0; human mathematical sources are credited below.*
 
-The duality lesson proves the constant-interval, closed-support, proper-image and support-colimit foundations used here. Its proofs through the orientation section do not use this small-ball theorem. The application here concerns arbitrary weak coefficients; no perfectness is inferred from compactness of a fibre.
+The duality lesson proves the [constant-interval comparison](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#homotopy-invariance-from-a-proper-interval-proper-interval-homotopy), [closed-support localization](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#closed-support-and-its-bound-closed-support-bound), [proper-image fibre formula](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-derived-fibre-formula-and-c-soft-acyclicity-derived-proper-image-fibre) and [support-colimit comparison](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-actual-point-to-compact-comparison-point-to-compact-comparison) used here. Its proofs through the orientation section do not use this small-ball theorem. The application here concerns arbitrary weak coefficients; no perfectness is inferred from compactness of a fibre.
 
 ## The three comparisons
 
@@ -47,18 +47,21 @@ R\Gamma_{\varphi^{-1}(0)}(X;F)
 The support of each coefficient contribution in the closed inner ball is compact and lies in the larger open ball; this specifies the second map in (3).
 
 Finally, if
-\(0\leq\epsilon''<\epsilon'''<\epsilon'\leq\epsilon<\epsilon_0\), ordinary restriction gives
+\(0\leq\epsilon^{\prime\prime}<\epsilon^{\prime\prime\prime}<\epsilon'\leq\epsilon<\epsilon_0\), ordinary restriction gives
 
 \[
 R\Gamma(\varphi^{-1}B_{0,\epsilon};F)
-\longrightarrow R\Gamma(\varphi^{-1}B_{\epsilon'',\epsilon'};F)
-\longrightarrow R\Gamma(\varphi^{-1}S_{\epsilon'''};F).
+\longrightarrow R\Gamma(\varphi^{-1}B_{\epsilon^{\prime\prime},\epsilon'};F)
+\longrightarrow R\Gamma(\varphi^{-1}S_{\epsilon^{\prime\prime\prime}};F).
 \tag{4}
 \]
 
 The intermediate sphere lies strictly inside the annulus. In particular the last coefficient space is an inverse image in \(X\), where \(F\) is defined.
 
-## Local support before and after an ordinary image {#local-support-under-images}
+<a id="local-support-under-images"></a>
+<a id="local-support-before-and-after-an-ordinary-image-local-support-under-images"></a>
+
+## Local support before and after an ordinary image
 
 We first supply the sheaf-theoretic image estimate used by the geometric argument. Let \(f:Y\to X\) be \(C^1\), and let \(G\in D^+(k_Y)\). The manifolds have the standing finite dimension bounds; neither constructibility nor finite coefficients are needed in this section. For a closed subset \(Z\) of a local open domain, write \(\mathcal L_ZG\) for the derived **sheaf** of sections supported in \(Z\). Its derived global sections are \(R\Gamma_Z(Y;G)\). This distinguishes a supported sheaf from a single complex of global sections.
 
@@ -86,7 +89,7 @@ Here is a resolution proof with its acyclicity checked. For a closed inclusion \
 
 For any sheaf \(I\), a section of \(f_*I\) on \(U\) vanishes on \(U\setminus Z\) exactly when its corresponding section of \(I\) vanishes on \(f^{-1}(U\setminus Z)\). Consequently \(\underline\Gamma_Z f_*I=f_*\underline\Gamma_{f^{-1}Z}I\), naturally on all opens. Apply this equality to a bounded-below injective resolution of \(G\). The preservation just proved shows that both sides compute the derived composites, proving (T2). This identity itself does not require properness.
 
-Now assume \(f|_S\) is proper. The complex \(\mathcal L_{f^{-1}Z}G\) is still supported on \(S\): localization is local, and it vanishes where \(G\) vanishes. Write it as a closed direct image from \(S\) and resolve there by injectives. Their closed images on \(Y\) are injective and supported on \(S\), so their ordinary and proper images by \(f\) agree. The derived fibre formula (F6) of the duality lesson applies. Its compact and ordinary fibre sections agree on the compact coefficient support. It therefore turns (T2) into
+Now assume \(f|_S\) is proper. The complex \(\mathcal L_{f^{-1}Z}G\) is still supported on \(S\): localization is local, and it vanishes where \(G\) vanishes. Write it as a closed direct image from \(S\) and resolve there by injectives. Their closed images on \(Y\) are injective and supported on \(S\), so their ordinary and proper images by \(f\) agree. The [derived fibre formula (F6)](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#the-derived-fibre-formula-and-c-soft-acyclicity-derived-proper-image-fibre) applies. Its compact and ordinary fibre sections agree on the compact coefficient support. It therefore turns (T2) into
 
 \[
 \bigl(\mathcal L_ZRf_*G\bigr)_x
@@ -97,7 +100,10 @@ Now assume \(f|_S\) is proper. The complex \(\mathcal L_{f^{-1}Z}G\) is still su
 
 The same statement holds after restricting to any open domain of a test function. Properness survives that base restriction. This is the precise point where a closed fibre may be used; the formula is not asserted for an arbitrary nonproper ordinary image.
 
-## The proper-image microsupport estimate {#proper-image-microsupport-proof}
+<a id="proper-image-microsupport-proof"></a>
+<a id="the-proper-image-microsupport-estimate-proper-image-microsupport-proof"></a>
+
+## The proper-image microsupport estimate
 
 In the cotangent correspondence set
 
@@ -118,7 +124,7 @@ The set \(A\) is closed, and its base points lie in \(S\), including those with 
 \tag{T5}
 \]
 
-The first factor is compact by support properness, and the fibre product is closed in the product of two compact spaces. Thus (T5) is compact. Proper maps between these locally compact Hausdorff spaces are closed, as proved in (F1) of the duality lesson, so \(\Gamma\) is closed. It is conic because transpose differentials commute with positive scaling.
+The first factor is compact by support properness, and the fibre product is closed in the product of two compact spaces. Thus (T5) is compact. Proper maps between these locally compact Hausdorff spaces are closed, as proved in [(F1), the proper-fibre neighborhood argument](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#a-proper-map-shrinks-neighbourhoods-of-its-fibre-proper-fibre-neighbourhoods), so \(\Gamma\) is closed. It is conic because transpose differentials commute with positive scaling.
 
 Take \(p\notin\Gamma\) and an open cotangent neighbourhood \(W\) of \(p\) disjoint from \(\Gamma\). If a \(C^1\) function \(\phi\) near \(x\) has \((x,d\phi_x)\in W\), then
 \((y,d(\phi\circ f)_y)\notin\operatorname{SS}(G)\) for every \(y\in f^{-1}(x)\): otherwise (T4) would put \((x,d\phi_x)\) in \(\Gamma\).
@@ -134,7 +140,10 @@ f_\pi f_d^{-1}\operatorname{SS}(G),
 
 Properness on \(S\) also gives \(Rf_!G\simeq Rf_*G\), so the same estimate applies to that image. This proof includes critical points, zero covectors and arbitrary bounded-below coefficients. It proves an inclusion; no equality for every proper map is inferred. The classical support-test argument is Proposition 4.1.1(i), printed p. 61, of Kashiwara and Schapira's freely available [*Microlocal Study of Sheaves*](https://www.numdam.org/item/AST_1985__128__1_0/). The resolution argument (T2), the support check for (T3) and the compactness in (T5) supply the required operation details here.
 
-## Closed embeddings preserve every local support test {#closed-embedding-microsupport-proof}
+<a id="closed-embedding-microsupport-proof"></a>
+<a id="closed-embeddings-preserve-every-local-support-test-closed-embedding-microsupport-proof"></a>
+
+## Closed embeddings preserve every local support test
 
 Let \(i:S\hookrightarrow U\) be a closed smooth embedding and \(H\in D^+(k_S)\), with arbitrary stalk modules. For a local \(C^1\) function \(\psi\) on \(U\), the support identity underlying (T2) specializes to
 
@@ -166,11 +175,14 @@ Its derivative at \((u,0)\) lies in \(W\), and (E1) identifies its zero local su
 
 The bounded-below scope in these two sections is justified at the resolution level: (T2) uses a bounded-below injective resolution, and the proper-fibre formula (F6) is already proved for bounded-below inputs. In (T4)–(T6), properness on the closed coefficient support supplies the required compactness, and the local tests annihilate the entire fibre complex. The identical supported-section equality and test-function extensions prove (E1)–(E3) in this scope. None of these arguments uses an upper cohomological truncation. The weakly constructible comparisons and the zero-section criterion below retain their separately stated bounded hypotheses.
 
-## Continuing cohomology through a compact moving boundary {#deformation-proof}
+<a id="deformation-proof"></a>
+<a id="continuing-cohomology-through-a-compact-moving-boundary-deformation-proof"></a>
+
+## Continuing cohomology through a compact moving boundary
 
 The local-constancy criterion needs control of cohomology on nested balls. We prove the deformation result that supplies it. It applies to \(D^+\) complexes on locally compact Hausdorff spaces and uses no constructibility assumption. The human source is the freely available [Astérisque 128](https://www.numdam.org/item/AST_1985__128__1_0/), Theorem 1.4.3, printed pp. 30–31. The proof below includes the inverse-limit and endpoint arguments behind its continuation step.
 
-We use two continuity calculations. First, compact-neighborhood continuity (D5) extends to \(A\in D^+(k_X)\):
+We use two continuity calculations. First, [compact-neighborhood continuity (D5)](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#cohomology-near-a-compact-set-and-the-interval-bound-interval-cohomology-bound) extends to \(A\in D^+(k_X)\):
 
 \[
 \mathop{\mathrm{colim}}_{K\subset V\text{ open}}H^q(V;A)
@@ -263,7 +275,10 @@ has all its restrictions invertible. To prove injectivity, take an element at ti
 
 Choose \(N\) with \(F\in D^{\ge N}\). Derived sections have no cohomology below \(N\). Induct on \(q\ge N\). For any \(s\), choose \(s_n\uparrow s\); hypothesis 1 gives \(U_s=\bigcup_nU_{s_n}\). In degree \(q=N\), the left term of (N2) is zero. At every later degree it is zero by the already-proved constancy in degree \(q-1\). Thus (N2) provides the second isomorphism of (N9) for \(M_t=H^q(U_t;F)\), while (N8) provides the first. The continuation argument proves constancy in degree \(q\). Finally apply (N2) to \(\bigcup_{n\ge0}U_n=\bigcup_tU_t\); every \(\lim{}^1\) is now zero and the inverse limit identifies by restriction with every fixed stage. The resulting map is a cohomology isomorphism in every degree, proving the theorem in \(D^+\). \(\square\)
 
-## Zero microsupport gives a constant bounded complex {#zero-section-criterion-proof}
+<a id="zero-section-criterion-proof"></a>
+<a id="zero-microsupport-gives-a-constant-bounded-complex-zero-section-criterion-proof"></a>
+
+## Zero microsupport gives a constant bounded complex
 
 For \(F\in D^b(k_X)\) on a smooth finite-dimensional manifold, the following are equivalent:
 
@@ -297,7 +312,7 @@ C_{B(x,R)}\longrightarrow F|_{B(x,R)}.
 
 Its stalk maps are exactly the restriction maps just proved invertible. It is therefore an isomorphism of sheaf complexes. Since any stalk of this nonempty ball is bounded in the original global degree interval for \(F\), so is \(C\). This proves condition 2 without splitting cohomology degrees.
 
-**Constant coefficients and the converse.** For a constant bounded coefficient complex \(C_U\), every \(C^1\) test at a nonzero covector has a submersion coordinate chart in which its support set is \(\{u_1\ge0\}\). The chart and its open negative half are products of contractible intervals. The ordinary homotopy calculation, including its actual unit, identifies the derived sections of \(C_U\) on each with \(C\). Restriction is the identity under those units. The localization triangle consequently gives zero for the supported stalk. This applies to every nonzero test in a neighborhood of a nonzero cotangent point, so \(\operatorname{SS}(C_U)\) is contained in the zero section.
+**Constant coefficients and the converse.** For a constant bounded coefficient complex \(C_U\), every \(C^1\) test at a nonzero covector has a submersion coordinate chart in which its support set is \(\{u_1\ge0\}\). The chart and its open negative half are products of contractible intervals. The [ordinary homotopy calculation](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#homotopy-invariance-from-a-proper-interval-proper-interval-homotopy), including its actual unit, identifies the derived sections of \(C_U\) on each with \(C\). Restriction is the identity under those units. The localization triangle consequently gives zero for the supported stalk. This applies to every nonzero test in a neighborhood of a nonzero cotangent point, so \(\operatorname{SS}(C_U)\) is contained in the zero section.
 
 Condition 2 plainly gives condition 3 by exactness of the constant-sheaf functor. Conversely, under condition 3, only finitely many cohomology sheaves occur, so near a fixed point all of them can be made constant on a common open neighborhood. Each has microsupport in its zero section by the preceding argument. Finite truncation triangles then give the same bound for \(F\). To justify this last step directly, a local support functor sends a distinguished triangle to a triangle. Outside the union of the microsupports of two terms, intersect their two open testing neighborhoods. Every test for those two terms is zero, hence so is the test for the third. This proves the triangle microsupport inequality, and induction through the finite truncations proves condition 1. No assertion that arbitrary cohomology sheaves have microsupport contained in that of their complex was used. \(\square\)
 
@@ -312,13 +327,16 @@ H\text{ is locally a constant bounded complex}.
 \tag{Z4}
 \]
 
-The middle covector restriction is surjective with kernel the conormal bundle. These proofs supply the closed-embedding and zero-section inputs of the constructibility criterion. The missing-submanifold proof supplies its boundary estimate. The limiting tensor proof supplies the tensor input for bounded coefficients over a ring of finite global dimension. Involutivity and compatible microlocal stratification remain separate inputs.
+The middle covector restriction is surjective with kernel the conormal bundle. These proofs supply the closed-embedding and zero-section inputs of the constructibility criterion. The [missing-submanifold proof](limiting-covectors-at-open-boundaries.md#the-trace-across-a-missing-submanifold-missing-submanifold-trace) supplies its boundary estimate. The [limiting tensor proof](limiting-covectors-at-open-boundaries.md#products-restriction-and-the-limiting-sum-limiting-tensor-estimate) supplies the tensor input for bounded coefficients over a ring of finite global dimension. Involutivity and compatible microlocal stratification remain separate inputs.
 
 <span id="proper-norm-square-and-both-signed-critical-sets"></span>
 
-## One compact cap works for an entire family {#uniform-compact-cap-proof}
+<a id="uniform-compact-cap-proof"></a>
+<a id="one-compact-cap-works-for-an-entire-family-uniform-compact-cap-proof"></a>
 
-The deformation theorem gives more than a separate vanishing statement at each stalk. If many coefficient complexes avoid the same open set of covectors, the **same geometric cap and base** work for all of them. This is the form needed before taking limits of extensions. We prove this implication explicitly. Its converse and directional sheaf projector are proved in the companion prerequisite reading.
+## One compact cap works for an entire family
+
+The deformation theorem gives more than a separate vanishing statement at each stalk. If many coefficient complexes avoid the same open set of covectors, the **same geometric cap and base** work for all of them. This is the form needed before taking limits of extensions. We prove this implication explicitly. Its [converse and directional sheaf projector](directional-neighborhoods-and-the-compact-cap-test.md#from-the-cap-comparison-back-to-all-local-tests-compact-cap-converse) are proved in the companion prerequisite reading.
 
 Work in a coordinate open set \(X\subset\mathbb R^n\), and fix a nonzero covector \((x_0,\xi_0)\). Let \((F_\lambda)\) be any family in \(D^+(k_X)\). Suppose a single open cotangent neighborhood \(W\) of \((x_0,\xi_0)\) misses every \(\operatorname{SS}(F_\lambda)\). No common lower cohomological bound, constructibility, or finite-rank hypothesis on this family is needed. In this section the definition (T1) is used for bounded-below complexes, with the same localization and support operations.
 
@@ -429,7 +447,10 @@ The right domains need not be ordered merely by decreasing \(\rho\). Choose a ne
 
 whose source is \(R\Gamma(K_x;F)\). Here the filtered colimits can equivalently be taken on every cohomology group, where they are exact; all identifications are induced by restriction. This proves (U2), with its natural map. Every geometric choice was independent of \(F_\lambda\), so the proof establishes the claimed family uniformity. At a zero covector, a common excluded neighborhood instead forces every \(F_\lambda\) to vanish on one common base neighborhood by the constant-function test; any small cap there gives the zero comparison.
 
-## The two limits of extension use different supports {#extension-continuity-proof}
+<a id="extension-continuity-proof"></a>
+<a id="the-two-limits-of-extension-use-different-supports-extension-continuity-proof"></a>
+
+## The two limits of extension use different supports
 
 For subsequent boundary arguments it is useful to keep the limit operations separate. Let \(O_m\) be increasing open subsets of a locally compact Hausdorff space \(Z\), with union \(O\). Write \(j_m:O_m\hookrightarrow Z\), \(j:O\hookrightarrow Z\), and let \(F\in D^+(k_O)\). Ordinary extension is recovered by the derived inverse limit with its actual restriction maps:
 
@@ -438,7 +459,7 @@ Rj_*F\simeq\operatorname*{holim}_m Rj_{m*}(F|_{O_m}).
 \tag{J1}
 \]
 
-Choose one bounded-below injective resolution \(I\) on \(O\). Each complex \(j_{m*}(I|_{O_m})\) is a bounded-below complex of injectives: restriction to an open set preserves injectives because its left adjoint, extension by zero, is exact, and direct image preserves injectives because inverse image is exact. Products of these injective models compute the derived products. To check this, their Hom complexes from an acyclic complex are acyclic by the bounded-below injective-resolution argument supplied in the duality lesson. Hom into their termwise product is the product of those Hom complexes. Products of module complexes preserve acyclicity, so the product model has the required injective property as well. All these models have the common lower bound of \(I\). In each degree and over each open \(V\subset Z\), the restrictions from \(V\cap O_{m+1}\) to \(V\cap O_m\) are surjective by flabbiness. Hence the map \(1-\mathrm{shift}\) on the product of these section groups is surjective, by recursively lifting one component at a time. Its kernel is \(\Gamma(V\cap O;I)\), by the sheaf gluing axiom. The homotopy-fibre complex of this map is consequently quasi-isomorphic to \(j_*I\), proving (J1). This argument does not assume that arbitrary products of sheaves are exact, or that the cohomology restriction maps stabilize.
+Choose one bounded-below injective resolution \(I\) on \(O\). Each complex \(j_{m*}(I|_{O_m})\) is a bounded-below complex of injectives: restriction to an open set preserves injectives because its left adjoint, extension by zero, is exact, and direct image preserves injectives because inverse image is exact. Products of these injective models compute the derived products. To check this, their Hom complexes from an acyclic complex are acyclic by the [bounded-below injective-resolution argument](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#constructing-enough-injectives-explicit-injective-models). Hom into their termwise product is the product of those Hom complexes. Products of module complexes preserve acyclicity, so the product model has the required injective property as well. All these models have the common lower bound of \(I\). In each degree and over each open \(V\subset Z\), the restrictions from \(V\cap O_{m+1}\) to \(V\cap O_m\) are surjective by flabbiness. Hence the map \(1-\mathrm{shift}\) on the product of these section groups is surjective, by recursively lifting one component at a time. Its kernel is \(\Gamma(V\cap O;I)\), by the sheaf gluing axiom. The homotopy-fibre complex of this map is consequently quasi-isomorphic to \(j_*I\), proving (J1). This argument does not assume that arbitrary products of sheaves are exact, or that the cohomology restriction maps stabilize.
 
 Extension by zero has a direct-limit comparison on **compact** tests. For a compact \(K\subset Z\), the natural maps give, in every degree,
 
@@ -450,9 +471,12 @@ Extension by zero has a direct-limit comparison on **compact** tests. For a comp
 
 Indeed put \(V=K\cap O\) and \(V_m=K\cap O_m\). Open-extension base change on stalks identifies restriction to \(K\) with extension by zero from these open subsets of \(K\). Since \(K\) is compact, the resulting cohomology groups are \(H_c^q(V_m;F|_{V_m})\) and \(H_c^q(V;F|_V)\). A bounded-below c-soft resolution on \(V\), restricted to the opens \(V_m\), computes them. Its compact-section complexes have direct limit the compact-section complex on \(V\): every compact support lies in some \(V_m\), and extension by zero is the given transition map. Exactness of filtered colimits proves (J2). The identification is natural for restriction from a compact cap to its closed base, because it was built from the original restriction and extension maps. Thus if all cap/base comparisons for the objects \(j_{m!}(F|_{O_m})\) are isomorphisms, the same comparison for \(j_!F\) is an isomorphism.
 
-The last statement is a comparison on a specified compact cap. The converse cap-test theorem converts it into an exclusion from microsupport. Likewise (J1) supplies the inverse limit for ordinary extensions, but a pointwise vanishing stalk cannot simply be commuted with an infinite product. The directional reading proves uniform propagation, one localization for a whole family, and the noncharacteristic open-boundary estimates. The limiting-boundary proof supplies the arbitrary-open estimates and the missing-submanifold trace, with arbitrary bounded-below coefficients. The limiting tensor proof treats arbitrary bounded coefficients over a ring of finite global dimension; the geometric foundations remain separate.
+The last statement is a comparison on a specified compact cap. The [converse cap-test theorem](directional-neighborhoods-and-the-compact-cap-test.md#from-the-cap-comparison-back-to-all-local-tests-compact-cap-converse) converts it into an exclusion from microsupport. Likewise (J1) supplies the inverse limit for ordinary extensions, but a pointwise vanishing stalk cannot simply be commuted with an infinite product. The directional reading proves [uniform propagation](directional-neighborhoods-and-the-compact-cap-test.md#propagation-for-a-prescribed-cone-directional-propagation), [one localization for a whole family](directional-neighborhoods-and-the-compact-cap-test.md#one-localization-for-an-entire-family-uniform-directional-localization), and the [noncharacteristic open-boundary estimates](directional-neighborhoods-and-the-compact-cap-test.md#the-two-noncharacteristic-open-boundary-estimates-noncharacteristic-open-boundaries). The [limiting-boundary proof](limiting-covectors-at-open-boundaries.md#the-full-open-extension-estimates-arbitrary-open-extensions) supplies the arbitrary-open estimates and the [missing-submanifold trace](limiting-covectors-at-open-boundaries.md#the-trace-across-a-missing-submanifold-missing-submanifold-trace), with arbitrary bounded-below coefficients. The [limiting tensor proof](limiting-covectors-at-open-boundaries.md#products-restriction-and-the-limiting-sum-limiting-tensor-estimate) treats arbitrary bounded coefficients over a ring of finite global dimension; the geometric foundations remain separate.
 
-## The scalar profile and its geometric input {#scalar-profile}
+<a id="scalar-profile"></a>
+<a id="the-scalar-profile-and-its-geometric-input-scalar-profile"></a>
+
+## The scalar profile and its geometric input
 
 Set
 
@@ -469,7 +493,7 @@ H=Rh_*F\in D^b_{w\text{-}\mathbb R\text{-}c}(k_{\mathbb R}).
 \tag{7}
 \]
 
-The boundedness here follows from the ordinary-image bound, since \(X\) has a uniform finite dimension bound. The sheaf image estimate is now (T6). To obtain weak constructibility of \(H\), the remaining geometric contracts are precise: the constructibility/microsupport criterion makes the actual \(\operatorname{SS}(F)\) closed, conic, subanalytic and isotropic; proper cotangent transport makes \(h_\pi h_d^{-1}\operatorname{SS}(F)\) a set with those same properties. Its required properness was proved in (T5), using the actual support. Estimate (T6) and the reverse constructibility criterion then make the cohomology of \(H\) locally constant on the pieces of a locally finite subanalytic stratification of \(\mathbb R\). The cotangent transport argument is supplied in the linked lesson, including singular-form detection. Its subanalytic foundations and the constructibility criterion with its microlocal proofs still require complete programme clearance. The proper-image local-support estimate itself is no longer an imported theorem. No finiteness condition on the coefficient modules enters this deduction.
+The boundedness here follows from the [ordinary-image bound](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#why-the-operations-remain-globally-bounded-globally-bounded-operations), since \(X\) has a uniform finite dimension bound. The sheaf image estimate is now (T6). To obtain weak constructibility of \(H\), the remaining geometric contracts are precise: the [constructibility/microsupport criterion](constructibility-from-microsupport-and-perfect-stalks.md#geometric-equivalence) makes the actual \(\operatorname{SS}(F)\) closed, conic, subanalytic and isotropic; [proper cotangent transport](isotropic-cotangent-transport-and-discrete-critical-values.md#proper-direct-transport) makes \(h_\pi h_d^{-1}\operatorname{SS}(F)\) a set with those same properties. Its required properness was proved in (T5), using the actual support. Estimate (T6) and the reverse constructibility criterion then make the cohomology of \(H\) locally constant on the pieces of a locally finite subanalytic stratification of \(\mathbb R\). The cotangent transport argument is supplied in the linked lesson, including singular-form detection. The linked proofs specify their subanalytic set, singular-form, involutivity and compatible-stratification inputs. The local-support proof of the image estimate is (T1)–(T6). No finiteness condition on the coefficient modules enters this deduction.
 
 On the line, the connected strata are points and intervals. Local finiteness, applied near zero, gives \(\delta>0\) with no point stratum in \((0,\delta)\), for a common stratification of the finitely many cohomology sheaves. We may insert zero as a point stratum if necessary. Since \(h\geq0\), \(H\) vanishes on the negative half-line. The entire remaining calculation uses precisely these two properties: zero on the negative side and locally constant cohomology on \(I=(0,\delta)\).
 
@@ -486,7 +510,10 @@ To check the counit, first take one cohomology sheaf, which is constant by the p
 
 <span id="ordinary-ball-cohomology-is-the-central-coefficient"></span>
 
-## An interval star and its closed endpoint {#scalar-endpoint-proof}
+<a id="scalar-endpoint-proof"></a>
+<a id="an-interval-star-and-its-closed-endpoint-scalar-endpoint-proof"></a>
+
+## An interval star and its closed endpoint
 
 We prove the scalar assertion in the category of all sheaves. Start with a sheaf \(Q\) on \(J=(-\eta,t)\), zero on \((-\eta,0)\) and constant with value \(N\) on \((0,t)\). Let \(i\) be the inclusion of zero and \(j\) the inclusion of \((0,t)\). The natural maps from open extension and to the closed-point restriction give the stalkwise exact sequence
 
@@ -527,7 +554,10 @@ consists of isomorphisms. It also proves their compatibility as \(t\) decreases.
 
 <span id="supported-cohomology-is-the-fibre-of-one-map"></span>
 
-## One fibre computes every small closed support {#scalar-support-proof}
+<a id="scalar-support-proof"></a>
+<a id="one-fibre-computes-every-small-closed-support-scalar-support-proof"></a>
+
+## One fibre computes every small closed support
 
 Under (9) and (10), restriction to the positive part defines
 
@@ -569,7 +599,10 @@ The map from each inner closed support to this compact-section complex is the ma
 
 <span id="annuli-and-spheres-read-the-nearby-coefficient"></span>
 
-## Transport along the map proper on coefficient support {#proper-support-transport}
+<a id="proper-support-transport"></a>
+<a id="transport-along-the-map-proper-on-coefficient-support-proper-support-transport"></a>
+
+## Transport along the map proper on coefficient support
 
 We justify all the comparison maps used to return to \(X\). Put \(S=\operatorname{supp}(F)\) and let \(i:S\to X\). A stalk check gives \(F\simeq i_*i^{-1}F\), since \(F\) has zero cohomology off \(S\). The restricted map \(h|_S\) is proper. Thus proper base change applies even if \(h\) is not proper on all of \(X\).
 
@@ -615,15 +648,18 @@ The last arrow is restriction to an interior point of a nonempty interval. Prope
 
 \[
 t=\epsilon^2,\quad r=(\epsilon')^2,\quad
-q=(\epsilon''')^2,\quad s=(\epsilon'')^2.
+q=(\epsilon^{\prime\prime\prime})^2,\quad s=(\epsilon^{\prime\prime})^2.
 \tag{18}
 \]
 
-gives the punctured ball, annulus and pulled-back sphere in (4), including \(\epsilon''=0\) and \(\epsilon'=\epsilon\). Every map here is induced by the same restriction or support operation as in the theorem. Subject to the stated geometric proper-image input, this completes the proof of all three comparisons.
+gives the punctured ball, annulus and pulled-back sphere in (4), including \(\epsilon^{\prime\prime}=0\) and \(\epsilon'=\epsilon\). Every map here is induced by the same restriction or support operation as in the theorem. Subject to the stated geometric proper-image input, this completes the proof of all three comparisons.
 
-## The two signed critical sets give a second check {#signed-critical-check}
+<a id="signed-critical-check"></a>
+<a id="the-two-signed-critical-sets-give-a-second-check-signed-critical-check"></a>
 
-The earlier microlocal route to the same positive interval remains useful for recording both covector directions. Let \(\Lambda=\operatorname{SS}(F)\). The geometric constructibility criterion makes the actual \(\Lambda\) closed, conic, subanalytic and isotropic, with base equal to the closed support. The antipodal set has the same properties. The direct analytic-curve proof of microlocal Bertini–Sard, applied to \(h\) and these two sets, gives the closed locally finite critical-value sets
+## The two signed critical sets give a second check
+
+The earlier microlocal route to the same positive interval remains useful for recording both covector directions. Let \(\Lambda=\operatorname{SS}(F)\). The geometric constructibility criterion makes the actual \(\Lambda\) closed, conic, subanalytic and isotropic, with base equal to the closed support. The antipodal set has the same properties. The [direct analytic-curve proof of microlocal Bertini–Sard](isotropic-cotangent-transport-and-discrete-critical-values.md#direct-critical-set-proof), applied to \(h\) and these two sets, gives the closed locally finite critical-value sets
 
 \[
 \begin{aligned}
@@ -641,11 +677,12 @@ Properness is available on their base because it is the actual coefficient suppo
 \tag{8}
 \]
 
-This recovers local constancy on the positive interval through the zero-section criterion. The image estimate is (T6). The critical-value proof now uses curve selection and the singular-form test (C1)–(C6), without the uniformization/Sard inputs of general cotangent transport. Its subanalytic foundations remain unfinished; the zero-section criterion, including actual derived local descent, is proved above. The scalar proof above needs no additional microlocal Morse endpoint result once positive local constancy is known.
+This recovers local constancy on the positive interval through the zero-section criterion. The image estimate is (T6). The critical-value proof now uses curve selection and the singular-form test (C1)–(C6), without the uniformization/Sard inputs of general cotangent transport. It uses the stated analytic curve-selection and singular-form prerequisites; the zero-section criterion, including actual derived local descent, is proved above. The scalar proof above needs no additional microlocal Morse endpoint result once positive local constancy is known.
 
-<span id="applying-the-theorem-in-an-open-coordinate-chart"></span>
+<a id="local-chart-cutoff"></a>
+<a id="applying-the-theorem-in-an-open-coordinate-chart-local-chart-cutoff"></a>
 
-## Applying the theorem in an open coordinate chart {#local-chart-cutoff}
+## Applying the theorem in an open coordinate chart
 
 For an open chart \(X\subset\mathbb R^n\) and \(\varphi(x)=x-x_0\), choose a closed ball of radius \(R\) about \(x_0\) contained in \(X\), and set
 
@@ -654,7 +691,7 @@ F'=F\otimes k_{\overline B_R(x_0)}.
 \tag{19}
 \]
 
-Here is a direct proof that the cutoff preserves weak constructibility. More generally let \(Z\subset X\) be closed and subanalytic, with inclusion \(i\). Choose a locally finite subanalytic cover \((E_a)\) on which all the finitely many cohomology sheaves of \(F\) are locally constant. The sets \(E_a\cap Z\) and \(E_a\setminus Z\) are subanalytic by intersection and difference in the subanalytic set calculus. They still form a locally finite cover: each is a subset of its original member, and only two new members arise from it.
+Here is a direct proof that the cutoff preserves weak constructibility. More generally let \(Z\subset X\) be closed and subanalytic, with inclusion \(i\). Choose a locally finite subanalytic cover \((E_a)\) on which all the finitely many cohomology sheaves of \(F\) are locally constant. The sets \(E_a\cap Z\) and \(E_a\setminus Z\) are subanalytic by intersection and difference in the [subanalytic set calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis). They still form a locally finite cover: each is a subset of its original member, and only two new members arise from it.
 
 The stalks of \(k_Z\) are \(k\) on \(Z\) and zero elsewhere, so this sheaf is flat. Exact restriction and closed direct image give, by the canonical stalkwise identification,
 
@@ -754,18 +791,23 @@ Give the explicit isomorphism \(V\to V\oplus V\) using parity of the displayed b
 
 **Solution.** Send \(e_{2m}\) to \((e_m,0)\) and \(e_{2m+1}\) to \((0,e_m)\). This has inverse sending the two copies' basis vectors back to their even and odd indices. It is an abstract isomorphism. The natural restriction from a connected interval to its negative and positive punctured components sends the same constant section to both sides; it is \(\Delta\), which differs from the parity map. The difference map \(V\oplus V\to V\) is surjective and has kernel the diagonal, so the support triangle gives the central complex \(V[-1]\), with \(V\) in degree one. It is nonzero.
 
-On a \(d\)-dimensional manifold, the analogous ball/sphere restriction has relative coefficient \(V\otimes\mathrm{or}_x^\vee[-d]\), also nonzero. In a weakly constructible object, a maximal nonzero stratum is locally closed with all other nonzero strata absent near one of its interior points. Closed-support localization reduces its costalk there to this intrinsic shifted coefficient. Thus some costalk is nonzero. Infinite self-similarity of \(V\) does not interfere with the natural-map argument used in weak operation comparisons.
+On a \(d\)-dimensional manifold, the analogous ball/sphere restriction has relative coefficient \(V\otimes\mathrm{or}_x^\vee[-d]\), also nonzero. In a weakly constructible object, a maximal nonzero stratum is locally closed with all other nonzero strata absent near one of its interior points. Closed-support localization reduces its costalk there to this intrinsic shifted coefficient. Thus some costalk is nonzero. Infinite self-similarity of \(V\) does not interfere with the natural-map argument used in [weak operation comparisons](weak-constructibility-under-sheaf-operations.md#costalks-detect-a-weakly-constructible-object).
 
 <span id="references"></span>
 
 <span id="accessible-sources-and-the-scope-of-their-small-ball-statements"></span>
 
-## Sources and the remaining proof boundary {#sources-and-proof-boundary}
+<a id="sources-and-proof-boundary"></a>
+<a id="human-sources-and-proof-inputs-sources-and-proof-boundary"></a>
+<a id="sources-and-the-remaining-proof-boundary"></a>
+<a id="sources-and-the-remaining-proof-boundary-sources-and-proof-boundary"></a>
+
+## Human sources and proof inputs
 
 Andreas Hohl and Pierre Schapira, [*Unusual functorialities for weakly constructible sheaves*, version 2, §4 and Lemma 4.1](https://arxiv.org/html/2303.11189v2#S4), state the weak proper-image stability and the passage to weak cohomological constructibility. Those passages refer to earlier foundations; they do not supply a complete small-ball proof. The paper's Proposition 4.2 motivates the costalk check above, where the natural diagonal map is retained to handle infinite self-similar coefficients.
 
-The independent scalar argument in this edition starts with the actual interval attachment and proves the open, closed and compact-support maps by two short exact sequences and localization. Its elementary sheaf-operation ingredients are proved in the current duality reconstruction, with injective models, bounded operations and constant local-support calculations. The ordinary gluing calculation in the programme interval lesson was also compared; the complete scalar argument needed here is supplied above.
+The independent scalar argument in this edition starts with the actual interval attachment and proves the open, closed and compact-support maps by two short exact sequences and localization. Its elementary sheaf-operation ingredients are proved in the [current duality reconstruction](../../../constructible-duality-and-infinite-twists/src/duality-maps-for-constructible-inverse-and-direct-images.md#compact-support-extension-lifting-and-acyclicity-compact-support-proof), with injective models, bounded operations and constant local-support calculations. The complete scalar argument needed here is supplied above, including its actual restriction and support-inclusion maps.
 
-The proper-image microsupport estimate is proved in (T1)–(T6), following the cited freely available Astérisque argument with its support operations supplied explicitly. The closed-cutoff sheaf argument is (K1), using the defining subanalytic cover. The companion cotangent lesson supplies the geometric transport arguments and a direct proof for both signed critical sets. The remaining geometric prerequisites are its explicit subanalytic foundations, Sard for general surjective form detection, and the involutivity and stratification inputs of the constructibility/microsupport criterion. The boundary and bounded tensor estimates have exact companion proofs linked above. The closed-embedding and zero-section inputs are now proved in (E1)–(E3) and (N1)–(Z4). No external source text, figure or archive is included in this reader.
+The proper-image microsupport estimate is proved in (T1)–(T6), following the cited freely available Astérisque argument with its support operations supplied explicitly. The closed-cutoff sheaf argument is (K1), using the defining subanalytic cover. The companion cotangent lesson supplies the geometric transport arguments and a direct proof for both signed critical sets. The geometric prerequisites are the linked subanalytic foundations, the analytic critical-value proof used for surjective form detection, and the involutivity and stratification inputs of the constructibility/microsupport criterion. The boundary and bounded tensor estimates have exact companion proofs linked above. The closed-embedding and zero-section inputs are now proved in (E1)–(E3) and (N1)–(Z4). No external source text, figure or archive is included in this reader.
 
-The uniform compact-cap implication (U1)–(U10) follows the compact-cap geometry in Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/). The explicit exponential graph (U3) has uniform derivative and cap-collapse estimates, with rim support-summand and nested-neighborhood arguments. Equations (J1)–(J2) give ordinary and compact-support extension limits. The directional reading supplies the propagation and noncharacteristic open-boundary prerequisites linked above. The limiting-boundary reading proves the arbitrary-open and missing-submanifold applications. The limiting tensor proof supplies the bounded tensor argument; geometric foundations remain separate.
+The uniform compact-cap implication (U1)–(U10) follows the compact-cap argument of Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/), Theorem 3.1.1, implication (1) to (3), printed pp. 49–53. The explicit exponential graph (U3) has uniform derivative and cap-collapse estimates, with rim support-summand and nested-neighborhood arguments. Equations (J1)–(J2) give ordinary and compact-support extension limits. The directional reading supplies the propagation and noncharacteristic open-boundary prerequisites linked above. The [limiting-boundary reading](limiting-covectors-at-open-boundaries.md) proves the arbitrary-open and missing-submanifold applications. The [limiting tensor proof](limiting-covectors-at-open-boundaries.md#products-restriction-and-the-limiting-sum-limiting-tensor-estimate) supplies the bounded tensor argument; geometric foundations remain separate.

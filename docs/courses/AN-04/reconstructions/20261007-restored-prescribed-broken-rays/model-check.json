@@ -1,0 +1,61 @@
+{
+  "schema": "an04-prescribed-broken-rays-model-checks/v1",
+  "source_sha256": "f1534ef74027151304ea4263f62982f3500ac37910f3110eaf1aa1a0dcb6d1bd",
+  "checks": [
+    {
+      "name": "Exact flat paired wave and intrinsic trace",
+      "passed": true,
+      "equations": [
+        "P(c(t+r)-c(t-r))=0",
+        "gamma0=0",
+        "gamma1=-2i c-prime"
+      ],
+      "comparison": "BG33-BG35; normal trace sign fixed by ordering."
+    },
+    {
+      "name": "Three exact strip reflections and two-wall compression",
+      "passed": true,
+      "radii": [
+        "t + 1/2",
+        "3/2 - t",
+        "t - 3/2",
+        "7/2 - t"
+      ],
+      "compressed_quadratics": [
+        "t**2 - 1/4",
+        "-t**2 + 2*t - 3/4",
+        "t**2 - 4*t + 15/4",
+        "-t**2 + 6*t - 35/4"
+      ],
+      "Hamilton_reversal": "s=-t/2 implies dt/ds=-2 and dr/ds=2rho",
+      "comparison": "BG31-BG32 and exact SVG."
+    },
+    {
+      "name": "Cubic mixed derivative scaling",
+      "passed": true,
+      "finite_mixed_pairs": 16,
+      "scaling": "partial_s^j partial_lambda^k = lambda^(j/3-k) F_jk(v), v=lambda^(1/3)(s-b)",
+      "Fourier_gain_per_integration": "lambda^(-2/3) for abs(sigma)>=epsilon lambda",
+      "comparison": "BG36-BG39; full induction and compact support estimates supplied in solution."
+    },
+    {
+      "name": "Periodic strip modes",
+      "passed": true,
+      "positive_modes_checked": 5,
+      "period": "2L",
+      "two_exact_Dirichlet_values": true,
+      "comparison": "BG40-BG43; full distribution convergence, smoothness and single-positive wavefront proved in solution, not inferred from finite modes."
+    },
+    {
+      "name": "Gaussian derivative Sobolev exponent",
+      "passed": true,
+      "exponent": "2*K + 2*s - 1",
+      "convergence_condition": "s<-K; equality exponent=-1 diverges",
+      "fixed_order": "M>K",
+      "comparison": "BG44-BG45; full positive and negative real-weight comparison supplied in solution."
+    }
+  ],
+  "passed": true,
+  "general_theorem_certified": false,
+  "script_sha256": "d99d95f0c79bc9a06024d80346db6ab3c4ff1c361c9d5de8a203952f99860bba"
+}

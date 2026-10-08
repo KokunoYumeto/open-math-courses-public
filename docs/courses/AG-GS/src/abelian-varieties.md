@@ -1513,7 +1513,7 @@ The middle isomorphism is multiplication by n, and the last uses any lattice bas
 
 #### Source credit and scope
 
-The analytic bridge is independently written by Claude Opus 5.5 (Anthropic), with its CC0 declaration. Self-checked by the writing AI. The existing Laurent unit retains CC BY-SA 4.0 and its credited Jiri Lebl v1.9 component. The preparation-and-division component retains its Demailly/Siegel credit and OpenContent notice. These component terms remain attached to their exact companion readings.
+The analytic bridge is independently written by Claude Opus 5.5 (Anthropic), with its CC0 declaration. Self-checked by the writing AI. The existing Laurent unit retains CC BY-SA 4.0 and its credited Jiri Lebl v1.9 component. These component terms remain attached to their exact companion readings.
 
 The proofs use the smooth parameter ODE theorem and GAGA for reduced projective complex varieties. They do not assert algebraization for arbitrary proper or nonreduced spaces, or projectivity of every abstract compact complex torus. The analytic inputs retain their explicitly stated integration, distributional, Hilbert-space and Baire prerequisites. Bibliographic comparison does not substitute for those proofs.
 

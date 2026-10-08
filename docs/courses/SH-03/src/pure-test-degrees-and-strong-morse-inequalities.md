@@ -2,11 +2,11 @@
 
 A pure sheaf has one local test degree at each regular transverse intersection with a differential graph. The geometric shift alone does not give that degree: the ambient dimension and an ordered inertia index also enter. These local tests determine the global Euler number. The finite Morse filtration gives more information, because its connecting maps record how neighbouring cohomological degrees cancel.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 Use Pure and simple sheaves from directional tests for normalized type, its integral shift and the complete transverse-test comparison. Differential sections and proper-below Euler indices proves finiteness and the global ordinary index. Isolated phases and local characteristic-cycle indices proves the local closed-test index.
 
-The exact preceding Morse proof is SH-02, Local jumps and finite Morse data and A finite filtration by local tests, including the proper support, endpoint, localization and connecting-map arguments. We use that written filtration, with its exact maps. Its earlier sheaf foundations and this course's subanalytic foundations retain their recorded proof obligations.
+The exact preceding Morse proof is SH-02, Local jumps and finite Morse data and A finite filtration by local tests, including the proper support, endpoint, localization and connecting-map arguments. We use that written filtration, with its exact maps. The filtration uses the actual ordinary restriction maps, compact-neighborhood continuity at its closed endpoints, and the supported local tests; these maps are specified below.
 
 ## The geometric shift gives an integral local degree
 
@@ -71,7 +71,11 @@ Solving for \(J_i\) gives (6).
 There is no fractional shift functor here. If
 \(r_i=\dim(V_i\cap A_i)\), the allowed geometric shift satisfies
 \(d_i-r_i/2\in\mathbb Z\). The graph plane is transverse both to \(A_i\), by (2), and to \(V_i\), because it projects isomorphically to the base. The proved inertia parity is
-\(\tau_i\equiv n+r_i\pmod2\). Therefore \(n/2+\tau_i/2-d_i\) is an integer. This proves integrality in (5), including when \(d_i\) is a half-integer. \(\square\)
+\(\tau_i\equiv n+r_i\pmod2\). Here is the parity calculation in the transverse case. Choose the splitting of the symplectic space by \(V_i\) and \(B_i\), with coordinates \((v,b)\) and pairing \(\omega((v,b),(v',b'))=\langle v,b'\rangle-\langle v',b\rangle\). Since \(A_i\) is transverse to \(B_i\), it is the graph \(b=Kv\) of a symmetric linear map \(K\). Its kernel is \(V_i\cap A_i\), of dimension \(r_i\). On vectors \((v,0)\), \((u,Ku)\), \((0,b)\) in the three planes, the cyclic quadratic form is
+\[
+\langle v,Ku\rangle+\langle u-v,b\rangle.
+\]
+Writing \(u=v+z\) and \(b'=b+Kv\) reduces it to \(\langle v,Kv\rangle+\langle z,b'\rangle\). The second summand is hyperbolic. Thus its signature has the parity of \(\operatorname{rank}K=n-r_i\), which has the same parity as \(n+r_i\). Therefore \(n/2+\tau_i/2-d_i\) is an integer. This proves integrality in (5), including when \(d_i\) is a half-integer. \(\square\)
 
 Our convention is \(H^j(K[s])=H^{j+s}(K)\). Accordingly, \(e_i\) is the shift exponent, whereas \(\mu_i\) is the degree of the nonzero local cohomology. They have the same parity. The local degree can be negative for a shifted sheaf.
 
@@ -117,6 +121,16 @@ d=s+\frac c2,\qquad
 Thus the raw test is \(k^m[s-q]\), up to the locally chosen negative-direction orientation line, and its local number is
 \((-1)^{q-s}m\). The orientation line has rank one and does not change this dimension calculation. Its local trivialization is not a global orientation choice.
 
+To verify the test itself, trivialize the coefficient local system near the critical point and use Morse coordinates on \(Y\), in which \(\varphi|_Y-c=|u|^2-|v|^2\) with \(\dim v=q\). Its closed-support triangle computes the relative cochains of a small ball and the open region \(|u|<|v|\). For \(q>0\), the latter retracts to a small sphere in the negative directions: first contract \(u\) to zero, then radially move \(v\) to a fixed nonzero radius inside the ball. The constant restriction map from the ball is the augmentation of the sphere's cochains. Its mapping fibre has the negative-direction orientation line in degree \(q\). For \(q=0\), the open region is empty and the mapping fibre is the coefficient space in degree zero. Tensoring with the coefficient space and shifting by \([s]\) gives precisely the test in (9), including the restriction map and its orientation line.
+
+The ordered index has the same direct coordinate check. Write \(x=(a,b)\), \(Y=\{b=0\}\), and let the Hessian blocks be \(H_{aa},H_{ab},H_{ba},H_{bb}\). For vectors \((0,0;u,v)\), \((z,0;0,w)\), and \((h,t;H_{aa}h+H_{ab}t,H_{ba}h+H_{bb}t)\) in \(V,A,B\), respectively, the cyclic form is
+\[
+u^T(z-h)+(w-v)^Tt-z^TH_{aa}h-z^TH_{ab}t.
+\]
+Put \(z=h+e\), replace \(u\) by \(u-H_{aa}h\), and replace \(w-v\) by \(w-v-H_{ba}(h+e)\). The result is the sum of two hyperbolic pairings and \(-h^TH_{aa}h\), with the free normal-fibre variables in the radical. Consequently \(\tau=-\operatorname{sgn}H_{aa}=2q-\ell\). Mixed normal derivatives do not alter this index.
+
+Keep the orientation of a conormal generator separate from the sheaf coefficient. The normalized characteristic-cycle construction gives, locally along this conormal, \(\operatorname{CC}(F)=(-1)^{\ell+s}m[T_Y^*X]\). For a smooth constructible \(Y\), the preceding local-index comparison establishes this coefficient using the tangent Thom map and the normal closed trace in a smooth chart. In the same graph-first supported product, \(\#([\sigma_\varphi]\cap[T_Y^*X])_p=(-1)^{\ell+q}\). Their product is \((-1)^{q+s}m=(-1)^{q-s}m\), the Euler number of the actual closed test. Thus the dimension sign belongs to the conormal intersection and cancels against its sheaf coefficient; it does not change the local degree \(\mu=q-s\).
+
 For an unshifted constant sheaf on \(X\), (9) reduces to \(\mu=q\). For a submanifold sheaf, the codimension part of the geometric shift cancels the ambient dimension correction. Replacing the vertical plane in (3) with a zero-section tangent would destroy this calculation.
 
 ## The Morse filtration retains the attaching maps
@@ -139,11 +153,11 @@ L_\nu\simeq\bigoplus_{c_i=a_\nu}J_i.
 \qquad\text{(11)}
 \]
 
-The maps \(B_\nu\to B_{\nu-1}\) are ordinary restrictions from a sublevel above \(a_\nu\) to one below it. Points at the same critical value contribute in one \(L_\nu\); one need not perturb their values or impose an artificial ordering on them.
+Choose \(t_0\) below the support, \(t_\nu\in(a_\nu,a_{\nu+1})\) for \(1\leq\nu<r\), and \(t_r>a_r\). For \(r>0\) take \(B_\nu=R\Gamma(\{\varphi<t_\nu\};F)\). The maps \(B_\nu\to B_{\nu-1}\) are the actual ordinary restrictions. Their mapping fibres are first the supported sections of \(F\) in the closed part \(\{t_{\nu-1}\leq\varphi<t_\nu\}\) of the open sublevel. The positive-test band comparison identifies these fibres with the contribution at \(a_\nu\). Shrinking upper levels to \(a_\nu\) uses compact-neighborhood continuity on the compact support sublevel; approaching from below uses the restriction system on open sublevels. The supported localization triangle then identifies its first term with \((R\Gamma_{a_\nu,\infty)}R\varphi_*F)_{a_\nu}\). These are precisely the endpoint and localization identifications in [the finite filtration proof. They identify the arrows in (11), including \(\delta_\nu\), and not only the dimensions of its terms. Points at the same critical value contribute in one \(L_\nu\); one need not perturb their values or impose an artificial ordering on them.
 
 To clarify the hypotheses used by the earlier proof, the support is bounded below when it is nonempty: choose \(t_0\) with \(K=D\cap\{\varphi\leq t_0\}\ne\varnothing\). The compact set \(K\) has a minimum value \(a\), and every point of \(D\setminus K\) has value greater than \(t_0\geq a\). Thus \(a\) is a global lower bound on \(D\). Also \(\varphi|_D\) is proper, since the inverse image of a compact interval is closed in a compact sublevel.
 
-The finite-band positive-covector comparison consequently propagates the zero sublevel complex to just below \(a_1\), identifies levels between successive \(a_\nu\), and identifies the eventual upper sublevel with the global complex by the open-union comparison. Above the last value the restriction system is constant, so its inverse limit and derived-limit comparison introduce no extra cohomology.
+The finite-band positive-covector comparison consequently propagates the zero sublevel complex to just below \(a_1\), identifies levels between successive \(a_\nu\), and identifies the eventual upper sublevel with the global complex by the open-union comparison. Choose an increasing sequence of levels above the last critical value tending to \(+\infty\). Their open sublevels exhaust \(X\), and all transition maps on cohomology are isomorphisms by the same band comparison. For this inverse system \(\varprojlim^1\) vanishes: the map \((z_j)\mapsto(z_j-f_jz_{j+1})\) on the product is surjective, since each \(f_j\) is invertible and the equation can be solved recursively from any \(z_1\). The open-union Milnor exact sequence therefore identifies the global complex with the final stage. If \(N=0\), start below the support and apply the band comparison at every level. All stages are zero, and this same argument gives \(R\Gamma(X;F)=0\); the filtration is empty.
 
 For the local term, proper base change and supported localization for \(H=R\varphi_*F\) give
 
@@ -155,7 +169,7 @@ R\Gamma\left(\{\varphi=a_\nu\};
 \qquad\text{(12)}
 \]
 
-The fibre is compact on coefficient support. At its points outside the \(x_i\) with \(c_i=a_\nu\), the displayed local supported test vanishes by the defining microsupport test. A complex on this fibre supported at finitely many points has cohomology equal to the direct sum of its stalk complexes. Hence (12) gives precisely \(L_\nu\) in (11). The full preceding Morse proof supplies the endpoint continuity and localization triangle producing the actual arrows in (11). Bounded finiteness then follows by induction in these triangles.
+The fibre is compact on coefficient support. At its points outside the \(x_i\) with \(c_i=a_\nu\), the displayed local supported test vanishes by the defining microsupport test. For completeness, let \(i:S\hookrightarrow\{\varphi=a_\nu\}\) be this finite closed set. The adjunction map from the displayed restricted complex \(G\) to \(i_*i^{-1}G\) is an isomorphism on every stalk: it is the identity on \(S\), and both sides vanish off \(S\). It is therefore a quasi-isomorphism. Sections on the finite discrete space \(S\) are an exact finite direct sum. This proves \(R\Gamma(\{\varphi=a_\nu\};G)\simeq\bigoplus_{c_i=a_\nu}J_i\) as a derived identification. Hence (12) gives precisely \(L_\nu\) in (11). The full preceding Morse proof supplies the endpoint continuity and localization triangle producing the actual arrows in (11). Bounded finiteness then follows by induction in these triangles.
 
 For the analytic constructible input of (1)–(2), the local tests are perfect: they are stalks of the constructible internal Hom with the constructible closed-test sheaf. In the pure situation this is already explicit in (6). Thus our index hypotheses satisfy all the filtration hypotheses.
 
@@ -293,10 +307,11 @@ The bottom-stage complex is \(k\). At the top, the connecting map \(H^0(k)\to H^
 
 Let \(X=\mathbb R\sqcup\mathbb R\), let \(\varphi=t^2\) on each component, and take constant ranks \(a\) and \(b\) on the two components. Describe the first critical jump and the global cohomology. The ranks are finite and nonnegative.
 
-**Solution.** A closed sublevel of the support is a union of at most two compact intervals. The two graph intersections lie at the origins and have the same value zero. Both tests have degree zero and ranks \(a\) and \(b\). There is one distinct critical value, and its term is
+**Solution.** A closed sublevel of the support is a union of at most two compact intervals. Each positive-rank component contributes one graph intersection at its origin, at value zero, with its coefficient space in test degree zero. A zero-rank component has zero sheaf and empty microsupport, so contributes no intersection. If \(a+b>0\), there is one distinct critical value, whose term is
 \(L_1=k^a\oplus k^b\) in degree zero. The triangle is
 \(L_1\to B_1\to0\to L_1[1]\), so \(B_1\simeq L_1\).
-Ordinary cohomology of each contractible component is its constant coefficient space in degree zero. Thus \(b_0=m_0=a+b\), all other dimensions vanish, and \(Q(t)=0\). Separating the two critical values is unnecessary.
+If \(a=b=0\), the intersection and filtration are empty and the global complex is zero.
+Ordinary cohomology of each contractible component is its constant coefficient space in degree zero. In all cases \(b_0=m_0=a+b\), all other dimensions vanish, and \(Q(t)=0\). When both ranks are positive, their equal critical values need not be separated.
 
 ### A zero cycle still has nonzero Morse data
 
@@ -339,8 +354,8 @@ For a realization, take \(L_1=k^2[2]\), \(L_2=k^3[1]\), \(L_3=k\), and \(B_0=0\)
 
 ## References and the next step
 
-The strong Morse inequalities for constructible sheaves refine the index theory of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). The local index and the ordinary global index are taught in the linked preceding lessons; the arbitrary-field finite-test filtration is proved in the linked SH-02 lesson. The distinction between shift exponent and cohomology degree, the adjacent connecting-rank identity, the Laurent-polynomial formulation and the equality analysis are proved here.
+M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Lemmas 7.2.3–7.2.4, Definition 7.2.5 and Examples 7.2.6, printed pp. 125–128, supply the conormal test degree, test independence, purity normalization and shift rules. The linked pure-sheaf lesson proves their coefficient-complex comparison with the stated order of tangent planes. M. Kashiwara's [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), Proposition 5.1, Lemma 5.2 and Proposition 5.3, pp. 200–203, relate the transverse local tests to the global Euler sum. The actual programme cycle conventions are compared above. The arbitrary-field finite-test filtration is proved in the linked SH-02 lesson; the adjacent connecting-rank identity, Laurent-polynomial defect and splitting criterion follow from the explicit triangles here.
 
-For a related computational setting, Adam Brown and Ondřej Draganov, [*Discrete Microlocal Morse Theory*](https://arxiv.org/abs/2209.14993v3), version 3, 10 June 2025, §6.2, prove Morse inequalities for sheaves of finite-dimensional vector spaces on finite posets. Their discrete critical fibres and derived restriction functors differ from the cotangent tests here; the long-exact-sequence dimension argument provides a useful comparison.
+For a finite-poset counterpart, Adam Brown and Ondřej Draganov, [*Discrete Microlocal Morse Theory*](https://arxiv.org/abs/2209.14993v3), version 3, 10 June 2025, §6.2, Theorem 6.8 and its proof, pp. 50–51, derive strong Morse inequalities and Euler equality from long exact sequences. Their critical fibres use discrete microsupport and derived restriction operations. These are a related setting, rather than identifications of those fibres with the cotangent tests in this lesson.
 
 The next step is the orientation-valued form of conormal and differential cycles and the ordered transverse intersection convention. It must preserve the same local and global numbers, including every ambient, fibre and cohomological sign.

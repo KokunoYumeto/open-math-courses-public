@@ -2,7 +2,7 @@
 
 An identity contact transformation fixes the covectors, but its sheaf operator can still change the coefficients. A diagonal kernel with coefficient \(k[r]\) shifts every input by \(r\); a diagonal kernel with coefficient \(\mathbb Z/7\) over \(\mathbb Z\) kills rational coefficients. The question is therefore whether the coefficient operation itself is invertible. We will detect its inverse by applying a counit to one conormal test object \(k_S\), and we will also prove the full coefficient description of the conormal category.
 
-The geometric inputs are When a kernel quantizes a contact transformation, Local existence of contact kernel equivalences, and Microlocal composition at prescribed covectors. Throughout, \(k\) is a commutative ring of finite global dimension \(g\), and our coefficient categories contain arbitrary bounded complexes of \(k\)-modules. Manifolds have the standing finite-dimensional, Hausdorff, countable-at-infinity hypotheses. Finite generation, perfectness and a field assumption are not implicit.
+The geometric inputs are [When a kernel quantizes a contact transformation](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md), [Local existence of contact kernel equivalences](local-existence-of-contact-kernel-equivalences.md), and [Microlocal composition at prescribed covectors](../../microlocal-composition-and-pure-sheaves/src/microlocal-composition-at-prescribed-covectors.md). Throughout, \(k\) is a commutative ring of finite global dimension \(g\), and our coefficient categories contain arbitrary bounded complexes of \(k\)-modules. Manifolds have the standing finite-dimensional, Hausdorff, countable-at-infinity hypotheses. Finite generation, perfectness and a field assumption are not implicit.
 
 *Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, September–October 2026. New original text is public domain (CC0).*
 
@@ -10,7 +10,7 @@ The geometric inputs are When a kernel quantizes a contact transformation, Local
 
 Fix a smooth closed submanifold \(i:S\hookrightarrow X\) in a coordinate neighborhood and a covector \(p\in T_S^*X\). Let \(\mathcal C_S(p)\) be the full subcategory of \(D^b(k_X;p)\) consisting of objects whose microsupport is contained in \(T_S^*X\) near \(p\). An isomorphism in the localized category preserves the microsupport germ, so this condition does not depend on the representative.
 
-For \(A\in D^b(k)\), put \(A_S=i_*\underline A_S\), where \(\underline A_S\) is the constant complex on \(S\). We may shrink the chart throughout. Thus this notation describes a local coefficient model; it does not require the original sheaf to be constant along an entire global submanifold. The supported conormal model, LFI9–LFI10, supplies such an \(A_S\) for every object of \(\mathcal C_S(p)\).
+For \(A\in D^b(k)\), put \(A_S=i_*\underline A_S\), where \(\underline A_S\) is the constant complex on \(S\). We may shrink the chart throughout. Thus this notation describes a local coefficient model; it does not require the original sheaf to be constant along an entire global submanifold. The [supported conormal model, LFI9–LFI10](../../sheaf-proof-readings/src/SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold), supplies such an \(A_S\) for every object of \(\mathcal C_S(p)\).
 
 We need to determine arrows as well as objects. For arbitrary bounded \(A,B\), the functor of constant extension and closed direct image induces an isomorphism
 
@@ -29,7 +29,7 @@ We prove this by following two functorial comparisons. Write \(N=T_S^*X\), let \
 \simeq j_*\pi^{-1}\underline{R\operatorname{Hom}_k(A,B)}_S.
 \]
 
-**First comparison: form constant complexes on \(S\).** Take the submersion \(q:S\to\{*\}\). Its cotangent correspondence is \(T^*S\xleftarrow{z}S\xrightarrow q\{*\}\), with \(z\) the zero section. At a point, microlocal Hom is derived module Hom. The upper arrow of MH12 and its submersion isomorphism proof therefore gives
+**First comparison: form constant complexes on \(S\).** Take the submersion \(q:S\to\{*\}\). Its cotangent correspondence is \(T^*S\xleftarrow{z}S\xrightarrow q\{*\}\), with \(z\) the zero section. At a point, microlocal Hom is derived module Hom. The upper arrow of [MH12 and its submersion isomorphism proof](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-pair-transport--moving-both-arguments-at-once) therefore gives
 
 \[
 z_*\underline{R\operatorname{Hom}_k(A,B)}_S
@@ -37,9 +37,9 @@ z_*\underline{R\operatorname{Hom}_k(A,B)}_S
 \mu\operatorname{hom}_S(q^!A,q^{-1}B\otimes\omega_S).
 \]
 
-The proper direct image by \(z\) is its exact closed direct image. Since \(q^!A=\underline A_S\otimes\omega_S\), the two Hom inputs carry the same invertible orientation complex. The evaluation-compatible common-twist comparison MH1 cancels that factor. We have consequently identified the left side with \(\mu\operatorname{hom}_S(\underline A_S,\underline B_S)\). This argument retains \(R\operatorname{Hom}_k(A,B)\); it needs no expression of it as a tensor product with a dual of \(A\).
+The proper direct image by \(z\) is its exact closed direct image. Since \(q^!A=\underline A_S\otimes\omega_S\), the two Hom inputs carry the same invertible orientation complex. The evaluation-compatible [common-twist comparison MH1](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-twists--twisting-both-arguments-and-changing-an-arrow) cancels that factor. We have consequently identified the left side with \(\mu\operatorname{hom}_S(\underline A_S,\underline B_S)\). This argument retains \(R\operatorname{Hom}_k(A,B)\); it needs no expression of it as a tensor product with a dual of \(A\).
 
-**Second comparison: extend the complexes from \(S\) to \(X\).** Let \(E_i=S\times_XT^*X\), and denote its covector maps by \(\rho_i:E_i\to T^*S\) and \(\varpi_i:E_i\to T^*X\). The upper arrow of MH13 and its closed-embedding isomorphism proof is
+**Second comparison: extend the complexes from \(S\) to \(X\).** Let \(E_i=S\times_XT^*X\), and denote its covector maps by \(\rho_i:E_i\to T^*S\) and \(\varpi_i:E_i\to T^*X\). The upper arrow of [MH13 and its closed-embedding isomorphism proof](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-pair-transport--moving-both-arguments-at-once) is
 
 \[
 R\varpi_{i!}\rho_i^{-1}
@@ -53,7 +53,7 @@ Here \(Ri_!=Ri_*=i_*\), since \(i\) is closed. The inverse image of the zero sec
 \simeq u_*\pi^{-1}\underline{R\operatorname{Hom}_k(A,B)}_S\).
 This identity can be checked on stalks. Applying \(R\varpi_{i!}\) yields \(j_*\pi^{-1}\underline{R\operatorname{Hom}_k(A,B)}_S\), because \(\varpi_i u=j\) is closed. Substitution in the preceding comparison proves the claimed calculation. The common orientation was canceled in the first comparison, so no codimension shift remains.
 
-These maps also determine the normalization in (1). MH12 is built from pulled-back evaluation and its adjoint. After the common orientation is removed, it carries \(A\to B[r]\) to the corresponding constant sheaf arrow on \(S\). MH13 is built from evaluation and the ordinary direct-image counit, so for this closed embedding it carries that arrow to its image under \(i_*\). Their composite is therefore the actual coefficient arrow furnished by \(A\mapsto A_S\). Taking a stalk at \(p\) and using the point-localized morphism theorem MC.4 identifies its degree \(r\) with
+These maps also determine the normalization in (1). MH12 is built from pulled-back evaluation and its adjoint. After the common orientation is removed, it carries \(A\to B[r]\) to the corresponding constant sheaf arrow on \(S\). MH13 is built from evaluation and the ordinary direct-image counit, so for this closed embedding it carries that arrow to its image under \(i_*\). Their composite is therefore the actual coefficient arrow furnished by \(A\mapsto A_S\). Taking a stalk at \(p\) and using the [point-localized morphism theorem MC.4](../../sheaf-proof-readings/src/SH02/microlocal-categories.md#sh02-mc-point--the-complete-morphism-group-at-one-point) identifies its degree \(r\) with
 \(H^rR\operatorname{Hom}_k(A,B)=\operatorname{Hom}_{D^b(k)}(A,B[r])\).
 This proves (1) with identities and composition, since the identified map comes from the stated functor. Both the conormal calculation and MC.4 include zero covectors.
 
@@ -67,7 +67,7 @@ I_S:D^b(k)\xrightarrow{\sim}\mathcal C_S(p),
 
 The object model proves essential surjectivity, and (1) proves full faithfulness for every pair. Constant extension and closed direct image preserve triangles, so the equivalence is exact. The argument establishes more than the existence of coefficient models, and more than a calculation with the single first argument \(k_S\).
 
-That single first argument nevertheless provides a useful probe. Set \(Q_S(F)=\mu\operatorname{hom}_X(k_S,F)_p\). The microlocal-Hom support bound MO15 makes \(Q_S\) an exact functor on \(D^b(k_X;p)\): a cone whose microsupport misses \(p\) has zero image. The submanifold formula identifies this probe with the stalk of microlocalization along \(S\). For \(A_S\), specialization is the constant complex with coefficient \(A\) on the zero section of the normal bundle, extended by zero. Fourier transformation sends it to that same constant coefficient on the dual bundle. Thus \(Q_S(A_S)\simeq A\), without a shift. This is the supported-coefficient version of the normalized conormal example, and also follows from the arbitrary-pair calculation above with \(A=k\).
+That single first argument nevertheless provides a useful probe. Set \(Q_S(F)=\mu\operatorname{hom}_X(k_S,F)_p\). The [microlocal-Hom support bound MO15](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-microlocal-support--where-directional-sheaves-can-live) makes \(Q_S\) an exact functor on \(D^b(k_X;p)\): a cone whose microsupport misses \(p\) has zero image. The [submanifold formula](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-submanifold--recovering-microlocalization-from-hom) identifies this probe with the stalk of microlocalization along \(S\). For \(A_S\), specialization is the constant complex with coefficient \(A\) on the zero section of the normal bundle, extended by zero. Fourier transformation sends it to that same constant coefficient on the dual bundle. Thus \(Q_S(A_S)\simeq A\), without a shift. This is the supported-coefficient version of the [normalized conormal example](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-examples--models-that-test-the-hypotheses), and also follows from the arbitrary-pair calculation above with \(A=k\).
 
 Every cotangent point has such a local probe. At \(p=(x;0)\), take \(S=X\) in a small chart. At \(p=(x;\xi)\) with \(\xi\ne0\), choose a coordinate \(t\) with \(dt_x=\xi\) and take \(S=\{t=t(x)\}\). Both the coefficient extraction and (2) are consequently available at zero and nonzero covectors.
 
@@ -82,7 +82,7 @@ Let \(K\) be a kernel over the identity on a chosen cotangent neighborhood \(\Om
 \qquad\text{(3)}
 \]
 
-Here \(\Delta\subset X\times X\) is the diagonal. Impose the two selected-region microsupport conditions of the contact-kernel theorem. Applying LFI9–LFI10 to this diagonal conormal produces \(M\in D^b(k)\) and
+Here \(\Delta\subset X\times X\) is the diagonal. Impose the two selected-region microsupport conditions of [the contact-kernel theorem](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md). Applying [LFI9–LFI10](../../sheaf-proof-readings/src/SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold) to this diagonal conormal produces \(M\in D^b(k)\) and
 
 \[
 K\simeq M_\Delta
@@ -90,7 +90,7 @@ K\simeq M_\Delta
 \qquad\text{(4)}
 \]
 
-The passage from this kernel isomorphism to a sheaf operator uses Kernels that act on every incoming germ, formulas (14)–(16). The graph singles out one input covector for the selected output. The confined-representative comparison there identifies its germ action with the regional localized operator under the selected-region conditions. Consequently a roof representing (4) acts through that kernel-germ calculus, and for \(G\in D^b(k_X;p)\) we obtain naturally
+The passage from this kernel isomorphism to a sheaf operator uses [Kernels that act on every incoming germ, formulas (14)–(16)](../../microlocal-composition-and-pure-sheaves/src/microlocal-composition-at-prescribed-covectors.md#kernels-that-act-on-every-incoming-germ). The full selected-region containment imposed above says that every kernel covector over the selected output neighborhood lies on the identity graph, so it excludes a second branch coming from a different input covector. A graph description only near the chosen kernel covector would not provide this exclusion. The confined-representative comparison there therefore identifies its germ action with the regional localized operator. Consequently a roof representing (4) acts through that kernel-germ calculus, and for \(G\in D^b(k_X;p)\) we obtain naturally
 
 \[
 \Phi_KG\simeq\Phi_{M_\Delta}G
@@ -131,9 +131,9 @@ R=R\mathcal Hom(M_X,-).
 \qquad\text{(8)}
 \]
 
-It must first be checked in the bounded categories being used. If \(M\) has cohomology in \([a,b]\) and \(F\) in \([c,d]\), M43–M44, bounded Hom for arbitrary inputs, place (8) in \([c-b,d-a+3n+g+1]\) on an \(n\)-manifold. This bound allows arbitrary coefficient modules. Finite global dimension also keeps tensor products bounded.
+It must first be checked in the bounded categories being used. If \(M\) has cohomology in \([a,b]\) and \(F\) in \([c,d]\), [M43–M44, bounded Hom for arbitrary inputs](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs), place (8) in \([c-b,d-a+3n+g+1]\) on an \(n\)-manifold. This bound allows arbitrary coefficient modules. Finite global dimension also keeps tensor products bounded.
 
-The noncharacteristic tensor and Hom estimates MO21–MO22 give
+The [noncharacteristic tensor and Hom estimates MO21–MO22](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-diagonal--tensor-and-hom-on-one-manifold) give
 
 \[
 \operatorname{SS}(LF)\subset\operatorname{SS}(F),
@@ -145,7 +145,7 @@ Indeed \(M_X\) has microsupport in the zero section, so both no-cancellation con
 
 Both functors therefore send objects null at \(p\) to objects null at \(p\). Their tensor–Hom unit and counit descend to the localized category and still satisfy the triangle identities. Hence (8) is right adjoint to (6). Since (6) is an equivalence, this right adjoint is its inverse, and the counit \(\epsilon:LR\to\mathrm{id}\) is an isomorphism in that category.
 
-Choose a local \(S\) as above and apply the inverse to \(k_S\). By (9), \(R(k_S)\) belongs to \(\mathcal C_S(p)\). The bounded conormal object model LFI9–LFI10 gives \(N\in D^b(k)\) and an isomorphism \(u:N_S\xrightarrow{\sim}R(k_S)\). Closed extension commutes with tensoring by a constant coefficient, so the actual counit at this test object gives an isomorphism
+Choose a local \(S\) as above and apply the inverse to \(k_S\). By (9), \(R(k_S)\) belongs to \(\mathcal C_S(p)\). The [bounded conormal object model LFI9–LFI10](../../sheaf-proof-readings/src/SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold) gives \(N\in D^b(k)\) and an isomorphism \(u:N_S\xrightarrow{\sim}R(k_S)\). Closed extension commutes with tensoring by a constant coefficient, so the actual counit at this test object gives an isomorphism
 
 \[
 (M\otimes_k^L N)_S

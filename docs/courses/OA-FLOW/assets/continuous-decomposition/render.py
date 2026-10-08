@@ -48,6 +48,7 @@ def main():
         "font.size": 14,
         "mathtext.fontset": "dejavusans",
         "svg.fonttype": "none",
+        "svg.hashsalt": "OA-FLOW-continuous-decomposition-v1",
         "savefig.facecolor": "#f8fafc",
     })
     blue, orange = "#1662a2", "#b24e0f"
@@ -128,7 +129,7 @@ def main():
              fontsize=13, color=muted)
 
     fig.savefig(OUT / "absorption-map.png", dpi=160)
-    fig.savefig(OUT / "absorption-map.svg")
+    fig.savefig(OUT / "absorption-map.svg", metadata={"Date": None})
     plt.close(fig)
     data = {
         "formula": "beta(j,k)=2^j(2k+1)-1",

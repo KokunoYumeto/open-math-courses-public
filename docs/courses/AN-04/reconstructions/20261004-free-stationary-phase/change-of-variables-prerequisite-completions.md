@@ -10,8 +10,7 @@ is Jiří Lebl, *Basic Analysis* 6.3 (15 May 2026), freely accessible in the
 Their complete proofs remain in the exact earlier programme files identified
 in `change-of-variables-proof-chain.json`. This companion completes used
 exercises and makes domain restrictions explicit; it does not replace those
-correct proofs with external citations. Adaptation and extension licensed under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+correct proofs with external citations. Original text: public domain (CC0).
 
 The compact and absolute-improper integrals are those constructed in P17–P18.
 All sets below lie in a fixed finite-dimensional Euclidean space. Unless stated

@@ -1,6 +1,6 @@
 # The archimedean place: density and positivity
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original exposition, proofs, programs and figures: public domain (CC0). Section 12 adapts the semilocal Sonin-space argument of Connes, Consani and Moscovici under CC BY 4.0, as specified there.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Section 12 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original exposition, proofs, programs and figures: public domain (CC0).*
 
 The archimedean term of the explicit formula is a Fourier multiplier. Its density is negative near the origin and positive at high frequency. This makes the support of a test function relevant: a function spread over a long interval in \(\log x\) can concentrate its transform in the negative region, whereas a short interval forces a broad transform.
 
@@ -1180,159 +1180,159 @@ The construction now uses only a scaling operator, a distinguished cyclic vector
 
 ## 12. Sonin spaces after adding finite places
 
-This section adapts the argument of Alain Connes, Caterina Consani and Henri Moscovici, *Zeta zeros and prolate wave operators*, [arXiv version 2, 4 May 2024](https://arxiv.org/abs/2310.18423v2), Propositions 4.5–4.7 and Theorem 4.6, pp. 20–23. The source version is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The changes here are an explicit logarithmic-coordinate proof, consistent unitary normalizations, and norm bounds spelling out the meaning of Hilbert-space isomorphism. The adapted argument in this section remains under that licence.
+We now replace the real line by its product with finitely many \(p\)-adic fields. The construction of Section 11 rests on three ingredients: a scaling action, a Fourier transform that commutes with it up to inversion, and a cyclic vector. Each survives the change. The Sonin spaces at the real place and at the enlarged set of places then correspond through an explicit bounded invertible operator. This construction is due to Alain Connes, Caterina Consani and Henri Moscovici, *Zeta zeros and prolate wave operators*, [arXiv version 2](https://arxiv.org/abs/2310.18423v2), Section 4. The proofs below are written out for the unit-invariant functions needed here.
 
-Let \(\mathcal P\) be a finite set of primes and \(\Sigma=\{\infty\}\cup\mathcal P\). The semilocal adele ring and scaling lattice are
+Fix a finite set \(\mathcal P\) of primes and put \(\Sigma=\{\infty\}\cup\mathcal P\). Let
 
 \[
 \mathbb A_\Sigma=\mathbb R\times\prod_{p\in\mathcal P}\mathbb Q_p,
-\quad
-\Gamma_\Sigma=\left\{\pm\prod_{p\in\mathcal P}p^{n_p}:n_p\in\mathbb Z\right\}.
+\qquad
+\Gamma_\Sigma=\Bigl\{\pm\prod_{p\in\mathcal P}p^{n_p}:n_p\in\mathbb Z\Bigr\}.
 \tag{12.1}
 \]
 
-The lattice acts by simultaneous multiplication, preserving additive volume by the product formula. On the quotient \(X_\Sigma=\mathbb A_\Sigma/\Gamma_\Sigma\), the modulus is
-\(|x|_\Sigma=|x_\infty|\prod_p|x_p|_p\).
-Consider functions invariant under the finite unit groups \(\prod_p\mathbb Z_p^\times\) and under real sign. Outside a set of measure zero, multiply by a unique lattice element so that every finite coordinate is a unit and the real coordinate is positive. Unit invariance then identifies the quotient function with a function of \(u=|x|_\Sigma>0\). Normalize quotient measure so its unitary logarithmic model is
-\(\Phi\mapsto\sqrt2\,u^{1/2}\Phi(1,\ldots,1,u)\in L^2(\mathbb R_+^\times,du/u)\).
-For \(\mathcal P=\varnothing\), this agrees with the even real \(L^2\) norm. Fourier transform in \(\log u\), with the factor \((2\pi)^{-1/2}\), gives \(L^2(\mathbb R,ds)\).
+The group \(\Gamma_\Sigma\) acts on \(\mathbb A_\Sigma\) by multiplication in every coordinate. For \(\gamma\in\Gamma_\Sigma\) the product formula gives \(|\gamma|_\infty\prod_p|\gamma|_p=1\), so the action preserves additive Haar measure. The quantity \(|x|_\Sigma=|x_\infty|\prod_p|x_p|_p\) is invariant under the action.
 
-Write
+We work with functions on \(\mathbb A_\Sigma\) that are invariant under the compact group \(\prod_p\mathbb Z_p^\times\) and under \(x_\infty\mapsto-x_\infty\). Since these functions are even, we periodize them over the positive elements \(\prod_pp^{n_p}\) of \(\Gamma_\Sigma\). Outside a null set all coordinates of \(x\) are nonzero, and then exactly one \(\gamma\in\Gamma_\Sigma\) makes every \(p\)-adic coordinate of \(\gamma x\) a unit and its real coordinate positive; that real coordinate is \(|x|_\Sigma\). An invariant function on the quotient is therefore a function of \(u=|x|_\Sigma>0\). Normalize the quotient measure so that
 
 \[
-P_\Sigma(s)=\prod_{p\in\mathcal P}(1-p^{-1/2-is}),\qquad
-u_\Sigma(s)=u(s)\frac{P_\Sigma(s)}{P_\Sigma(-s)}.
+\Phi\longmapsto\sqrt2\,u^{1/2}\,\Phi(1,\ldots,1,u)
+\]
+
+is unitary onto \(L^2(\mathbb R_+^\times,du/u)\). When \(\mathcal P\) is empty this is the norm of an even function on \(\mathbb R\), since \(\int_{\mathbb R}|\Phi|^2\,dx=2\int_0^\infty|\Phi(u)|^2\,du\). The map \((Uf)(s)=(2\pi)^{-1/2}\int_0^\infty f(u)u^{-is}\,du/u\) is unitary onto \(L^2(\mathbb R,ds)\). It turns the dilation \(f(u)\mapsto f(cu)\) into multiplication by \(c^{is}\).
+
+Put
+
+\[
+P_\Sigma(s)=\prod_{p\in\mathcal P}(1-p^{-1/2-is}),
+\qquad
+u_\Sigma(s)=u(s)\,\frac{P_\Sigma(s)}{P_\Sigma(-s)},
 \tag{12.2}
 \]
 
-The semilocal additive Fourier transform in this model is the unitary involution
+with \(u\) the real multiplier of (9.4). In the model just described, the Fourier transform of \(\mathbb A_\Sigma\) becomes
+
 \[
-(\mathscr F_\Sigma v)(s)=u_\Sigma(s)v(-s).
+(\mathscr F_\Sigma v)(s)=u_\Sigma(s)\,v(-s).
 \tag{12.3}
 \]
 
-Here \(|u_\Sigma|=1\) and \(u_\Sigma(s)u_\Sigma(-s)=1\), so both assertions follow directly. To see its relation to the adelic transform, start with the periodized tensor
-\(\prod_p1_{\mathbb Z_p}\otimes f\). For one prime, periodization gives
-\(\sum_{n\geq0}f(p^nu)\); in the logarithmic unitary coordinate its multiplier is
+For real \(s\) we have \(P_\Sigma(-s)=\overline{P_\Sigma(s)}\). Hence \(|u_\Sigma|=|u|=1\) and \(u_\Sigma(s)u_\Sigma(-s)=u(s)u(-s)=1\), so (12.3) is a unitary involution. To identify it with the adelic transform, let \(\mathcal E f\) be the periodization of \(\bigl(\prod_p1_{\mathbb Z_p}\bigr)\otimes f\) for even \(f\) on \(\mathbb R\). At a point with unit \(p\)-adic coordinates and real coordinate \(u\), the factor \(1_{\mathbb Z_p}(p^nx_p)\) equals one exactly when \(n\ge0\). For one prime, \(\mathcal Ef(u)=\sum_{n\ge0}f(p^nu)\). In the unitary model the term \(f(p^nu)\) is \(p^{-n/2}\) times the dilate by \(p^n\), so \(\mathcal E\) acts by the multiplier
+
 \[
-\sum_{n\geq0}p^{-n/2+ins\log p}
-=\frac1{1-p^{-1/2+is}}.
+\sum_{n\ge0}p^{-n/2}p^{ins}=\frac1{1-p^{-1/2+is}},
 \tag{12.4}
 \]
-Each \(1_{\mathbb Z_p}\) is fixed by the Fourier transform for the character trivial on \(\mathbb Z_p\), with self-dual additive measure. The periodized Fourier transform must therefore intertwine the map with multiplier \(1/P_\Sigma(-s)\) and the real Fourier transform (9.4). The multiplier in (12.4) is bounded and invertible; solving this intertwining identity gives exactly (12.2)–(12.3). This proves the model identity on a dense class and extends it to the Hilbert space.
 
-Let \(E_\lambda\) be cutoff to \(u<\lambda\) in the logarithmic model. Define
+and for several primes by \(1/P_\Sigma(-s)\), a bounded function with bounded inverse. Write \(\mathscr F\) for the Fourier transform of \(\mathbb A_\Sigma\). Because \(|\gamma|_\Sigma=1\), the transform of \(\varphi(\gamma\,\cdot)\) is \((\mathscr F\varphi)(\gamma^{-1}\,\cdot)\), so \(\mathscr F\) commutes with periodization. With the self-dual measure and the character trivial on \(\mathbb Z_p\), each \(1_{\mathbb Z_p}\) is its own transform. Consequently the transform induced on periodized functions satisfies \(\mathscr F_\Sigma\mathcal E=\mathcal E\mathscr F_\infty\). In the model this reads \(u_\Sigma(s)/P_\Sigma(s)=u(s)/P_\Sigma(-s)\), which is (12.2)–(12.3). The identity holds on the range of \(\mathcal E\), which is the whole space because its multiplier is invertible.
+
+For \(\lambda>0\) let \(E_\lambda\) be multiplication by the indicator of \(u<\lambda\) in the model, and put
+
 \[
-\mathcal S_\lambda^\Sigma
-=\ker E_\lambda\cap
-\ker(E_\lambda\mathscr F_\Sigma).
+\mathcal S_\lambda^\Sigma=\ker E_\lambda\cap\ker(E_\lambda\mathscr F_\Sigma).
 \tag{12.5}
 \]
-It is the invariant semilocal Sonin space: a function and its semilocal Fourier transform both vanish where the modulus is less than \(\lambda\). The real version \(\mathcal S_\lambda^\infty\) corresponds to even real functions and their Fourier transforms vanishing on \((-\lambda,\lambda)\).
 
-**Theorem 12.1 (Sonin stability).** The map \(\Theta_\Sigma\) with Mellin multiplier \(P_\Sigma(s)\) is a bounded invertible map
+These are the invariant functions that vanish, together with their Fourier transform, where the modulus is below \(\lambda\). For \(\Sigma=\{\infty\}\) we obtain \(\mathcal S_\lambda^\infty\): even functions on \(\mathbb R\) that vanish, with their Fourier transform, on \((-\lambda,\lambda)\).
+
+**Theorem 12.1 (Sonin stability).** Let \(\Theta_\Sigma\) be the operator with multiplier \(P_\Sigma(s)\) in the model. It restricts to a bijection
+
 \[
-\Theta_\Sigma:\mathcal S_\lambda^\infty
-\longrightarrow\mathcal S_\lambda^\Sigma.
+\Theta_\Sigma:\mathcal S_\lambda^\infty\longrightarrow\mathcal S_\lambda^\Sigma
 \tag{12.6}
 \]
-It satisfies
+
+with bounded inverse, and
+
 \[
 \prod_{p\in\mathcal P}(1-p^{-1/2})\,\|f\|
-\leq\|\Theta_\Sigma f\|
-\leq\prod_{p\in\mathcal P}(1+p^{-1/2})\,\|f\|.
+\le\|\Theta_\Sigma f\|
+\le\prod_{p\in\mathcal P}(1+p^{-1/2})\,\|f\|.
 \tag{12.7}
 \]
 
-**Proof.** For one prime the map in the multiplicative coordinate is
+**Proof.** Since \(|1-p^{-1/2-is}|\) lies between \(1-p^{-1/2}\) and \(1+p^{-1/2}\), the operator \(\Theta_\Sigma\) and its inverse are bounded on the whole model space, and (12.7) holds. By the dilation rule, the factor for one prime acts on positions by
+
 \[
-(\Theta_p h)(u)=h(u)-p^{-1/2}h(u/p).
+(\Theta_ph)(u)=h(u)-p^{-1/2}h(u/p).
 \tag{12.8}
 \]
-It preserves vanishing for \(u<\lambda\). Formula (12.2) also gives
-\(\mathscr F_\Sigma\Theta_\Sigma
-=\Theta_\Sigma\mathscr F_\infty\).
-Thus it maps the real Sonin space into the semilocal one. The multiplier bounds give (12.7) and bounded invertibility on the ambient Hilbert spaces.
 
-For surjectivity let \(\Eta_\Sigma\) have multiplier \(1/P_\Sigma(-s)\). Then
-\(\Theta_\Sigma^*\Eta_\Sigma=1\) and
-\(\mathscr F_\Sigma\Eta_\Sigma
-=\Eta_\Sigma\mathscr F_\infty\).
-In position coordinates, for one prime,
+If \(h\) vanishes for \(u<\lambda\), so does \(h(u/p)\); hence \(\Theta_\Sigma\) preserves \(\ker E_\lambda\). From (12.2) and (12.3), \((\mathscr F_\Sigma\Theta_\Sigma v)(s)=u_\Sigma(s)P_\Sigma(-s)v(-s)=u(s)P_\Sigma(s)v(-s)=(\Theta_\Sigma\mathscr F_\infty v)(s)\). So \(\Theta_\Sigma\) maps \(\ker(E_\lambda\mathscr F_\infty)\) into \(\ker(E_\lambda\mathscr F_\Sigma)\), and \(\Theta_\Sigma(\mathcal S_\lambda^\infty)\subset\mathcal S_\lambda^\Sigma\).
+
+For the reverse inclusion let \(\mathrm H_\Sigma\) be the operator with multiplier \(1/P_\Sigma(-s)\). The adjoint of \(\Theta_\Sigma\) has multiplier \(\overline{P_\Sigma(s)}=P_\Sigma(-s)\), so \(\Theta_\Sigma^*\mathrm H_\Sigma=1\). The computation above, with \(1/P_\Sigma(-s)\) in place of \(P_\Sigma(s)\), gives \(\mathscr F_\Sigma\mathrm H_\Sigma=\mathrm H_\Sigma\mathscr F_\infty\). On positions, for one prime,
+
 \[
-(\Eta_p h)(u)=\sum_{n\geq0}p^{-n/2}h(p^nu),
+(\mathrm H_ph)(u)=\sum_{n\ge0}p^{-n/2}h(p^nu),
 \tag{12.9}
 \]
-with norm convergence, since the translations are unitary and the scalar series converges. It maps functions supported in \(u<\lambda\) to functions with the same cutoff support. Intertwining gives the same statement for the Fourier conjugate of that cutoff range.
 
-If \(h\in\mathcal S_\lambda^\Sigma\), put \(f=\Theta_\Sigma^{-1}h\). For every \(g\) in either real cutoff range,
+a norm-convergent series of unitary dilates. If \(h\) vanishes for \(u\ge\lambda\), so does each \(h(p^nu)\) with \(n\ge0\). So \(\mathrm H_\Sigma\) maps the range of \(E_\lambda\) into itself, and by the intertwining relation it maps \(\mathscr F_\infty(\operatorname{ran}E_\lambda)\) into \(\mathscr F_\Sigma(\operatorname{ran}E_\lambda)\).
+
+As \(\mathscr F_\Sigma\) is a self-adjoint unitary, \(\mathcal S_\lambda^\Sigma\) is the orthogonal complement of \(\operatorname{ran}E_\lambda+\mathscr F_\Sigma(\operatorname{ran}E_\lambda)\), and likewise at the real place. Let \(h\in\mathcal S_\lambda^\Sigma\) and \(f=\Theta_\Sigma^{-1}h\). For \(g\) in \(\operatorname{ran}E_\lambda\) or in \(\mathscr F_\infty(\operatorname{ran}E_\lambda)\),
+
 \[
-\langle f,g\rangle
-=\langle\Theta_\Sigma f,\Eta_\Sigma g\rangle
-=\langle h,\Eta_\Sigma g\rangle=0.
+\langle f,g\rangle=\langle f,\Theta_\Sigma^*\mathrm H_\Sigma g\rangle=\langle h,\mathrm H_\Sigma g\rangle=0,
 \tag{12.10}
 \]
-The last equality uses (12.5) and the two support assertions. Hence \(f\) is orthogonal to both real cutoff ranges and belongs to \(\mathcal S_\lambda^\infty\). This proves surjectivity. \(\square\)
 
-The exact norm formula is
+since \(\mathrm H_\Sigma g\) lies in the corresponding semilocal range. So \(f\in\mathcal S_\lambda^\infty\) and \(\Theta_\Sigma f=h\). \(\square\)
+
+In the model,
+
 \[
-\|\Theta_\Sigma f\|^2
-=\int_{\mathbb R}|P_\Sigma(s)|^2|(Uf)(s)|^2\,ds.
+\|\Theta_\Sigma f\|^2=\int_{\mathbb R}|P_\Sigma(s)|^2\,|(Uf)(s)|^2\,ds .
 \tag{12.11}
 \]
-Thus the theorem asserts a Hilbert-space isomorphism with controlled inverse, rather than asserting equality of norms.
 
-The local tensor defining this map is also concrete. Let
-\(\epsilon_n=1_{\{|x|_p=p^n\}}\) and
-\(\sigma_p=\epsilon_0-p^{-1}\epsilon_1\).
-The finite Fourier calculation is
+So Theorem 12.1 gives an isomorphism of Hilbert spaces with the explicit bounds (12.7), not an isometry.
+
+The operator \(\Theta_\Sigma\) also has a local description. On \(\mathbb Q_p\) let \(\epsilon_n\) be the indicator of \(\{|x|_p=p^n\}\), and put \(\sigma_p=\epsilon_0-p^{-1}\epsilon_1\). Since \(\epsilon_n=1_{p^{-n}\mathbb Z_p}-1_{p^{1-n}\mathbb Z_p}\), and the Fourier transform of \(1_{p^a\mathbb Z_p}\) is \(p^{-a}1_{p^{-a}\mathbb Z_p}\),
+
 \[
-\mathscr F_p\epsilon_n
-=p^n(1-p^{-1})\sum_{k\geq0}\epsilon_{-n-k}
--p^{n-1}\epsilon_{-n+1},
-\qquad \mathscr F_p\sigma_p=\sigma_p.
+\mathscr F_p\epsilon_n=p^n(1-p^{-1})\sum_{k\ge0}\epsilon_{-n-k}-p^{n-1}\epsilon_{1-n},
+\qquad
+\mathscr F_p\sigma_p=\sigma_p .
 \tag{12.12}
 \]
-Indeed \(\epsilon_n=1_{\mathbb Z_p}(p^nx)-1_{\mathbb Z_p}(p^{n-1}x)\); Fourier scaling and the self-duality of \(1_{\mathbb Z_p}\) give (12.12).
-Both \(\sigma_p\) and its transform vanish for \(|x|_p<1\). It spans the unit-invariant local Sonin space at this scale. To prove the last assertion, take a radial \(L^2\) function vanishing there and expand it as \(\sum_{n\geq0}a_n\epsilon_n\). Its Fourier transform outside the small ball, by (12.12), can involve only \(\epsilon_0,\epsilon_1\). This statement is first checked on partial sums; their Fourier transforms converge in \(L^2\), and projection onto the outside ball preserves that convergence. If that two-term function also has Fourier transform zero inside the ball, its integral on the ball of duality is zero, giving the coefficient relation \(a+pb=0\). Fourier involutivity then shows that the original function is a multiple of \(\sigma_p\).
 
-Periodizing \(\sigma_p\otimes f\) gives \(f(u)-p^{-1}f(u/p)\), and its logarithmic unitary form is (12.8). Tensoring over the finite primes proves that this adelic construction is precisely \(\Theta_\Sigma\).
+For the second identity, insert \(n=0\) and \(n=1\): the sums over \(\epsilon_{-k}\), \(k\ge1\), cancel, and \(\epsilon_0-p^{-1}\epsilon_1\) remains.
 
-### The semilocal prolate construction
+Both \(\sigma_p\) and \(\mathscr F_p\sigma_p\) vanish on \(|x|_p<1\), and \(\sigma_p\) spans the unit-invariant square-integrable functions with this property. Indeed, such a function is \(\varphi=\sum_{n\ge0}a_n\epsilon_n\). Apply (12.12) to partial sums and pass to the \(L^2\) limit: the part of \(\mathscr F_p\varphi\) on \(|x|_p\ge1\) is \(a\epsilon_0+b\epsilon_1\) with \(a=(1-p^{-1})a_0-a_1\) and \(b=-p^{-1}a_0\). If \(\mathscr F_p\varphi\) vanishes on \(|x|_p<1\), then \(\mathscr F_p\varphi=a\epsilon_0+b\epsilon_1\). Its own Fourier transform is \(\varphi(-x)=\varphi(x)\), which vanishes on \(|x|_p<1\). By (12.12) that transform equals the constant \((1-p^{-1})(a+pb)\) there, so \(a+pb=0\). Then \(\mathscr F_p\varphi=-pb\,\sigma_p\) is a multiple of \(\sigma_p\), and so is \(\varphi=\mathscr F_p(\mathscr F_p\varphi)\).
 
-Use the normalized cyclic vector given by periodizing
-\(\prod_p1_{\mathbb Z_p}\otimes h_0\). By (12.4) its spectral measure for scaling is
+Periodizing \(\sigma_p\otimes f\) over the powers of \(p\) gives, at a normalized point, \(f(u)-p^{-1}f(u/p)\), whose unitary model is (12.8). Taking the tensor product over \(p\in\mathcal P\), the map sending \(f\) to the periodization of \(\bigl(\bigotimes_p\sigma_p\bigr)\otimes f\) is \(\Theta_\Sigma\).
+
+### A prolate operator at finitely many places
+
+The cyclic vector of Section 11 has a semilocal counterpart: the normalized periodization of \(\bigl(\prod_p1_{\mathbb Z_p}\bigr)\otimes h_0\). By (12.4), its spectral measure for the scaling action is
 
 \[
-dm_\Sigma(s)=\frac1{Z_\Sigma}
-\prod_{p\in\mathcal P}|1-p^{-1/2+is}|^{-2}\,dm_\infty(s),
+dm_\Sigma(s)=\frac1{Z_\Sigma}\prod_{p\in\mathcal P}|1-p^{-1/2+is}|^{-2}\,dm_\infty(s),
 \tag{12.13}
 \]
-where \(Z_\Sigma\) is the positive integral that normalizes its mass to one. The density is even and bounded above and below by constant multiples of the real density (11.9). The exponential-moment density proof used there applies unchanged. Gram–Schmidt consequently gives a complete orthonormal polynomial basis \(p_n^\Sigma\), with degree \(n\) and parity \((-1)^n\).
 
-Let \(D_\Sigma\) be multiplication by \(s\), and let \(N_\Sigma p_n^\Sigma=np_n^\Sigma\). Both are self-adjoint with their natural multiplication and diagonal domains. The cyclic spectral model is canonical: the cyclic vector is one, and its moments determine these successive polynomial subspaces. The semilocal Fourier involution becomes \(p(s)\mapsto p(-s)\) after division by the cyclic vector, since that vector is Fourier invariant.
+with \(Z_\Sigma>0\) chosen to make the total mass one. Its density relative to \(m_\infty\) is even and lies between two positive constants. The exponential-moment argument given for (11.9) therefore still shows that polynomials are dense in \(L^2(m_\Sigma)\). Gram–Schmidt gives orthonormal polynomials \(p_n^\Sigma\) of degree \(n\) and parity \((-1)^n\).
 
-For a parameter \(\kappa>0\), the formal prolate expression is
+Write \(D_\Sigma\) for multiplication by \(s\) and \(N_\Sigma\) for the operator with \(N_\Sigma p_n^\Sigma=np_n^\Sigma\), each with its natural self-adjoint domain. The cyclic vector is invariant under the semilocal Fourier transform, and dividing by it turns \(\mathscr F_\Sigma\) into \(p(s)\mapsto p(-s)\). For \(\kappa>0\) consider
+
 \[
 \mathscr W_\kappa^\Sigma=-D_\Sigma^2+\kappa^2N_\Sigma
 \tag{12.14}
 \]
-on finite polynomial combinations. If the Jacobi coefficients for multiplication by \(s\) are \(a_n>0\), with \(a_{-1}=0\), its matrix has entries
+
+on finite combinations of the \(p_n^\Sigma\). Because the measure is even, the three-term recursion has no diagonal term: \(sp_n^\Sigma=a_np_{n+1}^\Sigma+a_{n-1}p_{n-1}^\Sigma\) with \(a_n>0\) and \(a_{-1}=0\). Applying the recursion twice gives the matrix entries
+
 \[
 \begin{aligned}
-(\mathscr W_\kappa^\Sigma)_{n,n}
-&=-(a_{n-1}^2+a_n^2)+\kappa^2n,\\
-(\mathscr W_\kappa^\Sigma)_{n,n+2}
-&=-a_na_{n+1}
-=(\mathscr W_\kappa^\Sigma)_{n+2,n}.
+(\mathscr W_\kappa^\Sigma)_{n,n}&=-(a_{n-1}^2+a_n^2)+\kappa^2n,\\
+(\mathscr W_\kappa^\Sigma)_{n,n+2}&=(\mathscr W_\kappa^\Sigma)_{n+2,n}=-a_na_{n+1},
 \end{aligned}
 \tag{12.15}
 \]
-All other entries are zero. Multiplying the three-diagonal Jacobi matrix proves this formula. It separates into two symmetric Jacobi matrices on the even and odd degrees.
 
-The expression (12.14) is symmetric on this dense polynomial domain. Calling it formal matters: a particular self-adjoint extension requires domain information, which a matrix formula alone does not supply. At the real place, the differential expression (11.1) is recovered by the parameter choice \(\kappa^2=8\pi\lambda^2\) and the scalar shift \(2\pi\lambda^2-1/4\), as (11.10) shows. The interval realization and its prolate eigenfunctions were proved above. Connes, Consani and Moscovici use (12.14)–(12.15) to extend that construction to finitely many places; their separate metaplectic construction is described as a further development.
+all other entries being zero. Even and odd degrees do not interact, so the matrix is a direct sum of two symmetric Jacobi matrices. The operator is symmetric on its polynomial domain, but choosing a self-adjoint realization requires information about domains that the matrix alone does not provide. At the real place, the choice \(\kappa^2=8\pi\lambda^2\) and the scalar shift \(2\pi\lambda^2-1/4\) recover the differential operator (11.1), by (11.10); its interval realization and prolate eigenfunctions were proved in Section 11. Connes, Consani and Moscovici use (12.14)–(12.15) to carry this construction to finitely many places. They describe a separate metaplectic construction as a further development.
 
-Adding finite places therefore changes the local gamma factor and the polynomial degree operator, while preserving the Sonin-space correspondence (12.6). It also introduces the prime distributions of the explicit formula. Positivity of the corresponding trace comparison for every such support would imply RH by the compact-support criterion. Neither Sonin stability nor the archimedean comparison proves that assertion: (10.1) is a theorem at the single real place, and the prime contributions require their own control in the semilocal trace formula.
+Passing from the real place to \(\Sigma\) thus changes the local gamma factor and the degree operator, while the Sonin spaces remain isomorphic by (12.6). It also brings in the prime terms of the explicit formula. If the corresponding trace comparison were positive for every such support, RH would follow by the compact-support criterion. Neither Theorem 12.1 nor the archimedean comparison proves that: (10.1) is a theorem at the real place alone, and the prime terms of the semilocal trace formula would have to be controlled separately.
 
 ## 13. Exercises with solutions
 
@@ -1384,4 +1384,4 @@ The archimedean spectral normalization and its relation to the Riemann–Siegel 
 
 The Sonin trace identity and sharper comparison are due to Connes and Consani, [*Weil positivity and trace formula, the archimedean place*](https://arxiv.org/pdf/2006.13771), Section 4 (prolate spheroidal wave functions and Sonin's space) and Section 6.7 (proof of the main theorem). Sections 8–10 prove these statements with trace-class justification and a directly certified correction kernel, using \(c=16.9\). The pole signs are converted once in (8.4); their final theorem uses \(-i/2\), while their introduction also states the involuted \(+i/2\) version.
 
-The interval prolate theory originates with D. Slepian and H. O. Pollak, [*Prolate spheroidal wave functions, Fourier analysis and uncertainty—I*](https://archive.org/download/bstj40-1-43/bstj40-1-43.pdf), Bell System Tech. J. 40 (1961), 43–63. Section 11 supplies the differential commutation, interval realization and cyclic scaling description used here. The semilocal construction is credited and licensed precisely in Section 12. The general gamma identities and Stirling bounds are supplied by *The Riemann zeta function*, lesson “The Gamma function and Stirling's formula”. The compact Weil criterion and semilocal trace formula belong to the preceding lesson “Weil's positivity criterion”; the positivity proofs in this lesson use neither RH nor that semilocal trace formula.
+The interval prolate theory originates with D. Slepian and H. O. Pollak, [*Prolate spheroidal wave functions, Fourier analysis and uncertainty—I*](https://archive.org/download/bstj40-1-43/bstj40-1-43.pdf), Bell System Tech. J. 40 (1961), 43–63. Section 11 supplies the differential commutation, interval realization and cyclic scaling description used here. The semilocal construction is credited in Section 12. The general gamma identities and Stirling bounds are supplied by *The Riemann zeta function*, lesson “The Gamma function and Stirling's formula”. The compact Weil criterion and semilocal trace formula belong to the preceding lesson “Weil's positivity criterion”; the positivity proofs in this lesson use neither RH nor that semilocal trace formula.

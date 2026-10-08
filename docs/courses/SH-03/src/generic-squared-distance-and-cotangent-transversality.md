@@ -11,9 +11,9 @@ Let \(X\subset\mathbb R^N\) be a closed analytically embedded submanifold of dim
 
 The submanifold \(\Lambda_0\) need not be declared equal to the whole regular locus. Its smoothness, dimension and the bound on its residual complement are the exact assumptions we use. No compactness of \(X\) is assumed.
 
-We use the canonical-form calculus in Subanalytic sets and limiting tangent directions, cotangent restriction in Isotropic cotangent transport and discrete critical values, and the explicit subanalytic dimension prerequisites in Finite conormal closures and generic base directions. The analytic critical-value theorem, including its elementary lower-dimensional image estimate in Step A.1, formula (A2), supplies the null-set arguments used here. Countable atlases and the stated analytic-calculus inputs remain prerequisites. Schapira–Tose's freely readable [*Morse Inequalities for R-constructible Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Tose.pdf), §3, explains the Morse application of proper functions with transverse cotangent intersections. We prove the generic-center existence and the ambient-to-intrinsic comparison below rather than attribute them to that paper.
+We use the [local subanalytic set calculus](../../sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis), [singular one-form pullback and union rules](../../sheaf-proof-readings/src/SH03/subanalytic-sets-and-limiting-tangent-directions.md#analytic-maps-and-locally-finite-unions), [cotangent restriction and its canonical-form identity](../../sheaf-proof-readings/src/SH03/isotropic-cotangent-transport-and-discrete-critical-values.md#the-two-cotangent-maps), and [regular dimension parts and strict singular dimension drop](../../sheaf-proof-readings/src/SH03/finite-conormal-closures-and-generic-base-directions.md#the-precise-dimension-prerequisite). The [analytic critical-value theorem](../../sheaf-proof-readings/src/SH03/finite-conormal-closures-and-generic-base-directions.md#analytic-critical-values), including its [lower-dimensional image estimate (A2)](../../sheaf-proof-readings/src/SH03/finite-conormal-closures-and-generic-base-directions.md#critical-values-null-images), supplies the null-set arguments. Countable atlases and the stated analytic inverse, implicit-function and constant-rank inputs are prerequisites. Schapira–Tose's [*Morse Inequalities for R-constructible Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Tose.pdf), §3, pp. 6–8, applies compact lower sublevels on the sheaf support and transverse cotangent intersections to Morse inequalities. The generic-center existence and ambient-to-intrinsic comparison are proved below.
 
-*Programme exposition: CC0. Reconstructed and checked by GPT-6 Astra (OpenAI), Ultra, October 2026, preserving the mathematical scope of the earlier GPT-6.1 Sol lesson. Self-checked by the writing AI. The prerequisites of the cited lessons are not proved here.*
+*Programme exposition: CC0. Reconstructed and checked by GPT-6 Astra (OpenAI), Ultra, October 2026, preserving the mathematical scope of the earlier GPT-6.1 Sol lesson.*
 
 ## The precise generic statement
 
@@ -118,7 +118,7 @@ dg_p|_{T_p\widetilde\Lambda_0}\text{ is not surjective}\}.
 \tag{11}
 \]
 
-Both \(g(R)\) and \(g(C)\) have Lebesgue measure zero. The analytic critical-value theorem, (A1)–(A8), applies to the critical values \(g(C)\) of the analytic map on \(\widetilde\Lambda_0\). The domain and map are real analytic, and the domain has a countable atlas. Its proof uses analytic Taylor expansion, the implicit-function and constant-rank theorems, elementary measure estimates and countable charts; it does not use the cotangent transport or stratification results of this lesson. We give the residual argument separately.
+Both \(g(R)\) and \(g(C)\) have Lebesgue measure zero. The [analytic critical-value theorem](../../sheaf-proof-readings/src/SH03/finite-conormal-closures-and-generic-base-directions.md#analytic-critical-values), (A1)–(A8), applies to the critical values \(g(C)\) of the analytic map on \(\widetilde\Lambda_0\). The domain and map are real analytic, and the domain has a countable atlas. Its proof uses analytic Taylor expansion, the implicit-function and constant-rank theorems, elementary measure estimates and countable charts; it does not use the cotangent transport or stratification results of this lesson. We give the residual argument separately.
 
 Decompose \(R\) into the parts of each fixed dimension of its regular locus, then repeat on its subanalytic singular remainder. Strict singular dimension drop ends this process after finitely many dimension rounds. Every resulting smooth part has dimension at most \(N-1\) by (8). In each chart its map to \(\mathbb R^N\) has source dimension strictly less than \(N\) and is continuously differentiable. On compact coordinate boxes it is Lipschitz, and the cube-cover estimate in Step A.1, formula (A2) makes its image measure zero. Exhausting each chart by such boxes preserves nullity. Countable atlases cover these manifolds, including any countably many components. A countable union of these null images is null, proving the claim for \(g(R)\).
 
@@ -285,7 +285,7 @@ This argument controls measure, rather than obtaining a subanalytic-image statem
 
 Compare squared distance on \(X=\mathbb R\subset\mathbb R\) with its restriction to the analytically embedded open interval \(X=(0,1)\subset\mathbb R\), using center zero. Show that the latter fails properness, even though its differential graph is smooth. Prove why closed discrete support intersections are finite on compact sublevels.
 
-**Solution.** On \(\mathbb R\), the sublevel of \(x^2\) below \(b\ge0\) is the compact interval \([-\sqrt b,\sqrt b]\). On \((0,1)\), the inverse image of the compact target interval \([0,1]\) is all of \((0,1)\), which is not compact in that manifold. For example, \(x_j=1/j\) has no limit in it. The open interval has lost the closed-embedding hypothesis in (20), so the properness conclusion does not apply.
+**Solution.** On \(\mathbb R\), the sublevel of \(x^2\) below \(b\ge0\) is the compact interval \([-\sqrt b,\sqrt b]\). On \((0,1)\), the inverse image of the compact target interval \([0,1]\) is all of \((0,1)\), which is not compact in that manifold. For example, the sequence \(x_j=1/j\), \(j\ge2\), has no limit in it. The open interval has lost the closed-embedding hypothesis in (20), so the properness conclusion does not apply.
 
 For the finiteness assertion, let \(D\) be the closed discrete subset of intersection bases for an allowed center, and let \(K\) be a compact sublevel. If \(D\cap K\) were infinite, a sequence of distinct points would have a convergent subsequence in \(K\). Its limit lies in \(D\) by closedness, while distinct points approach it, contradicting discreteness. Both closedness and discreteness are used here.
 
@@ -313,7 +313,10 @@ Generic squared distance gives proper functions with finitely many relevant cota
 
 ## Residual limits and curvature in exact models
 
-### A residual whose missing limit is an allowed centre {#nonclosed-residual-centres}
+<a id="nonclosed-residual-centres"></a>
+<a id="a-residual-whose-missing-limit-is-an-allowed-centre-nonclosed-residual-centres"></a>
+
+### A residual whose missing limit is an allowed centre
 
 *Difficulty: Advanced.*
 
@@ -351,7 +354,10 @@ Directly, the differential graph is \((x,y;2(x-a),2(y-b))\) for centre \(c=(a,b)
 
 It is dense and has full measure, but it is not open at the origin. Closing \(R\) would add the zero covector above the origin, so \(g(\overline R)\) would also exclude the allowed centre \(c=0\). This computation explains the insistence on the actual residual in (8) and (11). It also demonstrates why \(\Lambda_0\) is permitted to contain a point singular in the total set \(\Lambda\): \(\Lambda_0\) itself remains a smooth analytic submanifold. Nonopenness can therefore arise from finite residual limits, in addition to escape to infinity.
 
-### The curvature term retained by cotangent restriction {#distance-curvature-term}
+<a id="distance-curvature-term"></a>
+<a id="the-curvature-term-retained-by-cotangent-restriction-distance-curvature-term"></a>
+
+### The curvature term retained by cotangent restriction
 
 Let \(r:U\subset\mathbb R^n\to X\subset\mathbb R^N\) be an analytic coordinate parametrization. Direct differentiation gives
 
@@ -366,7 +372,10 @@ Let \(r:U\subset\mathbb R^n\to X\subset\mathbb R^N\) be an analytic coordinate p
 
 At a critical point the first derivatives vanish, so the second-derivative matrix represents the intrinsic Hessian independently of the chosen coordinates: in the second-derivative coordinate-change rule, the extra term is multiplied by the first derivative. The first term in (D5) is the restriction of the ambient Hessian \(2I\); the second term records curvature of the embedding. The quotient argument (16)–(19) keeps both terms. It does not identify the intrinsic Hessian with the first term alone.
 
-### A parabola, its exceptional centres, and the tangent quotient {#parabola-exceptional-centres}
+<a id="parabola-exceptional-centres"></a>
+<a id="a-parabola-its-exceptional-centres-and-the-tangent-quotient-parabola-exceptional-centres"></a>
+
+### A parabola, its exceptional centres, and the tangent quotient
 
 *Difficulty: Advanced.*
 
@@ -441,11 +450,14 @@ h>0,\qquad 27a^2<16h^3;
 
 otherwise there is one off the exceptional curve. The signs of \(\phi''\) alternate \(+,-,+\) at the three ordered roots. This proves the critical-point counts displayed in the figure.
 
-![Exceptional squared-distance centres and three nondegenerate critical points on a parabola](assets/parabola-distance-centres.svg)
+![Exceptional squared-distance centres and three nondegenerate critical points on a parabola](../assets/parabola-distance-centres.svg)
 
 **Figure.** Schematic of the exact exceptional-centre curve (D8), with the one- and three-critical-point regions proved in (D12), and the squared-distance graph for \(c=(0,1)\). The marked extrema have the exact positions, values and Hessians in (D11). The identity (D10) checks the passage from the ambient lift to intrinsic transversality. Proof: “A parabola, its exceptional centres, and the tangent quotient”; general quotient argument: (16)–(19).
 
-### Globally infinite but sublevel-finite intersections {#infinitely-many-distance-critical-points}
+<a id="infinitely-many-distance-critical-points"></a>
+<a id="globally-infinite-but-sublevel-finite-intersections-infinitely-many-distance-critical-points"></a>
+
+### Globally infinite but sublevel-finite intersections
 
 Let \(X\subset\mathbb R^2\) be the union of the circles with centres \(c_j=(1/j,0)\) and radii \(j^2\), for integers \(j\ge1\). They are disjoint: consecutive radii differ by at least three, while the distance between any two centres is less than one. They are locally finite because every point on the \(j\)-th circle has norm at least \(j^2-1/j\to\infty\). Hence their union is closed, and near each point it is a single embedded analytic circle. The zero section is a closed subanalytic smooth one-dimensional \(\Lambda=\Lambda_0\).
 
@@ -460,8 +472,10 @@ For any centre \(c\ne c_j\) for every \(j\), squared distance has two nondegener
 
 At \(c=c_j\), the function is constant on the \(j\)-th circle and is not Morse. In particular, \(c=0\) is an allowed centre approached by the excluded centres \(c_j\). It has infinitely many critical points globally but only finitely many in each bounded sublevel: a sublevel lies in a bounded ambient ball, which meets only finitely many circles. This realizes exactly the lesson's local finiteness conclusion and exhibits nonopenness caused by critical points escaping to infinity, separately from the finite residual-limit phenomenon in (D1)–(D4).
 
-## Sources and exact scope {#sources-and-exact-scope}
+<a id="sources-and-exact-scope-sources-and-exact-scope"></a>
 
-Schapira and Tose, [*Morse Inequalities for R-constructible Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Tose.pdf), *Advances in Mathematics* 93 (1992), pp. 1–8, §3, conditions (3.1)–(3.3), use properness, avoidance of singular cotangent pieces and transverse smooth intersections for a Morse calculation. Their Remark 3.2 relates conormal transversality to the Hessian on a stratum, and Example 3.3 uses a squared-distance function. Those passages motivate the geometric conditions here; they do not provide the generic-center existence proof above. The paper imposes finite intersections for its stated application, whereas our noncompact conclusion is finite intersections on each compact sublevel.
+## Sources and exact scope
 
-Our proof is organized around the center map, its two exceptional images and the exact tangent quotient. It includes the residual dimension calculation, the curved normal-bundle model, the vertical-support distinction and the failed-properness example. No prose, example computation, figure or exercise is copied from the paper. Deep subanalytic regularity, Boolean and dimension properties, singular form calculus and exact analytic-calculus providers remain transitive proof work. Using the analytic critical-value result here does not establish the full smooth Sard theorem that the earlier lesson had assumed. That full theorem now has its own complete proof reading, including the local inverse and compact-slice arguments and the countable-at-infinity scope bridge.
+Schapira and Tose, [*Morse Inequalities for R-constructible Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/Tose.pdf), *Advances in Mathematics* 93 (1992), pp. 1–8, §3, pp. 6–8, conditions (3.1)–(3.3), use compact lower sublevels on the sheaf support, avoidance of singular cotangent pieces and transverse smooth intersections for a Morse calculation. Their Remark 3.2 relates conormal transversality to the Hessian on a stratum, and Example 3.3 uses a squared-distance function. Those passages motivate the geometric conditions here; they do not provide the generic-center existence proof above. The paper imposes finite intersections for its stated application, whereas our noncompact conclusion is finite intersections on each compact sublevel.
+
+Our proof is organized around the center map, its two exceptional images and the exact tangent quotient. It includes the residual dimension calculation, the curved normal-bundle model, the vertical-support distinction and the failed-properness example. The analytic critical-value theorem is the input used above. A separate smooth critical-value proof gives the smooth-map version, including the local inverse and compact-slice arguments and the countable-at-infinity scope bridge.

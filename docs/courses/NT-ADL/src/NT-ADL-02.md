@@ -265,9 +265,36 @@ A different finite normalization is used with Fourier transforms. For the standa
 c=N(\mathfrak D_v)^{-1/2}.
 \]
 
-Thus the self-dual finite measure is \(N(\mathfrak D_v)^{-1/2}dx_v\). At an unramified finite place it agrees with the measure giving \(\mathcal O_v\) mass one. Here is the local algebra behind that assertion. Put \(E=K_v\) and \(F=\mathbb Q_p\). Theorem 2.1 of [Unramified and totally ramified extensions](prerequisites/NT-LOC-07.md) gives \(\mathcal O_E=\mathcal O_F[a]\), where the monic minimal polynomial \(f\) of \(a\) reduces to a separable residue polynomial. Hence \(f'(a)\) has nonzero residue and is a unit. Proposition 14.2 of [The different and the discriminant](prerequisites/NT-ANT-14.md) then gives \(\mathfrak D_{E/F}=(f'(a))=\mathcal O_E\), as required. Proposition 3.1 of [Places of number fields in extensions and the product formula](prerequisites/NT-LOC-05.md) identifies the unramified global place with this local extension.
+Thus the self-dual finite measure is \(N(\mathfrak D_v)^{-1/2}dx_v\). At an unramified finite place it agrees with the measure giving \(\mathcal O_v\) mass one. Here is the local algebra behind that assertion. Put \(E=K_v\) and \(F=\mathbb Q_p\). Theorem 2.1 of Unramified and totally ramified extensions gives \(\mathcal O_E=\mathcal O_F[a]\), where the monic minimal polynomial \(f\) of \(a\) reduces to a separable residue polynomial. Hence \(f'(a)\) has nonzero residue and is a unit. Proposition 14.2 of The different and the discriminant then gives \(\mathfrak D_{E/F}=(f'(a))=\mathcal O_E\), as required. Proposition 3.1 of Places of number fields in extensions and the product formula identifies the unramified global place with this local extension.
 
-The infinite factors in (13) are self-dual for the standard trace characters. The local character pairing and Fourier normalization used in this comparison are proved in Propositions 5.1–5.2 of [Additive characters, self-dual measures and Poisson summation on the adèles](NT-ADL-05.md), including its Lemma 5.4A for the entire archimedean space. This is only a normalization comparison; the proofs of this lesson’s additive quotient, box and approximation results use (13). [Getz–Hahn draft, Appendix B, §§B.1–B.2] and [Sutherland 12] provide the classical references.
+### The local trace dual
+
+In this application, \(A=\mathcal O_F=\mathbf Z_p\) is a discrete valuation ring, \(B=\mathcal O_E\) is its full integral closure in \(E\), and \(E/F\) is finite separable because it has characteristic zero. The unramified integral-basis theorem supplies the entire ring equality \(B=A[a]\), not just \(E=F(a)\). If \(d=[E:F]\), its basis is \(1,a,\ldots,a^{d-1}\). Thus the hypotheses of the derivative-different theorem apply to these local rings; no Galois assumption or global integral power basis is being added.
+
+To see the trace lattice itself, write
+
+\[
+f(X)/(X-a)=\sum_{i=0}^{d-1}b_iX^i.
+\]
+
+The complete Euler dual-basis proof in The different and the discriminant gives \(b_i/f'(a)\) as the trace dual of \(a^i\). The reversed list \(b_{d-1},\ldots,b_0\) is obtained from the power basis by an integral triangular matrix with diagonal entries one, so it is also an \(A\)-basis of \(B\). Consequently
+
+\[
+J_{B/A}=f'(a)^{-1}B=B,
+\]
+
+because the derivative is a unit. The inverse ideal is therefore \(\mathfrak D_{B/A}=B\), which is the asserted local different. This is precisely the trace-dual lattice used by the character pairing, rather than a trace dual of a smaller power order.
+
+It is not necessary that \(p\nmid d\). For example, let \(p=2\) and let \(a\) satisfy \(a^2+a+1=0\). The reduction is irreducible separable, so this is the unramified quadratic extension of \(\mathbf Q_2\). Multiplication by \(a\) in the basis \(1,a\) has trace \(-1\), and \(a^2=-a-1\) gives trace \(-1\) for \(a^2\). The trace matrix is
+
+\[
+\begin{pmatrix}2&-1\\-1&-1\end{pmatrix},
+\qquad\det=-3\in\mathbf Z_2^\times.
+\]
+
+Thus the trace pairing is integrally perfect even though \(\operatorname{Tr}_{E/F}(1)=2\) is not a unit. Testing the trace of \(1\) alone would lose the actual pairing information.
+
+The infinite factors in (13) are self-dual for the standard trace characters. The local character pairing and Fourier normalization used in this comparison are proved in Propositions 5.1–5.2 of [Additive characters, self-dual measures and Poisson summation on the adèles](NT-ADL-05.md), including its Lemma 5.4A for the entire archimedean space. This is only a normalization comparison; the proofs of this lesson’s additive quotient, box and approximation results use (13). [Getz–Hahn draft, Appendix B, §§B.1–B.2] is a comparison reference for characters and inversion. [Sutherland 12, Definition 12.2 and Proposition 12.4] supplies the trace-dual different and its completion convention, not a Fourier-inversion proof. Its Proposition 12.24 states the derivative formula and assigns the proof to Problem Set 6; the complete Euler proof used here is in the linked programme lesson.
 
 ## A box large enough to contain a field element
 
@@ -497,7 +524,7 @@ We use the following prerequisite results with their stated conventions.
 - Unique fractional ideal factorization and local valuation exponents are Theorem 3.2 of [Discrete valuation rings and Dedekind domains](prerequisites/NT-ANT-03.md); its Proposition 3.3 proves Chinese remainders for distinct prime powers and their localization quotients. Theorem 4.3 and Corollary 4.4 of [Norms of ideals, the ideal class group, and modules over Dedekind domains](prerequisites/NT-ANT-04.md) give the finite torsion-free module structure used in the relative version of Proposition 2.1. Over a discrete valuation ring its fractional ideal summands are principal, so the localized module is free. The rational approximation application of Chinese remainders is also written in this lesson. [Milne ANT, Proposition 2.29, p.35, and the module discussion in §3, pp.57–58] gives the corresponding finite-module context; the complete programme proof is the one just named.
 - Haar existence is Theorem 8.3 of [Haar measure on locally compact groups](prerequisites/haar-measure-on-locally-compact-groups.md). The restricted-product measure and its integral-tail product formula are Proposition 1.2 of [Restricted products and profinite completions](NT-ADL-01.md). The local normalizations are also stated in [Sutherland 25, p.6] and [Getz–Hahn draft, §3.5, pp.75–76].
 - The standard trace characters, their perfect local pairings and self-dual measure are Propositions 5.1–5.2 of [Additive characters, self-dual measures and Poisson summation on the adèles](NT-ADL-05.md), with full archimedean inversion in Lemma 5.4A. Only the normalization comparison after Proposition 2.4 uses this result; no main proof here depends on later Fourier theory.
-- The unit different of an unramified finite local extension follows from the explicit bridge after Proposition 2.4: Theorem 2.1 of [Unramified and totally ramified extensions](prerequisites/NT-LOC-07.md) supplies the full integral power basis, and Proposition 14.2 of [The different and the discriminant](prerequisites/NT-ANT-14.md) supplies its derivative different. Theorem 14.4 of the latter gives the global unramified-prime criterion.
+- The unit different of an unramified finite local extension follows from the explicit bridge after Proposition 2.4: Theorem 2.1 of Unramified and totally ramified extensions supplies the full integral power basis, and Proposition 14.2 of The different and the discriminant supplies its derivative different. Theorem 14.4 of the latter gives the global unramified-prime criterion.
 
 The solenoid's classification and duality, multiplicative idèle class groups, and Poisson summation belong to subsequent lessons. The quotient proved compact here is the additive quotient \(\mathbb A_K/K\).
 

@@ -1,33 +1,59 @@
-# Operator algebras: representations, derivations and core traces
+# Reading and rebuilding OA-FLOW
 
-The eight lesson sources are in `src/`. The reader preserves every complete TeX formula and the stable result anchors listed in `results.json`.
+The current edition is listed in `docs/courses/OA-FLOW/course.json`. Each entry identifies its Markdown source, HTML reader and current file hashes. Mathematical records and exact source ranges are in `results.json`; the lesson count comes from the registry rather than a fixed selection.
 
-Use Python 3.10 or later:
+## Read the course locally
 
-```console
-python -m pip install -r requirements.txt
-python build_reader.py
-python -m http.server 8000
-```
-
-Open `http://localhost:8000/`. The bundled MathJax renderer needs no external scripts or fonts. The prerequisite links lead to the current online companion readings; those readings are not included in this eight-lesson archive.
-
-To create the portable archive, choose a destination outside this directory:
+From the repository root, with Python 3.10 or later:
 
 ```console
-python build_reader.py --archive ../group-representations-and-covariance.zip
+python -m http.server 8000 --directory docs
 ```
 
-The ZIP sorts its files, fixes timestamps and permissions, and contains the lesson sources, reader, build script, mathematical result index, references and component notices. With identical inputs and Python compression runtime its bytes are reproducible.
+Open [the course index](http://localhost:8000/courses/OA-FLOW/). Serving the entire `docs` directory preserves links to the other programme courses. The course's MathJax scripts and fonts are bundled locally; links to human reference works may require internet access. The checked-in HTML can be read without rebuilding.
 
-Original lesson authorship and the human references are recorded in the lessons and `provenance.json`. The lessons are self-checked by the writing AI; human review and formal verification are not asserted.
+## Validate the checked-in edition
 
-The cyclic matrix illustration is supplied as PNG, editable SVG and an original reproduction program under `assets/`. The SVG is reproducible with Python alone; PNG rasterization additionally uses Playwright and Edge and may differ with fonts or browser versions.
+Run these commands from the repository root:
 
-The logarithmic-product proof diagram is supplied as PNG, SVG and `assets/render-prescribed-product-mechanism.py`. Run its reproduction program from this directory with Matplotlib installed; exact raster bytes also depend on the recorded font and library versions. The diagram illustrates the proof, not numerical evidence for its infinite-dimensional claims.
+```console
+python -m pip install -r courses/OA-FLOW/reader-records/requirements.txt
+python -B courses/OA-FLOW/reader-records/validate_current_lessons.py
+```
 
-The power-strip illustration is supplied as PNG, SVG and `assets/render-power-strip-poisson.py`. Its exact kernels and boundary masses illustrate the proved continuity mechanism. Run its reproduction program in its containing directory with NumPy and Matplotlib installed; exact rendered bytes depend on the installed fonts and library versions.
+The validator is read-only. It checks every registered source/reader hash, complete recorded source range, source/reader TeX sequence, local link and asset route, result anchor, and declared internal prerequisite's lesson order. It reports its counts and errors as JSON and exits unsuccessfully on a failed check. To check selected lessons, append their IDs:
 
-The spectral-tail figure retains its included GFDL/MIT component terms. The faithful-state core figure is supplied as PNG, SVG and assets/render-core-construction.py; run the program in its containing directory. Both figures preserve exact mathematical coordinates and proof locators.
+```console
+python -B courses/OA-FLOW/reader-records/validate_current_lessons.py OA-FLOW-CSAS OA-FLOW-CAPP
+```
 
-The `--release` option requires complete review records bound to the exact current lesson sources, verified free research materials, and complete programme proof dependencies. The records are currently incomplete. Rendering, link checks and formula preservation do not establish that mathematical review.
+These are file and record checks. They do not establish mathematical correctness, the adequacy of implicit prerequisites, same-lesson proof availability, external-source access or browser layout.
+
+## Check reader reproduction without writing files
+
+```console
+python -B courses/OA-FLOW/reader-records/build_current_lessons.py --check
+```
+
+This renders every registered lesson in memory and compares the resulting bytes with the checked-in readers and their supporting indexes and registries. It writes no readers or temporary copies, reports any differing paths, and exits unsuccessfully if a difference remains. Append lesson IDs after `--check` for a selected check. The input files are the programme Markdown, complete proof records, renderer code and `reader-presentation.json`; external source books and papers are not inputs. This is a reproduction check, not a mathematical or licensing audit.
+
+## Rebuild selected readers
+
+After updating a lesson source and its complete records in `results.json`, name the lessons explicitly:
+
+```console
+python -B courses/OA-FLOW/reader-records/build_current_lessons.py OA-FLOW-CSAS OA-FLOW-CAPP
+python -B courses/OA-FLOW/reader-records/validate_current_lessons.py
+```
+
+The builder updates the named HTML readers, their immediate navigation neighbours, course index, prerequisite index and registered source/reader hashes. Source image paths are adjusted for the readers' location one directory above `src/`. It preserves complete TeX expressions in `data-tex` attributes. It requires the recorded proof bodies to be present in the source; it does not write proofs or infer new dependency records. If source edits change a cited proof, update its exact ranges and dependent identity bindings before rebuilding.
+
+Current opening notices, retained heading aliases, HTML serialization and prerequisite-index selections are explicit in `courses/OA-FLOW/reader-records/reader-presentation.json`. Keep that file with the renderer. These presentation settings preserve the published reader independently of historical authorship records.
+
+The current builder is `courses/OA-FLOW/reader-records/build_current_lessons.py`. The older `build_reader.py` supplies rendering functions; its command-line selection/archive workflow describes a historical edition and is not a cumulative exporter for this one. There is no current whole-course archive command or portable-download claim in these instructions.
+
+## Reproduce illustrations and retain component terms
+
+Original illustration programs and mathematical data accompany the assets under `docs/courses/OA-FLOW/assets/`. Consult each program's instructions and nearby component notice for its working directory and dependencies. Some use Python alone; others use Matplotlib, NumPy or browser rasterization. Raster bytes can depend on the recorded font, library and browser versions. Keep the exact data and proof locators alongside regenerated figures.
+
+Lesson authorship and human references are recorded in the individual lessons. Retain `LICENSE.txt`, `LICENSE.md` and the asset notices. Historical binding records that quote the former CV-4 adaptation retain its CC BY 4.0 attribution and change notice; the current CV-4 replacement has its own stated terms. Fonts and software retain their respective terms. Source books and papers are not build inputs and are not bundled with the course.

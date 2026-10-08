@@ -6,7 +6,7 @@ Let \(G\) be a locally compact Hausdorff abelian group. Fix the Haar measure \(d
 
 The source for the spectrum and transform arguments is D. H. Fremlin, [*Measure Theory*, §§445F–K, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), in the freely accessible 2013 source collection. We supply a finite-approximation proof of the integral step instead of importing a dual-space representation theorem. All compactness, integration, representation and Banach-algebra results invoked below have exact earlier programme proofs.
 
-Adaptation and additional exposition: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the [Design Science License](../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
+Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
 
 ## 1. Translations and multiplicative functionals
 

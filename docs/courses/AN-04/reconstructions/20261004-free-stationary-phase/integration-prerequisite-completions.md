@@ -1,9 +1,6 @@
 # Mixed derivatives and the compact-interval integral
 
-Prerequisite companion. This is an attributed adaptation and extension
-of Jiří Lebl, *Basic Analysis*, version 6.3,
-[freely accessible author edition](https://www.jirka.org/ra/), under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Prerequisite companion. It follows Jiří Lebl, *Basic Analysis*, version 6.3, [freely accessible author edition](https://www.jirka.org/ra/). Original text: public domain (CC0).
 The source sections actually read for these arguments are §§5.1–5.3, 7.5,
 8.6 and 9.1. Complete earlier programme proofs are retained and bound in
 `integration-proof-chain.json`; this companion supplies their used omissions

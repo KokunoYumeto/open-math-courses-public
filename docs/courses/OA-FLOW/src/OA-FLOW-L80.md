@@ -8,7 +8,7 @@ An operator carrying a frequency can shift a vector's frequency. For general dua
 
 ## The three actions and the claim
 
-Use [MX0–3](OA-FLOW-MX.md#mx-0) and the earlier specified-dual BS0–4, with the positive Fourier sign (MX1). Thus \(G\) is an arbitrary locally compact Hausdorff abelian group, \(H=\widehat G\), \(X=X_*^*\) and \(Y=Y_*^*\) have specified preduals, and \(\alpha,\beta\) are uniformly bounded normal actions with norm-continuous predual orbits. The induced action on \(\mathcal L_w(X,Y)\) is \(\gamma_t(B)=\beta_tB\alpha_{-t}\), with Fourier filter \(\Gamma_g\). Its relative topology \(\sigma_0\) is tested by the full projective tensor product; MX2 proves filter continuity for arbitrary convergent nets in this topology. It implies pointwise weak-star convergence, which is the implication used for the final operator limit here. For a closed set \(E\subset H\), \(\mathcal L_w^\gamma(E)=V_\gamma(E)\) denotes operators whose \(\gamma\)-spectrum lies in \(E\). The vector filter laws used below as (S5), (S14) and (S16) are respectively BS1's norm bound, BS3's closed-space annihilator test and BS3's filtered support inclusion, transported by (MX1).
+Use [MX0–3](OA-FLOW-MX.md#mx-0) and the earlier specified-dual [BS0–4](OA-FLOW-BS.md#bs-0), with the positive Fourier sign (MX1). Thus \(G\) is an arbitrary locally compact Hausdorff abelian group, \(H=\widehat G\), \(X=X_*^*\) and \(Y=Y_*^*\) have specified preduals, and \(\alpha,\beta\) are uniformly bounded normal actions with norm-continuous predual orbits. The induced action on \(\mathcal L_w(X,Y)\) is \(\gamma_t(B)=\beta_tB\alpha_{-t}\), with Fourier filter \(\Gamma_g\). Its relative topology \(\sigma_0\) is tested by the full projective tensor product; MX2 proves filter continuity for arbitrary convergent nets in this topology. It implies pointwise weak-star convergence, which is the implication used for the final operator limit here. For a closed set \(E\subset H\), \(\mathcal L_w^\gamma(E)=V_\gamma(E)\) denotes operators whose \(\gamma\)-spectrum lies in \(E\). The vector filter laws used below as (S5), (S14) and (S16) are respectively BS1's norm bound, BS3's closed-space annihilator test and BS3's filtered support inclusion, transported by (MX1).
 
 **Spectral-sum theorem.** For any closed \(E,F\subset H\), normal operator \(A\in\mathcal L_w^\gamma(E)\) and vector \(x\in X_\alpha(F)\),
 
@@ -95,7 +95,7 @@ $$K\cap(V_E+V_F)=\varnothing. \tag{T8}$$
 
 $$A\in\mathcal L_{w,0}^\gamma(V_E), \tag{T9}$$
 
-so \(A\) is a \(\sigma_0\)-limit of finite linear combinations of filtered operators \(\Gamma_gB\) with \(\operatorname{supp}(g)\subset V_E\). Independently, BS4, reflected by (MX1), gives
+so \(A\) is a \(\sigma_0\)-limit of finite linear combinations of filtered operators \(\Gamma_gB\) with \(\operatorname{supp}(g)\subset V_E\). Independently, [BS4](OA-FLOW-BS.md#bs-4), reflected by (MX1), gives
 
 <a id="equation-t10"></a>
 

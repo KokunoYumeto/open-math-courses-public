@@ -67,7 +67,7 @@ For a *-homomorphism \(\varphi:A\to D\) and bounded trace \(\rho\) on \(D\), ent
 \tag{1.6}
 \]
 
-The corner map \(a\mapsto\operatorname{diag}(a,0)\) preserves the value. A normalized trace on each changing matrix size would instead change that value, destroying this compatibility. The degree-zero construction agrees with [Cyclic forms that survive norm completion, §4, Theorem 4.3, degree-zero paragraph](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-79e1f92634ea). Its boundedness condition is explicit there.
+The corner map \(a\mapsto\operatorname{diag}(a,0)\) preserves the value. A normalized trace on each changing matrix size would instead change that value, destroying this compatibility. The degree-zero construction agrees with [Cyclic forms that survive norm completion, §4, Theorem 4.3, degree-zero paragraph](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-CYCLIC/public/reader/n-traces.html#4-the-form-reaches-k-theory). Its boundedness condition is explicit there.
 
 ## 2. The cone, the unit and group states
 
@@ -178,7 +178,7 @@ This follows because the ordinary matrix trace of an orthogonal projection equal
 
 ## 4. The trace of the two parametrix errors
 
-An operator \(K:H_1\to H_0\) is **trace class** when its singular values have finite sum; this sum is its trace norm \(\|K\|_1\). We import the trace ideal, finite-rank approximation and multiplier estimate from [Cyclic forms that survive norm completion, §7, Lemma 7.3a](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-a7ce3003efc0). The rectangular versions follow by placing the operator in an off-diagonal corner of \(H_0\oplus H_1\). In particular bounded multipliers preserve trace class, with
+An operator \(K:H_1\to H_0\) is **trace class** when its singular values have finite sum; this sum is its trace norm \(\|K\|_1\). We import the trace ideal, finite-rank approximation and multiplier estimate from [Cyclic forms that survive norm completion, §7, Lemma 7.3a](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-CYCLIC/public/reader/n-traces.html#7-geometric-and-operator-examples). The rectangular versions follow by placing the operator in an off-diagonal corner of \(H_0\oplus H_1\). In particular bounded multipliers preserve trace class, with
 
 \[
 \|XKY\|_1\leq\|X\|\|K\|_1\|Y\|.
@@ -276,7 +276,7 @@ k_f(e^{i\theta},e^{i\theta})\\
 
 For a Laurent monomial this follows from its finite Fourier-mode action; smooth Fourier convergence gives the formula generally. The factor \(w\) and the angular sign are fixed by the check \(f=z\).
 
-The related projection-pair identity is stated exactly in [The local index formula, §10, Lemma 10.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-f623a2c5af0f): if orthogonal projections \(P,Q\) have compact difference and \((P-Q)^{2j+1}\) is trace class, \(j\geq0\), then \(QP:PH\to QH\) is Fredholm with index \(\operatorname{Tr}(P-Q)^{2j+1}\). We cite that result; Theorem 4.1 above proves the parametrix formula independently.
+The related projection-pair identity is stated exactly in [The local index formula, §10, Lemma 10.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-LOCAL-INDEX/the-local-index-formula.html#10-computing-the-pairing-by-finite-defects): if orthogonal projections \(P,Q\) have compact difference and \((P-Q)^{2j+1}\) is trace class, \(j\geq0\), then \(QP:PH\to QH\) is Fredholm with index \(\operatorname{Tr}(P-Q)^{2j+1}\). We cite that result; Theorem 4.1 above proves the parametrix formula independently.
 
 For an extension \(0\to J\to D\to Q\to0\), suppose a unitary \(u\) has a partial-isometry lift \(v\) with defect projections in the ideal. Lesson 7 gives
 
@@ -328,7 +328,7 @@ x\in\mathcal M_\tau,\quad y\in A^+.
 
 Here \(A^+\) is the external unitization; no finite weight is assigned to its new unit.
 
-*Proof.* The general weight argument is proved in [Finite domains and the GNS space of a C*-weight, “The algebra of finite elements”, (CS.1)–(CS.3)](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-286e00711255). It gives a linear left ideal \(\mathcal N_\tau\), the unique positive linear extension, and
+*Proof.* The general weight argument is proved in [Finite domains and the GNS space of a C*-weight, “The algebra of finite elements”, (CS.1)–(CS.3)](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CS.html#the-algebra-of-finite-elements). It gives a linear left ideal \(\mathcal N_\tau\), the unique positive linear extension, and
 
 \[
 \mathcal M_\tau
@@ -437,7 +437,7 @@ where the coefficient trace norm is defined below. For a finite trace this follo
 
 ### 6.1. Extending the coefficient trace without losing its values
 
-We use two exact programme proofs. [Weights and the Hilbert spaces of multiplication, “Completing the two multiplication domains” through “Recovering the representation and the full algebra”, (WH.6)–(WH.23)](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-2363a6e09713) constructs a faithful normal semifinite weight from any left Hilbert algebra, on its generated von Neumann algebra. [Trace densities and noncommutative integration, “A complete space of actual integrable operators”, “Complete norms on actual measurable operators”, and “Products, norming tests and exact factorization”, (TI.12)–(TI.18), (TI.27)–(TI.38)](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-5afb91a45711) proves completeness, bounded multiplication, \(L^2L^2\subset L^1\), and cyclicity for every faithful normal semifinite trace. These results rest on foundational prerequisites stated in those lessons and not proved here. Their Hilbert spaces need not be separable, their algebras need not be sigma-finite, and the trace of the identity need not be finite. We verify the applications rather than assuming a dual trace exists.
+We use two exact programme proofs. [Weights and the Hilbert spaces of multiplication, “Completing the two multiplication domains” through “Recovering the representation and the full algebra”, (WH.6)–(WH.23)](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-WH.html#completing-the-two-multiplication-domains) constructs a faithful normal semifinite weight from any left Hilbert algebra, on its generated von Neumann algebra. [Trace densities and noncommutative integration, “A complete space of actual integrable operators”, “Complete norms on actual measurable operators”, and “Products, norming tests and exact factorization”, (TI.12)–(TI.18), (TI.27)–(TI.38)](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TI.html#a-complete-space-of-actual-integrable-operators) proves completeness, bounded multiplication, \(L^2L^2\subset L^1\), and cyclicity for every faithful normal semifinite trace. These results rest on foundational prerequisites stated in those lessons and not proved here. Their Hilbert spaces need not be separable, their algebras need not be sigma-finite, and the trace of the identity need not be finite. We verify the applications rather than assuming a dual trace exists.
 
 **Lemma 6.1 (coefficient completion).** The trace GNS representation \(\pi\) has a faithful normal semifinite trace \(\nu\) on \(M=\pi(A)''\) such that
 
@@ -458,7 +458,7 @@ including infinite values. Moreover
 
 and \(\|x\|+\|x\|_{1,\tau}\) is a complete norm on this ideal. The notation \(A\cap_\pi L^1\) means the inverse image under \(\pi\); it allows a nonfaithful coefficient trace.
 
-*Proof.* Lemma 5.0 and the finite-domain GNS proof [(CS.5)–(CS.6)](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-7042760e2e16) give a Hilbert space \(H_\tau\), with
+*Proof.* Lemma 5.0 and the finite-domain GNS proof [(CS.5)–(CS.6)](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CS.html#the-gns-quotient-and-its-exact-domain) give a Hilbert space \(H_\tau\), with
 
 \[
 \begin{gathered}
@@ -493,7 +493,7 @@ For \(x\in\mathcal N_\tau\), the elements \(e_i x\) lie in \(\mathcal M_\tau\). 
 \tag{6.1e}
 \]
 
-Consequently \(\Lambda(\mathcal M_\tau)\) is dense in \(H_\tau\), and \(\pi(e_i)\to1\) strongly. The quotient of \(\mathcal M_\tau\) by its null ideal is a left Hilbert algebra: left multiplication has bound \(\|a\|\), its adjoint identity is (6.1c), products are dense by (6.1e), and involution is isometric because \(\tau(x^*x)=\tau(xx^*)\). These are precisely the [four multiplication axioms](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-038938e4c2d9). Its generated algebra is \(\pi(A)''\), since the coefficient ideal is norm dense.
+Consequently \(\Lambda(\mathcal M_\tau)\) is dense in \(H_\tau\), and \(\pi(e_i)\to1\) strongly. The quotient of \(\mathcal M_\tau\) by its null ideal is a left Hilbert algebra: left multiplication has bound \(\|a\|\), its adjoint identity is (6.1c), products are dense by (6.1e), and involution is isometric because \(\tau(x^*x)=\tau(xx^*)\). These are precisely the [four multiplication axioms](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-HA.html#starting-data-and-the-multiplication-domains). Its generated algebra is \(\pi(A)''\), since the coefficient ideal is norm dense.
 
 Apply the weight construction. Its closed involution \(S\) is the everywhere defined antiunitary \(J\Lambda(x)=\Lambda(x^*)\). In (WH.7) the full multiplication domain is therefore all left-bounded vectors, and (WH.8) says \(\lambda_{J\xi}=\lambda_\xi^*\). Thus the square-finite ideal in (WH.16) is *-closed and
 

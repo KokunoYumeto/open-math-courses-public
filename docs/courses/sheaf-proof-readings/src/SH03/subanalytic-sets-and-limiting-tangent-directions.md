@@ -6,7 +6,7 @@ We work with finite-dimensional real analytic manifolds, Hausdorff and countable
 
 The proof has three routes. Analytic curves turn limiting displacements into leading Taylor coefficients; proper uniformization lets tangent vectors detect a one-form; ordered radial graphs produce compatible triangulations. These routes share subanalytic set calculus but use different additional inputs. The signed normal-deformation criterion comes from the normal-geometry course.
 
-*Original exposition by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026. Original programme expression is public domain (CC0). Human results retain their named credit, and the linked Valette adaptations retain CC BY 4.0.*
+*Original exposition by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026. Original programme expression is public domain (CC0). Human results retain their named credit. The linked preparation, curve and exercise readings state their own authorship and reuse terms; the cited human sources retain theirs.*
 
 ## A local class with controlled boundaries
 
@@ -41,7 +41,7 @@ Local finiteness extends the finite set-operation statements to a locally finite
 
 ## Analytic coordinates and uniqueness with parameters
 
-The coordinate arguments here require analytic charts and inverses. Their starting point is the proved holomorphic inverse and implicit function theorem, Lemma 2.2. The proof uses a uniformly contracting iteration on a small complex ball; its iterates are holomorphic, and Cauchy's formula makes their locally uniform limit holomorphic. We record the passage to real analytic maps, including parameters, and the differential-equation fact needed by the finite-jet construction.
+The coordinate arguments here require analytic charts and inverses. Their starting point is the proved [holomorphic inverse and implicit function theorem, Lemma 2.2](../../../AG-QC/src/complex-analytic-spaces-and-analytification.md#2-local-analytic-algebra). The proof uses a uniformly contracting iteration on a small complex ball; its iterates are holomorphic, and Cauchy's formula makes their locally uniform limit holomorphic. We record the passage to real analytic maps, including parameters, and the differential-equation fact needed by the finite-jet construction.
 
 ### Real analytic inverse, implicit and constant-rank coordinates
 
@@ -189,7 +189,7 @@ The example uses the source coordinates and target change displayed above. At th
 
 ## From a local analytic presentation to analytic curve selection
 
-The human treatment of curve selection and Łojasiewicz inequalities, adapted from Guillaume Valette's 2025 survey under CC BY 4.0, gives its arguments in globally subanalytic Euclidean spaces. Its cell-decomposition and Puiseux prerequisites are stated explicitly. The following chart argument explains how its curve-selection proof applies to the local sets in this lesson.
+The independently reconstructed curve-selection and Łojasiewicz reading gives its arguments in globally subanalytic Euclidean spaces. Its new exposition and six solved exercises, by GPT-6 Astra (OpenAI), Ultra, are CC0; it credits Guillaume Valette's classical results and the common selection, Puiseux and chain-rule methods. Its cell-decomposition and Puiseux prerequisites are stated explicitly. The following chart argument explains how its curve-selection proof applies to the local sets in this lesson.
 
 The companion analytic finiteness treatment now proves a prerequisite for that cell construction: real analytic Noetherianity via the existing Demailly division provider, Artin–Rees and Krull intersection, convergent replacements of formal linear solutions with prescribed jets, a finite Taylor family with analytic units, and the signed uniform-order normalization. The full analytic-composition and inverse-power reduction remains distinct from this finiteness proof.
 
@@ -207,7 +207,7 @@ f(Y)\cap B=\left(\bigcup_\ell f(Q_\ell)\right)\cap B.
 
 This is a finite union and intersection of globally subanalytic sets. Apply the same argument to every map in (1), and then apply the globally subanalytic Boolean-operation theorem to its finite differences and unions. The result is precisely \(S\cap B\). \(\square\)
 
-**The full two-sided curve.** Suppose \(x\in\overline S\). Apply the cited component's proved choice-and-Puiseux argument to the bounded coordinate set \(S\cap B\). It gives an arc \(\gamma:[0,\epsilon)\to S\cap B\) with endpoint \(x\), analytic across zero. Choose \(0<c<\epsilon\) small enough that the power series and chart inverse are defined whenever \(|r|<c\). The analytic map
+**The full two-sided curve.** Suppose \(x\in\overline S\). Apply the cited component's proved choice-and-Puiseux argument to the bounded coordinate set \(S\cap B\). It gives an analytic map \(\gamma:(-\epsilon,\epsilon)\to\mathbb R^n\) with \(\gamma(0)=x\) and \(\gamma(r)\in S\cap B\) for \(0<r<\epsilon\). The endpoint may lie only in \(\overline S\), so the map has the ambient coordinate space as its codomain. Choose \(0<c<\epsilon\) small enough that the power series and chart inverse are defined whenever \(|r|<c\). The analytic map
 
 \[
 a(t)=\gamma(c t^2),\qquad -1<t<1,
@@ -581,7 +581,7 @@ The two resulting charts are
 \[
 \begin{array}{lll}
 a=p,\ b=pq: & f\circ\pi_3=p^6q^2(1-q),
- & E_3=\{p=0\},\ E_1''=\{q=0\},\\
+ & E_3=\{p=0\},\ E_1^{\prime\prime}=\{q=0\},\\
 b=t,\ a=tw: & f\circ\pi_3=t^6w^3(w-1),
  & E_3=\{t=0\},\ E_2'=\{w=0\}.
 \end{array}
@@ -594,7 +594,7 @@ Their composite maps to the original plane are, respectively,
 They also check the total pullback formulas directly. At the third centre the weak equation has order one, and both existing divisors contain the centre. The new total exponent is therefore \(1+3+2=6\), exactly as in (PF4).
 
 The remaining weak curve is \(q=1\) in the first chart and \(w=1\) in the second. On their overlap,
-\(w=1/q\) and \(t=pq\), so these represent the same curve and its same meeting point with \(E_3\). The curve is transverse to \(E_3\). The old strict divisors meet \(E_3\) at the other two distinct projective directions: \(E_1''\) at \(q=0\) and \(E_2'\) at \(w=0\). The latter point is outside the \(q\)-chart. At each final intersection, the two local branch equations have independent differentials; no three branches meet.
+\(w=1/q\) and \(t=pq\), so these represent the same curve and its same meeting point with \(E_3\). The curve is transverse to \(E_3\). The old strict divisors meet \(E_3\) at the other two distinct projective directions: \(E_1^{\prime\prime}\) at \(q=0\) and \(E_2'\) at \(w=0\). The latter point is outside the \(q\)-chart. At each final intersection, the two local branch equations have independent differentials; no three branches meet.
 
 This also gives the monomial expression directly in each relevant neighbourhood. Near \(q=0\), use \((p,q)\), with unit \(1-q\). Near \(q=1\), use \((p,q-1)\), with unit \(-q^2\), giving \(-q^2p^6(q-1)\). At other finite points of \(E_3\) in that chart, \(q^2(1-q)\) is a unit and only \(p^6\) remains. In the other chart near \(w=0\), the unit is \(w-1\), leaving \(t^6w^3\). These neighbourhoods cover the complete third projective fibre.
 
@@ -678,7 +678,7 @@ therefore needed in this tower.
 Write \(C_3\) for the final strict curve. Show that the whole curve is \(q=1\) in the
 \((p,q)\)-chart and that \(\pi\) restricts to
 \(p\mapsto(p^2,p^3)\). Find exact sign-monomial coordinates at the
-three points where \(E_3\) meets \(E_1''\), \(E_2'\), and \(C_3\).
+three points where \(E_3\) meets \(E_1^{\prime\prime}\), \(E_2'\), and \(C_3\).
 
 **Solution.** In the \((r,s)\)-chart a weak zero satisfies
 \(r^3s=1\), hence lies in the overlap \(r\ne0\) and has
@@ -690,7 +690,7 @@ by \(q=1\), with \(p\in\mathbb R\); the direct map in the table gives
 \((x,y)=(p^2,p^3)\). This is a computation on the resolved curve, not
 an assertion that the singular cusp is an analytic manifold.
 
-Near \(E_3\cap E_1''\), namely \((p,q)=(0,0)\), set
+Near \(E_3\cap E_1^{\prime\prime}\), namely \((p,q)=(0,0)\), set
 \(P=p(1-q)^{1/6}\), \(Q=q\). The positive real sixth root is
 analytic near \(q=0\), and the coordinate change has nonzero Jacobian.
 Then \(f\circ\pi=P^6Q^2\). Near \(E_3\cap E_2'\), namely
@@ -2451,7 +2451,7 @@ The same conclusion holds for an analytic map from an arbitrary nonempty compact
 
 ### Comparing the rank bound with cell dimension
 
-The sharper bound \(R\le\dim S\) uses the already proved finite-cell dimension, not an intrinsic regular-locus assertion. The relevant provider is Why cell dimension is intrinsic: (D4) gives inclusion monotonicity, and the paragraph following it identifies the cell dimension of a definable differentiable manifold with its manifold dimension. The same provider proves invariance under bounded analytic changes of coordinates. Its established attribution and CC BY 4.0 component notice remain in force.
+The sharper bound \(R\le\dim S\) uses the already proved finite-cell dimension, not an intrinsic regular-locus assertion. The relevant provider is Why cell dimension is intrinsic: (D4) gives inclusion monotonicity, and the paragraph following it identifies the cell dimension of a definable differentiable manifold with its manifold dimension. The same provider proves invariance under bounded analytic changes of coordinates. The linked provider records its authorship and reuse terms and retains its named credit to Valette and Lion–Rolin; their human sources keep their own terms.
 
 Here is the exact application, including the boundedness needed for that provider. Suppose an analytic \(f:C\to X\) has image in a locally subanalytic set \(S\), and let \(D\) bound the cell dimensions of the bounded coordinate traces of \(S\). At a point \(z\) where \(df\) has rank \(r>0\), choose an invertible \(r\)-by-\(r\) derivative minor in source and target analytic coordinates. Fix the remaining source coordinates at their values at \(z\). The analytic inverse-function theorem on this transverse \(r\)-dimensional slice parametrizes a part of its image as a graph over the corresponding \(r\) target coordinates. Choose a nonempty open box in those coordinates whose compact closure stays inside the graph domain and whose graph stays in a target chart trace used to define \(D\). The graph functions are analytic on a neighborhood of that closed box. Their restricted graph is therefore globally subanalytic by the proved bounded-chart comparison; it is an embedded analytic \(r\)-manifold and is contained in \(S\).
 
@@ -2533,7 +2533,7 @@ A cell partition supplies many analytic manifold points. Recognizing every such 
 
 The graphic-point mechanism comes from Malgrange, as used by Bierstone and Milman in [Semianalytic and subanalytic sets, §7, printed pp. 37–41](https://www.numdam.org/article/PMIHES_1988__67__5_0.pdf), especially Proposition 7.4 and Theorems 7.5–7.10. The proof below expands the local convergence and compact descent arguments. It uses compact uniformization and the compact rank reduction (N6); the locally finite noncompact uniformization assembly and a finite-smoothness version of Tamm's theorem are not inputs.
 
-The complex analytic providers are the proved contour preparation and division theorem, unique factorization of holomorphic germs, and finite branches with connected dense smooth cores. These concern complex analytic sets and do not assume the real subanalytic regular-locus statement being proved.
+The complex analytic providers are the proved [contour preparation and division theorem](../../../AG-QC/src/complex-analytic-spaces-and-analytification.md#2-local-analytic-algebra), unique factorization of holomorphic germs, and finite branches with connected dense smooth cores. These concern complex analytic sets and do not assume the real subanalytic regular-locus statement being proved.
 
 ### Convergence at a critical source point
 
@@ -2832,7 +2832,7 @@ If \(M\) is compact, this locally finite partition is finite by the compactness 
 
 The theorem supplies compatible analytic partitions and constant-rank refinements for the relative triangulation construction. Whitney and Verdier conditions and a frontier condition between partition members require additional arguments. The [intrinsic analytic regular-locus theorem](#detecting-the-entire-analytic-regular-locus) is established separately above.
 
-**Sources.** Guillaume Valette, [*On subanalytic geometry*, arXiv:2507.23622v1](https://arxiv.org/abs/2507.23622v1), §1.2, gives the graph/band cell definition and cell theorem; §2.1 gives first-order definable formulas and the definability of derivatives. The linked preparation component proves its finite-cell and Boolean/projection inputs in the stated projective product convention and retains its human credit and reuse terms. The manifold globalization, explicit derivative-limit formula, and simultaneous restriction-rank induction are written out here.
+**Sources.** Guillaume Valette, [*On subanalytic geometry*, arXiv:2507.23622v1](https://arxiv.org/abs/2507.23622v1), §1.2, gives the graph/band cell definition and cell theorem; §2.1 gives first-order definable formulas and the definability of derivatives. The linked preparation reading proves its finite-cell and Boolean/projection inputs in the stated projective product convention, records its own authorship and reuse terms, and credits its human mathematical sources, whose own terms are unchanged. The manifold globalization, explicit derivative-limit formula, and simultaneous restriction-rank induction are written out here.
 
 ## How a compatible triangulation is assembled
 
@@ -3475,13 +3475,13 @@ The first parameter takes both signs. Restricting it to \([0,1]\) would omit pos
 
 [Bierstone–Milman, *Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), Definition 3.1 and §§3, 5 and 7, treats the local projection language, complement theorem, proper uniformization and fixed-dimensional regularity. Proposition 3.12, printed pp. 19–20, gives a dimension-preserving analytic presentation. Theorem 5.1, pp. 30–32, proves analytic-set uniformization using normal-crossing charts and induction through lower-dimensional centres; the deduction for closed subanalytic sets follows on p. 32. The torus argument here uses a compact fibre extremum and squared differential minors to reduce the source dimension directly from the proved function resolution. The uniformization conclusion supplies a proper map onto the set; the separate function-resolution theorem also retains its asserted isomorphism away from the singular zero set.
 
-Valette’s [*On subanalytic geometry*, §1.2 and §§2.1–2.2](https://arxiv.org/abs/2507.23622v1), supplies finite analytic cells, definable derivative tests and the choice-plus-Puiseux route to analytic curves in the globally subanalytic setting. The bounded-chart comparison is what permits their use on the local sets here. The two-sided curve and exact leading-vector normalizations are then checked in this lesson. The linked adapted components retain Valette’s attribution and CC BY 4.0 terms.
+Valette’s [*On subanalytic geometry*, §1.2 and §§2.1–2.2](https://arxiv.org/abs/2507.23622v1), supplies finite analytic cells, definable derivative tests and the choice-plus-Puiseux route to analytic curves in the globally subanalytic setting. The bounded-chart comparison is what permits their use on the local sets here. The two-sided curve and exact leading-vector normalizations are then checked in this lesson. The linked analytic-finiteness reading records its own authorship and reuse terms. The independently reconstructed curve reading dedicates its new exposition to CC0. Both retain named credit for Valette’s results and common proof methods; the human source keeps its own attribution and CC BY 4.0 terms.
 
 Shiota’s relative polyhedron proof is the triangulation source described above. The later manifold argument proves its globalization through finite-colour chart blocks, finite-regularity subanalytic cutoffs and analytic coordinate recovery on open simplices; its specific Kankaanrinta and Milnor credits appear at those constructions. The arbitrary-manifold conclusion is therefore proved here from the stated lower inputs. The separate function-resolution proof proceeds through the marked coefficient construction, recursive exceptional histories, analytic thresholds, closed canonical centres, compact-fibre termination, and proper gluing of the independently matched local towers.
 
 For the cotangent setting, Kashiwara–Schapira’s freely readable [*Microlocal Study of Sheaves*, §§8.1–8.2](https://www.numdam.org/item/AST_1985__128__1_0/) explains how Whitney limits control conormals and how isotropic sets lie in conormal unions. Its §8.2 convention restricts “subanalytic set” to locally closed sets, so it is not a substitute for the arbitrary-subset calculus used here. Our closure and surjective-detection proofs retain that broader stated scope and use the explicit curve and uniformization inputs; they do not require triangulation.
 
-Guillaume Valette's [*On subanalytic geometry*](https://arxiv.org/abs/2507.23622v1), §2.2, supplies the separately licensed choice, curve-selection and Łojasiewicz treatment linked above. The linked analytic preparation treatment now proves its Chapter1 cell, complement and Puiseux inputs in the projective product convention. The local comparison here proves the manifold curve-selection consequence without a global definability assumption. The marked coefficient argument proves the local dimension reduction and its test-transform persistence. [Higher analytic prefixes, current history, and rebirth](#higher-analytic-prefixes-current-history-and-rebirth) supplies the recursive exceptional histories, and [Finite termination over a compact fibre](#finite-termination-over-a-compact-fibre) proves termination for the local towers used in the proper global construction.
+Guillaume Valette's [*On subanalytic geometry*](https://arxiv.org/abs/2507.23622v1), §2.2, supplies the classical results and common proof methods credited in the independently reconstructed choice, curve-selection and Łojasiewicz reading linked above. Its new exposition and six solved exercises are CC0; the human source retains its own attribution and CC BY 4.0 terms. The linked analytic preparation treatment now proves its Chapter1 cell, complement and Puiseux inputs in the projective product convention. The local comparison here proves the manifold curve-selection consequence without a global definability assumption. The marked coefficient argument proves the local dimension reduction and its test-transform persistence. [Higher analytic prefixes, current history, and rebirth](#higher-analytic-prefixes-current-history-and-rebirth) supplies the recursive exceptional histories, and [Finite termination over a compact fibre](#finite-termination-over-a-compact-fibre) proves termination for the local towers used in the proper global construction.
 
 For the next step, take the canonical one-form on \(T^*X\). Its vanishing on a positive-conic subanalytic set defines isotropy. The cone test and surjective detection just proved will then turn cotangent correspondences into rigorous statements about isotropic images and stratifications.
 
@@ -3545,7 +3545,7 @@ f(x,t)=xt^{-1/2}+t^{1/3},
 \qquad x\in\mathbb R,\quad 0<t<1.
 \]
 
-Give one common root-variable Laurent expansion and one even substitution that agrees with the actual function for both signs of the new variable. Determine the parameter pieces on which a continuous analytic extension at zero is possible.
+Give one common root-variable Laurent expansion and one even substitution that agrees with the actual function for both signs of the new variable. For each fixed parameter, distinguish continuous and analytic extension in the original variable \(t\) from analytic extension after the substitution.
 
 **Solution.** The two compositions are \(|\tau|\) and \(\tau^2\). A two-sided analytic substitution must make every cleared exponent even, not merely make the substitution exponent even.
 
@@ -3561,7 +3561,7 @@ For both signs, choose \(t=\tau^{12}\). Then
 f(x,\tau^{12})=x\tau^{-6}+\tau^4,\qquad \tau\ne0.
 \]
 
-For \(x\ne0\) the pole remains; no continuous extension is possible there. On the parameter cell \(\{0\}\), the function becomes \(\tau^4\), analytic across zero. The cells \((-\infty,0),\{0\},(0,\infty)\) give one finite analytic parameter partition.
+For \(x\ne0\), the pole remains, so neither the original function nor its composition has a continuous extension at zero. At \(x=0\), the original function \(f(0,t)=t^{1/3}\) extends continuously by zero, but cannot extend real analytically across \(t=0\): its difference quotient \(t^{-2/3}\) is unbounded as \(t\downarrow0\). After \(t=\tau^{12}\), the same slice becomes \(\tau^4\), which is analytic across \(\tau=0\). Thus \(\{0\}\) is exactly the parameter locus with a continuous extension in the original variable and with an analytic extension after ramification; no parameter has an analytic extension in the original variable. The cells \((-\infty,0),\{0\},(0,\infty)\) separate these behaviours.
 
 Even at \((x,t)=(0,0)\), continuity fails if one keeps all parameters together. Along \(x=t^{1/4}\), the first summand equals \(t^{-1/4}\) and diverges. The continuous-parameter theorem requires joint continuity on its stated neighborhood; continuity on the one slice \(x=0\) does not supply that hypothesis.
 
@@ -3886,6 +3886,8 @@ which covers \(M\), such that distinct members of each \(\mathcal O_k\) are disj
 \]
 
 Thus the statement requested for a second-countable Hausdorff paracompact manifold follows. Paracompactness need not be used separately: the elementary exhaustion below provides the needed locally finite covers. The empty manifold is immediate. The usual convention here is that manifold charts are open subsets of \(\mathbb R^n\), so no boundary is involved.
+
+<a id="source-comparison-and-provenance"></a>
 
 #### Source comparison and attribution
 
@@ -4402,7 +4404,7 @@ For the theorem's proper embedding, the image is closed, which makes the selecte
 
 ## Dimension and frontier exercises
 
-These exercises use the complete linked dimension, frontier and parameter-continuity provider. Their adaptation credit and CC BY4.0 terms remain at that provider.
+These exercises use the complete linked dimension, frontier and parameter-continuity provider. The linked provider records its own authorship and reuse terms and credits Valette’s dimension and frontier results; the human source retains its own attribution and terms.
 
 **Exercise D1 (basic: two boundaries).** In \(\mathbb R^2\), calculate the frontier and topological boundary of the unit circle \(S^1\) and of the open unit disc. Give their dimensions and identify which strict inequality applies.
 

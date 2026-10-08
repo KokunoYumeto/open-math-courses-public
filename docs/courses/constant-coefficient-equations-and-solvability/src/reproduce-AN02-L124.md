@@ -4,7 +4,7 @@ Read the complete current learner and formal argument. Every worked example and 
 
 ## Exact original files and useful complete alternatives
 
-The complete programme context includes seven full source components and the complete selected manifold-duality §§1–3. All mathematical proof, formula and exercise bodies are preserved. Source-credit and scope paragraphs in three providers and the current main's provider notice are revised; their exact current byte counts and hashes are listed below. Every other non-HTML original file below retains exact bytes. Read the [complete source index and original component terms](../reproduce/L124/context/scope.html). The original PSH source and its complete shell-corrected alternative are both retained; that unused wording repair does not admit the whole PSH course. The earlier TP main is retained as a historical alternative; its TP10 display lacked one backslash. Use the complete corrected main and current reader for that display.
+This packet contains the complete projective-exhaustion argument, seven complete supporting programme sources and the selected manifold-duality §§1–3. The Stein exhaustion reading includes the analytic bad-locus proof and the zero-dimensional cases. The original plurisubharmonic source and its complete shell-corrected alternative remain available; the main argument does not use that alternative. The earlier projective-exhaustion main is retained as a historical alternative: its TP10 display omitted one backslash. Use the corrected main and current reader for that display. Read the [complete source index and component terms](../reproduce/L124/context/scope.html). The byte counts and SHA256 hashes below identify the current downloadable files.
 
 - [context/assets/mathjax/LICENSE](../reproduce/L124/context/assets/mathjax/LICENSE) — 11358 bytes; SHA256 `CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30`.
 - [context/course.css](../reproduce/L124/context/course.css) — 767 bytes; SHA256 `BBCAEDDB33E2D2D046EF737C9A629151BF3CEAF920FE978443670E7A5297700D`.
@@ -17,17 +17,17 @@ The complete programme context includes seven full source components and the com
 - [context/make_figures.py](../reproduce/L124/context/make_figures.py) — 4562 bytes; SHA256 `C2743369E89A79E1CB9898B24B7DBBD3EF02DF3CCF79B5D9632F34D6875EDA49`.
 - [context/notices/LICENSE_DEJAVU.txt](../reproduce/L124/context/notices/LICENSE_DEJAVU.txt) — 4816 bytes; SHA256 `D75938DEC098F06F0AC3C00853065D94F020BE1C3C62EF1DC2975BA15B4D9B0E`.
 - [context/notices/LICENSE_STIX.txt](../reproduce/L124/context/notices/LICENSE_STIX.txt) — 5476 bytes; SHA256 `BAB3D31DFEF07F483624F2F65F2711E76065B8E7273278B1C071EDE1041C9959`.
-- [context/projective-exhaustion-and-the-finite-chain-tube-receiver.md](../reproduce/L124/context/projective-exhaustion-and-the-finite-chain-tube-receiver.md) — 36286 bytes; SHA256 `96DC10389D3CFE7DD29D29A40A8077A1D86EB2ACB09ABD64881B6ABF33424976`.
-- [context/README-reproduce.md](../reproduce/L124/context/README-reproduce.md) — 2390 bytes; SHA256 `C16670E6CFEC08F3322C403838F4093BFA9C197CAA7C9F41447D9BD9DE1C4C36`.
+- [context/projective-exhaustion-and-the-finite-chain-tube-receiver.md](../reproduce/L124/context/projective-exhaustion-and-the-finite-chain-tube-receiver.md) — 34576 bytes; SHA256 `413D5F29A4965BDF22393B7EB7826D6C4EAD3BF07232C03A4BCC08FA3A7EEAF7`.
+- [context/README-reproduce.md](../reproduce/L124/context/README-reproduce.md) — 2235 bytes; SHA256 `100AE1C4630E32D284E8DB071FEA49B096E68AB5AFAEA03EAF73D055BE89BA32`.
 - [context/sources/cap-products-and-cohomology-with-compact-supports.md](../reproduce/L124/context/sources/cap-products-and-cohomology-with-compact-supports.md) — 10745 bytes; SHA256 `B9CEEA2F7AA6C8D7C9D458A8AF90116B6B3B04AB42ED6C13D28C849BA8EBBA91`.
-- [context/sources/holomorphic-morse-exhaustions-on-stein-manifolds.md](../reproduce/L124/context/sources/holomorphic-morse-exhaustions-on-stein-manifolds.md) — 26285 bytes; SHA256 `B2AE35E343485EE9F019FDC6BCCB3BBE218EFDA9DD772E3C63077A2DF5E07BAD`.
-- [context/sources/manifold-duality-and-tubular-sections.md](../reproduce/L124/context/sources/manifold-duality-and-tubular-sections.md) — 25074 bytes; SHA256 `1FEBF39CD776742AFEAC433E65B0D1B262086CA8DFCE680B8441C444A20E2BB2`.
+- [context/sources/holomorphic-morse-exhaustions-on-stein-manifolds.md](../reproduce/L124/context/sources/holomorphic-morse-exhaustions-on-stein-manifolds.md) — 37089 bytes; SHA256 `2F282F2BBD1C2742DF3582A25A7B5874E3027BF2FE0293840AA9EDBEE6395C19`.
+- [context/sources/manifold-duality-and-tubular-sections.md](../reproduce/L124/context/sources/manifold-duality-and-tubular-sections.md) — 24666 bytes; SHA256 `AAE01DBC288BD00542202BB33B17552030D14627683EDFB7A03ED2133AA4222D`.
 - [context/sources/orientations-and-fundamental-classes.md](../reproduce/L124/context/sources/orientations-and-fundamental-classes.md) — 14019 bytes; SHA256 `36D163752EAD201E2F3D9AAF141A41658B37C7447E9618151ADAF80556B869A1`.
 - [context/sources/plurisubharmonic-functions-and-stein-manifolds.md](../reproduce/L124/context/sources/plurisubharmonic-functions-and-stein-manifolds.md) — 12122 bytes; SHA256 `D90D1BAE6888C3BED131E46040BF69F1DC05E31FE0C32C2775D2125770307CA5`.
 - [context/sources/poincare-duality.md](../reproduce/L124/context/sources/poincare-duality.md) — 8341 bytes; SHA256 `6D8CF3476A087DEAC5FDBA857DACC32F87B0507C19C50FC6A797C995A9FB65CB`.
-- [context/sources/smooth-period-detection.md](../reproduce/L124/context/sources/smooth-period-detection.md) — 34358 bytes; SHA256 `3441B8C9A77E21120E25C357F2B603A6D26F2D56A5A5415B04210C4FDE00AEF4`.
-- [context/sources/thom-classes-and-euler-classes.md](../reproduce/L124/context/sources/thom-classes-and-euler-classes.md) — 41929 bytes; SHA256 `1FBB1648DF1FF2D832E7FE2BDC61600F723BB30CFC58BDEB516071529494E61F`.
-- [original-main-alternative.md](../reproduce/L124/original-main-alternative.md) — 36090 bytes; SHA256 `5A2B9036C2759C156AFF43D508A9F1DB9D48CD6B00C3146C73BDE53C288C44A0`.
+- [context/sources/smooth-period-detection.md](../reproduce/L124/context/sources/smooth-period-detection.md) — 34194 bytes; SHA256 `D98D6DB72648DECC63A8058357341B8FA3F665D8524546F848535DFC011C7B45`.
+- [context/sources/thom-classes-and-euler-classes.md](../reproduce/L124/context/sources/thom-classes-and-euler-classes.md) — 41742 bytes; SHA256 `F83B8D640ED86958925152381CFD9181ADAFFEADDA5D52EE87FDBA5273631F2F`.
+- [original-main-alternative.md](../reproduce/L124/original-main-alternative.md) — 34677 bytes; SHA256 `0C960B2DC0CB35E8130F62A77736CB65A2E5BCD8C2734E71E6047928B8A5CF3C`.
 
 ## Fresh native reproduction
 

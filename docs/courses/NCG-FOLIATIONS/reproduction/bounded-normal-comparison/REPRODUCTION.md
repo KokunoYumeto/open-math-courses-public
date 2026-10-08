@@ -1,0 +1,5 @@
+# Reproduction
+
+*K-theory of the leaf space*, Section 11BD. BNC.1–BNC.20. Full separated joint domain, source-local compact resolvents, product recognition and uniformly bounded perturbation comparison. An infinite rough scalar circle-source example retains all compact regulator and arrow controls but fails normal H1 preservation; its bounded physical comparison still has a completed sum. The full mass homotopy leaves a circle Dirac with sign action. The original actual Bott-module comparison remains unproved. The figure has181 floating scalar derivative samples and65 energy samples; exact complex-rational checks verify20 Fourier blocks,5 resolvent comparisons,3 normalization square identities,6 reference-series values and12 homotopy defects.
+
+Use Python 3.13.9 and Pillow 12.2.0. Run `python -B draw_bounded_normal_comparison.py --output-dir out`; `--resources` selects the adjacent labelled-geometric-kernel resources if relocated. Compare PNG/SVG with ../../figures/ and BOUNDED-NORMAL-COMPARISON-CHECKS.json with this folder. The SVG embeds the unchanged font and complete notice. No private files are read.

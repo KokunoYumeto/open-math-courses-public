@@ -20,6 +20,8 @@ The Fourier transform has kernel \(e^{-ix\cdot\xi}\). Thus \(J_s\) is multiplica
 
 ## 1. Measuring derivatives and decay
 
+These weighted spaces and the factor-exchange argument are Hörmander [H4, Definition 30.2.2 and the discussion that follows].
+
 **Definition 1.1.** For arbitrary real \(s,t\), let
 
 \[
@@ -150,6 +152,8 @@ Since both coefficients in (8) are at least one, \(Q_Y(X-Y)\ge |X-Y|^2\). In eac
 Compare the two coefficients of \(G_{\delta,X}^\sigma\) with those of \(G_{\delta,Y}^\sigma\). Formula (12) bounds both ratios by a fixed power of \(1+Q_Y(X-Y)\). This is the required dual-form temperateness inequality. The same formula gives
 \(w_{\tau,\mu}(Y)/w_{\tau,\mu}(X)\le C(1+Q_Y(X-Y))^N\)
 for a finite \(N\), including negative \(\tau,\mu\). \(\square\)
+
+For the broader metric composition and quantization-change formulas, see Hörmander [H3, Theorems 18.5.4 and 18.5.10].
 
 The programme reading [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md#weights-and-symbols) proves the following interfaces for exactly this metric and all its locally comparable, symplectically temperate weights. It uses our Fourier normalization throughout.
 
@@ -299,6 +303,8 @@ Assume that the perturbation is symmetric on compact smooth tests and that the t
  \|v\|_{H^m}\le C_0(\|Pv\|_2+\|v\|_2),\qquad v\in H^m.
  \tag{23}
 \]
+
+The weighted graph estimate and its regularized-weight argument are Hörmander [H4, (30.2.7)].
 
 **Theorem 4.1.** For every \(t\in\mathbb R\), if \(u\in H^m\) and the right side below is finite, then \(u\in H^{m,t}\) and
 
@@ -574,3 +580,7 @@ Let \(R\to\infty\). A bound \(\|u\|_{H^2}\le C\|Pu\|_2\) would contradict these 
 [HJS] Andrew Hassell, Qiuye Jia and Ethan Sussman, [*Lecture notes on non-elliptic Fredholm theory*, arXiv:2604.18956v1](https://arxiv.org/abs/2604.18956v1), Propositions 3.10–3.11, gives Fourier exchange and all-real mapping in the smooth scattering calculus. Corollary 3.3 integrates the former, while our metric proof and rough commutator argument handle the additional coefficient class.
 
 The next question is how much differentiability can be recovered from a distributional solution away from its energy surface. The weighted mapping theorem supplies the norm estimates for a smooth inverse symbol. To allow an arbitrary initial spatial weight in the error term, a parametrix must have a remainder rapidly decreasing in both position and frequency. The present lesson proves the weighted scale and rough graph estimate; construction of that inverse and the estimates near the energy surface require further work.
+
+[H3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the 1994 edition, Springer, 2007, Theorem 18.5.4, p. 155, and Theorem 18.5.10 with (18.5.21), pp. 159–161. ISBN 978-3-540-49938-1. [Edition information](https://doi.org/10.1007/978-3-540-49938-1).
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Definition 30.2.2, the ensuing weighted mapping argument, and (30.2.7) with its proof, pp. 284–285. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

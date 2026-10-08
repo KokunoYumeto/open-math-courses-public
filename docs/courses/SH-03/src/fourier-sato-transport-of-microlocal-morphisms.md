@@ -2,7 +2,7 @@
 
 Fourier-Sato transformation exchanges a vector and a covector. For conic sheaves it transports not just microsupport, but the full sheaf of directional morphisms. Its cotangent exchange is not homogeneous for ordinary cotangent dilation, so the contact-kernel theorem cannot be applied to that exchange directly. We will apply the theorem on positive-ray spaces, then add two coordinates to recover every cotangent point, including both zero axes.
 
-Use When a kernel quantizes a contact transformation. The proof uses the negative Fourier kernel, descent along positive radii, and the smooth and closed-embedding comparisons for microlocal Hom. We identify the comparison maps below, including the radial trace that fixes the Fourier degree. The final two-coordinate construction recovers morphisms over both zero axes.
+Use [When a kernel quantizes a contact transformation](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md). The proof uses the negative Fourier kernel, descent along positive radii, and the smooth and closed-embedding comparisons for microlocal Hom. We identify the comparison maps below, including the radial trace that fixes the Fourier degree. The final two-coordinate construction recovers morphisms over both zero axes.
 
 *Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
@@ -17,7 +17,7 @@ On \(E\times_ZE^*\), with projections \(p,q\), use the negative Fourier conventi
 \qquad\text{(1)}
 \]
 
-The Fourier construction (FS1–FS2) preserves bounded conic complexes under these hypotheses; finite fibre bounds apply to its proper-support image. Its finite fibre bounds, rather than properness of the bundle projection, supply boundedness. Write \(M_X(A,B)=\mu\operatorname{hom}_X(A,B)\), with the first argument contravariant.
+The [Fourier construction (FS1–FS2)](../../sheaf-proof-readings/src/SH02/fourier-sato.md#sh02-fs-setup--the-two-integration-rules) preserves bounded conic complexes under these hypotheses; [finite fibre bounds](../../sheaf-proof-readings/src/SH02/fourier-functoriality.md#sh02-ff-bounds-tensor-products-of-two-bounded-below-objects) apply to its proper-support image. Its finite fibre bounds, rather than properness of the bundle projection, supply boundedness. Write \(M_X(A,B)=\mu\operatorname{hom}_X(A,B)\), with the first argument contravariant.
 
 There is a canonical cotangent diffeomorphism
 
@@ -29,7 +29,7 @@ There is a canonical cotangent diffeomorphism
 
 in local bundle coordinates. Intrinsically, its base point is the restriction of the input covector to the vertical tangent. The identity
 \(\mathscr L_E^*\theta_{E^*}=\theta_E-d\langle x,\xi\rangle\)
-specifies its remaining coordinates uniquely and proves that the expressions glue under bundle changes. Indeed, once the base point is prescribed, the coefficients of the tautological form determine a covector uniquely. In a bundle chart the right side is \(\langle\zeta,dz\rangle-\langle x,d\xi\rangle\), giving (2). Uniqueness makes the chartwise maps agree; their coordinate inverses are \((z,\xi;\zeta,\eta)\mapsto(z,-\eta;\zeta,\xi)\). This is the intrinsic construction (MO37–MO39).
+specifies its remaining coordinates uniquely and proves that the expressions glue under bundle changes. Indeed, once the base point is prescribed, the coefficients of the tautological form determine a covector uniquely. In a bundle chart the right side is \(\langle\zeta,dz\rangle-\langle x,d\xi\rangle\), giving (2). Uniqueness makes the chartwise maps agree; their coordinate inverses are \((z,\xi;\zeta,\eta)\mapsto(z,-\eta;\zeta,\xi)\). This is the [intrinsic construction (MO37–MO39)](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-legendre--exchanging-a-vector-with-a-covector).
 
 **Theorem.** There is an isomorphism, natural in both bounded conic inputs,
 
@@ -53,7 +53,7 @@ G=R\gamma_*(H|_{B_0}).
 \qquad\text{(4)}
 \]
 
-The comparison is the radial counit. The cylinder descent theorem proves that counit invertible: a metric writes each positive-ray fibre as \(\mathbb R\) by logarithmic radius, and conicity says precisely that its cohomology is locally constant there. Restriction to a metric unit sphere identifies \(G\) with a bounded complex, so no unbounded angular object is introduced.
+The comparison is the radial counit. The [cylinder descent theorem](../../sheaf-proof-readings/src/SH02/conic-descent.md#sh02-con-cylinder--descent-across-a-contractible-parameter) proves that counit invertible: a metric writes each positive-ray fibre as \(\mathbb R\) by logarithmic radius, and conicity says precisely that its cohomology is locally constant there. Restriction to a metric unit sphere identifies \(G\) with a bounded complex, so no unbounded angular object is introduced.
 
 Here are the two exact microlocal Hom transport inputs. For a smooth submersion \(f:U\to V\), let
 \(C_f=U\times_VT^*V\), let \(h_f:C_f\to T^*U\) send a covector to its transpose differential, and let \(\rho_f:C_f\to T^*V\) forget its lifted base point. Then
@@ -72,7 +72,7 @@ M_V(i_*A_2,i_*A_1)
 \qquad\text{(6)}
 \]
 
-where \(C_i=U\times_VT^*V\), \(h_i\) is its closed inclusion in \(T^*V\), and \(\rho_i\) restricts a covector to \(TU\). In (6), \(i_*\) is exact and proper. These are the special cases of the two-argument comparison squares (MH12–MH14). For a submersion, the graph comparison for inverse image is invertible in product coordinates. Its closed horizontal map is \(h_f\), and its smooth projection is \(\rho_f\); this is the upper arrow of (MH12). The two exceptional inputs contain the same \(\omega_f\). Tensoring by its inverse and using the evaluation-based common-twist comparison (MH1) gives (5). For a closed embedding, ordinary and proper images coincide and exact extension from the closed graph identifies its internal Hom. The upper arrow of (MH13) is then invertible and gives (6). These constructions use evaluation and adjunction in both arguments, so they commute with morphisms of the \(A_i\). Their proofs require no perfection of either \(A_i\); the cancelled dualizing line, rather than an arbitrary input, is the invertible complex.
+where \(C_i=U\times_VT^*V\), \(h_i\) is its closed inclusion in \(T^*V\), and \(\rho_i\) restricts a covector to \(TU\). In (6), \(i_*\) is exact and proper. These are the special cases of the [two-argument comparison squares (MH12–MH14)](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-pair-transport--moving-both-arguments-at-once). For a submersion, the graph comparison for inverse image is invertible in product coordinates. Its closed horizontal map is \(h_f\), and its smooth projection is \(\rho_f\); this is the upper arrow of (MH12). The two exceptional inputs contain the same \(\omega_f\). Tensoring by its inverse and using the [evaluation-based common-twist comparison (MH1)](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-twists--twisting-both-arguments-and-changing-an-arrow) gives (5). For a closed embedding, ordinary and proper images coincide and exact extension from the closed graph identifies its internal Hom. The upper arrow of (MH13) is then invertible and gives (6). These constructions use evaluation and adjunction in both arguments, so they commute with morphisms of the \(A_i\). Their proofs require no perfection of either \(A_i\); the cancelled dualizing line, rather than an arbitrary input, is the invertible complex.
 
 For (4), the horizontal set in (5) is
 
@@ -81,7 +81,7 @@ H_B=\{(z,x;\zeta,\xi):x\ne0,\ \langle x,\xi\rangle=0\}.
 \qquad\text{(7)}
 \]
 
-Indeed its omitted tangent direction is the fibre Euler field. The Euler criterion (MO41) places \(\operatorname{SS}(H)\) in Euler annihilation, also on the zero section where the Euler field is zero. The microlocal Hom support bound (M1–M2) places \(M_B(H_2,H_1)\) there too.
+Indeed its omitted tangent direction is the fibre Euler field. The [Euler criterion (MO41)](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-conic-test--the-euler-equation-detects-conic-sheaves) places \(\operatorname{SS}(H)\) in Euler annihilation, also on the zero section where the Euler field is zero. The [microlocal Hom support bound (M1–M2)](../../sheaf-proof-readings/src/SH03/normal-scaling-and-microlocal-hom.md#a-sheaf-of-directional-morphisms-microlocal-hom-estimate) places \(M_B(H_2,H_1)\) there too.
 
 ## The proper radial shift
 
@@ -102,9 +102,9 @@ R q_!\bigl(p^{-1}j_!\gamma^{-1}G\otimes k_{\{\langle x,\xi\rangle\le0\}}\bigr)\b
 \simeq(\gamma^*)^{-1}\mathcal T_D(G)\otimes R\Gamma_c(\mathbb R_{>0};k).
 \]
 
-The increasing-interval trace (M25–M28) identifies the last factor with \(k[-1]\), using increasing logarithmic radius. These are sheaf base-change, projection-formula and trace maps, so they commute with restriction on the base and with maps of \(G\). The radial coordinates are global for the chosen metric; frame changes leave the positive radial direction fixed. Thus they prove (8), including its gluing, without a stalkwise choice of generators.
+The [increasing-interval trace (M25–M28)](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-trace--trace-orientation-of-ray-spheres-and-ordinary-descent) identifies the last factor with \(k[-1]\), using increasing logarithmic radius. These are sheaf base-change, projection-formula and trace maps, so they commute with restriction on the base and with maps of \(G\). The radial coordinates are global for the chosen metric; frame changes leave the positive radial direction fixed. Thus they prove (8), including its gluing, without a stalkwise choice of generators.
 
-We can also compare this normalization with the inverse Fourier convention. Let \(O_B\) be the bundle orientation local system on \(Z\); positive dual orientation identifies \(O_B\otimes O_{B^*}\) with \(k\). Write \(\mathcal S_{B^*}\) for the inverse Fourier operator from \(B\) to \(B^*\). The inverse proper-support comparison (FS4–FS6), with the positive dual orientation convention (FF2), uses the positive pairing and the factor \(O_{B^*}[m]\). Pulling its output back by the fibre antipode \(a_{B^*}\) changes that positive pairing into (1), so
+We can also compare this normalization with the inverse Fourier convention. Let \(O_B\) be the bundle orientation local system on \(Z\); positive dual orientation identifies \(O_B\otimes O_{B^*}\) with \(k\). Write \(\mathcal S_{B^*}\) for the inverse Fourier operator from \(B\) to \(B^*\). The [inverse proper-support comparison (FS4–FS6)](../../sheaf-proof-readings/src/SH02/fourier-sato.md#sh02-fs-compare--why-ordinary-image-and-proper-support-image-agree-in-the-transform), with the [positive dual orientation convention (FF2)](../../sheaf-proof-readings/src/SH02/fourier-functoriality.md#sh02-ff-conventions-the-inverse-transform-and-orientation-lines), uses the positive pairing and the factor \(O_{B^*}[m]\). Pulling its output back by the fibre antipode \(a_{B^*}\) changes that positive pairing into (1), so
 
 \[
 \mathcal F_B(H)\simeq
@@ -115,7 +115,7 @@ a_{B^*}^{-1}\mathcal S_{B^*}(H)
 
 Here \(\pi:B^*\to Z\). The comparison is the specified proper-support formula for the inverse followed by antipodal inverse image and cancellation of its base orientation factor. No integration variable is reversed in this pullback.
 
-Apply the same radial integration just proved to the positive-pairing proper-support formula for \(\mathcal S_{B^*}\). Integrating the positive radius contributes \(k[-1]\), while that formula contributes \(O_{B^*}[m]\). The positive dual-basis identification \(O_{B^*}\simeq O_B\) therefore identifies the surviving coefficient with \(O_B[m-1]\), pulled to the integrated sphere factor from \(Z\). This proves the proper radial inverse formula used here. The increasing radial direction placed first (M30–M31) gives
+Apply the same radial integration just proved to the positive-pairing proper-support formula for \(\mathcal S_{B^*}\). Integrating the positive radius contributes \(k[-1]\), while that formula contributes \(O_{B^*}[m]\). The positive dual-basis identification \(O_{B^*}\simeq O_B\) therefore identifies the surviving coefficient with \(O_B[m-1]\), pulled to the integrated sphere factor from \(Z\). This proves the proper radial inverse formula used here. The [increasing radial direction placed first (M30–M31)](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-sphere--orientations-of-ray-spheres) gives
 \(\operatorname{or}_{S/Z}\simeq\tau_S^{-1}O_B\),
 and hence \(\omega_{S/Z}\simeq\tau_S^{-1}O_B[m-1]\).
 After the antipode on the output sphere, the inequality is \(b(a)\le0\). The projection formula and positive dual-orientation pairing now cancel \(O_B\otimes O_{B^*}\), and the degree becomes
@@ -149,12 +149,12 @@ This expression is in the local orthonormal frame. The intrinsic conormal relati
 Differentiating \(b(a)=0\) gives \(b\,da+a\,db=0\). Hence
 \(\beta\,db=\alpha\,da\), and the base tautological terms agree. Formula (11) preserves the tautological form and commutes with positive ordinary cotangent dilation. It is the contact transformation to which the theorem applies.
 
-We check the kernel conditions. Use adapted coordinates in the smooth relative product. At a boundary point of \(D\), a cofinal product neighborhood meets \(D\) in \(B^{d-1}\times[0,\epsilon)\), where \(d\) is the dimension of that relative product. Its ordinary constant cohomology is \(k\), with restriction maps preserving the constant section. Its compact cohomology is zero: the one-point compactification of \([0,\epsilon)\) is the closed interval \([0,\epsilon]\), and the relative cochain complex of that interval and its endpoint \(\{\epsilon\}\) is acyclic. The product coefficient formula gives the same vanishing after adjoining \(B^{d-1}\). The point costalk is zero too, since the punctured closed half-ball retracts to a contractible hemisphere and the ordinary restriction is an isomorphism. At an interior point of \(D\), product balls instead give ordinary \(k\) and compact \(\operatorname{or}[-d]\), with the orientation-preserving support maps; off its closed support both vanish. Closed extension from the relative product to the absolute product preserves these computations. The coordinate coefficient and support calculations thus represent both formal neighborhood systems by perfect stalk and costalk complexes. This proves the required cohomological constructibility of \(k_D\). The regular-boundary and submanifold formulas (S16–S19) put its microsupport, in the union of the two selected regions, in the branch just calculated. One angular component is nonzero precisely when \(t\ne0\), precisely when the other is nonzero. Conormals to the base diagonal over the interior have zero angular components and are excluded.
+We check the kernel conditions. Use adapted coordinates in the smooth relative product. At a boundary point of \(D\), a cofinal product neighborhood meets \(D\) in \(B^{d-1}\times[0,\epsilon)\), where \(d\) is the dimension of that relative product. Its ordinary constant cohomology is \(k\), with restriction maps preserving the constant section. Its compact cohomology is zero: the one-point compactification of \([0,\epsilon)\) is the closed interval \([0,\epsilon]\), and the relative cochain complex of that interval and its endpoint \(\{\epsilon\}\) is acyclic. The product coefficient formula gives the same vanishing after adjoining \(B^{d-1}\). The point costalk is zero too, since the punctured closed half-ball retracts to a contractible hemisphere and the ordinary restriction is an isomorphism. At an interior point of \(D\), product balls instead give ordinary \(k\) and compact \(\operatorname{or}[-d]\), with the orientation-preserving support maps; off its closed support both vanish. Closed extension from the relative product to the absolute product preserves these computations. The [coordinate coefficient and support calculations](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) thus represent both formal neighborhood systems by perfect stalk and costalk complexes. This proves the required cohomological constructibility of \(k_D\). The [regular-boundary and submanifold formulas (S16–S19)](../../sheaf-proof-readings/src/SH02/subset-microsupport.md#sh02-sub-smooth-models--submanifolds-and-regular-boundaries) put its microsupport, in the union of the two selected regions, in the branch just calculated. One angular component is nonzero precisely when \(t\ne0\), precisely when the other is nonzero. Conormals to the base diagonal over the interior have zero angular components and are excluded.
 
 For the identity condition, use the restriction map \(k_D\to k_C\). Its cone is the open interior sheaf, shifted by one. The regular open-boundary formula puts that cone's nonzero angular normals on the opposite branch \(t>0\). Thus this map is an invertible microlocal germ at each point of the selected negative graph. It carries the identity of \(k_D\) to the identity of \(k_C\). The smooth-submanifold formula gives
 \(M(k_C,k_C)\simeq k_{T_C^*}\), with identity section one and no codimension shift. Therefore the actual identity-induced map for \(k_D\) is invertible along the negative graph. This is a local germ comparison along that graph: the open-interior cone has microsupport elsewhere in the selected angular region, so the restriction map is not asserted invertible throughout that whole region.
 
-All three conditions of the contact-kernel theorem hold. Its actual natural comparison gives
+All three conditions of the [contact-kernel theorem](../../sheaf-proof-readings/src/SH03/when-a-kernel-quantizes-a-contact-transformation.md#the-correspondence-and-the-identity-condition) hold. Its actual natural comparison gives
 
 \[
 (\chi_S)_*M_S(G_2,G_1)
@@ -198,7 +198,7 @@ Return to the original rank-\(n\) bundle, with no lower bound on \(n\). Put
 \(\widehat E=E\oplus\mathbb R_s\oplus\mathbb R_t\),
 and
 \(\widehat F_i=F_i\boxtimes k_{\mathbb R_s\times\{0\}_t}\).
-These are bounded and conic for simultaneous positive fibre dilation. The Fourier stabilization comparison (MO44), with increasing \(s\) orientation, gives
+These are bounded and conic for simultaneous positive fibre dilation. The [Fourier stabilization comparison (MO44)](../../sheaf-proof-readings/src/SH02/microsupport-operations.md#sh02-mo-stabilization--a-harmless-extra-pair-of-variables), with increasing \(s\) orientation, gives
 
 \[
 \mathcal F_{\widehat E}(\widehat F_i)
@@ -227,7 +227,7 @@ Its fibre base \((x,1,0)\) and vertical covector \((\xi,0,1)\) are both nonzero 
 
 where \(b:T^*E^*\hookrightarrow T^*\widehat E^*\) inserts those fixed extra coordinates. Both output fibre components are again nonzero. Since \(\operatorname{rank}\widehat E=n+2\ge2\), (14) applies to every point of (16), even when both original components vanish.
 
-Now apply (5) and (6) successively, as in the passive-coordinate calculation, Problem 3. For \(\widehat F_i\), the constant \(s\) factor has microlocal Hom concentrated at \(u=0\), and restriction at \(s=1\) returns the original object by (5). The closed \(t=0\) factor has its comparison constant along the entire normal covector fibre by (6); restriction at \(v=1\) returns it without a shift. Thus
+Now apply (5) and (6) successively, as in the [passive-coordinate calculation, Problem 3](../../sheaf-proof-readings/src/SH02/microlocal-hom.md#sh02-mh-problems--worked-problems-and-solutions). For \(\widehat F_i\), the constant \(s\) factor has microlocal Hom concentrated at \(u=0\), and restriction at \(s=1\) returns the original object by (5). The closed \(t=0\) factor has its comparison constant along the entire normal covector fibre by (6); restriction at \(v=1\) returns it without a shift. Thus
 
 \[
 a^{-1}M_{\widehat E}(\widehat F_2,\widehat F_1)

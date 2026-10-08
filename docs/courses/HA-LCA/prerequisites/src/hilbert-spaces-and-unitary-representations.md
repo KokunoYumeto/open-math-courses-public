@@ -6,7 +6,7 @@ Inner products are linear in the first variable and conjugate-linear in the seco
 
 The freely accessible mathematical sources are Jean Gallier and Jocelyn Quaintance, [*A Glimpse at Hilbert Spaces*, author notes dated 10 March 2017](https://www.cis.upenn.edu/~jean/hilbert-spaces.pdf), §§1.1–1.3 through Theorem 1.16; Michael Taylor, [*Lectures on Banach Algebras*, author-hosted notes](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/banalg.pdf), §§4–5 and Proposition 6.1; D. H. Fremlin, [*Measure Theory*, §244, version of 6 March 2009](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex), 244D–G, 244N(a) and 244P(a)–(b),(e); and B. Bekka, P. de la Harpe and A. Valette, [*Kazhdan's Property (T)*, free author draft dated 23 February 2007](https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf), Appendix A.1–A.2 at the specific results discussed in Section 7. All source citations identify reading material; all proof obligations are discharged below.
 
-This combined reading is distributed under the [Design Science License](../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt), retaining Fremlin's original copyright 1995 for §244 and the unchanged volume 2 source package. The exposition is newly written; the other sources' prose and figures are not reproduced.
+Original text: public domain (CC0). Fremlin's §244 (copyright 1995) is cited, and his unchanged volume 2 source package accompanies the reading under its own terms. The exposition is newly written; the other sources' prose and figures are not reproduced.
 
 ## 1. Positive forms and completion
 

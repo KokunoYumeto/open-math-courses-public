@@ -6,6 +6,6 @@ A compatible triangulation construction for arbitrary second-countable real anal
 
 [Native MathML reader](subanalytic-triangulations-on-analytic-manifolds.html) · [Editable source](src/subanalytic-triangulations-on-analytic-manifolds.md) · [Reuse terms](LICENSE.txt) · Provenance
 
-Shiota, Kankaanrinta, Milnor and Munkres receive credit for the mathematical source arguments. Valette's linked preparation component retains its component terms. Original teaching, illustration, solutions and reader code here are CC0. Rebuild with Python 3 and Pandoc using python build/build_reader.py. Wide formulas scroll on small screens. The remaining parent-course lower geometry and curriculum are still being developed.
+Shiota, Kankaanrinta, Milnor and Munkres receive credit for the mathematical source arguments. Valette is credited at the linked analytic finiteness reading. Original teaching, illustration, solutions and reader code here are CC0. Rebuild with Python 3 and Pandoc using python build/build_reader.py. Wide formulas scroll on small screens. The remaining parent-course lower geometry and curriculum are still being developed.
 
 Download the reading, editable source and build code

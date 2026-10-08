@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Locating singularities through logarithmic Fourier strips</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L157.html">Previous lesson</a> · <a href="#1-a-precise-strip-criterion">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="locating-singularities-through-logarithmic-fourier-strips">Locating singularities through logarithmic Fourier strips</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0 1.0).</em></p>
+<p>The support of a compact distribution may include a large smooth part. Its singularities occupy a smaller set. To see that set through the Fourier transform, we allow complex frequencies whose imaginary part grows only logarithmically with their total size. Smooth Fourier decay can absorb any fixed logarithmic width. A fixed polynomial growth order then locates the convex hull of the singularities.</p>
+<p>Basic references are Terence Tao's <em>Some connections with the Fourier transform</em> and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. The <a href="#complete-proof">complete proof</a> is supplied below. Its exact preceding inputs are <a href="AN02-L122.html#3-a-bounded-complex-displacement-for-polynomial-division">compact Fourier bounds and division</a>, <a href="AN02-L153.html#tp3-the-complete-logarithmically-shifted-contour">whole-complex smooth decay and the logarithmic contour</a>, and <a href="AN02-L157.html#2-the-compactness-and-support-statement">joint logarithmic-frequency limits</a>.</p>
+<h2 id="6-the-growth-order-stays-fixed-while-the-strip-widens">6. The growth order stays fixed while the strip widens</h2>
+<p>We use <span class="math" data-index="0" data-tex="\(F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle\)">\(F_u(\zeta)=\langle u,e^{-ix\cdot\zeta}\rangle\)</span>. For a nonempty compact convex set <span class="math" data-index="1" data-tex="\(K\)">\(K\)</span>, its support function is <span class="math" data-index="2" data-tex="\(H_K(\eta)=\max_{x\in K}x\cdot\eta\)">\(H_K(\eta)=\max_{x\in K}x\cdot\eta\)</span>.</p>
+<p>The strip criterion says that <span class="math" data-index="3" data-tex="\(\operatorname{sing\,supp}u\subset K\)">\(\operatorname{sing\,supp}u\subset K\)</span> exactly when</p>
+<span class="math math-display" id="eq-6.1" data-index="4" data-tex="\[
+|F_u(\zeta)|\le C_m(1+|\zeta|)^N e^{H_K(\operatorname{Im}\zeta)}
+\quad\text{for }|\operatorname{Im}\zeta|\le m\log(1+|\zeta|),
+\quad m=1,2,\ldots,
+\tag{6.1}
+\]">\[
+|F_u(\zeta)|\le C_m(1+|\zeta|)^N e^{H_K(\operatorname{Im}\zeta)}
+\quad\text{for }|\operatorname{Im}\zeta|\le m\log(1+|\zeta|),
+\quad m=1,2,\ldots,
+\tag{6.1}
+\]</span>
+<p>with <strong>one fixed exponent <span class="math" data-index="5" data-tex="\(N\)">\(N\)</span></strong>. Each width has its own constant <span class="math" data-index="6" data-tex="\(C_m\)">\(C_m\)</span>. The exponent cannot depend on that width. Exercise 1 explains why changing the exponent would make the criterion unable to locate singularities.</p>
+<p>For necessity, cut off the distribution very close to <span class="math" data-index="7" data-tex="\(K\)">\(K\)</span>. The retained compact part has ordinary carrier <span class="math" data-index="8" data-tex="\(K+\delta\overline B\)">\(K+\delta\overline B\)</span>, which adds <span class="math" data-index="9" data-tex="\(\delta|\operatorname{Im}\zeta|\)">\(\delta|\operatorname{Im}\zeta|\)</span> to the exponential bound. Choosing <span class="math" data-index="10" data-tex="\(\delta=1/(m+1)\)">\(\delta=1/(m+1)\)</span> costs at most one extra polynomial order in the <span class="math" data-index="11" data-tex="\(m\)">\(m\)</span>-th strip. The discarded part is smooth and has arbitrary whole-complex polynomial decay, so it fits the same strip bound. The order of the original compact distribution therefore gives one fixed exponent for every strip.</p>
+<p>For sufficiency, take a point outside <span class="math" data-index="12" data-tex="\(K\)">\(K\)</span>, and a direction <span class="math" data-index="13" data-tex="\(\theta\)">\(\theta\)</span> strictly separating it from <span class="math" data-index="14" data-tex="\(K\)">\(K\)</span>. Fourier inversion moves to the complex contour</p>
+<span class="math math-display" id="eq-6.2" data-index="15" data-tex="\[
+\zeta(\xi)=\xi+iR\theta\log(2+|\xi|^2).
+\tag{6.2}
+\]">\[
+\zeta(\xi)=\xi+iR\theta\log(2+|\xi|^2).
+\tag{6.2}
+\]</span>
+<p>The support bound and the inverse Fourier exponential combine to give a negative power of <span class="math" data-index="16" data-tex="\(2+|\xi|^2\)">\(2+|\xi|^2\)</span>. The separation gap determines that power. Increasing <span class="math" data-index="17" data-tex="\(R\)">\(R\)</span> makes it dominate any desired derivative order. The <a href="#3-moving-the-gaussian-contour-and-removing-the-regularization">full contour proof</a> keeps the Jacobian, deforms a Gaussian-regularized entire integrand, and proves a majorant independent of the regularization parameter before removing it.</p>
+<figure><img class="course-figure" width="2483" height="1100" src="reproduce/L158/figures/separation-and-logarithmic-strip.png" alt="A separating direction for a compact vertical carrier and a slice of its logarithmic complex contour" /><figcaption class="native"><a href="reproduce/L158/figures/separation-and-logarithmic-strip.png">Open full-size PNG</a> · <a href="reproduce/L158/figures/separation-and-logarithmic-strip.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 1.</strong> The spatial carrier is <span class="math" data-index="18" data-tex="\(K=\{0\}\times[-1,1]\)">\(K=\{0\}\times[-1,1]\)</span>, the observation point is <span class="math" data-index="19" data-tex="\(x_0=(2,0)\)">\(x_0=(2,0)\)</span>, and its neighborhood has radius <span class="math" data-index="20" data-tex="\(1/2\)">\(1/2\)</span>. The closest point is <span class="math" data-index="21" data-tex="\(p=(0,0)\)">\(p=(0,0)\)</span>; the unit separating direction is <span class="math" data-index="22" data-tex="\(\theta=(1,0)\)">\(\theta=(1,0)\)</span>, with gap at least <span class="math" data-index="23" data-tex="\(3/2\)">\(3/2\)</span> throughout the neighborhood. The right panel shows the <span class="math" data-index="24" data-tex="\(\xi_2=0\)">\(\xi_2=0\)</span> slice of (6.2), with <span class="math" data-index="25" data-tex="\(R=2\)">\(R=2\)</span> and <span class="math" data-index="26" data-tex="\(\zeta_2=0\)">\(\zeta_2=0\)</span>. Its imaginary height is <span class="math" data-index="27" data-tex="\(2\log(2+\xi_1^2)\)">\(2\log(2+\xi_1^2)\)</span>. The shaded region is the actual upper logarithmic strip <span class="math" data-index="28" data-tex="\(\eta\le4\log(1+\sqrt{\xi_1^2+\eta^2})\)">\(\eta\le4\log(1+\sqrt{\xi_1^2+\eta^2})\)</span>. Equal scales are used in the spatial plane. The full proof integrates over all real frequency coordinates; the right panel is a specified slice.</p>
+<h2 id="7-recovering-the-convex-hull-from-every-limiting-profile">7. Recovering the convex hull from every limiting profile</h2>
+<p>In the preceding lesson, <span class="math" data-index="29" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span> denotes the support functions obtained from all escaping logarithmic-window profile limits, including the collapsed support function <span class="math" data-index="30" data-tex="\(-\infty\)">\(-\infty\)</span>. The hull theorem is</p>
+<span class="math math-display" id="eq-7.1" data-index="31" data-tex="\[
+H_{\operatorname{conv}\operatorname{sing\,supp}u}(\eta)
+=\sup_{h\in\mathcal J(u)}h(\eta).
+\tag{7.1}
+\]">\[
+H_{\operatorname{conv}\operatorname{sing\,supp}u}(\eta)
+=\sup_{h\in\mathcal J(u)}h(\eta).
+\tag{7.1}
+\]</span>
+<p>Here the support function of the empty set is identically <span class="math" data-index="32" data-tex="\(-\infty\)">\(-\infty\)</span>. In particular a compact smooth distribution has only the collapsed profile.</p>
+<p>One inequality comes directly from the strip criterion. If all singularities lie in <span class="math" data-index="33" data-tex="\(K\)">\(K\)</span>, every proper profile is bounded by a constant plus <span class="math" data-index="34" data-tex="\(H_K(\operatorname{Im}z)\)">\(H_K(\operatorname{Im}z)\)</span>, and its recession support function is at most <span class="math" data-index="35" data-tex="\(H_K\)">\(H_K\)</span>.</p>
+<p>For the reverse inequality, form the closed convex hull <span class="math" data-index="36" data-tex="\(D\)">\(D\)</span> of all the proper profile sets. Each lies inside a fixed ordinary carrier, so <span class="math" data-index="37" data-tex="\(D\)">\(D\)</span> is compact. If <span class="math" data-index="38" data-tex="\(D\)">\(D\)</span> failed the strip criterion, the failing complex frequencies would produce an escaping real sequence and bounded, moving observation points. A profile extraction and the compact Hartogs bound contradict that failure. The strip criterion then puts every singularity in <span class="math" data-index="39" data-tex="\(D\)">\(D\)</span>.</p>
+<p>If there were no proper profile despite a singularity, the real Fourier transform would decrease faster than every polynomial. Its differentiable inverse integral would make the distribution smooth. The <a href="#4-the-hull-recovered-from-all-logarithmic-profiles">complete hull proof</a> includes that empty case and the comparison at moving observation points.</p>
+<h2 id="8-polynomial-differentiation-preserves-the-compact-singular-hull">8. Polynomial differentiation preserves the compact singular hull</h2>
+<p>For <span class="math" data-index="40" data-tex="\(D=(1/i)\partial\)">\(D=(1/i)\partial\)</span>, a nonzero polynomial differential operator satisfies</p>
+<span class="math math-display" id="eq-8.1" data-index="41" data-tex="\[
+\operatorname{conv}\operatorname{sing\,supp}P(D)u
+=\operatorname{conv}\operatorname{sing\,supp}u
+\quad\text{when }u\text{ is compactly supported}.
+\tag{8.1}
+\]">\[
+\operatorname{conv}\operatorname{sing\,supp}P(D)u
+=\operatorname{conv}\operatorname{sing\,supp}u
+\quad\text{when }u\text{ is compactly supported}.
+\tag{8.1}
+\]</span>
+<p>The operator can be nonelliptic. Polynomial zeros are handled by the proved bounded complex-displacement division estimate. That estimate transfers a logarithmic-strip bound for <span class="math" data-index="42" data-tex="\(P(D)u\)">\(P(D)u\)</span> to one for <span class="math" data-index="43" data-tex="\(u\)">\(u\)</span>, with the same growth order. In the smooth case it transfers arbitrary rapid real decay.</p>
+<p>Thus a compact distribution whose polynomial image is smooth is itself smooth. Compactness is essential, as Worked example 3 shows.</p>
+<h2 id="worked-example-1-a-large-smooth-support-and-one-singular-point">Worked example 1. A large smooth support and one singular point</h2>
+<p>Let <span class="math" data-index="44" data-tex="\(\phi(t)=e^{-1/(1-t^2)}\)">\(\phi(t)=e^{-1/(1-t^2)}\)</span> for <span class="math" data-index="45" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, zero otherwise, and put <span class="math" data-index="46" data-tex="\(b(x)=\phi(x/3)\)">\(b(x)=\phi(x/3)\)</span>. Then <span class="math" data-index="47" data-tex="\(b\)">\(b\)</span> is positive inside <span class="math" data-index="48" data-tex="\((-3,3)\)">\((-3,3)\)</span>, smooth and compact, with support <span class="math" data-index="49" data-tex="\([-3,3]\)">\([-3,3]\)</span>. Consider <span class="math" data-index="50" data-tex="\(u=\delta_1+b\)">\(u=\delta_1+b\)</span>.</p>
+<p>Its singular support is exactly <span class="math" data-index="51" data-tex="\(\{1\}\)">\(\{1\}\)</span>. The smooth term changes no singularities. A point mass cannot have a smooth representative near its point: a shrinking test bump with value one there pairs to 1 with the mass, while its pairing with a bounded smooth function tends to zero. Its ordinary support is the entire interval <span class="math" data-index="52" data-tex="\([-3,3]\)">\([-3,3]\)</span>.</p>
+<p>For <span class="math" data-index="53" data-tex="\(K=\{1\}\)">\(K=\{1\}\)</span>, the support function is <span class="math" data-index="54" data-tex="\(H_K(\eta)=\eta\)">\(H_K(\eta)=\eta\)</span>. The point-mass transform <span class="math" data-index="55" data-tex="\(e^{-i\zeta}\)">\(e^{-i\zeta}\)</span> has exactly that exponential modulus. Smooth decay bounds the other term by <span class="math" data-index="56" data-tex="\(B_L(1+|\zeta|)^{-L}e^{3|\operatorname{Im}\zeta|}\)">\(B_L(1+|\zeta|)^{-L}e^{3|\operatorname{Im}\zeta|}\)</span>. Since <span class="math" data-index="57" data-tex="\(3|\eta|-\eta\le4|\eta|\)">\(3|\eta|-\eta\le4|\eta|\)</span>, choose <span class="math" data-index="58" data-tex="\(L&gt;4m\)">\(L&gt;4m\)</span> on the <span class="math" data-index="59" data-tex="\(m\)">\(m\)</span>-th strip. The sum satisfies (6.1) with <span class="math" data-index="60" data-tex="\(N=0\)">\(N=0\)</span>.</p>
+<p>A global bound by a fixed polynomial times <span class="math" data-index="61" data-tex="\(e^\eta\)">\(e^\eta\)</span> would fail. On <span class="math" data-index="62" data-tex="\(\zeta=i\eta\)">\(\zeta=i\eta\)</span>, <span class="math" data-index="63" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, positivity gives
+<span class="math" data-index="64" data-tex="\(F_b(i\eta)\ge c e^{2\eta}/2\)">\(F_b(i\eta)\ge c e^{2\eta}/2\)</span>, where <span class="math" data-index="65" data-tex="\(c=\min_{[2,5/2]}b&gt;0\)">\(c=\min_{[2,5/2]}b&gt;0\)</span>. The exponential <span class="math" data-index="66" data-tex="\(e^{2\eta}\)">\(e^{2\eta}\)</span> cannot be bounded by any fixed polynomial times <span class="math" data-index="67" data-tex="\(e^\eta\)">\(e^\eta\)</span>. The restriction to logarithmic strips is what removes the effect of the distant smooth support.</p>
+<p>By smooth invariance, every proper logarithmic-window limit for <span class="math" data-index="68" data-tex="\(u\)">\(u\)</span> is the point-mass profile <span class="math" data-index="69" data-tex="\(\operatorname{Im}z\)">\(\operatorname{Im}z\)</span>. Its profile set is <span class="math" data-index="70" data-tex="\(\{1\}\)">\(\{1\}\)</span>, agreeing with the singular hull.</p>
+<h2 id="worked-example-2-derivative-order-and-the-contour-budget">Worked example 2. Derivative order and the contour budget</h2>
+<p>For <span class="math" data-index="71" data-tex="\(u=D^r\delta_a\)">\(u=D^r\delta_a\)</span>, <span class="math" data-index="72" data-tex="\(r\ge0\)">\(r\ge0\)</span>, <span class="math" data-index="73" data-tex="\(F_u(\zeta)=\zeta^re^{-ia\zeta}\)">\(F_u(\zeta)=\zeta^re^{-ia\zeta}\)</span>. The strip bound with <span class="math" data-index="74" data-tex="\(K=\{a\}\)">\(K=\{a\}\)</span> holds at every complex frequency with <span class="math" data-index="75" data-tex="\(N=r\)">\(N=r\)</span>. Its proper logarithmic profile on positive real centers is <span class="math" data-index="76" data-tex="\(r+a\operatorname{Im}z\)">\(r+a\operatorname{Im}z\)</span>, whose support set is <span class="math" data-index="77" data-tex="\(\{a\}\)">\(\{a\}\)</span>.</p>
+<p>At a point a positive distance from <span class="math" data-index="78" data-tex="\(a\)">\(a\)</span>, choose the separating sign <span class="math" data-index="79" data-tex="\(\theta=\operatorname{sign}(x-a)\)">\(\theta=\operatorname{sign}(x-a)\)</span>. Each additional physical derivative introduces another power of the complex frequency. A larger <span class="math" data-index="80" data-tex="\(R\)">\(R\)</span> makes the logarithmic contour decay dominate that power, giving smoothness away from <span class="math" data-index="81" data-tex="\(a\)">\(a\)</span> to every order.</p>
+<p>The Gaussian regularization can also be evaluated directly. For <span class="math" data-index="82" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-index="83" data-tex="\(a=0\)">\(a=0\)</span>, it is</p>
+<span class="math math-display" id="eq-9.1" data-index="84" data-tex="\[
+u_\varepsilon(x)=D^2q_\varepsilon(x)
+=\left(\frac1{2\varepsilon}-\frac{x^2}{4\varepsilon^2}\right)
+ (4\pi\varepsilon)^{-1/2}e^{-x^2/(4\varepsilon)}.
+\tag{9.1}
+\]">\[
+u_\varepsilon(x)=D^2q_\varepsilon(x)
+=\left(\frac1{2\varepsilon}-\frac{x^2}{4\varepsilon^2}\right)
+ (4\pi\varepsilon)^{-1/2}e^{-x^2/(4\varepsilon)}.
+\tag{9.1}
+\]</span>
+<p>On each compact set separated from zero, this function and every derivative tend uniformly to zero: the Gaussian dominates all the powers of <span class="math" data-index="85" data-tex="\(1/\varepsilon\)">\(1/\varepsilon\)</span>. Distributionally it tends to <span class="math" data-index="86" data-tex="\(D^2\delta_0\)">\(D^2\delta_0\)</span>, whose singularity remains at zero.</p>
+<h2 id="worked-example-3-a-nonelliptic-operator-and-the-compactness-hypothesis">Worked example 3. A nonelliptic operator and the compactness hypothesis</h2>
+<p>In two dimensions set <span class="math" data-index="87" data-tex="\(u=\delta_0(x_1)\otimes\phi(x_2)\)">\(u=\delta_0(x_1)\otimes\phi(x_2)\)</span>, with the bump <span class="math" data-index="88" data-tex="\(\phi\)">\(\phi\)</span> above. Its singular support is the vertical segment <span class="math" data-index="89" data-tex="\(K=\{0\}\times[-1,1]\)">\(K=\{0\}\times[-1,1]\)</span>. At every interior point of the segment, a test shrinking only in <span class="math" data-index="90" data-tex="\(x_1\)">\(x_1\)</span>, with a fixed nonzero pairing against <span class="math" data-index="91" data-tex="\(\phi\)">\(\phi\)</span> in <span class="math" data-index="92" data-tex="\(x_2\)">\(x_2\)</span>, distinguishes the point-mass factor from a bounded smooth representative. Closedness includes the endpoints. Away from the segment the distribution is zero.</p>
+<p>Take <span class="math" data-index="93" data-tex="\(P(\zeta)=\zeta_1\)">\(P(\zeta)=\zeta_1\)</span>. It vanishes at every nonzero real frequency <span class="math" data-index="94" data-tex="\((0,\xi_2)\)">\((0,\xi_2)\)</span>, so it is nonelliptic; its complex zero set is the line <span class="math" data-index="95" data-tex="\(\zeta_1=0\)">\(\zeta_1=0\)</span> inside <span class="math" data-index="96" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. Nevertheless <span class="math" data-index="97" data-tex="\(D_1u=(D_1\delta_0)\otimes\phi\)">\(D_1u=(D_1\delta_0)\otimes\phi\)</span> has the same singular segment. For the derivative factor choose a shrinking test whose first derivative at zero is nonzero; its pairing grows like the inverse shrinking scale. It cannot be locally represented by a bounded smooth function. The hull theorem applies and gives the same vertical segment for both distributions.</p>
+<p>If compactness is dropped, take <span class="math" data-index="98" data-tex="\(w=1(x_1)\otimes\delta_0(x_2)\)">\(w=1(x_1)\otimes\delta_0(x_2)\)</span>. It is singular along <span class="math" data-index="99" data-tex="\(x_2=0\)">\(x_2=0\)</span>, but <span class="math" data-index="100" data-tex="\(D_1w=0\)">\(D_1w=0\)</span>. This distribution extends through the whole <span class="math" data-index="101" data-tex="\(x_1\)">\(x_1\)</span>-axis, so the compact-distribution assertion does not apply.</p>
+<h2 id="worked-example-4-a-triangular-function-three-corners-and-one-hull">Worked example 4. A triangular function, three corners and one hull</h2>
+<p>Let <span class="math" data-index="102" data-tex="\(u(x)=(1-|x|)_+\)">\(u(x)=(1-|x|)_+\)</span>. It is smooth off <span class="math" data-index="103" data-tex="\(\{-1,0,1\}\)">\(\{-1,0,1\}\)</span>, and its slope jumps at all three points. Its distributional second derivative gives</p>
+<span class="math math-display" id="eq-9.2" data-index="104" data-tex="\[
+D^2u=-\delta_{-1}+2\delta_0-\delta_1,\qquad
+F_u(\zeta)=\frac{2(1-\cos\zeta)}{\zeta^2},
+\quad F_u(0)=1.
+\tag{9.2}
+\]">\[
+D^2u=-\delta_{-1}+2\delta_0-\delta_1,\qquad
+F_u(\zeta)=\frac{2(1-\cos\zeta)}{\zeta^2},
+\quad F_u(0)=1.
+\tag{9.2}
+\]</span>
+<p>The sign follows from <span class="math" data-index="105" data-tex="\(D^2=-\partial_x^2\)">\(D^2=-\partial_x^2\)</span>. The Fourier formula follows either by integrating the two affine pieces or by multiplying it by <span class="math" data-index="106" data-tex="\(\zeta^2\)">\(\zeta^2\)</span> and comparing with the transform of the three point masses, then using its value at zero. Thus both singular supports are <span class="math" data-index="107" data-tex="\(\{-1,0,1\}\)">\(\{-1,0,1\}\)</span>, and both hulls are <span class="math" data-index="108" data-tex="\([-1,1]\)">\([-1,1]\)</span>.</p>
+<p>Choose <span class="math" data-index="109" data-tex="\(R_j=2\pi j\)">\(R_j=2\pi j\)</span>, <span class="math" data-index="110" data-tex="\(s_j=\log R_j\)">\(s_j=\log R_j\)</span>. On the imaginary observation axis,</p>
+<span class="math math-display" id="eq-9.3" data-index="111" data-tex="\[
+L_u(i\eta,R_j)
+=\frac{\log4+2\log|\sinh(s_j\eta/2)|
+ -\log(R_j^2+s_j^2\eta^2)}{s_j}
+\longrightarrow |\eta|-2\qquad(\eta\ne0).
+\tag{9.3}
+\]">\[
+L_u(i\eta,R_j)
+=\frac{\log4+2\log|\sinh(s_j\eta/2)|
+ -\log(R_j^2+s_j^2\eta^2)}{s_j}
+\longrightarrow |\eta|-2\qquad(\eta\ne0).
+\tag{9.3}
+\]</span>
+<p>The full complex profiles converge in local <span class="math" data-index="112" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-index="113" data-tex="\(|\operatorname{Im}z|-2\)">\(|\operatorname{Im}z|-2\)</span>. On compact sets above or below the real axis, one exponential in the cosine dominates uniformly, while <span class="math" data-index="114" data-tex="\(\log|R_j+s_jz|/s_j\to1\)">\(\log|R_j+s_jz|/s_j\to1\)</span> uniformly. This gives the displayed limit on both open half-planes. The value at <span class="math" data-index="115" data-tex="\(z=i\)">\(z=i\)</span> tends to <span class="math" data-index="116" data-tex="\(-1\)">\(-1\)</span>, which excludes uniform collapse on every subsequence. PSH compactness and canonical recovery then identify every proper extraction with <span class="math" data-index="117" data-tex="\(|\operatorname{Im}z|-2\)">\(|\operatorname{Im}z|-2\)</span>, and uniqueness gives the full local integral convergence.</p>
+<p>At <span class="math" data-index="118" data-tex="\(z=0\)">\(z=0\)</span> the transform is exactly zero on every one of these centers, so that observation value stays minus infinite. The recession function still is <span class="math" data-index="119" data-tex="\(|\eta|\)">\(|\eta|\)</span>, the support function of <span class="math" data-index="120" data-tex="\([-1,1]\)">\([-1,1]\)</span>. The negative constant <span class="math" data-index="121" data-tex="\(-2\)">\(-2\)</span> records real polynomial decay and disappears from the hull.</p>
+<figure><img class="course-figure" width="2504" height="1280" src="reproduce/L158/figures/triangular-corners-and-singular-hull.png" alt="The triangular function and its three signed second-derivative masses, beside its exact Fourier-window profiles" /><figcaption class="native"><a href="reproduce/L158/figures/triangular-corners-and-singular-hull.png">Open full-size PNG</a> · <a href="reproduce/L158/figures/triangular-corners-and-singular-hull.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 2.</strong> The left panels show the actual function <span class="math" data-index="122" data-tex="\((1-|x|)_+\)">\((1-|x|)_+\)</span>, its singular points <span class="math" data-index="123" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>, and the coefficients <span class="math" data-index="124" data-tex="\(-1,2,-1\)">\(-1,2,-1\)</span> of the point masses in <span class="math" data-index="125" data-tex="\(D^2u\)">\(D^2u\)</span>. The arrows denote distributional coefficients. The right panel evaluates (9.3) for <span class="math" data-index="126" data-tex="\(j=1,10,100\)">\(j=1,10,100\)</span>, excludes the exact infinite value at <span class="math" data-index="127" data-tex="\(\eta=0\)">\(\eta=0\)</span>, and shows the proper local integral limit <span class="math" data-index="128" data-tex="\(|\eta|-2\)">\(|\eta|-2\)</span>. Its recession support function is <span class="math" data-index="129" data-tex="\(|\eta|\)">\(|\eta|\)</span>, giving the same hull <span class="math" data-index="130" data-tex="\([-1,1]\)">\([-1,1]\)</span> before and after the polynomial operator.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<ol>
+<li>
+<p><strong>Why the exponent cannot depend on the width.</strong> Show that <span class="math" data-index="131" data-tex="\(\delta_1\)">\(\delta_1\)</span> satisfies the strip bound with <span class="math" data-index="132" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span> if one allows <span class="math" data-index="133" data-tex="\(N_m=m\)">\(N_m=m\)</span>, although its singular point is outside <span class="math" data-index="134" data-tex="\(K\)">\(K\)</span>. Show that no fixed <span class="math" data-index="135" data-tex="\(N\)">\(N\)</span> works.</p>
+<p><strong>Solution.</strong> Its transform has modulus <span class="math" data-index="136" data-tex="\(e^{\operatorname{Im}\zeta}\)">\(e^{\operatorname{Im}\zeta}\)</span>, which is at most <span class="math" data-index="137" data-tex="\((1+|\zeta|)^m\)">\((1+|\zeta|)^m\)</span> on the <span class="math" data-index="138" data-tex="\(m\)">\(m\)</span>-th strip. Thus <span class="math" data-index="139" data-tex="\(N_m=m\)">\(N_m=m\)</span> and <span class="math" data-index="140" data-tex="\(C_m=1\)">\(C_m=1\)</span> work. For a fixed <span class="math" data-index="141" data-tex="\(N\)">\(N\)</span>, choose an integer <span class="math" data-index="142" data-tex="\(m&gt;N\)">\(m&gt;N\)</span>, and <span class="math" data-index="143" data-tex="\(\zeta=T+im\log T\)">\(\zeta=T+im\log T\)</span>, <span class="math" data-index="144" data-tex="\(T&gt;2\)">\(T&gt;2\)</span>. These points lie in the <span class="math" data-index="145" data-tex="\(m\)">\(m\)</span>-th strip because <span class="math" data-index="146" data-tex="\(\log T\le\log(1+|\zeta|)\)">\(\log T\le\log(1+|\zeta|)\)</span>. Their transform modulus is <span class="math" data-index="147" data-tex="\(T^m\)">\(T^m\)</span>, while <span class="math" data-index="148" data-tex="\((1+|\zeta|)^N=O(T^N)\)">\((1+|\zeta|)^N=O(T^N)\)</span>, since <span class="math" data-index="149" data-tex="\((\log T)/T\to0\)">\((\log T)/T\to0\)</span>. No fixed <span class="math" data-index="150" data-tex="\(C_m\)">\(C_m\)</span> can bound their ratio. This also confirms the singular point at 1 cannot be placed in <span class="math" data-index="151" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span>.</p>
+</li>
+<li>
+<p><strong>The compact part near the singular carrier.</strong> Explain why the cutoff decomposition in Theorem 1.1 leaves a compact smooth remainder, and why its compact part keeps the original order <span class="math" data-index="152" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Solution.</strong> The cutoff equals one on a neighborhood of every singular point, so <span class="math" data-index="153" data-tex="\((1-\chi)u\)">\((1-\chi)u\)</span> vanishes there. At every other point, <span class="math" data-index="154" data-tex="\(u\)">\(u\)</span> already has a smooth representative and multiplication keeps it smooth. The remainder has support inside the compact ordinary support of <span class="math" data-index="155" data-tex="\(u\)">\(u\)</span>, hence is compact smooth. The derivatives of a product <span class="math" data-index="156" data-tex="\(\chi\varphi\)">\(\chi\varphi\)</span> through order <span class="math" data-index="157" data-tex="\(M\)">\(M\)</span> are finite sums of cutoff derivatives times derivatives of <span class="math" data-index="158" data-tex="\(\varphi\)">\(\varphi\)</span> through order <span class="math" data-index="159" data-tex="\(M\)">\(M\)</span>. They increase the constant in the finite-order bound but introduce no higher derivative of the test. Thus <span class="math" data-index="160" data-tex="\(\chi u\)">\(\chi u\)</span> has order at most <span class="math" data-index="161" data-tex="\(M\)">\(M\)</span>.</p>
+</li>
+<li>
+<p><strong>The Gaussian can grow on a complex contour.</strong> Derive its modulus on <span class="math" data-index="162" data-tex="\(\zeta=\xi+iR\theta\ell\)">\(\zeta=\xi+iR\theta\ell\)</span>, and explain why (3.7) gives a bound independent of <span class="math" data-index="163" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-index="164" data-tex="\(|\theta|=1\)">\(|\theta|=1\)</span>, the real part of <span class="math" data-index="165" data-tex="\(\sum_j\zeta_j^2\)">\(\sum_j\zeta_j^2\)</span> is <span class="math" data-index="166" data-tex="\(|\xi|^2-R^2\ell^2\)">\(|\xi|^2-R^2\ell^2\)</span>; the cross term is purely imaginary. The modulus is <span class="math" data-index="167" data-tex="\(e^{-\varepsilon|\xi|^2+\varepsilon R^2\ell^2}\)">\(e^{-\varepsilon|\xi|^2+\varepsilon R^2\ell^2}\)</span>. Its exponent can be positive near some finite radii. The quantity <span class="math" data-index="168" data-tex="\(R^2\log^2(2+r^2)-r^2\)">\(R^2\log^2(2+r^2)-r^2\)</span> is continuous and tends to <span class="math" data-index="169" data-tex="\(-\infty\)">\(-\infty\)</span>, so its nonnegative supremum <span class="math" data-index="170" data-tex="\(B_R\)">\(B_R\)</span> is finite. For <span class="math" data-index="171" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>, multiplying that quantity by <span class="math" data-index="172" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> gives at most <span class="math" data-index="173" data-tex="\(B_R\)">\(B_R\)</span>, proving the uniform bound <span class="math" data-index="174" data-tex="\(e^{B_R}\)">\(e^{B_R}\)</span>.</p>
+</li>
+<li>
+<p><strong>The exact derivative order of a point mass.</strong> For <span class="math" data-index="175" data-tex="\(D^r\delta_a\)">\(D^r\delta_a\)</span>, prove that the least nonnegative strip exponent is <span class="math" data-index="176" data-tex="\(r\)">\(r\)</span>, and compute its profile's recession function.</p>
+<p><strong>Solution.</strong> The entire modulus is <span class="math" data-index="177" data-tex="\(|\zeta|^r e^{a\operatorname{Im}\zeta}\)">\(|\zeta|^r e^{a\operatorname{Im}\zeta}\)</span>, so exponent <span class="math" data-index="178" data-tex="\(r\)">\(r\)</span> works with constant 1 and carrier <span class="math" data-index="179" data-tex="\(\{a\}\)">\(\{a\}\)</span>. On the real axis it equals <span class="math" data-index="180" data-tex="\(|\xi|^r\)">\(|\xi|^r\)</span>. An exponent <span class="math" data-index="181" data-tex="\(N&lt;r\)">\(N&lt;r\)</span> could not dominate it as <span class="math" data-index="182" data-tex="\(|\xi|\to\infty\)">\(|\xi|\to\infty\)</span>, even on the first strip, so <span class="math" data-index="183" data-tex="\(r\)">\(r\)</span> is least. The profile is <span class="math" data-index="184" data-tex="\(r+a\operatorname{Im}z\)">\(r+a\operatorname{Im}z\)</span>. Its envelope at height <span class="math" data-index="185" data-tex="\(\eta\)">\(\eta\)</span> is <span class="math" data-index="186" data-tex="\(r+a\eta\)">\(r+a\eta\)</span>, and division by the recession parameter removes <span class="math" data-index="187" data-tex="\(r\)">\(r\)</span>, giving <span class="math" data-index="188" data-tex="\(a\eta\)">\(a\eta\)</span>.</p>
+</li>
+<li>
+<p><strong>A quantitative separation budget.</strong> For the vertical carrier in Figure 1, find a uniform gap on the radius-<span class="math" data-index="189" data-tex="\(1/2\)">\(1/2\)</span> neighborhood of <span class="math" data-index="190" data-tex="\((2,0)\)">\((2,0)\)</span>. With <span class="math" data-index="191" data-tex="\(N=2\)">\(N=2\)</span>, <span class="math" data-index="192" data-tex="\(q=3\)">\(q=3\)</span>, <span class="math" data-index="193" data-tex="\(n=2\)">\(n=2\)</span>, give a value of <span class="math" data-index="194" data-tex="\(R\)">\(R\)</span> satisfying the proof's derivative bound.</p>
+<p><strong>Solution.</strong> With <span class="math" data-index="195" data-tex="\(\theta=(1,0)\)">\(\theta=(1,0)\)</span>, <span class="math" data-index="196" data-tex="\(H_K(\theta)=0\)">\(H_K(\theta)=0\)</span>, and every point in that neighborhood has first coordinate greater than <span class="math" data-index="197" data-tex="\(3/2\)">\(3/2\)</span>. Thus <span class="math" data-index="198" data-tex="\(\delta=3/2\)">\(\delta=3/2\)</span> is a valid uniform lower bound. The condition is <span class="math" data-index="199" data-tex="\(2R\delta&gt;N+q+n+1=8\)">\(2R\delta&gt;N+q+n+1=8\)</span>, namely <span class="math" data-index="200" data-tex="\(3R&gt;8\)">\(3R&gt;8\)</span>. Choose <span class="math" data-index="201" data-tex="\(R=3\)">\(R=3\)</span>. Then the derivative majorant has large-radius exponent <span class="math" data-index="202" data-tex="\(N+q-2R\delta=5-9=-4\)">\(N+q-2R\delta=5-9=-4\)</span>, integrable in real dimension 2. This numerical choice uses the stated gap for the whole neighborhood.</p>
+</li>
+<li>
+<p><strong>The empty profile family of sets.</strong> Prove that a compact distribution has no proper escaping profile if and only if it is smooth.</p>
+<p><strong>Solution.</strong> A compact smooth function has uniform collapse on every compact observation set by arbitrary whole-complex polynomial decay. Conversely, if arbitrary rapid real decay failed, choose an escaping real sequence with a fixed finite lower bound for the observed logarithm at <span class="math" data-index="203" data-tex="\(z=0\)">\(z=0\)</span>, as in Theorem 4.1. Uniform collapse on every compact set would contradict that lower bound, so PSH compactness supplies a proper extraction. Thus absence of proper profiles forces arbitrary rapid real decay. Lemma 2.1 gives a smooth representative. The support function for the collapsed profile is <span class="math" data-index="204" data-tex="\(-\infty\)">\(-\infty\)</span>, whereas a proper constant profile has nonempty set <span class="math" data-index="205" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+</li>
+<li>
+<p><strong>Moving observation points need compact control.</strong> Construct continuous functions on a real interval that tend pointwise and in <span class="math" data-index="206" data-tex="\(L^1\)">\(L^1\)</span> to zero but have supremum 1. Explain the role of the PSH Hartogs bound in (4.5).</p>
+<p><strong>Solution.</strong> For <span class="math" data-index="207" data-tex="\(j\ge2\)">\(j\ge2\)</span>, take <span class="math" data-index="208" data-tex="\(g_j(t)=\max(1-8j^2|t-1/j|,0)\)">\(g_j(t)=\max(1-8j^2|t-1/j|,0)\)</span>. Its center is <span class="math" data-index="209" data-tex="\(1/j\)">\(1/j\)</span>, its half-width is <span class="math" data-index="210" data-tex="\(1/(8j^2)\)">\(1/(8j^2)\)</span>, and its supremum is 1. At each fixed nonzero point it eventually vanishes, and at zero it always vanishes. Its integral is the triangle's area <span class="math" data-index="211" data-tex="\(1/(8j^2)\)">\(1/(8j^2)\)</span>, so it tends to zero in <span class="math" data-index="212" data-tex="\(L^1\)">\(L^1\)</span>. The supremum is attained at moving points. These are auxiliary continuous real functions, with no PSH premise. In the hull proof the compact Hartogs comparison supplies the additional PSH control: the supremum of the normalized error on an entire compact ball has upper limit at most <span class="math" data-index="213" data-tex="\(M\)">\(M\)</span>, including its values at the moving <span class="math" data-index="214" data-tex="\(z_j\)">\(z_j\)</span>. That contradicts their lower bound <span class="math" data-index="215" data-tex="\(M+1\)">\(M+1\)</span>.</p>
+</li>
+<li>
+<p><strong>Division keeps the growth order fixed.</strong> Explain why radius-two complex displacement changes the strip width and constant but does not change the polynomial exponent.</p>
+<p><strong>Solution.</strong> If <span class="math" data-index="216" data-tex="\(w=\zeta+t\theta\)">\(w=\zeta+t\theta\)</span>, <span class="math" data-index="217" data-tex="\(|t|\le2\)">\(|t|\le2\)</span>, and <span class="math" data-index="218" data-tex="\(|\zeta|\ge4\)">\(|\zeta|\ge4\)</span>, then (5.3) puts <span class="math" data-index="219" data-tex="\(w\)">\(w\)</span> in the strip of width <span class="math" data-index="220" data-tex="\(2m+3\)">\(2m+3\)</span>. The growth factor satisfies <span class="math" data-index="221" data-tex="\((1+|w|)^N\le3^N(1+|\zeta|)^N\)">\((1+|w|)^N\le3^N(1+|\zeta|)^N\)</span>, and support subadditivity bounds its exponential by <span class="math" data-index="222" data-tex="\(e^{H_K(\operatorname{Im}\zeta)}e^{2r_K}\)">\(e^{H_K(\operatorname{Im}\zeta)}e^{2r_K}\)</span>. The uniform division constant multiplies these fixed factors and <span class="math" data-index="223" data-tex="\(C_{2m+3}\)">\(C_{2m+3}\)</span>. None adds a power of <span class="math" data-index="224" data-tex="\(|\zeta|\)">\(|\zeta|\)</span>. The bounded remaining ball changes only the constant. This supplies the fixed-order premise of the strip criterion for <span class="math" data-index="225" data-tex="\(u\)">\(u\)</span>.</p>
+</li>
+<li>
+<p><strong>The noncompact counterexample.</strong> Compute <span class="math" data-index="226" data-tex="\(D_1(1\otimes\delta_0)\)">\(D_1(1\otimes\delta_0)\)</span>, locate its singular support, and explain the hypotheses needed for Theorem 5.1.</p>
+<p><strong>Solution.</strong> The first factor is constant in <span class="math" data-index="227" data-tex="\(x_1\)">\(x_1\)</span>, so its distributional derivative is zero; consequently <span class="math" data-index="228" data-tex="\(D_1(1\otimes\delta_0)=0\)">\(D_1(1\otimes\delta_0)=0\)</span>. The original distribution is singular on the full line <span class="math" data-index="229" data-tex="\(x_2=0\)">\(x_2=0\)</span>, detected by a shrinking test in <span class="math" data-index="230" data-tex="\(x_2\)">\(x_2\)</span>, and is zero off that line. It is not compactly supported because the first coordinate extends through all of <span class="math" data-index="231" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The theorem requires both compact <span class="math" data-index="232" data-tex="\(u\)">\(u\)</span> and a nonzero polynomial <span class="math" data-index="233" data-tex="\(P\)">\(P\)</span>. It does not require ellipticity; the compact vertical-segment example shows that this stronger condition is unnecessary.</p>
+</li>
+<li>
+<p><strong>Three slope jumps and the Fourier sign.</strong> Derive <span class="math" data-index="234" data-tex="\(D^2(1-|x|)_+\)">\(D^2(1-|x|)_+\)</span>, compute its Fourier transform, and recover its singular hull from the proper profile <span class="math" data-index="235" data-tex="\(|\operatorname{Im}z|-2\)">\(|\operatorname{Im}z|-2\)</span>.</p>
+<p><strong>Solution.</strong> The first derivative has values <span class="math" data-index="236" data-tex="\(0,1,-1,0\)">\(0,1,-1,0\)</span> on the four intervals separated by <span class="math" data-index="237" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>. Its jumps are <span class="math" data-index="238" data-tex="\(1,-2,1\)">\(1,-2,1\)</span>, so its second distributional derivative is <span class="math" data-index="239" data-tex="\(\delta_{-1}-2\delta_0+\delta_1\)">\(\delta_{-1}-2\delta_0+\delta_1\)</span>. Multiplication by <span class="math" data-index="240" data-tex="\(-1\)">\(-1\)</span>, since <span class="math" data-index="241" data-tex="\(D^2=-\partial^2\)">\(D^2=-\partial^2\)</span>, gives (9.2). The transform of that signed sum is <span class="math" data-index="242" data-tex="\(2-e^{i\zeta}-e^{-i\zeta}=2(1-\cos\zeta)\)">\(2-e^{i\zeta}-e^{-i\zeta}=2(1-\cos\zeta)\)</span>, equal to <span class="math" data-index="243" data-tex="\(\zeta^2F_u(\zeta)\)">\(\zeta^2F_u(\zeta)\)</span>. The quotient extends at zero with value 1. Each of the three corners is singular, so their convex hull is <span class="math" data-index="244" data-tex="\([-1,1]\)">\([-1,1]\)</span>. The profile's horizontal envelope is <span class="math" data-index="245" data-tex="\(|\eta|-2\)">\(|\eta|-2\)</span>; its recession is <span class="math" data-index="246" data-tex="\(|\eta|\)">\(|\eta|\)</span>, exactly the support function of that interval.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ol>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/"><em>246B, Notes 2: Some connections with the Fourier transform</em></a>, <em>What's New</em>, 23 January 2021.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983; second edition 1990; reprint 2003.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; second revised printing 1990; reprint 2005.</li>
+</ol>
+<p>The <a href="reproduce/L158/make_figures188.py">figure program</a>, <a href="reproduce/L158/figures/geometry.json">geometry specifications</a>, and <a href="reproduce/L158/check_contours188.py">direct contour calculations</a> accompany the proofs and examples.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0 1.0).</em></p>
+<p>Ordinary support and singular support answer different questions. A compact smooth function can extend far beyond a small region containing every singularity of a distribution. Its Fourier transform still has exponential growth determined by that larger ordinary support. A logarithmic complex strip makes the smooth part arbitrarily small, and thereby detects the convex region containing the singularities.</p>
+<p>Basic references are Terence Tao's <em>Some connections with the Fourier transform</em> and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em> and <em>II</em>. We supply the strip criterion, its full inversion argument, and its two applications here. The preceding <a href="AN02-L157.html#2-the-compactness-and-support-statement">joint logarithmic-frequency lesson</a> supplies the exact compactness and profile conventions. <a href="AN02-L122.html#3-a-bounded-complex-displacement-for-polynomial-division">Compact Fourier division</a> supplies the proved uniform radius-two division bound. <a href="AN02-L153.html#tp2-exact-entire-decay-on-a-fixed-smooth-support">Compact smooth Fourier decay</a> and <a href="AN02-L153.html#tp3-the-complete-logarithmically-shifted-contour">the logarithmic contour identity</a> supply their exact whole-complex estimates and Jacobian. The arguments use finite-order compact-distribution bounds, smooth cutoffs, ordinary Lebesgue integration, and finite-dimensional convex separation.</p>
+<p>Our convention is <span class="math" data-index="247" data-tex="\(F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle\)">\(F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle\)</span>, with inverse factor <span class="math" data-index="248" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>, and <span class="math" data-index="249" data-tex="\(D_j=(1/i)\partial_{x_j}\)">\(D_j=(1/i)\partial_{x_j}\)</span>. The singular support of a distribution is the closed set of points near which it is not represented by a smooth function. For a compact distribution it is compact, possibly empty. The convex hull of the empty set is empty.</p>
+<h2 id="1-a-precise-strip-criterion">1. A precise strip criterion</h2>
+<p>For a nonempty compact convex set <span class="math" data-index="250" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span>, write <span class="math" data-index="251" data-tex="\(H_K(\eta)=\max_{x\in K}x\cdot\eta\)">\(H_K(\eta)=\max_{x\in K}x\cdot\eta\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> Let <span class="math" data-index="252" data-tex="\(u\)">\(u\)</span> be a compact distribution on <span class="math" data-index="253" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="254" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The inclusion <span class="math" data-index="255" data-tex="\(\operatorname{sing\,supp}u\subset K\)">\(\operatorname{sing\,supp}u\subset K\)</span> is equivalent to the existence of a nonnegative integer <span class="math" data-index="256" data-tex="\(N\)">\(N\)</span>, independent of <span class="math" data-index="257" data-tex="\(m\)">\(m\)</span>, and finite constants <span class="math" data-index="258" data-tex="\(C_m\)">\(C_m\)</span> such that</p>
+<span class="math math-display" id="eq-1.1" data-index="259" data-tex="\[
+|F_u(\zeta)|\le C_m(1+|\zeta|)^N e^{H_K(\operatorname{Im}\zeta)}
+\quad\text{whenever}\quad
+|\operatorname{Im}\zeta|\le m\log(1+|\zeta|),
+\qquad m=1,2,\ldots.
+\tag{1.1}
+\]">\[
+|F_u(\zeta)|\le C_m(1+|\zeta|)^N e^{H_K(\operatorname{Im}\zeta)}
+\quad\text{whenever}\quad
+|\operatorname{Im}\zeta|\le m\log(1+|\zeta|),
+\qquad m=1,2,\ldots.
+\tag{1.1}
+\]</span>
+<p>The constants <span class="math" data-index="260" data-tex="\(C_m\)">\(C_m\)</span> may grow with the width <span class="math" data-index="261" data-tex="\(m\)">\(m\)</span>. The exponent <span class="math" data-index="262" data-tex="\(N\)">\(N\)</span> must stay fixed as the width increases.</p>
+<p><strong>Necessity.</strong> Choose a finite-order bound of order <span class="math" data-index="263" data-tex="\(M\)">\(M\)</span> for <span class="math" data-index="264" data-tex="\(u\)">\(u\)</span> on a fixed compact neighborhood of its ordinary support. For a chosen <span class="math" data-index="265" data-tex="\(m\ge1\)">\(m\ge1\)</span>, take <span class="math" data-index="266" data-tex="\(\delta=1/(m+1)\)">\(\delta=1/(m+1)\)</span>, and a compact smooth cutoff <span class="math" data-index="267" data-tex="\(\chi\)">\(\chi\)</span> equal to one near <span class="math" data-index="268" data-tex="\(K\)">\(K\)</span>, supported in <span class="math" data-index="269" data-tex="\(K+\delta\overline B\)">\(K+\delta\overline B\)</span>. Such a cutoff can be made explicitly by convolving the indicator of the <span class="math" data-index="270" data-tex="\(\delta/2\)">\(\delta/2\)</span> neighborhood of <span class="math" data-index="271" data-tex="\(K\)">\(K\)</span> with a nonnegative radius-<span class="math" data-index="272" data-tex="\(\delta/4\)">\(\delta/4\)</span> smooth kernel of integral one. It equals one on the <span class="math" data-index="273" data-tex="\(\delta/4\)">\(\delta/4\)</span> neighborhood and is supported in the <span class="math" data-index="274" data-tex="\(3\delta/4\)">\(3\delta/4\)</span> neighborhood.</p>
+<p>The kernel can be the normalized bump <span class="math" data-index="275" data-tex="\(e^{-1/(1-|x|^2)}\)">\(e^{-1/(1-|x|^2)}\)</span> on <span class="math" data-index="276" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>, zero outside, scaled to the stated radius. Its derivatives are finite sums of a polynomial times inverse powers of <span class="math" data-index="277" data-tex="\(1-|x|^2\)">\(1-|x|^2\)</span> times the exponential. Since <span class="math" data-index="278" data-tex="\(t^{-j}e^{-1/t}\to0\)">\(t^{-j}e^{-1/t}\to0\)</span> for every <span class="math" data-index="279" data-tex="\(j\)">\(j\)</span> as <span class="math" data-index="280" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, all derivatives extend by zero. Its positive finite integral gives the normalization.</p>
+<p>Set <span class="math" data-index="281" data-tex="\(u_1=\chi u\)">\(u_1=\chi u\)</span> and <span class="math" data-index="282" data-tex="\(b=(1-\chi)u\)">\(b=(1-\chi)u\)</span>. The second term is smooth near every point: near a singular point its multiplier is zero, and away from the singular support <span class="math" data-index="283" data-tex="\(u\)">\(u\)</span> already is smooth. It is also compactly supported, so <span class="math" data-index="284" data-tex="\(b\in C_c^\infty\)">\(b\in C_c^\infty\)</span>. The distribution <span class="math" data-index="285" data-tex="\(u_1\)">\(u_1\)</span> retains order at most <span class="math" data-index="286" data-tex="\(M\)">\(M\)</span>; the cutoff derivatives change its bound's constant. Evaluating the finite-order bound on <span class="math" data-index="287" data-tex="\(\chi e^{-ix\cdot\zeta}\)">\(\chi e^{-ix\cdot\zeta}\)</span> gives</p>
+<span class="math math-display" id="eq-1.2" data-index="288" data-tex="\[
+|F_{u_1}(\zeta)|\le A_m(1+|\zeta|)^M
+ e^{H_K(\operatorname{Im}\zeta)+\delta|\operatorname{Im}\zeta|}
+\le A_m(1+|\zeta|)^{M+1}e^{H_K(\operatorname{Im}\zeta)}
+\tag{1.2}
+\]">\[
+|F_{u_1}(\zeta)|\le A_m(1+|\zeta|)^M
+ e^{H_K(\operatorname{Im}\zeta)+\delta|\operatorname{Im}\zeta|}
+\le A_m(1+|\zeta|)^{M+1}e^{H_K(\operatorname{Im}\zeta)}
+\tag{1.2}
+\]</span>
+<p>on the strip in (1.1), because <span class="math" data-index="289" data-tex="\(\delta m&lt;1\)">\(\delta m&lt;1\)</span>.</p>
+<p>Let <span class="math" data-index="290" data-tex="\(S_b\)">\(S_b\)</span> be a compact carrier of <span class="math" data-index="291" data-tex="\(b\)">\(b\)</span>, <span class="math" data-index="292" data-tex="\(r_b=\max_{x\in S_b}|x|\)">\(r_b=\max_{x\in S_b}|x|\)</span>, and <span class="math" data-index="293" data-tex="\(r_K=\max_{x\in K}|x|\)">\(r_K=\max_{x\in K}|x|\)</span>. If <span class="math" data-index="294" data-tex="\(b=0\)">\(b=0\)</span>, omit this term. Otherwise whole-complex smooth decay gives, for every integer <span class="math" data-index="295" data-tex="\(L\ge0\)">\(L\ge0\)</span>,</p>
+<span class="math math-display" id="eq-1.3" data-index="296" data-tex="\[
+|F_b(\zeta)|e^{-H_K(\operatorname{Im}\zeta)}
+\le B_L(1+|\zeta|)^{-L}
+ e^{(r_b+r_K)|\operatorname{Im}\zeta|}
+\le B_L(1+|\zeta|)^{-L+m(r_b+r_K)}.
+\tag{1.3}
+\]">\[
+|F_b(\zeta)|e^{-H_K(\operatorname{Im}\zeta)}
+\le B_L(1+|\zeta|)^{-L}
+ e^{(r_b+r_K)|\operatorname{Im}\zeta|}
+\le B_L(1+|\zeta|)^{-L+m(r_b+r_K)}.
+\tag{1.3}
+\]</span>
+<p>Choose <span class="math" data-index="297" data-tex="\(L&gt;m(r_b+r_K)\)">\(L&gt;m(r_b+r_K)\)</span>. This term is bounded by a constant on the strip. Add it to (1.2) and take <span class="math" data-index="298" data-tex="\(N=M+1\)">\(N=M+1\)</span>. The order is independent of <span class="math" data-index="299" data-tex="\(m\)">\(m\)</span>, while both cutoff and smooth-decay constants may depend on <span class="math" data-index="300" data-tex="\(m\)">\(m\)</span>. This proves necessity, including a distribution that is smooth everywhere.</p>
+<p>We prove sufficiency after establishing the inversion step with its exact normalization.</p>
+<h2 id="2-gaussian-inversion-for-a-compact-distribution">2. Gaussian inversion for a compact distribution</h2>
+<p>Define</p>
+<span class="math math-display" id="eq-2.1" data-index="301" data-tex="\[
+q_\varepsilon(x)=(4\pi\varepsilon)^{-n/2}e^{-|x|^2/(4\varepsilon)},
+\qquad
+u_\varepsilon(x)=\langle u(y),q_\varepsilon(x-y)\rangle,
+\qquad \varepsilon&gt;0.
+\tag{2.1}
+\]">\[
+q_\varepsilon(x)=(4\pi\varepsilon)^{-n/2}e^{-|x|^2/(4\varepsilon)},
+\qquad
+u_\varepsilon(x)=\langle u(y),q_\varepsilon(x-y)\rangle,
+\qquad \varepsilon&gt;0.
+\tag{2.1}
+\]</span>
+<p>These pairings use a fixed cutoff equal to one near the compact support of <span class="math" data-index="302" data-tex="\(u\)">\(u\)</span>. Differentiating in <span class="math" data-index="303" data-tex="\(x\)">\(x\)</span> is legitimate by the finite-order distribution bound on that fixed support, so <span class="math" data-index="304" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> is smooth.</p>
+<p>We recall the Gaussian Fourier pair directly. In one dimension the integral of <span class="math" data-index="305" data-tex="\(e^{-t^2}\)">\(e^{-t^2}\)</span> is <span class="math" data-index="306" data-tex="\(\sqrt\pi\)">\(\sqrt\pi\)</span>: square the positive integral, apply Tonelli, and use polar coordinates to obtain <span class="math" data-index="307" data-tex="\(\int_0^{2\pi}\int_0^\infty e^{-r^2}r\,dr\,d\theta=\pi\)">\(\int_0^{2\pi}\int_0^\infty e^{-r^2}r\,dr\,d\theta=\pi\)</span>. If <span class="math" data-index="308" data-tex="\(G(\xi)=\int e^{-x^2/(4\varepsilon)}e^{-ix\xi}\,dx\)">\(G(\xi)=\int e^{-x^2/(4\varepsilon)}e^{-ix\xi}\,dx\)</span>, differentiation and integration by parts give <span class="math" data-index="309" data-tex="\(G&#x27;(\xi)=-2\varepsilon\xi G(\xi)\)">\(G&#x27;(\xi)=-2\varepsilon\xi G(\xi)\)</span>, with <span class="math" data-index="310" data-tex="\(G(0)=\sqrt{4\pi\varepsilon}\)">\(G(0)=\sqrt{4\pi\varepsilon}\)</span>. Thus <span class="math" data-index="311" data-tex="\(F_{q_\varepsilon}(\xi)=e^{-\varepsilon\xi^2}\)">\(F_{q_\varepsilon}(\xi)=e^{-\varepsilon\xi^2}\)</span>. The same computation with the roles reversed gives its inverse integral. Products give all <span class="math" data-index="312" data-tex="\(n\)">\(n\)</span> coordinates and yield</p>
+<span class="math math-display" id="eq-2.2" data-index="313" data-tex="\[
+u_\varepsilon(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+ e^{ix\cdot\xi}F_u(\xi)e^{-\varepsilon|\xi|^2}\,d\xi.
+\tag{2.2}
+\]">\[
+u_\varepsilon(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+ e^{ix\cdot\xi}F_u(\xi)e^{-\varepsilon|\xi|^2}\,d\xi.
+\tag{2.2}
+\]</span>
+<p>To justify evaluation of <span class="math" data-index="314" data-tex="\(u\)">\(u\)</span> inside the inverse integral, every <span class="math" data-index="315" data-tex="\(y\)">\(y\)</span>-derivative through its fixed order contributes a polynomial in <span class="math" data-index="316" data-tex="\(\xi\)">\(\xi\)</span>; the Gaussian majorizes every such polynomial. The resulting test functions and their derivatives converge uniformly on the fixed compact support. The distribution bound therefore permits the interchange. No pairing with a second nonsmooth distribution is used.</p>
+<p>Also <span class="math" data-index="317" data-tex="\(u_\varepsilon\to u\)">\(u_\varepsilon\to u\)</span> in distributions. For a compact smooth test <span class="math" data-index="318" data-tex="\(\varphi\)">\(\varphi\)</span>, its pairing is <span class="math" data-index="319" data-tex="\(\langle u,q_\varepsilon*\varphi\rangle\)">\(\langle u,q_\varepsilon*\varphi\rangle\)</span>. The test function need only be considered on a fixed compact neighborhood of <span class="math" data-index="320" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>, using the same cutoff. Each derivative through the finite order of <span class="math" data-index="321" data-tex="\(u\)">\(u\)</span> converges there uniformly to the corresponding derivative of <span class="math" data-index="322" data-tex="\(\varphi\)">\(\varphi\)</span>. Indeed, split the convolution into a small ball, where uniform continuity controls the difference, and its Gaussian tail, whose mass tends to zero. The finite-order bound proves distributional convergence.</p>
+<p>An immediate consequence will be useful:</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-index="323" data-tex="\(F_u\)">\(F_u\)</span> decreases faster than every polynomial on <span class="math" data-index="324" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, then <span class="math" data-index="325" data-tex="\(u\in C_c^\infty\)">\(u\in C_c^\infty\)</span>.</p>
+<p><strong>Proof.</strong> For every derivative order <span class="math" data-index="326" data-tex="\(q\)">\(q\)</span>, the inverse integral <span class="math" data-index="327" data-tex="\((2\pi)^{-n}\int e^{ix\cdot\xi}F_u(\xi)\,d\xi\)">\((2\pi)^{-n}\int e^{ix\cdot\xi}F_u(\xi)\,d\xi\)</span> is absolutely convergent after multiplying by each monomial <span class="math" data-index="328" data-tex="\(\xi^\alpha\)">\(\xi^\alpha\)</span>, <span class="math" data-index="329" data-tex="\(|\alpha|\le q\)">\(|\alpha|\le q\)</span>. Dominated convergence differentiates it to order <span class="math" data-index="330" data-tex="\(q\)">\(q\)</span> and removes the Gaussian in (2.2), uniformly on compact <span class="math" data-index="331" data-tex="\(x\)">\(x\)</span>-sets. The limit represents <span class="math" data-index="332" data-tex="\(u\)">\(u\)</span> by its distributional convergence. Since <span class="math" data-index="333" data-tex="\(q\)">\(q\)</span> was arbitrary it is smooth, and its distributional compact support makes it compactly supported as a smooth function. <span class="math" data-index="334" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-moving-the-gaussian-contour-and-removing-the-regularization">3. Moving the Gaussian contour and removing the regularization</h2>
+<p><strong>Sufficiency in Theorem 1.1.</strong> Fix <span class="math" data-index="335" data-tex="\(x_0\notin K\)">\(x_0\notin K\)</span>. By the closest-point separation argument, there is a real unit vector <span class="math" data-index="336" data-tex="\(\theta\)">\(\theta\)</span> and a bounded open neighborhood <span class="math" data-index="337" data-tex="\(U\)">\(U\)</span> of <span class="math" data-index="338" data-tex="\(x_0\)">\(x_0\)</span>, with a number <span class="math" data-index="339" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, such that</p>
+<span class="math math-display" id="eq-3.1" data-index="340" data-tex="\[
+x\cdot\theta-H_K(\theta)\ge\delta\qquad(x\in U).
+\tag{3.1}
+\]">\[
+x\cdot\theta-H_K(\theta)\ge\delta\qquad(x\in U).
+\tag{3.1}
+\]</span>
+<p>For example choose a closest point <span class="math" data-index="341" data-tex="\(p\in K\)">\(p\in K\)</span>, take <span class="math" data-index="342" data-tex="\(\theta=(x_0-p)/|x_0-p|\)">\(\theta=(x_0-p)/|x_0-p|\)</span>, and shrink <span class="math" data-index="343" data-tex="\(U\)">\(U\)</span> until half the strictly positive gap remains.</p>
+<p>Write <span class="math" data-index="344" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>, <span class="math" data-index="345" data-tex="\(\ell(\xi)=\log(2+r^2)\)">\(\ell(\xi)=\log(2+r^2)\)</span>. For <span class="math" data-index="346" data-tex="\(R\ge2\)">\(R\ge2\)</span> and <span class="math" data-index="347" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>, use the complex parametrization</p>
+<span class="math math-display" id="eq-3.2" data-index="348" data-tex="\[
+\zeta_t(\xi)=\xi+i tR\theta\,\ell(\xi),\qquad
+J_t(\xi)=1+i tR\theta\cdot\nabla\ell(\xi),\qquad
+|J_t|\le1+R.
+\tag{3.2}
+\]">\[
+\zeta_t(\xi)=\xi+i tR\theta\,\ell(\xi),\qquad
+J_t(\xi)=1+i tR\theta\cdot\nabla\ell(\xi),\qquad
+|J_t|\le1+R.
+\tag{3.2}
+\]</span>
+<p>The determinant formula is the rank-one identity
+<span class="math" data-index="349" data-tex="\(\det(I+i tR\theta(\nabla\ell)^{\mathsf T})=1+i tR\theta\cdot\nabla\ell\)">\(\det(I+i tR\theta(\nabla\ell)^{\mathsf T})=1+i tR\theta\cdot\nabla\ell\)</span>.
+Also <span class="math" data-index="350" data-tex="\(|\nabla\ell|=2r/(2+r^2)\le1\)">\(|\nabla\ell|=2r/(2+r^2)\le1\)</span>. For any entire <span class="math" data-index="351" data-tex="\(A\)">\(A\)</span>, the exact homotopy identity proved in the logarithmic-contour lesson is</p>
+<span class="math math-display" id="eq-3.3" data-index="352" data-tex="\[
+\frac{\partial}{\partial t}\big[A(\zeta_t)J_t\big]
+=\sum_{j=1}^n\frac{\partial}{\partial\xi_j}
+ \big[iR\theta_j\ell(\xi)A(\zeta_t)\big].
+\tag{3.3}
+\]">\[
+\frac{\partial}{\partial t}\big[A(\zeta_t)J_t\big]
+=\sum_{j=1}^n\frac{\partial}{\partial\xi_j}
+ \big[iR\theta_j\ell(\xi)A(\zeta_t)\big].
+\tag{3.3}
+\]</span>
+<p>Take <span class="math" data-index="353" data-tex="\(A(\zeta)=e^{ix\cdot\zeta}F_u(\zeta)e^{-\varepsilon\sum_j\zeta_j^2}\)">\(A(\zeta)=e^{ix\cdot\zeta}F_u(\zeta)e^{-\varepsilon\sum_j\zeta_j^2}\)</span>. Integrate (3.3) over <span class="math" data-index="354" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span> and a real cube <span class="math" data-index="355" data-tex="\([-T,T]^n\)">\([-T,T]^n\)</span>. The boundary terms vanish as <span class="math" data-index="356" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>. Here is the needed bound: the ordinary compact-support estimate for <span class="math" data-index="357" data-tex="\(F_u\)">\(F_u\)</span> is polynomial times <span class="math" data-index="358" data-tex="\(e^{H_{\operatorname{supp}u}(\operatorname{Im}\zeta_t)}\)">\(e^{H_{\operatorname{supp}u}(\operatorname{Im}\zeta_t)}\)</span>; both that exponential and the <span class="math" data-index="359" data-tex="\(x\)">\(x\)</span>-exponential grow at most like a fixed power of <span class="math" data-index="360" data-tex="\(T\)">\(T\)</span> on the cube faces, since <span class="math" data-index="361" data-tex="\(\ell=O(\log T)\)">\(\ell=O(\log T)\)</span>. The modulus of the Gaussian is</p>
+<span class="math math-display" id="eq-3.4" data-index="362" data-tex="\[
+\left|e^{-\varepsilon\sum_j\zeta_{t,j}^2}\right|
+=e^{-\varepsilon r^2+\varepsilon t^2R^2\ell(\xi)^2}.
+\tag{3.4}
+\]">\[
+\left|e^{-\varepsilon\sum_j\zeta_{t,j}^2}\right|
+=e^{-\varepsilon r^2+\varepsilon t^2R^2\ell(\xi)^2}.
+\tag{3.4}
+\]</span>
+<p>On a face <span class="math" data-index="363" data-tex="\(r\ge T\)">\(r\ge T\)</span>, this is bounded by <span class="math" data-index="364" data-tex="\(e^{-\varepsilon T^2+O(\log^2T)}\)">\(e^{-\varepsilon T^2+O(\log^2T)}\)</span>, uniformly in <span class="math" data-index="365" data-tex="\(t\)">\(t\)</span>, for fixed <span class="math" data-index="366" data-tex="\(R,\varepsilon&gt;0\)">\(R,\varepsilon&gt;0\)</span>. It dominates the polynomial factors, the face area, and the additional <span class="math" data-index="367" data-tex="\(\ell\)">\(\ell\)</span> in the boundary flux. The same bound gives absolute convergence of the interior integrals at each <span class="math" data-index="368" data-tex="\(t\)">\(t\)</span>. Equation (2.2) therefore becomes</p>
+<span class="math math-display" id="eq-3.5" data-index="369" data-tex="\[
+u_\varepsilon(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+ e^{ix\cdot\zeta_1(\xi)}F_u(\zeta_1(\xi))
+ e^{-\varepsilon\sum_j\zeta_{1,j}(\xi)^2}J_1(\xi)\,d\xi.
+\tag{3.5}
+\]">\[
+u_\varepsilon(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+ e^{ix\cdot\zeta_1(\xi)}F_u(\zeta_1(\xi))
+ e^{-\varepsilon\sum_j\zeta_{1,j}(\xi)^2}J_1(\xi)\,d\xi.
+\tag{3.5}
+\]</span>
+<p>This was a deformation of an entire integrand with its exact complex Jacobian; it introduced no logarithm of the Fourier transform.</p>
+<p>The final contour lies in one of the strips in (1.1). For <span class="math" data-index="370" data-tex="\(r\ge1\)">\(r\ge1\)</span>, <span class="math" data-index="371" data-tex="\(\ell\le2\log(1+r)\)">\(\ell\le2\log(1+r)\)</span>, so <span class="math" data-index="372" data-tex="\(R\ell\le2R\log(1+|\zeta_1|)\)">\(R\ell\le2R\log(1+|\zeta_1|)\)</span>. For <span class="math" data-index="373" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, <span class="math" data-index="374" data-tex="\(\ell\le\log3\)">\(\ell\le\log3\)</span> and <span class="math" data-index="375" data-tex="\(|\zeta_1|\ge R\ell\ge2\log2&gt;1\)">\(|\zeta_1|\ge R\ell\ge2\log2&gt;1\)</span>; hence <span class="math" data-index="376" data-tex="\(R\ell\le R\log3&lt;2R\log(1+|\zeta_1|)\)">\(R\ell\le R\log3&lt;2R\log(1+|\zeta_1|)\)</span>. Thus <span class="math" data-index="377" data-tex="\(m=\lceil2R\rceil\)">\(m=\lceil2R\rceil\)</span> suffices for the whole contour.</p>
+<p>For <span class="math" data-index="378" data-tex="\(x\in U\)">\(x\in U\)</span>, the Fourier bound and (3.1) now give</p>
+<span class="math math-display" id="eq-3.6" data-index="379" data-tex="\[
+\left|e^{ix\cdot\zeta_1}F_u(\zeta_1)\right|
+\le C_{\lceil2R\rceil}(1+|\zeta_1|)^N
+ e^{-R\delta\ell(\xi)}.
+\tag{3.6}
+\]">\[
+\left|e^{ix\cdot\zeta_1}F_u(\zeta_1)\right|
+\le C_{\lceil2R\rceil}(1+|\zeta_1|)^N
+ e^{-R\delta\ell(\xi)}.
+\tag{3.6}
+\]</span>
+<p>For fixed <span class="math" data-index="380" data-tex="\(R\)">\(R\)</span>, <span class="math" data-index="381" data-tex="\(1+|\zeta_1|\le c_R(1+r)\)">\(1+|\zeta_1|\le c_R(1+r)\)</span>, because <span class="math" data-index="382" data-tex="\(\ell/(1+r)\)">\(\ell/(1+r)\)</span> is bounded. Multiplication by <span class="math" data-index="383" data-tex="\(\zeta_1^\alpha\)">\(\zeta_1^\alpha\)</span> after an <span class="math" data-index="384" data-tex="\(x\)">\(x\)</span>-derivative therefore costs at most a factor <span class="math" data-index="385" data-tex="\(c_{R,\alpha}(1+r)^{|\alpha|}\)">\(c_{R,\alpha}(1+r)^{|\alpha|}\)</span>. The exponential in (3.6) is <span class="math" data-index="386" data-tex="\((2+r^2)^{-R\delta}\)">\((2+r^2)^{-R\delta}\)</span>.</p>
+<p>The Gaussian has a bound independent of <span class="math" data-index="387" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>:</p>
+<span class="math math-display" id="eq-3.7" data-index="388" data-tex="\[
+\left|e^{-\varepsilon\sum_j\zeta_{1,j}^2}\right|
+\le e^{B_R},\qquad
+B_R=\max\!\left(0,\sup_{r\ge0}
+ \{R^2\log^2(2+r^2)-r^2\}\right)&lt;\infty.
+\tag{3.7}
+\]">\[
+\left|e^{-\varepsilon\sum_j\zeta_{1,j}^2}\right|
+\le e^{B_R},\qquad
+B_R=\max\!\left(0,\sup_{r\ge0}
+ \{R^2\log^2(2+r^2)-r^2\}\right)&lt;\infty.
+\tag{3.7}
+\]</span>
+<p>Finiteness follows from the subquadratic growth of <span class="math" data-index="389" data-tex="\(\log^2(2+r^2)\)">\(\log^2(2+r^2)\)</span>. Choose any integer derivative order <span class="math" data-index="390" data-tex="\(q\ge0\)">\(q\ge0\)</span>, then choose <span class="math" data-index="391" data-tex="\(R\ge2\)">\(R\ge2\)</span> such that <span class="math" data-index="392" data-tex="\(2R\delta&gt;N+q+n+1\)">\(2R\delta&gt;N+q+n+1\)</span>. Equations (3.2), (3.6) and (3.7) give an integrable bound for (3.5) and for every derivative through order <span class="math" data-index="393" data-tex="\(q\)">\(q\)</span>, uniformly for <span class="math" data-index="394" data-tex="\(x\in U\)">\(x\in U\)</span> and <span class="math" data-index="395" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>. Dominated convergence removes the Gaussian and proves convergence in <span class="math" data-index="396" data-tex="\(C^q\)">\(C^q\)</span> on every compact subset of <span class="math" data-index="397" data-tex="\(U\)">\(U\)</span> to</p>
+<span class="math math-display" id="eq-3.8" data-index="398" data-tex="\[
+g_R(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+ e^{ix\cdot\zeta_1(\xi)}F_u(\zeta_1(\xi))J_1(\xi)\,d\xi.
+\tag{3.8}
+\]">\[
+g_R(x)=(2\pi)^{-n}\int_{\mathbb R^n}
+ e^{ix\cdot\zeta_1(\xi)}F_u(\zeta_1(\xi))J_1(\xi)\,d\xi.
+\tag{3.8}
+\]</span>
+<p>Uniformity follows by taking the supremum of the absolute difference on each compact <span class="math" data-index="399" data-tex="\(x\)">\(x\)</span>-set inside the same integrable bound; the Gaussian factor tending to one is independent of <span class="math" data-index="400" data-tex="\(x\)">\(x\)</span>. The derivative integrals also show that <span class="math" data-index="401" data-tex="\(g_R\)">\(g_R\)</span> is <span class="math" data-index="402" data-tex="\(C^q\)">\(C^q\)</span>.</p>
+<p>Since <span class="math" data-index="403" data-tex="\(u_\varepsilon\to u\)">\(u_\varepsilon\to u\)</span> in distributions, <span class="math" data-index="404" data-tex="\(g_R\)">\(g_R\)</span> represents <span class="math" data-index="405" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="406" data-tex="\(U\)">\(U\)</span>. Different choices of <span class="math" data-index="407" data-tex="\(R\)">\(R\)</span> give the same representative: two continuous functions representing the same distribution agree almost everywhere, then everywhere. For each <span class="math" data-index="408" data-tex="\(q\)">\(q\)</span> we can choose <span class="math" data-index="409" data-tex="\(R\)">\(R\)</span> large enough, so this representative is smooth. The point <span class="math" data-index="410" data-tex="\(x_0\notin K\)">\(x_0\notin K\)</span> was arbitrary. Therefore <span class="math" data-index="411" data-tex="\(\operatorname{sing\,supp}u\subset K\)">\(\operatorname{sing\,supp}u\subset K\)</span>, completing Theorem 1.1. <span class="math" data-index="412" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-hull-recovered-from-all-logarithmic-profiles">4. The hull recovered from all logarithmic profiles</h2>
+<p>Use the family <span class="math" data-index="413" data-tex="\(\mathcal J(u)\)">\(\mathcal J(u)\)</span> of support functions defined and proved in the preceding joint-frequency lesson. Each member comes from an escaping real frequency sequence and either a proper PSH profile or the collapsed profile. Let <span class="math" data-index="414" data-tex="\(S=\operatorname{sing\,supp}u\)">\(S=\operatorname{sing\,supp}u\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> With <span class="math" data-index="415" data-tex="\(H_\varnothing\equiv-\infty\)">\(H_\varnothing\equiv-\infty\)</span>,</p>
+<span class="math math-display" id="eq-4.1" data-index="416" data-tex="\[
+H_{\operatorname{conv}S}(\eta)
+=\sup_{h\in\mathcal J(u)}h(\eta)
+\qquad(\eta\in\mathbb R^n).
+\tag{4.1}
+\]">\[
+H_{\operatorname{conv}S}(\eta)
+=\sup_{h\in\mathcal J(u)}h(\eta)
+\qquad(\eta\in\mathbb R^n).
+\tag{4.1}
+\]</span>
+<p>Equivalently, when <span class="math" data-index="417" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>, its convex hull is the closed convex hull of the union of the compact sets associated with the proper profiles.</p>
+<p>The convex hull of a nonempty compact set in <span class="math" data-index="418" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is compact. To recall why without presupposing a closure, a convex combination with more than <span class="math" data-index="419" data-tex="\(n+1\)">\(n+1\)</span> points has a linear dependence among their augmented vectors <span class="math" data-index="420" data-tex="\((x_j,1)\)">\((x_j,1)\)</span>. The dependence has coefficients of both signs, since their sum is zero. Subtract a multiple of it from the nonnegative combination coefficients, choosing the largest multiple that keeps them nonnegative. At least one coefficient becomes zero, while the sum and the represented point stay unchanged. Repeating gives at most <span class="math" data-index="421" data-tex="\(n+1\)">\(n+1\)</span> points. The convex hull is therefore the continuous image of the compact product of <span class="math" data-index="422" data-tex="\(n+1\)">\(n+1\)</span> copies of the set and the coefficient simplex, and is compact.</p>
+<p><strong>Proof of the upper inequality.</strong> If <span class="math" data-index="423" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>, use Theorem 1.1 with <span class="math" data-index="424" data-tex="\(K=\operatorname{conv}S\)">\(K=\operatorname{conv}S\)</span>. On a compact observation set <span class="math" data-index="425" data-tex="\(|z|\le A\)">\(|z|\le A\)</span>, the points <span class="math" data-index="426" data-tex="\(\zeta=\xi+(\log|\xi|)z\)">\(\zeta=\xi+(\log|\xi|)z\)</span> eventually belong to the strip with some fixed integer <span class="math" data-index="427" data-tex="\(m&gt;A+1\)">\(m&gt;A+1\)</span>: <span class="math" data-index="428" data-tex="\(|\zeta|\ge|\xi|-A\log|\xi|\)">\(|\zeta|\ge|\xi|-A\log|\xi|\)</span>, while <span class="math" data-index="429" data-tex="\(|\operatorname{Im}\zeta|\le A\log|\xi|\)">\(|\operatorname{Im}\zeta|\le A\log|\xi|\)</span>. Dividing the logarithm of (1.1) by <span class="math" data-index="430" data-tex="\(\log|\xi|\)">\(\log|\xi|\)</span> gives, uniformly on that observation set,</p>
+<span class="math math-display" id="eq-4.2" data-index="431" data-tex="\[
+L_u(z,\xi)\le N+H_K(\operatorname{Im}z)+o(1).
+\tag{4.2}
+\]">\[
+L_u(z,\xi)\le N+H_K(\operatorname{Im}z)+o(1).
+\tag{4.2}
+\]</span>
+<p>Every proper profile limit therefore obeys <span class="math" data-index="432" data-tex="\(v(z)\le N+H_K(\operatorname{Im}z)\)">\(v(z)\le N+H_K(\operatorname{Im}z)\)</span>. As in the preceding compactness proof, local <span class="math" data-index="433" data-tex="\(L^1\)">\(L^1\)</span> convergence gives this almost everywhere, and positive radial recovery gives it at every point. Taking the horizontal envelope and then its recession proves <span class="math" data-index="434" data-tex="\(h_v\le H_K\)">\(h_v\le H_K\)</span>. The collapsed function also satisfies this inequality. Thus the right side of (4.1) is at most its left side.</p>
+<p>If <span class="math" data-index="435" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, <span class="math" data-index="436" data-tex="\(u\)">\(u\)</span> is compact smooth, so the preceding smooth-collapse lemma makes <span class="math" data-index="437" data-tex="\(\mathcal J(u)=\{-\infty\}\)">\(\mathcal J(u)=\{-\infty\}\)</span>. Both sides of (4.1) are identically <span class="math" data-index="438" data-tex="\(-\infty\)">\(-\infty\)</span>, including at <span class="math" data-index="439" data-tex="\(\eta=0\)">\(\eta=0\)</span>. This covers the zero distribution too.</p>
+<p><strong>Proof of the reverse inequality.</strong> Suppose <span class="math" data-index="440" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>. There must be a proper profile. Otherwise failure of arbitrary rapid real decay would supply an escaping sequence <span class="math" data-index="441" data-tex="\(\xi_j\)">\(\xi_j\)</span> and a finite <span class="math" data-index="442" data-tex="\(A\)">\(A\)</span> such that <span class="math" data-index="443" data-tex="\(L_u(0,\xi_j)\ge-A\)">\(L_u(0,\xi_j)\ge-A\)</span>. To justify that implication precisely, if <span class="math" data-index="444" data-tex="\(F_u\)">\(F_u\)</span> were not bounded by every inverse polynomial, for some integer <span class="math" data-index="445" data-tex="\(p\)">\(p\)</span> the quantity <span class="math" data-index="446" data-tex="\((1+|\xi|)^p|F_u(\xi)|\)">\((1+|\xi|)^p|F_u(\xi)|\)</span> would be unbounded. It is bounded on finite balls, so choose an escaping sequence on which it exceeds 1. Dividing its logarithm gives a fixed finite lower bound for <span class="math" data-index="447" data-tex="\(L_u(0,\xi_j)\)">\(L_u(0,\xi_j)\)</span>, eventually for example <span class="math" data-index="448" data-tex="\(-2p\)">\(-2p\)</span>. Such a sequence cannot have a locally uniform collapsed extraction, so PSH compactness supplies a proper profile. If every profile were collapsed, therefore, <span class="math" data-index="449" data-tex="\(F_u\)">\(F_u\)</span> would have arbitrary rapid real decay and Lemma 2.1 would make <span class="math" data-index="450" data-tex="\(S\)">\(S\)</span> empty, a contradiction.</p>
+<p>Let <span class="math" data-index="451" data-tex="\(D\)">\(D\)</span> be the closed convex hull of the union of all proper profile sets. It is nonempty. Every such set lies inside a fixed compact convex carrier <span class="math" data-index="452" data-tex="\(K_0\)">\(K_0\)</span> of <span class="math" data-index="453" data-tex="\(u\)">\(u\)</span>, by the preceding compactness theorem. Hence <span class="math" data-index="454" data-tex="\(D\subset K_0\)">\(D\subset K_0\)</span> and is compact. Set</p>
+<span class="math math-display" id="eq-4.3" data-index="455" data-tex="\[
+G(\eta)=H_D(\eta)=\sup_{h\in\mathcal J(u)}h(\eta).
+\tag{4.3}
+\]">\[
+G(\eta)=H_D(\eta)=\sup_{h\in\mathcal J(u)}h(\eta).
+\tag{4.3}
+\]</span>
+<p>Equality holds because convex combinations and closure do not change a supremum of continuous linear functionals, and the collapsed member contributes nothing to a nonempty finite supremum. In particular <span class="math" data-index="456" data-tex="\(G\)">\(G\)</span> is finite and continuous.</p>
+<p>Choose an ordinary compact-support Fourier bound of polynomial order <span class="math" data-index="457" data-tex="\(M\)">\(M\)</span> for <span class="math" data-index="458" data-tex="\(u\)">\(u\)</span>. Every proper profile <span class="math" data-index="459" data-tex="\(v\)">\(v\)</span> satisfies <span class="math" data-index="460" data-tex="\(v(x)\le M\)">\(v(x)\le M\)</span> on the real plane by the preceding compactness theorem, so its finite horizontal envelope has <span class="math" data-index="461" data-tex="\(M_v(0)\le M\)">\(M_v(0)\le M\)</span>. The proved envelope increment inequality then gives</p>
+<span class="math math-display" id="eq-4.4" data-index="462" data-tex="\[
+v(z)\le M_v(\operatorname{Im}z)
+\le M_v(0)+h_v(\operatorname{Im}z)
+\le M+G(\operatorname{Im}z).
+\tag{4.4}
+\]">\[
+v(z)\le M_v(\operatorname{Im}z)
+\le M_v(0)+h_v(\operatorname{Im}z)
+\le M+G(\operatorname{Im}z).
+\tag{4.4}
+\]</span>
+<p>We show that the strip estimate (1.1) holds with <span class="math" data-index="463" data-tex="\(K=D\)">\(K=D\)</span> and exponent <span class="math" data-index="464" data-tex="\(M+1\)">\(M+1\)</span>. If it failed for a fixed <span class="math" data-index="465" data-tex="\(m\)">\(m\)</span>, the continuous ratio
+<span class="math" data-index="466" data-tex="\(|F_u(\zeta)|(1+|\zeta|)^{-M-1}e^{-G(\operatorname{Im}\zeta)}\)">\(|F_u(\zeta)|(1+|\zeta|)^{-M-1}e^{-G(\operatorname{Im}\zeta)}\)</span>
+would be unbounded on that strip. It is bounded on each compact set, so choose <span class="math" data-index="467" data-tex="\(\zeta_j=\xi_j+i\eta_j\)">\(\zeta_j=\xi_j+i\eta_j\)</span> with <span class="math" data-index="468" data-tex="\(|\zeta_j|\to\infty\)">\(|\zeta_j|\to\infty\)</span>, inside the strip, and ratio greater than <span class="math" data-index="469" data-tex="\(j\)">\(j\)</span>.</p>
+<p>The strip condition implies <span class="math" data-index="470" data-tex="\(|\eta_j|/|\zeta_j|\to0\)">\(|\eta_j|/|\zeta_j|\to0\)</span>, because <span class="math" data-index="471" data-tex="\(\log(1+|\zeta_j|)/|\zeta_j|\to0\)">\(\log(1+|\zeta_j|)/|\zeta_j|\to0\)</span>. Therefore <span class="math" data-index="472" data-tex="\(R_j=|\xi_j|\to\infty\)">\(R_j=|\xi_j|\to\infty\)</span>, <span class="math" data-index="473" data-tex="\(R_j/|\zeta_j|\to1\)">\(R_j/|\zeta_j|\to1\)</span>, and
+<span class="math" data-index="474" data-tex="\(z_j=i\eta_j/\log R_j\)">\(z_j=i\eta_j/\log R_j\)</span> eventually lies in the compact ball <span class="math" data-index="475" data-tex="\(|z|\le m+1\)">\(|z|\le m+1\)</span>. At these moving observation points the failed bound gives</p>
+<span class="math math-display" id="eq-4.5" data-index="476" data-tex="\[
+L_u(z_j,\xi_j)-G(\operatorname{Im}z_j)
+&gt;(M+1)\frac{\log(1+|\zeta_j|)}{\log R_j}
+ +\frac{\log j}{\log R_j}&gt;M+1.
+\tag{4.5}
+\]">\[
+L_u(z_j,\xi_j)-G(\operatorname{Im}z_j)
+&gt;(M+1)\frac{\log(1+|\zeta_j|)}{\log R_j}
+ +\frac{\log j}{\log R_j}&gt;M+1.
+\tag{4.5}
+\]</span>
+<p>Extract a profile limit from this real sequence. If it collapses, the left side is eventually arbitrarily negative on that compact ball, since <span class="math" data-index="477" data-tex="\(G\)">\(G\)</span> is continuous there. If it is proper, (4.4) and the <a href="AN02-L143.html#hartogs-compact-comparison">proved Hartogs compact comparison</a>, with continuous comparison function <span class="math" data-index="478" data-tex="\(G(\operatorname{Im}z)\)">\(G(\operatorname{Im}z)\)</span>, give
+<span class="math" data-index="479" data-tex="\(\limsup_j\sup_{|z|\le m+1}(L_u(z,\xi_j)-G(\operatorname{Im}z))\le M\)">\(\limsup_j\sup_{|z|\le m+1}(L_u(z,\xi_j)-G(\operatorname{Im}z))\le M\)</span>.
+Both conclusions contradict (4.5).</p>
+<p>Thus all strip bounds hold. Theorem 1.1 makes <span class="math" data-index="480" data-tex="\(S\subset D\)">\(S\subset D\)</span>, whence <span class="math" data-index="481" data-tex="\(\operatorname{conv}S\subset D\)">\(\operatorname{conv}S\subset D\)</span>. The upper inequality already showed every proper profile set contained in <span class="math" data-index="482" data-tex="\(\operatorname{conv}S\)">\(\operatorname{conv}S\)</span>, by support-function separation. Their closed convex hull <span class="math" data-index="483" data-tex="\(D\)">\(D\)</span> is contained there too. The two compact convex sets are equal, proving (4.1). <span class="math" data-index="484" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The equality identifies a convex hull. It does not prove that every singular point lies in the unconvexified closed union of profile sets. That finer localization assertion requires an additional argument.</p>
+<h2 id="5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull">5. A nonzero polynomial cannot change the compact singular hull</h2>
+<p><strong>Theorem 5.1.</strong> For every nonzero complex polynomial <span class="math" data-index="485" data-tex="\(P\)">\(P\)</span> and compact distribution <span class="math" data-index="486" data-tex="\(u\)">\(u\)</span>,</p>
+<span class="math math-display" id="eq-5.1" data-index="487" data-tex="\[
+\operatorname{conv}\operatorname{sing\,supp}u
+=\operatorname{conv}\operatorname{sing\,supp}P(D)u.
+\tag{5.1}
+\]">\[
+\operatorname{conv}\operatorname{sing\,supp}u
+=\operatorname{conv}\operatorname{sing\,supp}P(D)u.
+\tag{5.1}
+\]</span>
+<p>In particular, if <span class="math" data-index="488" data-tex="\(P(D)u\)">\(P(D)u\)</span> is smooth, then <span class="math" data-index="489" data-tex="\(u\)">\(u\)</span> is smooth. Compact support and <span class="math" data-index="490" data-tex="\(P\ne0\)">\(P\ne0\)</span> are part of the assertion.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-index="491" data-tex="\(f=P(D)u\)">\(f=P(D)u\)</span>; distributional differentiation gives the entire identity <span class="math" data-index="492" data-tex="\(F_f(\zeta)=P(\zeta)F_u(\zeta)\)">\(F_f(\zeta)=P(\zeta)F_u(\zeta)\)</span>. The radius-two division lemma gives a fixed constant <span class="math" data-index="493" data-tex="\(A_P\)">\(A_P\)</span> and, for nonconstant <span class="math" data-index="494" data-tex="\(P\)">\(P\)</span>, a real unit vector <span class="math" data-index="495" data-tex="\(\theta\)">\(\theta\)</span> such that</p>
+<span class="math math-display" id="eq-5.2" data-index="496" data-tex="\[
+|F_u(\zeta)|\le A_P\sup_{|t|\le2}|F_f(\zeta+t\theta)|.
+\tag{5.2}
+\]">\[
+|F_u(\zeta)|\le A_P\sup_{|t|\le2}|F_f(\zeta+t\theta)|.
+\tag{5.2}
+\]</span>
+<p>This is exactly the previously proved bound obtained by applying its root-avoiding circle to <span class="math" data-index="497" data-tex="\(t\mapsto P(\zeta+t\theta)\)">\(t\mapsto P(\zeta+t\theta)\)</span> and the entire function <span class="math" data-index="498" data-tex="\(t\mapsto F_u(\zeta+t\theta)\)">\(t\mapsto F_u(\zeta+t\theta)\)</span>. Its leading coefficient <span class="math" data-index="499" data-tex="\(P_{\deg P}(\theta)\)">\(P_{\deg P}(\theta)\)</span> is independent of <span class="math" data-index="500" data-tex="\(\zeta\)">\(\zeta\)</span>. A nonzero constant <span class="math" data-index="501" data-tex="\(P\)">\(P\)</span> uses the immediate scalar bound instead.</p>
+<p>If <span class="math" data-index="502" data-tex="\(f\)">\(f\)</span> is compact smooth, its whole-complex arbitrary polynomial decay bounds <span class="math" data-index="503" data-tex="\(F_f(\xi+t\theta)\)">\(F_f(\xi+t\theta)\)</span> by <span class="math" data-index="504" data-tex="\(B_L(1+|\xi|)^{-L}\)">\(B_L(1+|\xi|)^{-L}\)</span>, uniformly for <span class="math" data-index="505" data-tex="\(|t|\le2\)">\(|t|\le2\)</span> and real <span class="math" data-index="506" data-tex="\(\xi\)">\(\xi\)</span>. The imaginary exponential is bounded on that radius-two displacement. Equation (5.2) makes <span class="math" data-index="507" data-tex="\(F_u\)">\(F_u\)</span> arbitrarily rapidly decreasing on the real plane. Lemma 2.1 gives compact smooth <span class="math" data-index="508" data-tex="\(u\)">\(u\)</span>. Both singular supports are empty, proving this case.</p>
+<p>Otherwise let <span class="math" data-index="509" data-tex="\(K=\operatorname{conv}\operatorname{sing\,supp}f\)">\(K=\operatorname{conv}\operatorname{sing\,supp}f\)</span>, a nonempty compact convex set. Theorem 1.1 gives its strip estimates for <span class="math" data-index="510" data-tex="\(F_f\)">\(F_f\)</span>, with one fixed exponent <span class="math" data-index="511" data-tex="\(N\)">\(N\)</span>. These estimates transfer through (5.2).</p>
+<p>Indeed, suppose <span class="math" data-index="512" data-tex="\(|\operatorname{Im}\zeta|\le m\log(1+|\zeta|)\)">\(|\operatorname{Im}\zeta|\le m\log(1+|\zeta|)\)</span>, and put <span class="math" data-index="513" data-tex="\(w=\zeta+t\theta\)">\(w=\zeta+t\theta\)</span>, <span class="math" data-index="514" data-tex="\(|t|\le2\)">\(|t|\le2\)</span>. If <span class="math" data-index="515" data-tex="\(|\zeta|\ge4\)">\(|\zeta|\ge4\)</span>, then <span class="math" data-index="516" data-tex="\(1+|w|\ge|\zeta|-1\ge(1+|\zeta|)/2\)">\(1+|w|\ge|\zeta|-1\ge(1+|\zeta|)/2\)</span>, and <span class="math" data-index="517" data-tex="\(1+|w|\ge3\)">\(1+|w|\ge3\)</span>. Hence</p>
+<span class="math math-display" id="eq-5.3" data-index="518" data-tex="\[
+|\operatorname{Im}w|
+\le m\log(1+|w|)+m\log2+2
+\le(2m+3)\log(1+|w|).
+\tag{5.3}
+\]">\[
+|\operatorname{Im}w|
+\le m\log(1+|w|)+m\log2+2
+\le(2m+3)\log(1+|w|).
+\tag{5.3}
+\]</span>
+<p>The last inequality follows from <span class="math" data-index="519" data-tex="\((m+3)\log3\ge m\log2+2\)">\((m+3)\log3\ge m\log2+2\)</span>, for <span class="math" data-index="520" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Also</p>
+<span class="math math-display" id="eq-5.4" data-index="521" data-tex="\[
+1+|w|\le3(1+|\zeta|),\qquad
+H_K(\operatorname{Im}w)
+\le H_K(\operatorname{Im}\zeta)+2r_K,\qquad
+r_K=\max_{x\in K}|x|.
+\tag{5.4}
+\]">\[
+1+|w|\le3(1+|\zeta|),\qquad
+H_K(\operatorname{Im}w)
+\le H_K(\operatorname{Im}\zeta)+2r_K,\qquad
+r_K=\max_{x\in K}|x|.
+\tag{5.4}
+\]</span>
+<p>Apply the <span class="math" data-index="522" data-tex="\(2m+3\)">\(2m+3\)</span> strip estimate for <span class="math" data-index="523" data-tex="\(f\)">\(f\)</span> throughout the supremum in (5.2). It gives the <span class="math" data-index="524" data-tex="\(m\)">\(m\)</span> strip estimate for <span class="math" data-index="525" data-tex="\(u\)">\(u\)</span> with the same exponent <span class="math" data-index="526" data-tex="\(N\)">\(N\)</span>, and constant at most
+<span class="math" data-index="527" data-tex="\(A_P3^Ne^{2r_K}C_{2m+3}\)">\(A_P3^Ne^{2r_K}C_{2m+3}\)</span> on <span class="math" data-index="528" data-tex="\(|\zeta|\ge4\)">\(|\zeta|\ge4\)</span>. The remaining compact ball has a finite bound for the continuous weighted ratio and is absorbed into the constant.</p>
+<p>Theorem 1.1 now gives <span class="math" data-index="529" data-tex="\(\operatorname{sing\,supp}u\subset K\)">\(\operatorname{sing\,supp}u\subset K\)</span>, hence its convex hull is contained in <span class="math" data-index="530" data-tex="\(K\)">\(K\)</span>. Conversely differentiation of a smooth local representative stays smooth, so <span class="math" data-index="531" data-tex="\(\operatorname{sing\,supp}f\subset\operatorname{sing\,supp}u\)">\(\operatorname{sing\,supp}f\subset\operatorname{sing\,supp}u\)</span>. Taking convex hulls proves the opposite inclusion and therefore equality. <span class="math" data-index="532" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The assertion addresses the singular hull of a compact distribution, including complex coefficients and polynomial characteristic zeros. It is separate from ordinary support-hull invariance and from regularity of arbitrary noncompact solutions.</p>
+<h2 id="references-2">References</h2>
+<ol>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/"><em>246B, Notes 2: Some connections with the Fourier transform</em></a>, <em>What's New</em>, 23 January 2021. Background on Fourier transforms, complex contours and Paley–Wiener growth.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983; second edition 1990; reprint 2003. The logarithmic-strip singular-support criterion and compact polynomial singular-hull invariance are classical.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; second revised printing 1990; reprint 2005. The hull interpretation through logarithmic-frequency profiles is classical.</li>
+</ol>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/locating-singularities-through-logarithmic-fourier-strips.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L158/singular-support-hull-formal.md" download>singular-support-hull-formal.md</a></li><li><a href="reproduce/L158/singular-support-hull-learner.md" download>singular-support-hull-learner.md</a></li><li><a href="reproduce/L158/make_figures188.py" download>make_figures188.py</a></li><li><a href="reproduce/L158/check_contours188.py" download>check_contours188.py</a></li><li><a href="reproduce/L158/independent-contour-checks188.json" download>independent-contour-checks188.json</a></li><li><a href="reproduce/L158/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L158/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L158/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L158/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L158/figures/separation-and-logarithmic-strip.png" download>figures/separation-and-logarithmic-strip.png</a></li><li><a href="reproduce/L158/figures/separation-and-logarithmic-strip.svg" download>figures/separation-and-logarithmic-strip.svg</a></li><li><a href="reproduce/L158/figures/triangular-corners-and-singular-hull.png" download>figures/triangular-corners-and-singular-hull.png</a></li><li><a href="reproduce/L158/figures/triangular-corners-and-singular-hull.svg" download>figures/triangular-corners-and-singular-hull.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

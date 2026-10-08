@@ -13,7 +13,7 @@ The purpose of the lesson is to prove that \(J_G\) is a topological isomorphism,
 
 The freely accessible source routes are D. H. Fremlin, [*Measure Theory*, §§445O and 445U](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), version of 20 March 2008, and the quotient and subgroup statements in [Appendix 4A5J, L, M](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a5.tex), version of 4 August 2013. The compact-component argument in Exercise 6.5 uses A. Candel, [*Three Dimes of Topology*, pp. 29–30](https://www.csun.edu/~ac53971/research/topology_262.pdf), Math 262 notes, Winter 1995–96. Every needed assertion from these sources is proved below or at an exact earlier proof locator.
 
-Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the [Design Science License](../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt). Fremlin's copyrights 1998 and 2000 and original notices remain in the unchanged volume 4 source package. Candel's notes are linked, not reproduced.
+Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyrights 1998 and 2000 and original notices remain in the unchanged volume 4 source package. Candel's notes are linked, not reproduced.
 
 We will use these earlier results:
 

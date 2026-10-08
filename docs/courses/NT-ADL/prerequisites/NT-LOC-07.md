@@ -1,8 +1,6 @@
 # Unramified and totally ramified extensions
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).*
-
-*NT-ADL bundled edition, source-reconciled on 5 October 2026 by GPT-6.1 Sol (OpenAI), Ultra. This adaptation retains the provider lesson's mathematical scope and adds the source comparisons identified below. The upstream provider draft is unchanged. Original AI-written exposition is CC0; human reference works and genuinely reused human expression retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A finite extension of a complete discretely valued field changes two things: its value group and its residue field. The unramified part changes only the residue field; the totally ramified part changes only the value group. Hensel lifting separates these contributions, and a carefully chosen integral element puts them back together.
 
@@ -14,7 +12,7 @@ f(L/K)=[\kappa_L : \kappa],\qquad
 \]
 The last equality and the integral basis described below are imported from **Extensions of complete valued fields**, Theorem 3.1. They apply even to inseparable finite extensions.
 
-We call \(L/K\) **unramified** if \(e=1\) and \(\kappa_L/\kappa\) is separable, and **totally ramified** if \(f=1\). These definitions agree with [Stacks, Tag 09E9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-types-of-extensions) in its finite separable setting. Residue separability belongs in the unramified definition even when it is automatic over a perfect field. In the statements about finite fields and norms, \(K\) will be a **nonarchimedean local field**, so that \(\kappa=\mathbf F_q\).
+We call \(L/K\) **unramified** if \(e=1\) and \(\kappa_L/\kappa\) is separable, and **totally ramified** if \(f=1\). These definitions agree with [Stacks, Tag 09E9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-types-of-extensions) in its finite separable setting. Residue separability belongs in the unramified definition even when it is automatic over a perfect field. Section 3 and the finite-residue consequence of Section 4 take \(K\) to be a **nonarchimedean local field**, so that \(\kappa=\mathbf F_q\). The general norm-image theorem and integral-generator construction allow arbitrary residue fields with the separability explicitly stated.
 
 ## 1. The integral basis we will use
 
@@ -69,7 +67,44 @@ Define \(K^{\mathrm{ur}}\) to be the union of the finite unramified fields in a 
 \cong\operatorname{Gal}(\kappa^{\mathrm{sep}}/\kappa).
 \tag{2.2}
 \]
-Here the residue separable closure can be chosen as the residue field of \(K^{\mathrm{ur}}\). It contains every finite separable residue extension by construction. Passing the finite Galois isomorphisms to inverse limits proves (2.2), including its topology: fixing a finite subextension corresponds to fixing its residue field.
+### 2.3. The inverse-limit comparison maps
+
+Choose the residue separable closure to be \(\kappa^{\mathrm{sep}}=\kappa_{K^{\mathrm{ur}}}\). Let \(\mathcal U\) be the set of finite unramified Galois subfields \(L\subset K^{\mathrm{ur}}\). The closure argument above makes this set directed under inclusion: a common finite unramified Galois extension contains any two members. Every element of \(K^{\mathrm{ur}}\) lies in such a member, because every finite unramified extension lies in an unramified Galois closure.
+
+For \(L\in\mathcal U\), reduction is a group isomorphism
+
+\[
+r_L:\operatorname{Gal}(L/K)\longrightarrow
+\operatorname{Gal}(\kappa_L/\kappa).
+\]
+
+If \(L\subset M\) are in \(\mathcal U\), normality of \(L/K\) makes restriction \(\operatorname{Gal}(M/K)\to\operatorname{Gal}(L/K)\) well-defined. Applying reduction to each element of \(\mathcal O_L\) proves that the square
+
+\[
+\begin{array}{ccc}
+\operatorname{Gal}(M/K)&\xrightarrow{\ r_M\ }&\operatorname{Gal}(\kappa_M/\kappa)\\
+\big\downarrow\scriptstyle\mathrm{res}&&\big\downarrow\scriptstyle\mathrm{res}\\
+\operatorname{Gal}(L/K)&\xrightarrow{\ r_L\ }&\operatorname{Gal}(\kappa_L/\kappa)
+\end{array}
+\]
+
+commutes. Thus the finite-level isomorphisms and their inverses form compatible systems; no new choice of an embedding is made at the limit.
+
+The restriction homomorphism
+
+\[
+\rho:\operatorname{Gal}(K^{\mathrm{ur}}/K)
+\longrightarrow\varprojlim_{L\in\mathcal U}\operatorname{Gal}(L/K),
+\]
+\[
+\sigma\longmapsto(\sigma|_L)_L
+\]
+
+is injective because these fields cover \(K^{\mathrm{ur}}\). For surjectivity, take a compatible family \((\sigma_L)_L\). Define \(\sigma(x)=\sigma_L(x)\) using any \(L\) that contains \(x\). A common upper field and compatibility show independence of that choice. Placing two elements in one upper field proves preservation of addition and multiplication and fixation of \(K\). The inverse family \((\sigma_L^{-1})_L\) is compatible as well: if \(L\subset M\), the automorphism \(\sigma_M\) preserves \(L\) and restricts to \(\sigma_L\), so its inverse restricts to \(\sigma_L^{-1}\). It defines the inverse field map. Hence \(\rho\) is a group isomorphism.
+
+In the Krull topology, the subgroups fixing a finite subextension form a neighborhood basis at the identity. The finite Galois subextensions in \(\mathcal U\) are cofinal among those subextensions. Their fixing subgroups are exactly the preimages, under \(\rho\), of the kernels of the finite-coordinate projections. Finite intersections of such kernels form the inverse-limit neighborhood basis. The same observation for arbitrary cosets proves that \(\rho\) and its inverse are continuous.
+
+The identical construction applies to the directed residue fields \(\kappa_L\), whose union is \(\kappa^{\mathrm{sep}}\). A finite set of residue elements has lifts in a common finite unramified field, and then in a member of \(\mathcal U\); hence these finite Galois residue fields are cofinal. Taking the inverse limits of the commuting \(r_L\) now proves (2.2) as an isomorphism of topological groups, with the map given by reduction of the actual field automorphisms. This proof works for arbitrary \(\kappa\), not only finite or perfect residue fields.
 
 ## 3. Finite residues and arithmetic Frobenius
 
@@ -93,7 +128,7 @@ The inverse limit runs over divisibility of positive integers.
 
 *Proof.* We first justify the finite-field facts, independently of valuation theory. Inside an algebraic closure of \(\mathbf F_q\), let \(E_n\) be the roots of \(X^{q^n}-X\). Frobenius identities show that these roots are closed under sums, products and negatives; for a nonzero root, \(x^{q^n-1}=1\) also shows that its inverse is a root. Thus they form a field containing \(\mathbf F_q\). The derivative is \(-1\), so there are exactly \(q^n\) roots and \([E_n:\mathbf F_q]=n\).
 
-Any degree-\(n\) extension of \(\mathbf F_q\) has \(q^n\) elements. Every nonzero element satisfies \(x^{q^n-1}=1\) by Lagrange's theorem, so the extension is exactly this root field in the fixed algebraic closure. This proves uniqueness. The map \(x\mapsto x^q\) is an automorphism of \(E_n\), and its \(n\)-th power is identity. Its order cannot be \(d<n\), since then all \(q^n\) elements would be roots of \(X^{q^d}-X\), contrary to the polynomial root bound. The field is a separable splitting field, hence Galois, and its group of order \(n\) is generated by this Frobenius. Cyclicity of its multiplicative group follows from [Stacks, Tag 09HX](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-cyclic): every \(d\)-torsion set has size at most \(d\) by that same root bound.
+Any degree-\(n\) extension of \(\mathbf F_q\) has \(q^n\) elements. Every nonzero element satisfies \(x^{q^n-1}=1\) because its multiplicative group is cyclic of order \(q^n-1\), by [**Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-03.html#4-residues-lift-multiplicatively), so the extension is exactly this root field in the fixed algebraic closure. This proves uniqueness. The map \(x\mapsto x^q\) is an automorphism of \(E_n\), and its \(n\)-th power is identity. Its order cannot be \(d<n\), since then all \(q^n\) elements would be roots of \(X^{q^d}-X\), contrary to the polynomial root bound. The field is a separable splitting field, hence Galois, and its group of order \(n\) is generated by this Frobenius. Cyclicity of its multiplicative group is proved in [**Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-03.html#4-residues-lift-multiplicatively).
 
 Theorem 2.1 lifts the field and its automorphisms. Since the lifted extension is Galois, uniqueness up to \(K\)-isomorphism is uniqueness as a subfield of the fixed separable closure.
 
@@ -105,9 +140,7 @@ The residue field of the left side contains all the nonzero elements of \(\mathb
 
 If \(n\mid r\), the residue inclusion lifts to \(K_n\subset K_r\). Restriction sends the \(q\)-power Frobenius in degree \(r\) to that in degree \(n\). Every finite residue extension appears at one of these levels, so their union is \(K^{\mathrm{ur}}\). The inverse limit of the finite cyclic groups proves the assertion. The element \(1\in\widehat{\mathbf Z}\) is a topological generator; it does not mean that the profinite group is the discrete group \(\mathbf Z\). \(\square\)
 
-The field \(K^{\mathrm{ur}}\) is an algebraic union, not its completion. For example, in equal characteristic it is
-\(\bigcup_n\mathbf F_{q^n}((T))\); it is smaller than
-\(\overline{\mathbf F}_q((T))\), whose series can have coefficients lying in no one finite subfield.
+The field \(K^{\mathrm{ur}}\) is an algebraic union, not its completion. For an equal-characteristic local field \(K\), choose a uniformizer \(T\). The unique Hensel lifts of the roots of \(X^q-X\) form a coefficient field: characteristic-\(p\) Frobenius identities close this root set under addition and multiplication, and reduction identifies it with \(\mathbf F_q\). Successively subtracting lifted residue coefficients and dividing by \(T\), completeness gives unique Laurent expansions, hence \(K\cong\mathbf F_q((T))\). The same construction in \(K_n\), compatible with inclusion, gives \(K_n\cong\mathbf F_{q^n}((T))\). Under these specified identifications, \(K^{\mathrm{ur}}\) is \(\bigcup_n\mathbf F_{q^n}((T))\). It is smaller than \(\overline{\mathbf F}_q((T))\): choose a coefficient sequence not contained in any finite subfield, for example one whose coefficient at index \(j\) has degree greater than \(j\) over \(\mathbf F_q\). Its power series lies in the latter field but in none of the finite levels.
 
 **Example 3.2 (unramified quadratics).** For odd \(p\), let \(u\in\mathbf Z_p^\times\) have nonsquare residue. Then \(X^2-u\) has irreducible separable reduction, and
 \(\mathbf Q_p(\sqrt u)\) is the unique unramified quadratic extension.
@@ -118,17 +151,110 @@ For \(p=2\), \(X^2+X+1\) has irreducible reduction and discriminant \(-3\); it g
 \]
 The polynomials, rather than the reduction of \(X^2-5\), expose why the extension is unramified.
 
-## 4. Norms from unramified local extensions
+## 4. Norms from unramified extensions
 
-Write \(U_K=\mathcal O_K^\times\) and
-\(U_K^{(r)}=1+\mathfrak m_K^r\) for \(r\ge1\).
+Write \(U_K=\mathcal O_K^\times\) and \(U_K^{(r)}=1+\mathfrak m_K^r\) for \(r\ge1\).
 
-**Proposition 4.1 (norm image).** If \(L/K\) is an unramified extension of nonarchimedean local fields of degree \(n\), then
+We will need a trace fact for arbitrary finite separable residue extensions. Here is its complete algebraic proof.
+
+**Lemma 4.0 (a residue element of trace one).** Let \(\lambda/\kappa\) be finite and separable of degree \(n\). Its trace is onto \(\kappa\), even when the characteristic of \(\kappa\) divides \(n\).
+
+*Proof.* Choose a primitive element \(a\) and its monic separable minimal polynomial \(G\) of degree \(n\). Write its distinct roots in a splitting field as \(a_1,\ldots,a_n\). The polynomials on the two sides of
 \[
-N_{L/K}(U_L)=U_K,\qquad
+X^{n-1}=\sum_{i=1}^n
+\frac{a_i^{n-1}}{G'(a_i)}\frac{G(X)}{X-a_i}
+\]
+have degree at most \(n-1\) and agree at every \(a_i\), hence agree identically. Their leading coefficients give
+\[
+\sum_{i=1}^n\frac{a_i^{n-1}}{G'(a_i)}=1.
+\]
+Evaluation at these roots has invertible Vandermonde matrix in the basis \(1,a,\ldots,a^{n-1}\). It diagonalizes multiplication by any element of \(\lambda\) after extending scalars to the splitting field. Thus its trace is the sum of the conjugate values, and
+\[
+\operatorname{Tr}_{\lambda/\kappa}
+\left(\frac{a^{n-1}}{G'(a)}\right)=1.
+\]
+Multiplying this element by any scalar in \(\kappa\) proves surjectivity. The argument also covers \(n=1\); it never divides by \(n\). \(\square\)
+
+**Proposition 4.1 (exact norm image).** Let \(L/K\) be any finite unramified extension of complete discretely valued fields, of degree \(n\), with residue extension \(\lambda/\kappa\). Fix a uniformizer \(\pi\) of \(K\), and put
+\[
+R=N_{\lambda/\kappa}(\lambda^\times)\subset\kappa^\times.
+\]
+Then
+\[
+N_{L/K}(U_L^{(r)})=U_K^{(r)}\quad(r\ge1),
+\]
+\[
+N_{L/K}(U_L)=\{u\in U_K\mid\bar u\in R\},
+\]
+\[
+\begin{aligned}
+N_{L/K}(L^\times)
+&=\{\pi^{nk}u\mid k\in\mathbf Z,\\
+&\qquad u\in U_K,\ \bar u\in R\}.
+\end{aligned}
+\tag{4.1}
+\]
+No Galois or finite-residue hypothesis is needed.
+
+*Proof.* Since \(e=1\), \(\pi\) is also a uniformizer of \(L\). Choose lifts \(b_1,\ldots,b_n\) of a \(\kappa\)-basis of \(\lambda\). By (1.1) these are an \(\mathcal O_K\)-basis of \(\mathcal O_L\). For \(z\in\mathcal O_L\), multiplication by \(z\) has an integral matrix \(M_z\) in that basis. Its reduction is the multiplication matrix of \(\bar z\) on \(\lambda\). Consequently trace and determinant reduce to the residue trace and norm. In particular, the residue of every unit norm lies in \(R\).
+
+The multiplication matrix of \(1+\pi^r z\) is \(I+\pi^rM_z\). In its determinant, the linear term is \(\pi^r\operatorname{Tr}(M_z)\), and each higher term is divisible by \(\pi^{2r}\). Since \(2r\ge r+1\) for \(r\ge1\), this gives
+\[
+N(1+\pi^rz)\equiv
+1+\pi^r\operatorname{Tr}_{L/K}(z)
+\pmod{\pi^{r+1}\mathcal O_K}.
+\tag{4.2}
+\]
+The same determinant expansion shows \(N(U_L^{(r)})\subset U_K^{(r)}\). By Lemma 4.0 the residue trace is onto.
+
+For a target \(a\in U_K^{(r)}\), start with \(b_r=1\). Inductively suppose
+\[
+a/N(b_j)\equiv1\pmod{\pi^j}\qquad(j\ge r).
+\]
+Choose \(z_j\in\mathcal O_L\) whose residue trace is the residue of \((a/N(b_j)-1)/\pi^j\). Equation (4.2) shows that
+\[
+b_{j+1}=b_j(1+\pi^jz_j)
+\]
+has \(a/N(b_{j+1})\equiv1\pmod{\pi^{j+1}}\). For \(m>j\), the ratio \(b_m/b_j\) belongs to \(1+\pi^j\mathcal O_L\), because each successive factor does. Thus \((b_j)\) is Cauchy. Completeness supplies its limit in the closed subgroup \(U_L^{(r)}\). The norm is a continuous polynomial in coordinates, so the limit has norm \(a\). This proves equality on every principal-unit subgroup.
+
+Now take \(u\in U_K\) with \(\bar u=N_{\lambda/\kappa}(\bar c)\), and lift \(\bar c\ne0\) to \(c\in U_L\). Reduction of the norm gives \(u/N(c)\in U_K^{(1)}\). The result just proved supplies \(d\in U_L^{(1)}\) with \(N(d)=u/N(c)\). Then \(N(cd)=u\). Together with the necessary residue condition, this proves the exact unit image.
+
+Every \(x\in L^\times\) is \(\pi^kc\), with \(c\in U_L\). Since \(\pi\in K\), its multiplication matrix is \(\pi I\) and \(N(\pi)=\pi^n\). The unit image therefore gives the last assertion of (4.1), including negative \(k\). \(\square\)
+
+**Corollary 4.2 (finite residues).** For an unramified degree-\(n\) extension of nonarchimedean local fields,
+\[
+N(U_L)=U_K,\qquad
+N(L^\times)=\{\pi^{nk}u\mid k\in\mathbf Z,\ u\in U_K\}.
+\]
+
+*Proof.* If \(\kappa=\mathbf F_q\), Corollary 3.1 identifies \(\lambda=\mathbf F_{q^n}\) and its arithmetic Frobenius. The residue norm is
+\[
+x\longmapsto x^{1+q+\cdots+q^{n-1}}
+=x^{(q^n-1)/(q-1)}.
+\]
+The image of a multiplicative generator has order \(q-1\), so \(R=\mathbf F_q^\times\). Proposition 4.1 proves the assertions. One can also see residue trace surjectivity directly: \(X+X^q+\cdots+X^{q^{n-1}}\) is nonzero of degree less than \(q^n\), so its image is a nonzero \(\mathbf F_q\)-subspace of \(\mathbf F_q\). This remains valid when \(p\mid n\). \(\square\)
+
+The finite-residue condition matters for **full unit surjectivity**, rather than for principal-unit surjectivity. For example, \(\mathbf C((T))/\mathbf R((T))\) is unramified of degree two, and its residue norm is \(z\mapsto z\bar z\), with image the positive real numbers. Its exact norm image consists of elements of even \(T\)-valuation with positive leading unit coefficient. Thus \(-1\) is not a norm, although every principal unit is a norm.
+
+Reduction also identifies \(U_K/N(U_L)\) with \(\kappa^\times/R\): reduction is onto and Proposition 4.1 identifies its kernel. Choosing \(\pi\) identifies the full cokernel with
+\[
+K^\times/N(L^\times)\cong
+(\mathbf Z/n\mathbf Z)\times(\kappa^\times/R),
+\]
+\[
+
+\pi^m u\longmapsto(m\bmod n,[\bar u]).
+\]
+The displayed splitting depends on \(\pi\). In the real/complex Laurent-series example the two factors are \(\mathbf Z/2\mathbf Z\) and the two signs.
+
+### 4.3. A finite-residue product proof
+
+**Finite-residue statement (Corollary 4.2).** If \(L/K\) is an unramified extension of nonarchimedean local fields of degree \(n\), then
+\[
+N_{L/K}(U_L)=U_K,\]
+\[
 N_{L/K}(L^\times)=
 \{\pi^{nk}u\mid k\in\mathbf Z,\ u\in U_K\},
-\tag{4.1}
 \]
 where \(\pi\) is any uniformizer of \(K\). In fact
 \(N_{L/K}(U_L^{(r)})=U_K^{(r)}\) for every \(r\ge1\).
@@ -151,7 +277,6 @@ For \(r\ge1\) and \(z\in\mathcal O_L\), expanding the product over automorphisms
 N(1+\pi^rz)\equiv
 1+\pi^r\operatorname{Tr}_{L/K}(z)
 \pmod{\pi^{r+1}\mathcal O_K}.
-\tag{4.2}
 \]
 All terms involving two or more factors have valuation at least \(2r\ge r+1\). Reduction of the trace is the residue trace just proved onto.
 
@@ -163,14 +288,11 @@ Choose \(z_r\in\mathcal O_L\) whose residue trace is the coefficient of \(\pi^r\
 \[
 b_{r+1}=b_r(1+\pi^rz_r)
 \]
-has \(N(b_{r+1})\equiv a\pmod{\pi^{r+1}}\). The successive corrections tend to \(1\), making \(b_r\) a Cauchy sequence. Completeness gives a unit limit \(b\), and continuity of the norm, a polynomial in coordinates, gives \(N(b)=a\).
+has \(N(b_{r+1})\equiv a\pmod{\pi^{r+1}}\). For \(m>r\), the ratio \(b_m/b_r\) is a finite product of factors in \(1+\pi^r\mathcal O_L\), and therefore lies in that subgroup. Since \(b_r\) is a unit, \(v_L(b_m-b_r)\ge r\); this proves the Cauchy property. Completeness gives a unit limit \(b\), and continuity of the norm, a polynomial in coordinates, gives \(N(b)=a\).
 
 If \(a\in U_K^{(r)}\), start at \(b_r=1\) and make corrections from depth \(r\). The limit lies in the closed subgroup \(U_L^{(r)}\). Formula (4.2), or the product formula for the norm, also shows \(N(U_L^{(r)})\subset U_K^{(r)}\), proving equality.
 
 Every \(x\in L^\times\) is \(\pi^ku\), with \(u\in U_L\). Since \(\pi\in K\), \(N(\pi)=\pi^n\), and the first assertion gives precisely (4.1). \(\square\)
-
-The finite residue hypothesis in this proposition matters. For example,
-\(\mathbf C((T))/\mathbf R((T))\) is an unramified degree-two extension of complete discretely valued fields, but the residue of a unit norm is a positive real number. The unit \(-1\) is not a norm. The unramified equivalence of Theorem 2.1 has wider scope than this norm-surjectivity statement.
 
 ## 5. Uniformizers and Eisenstein polynomials
 
@@ -213,11 +335,11 @@ The extension \(L/L_0\) is totally ramified.
 
 If \(E\subset L\) is any unramified intermediate field, the residue inclusion \(\kappa_E\subset\kappa_L\) lifts by Theorem 2.1 to an embedding \(E\to L_0\). Its composition into \(L\) is the actual inclusion of \(E\): both maps have the same residue embedding, and full faithfulness for maps from an unramified field into \(L\) follows by the identical simple-root uniqueness argument, even though \(L/K\) need not be unramified. Thus \(E\subset L_0\). This proves maximality and uniqueness. \(\square\)
 
-**Corollary 6.2 (one generator of the integral ring).** If \(L/K\) is a finite separable extension and \(\kappa_L/\kappa\) is separable, then
+**Corollary 6.2 (one generator of the integral ring).** If \(L/K\) is any finite extension and \(\kappa_L/\kappa\) is separable, then
 \[
 \mathcal O_L=\mathcal O_K[\beta]
 \]
-for some \(\beta\in\mathcal O_L\). Perfectness of the entire residue field is unnecessary.
+for some \(\beta\in\mathcal O_L\). The field extension \(L/K\) may be inseparable; perfectness of the entire residue field is unnecessary.
 
 *Proof.* Use \(a,F,L_0\) from Proposition 6.1 and let \(e=e(L/K)\), \(f=f(L/K)\). If \(e=1\), Theorem 2.1 gives the result with \(\beta=a\).
 
@@ -239,15 +361,23 @@ is an \(\mathcal O_K\)-basis of \(\mathcal O_L\). Every one of these elements be
 
 This proof explains the adjustment in the generator: a residue lift alone does not see ramification, and a uniformizer alone may not see the residue extension. Their sum makes its residue carry one part and the value of \(F(\beta)\) carry the other.
 
+For an inseparable instance, take \(K=\mathbf F_p((t))\), \(L=\mathbf F_p((s))\), with the embedding \(t=s^p\). The polynomial \(X^p-t\) is Eisenstein and has derivative zero, so \(L/K\) is purely inseparable of degree \(p\). Its residue extension is the identity. Grouping series exponents modulo \(p\) gives
+\[
+\sum_{j\ge0}c_js^j
+=\sum_{i=0}^{p-1}s^i
+\left(\sum_{k\ge0}c_{pk+i}t^k\right).
+\]
+Thus \(\mathcal O_L=\mathcal O_K[s]\). This also illustrates directly why the field-separability hypothesis is unnecessary.
+
 ## 7. Exercises
 
 1. Find the unramified quadratic extensions of \(\mathbf Q_2\) and \(\mathbf Q_3\), and justify their residue degrees.
 
 2. For odd \(p\) and a unit \(u\) with nonsquare residue, show that \(\mathbf Q_p(\sqrt p,\sqrt u)\) has \(e=f=2\) over \(\mathbf Q_p\).
 
-3. Prove Proposition 4.1, accounting for the case \(p\mid[L:K]\) and the convergence of the successive corrections.
+3. Prove Proposition 4.1 for arbitrary residue fields, including a proof of residue trace surjectivity and convergence of the successive corrections. Deduce Corollary 4.2, accounting for \(p\mid[L:K]\).
 
-4. Prove Corollary 6.2 for its stated separable residue extension, without assuming that an arbitrary primitive field element generates the integral ring.
+4. Prove Corollary 6.2 for any finite \(L/K\) with separable residue extension, including inseparable \(L/K\), without assuming that an arbitrary primitive field element generates the integral ring.
 
 ## 8. Complete solutions
 
@@ -263,12 +393,31 @@ f(L/\mathbf Q_p)=1\cdot2=2.
 \]
 By its generators \(L\) is the field in the exercise. This computation also proves that \(\sqrt p\) did not already belong to \(U\).
 
-**Solution 3.** Reduction identifies the \(n\) automorphisms of \(L/K\) with those of its finite residue extension. The norm on residues is onto because it takes a multiplicative generator to an element of order \(q-1\). The trace on residues is onto because its polynomial
+**Solution 3.** Let \(\lambda/\kappa\) be the separable residue extension. For a primitive element \(a\) with monic minimal polynomial \(G\), interpolation of \(X^{n-1}\) at the distinct roots \(a_i\) gives
+\[
+\sum_i\frac{a_i^{n-1}}{G'(a_i)}=1.
+\]
+The sum is the trace of \(a^{n-1}/G'(a)\), since evaluation at the roots diagonalizes multiplication. Thus residue trace is onto. This argument does not require Galois symmetry or division by \(n\).
+
+Lift a residue basis to an integral basis of \(\mathcal O_L\). The integral multiplication matrix \(M_z\) reduces to the residue multiplication matrix; its trace and determinant therefore reduce correctly. The identity
+\[
+N(1+\pi^jz)=\det(I+\pi^jM_z)
+\equiv1+\pi^j\operatorname{Tr}(z)\pmod{\pi^{j+1}}
+\]
+holds for \(j\ge1\), since terms of degree at least two have valuation at least \(2j\ge j+1\). It also shows \(N(U_L^{(r)})\subset U_K^{(r)}\).
+
+For \(a\in U_K^{(r)}\), start at \(b_r=1\). If \(a/N(b_j)\) is \(1+\pi^jc_j\) modulo \(\pi^{j+1}\), choose integral \(z_j\) with residue trace \(\bar c_j\), and put \(b_{j+1}=b_j(1+\pi^jz_j)\). The displayed congruence improves agreement by one depth. For \(m>j\), \(b_m/b_j\in1+\pi^j\mathcal O_L\); ultrametricity therefore makes the sequence Cauchy. Completeness gives a limit in \(U_L^{(r)}\), and continuity of the norm polynomial gives norm exactly \(a\).
+
+A unit \(u\) is a norm only if \(\bar u\in N(\lambda^\times)\). Conversely choose a unit \(c\) lifting a residue preimage of \(\bar u\). Then \(u/N(c)\in U_K^{(1)}\), and principal-unit surjectivity supplies \(d\) with that norm, so \(u=N(cd)\). Writing \(x=\pi^kc\) and using \(N(\pi)=\pi^n\) proves the full norm-image formula.
+
+For finite residues the norm exponent \((q^n-1)/(q-1)\) maps a multiplicative generator to an element of order \(q-1\), so every unit residue is allowed. The trace polynomial \(X+X^q+\cdots+X^{q^{n-1}}\) is nonzero of degree less than \(q^n\), giving a second proof of trace surjectivity, even when \(p\mid n\). Tracing \(1\) alone would fail in that case.
+
+**Solution 3, alternative for finite residues.** Reduction identifies the \(n\) automorphisms of \(L/K\) with those of its finite residue extension. The norm on residues is onto because it takes a multiplicative generator to an element of order \(q-1\). The trace on residues is onto because its polynomial
 \(X+X^q+\cdots+X^{q^{n-1}}\) is nonzero of degree less than \(q^n\). In particular, one must not try to obtain surjectivity merely by tracing \(1\): that trace is zero when \(p\mid n\).
 
 Choose a unit with the required residue norm. If its norm agrees with the target unit through depth \(r-1\), divide the target by that norm to obtain \(1+\pi^rc\) modulo \(\pi^{r+1}\). Choose an integral \(z\) whose residue trace is \(\bar c\). Expanding the \(n\) conjugate factors of \(1+\pi^rz\) shows that its norm has that correction modulo \(\pi^{r+1}\), since products of two correction terms have valuation at least \(2r\ge r+1\). Multiplying by \(1+\pi^rz\) therefore improves the agreement by one depth.
 
-Repeating this constructs a Cauchy sequence of units: its successive ratios lie in \(1+\pi^r\mathcal O_L\), and ultrametricity bounds every later difference by the first omitted depth. The complete field \(L\) supplies a unit limit. The norm is a continuous polynomial, so its limit is exactly the target. Starting from \(1\) at depth \(r\) also proves surjectivity on \(U_L^{(r)}\). Finally, write any nonzero element as \(\pi^ku\); its norm is \(\pi^{nk}N(u)\). This proves both equalities of Proposition 4.1.
+Repeating this constructs a Cauchy sequence of units: its successive ratios lie in \(1+\pi^r\mathcal O_L\), and ultrametricity bounds every later difference by the first omitted depth. The complete field \(L\) supplies a unit limit. The norm is a continuous polynomial, so its limit is exactly the target. Starting from \(1\) at depth \(r\) also proves surjectivity on \(U_L^{(r)}\). Finally, write any nonzero element as \(\pi^ku\); its norm is \(\pi^{nk}N(u)\). This proves the finite-residue equalities of Corollary 4.2.
 
 **Solution 4.** Choose \(\bar a\) generating the separable extension \(\kappa_L/\kappa\). Let \(F\in\mathcal O_K[X]\) be a monic lift of its minimal polynomial, of degree \(f\). Its root \(a\in\mathcal O_L\) in the prescribed residue class is supplied by Hensel, and \(F'(a)\) is a unit. If \(e=1\), the residues of \(1,a,\ldots,a^{f-1}\) form a basis, and the integral basis theorem gives \(\mathcal O_L=\mathcal O_K[a]\).
 
@@ -280,24 +429,23 @@ shows that \(F(\beta)\) is another uniformizer. The residues of the \(f\) powers
 \[
 \beta^iF(\beta)^j\quad(0\le i<f,\ 0\le j<e)
 \]
-form an integral basis by (1.1). All are polynomials in \(\beta\) with integral base coefficients, so their full integral span lies in \(\mathcal O_K[\beta]\). That span is \(\mathcal O_L\), proving the claim. This checks the ring equality directly, rather than inferring it from \(K(\beta)=L\).
+form an integral basis by (1.1). All are polynomials in \(\beta\) with integral base coefficients, so their full integral span lies in \(\mathcal O_K[\beta]\). That span is \(\mathcal O_L\), proving the claim. This checks the ring equality directly, rather than inferring it from \(K(\beta)=L\). Hensel lifting used completeness of \(L\) and separability of the residue polynomial; neither it nor the integral basis requires \(L/K\) to be separable.
 
 ## Source comparison for this edition
 
 Sutherland, Lecture 10, Theorem 10.13, and Milne 7.50–7.54 treat the unramified equivalence. Milne's initial perfect-residue presentation is accompanied by the explicit nonperfect-residue extension in footnote 10: unramified means \(e=1\) with separable residue extension. Sections 2 and 6 prove the assertions with those hypotheses, without silently imposing perfectness. The totally ramified uniformizer and Eisenstein route, compared with Milne 7.55–7.56, retains its stated applicability to inseparable finite extensions. The full integral-ring equality in Corollary 6.2 is justified by its \(ef\)-element integral basis; it is not inferred solely from a primitive field element.
 
-Fesenko–Vostokov, Chapter III, §1, Proposition (1.2), compares the norm on the valuation quotient, the residue units and the successive principal-unit quotients with multiplication by the degree, the residue norm and the residue trace. That section develops its proof in the prime-degree setting. Section 4 here expands all \(n\) conjugate factors directly and proves the needed finite-field norm and trace surjectivities for every finite degree \(n\). For each depth \(r\ge1\), terms with two corrections have valuation at least \(2r\ge r+1\), so the residue trace supplies the next correction even when \(p\mid n\). Completeness gives the convergent sequence of corrections. This proves all the stated principal-unit norm equalities. The finite residue hypothesis for unit-norm surjectivity and the \(\mathbf C((T))/\mathbf R((T))\) counterexample are retained; the more general unramified equivalence has a wider scope.
+Fesenko–Vostokov, Chapter III, §1, Proposition (1.2), compares the norm on the valuation quotient, the residue units and the successive principal-unit quotients with multiplication by the degree, the residue norm and the residue trace. Proposition (1.2) is stated for an unramified Galois extension of degree \(n\), while the preceding Lemma (1.1) assumes prime degree. The finite-residue product proof in Section 4.3 here expands all \(n\) conjugate factors directly and proves the needed finite-field norm and trace surjectivities for every finite degree \(n\). For each depth \(r\ge1\), terms with two corrections have valuation at least \(2r\ge r+1\), so the residue trace supplies the next correction even when \(p\mid n\). Completeness gives the convergent sequence of corrections. This proves all the stated principal-unit norm equalities. Proposition 4.1 gives the full norm image for arbitrary finite separable residue extensions, without a Galois hypothesis, using integral multiplication matrices and an explicit trace-one element. Corollary 4.2 is the finite-residue specialization; the \(\mathbf C((T))/\mathbf R((T))\) example explains why full unit surjectivity cannot be imposed for general residues.
 
 ## 9. What this lesson does not prove
 
-- Unique extension of the absolute value, completeness of finite extensions, the degree identity and the lifted residue-basis integral basis are Theorems 1.2 and 3.1 and Proposition 2.1 of **Extensions of complete valued fields**. Its Corollary 5.2 gives the Eisenstein criterion and root valuation.
-- Simple-root Hensel lifting is Corollary 1.2 of **Hensel's lemma, squares and roots of unity in p-adic fields**. The present lesson uses it in each finite complete upper field.
-- The primitive element theorem for finite separable extensions is Theorem 5.1 of Milne's *Fields and Galois Theory*. Existence of a finite Galois closure, the Galois criterion by the number of automorphisms, and finite Galois correspondence are the results of its Chapter 3, especially Corollary 3.12 and Theorem 3.17.
-- The classification of finite fields and their Frobenius Galois groups are Propositions 4.20 and 4.23 of the same work. Their cyclic multiplicative groups are the finite-subgroup fact used in Proposition 4.19, with its algebra exercise locator 1-3. Their norm and trace surjectivities are proved in Section 4 here.
+- Unique extension of the absolute value, completeness of finite extensions, the degree identity and the lifted residue-basis integral basis are [**Extensions of complete valued fields**, Theorem 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#1-a-distance-forced-by-a-polynomial), [Proposition 2.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#2-coordinates-control-convergence) and [Theorem 3.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#3-an-integral-basis-from-residue-digits). Its [Corollary 5.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#5-root-valuations-in-the-coefficients) gives the Eisenstein criterion and root valuation.
+- Simple-root Hensel lifting is [**Hensel's lemma, squares and roots of unity in p-adic fields**, Corollary 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-03.html#1-a-root-from-a-shrinking-error). The present lesson uses it in each finite complete upper field.
 - The DVR structure and uniformizer expressions are recalled in Section 2 of **Absolute values, valuations and Ostrowski's theorem**, with the exact ring characterization [Stacks, Tag 00PD]. The monic integral factorization needed here is proved directly in Section 2.
-- The topology of inverse limits of finite Galois groups is the usual definition of the Krull topology. The identifications in Sections 2 and 3 are proved at every finite level before passing to that topology.
 
-The finite separable primitive-element theorem is supplied by the open proof at [Stacks, Tag 030N](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-primitive-element). Finite multiplicative-subgroup cyclicity follows from [Tag 09HX](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-cyclic), since a degree-\(d\) polynomial has at most \(d\) roots. The residue extension and Frobenius assertions needed here are justified directly in the proof of Corollary 3.1.
+The complete finite separable primitive-element proof is [**Extensions of complete valued fields**, Proposition 0.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#0-algebraic-generators). The complete finite multiplicative-subgroup cyclicity proof is [**Hensel's lemma, squares and roots of unity in p-adic fields**, Lemma 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-03.html#4-residues-lift-multiplicatively). Stacks, Tags 030N and 09HX remain comparison sources. The residue extension and Frobenius assertions needed here are justified directly in the proof of Corollary 3.1 and in Proposition 0.2 of the exact preceding provider.
+
+The algebra used by Theorem 2.1 has exact earlier providers. [**Extensions of complete valued fields**, Proposition 0.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#0-algebraic-generators) proves the finite separable primitive-element theorem over an arbitrary field; its [Proposition 0.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-04.html#finite-residue-fields) supplies the finite-field statements used in Corollary 3.1. The direct finite-field proof in that corollary remains an alternative. The [finite separable normal-closure proof](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2763), [automorphism-count Galois criterion](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2723), [extension of embeddings in normal algebraic fields](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2004) and [finite Galois correspondence](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L2845) are in the AI Integrated Stacks Project, *Fields*, at the fixed revision shown in those links. Their statements apply in arbitrary characteristic with their stated algebraicity, normality, separability and finiteness hypotheses; residue perfectness is not substituted for those hypotheses. Section 2.3 above proves the exact inverse-limit comparison used here; the [general inverse-limit theorem](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/fields.tex#L3041) is an additional programme provider. These separately licensed Stacks proofs are linked, not copied or relicensed CC0.
 
 ## References
 
@@ -309,4 +457,4 @@ A. V. Sutherland, MIT 18.785 Number Theory I lecture notes, Fall 2021: Lecture 1
 
 [Stacks, Tag 09E9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-types-of-extensions), for the definitions of unramified, tame and totally ramified DVR extensions.
 
-I. B. Fesenko and S. V. Vostokov, [*Local Fields and Their Extensions*](https://ivanfesenko.org/wp-content/uploads/2021/10/vol.pdf), second edition (2002), approved author-hosted copy, Chapter III, §1, (1.1)–(1.2), printed pp. 68–69, for the norm expansion and its graded trace/norm comparison; the scope of this comparison is explained above.
+I. B. Fesenko and S. V. Vostokov, [*Local Fields and Their Extensions*](https://ivanfesenko.org/wp-content/uploads/2021/10/vol.pdf), second edition (2002), author-hosted edition, Chapter III, §1, (1.1)–(1.2), printed pp. 68–69, for the norm expansion and its graded trace/norm comparison; the scope of this comparison is explained above.

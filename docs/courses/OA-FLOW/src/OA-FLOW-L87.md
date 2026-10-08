@@ -4,7 +4,7 @@ A vector whose frequencies lie in a sufficiently narrow band around \(p\) behave
 
 *Programme proof written in Codex (OpenAI), September 2026; restoration and proof expansion, 5 October 2026. New expression is dedicated under CC0 to the extent of rights held. Human review is not asserted.*
 
-The positive Fourier convention and both eligible Banach settings are [AF0](OA-FLOW-AF.md#af-0). The exact earlier scalar inputs are LF0–1 for the complete dual-Haar correlation identity and norm-controlled local plateaus, LF4 for plateaus around compact sets, and SS1 for singleton synthesis. BS1–3 supply the full integrated action, filter bounds and cutoff laws in both Banach settings.
+The positive Fourier convention and both eligible Banach settings are [AF0](OA-FLOW-AF.md#af-0). The exact earlier scalar inputs are [LF0–1](OA-FLOW-LF.md#lf-0) for the complete dual-Haar correlation identity and norm-controlled local plateaus, [LF4](OA-FLOW-LF.md#lf-4) for plateaus around compact sets, and [SS1](OA-FLOW-SS.md#ss-1) for singleton synthesis. [BS1–3](OA-FLOW-BS.md#bs-1) supply the full integrated action, filter bounds and cutoff laws in both Banach settings.
 
 <a id="oa-flow.band.plateau"></a>
 
@@ -43,7 +43,7 @@ Frequency translation moves this cutoff to \(p\) without changing its \(A\)-norm
 
 ## A vanishing filter has a small local product
 
-The complete singleton-synthesis proof SS1, transported by the reflection in AF0, and (N1) give the following local multiplication lemma. If \(g\in A(H)\) and \(g(p)=0\), then for every \(\eta>0\) there is an \(h\in A_c(H)\), equal to \(1\) near \(p\), with
+The complete singleton-synthesis proof [SS1](OA-FLOW-SS.md#ss-1), transported by the reflection in AF0, and (N1) give the following local multiplication lemma. If \(g\in A(H)\) and \(g(p)=0\), then for every \(\eta>0\) there is an \(h\in A_c(H)\), equal to \(1\) near \(p\), with
 
 <a id="equation-n4"></a>
 
@@ -64,7 +64,7 @@ Let \(X=X_*^*\) and \(\alpha\) satisfy the uniformly bounded normal action hypot
 $$f_t(q)=(t,q)f(q),\qquad
 g_t(q)=f_t(q)-(t,p)f(q). \tag{N5}$$
 
-The actual integrated covariance BS1, in AF0’s positive convention, gives \(\alpha_t\alpha_f=\alpha_{f_t}\), and \(g_t(p)=0\). If \(U\) is a relatively compact open neighborhood of \(p\) with \(\overline U\subset\operatorname{int}V\), and \(x\in X_\alpha(U)\), then \(\operatorname{Sp}_\alpha(x)\subset\overline U\) is compact. The proved compact-spectral cutoff BS3 gives \(\alpha_f x=x\). Hence
+The actual integrated covariance [BS1](OA-FLOW-BS.md#bs-1), in AF0’s positive convention, gives \(\alpha_t\alpha_f=\alpha_{f_t}\), and \(g_t(p)=0\). If \(U\) is a relatively compact open neighborhood of \(p\) with \(\overline U\subset\operatorname{int}V\), and \(x\in X_\alpha(U)\), then \(\operatorname{Sp}_\alpha(x)\subset\overline U\) is compact. The proved compact-spectral cutoff [BS3](OA-FLOW-BS.md#bs-3) gives \(\alpha_f x=x\). Hence
 
 <a id="equation-n6"></a>
 

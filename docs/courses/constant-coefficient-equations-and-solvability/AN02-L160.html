@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Convolution and joint frequency carriers</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L159.html">Previous lesson</a> · <a href="#1-the-full-joint-family-identity">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="convolution-and-joint-frequency-carriers">Convolution and joint frequency carriers</h1>
+<p>Original exposition, examples and complete solutions: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.</p>
+<p>Multiplying entire Fourier transforms adds their logarithmic profiles. The resulting carrier is a Minkowski sum, provided both input profiles are selected by the <strong>same frequency sequence</strong>. If one input collapses on that sequence, the product collapses as well.</p>
+<p>This lesson proves the full joint-family identity and explains its synchronization requirement. The four examples include atomic cancellation, two singular factors with a smooth convolution, and a family whose output has both an empty and a nonempty carrier.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em>, Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>, and its second volume. The actual prerequisites are the preceding proofs of <a href="AN02-L157.html">joint logarithmic-frequency compactness</a>, <a href="AN02-L141.html#indicator-additivity-theorem">indicator additivity</a>, and <a href="AN02-L158.html">compact Fourier inversion</a>. These linked proofs provide what the argument needs.</p>
+<h2 id="4-multiplication-keeps-one-common-frequency">4. Multiplication keeps one common frequency</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(u\)">\(u\)</span> be a compact distribution on <span class="math" data-index="1" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. We use</p>
+<span class="math math-display" id="eq-4.1" data-index="2" data-tex="\[
+ F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad |c|&gt;2,\quad c\in\mathbb R^n. \tag{4.1}
+\]">\[
+ F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad |c|&gt;2,\quad c\in\mathbb R^n. \tag{4.1}
+\]</span>
+<p>Use <span class="math" data-index="3" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. The logarithm at a transform zero is <span class="math" data-index="4" data-tex="\(-\infty\)">\(-\infty\)</span>. A proper profile is a plurisubharmonic local <span class="math" data-index="5" data-tex="\(L^1\)">\(L^1\)</span> limit; a collapsed profile tends to <span class="math" data-index="6" data-tex="\(-\infty\)">\(-\infty\)</span> uniformly on compact parameter sets.</p>
+<p>Let <span class="math" data-index="7" data-tex="\(\mathcal J(u_1,\ldots,u_k)\)">\(\mathcal J(u_1,\ldots,u_k)\)</span> be the set of indicator tuples realized by simultaneous profile convergence along one escaping real frequency sequence. A proper indicator <span class="math" data-index="8" data-tex="\(h_j\)">\(h_j\)</span> is the support function of a nonempty compact convex carrier <span class="math" data-index="9" data-tex="\(C_j\)">\(C_j\)</span>. A collapsed indicator has empty carrier.</p>
+<p>For compact convolution,</p>
+<span class="math math-display" id="eq-4.2" data-index="10" data-tex="\[
+ F_{a*b}=F_aF_b,\qquad L_{a*b}=L_a+L_b. \tag{4.2}
+\]">\[
+ F_{a*b}=F_aF_b,\qquad L_{a*b}=L_a+L_b. \tag{4.2}
+\]</span>
+<p>There is no extra <span class="math" data-index="11" data-tex="\(2\pi\)">\(2\pi\)</span> factor in this forward identity. The complete compact-distribution pairing proof is Lemma 2.1 below.</p>
+<p><strong>Theorem 4.1.</strong> For compact distributions <span class="math" data-index="12" data-tex="\(u&#x27;_j,u&#x27;&#x27;_j\)">\(u&#x27;_j,u&#x27;&#x27;_j\)</span>, <span class="math" data-index="13" data-tex="\(1\leq j\leq k\)">\(1\leq j\leq k\)</span>,</p>
+<span class="math math-display" id="eq-4.3" data-index="14" data-tex="\[
+ \begin{split}
+ &amp;\mathcal J(u&#x27;_1*u&#x27;&#x27;_1,\ldots,u&#x27;_k*u&#x27;&#x27;_k)\\
+ &amp;\quad=
+ \left\{(h&#x27;_1+h&#x27;&#x27;_1,\ldots,h&#x27;_k+h&#x27;&#x27;_k):
+ (h&#x27;_1,\ldots,h&#x27;_k,h&#x27;&#x27;_1,\ldots,h&#x27;&#x27;_k)
+ \in\mathcal J(u&#x27;_1,\ldots,u&#x27;_k,u&#x27;&#x27;_1,\ldots,u&#x27;&#x27;_k)\right\}.
+ \end{split} \tag{4.3}
+\]">\[
+ \begin{split}
+ &amp;\mathcal J(u&#x27;_1*u&#x27;&#x27;_1,\ldots,u&#x27;_k*u&#x27;&#x27;_k)\\
+ &amp;\quad=
+ \left\{(h&#x27;_1+h&#x27;&#x27;_1,\ldots,h&#x27;_k+h&#x27;&#x27;_k):
+ (h&#x27;_1,\ldots,h&#x27;_k,h&#x27;&#x27;_1,\ldots,h&#x27;&#x27;_k)
+ \in\mathcal J(u&#x27;_1,\ldots,u&#x27;_k,u&#x27;&#x27;_1,\ldots,u&#x27;&#x27;_k)\right\}.
+ \end{split} \tag{4.3}
+\]</span>
+<p>The indicator sum is <span class="math" data-index="15" data-tex="\(-\infty\)">\(-\infty\)</span> if either summand is <span class="math" data-index="16" data-tex="\(-\infty\)">\(-\infty\)</span>. Every proper output carrier is <span class="math" data-index="17" data-tex="\(C&#x27;_j+C&#x27;&#x27;_j\)">\(C&#x27;_j+C&#x27;&#x27;_j\)</span>; with an empty input carrier, the output carrier is empty. Theorem 1.1 gives the full proof.</p>
+<p>The displayed right side selects all factors jointly. Selecting one indicator tuple from the primed factors and an unrelated tuple from the double-primed factors would allow incompatible frequencies. Worked example 3 shows that this larger Cartesian choice can predict a nonempty carrier when the convolution is smooth.</p>
+<h2 id="5-the-two-possible-limiting-behaviors">5. The two possible limiting behaviors</h2>
+<p>If both factors have proper profiles <span class="math" data-index="18" data-tex="\(v&#x27;\)">\(v&#x27;\)</span> and <span class="math" data-index="19" data-tex="\(v&#x27;&#x27;\)">\(v&#x27;&#x27;\)</span> on the same sequence, their normalized logarithms add in local <span class="math" data-index="20" data-tex="\(L^1\)">\(L^1\)</span>:</p>
+<span class="math math-display" id="eq-5.1" data-index="21" data-tex="\[
+ \|L_{u&#x27;*u&#x27;&#x27;}-v&#x27;-v&#x27;&#x27;\|_{L^1(B)}
+ \leq\|L_{u&#x27;}-v&#x27;\|_{L^1(B)}+\|L_{u&#x27;&#x27;}-v&#x27;&#x27;\|_{L^1(B)}
+ \longrightarrow0. \tag{5.1}
+\]">\[
+ \|L_{u&#x27;*u&#x27;&#x27;}-v&#x27;-v&#x27;&#x27;\|_{L^1(B)}
+ \leq\|L_{u&#x27;}-v&#x27;\|_{L^1(B)}+\|L_{u&#x27;&#x27;}-v&#x27;&#x27;\|_{L^1(B)}
+ \longrightarrow0. \tag{5.1}
+\]</span>
+<p>The sum is proper because the two profiles are finite on a common set of full measure. Their canonical sum is PSH and satisfies the same kind of global linear imaginary-growth bound. The exact additivity theorem in <a href="AN02-L141.html#indicator-additivity-theorem">Directional averages and additivity of growth indicators</a> gives <span class="math" data-index="22" data-tex="\(h_{v&#x27;+v&#x27;&#x27;}=h_{v&#x27;}+h_{v&#x27;&#x27;}\)">\(h_{v&#x27;+v&#x27;&#x27;}=h_{v&#x27;}+h_{v&#x27;&#x27;}\)</span>.</p>
+<p>If one input collapses, every compact parameter set has</p>
+<span class="math math-display" id="eq-5.2" data-index="23" data-tex="\[
+ \sup_B L_{u&#x27;*u&#x27;&#x27;}\leq\sup_B L_{u&#x27;}+M_B\longrightarrow-\infty, \tag{5.2}
+\]">\[
+ \sup_B L_{u&#x27;*u&#x27;&#x27;}\leq\sup_B L_{u&#x27;}+M_B\longrightarrow-\infty, \tag{5.2}
+\]</span>
+<p>where <span class="math" data-index="24" data-tex="\(M_B\)">\(M_B\)</span> is an upper bound for the other input normalized logarithms. The other factor need not converge for this estimate. Compact Fourier growth provides the bound.</p>
+<p>The empty carrier here records logarithmic collapse. It does not say that the distribution is zero, or that its ordinary support is empty. A nonzero compact smooth function has empty singular carrier profiles and a nonempty ordinary support.</p>
+<h2 id="6-why-equality-needs-both-constructions">6. Why equality needs both constructions</h2>
+<p>To start with an output tuple, keep its witnessing frequency sequence and extract profiles of all finitely many factors on a common subsequence. The original output profiles persist there. Proper input pairs add; a collapsed input forces its product to collapse. This puts every output tuple on the right side of (4.3).</p>
+<p>To start with a joint input tuple, retain its witnessing sequence. Each product coordinate converges on that sequence, by (5.1) or (5.2), and its indicator is the required sum. This gives the opposite inclusion. The two arguments also cover mixed tuples, with some proper coordinates and some collapsed coordinates.</p>
+<p>Neither construction replaces a witnessing sequence by unrelated frequencies. Neither identifies an indicator with a finite-height supremum. These are the two synchronization points of the proof.</p>
+<h2 id="worked-example-1-derivative-orders-add-while-the-carrier-translates">Worked example 1. Derivative orders add, while the carrier translates</h2>
+<p>On <span class="math" data-index="25" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-index="26" data-tex="\(a,b\in\mathbb R\)">\(a,b\in\mathbb R\)</span> and integers <span class="math" data-index="27" data-tex="\(m,r\geq0\)">\(m,r\geq0\)</span>. Set</p>
+<span class="math math-display" id="eq-7.1" data-index="28" data-tex="\[
+ u=D^m\delta_a,\qquad v=D^r\delta_b.
+ \tag{7.1}
+\]">\[
+ u=D^m\delta_a,\qquad v=D^r\delta_b.
+ \tag{7.1}
+\]</span>
+<p>Their transforms are <span class="math" data-index="29" data-tex="\(\zeta^m e^{-ia\zeta}\)">\(\zeta^m e^{-ia\zeta}\)</span> and <span class="math" data-index="30" data-tex="\(\zeta^r e^{-ib\zeta}\)">\(\zeta^r e^{-ib\zeta}\)</span>. On every escaping real frequency sequence, uniformly on each compact <span class="math" data-index="31" data-tex="\(z\)">\(z\)</span>-set,</p>
+<span class="math math-display" id="eq-7.2" data-index="32" data-tex="\[
+ L_u(z,c)\longrightarrow m+a\,\operatorname{Im}z,\qquad
+ L_v(z,c)\longrightarrow r+b\,\operatorname{Im}z. \tag{7.2}
+\]">\[
+ L_u(z,c)\longrightarrow m+a\,\operatorname{Im}z,\qquad
+ L_v(z,c)\longrightarrow r+b\,\operatorname{Im}z. \tag{7.2}
+\]</span>
+<p>Indeed, <span class="math" data-index="33" data-tex="\((c+z\log|c|)/c\to1\)">\((c+z\log|c|)/c\to1\)</span> uniformly on such a set, so
+<span class="math" data-index="34" data-tex="\(\log|c+z\log|c||/\log|c|\to1\)">\(\log|c+z\log|c||/\log|c|\to1\)</span>.
+The exponential contributes its displayed exact linear term.</p>
+<p>The product transform is <span class="math" data-index="35" data-tex="\(\zeta^{m+r}e^{-i(a+b)\zeta}\)">\(\zeta^{m+r}e^{-i(a+b)\zeta}\)</span>, and compact Fourier inversion gives</p>
+<span class="math math-display" id="eq-7.3" data-index="36" data-tex="\[
+ u*v=D^{m+r}\delta_{a+b}. \tag{7.3}
+\]">\[
+ u*v=D^{m+r}\delta_{a+b}. \tag{7.3}
+\]</span>
+<p>Its proper profile is <span class="math" data-index="37" data-tex="\(m+r+(a+b)\operatorname{Im}z\)">\(m+r+(a+b)\operatorname{Im}z\)</span>. The indicators are <span class="math" data-index="38" data-tex="\(a\eta\)">\(a\eta\)</span>, <span class="math" data-index="39" data-tex="\(b\eta\)">\(b\eta\)</span>, and <span class="math" data-index="40" data-tex="\((a+b)\eta\)">\((a+b)\eta\)</span>; the carriers are <span class="math" data-index="41" data-tex="\(\{a\}\)">\(\{a\}\)</span>, <span class="math" data-index="42" data-tex="\(\{b\}\)">\(\{b\}\)</span>, and <span class="math" data-index="43" data-tex="\(\{a+b\}\)">\(\{a+b\}\)</span>. The intercept records derivative order in the profile, while the indicator records the carrier.</p>
+<h2 id="worked-example-2-atomic-cancellation-and-persistent-transform-zeros">Worked example 2. Atomic cancellation and persistent transform zeros</h2>
+<p>Take</p>
+<span class="math math-display" id="eq-7.4" data-index="44" data-tex="\[
+ u=\delta_0+\delta_1,\qquad
+ v=\delta_0-\delta_1,\qquad
+ u*v=\delta_0-\delta_2. \tag{7.4}
+\]">\[
+ u=\delta_0+\delta_1,\qquad
+ v=\delta_0-\delta_1,\qquad
+ u*v=\delta_0-\delta_2. \tag{7.4}
+\]</span>
+<p>The two mixed <span class="math" data-index="45" data-tex="\(\delta_1\)">\(\delta_1\)</span> terms cancel. Their transforms satisfy</p>
+<span class="math math-display" id="eq-7.5" data-index="46" data-tex="\[
+ (1+e^{-i\zeta})(1-e^{-i\zeta})=1-e^{-2i\zeta}. \tag{7.5}
+\]">\[
+ (1+e^{-i\zeta})(1-e^{-i\zeta})=1-e^{-2i\zeta}. \tag{7.5}
+\]</span>
+<p>Both input profiles converge in local <span class="math" data-index="47" data-tex="\(L^1\)">\(L^1\)</span> to
+<span class="math" data-index="48" data-tex="\(\max(0,\operatorname{Im}z)\)">\(\max(0,\operatorname{Im}z)\)</span> along every escaping real sequence. To verify this, write <span class="math" data-index="49" data-tex="\(R=|c|\)">\(R=|c|\)</span>. For <span class="math" data-index="50" data-tex="\(\eta=\operatorname{Im}z\geq d&gt;0\)">\(\eta=\operatorname{Im}z\geq d&gt;0\)</span>, the exponential has modulus <span class="math" data-index="51" data-tex="\(R^\eta\)">\(R^\eta\)</span>, so each input modulus divided by <span class="math" data-index="52" data-tex="\(R^\eta\)">\(R^\eta\)</span> lies between <span class="math" data-index="53" data-tex="\(1-R^{-d}\)">\(1-R^{-d}\)</span> and <span class="math" data-index="54" data-tex="\(1+R^{-d}\)">\(1+R^{-d}\)</span>. For <span class="math" data-index="55" data-tex="\(\eta\leq-d\)">\(\eta\leq-d\)</span>, each modulus lies between those same two quantities without division by <span class="math" data-index="56" data-tex="\(R^\eta\)">\(R^\eta\)</span>. Hence the normalized logarithms converge uniformly off any strip <span class="math" data-index="57" data-tex="\(|\eta|&lt;d\)">\(|\eta|&lt;d\)</span> to the stated profile.</p>
+<p>The entire normalized family is locally uniformly bounded above. Profile compactness supplies a proper or collapsed limit on a further subsequence. The off-real convergence rules out collapse and identifies any proper limit almost everywhere with <span class="math" data-index="58" data-tex="\(\max(0,\eta)\)">\(\max(0,\eta)\)</span>; the real line has zero area. Canonical uniqueness identifies it everywhere. If full local <span class="math" data-index="59" data-tex="\(L^1\)">\(L^1\)</span> convergence failed, a subsequence separated from that limit by a positive <span class="math" data-index="60" data-tex="\(L^1\)">\(L^1\)</span> distance would have a further compactness subsequence with the very same limit, a contradiction. This proves the full convergence.</p>
+<p>The output profile is therefore <span class="math" data-index="61" data-tex="\(2\max(0,\eta)\)">\(2\max(0,\eta)\)</span>. Its indicator and carrier are</p>
+<span class="math math-display" id="eq-7.6" data-index="62" data-tex="\[
+ h_{u*v}(\eta)=2\max(0,\eta),\qquad C_{u*v}=[0,2]=[0,1]+[0,1]. \tag{7.6}
+\]">\[
+ h_{u*v}(\eta)=2\max(0,\eta),\qquad C_{u*v}=[0,2]=[0,1]+[0,1]. \tag{7.6}
+\]</span>
+<p>At <span class="math" data-index="63" data-tex="\(c_j=2\pi j\)">\(c_j=2\pi j\)</span>, the transform of <span class="math" data-index="64" data-tex="\(v\)">\(v\)</span> and of <span class="math" data-index="65" data-tex="\(u*v\)">\(u*v\)</span> is zero. Their normalized logarithms at <span class="math" data-index="66" data-tex="\(z=0\)">\(z=0\)</span> remain <span class="math" data-index="67" data-tex="\(-\infty\)">\(-\infty\)</span>, while their canonical limiting profiles at <span class="math" data-index="68" data-tex="\(z=0\)">\(z=0\)</span> equal zero. A persistent value at one point does not replace local <span class="math" data-index="69" data-tex="\(L^1\)">\(L^1\)</span> convergence.</p>
+<figure><img class="course-figure" width="2048" height="1138" src="reproduce/L160/figures/atomic-cancellation-and-carrier-addition.png" alt="Atomic convolution cancels the two intermediate masses while the selected convex carriers add." /><figcaption class="native"><a href="reproduce/L160/figures/atomic-cancellation-and-carrier-addition.png">Open full-size PNG</a> · <a href="reproduce/L160/figures/atomic-cancellation-and-carrier-addition.svg">Open SVG</a></figcaption></figure>
+<p>The signed masses in the figure are exactly those in (7.4). The support intervals in its lower panel are convex profile carriers. The output distribution is singular only at its two surviving atoms, so its carrier also contains smooth spatial points.</p>
+<h2 id="worked-example-3-two-singular-factors-convolve-to-a-smooth-function">Worked example 3. Two singular factors convolve to a smooth function</h2>
+<p>Let <span class="math" data-index="70" data-tex="\(f\)">\(f\)</span> be a nonnegative compact smooth probability density on <span class="math" data-index="71" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, positive on <span class="math" data-index="72" data-tex="\((-1,1)\)">\((-1,1)\)</span> and zero outside <span class="math" data-index="73" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Define</p>
+<span class="math math-display" id="eq-7.7" data-index="74" data-tex="\[
+ p=\delta_0(x_1)\otimes f(x_2),\qquad
+ q=f(x_1)\otimes\delta_0(x_2). \tag{7.7}
+\]">\[
+ p=\delta_0(x_1)\otimes f(x_2),\qquad
+ q=f(x_1)\otimes\delta_0(x_2). \tag{7.7}
+\]</span>
+<p>Their singular supports are the vertical and horizontal segments
+<span class="math" data-index="75" data-tex="\(\{0\}\times[-1,1]\)">\(\{0\}\times[-1,1]\)</span> and <span class="math" data-index="76" data-tex="\([-1,1]\times\{0\}\)">\([-1,1]\times\{0\}\)</span>.
+For an interior segment point, a tangential test against <span class="math" data-index="77" data-tex="\(f\)">\(f\)</span> reduces the distribution to a nonzero transverse point mass, which cannot be smooth. Closedness includes the endpoints. Their whole ordinary supports are those same segments.</p>
+<p>Separate-coordinate convolution gives</p>
+<span class="math math-display" id="eq-7.8" data-index="78" data-tex="\[
+ p*q=f(x_1)f(x_2),\qquad
+ F_p(\zeta)=\widehat f(\zeta_2),\qquad
+ F_q(\zeta)=\widehat f(\zeta_1). \tag{7.8}
+\]">\[
+ p*q=f(x_1)f(x_2),\qquad
+ F_p(\zeta)=\widehat f(\zeta_2),\qquad
+ F_q(\zeta)=\widehat f(\zeta_1). \tag{7.8}
+\]</span>
+<p>The output is compact and smooth, with ordinary support <span class="math" data-index="79" data-tex="\([-1,1]^2\)">\([-1,1]^2\)</span>. Its logarithmic profiles all collapse. The whole-complex rapid Fourier estimate for compact smooth functions, proved in <a href="AN02-L158.html">Locating singularities through logarithmic Fourier strips</a>, makes the normalized logarithms tend uniformly to <span class="math" data-index="80" data-tex="\(-\infty\)">\(-\infty\)</span> on each compact parameter set.</p>
+<p>There cannot be a common frequency sequence on which both input profiles are proper. On an escaping sequence with <span class="math" data-index="81" data-tex="\(R=|c|\)">\(R=|c|\)</span>, at least one coordinate has modulus at least <span class="math" data-index="82" data-tex="\(R/\sqrt2\)">\(R/\sqrt2\)</span>. On a subsequence it is always the first coordinate or always the second. If it is the first, the smooth Fourier factor in <span class="math" data-index="83" data-tex="\(F_q\)">\(F_q\)</span> decreases faster than every power of <span class="math" data-index="84" data-tex="\(R\)">\(R\)</span>, uniformly on compact <span class="math" data-index="85" data-tex="\(z\)">\(z\)</span>-sets, so <span class="math" data-index="86" data-tex="\(q\)">\(q\)</span>'s profile collapses. If it is the second, <span class="math" data-index="87" data-tex="\(p\)">\(p\)</span>'s profile collapses. A presumed proper limit would persist on that subsequence, giving a contradiction.</p>
+<p>Nevertheless each input separately has a proper profile. For <span class="math" data-index="88" data-tex="\(c=(t,0)\)">\(c=(t,0)\)</span>, <span class="math" data-index="89" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>, <span class="math" data-index="90" data-tex="\(F_p(c)=1\)">\(F_p(c)=1\)</span>, so <span class="math" data-index="91" data-tex="\(L_p(0,c)=0\)">\(L_p(0,c)=0\)</span> and uniform collapse is impossible; profile compactness yields a proper further subsequence. On this same sequence <span class="math" data-index="92" data-tex="\(q\)">\(q\)</span> collapses. The vertical sequence gives the opposite pair. Thus separate proper choices exist, but they cannot be paired on one common sequence.</p>
+<p>Their separate carrier sum is nonempty, whereas</p>
+<span class="math math-display" id="eq-7.9" data-index="93" data-tex="\[
+ \mathcal J(p*q)=\{-\infty\}. \tag{7.9}
+\]">\[
+ \mathcal J(p*q)=\{-\infty\}. \tag{7.9}
+\]</span>
+<p>This proves that the Cartesian replacement of the joint family in (4.3) is false.</p>
+<figure><img class="course-figure" width="2816" height="996" src="reproduce/L160/figures/crossed-factors-and-shared-frequency.png" alt="Crossed singular segments, their smooth convolution support, and the three shared-frequency directions that explain collapse." /><figcaption class="native"><a href="reproduce/L160/figures/crossed-factors-and-shared-frequency.png">Open full-size PNG</a> · <a href="reproduce/L160/figures/crossed-factors-and-shared-frequency.svg">Open SVG</a></figcaption></figure>
+<p>The segments are actual ordinary and singular supports. An individual proper profile carrier is contained in its segment; the figure does not classify all such carriers. Horizontal and vertical frequency rays admit proper/empty pairs after extraction. The diagonal ray gives two collapsed profiles. The square is the ordinary support of the smooth convolution, whose logarithmic carrier is empty.</p>
+<h2 id="worked-example-4-one-output-is-smooth-and-another-stays-singular">Worked example 4. One output is smooth and another stays singular</h2>
+<p>Use <span class="math" data-index="94" data-tex="\(p,q\)">\(p,q\)</span> from Worked example 3 and let <span class="math" data-index="95" data-tex="\(a=(1,-1)\)">\(a=(1,-1)\)</span>. For two output coordinates, choose the prime and double-prime blocks</p>
+<span class="math math-display" id="eq-7.10" data-index="96" data-tex="\[
+ (u&#x27;_1,u&#x27;_2)=(p,\delta_0),\qquad
+ (u&#x27;&#x27;_1,u&#x27;&#x27;_2)=(q,\delta_a). \tag{7.10}
+\]">\[
+ (u&#x27;_1,u&#x27;_2)=(p,\delta_0),\qquad
+ (u&#x27;&#x27;_1,u&#x27;&#x27;_2)=(q,\delta_a). \tag{7.10}
+\]</span>
+<p>The outputs are <span class="math" data-index="97" data-tex="\((f\otimes f,\delta_a)\)">\((f\otimes f,\delta_a)\)</span>. Every output sequence has the indicator tuple</p>
+<span class="math math-display" id="eq-7.11" data-index="98" data-tex="\[
+ (-\infty,h_a),\qquad h_a(\eta)=\eta_1-\eta_2. \tag{7.11}
+\]">\[
+ (-\infty,h_a),\qquad h_a(\eta)=\eta_1-\eta_2. \tag{7.11}
+\]</span>
+<p>The input tuple has block order
+<span class="math" data-index="99" data-tex="\((h_p,0,h_q,h_a)\)">\((h_p,0,h_q,h_a)\)</span>. A common sequence forces at least one of <span class="math" data-index="100" data-tex="\(h_p,h_q\)">\(h_p,h_q\)</span> to be collapsed, as proved above; the two point-mass profiles are exact on every sequence. Its coordinate sums are thus precisely <span class="math" data-index="101" data-tex="\((-\infty,h_a)\)">\((-\infty,h_a)\)</span>, matching (7.11). The output carrier tuple is <span class="math" data-index="102" data-tex="\((\varnothing,\{(1,-1)\})\)">\((\varnothing,\{(1,-1)\})\)</span>.</p>
+<p>This mixed case is part of the full identity. It would be lost by a rule that discarded every tuple having even one collapsed coordinate.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p>The ten exercises total 100 points.</p>
+<h3 id="exercise-1-add-orders-and-translate-the-point-carrier-10-points">Exercise 1. Add orders and translate the point carrier — 10 points</h3>
+<p>Compute the convolution, profiles and indicators of <span class="math" data-index="103" data-tex="\(D^2\delta_{-1}\)">\(D^2\delta_{-1}\)</span> and <span class="math" data-index="104" data-tex="\(D\delta_2\)">\(D\delta_2\)</span>.</p>
+<p><strong>Solution.</strong> Their transforms are <span class="math" data-index="105" data-tex="\(\zeta^2e^{i\zeta}\)">\(\zeta^2e^{i\zeta}\)</span> and <span class="math" data-index="106" data-tex="\(\zeta e^{-2i\zeta}\)">\(\zeta e^{-2i\zeta}\)</span>. Their product is <span class="math" data-index="107" data-tex="\(\zeta^3e^{-i\zeta}\)">\(\zeta^3e^{-i\zeta}\)</span>, the transform of <span class="math" data-index="108" data-tex="\(D^3\delta_1\)">\(D^3\delta_1\)</span>. The two profiles are <span class="math" data-index="109" data-tex="\(2-\operatorname{Im}z\)">\(2-\operatorname{Im}z\)</span> and <span class="math" data-index="110" data-tex="\(1+2\operatorname{Im}z\)">\(1+2\operatorname{Im}z\)</span>, so the product profile is <span class="math" data-index="111" data-tex="\(3+\operatorname{Im}z\)">\(3+\operatorname{Im}z\)</span>. The input indicators are <span class="math" data-index="112" data-tex="\(-\eta\)">\(-\eta\)</span> and <span class="math" data-index="113" data-tex="\(2\eta\)">\(2\eta\)</span>; the output indicator is <span class="math" data-index="114" data-tex="\(\eta\)">\(\eta\)</span>. The singleton carriers <span class="math" data-index="115" data-tex="\(\{-1\}\)">\(\{-1\}\)</span> and <span class="math" data-index="116" data-tex="\(\{2\}\)">\(\{2\}\)</span> add to <span class="math" data-index="117" data-tex="\(\{1\}\)">\(\{1\}\)</span>. Negative indicator values are allowed and do not mean an empty carrier.</p>
+<h3 id="exercise-2-detect-an-incorrect-normalization-6-points">Exercise 2. Detect an incorrect normalization — 6 points</h3>
+<p>Let <span class="math" data-index="118" data-tex="\(a=1_{[0,1]}\)">\(a=1_{[0,1]}\)</span> and <span class="math" data-index="119" data-tex="\(b=1_{[0,2]}\)">\(b=1_{[0,2]}\)</span>. Compute their Fourier transforms and the transform of their convolution at zero. Could an additional factor <span class="math" data-index="120" data-tex="\(2\pi\)">\(2\pi\)</span> occur?</p>
+<p><strong>Solution.</strong> For <span class="math" data-index="121" data-tex="\(\zeta\ne0\)">\(\zeta\ne0\)</span>,</p>
+<span class="math math-display" id="eq-8.1" data-index="122" data-tex="\[
+ F_a(\zeta)=\frac{1-e^{-i\zeta}}{i\zeta},\qquad
+ F_b(\zeta)=\frac{1-e^{-2i\zeta}}{i\zeta}. \tag{8.1}
+\]">\[
+ F_a(\zeta)=\frac{1-e^{-i\zeta}}{i\zeta},\qquad
+ F_b(\zeta)=\frac{1-e^{-2i\zeta}}{i\zeta}. \tag{8.1}
+\]</span>
+<p>The removable values at zero are <span class="math" data-index="123" data-tex="\(1\)">\(1\)</span> and <span class="math" data-index="124" data-tex="\(2\)">\(2\)</span>, equal to their integrals. The convolution integral is the product of the two integrals by Fubini, so <span class="math" data-index="125" data-tex="\(F_{a*b}(0)=2\)">\(F_{a*b}(0)=2\)</span>. The product formula gives exactly <span class="math" data-index="126" data-tex="\(1\cdot2\)">\(1\cdot2\)</span>. Any extra <span class="math" data-index="127" data-tex="\(2\pi\)">\(2\pi\)</span> factor would give the wrong mass. The inverse Fourier convention has its separate factor <span class="math" data-index="128" data-tex="\((2\pi)^{-1}\)">\((2\pi)^{-1}\)</span>.</p>
+<h3 id="exercise-3-prove-proper-convergence-without-pointwise-convergence-at-zeros-8-points">Exercise 3. Prove proper convergence without pointwise convergence at zeros — 8 points</h3>
+<p>Suppose two normalized logarithms converge locally in <span class="math" data-index="129" data-tex="\(L^1\)">\(L^1\)</span> to proper profiles. Prove the convolution limit in that topology and explain why transform zeros do not require pointwise convergence everywhere.</p>
+<p><strong>Solution.</strong> Nonzero entire transforms have logarithms that are locally integrable; their zero sets have zero volume. The exact extended logarithmic product identity therefore gives an almost-everywhere sum of integrable functions. Subtract the two proper limits and apply the <span class="math" data-index="130" data-tex="\(L^1\)">\(L^1\)</span> triangle inequality to obtain (5.1). The limits are finite almost everywhere, so their sum is proper, and addition of the PSH line inequalities gives its canonical PSH representative. A sequence can retain a zero at an individual point, as Worked example 2 does. Such a point has no effect on the local <span class="math" data-index="131" data-tex="\(L^1\)">\(L^1\)</span> norm, so pointwise convergence there is not needed.</p>
+<h3 id="exercise-4-a-collapsed-factor-does-not-need-a-convergent-partner-8-points">Exercise 4. A collapsed factor does not need a convergent partner — 8 points</h3>
+<p>One factor collapses uniformly on every compact parameter set. The other normalized family is merely locally uniformly bounded above. Show that their product collapses.</p>
+<p><strong>Solution.</strong> Fix a compact set <span class="math" data-index="132" data-tex="\(B\)">\(B\)</span>. Let <span class="math" data-index="133" data-tex="\(A_\nu=\sup_B L_{u&#x27;}\to-\infty\)">\(A_\nu=\sup_B L_{u&#x27;}\to-\infty\)</span>, and let <span class="math" data-index="134" data-tex="\(M_B\)">\(M_B\)</span> bound the other family for large <span class="math" data-index="135" data-tex="\(\nu\)">\(\nu\)</span>. The exact sum identity gives
+<span class="math" data-index="136" data-tex="\(\sup_B L_{u&#x27;*u&#x27;&#x27;}\leq A_\nu+M_B\to-\infty\)">\(\sup_B L_{u&#x27;*u&#x27;&#x27;}\leq A_\nu+M_B\to-\infty\)</span>.
+Since <span class="math" data-index="137" data-tex="\(B\)">\(B\)</span> is arbitrary, collapse is locally uniform. The partner may oscillate or have zeros; only its upper bound is used. No positive infinite value can cancel the negative divergence.</p>
+<h3 id="exercise-5-preserve-an-output-sequence-when-lifting-factors-10-points">Exercise 5. Preserve an output sequence when lifting factors — 10 points</h3>
+<p>Describe both constructions proving equality in (4.3). Why is choosing a fresh input sequence insufficient for the first construction?</p>
+<p><strong>Solution.</strong> Starting with a left-side output tuple, retain its witnessing sequence and apply compactness successively to each of the finitely many input families. The common subsequence preserves every output profile. Proper input pairs give the original output profile by uniqueness of the local <span class="math" data-index="138" data-tex="\(L^1\)">\(L^1\)</span> limit; collapsed inputs force the original output to collapse. Their indicators give the required joint right-side tuple.</p>
+<p>Starting with a full joint input tuple, retain its witnessing sequence and add each pair of normalized logarithms. Every coordinate converges properly or collapses, so the output indicators belong to the left family. A fresh sequence in the first construction could select different output indicators and would not show that the originally chosen tuple is represented on the right.</p>
+<h3 id="exercise-6-finite-height-suprema-need-not-add-10-points">Exercise 6. Finite-height suprema need not add — 10 points</h3>
+<p>For <span class="math" data-index="139" data-tex="\(v_1(z)=\log|\sin z|\)">\(v_1(z)=\log|\sin z|\)</span> and <span class="math" data-index="140" data-tex="\(v_2(z)=\log|\cos z|\)">\(v_2(z)=\log|\cos z|\)</span>, compare their real-translation envelopes at imaginary height zero and compute the indicator of their sum.</p>
+<p><strong>Solution.</strong> Each function has real-axis supremum zero, so <span class="math" data-index="141" data-tex="\(M_1(0)+M_2(0)=0\)">\(M_1(0)+M_2(0)=0\)</span>. The product identity
+<span class="math" data-index="142" data-tex="\(\sin z\cos z=\tfrac12\sin(2z)\)">\(\sin z\cos z=\tfrac12\sin(2z)\)</span> gives supremum <span class="math" data-index="143" data-tex="\(1/2\)">\(1/2\)</span> in modulus on the real axis; hence <span class="math" data-index="144" data-tex="\(M_{v_1+v_2}(0)=-\log2\)">\(M_{v_1+v_2}(0)=-\log2\)</span>, which is strictly smaller.</p>
+<p>At height <span class="math" data-index="145" data-tex="\(\eta\)">\(\eta\)</span>, maximizing the sine modulus over the real part gives <span class="math" data-index="146" data-tex="\(\cosh\eta\)">\(\cosh\eta\)</span>. Thus</p>
+<span class="math math-display" id="eq-8.2" data-index="147" data-tex="\[
+ M_1(\eta)=M_2(\eta)=\log\cosh\eta,\qquad
+ M_{v_1+v_2}(\eta)=\log\cosh(2\eta)-\log2. \tag{8.2}
+\]">\[
+ M_1(\eta)=M_2(\eta)=\log\cosh\eta,\qquad
+ M_{v_1+v_2}(\eta)=\log\cosh(2\eta)-\log2. \tag{8.2}
+\]</span>
+<p>Dividing the envelopes at height <span class="math" data-index="148" data-tex="\(t\eta\)">\(t\eta\)</span> by <span class="math" data-index="149" data-tex="\(t\)">\(t\)</span> and letting <span class="math" data-index="150" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> gives indicators <span class="math" data-index="151" data-tex="\(|\eta|\)">\(|\eta|\)</span>, <span class="math" data-index="152" data-tex="\(|\eta|\)">\(|\eta|\)</span>, and <span class="math" data-index="153" data-tex="\(2|\eta|\)">\(2|\eta|\)</span>. The constants disappear. Indicator additivity is exact even though the finite-height suprema do not add.</p>
+<h3 id="exercise-7-add-a-third-atomic-factor-10-points">Exercise 7. Add a third atomic factor — 10 points</h3>
+<p>Convolve the two factors in Worked example 2 with <span class="math" data-index="154" data-tex="\(w=\delta_0+\delta_2\)">\(w=\delta_0+\delta_2\)</span>. Determine the resulting atoms and the common-sequence carrier.</p>
+<p><strong>Solution.</strong> The first convolution is <span class="math" data-index="155" data-tex="\(\delta_0-\delta_2\)">\(\delta_0-\delta_2\)</span>. Its convolution with <span class="math" data-index="156" data-tex="\(w\)">\(w\)</span> is</p>
+<span class="math math-display" id="eq-8.3" data-index="157" data-tex="\[
+ (\delta_0-\delta_2)*(\delta_0+\delta_2)=\delta_0-\delta_4. \tag{8.3}
+\]">\[
+ (\delta_0-\delta_2)*(\delta_0+\delta_2)=\delta_0-\delta_4. \tag{8.3}
+\]</span>
+<p>The intermediate <span class="math" data-index="158" data-tex="\(\delta_2\)">\(\delta_2\)</span> terms cancel. The three transforms multiply to <span class="math" data-index="159" data-tex="\(1-e^{-4i\zeta}\)">\(1-e^{-4i\zeta}\)</span>. The first two canonical profiles are <span class="math" data-index="160" data-tex="\(\max(0,\eta)\)">\(\max(0,\eta)\)</span>, and the third is <span class="math" data-index="161" data-tex="\(\max(0,2\eta)\)">\(\max(0,2\eta)\)</span>, by the same off-real estimates as in Worked example 2. Their sum is <span class="math" data-index="162" data-tex="\(4\max(0,\eta)\)">\(4\max(0,\eta)\)</span>. The carrier is
+<span class="math" data-index="163" data-tex="\([0,1]+[0,1]+[0,2]=[0,4]\)">\([0,1]+[0,1]+[0,2]=[0,4]\)</span>.
+At <span class="math" data-index="164" data-tex="\(c_j=2\pi j\)">\(c_j=2\pi j\)</span>, the product transform still vanishes at <span class="math" data-index="165" data-tex="\(z=0\)">\(z=0\)</span>, although its canonical limiting profile there equals zero.</p>
+<h3 id="exercise-8-quantify-collapse-in-the-crossed-example-10-points">Exercise 8. Quantify collapse in the crossed example — 10 points</h3>
+<p>In Worked example 3, assume <span class="math" data-index="166" data-tex="\(|c_1|\geq R/\sqrt2\)">\(|c_1|\geq R/\sqrt2\)</span> and <span class="math" data-index="167" data-tex="\(|z|\leq2\)">\(|z|\leq2\)</span>. Show that <span class="math" data-index="168" data-tex="\(L_q\)">\(L_q\)</span> is eventually at most <span class="math" data-index="169" data-tex="\(-5\)">\(-5\)</span> on this compact parameter set, using a sufficiently high smooth Fourier decay order. Explain how this yields uniform collapse.</p>
+<p><strong>Solution.</strong> For sufficiently large <span class="math" data-index="170" data-tex="\(R\)">\(R\)</span>, the real part of
+<span class="math" data-index="171" data-tex="\(\zeta_1=c_1+z_1\log R\)">\(\zeta_1=c_1+z_1\log R\)</span> has modulus at least <span class="math" data-index="172" data-tex="\(R/(2\sqrt2)\)">\(R/(2\sqrt2)\)</span>, and <span class="math" data-index="173" data-tex="\(|\operatorname{Im}\zeta_1|\leq2\log R\)">\(|\operatorname{Im}\zeta_1|\leq2\log R\)</span>. The whole-complex smooth Fourier estimate of order eight gives</p>
+<span class="math math-display" id="eq-8.4" data-index="174" data-tex="\[
+ |\widehat f(\zeta_1)|
+ \leq C_8(1+|\zeta_1|)^{-8}e^{|\operatorname{Im}\zeta_1|}
+ \leq C R^{-6}. \tag{8.4}
+\]">\[
+ |\widehat f(\zeta_1)|
+ \leq C_8(1+|\zeta_1|)^{-8}e^{|\operatorname{Im}\zeta_1|}
+ \leq C R^{-6}. \tag{8.4}
+\]</span>
+<p>For large <span class="math" data-index="175" data-tex="\(R\)">\(R\)</span>, absorb the fixed <span class="math" data-index="176" data-tex="\(C\)">\(C\)</span> into one power of <span class="math" data-index="177" data-tex="\(R\)">\(R\)</span>, obtaining <span class="math" data-index="178" data-tex="\(|F_q|\leq R^{-5}\)">\(|F_q|\leq R^{-5}\)</span> and <span class="math" data-index="179" data-tex="\(L_q\leq-5\)">\(L_q\leq-5\)</span>. For an arbitrary requested negative bound <span class="math" data-index="180" data-tex="\(-A\)">\(-A\)</span>, increase the decay order beyond <span class="math" data-index="181" data-tex="\(A+2\)">\(A+2\)</span> and enlarge the threshold. This proves uniform collapse on the chosen compact set. The same reasoning works for every compact parameter set, with its own fixed imaginary-height coefficient.</p>
+<h3 id="exercise-9-an-empty-carrier-does-not-imply-a-zero-distribution-8-points">Exercise 9. An empty carrier does not imply a zero distribution — 8 points</h3>
+<p>Let <span class="math" data-index="182" data-tex="\(g\)">\(g\)</span> be a nonzero compact smooth function and <span class="math" data-index="183" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>. Compute <span class="math" data-index="184" data-tex="\(g*\delta_a\)">\(g*\delta_a\)</span>, its ordinary support and its logarithmic profile carriers.</p>
+<p><strong>Solution.</strong> Directly from the convolution pairing,
+<span class="math" data-index="185" data-tex="\((g*\delta_a)(x)=g(x-a)\)">\((g*\delta_a)(x)=g(x-a)\)</span>.
+Its ordinary support is <span class="math" data-index="186" data-tex="\(a+\operatorname{supp}g\)">\(a+\operatorname{supp}g\)</span>, a nonempty compact set. It is smooth. Its normalized Fourier logarithms collapse uniformly on compact parameter sets, by the whole-complex smooth Fourier decay estimate. Thus every profile carrier is empty. The input carrier for <span class="math" data-index="187" data-tex="\(g\)">\(g\)</span> is empty and that for <span class="math" data-index="188" data-tex="\(\delta_a\)">\(\delta_a\)</span> is <span class="math" data-index="189" data-tex="\(\{a\}\)">\(\{a\}\)</span>; their Minkowski sum is empty, in exact agreement with the theorem. This records smoothness and does not assert that the translated function vanishes.</p>
+<h3 id="exercise-10-track-three-blocks-and-two-mixed-outputs-20-points">Exercise 10. Track three blocks and two mixed outputs — 20 points</h3>
+<p>On <span class="math" data-index="190" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, use the crossed factors <span class="math" data-index="191" data-tex="\(p,q\)">\(p,q\)</span>. Let <span class="math" data-index="192" data-tex="\(a=(1,0)\)">\(a=(1,0)\)</span>, <span class="math" data-index="193" data-tex="\(b=(0,1)\)">\(b=(0,1)\)</span>, <span class="math" data-index="194" data-tex="\(c=(2,0)\)">\(c=(2,0)\)</span>, and <span class="math" data-index="195" data-tex="\(d=(-1,0)\)">\(d=(-1,0)\)</span>. The three blocks of two factors are
+<span class="math" data-index="196" data-tex="\((p,\delta_a)\)">\((p,\delta_a)\)</span>, <span class="math" data-index="197" data-tex="\((q,\delta_b)\)">\((q,\delta_b)\)</span>, and <span class="math" data-index="198" data-tex="\((\delta_c,\delta_d)\)">\((\delta_c,\delta_d)\)</span>.
+Compute the two convolutions and their indicator/carrier tuple, preserving one common six-coordinate input family.</p>
+<p><strong>Solution.</strong> The first output is
+<span class="math" data-index="199" data-tex="\((p*q)*\delta_c=(f\otimes f)(x-c)\)">\((p*q)*\delta_c=(f\otimes f)(x-c)\)</span>, a smooth function with ordinary support
+<span class="math" data-index="200" data-tex="\([1,3]\times[-1,1]\)">\([1,3]\times[-1,1]\)</span>.
+The second output is
+<span class="math" data-index="201" data-tex="\(\delta_a*\delta_b*\delta_d=\delta_{a+b+d}=\delta_{(0,1)}\)">\(\delta_a*\delta_b*\delta_d=\delta_{a+b+d}=\delta_{(0,1)}\)</span>.
+Their joint output indicator tuple is</p>
+<span class="math math-display" id="eq-8.5" data-index="202" data-tex="\[
+ (-\infty,\eta_2),\qquad
+ (C_1,C_2)=(\varnothing,\{(0,1)\}). \tag{8.5}
+\]">\[
+ (-\infty,\eta_2),\qquad
+ (C_1,C_2)=(\varnothing,\{(0,1)\}). \tag{8.5}
+\]</span>
+<p>On every common six-coordinate input sequence, at least one of the <span class="math" data-index="203" data-tex="\(p,q\)">\(p,q\)</span> profiles collapses, by the dominant-coordinate argument. Thus their first indicator sum, even after adding the finite point-mass indicator <span class="math" data-index="204" data-tex="\(c\cdot\eta\)">\(c\cdot\eta\)</span>, is <span class="math" data-index="205" data-tex="\(-\infty\)">\(-\infty\)</span>. The second sum is
+<span class="math" data-index="206" data-tex="\(a\cdot\eta+b\cdot\eta+d\cdot\eta=\eta_2\)">\(a\cdot\eta+b\cdot\eta+d\cdot\eta=\eta_2\)</span>.
+All point-mass profiles are exact on the same sequence and impose no further choice of frequencies. The finite-factor extension, Corollary 3.1, applies to this full joint family and gives (8.5). Choosing separate <span class="math" data-index="207" data-tex="\(p,q\)">\(p,q\)</span> sequences would incorrectly allow a proper first carrier.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, for background on entire Fourier transforms and support. Its <span class="math" data-index="208" data-tex="\(2\pi\)">\(2\pi\)</span> convention differs from (4.1).</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983, Chapter VII, for compact Fourier theory.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI, for convolution and growth indicators. The full joint identity, mixed cases and both inclusions are proved below.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Fourier transforms turn compact convolution into multiplication. Logarithms then turn that product into a sum. To pass to growth indicators, every factor must use the same escaping real frequency sequence. Separate indicator families do not encode that synchronization.</p>
+<p>Basic references are Tao's <em>246B, Notes 2</em>, Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>, and its second volume. The exact compactness and indicator proofs needed here are in the linked preceding lessons; the background references are not substitutes for those proofs.</p>
+<h2 id="1-the-full-joint-family-identity">1. The full joint-family identity</h2>
+<p>For a compact distribution <span class="math" data-index="209" data-tex="\(u\)">\(u\)</span>, put</p>
+<span class="math math-display" id="eq-1.1" data-index="210" data-tex="\[
+ F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{1.1}
+\]">\[
+ F_u(\zeta)=\langle u(x),e^{-ix\cdot\zeta}\rangle,\qquad
+ L_u(z,c)=\frac{\log|F_u(c+z\log|c|)|}{\log|c|},
+ \quad c\in\mathbb R^n,\quad |c|&gt;2. \tag{1.1}
+\]</span>
+<p>Use <span class="math" data-index="211" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. A coordinate of a limiting tuple is either a proper plurisubharmonic local <span class="math" data-index="212" data-tex="\(L^1\)">\(L^1\)</span> limit, or a uniform local collapse to <span class="math" data-index="213" data-tex="\(-\infty\)">\(-\infty\)</span>. A proper profile <span class="math" data-index="214" data-tex="\(v\)">\(v\)</span> has a finite support function <span class="math" data-index="215" data-tex="\(h_v\)">\(h_v\)</span> and a nonempty compact convex carrier <span class="math" data-index="216" data-tex="\(C_v\)">\(C_v\)</span>. The collapsed profile has indicator <span class="math" data-index="217" data-tex="\(-\infty\)">\(-\infty\)</span> and empty carrier.</p>
+<p>Let <span class="math" data-index="218" data-tex="\(\mathcal J(u_1,\ldots,u_k)\)">\(\mathcal J(u_1,\ldots,u_k)\)</span> denote the set of indicator tuples obtained from simultaneous profile convergence on one escaping real sequence. This definition and its full finite-coordinate extraction are proved in <a href="AN02-L157.html">Joint logarithmic-frequency limits</a>, Definition 4.1 and Theorem 4.2. Every input profile has a global linear imaginary-growth upper bound, and every normalized input family is locally uniformly bounded above along escaping frequencies.</p>
+<p>For indicator sums adopt</p>
+<span class="math math-display" id="eq-1.2" data-index="219" data-tex="\[
+ (-\infty)+h=h+(-\infty)=-\infty,\qquad
+ (-\infty)+(-\infty)=-\infty. \tag{1.2}
+\]">\[
+ (-\infty)+h=h+(-\infty)=-\infty,\qquad
+ (-\infty)+(-\infty)=-\infty. \tag{1.2}
+\]</span>
+<p>Proper indicators are finite, so no <span class="math" data-index="220" data-tex="\(+\infty\)">\(+\infty\)</span> is involved. At the carrier level, the corresponding convention is <span class="math" data-index="221" data-tex="\(C+\varnothing=\varnothing+C=\varnothing\)">\(C+\varnothing=\varnothing+C=\varnothing\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> Let <span class="math" data-index="222" data-tex="\(u&#x27;_j,u&#x27;&#x27;_j\)">\(u&#x27;_j,u&#x27;&#x27;_j\)</span> be compact distributions on the same <span class="math" data-index="223" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, for <span class="math" data-index="224" data-tex="\(1\leq j\leq k\)">\(1\leq j\leq k\)</span>. Then</p>
+<span class="math math-display" id="eq-1.3" data-index="225" data-tex="\[
+ \begin{split}
+ &amp;\mathcal J(u&#x27;_1*u&#x27;&#x27;_1,\ldots,u&#x27;_k*u&#x27;&#x27;_k)\\
+ &amp;\quad=
+ \left\{(h&#x27;_1+h&#x27;&#x27;_1,\ldots,h&#x27;_k+h&#x27;&#x27;_k):
+ (h&#x27;_1,\ldots,h&#x27;_k,h&#x27;&#x27;_1,\ldots,h&#x27;&#x27;_k)
+ \in\mathcal J(u&#x27;_1,\ldots,u&#x27;_k,u&#x27;&#x27;_1,\ldots,u&#x27;&#x27;_k)\right\}.
+ \end{split} \tag{1.3}
+\]">\[
+ \begin{split}
+ &amp;\mathcal J(u&#x27;_1*u&#x27;&#x27;_1,\ldots,u&#x27;_k*u&#x27;&#x27;_k)\\
+ &amp;\quad=
+ \left\{(h&#x27;_1+h&#x27;&#x27;_1,\ldots,h&#x27;_k+h&#x27;&#x27;_k):
+ (h&#x27;_1,\ldots,h&#x27;_k,h&#x27;&#x27;_1,\ldots,h&#x27;&#x27;_k)
+ \in\mathcal J(u&#x27;_1,\ldots,u&#x27;_k,u&#x27;&#x27;_1,\ldots,u&#x27;&#x27;_k)\right\}.
+ \end{split} \tag{1.3}
+\]</span>
+<p>The right side uses a joint <span class="math" data-index="226" data-tex="\(2k\)">\(2k\)</span>-coordinate family. It is not the Cartesian product of separately chosen families of the primed and double-primed factors. The theorem includes zero distributions, smooth factors, and mixtures of proper and collapsed coordinates.</p>
+<p>For every tuple in this identity, its output carrier in coordinate <span class="math" data-index="227" data-tex="\(j\)">\(j\)</span> is</p>
+<span class="math math-display" id="eq-1.4" data-index="228" data-tex="\[
+ C_j=C&#x27;_j+C&#x27;&#x27;_j, \tag{1.4}
+\]">\[
+ C_j=C&#x27;_j+C&#x27;&#x27;_j, \tag{1.4}
+\]</span>
+<p>with the empty-set convention above. This statement concerns the carriers selected by that common frequency sequence, rather than the ordinary supports of the distributions.</p>
+<h2 id="2-convolution-limits-and-indicators">2. Convolution, limits and indicators</h2>
+<p><strong>Lemma 2.1 (no Fourier normalization factor).</strong> For compact distributions <span class="math" data-index="229" data-tex="\(a,b\)">\(a,b\)</span>,</p>
+<span class="math math-display" id="eq-2.1" data-index="230" data-tex="\[
+ F_{a*b}(\zeta)=F_a(\zeta)F_b(\zeta),\qquad
+ L_{a*b}(z,c)=L_a(z,c)+L_b(z,c). \tag{2.1}
+\]">\[
+ F_{a*b}(\zeta)=F_a(\zeta)F_b(\zeta),\qquad
+ L_{a*b}(z,c)=L_a(z,c)+L_b(z,c). \tag{2.1}
+\]</span>
+<p>The second identity holds with extended values at every transform zero.</p>
+<p><em>Proof.</em> Define compact convolution by
+<span class="math" data-index="231" data-tex="\(\langle a*b,\phi\rangle=\langle a_x,\langle b_y,\phi(x+y)\rangle\rangle\)">\(\langle a*b,\phi\rangle=\langle a_x,\langle b_y,\phi(x+y)\rangle\rangle\)</span>.
+Use fixed compact cutoffs equal to one near the two supports when a test function is not compact in the separate variables. The inner pairing is smooth in <span class="math" data-index="232" data-tex="\(x\)">\(x\)</span>: differentiating the test function in <span class="math" data-index="233" data-tex="\(x\)">\(x\)</span> is valid in every test-function seminorm on the fixed compact support of <span class="math" data-index="234" data-tex="\(b\)">\(b\)</span>, and the distribution pairing is continuous in those seminorms. The outer pairing is therefore defined. The sum of the two supports is compact, so <span class="math" data-index="235" data-tex="\(a*b\)">\(a*b\)</span> is compactly supported.</p>
+<p>More explicitly, finite-order bounds for the two distributions, of orders <span class="math" data-index="236" data-tex="\(m_a\)">\(m_a\)</span> and <span class="math" data-index="237" data-tex="\(m_b\)">\(m_b\)</span> on fixed compact cutoff supports, bound the nested action by a fixed constant times the supremum of the derivatives of <span class="math" data-index="238" data-tex="\(\phi\)">\(\phi\)</span> through order <span class="math" data-index="239" data-tex="\(m_a+m_b\)">\(m_a+m_b\)</span> on their compact sum. Fixed cutoff derivatives only change the constant. This proves continuity in the test-function topology. If <span class="math" data-index="240" data-tex="\(\phi\)">\(\phi\)</span> vanishes near the sum of the actual supports, compactness supplies separate neighborhoods of those supports on whose sum it vanishes; the nested action is then zero. Thus the support claim also uses the actual supports, independently of the chosen larger cutoff sets.</p>
+<p>For the exponential test, the inner pairing is
+<span class="math" data-index="241" data-tex="\(e^{-ix\cdot\zeta}F_b(\zeta)\)">\(e^{-ix\cdot\zeta}F_b(\zeta)\)</span>. Pairing this with <span class="math" data-index="242" data-tex="\(a\)">\(a\)</span> proves the first identity. With convention (1.1), the factor <span class="math" data-index="243" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span> occurs in inverse Fourier integration and does not occur in this forward product identity. Taking logarithmic moduli and dividing by the same positive <span class="math" data-index="244" data-tex="\(\log|c|\)">\(\log|c|\)</span> proves the second identity. If either transform vanishes at a point, the product and the extended sum both have logarithmic value <span class="math" data-index="245" data-tex="\(-\infty\)">\(-\infty\)</span>. <span class="math" data-index="246" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (proper sums).</strong> If <span class="math" data-index="247" data-tex="\(L_a(\cdot,c_\nu)\to v_a\)">\(L_a(\cdot,c_\nu)\to v_a\)</span> and <span class="math" data-index="248" data-tex="\(L_b(\cdot,c_\nu)\to v_b\)">\(L_b(\cdot,c_\nu)\to v_b\)</span> in local <span class="math" data-index="249" data-tex="\(L^1\)">\(L^1\)</span>, with proper limits, then the convolution profiles converge in local <span class="math" data-index="250" data-tex="\(L^1\)">\(L^1\)</span> to the proper PSH function <span class="math" data-index="251" data-tex="\(v_a+v_b\)">\(v_a+v_b\)</span>.</p>
+<p><em>Proof.</em> Proper PSH functions are locally integrable and finite almost everywhere. The intersection of their finite full-measure sets is still full measure, so their sum is not identically <span class="math" data-index="252" data-tex="\(-\infty\)">\(-\infty\)</span>. Their sum is PSH: upper semicontinuity and the line submean inequalities add, with no positive infinite values.</p>
+<p>The exact identity in Lemma 2.1 holds almost everywhere for these nonzero entire transforms. For every compact observation region,</p>
+<span class="math math-display" id="eq-2.2" data-index="253" data-tex="\[
+ \|L_{a*b}-v_a-v_b\|_{L^1}
+ \leq\|L_a-v_a\|_{L^1}+\|L_b-v_b\|_{L^1}\longrightarrow0. \tag{2.2}
+\]">\[
+ \|L_{a*b}-v_a-v_b\|_{L^1}
+ \leq\|L_a-v_a\|_{L^1}+\|L_b-v_b\|_{L^1}\longrightarrow0. \tag{2.2}
+\]</span>
+<p>The zeros of a nonzero entire transform have zero volume; the full logarithmic local-integrability proof is supplied in <a href="AN02-L147.html">Scalar holomorphic logarithms</a>. Thus the extended pointwise equalities cause no obstruction to (2.2). The sum is the canonical PSH representative of this limit, by uniqueness of the local <span class="math" data-index="254" data-tex="\(L^1\)">\(L^1\)</span> profile. <span class="math" data-index="255" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3 (collapsed sums).</strong> If either input profile collapses uniformly locally to <span class="math" data-index="256" data-tex="\(-\infty\)">\(-\infty\)</span>, then the convolution profile also collapses uniformly locally. This conclusion does not require convergence of the other input.</p>
+<p><em>Proof.</em> On every fixed compact parameter set <span class="math" data-index="257" data-tex="\(B\)">\(B\)</span>, ordinary compact Fourier growth gives an upper bound <span class="math" data-index="258" data-tex="\(M_B\)">\(M_B\)</span> for the other input normalized logarithms for all sufficiently large frequencies. If the first input has supremum <span class="math" data-index="259" data-tex="\(A_\nu\to-\infty\)">\(A_\nu\to-\infty\)</span> on <span class="math" data-index="260" data-tex="\(B\)">\(B\)</span>, Lemma 2.1 gives</p>
+<span class="math math-display" id="eq-2.3" data-index="261" data-tex="\[
+ \sup_B L_{a*b}(\cdot,c_\nu)\leq A_\nu+M_B\longrightarrow-\infty. \tag{2.3}
+\]">\[
+ \sup_B L_{a*b}(\cdot,c_\nu)\leq A_\nu+M_B\longrightarrow-\infty. \tag{2.3}
+\]</span>
+<p>The same argument interchanges the inputs. It also covers identically zero input transforms. <span class="math" data-index="262" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.4 (indicator and carrier addition).</strong> For two proper input profiles,</p>
+<span class="math math-display" id="eq-2.4" data-index="263" data-tex="\[
+ h_{v_a+v_b}=h_{v_a}+h_{v_b},\qquad
+ C_{v_a+v_b}=C_{v_a}+C_{v_b}. \tag{2.4}
+\]">\[
+ h_{v_a+v_b}=h_{v_a}+h_{v_b},\qquad
+ C_{v_a+v_b}=C_{v_a}+C_{v_b}. \tag{2.4}
+\]</span>
+<p>With a collapsed input, the corresponding indicator and carrier are given by (1.2).</p>
+<p><em>Proof.</em> Proper input profiles satisfy global linear imaginary-growth bounds. Their proper sum also satisfies such a bound. The exact indicator additivity theorem in <a href="AN02-L141.html#indicator-additivity-theorem">Directional averages and additivity of growth indicators</a>, Theorem D4, applies. Its complete proof in Section D6 identifies the directional indicator by integral convergence and then integrates the sum identity. It does not add finite-height suprema: those suprema need not add.</p>
+<p>For nonempty compact convex sets, their Minkowski sum is compact and convex. A maximizing point can be chosen separately in each compact set, so its support function is the sum of their support functions. The uniqueness of compact convex sets from their support functions, proved in <a href="AN02-L139.html">Plurisubharmonic envelopes and support functions</a>, gives the carrier equality. With a collapsed input, Lemma 2.3 makes the sum collapsed and both sides have empty carrier. <span class="math" data-index="264" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-prove-both-inclusions-on-the-same-sequence">3. Prove both inclusions on the same sequence</h2>
+<p><em>Proof of Theorem 1.1: left to right.</em> Choose any tuple on the left. By definition it is realized by a common escaping sequence <span class="math" data-index="265" data-tex="\(c_\nu\)">\(c_\nu\)</span> on which all <span class="math" data-index="266" data-tex="\(k\)">\(k\)</span> product profiles converge, properly or by collapse. Their indicators are the prescribed tuple.</p>
+<p>Apply finite-coordinate compactness to all <span class="math" data-index="267" data-tex="\(2k\)">\(2k\)</span> input families along that very sequence. Repeated extraction gives a further common subsequence on which every input has a proper or collapsed limit <span class="math" data-index="268" data-tex="\(v&#x27;_j,v&#x27;&#x27;_j\)">\(v&#x27;_j,v&#x27;&#x27;_j\)</span>. The original product limits are unchanged on the further subsequence.</p>
+<p>If both inputs in coordinate <span class="math" data-index="269" data-tex="\(j\)">\(j\)</span> are proper, Lemma 2.2 says the product has canonical profile <span class="math" data-index="270" data-tex="\(v&#x27;_j+v&#x27;&#x27;_j\)">\(v&#x27;_j+v&#x27;&#x27;_j\)</span>. It cannot have a collapsed profile, and uniqueness identifies this with its originally prescribed proper limit. Lemma 2.4 identifies its indicator with <span class="math" data-index="271" data-tex="\(h&#x27;_j+h&#x27;&#x27;_j\)">\(h&#x27;_j+h&#x27;&#x27;_j\)</span>.</p>
+<p>If either input coordinate is collapsed, Lemma 2.3 forces its product coordinate to collapse. The prescribed output indicator is therefore <span class="math" data-index="272" data-tex="\(-\infty=h&#x27;_j+h&#x27;&#x27;_j\)">\(-\infty=h&#x27;_j+h&#x27;&#x27;_j\)</span>. This covers every coordinate, including tuples with both kinds of output. The extracted input indicator tuple belongs to the joint family on the right, and produces the chosen left tuple. This proves the first inclusion.</p>
+<p><em>Right to left.</em> Choose any full <span class="math" data-index="273" data-tex="\(2k\)">\(2k\)</span>-coordinate joint tuple on the right. Its definition provides a single escaping sequence and simultaneous input profiles <span class="math" data-index="274" data-tex="\(v&#x27;_j,v&#x27;&#x27;_j\)">\(v&#x27;_j,v&#x27;&#x27;_j\)</span>. On that same sequence, apply Lemma 2.2 wherever both profiles are proper, and Lemma 2.3 wherever at least one collapses. Every product coordinate converges, with no further choice of frequencies required. Lemma 2.4 and the extended convention identify all output indicators with <span class="math" data-index="275" data-tex="\(h&#x27;_j+h&#x27;&#x27;_j\)">\(h&#x27;_j+h&#x27;&#x27;_j\)</span>. Consequently the entire resulting <span class="math" data-index="276" data-tex="\(k\)">\(k\)</span>-tuple belongs to the family on the left. This proves the second inclusion, and (1.4) follows coordinate by coordinate. <span class="math" data-index="277" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.1 (finitely many factors).</strong> The same statement holds for <span class="math" data-index="278" data-tex="\(s\)">\(s\)</span> compact factors in each of <span class="math" data-index="279" data-tex="\(k\)">\(k\)</span> coordinates, using a common <span class="math" data-index="280" data-tex="\(sk\)">\(sk\)</span>-coordinate input family and summing its indicators coordinatewise.</p>
+<p><em>Proof.</em> Along a common input sequence, apply Lemmas 2.2–2.4 repeatedly. If any factor in a coordinate collapses, the whole coordinate collapses; otherwise the finite proper sum converges in local <span class="math" data-index="281" data-tex="\(L^1\)">\(L^1\)</span> and its indicator is the sum of all factor indicators. Conversely, start with a joint output sequence and extract all finitely many input profiles on a common subsequence. The same alternatives identify the already specified output profiles. These are exactly the two inclusions used above, with a finite sum in place of a pair. <span class="math" data-index="282" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2021/01/23/246b-notes-2-some-connections-with-the-fourier-transform/">246B, Notes 2: Some connections with the Fourier transform</a>, for named background on entire Fourier transforms. Its normalization differs from (1.1); no source text or proof is imported.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Springer, 1983, Chapter VII, for background on compact distributions and entire Fourier transforms.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 1983, Chapter XVI, for joint convolution families. Both inclusions, all mixed cases and the exact normalization are proved above.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/convolution-and-joint-frequency-carriers.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L160/joint-convolution-profiles-formal.md" download>joint-convolution-profiles-formal.md</a></li><li><a href="reproduce/L160/convolution-and-joint-frequency-carriers-learner.md" download>convolution-and-joint-frequency-carriers-learner.md</a></li><li><a href="reproduce/L160/make_figures195.py" download>make_figures195.py</a></li><li><span class="unlinked">check_numerics195.py</span></li><li><span class="unlinked">README-reproduce.md</span></li><li><a href="reproduce/L160/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L160/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L160/figures/geometry195.json" download>figures/geometry195.json</a></li><li><a href="reproduce/L160/figures/atomic-cancellation-and-carrier-addition.png" download>figures/atomic-cancellation-and-carrier-addition.png</a></li><li><a href="reproduce/L160/figures/atomic-cancellation-and-carrier-addition.svg" download>figures/atomic-cancellation-and-carrier-addition.svg</a></li><li><a href="reproduce/L160/figures/crossed-factors-and-shared-frequency.png" download>figures/crossed-factors-and-shared-frequency.png</a></li><li><a href="reproduce/L160/figures/crossed-factors-and-shared-frequency.svg" download>figures/crossed-factors-and-shared-frequency.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

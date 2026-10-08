@@ -1,6 +1,6 @@
 # Decomposition of primes in extensions
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Original material is public domain (CC0); the explicitly marked Stein adaptation and its marked cubic application are licensed CC BY-SA 3.0.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; the section on computing primes from a multiplication table and its use in Solution 4 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original material is public domain (CC0).*
 
 A prime ideal of a smaller ring can become several prime ideals in a larger ring. Each resulting prime has a multiplicity and a residue field. These two pieces of information account for the whole degree of a finite extension. Polynomial factorization often reveals them, but only when the chosen generator describes the ring correctly at the prime in question.
 
@@ -272,65 +272,52 @@ Finally, separability of \(L/F\) supplies a nonzero basis discriminant, so \(\ma
 
 For a number field \(K\), \(A=\mathbf Z\) and \(B=\mathcal O_K\) have an integral basis, so \(\mathfrak d_{B/A}=d_K\mathbf Z\). The theorem says that \(p\) ramifies in \(K\) exactly when \(p\mid d_K\). More generally it applies to \(\mathcal O_L/\mathcal O_K\) without a relative integral basis. Indeed, the integral closure of \(\mathcal O_K\) in \(L\) is \(\mathcal O_L\), by transitivity of integrality over \(\mathbf Z\). The field extension \(L/F\) being separable does not by itself make its residue field extensions separable; this is why that hypothesis remains visible in condition 1.
 
-<!-- BEGIN COMPONENT NT-ANT-05-STEIN-FINITE-ALGEBRA CC-BY-SA-3.0 -->
-
 ## Computing primes from a multiplication table
 
-*This section is adapted from William Stein, [Algebraic Number Theory, a Computational Approach](https://wstein.org/books/ant/), current HTML §4.3.4, [Algorithms 4.3.7 and 4.3.9](https://wstein.org/books/ant/ant/ch_factoring_primes.html#alg:factorsep), and the intervening discussion. The editable source is pinned to commit 97343f5d6c851aac0fdfd1af3818965ac27359fd (March 2, 2022), [factoring.tex, lines 666–788](https://github.com/williamstein/ant/blob/97343f5d6c851aac0fdfd1af3818965ac27359fd/factoring.tex#L666). Copyright William Stein, 2005, 2007. Stein grants [Creative Commons Attribution–ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/); this adaptation, including the marked application in Solution 4, retains those terms. GPT-6.1 Sol added the explicit Frobenius bound, complete recursive correctness proof, multiplicity computation, and exact application below, and corrected the source's typographical \(m(\alpha)=01\) to \(0\). Stein credits the general-prime algorithm to J. Buchmann and H. W. Lenstra; we use Stein's freely accessible treatment.*
+Theorem 5.3 reads the primes above \(p\) from one generator, but only when the power order of that generator is correct at \(p\). Without such a generator an integral basis still determines the multiplication of \(\mathcal O_K\) exactly. Linear algebra over \(\mathbf F_p\) then recovers every prime above \(p\), its residue degree and its ramification index.
 
-Theorem 5.3 is efficient when a power order is correct at the chosen prime. When that condition fails, an integral basis still gives an exact multiplication table. We now use that table to find all the residue fields without first finding one element that generates their product.
+Let \(K\) be a number field of degree \(n\), let \(b_1,\ldots,b_n\) be an integral basis of \(\mathcal O_K\) with \(b_ib_j=\sum_kc_{ijk}b_k\), \(c_{ijk}\in\mathbf Z\), and let \(p\) be a rational prime. The coefficients \(c_{ijk}\bmod p\) describe the commutative \(\mathbf F_p\)-algebra
 
-Let \(K\) be a number field, let \(b_1,\ldots,b_n\) be an integral basis of \(\mathcal O_K\), and let \(p\) be a rational prime. Reduce the integer multiplication coefficients modulo \(p\) to obtain
 \[
-C=\mathcal O_K/p\mathcal O_K,
-\qquad \dim_{\mathbf F_p}C=n.
+C=\mathcal O_K/p\mathcal O_K,\qquad\dim_{\mathbf F_p}C=n .
 \]
-All the following vector spaces and linear maps are over \(\mathbf F_p\). The nilradical \(N\) is the ideal of nilpotent elements. The proof of the trace lemma above shows that the reduced algebra \(C/N\) is a product of finite fields: its finitely many maximal ideals have zero intersection, and Chinese remainders give the product. This conclusion does not require the trace pairing on \(C\) to be nondegenerate.
 
-**Algorithm.** Given the integral basis and its multiplication table:
+All vector spaces and linear maps below are over \(\mathbf F_p\). The map \(F:C\to C\), \(x\mapsto x^p\), is linear, because \((x+y)^p=x^p+y^p\) in characteristic \(p\) and \(a^p=a\) for \(a\in\mathbf F_p\). Fix an integer \(r\geq0\) with \(p^r\geq n\).
 
-1. Form the matrix of \(F:C\to C\), \(x\mapsto x^p\). Choose an integer \(r\geq0\) with \(p^r\geq n\), compute \(N=\ker(F^r)\), and form \(A=C/N\), with its induced multiplication table.
-2. For the current nonzero reduced algebra \(A\), with identity \(1_A\), compute \(V=\ker(F-1)\). If \(\dim V=1\), retain \(A\) as one residue field. Otherwise choose \(v\in V\setminus\mathbf F_p1_A\).
-3. Find the first linear dependence among \(1_A,v,v^2,\ldots\), giving the monic minimal polynomial \(m\). Split \(m=m_1m_2\) into two nonconstant coprime factors. Compute \(U_1m_1+U_2m_2=1\), and set \(\varepsilon=(U_1m_1)(v)\).
-4. Replace \(A\) by the two algebras \(\varepsilon A\) and \((1_A-\varepsilon)A\), and repeat Step 2 on each. Their identities are respectively \(\varepsilon\) and \(1_A-\varepsilon\); use these identities for scalar subspaces and polynomial evaluation.
-5. For each final field factor \(k_i\), pull back the kernel of the projection through \(\mathcal O_K\to C\to C/N\to k_i\). These inverse images are exactly the prime ideals \(\mathfrak P_i\) above \(p\). Set \(f_i=\dim_{\mathbf F_p}k_i\).
+**Procedure.**
 
-**Correctness and termination.** Frobenius is linear because \((x+y)^p=x^p+y^p\) in a commutative algebra of characteristic \(p\), and \(a^p=a\) for \(a\in\mathbf F_p\). If \(x\) is nilpotent, multiplication \(m_x\) is a nilpotent endomorphism of the \(n\)-dimensional vector space \(C\). Its nilpotency index is at most \(n\): the kernels of its successive powers strictly increase until they are all of \(C\), since equality of two consecutive kernels forces equality at every later power. Thus \(m_x^n=0\), and application to \(1_C\) gives \(x^n=0\). Consequently \(x^{p^r}=0\) when \(p^r\geq n\). Conversely \(F^r(x)=0\) immediately says that \(x\) is nilpotent. This proves Step 1, including the case \(n=1,r=0\), when \(C=\mathbf F_p\) and \(N=0\).
-
-Write the current reduced algebra abstractly as
+1. *Nilpotent part.* Compute \(N=\ker(F^r)\) and the quotient algebra \(A=C/N\).
+2. *Splitting.* Start with the single algebra \(A\) and its identity. For an algebra \(B\) in the current list, with identity \(1_B\), compute \(V_B=\{x\in B:x^p=x\}=\ker(F-1)\) on \(B\). If \(\dim V_B=1\), keep \(B\). Otherwise choose \(v\in V_B\) outside \(\mathbf F_p1_B\), put
 \[
-A=k_1\times\cdots\times k_s,
+\varepsilon_a=1_B-(v-a1_B)^{p-1}\qquad(a\in\mathbf F_p),
 \]
-where each \(k_j\) is a finite field extension of \(\mathbf F_p\). This product is used to prove correctness; it need not be known to perform the linear calculations. In each field, the roots of \(X^p-X\) are exactly the \(p\) elements of \(\mathbf F_p\): these elements are roots and a polynomial of degree \(p\) has no more. Hence
+and replace \(B\) by the nonzero algebras among the \(\varepsilon_aB\), with identities \(\varepsilon_a\).
+3. *Primes and residue degrees.* For each final algebra \(\varepsilon A\), let \(\mathfrak P\) be the inverse image in \(\mathcal O_K\) of \((1_A-\varepsilon)A\) under \(\mathcal O_K\to C\to A\), and put \(f=\dim\varepsilon A\).
+4. *Ramification indices.* Lift \(\varepsilon\) to any \(x\in C\), put \(\tilde\varepsilon=x^{p^r}\), and \(e=\dim(\tilde\varepsilon C)/f\).
+
+**Proposition (primes from a multiplication table).** The procedure terminates. Its output lists every prime \(\mathfrak P\) of \(\mathcal O_K\) above \(p\) exactly once, with its residue degree \(f\) and ramification index \(e\).
+
+**Proof.** Write \(p\mathcal O_K=\prod_{i=1}^g\mathfrak P_i^{e_i}\). By the Chinese remainder theorem,
+
 \[
-V=\mathbf F_p^s,\qquad \dim V=s.
+C\cong\prod_{i=1}^gR_i,\qquad R_i=\mathcal O_K/\mathfrak P_i^{e_i}.
 \]
-If \(s=1\), the current algebra is a field. If \(s>1\), the scalar subspace consists of the constant tuples, so a vector \(v\) outside it has at least two different coordinates, all in \(\mathbf F_p\). Its minimal polynomial is
+
+Each \(R_i\) is a local ring with maximal ideal \(\mathfrak m_i=\mathfrak P_i/\mathfrak P_i^{e_i}\), residue field \(k_i=\mathcal O_K/\mathfrak P_i\) of degree \(f_i\), and \(\mathfrak m_i^{e_i}=0\). As in the proof of Theorem 5.2, the successive quotients \(\mathfrak P_i^j/\mathfrak P_i^{j+1}\), \(0\leq j<e_i\), are one-dimensional over \(k_i\), so \(\dim R_i=e_if_i\), and \(\sum_ie_if_i=n\). This decomposition is used only to prove correctness; the procedure does not need it.
+
+*Step 1.* An element \(x=(x_i)\) of \(C\) is nilpotent exactly when every \(x_i\) lies in \(\mathfrak m_i\): an element outside \(\mathfrak m_i\) is a unit of \(R_i\), and an element of \(\mathfrak m_i\) satisfies \(x_i^{e_i}=0\). Since \(e_i\leq n\leq p^r\), every nilpotent \(x\) satisfies \(F^r(x)=x^{p^r}=0\). Conversely \(F^r(x)=0\) says that \(x\) is nilpotent. Hence \(N=\prod_i\mathfrak m_i\) and
+
 \[
-m(X)=\prod_{a\text{ occurring as a coordinate of }v}(X-a).
+A=C/N\cong\prod_{i=1}^gk_i .
 \]
-Indeed, a polynomial vanishes at \(v\) exactly when it vanishes at all those coordinate values. The displayed distinct linear factors therefore divide every annihilating polynomial and their product annihilates \(v\). This proves that \(m\) is squarefree and that the splitting in Step 3 is available. Its linear factors can be found simply by testing all \(a\in\mathbf F_p\).
 
-Put \(u=(U_1m_1)(v)\) and \(w=(U_2m_2)(v)\). The Bézout identity gives \(u+w=1_A\), while \(uw=(U_1U_2m)(v)=0\). Therefore \(u^2=u\). At a coordinate whose value is a root of \(m_1\), \(u=0\); at a root of \(m_2\), \(u=1\). Both kinds of root occur, so \(\varepsilon=u\) is neither zero nor \(1_A\). The maps
-\[
-A\longrightarrow\varepsilon A\times(1_A-\varepsilon)A,
-\quad a\longmapsto(\varepsilon a,(1_A-\varepsilon)a),
-\qquad (b,c)\longmapsto b+c
-\]
-are inverse algebra homomorphisms. Both factors have smaller positive dimension and remain reduced. Recursion therefore terminates and retains precisely all the field factors.
+*Step 2.* An idempotent of a product of fields has every coordinate \(0\) or \(1\). So every algebra \(B=\varepsilon A\) occurring in Step 2 is the product \(\prod_{i\in S}k_i\) over the set \(S\) of coordinates where \(\varepsilon\) equals \(1\). In a field, \(x^p=x\) has exactly the \(p\) solutions in \(\mathbf F_p\): they are solutions, and a polynomial of degree \(p\) has no more. Hence \(V_B=\prod_{i\in S}\mathbf F_p\) and \(\dim V_B=|S|\); the algebra \(B\) is kept exactly when it is a single field. If \(|S|\geq2\), the chosen \(v\) has coordinates \(v_i\in\mathbf F_p\), not all equal. By Fermat's little theorem, \((v_i-a)^{p-1}\) is \(0\) when \(v_i=a\) and \(1\) otherwise. So \(\varepsilon_a\) is the idempotent whose coordinates are \(1\) exactly where \(v_i=a\). The \(\varepsilon_a\) are orthogonal, sum to \(1_B\), and at least two of them are nonzero. Thus \(B=\bigoplus_a\varepsilon_aB\) splits into at least two smaller algebras of the same kind, indexed by a partition of \(S\). The dimensions decrease, so the procedure stops, and it ends with the single fields \(k_1,\ldots,k_g\), each once.
 
-Every prime ideal of \(C\) contains \(N\), because a prime containing \(x^m\) contains \(x\). Thus the primes of \(C\) correspond to those of \(C/N\). In a product of fields, the prime ideals are exactly the projection kernels: the coordinate idempotents sum to one, so precisely one survives in any domain quotient. Pullback along \(\mathcal O_K\to C\) now proves Step 5 and its residue-degree assertion. In coordinates, each kernel is a vector subspace; lifts of its basis, together with \(pb_1,\ldots,pb_n\), give the full integer lattice of \(\mathfrak P_i\).
+*Step 3.* For the final algebra \(\varepsilon A\cong k_j\), the map \(A\to\varepsilon A\), \(y\mapsto\varepsilon y\), is the projection to the factor \(k_j\), with kernel \((1_A-\varepsilon)A\). Its inverse image in \(C\) is the kernel of \(C\to R_j\to k_j\), which is \(\mathfrak P_j/p\mathcal O_K\). So the inverse image in \(\mathcal O_K\) is \(\mathfrak P_j\), and \(f=\dim k_j=f_j\).
 
-The algorithm can also recover multiplicities in the maximal order. By unique ideal factorization,
-\[
-p\mathcal O_K\subseteq\mathfrak P_i^m
-\quad\Longleftrightarrow\quad m\leq e_i.
-\]
-The other prime factors of \(p\mathcal O_K\) have valuation zero at \(\mathfrak P_i\), so this is an assertion about that one exponent. Theorem 5.2 gives \(e_i\leq n\). Compute \(\mathfrak P_i^m\) and test containment for \(m=1,\ldots,n\); the largest successful \(m\) is \(e_i\). The multiplication table gives additive lattice generators for each product by multiplying the generators of its factors. For an explicit finite containment test, note that \(p^m\mathcal O_K\subseteq\mathfrak P_i^m\). Reduce the generators in \(\mathcal O_K/p^m\mathcal O_K\cong(\mathbf Z/p^m\mathbf Z)^n\), and form the finite additive subgroup they generate. Then \(p\mathcal O_K\subseteq\mathfrak P_i^m\) exactly when the residues of \(pb_1,\ldots,pb_n\) all belong to that subgroup. Enumeration suffices to decide this; integer lattice reduction gives a more efficient implementation. This proves the full factorization, including ramification, without a power-basis hypothesis. \(\square\)
+*Step 4.* In the decomposition of \(C\), a lift \(x\) of \(\varepsilon\) has components \(x_i\in\mathfrak m_i\) for \(i\neq j\) and \(x_j=1+y\) with \(y\in\mathfrak m_j\). For \(i\neq j\), \(x_i^{p^r}=0\). In characteristic \(p\), \(x_j^{p^r}=1+y^{p^r}=1\). So \(\tilde\varepsilon\) is the idempotent of the factor \(R_j\), \(\tilde\varepsilon C\cong R_j\), and \(\dim\tilde\varepsilon C=e_jf_j\). \(\square\)
 
-The field-factor part works for any finite dimensional commutative \(\mathbf F_p\)-algebra, so also for the reduction of an order. The exponent assertion uses the Dedekind ideal factorization of \(\mathcal O_K\); an arbitrary nonmaximal order cannot be substituted there.
-
-<!-- END COMPONENT NT-ANT-05-STEIN-FINITE-ALGEBRA -->
+In coordinates, the subspace of Step 3 has a basis; lifts of that basis to \(\mathcal O_K\), together with \(pb_1,\ldots,pb_n\), generate \(\mathfrak P\) as an abelian group. Steps 1–3 apply to any finite-dimensional commutative \(\mathbf F_p\)-algebra, for example the reduction of a nonmaximal order, and find its maximal ideals and residue fields. Step 4 interprets dimensions as ramification indices through the ideal factorization of \(\mathcal O_K\), which a nonmaximal order need not have.
 
 <!-- BEGIN ORIGINAL CONSEQUENCE NT-ANT-05-SPLIT-GENERATORS CC0-1.0 -->
 
@@ -551,19 +538,11 @@ Modulo \(2\), (10) becomes
 \[
 \alpha^2=\alpha,\qquad \beta^2=\beta,\qquad \alpha\beta=\alpha.
 \]
-<!-- BEGIN COMPONENT NT-ANT-05-STEIN-CUBIC-APPLICATION CC-BY-SA-3.0 -->
-
-**Applying the multiplication-table algorithm.** This marked application, including its displayed calculations, continues the CC BY-SA 3.0 Stein adaptation above. On the basis \(1,\alpha,\beta\) of \(C=\mathcal O_K/2\mathcal O_K\), Frobenius fixes every basis vector, so its matrix is \(I_3\). Take \(r=2\), since \(2^2\geq3\). Then \(\ker F^2=0\), so \(A=C\) and \(V=\ker(F-1)=C\). Choose \(v=\beta\). It is neither \(0\) nor \(1\), and its minimal polynomial is \(X(X-1)\). The Bézout identity \(X-(X-1)=1\) gives the idempotent \(\beta\), splitting off \((1+\beta)C\).
-
-The remaining factor \(\beta C\) has basis \(\beta,\alpha\) and identity \(\beta\), since \(\alpha\beta=\alpha\). Choose \(v=\alpha\) inside it. Relative to this identity its minimal polynomial is again \(X(X-1)\); it yields the two factors with identities \(\alpha\) and \(\beta+\alpha\). Thus the algorithm produces the three nonzero orthogonal idempotents
+**The procedure on this example.** In \(C=\mathcal O_K/2\mathcal O_K\), the relations \(\alpha^2=\alpha\), \(\beta^2=\beta\) and \(\alpha\beta=\alpha\) show that Frobenius fixes \(1,\alpha,\beta\), so it is the identity map. Hence \(N=0\), \(A=C\), and \(V_C=C\) has dimension \(3\): there are three field factors. With \(p=2\), the idempotents of Step 2 are \(\varepsilon_a=1-(v-a)\). Take \(v=\beta\). Then \(\varepsilon_0=1+\beta\) and \(\varepsilon_1=\beta\), computing modulo \(2\). The factor \(\beta C\) has basis \(\beta,\alpha\) and identity \(\beta\), because \(\alpha\beta=\alpha\). Inside it take \(v=\alpha\). Relative to the identity \(\beta\), this gives \(\beta-\alpha=\alpha+\beta\) and \(\beta-(\alpha-\beta)=\alpha\). The three idempotents
 \[
-\varepsilon_{00}=1+\beta,\qquad
-\varepsilon_{01}=\alpha+\beta,\qquad
-\varepsilon_{11}=\alpha.
+1+\beta,\qquad\alpha+\beta,\qquad\alpha
 \]
-Their sum is \(1\), and the three displayed multiplication relations give \(\varepsilon_{ij}^2=\varepsilon_{ij}\) and pairwise products zero. Each factor is one dimensional over \(\mathbf F_2\), since these three idempotents are a basis. Evaluation at \((\alpha,\beta)=(0,0),(0,1),(1,1)\) sends them respectively to \((1,0,0),(0,1,0),(0,0,1)\). The three projections below are therefore exactly the projections recovered by the algorithm, rather than a guess from the polynomial \(h\).
-
-<!-- END COMPONENT NT-ANT-05-STEIN-CUBIC-APPLICATION -->
+are orthogonal and sum to \(1\), by the three relations. They form a basis of \(C\), so every factor is \(\mathbf F_2\): all three residue degrees are \(1\). Each idempotent is its own lift in Step 4, and \(\dim\tilde\varepsilon C=1\), so all three ramification indices are \(1\). Evaluation at \((\alpha,\beta)=(0,0),(0,1),(1,1)\) sends the three idempotents to \((1,0,0)\), \((0,1,0)\) and \((0,0,1)\). These three evaluations are the residue maps below; they are found by the procedure, not guessed from \(h\).
 
 There are three evaluation homomorphisms to \(\mathbf F_2\), corresponding to
 \[
@@ -642,5 +621,5 @@ Hilbert's decomposition and inertia groups are treated in the next lesson. The r
 
 - **[Milne ANT]** J. S. Milne, *Algebraic Number Theory*, version 3.08 (2020), Chapter 3, Theorems 3.29, 3.34, 3.35 and 3.41, Proposition 3.44, pp. 57–64; Chapter 4, Proposition 4.1, pp. 68–69. [Lecture notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf).
 - **[Hecke 1923]** Erich Hecke, *Vorlesungen über die Theorie der algebraischen Zahlen*, 1923, Chapter V, §29, quadratic decomposition, pp. 106–110.
-- **[Stein ANT]** William Stein, *Algebraic Number Theory, a Computational Approach*, author HTML §4.3.4, Algorithms 4.3.7 and 4.3.9; editable source commit 97343f5d6c851aac0fdfd1af3818965ac27359fd, factoring.tex, lines 666–788. [Author edition and permission](https://wstein.org/books/ant/); [algorithm passage](https://wstein.org/books/ant/ant/ch_factoring_primes.html#alg:factorsep). The marked adaptations retain CC BY-SA 3.0.
+- **[Stein ANT]** William Stein, *Algebraic Number Theory, a Computational Approach*, [author edition](https://wstein.org/books/ant/), §4.3.4, [Algorithms 4.3.7 and 4.3.9](https://wstein.org/books/ant/ant/ch_factoring_primes.html#alg:factorsep), computes the primes above a prime from a multiplication table; Stein credits the general method to J. Buchmann and H. W. Lenstra.
 - **[Stacks]** The Stacks project, [Tag 00IV](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-length-additive), additivity of length, and [Tag 0BIL](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing), separability and the trace pairing.

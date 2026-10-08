@@ -2,17 +2,20 @@
 
 Involutivity says that Hamiltonian directions forced by vanishing secants remain tangent to a set. Isotropy puts an upper bound on dimension. When an involutive set lies inside a subanalytic isotropic set, these two requirements leave no room for a hidden lower-dimensional residue: the subset becomes subanalytic and Lagrangian, even though its subanalyticity was not assumed.
 
-We work on \(P=T^*X\), where \(X\) is a real analytic \(n\)-manifold, Hausdorff and countable at infinity. Use \(\alpha=\sum_i\xi_i dx_i\) and \(\omega=d\alpha=\sum_i d\xi_i\wedge dx_i\). Positive conicity means invariance under positive fibre dilation. Isotropy for a subanalytic cotangent set means that its canonical one-form vanishes in the singular one-form sense developed in Isotropic cotangent transport and discrete critical values.
+We work on \(P=T^*X\), where \(X\) is a real analytic \(n\)-manifold, Hausdorff and countable at infinity. Use \(\alpha=\sum_i\xi_i dx_i\) and \(\omega=d\alpha=\sum_i d\xi_i\wedge dx_i\). Positive conicity means invariance under positive fibre dilation. Isotropy for a subanalytic cotangent set means that its canonical one-form vanishes in the singular one-form sense developed in [Isotropic cotangent transport and discrete critical values](isotropic-cotangent-transport-and-discrete-critical-values.md#testing-a-one-form-along-approaches-to-a-singular-set).
 
-Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/), treat conic isotropy and the selection of Lagrangian pieces. We work with regular components and singular residues of a locally closed isotropic containing set. The local flow construction and tangent-field argument below turn the secant condition into invariance. For bounded sheaf complexes over arbitrary commutative rings, microsupport involutivity supplies this geometric argument with an involutive closed set. That sheaf-theoretic proof uses the directional identity and an empty-cone contradiction; it does not depend on the subanalytic recovery theorem below.
+Kashiwara and Schapira, [*Microlocal Study of Sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/), Definition 8.2.1 and Propositions 8.2.2–8.2.4, printed pp. 144–145, develop conic isotropy and recovery from selected smooth Lagrangian pieces. Proposition 8.2.4 treats a closed involutive set through a locally finite family of such pieces. Here we prove the needed Hamiltonian-flow and dimension arguments and recover a subset closed in its locally closed isotropic containing set. For bounded sheaf complexes over arbitrary commutative rings, [microsupport involutivity](normal-scaling-and-microlocal-hom.md#involutivity-of-the-entire-microsupport-microsupport-involutivity) supplies this geometric argument with an involutive closed set. That sheaf-theoretic proof uses the directional identity and an empty-cone contradiction; it does not depend on the subanalytic recovery theorem below.
 
-## Exact inputs and the scope of the argument {#geometric-proof-inputs}
+<a id="geometric-proof-inputs"></a>
+<a id="exact-inputs-and-the-scope-of-the-argument-geometric-proof-inputs"></a>
+
+## Exact inputs and the scope of the argument
 
 The flow argument uses finite-dimensional coordinate calculus, completeness of the continuous-path space, compactness, integration of continuous functions, and the inverse function theorem. Its existence, uniqueness, differentiable dependence and closed-set invariance steps are proved below. No theorem about microsupport is an input: involutivity is an explicit hypothesis on the subset.
 
-The final two subanalytic arguments have further precise inputs. A subanalytic set has a relatively open subanalytic regular locus, and the complement has strictly smaller dimension; its connected components are subanalytic and form an **ambient locally finite** family. Closures, finite Boolean operations and locally finite unions preserve subanalyticity, and analytic curve selection gives the singular one-form calculus. These foundational subanalytic results remain prerequisites, recorded in Finite conormal closures and generic base directions. Naming them does not supply their proofs.
+For the final two subanalytic arguments, the [intrinsic regular-locus theorem](subanalytic-sets-and-limiting-tangent-directions.md#every-intrinsic-regular-point-in-each-dimension) gives a relatively open subanalytic regular locus, and the [dimension-drop argument](finite-conormal-closures-and-generic-base-directions.md#the-precise-dimension-prerequisite) proves that its complement has strictly smaller dimension. The [local set and component calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis) proves that closures and finite Boolean operations preserve subanalyticity and that connected components are subanalytic and form an **ambient locally finite** family. Any subfamily is still locally finite, so its union is subanalytic by the same local calculus. The [local curve-selection proof](subanalytic-sets-and-limiting-tangent-directions.md#from-a-local-analytic-presentation-to-analytic-curve-selection) supplies the analytic approaches used in the singular one-form calculus.
 
-Given those inputs, the companion cotangent reading proves that canonical-form vanishing restricts to subanalytic subsets and passes to closures, and that positive-conic canonical-form isotropy gives symplectic isotropy. The dimension bound follows directly: an isotropic tangent space \(W\) satisfies \(W\subset W^\omega\), while nondegeneracy gives \(\dim W^\omega=2n-\dim W\). Hence \(\dim W\le n\); taking the supremum over the regular locus gives the subanalytic dimension bound. These are the exact geometric consequences used below. The resulting theorem is proved relative to the stated inputs, with their remaining foundational work visible.
+Given those inputs, the companion [cotangent reading](isotropic-cotangent-transport-and-discrete-critical-values.md#testing-a-one-form-along-approaches-to-a-singular-set) proves that canonical-form vanishing restricts to subanalytic subsets and passes to closures, and that positive-conic canonical-form isotropy gives symplectic isotropy. The dimension bound follows directly: an isotropic tangent space \(W\) satisfies \(W\subset W^\omega\), while nondegeneracy gives \(\dim W^\omega=2n-\dim W\). Hence \(\dim W\le n\); taking the supremum over the regular locus gives the subanalytic dimension bound. These are the exact geometric consequences used below.
 
 ## Secants and the Hamiltonian sign
 
@@ -25,7 +28,7 @@ C_p(S,S)=\left\{\lim_k\frac{s_k-t_k}{h_k}:s_k,t_k\in S,\ s_k,t_k\to p,\ h_k\down
 \tag{1}
 \]
 
-Only convergent quotients enter. Coordinates identify these limits with tangent vectors; the normal-geometry coordinate comparison makes the definitions invariant. The first set in the ordered pair contributes with a plus sign.
+Only convergent quotients enter. Coordinates identify these limits with tangent vectors; the [two-endpoint coordinate comparison below](#differentiating-two-moving-endpoints) makes the definitions invariant. The first set in the ordered pair contributes with a plus sign.
 
 Define the Hamiltonian isomorphism \(H:T^*P\to TP\) by
 
@@ -69,7 +72,10 @@ If \(S\) is involutive and **closed in an open subset** \(U\subset P\), and \(\v
 
 We now prove this statement, including both time directions. There is no completeness or global compactness hypothesis on the field or the set. A critical point of \(\varphi\) gives a constant trajectory.
 
-### Differentiating two moving endpoints {#secants-and-vanishing-functions}
+<a id="secants-and-vanishing-functions"></a>
+<a id="differentiating-two-moving-endpoints-secants-and-vanishing-functions"></a>
+
+### Differentiating two moving endpoints
 
 Work in a convex coordinate ball. For a \(C^1\) map \(f\), two endpoints \(s_j,t_j\to p\) satisfy
 
@@ -85,7 +91,10 @@ If \((s_j-t_j)/h_j\) converges, dividing the remainder by \(h_j\) makes it tend 
 
 If \(f=\varphi\) vanishes on \(S\), the left side of (F1) is zero for endpoints in \(S\), so \(d\varphi_p\) annihilates \(C_p(S,S)\). The estimate uses the distance **between** the endpoints; separate Taylor remainders at \(p\) would not control division by \(h_j\). Testing (3) with both signs of \(d\varphi_p\) puts both signs of the Hamiltonian vector in \(C_p(S)\).
 
-### Constructing the local flow and its differential {#local-c1-flow}
+<a id="local-c1-flow"></a>
+<a id="constructing-the-local-flow-and-its-differential-local-c1-flow"></a>
+
+### Constructing the local flow and its differential
 
 Let \(V\) be a \(C^1\) vector field on an open subset of \(\mathbb R^m\). Take \(\overline B(p,2r)\) inside the domain and bounds \(M\ge |V|\), \(L\ge\|DV\|\) on this ball. Choose \(T>0\) with \(TM<r\) and \(TL<1\); when one bound is zero its inequality imposes no restriction. For \(z\in B(p,r)\), the map
 
@@ -126,7 +135,10 @@ V(\Phi(s,z+h))-V(\Phi(s,z))-DV(\Phi(s,z))\delta_h(s)&=o(|h|),\\
 
 The second line follows by subtracting (F4), multiplied by \(h\), from the two trajectory equations. Therefore \(D_z\Phi(t,z)=U_z(t)\), continuously in \((t,z)\). Together with the time derivative, this proves joint \(C^1\) regularity. Uniqueness gives the local composition law \(\Phi(t,\Phi(s,z))=\Phi(t+s,z)\). Local solutions glue uniquely to the maximal open interval through zero. Coordinate changes preserve the equation, so the construction also works on manifolds. A zero of \(V\) has the unique constant trajectory.
 
-### A closed set containing its tangent field {#closed-set-tangent-invariance}
+<a id="closed-set-tangent-invariance"></a>
+<a id="a-closed-set-containing-its-tangent-field-closed-set-tangent-invariance"></a>
+
+### A closed set containing its tangent field
 
 Suppose \(S\) is closed in an open manifold \(U\), and \(V\) is a \(C^1\) field on \(U\) with \(V(q)\in C_q(S)\) at every \(q\in S\). We prove that a trajectory starting in \(S\) stays there for all its nonnegative existence times.
 
@@ -178,7 +190,10 @@ Here is the comparison argument without any differentiation almost everywhere. I
 
 For any positive time \(T\) in the maximal existence interval, take the supremum of the times up to \(T\) for which the whole initial segment stays in \(S\). A finite endpoint before \(T\) lies in \(S\) by continuity and closedness in \(U\); the local argument restarted there extends the segment, a contradiction. It therefore reaches \(T\). This proves forward invariance on the entire existence interval, without a globally compact invariant set.
 
-### Applying the result in both Hamiltonian directions {#hamiltonian-invariance-proved}
+<a id="hamiltonian-invariance-proved"></a>
+<a id="applying-the-result-in-both-hamiltonian-directions-hamiltonian-invariance-proved"></a>
+
+### Applying the result in both Hamiltonian directions
 
 For the function in (5), the secant calculation and involutivity give
 
@@ -237,14 +252,14 @@ Let \(A\subset T^*X\) be a locally closed positive-conic subanalytic isotropic s
 
 If \(V\subset A\) is locally closed in \(T^*X\) and involutive, then \(V=\varnothing\). No subanalyticity, conicity, or global closedness in \(A\) is assumed for \(V\).
 
-**Proof.** Induct on \(\dim A\). The empty containing set is immediate. If \(p\in V\cap A_{\mathrm{reg}}\), choose a sufficiently small ambient neighborhood where \(A\) is a closed analytic submanifold and where \(V\) is closed. This is possible by regularity and local closedness. The regular piece of \(A\) is symplectically isotropic: positive conicity and canonical-form vanishing imply \(\omega|_{TA_{\mathrm{reg}}}=0\), as proved by the Euler-field argument in the cotangent reading. The smooth result would force its dimension to be \(n\), contradicting (9). Thus
+**Proof.** Induct on \(\dim A\). The empty containing set is immediate. If \(p\in V\cap A_{\mathrm{reg}}\), choose a sufficiently small ambient neighborhood where \(A\) is a closed analytic submanifold and where \(V\) is closed. This is possible by regularity and local closedness. The regular piece of \(A\) is symplectically isotropic: positive conicity and canonical-form vanishing imply \(\omega|_{TA_{\mathrm{reg}}}=0\), as proved by the Euler-field argument in the [cotangent reading](isotropic-cotangent-transport-and-discrete-critical-values.md#testing-a-one-form-along-approaches-to-a-singular-set). The smooth result would force its dimension to be \(n\), contradicting (9). Thus
 
 \[
 V\cap A_{\mathrm{reg}}=\varnothing.
 \tag{10}
 \]
 
-Set \(A_1=A\setminus A_{\mathrm{reg}}\). This is subanalytic, closed in \(A\), and hence locally closed. It is positive-conic because regularity is preserved by each dilation diffeomorphism. Canonical-form vanishing passes to this subanalytic subset, so it is isotropic. Its dimension is strictly smaller by the dimension prerequisite (2) of the preceding lesson. We have \(V\subset A_1\), with the same local closedness and involutivity as before. Induction proves that it is empty. \(\square\)
+Set \(A_1=A\setminus A_{\mathrm{reg}}\). This is subanalytic, closed in \(A\), and hence locally closed. It is positive-conic because regularity is preserved by each dilation diffeomorphism. Canonical-form vanishing passes to this subanalytic subset, so it is isotropic. Its dimension is strictly smaller by the [dimension-drop argument (2)](finite-conormal-closures-and-generic-base-directions.md#the-precise-dimension-prerequisite). We have \(V\subset A_1\), with the same local closedness and involutivity as before. Induction proves that it is empty. \(\square\)
 
 The argument does not assume that \(V\) has regular points. It uses regularity only on the subanalytic containing set and descends through its singular residues.
 

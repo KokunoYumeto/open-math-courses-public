@@ -1,0 +1,7 @@
+# Reproduction
+
+*K-theory of the leaf space*, Section11AV, NBJ.1–NBJ.23. Endpoint domination gives actual normal derivatives of finite transported columns and displacement after real stabilization. A constant-column connection and fixed diagonal selector put these vectors and their jets in the parallel weight graph domain. The positive Bott lifting operator has parallel normal resolvents; its scalar coefficient action does not identify the nondegenerate B-source inverse representation.
+
+Use Python3.13.9 and Pillow12.2.0. Run python -B draw_normal_bott_stabilization.py --output-dir out; --resources selects the adjacent labelled-geometric-kernel resources if relocated. Compare PNG/SVG with ../../figures/ and NORMAL-BOTT-STABILIZATION-CHECKS.json with this folder. The SVG embeds the unchanged font and complete notice. No private files are read.
+
+Thirty-six exact finite reflection matrices retain the terminal carrier and verify the unit-vector norm, both involution products, self-adjointness and first column. These finite matrices do not approximate infinite derivative norms. Six rational samples check the exact infinite geometric-series derivative formulas, including orthogonality. At t=1/2 the squared whole-action, first-column and endpoint derivatives are1024/15,124/15 and16/15. The graph numerically evaluates those exact infinite norm formulas at201 points. Both axes are logarithmic. The scalar reflection is an analytic test with zero displacement; it does not model a proper holonomy groupoid.

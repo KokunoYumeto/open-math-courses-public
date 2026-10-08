@@ -468,6 +468,41 @@ If \(f\) is a submersion, all arrows in MH12 are isomorphisms. The smooth local 
 \]
 To check it, use \(f^!F_2=f^{-1}F_2\otimes\omega_f\), move the factor through Hom, and use the smooth inverse comparison for \(v\); both its ambient map and its map of submanifolds are submersions. MH4 is then invertible, and \(\rho_f\) is a closed embedding. Together with the invertible smooth trace this proves the assertion.
 
+<a id="SH02-MH-CLOSED-GRAPH-HOM"></a>
+
+### The other closed-embedding graph presentation
+
+For a closed embedding \(f\), the plus presentation has the same inverse-image endpoint. For bounded \(G_2,G_1\) on \(Y\), put \(B_0=\mathsf M_Y(G_2,G_1)\). Then
+\[
+ \mathcal H_f^+(G_2,Rf_!G_1)
+             \simeq\rho_f^{-1}B_0.                         \tag{MHC1}
+\]
+This retains the intermediate graph identity used by the closed-embedding case of MH13; it is useful independently of its minus presentation.
+
+Here is the kernel calculation with its comparison map. On \(Y^2\) let \(q_1,q_2\) be the first and second projections, and put
+\[
+ L_+=R\mathcal Hom(q_2^{-1}G_2,q_1^!G_1).
+\]
+Retain \(u=f\times1_Y:Y^2\to X\times Y\) and the projections \(p,q\) of the latter space. Proper base change for the closed embedding, together with the identical smooth \(Y\)-projection orientation on both sides, gives
+\[
+ p^!Rf_!G_1\simeq Ru_*q_1^!G_1 .
+\]
+Explicitly, smooth purity expresses each side as the ordinary inverse image of \(G_1\) or \(f_*G_1\), tensored with the same pulled-back dualizing line of the second \(Y\) factor. The proper Cartesian square for \(f\) identifies those ordinary coefficients; the line comparison is the specified identity on that factor. No orientation of the normal bundle of \(f\) is inserted here.
+
+Ordinary internal-Hom adjunction for the closed direct image now gives
+\[
+ R\mathcal Hom(q^{-1}G_2,p^!Rf_!G_1)
+       \simeq Ru_*R\mathcal Hom(u^{-1}q^{-1}G_2,q_1^!G_1)
+       =Ru_*L_+ .
+\]
+This adjunction is valid for arbitrary bounded module sheaves; it does not replace either Hom input by its dual. Also \(u^{-1}\Gamma_f=\Delta_Y\), and the map of these submanifolds is the identity of \(Y\). In coordinates flattening the closed embedding, its normal map is the closed vector embedding \(TY\hookrightarrow f^{-1}TX\). The supported deformation is its closed image, so the direct comparison satisfies the proper normal-support condition. Specialization and the Fourier comparison for that closed normal embedding therefore give the actual isomorphism
+\[
+ \mu_{\Gamma_f}Ru_*L_+
+       \simeq \rho_f^{-1}\mu_{\Delta_Y}L_+
+       =\rho_f^{-1}B_0.
+\]
+The two preceding kernel identifications followed by this specified proper comparison prove equation MHC1. The conormal base map is the identity, and the dual normal arrow uses ordinary inverse image, so this comparison adds neither an integration nor a codimension shift. A general proper map need not have this closed normal embedding; the calculation makes no such extension of the isomorphism claim.
+
 If \(f\) is a closed embedding, all arrows in MH13 are isomorphisms. Proper direct image equals ordinary direct image. In graph coordinates, internal Hom adjunction and exact extension from a closed subset identify
 \[
 \mathcal H_f^+(G_2,Rf_!G_1)\simeq\rho_f^{-1}B.
@@ -486,6 +521,54 @@ R\rho_{f!}\varpi_f^{-1}\mathsf M_X(A_2,A_1)
 \tag{MH20}
 \]
 obtained from MH12 upper followed by the lower and upper routes of MH14. Similarly MH13 upper followed by either direct-image argument change gives maps to \(\mathsf M_X(Rf_!B_2,Rf_!B_1)\) and to \(\mathsf M_X(Rf_*B_2,Rf_*B_1)\). The exceptional image map with both arguments \(Rf_!\) is particularly useful for kernel composition.
+
+<a id="SH02-MH-PROPER-IMAGE-COHERENCE"></a>
+
+### Actual proper image is functorial
+
+Write \(\Phi_f=R\varpi_{f!}\rho_f^{-1}\). The map used here is the upper arrow of MH13 followed by the contravariant first-argument change induced by \(Rf_!A\to Rf_*A\):
+
+\[
+c_f:\Phi_f\mathsf M_Y(A,B)
+\longrightarrow\mathsf M_X(Rf_!A,Rf_!B).
+\tag{MI1}
+\]
+
+It is defined for the bounded inputs and manifold hypotheses of this lesson, without a properness, submersion, constructibility, field or perfectness assumption. In this subsection \(\vartheta_f(A)\) denotes the proper-to-ordinary direct-image map \(Rf_!A\to Rf_*A\). The evaluation defining MH17, followed by the graph-to-diagonal comparison MH7, is the construction of this \(c_f\).
+
+For \(g:Z\to Y\), the Cartesian locus
+\[
+ E_f\times_{T^*Y}E_g
+ =\{(z,\xi,\eta):\eta=df_{g(z)}^*\xi\}
+ \simeq E_{fg}
+\]
+has incoming covector \(dg_z^*\eta=d(fg)_z^*\xi\) and final covector \(\xi\). Proper-support base change and image transitivity consequently give the specified isomorphism
+\[
+ \Phi_f\Phi_g\simeq\Phi_{fg}.                                \tag{MI11}
+\]
+They are proper-support comparisons and remain valid for nonproper \(f,g\).
+
+Under equation MI11 and \(Rf_!Rg_!\simeq R(fg)_!\), the maps (MI1) obey
+\[
+ c_f\,\Phi_f(c_g)=c_{fg}.                                    \tag{MI12}
+\]
+We check the evaluation that controls this assertion. Define
+\[
+ \alpha_f(A):f^{-1}Rf_!A
+ \xrightarrow{f^{-1}\vartheta_f}f^{-1}Rf_*A
+ \xrightarrow{\varepsilon_f^*}A.
+\]
+After the final first-argument change above, the evaluation defining MH17 is precisely the kernel evaluation using \(\alpha_f(A)\), followed by the proper projection comparison and the two exceptional counits. The natural proper-to-ordinary transformation composes with direct images: on an open set both sides send a proper-support section through the same inclusion into all sections, and the derived transformation is its natural resolution comparison. Thus ordinary adjunction transitivity gives
+\[
+ \alpha_{fg}=\alpha_g\,g^{-1}\alpha_f
+\]
+with the proper-image source identification. This is an equality of actual transformations, not a new \(f^{-1}\dashv Rf_!\) adjunction.
+
+On the second argument, the two proper images compose. Their exceptional units and counits are those of the composite adjunction. Taking the adjunct of evaluation inserts the two units, and the two triangle identities leave exactly the composite counit. The two resulting Hom adjuncts are therefore equal. The specialization proper-direct maps have these same adjuncts in the positive chamber; their central maps are proper base change, whose pasting identifies the composite deformation diagram. Fourier transport cancels only the fixed invertible Fourier adjunction pairs. Its support and trace mates have already been identified as actual maps. These steps carry the preceding equality to equation MI12 on all conormal coefficients. There is no cancellation of an arbitrary trace.
+
+The identity map has \(\rho=\varpi=1\), and its units, counits and \(\alpha\) are identities, so \(c_1=1\). This proves genuine functoriality on the whole cotangent space.
+
+We also need tensor compatibility. For two maps on separate factors, proper Künneth identifies the product of the \(\Phi\) sources with the product-map \(\Phi\) source. Apply the microlocal external-product comparison before or after (MI1). The two Hom adjuncts evaluate the two independent inputs and use the same labelled coefficient permutation, \(\alpha\) maps and product counit. The \(\alpha\) identity on a product follows from the natural proper-to-ordinary comparison and evaluation of a product section; only the proper Künneth isomorphism is used. No ordinary-image Künneth isomorphism is asserted. Ordered orientation-product counits and the symmetric monoidal hexagon identify all line and coefficient braids. Hence both tensor routes are the same map. The ordinary inverse microlocal-Hom maps likewise compose and commute with this external product: their positive-open adjunct is the pulled-back evaluation, and ordinary inverse images compose exactly. For the product-coordinate base-change squares used below, moving a proper projection past a repeated-coordinate restriction uses proper base change, the pulled-back \(\alpha\), and the same composite counit. The associated specialization diagrams are Cartesian in these product coordinates; their proper base-change pasting supplies the same mate. Thus this compatibility also holds for the displayed projection/diagonal squares, without invoking unrestricted nonproper ordinary base change.
 
 ## SH02-MH-PRODUCT — Independent directional morphisms
 
@@ -797,6 +880,8 @@ Explain where the antipode enters.
 **Problem 6: what is proved at the zero covector?** Let \(X\) be a vector space. In SH02-MH-GAMMA-STALK take \(\xi_0=0\), and identify the resulting colimit. Explain why this check is insufficient to prove equality of two morphisms on all of \(T^*X\).
 
 **Solution.** The strict inequality permits only the zero cone. Its cone topology is the ordinary topology, so the projector is the identity. On \(U\), the sheaf \(G_U\) restricts to \(G\), and the term is \(H^rR\Gamma(U;R\mathcal Hom(G,F))\). The filtered colimit over \(U\) is \(H^r(R\mathcal Hom(G,F))_{x_0}\), agreeing with zero-direction recovery. A conic sheaf may be nonzero away from the zero section while having zero ordinary restriction to it. For example extension by zero of the constant sheaf on an open positive ray in a one-dimensional fibre has zero zero-stalk and nonzero positive stalks. Consequently zero-direction equality cannot detect every morphism of conic sheaves; the composition and unit arguments above use actual kernels.
+
+<a id="sh02-mh-routes-what-remains-to-audit-and-what-comes-next"></a>
 
 ## SH02-MH-ROUTES — What remains open and what comes next
 

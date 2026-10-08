@@ -21,7 +21,7 @@ Put \(D=-i\partial\), \(X=\langle x\rangle\), \(\Xi=\langle\xi\rangle\), and use
  \tag{1}
 \]
 
-All quantizations are left quantizations. Integer weighted Sobolev norms are equivalent to the square sum of \(\|X^tD^\alpha u\|_2\), \(|\alpha|\le m\).
+All quantizations are left quantizations. The [integer weighted Sobolev characterization](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-integer-derivatives) proves equivalence with the square sum of \(\|X^tD^\alpha u\|_2\), \(|\alpha|\le m\).
 
 ## 1. The full uniformly weighted theorem
 
@@ -37,7 +37,7 @@ For \(A_0=\{|x|<1\}\), \(A_j=\{2^{j-1}\le|x|<2^j\}\), and \(R_j=2^j\), set
  \tag{2}
 \]
 
-The space \(\dot B^*\) is the closure of Schwartz functions in \(B^*\). The radiation lesson proves
+The space \(\dot B^*\) is the closure of Schwartz functions in \(B^*\). The [vanishing-shell characterization](radiation-for-limits-of-long-range-resolvents.md#radiation-shell-closure) proves
 
 \[
  \begin{gathered}
@@ -51,6 +51,9 @@ The space \(\dot B^*\) is the closure of Schwartz functions in \(B^*\). The radi
 \]
 
 These equivalences include the inner shell and all real radii. The \(B/B^*\) integral pairing is absolutely convergent.
+
+<a id="decay-theorem"></a>
+The weighted endpoint estimate is Hörmander [H4, Theorem 30.2.9].
 
 **Theorem 1.1.** Let \(K\) be a compact set of regular free energies. Suppose \(\lambda\in K\) and
 
@@ -87,8 +90,9 @@ Use the symmetric split \(V=V_L+V_S\), with the compact smooth adjustment making
  \tag{6}
 \]
 
-The primary map is consistent with the actual rough expression for every real \(t\). Its proof and the smooth split are given in the combined-resolvent lesson.
+The primary map is consistent with the actual rough expression for every real \(t\). The [primary rough-map proof](combining-the-long-range-resolvent-estimates.md#combined-primary-map) retains every local coefficient exponent, and the [smooth split](combining-the-long-range-resolvent-estimates.md#combined-split) includes the elliptic compact adjustment.
 
+<a id="decay-strict-step"></a>
 ## 2. A strict step in the weight
 
 Write \(U_\beta=\sum_{|\alpha|\le m}\|X^\beta D^\alpha u\|_{B^*}\). If \(U_{\gamma'}<\infty\), the shell square sum gives
@@ -126,8 +130,8 @@ Then
 
 The first inclusion uses \(\gamma-a<\gamma'-1/2\); the second has still more margin.
 
-Since \(B\subset H^{0,1/2}\), the weighted forcing is in \(H^{0,\gamma+1/2}\). The primary rough map puts \(V_Su\) in that space as well. Apply the complete real-parameter off-energy theorem to
-\((P-\lambda)u=f-V_Su\), with any finite strict auxiliary weight from the preceding shell bound. Uniformly in the energy neighborhood,
+Since \(B\subset H^{0,1/2}\), the weighted forcing is in \(H^{0,\gamma+1/2}\). The primary rough map puts \(V_Su\) in that space as well. Apply the [complete real-parameter off-energy theorem](the-resolvent-away-from-the-energy-surface.md#off-energy-resolvent-estimate) to
+\((P-\lambda)u=f-V_Su\). Use forcing indices \(s=0\), \(t=\gamma+1/2\), and auxiliary indices \(s'=0\), \(t'=\gamma-a\); (9) bounds the required auxiliary norm. Uniformly in the energy neighborhood,
 
 \[
  \begin{gathered}
@@ -143,6 +147,7 @@ The last bound follows already from the weighted \(L^2\) derivatives. Thus the b
 
 ## 3. Cutting off the full rough expression
 
+<a id="decay-rough-cutoff"></a>
 **Lemma 3.1.** Let \(\zeta\) be smooth, equal one on the unit ball and supported in \(|x|<2\). Set \(\zeta_t(x)=\zeta(x/t)\), \(t\ge2\). Then
 
 \[
@@ -171,7 +176,7 @@ Also \(D^\alpha(\zeta_tu)\to D^\alpha u\) in \(B^*\) through order \(m\). Whenev
 Only the cutoff is differentiated. Its positive derivatives are \(O(t^{-1})\) or smaller and have support in \(t\le|x|\le2t\).
 
 Choose a fixed translated cutoff \(\eta_y\), supported in \(B(y,1)\), equal one on \(B(y,1/2)\). An originally lower coefficient of derivative gap \(k=m-|\alpha|\) is multiplied by a derivative with gap \(k+|\beta|\ge k\). Its original Sobolev/Hölder exponents therefore still bound the local output by
-\(Ct^{-1}A_\alpha(y)\|\eta_yu\|_{H^m}\). For an originally highest coefficient use its \(L^\infty\) norm. Integrate the squared inequalities over the contributing centers \(t-1/2\le|y|\le2t+1/2\). The derivative product rule and Fubini from the local multiplier proof give
+\(Ct^{-1}A_\alpha(y)\|\eta_yu\|_{H^m}\). For an originally highest coefficient use its \(L^\infty\) norm. Integrate the squared inequalities over the contributing centers \(t-1/2\le|y|\le2t+1/2\). The derivative product rule and Fubini from the [local multiplier proof](admissible-differential-perturbations.md#admissible-global-mapping) give
 
 \[
  \begin{gathered}
@@ -199,6 +204,7 @@ In particular \(u_t=\zeta_tu\in H^m\) and
 
 We will pass a fixed-radius estimate through this convergence. We do not need convergence of \(X^\gamma f_t\).
 
+<a id="decay-signed-escape"></a>
 ## 4. An exterior estimate with every nonnegative weight
 
 Use the smooth exterior angular convolution \(\Psi\) from the radiation lesson. It is homogeneous of degree zero in its nonzero velocity argument, has all mixed \(G_1\) bounds, is zero for \(|x|<c\), and satisfies
@@ -235,6 +241,7 @@ Exterior support, with all differentiated bounds, implies for every fixed \(\gam
 
 Each prescribed rapid frequency exponent \(N\) is allowed for the compact-frequency factors.
 
+<a id="decay-finite-commutator"></a>
 **Lemma 4.1.** Under the known finite norm in Section 2, for either sign,
 
 \[
@@ -277,6 +284,7 @@ The weighted map thus gives
  \tag{20}
 \]
 
+<a id="decay-weighted-positivity"></a>
 For clarity, the positivity argument also applies when \(\gamma\) exceeds the small weight used for the graph limit. Put \(c_R=R^{2\gamma}s_R\), \(a_R=X^{-2\gamma}c_R\ge0\), and \(M_\gamma=X^\gamma\). By (17), \(a_R\) satisfies the full \(S(X^{-1},G_1)\) bounds of the [proved packet Theorem 1](../providers/analysis/weighted-positivity.md#weighted-positivity), uniformly in \(R\). One finite product gives
 
 \[
@@ -287,7 +295,7 @@ For clarity, the positivity argument also applies when \(\gamma\) exceeds the sm
  \end{gathered}
 \]
 
-The right multiplication has leading symbol \(a_RX^\gamma\) and remainder weight \(X^{\gamma-2}\Xi^{-1}\); the outer multiplication is exact. Consequently \(T_{R,\gamma}:H^{0,\gamma-1}\to H^{0,1-\gamma}\), with a uniform norm. On Schwartz inputs apply packet positivity to \(M_\gamma u\), use the real multiplication factor in the pairing, and subtract this bounded remainder form. This proves the same weighted reduction as [Section 6 of the radiation lesson](radiation-for-limits-of-long-range-resolvents.md#6-the-weighted-commutator-and-its-graph-limit):
+The right multiplication has leading symbol \(a_RX^\gamma\) and remainder weight \(X^{\gamma-2}\Xi^{-1}\); the outer multiplication is exact. Consequently \(T_{R,\gamma}:H^{0,\gamma-1}\to H^{0,1-\gamma}\), with a uniform norm. On Schwartz inputs apply packet positivity to \(M_\gamma u\), use the real multiplication factor in the pairing, and subtract this bounded remainder form. This proves the same weighted reduction as [Section 6 of the radiation lesson](radiation-for-limits-of-long-range-resolvents.md#radiation-weighted-positivity):
 
 \[
  \begin{gathered}
@@ -300,6 +308,27 @@ The right multiplication has leading symbol \(a_RX^\gamma\) and remainder weight
 
 This uses \(a\le1\) and applies to every \(\gamma\ge0\). All constants use finitely many uniformly bounded seminorms. Large \(\gamma\) is handled first on Schwartz inputs, where every displayed factor acts. The compact-input approximation and fixed-radius inequality passage below then treat the actual solution; no unweighted boundedness of a positive-order spatial symbol is assumed. Exact Fourier conjugation gives the equivalent lower norm \(H^{\gamma-1}\), but no external sharp theorem is needed.
 
+<a id="decay-fourier-positivity"></a>
+**Fourier-conjugation proof of (21).** The [all-real-order conjugation argument in Radiation for limits of long-range resolvents](radiation-for-limits-of-long-range-resolvents.md#radiation-fourier-conjugation) gives another proof with exactly the weight required here. By (17), \(c_R=R^{2\gamma}s_R\ge0\) is uniformly in \(S(X^{2\gamma-1},G_1)\). Write
+\[
+ b_R(y,\eta)=c_R(-\eta,y),\qquad
+ \tau=1-\gamma,\qquad J=\langle D_y\rangle.
+\]
+The rotated symbol has order \(2\gamma-1\) in \(\eta\). The earlier proof shows that
+\[
+ J^\tau\operatorname{Op}_L(b_R)J^\tau
+   =\operatorname{Op}_L\bigl(\langle\eta\rangle^{2\tau}b_R\bigr)+T_R,
+ \qquad T_R\in\operatorname{Op}S(\langle y\rangle^{-1},G'_1),
+\]
+where \(G'_1=\langle y\rangle^{-2}|dy|^2+\langle\eta\rangle^{-2}|d\eta|^2\). The leading symbol is nonnegative of order one, since \(2\tau+2\gamma-1=1\). Its proved lower bound and the uniformly bounded remainder give a lower form bound by \(-C_\gamma\|v\|_2^2\). Exact Fourier conjugation gives the right quantization of the real symbol \(b_R\); its adjoint has the same real form and left quantization. Thus, for \(w\in\mathcal S\), apply that bound to \(v=J^{\gamma-1}\mathcal Fw\) to obtain
+\[
+ \operatorname{Re}(\operatorname{Op}(c_R)w,w)
+ \ge -C_\gamma\|\mathcal Fw\|_{H^{\gamma-1}}^2
+ =-C_\gamma\|X^{\gamma-1}w\|_2^2.
+\]
+This is the first inequality in (21). Since \(a\le1\), its right-hand norm is at most \(\|w\|_{0,\gamma-a}\), which gives the second inequality. The earlier conjugation proof holds for every fixed real \(\gamma\) on Schwartz inputs. In the present nonnegative-weight argument we pass the complete estimate to compact \(H^m\) inputs and then to the actual solution exactly as in the next paragraph. No restriction to a small weight, or unweighted operator bound for an arbitrary positive spatial order, is needed. The spatial packet proof above remains another route to the same estimate.
+
+<a id="decay-rough-passage"></a>
 Symmetry in the smooth real-energy equation gives the commutator form as
 \(-\operatorname{Im}(Q_R(f-V_Su),Q_Ru)\). The rough contribution obeys
 
@@ -318,6 +347,7 @@ The first line uses the primary rough map \(1+\delta=2a\); the second uses the e
 
 For each compact input \(u_t\) from Section 3, choose smooth approximants inside a fixed slightly larger compact support. Their \(H^m\) convergence also gives convergence in the known weighted norm, so the exact forms pass to \(u_t\). Smooth coefficients are bounded, \(Q_R\) preserves \(H^m\), and the rough map is consistent. Now hold \(R\) fixed and let \(t\to\infty\). The forcing converges in \(B\), the solution in \(B^*\), and the known \(H^{m,\gamma-a}\) norm converges. Shell maps pass the forcing pairing, and annular output support passes the probe in local \(L^2\). This proves the displayed inequality for the original solution. \(\square\)
 
+<a id="decay-admissible-weights"></a>
 ## 5. Bounded weights with uniform operator constants
 
 For \(\varepsilon>0\), define
@@ -351,8 +381,9 @@ Their weight constants are uniform too:
  \tag{25}
 \]
 
-For \(s\ge t\) this follows from the exact quotient, and for \(s\le t\) from monotonicity. Reverse the variables for inverse weights. Japanese-bracket ratios have fixed polynomial bounds, giving uniform metric temperateness.
+For \(s\ge t\) this follows from the exact quotient, and for \(s\le t\) from monotonicity. Reverse the variables for inverse weights. If \(|h|\le X/2\), the one-Lipschitz bracket satisfies \(X/2\le\langle x+h\rangle\le3X/2\). Equation (25) in both directions therefore gives uniform local comparison for the weight and its inverse. For arbitrary \(h\), either bracket ratio is at most \(1+|h|\). Frequency shifts leave these weights unchanged, and the dual metric quadratic form is at least \(|h|^2\), so the same quotient bound gives uniform symplectic temperateness. These are precisely the [weight conditions (C2)–(C3)](../providers/analysis/finite-weighted-calculus.md#weights-and-symbols), with constants independent of \(\varepsilon\).
 
+<a id="decay-bounded-maps"></a>
 Let \(Q'_R\) have a slightly larger noncritical frequency cutoff equal one near \(\operatorname{supp}\chi\). Right frequency composition gives \(Q_R=Q'_R\chi(D)\) exactly. Exterior support implies \(W_\varepsilon(R)\le Cw_\varepsilon(x)\) there. Exact weighted products, including their complete remainders, give bounded families in \(\operatorname{Op}S(1,G_1)\):
 
 \[
@@ -395,6 +426,7 @@ Multiply Lemma 4.1 by \(W_\varepsilon(R)^2\). Since \(W_\varepsilon(R)\le R^\gam
  \tag{29}
 \]
 
+<a id="decay-exact-frame"></a>
 ## 6. An exact frame for the radial annulus
 
 The excluded acute cones for \(c_2(x,v)\) and \(c_2(x,-v)\) are disjoint. Thus at least one \(g_\pm\) equals one, and \(d=g_+^2+g_-^2\ge1\). Choose \(\omega_1=1\) near \(\operatorname{supp}\omega\), supported in a larger annulus, and a compact noncritical \(\chi_1=1\) near \(\operatorname{supp}\chi\). Put
@@ -457,6 +489,7 @@ Uniform \(L^2\) bounds for the two frame factors, the inequality for the norm of
 
 This proves a radial operator estimate. The pointwise angular inequality alone would not be an \(L^2\) operator ordering.
 
+<a id="decay-absorption"></a>
 ## 7. Absorption, the inner shell and removal of the bounded weight
 
 For \(R<|x|<2R\), \(R\ge1\), we have \(1\le X/R\le\sqrt5\). The weight quotient bound shows
@@ -484,6 +517,7 @@ Since \(N_\varepsilon\) is finite for fixed \(\varepsilon\), Young's inequality 
  \tag{37}
 \]
 
+<a id="decay-weighted-derivatives"></a>
 Choose compact noncritical \(\chi_2=1\) near \(\operatorname{supp}\chi\). Exact right frequency multiplication yields
 
 \[
@@ -497,6 +531,7 @@ Choose compact noncritical \(\chi_2=1\) near \(\operatorname{supp}\chi\). Exact 
 
 The conjugated operator is in \(\operatorname{Op}S(1,G_1)\), with its complete finite product remainder. Its shell map recovers every near-energy derivative through \(m\).
 
+<a id="decay-finite-bootstrap"></a>
 ## 8. Finite bootstrap and homogeneous decay
 
 Add the off-energy derivative bounds from Section 2 and use its strict shell estimate. One step gives
@@ -509,6 +544,7 @@ Add the off-energy derivative bounds from Section 2 and use its strict shell est
 
 The case \(\gamma=0\) is already given. For any fixed target \(\gamma>0\), partition \([0,\gamma]\) into finitely many increments smaller than \(\delta/2\). Each lower forcing norm is at most the target \(F_\gamma\), since \(X\ge1\). Finite induction gives \(U_\gamma\le C(F_\gamma+U_0)\). A finite cover of \(K\) gives one uniform constant. This proves Theorem 1.1, including empty-shell neighborhoods. \(\square\)
 
+<a id="decay-homogeneous"></a>
 **Corollary 8.1 (homogeneous polynomial decay).** If \(f=0\) in Theorem 1.1, then \(u\in H^{m,t}\) for every real \(t\). On every fixed compact regular-energy set, its weighted norm is bounded by a constant times \(U_0\).
 
 **Proof.** The theorem gives every \(U_\gamma\). For a specified \(t\), choose \(\gamma>t+1/2\). The strict shell square sum in Section 2 puts every \(X^tD^\alpha u\) in \(L^2\). The integer weighted norm equivalence proves the assertion and its uniform bound. \(\square\)
@@ -517,11 +553,14 @@ This applies in particular to the zero-forcing outgoing graph pairs considered i
 
 ## 9. Consequences for the noncritical point spectrum
 
+<a id="decay-point-spectrum"></a>
+These point-spectrum consequences are the opening assertions of Hörmander [H4, Theorem 30.2.10].
+
 **Theorem 9.1.** The eigenvalues of \(H\) in the regular free-energy set have finite multiplicity and form a discrete subset of that set. Every corresponding eigenfunction lies in \(H^{m,t}\) for every real \(t\).
 
 **Proof.** An \(L^2\) eigenfunction is in the domain \(H^m\). All its derivatives through \(m\) are therefore in \(L^2\subset\dot B^*\), so Corollary 8.1 gives every polynomial weight.
 
-More quantitatively, suppose \(u_j\) are normalized orthogonal eigenfunctions with \(\lambda_j\) in one compact regular-energy set \(K\). The graph norm equivalence gives
+More quantitatively, suppose \(u_j\) are normalized orthogonal eigenfunctions with \(\lambda_j\) in one compact regular-energy set \(K\). The [graph norm equivalence](the-sobolev-domain-of-an-elliptic-operator.md#domain-graph-resolvent) gives
 
 \[
  \begin{gathered}
@@ -544,7 +583,27 @@ For \(t>0\), the \(L^2\) tails obey
  \tag{41}
 \]
 
-On a fixed ball the bounded \(H^m\) family is precompact in \(L^2\), by the [complete finite-rank kernel argument in the radiation lesson, Lemma 3.1](radiation-for-limits-of-long-range-resolvents.md#3-strong-weighted-convergence-of-the-graph). Specifically, insert compact input and output cutoffs and a smooth Fourier cutoff at frequency \(N\). The high-frequency error is \(O(N^{-m})\) on this bounded \(H^m\) family. The low-frequency kernel between bounded supports is square integrable; approximation by finite sums of products, and Cauchy–Schwarz, approximate that operator in norm by finite-rank maps. Their finite-dimensional convergent subsequences and a diagonal extraction make the original local outputs Cauchy. This gives the asserted compactness using exactly the programme proof. Successive extraction on a countable increasing sequence of balls gives a subsequence converging on every fixed ball. To see global convergence, first make the two tails in (41) smaller than any prescribed error, then use local convergence on that fixed ball. Completeness of \(L^2\) supplies the global limit.
+On a fixed ball the bounded \(H^m\) family is precompact in \(L^2\), by the [complete finite-rank kernel argument in the radiation lesson, Lemma 3.1](radiation-for-limits-of-long-range-resolvents.md#radiation-local-compactness). Specifically, insert compact input and output cutoffs and a smooth Fourier cutoff at frequency \(N\). The high-frequency error is \(O(N^{-m})\) on this bounded \(H^m\) family. The low-frequency kernel between bounded supports is square integrable; approximation by finite sums of products, and Cauchy–Schwarz, approximate that operator in norm by finite-rank maps. Their finite-dimensional convergent subsequences and a diagonal extraction make the original local outputs Cauchy. This gives the asserted compactness using exactly the programme proof. Successive extraction on a countable increasing sequence of balls gives a subsequence converging on every fixed ball. To see global convergence, first make the two tails in (41) smaller than any prescribed error, then use local convergence on that fixed ball. Completeness of \(L^2\) supplies the global limit.
+
+<a id="decay-fourier-compactness"></a>
+**A Fourier-equicontinuity proof of local compactness.** The local step also has the following direct proof. Fix a smooth compactly supported \(\theta\) equal one on the ball in question, and put \(w_j=\theta u_j\). The derivative product rule gives a common \(H^m\) bound. Their supports lie in one bounded set \(S\), so Cauchy–Schwarz bounds both \(\|w_j\|_1\) and \(\int |x|\,|w_j(x)|\,dx\). For the unitary Fourier transform, the inequality \(|e^{it}-e^{is}|\le|t-s|\) consequently gives
+\[
+ |\widehat w_j(\xi)|\le C,\qquad
+ |\widehat w_j(\xi)-\widehat w_j(\eta)|\le C|\xi-\eta|.
+\]
+Here the elementary exponential inequality follows by integrating its derivative along the interval between \(s\) and \(t\). These bounds hold with the same constant for every \(j\). Smooth approximation inside a fixed larger compact support converges both in \(L^1\) and \(L^2\), identifying this integral transform with the \(L^2\) transform.
+
+We give the subsequence step explicitly. A bounded sequence of complex numbers has a convergent subsequence: repeatedly subdivide a closed bounding square into four closed squares, retain one containing infinitely many terms, and select increasing indices in the resulting nested squares. Their diameters tend to zero, so the selected values are Cauchy and converge by completeness. Enumerate \(\mathbb Q^n\). Apply this construction successively at each rational frequency, keeping nested subsequences, and take the diagonal subsequence. Its Fourier values converge at every rational frequency.
+
+On any fixed frequency ball, choose a finite rational grid so that each point is within \(\varepsilon/(3C)\) of a grid point; if \(C=0\), the common Lipschitz bound already makes each transform constant. For two sufficiently late members, their values differ by less than \(\varepsilon/3\) at every grid point. The two Lipschitz errors then make their difference less than \(\varepsilon\) throughout the ball. Thus this subsequence is uniformly Cauchy on every bounded frequency ball. This is the equicontinuity subsequence argument often called Arzelà–Ascoli, with its required case proved here.
+
+The Sobolev bound gives, for \(N\ge1\),
+\[
+ \|1_{\{|\xi|>N\}}\widehat w_j\|_2
+ \le N^{-m}\|\langle\xi\rangle^m\widehat w_j\|_2
+ \le C N^{-m}.
+\]
+First choose \(N\) to make both tails small, and then use the uniform Cauchy property on the frequency ball of finite volume. The transforms are Cauchy in \(L^2\); the [proved Plancherel identity](../providers/analysis/finite-derivative-l2.md#fourier-normalization) gives the same conclusion for \(w_j\). This proves local \(L^2\) compactness. Repeating the subsequence selection on increasing spatial balls and using the uniform tails in (41) gives the same global convergence as above. The finite-rank kernel proof remains an independent proof of the local step.
 
 An infinite orthonormal sequence cannot have such a subsequence, since the distance between any two distinct terms is \(\sqrt2\). For eigenvectors \(u,v\) with distinct real eigenvalues \(\lambda,\mu\), symmetry gives \((\lambda-\mu)(u,v)=(Hu,v)-(u,Hv)=0\), so they are orthogonal. If an eigenspace were infinite dimensional, choose successively a vector outside the span of the previously chosen orthonormal vectors, subtract its finite orthogonal projection onto that span, and normalize the nonzero result. This constructs an infinite orthonormal family in that eigenspace. Either possibility contradicts the compactness just proved. Thus each compact regular-energy set contains only finitely many eigenvalues, counted with multiplicity, proving both conclusions. \(\square\)
 
@@ -552,6 +611,7 @@ An infinite orthonormal sequence cannot have such a subsequence, since the dista
 
 Check the bounded-weight constants and the exact annular frame, then count the finite steps needed for a prescribed weight. Use the homogeneous conclusion to establish discreteness only away from the stated thresholds.
 
+<a id="decay-solutions"></a>
 ## 10. Graded exercises with complete solutions
 
 **Exercise 1 — Basic — the strict bootstrap increment.**
@@ -850,3 +910,5 @@ The [accessible scalar comparisons in the limiting-absorption lesson](limiting-a
 
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*, author's online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf), treats self-adjoint operators, resolvents and spectral measures.
 
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Theorem 30.2.9 and its proof, pp. 293–295; the point-spectrum assertions of Theorem 30.2.10 and part (a) of its proof, pp. 295–296. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

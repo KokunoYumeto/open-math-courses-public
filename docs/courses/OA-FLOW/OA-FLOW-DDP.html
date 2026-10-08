@@ -1,0 +1,597 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Discrete decomposition and periodic weights · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-BFC.html">Previous lesson</a><a href="OA-FLOW-PDM.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DDP.md">Lesson source</a></nav><h1 id="OA-FLOW.DDP.SETTING">Discrete decomposition and periodic weights</h1>
+<p>A type III factor with a discrete modular spectrum has a trace-scaling description by one automorphism of a type II factor. We construct that description for each specified infinite periodic weight, prove its converse and strict uniqueness, and keep the projection cardinalities that matter when the predual is not separable. A continuous suspension proves the discrete cocycle theorem used in the uniqueness argument.</p>
+<p><em>Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications retain their own terms; no font files are redistributed.</em></p>
+<p><a id="dd-setting"></a></p>
+<h2 id="hypotheses-and-conclusions">Hypotheses and conclusions</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, and put
+<span class="math math-display" data-tex="\[
+ L=-\log\lambda&gt;0,\qquad P=\frac{2\pi}{L}.
+\]">\[
+ L=-\log\lambda&gt;0,\qquad P=\frac{2\pi}{L}.
+\]</span>
+For every type III factor <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(S(M)=\{0\}\cup\lambda^{\mathbb Z}\)">\(S(M)=\{0\}\cup\lambda^{\mathbb Z}\)</span>, there is a faithful normal semifinite weight <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with infinite mass and <span class="math" data-tex="\(\sigma_P^\phi=\mathrm{id}\)">\(\sigma_P^\phi=\mathrm{id}\)</span>. For <strong>every specified</strong> such weight, its centralizer <span class="math" data-tex="\(N=M_\phi\)">\(N=M_\phi\)</span> is a type <span class="math" data-tex="\(\mathrm{II}_\infty\)">\(\mathrm{II}_\infty\)</span> factor, and there is a unitary <span class="math" data-tex="\(U\in M\)">\(U\in M\)</span> such that
+<span class="math math-display" data-tex="\[
+ \sigma_t^\phi(U)=\lambda^{it}U,\qquad
+ \tau\circ\theta=\lambda\tau,\qquad
+ M\cong N\rtimes_\theta\mathbb Z,
+ \quad \tau=\phi|_N,\quad\theta=\operatorname{Ad}U|_N.
+\]">\[
+ \sigma_t^\phi(U)=\lambda^{it}U,\qquad
+ \tau\circ\theta=\lambda\tau,\qquad
+ M\cong N\rtimes_\theta\mathbb Z,
+ \quad \tau=\phi|_N,\quad\theta=\operatorname{Ad}U|_N.
+\]</span>
+The isomorphism and its inverse are normal, and all weight identities hold on the entire positive cone, including infinite values. Conversely every such trace-scaling system yields the stated type III factor. No separability, countable decomposability or faithful-state assumption is imposed on these conclusions.</p>
+<p>Any two infinite generalized traces differ by inner transport and a unique scalar in <span class="math" data-tex="\((\lambda,1]\)">\((\lambda,1]\)</span>. Their decompositions are strictly conjugate after an explicit inner adjustment, with that trace scalar retained. The modular and inner period groups are <span class="math" data-tex="\(P\mathbb Z\)">\(P\mathbb Z\)</span>; the full center-flow period group is <span class="math" data-tex="\(L\mathbb Z\)">\(L\mathbb Z\)</span>. The reciprocal periods are distinct parameters.</p>
+<p>The discrete cocycle theorem in Section 6 applies to every von Neumann algebra with a faithful normal semifinite trace scaled by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with arbitrary center and cardinality. When <span class="math" data-tex="\(M\)">\(M\)</span> has a faithful normal state, Section 8 also proves periodic-state existence, a degree-one isometry, persistence of every centralizer MASA, and the complete partial-normalizer criterion, including zero projections and both signs. No state is assumed for the other sections.</p>
+<p>The earlier <a href="OA-FLOW-IP.html#oa-flow.ip.0">inner-period argument</a>, <a href="OA-FLOW-PW.html#oa-flow.pw.1">bounded phase correction</a>, <a href="OA-FLOW-PF.html#oa-flow.pf.1">periodic Fourier analysis</a>, and <a href="OA-FLOW-BC.html#oa-flow.bc.4">normalized weight cocycles</a> supply the basic modular identities. The first three sections prove the corner and cardinal comparison statements needed for the unrestricted scope.</p>
+<p><span id="OA-FLOW.DDP.CORNERS"></span><a id="dd-corners"></a></p>
+<h2 id="1-arbitrary-cardinality-corners-and-the-positive-spectral-identity">1. Arbitrary-cardinality corners and the positive spectral identity</h2>
+<p><strong>Homogeneous matrix coordinates.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a factor and <span class="math" data-tex="\(0\ne e\in B\)">\(0\ne e\in B\)</span> properly infinite. Take a maximal orthogonal family <span class="math" data-tex="\((p_i)\)">\((p_i)\)</span> with <span class="math" data-tex="\(p_i\sim e\)">\(p_i\sim e\)</span>, initially containing <span class="math" data-tex="\(e\)">\(e\)</span>. Its residual <span class="math" data-tex="\(r=1-\sum_i p_i\)">\(r=1-\sum_i p_i\)</span> cannot contain another copy of <span class="math" data-tex="\(e\)">\(e\)</span>. Factor comparison <a href="OA-FLOW-PC.html#oa-flow.pc.2">PC2</a> therefore gives <span class="math" data-tex="\(r\precsim e\)">\(r\precsim e\)</span>. Halving of <span class="math" data-tex="\(e\)">\(e\)</span> gives <span class="math" data-tex="\(e+r\precsim e\)">\(e+r\precsim e\)</span>: place <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> in its two orthogonal copies. The reverse subequivalence is immediate. <a href="OA-FLOW-PC.html#oa-flow.pc.3">PC3</a> gives <span class="math" data-tex="\(e+r\sim e\)">\(e+r\sim e\)</span>. Replace the first member by <span class="math" data-tex="\(e+r\)">\(e+r\)</span>. The resulting family fills <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(v_i^*v_i=e,\ v_iv_i^*=p_i\)">\(v_i^*v_i=e,\ v_iv_i^*=p_i\)</span>. The unitary
+<span class="math math-display" data-tex="\[
+ W:\bigoplus_{i\in I}eH\longrightarrow H,\qquad
+ W(\xi_i)=\sum_i v_i\xi_i
+ \tag{DDP1}
+\]">\[
+ W:\bigoplus_{i\in I}eH\longrightarrow H,\qquad
+ W(\xi_i)=\sum_i v_i\xi_i
+ \tag{DDP1}
+\]</span>
+is isometric by orthogonality and onto because <span class="math" data-tex="\(\sum_i p_i=1\)">\(\sum_i p_i=1\)</span>. Its inverse is <span class="math" data-tex="\(\xi\mapsto(v_i^*\xi)_i\)">\(\xi\mapsto(v_i^*\xi)_i\)</span>. The <a href="OA-FLOW-TW.html#tw-1">TW bounded-array theorem</a> gives mutually inverse normal isomorphisms
+<span class="math math-display" data-tex="\[
+ eBe\bar\otimes B(\ell^2I)\longleftrightarrow B,\qquad
+ [x_{ij}]\longmapsto W[x_{ij}]W^*,\qquad
+ x\longmapsto[v_i^*xv_j].
+ \tag{DDP2}
+\]">\[
+ eBe\bar\otimes B(\ell^2I)\longleftrightarrow B,\qquad
+ [x_{ij}]\longmapsto W[x_{ij}]W^*,\qquad
+ x\longmapsto[v_i^*xv_j].
+ \tag{DDP2}
+\]</span>
+Indeed finite corners of the first map lie in <span class="math" data-tex="\(B\)">\(B\)</span> and converge strongly-star; the second has all entries in <span class="math" data-tex="\(eBe\)">\(eBe\)</span>. Normality of both maps follows by transforming the complete vector-series functionals through <span class="math" data-tex="\(W\)">\(W\)</span>. This does not assert <span class="math" data-tex="\(e\sim1\)">\(e\sim1\)</span>.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is type III, every nonzero <span class="math" data-tex="\(e\)">\(e\)</span> is properly infinite by <a href="OA-FLOW-PC.html#oa-flow.pc.8">PC8</a>. For any faithful n.s.f. <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(eBe\)">\(eBe\)</span>, transport <span class="math" data-tex="\(\rho\otimes\operatorname{Tr}_I\)">\(\rho\otimes\operatorname{Tr}_I\)</span> through (DDP2). <a href="OA-FLOW-TW.html#tw-5">TW5</a> identifies its full modular operator with
+<span class="math math-display" data-tex="\[
+ \bigoplus_{(i,j)\in I^2}\Delta_\rho,\qquad
+ D=\left\{(\xi_{ij}):\xi_{ij}\in D(\Delta_\rho),\
+                    \sum_{i,j}\|\Delta_\rho\xi_{ij}\|^2&lt;\infty\right\}.
+ \tag{DDP3}
+\]">\[
+ \bigoplus_{(i,j)\in I^2}\Delta_\rho,\qquad
+ D=\left\{(\xi_{ij}):\xi_{ij}\in D(\Delta_\rho),\
+                    \sum_{i,j}\|\Delta_\rho\xi_{ij}\|^2&lt;\infty\right\}.
+ \tag{DDP3}
+\]</span>
+Its spectrum equals <span class="math" data-tex="\(\operatorname{Sp}\Delta_\rho\)">\(\operatorname{Sp}\Delta_\rho\)</span>. Off that spectrum the same bounded resolvent acts in every coordinate, with a uniform norm. Conversely one coordinate is a reducing copy of <span class="math" data-tex="\(\Delta_\rho\)">\(\Delta_\rho\)</span>, so invertibility of the sum implies invertibility there. Zero is retained. <a href="OA-FLOW-CT.html#oa-flow.ct.1">CT1's whole graph transport</a> preserves this spectrum under (DDP2). Taking the intersection defining <span class="math" data-tex="\(S(B)\)">\(S(B)\)</span>, first against each transported weight and then against all <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, proves the precise inclusion
+<span class="math math-display" data-tex="\[
+ S(B)\subseteq S(eBe)\quad(0\ne e\in B,\ B\text{ a type III factor}).
+ \tag{DDP4}
+\]">\[
+ S(B)\subseteq S(eBe)\quad(0\ne e\in B,\ B\text{ a type III factor}).
+ \tag{DDP4}
+\]</span>
+Only this direction is needed. Neither equality of the two algebras nor equality of their cardinalities has been assumed.</p>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be any faithful n.s.f. weight on such a <span class="math" data-tex="\(B\)">\(B\)</span>. For each nonzero <span class="math" data-tex="\(e\in B_\varphi\)">\(e\in B_\varphi\)</span>, <a href="OA-FLOW-MG.html#oa-flow.mg.2">MG2</a> proves that <span class="math" data-tex="\(\varphi_e\)">\(\varphi_e\)</span> is faithful n.s.f. with the restricted modular group. Thus (DDP4) and <a href="OA-FLOW-MG.html#oa-flow.mg.1">MG1</a> give
+<span class="math math-display" data-tex="\[
+ \log S_+(B)\subseteq
+ \bigcap_{0\ne e\in\operatorname{Proj}(B_\varphi)}
+             \operatorname{Sp}((\sigma^\varphi)^e)
+ =\Gamma(\sigma^\varphi).
+\]">\[
+ \log S_+(B)\subseteq
+ \bigcap_{0\ne e\in\operatorname{Proj}(B_\varphi)}
+             \operatorname{Sp}((\sigma^\varphi)^e)
+ =\Gamma(\sigma^\varphi).
+\]</span>
+The opposite inclusion is already proved in <a href="OA-FLOW-MG.html#oa-flow.mg.3">MG3</a> for arbitrary factors. Therefore
+<span class="math math-display" data-tex="\[
+ \log S_+(B)=\Gamma(\sigma^\varphi)
+ \quad\text{for every type III factor, with no countability hypothesis}.
+ \tag{DDP5}
+\]">\[
+ \log S_+(B)=\Gamma(\sigma^\varphi)
+ \quad\text{for every type III factor, with no countability hypothesis}.
+ \tag{DDP5}
+\]</span></p>
+<p><strong>Innerness extends from a full fixed corner.</strong> Suppose <span class="math" data-tex="\(\beta\in\operatorname{Aut}(B)\)">\(\beta\in\operatorname{Aut}(B)\)</span>, <span class="math" data-tex="\(\beta(e)=e\)">\(\beta(e)=e\)</span>, and <span class="math" data-tex="\(\beta(x)=uxu^*\)">\(\beta(x)=uxu^*\)</span> on <span class="math" data-tex="\(eBe\)">\(eBe\)</span>, where <span class="math" data-tex="\(u^*u=uu^*=e\)">\(u^*u=uu^*=e\)</span>. Use (DDP1), and form the strong-star orthogonal sum
+<span class="math math-display" data-tex="\[
+ b=\sum_i\beta(v_i)u v_i^*.
+ \tag{DDP6}
+\]">\[
+ b=\sum_i\beta(v_i)u v_i^*.
+ \tag{DDP6}
+\]</span>
+Its summands have initial projections <span class="math" data-tex="\(p_i\)">\(p_i\)</span> and final projections <span class="math" data-tex="\(\beta(p_i)\)">\(\beta(p_i)\)</span>, both filling <span class="math" data-tex="\(1\)">\(1\)</span>. <a href="OA-FLOW-PC.html#oa-flow.pc.1">PC1</a> gives <span class="math" data-tex="\(b\in\mathcal U(B)\)">\(b\in\mathcal U(B)\)</span>. For <span class="math" data-tex="\(a\in eBe\)">\(a\in eBe\)</span>,
+<span class="math math-display" data-tex="\[
+ b(v_iav_j^*)b^*
+   =\beta(v_i)uau^*\beta(v_j^*)
+   =\beta(v_iav_j^*).
+\]">\[
+ b(v_iav_j^*)b^*
+   =\beta(v_i)uau^*\beta(v_j^*)
+   =\beta(v_iav_j^*).
+\]</span>
+Finite matrix compressions and normality extend this to all of <span class="math" data-tex="\(B\)">\(B\)</span>. Hence <span class="math" data-tex="\(\beta=\operatorname{Ad}b\)">\(\beta=\operatorname{Ad}b\)</span>. Thus innerness on the fixed full properly infinite corner extends to the entire factor.</p>
+<p><span id="OA-FLOW.DDP.EXISTENCE"></span><a id="dd-existence"></a></p>
+<h2 id="2-existence-and-the-given-periodic-weight-centralizer">2. Existence and the given-periodic-weight centralizer</h2>
+<p>Assume now <span class="math" data-tex="\(M\)">\(M\)</span> is any type III factor with <span class="math" data-tex="\(S(M)=\{0\}\cup\lambda^{\mathbb Z}\)">\(S(M)=\{0\}\cup\lambda^{\mathbb Z}\)</span>. <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a> constructs a faithful n.s.f. weight without a state assumption. For any such weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, (DDP5) gives <span class="math" data-tex="\(\Gamma(\sigma^\psi)=L\mathbb Z\)">\(\Gamma(\sigma^\psi)=L\mathbb Z\)</span>. Apply the complete narrow-spectrum, absolutely summable filter, norm logarithm and bounded derivation proofs <a href="OA-FLOW-IP.html#oa-flow.ip.0">IP0</a>, <a href="OA-FLOW-IP.html#oa-flow.ip.1">IP1</a>, <a href="OA-FLOW-IP.html#oa-flow.ip.2">IP2</a>, <a href="OA-FLOW-IP.html#oa-flow.ip.3">IP3</a>, <a href="OA-FLOW-IP.html#oa-flow.ip.4">IP4</a>, <a href="OA-FLOW-IP.html#oa-flow.ip.5">IP5</a>. They produce a nonzero fixed corner on which <span class="math" data-tex="\(\sigma_P^\psi\)">\(\sigma_P^\psi\)</span> is inner. Formula (DDP6) makes it inner on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><a href="OA-FLOW-PW.html#oa-flow.pw.1">PW1</a> proves that its implementing unitary <span class="math" data-tex="\(b\)">\(b\)</span> belongs to <span class="math" data-tex="\(Z(M_\psi)\)">\(Z(M_\psi)\)</span>. <a href="OA-FLOW-PW.html#oa-flow.pw.2">PW2</a> constructs a bounded phase <span class="math" data-tex="\(0\le\Theta\le2\pi\)">\(0\le\Theta\le2\pi\)</span> with <span class="math" data-tex="\(e^{i\Theta}=b\)">\(e^{i\Theta}=b\)</span>. Set
+<span class="math math-display" data-tex="\[
+ k=e^{-\Theta/P},\qquad \lambda1\le k\le1,\qquad
+ \eta(x)=\psi(k^{1/2}xk^{1/2}).
+ \tag{DDP7}
+\]">\[
+ k=e^{-\Theta/P},\qquad \lambda1\le k\le1,\qquad
+ \eta(x)=\psi(k^{1/2}xk^{1/2}).
+ \tag{DDP7}
+\]</span>
+<a href="OA-FLOW-PW.html#oa-flow.pw.3">PW3</a> proves <span class="math" data-tex="\(\lambda\psi\le\eta\le\psi\)">\(\lambda\psi\le\eta\le\psi\)</span> on all positive elements, identifies every finite domain, and gives
+<span class="math" data-tex="\(\sigma_t^\eta=\operatorname{Ad}(k^{it})\sigma_t^\psi\)">\(\sigma_t^\eta=\operatorname{Ad}(k^{it})\sigma_t^\psi\)</span>, so <span class="math" data-tex="\(\sigma_P^\eta=\mathrm{id}\)">\(\sigma_P^\eta=\mathrm{id}\)</span>. If necessary, the arbitrary-algebra filling isomorphism <a href="OA-FLOW-CA.html#oa-flow.ca.6">CA6</a>–<a href="OA-FLOW-CA.html#oa-flow.ca.7">CA7</a> transports <span class="math" data-tex="\(\eta\otimes\operatorname{Tr}_{\ell^2}\)">\(\eta\otimes\operatorname{Tr}_{\ell^2}\)</span> back onto <span class="math" data-tex="\(M\)">\(M\)</span>. Its mass is infinite and its period group is unchanged. This gives an infinite periodic weight on the original <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The following assertions concern <strong>every given</strong> faithful n.s.f. weight <span class="math" data-tex="\(\phi\)">\(\phi\)</span> satisfying <span class="math" data-tex="\(\sigma_P^\phi=\mathrm{id}\)">\(\sigma_P^\phi=\mathrm{id}\)</span>, including one not produced by (DDP7). <a href="OA-FLOW-PW.html#oa-flow.pw.4">PW4</a>, <a href="OA-FLOW-PW.html#oa-flow.pw.5">PW5</a> and <a href="OA-FLOW-PW.html#oa-flow.pw.6">PW6</a> supplies
+<span class="math math-display" data-tex="\[
+ N=M_\phi,\qquad
+ E(x)=P^{-1}\int_0^P\sigma_t^\phi(x)\,dt,\qquad
+ \tau=\phi|_{N_+},\qquad \phi=\tau E,
+ \tag{DDP8}
+\]">\[
+ N=M_\phi,\qquad
+ E(x)=P^{-1}\int_0^P\sigma_t^\phi(x)\,dt,\qquad
+ \tau=\phi|_{N_+},\qquad \phi=\tau E,
+ \tag{DDP8}
+\]</span>
+with <span class="math" data-tex="\(E\)">\(E\)</span> faithful normal and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> a faithful n.s.f. trace, all equalities on the whole cone.</p>
+<p>The corner inclusion needed in the periodic Fourier argument is
+<span class="math" data-tex="\(S(M)\subseteq\operatorname{Sp}\Delta_{\phi_f}\)">\(S(M)\subseteq\operatorname{Sp}\Delta_{\phi_f}\)</span> for a nonzero finite-<span class="math" data-tex="\(\tau\)">\(\tau\)</span> fixed projection <span class="math" data-tex="\(f\)">\(f\)</span>. Formula (DDP4) supplies exactly this inclusion. For clarity, the remaining mechanism is as follows. The period confines the positive spectrum to <span class="math" data-tex="\(\lambda^{\mathbb Z}\)">\(\lambda^{\mathbb Z}\)</span>; each <span class="math" data-tex="\(\lambda^n\)">\(\lambda^n\)</span> lies in that spectrum by (DDP4), so its isolated spectral projection cannot vanish. Finite GNS density in <span class="math" data-tex="\(fMf\)">\(fMf\)</span> supplies a nonzero Fourier coefficient of degree <span class="math" data-tex="\(n\)">\(n\)</span>. Every nonzero <span class="math" data-tex="\(q\in N\)">\(q\in N\)</span> contains such an <span class="math" data-tex="\(f\)">\(f\)</span>, by the finite-trace compression and spectral-threshold proof <a href="OA-FLOW-PF.html#oa-flow.pf.2">PF2</a>. Consequently every nonzero fixed corner contains every degree.</p>
+<p>For nonzero <span class="math" data-tex="\(e_1,e_2\in N\)">\(e_1,e_2\in N\)</span>, choose a nonzero degree-<span class="math" data-tex="\(n\)">\(n\)</span> coefficient <span class="math" data-tex="\(y\in e_1Me_2\)">\(y\in e_1Me_2\)</span> by Fejér density and factoriality of <span class="math" data-tex="\(M\)">\(M\)</span>. Its right support <span class="math" data-tex="\(q\le e_2\)">\(q\le e_2\)</span> is fixed. A nonzero degree-<span class="math" data-tex="\(-n\)">\(-n\)</span> element <span class="math" data-tex="\(z\in qMq\)">\(z\in qMq\)</span> gives <span class="math" data-tex="\(0\ne yz\in e_1Ne_2\)">\(0\ne yz\in e_1Ne_2\)</span>: the range of <span class="math" data-tex="\(z\)">\(z\)</span> lies in <span class="math" data-tex="\(qH\)">\(qH\)</span>, on which <span class="math" data-tex="\(y\)">\(y\)</span> has zero kernel. This proves that <span class="math" data-tex="\(N\)">\(N\)</span> is a factor. A minimal projection <span class="math" data-tex="\(e\in N\)">\(e\in N\)</span> has finite positive trace; a degree-one element in <span class="math" data-tex="\(eMe\)">\(eMe\)</span> would normalize to an eigenunitary <span class="math" data-tex="\(v\)">\(v\)</span>, whose finite Tomita norm identity gives <span class="math" data-tex="\(\tau(e)=\lambda\tau(e)\)">\(\tau(e)=\lambda\tau(e)\)</span>, a contradiction.</p>
+<p><a href="OA-FLOW-PF.html#oa-flow.pf.5">PF5</a>'s arbitrary-factor trace criterion proves that <span class="math" data-tex="\(N\)">\(N\)</span> is II1 if <span class="math" data-tex="\(\phi(1)&lt;\infty\)">\(\phi(1)&lt;\infty\)</span>, and II∞ if <span class="math" data-tex="\(\phi(1)=\infty\)">\(\phi(1)=\infty\)</span>. <a href="OA-FLOW-PF.html#oa-flow.pf.7">PF7</a>'s full resolvent argument and the degree-one coefficient give
+<span class="math math-display" data-tex="\[
+ \operatorname{Sp}\Delta_\phi=\{0\}\cup\lambda^{\mathbb Z},\qquad
+ \{t:\sigma_t^\phi=\mathrm{id}\}=P\mathbb Z.
+ \tag{DDP9}
+\]">\[
+ \operatorname{Sp}\Delta_\phi=\{0\}\cup\lambda^{\mathbb Z},\qquad
+ \{t:\sigma_t^\phi=\mathrm{id}\}=P\mathbb Z.
+ \tag{DDP9}
+\]</span>
+The trace value of the identity determines the type of the centralizer. Comparison of arbitrary infinite-trace projections will additionally require their cover cardinals in Section 3.</p>
+<p>The inner-period invariant is exact as well. If <span class="math" data-tex="\(\sigma_t^\phi=\operatorname{Ad}b\)">\(\sigma_t^\phi=\operatorname{Ad}b\)</span>, modular invariance and <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0</a> put <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>; since this automorphism fixes <span class="math" data-tex="\(N\)">\(N\)</span> pointwise, <span class="math" data-tex="\(b\in Z(N)=\mathbb C1\)">\(b\in Z(N)=\mathbb C1\)</span>. Thus it is the identity and <span class="math" data-tex="\(t\in P\mathbb Z\)">\(t\in P\mathbb Z\)</span>. Conversely every multiple of <span class="math" data-tex="\(P\)">\(P\)</span> is an inner period. <a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a> relates any other faithful n.s.f. modular group to this one by an inner cocycle at each time, so innerness at that time is unchanged. Hence <span class="math" data-tex="\(T(M)=P\mathbb Z\)">\(T(M)=P\mathbb Z\)</span>, for every weight defining this invariant.</p>
+<p><span id="OA-FLOW.DDP.CARDINALITY"></span><a id="dd-cardinality"></a></p>
+<h2 id="3-the-balanced-comparison-without-a-countability-shortcut">3. The balanced comparison without a countability shortcut</h2>
+<p>Call a projection sigma-finite when its corner has a faithful normal state; <a href="OA-FLOW-PC.html#oa-flow.pc.7">PC7</a> proves equivalence with countable decomposability. For a nonzero projection <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(\kappa_B(p)\)">\(\kappa_B(p)\)</span> be the least cardinality of a family of sigma-finite subprojections whose join is <span class="math" data-tex="\(p\)">\(p\)</span>. Such families exist by the vector-support construction in <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>. A countable join of sigma-finite projections is sigma-finite: sum strictly positive multiples of faithful normal corner states, extended by compression; its support is the join. Therefore <span class="math" data-tex="\(\kappa_B(p)\)">\(\kappa_B(p)\)</span> is either <span class="math" data-tex="\(1\)">\(1\)</span> or an uncountable cardinal.</p>
+<p><strong>Cardinal comparison in a factor.</strong> If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are properly infinite projections in a factor <span class="math" data-tex="\(B\)">\(B\)</span> and
+<span class="math math-display" data-tex="\[
+ \kappa_B(p)=\kappa_B(q),
+ \tag{DDP10}
+\]">\[
+ \kappa_B(p)=\kappa_B(q),
+ \tag{DDP10}
+\]</span>
+then <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span>. Here is a proof retaining the cardinal. Choose a nonzero sigma-finite subprojection <span class="math" data-tex="\(a\le p\)">\(a\le p\)</span>. Filling copies of <span class="math" data-tex="\(p\)">\(p\)</span>, followed by the source-countable comparison <a href="OA-FLOW-PC.html#oa-flow.projection.pc7">PC7</a>, allow countably many orthogonal copies of <span class="math" data-tex="\(a\)">\(a\)</span> under <span class="math" data-tex="\(p\)">\(p\)</span>. Their sum <span class="math" data-tex="\(r\)">\(r\)</span> is sigma-finite and infinite, by the shift of the copies; since its corner is a factor it is properly infinite. Apply (DDP1)–(DDP2) inside <span class="math" data-tex="\(pBp\)">\(pBp\)</span> with <span class="math" data-tex="\(r\)">\(r\)</span>. This writes <span class="math" data-tex="\(p\)">\(p\)</span> as an orthogonal sum <span class="math" data-tex="\(\sum_{i\in I}r_i\)">\(\sum_{i\in I}r_i\)</span> of sigma-finite properly infinite projections.</p>
+<p>The cardinal arithmetic used here is also explicit: for every infinite cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, <span class="math" data-tex="\(|\kappa\times\mathbb N|=\kappa\)">\(|\kappa\times\mathbb N|=\kappa\)</span>. For <span class="math" data-tex="\(\kappa=\aleph_0\)">\(\kappa=\aleph_0\)</span>, enumerate pairs by increasing sum of their two finite indices. If there were a least larger counterexample <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, order its pairs <span class="math" data-tex="\((\beta,n)\)">\((\beta,n)\)</span> first by <span class="math" data-tex="\(\max(\beta,n)\)">\(\max(\beta,n)\)</span>, then by the two coordinates. Every predecessor set has cardinal at most <span class="math" data-tex="\(|\gamma|\aleph_0&lt;\kappa\)">\(|\gamma|\aleph_0&lt;\kappa\)</span>, where <span class="math" data-tex="\(\gamma&lt;\kappa\)">\(\gamma&lt;\kappa\)</span> bounds the first coordinate, using minimality (and the countable base case when <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is finite). The resulting well-order cannot have a point at position <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>; hence its order type is at most <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. This supplies an injection into <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>; the reverse injection and <a href="OA-FLOW-PC.html#oa-flow.projection.pc0">PC0</a>'s set-theoretic Cantor–Bernstein proof give equality, a contradiction.</p>
+<p>A sigma-finite <span class="math" data-tex="\(f\le p\)">\(f\le p\)</span> can have <span class="math" data-tex="\(fr_i\ne0\)">\(fr_i\ne0\)</span> for only countably many <span class="math" data-tex="\(i\)">\(i\)</span>: a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(fBf\)">\(fBf\)</span> has
+<span class="math" data-tex="\(\sum_i\omega(fr_if)=\omega(f)=1\)">\(\sum_i\omega(fr_if)=\omega(f)=1\)</span>; its positive terms are countable, and zero terms force <span class="math" data-tex="\(r_if=0\)">\(r_if=0\)</span>. Thus any sigma-finite cover of <span class="math" data-tex="\(p\)">\(p\)</span> must meet every <span class="math" data-tex="\(r_i\)">\(r_i\)</span>, with each covering member meeting only countably many. If <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable this proves <span class="math" data-tex="\(\kappa_B(p)=|I|\)">\(\kappa_B(p)=|I|\)</span>. If <span class="math" data-tex="\(I\)">\(I\)</span> is countable, <span class="math" data-tex="\(p\)">\(p\)</span> is sigma-finite and <span class="math" data-tex="\(\kappa_B(p)=1\)">\(\kappa_B(p)=1\)</span>. Do the same for <span class="math" data-tex="\(q\)">\(q\)</span>. In the sigma-finite case <a href="OA-FLOW-PC.html#oa-flow.projection.pc7">PC7</a> and <a href="OA-FLOW-PC.html#oa-flow.projection.pc3">PC3</a> compare <span class="math" data-tex="\(p,q\)">\(p,q\)</span> directly. Otherwise the two index sets have the same cardinal, and every matched pair of summands is equivalent by <a href="OA-FLOW-PC.html#oa-flow.projection.pc7">PC7</a>, since both are sigma-finite, properly infinite and full in the factor. Their arbitrary orthogonal sum, using <a href="OA-FLOW-PC.html#oa-flow.projection.pc1">PC1</a>, implements <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span>.</p>
+<p><strong>Compact expectations preserve the cover cardinal on fixed projections.</strong> Let a point-strong-star continuous circle action <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> act on <span class="math" data-tex="\(A\)">\(A\)</span>, with its faithful normal average <span class="math" data-tex="\(E:A\to F\)">\(E:A\to F\)</span>. If <span class="math" data-tex="\(e\in F\)">\(e\in F\)</span>, then <span class="math" data-tex="\(eAe\)">\(eAe\)</span> is sigma-finite exactly when <span class="math" data-tex="\(eFe\)">\(eFe\)</span> is: restrict a faithful normal state in one direction, and compose with the faithful normal compressed expectation in the other.</p>
+<p>For any sigma-finite <span class="math" data-tex="\(q\in A\)">\(q\in A\)</span>,
+<span class="math math-display" data-tex="\[
+ r=s(E(q))=\bigvee_{t\in[0,P)}\gamma_t(q)
+           =\bigvee_{t\in D}\gamma_t(q),
+ \tag{DDP11}
+\]">\[
+ r=s(E(q))=\bigvee_{t\in[0,P)}\gamma_t(q)
+           =\bigvee_{t\in D}\gamma_t(q),
+ \tag{DDP11}
+\]</span>
+where <span class="math" data-tex="\(D\)">\(D\)</span> is any countable dense subset of the circle. The first equality follows by testing a vector in the kernel of the positive average: a continuous nonnegative function with integral zero vanishes at every time. The second follows from strong continuity of the projection orbit. The countable-join argument makes <span class="math" data-tex="\(r\)">\(r\)</span> sigma-finite in <span class="math" data-tex="\(A\)">\(A\)</span>, and hence in <span class="math" data-tex="\(F\)">\(F\)</span>. It contains <span class="math" data-tex="\(q\)">\(q\)</span>. If <span class="math" data-tex="\(q\le p\)">\(q\le p\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> is fixed, then <span class="math" data-tex="\(r\le p\)">\(r\le p\)</span>. Enlarging each member of a sigma-finite <span class="math" data-tex="\(A\)">\(A\)</span>-cover of <span class="math" data-tex="\(p\)">\(p\)</span> in this way gives an <span class="math" data-tex="\(F\)">\(F\)</span>-cover of no larger cardinality. The reverse inequality is immediate from the state/expectation equivalence. Thus
+<span class="math math-display" data-tex="\[
+ \kappa_A(p)=\kappa_F(p)\qquad(p\in\operatorname{Proj}F,\ p\ne0).
+ \tag{DDP12}
+\]">\[
+ \kappa_A(p)=\kappa_F(p)\qquad(p\in\operatorname{Proj}F,\ p\ne0).
+ \tag{DDP12}
+\]</span>
+The countable dense set concerns the compact parameter group, not the predual of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Apply this to a periodic balanced weight on <span class="math" data-tex="\(A=M_2(M)\)">\(A=M_2(M)\)</span>. Its fixed algebra <span class="math" data-tex="\(F\)">\(F\)</span> is a semifinite factor by Section 2: finite matrix amplification preserves <span class="math" data-tex="\(S(M)\)">\(S(M)\)</span>, because <a href="OA-FLOW-PC.html#oa-flow.projection.pc5">PC5</a> gives a halving into two copies of the unit and the explicit normal matrix isomorphism of <a href="OA-FLOW-CT.html#oa-flow.ct.1">CT1</a> and <a href="OA-FLOW-CT.html#oa-flow.ct.3">CT3</a>. If both diagonal projections <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> have infinite weight, <a href="OA-FLOW-PF.html#oa-flow.pf.5">PF5</a> makes them properly infinite in <span class="math" data-tex="\(F\)">\(F\)</span>. Their ambient corners are both normally isomorphic to <span class="math" data-tex="\(M\)">\(M\)</span>, so their cover cardinals in <span class="math" data-tex="\(A\)">\(A\)</span> agree. Equations (DDP10)–(DDP12) give
+<span class="math math-display" data-tex="\[
+ p_1\sim p_2\quad\text{in }F.
+ \tag{DDP13}
+\]">\[
+ p_1\sim p_2\quad\text{in }F.
+ \tag{DDP13}
+\]</span>
+No subtraction of infinite trace values, common finite normalization, or uncountable version of the countable comparison theorem has been used.</p>
+<p><span id="OA-FLOW.DDP.RECOGNITION"></span><a id="dd-recognition"></a></p>
+<h2 id="4-the-particular-infinite-periodic-weight-gives-its-own-decomposition">4. The particular infinite periodic weight gives its own decomposition</h2>
+<p>Let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be the given infinite periodic weight of Section 2. On <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span>, use
+<span class="math" data-tex="\(\Psi(X)=\phi(X_{11})+\lambda\phi(X_{22})\)">\(\Psi(X)=\phi(X_{11})+\lambda\phi(X_{22})\)</span>.
+<a href="OA-FLOW-BC.html#oa-flow.bc.3">BC3</a>–<a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a>'s full balanced modular formula gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^\Psi(X)=
+ \begin{pmatrix}
+ \sigma_t^\phi(X_{11})&amp;\lambda^{-it}\sigma_t^\phi(X_{12})\\
+ \lambda^{it}\sigma_t^\phi(X_{21})&amp;\sigma_t^\phi(X_{22})
+ \end{pmatrix}.
+ \tag{DDP14}
+\]">\[
+ \sigma_t^\Psi(X)=
+ \begin{pmatrix}
+ \sigma_t^\phi(X_{11})&amp;\lambda^{-it}\sigma_t^\phi(X_{12})\\
+ \lambda^{it}\sigma_t^\phi(X_{21})&amp;\sigma_t^\phi(X_{22})
+ \end{pmatrix}.
+ \tag{DDP14}
+\]</span>
+It has period <span class="math" data-tex="\(P\)">\(P\)</span>. Formula (DDP13) supplies a fixed <span class="math" data-tex="\(v=u e_{21}\)">\(v=u e_{21}\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> unitary and <span class="math" data-tex="\(\sigma_t^\phi(u)=\lambda^{-it}u\)">\(\sigma_t^\phi(u)=\lambda^{-it}u\)</span>. Set <span class="math" data-tex="\(U=u^*\)">\(U=u^*\)</span>. The fixed unitary <span class="math" data-tex="\(v+v^*\)">\(v+v^*\)</span>, together with <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0's whole-cone invariance</a>, gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^\phi(U)=\lambda^{it}U,\qquad
+ \phi(UxU^*)=\lambda\phi(x)\quad(x\in M_+).
+ \tag{DDP15}
+\]">\[
+ \sigma_t^\phi(U)=\lambda^{it}U,\qquad
+ \phi(UxU^*)=\lambda\phi(x)\quad(x\in M_+).
+ \tag{DDP15}
+\]</span>
+This whole-cone argument does not require <span class="math" data-tex="\(U\)">\(U\)</span> to have a finite GNS vector.</p>
+<p>Put <span class="math" data-tex="\(N=M_\phi\)">\(N=M_\phi\)</span>, <span class="math" data-tex="\(\theta=\operatorname{Ad}U|_N\)">\(\theta=\operatorname{Ad}U|_N\)</span>, <span class="math" data-tex="\(\tau=\phi|_N\)">\(\tau=\phi|_N\)</span>. Then <span class="math" data-tex="\(\tau\theta=\lambda\tau\)">\(\tau\theta=\lambda\tau\)</span> on the entire cone. The degree-<span class="math" data-tex="\(n\)">\(n\)</span> space is <span class="math" data-tex="\(NU^n=U^nN\)">\(NU^n=U^nN\)</span>, by multiplying an eigenoperator by <span class="math" data-tex="\(U^{-n}\)">\(U^{-n}\)</span>. <a href="OA-FLOW-PF.html#oa-flow.pf.1">PF1</a>'s bounded strong-star Fejér sums give <span class="math" data-tex="\(M=(N\cup\{U\})''\)">\(M=(N\cup\{U\})''\)</span>.</p>
+<p>The full normal recognition is more than this generation statement. Define
+<span class="math math-display" data-tex="\[
+ W(\delta_n\otimes\Lambda_\tau(a))=\Lambda_\phi(U^na)
+ \quad(a\in\mathfrak n_\tau).
+ \tag{DDP16}
+\]">\[
+ W(\delta_n\otimes\Lambda_\tau(a))=\Lambda_\phi(U^na)
+ \quad(a\in\mathfrak n_\tau).
+ \tag{DDP16}
+\]</span>
+Equation <span class="math" data-tex="\(\phi=\tau E\)">\(\phi=\tau E\)</span> makes distinct degrees orthogonal and makes each diagonal inner product <span class="math" data-tex="\(\tau(b^*a)\)">\(\tau(b^*a)\)</span>, so <span class="math" data-tex="\(W\)">\(W\)</span> is isometric. Choose finite-trace positive contractions <span class="math" data-tex="\(c_i\uparrow1\)">\(c_i\uparrow1\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>. <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0</a>'s exact right-multiplier formula gives <span class="math" data-tex="\(\Lambda_\phi(xc_i)\to\Lambda_\phi(x)\)">\(\Lambda_\phi(xc_i)\to\Lambda_\phi(x)\)</span> for <span class="math" data-tex="\(x\in\mathfrak n_\phi\)">\(x\in\mathfrak n_\phi\)</span>. At fixed <span class="math" data-tex="\(i\)">\(i\)</span>, the bounded Fejér approximants <span class="math" data-tex="\(T_m(x)\)">\(T_m(x)\)</span> satisfy
+<span class="math" data-tex="\(\Lambda_\phi(T_m(x)c_i)\to\Lambda_\phi(xc_i)\)">\(\Lambda_\phi(T_m(x)c_i)\to\Lambda_\phi(xc_i)\)</span>, since this is bounded strong convergence tested on <span class="math" data-tex="\(\Lambda_\phi(c_i)\)">\(\Lambda_\phi(c_i)\)</span>. Each approximant is a finite sum of vectors in (DDP16): <span class="math" data-tex="\(U^{-n}P_n(x)c_i\in\mathfrak n_\tau\)">\(U^{-n}P_n(x)c_i\in\mathfrak n_\tau\)</span>. The range of <span class="math" data-tex="\(W\)">\(W\)</span> is closed and contains the dense whole GNS range, so <span class="math" data-tex="\(W\)">\(W\)</span> is onto.</p>
+<p>Its conjugation formulas are
+<span class="math math-display" data-tex="\[
+ (W^*\pi_\phi(d)W\xi)_n
+       =\pi_\tau(\theta^{-n}(d))\xi_n,\qquad
+ (W^*\pi_\phi(U)W\xi)_n=\xi_{n-1}.
+ \tag{DDP17}
+\]">\[
+ (W^*\pi_\phi(d)W\xi)_n
+       =\pi_\tau(\theta^{-n}(d))\xi_n,\qquad
+ (W^*\pi_\phi(U)W\xi)_n=\xi_{n-1}.
+ \tag{DDP17}
+\]</span>
+They hold first on the displayed dense vectors, then everywhere by boundedness. Hence conjugation by <span class="math" data-tex="\(W\)">\(W\)</span> and the faithful normal GNS representation give
+<span class="math math-display" data-tex="\[
+ N\rtimes_\theta\mathbb Z\ \cong\ M,\qquad d\mapsto d,\quad s\mapsto U,
+ \tag{DDP18}
+\]">\[
+ N\rtimes_\theta\mathbb Z\ \cong\ M,\qquad d\mapsto d,\quad s\mapsto U,
+ \tag{DDP18}
+\]</span>
+on the entire von Neumann algebras, with normal inverse, exactly as <a href="OA-FLOW-GT.html#oa-flow.gt.4">GT4</a>–<a href="OA-FLOW-GT.html#oa-flow.gt.5">GT5</a>. The non-countable finite-trace approximants are a net; the Fourier index remains <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This proves existence and recognition for the specified weight at arbitrary factor cardinality.</p>
+<p>If a finite centralizer corner is normalized as <span class="math" data-tex="\(\bar\phi=\phi(e)^{-1}\phi|_{eMe}\)">\(\bar\phi=\phi(e)^{-1}\phi|_{eMe}\)</span>, its trace amplification transports as <span class="math" data-tex="\(\phi(e)(\bar\phi\otimes\operatorname{Tr})\)">\(\phi(e)(\bar\phi\otimes\operatorname{Tr})\)</span>. The scalar <span class="math" data-tex="\(\phi(e)\)">\(\phi(e)\)</span> cannot be silently removed. The balanced proof above requires no claim that independently chosen amplifications preserve the two weights.</p>
+<p><span id="OA-FLOW.DDP.CONVERSE"></span><a id="dd-converse"></a></p>
+<h2 id="5-the-converse-from-an-arbitrary-trace-scaling-ii-system">5. The converse from an arbitrary trace-scaling II∞ system</h2>
+<p>Let <span class="math" data-tex="\(N\)">\(N\)</span> be any II∞ factor with faithful n.s.f. trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and let <span class="math" data-tex="\(\theta\in\operatorname{Aut}(N)\)">\(\theta\in\operatorname{Aut}(N)\)</span> satisfy <span class="math" data-tex="\(\tau\theta=\lambda\tau\)">\(\tau\theta=\lambda\tau\)</span>. Form the actual regular algebra <span class="math" data-tex="\(M=N\rtimes_\theta\mathbb Z\)">\(M=N\rtimes_\theta\mathbb Z\)</span> of <a href="OA-FLOW-VD.html#oa-flow.vd.0">VD0</a>, with implementing unitary <span class="math" data-tex="\(U\)">\(U\)</span> and compact dual action <span class="math" data-tex="\(\gamma_z(U)=\bar zU\)">\(\gamma_z(U)=\bar zU\)</span>. Its faithful normal average <span class="math" data-tex="\(E\)">\(E\)</span> has range <span class="math" data-tex="\(N\)">\(N\)</span>, by <a href="OA-FLOW-VD.html#oa-flow.vd.0">VD0</a>'s diagonal/Fourier proof.</p>
+<p>Every nonzero power <span class="math" data-tex="\(\theta^n\)">\(\theta^n\)</span> is outer. An inner automorphism preserves the entire trace, whereas <span class="math" data-tex="\(\theta^n\)">\(\theta^n\)</span> multiplies the finite nonzero value of a finite-trace projection by <span class="math" data-tex="\(\lambda^n\ne1\)">\(\lambda^n\ne1\)</span>. If <span class="math" data-tex="\(x\in Z(M)\)">\(x\in Z(M)\)</span>, its <span class="math" data-tex="\(n\)">\(n\)</span>-th Fourier coefficient is <span class="math" data-tex="\(a_nU^n\)">\(a_nU^n\)</span>, and commutation with <span class="math" data-tex="\(d\in N\)">\(d\in N\)</span> gives <span class="math" data-tex="\(a_n\theta^n(d)=da_n\)">\(a_n\theta^n(d)=da_n\)</span>. For a nonzero <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, polar decomposition makes <span class="math" data-tex="\(a_n^*a_n\)">\(a_n^*a_n\)</span> commute with <span class="math" data-tex="\(\theta^n(N)\)">\(\theta^n(N)\)</span> and <span class="math" data-tex="\(a_na_n^*\)">\(a_na_n^*\)</span> commute with <span class="math" data-tex="\(N\)">\(N\)</span>. Both are nonzero scalar operators, so its polar part is a unitary implementing innerness of <span class="math" data-tex="\(\theta^n\)">\(\theta^n\)</span>. Thus all nonzero-degree coefficients vanish; the zero coefficient is scalar. Fejér convergence gives <span class="math" data-tex="\(x\in\mathbb C1\)">\(x\in\mathbb C1\)</span>, proving factoriality.</p>
+<p>The weight <span class="math" data-tex="\(\Phi=\tau E\)">\(\Phi=\tau E\)</span> is faithful n.s.f. by <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a>. It is the full discrete dual weight of <a href="OA-FLOW-GDA.html#gda-8">GDA8</a>: for counting Haar measure, <a href="OA-FLOW-GDA.html#gda-6">GDA6</a>'s compact coefficient supported at <span class="math" data-tex="\(0\)">\(0\)</span> gives <span class="math" data-tex="\(T(1)=1\)">\(T(1)=1\)</span>, so its operator-valued weight is bounded normal; the Fourier coefficient formulas identify it with <span class="math" data-tex="\(E\)">\(E\)</span> on finite Laurent polynomials, then everywhere. <a href="OA-FLOW-GDW.html#gdw-7">GDW7</a>/<a href="OA-FLOW-GDA.html#gda-8">GDA8</a> therefore gives, with its normalized scalar cocycle,
+<span class="math math-display" data-tex="\[
+ \sigma_t^\Phi(d)=d,\qquad
+ \sigma_t^\Phi(U)=U(D(\tau\theta):D\tau)_t
+                =\lambda^{it}U .
+ \tag{DDP19}
+\]">\[
+ \sigma_t^\Phi(d)=d,\qquad
+ \sigma_t^\Phi(U)=U(D(\tau\theta):D\tau)_t
+                =\lambda^{it}U .
+ \tag{DDP19}
+\]</span>
+All nonzero degrees exist, and compact Fourier density gives <span class="math" data-tex="\(M_\Phi=N\)">\(M_\Phi=N\)</span> and
+<span class="math" data-tex="\(\operatorname{Sp}(\sigma^\Phi)=L\mathbb Z\)">\(\operatorname{Sp}(\sigma^\Phi)=L\mathbb Z\)</span>. The last equality can also be tested directly with the Fourier projections: the period excludes every other frequency and <span class="math" data-tex="\(U^n\)">\(U^n\)</span> supplies every displayed one.</p>
+<p>Since <span class="math" data-tex="\(N\)">\(N\)</span> is a factor, <a href="OA-FLOW-GCC.html#gcc-intersection">GCC's fixed-factor theorem</a> gives <span class="math" data-tex="\(\Gamma(\sigma^\Phi)=L\mathbb Z\)">\(\Gamma(\sigma^\Phi)=L\mathbb Z\)</span>. <a href="OA-FLOW-MG.html#oa-flow.mg.3">MG3</a> makes this the same group for every faithful n.s.f. weight on <span class="math" data-tex="\(M\)">\(M\)</span>, and <a href="OA-FLOW-MG.html#oa-flow.mg.1">MG1</a> puts its exponential in every positive modular spectrum. The single weight <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> bounds the intersection from above by the same lattice. Every modular spectrum also contains <span class="math" data-tex="\(0\)">\(0\)</span>, as it contains <span class="math" data-tex="\(\lambda^n\to0\)">\(\lambda^n\to0\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ S(M)=\{0\}\cup\lambda^{\mathbb Z}.
+ \tag{DDP20}
+\]">\[
+ S(M)=\{0\}\cup\lambda^{\mathbb Z}.
+ \tag{DDP20}
+\]</span>
+Finally <span class="math" data-tex="\(M\)">\(M\)</span> is type III. A nonzero finite projection in this factor would supply a faithful n.s.f. trace on <span class="math" data-tex="\(M\)">\(M\)</span>, by <a href="OA-FLOW-L18.html#l18-6">L18 Section 6's complete full-corner trace construction</a>. Its modular spectrum would be <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>, contrary to (DDP20). Thus the converse holds for every factor of the stated scope.</p>
+<p><span id="OA-FLOW.DDP.CENTER"></span><a id="dd-center"></a></p>
+<h3 id="the-complete-core-center-and-its-least-flow-period">The complete core center and its least flow period</h3>
+<p>The decomposition also gives a direct proof of the introductory center-flow period. Let <span class="math" data-tex="\(K=M\rtimes_{\sigma^\phi}\mathbb R\)">\(K=M\rtimes_{\sigma^\phi}\mathbb R\)</span>, with canonical translations <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> and the negative dual convention of <a href="OA-FLOW-CORE.html#core-setting">CORE's setting</a>. Identify <span class="math" data-tex="\(N\)">\(N\)</span> with its canonical image. Since <span class="math" data-tex="\(\sigma^\phi\)">\(\sigma^\phi\)</span> fixes <span class="math" data-tex="\(N\)">\(N\)</span>, the actual regular representation on <span class="math" data-tex="\(L^2(\mathbb R,H_\phi)\)">\(L^2(\mathbb R,H_\phi)\)</span> makes
+<span class="math math-display" data-tex="\[
+ D=(N\cup u(\mathbb R))''=N\bar\otimes L(\mathbb R).
+ \tag{DDP40}
+\]">\[
+ D=(N\cup u(\mathbb R))''=N\bar\otimes L(\mathbb R).
+ \tag{DDP40}
+\]</span>
+Indeed <span class="math" data-tex="\(N\)">\(N\)</span> acts constantly on the <span class="math" data-tex="\(H_\phi\)">\(H_\phi\)</span> factor and <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> by translation on the other factor; the tensor representation is faithful and normal. Apply the scalar onto positive Fourier transform <a href="OA-FLOW-FF.html#oa-flow.ff.3">FF2</a>, tensored with the identity on <span class="math" data-tex="\(H_\phi\)">\(H_\phi\)</span>. This tensor unitary is onto by the density of finite Hilbert tensors, without any separability condition on <span class="math" data-tex="\(H_\phi\)">\(H_\phi\)</span>. It gives <span class="math" data-tex="\(u(t)=e^{itQ_c}\)">\(u(t)=e^{itQ_c}\)</span> and <span class="math" data-tex="\(L(\mathbb R)=L^\infty(Q_c)\)">\(L(\mathbb R)=L^\infty(Q_c)\)</span>. The latter equality follows by recovering the coordinate generator's resolvents and spectral projections from its unitary group, so all interval indicators, and hence all bounded measurable multipliers, belong to the generated algebra.</p>
+<p>The canonical image of <span class="math" data-tex="\(U\)">\(U\)</span> normalizes <span class="math" data-tex="\(D\)">\(D\)</span>, with
+<span class="math math-display" data-tex="\[
+ UdU^*=\theta(d)\quad(d\in N),\qquad
+ Uu(t)U^*=e^{iLt}u(t).
+ \tag{DDP41}
+\]">\[
+ UdU^*=\theta(d)\quad(d\in N),\qquad
+ Uu(t)U^*=e^{iLt}u(t).
+ \tag{DDP41}
+\]</span>
+The sign follows from <span class="math" data-tex="\(u(t)Uu(t)^*=\lambda^{it}U=e^{-iLt}U\)">\(u(t)Uu(t)^*=\lambda^{it}U=e^{-iLt}U\)</span>. The core is generated by <span class="math" data-tex="\(D,U\)">\(D,U\)</span>. The circle action fixing <span class="math" data-tex="\(D\)">\(D\)</span> and multiplying <span class="math" data-tex="\(U\)">\(U\)</span> by <span class="math" data-tex="\(\bar z\)">\(\bar z\)</span> is actual and normal: in the full GT GNS coordinates its diagonal implementation commutes with the modular GNS group and hence implements this action also in the regular core representation. Its average has range exactly <span class="math" data-tex="\(D\)">\(D\)</span>: finite words reduce to Laurent polynomials over <span class="math" data-tex="\(D\)">\(D\)</span>, their average is the degree-zero term, and normality extends the inclusion to the generated algebra. Conversely it fixes <span class="math" data-tex="\(D\)">\(D\)</span>. Its Fejér sums converge boundedly strongly-star, and its degree-<span class="math" data-tex="\(n\)">\(n\)</span> space is <span class="math" data-tex="\(DU^n\)">\(DU^n\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in Z(K)\)">\(x\in Z(K)\)</span>, write its degree-<span class="math" data-tex="\(n\)">\(n\)</span> coefficient as <span class="math" data-tex="\(a_nU^n\)">\(a_nU^n\)</span>, <span class="math" data-tex="\(a_n\in D\)">\(a_n\in D\)</span>. Commutation with <span class="math" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-tex="\(a_n\theta^n(d)=da_n\)">\(a_n\theta^n(d)=da_n\)</span>. Every normal slice on the <span class="math" data-tex="\(L(\mathbb R)\)">\(L(\mathbb R)\)</span> factor is an intertwiner in <span class="math" data-tex="\(N\)">\(N\)</span>. For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, the outer-power and polar argument of Section 5 makes every such slice zero; separating product functionals give <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, all slices commute with the factor <span class="math" data-tex="\(N\)">\(N\)</span>, so <span class="math" data-tex="\(a_0=1\otimes f(Q_c)\)">\(a_0=1\otimes f(Q_c)\)</span>. Commutation with <span class="math" data-tex="\(U\)">\(U\)</span> is exactly <span class="math" data-tex="\(f(q+L)=f(q)\)">\(f(q+L)=f(q)\)</span> as a Lebesgue class. Conversely every such periodic multiplier commutes with all generators. Therefore
+<span class="math math-display" data-tex="\[
+ Z(K)=1\otimes L^\infty(\mathbb R/L\mathbb Z)
+     =W^*(u(P)),\qquad
+ \theta_s(u(P))=e^{-iPs}u(P).
+ \tag{DDP42}
+\]">\[
+ Z(K)=1\otimes L^\infty(\mathbb R/L\mathbb Z)
+     =W^*(u(P)),\qquad
+ \theta_s(u(P))=e^{-iPs}u(P).
+ \tag{DDP42}
+\]</span>
+Here the periodic-function identification is literal: the countably many integer-translation equalities give a representative determined on <span class="math" data-tex="\([0,L)\)">\([0,L)\)</span>, and <span class="math" data-tex="\(q\mapsto e^{iPq}\)">\(q\mapsto e^{iPq}\)</span> identifies this half-open interval with the circle as a measure-class space. Thus the single unitary <span class="math" data-tex="\(u(P)\)">\(u(P)\)</span> generates the entire center, not a proper power subalgebra. Its displayed character gives precisely the kernel <span class="math" data-tex="\(L\mathbb Z\)">\(L\mathbb Z\)</span> of the center action. This proves the least flow period <span class="math" data-tex="\(L\)">\(L\)</span> and the reciprocal relation with the inner/modular period <span class="math" data-tex="\(P\)">\(P\)</span>, on the full arbitrary-factor scope.</p>
+<p><span id="OA-FLOW.DDP.DISCRETE-STABILITY"></span><a id="dd-discrete-stability"></a></p>
+<h2 id="6-discrete-cocycle-stability-by-a-continuous-suspension">6. Discrete cocycle stability by a continuous suspension</h2>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be any von Neumann algebra with a faithful n.s.f. trace <span class="math" data-tex="\(T\)">\(T\)</span>, and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> satisfy <span class="math" data-tex="\(T\alpha=\lambda T\)">\(T\alpha=\lambda T\)</span>. A unitary <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-cocycle means
+<span class="math math-display" data-tex="\[
+ c_{m+n}=c_m\alpha^m(c_n),\qquad c_0=1.
+\]">\[
+ c_{m+n}=c_m\alpha^m(c_n),\qquad c_0=1.
+\]</span>
+We prove
+<span class="math math-display" data-tex="\[
+ c_n=z^*\alpha^n(z)\quad(n\in\mathbb Z)
+ \tag{DDP21}
+\]">\[
+ c_n=z^*\alpha^n(z)\quad(n\in\mathbb Z)
+ \tag{DDP21}
+\]</span>
+for one unitary <span class="math" data-tex="\(z\in Q\)">\(z\in Q\)</span>, without a factor or countability hypothesis.</p>
+<p>Let <span class="math" data-tex="\(I=[0,L)\)">\(I=[0,L)\)</span>, <span class="math" data-tex="\(A=Q\bar\otimes L^\infty(I)\)">\(A=Q\bar\otimes L^\infty(I)\)</span>, and
+<span class="math math-display" data-tex="\[
+ n_s(r)=\left\lfloor\frac{r+s}{L}\right\rfloor,\qquad
+ u_s(r)=r+s-Ln_s(r).
+\]">\[
+ n_s(r)=\left\lfloor\frac{r+s}{L}\right\rfloor,\qquad
+ u_s(r)=r+s-Ln_s(r).
+\]</span>
+For each fixed <span class="math" data-tex="\(s\)">\(s\)</span>, only finitely many integers occur. Define the normal automorphism and the step-unitary cocycle by
+<span class="math math-display" data-tex="\[
+ (\Theta_sF)(r)=\alpha^{n_s(r)}(F(u_s(r))),\qquad
+ C_s(r)=c_{n_s(r)}.
+ \tag{DDP22}
+\]">\[
+ (\Theta_sF)(r)=\alpha^{n_s(r)}(F(u_s(r))),\qquad
+ C_s(r)=c_{n_s(r)}.
+ \tag{DDP22}
+\]</span>
+These expressions specify normal maps on the tensor algebra by restriction to the finitely many scalar intervals and translation; they do not presume pointwise operator fields for arbitrary Hilbert dimension. The identities
+<span class="math math-display" data-tex="\[
+ n_{s+t}(r)=n_s(r)+n_t(u_s(r)),\qquad
+ u_{s+t}(r)=u_t(u_s(r))
+\]">\[
+ n_{s+t}(r)=n_s(r)+n_t(u_s(r)),\qquad
+ u_{s+t}(r)=u_t(u_s(r))
+\]</span>
+give the group law and <span class="math" data-tex="\(C_{s+t}=C_s\Theta_s(C_t)\)">\(C_{s+t}=C_s\Theta_s(C_t)\)</span>, including negative parameters.</p>
+<p>For full continuity, represent <span class="math" data-tex="\(Q\)">\(Q\)</span> on its trace GNS space, and let
+<span class="math" data-tex="\(V\Lambda_T(x)=\lambda^{-1/2}\Lambda_T(\alpha x)\)">\(V\Lambda_T(x)=\lambda^{-1/2}\Lambda_T(\alpha x)\)</span>.
+It is an onto unitary implementing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, by the trace-scaling identity and its inverse. On <span class="math" data-tex="\(L^2(I,H_T)\)">\(L^2(I,H_T)\)</span>,
+<span class="math math-display" data-tex="\[
+ (R_s\xi)(r)=V^{n_s(r)}\xi(u_s(r))
+ \tag{DDP23}
+\]">\[
+ (R_s\xi)(r)=V^{n_s(r)}\xi(u_s(r))
+ \tag{DDP23}
+\]</span>
+is a unitary representation and implements <span class="math" data-tex="\(\Theta_s\)">\(\Theta_s\)</span>. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, compactly supported continuous Hilbert-valued functions away from the endpoint have norm-continuous translates; the wrap interval has length <span class="math" data-tex="\(|s|\)">\(|s|\)</span> and vanishing <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-mass. These functions are dense, and the common unitary bound extends continuity to every vector. The group law gives continuity at all <span class="math" data-tex="\(s\)">\(s\)</span>. The same shrinking-interval estimate gives <span class="math" data-tex="\(C_s\to1\)">\(C_s\to1\)</span> strongly as <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, since <span class="math" data-tex="\(C_s=1\)">\(C_s=1\)</span> off the wrap interval and its norm is one. The cocycle law gives strong continuity everywhere, and unitarity gives continuity of adjoints.</p>
+<p>Let <span class="math" data-tex="\(\omega(f)=\int_I e^r f(r)\,dr\)">\(\omega(f)=\int_I e^r f(r)\,dr\)</span>, and define on the full positive cone
+<span class="math math-display" data-tex="\[
+ \mathcal T=T\circ(\operatorname{id}\bar\otimes\omega).
+ \tag{DDP24}
+\]">\[
+ \mathcal T=T\circ(\operatorname{id}\bar\otimes\omega).
+ \tag{DDP24}
+\]</span>
+The bounded slice is a faithful normal <span class="math" data-tex="\(Q\)">\(Q\)</span>-bimodular operator-valued weight, with bounded-value ideal all of <span class="math" data-tex="\(A\)">\(A\)</span>; <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6's full composition theorem</a> makes <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> faithful n.s.f. It is a trace. Indeed <a href="OA-FLOW-OT.html#oa-flow.ot.5">OT5's modular restriction</a> fixes <span class="math" data-tex="\(Q\otimes1\)">\(Q\otimes1\)</span>, since <span class="math" data-tex="\(T\)">\(T\)</span> is tracial, and <a href="OA-FLOW-NC.html#oa-flow.nc.4">NC4's full-graph central commutation</a> shows that the modular group fixes the center, in particular <span class="math" data-tex="\(1\otimes L^\infty(I)\)">\(1\otimes L^\infty(I)\)</span>. These algebras generate <span class="math" data-tex="\(A\)">\(A\)</span>, so the modular group is trivial; the <a href="OA-FLOW-KT.html#oa-flow.kt.5">whole-cone trace criterion KT5</a> applies.</p>
+<p>The trace scales with the exact real exponent:
+<span class="math math-display" data-tex="\[
+ \mathcal T\Theta_s=e^{-s}\mathcal T .
+ \tag{DDP25}
+\]">\[
+ \mathcal T\Theta_s=e^{-s}\mathcal T .
+ \tag{DDP25}
+\]</span>
+On a bounded positive step tensor, substitute <span class="math" data-tex="\(u=r+s-nL\)">\(u=r+s-nL\)</span> separately on the finitely many intervals. The trace factor is
+<span class="math math-display" data-tex="\[
+ e^r\lambda^n=e^{u-s+nL}e^{-nL}=e^{-s}e^u.
+\]">\[
+ e^r\lambda^n=e^{u-s+nL}e^{-nL}=e^{-s}e^u.
+\]</span>
+The transformed intervals partition <span class="math" data-tex="\(I\)">\(I\)</span>, proving (DDP25) there. This extends to the entire cone as follows. Finite-<span class="math" data-tex="\(T\)">\(T\)</span> projections <span class="math" data-tex="\(p\)">\(p\)</span> increase as a net to <span class="math" data-tex="\(1\)">\(1\)</span>; finite joins remain finite by the trace join inequality from polar comparison. On <span class="math" data-tex="\(pAp\)">\(pAp\)</span>, both sides are bounded normal functionals: <span class="math" data-tex="\(\Theta_s(p)\)">\(\Theta_s(p)\)</span> is a finite step sum of <span class="math" data-tex="\(\alpha^n(p)\)">\(\alpha^n(p)\)</span> and has finite <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-value. Normality therefore extends equality from scalar step tensors to all of this corner. For <span class="math" data-tex="\(X\ge0\)">\(X\ge0\)</span>, traciality gives
+<span class="math" data-tex="\(\mathcal T(pXp)=\mathcal T(X^{1/2}pX^{1/2})\uparrow\mathcal T(X)\)">\(\mathcal T(pXp)=\mathcal T(X^{1/2}pX^{1/2})\uparrow\mathcal T(X)\)</span>.
+Apply the same identity to <span class="math" data-tex="\(\Theta_s(p)\uparrow1\)">\(\Theta_s(p)\uparrow1\)</span> for the left side. This proves (DDP25), including infinity.</p>
+<p>All hypotheses of the proved <a href="OA-FLOW-CST.html#cst-5">CST theorem and its full implementation proof</a> are now met. Obtain <span class="math" data-tex="\(B\in\mathcal U(A)\)">\(B\in\mathcal U(A)\)</span> with <span class="math" data-tex="\(C_s=B^*\Theta_s(B)\)">\(C_s=B^*\Theta_s(B)\)</span>.</p>
+<p>There is no need to evaluate <span class="math" data-tex="\(B\)">\(B\)</span> at a chosen fiber. If <span class="math" data-tex="\(0&lt;s&lt;L\)">\(0&lt;s&lt;L\)</span>, then <span class="math" data-tex="\(C_s=1\)">\(C_s=1\)</span> on <span class="math" data-tex="\([0,L-s)\)">\([0,L-s)\)</span>, and hence <span class="math" data-tex="\(B(r+s)=B(r)\)">\(B(r+s)=B(r)\)</span> there in the tensor-algebra sense. Slice by any <span class="math" data-tex="\(\rho\in Q_*\)">\(\rho\in Q_*\)</span>. The bounded scalar function <span class="math" data-tex="\(f_\rho=(\rho\otimes\mathrm{id})(B)\)">\(f_\rho=(\rho\otimes\mathrm{id})(B)\)</span> has these local translation identities. For a smooth compactly supported <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\((0,L)\)">\((0,L)\)</span>, change variables in the identity and divide by <span class="math" data-tex="\(s\)">\(s\)</span>; uniform convergence of the difference quotient gives <span class="math" data-tex="\(\int f_\rho g'=0\)">\(\int f_\rho g'=0\)</span>. A convolution with any smooth compact approximate identity therefore has derivative zero on every smaller interval, so is constant there; convergence in local <span class="math" data-tex="\(L^1\)">\(L^1\)</span> proves <span class="math" data-tex="\(f_\rho\)">\(f_\rho\)</span> is almost everywhere constant. Compatibility on overlapping smaller intervals gives one constant on <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Let <span class="math" data-tex="\(z=(\operatorname{id}\otimes L^{-1}\int_I)(B)\)">\(z=(\operatorname{id}\otimes L^{-1}\int_I)(B)\)</span>. Every normal slice of <span class="math" data-tex="\(B-z\otimes1\)">\(B-z\otimes1\)</span> is zero, so product normal vector functionals, which separate the spatial tensor algebra, give <span class="math" data-tex="\(B=z\otimes1\)">\(B=z\otimes1\)</span>. Unitarity implies <span class="math" data-tex="\(z^*z=zz^*=1\)">\(z^*z=zz^*=1\)</span>. At <span class="math" data-tex="\(s=L\)">\(s=L\)</span>, (DDP22) has <span class="math" data-tex="\(C_L=c_1\otimes1\)">\(C_L=c_1\otimes1\)</span> and <span class="math" data-tex="\(\Theta_L(z\otimes1)=\alpha(z)\otimes1\)">\(\Theta_L(z\otimes1)=\alpha(z)\otimes1\)</span>. Thus <span class="math" data-tex="\(c_1=z^*\alpha(z)\)">\(c_1=z^*\alpha(z)\)</span>. Positive iteration telescopes and
+<span class="math" data-tex="\(c_{-n}=\alpha^{-n}(c_n^*)\)">\(c_{-n}=\alpha^{-n}(c_n^*)\)</span> gives (DDP21) for negative integers.</p>
+<p>Consequently
+<span class="math math-display" data-tex="\[
+ \operatorname{Ad}(c_n)\alpha^n
+ =\operatorname{Ad}(z^*)\,\alpha^n\,\operatorname{Ad}(z).
+ \tag{DDP26}
+\]">\[
+ \operatorname{Ad}(c_n)\alpha^n
+ =\operatorname{Ad}(z^*)\,\alpha^n\,\operatorname{Ad}(z).
+ \tag{DDP26}
+\]</span>
+The complete set of implementers is
+<span class="math math-display" data-tex="\[
+ \{hz:h\in\mathcal U(Q^\alpha)\}.
+ \tag{DDP27}
+\]">\[
+ \{hz:h\in\mathcal U(Q^\alpha)\}.
+ \tag{DDP27}
+\]</span>
+Indeed any two solutions <span class="math" data-tex="\(z,w\)">\(z,w\)</span> satisfy
+<span class="math" data-tex="\(\alpha(wz^*)=wc_1(zc_1)^*=wz^*\)">\(\alpha(wz^*)=wc_1(zc_1)^*=wz^*\)</span>; the converse follows by substitution. The zero algebra has its unique zero-algebra interpretation. This argument uses no measurable selection of implementers, no norm continuity of the cocycle, and no trace equality at infinity as a comparison substitute.</p>
+<p><span id="OA-FLOW.DDP.COMPARISON"></span><a id="dd-comparison"></a></p>
+<h2 id="7-generalized-traces-and-strict-uniqueness">7. Generalized traces and strict uniqueness</h2>
+<p>On the arbitrary type IIIλ factor <span class="math" data-tex="\(M\)">\(M\)</span>, call <span class="math" data-tex="\(\phi\)">\(\phi\)</span> a generalized trace here when it is faithful n.s.f., <span class="math" data-tex="\(\phi(1)=\infty\)">\(\phi(1)=\infty\)</span>, and <span class="math" data-tex="\(\sigma_P^\phi=\mathrm{id}\)">\(\sigma_P^\phi=\mathrm{id}\)</span>. Let <span class="math" data-tex="\(\phi,\psi\)">\(\phi,\psi\)</span> be any two. The normalized cocycle <span class="math" data-tex="\(v_t=(D\psi:D\phi)_t\)">\(v_t=(D\psi:D\phi)_t\)</span>, constructed by <a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a>–<a href="OA-FLOW-BC.html#oa-flow.bc.5">BC5</a>, has <span class="math" data-tex="\(v_P\in Z(M)=\mathbb C1\)">\(v_P\in Z(M)=\mathbb C1\)</span>, since both modular groups are the identity at <span class="math" data-tex="\(P\)">\(P\)</span>. Choose the unique
+<span class="math math-display" data-tex="\[
+ a\in(\lambda,1]\quad\text{with}\quad v_P=a^{-iP},
+ \qquad \phi_0=a^{-1}\phi.
+ \tag{DDP28}
+\]">\[
+ a\in(\lambda,1]\quad\text{with}\quad v_P=a^{-iP},
+ \qquad \phi_0=a^{-1}\phi.
+ \tag{DDP28}
+\]</span>
+The phase parametrization is bijective because <span class="math" data-tex="\(\log a\in(-L,0]\)">\(\log a\in(-L,0]\)</span> and <span class="math" data-tex="\(PL=2\pi\)">\(PL=2\pi\)</span>. BC's scalar rule gives
+<span class="math" data-tex="\((D\psi:D\phi_0)_P=a^{iP}v_P=1\)">\((D\psi:D\phi_0)_P=a^{iP}v_P=1\)</span>.
+The balanced weight <span class="math" data-tex="\(\rho=\phi_0\oplus\psi\)">\(\rho=\phi_0\oplus\psi\)</span> on <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span> therefore has period <span class="math" data-tex="\(P\)">\(P\)</span>, including its off-diagonal corners.</p>
+<p>Its fixed algebra is a semifinite factor by Section 2, and its two diagonal projections have infinite trace. Formula (DDP13) supplies a fixed upper-right <span class="math" data-tex="\(V=u e_{12}\)">\(V=u e_{12}\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> unitary. Its self-adjoint unitary swap <span class="math" data-tex="\(V+V^*\)">\(V+V^*\)</span> preserves <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on all positive matrices by <a href="OA-FLOW-CZ.html#oa-flow.cz.0">CZ0</a>. Applying this to <span class="math" data-tex="\(\operatorname{diag}(0,x)\)">\(\operatorname{diag}(0,x)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \phi_0(uxu^*)=\psi(x),\qquad
+ \boxed{\phi\circ\operatorname{Ad}u=a\psi}.
+ \tag{DDP29}
+\]">\[
+ \phi_0(uxu^*)=\psi(x),\qquad
+ \boxed{\phi\circ\operatorname{Ad}u=a\psi}.
+ \tag{DDP29}
+\]</span>
+All weights and equalities include infinite values.</p>
+<p>For uniqueness of <span class="math" data-tex="\(a\)">\(a\)</span>, the actual inner derivative <a href="OA-FLOW-GDA.html#gda-8">GDA8</a> is
+<span class="math math-display" data-tex="\[
+ (D(\omega\circ\operatorname{Ad}q):D\omega)_t
+      =q^*\sigma_t^\omega(q).
+ \tag{DDP30}
+\]">\[
+ (D(\omega\circ\operatorname{Ad}q):D\omega)_t
+      =q^*\sigma_t^\omega(q).
+ \tag{DDP30}
+\]</span>
+If <span class="math" data-tex="\(\omega\operatorname{Ad}q=c\omega\)">\(\omega\operatorname{Ad}q=c\omega\)</span>, scalar normalization gives
+<span class="math" data-tex="\(\sigma_t^\omega(q)=c^{it}q\)">\(\sigma_t^\omega(q)=c^{it}q\)</span>. Evaluating at <span class="math" data-tex="\(P\)">\(P\)</span> forces <span class="math" data-tex="\(c\in\lambda^{\mathbb Z}\)">\(c\in\lambda^{\mathbb Z}\)</span>. If <span class="math" data-tex="\(u,v\)">\(u,v\)</span> give (DDP29) with <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, then
+<span class="math" data-tex="\(\psi\operatorname{Ad}(u^*v)=(b/a)\psi\)">\(\psi\operatorname{Ad}(u^*v)=(b/a)\psi\)</span>; thus <span class="math" data-tex="\(b/a\in\lambda^{\mathbb Z}\)">\(b/a\in\lambda^{\mathbb Z}\)</span>. The half-open interval in (DDP28) forces <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Conversely (DDP15) realizes every scalar in <span class="math" data-tex="\(\lambda^{\mathbb Z}\)">\(\lambda^{\mathbb Z}\)</span> by a power of <span class="math" data-tex="\(U\)">\(U\)</span>. This is the precise scalar ambiguity.</p>
+<p>For uniqueness of the decomposition, take any two trace-scaling II∞ decompositions of the same <span class="math" data-tex="\(M\)">\(M\)</span>, with their dual generalized traces <span class="math" data-tex="\(\phi_i\)">\(\phi_i\)</span>, coefficient algebras <span class="math" data-tex="\(N_i\)">\(N_i\)</span>, implementing unitaries <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, and automorphisms <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>. The converse proof supplies exactly these periodic weights, not arbitrary replacements. Choose <span class="math" data-tex="\(w,a\)">\(w,a\)</span> with <span class="math" data-tex="\(\phi_1\operatorname{Ad}w=a\phi_2\)">\(\phi_1\operatorname{Ad}w=a\phi_2\)</span>. Modular covariance gives
+<span class="math math-display" data-tex="\[
+ J=\operatorname{Ad}w:N_2\longrightarrow N_1,\qquad
+ \tau_1J=a\tau_2,\qquad J(U_2)=cU_1,\quad c\in\mathcal U(N_1).
+\]">\[
+ J=\operatorname{Ad}w:N_2\longrightarrow N_1,\qquad
+ \tau_1J=a\tau_2,\qquad J(U_2)=cU_1,\quad c\in\mathcal U(N_1).
+\]</span>
+Consequently <span class="math" data-tex="\(J\theta_2J^{-1}=\operatorname{Ad}c\,\theta_1\)">\(J\theta_2J^{-1}=\operatorname{Ad}c\,\theta_1\)</span>. Apply discrete stability in <span class="math" data-tex="\(N_1\)">\(N_1\)</span>: <span class="math" data-tex="\(c=z^*\theta_1(z)\)">\(c=z^*\theta_1(z)\)</span>. With <span class="math" data-tex="\(J'=\operatorname{Ad}z\circ J\)">\(J'=\operatorname{Ad}z\circ J\)</span>,
+<span class="math math-display" data-tex="\[
+ J'\theta_2(J')^{-1}=\theta_1,\qquad
+ \tau_1J'=a\tau_2,\qquad J'(U_2)=U_1
+ \tag{DDP31}
+\]">\[
+ J'\theta_2(J')^{-1}=\theta_1,\qquad
+ \tau_1J'=a\tau_2,\qquad J'(U_2)=U_1
+ \tag{DDP31}
+\]</span>
+where the last formula uses the corresponding inner map on the full <span class="math" data-tex="\(M\)">\(M\)</span>:
+<span class="math" data-tex="\(z\,c\,U_1z^*=\theta_1(z)U_1z^*=U_1\)">\(z\,c\,U_1z^*=\theta_1(z)U_1z^*=U_1\)</span>.
+This is strict conjugacy after the indicated inner adjustment, with the positive trace scalar retained. No splitting or choice-independent implementing unitary is asserted.</p>
+<p><span id="OA-FLOW.DDP.STATES"></span><a id="dd-states"></a></p>
+<h2 id="8-periodic-states-an-isometry-masas-and-all-partial-normalizers">8. Periodic states, an isometry, MASAs and all partial normalizers</h2>
+<p>If the arbitrary type IIIλ factor has a faithful normal state, apply the now unrestricted inner-period construction and <a href="OA-FLOW-PW.html#oa-flow.pw.3">PW3</a>'s finite normalization to that state. The result is a faithful normal state <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with period <span class="math" data-tex="\(P\)">\(P\)</span>; (DDP9) makes it the least positive period. Existence of a state is automatic for a separable predual by <a href="OA-FLOW-DD.html#oa-flow.dd.1">DD1</a>, but is not assumed for the preceding unrestricted theorems.</p>
+<p>Fix <strong>any</strong> such periodic state and put <span class="math" data-tex="\(F=M_\phi\)">\(F=M_\phi\)</span>, <span class="math" data-tex="\(\tau=\phi|_F\)">\(\tau=\phi|_F\)</span>. Section 2 proves <span class="math" data-tex="\(F\)">\(F\)</span> is a II1 factor and <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span>. Write
+<span class="math" data-tex="\(X_n=\{x:\sigma_t^\phi(x)=\lambda^{int}x\}\)">\(X_n=\{x:\sigma_t^\phi(x)=\lambda^{int}x\}\)</span>.
+For a polar partial isometry <span class="math" data-tex="\(v\in X_n\)">\(v\in X_n\)</span>, its supports lie in <span class="math" data-tex="\(F\)">\(F\)</span>, and the complete finite-state Tomita identity gives
+<span class="math math-display" data-tex="\[
+ \tau(vv^*)=\lambda^n\tau(v^*v).
+ \tag{DDP32}
+\]">\[
+ \tau(vv^*)=\lambda^n\tau(v^*v).
+ \tag{DDP32}
+\]</span>
+Indeed <span class="math" data-tex="\(v\Omega_\phi\)">\(v\Omega_\phi\)</span> is a <span class="math" data-tex="\(\lambda^n\)">\(\lambda^n\)</span>-eigenvector of <span class="math" data-tex="\(\Delta_\phi\)">\(\Delta_\phi\)</span>, and
+<span class="math" data-tex="\(\|v^*\Omega_\phi\|^2=\|S(v\Omega_\phi)\|^2
+=\|\Delta_\phi^{1/2}v\Omega_\phi\|^2\)">\(\|v^*\Omega_\phi\|^2=\|S(v\Omega_\phi)\|^2
+=\|\Delta_\phi^{1/2}v\Omega_\phi\|^2\)</span>.
+The eigenvector is in the square-root domain; no infinite-weight vector occurs.</p>
+<p>The <span class="math" data-tex="\(F\)">\(F\)</span>-bimodule <span class="math" data-tex="\(X_1\)">\(X_1\)</span> is nonzero. For any nonzero <span class="math" data-tex="\(e,f\in F\)">\(e,f\in F\)</span>, one has <span class="math" data-tex="\(fX_1e\ne0\)">\(fX_1e\ne0\)</span>. Otherwise <span class="math" data-tex="\(fX_1FeF=0\)">\(fX_1FeF=0\)</span>; since the ultraweakly closed ideal generated by <span class="math" data-tex="\(e\)">\(e\)</span> in the factor <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(F\)">\(F\)</span>, normal multiplication gives <span class="math" data-tex="\(fX_1=0\)">\(fX_1=0\)</span>. The same argument with the ideal generated by <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(X_1=0\)">\(X_1=0\)</span>, a contradiction.</p>
+<p>Take a maximal family of degree-one polar partial isometries <span class="math" data-tex="\(v_j\)">\(v_j\)</span> with mutually orthogonal initial projections and mutually orthogonal final projections. The family is countable because the initial projections have strictly positive state values. Their strong-star sum <span class="math" data-tex="\(s\)">\(s\)</span> has supports <span class="math" data-tex="\(p=s^*s,\ q=ss^*\)">\(p=s^*s,\ q=ss^*\)</span>, and (DDP32) gives <span class="math" data-tex="\(\tau(q)=\lambda\tau(p)\le\lambda&lt;1\)">\(\tau(q)=\lambda\tau(p)\le\lambda&lt;1\)</span>. If <span class="math" data-tex="\(p\ne1\)">\(p\ne1\)</span>, both <span class="math" data-tex="\(1-p\)">\(1-p\)</span> and <span class="math" data-tex="\(1-q\)">\(1-q\)</span> are nonzero, so the preceding bimodule fact supplies an additional nonzero polar partial isometry in <span class="math" data-tex="\((1-q)X_1(1-p)\)">\((1-q)X_1(1-p)\)</span>, contradicting maximality. Thus
+<span class="math math-display" data-tex="\[
+ s^*s=1,\qquad \sigma_t^\phi(s)=\lambda^{it}s,\qquad
+ \tau(ss^*)=\lambda,\qquad \tau(s^ns^{*n})=\lambda^n.
+ \tag{DDP33}
+\]">\[
+ s^*s=1,\qquad \sigma_t^\phi(s)=\lambda^{it}s,\qquad
+ \tau(ss^*)=\lambda,\qquad \tau(s^ns^{*n})=\lambda^n.
+ \tag{DDP33}
+\]</span></p>
+<p><strong>Relative commutant.</strong> If <span class="math" data-tex="\(x\in F'\cap M\)">\(x\in F'\cap M\)</span>, each Fourier coefficient <span class="math" data-tex="\(x_n\)">\(x_n\)</span> commutes with <span class="math" data-tex="\(F\)">\(F\)</span>. The polar part of a nonzero <span class="math" data-tex="\(x_n\)">\(x_n\)</span> also commutes with <span class="math" data-tex="\(F\)">\(F\)</span>; its support projections lie in <span class="math" data-tex="\(Z(F)=\mathbb C1\)">\(Z(F)=\mathbb C1\)</span>, so it is unitary. Equation (DDP32) forces <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. The zero coefficient is scalar. Fejér convergence therefore proves
+<span class="math math-display" data-tex="\[
+ F'\cap M=\mathbb C1.
+ \tag{DDP34}
+\]">\[
+ F'\cap M=\mathbb C1.
+ \tag{DDP34}
+\]</span>
+For every nonzero <span class="math" data-tex="\(e\in F\)">\(e\in F\)</span>, it follows that
+<span class="math" data-tex="\((eFe)'\cap eMe=\mathbb Ce\)">\((eFe)'\cap eMe=\mathbb Ce\)</span>, with this explicit full-corner argument. Choose partial isometries <span class="math" data-tex="\(w_i\in F\)">\(w_i\in F\)</span> whose initial projections lie under <span class="math" data-tex="\(e\)">\(e\)</span>, whose final projections are orthogonal and fill <span class="math" data-tex="\(1\)">\(1\)</span>, and with <span class="math" data-tex="\(w_0=e\)">\(w_0=e\)</span>; the full-central-support polar-bridge construction in <a href="OA-FLOW-L18.html#l18-6">L18 Section 6</a> supplies them. If <span class="math" data-tex="\(a\in eMe\)">\(a\in eMe\)</span> commutes with <span class="math" data-tex="\(eFe\)">\(eFe\)</span>, the bounded orthogonal sum <span class="math" data-tex="\(b=\sum_i w_i a w_i^*\)">\(b=\sum_i w_i a w_i^*\)</span> has norm at most <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>. Matrix coefficients give <span class="math" data-tex="\(bf=fb\)">\(bf=fb\)</span> for every <span class="math" data-tex="\(f\in F\)">\(f\in F\)</span>, because each <span class="math" data-tex="\(w_i^*fw_j\in eFe\)">\(w_i^*fw_j\in eFe\)</span> commutes with <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(b\in F'\cap M\)">\(b\in F'\cap M\)</span>. The <span class="math" data-tex="\(e\)">\(e\)</span>-compression is <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(a\)">\(a\)</span> is scalar on <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p><strong>MASAs.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be any MASA of <span class="math" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-tex="\(x\in A'\cap M\)">\(x\in A'\cap M\)</span>. Each Fourier coefficient <span class="math" data-tex="\(x_n\)">\(x_n\)</span> commutes with <span class="math" data-tex="\(A\)">\(A\)</span>. Its polar part <span class="math" data-tex="\(v\)">\(v\)</span> also commutes with <span class="math" data-tex="\(A\)">\(A\)</span>, and its support projections <span class="math" data-tex="\(e=v^*v,\ f=vv^*\)">\(e=v^*v,\ f=vv^*\)</span> belong to <span class="math" data-tex="\(A'\cap F=A\)">\(A'\cap F=A\)</span>. Commutation with <span class="math" data-tex="\(e\)">\(e\)</span> gives <span class="math" data-tex="\(ev=ve=v\)">\(ev=ve=v\)</span>, hence <span class="math" data-tex="\(f\le e\)">\(f\le e\)</span>; commutation with <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(fv=vf=v\)">\(fv=vf=v\)</span>, hence <span class="math" data-tex="\(e\le f\)">\(e\le f\)</span>. Thus <span class="math" data-tex="\(e=f\)">\(e=f\)</span>. If <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, (DDP32) forces <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Therefore <span class="math" data-tex="\(x=x_0\in A'\cap F=A\)">\(x=x_0\in A'\cap F=A\)</span>. This proves
+<span class="math math-display" data-tex="\[
+ A'\cap M=A.
+ \tag{DDP35}
+\]">\[
+ A'\cap M=A.
+ \tag{DDP35}
+\]</span>
+No regularity or Cartan hypothesis on the MASA is present.</p>
+<p><strong>Partial normalizers.</strong> For arbitrary projections <span class="math" data-tex="\(e,f\in F\)">\(e,f\in F\)</span>, there is a partial isometry <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ v^*v=e,\quad vv^*=f,\quad v(eFe)v^*=fFf
+ \tag{DDP36}
+\]">\[
+ v^*v=e,\quad vv^*=f,\quad v(eFe)v^*=fFf
+ \tag{DDP36}
+\]</span>
+if and only if
+<span class="math math-display" data-tex="\[
+ \tau(e)=\lambda^n\tau(f)\quad\text{for some }n\in\mathbb Z.
+ \tag{DDP37}
+\]">\[
+ \tau(e)=\lambda^n\tau(f)\quad\text{for some }n\in\mathbb Z.
+ \tag{DDP37}
+\]</span>
+If either projection is zero, (DDP37) forces both to be zero by faithfulness; <span class="math" data-tex="\(v=0\)">\(v=0\)</span> proves the assertion in that case. Assume both are nonzero.</p>
+<p>For necessity, fixedness of <span class="math" data-tex="\(vxv^*\)">\(vxv^*\)</span> for <span class="math" data-tex="\(x\in eFe\)">\(x\in eFe\)</span> gives
+<span class="math" data-tex="\(v^*\sigma_t^\phi(v)\in(eFe)'\cap eMe=\mathbb Ce\)">\(v^*\sigma_t^\phi(v)\in(eFe)'\cap eMe=\mathbb Ce\)</span>.
+Its scalar has modulus one. The group law and fixedness of <span class="math" data-tex="\(e\)">\(e\)</span> show it is a continuous character <span class="math" data-tex="\(e^{irt}\)">\(e^{irt}\)</span>, so
+<span class="math" data-tex="\(\sigma_t^\phi(v)=e^{irt}v\)">\(\sigma_t^\phi(v)=e^{irt}v\)</span>.
+The modular period gives <span class="math" data-tex="\(r\in L\mathbb Z\)">\(r\in L\mathbb Z\)</span>, equivalently <span class="math" data-tex="\(v\in X_m\)">\(v\in X_m\)</span> for some integer <span class="math" data-tex="\(m\)">\(m\)</span>. Equation (DDP32) gives <span class="math" data-tex="\(\tau(f)=\lambda^m\tau(e)\)">\(\tau(f)=\lambda^m\tau(e)\)</span>, which is (DDP37) with <span class="math" data-tex="\(n=-m\)">\(n=-m\)</span>. This records the direction of the sign.</p>
+<p>For sufficiency first let <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> in (DDP37). Put <span class="math" data-tex="\(p_n=s^ns^{*n}\)">\(p_n=s^ns^{*n}\)</span>. The character of <span class="math" data-tex="\(s^n\)">\(s^n\)</span> gives
+<span class="math math-display" data-tex="\[
+ s^nFs^{*n}=p_nFp_n:
+\]">\[
+ s^nFs^{*n}=p_nFp_n:
+\]</span>
+the inclusion is immediate, and <span class="math" data-tex="\(y\in p_nFp_n\)">\(y\in p_nFp_n\)</span> has fixed preimage <span class="math" data-tex="\(s^{*n}ys^n\)">\(s^{*n}ys^n\)</span>. Let <span class="math" data-tex="\(q=s^nfs^{*n}\)">\(q=s^nfs^{*n}\)</span>. Equation (DDP32), applied to <span class="math" data-tex="\(s^nf\)">\(s^nf\)</span>, gives
+<span class="math" data-tex="\(\tau(q)=\lambda^n\tau(f)=\tau(e)\)">\(\tau(q)=\lambda^n\tau(f)=\tau(e)\)</span>.
+Finite-trace factor comparison <a href="OA-FLOW-PF.html#oa-flow.pf.6">PF6</a> supplies <span class="math" data-tex="\(w\in F\)">\(w\in F\)</span> with <span class="math" data-tex="\(w^*w=e,\ ww^*=q\)">\(w^*w=e,\ ww^*=q\)</span>. Then
+<span class="math math-display" data-tex="\[
+ v=s^{*n}w
+\]">\[
+ v=s^{*n}w
+\]</span>
+has <span class="math" data-tex="\(v^*v=e,\ vv^*=f\)">\(v^*v=e,\ vv^*=f\)</span>, and conjugates <span class="math" data-tex="\(eFe\)">\(eFe\)</span> onto <span class="math" data-tex="\(fFf\)">\(fFf\)</span> by the displayed corner identity. If <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, apply the proved case with <span class="math" data-tex="\(e,f\)">\(e,f\)</span> interchanged and exponent <span class="math" data-tex="\(-n\)">\(-n\)</span>, then take the adjoint. This includes <span class="math" data-tex="\(n=0\)">\(n=0\)</span> and completes all normalizer conclusions.</p>
+<p><span id="OA-FLOW.DDP.DIAGRAM"></span><a id="dd-diagram"></a></p>
+<h2 id="9-exact-suspension-and-comparison">9. Exact suspension and comparison</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact suspension intervals and the cardinal comparison leading to balanced equivalence." src="assets/discrete-decomposition/ddp-mechanisms.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The diagram records the actual suspension, not a numerical model of a type III factor. Its coordinate is <span class="math" data-tex="\(r\in[0,L)\)">\(r\in[0,L)\)</span>, its wrap integer is <span class="math" data-tex="\(n_s(r)\)">\(n_s(r)\)</span>, and the weighting identity is exactly <span class="math" data-tex="\(e^r\lambda^{n_s(r)}=e^{-s}e^{u_s(r)}\)">\(e^r\lambda^{n_s(r)}=e^{-s}e^{u_s(r)}\)</span>. The lower proof chain keeps the two cardinal-cover equalities before comparison. The proof locators are <a href="#dd-cardinality">Section 3</a> and <a href="#dd-discrete-stability">Section 6</a>. Human-source context is Takesaki, <em>Theory of Operator Algebras II</em>, XII.2.1–3, printed 380–384; the new suspension reduction here uses the complete current <a href="OA-FLOW-CST.html#cst-1">CST proof</a>. The bands and cardinal comparison are proved in Sections 3 and 6. Original figure: CC0.</p>
+<p><span id="OA-FLOW.DDP.READING"></span><a id="dd-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, Theorems XII.2.1–2.2, Definition XII.2.3 and Exercises XII.2.1–5, printed pp. 380–384, treat discrete decomposition, generalized traces and periodic-state centralizers. The complete proofs above retain arbitrary factor cardinality: Sections 1 and 3 justify the corner and projection comparisons, Section 4 gives the normal recognition for the specified weight, and Section 5 proves the converse and full core-center period. Section 6 proves discrete cocycle stability on arbitrary traced algebras through a continuous suspension; Sections 7–8 apply it to uniqueness and prove the state consequences.</p>
+<p>The complementary earlier treatments are <a href="OA-FLOW-DD.html#oa-flow.dd.0">discrete-decomposition existence</a>, <a href="OA-FLOW-GT.html#oa-flow.gt.4">recognition for a given periodic weight</a>, and <a href="OA-FLOW-CST.html#cst-5">continuous trace-scaling cocycle stability</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-BFC.html">Previous lesson</a><a href="OA-FLOW-PDM.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DDP.md">Lesson source</a></nav></main></body></html>

@@ -1,6 +1,6 @@
 # The projection formula and the base change map
 
-*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the [course notice](../LICENCE.md).*
+*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original text: public domain (CC0). Authorship and sources are listed in the [course notice](../LICENCE.md).*
 
 The projection formula compares tensoring after pushforward with tensoring before it. Base change compares pullback after pushforward with pushforward after pullback. Each comparison has a canonical direction, supplied by adjunction. Their existence is general; their invertibility needs hypotheses. Keeping these two questions separate prevents a flatness assumption from being mistaken for a universal base-change theorem.
 
@@ -8,7 +8,7 @@ The prerequisites are [Derived pullback and pushforward](derived-pullback-and-pu
 
 All structure sheaves are commutative and unital. Objects may be unbounded. Let \(f:X\to Y\) be a morphism of ringed spaces. Every tensor in a derived formula below is over the structure sheaf of the indicated space. Ordinary tensors and functors are expressly distinguished when models are used.
 
-The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Projection formula” (Tags 01E7, 01E8, 0B54 and 0B55), “The base change map” (Tag 02N7), and the unbounded base-change and composition results, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). We prove the local identifications and compatibility diagrams, keeping the existence and invertibility hypotheses explicit. Source attribution and the licence for adapted passages appear in the [course notice](../LICENCE.md).
+The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Projection formula” (Tags 01E7, 01E8, 0B54 and 0B55), “The base change map” (Tag 02N7), and the unbounded base-change and composition results, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). We prove the local identifications and compatibility diagrams, keeping the existence and invertibility hypotheses explicit. Source attribution appears in the [course notice](../LICENCE.md).
 ## 1. Finite locally free coefficients
 
 **Lemma 1.1.** If \(V\) is finite locally free and \(I\) is an injective module sheaf on a ringed space, then \(V\otimes I\) is injective. Tensoring a K-injective complex with \(V\) also gives a K-injective complex.

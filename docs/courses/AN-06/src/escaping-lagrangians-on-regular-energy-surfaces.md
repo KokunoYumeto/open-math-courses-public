@@ -74,6 +74,10 @@ Thus its full frequency set has an isolated point at zero. Its sheet near the un
 
 The counterexample shows why an unrestricted initial set is insufficient. The regular-collar construction below retains the required restriction.
 
+<a id="escaping-theorem"></a>
+
+The initial-sheet estimate is Hörmander [H4, Lemma 30.3.4]. The flowout and normalized action correspond to [H4, Theorems 30.3.5–30.3.6], with the initial set restricted to the regular collar as required by the counterexample above.
+
 **Theorem 1.1 (an escaping energy family and its action).** For all sufficiently large \(T\), \(M_T\) is a compact smooth hypersurface diffeomorphic to \(M_\lambda\). Its Hamilton flow exists for every \(t\ge T\), has energy \(\lambda\), and satisfies
 
 \[
@@ -103,6 +107,8 @@ In a fixed chart where \(M_\lambda\) is \(\xi_1=E(\xi')\), the perturbed sheet i
 
 There is an analogous negative-normal construction. If \(M_\lambda\) is empty, the near-shell sheet and its flowout are empty. The proof is given in Sections 2–5.
 
+<a id="escaping-normal-collar"></a>
+
 ## 2. A collar built by the normal flow
 
 If \(M_\lambda\) is empty, the sheet in a sufficiently small compact regular energy band is empty and its flowout is empty. All local chart assertions are vacuous. Assume now \(M_\lambda\ne\varnothing\).
@@ -119,7 +125,7 @@ Use the smooth normal field
 \]
 Its flow \(N(u,s)\), starting at \(u\in M_\lambda\), obeys
 \(P_0(N(u,s))=\lambda+s\).
-Uniform local existence on the compact band and continuation while the level stays in that band give it for \(|s|<\varepsilon\).
+The [local existence and smooth dependence proof](hamilton-trajectories-under-a-long-range-force.md#hamilton-local-flow-and-data-derivatives) applies to this smooth field on the noncritical band. Its [compact continuation argument](hamilton-trajectories-under-a-long-range-force.md#hamilton-global-continuation), while the level stays in that band, gives the flow for \(|s|<\varepsilon\).
 The map
 \[
 N:M_\lambda\times(-\varepsilon,\varepsilon)
@@ -129,6 +135,8 @@ N:M_\lambda\times(-\varepsilon,\varepsilon)
 is a diffeomorphism. For injectivity, equal image points have equal \(s\) from their energy values; reversing the normal flow recovers the same \(u\).
 For surjectivity, start at a point of the energy band and run the field backward for time \(P_0(\xi)-\lambda\); the energy reaches \(\lambda\) and the entire trajectory stays in the compact noncritical band.
 This also gives the smooth inverse explicitly.
+
+<a id="escaping-initial-sheet"></a>
 
 On the compact smaller collar, write the perturbed equation as
 \[
@@ -157,6 +165,8 @@ is one smooth compact hypersurface, diffeomorphic to \(M_\lambda\).
 Section 5 proves every graph derivative estimate on the finite compact chart covering.
 This constructs the complete sheet in the regular collar.
 
+<a id="escaping-future-flow"></a>
+
 ## 3. Escape makes the flowout embedded
 
 Start only from
@@ -166,7 +176,7 @@ Start only from
                     \eta\in M_T\}.
 \tag{13}
 \]
-The uniform spatial flow theorem in *Hamilton trajectories under a long-range force* gives a smooth future solution for all \(t\ge T\). The frequency changes by \(O(T^{-\delta})\) and
+To apply the [uniform spatial flow theorem](hamilton-trajectories-under-a-long-range-force.md#hamilton-uniform-future-flow), choose a relatively compact open frequency neighborhood \(W\) of the smaller regular energy band. Shrink it so that \(|v|\ge c>0\) on its closure. The product tube \(\{|z|<c/2\}\times W\) is preserved by contractions of its first coordinate and satisfies \(|z+v(\xi)|\ge c/2\). All sufficiently large initial sheets lie in a fixed compact subset of \(W\), with initial displacement \(z=0\). These are precisely the theorem’s tube and compact-data hypotheses. It gives a smooth future solution for all \(t\ge T\). The frequency changes by \(O(T^{-\delta})\) and
 \(z=O(t^{-\delta})\), since the initial displacement is zero.
 The initial sheet is \(O(T^{-\delta})\) from \(M_\lambda\).
 Hence all future frequencies stay within any given fixed neighborhood of \(M_\lambda\), once \(T\) is sufficiently large.
@@ -179,7 +189,9 @@ These follow from \(x=t(\nabla P_0(\xi)+z)\), the positive free-velocity lower b
 The identity \(dH/dt=H_x\cdot H_\xi-H_\xi\cdot H_x=0\) gives conservation of the Hamilton energy
 \(H=P_0+V_L\), so every orbit has energy \(\lambda\).
 
-In these coordinates the two-form is \(\omega=\sum d\xi_j\wedge dx_j\), so \(\omega(X_H,w)=-dH(w)\). We prove the preservation needed here directly. Order a variation as \(a=(a_x,a_\xi)\), and set
+<a id="escaping-symplectic-form"></a>
+
+With the chosen cotangent form, the symplectic form is \(\omega=-d\beta=\sum d\xi_j\wedge dx_j\), so \(\omega(X_H,w)=-dH(w)\). We prove the preservation needed here directly. Order a variation as \(a=(a_x,a_\xi)\), and set
 
 \[
  Q=\begin{pmatrix}0&-I\\I&0\end{pmatrix},\qquad
@@ -196,6 +208,8 @@ The Hamilton vector is \(X_H=-Q\nabla H\). Two transported variations satisfy \(
 
 Thus the smooth Hamilton flow preserves this two-form on every finite interval of its existence. This calculation also fixes its sign without importing a global generating-function theorem. Teschl [T] develops the same Hamiltonian and canonical-coordinate background; the flow and all estimates required at infinity are supplied by the preceding lesson.
 
+<a id="escaping-immersion"></a>
+
 The initial graph \(x=T\nabla P_0(\eta)\) is isotropic: its Hessian is symmetric, so the cotangent two-form vanishes on the full graph, hence on its \((n-1)\)-dimensional energy sheet.
 The Hamilton field is transverse to the initial sheet. A tangent vector to the full graph obeys
 \(\delta x=T P_0''(\eta)\delta\eta\).
@@ -207,12 +221,14 @@ The Hamilton vector would obey that identity only if
 Its left side is \(\nabla P_0+O(T^{-\delta})\), because
 \(V_{L,\xi}=O(T^{-\delta})\) and \(V_{L,x}=O(T^{-1-\delta})\) on the initial sheet.
 The free velocity is bounded away from zero, so the identity is impossible for large \(T\).
-The finite-time flow is locally invertible by following the same autonomous equation backward along the compact orbit segment. The local existence proof applies after reversing time, and uniqueness makes forward and backward maps inverse. Uniqueness also gives \(\Phi_s\Phi_r=\Phi_{s+r}\) wherever both sides are defined; differentiating in \(r\) at zero shows \(D\Phi_sX_H=X_H\circ\Phi_s\). Thus its invertible derivative transports the initial transversality and all tangent directions.
+The finite-time flow is locally invertible by following the same autonomous equation backward along the compact orbit segment. The [local existence proof](hamilton-trajectories-under-a-long-range-force.md#hamilton-local-flow-and-data-derivatives) applies after reversing time, and uniqueness makes forward and backward maps inverse. Uniqueness also gives \(\Phi_s\Phi_r=\Phi_{s+r}\) wherever both sides are defined; differentiating in \(r\) at zero shows \(D\Phi_sX_H=X_H\circ\Phi_s\). Thus its invertible derivative transports the initial transversality and all tangent directions.
 Thus its flowout is an immersed \(n\)-dimensional manifold.
 The two-form vanishes on the transported initial tangent directions by the Hamilton preservation theorem.
 Its pairing with the Hamilton direction vanishes because every transported direction is tangent to the energy level, and
 \(\omega(X_H,w)=-dH(w)\).
 It is therefore Lagrangian at every future point. Indeed the displayed matrix \(Q\) is invertible, so for a subspace \(L\) the symplectic orthogonal has dimension \(2n-\dim L\): the map \(w\mapsto\omega(w,\cdot)|_L\) onto \(L^*\) is surjective by nondegeneracy and extension of a linear functional from a basis of \(L\). An isotropic \(n\)-plane is contained in its symplectic orthogonal of the same dimension and hence equals it. This is the Lagrangian dimension criterion used here.
+
+<a id="escaping-embedding"></a>
 
 To prove global injectivity, rather than only immersion, use the escape coordinate
 \[
@@ -241,10 +257,14 @@ It is an embedding, not merely an injective immersion.
 For a convergent sequence of image points, \(|x|\asymp t\) bounds the times, and compactness of the initial sheet supplies convergent subsequences of initial data.
 If the limit point lies in the open future image, strict \(\ell>T\) excludes a limit time \(T\).
 Every convergent subsequence has the same parameter limit by injectivity, so the inverse is continuous.
-To see local smoothness of the inverse without an additional rank theorem, choose \(n\) ambient coordinate components for which the derivative of the parametrization has a nonsingular minor. The written inverse theorem applied to these components supplies local parameter coordinates; the other components are smooth functions of them. The already proved continuity of the global inverse excludes other parameter branches from a sufficiently small relative neighborhood.
+To see local smoothness of the inverse without an additional rank theorem, choose \(n\) ambient coordinate components for which the derivative of the parametrization has a nonsingular minor. The [written inverse theorem](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-inverse) applied to these components supplies local parameter coordinates; the other components are smooth functions of them. The already proved continuity of the global inverse excludes other parameter branches from a sufficiently small relative neighborhood.
 Hence the interior flowout is an embedded Lagrangian, with compact initial boundary if that boundary is included.
 
+<a id="escaping-negative-direction"></a>
+
 The same reasoning works for the negative normal direction by applying the positive construction to \(-P_0,-V_L,-\lambda\) and reversing the actual time parameter. The free normal becomes \(-\nabla P_0\), the same regular collar and properness remain valid, and the same estimates hold with these reversed signs.
+
+<a id="escaping-global-action"></a>
 
 ## 4. An action that does not require simple connectivity
 
@@ -296,6 +316,8 @@ No global simple connectivity of the energy shell is needed.
 The exact initial differential and the orbit parametrization supply global exactness directly, rather than inferring it merely from a closed form.
 Uniqueness follows because the difference of two such functions has derivative zero along every orbit and initial value zero. Every point lies on an orbit from the initial section.
 
+<a id="escaping-chain-bounds"></a>
+
 ## 5. Every derivative of the initial sheet
 
 Work near \(\xi^0\in M_\lambda\), choose a coordinate with
@@ -336,6 +358,8 @@ Its geometrically convergent iterates give a unique sheet \(r=E_T(\xi')\).
 Difference quotients of the fixed-point equation solve an invertible scalar linear equation; successive differentiation gives a smooth real sheet.
 The zero-order difference is \(O(T^{-\delta})\).
 
+<a id="escaping-exponent-partitions"></a>
+
 The needed exponent partition is
 \[
 \begin{gathered}
@@ -346,7 +370,7 @@ b(q)+\sum_{i=1}^q c(k_i)\le b(k),
 \]
 To prove it, put \(\theta=(1-\delta)/\kappa\).
 Here \(b(j)=-\delta\) for \(j\le\kappa\), and
-\(b(j)=\theta j-1>0\) for \(j\ge\kappa+1\).
+\(b(j)=\theta j-1>0\) for \(j\ge\kappa+1\). The strict bound \(\delta<1/(\kappa+1)\) gives positivity at the first higher order, and the slope \(\theta\) is positive.
 If all input orders are small, monotonicity \(b(q)\le b(k)\) suffices.
 Otherwise let \(\ell\ge1\) count the input orders at least \(\kappa+1\).
 Their sum is at most \(k-q+\ell\), hence
@@ -363,6 +387,8 @@ When \(q\le\kappa\), the difference from \(b(k)\) is at most
 \tag{29}
 \]
 This proves all partitions, including the low total-order case.
+
+<a id="escaping-sheet-jets"></a>
 
 For the first derivative, differentiation of \(E_T-E=F_T(E_T,\xi')\) gives, with \(F_1=\partial_1F_T(E_T,\xi')\),
 
@@ -395,6 +421,8 @@ The action will next supply local generating functions. Its global definition fi
 ### Use the conclusion
 
 Check the embedding and the normalization at the free end. Retain the regular energy collar when restricting the construction; a statement near the shell must not be promoted to arbitrary frequencies.
+
+<a id="escaping-solutions"></a>
 
 ## 6. Exercises with complete solutions
 
@@ -562,3 +590,5 @@ A positive-dimensional hypersurface cannot have an isolated point, and an \(n\)-
 [O] Sung-Jin Oh, [*Lecture Notes for Math 222A*, free evolving lecture notes](https://math.berkeley.edu/~sjoh/pdfs/notes-math222a.pdf), University of California, Berkeley, Fall 2023, §2.4.1, pp. 23–24. The Hamilton characteristic equations (2.20) provide the comparison; the global sheet, escaping embedding and normalized action are proved in Sections 2–5 above.
 
 
+
+[H4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the 1994 edition, Springer, 2009, Lemma 30.3.4 and the initial flowout assertion of Theorem 30.3.5, pp. 303–304; Theorem 30.3.6, normalized action (30.3.28) and its proof, p. 307. ISBN 978-3-642-00136-9. [Edition information](https://doi.org/10.1007/978-3-642-00136-9).

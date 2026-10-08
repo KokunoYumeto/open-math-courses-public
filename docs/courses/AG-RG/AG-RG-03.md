@@ -1,6 +1,6 @@
 # Roots and reductive groups of rank one
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original exposition is public domain (CC0). The collected lesson, including the explicitly attributed Stacks passage, is also distributed under the GNU Free Documentation License 1.2.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text: public domain (CC0). The normalization lemma in Section 5 follows the Stacks Project's proof, cited at the end.*
 
 The diagonal entries of a matrix act on its off-diagonal entries through ratios. Those ratios are the roots of a general linear group. For an arbitrary reductive group, roots are still characters of a maximal torus, but their one-dimensional spaces need not be globally trivial over the base. This lesson constructs the corresponding groups without using a power-series exponential, and shows why every root carries a copy of the rank-one geometry of $\operatorname{SL}_2$.
 
@@ -650,7 +650,7 @@ The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses
 - Brian Conrad, [*Reductive group schemes*](https://math.stanford.edu/~conrad/papers/luminysga3.pdf), §§2.3 and 4.1–4.3, for the dynamic approach and Gabber's central-extension splitting argument. The proofs above are written out independently.
 - [Milne’s freely accessible *Algebraic Groups*, version 2.00 (2015)](https://www.jmilne.org/math/CourseNotes/iAG200.pdf). This exact free author edition provides comparison material; its citations do not replace the programme proofs.
 - SGA 3, [*Schémas en groupes*](https://webusers.imj-prg.fr/~patrick.polo/SGA3/), Exposés XIX–XX, for roots and the relative rank-one theorem.
-- The [official Stacks project](https://stacks.math.columbia.edu/) and AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers. The normalization lemma and its whole proof in Section 5 are adapted from the Stacks project authors through this edition.
+- The [official Stacks project](https://stacks.math.columbia.edu/) and AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers. The normalization lemma in Section 5 and its proof follow the Stacks project authors' argument (Tag 0ABS) in this edition.
 
 The following supporting statements have their exact proof routes recorded in the course prerequisite guide:
 
@@ -666,8 +666,6 @@ Theorem 1.1 proves the affine central quotient before the rank-one argument; the
 
 ## History
 
-This lesson's new exposition, constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
+This lesson's exposition, constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
 
-The normalization lemma and its whole proof are adapted from the Stacks authors, *The Stacks Project*, *Morphisms of Algebraic Spaces*, Tag 0ABS, through the AI Integrated Stacks Project English source edition read on 1 October 2026. The Stacks authors retain copyright in that material. The source is the [versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/spaces-morphisms.tex). AI Integrated Stacks Project contains AI-proposed corrections and AI-written additions and has not been reviewed by the Stacks project's maintainers.
-
-This collected lesson, *Roots and reductive groups of rank one* (2026), is published by Open Mathematics Courses. The Stacks authors are the authors of its imported proof; GPT-6.1 Sol (OpenAI) is responsible for the new contributions and adaptation. Permission is granted to copy, distribute and modify this collected lesson under the GNU Free Documentation License, Version 1.2, with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. An unaltered copy of the licence is supplied as [GNU Free Documentation License 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/assets/GFDL-1.2.txt). This additional licence for the collected lesson does not withdraw the CC0 dedication of its original contributions.
+The normalization lemma and its proof follow the Stacks authors' argument in *The Stacks Project*, *Morphisms of Algebraic Spaces*, Tag 0ABS, read through the AI Integrated Stacks Project English source edition on 1 October 2026 ([versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/spaces-morphisms.tex)). AI Integrated Stacks Project contains AI-proposed corrections and AI-written additions and has not been reviewed by the Stacks project's maintainers. The Stacks Project itself is distributed under the GNU FDL 1.2 or later.

@@ -4,11 +4,19 @@ A decomposition into smooth pieces should control what happens as one piece appr
 
 Let \(X\) be an \(n\)-dimensional real analytic manifold, Hausdorff and countable at infinity. All subanalytic sets are subanalytic in the ambient manifold, including at points outside the set. A family is locally finite in that ambient manifold: a neighborhood of each ambient point meets only finitely many members. Strata may be disconnected; we use strata of fixed dimension. Splitting into connected components or fixed-dimensional parts is available through the subanalytic prerequisites.
 
-Write \(\pi:T^*X\to X\). Conic means invariant under positive fibre dilations. We use the subanalytic set operations, regularity and dimension inputs in Subanalytic sets and limiting tangent directions and Finite conormal closures and generic base directions. In particular, closure preserves dimension, the singular locus has smaller dimension, and dimension of a finite union is the maximum of its dimensions. These deep inputs remain prerequisites. The full limiting sum and its isotropy theorem were proved in Limiting cotangent sums and characteristic inverse images.
+Write \(\pi:T^*X\to X\). Conic means invariant under positive fibre dilations. The proof uses these programme results.
+
+- The [local subanalytic set calculus](subanalytic-sets-and-limiting-tangent-directions.md#the-local-calculus-with-the-precise-properness-hypothesis) supplies Boolean operations, closures and ambient local finiteness of components. The [intrinsic regular-locus theorem](subanalytic-sets-and-limiting-tangent-directions.md#every-intrinsic-regular-point-in-each-dimension) supplies every fixed-dimensional regular part. The [dimension argument](finite-conormal-closures-and-generic-base-directions.md#the-precise-dimension-prerequisite) proves closure invariance and strict singular-dimension decrease from the linked finite-cell and frontier calculus.
+- [Conic projection](conic-subanalytic-images-and-isotropic-dimension.md#linear-images-including-changing-rank) applies to nonclosed conic sets, including sets with zero fibres. [Bounded tangent witnesses](finite-conormal-closures-and-generic-base-directions.md#bounded-conormal-witnesses) prove that smooth conormals are subanalytic, and [generic conormality](finite-conormal-closures-and-generic-base-directions.md#generic-conormality-along-any-subanalytic-base) supplies the dense good base used for each pair.
+- The [singular one-form criterion](subanalytic-sets-and-limiting-tangent-directions.md#one-forms-on-a-singular-set) and [subset, closure and locally finite union rules](subanalytic-sets-and-limiting-tangent-directions.md#analytic-maps-and-locally-finite-unions) supply the isotropic set calculus.
+- The [full limiting-sum theorem](limiting-cotangent-sums-and-characteristic-inverse-images.md#limiting-sum-isotropy) proves closedness, conicity, subanalyticity and isotropy for possibly nonclosed inputs. Its [coordinate estimates](limiting-cotangent-sums-and-characteristic-inverse-images.md#weighted-coordinate-covariance) retain unbounded cancelling covectors and their distance-weighted bounds.
 
 The microlocal condition is due to Masaki Kashiwara and Pierre Schapira. David Trotman proves its equivalence with Verdier’s quantitative tangent-space condition in [*Une version microlocale de la condition (w) de Verdier*](https://www.numdam.org/articles/10.5802/aif.1190/), Annales de l’Institut Fourier 39 (1989). We prove this metric test and construct the refinement from the geometric results linked above, keeping all frontier incidences explicit. No coefficient ring or sheaf boundedness condition enters these geometric arguments.
 
-## Source account: the metric condition and the refinement construction {#source-account}
+<a id="source-account"></a>
+<a id="source-account-the-metric-condition-and-the-refinement-construction-source-account"></a>
+
+## Source account: the metric condition and the refinement construction
 
 David J. A. Trotman, [*Une version microlocale de la condition (w) de Verdier*](https://www.numdam.org/articles/10.5802/aif.1190/), Annales de l’Institut Fourier 39 (1989), pp. 825–829, is the source compared for the metric equivalence. Section 1, p. 826, states the full weighted limiting sum, the ordered microlocal condition and the quantitative gap between tangent spaces. Section 2, pp. 827–828, proves their equivalence for incident pairs of twice continuously differentiable submanifolds. Its failure-of-estimate argument projects a normal covector to the second normal space and rescales the transverse difference to unit length, producing a bad limiting covector. W4 below shares this normalization mechanism; the course makes the unit-ball operator-norm identity W1 explicit and chooses a maximizing unit normal before rescaling.
 
@@ -18,7 +26,7 @@ Trotman's introduction obtains existence of microlocal stratifications from cite
 
 For the final conormal-cover corollary, compare Kashiwara and Schapira, [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Proposition 8.2.3, pp. 144–145. That argument starts with an available Whitney-stratified projection and derives conormal containment by tangent lifting. Here the finite conormal-closure theorem is followed by the explicit microlocal refinement, and closedness of its total conormal set accounts for the limiting fibres. The inclusion need not be equality. The different theorem and prerequisite order is part of the comparison; the source passage is not a proof of the full refinement constructed here.
 
-Bierstone–Milman, [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), §§3 and 7, pp. 16–19 and 37–38, supplies the compared local subanalytic and fixed-dimensional regularity framework. Its complement and regularity arguments have their own dependencies. The teaching sequence here is ordered covector witnesses, the metric test, frontier-compatible ordinary refinement, neighborhood-good loci and a closed-residual induction, followed by eight solved examples. Independently expressed programme text is dedicated under CC0 1.0 Universal; human source terms are retained, with no imported prose, diagrams or exercise sequence. No expression comparison with an unread treatment or complete transitive proof clearance is claimed.
+Bierstone–Milman, [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), §§3 and 7, pp. 16–19 and 37–38, supplies the compared local subanalytic and fixed-dimensional regularity framework. Its complement and regularity arguments have their own dependencies. The teaching sequence here is ordered covector witnesses, the metric test, frontier-compatible ordinary refinement, neighborhood-good loci and a closed-residual induction, followed by eight solved examples. Independently expressed programme text is dedicated under CC0 1.0 Universal; human source terms are retained, with no imported prose, diagrams or exercise sequence.
 
 ## Partitions and their frontiers
 
@@ -58,7 +66,7 @@ T_M^*X=\{(x;\xi):x\in M,\ \xi|_{T_xM}=0\}.
 \tag{4}
 \]
 
-For subanalytic analytic bases, these conormals are conic subanalytic isotropic sets. The smooth conormal form vanishes because a tangent vector projects to a tangent vector of \(M\), which its covector annihilates. Subanalyticity follows from the tangent/normal-cone calculus and the bounded conormal-witness proof. Closure and locally finite union preserve vanishing of the canonical form by the singular one-form calculus.
+For subanalytic analytic bases, these conormals are conic subanalytic isotropic sets. The smooth conormal form vanishes because a tangent vector projects to a tangent vector of \(M\), which its covector annihilates. Subanalyticity follows from the tangent/normal-cone calculus and the [bounded conormal-witness proof](finite-conormal-closures-and-generic-base-directions.md#bounded-conormal-witnesses). Closure and locally finite union preserve vanishing of the canonical form by the singular one-form calculus.
 
 The ordered pair \((M,N)\) satisfies the **μ-condition** when
 
@@ -102,7 +110,10 @@ S_b\subset\overline{S_a}\setminus S_a.
 
 The approaching stratum is the first member of this ordered pair.
 
-## A quantitative test using tangent spaces {#metric-mu-test}
+<a id="metric-mu-test"></a>
+<a id="a-quantitative-test-using-tangent-spaces-metric-mu-test"></a>
+
+## A quantitative test using tangent spaces
 
 The weighted product in (6) measures the interaction between the distance of two base points and the size of a normal covector. Trotman's equivalence with Verdier's \((w)\)-condition gives a direct way to see this interaction. Work in one Euclidean coordinate chart, using its inner product to identify vectors and covectors. For \(x\in M\) and \(y\in N\), write \(P_y\) for orthogonal projection onto \(T_yN\) and put
 
@@ -210,9 +221,10 @@ Combine all \(U_i\) with all \(T_b\). The frontier rule inside \(R\) holds by in
 
 The extra frontier memberships in (12) are essential to the construction. Smooth strata of \(R\) chosen only by membership in the original cover could cross a frontier of an upper \(U_i\).
 
-<span id="an-open-dense-good-locus-for-a-pair"></span>
+<a id="pair-good-locus"></a>
+<a id="an-open-dense-good-locus-for-a-pair-pair-good-locus"></a>
 
-## An open dense good locus for a pair {#pair-good-locus}
+## An open dense good locus for a pair
 
 Let \(M,N\subset X\) be subanalytic analytic submanifolds. Define
 
@@ -234,7 +246,7 @@ B_{M,N}\subset N\cap\overline M.
 
 This support inclusion will control how many pair bad sets can meet a fixed ambient neighborhood.
 
-Apply the generic-base theorem of Finite conormal closures and generic base directions to the isotropic set \(L_{M,N}\) and prescribed smooth base \(N\). There is a subanalytic relatively open dense \(N_0\subset N\) on which
+Apply the generic-base theorem of [Finite conormal closures and generic base directions](finite-conormal-closures-and-generic-base-directions.md#generic-conormality-along-any-subanalytic-base) to the isotropic set \(L_{M,N}\) and prescribed smooth base \(N\). There is a subanalytic relatively open dense \(N_0\subset N\) on which
 
 \[
 L_{M,N}\cap\pi^{-1}(N_0)\subset T_N^*X.
@@ -253,9 +265,10 @@ Q_{M,N}=N\setminus\overline{B_{M,N}}^{\,N}
 
 It is relatively open, dense in \(N\), and subanalytic in \(X\). The equality in (15) uses intersection with \(N\) in the standard relative-closure formula. For a point \(x\in N\), membership in this locus is equivalent to the μ-condition holding for \((M\cap W,N\cap W)\) in some ambient open neighborhood \(W\) of \(x\). To verify the equivalence, observe that every sequence in (6) converging to a point of \(W\) eventually lies in \(W\). Thus the limiting sum computed in \(W\) is the restriction of the global one. A neighborhood on which the condition holds has no point of \(B_{M,N}\), while a point outside its closure has such a neighborhood.
 
-<span id="the-largest-open-set-on-which-a-stratification-is-μ"></span>
+<a id="largest-good-open-set"></a>
+<a id="the-largest-open-set-on-which-a-stratification-is-μ-largest-good-open-set"></a>
 
-## The largest open set on which a stratification is μ {#largest-good-open-set}
+## The largest open set on which a stratification is μ
 
 Suppose \(U\subset X\) is subanalytic and open, with a subanalytic stratification \(U=\bigsqcup_a S_a\). For the ambient-subanalytic assertions here, the strata are a locally finite family in \(X\), as they are when restricting our global stratifications. For each ordered incident pair in (8), compute (13) and restrict its base to \(S_b\). Put
 
@@ -272,9 +285,10 @@ It is precisely the largest open subset of \(U\) on which the restricted stratif
 
 The closure of the union of bad points in (16) retains their possible limits on other strata. This gives an open good set in the ambient manifold, which is what the following induction requires.
 
-<span id="refining-only-the-closed-bad-set"></span>
+<a id="closed-bad-set-induction"></a>
+<a id="refining-only-the-closed-bad-set-closed-bad-set-induction"></a>
 
-## Refining only the closed bad set {#closed-bad-set-induction}
+## Refining only the closed bad set
 
 **μ-refinement theorem.** Every locally finite subanalytic cover of \(X\) admits a finer μ-stratification. The stratification can satisfy the stronger membership compatibility (1).
 
@@ -329,7 +343,12 @@ Thus the new stratification refines the old one and is μ on \(X\setminus Y'\). 
 
 The number of induction steps is bounded by dimension. The theorem does not assert that the final global family of strata is finite, or that each stratum is connected.
 
-![Schematic of microlocal refinement by retaining good open pieces and reducing a closed residual set.](assets/microlocal-refinement.svg)
+<figure>
+<div class="figure-scroll" role="region" tabindex="0" aria-label="Scrollable illustration: Schematic of microlocal refinement by retaining good open pieces and reducing a closed residual set." style="max-width:100%;overflow-x:auto;">
+<img src="../../assets/microlocal-refinement.svg" alt="Schematic of microlocal refinement by retaining good open pieces and reducing a closed residual set." style="display:block;max-width:none;width:691.2px;height:auto;">
+</div>
+<figcaption>Schematic of microlocal refinement by retaining good open pieces and reducing a closed residual set.</figcaption>
+</figure>
 
 *Induction schematic.* At stage \(k\), the sets \(Y_k\), \(B_k\) and \(\Omega_k\) are the current residual, pair bad set and largest good open set. Formulas (16) and (19) give \(Y_{k+1}=\overline{B_k}\), (20) supplies strict dimension decrease, and (21) retains the existing strata on \(\Omega_k\). The refinement inside \(Y_{k+1}\) remembers every upper closure. The [proof above](#closed-bad-set-induction) checks density on every regular dimension part and all frontier incidences; ambient local finiteness is required throughout.
 
@@ -509,4 +528,4 @@ Their limit is not conormal to \(N\). Nevertheless the ordinary tangent lines of
 
 We now have both a closed total conormal set attached to a μ-stratification and a compatible μ-stratification attached to a closed subanalytic isotropic cotangent set. The next steps distinguish conormal directions that are shared by several strata, organize strata into dimension filtrations, and produce generic squared-distance functions with transverse cotangent intersections. These will connect the geometry to constructibility and Morse calculations.
 
-For the underlying subanalytic geometry, see Bierstone and Milman, [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/). Kashiwara and Schapira’s [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf) develops the isotropic-conormal setting. Trotman’s paper supplies the metric equivalence; the construction here proceeds through the full limiting-sum isotropy theorem, the generic-base argument, and the explicit induction on the dimension of the closed bad set. The analytic critical-value theorem used for generic bases is proved in Finite conormal closures and generic base directions. The underlying subanalytic regularity and dimension results, the analytic-calculus inputs and the singular-form and uniformization foundations of the full limiting-sum theorem are used as prerequisites.
+For the underlying subanalytic geometry, see Bierstone and Milman, [*Semianalytic and subanalytic sets*](https://www.numdam.org/item/PMIHES_1988__67__5_0/), §§3 and 7, pp. 16–19 and 37–38. Kashiwara and Schapira’s [*Microlocal Study of Sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Proposition 8.2.3, pp. 144–145, gives the isotropic-conormal comparison. Trotman’s paper supplies the metric equivalence. Here the existence proof combines the linked full limiting-sum theorem and generic-base argument with the explicit induction on the dimension of the closed bad set. The [analytic critical-value theorem](finite-conormal-closures-and-generic-base-directions.md#analytic-critical-values) used for generic bases is proved by source-dimension descent. The regularity, dimension and singular-form inputs are the exact programme results linked at the beginning; their hypotheses remain part of this theorem.

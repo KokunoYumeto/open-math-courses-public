@@ -1,6 +1,6 @@
 # The derived tensor product and Tor sheaves
 
-*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the course notice.*
+*Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original text: public domain (CC0). Authorship and sources are listed in the course notice.*
 
 Ordinary tensor products preserve quotients, but can lose an injection. For example, tensoring \(\mathbb Z\xrightarrow{2}\mathbb Z\) with \(\mathbb Z/2\) turns an injection into the zero map. A resolution keeps the lost information in negative cohomological degrees. The derived tensor product packages this information without depending on a chosen resolution, and Tor sheaves name its cohomology for two module sheaves.
 
@@ -19,7 +19,7 @@ d(a\otimes b)&=d_Aa\otimes b\\
 
 We write \(K(\mathcal O)\) for the homotopy category, \(D(\mathcal O)\) for its localization at quasi-isomorphisms, and \(Q\) for localization. Cone triangles have the convention \((f,i,-p)\) of the common reading. No compactness, separation, finite dimension or Noetherian assumption enters the construction.
 
-The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Flat resolutions”, especially Tags 06YG, 06YH, 08BP and 08BQ, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). We prove the comparison and coherence maps before defining Tor sheaves. Source attribution and the licence for adapted passages appear in the course notice.
+The construction follows the Stacks project authors’ *Cohomology of Sheaves*, “Flat resolutions”, especially Tags 06YG, 06YH, 08BP and 08BQ, in the [AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex). We prove the comparison and coherence maps before defining Tor sheaves. Source attribution appears in the course notice.
 ## 1. The two tensor comparisons
 
 A K-flat complex \(P\) has \(A\otimes P\) acyclic whenever \(A\) is acyclic. The two variables in a tensor comparison play different roles.
@@ -473,4 +473,4 @@ For a sheaf supported at one point the only possibly nonzero cohomology stalk is
 
 The next lesson applies K-flat models to pullback and K-injective models to pushforward, and proves their derived adjunction. The tensor bifunctor and its comparisons established here will make the pullback's compatibility with tensor natural.
 
-Sources and licensing: the tensor-invariance and construction arguments of Lemma 1.1 and Theorem 1.2 are taken from the Stacks project, tags 06YA, 06YG and 06YH, in its AI Integrated Stacks Project edition (GFDL), checked and edited by GPT-6.1 Sol (OpenAI), at Ultra, with the full fibre-product comparison included. The Tor definition and flatness proof are taken from the Stacks project, tags 08BP and 08BQ, in that edition (GFDL), checked and edited by the same writing AI; the explicit K-flat computation is given above. The pinned [complete source passage](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex#L6562) and its preceding comparison lemmas were read. The localization, coherence, geometric calculations and exercises are expanded here with their actual conditions. See the combined licence notice and GNU FDL text.
+Sources: the tensor-invariance and construction arguments of Lemma 1.1 and Theorem 1.2 follow the Stacks project, tags 06YA, 06YG and 06YH, in its AI Integrated Stacks Project edition, checked and edited by GPT-6.1 Sol (OpenAI), at Ultra, with the full fibre-product comparison included. The Tor definition and flatness proof follow the Stacks project, tags 08BP and 08BQ, in that edition, checked and edited by the same writing AI; the explicit K-flat computation is given above. The pinned [complete source passage](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex#L6562) and its preceding comparison lemmas were read. The localization, coherence, geometric calculations and exercises are expanded here with their actual conditions. See the course notice.

@@ -1,6 +1,6 @@
 # Zero-density estimates and primes in short intervals
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and proofs are public domain (CC0). The adaptation and mathematical proof in Section 10.1 retain CC BY 4.0; the independent Section 10.2 application and the other original lesson text are CC0.*
+*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Section 10.1 written and self-checked by Claude Opus 5.5 (Anthropic). Self-check is by the writing AI. Original exposition and proofs are public domain (CC0).*
 
 A density estimate counts possible exceptions to RH. Combined with a zero-free region, even a comparatively weak density estimate can make the zero sum in a short-interval explicit formula smaller than its main term. We develop the zero detector, the mean-value count and the exponent bookkeeping before using these tools for primes.
 
@@ -969,1871 +969,808 @@ by choosing $\eta$ sufficiently small in terms of $\epsilon$. All auxiliary leng
 
 ## 10. Guth–Maynard's improvement
 
-### 10.1. The large-value theorem and its complete matrix proof
+### 10.1. The large-value theorem of Guth and Maynard
 
-This subsection is an adaptation of Larry Guth and James Maynard, [*New large value estimates for Dirichlet polynomials*, arXiv:2405.20552v2](https://arxiv.org/pdf/2405.20552v2), 7 April 2026, §§3–12 and Theorem 1.1. Its mathematical proof and adapted text retain [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The authors' freely accessible [v2 full text](https://arxiv.org/pdf/2405.20552v2) and [v2 source](https://arxiv.org/src/2405.20552v2) identify the version used. Changes here are the lesson organization and GM labels, explicit prerequisite proofs and constant conventions, restriction of affine averaging to the range actually used, and corrections of incidental Fourier-normalization, Jacobian and dummy-variable slips. The argument below is written in the lesson; the links provide attribution and access to the source. Source labels are prefixed GM to distinguish them from the other lesson results.
-
-**Theorem 10.1 (Guth–Maynard).** Let $T\ge2$, $N\ge1$, and let $W\subset[0,T]$ be one-separated. If $|b_n|\le1$ and $|\sum_{N<n\le2N}b_n n^{it}|\ge V>0$ at every $t\in W$, then for every $\delta>0$,
+**Theorem 10.1 (Guth–Maynard).** Let $T\ge2$ and $N\ge1$. Let $b_n$ $(N<n\le2N)$ be complex numbers with $|b_n|\le1$, and let $W\subset[0,T]$ be a one-separated set such that $\left|\sum_{N<n\le2N}b_nn^{it}\right|\ge V>0$ for every $t\in W$. Then for every $\delta>0$,
 
 $$
 |W|\ll_\delta T^\delta\left(N^2V^{-2}+N^{18/5}V^{-4}+TN^{12/5}V^{-4}\right).
 \tag{10.1}
 $$
 
+The theorem and the strategy of its proof are due to Larry Guth and James Maynard, [*New large value estimates for Dirichlet polynomials*, arXiv:2405.20552v2](https://arxiv.org/pdf/2405.20552v2), Theorem 1.1. This section proves it completely along their lines. Some auxiliary steps use different arguments: the eigenvalue inequality of Lemma LV.8, the averaging kernels of Lemma LV.3, the smoothing step of Lemma LV.34 and the treatment of large common factors in Lemma LV.46.
 
-We fix $0\le w\le1$, smooth, supported in $[1,2]$, equal to one on $[6/5,9/5]$, with $\|w^{(j)}\|_\infty\le C_j$ for each $j\ge0$. One construction is to integrate a nonnegative smooth bump and multiply two translated cutoffs. Its constants $C_j$ are fixed independently of $N,T,W$. Put $D_N(t)=\sum_n w(n/N)b_n n^{it}$. Write $A\preccurlyeq_z B$ if, for every $\delta>0$, $|A|\le C_{z,\delta}T^\delta B$; constants may also depend on the fixed bump derivatives. This convention concerns arbitrarily small losses, never a fixed unspecified power. Every occurrence of $|u|\preccurlyeq1$ in a truncated integral means $|u|\le C T^\eta$, for a fixed sufficiently small $\eta>0$ chosen before the argument; enough integrations by parts give the stated negligible errors. At the end choose all such losses smaller than the requested $\delta$. In the separated proof $\eta$ is also smaller than the fixed separation exponent. All polynomial lengths in that proof are bounded by fixed powers of $T$. Unless a statement explicitly gives a wider range, GM4–GM10 operate under GM3.1: $T=N^{6/5}$ and a $T^\epsilon$-separated $W$ in an interval of length $T$, so $|W|\le T+1\le N^{6/5}+1$. Every claimed negligible error may therefore be obtained with a fixed sufficiently large integration-by-parts order, depending on the separation exponent and the requested error power.
+#### 10.1.1. How the proof works
 
-For positive $x,Y$, $x\sim Y$ means $Y<x\le2Y$, and $x\asymp Y$ means bounds in both directions with fixed constants. A range $|m|\sim M$ includes both integer signs, while $m_2\sim M_2$ is positive. All sums run over integers unless their index is explicitly a point of $W$.
+Write $V=N^\sigma$. For $N<T$, the mean-value estimate and the large-value inequality of Section 5 give
 
-We use $e(x)=e^{2\pi ix}$ and $\widehat f(\xi)=\int_{\mathbb R}f(u)e(-\xi u)\,du$. Fourier inversion and the norm identity for smooth functions are proved in NT-ZETA-14, Lemma 7.2, by a Gaussian approximate identity. Rescaling its variable gives this normalization. Poisson summation for the compact smooth functions below is proved in NT-ZETA-04, Theorem 1.2. Their Fourier decay follows from repeated integration by parts, so both sides converge absolutely. For $H(s)=\int_0^\infty h(u)u^{s-1}\,du$ with $h$ smooth and compactly supported inside $(0,\infty)$, put $u=e^x$; Fourier inversion of $e^{cx}h(e^x)$ gives $h(u)=(2\pi i)^{-1}\int_{(c)}H(s)u^{-s}\,ds$. Differentiating in $x$ gives arbitrary inverse-power decay of $H$ on each fixed vertical strip. These are the Mellin facts used below.
-
-The difference-set theorem invoked throughout is **this lesson's Theorem 9.1**, proved in §9, including the subpower-coefficient version. The classical alternatives used in the final reduction also follow from written arguments: NT-ZETA-16, Theorem 2.1, and the sampling proof in this lesson's Lemma 2.1 give $R V^2\ll (N+T)N\log^C(2NT)$; this lesson's Lemma 5.1 gives $R V^2\ll N^2\log^C(2NT)+R^{2/3}(NT)^{1/3}N\log^C(2NT)$ because $G\le N+1$ and $G_2\ll N\log(2N)$. Absorbing the diagonal and cubing the other term gives
-
-$$
-R\preccurlyeq N^2V^{-2}+T\min(NV^{-2},N^4V^{-6})\qquad(N<T).
-\tag{GM3.C}
-$$
-
-For arbitrary $N\ge T$, retain the logarithmic form of the first sampling estimate; its use is addressed in the final reduction. The divisor estimates needed after taking a fixed power follow from §9's proof: $d_k(p^a)=\binom{a+k-1}{k-1}$ is a polynomial in $a$, so the same split into finitely many small primes proves $d_k(n)\ll_{k,\eta}n^\eta$. Thus the powered coefficients are subpower for every fixed $k$.
-
-**Lemma GM0.1 (the matrix facts).** A positive semidefinite Hermitian matrix has an orthonormal basis of eigenvectors and nonnegative eigenvalues. In particular the largest singular value of $A$ is $\lambda_{\max}(AA^*)^{1/2}$, $\|Ab\|^2\le\lambda_{\max}(AA^*)\|b\|^2$, and $\operatorname{tr}((AA^*)^j)=\sum\lambda_i^j$.
-
-**Proof.** Maximize $x^*Hx$ on the unit sphere, which is compact. Varying in a direction perpendicular to a maximizer, first with a real coefficient and then an imaginary one, shows $Hx=\lambda x$. Its perpendicular space is invariant since $\langle Hy,x\rangle=\langle y,Hx\rangle=0$. Induct on dimension to diagonalize $H$ unitarily. Positivity makes every $\lambda_i$ nonnegative. Apply this to $A^*A$; for each positive eigenvalue the vectors $Av_i/\sqrt{\lambda_i}$ are orthonormal eigenvectors of $AA^*$. The remaining vectors lie in the corresponding kernels. This constructs the singular-value decomposition and proves the norm and trace assertions. $\square$
-
-**Lemma GM0.2 (the oscillatory integrals used in reflection).** For $|r|\ge2$,
-
-$$
-\left|\int_V^{2V}v^{-1+ir}e(-v)\,dv\right|\ll
-\begin{cases}|r|^{-1},&V\le|r|/20\text{ or }V\ge20|r|,\\
-|r|^{-1/2},&|r|/20\le V\le20|r|.
-\end{cases}
-$$
-
-
-**Proof.** Set $\phi(v)=r\log v-2\pi v$. If $\phi'$ has constant sign, is monotone, and $|\phi'|\ge\lambda$, integration by parts in $e^{i\phi}/(i\phi')$ bounds the unweighted integral over every subinterval by $4/\lambda$: the boundary terms contribute $2/\lambda$ and $\int |\phi''|/|\phi'|^2\le2/\lambda$. Partial summation against $v^{-1}$ multiplies this by at most $3/V$. This proves the first case, since $|\phi'|\gg |r|/V$ on the small range and $|\phi'|\gg1$ on the large range. In the middle range $|\phi''|=|r|/v^2\gg |r|^{-1}$. The interval where $|\phi'|\le |r|^{-1/2}$ has length $O(|r|^{1/2})$ by monotonicity; on the at most two remaining intervals the preceding bound is $O(|r|^{1/2})$. Partial summation gives $O(|r|^{-1/2})$. For the dyadic sum over $N\le v\le2NM$, the small intervals give $O((1+\log|r|)/|r|)=O(|r|^{-1/2})$, since $N\ge1$. In the large range the integration-by-parts bound is actually $O(1/V)$, so its dyadic tail is $O(1/|r|)$; only a bounded number of middle intervals occur. Thus the full integral is $O(|r|^{-1/2})$ with an absolute constant. In Lemma GM6.2, $|r|\asymp T_0$ after the separately denoted Mellin shift has been restricted below $T^{\epsilon/2}$. This proves precisely the bound needed in Lemma GM6.2. $\square$
-
-All uses of Cauchy–Schwarz and Hölder below have the usual finite-sum or Lebesgue-integral meanings. For completeness, Cauchy–Schwarz follows by expanding $0\le\|x-\lambda y\|^2$ and minimizing in $\lambda$. For Hölder with $\sum_i1/p_i=1$, normalize the $L^{p_i}$ norms to one and use $\prod_i a_i\le\sum_i a_i^{p_i}/p_i$ pointwise, then integrate. This scalar inequality follows by maximizing the product of positive numbers under the constraint $\sum_i a_i^{p_i}/p_i=1$: differentiation gives $a_i^{p_i}=1$ at the interior maximum, while the product vanishes at a boundary with a zero factor. Approximation handles zero norms and unbounded functions. Thus no moment inequality is supplied only by a citation.
-
-A further elementary smoothing bound will be used in the affine iteration. If $K\ge0$ is integrable, Fubini gives $\|K*f\|_1=\|K\|_1\|f\|_1$ for nonnegative $f$. Cauchy–Schwarz under the convolution integral and Fubini give $\|K*f\|_2\le\|K\|_1\|f\|_2$. Fourier inversion gives $\widehat{K*f}=\widehat K\widehat f$. Thus a smoothing with mass $\preccurlyeq1$ preserves both norms up to subpower factors. These facts justify, with their constants, the iteration below.
-
-For a finite set $W$ define
-
-$$
-R(v)=\sum_{t\in W}|v|^{it},\qquad
-E(W)=\#\{(t_1,t_2,t_3,t_4)\in W^4:|t_1+t_2-t_3-t_4|\le1\}.
-\tag{GM.E}
-$$
-
-Here $R$ is a function; the cardinality is always $|W|$. Translation of $W$ only multiplies $R(v)$ by a complex factor of modulus one and preserves $E(W)$. We therefore place $W$ in $[0,T]$ whenever needed. One-separation gives $|W|^2\le E(W)\le3|W|^3$, since, for fixed $t_1,t_2,t_3$, an interval of length two contains at most three points of $W$. The fixed factor three is absorbed in every asymptotic comparison below.
-
-**Proposition GM3.1 (the normalized target).** Fix a separation exponent $\epsilon>0$, $T=N^{6/5}$ and $7/10\le\sigma\le8/10$. If $W$ is $T^\epsilon$-separated in an interval of length $T$, $|b_n|\le1$ and $|D_N(t)|\ge N^\sigma$ on $W$, then
-
-$$
-|W|\preccurlyeq_\epsilon TN^{(12-20\sigma)/5}.
-$$
-
-Its proof occupies GM4–GM12 below. The source's separate Proposition 12.1 is a stronger estimate for a different large-length range; it is not used in Theorem 10.1 or in this lesson's density application. The smoothing and subdivision that turn it into Theorem 10.1 are proved after the exponent comparison.
-
-#### 10.1.4. The  matrix $M_W$ and its singular values
-
-Now we begin to work on the proof of Proposition GM3.1.  We will work with the smoothed version $D_N(t)$ of $D(t)$ from Proposition GM3.1
-
-
-$$
-D_N(t) :=\sum_{n} w\Bigl(\frac{n}{N}\Bigr)b_n n^{it},
-\tag{GM4.1}
-$$
-
-where $w$ is the smooth bump supported on $[1,2]$ defined in Section GM3. Similarly, given a set $W\subseteq\mathbb{R}$, let $M_W$ be the $|W|\times K$ matrix with smoothed entries, where $K=\#\{n\in\mathbb Z:N<n\le2N\}\le N+1$,
-
-$$
-(M_W)_{t,n}=w(n/N)n^{it},
-\tag{GM4.2}
-$$
-
-
- where $t \in W$ and $n \sim N$. 
-
-**Lemma GM4.1 (Large values of Dirichlet polynomials controlled by singular values).** 
-Let $M_W$ be the matrix defined in (GM4.2), and $s_1(M_W)$ its largest singular value. If $|D_N(t)| \ge N^\sigma$ on $W$ and if $|b_n| \le 1$, then we have
-
-
-$$
-|W|\ll N^{1-2\sigma}s_1(M_W)^2.
-$$
-
-**Proof.** 
-Let $\mathbf{b}$ be the vector with components $b_n$.   Then note that for each $t$ in $W$, 
-
-
-$$
-D_N(t) =\sum_{n} w(n/N)b_n n^{it}= (M_W \mathbf{b})_t.
-$$
-
-Therefore we can relate the behavior of $D_N$ on $W$ (for arbitrary $\mathbf{b}$) to properties of the matrix $M_W$, in particular its singular values.  We write $s_j(M_W)$ for the $j^{th}$ singular value of $M_W$,  with the convention that $s_1(M_W) \ge s_2(M_W) \ge ...\ge s_k(M_W)$ and $k=\min(|W|,K)$ is the number of singular values.   Let $M_W$ have singular value decomposition $M_W=U\Sigma V$, so that $\Sigma$ is a rectangular matrix with $\Sigma_{ii}=s_i(M_W)$ and $\Sigma_{ij}=0$ if $i\ne j$, and $U$, $V$ are unitary matrices.
-
-If $|D_N(t)| \ge N^\sigma$ on $W$,  then we see
-
-
-$$
-\begin{aligned}
-|W| N^{2 \sigma} \le \sum_{t\in W}|D_N(t)|^2=(M_W\mathbf{b})^* M_W \mathbf{b}&=(V\mathbf{b})^* \Sigma^*\Sigma V\mathbf{b}\\
-&\le s_1(M_W)^2 \| V\mathbf{b} \|_{\ell^2}^2\\
-&= s_1(M_W)^2 \| \mathbf{b} \|_{\ell^2}^2.
-\end{aligned}
-$$
-
-
-Finally, if $|b_n|\le 1$ then $\| \mathbf{b} \|_{\ell^2}^2\ll N$. Substituting this into the expression above and rearranging now gives the result.
- $\square$
-
-Now $s_1(M_W)$ is equal to the square root of the largest eigenvalue value of the $|W|\times |W|$ matrix $M_W M_W^*$, with entries
-
-
-$$
-(M_W M_W^*)_{t_1,t_2}=\sum_{n} w \left( \frac{n}{N} \right)^2 n^{i(t_1-t_2)}.
-$$
-
-A simple bound for $s_1(M_W)$ is therefore to use the trace: for any integer $r\ge 1$ we have
-
-
-$$
-s_1(M_W)^2= s_1(M_W M_W^*)\le \Bigl(\sum_{j=1}^ks_j(M_W M_W^*)^r\Bigr)^{1/r}=\operatorname{tr}((M_W M_W^*)^r)^{1/r}.
-$$
-
-We remove the diagonal contribution before bounding the largest singular value.
-
-**Lemma GM4.2 (Bound for singular values in terms of traces).** 
-Let $A$ be an $m\times n$ complex matrix. Then we have
-
-
-$$
-s_1(A)\le 2\Bigl(\operatorname{tr}((AA^*)^3)-\frac{\operatorname{tr}(AA^*)^3}{m^2}\Bigr)^{1/6}+2\Bigl(\frac{\operatorname{tr}(AA^*)}{m}\Bigr)^{1/2}.
-$$
-
-**Proof.** 
-Recall that $\operatorname{tr}((AA^*)^j)=\sum_{i=1}^m\lambda_i^j$ where $\lambda_1,\dots,\lambda_m$ are the eigenvalues of the $m\times m$ matrix $AA^*$, which are real and non-negative, and that $s_1(A)=\max_i\lambda_i^{1/2}$. We see that it is sufficient to show for any non-negative reals $x_1,\dots x_k$
-
-
-$$
-x_1\le 2\Bigl(\sum_{i=1}^k x_i^6-\frac{(\sum_{i=1}^k x_i^2)^3}{k^2}\Bigr)^{1/6}+2\Bigl(\frac{\sum_{i=1}^k x_i^2}{k}\Bigr)^{1/2}.
-\tag{GM4.3}
-$$
-
-The case $k=1$ is immediate from the second term. For $k\ge2$, Hölder gives $\sum_{i=2}^k x_i^6\ge (\sum_{i=2}^k x_i^2)^3/(k-1)^2\ge (\sum_{i=2}^k x_i^2)^3/k^2$. Thus
-
-$$
-\begin{aligned}
-x_1^6=\sum_{i=1}^k x_i^6-\sum_{i=2}^k x_i^6&\le \sum_{i=1}^k x_i^6-\frac{(\sum_{i=2}^k x_i^2)^3}{k^2}\\
-&\le \Bigl( \sum_{i=1}^k x_i^6-\frac{(\sum_{i=1}^k x_i^2)^3}{k^2}\Bigr)+3x_1^2\frac{(\sum_{i=1}^k x_i^2)^2}{k^2}\\
-&\le \max\Bigl( 4\Bigl(\sum_{i=1}^k x_i^6-\frac{(\sum_{i=1}^k x_i^2)^3}{k^2}\Bigr),\,4x_1^2\frac{(\sum_{i=1}^k x_i^2)^2}{k^2}\Bigr).
-\end{aligned}
-$$
-
-This in turn implies
-
-$$
-x_1^6\le \max\Bigl( 4\Bigl(\sum_{i=1}^k x_i^6-\frac{(\sum_{i=1}^k x_i^2)^3}{k^2}\Bigr),\,8\frac{(\sum_{i=1}^k x_i^2)^3}{k^3}\Bigr),
-$$
-
-
-which gives (GM4.3).
- $\square$
-
-Thus we wish to estimate $\operatorname{tr}(M_W M_W^*)$ and $\operatorname{tr}((M_W M_W^*)^3)$. In both cases we expand the trace and use Poisson summation as a first step. In anticipation of this, we introduce the function
-
-
-$$
-h_t(u):=w(u)^2u^{it},
-\tag{GM4.4}
-$$
-
-
-which appears in the sums defining the coefficients of $M_WM_W^*$. We first record a basic tail estimate for the Fourier transform $\widehat{h}_t$.
-
-**Lemma GM4.3 (Non-stationary phase).** 
-Let $h_t(u)=w(u)^2u^{it}$. Then we have
-
--  For any integer $j\ge 0$ we have
-
-
-$$
-\widehat{h}_t(\xi)\ll_j (1+|t|)^j/|\xi|^j.
-$$
-
--  For any integer $j\ge 0$ we have
-
-
-$$
-\widehat{h}_t(\xi)\ll_j (1+|\xi|)^j/|t|^j.
-$$
-
-**Proof.** 
-Since $\|w^{(j)}\|_\infty\ll_j 1$ for all $j\ge 0$, we have that $\|h_t^{(j)}\|_\infty\ll_j 1+|t|^j$ for all $j\ge 0$. Thus, by integration by parts (and using that $w$ is compactly supported), we have that
-
-
-$$
-\widehat{h}_t(\xi)=\int e(-\xi u)h_t(u)du=\frac{1}{(2\pi i\xi)^j}\int e(-\xi u)h_t^{(j)}(u)du\ll_j \frac{1+|t|^j}{|\xi|^j}.
-$$
-
-Similarly, if $g_\xi(u)=e(-\xi u)w(u)^2$ then $\|g_\xi^{(j)}\|_\infty\ll_j 1+|\xi|^j$, so integration by parts gives
-
-
-$$
-\widehat{h}_t(\xi)=\int g_\xi(u)u^{it}du=\frac{(-1)^j}{(it+1)\cdots (it+j)}\int g_\xi^{(j)}(u)u^{it+j}du\ll_j \frac{1+|\xi|^j}{|t|^j}.
-$$
-
- $\square$
-
-**Lemma GM4.4 (Hilbert-Schmidt Norm estimate).** 
- If $W \subset \mathbb{R}$ is a finite set with $|W| \le N^{O(1)}$, then
-
-
-$$
-\operatorname{tr}(M_W M_W^*) = N |W| \,\| w \|_{L^2}^2 +  O(N^{-100}).
-$$
-
-**Proof.** 
-Expanding the trace, we see that
-
-
-$$
-\operatorname{tr}(M_W M_W^*) =\sum_{t \in W}\sum_{ n } w(n/N)^2 = |W| \sum_{n \in \mathbb{Z}} h_0(n/N).
-$$
-
-Because $h_0$ is a smooth compactly supported function, the sum $\sum_n h_0(n/N)$ is very close to the integral $N \int_\mathbb{R} h_0(u) du = N \| w \|_{L^2}^2$.   We can get a precise estimate using Poisson summation, which gives (separating the term $m=0$)
-
-
-$$
-\sum_n h_0(n/N) = N \sum_m \widehat{h_0} (N m) = N\widehat{h_0}(0)+O\Bigl(N\sum_{m\ne 0}|\widehat{h_0}(N m)|\Bigr).
-$$
-
-The first term on the right hand side is $N\|w\|_{L^2}^2$ and the second term is $O(N^{-100})$ by Lemma GM4.3.
- $\square$
-
-**Lemma GM4.5 (Expansion of the cubic trace).** 
-Let $W$ be $T^\epsilon$-separated. Then we have
-
-
-$$
-\operatorname{tr}((M_W M_W^*)^3) =N^3|W|\|w\|_{L^2}^6+  \sum_{\substack{m\in \mathbb{Z}^3\setminus\{ 0\} }}I_m+ O_\epsilon(T^{-100}),
-$$
-
-where
-
-
-$$
-I_m := N^3 \sum_{t_1,t_2,t_3\in W}\widehat{h}_{t_1-t_2}(m_1N)\widehat{h}_{t_2-t_3}(m_2N)\widehat{h}_{t_3-t_1}(m_3N).
-$$
-
-**Proof.** 
-First we expand $\operatorname{tr}((M_W M_W^*)^3)$ as the sum $S$, given by
-
-
-$$
-\begin{aligned}
-S& = \sum_{n_1,n_2,n_3\in \mathbb{Z}}\sum_{t_1,t_2,t_3\in W}w\Bigl(\frac{n_1}{N}\Bigr)^2 w\Bigl(\frac{n_2}{N}\Bigr)^2 w\Bigl(\frac{n_3}{N}\Bigr)^2 n_1^{i(t_1-t_2)}n_2^{i(t_2-t_3)}n_3^{i(t_3-t_1)}\\
-&=\sum_{t_1,t_2,t_3\in W} \sum_{n_1,n_2,n_3\in \mathbb{Z}} h_{t_1-t_2}\Bigl(\frac{n_1}{N}\Bigr)h_{t_2-t_3}\Bigl(\frac{n_2}{N}\Bigr)h_{t_3-t_1}\Bigl(\frac{n_3}{N}\Bigr),
-\end{aligned}
-$$
-
-where, as in (GM4.4), we have $h_t(u)= w(u)^2 u^{it}$. We now perform Poisson summation in $n_1, n_2, n_3$, which gives
-
-$$
-S=N^3\sum_{m_1,m_2,m_3\in \mathbb{Z}}\sum_{t_1,t_2,t_3\in W}\widehat{h}_{t_1-t_2}(m_1N)\widehat{h}_{t_2-t_3}(m_2N)\widehat{h}_{t_3-t_1}(m_3N)=\sum_{m\in\mathbb{Z}^3}I_m. 
-$$
-
-Finally, we separate the term $m_1=m_2=m_3=0$, which contributes
-
-$$
-I_0=N^3\sum_{t_1,t_2,t_3\in W}\widehat{h}_{t_1-t_2}(0)\widehat{h}_{t_2-t_3}(0)\widehat{h}_{t_3-t_1}(0).
-$$
-
-Since $W$ is $T^\epsilon$-separated, $\widehat{h}_{t_1-t_2}(0)\ll_\epsilon T^{-200}$ if $t_1\ne t_2$ by Lemma GM4.3. Thus the terms in the $I_0$ above are negligible unless $t_1=t_2=t_3$, and so
-
-$$
-I_0=N^3\sum_{t\in W}\widehat{h}_0(0)^3+O_\epsilon(T^{-100})=N^3|W|\|w\|_{L^2}^6+O_\epsilon(T^{-100}).
-$$
-
-
-Putting this together gives the result.
- $\square$
-
-Putting together Lemmas GM4.1-Lemma GM4.5, and noting that the $N^3 |W| \|w\|_{L^2}^6$ term cancels with $\operatorname{tr}(M_W M_W^*)^3/|W|^2$, gives the following.
-
-**Proposition GM4.6.** 
-Let $W$ be $T^\epsilon$-separated, and let $|b_n|\le 1$ be such that $|D_N(t)|\ge N^\sigma$ for all $t\in W$. Then we have
-
-
-$$
-|W|\ll_\epsilon N^{2-2\sigma}+N^{1-2\sigma}\Bigl|\sum_{\substack{m\in \mathbb{Z}^3\setminus\{0\}}}I_m\Bigr|^{1/3},
-$$
-
-where $I_m$ is the quantity defined in Lemma GM4.5.
-
-**Proof.** If $W$ is empty there is nothing to prove. Otherwise put $B=M_WM_W^*$ and $r=|W|$. Hölder for its nonnegative eigenvalues gives $\Delta=\operatorname{tr}(B^3)-(\operatorname{tr}B)^3/r^2\ge0$. Lemma GM4.2 gives $s_1(M_W)^2\le8\Delta^{1/3}+8\operatorname{tr}(B)/r$. By GM4.4–GM4.5, $\operatorname{tr}(B)/r=N\|w\|_2^2+O(T^{-100})$ and $\Delta=\sum_{m\ne0}I_m+O_\epsilon(T^{-100})$; all error exponents can be enlarged before expanding, since $r\le N^{6/5}+1$. Lemma GM4.1 now yields the displayed bound, with the negligible residual absorbed in $N^{2-2\sigma}$. Taking an absolute value of the frequency sum makes the cubic root real and preserves the upper bound. $\square$
-
-The task is therefore to bound the nonzero Poisson frequencies.
-
-#### 10.1.5. The pieces of the sum $S$
-
-Recall from Proposition GM4.6, we have
-
-
-$$
-|W|^{3} \ll N^{6-6\sigma} + N^{3-6\sigma}\Bigl|\sum_{\substack{m \in \mathbb{Z}^3\setminus\{0\}}} I_m\Bigr|,
-$$
-
- where
-
-
-$$
-I_m = N^3 \sum_{t_1,t_2,t_3\in W}\widehat{h}_{t_1-t_2}(m_1N)\widehat{h}_{t_2-t_3}(m_2N)\widehat{h}_{t_3-t_1}(m_3N).
-$$
-
-To get started, we note a few cases when $|\widehat{h}_{t_1 - t_2}(mN)|$ is easy to understand via Lemma GM4.3.   Since $W$ is $T^\epsilon$-separated,  we see that if $t_1 \ne t_2$, by Lemma GM4.3 we have
-
-
-$$
-| \widehat{h}_{t_1-t_2}(0) | \ll_\epsilon T^{-100}.
-\tag{GM5.1}
-$$
-
-On the other hand,  if $t_1 = t_2$,  then we have
-
-$$
-\widehat{h}_{t_1 - t_2}(0) = \widehat{h}_0(0) = \int w^2(u) du \asymp 1.
-\tag{GM5.2}
-$$
-
-If $t_1 = t_2$ but $m \not= 0$,  then by Lemma GM4.3 we have
-
-$$
-| \widehat{h}_{t_1-t_2}(mN) |  \ll m^{-100} N^{-100}.
-\tag{GM5.3}
-$$
-
-Finally, if $m>T^{1+\epsilon}/N$, then since $W$ is contained in an interval of length $T$, we have by Lemma GM4.3 and taking $j=\lceil 200/\epsilon\rceil+100$
-
-$$
-| \widehat{h}_{t_1-t_2}(mN) |   \ll_\epsilon \frac{T^{100}}{(mN)^{100}} \Bigl(\frac{T}{T^{1+\epsilon}}\Bigr)^{200/\epsilon}\ll T^{-100}m^{-100} .
-\tag{GM5.4}
-$$
-
-With this in mind, we divide the sum into pieces
-
-$$
-\sum_{\substack{m \in \mathbb{Z}^3\setminus\{0\}}} I_m = S_1 + S_2 + S_3,
-\tag{GM5.5}
-$$
-
-
- where $S_1$ contains the terms where exactly one $m_i$ is non-zero, $S_2$ contains the terms where exactly two $m_i$ are non-zero, and $S_3$ contains the terms where all three $m_i$ are non-zero.
-
-We will see that $S_1$ is negligible.  In the next section, we will bound $S_2$ using Heath-Brown's theorem,  Theorem 9.1.   The main part of the paper is concerned with studying $S_3$, which contains most of the terms and is most difficult.  
-
-**Proposition GM5.1 ($S_1$ bound).** 
-We have
-
-
-$$
-S_1=O_\epsilon(T^{-10}).
-$$
-
-**Proof.** 
-  By symmetry, we see that
-
-
-$$
-S_1\le 3N^3\sum_{t_1,t_2,t_3\in W}\sum_{\substack{m_3 \not= 0}} |\widehat{h}_{t_1 - t_2}(0) \widehat{h}_{t_2 - t_3}(0) \widehat{h}_{t_3 - t_1}(m_3 N)|.
-$$
-
- By (GM5.4) (using the trivial bound $|\widehat{h}_t(\xi)|\ll 1$ for the other factors), terms with $|m_3|>T^{1+\epsilon}/N$ contribute
-
-
-$$
-\ll_\epsilon N^3|W|^3\sum_{m>T^{1+\epsilon}/N}T^{-100}m^{-100}\ll  T^{-10}.
-$$
-
- Thus we may restrict attention to terms with $|m_3|<T^{1+\epsilon}/N$. Next we consider terms with $t_1\ne t_2$. Using (GM5.1) to bound $|\widehat{h}_{t_1 - t_2}(0)|$ (and the trivial bound $\widehat{h}_t\ll 1$ for the remaining  factors), we see the terms with $t_1\ne t_2$ and $|m_3|<T^{1+\epsilon}/N$ contribute
-
-
-$$
-\ll_\epsilon N^3|W|^3\frac{T^{1+\epsilon}}{N}T^{-100}\ll  T^{-10}.
-$$
-
- Similarly, the terms with $t_2\ne t_3$ contribute $O_\epsilon(T^{-10})$. The remaining terms have $t_1 = t_2 = t_3$. For these terms we apply (GM5.3) to bound $|\widehat{h}_{t_3 - t_1}(m_3 N)|$, which shows that the terms with $t_1=t_2=t_3$ also contribute $O_\epsilon(T^{-10})$. This gives the result.
- $\square$
-
-#### 10.1.6. The contribution of $S_2$
-
-The aim of this section is to establish the following bound for the sum $S_2$, which ultimately relies on Heath-Brown's estimate, Theorem 9.1.
-
-**Proposition GM6.1 ($S_2$ bound).** 
-For any choice of $k\in \mathbb{N}$
-
-
-$$
-S_{2}\preccurlyeq_{\epsilon,k} N^2 |W|^2+TN|W|^{2-1/k}+N^2|W|^2 \Bigl(\frac{T^{1/2}}{|W|^{3/4}}\Bigr)^{1/k}.
-$$
-
-The proof of this proposition relies on the following consequence of stationary phase, which is part of the well-known  `reflection principle' for Dirichlet polynomials, or the approximate functional equation (values of a Dirichlet polynomial of length $N$ at $t\in [T,2T]$ are determined by values of a Dirichlet polynomial of length $T/N$).
-
-**Lemma GM6.2 (Approximate functional equation).**   For every $t$ with $|t| \sim T_0\ge T^\epsilon$, we have
-
-
-$$
-\Bigl| \sum_{m \not= 0} \widehat{h}_t(mN) \Bigr| \ll \frac{1}{T_0^{1/2}} \int_{u\preccurlyeq 1}\Bigl| \sum_{m \preccurlyeq T_0/N} m^{-i(t+u)} \Bigr|du + O_\epsilon( T^{-100} ).
-$$
-
-Although somewhat standard, we will give a detailed proof of Lemma GM6.2 below.   Let us first use it to bound $S_2$.  
-
-**Proof of Proposition GM6.1 assuming Lemma GM6.2.** 
-Recall that $S_2$ is the sum of those $I_m$ where exactly two $m_i$ are non-zero.   By symmetry,  we have
-
-
-$$
-S_2 = 3 N^3 \sum_{\substack{m_1, m_2 \not= 0}} \sum_{t_1,t_2, t_3\in W}\widehat{h}_{t_1-t_2}(m_1N)\widehat{h}_{t_2-t_3}(m_2N) \widehat{h}_{t_3 -t_1} (0).
-$$
-
-If $t_1 \not= t_3$,  then (GM5.1) shows that the last factor $\widehat{h}_{t_3-t_1}(0)$ is $O_\epsilon(T^{-100})$, and so using the bound $\widehat{h}_t(u)\ll (1+|t|^2)/|u|^2$ from Lemma GM4.3 for the remaining factors, these terms contribute $O_\epsilon(T^{-10})$ in total.   Therefore we have
-
-
-$$
-S_2 =  3N^3\widehat{h}_{0} (0)\sum_{m_1,m_2\ne 0}  \sum_{t_1,t_2\in W}\widehat{h}_{t_1-t_2}(m_1N)\widehat{h}_{t_2-t_1}(m_2N) +O_\epsilon(T^{-10}).
-$$
-
-Since $h_t(u) = w(u)^2 u^{it}$,  we have $h_{-t}(u) = \overline{h_t(u)}$,  and so $\widehat{h}_{-t} (\xi) = \overline{ \widehat{h}_t( - \xi) }$. In particular,
-
-
-$$
-\widehat{h}_{t_2-t_1} (m_2N) = \overline{ \widehat{h}_{t_1-t_2}( - m_2N) }.
-$$
-
-Therefore, we can simplify the last equation to get
-
-
-$$
-S_2 =3N^3 \widehat{h}_0(0)\sum_{t_1, t_2 \in W} \Big| \sum_{m\ne 0} \widehat{h}_{t_1-t_2}(m N) \Big|^2+O_\epsilon(T^{-10}).
-$$
-
-If $t_1 = t_2$,  then $\sum_{m \not= 0} \widehat{h}_{t_1 - t_2}(mN)$ is negligible by (GM5.3) and (GM5.4).   So, splitting the sum dyadically according to the size of $t_1-t_2$, we find
-
-
-$$
-\begin{aligned}
- S_2& \preccurlyeq N^3 \sup_{\substack{M=2^j\\ T^\epsilon/N<M<2T/N}}\sum_{\substack{t_1 \not= t_2 \in W\\ |t_1-t_2|\sim MN}} \Big| \sum_{m \not= 0} \widehat{h}_{t_1-t_2}(m N) \Big|^2 +O_\epsilon(T^{-10}).
-\end{aligned}
-$$
-
-If $|t_1 - t_2| \sim M N$,  then $\sum_{m \not= 0} \widehat{h}_{t_1 - t_2} (mN)$ can be approximated by a Dirichlet polynomial of length $M$.  Indeed, by Lemma GM6.2, for such $t_1,t_2$ we have
-
-$$
- \Bigl| \sum_{m \not= 0} \widehat{h}_{t_1-t_2}(mN) \Bigr| \preccurlyeq \frac{1}{M^{1/2} N^{1/2}}\int_{|u|\preccurlyeq 1} \Bigl| \sum_{ m \preccurlyeq M}  m^{-i(t_1-t_2-u)} \Bigr|du + O_\epsilon( T^{-100} ). 
-$$
-
-Squaring and summing over $t_1,t_2\in W$ with $|t_1-t_2|\sim NM$ gives
-
-$$
- S_2 \preccurlyeq   \sup_{\substack{M\le 2T/N\\ |u|\preccurlyeq 1}}\frac{N^2}{M}\sum_{\substack{t_1 \not= t_2 \in W\\ |t_1-t_2|\sim MN}} \Big| \sum_{1\le m\preccurlyeq M}  m^{i(t_1-t_2-u)} \Big|^2 + O_\epsilon( T^{-10} ).
-$$
-
-We can now drop the condition $|t_1-t_2|\sim MN$ for an upper bound, and split the summation range $m\preccurlyeq M$ into dyadic intervals. We note that the dyadic range when $M=1$ gives a contribution which dominates the error term, so for notational convenience we can absorb the error term into the main sum. Thus we find
-
-$$
-S_2 \preccurlyeq_\epsilon \frac{N^2}{M}\sum_{t_1,t_2\in W}\Bigl|\sum_{m \sim M } a_m m^{i(t_1-t_2)}\Bigr|^2
-\tag{GM6.1}
-$$
-
-
-for some choice of $M\preccurlyeq T/N$ and some coefficients $|a_m|\le 1$.
-
-We apply Hölder's inequality to this sum, and rewrite the $2k^{th}$ power of the Dirichlet polynomial as the $2^{nd}$ power of a longer Dirichlet polynomial. For any choice of positive integer $k$, we find that
-
-
-$$
-\begin{aligned}
-\sum_{t_1,t_2\in W}\Bigl|\sum_{m \sim M} a_m m^{i(t_1-t_2)}\Bigr|^2&\le |W|^{2-2/k}\Bigl(\sum_{t_1,t_2\in W}\Bigl|\sum_{m\asymp M^k}b_m m^{i(t_1-t_2)}\Bigr|^{2}\Bigr)^{1/k}
-\end{aligned}
-\tag{GM6.2}
-$$
-
-
-for some coefficients $b_m\le  M^{o_k(1)}$ (by the divisor bound).   Theorem 9.1 bounds sums of this type.   We recall the statement.
-
-**Theorem 9.1, recalled.** 
-Let $\mathcal{T}$ be a 1-separated set of reals, contained in an interval of length $T$. Let $|a_n|\preccurlyeq 1$ be a complex sequence. Then
-
-
-$$
-\sum_{t_1,t_2\in \mathcal{T}}\Bigl|\sum_{n\sim N} a_n n^{i(t_1-t_2)}\Bigr|^2\preccurlyeq |\mathcal{T}|^2N+|\mathcal{T}|N^2+|\mathcal{T}|^{5/4}T^{1/2}N.
-$$
-
-This result implies that
-
-
-$$
-\sum_{t_1,t_2\in W}\Bigl|\sum_{m\asymp M^k}b_m m^{i(t_1-t_2)}\Bigr|^{2}\preccurlyeq_k |W|^2M^k+|W|M^{2k}+|W|^{5/4}T^{1/2}M^k.
-\tag{GM6.3}
-$$
-
-Substituting (GM6.2) and (GM6.3) back into (GM6.1), we see that
-
-$$
-\begin{aligned}
-S_{2}&\preccurlyeq_{\epsilon,k}\frac{N^2}{M}(|W|^{2}M+M^2|W|^{2-1/k}+|W|^2 M T^{1/2k}|W|^{-3/4k})\\
-&\preccurlyeq_{\epsilon,k} N^2 |W|^2+T N |W|^{2-1/k}+N^2|W|^2 \Bigl(\frac{T^{1/2}}{|W|^{3/4}}\Bigr)^{1/k}.
-\end{aligned}
-\tag{GM6.4}
-$$
-
-
-This gives the result.
- $\square$
-
-Now we return to the proof of Lemma GM6.2, which roughly says $\widehat{h}_t(mN)$ can be thought of as a smoothed version of $t^{-1/2}m^{it}$ supported on $m\asymp t/N$.
-
-**Proof of Lemma GM6.2.** 
-Since $t\sim T_0\ge T^\epsilon$, by Lemma GM4.3 we have that $\widehat{h}_t(mN)\ll_\epsilon T^{-100}m^{-2}$ unless $|m|\preccurlyeq T_0/N$. Thus it suffices to just consider terms with $|m|\le M$ for some suitable $M=T_0^{1+o(1)}/N$ at the cost of an $O_\epsilon(T^{-100})$ error term. We focus on the terms with positive $m$. For negative $m$, use $v=N|m|u$ and $e(v)$ in place of $e(-v)$; conjugation reduces the integral bound to Lemma GM0.2 with the sign of its real parameter reversed. The same Mellin integral and Dirichlet-polynomial bound therefore apply to both signs.
-
-We expand the definition of $\widehat{h}_t$ and truncate the integral using the support of $w$ 
-
-
-$$
-\begin{aligned}
-\widehat{h}_t(mN)=\int_{-\infty}^\infty w(u)^2 u^{it}e(- mN u) du
-=\int_{1/m}^{2M/m} w(u)^2 u^{it}e(-mN u) du.
-\end{aligned}
-$$
-
-The change $v=Nm u$ below contributes $(Nm)^{-i(t-r)}$, with a negative exponent; this follows directly from $u^{-1+i(t-r)}du=v^{-1+i(t-r)}(Nm)^{-i(t-r)}dv$. Let $H(s):=\int_{0}^\infty w(u)^2 u^{s-1}du$ be the Mellin transform of $h_0$, which is entire and satisfies $H(s)\ll_j |s|^{-j}$ for any $j\in \mathbb{Z}_{>0}$  when $|\Re(s)|\le 10$ (by repeated integration by parts). Applying Mellin inversion  ($w(u)^2=(2\pi i)^{-1}\int_{1-i\infty}^{1+i\infty} H(s)u^{-s}ds$), we have that
-
-$$
-\begin{aligned}
-\widehat{h}_t(mN)=\frac{1}{2\pi i}\int_{1/m}^{2M/m}\int_{1-i\infty}^{1+i\infty}H(s)u^{it-s}e(- mN u) ds du.
-\end{aligned}
-$$
-
-By the rapid decay of $H$ we may truncate the $s$ integral to $|s|\preccurlyeq 1$ at the cost of a $O(T^{-100})$ error term. We then make a change of variables $s=1+ir$ and $v=Nmu$
-
-$$
-\begin{aligned}
-\widehat{h}_t(mN)=\frac{1}{2\pi}\int_{|r|\preccurlyeq 1}H(1+ir)(mN)^{-i(t-r)}\Bigl(\int_{N}^{2NM}v^{-1+i(t-r)}e(-v) dv\Bigr) dr.
-\end{aligned}
-$$
-
-Summing over $1\le m\le  M$ and applying the triangle bound gives
-
-$$
-\begin{aligned}
-\sum_{\substack{m\le  M}}\widehat{h}_t(mN)&=\frac{1}{2\pi}\mathop{\int}_{|r|\preccurlyeq 1}H(1+ir)N^{-i(t-r)}\sum_{\substack{1\le m\le M}}m^{-i(t-r)}\int_{N}^{2NM}\frac{v^{i(t-r)}e(-v) }{v}dv dr\\
-&\ll \int_{|r|\preccurlyeq 1}\Bigl|\sum_{1\le m\le M}m^{-i(t-r)}\Bigr| \Bigl|\int_{N}^{2NM}v^{-1+i(t-r)}e(- v) dv\Bigr| dr.
-\end{aligned}
-$$
-
-The integral bounds proved earlier in Lemma GM0.2 give, for $|r|\ge 2$,
-
-$$
-\begin{aligned}
-\int_V^{2V} v^{-1+ir}e(-v)dv&\ll \frac{1}{|r|}, &&\text{ if }V\le |r|/20 \text{ or }V\ge 20|r|,\\
-\int_V^{2V} v^{-1+ir}e(-v)dv&\ll \frac{1}{|r|^{1/2}}, &&\text{ if }|r|/20\le V\le 20|r|.
-\end{aligned}
-$$
-
-Since $|t-r|\asymp T_0$ when $r\lesssim 1$ (and recalling that $T^\epsilon\le T_0$, $NM\preccurlyeq T$), together these give
-
-$$
-\int_{N}^{2NM}v^{-1+i(t-r)}e(- v) dv\ll T_0^{-1/2}.
-$$
-
-
-This gives the result.
- $\square$
-
-#### 10.1.7. The contribution of $S_3$: a key cancellation
-
-Now we begin to study $S_3$, which is the most difficult term.  Recall that 
-
-
-$$
-S_3=\sum_{m_1,m_2,m_3 \not= 0} I_m,
-$$
-
-where
-
-
-$$
-I_m = N^3 \sum_{t_1,t_2,t_3\in W}\widehat{h}_{t_1-t_2}(m_1N)\widehat{h}_{t_2-t_3}(m_2N)\widehat{h}_{t_3-t_1}(m_3N).
-$$
-
- By Lemma GM4.3, $|\widehat{h}_t(\xi)|\ll_j (1+|t|)^j/|\xi|^j$  for any $j\in\mathbb{Z}_{\ge 0}$,  and so $\widehat{h}_t$ is rapidly decaying when $|\xi|$ is much bigger than $|t|$, and hence $I_m$ is negligible unless $|m| \preccurlyeq T/N$.  Thus 
-
-
-$$
-S_3= \sum_{0<|m_1|,|m_2|,|m_3| \preccurlyeq T/N} I_m+O(T^{-100}).
-\tag{GM7.1}
-$$
-
-The first step in our argument is an estimate for $|I_m|$.   We introduce the function $R(v)$ which will play an important role in our analysis of $S_3$:
-
-$$
-R(v):=\sum_{t\in W}|v|^{it} = \widehat{W}\Bigl(\frac{\log{|v|}}{-2\pi}\Bigr),
-\tag{GM7.2}
-$$
-
-
-where $\widehat{W}(\xi):=\sum_{t\in W}e^{-2\pi i t \xi}$ is the Fourier transform of the distribution with a delta function at each point of $W$ . In this paper we will occasionally find it convenient to work with $\widehat{W}$, but will not work with the distribution directly.
-
-**Proposition GM7.1 (Cancellation within the $I_m$ integrals).**   We have
-
-
-$$
-|I_m| \ll N^3  \mathop{\int}_{\substack{|m_1 v_1 + m_2 v_2 + m_3| \preccurlyeq \frac{1}{N}\\  v_1 \asymp v_2 \asymp 1}}  \Big| R(v_1)R\Bigl(\frac{v_2}{v_1}\Bigr)R(v_2 ) \Big| dv_1 dv_2 + O(T^{-200}).
-$$
-
-Moreover, if $|m_1|\le |m_2|\le |m_3|$, then $|I_m| = O(T^{-200})$ unless $|m_2| \asymp |m_3|$.  
-
-**Proof.**  
-To simplify notation, let $w_1(\mathbf{u}):=w(u_1)^2w(u_2)^2w(u_3)^2$. Expanding the definition of $\widehat{h}_t$ as an integral and swapping the order of summation and integration,  we have
-
-
-$$
-\begin{aligned}
-I_m&=N^3 \sum_{t_1,t_2,t_3\in W}\int_{\mathbb{R}^3}e(-N \mathbf{m}\cdot \mathbf{u})w_1(\mathbf{u})u_1^{i(t_1-t_2)}u_2^{i(t_2-t_3)}u_3^{i(t_3-t_1)}d\mathbf{u}\\
-&= N^3\int_{\mathbb{R}^3}e(-N \mathbf{m}\cdot \mathbf{u})w_1(\mathbf{u}) R\Bigl(\frac{u_1}{u_3}\Bigr)R\Bigl(\frac{u_2}{u_1}\Bigr)R\Bigl(\frac{u_3}{u_2}\Bigr)d\mathbf{u}.
-\end{aligned}
-\tag{GM7.3}
-$$
-
-
-In (GM7.3),  the $R$ functions depend on $u_1/u_3$, $u_2/u_1$ and $u_3/u_2$.   We therefore rewrite the integral using these variables.  
-We define $v_1$ and $v_2$ by
-
-
-$$
-v_1 := \frac{u_1}{u_3}, \qquad v_2 := \frac{u_2}{u_3}.
-$$
-
-We rewrite the integral $I_m$ in terms of the variables $v_1, v_2, u_3$.  
-When we change variables,  the $R$ factors depend on $v_1, v_2$ but not on $u_3$.  
-
-
-$$
-R\Bigl(\frac{u_1}{u_3}\Bigr)R\Bigl(\frac{u_2}{u_1}\Bigr)R\Bigl(\frac{u_3}{u_2}\Bigr) = R ( v_1 ) R \Big( \frac{v_2}{v_1} \Big) R \Big( \frac{1}{v_2} \Big)
-$$
-
-The exponential factor also works out in a nice way in the new variables:
-
-
-$$
-e(-N \mathbf{m}\cdot\mathbf{u})=e(-N(m_1u_1+m_2u_2+m_3u_3))=e(-N(m_1v_1+m_2v_2+m_3)u_3).
-$$
-
-A Jacobian computation  shows that
-
-
-$$
-du_1 du_2 du_3 = u_3^2 dv_1 dv_2 du_3.
-$$
-
-So in the new variables, our integral $I_m$ becomes
-
-
-$$
-N^3 \int_{\mathbb{R}^3} e(-N (m_1 v_1+ m_2 v_2+m_3)u_3)w_{2}(u_3,v_1,v_2)R(v_1)R\Bigl(\frac{v_2}{v_1}\Bigr)R\Bigl(\frac{1}{v_2}\Bigr) dv_1 dv_2 du_3,
-$$
-
-where 
-
-
-$$
-w_2(u_3,v_1,v_2):=u_3^2w(u_3)^2w(v_1u_3)^2w(v_2u_3)^2.
-\tag{GM7.4}
-$$
-
-Since the $R$ factors do not involve $u_3$, we rewrite our formula to do the $u_3$ integral first:
-
-$$
-N^3 \int_{\mathbb{R}^2} \left(  \int_{\mathbb{R}} e(-N (m_1 v_1+ m_2 v_2+m_3)u_3)w_2(u_3,v_1,v_2) du_3 \right) R(v_1)R\Bigl(\frac{v_2}{v_1}\Bigr)R\Bigl(\frac{1}{v_2}\Bigr) dv_1 dv_2.
-$$
-
-
-A key observation in our proof is that we can analyze the norm of this inner integral very accurately using non-stationary phase. Recalling the definition (GM7.4) of $w_2$, we see that for any $j\in \mathbb{Z}_{\ge 0}$, $w_2(u_3,v_1,v_2)$ has $j^{th}$ derivative with respect to $u_3$ bounded by $O_j(1)$ (since $w$ is supported on $[1,2]$ with $\|w^{(\ell)}\|_\infty \ll_\ell 1$ for all $\ell\in \mathbb{Z}_{\ge 0}$). Thus for any $\eta>0$, the inner integral is $O_\eta(T^{-300})$ unless $|m_1 v_1+m_2 v_2+m_3| \le T^\eta/N$ by repeated integration by parts.   In general,  the inner integral has size $\ll 1$.   
-In addition, $w_2(u_3,v_1,v_2)$ vanishes unless $v_1, v_2 \in [1/2,2]$, because $w(u)$ is supported on $u\in [1,2]$.   Therefore, the inner integral vanishes unless $v_1 \in[1/2,2]$ and $v_2 \in[1/2,2]$.  Using these bounds for the inner integral and then using the triangle inequality, we see that since $\eta>0$ was arbitrary
-
-
-$$
-|I_m| \ll N^3  \mathop{\int}_{\substack{|m_1 v_1 + m_2 v_2 + m_3| \preccurlyeq \frac{1}{N}\\ v_1, v_2 \in[1/2,2]}}  \Big| R(v_1)R\Bigl(\frac{v_2}{v_1}\Bigr)R\Bigl(\frac{1}{v_2}\Bigr) \Big| dv_1 dv_2+O(T^{-200}).
-$$
-
-Since $|R(v)| = |R(1/v)|$,  we can replace $R(1/v_2)$ by $R(v_2)$.   (This is not really important, but it makes later computations cleaner.)
-
-Finally,  this integral vanishes unless we can find $v_1 \asymp 1$ and $v_2 \asymp 1$ so that $m_1 v_1 + m_2 v_2 + m_3$ is almost zero.  If $|m_1| \le |m_2| \le |m_3|$, this can only happen if $|m_2| \asymp |m_3|$.  This gives the last claim in the proposition. 
- $\square$
-
-Because of the last claim in Proposition GM7.1,  we can restrict attention to $m$ with $0 < |m_1| \le |m_2| \asymp |m_3|$.   The domain of integration can be rewritten in the form
-
-
-$$
-\left| v_2 - \frac{m_1 v_1 + m_3}{-m_2} \right| \preccurlyeq \frac{1}{|m_2|N} \asymp \frac{1}{|m_3| N}.
-$$
-
-So the domain of integration is essentially the $\frac{1}{N |m_3|}$-neighborhood of the curve $v_2 = \frac{m_1 v_1 + m_3}{-m_2}$.  Therefore,  $|I_m|$ is morally bounded by
-
-
-$$
-\frac{N^3}{N |m_3|} \int_{v_1 \asymp 1} \Big| R ( v_1 ) R \Big( \frac{ m_1 v_1 + m_3}{-m_2 v_1} \Big) R \Big( \frac{m_1 v_1 + m_3}{-m_2} \Big) \Big| dv_1.
 $$
-
-We can make this rigorous by using a smoothed version of $R$.  Define a smoothed version of $| R(u) |$ in terms of compactly supported bump functions $\tilde{\psi}_1$, $\tilde{\psi}_2$ and a parameter $M\ge 1$ by
-
-
-$$
-\tilde{R}=\tilde{R}_{\tilde{\psi}_1,\tilde{\psi}_2,M}(u) :=\Big(  \int NM \tilde{\psi}_1(N M (u - u')) \tilde{\psi}_2(u')|R(u')|^2 du' \Big)^{1/2}.
-\tag{GM7.5}
-$$
-
-
-The following proposition gives an expansion of $S_3$ in terms of such integrals.
-
-**Proposition GM7.2 (Expansion of $S_3$).** 
-There is a choice of $1\le M_1\le M\preccurlyeq T/N$ and a choice of non-negative bump functions $\tilde{\psi}_1$, $\tilde{\psi_2}$ with $\tilde{\psi}_1(x)$ supported on $|x|\preccurlyeq 1$ and satisfying $\|\tilde{\psi}_1^{(j)}\|_\infty\preccurlyeq_j 1$ for all $j\in \mathbb{Z}_{\ge 0}$ and $\tilde{\psi}_2(x)$ supported on $x\asymp 1$ and satisfying $\tilde{\psi}_2^{(j)}\ll_j 1$ for all $j\in\mathbb{Z}_{\ge 0}$ and with $\tilde{\psi}_1(0)=\tilde{\psi}_2(1)=1$, such that
-
-
-$$
-S_3 \preccurlyeq \frac{N^2}{M} \sum_{\substack{|m_1| \sim M_1\\    |m_2|,  |m_3| \asymp M}}  \tilde{I}_m+O(T^{-100}),
-$$
-
-where
-
-
-$$
-\tilde{I}_m:= \int_{v_1 \asymp 1}  \Big| R ( v_1) \tilde{R} \Big( \frac{ m_1 v_1 + m_3}{m_2 v_1} \Big) \tilde{R} \Big( \frac{m_1 v_1 + m_3}{m_2} \Big) \Big| dv_1.
-$$
-
-**Proof.**  
-Recall from (GM7.1) that $S_3$ is bounded by
-
-
-$$
-|S_3|\le\sum_{0<|m_1|,|m_2|,|m_3| \preccurlyeq T/N} |I_m| +O(T^{-100}).
-$$
-
-From (GM7.3), we have
-
-
-$$
-I_m= N^3\int_{\mathbb{R}^3}e(-N \mathbf{m}\cdot \mathbf{u})w_1(\mathbf{u}) R\Bigl(\frac{u_1}{u_3}\Bigr)R\Bigl(\frac{u_2}{u_1}\Bigr)R\Bigl(\frac{u_3}{u_2}\Bigr)d\mathbf{u}.
-$$
-
-From (GM7.2), $R(1/v)=\overline{R(v)}$. Cyclically permuting the integration variables leaves their product in (GM7.3) unchanged, whereas a transposition conjugates it. Conjugation also reverses the sign of the Fourier phase. Consequently $I_{(m_2,m_1,m_3)}=\overline{I_{(-m_1,-m_2,-m_3)}}$, with the analogous identity for the other transpositions. Every permutation therefore preserves $|I_m|$ either directly or after simultaneously reversing all three frequency signs. Since the sum includes every sign choice, these changes of indices reduce it to $|m_1|\le |m_2|\le |m_3|$ at the cost of a factor of at most six. By Proposition GM7.1, such terms are negligible unless $|m_2|\asymp |m_3|$. Thus, by choosing dyadic scales to maximize the right hand side, we find that there is an $M_1\le M\preccurlyeq T/N$ such that
-
-
-$$
-S_3\preccurlyeq  \sum_{\substack{|m_1|\sim M_1 \\ |m_2|\asymp M\\ |m_3|\asymp M}} |I_m| +O(T^{-100}).
-\tag{GM7.6}
-$$
-
-By Proposition GM7.1,  we have for $m_2\asymp M$
-
-$$
-|I_m| \ll N^3  \int_{v_1 \asymp 1}  | R(v_1) |  \Biggl(\int\limits_{\substack{v_2\asymp 1\\ | v_2 - \frac{m_1 v_1 + m_3}{-m_2} | \preccurlyeq  \frac{1}{M N}}}  \Big| R\Bigl(\frac{v_2}{v_1}\Bigr)R( v_2) \Big| dv_2 \Bigg) dv_1+O(T^{-200}).
-$$
-
-Using Cauchy-Schwarz (and a change of variables $v_2\mapsto v_2v_1$ for the first factor),  we bound the inner integral by
-
-$$
-\Biggl( \int\limits_{\substack{v_2\asymp 1\\ M N| v_2 - \frac{m_1 v_1 + m_3}{-m_2v_1} | \preccurlyeq 1 }}  | R(v_2) |^2  dv_2 \Biggr)^{1/2}  \Biggl( \int\limits_{\substack{v_2\asymp 1\\ MN| v_2 - \frac{m_1 v_1 + m_3}{-m_2} | \preccurlyeq  1}}  | R( v_2 ) |^2 dv_2 \Biggr)^{1/2}.
-$$
-
-We can now choose a smooth bump function $\tilde{\psi}_2(v_2)$ which majorizes both the integration constraints $v_2\asymp 1$ and satisfies the support and derivative conditions of the proposition. Similarly, we can choose a bump function $\tilde{\psi}_1$ such that $\tilde{\psi}_1(MN(\frac{m_1v_1+m_3}{-m_2v_1}-v_2))$ majorizes the integration constraint $M N| v_2 - \frac{m_1 v_1 + m_3}{-m_2v_1} | \preccurlyeq 1$ in the first factor above and $\tilde{\psi}_1(MN(\frac{m_1v_1+m_3}{-m_2}-v_2))$ majorizes the corresponding constraint in the second factor and $\tilde{\psi}_1$ satisfies the support and derivative constraints of the proposition. Recalling the definition (GM7.5) of $\tilde{R}$, we then see that for this choice of $\tilde{\psi}_1,\tilde{\psi}_2$ and $M$, the product of integrals above is
-
-$$
-\ll \frac{1}{MN}  \tilde{R} \Big( \frac{m_1 v_1 + m_3}{-m_2 v_1} \Big) \tilde{R} \left( \frac{m_1 v_1 + m_3}{-m_2} \right) . 
-$$
-
-Thus we find that
-
-$$
-|I_{m_1,m_2,m_3}| \ll \frac{N^2}{M} \tilde{I}_{m_1,-m_2,m_3}+O(T^{-100}).
-$$
-
-
-Finally, since we are summing over $m_2$ with $|m_2| \asymp M$, we can replace $- m_2$ with $m_2$ without changing the overall sum. Substituting this into our expression (GM7.6) for $S_3$ above then gives the result.
- $\square$
-
-#### 10.1.8. Basic estimate for the low energy case
-
-In this section,  we begin to estimate $S_3$ using Proposition GM7.2.    Recall that $R(v) = \sum_{t \in W} |v|^{it}$.   The best bound for $|R(v)|$ we can hope for is square root cancellation: $|R(v)| \ll |W|^{1/2}$.   If indeed $|R(v)| \approx |W|^{1/2}$ for all $v \asymp 1$, then we get $S_3 \preccurlyeq N^2 M^2 |W|^{3/2} \preccurlyeq T^2 |W|^{3/2}$.   We will see more generally that this bound holds whenever the energy of $W$ is very small. 
-
-**Proposition GM8.1 ($S_3$ controlled by energy).**   If $W$ is a $T^\epsilon$-separated set contained in an interval of length $T$,  then
-
-
-$$
-S_3 \preccurlyeq_\epsilon T^2 |W|^{1/2} E(W)^{1/2}.
+|W|\preccurlyeq N^2V^{-2}+T\min\left(NV^{-2},N^4V^{-6}\right),
+\tag{LV.1}
 $$
 
-We begin with some basic lemmas about the moments of $R$.
+where $\preccurlyeq$ (defined in §10.1.2) allows a factor $T^\delta$ for every $\delta>0$; Lemma LV.48 gives the deduction. At $\sigma=3/4$ both terms of the minimum equal $TN^{-1/2}$, while (10.1) gives $N^{1/2}+N^{3/5}+TN^{-3/5}$. If $V\le N^{7/10}$ then $NV^{-2}\le N^{12/5}V^{-4}$, and if $V\ge N^{4/5}$ then $N^4V^{-6}\le N^{12/5}V^{-4}$; in these ranges (10.1) follows from (LV.1). Comparing exponents, (10.1) is the stronger bound when $N^{7/10}<V<N^{4/5}$ and $N<T^{5/6}$, apart from arbitrarily small powers. The proof for the middle range has four stages.
 
-**Lemma GM8.2 ($L^2$ bound).**   Let $W$ be a $T^\epsilon$-separated set contained in an interval of length $T$. Then
+*A cubic trace.* The values $D(t)$, $t\in W$, are the entries of a matrix applied to the coefficient vector. So $|W|N^{2\sigma}$ is at most $N$ times the top eigenvalue of the Gram matrix $G$, whose entries are the smoothed sums $\sum_nw(n/N)^2(n/N)^{i(t-t')}$. An elementary inequality bounds this eigenvalue by four times the average eigenvalue plus twice the cube root of $\operatorname{tr}G^3-(\operatorname{tr}G)^3/|W|^2$.
 
+*Poisson summation.* Applying Poisson summation to the three summation variables in $\operatorname{tr}G^3$ produces a sum of oscillatory terms indexed by $\mathbf m\in\mathbb Z^3$. The term $\mathbf m=\mathbf0$ cancels against $(\operatorname{tr}G)^3/|W|^2$ up to a negligible error. When a coordinate of $\mathbf m$ vanishes, the separation of $W$ reduces the terms to a negligible quantity or to a mean square of a dual Dirichlet polynomial of length about $|t-t'|/N$. Heath-Brown's Theorem 9.1 controls that mean square.
 
-$$
-\int_{v \asymp 1} |R(v)|^2 dv \ll_\epsilon |W| .
-$$
+*Three nonzero frequencies.* After the Poisson step, the sum over the three points of $W$ becomes a product of three values of $\Phi(v)=\sum_{t\in W}v^{it}$. Their arguments are the ratios $u_1/u_3$, $u_2/u_1$ and $u_3/u_2$ of the integration variables. The phase is linear in $(u_1,u_2,u_3)$, and integrating it along rays localizes the integral near a line in the plane of two such ratios. One is left with averages of $|\Phi|$ along affine images of a single variable. Two facts control them. First, $|\Phi|^2$ has average size $|W|$ and $|\Phi|^4$ has average size the additive energy $E(W)$. Second, a sparse nonnegative function cannot be concentrated on many images $u\mapsto(au+c)/b$ at once.
 
-**Proof.**  
-Let $\psi_1(v)$ be a smooth bump function which majorizes the range of integration of the integral in the lemma and is supported on $v\asymp 1$ (so satisfies $\|\psi_1^{(j)}\|_\infty \ll_j 1$ for all $j\in \mathbb{Z}_{\ge 0}$). Then we have
+*Additive energy.* Large values on $W$ bound the additive energy $E(W)$ by moments of $\Phi$ at the rational points $n_1/n_2$. These moments are mean squares of Dirichlet polynomials over the difference set $W-W$, which Theorem 9.1 bounds.
 
+The four stages combine at $N=T^{5/6}$ (Proposition LV.6). Removing the smooth weight and subdividing $[0,T]$ then give Theorem 10.1 in general.
 
-$$
-\int_{v \asymp 1} |R(v)|^2 dv \le \int \psi_1(v) | R(v) |^2 dv.
-$$
+#### 10.1.2. Conventions and tools
 
-We substitute the definition of $R(v)$ from (GM7.2), and let $\psi_2(\tau) :=2\pi e^{-2\pi\tau} \psi_1( e^{-2\pi\tau})$. Then, making a change of variables $v=e^{-2\pi \tau}$ gives
+**The weight.** Fix a smooth $w:\mathbb R\to[0,1]$ supported in $[1,2]$ and equal to one on $[6/5,9/5]$. For instance, with $\beta(x)=e^{-1/x}$ for $x>0$ and $\beta(x)=0$ otherwise, put $\lambda(x)=\beta(x)/(\beta(x)+\beta(1-x))$ and $w(x)=\lambda(5x-5)\lambda(10-5x)$. Its derivatives are bounded by constants depending only on their order. Write $\|w\|_2^2=\int w^2$.
 
+**Notation.** For $Y>0$, $x\sim Y$ means $Y<x\le2Y$, and $|m|\sim Y$ for an integer $m$ allows both signs. $A\asymp B$ means $A\ll B\ll A$. We write $A\preccurlyeq B$ if for every $\delta>0$ there is $C_\delta$ with $|A|\le C_\delta T^\delta B$. Implied constants never depend on $N$, $T$, $W$, $V$, $\sigma$ or the coefficients. They may depend on the fixed weights and on the auxiliary exponents $\epsilon$, $\kappa$, $k$ introduced below.
 
-$$
-\int \psi_1(v) | R(v) |^2 dv = \int  \psi_2(\tau) |  \widehat{W}(\tau)|^2 d \tau= \sum_{t_1, t_2 \in W} \widehat{\psi}_2(t_1 - t_2).
-$$
+**Small losses.** Many steps truncate a sum or an integral at a power $T^{\kappa}$, where $\kappa>0$ is a small auxiliary exponent fixed at the start of the argument. Such a step bounds a quantity by $C_\kappa T^{c\kappa}$ times the main term, with an absolute constant $c$, plus an error $O_\kappa(T^{-100})$. Since $\kappa$ can be taken as small as desired, these losses are of the form allowed by $\preccurlyeq$. A quantity is *negligible* if it is $O(T^{-100})$. In each use below the main terms are bounded below by a fixed negative power of $T$, relative to the normalization in force, so negligible terms are absorbed into them.
 
-Note that $\psi_2$ is a smooth bump around the origin with $\|\psi_2^{(j)}\|_\infty\ll_j 1$ for all $j\in \mathbb{Z}_{\ge 0}$, so $|\widehat{\psi}_2(\xi)|\ll_j |\xi|^{-j}$ for any $j\in \mathbb{Z}_{\ge 0}$. Since $W$ is $T^\epsilon$-separated, if $t_1\ne t_2$ we have that $\widehat{\psi}_2(t_1-t_2)\ll_\epsilon T^{-100}$, so the terms with $t_1\ne t_2$ are negligible. The terms with $t_1=t_2$ contribute $\ll |W|$ to the sum above. Thus the total sum is $O_\epsilon(|W|)$, as required. The same bound holds for every one-separated $W$: in each row the off-diagonal decay bound $C(1+|t_1-t_2|)^{-2}$ has bounded sum, since each unit interval contains at most two points. Thus $\int_{v\asymp1}|R(v)|^2dv\ll |W|$ in the one-separated range used in GM11.8 as well.
- $\square$
+**Fourier analysis.** Put $e(x)=e^{2\pi ix}$ and $\widehat f(\xi)=\int_{\mathbb R}f(x)e(-\xi x)\,dx$. For smooth compactly supported $f$, Fourier inversion $f(x)=\int\widehat f(\xi)e(\xi x)\,d\xi$ and the identity $\int|f|^2=\int|\widehat f|^2$ are proved by a Gaussian approximate identity in the proof of Lemma 7.2 of The Riemann hypothesis and its standard equivalents. If $f$ is supported in an interval of length $\ell$ and $|f^{(j)}|\le A_j$, then $j$ integrations by parts give $|\widehat f(\xi)|\le\ell A_j(2\pi|\xi|)^{-j}$. Hence such $f$ satisfy the hypotheses of Poisson summation, $\sum_{n\in\mathbb Z}f(n)=\sum_{k\in\mathbb Z}\widehat f(k)$, which is Fourier series and the theta function, Theorem 1.2. The same bounds hold for smooth functions all of whose derivatives are integrable, such as $(1+x^2)^{-20}$.
 
-**Lemma GM8.3 ($L^4$ bound).**  
-Let $M$, $\tilde{\psi}_1$, $\tilde{\psi}_2$ be as in Proposition GM7.2. Then we have
+**Inequalities.** Cauchy–Schwarz for finite sums and integrals follows from $0\le\int|f-\lambda g|^2$ with the minimizing $\lambda$. Hölder's inequality with exponents $p_i>0$, $\sum1/p_i=1$, follows by normalizing the norms to one and integrating the pointwise inequality $\prod a_i\le\sum a_i^{p_i}/p_i$; the latter is the concavity of the logarithm, $\sum p_i^{-1}\log(a_i^{p_i})\le\log\sum p_i^{-1}a_i^{p_i}$. In particular $\left(\int kF\right)^3\le\left(\int k\right)^2\int kF^3$ for $k,F\ge0$. For an integrable kernel $K\ge0$, Fubini gives $\|K*f\|_1=\|K\|_1\|f\|_1$ when $f\ge0$. Cauchy–Schwarz with the weight $K(x-y)\,dy$ followed by Fubini gives $\|K*f\|_2\le\|K\|_1\|f\|_2$.
 
+**Divisor functions.** Section 9 proves $d(n)\ll_\eta n^\eta$ for every $\eta>0$. Let $d_k(n)$ be the number of ordered factorizations $n=a_1\cdots a_k$. Choosing $a_1\mid n$ first gives $d_k(n)=\sum_{a\mid n}d_{k-1}(n/a)\le d(n)\max_{m\mid n}d_{k-1}(m)$. Since $d(m)\le d(n)$ for $m\mid n$, induction gives $d_k(n)\le d(n)^{k-1}$, so $d_k(n)\ll_{k,\eta}n^\eta$.
 
-$$
-\int_{v \asymp 1} |\tilde{R}(v)|^4 dv \preccurlyeq E(W)\qquad \text{ and} \qquad \int_{v \asymp 1} |R(v)|^4 dv \preccurlyeq E(W).
-$$
+**Lemma LV.2 (Hermitian matrices).** Let $H$ be a Hermitian $r\times r$ matrix. It has an orthonormal basis of eigenvectors with real eigenvalues $\lambda_1,\dots,\lambda_r$, and $\operatorname{tr}H^j=\sum_i\lambda_i^j$. If $A$ is an $r\times s$ matrix, then $AA^*$ and $A^*A$ have nonnegative eigenvalues and the same largest eigenvalue $\lambda_{\max}$, and $\|A\mathbf b\|^2\le\lambda_{\max}\|\mathbf b\|^2$ for every $\mathbf b\in\mathbb C^s$.
 
-**Proof.**  
-From the definition (GM7.5) of $\tilde{R}$, recalling that $\tilde{\psi}_1,\tilde{\psi}_2\ll 1$ are supported on $|x|\preccurlyeq 1$ and $|x|\asymp 1$ respectively, and Cauchy-Schwarz, we have
+**Proof.** The continuous function $x\mapsto x^*Hx$ attains its maximum on the unit sphere at some $x_0$. For any $y\perp x_0$ and real $\tau$, the vectors $(x_0+\tau y)/\|x_0+\tau y\|$ and $(x_0+i\tau y)/\|x_0+i\tau y\|$ lie on the sphere. Differentiating at $\tau=0$ gives $\operatorname{Re}\,y^*Hx_0=\operatorname{Im}\,y^*Hx_0=0$, so $Hx_0$ is a multiple $\lambda x_0$, real because $x_0^*Hx_0$ is real. The orthogonal complement of $x_0$ is mapped into itself by $H$, so induction on $r$ gives the orthonormal eigenbasis. In that basis $H^j$ is diagonal, which gives the trace formula. For $A$, $x^*AA^*x=\|A^*x\|^2\ge0$ and similarly for $A^*A$, so the eigenvalues are nonnegative. If $A^*Av=\lambda v$ with $\lambda>0$, then $Av\ne0$ and $AA^*(Av)=\lambda Av$; by symmetry the two matrices have the same positive eigenvalues. Expanding $\mathbf b$ in an eigenbasis of $A^*A$ gives $\|A\mathbf b\|^2=\mathbf b^*A^*A\mathbf b\le\lambda_{\max}\|\mathbf b\|^2$. $\square$
 
+**Lemma LV.3 (local averages of band-limited sums).** There is a fixed integrable function $K_0\ge0$ with $K_0(u)\ll_j(1+|u|)^{-j}$ for every $j$, with the following property. Let $F(t)=\sum_jc_je^{i\lambda_jt}$ be a finite sum whose real frequencies $\lambda_j$ all lie in an interval of length $\Delta>0$. Then for every real $t$,
 
 $$
-\begin{aligned}
-\int_{v\asymp 1}|\tilde{R}(v)|^4dv&\preccurlyeq N^2M^2  \int\limits_{\substack{v\asymp 1\\ |u-v|\preccurlyeq 1/NM\\ |u'-v|\preccurlyeq 1/NM}}   |R(u')|^4 du'   du dv\preccurlyeq \int_{u'\asymp 1}|R(u')|^4 du'.
-\end{aligned}
+|F(t)|\le\Delta\int_{\mathbb R}K_0(\Delta u)\,|F(t+u)|\,du,
+\qquad
+|F(t)|^2\le\|K_0\|_1\,\Delta\int_{\mathbb R}K_0(\Delta u)\,|F(t+u)|^2\,du.
+\tag{LV.4}
 $$
 
-Therefore it suffices to prove the result for $R$. We recall that $R(v)=\widehat{W}(-\log|v|/(2\pi))$, so by a change of variables $v=e^\tau$ we see that it suffices to show
+**Proof.** Fix a smooth $\theta$ supported in $[-1,2]$ with $\theta=1$ on $[0,1]$, and put $K_0(u)=(2\pi)^{-1}|\widehat\theta(u/(2\pi))|$; it decays faster than any power. First let all $\lambda_j\in[0,1]$. Fourier inversion gives $1=\theta(\lambda_j)=\int\widehat\theta(y)e(\lambda_jy)\,dy$, so
 
 $$
-\int_{\tau\ll 1}|\widehat{W}(\tau)|^4d\tau\preccurlyeq E(W).
+F(t)=\int\widehat\theta(y)\sum_jc_je^{i\lambda_j(t+2\pi y)}\,dy=\int\widehat\theta(y)F(t+2\pi y)\,dy.
 $$
 
-Let $\eta>0$ and let $\psi_1$ be a smooth bump supported on $\tau\ll 1$ such that $\psi_1(\tau/T^\eta)$ majorizes the range of integration. Then we see that
+Taking absolute values and substituting $u=2\pi y$ gives $|F(t)|\le\int K_0(u)|F(t+u)|\,du$. In general let the frequencies lie in $[a,a+\Delta]$ and write $F(t)=e^{iat}F_1(\Delta t)$, where $F_1$ has frequencies $(\lambda_j-a)/\Delta\in[0,1]$. Then $|F(t)|=|F_1(\Delta t)|\le\int K_0(u)|F(t+u/\Delta)|\,du$, which is the first inequality after the substitution $u\mapsto\Delta u$. The second follows from the first by Cauchy–Schwarz with the weight $\Delta K_0(\Delta u)\,du$, of total mass $\|K_0\|_1$. $\square$
 
-$$
-\begin{aligned}
-\int_{\tau\asymp 1}|\widehat{W}(\tau)|^4d\tau&\le \int \psi_1\Bigl(\frac{\tau}{T^\eta}\Bigr)|\widehat{W}(\tau)|^4d\tau\\
-&=\sum_{t_1,t_2,t_3,t_4\in W}\int \psi_1\Bigl(\frac{\tau}{T^\eta}\Bigr)e(\tau(t_1+t_2-t_3-t_4))d\tau\\
-&=T^\eta \sum_{t_1,t_2,t_3,t_4\in W} \widehat{\psi_1}\Bigl(T^\eta(t_3+t_4-t_1-t_2)\Bigr).
-\end{aligned}
-$$
+Two cases occur below. A Dirichlet polynomial $\sum_{L<n\le2L}c_nn^{it}$ has frequencies $\log n\in(\log L,\log2L]$, so $\Delta=\log2$ for every length $L$. If $W$ lies in an interval of length $T$, the sum $x\mapsto\sum_{t\in W}e^{ixt}$ has frequencies in that interval, so $\Delta=T$.
 
-Since $\widehat{\psi_1}$ decays rapidly, we may restrict the summation to $|t_1+t_2-t_3-t_4|\le 1$ at the cost of an $O_\eta(T^{-100})$ error term. The remaining terms contribute $\ll T^\eta E(W)$. For any requested loss, choose a fixed sufficiently small $\eta>0$ and a fixed sufficiently large Fourier-decay order. This proves
+**Lemma LV.5 (an oscillatory integral).** There is an absolute constant $C$ such that for real $\alpha$ with $|\alpha|\ge2$ and all $1\le a<b$,
 
 $$
-\int_{\tau\asymp 1}|\widehat{W}(\tau)|^4d\tau\preccurlyeq E(W).
+\left|\int_a^bv^{-1+i\alpha}e(-v)\,dv\right|\le C|\alpha|^{-1/2}.
 $$
-
-
- $\square$
-
-Proposition GM8.1 follows quickly from Lemma GM8.2 and Lemma GM8.3, but before we establish this we record a Fourier decay estimate for $\tilde{R}$ which will be needed in later sections. If $f$ is a version of $|R|^2$ smoothed over intervals of length $1/B$,  the Fourier transform of $f$ will decay rapidly beyond $B$, and since $R$ is essentially constant on intervals of length $1/T$, $f$ cannot be too small on a $1/T$-neighbourhood of 1.
-
-**Lemma GM8.4 (Fourier decay of smoothenings of $R$).** 
-Let $\psi_1,\psi_2,\psi_3$ be smooth non-negative bump functions satisfying:
-
--  $\psi_1(t)$ and $\psi_2(t)$ are supported on $t\asymp 1$, and $\psi_3(t)$ is supported on $|t|\preccurlyeq 1$.
-
--  $\psi_1(1)=\psi_2(1)=\psi_3(0)=1$.
 
--  For any $j\in \mathbb{Z}_{\ge 0}$ we have $\psi_1^{(j)},\psi_2^{(j)}\ll_j 1$, $\psi_3^{(j)}\preccurlyeq_j 1$.
+**Proof.** Write the integrand as $v^{-1}e^{i\phi(v)}$ with $\phi(v)=\alpha\log v-2\pi v$, so $\phi'(v)=\alpha/v-2\pi$ and $\phi''(v)=-\alpha/v^2$; $\phi'$ is monotone on $(0,\infty)$. Two standard estimates apply on an interval $[c,x]$. If $\phi'$ has constant sign and $|\phi'|\ge\lambda>0$ there, writing $e^{i\phi}=(e^{i\phi})'/(i\phi')$ and integrating by parts gives $|\int_c^xe^{i\phi}|\le3/\lambda$: the boundary terms contribute $2/\lambda$, and $\int|(1/\phi')'|=|1/\phi'(x)-1/\phi'(c)|\le1/\lambda$ by monotonicity. If instead $|\phi''|\ge\rho>0$ on $[c,x]$, the set where $|\phi'|<\sqrt\rho$ is an interval of length at most $2/\sqrt\rho$. On each of the at most two remaining intervals $\phi'$ has constant sign, and the first estimate gives $|\int_c^xe^{i\phi}|\le8/\sqrt\rho$. For the weight $v^{-1}$, put $F(x)=\int_c^xe^{i\phi}$. Integration by parts gives $\int_c^dv^{-1}e^{i\phi}\,dv=F(d)/d+\int_c^dF(v)v^{-2}\,dv$, so its absolute value is at most $c^{-1}\sup_{c\le x\le d}|F(x)|$.
 
-Let $T^\epsilon\le B\preccurlyeq T$ and
+Let $\alpha\ge2$ and $v_0=\alpha/(2\pi)$. On $(0,v_0/2]$ we have $\alpha/v\ge4\pi$, hence $\phi'\ge\alpha/(2v)$. On a dyadic interval $[V,2V]$ there, $\phi'\ge\alpha/(4V)$, so the weighted integral is at most $V^{-1}\cdot12V/\alpha=12/\alpha$. At most $1+\log_2\alpha$ dyadic intervals meet $[1,v_0/2]$, giving $O(\alpha^{-1}\log\alpha)$. On $[v_0/2,2v_0]$, $|\phi''|\ge\alpha/(4v_0^2)=\pi^2/\alpha$, so the integral is at most $(4\pi/\alpha)\cdot8\sqrt\alpha/\pi=32\alpha^{-1/2}$. On $[2v_0,\infty)$, $|\phi'|\ge\pi$, so the integral is at most $(2v_0)^{-1}\cdot3/\pi=3/\alpha$. If $\alpha\le-2$, then $|\phi'|\ge\max(2\pi,|\alpha|/v)$ on all of $(0,\infty)$. On $[V,2V]$ the weighted integral is at most $\min(6/|\alpha|,3/(2\pi V))$. The dyadic intervals with $V\le|\alpha|$ give $O(|\alpha|^{-1}\log|\alpha|)$, and the others give a geometric sum $O(1/|\alpha|)$. In all cases the total is $O(|\alpha|^{-1/2})$. $\square$
 
+#### 10.1.3. The core estimate and the Gram matrix
 
-$$
-f(u) := \psi_1(u)  \int B \psi_3(B (u - u')) \psi_2(u')|R(u')|^2 du'.
-$$
-
-Then for all $j\in\mathbb{Z}_{\ge 0}$ we have
-
+**Proposition LV.6 (the core estimate).** Fix $\epsilon>0$. Let $N$ be sufficiently large, $T=N^{6/5}$ and $7/10\le\sigma\le4/5$. Let $|b_n|\le1$, put
 
 $$
-\widehat{f}(\xi)\preccurlyeq_j \frac{T^j}{|\xi|^j}\sup_uf(u).
+D_N(t)=\sum_nw(n/N)b_nn^{it},
 $$
 
-**Proof.** 
-Let 
+and let $W$ be a $T^\epsilon$-separated subset of an interval of length $T$ with $|D_N(t)|\ge N^\sigma$ for every $t\in W$. Then
 
-
 $$
-f_1(u):=\int B \psi_3(B (u - u')) \psi_2(u')|R(u')|^2 du',\qquad g(u):=\psi_2(u)|R(u)|^2.
+|W|\preccurlyeq TN^{(12-20\sigma)/5},
+\tag{LV.7}
 $$
-
- Then $f_1(u)$ is a convolution of $B \psi_3(B u)$ and $g(u)$, so $\widehat{f}_1(\xi)$ has Fourier transform $\widehat{\psi_3}(\xi/B)\widehat{g}(\xi)$. Since $|R(u)|^2\le|W|^2$ and $\psi_2$ is supported on $|x|\asymp 1$, we see that $\widehat{g}(\xi)\ll |W|^2$. The derivative bounds on $\psi_3$ imply that $\widehat{\psi}_3(\xi)\preccurlyeq_j (1+|\xi|)^{-j}$ for all $j\in \mathbb{Z}_{\ge 0}$. Thus $\widehat{f}_1(\xi) \preccurlyeq_j|W|^2 B^j/(1+|\xi|)^j$ for $j\in\mathbb{Z}_{\ge 0}$. Since $f(u)=\psi_1(u)f_1(u)$ we have $\widehat{f}=\widehat{\psi_1}\ast\widehat{f_1}$ and $\widehat{\psi_1}(\xi)\ll_j (1+|\xi|)^{-j}$ for $j\in\mathbb{Z}_{\ge 0}$ from the derivative bound on $\psi_1$. This gives
 
-
-$$
-\widehat{f}(\xi)\preccurlyeq_j |W|^2\Bigl(\frac{B}{|\xi|}\Bigr)^j\qquad\text{ for all $j\in \mathbb{Z}_{\ge 0}$.}
-$$
+with constants depending on $\epsilon$ but not on $\sigma$.
 
- Since $W\subseteq [0,T]$, we have that $|R(u)|^2\gg |W|^2$ if $u$ is a sufficiently small multiple of $1/T$ from $1$. Since $\psi_2(1)=\psi_3(0)=1$ we also have that $\psi_2(u)\gg 1$ if $u$ is sufficiently close to 1 and $\psi_3(B(1-u))\gg 1$ if $u$ is a sufficiently small multiple of $1/B$ from 1. Since $B\preccurlyeq T$, we find from restricting $u$ to a neighbourhood of 1 of width a small multiple of $\min(1/T,1/B)$, that
+Sections 10.1.3–10.1.11 prove Proposition LV.6, and $N,T,\sigma,\epsilon,W,b_n$ keep this meaning there. We may assume $W\ne\varnothing$. Distinct points of $W$ satisfy $T^\epsilon\le|t-t'|\le T$, and $|W|\le T+1\le2T$. The truncation exponent $\kappa$ satisfies $0<\kappa\le\epsilon/4$.
 
+Let $A$ be the matrix with rows indexed by $t\in W$ and columns by the integers $n\in(N,2N)$, at most $N$ of them, with entries $A_{t,n}=w(n/N)(n/N)^{it}$. With $\mathbf b=(b_n)$ we have $(A\mathbf b)_t=N^{-it}D_N(t)$. The Gram matrix $G=AA^*$ has entries
 
 $$
-f(1)= \int B \psi_3(B(1-u))\psi_2(u) |R(u)|^2 du\succcurlyeq  \frac{B}{T}|W|^2.
+G_{t,t'}=\sum_nw(n/N)^2(n/N)^{i(t-t')}.
 $$
-
- For $j=0$, fixed support and nonnegativity give $|\widehat f(\xi)|\le\|f\|_1\ll\|f\|_\infty$. For $j\ge1$, the preceding bound and $B\preccurlyeq T$ give
 
+**Lemma LV.8 (top eigenvalue and cubic trace).** Let $H$ be a positive semidefinite Hermitian $r\times r$ matrix with largest eigenvalue $\lambda_{\max}$. Put $\mu=\operatorname{tr}H/r$ and $\Xi=\operatorname{tr}H^3-(\operatorname{tr}H)^3/r^2$. Then $\Xi\ge0$ and
 
 $$
-\widehat{f}(\xi)\preccurlyeq_j  |W|^2\Bigl(\frac{B}{|\xi|}\Bigr)^j\preccurlyeq \frac{TB^{j-1}}{|\xi|^j}f(1)\preccurlyeq_j \frac{T^j}{|\xi|^j}\sup_uf(u).
+\lambda_{\max}\le4\mu+2\,\Xi^{1/3}.
+\tag{LV.9}
 $$
-
- $\square$
-
-We now return to  prove Proposition GM8.1.
 
-**Proof of Proposition GM8.1.**  Starting with Proposition GM7.2, we have for some $M_1\le M\preccurlyeq T/N$ and some suitable bumps $\tilde{\psi}_1$, $\tilde{\psi}_2$
+**Proof.** By Lemma LV.2, $H$ has eigenvalues $\lambda_1,\dots,\lambda_r\ge0$ with $\sum\lambda_i=r\mu$ and $\sum\lambda_i^3=\operatorname{tr}H^3$. For real $\lambda,\mu$ one checks $\lambda^3-\mu^3-3\mu^2(\lambda-\mu)=(\lambda-\mu)^2(\lambda+2\mu)$. Summing over the eigenvalues, the linear terms cancel because $\sum(\lambda_i-\mu)=0$, and therefore
 
-
 $$
-S_3 \preccurlyeq  \sum_{\substack{|m_1| \sim M_1\\  |m_2|,  |m_3| \asymp M}}  \frac{N^2}{M} \int_{v_1 \asymp 1}  \Big| R ( v_1 ) \tilde{R} \Big( \frac{ m_1 v_1 + m_3}{m_2 v_1} \Big) \tilde{R} \Big( \frac{m_1 v_1 + m_3}{m_2} \Big) \Big| dv_1 .
+\Xi=\sum_{i=1}^r\left(\lambda_i^3-\mu^3\right)=\sum_{i=1}^r(\lambda_i-\mu)^2(\lambda_i+2\mu)\ge0.
 $$
-
-Using Hölder's inequality,  we find that the integral over $v_1$ is bounded by
 
-
-$$
-\begin{aligned}
- \left( \int_{v_1 \asymp 1} |R(v_1)|^2 dv_1 \right)^{1/2}&\left( \int_{v_1 \asymp 1} \left|  \tilde{R} \Big( \frac{ m_1 v_1 + m_3}{m_2 v_1} \Big) \right|^4 dv_1  \right)^{1/4}\\
-&\qquad \times  \left( \int_{v_1 \asymp 1} \left|  \tilde{R}  \Big( \frac{m_1 v_1 + m_3}{m_2} \Big) \right|^4 dv_1   \right)^{1/4}. 
-\end{aligned}
-$$
+If $\lambda_{\max}\le4\mu$ there is nothing to prove. Otherwise $\lambda_{\max}-\mu>\tfrac34\lambda_{\max}$, and the term of an eigenvalue equal to $\lambda_{\max}$ alone gives $\Xi\ge\tfrac9{16}\lambda_{\max}^3$. Hence $\lambda_{\max}\le(16/9)^{1/3}\Xi^{1/3}\le2\Xi^{1/3}$. $\square$
 
-In the second integral we change of variables to $u = \frac{m_1 v_1 + m_3}{m_2 v_1}$ with Jacobian factor $\asymp 1$.   In the third integral change of variables to $u = \frac{m_1 v_1 + m_3}{m_2}$ with a Jacobian factor of norm $\asymp  M / M_1$. Since $\tilde{R}$ is supported on $u\asymp 1$ (from the support of $\tilde{\psi}_2$), we obtain
+**Lemma LV.10 (large values and the Gram matrix).** With $\Xi=\operatorname{tr}G^3-(\operatorname{tr}G)^3/|W|^2$,
 
 $$
-S_3 \ll N^2 M^2  \left( \int_{v_1 \asymp 1} |R(v_1)|^2 dv_1 \right)^{1/2} \left( \int_{u \asymp 1} |\tilde{R} (u) |^4 du  \right)^{1/2}  
+|W|\le N^{1-2\sigma}\left(4\operatorname{tr}G/|W|+2\,\Xi^{1/3}\right).
 $$
 
-Using $M \preccurlyeq T/N$ and Lemmas GM8.2 and GM8.3,  we find
+**Proof.** By Lemma LV.2 and $|b_n|\le1$,
 
 $$
- S_3 \preccurlyeq T^2 |W|^{1/2} E(W)^{1/2} . 
+|W|N^{2\sigma}\le\sum_{t\in W}|D_N(t)|^2=\|A\mathbf b\|^2\le\lambda_{\max}(G)\|\mathbf b\|^2\le N\lambda_{\max}(G).
 $$
-
-
- $\square$
-
-When $E(W)\approx |W|^2$,  the bound from Proposition GM8.1 is the best bound for $S_3$ we know how to prove and corresponds to square-root cancellation in the $R$ function.  For larger $E(W)$, however, we can improve the bound for $S_3$.   Let us indicate the general direction here,  and then we will develop the tool we need in the next section.
 
-Ignoring some technical smoothing,  we morally have
+Lemma LV.8 with $H=G$ and $r=|W|$ completes the proof. $\square$
 
+#### 10.1.4. Poisson expansion of the traces
 
-$$
-S_3 \preccurlyeq  \sum_{\substack{|m_1| \sim M_1\\  |m_2|,  |m_3| \asymp M}}  \frac{N^2}{M} \int_{v_1 \asymp 1}  \Big| R ( v_1 ) R \Big( \frac{ m_1 v_1 + m_3}{m_2 v_1} \Big) R \Big( \frac{m_1 v_1 + m_3}{m_2} \Big) \Big| dv_1.
-$$
+For real $s$ let $q_s(x)=w(x)^2x^{is}$ for $x>0$ and $q_s(x)=0$ for $x\le0$; it is smooth and supported in $[1,2]$.
 
-We can split up the sum over $\mathbf{m}$ and integral over $v_1$ into pieces where the first $R$ factor has size $\sim A_1$,  the second $R$ factor has size $\sim A_2$, and the third $R$ factor has size $\sim A_3$.   For simplicity,  suppose that $A_1 = A_2 = A_3 = A$, which we expect to be the critical case, and focus on the value of $A$ that dominates the integral.  If $A \approx |W|^{1/2}$,  then we get the bound corresponding to minimal energy.    If $A$ is larger,  then $|R(v)| \sim A$ for only a small subset $U_A \subset \{ v \asymp 1 \}$ by Lemma GM8.2. Our splitting of the summation and integration would mean we have the conditions $v_1\in U_A$, $(m_1v_1+m_3)/(m_2v_1)\in U_A$ and $(m_1v_1+m_3)/m_2\in U_A$ and typically we would think it to be rare for these three sparse conditions to simultaneously hold.  If the simple analysis in Proposition GM8.1 was sharp,  it would mean that for many $v \in U_A$ and many $m_1, m_2, m_3$,  we have $\frac{m_1 v + m_3}{m_2} \in U_A$.   We will see that a small set $U$ cannot be approximately invariant under this large set of affine transformations.   In the next section, we will prove a precise estimate in this spirit, and then we will use it to give stronger bounds for $S_3$ when the energy is greater than $|W|^2$.  
+**Lemma LV.11 (the transforms $\widehat q_s$).** For real $s,\xi$ and integers $j\ge0$:
 
-#### 10.1.9. Summing over affine transformations
+1. $|\widehat q_s(\xi)|\le\|w\|_2^2\le1$;
+2. $|\widehat q_s(\xi)|\le C_j(1+|s|)^j|\xi|^{-j}$;
+3. $|\widehat q_s(\xi)|\le C_j(1+|\xi|)^j|s|^{-j}$ if $s\ne0$;
+4. $\widehat q_{-s}(\xi)=\overline{\widehat q_s(-\xi)}$.
 
-Given $1\le M\le T$ and a compactly supported smooth function $f$, we define
+**Proof.** Part 1 is immediate. The $j$-th derivative of $q_s$ is a sum of products of derivatives of $w^2$ with $s$-polynomials of degree at most $j$ times powers of $x$, so it is bounded on $[1,2]$ by $C_j(1+|s|)^j$; part 2 follows by integration by parts. For part 3 put $g_\xi(x)=w(x)^2e(-\xi x)$. Since $x^{is}=(x^{is+1})'/(is+1)$, integrating by parts $j$ times gives
 
-
 $$
-J(f):= \sup_{1\le M_1,M_2,M_3\le M}\int \Big( \sum_{|m_1| \sim M_1,  m_2 \sim M_2 , |m_3| \ll M_3 }  f \Big( \frac{m_1 u + m_3}{m_2} \Big)  \Big)^2 du,
+\widehat q_s(\xi)=\int g_\xi(x)x^{is}\,dx=\frac{(-1)^j}{(is+1)\cdots(is+j)}\int_1^2g_\xi^{(j)}(x)\,x^{is+j}\,dx.
 $$
-
-which is an average of sums of affine transformations of $f$. The aim of this section is to establish the following general bound for $J(f)$.
 
-All constants in the summation constraints are fixed in terms of the support interval $[1/C,C]$. In particular $|m_3|\ll M_3$ means $|m_3|\le C_*M_3$ for a fixed $C_*$ large enough to cover the later $|j|\le C_*M_2$ condition. Replacing a scale by a fixed constant multiple or splitting a fixed enlarged dyadic interval changes $J$ and its bound by only a fixed factor. The supremum contains integer scale ranges $1\le M_i\le M$; this is the full range used in the Dirichlet-polynomial application.
+Each factor satisfies $|is+l|\ge|s|$, and $|g_\xi^{(j)}|\le C_j(1+|\xi|)^j$. Part 4 holds because $q_{-s}=\overline{q_s}$. $\square$
 
-**Proposition GM9.1 (Equidistribution over affine transformations).**   Suppose that $f(u)$ is non-negative and supported on $u \asymp 1$ and that $|\widehat{f}(\xi)|\preccurlyeq_j (T/|\xi|)^j\sup_u |f(u)|$ for all $j\in \mathbb{Z}_{\ge 0}$.  Then 
+The Fourier transform of $x\mapsto q_s(x/N)$ is $\xi\mapsto N\widehat q_s(N\xi)$, so Poisson summation gives
 
-
 $$
-J(f) \preccurlyeq M^6 \Big( \int f(u) du \Big)^2 + M^4 \int f(u)^2 du.
+G_{t,t'}=\sum_nq_{t-t'}(n/N)=N\sum_{m\in\mathbb Z}\widehat q_{t-t'}(mN).
+\tag{LV.12}
 $$
-
-To avoid any possible confusion over the dependencies of the implied constants in the statement above, we emphasize that this is saying that if $f:\mathbb{R}\rightarrow [0,\infty)$ and $T\in \mathbb{R}$ have the property that there is a constant $C>0$ such that $f$ is supported on $[1/C,C]$ and the property that for every $\epsilon>0$ and $j\in\mathbb{Z}_{\ge 0}$ there is a constant $c(j,\epsilon)$ such that $|\widehat{f}(\xi)|\le c(j,\epsilon)T^\epsilon (T/|\xi|)^j\|f\|_\infty$ (for all $\xi \in \mathbb{R}$), then we can conclude that for every $\delta>0$ there is a constant $c'(\delta)>0$, depending only on $C$ and all the constants $c(j,\epsilon)$, such that
 
+Consequently $\operatorname{tr}G=|W|N\bigl(\|w\|_2^2+\sum_{m\ne0}\widehat q_0(mN)\bigr)$, and by part 2 of Lemma LV.11 the sum over $m\ne0$ is negligible. Expanding the cube of (LV.12) gives $\operatorname{tr}G^3=\sum_{\mathbf m\in\mathbb Z^3}\mathcal I_{\mathbf m}$, where
 
 $$
-J(f)\le c'(\delta)T^\delta(M^6\|f\|_1^2+M^4\|f\|_2^2).
+\mathcal I_{\mathbf m}=N^3\sum_{t_1,t_2,t_3\in W}\widehat q_{t_1-t_2}(m_1N)\,\widehat q_{t_2-t_3}(m_2N)\,\widehat q_{t_3-t_1}(m_3N)
+\tag{LV.13}
 $$
-
-We emphasize that in this section all implied constants from our $\ll$ and $\preccurlyeq$ notation may depend on the implied constants $C$ and $c(j,\epsilon)$ from the assumptions on $f$.
-
-The following lemma is the main technical result used to prove Proposition GM9.1, which is based on a fairly long Fourier analytic argument.
 
-**Lemma GM9.2 (Iterative bound for $J(f)$).** Let $f$ be as in Proposition GM9.1. Fix a requested inequality loss $\delta>0$ and a kernel exponent $0<\beta<1$. Choose a fixed nonnegative smooth function $\chi$, equal to one on $[-1,1]$, supported on $[-2,2]$, and bounded by one. For all sufficiently large $T$, there is a number
+and the series converges absolutely by Lemma LV.11.
 
-$$
-1\le A\le C_{\delta,\beta}T^\beta
-$$
+**Lemma LV.14 (the main term cancels).** We have
 
-such that, with $\psi(x)=\chi(x/A)$ and
-
 $$
-\tilde f(u)=T\int\psi(T(u-u'))f(u')\,du',
+|W|\ll N^{2-2\sigma}+N^{1-2\sigma}\Bigl|\sum_{\mathbf m\in\mathbb Z^3\setminus\{\mathbf0\}}\mathcal I_{\mathbf m}\Bigr|^{1/3}.
+\tag{LV.15}
 $$
 
-we have
+Moreover, the sum of $|\mathcal I_{\mathbf m}|$ over the $\mathbf m$ with $\max_i|m_i|>T^{1+\kappa}/N$ is negligible.
 
-$$
-J(f)\le C_{\delta,\beta}T^\delta
-\left(M^6\|f\|_1^2+M^2\|f\|_2J(\tilde f)^{1/2}\right).
-$$
+**Proof.** In $\mathcal I_{\mathbf0}$ the terms with $t_1=t_2=t_3$ contribute $N^3|W|\widehat q_0(0)^3=N^3|W|\|w\|_2^6$. Every other term contains a factor $\widehat q_{t-t'}(0)$ with $t\ne t'$, which is at most $C_jT^{-\epsilon j}$ by part 3 of Lemma LV.11, while the remaining factors are at most one. These terms total at most $8C_jN^3T^{3-\epsilon j}$, which is negligible. The expansion of $\operatorname{tr}G$ gives $(\operatorname{tr}G)^3/|W|^2=N^3|W|\|w\|_2^6$ up to a negligible error. Hence $\Xi=\sum_{\mathbf m\ne\mathbf0}\mathcal I_{\mathbf m}$ up to a negligible error. As $\Xi\ge0$ and $\operatorname{tr}G/|W|\le2N$, Lemma LV.10 gives (LV.15); the cube root of the error is absorbed by $N^{2-2\sigma}\ge1$.
 
-The constants and the lower threshold for $T$ depend only on $\delta,\beta$, the fixed support bound and the stated Fourier-decay constants of $f$. The kernel is chosen after $\delta,\beta$. Its support is $|x|\le2A$, its derivatives satisfy $\|\psi^{(j)}\|_\infty\le C_j A^{-j}$, and its mass is
+For the second assertion let $|m_1|>T^{1+\kappa}/N$; the other coordinates are treated in the same way. Since $|t_1-t_2|\le T$, part 2 of Lemma LV.11 gives
 
 $$
-a:=\|\psi\|_1=A\|\chi\|_1\ll_{\delta,\beta}T^\beta.
+|\widehat q_{t_1-t_2}(m_1N)|\le C_j\Bigl(\frac{2T}{|m_1|N}\Bigr)^j\le C_j2^jT^{-\kappa(j-2)}\Bigl(\frac{T}{|m_1|N}\Bigr)^2.
 $$
-
-Thus $\|\tilde f\|_1=a\|f\|_1$ and $\|\tilde f\|_2\le a\|f\|_2$ by the convolution inequalities above. The two small losses $\delta$ and $\beta$ will be accounted for separately in the finite iteration.
 
-Before we prove Lemma GM9.2, we first show how to deduce Proposition GM9.1 from it.
+The sum of $(T/(|m_1|N))^2$ over these $m_1$ is at most $4T$. For the other two factors, $\sum_m|\widehat q_s(mN)|\le1+\sum_{m\ne0}C_2(1+T)^2(mN)^{-2}\le CT^2$ whenever $|s|\le T$. So these terms total at most $C_jN^3|W|^3T^{5-\kappa(j-2)}$, which is negligible for large $j$. $\square$
 
-**Proof of Proposition GM9.1 assuming Lemma GM9.2.** 
-We wish to show that for any $\epsilon>0$ there is a $C(\epsilon)>0$ such that
+Split the nonzero frequencies according to how many coordinates vanish:
 
-
 $$
-J(f)\le C(\epsilon)T^\epsilon \Bigl( M^6 \Big( \int f(u) du \Big)^2 + M^4 \int f(u)^2 du\Bigr),
-\tag{GM9.1}
+\sum_{\mathbf m\ne\mathbf0}\mathcal I_{\mathbf m}=\Sigma_1+\Sigma_2+\Sigma_3,
 $$
-
 
-for any function $f$ satisfying the assumptions of Proposition GM9.1 (with the constant $C(\epsilon)$ depending only on $\epsilon$ and the implied constants of the assumptions on $f$). 
+where $\Sigma_r$ is the sum over the $\mathbf m$ with exactly $r$ nonzero coordinates. Relabelling $t_1,t_2,t_3$ cyclically in (LV.13) shows $\mathcal I_{(m_1,m_2,m_3)}=\mathcal I_{(m_2,m_3,m_1)}$.
 
-Cauchy–Schwarz over the $O(M_1M_2M_3)$ summands and the affine Jacobian $m_2/|m_1|$ give the initial bound
+#### 10.1.5. Frequencies with a vanishing coordinate
 
-$$
-J(f)\ll M_1M_2^3M_3^2\|f\|_2^2
-\le M^6\|f\|_2^2\le T^2M^4\|f\|_2^2.
-$$
+**Lemma LV.16.** $\Sigma_1$ is negligible.
 
-This also settles bounded $T$. We now prove (GM9.1) by a finite iteration, retaining the kernel mass at each step.
+**Proof.** By the cyclic symmetry, $\Sigma_1=3\sum_{m_3\ne0}\mathcal I_{(0,0,m_3)}$. In a term with $t_1\ne t_2$ or $t_2\ne t_3$, one of the factors $\widehat q_{t_1-t_2}(0)$, $\widehat q_{t_2-t_3}(0)$ is at most $C_jT^{-\epsilon j}$. As in the proof of Lemma LV.14, the remaining sum over $m_3$ is at most $CT^2$, so these terms total at most $C_jN^3|W|^3T^{2-\epsilon j}$. If $t_1=t_2=t_3$, the factor $\sum_{m_3\ne0}|\widehat q_0(m_3N)|\le2\sum_{m\ge1}C_j(mN)^{-j}$ is negligible. $\square$
 
-First we check the Fourier hypothesis relative to the smoothed function's own supremum. For the kernel of GM9.2, integration by parts in the fixed function $\chi$ gives
+For real $s$ put
 
 $$
-|\widehat\psi(y)|\le C_j a(1+A|y|)^{-j}.
+H(s)=\sum_{m\ne0}\widehat q_s(mN).
 $$
 
-The support of $\tilde f$ lies in $[1/C-2A/T,C+2A/T]$. For sufficiently large $T$ it therefore lies in a fixed positive interval of length $L\ll_C1$. Positivity and Fubini give $\|\tilde f\|_\infty\ge\|\tilde f\|_1/L=a\|f\|_1/L$. Since $|\widehat f(\xi)|\le\|f\|_1$, we obtain
+**Lemma LV.17 (dual sums).** If $(1+|s|)T^\kappa<N$, then $H(s)$ is negligible. If $T^\epsilon\le|s|\le T$ and $L$ is an integer with $T^\kappa(1+|s|)/N\le L\le T^2$, then
 
 $$
-|\widehat{\tilde f}(\xi)|
-=|\widehat f(\xi)\widehat\psi(\xi/T)|
-\le C_j L\|\tilde f\|_\infty(1+A|\xi|/T)^{-j}
-\le C_j L\|\tilde f\|_\infty(T/|\xi|)^j.
+|H(s)|\le C|s|^{-1/2}\int_{-T^\kappa}^{T^\kappa}\Bigl|\sum_{1\le m\le L}m^{-i(s-r)}\Bigr|\,dr+(\text{negligible}),
+\tag{LV.18}
 $$
-
-Here $A\ge1$, and the inequality for $j=0$ has the same meaning at $\xi=0$. Thus $\tilde f$ satisfies every Fourier-decay hypothesis with constants independent of $T,A$, and division by its kernel mass preserves that property.
-
-It suffices to take $0<\epsilon\le1$. Put
 
-$$
-B=M^6\|f\|_1^2+M^4\|f\|_2^2,
-\qquad \delta=\beta=\epsilon/16,
-$$
+where $C$ depends only on $w$.
 
-and choose an integer $k$ with $2^{1-k}\le\epsilon/2$. If $f=0$ the assertion is immediate. Otherwise use $[1/(2C),2C]$ as a common support interval and choose the fixed summation constants in $J$ for that interval at the outset; the fixed-factor convention above allows this enlargement. Define $h_0=f$ and, for $0\le i<k$, apply GM9.2 to $h_i$ and set $h_{i+1}=\tilde h_i/a_i$, where $a_i$ is the mass of that step's kernel. Then $\|h_i\|_1=\|f\|_1$ and $\|h_i\|_2\le\|f\|_2$. The Fourier calculation just proved makes each $h_i$ admissible, with uniform decay constants because the common interval has length at most $2C$. Thus all kernel bounds may use one constant $C_{\delta,\beta}$, depending on $\epsilon$ and the original hypotheses. Only $k$ smoothings occur, and their total support enlargement is at most $2kC_{\delta,\beta}T^{\beta-1}$. For sufficiently large $T$ this is smaller than the distance from $[1/C,C]$ to the boundary of the common interval. All $h_i$ therefore remain in that interval, which justifies the successive applications and their uniform constants.
+**Proof.** By part 2 of Lemma LV.11, $|\widehat q_s(mN)|\le C_j((1+|s|)/(|m|N))^j$. In the first case this is at most $C_jT^{-\kappa j}|m|^{-j}$ for every $m\ne0$, and the sum is negligible. In the second case $(1+|s|)/N\le LT^{-\kappa}$, so the terms with $|m|>L$ contribute at most $C_jT^{-\kappa j}\sum_{|m|>L}(L/|m|)^j\le4C_jLT^{-\kappa j}$, again negligible.
 
-Since $J(\tilde h_i)=a_i^2J(h_{i+1})$, GM9.2 and $a_i\ll T^\beta$ give, with $X_i=J(h_i)/B$ and $\theta=\delta+\beta=\epsilon/8$,
+For the terms $1\le m\le L$ we use the Mellin transform $\mathcal W(z)=\int_0^\infty w(x)^2x^{z-1}\,dx$, an entire function. The Fourier transform of the smooth compactly supported function $u\mapsto e^uw(e^u)^2$ is $\xi\mapsto\mathcal W(1-2\pi i\xi)$. Fourier inversion, followed by the substitutions $x=e^u$ and $r=-2\pi\xi$, gives
 
 $$
-X_i\le C_\epsilon T^\theta(1+X_{i+1}^{1/2}).
+w(x)^2=\frac1{2\pi}\int_{\mathbb R}\mathcal W(1+ir)\,x^{-1-ir}\,dr\qquad(x>0).
 $$
 
-The initial bound applied to $h_k$ gives $X_k\ll T^2$. Iterating the displayed inequality $k$ times yields
+Since $\mathcal W(1+ir)=\int w(x)^2x^{ir}\,dx$, we have $|\mathcal W(1+ir)|\le\int w^2\le1$, and integration by parts as in part 3 of Lemma LV.11 gives $|\mathcal W(1+ir)|\le C_j(1+|r|)^{-j}$. For $1\le m\le L$ the interval $[1/m,2L/m]$ contains $[1,2]$. So, with the order of integration interchanged on this compact range,
 
 $$
-X_0\le C_{\epsilon,k}
-T^{\theta(1+1/2+\cdots+2^{1-k})+2^{1-k}}
-\le C_{\epsilon,k}T^{3\epsilon/4}
-\le C_{\epsilon,k}T^\epsilon.
+\widehat q_s(mN)=\int_{1/m}^{2L/m}w(x)^2x^{is}e(-mNx)\,dx=\frac1{2\pi}\int_{\mathbb R}\mathcal W(1+ir)\int_{1/m}^{2L/m}x^{-1+i(s-r)}e(-mNx)\,dx\,dr.
 $$
-
-In the last comparison, the geometric sum is less than two and $2^{1-k}\le\epsilon/2$. This proves (GM9.1) for each requested loss with a finite constant and completes the proof.
- $\square$
-
-We now return to the proof of Lemma GM9.2.
 
-**Proof of  Lemma GM9.2.** 
-Fix $\delta,\beta$ throughout this proof. The most interesting situation is when $M_1=M_2=M_3=M$, which the reader may keep in mind on first reading. 
+The substitution $v=mNx$ turns the inner integral into $(mN)^{-i(s-r)}\Gamma(s-r)$, where $\Gamma(\alpha)=\int_N^{2LN}v^{-1+i\alpha}e(-v)\,dv$ does not depend on $m$. Hence
 
-By rescaling, assume $\|f\|_\infty=1$. Fourier inversion and the assumed decay give $\|f'\|_\infty\preccurlyeq T^2$: use $|\widehat f|\le\|f\|_1\ll1$ for $|\xi|\le T$ and the hypothesis with $j=4$ beyond $T$. Nonnegativity then gives $\|f\|_1\succcurlyeq T^{-2}$. We have $1\le M\le T$, so all integer scales and frequencies below are bounded by fixed powers of $T$. Thus every additive $O(T^{-100})$ term is negligible relative to $M^6\|f\|_1^2$. Bounded $T$ is absorbed in a constant depending on the support and decay constants.
-
-We let $\psi_1(x)$ be a smooth bump supported on $|x| \ll 1$ so that $\psi_1(m_3/M_3)$ majorizes the summation condition $|m_3|\ll M_3$.   Thus we can bound the inner sum in $J(f)$ by
-
-
 $$
-g(u) :=  \sum_{|m_1| \sim M_1, m_2 \sim M_2} \sum_{m_3 }  \psi_1\Bigl(\frac{m_3}{M_3}\Bigr) f \Big( \frac{m_1 u + m_3}{m_2}  \Big).
+\sum_{1\le m\le L}\widehat q_s(mN)=\frac1{2\pi}\int_{\mathbb R}\mathcal W(1+ir)\,N^{-i(s-r)}\,\Gamma(s-r)\sum_{1\le m\le L}m^{-i(s-r)}\,dr.
+\tag{LV.19}
 $$
-
-Squaring and integrating over $u$, and then applying Plancherel gives (for the choice of $M_1,M_2,M_3$ achieving the supremum)
 
+On $|r|>T^\kappa$ we use $|\Gamma|\le\log(2L)$ and $|\sum_m|\le L$; this part is at most $C_jL\log(2L)T^{-\kappa(j-1)}$, which is negligible. For $|r|\le T^\kappa$ the number $\alpha=s-r$ satisfies $|\alpha|\ge|s|-T^\kappa\ge|s|/2\ge2$, since $\kappa\le\epsilon/4$ and $T$ is large. Lemma LV.5 gives $|\Gamma(\alpha)|\le C\sqrt2|s|^{-1/2}$, which proves (LV.18) for the positive frequencies.
 
-$$
-J(f)\le \int |g(u)|^2 du=\int |\widehat{g}(\xi)|^2 d\xi.
-\tag{GM9.2}
-$$
+By part 4 of Lemma LV.11, $\sum_{-L\le m\le-1}\widehat q_s(mN)=\overline{\sum_{1\le m\le L}\widehat q_{-s}(mN)}$. Apply the positive case to $-s$ and substitute $r\mapsto-r$. This replaces $\sum_mm^{-i(-s-r)}$ by $\sum_mm^{i(s-r)}$, which has the same absolute value as $\sum_mm^{-i(s-r)}$. $\square$
 
-We wish to estimate $\widehat{g}(\xi)$.  We have
+**Proposition LV.20 (two nonzero frequencies).** For every integer $k\ge1$,
 
 $$
- \widehat{g}(\xi) =   \sum_{|m_1| \sim M_1, m_2 \sim M_2} \int \sum_{m_3 } \psi_1\Bigl(\frac{m_3}{M_3}\Bigr) f \Big( \frac{m_1 u + m_3}{m_2}  \Big) e(- \xi u) du.  
+\Sigma_2\preccurlyeq N^2|W|^2+TN|W|^{2-1/k}+N^2|W|^{2-3/(4k)}T^{1/(2k)},
+\tag{LV.21}
 $$
 
-We do a change of variables: $\tilde{u} = u  + \frac{m_3}{m_1}$, so that $f( \frac{m_1 u + m_3}{m_2} ) = f( \frac{m_1 \tilde{u}}{m_2})$.  In the new variables, we get
-
-$$
- \widehat{g}(\xi) =   \sum_{|m_1| \sim M_1, m_2 \sim M_2} \left( \int f \Big( \frac{m_1 \tilde{u}}{m_2}  \Big) e(- \xi \tilde{u}) d \tilde{u}\right)  \left( \sum_{m_3 \in \mathbb{Z}}   \psi_1\Bigl(\frac{m_3}{M_3}\Bigr)  e\Bigl(\frac{m_3}{m_1} \xi\Bigr) \right).  
-$$
+with constants depending also on $k$.
 
-The  integral in parentheses is $\frac{m_2}{|m_1|} \widehat{f}( \frac{m_2}{m_1} \xi )$.   The first key point in our analysis is that we can explicitly do the last sum by  Poisson summation.  It is equal to $M_3 \sum_{\ell} \widehat{\psi}_1( M_3 (\ell - \frac{\xi}{m_1}))$.    So all together we have
+**Proof.** Consider the terms of $\Sigma_2$ with $m_3=0\ne m_1,m_2$. The factor $\widehat q_{t_3-t_1}(0)$ is at most $C_jT^{-\epsilon j}$ unless $t_3=t_1$. The sums of the other two factors over $m_1,m_2$ are at most $CT^2$ each. Up to a negligible error, only $t_3=t_1$ survives, and that part equals $N^3\|w\|_2^2\sum_{t_1,t_2}H(t_1-t_2)H(t_2-t_1)$. Part 4 of Lemma LV.11 gives $H(-s)=\overline{H(s)}$. The two other positions of the vanishing coordinate give the same expression after a cyclic relabelling. Therefore
 
 $$
- \widehat{g}(\xi) = \sum_{|m_1| \sim M_1} M_3 \sum_{\ell } \widehat{\psi}_1 \Bigl(M_3 \Bigl(\ell - \frac{\xi}{m_1}  \Bigr) \Bigr)  \sum_{m_2 \sim M_2}  \frac{m_2}{|m_1|} \widehat{f} \Big( \frac{m_2}{m_1} \xi \Big). 
+\Sigma_2=3N^3\|w\|_2^2\sum_{t,t'\in W}|H(t-t')|^2+(\text{negligible}).
+\tag{LV.22}
 $$
 
-Since $\widehat{\psi}_1$ is rapidly decaying, $\widehat{\psi}_1(M_3(\ell - \frac{\xi}{m_1} ))$ is negligible unless $| \xi - \ell m_1 | \preccurlyeq \frac{M_1}{M_3}$.  Therefore, we have
+The diagonal $t=t'$ is negligible, because $|H(0)|\le2\sum_{m\ge1}C_j(mN)^{-j}$. For $t\ne t'$ the difference $s=t-t'$ satisfies $T^\epsilon\le|s|\le T$. Split this range into the $O(\log T)$ dyadic ranges $K\le|s|<2K$, with $K=2^iT^\epsilon\le T$. If $(1+2K)T^\kappa<N$, Lemma LV.17 shows that $H$ is negligible on the range. Otherwise $K\ge NT^{-\kappa}/4$. In that case put $L_K=\lceil(1+2K)T^\kappa/N\rceil\le6KT^\kappa/N$. Lemma LV.17 with $L=L_K$ and Cauchy–Schwarz in $r$ give, for $K\le|s|<2K$,
 
 $$
-| \widehat{g}(\xi) | \le \sum_{|m_1| \sim M_1}\sum_{\ell: |\xi - m_1 \ell| \preccurlyeq \frac{M_1}{M_3}} M_3  \Big|   \sum_{m_2 \sim M_2} \frac{m_2}{|m_1|} \widehat{f} \Big( \frac{m_2}{m_1} \xi \Big) \Big| +O(T^{-100}).
-\tag{GM9.3}
+|H(s)|^2\le CK^{-1}T^\kappa\int_{-T^\kappa}^{T^\kappa}\Bigl|\sum_{1\le m\le L_K}m^{ir}\,m^{-is}\Bigr|^2dr+(\text{negligible}).
 $$
-
 
-We have to estimate $\int_\mathbb{R} |\widehat{g}(\xi)|^2 d \xi$.  
-For a small $\eta>0$, we break up the domain of integration into the region $|\xi| \le T^\eta M_1/M_3$, the region $T^\eta M_1/M_3<|\xi|\le T^6$ and the remainder: 
+Cut $[1,L_K]$ into the block $\{1\}$ and the blocks $(P,2P]\cap[1,L_K]$ with $P<L_K$ a power of two. There are at most $2+\log_2L_K$ blocks, and Cauchy–Schwarz bounds the square of the sum by that number times the sum of the squares of the block sums. The block $\{1\}$ contributes $|W|^2$ to $\sum_{t,t'}$. Fix $r$ and a block $(P,2P]$, and put $X(\tau)=\sum_{P<m\le2P}a_mm^{-i\tau}$ with $a_m=m^{ir}$ on the block and $0$ off it. Hölder's inequality over the $|W|^2$ pairs gives
 
-
 $$
-\int_\mathbb{R} |\widehat{g}(\xi)|^2 d \xi =  \underbrace{ \int_{|\xi| \le T^\eta \frac{M_1}{M_3}} |\widehat{g}(\xi)|^2 d \xi}_{I} + \underbrace{\int_{T^\eta \frac{M_1}{M_3}<|\xi| \le T^6} |\widehat{g}(\xi)|^2 d \xi}_{II} + \underbrace{\int_{ T^6<|\xi|} |\widehat{g}(\xi)|^2 d \xi}_{III}.
-\tag{GM9.4}
+\sum_{t,t'\in W}|X(t-t')|^2\le|W|^{2-2/k}\Bigl(\sum_{t,t'\in W}|X(t-t')|^{2k}\Bigr)^{1/k}.
 $$
 
-If $|\xi|>T^6$, then since $\widehat{f}(\xi)$ is rapidly decaying for $|\xi| > T$ and $M\le T^4$, we see that $\widehat{f}(m_2\xi/m_1)$ is negligible and $|\widehat{g}(\xi)|\ll T^{-100}|\xi|^{-2}$. Thus
+Now $X^k=\sum_{P^k<n\le2^kP^k}c_nn^{-i\tau}$ with $|c_n|\le d_k(n)\ll_\eta T^\eta$. Split the range of $n$ into $k$ dyadic blocks, apply Cauchy–Schwarz over them, and apply Theorem 9.1 in its version for coefficients bounded by $T^{o(1)}$ to each block. Note that $W$ is a one-separated set in an interval of length $T$. This gives
 
 $$
-III=O(T^{-100}).
-\tag{GM9.5}
+\sum_{t,t'\in W}|X(t-t')|^{2k}\preccurlyeq|W|P^{2k}+|W|^2P^k+|W|^{5/4}T^{1/2}P^k,
 $$
 
-If $|\xi| \le T^\eta M_1/M_3$, then in (GM9.3), the only terms that contribute have $|\ell| \ll T^\eta/M_3\ll T^\eta$.  Thus, by Cauchy-Schwarz we obtain from (GM9.3)
+hence
 
 $$
-\begin{aligned}
- | \widehat{g}(\xi) |^2 &\ll T^{2\eta} M_1 \sum_{|m_1| \sim M_1} M_3^2  \Big|   \sum_{m_2 \sim M_2} \frac{m_2}{|m_1|} \widehat{f} \Big( \frac{m_2}{m_1} \xi \Big) \Big|^2+O(T^{-100}) \\
-&\ll T^{2\eta} M_2^4 M_3^2 \sup_{\xi} |\widehat{f}(\xi)|^2.
-\end{aligned}
+\sum_{t,t'\in W}|X(t-t')|^2\preccurlyeq|W|^{2-1/k}P^2+|W|^2P+|W|^{2-3/(4k)}T^{1/(2k)}P.
 $$
 
-We absorbed the $O(T^{-100})$ error term in our bound since $\widehat{f}(0)\succcurlyeq T^{-2}$. Therefore
+With $P\le L_K\le6KT^\kappa/N$ and $N/K\le4T^\kappa$, the contribution of the range $K$ to (LV.22) is
 
 $$
-\begin{aligned}
-I = \int_{|\xi| \le T^\eta M_1/M_3} |\widehat{g}(\xi)|^2 d \xi &\ll T^{3\eta} M_1 M_2^4 M_3 \sup_{\xi} |\widehat{f}(\xi)|^2 \\
-& \ll T^{3\eta}M^6 \left( \int f(u) du \right)^2.  
-\end{aligned}
-\tag{GM9.6}
+\preccurlyeq N^3K^{-1}\left(|W|^2+|W|^2L_K+|W|^{2-1/k}L_K^2+|W|^{2-3/(4k)}T^{1/(2k)}L_K\right)
+\preccurlyeq N^2|W|^2+NK|W|^{2-1/k}+N^2|W|^{2-3/(4k)}T^{1/(2k)}.
 $$
 
-Now suppose that $T^\eta M_1/M_3<|\xi|\le T^6$. We return to (GM9.3) and consider the number of terms in the outer double sum. Let $s=m_1 \ell$. In this range, $s$ must be a non-zero integer in the $\preccurlyeq M_1/M_3$ neighborhood of $\xi$ as soon as $T$ is sufficiently large in terms of $\eta$.  The number of such integers $s$ is $\preccurlyeq 1 + M_1/M_3$.  Since $|\xi| \le T^6$ and $s$ is non-zero, each such integer $s$ has $\preccurlyeq 1$ factorizations as $s=m_1\ell$.  All together the number of terms in the outer double sum is $\preccurlyeq  1 + M_1/M_3$.  Therefore, we can use Cauchy-Schwarz in (GM9.3) to bound $|\widehat{g}(\xi)|^2$ by
+Since $K\le T$ and there are $O(\log T)$ ranges, (LV.21) follows. $\square$
 
-$$
-\preccurlyeq_\eta \left(1 + \frac{M_1}{M_3} \right) \sum_{|m_1| \sim M_1}\sum_{\substack{\ell \\ |\xi - \ell m_1| \preccurlyeq M_1/M_3}}  M_3^2  \Big|   \sum_{m_2 \sim M_2} \frac{m_2}{|m_1|} \widehat{f} \Big( \frac{m_2}{m_1} \xi \Big) \Big|^2 +O(T^{-200}).
-$$
+#### 10.1.6. Three nonzero frequencies
 
-Therefore the term $II$ is bounded by
+For $v>0$ put
 
 $$
-\preccurlyeq_\eta  (M_1 M_3 + M_3^2) \sum_{|m_1| \sim M_1}\sum_{\ell}   \int\limits_{|\xi - \ell m_1| \preccurlyeq M_1/M_3}  \Big|   \sum_{m_2 \sim M_2} \frac{m_2}{|m_1|} \widehat{f} \Big( \frac{m_2}{m_1} \xi \Big) \Big|^2 d\xi+O(T^{-100}). 
+\Phi(v)=\sum_{t\in W}v^{it}.
 $$
 
-Morally this integral does not depend on $m_1$, and we can make this precise by changing variables. For each $m_1, \ell$, we write $\xi = \ell m_1 + \frac{m_1}{M_3} \tau$ and do a change of variables to get (extending the range of integration slightly for an upper bound so we have a range independent of $m_1$)
+Then $|\Phi(v)|\le|W|$ and $\Phi(1/v)=\overline{\Phi(v)}$. Translating $W$ by $\tau$ multiplies $\Phi(v)$ by $v^{i\tau}$, so $|\Phi|$ does not change. The additive energy of $W$ is
 
 $$
- II \preccurlyeq_\eta (M_1 +  M_3) \sum_{\ell }  \int_{|\tau| \preccurlyeq 1}  \Big|   \sum_{m_2 \sim M_2} m_2 \widehat{f} \Big( \ell m_2 + \frac{m_2}{M_3} \tau \Big) \Big|^2 d \tau+O(T^{-100}). 
+E(W)=\#\left\{(t_1,t_2,t_3,t_4)\in W^4:|t_1+t_2-t_3-t_4|\le1\right\}.
 $$
 
-Since $\widehat{f}(\xi)=O(T^{-200})$ unless $|\xi | \preccurlyeq T$, we can restrict the sum over $\ell$ to the range $| \ell | \preccurlyeq T/ M_2$ at the cost of a negligible error.  We introduce a bump  $\psi_2(x)$ supported on $|x| \preccurlyeq 1$ so that $\psi_2(M_2\ell/T)$ majorizes this summation condition, and bound the last expression by
+**Lemma LV.23 (integral form of $\mathcal I_{\mathbf m}$).** For $\mathbf m\in\mathbb Z^3$,
 
 $$
- \preccurlyeq_\eta (M_1 + M_3)\Sigma_{II}+O(T^{-100}), 
+\mathcal I_{\mathbf m}=N^3\int_0^\infty\!\!\int_0^\infty\Phi(v_1)\,\Phi(v_2/v_1)\,\Phi(1/v_2)\,K_{\mathbf m}(v_1,v_2)\,dv_1\,dv_2,
 $$
 
 where
 
 $$
- \Sigma_{II}:= \sum_{\ell}  \psi_2 \Big(\frac{M_2 \ell}{T} \Big) \int_{| \tau| \preccurlyeq 1}   \Big|   \sum_{m_2 \sim M_2}  m_2 \widehat{f} \Big( \ell m_2 + \frac{m_2}{M_3}  \tau \Big) \Big|^2 d  \tau.
+K_{\mathbf m}(v_1,v_2)=\int_{\mathbb R}u^2w(u)^2w(v_1u)^2w(v_2u)^2\,e\bigl(-N(m_1v_1+m_2v_2+m_3)u\bigr)\,du.
 $$
 
-We write out $\widehat{f}$ as an integral, expand out the square and bring the summation over $\ell$ and integration over $\tau$ on the inside to get
+$K_{\mathbf m}$ vanishes unless $v_1,v_2\in[1/2,2]$, and $|K_{\mathbf m}(v_1,v_2)|\le C_j(1+N|m_1v_1+m_2v_2+m_3|)^{-j}$ for every $j$. Moreover $\overline{\mathcal I_{(m_1,m_2,m_3)}}=\mathcal I_{(-m_1,-m_3,-m_2)}$.
+
+**Proof.** Write each transform in (LV.13) as an integral over $u_i\in[1,2]$ and carry out the sums over the points first. The variable $t_1$ occurs in $(u_1/u_3)^{it_1}$, $t_2$ in $(u_2/u_1)^{it_2}$ and $t_3$ in $(u_3/u_2)^{it_3}$, so
 
 $$
-\Sigma_{II}=  \int \int \sum_{m_2, m_2' \sim M_2}m_2 m_2' f(u) f(u') Z_1 Z_2 du' du,
-\tag{GM9.7}
+\mathcal I_{\mathbf m}=N^3\int_{[1,2]^3}\prod_{i=1}^3w(u_i)^2\;\Phi\Bigl(\frac{u_1}{u_3}\Bigr)\Phi\Bigl(\frac{u_2}{u_1}\Bigr)\Phi\Bigl(\frac{u_3}{u_2}\Bigr)e\bigl(-N(m_1u_1+m_2u_2+m_3u_3)\bigr)\,du.
+\tag{LV.24}
 $$
 
-where $Z_1=Z_1(m_2,m_2',u,u')$ and $Z_2=Z_2(m_2,m_2',u,u')$ are given by
+The substitution $u_1=v_1u$, $u_2=v_2u$, $u_3=u$ has Jacobian $u^2$. It turns the three ratios into $v_1$, $v_2/v_1$, $1/v_2$ and the phase into $N(m_1v_1+m_2v_2+m_3)u$, which gives the formula. The integrand of $K_{\mathbf m}$ vanishes unless $u\in[1,2]$ and $v_1u,v_2u\in[1,2]$, which forces $v_1,v_2\in[1/2,2]$. For such $v_1,v_2$ its $u$-derivatives are bounded by constants depending only on their order, and its integral is at most $8/3$. Integrating by parts $j$ times gives the bound for $K_{\mathbf m}$. For the last identity, conjugate (LV.24): each $\overline{\Phi(x)}$ becomes $\Phi(1/x)$ and the phase changes sign. Renaming $u_2$ as $u_3$ and $u_3$ as $u_2$ then gives (LV.24) for the frequency $(-m_1,-m_3,-m_2)$. $\square$
+
+To state the reduction of $\Sigma_3$, fix smooth functions $\psi_2,\psi_0:\mathbb R\to[0,1]$ with $\psi_2=1$ on $[1/4,4]$, $\operatorname{supp}\psi_2\subset[1/8,8]$, $\psi_0=1$ on $[1/8,8]$ and $\operatorname{supp}\psi_0\subset[1/16,16]$. Put $k_0(z)=(1+z^2)^{-20}$. For a dyadic number $M\ge1/2$ let $B=NM$ and
+
+$$
+Q_M(x)=B\int_{\mathbb R}k_0\bigl(B(x-y)\bigr)\psi_2(y)|\Phi(y)|^2\,dy,\qquad f_M=\psi_0Q_M.
+\tag{LV.25}
+$$
+
+For dyadic $M_1,M$ let $\mathfrak M=\mathfrak M(M_1,M)$ be the set of $\mathbf m\in\mathbb Z^3$ with $|m_1|\sim M_1$, $|m_2|\sim M$ and $M<|m_3|\le10M$, and put
+
+$$
+\beta_{\mathbf m}(v)=\frac{m_1v+m_3}{m_2},\qquad\alpha_{\mathbf m}(v)=\frac{m_1v+m_3}{m_2v}.
+$$
+
+**Lemma LV.26 (reduction of $\Sigma_3$).** There are dyadic numbers $1/2\le M_1\le M\le T^{1+\kappa}/N$ such that, with $f=f_M$,
+
+$$
+\Sigma_3\preccurlyeq\frac{N^2}{M}\sum_{\mathbf m\in\mathfrak M}\int_{1/2}^2|\Phi(v)|\,f\bigl(\beta_{\mathbf m}(v)\bigr)^{1/2}f\bigl(\alpha_{\mathbf m}(v)\bigr)^{1/2}\,dv+(\text{negligible}).
+\tag{LV.27}
+$$
+
+**Proof.** By Lemma LV.14 the frequencies with a coordinate exceeding $T^{1+\kappa}/N$ in absolute value may be discarded. Apply the identity of Lemma LV.23 to $-\mathbf m$: it shows $|\mathcal I_{(m_1,m_3,m_2)}|=|\mathcal I_{-\mathbf m}|$. Together with the cyclic symmetry, every rearrangement $\mathbf m'$ of the coordinates of $\mathbf m$ satisfies $|\mathcal I_{\mathbf m}|\in\{|\mathcal I_{\mathbf m'}|,|\mathcal I_{-\mathbf m'}|\}$. Take $\mathbf m'$ with $|m_1'|\le|m_2'|\le|m_3'|$; each such $\mathbf m'$ comes from at most six $\mathbf m$. So $|\Sigma_3|$ is at most twelve times the sum of $|\mathcal I_{\mathbf m}|$ over the $\mathbf m$ with nonzero coordinates and $|m_1|\le|m_2|\le|m_3|$.
+
+For these $\mathbf m$, if $|m_3|>5|m_2|$ then $|m_1v_1+m_2v_2+m_3|\ge|m_3|-4|m_2|\ge|m_3|/5$ for $v_1,v_2\in[1/2,2]$. Lemma LV.23 then gives $|\mathcal I_{\mathbf m}|\le C_jN^3|W|^3(N|m_3|)^{-j}$, and the sum of these terms is negligible. The remaining $\mathbf m$ satisfy $|m_2|\le|m_3|\le5|m_2|$. Group them by $|m_1|\sim M_1$ and $|m_2|\sim M$; then $M_1\le M$ and $M<|m_3|\le10M$, so $\mathbf m\in\mathfrak M(M_1,M)$. There are $O(\log^2T)$ such pairs, so it suffices to bound $\sum_{\mathbf m\in\mathfrak M}|\mathcal I_{\mathbf m}|$ for one pair.
+
+Fix $\mathbf m\in\mathfrak M$ and $v_1\in[1/2,2]$, and put $c=-(m_1v_1+m_3)/m_2$, so that $m_1v_1+m_2v_2+m_3=m_2(v_2-c)$. If $\operatorname{dist}(c,[1/2,2])\ge1/8$, then $|K_{\mathbf m}(v_1,v_2)|\le C_jB^{-j}$ for all $v_2\in[1/2,2]$, because $N|m_2|\ge B$. The contribution of these $v_1$ to $\sum_{\mathbf m}|\mathcal I_{\mathbf m}|$ is at most $C_jN^3|W|^3T^{4}B^{-j}$, which is negligible since $B\ge N/2$. Otherwise $c\in[3/8,17/8]$ and $c/v_1\in[3/16,17/4]$, both in $[1/8,8]$, where $f_M=Q_M$. Since $(1+|z|)^2\ge1+z^2$, we have $(1+N|m_2||v_2-c|)^{-40}\le k_0(B(v_2-c))$. By Lemma LV.23 and Cauchy–Schwarz in $v_2$,
+
+$$
+\int_{1/2}^2|K_{\mathbf m}||\Phi(v_2/v_1)||\Phi(v_2)|\,dv_2\le C\Bigl(\int_{1/2}^2k_0(B(v_2-c))|\Phi(v_2/v_1)|^2dv_2\Bigr)^{1/2}\Bigl(\int_{1/2}^2k_0(B(v_2-c))|\Phi(v_2)|^2dv_2\Bigr)^{1/2}.
+$$
+
+The second factor is at most $(Q_M(c)/B)^{1/2}$, because $\psi_2=1$ on $[1/2,2]$ and $k_0$ is even. In the first substitute $y=v_2/v_1\in[1/4,4]$, so $dv_2\le2\,dy$. Since $v_1\ge1/2$ and $1+z^2/4\ge(1+z^2)/4$, we have $k_0(Bv_1(y-c/v_1))\le k_0(B(y-c/v_1)/2)\le4^{20}k_0(B(y-c/v_1))$. So the first factor is at most $(2\cdot4^{20}Q_M(c/v_1)/B)^{1/2}$. With $|\Phi(1/v_2)|=|\Phi(v_2)|$ and $N^3/B=N^2/M$ this gives
+
+$$
+|\mathcal I_{\mathbf m}|\le C\frac{N^2}{M}\int_{1/2}^2|\Phi(v_1)|\,f_M\Bigl(-\frac{m_1v_1+m_3}{m_2}\Bigr)^{1/2}f_M\Bigl(-\frac{m_1v_1+m_3}{m_2v_1}\Bigr)^{1/2}dv_1+(\text{negligible}).
+$$
+
+Finally $\mathfrak M$ is invariant under $m_2\mapsto-m_2$, which removes the signs and gives (LV.27). $\square$
+
+#### 10.1.7. Integral moments of $\Phi$
+
+**Lemma LV.28 (moments of $\Phi$).** Let $\psi\ge0$ be a fixed smooth function with compact support in $(0,\infty)$, and let $W$ be any finite one-separated set. Then
+
+$$
+\int_0^\infty\psi(v)|\Phi(v)|^2\,dv\ll_\psi|W|,\qquad\int_0^\infty\psi(v)|\Phi(v)|^4\,dv\ll_\psi E(W).
+$$
+
+Moreover $|W|^2\le E(W)\le3|W|^3$, and for every real $c$ at most $4E(W)$ quadruples in $W^4$ satisfy $|t_1+t_2-t_3-t_4-c|\le1$.
+
+**Proof.** The quadruples $(t_1,t_2,t_1,t_2)$ show $E(W)\ge|W|^2$. Given $t_1,t_2,t_3$, the points $t_4$ with $|t_1+t_2-t_3-t_4|\le1$ lie in an interval of length two, which contains at most three points of $W$; so $E(W)\le3|W|^3$. For the shifted count let $\nu(a)$, $a\in\mathbb Z$, be the number of pairs $(t_1,t_2)$ with $t_1+t_2\in[a,a+1)$. Pairs of pairs in the same cell have sums differing by less than one, so $\sum_a\nu(a)^2\le E(W)$. If $t_1+t_2\in[a,a+1)$, $t_3+t_4\in[b,b+1)$ and $|t_1+t_2-t_3-t_4-c|\le1$, then $a-b$ is one of at most four integers determined by $c$. For each such difference $d$, Cauchy–Schwarz gives $\sum_a\nu(a)\nu(a-d)\le\sum_a\nu(a)^2$, which proves the count.
+
+Substitute $v=e^x$ and put $\Psi(x)=e^x\psi(e^x)$, a fixed smooth compactly supported function, so that $|\widehat\Psi(\xi)|\ll(1+|\xi|)^{-2}$. Then
+
+$$
+\int\psi|\Phi|^2\,dv=\sum_{t,t'\in W}\int\Psi(x)e^{ix(t-t')}\,dx\ll\sum_{t,t'\in W}(1+|t-t'|)^{-2}\ll|W|,
+$$
+
+because a one-separated set has at most one point in each half-open unit interval. In the same way $\int\psi|\Phi|^4\,dv\ll\sum(1+|t_1+t_2-t_3-t_4|)^{-2}$ over $W^4$. The quadruples with $k\le|t_1+t_2-t_3-t_4|<k+1$ lie in two shifted windows of the kind just counted, so there are at most $8E(W)$ of them. Summing over $k\ge0$ with the weights $(1+k)^{-2}$ gives the bound $\ll E(W)$. $\square$
+
+**Lemma LV.29 (the smoothed square function).** Let $1/2\le M\le T^{1+\kappa}/N$ be dyadic and put $\Lambda=T^{1+\kappa}$. The function $f=f_M$ of (LV.25) is smooth, nonnegative and supported in $[1/16,16]$. It satisfies $\|f\|_1\ll|W|$ and $\|f\|_2^2\ll E(W)$, and
+
+$$
+|\widehat f(\xi)|\le A_j\Bigl(\frac{\Lambda}{|\xi|}\Bigr)^j\|f\|_\infty\qquad(j\ge0,\ \xi\ne0),
+$$
+
+with $A_j$ depending only on $j$ and the fixed functions $\psi_0,\psi_2,k_0$.
+
+**Proof.** $Q_M$ is the convolution of $K_B(x)=Bk_0(Bx)$, of mass $\|k_0\|_1$, with $g=\psi_2|\Phi|^2$. So $\|f\|_1\le\|Q_M\|_1=\|k_0\|_1\|g\|_1\ll|W|$ and $\|f\|_2\le\|Q_M\|_2\le\|k_0\|_1\|g\|_2\ll E(W)^{1/2}$ by Lemma LV.28, applied with $\psi_2$ and $\psi_2^2$. Differentiating under the integral shows that $Q_M$ is smooth.
+
+For the Fourier bound, $\widehat Q_M(\zeta)=\widehat k_0(\zeta/B)\widehat g(\zeta)$ with $|\widehat g|\le\|g\|_1\le8|W|^2$ and $|\widehat k_0(\eta)|\le C_j(1+|\eta|)^{-j}$. Since $\widehat f=\widehat\psi_0*\widehat Q_M$ and $(1+|\zeta|/B)^{-j}\le(1+|\xi|/B)^{-j}(1+|\xi-\zeta|)^j$ for $B\ge1$, we get
+
+$$
+|\widehat f(\xi)|\le8|W|^2C_j\Bigl(1+\frac{|\xi|}B\Bigr)^{-j}\int|\widehat\psi_0(\eta)|(1+|\eta|)^j\,d\eta\le C_j'|W|^2\Bigl(\frac B{|\xi|}\Bigr)^j.
+$$
+
+Now we bound $\|f\|_\infty$ from below. Let $W\subset[T_0,T_0+T]$. If $|y-1|\le1/(4T)$, then $|\log y|\le1/(2T)$, and $|\Phi(y)|\ge\operatorname{Re}\bigl(y^{-iT_0}\Phi(y)\bigr)=\sum_{t\in W}\cos((t-T_0)\log y)\ge|W|\cos\tfrac12\ge|W|/\sqrt2$. As $\psi_0=\psi_2=1$ near $1$ and $k_0\ge2^{-20}$ on $[-1,1]$, integrating over $|y-1|\le\min(1/B,1/(4T))$ gives
+
+$$
+\|f\|_\infty\ge f(1)=Q_M(1)\ge2^{-20}|W|^2\min\left(1,\frac B{4T}\right).
+$$
+
+If $B\le4T$, then $|W|^2\le2^{22}(T/B)f(1)$, and for $j\ge1$, $(T/B)(B/|\xi|)^j=TB^{j-1}|\xi|^{-j}\le4^{j-1}(T/|\xi|)^j$. If $B>4T$, then $|W|^2\le2^{20}f(1)$ and $B=NM\le\Lambda$. In both cases the asserted bound holds for $j\ge1$. For $j=0$ it follows from $|\widehat f|\le\|f\|_1\le16\|f\|_\infty$. $\square$
+
+**Corollary LV.30 (the energy form of the bound).** $\Sigma_3\preccurlyeq T^2|W|^{1/2}E(W)^{1/2}$.
+
+**Proof.** Fix $\mathbf m\in\mathfrak M$. On $[1/2,2]$ the maps $\alpha_{\mathbf m}(v)=m_1/m_2+m_3/(m_2v)$ and $\beta_{\mathbf m}$ are monotone. Their derivatives satisfy $|\alpha_{\mathbf m}'(v)|=|m_3|/(|m_2|v^2)\ge1/8$ and $|\beta_{\mathbf m}'|=|m_1|/|m_2|\ge M_1/(2M)$. Hölder's inequality with exponents $2,4,4$ and these changes of variables give
+
+$$
+\int_{1/2}^2|\Phi|f(\beta_{\mathbf m})^{1/2}f(\alpha_{\mathbf m})^{1/2}\,dv\le\|\Phi\|_{L^2[1/2,2]}\left(8\|f\|_2^2\right)^{1/4}\left(\frac{2M}{M_1}\|f\|_2^2\right)^{1/4}\ll\Bigl(\frac M{M_1}\Bigr)^{1/4}|W|^{1/2}E(W)^{1/2}.
+$$
+
+Since $\mathfrak M$ has $O(M_1M^2)$ elements and $M_1\le M$, (LV.27) gives $\Sigma_3\preccurlyeq N^2M^2|W|^{1/2}E(W)^{1/2}$, and $NM\le T^{1+\kappa}$. $\square$
+
+When $E(W)$ is close to its minimum $|W|^2$, this is as strong as square-root cancellation in $\Phi$ would give. For larger energies the next two sections improve the factor $T^2$ to $TN$ in front of $|W|^{1/2}E(W)^{1/2}$.
+
+#### 10.1.8. Affine images of a sparse function
+
+This section is self-contained. Fix a scale $\Lambda\ge2$ and a constant $C_0\ge2$, and put $C_1=12C_0$. For $1/2\le M\le\Lambda$ and a nonnegative function $f$ define
+
+$$
+\mathcal J_M(f)=\sup_{M_a,M_b,M_c\in[1/2,M]}\int_{\mathbb R}\Bigl(\sum_{|a|\sim M_a}\ \sum_{b\sim M_b}\ \sum_{|c|\le C_1M_c}f\Bigl(\frac{au+c}b\Bigr)\Bigr)^2du,
+$$
+
+where $a,b,c$ are integers and $b>0$. Applying Cauchy–Schwarz to the $O(M_aM_bM_c)$ terms and using $\int f((au+c)/b)^2\,du=(b/|a|)\|f\|_2^2$ gives the trivial bound
+
+$$
+\mathcal J_M(f)\ll M_aM_b^3M_c^2\|f\|_2^2\le M^6\|f\|_2^2\le\Lambda^2M^4\|f\|_2^2.
+\tag{LV.31}
+$$
+
+The proposition below improves this when $f$ is sparse. Two examples show what to expect. If the images $(au+c)/b$ of a typical point $u$ behaved independently, the left side would be about $M^6\|f\|_1^2$. If $f$ is concentrated near rational numbers of small height, many images coincide, and the size $M^4\|f\|_2^2$ is attained.
+
+**Proposition LV.32 (affine equidistribution).** Let $f$ be smooth and nonnegative, supported in $[1/C_0,C_0]$, and suppose that
+
+$$
+|\widehat f(\xi)|\le A_j\Bigl(\frac\Lambda{|\xi|}\Bigr)^j\|f\|_\infty\qquad(j\ge0,\ \xi\ne0).
+$$
+
+Then for every $\delta>0$ and $1/2\le M\le\Lambda$,
+
+$$
+\mathcal J_M(f)\le C\Lambda^\delta\left(M^6\|f\|_1^2+M^4\|f\|_2^2\right),
+\tag{LV.33}
+$$
+
+with $C$ depending only on $\delta$, $C_0$ and the constants $A_j$.
+
+The proof rests on one smoothing step. Fix a smooth even $\chi:\mathbb R\to[0,1]$ equal to one on $[-1,1]$ and supported in $[-2,2]$. For a function $f$ put
+
+$$
+\tilde f(u)=\Lambda\int_{\mathbb R}\chi\bigl(\Lambda(u-u')\bigr)f(u')\,du'.
+$$
+
+**Lemma LV.34 (one smoothing step).** Let $f$ satisfy the hypotheses of Proposition LV.32 with support in $[1/(2C_0),2C_0]$. Then for every $\delta>0$, all sufficiently large $\Lambda$ and $1/2\le M\le\Lambda$,
+
+$$
+\mathcal J_M(f)\le C\Lambda^\delta\left(M^6\|f\|_1^2+M^2\|f\|_2\,\mathcal J_M(\tilde f)^{1/2}\right),
+\tag{LV.35}
+$$
+
+with $C$ depending only on $\delta$, $C_0$, $\chi$ and the constants $A_j$.
+
+**Proof.** Both sides scale in the same way when $f$ is multiplied by a constant, so assume $\|f\|_\infty=1$. Let $\kappa=\delta/6$. All constants below may depend on $\kappa$, $C_0$, $\chi$ and the $A_j$. A term is called an error if it is $O_q(\Lambda^{20-\kappa q})$ for every $q$; this holds for each error term below after summing over the finitely many parameters. Fourier inversion and the hypothesis give
+
+$$
+|f'(x)|\le2\pi\int|\xi||\widehat f(\xi)|\,d\xi\le2\pi(A_0+2A_3)\Lambda^2.
+$$
+
+So $f\ge1/2$ on an interval of length $\gg\Lambda^{-2}$ around a point where $f=1$, and $\|f\|_1\gg\Lambda^{-2}$. Hence every error is at most $M^6\|f\|_1^2$ once $q$ is large.
+
+Fix scales $M_a,M_b,M_c\in[1/2,M]$. Let $\phi$ be a smooth function, $0\le\phi$, equal to one on $[-C_1,C_1]$ and supported in $[-2C_1,2C_1]$. The inner sum is at most
+
+$$
+g(u)=\sum_{|a|\sim M_a}\sum_{b\sim M_b}\sum_{c\in\mathbb Z}\phi(c/M_c)\,f\Bigl(\frac{au+c}b\Bigr),
+$$
+
+a smooth compactly supported function, so the integral is at most $\int g^2=\int|\widehat g|^2$. In each term substitute $y=(au+c)/b$; then apply Poisson summation to the sum over $c$. The function $x\mapsto\phi(x/M_c)e(x\xi/a)$ has Fourier transform $\ell\mapsto M_c\widehat\phi(M_c(\ell-\xi/a))$. This gives
+
+$$
+\widehat g(\xi)=\sum_{|a|\sim M_a}F_a(\xi)\sum_{\ell\in\mathbb Z}M_c\,\widehat\phi\Bigl(M_c\Bigl(\ell-\frac\xi a\Bigr)\Bigr),\qquad F_a(\xi)=\sum_{b\sim M_b}\frac b{|a|}\widehat f\Bigl(\frac{b\xi}a\Bigr).
+\tag{LV.36}
+$$
+
+Here $|F_a|\ll(M_b^2/M_a)\|f\|_1$ and $|\widehat\phi(\eta)|\ll_q(1+|\eta|)^{-q}$. Since $M_c\ge1/2$, the $\ell$-sum is $O(M_c)$ uniformly in $\xi/a$. Split the $\xi$-line into $\mathrm{I}:|\xi|\le4\Lambda^\kappa M_a/M_c$, $\mathrm{II}:4\Lambda^\kappa M_a/M_c<|\xi|\le\Lambda^3$ and $\mathrm{III}:|\xi|>\Lambda^3$.
+
+*Range III.* Here $b/|a|\ge1/(4\Lambda)$, so $|b\xi/a|\ge|\xi|/(4\Lambda)\ge\Lambda^2/4$ and $|\widehat f(b\xi/a)|\le A_q(4\Lambda^2/|\xi|)^q$. Hence $|\widehat g(\xi)|\ll\Lambda^3A_q(4\Lambda^2/|\xi|)^q$, and $\int_{\mathrm{III}}|\widehat g|^2\ll_q\Lambda^{9-2q}$ is an error.
+
+*Range I.* Here $|\xi/a|\le8\Lambda^\kappa$. The $\ell$ with $|\ell|\le16\Lambda^\kappa$ give $O(\Lambda^\kappa M_c)$. For the other $\ell$, $|\ell-\xi/a|\ge|\ell|/2$, and their terms total $O(1)$. So $|\widehat g(\xi)|\ll\Lambda^\kappa M_b^2M_c\|f\|_1$ and
+
+$$
+\int_{\mathrm I}|\widehat g|^2\ll\Lambda^{3\kappa}M_aM_b^4M_c\|f\|_1^2\le\Lambda^{3\kappa}M^6\|f\|_1^2.
+$$
+
+*Range II.* Call a pair $(a,\ell)$ near $\xi$ if $|\ell-\xi/a|<\Lambda^\kappa/M_c$, and far otherwise. The far pairs contribute $O_q(M_c\Lambda^{-\kappa(q-2)})$ to each $\ell$-sum. Their part of $\widehat g$ is therefore $O_q(\Lambda^{4-\kappa(q-2)})$, and its square integral over $|\xi|\le\Lambda^3$ is an error. For a near pair, $|a\ell-\xi|<|a|\Lambda^\kappa/M_c\le2M_a\Lambda^\kappa/M_c<|\xi|/2$. So $s=a\ell$ is a nonzero integer in an interval of length $4M_a\Lambda^\kappa/M_c$ around $\xi$, with $|s|<2\Lambda^3$. Each such $s$ has at most $2d(|s|)\ll\Lambda^\kappa$ factorizations $s=a\ell$, so there are $\ll\Lambda^{2\kappa}(1+M_a/M_c)$ near pairs. Apply Cauchy–Schwarz over the near pairs, use $|\widehat\phi|\le\|\phi\|_1$, and integrate over II:
+
+$$
+\int_{\mathrm{II}}|\widehat g_{\mathrm{near}}|^2\ll\Lambda^{2\kappa}(M_a+M_c)M_c\sum_{|a|\sim M_a}\sum_{\ell\in\mathbb Z}\int_{|\xi-a\ell|<|a|\Lambda^\kappa/M_c}|F_a(\xi)|^2\,d\xi.
+$$
+
+In the inner integral put $\xi=a\ell+a\tau/M_c$ with $|\tau|<\Lambda^\kappa$. Then $b\xi/a=b\ell+b\tau/M_c$, so $F_a(\xi)=|a|^{-1}G_\ell(\tau)$ with
+
+$$
+G_\ell(\tau)=\sum_{b\sim M_b}b\,\widehat f\Bigl(b\ell+\frac{b\tau}{M_c}\Bigr),
+$$
+
+which does not depend on $a$. Also $d\xi=(|a|/M_c)\,d\tau$. Since $\sum_{|a|\sim M_a}1/|a|\ll1$ and $M_a+M_c\le2M$,
+
+$$
+\int_{\mathrm{II}}|\widehat g_{\mathrm{near}}|^2\ll\Lambda^{2\kappa}M\sum_{\ell\in\mathbb Z}\int_{|\tau|<\Lambda^\kappa}|G_\ell(\tau)|^2\,d\tau.
+\tag{LV.37}
+$$
+
+Put $\Lambda'=\Lambda^{1+2\kappa}$. If $|\ell|>\Lambda'/M_b$, then $|b\ell|>\Lambda'$ while $|b\tau/M_c|\le4M_b\Lambda^\kappa\le\Lambda'/2$. So $|b\ell+b\tau/M_c|\ge M_b|\ell|/2$ and $|G_\ell(\tau)|\ll M_b^2A_q(2\Lambda/(M_b|\ell|))^q$. These $\ell$ contribute an error. For the other $\ell$ we insert $\varphi_2(M_b\ell/\Lambda')$, where $\varphi_2\ge0$ is a fixed smooth function equal to one on $[-1,1]$ and supported in $[-2,2]$. Expand $|G_\ell|^2$ using $\widehat f(x)\overline{\widehat f(y)}=\iint f(u)f(u')e(yu'-xu)\,du\,du'$ (recall that $f$ is real):
+
+$$
+\sum_\ell\varphi_2\Bigl(\frac{M_b\ell}{\Lambda'}\Bigr)\int_{|\tau|<\Lambda^\kappa}|G_\ell(\tau)|^2d\tau=\sum_{b,b'\sim M_b}bb'\iint f(u)f(u')\,Z_1Z_2\,du\,du',
+$$
+
+where, with $x=b'u'-bu$,
+
+$$
+Z_1=\int_{|\tau|<\Lambda^\kappa}e(\tau x/M_c)\,d\tau,\qquad Z_2=\sum_{\ell\in\mathbb Z}\varphi_2\Bigl(\frac{M_b\ell}{\Lambda'}\Bigr)e(\ell x).
+$$
+
+Clearly $|Z_1|\le2\Lambda^\kappa$. By Poisson summation, $Z_2=(\Lambda'/M_b)\sum_{j\in\mathbb Z}\widehat\varphi_2((\Lambda'/M_b)(j-x))$. Put $\rho=M_b\Lambda^\kappa/\Lambda'\le\Lambda^{-\kappa}<1/2$. The terms with $|j-x|\ge\rho$ total $O_q((\Lambda'/M_b)\Lambda^{-\kappa(q-2)})$, which leads to an error. At most one $j$ has $|j-x|<\rho$, and for it $|\widehat\varphi_2|\le\|\varphi_2\|_1\le4$. Since the left side is nonnegative, we may bound it by the integral of $f(u)f(u')|Z_1||Z_2|$, and obtain, up to an error,
+
+$$
+\sum_\ell\varphi_2\int|G_\ell|^2\le8\Lambda^\kappa\frac{\Lambda'}{M_b}\sum_{b,b'\sim M_b}bb'\sum_{j\in\mathbb Z}\int f(u)\int_{|b'u'-bu-j|<\rho}f(u')\,du'\,du.
+$$
+
+The inner condition says $|u'-(bu+j)/b'|<\rho/b'\le\Lambda^{-1-\kappa}<1/\Lambda$. Since $\chi=1$ on $[-1,1]$, $\Lambda\int_{|u'-y|\le1/\Lambda}f(u')\,du'\le\tilde f(y)$. With $bb'\le4M_b^2$ and $\Lambda'/\Lambda=\Lambda^{2\kappa}$ we obtain
+
+$$
+\sum_\ell\varphi_2\int|G_\ell|^2\le32\Lambda^{3\kappa}M_b\int f(u)\sum_{b,b'\sim M_b}\sum_{j\in\mathbb Z}\tilde f\Bigl(\frac{bu+j}{b'}\Bigr)du+(\text{error}).
+$$
+
+For $\Lambda$ large, $\tilde f$ is supported in $[1/(4C_0),4C_0]$. So when $f(u)\ne0$, a nonzero term forces $|j|\le8C_0M_b\le C_1M_b$. By Cauchy–Schwarz in $u$, and since the sum over $b\sim M_b$ is part of a sum over $|a|\sim M_b$, the last integral is at most $\|f\|_2\,\mathcal J_M(\tilde f)^{1/2}$. Combining with (LV.37) and $M_b\le M$,
+
+$$
+\int_{\mathrm{II}}|\widehat g|^2\ll\Lambda^{5\kappa}M^2\|f\|_2\,\mathcal J_M(\tilde f)^{1/2}+(\text{error}).
+$$
+
+Adding the three ranges and taking the supremum over the scales gives (LV.35), since $5\kappa<\delta$. $\square$
+
+**Proof of Proposition LV.32.** Let $0<\delta\le1$ and choose an integer $k\ge1$ with $2^{1-k}\le\delta/2$. For bounded $\Lambda$ the trivial bound (LV.31) suffices, so let $\Lambda$ be large. Put $c_\chi=\|\chi\|_1$, $h_0=f$ and $h_{i+1}=\tilde h_i/c_\chi$ for $0\le i<k$. Each $h_i$ is smooth and nonnegative with $\|h_i\|_1=\|f\|_1$ and $\|h_i\|_2\le\|f\|_2$, by the convolution inequalities of §10.1.2. Its support lies in $[1/C_0-4i/\Lambda,\,C_0+4i/\Lambda]\subset[1/(2C_0),2C_0]$. For $i\ge1$, $\widehat{h_i}(\xi)=\widehat{h_{i-1}}(\xi)\widehat\chi(\xi/\Lambda)/c_\chi$. Hence $|\widehat{h_i}(\xi)|\le\|f\|_1C_j(\Lambda/|\xi|)^j$, and $\|f\|_1=\|h_i\|_1\le2C_0\|h_i\|_\infty$. Therefore every $h_i$ satisfies the Fourier hypothesis, with constants $\max(A_j,2C_0C_j)$ independent of $i$.
+
+Put $\mathcal B=M^6\|f\|_1^2+M^4\|f\|_2^2$ and $X_i=\mathcal J_M(h_i)/\mathcal B$. Lemma LV.34 with $\delta/8$ in place of $\delta$, the identity $\mathcal J_M(\tilde h_i)=c_\chi^2\mathcal J_M(h_{i+1})$ and $M^2\|f\|_2\le\mathcal B^{1/2}$ give
+
+$$
+X_i\le a\left(1+X_{i+1}^{1/2}\right)\qquad(0\le i<k),\qquad a=C\Lambda^{\delta/8}\ge1.
+$$
+
+The trivial bound (LV.31) gives $X_k\le C\Lambda^2$. If $X_{k-i}\le(2a)^{s_i}\max(1,X_k)^{2^{-i}}$ with $s_i=\sum_{l<i}2^{-l}$, then $X_{k-i-1}\le2a\max(1,X_{k-i})^{1/2}\le(2a)^{s_{i+1}}\max(1,X_k)^{2^{-i-1}}$. Hence
+
+$$
+X_0\le(2a)^2\left(C\Lambda^2\right)^{2^{-k}}\ll\Lambda^{\delta/4+2^{1-k}}\le\Lambda^{3\delta/4},
+$$
+
+which proves (LV.33). $\square$
+
+#### 10.1.9. The refined bound for the three-frequency terms
+
+**Proposition LV.38.** $\Sigma_3\preccurlyeq T^2|W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}$.
+
+**Proof.** Take $M_1,M,f=f_M$ from Lemma LV.26. By Cauchy–Schwarz in $v$, and then in the sum over $\mathbf m$,
+
+$$
+\sum_{\mathbf m\in\mathfrak M}\int_{1/2}^2|\Phi|f(\beta_{\mathbf m})^{1/2}f(\alpha_{\mathbf m})^{1/2}\,dv\le\|\Phi\|_{L^2[1/2,2]}\Bigl(\int_{1/2}^2S_\beta(v)^2dv\Bigr)^{1/4}\Bigl(\int_{1/2}^2S_\alpha(v)^2dv\Bigr)^{1/4},
+$$
+
+where $S_\beta=\sum_{\mathbf m\in\mathfrak M}f(\beta_{\mathbf m})$ and $S_\alpha=\sum_{\mathbf m\in\mathfrak M}f(\alpha_{\mathbf m})$. We apply the definitions of §10.1.8 with $C_0=16$, so $C_1=192$, scale $\Lambda=T^{1+\kappa}$, and $8M$ in place of $M$; here $8M\le8T^{1+\kappa}/N\le\Lambda$.
+
+The set $\mathfrak M$ is invariant under $\mathbf m\mapsto-\mathbf m$, which leaves $\beta_{\mathbf m}$ and $\alpha_{\mathbf m}$ unchanged; so each of $S_\beta,S_\alpha$ is twice the sum over the $\mathbf m\in\mathfrak M$ with $m_2>0$. In $S_\beta$ the coordinates $m_1,m_2,m_3$ play the roles of $a,b,c$, with $|m_3|\le10M\le C_1M$, so $\int S_\beta^2\le4\mathcal J_{8M}(f)$. For $S_\alpha$ substitute $u=1/v$, so $dv\le4\,du$ on $[1/2,2]$ and $\alpha_{\mathbf m}(1/u)=(m_3u+m_1)/m_2$. Now $m_3,m_2,m_1$ play the roles of $a,b,c$. Split the range $M<|m_3|\le10M$ into the four ranges $|m_3|\sim2^iM$, $0\le i\le3$; the condition $|m_1|\le2M_1\le C_1M$ holds. Using $(\sum_{i=0}^3Y_i)^2\le4\sum Y_i^2$ we get $\int S_\alpha^2\le256\,\mathcal J_{8M}(f)$.
+
+By Lemma LV.29, $f$ satisfies the hypotheses of Proposition LV.32. Hence $\mathcal J_{8M}(f)\preccurlyeq M^6|W|^2+M^4E(W)$, because $\Lambda^\delta\le T^{2\delta}$. With $\|\Phi\|_{L^2[1/2,2]}^2\ll|W|$ from Lemma LV.28, (LV.27) gives
+
+$$
+\Sigma_3\preccurlyeq\frac{N^2}M|W|^{1/2}\left(M^3|W|+M^2E(W)^{1/2}\right)=N^2M^2|W|^{3/2}+N^2M|W|^{1/2}E(W)^{1/2}.
+$$
+
+As $NM\le T^{1+\kappa}$ and $\kappa$ can be taken arbitrarily small, the proposition follows. $\square$
+
+#### 10.1.10. Additive energy of a large-value set
+
+**Proposition LV.39 (energy of a large-value set).** Let $T$ be large and $T^{3/4}\le N\le T$. Let $D(t)=\sum_{N<n\le2N}c_nn^{it}$ with $|c_n|\le1$, and let $W$ be a one-separated set in an interval of length $T$ with $|D(t)|\ge N^\sigma$ for every $t\in W$. Then
+
+$$
+E(W)\preccurlyeq|W|N^{4-4\sigma}+|W|^3N^{1-2\sigma}+|W|^{21/8}T^{1/4}N^{1-2\sigma}.
+\tag{LV.40}
+$$
+
+**Lemma LV.41 (energy and a cubic moment).** Under the hypotheses of Proposition LV.39, without the restriction on $N$,
+
+$$
+E(W)\ll N^{-2\sigma}\sum_{N<n_1,n_2\le2N}\Bigl|\Phi\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3.
+$$
+
+**Proof.** Each quadruple counted by $E(W)$ has $|D(t_4)|\ge N^\sigma$, so $E(W)\le N^{-2\sigma}\sum|D(t_4)|^2$ over these quadruples. The frequencies $\log n$ of $D$ lie in an interval of length $\log2$, so by (LV.4), $|D(t_4)|^2\ll\int K_0(u\log2)|D(t_4+u)|^2\,du$. Write $t_4=s-x$ with $s=t_1+t_2-t_3$ and $|x|\le1$. Then
+
+$$
+\int K_0(u\log2)|D(s-x+u)|^2\,du\le\int K_1(y)|D(s+y)|^2\,dy,\qquad K_1(y)=\sup_{|x|\le1}K_0\bigl((y+x)\log2\bigr),
+$$
+
+and $K_1$ is integrable. Given $t_1,t_2,t_3$ there are at most three admissible $t_4$, so
+
+$$
+E(W)\ll N^{-2\sigma}\int K_1(y)\sum_{t_1,t_2,t_3\in W}|D(t_1+t_2-t_3+y)|^2\,dy.
+$$
+
+Expanding the square and summing over the points first gives
+
+$$
+\sum_{t_1,t_2,t_3\in W}|D(t_1+t_2-t_3+y)|^2=\sum_{n_1,n_2}c_{n_1}\overline{c_{n_2}}\Bigl(\frac{n_1}{n_2}\Bigr)^{iy}\Phi\Bigl(\frac{n_1}{n_2}\Bigr)^2\Phi\Bigl(\frac{n_2}{n_1}\Bigr).
+$$
+
+As $|c_n|\le1$ and $|\Phi(n_2/n_1)|=|\Phi(n_1/n_2)|$, this is at most $\sum_{n_1,n_2}|\Phi(n_1/n_2)|^3$. This is the step where the pointwise bound $|c_n|\le1$, rather than a bound for $\sum|c_n|^2$, is essential. $\square$
+
+**Lemma LV.42 (discrete moments of $\Phi$).** Let $W$ be one-separated in an interval of length $T\ge3$, and let $1/2\le L\le T^{O(1)}$. Then
+
+$$
+\sum_{L<n_1,n_2\le2L}\Bigl|\Phi\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2\preccurlyeq|W|^2L+|W|L^2+|W|^{5/4}T^{1/2}L,
+\tag{LV.43}
+$$
+
+$$
+\sum_{L<n_1,n_2\le2L}\Bigl|\Phi\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^4\preccurlyeq|W|^4L+E(W)L^2+E(W)^{3/4}|W|T^{1/2}L.
+\tag{LV.44}
+$$
+
+**Proof.** If $L<1$, the only integer in $(L,2L]$ is $1$, and the sums are $|W|^2\le2L|W|^2$ and $|W|^4\le2L|W|^4$. Let $L\ge1$. Expanding $|\Phi(n_1/n_2)|^2=\sum_{t,t'}(n_1/n_2)^{i(t-t')}$ gives
+
+$$
+\sum_{n_1,n_2}\Bigl|\Phi\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2=\sum_{t,t'\in W}\Bigl|\sum_{L<n\le2L}n^{i(t-t')}\Bigr|^2,
+$$
+
+and Theorem 9.1 gives (LV.43).
+
+For (LV.44) let $\nu(u)$, $u\in\mathbb Z$, be the number of pairs $(t,t')\in W^2$ with $\lfloor t-t'\rfloor=u$. Then $\sum_u\nu(u)=|W|^2$. If $\lfloor t_1-t_3\rfloor=\lfloor t_4-t_2\rfloor$, then $|t_1+t_2-t_3-t_4|<1$, so $\sum_u\nu(u)^2\le E(W)$. For $B$ running over the powers of two with $B\ge1/2$, let $U_B=\{u:B<\nu(u)\le2B\}$; only $O(\log T)$ of these sets are nonempty. Put $\Psi_B(x)=\sum_{u\in U_B}\sum_{\lfloor t-t'\rfloor=u}x^{i(t-t')}$, so that $|\Phi(x)|^2=\sum_B\Psi_B(x)$ and, by Cauchy–Schwarz, $|\Phi(x)|^4\ll\log T\sum_B|\Psi_B(x)|^2$. For fixed $B$, expanding the square gives
+
+$$
+\sum_{n_1,n_2}\Bigl|\Psi_B\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2=\sum_{p,p'}\Bigl|P\bigl(d_p-d_{p'}\bigr)\Bigr|^2,\qquad P(\tau)=\sum_{L<n\le2L}n^{i\tau},
+$$
+
+where $p=(t,t')$ and $p'$ run over the pairs with $\lfloor t-t'\rfloor\in U_B$, and $d_p=t-t'$. Write $d_p=u+\theta$ with $u\in U_B$ and $0\le\theta<1$. Then the right side is at most $\sum_{u,u'\in U_B}\nu(u)\nu(u')\sup_{|\theta|\le1}|P(u-u'+\theta)|^2$. By (LV.4), $\sup_{|\theta|\le1}|P(\tau+\theta)|^2\ll\int K_1(y)|P(\tau+y)|^2\,dy$, with $K_1$ as in Lemma LV.41. For fixed $y$, $P(u-u'+y)=\sum_nn^{iy}n^{i(u-u')}$ has coefficients of modulus one. The set $U_B\subset\mathbb Z$ is one-separated and lies in $[-T-1,T]$, an interval of length $2T+1$. Theorem 9.1 therefore gives
+
+$$
+\sum_{n_1,n_2}\Bigl|\Psi_B\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2\preccurlyeq B^2\left(|U_B|^2L+|U_B|L^2+|U_B|^{5/4}T^{1/2}L\right).
+$$
+
+Finally $B|U_B|\le|W|^2$ and $B^2|U_B|\le\sum\nu(u)^2\le E(W)$. Hence $B^2|U_B|^2\le|W|^4$, and $B^2|U_B|^{5/4}=(B^2|U_B|)^{3/4}(B|U_B|)^{1/2}\le E(W)^{3/4}|W|$. Summing over $B$ gives (LV.44). $\square$
+
+In the next two lemmas $D_0=N^2/T$, and the pairs $(n_1,n_2)$ are split according to $d=\gcd(n_1,n_2)$. Write $n_1=dn_1'$, $n_2=dn_2'$, so that $|\Phi(n_1/n_2)|=|\Phi(n_1'/n_2')|$.
+
+**Lemma LV.45 (pairs with a small common factor).** Under the hypotheses of Proposition LV.39,
+
+$$
+\sum_{\substack{N<n_1,n_2\le2N\\ \gcd(n_1,n_2)\le D_0}}\Bigl|\Phi\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\ll N^2|W|^{1/2}E(W)^{1/2}+(\text{negligible}).
+$$
+
+**Proof.** Fix $d\le D_0$. The coprime pairs $n_1',n_2'\in(N/d,2N/d]$ give distinct fractions $q=n_1'/n_2'\in(1/2,2)$. Two of them differ by at least $d^2/(4N^2)$, so their logarithms differ by at least $d^2/(8N^2)$. The sum $x\mapsto\Phi(e^x)=\sum_{t\in W}e^{ixt}$ has its frequencies in an interval of length $T$. By (LV.4) and the case $(\int kF)^3\le(\int k)^2\int kF^3$ of Hölder's inequality,
+
+$$
+|\Phi(q)|^3\le\|K_0\|_1^2\,T\int_{\mathbb R}K_0\bigl(T(x-\log q)\bigr)|\Phi(e^x)|^3\,dx.
+$$
+
+For each $i\ge0$ and real $x$, at most $2+16N^2/(d^2T)$ of the numbers $\log q$ satisfy $i\le T|x-\log q|<i+1$. Since $K_0$ decays rapidly, $\sum_qTK_0(T(x-\log q))\ll T+N^2/d^2$. For $|x|\ge2$ we use instead that there are at most $4N^2$ fractions and $|x-\log q|\ge|x|/2$. Their contribution to the integral is $\ll_jN^2|W|^3T^{1-j}$, which is negligible. Hence
+
+$$
+\sum_q|\Phi(q)|^3\ll\Bigl(T+\frac{N^2}{d^2}\Bigr)\int_{-2}^2|\Phi(e^x)|^3\,dx+(\text{negligible}).
+$$
+
+By Cauchy–Schwarz and Lemma LV.28, applied in the variable $v=e^x$ with a bump that is at least $1/v$ on $[e^{-2},e^2]$, the integral is $\ll|W|^{1/2}E(W)^{1/2}$. Finally $\sum_{d\le D_0}(T+N^2/d^2)\le D_0T+2N^2=3N^2$. $\square$
+
+**Lemma LV.46 (pairs with a large common factor).** Under the hypotheses of Proposition LV.39,
+
+$$
+\sum_{\substack{N<n_1,n_2\le2N\\ \gcd(n_1,n_2)>D_0}}\Bigl|\Phi\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\preccurlyeq|W|^3N+|W|^{21/8}T^{1/4}N+E(W)^{1/2}|W|^{1/2}N^2.
+$$
+
+**Proof.** For $D_0<d\le2N$ drop the coprimality of $n_1',n_2'\in(N/d,2N/d]$. Here $N/d\ge1/2$. By Cauchy–Schwarz and Lemma LV.42 with $L=N/d$, the sum for one $d$ is $\preccurlyeq X_d^{1/2}Y_d^{1/2}$, with $E=E(W)$ and
+
+$$
+X_d=\frac{|W|^2N}d+\frac{|W|N^2}{d^2}+\frac{|W|^{5/4}T^{1/2}N}d,\qquad Y_d=\frac{|W|^4N}d+\frac{EN^2}{d^2}+\frac{E^{3/4}|W|T^{1/2}N}d.
+$$
+
+Apply Cauchy–Schwarz over $d$, using $\sum_{d\le2N}1/d\ll\log T$ and $\sum_{d>D_0}d^{-2}\le2/D_0=2T/N^2$. The sum is then
+
+$$
+\preccurlyeq\left(|W|^2N+|W|T+|W|^{5/4}T^{1/2}N\right)^{1/2}\left(|W|^4N+ET+E^{3/4}|W|T^{1/2}N\right)^{1/2}.
+$$
+
+Since $N\ge T^{3/4}\ge T^{1/2}$, the middle term of the first factor is at most the last one. By $E\le3|W|^3$, $E^{1/4}T^{1/2}\le3^{1/4}|W|^{3/4}T^{1/2}\le|W|N$, so the middle term of the second factor is at most the last one. So the sum is $\preccurlyeq(X_1+X_2)^{1/2}(Y_1+Y_2)^{1/2}$, with $X_1=|W|^2N$, $X_2=|W|^{5/4}T^{1/2}N$, $Y_1=|W|^4N$ and $Y_2=E^{3/4}|W|T^{1/2}N$. Now $\sqrt{X_1Y_1}=|W|^3N$ and $\sqrt{X_2Y_1}=|W|^{21/8}T^{1/4}N$. For the two products with $Y_2$ we use $E^{3/8}\le E^{1/2}|W|^{-1/4}$, from $E\ge|W|^2$. First,
+
+$$
+\sqrt{X_1Y_2}=|W|^{3/2}E^{3/8}T^{1/4}N\le E^{1/2}|W|^{1/2}N^2\cdot\frac{|W|^{3/4}T^{1/4}}N.
+$$
+
+If $|W|^{3/4}T^{1/4}\le N$, this is at most $E^{1/2}|W|^{1/2}N^2$. Otherwise $|W|^{3/4}>NT^{-1/4}\ge T^{1/2}$, so $|W|>T^{2/3}$. Then $E\le3|W|^3$ gives $\sqrt{X_1Y_2}\le3^{3/8}|W|^{21/8}T^{1/4}N$. Second,
+
+$$
+\sqrt{X_2Y_2}=|W|^{9/8}E^{3/8}T^{1/2}N\le E^{1/2}|W|^{1/2}N^2\cdot\frac{|W|^{3/8}T^{1/2}}N.
+$$
+
+If $|W|^{3/8}T^{1/2}\le N$, this is at most $E^{1/2}|W|^{1/2}N^2$. Otherwise $|W|^{3/8}>NT^{-1/2}\ge T^{1/4}$, so again $|W|>T^{2/3}$. Then $\sqrt{X_2Y_2}\le3^{3/8}|W|^{9/4}T^{1/2}N\le3^{3/8}|W|^3N$, because $|W|^{3/4}>T^{1/2}$. $\square$
+
+**Proof of Proposition LV.39.** Lemmas LV.41, LV.45 and LV.46 give
+
+$$
+E(W)\preccurlyeq N^{-2\sigma}\left(N^2|W|^{1/2}E(W)^{1/2}+|W|^3N+|W|^{21/8}T^{1/4}N\right).
+$$
+
+If the first term dominates, then $E(W)^{1/2}\preccurlyeq N^{2-2\sigma}|W|^{1/2}$. Otherwise $E(W)\preccurlyeq N^{1-2\sigma}(|W|^3+|W|^{21/8}T^{1/4})$. In both cases (LV.40) holds. $\square$
+
+For $T^{2/3}\le N\le T$ the same ingredients give a simpler bound. By Lemma LV.41, $|\Phi|\le|W|$ and (LV.43) with $L=N$,
+
+$$
+E(W)\preccurlyeq N^{-2\sigma}|W|\left(|W|^2N+|W|N^2+|W|^{5/4}T^{1/2}N\right)\preccurlyeq|W|^3N^{1-2\sigma}+|W|^2N^{2-2\sigma}.
+$$
+
+The term containing $T^{1/2}$ is absorbed because $|W|^{1/4}T^{1/2}\le|W|+N$. Indeed, $|W|^{1/4}T^{1/2}\le|W|$ if $|W|\ge T^{2/3}$, and $|W|^{1/4}T^{1/2}\le T^{2/3}\le N$ otherwise. In particular, if $\sigma>1/2$ and $E(W)\ge|W|^3T^{-\theta}$ with $0\le\theta<2(2\sigma-1)/3$, then $N^{1-2\sigma}\le T^{-2(2\sigma-1)/3}$ makes the first term too small, and $|W|\preccurlyeq T^\theta N^{2-2\sigma}$.
+
+**Corollary LV.47.** In the setting of Proposition LV.6,
+
+$$
+\Sigma_3\preccurlyeq T^2|W|^{3/2}+T|W|N^{3-2\sigma}+T|W|^2N^{3/2-\sigma}+T^{9/8}|W|^{29/16}N^{3/2-\sigma}.
+$$
+
+**Proof.** The polynomial $D_N$ has coefficients $w(n/N)b_n$ of modulus at most one, supported in $(N,2N)$. Also $N=T^{5/6}\in[T^{3/4},T]$, so Proposition LV.39 applies to $W$. Insert (LV.40) into Proposition LV.38 and use $\sqrt{x+y+z}\le\sqrt x+\sqrt y+\sqrt z$. The three energy terms give $T|W|N^{3-2\sigma}$, $T|W|^2N^{3/2-\sigma}$ and $T^{9/8}|W|^{29/16}N^{3/2-\sigma}$. $\square$
+
+#### 10.1.11. Proof of the core estimate
+
+**Proof of Proposition LV.6.** By Lemmas LV.14 and LV.16, either $|W|\ll N^{2-2\sigma}$ or $|W|^3N^{6\sigma-3}\ll|\Sigma_2|+|\Sigma_3|+T^{-100}$. Proposition LV.20 with $k=4$ and Corollary LV.47 therefore give
 
 $$
 \begin{aligned}
-Z_1&:=  \int_{| \tau| \preccurlyeq 1} e\Bigl(\tau\Bigl( \frac{m_2'}{M_3}u' - \frac{m_2}{M_3} u\Bigr)\Bigr)d\tau ,\\
- Z_2&:= \sum_{\ell}  \psi_2 \Big(\frac{M_2 \ell}{T} \Big) e\Bigl(\ell\Bigl(m_2' u' - m_2 u\Bigr)\Bigr).
+|W|^3N^{6\sigma-3}\preccurlyeq{}&N^3+N^2|W|^2+TN|W|^{7/4}+N^2|W|^{29/16}T^{1/8}+T^2|W|^{3/2}\\
+&+T|W|N^{3-2\sigma}+T|W|^2N^{3/2-\sigma}+T^{9/8}|W|^{29/16}N^{3/2-\sigma}.
 \end{aligned}
 $$
 
-Trivially we have $|Z_1|\preccurlyeq 1$. By Poisson summation, and the rapid decay of $\widehat{\psi}_2$, we have
+The left side is at most eight times the largest of the eight terms. Solving the corresponding inequality for $|W|$ in each case gives
 
 $$
-\begin{aligned}
-Z_2&=\frac{T}{M_2}\sum_{j}  \widehat{\psi}_2\Bigl(\frac{j-m_2'u'+m_2u}{M_2/T}\Bigr)\\
-&=\frac{T}{M_2}\sum_{\substack{j\\ |j-m_2'u'+m_2u|\preccurlyeq M_2/T}}  \widehat{\psi}_2\Bigl(\frac{j-m_2'u'+m_2u}{M_2/T}\Bigr)+O(T^{-100}).
-\end{aligned}
+|W|\preccurlyeq N^{2-2\sigma},\ N^{5-6\sigma},\ \bigl(TN^{4-6\sigma}\bigr)^{4/5},\ \bigl(N^{5-6\sigma}T^{1/8}\bigr)^{16/19},\ T^{4/3}N^{2-4\sigma},\ T^{1/2}N^{3-4\sigma},\ TN^{9/2-7\sigma},\ T^{18/19}N^{(72-112\sigma)/19}.
 $$
 
-Substituting these back into our expression (GM9.7) for $\Sigma_{II}$ and recalling $M\le T^4$, we find
+With $T=N^{6/5}$ these are powers of $N$ with the exponents
 
 $$
-\begin{aligned}
-\Sigma_{II}\preccurlyeq M_2\int f(u) \sum_{m_2, m_2' \sim M_2}\sum_{j}   \int_{|u' - \frac{m_2 u + j}{m_2'} | \preccurlyeq \frac{1}{T}} T f(u') du' du+O(T^{-80}).
-\end{aligned}
+\frac{10-10\sigma}5,\quad5-6\sigma,\quad\frac{104-120\sigma}{25},\quad\frac{412-480\sigma}{95},\quad\frac{18-20\sigma}5,\quad\frac{18-20\sigma}5,\quad\frac{57-70\sigma}{10},\quad\frac{468-560\sigma}{95}.
 $$
 
-This gives
+Subtracting each from the target exponent $(18-20\sigma)/5$ leaves
 
 $$
- II\preccurlyeq_\eta M_2 (M_1 + M_3)  \int f(u)  \sum_{m_2, m_2' \sim M_2}\sum_{j}  \int_{|u' - \frac{m_2 u + j}{m_2'} | \preccurlyeq \frac{1}{T}}  T f(u') du' du+O(T^{-70}). 
+\frac{8-10\sigma}5,\quad\frac{10\sigma-7}5,\quad\frac{20\sigma-14}{25},\quad\frac{100\sigma-70}{95},\quad0,\quad0,\quad\frac{30\sigma-21}{10},\quad\frac{180\sigma-126}{95}.
 $$
 
-Fix the parameters $\delta,\beta$ of the lemma. In the preceding truncations choose every auxiliary exponent sufficiently small in terms of both parameters. In particular, the final inner integration window can be written $|T(u'-v)|\le A$, with $1\le A\le C_{\delta,\beta}T^\beta$. Choose $\psi(x)=\chi(x/A)$, where $\chi$ is the fixed bump in the statement, and define
+All are nonnegative for $7/10\le\sigma\le4/5$, including both endpoints. Hence $|W|\preccurlyeq N^{(18-20\sigma)/5}=TN^{(12-20\sigma)/5}$. No constant in the argument depends on $\sigma$. $\square$
 
-$$
-\tilde f(u)=T\int\psi(T(u-u'))f(u')\,du'.
-$$
-
-Since $\psi=1$ on $[-A,A]$, the integral over $u'$ in the bound for $II$ is at most $\tilde f((m_2u+j)/m_2')$. Since $\beta<1$, its support remains in a fixed positive interval for sufficiently large $T$. Its kernel mass is $a=A\|\chi\|_1$, and the derivative and norm bounds in the statement follow directly by scaling and the convolution inequalities. Thus we find (recalling that $f$ is supported on $u\asymp1$ and $M_1,M_2,M_3\le M$)
-
-
-$$
-II \preccurlyeq_\eta  M^2 \int_{u\asymp 1} f(u)  \sum_{m_2, m_2' \sim M_2}\sum_{ j} \tilde{f} \Big( \frac{m_2 u + j}{m_2'} \Big) du+O(T^{-70}).
-$$
-
-Now we apply Cauchy-Schwarz to get
-
-
-$$
-II \preccurlyeq_\eta \Big[ M^4 \int f(u)^2 du \Big]^{1/2} \Big[ \int_{u\asymp 1} \Big( \sum_{m_2, m_2' \sim M_2,  j \in \mathbb{Z}} \tilde{f} \Big( \frac{m_2 u + j}{m_2'} \Big) \Big)^2 du\Big]^{1/2}.
-\tag{GM9.8}
-$$
-
-(The $O(T^{-70})$ term it is clearly majorized by the above expression and so may absorbed into the implied constant.) Since $u\asymp 1$ and $f(x)$ is supported on $x\asymp 1$, we may restrict the summation over $j$ to $j\ll M_2$. Thus we see that the second term in square brackets is bounded by $J(\tilde{f})$. Putting together (GM9.2), (GM9.4), (GM9.5), (GM9.6) and (GM9.8) we find that for any $\eta>0$, provided $T$ is sufficiently large in terms of $\eta$, we have
-
-$$
-\begin{aligned}
-& J(f)\preccurlyeq_\eta  T^{3\eta}M^6 \left( \int f(u) du \right)^2+ \Big( M^4 \int f(u)^2 du\Big)^{1/2}J(\tilde{f})^{1/2}.
-\end{aligned}
-$$
-
-
-For the prescribed parameters, fix $0<\eta<\min(\delta,\beta)/12$. There are only finitely many other truncated windows and subpower factors in this argument; choose their exponents so their total contribution is less than $\delta/2$, and so the final inner window has exponent less than $\beta$. Choose each Fourier-decay order large enough for the corresponding fixed truncation exponent to give the displayed error powers. The first term contributes $T^{3\eta}$, with $3\eta<\delta/4$; all remaining losses can therefore be bounded by $T^\delta$. The chosen kernel has $A\le C_{\delta,\beta}T^\beta$ independently of that inequality loss. This proves exactly the loss-specific assertion of GM9.2.
- $\square$
-
-#### 10.1.10. Further bounds for $S_3$
-
-In this section,  we use our bounds for sums over affine transformations to improve our bound for $S_3$.   We will get the following estimate.
-
-**Proposition GM10.1 (Refined $S_3$ bound).**   If $W$ is a $T^\epsilon$-separated set contained in an interval of length $T$,  then
-
-
-$$
-S_{3} \preccurlyeq_\epsilon T^2 |W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}.
-\tag{GM10.1}
-$$
-
-
-**Proof.** Simultaneously changing the signs of $m_1,m_2,m_3$ leaves both ratios unchanged, so the sums may be restricted to $m_2>0$ at a factor of two. The signed $m_1$ range and the fixed enlarged $m_3$ range then have exactly the form in $J(f)$. 
-
-Recall from Proposition GM7.2 that $S_3\preccurlyeq S_{3,0}+O(T^{-100})$, where
-
-
-$$
-S_{3,0}:=\frac{N^2}{M} \int_{v_1 \asymp 1}  | R ( v_1 ) |   \sum_{\substack{|m_1| \sim M_1\\  |m_2|,  |m_3| \asymp M}} \left| \tilde{R} \Big( \frac{ m_1 v_1 + m_3}{m_2 v_1} \Big) \tilde{R} \Big( \frac{m_1 v_1 + m_3}{m_2} \Big)\right|  dv_1
-$$
-
-for some $1\le M_1\le M\preccurlyeq T/N$ and some suitable smooth bumps $\tilde{\psi}_1$, $\tilde{\psi}_2$ which appear in the definition (GM7.5) of $\tilde{R}=\tilde{R}_{\tilde{\psi}_1,\tilde{\psi}_2,M}$. By Cauchy-Schwarz we have
-
-
-$$
-S_{3,0}\le \frac{N^2}{M} S_{3,1}^{1/2}S_{3,2}^{1/2},
-$$
-
-where (using Lemma GM8.2 to bound $S_{3,1}$)
-
-
-$$
-\begin{aligned}
-S_{3,1}&:=\int_{v \asymp 1}  | R(v)|^2dv\ll_\epsilon |W|,\\
-S_{3,2}&:=\int_{v \asymp 1}  \Bigl( \sum_{|m_1| \sim M_1,\,   |m_2|,  |m_3| \asymp M}  \Bigr| \tilde{R}\Bigl(\frac{m_3+m_1v}{m_2v}\Bigr) \tilde{R}\Bigl(\frac{m_3+m_1v}{m_2}\Bigr)\Bigr|\Bigr)^2dv.
-\end{aligned}
-$$
-
-By Cauchy-Schwarz again, we have that
-
-$$
-S_{3,2}\ll S_{3,3}^{1/2}S_{3,4}^{1/2},
-$$
-
-where
-
-$$
-\begin{aligned}
-S_{3,3}&:=\int_{v \asymp 1}  \Bigl(  \sum_{|m_1| \sim M_1, \,  |m_2|,  |m_3| \asymp M} \Bigr|\tilde{R}\Bigl(\frac{m_3+m_1v}{m_2v}\Bigr)\Bigr|^2\Bigr)^2dv,\\
-S_{3,4}&:=\int_{v \asymp 1}  \Bigl(  \sum_{|m_1| \sim M_1, \,  |m_2|,  |m_3| \asymp M} \Bigr|\tilde{R}\Bigl(\frac{m_3+m_1v}{m_2}\Bigr)\Bigr|^2\Bigr)^2dv.
-\end{aligned}
-$$
-
-We bound $S_{3,3}$ and $S_{3,4}$ using Proposition GM9.1.  To bound $S_{3,4}$, we use $f(v) =  \psi_1(v) |\tilde{R}(v)|^2$, where $\psi_1(v)$ is a smooth bump supported on $v \asymp 1$ taking a maximal value of 1 at $v=1$ which majorizes the range of integration.   To control $S_{3,3}$, we make a change of variables $u=1/v$ and rewrite $S_{3,3}$ as
-
-$$
-\begin{aligned}
-S_{3,3}&\ll \int_{u \asymp 1} \Bigl( \sum_{|m_1| \sim M_1, \,  |m_2|,  |m_3| \asymp M} \Bigr|\tilde{R}\Bigl(\frac{m_3u+m_1}{m_2}\Bigr)\Bigr|^2\Bigr)^2du.
-\end{aligned}
-$$
-
-Then we use $f(u) = \psi_1(u) |\tilde{R}(u)|^2$ again.  Lemma GM8.4 shows that $\widehat{f}(\xi)\preccurlyeq_j \| f\|_\infty T^j/|\xi|^j$ (taking $\psi_2$ to be $\widetilde{\psi}_2$, $\psi_3$ to be $\widetilde{\psi}_1$ and $B$ to be $MN$), and so $f$ satisfies the Fourier decay conditions of Proposition GM9.1. Moreover, $f$ clearly has support on $u\asymp 1$ from the support of $\psi_1$. Thus Proposition GM9.1 gives the bounds
-
-$$
-\begin{aligned}
- S_{3,3}, \, S_{3,4}
- &\preccurlyeq M^6 \Big( \int_{v \asymp 1} |\tilde{R}(v)|^2 dv \Big)^2 + M^4 \int_{v \asymp 1} |\tilde{R}(v)|^4 dv .
-\end{aligned}
-$$
-
-Applying Lemmas GM8.2 and GM8.3, we get
-
-$$
- S_{3,3}, \,S_{3,4}  \preccurlyeq_\epsilon M^6 |W|^2 + M^4 E(W). 
-$$
-
-The same bound holds for $S_{3,2}$ since $S_{3,2} \le S_{3,3}^{1/2} S_{3,4}^{1/2}$.    Then we get
-
-$$
-\begin{aligned}
- S_{3,0} \preccurlyeq \frac{N^2}{M} S_{3,1}^{1/2} S_{3,2}^{1/2} &\preccurlyeq_\epsilon \frac{N^2}{M} |W|^{1/2} (M^6 |W|^2 + M^4 E(W))^{1/2} \\
- &\le N^2 M^2 |W|^{3/2} + N^2 M |W|^{1/2} E(W)^{1/2}. 
-\end{aligned}
-$$
-
-Since $M \preccurlyeq T/N$ and $S_3\preccurlyeq S_{3,0}+O(T^{-100})$, we get
-
-$$
- S_3 \preccurlyeq_\epsilon T^2 |W|^{3/2} + T N  |W|^{1/2} E(W)^{1/2}. 
-$$
-
-
- $\square$
-
-#### 10.1.11. Energy Bound
-
-In this section, we prove bounds related to the energy of $W$,  which show that a Dirichlet polynomial cannot be too large on a set of large energy. These bounds ultimately rely on Heath-Brown's bound Theorem 9.1, and use the second and fourth difference-set moments proved below. Recall that in equation (GM.E), we defined the energy of a finite set $W \subset \mathbb{R}$ by
-
-
-$$
-E(W) := \#\{t_1,t_2,t_3,t_4\in W:\,|t_1+t_2-t_3-t_4|\le 1\}.
-$$
-
-We will prove two bounds about the behavior of Dirichlet polynomials on sets of high energy.  The first bound is Lemma GM11.A.  We recall the statement here.
-
-**Lemma GM11.A (basic energy bound).** 
-Let $N\in [T^{2/3},T]$, $\sigma > 1/2$ and $D(t) = \sum_{n\sim N} b_n n^{i t }$ with $|b_n| \le 1$. Suppose $W \subset [0,T]$ is a 1-separated set such that $|D(t)| > N^\sigma$ for $t\in W$. Then
-
-
-$$
-E(W)\le |W|^3 N^{1-2\sigma+o(1)}+|W|^2 N^{2-2\sigma+o(1)}.
-$$
-
-Combining Lemma GM11.A with our earlier results is enough to ultimately get an improvement on (GM3.C) in the key scenario $N = T^{4/5}$, $|W| = T^{3/5}$.  
-The second bound is a little more complicated, but it leads to stronger estimates in our applications.
-
-**Proposition GM11.1 (Bound for energy).**   Suppose that $D(t) = \sum_{n \sim N} b_n n^{it}$ with $|b_n| \le 1$.   Suppose that $W$ is a 1-separated set contained in an interval of length $T$,  and that $|D(t)| \ge N^\sigma$ for $t \in W$.   If $T^{3/4} \le N \le T$,  then
-
-
-$$
-E(W)\preccurlyeq |W| N^{4-4\sigma}+|W|^{21/8}T^{1/4}N^{1-2\sigma}+|W|^3N^{1-2\sigma}.
-\tag{GM11.1}
-$$
-
-
-In the normalized application $N=T^{5/6}$, so the required energy range $T^{3/4}\le N\le T$ is satisfied.
-
-If $|W|\approx TN^{1-2\sigma}$, then the bound in Proposition GM11.1 would be $(N/T)^2|W|^3+(|W|^{5/8}T^{-6/8})|W|^3 +|W|^4/T$. The first term will be the most important for us, and generally sets the limitations on our bounds. The second term will be negligible in practice (and could be improved with a bit more effort). The final term corresponds to the additive energy of a random set in an interval of length $T$.
-
-The condition $N\ge T^{3/4}$ is used to simplify intermediate terms occurring in the proof of Proposition GM11.1 and this range could be improved with some extra effort. For the purposes of Theorem 10.1 the key situation is when $N=T^{5/6}$ as in Proposition GM3.1.
-
-An immediate consequence of Proposition GM11.1 is a good bound for the key term $S_3$ by substituting the bound of Proposition GM11.1 (applied to $D_N(t)$) into Proposition GM10.1.
-
-**Proposition GM11.2 ($S_3$ Bound).** 
-Under the hypotheses of GM11.1 for $D_N$, with $T^{3/4}\le N\le T$ and a $T^\epsilon$-separated set $W$, we have
-
-
-$$
-S_{3}\preccurlyeq T^2|W|^{3/2}+T|W|N^{3-2\sigma}+T|W|^2N^{3/2-\sigma}+T^{9/8}|W|^{29/16}N^{3/2-\sigma}.
-$$
-
-**Proof.** Apply GM11.1 to $D_N$, whose coefficients $w(n/N)b_n$ are still at most one because $0\le w\le1$. GM10.1 gives $S_3\preccurlyeq T^2|W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}$. For nonnegative $a,b,c$, $(a+b+c)^{1/2}\le\sqrt a+\sqrt b+\sqrt c$. The three energy terms consequently give respectively $T|W|N^{3-2\sigma}$, $T^{9/8}|W|^{29/16}N^{3/2-\sigma}$, and $T|W|^2N^{3/2-\sigma}$. This is the asserted formula. $\square$
-
-Now we turn to the proof of Proposition GM11.1.
-
-Band-limited smoothing controls the nearby values needed for the energy argument. The following local averaging lemma and its discrete moment consequence make that step precise.
-
-**Lemma GM11.3 (Dirichlet polynomials do not vary too fast).**   Let $D(t)$ be as in Proposition GM11.1. Then we have
-
-
-$$
-|D(t)|\ll \int_{|u-t|\preccurlyeq 1}|D(u)|du + O(T^{-100}).
-$$
-
-**Proof.**  
-Let $\psi(x)$ be a smooth bump which is supported on $|2\pi x-\log{N}|\ll 1$ and is equal to 1 on $[(2\pi)^{-1}\log{N},(2\pi)^{-1}\log{2N}]$, and extend $b_n$ to all $n\in \mathbb{Z}$ by setting $b_n=0$ if it is not the case that $n\sim N$. Then we have
-
-
-$$
-D(t)=\sum_{n\sim N}b_n n^{it}=\sum_{n}b_n n^{it} \psi\Bigl(\frac{\log{n}}{2\pi}\Bigr)=\int \widehat{\psi}(\xi) D(t+\xi)d\xi.
-$$
-
-By the rapid decay of $\widehat{\psi}$ we may restrict to $|\xi|\preccurlyeq1$ at the cost of $O(T^{-100})$. The same argument works for any length $L\le T^C$ with fixed $C$: after removing the carrier $L^{it}$, the cutoff and all its derivatives are fixed independently of $L$, while $|D|\le2L$; a sufficiently large decay order, depending on $C$ and the truncation exponent, bounds the omitted tail by $T^{-100}$. This wider polynomial-length form is the one used in the fourth-moment proof. Its additive error can be made arbitrarily small before summing any of the polynomially many terms.
- $\square$
-
-**Lemma GM11.4 (Energy controlled by discrete $3^{rd}$ moment).** 
-Let $D(t)$ and $W$  be as in Proposition GM11.1. Then we have 
-
-
-$$
-E(W)\preccurlyeq N^{-2\sigma}\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3.
-$$
-
-**Proof.** 
-Since $|D(t)|\ge N^\sigma$ for $t\in W$, we have
-
-
-$$
-E(W)=  \sum_{\substack{t_1, t_2, t_3, t_4 \in W\\  |t_1 + t_2 - t_3 - t_4| \le 1}}1\le N^{-2\sigma} \sum_{\substack{t_1, t_2, t_3, t_4 \in W\\  |t_1 + t_2 - t_3 - t_4| \le 1}}|D(t_4)|^2.
-$$
-
-By Lemma GM11.3 and Cauchy-Schwarz, we have for $|t_1+t_2-t_3-t_4|\le 1$
-
-
-$$
-|D(t_4)|^2\ll \int_{|u-t_4|\preccurlyeq 1}|D(u)|^2 du \ll \int_{|u-(t_1+t_2-t_3)|\preccurlyeq 1}|D(u)|^2 du.
-$$
-
-Since $W$ is $1$-separated, given $t_1,t_2,t_3$ there are $\ll 1$ choices of $t_4\in W$ such that $|t_1+t_2-t_3-t_4|\le 1$. Thus we see that
-
-
-$$
-\begin{aligned}
-E(W)&\ll N^{-2\sigma}\sum_{t_1,t_2,t_3\in W}\int_{s\preccurlyeq 1}|D(t_1+t_2-t_3-s)|^2ds\\
-&= N^{-2\sigma}\sum_{n_1,n_2\sim N}b_{n_1}\overline{b_{n_2}}\int_{s\preccurlyeq 1}\Bigl(\frac{n_2}{n_1}\Bigr)^{is}R\Bigl(\frac{n_1}{n_2}\Bigr)^2 R\Bigl(\frac{n_2}{n_1}\Bigr)ds\\
-&\preccurlyeq N^{-2\sigma}\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3.
-\end{aligned}
-$$
-
-
- $\square$
-
-Next we note that Heath-Brown's theorem (Theorem 9.1) bounds $\sum_{n_1,n_2\sim N}|R(\frac{n_1}{n_2})|^2$ fairly directly and, with a bit more work, can be used to bound $\sum_{n_1,n_2\sim N}|R(\frac{n_1}{n_2})|^4$ too.
-
-**Lemma GM11.5 (Discrete second moment).** For $1/2\le M\le T^C$, with any fixed $C$, 
-
-
-$$
-\sum_{n_1,n_2\sim M}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2 \preccurlyeq  |W|^2 M + |W| M^2 + |W|^{5/4}T^{1/2} M.
-$$
-
-**Proof.** If $1/2\le M<1$, the interval $(M,2M]$ contains only the possible integer $1$, so the left side is at most $|R(1)|^2=|W|^2\le2M|W|^2$. This proves the bound in that range. For $M\ge1$, we have
-
-
-$$
-\sum_{n_1, n_2 \sim M}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2=\sum_{t_1,t_2\in W}\Bigl|\sum_{n\sim M} n^{i(t_1-t_2)}\Bigr|^2,
-$$
-
-so by Theorem 9.1 this is
-
-
-$$
-\preccurlyeq |W|^2 M + |W| M^2 + |W|^{5/4}T^{1/2} M.
-$$
-
- $\square$
-
-Lemma GM11.A is now a quick consequence of our arguments so far.
-
-**Proof of Lemma GM11.A.** 
-By Lemma GM11.4 and the trivial bound $|R(x)|\le |W|$ we have
-
-
-$$
-E(W)\preccurlyeq N^{-2\sigma}\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\le |W|N^{-2\sigma}\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2.
-$$
-
-Lemma GM11.5 gives, in addition to the two terms displayed next, $|W|^{9/4}T^{1/2}N^{1-2\sigma}$. This is absorbed because $|W|^{1/4}T^{1/2}\ll |W|+N$ when $N\ge T^{2/3}$: if $|W|\ge T^{2/3}$ the first term suffices, and otherwise the second does. Hence
-
-
-$$
-E(W)\preccurlyeq |W|^3N^{1-2\sigma}+|W|^2N^{2-2\sigma}.
-$$
-
- $\square$
+#### 10.1.12. Proof of Theorem 10.1
 
-To do better we look at higher moments to avoid the potentially wasteful use of the trivial bound $|R(x)|\le |W|$.
+**Lemma LV.48 (the classical bounds).** In the setting of Theorem 10.1:
 
-**Lemma GM11.6 (Discrete fourth moment).** For $1/2\le M\le T^C$, with any fixed $C$, 
+1. if $N\ge T$, then $|W|\ll N^2V^{-2}$;
+2. if $N<T$, then $|W|\preccurlyeq N^2V^{-2}+T\min\left(NV^{-2},N^4V^{-6}\right)$.
 
+**Proof.** Let $D(t)=\sum_{N<n\le2N}b_nn^{it}$. For part 1, (LV.4) with $\Delta=\log2$ gives
 
 $$
-\sum_{n_1,n_2\sim M}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^4  \preccurlyeq  |W|^4 M + M^2 E(W) +  E(W)^{3/4}|W|T^{1/2}M.
+\sum_{t\in W}|D(t)|^2\ll\int_{\mathbb R}\Bigl(\sum_{t\in W}K_0\bigl((u-t)\log2\bigr)\Bigr)|D(u)|^2\,du.
 $$
 
-**Proof.** If $1/2\le M<1$, the interval $(M,2M]$ contains only the possible integer $1$, so the left side is at most $|R(1)|^4=|W|^4\le2M|W|^4$. This proves the bound in that range. For $M\ge1$, we split the sum in the $R$ function according to the number of representations of $u$ as approximately $t_1-t_2$. Let $\lfloor x \rfloor$ denote the largest integer $\le x$, and define
+Since $W\subset[0,T]$ is one-separated and $K_0$ decays rapidly, the weight is $\ll(1+\operatorname{dist}(u,[0,T]))^{-2}$. Mean values, Theorem 2.1, applied to the coefficients $\overline{b_n}$, bounds the integral of $|D|^2$ over an interval of length $h$ by $h\sum|b_n|^2+6\pi\sum n|b_n|^2\le2Nh+24\pi N^2$. Applying this on $[-1,T+1]$ and on the unit intervals outside it gives $\sum_{t\in W}|D(t)|^2\ll N(T+N)\ll N^2$. Since $|D|\ge V$ on $W$, part 1 follows.
 
+For part 2, the points $t+T$, $t\in W$, lie in $[T,2T]$, and $|D(t)|=|\sum_nc_nn^{-i(t+T)}|$ with $c_n=\overline{b_n}n^{iT}$. Lemma 2.1 with $Z=2N\le T^2$ gives $|W|V^2\ll(\log T)^3(TN+N^2)$, so $|W|\preccurlyeq(N^2+TN)V^{-2}$. Lemma 5.1 with $a_n=\overline{b_n}$, $G\le2N$ and $G_2\le\sum_{n\le2N}d(n)\le2N(1+\log2N)$ gives
 
 $$
-U_B:=\Big\{u\in \mathbb{Z}:\, \# \{(t_1,t_2)\in W^2:\,\lfloor t_1-t_2\rfloor=u\} \sim B \Big\}.
+|W|V^2\ll N^2\ell+|W|^{2/3}T^{1/3}N^{4/3}\ell^{4/3},\qquad\ell=\log(2NT).
 $$
 
-Clearly $U_B$ is empty if $B<1/2$ or if $B>|W|$. Thus, using Cauchy-Schwarz
+If the first term dominates, $|W|\preccurlyeq N^2V^{-2}$. Otherwise $|W|^{1/3}V^2\ll T^{1/3}N^{4/3}\ell^{4/3}$, that is, $|W|\preccurlyeq TN^4V^{-6}$. Combining the two bounds gives part 2. $\square$
 
+**Proof of Theorem 10.1.** Fix $\delta\in(0,1)$. Since $|\sum b_nn^{it}|\le N+1\le2N$, $W$ is empty if $V>2N$. For bounded $N$ or $T$ the theorem holds with a suitable constant, because $|W|\le T+1$ and $TN^{12/5}V^{-4}\ge TN^{-8/5}/16$. If $N\ge T$, part 1 of Lemma LV.48 gives (10.1). Let $N<T$.
 
-$$
-\begin{aligned}
-|R(x)|^4=\Bigl|\sum_{t_1,t_2\in W}x^{i(t_1-t_2)}\Bigr|^2&=\Bigl|\sum_{B=2^j}\sum_{u\in U_B}\sum_{\substack{t_1,t_2\in W\\ \lfloor t_1-t_2\rfloor=u}}x^{i(t_1-t_2)}\Bigr|^2\\
-&\preccurlyeq \sum_{B=2^j\le |W|}\Bigl|\sum_{u\in U_B}\sum_{\substack{t_1,t_2\in W\\ \lfloor t_1-t_2\rfloor=u}}x^{i(t_1-t_2)}\Bigr|^2.
-\end{aligned}
-$$
-
-Taking $x=n_1/n_2$ and summing over $n_1,n_2\sim M$ then gives
-
-$$
-\begin{aligned}
-\sum_{n_1,n_2\sim M}\Bigr|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^4&\preccurlyeq \sup_{B\le |W|}\sum_{n_1,n_2\sim M}\Bigl|\sum_{u\in U_B}\sum_{\substack{t_1,t_2\in W\\ \lfloor t_1-t_2\rfloor=u}}\Bigl(\frac{n_1}{n_2}\Bigr)^{i(t_1-t_2)}\Bigr|^2\\
-&\le\sup_{B\le |W|}\sum_{u_1,u_2\in U_B}\Bigl(\sum_{\substack{t_1,t_3\in W\\ \lfloor t_1-t_3\rfloor=u_1}}1\Bigr)\Bigl(\sum_{\substack{t_2,t_4\in W\\ \lfloor t_2-t_4\rfloor=u_2}}1\Bigr)\sup_{|s| \ll 1}\Bigl|\sum_{n\sim M}n^{i(u_1-u_2+s)}\Bigr|^2\\
-&\preccurlyeq \sup_{B\le |W|}B^2\sum_{u_1,u_2\in U_B} \sup_{|s| \ll 1} \Bigl|\sum_{n\sim M}n^{i(u_1-u_2+s)}\Bigr|^2.
-\end{aligned}
-$$
-
-By using Lemma  GM11.3 to replace the supremum with an integral, and then applying Theorem 9.1,  we find
-
-$$
-\begin{aligned}
- \sum_{n_1,n_2\sim M}\Bigr|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^4&\preccurlyeq \sup_{B\le |W|}B^2\int_{t\preccurlyeq 1}\sum_{u_1,u_2\in U_B} \Bigl|\sum_{n\sim M}n^{i(u_1-u_2+t)}\Bigr|^2dt\\
- &\preccurlyeq \sup_{B\le |W|}B^2\Bigl(|U_B|^2 M +  |U_B| M^2+ T^{1/2}|U_B|^{5/4} M\Bigr). 
-\end{aligned}
-$$
-
-We have that $B |U_B|\le |W|^2$ and $B^2 |U_B|\le E(W)$, so this gives
-
-$$
-\begin{aligned}
-\sum_{n_1,n_2\sim M}\Bigr|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^4&\preccurlyeq |W|^4 M + M^2 E(W) +  E(W)^{3/4}|W|T^{1/2}M.
-\end{aligned}
-$$
-
-
- $\square$
-
-To bound $\sum_{n_1,n_2\sim N}|R\Bigl(\frac{n_1}{n_2}\Bigr)|^3$,  we could use Hölder:
-
-
-$$
-\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3 \le \left( \sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^2 \right)^{1/2} \left( \sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^4 \right)^{1/2}
-$$
-
- and then bound the two factors using Lemmas GM11.5 and GM11.6.   However, this Hölder step is somewhat lossy.   If $n_1'/n_2'$ is a rational number of small height,  then the sum $\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^p$ counts $|R( n_1'/n_2')|^p$ many times -- because there are many $n_1,n_2 \sim N$ with $n_1/n_2 = n_1'/n_2'$.   The $4^{th}$ moment tends to be dominated by $n_1,n_2$ with large $\gcd(n_1,n_2)$, but the $2^{nd}$ moment tends to be dominated by $n_1, n_2$ with small $\gcd(n_1,n_2)$.   Therefore,  instead of doing Hölder immediately,  we now split our argument according to the size of $\gcd(n_1,n_2)$. 
-
-Let $d=\gcd(n_1,n_2)$ and $n_1=n_1'd$, $n_2=n_2'd$ for some $n_1',n_2'\sim N/d$ with $\gcd(n_1',n_2')=1$. Thus we have for any choice of parameter $D$ (dropping the coprimality constraint when $d$ is large)
-
-
-$$
-E(W)\le N^{-2\sigma}\sum_{d\le D}\sum_{\substack{n_1',n_2'\sim N/d\\ \gcd(n_1',n_2')=1}}\Bigl|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigr|^3+N^{-2\sigma}\sum_{d\ge D}\sum_{n_1',n_2'\sim N/d}\Bigl|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigr|^3.
-$$
-
-First we consider small $d$.   When $d$ is small enough, the distinct fractions $n_1'/n_2'$ are very well distributed and so it makes sense to compare our sum with $\int_{v\asymp 1} |R(v)|^3 dv$.  
-
-We recall that $W$ is contained in an interval of length $T$.   Morally,  $|\widehat{W}(\tau)|$ is locally constant on intervals of length $1/T$.  Since $R(v)=\widehat{W}(-\log v/(2\pi))$,  we see that for $v \asymp 1$,  $|R(v)|$ is morally locally constant at scale $1/T$.  We make this precise in the following lemma:
-
-**Lemma GM11.7.**  For $v \asymp 1$,
-
-
-$$
-|R(v)| \ll T \int_{|v' - v| \preccurlyeq 1/T} |R(v')| dv' + O(T^{-100}).
-$$
-
-**Proof.**  Since $v \asymp 1$,  we can do a change of variables,  $\tau =(- 2\pi)^{-1} \log v$,  and it suffices to prove that
-
-
-$$
-|\widehat{W}(\tau)| \ll T \int_{|\tau' - \tau| \preccurlyeq 1/T} |\widehat{W}(\tau')| d \tau' + O(T^{-100}).
-$$
-
-We know that $W$ is contained in an interval of length $T$; call this $[T_0,T_0+T]$. Let $\psi$ be a smooth bump which is 1 on $[0,1]$. Then we have
-
-
-$$
-\begin{aligned}
-\widehat{W}(\tau)=\sum_{t\in W}e(-t\tau)=\sum_{t\in W}e(-t\tau)\psi\Bigl(\frac{t-T_0}{T}\Bigr)=\int \widehat{\psi}(\xi)\widehat{W}\Bigl(\tau-\frac{\xi}{T}\Bigr)e\Bigl(\frac{-T_0\xi}{T}\Bigr)d\xi.
-\end{aligned}
-$$
-
-
-By the rapid decay of $\widehat{\psi}$, we may restrict the integral to $\xi\preccurlyeq 1$ at the cost of an $O(T^{-100})$ error term. Since $\widehat{\psi}\ll 1$ this then gives the result.
- $\square$
-
-**Lemma GM11.8 (Small GCD terms).**  We have
-
-
-$$
-\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\le D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\preccurlyeq ( D T + N^2 ) |W|^{1/2} E(W)^{1/2}.
-$$
-
-**Proof.** 
-Let $d=\gcd(n_1,n_2)$ and $n_1=n_1'd$, $n_2=n_2'd$ for some $n_1',n_2'\sim N/d$ with $\gcd(n_1',n_2')=1$. By Lemma GM11.7, we have
-
-
-$$
-\sum_{\substack{n_1',n_2'\sim N/d\\ \gcd(n_1',n_2')=1}}\Bigl|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigr|^3\ll T\int_{v\asymp 1} |R(v)|^3 \Bigl( \sum_{\substack{n_1',n_2'\sim N/d\\ \gcd(n_1',n_2')=1\\ |v - n_1'/n_2'| \preccurlyeq 1/T}}1\Bigr)dv.
-$$
-
-Since the fractions $n_1'/n_2'$ are $d^2/N^2$-separated, we have that the inner sum over $n_1',n_2'$ on the right hand side is $\preccurlyeq 1+N^2/(d^2T)$. Thus we find
-
-
-$$
-\begin{aligned}
-\sum_{d\le  D} \sum_{\substack{n_1',n_2'\sim N/d\\ \gcd(n_1',n_2')=1}}&  \Big| R \Bigl(\frac{n_1'}{n_2'}\Bigr)\Big|^3 \preccurlyeq \sum_{d\le D}\Bigl(T+\frac{N^2}{d^2}\Bigr) \int_{v\asymp 1} |R(v)|^3dv \\
-&\preccurlyeq \sum_{d\le D}\Bigl(T+\frac{N^2}{d^2}\Bigr) \left( \int_{v \asymp 1} |R(v)|^2 dv \right)^{1/2} \left( \int_{v \asymp 1} |R(v)|^4 dv \right)^{1/2} \\
-&\preccurlyeq \Bigl( D T + N^2 \Bigr) |W|^{1/2} E(W)^{1/2}. 
-\end{aligned}
-$$
-
-
- $\square$
-
-We choose $D:=N^2/T$, so this gives 
-
-
-$$
-\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\le D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\preccurlyeq N^2|W|^{1/2}E(W)^{1/2}.
-\tag{GM11.3}
-$$
-
-
-**Lemma GM11.9 (Large GCD terms).** 
-Let $D=N^2/T$ and $N\ge T^{3/4}$. Then we have
-
-
-$$
-\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\ge D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\preccurlyeq N|W|^3+NT^{1/4}|W|^{21/8}+E(W)^{1/2}|W|^{1/2}N^2.
-$$
-
-**Proof.** 
-As in the previous lemma, we let $d=\gcd(n_1,n_2)$ and $n_1=n_1'd$, $n_2=n_2'd$. When $d$ is large, we keep the discrete summation over $n_1',n_2'$ and apply Cauchy-Schwarz directly, giving
-
-
-$$
-\begin{aligned}
-\sum_{n_1',n_2'\sim N/d}\Bigl|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigr|^3 &\ll  \Bigl(\sum_{n_1',n_2'\sim N/d}\Bigr|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigl|^2\Bigr)^{1/2}\Bigl(\sum_{n_1',n_2'\sim N/d}\Bigl|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigr|^4\Bigr)^{1/2}.
-\end{aligned}
-$$
-
-Now we can bound the factors on the right-hand side by Lemmas GM11.5 and GM11.6, with $M=N/d$. Every nonempty summand has $d\le2N$, since $n_1,n_2\le2N$, so $M\ge1/2$. The singleton cases just proved include $N<d\le2N$. This gives
-
-$$
-\begin{aligned}
- \sum_{n_1',n_2'\sim N/d}\Bigl|R\Bigl(\frac{n_1'}{n_2'}\Bigr)\Bigr|^3&\preccurlyeq\left(   \frac{|W| N^2}{d^2} +\frac{|W|^2 N}{d}+\frac{|W|^{5/4}T^{1/2}N}{d}   \right)^{1/2} \\
-&\times  \left( \frac{N|W|^4}{d}+\frac{N^2 E(W)}{d^2}+\frac{E(W)^{3/4}|W|T^{1/2}N}{d} \right)^{1/2}.
-\end{aligned}
-$$
-
-Summing over $d \ge D$, using Cauchy-Schwarz,  and recalling that $D = N^2/T$ then gives
-
-$$
-\begin{aligned}
-&\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\ge D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3 \preccurlyeq \Bigl(\frac{|W| N^2}{D}+|W|^2 N+|W|^{5/4}T^{1/2}N\Bigr)^{1/2}\\
-&\qquad\qquad\qquad\qquad\qquad\qquad \times\Bigl(N|W|^4+\frac{N^2 E(W)}{D}+E(W)^{3/4}|W|T^{1/2}N\Bigr)^{1/2}.
-\end{aligned}
-$$
-
-Next we work on simplifying and organizing the algebra.  Recall that we have $N \ge T^{3/4}$ and $D=N^2/T$.   Therefore,  we have $|W|^{5/4} T^{1/2} N \ge |W| T=|W|N^2/D$,  and we can ignore the first term in the first factor. Thus the above expression is bounded by
-
-$$
-\preccurlyeq \Bigl(|W|^2N+|W|^{5/4}T^{1/2}N\Bigr)^{1/2}\Bigl(N|W|^4+E(W)T+E(W)^{3/4}|W|T^{1/2}N\Bigr)^{1/2}.
-\tag{GM11.5}
-$$
-
-There are two main cases, depending on whether $|W| > T^{2/3}$ or not.  If $|W|>T^{2/3}$ then $|W|^2N>|W|^{5/4}T^{1/2}N$, and so the first factor is dominated by $|W|^2 N$.   We turn to the second factor.  If $|W| > T^{2/3}$, then $N|W|^4\gg N|W|^{13/4}T^{1/2}\gg E(W)^{3/4}|W|T^{1/2}N$.   Also, since $N \ge T^{3/4} > T^{1/3}$ and $E(W)\le3|W|^3$,  $N|W|^4\gg |W|^3T\gg E(W)T$.   So the second factor is dominated by $N|W|^4$.   Therefore, if $|W|>T^{2/3}$, (GM11.5) simplifies to
-
-$$
-\begin{aligned}
-&\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\ge D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\preccurlyeq N|W|^3.
-\end{aligned}
-\tag{GM11.6}
-$$
-
-
-Now suppose $|W| \le T^{2/3}$.   We see that $|W|^2N\le |W|^{5/4}T^{1/2}N$, so the first factor is dominated by $|W|^{5/4} T^{1/2} N$.   Turning to the second factor, and recalling that $N \ge T^{3/4} > T^{1/2}$ and $E(W)\le3|W|^3$,   we see that 
-$E(W)^{3/4}|W|T^{1/2}N\gg E(W)T$. Thus, if $|W|\le T^{2/3}$ we see that (GM11.5) simplifies to
-
-
-$$
-\begin{aligned}
-\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\ge D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3 &\preccurlyeq \Bigl(|W|^{5/4}T^{1/2}N\Bigr)^{1/2}\Bigl(N|W|^4+E(W)^{3/4}|W|T^{1/2}N\Bigr)^{1/2}\\
-&\preccurlyeq NT^{1/4}|W|^{21/8}+E(W)^{1/2}|W|^{1/2}N^2\Bigl(\frac{T^{1/2}|W|^{5/8}}{E(W)^{1/8}N}\Bigr).
-\end{aligned}
-\tag{GM11.7}
-$$
-
-Since $E(W)\ge |W|^2$, $|W|\le T^{2/3}$ and $N\ge T^{3/4}$, we see that $T^{1/2}|W|^{5/8}\le E(W)^{1/8}N$, so the final term in (GM11.7) is $O(|W|^{1/2}E(W)^{1/2}N^2)$. Thus, combining (GM11.6) and (GM11.7), we find that  provided $N\ge T^{3/4}$, regardless of the size of $W$, we have
-
-$$
-\sum_{\substack{n_1,n_2\sim N\\ \gcd(n_1,n_2)\ge D}}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3\preccurlyeq N|W|^3+NT^{1/4}|W|^{21/8}+E(W)^{1/2}|W|^{1/2}N^2.
-$$
-
-
- $\square$
-
-**Proof of Proposition GM11.1.** 
-First we use Lemma GM11.4 to give
-
-
-$$
-E(W)\preccurlyeq N^{-2\sigma}\sum_{n_1,n_2\sim N}\Bigl|R\Bigl(\frac{n_1}{n_2}\Bigr)\Bigr|^3.
-$$
-
-Splitting according to whether $\gcd(n_1,n_2)\le D=N^2/T$ or not, we find by Lemma GM11.8 and Lemma GM11.9 that
-
-
-$$
-E(W)\preccurlyeq N^{-2\sigma}\Bigl(N|W|^3+NT^{1/4}|W|^{21/8}+E(W)^{1/2}|W|^{1/2}N^2\Bigr).
-$$
-
-This rearranges to give
-
-
-$$
-E(W)\preccurlyeq |W|N^{4-4\sigma}+|W|^{21/8}T^{1/4}N^{1-2\sigma}+|W|^3N^{1-2\sigma}.
-$$
-
- $\square$
+Split $(N,2N]$ into $I_1=(N,3N/2]$ and $I_2=(3N/2,2N]$, and put $N_1=5N/6$, $N_2=10N/9$. Then $I_j\subset(N_j,2N_j]$. Since $[6N_1/5,9N_1/5]=[N,3N/2]$ and $[6N_2/5,9N_2/5]=[4N/3,2N]$, we have $w(n/N_j)=1$ for $n\in I_j$. So $D_j(t)=\sum_{n\in I_j}b_nn^{it}$ is the smoothed polynomial of Proposition LV.6 at length $N_j$, with coefficients $b_n\mathbf 1_{I_j}(n)$. At each $t\in W$ at least one of $|D_1(t)|,|D_2(t)|$ is at least $V/2$. Let $W_j$ be the set of those $t$ for which $|D_j(t)|\ge V/2$, and put $V_j=V/2$.
 
-#### 10.1.12. Proof of results on large values of Dirichlet polynomials
-
-In this section we prove our main results on the large values of Dirichlet polynomials by assembling the tools in the previous sections.
-
-**Proof of Proposition GM3.1.** 
-
-Suppose that $|D_N(t)| \ge N^\sigma$ on the set $W$ contained in an interval of length $T = N^{6/5}$.  By Proposition GM4.6 and (GM5.5), we have
-
-
-$$
-|W|\ll_\epsilon N^{2-2\sigma}+N^{1-2\sigma}\Bigl|\sum_{\substack{m\in \mathbb{Z}^3\setminus\{0\}}}I_m\Bigr|^{1/3}\le N^{2-2\sigma}+N^{1-2\sigma}\Bigl(|S_1|+|S_2|+|S_3|\Bigr)^{1/3}.
-$$
-
-By Proposition GM5.1, $S_1$ is negligible. We bound $S_2$ by Proposition GM6.1, and $S_3$ by Proposition GM11.2. Therefore we get for any choice of $k\in\mathbb{N}$
-
-
-$$
-\begin{aligned}
-|W|^3N^{6\sigma-3}&\preccurlyeq_\epsilon N^{3}+|S_2|+|S_3|\\
-&\preccurlyeq_{\epsilon,k} N^3+|W|^2N^2+T N |W|^{2-1/k}+N^2 |W|^{2-3/4k}T^{1/2k}+T^2 |W|^{3/2}\\
-&\qquad+T |W| N^{3-2\sigma}+T |W|^2 N^{3/2-\sigma}+T^{9/8} |W|^{29/16} N^{3/2-\sigma}.
-\end{aligned}
-$$
-
-In this formula $k$ comes from the bound for $S_2$.   It is a positive integer that we can choose.   The last inequality rearranges to give
-
-$$
-\begin{aligned}
-|W|&\preccurlyeq_{\epsilon,k} N^{2-2\sigma}+N^{5-6\sigma}+T^{\frac{k}{k+1}}N^{(4-6\sigma)\frac{k}{k+1}}+N^{(5-6\sigma)\frac{4k}{4k+3}}T^{\frac{2}{4k+3}}+T^{4/3}N^{2-4\sigma}\\
-&\qquad +T^{1/2}N^{3-4\sigma}+T N^{9/2-7\sigma}+T^{18/19}N^{72/19-112\sigma/19}.
-\end{aligned}
-\tag{GM12.1}
-$$
-
-We choose $k=4$.  We also simplify the formulas using $T = N^{6/5}$.
-
-$$
-\begin{aligned}
-|W|&\preccurlyeq_{\epsilon} T\Bigl(N^{(4-10\sigma)/5}+N^{(19-30\sigma)/5}+N^{(74 - 120\sigma)/25}+N^{(298-480\sigma)/95}\\
-&\qquad\qquad+N^{(12 - 20\sigma)/5}+N^{(9-14\sigma)/2}+N^{(354-560\sigma)/95}\Bigr)\\
-&\preccurlyeq_{\epsilon} TN^{(4-10\sigma)/5}+TN^{(12-20\sigma)/5}+TN^{(9-14\sigma)/2}.
-\end{aligned}
-$$
-
-If $\sigma\in[7/10,8/10]$ the first and third terms can be dropped and we get
-
-$$
- |W| \preccurlyeq_{\epsilon} T N^{(12 - 20 \sigma)/5}. 
-$$
-
-
- $\square$
-
-#### 10.1.13. Removing smoothing and assembling Theorem 10.1
-
-We first spell out the comparisons in GM12. The eight exponents after setting $T=N^{6/5}$, subtracting the common exponent $6/5$ and choosing $k=4$, are
-
-$$
-\begin{gathered}
-\frac{4-10\sigma}{5},\quad \frac{19-30\sigma}{5},\quad
-\frac{74-120\sigma}{25},\quad\frac{298-480\sigma}{95},\\
-\frac{12-20\sigma}{5},\quad\frac{12-20\sigma}{5},\quad
-\frac{9-14\sigma}{2},\quad\frac{354-560\sigma}{95}.
-\end{gathered}
-$$
-
-Subtracting each from $q=(12-20\sigma)/5$ gives respectively
-
-$$
-\frac{8-10\sigma}{5},\quad\frac{10\sigma-7}{5},\quad
-\frac{20\sigma-14}{25},\quad\frac{100\sigma-70}{95},\quad
-0,\quad0,\quad\frac{30\sigma-21}{10},\quad
-\frac{180\sigma-126}{95}.
-$$
-
-All are nonnegative exactly in the required closed range $7/10\le\sigma\le8/10$. This proves GM3.1, including both endpoints; the constants depend on the fixed separation exponent and the arbitrarily small loss, never on $\sigma$ in this compact interval.
-
-If $N<T$ and $V\le C N^{7/10}$, the mean-value part of (GM3.C) is at most a constant times the right side of (10.1), since $N V^{-2}\le C^2N^{12/5}V^{-4}$. If $V\ge c N^{8/10}$, its classical large-value part also suffices, since $N^4V^{-6}\le c^{-2}N^{12/5}V^{-4}$. Fixed threshold factors therefore do not alter either endpoint reduction. When $N\ge T$, a fixed sampling kernel gives $R\ll N^2V^{-2}$ without a logarithmic loss. Let $Q(t)=N^{-it}D(t)$; its Fourier frequencies are $\log(n/N)/(2\pi)\in[0,\log2/(2\pi)]$. Choose a fixed Schwartz kernel $K$ whose Fourier transform is one on that interval. Fourier inversion gives $Q=K*Q$, and Cauchy–Schwarz gives $|Q(t)|^2\le\|K\|_1\int |K(t-u)||Q(u)|^2du$. Summing over one-separated points produces $H(u)=\sum_{t\in W}|K(t-u)|\ll1$ and $H(u)\ll_A(1+\operatorname{dist}(u,[0,T]))^{-A}$, by summing the inverse-power tails of $K$ at separated points. On $[0,T]$, NT-ZETA-16, Theorem 2.1, bounds the integral of $|D|^2$ by $C(T+N)\sum|b_n|^2$. On each unit strip outside this interval it gives $C(1+N)\sum|b_n|^2$; weighting these strips by $(1+j)^{-3}$ gives a convergent sum. Therefore $\sum_W|D(t)|^2\ll(T+N)\sum|b_n|^2\ll N^2$. A kernel $K$ exists by Fourier inversion of a fixed smooth cutoff; its rapid decay follows by integration by parts. This proves the assertion for every $N\ge T$, including lengths not bounded by a fixed power of $T$.
-
-It remains to treat $N<T$ and the middle thresholds. Partition $(N,2N]$ into two coefficient sets, the first contained in $[N,3N/2]$ and the second in $(3N/2,2N]$. They lie respectively in the flat portions of weights at lengths $N_1=5N/6$ and $N_2=10N/9$. At each sample point one piece has modulus at least $V/2$; assign the point to such a piece. Each new polynomial has coefficients at most one and is exactly unchanged by its smooth weight. The two lengths are fixed constant multiples of $N$. If its normalized threshold $(V/2)=N_j^{\sigma_j}$ lies outside $[N_j^{7/10},N_j^{8/10}]$, the preceding classical comparison applies with constants. Otherwise GM3.1 applies with $\sigma_j\in[7/10,8/10]$. All bounds obtained below are unchanged up to fixed constants on replacing $N_j$ by $N$ and $V/2$ by $V$.
-
-For the assigned one-separated set choose, greedily from left to right, a subset with gaps at least $T^\eta$. Every selected point discards at most $2T^\eta+1$ points, so the original count is at most $3T^\eta$ times its selected count. Fix $0<\eta<1/10$. If $T\le N_j^{6/5}$, enclose the subset in an interval of length $T_j=N_j^{6/5}$. Since $N_j\asymp N<T$ and the fixed scale changes are harmless, its separation is at least $T_j^{\eta/2}$ for large $T$. Apply GM3.1 with separation exponent $\eta/2$ to get
-
-$$
-R_j\preccurlyeq_\eta T^\eta N_j^{18/5} (V/2)^{-4}.
-$$
+If $N_j\ge T$, part 1 of Lemma LV.48 gives $|W_j|\ll N^2V^{-2}$. If $N_j<T$ and $V_j\le N_j^{7/10}$, part 2 gives $|W_j|\preccurlyeq N_j^2V_j^{-2}+TN_jV_j^{-2}$, and $TN_jV_j^{-2}\le TN_j^{12/5}V_j^{-4}$. If $N_j<T$ and $V_j\ge N_j^{4/5}$, part 2 gives $|W_j|\preccurlyeq N_j^2V_j^{-2}+TN_j^4V_j^{-6}$, and $TN_j^4V_j^{-6}\le TN_j^{12/5}V_j^{-4}$. In these cases $|W_j|$ is bounded by the right side of (10.1).
 
-If $T>N_j^{6/5}$, divide the original interval into at most $1+T/N_j^{6/5}\ll T/N_j^{6/5}$ half-open intervals of length $T_j=N_j^{6/5}$. The selected set in each is again $T_j^{\eta/2}$-separated; a translation is absorbed into the coefficients by $n^{it_0}$ and preserves their moduli. Applying GM3.1 in each gives
+There remains the case $N_j<T$ and $N_j^{7/10}<V_j<N_j^{4/5}$; write $V_j=N_j^{\sigma_j}$ with $7/10<\sigma_j<4/5$. Let $\eta=\delta/4$. Choose points of $W_j$ from left to right, each at distance at least $T^\eta$ from the previously chosen one. Each chosen point excludes at most $T^\eta+1$ later points, so the chosen set $W_j'$ satisfies $|W_j|\le3T^\eta|W_j'|$. Put $T_j=N_j^{6/5}$. As $N_j<T$, we have $T_j\le T^{6/5}$, so $W_j'$ is $T_j^{\eta/2}$-separated. Cover $[0,T]$ by at most $1+T/T_j$ consecutive intervals of length $T_j$. In each, Proposition LV.6, with separation exponent $\eta/2$ and $N_j,\sigma_j$ in place of $N,\sigma$, bounds the number of points of $W_j'$ by $\preccurlyeq T_jN_j^{(12-20\sigma_j)/5}=N_j^{18/5}V_j^{-4}$. Hence
 
 $$
-R_j\preccurlyeq_\eta T^{1+\eta}N_j^{12/5}(V/2)^{-4}.
+|W_j|\ll T^{2\eta}\left(1+\frac T{T_j}\right)N_j^{18/5}V_j^{-4}\ll T^{\delta/2}\left(N^{18/5}V^{-4}+TN^{12/5}V^{-4}\right),
 $$
 
-For a given final $\delta>0$, first take $\eta<\delta/4$ and choose the losses in GM3.1 smaller than $\delta/4$; $T_j\ll T^{6/5}$ makes their translation to the original $T$ harmless. Sum the two assigned sets. Together with the classical endpoint cases and $N\ge T$ case this proves (10.1) for every $N,T,V$, with one constant $C_\delta$. If $V>N+1$ the set is empty, and bounded $N$ or $T$ is absorbed into that constant. $\square$
+where the loss of Proposition LV.6 was taken at most $T_j^{\eta/2}\le T^\eta$. Adding the bounds for $W_1$ and $W_2$ proves (10.1). $\square$
 
 ### 10.2. Applying the new estimate to zeros
 
@@ -3288,8 +2225,8 @@ This includes the boundary $\sigma=1/2$, all multiplicities and the bounded init
 
 ## 13. Proof scope and references
 
-The zero detectors, discrete sampling and divisor norms, both Ingham estimates, the classical large-value bound, the smoothing-kernel inversion and balanced Huxley detector, the uniform $12/5$ consequence and primes between consecutive cubes, Selberg's RH variance and almost-all theorem, Heath-Brown's difference-set estimate, the balanced-detector Guth–Maynard density application, and the Buchstab and Maier matrix arguments are supplied with proofs. Section 10.1 supplies the complete needed matrix, reflection, affine-iteration, energy and large-value assembly proofs, adapted from the freely accessible Guth–Maynard v2 under CC BY 4.0, with exact written internal providers for the reused facts.
+The zero detectors, discrete sampling and divisor norms, both Ingham estimates, the classical large-value bound, the smoothing-kernel inversion and balanced Huxley detector, the uniform $12/5$ consequence and primes between consecutive cubes, Selberg's RH variance and almost-all theorem, Heath-Brown's difference-set estimate, the balanced-detector Guth–Maynard density application, and the Buchstab and Maier matrix arguments are supplied with proofs. Section 10.1 supplies complete proofs of the matrix, reflection, affine-equidistribution, energy and assembly steps of the Guth–Maynard argument, with exact internal providers for the reused facts.
 
 The exact Dirichlet-function support for Maier is identified at the start of Section 11: the written Gallagher estimate in the programme's Linnik lesson, and the written classical exception in *Zero-free regions and the exceptional zero*, Proposition 3.1 and Theorems 4.1–5.1, and its independently analytic effective distance bound (6.4), based on Lemma 6.1 and *Values of Dirichlet L-functions at $s=1$*, Theorem 4.1. The Dirichlet-function proof used here does not depend on Maier, so this is an acyclic mathematical dependency. These character facts are taught by their owning course. The density hypothesis is a conjecture; Exercises 1 and 4 identify the additional assumptions under which their deductions hold.
 
-- Larry Guth and James Maynard, [*New large value estimates for Dirichlet polynomials*, arXiv:2405.20552v2](https://arxiv.org/pdf/2405.20552v2), 7 April 2026, Theorem 1.1 and §§3–12. The adapted proof in Section 10.1 retains [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); its attribution, version, changes and licence scope are stated there. The independent Section 10.2 application and other original course material are CC0.
+- Larry Guth and James Maynard, [*New large value estimates for Dirichlet polynomials*, arXiv:2405.20552v2](https://arxiv.org/pdf/2405.20552v2), 7 April 2026. Theorem 10.1 is their Theorem 1.1, proved in Section 10.1 along the lines of their §§3–12; Theorem 10.2 contains their zero-density estimate, Theorem 1.2; the exponent $17/30$ of Corollary 10.3 is their Corollary 1.3.

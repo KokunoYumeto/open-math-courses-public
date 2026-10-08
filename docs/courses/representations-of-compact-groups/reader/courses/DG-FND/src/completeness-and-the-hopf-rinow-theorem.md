@@ -1,6 +1,6 @@
 # Completeness and the Hopf–Rinow theorem
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text is CC0 1.0; the attributed Clifton half-cylinder subsection retains CC BY 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Self-checked by the writing AI. Original text is CC0 1.0.*
 
 A geodesic is specified by a position and a velocity. A Cauchy sequence concerns only positions. On a Riemannian manifold these two kinds of completeness nevertheless agree. The link is positivity of the metric: constant geodesic speed controls the velocity whenever the position stays in a compact region. A second link is more surprising. Extending every geodesic from one point produces shortest geodesics and compact distance balls throughout the manifold.
 
@@ -502,104 +502,7 @@ An indefinite metric has a further difficulty: null vectors can have zero metric
 
 ### Clifton's half-cylinder: a metric connection with torsion
 
-*This subsection adapts Jacob W. Erickson and Benjamin McKay, [Inequivalence of the various notions of completeness for Cartan geometries](https://arxiv.org/abs/2606.00354v1), Section 4.1, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). They present an example due to Yeaton H. Clifton on a half-cylinder, replacing his punctured-plane presentation. The coframe and geodesic-completeness argument are retained; the linear connection, torsion, scalar-ODE argument and finite \(C^1\) development below are made explicit here. This subsection retains CC BY 4.0.*
-
-Let
-
-\[
-\begin{gathered}
-C=(\mathbb R/\mathbb Z)\times(0,\infty),\\
-g=dx^2+dy^2,\\
-R(\theta)=
-\begin{pmatrix}
-\cos\theta&-\sin\theta\\
-\sin\theta&\cos\theta
-\end{pmatrix},\\
-\upsilon=R(1/y)\binom{dx}{dy}.
-\end{gathered}
-\tag{6.8}
-\]
-
-The coordinate \(x\) is read modulo one. The translation charts of this circle make \(dx\), \(\partial_x\) and (6.8) well defined. Let \(e_1,e_2\) be the frame dual to the coframe \(\upsilon\). Its matrix in the coordinate frame is \(R(-1/y)\), so it is orthonormal. Define a connection by declaring this global frame parallel:
-
-\[
-\begin{gathered}
-\nabla_X(V^1e_1+V^2e_2)\\
-=X(V^1)e_1+X(V^2)e_2.
-\end{gathered}
-\tag{6.9}
-\]
-
-Differentiating the Euclidean inner product of the coefficient vectors proves \(\nabla g=0\). Thus parallel transport for this connection preserves the metric. But it is not the Levi-Civita connection.
-
-Indeed put \(J=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)\). If \(B=R(-1/y)\) is the frame matrix, its coordinate connection matrix is
-
-\[
-\begin{aligned}
-A&=-dB\,B^{-1}\\
-&=J\,d(1/y)\\
-&=-y^{-2}J\,dy.
-\end{aligned}
-\tag{6.10}
-\]
-
-This follows by differentiating \(\nabla e_i=0\), namely \(dB+AB=0\). Hence
-
-\[
-\begin{aligned}
-\nabla_{\partial_x}\partial_y&=0,\\
-\nabla_{\partial_y}\partial_x&=-y^{-2}\partial_y,\\
-T(\partial_x,\partial_y)&=y^{-2}\partial_y.
-\end{aligned}
-\tag{6.11}
-\]
-
-The torsion is nonzero. The connection is flat as well: its global parallel frame gives \(\nabla_X\nabla_Y e_i-\nabla_Y\nabla_X e_i-\nabla_{[X,Y]}e_i=0\), and curvature is tensorial.
-
-The metric \(g\) is incomplete. The sequence \(([0],1/j)\) is Cauchy, since a vertical segment has length \(|1/j-1/k|\); this is also a lower bound by its height displacement. Its only possible limiting height is zero, outside \(C\).
-
-Nevertheless all geodesics of (6.9) are complete. Their velocity coefficients in the parallel frame are constant, so, for some \(v=(a,b)\),
-
-\[
-\begin{gathered}
-\binom{x'}{y'}=R(-1/y)v,\\
-y'=-a\sin(1/y)+b\cos(1/y).
-\end{gathered}
-\tag{6.12}
-\]
-
-Erickson and McKay explain the mechanism: “all of the exponential curves for the geometry have \(y\)-components bounded away from \(0\)”. Here their exponential curves are exactly these geodesics. We give the full scalar argument.
-
-If \(v=0\), the curve is constant. Otherwise the scalar function
-
-\[
-f(y)=-a\sin(1/y)+b\cos(1/y)
-\]
-
-has positive zeros tending to zero: a nonzero linear combination of sine and cosine has zeros at angles differing by \(\pi\), and their positive reciprocal angles tend to zero. For an initial height \(y_0>0\), choose such a zero \(y_*<y_0\). The constant solution \(y=y_*\) of \(y'=f(y)\) cannot meet another solution at a finite time, by uniqueness for this smooth scalar ODE. Continuity prevents crossing without meeting. Thus the height of the geodesic stays above \(y_*\) in both time directions.
-
-Equation (6.12) also gives \(|x'|\le |v|\) and \(|y'|\le |v|\). On any bounded time interval its height is bounded above and below by positive constants. Its position stays in a compact slab of the cylinder, and its smooth first-order vector field in (6.12) has a uniform existence time there. The continuation theorem therefore excludes a finite maximal endpoint in either direction. This proves geodesic completeness for \(\nabla\).
-
-There is even a prescribed \(C^1\) development that cannot be realized through its finite endpoint. Set \(p=([0],1)\), take \(u_0=(e_1(p),e_2(p))\), and consider
-
-\[
-\gamma(t)=([0],(1-t)^2),\qquad 0\le t<1.
-\]
-
-Its parallel frame is \(u(t)=(e_1(\gamma(t)),e_2(\gamma(t)))\), by (6.9). Define
-
-\[
-\begin{gathered}
-\delta(t)=u_0\int_0^t w(s)\,ds,\\
-w(s)=R(\theta(s))\binom{0}{-2(1-s)},\\
-\theta(s)=(1-s)^{-2}.
-\end{gathered}
-\tag{6.13}
-\]
-
-The integrand has norm \(2(1-s)\), so it extends continuously by zero at \(s=1\). Its integral defines a \(C^1\) curve on the closed interval \([0,1]\), with \(\delta'(1)=0\). Equation (4.1) verifies that it is the development of \(\gamma\) on \([0,1)\). Any realization with the same initial point agrees with this one on that interval, by local uniqueness of the development equations. It cannot have an endpoint in \(C\), since its height tends to zero.
-
-Thus geodesic completeness for a metric-compatible connection with torsion need not imply metric completeness or the prescribed-development conclusion. The torsion-free hypothesis that singles out the Levi-Civita connection is essential to those implications.
+On the half-cylinder \((\mathbb R/\mathbb Z)\times(0,\infty)\) with the incomplete flat metric \(dx^2+dy^2\), a suitable metric-compatible connection with torsion is flat and geodesically complete. So for connections with torsion, geodesic completeness does not imply metric completeness. This example of C. Clifton is worked out in full in Completeness and the Hopf–Rinow theorem, Example F.5, in the current edition of *Foundations of differential geometry*.
 
 ## 7. Exercises and complete solutions
 
@@ -714,7 +617,7 @@ The argument does not assert that the original metric \(h\) is complete. It enla
 
 ## References
 
-[Erickson–McKay] J. W. Erickson and B. McKay, [*Inequivalence of the various notions of completeness for Cartan geometries*](https://arxiv.org/abs/2606.00354v1), arXiv:2606.00354v1, 29 May 2026, CC BY 4.0. Section 4.1 presents Clifton's half-cylinder and explains its completeness properties.
+[Erickson–McKay] J. W. Erickson and B. McKay, [*Inequivalence of the various notions of completeness for Cartan geometries*](https://arxiv.org/abs/2606.00354v1), arXiv:2606.00354v1, 29 May 2026. Section 4.1 presents Clifton's half-cylinder and explains its completeness properties.
 
 [Meinrenken] E. Meinrenken, [*Riemannian Geometry*](https://www.math.toronto.edu/mein/teaching/LectureNotes/rieall.pdf), lecture notes, University of Toronto, Spring 2002. Section 17 treats radial minimization, Hopf–Rinow, compact distance balls and one-point completeness.
 

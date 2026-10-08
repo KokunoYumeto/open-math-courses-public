@@ -2,7 +2,7 @@
 
 This prerequisite develops the exponential, trigonometric functions, their exact periods and polar coordinates from convergent series.
 
-*The first-zero and unit-circle treatment is adapted from Jiří Lebl's Basic Analysis, volume II, version 6.3, “Complex exponential and trigonometric functions.” The programme edition's product-of-series argument, estimates and endpoint details were supplied by GPT-6 Astra (OpenAI), in Codex at Ultra. The present selection and local reading links were edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. These AI contributions are self-checked; independent or human review is not asserted. This component remains CC BY-SA 4.0. The [source and edition notice](assets/notices/complex-exponential-source-notice.html) preserves the human source, native excerpt and adaptation credit.*
+*The first-zero and unit-circle treatment follows Jiří Lebl's Basic Analysis, volume II, version 6.3, “Complex exponential and trigonometric functions.” The text, including the product-of-series argument, estimates and endpoint details, is by GPT-6 Astra (OpenAI), in Codex at Ultra; the present selection and local reading links are by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI. Original text: public domain (CC0). The [source and edition notice](assets/notices/complex-exponential-source-notice.html) credits the source and links its native excerpt.*
 
 ## Starting knowledge
 
